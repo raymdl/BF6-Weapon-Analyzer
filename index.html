@@ -319,6 +319,24 @@ const RECOIL_DEC = {
   m2010esr:70, sv98:70,  psr:70,     miniscout:70,
   m87a1:70,  m1014:21.5, ks18k:21.5, db12:70,
 };
+// ADSRecoilDecreaseTimeExponent — scales how recovery rate ramps up over time since last shot
+const RECOIL_DEC_TEXP = {
+  m433:1.200,  b36a4:1.200,  sor556:1.200, ak4d:1.459,   tr7:1.459,    kord6p67:1.023,
+  nvo228e:1.240, l85a3:1.200, vcr2:1.200,
+  m4a1:1.045,  m277:1.240,   ak205:0.905,  m417a2:1.240, grtbc:1.045,  qbz192:1.045,
+  sg553r:1.200, sor300sc:1.200,
+  sgx:1.023,   pw5a3:1.023,  pw7a2:0.919,  umg40:1.045,  usg90:0.905,  kv9:1.023,
+  scw10:1.200, sl9:1.023,    cz3a1:1.023,
+  l110:1.200,  drsiar:1.200, m60:1.459,    rpkm:1.240,   m123k:1.200,  m250:1.240,
+  kts100:1.200, m240l:1.459, m121a2:1.459,
+  m39emr:0.750, lmr27:0.5555, svk86:1.333, svdm:0.750,   grtcps:0.5555,
+  m2010esr:4.000, sv98:4.000, psr:4.000,   miniscout:4.000,
+  m87a1:4.000, m1014:1.333,  ks18k:1.333,  db12:4.000,
+};
+// ADSRecoilDecreaseExponent — position exponent in decay term; 0.6 for bolt snipers + DB-12, 1.0 elsewhere
+const RECOIL_DEC_EXP = {
+  m2010esr:0.6, sv98:0.6, psr:0.6, miniscout:0.6, m87a1:0.6, db12:0.6,
+};
 
 // ── ATTACHMENT DATA ───────────────────────────────────────────────────────────
 // tierMod   = additive modifier to the weapon's recoil tier (muzzles only)
@@ -358,13 +376,13 @@ const GRIPS=[
   {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0},
   {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0},
   {id:'ribbed_vert',    name:'Ribbed Vertical',     tier:3, movAcc:-1, adsSpd:0},
-  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0},
-  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0},
+  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0, spreadMult:1.10},
+  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0, spreadMult:1.10},
   {id:'fold_stubby',    name:'Folding Stubby',      tier:2, movAcc:-1, adsSpd:1},
   {id:'ribbed_stubby',  name:'Ribbed Stubby',       tier:2, movAcc:0,  adsSpd:1},
   {id:'canted_stubby',  name:'Canted Stubby',       tier:3, movAcc:-1, adsSpd:1},
-  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1},
-  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1},
+  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1, spreadMult:1.10},
+  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1, spreadMult:1.10},
   {id:'adj_angled',     name:'Adjustable Angled',   tier:1, movAcc:-1, adsSpd:1},
   {id:'slim_angled',    name:'Slim Angled',         tier:1, movAcc:0,  adsSpd:1},
   {id:'full_angled',    name:'Full Angled',         tier:3, movAcc:-1, adsSpd:1},
@@ -458,8 +476,8 @@ function applyAttachments(w, atts) {
   const mult=RECOIL_MULT[w.id]??0.94;
   const newRecoilV=+(w.recoilV*Math.pow(mult,totalTier)).toFixed(3);
   const recoilRPct=+(100*(1-Math.pow(mult,totalTier))).toFixed(1);
-  // Linear comp narrows spread variation; all other muzzles have spreadMult=1 (no change)
-  const newRecoilVar=+(w.recoilVar*(muz.spreadMult??1)).toFixed(3);
+  // spreadMult stacks from muzzle and grip (linear comp −10%; 6H64/Classic/Stipp/LP grips +10%)
+  const newRecoilVar=+(w.recoilVar*(muz.spreadMult??1)*(grp.spreadMult??1)).toFixed(3);
   const tags=[muz,bar,grp,las].filter(a=>a.id!=='none').map(a=>a.name);
   const combinedAdsSpd=(grp.adsSpd??0)+(bar.adsSpd??0);
   const movAccShift=(grp.movAcc??0)+(las.movAcc??0)+(bar.movAcc??0);
@@ -492,6 +510,21 @@ function gaussDev(rng, recoilVar) {
   const sigma=recoilVar*0.5;
   const z=Math.sqrt(-2*Math.log(Math.max(rng(),1e-10)))*Math.cos(2*Math.PI*rng());
   return Math.max(-recoilVar,Math.min(recoilVar,z*sigma));
+}
+// Simulate recoil recovery over one inter-shot interval using sym.gg parameters.
+// Formula (per frame): Decrease = (|r|^decExp + 0.06) × decFactor × dt × t^timeExp
+// where t = time elapsed since last shot. Vertical and horizontal applied independently.
+function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime) {
+  const dt=1/60;
+  let t=0;
+  while(t<interShotTime){
+    const step=Math.min(dt,interShotTime-t);
+    t+=step;
+    const dec=(Math.pow(Math.abs(r),decExp)+0.06)*decFactor*step*Math.pow(t,timeExp);
+    if(r>0) r=Math.max(0,r-dec);
+    else if(r<0) r=Math.min(0,r+dec);
+  }
+  return r;
 }
 
 function getDmg(weapon, range) {
@@ -796,17 +829,20 @@ function genRecoilPts(weapon,shots=20) {
   const rng=mulberry32(whash(weapon.id));
   const pts=[{x:0,y:0}];
   const decF=RECOIL_DEC[weapon.id]??72;
+  const decExp=RECOIL_DEC_EXP[weapon.id]??1;
+  const timeExp=RECOIL_DEC_TEXP[weapon.id]??1.2;
   const interShotTime=60/(weapon.rpm??600);
-  const retain=Math.exp(-300/decF*interShotTime);
   let cx=0,cy=0;
   for(let i=1;i<shots;i++){
     const dir=-weapon.recoilDir*Math.PI/180;
     const spread=gaussDev(rng,weapon.recoilVar)*Math.PI/180;
     const angle=dir+spread;
-    const mag=weapon.recoilV;
-    cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
+    cx+=Math.sin(angle)*weapon.recoilV; cy+=Math.cos(angle)*weapon.recoilV;
     pts.push({x:cx,y:cy});
-    if(i<shots-1){cx*=retain;cy*=retain;}
+    if(i<shots-1){
+      cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime);
+      cy=applyRecoilDecay(cy,decF,decExp,timeExp,interShotTime);
+    }
   }
   return pts;
 }
@@ -820,9 +856,9 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
   const weapons=[weapon1,weapon2].filter(Boolean);
 
   // ── Fixed scale ─────────────────────────────────────────────────────────────
-  const RC_H    = 4.0;  // ±4° horizontal
-  const YMIN    = -0.5;
-  const RC_YMAX = 7.5;  // −0.5°–7.5° vertical
+  const RC_H    = 6.0;  // ±6° horizontal
+  const YMIN    = -1.0;
+  const RC_YMAX = 11.0; // −1°–11° vertical (12°×12° proportional)
 
   const toX  =xDeg=>PL+(xDeg+RC_H)/(2*RC_H)*PW;
   const toY  =yDeg=>PT+PH-((yDeg-YMIN)/(RC_YMAX-YMIN))*PH;
@@ -910,7 +946,9 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
   drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
     const decF=RECOIL_DEC[w.id]??72;
-    const retain=Math.exp(-300/decF*(60/(w.rpm??600)));
+    const decExp=RECOIL_DEC_EXP[w.id]??1;
+    const timeExp=RECOIL_DEC_TEXP[w.id]??1.2;
+    const interShotTime=60/(w.rpm??600);
     const blooms=simulateBloom(w,N);
     for(let s=1;s<=CLOUD_RUNS;s++){
       const rng=mulberry32((whash(w.id)^(s*0x9e3779b9))>>>0);
@@ -920,8 +958,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
         const dir=-w.recoilDir*Math.PI/180;
         const spread=gaussDev(rng,w.recoilVar)*Math.PI/180;
         const angle=dir+spread;
-        const mag=w.recoilV;
-        cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
+        cx+=Math.sin(angle)*w.recoilV; cy+=Math.cos(angle)*w.recoilV;
         // Apply bloom jitter: bullet lands within the bloom circle
         const bloom=blooms[i]??baseline;
         const bAng=rngB()*Math.PI*2;
@@ -929,7 +966,10 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
         ctx.beginPath();
         ctx.arc(toX(cx+bR*Math.cos(bAng)),toY(cy+bR*Math.sin(bAng)),2,0,Math.PI*2);
         ctx.fillStyle=col+'38'; ctx.fill();
-        if(i<N-1){cx*=retain;cy*=retain;}
+        if(i<N-1){
+          cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime);
+          cy=applyRecoilDecay(cy,decF,decExp,timeExp,interShotTime);
+        }
       }
     }
   });
