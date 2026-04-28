@@ -170,7 +170,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
     </div>
   </main>
 </div>
-<div class="footer">Data: sym.gg v1.2.2.0 (17 MAR 2026) &nbsp;·&nbsp; ADS time values are estimated (sym.gg roadmap item, not yet published) &nbsp;·&nbsp; Shotgun reload stats not yet published by sym.gg &nbsp;·&nbsp; Sniper rifle damage shows sweet spot (upper chest+) only</div>
+<div class="footer">Data: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.2.2.0 (17 MAR 2026) &nbsp;·&nbsp; Bloom decay model: <a href="https://www.youtube.com/@DrSmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a></div>
 
 <script>
 // ── WEAPON DATABASE ──────────────────────────────────────────────────────────
@@ -487,6 +487,12 @@ function mulberry32(seed) {
   return () => { s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s>>>15, 1|s); t = t + Math.imul(t ^ t>>>7, 61|t) ^ t; return ((t ^ t>>>14) >>> 0) / 0x100000000; };
 }
 function whash(str) { let h=0; for (let c of str) h = Math.imul(31,h) + c.charCodeAt(0) | 0; return h>>>0; }
+// Box-Muller: draw from N(0, sigma) clamped to ±recoilVar
+function gaussDev(rng, recoilVar) {
+  const sigma=recoilVar*0.5;
+  const z=Math.sqrt(-2*Math.log(Math.max(rng(),1e-10)))*Math.cos(2*Math.PI*rng());
+  return Math.max(-recoilVar,Math.min(recoilVar,z*sigma));
+}
 
 function getDmg(weapon, range) {
   // BF6 uses a stepped zone model — no linear interpolation between breakpoints
@@ -795,9 +801,9 @@ function genRecoilPts(weapon,shots=20) {
   let cx=0,cy=0;
   for(let i=1;i<shots;i++){
     const dir=-weapon.recoilDir*Math.PI/180;
-    const spread=((rng()*2-1)*weapon.recoilVar)*Math.PI/180;
+    const spread=gaussDev(rng,weapon.recoilVar)*Math.PI/180;
     const angle=dir+spread;
-    const mag=weapon.recoilV*(0.8+rng()*0.4);
+    const mag=weapon.recoilV;
     cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
     pts.push({x:cx,y:cy});
     if(i<shots-1){cx*=retain;cy*=retain;}
@@ -912,9 +918,9 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
       let cx=0,cy=0;
       for(let i=1;i<N;i++){
         const dir=-w.recoilDir*Math.PI/180;
-        const spread=((rng()*2-1)*w.recoilVar)*Math.PI/180;
+        const spread=gaussDev(rng,w.recoilVar)*Math.PI/180;
         const angle=dir+spread;
-        const mag=w.recoilV*(0.8+rng()*0.4);
+        const mag=w.recoilV;
         cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
         // Apply bloom jitter: bullet lands within the bloom circle
         const bloom=blooms[i]??baseline;
@@ -960,7 +966,7 @@ function renderRecoil() {
   const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
   const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2);
   const noteEl=document.querySelector('.rc-note');
-  if (noteEl&&axis) noteEl.textContent=`Faded dots = 12 simulated spray runs showing natural shot scatter. Solid path = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
+  if (noteEl&&axis) noteEl.textContent=`Faded dots = 12 simulated spray runs showing natural shot scatter. Solid dots = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
 
   // Legend
   const leg=document.getElementById('rcLegend');
