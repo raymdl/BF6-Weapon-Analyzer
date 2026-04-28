@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BF6 Weapon Analyzer</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:#0c0e0e; --bg2:#151a1a; --bg3:#1c2222;
+  --accent:#c9a227; --accent2:#4d94d0;
+  --text:#dde3e3; --muted:#7a8a8a; --border:#283030;
+  --green:#56c464; --red:#e05555;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;font-size:14px}
+button{cursor:pointer;font-family:inherit}
+header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;height:46px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.logo{font-size:1.05rem;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase}
+.logo span{color:var(--muted);font-weight:400}
+.hdr-tag{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
+.app{display:flex;flex:1;overflow:hidden}
+/* Sidebar */
+.sidebar{width:208px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sb-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
+.sb-scroll::-webkit-scrollbar{width:3px}
+.sb-scroll::-webkit-scrollbar-thumb{background:var(--border)}
+.sb-sec{padding:9px 11px;border-bottom:1px solid var(--border)}
+.sb-lbl{font-size:0.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600}
+.class-filter{display:flex;flex-wrap:wrap;gap:3px}
+.cbtn{padding:2px 6px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
+.cbtn:hover,.cbtn.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
+.wlist{display:flex;flex-direction:column}
+.wbtn{padding:3px 11px;text-align:left;background:none;border:none;border-bottom:1px solid rgba(40,48,48,.55);color:var(--text);font-size:0.82rem;transition:background .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent}
+.wbtn:hover{background:var(--bg3)}
+.wbtn.p1{background:rgba(201,162,39,.1);color:var(--accent);border-left-color:var(--accent)}
+.wbtn.p2{background:rgba(77,148,208,.1);color:var(--accent2);border-left-color:var(--accent2)}
+.no-w{padding:10px 11px;color:var(--muted);font-size:0.78rem}
+.cmp-btn{margin:9px 11px;width:calc(100% - 22px);padding:7px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:0.78rem;transition:all .15s}
+.cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
+.cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border)}
+/* Main */
+.main{flex:1;overflow-y:auto;overflow-x:hidden;padding:13px;display:flex;flex-direction:column;gap:11px}
+.main::-webkit-scrollbar{width:4px}
+.main::-webkit-scrollbar-thumb{background:var(--border)}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);gap:6px;text-align:center}
+.empty-t{font-size:1rem;color:var(--text)}
+/* Panel */
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px}
+.ptitle{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:11px;font-weight:600}
+/* Quick stats */
+.w-header{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.wname{font-size:1.25rem;font-weight:700;color:var(--accent)}
+.wname2{font-size:1.25rem;font-weight:700;color:var(--accent2)}
+.wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:5px}
+.scard{background:var(--bg3);border-radius:4px;padding:7px 10px}
+.slbl{font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.sval{font-size:1.1rem;font-weight:700}
+.sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
+.sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
+.c1{color:var(--accent)} .c2{color:var(--accent2)}
+.scmp{display:flex;gap:7px;align-items:baseline;flex-wrap:wrap}
+.diff{font-size:0.62rem;padding:1px 4px;border-radius:3px;margin-left:1px}
+.d-up{background:rgba(86,196,100,.15);color:var(--green)}
+.d-dn{background:rgba(224,85,85,.15);color:var(--red)}
+/* Chart */
+.chart-wrap{position:relative;height:320px}
+/* BTK table */
+.btk-tbl{width:100%;border-collapse:collapse;font-size:0.78rem}
+.btk-tbl th{padding:4px 7px;color:var(--muted);text-align:center;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
+.btk-tbl td{padding:4px 7px;text-align:center;border-bottom:1px solid rgba(40,48,48,.45)}
+.btk-tbl tr:last-child td{border-bottom:none}
+.rng{color:var(--muted);font-size:0.7rem}
+.bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
+.tv{color:var(--muted);font-size:0.76rem}
+/* Recoil */
+.rc-layout{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
+.rc-stats{flex:1;min-width:150px;display:flex;flex-direction:column;gap:9px}
+.rc-row{display:flex;flex-direction:column;gap:3px}
+.rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
+.rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.rc-fill{height:100%;border-radius:3px;transition:width .3s}
+.rc-legend{display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;min-height:14px}
+.rc-legend-item{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--text)}
+.rc-legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.rc-note{font-size:0.6rem;color:var(--muted);margin-top:3px}
+/* Attachments sidebar */
+.att-sec{padding:8px 11px 10px;border-bottom:1px solid var(--border)}
+.att-row{display:flex;align-items:center;gap:5px;margin-bottom:4px}
+.att-lbl{font-size:0.6rem;color:var(--muted);width:40px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
+.att-sel{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-size:0.7rem;padding:2px 3px;border-radius:3px;cursor:pointer;min-width:0;outline:none}
+.att-sel:focus{border-color:var(--accent)}
+.att-sel option{background:var(--bg2)}
+.wbtn.p1.p2{background:rgba(130,100,180,.13);border-left-color:var(--accent2);color:var(--accent2)}
+/* Footer */
+.footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
+  <div class="hdr-tag">sym.gg v1.2.2.0 · 17 MAR 2026</div>
+</header>
+<div class="app">
+  <aside class="sidebar">
+    <button class="cmp-btn" id="cmpBtn">+ Compare Loadout</button>
+    <div class="sb-scroll">
+      <div class="sb-sec">
+        <div class="sb-lbl">Class</div>
+        <div class="class-filter" id="classFilter1"></div>
+      </div>
+      <div class="sb-sec" style="padding-top:6px">
+        <div class="sb-lbl">Weapon</div>
+        <div class="wlist" id="wList1"></div>
+      </div>
+      <div class="att-sec" id="attSection1"></div>
+      <div id="cmpSection" style="display:none">
+        <div class="cmp-hdr">Compare Loadout</div>
+        <div class="sb-sec">
+          <div class="sb-lbl">Class</div>
+          <div class="class-filter" id="classFilter2"></div>
+        </div>
+        <div class="sb-sec" style="padding-top:6px">
+          <div class="sb-lbl">Weapon 2</div>
+          <div class="wlist" id="wList2"></div>
+        </div>
+        <div class="att-sec" id="attSection2"></div>
+      </div>
+    </div>
+  </aside>
+  <main class="main" id="main">
+    <div class="empty" id="emptyState">
+      <div class="empty-t">Select a weapon to begin</div>
+      <div>Choose a class and weapon from the sidebar</div>
+    </div>
+    <div id="statsArea" style="display:none">
+      <div class="panel" id="overviewPanel">
+        <div class="ptitle">Overview</div>
+        <div id="wHeader" class="w-header"></div>
+        <div id="sGrid" class="sgrid"></div>
+      </div>
+      <div class="panel" style="padding:0;overflow:hidden">
+        <div style="display:flex;align-items:stretch">
+          <div style="flex:1;min-width:0;padding:13px;border-right:1px solid var(--border)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
+              <div class="ptitle" style="margin-bottom:0">Damage Chart</div>
+              <div id="dmgLegend" style="display:flex;gap:14px"></div>
+            </div>
+            <div class="chart-wrap"><canvas id="dmgChart"></canvas></div>
+          </div>
+          <div style="flex:1;min-width:0;padding:13px">
+            <div class="ptitle">Bullets / Time to Kill</div>
+            <div id="btkArea"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="ptitle">Recoil &amp; Bloom Pattern (simulated · 20 shots · fixed scale)</div>
+        <div class="rc-layout">
+          <div>
+            <canvas id="rcMain" class="rcv" width="362" height="362"></canvas>
+            <div class="rc-legend" id="rcLegend"></div>
+            <div class="rc-note">Shaded cone = spread envelope (ADS bloom + recoil variation).</div>
+          </div>
+          <div class="rc-stats" id="rcStats"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="footer">Data: sym.gg v1.2.2.0 (17 MAR 2026) &nbsp;·&nbsp; ADS time values are estimated (sym.gg roadmap item, not yet published) &nbsp;·&nbsp; Shotgun reload stats not yet published by sym.gg &nbsp;·&nbsp; Sniper rifle damage shows sweet spot (upper chest+) only</div>
+
+<script>
+// ── WEAPON DATABASE ──────────────────────────────────────────────────────────
+// recoilV=°/shot, recoilDir=angle from up (°), recoilVar=spread width (°)
+// tacRld/emptyRld in seconds, bulletVel in m/s, adsTime estimated (ms)
+// damage: [{r:range_m, d:damage}] linear interp; pellets field for shotguns
+
+const W = [
+// ── ASSAULT RIFLE ────────────────────────────────────────────────────────────
+{id:'m433',    name:'M433',       cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:830,  mag:31, tacRld:2.38,emptyRld:2.97,deployT:0.63,bulletVel:670, recoilV:0.72,recoilDir:-22,recoilVar:45.1, recoilIncAds:0.27, spreadMax:7, adsTime:250, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'b36a4',   name:'B36A4',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:720,  mag:31, tacRld:2.38,emptyRld:2.95,deployT:0.63,bulletVel:780, recoilV:0.66,recoilDir:-15,recoilVar:37.4, recoilIncAds:0.27, spreadMax:7, adsTime:250, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'sor556',  name:'SOR-556 MK2',cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:568,  mag:31, tacRld:2.38,emptyRld:2.67,deployT:0.63,bulletVel:800, recoilV:0.59,recoilDir:-9, recoilVar:19.0, recoilIncAds:0.27, spreadMax:7, adsTime:260, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'ak4d',    name:'AK4D',       cls:'Assault Rifle', cal:'7.62×51mm NATO',  rpm:514,  mag:21, tacRld:2.47,emptyRld:3.30,deployT:0.63,bulletVel:720, recoilV:0.80,recoilDir:-18,recoilVar:25.4, recoilIncAds:0.39, spreadMax:7, adsTime:270, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
+{id:'tr7',     name:'TR7',        cls:'Assault Rifle', cal:'7.62×51mm NATO',  rpm:720,  mag:21, tacRld:2.40,emptyRld:3.37,deployT:0.63,bulletVel:648, recoilV:1.02,recoilDir:20, recoilVar:47.1, recoilIncAds:0.39, spreadMax:7, adsTime:255, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
+{id:'kord6p67',name:'KORD 6P67',  cls:'Assault Rifle', cal:'5.45×39mm',       rpm:900,  mag:31, tacRld:2.45,emptyRld:3.02,deployT:0.63,bulletVel:760, recoilV:0.50,recoilDir:18, recoilVar:35.9, recoilIncAds:0.21, spreadMax:7, adsTime:240, fireMode:'auto',
+ dmg:[{r:0,d:20},{r:21,d:16.7},{r:75,d:14.3}]},
+{id:'nvo228e', name:'NVO-228E',   cls:'Assault Rifle', cal:'7.62×39mm',       rpm:654,  mag:31, tacRld:2.50,emptyRld:2.98,deployT:0.63,bulletVel:671, recoilV:0.70,recoilDir:-12,recoilVar:35.3, recoilIncAds:0.31, spreadMax:7, adsTime:260, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:9,d:27.3},{r:21,d:21.5},{r:36,d:20},{r:75,d:16.7}]},
+{id:'l85a3',   name:'L85A3',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:635,  mag:31, tacRld:2.77,emptyRld:2.73,deployT:0.63,bulletVel:814, recoilV:0.63,recoilDir:12, recoilVar:29.4, recoilIncAds:0.27, spreadMax:7, adsTime:230, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'vcr2',    name:'VCR-2',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:900,  mag:31, tacRld:2.43,emptyRld:3.13,deployT:0.63,bulletVel:704, recoilV:0.77,recoilDir:18, recoilVar:49.1, recoilIncAds:0.27, spreadMax:7, adsTime:255, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+// ── CARBINE ──────────────────────────────────────────────────────────────────
+{id:'m4a1',    name:'M4A1',       cls:'Carbine', cal:'5.56×45mm NATO',  rpm:900,  mag:31, tacRld:2.20,emptyRld:2.70,deployT:0.53,bulletVel:630, recoilV:0.80,recoilDir:-18,recoilVar:31.9, recoilIncAds:0.23, spreadMax:6, adsTime:200, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
+{id:'m277',    name:'M277',       cls:'Carbine', cal:'6.8×51mm',        rpm:720,  mag:21, tacRld:2.38,emptyRld:2.55,deployT:0.53,bulletVel:624, recoilV:0.91,recoilDir:-22,recoilVar:39.4, recoilIncAds:0.31, spreadMax:6, adsTime:210, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:75,d:20}]},
+{id:'ak205',   name:'AK-205',     cls:'Carbine', cal:'5.45×39mm',       rpm:720,  mag:31, tacRld:2.48,emptyRld:2.92,deployT:0.53,bulletVel:737, recoilV:0.48,recoilDir:6,  recoilVar:7.8,  recoilIncAds:0.18, spreadMax:6, adsTime:200, fireMode:'auto',
+ dmg:[{r:0,d:20},{r:9,d:17.7},{r:21,d:15},{r:36,d:14.3},{r:75,d:12.5}]},
+{id:'m417a2',  name:'M417 A2',    cls:'Carbine', cal:'7.62×51mm NATO',  rpm:654,  mag:21, tacRld:2.47,emptyRld:2.57,deployT:0.53,bulletVel:600, recoilV:0.89,recoilDir:-16,recoilVar:19.0, recoilIncAds:0.31, spreadMax:6, adsTime:230, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:9,d:27.3},{r:21,d:21.5},{r:36,d:20},{r:75,d:16.7}]},
+{id:'grtbc',   name:'GRT-BC',     cls:'Carbine', cal:'5.56×45mm NATO',  rpm:830,  mag:31, tacRld:2.50,emptyRld:3.35,deployT:0.53,bulletVel:599, recoilV:0.76,recoilDir:16, recoilVar:27.9, recoilIncAds:0.23, spreadMax:6, adsTime:195, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
+{id:'qbz192',  name:'QBZ-192',    cls:'Carbine', cal:'5.8×42mm',        rpm:771,  mag:31, tacRld:2.57,emptyRld:2.78,deployT:0.53,bulletVel:644, recoilV:0.73,recoilDir:-10,recoilVar:22.5, recoilIncAds:0.23, spreadMax:6, adsTime:200, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
+{id:'sg553r',  name:'SG 553R',    cls:'Carbine', cal:'7.62×39mm',       rpm:720,  mag:31, tacRld:2.50,emptyRld:2.93,deployT:0.53,bulletVel:519, recoilV:0.75,recoilDir:-20,recoilVar:33.8, recoilIncAds:0.27, spreadMax:6, adsTime:205, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:9,d:25},{r:21,d:20},{r:36,d:16.7},{r:75,d:14.3}]},
+{id:'sor300sc',name:'SOR-300SC',  cls:'Carbine', cal:'.300 BLK',        rpm:600,  mag:31, tacRld:2.25,emptyRld:3.28,deployT:0.53,bulletVel:563, recoilV:0.69,recoilDir:-12,recoilVar:19.2, recoilIncAds:0.27, spreadMax:6, adsTime:195, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:9,d:25},{r:21,d:20},{r:36,d:16.7},{r:75,d:14.3}]},
+// ── SMG ──────────────────────────────────────────────────────────────────────
+{id:'sgx',     name:'SGX',        cls:'SMG', cal:'9×19mm',      rpm:830,  mag:31, tacRld:2.52,emptyRld:2.92,deployT:0.47,bulletVel:402, recoilV:0.54,recoilDir:-18,recoilVar:36.7, recoilIncAds:0.21, spreadMax:6, adsTime:175, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
+{id:'pw5a3',   name:'PW5A3',      cls:'SMG', cal:'9×19mm',      rpm:771,  mag:31, tacRld:2.52,emptyRld:2.90,deployT:0.47,bulletVel:432, recoilV:0.51,recoilDir:-10,recoilVar:31.4, recoilIncAds:0.21, spreadMax:6, adsTime:175, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
+{id:'pw7a2',   name:'PW7A2',      cls:'SMG', cal:'4.6×30mm',    rpm:947,  mag:31, tacRld:2.18,emptyRld:3.09,deployT:0.47,bulletVel:600, recoilV:0.49,recoilDir:-10,recoilVar:33.3, recoilIncAds:0.17, spreadMax:6, adsTime:165, fireMode:'auto',
+ dmg:[{r:0,d:16.7},{r:21,d:14.3},{r:75,d:12.5}]},
+{id:'umg40',   name:'UMG-40',     cls:'SMG', cal:'.40 S&W',     rpm:635,  mag:31, tacRld:2.52,emptyRld:2.92,deployT:0.47,bulletVel:488, recoilV:0.56,recoilDir:-16,recoilVar:17.4, recoilIncAds:0.23, spreadMax:6, adsTime:175, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
+{id:'usg90',   name:'USG-90',     cls:'SMG', cal:'5.7×28mm',    rpm:900,  mag:51, tacRld:3.00,emptyRld:3.31,deployT:0.47,bulletVel:570, recoilV:0.52,recoilDir:10, recoilVar:42.8, recoilIncAds:0.18, spreadMax:6, adsTime:185, fireMode:'auto',
+ dmg:[{r:0,d:20},{r:9,d:17.7},{r:21,d:15},{r:36,d:14.3},{r:75,d:12.5}]},
+{id:'kv9',     name:'KV9',        cls:'SMG', cal:'9×19mm',      rpm:1080, mag:18, tacRld:2.38,emptyRld:2.90,deployT:0.47,bulletVel:348, recoilV:0.47,recoilDir:22, recoilVar:53.8, recoilIncAds:0.21, spreadMax:6, adsTime:165, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
+{id:'scw10',   name:'SCW-10',     cls:'SMG', cal:'10×25mm',     rpm:800,  mag:16, tacRld:2.60,emptyRld:3.11,deployT:0.47,bulletVel:428, recoilV:0.70,recoilDir:-18,recoilVar:28.6, recoilIncAds:0.27, spreadMax:6, adsTime:185, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:9,d:25},{r:21,d:20},{r:36,d:16.7},{r:75,d:14.3}]},
+{id:'sl9',     name:'SL9',        cls:'SMG', cal:'9×19mm',      rpm:675,  mag:31, tacRld:2.65,emptyRld:3.18,deployT:0.47,bulletVel:510, recoilV:0.49,recoilDir:0,  recoilVar:16.2, recoilIncAds:0.21, spreadMax:6, adsTime:180, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
+{id:'cz3a1',   name:'CZ3A1',      cls:'SMG', cal:'9×19mm',      rpm:981,  mag:31, tacRld:2.22,emptyRld:2.95,deployT:0.47,bulletVel:360, recoilV:0.62,recoilDir:-15,recoilVar:52.6, recoilIncAds:0.21, spreadMax:6, adsTime:170, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
+// ── LMG ──────────────────────────────────────────────────────────────────────
+{id:'l110',    name:'L110',       cls:'LMG', cal:'5.56×45mm NATO', rpm:720, mag:100,tacRld:6.50,emptyRld:7.73,deployT:1.00,bulletVel:780, recoilV:0.52,recoilDir:0,  recoilVar:39.4, recoilIncAds:0.27, spreadMax:11, adsTime:380, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'drsiar',  name:'DRS-IAR',    cls:'LMG', cal:'5.56×45mm NATO', rpm:771, mag:31, tacRld:2.47,emptyRld:2.95,deployT:0.73,bulletVel:720, recoilV:0.65,recoilDir:-14,recoilVar:33.8, recoilIncAds:0.27, spreadMax:9, adsTime:280, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'m60',     name:'M/60',       cls:'LMG', cal:'7.62×51mm NATO', rpm:514, mag:100,tacRld:7.35,emptyRld:8.12,deployT:1.00,bulletVel:720, recoilV:0.68,recoilDir:0,  recoilVar:38.8, recoilIncAds:0.39, spreadMax:11, adsTime:420, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
+{id:'rpkm',    name:'RPKM',       cls:'LMG', cal:'7.62×39mm',      rpm:553, mag:41, tacRld:2.80,emptyRld:3.28,deployT:0.73,bulletVel:670, recoilV:0.62,recoilDir:5,  recoilVar:22.7, recoilIncAds:0.31, spreadMax:9, adsTime:310, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:9,d:27.3},{r:21,d:21.5},{r:36,d:20},{r:75,d:16.7}]},
+{id:'m123k',   name:'M123K',      cls:'LMG', cal:'5.56×45mm NATO', rpm:830, mag:100,tacRld:6.65,emptyRld:7.43,deployT:1.00,bulletVel:670, recoilV:0.57,recoilDir:-10,recoilVar:49.0, recoilIncAds:0.27, spreadMax:11, adsTime:400, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'m250',    name:'M250',       cls:'LMG', cal:'6.8×51mm',       rpm:675, mag:50, tacRld:5.75,emptyRld:6.13,deployT:1.00,bulletVel:760, recoilV:0.71,recoilDir:-14,recoilVar:35.2, recoilIncAds:0.31, spreadMax:11, adsTime:360, fireMode:'auto',
+ dmg:[{r:0,d:25}]},
+{id:'kts100',  name:'KTS100 MK8', cls:'LMG', cal:'5.56×45mm NATO', rpm:514, mag:60, tacRld:3.25,emptyRld:3.98,deployT:0.73,bulletVel:840, recoilV:0.49,recoilDir:8,  recoilVar:10.9, recoilIncAds:0.27, spreadMax:9, adsTime:320, fireMode:'auto',
+ dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
+{id:'m240l',   name:'M240L',      cls:'LMG', cal:'7.62×51mm NATO', rpm:600, mag:50, tacRld:4.25,emptyRld:5.90,deployT:1.00,bulletVel:630, recoilV:0.74,recoilDir:5,  recoilVar:40.5, recoilIncAds:0.39, spreadMax:11, adsTime:410, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
+{id:'m121a2',  name:'M121 A2',    cls:'LMG', cal:'7.62×51mm NATO', rpm:654, mag:50, tacRld:6.27,emptyRld:7.25,deployT:1.00,bulletVel:600, recoilV:0.72,recoilDir:-7, recoilVar:38.6, recoilIncAds:0.39, spreadMax:11, adsTime:390, fireMode:'auto',
+ dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
+// ── DMR ──────────────────────────────────────────────────────────────────────
+{id:'m39emr',  name:'M39 EMR',    cls:'DMR', cal:'7.62×51mm NATO', rpm:257, mag:21, tacRld:2.53,emptyRld:2.85,deployT:0.73,bulletVel:800, recoilV:1.75,recoilDir:-12,recoilVar:8.0,  recoilIncAds:0.0, spreadMax:9,  adsTime:320, fireMode:'semi',
+ dmg:[{r:0,d:40},{r:21,d:37.5},{r:75,d:33.4}]},
+{id:'lmr27',   name:'LMR27',      cls:'DMR', cal:'5.56×45mm NATO', rpm:450, mag:11, tacRld:3.03,emptyRld:3.07,deployT:0.63,bulletVel:880, recoilV:0.92,recoilDir:10, recoilVar:11.0, recoilIncAds:0.0, spreadMax:7,  adsTime:340, fireMode:'semi',
+ dmg:[{r:0,d:28.6},{r:21,d:27.3},{r:75,d:25}]},
+{id:'svk86',   name:'SVK-8.6',    cls:'DMR', cal:'.338 Lapua Mag', rpm:150, mag:11, tacRld:2.97,emptyRld:4.22,deployT:0.87,bulletVel:720, recoilV:3.01,recoilDir:-7, recoilVar:20.0, recoilIncAds:0.0, spreadMax:9,  adsTime:380, fireMode:'semi',
+ dmg:[{r:0,d:66.7},{r:9,d:59.9},{r:21,d:50}]},
+{id:'svdm',    name:'SVDM',       cls:'DMR', cal:'7.62×54mmR',     rpm:300, mag:11, tacRld:2.50,emptyRld:3.45,deployT:0.73,bulletVel:800, recoilV:1.57,recoilDir:4,  recoilVar:10.0, recoilIncAds:0.0, spreadMax:9,  adsTime:360, fireMode:'semi',
+ dmg:[{r:0,d:40},{r:21,d:37.5},{r:75,d:33.4}]},
+{id:'grtcps',  name:'GRT-CPS',    cls:'DMR', cal:'5.56×45mm NATO', rpm:360, mag:21, tacRld:2.75,emptyRld:3.28,deployT:0.63,bulletVel:800, recoilV:1.06,recoilDir:-5, recoilVar:8.0,  recoilIncAds:0.0, spreadMax:9,  adsTime:330, fireMode:'semi',
+ dmg:[{r:0,d:28.6},{r:21,d:27.3},{r:75,d:25}]},
+// ── SNIPER RIFLE ─────────────────────────────────────────────────────────────
+// Damage rises into the sweet-spot range (OHK at 100 dmg), then falls at extreme range
+{id:'m2010esr',name:'M2010 ESR',  cls:'Sniper Rifle', cal:'.300 Win Mag',    rpm:44,  mag:6,  tacRld:3.23,emptyRld:3.93,deployT:0.63,bulletVel:800, recoilV:1.50,recoilDir:-5, recoilVar:10.0, recoilIncAds:0.0, spreadMax:9, adsTime:500, fireMode:'bolt',
+ dmg:[{r:0,d:80},{r:75,d:100},{r:160,d:62.5}]},
+{id:'sv98',    name:'SV-98',      cls:'Sniper Rifle', cal:'7.62×54mmR',      rpm:37,  mag:11, tacRld:2.98,emptyRld:3.97,deployT:0.63,bulletVel:720, recoilV:1.25,recoilDir:-5, recoilVar:10.0, recoilIncAds:0.0, spreadMax:9, adsTime:520, fireMode:'bolt',
+ dmg:[{r:0,d:80},{r:54,d:100},{r:125,d:62.5}]},
+{id:'psr',     name:'PSR',        cls:'Sniper Rifle', cal:'.338 Norma Mag',  rpm:38,  mag:11, tacRld:3.35,emptyRld:4.35,deployT:0.73,bulletVel:720, recoilV:1.80,recoilDir:-4, recoilVar:12.0, recoilIncAds:0.0, spreadMax:11, adsTime:550, fireMode:'bolt',
+ dmg:[{r:0,d:80},{r:100,d:100},{r:200,d:62.5}]},
+{id:'miniscout',name:'Mini Scout',cls:'Sniper Rifle', cal:'5.56×45mm NATO',  rpm:51,  mag:11, tacRld:2.33,emptyRld:3.90,deployT:0.53,bulletVel:800, recoilV:1.00,recoilDir:-5, recoilVar:5.0,  recoilIncAds:0.0, spreadMax:7, adsTime:430, fireMode:'bolt',
+ dmg:[{r:0,d:64},{r:75,d:50}]},
+// ── SHOTGUN ──────────────────────────────────────────────────────────────────
+{id:'m87a1',   name:'M87A1',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:8, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:3.61,recoilDir:-10,recoilVar:12.0, recoilIncAds:null, spreadMax:5, adsTime:250, fireMode:'semi', pellets:16,
+ dmg:[{r:0,d:8.4},{r:9,d:7.2},{r:16,d:5.6},{r:31,d:3.8}]},
+{id:'m1014',   name:'M1014',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:7, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:2.41,recoilDir:-5, recoilVar:15.0, recoilIncAds:null, spreadMax:5, adsTime:260, fireMode:'semi', pellets:16,
+ dmg:[{r:0,d:7.2},{r:9,d:5.0},{r:16,d:3.1},{r:22,d:2.3}]},
+{id:'ks18k',   name:'18.5KS-K',   cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:9, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:1.69,recoilDir:8,  recoilVar:12.0, recoilIncAds:null, spreadMax:5, adsTime:270, fireMode:'pump', pellets:16,
+ dmg:[{r:0,d:5.0},{r:16,d:2.8},{r:22,d:2.0}]},
+{id:'db12',    name:'DB-12',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:16,tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:2.71,recoilDir:0,  recoilVar:15.0, recoilIncAds:null, spreadMax:5, adsTime:240, fireMode:'pump', pellets:16,
+ dmg:[{r:0,d:5.0},{r:16,d:3.3},{r:22,d:2.5}]},
+];
+
+// ── ADS RECOIL DECREASE FACTOR (sym.gg ADSRecoilDecreaseFactor) ──────────────
+// Controls inter-shot recoil recovery speed. retain = exp(−decF × 0.06 × interShotTime)
+// AK4D not in sym.gg dataset — defaulting to TR7 value (same cal/class)
+const RECOIL_DEC = {
+  m433:72,   b36a4:72,   sor556:72,  ak4d:104,  tr7:104,    kord6p67:55,
+  nvo228e:76, l85a3:72,  vcr2:72,
+  m4a1:57,   m277:76,    ak205:48,   m417a2:76, grtbc:57,   qbz192:57,
+  sg553r:72, sor300sc:72,
+  sgx:55,    pw5a3:55,   pw7a2:46,   umg40:57,  usg90:48,   kv9:55,
+  scw10:72,  sl9:55,     cz3a1:55,
+  l110:72,   drsiar:72,  m60:104,    rpkm:76,   m123k:72,   m250:76,
+  kts100:72, m240l:104,  m121a2:104,
+  m39emr:16, lmr27:13.7, svk86:21.5, svdm:16,   grtcps:13.7,
+  m2010esr:70, sv98:70,  psr:70,     miniscout:70,
+  m87a1:70,  m1014:21.5, ks18k:21.5, db12:70,
+};
+
+// ── ATTACHMENT DATA ───────────────────────────────────────────────────────────
+// rR        = Rm in compound formula: R_Final = Rg + Rm − Rg·Rm/100 → applied to recoilV
+//              Positive = reduces recoil; negative (linear comp) = increases recoil
+//              Source: Dr. Smiley Henry (YouTube), Sorrow's BF6 Scribbles spreadsheet
+// spreadMult= multiplier on recoilVar; linear comp 0.90 = −10% horizontal spread
+// decayBoost= fractional boost to spread-decay offset (faster bloom recovery)
+//              e.g. 0.5 → offset 1.84 × 1.5 = 2.76 (50% faster, placeholder)
+// ⚠ rR values for brakes/linear comp and decayBoost values are placeholders
+const MUZZLES=[
+  {id:'none',        name:'None',                 rR:0,   spreadMult:1,    decayBoost:0  },
+  {id:'sp_brake',    name:'Single-Port Brake',    rR:10,  spreadMult:1,    decayBoost:0  },
+  {id:'dp_brake',    name:'Double-Port Brake',    rR:10,  spreadMult:1,    decayBoost:0  },
+  {id:'comp_brake',  name:'Compensated Brake',    rR:10,  spreadMult:1,    decayBoost:0.5},
+  {id:'linear_comp', name:'Linear Comp',          rR:-10, spreadMult:0.90, decayBoost:0  },
+  {id:'flash_hider', name:'Flash Hider',          rR:0,   spreadMult:1,    decayBoost:0  },
+  {id:'flash_comp',  name:'Flash Compensator',    rR:10,  spreadMult:1,    decayBoost:0.5},
+  {id:'std_supp',    name:'Std. Suppressor',      rR:0,   spreadMult:1,    decayBoost:0  },
+  {id:'long_supp',   name:'Long Suppressor',      rR:10,  spreadMult:1,    decayBoost:0.5},
+  {id:'light_supp',  name:'Light Suppressor',     rR:10,  spreadMult:1,    decayBoost:0.5},
+  {id:'cqb_supp',    name:'CQB Suppressor',       rR:0,   spreadMult:1,    decayBoost:0  },
+];
+const BARRELS=[
+  // adsSpd: +1=faster ADS, 0=no change, -1=slower | movAcc: +1=improves moving acc tier
+  // sIncMult: multiplier on recoilIncAds; heavy barrels reduce spread buildup per shot (⚠ placeholder)
+  {id:'none',       name:'None',                  vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00},
+  {id:'basic',      name:'Basic Barrel',          vMult:1.00, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00},
+  {id:'short',      name:'Short Barrel',          vMult:0.80, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00},
+  {id:'extended',   name:'Extended Barrel',       vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00},
+  {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90},
+  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:-1, movAcc:0, decayBoost:0, sIncMult:0.90},
+  {id:'light',      name:'Light Barrel',          vMult:1.00, adsSpd:1,  movAcc:1, decayBoost:0, sIncMult:1.00},
+];
+const GRIPS=[
+  // movAcc: -1=penalty, 0=no effect  |  adsSpd: +1=faster, 0=no change
+  {id:'none',           name:'None',                rR:0,  movAcc:0,  adsSpd:0},
+  {id:'fold_vert',      name:'Folding Vertical',    rR:26, movAcc:-1, adsSpd:0},
+  {id:'alloy_vert',     name:'Alloy Vertical',      rR:26, movAcc:0,  adsSpd:0},
+  {id:'ribbed_vert',    name:'Ribbed Vertical',     rR:37, movAcc:-1, adsSpd:0},
+  {id:'6h64_vert',      name:'6H64 Vertical',       rR:44, movAcc:-1, adsSpd:0},
+  {id:'classic_vert',   name:'Classic Vertical',    rR:54, movAcc:-1, adsSpd:0},
+  {id:'fold_stubby',    name:'Folding Stubby',      rR:26, movAcc:-1, adsSpd:1},
+  {id:'ribbed_stubby',  name:'Ribbed Stubby',       rR:26, movAcc:0,  adsSpd:1},
+  {id:'canted_stubby',  name:'Canted Stubby',       rR:37, movAcc:-1, adsSpd:1},
+  {id:'stipp_stubby',   name:'Stippled Stubby',     rR:44, movAcc:-1, adsSpd:1},
+  {id:'lp_stubby',      name:'Low-Profile Stubby',  rR:54, movAcc:-1, adsSpd:1},
+  {id:'adj_angled',     name:'Adjustable Angled',   rR:20, movAcc:-1, adsSpd:1},
+  {id:'slim_angled',    name:'Slim Angled',         rR:20, movAcc:0,  adsSpd:1},
+  {id:'full_angled',    name:'Full Angled',         rR:30, movAcc:-1, adsSpd:1},
+  {id:'slim_handstop',  name:'Slim Handstop',       rR:0,  movAcc:0,  adsSpd:1},
+  {id:'cmpct_handstop', name:'Compact Handstop',    rR:0,  movAcc:0,  adsSpd:0},
+];
+// movAcc: +1 = improves moving accuracy (shifts tier toward tighter spread)
+const LASERS=[
+  {id:'none',          name:'None',          movAcc:0},
+  {id:'5mw_red',       name:'5 MW Red',      movAcc:0},
+  {id:'5mw_green',     name:'5 MW Green',    movAcc:0},
+  {id:'50mw_violet',   name:'50 MW Violet',  movAcc:1},
+  {id:'50mw_green',    name:'50 MW Green',   movAcc:0},
+  {id:'50mw_blue',     name:'50 MW Blue',    movAcc:1},
+  {id:'120mw_blue',    name:'120 MW Blue',   movAcc:1},
+  {id:'combo_red',     name:'Combo Red',     movAcc:0},
+  {id:'combo_green',   name:'Combo Green',   movAcc:0},
+  {id:'ads_taclight',  name:'ADS Taclight',  movAcc:0},
+  {id:'flashlight',    name:'Flashlight',    movAcc:0},
+  {id:'hip_taclight',  name:'HIP Taclight',  movAcc:0},
+];
+
+// Per-weapon attachment availability. barrel/barrelDef added for each weapon.
+// Omitting a slot key means all options are available for that slot.
+const WEAPON_ATTS = {
+  m433:    {muzzle:['flash_hider','linear_comp','std_supp','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','adj_angled','lp_stubby','slim_angled','classic_vert'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  b36a4:   {muzzle:['flash_hider','linear_comp','dp_brake','std_supp','comp_brake','long_supp','light_supp','cqb_supp'],barrel:['basic','heavy','extended','heavy_ext','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sor556:  {muzzle:['flash_hider','sp_brake','linear_comp','std_supp','dp_brake','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['basic','short','heavy','extended','heavy_ext'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','adj_angled','full_angled','classic_vert','lp_stubby','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  ak4d:    {muzzle:['flash_hider','linear_comp','long_supp','dp_brake','std_supp','light_supp','cqb_supp','comp_brake'],barrel:['basic','heavy','extended','heavy_ext','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','stipp_stubby','ribbed_stubby','lp_stubby','canted_stubby','slim_angled','adj_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  tr7:     {muzzle:['dp_brake','flash_hider','std_supp','linear_comp','sp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','classic_vert','lp_stubby','canted_stubby','stipp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  kord6p67:{muzzle:['sp_brake','flash_hider','linear_comp','comp_brake','std_supp','cqb_supp','long_supp','light_supp'],barrel:['basic','heavy','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','classic_vert','canted_stubby','stipp_stubby','slim_angled','full_angled','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue','ads_taclight','hip_taclight','flashlight','combo_green']},
+  nvo228e: {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','std_supp','cqb_supp','long_supp','light_supp','comp_brake'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','slim_angled','ribbed_vert','6h64_vert','classic_vert','fold_stubby','full_angled','ribbed_stubby','canted_stubby','lp_stubby','stipp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','120mw_blue','50mw_blue']},
+  l85a3:   {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','std_supp','cqb_supp','long_supp','light_supp','comp_brake'],barrel:['basic','heavy','extended','heavy_ext','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','adj_angled','classic_vert','stipp_stubby','fold_stubby','ribbed_stubby','lp_stubby','canted_stubby','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  vcr2:    {muzzle:['flash_hider','linear_comp','std_supp','sp_brake','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','fold_stubby','adj_angled','alloy_vert','ribbed_stubby','slim_angled','slim_handstop','ribbed_vert','canted_stubby','full_angled','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m4a1:    {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'light',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','classic_vert','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m277:    {muzzle:['light_supp','sp_brake','flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp'],barrel:['basic','heavy','extended','heavy_ext','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  ak205:   {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m417a2:  {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','light_supp','cqb_supp'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','classic_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  grtbc:   {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'light',grip:['fold_vert','ribbed_vert','alloy_vert','fold_stubby','6h64_vert','cmpct_handstop','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','flashlight','5mw_green','combo_red','50mw_green','50mw_blue','combo_green','120mw_blue']},
+  qbz192:  {muzzle:['flash_hider','linear_comp','std_supp'],barrel:['basic','extended'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sg553r:  {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','sp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sor300sc:{muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','cmpct_handstop','alloy_vert','ribbed_vert','fold_stubby','adj_angled','6h64_vert','slim_angled','full_angled','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sgx:     {muzzle:['flash_hider','sp_brake','linear_comp','std_supp','dp_brake','cqb_supp','long_supp','light_supp','comp_brake'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['ribbed_stubby','fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','classic_vert','lp_stubby','canted_stubby','cmpct_handstop','slim_angled','stipp_stubby'],laser:['50mw_violet','5mw_red','50mw_green','5mw_green','120mw_blue','50mw_blue']},
+  pw5a3:   {muzzle:['flash_hider','std_supp','linear_comp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  pw7a2:   {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy'],barrelDef:'basic',grip:['fold_vert','cmpct_handstop','alloy_vert','ribbed_vert','fold_stubby','slim_angled','6h64_vert','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  umg40:   {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','extended','heavy_ext','light'],barrelDef:'basic',grip:['fold_vert','cmpct_handstop','alloy_vert','ribbed_vert','fold_stubby','slim_angled','6h64_vert','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  usg90:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','light'],barrelDef:'heavy',grip:[],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  kv9:     {muzzle:['flash_hider','std_supp','sp_brake','linear_comp','cqb_supp','dp_brake','long_supp','light_supp','comp_brake'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','lp_stubby','ribbed_stubby','classic_vert','canted_stubby','stipp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  scw10:   {muzzle:['flash_hider','linear_comp','std_supp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','classic_vert','ribbed_vert','lp_stubby','6h64_vert','alloy_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sl9:     {muzzle:['flash_hider','linear_comp','std_supp','sp_brake','cqb_supp','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','heavy','extended','heavy_ext','light'],barrelDef:'basic',grip:['adj_angled','fold_stubby','lp_stubby','ribbed_stubby','canted_stubby','stipp_stubby','cmpct_handstop'],laser:['ads_taclight','hip_taclight','50mw_violet','5mw_red','5mw_green','flashlight','50mw_green','50mw_blue','combo_red','120mw_blue','combo_green']},
+  cz3a1:   {muzzle:['flash_hider','sp_brake','linear_comp','std_supp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','fold_stubby','cmpct_handstop','slim_angled','alloy_vert','ribbed_stubby','ribbed_vert','canted_stubby','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  l110:    {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  drsiar:  {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','extended','short'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m60:     {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','sp_brake','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'light',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','flashlight','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  rpkm:    {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','extended','short'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m123k:   {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','short','heavy_ext'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m250:    {muzzle:['light_supp','flash_hider','linear_comp','dp_brake','sp_brake','comp_brake','std_supp','long_supp','cqb_supp'],barrel:['heavy','heavy_ext'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  kts100:  {muzzle:['flash_hider','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','hip_taclight','ads_taclight','5mw_red','flashlight','5mw_green','50mw_green','combo_red','50mw_blue','120mw_blue','combo_green']},
+  m240l:   {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m121a2:  {muzzle:['flash_hider','std_supp','dp_brake','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['short','heavy','heavy_ext'],barrelDef:'short',grip:['fold_stubby','fold_vert','slim_handstop','alloy_vert','ribbed_stubby','slim_angled','ribbed_vert','canted_stubby','full_angled','stipp_stubby','6h64_vert','lp_stubby','classic_vert'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m39emr:  {muzzle:['flash_hider','sp_brake','light_supp','std_supp','linear_comp','cqb_supp','dp_brake','long_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  lmr27:   {muzzle:['flash_hider','linear_comp','sp_brake','std_supp','cqb_supp','long_supp','dp_brake','light_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  svk86:   {muzzle:['sp_brake','dp_brake','std_supp','flash_hider','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['basic','extended','short'],barrelDef:'extended',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','adj_angled','canted_stubby','stipp_stubby','lp_stubby','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  svdm:    {muzzle:['flash_hider','cqb_supp','linear_comp','std_supp','sp_brake','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  grtcps:  {muzzle:['flash_hider','linear_comp','std_supp','sp_brake','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'extended',grip:['fold_vert','fold_stubby','alloy_vert','ribbed_stubby','slim_angled','slim_handstop','ribbed_vert','canted_stubby','full_angled','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m2010esr:{muzzle:['sp_brake','comp_brake','flash_hider','dp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'light',grip:['full_angled','lp_stubby','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sv98:    {muzzle:['comp_brake','dp_brake','long_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['lp_stubby','full_angled','slim_angled'],laser:['50mw_green']},
+  psr:     {muzzle:['flash_hider','comp_brake','sp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended'],barrelDef:'extended',grip:['lp_stubby','full_angled','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  miniscout:{muzzle:['sp_brake','flash_hider','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['full_angled','lp_stubby','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m87a1:   {muzzle:['cqb_supp','light_supp'],grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['50mw_violet','5mw_red','50mw_blue','5mw_green','50mw_green','120mw_blue']},
+  m1014:   {muzzle:['cqb_supp','light_supp'],grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['ads_taclight','hip_taclight','flashlight']},
+  ks18k:   {muzzle:['flash_hider','dp_brake','cqb_supp','light_supp'],grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['50mw_violet','5mw_red','50mw_blue','5mw_green','50mw_green','120mw_blue']},
+  db12:    {muzzle:['flash_hider','cqb_supp'],grip:['adj_angled','slim_handstop','fold_vert','alloy_vert','fold_stubby','ribbed_vert','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+};
+
+// Moving ADS accuracy tier values (°), index 0 = tightest/best, index 6 = widest/worst
+// Default tier = 3 (0.32°). Grip penalty shifts +1 tier, blue/violet laser or light barrel shifts −1 tier.
+const MOVING_ACC_TIERS=[0.05, 0.13, 0.22, 0.32, 0.43, 0.55, 0.68];
+const DEFAULT_MOV_TIER=3;
+
+// Returns a modified copy of w with attachment stats applied.
+// Adds _label (display name with attachments), _recoilR (% reduction applied).
+function applyAttachments(w, atts) {
+  if (!w || !atts) return w;
+  const muz=MUZZLES.find(a=>a.id===atts.muzzle)??MUZZLES[0];
+  const bar=BARRELS.find(a=>a.id===atts.barrel)??BARRELS[0];
+  const grp=GRIPS.find(a=>a.id===atts.grip)??GRIPS[0];
+  const las=LASERS.find(a=>a.id===atts.laser)??LASERS[0];
+  const rG=grp.rR, rM=muz.rR;
+  // Compound formula: R_Final = Rg + Rm − Rg·Rm/100
+  // Muzzle rR now covers brakes (positive) and linear comp (negative) as Rm
+  const compoundR=+(rG+rM-(rG*rM/100)).toFixed(1);
+  // Apply compound result to recoilV
+  const newRecoilV=+(w.recoilV*(1-compoundR/100)).toFixed(3);
+  // Linear comp narrows spread variation; all other muzzles have spreadMult=1 (no change)
+  const newRecoilVar=+(w.recoilVar*(muz.spreadMult??1)).toFixed(3);
+  const tags=[muz,bar,grp,las].filter(a=>a.id!=='none').map(a=>a.name);
+  const combinedAdsSpd=(grp.adsSpd??0)+(bar.adsSpd??0);
+  const movAccShift=(grp.movAcc??0)+(las.movAcc??0)+(bar.movAcc??0);
+  const movTier=Math.min(Math.max(DEFAULT_MOV_TIER-movAccShift, 0), MOVING_ACC_TIERS.length-1);
+  const movAccDeg=MOVING_ACC_TIERS[movTier];
+  return {
+    ...w,
+    _label: tags.length ? w.name+' ('+tags.join(' · ')+')' : w.name,
+    _recoilR: compoundR,        // compound-formula reduction % for stats display
+    _decayBoost: muz.decayBoost??0,  // spread decay boost from muzzle only
+    _movAccShift: movAccShift,
+    _movAccDeg: movAccDeg,
+    _adsSpd: combinedAdsSpd,
+    recoilV: newRecoilV,
+    recoilVar: newRecoilVar,
+    recoilIncAds: w.recoilIncAds!=null ? +(w.recoilIncAds*(bar.sIncMult??1)).toFixed(3) : null,
+    bulletVel: w.bulletVel!=null ? Math.round(w.bulletVel*bar.vMult) : null,
+  };
+}
+function wLabel(w){ return (w&&w._label) ? w._label : (w?w.name:''); }
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function mulberry32(seed) {
+  let s = seed >>> 0;
+  return () => { s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s>>>15, 1|s); t = t + Math.imul(t ^ t>>>7, 61|t) ^ t; return ((t ^ t>>>14) >>> 0) / 0x100000000; };
+}
+function whash(str) { let h=0; for (let c of str) h = Math.imul(31,h) + c.charCodeAt(0) | 0; return h>>>0; }
+
+function getDmg(weapon, range) {
+  // BF6 uses a stepped zone model — no linear interpolation between breakpoints
+  const pts = weapon.dmg;
+  let d = pts[0].d;
+  for (let i = 0; i < pts.length; i++) {
+    if (range >= pts[i].r) d = pts[i].d;
+  }
+  return d;
+}
+function getBTK(weapon, range) {
+  const d = weapon.pellets ? getDmg(weapon,range)*weapon.pellets : getDmg(weapon,range);
+  return Math.ceil(100/d);
+}
+function getTTK(weapon, btk) {
+  if (!weapon.rpm) return null;
+  return Math.round((btk-1) / (weapon.rpm/60) * 1000);
+}
+function fmtTTK(ms) { return ms===null?'—':ms===0?'0 ms':ms+'ms'; }
+function maxRange(weapons) {
+  const cls = weapons.filter(Boolean).map(w=>w.cls);
+  if (cls.includes('Sniper Rifle')) return 275;
+  if (cls.includes('DMR')) return 130;
+  if (cls.includes('Shotgun')) return 55;
+  return 90;
+}
+function btkRanges(w1, w2) {
+  const cls = [w1, w2].filter(Boolean).map(w => w.cls);
+  if (cls.includes('Sniper Rifle')) return [0,25,50,100,150,200,250];
+  if (cls.includes('DMR'))          return [0,15,30,50,75,100];
+  if (cls.every(c => c === 'Shotgun')) return [0,5,10,15,20,25,30];
+  if (cls.includes('Shotgun'))      return [0,5,10,15,20,25,30,50,75];
+  return [0,10,20,30,40,50,75];
+}
+
+// ── APP STATE ─────────────────────────────────────────────────────────────────
+let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
+let selW1 = null, selW2 = null, comparing = false;
+let dmgChart = null;
+const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none'});
+let att1 = blankAtts(), att2 = blankAtts();
+
+const CLASSES = ['Assault Rifle','Carbine','SMG','LMG','DMR','Sniper Rifle','Shotgun'];
+const CLASS_SHORT = {'Assault Rifle':'AR','Carbine':'Carb','SMG':'SMG','LMG':'LMG','DMR':'DMR','Sniper Rifle':'SR','Shotgun':'SG'};
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function buildClassFilter(containerId, activeClass, onSelect) {
+  const cf = document.getElementById(containerId);
+  cf.innerHTML = '';
+  CLASSES.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'cbtn' + (c === activeClass ? ' on' : '');
+    b.textContent = CLASS_SHORT[c];
+    b.title = c;
+    b.onclick = () => onSelect(c);
+    cf.appendChild(b);
+  });
+}
+
+function buildWeaponList(containerId, selClass, activeW, slotIndex) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  const weapons = W.filter(w => w.cls === selClass);
+  if (!weapons.length) { el.innerHTML = '<div class="no-w">No weapons</div>'; return; }
+  weapons.forEach(w => {
+    const isSlot1 = w === selW1, isSlot2 = w === selW2;
+    const b = document.createElement('button');
+    b.className = 'wbtn' + (isSlot1 ? ' p1' : '') + (isSlot2 ? ' p2' : '');
+    b.textContent = w.name;
+    b.onclick = () => {
+      if (slotIndex === 0) { selW1 = w; validateAtts(att1, w); }
+      else { selW2 = w; validateAtts(att2, w); }
+      renderSidebar(); renderStats();
+    };
+    el.appendChild(b);
+  });
+}
+
+function renderSidebar() {
+  buildClassFilter('classFilter1', selClass1, c => { selClass1 = c; renderSidebar(); });
+  buildWeaponList('wList1', selClass1, selW1, 0);
+  buildAttachmentSection('attSection1', att1, selW1);
+  if (comparing) {
+    buildClassFilter('classFilter2', selClass2, c => { selClass2 = c; renderSidebar(); });
+    buildWeaponList('wList2', selClass2, selW2, 1);
+    buildAttachmentSection('attSection2', att2, selW2);
+  }
+}
+
+function validateAtts(atts, weapon) {
+  // Full reset on weapon switch, then apply per-weapon defaults
+  atts.muzzle = 'none';
+  atts.grip   = 'none';
+  atts.laser  = 'none';
+  const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
+  atts.barrel = wa?.barrelDef ?? 'basic';
+}
+
+function buildAttachmentSection(containerId, atts, weapon) {
+  const el=document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML=`<div class="sb-lbl" style="margin-bottom:6px">Attachments</div>`;
+  const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
+  [{key:'muzzle',lbl:'Muzzle',data:MUZZLES},
+   {key:'barrel',lbl:'Barrel',data:BARRELS},
+   {key:'grip',  lbl:'Grip',  data:GRIPS},
+   {key:'laser', lbl:'Laser', data:LASERS}].forEach(({key,lbl,data})=>{
+    const isBarrel = key === 'barrel';
+    const allowedIds = wa?.[key]; // undefined = no restriction
+    const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
+    let visible = allowedSet ? data.filter(a => allowedSet.has(a.id)) : data;
+    if (isBarrel) visible = visible.filter(a => a.id !== 'none'); // barrels always required
+    if (visible.length <= (isBarrel ? 0 : 1)) return; // hide slot if nothing to show
+    const row=document.createElement('div'); row.className='att-row';
+    const span=document.createElement('span'); span.className='att-lbl'; span.textContent=lbl;
+    const sel=document.createElement('select'); sel.className='att-sel';
+    visible.forEach(a=>{
+      const opt=document.createElement('option'); opt.value=a.id; opt.textContent=a.name;
+      if(atts[key]===a.id) opt.selected=true;
+      sel.appendChild(opt);
+    });
+    sel.onchange=()=>{ atts[key]=sel.value; renderStats(); };
+    row.appendChild(span); row.appendChild(sel); el.appendChild(row);
+  });
+}
+
+function renderStats() {
+  const hasAny = selW1 || selW2;
+  document.getElementById('emptyState').style.display = hasAny?'none':'flex';
+  document.getElementById('statsArea').style.display = hasAny?'flex':'none';
+  if (hasAny) document.getElementById('statsArea').style.flexDirection='column';
+  if (!hasAny) return;
+  renderOverview();
+  renderChart();
+  renderBTK();
+  renderRecoil();
+}
+
+function renderOverview() {
+  const w1=selW1?applyAttachments(selW1,att1):null;
+  const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
+  // header
+  const hdr = document.getElementById('wHeader');
+  hdr.innerHTML = '';
+  if (w1) {
+    const s=document.createElement('span'); s.className='wname'; s.textContent=wLabel(w1); hdr.appendChild(s);
+    const b=document.createElement('span'); b.className='wbadge'; b.textContent=w1.cls; hdr.appendChild(b);
+  }
+  if (w2) {
+    const vs=document.createElement('span'); vs.style.cssText='color:var(--muted);margin:0 6px'; vs.textContent='vs'; hdr.appendChild(vs);
+    const s=document.createElement('span'); s.className='wname2'; s.textContent=wLabel(w2); hdr.appendChild(s);
+    const b=document.createElement('span'); b.className='wbadge'; b.style.borderColor='var(--accent2)'; b.style.color='var(--accent2)'; b.textContent=w2.cls; hdr.appendChild(b);
+  }
+
+  // stats
+  const grid=document.getElementById('sGrid');
+  grid.innerHTML='';
+  const primary = w1||w2;
+  const fields=[
+    {lbl:'Base Dmg',   compute:w=>getDmg(w,0), unit:'',    fmt:v=>v.toFixed(1), higherBetter:true},
+    {lbl:'Fire Rate',  k:'rpm',                unit:'RPM', fmt:v=>v??'—'},
+    {lbl:'ADS Time',   k:'adsTime',            unit:'ms',  est:true, fmt:v=>v??'—'},
+    {lbl:'Bullet Vel', k:'bulletVel',          unit:'m/s', fmt:v=>v??'—'},
+    {lbl:'Mag Size',   k:'mag',                unit:'rds', fmt:v=>v},
+    {lbl:'Tac Reload', k:'tacRld',             unit:'s',   fmt:v=>v??'—'},
+    {lbl:'Deploy',     k:'deployT',            unit:'s',   fmt:v=>v??'—'},
+    {lbl:'Recoil/Shot',k:'recoilV',             unit:'°',   fmt:v=>v.toFixed(2)},
+    {lbl:'Recoil Dir', k:'recoilDir',           unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true},
+    {lbl:'Move ADS',   k:'_movAccDeg',          unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true,
+      tooltip:'ADS spread while moving. Default 0.32°; improved by blue/violet lasers and light barrel; worsened by most vertical grips.'},
+  ];
+  if (primary.pellets) fields.splice(4,0,{lbl:'Pellets',k:'pellets',unit:'',fmt:v=>v});
+
+  // Qualitative attachment mobility labels
+  const adsSpdLabel=v=>v>0?'↑ Faster':v<0?'↓ Slower':'—';
+  const adsSpdColor=v=>v>0?'var(--green)':v<0?'var(--red)':'var(--muted)';
+  const qFields=[
+    {lbl:'ADS Speed', key:'_adsSpd', fmtFn:adsSpdLabel, colFn:adsSpdColor},
+  ];
+
+  fields.forEach(f=>{
+    const card=document.createElement('div'); card.className='scard';
+    card.innerHTML=`<div class="slbl">${f.lbl}</div>`;
+    const getVal=w=>f.compute?f.compute(w):w?.[f.k];
+    if (!w2||!comparing) {
+      const v=getVal(w1||w2);
+      card.innerHTML+=`<div class="sval c1">${f.fmt(v)}<span class="sunit">${f.unit}</span>${f.est?'<span class="sest">est</span>':''}</div>`;
+    } else {
+      const v1=w1?getVal(w1):null, v2=w2?getVal(w2):null;
+      const higherBetter=f.higherBetter||['rpm','bulletVel','mag'].includes(f.k);
+      const lowerBetter=f.lowerBetter||['adsTime','tacRld','deployT','recoilV'].includes(f.k);
+      let diff='';
+      if (v1!=null&&v2!=null&&v1!==v2) {
+        if (f.absDiff) {
+          const delta=Math.round(v2-v1);
+          diff=`<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta>0?'+':''}${delta}°</span>`;
+        } else {
+          const pct=Math.round(Math.abs(v2-v1)/Math.max(Math.abs(v1),0.001)*100);
+          const w2better=(higherBetter&&v2>v1)||(lowerBetter&&v2<v1);
+          diff=`<span class="diff ${w2better?'d-up':'d-dn'}">${w2better?'+':'-'}${pct}%</span>`;
+        }
+      }
+      card.innerHTML+=`<div class="scmp"><span class="sval c1">${v1!=null?f.fmt(v1):'—'}<span class="sunit">${f.unit}</span>${f.est&&!w2?'<span class="sest">est</span>':''}</span><span class="sval c2">${v2!=null?f.fmt(v2):'—'}<span class="sunit">${f.unit}</span></span>${diff}</div>`;
+    }
+    grid.appendChild(card);
+  });
+
+  // Qualitative mobility fields — only render when at least one weapon has a non-neutral value
+  qFields.forEach(f=>{
+    const v1=w1?.[f.key]??0, v2=w2?.[f.key]??0;
+    if (v1===0 && v2===0) return; // skip if no effect on either weapon
+    const card=document.createElement('div'); card.className='scard';
+    card.innerHTML=`<div class="slbl">${f.lbl}</div>`;
+    if (!w2||!comparing) {
+      const v=w1?v1:v2;
+      card.innerHTML+=`<div class="sval" style="color:${f.colFn(v)};font-size:0.85rem">${f.fmtFn(v)}</div>`;
+    } else {
+      card.innerHTML+=`<div class="scmp"><span class="sval" style="color:${f.colFn(v1)};font-size:0.85rem">${f.fmtFn(v1)}</span><span class="sval" style="color:${f.colFn(v2)};font-size:0.85rem">${f.fmtFn(v2)}</span></div>`;
+    }
+    grid.appendChild(card);
+  });
+}
+
+function renderChart() {
+  // Register custom positioner once: pins tooltip near the top of the plot area
+  if (!Chart.Tooltip.positioners.topPin) {
+    Chart.Tooltip.positioners.topPin = function(elements, eventPos) {
+      const avg = Chart.Tooltip.positioners.average.call(this, elements, eventPos);
+      if (!avg) return false;
+      return { x: avg.x, y: this.chart.chartArea.top + 28 };
+    };
+  }
+
+  const w1=selW1?applyAttachments(selW1,att1):null;
+  const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
+  const mr=maxRange([w1,w2]);
+  const labels=[]; for(let r=0;r<=mr;r++) labels.push(r);
+
+  function buildDs(w, color, label) {
+    return { label, data:labels.map(r=>+(getDmg(w,r).toFixed(2))), borderColor:color, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0, stepped:'before' };
+  }
+  // BTK threshold lines
+  const w=w1||w2; const maxD=w.pellets?getDmg(w,0)*w.pellets:getDmg(w,0);
+  const thresholds=[]; const seen=new Set();
+  for(let r=0;r<=mr;r++) { const btk=getBTK(w,r); if(!seen.has(btk)){seen.add(btk);thresholds.push({btk,dmg:100/btk});} }
+  const threshDs = thresholds.slice(0,6).map(t=>({
+    label:`${t.btk}BTK`, data:labels.map(()=>+(100/t.btk).toFixed(2)),
+    borderColor:'rgba(150,150,150,0.18)', backgroundColor:'transparent',
+    borderWidth:1, borderDash:[4,4], pointRadius:0, tension:0
+  }));
+
+  const datasets=[...threshDs];
+  if (w1) datasets.push(buildDs(w1,'#c9a227',wLabel(w1)));
+  if (w2) datasets.push(buildDs(w2,'#4d94d0',wLabel(w2)));
+
+  // Populate inline HTML legend (replaces Chart.js legend)
+  const legEl=document.getElementById('dmgLegend');
+  if (legEl) {
+    legEl.innerHTML='';
+    const mkLeg=(name,col)=>`<span style="display:flex;align-items:center;gap:5px;font-size:0.72rem;color:var(--text)"><span style="display:inline-block;width:18px;height:2px;background:${col};border-radius:1px"></span>${name}</span>`;
+    if (w1) legEl.innerHTML+=mkLeg(wLabel(w1),'#c9a227');
+    if (w2) legEl.innerHTML+=mkLeg(wLabel(w2),'#4d94d0');
+  }
+
+  const ctx=document.getElementById('dmgChart');
+  if (dmgChart) dmgChart.destroy();
+  dmgChart=new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets},
+    options:{
+      responsive:true, maintainAspectRatio:false, animation:false,
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'topPin',yAlign:'top',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.datasetIndex===datasets.length-1&&w2?w2:w1; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${i.dataset.label}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
+      scales:{
+        x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
+        y:{min:0,max:100,title:{display:true,text:'Damage per shot',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a'},grid:{color:'rgba(40,48,48,0.6)'}}
+      }
+    }
+  });
+}
+
+function renderBTK() {
+  const w1=selW1?applyAttachments(selW1,att1):null;
+  const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
+  const ranges=btkRanges(w1, w2);
+  let html='<table class="btk-tbl"><thead><tr><th>Range</th>';
+  if(w1) html+=`<th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">TTK</th>`;
+  if(w2) html+=`<th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">TTK</th>`;
+  html+='</tr></thead><tbody>';
+  let prevBTK1=null,prevBTK2=null;
+  ranges.forEach(r=>{
+    html+=`<tr><td class="rng">${r}m</td>`;
+    if(w1){const b=getBTK(w1,r),t=getTTK(w1,b),chg=prevBTK1!==null&&b!==prevBTK1;html+=`<td class="bv${chg?' bchg':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK1=b;}
+    if(w2){const b=getBTK(w2,r),t=getTTK(w2,b),chg=prevBTK2!==null&&b!==prevBTK2;html+=`<td class="bv${chg?' bchg2':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK2=b;}
+    html+='</tr>';
+  });
+  html+='</tbody></table>';
+  document.getElementById('btkArea').innerHTML=html;
+}
+
+function genRecoilPts(weapon,shots=20) {
+  const rng=mulberry32(whash(weapon.id));
+  const pts=[{x:0,y:0}];
+  const decF=RECOIL_DEC[weapon.id]??72;
+  const interShotTime=60/(weapon.rpm??600);
+  const retain=Math.exp(-300/decF*interShotTime);
+  let cx=0,cy=0;
+  for(let i=1;i<shots;i++){
+    const dir=-weapon.recoilDir*Math.PI/180;
+    const spread=((rng()*2-1)*(weapon.recoilVar/2))*Math.PI/180;
+    const angle=dir+spread;
+    const mag=weapon.recoilV*(0.8+rng()*0.4);
+    cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
+    pts.push({x:cx,y:cy});
+    if(i<shots-1){cx*=retain;cy*=retain;}
+  }
+  return pts;
+}
+function drawRecoilFixed(canvas, weapon1, weapon2) {
+  const ctx = canvas.getContext('2d');
+  const CW = canvas.width, CH = canvas.height;
+  const PL=28, PR=8, PT=8, PB=18;
+  const PW=CW-PL-PR, PH=CH-PT-PB;
+  const N=20;
+
+  const weapons=[weapon1,weapon2].filter(Boolean);
+
+  // ── Fixed scale ─────────────────────────────────────────────────────────────
+  const RC_H    = 3.0;  // ±3° horizontal
+  const YMIN    = -0.5;
+  const RC_YMAX = 5.5;  // −0.5°–5.5° vertical
+
+  const toX  =xDeg=>PL+(xDeg+RC_H)/(2*RC_H)*PW;
+  const toY  =yDeg=>PT+PH-((yDeg-YMIN)/(RC_YMAX-YMIN))*PH;
+
+  // ── Background ─────────────────────────────────────────────────────────────
+  ctx.fillStyle='#080d0d'; ctx.fillRect(0,0,CW,CH);
+
+  // ── Grid ───────────────────────────────────────────────────────────────────
+  const vMin1=Math.ceil(YMIN), vMax1=Math.floor(RC_YMAX);
+  const hMin1=Math.ceil(-RC_H), hMax1=Math.floor(RC_H);
+  // Minor lines every 1°
+  ctx.strokeStyle='rgba(40,52,52,0.6)'; ctx.lineWidth=0.4;
+  for (let v=vMin1;v<=vMax1;v++) {
+    const y=toY(v); ctx.beginPath(); ctx.moveTo(PL,y); ctx.lineTo(PL+PW,y); ctx.stroke();
+  }
+  for (let h=hMin1;h<=hMax1;h++) {
+    const x=toX(h); ctx.beginPath(); ctx.moveTo(x,PT); ctx.lineTo(x,PT+PH); ctx.stroke();
+  }
+  const H_GRID=hMax1;
+
+  // ── 0° axes (brighter than dim grid) ───────────────────────────────────────
+  ctx.strokeStyle='rgba(150,165,165,0.6)'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(toX(0),PT); ctx.lineTo(toX(0),PT+PH); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(PL,toY(0)); ctx.lineTo(PL+PW,toY(0)); ctx.stroke();
+
+  // ── Origin crosshair ───────────────────────────────────────────────────────
+  const ox=toX(0), oy=toY(0);
+  ctx.strokeStyle='rgba(255,255,255,0.4)'; ctx.lineWidth=0.8;
+  ctx.beginPath(); ctx.moveTo(ox-6,oy); ctx.lineTo(ox+6,oy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(ox,oy-6); ctx.lineTo(ox,oy+6); ctx.stroke();
+
+  // ── Axis labels ─────────────────────────────────────────────────────────────
+  ctx.fillStyle='rgba(100,120,120,0.75)'; ctx.font='9px sans-serif';
+  ctx.textAlign='right'; ctx.textBaseline='middle';
+  for (let v=vMin1;v<=vMax1;v++) ctx.fillText(v+'°',PL-3,toY(v));
+  ctx.textAlign='center'; ctx.textBaseline='top';
+  for (let h=hMin1;h<=hMax1;h++) {
+    if (h!==0) ctx.fillText(h+'°',toX(h),PT+PH+3);
+  }
+
+  // ── Clipped drawing ─────────────────────────────────────────────────────────
+  ctx.save();
+  ctx.beginPath(); ctx.rect(PL,PT,PW,PH); ctx.clip();
+
+  const cols=['#c9a227','#4d94d0'];
+  const drawOrder=[weapon1,weapon2].filter(Boolean);
+
+  // Pass 0 — Spray cloud (12 simulated runs as semi-transparent dots) ─────────
+  // Each run uses a different seed so the cloud shows the natural shot scatter.
+  const CLOUD_RUNS=12;
+  drawOrder.forEach((w)=>{
+    const col=cols[(w===weapon1)?0:1];
+    const decF=RECOIL_DEC[w.id]??72;
+    const retain=Math.exp(-300/decF*(60/(w.rpm??600)));
+    for(let s=1;s<=CLOUD_RUNS;s++){
+      const rng=mulberry32((whash(w.id)^(s*0x9e3779b9))>>>0);
+      let cx=0,cy=0;
+      for(let i=1;i<N;i++){
+        const dir=-w.recoilDir*Math.PI/180;
+        const spread=((rng()*2-1)*(w.recoilVar/2))*Math.PI/180;
+        const angle=dir+spread;
+        const mag=w.recoilV*(0.8+rng()*0.4);
+        cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
+        ctx.beginPath();
+        ctx.arc(toX(cx),toY(cy),2,0,Math.PI*2);
+        ctx.fillStyle=col+'38'; ctx.fill();
+        if(i<N-1){cx*=retain;cy*=retain;}
+      }
+    }
+  });
+
+  // Pass 1 — primary run dots (no connecting line) ──────────────────────────
+  drawOrder.forEach((w)=>{
+    const col=cols[(w===weapon1)?0:1];
+    const pts=genRecoilPts(w,N);
+    pts.forEach((p,i)=>{
+      ctx.beginPath();
+      ctx.arc(toX(p.x),toY(p.y),i===0?4:2.5,0,Math.PI*2);
+      ctx.fillStyle=col; ctx.fill();
+    });
+  });
+
+  ctx.restore();
+  return {H:RC_H, yMin:YMIN, yMax:RC_YMAX};
+}
+
+function renderRecoil() {
+  const w1=selW1?applyAttachments(selW1,att1):null;
+  const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
+  const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2);
+  const noteEl=document.querySelector('.rc-note');
+  if (noteEl&&axis) noteEl.textContent=`Faded dots = 12 simulated spray runs showing natural shot scatter. Solid path = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
+
+  // Legend
+  const leg=document.getElementById('rcLegend');
+  leg.innerHTML='';
+  [[w1,'#c9a227'],[w2,'#4d94d0']].filter(([w])=>w).forEach(([w,col])=>{
+    leg.innerHTML+=`<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${wLabel(w)}</span></div>`;
+  });
+
+  // stats
+  const w=w1||w2;
+  const rRStr=w=>{
+    if(!w) return null;
+    const vr=w._recoilR??0;
+    if(vr===0) return null;
+    return (vr>0?'−':'+')+Math.abs(Math.round(vr))+'%';
+  };
+  const stats=[
+    {lbl:'Vertical / Shot',   val1:w1?w1.recoilV.toFixed(2)+'°':null,    val2:w2?w2.recoilV.toFixed(2)+'°':null,   bar1:w1?w1.recoilV/3:0,          bar2:w2?w2.recoilV/3:0,          col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Recoil Reduction',  val1:rRStr(w1),                              val2:rRStr(w2),                            bar1:w1?(w1._recoilR??0)/100:0,  bar2:w2?(w2._recoilR??0)/100:0,  col1:'#56c464',col2:'#56c464'},
+    {lbl:'Direction',         val1:w1?((-w1.recoilDir)>=0?'+':'')+(-w1.recoilDir)+'°':null, val2:w2?((-w2.recoilDir)>=0?'+':'')+(-w2.recoilDir)+'°':null, bar1:w1?(-w1.recoilDir+90)/180:0, bar2:w2?(-w2.recoilDir+90)/180:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Variation (±)',     val1:w1?w1.recoilVar.toFixed(1)+'°':null,   val2:w2?w2.recoilVar.toFixed(1)+'°':null, bar1:w1?w1.recoilVar/90:0,       bar2:w2?w2.recoilVar/90:0,       col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Spread Inc/Shot',   val1:w1&&w1.recoilIncAds!=null?w1.recoilIncAds+'°':null, val2:w2&&w2.recoilIncAds!=null?w2.recoilIncAds+'°':null, bar1:w1&&w1.recoilIncAds!=null?w1.recoilIncAds:0, bar2:w2&&w2.recoilIncAds!=null?w2.recoilIncAds:0, col1:'#c9a227',col2:'#4d94d0'},
+  ];
+  let html='';
+  stats.forEach(s=>{
+    if(s.val1===null&&s.val2===null) return;
+    html+=`<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1,s.val2].filter(Boolean).join(' / ')}</span></div>`;
+    if(s.val1!=null){html+=`<div class="rc-bar"><div class="rc-fill" style="width:${Math.min(s.bar1*100,100).toFixed(1)}%;background:${s.col1}"></div></div>`;}
+    if(s.val2!=null){html+=`<div class="rc-bar"><div class="rc-fill" style="width:${Math.min(s.bar2*100,100).toFixed(1)}%;background:${s.col2}"></div></div>`;}
+    html+='</div>';
+  });
+  document.getElementById('rcStats').innerHTML=html;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.getElementById('cmpBtn').onclick = () => {
+  comparing=!comparing;
+  document.getElementById('cmpBtn').classList.toggle('on',comparing);
+  document.getElementById('cmpSection').style.display=comparing?'block':'none';
+  if(!comparing) { selW2=null; att2=blankAtts(); }
+  renderSidebar(); renderStats();
+};
+
+renderSidebar();
+renderStats();
+</script>
+</body>
+</html>
