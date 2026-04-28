@@ -162,7 +162,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
           <div>
             <canvas id="rcMain" class="rcv" width="362" height="362"></canvas>
             <div class="rc-legend" id="rcLegend"></div>
-            <div class="rc-note">Shaded cone = spread envelope (ADS bloom + recoil variation).</div>
+            <div class="rc-note"></div>
           </div>
           <div class="rc-stats" id="rcStats"></div>
         </div>
@@ -285,6 +285,24 @@ const W = [
  dmg:[{r:0,d:5.0},{r:16,d:3.3},{r:22,d:2.5}]},
 ];
 
+// ── ADS RECOIL AMOUNT MULTIPLIER (sym.gg ADSRecoilAmountMultiplier) ──────────
+// Used in tier formula: effectiveRecoilV = recoilV × mult^recoilTier
+// recoilV in W array = tier-0 baseline (no grip, no recoil-affecting muzzle)
+// AK4D not in sym.gg — using TR7 value (same cal/class)
+const RECOIL_MULT = {
+  m433:0.945,  b36a4:0.94,   sor556:0.9317, ak4d:0.9492,  tr7:0.9492,
+  kord6p67:0.94, nvo228e:0.9392, l85a3:0.9358, vcr2:0.9475,
+  m4a1:0.9425, m277:0.9433,  ak205:0.9292,  m417a2:0.9392, grtbc:0.94,
+  qbz192:0.9375, sg553r:0.94, sor300sc:0.9342,
+  sgx:0.9383,  pw5a3:0.9358, pw7a2:0.9375,  umg40:0.9308, usg90:0.9367,
+  kv9:0.9475,  scw10:0.9442, sl9:0.9317,    cz3a1:0.9442,
+  l110:0.94,   drsiar:0.9425, m60:0.9375,   rpkm:0.9333,  m123k:0.945,
+  m250:0.9425, kts100:0.9283, m240l:0.9433, m121a2:0.9458,
+  m39emr:0.94, lmr27:0.94,   svk86:0.94,   svdm:0.94,    grtcps:0.94,
+  m2010esr:0.94, sv98:0.94,  psr:0.94,     miniscout:0.94,
+  m87a1:0.94,  m1014:0.94,   ks18k:0.94,   db12:0.94,
+};
+
 // ── ADS RECOIL DECREASE FACTOR (sym.gg ADSRecoilDecreaseFactor) ──────────────
 // Controls inter-shot recoil recovery speed. retain = exp(−decF × 0.06 × interShotTime)
 // AK4D not in sym.gg dataset — defaulting to TR7 value (same cal/class)
@@ -303,25 +321,24 @@ const RECOIL_DEC = {
 };
 
 // ── ATTACHMENT DATA ───────────────────────────────────────────────────────────
-// rR        = Rm in compound formula: R_Final = Rg + Rm − Rg·Rm/100 → applied to recoilV
-//              Positive = reduces recoil; negative (linear comp) = increases recoil
-//              Source: Dr. Smiley Henry (YouTube), Sorrow's BF6 Scribbles spreadsheet
+// tierMod   = additive modifier to the weapon's recoil tier (muzzles only)
+//              effectiveRecoilV = recoilV × RECOIL_MULT[weapon]^(gripTier + tierMod)
+//              +1 (brakes): slightly reduces recoilV (tradeoff: sway/other negatives)
+//               0 (suppressors, flash hider, linear comp): no direct recoil tier change
 // spreadMult= multiplier on recoilVar; linear comp 0.90 = −10% horizontal spread
-// decayBoost= fractional boost to spread-decay offset (faster bloom recovery)
-//              e.g. 0.5 → offset 1.84 × 1.5 = 2.76 (50% faster, placeholder)
-// ⚠ rR values for brakes/linear comp and decayBoost values are placeholders
+// decayBoost= fractional boost to bloom spread-decay offset (faster recovery)
 const MUZZLES=[
-  {id:'none',        name:'None',                 rR:0,   spreadMult:1,    decayBoost:0  },
-  {id:'sp_brake',    name:'Single-Port Brake',    rR:10,  spreadMult:1,    decayBoost:0  },
-  {id:'dp_brake',    name:'Double-Port Brake',    rR:10,  spreadMult:1,    decayBoost:0  },
-  {id:'comp_brake',  name:'Compensated Brake',    rR:10,  spreadMult:1,    decayBoost:0.5},
-  {id:'linear_comp', name:'Linear Comp',          rR:-10, spreadMult:0.90, decayBoost:0  },
-  {id:'flash_hider', name:'Flash Hider',          rR:0,   spreadMult:1,    decayBoost:0  },
-  {id:'flash_comp',  name:'Flash Compensator',    rR:10,  spreadMult:1,    decayBoost:0.5},
-  {id:'std_supp',    name:'Std. Suppressor',      rR:0,   spreadMult:1,    decayBoost:0  },
-  {id:'long_supp',   name:'Long Suppressor',      rR:10,  spreadMult:1,    decayBoost:0.5},
-  {id:'light_supp',  name:'Light Suppressor',     rR:10,  spreadMult:1,    decayBoost:0.5},
-  {id:'cqb_supp',    name:'CQB Suppressor',       rR:0,   spreadMult:1,    decayBoost:0  },
+  {id:'none',        name:'None',                 tierMod:0,  spreadMult:1,    decayBoost:0  },
+  {id:'sp_brake',    name:'Single-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0  },
+  {id:'dp_brake',    name:'Double-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0  },
+  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.5},
+  {id:'linear_comp', name:'Linear Comp',          tierMod:0,  spreadMult:0.90, decayBoost:0  },
+  {id:'flash_hider', name:'Flash Hider',          tierMod:0,  spreadMult:1,    decayBoost:0  },
+  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.5},
+  {id:'std_supp',    name:'Std. Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0  },
+  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.5},
+  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.5},
+  {id:'cqb_supp',    name:'CQB Suppressor',       tierMod:0,  spreadMult:1,    decayBoost:0  },
 ];
 const BARRELS=[
   // adsSpd: +1=faster ADS, 0=no change, -1=slower | movAcc: +1=improves moving acc tier
@@ -335,23 +352,24 @@ const BARRELS=[
   {id:'light',      name:'Light Barrel',          vMult:1.00, adsSpd:1,  movAcc:1, decayBoost:0, sIncMult:1.00},
 ];
 const GRIPS=[
+  // tier = recoil tier contribution (0=no effect … 5=max reduction)
   // movAcc: -1=penalty, 0=no effect  |  adsSpd: +1=faster, 0=no change
-  {id:'none',           name:'None',                rR:0,  movAcc:0,  adsSpd:0},
-  {id:'fold_vert',      name:'Folding Vertical',    rR:26, movAcc:-1, adsSpd:0},
-  {id:'alloy_vert',     name:'Alloy Vertical',      rR:26, movAcc:0,  adsSpd:0},
-  {id:'ribbed_vert',    name:'Ribbed Vertical',     rR:37, movAcc:-1, adsSpd:0},
-  {id:'6h64_vert',      name:'6H64 Vertical',       rR:44, movAcc:-1, adsSpd:0},
-  {id:'classic_vert',   name:'Classic Vertical',    rR:54, movAcc:-1, adsSpd:0},
-  {id:'fold_stubby',    name:'Folding Stubby',      rR:26, movAcc:-1, adsSpd:1},
-  {id:'ribbed_stubby',  name:'Ribbed Stubby',       rR:26, movAcc:0,  adsSpd:1},
-  {id:'canted_stubby',  name:'Canted Stubby',       rR:37, movAcc:-1, adsSpd:1},
-  {id:'stipp_stubby',   name:'Stippled Stubby',     rR:44, movAcc:-1, adsSpd:1},
-  {id:'lp_stubby',      name:'Low-Profile Stubby',  rR:54, movAcc:-1, adsSpd:1},
-  {id:'adj_angled',     name:'Adjustable Angled',   rR:20, movAcc:-1, adsSpd:1},
-  {id:'slim_angled',    name:'Slim Angled',         rR:20, movAcc:0,  adsSpd:1},
-  {id:'full_angled',    name:'Full Angled',         rR:30, movAcc:-1, adsSpd:1},
-  {id:'slim_handstop',  name:'Slim Handstop',       rR:0,  movAcc:0,  adsSpd:1},
-  {id:'cmpct_handstop', name:'Compact Handstop',    rR:0,  movAcc:0,  adsSpd:0},
+  {id:'none',           name:'None',                tier:0, movAcc:0,  adsSpd:0},
+  {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0},
+  {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0},
+  {id:'ribbed_vert',    name:'Ribbed Vertical',     tier:3, movAcc:-1, adsSpd:0},
+  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0},
+  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0},
+  {id:'fold_stubby',    name:'Folding Stubby',      tier:2, movAcc:-1, adsSpd:1},
+  {id:'ribbed_stubby',  name:'Ribbed Stubby',       tier:2, movAcc:0,  adsSpd:1},
+  {id:'canted_stubby',  name:'Canted Stubby',       tier:3, movAcc:-1, adsSpd:1},
+  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1},
+  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1},
+  {id:'adj_angled',     name:'Adjustable Angled',   tier:1, movAcc:-1, adsSpd:1},
+  {id:'slim_angled',    name:'Slim Angled',         tier:1, movAcc:0,  adsSpd:1},
+  {id:'full_angled',    name:'Full Angled',         tier:3, movAcc:-1, adsSpd:1},
+  {id:'slim_handstop',  name:'Slim Handstop',       tier:0, movAcc:0,  adsSpd:1},
+  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0},
 ];
 // movAcc: +1 = improves moving accuracy (shifts tier toward tighter spread)
 const LASERS=[
@@ -428,19 +446,18 @@ const MOVING_ACC_TIERS=[0.05, 0.13, 0.22, 0.32, 0.43, 0.55, 0.68];
 const DEFAULT_MOV_TIER=3;
 
 // Returns a modified copy of w with attachment stats applied.
-// Adds _label (display name with attachments), _recoilR (% reduction applied).
+// Adds _label (display name with attachments), _recoilR (% change applied).
 function applyAttachments(w, atts) {
   if (!w || !atts) return w;
   const muz=MUZZLES.find(a=>a.id===atts.muzzle)??MUZZLES[0];
   const bar=BARRELS.find(a=>a.id===atts.barrel)??BARRELS[0];
   const grp=GRIPS.find(a=>a.id===atts.grip)??GRIPS[0];
   const las=LASERS.find(a=>a.id===atts.laser)??LASERS[0];
-  const rG=grp.rR, rM=muz.rR;
-  // Compound formula: R_Final = Rg + Rm − Rg·Rm/100
-  // Muzzle rR now covers brakes (positive) and linear comp (negative) as Rm
-  const compoundR=+(rG+rM-(rG*rM/100)).toFixed(1);
-  // Apply compound result to recoilV
-  const newRecoilV=+(w.recoilV*(1-compoundR/100)).toFixed(3);
+  // Tier formula: effectiveRecoilV = recoilV × mult^(gripTier + muzzleTierMod)
+  const totalTier=(grp.tier??0)+(muz.tierMod??0);
+  const mult=RECOIL_MULT[w.id]??0.94;
+  const newRecoilV=+(w.recoilV*Math.pow(mult,totalTier)).toFixed(3);
+  const recoilRPct=+(100*(1-Math.pow(mult,totalTier))).toFixed(1);
   // Linear comp narrows spread variation; all other muzzles have spreadMult=1 (no change)
   const newRecoilVar=+(w.recoilVar*(muz.spreadMult??1)).toFixed(3);
   const tags=[muz,bar,grp,las].filter(a=>a.id!=='none').map(a=>a.name);
@@ -451,7 +468,7 @@ function applyAttachments(w, atts) {
   return {
     ...w,
     _label: tags.length ? w.name+' ('+tags.join(' · ')+')' : w.name,
-    _recoilR: compoundR,        // compound-formula reduction % for stats display
+    _recoilR: recoilRPct,       // % reduction (positive) or increase (negative) for stats display
     _decayBoost: muz.decayBoost??0,  // spread decay boost from muzzle only
     _movAccShift: movAccShift,
     _movAccDeg: movAccDeg,
@@ -797,9 +814,9 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
   const weapons=[weapon1,weapon2].filter(Boolean);
 
   // ── Fixed scale ─────────────────────────────────────────────────────────────
-  const RC_H    = 3.0;  // ±3° horizontal
+  const RC_H    = 4.0;  // ±4° horizontal
   const YMIN    = -0.5;
-  const RC_YMAX = 5.5;  // −0.5°–5.5° vertical
+  const RC_YMAX = 7.5;  // −0.5°–7.5° vertical
 
   const toX  =xDeg=>PL+(xDeg+RC_H)/(2*RC_H)*PW;
   const toY  =yDeg=>PT+PH-((yDeg-YMIN)/(RC_YMAX-YMIN))*PH;
@@ -840,6 +857,38 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
     if (h!==0) ctx.fillText(h+'°',toX(h),PT+PH+3);
   }
 
+  // ── Bloom simulation ────────────────────────────────────────────────────────
+  // Returns ADS bloom radius (degrees) at each shot [0..shotCount].
+  // Accounts for recoilIncAds (heavy barrel reduces this) and _decayBoost
+  // (lightened suppressor / compensated brake speed up bloom recovery).
+  function simulateBloom(w, shotCount) {
+    const sInc=w.recoilIncAds??0;
+    const sMax=w.spreadMax??99;
+    const baseline=0.05;
+    if(sInc===0) return Array(shotCount+1).fill(baseline);
+    const coef=1.22, exp_=2.5;
+    const offset=1.84*(1+(w._decayBoost??0));
+    const secBetweenShots=60/(w.rpm??600);
+    const dt=1/60;
+    const clamp=v=>Math.min(Math.max(v,baseline),sMax);
+    let spread=baseline;
+    const spreads=[spread];
+    for(let shot=1;shot<=shotCount;shot++){
+      spread=clamp(spread+sInc);
+      spreads.push(spread);
+      if(shot<shotCount){
+        let rem=secBetweenShots;
+        while(rem>1e-12){
+          const step=Math.min(dt,rem);
+          const delta=Math.max(spread-baseline,0);
+          spread=clamp(spread-step*(coef*Math.pow(delta,exp_)+offset));
+          rem-=step;
+        }
+      }
+    }
+    return spreads;
+  }
+
   // ── Clipped drawing ─────────────────────────────────────────────────────────
   ctx.save();
   ctx.beginPath(); ctx.rect(PL,PT,PW,PH); ctx.clip();
@@ -847,15 +896,19 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
   const cols=['#c9a227','#4d94d0'];
   const drawOrder=[weapon1,weapon2].filter(Boolean);
 
-  // Pass 0 — Spray cloud (12 simulated runs as semi-transparent dots) ─────────
-  // Each run uses a different seed so the cloud shows the natural shot scatter.
+  // Pass 0 — Spray cloud with bloom jitter ─────────────────────────────────────
+  // Each run uses a different recoil seed. Bloom jitter uses a separate RNG so
+  // the drift pattern stays consistent — only the scatter radius changes with
+  // bloom-affecting attachments (heavy barrel, lightened suppressor, etc.).
   const CLOUD_RUNS=12;
   drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
     const decF=RECOIL_DEC[w.id]??72;
     const retain=Math.exp(-300/decF*(60/(w.rpm??600)));
+    const blooms=simulateBloom(w,N);
     for(let s=1;s<=CLOUD_RUNS;s++){
       const rng=mulberry32((whash(w.id)^(s*0x9e3779b9))>>>0);
+      const rngB=mulberry32((whash(w.id)^(s*0x6c62272e))>>>0); // separate bloom RNG
       let cx=0,cy=0;
       for(let i=1;i<N;i++){
         const dir=-w.recoilDir*Math.PI/180;
@@ -863,8 +916,12 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
         const angle=dir+spread;
         const mag=w.recoilV*(0.8+rng()*0.4);
         cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
+        // Apply bloom jitter: bullet lands within the bloom circle
+        const bloom=blooms[i]??baseline;
+        const bAng=rngB()*Math.PI*2;
+        const bR=bloom*Math.sqrt(rngB()); // uniform disk sampling
         ctx.beginPath();
-        ctx.arc(toX(cx),toY(cy),2,0,Math.PI*2);
+        ctx.arc(toX(cx+bR*Math.cos(bAng)),toY(cy+bR*Math.sin(bAng)),2,0,Math.PI*2);
         ctx.fillStyle=col+'38'; ctx.fill();
         if(i<N-1){cx*=retain;cy*=retain;}
       }
