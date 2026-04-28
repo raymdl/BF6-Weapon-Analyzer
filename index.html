@@ -795,7 +795,7 @@ function genRecoilPts(weapon,shots=20) {
   let cx=0,cy=0;
   for(let i=1;i<shots;i++){
     const dir=-weapon.recoilDir*Math.PI/180;
-    const spread=((rng()*2-1)*(weapon.recoilVar/2))*Math.PI/180;
+    const spread=((rng()*2-1)*weapon.recoilVar)*Math.PI/180;
     const angle=dir+spread;
     const mag=weapon.recoilV*(0.8+rng()*0.4);
     cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
@@ -912,7 +912,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
       let cx=0,cy=0;
       for(let i=1;i<N;i++){
         const dir=-w.recoilDir*Math.PI/180;
-        const spread=((rng()*2-1)*(w.recoilVar/2))*Math.PI/180;
+        const spread=((rng()*2-1)*w.recoilVar)*Math.PI/180;
         const angle=dir+spread;
         const mag=w.recoilV*(0.8+rng()*0.4);
         cx+=Math.sin(angle)*mag; cy+=Math.cos(angle)*mag;
