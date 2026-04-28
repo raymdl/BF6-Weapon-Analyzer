@@ -928,13 +928,25 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
     }
   });
 
-  // Pass 1 — primary run dots (no connecting line) ──────────────────────────
+  // Pass 1 — primary run dots with bloom jitter ────────────────────────────
+  // Each dot is offset by one random sample within the ADS bloom circle at
+  // that shot, using a fixed seed so the pattern is deterministic. This
+  // makes the reference run visually reflect where shots actually land.
   drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
     const pts=genRecoilPts(w,N);
+    const blooms=simulateBloom(w,N);
+    const rngRef=mulberry32((whash(w.id)^0xdeadbeef)>>>0);
     pts.forEach((p,i)=>{
+      let dx=p.x, dy=p.y;
+      if(i>0){
+        const bloom=blooms[i]??0.05;
+        const bAng=rngRef()*Math.PI*2;
+        const bR=bloom*Math.sqrt(rngRef());
+        dx+=bR*Math.cos(bAng); dy+=bR*Math.sin(bAng);
+      }
       ctx.beginPath();
-      ctx.arc(toX(p.x),toY(p.y),i===0?4:2.5,0,Math.PI*2);
+      ctx.arc(toX(dx),toY(dy),i===0?4:2.5,0,Math.PI*2);
       ctx.fillStyle=col; ctx.fill();
     });
   });
