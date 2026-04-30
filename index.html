@@ -25,7 +25,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .sb-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
 .sb-scroll::-webkit-scrollbar{width:3px}
 .sb-scroll::-webkit-scrollbar-thumb{background:var(--border)}
-.sb-sec{padding:9px 11px;border-bottom:1px solid var(--border)}
+.sb-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
 .sb-lbl{font-size:0.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600}
 .class-filter{display:flex;flex-wrap:wrap;gap:3px}
 .cbtn{padding:2px 6px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
@@ -36,7 +36,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .wbtn.p1{background:rgba(201,162,39,.1);color:var(--accent);border-left-color:var(--accent)}
 .wbtn.p2{background:rgba(77,148,208,.1);color:var(--accent2);border-left-color:var(--accent2)}
 .no-w{padding:10px 11px;color:var(--muted);font-size:0.78rem}
-.cmp-btn{margin:9px 11px;width:calc(100% - 22px);padding:7px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:0.78rem;transition:all .15s}
+.cmp-btn{margin:5px 11px;width:calc(100% - 22px);padding:4px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:0.78rem;transition:all .15s}
+.mode-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 8px;font-size:0.65rem;cursor:pointer;letter-spacing:.04em;transition:all .15s}
+.mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);font-weight:700}
 .cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
 .cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border)}
 /* Main */
@@ -50,17 +52,17 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .ptitle{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:11px;font-weight:600}
 /* Quick stats */
 .w-header{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:9px}
-.wname{font-size:1.25rem;font-weight:700;color:var(--accent)}
-.wname2{font-size:1.25rem;font-weight:700;color:var(--accent2)}
+.wname{font-size:1.1rem;font-weight:700;color:var(--accent)}
+.wname2{font-size:1.1rem;font-weight:700;color:var(--accent2)}
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
-.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:5px}
-.scard{background:var(--bg3);border-radius:4px;padding:7px 10px}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:5px}
+.scard{background:var(--bg3);border-radius:4px;padding:7px 8px}
 .slbl{font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
-.sval{font-size:1.1rem;font-weight:700}
+.sval{font-size:0.9rem;font-weight:700}
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
 .sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
 .c1{color:var(--accent)} .c2{color:var(--accent2)}
-.scmp{display:flex;gap:7px;align-items:baseline;flex-wrap:wrap}
+.scmp{display:flex;flex-direction:column;gap:1px}.scmp-row{display:flex;align-items:baseline;gap:5px}
 .diff{font-size:0.62rem;padding:1px 4px;border-radius:3px;margin-left:1px}
 .d-up{background:rgba(86,196,100,.15);color:var(--green)}
 .d-dn{background:rgba(224,85,85,.15);color:var(--red)}
@@ -87,12 +89,14 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .rc-legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .rc-note{font-size:0.6rem;color:var(--muted);margin-top:3px}
 /* Attachments sidebar */
-.att-sec{padding:8px 11px 10px;border-bottom:1px solid var(--border)}
+.att-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
 .att-row{display:flex;align-items:center;gap:5px;margin-bottom:4px}
 .att-lbl{font-size:0.6rem;color:var(--muted);width:40px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
 .att-sel{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-size:0.7rem;padding:2px 3px;border-radius:3px;cursor:pointer;min-width:0;outline:none}
 .att-sel:focus{border-color:var(--accent)}
 .att-sel option{background:var(--bg2)}
+.att-total{font-size:0.65rem;color:var(--accent);text-align:right;margin-top:4px;letter-spacing:.03em}
+.att-total.over{color:#c46464}
 .wbtn.p1.p2{background:rgba(130,100,180,.13);border-left-color:var(--accent2);color:var(--accent2)}
 /* Footer */
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
@@ -145,8 +149,19 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
         <div style="display:flex;align-items:stretch">
           <div style="flex:1;min-width:0;padding:13px;border-right:1px solid var(--border)">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px">
-              <div class="ptitle" style="margin-bottom:0">Damage Chart</div>
-              <div id="dmgLegend" style="display:flex;gap:14px"></div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <div class="ptitle" style="margin-bottom:0" id="chartTitle">Damage Chart</div>
+                <div style="display:flex;gap:3px">
+                  <button class="mode-btn on" id="modeDmg" onclick="setChartMode('dmg')">DMG</button>
+                  <button class="mode-btn" id="modeBtk" onclick="setChartMode('btk')">BTK</button>
+                </div>
+              </div>
+              <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer" onchange="setBtkHS(+this.value)">
+                <option value="0">0 Headshots</option>
+                <option value="1">1 Headshot</option>
+                <option value="2">2 Headshots</option>
+                <option value="3">3 Headshots</option>
+              </select>
             </div>
             <div class="chart-wrap"><canvas id="dmgChart"></canvas></div>
           </div>
@@ -346,63 +361,156 @@ const RECOIL_DEC_EXP = {
 // spreadMult= multiplier on recoilVar; linear comp 0.90 = −10% horizontal spread
 // decayBoost= fractional boost to bloom spread-decay offset (faster recovery)
 const MUZZLES=[
-  {id:'none',        name:'None',                 tierMod:0,  spreadMult:1,    decayBoost:0  },
-  {id:'sp_brake',    name:'Single-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0  },
-  {id:'dp_brake',    name:'Double-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0  },
-  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.5},
-  {id:'linear_comp', name:'Linear Comp',          tierMod:0,  spreadMult:0.90, decayBoost:0  },
-  {id:'flash_hider', name:'Flash Hider',          tierMod:0,  spreadMult:1,    decayBoost:0  },
-  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.5},
-  {id:'std_supp',    name:'Std. Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0  },
-  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.5},
-  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.5},
-  {id:'cqb_supp',    name:'CQB Suppressor',       tierMod:0,  spreadMult:1,    decayBoost:0  },
+  {id:'none',        name:'None',                 tierMod:0,  spreadMult:1,    decayBoost:0,   pts:0 },
+  {id:'sp_brake',    name:'Single-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   pts:0 },
+  {id:'dp_brake',    name:'Double-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   pts:10},
+  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.5, pts:20},
+  {id:'linear_comp', name:'Linear Comp',          tierMod:0,  spreadMult:0.90, decayBoost:0,   pts:0 },
+  {id:'flash_hider', name:'Flash Hider',          tierMod:0,  spreadMult:1,    decayBoost:0,   pts:10},
+  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.5, pts:20},
+  {id:'std_supp',    name:'Std. Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0,   pts:20},
+  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.5, pts:25},
+  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.5, pts:30},
+  {id:'cqb_supp',    name:'CQB Suppressor',       tierMod:0,  spreadMult:1,    decayBoost:0,   pts:30},
 ];
 const BARRELS=[
   // adsSpd: +1=faster ADS, 0=no change, -1=slower | movAcc: +1=improves moving acc tier
   // sIncMult: multiplier on recoilIncAds; heavy barrels reduce spread buildup per shot (⚠ placeholder)
-  {id:'none',       name:'None',                  vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00},
-  {id:'basic',      name:'Basic Barrel',          vMult:1.00, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00},
-  {id:'short',      name:'Short Barrel',          vMult:0.80, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00},
-  {id:'extended',   name:'Extended Barrel',       vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00},
-  {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90},
-  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:-1, movAcc:0, decayBoost:0, sIncMult:0.90},
-  {id:'light',      name:'Light Barrel',          vMult:1.00, adsSpd:1,  movAcc:1, decayBoost:0, sIncMult:1.00},
+  {id:'none',       name:'None',                  vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:0 },
+  {id:'basic',      name:'Basic Barrel',          vMult:1.00, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:10},
+  {id:'short',      name:'Short Barrel',          vMult:0.80, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
+  {id:'extended',   name:'Extended Barrel',       vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
+  {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, pts:10},
+  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:-1, movAcc:0, decayBoost:0, sIncMult:0.90, pts:10},
+  {id:'light',      name:'Light Barrel',          vMult:1.00, adsSpd:1,  movAcc:1, decayBoost:0, sIncMult:1.00, pts:20},
 ];
 const GRIPS=[
-  // tier = recoil tier contribution (0=no effect … 5=max reduction)
-  // movAcc: -1=penalty, 0=no effect  |  adsSpd: +1=faster, 0=no change
-  {id:'none',           name:'None',                tier:0, movAcc:0,  adsSpd:0},
-  {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0},
-  {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0},
-  {id:'ribbed_vert',    name:'Ribbed Vertical',     tier:3, movAcc:-1, adsSpd:0},
-  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0, spreadMult:1.10},
-  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0, spreadMult:1.10},
-  {id:'fold_stubby',    name:'Folding Stubby',      tier:2, movAcc:-1, adsSpd:1},
-  {id:'ribbed_stubby',  name:'Ribbed Stubby',       tier:2, movAcc:0,  adsSpd:1},
-  {id:'canted_stubby',  name:'Canted Stubby',       tier:3, movAcc:-1, adsSpd:1},
-  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1, spreadMult:1.10},
-  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1, spreadMult:1.10},
-  {id:'adj_angled',     name:'Adjustable Angled',   tier:1, movAcc:-1, adsSpd:1},
-  {id:'slim_angled',    name:'Slim Angled',         tier:1, movAcc:0,  adsSpd:1},
-  {id:'full_angled',    name:'Full Angled',         tier:3, movAcc:-1, adsSpd:1},
-  {id:'slim_handstop',  name:'Slim Handstop',       tier:0, movAcc:0,  adsSpd:1},
-  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0},
+  // Attribute key: [1]=Recoil Control 10pts/tier, [2]=Decrease ADS Time 10pts,
+  // [3]=ADS Mov Accuracy −10pts (debuff), [4]=ADS Mov Speed −5pts (debuff),
+  // [5]=Sprint-to-Fire & Swap Speed 5pts, [6]=Bipod 10pts, [7]=Fire While Sprinting 10pts
+  // tier=recoil tiers | movAcc:-1=[3] debuff | adsSpd:+1=[2] buff
+  // pts includes all buff/debuff costs. weaponPts overrides per weapon ID (class-specific cost).
+  {id:'none',           name:'None',                tier:0, movAcc:0,  adsSpd:0, pts:0 },
+  // ── 1-tier recoil ──
+  {id:'adj_angled',     name:'Adjustable Angled',   tier:1, movAcc:-1, adsSpd:1, pts:15},  // [1,2,5] −[3]
+  {id:'slim_angled',    name:'Slim Angled',         tier:1, movAcc:0,  adsSpd:1, pts:25,   // [1,2,5]; SMG:[1,2]
+    weaponPts:{sgx:20,pw5a3:20,pw7a2:20,umg40:20,usg90:20,kv9:20,scw10:20,cz3a1:20}},
+  // ── 2-tier recoil ──
+  {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0, pts:10},  // [1×2] −[3]
+  {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0, pts:20},  // [1×2]
+  {id:'fold_stubby',    name:'Folding Stubby',      tier:2, movAcc:-1, adsSpd:1, pts:20},  // [1×2,2] −[3]
+  {id:'ribbed_stubby',  name:'Ribbed Stubby',       tier:2, movAcc:0,  adsSpd:1, pts:30},  // [1×2,2]
+  {id:'full_angled',    name:'Full Angled',         tier:2, movAcc:-1, adsSpd:1, pts:25},  // [1×2,2,5] −[3]
+  // ── 3-tier recoil ──
+  {id:'ribbed_vert',    name:'Ribbed Vertical',     tier:3, movAcc:-1, adsSpd:0, pts:20},  // [1×3] −[3]
+  {id:'canted_stubby',  name:'Canted Stubby',       tier:3, movAcc:0,  adsSpd:1, pts:40},  // [1×3,2]
+  // ── 4-tier recoil ──
+  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0, pts:25},  // [1×4] −[3,4]
+  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1, pts:35},  // [1×4,2] −[3,4]
+  // ── 5-tier recoil ──
+  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0, pts:35},  // [1×5] −[3,4]
+  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1, pts:45},  // [1×5,2] −[3,4]
+  // ── No recoil tier ──
+  {id:'slim_handstop',  name:'Slim Handstop',       tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
+  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0, pts:10},  // [7]
+  // ── Sniper-only variants (tier:0 — no recoil control, ADS time only) ──
+  {id:'full_angled_sr', name:'Full Angled',         tier:0, movAcc:-1, adsSpd:1, pts:5 },  // [2,5] −[3]
+  {id:'slim_angled_sr', name:'Slim Angled',         tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
+  {id:'lp_stubby_sr',   name:'Low-Profile Stubby',  tier:0, movAcc:0,  adsSpd:1, pts:10},  // [2]
+  // ── Weapon-specific grips ──
+  {id:'factory_angled', name:'Factory Angled',      tier:1, movAcc:0,  adsSpd:1, pts:0,    // LMR27:[1,2,5] SL9:[1,2] DB-12:[1,2,5]−[3]
+    weaponPts:{sl9:20,lmr27:25,db12:15}},
 ];
+// ── AMMO ──────────────────────────────────────────────────────────────────────
+// hsMult: null = use weapon base | 'hp' = HP special logic | number = override
+const AMMOS=[
+  {id:'standard',    name:'Standard',     hsMult:null               },
+  {id:'penetration', name:'Penetration',  hsMult:null, tierMod:-1  },  // −1 recoil tier
+  {id:'lightweight', name:'Lightweight',  hsMult:null },
+  {id:'long_range',  name:'Long-Range',   hsMult:null },
+  {id:'hollow_pt',   name:'Hollow Point', hsMult:'hp' },  // 1.5; 1.75 for m39emr/svk86/svdm
+  {id:'frangible',   name:'Frangible',    hsMult:null },
+  {id:'synthetic',   name:'Synthetic',    hsMult:1.75 },
+  {id:'buckshot',    name:'Buckshot',     hsMult:1.0  },
+  {id:'flechette',   name:'Flechette',    hsMult:1.0  },
+  {id:'slugs',       name:'Slugs',        hsMult:1.34 },
+];
+// Base headshot multiplier per weapon (default 1.34 for all others)
+const BASE_HS_MULT={
+  m39emr:1.5,  svk86:1.5,  svdm:1.5,
+  m2010esr:1.75, sv98:1.75, psr:1.75, miniscout:1.75,
+  m87a1:1.0, m1014:1.0, ks18k:1.0, db12:1.0,
+};
+// Weapons where Hollow Point raises HS mult to 1.75 instead of 1.5
+const HP_HS_HIGH=new Set(['m39emr','svk86','svdm']);
+
+// Per-weapon ammo availability and point costs.
+// def = default ammo ID. ammo = map of ammoId → pts.
+const WEAPON_AMMO={
+  m433:    {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20}},
+  b36a4:   {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20,synthetic:20}},
+  sor556:  {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20,synthetic:20}},
+  ak4d:    {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  tr7:     {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20}},
+  kord6p67:{def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20}},
+  nvo228e: {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  l85a3:   {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20,synthetic:20}},
+  vcr2:    {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20}},
+  m4a1:    {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20}},
+  m277:    {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  ak205:   {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20,synthetic:25}},
+  m417a2:  {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  grtbc:   {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20}},
+  qbz192:  {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20,synthetic:25}},
+  sg553r:  {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  sor300sc:{def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  sgx:     {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  pw5a3:   {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20,synthetic:20}},
+  pw7a2:   {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20,synthetic:20}},
+  umg40:   {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20,synthetic:25}},
+  usg90:   {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:15,frangible:20}},
+  kv9:     {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  scw10:   {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  sl9:     {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20,synthetic:20}},
+  cz3a1:   {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  l110:    {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  drsiar:  {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20,synthetic:20}},
+  m60:     {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  rpkm:    {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20,synthetic:30}},
+  m123k:   {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  m250:    {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20}},
+  kts100:  {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:15,frangible:20,synthetic:20}},
+  m240l:   {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  m121a2:  {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20}},
+  m39emr:  {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,long_range:10,hollow_pt:15,frangible:20}},
+  lmr27:   {def:'standard', ammo:{standard:5,penetration:5,hollow_pt:20,frangible:20,synthetic:30}},
+  svk86:   {def:'standard', ammo:{standard:5,penetration:5,long_range:10,hollow_pt:15,frangible:20}},
+  svdm:    {def:'standard', ammo:{standard:5,penetration:5,long_range:10,hollow_pt:15,frangible:20}},
+  grtcps:  {def:'standard', ammo:{standard:5,penetration:5,lightweight:10,hollow_pt:20,frangible:20,synthetic:30}},
+  m2010esr:{def:'standard', ammo:{standard:5,penetration:5,long_range:10,frangible:20}},
+  sv98:    {def:'standard', ammo:{standard:5,penetration:5,long_range:10,frangible:20}},
+  psr:     {def:'standard', ammo:{standard:5,penetration:5,long_range:10,frangible:20}},
+  miniscout:{def:'standard',ammo:{standard:5,penetration:5,frangible:20}},
+  m87a1:   {def:'buckshot', ammo:{buckshot:10,flechette:30,slugs:40}},
+  m1014:   {def:'buckshot', ammo:{buckshot:10,flechette:30,slugs:40}},
+  ks18k:   {def:'buckshot', ammo:{buckshot:10,flechette:30,slugs:40}},
+  db12:    {def:'buckshot', ammo:{buckshot:10,flechette:30,slugs:40}},
+};
+
 // movAcc: +1 = improves moving accuracy (shifts tier toward tighter spread)
 const LASERS=[
-  {id:'none',          name:'None',          movAcc:0},
-  {id:'5mw_red',       name:'5 MW Red',      movAcc:0},
-  {id:'5mw_green',     name:'5 MW Green',    movAcc:0},
-  {id:'50mw_violet',   name:'50 MW Violet',  movAcc:1},
-  {id:'50mw_green',    name:'50 MW Green',   movAcc:0},
-  {id:'50mw_blue',     name:'50 MW Blue',    movAcc:1},
-  {id:'120mw_blue',    name:'120 MW Blue',   movAcc:1},
-  {id:'combo_red',     name:'Combo Red',     movAcc:0},
-  {id:'combo_green',   name:'Combo Green',   movAcc:0},
-  {id:'ads_taclight',  name:'ADS Taclight',  movAcc:0},
-  {id:'flashlight',    name:'Flashlight',    movAcc:0},
-  {id:'hip_taclight',  name:'HIP Taclight',  movAcc:0},
+  {id:'none',          name:'None',          movAcc:0, pts:0 },
+  {id:'5mw_red',       name:'5 MW Red',      movAcc:0, pts:10},
+  {id:'5mw_green',     name:'5 MW Green',    movAcc:0, pts:10},
+  {id:'50mw_violet',   name:'50 MW Violet',  movAcc:1, pts:10},
+  {id:'50mw_green',    name:'50 MW Green',   movAcc:0, pts:20},
+  {id:'50mw_blue',     name:'50 MW Blue',    movAcc:1, pts:20},
+  {id:'120mw_blue',    name:'120 MW Blue',   movAcc:1, pts:30},
+  {id:'combo_red',     name:'Combo Red',     movAcc:0, pts:0 },
+  {id:'combo_green',   name:'Combo Green',   movAcc:0, pts:0 },
+  {id:'ads_taclight',  name:'ADS Taclight',  movAcc:0, pts:0 },
+  {id:'flashlight',    name:'Flashlight',    movAcc:0, pts:0 },
+  {id:'hip_taclight',  name:'HIP Taclight',  movAcc:0, pts:0 },
 ];
 
 // Per-weapon attachment availability. barrel/barrelDef added for each weapon.
@@ -432,7 +540,7 @@ const WEAPON_ATTS = {
   usg90:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','light'],barrelDef:'heavy',grip:[],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   kv9:     {muzzle:['flash_hider','std_supp','sp_brake','linear_comp','cqb_supp','dp_brake','long_supp','light_supp','comp_brake'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','lp_stubby','ribbed_stubby','classic_vert','canted_stubby','stipp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   scw10:   {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','classic_vert','ribbed_vert','lp_stubby','6h64_vert','alloy_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  sl9:     {muzzle:['flash_hider','linear_comp','std_supp','sp_brake','cqb_supp','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','heavy','extended','heavy_ext','light'],barrelDef:'basic',grip:['adj_angled','fold_stubby','lp_stubby','ribbed_stubby','canted_stubby','stipp_stubby','cmpct_handstop'],laser:['ads_taclight','hip_taclight','50mw_violet','5mw_red','5mw_green','flashlight','50mw_green','50mw_blue','combo_red','120mw_blue','combo_green']},
+  sl9:     {muzzle:['flash_hider','linear_comp','std_supp','sp_brake','cqb_supp','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','heavy','extended','heavy_ext','light'],barrelDef:'basic',grip:['factory_angled','adj_angled','fold_stubby','lp_stubby','ribbed_stubby','canted_stubby','stipp_stubby','cmpct_handstop'],laser:['ads_taclight','hip_taclight','50mw_violet','5mw_red','5mw_green','flashlight','50mw_green','50mw_blue','combo_red','120mw_blue','combo_green']},
   cz3a1:   {muzzle:['flash_hider','sp_brake','linear_comp','std_supp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','fold_stubby','cmpct_handstop','slim_angled','alloy_vert','ribbed_stubby','ribbed_vert','canted_stubby','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   l110:    {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   drsiar:  {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','extended','short'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
@@ -444,18 +552,18 @@ const WEAPON_ATTS = {
   m240l:   {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   m121a2:  {muzzle:['flash_hider','flash_comp','std_supp','dp_brake','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['short','heavy','heavy_ext'],barrelDef:'short',grip:['fold_stubby','fold_vert','slim_handstop','alloy_vert','ribbed_stubby','slim_angled','ribbed_vert','canted_stubby','full_angled','stipp_stubby','6h64_vert','lp_stubby','classic_vert'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   m39emr:  {muzzle:['flash_hider','flash_comp','sp_brake','light_supp','std_supp','linear_comp','cqb_supp','dp_brake','long_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  lmr27:   {muzzle:['flash_hider','flash_comp','linear_comp','sp_brake','std_supp','cqb_supp','long_supp','dp_brake','light_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  lmr27:   {muzzle:['flash_hider','flash_comp','linear_comp','sp_brake','std_supp','cqb_supp','long_supp','dp_brake','light_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['factory_angled','fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   svk86:   {muzzle:['sp_brake','dp_brake','std_supp','flash_hider','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['basic','extended','short'],barrelDef:'extended',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','adj_angled','canted_stubby','stipp_stubby','lp_stubby','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   svdm:    {muzzle:['flash_hider','cqb_supp','linear_comp','std_supp','sp_brake','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   grtcps:  {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','sp_brake','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'extended',grip:['fold_vert','fold_stubby','alloy_vert','ribbed_stubby','slim_angled','slim_handstop','ribbed_vert','canted_stubby','full_angled','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  m2010esr:{muzzle:['sp_brake','comp_brake','flash_hider','flash_comp','dp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'light',grip:['full_angled','lp_stubby','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  sv98:    {muzzle:['comp_brake','dp_brake','long_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['lp_stubby','full_angled','slim_angled'],laser:['50mw_green']},
-  psr:     {muzzle:['flash_hider','comp_brake','sp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended'],barrelDef:'extended',grip:['lp_stubby','full_angled','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  miniscout:{muzzle:['sp_brake','flash_hider','flash_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['full_angled','lp_stubby','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m2010esr:{muzzle:['sp_brake','comp_brake','flash_hider','flash_comp','dp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'light',grip:['full_angled_sr','lp_stubby_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sv98:    {muzzle:['comp_brake','dp_brake','long_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['lp_stubby_sr','full_angled_sr','slim_angled_sr'],laser:['50mw_green']},
+  psr:     {muzzle:['flash_hider','comp_brake','sp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended'],barrelDef:'extended',grip:['lp_stubby_sr','full_angled_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  miniscout:{muzzle:['sp_brake','flash_hider','flash_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['full_angled_sr','lp_stubby_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   m87a1:   {muzzle:['cqb_supp','light_supp'],barrel:['basic'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['50mw_violet','5mw_red','50mw_blue','5mw_green','50mw_green','120mw_blue']},
   m1014:   {muzzle:['cqb_supp','light_supp'],barrel:['basic'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['ads_taclight','hip_taclight','flashlight']},
   ks18k:   {muzzle:['flash_hider','dp_brake','cqb_supp','light_supp'],barrel:['basic','extended'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['50mw_violet','5mw_red','50mw_blue','5mw_green','50mw_green','120mw_blue']},
-  db12:    {muzzle:['flash_hider','cqb_supp'],barrel:['basic'],barrelDef:'basic',grip:['adj_angled','slim_handstop','fold_vert','alloy_vert','fold_stubby','ribbed_vert','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  db12:    {muzzle:['flash_hider','cqb_supp'],barrel:['basic'],barrelDef:'basic',grip:['factory_angled','adj_angled','slim_handstop','fold_vert','alloy_vert','fold_stubby','ribbed_vert','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
 };
 
 // Moving ADS accuracy tier values (°), index 0 = tightest/best, index 6 = widest/worst
@@ -471,8 +579,9 @@ function applyAttachments(w, atts) {
   const bar=BARRELS.find(a=>a.id===atts.barrel)??BARRELS[0];
   const grp=GRIPS.find(a=>a.id===atts.grip)??GRIPS[0];
   const las=LASERS.find(a=>a.id===atts.laser)??LASERS[0];
-  // Tier formula: effectiveRecoilV = recoilV × mult^(gripTier + muzzleTierMod)
-  const totalTier=(grp.tier??0)+(muz.tierMod??0);
+  const ammoType=AMMOS.find(a=>a.id===(atts.ammo??'standard'))??AMMOS[0];
+  // Tier formula: effectiveRecoilV = recoilV × mult^(gripTier + muzzleTierMod + ammoTierMod)
+  const totalTier=(grp.tier??0)+(muz.tierMod??0)+(ammoType.tierMod??0);
   const mult=RECOIL_MULT[w.id]??0.94;
   const newRecoilV=+(w.recoilV*Math.pow(mult,totalTier)).toFixed(3);
   const recoilRPct=+(100*(1-Math.pow(mult,totalTier))).toFixed(1);
@@ -483,14 +592,23 @@ function applyAttachments(w, atts) {
   const movAccShift=(grp.movAcc??0)+(las.movAcc??0)+(bar.movAcc??0);
   const movTier=Math.min(Math.max(DEFAULT_MOV_TIER-movAccShift, 0), MOVING_ACC_TIERS.length-1);
   const movAccDeg=MOVING_ACC_TIERS[movTier];
+  // Headshot multiplier
+  const baseHsMult=BASE_HS_MULT[w.id]??1.34;
+  const hsMult=ammoType.hsMult===null||ammoType.hsMult===undefined ? baseHsMult
+    : ammoType.hsMult==='hp' ? (HP_HS_HIGH.has(w.id)?1.75:1.5)
+    : ammoType.hsMult;
+  // Ammo label
+  const ammoName=ammoType.id!=='standard'?ammoType.name:null;
+  const allTags=[...tags,...(ammoName?[ammoName]:[])];
   return {
     ...w,
-    _label: tags.length ? w.name+' ('+tags.join(' · ')+')' : w.name,
+    _label: allTags.length ? w.name+' ('+allTags.join(' · ')+')' : w.name,
     _recoilR: recoilRPct,       // % reduction (positive) or increase (negative) for stats display
     _decayBoost: muz.decayBoost??0,  // spread decay boost from muzzle only
     _movAccShift: movAccShift,
     _movAccDeg: movAccDeg,
     _adsSpd: combinedAdsSpd,
+    _hsMult: hsMult,
     recoilV: newRecoilV,
     recoilVar: newRecoilVar,
     recoilIncAds: w.recoilIncAds!=null ? +(w.recoilIncAds*(bar.sIncMult??1)).toFixed(3) : null,
@@ -540,6 +658,14 @@ function getBTK(weapon, range) {
   const d = weapon.pellets ? getDmg(weapon,range)*weapon.pellets : getDmg(weapon,range);
   return Math.ceil(100/d);
 }
+function getBTKWithHS(weapon, range, headshots) {
+  const d = weapon.pellets ? getDmg(weapon,range)*weapon.pellets : getDmg(weapon,range);
+  if (!headshots) return Math.ceil(100/d);
+  const hsMult = weapon._hsMult ?? 1.34;
+  const remaining = 100 - headshots * d * hsMult;
+  if (remaining <= 0) return headshots;
+  return headshots + Math.ceil(remaining / d);
+}
 function getTTK(weapon, btk) {
   if (!weapon.rpm) return null;
   return Math.round((btk-1) / (weapon.rpm/60) * 1000);
@@ -564,8 +690,8 @@ function btkRanges(w1, w2) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
 let selW1 = null, selW2 = null, comparing = false;
-let dmgChart = null;
-const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none'});
+let dmgChart = null, chartMode = 'dmg', btkHS = 0;
+const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard'});
 let att1 = blankAtts(), att2 = blankAtts();
 
 const CLASSES = ['Assault Rifle','Carbine','SMG','LMG','DMR','Sniper Rifle','Shotgun'];
@@ -591,9 +717,9 @@ function buildWeaponList(containerId, selClass, activeW, slotIndex) {
   const weapons = W.filter(w => w.cls === selClass);
   if (!weapons.length) { el.innerHTML = '<div class="no-w">No weapons</div>'; return; }
   weapons.forEach(w => {
-    const isSlot1 = w === selW1, isSlot2 = w === selW2;
+    const isActive = slotIndex === 0 ? (w === selW1) : (w === selW2);
     const b = document.createElement('button');
-    b.className = 'wbtn' + (isSlot1 ? ' p1' : '') + (isSlot2 ? ' p2' : '');
+    b.className = 'wbtn' + (isActive ? (slotIndex === 0 ? ' p1' : ' p2') : '');
     b.textContent = w.name;
     b.onclick = () => {
       if (slotIndex === 0) { selW1 = w; validateAtts(att1, w); }
@@ -622,12 +748,34 @@ function validateAtts(atts, weapon) {
   atts.laser  = 'none';
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
   atts.barrel = wa?.barrelDef ?? 'basic';
+  atts.ammo   = WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
+}
+
+function getAttPts(a, weaponId) {
+  if(!a) return 0;
+  return (weaponId&&a.weaponPts?.[weaponId])??a.pts??0;
+}
+function computeAttPts(atts, weapon) {
+  const wid=weapon?.id;
+  return getAttPts(MUZZLES.find(a=>a.id===atts.muzzle),wid)
+        +getAttPts(BARRELS.find(a=>a.id===atts.barrel),wid)
+        +getAttPts(GRIPS.find(a=>a.id===atts.grip),wid)
+        +getAttPts(LASERS.find(a=>a.id===atts.laser),wid)
+        +(WEAPON_AMMO[wid]?.ammo?.[atts.ammo??'standard']??0);
+}
+
+function updateAttTotal(containerId, atts, weapon) {
+  const el=document.getElementById(containerId+'_total');
+  if(!el) return;
+  const pts=computeAttPts(atts,weapon);
+  el.textContent='Total: '+pts+' pts';
+  el.classList.toggle('over', pts>100);
 }
 
 function buildAttachmentSection(containerId, atts, weapon) {
   const el=document.getElementById(containerId);
   if (!el) return;
-  el.innerHTML=`<div class="sb-lbl" style="margin-bottom:6px">Attachments</div>`;
+  el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
   [{key:'muzzle',lbl:'Muzzle',data:MUZZLES},
    {key:'barrel',lbl:'Barrel',data:BARRELS},
@@ -643,13 +791,43 @@ function buildAttachmentSection(containerId, atts, weapon) {
     const span=document.createElement('span'); span.className='att-lbl'; span.textContent=lbl;
     const sel=document.createElement('select'); sel.className='att-sel';
     visible.forEach(a=>{
-      const opt=document.createElement('option'); opt.value=a.id; opt.textContent=a.name;
+      const opt=document.createElement('option'); opt.value=a.id;
+      const pts=getAttPts(a,weapon?.id);
+      opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
       if(atts[key]===a.id) opt.selected=true;
       sel.appendChild(opt);
     });
-    sel.onchange=()=>{ atts[key]=sel.value; renderStats(); };
+    sel.onchange=()=>{
+      atts[key]=sel.value;
+      updateAttTotal(containerId,atts,weapon);
+      renderStats();
+    };
     row.appendChild(span); row.appendChild(sel); el.appendChild(row);
   });
+  // Ammo slot (per-weapon costs from WEAPON_AMMO; fall back to selW1, then generic list)
+  const wAmmo=WEAPON_AMMO[weapon?.id] ?? WEAPON_AMMO[selW1?.id];
+  const shotgunAmmo=new Set(['buckshot','flechette','slugs']);
+  const ammoList=wAmmo ? AMMOS.filter(a=>a.id in wAmmo.ammo) : AMMOS.filter(a=>!shotgunAmmo.has(a.id));
+  if(ammoList.length>1){
+    const ammoRow=document.createElement('div'); ammoRow.className='att-row';
+    const ammoSpan=document.createElement('span'); ammoSpan.className='att-lbl'; ammoSpan.textContent='Ammo';
+    const ammoSel=document.createElement('select'); ammoSel.className='att-sel';
+    ammoList.forEach(a=>{
+      const opt=document.createElement('option'); opt.value=a.id;
+      const pts=wAmmo?.ammo?.[a.id]??0;
+      opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
+      if((atts.ammo??(wAmmo?.def??'standard'))===a.id) opt.selected=true;
+      ammoSel.appendChild(opt);
+    });
+    ammoSel.onchange=()=>{
+      atts.ammo=ammoSel.value;
+      updateAttTotal(containerId,atts,weapon);
+      renderStats();
+    };
+    ammoRow.appendChild(ammoSpan); ammoRow.appendChild(ammoSel); el.appendChild(ammoRow);
+  }
+
+  updateAttTotal(containerId,atts,weapon);
 }
 
 function renderStats() {
@@ -686,6 +864,7 @@ function renderOverview() {
   const primary = w1||w2;
   const fields=[
     {lbl:'Base Dmg',   compute:w=>getDmg(w,0), unit:'',    fmt:v=>v.toFixed(1), higherBetter:true},
+    {lbl:'HS Mult',    k:'_hsMult',            unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true},
     {lbl:'Fire Rate',  k:'rpm',                unit:'RPM', fmt:v=>v??'—'},
     {lbl:'ADS Time',   k:'adsTime',            unit:'ms',  est:true, fmt:v=>v??'—'},
     {lbl:'Bullet Vel', k:'bulletVel',          unit:'m/s', fmt:v=>v??'—'},
@@ -728,7 +907,7 @@ function renderOverview() {
           diff=`<span class="diff ${w2better?'d-up':'d-dn'}">${w2better?'+':'-'}${pct}%</span>`;
         }
       }
-      card.innerHTML+=`<div class="scmp"><span class="sval c1">${v1!=null?f.fmt(v1):'—'}<span class="sunit">${f.unit}</span>${f.est&&!w2?'<span class="sest">est</span>':''}</span><span class="sval c2">${v2!=null?f.fmt(v2):'—'}<span class="sunit">${f.unit}</span></span>${diff}</div>`;
+      card.innerHTML+=`<div class="scmp"><div class="scmp-row"><span class="sval c1">${v1!=null?f.fmt(v1):'—'}<span class="sunit">${f.unit}</span>${f.est&&!w2?'<span class="sest">est</span>':''}</span></div><div class="scmp-row"><span class="sval c2">${v2!=null?f.fmt(v2):'—'}<span class="sunit">${f.unit}</span></span>${diff}</div></div>`;
     }
     grid.appendChild(card);
   });
@@ -749,6 +928,16 @@ function renderOverview() {
   });
 }
 
+function setChartMode(m) {
+  chartMode=m;
+  document.getElementById('modeDmg').classList.toggle('on',m==='dmg');
+  document.getElementById('modeBtk').classList.toggle('on',m==='btk');
+  document.getElementById('chartTitle').textContent=m==='btk'?'BTK Chart':'Damage Chart';
+  document.getElementById('btkHsSelect').style.display=m==='btk'?'':'none';
+  renderChart();
+}
+function setBtkHS(n) { btkHS=n; renderChart(); }
+
 function renderChart() {
   // Register custom positioner once: pins tooltip near the top of the plot area
   if (!Chart.Tooltip.positioners.topPin) {
@@ -764,11 +953,37 @@ function renderChart() {
   const mr=maxRange([w1,w2]);
   const labels=[]; for(let r=0;r<=mr;r++) labels.push(r);
 
+  const ctx=document.getElementById('dmgChart');
+  if (dmgChart) dmgChart.destroy();
+
+  if (chartMode==='btk') {
+    const btkDs=(w,color,label)=>({label,data:labels.map(r=>getBTKWithHS(w,r,btkHS)),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before'});
+    const datasets=[];
+    if (w1) datasets.push(btkDs(w1,'#c9a227',wLabel(w1)));
+    if (w2) datasets.push(btkDs(w2,'#4d94d0',wLabel(w2)));
+    const yMin=1, yMax=8;
+    dmgChart=new Chart(ctx,{
+      type:'line', data:{labels,datasets},
+      options:{
+        responsive:true, maintainAspectRatio:false, animation:false,
+        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'topPin',yAlign:'top',caretSize:0,callbacks:{
+          title:items=>'Range: '+(items[0]?.label??'')+'m',
+          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=i.raw; return `${i.dataset.label}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
+        }}},
+        scales:{
+          x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
+          y:{min:yMin,max:yMax,title:{display:true,text:'Bullets to Kill',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',stepSize:1,precision:0},grid:{color:'rgba(40,48,48,0.6)'}}
+        }
+      }
+    });
+    return;
+  }
+
   function buildDs(w, color, label) {
     return { label, data:labels.map(r=>+(Math.min(100,w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r)).toFixed(2))), borderColor:color, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0, stepped:'before' };
   }
   // BTK threshold lines
-  const w=w1||w2; const maxD=w.pellets?getDmg(w,0)*w.pellets:getDmg(w,0);
+  const w=w1||w2;
   const thresholds=[]; const seen=new Set();
   for(let r=0;r<=mr;r++) { const btk=getBTK(w,r); if(!seen.has(btk)){seen.add(btk);thresholds.push({btk,dmg:100/btk});} }
   const threshDs = thresholds.slice(0,6).map(t=>({
@@ -781,17 +996,6 @@ function renderChart() {
   if (w1) datasets.push(buildDs(w1,'#c9a227',wLabel(w1)));
   if (w2) datasets.push(buildDs(w2,'#4d94d0',wLabel(w2)));
 
-  // Populate inline HTML legend (replaces Chart.js legend)
-  const legEl=document.getElementById('dmgLegend');
-  if (legEl) {
-    legEl.innerHTML='';
-    const mkLeg=(name,col)=>`<span style="display:flex;align-items:center;gap:5px;font-size:0.72rem;color:var(--text)"><span style="display:inline-block;width:18px;height:2px;background:${col};border-radius:1px"></span>${name}</span>`;
-    if (w1) legEl.innerHTML+=mkLeg(wLabel(w1),'#c9a227');
-    if (w2) legEl.innerHTML+=mkLeg(wLabel(w2),'#4d94d0');
-  }
-
-  const ctx=document.getElementById('dmgChart');
-  if (dmgChart) dmgChart.destroy();
   dmgChart=new Chart(ctx,{
     type:'line',
     data:{labels,datasets},
