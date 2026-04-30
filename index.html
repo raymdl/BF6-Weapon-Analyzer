@@ -154,6 +154,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                 <div style="display:flex;gap:3px">
                   <button class="mode-btn on" id="modeDmg" onclick="setChartMode('dmg')">DMG</button>
                   <button class="mode-btn" id="modeBtk" onclick="setChartMode('btk')">BTK</button>
+                  <button class="mode-btn" id="modeTtk" onclick="setChartMode('ttk')">TTK</button>
                 </div>
               </div>
               <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer" onchange="setBtkHS(+this.value)">
@@ -935,8 +936,9 @@ function setChartMode(m) {
   chartMode=m;
   document.getElementById('modeDmg').classList.toggle('on',m==='dmg');
   document.getElementById('modeBtk').classList.toggle('on',m==='btk');
-  document.getElementById('chartTitle').textContent=m==='btk'?'BTK Chart':'Damage Chart';
-  document.getElementById('btkHsSelect').style.display=m==='btk'?'':'none';
+  document.getElementById('modeTtk').classList.toggle('on',m==='ttk');
+  document.getElementById('chartTitle').textContent=m==='btk'?'BTK Chart':m==='ttk'?'TTK Chart':'Damage Chart';
+  document.getElementById('btkHsSelect').style.display=(m==='btk'||m==='ttk')?'':'none';
   renderChart();
 }
 function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
@@ -976,6 +978,30 @@ function renderChart() {
         scales:{
           x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
           y:{min:yMin,max:yMax,title:{display:true,text:'Bullets to Kill',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',stepSize:1,precision:0},grid:{color:'rgba(40,48,48,0.6)'}}
+        }
+      }
+    });
+    return;
+  }
+
+  if (chartMode==='ttk') {
+    const ttkDs=(w,color,label)=>({label,data:labels.map(r=>{ const btk=getBTKWithHS(w,r,btkHS); return getTTK(w,btk)??0; }),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before'});
+    const datasets=[];
+    if (w1) datasets.push(ttkDs(w1,'#c9a227',wLabel(w1)));
+    if (w2) datasets.push(ttkDs(w2,'#4d94d0',wLabel(w2)));
+    const allVals=datasets.flatMap(d=>d.data).filter(v=>v>0);
+    const yMax=allVals.length ? Math.ceil(Math.max(...allVals)/100)*100+100 : 1000;
+    dmgChart=new Chart(ctx,{
+      type:'line', data:{labels,datasets},
+      options:{
+        responsive:true, maintainAspectRatio:false, animation:false,
+        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'topPin',yAlign:'top',caretSize:0,callbacks:{
+          title:items=>'Range: '+(items[0]?.label??'')+'m',
+          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=getBTKWithHS(w,i.dataIndex,btkHS); return `${i.dataset.label}: ${fmtTTK(i.raw)} (${btk} BTK)`; }
+        }}},
+        scales:{
+          x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
+          y:{min:0,max:yMax,title:{display:true,text:'Time to Kill (ms)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',stepSize:100},grid:{color:'rgba(40,48,48,0.6)'}}
         }
       }
     });
