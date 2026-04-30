@@ -1234,7 +1234,7 @@ function renderRecoil() {
   };
   const stats=[
     {lbl:'Vertical / Shot',   val1:w1?w1.recoilV.toFixed(2)+'°':null,    val2:w2?w2.recoilV.toFixed(2)+'°':null,   bar1:w1?w1.recoilV/3:0,          bar2:w2?w2.recoilV/3:0,          col1:'#c9a227',col2:'#4d94d0'},
-    {lbl:'Recoil Reduction',  val1:rRStr(w1,showRR),                       val2:rRStr(w2,showRR),                     bar1:w1?(w1._recoilR??0)/100:0,  bar2:w2?(w2._recoilR??0)/100:0,  col1:'#56c464',col2:'#56c464'},
+    {lbl:'Recoil Reduction',  val1:rRStr(w1,showRR),                       val2:rRStr(w2,showRR),                     bar1:w1?Math.abs(w1._recoilR??0)/100:0,  bar2:w2?Math.abs(w2._recoilR??0)/100:0,  col1:((w1?._recoilR??0)>=0)?'#56c464':'#c46464', col2:((w2?._recoilR??0)>=0)?'#56c464':'#c46464'},
     {lbl:'Direction',         val1:w1?((-w1.recoilDir)>=0?'+':'')+(-w1.recoilDir)+'°':null, val2:w2?((-w2.recoilDir)>=0?'+':'')+(-w2.recoilDir)+'°':null, bar1:w1?(-w1.recoilDir+90)/180:0, bar2:w2?(-w2.recoilDir+90)/180:0, col1:'#c9a227',col2:'#4d94d0'},
     {lbl:'Variation (±)',     val1:w1?w1.recoilVar.toFixed(1)+'°':null,   val2:w2?w2.recoilVar.toFixed(1)+'°':null, bar1:w1?w1.recoilVar/90:0,       bar2:w2?w2.recoilVar/90:0,       col1:'#c9a227',col2:'#4d94d0'},
     {lbl:'Spread Inc/Shot',   val1:w1&&w1.recoilIncAds!=null?w1.recoilIncAds+'°':null, val2:w2&&w2.recoilIncAds!=null?w2.recoilIncAds+'°':null, bar1:w1&&w1.recoilIncAds!=null?w1.recoilIncAds:0, bar2:w2&&w2.recoilIncAds!=null?w2.recoilIncAds:0, col1:'#c9a227',col2:'#4d94d0'},
