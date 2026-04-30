@@ -662,8 +662,11 @@ function getBTKWithHS(weapon, range, headshots) {
   const d = weapon.pellets ? getDmg(weapon,range)*weapon.pellets : getDmg(weapon,range);
   if (!headshots) return Math.ceil(100/d);
   const hsMult = weapon._hsMult ?? 1.34;
+  // Find the minimum HS actually needed to kill with pure headshots
+  const minPureHS = Math.ceil(100 / (d * hsMult));
+  if (minPureHS <= headshots) return minPureHS; // fewer HS suffice — don't waste extra
+  // Need all available headshots + body shots to finish
   const remaining = 100 - headshots * d * hsMult;
-  if (remaining <= 0) return headshots;
   return headshots + Math.ceil(remaining / d);
 }
 function getTTK(weapon, btk) {
@@ -936,7 +939,7 @@ function setChartMode(m) {
   document.getElementById('btkHsSelect').style.display=m==='btk'?'':'none';
   renderChart();
 }
-function setBtkHS(n) { btkHS=n; renderChart(); }
+function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
 
 function renderChart() {
   // Register custom positioner once: pins tooltip near the top of the plot area
@@ -1021,8 +1024,8 @@ function renderBTK() {
   let prevBTK1=null,prevBTK2=null;
   ranges.forEach(r=>{
     html+=`<tr><td class="rng">${r}m</td>`;
-    if(w1){const b=getBTK(w1,r),t=getTTK(w1,b),chg=prevBTK1!==null&&b!==prevBTK1;html+=`<td class="bv${chg?' bchg':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK1=b;}
-    if(w2){const b=getBTK(w2,r),t=getTTK(w2,b),chg=prevBTK2!==null&&b!==prevBTK2;html+=`<td class="bv${chg?' bchg2':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK2=b;}
+    if(w1){const b=getBTKWithHS(w1,r,btkHS),t=getTTK(w1,b),chg=prevBTK1!==null&&b!==prevBTK1;html+=`<td class="bv${chg?' bchg':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK1=b;}
+    if(w2){const b=getBTKWithHS(w2,r,btkHS),t=getTTK(w2,b),chg=prevBTK2!==null&&b!==prevBTK2;html+=`<td class="bv${chg?' bchg2':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK2=b;}
     html+='</tr>';
   });
   html+='</tbody></table>';
