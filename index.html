@@ -747,7 +747,7 @@ function validateAtts(atts, weapon) {
   atts.grip   = 'none';
   atts.laser  = 'none';
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
-  atts.barrel = wa?.barrelDef ?? 'basic';
+  atts.barrel = (wa?.barrel?.includes('basic') ? 'basic' : wa?.barrelDef) ?? 'basic';
   atts.ammo   = WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
 }
 
