@@ -944,12 +944,22 @@ function setChartMode(m) {
 function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
 
 function renderChart() {
-  // Register custom positioner once: pins tooltip near the top of the plot area
-  if (!Chart.Tooltip.positioners.topPin) {
-    Chart.Tooltip.positioners.topPin = function(elements, eventPos) {
-      const avg = Chart.Tooltip.positioners.average.call(this, elements, eventPos);
-      if (!avg) return false;
-      return { x: avg.x, y: this.chart.chartArea.top + 28 };
+  // Register smart floating positioner — places tooltip close to but not covering lines
+  if (!Chart.Tooltip.positioners.smartFloat) {
+    Chart.Tooltip.positioners.smartFloat = function(elements, eventPos) {
+      const ca = this.chart.chartArea;
+      if (!ca) return false;
+      const ys = elements.map(e=>e.element.y);
+      const minY = ys.length ? Math.min(...ys) : (ca.top+ca.bottom)/2;
+      const maxY = ys.length ? Math.max(...ys) : (ca.top+ca.bottom)/2;
+      const half = 48; // ~half tooltip height
+      const gap = 8;
+      // Prefer above lines; fall back to below if not enough room
+      let y = minY - gap - half;
+      if (y < ca.top + half) y = maxY + gap + half;
+      y = Math.min(Math.max(y, ca.top + half), ca.bottom - half);
+      const x = Math.min(Math.max(eventPos.x, ca.left), ca.right);
+      return {x, y};
     };
   }
 
@@ -971,9 +981,9 @@ function renderChart() {
       type:'line', data:{labels,datasets},
       options:{
         responsive:true, maintainAspectRatio:false, animation:false,
-        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'topPin',yAlign:'top',caretSize:0,callbacks:{
+        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{
           title:items=>'Range: '+(items[0]?.label??'')+'m',
-          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=i.raw; return `${i.dataset.label}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
+          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
         }}},
         scales:{
           x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
@@ -995,9 +1005,9 @@ function renderChart() {
       type:'line', data:{labels,datasets},
       options:{
         responsive:true, maintainAspectRatio:false, animation:false,
-        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'topPin',yAlign:'top',caretSize:0,callbacks:{
+        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{
           title:items=>'Range: '+(items[0]?.label??'')+'m',
-          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=getBTKWithHS(w,i.dataIndex,btkHS); return `${i.dataset.label}: ${fmtTTK(i.raw)} (${btk} BTK)`; }
+          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=getBTKWithHS(w,i.dataIndex,btkHS); return `${w.name}: ${fmtTTK(i.raw)} (${btk} BTK)`; }
         }}},
         scales:{
           x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
@@ -1030,7 +1040,7 @@ function renderChart() {
     data:{labels,datasets},
     options:{
       responsive:true, maintainAspectRatio:false, animation:false,
-      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'topPin',yAlign:'top',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.datasetIndex===datasets.length-1&&w2?w2:w1; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${i.dataset.label}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.datasetIndex===datasets.length-1&&w2?w2:w1; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${w.name}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
       scales:{
         x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
         y:{min:0,max:100,title:{display:true,text:'Damage per shot',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a'},grid:{color:'rgba(40,48,48,0.6)'}}
