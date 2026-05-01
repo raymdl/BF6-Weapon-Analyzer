@@ -67,7 +67,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .d-up{background:rgba(86,196,100,.15);color:var(--green)}
 .d-dn{background:rgba(224,85,85,.15);color:var(--red)}
 /* Chart */
-.chart-wrap{position:relative;height:320px}
+.chart-wrap{position:relative;height:256px}
 /* BTK table */
 .btk-tbl{width:100%;border-collapse:collapse;font-size:0.78rem}
 .btk-tbl th{padding:4px 7px;color:var(--muted);text-align:center;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
@@ -77,9 +77,16 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.rc-layout{display:flex;gap:100px;align-items:flex-start;flex-wrap:wrap}
+.rc-plot{width:380px;flex:0 0 380px}
+.rc-head{display:grid;grid-template-columns:1fr auto;align-items:start;gap:6px;margin-bottom:9px}
+.rc-head .ptitle{margin-bottom:0}
+.rc-title{grid-column:1 / -1;white-space:nowrap}
+.rc-mode-group{display:flex;gap:3px}
+.rc-mode-btn{padding-inline:7px}
+.rc-redraw-btn{grid-column:2;grid-row:2;justify-self:end}
 canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
-.rc-stats{flex:1;min-width:150px;display:flex;flex-direction:column;gap:9px}
+.rc-stats{flex:1 1 300px;display:flex;flex-direction:column;gap:9px;padding-top:26px}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
 .rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
@@ -174,10 +181,17 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
         </div>
       </div>
       <div class="panel">
-        <div class="ptitle">Recoil &amp; Bloom Pattern (simulated · 20 shots · fixed scale)</div>
         <div class="rc-layout">
-          <div>
-            <canvas id="rcMain" class="rcv" width="362" height="362"></canvas>
+          <div class="rc-plot">
+            <div class="rc-head">
+              <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (simulated · 20 shots · fixed scale)</div>
+              <div class="rc-mode-group">
+                <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="setRecoilMode('bloom')" title="Show the reference run with recoil and bloom scatter">Recoil + Bloom</button>
+                <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="setRecoilMode('path')" title="Draw the recoil-only reference path over the bloom spray">Recoil Path</button>
+              </div>
+              <button class="mode-btn rc-mode-btn rc-redraw-btn" onclick="randomizeRecoilReference()" title="Draw a new randomized reference run">Redraw</button>
+            </div>
+            <canvas id="rcMain" class="rcv" width="380" height="380"></canvas>
             <div class="rc-legend" id="rcLegend"></div>
             <div class="rc-note"></div>
           </div>
@@ -962,7 +976,7 @@ const WEAPON_ERGO = {
   m240l:   {avail:['rail_cover']},
   m39emr:  {avail:['mag_catch'], magCatchRld:{reg:2384,fast:2110}},
   lmr27:   {avail:['mag_catch'], magCatchRld:{reg:2854,fast:2526}},
-  svdm:    {avail:['mag_catch'], magCatchRld:{reg:2352,fast:null}},
+  svdm:    {avail:['mag_catch'], magCatchRld:{reg:2352,fast:2081}},
   m2010esr:{avail:['ads_bolt']},
   sv98:    {avail:['mag_catch','ads_bolt'], magCatchRld:{reg:2807,fast:null}},
   psr:     {avail:['mag_catch','ads_bolt'], magCatchRld:{reg:3151,fast:null}},
@@ -1126,7 +1140,7 @@ function btkRanges(w1, w2) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
 let selW1 = null, selW2 = null, comparing = false;
-let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false;
+let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilMode = 'bloom', recoilRefSeed = 0;
 const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
 let att1 = blankAtts(), att2 = blankAtts();
 
@@ -1440,6 +1454,14 @@ function toggleAdsToggle() {
   renderBTK();
 }
 function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
+function setRecoilMode(mode) {
+  recoilMode=mode==='path'?'path':'bloom';
+  renderRecoil();
+}
+function randomizeRecoilReference() {
+  recoilRefSeed=(Math.random()*0x100000000)>>>0;
+  renderRecoil();
+}
 
 function renderChart() {
   // Register smart floating positioner — places tooltip close to but not covering lines
@@ -1542,6 +1564,8 @@ function renderChart() {
   const datasets=[...threshDs];
   if (w1) datasets.push(buildDs(w1,'#c9a227',wLabel(w1)));
   if (w2) datasets.push(buildDs(w2,'#4d94d0',wLabel(w2)));
+  const maxDamage=Math.max(0,...[w1,w2].filter(Boolean).flatMap(w=>labels.map(r=>w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r))));
+  const dmgYMax=maxDamage>50 ? 100 : 50;
 
   dmgChart=new Chart(ctx,{
     type:'line',
@@ -1551,7 +1575,7 @@ function renderChart() {
       plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.datasetIndex===datasets.length-1&&w2?w2:w1; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${w.name}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
       scales:{
         x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
-        y:{min:0,max:100,title:{display:true,text:'Damage per shot',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a'},grid:{color:'rgba(40,48,48,0.6)'}}
+        y:{min:0,max:dmgYMax,title:{display:true,text:'Damage per shot',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a'},grid:{color:'rgba(40,48,48,0.6)'}}
       }
     }
   });
@@ -1578,8 +1602,8 @@ function renderBTK() {
   document.getElementById('btkArea').innerHTML=html;
 }
 
-function genRecoilPts(weapon,shots=20) {
-  const rng=mulberry32(whash(weapon.id));
+function genRecoilPts(weapon,shots=20,seed=0) {
+  const rng=mulberry32((whash(weapon.id)^seed)>>>0);
   const pts=[{x:0,y:0}];
   const decF=RECOIL_DEC[weapon.id]??72;
   const decExp=RECOIL_DEC_EXP[weapon.id]??1;
@@ -1599,7 +1623,7 @@ function genRecoilPts(weapon,shots=20) {
   }
   return pts;
 }
-function drawRecoilFixed(canvas, weapon1, weapon2) {
+function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
   const ctx = canvas.getContext('2d');
   const CW = canvas.width, CH = canvas.height;
   const PL=28, PR=8, PT=8, PB=18;
@@ -1733,19 +1757,38 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
   // makes the reference run visually reflect where shots actually land.
   drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
-    const pts=genRecoilPts(w,N);
-    const blooms=simulateBloom(w,N);
-    const rngRef=mulberry32((whash(w.id)^0xdeadbeef)>>>0);
-    pts.forEach((p,i)=>{
-      let dx=p.x, dy=p.y;
-      if(i>0){
-        const bloom=blooms[i]??0.05;
-        const bAng=rngRef()*Math.PI*2;
-        const bR=bloom*Math.sqrt(rngRef());
-        dx+=bR*Math.cos(bAng); dy+=bR*Math.sin(bAng);
-      }
+    const weaponRefSeed=(refSeed^((w===weapon1)?0x13579bdf:0x2468ace0))>>>0;
+    const pts=genRecoilPts(w,N,weaponRefSeed);
+    const refPts=pathOnly ? pts : (() => {
+      const blooms=simulateBloom(w,N);
+      const rngRef=mulberry32((whash(w.id)^weaponRefSeed^0xdeadbeef)>>>0);
+      return pts.map((p,i)=>{
+        let dx=p.x, dy=p.y;
+        if(i>0){
+          const bloom=blooms[i]??0.05;
+          const bAng=rngRef()*Math.PI*2;
+          const bR=bloom*Math.sqrt(rngRef());
+          dx+=bR*Math.cos(bAng); dy+=bR*Math.sin(bAng);
+        }
+        return {x:dx,y:dy};
+      });
+    })();
+    if(pathOnly&&refPts.length>1){
       ctx.beginPath();
-      ctx.arc(toX(dx),toY(dy),i===0?4:2.5,0,Math.PI*2);
+      refPts.forEach((p,i)=>{
+        const x=toX(p.x), y=toY(p.y);
+        if(i===0) ctx.moveTo(x,y);
+        else ctx.lineTo(x,y);
+      });
+      ctx.strokeStyle=col;
+      ctx.lineWidth=2.2;
+      ctx.globalAlpha=0.9;
+      ctx.stroke();
+      ctx.globalAlpha=1;
+    }
+    refPts.forEach((p,i)=>{
+      ctx.beginPath();
+      ctx.arc(toX(p.x),toY(p.y),i===0?4:2.5,0,Math.PI*2);
       ctx.fillStyle=col; ctx.fill();
     });
   });
@@ -1757,9 +1800,14 @@ function drawRecoilFixed(canvas, weapon1, weapon2) {
 function renderRecoil() {
   const w1=selW1?applyAttachments(selW1,att1):null;
   const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
-  const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2);
+  const pathOnly=recoilMode==='path';
+  document.getElementById('rcModeBloom')?.classList.toggle('on',!pathOnly);
+  document.getElementById('rcModePath')?.classList.toggle('on',pathOnly);
+  const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, pathOnly, recoilRefSeed);
   const noteEl=document.querySelector('.rc-note');
-  if (noteEl&&axis) noteEl.textContent=`Faded dots = 12 simulated spray runs showing natural shot scatter. Solid dots = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
+  if (noteEl&&axis) noteEl.textContent=pathOnly
+    ? `Faded dots = 12 simulated spray runs with recoil+bloom. Line = recoil-only reference path connecting 20 shots. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`
+    : `Faded dots = 12 simulated spray runs showing natural shot scatter. Solid dots = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
 
   // Legend
   const leg=document.getElementById('rcLegend');
