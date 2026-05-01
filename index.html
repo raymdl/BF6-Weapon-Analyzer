@@ -56,7 +56,8 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .wname2{font-size:1.1rem;font-weight:700;color:var(--accent2)}
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:5px}
-.scard{background:var(--bg3);border-radius:4px;padding:7px 8px}
+.scard{background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:7px 8px}
+.scard.stat-group{background:#202929}
 .slbl{font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
 .sval{font-size:0.9rem;font-weight:700}
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
@@ -77,7 +78,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:flex;gap:100px;align-items:flex-start;flex-wrap:wrap}
+.rc-layout{display:grid;grid-template-columns:380px repeat(2,minmax(260px,1fr));column-gap:24px;align-items:stretch}
 .rc-plot{width:380px;flex:0 0 380px}
 .rc-head{display:grid;grid-template-columns:1fr auto;align-items:start;gap:6px;margin-bottom:9px}
 .rc-head .ptitle{margin-bottom:0}
@@ -86,11 +87,22 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-mode-btn{padding-inline:7px}
 .rc-redraw-btn{grid-column:2;grid-row:2;justify-self:end}
 canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
-.rc-stats{flex:1 1 300px;display:flex;flex-direction:column;gap:9px;padding-top:26px}
+.rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:26px}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
 .rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
 .rc-fill{height:100%;border-radius:3px;transition:width .3s}
+.att-stats{min-width:0;position:relative}
+.att-stats::before{content:'';position:absolute;top:-13px;bottom:-13px;left:-12px;width:1px;background:var(--border)}
+.att-block{margin-bottom:8px}
+.att-block:last-child{margin-bottom:0}
+.att-name{font-size:0.68rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-name.c1{color:var(--accent)} .att-name.c2{color:var(--accent2)}
+.att-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:4px}
+.att-chip{background:var(--bg3);border-radius:4px;padding:5px 6px;min-width:0}
+.att-chip-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-chip-val{font-size:0.72rem;font-weight:700;white-space:nowrap}
+.att-empty{font-size:0.68rem;color:var(--muted);background:var(--bg3);border-radius:4px;padding:7px 8px}
 .rc-legend{display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;min-height:14px}
 .rc-legend-item{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--text)}
 .rc-legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
@@ -196,6 +208,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
             <div class="rc-note"></div>
           </div>
           <div class="rc-stats" id="rcStats"></div>
+          <div class="att-stats" id="attStats"></div>
         </div>
       </div>
     </div>
@@ -376,18 +389,19 @@ const RECOIL_DEC_EXP = {
 //               0 (suppressors, flash hider, linear comp): no direct recoil tier change
 // spreadMult= multiplier on recoilVar; linear comp 0.90 = −10% horizontal spread
 // decayBoost= fractional boost to bloom spread-decay offset (faster recovery)
+// worldSpot/minimapSpot = distance where firing exposes the player; 0 = hidden
 const MUZZLES=[
-  {id:'none',        name:'None',                 tierMod:0,  spreadMult:1,    decayBoost:0,   pts:0 },
-  {id:'sp_brake',    name:'Single-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   pts:5 },
-  {id:'dp_brake',    name:'Double-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   pts:10},
-  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.5, pts:20},
-  {id:'linear_comp', name:'Linear Comp',          tierMod:0,  spreadMult:0.90, decayBoost:0,   pts:10 },
-  {id:'flash_hider', name:'Flash Hider',          tierMod:0,  spreadMult:1,    decayBoost:0,   pts:10},
-  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.5, pts:20},
-  {id:'std_supp',    name:'Std. Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0,   pts:20},
-  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.5, pts:25},
-  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.5, pts:30},
-  {id:'cqb_supp',    name:'CQB Suppressor',       tierMod:0,  spreadMult:1,    decayBoost:0,   pts:30},
+  {id:'none',        name:'None',                 tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:0 },
+  {id:'sp_brake',    name:'Single-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:5 },
+  {id:'dp_brake',    name:'Double-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:10},
+  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.5, worldSpot:54, minimapSpot:150, pts:20},
+  {id:'linear_comp', name:'Linear Comp',          tierMod:0,  spreadMult:0.90, decayBoost:0,   worldSpot:54, minimapSpot:150, pts:10 },
+  {id:'flash_hider', name:'Flash Hider',          tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:150, pts:10},
+  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.5, worldSpot:0,  minimapSpot:150, pts:20},
+  {id:'std_supp',    name:'Std. Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:21, pts:20},
+  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.5, worldSpot:0,  minimapSpot:21, pts:25},
+  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.5, worldSpot:0,  minimapSpot:21, pts:30},
+  {id:'cqb_supp',    name:'CQB Suppressor',       tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:21, pts:30},
 ];
 const BARRELS=[
   // adsSpd: +1=faster ADS, 0=no change, -1=slower | movAcc: +1=improves moving acc tier
@@ -432,6 +446,11 @@ const GRIPS=[
 ];
 // ── AMMO ──────────────────────────────────────────────────────────────────────
 // hsMult: null = use weapon base | 'hp' = HP special logic | number = override
+['6h64_vert','classic_vert','stipp_stubby','lp_stubby'].forEach(id=>{
+  const grip=GRIPS.find(g=>g.id===id);
+  if(grip) grip.amsSh=1;
+});
+
 const AMMOS=[
   {id:'standard',    name:'Standard',     hsMult:null               },
   {id:'penetration', name:'Penetration',  hsMult:null, tierMod:-1  },  // −1 recoil tier
@@ -509,14 +528,14 @@ const WEAPON_AMMO={
 // movAcc: +1 = improves moving accuracy (shifts tier toward tighter spread)
 const LASERS=[
   {id:'none',          name:'None',          movAcc:0, pts:0 },
-  {id:'5mw_red',       name:'5 MW Red',      movAcc:0, pts:10},
-  {id:'5mw_green',     name:'5 MW Green',    movAcc:0, pts:10},
+  {id:'5mw_red',       name:'5 MW Red',      movAcc:0, pts:10, noEffect:true},
+  {id:'5mw_green',     name:'5 MW Green',    movAcc:0, pts:10, noEffect:true},
   {id:'50mw_violet',   name:'50 MW Violet',  movAcc:1, pts:10},
-  {id:'50mw_green',    name:'50 MW Green',   movAcc:0, pts:20},
+  {id:'50mw_green',    name:'50 MW Green',   movAcc:0, pts:20, noEffect:true},
   {id:'50mw_blue',     name:'50 MW Blue',    movAcc:1, pts:20},
   {id:'120mw_blue',    name:'120 MW Blue',   movAcc:1, pts:30},
-  {id:'combo_red',     name:'Combo Red',     movAcc:0, pts:0 },
-  {id:'combo_green',   name:'Combo Green',   movAcc:0, pts:0 },
+  {id:'combo_red',     name:'Combo Red',     movAcc:0, pts:0,  noEffect:true},
+  {id:'combo_green',   name:'Combo Green',   movAcc:0, pts:0,  noEffect:true},
   {id:'ads_taclight',  name:'ADS Taclight',  movAcc:0, pts:0 },
   {id:'flashlight',    name:'Flashlight',    movAcc:0, pts:0 },
   {id:'hip_taclight',  name:'HIP Taclight',  movAcc:0, pts:0 },
@@ -930,10 +949,6 @@ const WEAPON_MAG = {
 //   ADS Bolt       — effect unknown (sniper only; possibly reduces bolt-cycle / ADS time?)
 // TODO - Magazine data still missing:
 //   (none — all weapons now have data)
-// TODO - Muzzle (effect not modeled):
-//   Flash Hider    — reduces muzzle flash visibility (cosmetic only; tierMod:0, no stat effect)
-//   Suppressors    — sound suppression not modeled (bullet velocity penalty already applied)
-// ─────────────────────────────────────────────────────────────────────────────
 const ERGOS = [
   {id:'none',          name:'None',          pts:0},
   {id:'rail_cover',    name:'Rail Cover',    pts:5,  sprSh:-1},
@@ -1037,7 +1052,7 @@ function applyAttachments(w, atts) {
     const defBarrelAdsSpd=BARRELS.find(b=>b.id===defBarrelId)?.adsSpd??0;
     const adsIdx=Math.max(0,Math.min(7,(wm.defAds-1)+magAdsSh-combinedAdsSpd+defBarrelAdsSpd));
     const sprIdx=Math.max(0,Math.min(7,(wm.defSpr-1)+magSprSh+ergoSprSh));
-    const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAmsSh));
+    const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAmsSh+(grp.amsSh??0)));
     _adsTierMs=ADS_SPD_TIERS[adsIdx];
     _sprRecMs=SPRINT_REC_TIERS[sprIdx];
     _adsMoveX=ADS_MOVE_TIERS[amsIdx];
@@ -1049,6 +1064,8 @@ function applyAttachments(w, atts) {
     _label: allTags.length ? w.name+' ('+allTags.join(' · ')+')' : w.name,
     _recoilR: recoilRPct,       // % reduction (positive) or increase (negative) for stats display
     _decayBoost: muz.decayBoost??0,  // spread decay boost from muzzle only
+    _worldSpot: muz.worldSpot??54,
+    _minimapSpot: muz.minimapSpot??150,
     _movAccShift: movAccShift,
     _movAccDeg: movAccDeg,
     _adsSpd: combinedAdsSpd,
@@ -1250,6 +1267,7 @@ function buildAttachmentSection(containerId, atts, weapon) {
       const opt=document.createElement('option'); opt.value=a.id;
       const pts=getAttPts(a,weapon?.id);
       opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
+      if(a.noEffect) opt.style.color='#666';
       if(atts[key]===a.id) opt.selected=true;
       sel.appendChild(opt);
     });
@@ -1371,25 +1389,27 @@ function renderOverview() {
     {lbl:'Base Dmg',    compute:w=>getDmg(w,0), unit:'',    fmt:v=>v.toFixed(1), higherBetter:true},
     {lbl:'HS Mult',     k:'_hsMult',            unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true},
     {lbl:'Fire Rate',   k:'rpm',                unit:'RPM', fmt:v=>v??'—', higherBetter:true},
-    {lbl:'ADS Time',    compute:w=>w._adsTierMs??w.adsTime, unit:'ms', fmt:v=>v!=null?v:'—', lowerBetter:true,
-      estFn:w=>!w._adsTierMs&&w.adsTime!=null},
-    {lbl:'ADS Move Spd',k:'_adsMoveX',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true},
-    {lbl:'Sprint Rec',  k:'_sprRecMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true},
     {lbl:'Bullet Vel',  k:'bulletVel',          unit:'m/s', fmt:v=>v??'—', higherBetter:true},
+    {lbl:'ADS Time',    compute:w=>w._adsTierMs??w.adsTime, unit:'ms', fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
+      estFn:w=>!w._adsTierMs&&w.adsTime!=null},
+    {lbl:'ADS Move Spd',k:'_adsMoveX',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true, group:'mobility'},
+    {lbl:'Sprint Rec',  k:'_sprRecMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility'},
     {lbl:'Mag Size',    k:'mag',                unit:'rds', fmt:v=>v, higherBetter:true},
     {lbl:'Tac Reload',  k:'tacRld',             unit:'s',   fmt:v=>v!=null?(+v).toFixed(3):'—', lowerBetter:true},
     {lbl:'Deploy',      k:'deployT',            unit:'s',   fmt:v=>v??'—', lowerBetter:true},
-    {lbl:'Recoil/Shot', k:'recoilV',            unit:'°',   fmt:v=>v.toFixed(2), lowerBetter:true},
-    {lbl:'Recoil Dir',  k:'recoilDir',          unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true},
-    {lbl:'Move ADS',    k:'_movAccDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true,
+    {lbl:'Recoil/Shot', k:'recoilV',            unit:'°',   fmt:v=>v.toFixed(2), lowerBetter:true, group:'recoil'},
+    {lbl:'Recoil Dir',  k:'recoilDir',          unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true, group:'recoil'},
+    {lbl:'Move ADS',    k:'_movAccDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true, group:'recoil',
       tooltip:'ADS spread while moving. Default 0.32°; improved by blue/violet lasers and light barrel; worsened by most vertical grips.'},
+    {lbl:'3D Spot',     k:'_worldSpot',         unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true},
+    {lbl:'Minimap Spot',k:'_minimapSpot',       unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true},
   ];
   if (primary.pellets) fields.splice(4,0,{lbl:'Pellets',k:'pellets',unit:'',fmt:v=>v});
 
   const qFields=[];
 
   fields.forEach(f=>{
-    const card=document.createElement('div'); card.className='scard';
+    const card=document.createElement('div'); card.className='scard'+(f.group?' stat-group':'');
     card.innerHTML=`<div class="slbl">${f.lbl}</div>`;
     const getVal=w=>f.compute?f.compute(w):w?.[f.k];
     const isEst=(w)=>f.estFn?f.estFn(w):f.est;
@@ -1406,6 +1426,10 @@ function renderOverview() {
         if (f.absDiff) {
           const delta=Math.round(v2-v1);
           diff=`<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta>0?'+':''}${delta}°</span>`;
+        } else if (f.absoluteDelta) {
+          const delta=Math.round(v2-v1);
+          const w2better=(higherBetter&&delta>0)||(lowerBetter&&delta<0);
+          diff=`<span class="diff ${w2better?'d-up':'d-dn'}">${delta>0?'+':''}${delta}m</span>`;
         } else {
           const pct=Math.round(Math.abs(v2-v1)/Math.max(Math.abs(v1),0.001)*100);
           const w2better=(higherBetter&&v2>v1)||(lowerBetter&&v2<v1);
@@ -1461,6 +1485,58 @@ function setRecoilMode(mode) {
 function randomizeRecoilReference() {
   recoilRefSeed=(Math.random()*0x100000000)>>>0;
   renderRecoil();
+}
+
+function defaultAttsForWeapon(weapon) {
+  const atts=blankAtts();
+  validateAtts(atts,weapon);
+  return atts;
+}
+
+function renderAttachmentStats(loadouts) {
+  const el=document.getElementById('attStats');
+  if(!el) return;
+  const signed=(v,unit='',dec=0)=>{
+    const n=+v;
+    const s=(n>0?'+':'')+n.toFixed(dec);
+    return s+unit;
+  };
+  const metrics=[
+    {lbl:'ADS Time',    val:w=>w._adsTierMs??w.adsTime, unit:'ms', dec:0, lowerBetter:true},
+    {lbl:'ADS Move',    val:w=>w._adsMoveX,             unit:'×',  dec:2, higherBetter:true, group:'mobility'},
+    {lbl:'Sprint Rec',  val:w=>w._sprRecMs,             unit:'ms', dec:0, lowerBetter:true, group:'mobility'},
+    {lbl:'Bullet Vel',  val:w=>w.bulletVel,             unit:'m/s',dec:0, higherBetter:true},
+    {lbl:'Mag Size',    val:w=>w.mag,                   unit:'',   dec:0, higherBetter:true},
+    {lbl:'Tac Reload',  val:w=>w.tacRld,                unit:'s',  dec:3, lowerBetter:true},
+    {lbl:'Recoil/Shot', val:w=>w.recoilV,               unit:'°',  dec:2, lowerBetter:true},
+    {lbl:'Variation',   val:w=>w.recoilVar,             unit:'°',  dec:1, lowerBetter:true},
+    {lbl:'Spread/Shot', val:w=>w.recoilIncAds,          unit:'°',  dec:2, lowerBetter:true},
+    {lbl:'Move ADS',    val:w=>w._movAccDeg,            unit:'°',  dec:2, lowerBetter:true},
+    {lbl:'3D Spot',     val:w=>w._worldSpot,             unit:'m',  dec:0, lowerBetter:true},
+    {lbl:'Minimap Spot',val:w=>w._minimapSpot,           unit:'m',  dec:0, lowerBetter:true},
+    {lbl:'HS Mult',     val:w=>w._hsMult,               unit:'×',  dec:2, higherBetter:true},
+  ];
+  let html='<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
+  let rendered=false;
+  loadouts.filter(x=>x.weapon).forEach(({weapon,atts,colClass})=>{
+    const base=applyAttachments(weapon,defaultAttsForWeapon(weapon));
+    const cur=applyAttachments(weapon,atts);
+    const chips=[];
+    metrics.forEach(m=>{
+      const baseVal=m.val(base), curVal=m.val(cur);
+      if(baseVal==null||curVal==null) return;
+      const delta=+(curVal-baseVal).toFixed(Math.max(m.dec,3));
+      if(Math.abs(delta)<0.0005) return;
+      const better=(m.higherBetter&&delta>0)||(m.lowerBetter&&delta<0);
+      const color=better?'var(--green)':'var(--red)';
+      chips.push(`<div class="att-chip"><div class="att-chip-lbl">${m.lbl}</div><div class="att-chip-val" style="color:${color}">${signed(delta,m.unit,m.dec)}</div></div>`);
+    });
+    if(!chips.length) return;
+    rendered=true;
+    html+=`<div class="att-block"><div class="att-name ${colClass}">${weapon.name}</div><div class="att-grid">${chips.join('')}</div></div>`;
+  });
+  if(!rendered) html+='<div class="att-empty">No attachment stat changes</div>';
+  el.innerHTML=html;
 }
 
 function renderChart() {
@@ -1800,6 +1876,10 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
 function renderRecoil() {
   const w1=selW1?applyAttachments(selW1,att1):null;
   const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
+  renderAttachmentStats([
+    {weapon:selW1,atts:att1,colClass:'c1'},
+    {weapon:comparing?selW2:null,atts:att2,colClass:'c2'},
+  ]);
   const pathOnly=recoilMode==='path';
   document.getElementById('rcModeBloom')?.classList.toggle('on',!pathOnly);
   document.getElementById('rcModePath')?.classList.toggle('on',pathOnly);
