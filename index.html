@@ -393,35 +393,28 @@ const GRIPS=[
   // tier=recoil tiers | movAcc:-1=[3] debuff | adsSpd:+1=[2] buff
   // pts includes all buff/debuff costs. weaponPts overrides per weapon ID (class-specific cost).
   {id:'none',           name:'None',                tier:0, movAcc:0,  adsSpd:0, pts:0 },
-  // ── 1-tier recoil ──
+  {id:'factory_angled', name:'Factory Angled',      tier:1, movAcc:0,  adsSpd:1, pts:0,    // LMR27:[1,2,5] SL9:[1,2] DB-12:[1,2,5]−[3]
+    weaponPts:{sl9:20,lmr27:25,db12:15}},
+  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0, pts:10},  // [7]
+  {id:'slim_handstop',  name:'Slim Handstop',       tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
+  {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0, pts:10},  // [1×2] −[3]
+  {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0, pts:20},  // [1×2]
+  {id:'ribbed_vert',    name:'Ribbed Vertical',     tier:3, movAcc:-1, adsSpd:0, pts:20},  // [1×3] −[3]
+  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0, pts:25},  // [1×4] −[3,4]
+  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0, pts:35},  // [1×5] −[3,4]
+  {id:'fold_stubby',    name:'Folding Stubby',      tier:2, movAcc:-1, adsSpd:1, pts:20},  // [1×2,2] −[3]
+  {id:'ribbed_stubby',  name:'Ribbed Stubby',       tier:2, movAcc:0,  adsSpd:1, pts:30},  // [1×2,2]
+  {id:'canted_stubby',  name:'Canted Stubby',       tier:3, movAcc:-1, adsSpd:1, pts:30},  // [1×3,2] −[3]
+  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1, pts:35},  // [1×4,2] −[3,4]
+  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1, pts:45},  // [1×5,2] −[3,4]
   {id:'adj_angled',     name:'Adjustable Angled',   tier:1, movAcc:-1, adsSpd:1, pts:15},  // [1,2,5] −[3]
   {id:'slim_angled',    name:'Slim Angled',         tier:1, movAcc:0,  adsSpd:1, pts:25,   // [1,2,5]; SMG:[1,2]
     weaponPts:{sgx:20,pw5a3:20,pw7a2:20,umg40:20,usg90:20,kv9:20,scw10:20,cz3a1:20}},
-  // ── 2-tier recoil ──
-  {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0, pts:10},  // [1×2] −[3]
-  {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0, pts:20},  // [1×2]
-  {id:'fold_stubby',    name:'Folding Stubby',      tier:2, movAcc:-1, adsSpd:1, pts:20},  // [1×2,2] −[3]
-  {id:'ribbed_stubby',  name:'Ribbed Stubby',       tier:2, movAcc:0,  adsSpd:1, pts:30},  // [1×2,2]
   {id:'full_angled',    name:'Full Angled',         tier:2, movAcc:-1, adsSpd:1, pts:25},  // [1×2,2,5] −[3]
-  // ── 3-tier recoil ──
-  {id:'ribbed_vert',    name:'Ribbed Vertical',     tier:3, movAcc:-1, adsSpd:0, pts:20},  // [1×3] −[3]
-  {id:'canted_stubby',  name:'Canted Stubby',       tier:3, movAcc:0,  adsSpd:1, pts:40},  // [1×3,2]
-  // ── 4-tier recoil ──
-  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0, pts:25},  // [1×4] −[3,4]
-  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1, pts:35},  // [1×4,2] −[3,4]
-  // ── 5-tier recoil ──
-  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0, pts:35},  // [1×5] −[3,4]
-  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1, pts:45},  // [1×5,2] −[3,4]
-  // ── No recoil tier ──
-  {id:'slim_handstop',  name:'Slim Handstop',       tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
-  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0, pts:10},  // [7]
   // ── Sniper-only variants (tier:0 — no recoil control, ADS time only) ──
-  {id:'full_angled_sr', name:'Full Angled',         tier:0, movAcc:-1, adsSpd:1, pts:5 },  // [2,5] −[3]
-  {id:'slim_angled_sr', name:'Slim Angled',         tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
   {id:'lp_stubby_sr',   name:'Low-Profile Stubby',  tier:0, movAcc:0,  adsSpd:1, pts:10},  // [2]
-  // ── Weapon-specific grips ──
-  {id:'factory_angled', name:'Factory Angled',      tier:1, movAcc:0,  adsSpd:1, pts:0,    // LMR27:[1,2,5] SL9:[1,2] DB-12:[1,2,5]−[3]
-    weaponPts:{sl9:20,lmr27:25,db12:15}},
+  {id:'slim_angled_sr', name:'Slim Angled',         tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
+  {id:'full_angled_sr', name:'Full Angled',         tier:0, movAcc:-1, adsSpd:1, pts:5 },  // [2,5] −[3]
 ];
 // ── AMMO ──────────────────────────────────────────────────────────────────────
 // hsMult: null = use weapon base | 'hp' = HP special logic | number = override
