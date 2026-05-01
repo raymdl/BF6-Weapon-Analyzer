@@ -423,7 +423,7 @@ const GRIPS=[
   {id:'none',           name:'None',                tier:0, movAcc:0,  adsSpd:0, pts:0 },
   {id:'factory_angled', name:'Factory Angled',      tier:1, movAcc:0,  adsSpd:1, pts:0,    // LMR27:[1,2,5] SL9:[1,2] DB-12:[1,2,5]−[3]
     weaponPts:{sl9:20,lmr27:25,db12:15}},
-  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0, pts:10},  // [7]
+  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0, pts:10, noEffect:true},  // [7]
   {id:'slim_handstop',  name:'Slim Handstop',       tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
   {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0, pts:10},  // [1×2] −[3]
   {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0, pts:20},  // [1×2]
@@ -454,10 +454,10 @@ const GRIPS=[
 const AMMOS=[
   {id:'standard',    name:'Standard',     hsMult:null               },
   {id:'penetration', name:'Penetration',  hsMult:null, tierMod:-1  },  // −1 recoil tier
-  {id:'lightweight', name:'Lightweight',  hsMult:null },
-  {id:'long_range',  name:'Long-Range',   hsMult:null },
+  {id:'lightweight', name:'Lightweight',  hsMult:null, amsSh:-1 },
+  {id:'long_range',  name:'Long-Range',   hsMult:null, noEffect:true },
   {id:'hollow_pt',   name:'Hollow Point', hsMult:'hp' },  // 1.5; 1.75 for m39emr/svk86/svdm
-  {id:'frangible',   name:'Frangible',    hsMult:null },
+  {id:'frangible',   name:'Frangible',    hsMult:null, noEffect:true },
   {id:'synthetic',   name:'Synthetic',    hsMult:1.75 },
   {id:'buckshot',    name:'Buckshot',     hsMult:1.0  },
   {id:'flechette',   name:'Flechette',    hsMult:1.0  },
@@ -536,9 +536,9 @@ const LASERS=[
   {id:'120mw_blue',    name:'120 MW Blue',   movAcc:1, pts:30},
   {id:'combo_red',     name:'Combo Red',     movAcc:0, pts:0,  noEffect:true},
   {id:'combo_green',   name:'Combo Green',   movAcc:0, pts:0,  noEffect:true},
-  {id:'ads_taclight',  name:'ADS Taclight',  movAcc:0, pts:0 },
-  {id:'flashlight',    name:'Flashlight',    movAcc:0, pts:0 },
-  {id:'hip_taclight',  name:'HIP Taclight',  movAcc:0, pts:0 },
+  {id:'ads_taclight',  name:'ADS Taclight',  movAcc:0, pts:0, noEffect:true },
+  {id:'flashlight',    name:'Flashlight',    movAcc:0, pts:0, noEffect:true },
+  {id:'hip_taclight',  name:'HIP Taclight',  movAcc:0, pts:0, noEffect:true },
 ];
 
 // Per-weapon attachment availability. barrel/barrelDef added for each weapon.
@@ -1052,7 +1052,7 @@ function applyAttachments(w, atts) {
     const defBarrelAdsSpd=BARRELS.find(b=>b.id===defBarrelId)?.adsSpd??0;
     const adsIdx=Math.max(0,Math.min(7,(wm.defAds-1)+magAdsSh-combinedAdsSpd+defBarrelAdsSpd));
     const sprIdx=Math.max(0,Math.min(7,(wm.defSpr-1)+magSprSh+ergoSprSh));
-    const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAmsSh+(grp.amsSh??0)));
+    const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAmsSh+(grp.amsSh??0)+(ammoType.amsSh??0)));
     _adsTierMs=ADS_SPD_TIERS[adsIdx];
     _sprRecMs=SPRINT_REC_TIERS[sprIdx];
     _adsMoveX=ADS_MOVE_TIERS[amsIdx];
@@ -1290,6 +1290,7 @@ function buildAttachmentSection(containerId, atts, weapon) {
       const opt=document.createElement('option'); opt.value=a.id;
       const pts=wAmmo?.ammo?.[a.id]??0;
       opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
+      if(a.noEffect) opt.style.color='#666';
       if((atts.ammo??(wAmmo?.def??'standard'))===a.id) opt.selected=true;
       ammoSel.appendChild(opt);
     });
