@@ -155,6 +155,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                   <button class="mode-btn on" id="modeDmg" onclick="setChartMode('dmg')">DMG</button>
                   <button class="mode-btn" id="modeBtk" onclick="setChartMode('btk')">BTK</button>
                   <button class="mode-btn" id="modeTtk" onclick="setChartMode('ttk')">TTK</button>
+                  <button class="mode-btn" id="adsToggleBtn" onclick="toggleAdsToggle()" style="display:none;margin-left:3px">+ADS</button>
                 </div>
               </div>
               <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer" onchange="setBtkHS(+this.value)">
@@ -382,7 +383,7 @@ const BARRELS=[
   {id:'short',      name:'Short Barrel',          vMult:0.80, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
   {id:'extended',   name:'Extended Barrel',       vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
   {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, pts:10},
-  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:-1, movAcc:0, decayBoost:0, sIncMult:0.90, pts:10},
+  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, pts:10},
   {id:'light',      name:'Light Barrel',          vMult:1.00, adsSpd:1,  movAcc:1, decayBoost:0, sIncMult:1.00, pts:20},
 ];
 const GRIPS=[
@@ -564,13 +565,415 @@ const WEAPON_ATTS = {
   m87a1:   {muzzle:['cqb_supp','light_supp'],barrel:['basic'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['50mw_violet','5mw_red','50mw_blue','5mw_green','50mw_green','120mw_blue']},
   m1014:   {muzzle:['cqb_supp','light_supp'],barrel:['basic'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['ads_taclight','hip_taclight','flashlight']},
   ks18k:   {muzzle:['flash_hider','dp_brake','cqb_supp','light_supp'],barrel:['basic','extended'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['50mw_violet','5mw_red','50mw_blue','5mw_green','50mw_green','120mw_blue']},
-  db12:    {muzzle:['flash_hider','cqb_supp'],barrel:['basic'],barrelDef:'basic',grip:['factory_angled','adj_angled','slim_handstop','fold_vert','alloy_vert','fold_stubby','ribbed_vert','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  db12:    {muzzle:['flash_hider','cqb_supp'],barrel:['basic'],barrelDef:'basic',grip:['factory_angled','slim_handstop','fold_vert','alloy_vert','fold_stubby','ribbed_vert','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
 };
 
 // Moving ADS accuracy tier values (°), index 0 = tightest/best, index 6 = widest/worst
 // Default tier = 3 (0.32°). Grip penalty shifts +1 tier, blue/violet laser or light barrel shifts −1 tier.
 const MOVING_ACC_TIERS=[0.05, 0.13, 0.22, 0.32, 0.43, 0.55, 0.68];
 const DEFAULT_MOV_TIER=3;
+
+// ADS Speed tiers (ms), tier 1=fastest. Lower tier index = better.
+const ADS_SPD_TIERS=[133,167,200,250,300,367,433,500];
+// Sprint Recovery tiers (ms), tier 1=fastest. Lower tier index = better.
+const SPRINT_REC_TIERS=[100,133,167,200,233,267,300,350];
+// ADS Move Speed tiers (multiplier), tier 1=highest/best. Lower tier index = better.
+const ADS_MOVE_TIERS=[0.91,0.82,0.75,0.67,0.60,0.54,0.47,0.42];
+
+// Per-weapon magazine data. defAds/defSpr/defAms = default magazine's tier (1-indexed).
+// adsSh/sprSh/amsSh = tier shift relative to weapon default (+n = worse, -n = better).
+const WEAPON_MAG = {
+  ks18k: {defAds:3,defSpr:2,defAms:4,def:'8_rnd',mags:{
+    '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:2750,adsSh:-1,sprSh:-1,amsSh:-1},
+    '8_rnd':{name:'8 Rnd',pts:5,mag:8,tacRld:2750,adsSh:0,sprSh:0,amsSh:0},
+    '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:2434,adsSh:-1,sprSh:-1,amsSh:-1},
+    '8_fast':{name:'8 Fast',pts:10,mag:8,tacRld:2434,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  ak205: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2484,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2198,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2198,adsSh:0,sprSh:2,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2198,adsSh:0,sprSh:2,amsSh:1},
+    '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  ak4d: {defAds:4,defSpr:3,defAms:5,def:'20_rnd',mags:{
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2467,adsSh:-1,sprSh:0,amsSh:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
+    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2183,adsSh:-1,sprSh:1,amsSh:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
+    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  b36a4: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsSh:0,sprSh:0,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsSh:0,sprSh:-1,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsSh:1,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2384,adsSh:1,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2384,adsSh:1,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:1,sprSh:2,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2384,adsSh:1,sprSh:1,amsSh:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsSh:1,sprSh:2,amsSh:1},
+  }},
+  cz3a1: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2217,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
+    '35_rnd':{name:'35 Rnd',pts:15,mag:35,tacRld:2217,adsSh:0,sprSh:0,amsSh:0},
+    '35_fast':{name:'35 Fast',pts:20,mag:35,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  db12: {defAds:2,defSpr:1,defAms:4,def:'7_rnd',mags:{
+    '7_rnd':{name:'14 Rnd',pts:5,mag:14,tacRld:2348,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  drsiar: {defAds:7,defSpr:4,defAms:6,def:'30_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2183,adsSh:0,sprSh:2,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2183,adsSh:0,sprSh:2,amsSh:1},
+    '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+    '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2467,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  grtbc: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2212,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  grtcps: {defAds:5,defSpr:3,defAms:5,def:'20_rnd',mags:{
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2750,adsSh:-1,sprSh:0,amsSh:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2750,adsSh:0,sprSh:0,amsSh:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2434,adsSh:0,sprSh:1,amsSh:0},
+    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2750,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  kord6p67: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2450,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2168,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2450,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2450,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2168,adsSh:0,sprSh:2,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2450,adsSh:0,sprSh:1,amsSh:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2168,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  kts100: {defAds:6,defSpr:5,defAms:6,def:'60_rnd',mags:{
+    '45_rnd':{name:'45 Rnd',pts:5,mag:45,tacRld:2876,adsSh:-1,sprSh:0,amsSh:0},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:2876,adsSh:0,sprSh:0,amsSh:0},
+    '60_fast':{name:'60 Fast',pts:10,mag:60,tacRld:2876,adsSh:0,sprSh:1,amsSh:0},
+    '45_fast':{name:'45 Fast',pts:10,mag:45,tacRld:2545,adsSh:-1,sprSh:1,amsSh:0},
+    '60_rnd':{name:'60 Rnd',pts:5,mag:60,tacRld:3250,adsSh:0,sprSh:0,amsSh:0},
+    '100_rnd':{name:'100 Rnd',pts:45,mag:100,tacRld:3250,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  kv9: {defAds:2,defSpr:1,defAms:3,def:'17_rnd',mags:{
+    '17_rnd':{name:'17 Rnd',pts:5,mag:17,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
+    '17_fast':{name:'17 Fast',pts:10,mag:17,tacRld:2110,adsSh:0,sprSh:0,amsSh:0},
+    '23_rnd':{name:'23 Rnd',pts:25,mag:23,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
+    '27_rnd':{name:'27 Rnd',pts:45,mag:27,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  l110: {defAds:7,defSpr:6,defAms:7,def:'100_rnd',mags:{
+    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6500,adsSh:0,sprSh:0,amsSh:0},
+    '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6500,adsSh:1,sprSh:2,amsSh:1},
+  }},
+  l85a3: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2449,adsSh:-1,sprSh:0,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2767,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2767,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2449,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2767,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2767,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2449,adsSh:0,sprSh:2,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2767,adsSh:0,sprSh:1,amsSh:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2449,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  lmr27: {defAds:4,defSpr:3,defAms:5,def:'10_rnd',mags:{
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2854,adsSh:0,sprSh:0,amsSh:0},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2526,adsSh:0,sprSh:1,amsSh:0},
+    '15_rnd':{name:'15 Rnd',pts:20,mag:15,tacRld:2854,adsSh:0,sprSh:1,amsSh:1},
+    '15_fast':{name:'15 Fast',pts:25,mag:15,tacRld:2526,adsSh:0,sprSh:2,amsSh:1},
+    '20_rnd':{name:'20 Rnd',pts:45,mag:20,tacRld:2854,adsSh:0,sprSh:1,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:50,mag:20,tacRld:2526,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  m60: {defAds:6,defSpr:6,defAms:5,def:'100_rnd',mags:{
+    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:7350,adsSh:1,sprSh:0,amsSh:2},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:4534,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  m1014: {defAds:4,defSpr:3,defAms:5,def:'6_rnd',mags:{
+    '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:1784,adsSh:-1,sprSh:-1,amsSh:-1},
+    '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1784,adsSh:0,sprSh:0,amsSh:0},
+    '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:1784,adsSh:-1,sprSh:-1,amsSh:-1},
+  }},
+  m121a2: {defAds:6,defSpr:7,defAms:7,def:'50_rnd',mags:{
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:6267,adsSh:0,sprSh:0,amsSh:0},
+    '50_fast':{name:'50 Fast',pts:10,mag:50,tacRld:5550,adsSh:0,sprSh:-1,amsSh:0},
+    '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:6267,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  m123k: {defAds:6,defSpr:6,defAms:7,def:'100_rnd',mags:{
+    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6650,adsSh:0,sprSh:0,amsSh:0},
+    '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6650,adsSh:1,sprSh:2,amsSh:1},
+  }},
+  m2010esr: {defAds:5,defSpr:3,defAms:6,def:'5_rnd',mags:{
+    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:3234,adsSh:0,sprSh:0,amsSh:0},
+    '5_fast':{name:'5 Fast',pts:10,mag:5,tacRld:2862,adsSh:0,sprSh:0,amsSh:0},
+    '8_rnd':{name:'8 Rnd',pts:25,mag:8,tacRld:3234,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  m240l: {defAds:7,defSpr:6,defAms:7,def:'50_rnd',mags:{
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:4250,adsSh:0,sprSh:0,amsSh:0},
+    '75_rnd':{name:'75 Rnd',pts:10,mag:75,tacRld:7000,adsSh:0,sprSh:0,amsSh:0},
+    '100_rnd':{name:'100 Rnd',pts:25,mag:100,tacRld:7000,adsSh:0,sprSh:1,amsSh:0},
+  }},
+  m250: {defAds:7,defSpr:6,defAms:7,def:'50_rnd',mags:{
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:5750,adsSh:0,sprSh:0,amsSh:0},
+    '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:5750,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  m277: {defAds:3,defSpr:2,defAms:4,def:'20_rnd',mags:{
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2110,adsSh:-1,sprSh:0,amsSh:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2183,adsSh:0,sprSh:0,amsSh:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2110,adsSh:0,sprSh:1,amsSh:0},
+    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2384,adsSh:0,sprSh:1,amsSh:1},
+    '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2110,adsSh:0,sprSh:2,amsSh:1},
+    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  m39emr: {defAds:5,defSpr:4,defAms:6,def:'20_rnd',mags:{
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2534,adsSh:-1,sprSh:0,amsSh:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2534,adsSh:0,sprSh:0,amsSh:0},
+    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2242,adsSh:-1,sprSh:1,amsSh:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2242,adsSh:0,sprSh:1,amsSh:0},
+    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2534,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  m417a2: {defAds:3,defSpr:2,defAms:4,def:'20_rnd',mags:{
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2183,adsSh:-1,sprSh:-1,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
+    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  m433: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsSh:-1,sprSh:0,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2384,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2384,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:0,sprSh:2,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  m4a1: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1947,adsSh:-1,sprSh:0,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2000,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2200,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1947,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2000,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2000,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1947,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  m87a1: {defAds:4,defSpr:3,defAms:5,def:'7_rnd',mags:{
+    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
+    '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
+    '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:1334,adsSh:0,sprSh:0,amsSh:0},
+    '5_fast':{name:'5 Fast',pts:20,mag:5,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
+  }},
+  miniscout: {defAds:4,defSpr:2,defAms:4,def:'10_rnd',mags:{
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
+    '15_rnd':{name:'15 Rnd',pts:30,mag:15,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
+    '15_fast':{name:'15 Fast',pts:35,mag:15,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
+    '20_rnd':{name:'20 Rnd',pts:55,mag:20,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
+    '20_fast':{name:'20 Fast',pts:60,mag:20,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  nvo228e: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2212,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  psr: {defAds:7,defSpr:4,defAms:6,def:'10_rnd',mags:{
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:3350,adsSh:0,sprSh:0,amsSh:0},
+    '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:3350,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  pw5a3: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2227,adsSh:0,sprSh:0,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2517,adsSh:0,sprSh:0,amsSh:1},
+  }},
+  pw7a2: {defAds:2,defSpr:1,defAms:1,def:'30_rnd',mags:{
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:1933,adsSh:0,sprSh:0,amsSh:0},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2184,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1933,adsSh:0,sprSh:0,amsSh:0},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2184,adsSh:0,sprSh:0,amsSh:3},
+  }},
+  qbz192: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2567,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2272,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2567,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2567,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  rpkm: {defAds:7,defSpr:4,defAms:6,def:'40_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2800,adsSh:-2,sprSh:0,amsSh:-2},
+    '40_rnd':{name:'40 Rnd',pts:5,mag:40,tacRld:2800,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2478,adsSh:-2,sprSh:1,amsSh:-2},
+    '40_fast':{name:'40 Fast',pts:10,mag:40,tacRld:2478,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2800,adsSh:0,sprSh:0,amsSh:-2},
+    '60_rnd':{name:'60 Rnd',pts:30,mag:60,tacRld:2800,adsSh:0,sprSh:1,amsSh:1},
+    '75_rnd':{name:'75 Rnd',pts:50,mag:75,tacRld:2800,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  scw10: {defAds:2,defSpr:1,defAms:3,def:'15_rnd',mags:{
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
+    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2301,adsSh:0,sprSh:0,amsSh:0},
+    '20_rnd':{name:'20 Rnd',pts:20,mag:20,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
+    '25_rnd':{name:'25 Rnd',pts:45,mag:25,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  sg553r: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2212,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  sgx: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
+    '41_rnd':{name:'41 Rnd',pts:25,mag:41,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  sl9: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2650,adsSh:0,sprSh:0,amsSh:0},
+    '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2650,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  sor300sc: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1991,adsSh:-1,sprSh:0,amsSh:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2250,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2250,adsSh:0,sprSh:0,amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1991,adsSh:0,sprSh:1,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2250,adsSh:0,sprSh:1,amsSh:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2250,adsSh:0,sprSh:1,amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1991,adsSh:0,sprSh:2,amsSh:1},
+  }},
+  sv98: {defAds:5,defSpr:2,defAms:4,def:'10_rnd',mags:{
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  svdm: {defAds:5,defSpr:4,defAms:6,def:'10_rnd',mags:{
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
+    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2212,adsSh:-1,sprSh:1,amsSh:0},
+    '20_rnd':{name:'20 Rnd',pts:45,mag:20,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+  }},
+  svk86: {defAds:7,defSpr:5,defAms:7,def:'10_rnd',mags:{
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2967,adsSh:0,sprSh:0,amsSh:0},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2626,adsSh:0,sprSh:-1,amsSh:0},
+  }},
+  umg40: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+    '25_rnd':{name:'25 Rnd',pts:5,mag:25,tacRld:2517,adsSh:0,sprSh:0,amsSh:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
+    '25_fast':{name:'25 Fast',pts:10,mag:25,tacRld:2227,adsSh:0,sprSh:0,amsSh:-2},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2517,adsSh:0,sprSh:0,amsSh:1},
+  }},
+  usg90: {defAds:3,defSpr:1,defAms:3,def:'50_rnd',mags:{
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:3000,adsSh:0,sprSh:0,amsSh:0},
+  }},
+  // SOR-556 MK2: default 30 Rnd → defAds:4(250ms), defSpr:3(167ms), defAms:5(0.60×)
+  sor556: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2110,adsSh:-1,sprSh:0, amsSh:-2},
+    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2384,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2384,adsSh:0, sprSh:0, amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsSh:0, sprSh:1, amsSh:0},
+    '36_rnd': {name:'36 Rnd', pts:15,mag:36,tacRld:2384,adsSh:0, sprSh:1, amsSh:1},
+    '40_rnd': {name:'40 Rnd', pts:25,mag:40,tacRld:2384,adsSh:0, sprSh:1, amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:0, sprSh:2, amsSh:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsSh:0, sprSh:2, amsSh:1},
+  }},
+  // TR7: default 20 Rnd → defAds:3(200ms), defSpr:3(167ms), defAms:5(0.60×)
+  tr7: {defAds:3,defSpr:3,defAms:5,def:'20_rnd',mags:{
+    '10_fast':{name:'10 Fast',pts:5, mag:10,tacRld:2124,adsSh:0, sprSh:0, amsSh:-3},
+    '15_rnd': {name:'15 Rnd', pts:5, mag:15,tacRld:2124,adsSh:0, sprSh:0, amsSh:0},
+    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2400,adsSh:0, sprSh:0, amsSh:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2124,adsSh:1, sprSh:1, amsSh:0},
+    '25_rnd': {name:'25 Rnd', pts:20,mag:25,tacRld:2400,adsSh:1, sprSh:1, amsSh:1},
+    '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2124,adsSh:1, sprSh:2, amsSh:1},
+    '30_rnd': {name:'30 Rnd', pts:40,mag:30,tacRld:2400,adsSh:1, sprSh:1, amsSh:1},
+  }},
+  // VCR-2: default 30 Rnd → defAds:4(250ms), defSpr:3(167ms), defAms:5(0.60×)
+  vcr2: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+    '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2154,adsSh:-1,sprSh:0, amsSh:-2},
+    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2434,adsSh:-1,sprSh:-1,amsSh:-2},
+    '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2434,adsSh:0, sprSh:0, amsSh:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2154,adsSh:0, sprSh:1, amsSh:0},
+    '36_rnd': {name:'36 Rnd', pts:15,mag:36,tacRld:2434,adsSh:0, sprSh:1, amsSh:1},
+    '40_rnd': {name:'40 Rnd', pts:25,mag:40,tacRld:2434,adsSh:0, sprSh:1, amsSh:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2154,adsSh:0, sprSh:2, amsSh:1},
+  }},
+};
+
+// ── ERGONOMICS ────────────────────────────────────────────────────────────────
+// sprSh: sprint recovery tier shift (-1 = 1 tier better/faster)
+// noEffect: true = attachment cost tracked but stat effect not yet modeled (shown greyed in UI)
+// ── PENDING DATA / EFFECTS ────────────────────────────────────────────────────
+// TODO - Ergonomics (effect unknown):
+//   Mag Flare      — effect unknown (possibly affects reload animation speed?)
+//   Match Trigger  — effect unknown (possibly increases RPM or reduces ADS time?)
+//   ADS Bolt       — effect unknown (sniper only; possibly reduces bolt-cycle / ADS time?)
+// TODO - Magazine data still missing:
+//   (none — all weapons now have data)
+// TODO - Muzzle (effect not modeled):
+//   Flash Hider    — reduces muzzle flash visibility (cosmetic only; tierMod:0, no stat effect)
+//   Suppressors    — sound suppression not modeled (bullet velocity penalty already applied)
+// ─────────────────────────────────────────────────────────────────────────────
+const ERGOS = [
+  {id:'none',          name:'None',          pts:0},
+  {id:'rail_cover',    name:'Rail Cover',    pts:5,  sprSh:-1},
+  {id:'mag_flare',     name:'Mag Flare',     pts:10, noEffect:true},
+  {id:'mag_catch',     name:'Mag Catch',     pts:5},
+  {id:'match_trigger', name:'Match Trigger', pts:15, noEffect:true},
+  {id:'ads_bolt',      name:'ADS Bolt',      pts:30, noEffect:true},
+];
+// avail: which ergonomics are available for this weapon (None always available).
+// magCatchRld: tacRld in ms with Mag Catch equipped, split by regular/fast mag type.
+const WEAPON_ERGO = {
+  m433:    {avail:['mag_flare','match_trigger']},
+  b36a4:   {avail:['match_trigger']},
+  sor556:  {avail:['rail_cover','mag_flare','match_trigger']},
+  ak4d:    {avail:['match_trigger']},
+  tr7:     {avail:['mag_catch','match_trigger'], magCatchRld:{reg:2258,fast:1998}},
+  kord6p67:{avail:['match_trigger']},
+  nvo228e: {avail:['match_trigger']},
+  l85a3:   {avail:['match_trigger']},
+  vcr2:    {avail:['match_trigger']},
+  m4a1:    {avail:['mag_flare','mag_catch','match_trigger','rail_cover'], magCatchRld:{reg:2070,fast:1832}},
+  m277:    {avail:['mag_catch','mag_flare','match_trigger'], magCatchRld:{reg:2243,fast:1985}},
+  ak205:   {avail:['mag_catch','mag_flare','match_trigger'], magCatchRld:{reg:2484,fast:2198}},
+  m417a2:  {avail:['mag_flare','match_trigger']},
+  grtbc:   {avail:['mag_catch','match_trigger'], magCatchRld:{reg:2352,fast:2081}},
+  qbz192:  {avail:['match_trigger','rail_cover']},
+  sg553r:  {avail:['mag_catch','match_trigger'], magCatchRld:{reg:2352,fast:2081}},
+  sor300sc:{avail:['mag_flare','match_trigger','rail_cover']},
+  pw5a3:   {avail:['mag_catch'], magCatchRld:{reg:2368,fast:2095}},
+  pw7a2:   {avail:['mag_catch'], magCatchRld:{reg:2055,fast:1818}},
+  usg90:   {avail:['mag_catch'], magCatchRld:{reg:2822,fast:null}},
+  scw10:   {avail:['mag_catch'], magCatchRld:{reg:2446,fast:2165}},
+  sl9:     {avail:['mag_catch'], magCatchRld:{reg:2493,fast:null}},
+  cz3a1:   {avail:['mag_catch'], magCatchRld:{reg:2086,fast:1846}},
+  l110:    {avail:['rail_cover','mag_flare','match_trigger']},
+  drsiar:  {avail:['mag_flare','match_trigger']},
+  m60:     {avail:['rail_cover','match_trigger']},
+  rpkm:    {avail:['mag_flare','match_trigger']},
+  kts100:  {avail:['rail_cover','match_trigger']},
+  m240l:   {avail:['rail_cover']},
+  m39emr:  {avail:['mag_catch'], magCatchRld:{reg:2384,fast:2110}},
+  lmr27:   {avail:['mag_catch'], magCatchRld:{reg:2854,fast:2526}},
+  svdm:    {avail:['mag_catch'], magCatchRld:{reg:2352,fast:null}},
+  m2010esr:{avail:['ads_bolt']},
+  sv98:    {avail:['mag_catch','ads_bolt'], magCatchRld:{reg:2807,fast:null}},
+  psr:     {avail:['mag_catch','ads_bolt'], magCatchRld:{reg:3151,fast:null}},
+};
 
 // Returns a modified copy of w with attachment stats applied.
 // Adds _label (display name with attachments), _recoilR (% change applied).
@@ -600,7 +1003,40 @@ function applyAttachments(w, atts) {
     : ammoType.hsMult;
   // Ammo label
   const ammoName=ammoType.id!=='standard'?ammoType.name:null;
-  const allTags=[...tags,...(ammoName?[ammoName]:[])];
+  // Ergonomics
+  const ergoData=ERGOS.find(e=>e.id===(atts.ergo??'none'))??ERGOS[0];
+  const ergoSprSh=ergoData.sprSh??0;
+  // Magazine stats
+  const wm=WEAPON_MAG[w.id]??null;
+  const magId=atts.mag??wm?.def??null;
+  const magData=wm?.mags?.[magId]??null;
+  const magAdsSh=magData?.adsSh??0, magSprSh=magData?.sprSh??0, magAmsSh=magData?.amsSh??0;
+  const magMag=magData?.mag??null, magTacRld=magData?.tacRld??null;
+  // Mag Catch tacRld override: use per-weapon reload time based on fast/regular mag
+  const we=WEAPON_ERGO[w.id]??null;
+  let magCatchTacRld=null;
+  if (ergoData.id==='mag_catch' && we?.magCatchRld) {
+    const isFastMag=!!(magData?.name?.toLowerCase().includes('fast'));
+    const rld=isFastMag ? (we.magCatchRld.fast??we.magCatchRld.reg) : we.magCatchRld.reg;
+    if (rld!=null) magCatchTacRld=rld;
+  }
+  // Compute tier indices (0-based), combining magazine shift + grip/barrel adsSpd + ergo sprSh.
+  // defAds was measured with the weapon's default barrel equipped, so we add back its adsSpd
+  // to avoid double-counting (only the delta from the default barrel matters).
+  let _adsTierMs=null, _sprRecMs=null, _adsMoveX=null;
+  if (wm) {
+    const wa=WEAPON_ATTS[w.id]??null;
+    const defBarrelId=wa?.barrelDef??'basic';
+    const defBarrelAdsSpd=BARRELS.find(b=>b.id===defBarrelId)?.adsSpd??0;
+    const adsIdx=Math.max(0,Math.min(7,(wm.defAds-1)+magAdsSh-combinedAdsSpd+defBarrelAdsSpd));
+    const sprIdx=Math.max(0,Math.min(7,(wm.defSpr-1)+magSprSh+ergoSprSh));
+    const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAmsSh));
+    _adsTierMs=ADS_SPD_TIERS[adsIdx];
+    _sprRecMs=SPRINT_REC_TIERS[sprIdx];
+    _adsMoveX=ADS_MOVE_TIERS[amsIdx];
+  }
+  const magTags=magData&&magData.name&&magData.name!==wm?.mags?.[wm?.def]?.name?[magData.name]:[];
+  const allTags=[...tags,...(ammoName?[ammoName]:[]),...magTags];
   return {
     ...w,
     _label: allTags.length ? w.name+' ('+allTags.join(' · ')+')' : w.name,
@@ -609,11 +1045,14 @@ function applyAttachments(w, atts) {
     _movAccShift: movAccShift,
     _movAccDeg: movAccDeg,
     _adsSpd: combinedAdsSpd,
+    _adsTierMs, _sprRecMs, _adsMoveX,
     _hsMult: hsMult,
     recoilV: newRecoilV,
     recoilVar: newRecoilVar,
     recoilIncAds: w.recoilIncAds!=null ? +(w.recoilIncAds*(bar.sIncMult??1)).toFixed(3) : null,
     bulletVel: w.bulletVel!=null ? Math.round(w.bulletVel*bar.vMult) : null,
+    mag: magMag??w.mag,
+    tacRld: magCatchTacRld!=null ? +(magCatchTacRld/1000).toFixed(3) : magTacRld!=null ? +(magTacRld/1000).toFixed(3) : w.tacRld,
   };
 }
 function wLabel(w){ return (w&&w._label) ? w._label : (w?w.name:''); }
@@ -694,8 +1133,8 @@ function btkRanges(w1, w2) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
 let selW1 = null, selW2 = null, comparing = false;
-let dmgChart = null, chartMode = 'dmg', btkHS = 0;
-const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard'});
+let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false;
+const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
 let att1 = blankAtts(), att2 = blankAtts();
 
 const CLASSES = ['Assault Rifle','Carbine','SMG','LMG','DMR','Sniper Rifle','Shotgun'];
@@ -753,6 +1192,8 @@ function validateAtts(atts, weapon) {
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
   atts.barrel = (wa?.barrel?.includes('basic') ? 'basic' : wa?.barrelDef) ?? 'basic';
   atts.ammo   = WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
+  atts.mag    = WEAPON_MAG[weapon?.id]?.def ?? null;
+  atts.ergo   = 'none';
 }
 
 function getAttPts(a, weaponId) {
@@ -761,11 +1202,15 @@ function getAttPts(a, weaponId) {
 }
 function computeAttPts(atts, weapon) {
   const wid=weapon?.id;
+  const wm=WEAPON_MAG[wid]??null;
+  const magPts=wm?.mags?.[atts.mag??wm?.def]?.pts??0;
+  const ergoPts=ERGOS.find(e=>e.id===(atts.ergo??'none'))?.pts??0;
   return getAttPts(MUZZLES.find(a=>a.id===atts.muzzle),wid)
         +getAttPts(BARRELS.find(a=>a.id===atts.barrel),wid)
         +getAttPts(GRIPS.find(a=>a.id===atts.grip),wid)
         +getAttPts(LASERS.find(a=>a.id===atts.laser),wid)
-        +(WEAPON_AMMO[wid]?.ammo?.[atts.ammo??'standard']??0);
+        +(WEAPON_AMMO[wid]?.ammo?.[atts.ammo??'standard']??0)
+        +magPts+ergoPts;
 }
 
 function updateAttTotal(containerId, atts, weapon) {
@@ -830,6 +1275,55 @@ function buildAttachmentSection(containerId, atts, weapon) {
     };
     ammoRow.appendChild(ammoSpan); ammoRow.appendChild(ammoSel); el.appendChild(ammoRow);
   }
+  // Magazine slot — always visible; fallback to selW1 for empty slot 2
+  {
+    const wmDirect=WEAPON_MAG[weapon?.id]??null;
+    const wmFallback=wmDirect??WEAPON_MAG[selW1?.id]??null;
+    const magRow=document.createElement('div'); magRow.className='att-row';
+    const magSpan=document.createElement('span'); magSpan.className='att-lbl'; magSpan.textContent='Mag';
+    const magSel=document.createElement('select'); magSel.className='att-sel';
+    if (wmFallback && Object.keys(wmFallback.mags).length > 0) {
+      const selMagId=atts.mag??wmFallback.def;
+      Object.entries(wmFallback.mags).forEach(([mid,m])=>{
+        const opt=document.createElement('option'); opt.value=mid;
+        opt.textContent=m.pts>0?`${m.name} [${m.pts}]`:m.name;
+        if(selMagId===mid) opt.selected=true;
+        magSel.appendChild(opt);
+      });
+      magSel.onchange=()=>{
+        atts.mag=magSel.value;
+        updateAttTotal(containerId,atts,weapon);
+        renderStats();
+      };
+    } else {
+      const opt=document.createElement('option'); opt.value='none'; opt.textContent='None';
+      magSel.appendChild(opt); magSel.disabled=true;
+    }
+    magRow.appendChild(magSpan); magRow.appendChild(magSel); el.appendChild(magRow);
+  }
+  // Ergonomics slot — always shown
+  {
+    const ergoRow=document.createElement('div'); ergoRow.className='att-row';
+    const ergoSpan=document.createElement('span'); ergoSpan.className='att-lbl'; ergoSpan.textContent='Ergo';
+    const ergoSel=document.createElement('select'); ergoSel.className='att-sel';
+    const we=WEAPON_ERGO[weapon?.id]??null;
+    const availSet=we ? new Set(we.avail) : null;
+    ERGOS.forEach(e=>{
+      if (e.id==='none') { const o=document.createElement('option'); o.value='none'; o.textContent='None'; if((atts.ergo??'none')==='none') o.selected=true; ergoSel.appendChild(o); return; }
+      if (availSet && !availSet.has(e.id)) return;
+      const opt=document.createElement('option'); opt.value=e.id;
+      opt.textContent=e.pts>0?`${e.name} [${e.pts}]`:e.name;
+      if(e.noEffect) opt.style.color='#666';
+      if((atts.ergo??'none')===e.id) opt.selected=true;
+      ergoSel.appendChild(opt);
+    });
+    ergoSel.onchange=()=>{
+      atts.ergo=ergoSel.value;
+      updateAttTotal(containerId,atts,weapon);
+      renderStats();
+    };
+    ergoRow.appendChild(ergoSpan); ergoRow.appendChild(ergoSel); el.appendChild(ergoRow);
+  }
 
   updateAttTotal(containerId,atts,weapon);
 }
@@ -867,39 +1361,39 @@ function renderOverview() {
   grid.innerHTML='';
   const primary = w1||w2;
   const fields=[
-    {lbl:'Base Dmg',   compute:w=>getDmg(w,0), unit:'',    fmt:v=>v.toFixed(1), higherBetter:true},
-    {lbl:'HS Mult',    k:'_hsMult',            unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true},
-    {lbl:'Fire Rate',  k:'rpm',                unit:'RPM', fmt:v=>v??'—'},
-    {lbl:'ADS Time',   k:'adsTime',            unit:'ms',  est:true, fmt:v=>v??'—'},
-    {lbl:'Bullet Vel', k:'bulletVel',          unit:'m/s', fmt:v=>v??'—'},
-    {lbl:'Mag Size',   k:'mag',                unit:'rds', fmt:v=>v},
-    {lbl:'Tac Reload', k:'tacRld',             unit:'s',   fmt:v=>v??'—'},
-    {lbl:'Deploy',     k:'deployT',            unit:'s',   fmt:v=>v??'—'},
-    {lbl:'Recoil/Shot',k:'recoilV',             unit:'°',   fmt:v=>v.toFixed(2)},
-    {lbl:'Recoil Dir', k:'recoilDir',           unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true},
-    {lbl:'Move ADS',   k:'_movAccDeg',          unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true,
+    {lbl:'Base Dmg',    compute:w=>getDmg(w,0), unit:'',    fmt:v=>v.toFixed(1), higherBetter:true},
+    {lbl:'HS Mult',     k:'_hsMult',            unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true},
+    {lbl:'Fire Rate',   k:'rpm',                unit:'RPM', fmt:v=>v??'—', higherBetter:true},
+    {lbl:'ADS Time',    compute:w=>w._adsTierMs??w.adsTime, unit:'ms', fmt:v=>v!=null?v:'—', lowerBetter:true,
+      estFn:w=>!w._adsTierMs&&w.adsTime!=null},
+    {lbl:'ADS Move Spd',k:'_adsMoveX',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true},
+    {lbl:'Sprint Rec',  k:'_sprRecMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true},
+    {lbl:'Bullet Vel',  k:'bulletVel',          unit:'m/s', fmt:v=>v??'—', higherBetter:true},
+    {lbl:'Mag Size',    k:'mag',                unit:'rds', fmt:v=>v, higherBetter:true},
+    {lbl:'Tac Reload',  k:'tacRld',             unit:'s',   fmt:v=>v!=null?(+v).toFixed(3):'—', lowerBetter:true},
+    {lbl:'Deploy',      k:'deployT',            unit:'s',   fmt:v=>v??'—', lowerBetter:true},
+    {lbl:'Recoil/Shot', k:'recoilV',            unit:'°',   fmt:v=>v.toFixed(2), lowerBetter:true},
+    {lbl:'Recoil Dir',  k:'recoilDir',          unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true},
+    {lbl:'Move ADS',    k:'_movAccDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true,
       tooltip:'ADS spread while moving. Default 0.32°; improved by blue/violet lasers and light barrel; worsened by most vertical grips.'},
   ];
   if (primary.pellets) fields.splice(4,0,{lbl:'Pellets',k:'pellets',unit:'',fmt:v=>v});
 
-  // Qualitative attachment mobility labels
-  const adsSpdLabel=v=>v>0?'↑ Faster':v<0?'↓ Slower':'—';
-  const adsSpdColor=v=>v>0?'var(--green)':v<0?'var(--red)':'var(--muted)';
-  const qFields=[
-    {lbl:'ADS Speed', key:'_adsSpd', fmtFn:adsSpdLabel, colFn:adsSpdColor},
-  ];
+  const qFields=[];
 
   fields.forEach(f=>{
     const card=document.createElement('div'); card.className='scard';
     card.innerHTML=`<div class="slbl">${f.lbl}</div>`;
     const getVal=w=>f.compute?f.compute(w):w?.[f.k];
+    const isEst=(w)=>f.estFn?f.estFn(w):f.est;
     if (!w2||!comparing) {
-      const v=getVal(w1||w2);
-      card.innerHTML+=`<div class="sval c1">${f.fmt(v)}<span class="sunit">${f.unit}</span>${f.est?'<span class="sest">est</span>':''}</div>`;
+      const wx=w1||w2;
+      const v=getVal(wx);
+      card.innerHTML+=`<div class="sval c1">${f.fmt(v)}<span class="sunit">${f.unit}</span>${isEst(wx)?'<span class="sest">est</span>':''}</div>`;
     } else {
       const v1=w1?getVal(w1):null, v2=w2?getVal(w2):null;
-      const higherBetter=f.higherBetter||['rpm','bulletVel','mag'].includes(f.k);
-      const lowerBetter=f.lowerBetter||['adsTime','tacRld','deployT','recoilV'].includes(f.k);
+      const higherBetter=f.higherBetter;
+      const lowerBetter=f.lowerBetter;
       let diff='';
       if (v1!=null&&v2!=null&&v1!==v2) {
         if (f.absDiff) {
@@ -911,7 +1405,8 @@ function renderOverview() {
           diff=`<span class="diff ${w2better?'d-up':'d-dn'}">${w2better?'+':'-'}${pct}%</span>`;
         }
       }
-      card.innerHTML+=`<div class="scmp"><div class="scmp-row"><span class="sval c1">${v1!=null?f.fmt(v1):'—'}<span class="sunit">${f.unit}</span>${f.est&&!w2?'<span class="sest">est</span>':''}</span></div><div class="scmp-row"><span class="sval c2">${v2!=null?f.fmt(v2):'—'}<span class="sunit">${f.unit}</span></span>${diff}</div></div>`;
+      const est1=w1?isEst(w1):false, est2=w2?isEst(w2):false;
+      card.innerHTML+=`<div class="scmp"><div class="scmp-row"><span class="sval c1">${v1!=null?f.fmt(v1):'—'}<span class="sunit">${f.unit}</span>${est1?'<span class="sest">est</span>':''}</span></div><div class="scmp-row"><span class="sval c2">${v2!=null?f.fmt(v2):'—'}<span class="sunit">${f.unit}</span>${est2?'<span class="sest">est</span>':''}</span>${diff}</div></div>`;
     }
     grid.appendChild(card);
   });
@@ -937,9 +1432,19 @@ function setChartMode(m) {
   document.getElementById('modeDmg').classList.toggle('on',m==='dmg');
   document.getElementById('modeBtk').classList.toggle('on',m==='btk');
   document.getElementById('modeTtk').classList.toggle('on',m==='ttk');
-  document.getElementById('chartTitle').textContent=m==='btk'?'BTK Chart':m==='ttk'?'TTK Chart':'Damage Chart';
+  const isTtk=m==='ttk';
+  if (!isTtk) { showAds=false; document.getElementById('adsToggleBtn').classList.remove('on'); }
+  document.getElementById('adsToggleBtn').style.display=isTtk?'':'none';
+  document.getElementById('chartTitle').textContent=m==='btk'?'BTK Chart':m==='ttk'?(showAds?'ADS+TTK Chart':'TTK Chart'):'Damage Chart';
   document.getElementById('btkHsSelect').style.display=(m==='btk'||m==='ttk')?'':'none';
   renderChart();
+}
+function toggleAdsToggle() {
+  showAds=!showAds;
+  document.getElementById('adsToggleBtn').classList.toggle('on',showAds);
+  document.getElementById('chartTitle').textContent=showAds?'ADS+TTK Chart':'TTK Chart';
+  renderChart();
+  renderBTK();
 }
 function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
 
@@ -995,7 +1500,11 @@ function renderChart() {
   }
 
   if (chartMode==='ttk') {
-    const ttkDs=(w,color,label)=>({label,data:labels.map(r=>{ const btk=getBTKWithHS(w,r,btkHS); return getTTK(w,btk)??0; }),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before'});
+    const ttkDs=(w,color,label)=>({label,data:labels.map(r=>{
+      const btk=getBTKWithHS(w,r,btkHS);
+      const ttk=getTTK(w,btk)??0;
+      return ttk+(showAds?(w._adsTierMs??0):0);
+    }),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before'});
     const datasets=[];
     if (w1) datasets.push(ttkDs(w1,'#c9a227',wLabel(w1)));
     if (w2) datasets.push(ttkDs(w2,'#4d94d0',wLabel(w2)));
@@ -1007,11 +1516,17 @@ function renderChart() {
         responsive:true, maintainAspectRatio:false, animation:false,
         plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{
           title:items=>'Range: '+(items[0]?.label??'')+'m',
-          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=getBTKWithHS(w,i.dataIndex,btkHS); return `${w.name}: ${fmtTTK(i.raw)} (${btk} BTK)`; }
+          label:i=>{
+            const w=i.datasetIndex===1&&w2?w2:w1;
+            const btk=getBTKWithHS(w,i.dataIndex,btkHS);
+            const ttk=getTTK(w,btk);
+            if (showAds&&w._adsTierMs) return `${w.name}: ${fmtTTK(i.raw)} (${fmtTTK(ttk)} TTK + ${w._adsTierMs}ms ADS)`;
+            return `${w.name}: ${fmtTTK(i.raw)} (${btk} BTK)`;
+          }
         }}},
         scales:{
           x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
-          y:{min:0,max:yMax,title:{display:true,text:'Time to Kill (ms)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',stepSize:100},grid:{color:'rgba(40,48,48,0.6)'}}
+          y:{min:0,max:yMax,title:{display:true,text:showAds?'ADS + Time to Kill (ms)':'Time to Kill (ms)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',stepSize:100},grid:{color:'rgba(40,48,48,0.6)'}}
         }
       }
     });
@@ -1053,15 +1568,17 @@ function renderBTK() {
   const w1=selW1?applyAttachments(selW1,att1):null;
   const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
   const ranges=btkRanges(w1, w2);
+  const ttkHdr=showAds?'ADS+TTK':'TTK';
+  const fmtT=(w,t)=>{ const base=t??0; return fmtTTK(showAds&&w._adsTierMs ? base+w._adsTierMs : t); };
   let html='<table class="btk-tbl"><thead><tr><th>Range</th>';
-  if(w1) html+=`<th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">TTK</th>`;
-  if(w2) html+=`<th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">TTK</th>`;
+  if(w1) html+=`<th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
+  if(w2) html+=`<th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
   html+='</tr></thead><tbody>';
   let prevBTK1=null,prevBTK2=null;
   ranges.forEach(r=>{
     html+=`<tr><td class="rng">${r}m</td>`;
-    if(w1){const b=getBTKWithHS(w1,r,btkHS),t=getTTK(w1,b),chg=prevBTK1!==null&&b!==prevBTK1;html+=`<td class="bv${chg?' bchg':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK1=b;}
-    if(w2){const b=getBTKWithHS(w2,r,btkHS),t=getTTK(w2,b),chg=prevBTK2!==null&&b!==prevBTK2;html+=`<td class="bv${chg?' bchg2':''}">${b}</td><td class="tv">${fmtTTK(t)}</td>`;prevBTK2=b;}
+    if(w1){const b=getBTKWithHS(w1,r,btkHS),t=getTTK(w1,b),chg=prevBTK1!==null&&b!==prevBTK1;html+=`<td class="bv${chg?' bchg':''}">${b}</td><td class="tv">${fmtT(w1,t)}</td>`;prevBTK1=b;}
+    if(w2){const b=getBTKWithHS(w2,r,btkHS),t=getTTK(w2,b),chg=prevBTK2!==null&&b!==prevBTK2;html+=`<td class="bv${chg?' bchg2':''}">${b}</td><td class="tv">${fmtT(w2,t)}</td>`;prevBTK2=b;}
     html+='</tr>';
   });
   html+='</tbody></table>';
