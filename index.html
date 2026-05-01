@@ -85,7 +85,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-title{grid-column:1 / -1;white-space:nowrap}
 .rc-mode-group{display:flex;gap:3px}
 .rc-mode-btn{padding-inline:7px}
-.rc-redraw-btn{grid-column:2;grid-row:2;justify-self:end}
+.rc-ref-actions{grid-column:2;grid-row:2;justify-self:end;display:flex;gap:3px}
 canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:26px}
 .rc-row{display:flex;flex-direction:column;gap:3px}
@@ -201,7 +201,10 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                 <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="setRecoilMode('bloom')" title="Show the reference run with recoil and bloom scatter">Recoil + Bloom</button>
                 <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="setRecoilMode('path')" title="Draw the recoil-only reference path over the bloom spray">Recoil Path</button>
               </div>
-              <button class="mode-btn rc-mode-btn rc-redraw-btn" onclick="randomizeRecoilReference()" title="Draw a new randomized reference run">Redraw</button>
+              <div class="rc-ref-actions">
+                <button class="mode-btn rc-mode-btn" onclick="resetRecoilReference()" title="Reset to the original deterministic reference run">Reset</button>
+                <button class="mode-btn rc-mode-btn" onclick="randomizeRecoilReference()" title="Draw a new randomized reference run">Redraw</button>
+              </div>
             </div>
             <canvas id="rcMain" class="rcv" width="380" height="380"></canvas>
             <div class="rc-legend" id="rcLegend"></div>
@@ -1487,6 +1490,10 @@ function randomizeRecoilReference() {
   recoilRefSeed=(Math.random()*0x100000000)>>>0;
   renderRecoil();
 }
+function resetRecoilReference() {
+  recoilRefSeed=0;
+  renderRecoil();
+}
 
 function defaultAttsForWeapon(weapon) {
   const atts=blankAtts();
@@ -1834,7 +1841,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
   // makes the reference run visually reflect where shots actually land.
   drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
-    const weaponRefSeed=(refSeed^((w===weapon1)?0x13579bdf:0x2468ace0))>>>0;
+    const weaponRefSeed=refSeed>>>0;
     const pts=genRecoilPts(w,N,weaponRefSeed);
     const refPts=pathOnly ? pts : (() => {
       const blooms=simulateBloom(w,N);
