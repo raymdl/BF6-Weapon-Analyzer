@@ -171,10 +171,10 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
               <div style="display:flex;align-items:center;gap:8px">
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Damage Chart</div>
                 <div style="display:flex;gap:3px">
-                  <button class="mode-btn on" id="modeDmg" onclick="setChartMode('dmg')">DMG</button>
-                  <button class="mode-btn" id="modeBtk" onclick="setChartMode('btk')">BTK</button>
-                  <button class="mode-btn" id="modeTtk" onclick="setChartMode('ttk')">TTK</button>
-                  <button class="mode-btn" id="adsToggleBtn" onclick="toggleAdsToggle()" style="display:none;margin-left:3px">+ADS</button>
+                  <button class="mode-btn on" id="modeDmg" onclick="setChartMode('dmg')" title="Shows damage per shot across range, with faint BTK threshold lines.">DMG</button>
+                  <button class="mode-btn" id="modeBtk" onclick="setChartMode('btk')" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
+                  <button class="mode-btn" id="modeTtk" onclick="setChartMode('ttk')" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
+                  <button class="mode-btn" id="adsToggleBtn" onclick="toggleAdsToggle()" style="display:none;margin-left:3px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
                 </div>
               </div>
               <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer" onchange="setBtkHS(+this.value)">
@@ -547,20 +547,20 @@ const LASERS=[
 // Per-weapon attachment availability. barrel/barrelDef added for each weapon.
 // Omitting a slot key means all options are available for that slot.
 const WEAPON_ATTS = {
-  m433:    {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','adj_angled','lp_stubby','slim_angled','classic_vert'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m433:    {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','adj_angled','lp_stubby','slim_angled','classic_vert'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   b36a4:   {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','std_supp','comp_brake','long_supp','light_supp','cqb_supp'],barrel:['basic','heavy','extended','heavy_ext','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  sor556:  {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','std_supp','dp_brake','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['basic','short','heavy','extended','heavy_ext'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','adj_angled','full_angled','classic_vert','lp_stubby','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  sor556:  {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','std_supp','dp_brake','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['basic','short','heavy','extended','heavy_ext'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','adj_angled','full_angled','classic_vert','lp_stubby','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   ak4d:    {muzzle:['flash_hider','flash_comp','linear_comp','long_supp','dp_brake','std_supp','light_supp','cqb_supp','comp_brake'],barrel:['basic','heavy','extended','heavy_ext','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','stipp_stubby','ribbed_stubby','lp_stubby','canted_stubby','slim_angled','adj_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   tr7:     {muzzle:['dp_brake','flash_hider','flash_comp','std_supp','linear_comp','sp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','classic_vert','lp_stubby','canted_stubby','stipp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   kord6p67:{muzzle:['sp_brake','flash_hider','flash_comp','linear_comp','comp_brake','std_supp','cqb_supp','long_supp','light_supp'],barrel:['basic','heavy','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','ribbed_stubby','classic_vert','canted_stubby','stipp_stubby','slim_angled','full_angled','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue','ads_taclight','hip_taclight','flashlight','combo_green']},
   nvo228e: {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','std_supp','cqb_supp','long_supp','light_supp','comp_brake'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','slim_angled','ribbed_vert','6h64_vert','classic_vert','fold_stubby','full_angled','ribbed_stubby','canted_stubby','lp_stubby','stipp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','120mw_blue','50mw_blue']},
   l85a3:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','std_supp','cqb_supp','long_supp','light_supp','comp_brake'],barrel:['basic','heavy','extended','heavy_ext','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','adj_angled','classic_vert','stipp_stubby','fold_stubby','ribbed_stubby','lp_stubby','canted_stubby','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   vcr2:    {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','sp_brake','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','fold_stubby','adj_angled','alloy_vert','ribbed_stubby','slim_angled','slim_handstop','ribbed_vert','canted_stubby','full_angled','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  m4a1:    {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'light',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','classic_vert','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m4a1:    {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','classic_vert','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   m277:    {muzzle:['light_supp','sp_brake','flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp'],barrel:['basic','heavy','extended','heavy_ext','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  ak205:   {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  ak205:   {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','slim_handstop','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   m417a2:  {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','long_supp','light_supp','cqb_supp'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','classic_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  grtbc:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'light',grip:['fold_vert','ribbed_vert','alloy_vert','fold_stubby','6h64_vert','cmpct_handstop','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','flashlight','5mw_green','combo_red','50mw_green','50mw_blue','combo_green','120mw_blue']},
+  grtbc:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','ribbed_vert','alloy_vert','fold_stubby','6h64_vert','cmpct_handstop','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','flashlight','5mw_green','combo_red','50mw_green','50mw_blue','combo_green','120mw_blue']},
   qbz192:  {muzzle:['flash_hider','linear_comp','std_supp'],barrel:['basic','extended'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   sg553r:  {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','sp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   sor300sc:{muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','cmpct_handstop','alloy_vert','ribbed_vert','fold_stubby','adj_angled','6h64_vert','slim_angled','full_angled','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
@@ -568,28 +568,28 @@ const WEAPON_ATTS = {
   pw5a3:   {muzzle:['flash_hider','flash_comp','std_supp','linear_comp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   pw7a2:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy'],barrelDef:'basic',grip:['fold_vert','cmpct_handstop','alloy_vert','ribbed_vert','fold_stubby','slim_angled','6h64_vert','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   umg40:   {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','extended','heavy_ext','light'],barrelDef:'basic',grip:['fold_vert','cmpct_handstop','alloy_vert','ribbed_vert','fold_stubby','slim_angled','6h64_vert','ribbed_stubby','canted_stubby','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  usg90:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','light'],barrelDef:'heavy',grip:[],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  usg90:   {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','light'],barrelDef:'basic',grip:[],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   kv9:     {muzzle:['flash_hider','std_supp','sp_brake','linear_comp','cqb_supp','dp_brake','long_supp','light_supp','comp_brake'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','fold_stubby','lp_stubby','ribbed_stubby','classic_vert','canted_stubby','stipp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   scw10:   {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','classic_vert','ribbed_vert','lp_stubby','6h64_vert','alloy_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','cmpct_handstop','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   sl9:     {muzzle:['flash_hider','linear_comp','std_supp','sp_brake','cqb_supp','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','heavy','extended','heavy_ext','light'],barrelDef:'basic',grip:['factory_angled','adj_angled','fold_stubby','lp_stubby','ribbed_stubby','canted_stubby','stipp_stubby','cmpct_handstop'],laser:['ads_taclight','hip_taclight','50mw_violet','5mw_red','5mw_green','flashlight','50mw_green','50mw_blue','combo_red','120mw_blue','combo_green']},
   cz3a1:   {muzzle:['flash_hider','sp_brake','linear_comp','std_supp','dp_brake','cqb_supp','long_supp','comp_brake','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['fold_vert','fold_stubby','cmpct_handstop','slim_angled','alloy_vert','ribbed_stubby','ribbed_vert','canted_stubby','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   l110:    {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  drsiar:  {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','extended','short'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  m60:     {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','sp_brake','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'light',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','flashlight','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  rpkm:    {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','extended','short'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  m123k:   {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','short','heavy_ext'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  drsiar:  {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m60:     {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','sp_brake','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','flashlight','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  rpkm:    {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','heavy','heavy_ext','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m123k:   {muzzle:['flash_hider','flash_comp','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','short','heavy_ext'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   m250:    {muzzle:['light_supp','flash_hider','flash_comp','linear_comp','dp_brake','sp_brake','comp_brake','std_supp','long_supp','cqb_supp'],barrel:['heavy','heavy_ext'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','adj_angled','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  kts100:  {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','hip_taclight','ads_taclight','5mw_red','flashlight','5mw_green','50mw_green','combo_red','50mw_blue','120mw_blue','combo_green']},
-  m240l:   {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy_ext',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  m121a2:  {muzzle:['flash_hider','flash_comp','std_supp','dp_brake','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['short','heavy','heavy_ext'],barrelDef:'short',grip:['fold_stubby','fold_vert','slim_handstop','alloy_vert','ribbed_stubby','slim_angled','ribbed_vert','canted_stubby','full_angled','stipp_stubby','6h64_vert','lp_stubby','classic_vert'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  m39emr:  {muzzle:['flash_hider','flash_comp','sp_brake','light_supp','std_supp','linear_comp','cqb_supp','dp_brake','long_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  kts100:  {muzzle:['flash_hider','flash_comp','sp_brake','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','hip_taclight','ads_taclight','5mw_red','flashlight','5mw_green','50mw_green','combo_red','50mw_blue','120mw_blue','combo_green']},
+  m240l:   {muzzle:['flash_hider','linear_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['heavy','heavy_ext','light'],barrelDef:'heavy',grip:['fold_vert','alloy_vert','ribbed_vert','fold_stubby','6h64_vert','slim_angled','ribbed_stubby','canted_stubby','full_angled','classic_vert','stipp_stubby','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m121a2:  {muzzle:['flash_hider','flash_comp','std_supp','dp_brake','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['short','heavy','heavy_ext'],barrelDef:'heavy',grip:['fold_stubby','fold_vert','slim_handstop','alloy_vert','ribbed_stubby','slim_angled','ribbed_vert','canted_stubby','full_angled','stipp_stubby','6h64_vert','lp_stubby','classic_vert'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m39emr:  {muzzle:['flash_hider','flash_comp','sp_brake','light_supp','std_supp','linear_comp','cqb_supp','dp_brake','long_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled','slim_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   lmr27:   {muzzle:['flash_hider','flash_comp','linear_comp','sp_brake','std_supp','cqb_supp','long_supp','dp_brake','light_supp','comp_brake'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['factory_angled','fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  svk86:   {muzzle:['sp_brake','dp_brake','std_supp','flash_hider','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['basic','extended','short'],barrelDef:'extended',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','adj_angled','canted_stubby','stipp_stubby','lp_stubby','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  svdm:    {muzzle:['flash_hider','cqb_supp','linear_comp','std_supp','sp_brake','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'short',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  grtcps:  {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','sp_brake','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'extended',grip:['fold_vert','fold_stubby','alloy_vert','ribbed_stubby','slim_angled','slim_handstop','ribbed_vert','canted_stubby','full_angled','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
-  m2010esr:{muzzle:['sp_brake','comp_brake','flash_hider','flash_comp','dp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'light',grip:['full_angled_sr','lp_stubby_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  svk86:   {muzzle:['sp_brake','dp_brake','std_supp','flash_hider','linear_comp','cqb_supp','comp_brake','long_supp','light_supp'],barrel:['basic','extended','short'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','adj_angled','canted_stubby','stipp_stubby','lp_stubby','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  svdm:    {muzzle:['flash_hider','cqb_supp','linear_comp','std_supp','sp_brake','long_supp','dp_brake','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','alloy_vert','ribbed_vert','6h64_vert','classic_vert','fold_stubby','ribbed_stubby','canted_stubby','stipp_stubby','lp_stubby','adj_angled','slim_angled','full_angled'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  grtcps:  {muzzle:['flash_hider','flash_comp','linear_comp','std_supp','sp_brake','cqb_supp','dp_brake','long_supp','comp_brake','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['fold_vert','fold_stubby','alloy_vert','ribbed_stubby','slim_angled','slim_handstop','ribbed_vert','canted_stubby','full_angled','6h64_vert','stipp_stubby','classic_vert','lp_stubby'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  m2010esr:{muzzle:['sp_brake','comp_brake','flash_hider','flash_comp','dp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','light'],barrelDef:'basic',grip:['full_angled_sr','lp_stubby_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   sv98:    {muzzle:['comp_brake','dp_brake','long_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['lp_stubby_sr','full_angled_sr','slim_angled_sr'],laser:['50mw_green']},
-  psr:     {muzzle:['flash_hider','comp_brake','sp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended'],barrelDef:'extended',grip:['lp_stubby_sr','full_angled_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
+  psr:     {muzzle:['flash_hider','comp_brake','sp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended'],barrelDef:'basic',grip:['lp_stubby_sr','full_angled_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   miniscout:{muzzle:['sp_brake','flash_hider','flash_comp','dp_brake','comp_brake','std_supp','long_supp','cqb_supp','light_supp'],barrel:['basic','extended','short','light'],barrelDef:'basic',grip:['full_angled_sr','lp_stubby_sr','slim_angled_sr'],laser:['50mw_violet','5mw_red','5mw_green','50mw_green','50mw_blue','120mw_blue']},
   m87a1:   {muzzle:['cqb_supp','light_supp'],barrel:['basic'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['50mw_violet','5mw_red','50mw_blue','5mw_green','50mw_green','120mw_blue']},
   m1014:   {muzzle:['cqb_supp','light_supp'],barrel:['basic'],barrelDef:'basic',grip:['alloy_vert','ribbed_stubby','stipp_stubby','slim_angled','fold_vert','fold_stubby','adj_angled','6h64_vert','canted_stubby','ribbed_vert','classic_vert','lp_stubby','full_angled'],laser:['ads_taclight','hip_taclight','flashlight']},
@@ -612,13 +612,13 @@ const ADS_MOVE_TIERS=[0.91,0.82,0.75,0.67,0.60,0.54,0.47,0.42];
 // Per-weapon magazine data. defAds/defSpr/defAms = default magazine's tier (1-indexed).
 // adsSh/sprSh/amsSh = tier shift relative to weapon default (+n = worse, -n = better).
 const WEAPON_MAG = {
-  ks18k: {defAds:3,defSpr:2,defAms:4,def:'8_rnd',mags:{
+  ks18k: {defAds:4,defSpr:2,defAms:4,def:'8_rnd',mags:{
     '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:2750,adsSh:-1,sprSh:-1,amsSh:-1},
     '8_rnd':{name:'8 Rnd',pts:5,mag:8,tacRld:2750,adsSh:0,sprSh:0,amsSh:0},
     '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:2434,adsSh:-1,sprSh:-1,amsSh:-1},
     '8_fast':{name:'8 Fast',pts:10,mag:8,tacRld:2434,adsSh:0,sprSh:0,amsSh:0},
   }},
-  ak205: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+  ak205: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2484,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2198,adsSh:0,sprSh:1,amsSh:0},
     '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
@@ -628,14 +628,14 @@ const WEAPON_MAG = {
     '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2198,adsSh:0,sprSh:2,amsSh:1},
     '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
   }},
-  ak4d: {defAds:4,defSpr:3,defAms:5,def:'20_rnd',mags:{
+  ak4d: {defAds:5,defSpr:3,defAms:5,def:'20_rnd',mags:{
     '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2467,adsSh:-1,sprSh:0,amsSh:0},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
     '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2183,adsSh:-1,sprSh:1,amsSh:0},
     '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
     '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
   }},
-  b36a4: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+  b36a4: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsSh:0,sprSh:0,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsSh:0,sprSh:-1,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
@@ -646,17 +646,17 @@ const WEAPON_MAG = {
     '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2384,adsSh:1,sprSh:1,amsSh:1},
     '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsSh:1,sprSh:2,amsSh:1},
   }},
-  cz3a1: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+  cz3a1: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2217,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
     '35_rnd':{name:'35 Rnd',pts:15,mag:35,tacRld:2217,adsSh:0,sprSh:0,amsSh:0},
     '35_fast':{name:'35 Fast',pts:20,mag:35,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
   }},
-  db12: {defAds:2,defSpr:1,defAms:4,def:'7_rnd',mags:{
+  db12: {defAds:3,defSpr:1,defAms:4,def:'7_rnd',mags:{
     '7_rnd':{name:'14 Rnd',pts:5,mag:14,tacRld:2348,adsSh:0,sprSh:0,amsSh:0},
   }},
-  drsiar: {defAds:7,defSpr:4,defAms:6,def:'30_rnd',mags:{
+  drsiar: {defAds:6,defSpr:4,defAms:6,def:'30_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
     '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
@@ -667,7 +667,7 @@ const WEAPON_MAG = {
     '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
     '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2467,adsSh:0,sprSh:2,amsSh:1},
   }},
-  grtbc: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+  grtbc: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsSh:0,sprSh:1,amsSh:0},
     '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
@@ -680,7 +680,7 @@ const WEAPON_MAG = {
     '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2434,adsSh:0,sprSh:1,amsSh:0},
     '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2750,adsSh:0,sprSh:1,amsSh:1},
   }},
-  kord6p67: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+  kord6p67: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2450,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2168,adsSh:0,sprSh:1,amsSh:0},
     '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2450,adsSh:0,sprSh:1,amsSh:1},
@@ -697,7 +697,7 @@ const WEAPON_MAG = {
     '60_rnd':{name:'60 Rnd',pts:5,mag:60,tacRld:3250,adsSh:0,sprSh:0,amsSh:0},
     '100_rnd':{name:'100 Rnd',pts:45,mag:100,tacRld:3250,adsSh:0,sprSh:1,amsSh:1},
   }},
-  kv9: {defAds:2,defSpr:1,defAms:3,def:'17_rnd',mags:{
+  kv9: {defAds:3,defSpr:1,defAms:3,def:'17_rnd',mags:{
     '17_rnd':{name:'17 Rnd',pts:5,mag:17,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
     '17_fast':{name:'17 Fast',pts:10,mag:17,tacRld:2110,adsSh:0,sprSh:0,amsSh:0},
     '23_rnd':{name:'23 Rnd',pts:25,mag:23,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
@@ -707,7 +707,7 @@ const WEAPON_MAG = {
     '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6500,adsSh:0,sprSh:0,amsSh:0},
     '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6500,adsSh:1,sprSh:2,amsSh:1},
   }},
-  l85a3: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+  l85a3: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2449,adsSh:-1,sprSh:0,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2767,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2767,adsSh:0,sprSh:0,amsSh:0},
@@ -718,7 +718,7 @@ const WEAPON_MAG = {
     '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2767,adsSh:0,sprSh:1,amsSh:1},
     '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2449,adsSh:0,sprSh:2,amsSh:1},
   }},
-  lmr27: {defAds:4,defSpr:3,defAms:5,def:'10_rnd',mags:{
+  lmr27: {defAds:5,defSpr:3,defAms:5,def:'10_rnd',mags:{
     '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2854,adsSh:0,sprSh:0,amsSh:0},
     '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2526,adsSh:0,sprSh:1,amsSh:0},
     '15_rnd':{name:'15 Rnd',pts:20,mag:15,tacRld:2854,adsSh:0,sprSh:1,amsSh:1},
@@ -730,21 +730,21 @@ const WEAPON_MAG = {
     '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:7350,adsSh:1,sprSh:0,amsSh:2},
     '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:4534,adsSh:0,sprSh:0,amsSh:0},
   }},
-  m1014: {defAds:4,defSpr:3,defAms:5,def:'6_rnd',mags:{
+  m1014: {defAds:5,defSpr:3,defAms:5,def:'6_rnd',mags:{
     '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:1784,adsSh:-1,sprSh:-1,amsSh:-1},
     '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1784,adsSh:0,sprSh:0,amsSh:0},
     '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:1784,adsSh:-1,sprSh:-1,amsSh:-1},
   }},
-  m121a2: {defAds:6,defSpr:7,defAms:7,def:'50_rnd',mags:{
+  m121a2: {defAds:7,defSpr:7,defAms:7,def:'50_rnd',mags:{
     '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:6267,adsSh:0,sprSh:0,amsSh:0},
     '50_fast':{name:'50 Fast',pts:10,mag:50,tacRld:5550,adsSh:0,sprSh:-1,amsSh:0},
     '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:6267,adsSh:0,sprSh:1,amsSh:1},
   }},
-  m123k: {defAds:6,defSpr:6,defAms:7,def:'100_rnd',mags:{
+  m123k: {defAds:7,defSpr:6,defAms:7,def:'100_rnd',mags:{
     '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6650,adsSh:0,sprSh:0,amsSh:0},
     '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6650,adsSh:1,sprSh:2,amsSh:1},
   }},
-  m2010esr: {defAds:5,defSpr:3,defAms:6,def:'5_rnd',mags:{
+  m2010esr: {defAds:6,defSpr:3,defAms:6,def:'5_rnd',mags:{
     '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:3234,adsSh:0,sprSh:0,amsSh:0},
     '5_fast':{name:'5 Fast',pts:10,mag:5,tacRld:2862,adsSh:0,sprSh:0,amsSh:0},
     '8_rnd':{name:'8 Rnd',pts:25,mag:8,tacRld:3234,adsSh:0,sprSh:0,amsSh:0},
@@ -758,7 +758,7 @@ const WEAPON_MAG = {
     '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:5750,adsSh:0,sprSh:0,amsSh:0},
     '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:5750,adsSh:0,sprSh:2,amsSh:1},
   }},
-  m277: {defAds:3,defSpr:2,defAms:4,def:'20_rnd',mags:{
+  m277: {defAds:4,defSpr:2,defAms:4,def:'20_rnd',mags:{
     '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2110,adsSh:-1,sprSh:0,amsSh:0},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2183,adsSh:0,sprSh:0,amsSh:0},
     '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2110,adsSh:0,sprSh:1,amsSh:0},
@@ -766,20 +766,20 @@ const WEAPON_MAG = {
     '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2110,adsSh:0,sprSh:2,amsSh:1},
     '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
   }},
-  m39emr: {defAds:5,defSpr:4,defAms:6,def:'20_rnd',mags:{
+  m39emr: {defAds:6,defSpr:4,defAms:6,def:'20_rnd',mags:{
     '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2534,adsSh:-1,sprSh:0,amsSh:0},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2534,adsSh:0,sprSh:0,amsSh:0},
     '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2242,adsSh:-1,sprSh:1,amsSh:0},
     '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2242,adsSh:0,sprSh:1,amsSh:0},
     '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2534,adsSh:0,sprSh:1,amsSh:1},
   }},
-  m417a2: {defAds:3,defSpr:2,defAms:4,def:'20_rnd',mags:{
+  m417a2: {defAds:4,defSpr:2,defAms:4,def:'20_rnd',mags:{
     '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2183,adsSh:-1,sprSh:-1,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
     '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
     '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
   }},
-  m433: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+  m433: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsSh:-1,sprSh:0,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
@@ -789,7 +789,7 @@ const WEAPON_MAG = {
     '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:0,sprSh:2,amsSh:1},
     '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
   }},
-  m4a1: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+  m4a1: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1947,adsSh:-1,sprSh:0,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2000,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2200,adsSh:0,sprSh:0,amsSh:0},
@@ -798,13 +798,13 @@ const WEAPON_MAG = {
     '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2000,adsSh:0,sprSh:1,amsSh:1},
     '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1947,adsSh:0,sprSh:2,amsSh:1},
   }},
-  m87a1: {defAds:4,defSpr:3,defAms:5,def:'7_rnd',mags:{
+  m87a1: {defAds:5,defSpr:3,defAms:5,def:'7_rnd',mags:{
     '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
     '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
     '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:1334,adsSh:0,sprSh:0,amsSh:0},
     '5_fast':{name:'5 Fast',pts:20,mag:5,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
   }},
-  miniscout: {defAds:4,defSpr:2,defAms:4,def:'10_rnd',mags:{
+  miniscout: {defAds:5,defSpr:2,defAms:4,def:'10_rnd',mags:{
     '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
     '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
     '15_rnd':{name:'15 Rnd',pts:30,mag:15,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
@@ -812,7 +812,7 @@ const WEAPON_MAG = {
     '20_rnd':{name:'20 Rnd',pts:55,mag:20,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
     '20_fast':{name:'20 Fast',pts:60,mag:20,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
   }},
-  nvo228e: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+  nvo228e: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
@@ -825,25 +825,25 @@ const WEAPON_MAG = {
     '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:3350,adsSh:0,sprSh:0,amsSh:0},
     '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:3350,adsSh:0,sprSh:0,amsSh:0},
   }},
-  pw5a3: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+  pw5a3: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2227,adsSh:0,sprSh:0,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
     '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2517,adsSh:0,sprSh:0,amsSh:1},
   }},
-  pw7a2: {defAds:2,defSpr:1,defAms:1,def:'30_rnd',mags:{
+  pw7a2: {defAds:3,defSpr:1,defAms:1,def:'30_rnd',mags:{
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:1933,adsSh:0,sprSh:0,amsSh:0},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2184,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1933,adsSh:0,sprSh:0,amsSh:0},
     '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2184,adsSh:0,sprSh:0,amsSh:3},
   }},
-  qbz192: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+  qbz192: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2567,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2272,adsSh:0,sprSh:1,amsSh:0},
     '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2567,adsSh:0,sprSh:1,amsSh:1},
     '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2567,adsSh:0,sprSh:1,amsSh:1},
   }},
-  rpkm: {defAds:7,defSpr:4,defAms:6,def:'40_rnd',mags:{
+  rpkm: {defAds:6,defSpr:4,defAms:6,def:'40_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2800,adsSh:-2,sprSh:0,amsSh:-2},
     '40_rnd':{name:'40 Rnd',pts:5,mag:40,tacRld:2800,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2478,adsSh:-2,sprSh:1,amsSh:-2},
@@ -852,13 +852,13 @@ const WEAPON_MAG = {
     '60_rnd':{name:'60 Rnd',pts:30,mag:60,tacRld:2800,adsSh:0,sprSh:1,amsSh:1},
     '75_rnd':{name:'75 Rnd',pts:50,mag:75,tacRld:2800,adsSh:0,sprSh:1,amsSh:1},
   }},
-  scw10: {defAds:2,defSpr:1,defAms:3,def:'15_rnd',mags:{
+  scw10: {defAds:3,defSpr:1,defAms:3,def:'15_rnd',mags:{
     '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
     '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2301,adsSh:0,sprSh:0,amsSh:0},
     '20_rnd':{name:'20 Rnd',pts:20,mag:20,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
     '25_rnd':{name:'25 Rnd',pts:45,mag:25,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
   }},
-  sg553r: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+  sg553r: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
@@ -867,17 +867,17 @@ const WEAPON_MAG = {
     '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
     '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2212,adsSh:0,sprSh:2,amsSh:1},
   }},
-  sgx: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+  sgx: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
     '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
     '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
     '41_rnd':{name:'41 Rnd',pts:25,mag:41,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
   }},
-  sl9: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+  sl9: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2650,adsSh:0,sprSh:0,amsSh:0},
     '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2650,adsSh:0,sprSh:0,amsSh:0},
   }},
-  sor300sc: {defAds:3,defSpr:2,defAms:4,def:'30_rnd',mags:{
+  sor300sc: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1991,adsSh:-1,sprSh:0,amsSh:-2},
     '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2250,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2250,adsSh:0,sprSh:0,amsSh:0},
@@ -886,10 +886,10 @@ const WEAPON_MAG = {
     '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2250,adsSh:0,sprSh:1,amsSh:1},
     '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1991,adsSh:0,sprSh:2,amsSh:1},
   }},
-  sv98: {defAds:5,defSpr:2,defAms:4,def:'10_rnd',mags:{
+  sv98: {defAds:6,defSpr:2,defAms:4,def:'10_rnd',mags:{
     '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
   }},
-  svdm: {defAds:5,defSpr:4,defAms:6,def:'10_rnd',mags:{
+  svdm: {defAds:6,defSpr:4,defAms:6,def:'10_rnd',mags:{
     '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
     '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
     '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2212,adsSh:-1,sprSh:1,amsSh:0},
@@ -899,7 +899,7 @@ const WEAPON_MAG = {
     '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2967,adsSh:0,sprSh:0,amsSh:0},
     '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2626,adsSh:0,sprSh:-1,amsSh:0},
   }},
-  umg40: {defAds:2,defSpr:1,defAms:3,def:'30_rnd',mags:{
+  umg40: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
     '25_rnd':{name:'25 Rnd',pts:5,mag:25,tacRld:2517,adsSh:0,sprSh:0,amsSh:-2},
     '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
     '25_fast':{name:'25 Fast',pts:10,mag:25,tacRld:2227,adsSh:0,sprSh:0,amsSh:-2},
@@ -909,8 +909,8 @@ const WEAPON_MAG = {
   usg90: {defAds:3,defSpr:1,defAms:3,def:'50_rnd',mags:{
     '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:3000,adsSh:0,sprSh:0,amsSh:0},
   }},
-  // SOR-556 MK2: default 30 Rnd → defAds:4(250ms), defSpr:3(167ms), defAms:5(0.60×)
-  sor556: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+  // SOR-556 MK2: default 30 Rnd + Basic Barrel → 250ms ADS, defSpr:3(167ms), defAms:5(0.60×)
+  sor556: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2110,adsSh:-1,sprSh:0, amsSh:-2},
     '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2384,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2384,adsSh:0, sprSh:0, amsSh:0},
@@ -920,8 +920,8 @@ const WEAPON_MAG = {
     '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:0, sprSh:2, amsSh:1},
     '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsSh:0, sprSh:2, amsSh:1},
   }},
-  // TR7: default 20 Rnd → defAds:3(200ms), defSpr:3(167ms), defAms:5(0.60×)
-  tr7: {defAds:3,defSpr:3,defAms:5,def:'20_rnd',mags:{
+  // TR7: default 20 Rnd + Basic Barrel → 200ms ADS, defSpr:3(167ms), defAms:5(0.60×)
+  tr7: {defAds:4,defSpr:3,defAms:5,def:'20_rnd',mags:{
     '10_fast':{name:'10 Fast',pts:5, mag:10,tacRld:2124,adsSh:0, sprSh:0, amsSh:-3},
     '15_rnd': {name:'15 Rnd', pts:5, mag:15,tacRld:2124,adsSh:0, sprSh:0, amsSh:0},
     '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2400,adsSh:0, sprSh:0, amsSh:0},
@@ -930,8 +930,8 @@ const WEAPON_MAG = {
     '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2124,adsSh:1, sprSh:2, amsSh:1},
     '30_rnd': {name:'30 Rnd', pts:40,mag:30,tacRld:2400,adsSh:1, sprSh:1, amsSh:1},
   }},
-  // VCR-2: default 30 Rnd → defAds:4(250ms), defSpr:3(167ms), defAms:5(0.60×)
-  vcr2: {defAds:4,defSpr:3,defAms:5,def:'30_rnd',mags:{
+  // VCR-2: default 30 Rnd + Basic Barrel → 250ms ADS, defSpr:3(167ms), defAms:5(0.60×)
+  vcr2: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
     '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2154,adsSh:-1,sprSh:0, amsSh:-2},
     '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2434,adsSh:-1,sprSh:-1,amsSh:-2},
     '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2434,adsSh:0, sprSh:0, amsSh:0},
@@ -1046,14 +1046,9 @@ function applyAttachments(w, atts) {
     if (rld!=null) magCatchTacRld=rld;
   }
   // Compute tier indices (0-based), combining magazine shift + grip/barrel adsSpd + ergo sprSh.
-  // defAds was measured with the weapon's default barrel equipped, so we add back its adsSpd
-  // to avoid double-counting (only the delta from the default barrel matters).
   let _adsTierMs=null, _sprRecMs=null, _adsMoveX=null;
   if (wm) {
-    const wa=WEAPON_ATTS[w.id]??null;
-    const defBarrelId=wa?.barrelDef??'basic';
-    const defBarrelAdsSpd=BARRELS.find(b=>b.id===defBarrelId)?.adsSpd??0;
-    const adsIdx=Math.max(0,Math.min(7,(wm.defAds-1)+magAdsSh-combinedAdsSpd+defBarrelAdsSpd));
+    const adsIdx=Math.max(0,Math.min(7,(wm.defAds-1)+magAdsSh-combinedAdsSpd));
     const sprIdx=Math.max(0,Math.min(7,(wm.defSpr-1)+magSprSh+ergoSprSh));
     const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAmsSh+(grp.amsSh??0)+(ammoType.amsSh??0)));
     _adsTierMs=ADS_SPD_TIERS[adsIdx];
@@ -1217,7 +1212,7 @@ function validateAtts(atts, weapon) {
   atts.grip   = 'none';
   atts.laser  = 'none';
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
-  atts.barrel = (wa?.barrel?.includes('basic') ? 'basic' : wa?.barrelDef) ?? 'basic';
+  atts.barrel = wa?.barrelDef ?? 'basic';
   atts.ammo   = WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
   atts.mag    = WEAPON_MAG[weapon?.id]?.def ?? null;
   atts.ergo   = 'none';
@@ -1390,30 +1385,46 @@ function renderOverview() {
   grid.innerHTML='';
   const primary = w1||w2;
   const fields=[
-    {lbl:'Base Dmg',    compute:w=>getDmg(w,0), unit:'',    fmt:v=>v.toFixed(1), higherBetter:true},
-    {lbl:'HS Mult',     k:'_hsMult',            unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true},
-    {lbl:'Fire Rate',   k:'rpm',                unit:'RPM', fmt:v=>v??'—', higherBetter:true},
-    {lbl:'Bullet Vel',  k:'bulletVel',          unit:'m/s', fmt:v=>v??'—', higherBetter:true},
+    {lbl:'Base Dmg',    compute:w=>getDmg(w,0), unit:'',    fmt:v=>v.toFixed(1), higherBetter:true,
+      tooltip:'Damage dealt by one body shot at 0m before range falloff.'},
+    {lbl:'HS Mult',     k:'_hsMult',            unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true,
+      tooltip:'Headshot damage multiplier after ammo effects are applied.'},
+    {lbl:'Fire Rate',   k:'rpm',                unit:'RPM', fmt:v=>v??'—', higherBetter:true,
+      tooltip:'Weapon fire rate in rounds per minute.'},
+    {lbl:'Bullet Vel',  k:'bulletVel',          unit:'m/s', fmt:v=>v??'—', higherBetter:true,
+      tooltip:'Projectile velocity after barrel effects are applied. Higher values reduce travel time and lead.'},
     {lbl:'ADS Time',    compute:w=>w._adsTierMs??w.adsTime, unit:'ms', fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
+      tooltip:'Time to aim down sights. Can be affected by magazine, barrel, and grip selections.',
       estFn:w=>!w._adsTierMs&&w.adsTime!=null},
-    {lbl:'ADS Move Spd',k:'_adsMoveX',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true, group:'mobility'},
-    {lbl:'Sprint Rec',  k:'_sprRecMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility'},
-    {lbl:'Mag Size',    k:'mag',                unit:'rds', fmt:v=>v, higherBetter:true},
-    {lbl:'Tac Reload',  k:'tacRld',             unit:'s',   fmt:v=>v!=null?(+v).toFixed(3):'—', lowerBetter:true},
-    {lbl:'Deploy',      k:'deployT',            unit:'s',   fmt:v=>v??'—', lowerBetter:true},
-    {lbl:'Recoil/Shot', k:'recoilV',            unit:'°',   fmt:v=>v.toFixed(2), lowerBetter:true, group:'recoil'},
-    {lbl:'Recoil Dir',  k:'recoilDir',          unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true, group:'recoil'},
+    {lbl:'ADS Move Spd',k:'_adsMoveX',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true, group:'mobility',
+      tooltip:'Movement speed multiplier while aiming down sights. Can be affected by magazine, grip, and ammo selections.'},
+    {lbl:'Sprint Rec',  k:'_sprRecMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
+      tooltip:'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.'},
+    {lbl:'Mag Size',    k:'mag',                unit:'rds', fmt:v=>v, higherBetter:true,
+      tooltip:'Rounds available in the selected magazine.'},
+    {lbl:'Tac Reload',  k:'tacRld',             unit:'s',   fmt:v=>v!=null?(+v).toFixed(3):'—', lowerBetter:true,
+      tooltip:'Tactical reload time in seconds, using the selected magazine and Mag Catch when applicable.'},
+    {lbl:'Deploy',      k:'deployT',            unit:'s',   fmt:v=>v??'—', lowerBetter:true,
+      tooltip:'Weapon deploy time in seconds. Lower is faster.'},
+    {lbl:'Recoil/Shot', k:'recoilV',            unit:'°',   fmt:v=>v.toFixed(2), lowerBetter:true, group:'recoil',
+      tooltip:'Vertical recoil added per shot after recoil-tier attachment effects.'},
+    {lbl:'Recoil Dir',  k:'recoilDir',          unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true, group:'recoil',
+      tooltip:'Average recoil direction from vertical. Positive values pull right; negative values pull left.'},
     {lbl:'Move ADS',    k:'_movAccDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true, group:'recoil',
-      tooltip:'ADS spread while moving. Default 0.32°; improved by blue/violet lasers and light barrel; worsened by most vertical grips.'},
-    {lbl:'3D Spot',     k:'_worldSpot',         unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true},
-    {lbl:'Minimap Spot',k:'_minimapSpot',       unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true},
+      tooltip:'ADS spread while moving. Lower is more accurate. Can be affected by laser and barrel selections.'},
+    {lbl:'3D Spot',     k:'_worldSpot',         unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true,
+      tooltip:'Distance at which firing exposes your 3D world position. None means you are never 3D spotted.'},
+    {lbl:'Minimap Spot',k:'_minimapSpot',       unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true,
+      tooltip:'Distance at which firing exposes you on the minimap.'},
   ];
-  if (primary.pellets) fields.splice(4,0,{lbl:'Pellets',k:'pellets',unit:'',fmt:v=>v});
+  if (primary.pellets) fields.splice(4,0,{lbl:'Pellets',k:'pellets',unit:'',fmt:v=>v,
+    tooltip:'Number of pellets fired per shot. Shotgun damage is pellet damage multiplied by this count.'});
 
   const qFields=[];
 
   fields.forEach(f=>{
     const card=document.createElement('div'); card.className='scard'+(f.group?' stat-group':'');
+    if(f.tooltip) card.title=f.tooltip;
     card.innerHTML=`<div class="slbl">${f.lbl}</div>`;
     const getVal=w=>f.compute?f.compute(w):w?.[f.k];
     const isEst=(w)=>f.estFn?f.estFn(w):f.est;
