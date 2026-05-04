@@ -1831,7 +1831,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
 
   const cols=['#c9a227','#4d94d0'];
   const drawOrder=[weapon1,weapon2].filter(Boolean);
-  const spreadBubbleIdxs=[1,2,4,9,19];
+  const spreadBubbleIdxs=[1,2,4,7,12,19];
 
   // Pass 0 — Spray cloud with bloom jitter ─────────────────────────────────────
   // Each run uses a different recoil seed. Bloom jitter uses a separate RNG so
@@ -1950,7 +1950,7 @@ function renderRecoil() {
   const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, pathOnly, recoilRefSeed, pathOnly&&recoilBloomBubbles);
   const noteEl=document.querySelector('.rc-note');
   if (noteEl&&axis) noteEl.textContent=pathOnly
-    ? `Faded dots = 12 simulated spray runs with recoil+bloom. Line = recoil-only reference path connecting 20 shots.${recoilBloomBubbles?' Bubbles = potential spread on bullets 2, 3, 5, 10, and 20.':''} Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`
+    ? `Faded dots = 12 simulated spray runs with recoil+bloom. Line = recoil-only reference path connecting 20 shots.${recoilBloomBubbles?' Bubbles = potential spread on bullets 2, 3, 5, 8, 13, and 20.':''} Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`
     : `Faded dots = 12 simulated spray runs showing natural shot scatter. Solid dots = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
 
   // Legend
