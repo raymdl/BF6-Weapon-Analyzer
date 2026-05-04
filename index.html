@@ -87,6 +87,10 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-mode-btn{padding-inline:7px}
 .rc-ref-actions{grid-column:2;grid-row:2;justify-self:end;display:flex;gap:3px}
 canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
+.rc-canvas-wrap{position:relative;width:380px;height:380px}
+.rc-scale-controls{position:absolute;top:9px;right:9px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.rc-scale-btn{width:22px;height:22px;min-height:22px;padding:0 0 2px;display:flex;align-items:center;justify-content:center;background:rgba(8,13,13,.82);border:1px solid #345050;border-radius:4px;color:var(--text);font-size:14px;font-weight:700;line-height:0}
+.rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
 .rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:26px}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
@@ -116,6 +120,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .att-sel option{background:var(--bg2)}
 .att-total{font-size:0.65rem;color:var(--accent);text-align:right;margin-top:4px;letter-spacing:.03em}
 .att-total.over{color:#c46464}
+.att-note{font-size:0.58rem;color:var(--muted);line-height:1.35;margin-top:5px}
 .wbtn.p1.p2{background:rgba(130,100,180,.13);border-left-color:var(--accent2);color:var(--accent2)}
 /* Footer */
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
@@ -196,17 +201,24 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
         <div class="rc-layout">
           <div class="rc-plot">
             <div class="rc-head">
-              <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (simulated · 20 shots · fixed scale)</div>
+              <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (simulated · 20 shots · adjustable scale)</div>
               <div class="rc-mode-group">
-                <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="setRecoilMode('bloom')" title="Show the reference run with recoil and bloom scatter">Recoil + Bloom</button>
+                <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="setRecoilMode('bloom')" title="Show the reference run with recoil and bloom scatter">Spray Pattern</button>
                 <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="setRecoilMode('path')" title="Draw the recoil-only reference path over the bloom spray">Recoil Path</button>
+                <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" onclick="toggleRecoilBloomBubbles()" style="display:none" title="Show potential bloom spread bubbles on selected bullets">+Bloom</button>
               </div>
               <div class="rc-ref-actions">
                 <button class="mode-btn rc-mode-btn" onclick="resetRecoilReference()" title="Reset to the original deterministic reference run">Reset</button>
                 <button class="mode-btn rc-mode-btn" onclick="randomizeRecoilReference()" title="Draw a new randomized reference run">Redraw</button>
               </div>
             </div>
-            <canvas id="rcMain" class="rcv" width="380" height="380"></canvas>
+            <div class="rc-canvas-wrap">
+              <div class="rc-scale-controls">
+                <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('in')" title="Zoom in">+</button>
+                <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('out')" title="Zoom out">–</button>
+              </div>
+              <canvas id="rcMain" class="rcv" width="380" height="380"></canvas>
+            </div>
             <div class="rc-legend" id="rcLegend"></div>
             <div class="rc-note"></div>
           </div>
@@ -390,20 +402,20 @@ const RECOIL_DEC_EXP = {
 //              effectiveRecoilV = recoilV × RECOIL_MULT[weapon]^(gripTier + tierMod)
 //              +1 (brakes): slightly reduces recoilV (tradeoff: sway/other negatives)
 //               0 (suppressors, flash hider, linear comp): no direct recoil tier change
-// spreadMult= multiplier on recoilVar; linear comp 0.90 = −10% horizontal spread
+// spreadMult= multiplier on recoilVar; linear comp 0.75 = −25% horizontal spread
 // decayBoost= fractional boost to bloom spread-decay offset (faster recovery)
 // worldSpot/minimapSpot = distance where firing exposes the player; 0 = hidden
 const MUZZLES=[
   {id:'none',        name:'None',                 tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:0 },
   {id:'sp_brake',    name:'Single-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:5 },
   {id:'dp_brake',    name:'Double-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:10},
-  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.5, worldSpot:54, minimapSpot:150, pts:20},
-  {id:'linear_comp', name:'Linear Comp',          tierMod:0,  spreadMult:0.90, decayBoost:0,   worldSpot:54, minimapSpot:150, pts:10 },
+  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:54, minimapSpot:150, pts:20},
+  {id:'linear_comp', name:'Linear Comp',          tierMod:-1, spreadMult:0.75, decayBoost:0,   assumed:true, worldSpot:54, minimapSpot:150, pts:10 },
   {id:'flash_hider', name:'Flash Hider',          tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:150, pts:10},
-  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.5, worldSpot:0,  minimapSpot:150, pts:20},
+  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:0,  minimapSpot:150, pts:20},
   {id:'std_supp',    name:'Std. Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:21, pts:20},
-  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.5, worldSpot:0,  minimapSpot:21, pts:25},
-  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.5, worldSpot:0,  minimapSpot:21, pts:30},
+  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:0,  minimapSpot:21, pts:25},
+  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:0,  minimapSpot:21, pts:30},
   {id:'cqb_supp',    name:'CQB Suppressor',       tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:21, pts:30},
 ];
 const BARRELS=[
@@ -413,8 +425,8 @@ const BARRELS=[
   {id:'basic',      name:'Basic Barrel',          vMult:1.00, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:10},
   {id:'short',      name:'Short Barrel',          vMult:0.80, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
   {id:'extended',   name:'Extended Barrel',       vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
-  {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, pts:10},
-  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, pts:10},
+  {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, assumed:true, pts:10},
+  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, assumed:true, pts:10},
   {id:'light',      name:'Light Barrel',          vMult:1.00, adsSpd:1,  movAcc:1, decayBoost:0, sIncMult:1.00, pts:20},
 ];
 const GRIPS=[
@@ -1014,7 +1026,7 @@ function applyAttachments(w, atts) {
   const mult=RECOIL_MULT[w.id]??0.94;
   const newRecoilV=+(w.recoilV*Math.pow(mult,totalTier)).toFixed(3);
   const recoilRPct=+(100*(1-Math.pow(mult,totalTier))).toFixed(1);
-  // spreadMult stacks from muzzle and grip (linear comp −10%; 6H64/Classic/Stipp/LP grips +10%)
+  // spreadMult stacks from muzzle and grip (linear comp −25%; grip spreadMult support is currently unused)
   const newRecoilVar=+(w.recoilVar*(muz.spreadMult??1)*(grp.spreadMult??1)).toFixed(3);
   const tags=[muz,bar,grp,las].filter(a=>a.id!=='none').map(a=>a.name);
   const combinedAdsSpd=(grp.adsSpd??0)+(bar.adsSpd??0);
@@ -1155,7 +1167,8 @@ function btkRanges(w1, w2) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
 let selW1 = null, selW2 = null, comparing = false;
-let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilMode = 'bloom', recoilRefSeed = 0;
+let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilMode = 'bloom', recoilRefSeed = 0, recoilBloomBubbles = false;
+let recoilScaleH = 5;
 const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
 let att1 = blankAtts(), att2 = blankAtts();
 
@@ -1204,6 +1217,7 @@ function renderSidebar() {
     buildWeaponList('wList2', selClass2, selW2, 1);
     buildAttachmentSection('attSection2', att2, selW2);
   }
+  updateAssumedFootnote();
 }
 
 function validateAtts(atts, weapon) {
@@ -1243,6 +1257,22 @@ function updateAttTotal(containerId, atts, weapon) {
   el.classList.toggle('over', pts>100);
 }
 
+function attDisplayName(a) {
+  return a?.assumed ? `${a.name}*` : a.name;
+}
+function hasSelectedAssumedAtt(atts) {
+  return !!(
+    MUZZLES.find(a=>a.id===atts?.muzzle)?.assumed ||
+    BARRELS.find(a=>a.id===atts?.barrel)?.assumed
+  );
+}
+function updateAssumedFootnote() {
+  document.querySelectorAll('.att-note.assumed-note').forEach(el=>el.remove());
+  const hasAssumed=hasSelectedAssumedAtt(att1)||(comparing&&hasSelectedAssumedAtt(att2));
+  const noteTarget=document.getElementById(comparing?'attSection2':'attSection1');
+  if(hasAssumed&&noteTarget) noteTarget.insertAdjacentHTML('beforeend','<div class="att-note assumed-note">* Assumed stats until datamined attachment values are available.</div>');
+}
+
 function buildAttachmentSection(containerId, atts, weapon) {
   const el=document.getElementById(containerId);
   if (!el) return;
@@ -1264,7 +1294,8 @@ function buildAttachmentSection(containerId, atts, weapon) {
     visible.forEach(a=>{
       const opt=document.createElement('option'); opt.value=a.id;
       const pts=getAttPts(a,weapon?.id);
-      opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
+      const name=attDisplayName(a);
+      opt.textContent=pts>0?`${name} [${pts}]`:name;
       if(a.noEffect) opt.style.color='#666';
       if(atts[key]===a.id) opt.selected=true;
       sel.appendChild(opt);
@@ -1272,14 +1303,14 @@ function buildAttachmentSection(containerId, atts, weapon) {
     sel.onchange=()=>{
       atts[key]=sel.value;
       updateAttTotal(containerId,atts,weapon);
+      updateAssumedFootnote();
       renderStats();
     };
     row.appendChild(span); row.appendChild(sel); el.appendChild(row);
   });
-  // Ammo slot (per-weapon costs from WEAPON_AMMO; fall back to selW1, then generic list)
-  const wAmmo=WEAPON_AMMO[weapon?.id] ?? WEAPON_AMMO[selW1?.id];
-  const shotgunAmmo=new Set(['buckshot','flechette','slugs']);
-  const ammoList=wAmmo ? AMMOS.filter(a=>a.id in wAmmo.ammo) : AMMOS.filter(a=>!shotgunAmmo.has(a.id));
+  // Ammo slot (per-weapon costs from WEAPON_AMMO)
+  const wAmmo=weapon ? WEAPON_AMMO[weapon.id] : null;
+  const ammoList=wAmmo ? AMMOS.filter(a=>a.id in wAmmo.ammo) : [];
   if(ammoList.length>1){
     const ammoRow=document.createElement('div'); ammoRow.className='att-row';
     const ammoSpan=document.createElement('span'); ammoSpan.className='att-lbl'; ammoSpan.textContent='Ammo';
@@ -1299,16 +1330,15 @@ function buildAttachmentSection(containerId, atts, weapon) {
     };
     ammoRow.appendChild(ammoSpan); ammoRow.appendChild(ammoSel); el.appendChild(ammoRow);
   }
-  // Magazine slot — always visible; fallback to selW1 for empty slot 2
+  // Magazine slot: empty compare slots show a disabled None control.
   {
-    const wmDirect=WEAPON_MAG[weapon?.id]??null;
-    const wmFallback=wmDirect??WEAPON_MAG[selW1?.id]??null;
+    const wmDirect=weapon ? (WEAPON_MAG[weapon.id]??null) : null;
     const magRow=document.createElement('div'); magRow.className='att-row';
     const magSpan=document.createElement('span'); magSpan.className='att-lbl'; magSpan.textContent='Mag';
     const magSel=document.createElement('select'); magSel.className='att-sel';
-    if (wmFallback && Object.keys(wmFallback.mags).length > 0) {
-      const selMagId=atts.mag??wmFallback.def;
-      Object.entries(wmFallback.mags).forEach(([mid,m])=>{
+    if (wmDirect && Object.keys(wmDirect.mags).length > 0) {
+      const selMagId=atts.mag??wmDirect.def;
+      Object.entries(wmDirect.mags).forEach(([mid,m])=>{
         const opt=document.createElement('option'); opt.value=mid;
         opt.textContent=m.pts>0?`${m.name} [${m.pts}]`:m.name;
         if(selMagId===mid) opt.selected=true;
@@ -1420,8 +1450,6 @@ function renderOverview() {
   if (primary.pellets) fields.splice(4,0,{lbl:'Pellets',k:'pellets',unit:'',fmt:v=>v,
     tooltip:'Number of pellets fired per shot. Shotgun damage is pellet damage multiplied by this count.'});
 
-  const qFields=[];
-
   fields.forEach(f=>{
     const card=document.createElement('div'); card.className='scard'+(f.group?' stat-group':'');
     if(f.tooltip) card.title=f.tooltip;
@@ -1456,21 +1484,6 @@ function renderOverview() {
     }
     grid.appendChild(card);
   });
-
-  // Qualitative mobility fields — only render when at least one weapon has a non-neutral value
-  qFields.forEach(f=>{
-    const v1=w1?.[f.key]??0, v2=w2?.[f.key]??0;
-    if (v1===0 && v2===0) return; // skip if no effect on either weapon
-    const card=document.createElement('div'); card.className='scard';
-    card.innerHTML=`<div class="slbl">${f.lbl}</div>`;
-    if (!w2||!comparing) {
-      const v=w1?v1:v2;
-      card.innerHTML+=`<div class="sval" style="color:${f.colFn(v)};font-size:0.85rem">${f.fmtFn(v)}</div>`;
-    } else {
-      card.innerHTML+=`<div class="scmp"><span class="sval" style="color:${f.colFn(v1)};font-size:0.85rem">${f.fmtFn(v1)}</span><span class="sval" style="color:${f.colFn(v2)};font-size:0.85rem">${f.fmtFn(v2)}</span></div>`;
-    }
-    grid.appendChild(card);
-  });
 }
 
 function setChartMode(m) {
@@ -1495,6 +1508,18 @@ function toggleAdsToggle() {
 function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
 function setRecoilMode(mode) {
   recoilMode=mode==='path'?'path':'bloom';
+  renderRecoil();
+}
+function toggleRecoilBloomBubbles() {
+  recoilBloomBubbles=!recoilBloomBubbles;
+  renderRecoil();
+}
+function recoilScaleYMax() {
+  return recoilScaleH*2-1;
+}
+function adjustRecoilScale(dir) {
+  recoilScaleH+=dir==='in'?-0.5:0.5;
+  recoilScaleH=Math.max(2,Math.min(10,recoilScaleH));
   renderRecoil();
 }
 function randomizeRecoilReference() {
@@ -1718,19 +1743,17 @@ function genRecoilPts(weapon,shots=20,seed=0) {
   }
   return pts;
 }
-function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
+function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, showBloomBubbles=false) {
   const ctx = canvas.getContext('2d');
   const CW = canvas.width, CH = canvas.height;
   const PL=28, PR=8, PT=8, PB=18;
   const PW=CW-PL-PR, PH=CH-PT-PB;
   const N=20;
 
-  const weapons=[weapon1,weapon2].filter(Boolean);
-
   // ── Fixed scale ─────────────────────────────────────────────────────────────
-  const RC_H    = 6.0;  // ±6° horizontal
+  const RC_H    = recoilScaleH;  // horizontal half-range, centered on 0
   const YMIN    = -1.0;
-  const RC_YMAX = 11.0; // −1°–11° vertical (12°×12° proportional)
+  const RC_YMAX = recoilScaleYMax(); // proportional scale with Y min fixed at -1
 
   const toX  =xDeg=>PL+(xDeg+RC_H)/(2*RC_H)*PW;
   const toY  =yDeg=>PT+PH-((yDeg-YMIN)/(RC_YMAX-YMIN))*PH;
@@ -1749,8 +1772,6 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
   for (let h=hMin1;h<=hMax1;h++) {
     const x=toX(h); ctx.beginPath(); ctx.moveTo(x,PT); ctx.lineTo(x,PT+PH); ctx.stroke();
   }
-  const H_GRID=hMax1;
-
   // ── 0° axes (brighter than dim grid) ───────────────────────────────────────
   ctx.strokeStyle='rgba(150,165,165,0.6)'; ctx.lineWidth=1.5;
   ctx.beginPath(); ctx.moveTo(toX(0),PT); ctx.lineTo(toX(0),PT+PH); ctx.stroke();
@@ -1772,25 +1793,26 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
   }
 
   // ── Bloom simulation ────────────────────────────────────────────────────────
-  // Returns ADS bloom radius (degrees) at each shot [0..shotCount].
+  // Returns ADS bloom radius (degrees) used by each bullet before it fires.
   // Accounts for recoilIncAds (heavy barrel reduces this) and _decayBoost
   // (lightened suppressor / compensated brake speed up bloom recovery).
   function simulateBloom(w, shotCount) {
     const sInc=w.recoilIncAds??0;
     const sMax=w.spreadMax??99;
     const baseline=0.05;
-    if(sInc===0) return Array(shotCount+1).fill(baseline);
+    if(sInc===0) return Array(shotCount).fill(baseline);
     const coef=1.22, exp_=2.5;
     const offset=1.84*(1+(w._decayBoost??0));
     const secBetweenShots=60/(w.rpm??600);
     const dt=1/60;
     const clamp=v=>Math.min(Math.max(v,baseline),sMax);
     let spread=baseline;
-    const spreads=[spread];
-    for(let shot=1;shot<=shotCount;shot++){
-      spread=clamp(spread+sInc);
+    const spreads=[];
+    for(let shot=0;shot<shotCount;shot++){
+      spread=clamp(spread);
       spreads.push(spread);
-      if(shot<shotCount){
+      spread=clamp(spread+sInc);
+      if(shot<shotCount-1){
         let rem=secBetweenShots;
         while(rem>1e-12){
           const step=Math.min(dt,rem);
@@ -1809,6 +1831,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
 
   const cols=['#c9a227','#4d94d0'];
   const drawOrder=[weapon1,weapon2].filter(Boolean);
+  const spreadBubbleIdxs=[1,2,4,9,19];
 
   // Pass 0 — Spray cloud with bloom jitter ─────────────────────────────────────
   // Each run uses a different recoil seed. Bloom jitter uses a separate RNG so
@@ -1832,7 +1855,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
         const angle=dir+spread;
         cx+=Math.sin(angle)*w.recoilV; cy+=Math.cos(angle)*w.recoilV;
         // Apply bloom jitter: bullet lands within the bloom circle
-        const bloom=blooms[i]??baseline;
+        const bloom=blooms[i]??0.05;
         const bAng=rngB()*Math.PI*2;
         const bR=bloom*Math.sqrt(rngB()); // uniform disk sampling
         ctx.beginPath();
@@ -1868,6 +1891,23 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0) {
         return {x:dx,y:dy};
       });
     })();
+    if(pathOnly&&showBloomBubbles){
+      const blooms=simulateBloom(w,N);
+      spreadBubbleIdxs.forEach(idx=>{
+        const p=refPts[idx];
+        if(!p) return;
+        const bloom=blooms[idx]??0.05;
+        const x=toX(p.x), y=toY(p.y);
+        const r=Math.abs(toX(p.x+bloom)-x);
+        ctx.beginPath();
+        ctx.arc(x,y,r,0,Math.PI*2);
+        ctx.fillStyle=col+'1a';
+        ctx.strokeStyle=col+'aa';
+        ctx.lineWidth=1.2;
+        ctx.fill();
+        ctx.stroke();
+      });
+    }
     if(pathOnly&&refPts.length>1){
       ctx.beginPath();
       refPts.forEach((p,i)=>{
@@ -1902,10 +1942,15 @@ function renderRecoil() {
   const pathOnly=recoilMode==='path';
   document.getElementById('rcModeBloom')?.classList.toggle('on',!pathOnly);
   document.getElementById('rcModePath')?.classList.toggle('on',pathOnly);
-  const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, pathOnly, recoilRefSeed);
+  const bloomToggle=document.getElementById('rcBloomToggleBtn');
+  if(bloomToggle){
+    bloomToggle.style.display=pathOnly?'':'none';
+    bloomToggle.classList.toggle('on',pathOnly&&recoilBloomBubbles);
+  }
+  const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, pathOnly, recoilRefSeed, pathOnly&&recoilBloomBubbles);
   const noteEl=document.querySelector('.rc-note');
   if (noteEl&&axis) noteEl.textContent=pathOnly
-    ? `Faded dots = 12 simulated spray runs with recoil+bloom. Line = recoil-only reference path connecting 20 shots. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`
+    ? `Faded dots = 12 simulated spray runs with recoil+bloom. Line = recoil-only reference path connecting 20 shots.${recoilBloomBubbles?' Bubbles = potential spread on bullets 2, 3, 5, 10, and 20.':''} Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`
     : `Faded dots = 12 simulated spray runs showing natural shot scatter. Solid dots = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
 
   // Legend
