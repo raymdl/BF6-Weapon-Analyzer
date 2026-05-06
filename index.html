@@ -85,12 +85,21 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-title{grid-column:1 / -1;white-space:nowrap}
 .rc-mode-group{display:flex;gap:3px}
 .rc-mode-btn{padding-inline:7px}
+.rc-state-group{grid-column:1;grid-row:3;display:flex;gap:4px;margin-top:2px}
 .rc-ref-actions{grid-column:2;grid-row:2;justify-self:end;display:flex;gap:3px}
 canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .rc-canvas-wrap{position:relative;width:380px;height:380px}
-.rc-scale-controls{position:absolute;top:9px;right:9px;z-index:2;display:flex;flex-direction:column;gap:4px}
-.rc-scale-btn{width:22px;height:22px;min-height:22px;padding:0 0 2px;display:flex;align-items:center;justify-content:center;background:rgba(8,13,13,.82);border:1px solid #345050;border-radius:4px;color:var(--text);font-size:14px;font-weight:700;line-height:0}
-.rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
+.rc-scale-controls{position:absolute;top:12px;right:10px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.rc-pan-controls{position:absolute;right:10px;bottom:20px;z-index:2;display:flex;gap:4px}
+.rc-scale-btn,.rc-pan-btn{width:20px;height:20px;min-height:20px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(8,13,13,.82);border:1px solid #345050;border-radius:4px;color:var(--text);font-weight:700;line-height:1}
+.rc-scale-btn:hover,.rc-pan-btn:hover{border-color:var(--accent);color:var(--accent)}
+.rc-pan-icon{display:block;width:0;height:0}
+.rc-pan-btn[data-pan="up"] .rc-pan-icon{border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:5px solid currentColor}
+.rc-pan-btn[data-pan="down"] .rc-pan-icon{border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid currentColor}
+.rc-pan-btn[data-pan="left"] .rc-pan-icon{border-top:4px solid transparent;border-bottom:4px solid transparent;border-right:5px solid currentColor}
+.rc-pan-btn[data-pan="right"] .rc-pan-icon{border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid currentColor}
+.rc-scale-icon{display:block;width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.rc-reset-icon{font-size:12px;line-height:1;transform:translate(0px,-1px)}
 .rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:26px}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
@@ -207,6 +216,12 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                 <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="setRecoilMode('path')" title="Draw the recoil-only reference path over the bloom spray">Recoil Path</button>
                 <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" onclick="toggleRecoilBloomBubbles()" style="display:none" title="Show potential bloom spread bubbles on selected bullets">+Bloom</button>
               </div>
+              <div class="rc-state-group">
+                <button class="mode-btn rc-mode-btn on" id="rcAimAds" onclick="setRecoilAim('ads')" title="Use ADS recoil and spread values">ADS</button>
+                <button class="mode-btn rc-mode-btn" id="rcAimHip" onclick="setRecoilAim('hip')" title="Use hipfire recoil and spread values">Hipfire</button>
+                <button class="mode-btn rc-mode-btn on" id="rcStanceStand" onclick="setRecoilStance('stand')" title="Use standing spread values">Standing</button>
+                <button class="mode-btn rc-mode-btn" id="rcStanceMove" onclick="setRecoilStance('move')" title="Use moving spread values">Moving</button>
+              </div>
               <div class="rc-ref-actions">
                 <button class="mode-btn rc-mode-btn" onclick="resetRecoilReference()" title="Reset to the original deterministic reference run">Reset</button>
                 <button class="mode-btn rc-mode-btn" onclick="randomizeRecoilReference()" title="Draw a new randomized reference run">Redraw</button>
@@ -214,8 +229,15 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
             </div>
             <div class="rc-canvas-wrap">
               <div class="rc-scale-controls">
-                <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('in')" title="Zoom in">+</button>
-                <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('out')" title="Zoom out">–</button>
+                <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('in')" title="Zoom in"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+                <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('out')" title="Zoom out"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+                <button class="rc-scale-btn" type="button" onclick="resetRecoilView()" title="Reset chart view"><span class="rc-reset-icon">↺</span></button>
+              </div>
+              <div class="rc-pan-controls" aria-label="Move chart area">
+                <button class="rc-pan-btn" type="button" data-pan="left" onclick="panRecoilView('left')" title="Move chart left"><span class="rc-pan-icon"></span></button>
+                <button class="rc-pan-btn" type="button" data-pan="up" onclick="panRecoilView('up')" title="Move chart up"><span class="rc-pan-icon"></span></button>
+                <button class="rc-pan-btn" type="button" data-pan="down" onclick="panRecoilView('down')" title="Move chart down"><span class="rc-pan-icon"></span></button>
+                <button class="rc-pan-btn" type="button" data-pan="right" onclick="panRecoilView('right')" title="Move chart right"><span class="rc-pan-icon"></span></button>
               </div>
               <canvas id="rcMain" class="rcv" width="380" height="380"></canvas>
             </div>
@@ -233,119 +255,126 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 
 <script>
 // ── WEAPON DATABASE ──────────────────────────────────────────────────────────
-// recoilV=°/shot, recoilDir=angle from up (°), recoilVar=spread width (°)
-// tacRld/emptyRld in seconds, bulletVel in m/s, adsTime estimated (ms)
-// damage: [{r:range_m, d:damage}] linear interp; pellets field for shotguns
+// Legacy shorthand fields retained for compact weapon rows:
+// recoilV = ADS recoil/shot derived from Sym.gg ADSRecoilAmount × ADSRecoilAmountMultiplier^ADSRecoilAmountMultiplierExponent.
+// recoilDir = Sym.gg ADSRecoilDirection; recoilVar = ADSRecoilDirectionVariation-derived width.
+// recoilIncAds = Sym.gg ADSBaseSpreadInc after ADS-only attachment effects; spreadMax is a fallback max.
+// tacRld/emptyRld in seconds, bulletVel maps Sym.gg velocity, adsTime is estimated (ms).
+// damage: [{r:range_m, d:damage}] linear interp; pellets field for shotguns.
+// spread arrays are [min,max] degrees: adsStand = ADSStandBase*, adsMove = ADSStandMove*,
+// hipStand = HIPStandBase*, hipMove = HIPStandMove*.
+// recoil.ads/hip groups map directly to Sym.gg ADSRecoil* / HIPRecoil* formula inputs.
+// spreadDyn.ads/hip map to Sym.gg ADSBaseSpread* / HIPBaseSpread* decay and increase inputs.
 
 const W = [
 // ── ASSAULT RIFLE ────────────────────────────────────────────────────────────
-{id:'m433',    name:'M433',       cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:830,  mag:31, tacRld:2.38,emptyRld:2.97,deployT:0.63,bulletVel:670, recoilV:0.72,recoilDir:-22,recoilVar:45.1, recoilIncAds:0.27, spreadMax:7, adsTime:250, fireMode:'auto',
+{id:'m433',    name:'M433',       cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:830,  mag:31, tacRld:2.38,emptyRld:2.97,deployT:0.63,bulletVel:670, recoilV:0.72,recoilDir:-22,recoilVar:45.1, recoilIncAds:0.27, spreadMax:7, adsTime:250, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-22,amount:0.6413,amountMult:0.945,amountExp:-2,dirVar:45.1,dirVarMult:0.921103,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-22,amount:0.6413,amountMult:0.945,amountExp:-2,dirVar:45.1,dirVarMult:0.921103,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'b36a4',   name:'B36A4',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:720,  mag:31, tacRld:2.38,emptyRld:2.95,deployT:0.63,bulletVel:780, recoilV:0.66,recoilDir:-15,recoilVar:37.4, recoilIncAds:0.27, spreadMax:7, adsTime:250, fireMode:'auto',
+{id:'b36a4',   name:'B36A4',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:720,  mag:31, tacRld:2.38,emptyRld:2.95,deployT:0.63,bulletVel:780, recoilV:0.66,recoilDir:-15,recoilVar:37.4, recoilIncAds:0.27, spreadMax:7, adsTime:250, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-15,amount:0.5803,amountMult:0.94,amountExp:-2,dirVar:37.4,dirVarMult:0.916351,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-15,amount:0.5803,amountMult:0.94,amountExp:-2,dirVar:37.4,dirVarMult:0.916351,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'sor556',  name:'SOR-556 MK2',cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:568,  mag:31, tacRld:2.38,emptyRld:2.67,deployT:0.63,bulletVel:800, recoilV:0.59,recoilDir:-9, recoilVar:19.0, recoilIncAds:0.27, spreadMax:7, adsTime:260, fireMode:'auto',
+{id:'sor556',  name:'SOR-556 MK2',cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:568,  mag:31, tacRld:2.38,emptyRld:2.67,deployT:0.63,bulletVel:800, recoilV:0.59,recoilDir:-9, recoilVar:19.0, recoilIncAds:0.27, spreadMax:7, adsTime:260, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-9,amount:0.5108,amountMult:0.9317,amountExp:-2,dirVar:19,dirVarMult:0.908771,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-9,amount:0.5108,amountMult:0.9317,amountExp:-2,dirVar:19,dirVarMult:0.908771,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'ak4d',    name:'AK4D',       cls:'Assault Rifle', cal:'7.62×51mm NATO',  rpm:514,  mag:21, tacRld:2.47,emptyRld:3.30,deployT:0.63,bulletVel:720, recoilV:0.80,recoilDir:-18,recoilVar:25.4, recoilIncAds:0.392,spreadMax:7, adsTime:270, fireMode:'auto',
+{id:'ak4d',    name:'AK4D',       cls:'Assault Rifle', cal:'7.62×51mm NATO',  rpm:514,  mag:21, tacRld:2.47,emptyRld:3.30,deployT:0.63,bulletVel:720, recoilV:0.80,recoilDir:-18,recoilVar:25.4, recoilIncAds:0.392,spreadMax:7, adsTime:270, fireMode:'auto', spreadDyn:{ads:{inc:0.392,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-18,amount:0.6991,amountMult:0.9375,amountExp:-2,dirVar:25.4,dirVarMult:0.915484,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1},hip:{dir:-18,amount:0.6991,amountMult:0.9375,amountExp:-2,dirVar:25.4,dirVarMult:0.915484,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
-{id:'tr7',     name:'TR7',        cls:'Assault Rifle', cal:'7.62×51mm NATO',  rpm:720,  mag:21, tacRld:2.40,emptyRld:3.37,deployT:0.63,bulletVel:648, recoilV:1.02,recoilDir:20, recoilVar:47.1, recoilIncAds:0.39, spreadMax:7, adsTime:255, fireMode:'auto',
+{id:'tr7',     name:'TR7',        cls:'Assault Rifle', cal:'7.62×51mm NATO',  rpm:720,  mag:21, tacRld:2.40,emptyRld:3.37,deployT:0.63,bulletVel:648, recoilV:1.02,recoilDir:20, recoilVar:47.1, recoilIncAds:0.39, spreadMax:7, adsTime:255, fireMode:'auto', spreadDyn:{ads:{inc:0.392,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:20,amount:0.9213,amountMult:0.9492,amountExp:-2,dirVar:47.1,dirVarMult:0.926365,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1},hip:{dir:20,amount:0.9213,amountMult:0.9492,amountExp:-2,dirVar:47.1,dirVarMult:0.926365,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
-{id:'kord6p67',name:'KORD 6P67',  cls:'Assault Rifle', cal:'5.45×39mm',       rpm:900,  mag:31, tacRld:2.45,emptyRld:3.02,deployT:0.63,bulletVel:760, recoilV:0.50,recoilDir:18, recoilVar:35.9, recoilIncAds:0.21, spreadMax:7, adsTime:240, fireMode:'auto',
+{id:'kord6p67',name:'KORD 6P67',  cls:'Assault Rifle', cal:'5.45×39mm',       rpm:900,  mag:31, tacRld:2.45,emptyRld:3.02,deployT:0.63,bulletVel:760, recoilV:0.50,recoilDir:18, recoilVar:35.9, recoilIncAds:0.21, spreadMax:7, adsTime:240, fireMode:'auto', spreadDyn:{ads:{inc:0.21,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.378,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:18,amount:0.4414,amountMult:0.94,amountExp:-2,dirVar:35.9,dirVarMult:0.916716,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1},hip:{dir:18,amount:0.4414,amountMult:0.94,amountExp:-2,dirVar:35.9,dirVarMult:0.916716,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:20},{r:21,d:16.7},{r:75,d:14.3}]},
-{id:'nvo228e', name:'NVO-228E',   cls:'Assault Rifle', cal:'7.62×39mm',       rpm:654,  mag:31, tacRld:2.50,emptyRld:2.98,deployT:0.63,bulletVel:671, recoilV:0.70,recoilDir:-12,recoilVar:35.3, recoilIncAds:0.31, spreadMax:7, adsTime:260, fireMode:'auto',
+{id:'nvo228e', name:'NVO-228E',   cls:'Assault Rifle', cal:'7.62×39mm',       rpm:654,  mag:31, tacRld:2.50,emptyRld:2.98,deployT:0.63,bulletVel:671, recoilV:0.70,recoilDir:-12,recoilVar:35.3, recoilIncAds:0.31, spreadMax:7, adsTime:260, fireMode:'auto', spreadDyn:{ads:{inc:0.307,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.552,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-12,amount:0.6176,amountMult:0.9392,amountExp:-2,dirVar:35.3,dirVarMult:0.915777,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1},hip:{dir:-12,amount:0.6176,amountMult:0.9392,amountExp:-2,dirVar:35.3,dirVarMult:0.915777,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:33.4},{r:9,d:27.3},{r:21,d:21.5},{r:36,d:20},{r:75,d:16.7}]},
-{id:'l85a3',   name:'L85A3',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:635,  mag:31, tacRld:2.77,emptyRld:2.73,deployT:0.63,bulletVel:814, recoilV:0.63,recoilDir:12, recoilVar:29.4, recoilIncAds:0.27, spreadMax:7, adsTime:230, fireMode:'auto',
+{id:'l85a3',   name:'L85A3',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:635,  mag:31, tacRld:2.77,emptyRld:2.73,deployT:0.63,bulletVel:814, recoilV:0.63,recoilDir:12, recoilVar:29.4, recoilIncAds:0.27, spreadMax:7, adsTime:230, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:12,amount:0.5489,amountMult:0.9358,amountExp:-2,dirVar:29.4,dirVarMult:0.912494,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:12,amount:0.5489,amountMult:0.9358,amountExp:-2,dirVar:29.4,dirVarMult:0.912494,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'vcr2',    name:'VCR-2',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:900,  mag:31, tacRld:2.43,emptyRld:3.13,deployT:0.63,bulletVel:704, recoilV:0.77,recoilDir:18, recoilVar:49.1, recoilIncAds:0.27, spreadMax:7, adsTime:255, fireMode:'auto',
+{id:'vcr2',    name:'VCR-2',      cls:'Assault Rifle', cal:'5.56×45mm NATO',  rpm:900,  mag:31, tacRld:2.43,emptyRld:3.13,deployT:0.63,bulletVel:704, recoilV:0.77,recoilDir:18, recoilVar:49.1, recoilIncAds:0.27, spreadMax:7, adsTime:255, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:18,amount:0.6922,amountMult:0.9475,amountExp:-2,dirVar:49.1,dirVarMult:0.923357,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:18,amount:0.6922,amountMult:0.9475,amountExp:-2,dirVar:49.1,dirVarMult:0.923357,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
 // ── CARBINE ──────────────────────────────────────────────────────────────────
-{id:'m4a1',    name:'M4A1',       cls:'Carbine', cal:'5.56×45mm NATO',  rpm:900,  mag:31, tacRld:2.20,emptyRld:2.70,deployT:0.53,bulletVel:630, recoilV:0.80,recoilDir:-18,recoilVar:31.9, recoilIncAds:0.23, spreadMax:6, adsTime:200, fireMode:'auto',
+{id:'m4a1',    name:'M4A1',       cls:'Carbine', cal:'5.56×45mm NATO',  rpm:900,  mag:31, tacRld:2.20,emptyRld:2.70,deployT:0.53,bulletVel:630, recoilV:0.80,recoilDir:-18,recoilVar:31.9, recoilIncAds:0.23, spreadMax:6, adsTime:200, fireMode:'auto', spreadDyn:{ads:{inc:0.228,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-18,amount:0.7131,amountMult:0.9425,amountExp:-2,dirVar:31.9,dirVarMult:0.920968,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1},hip:{dir:-18,amount:0.7131,amountMult:0.9425,amountExp:-2,dirVar:31.9,dirVarMult:0.920968,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
-{id:'m277',    name:'M277',       cls:'Carbine', cal:'6.8×51mm',        rpm:720,  mag:21, tacRld:2.38,emptyRld:2.55,deployT:0.53,bulletVel:624, recoilV:0.91,recoilDir:-22,recoilVar:39.4, recoilIncAds:0.31, spreadMax:6, adsTime:210, fireMode:'auto',
+{id:'m277',    name:'M277',       cls:'Carbine', cal:'6.8×51mm',        rpm:720,  mag:21, tacRld:2.38,emptyRld:2.55,deployT:0.53,bulletVel:624, recoilV:0.91,recoilDir:-22,recoilVar:39.4, recoilIncAds:0.31, spreadMax:6, adsTime:210, fireMode:'auto', spreadDyn:{ads:{inc:0.307,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-22,amount:0.8097,amountMult:0.9433,amountExp:-2,dirVar:39.4,dirVarMult:0.920338,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1},hip:{dir:-22,amount:0.8097,amountMult:0.9433,amountExp:-2,dirVar:39.4,dirVarMult:0.920338,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:25},{r:75,d:20}]},
-{id:'ak205',   name:'AK-205',     cls:'Carbine', cal:'5.45×39mm',       rpm:720,  mag:31, tacRld:2.48,emptyRld:2.92,deployT:0.53,bulletVel:737, recoilV:0.48,recoilDir:6,  recoilVar:7.8,  recoilIncAds:0.18, spreadMax:6, adsTime:200, fireMode:'auto',
+{id:'ak205',   name:'AK-205',     cls:'Carbine', cal:'5.45×39mm',       rpm:720,  mag:31, tacRld:2.48,emptyRld:2.92,deployT:0.53,bulletVel:737, recoilV:0.48,recoilDir:6,  recoilVar:7.8,  recoilIncAds:0.18, spreadMax:6, adsTime:200, fireMode:'auto', spreadDyn:{ads:{inc:0.179,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.323,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:6,amount:0.4104,amountMult:0.9292,amountExp:-2,dirVar:7.8,dirVarMult:0.906524,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.905,decOffset:0.06,duration:0.025,decFactor:48,shootingDecScale:1},hip:{dir:6,amount:0.4104,amountMult:0.9292,amountExp:-2,dirVar:7.8,dirVarMult:0.906524,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.905,decOffset:0.06,duration:0.025,decFactor:48,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:20},{r:9,d:17.7},{r:21,d:15},{r:36,d:14.3},{r:75,d:12.5}]},
-{id:'m417a2',  name:'M417 A2',    cls:'Carbine', cal:'7.62×51mm NATO',  rpm:654,  mag:21, tacRld:2.47,emptyRld:2.57,deployT:0.53,bulletVel:600, recoilV:0.89,recoilDir:-16,recoilVar:19.0, recoilIncAds:0.31, spreadMax:6, adsTime:230, fireMode:'auto',
+{id:'m417a2',  name:'M417 A2',    cls:'Carbine', cal:'7.62×51mm NATO',  rpm:654,  mag:21, tacRld:2.47,emptyRld:2.57,deployT:0.53,bulletVel:600, recoilV:0.89,recoilDir:-16,recoilVar:19.0, recoilIncAds:0.31, spreadMax:6, adsTime:230, fireMode:'auto', spreadDyn:{ads:{inc:0.307,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.552,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-16,amount:0.7818,amountMult:0.9392,amountExp:-2,dirVar:19,dirVarMult:0.918644,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1},hip:{dir:-16,amount:0.7818,amountMult:0.9392,amountExp:-2,dirVar:19,dirVarMult:0.918644,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:33.4},{r:9,d:27.3},{r:21,d:21.5},{r:36,d:20},{r:75,d:16.7}]},
-{id:'grtbc',   name:'GRT-BC',     cls:'Carbine', cal:'5.56×45mm NATO',  rpm:830,  mag:31, tacRld:2.50,emptyRld:3.35,deployT:0.53,bulletVel:599, recoilV:0.76,recoilDir:16, recoilVar:27.9, recoilIncAds:0.23, spreadMax:6, adsTime:195, fireMode:'auto',
+{id:'grtbc',   name:'GRT-BC',     cls:'Carbine', cal:'5.56×45mm NATO',  rpm:830,  mag:31, tacRld:2.50,emptyRld:3.35,deployT:0.53,bulletVel:599, recoilV:0.76,recoilDir:16, recoilVar:27.9, recoilIncAds:0.23, spreadMax:6, adsTime:195, fireMode:'auto', spreadDyn:{ads:{inc:0.228,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:16,amount:0.6727,amountMult:0.94,amountExp:-2,dirVar:27.9,dirVarMult:0.91838,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1},hip:{dir:16,amount:0.6727,amountMult:0.94,amountExp:-2,dirVar:27.9,dirVarMult:0.91838,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
-{id:'qbz192',  name:'QBZ-192',    cls:'Carbine', cal:'5.8×42mm',        rpm:771,  mag:31, tacRld:2.57,emptyRld:2.78,deployT:0.53,bulletVel:644, recoilV:0.73,recoilDir:-10,recoilVar:22.5, recoilIncAds:0.23, spreadMax:6, adsTime:200, fireMode:'auto',
+{id:'qbz192',  name:'QBZ-192',    cls:'Carbine', cal:'5.8×42mm',        rpm:771,  mag:31, tacRld:2.57,emptyRld:2.78,deployT:0.53,bulletVel:644, recoilV:0.73,recoilDir:-10,recoilVar:22.5, recoilIncAds:0.23, spreadMax:6, adsTime:200, fireMode:'auto', spreadDyn:{ads:{inc:0.228,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-10,amount:0.638,amountMult:0.9375,amountExp:-2,dirVar:22.5,dirVarMult:0.915936,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1},hip:{dir:-10,amount:0.638,amountMult:0.9375,amountExp:-2,dirVar:22.5,dirVarMult:0.915936,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
-{id:'sg553r',  name:'SG 553R',    cls:'Carbine', cal:'7.62×39mm',       rpm:720,  mag:31, tacRld:2.50,emptyRld:2.93,deployT:0.53,bulletVel:519, recoilV:0.75,recoilDir:-20,recoilVar:33.8, recoilIncAds:0.27, spreadMax:6, adsTime:205, fireMode:'auto',
+{id:'sg553r',  name:'SG 553R',    cls:'Carbine', cal:'7.62×39mm',       rpm:720,  mag:31, tacRld:2.50,emptyRld:2.93,deployT:0.53,bulletVel:519, recoilV:0.75,recoilDir:-20,recoilVar:33.8, recoilIncAds:0.27, spreadMax:6, adsTime:205, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.552,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-20,amount:0.6671,amountMult:0.94,amountExp:-2,dirVar:33.8,dirVarMult:0.9172,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-20,amount:0.6671,amountMult:0.94,amountExp:-2,dirVar:33.8,dirVarMult:0.9172,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:33.4},{r:9,d:25},{r:21,d:20},{r:36,d:16.7},{r:75,d:14.3}]},
-{id:'sor300sc',name:'SOR-300SC',  cls:'Carbine', cal:'.300 BLK',        rpm:600,  mag:31, tacRld:2.25,emptyRld:3.28,deployT:0.53,bulletVel:563, recoilV:0.69,recoilDir:-12,recoilVar:19.2, recoilIncAds:0.27, spreadMax:6, adsTime:195, fireMode:'auto',
+{id:'sor300sc',name:'SOR-300SC',  cls:'Carbine', cal:'.300 BLK',        rpm:600,  mag:31, tacRld:2.25,emptyRld:3.28,deployT:0.53,bulletVel:563, recoilV:0.69,recoilDir:-12,recoilVar:19.2, recoilIncAds:0.27, spreadMax:6, adsTime:195, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.552,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-12,amount:0.5989,amountMult:0.9342,amountExp:-2,dirVar:19.2,dirVarMult:0.912033,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-12,amount:0.5989,amountMult:0.9342,amountExp:-2,dirVar:19.2,dirVarMult:0.912033,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,7],hipStand:[1.804,6],hipMove:[2.255,7]},
  dmg:[{r:0,d:33.4},{r:9,d:25},{r:21,d:20},{r:36,d:16.7},{r:75,d:14.3}]},
 // ── SMG ──────────────────────────────────────────────────────────────────────
-{id:'sgx',     name:'SGX',        cls:'SMG', cal:'9×19mm',      rpm:830,  mag:31, tacRld:2.52,emptyRld:2.92,deployT:0.47,bulletVel:402, recoilV:0.54,recoilDir:-18,recoilVar:36.7, recoilIncAds:0.21, spreadMax:6, adsTime:175, fireMode:'auto',
+{id:'sgx',     name:'SGX',        cls:'SMG', cal:'9×19mm',      rpm:830,  mag:31, tacRld:2.52,emptyRld:2.92,deployT:0.47,bulletVel:402, recoilV:0.54,recoilDir:-18,recoilVar:36.7, recoilIncAds:0.21, spreadMax:6, adsTime:175, fireMode:'auto', spreadDyn:{ads:{inc:0.21,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-18,amount:0.4721,amountMult:0.9383,amountExp:-2,dirVar:36.7,dirVarMult:0.914221,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1},hip:{dir:-18,amount:0.4721,amountMult:0.9383,amountExp:-2,dirVar:36.7,dirVarMult:0.914221,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
-{id:'pw5a3',   name:'PW5A3',      cls:'SMG', cal:'9×19mm',      rpm:771,  mag:31, tacRld:2.52,emptyRld:2.90,deployT:0.47,bulletVel:432, recoilV:0.51,recoilDir:-10,recoilVar:31.4, recoilIncAds:0.21, spreadMax:6, adsTime:175, fireMode:'auto',
+{id:'pw5a3',   name:'PW5A3',      cls:'SMG', cal:'9×19mm',      rpm:771,  mag:31, tacRld:2.52,emptyRld:2.90,deployT:0.47,bulletVel:432, recoilV:0.51,recoilDir:-10,recoilVar:31.4, recoilIncAds:0.21, spreadMax:6, adsTime:175, fireMode:'auto', spreadDyn:{ads:{inc:0.21,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-10,amount:0.4503,amountMult:0.9358,amountExp:-2,dirVar:31.4,dirVarMult:0.912082,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1},hip:{dir:-10,amount:0.4503,amountMult:0.9358,amountExp:-2,dirVar:31.4,dirVarMult:0.912082,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
-{id:'pw7a2',   name:'PW7A2',      cls:'SMG', cal:'4.6×30mm',    rpm:947,  mag:31, tacRld:2.18,emptyRld:3.09,deployT:0.47,bulletVel:600, recoilV:0.49,recoilDir:-10,recoilVar:33.3, recoilIncAds:0.17, spreadMax:6, adsTime:165, fireMode:'auto',
+{id:'pw7a2',   name:'PW7A2',      cls:'SMG', cal:'4.6×30mm',    rpm:947,  mag:31, tacRld:2.18,emptyRld:3.09,deployT:0.47,bulletVel:600, recoilV:0.49,recoilDir:-10,recoilVar:33.3, recoilIncAds:0.17, spreadMax:6, adsTime:165, fireMode:'auto', spreadDyn:{ads:{inc:0.166,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.299,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-10,amount:0.4289,amountMult:0.9375,amountExp:-2,dirVar:33.3,dirVarMult:0.913947,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.919,decOffset:0.06,duration:0.025,decFactor:46,shootingDecScale:1},hip:{dir:-10,amount:0.4289,amountMult:0.9375,amountExp:-2,dirVar:33.3,dirVarMult:0.913947,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.919,decOffset:0.06,duration:0.025,decFactor:46,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:16.7},{r:21,d:14.3},{r:75,d:12.5}]},
-{id:'umg40',   name:'UMG-40',     cls:'SMG', cal:'.40 S&W',     rpm:635,  mag:31, tacRld:2.52,emptyRld:2.92,deployT:0.47,bulletVel:488, recoilV:0.56,recoilDir:-16,recoilVar:17.4, recoilIncAds:0.23, spreadMax:6, adsTime:175, fireMode:'auto',
+{id:'umg40',   name:'UMG-40',     cls:'SMG', cal:'.40 S&W',     rpm:635,  mag:31, tacRld:2.52,emptyRld:2.92,deployT:0.47,bulletVel:488, recoilV:0.56,recoilDir:-16,recoilVar:17.4, recoilIncAds:0.23, spreadMax:6, adsTime:175, fireMode:'auto', spreadDyn:{ads:{inc:0.228,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-16,amount:0.4891,amountMult:0.9308,amountExp:-2,dirVar:17.4,dirVarMult:0.907788,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1},hip:{dir:-16,amount:0.4891,amountMult:0.9308,amountExp:-2,dirVar:17.4,dirVarMult:0.907788,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.045,decOffset:0.06,duration:0.025,decFactor:57,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:25},{r:9,d:21.5},{r:21,d:17.7},{r:36,d:16.7},{r:75,d:14.3}]},
-{id:'usg90',   name:'USG-90',     cls:'SMG', cal:'5.7×28mm',    rpm:900,  mag:51, tacRld:3.00,emptyRld:3.31,deployT:0.47,bulletVel:570, recoilV:0.52,recoilDir:10, recoilVar:42.8, recoilIncAds:0.18, spreadMax:6, adsTime:185, fireMode:'auto',
+{id:'usg90',   name:'USG-90',     cls:'SMG', cal:'5.7×28mm',    rpm:900,  mag:51, tacRld:3.00,emptyRld:3.31,deployT:0.47,bulletVel:570, recoilV:0.52,recoilDir:10, recoilVar:42.8, recoilIncAds:0.18, spreadMax:6, adsTime:185, fireMode:'auto', spreadDyn:{ads:{inc:0.179,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.323,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:10,amount:0.4566,amountMult:0.9367,amountExp:-2,dirVar:42.8,dirVarMult:0.910359,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.905,decOffset:0.06,duration:0.025,decFactor:48,shootingDecScale:1},hip:{dir:10,amount:0.4566,amountMult:0.9367,amountExp:-2,dirVar:42.8,dirVarMult:0.910359,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.905,decOffset:0.06,duration:0.025,decFactor:48,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:20},{r:9,d:17.7},{r:21,d:15},{r:36,d:14.3},{r:75,d:12.5}]},
-{id:'kv9',     name:'KV9',        cls:'SMG', cal:'9×19mm',      rpm:1080, mag:18, tacRld:2.38,emptyRld:2.90,deployT:0.47,bulletVel:348, recoilV:0.47,recoilDir:22, recoilVar:53.8, recoilIncAds:0.21, spreadMax:6, adsTime:165, fireMode:'auto',
+{id:'kv9',     name:'KV9',        cls:'SMG', cal:'9×19mm',      rpm:1080, mag:18, tacRld:2.38,emptyRld:2.90,deployT:0.47,bulletVel:348, recoilV:0.47,recoilDir:22, recoilVar:53.8, recoilIncAds:0.21, spreadMax:6, adsTime:165, fireMode:'auto', spreadDyn:{ads:{inc:0.21,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:22,amount:0.4262,amountMult:0.9475,amountExp:-2,dirVar:53.8,dirVarMult:0.921742,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1},hip:{dir:22,amount:0.4262,amountMult:0.9475,amountExp:-2,dirVar:53.8,dirVarMult:0.921742,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
-{id:'scw10',   name:'SCW-10',     cls:'SMG', cal:'10×25mm',     rpm:800,  mag:16, tacRld:2.60,emptyRld:3.11,deployT:0.47,bulletVel:428, recoilV:0.70,recoilDir:-18,recoilVar:28.6, recoilIncAds:0.27, spreadMax:6, adsTime:185, fireMode:'auto',
+{id:'scw10',   name:'SCW-10',     cls:'SMG', cal:'10×25mm',     rpm:800,  mag:16, tacRld:2.60,emptyRld:3.11,deployT:0.47,bulletVel:428, recoilV:0.70,recoilDir:-18,recoilVar:28.6, recoilIncAds:0.27, spreadMax:6, adsTime:185, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.552,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-18,amount:0.6217,amountMult:0.9442,amountExp:-2,dirVar:28.6,dirVarMult:0.923871,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-18,amount:0.6217,amountMult:0.9442,amountExp:-2,dirVar:28.6,dirVarMult:0.923871,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:33.4},{r:9,d:25},{r:21,d:20},{r:36,d:16.7},{r:75,d:14.3}]},
-{id:'sl9',     name:'SL9',        cls:'SMG', cal:'9×19mm',      rpm:675,  mag:31, tacRld:2.65,emptyRld:3.18,deployT:0.47,bulletVel:510, recoilV:0.49,recoilDir:0,  recoilVar:16.2, recoilIncAds:0.21, spreadMax:6, adsTime:180, fireMode:'auto',
+{id:'sl9',     name:'SL9',        cls:'SMG', cal:'9×19mm',      rpm:675,  mag:31, tacRld:2.65,emptyRld:3.18,deployT:0.47,bulletVel:510, recoilV:0.49,recoilDir:0,  recoilVar:16.2, recoilIncAds:0.21, spreadMax:6, adsTime:180, fireMode:'auto', spreadDyn:{ads:{inc:0.21,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:0,amount:0.4259,amountMult:0.9317,amountExp:-2,dirVar:16.2,dirVarMult:0.909106,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1},hip:{dir:0,amount:0.4259,amountMult:0.9317,amountExp:-2,dirVar:16.2,dirVarMult:0.909106,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
-{id:'cz3a1',   name:'CZ3A1',      cls:'SMG', cal:'9×19mm',      rpm:981,  mag:31, tacRld:2.22,emptyRld:2.95,deployT:0.47,bulletVel:360, recoilV:0.62,recoilDir:-15,recoilVar:52.6, recoilIncAds:0.21, spreadMax:6, adsTime:170, fireMode:'auto',
+{id:'cz3a1',   name:'CZ3A1',      cls:'SMG', cal:'9×19mm',      rpm:981,  mag:31, tacRld:2.22,emptyRld:2.95,deployT:0.47,bulletVel:360, recoilV:0.62,recoilDir:-15,recoilVar:52.6, recoilIncAds:0.21, spreadMax:6, adsTime:170, fireMode:'auto', spreadDyn:{ads:{inc:0.21,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.41,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-15,amount:0.5502,amountMult:0.9442,amountExp:-2,dirVar:52.6,dirVarMult:0.917493,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1},hip:{dir:-15,amount:0.5502,amountMult:0.9442,amountExp:-2,dirVar:52.6,dirVarMult:0.917493,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.023,decOffset:0.06,duration:0.025,decFactor:55,shootingDecScale:1}}, spread:{adsStand:[0.05,6],adsMove:[0.32,6],hipStand:[1.804,6],hipMove:[2.255,6]},
  dmg:[{r:0,d:25},{r:9,d:20},{r:21,d:16.7},{r:36,d:14.3},{r:75,d:12.5}]},
 // ── LMG ──────────────────────────────────────────────────────────────────────
-{id:'l110',    name:'L110',       cls:'LMG', cal:'5.56×45mm NATO', rpm:720, mag:100,tacRld:6.50,emptyRld:7.73,deployT:1.00,bulletVel:780, recoilV:0.52,recoilDir:0,  recoilVar:39.4, recoilIncAds:0.27, spreadMax:11, adsTime:380, fireMode:'auto',
+{id:'l110',    name:'L110',       cls:'LMG', cal:'5.56×45mm NATO', rpm:720, mag:100,tacRld:6.50,emptyRld:7.73,deployT:1.00,bulletVel:780, recoilV:0.52,recoilDir:0,  recoilVar:39.4, recoilIncAds:0.27, spreadMax:11, adsTime:380, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:0,amount:0.4634,amountMult:0.94,amountExp:-2,dirVar:39.4,dirVarMult:0.915835,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:0,amount:0.4634,amountMult:0.94,amountExp:-2,dirVar:39.4,dirVarMult:0.915835,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,11],adsMove:[0.32,13],hipStand:[4.848,11],hipMove:[6.06,13]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'drsiar',  name:'DRS-IAR',    cls:'LMG', cal:'5.56×45mm NATO', rpm:771, mag:31, tacRld:2.47,emptyRld:2.95,deployT:0.73,bulletVel:720, recoilV:0.65,recoilDir:-14,recoilVar:33.8, recoilIncAds:0.27, spreadMax:9, adsTime:280, fireMode:'auto',
+{id:'drsiar',  name:'DRS-IAR',    cls:'LMG', cal:'5.56×45mm NATO', rpm:771, mag:31, tacRld:2.47,emptyRld:2.95,deployT:0.73,bulletVel:720, recoilV:0.65,recoilDir:-14,recoilVar:33.8, recoilIncAds:0.27, spreadMax:9, adsTime:280, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-14,amount:0.5788,amountMult:0.9425,amountExp:-2,dirVar:33.8,dirVarMult:0.920572,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-14,amount:0.5788,amountMult:0.9425,amountExp:-2,dirVar:33.8,dirVarMult:0.920572,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'m60',     name:'M/60',       cls:'LMG', cal:'7.62×51mm NATO', rpm:514, mag:100,tacRld:7.35,emptyRld:8.12,deployT:1.00,bulletVel:720, recoilV:0.68,recoilDir:0,  recoilVar:38.8, recoilIncAds:0.39, spreadMax:11, adsTime:420, fireMode:'auto',
+{id:'m60',     name:'M/60',       cls:'LMG', cal:'7.62×51mm NATO', rpm:514, mag:100,tacRld:7.35,emptyRld:8.12,deployT:1.00,bulletVel:720, recoilV:0.68,recoilDir:0,  recoilVar:38.8, recoilIncAds:0.39, spreadMax:11, adsTime:420, fireMode:'auto', spreadDyn:{ads:{inc:0.392,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:0,amount:0.6002,amountMult:0.9375,amountExp:-2,dirVar:38.8,dirVarMult:0.912594,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1},hip:{dir:0,amount:0.6002,amountMult:0.9375,amountExp:-2,dirVar:38.8,dirVarMult:0.912594,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1}}, spread:{adsStand:[0.05,11],adsMove:[0.32,13],hipStand:[4.848,11],hipMove:[6.06,13]},
  dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
-{id:'rpkm',    name:'RPKM',       cls:'LMG', cal:'7.62×39mm',      rpm:553, mag:41, tacRld:2.80,emptyRld:3.28,deployT:0.73,bulletVel:670, recoilV:0.62,recoilDir:5,  recoilVar:22.7, recoilIncAds:0.31, spreadMax:9, adsTime:310, fireMode:'auto',
+{id:'rpkm',    name:'RPKM',       cls:'LMG', cal:'7.62×39mm',      rpm:553, mag:41, tacRld:2.80,emptyRld:3.28,deployT:0.73,bulletVel:670, recoilV:0.62,recoilDir:5,  recoilVar:22.7, recoilIncAds:0.31, spreadMax:9, adsTime:310, fireMode:'auto', spreadDyn:{ads:{inc:0.307,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.552,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:5,amount:0.5382,amountMult:0.9333,amountExp:-2,dirVar:22.7,dirVarMult:0.910355,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1},hip:{dir:5,amount:0.5382,amountMult:0.9333,amountExp:-2,dirVar:22.7,dirVarMult:0.910355,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1}}, spread:{adsStand:[0.05,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:33.4},{r:9,d:27.3},{r:21,d:21.5},{r:36,d:20},{r:75,d:16.7}]},
-{id:'m123k',   name:'M123K',      cls:'LMG', cal:'5.56×45mm NATO', rpm:830, mag:100,tacRld:6.65,emptyRld:7.43,deployT:1.00,bulletVel:670, recoilV:0.57,recoilDir:-10,recoilVar:49.0, recoilIncAds:0.27, spreadMax:11, adsTime:400, fireMode:'auto',
+{id:'m123k',   name:'M123K',      cls:'LMG', cal:'5.56×45mm NATO', rpm:830, mag:100,tacRld:6.65,emptyRld:7.43,deployT:1.00,bulletVel:670, recoilV:0.57,recoilDir:-10,recoilVar:49.0, recoilIncAds:0.27, spreadMax:11, adsTime:400, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-10,amount:0.5071,amountMult:0.945,amountExp:-2,dirVar:49,dirVarMult:0.919878,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:-10,amount:0.5071,amountMult:0.945,amountExp:-2,dirVar:49,dirVarMult:0.919878,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,11],adsMove:[0.32,13],hipStand:[4.848,11],hipMove:[6.06,13]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'m250',    name:'M250',       cls:'LMG', cal:'6.8×51mm',       rpm:675, mag:50, tacRld:5.75,emptyRld:6.13,deployT:1.00,bulletVel:760, recoilV:0.71,recoilDir:-14,recoilVar:35.2, recoilIncAds:0.31, spreadMax:11, adsTime:360, fireMode:'auto',
+{id:'m250',    name:'M250',       cls:'LMG', cal:'6.8×51mm',       rpm:675, mag:50, tacRld:5.75,emptyRld:6.13,deployT:1.00,bulletVel:760, recoilV:0.71,recoilDir:-14,recoilVar:35.2, recoilIncAds:0.31, spreadMax:11, adsTime:360, fireMode:'auto', spreadDyn:{ads:{inc:0.307,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-14,amount:0.63,amountMult:0.9425,amountExp:-2,dirVar:35.2,dirVarMult:0.920263,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1},hip:{dir:-14,amount:0.63,amountMult:0.9425,amountExp:-2,dirVar:35.2,dirVarMult:0.920263,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.24,decOffset:0.06,duration:0.025,decFactor:76,shootingDecScale:1}}, spread:{adsStand:[0.05,11],adsMove:[0.32,13],hipStand:[4.848,11],hipMove:[6.06,13]},
  dmg:[{r:0,d:25}]},
-{id:'kts100',  name:'KTS100 MK8', cls:'LMG', cal:'5.56×45mm NATO', rpm:514, mag:60, tacRld:3.25,emptyRld:3.98,deployT:0.73,bulletVel:840, recoilV:0.49,recoilDir:8,  recoilVar:10.9, recoilIncAds:0.27, spreadMax:9, adsTime:320, fireMode:'auto',
+{id:'kts100',  name:'KTS100 MK8', cls:'LMG', cal:'5.56×45mm NATO', rpm:514, mag:60, tacRld:3.25,emptyRld:3.98,deployT:0.73,bulletVel:840, recoilV:0.49,recoilDir:8,  recoilVar:10.9, recoilIncAds:0.27, spreadMax:9, adsTime:320, fireMode:'auto', spreadDyn:{ads:{inc:0.27,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:8,amount:0.4191,amountMult:0.9283,amountExp:-2,dirVar:10.9,dirVarMult:0.905152,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1},hip:{dir:8,amount:0.4191,amountMult:0.9283,amountExp:-2,dirVar:10.9,dirVarMult:0.905152,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.2,decOffset:0.06,duration:0.025,decFactor:72,shootingDecScale:1}}, spread:{adsStand:[0.05,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:25},{r:21,d:20},{r:75,d:16.7}]},
-{id:'m240l',   name:'M240L',      cls:'LMG', cal:'7.62×51mm NATO', rpm:600, mag:50, tacRld:4.25,emptyRld:5.90,deployT:1.00,bulletVel:630, recoilV:0.74,recoilDir:5,  recoilVar:40.5, recoilIncAds:0.39, spreadMax:11, adsTime:410, fireMode:'auto',
+{id:'m240l',   name:'M240L',      cls:'LMG', cal:'7.62×51mm NATO', rpm:600, mag:50, tacRld:4.25,emptyRld:5.90,deployT:1.00,bulletVel:630, recoilV:0.74,recoilDir:5,  recoilVar:40.5, recoilIncAds:0.39, spreadMax:11, adsTime:410, fireMode:'auto', spreadDyn:{ads:{inc:0.392,idleTime:0.4,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:5,amount:0.6556,amountMult:0.9433,amountExp:-2,dirVar:40.5,dirVarMult:0.920052,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1},hip:{dir:5,amount:0.6556,amountMult:0.9433,amountExp:-2,dirVar:40.5,dirVarMult:0.920052,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1}}, spread:{adsStand:[0.05,11],adsMove:[0.32,13],hipStand:[4.848,11],hipMove:[6.06,13]},
  dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
-{id:'m121a2',  name:'M121 A2',    cls:'LMG', cal:'7.62×51mm NATO', rpm:654, mag:50, tacRld:6.27,emptyRld:7.25,deployT:1.00,bulletVel:600, recoilV:0.72,recoilDir:-7, recoilVar:38.6, recoilIncAds:0.39, spreadMax:11, adsTime:390, fireMode:'auto',
+{id:'m121a2',  name:'M121 A2',    cls:'LMG', cal:'7.62×51mm NATO', rpm:654, mag:50, tacRld:6.27,emptyRld:7.25,deployT:1.00,bulletVel:600, recoilV:0.72,recoilDir:-7, recoilVar:38.6, recoilIncAds:0.39, spreadMax:11, adsTime:390, fireMode:'auto', spreadDyn:{ads:{inc:0.392,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:7.5,firingCoef:1.22,firingExp:2.5,firingOffset:1.84,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:7.2,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.51,firingExp:2.5,firingOffset:3.31,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-7,amount:0.6398,amountMult:0.9458,amountExp:-2,dirVar:38.6,dirVarMult:0.923955,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1},hip:{dir:-7,amount:0.6398,amountMult:0.9458,amountExp:-2,dirVar:38.6,dirVarMult:0.923955,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.459,decOffset:0.06,duration:0.025,decFactor:104,shootingDecScale:1}}, spread:{adsStand:[0.05,11],adsMove:[0.32,13],hipStand:[4.848,11],hipMove:[6.06,13]},
  dmg:[{r:0,d:33.4},{r:21,d:25},{r:75,d:20}]},
 // ── DMR ──────────────────────────────────────────────────────────────────────
-{id:'m39emr',  name:'M39 EMR',    cls:'DMR', cal:'7.62×51mm NATO', rpm:257, mag:21, tacRld:2.53,emptyRld:2.85,deployT:0.73,bulletVel:800, recoilV:1.75,recoilDir:-12,recoilVar:8.0,  recoilIncAds:0.0, spreadMax:9,  adsTime:320, fireMode:'semi',
+{id:'m39emr',  name:'M39 EMR',    cls:'DMR', cal:'7.62×51mm NATO', rpm:257, mag:21, tacRld:2.53,emptyRld:2.85,deployT:0.73,bulletVel:800, recoilV:1.75,recoilDir:-12,recoilVar:8.0,  recoilIncAds:0.0, spreadMax:9,  adsTime:320, fireMode:'semi', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:6.5,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.378,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.145714,firingExp:2.5,firingOffset:0.945714,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-12,amount:1.45,amountMult:0.94,amountExp:-3,dirVar:8,dirVarMult:0.920616,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.75,decOffset:0.06,duration:0.025,decFactor:16,shootingDecScale:1},hip:{dir:-12,amount:1.45,amountMult:0.94,amountExp:-3,dirVar:8,dirVarMult:0.920616,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.75,decOffset:0.06,duration:0.025,decFactor:16,shootingDecScale:1}}, spread:{adsStand:[0.05,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:40},{r:21,d:37.5},{r:75,d:33.4}]},
-{id:'lmr27',   name:'LMR27',      cls:'DMR', cal:'5.56×45mm NATO', rpm:450, mag:11, tacRld:3.03,emptyRld:3.07,deployT:0.63,bulletVel:880, recoilV:0.92,recoilDir:10, recoilVar:11.0, recoilIncAds:0.0, spreadMax:7,  adsTime:340, fireMode:'semi',
+{id:'lmr27',   name:'LMR27',      cls:'DMR', cal:'5.56×45mm NATO', rpm:450, mag:11, tacRld:3.03,emptyRld:3.07,deployT:0.63,bulletVel:880, recoilV:0.92,recoilDir:10, recoilVar:11.0, recoilIncAds:0.0, spreadMax:7,  adsTime:340, fireMode:'semi', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:6.85715,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.299,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.19125,firingExp:2.5,firingOffset:1.24125,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:10,amount:0.76,amountMult:0.94,amountExp:-3,dirVar:11,dirVarMult:0.920441,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.5555,decOffset:0.06,duration:0.025,decFactor:13.7,shootingDecScale:1},hip:{dir:10,amount:0.76,amountMult:0.94,amountExp:-3,dirVar:11,dirVarMult:0.920441,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.5555,decOffset:0.06,duration:0.025,decFactor:13.7,shootingDecScale:1}}, spread:{adsStand:[0.05,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:28.6},{r:21,d:27.3},{r:75,d:25}]},
-{id:'svk86',   name:'SVK-8.6',    cls:'DMR', cal:'.338 Lapua Mag', rpm:150, mag:11, tacRld:2.97,emptyRld:4.22,deployT:0.87,bulletVel:720, recoilV:3.01,recoilDir:-7, recoilVar:20.0, recoilIncAds:0.0, spreadMax:9,  adsTime:380, fireMode:'semi',
+{id:'svk86',   name:'SVK-8.6',    cls:'DMR', cal:'.338 Lapua Mag', rpm:150, mag:11, tacRld:2.97,emptyRld:4.22,deployT:0.87,bulletVel:720, recoilV:3.01,recoilDir:-7, recoilVar:20.0, recoilIncAds:0.0, spreadMax:9,  adsTime:380, fireMode:'semi', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:6.5,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.085,firingExp:2.5,firingOffset:0.551667,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-7,amount:2.5,amountMult:0.94,amountExp:-3,dirVar:20,dirVarMult:0.919578,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.333,decOffset:0.06,duration:0.025,decFactor:21.5,shootingDecScale:1},hip:{dir:-7,amount:2.5,amountMult:0.94,amountExp:-3,dirVar:20,dirVarMult:0.919578,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.333,decOffset:0.06,duration:0.025,decFactor:21.5,shootingDecScale:1}}, spread:{adsStand:[0.05,9],adsMove:[0.32,10],hipStand:[4.848,9],hipMove:[6.06,10]},
  dmg:[{r:0,d:66.7},{r:9,d:59.9},{r:21,d:50}]},
-{id:'svdm',    name:'SVDM',       cls:'DMR', cal:'7.62×54mmR',     rpm:300, mag:11, tacRld:2.50,emptyRld:3.45,deployT:0.73,bulletVel:800, recoilV:1.57,recoilDir:4,  recoilVar:10.0, recoilIncAds:0.0, spreadMax:9,  adsTime:360, fireMode:'semi',
+{id:'svdm',    name:'SVDM',       cls:'DMR', cal:'7.62×54mmR',     rpm:300, mag:11, tacRld:2.50,emptyRld:3.45,deployT:0.73,bulletVel:800, recoilV:1.57,recoilDir:4,  recoilVar:10.0, recoilIncAds:0.0, spreadMax:9,  adsTime:360, fireMode:'semi', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:6.5,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.378,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.145714,firingExp:2.5,firingOffset:0.945714,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:4,amount:1.3,amountMult:0.94,amountExp:-3,dirVar:10,dirVarMult:0.920506,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.75,decOffset:0.06,duration:0.025,decFactor:16,shootingDecScale:1},hip:{dir:4,amount:1.3,amountMult:0.94,amountExp:-3,dirVar:10,dirVarMult:0.920506,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.75,decOffset:0.06,duration:0.025,decFactor:16,shootingDecScale:1}}, spread:{adsStand:[0.05,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:40},{r:21,d:37.5},{r:75,d:33.4}]},
-{id:'grtcps',  name:'GRT-CPS',    cls:'DMR', cal:'5.56×45mm NATO', rpm:360, mag:21, tacRld:2.75,emptyRld:3.28,deployT:0.63,bulletVel:800, recoilV:1.06,recoilDir:-5, recoilVar:8.0,  recoilIncAds:0.0, spreadMax:9,  adsTime:330, fireMode:'semi',
+{id:'grtcps',  name:'GRT-CPS',    cls:'DMR', cal:'5.56×45mm NATO', rpm:360, mag:21, tacRld:2.75,emptyRld:3.28,deployT:0.63,bulletVel:800, recoilV:1.06,recoilDir:-5, recoilVar:8.0,  recoilIncAds:0.0, spreadMax:9,  adsTime:330, fireMode:'semi', spreadDyn:{ads:{inc:0,idleTime:0.6,idleCoef:0,idleExp:1,idleOffset:6.85715,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.299,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.19125,firingExp:2.5,firingOffset:1.24125,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-5,amount:0.88,amountMult:0.94,amountExp:-3,dirVar:8,dirVarMult:0.920616,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.5555,decOffset:0.06,duration:0.025,decFactor:13.7,shootingDecScale:1},hip:{dir:-5,amount:0.88,amountMult:0.94,amountExp:-3,dirVar:8,dirVarMult:0.920616,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:0.5555,decOffset:0.06,duration:0.025,decFactor:13.7,shootingDecScale:1}}, spread:{adsStand:[0.05,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:28.6},{r:21,d:27.3},{r:75,d:25}]},
 // ── SNIPER RIFLE ─────────────────────────────────────────────────────────────
 // Damage rises into the sweet-spot range (OHK at 100 dmg), then falls at extreme range
-{id:'m2010esr',name:'M2010 ESR',  cls:'Sniper Rifle', cal:'.300 Win Mag',    rpm:44,  mag:6,  tacRld:3.23,emptyRld:3.93,deployT:0.63,bulletVel:800, recoilV:1.50,recoilDir:-5, recoilVar:10.0, recoilIncAds:0.0, spreadMax:9, adsTime:500, fireMode:'bolt',
+{id:'m2010esr',name:'M2010 ESR',  cls:'Sniper Rifle', cal:'.300 Win Mag',    rpm:44,  mag:6,  tacRld:3.23,emptyRld:3.93,deployT:0.63,bulletVel:800, recoilV:1.50,recoilDir:-5, recoilVar:10.0, recoilIncAds:0.0, spreadMax:9, adsTime:500, fireMode:'bolt', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:6.5,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:1.8,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.051,firingExp:2.5,firingOffset:0.331,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-5,amount:1.5,amountMult:0.94,amountExp:0,dirVar:10,dirVarMult:0.920506,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1},hip:{dir:-5,amount:4,amountMult:0.94,amountExp:0,dirVar:10,dirVarMult:0.920506,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1}}, spread:{adsStand:[0,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:80},{r:75,d:100},{r:160,d:62.5}]},
-{id:'sv98',    name:'SV-98',      cls:'Sniper Rifle', cal:'7.62×54mmR',      rpm:37,  mag:11, tacRld:2.98,emptyRld:3.97,deployT:0.63,bulletVel:720, recoilV:1.25,recoilDir:-5, recoilVar:10.0, recoilIncAds:0.0, spreadMax:9, adsTime:520, fireMode:'bolt',
+{id:'sv98',    name:'SV-98',      cls:'Sniper Rifle', cal:'7.62×54mmR',      rpm:37,  mag:11, tacRld:2.98,emptyRld:3.97,deployT:0.63,bulletVel:720, recoilV:1.25,recoilDir:-5, recoilVar:10.0, recoilIncAds:0.0, spreadMax:9, adsTime:520, fireMode:'bolt', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:6.5,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:1.8,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.051,firingExp:2.5,firingOffset:0.331,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-5,amount:1.25,amountMult:0.94,amountExp:0,dirVar:10,dirVarMult:0.920506,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1},hip:{dir:-5,amount:3,amountMult:0.94,amountExp:0,dirVar:10,dirVarMult:0.920506,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1}}, spread:{adsStand:[0,9],adsMove:[0.32,10],hipStand:[3.352,9],hipMove:[4.19,10]},
  dmg:[{r:0,d:80},{r:54,d:100},{r:125,d:62.5}]},
-{id:'psr',     name:'PSR',        cls:'Sniper Rifle', cal:'.338 Norma Mag',  rpm:38,  mag:11, tacRld:3.35,emptyRld:4.35,deployT:0.73,bulletVel:720, recoilV:1.80,recoilDir:-4, recoilVar:12.0, recoilIncAds:0.0, spreadMax:11, adsTime:550, fireMode:'bolt',
+{id:'psr',     name:'PSR',        cls:'Sniper Rifle', cal:'.338 Norma Mag',  rpm:38,  mag:11, tacRld:3.35,emptyRld:4.35,deployT:0.73,bulletVel:720, recoilV:1.80,recoilDir:-4, recoilVar:12.0, recoilIncAds:0.0, spreadMax:11, adsTime:550, fireMode:'bolt', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:5.45455,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:1.8,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.051,firingExp:2.5,firingOffset:0.331,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-4,amount:1.8,amountMult:0.94,amountExp:0,dirVar:12,dirVarMult:0.920371,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1},hip:{dir:-4,amount:5,amountMult:0.94,amountExp:0,dirVar:12,dirVarMult:0.920371,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1}}, spread:{adsStand:[0,11],adsMove:[0.32,13],hipStand:[4.848,11],hipMove:[6.06,13]},
  dmg:[{r:0,d:80},{r:100,d:100},{r:200,d:62.5}]},
-{id:'miniscout',name:'Mini Scout',cls:'Sniper Rifle', cal:'5.56×45mm NATO',  rpm:51,  mag:11, tacRld:2.33,emptyRld:3.90,deployT:0.53,bulletVel:800, recoilV:1.00,recoilDir:-5, recoilVar:5.0,  recoilIncAds:0.0, spreadMax:7, adsTime:430, fireMode:'bolt',
+{id:'miniscout',name:'Mini Scout',cls:'Sniper Rifle', cal:'5.56×45mm NATO',  rpm:51,  mag:11, tacRld:2.33,emptyRld:3.90,deployT:0.53,bulletVel:800, recoilV:1.00,recoilDir:-5, recoilVar:5.0,  recoilIncAds:0.0, spreadMax:7, adsTime:430, fireMode:'bolt', spreadDyn:{ads:{inc:0,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:5.5,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:1.8,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.051,firingExp:2.5,firingOffset:0.331,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-5,amount:1,amountMult:0.94,amountExp:0,dirVar:5,dirVarMult:0.920735,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1},hip:{dir:-5,amount:2.5,amountMult:0.94,amountExp:0,dirVar:5,dirVarMult:0.920735,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1}}, spread:{adsStand:[0,7],adsMove:[0.32,8],hipStand:[2.432,7],hipMove:[3.04,8]},
  dmg:[{r:0,d:64},{r:75,d:50}]},
 // ── SHOTGUN ──────────────────────────────────────────────────────────────────
-{id:'m87a1',   name:'M87A1',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:8, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:3.61,recoilDir:-10,recoilVar:12.0, recoilIncAds:null, spreadMax:5, adsTime:250, fireMode:'semi', pellets:16,
+{id:'m87a1',   name:'M87A1',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:8, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:3.61,recoilDir:-10,recoilVar:12.0, recoilIncAds:null, spreadMax:5, adsTime:250, fireMode:'semi', spreadDyn:{ads:{inc:0.001,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:4.00364,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:1.2,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.051,firingExp:2.5,firingOffset:0.331,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-10,amount:3,amountMult:0.94,amountExp:-3,dirVar:12,dirVarMult:0.920371,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1},hip:{dir:-10,amount:3,amountMult:0.94,amountExp:-3,dirVar:12,dirVarMult:0.920371,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1}}, spread:{adsStand:[0.05,5],adsMove:[0.32,5],hipStand:[2.432,5],hipMove:[3.04,5]}, pellets:16,
  dmg:[{r:0,d:8.4},{r:9,d:7.2},{r:16,d:5.6},{r:31,d:3.8}]},
-{id:'m1014',   name:'M1014',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:7, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:2.41,recoilDir:-5, recoilVar:15.0, recoilIncAds:null, spreadMax:5, adsTime:260, fireMode:'semi', pellets:16,
+{id:'m1014',   name:'M1014',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:7, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:2.41,recoilDir:-5, recoilVar:15.0, recoilIncAds:null, spreadMax:5, adsTime:260, fireMode:'semi', spreadDyn:{ads:{inc:0.001,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:4.00364,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.706,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.051,firingExp:2.5,firingOffset:0.331,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:-5,amount:2,amountMult:0.94,amountExp:-3,dirVar:15,dirVarMult:0.920121,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.333,decOffset:0.06,duration:0.025,decFactor:21.5,shootingDecScale:1},hip:{dir:-5,amount:2,amountMult:0.94,amountExp:-3,dirVar:15,dirVarMult:0.920121,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.333,decOffset:0.06,duration:0.025,decFactor:21.5,shootingDecScale:1}}, spread:{adsStand:[0.05,5],adsMove:[0.32,5],hipStand:[2.432,5],hipMove:[3.04,5]}, pellets:16,
  dmg:[{r:0,d:7.2},{r:9,d:5.0},{r:16,d:3.1},{r:22,d:2.3}]},
-{id:'ks18k',   name:'18.5KS-K',   cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:9, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:1.69,recoilDir:8,  recoilVar:12.0, recoilIncAds:null, spreadMax:5, adsTime:270, fireMode:'pump', pellets:16,
+{id:'ks18k',   name:'18.5KS-K',   cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:9, tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:1.69,recoilDir:8,  recoilVar:12.0, recoilIncAds:null, spreadMax:5, adsTime:270, fireMode:'pump', spreadDyn:{ads:{inc:0.001,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:4.00364,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:0.6,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.085,firingExp:2.5,firingOffset:0.551667,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:8,amount:1.4,amountMult:0.94,amountExp:-3,dirVar:12,dirVarMult:0.920371,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.333,decOffset:0.06,duration:0.025,decFactor:21.5,shootingDecScale:1},hip:{dir:8,amount:1.4,amountMult:0.94,amountExp:-3,dirVar:12,dirVarMult:0.920371,dirVarExp:0,decNorm:1,decExp:1,decTimeExp:1.333,decOffset:0.06,duration:0.025,decFactor:21.5,shootingDecScale:1}}, spread:{adsStand:[0.05,5],adsMove:[0.32,5],hipStand:[2.432,5],hipMove:[3.04,5]}, pellets:16,
  dmg:[{r:0,d:5.0},{r:16,d:2.8},{r:22,d:2.0}]},
-{id:'db12',    name:'DB-12',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:16,tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:2.71,recoilDir:0,  recoilVar:15.0, recoilIncAds:null, spreadMax:5, adsTime:240, fireMode:'pump', pellets:16,
+{id:'db12',    name:'DB-12',      cls:'Shotgun', cal:'12ga (00 Buck)',  rpm:null, mag:16,tacRld:null,emptyRld:null,deployT:null,bulletVel:null, recoilV:2.71,recoilDir:0,  recoilVar:15.0, recoilIncAds:null, spreadMax:5, adsTime:240, fireMode:'pump', spreadDyn:{ads:{inc:0.001,idleTime:0.4,idleCoef:0,idleExp:1,idleOffset:4.00364,firingCoef:0,firingExp:0.25,firingOffset:6.6,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:6.6,firstShotMul:1,distExp:0.67},hip:{inc:0.486,idleTime:1.2,idleCoef:0,idleExp:0.25,idleOffset:25,firingCoef:0.085,firingExp:2.5,firingOffset:0.551667,notFiringCoef:0,notFiringExp:0.25,notFiringOffset:12.96,firstShotMul:1,distExp:0.5}}, recoil:{ads:{dir:0,amount:2.25,amountMult:0.94,amountExp:-3,dirVar:15,dirVarMult:0.920121,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1},hip:{dir:0,amount:2.25,amountMult:0.94,amountExp:-3,dirVar:15,dirVarMult:0.920121,dirVarExp:0,decNorm:1,decExp:0.6,decTimeExp:4,decOffset:0.06,duration:0.025,decFactor:70,shootingDecScale:1}}, spread:{adsStand:[0.05,5],adsMove:[0.32,5],hipStand:[2.432,5],hipMove:[3.04,5]}, pellets:16,
  dmg:[{r:0,d:5.0},{r:16,d:3.3},{r:22,d:2.5}]},
 ];
 
 // ── ADS RECOIL AMOUNT MULTIPLIER (sym.gg ADSRecoilAmountMultiplier) ──────────
-// Used in tier formula: effectiveRecoilV = recoilV × mult^recoilTier
+// Used in ADS tier formula: effectiveRecoilV = recoilV × mult^recoilTier
 // recoilV in W array = tier-0 baseline (no grip, no recoil-affecting muzzle)
 // AK4D not in sym.gg — using TR7 value (same cal/class)
 const RECOIL_MULT = {
@@ -397,79 +426,121 @@ const RECOIL_DEC_EXP = {
   m2010esr:0.6, sv98:0.6, psr:0.6, miniscout:0.6, m87a1:0.6, db12:0.6,
 };
 
+// ── HIP SPREAD TIER TABLES ────────────────────────────────────────────────────
+// Min spread (°) for tiers 1–6 by hipfire class (weapon-specific, not weapon class).
+// All hipfire classes map: hipStand→T4, hipMove→T5 (same stance offsets throughout).
+const HIP_SPREAD_TIERS = {
+  'Class A': [0.338, 0.676, 1.014, 1.352, 1.69,  2.028],
+  'Class B': [0.451, 0.902, 1.353, 1.804, 2.255, 2.706],
+  'Class C': [0.608, 1.216, 1.824, 2.432, 3.04,  3.648],
+  'Class D': [0.838, 1.676, 2.514, 3.352, 4.19,  5.028],
+  'Class E': [1.212, 2.424, 3.636, 4.848, 6.06,  7.272],
+};
+// 0-based tier index for each hip spread key at baseline (no attachment mods).
+// hipStand = T4 (index 3), hipMove = T5 (index 4).
+const HIP_SPREAD_BASE_IDX = {hipStand: 3, hipMove: 4};
+// Per-weapon hipfire class assignment (independent of weapon class).
+const HIP_CLS = {
+  // Assault Rifles — Class C
+  m433:'Class C',    b36a4:'Class C',   sor556:'Class C',  ak4d:'Class C',    tr7:'Class C',
+  kord6p67:'Class C', nvo228e:'Class C', l85a3:'Class C',  vcr2:'Class C',
+  // Carbines — Class B
+  m4a1:'Class B',   m277:'Class B',    ak205:'Class B',   m417a2:'Class B',  grtbc:'Class B',
+  qbz192:'Class B', sg553r:'Class B',  sor300sc:'Class B',
+  // SMGs — Class B
+  sgx:'Class B',    pw5a3:'Class B',   pw7a2:'Class B',   umg40:'Class B',   usg90:'Class B',
+  kv9:'Class B',    scw10:'Class B',   sl9:'Class B',     cz3a1:'Class B',
+  // LMGs — Class E (heavy) or Class D (light/medium)
+  l110:'Class E',   drsiar:'Class D',  m60:'Class E',     rpkm:'Class D',    m123k:'Class E',
+  m250:'Class E',   kts100:'Class D',  m240l:'Class E',   m121a2:'Class E',
+  // DMRs — Class C or Class D
+  m39emr:'Class D', lmr27:'Class C',
+  // Sniper Rifles — Class C, D, or E
+  svk86:'Class E',  svdm:'Class D',    grtcps:'Class D',  m2010esr:'Class D',
+  sv98:'Class D',   psr:'Class E',     miniscout:'Class C',
+  // Shotguns — Class C
+  m87a1:'Class C',  m1014:'Class C',   ks18k:'Class C',   db12:'Class C',
+  // Pistols — Class A (standard) or Class B (machine pistol)
+  p18:'Class A',    es57:'Class A',    m45a1:'Class A',   m44:'Class A',
+  ggh22:'Class A',  m357trait:'Class A', vz61:'Class B',
+};
+
 // ── ATTACHMENT DATA ───────────────────────────────────────────────────────────
-// tierMod   = additive modifier to the weapon's recoil tier (muzzles only)
-//              effectiveRecoilV = recoilV × RECOIL_MULT[weapon]^(gripTier + tierMod)
+// adsRecoilTierMod = additive modifier to the ADS recoil tier; applied through Sym.gg
+//              ADSRecoilAmountMultiplier: effective recoilV = recoilV × mult^(stacked tier mods)
 //              +1 (brakes): slightly reduces recoilV (tradeoff: sway/other negatives)
 //               0 (suppressors, flash hider, linear comp): no direct recoil tier change
-// spreadMult= multiplier on recoilVar; linear comp 0.75 = −25% horizontal spread
-// decayBoost= fractional boost to bloom spread-decay offset (faster recovery)
+// adsRecoilVariationMult = ADS-only multiplier on ADSRecoilDirectionVariation-derived recoilVar.
+// adsSpreadDecayBoost = ADS-only fractional boost to ADSBaseSpreadFiringDecOffset recovery.
+// hipSpreadTierMod = hipfire min-spread tier shift based on HIPStandBaseMin/HIPStandMoveMin tables.
 // worldSpot/minimapSpot = distance where firing exposes the player; 0 = hidden
+// sway: +1=increased weapon sway, -1=decreased weapon sway
 const MUZZLES=[
-  {id:'none',        name:'None',                 tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:0 },
-  {id:'sp_brake',    name:'Single-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:5 },
-  {id:'dp_brake',    name:'Double-Port Brake',    tierMod:1,  spreadMult:1,    decayBoost:0,   worldSpot:54, minimapSpot:150, pts:10},
-  {id:'comp_brake',  name:'Compensated Brake',    tierMod:1,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:54, minimapSpot:150, pts:20},
-  {id:'linear_comp', name:'Linear Comp',          tierMod:-1, spreadMult:0.75, decayBoost:0,   assumed:true, worldSpot:54, minimapSpot:150, pts:10 },
-  {id:'flash_hider', name:'Flash Hider',          tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:150, pts:10},
-  {id:'flash_comp',  name:'Flash Compensator',    tierMod:0,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:0,  minimapSpot:150, pts:20},
-  {id:'std_supp',    name:'Std. Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:21, pts:20},
-  {id:'long_supp',   name:'Long Suppressor',      tierMod:0,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:0,  minimapSpot:21, pts:25},
-  {id:'light_supp',  name:'Light Suppressor',     tierMod:0,  spreadMult:1,    decayBoost:0.2, assumed:true, worldSpot:0,  minimapSpot:21, pts:30},
-  {id:'cqb_supp',    name:'CQB Suppressor',       tierMod:0,  spreadMult:1,    decayBoost:0,   worldSpot:0,  minimapSpot:21, pts:30},
+  {id:'none',        name:'None',                 adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   worldSpot:54, minimapSpot:150, pts:0 },
+  {id:'sp_brake',    name:'Single-Port Brake',    adsRecoilTierMod:1,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   sway:1, worldSpot:54, minimapSpot:150, pts:5 },
+  {id:'dp_brake',    name:'Double-Port Brake',    adsRecoilTierMod:1,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   worldSpot:54, minimapSpot:150, pts:10},
+  {id:'comp_brake',  name:'Compensated Brake',    adsRecoilTierMod:1,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0.2, assumed:true, worldSpot:54, minimapSpot:150, pts:20},
+  {id:'linear_comp', name:'Linear Comp',          adsRecoilTierMod:-1, adsRecoilVariationMult:0.75, adsSpreadDecayBoost:0,   assumed:true, worldSpot:54, minimapSpot:150, pts:10 },
+  {id:'flash_hider', name:'Flash Hider',          adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   worldSpot:0,  minimapSpot:150, pts:10},
+  {id:'flash_comp',  name:'Flash Compensator',    adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0.2, assumed:true, worldSpot:0,  minimapSpot:150, pts:20},
+  {id:'std_supp',    name:'Std. Suppressor',      adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   hipSpreadTierMod:1, worldSpot:0,  minimapSpot:21, pts:20},
+  {id:'long_supp',   name:'Long Suppressor',      adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0.2, hipSpreadTierMod:1, sway:1, assumed:true, worldSpot:0,  minimapSpot:21, pts:25},
+  {id:'light_supp',  name:'Light Suppressor',     adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0.2, hipSpreadTierMod:1, assumed:true, worldSpot:0,  minimapSpot:21, pts:30},
+  {id:'cqb_supp',    name:'CQB Suppressor',       adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   worldSpot:0,  minimapSpot:21, pts:30},
 ];
 const BARRELS=[
-  // adsSpd: +1=faster ADS, 0=no change, -1=slower | movAcc: +1=improves moving acc tier
-  // sIncMult: multiplier on recoilIncAds; heavy barrels reduce spread buildup per shot (⚠ placeholder)
-  {id:'none',       name:'None',                  vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:0 },
-  {id:'basic',      name:'Basic Barrel',          vMult:1.00, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:10},
-  {id:'short',      name:'Short Barrel',          vMult:0.80, adsSpd:1,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
-  {id:'extended',   name:'Extended Barrel',       vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:1.00, pts:15},
-  {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, assumed:true, pts:10},
-  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsSpd:0,  movAcc:0, decayBoost:0, sIncMult:0.90, assumed:true, pts:10},
-  {id:'light',      name:'Light Barrel',          vMult:1.00, adsSpd:1,  movAcc:1, decayBoost:0, sIncMult:1.00, pts:20},
+  // vMult modifies Sym.gg velocity. adsSpreadIncMult modifies recoilIncAds / ADSBaseSpreadInc only.
+  // adsTimeTierMod and movingAdsSpreadTierMod are app tier systems, not raw Sym.gg column names.
+  {id:'none',       name:'None',                  vMult:1.00, adsTimeTierMod:0,  movingAdsSpreadTierMod:0, adsSpreadIncMult:1.00, pts:0 },
+  {id:'basic',      name:'Basic Barrel',          vMult:1.00, adsTimeTierMod:1,  movingAdsSpreadTierMod:0, adsSpreadIncMult:1.00, pts:10},
+  {id:'short',      name:'Short Barrel',          vMult:0.80, adsTimeTierMod:1,  movingAdsSpreadTierMod:0, adsSpreadIncMult:1.00, hipSpreadTierMod:-1, pts:15},
+  {id:'extended',   name:'Extended Barrel',       vMult:1.25, adsTimeTierMod:0,  movingAdsSpreadTierMod:0, adsSpreadIncMult:1.00, pts:15},
+  {id:'heavy',      name:'Heavy Barrel',          vMult:1.00, adsTimeTierMod:0,  movingAdsSpreadTierMod:0, adsSpreadIncMult:0.90, assumed:true, pts:10},
+  {id:'heavy_ext',  name:'Heavy Extended Barrel', vMult:1.25, adsTimeTierMod:0,  movingAdsSpreadTierMod:0, adsSpreadIncMult:0.90, assumed:true, pts:10},
+  {id:'light',      name:'Light Barrel',          vMult:1.00, adsTimeTierMod:1,  movingAdsSpreadTierMod:1, adsSpreadIncMult:1.00, pts:20},
 ];
 const GRIPS=[
-  // Attribute key: [1]=Recoil Control 10pts/tier, [2]=Decrease ADS Time 10pts,
+  // Attribute key: [1]=ADS Recoil Control 10pts/tier, [2]=Decrease ADS Time 10pts,
   // [3]=ADS Mov Accuracy −10pts (debuff), [4]=ADS Mov Speed −5pts (debuff),
   // [5]=Sprint-to-Fire & Swap Speed 5pts, [6]=Bipod 10pts, [7]=Fire While Sprinting 10pts
-  // tier=recoil tiers | movAcc:-1=[3] debuff | adsSpd:+1=[2] buff
+  // adsRecoilTierMod stacks into ADSRecoilAmountMultiplier formula.
+  // movingAdsSpreadTierMod shifts the ADSStandMoveMin tier; adsTimeTierMod shifts app ADS-time tiers.
   // pts includes all buff/debuff costs. weaponPts overrides per weapon ID (class-specific cost).
-  {id:'none',           name:'None',                tier:0, movAcc:0,  adsSpd:0, pts:0 },
-  {id:'factory_angled', name:'Factory Angled',      tier:1, movAcc:0,  adsSpd:1, pts:0,    // LMR27:[1,2,5] SL9:[1,2] DB-12:[1,2,5]−[3]
+  {id:'none',           name:'None',                adsRecoilTierMod:0, movingAdsSpreadTierMod:0,  adsTimeTierMod:0, pts:0 },
+  {id:'factory_angled', name:'Factory Angled',      adsRecoilTierMod:1, movingAdsSpreadTierMod:0,  adsTimeTierMod:1, pts:0,    // LMR27:[1,2,5] SL9:[1,2] DB-12:[1,2,5]−[3]
     weaponPts:{sl9:20,lmr27:25,db12:15}},
-  {id:'cmpct_handstop', name:'Compact Handstop',    tier:0, movAcc:0,  adsSpd:0, pts:10, noEffect:true},  // [7]
-  {id:'slim_handstop',  name:'Slim Handstop',       tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
-  {id:'fold_vert',      name:'Folding Vertical',    tier:2, movAcc:-1, adsSpd:0, pts:10},  // [1×2] −[3]
-  {id:'alloy_vert',     name:'Alloy Vertical',      tier:2, movAcc:0,  adsSpd:0, pts:20},  // [1×2]
-  {id:'ribbed_vert',    name:'Ribbed Vertical',     tier:3, movAcc:-1, adsSpd:0, pts:20},  // [1×3] −[3]
-  {id:'6h64_vert',      name:'6H64 Vertical',       tier:4, movAcc:-1, adsSpd:0, pts:25},  // [1×4] −[3,4]
-  {id:'classic_vert',   name:'Classic Vertical',    tier:5, movAcc:-1, adsSpd:0, pts:35},  // [1×5] −[3,4]
-  {id:'fold_stubby',    name:'Folding Stubby',      tier:2, movAcc:-1, adsSpd:1, pts:20},  // [1×2,2] −[3]
-  {id:'ribbed_stubby',  name:'Ribbed Stubby',       tier:2, movAcc:0,  adsSpd:1, pts:30},  // [1×2,2]
-  {id:'canted_stubby',  name:'Canted Stubby',       tier:3, movAcc:-1, adsSpd:1, pts:30},  // [1×3,2] −[3]
-  {id:'stipp_stubby',   name:'Stippled Stubby',     tier:4, movAcc:-1, adsSpd:1, pts:35},  // [1×4,2] −[3,4]
-  {id:'lp_stubby',      name:'Low-Profile Stubby',  tier:5, movAcc:-1, adsSpd:1, pts:45},  // [1×5,2] −[3,4]
-  {id:'adj_angled',     name:'Adjustable Angled',   tier:1, movAcc:-1, adsSpd:1, pts:15},  // [1,2,5] −[3]
-  {id:'slim_angled',    name:'Slim Angled',         tier:1, movAcc:0,  adsSpd:1, pts:25,   // [1,2,5]; SMG:[1,2]
+  {id:'cmpct_handstop', name:'Compact Handstop',    adsRecoilTierMod:0, movingAdsSpreadTierMod:0,  adsTimeTierMod:0, pts:10, noEffect:true},  // [7]
+  {id:'slim_handstop',  name:'Slim Handstop',       adsRecoilTierMod:0, movingAdsSpreadTierMod:0,  adsTimeTierMod:1, pts:15},  // [2,5]
+  {id:'fold_vert',      name:'Folding Vertical',    adsRecoilTierMod:2, movingAdsSpreadTierMod:-1, adsTimeTierMod:0, pts:10},  // [1×2] −[3]
+  {id:'alloy_vert',     name:'Alloy Vertical',      adsRecoilTierMod:2, movingAdsSpreadTierMod:0,  adsTimeTierMod:0, pts:20},  // [1×2]
+  {id:'ribbed_vert',    name:'Ribbed Vertical',     adsRecoilTierMod:3, movingAdsSpreadTierMod:-1, adsTimeTierMod:0, pts:20},  // [1×3] −[3]
+  {id:'6h64_vert',      name:'6H64 Vertical',       adsRecoilTierMod:4, movingAdsSpreadTierMod:-1, adsTimeTierMod:0, pts:25},  // [1×4] −[3,4]
+  {id:'classic_vert',   name:'Classic Vertical',    adsRecoilTierMod:5, movingAdsSpreadTierMod:-1, adsTimeTierMod:0, pts:35},  // [1×5] −[3,4]
+  {id:'fold_stubby',    name:'Folding Stubby',      adsRecoilTierMod:2, movingAdsSpreadTierMod:-1, adsTimeTierMod:1, pts:20},  // [1×2,2] −[3]
+  {id:'ribbed_stubby',  name:'Ribbed Stubby',       adsRecoilTierMod:2, movingAdsSpreadTierMod:0,  adsTimeTierMod:1, pts:30},  // [1×2,2]
+  {id:'canted_stubby',  name:'Canted Stubby',       adsRecoilTierMod:3, movingAdsSpreadTierMod:-1, adsTimeTierMod:1, pts:30},  // [1×3,2] −[3]
+  {id:'stipp_stubby',   name:'Stippled Stubby',     adsRecoilTierMod:4, movingAdsSpreadTierMod:-1, adsTimeTierMod:1, pts:35},  // [1×4,2] −[3,4]
+  {id:'lp_stubby',      name:'Low-Profile Stubby',  adsRecoilTierMod:5, movingAdsSpreadTierMod:-1, adsTimeTierMod:1, pts:45},  // [1×5,2] −[3,4]
+  {id:'adj_angled',     name:'Adjustable Angled',   adsRecoilTierMod:1, movingAdsSpreadTierMod:-1, adsTimeTierMod:1, pts:15},  // [1,2,5] −[3]
+  {id:'slim_angled',    name:'Slim Angled',         adsRecoilTierMod:1, movingAdsSpreadTierMod:0,  adsTimeTierMod:1, pts:25,   // [1,2,5]; SMG:[1,2]
     weaponPts:{sgx:20,pw5a3:20,pw7a2:20,umg40:20,usg90:20,kv9:20,scw10:20,cz3a1:20}},
-  {id:'full_angled',    name:'Full Angled',         tier:2, movAcc:-1, adsSpd:1, pts:25},  // [1×2,2,5] −[3]
-  // ── Sniper-only variants (tier:0 — no recoil control, ADS time only) ──
-  {id:'lp_stubby_sr',   name:'Low-Profile Stubby',  tier:0, movAcc:0,  adsSpd:1, pts:10},  // [2]
-  {id:'slim_angled_sr', name:'Slim Angled',         tier:0, movAcc:0,  adsSpd:1, pts:15},  // [2,5]
-  {id:'full_angled_sr', name:'Full Angled',         tier:0, movAcc:-1, adsSpd:1, pts:5 },  // [2,5] −[3]
+  {id:'full_angled',    name:'Full Angled',         adsRecoilTierMod:2, movingAdsSpreadTierMod:-1, adsTimeTierMod:1, pts:25},  // [1×2,2,5] −[3]
+  // ── Sniper-only variants (adsRecoilTierMod:0 — no recoil control, ADS time only) ──
+  {id:'lp_stubby_sr',   name:'Low-Profile Stubby',  adsRecoilTierMod:0, movingAdsSpreadTierMod:0,  adsTimeTierMod:1, pts:10},  // [2]
+  {id:'slim_angled_sr', name:'Slim Angled',         adsRecoilTierMod:0, movingAdsSpreadTierMod:0,  adsTimeTierMod:1, pts:15},  // [2,5]
+  {id:'full_angled_sr', name:'Full Angled',         adsRecoilTierMod:0, movingAdsSpreadTierMod:-1, adsTimeTierMod:1, pts:5 },  // [2,5] −[3]
 ];
 // ── AMMO ──────────────────────────────────────────────────────────────────────
 // hsMult: null = use weapon base | 'hp' = HP special logic | number = override
 ['6h64_vert','classic_vert','stipp_stubby','lp_stubby'].forEach(id=>{
   const grip=GRIPS.find(g=>g.id===id);
-  if(grip) grip.amsSh=1;
+  if(grip) grip.adsMoveSpeedTierShift=1;
 });
 
 const AMMOS=[
   {id:'standard',    name:'Standard',     hsMult:null               },
-  {id:'penetration', name:'Penetration',  hsMult:null, tierMod:-1  },  // −1 recoil tier
-  {id:'lightweight', name:'Lightweight',  hsMult:null, amsSh:-1 },
+  {id:'penetration', name:'Penetration',  hsMult:null, adsRecoilTierMod:-1  },  // -1 ADS recoil tier
+  {id:'lightweight', name:'Lightweight',  hsMult:null, adsMoveSpeedTierShift:-1 },
   {id:'long_range',  name:'Long-Range',   hsMult:null, noEffect:true },
   {id:'hollow_pt',   name:'Hollow Point', hsMult:'hp' },  // 1.5; 1.75 for m39emr/svk86/svdm
   {id:'frangible',   name:'Frangible',    hsMult:null, noEffect:true },
@@ -540,20 +611,21 @@ const WEAPON_AMMO={
   db12:    {def:'buckshot', ammo:{buckshot:10,flechette:30,slugs:40}},
 };
 
-// movAcc: +1 = improves moving accuracy (shifts tier toward tighter spread)
+// movingAdsSpreadTierMod: +1 improves moving ADS accuracy by shifting the ADSStandMoveMin tier tighter.
+// hipSpreadTierMod shifts hipfire min spread via HIPStandBaseMin/HIPStandMoveMin tier tables.
 const LASERS=[
-  {id:'none',          name:'None',          movAcc:0, pts:0 },
-  {id:'5mw_red',       name:'5 MW Red',      movAcc:0, pts:10, noEffect:true},
-  {id:'5mw_green',     name:'5 MW Green',    movAcc:0, pts:10, noEffect:true},
-  {id:'50mw_violet',   name:'50 MW Violet',  movAcc:1, pts:10},
-  {id:'50mw_green',    name:'50 MW Green',   movAcc:0, pts:20, noEffect:true},
-  {id:'50mw_blue',     name:'50 MW Blue',    movAcc:1, pts:20},
-  {id:'120mw_blue',    name:'120 MW Blue',   movAcc:1, pts:30},
-  {id:'combo_red',     name:'Combo Red',     movAcc:0, pts:0,  noEffect:true},
-  {id:'combo_green',   name:'Combo Green',   movAcc:0, pts:0,  noEffect:true},
-  {id:'ads_taclight',  name:'ADS Taclight',  movAcc:0, pts:0, noEffect:true },
-  {id:'flashlight',    name:'Flashlight',    movAcc:0, pts:0, noEffect:true },
-  {id:'hip_taclight',  name:'HIP Taclight',  movAcc:0, pts:0, noEffect:true },
+  {id:'none',          name:'None',          movingAdsSpreadTierMod:0, pts:0 },
+  {id:'5mw_red',       name:'5 MW Red',      movingAdsSpreadTierMod:0, hipSpreadTierMod:-1, pts:10},
+  {id:'5mw_green',     name:'5 MW Green',    movingAdsSpreadTierMod:0, hipSpreadTierMod:-1, pts:10},
+  {id:'50mw_violet',   name:'50 MW Violet',  movingAdsSpreadTierMod:1, pts:10},
+  {id:'50mw_green',    name:'50 MW Green',   movingAdsSpreadTierMod:0, hipSpreadTierMod:-2, pts:20},
+  {id:'50mw_blue',     name:'50 MW Blue',    movingAdsSpreadTierMod:1, hipSpreadTierMod:-1, pts:20},
+  {id:'120mw_blue',    name:'120 MW Blue',   movingAdsSpreadTierMod:1, hipSpreadTierMod:-2, pts:30},
+  {id:'combo_red',     name:'Combo Red',     movingAdsSpreadTierMod:0, hipSpreadTierMod:-1, pts:0},
+  {id:'combo_green',   name:'Combo Green',   movingAdsSpreadTierMod:0, hipSpreadTierMod:-2, pts:0},
+  {id:'ads_taclight',  name:'ADS Taclight',  movingAdsSpreadTierMod:0, pts:0, noEffect:true },
+  {id:'flashlight',    name:'Flashlight',    movingAdsSpreadTierMod:0, pts:0, noEffect:true },
+  {id:'hip_taclight',  name:'HIP Taclight',  movingAdsSpreadTierMod:0, pts:0, noEffect:true },
 ];
 
 // Per-weapon attachment availability. barrel/barrelDef added for each weapon.
@@ -622,340 +694,340 @@ const SPRINT_REC_TIERS=[100,133,167,200,233,267,300,350];
 const ADS_MOVE_TIERS=[0.91,0.82,0.75,0.67,0.60,0.54,0.47,0.42];
 
 // Per-weapon magazine data. defAds/defSpr/defAms = default magazine's tier (1-indexed).
-// adsSh/sprSh/amsSh = tier shift relative to weapon default (+n = worse, -n = better).
+// adsTimeTierShift/sprintRecoveryTierShift/adsMoveSpeedTierShift = tier shift relative to weapon default (+n = worse, -n = better).
 const WEAPON_MAG = {
   ks18k: {defAds:4,defSpr:2,defAms:4,def:'8_rnd',mags:{
-    '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:2750,adsSh:-1,sprSh:-1,amsSh:-1},
-    '8_rnd':{name:'8 Rnd',pts:5,mag:8,tacRld:2750,adsSh:0,sprSh:0,amsSh:0},
-    '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:2434,adsSh:-1,sprSh:-1,amsSh:-1},
-    '8_fast':{name:'8 Fast',pts:10,mag:8,tacRld:2434,adsSh:0,sprSh:0,amsSh:0},
+    '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:2750,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-1},
+    '8_rnd':{name:'8 Rnd',pts:5,mag:8,tacRld:2750,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:2434,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-1},
+    '8_fast':{name:'8 Fast',pts:10,mag:8,tacRld:2434,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   ak205: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2484,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2198,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2198,adsSh:0,sprSh:2,amsSh:1},
-    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
-    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2198,adsSh:0,sprSh:2,amsSh:1},
-    '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2484,adsSh:0,sprSh:1,amsSh:1},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2484,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2198,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2484,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2484,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2198,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2484,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2198,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2484,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   ak4d: {defAds:5,defSpr:3,defAms:5,def:'20_rnd',mags:{
-    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2467,adsSh:-1,sprSh:0,amsSh:0},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
-    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2183,adsSh:-1,sprSh:1,amsSh:0},
-    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
-    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2467,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2183,adsTimeTierShift:-1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   b36a4: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsSh:0,sprSh:0,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsSh:0,sprSh:-1,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsSh:1,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2384,adsSh:1,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2384,adsSh:1,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:1,sprSh:2,amsSh:1},
-    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2384,adsSh:1,sprSh:1,amsSh:1},
-    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsSh:1,sprSh:2,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsTimeTierShift:1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2384,adsTimeTierShift:1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2384,adsTimeTierShift:1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsTimeTierShift:1,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2384,adsTimeTierShift:1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsTimeTierShift:1,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   cz3a1: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2217,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
-    '35_rnd':{name:'35 Rnd',pts:15,mag:35,tacRld:2217,adsSh:0,sprSh:0,amsSh:0},
-    '35_fast':{name:'35 Fast',pts:20,mag:35,tacRld:1962,adsSh:0,sprSh:0,amsSh:0},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1962,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2217,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1962,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '35_rnd':{name:'35 Rnd',pts:15,mag:35,tacRld:2217,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '35_fast':{name:'35 Fast',pts:20,mag:35,tacRld:1962,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   db12: {defAds:3,defSpr:1,defAms:4,def:'7_rnd',mags:{
-    '7_rnd':{name:'14 Rnd',pts:5,mag:14,tacRld:2348,adsSh:0,sprSh:0,amsSh:0},
+    '7_rnd':{name:'14 Rnd',pts:5,mag:14,tacRld:2348,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   drsiar: {defAds:6,defSpr:4,defAms:6,def:'30_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2183,adsSh:0,sprSh:2,amsSh:1},
-    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
-    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2183,adsSh:0,sprSh:2,amsSh:1},
-    '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
-    '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2467,adsSh:0,sprSh:2,amsSh:1},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2183,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2183,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2183,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '50_rnd':{name:'50 Rnd',pts:45,mag:50,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   grtbc: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
-    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
-    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2212,adsSh:0,sprSh:2,amsSh:1},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2212,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   grtcps: {defAds:5,defSpr:3,defAms:5,def:'20_rnd',mags:{
-    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2750,adsSh:-1,sprSh:0,amsSh:0},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2750,adsSh:0,sprSh:0,amsSh:0},
-    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2434,adsSh:0,sprSh:1,amsSh:0},
-    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2750,adsSh:0,sprSh:1,amsSh:1},
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2750,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2750,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2434,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2750,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   kord6p67: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2450,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2168,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2450,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2450,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2168,adsSh:0,sprSh:2,amsSh:1},
-    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2450,adsSh:0,sprSh:1,amsSh:1},
-    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2168,adsSh:0,sprSh:2,amsSh:1},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2450,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2168,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2450,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2450,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2168,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2450,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2168,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   kts100: {defAds:6,defSpr:5,defAms:6,def:'60_rnd',mags:{
-    '45_rnd':{name:'45 Rnd',pts:5,mag:45,tacRld:2876,adsSh:-1,sprSh:0,amsSh:0},
-    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:2876,adsSh:0,sprSh:0,amsSh:0},
-    '60_fast':{name:'60 Fast',pts:10,mag:60,tacRld:2876,adsSh:0,sprSh:1,amsSh:0},
-    '45_fast':{name:'45 Fast',pts:10,mag:45,tacRld:2545,adsSh:-1,sprSh:1,amsSh:0},
-    '60_rnd':{name:'60 Rnd',pts:5,mag:60,tacRld:3250,adsSh:0,sprSh:0,amsSh:0},
-    '100_rnd':{name:'100 Rnd',pts:45,mag:100,tacRld:3250,adsSh:0,sprSh:1,amsSh:1},
+    '45_rnd':{name:'45 Rnd',pts:5,mag:45,tacRld:2876,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:2876,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '60_fast':{name:'60 Fast',pts:10,mag:60,tacRld:2876,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '45_fast':{name:'45 Fast',pts:10,mag:45,tacRld:2545,adsTimeTierShift:-1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '60_rnd':{name:'60 Rnd',pts:5,mag:60,tacRld:3250,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '100_rnd':{name:'100 Rnd',pts:45,mag:100,tacRld:3250,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   kv9: {defAds:3,defSpr:1,defAms:3,def:'17_rnd',mags:{
-    '17_rnd':{name:'17 Rnd',pts:5,mag:17,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
-    '17_fast':{name:'17 Fast',pts:10,mag:17,tacRld:2110,adsSh:0,sprSh:0,amsSh:0},
-    '23_rnd':{name:'23 Rnd',pts:25,mag:23,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
-    '27_rnd':{name:'27 Rnd',pts:45,mag:27,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
+    '17_rnd':{name:'17 Rnd',pts:5,mag:17,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '17_fast':{name:'17 Fast',pts:10,mag:17,tacRld:2110,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '23_rnd':{name:'23 Rnd',pts:25,mag:23,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '27_rnd':{name:'27 Rnd',pts:45,mag:27,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   l110: {defAds:7,defSpr:6,defAms:7,def:'100_rnd',mags:{
-    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6500,adsSh:0,sprSh:0,amsSh:0},
-    '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6500,adsSh:1,sprSh:2,amsSh:1},
+    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6500,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6500,adsTimeTierShift:1,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   l85a3: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2449,adsSh:-1,sprSh:0,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2767,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2767,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2449,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2767,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2767,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2449,adsSh:0,sprSh:2,amsSh:1},
-    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2767,adsSh:0,sprSh:1,amsSh:1},
-    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2449,adsSh:0,sprSh:2,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2449,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2767,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2767,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2449,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2767,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2767,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2449,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2767,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2449,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   lmr27: {defAds:5,defSpr:3,defAms:5,def:'10_rnd',mags:{
-    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2854,adsSh:0,sprSh:0,amsSh:0},
-    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2526,adsSh:0,sprSh:1,amsSh:0},
-    '15_rnd':{name:'15 Rnd',pts:20,mag:15,tacRld:2854,adsSh:0,sprSh:1,amsSh:1},
-    '15_fast':{name:'15 Fast',pts:25,mag:15,tacRld:2526,adsSh:0,sprSh:2,amsSh:1},
-    '20_rnd':{name:'20 Rnd',pts:45,mag:20,tacRld:2854,adsSh:0,sprSh:1,amsSh:1},
-    '20_fast':{name:'20 Fast',pts:50,mag:20,tacRld:2526,adsSh:0,sprSh:2,amsSh:1},
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2854,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2526,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '15_rnd':{name:'15 Rnd',pts:20,mag:15,tacRld:2854,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '15_fast':{name:'15 Fast',pts:25,mag:15,tacRld:2526,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '20_rnd':{name:'20 Rnd',pts:45,mag:20,tacRld:2854,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '20_fast':{name:'20 Fast',pts:50,mag:20,tacRld:2526,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   m60: {defAds:6,defSpr:6,defAms:5,def:'100_rnd',mags:{
-    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:7350,adsSh:1,sprSh:0,amsSh:2},
-    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:4534,adsSh:0,sprSh:0,amsSh:0},
+    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:7350,adsTimeTierShift:1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:2},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:4534,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   m1014: {defAds:5,defSpr:3,defAms:5,def:'6_rnd',mags:{
-    '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:1784,adsSh:-1,sprSh:-1,amsSh:-1},
-    '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1784,adsSh:0,sprSh:0,amsSh:0},
-    '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:1784,adsSh:-1,sprSh:-1,amsSh:-1},
+    '4_rnd':{name:'4 Rnd',pts:5,mag:4,tacRld:1784,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-1},
+    '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1784,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '4_fast':{name:'4 Fast',pts:10,mag:4,tacRld:1784,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-1},
   }},
   m121a2: {defAds:7,defSpr:7,defAms:7,def:'50_rnd',mags:{
-    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:6267,adsSh:0,sprSh:0,amsSh:0},
-    '50_fast':{name:'50 Fast',pts:10,mag:50,tacRld:5550,adsSh:0,sprSh:-1,amsSh:0},
-    '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:6267,adsSh:0,sprSh:1,amsSh:1},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:6267,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '50_fast':{name:'50 Fast',pts:10,mag:50,tacRld:5550,adsTimeTierShift:0,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:0},
+    '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:6267,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   m123k: {defAds:7,defSpr:6,defAms:7,def:'100_rnd',mags:{
-    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6650,adsSh:0,sprSh:0,amsSh:0},
-    '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6650,adsSh:1,sprSh:2,amsSh:1},
+    '100_rnd':{name:'100 Rnd',pts:5,mag:100,tacRld:6650,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '200_rnd':{name:'200 Rnd',pts:50,mag:200,tacRld:6650,adsTimeTierShift:1,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   m2010esr: {defAds:6,defSpr:3,defAms:6,def:'5_rnd',mags:{
-    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:3234,adsSh:0,sprSh:0,amsSh:0},
-    '5_fast':{name:'5 Fast',pts:10,mag:5,tacRld:2862,adsSh:0,sprSh:0,amsSh:0},
-    '8_rnd':{name:'8 Rnd',pts:25,mag:8,tacRld:3234,adsSh:0,sprSh:0,amsSh:0},
+    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:3234,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '5_fast':{name:'5 Fast',pts:10,mag:5,tacRld:2862,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '8_rnd':{name:'8 Rnd',pts:25,mag:8,tacRld:3234,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   m240l: {defAds:7,defSpr:6,defAms:7,def:'50_rnd',mags:{
-    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:4250,adsSh:0,sprSh:0,amsSh:0},
-    '75_rnd':{name:'75 Rnd',pts:10,mag:75,tacRld:7000,adsSh:0,sprSh:0,amsSh:0},
-    '100_rnd':{name:'100 Rnd',pts:25,mag:100,tacRld:7000,adsSh:0,sprSh:1,amsSh:0},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:4250,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '75_rnd':{name:'75 Rnd',pts:10,mag:75,tacRld:7000,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '100_rnd':{name:'100 Rnd',pts:25,mag:100,tacRld:7000,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
   }},
   m250: {defAds:7,defSpr:6,defAms:7,def:'50_rnd',mags:{
-    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:5750,adsSh:0,sprSh:0,amsSh:0},
-    '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:5750,adsSh:0,sprSh:2,amsSh:1},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:5750,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '100_rnd':{name:'100 Rnd',pts:55,mag:100,tacRld:5750,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   m277: {defAds:4,defSpr:2,defAms:4,def:'20_rnd',mags:{
-    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2110,adsSh:-1,sprSh:0,amsSh:0},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2183,adsSh:0,sprSh:0,amsSh:0},
-    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2110,adsSh:0,sprSh:1,amsSh:0},
-    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2384,adsSh:0,sprSh:1,amsSh:1},
-    '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2110,adsSh:0,sprSh:2,amsSh:1},
-    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2110,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2183,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2110,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2110,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '30_rnd':{name:'30 Rnd',pts:40,mag:30,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   m39emr: {defAds:6,defSpr:4,defAms:6,def:'20_rnd',mags:{
-    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2534,adsSh:-1,sprSh:0,amsSh:0},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2534,adsSh:0,sprSh:0,amsSh:0},
-    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2242,adsSh:-1,sprSh:1,amsSh:0},
-    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2242,adsSh:0,sprSh:1,amsSh:0},
-    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2534,adsSh:0,sprSh:1,amsSh:1},
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2534,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2534,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2242,adsTimeTierShift:-1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2242,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2534,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   m417a2: {defAds:4,defSpr:2,defAms:4,def:'20_rnd',mags:{
-    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2183,adsSh:-1,sprSh:-1,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsSh:0,sprSh:0,amsSh:0},
-    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsSh:0,sprSh:1,amsSh:0},
-    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2183,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2183,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '25_rnd':{name:'25 Rnd',pts:20,mag:25,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   m433: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsSh:-1,sprSh:0,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2384,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2384,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:0,sprSh:2,amsSh:1},
-    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2467,adsSh:0,sprSh:1,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2110,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2384,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2384,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
+    '45_rnd':{name:'45 Rnd',pts:35,mag:45,tacRld:2467,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   m4a1: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1947,adsSh:-1,sprSh:0,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2000,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2200,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1947,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2000,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2000,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1947,adsSh:0,sprSh:2,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1947,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2000,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2200,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1947,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2000,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2000,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1947,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   m87a1: {defAds:5,defSpr:3,defAms:5,def:'7_rnd',mags:{
-    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
-    '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
-    '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:1334,adsSh:0,sprSh:0,amsSh:0},
-    '5_fast':{name:'5 Fast',pts:20,mag:5,tacRld:1334,adsSh:-1,sprSh:-1,amsSh:-1},
+    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:1334,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-1},
+    '6_rnd':{name:'6 Rnd',pts:5,mag:6,tacRld:1334,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-1},
+    '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:1334,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '5_fast':{name:'5 Fast',pts:20,mag:5,tacRld:1334,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-1},
   }},
   miniscout: {defAds:5,defSpr:2,defAms:4,def:'10_rnd',mags:{
-    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
-    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
-    '15_rnd':{name:'15 Rnd',pts:30,mag:15,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
-    '15_fast':{name:'15 Fast',pts:35,mag:15,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
-    '20_rnd':{name:'20 Rnd',pts:55,mag:20,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
-    '20_fast':{name:'20 Fast',pts:60,mag:20,tacRld:2006,adsSh:0,sprSh:0,amsSh:0},
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2006,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '15_rnd':{name:'15 Rnd',pts:30,mag:15,tacRld:2334,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '15_fast':{name:'15 Fast',pts:35,mag:15,tacRld:2006,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_rnd':{name:'20 Rnd',pts:55,mag:20,tacRld:2334,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_fast':{name:'20 Fast',pts:60,mag:20,tacRld:2006,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   nvo228e: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2212,adsSh:0,sprSh:2,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2212,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   psr: {defAds:7,defSpr:4,defAms:6,def:'10_rnd',mags:{
-    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:3350,adsSh:0,sprSh:0,amsSh:0},
-    '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:3350,adsSh:0,sprSh:0,amsSh:0},
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:3350,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '7_rnd':{name:'7 Rnd',pts:5,mag:7,tacRld:3350,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   pw5a3: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2227,adsSh:0,sprSh:0,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2517,adsSh:0,sprSh:0,amsSh:1},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2227,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:1},
   }},
   pw7a2: {defAds:3,defSpr:1,defAms:1,def:'30_rnd',mags:{
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:1933,adsSh:0,sprSh:0,amsSh:0},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2184,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1933,adsSh:0,sprSh:0,amsSh:0},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2184,adsSh:0,sprSh:0,amsSh:3},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:1933,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2184,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1933,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2184,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:3},
   }},
   qbz192: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2567,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2272,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2567,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2567,adsSh:0,sprSh:1,amsSh:1},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2567,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2272,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2567,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2567,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   rpkm: {defAds:6,defSpr:4,defAms:6,def:'40_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2800,adsSh:-2,sprSh:0,amsSh:-2},
-    '40_rnd':{name:'40 Rnd',pts:5,mag:40,tacRld:2800,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2478,adsSh:-2,sprSh:1,amsSh:-2},
-    '40_fast':{name:'40 Fast',pts:10,mag:40,tacRld:2478,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2800,adsSh:0,sprSh:0,amsSh:-2},
-    '60_rnd':{name:'60 Rnd',pts:30,mag:60,tacRld:2800,adsSh:0,sprSh:1,amsSh:1},
-    '75_rnd':{name:'75 Rnd',pts:50,mag:75,tacRld:2800,adsSh:0,sprSh:1,amsSh:1},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2800,adsTimeTierShift:-2,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '40_rnd':{name:'40 Rnd',pts:5,mag:40,tacRld:2800,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2478,adsTimeTierShift:-2,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:-2},
+    '40_fast':{name:'40 Fast',pts:10,mag:40,tacRld:2478,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2800,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '60_rnd':{name:'60 Rnd',pts:30,mag:60,tacRld:2800,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '75_rnd':{name:'75 Rnd',pts:50,mag:75,tacRld:2800,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   scw10: {defAds:3,defSpr:1,defAms:3,def:'15_rnd',mags:{
-    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
-    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2301,adsSh:0,sprSh:0,amsSh:0},
-    '20_rnd':{name:'20 Rnd',pts:20,mag:20,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
-    '25_rnd':{name:'25 Rnd',pts:45,mag:25,tacRld:2600,adsSh:0,sprSh:0,amsSh:0},
+    '15_rnd':{name:'15 Rnd',pts:5,mag:15,tacRld:2600,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '15_fast':{name:'15 Fast',pts:10,mag:15,tacRld:2301,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '20_rnd':{name:'20 Rnd',pts:20,mag:20,tacRld:2600,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '25_rnd':{name:'25 Rnd',pts:45,mag:25,tacRld:2600,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   sg553r: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2212,adsSh:0,sprSh:2,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:2212,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2500,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2212,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2212,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   sgx: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
-    '41_rnd':{name:'41 Rnd',pts:25,mag:41,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '41_rnd':{name:'41 Rnd',pts:25,mag:41,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   sl9: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2650,adsSh:0,sprSh:0,amsSh:0},
-    '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2650,adsSh:0,sprSh:0,amsSh:0},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2650,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '60_rnd':{name:'60 Rnd',pts:55,mag:60,tacRld:2650,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   sor300sc: {defAds:4,defSpr:2,defAms:4,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1991,adsSh:-1,sprSh:0,amsSh:-2},
-    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2250,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2250,adsSh:0,sprSh:0,amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1991,adsSh:0,sprSh:1,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2250,adsSh:0,sprSh:1,amsSh:1},
-    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2250,adsSh:0,sprSh:1,amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1991,adsSh:0,sprSh:2,amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5,mag:20,tacRld:1991,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '20_rnd':{name:'20 Rnd',pts:5,mag:20,tacRld:2250,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2250,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:1991,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2250,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_rnd':{name:'40 Rnd',pts:25,mag:40,tacRld:2250,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:1991,adsTimeTierShift:0,sprintRecoveryTierShift:2,adsMoveSpeedTierShift:1},
   }},
   sv98: {defAds:6,defSpr:2,defAms:4,def:'10_rnd',mags:{
-    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsSh:0,sprSh:0,amsSh:0},
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2334,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   svdm: {defAds:6,defSpr:4,defAms:6,def:'10_rnd',mags:{
-    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2500,adsSh:0,sprSh:0,amsSh:0},
-    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:2212,adsSh:-1,sprSh:0,amsSh:-2},
-    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2212,adsSh:-1,sprSh:1,amsSh:0},
-    '20_rnd':{name:'20 Rnd',pts:45,mag:20,tacRld:2500,adsSh:0,sprSh:1,amsSh:1},
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '5_rnd':{name:'5 Rnd',pts:5,mag:5,tacRld:2212,adsTimeTierShift:-1,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2212,adsTimeTierShift:-1,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:0},
+    '20_rnd':{name:'20 Rnd',pts:45,mag:20,tacRld:2500,adsTimeTierShift:0,sprintRecoveryTierShift:1,adsMoveSpeedTierShift:1},
   }},
   svk86: {defAds:7,defSpr:5,defAms:7,def:'10_rnd',mags:{
-    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2967,adsSh:0,sprSh:0,amsSh:0},
-    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2626,adsSh:0,sprSh:-1,amsSh:0},
+    '10_rnd':{name:'10 Rnd',pts:5,mag:10,tacRld:2967,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '10_fast':{name:'10 Fast',pts:10,mag:10,tacRld:2626,adsTimeTierShift:0,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:0},
   }},
   umg40: {defAds:3,defSpr:1,defAms:3,def:'30_rnd',mags:{
-    '25_rnd':{name:'25 Rnd',pts:5,mag:25,tacRld:2517,adsSh:0,sprSh:0,amsSh:-2},
-    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsSh:0,sprSh:0,amsSh:0},
-    '25_fast':{name:'25 Fast',pts:10,mag:25,tacRld:2227,adsSh:0,sprSh:0,amsSh:-2},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsSh:0,sprSh:0,amsSh:0},
-    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2517,adsSh:0,sprSh:0,amsSh:1},
+    '25_rnd':{name:'25 Rnd',pts:5,mag:25,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '30_rnd':{name:'30 Rnd',pts:5,mag:30,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '25_fast':{name:'25 Fast',pts:10,mag:25,tacRld:2227,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:-2},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2227,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
+    '36_rnd':{name:'36 Rnd',pts:15,mag:36,tacRld:2517,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:1},
   }},
   usg90: {defAds:3,defSpr:1,defAms:3,def:'50_rnd',mags:{
-    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:3000,adsSh:0,sprSh:0,amsSh:0},
+    '50_rnd':{name:'50 Rnd',pts:5,mag:50,tacRld:3000,adsTimeTierShift:0,sprintRecoveryTierShift:0,adsMoveSpeedTierShift:0},
   }},
   // SOR-556 MK2: default 30 Rnd + Basic Barrel → 250ms ADS, defSpr:3(167ms), defAms:5(0.60×)
   sor556: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2110,adsSh:-1,sprSh:0, amsSh:-2},
-    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2384,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2384,adsSh:0, sprSh:0, amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsSh:0, sprSh:1, amsSh:0},
-    '36_rnd': {name:'36 Rnd', pts:15,mag:36,tacRld:2384,adsSh:0, sprSh:1, amsSh:1},
-    '40_rnd': {name:'40 Rnd', pts:25,mag:40,tacRld:2384,adsSh:0, sprSh:1, amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsSh:0, sprSh:2, amsSh:1},
-    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsSh:0, sprSh:2, amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2110,adsTimeTierShift:-1,sprintRecoveryTierShift:0, adsMoveSpeedTierShift:-2},
+    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2384,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2384,adsTimeTierShift:0, sprintRecoveryTierShift:0, adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2110,adsTimeTierShift:0, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:0},
+    '36_rnd': {name:'36 Rnd', pts:15,mag:36,tacRld:2384,adsTimeTierShift:0, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:1},
+    '40_rnd': {name:'40 Rnd', pts:25,mag:40,tacRld:2384,adsTimeTierShift:0, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2110,adsTimeTierShift:0, sprintRecoveryTierShift:2, adsMoveSpeedTierShift:1},
+    '45_fast':{name:'45 Fast',pts:40,mag:45,tacRld:2110,adsTimeTierShift:0, sprintRecoveryTierShift:2, adsMoveSpeedTierShift:1},
   }},
   // TR7: default 20 Rnd + Basic Barrel → 200ms ADS, defSpr:3(167ms), defAms:5(0.60×)
   tr7: {defAds:4,defSpr:3,defAms:5,def:'20_rnd',mags:{
-    '10_fast':{name:'10 Fast',pts:5, mag:10,tacRld:2124,adsSh:0, sprSh:0, amsSh:-3},
-    '15_rnd': {name:'15 Rnd', pts:5, mag:15,tacRld:2124,adsSh:0, sprSh:0, amsSh:0},
-    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2400,adsSh:0, sprSh:0, amsSh:0},
-    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2124,adsSh:1, sprSh:1, amsSh:0},
-    '25_rnd': {name:'25 Rnd', pts:20,mag:25,tacRld:2400,adsSh:1, sprSh:1, amsSh:1},
-    '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2124,adsSh:1, sprSh:2, amsSh:1},
-    '30_rnd': {name:'30 Rnd', pts:40,mag:30,tacRld:2400,adsSh:1, sprSh:1, amsSh:1},
+    '10_fast':{name:'10 Fast',pts:5, mag:10,tacRld:2124,adsTimeTierShift:0, sprintRecoveryTierShift:0, adsMoveSpeedTierShift:-3},
+    '15_rnd': {name:'15 Rnd', pts:5, mag:15,tacRld:2124,adsTimeTierShift:0, sprintRecoveryTierShift:0, adsMoveSpeedTierShift:0},
+    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2400,adsTimeTierShift:0, sprintRecoveryTierShift:0, adsMoveSpeedTierShift:0},
+    '20_fast':{name:'20 Fast',pts:10,mag:20,tacRld:2124,adsTimeTierShift:1, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:0},
+    '25_rnd': {name:'25 Rnd', pts:20,mag:25,tacRld:2400,adsTimeTierShift:1, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:1},
+    '25_fast':{name:'25 Fast',pts:25,mag:25,tacRld:2124,adsTimeTierShift:1, sprintRecoveryTierShift:2, adsMoveSpeedTierShift:1},
+    '30_rnd': {name:'30 Rnd', pts:40,mag:30,tacRld:2400,adsTimeTierShift:1, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:1},
   }},
   // VCR-2: default 30 Rnd + Basic Barrel → 250ms ADS, defSpr:3(167ms), defAms:5(0.60×)
   vcr2: {defAds:5,defSpr:3,defAms:5,def:'30_rnd',mags:{
-    '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2154,adsSh:-1,sprSh:0, amsSh:-2},
-    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2434,adsSh:-1,sprSh:-1,amsSh:-2},
-    '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2434,adsSh:0, sprSh:0, amsSh:0},
-    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2154,adsSh:0, sprSh:1, amsSh:0},
-    '36_rnd': {name:'36 Rnd', pts:15,mag:36,tacRld:2434,adsSh:0, sprSh:1, amsSh:1},
-    '40_rnd': {name:'40 Rnd', pts:25,mag:40,tacRld:2434,adsSh:0, sprSh:1, amsSh:1},
-    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2154,adsSh:0, sprSh:2, amsSh:1},
+    '20_fast':{name:'20 Fast',pts:5, mag:20,tacRld:2154,adsTimeTierShift:-1,sprintRecoveryTierShift:0, adsMoveSpeedTierShift:-2},
+    '20_rnd': {name:'20 Rnd', pts:5, mag:20,tacRld:2434,adsTimeTierShift:-1,sprintRecoveryTierShift:-1,adsMoveSpeedTierShift:-2},
+    '30_rnd': {name:'30 Rnd', pts:5, mag:30,tacRld:2434,adsTimeTierShift:0, sprintRecoveryTierShift:0, adsMoveSpeedTierShift:0},
+    '30_fast':{name:'30 Fast',pts:10,mag:30,tacRld:2154,adsTimeTierShift:0, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:0},
+    '36_rnd': {name:'36 Rnd', pts:15,mag:36,tacRld:2434,adsTimeTierShift:0, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:1},
+    '40_rnd': {name:'40 Rnd', pts:25,mag:40,tacRld:2434,adsTimeTierShift:0, sprintRecoveryTierShift:1, adsMoveSpeedTierShift:1},
+    '40_fast':{name:'40 Fast',pts:30,mag:40,tacRld:2154,adsTimeTierShift:0, sprintRecoveryTierShift:2, adsMoveSpeedTierShift:1},
   }},
 };
 
 // ── ERGONOMICS ────────────────────────────────────────────────────────────────
-// sprSh: sprint recovery tier shift (-1 = 1 tier better/faster)
+// sprintRecoveryTierShift: sprint recovery tier shift (-1 = 1 tier better/faster)
 // noEffect: true = attachment cost tracked but stat effect not yet modeled (shown greyed in UI)
 // ── PENDING DATA / EFFECTS ────────────────────────────────────────────────────
 // TODO - Ergonomics (effect unknown):
@@ -966,7 +1038,7 @@ const WEAPON_MAG = {
 //   (none — all weapons now have data)
 const ERGOS = [
   {id:'none',          name:'None',          pts:0},
-  {id:'rail_cover',    name:'Rail Cover',    pts:5,  sprSh:-1},
+  {id:'rail_cover',    name:'Rail Cover',    pts:5,  sprintRecoveryTierShift:-1},
   {id:'mag_flare',     name:'Mag Flare',     pts:10, noEffect:true},
   {id:'mag_catch',     name:'Mag Catch',     pts:5},
   {id:'match_trigger', name:'Match Trigger', pts:15, noEffect:true},
@@ -1013,7 +1085,7 @@ const WEAPON_ERGO = {
 };
 
 // Returns a modified copy of w with attachment stats applied.
-// Adds _label (display name with attachments), _recoilR (% change applied).
+// Adds _label (display name with attachments), _adsRecoilReductionPct (% change applied).
 function applyAttachments(w, atts) {
   if (!w || !atts) return w;
   const muz=MUZZLES.find(a=>a.id===atts.muzzle)??MUZZLES[0];
@@ -1021,18 +1093,40 @@ function applyAttachments(w, atts) {
   const grp=GRIPS.find(a=>a.id===atts.grip)??GRIPS[0];
   const las=LASERS.find(a=>a.id===atts.laser)??LASERS[0];
   const ammoType=AMMOS.find(a=>a.id===(atts.ammo??'standard'))??AMMOS[0];
-  // Tier formula: effectiveRecoilV = recoilV × mult^(gripTier + muzzleTierMod + ammoTierMod)
-  const totalTier=(grp.tier??0)+(muz.tierMod??0)+(ammoType.tierMod??0);
+  // ADS recoil tier formula: effective recoilV = recoilV × ADSRecoilAmountMultiplier^(stacked tier mods).
+  const totalAdsRecoilTierMod=(grp.adsRecoilTierMod??0)+(muz.adsRecoilTierMod??0)+(ammoType.adsRecoilTierMod??0);
   const mult=RECOIL_MULT[w.id]??0.94;
-  const newRecoilV=+(w.recoilV*Math.pow(mult,totalTier)).toFixed(3);
-  const recoilRPct=+(100*(1-Math.pow(mult,totalTier))).toFixed(1);
-  // spreadMult stacks from muzzle and grip (linear comp −25%; grip spreadMult support is currently unused)
-  const newRecoilVar=+(w.recoilVar*(muz.spreadMult??1)*(grp.spreadMult??1)).toFixed(3);
+  const adsRecoilPerShot=+(w.recoilV*Math.pow(mult,totalAdsRecoilTierMod)).toFixed(3);
+  const adsRecoilReductionPct=+(100*(1-Math.pow(mult,totalAdsRecoilTierMod))).toFixed(1);
+  // ADS-only multiplier on ADSRecoilDirectionVariation-derived recoilVar.
+  const adsRecoilVariation=+(w.recoilVar*(muz.adsRecoilVariationMult??1)*(grp.adsRecoilVariationMult??1)).toFixed(3);
   const tags=[muz,bar,grp,las].filter(a=>a.id!=='none').map(a=>a.name);
-  const combinedAdsSpd=(grp.adsSpd??0)+(bar.adsSpd??0);
-  const movAccShift=(grp.movAcc??0)+(las.movAcc??0)+(bar.movAcc??0);
-  const movTier=Math.min(Math.max(DEFAULT_MOV_TIER-movAccShift, 0), MOVING_ACC_TIERS.length-1);
-  const movAccDeg=MOVING_ACC_TIERS[movTier];
+  const combinedAdsTimeTierMod=(grp.adsTimeTierMod??0)+(bar.adsTimeTierMod??0);
+  const sightSway=atts.sight==='iron'?-1:0;
+  const weaponSway=(muz.sway??0)+sightSway;
+  const movingAdsSpreadTierMod=(grp.movingAdsSpreadTierMod??0)+(las.movingAdsSpreadTierMod??0)+(bar.movingAdsSpreadTierMod??0);
+  const movingAdsSpreadTier=Math.min(Math.max(DEFAULT_MOV_TIER-movingAdsSpreadTierMod, 0), MOVING_ACC_TIERS.length-1);
+  const movingAdsMinSpreadDeg=MOVING_ACC_TIERS[movingAdsSpreadTier];
+  // Hip spread tier shift: suppressors push up 1 tier (worse), short barrel drops 1 (better)
+  const hipSpreadTierMod=(muz.hipSpreadTierMod??0)+(bar.hipSpreadTierMod??0)+(las.hipSpreadTierMod??0);
+  let spreadOverride=null;
+  if (hipSpreadTierMod!==0 && w.spread) {
+    const tiers=HIP_SPREAD_TIERS[HIP_CLS[w.id]];
+    if (tiers) {
+      spreadOverride={...w.spread};
+      for (const [key, baseIdx] of Object.entries(HIP_SPREAD_BASE_IDX)) {
+        if (!spreadOverride[key]) continue;
+        const curMin=spreadOverride[key][0];
+        let nearestIdx=0, nearestDiff=Math.abs(tiers[0]-curMin);
+        for (let i=1;i<tiers.length;i++) {
+          const d=Math.abs(tiers[i]-curMin);
+          if (d<nearestDiff) { nearestDiff=d; nearestIdx=i; }
+        }
+        const newIdx=Math.max(0,Math.min(tiers.length-1, nearestIdx+hipSpreadTierMod));
+        spreadOverride[key]=[tiers[newIdx], spreadOverride[key][1]];
+      }
+    }
+  }
   // Headshot multiplier
   const baseHsMult=BASE_HS_MULT[w.id]??1.34;
   const hsMult=ammoType.hsMult===null||ammoType.hsMult===undefined ? baseHsMult
@@ -1042,12 +1136,14 @@ function applyAttachments(w, atts) {
   const ammoName=ammoType.id!=='standard'?ammoType.name:null;
   // Ergonomics
   const ergoData=ERGOS.find(e=>e.id===(atts.ergo??'none'))??ERGOS[0];
-  const ergoSprSh=ergoData.sprSh??0;
+  const ergoSprintRecoveryTierShift=ergoData.sprintRecoveryTierShift??0;
   // Magazine stats
   const wm=WEAPON_MAG[w.id]??null;
   const magId=atts.mag??wm?.def??null;
   const magData=wm?.mags?.[magId]??null;
-  const magAdsSh=magData?.adsSh??0, magSprSh=magData?.sprSh??0, magAmsSh=magData?.amsSh??0;
+  const magAdsTimeTierShift=magData?.adsTimeTierShift??0;
+  const magSprintRecoveryTierShift=magData?.sprintRecoveryTierShift??0;
+  const magAdsMoveSpeedTierShift=magData?.adsMoveSpeedTierShift??0;
   const magMag=magData?.mag??null, magTacRld=magData?.tacRld??null;
   // Mag Catch tacRld override: use per-weapon reload time based on fast/regular mag
   const we=WEAPON_ERGO[w.id]??null;
@@ -1057,33 +1153,36 @@ function applyAttachments(w, atts) {
     const rld=isFastMag ? (we.magCatchRld.fast??we.magCatchRld.reg) : we.magCatchRld.reg;
     if (rld!=null) magCatchTacRld=rld;
   }
-  // Compute tier indices (0-based), combining magazine shift + grip/barrel adsSpd + ergo sprSh.
-  let _adsTierMs=null, _sprRecMs=null, _adsMoveX=null;
+  // Compute tier indices (0-based), combining magazine shift + grip/barrel adsTimeTierMod + ergo sprintRecoveryTierShift.
+  let _adsTimeMs=null, _sprintRecoveryMs=null, _adsMoveSpeedMult=null;
   if (wm) {
-    const adsIdx=Math.max(0,Math.min(7,(wm.defAds-1)+magAdsSh-combinedAdsSpd));
-    const sprIdx=Math.max(0,Math.min(7,(wm.defSpr-1)+magSprSh+ergoSprSh));
-    const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAmsSh+(grp.amsSh??0)+(ammoType.amsSh??0)));
-    _adsTierMs=ADS_SPD_TIERS[adsIdx];
-    _sprRecMs=SPRINT_REC_TIERS[sprIdx];
-    _adsMoveX=ADS_MOVE_TIERS[amsIdx];
+    const adsIdx=Math.max(0,Math.min(7,(wm.defAds-1)+magAdsTimeTierShift-combinedAdsTimeTierMod));
+    const sprIdx=Math.max(0,Math.min(7,(wm.defSpr-1)+magSprintRecoveryTierShift+ergoSprintRecoveryTierShift));
+    const amsIdx=Math.max(0,Math.min(7,(wm.defAms-1)+magAdsMoveSpeedTierShift+(grp.adsMoveSpeedTierShift??0)+(ammoType.adsMoveSpeedTierShift??0)));
+    _adsTimeMs=ADS_SPD_TIERS[adsIdx];
+    _sprintRecoveryMs=SPRINT_REC_TIERS[sprIdx];
+    _adsMoveSpeedMult=ADS_MOVE_TIERS[amsIdx];
   }
   const magTags=magData&&magData.name&&magData.name!==wm?.mags?.[wm?.def]?.name?[magData.name]:[];
   const allTags=[...tags,...(ammoName?[ammoName]:[]),...magTags];
   return {
     ...w,
     _label: allTags.length ? w.name+' ('+allTags.join(' · ')+')' : w.name,
-    _recoilR: recoilRPct,       // % reduction (positive) or increase (negative) for stats display
-    _decayBoost: muz.decayBoost??0,  // spread decay boost from muzzle only
+    _adsRecoilReductionPct: adsRecoilReductionPct,
+    _adsSpreadDecayBoost: muz.adsSpreadDecayBoost??0,  // ADS spread decay boost from muzzle only
     _worldSpot: muz.worldSpot??54,
     _minimapSpot: muz.minimapSpot??150,
-    _movAccShift: movAccShift,
-    _movAccDeg: movAccDeg,
-    _adsSpd: combinedAdsSpd,
-    _adsTierMs, _sprRecMs, _adsMoveX,
+    _weaponSway: weaponSway,
+    _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
+    _movingAdsMinSpreadDeg: movingAdsMinSpreadDeg,
+    _adsTimeTierMod: combinedAdsTimeTierMod,
+    _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult,
     _hsMult: hsMult,
-    recoilV: newRecoilV,
-    recoilVar: newRecoilVar,
-    recoilIncAds: w.recoilIncAds!=null ? +(w.recoilIncAds*(bar.sIncMult??1)).toFixed(3) : null,
+    _hipSpreadTierMod: hipSpreadTierMod,
+    spread: spreadOverride??w.spread,
+    recoilV: adsRecoilPerShot,
+    recoilVar: adsRecoilVariation,
+    recoilIncAds: w.recoilIncAds!=null ? +(w.recoilIncAds*(bar.adsSpreadIncMult??1)).toFixed(3) : null,
     bulletVel: w.bulletVel!=null ? Math.round(w.bulletVel*bar.vMult) : null,
     mag: magMag??w.mag,
     tacRld: magCatchTacRld!=null ? +(magCatchTacRld/1000).toFixed(3) : magTacRld!=null ? +(magTacRld/1000).toFixed(3) : w.tacRld,
@@ -1106,13 +1205,13 @@ function gaussDev(rng, recoilVar) {
 // Simulate recoil recovery over one inter-shot interval using sym.gg parameters.
 // Formula (per frame): Decrease = (|r|^decExp + 0.06) × decFactor × dt × t^timeExp
 // where t = time elapsed since last shot. Vertical and horizontal applied independently.
-function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime) {
+function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, decOffset=0.06) {
   const dt=1/60;
   let t=0;
   while(t<interShotTime){
     const step=Math.min(dt,interShotTime-t);
     t+=step;
-    const dec=(Math.pow(Math.abs(r),decExp)+0.06)*decFactor*step*Math.pow(t,timeExp);
+    const dec=(Math.pow(Math.abs(r),decExp)+decOffset)*decFactor*step*Math.pow(t,timeExp);
     if(r>0) r=Math.max(0,r-dec);
     else if(r<0) r=Math.min(0,r+dec);
   }
@@ -1167,8 +1266,9 @@ function btkRanges(w1, w2) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
 let selW1 = null, selW2 = null, comparing = false;
-let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilMode = 'bloom', recoilRefSeed = 0, recoilBloomBubbles = false;
+let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilMode = 'bloom', recoilRefSeed = 0, recoilBloomBubbles = false, recoilAim = 'ads', recoilStance = 'stand';
 let recoilScaleH = 5;
+let recoilPanX = 0, recoilPanY = 0;
 const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
 let att1 = blankAtts(), att2 = blankAtts();
 
@@ -1423,12 +1523,12 @@ function renderOverview() {
       tooltip:'Weapon fire rate in rounds per minute.'},
     {lbl:'Bullet Vel',  k:'bulletVel',          unit:'m/s', fmt:v=>v??'—', higherBetter:true,
       tooltip:'Projectile velocity after barrel effects are applied. Higher values reduce travel time and lead.'},
-    {lbl:'ADS Time',    compute:w=>w._adsTierMs??w.adsTime, unit:'ms', fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
+    {lbl:'ADS Time',    compute:w=>w._adsTimeMs??w.adsTime, unit:'ms', fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
       tooltip:'Time to aim down sights. Can be affected by magazine, barrel, and grip selections.',
-      estFn:w=>!w._adsTierMs&&w.adsTime!=null},
-    {lbl:'ADS Move Spd',k:'_adsMoveX',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true, group:'mobility',
+      estFn:w=>!w._adsTimeMs&&w.adsTime!=null},
+    {lbl:'ADS Move Spd',k:'_adsMoveSpeedMult',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true, group:'mobility',
       tooltip:'Movement speed multiplier while aiming down sights. Can be affected by magazine, grip, and ammo selections.'},
-    {lbl:'Sprint Rec',  k:'_sprRecMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
+    {lbl:'Sprint Rec',  k:'_sprintRecoveryMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
       tooltip:'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.'},
     {lbl:'Mag Size',    k:'mag',                unit:'rds', fmt:v=>v, higherBetter:true,
       tooltip:'Rounds available in the selected magazine.'},
@@ -1437,10 +1537,10 @@ function renderOverview() {
     {lbl:'Deploy',      k:'deployT',            unit:'s',   fmt:v=>v??'—', lowerBetter:true,
       tooltip:'Weapon deploy time in seconds. Lower is faster.'},
     {lbl:'Recoil/Shot', k:'recoilV',            unit:'°',   fmt:v=>v.toFixed(2), lowerBetter:true, group:'recoil',
-      tooltip:'Vertical recoil added per shot after recoil-tier attachment effects.'},
+      tooltip:'ADS vertical recoil added per shot after ADS recoil-tier attachment effects.'},
     {lbl:'Recoil Dir',  k:'recoilDir',          unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true, group:'recoil',
       tooltip:'Average recoil direction from vertical. Positive values pull right; negative values pull left.'},
-    {lbl:'Move ADS',    k:'_movAccDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true, group:'recoil',
+    {lbl:'Move ADS',    k:'_movingAdsMinSpreadDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true, group:'recoil',
       tooltip:'ADS spread while moving. Lower is more accurate. Can be affected by laser and barrel selections.'},
     {lbl:'3D Spot',     k:'_worldSpot',         unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true,
       tooltip:'Distance at which firing exposes your 3D world position. None means you are never 3D spotted.'},
@@ -1517,9 +1617,38 @@ function toggleRecoilBloomBubbles() {
 function recoilScaleYMax() {
   return recoilScaleH*2-1;
 }
+function fmtAxisDeg(v) {
+  return v.toFixed(1).replace('.0','');
+}
+function recoilXMin() { return -recoilScaleH+recoilPanX; }
+function recoilXMax() { return recoilScaleH+recoilPanX; }
+function recoilYMin() { return -1+recoilPanY; }
+function recoilYMax() { return recoilScaleYMax()+recoilPanY; }
 function adjustRecoilScale(dir) {
   recoilScaleH+=dir==='in'?-0.5:0.5;
   recoilScaleH=Math.max(2,Math.min(10,recoilScaleH));
+  renderRecoil();
+}
+function resetRecoilView() {
+  recoilScaleH=5;
+  recoilPanX=0;
+  recoilPanY=0;
+  renderRecoil();
+}
+function panRecoilView(dir) {
+  const step=0.5;
+  if(dir==='left') recoilPanX-=step;
+  if(dir==='right') recoilPanX+=step;
+  if(dir==='up') recoilPanY+=step;
+  if(dir==='down') recoilPanY-=step;
+  renderRecoil();
+}
+function setRecoilAim(aim) {
+  recoilAim=aim==='hip'?'hip':'ads';
+  renderRecoil();
+}
+function setRecoilStance(stance) {
+  recoilStance=stance==='move'?'move':'stand';
   renderRecoil();
 }
 function randomizeRecoilReference() {
@@ -1540,26 +1669,28 @@ function defaultAttsForWeapon(weapon) {
 function renderAttachmentStats(loadouts) {
   const el=document.getElementById('attStats');
   if(!el) return;
-  const signed=(v,unit='',dec=0)=>{
-    const n=+v;
-    const s=(n>0?'+':'')+n.toFixed(dec);
-    return s+unit;
-  };
-  const metrics=[
-    {lbl:'ADS Time',    val:w=>w._adsTierMs??w.adsTime, unit:'ms', dec:0, lowerBetter:true},
-    {lbl:'ADS Move',    val:w=>w._adsMoveX,             unit:'×',  dec:2, higherBetter:true, group:'mobility'},
-    {lbl:'Sprint Rec',  val:w=>w._sprRecMs,             unit:'ms', dec:0, lowerBetter:true, group:'mobility'},
-    {lbl:'Bullet Vel',  val:w=>w.bulletVel,             unit:'m/s',dec:0, higherBetter:true},
-    {lbl:'Mag Size',    val:w=>w.mag,                   unit:'',   dec:0, higherBetter:true},
-    {lbl:'Tac Reload',  val:w=>w.tacRld,                unit:'s',  dec:3, lowerBetter:true},
-    {lbl:'Recoil/Shot', val:w=>w.recoilV,               unit:'°',  dec:2, lowerBetter:true},
-    {lbl:'Variation',   val:w=>w.recoilVar,             unit:'°',  dec:1, lowerBetter:true},
-    {lbl:'Spread/Shot', val:w=>w.recoilIncAds,          unit:'°',  dec:2, lowerBetter:true},
-    {lbl:'Move ADS',    val:w=>w._movAccDeg,            unit:'°',  dec:2, lowerBetter:true},
-    {lbl:'3D Spot',     val:w=>w._worldSpot,             unit:'m',  dec:0, lowerBetter:true},
-    {lbl:'Minimap Spot',val:w=>w._minimapSpot,           unit:'m',  dec:0, lowerBetter:true},
-    {lbl:'HS Mult',     val:w=>w._hsMult,               unit:'×',  dec:2, higherBetter:true},
-  ];
+    const signed=(v,unit='',dec=0)=>{
+      const n=+v;
+      const s=(n>0?'+':'')+n.toFixed(dec);
+      return s+unit;
+    };
+    const escAttr=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const metrics=[
+      {lbl:'ADS Time',    val:w=>w._adsTimeMs??w.adsTime, unit:'ms', dec:0, lowerBetter:true, tooltip:'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.'},
+      {lbl:'ADS Move',    val:w=>w._adsMoveSpeedMult,             unit:'×',  dec:2, higherBetter:true, group:'mobility', tooltip:'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.'},
+      {lbl:'Sprint Rec',  val:w=>w._sprintRecoveryMs,             unit:'ms', dec:0, lowerBetter:true, group:'mobility', tooltip:'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.'},
+      {lbl:'Bullet Vel',  val:w=>w.bulletVel,             unit:'m/s',dec:0, higherBetter:true, tooltip:'Projectile velocity after barrel effects. Higher reduces travel time and lead.'},
+      {lbl:'Mag Size',    val:w=>w.mag,                   unit:'',   dec:0, higherBetter:true, tooltip:'Rounds in the selected magazine.'},
+      {lbl:'Tac Reload',  val:w=>w.tacRld,                unit:'s',  dec:3, lowerBetter:true, tooltip:'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.'},
+      {lbl:'ADS Recoil/Shot', val:w=>w.recoilV,           unit:'°',  dec:2, lowerBetter:true, tooltip:'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.'},
+      {lbl:'ADS Variation',   val:w=>w.recoilVar,         unit:'°',  dec:1, lowerBetter:true, tooltip:'ADS recoil direction variation after ADS-only variation modifiers. Lower is more consistent.'},
+      {lbl:'ADS Spread/Shot', val:w=>w.recoilIncAds,      unit:'°',  dec:2, lowerBetter:true, tooltip:'ADS bloom/spread increase per shot after ADS-only spread modifiers. Lower builds bloom more slowly.'},
+      {lbl:'Move ADS',    val:w=>w._movingAdsMinSpreadDeg,            unit:'°',  dec:2, lowerBetter:true, tooltip:'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.'},
+      {lbl:'Hip Min',     val:w=>w.spread?.hipStand?.[0], unit:'°',  dec:3, lowerBetter:true, tooltip:'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.'},
+      {lbl:'3D Spot',     val:w=>w._worldSpot,             unit:'m',  dec:0, lowerBetter:true, tooltip:'Distance at which firing exposes your 3D world position. None or shorter is better.'},
+      {lbl:'Minimap Spot',val:w=>w._minimapSpot,           unit:'m',  dec:0, lowerBetter:true, tooltip:'Distance at which firing exposes you on the minimap. None or shorter is better.'},
+      {lbl:'HS Mult',     val:w=>w._hsMult,               unit:'×',  dec:2, higherBetter:true, tooltip:'Headshot damage multiplier after ammo effects. Higher increases headshot damage.'},
+    ];
   let html='<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered=false;
   loadouts.filter(x=>x.weapon).forEach(({weapon,atts,colClass})=>{
@@ -1570,11 +1701,18 @@ function renderAttachmentStats(loadouts) {
       const baseVal=m.val(base), curVal=m.val(cur);
       if(baseVal==null||curVal==null) return;
       const delta=+(curVal-baseVal).toFixed(Math.max(m.dec,3));
-      if(Math.abs(delta)<0.0005) return;
-      const better=(m.higherBetter&&delta>0)||(m.lowerBetter&&delta<0);
-      const color=better?'var(--green)':'var(--red)';
-      chips.push(`<div class="att-chip"><div class="att-chip-lbl">${m.lbl}</div><div class="att-chip-val" style="color:${color}">${signed(delta,m.unit,m.dec)}</div></div>`);
-    });
+        if(Math.abs(delta)<0.0005) return;
+        const better=(m.higherBetter&&delta>0)||(m.lowerBetter&&delta<0);
+        const color=better?'var(--green)':'var(--red)';
+        const tip=escAttr(m.tooltip??m.lbl);
+        chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${m.lbl}</div><div class="att-chip-val" style="color:${color}">${signed(delta,m.unit,m.dec)}</div></div>`);
+      });
+      const swayDelta=(cur._weaponSway??0)-(base._weaponSway??0);
+      if(swayDelta!==0) {
+        const decreased=swayDelta<0;
+        const tip=escAttr('Weapon sway from selected attachments. Increased is worse; decreased is better.');
+        chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Weapon Sway</div><div class="att-chip-val" style="color:${decreased?'var(--green)':'var(--red)'}">${decreased?'Decreased':'Increased'}</div></div>`);
+      }
     if(!chips.length) return;
     rendered=true;
     html+=`<div class="att-block"><div class="att-name ${colClass}">${weapon.name}</div><div class="att-grid">${chips.join('')}</div></div>`;
@@ -1638,7 +1776,7 @@ function renderChart() {
     const ttkDs=(w,color,label)=>({label,data:labels.map(r=>{
       const btk=getBTKWithHS(w,r,btkHS);
       const ttk=getTTK(w,btk)??0;
-      return ttk+(showAds?(w._adsTierMs??0):0);
+      return ttk+(showAds?(w._adsTimeMs??0):0);
     }),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before'});
     const datasets=[];
     if (w1) datasets.push(ttkDs(w1,'#c9a227',wLabel(w1)));
@@ -1655,7 +1793,7 @@ function renderChart() {
             const w=i.datasetIndex===1&&w2?w2:w1;
             const btk=getBTKWithHS(w,i.dataIndex,btkHS);
             const ttk=getTTK(w,btk);
-            if (showAds&&w._adsTierMs) return `${w.name}: ${fmtTTK(i.raw)} (${fmtTTK(ttk)} TTK + ${w._adsTierMs}ms ADS)`;
+            if (showAds&&w._adsTimeMs) return `${w.name}: ${fmtTTK(i.raw)} (${fmtTTK(ttk)} TTK + ${w._adsTimeMs}ms ADS)`;
             return `${w.name}: ${fmtTTK(i.raw)} (${btk} BTK)`;
           }
         }}},
@@ -1706,7 +1844,7 @@ function renderBTK() {
   const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
   const ranges=btkRanges(w1, w2);
   const ttkHdr=showAds?'ADS+TTK':'TTK';
-  const fmtT=(w,t)=>{ const base=t??0; return fmtTTK(showAds&&w._adsTierMs ? base+w._adsTierMs : t); };
+  const fmtT=(w,t)=>{ const base=t??0; return fmtTTK(showAds&&w._adsTimeMs ? base+w._adsTimeMs : t); };
   let html='<table class="btk-tbl"><thead><tr><th>Range</th>';
   if(w1) html+=`<th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
   if(w2) html+=`<th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
@@ -1722,23 +1860,106 @@ function renderBTK() {
   document.getElementById('btkArea').innerHTML=html;
 }
 
+function recoilGroup(w) {
+  return w.recoil?.[recoilAim] ?? {
+    dir:w.recoilDir, amount:w.recoilV, amountMult:1, amountExp:0,
+    dirVar:w.recoilVar, dirVarMult:1, dirVarExp:0,
+    decExp:RECOIL_DEC_EXP[w.id]??1, decTimeExp:RECOIL_DEC_TEXP[w.id]??1.2,
+    decOffset:0.06, decFactor:RECOIL_DEC[w.id]??72,
+  };
+}
+function baseRecoilGroup(w) {
+  return w.recoil?.ads ?? recoilGroup(w);
+}
+function groupRecoilAmount(g) {
+  return (g.amount??0)*Math.pow(g.amountMult??1,g.amountExp??0);
+}
+function groupRecoilVariation(g) {
+  return (g.dirVar??0)*Math.pow(g.dirVarMult??1,g.dirVarExp??0);
+}
+function selectedRecoilAmountFor(w) {
+  const g=recoilGroup(w);
+  if(recoilAim!=='ads') return groupRecoilAmount(g);
+  const adsBase=groupRecoilAmount(baseRecoilGroup(w));
+  const attachmentMult=adsBase>0?(w.recoilV??adsBase)/adsBase:1;
+  return groupRecoilAmount(g)*attachmentMult;
+}
+function selectedRecoilVariationFor(w) {
+  const g=recoilGroup(w);
+  if(recoilAim!=='ads') return groupRecoilVariation(g);
+  const adsBase=groupRecoilVariation(baseRecoilGroup(w));
+  const attachmentMult=adsBase>0?(w.recoilVar??adsBase)/adsBase:1;
+  return groupRecoilVariation(g)*attachmentMult;
+}
+function selectedRecoilDirectionFor(w) {
+  return recoilGroup(w).dir??w.recoilDir??0;
+}
+function spreadKeyForState() {
+  return `${recoilAim}${recoilStance==='move'?'Move':'Stand'}`;
+}
+function selectedSpreadBoundsFor(w) {
+  const bounds=w.spread?.[spreadKeyForState()] ?? (recoilAim==='ads' ? [0.05,w.spreadMax??99] : [0,w.spreadMax??99]);
+  if(recoilAim==='ads'&&recoilStance==='move'&&w._movingAdsMinSpreadDeg!=null) return [w._movingAdsMinSpreadDeg,bounds[1]];
+  return bounds;
+}
+function selectedSpreadDynamicsFor(w) {
+  return w.spreadDyn?.[recoilAim] ?? {
+    inc:recoilAim==='ads'?(w.recoilIncAds??0):0,
+    firingCoef:recoilAim==='ads'?1.22:0.51,
+    firingExp:2.5,
+    firingOffset:recoilAim==='ads'?1.84:3.31,
+  };
+}
+function selectedSpreadIncFor(w) {
+  const dyn=selectedSpreadDynamicsFor(w);
+  if(recoilAim==='ads') return w.recoilIncAds??dyn.inc??0;
+  return dyn.inc??0;
+}
+// Simulate bloom spread for 50 shots to find the sustained-fire equilibrium spread.
+// Returns the converged pre-shot spread — the effective max a player experiences.
+function selectedEffectiveSpreadMax(w) {
+  const dyn=selectedSpreadDynamicsFor(w);
+  const [baseline,sMax]=selectedSpreadBoundsFor(w);
+  const sInc=selectedSpreadIncFor(w);
+  if(sInc===0) return baseline;
+  const coef=dyn.firingCoef??0, exp_=dyn.firingExp??1;
+  const offset=(dyn.firingOffset??0)*(1+(recoilAim==='ads'?(w._adsSpreadDecayBoost??0):0));
+  const T=60/(w.rpm??600);
+  const dt=1/60;
+  const clamp=v=>Math.min(Math.max(v,baseline),sMax);
+  let s=baseline;
+  for(let i=0;i<50;i++){
+    s=clamp(s+sInc);
+    let rem=T;
+    while(rem>1e-12){
+      const step=Math.min(dt,rem);
+      s=clamp(s-step*(coef*Math.pow(Math.max(s-baseline,0),exp_)+offset));
+      rem-=step;
+    }
+  }
+  return +s.toFixed(3);
+}
 function genRecoilPts(weapon,shots=20,seed=0) {
   const rng=mulberry32((whash(weapon.id)^seed)>>>0);
   const pts=[{x:0,y:0}];
-  const decF=RECOIL_DEC[weapon.id]??72;
-  const decExp=RECOIL_DEC_EXP[weapon.id]??1;
-  const timeExp=RECOIL_DEC_TEXP[weapon.id]??1.2;
+  const group=recoilGroup(weapon);
+  const decF=group.decFactor??RECOIL_DEC[weapon.id]??72;
+  const decExp=group.decExp??RECOIL_DEC_EXP[weapon.id]??1;
+  const timeExp=group.decTimeExp??RECOIL_DEC_TEXP[weapon.id]??1.2;
+  const decOffset=group.decOffset??0.06;
+  const amount=selectedRecoilAmountFor(weapon);
+  const variation=selectedRecoilVariationFor(weapon);
   const interShotTime=60/(weapon.rpm??600);
   let cx=0,cy=0;
   for(let i=1;i<shots;i++){
-    const dir=-weapon.recoilDir*Math.PI/180;
-    const spread=gaussDev(rng,weapon.recoilVar)*Math.PI/180;
+    const dir=-(group.dir??weapon.recoilDir??0)*Math.PI/180;
+    const spread=gaussDev(rng,variation)*Math.PI/180;
     const angle=dir+spread;
-    cx+=Math.sin(angle)*weapon.recoilV; cy+=Math.cos(angle)*weapon.recoilV;
+    cx+=Math.sin(angle)*amount; cy+=Math.cos(angle)*amount;
     pts.push({x:cx,y:cy});
     if(i<shots-1){
-      cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime);
-      cy=applyRecoilDecay(cy,decF,decExp,timeExp,interShotTime);
+      cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime,decOffset);
+      cy=applyRecoilDecay(cy,decF,decExp,timeExp,interShotTime,decOffset);
     }
   }
   return pts;
@@ -1750,20 +1971,18 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
   const PW=CW-PL-PR, PH=CH-PT-PB;
   const N=20;
 
-  // ── Fixed scale ─────────────────────────────────────────────────────────────
-  const RC_H    = recoilScaleH;  // horizontal half-range, centered on 0
-  const YMIN    = -1.0;
-  const RC_YMAX = recoilScaleYMax(); // proportional scale with Y min fixed at -1
+  const xMin=recoilXMin(), xMax=recoilXMax();
+  const yMin=recoilYMin(), yMax=recoilYMax();
 
-  const toX  =xDeg=>PL+(xDeg+RC_H)/(2*RC_H)*PW;
-  const toY  =yDeg=>PT+PH-((yDeg-YMIN)/(RC_YMAX-YMIN))*PH;
+  const toX=xDeg=>PL+((xDeg-xMin)/(xMax-xMin))*PW;
+  const toY=yDeg=>PT+PH-((yDeg-yMin)/(yMax-yMin))*PH;
 
   // ── Background ─────────────────────────────────────────────────────────────
   ctx.fillStyle='#080d0d'; ctx.fillRect(0,0,CW,CH);
 
   // ── Grid ───────────────────────────────────────────────────────────────────
-  const vMin1=Math.ceil(YMIN), vMax1=Math.floor(RC_YMAX);
-  const hMin1=Math.ceil(-RC_H), hMax1=Math.floor(RC_H);
+  const vMin1=Math.ceil(yMin), vMax1=Math.floor(yMax);
+  const hMin1=Math.ceil(xMin), hMax1=Math.floor(xMax);
   // Minor lines every 1°
   ctx.strokeStyle='rgba(40,52,52,0.6)'; ctx.lineWidth=0.4;
   for (let v=vMin1;v<=vMax1;v++) {
@@ -1774,14 +1993,16 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
   }
   // ── 0° axes (brighter than dim grid) ───────────────────────────────────────
   ctx.strokeStyle='rgba(150,165,165,0.6)'; ctx.lineWidth=1.5;
-  ctx.beginPath(); ctx.moveTo(toX(0),PT); ctx.lineTo(toX(0),PT+PH); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(PL,toY(0)); ctx.lineTo(PL+PW,toY(0)); ctx.stroke();
+  if(xMin<=0&&xMax>=0){ctx.beginPath(); ctx.moveTo(toX(0),PT); ctx.lineTo(toX(0),PT+PH); ctx.stroke();}
+  if(yMin<=0&&yMax>=0){ctx.beginPath(); ctx.moveTo(PL,toY(0)); ctx.lineTo(PL+PW,toY(0)); ctx.stroke();}
 
   // ── Origin crosshair ───────────────────────────────────────────────────────
   const ox=toX(0), oy=toY(0);
-  ctx.strokeStyle='rgba(255,255,255,0.4)'; ctx.lineWidth=0.8;
-  ctx.beginPath(); ctx.moveTo(ox-6,oy); ctx.lineTo(ox+6,oy); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(ox,oy-6); ctx.lineTo(ox,oy+6); ctx.stroke();
+  if(xMin<=0&&xMax>=0&&yMin<=0&&yMax>=0){
+    ctx.strokeStyle='rgba(255,255,255,0.4)'; ctx.lineWidth=0.8;
+    ctx.beginPath(); ctx.moveTo(ox-6,oy); ctx.lineTo(ox+6,oy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ox,oy-6); ctx.lineTo(ox,oy+6); ctx.stroke();
+  }
 
   // ── Axis labels ─────────────────────────────────────────────────────────────
   ctx.fillStyle='rgba(100,120,120,0.75)'; ctx.font='9px sans-serif';
@@ -1789,20 +2010,17 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
   for (let v=vMin1;v<=vMax1;v++) ctx.fillText(v+'°',PL-3,toY(v));
   ctx.textAlign='center'; ctx.textBaseline='top';
   for (let h=hMin1;h<=hMax1;h++) {
-    if (h!==0) ctx.fillText(h+'°',toX(h),PT+PH+3);
+    ctx.fillText(h+'°',toX(h),PT+PH+3);
   }
 
   // ── Bloom simulation ────────────────────────────────────────────────────────
-  // Returns ADS bloom radius (degrees) used by each bullet before it fires.
-  // Accounts for recoilIncAds (heavy barrel reduces this) and _decayBoost
-  // (lightened suppressor / compensated brake speed up bloom recovery).
   function simulateBloom(w, shotCount) {
-    const sInc=w.recoilIncAds??0;
-    const sMax=w.spreadMax??99;
-    const baseline=0.05;
+    const dyn=selectedSpreadDynamicsFor(w);
+    const [baseline,sMax]=selectedSpreadBoundsFor(w);
+    const sInc=selectedSpreadIncFor(w);
     if(sInc===0) return Array(shotCount).fill(baseline);
-    const coef=1.22, exp_=2.5;
-    const offset=1.84*(1+(w._decayBoost??0));
+    const coef=dyn.firingCoef??0, exp_=dyn.firingExp??1;
+    const offset=(dyn.firingOffset??0)*(1+(recoilAim==='ads'?(w._adsSpreadDecayBoost??0):0));
     const secBetweenShots=60/(w.rpm??600);
     const dt=1/60;
     const clamp=v=>Math.min(Math.max(v,baseline),sMax);
@@ -1831,7 +2049,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
 
   const cols=['#c9a227','#4d94d0'];
   const drawOrder=[weapon1,weapon2].filter(Boolean);
-  const spreadBubbleIdxs=[1,2,4,7,12,19];
+  const spreadBubbleIdxs=[0,1,2,4,7,12,19];
 
   // Pass 0 — Spray cloud with bloom jitter ─────────────────────────────────────
   // Each run uses a different recoil seed. Bloom jitter uses a separate RNG so
@@ -1840,9 +2058,13 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
   const CLOUD_RUNS=12;
   drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
-    const decF=RECOIL_DEC[w.id]??72;
-    const decExp=RECOIL_DEC_EXP[w.id]??1;
-    const timeExp=RECOIL_DEC_TEXP[w.id]??1.2;
+    const group=recoilGroup(w);
+    const decF=group.decFactor??RECOIL_DEC[w.id]??72;
+    const decExp=group.decExp??RECOIL_DEC_EXP[w.id]??1;
+    const timeExp=group.decTimeExp??RECOIL_DEC_TEXP[w.id]??1.2;
+    const decOffset=group.decOffset??0.06;
+    const amount=selectedRecoilAmountFor(w);
+    const variation=selectedRecoilVariationFor(w);
     const interShotTime=60/(w.rpm??600);
     const blooms=simulateBloom(w,N);
     for(let s=1;s<=CLOUD_RUNS;s++){
@@ -1850,20 +2072,20 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
       const rngB=mulberry32((whash(w.id)^(s*0x6c62272e))>>>0); // separate bloom RNG
       let cx=0,cy=0;
       for(let i=1;i<N;i++){
-        const dir=-w.recoilDir*Math.PI/180;
-        const spread=gaussDev(rng,w.recoilVar)*Math.PI/180;
+        const dir=-(group.dir??w.recoilDir??0)*Math.PI/180;
+        const spread=gaussDev(rng,variation)*Math.PI/180;
         const angle=dir+spread;
-        cx+=Math.sin(angle)*w.recoilV; cy+=Math.cos(angle)*w.recoilV;
+        cx+=Math.sin(angle)*amount; cy+=Math.cos(angle)*amount;
         // Apply bloom jitter: bullet lands within the bloom circle
-        const bloom=blooms[i]??0.05;
+        const bloom=blooms[i]??selectedSpreadBoundsFor(w)[0];
         const bAng=rngB()*Math.PI*2;
         const bR=bloom*Math.sqrt(rngB()); // uniform disk sampling
         ctx.beginPath();
         ctx.arc(toX(cx+bR*Math.cos(bAng)),toY(cy+bR*Math.sin(bAng)),2,0,Math.PI*2);
         ctx.fillStyle=col+'38'; ctx.fill();
         if(i<N-1){
-          cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime);
-          cy=applyRecoilDecay(cy,decF,decExp,timeExp,interShotTime);
+          cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime,decOffset);
+          cy=applyRecoilDecay(cy,decF,decExp,timeExp,interShotTime,decOffset);
         }
       }
     }
@@ -1883,7 +2105,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
       return pts.map((p,i)=>{
         let dx=p.x, dy=p.y;
         if(i>0){
-          const bloom=blooms[i]??0.05;
+          const bloom=blooms[i]??selectedSpreadBoundsFor(w)[0];
           const bAng=rngRef()*Math.PI*2;
           const bR=bloom*Math.sqrt(rngRef());
           dx+=bR*Math.cos(bAng); dy+=bR*Math.sin(bAng);
@@ -1896,7 +2118,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
       spreadBubbleIdxs.forEach(idx=>{
         const p=refPts[idx];
         if(!p) return;
-        const bloom=blooms[idx]??0.05;
+        const bloom=blooms[idx]??selectedSpreadBoundsFor(w)[0];
         const x=toX(p.x), y=toY(p.y);
         const r=Math.abs(toX(p.x+bloom)-x);
         ctx.beginPath();
@@ -1929,7 +2151,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
   });
 
   ctx.restore();
-  return {H:RC_H, yMin:YMIN, yMax:RC_YMAX};
+  return {xMin,xMax,yMin,yMax};
 }
 
 function renderRecoil() {
@@ -1942,6 +2164,10 @@ function renderRecoil() {
   const pathOnly=recoilMode==='path';
   document.getElementById('rcModeBloom')?.classList.toggle('on',!pathOnly);
   document.getElementById('rcModePath')?.classList.toggle('on',pathOnly);
+  document.getElementById('rcAimAds')?.classList.toggle('on',recoilAim==='ads');
+  document.getElementById('rcAimHip')?.classList.toggle('on',recoilAim==='hip');
+  document.getElementById('rcStanceStand')?.classList.toggle('on',recoilStance==='stand');
+  document.getElementById('rcStanceMove')?.classList.toggle('on',recoilStance==='move');
   const bloomToggle=document.getElementById('rcBloomToggleBtn');
   if(bloomToggle){
     bloomToggle.style.display=pathOnly?'':'none';
@@ -1949,9 +2175,10 @@ function renderRecoil() {
   }
   const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, pathOnly, recoilRefSeed, pathOnly&&recoilBloomBubbles);
   const noteEl=document.querySelector('.rc-note');
+  const stateLabel=`${recoilAim.toUpperCase()} / ${recoilStance==='move'?'MOV':'STD'}`;
   if (noteEl&&axis) noteEl.textContent=pathOnly
-    ? `Faded dots = 12 simulated spray runs with recoil+bloom. Line = recoil-only reference path connecting 20 shots.${recoilBloomBubbles?' Bubbles = potential spread on bullets 2, 3, 5, 8, 13, and 20.':''} Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`
-    : `Faded dots = 12 simulated spray runs showing natural shot scatter. Solid dots = reference run. Scale: ±${axis.H}° H / ${axis.yMin}°–${Math.round(axis.yMax)}° V.`;
+    ? `Faded dots = 12 simulated spray runs with recoil+bloom (${stateLabel}). Line = recoil-only reference path connecting 20 shots.${recoilBloomBubbles?' Bubbles = potential spread on bullets 1, 2, 3, 5, 8, 13, and 20.':''} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`
+    : `Faded dots = 12 simulated spray runs showing natural shot scatter (${stateLabel}). Solid dots = reference run. View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
 
   // Legend
   const leg=document.getElementById('rcLegend');
@@ -1962,27 +2189,46 @@ function renderRecoil() {
 
   // stats
   const w=w1||w2;
-  const rRVal=w=>w?(w._recoilR??0):0;
-  const showRR=comparing&&(rRVal(w1)!==0||rRVal(w2)!==0);
+  const rRVal=w=>w?(w._adsRecoilReductionPct??0):0;
+  const showRR=recoilAim==='ads'&&comparing&&(rRVal(w1)!==0||rRVal(w2)!==0);
   const rRStr=(w,forceZero=false)=>{
+    if(recoilAim!=='ads') return null;
     if(!w) return null;
-    const vr=w._recoilR??0;
+    const vr=w._adsRecoilReductionPct??0;
     if(vr===0) return forceZero?'0%':null;
     return (vr>0?'−':'+')+Math.abs(Math.round(vr))+'%';
   };
   const stats=[
-    {lbl:'Vertical / Shot',   val1:w1?w1.recoilV.toFixed(2)+'°':null,    val2:w2?w2.recoilV.toFixed(2)+'°':null,   bar1:w1?w1.recoilV/3:0,          bar2:w2?w2.recoilV/3:0,          col1:'#c9a227',col2:'#4d94d0'},
-    {lbl:'Recoil Reduction',  val1:rRStr(w1,showRR),                       val2:rRStr(w2,showRR),                     bar1:w1?Math.abs(w1._recoilR??0)/100:0,  bar2:w2?Math.abs(w2._recoilR??0)/100:0,  col1:((w1?._recoilR??0)>=0)?'#56c464':'#c46464', col2:((w2?._recoilR??0)>=0)?'#56c464':'#c46464'},
-    {lbl:'Direction',         val1:w1?((-w1.recoilDir)>=0?'+':'')+(-w1.recoilDir)+'°':null, val2:w2?((-w2.recoilDir)>=0?'+':'')+(-w2.recoilDir)+'°':null, bar1:w1?(-w1.recoilDir+90)/180:0, bar2:w2?(-w2.recoilDir+90)/180:0, col1:'#c9a227',col2:'#4d94d0'},
-    {lbl:'Variation (±)',     val1:w1?w1.recoilVar.toFixed(1)+'°':null,   val2:w2?w2.recoilVar.toFixed(1)+'°':null, bar1:w1?w1.recoilVar/90:0,       bar2:w2?w2.recoilVar/90:0,       col1:'#c9a227',col2:'#4d94d0'},
-    {lbl:'Spread Inc/Shot',   val1:w1&&w1.recoilIncAds!=null?w1.recoilIncAds+'°':null, val2:w2&&w2.recoilIncAds!=null?w2.recoilIncAds+'°':null, bar1:w1&&w1.recoilIncAds!=null?w1.recoilIncAds:0, bar2:w2&&w2.recoilIncAds!=null?w2.recoilIncAds:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Recoil / Shot',     val1:w1?selectedRecoilAmountFor(w1).toFixed(2)+'°':null, val2:w2?selectedRecoilAmountFor(w2).toFixed(2)+'°':null, bar1:w1?selectedRecoilAmountFor(w1)/3:0, bar2:w2?selectedRecoilAmountFor(w2)/3:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'ADS Recoil Reduction', val1:rRStr(w1,showRR),                    val2:rRStr(w2,showRR),                     bar1:w1?Math.abs(w1._adsRecoilReductionPct??0)/100:0,  bar2:w2?Math.abs(w2._adsRecoilReductionPct??0)/100:0,  col1:((w1?._adsRecoilReductionPct??0)>=0)?'#56c464':'#c46464', col2:((w2?._adsRecoilReductionPct??0)>=0)?'#56c464':'#c46464'},
+    {lbl:'Direction',         val1:w1?((-selectedRecoilDirectionFor(w1))>=0?'+':'')+(-selectedRecoilDirectionFor(w1))+'°':null, val2:w2?((-selectedRecoilDirectionFor(w2))>=0?'+':'')+(-selectedRecoilDirectionFor(w2))+'°':null, bar1:w1?(-selectedRecoilDirectionFor(w1)+90)/180:0, bar2:w2?(-selectedRecoilDirectionFor(w2)+90)/180:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Variation (±)',     val1:w1?selectedRecoilVariationFor(w1).toFixed(1)+'°':null, val2:w2?selectedRecoilVariationFor(w2).toFixed(1)+'°':null, bar1:w1?selectedRecoilVariationFor(w1)/90:0, bar2:w2?selectedRecoilVariationFor(w2)/90:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Spread Inc/Shot',   val1:w1?selectedSpreadIncFor(w1).toFixed(2)+'°':null, val2:w2?selectedSpreadIncFor(w2).toFixed(2)+'°':null, bar1:w1?selectedSpreadIncFor(w1):0, bar2:w2?selectedSpreadIncFor(w2):0, col1:'#c9a227',col2:'#4d94d0'},
+    (()=>{
+      const e1=w1?selectedEffectiveSpreadMax(w1):null, e2=w2?selectedEffectiveSpreadMax(w2):null;
+      const b1=w1?selectedSpreadBoundsFor(w1):null, b2=w2?selectedSpreadBoundsFor(w2):null;
+      const sharedMax=9.1;
+      const mn1=b1?b1[0]:null, mn2=b2?b2[0]:null;
+      const fmtR=(mn,mx)=>mn!=null&&mx!=null?`${mn.toFixed(2)}° → ${mx.toFixed(2)}°`:null;
+      return {lbl:'Spread Min → Eff. Max', val1:fmtR(mn1,e1), val2:fmtR(mn2,e2),
+        barStart1:mn1!=null?mn1/sharedMax:null, bar1:e1!=null?e1/sharedMax:0,
+        barStart2:mn2!=null?mn2/sharedMax:null, bar2:e2!=null?e2/sharedMax:0,
+        col1:'#c9a227', col2:'#4d94d0'};
+    })(),
   ];
   let html='';
   stats.forEach(s=>{
     if(s.val1===null&&s.val2===null) return;
     html+=`<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1,s.val2].filter(Boolean).join(' / ')}</span></div>`;
-    if(s.val1!=null){html+=`<div class="rc-bar"><div class="rc-fill" style="width:${Math.min(s.bar1*100,100).toFixed(1)}%;background:${s.col1}"></div></div>`;}
-    if(s.val2!=null){html+=`<div class="rc-bar"><div class="rc-fill" style="width:${Math.min(s.bar2*100,100).toFixed(1)}%;background:${s.col2}"></div></div>`;}
+    const renderBar=(start,end,col)=>{
+      if(start!=null){
+        const sl=(start*100).toFixed(1), sw=(Math.max(end-start,0)*100).toFixed(1);
+        return `<div class="rc-bar"><div class="rc-fill" style="margin-left:${sl}%;width:${sw}%;background:${col}"></div></div>`;
+      }
+      return `<div class="rc-bar"><div class="rc-fill" style="width:${Math.min(end*100,100).toFixed(1)}%;background:${col}"></div></div>`;
+    };
+    if(s.val1!=null) html+=renderBar(s.barStart1,s.bar1,s.col1);
+    if(s.val2!=null) html+=renderBar(s.barStart2,s.bar2,s.col2);
     html+='</div>';
   });
   document.getElementById('rcStats').innerHTML=html;
