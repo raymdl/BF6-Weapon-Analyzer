@@ -1164,7 +1164,8 @@ function applyAttachments(w, atts) {
     _adsMoveSpeedMult=ADS_MOVE_TIERS[amsIdx];
   }
   const magTags=magData&&magData.name&&magData.name!==wm?.mags?.[wm?.def]?.name?[magData.name]:[];
-  const allTags=[...tags,...(ammoName?[ammoName]:[]),...magTags];
+  const ergoTags=ergoData.id!=='none'?[ergoData.name]:[];
+  const allTags=[...tags,...(ammoName?[ammoName]:[]),...magTags,...ergoTags];
   return {
     ...w,
     _label: allTags.length ? w.name+' ('+allTags.join(' · ')+')' : w.name,
@@ -1455,28 +1456,30 @@ function buildAttachmentSection(containerId, atts, weapon) {
     }
     magRow.appendChild(magSpan); magRow.appendChild(magSel); el.appendChild(magRow);
   }
-  // Ergonomics slot — always shown
+  // Ergonomics slot — hidden when no options are defined for this weapon
   {
-    const ergoRow=document.createElement('div'); ergoRow.className='att-row';
-    const ergoSpan=document.createElement('span'); ergoSpan.className='att-lbl'; ergoSpan.textContent='Ergo';
-    const ergoSel=document.createElement('select'); ergoSel.className='att-sel';
     const we=WEAPON_ERGO[weapon?.id]??null;
     const availSet=we ? new Set(we.avail) : null;
-    ERGOS.forEach(e=>{
-      if (e.id==='none') { const o=document.createElement('option'); o.value='none'; o.textContent='None'; if((atts.ergo??'none')==='none') o.selected=true; ergoSel.appendChild(o); return; }
-      if (availSet && !availSet.has(e.id)) return;
-      const opt=document.createElement('option'); opt.value=e.id;
-      opt.textContent=e.pts>0?`${e.name} [${e.pts}]`:e.name;
-      if(e.noEffect) opt.style.color='#666';
-      if((atts.ergo??'none')===e.id) opt.selected=true;
-      ergoSel.appendChild(opt);
-    });
-    ergoSel.onchange=()=>{
-      atts.ergo=ergoSel.value;
-      updateAttTotal(containerId,atts,weapon);
-      renderStats();
-    };
-    ergoRow.appendChild(ergoSpan); ergoRow.appendChild(ergoSel); el.appendChild(ergoRow);
+    const visibleErgos=ERGOS.filter(e=>e.id==='none'||(availSet&&availSet.has(e.id)));
+    if (visibleErgos.length > 1) {
+      const ergoRow=document.createElement('div'); ergoRow.className='att-row';
+      const ergoSpan=document.createElement('span'); ergoSpan.className='att-lbl'; ergoSpan.textContent='Ergo';
+      const ergoSel=document.createElement('select'); ergoSel.className='att-sel';
+      visibleErgos.forEach(e=>{
+        if (e.id==='none') { const o=document.createElement('option'); o.value='none'; o.textContent='None'; if((atts.ergo??'none')==='none') o.selected=true; ergoSel.appendChild(o); return; }
+        const opt=document.createElement('option'); opt.value=e.id;
+        opt.textContent=e.pts>0?`${e.name} [${e.pts}]`:e.name;
+        if(e.noEffect) opt.style.color='#666';
+        if((atts.ergo??'none')===e.id) opt.selected=true;
+        ergoSel.appendChild(opt);
+      });
+      ergoSel.onchange=()=>{
+        atts.ergo=ergoSel.value;
+        updateAttTotal(containerId,atts,weapon);
+        renderStats();
+      };
+      ergoRow.appendChild(ergoSpan); ergoRow.appendChild(ergoSel); el.appendChild(ergoRow);
+    }
   }
 
   updateAttTotal(containerId,atts,weapon);
@@ -1740,6 +1743,26 @@ function renderChart() {
       return {x, y};
     };
   }
+  // Variant for charts with threshold lines: ignores dashed-line elements so only
+  // weapon lines drive vertical placement.
+  if (!Chart.Tooltip.positioners.smartFloatFiltered) {
+    Chart.Tooltip.positioners.smartFloatFiltered = function(elements, eventPos) {
+      const ca = this.chart.chartArea;
+      if (!ca) return false;
+      const weaponEls = elements.filter(el => !this.chart.data.datasets[el.datasetIndex]?.borderDash);
+      const src = weaponEls.length ? weaponEls : elements;
+      const ys = src.map(e=>e.element.y);
+      const minY = ys.length ? Math.min(...ys) : (ca.top+ca.bottom)/2;
+      const maxY = ys.length ? Math.max(...ys) : (ca.top+ca.bottom)/2;
+      const half = 48;
+      const gap = 8;
+      let y = minY - gap - half;
+      if (y < ca.top + half) y = maxY + gap + half;
+      y = Math.min(Math.max(y, ca.top + half), ca.bottom - half);
+      const x = Math.min(Math.max(eventPos.x, ca.left), ca.right);
+      return {x, y};
+    };
+  }
 
   const w1=selW1?applyAttachments(selW1,att1):null;
   const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
@@ -1830,7 +1853,7 @@ function renderChart() {
     data:{labels,datasets},
     options:{
       responsive:true, maintainAspectRatio:false, animation:false,
-      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.datasetIndex===datasets.length-1&&w2?w2:w1; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${w.name}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloatFiltered',yAlign:'center',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.datasetIndex===datasets.length-1&&w2?w2:w1; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${w.name}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
       scales:{
         x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
         y:{min:0,max:dmgYMax,title:{display:true,text:'Damage per shot',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a'},grid:{color:'rgba(40,48,48,0.6)'}}
