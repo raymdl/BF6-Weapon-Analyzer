@@ -2100,7 +2100,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
         // Apply bloom jitter: bullet lands within the bloom circle
         const bloom=blooms[i]??selectedSpreadBoundsFor(w)[0];
         const bAng=rngB()*Math.PI*2;
-        const bR=bloom*Math.sqrt(rngB()); // uniform disk sampling
+        const bR=bloom*rngB(); // uniform radius sampling
         ctx.beginPath();
         ctx.arc(toX(cx+bR*Math.cos(bAng)),toY(cy+bR*Math.sin(bAng)),2,0,Math.PI*2);
         ctx.fillStyle=col+'38'; ctx.fill();
@@ -2128,7 +2128,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
         if(i>0){
           const bloom=blooms[i]??selectedSpreadBoundsFor(w)[0];
           const bAng=rngRef()*Math.PI*2;
-          const bR=bloom*Math.sqrt(rngRef());
+          const bR=bloom*rngRef();
           dx+=bR*Math.cos(bAng); dy+=bR*Math.sin(bAng);
         }
         return {x:dx,y:dy};

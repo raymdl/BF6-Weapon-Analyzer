@@ -671,7 +671,7 @@ function drawPanel(canvas, readout, w, bulletNums) {
       cy += Math.cos(angle) * amount;
       const bloom = blooms[i] ?? spreadBounds(w)[0];
       const bAng = rngB() * Math.PI * 2;
-      const bR = bloom * Math.sqrt(rngB());
+      const bR = bloom * rngB();
       ctx.beginPath();
       ctx.arc(toX(cx + bR * Math.cos(bAng)), toY(cy + bR * Math.sin(bAng)), 2, 0, Math.PI * 2);
       ctx.fillStyle = COL + '38';
