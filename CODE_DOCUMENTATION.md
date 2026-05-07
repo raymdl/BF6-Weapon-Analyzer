@@ -497,7 +497,7 @@ Defaults are ADS and Standing.
 
 - Generates a deterministic recoil path from weapon ID and seed.
 - Uses selected ADS or hipfire recoil formula inputs.
-- Adds vertical and horizontal recoil based on selected recoil amount, direction, and Gaussian variation.
+- Adds vertical and horizontal recoil based on selected recoil amount, direction, and uniform variation.
 - Applies inter-shot recoil decay between shots.
 
 `drawRecoilFixed()`:
