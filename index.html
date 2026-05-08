@@ -78,20 +78,43 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:grid;grid-template-columns:380px repeat(2,minmax(260px,1fr));column-gap:24px;align-items:stretch}
-.rc-plot{width:380px;flex:0 0 380px}
-.rc-head{display:grid;grid-template-columns:1fr auto;align-items:start;gap:6px;margin-bottom:9px}
+.rc-layout{display:grid;grid-template-columns:456px repeat(2,minmax(260px,1fr));column-gap:28px;align-items:start;position:relative}
+.rc-head{grid-column:1/-1;margin-bottom:9px}
+.rc-plot{width:456px;flex:0 0 456px}
+.rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
 .rc-head .ptitle{margin-bottom:0}
 .rc-title{grid-column:1 / -1;white-space:nowrap}
-.rc-mode-group{display:flex;gap:3px}
-.rc-mode-btn{padding-inline:7px}
-.rc-state-group{grid-column:1;grid-row:3;display:flex;gap:4px;margin-top:2px}
-.rc-ref-actions{grid-column:2;grid-row:2;justify-self:end;display:flex;gap:3px}
+.rc-mode-group{display:flex;gap:3px;align-items:center}
+.rc-btn-label{font-size:0.6rem;color:var(--muted);letter-spacing:.06em;white-space:nowrap;padding-right:2px}
+.rc-shots-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:106px;outline:none}
+.rc-shot-count-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:32px;outline:none}
+.rc-shot-count-input:focus{border-color:var(--accent)}
+.rc-comp-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:42px;outline:none}
+.rc-comp-input:focus{border-color:var(--accent)}
+.rc-comp-range{width:80px}
+.rc-comp-row{display:flex;align-items:center;gap:4px}
+.rc-comp-row.disabled{opacity:.45;pointer-events:none}
+.rc-shots-input:focus{border-color:var(--accent)}
+.rc-shots-input:disabled{opacity:0.35;cursor:not-allowed}
+.rc-shots-label--disabled{opacity:0.35}
+.rc-mode-btn{padding-inline:7px;white-space:nowrap}
+.rc-state-group .rc-mode-btn{min-width:48px}
+.rc-state-group #rcAimHip{min-width:56px}
+.rc-state-group #rcStanceStand{min-width:68px}
+.rc-state-group #rcStanceMove{min-width:58px}
+.rc-mode-group #rcModeScatter{min-width:62px}
+.rc-mode-group #rcModeBloom{min-width:92px}
+.rc-mode-group #rcModePath{min-width:82px}
+.rc-mode-group #rcConeToggleBtn{min-width:48px}
+.rc-mode-group #rcBloomToggleBtn{min-width:58px}
+.rc-state-group{display:flex;gap:4px;align-items:center}
+.rc-ref-actions{position:absolute;top:12px;right:10px;z-index:2;display:flex;gap:3px}
+.rc-ref-actions .rc-mode-btn{background:rgba(77,148,208,.1);border-color:#2a3a48;color:#6a9ec0}
 canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
-.rc-canvas-wrap{position:relative;width:380px;height:380px}
-.rc-scale-controls{position:absolute;top:12px;right:10px;z-index:2;display:flex;flex-direction:column;gap:4px}
+.rc-canvas-wrap{position:relative;width:456px;height:456px}
+.rc-scale-controls{position:absolute;top:42px;right:10px;z-index:2;display:flex;flex-direction:column;gap:4px}
 .rc-pan-controls{position:absolute;right:10px;bottom:20px;z-index:2;display:flex;gap:4px}
-.rc-scale-btn,.rc-pan-btn{width:20px;height:20px;min-height:20px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(8,13,13,.82);border:1px solid #345050;border-radius:4px;color:var(--text);font-weight:700;line-height:1}
+.rc-scale-btn,.rc-pan-btn{width:20px;height:20px;min-height:20px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:4px;color:#6a9ec0;font-weight:700;line-height:1}
 .rc-scale-btn:hover,.rc-pan-btn:hover{border-color:var(--accent);color:var(--accent)}
 .rc-pan-icon{display:block;width:0;height:0}
 .rc-pan-btn[data-pan="up"] .rc-pan-icon{border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:5px solid currentColor}
@@ -100,13 +123,17 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .rc-pan-btn[data-pan="right"] .rc-pan-icon{border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid currentColor}
 .rc-scale-icon{display:block;width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
 .rc-reset-icon{font-size:12px;line-height:1;transform:translate(0px,-1px)}
-.rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:26px}
+.rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:0}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
 .rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.rc-bar.centered{position:relative}
+.rc-bar.centered::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(132,158,158,.45)}
 .rc-fill{height:100%;border-radius:3px;transition:width .3s}
-.att-stats{min-width:0;position:relative}
-.att-stats::before{content:'';position:absolute;top:-13px;bottom:-13px;left:-12px;width:1px;background:var(--border)}
+.rc-stats,.att-stats{min-width:0;position:relative}
+.rc-layout::before,.rc-layout::after{content:'';position:absolute;top:80px;height:450px;width:1px;background:var(--border);pointer-events:none}
+.rc-layout::before{left:470px}
+.rc-layout::after{left:calc(498px + ((100% - 512px) / 2))}
 .att-block{margin-bottom:8px}
 .att-block:last-child{margin-bottom:0}
 .att-name{font-size:0.68rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -208,26 +235,44 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
       </div>
       <div class="panel">
         <div class="rc-layout">
+          <div class="rc-head">
+            <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (Simulated - <span id="rcShotTitleCount">20</span> Shots)</div>
+            <div class="rc-state-group">
+              <span class="rc-btn-label">Position:</span>
+              <button class="mode-btn rc-mode-btn on" id="rcAimAds" onclick="setRecoilAim('ads')" title="Use ADS recoil and spread values">ADS</button>
+              <button class="mode-btn rc-mode-btn" id="rcAimHip" onclick="setRecoilAim('hip')" title="Use hipfire recoil and spread values">Hipfire</button>
+              <button class="mode-btn rc-mode-btn on" id="rcStanceStand" onclick="setRecoilStance('stand')" title="Use standing spread values">Standing</button>
+              <button class="mode-btn rc-mode-btn" id="rcStanceMove" onclick="setRecoilStance('move')" title="Use moving spread values">Moving</button>
+              <label class="rc-btn-label" for="rcShotCountInput" style="margin-left:8px">Shots:</label>
+              <input id="rcShotCountInput" class="rc-shot-count-input" type="text" inputmode="numeric" value="20" title="Number of shots to simulate">
+              <span class="rc-btn-label" style="margin-left:8px">Recoil Control:</span>
+              <button class="mode-btn rc-mode-btn on" id="rcControlOff" onclick="setRecoilControl(false)" title="Do not compensate recoil">Off</button>
+              <button class="mode-btn rc-mode-btn" id="rcControlOn" onclick="setRecoilControl(true)" title="Compensate expected recoil direction">On</button>
+              <span id="rcCompRow" class="rc-comp-row disabled">
+                <label class="rc-btn-label" for="rcCompRange" style="margin-left:8px">Compensation Level</label>
+                <input id="rcCompRange" class="rc-comp-range" type="range" min="0" max="125" step="1" value="85">
+                <input id="rcCompInput" class="rc-comp-input" type="text" inputmode="numeric" value="0" title="Recoil compensation percentage">
+                <span class="rc-btn-label">%</span>
+              </span>
+            </div>
+            <div class="rc-mode-group">
+              <span class="rc-btn-label">Overlays:</span>
+              <button class="mode-btn rc-mode-btn on" id="rcModeScatter" onclick="toggleRecoilLayer('scatter')" title="Show faded simulated scatter runs">Scatter</button>
+              <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="toggleRecoilLayer('spray')" title="Show the solid reference run dots">Spray Pattern</button>
+              <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="toggleRecoilLayer('path')" title="Draw the recoil-only reference path">Recoil Path</button>
+              <span class="rc-btn-label" style="margin-left:8px">Bloom:</span>
+              <button class="mode-btn rc-mode-btn" id="rcConeToggleBtn" onclick="toggleRecoilLayer('cone')" title="Show the bloom envelope cone across all shots">Cone</button>
+              <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" onclick="toggleRecoilLayer('bloom')" title="Show potential bloom spread bubbles on selected bullets">Bubbles</button>
+              <span id="rcShotsLabel" class="rc-btn-label" style="margin-left:4px">On Rounds:</span>
+              <input id="rcBloomShotsInput" class="rc-shots-input" type="text" value="1, 2, 3, 5, 8, 13, 20" title="Which bullets to show bloom bubbles on. Comma-separated, ranges (e.g. 1-5), 'all', or 'every N'">
+            </div>
+          </div>
           <div class="rc-plot">
-            <div class="rc-head">
-              <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (simulated · 20 shots · adjustable scale)</div>
-              <div class="rc-mode-group">
-                <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="toggleRecoilLayer('spray')" title="Show the reference run with recoil and bloom scatter">Spray Pattern</button>
-                <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="toggleRecoilLayer('path')" title="Draw the recoil-only reference path">Recoil Path</button>
-                <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" onclick="toggleRecoilLayer('bloom')" title="Show potential bloom spread bubbles on selected bullets">Bloom</button>
-              </div>
-              <div class="rc-state-group">
-                <button class="mode-btn rc-mode-btn on" id="rcAimAds" onclick="setRecoilAim('ads')" title="Use ADS recoil and spread values">ADS</button>
-                <button class="mode-btn rc-mode-btn" id="rcAimHip" onclick="setRecoilAim('hip')" title="Use hipfire recoil and spread values">Hipfire</button>
-                <button class="mode-btn rc-mode-btn on" id="rcStanceStand" onclick="setRecoilStance('stand')" title="Use standing spread values">Standing</button>
-                <button class="mode-btn rc-mode-btn" id="rcStanceMove" onclick="setRecoilStance('move')" title="Use moving spread values">Moving</button>
-              </div>
+            <div class="rc-canvas-wrap">
               <div class="rc-ref-actions">
                 <button class="mode-btn rc-mode-btn" onclick="resetRecoilReference()" title="Reset to the original deterministic reference run">Reset</button>
                 <button class="mode-btn rc-mode-btn" onclick="randomizeRecoilReference()" title="Draw a new randomized reference run">Redraw</button>
               </div>
-            </div>
-            <div class="rc-canvas-wrap">
               <div class="rc-scale-controls">
                 <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('in')" title="Zoom in"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
                 <button class="rc-scale-btn" type="button" onclick="adjustRecoilScale('out')" title="Zoom out"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
@@ -239,7 +284,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                 <button class="rc-pan-btn" type="button" data-pan="down" onclick="panRecoilView('down')" title="Move chart down"><span class="rc-pan-icon"></span></button>
                 <button class="rc-pan-btn" type="button" data-pan="right" onclick="panRecoilView('right')" title="Move chart right"><span class="rc-pan-icon"></span></button>
               </div>
-              <canvas id="rcMain" class="rcv" width="380" height="380"></canvas>
+              <canvas id="rcMain" class="rcv" width="456" height="456"></canvas>
             </div>
             <div class="rc-legend" id="rcLegend"></div>
             <div class="rc-note"></div>
@@ -1266,7 +1311,10 @@ function btkRanges(w1, w2) {
 let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
 let selW1 = null, selW2 = null, comparing = false;
 let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilRefSeed = 0, recoilAim = 'ads', recoilStance = 'stand';
-const recoilLayers = { spray: true, path: false, bloom: false };
+const recoilLayers = { scatter: true, spray: true, path: false, bloom: false, cone: false };
+let recoilControl = false;
+const DEFAULT_COMPENSATION = 85;
+let recoilCompensationLevel = DEFAULT_COMPENSATION;
 let recoilScaleH = 5;
 let recoilPanX = 0, recoilPanY = 0;
 const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
@@ -1608,10 +1656,86 @@ function toggleAdsToggle() {
   renderBTK();
 }
 function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
+function parseBloomBulletSpec(spec, shotCount) {
+  const text = spec.trim().toLowerCase();
+  if (!text) return [];
+  if (text === 'all') return Array.from({length:shotCount},(_,i)=>i+1);
+  const everyMatch = text.match(/^every\s+(\d+)$/);
+  if (everyMatch) {
+    const step = Math.max(1, Math.round(Number(everyMatch[1])));
+    const out = [];
+    for (let s = 1; s <= shotCount; s += step) out.push(s);
+    return out;
+  }
+  const out = [];
+  text.split(/[,;\s]+/).forEach(part => {
+    if (!part) return;
+    const rng = part.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (rng) {
+      const a = Math.round(Number(rng[1])), b = Math.round(Number(rng[2]));
+      for (let v = Math.min(a,b); v <= Math.max(a,b); v++) out.push(v);
+      return;
+    }
+    const v = Math.round(Number(part));
+    if (Number.isFinite(v)) out.push(v);
+  });
+  return out.filter(v => v >= 1 && v <= shotCount);
+}
+function getBloomBulletIdxs(N) {
+  const input = document.getElementById('rcBloomShotsInput');
+  const fallback = [1,2,3,5,8,13,20];
+  const values = parseBloomBulletSpec(input?.value ?? '', N);
+  const bullets = values.length ? values : fallback.filter(v => v <= N);
+  return [...new Set(bullets)].map(v => v - 1);
+}
+function selectedRecoilShotCount() {
+  const input = document.getElementById('rcShotCountInput');
+  return Math.max(1, Math.min(100, Math.round(+(input?.value ?? 20) || 20)));
+}
+function syncRecoilShotCount() {
+  const count = selectedRecoilShotCount();
+  const input = document.getElementById('rcShotCountInput');
+  if(input) input.value = count;
+  const titleCount = document.getElementById('rcShotTitleCount');
+  if(titleCount) titleCount.textContent = count;
+  renderRecoil();
+}
+function selectedCompensationLevel() {
+  return recoilControl ? recoilCompensationLevel : 0;
+}
+function setRecoilControl(value) {
+  recoilControl = !!value;
+  syncCompensationControls();
+  renderRecoil();
+}
+function syncCompensationControls() {
+  const visibleValue = recoilControl ? recoilCompensationLevel : 0;
+  document.getElementById('rcControlOff')?.classList.toggle('on', !recoilControl);
+  document.getElementById('rcControlOn')?.classList.toggle('on', recoilControl);
+  const row = document.getElementById('rcCompRow');
+  const range = document.getElementById('rcCompRange');
+  const input = document.getElementById('rcCompInput');
+  row?.classList.toggle('disabled', !recoilControl);
+  if(range) {
+    range.disabled = !recoilControl;
+    range.value = visibleValue;
+  }
+  if(input) {
+    input.disabled = !recoilControl;
+    input.value = visibleValue;
+  }
+}
+function syncCompensationLevel(source='input') {
+  const el = document.getElementById(source === 'range' ? 'rcCompRange' : 'rcCompInput');
+  const raw = +(el?.value ?? DEFAULT_COMPENSATION);
+  recoilCompensationLevel = Math.max(0, Math.min(125, Math.round(Number.isFinite(raw) ? raw : DEFAULT_COMPENSATION)));
+  syncCompensationControls();
+  renderRecoil();
+}
 function toggleRecoilLayer(layer) {
   if(!(layer in recoilLayers)) return;
   recoilLayers[layer]=!recoilLayers[layer];
-  if(!recoilLayers.spray&&!recoilLayers.path&&!recoilLayers.bloom) recoilLayers[layer]=true;
+  if(!recoilLayers.scatter&&!recoilLayers.spray&&!recoilLayers.path&&!recoilLayers.bloom&&!recoilLayers.cone) recoilLayers[layer]=true;
   renderRecoil();
 }
 function recoilScaleYMax() {
@@ -1619,6 +1743,13 @@ function recoilScaleYMax() {
 }
 function fmtAxisDeg(v) {
   return v.toFixed(1).replace('.0','');
+}
+function normalizeDegrees(deg) {
+  return ((deg % 360) + 360) % 360;
+}
+function signedOppositeDegrees(deg) {
+  const normalized = normalizeDegrees(deg + 180);
+  return normalized > 180 ? normalized - 360 : normalized;
 }
 function recoilXMin() { return -recoilScaleH+recoilPanX; }
 function recoilXMax() { return recoilScaleH+recoilPanX; }
@@ -1974,13 +2105,15 @@ function genRecoilPts(weapon,shots=20,seed=0) {
   const decOffset=group.decOffset??0.06;
   const amount=selectedRecoilAmountFor(weapon);
   const variation=selectedRecoilVariationFor(weapon);
+  const compensation=selectedCompensationLevel()/100;
   const interShotTime=60/(weapon.rpm??600);
   let cx=0,cy=0;
   for(let i=1;i<shots;i++){
     const dir=-(group.dir??weapon.recoilDir??0)*Math.PI/180;
     const spread=uniformDev(rng,variation)*Math.PI/180;
     const angle=dir+spread;
-    cx+=Math.sin(angle)*amount; cy+=Math.cos(angle)*amount;
+    cx+=Math.sin(angle)*amount-Math.sin(dir)*amount*compensation;
+    cy+=Math.cos(angle)*amount-Math.cos(dir)*amount*compensation;
     pts.push({x:cx,y:cy});
     if(i<shots-1){
       cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime,decOffset);
@@ -1994,7 +2127,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
   const CW = canvas.width, CH = canvas.height;
   const PL=28, PR=8, PT=8, PB=18;
   const PW=CW-PL-PR, PH=CH-PT-PB;
-  const N=20;
+  const N=selectedRecoilShotCount();
 
   const xMin=recoilXMin(), xMax=recoilXMax();
   const yMin=recoilYMin(), yMax=recoilYMax();
@@ -2075,15 +2208,15 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
   const cols=['#c9a227','#4d94d0'];
   const drawOrder=[weapon1,weapon2].filter(Boolean);
   // hoisted to module scope so the note in renderRecoilSection can reference it
-  window._spreadBubbleIdxs=[0,1,2,4,7,12,19];
-  const spreadBubbleIdxs=window._spreadBubbleIdxs;
+  const spreadBubbleIdxs=getBloomBulletIdxs(N);
+  window._spreadBubbleIdxs=spreadBubbleIdxs;
 
   // Pass 0 — Spray cloud with bloom jitter ─────────────────────────────────────
   // Each run uses a different recoil seed. Bloom jitter uses a separate RNG so
   // the drift pattern stays consistent — only the scatter radius changes with
   // bloom-affecting attachments (heavy barrel, lightened suppressor, etc.).
-  const CLOUD_RUNS=12;
-  if(layers.spray) drawOrder.forEach((w)=>{
+  const CLOUD_RUNS=10; window._cloudRuns=CLOUD_RUNS;
+  if(layers.scatter) drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
     const group=recoilGroup(w);
     const decF=group.decFactor??RECOIL_DEC[w.id]??72;
@@ -2092,6 +2225,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
     const decOffset=group.decOffset??0.06;
     const amount=selectedRecoilAmountFor(w);
     const variation=selectedRecoilVariationFor(w);
+    const compensation=selectedCompensationLevel()/100;
     const interShotTime=60/(w.rpm??600);
     const blooms=simulateBloom(w,N);
     for(let s=1;s<=CLOUD_RUNS;s++){
@@ -2102,7 +2236,8 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
         const dir=-(group.dir??w.recoilDir??0)*Math.PI/180;
         const spread=uniformDev(rng,variation)*Math.PI/180;
         const angle=dir+spread;
-        cx+=Math.sin(angle)*amount; cy+=Math.cos(angle)*amount;
+        cx+=Math.sin(angle)*amount-Math.sin(dir)*amount*compensation;
+        cy+=Math.cos(angle)*amount-Math.cos(dir)*amount*compensation;
         // Apply bloom jitter: bullet lands within the bloom circle
         const bloom=blooms[i]??selectedSpreadBoundsFor(w)[0];
         const bAng=rngB()*Math.PI*2;
@@ -2157,6 +2292,106 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
         ctx.stroke();
       });
     }
+    if(layers.cone){
+      const blooms=simulateBloom(w,N);
+      const coneCircles=pts.map((p,idx)=>{
+        const bloom=blooms[idx]??selectedSpreadBoundsFor(w)[0];
+        const x=toX(p.x),y=toY(p.y);
+        const r=Math.abs(toX(p.x+bloom)-x);
+        return {x,y,r};
+      }).filter(c=>Number.isFinite(c.x)&&Number.isFinite(c.y)&&Number.isFinite(c.r)&&c.r>0.5);
+      if(coneCircles.length){
+        const TWO_PI=Math.PI*2;
+        const connectedCircles=[];
+        coneCircles.forEach((circle,idx)=>{
+          if(idx>0){
+            const prev=coneCircles[idx-1];
+            const dx=circle.x-prev.x,dy=circle.y-prev.y;
+            const distance=Math.hypot(dx,dy);
+            const steps=Math.max(1,Math.ceil(distance/Math.max(2,Math.min(prev.r,circle.r)*0.65)));
+            for(let step=1;step<steps;step++){
+              const t=step/steps;
+              const smoothT=t*t*(3-2*t);
+              connectedCircles.push({
+                x:prev.x+dx*t,
+                y:prev.y+dy*t,
+                r:prev.r+(circle.r-prev.r)*smoothT,
+              });
+            }
+          }
+          connectedCircles.push(circle);
+        });
+        const normalizeAngle=angle=>((angle%TWO_PI)+TWO_PI)%TWO_PI;
+        const addCoveredInterval=(intervals,start,end)=>{
+          start=normalizeAngle(start);
+          end=normalizeAngle(end);
+          if(end<start) intervals.push([start,TWO_PI],[0,end]);
+          else intervals.push([start,end]);
+        };
+        const mergeIntervals=intervals=>{
+          if(!intervals.length) return [];
+          intervals.sort((a,b)=>a[0]-b[0]);
+          const merged=[intervals[0].slice()];
+          for(let i=1;i<intervals.length;i++){
+            const current=intervals[i];
+            const last=merged[merged.length-1];
+            if(current[0]<=last[1]+1e-4) last[1]=Math.max(last[1],current[1]);
+            else merged.push(current.slice());
+          }
+          return merged;
+        };
+        const uncoveredIntervals=covered=>{
+          const merged=mergeIntervals(covered);
+          if(!merged.length) return [[0,TWO_PI]];
+          if(merged.length===1&&merged[0][0]<=0&&merged[0][1]>=TWO_PI) return [];
+          const gaps=[];
+          let cursor=0;
+          merged.forEach(interval=>{
+            if(interval[0]>cursor+1e-4) gaps.push([cursor,interval[0]]);
+            cursor=Math.max(cursor,interval[1]);
+          });
+          if(cursor<TWO_PI-1e-4) gaps.push([cursor,TWO_PI]);
+          return gaps;
+        };
+        ctx.save();
+        ctx.beginPath();
+        connectedCircles.forEach(c=>{ctx.moveTo(c.x+c.r,c.y);ctx.arc(c.x,c.y,c.r,0,TWO_PI);});
+        ctx.fillStyle=col+'29'; ctx.fill();
+        ctx.beginPath();
+        connectedCircles.forEach((circle,circleIdx)=>{
+          const covered=[];
+          let fullyCovered=false;
+          connectedCircles.forEach((other,otherIdx)=>{
+            if(otherIdx===circleIdx) return;
+            const dx=other.x-circle.x,dy=other.y-circle.y;
+            const d=Math.hypot(dx,dy);
+            if(d<1e-6){
+              if(other.r>=circle.r) fullyCovered=true;
+              return;
+            }
+            if(d>=circle.r+other.r) return;
+            if(d<=other.r-circle.r){
+              fullyCovered=true;
+              return;
+            }
+            if(d<=circle.r-other.r) return;
+            const theta=Math.atan2(dy,dx);
+            const alpha=Math.acos(Math.max(-1,Math.min(1,(d*d+circle.r*circle.r-other.r*other.r)/(2*d*circle.r))));
+            addCoveredInterval(covered,theta-alpha,theta+alpha);
+          });
+          if(fullyCovered) return;
+          uncoveredIntervals(covered).forEach(([start,end])=>{
+            ctx.moveTo(circle.x+Math.cos(start)*circle.r,circle.y+Math.sin(start)*circle.r);
+            ctx.arc(circle.x,circle.y,circle.r,start,end);
+          });
+        });
+        ctx.strokeStyle=col+'aa'; ctx.lineWidth=1.4;
+        ctx.lineJoin='round';
+        ctx.lineCap='round';
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
     if(layers.path&&pts.length>1){
       ctx.beginPath();
       pts.forEach((p,i)=>{
@@ -2182,12 +2417,17 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
 function renderRecoil() {
   const w1=selW1?applyAttachments(selW1,att1):null;
   const w2=comparing&&selW2?applyAttachments(selW2,att2):null;
+  const shotCount = selectedRecoilShotCount();
+  const titleCount = document.getElementById('rcShotTitleCount');
+  if(titleCount) titleCount.textContent = shotCount;
   renderAttachmentStats([
     {weapon:selW1,atts:att1,colClass:'c1'},
     {weapon:comparing?selW2:null,atts:att2,colClass:'c2'},
   ]);
+  document.getElementById('rcModeScatter')?.classList.toggle('on',recoilLayers.scatter);
   document.getElementById('rcModeBloom')?.classList.toggle('on',recoilLayers.spray);
   document.getElementById('rcModePath')?.classList.toggle('on',recoilLayers.path);
+  syncCompensationControls();
   document.getElementById('rcAimAds')?.classList.toggle('on',recoilAim==='ads');
   document.getElementById('rcAimHip')?.classList.toggle('on',recoilAim==='hip');
   document.getElementById('rcStanceStand')?.classList.toggle('on',recoilStance==='stand');
@@ -2196,17 +2436,26 @@ function renderRecoil() {
   if(bloomToggle){
     bloomToggle.classList.toggle('on',recoilLayers.bloom);
   }
+  const shotsInput=document.getElementById('rcBloomShotsInput');
+  if(shotsInput) shotsInput.disabled=!recoilLayers.bloom;
+  document.getElementById('rcShotsLabel')?.classList.toggle('rc-shots-label--disabled',!recoilLayers.bloom);
+  const coneToggle=document.getElementById('rcConeToggleBtn');
+  if(coneToggle) coneToggle.classList.toggle('on',recoilLayers.cone);
   const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, recoilLayers, recoilRefSeed);
   const noteEl=document.querySelector('.rc-note');
   const stateLabel=`${recoilAim.toUpperCase()} / ${recoilStance==='move'?'MOV':'STD'}`;
   if (noteEl&&axis) {
     const activeLayers=[
+      recoilLayers.scatter?'scatter':null,
       recoilLayers.spray?'spray pattern':null,
       recoilLayers.path?'recoil path':null,
       recoilLayers.bloom?'bloom':null,
+      recoilLayers.cone?'cone':null,
     ].filter(Boolean).join(' + ');
+    const pathNote=recoilLayers.path?' Recoil Path = recoil-only reference line.':'';
     const bloomNote=recoilLayers.bloom?` Bubbles = potential spread on bullets ${(window._spreadBubbleIdxs??[]).map(i=>i+1).join(', ')}.`:'';
-    noteEl.textContent=`Showing ${activeLayers} (${stateLabel}). Spray Pattern uses faded simulated runs plus solid reference dots.${bloomNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
+    const coneNote=recoilLayers.cone?' Cone = bloom envelope across all shots.':'';
+    noteEl.textContent=`Showing ${activeLayers} (${stateLabel}). Scatter = ${window._cloudRuns??10} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${bloomNote}${coneNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
   }
 
   // Legend
@@ -2230,9 +2479,11 @@ function renderRecoil() {
   const stats=[
     {lbl:'Recoil / Shot',     val1:w1?selectedRecoilAmountFor(w1).toFixed(2)+'°':null, val2:w2?selectedRecoilAmountFor(w2).toFixed(2)+'°':null, bar1:w1?selectedRecoilAmountFor(w1)/3:0, bar2:w2?selectedRecoilAmountFor(w2)/3:0, col1:'#c9a227',col2:'#4d94d0'},
     {lbl:'ADS Recoil Reduction', val1:rRStr(w1,showRR),                    val2:rRStr(w2,showRR),                     bar1:w1?Math.abs(w1._adsRecoilReductionPct??0)/100:0,  bar2:w2?Math.abs(w2._adsRecoilReductionPct??0)/100:0,  col1:((w1?._adsRecoilReductionPct??0)>=0)?'#56c464':'#c46464', col2:((w2?._adsRecoilReductionPct??0)>=0)?'#56c464':'#c46464'},
-    {lbl:'Direction',         val1:w1?((-selectedRecoilDirectionFor(w1))>=0?'+':'')+(-selectedRecoilDirectionFor(w1))+'°':null, val2:w2?((-selectedRecoilDirectionFor(w2))>=0?'+':'')+(-selectedRecoilDirectionFor(w2))+'°':null, bar1:w1?(-selectedRecoilDirectionFor(w1)+90)/180:0, bar2:w2?(-selectedRecoilDirectionFor(w2)+90)/180:0, col1:'#c9a227',col2:'#4d94d0'},
-    {lbl:'Variation (±)',     val1:w1?selectedRecoilVariationFor(w1).toFixed(1)+'°':null, val2:w2?selectedRecoilVariationFor(w2).toFixed(1)+'°':null, bar1:w1?selectedRecoilVariationFor(w1)/90:0, bar2:w2?selectedRecoilVariationFor(w2)/90:0, col1:'#c9a227',col2:'#4d94d0'},
-    {lbl:'Spread Inc/Shot',   val1:w1?selectedSpreadIncFor(w1).toFixed(2)+'°':null, val2:w2?selectedSpreadIncFor(w2).toFixed(2)+'°':null, bar1:w1?selectedSpreadIncFor(w1):0, bar2:w2?selectedSpreadIncFor(w2):0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Recoil / Shot Compensation', val1:w1?(selectedRecoilAmountFor(w1)*selectedCompensationLevel()/100).toFixed(2)+'°':null, val2:w2?(selectedRecoilAmountFor(w2)*selectedCompensationLevel()/100).toFixed(2)+'°':null, bar1:w1?(selectedRecoilAmountFor(w1)*selectedCompensationLevel()/100)/3:0, bar2:w2?(selectedRecoilAmountFor(w2)*selectedCompensationLevel()/100)/3:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Recoil Direction',  val1:w1?((-selectedRecoilDirectionFor(w1))>=0?'+':'')+(-selectedRecoilDirectionFor(w1))+'°':null, val2:w2?((-selectedRecoilDirectionFor(w2))>=0?'+':'')+(-selectedRecoilDirectionFor(w2))+'°':null, centered:true, bar1:w1?-selectedRecoilDirectionFor(w1)/180:0, bar2:w2?-selectedRecoilDirectionFor(w2)/180:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Recoil Direction Compensation', val1:w1?(selectedCompensationLevel()>0?(signedOppositeDegrees(-selectedRecoilDirectionFor(w1))>=0?'+':'')+signedOppositeDegrees(-selectedRecoilDirectionFor(w1)).toFixed(1):'0.0')+'°':null, val2:w2?(selectedCompensationLevel()>0?(signedOppositeDegrees(-selectedRecoilDirectionFor(w2))>=0?'+':'')+signedOppositeDegrees(-selectedRecoilDirectionFor(w2)).toFixed(1):'0.0')+'°':null, centered:true, bar1:w1&&selectedCompensationLevel()>0?signedOppositeDegrees(-selectedRecoilDirectionFor(w1))/180:0, bar2:w2&&selectedCompensationLevel()>0?signedOppositeDegrees(-selectedRecoilDirectionFor(w2))/180:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Recoil Variation (±)', val1:w1?selectedRecoilVariationFor(w1).toFixed(1)+'°':null, val2:w2?selectedRecoilVariationFor(w2).toFixed(1)+'°':null, centeredRange:true, barStart1:w1?(-selectedRecoilDirectionFor(w1)-selectedRecoilVariationFor(w1))/180:0, bar1:w1?(-selectedRecoilDirectionFor(w1)+selectedRecoilVariationFor(w1))/180:0, barStart2:w2?(-selectedRecoilDirectionFor(w2)-selectedRecoilVariationFor(w2))/180:0, bar2:w2?(-selectedRecoilDirectionFor(w2)+selectedRecoilVariationFor(w2))/180:0, col1:'#c9a227',col2:'#4d94d0'},
+    {lbl:'Spread Inc / Shot', val1:w1?selectedSpreadIncFor(w1).toFixed(2)+'°':null, val2:w2?selectedSpreadIncFor(w2).toFixed(2)+'°':null, bar1:w1?selectedSpreadIncFor(w1):0, bar2:w2?selectedSpreadIncFor(w2):0, col1:'#c9a227',col2:'#4d94d0'},
     (()=>{
       const e1=w1?selectedEffectiveSpreadMax(w1):null, e2=w2?selectedEffectiveSpreadMax(w2):null;
       const b1=w1?selectedSpreadBoundsFor(w1):null, b2=w2?selectedSpreadBoundsFor(w2):null;
@@ -2245,11 +2496,24 @@ function renderRecoil() {
         col1:'#c9a227', col2:'#4d94d0'};
     })(),
   ];
-  let html='';
+  let html='<div class="ptitle" style="margin-bottom:9px">Recoil / Spread Stats</div>';
   stats.forEach(s=>{
     if(s.val1===null&&s.val2===null) return;
     html+=`<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1,s.val2].filter(Boolean).join(' / ')}</span></div>`;
     const renderBar=(start,end,col)=>{
+      if(s.centeredRange){
+        const a=Math.max(-1,Math.min(1,start??0));
+        const b=Math.max(-1,Math.min(1,end??0));
+        const left=((Math.min(a,b)+1)*50);
+        const width=(Math.abs(b-a)*50);
+        return `<div class="rc-bar centered"><div class="rc-fill" style="margin-left:${left.toFixed(1)}%;width:${width.toFixed(1)}%;background:${col}"></div></div>`;
+      }
+      if(s.centered){
+        const value=Math.max(-1,Math.min(1,end??0));
+        const left=value<0?(50+value*50):50;
+        const width=Math.abs(value)*50;
+        return `<div class="rc-bar centered"><div class="rc-fill" style="margin-left:${left.toFixed(1)}%;width:${width.toFixed(1)}%;background:${col}"></div></div>`;
+      }
       if(start!=null){
         const sl=(start*100).toFixed(1), sw=(Math.max(end-start,0)*100).toFixed(1);
         return `<div class="rc-bar"><div class="rc-fill" style="margin-left:${sl}%;width:${sw}%;background:${col}"></div></div>`;
@@ -2274,6 +2538,12 @@ document.getElementById('cmpBtn').onclick = () => {
 
 renderSidebar();
 renderStats();
+
+document.getElementById('rcBloomShotsInput')?.addEventListener('input', renderRecoil);
+document.getElementById('rcShotCountInput')?.addEventListener('change', syncRecoilShotCount);
+document.getElementById('rcShotCountInput')?.addEventListener('input', syncRecoilShotCount);
+document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));
+document.getElementById('rcCompRange')?.addEventListener('input', () => syncCompensationLevel('range'));
 </script>
 </body>
 </html>
