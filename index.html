@@ -132,13 +132,13 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .att-note{font-size:0.58rem;color:var(--muted);line-height:1.35;margin-top:5px}
 .wbtn.p1.p2{background:rgba(130,100,180,.13);border-left-color:var(--accent2);color:var(--accent2)}
 /* Footer */
-.footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
+.footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
 </style>
 </head>
 <body>
 <header>
   <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
-  <div class="hdr-tag">sym.gg v1.2.2.0 · 17 MAR 2026</div>
+  <div class="hdr-tag">Updated 8 MAY 2026</div>
 </header>
 <div class="app">
   <aside class="sidebar">
@@ -212,9 +212,9 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
             <div class="rc-head">
               <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (simulated · 20 shots · adjustable scale)</div>
               <div class="rc-mode-group">
-                <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="setRecoilMode('bloom')" title="Show the reference run with recoil and bloom scatter">Spray Pattern</button>
-                <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="setRecoilMode('path')" title="Draw the recoil-only reference path over the bloom spray">Recoil Path</button>
-                <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" onclick="toggleRecoilBloomBubbles()" style="display:none" title="Show potential bloom spread bubbles on selected bullets">+Bloom</button>
+                <button class="mode-btn rc-mode-btn on" id="rcModeBloom" onclick="toggleRecoilLayer('spray')" title="Show the reference run with recoil and bloom scatter">Spray Pattern</button>
+                <button class="mode-btn rc-mode-btn" id="rcModePath" onclick="toggleRecoilLayer('path')" title="Draw the recoil-only reference path">Recoil Path</button>
+                <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" onclick="toggleRecoilLayer('bloom')" title="Show potential bloom spread bubbles on selected bullets">Bloom</button>
               </div>
               <div class="rc-state-group">
                 <button class="mode-btn rc-mode-btn on" id="rcAimAds" onclick="setRecoilAim('ads')" title="Use ADS recoil and spread values">ADS</button>
@@ -251,7 +251,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
     </div>
   </main>
 </div>
-<div class="footer">Data: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.2.2.0 (17 MAR 2026) &nbsp;·&nbsp; Bloom decay model: <a href="https://www.youtube.com/@Dr.SmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a></div>
+<div class="footer"><span>Data: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.2.2.0 (17 MAR 2026) &nbsp;·&nbsp; Bloom decay model: <a href="https://www.youtube.com/@Dr.SmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a></span><span>Discord: Raymdl</span></div>
 
 <script>
 // ── WEAPON DATABASE ──────────────────────────────────────────────────────────
@@ -1265,7 +1265,8 @@ function btkRanges(w1, w2) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 let selClass1 = 'Assault Rifle', selClass2 = 'Assault Rifle';
 let selW1 = null, selW2 = null, comparing = false;
-let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilMode = 'bloom', recoilRefSeed = 0, recoilBloomBubbles = false, recoilAim = 'ads', recoilStance = 'stand';
+let dmgChart = null, chartMode = 'dmg', btkHS = 0, showAds = false, recoilRefSeed = 0, recoilAim = 'ads', recoilStance = 'stand';
+const recoilLayers = { spray: true, path: false, bloom: false };
 let recoilScaleH = 5;
 let recoilPanX = 0, recoilPanY = 0;
 const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
@@ -1607,12 +1608,10 @@ function toggleAdsToggle() {
   renderBTK();
 }
 function setBtkHS(n) { btkHS=n; renderChart(); renderBTK(); }
-function setRecoilMode(mode) {
-  recoilMode=mode==='path'?'path':'bloom';
-  renderRecoil();
-}
-function toggleRecoilBloomBubbles() {
-  recoilBloomBubbles=!recoilBloomBubbles;
+function toggleRecoilLayer(layer) {
+  if(!(layer in recoilLayers)) return;
+  recoilLayers[layer]=!recoilLayers[layer];
+  if(!recoilLayers.spray&&!recoilLayers.path&&!recoilLayers.bloom) recoilLayers[layer]=true;
   renderRecoil();
 }
 function recoilScaleYMax() {
@@ -1990,7 +1989,7 @@ function genRecoilPts(weapon,shots=20,seed=0) {
   }
   return pts;
 }
-function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, showBloomBubbles=false) {
+function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
   const ctx = canvas.getContext('2d');
   const CW = canvas.width, CH = canvas.height;
   const PL=28, PR=8, PT=8, PB=18;
@@ -2075,14 +2074,16 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
 
   const cols=['#c9a227','#4d94d0'];
   const drawOrder=[weapon1,weapon2].filter(Boolean);
-  const spreadBubbleIdxs=[0,1,2,4,7,12,19];
+  // hoisted to module scope so the note in renderRecoilSection can reference it
+  window._spreadBubbleIdxs=[0,1,2,4,7,12,19];
+  const spreadBubbleIdxs=window._spreadBubbleIdxs;
 
   // Pass 0 — Spray cloud with bloom jitter ─────────────────────────────────────
   // Each run uses a different recoil seed. Bloom jitter uses a separate RNG so
   // the drift pattern stays consistent — only the scatter radius changes with
   // bloom-affecting attachments (heavy barrel, lightened suppressor, etc.).
   const CLOUD_RUNS=12;
-  drawOrder.forEach((w)=>{
+  if(layers.spray) drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
     const group=recoilGroup(w);
     const decF=group.decFactor??RECOIL_DEC[w.id]??72;
@@ -2125,7 +2126,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
     const col=cols[(w===weapon1)?0:1];
     const weaponRefSeed=refSeed>>>0;
     const pts=genRecoilPts(w,N,weaponRefSeed);
-    const refPts=pathOnly ? pts : (() => {
+    const sprayPts=(() => {
       const blooms=simulateBloom(w,N);
       const rngRef=mulberry32((whash(w.id)^weaponRefSeed^0xdeadbeef)>>>0);
       return pts.map((p,i)=>{
@@ -2139,10 +2140,10 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
         return {x:dx,y:dy};
       });
     })();
-    if(pathOnly&&showBloomBubbles){
+    if(layers.bloom){
       const blooms=simulateBloom(w,N);
       spreadBubbleIdxs.forEach(idx=>{
-        const p=refPts[idx];
+        const p=pts[idx];
         if(!p) return;
         const bloom=blooms[idx]??selectedSpreadBoundsFor(w)[0];
         const x=toX(p.x), y=toY(p.y);
@@ -2156,20 +2157,18 @@ function drawRecoilFixed(canvas, weapon1, weapon2, pathOnly=false, refSeed=0, sh
         ctx.stroke();
       });
     }
-    if(pathOnly&&refPts.length>1){
+    if(layers.path&&pts.length>1){
       ctx.beginPath();
-      refPts.forEach((p,i)=>{
+      pts.forEach((p,i)=>{
         const x=toX(p.x), y=toY(p.y);
         if(i===0) ctx.moveTo(x,y);
         else ctx.lineTo(x,y);
       });
-      ctx.strokeStyle=col;
+      ctx.strokeStyle=col==='#c9a227'?'rgba(201,162,39,0.72)':'rgba(77,148,208,0.72)';
       ctx.lineWidth=2.2;
-      ctx.globalAlpha=0.9;
       ctx.stroke();
-      ctx.globalAlpha=1;
     }
-    refPts.forEach((p,i)=>{
+    if(layers.spray) sprayPts.forEach((p,i)=>{
       ctx.beginPath();
       ctx.arc(toX(p.x),toY(p.y),i===0?4:2.5,0,Math.PI*2);
       ctx.fillStyle=col; ctx.fill();
@@ -2187,24 +2186,28 @@ function renderRecoil() {
     {weapon:selW1,atts:att1,colClass:'c1'},
     {weapon:comparing?selW2:null,atts:att2,colClass:'c2'},
   ]);
-  const pathOnly=recoilMode==='path';
-  document.getElementById('rcModeBloom')?.classList.toggle('on',!pathOnly);
-  document.getElementById('rcModePath')?.classList.toggle('on',pathOnly);
+  document.getElementById('rcModeBloom')?.classList.toggle('on',recoilLayers.spray);
+  document.getElementById('rcModePath')?.classList.toggle('on',recoilLayers.path);
   document.getElementById('rcAimAds')?.classList.toggle('on',recoilAim==='ads');
   document.getElementById('rcAimHip')?.classList.toggle('on',recoilAim==='hip');
   document.getElementById('rcStanceStand')?.classList.toggle('on',recoilStance==='stand');
   document.getElementById('rcStanceMove')?.classList.toggle('on',recoilStance==='move');
   const bloomToggle=document.getElementById('rcBloomToggleBtn');
   if(bloomToggle){
-    bloomToggle.style.display=pathOnly?'':'none';
-    bloomToggle.classList.toggle('on',pathOnly&&recoilBloomBubbles);
+    bloomToggle.classList.toggle('on',recoilLayers.bloom);
   }
-  const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, pathOnly, recoilRefSeed, pathOnly&&recoilBloomBubbles);
+  const axis=drawRecoilFixed(document.getElementById('rcMain'), w1, w2, recoilLayers, recoilRefSeed);
   const noteEl=document.querySelector('.rc-note');
   const stateLabel=`${recoilAim.toUpperCase()} / ${recoilStance==='move'?'MOV':'STD'}`;
-  if (noteEl&&axis) noteEl.textContent=pathOnly
-    ? `Faded dots = 12 simulated spray runs with recoil+bloom (${stateLabel}). Line = recoil-only reference path connecting 20 shots.${recoilBloomBubbles?' Bubbles = potential spread on bullets 1, 2, 3, 5, 8, 13, and 20.':''} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`
-    : `Faded dots = 12 simulated spray runs showing natural shot scatter (${stateLabel}). Solid dots = reference run. View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
+  if (noteEl&&axis) {
+    const activeLayers=[
+      recoilLayers.spray?'spray pattern':null,
+      recoilLayers.path?'recoil path':null,
+      recoilLayers.bloom?'bloom':null,
+    ].filter(Boolean).join(' + ');
+    const bloomNote=recoilLayers.bloom?` Bubbles = potential spread on bullets ${(window._spreadBubbleIdxs??[]).map(i=>i+1).join(', ')}.`:'';
+    noteEl.textContent=`Showing ${activeLayers} (${stateLabel}). Spray Pattern uses faded simulated runs plus solid reference dots.${bloomNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
+  }
 
   // Legend
   const leg=document.getElementById('rcLegend');

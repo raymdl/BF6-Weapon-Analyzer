@@ -198,7 +198,7 @@
     color: #061010;
     font-weight: 700;
   }
-  .mode-group button { min-width: 92px; }
+  .mode-group button { min-width: 104px; }
   .distance-row {
     align-items: center;
     display: flex;
@@ -215,6 +215,9 @@
   }
   .bloom-bullets-input {
     width: 122px;
+  }
+  .bloom-shape-group button {
+    min-width: 76px;
   }
   .compact-input {
     padding-left: 7px;
@@ -457,13 +460,17 @@
   <label>Shots <input id="shotCountInput" class="compact-input" type="number" min="1" max="100" step="1" value="20"></label>
   <button type="button" onclick="redrawRandom()">Redraw Spray</button>
   <span class="segmented mode-group">
-    <button id="modeSpray" class="on" type="button" onclick="setViewMode('spray')">Spray Pattern</button>
-    <button id="modePath" type="button" onclick="setViewMode('path')">Recoil Path</button>
-    <button id="modeBloom" type="button" onclick="setViewMode('bloom')">Path + Bloom</button>
+    <button id="modeSpray" class="on" type="button" onclick="toggleViewLayer('spray')">Spray Pattern</button>
+    <button id="modePath" type="button" onclick="toggleViewLayer('path')">Recoil Path</button>
+    <button id="modeBloom" type="button" onclick="toggleViewLayer('bloom')">Bloom Bubbles</button>
   </span>
   <span id="bloomBulletsRow" class="bloom-bullets-row">
     <label for="bloomBulletsInput">Bubbles on Shots:</label>
     <input id="bloomBulletsInput" class="bloom-bullets-input" type="text" value="1, 2, 3, 5, 8, 13, 20">
+  </span>
+  <span id="bloomShapeGroup" class="segmented bloom-shape-group">
+    <button id="bloomIndividual" class="on" type="button" onclick="setBloomDisplayMode('individual')">Individual</button>
+    <button id="bloomOutline" type="button" onclick="setBloomDisplayMode('outline')">Outline</button>
   </span>
   <span class="row-break"></span>
   <span id="recoilStats" class="loadout-stats"></span>
@@ -1611,7 +1618,8 @@ let selectedAtts = blankAtts();
 let aimState = 'ads';
 let stanceState = 'stand';
 let refSeed = 0;
-let viewMode = 'spray';
+const viewLayers = { spray: true, path: false, bloom: false };
+let bloomDisplayMode = 'individual';
 let recoilControl = false;
 const DEFAULT_COMPENSATION = 85;
 let compensationLevel = DEFAULT_COMPENSATION;
@@ -1721,8 +1729,9 @@ function updateLoadoutStats() {
 }
 
 function spreadBounds(w) {
-  const bounds = w.spread?.[spreadKey()];
-  return bounds ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
+  const bounds = w.spread?.[spreadKey()] ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
+  if (aimState === 'ads' && stanceState === 'move' && w._movingAdsMinSpreadDeg != null) return [w._movingAdsMinSpreadDeg, bounds[1]];
+  return bounds;
 }
 
 function spreadDynamics(w) {
@@ -1796,7 +1805,7 @@ function simulateBloom(w, shotCount) {
   if (sInc === 0) return Array(shotCount).fill(baseline);
   const coef = dyn.firingCoef ?? 0;
   const exp_ = dyn.firingExp ?? 1;
-  const offset = dyn.firingOffset ?? 0;
+  const offset = (dyn.firingOffset ?? 0) * (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0));
   const secBetweenShots = 60 / (w.rpm ?? 600);
   const dt = 1 / 60;
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
@@ -1924,30 +1933,32 @@ function drawWall(canvas, readout, distanceM, scaleEl) {
 
   const targetHitTest = drawTarget(ctx, toX, toY);
 
-  const primary = projectedRun(w, distanceM, refSeed >>> 0, refSeed >>> 0, viewMode !== 'path');
+  const primary = projectedRun(w, distanceM, refSeed >>> 0, refSeed >>> 0, true);
   const pathPts = projectedRun(w, distanceM, refSeed >>> 0, refSeed >>> 0, false);
-  if (viewMode === 'bloom') drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM);
-  const linePts = viewMode === 'spray' ? primary : pathPts;
-  const hitFlags = linePts.map(targetHitTest);
+  const hitFlags = primary.map(targetHitTest);
   const shotRadius = 2.7 * (5 / distanceM) * zoom;
 
-  if (viewMode !== 'spray') {
+  if (viewLayers.bloom) drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM);
+
+  if (viewLayers.path) {
     ctx.beginPath();
-    linePts.forEach((p, i) => {
+    pathPts.forEach((p, i) => {
       const x = toX(p.xCm), y = toY(p.yCm);
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     });
-    ctx.strokeStyle = '#c9a227';
+    ctx.strokeStyle = 'rgba(201,162,39,0.72)';
     ctx.lineWidth = 2.1;
     ctx.stroke();
   }
-  linePts.forEach((p, i) => {
-    ctx.beginPath();
-    ctx.arc(toX(p.xCm), toY(p.yCm), shotRadius, 0, Math.PI * 2);
-    ctx.fillStyle = hitFlags[i] ? '#d94b3d' : '#c9a227';
-    ctx.fill();
-  });
+  if (viewLayers.spray) {
+    primary.forEach((p, i) => {
+      ctx.beginPath();
+      ctx.arc(toX(p.xCm), toY(p.yCm), shotRadius, 0, Math.PI * 2);
+      ctx.fillStyle = hitFlags[i] ? '#d94b3d' : '#c9a227';
+      ctx.fill();
+    });
+  }
   ctx.restore();
 
   ctx.strokeStyle = '#1e2e2e';
@@ -2011,6 +2022,10 @@ function drawTarget(ctx, toX, toY) {
 
 function drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM) {
   const blooms = simulateBloom(w, selectedShotCount());
+  if (bloomDisplayMode === 'outline') {
+    drawBloomEnvelope(ctx, toX, toY, w, pathPts, blooms, distanceM);
+    return;
+  }
   const idxs = selectedBloomCircleIndexes();
   ctx.save();
   ctx.fillStyle = 'rgba(201,162,39,0.08)';
@@ -2031,16 +2046,92 @@ function drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM) {
   ctx.restore();
 }
 
+function drawBloomEnvelope(ctx, toX, toY, w, pathPts, blooms, distanceM) {
+  const circles = pathPts.map((p, idx) => {
+    const radiusCm = cmAtDistance(blooms[idx] ?? spreadBounds(w)[0], distanceM);
+    const x = toX(p.xCm);
+    const y = toY(p.yCm);
+    const r = Math.abs(toX(p.xCm + radiusCm) - x);
+    return { x, y, r };
+  }).filter(c => Number.isFinite(c.x) && Number.isFinite(c.y) && Number.isFinite(c.r));
+  if (!circles.length) return;
+
+  const steps = 192;
+  const points = [];
+  for (let i = 0; i < steps; i++) {
+    const a = (i / steps) * Math.PI * 2;
+    const dx = Math.cos(a);
+    const dy = Math.sin(a);
+    let best = circles[0];
+    let bestScore = best.x * dx + best.y * dy + best.r;
+    for (let j = 1; j < circles.length; j++) {
+      const c = circles[j];
+      const score = c.x * dx + c.y * dy + c.r;
+      if (score > bestScore) {
+        best = c;
+        bestScore = score;
+      }
+    }
+    points.push({ x: best.x + best.r * dx, y: best.y + best.r * dy });
+  }
+
+  ctx.save();
+  ctx.beginPath();
+  points.forEach((p, i) => {
+    if (i === 0) ctx.moveTo(p.x, p.y);
+    else ctx.lineTo(p.x, p.y);
+  });
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(201,162,39,0.16)';
+  ctx.strokeStyle = 'rgba(201,162,39,0.66)';
+  ctx.lineWidth = 1.4;
+  ctx.fill();
+  ctx.stroke();
+  ctx.restore();
+}
+
 function selectedBloomCircleIndexes() {
   const input = document.getElementById('bloomBulletsInput');
   const shotCount = selectedShotCount();
   const fallback = [1, 2, 3, 5, 8, 13, 20];
-  const values = (input?.value ?? '')
-    .split(/[,\s]+/)
-    .map(v => Math.round(Number(v)))
-    .filter(v => Number.isFinite(v) && v >= 1 && v <= shotCount);
+  const values = parseBloomBulletSpec(input?.value ?? '', shotCount);
   const bullets = values.length ? values : fallback.filter(v => v <= shotCount);
   return [...new Set(bullets)].map(v => v - 1);
+}
+
+function parseBloomBulletSpec(spec, shotCount) {
+  const text = spec.trim().toLowerCase();
+  if (!text) return [];
+  if (text === 'all') return range(1, shotCount);
+
+  const everyMatch = text.match(/^every\s+(\d+)$/);
+  if (everyMatch) {
+    const step = Math.max(1, Math.round(Number(everyMatch[1])));
+    const values = [];
+    for (let shot = 1; shot <= shotCount; shot += step) values.push(shot);
+    return values;
+  }
+
+  const values = [];
+  text.split(/[,;\s]+/).forEach(part => {
+    if (!part) return;
+    const rangeMatch = part.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (rangeMatch) {
+      const start = Math.round(Number(rangeMatch[1]));
+      const end = Math.round(Number(rangeMatch[2]));
+      values.push(...range(Math.min(start, end), Math.max(start, end)));
+      return;
+    }
+    const value = Math.round(Number(part));
+    if (Number.isFinite(value)) values.push(value);
+  });
+  return values.filter(v => v >= 1 && v <= shotCount);
+}
+
+function range(start, end) {
+  const values = [];
+  for (let value = start; value <= end; value++) values.push(value);
+  return values;
 }
 
 function rawSelectedWeapon() {
@@ -2256,11 +2347,24 @@ function setStance(value) {
   redraw();
 }
 
-function setViewMode(value) {
-  viewMode = value;
-  document.getElementById('modeSpray').classList.toggle('on', value === 'spray');
-  document.getElementById('modePath').classList.toggle('on', value === 'path');
-  document.getElementById('modeBloom').classList.toggle('on', value === 'bloom');
+function toggleViewLayer(layer) {
+  viewLayers[layer] = !viewLayers[layer];
+  if (!viewLayers.spray && !viewLayers.path && !viewLayers.bloom) viewLayers[layer] = true;
+  syncViewLayerButtons();
+  syncBloomBulletsControl();
+  redraw();
+}
+
+function syncViewLayerButtons() {
+  document.getElementById('modeSpray').classList.toggle('on', viewLayers.spray);
+  document.getElementById('modePath').classList.toggle('on', viewLayers.path);
+  document.getElementById('modeBloom').classList.toggle('on', viewLayers.bloom);
+}
+
+function setBloomDisplayMode(value) {
+  bloomDisplayMode = value === 'outline' ? 'outline' : 'individual';
+  document.getElementById('bloomIndividual').classList.toggle('on', bloomDisplayMode === 'individual');
+  document.getElementById('bloomOutline').classList.toggle('on', bloomDisplayMode === 'outline');
   syncBloomBulletsControl();
   redraw();
 }
@@ -2268,10 +2372,14 @@ function setViewMode(value) {
 function syncBloomBulletsControl() {
   const row = document.getElementById('bloomBulletsRow');
   const input = document.getElementById('bloomBulletsInput');
-  if (!row || !input) return;
-  const enabled = viewMode === 'bloom';
-  row.classList.toggle('disabled', !enabled);
-  input.disabled = !enabled;
+  const group = document.getElementById('bloomShapeGroup');
+  if (!row || !input || !group) return;
+  const enabled = viewLayers.bloom;
+  const bulletsEnabled = enabled && bloomDisplayMode === 'individual';
+  group.classList.toggle('disabled', !enabled);
+  row.classList.toggle('disabled', !bulletsEnabled);
+  input.disabled = !bulletsEnabled;
+  group.querySelectorAll('button').forEach(btn => { btn.disabled = !enabled; });
 }
 
 function setRecoilControl(value) {
@@ -2391,6 +2499,7 @@ function customDistance() {
 function redraw() {
   const custom = customDistance();
   document.getElementById('customTitle').textContent = `${custom} m wall`;
+  syncViewLayerButtons();
   syncBloomBulletsControl();
   syncCompensationControls();
   updateLoadoutStats();
