@@ -324,7 +324,7 @@ The sidebar marks seven attachments with assumed stats using an asterisk:
 - Compensated Brake.
 - Flash Compensator.
 - Long Suppressor.
-- Light Suppressor.
+- Lightened Suppressor.
 - Heavy Barrel.
 - Heavy Extended Barrel.
 
@@ -468,6 +468,7 @@ Current chip metrics include:
 - ADS Recoil/Shot.
 - ADS Variation.
 - ADS Spread/Shot.
+- ADS Spread Recovery.
 - Move ADS.
 - Hip Min.
 - 3D Spot.
@@ -661,7 +662,7 @@ Some attachment values are deliberately marked as assumed:
 - Compensated Brake.
 - Flash Compensator.
 - Long Suppressor.
-- Light Suppressor.
+- Lightened Suppressor.
 - Heavy Barrel.
 - Heavy Extended Barrel.
 
