@@ -718,7 +718,15 @@ function buildAttachmentSection(containerId, atts, weapon) {
     const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
     let visible = allowedSet ? data.filter(a => allowedSet.has(a.id)) : data;
     if (isBarrel) visible = visible.filter(a => a.id !== 'none'); // barrels always required
-    if (visible.length <= (isBarrel ? 0 : 1)) return; // weapon has no options for this slot — hide it
+    if (visible.length <= (isBarrel ? 0 : 1)) {
+      // Only one or zero meaningful choices — show disabled rather than hiding
+      const opt=document.createElement('option');
+      const single = visible[0];
+      opt.value = single?.id ?? ''; opt.textContent = single?.name ?? noWeaponDefault[key];
+      sel.appendChild(opt); sel.disabled=true;
+      row.appendChild(span); row.appendChild(sel); el.appendChild(row);
+      return;
+    }
     visible.forEach(a=>{
       const opt=document.createElement('option'); opt.value=a.id;
       const pts=getAttPts(a,weapon?.id);
@@ -796,7 +804,7 @@ function buildAttachmentSection(containerId, atts, weapon) {
     const ergoRow=document.createElement('div'); ergoRow.className='att-row';
     const ergoSpan=document.createElement('span'); ergoSpan.className='att-lbl'; ergoSpan.textContent='Ergo';
     const ergoSel=document.createElement('select'); ergoSel.className='att-sel';
-    if (visibleErgos.length > 1) {
+    if (visibleErgos.length > 1 && weapon) {
       visibleErgos.forEach(e=>{
         if (e.id==='none') { const o=document.createElement('option'); o.value='none'; o.textContent='None'; if((atts.ergo??'none')==='none') o.selected=true; ergoSel.appendChild(o); return; }
         const opt=document.createElement('option'); opt.value=e.id;
