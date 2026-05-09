@@ -412,6 +412,37 @@ const CLOUD_RUNS = 12;
 const COL = '#c9a227';
 let refSeed = 0;
 
+// Mirrored from index.html — keep in sync until extracted to a shared module.
+const RECOIL_DEC = {
+  m433:72,   b36a4:72,   sor556:72,  ak4d:104,  tr7:104,    kord6p67:55,
+  nvo228e:76, l85a3:72,  vcr2:72,
+  m4a1:57,   m277:76,    ak205:48,   m417a2:76, grtbc:57,   qbz192:57,
+  sg553r:72, sor300sc:72,
+  sgx:55,    pw5a3:55,   pw7a2:46,   umg40:57,  usg90:48,   kv9:55,
+  scw10:72,  sl9:55,     cz3a1:55,
+  l110:72,   drsiar:72,  m60:104,    rpkm:76,   m123k:72,   m250:76,
+  kts100:72, m240l:104,  m121a2:104,
+  m39emr:16, lmr27:13.7, svk86:21.5, svdm:16,   grtcps:13.7,
+  m2010esr:70, sv98:70,  psr:70,     miniscout:70,
+  m87a1:70,  m1014:21.5, ks18k:21.5, db12:70,
+};
+const RECOIL_DEC_TEXP = {
+  m433:1.200,  b36a4:1.200,  sor556:1.200, ak4d:1.459,   tr7:1.459,    kord6p67:1.023,
+  nvo228e:1.240, l85a3:1.200, vcr2:1.200,
+  m4a1:1.045,  m277:1.240,   ak205:0.905,  m417a2:1.240, grtbc:1.045,  qbz192:1.045,
+  sg553r:1.200, sor300sc:1.200,
+  sgx:1.023,   pw5a3:1.023,  pw7a2:0.919,  umg40:1.045,  usg90:0.905,  kv9:1.023,
+  scw10:1.200, sl9:1.023,    cz3a1:1.023,
+  l110:1.200,  drsiar:1.200, m60:1.459,    rpkm:1.240,   m123k:1.200,  m250:1.240,
+  kts100:1.200, m240l:1.459, m121a2:1.459,
+  m39emr:0.750, lmr27:0.5555, svk86:1.333, svdm:0.750,   grtcps:0.5555,
+  m2010esr:4.000, sv98:4.000, psr:4.000,   miniscout:4.000,
+  m87a1:4.000, m1014:1.333,  ks18k:1.333,  db12:4.000,
+};
+const RECOIL_DEC_EXP = {
+  m2010esr:0.6, sv98:0.6, psr:0.6, miniscout:0.6, m87a1:0.6, db12:0.6,
+};
+
 function classShort(cls) {
   return {
     'Assault Rifle':'AR',
@@ -437,11 +468,15 @@ function recoilGroup(w) {
     dirVar: w.recoilVar,
     dirVarMult: 1,
     dirVarExp: 0,
-    decExp: 1,
-    decTimeExp: 1.2,
+    decExp: RECOIL_DEC_EXP[w.id] ?? 1,
+    decTimeExp: RECOIL_DEC_TEXP[w.id] ?? 1.2,
     decOffset: 0.06,
-    decFactor: 72,
+    decFactor: RECOIL_DEC[w.id] ?? 72,
   };
+}
+
+function baseRecoilGroup(w) {
+  return w.recoil?.ads ?? recoilGroup(w);
 }
 
 function recoilAmount(group) {
@@ -452,9 +487,29 @@ function recoilVariation(group) {
   return (group.dirVar ?? 0) * Math.pow(group.dirVarMult ?? 1, group.dirVarExp ?? 0);
 }
 
+function selectedRecoilAmountFor(w) {
+  const g = recoilGroup(w);
+  if (aimState !== 'ads') return recoilAmount(g);
+  const adsBase = recoilAmount(baseRecoilGroup(w));
+  const attachmentMult = adsBase > 0 ? (w.recoilV ?? adsBase) / adsBase : 1;
+  return recoilAmount(g) * attachmentMult;
+}
+
+function selectedRecoilVariationFor(w) {
+  const g = recoilGroup(w);
+  if (aimState !== 'ads') return recoilVariation(g);
+  const adsBase = recoilVariation(baseRecoilGroup(w));
+  const attachmentMult = adsBase > 0 ? (w.recoilVar ?? adsBase) / adsBase : 1;
+  return recoilVariation(g) * attachmentMult;
+}
+
+// preview_bloom has no recoil-control UI; gating still lives in the helper for symmetry with index.html.
+function selectedCompensationLevel() { return 0; }
+
 function spreadBounds(w) {
-  const bounds = w.spread?.[spreadKey()];
-  return bounds ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
+  const bounds = w.spread?.[spreadKey()] ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
+  if (aimState === 'ads' && stanceState === 'move' && w._movingAdsMinSpreadDeg != null) return [w._movingAdsMinSpreadDeg, bounds[1]];
+  return bounds;
 }
 
 function spreadDynamics(w) {
@@ -464,6 +519,12 @@ function spreadDynamics(w) {
     firingExp: 2.5,
     firingOffset: aimState === 'ads' ? 1.84 : 3.31,
   };
+}
+
+function selectedSpreadIncFor(w) {
+  const dyn = spreadDynamics(w);
+  if (aimState === 'ads') return w.recoilIncAds ?? dyn.inc ?? 0;
+  return dyn.inc ?? 0;
 }
 
 function scaleYMax() {
@@ -484,9 +545,10 @@ function scaleText() {
 }
 
 function mulberry32(seed) {
+  let s = seed >>> 0;
   return function() {
-    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
-    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    s = s + 0x6D2B79F5 | 0;
+    let t = Math.imul(s ^ s >>> 15, 1 | s);
     t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
     return ((t ^ t >>> 14) >>> 0) / 4294967296;
   };
@@ -505,11 +567,11 @@ function uniformDev(rng, spreadDeg) {
 function simulateBloom(w, shotCount) {
   const dyn = spreadDynamics(w);
   const [baseline, sMax] = spreadBounds(w);
-  const sInc = dyn.inc ?? 0;
+  const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return Array(shotCount).fill(baseline);
   const coef = dyn.firingCoef ?? 0;
   const exp_ = dyn.firingExp ?? 1;
-  const offset = dyn.firingOffset ?? 0;
+  const offset = (dyn.firingOffset ?? 0) * (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0));
   const secBetweenShots = 60 / (w.rpm ?? 600);
   const dt = 1 / 60;
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
@@ -592,7 +654,7 @@ function drawBase(canvas, c) {
   return ctx;
 }
 
-function applyRecoilDecay(r, decFactor, decExp, timeExp, decOffset, interShotTime) {
+function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, decOffset = 0.06) {
   const dt = 1 / 60;
   let t = 0;
   while (t < interShotTime) {
@@ -608,12 +670,13 @@ function applyRecoilDecay(r, decFactor, decExp, timeExp, decOffset, interShotTim
 function genRecoilPts(w, seed) {
   const rng = mulberry32((whash(w.id) ^ seed) >>> 0);
   const group = recoilGroup(w);
-  const decF = group.decFactor ?? 72;
-  const decExp = group.decExp ?? 1;
-  const timeExp = group.decTimeExp ?? 1.2;
+  const decF = group.decFactor ?? RECOIL_DEC[w.id] ?? 72;
+  const decExp = group.decExp ?? RECOIL_DEC_EXP[w.id] ?? 1;
+  const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
   const decOffset = group.decOffset ?? 0.06;
-  const amount = recoilAmount(group);
-  const variation = recoilVariation(group);
+  const amount = selectedRecoilAmountFor(w);
+  const variation = selectedRecoilVariationFor(w);
+  const compensation = selectedCompensationLevel() / 100;
   const pts = [{ x: 0, y: 0 }];
   const interShotTime = 60 / (w.rpm ?? 600);
   let cx = 0, cy = 0;
@@ -621,12 +684,12 @@ function genRecoilPts(w, seed) {
     const dir = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
     const spread = uniformDev(rng, variation) * Math.PI / 180;
     const angle = dir + spread;
-    cx += Math.sin(angle) * amount;
-    cy += Math.cos(angle) * amount;
+    cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
+    cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
     pts.push({ x: cx, y: cy });
     if (i < N - 1) {
-      cx = applyRecoilDecay(cx, decF, decExp, timeExp, decOffset, interShotTime);
-      cy = applyRecoilDecay(cy, decF, decExp, timeExp, decOffset, interShotTime);
+      cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
+      cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
     }
   }
   return pts;
@@ -646,12 +709,13 @@ function drawPanel(canvas, readout, w, bulletNums) {
   const { PL, PT, PW, PH, toX, toY } = c;
   const blooms = simulateBloom(w, N);
   const group = recoilGroup(w);
-  const decF = group.decFactor ?? 72;
-  const decExp = group.decExp ?? 1;
-  const timeExp = group.decTimeExp ?? 1.2;
+  const decF = group.decFactor ?? RECOIL_DEC[w.id] ?? 72;
+  const decExp = group.decExp ?? RECOIL_DEC_EXP[w.id] ?? 1;
+  const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
   const decOffset = group.decOffset ?? 0.06;
-  const amount = recoilAmount(group);
-  const variation = recoilVariation(group);
+  const amount = selectedRecoilAmountFor(w);
+  const variation = selectedRecoilVariationFor(w);
+  const compensation = selectedCompensationLevel() / 100;
   const interShotTime = 60 / (w.rpm ?? 600);
 
   ctx.save();
@@ -667,8 +731,8 @@ function drawPanel(canvas, readout, w, bulletNums) {
       const dir = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
       const spread = uniformDev(rng, variation) * Math.PI / 180;
       const angle = dir + spread;
-      cx += Math.sin(angle) * amount;
-      cy += Math.cos(angle) * amount;
+      cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
+      cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
       const bloom = blooms[i] ?? spreadBounds(w)[0];
       const bAng = rngB() * Math.PI * 2;
       const bR = bloom * rngB();
@@ -677,8 +741,8 @@ function drawPanel(canvas, readout, w, bulletNums) {
       ctx.fillStyle = COL + '38';
       ctx.fill();
       if (i < N - 1) {
-        cx = applyRecoilDecay(cx, decF, decExp, timeExp, decOffset, interShotTime);
-        cy = applyRecoilDecay(cy, decF, decExp, timeExp, decOffset, interShotTime);
+        cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
+        cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
       }
     }
   }
@@ -776,9 +840,10 @@ function populateWeapons() {
   wpnSel.innerHTML = '';
   WEAPONS_PREVIEW.forEach(w => {
     const group = recoilGroup(w);
+    const variationForLabel = selectedRecoilVariationFor(w);
     const opt = document.createElement('option');
     opt.value = w.id;
-    opt.textContent = `${w.name} (${classShort(w.cls)}) - ${aimState.toUpperCase()} ${stanceState === 'move' ? 'Moving' : 'Standing'} / var +/-${recoilVariation(group).toFixed(1)} deg`;
+    opt.textContent = `${w.name} (${classShort(w.cls)}) - ${aimState.toUpperCase()} ${stanceState === 'move' ? 'Moving' : 'Standing'} / var +/-${variationForLabel.toFixed(1)} deg`;
     wpnSel.appendChild(opt);
   });
   if (WEAPONS_PREVIEW.some(w => w.id === 'm433')) wpnSel.value = 'm433';
