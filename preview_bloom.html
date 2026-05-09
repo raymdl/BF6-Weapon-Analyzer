@@ -578,6 +578,8 @@ function drawPanel(canvas, readout, w, bulletNums) {
       const angle = dir + spread;
       cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
       cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
+      cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
+      cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
       const bloom = blooms[i] ?? spreadBounds(w)[0];
       const bAng = rngB() * Math.PI * 2;
       const bR = bloom * rngB();
@@ -585,10 +587,6 @@ function drawPanel(canvas, readout, w, bulletNums) {
       ctx.arc(toX(cx + bR * Math.cos(bAng)), toY(cy + bR * Math.sin(bAng)), 2, 0, Math.PI * 2);
       ctx.fillStyle = COL + '38';
       ctx.fill();
-      if (i < N - 1) {
-        cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
-        cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
-      }
     }
   }
 

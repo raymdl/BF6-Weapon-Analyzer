@@ -228,7 +228,7 @@ export function simulateBloom(w, shotCount) {
 
 /**
  * Generate recoil path points for `shots` shots with the given RNG seed.
- * Returns an array of {x, y} angular offsets in degrees.
+ * Returns pre-shot {x, y} angular offsets in degrees for each bullet.
  * Compensation is read from ctx.compensationFn() — pages provide their own.
  */
 export function genRecoilPts(w, seed = 0, shots = 20) {
@@ -251,11 +251,9 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
     const angle  = dir + spread;
     cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
     cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
+    cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
+    cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
     pts.push({ x: cx, y: cy });
-    if (i < shots - 1) {
-      cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
-      cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
-    }
   }
   return pts;
 }
