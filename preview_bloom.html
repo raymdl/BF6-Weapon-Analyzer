@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bloom Bubble Placement Preview</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,7 +25,7 @@
     font-size: 11px;
     line-height: 1.45;
     margin-bottom: 16px;
-    max-width: 980px;
+    max-width: none;
   }
   .controls {
     align-items: center;
@@ -32,6 +33,137 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 14px;
+  }
+  .preview-layout {
+    align-items: flex-start;
+    display: flex;
+    gap: 14px;
+  }
+  .preview-sidebar {
+    background: #0d1414;
+    border: 1px solid #1e2e2e;
+    border-radius: 4px;
+    flex: 0 0 208px;
+    max-height: calc(100vh - 112px);
+    overflow-y: auto;
+  }
+  .preview-sidebar::-webkit-scrollbar { width: 3px; }
+  .preview-sidebar::-webkit-scrollbar-thumb { background: #273a3a; }
+  .preview-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .sb-sec,
+  .att-sec {
+    border-bottom: 1px solid #1e2e2e;
+    padding: 6px 11px;
+  }
+  .sb-lbl {
+    color: #7a9898;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .class-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .cbtn {
+    background: #111a1a;
+    border: 1px solid #273a3a;
+    border-radius: 3px;
+    color: #7a9898;
+    font-size: 11px;
+    min-height: 22px;
+    padding: 2px 6px;
+  }
+  .cbtn:hover,
+  .cbtn.on {
+    background: rgba(201, 162, 39, 0.1);
+    border-color: #c9a227;
+    color: #c9a227;
+  }
+  .wlist {
+    display: flex;
+    flex-direction: column;
+  }
+  .wbtn {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgba(40, 48, 48, 0.55);
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    color: #c8d8d8;
+    font-size: 13px;
+    min-height: 24px;
+    overflow: hidden;
+    padding: 3px 11px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .wbtn:hover { background: #111a1a; }
+  .wbtn.on {
+    background: rgba(201, 162, 39, 0.1);
+    border-left-color: #c9a227;
+    color: #c9a227;
+  }
+  .no-w,
+  .att-note {
+    color: #7a9898;
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .att-head {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .att-total {
+    color: #c9a227;
+    font-size: 10px;
+  }
+  .att-total.over { color: #d94b3d; }
+  .att-row {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+  .att-lbl {
+    color: #7a9898;
+    flex: 0 0 41px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .att-sel {
+    flex: 1;
+    min-width: 0;
+    min-height: 24px;
+    padding: 2px 6px;
+  }
+  .compact-input {
+    width: 48px;
+  }
+  .loadout-stats {
+    color: #9fc8c8;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .loadout-stats strong {
+    color: #d8e6e6;
+    font-weight: 700;
+  }
+  .error {
+    color: #d94b3d;
+    display: none;
+    font-size: 12px;
+    margin-bottom: 12px;
   }
   label {
     color: #9ab0b0;
@@ -85,7 +217,7 @@
     display: grid;
     gap: 14px;
     grid-template-columns: repeat(3, minmax(260px, 1fr));
-    max-width: 1160px;
+    max-width: none;
   }
   .panel {
     display: flex;
@@ -212,7 +344,7 @@
   }
   .bullet-table-wrap {
     margin-top: 16px;
-    max-width: 1160px;
+    max-width: none;
     overflow-x: auto;
   }
   .table-title {
@@ -263,6 +395,12 @@
     background: #0f1717;
   }
   @media (max-width: 900px) {
+    .preview-layout { flex-direction: column; }
+    .preview-sidebar {
+      flex-basis: auto;
+      max-height: none;
+      width: 100%;
+    }
     .panels { grid-template-columns: 1fr; }
   }
 </style>
@@ -270,11 +408,23 @@
 <body>
 <h1>Bloom Bubble Placement Preview</h1>
 <p class="sub">Compare three bubble schedules side by side. Each panel draws the same recoil-only reference path over the same bloom cloud; only the selected bullet numbers with spread bubbles change.</p>
+<div id="loadError" class="error"></div>
 
+<div class="preview-layout">
+<aside class="preview-sidebar">
+  <div class="sb-sec">
+    <div class="sb-lbl">Class</div>
+    <div class="class-filter" id="classFilter"></div>
+  </div>
+  <div class="sb-sec">
+    <div class="sb-lbl">Weapon</div>
+    <div class="wlist" id="weaponList"></div>
+  </div>
+  <div class="att-sec" id="attachmentSection"></div>
+</aside>
+
+<main class="preview-main">
 <div class="controls">
-  <label>Weapon:
-    <select id="wpnSel"></select>
-  </label>
   <label>Aim:
     <span class="segmented" id="aimControls">
       <button type="button" class="on" data-aim="ads">ADS</button>
@@ -287,8 +437,10 @@
       <button type="button" data-stance="move">Moving</button>
     </span>
   </label>
+  <label>Shots <input id="shotCountInput" class="compact-input" type="text" inputmode="numeric" value="20"></label>
   <button id="redrawBtn" type="button">Redraw Reference</button>
   <button id="resetBtn" type="button">Reset Reference</button>
+  <span id="loadoutStats" class="loadout-stats"></span>
 </div>
 
 <div class="panels">
@@ -393,7 +545,9 @@
   </table>
 </div>
 
-<p class="note">Type bullet numbers from 1-20, separated by commas or spaces. Bullet 1 is the origin marker, so schedules usually start at bullet 2. Bubble radius uses the selected aim and movement state.</p>
+<p class="note">Type bullet numbers separated by commas or spaces. Bullet 1 is the origin marker, so schedules usually start at bullet 2. Bubble radius uses the selected aim and movement state.</p>
+</main>
+</div>
 
 <script type="module">
 import {
@@ -403,14 +557,38 @@ import {
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
   simulateBloom, genRecoilPts,
 } from './sim/core.js';
+import { ATTACHMENT_SLOT_KEYS } from './sim/attachments.js';
+import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
 // ── DATA — loaded in parallel ─────────────────────────────────────────────────
 // (top-level await — requires module script + http server)
-const [EMBEDDED_WEAPONS, _recoilDecay] = await Promise.all([
+const [EMBEDDED_WEAPONS, _balance, _atts, _ammo, _recoilDecay] = await Promise.all([
   fetch('./data/weapons.json').then(r => r.json()),
+  fetch('./data/balance_tables.json').then(r => r.json()),
+  fetch('./data/attachments.json').then(r => r.json()),
+  fetch('./data/ammo.json').then(r => r.json()),
   fetch('./data/recoil_decay.json').then(r => r.json()),
 ]);
+const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+        BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+        ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS } = _balance;
+const HP_HS_HIGH = new Set(_HP_HS_HIGH);
+const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+        WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
+const { AMMO, WEAPON_AMMO } = _ammo;
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
-let WEAPONS_PREVIEW = [];
+setAttachmentContext({
+  MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
+  AMMO,
+  RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+  BASE_HS_MULT, HP_HS_HIGH,
+  MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+  ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
+});
+let WEAPONS = [];
+let selectedClass = 'Assault Rifle';
+let selectedWeaponId = 'm433';
+const blankAtts = () => ({ muzzle: 'none', barrel: 'none', grip: 'none', laser: 'none', ammo: 'standard', mag: null, ergo: 'none' });
+let selectedAtts = blankAtts();
 let aimState = 'ads';
 let stanceState = 'stand';
 setSimContext({
@@ -425,7 +603,7 @@ let panX = 0;
 let panY = 0;
 const DEFAULT_YMIN = -1.0;
 const PAN_STEP = 0.5;
-const N = 20;
+const DEFAULT_SHOTS = 20;
 const CLOUD_RUNS = 12;
 const COL = '#c9a227';
 let refSeed = 0;
@@ -437,7 +615,7 @@ function classShort(cls) {
     'SMG':'SMG',
     'LMG':'LMG',
     'DMR':'DMR',
-    'Sniper Rifle':'SR',
+    'Sniper Rifle':'Sniper',
     'Shotgun':'SG',
   }[cls] ?? cls;
 }
@@ -445,6 +623,208 @@ function classShort(cls) {
 function spreadKey() {
   return `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
 }
+
+function rawSelectedWeapon() {
+  return WEAPONS.find(w => w.id === selectedWeaponId) ?? WEAPONS[0];
+}
+
+function selectedWeapon() {
+  const raw = rawSelectedWeapon();
+  return raw ? applyAttachments(raw, selectedAtts) : null;
+}
+
+function getAttPts(a, weaponId) {
+  if (!a) return 0;
+  return (weaponId && a.weaponPts?.[weaponId]) ?? a.pts ?? 0;
+}
+
+function computeAttPts(atts, weapon) {
+  if (!weapon) return 0;
+  const wid = weapon.id;
+  const wm = WEAPON_MAG[wid] ?? null;
+  const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
+  const ergoPts = ERGOS.find(e => e.id === (atts.ergo ?? 'none'))?.pts ?? 0;
+  return getAttPts(MUZZLES.find(a => a.id === atts.muzzle), wid)
+    + getAttPts(BARRELS.find(a => a.id === atts.barrel), wid)
+    + getAttPts(GRIPS.find(a => a.id === atts.grip), wid)
+    + getAttPts(LASERS.find(a => a.id === atts.laser), wid)
+    + (WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
+    + magPts
+    + ergoPts;
+}
+
+function validateAtts(atts, weapon) {
+  atts.muzzle = 'none';
+  atts.grip = 'none';
+  atts.laser = 'none';
+  const wa = WEAPON_ATTS[weapon?.id] ?? null;
+  atts.barrel = wa?.barrelDef ?? 'basic';
+  atts.ammo = WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
+  atts.mag = WEAPON_MAG[weapon?.id]?.def ?? null;
+  atts.ergo = 'none';
+}
+
+function attDisplayName(a) {
+  return a?.assumed ? `${a.name}*` : a.name;
+}
+
+function addAttachmentRow(container, label, value, options, onChange, disabled = false) {
+  if (!options.length) return;
+  const row = document.createElement('div');
+  row.className = 'att-row';
+  const span = document.createElement('span');
+  span.className = 'att-lbl';
+  span.textContent = label;
+  const sel = document.createElement('select');
+  sel.className = 'att-sel';
+  options.forEach(optData => {
+    const opt = document.createElement('option');
+    opt.value = optData.id;
+    opt.textContent = optData.text;
+    if (optData.noEffect) opt.style.color = '#666';
+    if (optData.id === value) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  if (disabled) {
+    sel.disabled = true;
+  } else {
+    sel.onchange = () => onChange(sel.value);
+  }
+  row.appendChild(span);
+  row.appendChild(sel);
+  container.appendChild(row);
+}
+
+function renderAttachmentSection() {
+  const el = document.getElementById('attachmentSection');
+  const weapon = rawSelectedWeapon();
+  if (!el) return;
+  const total = weapon ? computeAttPts(selectedAtts, weapon) : 0;
+  el.innerHTML = `<div class="att-head"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total${total > 100 ? ' over' : ''}">Total: ${total} pts</span></div>`;
+  const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
+  const attDataSource = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS };
+
+  ATTACHMENT_SLOT_KEYS.forEach(({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
+    const data = attDataSource[dataKey];
+    if (!weapon || !data) {
+      addAttachmentRow(el, label, '', [{ id: '', text: noWeaponText }], () => {}, true);
+      return;
+    }
+    const allowedIds = wa?.[key];
+    const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
+    let visible = allowedSet ? data.filter(a => allowedSet.has(a.id)) : data;
+    if (isBarrel) visible = visible.filter(a => a.id !== 'none');
+    if (visible.length <= (isBarrel ? 0 : 1)) {
+      const single = visible[0];
+      addAttachmentRow(el, label, single?.id ?? '', [{ id: single?.id ?? '', text: single?.name ?? noWeaponText }], () => {}, true);
+      return;
+    }
+    addAttachmentRow(
+      el,
+      label,
+      selectedAtts[key],
+      visible.map(a => {
+        const pts = getAttPts(a, weapon.id);
+        const name = attDisplayName(a);
+        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect };
+      }),
+      value => { selectedAtts[key] = value; renderSidebar(); redraw(); },
+    );
+  });
+
+  const wAmmo = weapon ? (WEAPON_AMMO[weapon.id] ?? null) : null;
+  const ammoList = wAmmo ? AMMO.filter(a => a.id in wAmmo.ammo) : [];
+  if (ammoList.length > 1) {
+    addAttachmentRow(
+      el, 'Ammo', selectedAtts.ammo ?? wAmmo.def,
+      ammoList.map(a => { const pts = wAmmo.ammo[a.id] ?? 0; return { id: a.id, text: pts > 0 ? `${a.name} [${pts}]` : a.name, noEffect: a.noEffect }; }),
+      value => { selectedAtts.ammo = value; renderSidebar(); redraw(); },
+    );
+  } else {
+    addAttachmentRow(el, 'Ammo', 'standard', [{ id: 'standard', text: 'Standard' }], () => {}, true);
+  }
+
+  const wm = weapon ? (WEAPON_MAG[weapon.id] ?? null) : null;
+  if (wm && Object.keys(wm.mags).length > 0) {
+    addAttachmentRow(
+      el, 'Mag', selectedAtts.mag ?? wm.def,
+      Object.entries(wm.mags).map(([id, m]) => ({ id, text: m.pts > 0 ? `${m.name} [${m.pts}]` : m.name })),
+      value => { selectedAtts.mag = value; renderSidebar(); redraw(); },
+    );
+  } else {
+    addAttachmentRow(el, 'Mag', 'none', [{ id: 'none', text: 'None' }], () => {}, true);
+  }
+
+  const we = weapon ? (WEAPON_ERGO[weapon.id] ?? null) : null;
+  const availSet = we ? new Set(we.avail) : null;
+  const visibleErgos = ERGOS.filter(e => e.id === 'none' || (availSet && availSet.has(e.id)));
+  if (visibleErgos.length > 1 && weapon) {
+    addAttachmentRow(
+      el, 'Ergo', selectedAtts.ergo ?? 'none',
+      visibleErgos.map(e => ({ id: e.id, text: e.pts > 0 ? `${e.name} [${e.pts}]` : e.name, noEffect: e.noEffect })),
+      value => { selectedAtts.ergo = value; renderSidebar(); redraw(); },
+    );
+  } else {
+    addAttachmentRow(el, 'Ergo', 'none', [{ id: 'none', text: 'None' }], () => {}, true);
+  }
+
+  const hasAssumed = ['muzzle', 'barrel'].some(key => {
+    const data = key === 'muzzle' ? MUZZLES : BARRELS;
+    return data.find(a => a.id === selectedAtts[key])?.assumed;
+  });
+  if (hasAssumed) el.insertAdjacentHTML('beforeend', '<div class="att-note">* Assumed stats until datamined attachment values are available.</div>');
+}
+
+function renderSidebar() {
+  const cf = document.getElementById('classFilter');
+  const wl = document.getElementById('weaponList');
+  cf.innerHTML = '';
+  CLASSES.forEach(cls => {
+    const btn = document.createElement('button');
+    btn.className = `cbtn${cls === selectedClass ? ' on' : ''}`;
+    btn.textContent = classShort(cls);
+    btn.title = cls;
+    btn.onclick = () => { selectedClass = cls; renderSidebar(); };
+    cf.appendChild(btn);
+  });
+
+  wl.innerHTML = '';
+  const weapons = WEAPONS.filter(w => w.cls === selectedClass);
+  if (!weapons.length) wl.innerHTML = '<div class="no-w">No weapons</div>';
+  weapons.forEach(w => {
+    const btn = document.createElement('button');
+    btn.className = `wbtn${w.id === selectedWeaponId ? ' on' : ''}`;
+    btn.textContent = w.name;
+    btn.onclick = () => {
+      selectedWeaponId = w.id;
+      selectedAtts = blankAtts();
+      validateAtts(selectedAtts, w);
+      renderSidebar();
+      redraw();
+    };
+    wl.appendChild(btn);
+  });
+  renderAttachmentSection();
+}
+
+function updateLoadoutStats(w) {
+  const el = document.getElementById('loadoutStats');
+  if (!el || !w) return;
+  const group = recoilGroup(w);
+  const dir = group.dir ?? w.recoilDir ?? 0;
+  const variation = selectedRecoilVariationFor(w);
+  const amount = selectedRecoilAmountFor(w);
+  const spreadInc = selectedSpreadIncFor(w);
+  el.innerHTML = [
+    `<strong>${wLabel(w)}</strong>`,
+    `Recoil/Shot: ${amount.toFixed(2)} deg`,
+    `Dir: ${dir >= 0 ? '+' : ''}${dir.toFixed(1)} deg`,
+    `Var: +/-${variation.toFixed(1)} deg`,
+    `Spread/Shot: ${spreadInc.toFixed(2)} deg`,
+  ].join(' | ');
+}
+
+const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun'];
 
 
 
@@ -541,18 +921,20 @@ function drawBase(canvas, c) {
 
 
 function parseBullets(value) {
+  const shotCount = selectedShotCount();
   const seen = new Set();
   return value
     .split(/[^0-9]+/)
     .map(x => parseInt(x, 10))
-    .filter(n => Number.isFinite(n) && n >= 1 && n <= N && !seen.has(n) && seen.add(n));
+    .filter(n => Number.isFinite(n) && n >= 1 && n <= shotCount && !seen.has(n) && seen.add(n));
 }
 
 function drawPanel(canvas, readout, w, bulletNums) {
+  const shotCount = selectedShotCount();
   const c = makeCoord(canvas);
   const ctx = drawBase(canvas, c);
   const { PL, PT, PW, PH, toX, toY } = c;
-  const blooms = simulateBloom(w, N);
+  const blooms = simulateBloom(w, shotCount);
   const group = recoilGroup(w);
   const decF = group.decFactor ?? RECOIL_DEC[w.id] ?? 72;
   const decExp = group.decExp ?? RECOIL_DEC_EXP[w.id] ?? 1;
@@ -572,7 +954,7 @@ function drawPanel(canvas, readout, w, bulletNums) {
     const rng = mulberry32((whash(w.id) ^ (s * 0x9e3779b9)) >>> 0);
     const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
     let cx = 0, cy = 0;
-    for (let i = 1; i < N; i++) {
+    for (let i = 1; i < shotCount; i++) {
       const dir = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
       const spread = uniformDev(rng, variation) * Math.PI / 180;
       const angle = dir + spread;
@@ -590,7 +972,7 @@ function drawPanel(canvas, readout, w, bulletNums) {
     }
   }
 
-  const pts = genRecoilPts(w, refSeed);
+  const pts = genRecoilPts(w, refSeed, shotCount);
   const bubbleIdxs = bulletNums.map(n => n - 1);
 
   bubbleIdxs.forEach(idx => {
@@ -635,8 +1017,9 @@ function drawPanel(canvas, readout, w, bulletNums) {
 
 function renderBulletTable(w) {
   const tbody = document.getElementById('bulletTable');
-  const pts = genRecoilPts(w, refSeed);
-  const blooms = simulateBloom(w, N);
+  const shotCount = selectedShotCount();
+  const pts = genRecoilPts(w, refSeed, shotCount);
+  const blooms = simulateBloom(w, shotCount);
   const fmtStat = (value, prev) => {
     const delta = prev == null ? null : value - prev;
     const deltaClass = delta == null ? '' : delta > 0.004 ? ' up' : delta < -0.004 ? ' down' : '';
@@ -659,42 +1042,27 @@ function renderBulletTable(w) {
   }).join('');
 }
 
-const wpnSel = document.getElementById('wpnSel');
+function selectedShotCount() {
+  const input = document.getElementById('shotCountInput');
+  if (!input) return DEFAULT_SHOTS;
+  return Math.max(1, Math.min(100, Math.round(+input.value || DEFAULT_SHOTS)));
+}
+
+function syncShotCount() {
+  document.getElementById('shotCountInput').value = selectedShotCount();
+  redraw();
+}
+
 const panelConfig = [
   { canvas: 'cA', input: 'bubbleA', readout: 'readA' },
   { canvas: 'cB', input: 'bubbleB', readout: 'readB' },
   { canvas: 'cC', input: 'bubbleC', readout: 'readC' },
 ];
 
-function extractWeaponsFromHtml(html) {
-  const match = html.match(/const\s+W\s*=\s*\[([\s\S]*?)\n\s*\];/);
-  if (!match) throw new Error('Could not find const W in index.html');
-  return Function(`"use strict"; return [${match[1]}];`)();
-}
-
-async function loadIndexHtml() {
-  if (location.protocol === 'file:') throw new Error('Local file preview uses embedded data.');
-  const res = await fetch('index.html', { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Could not fetch index.html (${res.status})`);
-  return await res.text();
-}
-
-function populateWeapons() {
-  wpnSel.innerHTML = '';
-  WEAPONS_PREVIEW.forEach(w => {
-    const group = recoilGroup(w);
-    const variationForLabel = selectedRecoilVariationFor(w);
-    const opt = document.createElement('option');
-    opt.value = w.id;
-    opt.textContent = `${w.name} (${classShort(w.cls)}) - ${aimState.toUpperCase()} ${stanceState === 'move' ? 'Moving' : 'Standing'} / var +/-${variationForLabel.toFixed(1)} deg`;
-    wpnSel.appendChild(opt);
-  });
-  if (WEAPONS_PREVIEW.some(w => w.id === 'm433')) wpnSel.value = 'm433';
-}
-
 function redraw() {
-  const w = WEAPONS_PREVIEW.find(x => x.id === wpnSel.value) ?? WEAPONS_PREVIEW[0];
+  const w = selectedWeapon();
   if (!w) return;
+  updateLoadoutStats(w);
   document.querySelectorAll('.scale-readout').forEach(el => {
     el.textContent = scaleText();
   });
@@ -708,6 +1076,8 @@ function redraw() {
 document.querySelectorAll('.bubble-input').forEach(input => {
   input.addEventListener('input', redraw);
 });
+document.getElementById('shotCountInput').addEventListener('change', syncShotCount);
+document.getElementById('shotCountInput').addEventListener('input', syncShotCount);
 document.querySelectorAll('[data-target][data-value]').forEach(btn => {
   btn.addEventListener('click', () => {
     document.getElementById(btn.dataset.target).value = btn.dataset.value;
@@ -731,15 +1101,12 @@ document.querySelectorAll('[data-pan]').forEach(btn => {
     redraw();
   });
 });
-wpnSel.addEventListener('change', redraw);
 document.querySelectorAll('[data-aim]').forEach(btn => {
   btn.addEventListener('click', () => {
     aimState = btn.dataset.aim;
     setSimContext({ aimState });
     document.querySelectorAll('[data-aim]').forEach(x => x.classList.toggle('on', x === btn));
-    const prev = wpnSel.value;
-    populateWeapons();
-    if (WEAPONS_PREVIEW.some(w => w.id === prev)) wpnSel.value = prev;
+    renderSidebar();
     redraw();
   });
 });
@@ -748,9 +1115,7 @@ document.querySelectorAll('[data-stance]').forEach(btn => {
     stanceState = btn.dataset.stance;
     setSimContext({ stanceState });
     document.querySelectorAll('[data-stance]').forEach(x => x.classList.toggle('on', x === btn));
-    const prev = wpnSel.value;
-    populateWeapons();
-    if (WEAPONS_PREVIEW.some(w => w.id === prev)) wpnSel.value = prev;
+    renderSidebar();
     redraw();
   });
 });
@@ -764,21 +1129,17 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 });
 
 async function init() {
-  WEAPONS_PREVIEW = EMBEDDED_WEAPONS;
-  populateWeapons();
-  redraw();
+  WEAPONS = EMBEDDED_WEAPONS;
   try {
-    const html = await loadIndexHtml();
-    const freshWeapons = extractWeaponsFromHtml(html);
-    if (freshWeapons.length) {
-      const selected = wpnSel.value;
-      WEAPONS_PREVIEW = freshWeapons;
-      populateWeapons();
-      if (WEAPONS_PREVIEW.some(w => w.id === selected)) wpnSel.value = selected;
-      redraw();
-    }
+    if (!WEAPONS.some(w => w.id === selectedWeaponId)) selectedWeaponId = WEAPONS[0]?.id;
+    selectedClass = rawSelectedWeapon()?.cls ?? selectedClass;
+    validateAtts(selectedAtts, rawSelectedWeapon());
+    renderSidebar();
+    redraw();
   } catch (err) {
-    console.info('Using embedded index.html weapon data for local preview.', err);
+    const el = document.getElementById('loadError');
+    el.style.display = 'block';
+    el.textContent = `Could not render the preview. Details: ${err.message}`;
   }
 }
 
