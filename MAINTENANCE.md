@@ -77,7 +77,7 @@ Edit the relevant weapon object in `data/weapons.json`.
 
 ### New Ammo Type
 
-1. Add entry to `data/ammo.json` → `AMMOS`
+1. Add entry to `data/ammo.json` → `AMMO`
 2. Add it to `data/ammo.json` → `WEAPON_AMMO[weaponId].ammo` for each
    applicable weapon, with its attachment point cost
 

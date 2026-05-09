@@ -598,11 +598,11 @@ const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
 const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
         WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
-const { AMMOS, WEAPON_AMMO } = _ammo;
+const { AMMO, WEAPON_AMMO } = _ammo;
 const { RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP } = _recoilDecay;
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
-  AMMOS,
+  AMMO,
   RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
   BASE_HS_MULT, HP_HS_HIGH,
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
@@ -1174,7 +1174,7 @@ function renderAttachmentSection() {
   });
 
   const wAmmo = weapon ? (WEAPON_AMMO[weapon.id] ?? null) : null;
-  const ammoList = wAmmo ? AMMOS.filter(a => a.id in wAmmo.ammo) : [];
+  const ammoList = wAmmo ? AMMO.filter(a => a.id in wAmmo.ammo) : [];
   if (ammoList.length > 1) {
     addAttachmentRow(
       el, 'Ammo', selectedAtts.ammo ?? wAmmo.def,

@@ -1,6 +1,6 @@
 # BF6 Weapon Analyzer Code Documentation
 
-This document describes the current structure and behavior of the BF6 Weapon Analyzer project. The primary app is `index.html`; `preview_bloom.html` is a local experiment page used to test recoil/bloom chart ideas before moving them into the main app.
+This document describes the current structure and behavior of the BF6 Weapon Analyzer project. The primary app is `index.html`; `preview_bloom.html` and `preview_distance.html` are local experiment pages used to test recoil/bloom chart ideas before moving them into the main app.
 
 ## High-Level Overview
 
@@ -8,9 +8,10 @@ The site is a self-contained HTML application:
 
 - `index.html` contains the markup, styles, weapon data, attachment data, calculations, rendering, and app initialization.
 - `preview_bloom.html` is a standalone recoil/bloom preview tool that mirrors the main weapon data and chart calculations for faster visual experiments.
+- `preview_distance.html` projects the same recoil/bloom model onto flat wall distances in meters and is used for distance-scale validation before main app changes.
 - Chart rendering for damage, BTK, and TTK uses Chart.js from `https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js`.
 - Recoil and bloom rendering uses custom canvas drawing.
-- No build step, package manager, module system, or local server is required for normal use, though `preview_bloom.html` can fetch `index.html` when opened from a local server.
+- No build step, package manager, module system, or local server is required for normal use, though the preview helpers can fetch `index.html` only when opened from a local server.
 - The app is driven by global state variables and direct DOM rendering.
 
 At runtime, the user selects one primary weapon and optionally a comparison weapon. The app derives modified weapon stats from selected attachments, then renders:
@@ -62,6 +63,22 @@ Line numbers will drift as the file changes, so use them as orientation rather t
 - Lines 762-884: controls, data loading from `index.html`, and initialization.
 
 The preview attempts to fetch `index.html` and parse `const W = [...]` so it can stay current with main app data. If that fetch fails, it falls back to embedded copied data.
+
+### `preview_distance.html`
+
+`preview_distance.html` is organized around the same idea as `preview_bloom.html`, but its output is in meters on a flat wall instead of chart degrees.
+
+It includes:
+
+- A local copy/fetch path for weapon and attachment data from `index.html`.
+- Sidebar weapon and attachment selection.
+- ADS/Hipfire, Standing/Moving, shot count, and recoil-control controls.
+- Four wall-distance panels: 5 m, 10 m, 20 m, and custom distance.
+- Per-panel zoom/pan state.
+- Spray pattern, recoil path, and bloom bubble/outline renderers.
+- Human target outline and hit-count logic.
+
+The page is intentionally a review helper. Changes should be moved into `index.html` only after the behavior has been reviewed.
 
 ## HTML Layout
 
@@ -145,6 +162,128 @@ The weapon objects preserve raw-ish formula inputs so ADS and hipfire can be cal
 
 The main app still keeps legacy display fields such as `recoilV`, `recoilVar`, and `recoilIncAds` because many overview and comparison panels use those values directly.
 
+## Recoil/Bloom Model, Sources, And Derived Assumptions
+
+The recoil/bloom model is a visualization model, not a full game-engine recreation. It combines source-backed weapon values, attachment-adjusted stat transforms, and screenshot-derived visual calibration so users can compare loadouts consistently.
+
+### Source Provenance
+
+Primary source inputs and references:
+
+- [Sym.gg](https://sym.gg): baseline weapon data and field naming conventions. The footer currently cites Sym.gg v1.2.2.0 dated 17 MAR 2026.
+- [Dr. Smiley Henry](https://www.youtube.com/@Dr.SmileyHenry): bloom/spread decay model reference used for the recoil/bloom panel notes.
+- [TheXclusiveAce](https://www.youtube.com/@TheXclusiveAce): in-game spray-pattern reference source cited in the footer and used for visual sanity checks.
+- [SORROW](https://www.youtube.com/@SORROW_Main): weapon data reference cited in the footer.
+
+### Source-Backed Versus Screenshot-Derived
+
+Source-backed or directly data-backed items:
+
+- Base weapon stats such as damage breakpoints, RPM, magazine size, reload timings, bullet velocity, ADS time, recoil/shot, recoil direction, recoil variation, spread minimums/maximums, and spread increase/decrease inputs.
+- Attachment availability, attachment point costs, and modeled stat deltas where fields are known.
+- ADS versus hipfire and standing versus moving spread families, where the raw fields preserve that scope.
+
+Screenshot-derived or visually calibrated items:
+
+- The qualitative shape and scale of the displayed spray clouds compared with in-game spray-pattern screenshots.
+- The choice to show faded scatter runs behind a solid reference run to communicate natural shot-to-shot variance.
+- The main bloom bubble schedule defaults, especially `1, 2, 3, 5, 8, 13, 20`, which are chosen for readability rather than because those shot numbers are special engine events.
+- The connected bloom cone/envelope rendering. It is a display abstraction built from the modeled per-shot spread circles so users can see the range of possible bloom across the burst.
+- The `preview_distance.html` wall projection layout, human target overlay, hit counting, dot scaling, and panel distances. These are review aids for interpreting angular recoil/spread at flat-wall distances.
+
+### Recoil Path Model
+
+`genRecoilPts()` creates a deterministic recoil path for the selected weapon, aim state, stance, attachment loadout, and shot count.
+
+For each shot:
+
+1. Select ADS or hipfire recoil inputs.
+2. Select standing or moving spread inputs.
+3. Compute the expected recoil magnitude and recoil direction after attachments.
+4. Add per-shot recoil direction variation around the displayed recoil direction.
+5. Add the resulting horizontal and vertical recoil offset to the current aim point.
+6. Apply inter-shot recoil decrease/decay before the next shot.
+
+Recoil direction is treated as an angle from vertical in the app's chart coordinate system. Positive and negative directions are preserved in the stat bars, and direction bars are centered on zero so positive values extend right and negative values extend left.
+
+The decay implementation is still a parameterized approximation:
+
+```js
+Decrease = (abs(recoil) ** decExp + 0.06) * decFactor * dt * time ** timeExp
+```
+
+A sym.gg developer comment on the Reddit says current recoil decrease is constant and tries to return the gun to the original point of aim. Our current code agrees directionally because decay pulls back toward zero, but the exact parameterized decay curve should be treated as a model assumption until validated against current game data.
+
+### Recoil Control Model
+
+Recoil control is an optional visualization layer that estimates a player pulling the mouse in the opposite direction of expected recoil.
+
+When `Recoil Control` is off:
+
+- Compensation level is displayed as zero.
+- Compensation controls are greyed out and non-interactive.
+- The recoil path uses only the modeled recoil, variation, decay, and spread/bloom.
+
+When `Recoil Control` is on:
+
+- The selected compensation percentage, defaulting to 85%, subtracts the expected recoil vector from every shot.
+- Compensation can exceed perfect expected compensation up to 125% to show over-pull cases.
+- Recoil variation remains active, so the compensated path still has randomness around the expected vector.
+- Spread/bloom remains fully active. Recoil control does not reduce bloom.
+
+The stat panel reports both recoil/shot compensation and recoil direction compensation. Direction compensation is signed as the opposite control direction: for example, a `+22 deg` recoil direction corresponds to a `-158 deg` compensation direction.
+
+### Bloom And Spread Model
+
+The app models spread/bloom as a per-shot cone around the current recoil point.
+
+`simulateBloom()`:
+
+- Starts from the selected spread minimum for ADS/hipfire and standing/moving state.
+- Adds the selected spread increase per shot.
+- Applies decay/recovery between shots using the weapon's spread dynamics.
+- Clamps the result to the effective max spread for the selected state.
+
+Shot landing inside the bloom cone uses uniform-over-radius sampling:
+
+```js
+radius = spreadRadius * rng()
+angle = 2 * Math.PI * rng()
+```
+
+This intentionally differs from uniform-over-area sampling, which would use `sqrt(rng())`. A sym.gg developer comment on Reddit says the franchise has used uniform distribution over radius, which means shots are visually center-weighted by area: about half of the shots land inside the central half-radius circle, which is only 25% of the full area. This is why spread feels more center-biased than a mathematically uniform disk.
+
+### Rendering Layers
+
+The main recoil panel uses independent overlay toggles:
+
+- `Scatter`: faded simulated spray runs showing natural variance.
+- `Spray Pattern`: the solid reference shot dots.
+- `Recoil Path`: a line-only recoil reference path, drawn with reduced opacity and no bullet dots.
+- `Bloom: Bubbles`: individual per-shot spread circles for selected rounds.
+- `Bloom: Cone`: one connected bloom envelope across the burst.
+
+Rendering order from bottom to top is:
+
+1. Scatter dots.
+2. Bloom bubbles/cone.
+3. Recoil path.
+4. Spray dots.
+
+The bloom cone is not a convex hull of all circles. It connects the modeled per-shot circles with interpolated circles and traces the exposed outer envelope, which better matches the desired "hug the bubbles" shape from review screenshots.
+
+### Distance Projection Model
+
+`preview_distance.html` projects the same angular recoil and bloom output onto a flat wall:
+
+```js
+metersOnWall = Math.tan(angleInRadians) * distanceMeters
+```
+
+It keeps the recoil/spread model unchanged and changes only the display units. The page uses four panels: 5 m, 10 m, 20 m, and one custom distance panel. The human target outline is scaled in wall meters, the origin is centered on the chest, and hit counts are computed against that target outline.
+
+Distance preview output is useful for understanding practical engagement ranges, but it should not be confused with projectile simulation. It does not model bullet travel time, drag, target motion, sight height, zeroing, or surface geometry.
+
 ### Attachment Catalogs
 
 The global attachment catalogs define possible options and their effects:
@@ -176,7 +315,7 @@ The global attachment catalogs define possible options and their effects:
   - `movingAdsSpreadTierMod`: moving ADS accuracy shift.
   - `pts`: point cost.
   - `noEffect`: tracked but unmodeled or visual-only.
-- `AMMOS`
+- `AMMO`
   - `hsMult`: headshot multiplier override, special `hp` behavior, or `null` for weapon default.
   - `adsRecoilTierMod`: ADS recoil tier modifier.
   - `adsMoveSpeedTierShift`: ADS move speed tier shift.
@@ -482,10 +621,13 @@ Each chip has a native `title` tooltip explaining what the delta means. No custo
 
 Recoil rendering is custom canvas drawing rather than Chart.js.
 
-The panel has two main modes:
+The panel has independent overlay toggles rather than one mutually exclusive view:
 
-- `Spray Pattern`: draws simulated spray runs with recoil and bloom scatter.
-- `Recoil Path`: draws a recoil-only reference path. When `+Bloom` is enabled, spread bubbles are drawn on bullets 1, 2, 3, 5, 8, 13, and 20.
+- `Scatter`: faded simulated spray runs.
+- `Spray Pattern`: solid reference shot dots.
+- `Recoil Path`: line-only recoil path, with no bullet dots.
+- `Bloom: Cone`: connected bloom envelope across all modeled shots.
+- `Bloom: Bubbles`: individual bloom/spread circles on selected rounds.
 
 The panel also has state toggles:
 
@@ -494,12 +636,17 @@ The panel also has state toggles:
 
 Defaults are ADS and Standing.
 
+The panel includes a freeform shot count input. The default is 20 shots, and the renderer clamps the selected shot count to the supported range before drawing. The same shot count drives scatter, spray pattern, recoil path, bloom bubbles, bloom cone, title text, and chart notes.
+
+The panel also includes `Recoil Control` controls. When enabled, the selected compensation level subtracts the expected recoil vector from each shot while leaving recoil variation and spread/bloom active.
+
 `genRecoilPts()`:
 
 - Generates a deterministic recoil path from weapon ID and seed.
 - Uses selected ADS or hipfire recoil formula inputs.
 - Adds vertical and horizontal recoil based on selected recoil amount, direction, and uniform variation.
 - Applies inter-shot recoil decay between shots.
+- Applies expected recoil compensation when recoil control is enabled.
 
 `drawRecoilFixed()`:
 
@@ -509,10 +656,18 @@ Defaults are ADS and Standing.
 - Keeps the X axis centered around the current pan value.
 - Draws grid lines, 0-degree axes, origin crosshair, and both X/Y labels including `0`.
 - Simulates bloom internally with `simulateBloom()`.
-- Draws 12 faded spray-cloud runs.
-- Draws one solid reference run.
-- In `path` mode, draws a recoil-only line connecting reference points.
-- Optionally draws bloom bubbles for the selected milestone bullets.
+- Draws 10 faded scatter runs when `Scatter` is enabled.
+- Draws one solid reference run when `Spray Pattern` is enabled.
+- Draws a recoil-only line when `Recoil Path` is enabled.
+- Draws bloom bubbles for parsed selected rounds when `Bloom: Bubbles` is enabled.
+- Draws the connected bloom envelope when `Bloom: Cone` is enabled.
+
+Bloom round selection:
+
+- The default list is `1, 2, 3, 5, 8, 13, 20`.
+- The parser supports comma/space-separated round numbers.
+- It also supports shortcuts such as `all`, ranges like `1-5`, and intervals like `every 2` or `every 3`.
+- The control is greyed out unless bloom bubbles are selected.
 
 Pan and zoom helpers:
 
@@ -526,11 +681,11 @@ Pan and zoom helpers:
 
 - Applies attachments for selected weapons.
 - Renders attachment effect chips.
-- Updates recoil mode, aim, stance, and `+Bloom` button state.
+- Updates overlay, bloom mode, aim, stance, shot count, and recoil-control state.
 - Calls `drawRecoilFixed()`.
 - Updates legend, chart note, and recoil stat bars.
 
-## Preview Bloom Tool
+## Preview Tools
 
 `preview_bloom.html` exists to test recoil/bloom visualization changes before implementing them in `index.html`.
 
@@ -550,7 +705,24 @@ Default bubble schedules:
 - Approach B: `1, 2, 3, 5, 8, 13, 20`.
 - Approach C: `2, 4, 6, 8, 10, 12, 14, 16, 18, 20`.
 
-The main app currently uses the Approach B schedule for `+Bloom` bubbles.
+The main app's default bubble schedule matches the older Approach B schedule, now labeled as bloom bubbles rather than `+Bloom`.
+
+`preview_distance.html` exists to review how the same angular recoil/spread model appears on flat walls at practical distances.
+
+It provides:
+
+- Fixed 5 m, 10 m, and 20 m panels plus a custom-distance panel.
+- ADS/Hipfire and Standing/Moving toggles.
+- Shot count control.
+- Recoil control with 0% to 125% compensation.
+- Independent layer toggles for spray pattern, recoil path, and bloom bubbles.
+- Individual bubble and outline/cone views.
+- Per-panel zoom and pan controls.
+- A 180 cm human target outline centered at chest level.
+- Hit counts showing how many shots intersect the target outline.
+- One-meter gridlines and meter-based axis labels.
+
+The distance page is a preview/review tool. It intentionally reuses the same recoil and spread assumptions as the main app, then changes the display projection from degrees to meters on the wall.
 
 ## How To Add Or Update Data
 
@@ -599,9 +771,79 @@ Then ensure `def` points to a valid magazine ID.
 
 ## Review Notes: Incorrect, Incomplete, Or Inconsistent Items
 
-These are observations from code reading only.
+These are observations from code reading and from the current model assumptions.
 
-### 1. Chart tooltip callbacks can break if only comparison weapon is selected
+### 1. Recoil decrease model needs validation against current behavior
+
+The sym.gg developer comment on Reddit says recoil decrease is constant now and always tries to return the weapon toward the original point of aim. The current app does return recoil toward zero, but it uses a parameterized decay curve with exponent, time exponent, offset, and factor inputs.
+
+This is directionally plausible, but it is not yet proven to match the current game. Any conclusions that depend on exact post-shot recovery should be treated as model estimates until tested against current in-game footage or source data.
+
+Suggested fix: add a documented validation pass for recoil decrease, including the source used, the tested weapon, fire rate, frame rate, and measured return curve.
+
+### 2. Screenshot-derived assumptions are not yet encoded as explicit provenance
+
+The documentation now separates source-backed fields from screenshot-derived visual calibration, but the data objects themselves do not carry provenance tags for every value.
+
+Risk areas:
+
+- Values copied from source data.
+- Values estimated from in-game screenshots.
+- Values selected for readability, such as default bloom bubble rounds.
+- Assumed attachment stats awaiting datamined confirmation.
+
+Suggested fix: add lightweight provenance metadata where practical, such as `source`, `sourceDate`, `assumed`, `derivedFromScreenshot`, or comments next to calibrated values.
+
+### 3. Recoil/bloom logic is duplicated across preview and main pages
+
+`index.html`, `preview_bloom.html`, and `preview_distance.html` each contain overlapping recoil/spread simulation and drawing logic. This made sense while experimenting, but it increases drift risk now that the model has become more specific.
+
+Known drift risks:
+
+- Uniform-over-radius spread sampling must stay consistent across pages.
+- Recoil control math must stay consistent across pages.
+- Bloom cone/envelope generation must stay consistent across pages.
+- Bubble round parsing and defaults must stay consistent across pages.
+
+Suggested fix: extract shared recoil, spread, bloom, and parsing helpers into a common script used by both the main app and preview pages.
+
+### 4. Bloom cone is a visualization envelope, not a direct game primitive
+
+The cone/outline view is useful because it hugs the modeled bloom bubbles and shows the potential range across the burst. It is not a separate game mechanic, a convex hull, or a guarantee that every point inside the shape is equally likely.
+
+Suggested fix: keep chart notes clear that cone means "bloom envelope across modeled shots" and bubbles mean "per-shot potential spread circles."
+
+### 5. Some attachments are intentionally costed but not modeled
+
+Several options use `noEffect:true`. They appear in the UI and add point cost, but do not change stats. This is useful for availability tracking, but users may assume all point-cost attachments affect displayed stats.
+
+Examples:
+
+- Compact Handstop.
+- Long-Range ammo.
+- Frangible ammo.
+- Several lasers/lights.
+- Mag Flare.
+- Match Trigger.
+- ADS Bolt.
+
+Suggested follow-up: grey styling is the current signal. Add a tooltip or legend later if users continue to miss that these options are present but not modeled.
+
+### 6. Assumed attachment stats should be revisited when datamined data is available
+
+Some attachment values are deliberately marked as assumed:
+
+- Linear Compensator.
+- Compensated Brake.
+- Flash Compensator.
+- Long Suppressor.
+- Lightened Suppressor.
+- Heavy Barrel.
+- Heavy Extended Barrel.
+
+Suggested follow-up: verify these against datamined attachment stats when available and update both the data and this documentation.
+
+### 7. Chart tooltip callbacks can break if only comparison weapon is selected
 
 Locations:
 
@@ -618,7 +860,7 @@ If comparison mode is enabled, a user can select weapon 2 without selecting weap
 
 Suggested fix: store the weapon object on each dataset, or derive from `datasets[i.datasetIndex]` metadata rather than assuming dataset index 0 is weapon 1 and index 1 is weapon 2.
 
-### 2. Damage chart threshold generation can throw if no weapon reaches chart rendering
+### 8. Damage chart threshold generation can throw if no weapon reaches chart rendering
 
 Location:
 
@@ -628,47 +870,7 @@ The damage chart code uses `const w = w1 || w2` and immediately calls `getBTK(w,
 
 Suggested fix: guard with `if (!w1 && !w2) return;` at the top of `renderChart()`.
 
-### 3. Some attachments are intentionally costed but not modeled
-
-Several options use `noEffect:true`. They appear in the UI and add point cost, but do not change stats. This is useful for availability tracking, but users may assume all point-cost attachments affect displayed stats.
-
-Examples:
-
-- Compact Handstop.
-- Long-Range ammo.
-- Frangible ammo.
-- Several lasers/lights.
-- Mag Flare.
-- Match Trigger.
-- ADS Bolt.
-
-Suggested follow-up: the grey styling is currently the main signal. Add a tooltip or legend later if this is still unclear.
-
-### 4. Ergonomics TODOs confirm incomplete modeling
-
-The code explicitly lists unknown effects:
-
-- Mag Flare.
-- Match Trigger.
-- ADS Bolt.
-
-These should stay documented as incomplete until reliable data is available.
-
-### 5. Assumed attachment stats should be revisited when datamined data is available
-
-Some attachment values are deliberately marked as assumed:
-
-- Linear Compensator.
-- Compensated Brake.
-- Flash Compensator.
-- Long Suppressor.
-- Lightened Suppressor.
-- Heavy Barrel.
-- Heavy Extended Barrel.
-
-Suggested follow-up: verify these against datamined attachment stats when available and update both the data and this documentation.
-
-### 6. Chart.js is loaded from CDN, so the app needs network access on first load
+### 9. Chart.js is loaded from CDN, so the app needs network access on first load
 
 Location:
 
@@ -678,13 +880,13 @@ The app depends on Chart.js from jsDelivr. If used offline or blocked by network
 
 Suggested fix: vendor Chart.js locally or add a guard/fallback message.
 
-### 7. Character encoding may be fragile in some tooling
+### 10. Character encoding may be fragile in some tooling
 
-The file contains non-ASCII symbols such as degree signs, multiplication signs, en dashes, and bullets. In the browser this is protected by `<meta charset="UTF-8">`, but some PowerShell output in this environment displays mojibake for these characters.
+The file contains non-ASCII symbols such as degree signs, multiplication signs, en dashes, arrows, and bullets. In the browser this is protected by `<meta charset="UTF-8">`, but some PowerShell output in this environment displays mojibake for these characters.
 
 Suggested follow-up: preserve UTF-8 when editing. Avoid tools that rewrite the file with a legacy Windows code page.
 
-### 8. No automated tests or data validation exist
+### 11. No automated tests, data validation, or visual regression checks exist
 
 There is no test suite or schema validation for:
 
@@ -696,22 +898,31 @@ There is no test suite or schema validation for:
 - Chart render behavior for unusual state combinations.
 - ADS vs hipfire attachment scoping.
 - Standing vs moving spread bounds.
+- Uniform-over-radius spread sampling.
+- Recoil control compensation math.
+- Bloom cone/envelope behavior.
+- Preview page drift from the main app.
 
-Suggested follow-up: add a small validation script that loads/extracts the JS data and checks ID integrity.
+Suggested follow-up: add validation and small statistical checks before making more recoil/bloom model changes.
 
 ## Maintenance Recommendations
 
 Near-term, high-value cleanups:
 
-1. Fix compare-only tooltip handling in `renderChart()`.
-2. Add a lightweight data validation script for IDs and defaults.
-3. Add explicit tests or assertions for ADS-only vs hipfire-only attachment effects.
-4. Add a guard/fallback if Chart.js fails to load.
+1. Add a recoil/bloom validation script that checks uniform-over-radius sampling, bloom clamping, recoil control vector subtraction, and bubble round parsing.
+2. Add provenance comments or metadata for source-backed, assumed, and screenshot-derived recoil/spread values.
+3. Verify the recoil decrease model against current game data or updated sym.gg formulas.
+4. Fix compare-only tooltip handling in `renderChart()`.
+5. Add a lightweight data validation script for IDs, defaults, and attachment availability.
+6. Add a guard/fallback if Chart.js fails to load.
 
 Longer-term structural improvements:
 
-1. Split `index.html` into `data.js`, `calculations.js`, `render.js`, and `styles.css`.
-2. Add a data schema for weapons and attachment catalogs.
-3. Store dataset metadata directly on Chart.js datasets to simplify tooltip callbacks.
-4. Add a small UI note or tooltip for unmodeled `noEffect` attachments if grey styling is insufficient.
-5. Add responsive layout rules for smaller screens.
+1. Extract shared recoil, spread, bloom, recoil-control, and bubble parsing helpers into a common script used by `index.html`, `preview_bloom.html`, and `preview_distance.html`.
+2. Split `index.html` into `data.js`, `calculations.js`, `render.js`, and `styles.css`.
+3. Add a data schema for weapons, attachment catalogs, and source provenance.
+4. Add visual regression screenshots for the main recoil overlays and the distance preview panels.
+5. Store dataset metadata directly on Chart.js datasets to simplify tooltip callbacks.
+6. Add a small UI note or tooltip for unmodeled `noEffect` attachments if grey styling is insufficient.
+7. Add responsive layout rules for smaller screens.
+8. Revisit this documentation whenever a recoil/bloom assumption changes, especially sampling distribution, recoil decrease, recoil control, and cone rendering.

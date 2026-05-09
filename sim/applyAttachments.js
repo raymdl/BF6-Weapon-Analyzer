@@ -12,7 +12,7 @@
  *   // After fetching data/attachments.json, data/ammo.json, data/balance_tables.json:
  *   setAttachmentContext({
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
- *     AMMOS,
+ *     AMMO,
  *     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
  *     BASE_HS_MULT, HP_HS_HIGH,
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
@@ -27,7 +27,7 @@
 
 let _ctx = {
   MUZZLES: [], BARRELS: [], GRIPS: [], LASERS: [],
-  AMMOS: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {},
+  AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {},
   RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
   BASE_HS_MULT: {}, HP_HS_HIGH: new Set(),
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
@@ -50,7 +50,7 @@ export function applyAttachments(w, atts) {
   if (!w || !atts) return w;
 
   const {
-    MUZZLES, BARRELS, GRIPS, LASERS, AMMOS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
+    MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
     BASE_HS_MULT, HP_HS_HIGH,
     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
@@ -61,7 +61,7 @@ export function applyAttachments(w, atts) {
   const bar = BARRELS.find(a => a.id === atts.barrel) ?? BARRELS[0];
   const grp = GRIPS.find(a => a.id === atts.grip)    ?? GRIPS[0];
   const las = LASERS.find(a => a.id === atts.laser)  ?? LASERS[0];
-  const ammoType = AMMOS.find(a => a.id === (atts.ammo ?? 'standard')) ?? AMMOS[0];
+  const ammoType = AMMO.find(a => a.id === (atts.ammo ?? 'standard')) ?? AMMO[0];
 
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
   // Tier formula: effectiveRecoilV = recoilV × ADSRecoilAmountMultiplier ^ (sum of tier mods)
