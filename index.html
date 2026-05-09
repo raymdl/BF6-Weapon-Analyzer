@@ -1426,7 +1426,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
   drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
     const weaponRefSeed=refSeed>>>0;
-    const pts=genRecoilPts(w,N,weaponRefSeed);
+    const pts=genRecoilPts(w,weaponRefSeed,N);
     const sprayPts=(() => {
       const blooms=simulateBloom(w,N);
       const rngRef=mulberry32((whash(w.id)^weaponRefSeed^0xdeadbeef)>>>0);
