@@ -727,26 +727,31 @@ function buildAttachmentSection(containerId, atts, weapon) {
     };
     row.appendChild(span); row.appendChild(sel); el.appendChild(row);
   });
-  // Ammo slot (per-weapon costs from WEAPON_AMMO)
-  const wAmmo=weapon ? WEAPON_AMMO[weapon.id] : null;
-  const ammoList=wAmmo ? AMMOS.filter(a=>a.id in wAmmo.ammo) : [];
-  if(ammoList.length>1){
+  // Ammo slot: always shown; disabled when no weapon or only one ammo type available.
+  {
+    const wAmmo=weapon ? WEAPON_AMMO[weapon.id] : null;
+    const ammoList=wAmmo ? AMMOS.filter(a=>a.id in wAmmo.ammo) : [];
     const ammoRow=document.createElement('div'); ammoRow.className='att-row';
     const ammoSpan=document.createElement('span'); ammoSpan.className='att-lbl'; ammoSpan.textContent='Ammo';
     const ammoSel=document.createElement('select'); ammoSel.className='att-sel';
-    ammoList.forEach(a=>{
-      const opt=document.createElement('option'); opt.value=a.id;
-      const pts=wAmmo?.ammo?.[a.id]??0;
-      opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
-      if(a.noEffect) opt.style.color='#666';
-      if((atts.ammo??(wAmmo?.def??'standard'))===a.id) opt.selected=true;
-      ammoSel.appendChild(opt);
-    });
-    ammoSel.onchange=()=>{
-      atts.ammo=ammoSel.value;
-      updateAttTotal(containerId,atts,weapon);
-      renderStats();
-    };
+    if(ammoList.length>1){
+      ammoList.forEach(a=>{
+        const opt=document.createElement('option'); opt.value=a.id;
+        const pts=wAmmo?.ammo?.[a.id]??0;
+        opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
+        if(a.noEffect) opt.style.color='#666';
+        if((atts.ammo??(wAmmo?.def??'standard'))===a.id) opt.selected=true;
+        ammoSel.appendChild(opt);
+      });
+      ammoSel.onchange=()=>{
+        atts.ammo=ammoSel.value;
+        updateAttTotal(containerId,atts,weapon);
+        renderStats();
+      };
+    } else {
+      const opt=document.createElement('option'); opt.value='standard'; opt.textContent='Standard';
+      ammoSel.appendChild(opt); ammoSel.disabled=true;
+    }
     ammoRow.appendChild(ammoSpan); ammoRow.appendChild(ammoSel); el.appendChild(ammoRow);
   }
   // Magazine slot: empty compare slots show a disabled None control.

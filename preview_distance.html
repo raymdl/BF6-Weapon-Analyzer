@@ -702,12 +702,6 @@ const RECOIL_MULT = {
   m87a1:0.94,  m1014:0.94,   ks18k:0.94,   db12:0.94,
 };
 
-// ── ADS RECOIL DECAY TABLES — loaded from data/recoil_decay.json ─────────────
-// retain = exp(−RECOIL_DEC[id] × decOffset × interShotTime^RECOIL_DEC_TEXP[id]) ^ RECOIL_DEC_EXP[id]
-// (top-level await — requires <script type="module"> and serving over http://, not file://)
-const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } =
-  await fetch('./data/recoil_decay.json').then(r => r.json());
-
 // ── HIP SPREAD TIER TABLES ────────────────────────────────────────────────────
 // Min spread (°) for tiers 1–6 by hipfire class (weapon-specific, not weapon class).
 // All hipfire classes map: hipStand→T4, hipMove→T5 (same stance offsets throughout).
