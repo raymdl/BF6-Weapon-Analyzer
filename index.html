@@ -520,6 +520,14 @@ const HIP_CLS = {
 // hipSpreadTierMod = hipfire min-spread tier shift based on HIPStandBaseMin/HIPStandMoveMin tables.
 // worldSpot/minimapSpot = distance where firing exposes the player; 0 = hidden
 // sway: +1=increased weapon sway, -1=decreased weapon sway
+const SIGHTS=[
+  {id:'iron',     name:'Iron Sights',     sway:-1, pts:5 },
+  {id:'std_optic',name:'Standard Optic',  noEffect:true, pts:10},
+  {id:'var_low',  name:'Variable Low',    noEffect:true, pts:20},
+  {id:'var_high', name:'Variable High',   noEffect:true, pts:25},
+  {id:'thermal',  name:'Thermal',         noEffect:true, pts:25},
+  {id:'therm_hyb',name:'Thermal Hybrid',  noEffect:true, pts:35},
+];
 const MUZZLES=[
   {id:'none',        name:'None',                 adsRecoilTierMod:0,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   worldSpot:54, minimapSpot:150, pts:0 },
   {id:'sp_brake',    name:'Single-Port Brake',    adsRecoilTierMod:1,  adsRecoilVariationMult:1,    adsSpreadDecayBoost:0,   sway:1, worldSpot:54, minimapSpot:150, pts:5 },
@@ -1317,7 +1325,7 @@ const DEFAULT_COMPENSATION = 85;
 let recoilCompensationLevel = DEFAULT_COMPENSATION;
 let recoilScaleH = 5;
 let recoilPanX = 0, recoilPanY = 0;
-const blankAtts = () => ({muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
+const blankAtts = () => ({sight:'iron',muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
 let att1 = blankAtts(), att2 = blankAtts();
 
 const CLASSES = ['Assault Rifle','Carbine','SMG','LMG','DMR','Sniper Rifle','Shotgun'];
@@ -1370,6 +1378,7 @@ function renderSidebar() {
 
 function validateAtts(atts, weapon) {
   // Full reset on weapon switch, then apply per-weapon defaults
+  atts.sight  = 'iron';
   atts.muzzle = 'none';
   atts.grip   = 'none';
   atts.laser  = 'none';
@@ -1389,7 +1398,8 @@ function computeAttPts(atts, weapon) {
   const wm=WEAPON_MAG[wid]??null;
   const magPts=wm?.mags?.[atts.mag??wm?.def]?.pts??0;
   const ergoPts=ERGOS.find(e=>e.id===(atts.ergo??'none'))?.pts??0;
-  return getAttPts(MUZZLES.find(a=>a.id===atts.muzzle),wid)
+  return getAttPts(SIGHTS.find(a=>a.id===(atts.sight??'iron')),wid)
+        +getAttPts(MUZZLES.find(a=>a.id===atts.muzzle),wid)
         +getAttPts(BARRELS.find(a=>a.id===atts.barrel),wid)
         +getAttPts(GRIPS.find(a=>a.id===atts.grip),wid)
         +getAttPts(LASERS.find(a=>a.id===atts.laser),wid)
@@ -1426,7 +1436,8 @@ function buildAttachmentSection(containerId, atts, weapon) {
   if (!el) return;
   el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
-  [{key:'muzzle',lbl:'Muzzle',data:MUZZLES},
+  [{key:'sight', lbl:'Sight', data:SIGHTS},
+   {key:'muzzle',lbl:'Muzzle',data:MUZZLES},
    {key:'barrel',lbl:'Barrel',data:BARRELS},
    {key:'grip',  lbl:'Grip',  data:GRIPS},
    {key:'laser', lbl:'Laser', data:LASERS}].forEach(({key,lbl,data})=>{
@@ -1843,10 +1854,10 @@ function renderAttachmentStats(loadouts) {
         const tip=escAttr(m.tooltip??m.lbl);
         chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${m.lbl}</div><div class="att-chip-val" style="color:${color}">${signed(delta,m.unit,m.dec)}</div></div>`);
       });
-      const swayDelta=(cur._weaponSway??0)-(base._weaponSway??0);
-      if(swayDelta!==0) {
-        const decreased=swayDelta<0;
-        const tip=escAttr('Weapon sway from selected attachments. Increased is worse; decreased is better.');
+      const swayVal=cur._weaponSway??0;
+      if(swayVal!==0) {
+        const decreased=swayVal<0;
+        const tip=escAttr('Weapon sway from selected attachments. Decreased is better; increased is worse.');
         chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Weapon Sway</div><div class="att-chip-val" style="color:${decreased?'var(--green)':'var(--red)'}">${decreased?'Decreased':'Increased'}</div></div>`);
       }
     if(!chips.length) return;
