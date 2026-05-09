@@ -5746,5 +5746,726 @@
         "d": 2.5
       }
     ]
+  },
+  {
+    "id": "p18",
+    "name": "P18",
+    "cls": "Sidearm",
+    "cal": "9×19mm",
+    "rpm": 400,
+    "mag": 18,
+    "tacRld": 1.934,
+    "emptyRld": 2.117,
+    "deployT": 0.267,
+    "bulletVel": 350,
+    "recoilV": 1.2,
+    "recoilDir": -5,
+    "recoilVar": 15.0,
+    "recoilIncAds": 0.0,
+    "spreadMax": 6,
+    "adsTime": 175,
+    "fireMode": "semi",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 9.765,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.67
+      },
+      "hip": {
+        "inc": 0.299,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.19125,
+        "firingExp": 2.5,
+        "firingOffset": 1.24125,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -5,
+        "amount": 1.2,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 15.0,
+        "dirVarMult": 0.920121,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 13.7,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -5,
+        "amount": 1.2,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 15.0,
+        "dirVarMult": 0.920121,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 13.7,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.352,
+        6
+      ],
+      "hipMove": [
+        1.69,
+        6
+      ]
+    }
+  },
+  {
+    "id": "es57",
+    "name": "ES 5.7",
+    "cls": "Sidearm",
+    "cal": "5.7×28mm",
+    "rpm": 450,
+    "mag": 21,
+    "tacRld": 2.017,
+    "emptyRld": 2.2,
+    "deployT": 0.233,
+    "bulletVel": 650,
+    "recoilV": 1.0,
+    "recoilDir": 5,
+    "recoilVar": 15.0,
+    "recoilIncAds": 0.0,
+    "spreadMax": 6,
+    "adsTime": 175,
+    "fireMode": "semi",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 13.02,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.67
+      },
+      "hip": {
+        "inc": 0.299,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.255,
+        "firingExp": 2.5,
+        "firingOffset": 1.655,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": 5,
+        "amount": 1.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 15.0,
+        "dirVarMult": 0.920121,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.398,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 12,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": 5,
+        "amount": 1.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 15.0,
+        "dirVarMult": 0.920121,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.398,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 12,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.352,
+        6
+      ],
+      "hipMove": [
+        1.69,
+        6
+      ]
+    }
+  },
+  {
+    "id": "m45a1",
+    "name": "M45A1",
+    "cls": "Sidearm",
+    "cal": ".45 ACP",
+    "rpm": 327,
+    "mag": 8,
+    "tacRld": 1.867,
+    "emptyRld": 2.0,
+    "deployT": 0.267,
+    "bulletVel": 336,
+    "recoilV": 1.67,
+    "recoilDir": 0,
+    "recoilVar": 12.0,
+    "recoilIncAds": 0.0,
+    "spreadMax": 6,
+    "adsTime": 200,
+    "fireMode": "semi",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 9.765,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.67
+      },
+      "hip": {
+        "inc": 0.378,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.145714,
+        "firingExp": 2.5,
+        "firingOffset": 0.945714,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": 0,
+        "amount": 1.67,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 12.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.75,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 16,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": 0,
+        "amount": 1.67,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 12.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.75,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 16,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.352,
+        6
+      ],
+      "hipMove": [
+        1.69,
+        6
+      ]
+    }
+  },
+  {
+    "id": "m44",
+    "name": "M44",
+    "cls": "Sidearm",
+    "cal": ".44 Magnum",
+    "rpm": 164,
+    "mag": 6,
+    "tacRld": 3.4,
+    "emptyRld": null,
+    "deployT": 0.4,
+    "bulletVel": 440,
+    "recoilV": 6.0,
+    "recoilDir": -8,
+    "recoilVar": 12.0,
+    "recoilIncAds": 0.0,
+    "spreadMax": 6,
+    "adsTime": 225,
+    "fireMode": "semi",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 7.812,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.67
+      },
+      "hip": {
+        "inc": 0.486,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.085,
+        "firingExp": 2.5,
+        "firingOffset": 0.551667,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -8,
+        "amount": 6.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 12.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.333,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 21.5,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -8,
+        "amount": 6.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 12.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.333,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 21.5,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.352,
+        6
+      ],
+      "hipMove": [
+        1.69,
+        6
+      ]
+    }
+  },
+  {
+    "id": "ggh22",
+    "name": "GGH-22",
+    "cls": "Sidearm",
+    "cal": "9×19mm",
+    "rpm": 360,
+    "mag": 16,
+    "tacRld": 1.934,
+    "emptyRld": 2.25,
+    "deployT": 0.267,
+    "bulletVel": 400,
+    "recoilV": 1.5,
+    "recoilDir": -7,
+    "recoilVar": 12.0,
+    "recoilIncAds": 0.0,
+    "spreadMax": 6,
+    "adsTime": 175,
+    "fireMode": "semi",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 9.765,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.67
+      },
+      "hip": {
+        "inc": 0.299,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.19125,
+        "firingExp": 2.5,
+        "firingOffset": 1.24125,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -7,
+        "amount": 1.5,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 12.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 13.7,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -7,
+        "amount": 1.5,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 12.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 13.7,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.352,
+        6
+      ],
+      "hipMove": [
+        1.69,
+        6
+      ]
+    }
+  },
+  {
+    "id": "m357trait",
+    "name": "M357 Trait",
+    "cls": "Sidearm",
+    "cal": ".357 Magnum",
+    "rpm": 225,
+    "mag": 8,
+    "tacRld": 3.067,
+    "emptyRld": null,
+    "deployT": 0.35,
+    "bulletVel": 410,
+    "recoilV": 3.0,
+    "recoilDir": -10,
+    "recoilVar": 15.0,
+    "recoilIncAds": 0.0,
+    "spreadMax": 6,
+    "adsTime": 225,
+    "fireMode": "semi",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 9.765,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.67
+      },
+      "hip": {
+        "inc": 0.486,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.085,
+        "firingExp": 2.5,
+        "firingOffset": 0.551667,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -10,
+        "amount": 3.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 15.0,
+        "dirVarMult": 0.920121,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.333,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 21.5,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -10,
+        "amount": 3.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 15.0,
+        "dirVarMult": 0.920121,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.333,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 21.5,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.352,
+        6
+      ],
+      "hipMove": [
+        1.69,
+        6
+      ]
+    }
+  },
+  {
+    "id": "vz61",
+    "name": "VZ. 61",
+    "cls": "Sidearm",
+    "cal": "7.65×17mm",
+    "rpm": 818,
+    "mag": 11,
+    "tacRld": 2.134,
+    "emptyRld": 2.667,
+    "deployT": 0.4,
+    "bulletVel": 326,
+    "recoilV": 0.497,
+    "recoilDir": -10,
+    "recoilVar": 20.8,
+    "recoilIncAds": 0.151,
+    "spreadMax": 6,
+    "adsTime": 175,
+    "fireMode": "auto",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.151,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.22,
+        "firingExp": 2.5,
+        "firingOffset": 1.84,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.67
+      },
+      "hip": {
+        "inc": 0.272,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.51,
+        "firingExp": 2.5,
+        "firingOffset": 3.31,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -10,
+        "amount": 0.4285,
+        "amountMult": 0.9283,
+        "amountExp": -2,
+        "dirVar": 20.8,
+        "dirVarMult": 0.904055,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.84,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 40,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -10,
+        "amount": 0.4285,
+        "amountMult": 0.9283,
+        "amountExp": -2,
+        "dirVar": 20.8,
+        "dirVarMult": 0.904055,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.84,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 40,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.804,
+        6
+      ],
+      "hipMove": [
+        2.255,
+        6
+      ]
+    }
   }
 ]
