@@ -318,6 +318,7 @@ import {
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
   simulateBloom, genRecoilPts,
 } from './sim/core.js';
+import { ATTACHMENT_SLOT_KEYS } from './sim/attachments.js';
 // ── WEAPON DATABASE ──────────────────────────────────────────────────────────
 // Legacy shorthand fields retained for compact weapon rows:
 // recoilV = ADS recoil/shot derived from Sym.gg ADSRecoilAmount × ADSRecoilAmountMultiplier^ADSRecoilAmountMultiplierExponent.
@@ -696,20 +697,15 @@ function buildAttachmentSection(containerId, atts, weapon) {
   if (!el) return;
   el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
-  // Placeholder text shown when no weapon is selected (slot always rendered, just disabled)
-  const noWeaponDefault = { sight:'Iron Sights', muzzle:'None', barrel:'Basic Barrel', grip:'None', laser:'None' };
-  [{key:'sight', lbl:'Sight', data:SIGHTS},
-   {key:'muzzle',lbl:'Muzzle',data:MUZZLES},
-   {key:'barrel',lbl:'Barrel',data:BARRELS},
-   {key:'grip',  lbl:'Grip',  data:GRIPS},
-   {key:'laser', lbl:'Laser', data:LASERS}].forEach(({key,lbl,data})=>{
-    const isBarrel = key === 'barrel';
+  const attDataSource = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS };
+  ATTACHMENT_SLOT_KEYS.forEach(({ key, label: lbl, dataKey, noWeaponText, isBarrel = false }) => {
+    const data = attDataSource[dataKey];
     const row=document.createElement('div'); row.className='att-row';
     const span=document.createElement('span'); span.className='att-lbl'; span.textContent=lbl;
     const sel=document.createElement('select'); sel.className='att-sel';
     if (!weapon) {
       // No weapon selected — show disabled placeholder
-      const opt=document.createElement('option'); opt.value=''; opt.textContent=noWeaponDefault[key];
+      const opt=document.createElement('option'); opt.value=''; opt.textContent=noWeaponText;
       sel.appendChild(opt); sel.disabled=true;
       row.appendChild(span); row.appendChild(sel); el.appendChild(row);
       return;
@@ -722,7 +718,7 @@ function buildAttachmentSection(containerId, atts, weapon) {
       // Only one or zero meaningful choices — show disabled rather than hiding
       const opt=document.createElement('option');
       const single = visible[0];
-      opt.value = single?.id ?? ''; opt.textContent = single?.name ?? noWeaponDefault[key];
+      opt.value = single?.id ?? ''; opt.textContent = single?.name ?? noWeaponText;
       sel.appendChild(opt); sel.disabled=true;
       row.appendChild(span); row.appendChild(sel); el.appendChild(row);
       return;
