@@ -1475,6 +1475,18 @@ function wLabel(w){ return (w&&w._label) ? w._label : (w?w.name:''); }
 </script>
 <script type="module">
 const EMBEDDED_WEAPONS = await fetch('./data/weapons.json').then(r => r.json());
+const [_balance, _atts, _ammo] = await Promise.all([
+  fetch('./data/balance_tables.json').then(r => r.json()),
+  fetch('./data/attachments.json').then(r => r.json()),
+  fetch('./data/ammo.json').then(r => r.json()),
+]);
+const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+        BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+        ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS } = _balance;
+const HP_HS_HIGH = new Set(_HP_HS_HIGH);
+const { MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+        WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
+const { AMMOS, WEAPON_AMMO } = _ammo;
 let WEAPONS = [];
 let attachmentModel = null;
 let selectedClass = 'Assault Rifle';
