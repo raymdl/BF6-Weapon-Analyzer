@@ -396,10 +396,28 @@
 <p class="note">Type bullet numbers from 1-20, separated by commas or spaces. Bullet 1 is the origin marker, so schedules usually start at bullet 2. Bubble radius uses the selected aim and movement state.</p>
 
 <script type="module">
-const EMBEDDED_WEAPONS = await fetch('./data/weapons.json').then(r => r.json());
+import {
+  setSimContext, mulberry32, whash, uniformDev, applyRecoilDecay,
+  recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
+  selectedRecoilAmountFor, selectedRecoilVariationFor,
+  spreadBounds, spreadDynamics, selectedSpreadIncFor,
+  simulateBloom, genRecoilPts,
+} from './sim/core.js';
+// ── DATA — loaded in parallel ─────────────────────────────────────────────────
+// (top-level await — requires module script + http server)
+const [EMBEDDED_WEAPONS, _recoilDecay] = await Promise.all([
+  fetch('./data/weapons.json').then(r => r.json()),
+  fetch('./data/recoil_decay.json').then(r => r.json()),
+]);
+const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 let WEAPONS_PREVIEW = [];
 let aimState = 'ads';
 let stanceState = 'stand';
+setSimContext({
+  aimState, stanceState,
+  RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP,
+  compensationFn: () => 0,
+});
 
 const DEFAULT_RC_H = 5;
 let scaleH = DEFAULT_RC_H;
@@ -411,10 +429,6 @@ const N = 20;
 const CLOUD_RUNS = 12;
 const COL = '#c9a227';
 let refSeed = 0;
-
-// Loaded from data/recoil_decay.json (top-level await — requires module script + http server)
-const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } =
-  await fetch('./data/recoil_decay.json').then(r => r.json());
 
 function classShort(cls) {
   return {
@@ -432,73 +446,16 @@ function spreadKey() {
   return `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
 }
 
-function recoilGroup(w) {
-  return w.recoil?.[aimState] ?? {
-    dir: w.recoilDir,
-    amount: w.recoilV,
-    amountMult: 1,
-    amountExp: 0,
-    dirVar: w.recoilVar,
-    dirVarMult: 1,
-    dirVarExp: 0,
-    decExp: RECOIL_DEC_EXP[w.id] ?? 1,
-    decTimeExp: RECOIL_DEC_TEXP[w.id] ?? 1.2,
-    decOffset: 0.06,
-    decFactor: RECOIL_DEC[w.id] ?? 72,
-  };
-}
 
-function baseRecoilGroup(w) {
-  return w.recoil?.ads ?? recoilGroup(w);
-}
 
-function recoilAmount(group) {
-  return (group.amount ?? 0) * Math.pow(group.amountMult ?? 1, group.amountExp ?? 0);
-}
 
-function recoilVariation(group) {
-  return (group.dirVar ?? 0) * Math.pow(group.dirVarMult ?? 1, group.dirVarExp ?? 0);
-}
 
-function selectedRecoilAmountFor(w) {
-  const g = recoilGroup(w);
-  if (aimState !== 'ads') return recoilAmount(g);
-  const adsBase = recoilAmount(baseRecoilGroup(w));
-  const attachmentMult = adsBase > 0 ? (w.recoilV ?? adsBase) / adsBase : 1;
-  return recoilAmount(g) * attachmentMult;
-}
 
-function selectedRecoilVariationFor(w) {
-  const g = recoilGroup(w);
-  if (aimState !== 'ads') return recoilVariation(g);
-  const adsBase = recoilVariation(baseRecoilGroup(w));
-  const attachmentMult = adsBase > 0 ? (w.recoilVar ?? adsBase) / adsBase : 1;
-  return recoilVariation(g) * attachmentMult;
-}
 
 // preview_bloom has no recoil-control UI; gating still lives in the helper for symmetry with index.html.
-function selectedCompensationLevel() { return 0; }
 
-function spreadBounds(w) {
-  const bounds = w.spread?.[spreadKey()] ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
-  if (aimState === 'ads' && stanceState === 'move' && w._movingAdsMinSpreadDeg != null) return [w._movingAdsMinSpreadDeg, bounds[1]];
-  return bounds;
-}
 
-function spreadDynamics(w) {
-  return w.spreadDyn?.[aimState] ?? {
-    inc: aimState === 'ads' ? (w.recoilIncAds ?? 0) : 0,
-    firingCoef: aimState === 'ads' ? 1.22 : 0.51,
-    firingExp: 2.5,
-    firingOffset: aimState === 'ads' ? 1.84 : 3.31,
-  };
-}
 
-function selectedSpreadIncFor(w) {
-  const dyn = spreadDynamics(w);
-  if (aimState === 'ads') return w.recoilIncAds ?? dyn.inc ?? 0;
-  return dyn.inc ?? 0;
-}
 
 function scaleYMax() {
   return scaleH * 2 - 1;
@@ -517,55 +474,9 @@ function scaleText() {
   return `View: ${fmtDeg(viewXMin())} deg to ${fmtDeg(viewXMax())} deg H / ${fmtDeg(viewYMin())} deg to ${fmtDeg(viewYMax())} deg V`;
 }
 
-function mulberry32(seed) {
-  let s = seed >>> 0;
-  return function() {
-    s = s + 0x6D2B79F5 | 0;
-    let t = Math.imul(s ^ s >>> 15, 1 | s);
-    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-    return ((t ^ t >>> 14) >>> 0) / 4294967296;
-  };
-}
 
-function whash(str) {
-  let h = 0;
-  for (const c of str) h = Math.imul(31, h) + c.charCodeAt(0) | 0;
-  return h >>> 0;
-}
 
-function uniformDev(rng, spreadDeg) {
-  return (rng() * 2 - 1) * spreadDeg;
-}
 
-function simulateBloom(w, shotCount) {
-  const dyn = spreadDynamics(w);
-  const [baseline, sMax] = spreadBounds(w);
-  const sInc = selectedSpreadIncFor(w);
-  if (sInc === 0) return Array(shotCount).fill(baseline);
-  const coef = dyn.firingCoef ?? 0;
-  const exp_ = dyn.firingExp ?? 1;
-  const offset = (dyn.firingOffset ?? 0) * (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0));
-  const secBetweenShots = 60 / (w.rpm ?? 600);
-  const dt = 1 / 60;
-  const clamp = v => Math.min(Math.max(v, baseline), sMax);
-  let spread = baseline;
-  const spreads = [];
-  for (let shot = 0; shot < shotCount; shot++) {
-    spread = clamp(spread);
-    spreads.push(spread);
-    spread = clamp(spread + sInc);
-    if (shot < shotCount - 1) {
-      let rem = secBetweenShots;
-      while (rem > 1e-12) {
-        const step = Math.min(dt, rem);
-        const delta = Math.max(spread - baseline, 0);
-        spread = clamp(spread - step * (coef * Math.pow(delta, exp_) + offset));
-        rem -= step;
-      }
-    }
-  }
-  return spreads;
-}
 
 function makeCoord(canvas) {
   const PL = 28, PR = 8, PT = 8, PB = 18;
@@ -627,46 +538,7 @@ function drawBase(canvas, c) {
   return ctx;
 }
 
-function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, decOffset = 0.06) {
-  const dt = 1 / 60;
-  let t = 0;
-  while (t < interShotTime) {
-    const step = Math.min(dt, interShotTime - t);
-    t += step;
-    const dec = (Math.pow(Math.abs(r), decExp) + decOffset) * decFactor * step * Math.pow(t, timeExp);
-    if (r > 0) r = Math.max(0, r - dec);
-    else if (r < 0) r = Math.min(0, r + dec);
-  }
-  return r;
-}
 
-function genRecoilPts(w, seed) {
-  const rng = mulberry32((whash(w.id) ^ seed) >>> 0);
-  const group = recoilGroup(w);
-  const decF = group.decFactor ?? RECOIL_DEC[w.id] ?? 72;
-  const decExp = group.decExp ?? RECOIL_DEC_EXP[w.id] ?? 1;
-  const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
-  const decOffset = group.decOffset ?? 0.06;
-  const amount = selectedRecoilAmountFor(w);
-  const variation = selectedRecoilVariationFor(w);
-  const compensation = selectedCompensationLevel() / 100;
-  const pts = [{ x: 0, y: 0 }];
-  const interShotTime = 60 / (w.rpm ?? 600);
-  let cx = 0, cy = 0;
-  for (let i = 1; i < N; i++) {
-    const dir = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
-    const spread = uniformDev(rng, variation) * Math.PI / 180;
-    const angle = dir + spread;
-    cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
-    cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
-    pts.push({ x: cx, y: cy });
-    if (i < N - 1) {
-      cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
-      cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
-    }
-  }
-  return pts;
-}
 
 function parseBullets(value) {
   const seen = new Set();
@@ -688,7 +560,7 @@ function drawPanel(canvas, readout, w, bulletNums) {
   const decOffset = group.decOffset ?? 0.06;
   const amount = selectedRecoilAmountFor(w);
   const variation = selectedRecoilVariationFor(w);
-  const compensation = selectedCompensationLevel() / 100;
+  const compensation = 0; // bloom has no compensation control
   const interShotTime = 60 / (w.rpm ?? 600);
 
   ctx.save();
@@ -865,6 +737,7 @@ wpnSel.addEventListener('change', redraw);
 document.querySelectorAll('[data-aim]').forEach(btn => {
   btn.addEventListener('click', () => {
     aimState = btn.dataset.aim;
+    setSimContext({ aimState });
     document.querySelectorAll('[data-aim]').forEach(x => x.classList.toggle('on', x === btn));
     const prev = wpnSel.value;
     populateWeapons();
@@ -875,6 +748,7 @@ document.querySelectorAll('[data-aim]').forEach(btn => {
 document.querySelectorAll('[data-stance]').forEach(btn => {
   btn.addEventListener('click', () => {
     stanceState = btn.dataset.stance;
+    setSimContext({ stanceState });
     document.querySelectorAll('[data-stance]').forEach(x => x.classList.toggle('on', x === btn));
     const prev = wpnSel.value;
     populateWeapons();

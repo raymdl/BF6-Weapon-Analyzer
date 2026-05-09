@@ -1474,11 +1474,19 @@ function applyAttachments(w, atts) {
 function wLabel(w){ return (w&&w._label) ? w._label : (w?w.name:''); }
 </script>
 <script type="module">
+import {
+  setSimContext, mulberry32, whash, uniformDev, applyRecoilDecay,
+  recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
+  selectedRecoilAmountFor, selectedRecoilVariationFor,
+  spreadBounds, spreadDynamics, selectedSpreadIncFor,
+  simulateBloom, genRecoilPts,
+} from './sim/core.js';
 const EMBEDDED_WEAPONS = await fetch('./data/weapons.json').then(r => r.json());
-const [_balance, _atts, _ammo] = await Promise.all([
+const [_balance, _atts, _ammo, _recoilDecay] = await Promise.all([
   fetch('./data/balance_tables.json').then(r => r.json()),
   fetch('./data/attachments.json').then(r => r.json()),
   fetch('./data/ammo.json').then(r => r.json()),
+  fetch('./data/recoil_decay.json').then(r => r.json()),
 ]);
 const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
         BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
@@ -1487,6 +1495,7 @@ const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 const { MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
         WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
 const { AMMOS, WEAPON_AMMO } = _ammo;
+const { RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP } = _recoilDecay;
 let WEAPONS = [];
 let attachmentModel = null;
 let selectedClass = 'Assault Rifle';
@@ -1495,6 +1504,11 @@ const blankAtts = () => ({ muzzle: 'none', barrel: 'none', grip: 'none', laser: 
 let selectedAtts = blankAtts();
 let aimState = 'ads';
 let stanceState = 'stand';
+setSimContext({
+  aimState, stanceState,
+  RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP,
+  compensationFn: selectedCompensationLevel,
+});
 let refSeed = 0;
 const viewLayers = { spray: true, path: false, bloom: false };
 let bloomDisplayMode = 'individual';
@@ -1531,49 +1545,11 @@ function spreadKey() {
   return `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
 }
 
-function recoilGroup(w) {
-  return w.recoil?.[aimState] ?? {
-    dir: w.recoilDir,
-    amount: w.recoilV,
-    amountMult: 1,
-    amountExp: 0,
-    dirVar: w.recoilVar,
-    dirVarMult: 1,
-    dirVarExp: 0,
-    decExp: RECOIL_DEC_EXP[w.id] ?? 1,
-    decTimeExp: RECOIL_DEC_TEXP[w.id] ?? 1.2,
-    decOffset: 0.06,
-    decFactor: RECOIL_DEC[w.id] ?? 72,
-  };
-}
 
-function baseRecoilGroup(w) {
-  return w.recoil?.ads ?? recoilGroup(w);
-}
 
-function recoilAmount(group) {
-  return (group.amount ?? 0) * Math.pow(group.amountMult ?? 1, group.amountExp ?? 0);
-}
 
-function recoilVariation(group) {
-  return (group.dirVar ?? 0) * Math.pow(group.dirVarMult ?? 1, group.dirVarExp ?? 0);
-}
 
-function selectedRecoilAmountFor(w) {
-  const g = recoilGroup(w);
-  if (aimState !== 'ads') return recoilAmount(g);
-  const adsBase = recoilAmount(baseRecoilGroup(w));
-  const attachmentMult = adsBase > 0 ? (w.recoilV ?? adsBase) / adsBase : 1;
-  return recoilAmount(g) * attachmentMult;
-}
 
-function selectedRecoilVariationFor(w) {
-  const g = recoilGroup(w);
-  if (aimState !== 'ads') return recoilVariation(g);
-  const adsBase = recoilVariation(baseRecoilGroup(w));
-  const attachmentMult = adsBase > 0 ? (w.recoilVar ?? adsBase) / adsBase : 1;
-  return recoilVariation(g) * attachmentMult;
-}
 
 function normalizeDegrees(deg) {
   return ((deg % 360) + 360) % 360;
@@ -1614,47 +1590,10 @@ function updateLoadoutStats() {
   compensationEl.innerHTML = `<strong>Compensation:</strong> ${compDir.toFixed(1)} deg / ${compAmount.toFixed(2)} deg per shot (${level}%)`;
 }
 
-function spreadBounds(w) {
-  const bounds = w.spread?.[spreadKey()] ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
-  if (aimState === 'ads' && stanceState === 'move' && w._movingAdsMinSpreadDeg != null) return [w._movingAdsMinSpreadDeg, bounds[1]];
-  return bounds;
-}
 
-function spreadDynamics(w) {
-  const dyn = w.spreadDyn?.[aimState] ?? {
-    inc: aimState === 'ads' ? (w.recoilIncAds ?? 0) : 0,
-    firingCoef: aimState === 'ads' ? 1.22 : 0.51,
-    firingExp: 2.5,
-    firingOffset: aimState === 'ads' ? 1.84 : 3.31,
-  };
-  if (aimState === 'ads') {
-    return {
-      ...dyn,
-      inc: w.recoilIncAds ?? dyn.inc,
-    };
-  }
-  return dyn;
-}
 
-function mulberry32(seed) {
-  let s = seed >>> 0;
-  return function() {
-    s = s + 0x6D2B79F5 | 0;
-    let t = Math.imul(s ^ s >>> 15, 1 | s);
-    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-    return ((t ^ t >>> 14) >>> 0) / 4294967296;
-  };
-}
 
-function whash(str) {
-  let h = 0;
-  for (const c of str) h = Math.imul(31, h) + c.charCodeAt(0) | 0;
-  return h >>> 0;
-}
 
-function uniformDev(rng, spreadDeg) {
-  return (rng() * 2 - 1) * spreadDeg;
-}
 
 function cmAtDistance(angleDeg, distanceM) {
   return Math.tan(angleDeg * Math.PI / 180) * distanceM * 100;
@@ -1671,80 +1610,8 @@ function niceGridStep(spanCm) {
   return [25, 50, 100, 200, 250, 500, 1000].find(step => step >= target) ?? 1000;
 }
 
-function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, decOffset = 0.06) {
-  const dt = 1 / 60;
-  let t = 0;
-  while (t < interShotTime) {
-    const step = Math.min(dt, interShotTime - t);
-    t += step;
-    const dec = (Math.pow(Math.abs(r), decExp) + decOffset) * decFactor * step * Math.pow(t, timeExp);
-    if (r > 0) r = Math.max(0, r - dec);
-    else if (r < 0) r = Math.min(0, r + dec);
-  }
-  return r;
-}
 
-function simulateBloom(w, shotCount) {
-  const dyn = spreadDynamics(w);
-  const [baseline, sMax] = spreadBounds(w);
-  const sInc = dyn.inc ?? 0;
-  if (sInc === 0) return Array(shotCount).fill(baseline);
-  const coef = dyn.firingCoef ?? 0;
-  const exp_ = dyn.firingExp ?? 1;
-  const offset = (dyn.firingOffset ?? 0) * (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0));
-  const secBetweenShots = 60 / (w.rpm ?? 600);
-  const dt = 1 / 60;
-  const clamp = v => Math.min(Math.max(v, baseline), sMax);
-  let spread = baseline;
-  const spreads = [];
-  for (let shot = 0; shot < shotCount; shot++) {
-    spread = clamp(spread);
-    spreads.push(spread);
-    spread = clamp(spread + sInc);
-    if (shot < shotCount - 1) {
-      let rem = secBetweenShots;
-      while (rem > 1e-12) {
-        const step = Math.min(dt, rem);
-        const delta = Math.max(spread - baseline, 0);
-        spread = clamp(spread - step * (coef * Math.pow(delta, exp_) + offset));
-        rem -= step;
-      }
-    }
-  }
-  return spreads;
-}
 
-function genRecoilPts(w, seed, shotCount) {
-  const rng = mulberry32((whash(w.id) ^ seed) >>> 0);
-  const group = recoilGroup(w);
-  const decF = group.decFactor ?? RECOIL_DEC[w.id] ?? 72;
-  const decExp = group.decExp ?? RECOIL_DEC_EXP[w.id] ?? 1;
-  const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
-  const decOffset = group.decOffset ?? 0.06;
-  const amount = selectedRecoilAmountFor(w);
-  const variation = selectedRecoilVariationFor(w);
-  const compensation = selectedCompensationLevel() / 100;
-  const pts = [{ x: 0, y: 0 }];
-  const interShotTime = 60 / (w.rpm ?? 600);
-  let cx = 0, cy = 0;
-  for (let i = 1; i < shotCount; i++) {
-    const dir = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
-    const spread = uniformDev(rng, variation) * Math.PI / 180;
-    const angle = dir + spread;
-    const recoilX = Math.sin(angle) * amount;
-    const recoilY = Math.cos(angle) * amount;
-    const controlX = Math.sin(dir) * amount * compensation;
-    const controlY = Math.cos(dir) * amount * compensation;
-    cx += recoilX - controlX;
-    cy += recoilY - controlY;
-    pts.push({ x: cx, y: cy });
-    if (i < shotCount - 1) {
-      cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
-      cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
-    }
-  }
-  return pts;
-}
 
 function projectedRun(w, distanceM, recoilSeed, bloomSeed, includeBloom = true) {
   const shots = selectedShotCount();
@@ -2285,6 +2152,7 @@ function renderSidebar() {
 
 function setAim(value) {
   aimState = value;
+  setSimContext({ aimState });
   document.getElementById('aimAds').classList.toggle('on', value === 'ads');
   document.getElementById('aimHip').classList.toggle('on', value === 'hip');
   renderSidebar();
@@ -2293,6 +2161,7 @@ function setAim(value) {
 
 function setStance(value) {
   stanceState = value;
+  setSimContext({ stanceState });
   document.getElementById('stanceStand').classList.toggle('on', value === 'stand');
   document.getElementById('stanceMove').classList.toggle('on', value === 'move');
   renderSidebar();
