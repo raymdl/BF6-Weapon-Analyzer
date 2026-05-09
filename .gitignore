@@ -1,4 +1,11 @@
 __pycache__/
 *.pyc
-.claude/settings.local.json
-.claude/worktrees/
+
+# Local convenience launchers and helper scripts.
+serve.bat
+Open - *.url
+gen_dmg.py
+read_xlsx.py
+
+# Local Codex/Claude scratch, migration, and extraction helpers.
+.claude/

@@ -30,12 +30,13 @@ BF6 Project/
     recoil_decay.json       ← Per-weapon ADS recoil decay table
     balance_tables.json     ← Tier tables (ADS speed, sprint recovery, spread, etc.)
 
+  CODE_DOCUMENTATION.md     ← Architecture and behavior reference
   MAINTENANCE.md            ← Season/patch update checklist (data edits)
   .gitignore
-  .claude/                  ← Data pipeline and migration helper scripts
-  gen_dmg.py                ← Damage table pipeline
-  read_xlsx.py              ← Spreadsheet ingestion helper
 ```
+
+Local-only helper files are intentionally ignored and should not be committed:
+`serve.bat`, `Open - *.url`, `gen_dmg.py`, `read_xlsx.py`, and `.claude/`.
 
 ### Data Flow
 
@@ -157,9 +158,10 @@ Call once after all JSON data is fetched.
 
 ### `sim/attachments.js`
 
-Single source of truth for attachment slot ordering and UI metadata. Both `index.html`
-and `preview_distance.html` import `ATTACHMENT_SLOT_KEYS` and iterate it to build their
-attachment sidebars. **Adding a new slot type = one entry here, both pages pick it up.**
+Single source of truth for attachment slot ordering and UI metadata. `index.html`,
+`preview_bloom.html`, and `preview_distance.html` import `ATTACHMENT_SLOT_KEYS` and
+iterate it to build their attachment sidebars. **Adding a new slot type = one entry here,
+all pages pick it up.**
 
 ```js
 export const ATTACHMENT_SLOT_KEYS = [
@@ -424,9 +426,11 @@ Primary app. Major JS regions (line numbers approximate, drift as file changes):
 ### `preview_bloom.html`
 
 Recoil/bloom chart experiment tool. Three side-by-side chart approaches with independent
-bubble schedules. Imports `sim/core.js`. Loads weapon list from `data/weapons.json`.
-Does **not** use `sim/applyAttachments.js` — no attachment sidebar.
-`compensationFn` stubbed to `() => 0`.
+bubble schedules, a class/weapon/attachment sidebar, and configurable shot count. Imports
+all three `sim/` modules and all five `data/` JSON files. Attachment selections are applied
+through `applyAttachments(rawWeapon, selectedAtts)`, matching the main app and distance
+preview. `compensationFn` is still stubbed to `() => 0` because this preview has no recoil
+control UI.
 
 Useful for testing rendering changes before porting to the main app.
 
