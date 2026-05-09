@@ -1,5 +1,5 @@
 {
-  "_comment": "Per-weapon ADS recoil decay tables from sym.gg. retain = exp(-decFactor * decOffset * interShotTime^decTimeExp) ^ decExp. AK4D not in sym.gg dataset; defaults to TR7 value (same caliber/class). Source of truth for index.html, preview_bloom.html, preview_distance.html.",
+  "_comment": "Per-weapon ADS recoil decay tables from sym.gg. retain = exp(-decFactor * decOffset * interShotTime^decTimeExp) ^ decExp. Source of truth for index.html, preview_bloom.html, preview_distance.html.",
 
   "RECOIL_DEC": {
     "m433": 72,    "b36a4": 72,    "sor556": 72,   "ak4d": 104,   "tr7": 104,    "kord6p67": 55,
