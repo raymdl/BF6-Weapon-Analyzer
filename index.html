@@ -696,20 +696,29 @@ function buildAttachmentSection(containerId, atts, weapon) {
   if (!el) return;
   el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
   const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
+  // Placeholder text shown when no weapon is selected (slot always rendered, just disabled)
+  const noWeaponDefault = { sight:'Iron Sights', muzzle:'None', barrel:'Basic Barrel', grip:'None', laser:'None' };
   [{key:'sight', lbl:'Sight', data:SIGHTS},
    {key:'muzzle',lbl:'Muzzle',data:MUZZLES},
    {key:'barrel',lbl:'Barrel',data:BARRELS},
    {key:'grip',  lbl:'Grip',  data:GRIPS},
    {key:'laser', lbl:'Laser', data:LASERS}].forEach(({key,lbl,data})=>{
     const isBarrel = key === 'barrel';
+    const row=document.createElement('div'); row.className='att-row';
+    const span=document.createElement('span'); span.className='att-lbl'; span.textContent=lbl;
+    const sel=document.createElement('select'); sel.className='att-sel';
+    if (!weapon) {
+      // No weapon selected — show disabled placeholder
+      const opt=document.createElement('option'); opt.value=''; opt.textContent=noWeaponDefault[key];
+      sel.appendChild(opt); sel.disabled=true;
+      row.appendChild(span); row.appendChild(sel); el.appendChild(row);
+      return;
+    }
     const allowedIds = wa?.[key]; // undefined = no restriction
     const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
     let visible = allowedSet ? data.filter(a => allowedSet.has(a.id)) : data;
     if (isBarrel) visible = visible.filter(a => a.id !== 'none'); // barrels always required
-    if (visible.length <= (isBarrel ? 0 : 1)) return; // hide slot if nothing to show
-    const row=document.createElement('div'); row.className='att-row';
-    const span=document.createElement('span'); span.className='att-lbl'; span.textContent=lbl;
-    const sel=document.createElement('select'); sel.className='att-sel';
+    if (visible.length <= (isBarrel ? 0 : 1)) return; // weapon has no options for this slot — hide it
     visible.forEach(a=>{
       const opt=document.createElement('option'); opt.value=a.id;
       const pts=getAttPts(a,weapon?.id);
@@ -779,15 +788,15 @@ function buildAttachmentSection(containerId, atts, weapon) {
     }
     magRow.appendChild(magSpan); magRow.appendChild(magSel); el.appendChild(magRow);
   }
-  // Ergonomics slot — hidden when no options are defined for this weapon
+  // Ergonomics slot — always shown; disabled when no weapon or weapon has no ergo options
   {
     const we=WEAPON_ERGO[weapon?.id]??null;
     const availSet=we ? new Set(we.avail) : null;
     const visibleErgos=ERGOS.filter(e=>e.id==='none'||(availSet&&availSet.has(e.id)));
+    const ergoRow=document.createElement('div'); ergoRow.className='att-row';
+    const ergoSpan=document.createElement('span'); ergoSpan.className='att-lbl'; ergoSpan.textContent='Ergo';
+    const ergoSel=document.createElement('select'); ergoSel.className='att-sel';
     if (visibleErgos.length > 1) {
-      const ergoRow=document.createElement('div'); ergoRow.className='att-row';
-      const ergoSpan=document.createElement('span'); ergoSpan.className='att-lbl'; ergoSpan.textContent='Ergo';
-      const ergoSel=document.createElement('select'); ergoSel.className='att-sel';
       visibleErgos.forEach(e=>{
         if (e.id==='none') { const o=document.createElement('option'); o.value='none'; o.textContent='None'; if((atts.ergo??'none')==='none') o.selected=true; ergoSel.appendChild(o); return; }
         const opt=document.createElement('option'); opt.value=e.id;
@@ -801,8 +810,11 @@ function buildAttachmentSection(containerId, atts, weapon) {
         updateAttTotal(containerId,atts,weapon);
         renderStats();
       };
-      ergoRow.appendChild(ergoSpan); ergoRow.appendChild(ergoSel); el.appendChild(ergoRow);
+    } else {
+      const opt=document.createElement('option'); opt.value='none'; opt.textContent='None';
+      ergoSel.appendChild(opt); ergoSel.disabled=true;
     }
+    ergoRow.appendChild(ergoSpan); ergoRow.appendChild(ergoSel); el.appendChild(ergoRow);
   }
 
   updateAttTotal(containerId,atts,weapon);
