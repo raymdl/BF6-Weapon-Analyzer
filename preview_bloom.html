@@ -551,7 +551,7 @@
 
 <script type="module">
 import {
-  setSimContext, mulberry32, whash, uniformDev, applyRecoilDecay,
+  setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilVariationFor,
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
@@ -935,15 +935,6 @@ function drawPanel(canvas, readout, w, bulletNums) {
   const ctx = drawBase(canvas, c);
   const { PL, PT, PW, PH, toX, toY } = c;
   const blooms = simulateBloom(w, shotCount);
-  const group = recoilGroup(w);
-  const decF = group.decFactor ?? RECOIL_DEC[w.id] ?? 72;
-  const decExp = group.decExp ?? RECOIL_DEC_EXP[w.id] ?? 1;
-  const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
-  const decOffset = group.decOffset ?? 0.06;
-  const amount = selectedRecoilAmountFor(w);
-  const variation = selectedRecoilVariationFor(w);
-  const compensation = 0; // bloom has no compensation control
-  const interShotTime = 60 / (w.rpm ?? 600);
 
   ctx.save();
   ctx.beginPath();
@@ -951,25 +942,17 @@ function drawPanel(canvas, readout, w, bulletNums) {
   ctx.clip();
 
   for (let s = 1; s <= CLOUD_RUNS; s++) {
-    const rng = mulberry32((whash(w.id) ^ (s * 0x9e3779b9)) >>> 0);
+    const recoilPts = genRecoilPts(w, s * 0x9e3779b9, shotCount);
     const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
-    let cx = 0, cy = 0;
-    for (let i = 1; i < shotCount; i++) {
-      const dir = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
-      const spread = uniformDev(rng, variation) * Math.PI / 180;
-      const angle = dir + spread;
-      cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
-      cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
-      cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
-      cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
+    recoilPts.forEach((p, i) => {
       const bloom = blooms[i] ?? spreadBounds(w)[0];
       const bAng = rngB() * Math.PI * 2;
       const bR = bloom * rngB();
       ctx.beginPath();
-      ctx.arc(toX(cx + bR * Math.cos(bAng)), toY(cy + bR * Math.sin(bAng)), 2, 0, Math.PI * 2);
+      ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(p.y + bR * Math.sin(bAng)), 2, 0, Math.PI * 2);
       ctx.fillStyle = COL + '38';
       ctx.fill();
-    }
+    });
   }
 
   const pts = genRecoilPts(w, refSeed, shotCount);
@@ -1004,7 +987,7 @@ function drawPanel(canvas, readout, w, bulletNums) {
 
   pts.forEach((p, i) => {
     ctx.beginPath();
-    ctx.arc(toX(p.x), toY(p.y), i === 0 ? 4 : 2.5, 0, Math.PI * 2);
+    ctx.arc(toX(p.x), toY(p.y), 2.5, 0, Math.PI * 2);
     ctx.fillStyle = COL;
     ctx.fill();
   });

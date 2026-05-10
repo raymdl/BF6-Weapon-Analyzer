@@ -312,7 +312,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 
 <script type="module">
 import {
-  setSimContext, mulberry32, whash, uniformDev, applyRecoilDecay,
+  setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilVariationFor,
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
@@ -1309,36 +1309,19 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
   const CLOUD_RUNS=10; window._cloudRuns=CLOUD_RUNS;
   if(layers.scatter) drawOrder.forEach((w)=>{
     const col=cols[(w===weapon1)?0:1];
-    const group=recoilGroup(w);
-    const decF=group.decFactor??RECOIL_DEC[w.id]??72;
-    const decExp=group.decExp??RECOIL_DEC_EXP[w.id]??1;
-    const timeExp=group.decTimeExp??RECOIL_DEC_TEXP[w.id]??1.2;
-    const decOffset=group.decOffset??0.06;
-    const amount=selectedRecoilAmountFor(w);
-    const variation=selectedRecoilVariationFor(w);
-    const compensation=selectedCompensationLevel()/100;
-    const interShotTime=60/(w.rpm??600);
     const blooms=simulateBloom(w,N);
     for(let s=1;s<=CLOUD_RUNS;s++){
-      const rng=mulberry32((whash(w.id)^(s*0x9e3779b9))>>>0);
+      const recoilPts=genRecoilPts(w,s*0x9e3779b9,N);
       const rngB=mulberry32((whash(w.id)^(s*0x6c62272e))>>>0); // separate bloom RNG
-      let cx=0,cy=0;
-      for(let i=1;i<N;i++){
-        const dir=-(group.dir??w.recoilDir??0)*Math.PI/180;
-        const spread=uniformDev(rng,variation)*Math.PI/180;
-        const angle=dir+spread;
-        cx+=Math.sin(angle)*amount-Math.sin(dir)*amount*compensation;
-        cy+=Math.cos(angle)*amount-Math.cos(dir)*amount*compensation;
-        cx=applyRecoilDecay(cx,decF,decExp,timeExp,interShotTime,decOffset);
-        cy=applyRecoilDecay(cy,decF,decExp,timeExp,interShotTime,decOffset);
+      recoilPts.forEach((p,i)=>{
         // Apply bloom jitter: bullet lands within the bloom circle
         const bloom=blooms[i]??spreadBounds(w)[0];
         const bAng=rngB()*Math.PI*2;
         const bR=bloom*rngB(); // uniform radius sampling
         ctx.beginPath();
-        ctx.arc(toX(cx+bR*Math.cos(bAng)),toY(cy+bR*Math.sin(bAng)),2,0,Math.PI*2);
+        ctx.arc(toX(p.x+bR*Math.cos(bAng)),toY(p.y+bR*Math.sin(bAng)),2,0,Math.PI*2);
         ctx.fillStyle=col+'38'; ctx.fill();
-      }
+      });
     }
   });
 
@@ -1355,12 +1338,10 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
       const rngRef=mulberry32((whash(w.id)^weaponRefSeed^0xdeadbeef)>>>0);
       return pts.map((p,i)=>{
         let dx=p.x, dy=p.y;
-        if(i>0){
-          const bloom=blooms[i]??spreadBounds(w)[0];
-          const bAng=rngRef()*Math.PI*2;
-          const bR=bloom*rngRef();
-          dx+=bR*Math.cos(bAng); dy+=bR*Math.sin(bAng);
-        }
+        const bloom=blooms[i]??spreadBounds(w)[0];
+        const bAng=rngRef()*Math.PI*2;
+        const bR=bloom*rngRef();
+        dx+=bR*Math.cos(bAng); dy+=bR*Math.sin(bAng);
         return {x:dx,y:dy};
       });
     })();
@@ -1494,7 +1475,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed=0) {
     }
     if(layers.spray) sprayPts.forEach((p,i)=>{
       ctx.beginPath();
-      ctx.arc(toX(p.x),toY(p.y),i===0?4:2.5,0,Math.PI*2);
+      ctx.arc(toX(p.x),toY(p.y),2.5,0,Math.PI*2);
       ctx.fillStyle=col; ctx.fill();
     });
   });

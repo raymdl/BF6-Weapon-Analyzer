@@ -227,7 +227,7 @@
   .distance-input {
     padding-left: 7px;
     padding-right: 7px;
-    width: 48px;
+    width: 58px;
   }
   .control-label {
     color: #9ab0b0;
@@ -273,13 +273,14 @@
     min-width: 0;
   }
   .panel-title {
-    align-items: baseline;
+    align-items: center;
     color: #c9a227;
     display: flex;
     font-size: 12px;
     font-weight: 700;
     justify-content: space-between;
     letter-spacing: 0.05em;
+    min-height: 28px;
     text-transform: uppercase;
   }
   .panel-title span:last-child {
@@ -548,8 +549,8 @@
       <span id="customTitle">30 m wall</span>
       <span class="distance-row">
         <label for="distanceRange">Custom distance</label>
-        <input id="distanceRange" type="range" min="5" max="100" step="5" value="30">
-        <input id="distanceInput" class="distance-input" type="number" min="1" max="300" step="1" value="30">
+        <input id="distanceRange" type="range" min="5" max="150" step="5" value="30">
+        <input id="distanceInput" class="distance-input" type="number" min="1" max="150" step="1" value="30">
       </span>
       <span id="scaleCustom"></span>
     </div>
@@ -577,7 +578,7 @@
 
 <script type="module">
 import {
-  setSimContext, mulberry32, whash, uniformDev, applyRecoilDecay,
+  setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilVariationFor,
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
@@ -732,7 +733,7 @@ function projectedRun(w, distanceM, recoilSeed, bloomSeed, includeBloom = true) 
   return pts.map((p, i) => {
     let xDeg = p.x;
     let yDeg = p.y;
-    if (includeBloom && i > 0) {
+    if (includeBloom) {
       const bloom = blooms[i] ?? spreadBounds(w)[0];
       const bAng = rng() * Math.PI * 2;
       const bR = bloom * rng();
@@ -757,7 +758,7 @@ function drawWall(canvas, readout, distanceM, scaleEl) {
   const PL = 42, PR = 35, PT = 14, PB = 43;
   const PW = W - PL - PR, PH = H - PT - PB;
   const view = panelViews[canvas.id] ?? { zoom: 1, panX: 0, panY: 0 };
-  const zoom = Math.max(0.5, Math.min(8, view.zoom || 1));
+  const zoom = Math.max(0.5, Math.min(10, view.zoom || 1));
   const xHalf = cmAtDistance(VIEW_HALF_ANGLE_DEG, distanceM) / zoom;
   const xSpan = xHalf * 2;
   const ySpan = xSpan * (PH / PW);
@@ -1368,7 +1369,7 @@ function adjustPanelZoom(panelId, dir) {
   const view = panelViews[panelId];
   if (!view) return;
   view.zoom *= dir === 'in' ? 1.25 : 0.8;
-  view.zoom = Math.max(0.5, Math.min(8, view.zoom));
+  view.zoom = Math.max(0.5, Math.min(10, view.zoom));
   redraw();
 }
 
@@ -1405,9 +1406,9 @@ function syncDistanceFromRange() {
 
 function syncDistanceFromInput() {
   const input = document.getElementById('distanceInput');
-  const value = Math.max(1, Math.min(300, +input.value || 30));
+  const value = Math.max(1, Math.min(150, +input.value || 30));
   input.value = value;
-  document.getElementById('distanceRange').value = Math.max(5, Math.min(100, value));
+  document.getElementById('distanceRange').value = Math.max(5, Math.min(150, value));
   redraw();
 }
 
