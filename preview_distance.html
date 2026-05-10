@@ -473,6 +473,11 @@
     <button id="bloomIndividual" class="on" type="button" onclick="setBloomDisplayMode('individual')">Individual</button>
     <button id="bloomOutline" type="button" onclick="setBloomDisplayMode('outline')">Outline</button>
   </span>
+  <span class="control-label">Target Aim:</span>
+  <span class="segmented">
+    <button id="targetAimChest" class="on" type="button" onclick="setTargetAimPoint('chest')">Chest</button>
+    <button id="targetAimHead" type="button" onclick="setTargetAimPoint('head')">Head</button>
+  </span>
   <span class="row-break"></span>
   <span id="recoilStats" class="loadout-stats"></span>
   <span class="control-label">Recoil Control:</span>
@@ -624,6 +629,7 @@ setSimContext({
 let refSeed = 0;
 const viewLayers = { spray: true, path: false, bloom: false };
 let bloomDisplayMode = 'individual';
+let targetAimPoint = 'chest';
 let recoilControl = false;
 const DEFAULT_COMPENSATION = 85;
 let compensationLevel = DEFAULT_COMPENSATION;
@@ -633,6 +639,10 @@ const VIEW_HALF_ANGLE_DEG = 14;
 const VIEW_Y_MIN_ANGLE_DEG = -9.65;
 const TARGET_HEIGHT_CM = 180;
 const TARGET_SHOULDER_CM = 46;
+const TARGET_AIM_SVG_Y = {
+  chest: 66.5,
+  head: 18,
+};
 const panelViews = {
   wall10: { zoom: 1, panX: 0, panY: 0 },
   wall20: { zoom: 1, panX: 0, panY: 0 },
@@ -855,12 +865,12 @@ function drawTarget(ctx, toX, toY) {
   const path = new Path2D(svgPath);
   const viewBoxHeight = 206.326;
   const viewBoxCenterX = 103.163;
-  const chestSvgY = 66.5;
+  const aimSvgY = TARGET_AIM_SVG_Y[targetAimPoint] ?? TARGET_AIM_SVG_Y.chest;
   const cmPerSvgUnit = TARGET_HEIGHT_CM / viewBoxHeight;
   const pxPerCm = Math.abs(toX(1) - toX(0));
   const svgToPx = cmPerSvgUnit * pxPerCm;
   const targetX = toX(0) - viewBoxCenterX * svgToPx;
-  const targetY = toY(0) - chestSvgY * svgToPx;
+  const targetY = toY(0) - aimSvgY * svgToPx;
 
   ctx.save();
   ctx.translate(targetX, targetY);
@@ -1289,6 +1299,13 @@ function setBloomDisplayMode(value) {
   redraw();
 }
 
+function setTargetAimPoint(value) {
+  targetAimPoint = value === 'head' ? 'head' : 'chest';
+  document.getElementById('targetAimChest').classList.toggle('on', targetAimPoint === 'chest');
+  document.getElementById('targetAimHead').classList.toggle('on', targetAimPoint === 'head');
+  redraw();
+}
+
 function syncBloomBulletsControl() {
   const row = document.getElementById('bloomBulletsRow');
   const input = document.getElementById('bloomBulletsInput');
@@ -1456,7 +1473,7 @@ init();
 // Bridge to window so inline onclick="…" attributes can resolve these (module scope is not global)
 Object.assign(window, {
   adjustPanelZoom, panPanelView, redrawRandom, resetPanelView,
-  setAim, setBloomDisplayMode, setRecoilControl, setStance, toggleViewLayer,
+  setAim, setBloomDisplayMode, setRecoilControl, setStance, setTargetAimPoint, toggleViewLayer,
 });
 </script>
 </body>
