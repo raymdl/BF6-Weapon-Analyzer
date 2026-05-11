@@ -31,7 +31,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .cbtn{padding:2px 6px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
 .cbtn:hover,.cbtn.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
 .wlist{display:flex;flex-direction:column}
-.wbtn{padding:3px 11px;text-align:left;background:none;border:none;border-bottom:1px solid rgba(40,48,48,.55);color:var(--text);font-size:0.82rem;transition:background .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent}
+.wbtn{padding:2px 11px;text-align:left;background:none;border:none;border-bottom:1px solid rgba(40,48,48,.55);color:var(--text);font-size:0.82rem;transition:background .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent}
 .wbtn:hover{background:var(--bg3)}
 .wbtn.p1{background:rgba(201,162,39,.1);color:var(--accent);border-left-color:var(--accent)}
 .wbtn.p2{background:rgba(77,148,208,.1);color:var(--accent2);border-left-color:var(--accent2)}
@@ -40,7 +40,10 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .mode-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 8px;font-size:0.65rem;cursor:pointer;letter-spacing:.04em;transition:all .15s}
 .mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);font-weight:700}
 .cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
-.cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border)}
+.cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:3px;padding:2px 7px;font-size:0.62rem;letter-spacing:.04em;transition:all .15s}
+.clone-btn:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
+.clone-btn:disabled{opacity:.38;cursor:not-allowed;color:var(--muted);border-color:var(--border);background:var(--bg3)}
 /* Main */
 .main{flex:1;overflow-y:auto;overflow-x:hidden;padding:13px;display:flex;flex-direction:column;gap:11px}
 .main::-webkit-scrollbar{width:4px}
@@ -177,7 +180,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 <body>
 <header>
   <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
-  <div class="hdr-tag">Updated 9 MAY 2026</div>
+  <div class="hdr-tag">Updated 10 MAY 2026</div>
 </header>
 <div class="app">
   <aside class="sidebar">
@@ -193,7 +196,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
       </div>
       <div class="att-sec" id="attSection1"></div>
       <div id="cmpSection" style="display:none">
-        <div class="cmp-hdr">Compare Loadout</div>
+        <div class="cmp-hdr"><span>Compare Loadout</span><button class="clone-btn" id="cloneLoadoutBtn" type="button" onclick="cloneCompareLoadout()" title="Copy Weapon 1 and its attachments into Weapon 2">Clone</button></div>
         <div class="sb-sec">
           <div class="sb-lbl">Class</div>
           <div class="class-filter" id="classFilter2"></div>
@@ -534,11 +537,25 @@ function renderSidebar() {
   buildWeaponList('wList1', selClass1, selW1, 0);
   buildAttachmentSection('attSection1', att1, selW1);
   if (comparing) {
+    const cloneBtn=document.getElementById('cloneLoadoutBtn');
+    if(cloneBtn) cloneBtn.disabled=!selW1;
     buildClassFilter('classFilter2', selClass2, c => { selClass2 = c; renderSidebar(); });
     buildWeaponList('wList2', selClass2, selW2, 1);
     buildAttachmentSection('attSection2', att2, selW2);
   }
   updateAssumedFootnote();
+}
+
+function cloneCompareLoadout() {
+  if (!selW1) return;
+  comparing = true;
+  selClass2 = selW1.cls;
+  selW2 = selW1;
+  att2 = {...att1};
+  document.getElementById('cmpBtn').classList.add('on');
+  document.getElementById('cmpSection').style.display='block';
+  renderSidebar();
+  renderStats();
 }
 
 function validateAtts(atts, weapon) {
@@ -1104,18 +1121,32 @@ function renderChart() {
   if (dmgChart) dmgChart.destroy();
 
   if (chartMode==='btk') {
-    const btkDs=(w,color,label)=>({label,data:labels.map(r=>getBTKWithHS(w,r,btkHS)),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before'});
+    const btkDs=(w,color,label,slot,headshots=btkHS,baseline=false)=>({
+      label,
+      data:labels.map(r=>getBTKWithHS(w,r,headshots)),
+      borderColor:color,
+      backgroundColor:'transparent',
+      borderWidth:baseline?1.5:2,
+      borderDash:baseline?[6,5]:undefined,
+      pointRadius:0,
+      tension:0,
+      stepped:'before',
+      isBaseline:baseline,
+      _weaponSlot:slot,
+    });
     const datasets=[];
-    if (w1) datasets.push(btkDs(w1,'#c9a227',wLabel(w1)));
-    if (w2) datasets.push(btkDs(w2,'#4d94d0',wLabel(w2)));
+    if (btkHS>0&&w1) datasets.push(btkDs(w1,'rgba(201,162,39,0.28)',`${wLabel(w1)} (0 HS)`,1,0,true));
+    if (btkHS>0&&w2) datasets.push(btkDs(w2,'rgba(77,148,208,0.28)',`${wLabel(w2)} (0 HS)`,2,0,true));
+    if (w1) datasets.push(btkDs(w1,'#c9a227',wLabel(w1),1));
+    if (w2) datasets.push(btkDs(w2,'#4d94d0',wLabel(w2),2));
     const yMin=1, yMax=8;
     dmgChart=new Chart(ctx,{
       type:'line', data:{labels,datasets},
       options:{
         responsive:true, maintainAspectRatio:false, animation:false,
-        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{
+        plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,filter:i=>!i.dataset.isBaseline,callbacks:{
           title:items=>'Range: '+(items[0]?.label??'')+'m',
-          label:i=>{ const w=i.datasetIndex===1&&w2?w2:w1; const btk=i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
+          label:i=>{ const w=i.dataset._weaponSlot===2?w2:w1; const btk=i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
         }}},
         scales:{
           x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
@@ -1768,6 +1799,7 @@ document.getElementById('rcCompRange')?.addEventListener('input', () => syncComp
 
 // Bridge to window so inline onclick="…" attributes can resolve these (module scope is not global)
 Object.assign(window, {
+  cloneCompareLoadout,
   adjustRecoilScale, panRecoilView, randomizeRecoilReference, resetRecoilReference,
   resetRecoilView, setBtkHS, setChartMode, setRecoilAim, setRecoilControl,
   setRecoilStance, toggleAdsToggle, toggleRecoilLayer,
