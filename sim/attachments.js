@@ -13,9 +13,9 @@
  *   isBarrel     — barrel slot is required (never includes a 'none' option)
  */
 export const ATTACHMENT_SLOT_KEYS = [
-  { key: 'sight',  label: 'Sight',  dataKey: 'SIGHTS',  noWeaponText: 'Iron Sights' },
   { key: 'muzzle', label: 'Muzzle', dataKey: 'MUZZLES', noWeaponText: 'None' },
   { key: 'barrel', label: 'Barrel', dataKey: 'BARRELS', noWeaponText: 'Basic Barrel', isBarrel: true },
-  { key: 'grip',   label: 'Grip',   dataKey: 'GRIPS',   noWeaponText: 'None' },
   { key: 'laser',  label: 'Laser',  dataKey: 'LASERS',  noWeaponText: 'None' },
+  { key: 'sight',  label: 'Sight',  dataKey: 'SIGHTS',  noWeaponText: 'Iron Sights' },
+  { key: 'grip',   label: 'Grip',   dataKey: 'GRIPS',   noWeaponText: 'None' },
 ];
