@@ -174,11 +174,11 @@ all pages pick it up.**
 
 ```js
 export const ATTACHMENT_SLOT_KEYS = [
-  { key: 'sight',  label: 'Sight',  dataKey: 'SIGHTS',  noWeaponText: 'Iron Sights' },
   { key: 'muzzle', label: 'Muzzle', dataKey: 'MUZZLES', noWeaponText: 'None' },
   { key: 'barrel', label: 'Barrel', dataKey: 'BARRELS', noWeaponText: 'Basic Barrel', isBarrel: true },
-  { key: 'grip',   label: 'Grip',   dataKey: 'GRIPS',   noWeaponText: 'None' },
   { key: 'laser',  label: 'Laser',  dataKey: 'LASERS',  noWeaponText: 'None' },
+  { key: 'sight',  label: 'Sight',  dataKey: 'SIGHTS',  noWeaponText: 'Iron Sights' },
+  { key: 'grip',   label: 'Grip',   dataKey: 'GRIPS',   noWeaponText: 'None' },
 ];
 ```
 
@@ -449,9 +449,7 @@ Primary app. Major JS regions (line numbers approximate, drift as file changes):
   laser: 'none', ammo: 'standard', mag: null, ergo: 'none' }
 ```
 
-**Key app state globals:** `selClass1/2`, `selW1/2`, `comparing`, `dmgChart`,
-`chartMode`, `btkHS`, `showAds`, `recoilAim`, `recoilStance`, `att1/2`,
-`recoilRefSeed`, `recoilScaleH`, `recoilPanX/Y`.
+**App state** is consolidated in `ui/app.js` as a single `state` object with three sub-objects: `state.slots[0/1]` (class, weapon, atts per loadout), `state.chart` (mode, btkHS, showAds), and `state.recoil` (aim, stance, layers, control, compensation, seed, scale, pan).
 
 ---
 
@@ -642,13 +640,12 @@ Remaining test gaps:
 
 1. **Validate recoil decay (note 1).** Pick one auto weapon, record post-burst recovery at known RPM, compare to model output.
 2. **Verify assumed attachment stats (note 5).** Block for Season 3 data drop.
-3. **Add Chart.js CDN fallback (note 7).** Vendor Chart.js locally or show a graceful fallback message.
-4. **Add Playwright visual smoke coverage.** Capture main recoil overlays and distance panels before Season 3 recoil changes.
-5. **Plan responsive layout for `index.html`.** The preview pages stack better than the primary app today.
+3. **Add Playwright visual smoke coverage.** Capture main recoil overlays and distance panels before Season 3 recoil changes.
+4. **Plan responsive layout for `index.html`.** The preview pages stack better than the primary app today.
 
 ### Longer-Term
 
-1. **Split `index.html` rendering logic** into `ui/render.js`, `ui/chart.js`, `ui/recoil.js` to reduce file size and improve navigability.
+1. **Further split `ui/app.js`** into `ui/render.js`, `ui/chart.js`, `ui/recoil.js` if it grows unwieldy. The inline script has already been extracted; further splitting is optional.
 2. **Expand validation if needed.** JSON Schema would be useful once the data format stabilizes further.
 3. **Add provenance metadata to data files (note 2).** Low priority until models need auditing.
 4. **Add formal visual regression screenshots.** Useful baseline before large recoil, bloom, or responsive layout changes.
