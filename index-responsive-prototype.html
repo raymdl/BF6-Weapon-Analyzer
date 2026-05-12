@@ -19,8 +19,12 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .logo{font-size:1.05rem;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase}
 .logo span{color:var(--muted);font-weight:400}
 .hdr-tag{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
+.loadout-btn{display:none;margin-left:auto;padding:5px 10px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:var(--accent2);border-radius:4px;font-size:0.72rem;letter-spacing:.04em}
+.loadout-close{display:none}
+.loadout-backdrop{display:none}
 .app{display:flex;flex:1;overflow:hidden}
 /* Sidebar */
+.loadout-modal-head{display:none}
 .sidebar{width:208px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sb-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
 .sb-scroll::-webkit-scrollbar{width:3px}
@@ -186,10 +190,18 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 }
 @media (max-width:980px){
   body{height:auto;min-height:100vh;overflow:auto}
+  body.loadout-open{overflow:hidden}
   header{position:sticky;top:0;z-index:20;flex-wrap:wrap;height:auto;min-height:46px;padding-block:8px}
+  .loadout-btn{display:block}
+  .loadout-backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:50;opacity:0;pointer-events:none;transition:opacity .14s}
+  body.loadout-open .loadout-backdrop{opacity:1;pointer-events:auto}
   .app{display:block;overflow:visible}
-  .sidebar{width:100%;border-right:0;border-bottom:1px solid var(--border);max-height:46vh}
-  .sb-scroll{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr);overflow:auto}
+  .sidebar{position:fixed;left:50%;top:14px;bottom:14px;z-index:60;width:min(760px,calc(100vw - 24px));max-height:none;border:1px solid var(--border);border-radius:7px;box-shadow:0 18px 44px rgba(0,0,0,.65);transform:translate(-50%,-10px);opacity:0;pointer-events:none;transition:opacity .14s,transform .14s}
+  body.loadout-open .sidebar{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+  .loadout-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
+  .loadout-modal-title{font-size:0.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+  .loadout-close{display:grid;place-items:center;width:28px;height:26px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:1rem;line-height:1}
+  .sb-scroll{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr);overflow:auto;min-height:0}
   .sb-sec,.att-sec{border-bottom:0;border-right:1px solid var(--border)}
   #cmpSection{grid-column:1/-1;border-top:1px solid var(--border)}
   #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:grid!important;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
@@ -204,7 +216,8 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
   header{align-items:flex-start;gap:6px}
   .logo{font-size:.95rem;letter-spacing:2px}
   .hdr-tag{font-size:.58rem}
-  .sidebar{max-height:58vh}
+  .sidebar{inset:8px;width:auto;top:8px;bottom:8px;left:8px;right:8px;transform:translateY(-10px)}
+  body.loadout-open .sidebar{transform:translateY(0)}
   .sb-scroll{display:block}
   .sb-sec,.att-sec{border-right:0;border-bottom:1px solid var(--border);padding:8px 10px}
   .class-filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
@@ -251,9 +264,14 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 <header>
   <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
   <div class="hdr-tag">Updated 11 MAY 2026</div>
+  <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections">Loadout</button>
 </header>
 <div class="app">
   <aside class="sidebar">
+    <div class="loadout-modal-head">
+      <div class="loadout-modal-title">Loadout</div>
+      <button class="loadout-close" id="loadoutCloseBtn" type="button" title="Close loadout panel">×</button>
+    </div>
     <button class="cmp-btn" id="cmpBtn">+ Compare Loadout</button>
     <div class="sb-scroll">
       <div class="sb-sec">
@@ -279,6 +297,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
       </div>
     </div>
   </aside>
+  <div class="loadout-backdrop" id="loadoutBackdrop"></div>
   <main class="main" id="main">
     <div class="empty" id="emptyState">
       <div class="empty-t">Select a weapon to begin</div>
@@ -866,6 +885,15 @@ function syncCompensationLevel(source='input') {
   syncCompensationControls();
   renderRecoil();
 }
+
+function setLoadoutOverlay(open) {
+  document.body.classList.toggle('loadout-open', !!open);
+  document.getElementById('loadoutOpenBtn')?.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function openLoadoutOverlay() { setLoadoutOverlay(true); }
+function closeLoadoutOverlay() { setLoadoutOverlay(false); }
+
 function toggleRecoilLayer(layer) {
   if(!(layer in recoilLayers)) return;
   recoilLayers[layer]=!recoilLayers[layer];
@@ -1745,10 +1773,17 @@ document.getElementById('rcShotCountInput')?.addEventListener('change', syncReco
 document.getElementById('rcShotCountInput')?.addEventListener('input', syncRecoilShotCount);
 document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));
 document.getElementById('rcCompRange')?.addEventListener('input', () => syncCompensationLevel('range'));
+document.getElementById('loadoutOpenBtn')?.addEventListener('click', openLoadoutOverlay);
+document.getElementById('loadoutCloseBtn')?.addEventListener('click', closeLoadoutOverlay);
+document.getElementById('loadoutBackdrop')?.addEventListener('click', closeLoadoutOverlay);
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeLoadoutOverlay();
+});
 
 // Bridge to window so inline onclick="…" attributes can resolve these (module scope is not global)
 Object.assign(window, {
   cloneCompareLoadout,
+  closeLoadoutOverlay, openLoadoutOverlay,
   adjustRecoilScale, panRecoilView, randomizeRecoilReference, resetRecoilReference,
   resetRecoilView, setBtkHS, setChartMode, setRecoilAim, setRecoilControl,
   setRecoilStance, toggleAdsToggle, toggleRecoilLayer,
