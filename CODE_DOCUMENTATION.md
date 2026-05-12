@@ -18,6 +18,12 @@ BF6 Project/
   preview_bloom.html        ← Recoil/bloom chart experiment tool
   preview_distance.html     ← Distance-wall spray projection tool
 
+  ui/
+    app.js                  ← Primary app state, rendering, chart, and recoil UI logic
+
+  vendor/
+    chart.umd.min.js        ← Local Chart.js bundle used by index.html
+
   sim/
     core.js                 ← Shared simulation math (RNG, recoil, bloom)
     applyAttachments.js     ← Attachment effect application + derived stats
@@ -429,15 +435,8 @@ does not model bullet travel time, drag, sight height, or zeroing.
 
 Primary app. Major JS regions (line numbers approximate, drift as file changes):
 
-- **~1–140**: metadata, Chart.js CDN import, CSS.
-- **~140–260**: static HTML shell — containers filled by JS.
-- **~260–520**: module imports, JSON fetch (`Promise.all`), context setup, shared lookup maps.
-- **~520–650**: app state, class filters, shared loadout adapters, rendering entry points.
-- **~650–930**: weapon list/sidebar rendering, overview stat cards, damage/BTK/TTK helpers.
-- **~930–1120**: Chart.js damage, BTK, and TTK rendering through `updateDmgChart()`.
-- **~1120–1450**: recoil/bloom canvas rendering (`drawRecoilFixed`, per-draw simulation cache, overlay toggles).
-- **~1450–1660**: attachment effect chips, recoil stat bars, tooltip builders.
-- **~1660+**: startup calls, event wiring, module-to-window bridge.
+- **`index.html`**: metadata, local Chart.js include, CSS, static HTML shell, and `ui/app.js` module entry point.
+- **`ui/app.js`**: JSON fetch (`Promise.all`), context setup, app state, sidebar/loadout rendering, overview cards, chart rendering, recoil/bloom canvas, attachment effect chips, and event wiring.
 
 **Class filter buttons** (`CLASSES` array): `Assault Rifle`, `Carbine`, `SMG`, `LMG`,
 `DMR`, `Sniper Rifle`, `Shotgun`. Button labels come from `CLASS_SHORT`:
@@ -610,12 +609,10 @@ dataset-index-to-slot correspondence.
 
 ---
 
-### 7 — No guard if Chart.js CDN fails to load *(open)*
+### 7 — No guard if Chart.js CDN fails to load *(fixed)*
 
-`index.html` loads Chart.js from jsDelivr. If the network is unavailable or blocked,
-`renderChart()` throws because `Chart` is undefined.
-
-**Fix:** Vendor Chart.js locally, or add a try/catch guard with a fallback message.
+`index.html` now loads Chart.js from `vendor/chart.umd.min.js` and shows a clear
+fallback message if the local bundle fails to initialize.
 
 ---
 
@@ -638,15 +635,15 @@ Remaining test gaps:
 
 ### Near-Term
 
-1. **Validate recoil decay (note 1).** Pick one auto weapon, record post-burst recovery at known RPM, compare to model output.
-2. **Verify assumed attachment stats (note 5).** Block for Season 3 data drop.
-3. **Add Playwright visual smoke coverage.** Capture main recoil overlays and distance panels before Season 3 recoil changes.
-4. **Plan responsive layout for `index.html`.** The preview pages stack better than the primary app today.
+1. **Add Playwright visual smoke coverage.** Capture desktop, tablet, and mobile flows for the main app plus the two preview pages. This protects the responsive loadout overlay, Chart.js rendering, and recoil canvas from quiet regressions.
+2. **Validate recoil decay (note 1).** Pick one auto weapon, record post-burst recovery at known RPM, compare to model output, and document the measured curve.
+3. **Verify assumed attachment stats (note 5).** Block for the next reliable data drop; clear `assumed: true` as values become source-backed.
+4. **Improve `noEffect` attachment signaling (note 4).** Add a compact tooltip or legend only if user confusion shows up in testing.
 
 ### Longer-Term
 
-1. **Further split `ui/app.js`** into `ui/render.js`, `ui/chart.js`, `ui/recoil.js` if it grows unwieldy. The inline script has already been extracted; further splitting is optional.
-2. **Expand validation if needed.** JSON Schema would be useful once the data format stabilizes further.
-3. **Add provenance metadata to data files (note 2).** Low priority until models need auditing.
-4. **Add formal visual regression screenshots.** Useful baseline before large recoil, bloom, or responsive layout changes.
-5. **Track performance baselines.** The current caches reduce obvious rework, but large future dashboards should measure render cost explicitly.
+1. **Further split `ui/app.js` only when needed.** Good next boundaries would be `ui/chart.js`, `ui/recoil.js`, and `ui/render.js`, but the current extraction already removed the worst `index.html` pressure.
+2. **Expand validation if data churn increases.** JSON Schema or stricter effect-field checks would be useful once the data format stabilizes further.
+3. **Add provenance metadata to data files (note 2).** Source/date tags become more valuable as assumed, screenshot-derived, and datamined values coexist.
+4. **Track performance baselines.** The current caches reduce obvious rework, but larger dashboards or multi-state comparisons should measure render cost explicitly.
+5. **Formalize visual regression screenshots.** Once Playwright smoke coverage exists, promote key screenshots into a baseline workflow before large recoil, bloom, or layout changes.
