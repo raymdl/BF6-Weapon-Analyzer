@@ -28,14 +28,26 @@
 let _ctx = {
   MUZZLES: [], BARRELS: [], GRIPS: [], LASERS: [],
   AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {},
+  MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {},
+  AMMO_BY_ID: {}, ERGOS_BY_ID: {},
   RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
   BASE_HS_MULT: {}, HP_HS_HIGH: new Set(),
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
   ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], ADS_MOVE_TIERS: [],
 };
 
+function byId(items) {
+  return Object.fromEntries((items ?? []).map(item => [item.id, item]));
+}
+
 export function setAttachmentContext(updates) {
   Object.assign(_ctx, updates);
+  if (updates.MUZZLES) _ctx.MUZZLES_BY_ID = byId(_ctx.MUZZLES);
+  if (updates.BARRELS) _ctx.BARRELS_BY_ID = byId(_ctx.BARRELS);
+  if (updates.GRIPS) _ctx.GRIPS_BY_ID = byId(_ctx.GRIPS);
+  if (updates.LASERS) _ctx.LASERS_BY_ID = byId(_ctx.LASERS);
+  if (updates.AMMO) _ctx.AMMO_BY_ID = byId(_ctx.AMMO);
+  if (updates.ERGOS) _ctx.ERGOS_BY_ID = byId(_ctx.ERGOS);
 }
 
 
@@ -51,17 +63,18 @@ export function applyAttachments(w, atts) {
 
   const {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
+    MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
     BASE_HS_MULT, HP_HS_HIGH,
     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
     ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
   } = _ctx;
 
-  const muz = MUZZLES.find(a => a.id === atts.muzzle) ?? MUZZLES[0];
-  const bar = BARRELS.find(a => a.id === atts.barrel) ?? BARRELS[0];
-  const grp = GRIPS.find(a => a.id === atts.grip)    ?? GRIPS[0];
-  const las = LASERS.find(a => a.id === atts.laser)  ?? LASERS[0];
-  const ammoType = AMMO.find(a => a.id === (atts.ammo ?? 'standard')) ?? AMMO[0];
+  const muz = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
+  const bar = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
+  const grp = GRIPS_BY_ID[atts.grip]    ?? GRIPS[0];
+  const las = LASERS_BY_ID[atts.laser]  ?? LASERS[0];
+  const ammoType = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
 
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
   // Tier formula: effectiveRecoilV = recoilV × ADSRecoilAmountMultiplier ^ (sum of tier mods)
@@ -133,7 +146,7 @@ export function applyAttachments(w, atts) {
   const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
 
   // ── Ergonomics ────────────────────────────────────────────────────────────────
-  const ergoData = ERGOS.find(e => e.id === (atts.ergo ?? 'none')) ?? ERGOS[0];
+  const ergoData = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
   const ergoSprintRecoveryTierShift = ergoData.sprintRecoveryTierShift ?? 0;
 
   // ── Magazine stats ────────────────────────────────────────────────────────────

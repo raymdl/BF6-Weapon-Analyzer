@@ -21,6 +21,7 @@ BF6 Project/
   sim/
     core.js                 ← Shared simulation math (RNG, recoil, bloom)
     applyAttachments.js     ← Attachment effect application + derived stats
+    loadout.js              ← Shared loadout defaults, point totals, and sidebar helpers
     attachments.js          ← Canonical ordered attachment slot definitions
 
   data/
@@ -29,6 +30,9 @@ BF6 Project/
     ammo.json               ← Ammo types + per-weapon availability
     recoil_decay.json       ← Per-weapon ADS recoil decay table
     balance_tables.json     ← Tier tables (ADS speed, sprint recovery, spread, etc.)
+
+  scripts/
+    validate-data.mjs       ← Cross-file data validation used locally and by CI
 
   CODE_DOCUMENTATION.md     ← Architecture and behavior reference
   MAINTENANCE.md            ← Season/patch update checklist (data edits)
@@ -42,8 +46,9 @@ Local-only helper files are intentionally ignored and should not be committed:
 
 1. Page loads → `<script type="module">` fetches all relevant JSON files via `Promise.all`.
 2. Data is pushed into `sim/core.js` via `setSimContext()` and `sim/applyAttachments.js` via `setAttachmentContext()`.
-3. User selects a weapon and attachments → `applyAttachments(rawWeapon, selectedAtts)` returns a derived weapon object.
-4. All renderers (overview cards, chart, BTK table, recoil canvas) consume the derived object.
+3. `sim/loadout.js` provides shared attachment defaults, point totals, assumed-stat detection, and sidebar rendering helpers.
+4. User selects a weapon and attachments → `applyAttachments(rawWeapon, selectedAtts)` returns a derived weapon object.
+5. All renderers (overview cards, chart, BTK table, recoil canvas) consume the derived object.
 
 All three pages share the same `sim/` modules and the same `data/` JSON files. **One data edit applies to all pages.**
 
@@ -116,6 +121,10 @@ setAttachmentContext({
 
 Call once after all JSON data is fetched.
 
+`setAttachmentContext()` also builds per-catalog ID lookup maps. Hot paths in
+`applyAttachments()` resolve selected attachments from those maps instead of
+scanning catalog arrays on every render.
+
 **Exports:**
 
 | Export | Description |
@@ -176,6 +185,30 @@ export const ATTACHMENT_SLOT_KEYS = [
 `dataKey` is resolved against each page's own attachment data source. `isBarrel: true`
 marks the slot that always has at least one option (no 'None' choice). Slots are always
 rendered — when unavailable they appear disabled/greyed rather than hidden.
+
+---
+
+### `sim/loadout.js`
+
+Shared loadout UI and accounting helpers used by `index.html`,
+`preview_bloom.html`, and `preview_distance.html`. The index page remains the
+golden source for behavior and styling; the preview pages call the same helper
+with their own DOM class names.
+
+**Exports:**
+
+| Export | Description |
+|---|---|
+| `defaultAttsForWeapon(weapon)` | Returns the canonical default attachment selections for a weapon |
+| `resetAttsForWeapon(weapon)` | Alias for default loadout reset on weapon switch |
+| `validateAtts(weapon)` | Backwards-compatible alias retained for older page code |
+| `computeAttPts(weapon, atts, data)` | Sums attachment points across sight, muzzle, barrel, grip, laser, ammo, mag, and ergo |
+| `hasSelectedAssumedAtt(weapon, atts, data)` | Detects selected attachments flagged `assumed: true` |
+| `attDisplayName(id, data)` | Resolves an attachment ID to display text |
+| `renderAttachmentSection(config)` | Builds a slot dropdown row using the shared slot metadata |
+
+The module caches attachment catalog lookup maps with a `WeakMap` keyed by the
+data bundle passed by each page.
 
 ---
 
@@ -398,14 +431,13 @@ Primary app. Major JS regions (line numbers approximate, drift as file changes):
 
 - **~1–140**: metadata, Chart.js CDN import, CSS.
 - **~140–260**: static HTML shell — containers filled by JS.
-- **~260–480**: module imports, JSON fetch (`Promise.all`), `setSimContext`, `setAttachmentContext`.
-- **~480–700**: app state, `CLASSES`/`CLASS_SHORT`, utility helpers, rendering entry points.
-- **~700–900**: attachment section builder, weapon list builder, sidebar renderer.
-- **~900–1100**: overview stat cards, damage/BTK/TTK calculations.
-- **~1100–1400**: Chart.js damage, BTK, and TTK rendering.
-- **~1400–1700**: recoil/bloom canvas rendering (`drawRecoilFixed`, `genRecoilPts` calls, overlay toggles).
-- **~1700–1800**: attachment effect chips, recoil stat bars.
-- **~1800+**: startup calls (`renderSidebar`, `renderStats`).
+- **~260–520**: module imports, JSON fetch (`Promise.all`), context setup, shared lookup maps.
+- **~520–650**: app state, class filters, shared loadout adapters, rendering entry points.
+- **~650–930**: weapon list/sidebar rendering, overview stat cards, damage/BTK/TTK helpers.
+- **~930–1120**: Chart.js damage, BTK, and TTK rendering through `updateDmgChart()`.
+- **~1120–1450**: recoil/bloom canvas rendering (`drawRecoilFixed`, per-draw simulation cache, overlay toggles).
+- **~1450–1660**: attachment effect chips, recoil stat bars, tooltip builders.
+- **~1660+**: startup calls, event wiring, module-to-window bridge.
 
 **Class filter buttons** (`CLASSES` array): `Assault Rifle`, `Carbine`, `SMG`, `LMG`,
 `DMR`, `Sniper Rifle`, `Shotgun`. Button labels come from `CLASS_SHORT`:
@@ -452,12 +484,13 @@ Useful for validating how angular recoil/bloom translates to practical engagemen
 
 1. `<script type="module">` fetches all JSON files via `Promise.all`.
 2. `setSimContext(...)` and `setAttachmentContext(...)` are called with fetched data.
-3. `renderSidebar()` and `renderStats()` are called. With no weapon selected, `renderStats`
+3. Shared lookup maps are initialized for attachment and loadout resolution.
+4. `renderSidebar()` and `renderStats()` are called. With no weapon selected, `renderStats`
    shows the empty state and returns.
 
-### Attachment Sidebar (`buildAttachmentSection`)
+### Attachment Sidebar (`renderAttachmentSection`)
 
-Iterates `ATTACHMENT_SLOT_KEYS` from `sim/attachments.js`. For each slot:
+`sim/loadout.js` iterates `ATTACHMENT_SLOT_KEYS` from `sim/attachments.js`. For each slot:
 - **No weapon selected**: renders disabled placeholder (greyed, never hidden).
 - **Weapon selected, one option**: renders disabled single-option row.
 - **Weapon selected, multiple options**: renders interactive dropdown.
@@ -465,17 +498,34 @@ Iterates `ATTACHMENT_SLOT_KEYS` from `sim/attachments.js`. For each slot:
 Ammo, Mag, and Ergo slots are built separately from their per-weapon maps using the same
 always-render / disable-when-unavailable pattern.
 
-Selecting a weapon calls `validateAtts()` first (strips invalid IDs), then re-renders.
+Selecting a weapon resets to the canonical defaults with `resetAttsForWeapon()`; the
+legacy `validateAtts()` name still exists as a compatibility wrapper.
 
 ### Attachment Point Counter (`computeAttPts`)
 
-Sums points across muzzle, barrel, grip, laser, ammo, magazine, and ergo. Over-100 loadouts
+Sums points across sight, muzzle, barrel, grip, laser, ammo, magazine, and ergo. Over-100 loadouts
 are marked with the `.over` class. Weapon-specific point overrides (`weaponPts`) are resolved
 by `getAttPts()`.
 
 Seven attachment stats are marked `assumed: true` and trigger a sidebar footnote when selected:
 Linear Compensator, Compensated Brake, Flash Compensator, Long Suppressor, Lightened
 Suppressor, Heavy Barrel, Heavy Extended Barrel.
+
+---
+
+## Performance Notes
+
+The app is still static and render-on-change, but the busiest paths avoid avoidable
+rework:
+
+- Attachment catalogs are indexed once in `sim/applyAttachments.js`.
+- Shared loadout helpers cache their catalog indexes per page data bundle.
+- `renderChart()` reuses the existing Chart.js instance via `updateDmgChart()` and
+  calls `chart.update('none')` instead of destroying/recreating the canvas state.
+- `drawRecoilFixed()` computes recoil points, bloom radii, and spray points once per
+  weapon per draw and reuses them across scatter, spray path, bloom, and cone layers.
+- Default applied weapon baselines are cached per raw weapon object for attachment stat
+  comparisons.
 
 ---
 
@@ -488,9 +538,12 @@ See **`MAINTENANCE.md`** for the full season/patch checklist. Quick summary:
 | New weapon | `data/weapons.json` + entries in all other `data/` files |
 | Recoil/stat change | `data/weapons.json` + `data/recoil_decay.json` |
 | New attachment | `data/attachments.json` (catalog + `WEAPON_ATTS` lists) |
-| New attachment *slot type* | `sim/attachments.js` (one entry) + `sim/applyAttachments.js` (handler) |
+| New attachment *slot type* | `sim/attachments.js` (one entry) + `sim/applyAttachments.js` (handler) + `sim/loadout.js` if it affects UI/accounting |
 | New ammo type | `data/ammo.json` |
 | Balance table change | `data/balance_tables.json` |
+
+After data changes, run `node scripts/validate-data.mjs`. CI runs the same
+cross-file validation on pull requests.
 
 ---
 
@@ -551,19 +604,11 @@ effect fields and this document.
 
 ---
 
-### 6 — Chart tooltip callback can throw when only comparison weapon is selected *(bug)*
+### 6 — Chart tooltip callback can throw when only comparison weapon is selected *(fixed)*
 
-Location: `renderChart()` BTK and TTK tooltip callbacks.
-
-```js
-const w = i.datasetIndex === 1 && w2 ? w2 : w1;
-```
-
-If `w1` is `null` and `w2` is set, dataset index 0 maps to `w2` but the callback
-resolves it to `w1` (null). The subsequent `w.name` or `getBTKWithHS(w, ...)` throws.
-
-**Fix:** Store the weapon on each dataset object, or derive from `datasets[i.datasetIndex]`
-metadata rather than assuming slot-to-index correspondence.
+Fixed in `renderChart()` by tagging each dataset with its source weapon metadata
+and reading that metadata inside tooltip callbacks instead of assuming
+dataset-index-to-slot correspondence.
 
 ---
 
@@ -576,19 +621,18 @@ metadata rather than assuming slot-to-index correspondence.
 
 ---
 
-### 8 — No automated tests or data validation *(open)*
+### 8 — No automated tests or data validation *(partially fixed)*
 
-No schema validation or test suite exists for:
-- Weapon IDs cross-referenced across `data/` files
-- `WEAPON_ATTS` barrel defaults pointing to valid IDs
-- Magazine `def` IDs matching `mags` keys
-- Attachment effect field completeness
+`scripts/validate-data.mjs` now checks the highest-risk data drift cases:
+cross-file weapon and attachment IDs, `WEAPON_ATTS` barrel defaults, magazine
+defaults, required fields for supported weapons, known classes, and the current
+sidearm hiding rule. CI runs the same script on pull requests.
+
+Remaining test gaps:
+- Attachment effect field completeness beyond neutral/default behavior
 - Uniform-over-radius sampling correctness
 - Recoil control compensation math
 - Bloom cone/envelope rendering consistency
-
-**Fix:** Add a lightweight validation script (cross-reference IDs, check required fields,
-spot-check sampling distribution) before making further recoil/bloom model changes.
 
 ---
 
@@ -596,16 +640,16 @@ spot-check sampling distribution) before making further recoil/bloom model chang
 
 ### Near-Term
 
-1. **Fix tooltip bug (note 6).** Low-effort, prevents a throw in a reachable user path.
-2. **Validate recoil decay (note 1).** Pick one auto weapon, record post-burst recovery at known RPM, compare to model output.
-3. **Verify assumed attachment stats (note 5).** Block for Season 3 data drop.
-4. **Add Chart.js CDN fallback (note 7).** One-line try/catch around chart init.
-5. **Add ID cross-reference validation script.** Run before each Season update to catch stale IDs.
+1. **Validate recoil decay (note 1).** Pick one auto weapon, record post-burst recovery at known RPM, compare to model output.
+2. **Verify assumed attachment stats (note 5).** Block for Season 3 data drop.
+3. **Add Chart.js CDN fallback (note 7).** Vendor Chart.js locally or show a graceful fallback message.
+4. **Add Playwright visual smoke coverage.** Capture main recoil overlays and distance panels before Season 3 recoil changes.
+5. **Plan responsive layout for `index.html`.** The preview pages stack better than the primary app today.
 
 ### Longer-Term
 
-1. **Add data schema / validation.** JSON Schema or a small Python/JS script that checks all `id` cross-references, required fields, and default pointers across all five `data/` files.
-2. **Split `index.html` rendering logic** into `ui/render.js`, `ui/chart.js`, `ui/recoil.js` to reduce file size and improve navigability.
+1. **Split `index.html` rendering logic** into `ui/render.js`, `ui/chart.js`, `ui/recoil.js` to reduce file size and improve navigability.
+2. **Expand validation if needed.** JSON Schema would be useful once the data format stabilizes further.
 3. **Add provenance metadata to data files (note 2).** Low priority until models need auditing.
-4. **Add visual regression screenshots** for the main recoil overlays and distance panels. Useful baseline before Season 3 recoil changes.
-5. **Responsive layout.** The main app is desktop-only. `preview_bloom.html` has a simple stacking breakpoint; `index.html` does not.
+4. **Add formal visual regression screenshots.** Useful baseline before large recoil, bloom, or responsive layout changes.
+5. **Track performance baselines.** The current caches reduce obvious rework, but large future dashboards should measure render cost explicitly.

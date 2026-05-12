@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BF6 Weapon Analyzer</title>
+<title>BF6 Weapon Analyzer - Responsive Prototype</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 :root {
@@ -175,6 +175,76 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .wbtn.p1.p2{background:rgba(130,100,180,.13);border-left-color:var(--accent2);color:var(--accent2)}
 /* Footer */
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+/* Responsive prototype overrides.
+   This file is a layout experiment; index.html remains the production source. */
+@media (max-width:1180px){
+  .rc-layout{grid-template-columns:minmax(360px,456px) minmax(0,1fr);row-gap:18px;column-gap:20px}
+  .att-stats{grid-column:1/-1}
+  .rc-layout::before,.rc-layout::after{display:none}
+  .att-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+}
+@media (max-width:980px){
+  body{height:auto;min-height:100vh;overflow:auto}
+  header{position:sticky;top:0;z-index:20;flex-wrap:wrap;height:auto;min-height:46px;padding-block:8px}
+  .app{display:block;overflow:visible}
+  .sidebar{width:100%;border-right:0;border-bottom:1px solid var(--border);max-height:46vh}
+  .sb-scroll{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr);overflow:auto}
+  .sb-sec,.att-sec{border-bottom:0;border-right:1px solid var(--border)}
+  #cmpSection{grid-column:1/-1;border-top:1px solid var(--border)}
+  #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:grid!important;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
+  .cmp-hdr{grid-column:1/-1;border-top:0;border-bottom:1px solid var(--border)}
+  .main{overflow:visible;padding:10px}
+  #statsArea > .panel:nth-of-type(2) > div{flex-direction:column}
+  #statsArea > .panel:nth-of-type(2) > div > div:first-child{border-right:0!important;border-bottom:1px solid var(--border)}
+  .chart-wrap{height:238px}
+}
+@media (max-width:720px){
+  body{font-size:13px}
+  header{align-items:flex-start;gap:6px}
+  .logo{font-size:.95rem;letter-spacing:2px}
+  .hdr-tag{font-size:.58rem}
+  .sidebar{max-height:58vh}
+  .sb-scroll{display:block}
+  .sb-sec,.att-sec{border-right:0;border-bottom:1px solid var(--border);padding:8px 10px}
+  .class-filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
+  .cbtn{flex:0 0 auto;padding:4px 8px}
+  .wlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:2px}
+  .wbtn{border:1px solid rgba(40,48,48,.55);border-left:2px solid transparent;border-radius:3px;padding:6px 8px}
+  .att-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px}
+  #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:block!important}
+  .main{padding:8px;gap:8px}
+  .panel{padding:10px;border-radius:5px}
+  .w-header{gap:6px}
+  .wname,.wname2{font-size:1rem}
+  .sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .scard{padding:6px}
+  #statsArea > .panel:nth-of-type(2) > div > div{padding:10px!important}
+  #statsArea > .panel:nth-of-type(2) > div > div:first-child > div:first-child{align-items:flex-start!important;flex-direction:column;gap:7px}
+  .chart-wrap{height:210px}
+  .btk-tbl{font-size:.72rem}
+  .btk-tbl th,.btk-tbl td{padding:4px}
+  .rc-layout{display:grid;grid-template-columns:1fr;gap:12px}
+  .rc-head{gap:8px}
+  .rc-state-group,.rc-mode-group{flex-wrap:wrap}
+  .rc-plot{width:100%;flex-basis:auto}
+  .rc-canvas-wrap{width:100%;height:auto;aspect-ratio:1}
+  canvas.rcv{width:100%!important;height:100%!important}
+  .rc-ref-actions{top:8px;right:8px}
+  .rc-scale-controls{top:38px;right:8px}
+  .rc-pan-controls{right:8px;bottom:14px}
+  .rc-tt{position:static;min-width:0;margin-top:4px;box-shadow:none}
+  .att-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer{align-items:flex-start;flex-direction:column;padding:7px 10px;gap:4px}
+}
+@media (max-width:430px){
+  .sgrid,.att-grid{grid-template-columns:1fr}
+  .mode-btn{padding-inline:7px}
+  .rc-mode-btn{min-width:auto!important}
+  .rc-shots-input{width:92px}
+  .rc-comp-range{width:72px}
+  .chart-wrap{height:188px}
+}
 </style>
 </head>
 <body>

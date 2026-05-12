@@ -1,5 +1,28 @@
 import { ATTACHMENT_SLOT_KEYS } from './attachments.js';
 
+const lookupCache = new WeakMap();
+
+function byId(items) {
+  return Object.fromEntries((items ?? []).map(item => [item.id, item]));
+}
+
+function getLookups(data) {
+  let lookups = lookupCache.get(data);
+  if (!lookups) {
+    lookups = {
+      SIGHTS: byId(data.SIGHTS),
+      MUZZLES: byId(data.MUZZLES),
+      BARRELS: byId(data.BARRELS),
+      GRIPS: byId(data.GRIPS),
+      LASERS: byId(data.LASERS),
+      AMMO: byId(data.AMMO),
+      ERGOS: byId(data.ERGOS),
+    };
+    lookupCache.set(data, lookups);
+  }
+  return lookups;
+}
+
 export function blankAtts() {
   return {
     sight: 'iron',
@@ -33,14 +56,15 @@ export function getAttPts(a, weaponId) {
 export function computeAttPts(atts, weapon, data) {
   const wid = weapon?.id;
   if (!wid) return 0;
+  const lookups = getLookups(data);
   const wm = data.WEAPON_MAG[wid] ?? null;
   const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
-  const ergoPts = data.ERGOS.find(e => e.id === (atts.ergo ?? 'none'))?.pts ?? 0;
-  return getAttPts(data.SIGHTS.find(a => a.id === (atts.sight ?? 'iron')), wid)
-    + getAttPts(data.MUZZLES.find(a => a.id === atts.muzzle), wid)
-    + getAttPts(data.BARRELS.find(a => a.id === atts.barrel), wid)
-    + getAttPts(data.GRIPS.find(a => a.id === atts.grip), wid)
-    + getAttPts(data.LASERS.find(a => a.id === atts.laser), wid)
+  const ergoPts = lookups.ERGOS[atts.ergo ?? 'none']?.pts ?? 0;
+  return getAttPts(lookups.SIGHTS[atts.sight ?? 'iron'], wid)
+    + getAttPts(lookups.MUZZLES[atts.muzzle], wid)
+    + getAttPts(lookups.BARRELS[atts.barrel], wid)
+    + getAttPts(lookups.GRIPS[atts.grip], wid)
+    + getAttPts(lookups.LASERS[atts.laser], wid)
     + (data.WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
     + magPts
     + ergoPts;
@@ -52,18 +76,17 @@ export function attDisplayName(a) {
 
 export function hasSelectedAssumedAtt(atts, data) {
   if (!atts) return false;
-  const slotSources = {
-    sight: data.SIGHTS,
-    muzzle: data.MUZZLES,
-    barrel: data.BARRELS,
-    grip: data.GRIPS,
-    laser: data.LASERS,
-    ammo: data.AMMO,
-    ergo: data.ERGOS,
-  };
-  return Object.entries(slotSources).some(([key, source]) =>
-    source?.find(a => a.id === (atts[key] ?? (key === 'sight' ? 'iron' : null)))?.assumed
-  );
+  const lookups = getLookups(data);
+  const slotSources = [
+    ['sight', lookups.SIGHTS, 'iron'],
+    ['muzzle', lookups.MUZZLES],
+    ['barrel', lookups.BARRELS],
+    ['grip', lookups.GRIPS],
+    ['laser', lookups.LASERS],
+    ['ammo', lookups.AMMO],
+    ['ergo', lookups.ERGOS],
+  ];
+  return slotSources.some(([key, source, fallback]) => source[atts[key] ?? fallback]?.assumed);
 }
 
 export function updateAttTotal(containerId, atts, weapon, data) {
@@ -217,9 +240,9 @@ export function renderAttachmentSection({
   const visibleErgos = data.ERGOS.filter(e => e.id === 'none' || (availSet && availSet.has(e.id)));
   if (visibleErgos.length > 1 && weapon) {
     appendSelectRow(container, {
-      label: 'Ergo',
-      value: atts.ergo ?? 'none',
-      options: visibleErgos.map(e => ({
+        label: 'Ergo',
+        value: atts.ergo ?? 'none',
+        options: visibleErgos.map(e => ({
         id: e.id,
         text: e.pts > 0 ? `${e.name} [${e.pts}]` : e.name,
         noEffect: e.noEffect,

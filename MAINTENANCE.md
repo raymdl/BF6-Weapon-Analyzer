@@ -17,7 +17,11 @@ data/
 sim/
   core.js               ← Shared simulation math (recoil, bloom, spread)
   applyAttachments.js   ← Applies attachment effects to a weapon object
+  loadout.js            ← Shared loadout defaults, point totals, and attachment UI
   attachments.js        ← Ordered list of attachment slot types (UI metadata)
+
+scripts/
+  validate-data.mjs     ← Cross-file data integrity checks used by CI
 ```
 
 All three pages (`index.html`, `preview_bloom.html`, `preview_distance.html`)
@@ -78,7 +82,9 @@ Edit the relevant weapon object in `data/weapons.json`.
    every weapon that can equip it
 3. If it's a **new slot type** (e.g. Underbarrel): add one entry to
    `sim/attachments.js` → `ATTACHMENT_SLOT_KEYS`, and add handling for its
-   effects in `sim/applyAttachments.js`
+   effects in `sim/applyAttachments.js`. If the slot should render in the
+   shared sidebar or count toward attachment points, update `sim/loadout.js`
+   as well.
 
 ### New Ammo Type
 
@@ -131,4 +137,20 @@ If game mechanics change (not just data), edit the relevant module:
 | Bloom/spread simulation | `sim/core.js` → `simulateBloom` |
 | Recoil decay formula | `sim/core.js` → `applyRecoilDecay` |
 | Attachment stat application | `sim/applyAttachments.js` → `applyAttachments` |
+| Loadout defaults / point totals / sidebar UI | `sim/loadout.js` |
 | Attachment slot order / new slot types | `sim/attachments.js` → `ATTACHMENT_SLOT_KEYS` |
+
+---
+
+## Data Validation
+
+Run the validation script after data edits and before committing season updates:
+
+```bash
+node scripts/validate-data.mjs
+```
+
+The script checks cross-file weapon and attachment IDs, barrel and magazine
+defaults, supported weapon classes, required weapon fields, and sidearm hiding
+rules. The GitHub workflow runs the same script on pull requests so stale IDs
+or incomplete supported weapons fail loudly instead of producing wrong UI stats.
