@@ -557,8 +557,8 @@ import {
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
   simulateBloom, genRecoilPts,
 } from './sim/core.js';
-import { ATTACHMENT_SLOT_KEYS } from './sim/attachments.js';
 import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
+import * as Loadout from './sim/loadout.js';
 // ── DATA — loaded in parallel ─────────────────────────────────────────────────
 // (top-level await — requires module script + http server)
 const [EMBEDDED_WEAPONS, _balance, _atts, _ammo, _recoilDecay] = await Promise.all([
@@ -584,10 +584,15 @@ setAttachmentContext({
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
   ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
 });
+const LOADOUT_DATA = {
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+  WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
+  AMMO, WEAPON_AMMO,
+};
 let WEAPONS = [];
 let selectedClass = 'Assault Rifle';
 let selectedWeaponId = 'm433';
-const blankAtts = () => ({ muzzle: 'none', barrel: 'none', grip: 'none', laser: 'none', ammo: 'standard', mag: null, ergo: 'none' });
+const blankAtts = Loadout.blankAtts;
 let selectedAtts = blankAtts();
 let aimState = 'ads';
 let stanceState = 'stand';
@@ -633,148 +638,23 @@ function selectedWeapon() {
   return raw ? applyAttachments(raw, selectedAtts) : null;
 }
 
-function getAttPts(a, weaponId) {
-  if (!a) return 0;
-  return (weaponId && a.weaponPts?.[weaponId]) ?? a.pts ?? 0;
-}
-
 function computeAttPts(atts, weapon) {
-  if (!weapon) return 0;
-  const wid = weapon.id;
-  const wm = WEAPON_MAG[wid] ?? null;
-  const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
-  const ergoPts = ERGOS.find(e => e.id === (atts.ergo ?? 'none'))?.pts ?? 0;
-  return getAttPts(MUZZLES.find(a => a.id === atts.muzzle), wid)
-    + getAttPts(BARRELS.find(a => a.id === atts.barrel), wid)
-    + getAttPts(GRIPS.find(a => a.id === atts.grip), wid)
-    + getAttPts(LASERS.find(a => a.id === atts.laser), wid)
-    + (WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
-    + magPts
-    + ergoPts;
+  return Loadout.computeAttPts(atts, weapon, LOADOUT_DATA);
 }
 
 function validateAtts(atts, weapon) {
-  atts.muzzle = 'none';
-  atts.grip = 'none';
-  atts.laser = 'none';
-  const wa = WEAPON_ATTS[weapon?.id] ?? null;
-  atts.barrel = wa?.barrelDef ?? 'basic';
-  atts.ammo = WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
-  atts.mag = WEAPON_MAG[weapon?.id]?.def ?? null;
-  atts.ergo = 'none';
-}
-
-function attDisplayName(a) {
-  return a?.assumed ? `${a.name}*` : a.name;
-}
-
-function addAttachmentRow(container, label, value, options, onChange, disabled = false) {
-  if (!options.length) return;
-  const row = document.createElement('div');
-  row.className = 'att-row';
-  const span = document.createElement('span');
-  span.className = 'att-lbl';
-  span.textContent = label;
-  const sel = document.createElement('select');
-  sel.className = 'att-sel';
-  options.forEach(optData => {
-    const opt = document.createElement('option');
-    opt.value = optData.id;
-    opt.textContent = optData.text;
-    if (optData.noEffect) opt.style.color = '#666';
-    if (optData.id === value) opt.selected = true;
-    sel.appendChild(opt);
-  });
-  if (disabled) {
-    sel.disabled = true;
-  } else {
-    sel.onchange = () => onChange(sel.value);
-  }
-  row.appendChild(span);
-  row.appendChild(sel);
-  container.appendChild(row);
+  Loadout.resetAttsForWeapon(atts, weapon, LOADOUT_DATA);
 }
 
 function renderAttachmentSection() {
-  const el = document.getElementById('attachmentSection');
-  const weapon = rawSelectedWeapon();
-  if (!el) return;
-  const total = weapon ? computeAttPts(selectedAtts, weapon) : 0;
-  el.innerHTML = `<div class="att-head"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total${total > 100 ? ' over' : ''}">Total: ${total} pts</span></div>`;
-  const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
-  const attDataSource = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS };
-
-  ATTACHMENT_SLOT_KEYS.forEach(({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
-    const data = attDataSource[dataKey];
-    if (!weapon || !data) {
-      addAttachmentRow(el, label, '', [{ id: '', text: noWeaponText }], () => {}, true);
-      return;
-    }
-    const allowedIds = wa?.[key];
-    const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
-    let visible = allowedSet ? data.filter(a => allowedSet.has(a.id)) : data;
-    if (isBarrel) visible = visible.filter(a => a.id !== 'none');
-    if (visible.length <= (isBarrel ? 0 : 1)) {
-      const single = visible[0];
-      addAttachmentRow(el, label, single?.id ?? '', [{ id: single?.id ?? '', text: single?.name ?? noWeaponText }], () => {}, true);
-      return;
-    }
-    addAttachmentRow(
-      el,
-      label,
-      selectedAtts[key],
-      visible.map(a => {
-        const pts = getAttPts(a, weapon.id);
-        const name = attDisplayName(a);
-        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect };
-      }),
-      value => { selectedAtts[key] = value; renderSidebar(); redraw(); },
-    );
+  Loadout.renderAttachmentSection({
+    containerId: 'attachmentSection',
+    atts: selectedAtts,
+    weapon: rawSelectedWeapon(),
+    data: LOADOUT_DATA,
+    onChange: () => { renderSidebar(); redraw(); },
   });
-
-  const wAmmo = weapon ? (WEAPON_AMMO[weapon.id] ?? null) : null;
-  const ammoList = wAmmo ? AMMO.filter(a => a.id in wAmmo.ammo) : [];
-  if (ammoList.length > 1) {
-    addAttachmentRow(
-      el, 'Ammo', selectedAtts.ammo ?? wAmmo.def,
-      ammoList.map(a => { const pts = wAmmo.ammo[a.id] ?? 0; return { id: a.id, text: pts > 0 ? `${a.name} [${pts}]` : a.name, noEffect: a.noEffect }; }),
-      value => { selectedAtts.ammo = value; renderSidebar(); redraw(); },
-    );
-  } else {
-    addAttachmentRow(el, 'Ammo', 'standard', [{ id: 'standard', text: 'Standard' }], () => {}, true);
-  }
-
-  const wm = weapon ? (WEAPON_MAG[weapon.id] ?? null) : null;
-  if (wm && Object.keys(wm.mags).length > 0) {
-    addAttachmentRow(
-      el, 'Mag', selectedAtts.mag ?? wm.def,
-      Object.entries(wm.mags).map(([id, m]) => ({ id, text: m.pts > 0 ? `${m.name} [${m.pts}]` : m.name })),
-      value => { selectedAtts.mag = value; renderSidebar(); redraw(); },
-    );
-  } else {
-    addAttachmentRow(el, 'Mag', 'none', [{ id: 'none', text: 'None' }], () => {}, true);
-  }
-
-  const we = weapon ? (WEAPON_ERGO[weapon.id] ?? null) : null;
-  const availSet = we ? new Set(we.avail) : null;
-  const visibleErgos = ERGOS.filter(e => e.id === 'none' || (availSet && availSet.has(e.id)));
-  if (visibleErgos.length > 1 && weapon) {
-    addAttachmentRow(
-      el, 'Ergo', selectedAtts.ergo ?? 'none',
-      visibleErgos.map(e => ({ id: e.id, text: e.pts > 0 ? `${e.name} [${e.pts}]` : e.name, noEffect: e.noEffect })),
-      value => { selectedAtts.ergo = value; renderSidebar(); redraw(); },
-    );
-  } else {
-    addAttachmentRow(el, 'Ergo', 'none', [{ id: 'none', text: 'None' }], () => {}, true);
-  }
-
-  const hasAssumed = ['muzzle', 'barrel'].some(key => {
-    const data = key === 'muzzle' ? MUZZLES : BARRELS;
-    return data.find(a => a.id === selectedAtts[key])?.assumed;
-  });
-  if (hasAssumed) el.insertAdjacentHTML('beforeend', '<div class="att-note">* Assumed stats until datamined attachment values are available.</div>');
 }
-
 function renderSidebar() {
   const cf = document.getElementById('classFilter');
   const wl = document.getElementById('weaponList');

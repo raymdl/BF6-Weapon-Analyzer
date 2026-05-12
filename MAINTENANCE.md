@@ -23,6 +23,11 @@ sim/
 All three pages (`index.html`, `preview_bloom.html`, `preview_distance.html`)
 load from these files. **One edit → all pages updated.**
 
+Sidearms are currently allowed in `data/weapons.json` as raw/incomplete data,
+but they are intentionally unsupported in the UI until their damage and loadout
+data is complete. `scripts/validate-data.mjs` enforces this by validating the
+current supported classes while accepting `Sidearm` as explicitly hidden.
+
 ---
 
 ## Season / Patch Checklist

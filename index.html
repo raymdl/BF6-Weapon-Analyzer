@@ -321,8 +321,8 @@ import {
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
   simulateBloom, genRecoilPts,
 } from './sim/core.js';
-import { ATTACHMENT_SLOT_KEYS } from './sim/attachments.js';
 import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
+import * as Loadout from './sim/loadout.js';
 // ── WEAPON DATABASE ──────────────────────────────────────────────────────────
 // Legacy shorthand fields retained for compact weapon rows:
 // recoilV = ADS recoil/shot derived from Sym.gg ADSRecoilAmount × ADSRecoilAmountMultiplier^ADSRecoilAmountMultiplierExponent.
@@ -370,6 +370,11 @@ setAttachmentContext({
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
   ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
 });
+const LOADOUT_DATA = {
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+  WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
+  AMMO, WEAPON_AMMO,
+};
 
 // ── HIP SPREAD TIER TABLES ────────────────────────────────────────────────────
 // Min spread (°) for tiers 1–6 by hipfire class (weapon-specific, not weapon class).
@@ -493,7 +498,7 @@ const DEFAULT_COMPENSATION = 85;
 let recoilCompensationLevel = DEFAULT_COMPENSATION;
 let recoilScaleH = 5;
 let recoilPanX = 0, recoilPanY = 0;
-const blankAtts = () => ({sight:'iron',muzzle:'none',barrel:'none',grip:'none',laser:'none',ammo:'standard',mag:null,ergo:'none'});
+const blankAtts = Loadout.blankAtts;
 let att1 = blankAtts(), att2 = blankAtts();
 
 const CLASSES = ['Assault Rifle','Carbine','SMG','LMG','DMR','Sniper Rifle','Shotgun'];
@@ -559,192 +564,32 @@ function cloneCompareLoadout() {
 }
 
 function validateAtts(atts, weapon) {
-  // Full reset on weapon switch, then apply per-weapon defaults
-  atts.sight  = 'iron';
-  atts.muzzle = 'none';
-  atts.grip   = 'none';
-  atts.laser  = 'none';
-  const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
-  atts.barrel = wa?.barrelDef ?? 'basic';
-  atts.ammo   = WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
-  atts.mag    = WEAPON_MAG[weapon?.id]?.def ?? null;
-  atts.ergo   = 'none';
+  Loadout.resetAttsForWeapon(atts, weapon, LOADOUT_DATA);
 }
 
-function getAttPts(a, weaponId) {
-  if(!a) return 0;
-  return (weaponId&&a.weaponPts?.[weaponId])??a.pts??0;
-}
 function computeAttPts(atts, weapon) {
-  const wid=weapon?.id;
-  const wm=WEAPON_MAG[wid]??null;
-  const magPts=wm?.mags?.[atts.mag??wm?.def]?.pts??0;
-  const ergoPts=ERGOS.find(e=>e.id===(atts.ergo??'none'))?.pts??0;
-  return getAttPts(SIGHTS.find(a=>a.id===(atts.sight??'iron')),wid)
-        +getAttPts(MUZZLES.find(a=>a.id===atts.muzzle),wid)
-        +getAttPts(BARRELS.find(a=>a.id===atts.barrel),wid)
-        +getAttPts(GRIPS.find(a=>a.id===atts.grip),wid)
-        +getAttPts(LASERS.find(a=>a.id===atts.laser),wid)
-        +(WEAPON_AMMO[wid]?.ammo?.[atts.ammo??'standard']??0)
-        +magPts+ergoPts;
-}
-
-function updateAttTotal(containerId, atts, weapon) {
-  const el=document.getElementById(containerId+'_total');
-  if(!el) return;
-  const pts=computeAttPts(atts,weapon);
-  el.textContent='Total: '+pts+' pts';
-  el.classList.toggle('over', pts>100);
-}
-
-function attDisplayName(a) {
-  return a?.assumed ? `${a.name}*` : a.name;
-}
-function hasSelectedAssumedAtt(atts) {
-  return !!(
-    MUZZLES.find(a=>a.id===atts?.muzzle)?.assumed ||
-    BARRELS.find(a=>a.id===atts?.barrel)?.assumed
-  );
+  return Loadout.computeAttPts(atts, weapon, LOADOUT_DATA);
 }
 function updateAssumedFootnote() {
   document.querySelectorAll('.att-note.assumed-note').forEach(el=>el.remove());
-  const hasAssumed=hasSelectedAssumedAtt(att1)||(comparing&&hasSelectedAssumedAtt(att2));
+  const hasAssumed=Loadout.hasSelectedAssumedAtt(att1,LOADOUT_DATA)||(comparing&&Loadout.hasSelectedAssumedAtt(att2,LOADOUT_DATA));
   const noteTarget=document.getElementById(comparing?'attSection2':'attSection1');
   if(hasAssumed&&noteTarget) noteTarget.insertAdjacentHTML('beforeend','<div class="att-note assumed-note">* Assumed stats until datamined attachment values are available.</div>');
 }
 
 function buildAttachmentSection(containerId, atts, weapon) {
-  const el=document.getElementById(containerId);
-  if (!el) return;
-  el.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
-  const wa = weapon ? (WEAPON_ATTS[weapon.id] ?? null) : null;
-  const attDataSource = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS };
-  ATTACHMENT_SLOT_KEYS.forEach(({ key, label: lbl, dataKey, noWeaponText, isBarrel = false }) => {
-    const data = attDataSource[dataKey];
-    const row=document.createElement('div'); row.className='att-row';
-    const span=document.createElement('span'); span.className='att-lbl'; span.textContent=lbl;
-    const sel=document.createElement('select'); sel.className='att-sel';
-    if (!weapon) {
-      // No weapon selected — show disabled placeholder
-      const opt=document.createElement('option'); opt.value=''; opt.textContent=noWeaponText;
-      sel.appendChild(opt); sel.disabled=true;
-      row.appendChild(span); row.appendChild(sel); el.appendChild(row);
-      return;
-    }
-    const allowedIds = wa?.[key]; // undefined = no restriction
-    const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
-    let visible = allowedSet ? data.filter(a => allowedSet.has(a.id)) : data;
-    if (isBarrel) visible = visible.filter(a => a.id !== 'none'); // barrels always required
-    if (visible.length <= (isBarrel ? 0 : 1)) {
-      // Only one or zero meaningful choices — show disabled rather than hiding
-      const opt=document.createElement('option');
-      const single = visible[0];
-      opt.value = single?.id ?? ''; opt.textContent = single?.name ?? noWeaponText;
-      sel.appendChild(opt); sel.disabled=true;
-      row.appendChild(span); row.appendChild(sel); el.appendChild(row);
-      return;
-    }
-    visible.forEach(a=>{
-      const opt=document.createElement('option'); opt.value=a.id;
-      const pts=getAttPts(a,weapon?.id);
-      const name=attDisplayName(a);
-      opt.textContent=pts>0?`${name} [${pts}]`:name;
-      if(a.noEffect) opt.style.color='#666';
-      if(atts[key]===a.id) opt.selected=true;
-      sel.appendChild(opt);
-    });
-    sel.onchange=()=>{
-      atts[key]=sel.value;
-      updateAttTotal(containerId,atts,weapon);
+  Loadout.renderAttachmentSection({
+    containerId,
+    atts,
+    weapon,
+    data: LOADOUT_DATA,
+    showAssumedFootnote: false,
+    onChange: () => {
       updateAssumedFootnote();
       renderStats();
-    };
-    row.appendChild(span); row.appendChild(sel); el.appendChild(row);
+    },
   });
-  // Ammo slot: always shown; disabled when no weapon or only one ammo type available.
-  {
-    const wAmmo=weapon ? WEAPON_AMMO[weapon.id] : null;
-    const ammoList=wAmmo ? AMMO.filter(a=>a.id in wAmmo.ammo) : [];
-    const ammoRow=document.createElement('div'); ammoRow.className='att-row';
-    const ammoSpan=document.createElement('span'); ammoSpan.className='att-lbl'; ammoSpan.textContent='Ammo';
-    const ammoSel=document.createElement('select'); ammoSel.className='att-sel';
-    if(ammoList.length>1){
-      ammoList.forEach(a=>{
-        const opt=document.createElement('option'); opt.value=a.id;
-        const pts=wAmmo?.ammo?.[a.id]??0;
-        opt.textContent=pts>0?`${a.name} [${pts}]`:a.name;
-        if(a.noEffect) opt.style.color='#666';
-        if((atts.ammo??(wAmmo?.def??'standard'))===a.id) opt.selected=true;
-        ammoSel.appendChild(opt);
-      });
-      ammoSel.onchange=()=>{
-        atts.ammo=ammoSel.value;
-        updateAttTotal(containerId,atts,weapon);
-        renderStats();
-      };
-    } else {
-      const opt=document.createElement('option'); opt.value='standard'; opt.textContent='Standard';
-      ammoSel.appendChild(opt); ammoSel.disabled=true;
-    }
-    ammoRow.appendChild(ammoSpan); ammoRow.appendChild(ammoSel); el.appendChild(ammoRow);
-  }
-  // Magazine slot: empty compare slots show a disabled None control.
-  {
-    const wmDirect=weapon ? (WEAPON_MAG[weapon.id]??null) : null;
-    const magRow=document.createElement('div'); magRow.className='att-row';
-    const magSpan=document.createElement('span'); magSpan.className='att-lbl'; magSpan.textContent='Mag';
-    const magSel=document.createElement('select'); magSel.className='att-sel';
-    if (wmDirect && Object.keys(wmDirect.mags).length > 0) {
-      const selMagId=atts.mag??wmDirect.def;
-      Object.entries(wmDirect.mags).forEach(([mid,m])=>{
-        const opt=document.createElement('option'); opt.value=mid;
-        opt.textContent=m.pts>0?`${m.name} [${m.pts}]`:m.name;
-        if(selMagId===mid) opt.selected=true;
-        magSel.appendChild(opt);
-      });
-      magSel.onchange=()=>{
-        atts.mag=magSel.value;
-        updateAttTotal(containerId,atts,weapon);
-        renderStats();
-      };
-    } else {
-      const opt=document.createElement('option'); opt.value='none'; opt.textContent='None';
-      magSel.appendChild(opt); magSel.disabled=true;
-    }
-    magRow.appendChild(magSpan); magRow.appendChild(magSel); el.appendChild(magRow);
-  }
-  // Ergonomics slot — always shown; disabled when no weapon or weapon has no ergo options
-  {
-    const we=WEAPON_ERGO[weapon?.id]??null;
-    const availSet=we ? new Set(we.avail) : null;
-    const visibleErgos=ERGOS.filter(e=>e.id==='none'||(availSet&&availSet.has(e.id)));
-    const ergoRow=document.createElement('div'); ergoRow.className='att-row';
-    const ergoSpan=document.createElement('span'); ergoSpan.className='att-lbl'; ergoSpan.textContent='Ergo';
-    const ergoSel=document.createElement('select'); ergoSel.className='att-sel';
-    if (visibleErgos.length > 1 && weapon) {
-      visibleErgos.forEach(e=>{
-        if (e.id==='none') { const o=document.createElement('option'); o.value='none'; o.textContent='None'; if((atts.ergo??'none')==='none') o.selected=true; ergoSel.appendChild(o); return; }
-        const opt=document.createElement('option'); opt.value=e.id;
-        opt.textContent=e.pts>0?`${e.name} [${e.pts}]`:e.name;
-        if(e.noEffect) opt.style.color='#666';
-        if((atts.ergo??'none')===e.id) opt.selected=true;
-        ergoSel.appendChild(opt);
-      });
-      ergoSel.onchange=()=>{
-        atts.ergo=ergoSel.value;
-        updateAttTotal(containerId,atts,weapon);
-        renderStats();
-      };
-    } else {
-      const opt=document.createElement('option'); opt.value='none'; opt.textContent='None';
-      ergoSel.appendChild(opt); ergoSel.disabled=true;
-    }
-    ergoRow.appendChild(ergoSpan); ergoRow.appendChild(ergoSel); el.appendChild(ergoRow);
-  }
-
-  updateAttTotal(containerId,atts,weapon);
 }
-
 function renderStats() {
   const hasAny = selW1 || selW2;
   document.getElementById('emptyState').style.display = hasAny?'none':'flex';
@@ -1133,6 +978,7 @@ function renderChart() {
       stepped:'before',
       isBaseline:baseline,
       _weaponSlot:slot,
+      _weapon:w,
     });
     const datasets=[];
     if (btkHS>0&&w1) datasets.push(btkDs(w1,'rgba(201,162,39,0.28)',`${wLabel(w1)} (0 HS)`,1,0,true));
@@ -1146,7 +992,7 @@ function renderChart() {
         responsive:true, maintainAspectRatio:false, animation:false,
         plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,filter:i=>!i.dataset.isBaseline,callbacks:{
           title:items=>'Range: '+(items[0]?.label??'')+'m',
-          label:i=>{ const w=i.dataset._weaponSlot===2?w2:w1; const btk=i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
+          label:i=>{ const w=i.dataset._weapon; const btk=i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
         }}},
         scales:{
           x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
@@ -1162,7 +1008,7 @@ function renderChart() {
       const btk=getBTKWithHS(w,r,btkHS);
       const ttk=getTTK(w,btk)??0;
       return ttk+(showAds?(w._adsTimeMs??0):0);
-    }),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before'});
+    }),borderColor:color,backgroundColor:'transparent',borderWidth:2,pointRadius:0,tension:0,stepped:'before',_weapon:w});
     const datasets=[];
     if (w1) datasets.push(ttkDs(w1,'#c9a227',wLabel(w1)));
     if (w2) datasets.push(ttkDs(w2,'#4d94d0',wLabel(w2)));
@@ -1175,7 +1021,7 @@ function renderChart() {
         plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,callbacks:{
           title:items=>'Range: '+(items[0]?.label??'')+'m',
           label:i=>{
-            const w=i.datasetIndex===1&&w2?w2:w1;
+            const w=i.dataset._weapon;
             const btk=getBTKWithHS(w,i.dataIndex,btkHS);
             const ttk=getTTK(w,btk);
             if (showAds&&w._adsTimeMs) return `${w.name}: ${fmtTTK(i.raw)} (${fmtTTK(ttk)} TTK + ${w._adsTimeMs}ms ADS)`;
@@ -1192,7 +1038,7 @@ function renderChart() {
   }
 
   function buildDs(w, color, label) {
-    return { label, data:labels.map(r=>+(Math.min(100,w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r)).toFixed(2))), borderColor:color, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0, stepped:'before' };
+    return { label, data:labels.map(r=>+(Math.min(100,w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r)).toFixed(2))), borderColor:color, backgroundColor:'transparent', borderWidth:2, pointRadius:0, tension:0, stepped:'before', _weapon:w };
   }
   // BTK threshold lines
   const w=w1||w2;
@@ -1215,7 +1061,7 @@ function renderChart() {
     data:{labels,datasets},
     options:{
       responsive:true, maintainAspectRatio:false, animation:false,
-      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloatFiltered',yAlign:'center',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.datasetIndex===datasets.length-1&&w2?w2:w1; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${w.name}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloatFiltered',yAlign:'center',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.dataset._weapon; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${w.name}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
       scales:{
         x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
         y:{min:0,max:dmgYMax,title:{display:true,text:'Damage per shot',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a'},grid:{color:'rgba(40,48,48,0.6)'}}
