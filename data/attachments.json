@@ -171,7 +171,7 @@
     },
     {
       "id": "basic",
-      "name": "Basic Barrel",
+      "name": "Basic",
       "vMult": 1.0,
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
@@ -180,7 +180,7 @@
     },
     {
       "id": "short",
-      "name": "Short Barrel",
+      "name": "Short",
       "vMult": 0.8,
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
@@ -190,7 +190,7 @@
     },
     {
       "id": "extended",
-      "name": "Extended Barrel",
+      "name": "Extended",
       "vMult": 1.25,
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
@@ -199,7 +199,7 @@
     },
     {
       "id": "heavy",
-      "name": "Heavy Barrel",
+      "name": "Heavy",
       "vMult": 1.0,
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
@@ -209,7 +209,7 @@
     },
     {
       "id": "heavy_ext",
-      "name": "Heavy Extended Barrel",
+      "name": "Heavy Extended",
       "vMult": 1.25,
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
@@ -219,7 +219,7 @@
     },
     {
       "id": "light",
-      "name": "Light Barrel",
+      "name": "Light",
       "vMult": 1.0,
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,

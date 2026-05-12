@@ -25,7 +25,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .app{display:flex;flex:1;overflow:hidden}
 /* Sidebar */
 .loadout-modal-head{display:none}
-.sidebar{width:208px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sidebar{width:198px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sb-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
 .sb-scroll::-webkit-scrollbar{width:3px}
 .sb-scroll::-webkit-scrollbar-thumb{background:var(--border)}
@@ -49,33 +49,33 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .clone-btn:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
 .clone-btn:disabled{opacity:.38;cursor:not-allowed;color:var(--muted);border-color:var(--border);background:var(--bg3)}
 /* Main */
-.main{flex:1;overflow-y:auto;overflow-x:hidden;padding:13px;display:flex;flex-direction:column;gap:11px}
+.main{flex:1;overflow-y:auto;overflow-x:hidden;padding:8px;display:flex;flex-direction:column;gap:11px}
 .main::-webkit-scrollbar{width:4px}
 .main::-webkit-scrollbar-thumb{background:var(--border)}
 .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);gap:6px;text-align:center}
 .empty-t{font-size:1rem;color:var(--text)}
 /* Panel */
-.panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:13px}
-.ptitle{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:11px;font-weight:600}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:8px}
+.ptitle{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:5px;font-weight:600}
 /* Quick stats */
-.w-header{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.w-header{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px}
 .wname{font-size:1.1rem;font-weight:700;color:var(--accent)}
 .wname2{font-size:1.1rem;font-weight:700;color:var(--accent2)}
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
-.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:5px}
-.scard{background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:7px 8px}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,84px);gap:2px}
+.scard{background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:5px 6px;letter-spacing:-0.03em}
 .scard.stat-group{background:#202929}
-.slbl{font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.slbl{font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.3px;margin-bottom:2px;white-space:nowrap}
 .sval{font-size:0.9rem;font-weight:700}
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
 .sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
 .c1{color:var(--accent)} .c2{color:var(--accent2)}
-.scmp{display:flex;flex-direction:column;gap:1px}.scmp-row{display:flex;align-items:baseline;gap:5px}
-.diff{font-size:0.62rem;padding:1px 4px;border-radius:3px;margin-left:1px}
+.scmp{display:flex;flex-direction:column;gap:1px}.scmp-row{display:flex;align-items:baseline;gap:2px}
+.diff{font-size:0.62rem;padding:1px 2px;border-radius:3px;margin-left:1px;letter-spacing:-0.02em}
 .d-up{background:rgba(86,196,100,.15);color:var(--green)}
 .d-dn{background:rgba(224,85,85,.15);color:var(--red)}
 /* Chart */
-.chart-wrap{position:relative;height:256px}
+.chart-wrap{position:relative;height:230px}
 /* BTK table */
 .btk-tbl{width:100%;border-collapse:collapse;font-size:0.78rem}
 .btk-tbl th{padding:4px 7px;color:var(--muted);text-align:center;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
@@ -180,7 +180,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 /* Footer */
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
 
-@media (max-width:1360px){
+@media (max-width:1270px){
   .rc-layout{grid-template-columns:minmax(360px,456px) minmax(0,1fr);row-gap:18px;column-gap:20px}
   .att-stats{grid-column:1/-1}
   .rc-layout::before,.rc-layout::after{display:none}
@@ -731,7 +731,7 @@ function renderOverview() {
     {lbl:'ADS Time',    compute:w=>w._adsTimeMs??w.adsTime, unit:'ms', fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
       tooltip:'Time to aim down sights. Can be affected by magazine, barrel, and grip selections.',
       estFn:w=>!w._adsTimeMs&&w.adsTime!=null},
-    {lbl:'ADS Move Spd',k:'_adsMoveSpeedMult',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true, group:'mobility',
+    {lbl:'ADS Mov Spd',k:'_adsMoveSpeedMult',          unit:'×',   fmt:v=>v!=null?v.toFixed(2):'—', higherBetter:true, group:'mobility',
       tooltip:'Movement speed multiplier while aiming down sights. Can be affected by magazine, grip, and ammo selections.'},
     {lbl:'Sprint Rec',  k:'_sprintRecoveryMs',          unit:'ms',  fmt:v=>v!=null?v:'—', lowerBetter:true, group:'mobility',
       tooltip:'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.'},
@@ -739,18 +739,18 @@ function renderOverview() {
       tooltip:'Rounds available in the selected magazine.'},
     {lbl:'Tac Reload',  k:'tacRld',             unit:'s',   fmt:v=>v!=null?(+v).toFixed(3):'—', lowerBetter:true,
       tooltip:'Tactical reload time in seconds, using the selected magazine and Mag Catch when applicable.'},
-    {lbl:'Deploy',      k:'deployT',            unit:'s',   fmt:v=>v??'—', lowerBetter:true,
+    {lbl:'Draw Spd',    k:'deployT',            unit:'s',   fmt:v=>v??'—', lowerBetter:true,
       tooltip:'Weapon deploy time in seconds. Lower is faster.'},
     {lbl:'Recoil/Shot', k:'recoilV',            unit:'°',   fmt:v=>v.toFixed(2), lowerBetter:true, group:'recoil',
       tooltip:'ADS vertical recoil added per shot after ADS recoil-tier attachment effects.'},
     {lbl:'Recoil Dir',  k:'recoilDir',          unit:'°',   fmt:v=>((-v)>=0?'+':'')+(-v), absDiff:true, group:'recoil',
       tooltip:'Average recoil direction from vertical. Positive values pull right; negative values pull left.'},
-    {lbl:'Move ADS',    k:'_movingAdsMinSpreadDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true, group:'recoil',
+    {lbl:'Mov ADS Sprd',k:'_movingAdsMinSpreadDeg',         unit:'°',   fmt:v=>v!=null?v.toFixed(2):'0.32', lowerBetter:true, group:'recoil',
       tooltip:'ADS spread while moving. Lower is more accurate. Can be affected by laser and barrel selections.'},
-    {lbl:'3D Spot',     k:'_worldSpot',         unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true,
-      tooltip:'Distance at which firing exposes your 3D world position. None means you are never 3D spotted.'},
-    {lbl:'Minimap Spot',k:'_minimapSpot',       unit:'',    fmt:v=>v>0?`${v}m`:'None', lowerBetter:true, absoluteDelta:true,
-      tooltip:'Distance at which firing exposes you on the minimap.'},
+    {lbl:'3D/Map Spot',compute:w=>({spot:w._worldSpot,minimap:w._minimapSpot}),unit:'',
+      fmt:obj=>{const s=obj&&obj.spot>0?`${obj.spot}<span class="sunit">m</span>`:'–';const m=obj&&obj.minimap>0?`${obj.minimap}<span class="sunit">m</span>`:'–';return `${s}<span class="sunit"> / </span>${m}`;},
+      noDiff:true,
+      tooltip:'Distance at which you are spotted in the 3D world and on the minimap while firing. "–" means you are never 3D spotted.'},
   ];
   if (primary.pellets) fields.splice(4,0,{lbl:'Pellets',k:'pellets',unit:'',fmt:v=>v,
     tooltip:'Number of pellets fired per shot. Shotgun damage is pellet damage multiplied by this count.'});
@@ -770,7 +770,7 @@ function renderOverview() {
       const higherBetter=f.higherBetter;
       const lowerBetter=f.lowerBetter;
       let diff='';
-      if (v1!=null&&v2!=null&&v1!==v2) {
+      if (!f.noDiff&&v1!=null&&v2!=null&&v1!==v2) {
         if (f.absDiff) {
           const delta=Math.round(v2-v1);
           diff=`<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta>0?'+':''}${delta}°</span>`;
@@ -1117,12 +1117,13 @@ function renderChart() {
       type:'line', data:{labels,datasets},
       options:{
         responsive:true, maintainAspectRatio:false, animation:false,
+        layout:{padding:{bottom:0}},
         plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloat',yAlign:'center',caretSize:0,filter:i=>!i.dataset.isBaseline,callbacks:{
           title:items=>'Range: '+(items[0]?.label??'')+'m',
           label:i=>{ const w=i.dataset._weapon; const btk=i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w,btk))})`; }
         }}},
         scales:{
-          x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
+          x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11},padding:{top:4,bottom:0}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
           y:{min:yMin,max:yMax,title:{display:true,text:'Bullets to Kill',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',stepSize:1,precision:0},grid:{color:'rgba(40,48,48,0.6)'}}
         }
       }
@@ -1155,8 +1156,9 @@ function renderChart() {
             return `${w.name}: ${fmtTTK(i.raw)} (${btk} BTK)`;
           }
         }}},
+        layout:{padding:{bottom:0}},
         scales:{
-          x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
+          x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11},padding:{top:4,bottom:0}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
           y:{min:0,max:yMax,title:{display:true,text:showAds?'ADS + Time to Kill (ms)':'Time to Kill (ms)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',stepSize:100},grid:{color:'rgba(40,48,48,0.6)'}}
         }
       }
@@ -1188,9 +1190,10 @@ function renderChart() {
     data:{labels,datasets},
     options:{
       responsive:true, maintainAspectRatio:false, animation:false,
+      layout:{padding:{bottom:0}},
       plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,position:'smartFloatFiltered',yAlign:'center',caretSize:0,callbacks:{title:items=>'Range: '+(items[0]?.label??'')+'m',label:i=>{if(i.dataset.borderDash) return null; const r=i.dataIndex; const w=i.dataset._weapon; const d=w.pellets?getDmg(w,r)*w.pellets:getDmg(w,r); const btk=Math.ceil(100/d); return `${w.name}: ${d.toFixed(1)} dmg (${btk} BTK)`;},filter:i=>!i.dataset.borderDash}}},
       scales:{
-        x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
+        x:{title:{display:true,text:'Range (m)',color:'#7a8a8a',font:{size:11},padding:{top:4,bottom:0}},ticks:{color:'#7a8a8a',maxTicksLimit:10},grid:{color:'rgba(40,48,48,0.6)'}},
         y:{min:0,max:dmgYMax,title:{display:true,text:'Damage per shot',color:'#7a8a8a',font:{size:11}},ticks:{color:'#7a8a8a'},grid:{color:'rgba(40,48,48,0.6)'}}
       }
     }
