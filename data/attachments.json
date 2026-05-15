@@ -84,7 +84,7 @@
       "id": "linear_comp",
       "name": "Linear Comp",
       "adsRecoilTierMod": -1,
-      "adsRecoilVariationMult": 0.75,
+      "adsRecoilVariationMult": 0.77,
       "adsSpreadDecayBoost": 0,
       "assumed": true,
       "worldSpot": 54,
