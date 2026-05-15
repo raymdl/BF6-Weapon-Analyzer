@@ -35,12 +35,17 @@ const LOADOUT_DATA = {
   AMMO, WEAPON_AMMO,
 };
 
-// Build by-id maps once for use in recoil tooltip breakdown
+const byId = items => Object.fromEntries(items.map(a => [a.id, a]));
+
+// Build by-id maps once for attachment lookups in UI breakdowns
 const ATT_BY_ID = {
-  MUZZLES: Object.fromEntries(MUZZLES.map(a => [a.id, a])),
-  BARRELS: Object.fromEntries(BARRELS.map(a => [a.id, a])),
-  GRIPS:   Object.fromEntries(GRIPS.map(a => [a.id, a])),
-  AMMO:    Object.fromEntries(AMMO.map(a => [a.id, a])),
+  SIGHTS:  byId(SIGHTS),
+  MUZZLES: byId(MUZZLES),
+  BARRELS: byId(BARRELS),
+  GRIPS:   byId(GRIPS),
+  LASERS:  byId(LASERS),
+  AMMO:    byId(AMMO),
+  ERGOS:   byId(ERGOS),
 };
 
 // Grip ADS move speed overrides not present in source data
@@ -292,21 +297,30 @@ function renderOverview() {
 
   const hdr = document.getElementById('wHeader');
   hdr.innerHTML = '';
-  const appendBurstBadge = (w, hdr) => {
-    if (!w.burstRounds) return;
-    const label = w.fireMode === 'burst' ? `${w.burstRounds}-RD BURST ONLY` : `${w.burstRounds}-RD BURST`;
+  const appendFireModeBadge = (w, hdr) => {
+    if (!w) return;
+    const label =
+      w.fireMode === 'auto' && w.burstRounds ? `Auto + ${w.burstRounds}-Rd Burst` :
+      w.fireMode === 'burst' && w.burstRounds ? `${w.burstRounds}-Rd Burst` :
+      w.fireMode === 'burst' ? 'Burst' :
+      w.fireMode === 'auto' ? 'Full Auto' :
+      w.fireMode === 'semi' ? 'Semi-Auto' :
+      w.fireMode === 'bolt' ? 'Bolt Action' :
+      w.fireMode === 'pump' ? 'Pump Action' :
+      null;
+    if (!label) return;
     const bb = document.createElement('span'); bb.className = 'wbadge-burst'; bb.textContent = label; hdr.appendChild(bb);
   };
   if (w1) {
     const s = document.createElement('span'); s.className = 'wname'; s.textContent = wLabel(w1); hdr.appendChild(s);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w1.cls; hdr.appendChild(b);
-    appendBurstBadge(w1, hdr);
+    appendFireModeBadge(w1, hdr);
   }
   if (w2) {
-    const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 6px'; vs.textContent = 'vs'; hdr.appendChild(vs);
+    const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px'; vs.textContent = 'vs'; hdr.appendChild(vs);
     const s = document.createElement('span'); s.className = 'wname2'; s.textContent = wLabel(w2); hdr.appendChild(s);
-    const b = document.createElement('span'); b.className = 'wbadge'; b.style.borderColor = 'var(--accent2)'; b.style.color = 'var(--accent2)'; b.textContent = w2.cls; hdr.appendChild(b);
-    appendBurstBadge(w2, hdr);
+    const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w2.cls; hdr.appendChild(b);
+    appendFireModeBadge(w2, hdr);
   }
 
   const grid = document.getElementById('sGrid');
@@ -1100,6 +1114,7 @@ function renderRecoil() {
         const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
         const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
         const ammoObj = ATT_BY_ID.AMMO[atts.ammo ?? 'standard'] ?? AMMO[0];
+        const ergoObj = ATT_BY_ID.ERGOS[atts.ergo ?? 'none'] ?? ERGOS[0];
         const baseRecoil = ra(applyAttachments(selW, mk({})));
         let prev = baseRecoil, lines = [];
         const try_ = (lbl, newAtts) => {
@@ -1112,6 +1127,8 @@ function renderRecoil() {
         const defaultAmmo = WEAPON_AMMO[selW.id]?.def ?? 'standard';
         if ((atts.ammo ?? 'standard') !== defaultAmmo || (ammoObj.adsRecoilTierMod ?? 0) !== 0)
           try_(ammoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id });
+        if (ergoObj.id !== 'none' || (ergoObj.adsRecoilTierMod ?? 0) !== 0)
+          try_(ergoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id, ergo: ergoObj.id });
         const withAtts = prev, comp = +(withAtts * compPct).toFixed(2), effVal = +(withAtts - comp).toFixed(2);
         if (comp >= 0.005) lines.push(`<div class="rc-tt-row"><span>Recoil Compensation (${Math.round(compPct * 100)}%)</span><span class="rc-tt-neg">−${comp.toFixed(2)}°</span></div>`);
         const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${selW.name}</div>` : '';

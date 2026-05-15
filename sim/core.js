@@ -11,7 +11,7 @@
  *     recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
  *     selectedRecoilAmountFor, selectedRecoilVariationFor,
  *     spreadBounds, spreadDynamics, selectedSpreadIncFor,
- *     simulateBloom, genRecoilPts,
+ *     simulateBloom, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
  *   } from './sim/core.js';
  *
  *   // Call once on load (after JSON data is fetched):
@@ -187,6 +187,43 @@ export function selectedSpreadIncFor(w) {
   return dyn.inc ?? 0;
 }
 
+/** Seconds between this shot and the next shot for the current fire mode. */
+export function shotIntervalAfter(w, shotIndex) {
+  const shotRpm = w.rpm ?? 600;
+  const normalInterval = 60 / shotRpm;
+  const burstRounds = w.fireMode === 'burst' ? (w.burstRounds ?? 0) : 0;
+  const burstsPerMinute = w.burstBurstsPerMinute ?? 0;
+  if (burstRounds <= 1 || burstsPerMinute <= 0) return normalInterval;
+
+  const shotInBurst = (shotIndex - 1) % burstRounds;
+  if (shotInBurst < burstRounds - 1) return normalInterval;
+
+  const burstCycle = 60 / burstsPerMinute;
+  const elapsedWithinBurst = (burstRounds - 1) * normalInterval;
+  return Math.max(normalInterval, burstCycle - elapsedWithinBurst);
+}
+
+/** True when the next interval is the pause after the final shot in a burst. */
+export function isBurstGapAfter(w, shotIndex) {
+  const burstRounds = w.fireMode === 'burst' ? (w.burstRounds ?? 0) : 0;
+  const burstsPerMinute = w.burstBurstsPerMinute ?? 0;
+  return burstRounds > 1
+    && burstsPerMinute > 0
+    && (shotIndex - 1) % burstRounds === burstRounds - 1;
+}
+
+function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt) {
+  const clamp = v => Math.min(Math.max(v, baseline), sMax);
+  let rem = seconds;
+  while (rem > 1e-12) {
+    const step = Math.min(dt, rem);
+    const delta = Math.max(spread - baseline, 0);
+    spread = clamp(spread - step * (recovery.coef * Math.pow(delta, recovery.exp) + recovery.offset));
+    rem -= step;
+  }
+  return spread;
+}
+
 
 // ── SIMULATION ────────────────────────────────────────────────────────────────
 
@@ -200,11 +237,17 @@ export function simulateBloom(w, shotCount) {
   const [baseline, sMax] = spreadBounds(w);
   const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return Array(shotCount).fill(baseline);
-  const coef  = dyn.firingCoef ?? 0;
-  const exp_  = dyn.firingExp  ?? 1;
-  const offset = (dyn.firingOffset ?? 0) *
-    (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0));
-  const secBetweenShots = 60 / (w.rpm ?? 600);
+  const firingRecovery = {
+    coef: dyn.firingCoef ?? 0,
+    exp: dyn.firingExp ?? 1,
+    offset: (dyn.firingOffset ?? 0) *
+      (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0)),
+  };
+  const notFiringRecovery = {
+    coef: dyn.notFiringCoef ?? firingRecovery.coef,
+    exp: dyn.notFiringExp ?? firingRecovery.exp,
+    offset: dyn.notFiringOffset ?? firingRecovery.offset,
+  };
   const dt = 1 / 60;
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
   let spread = baseline;
@@ -214,12 +257,14 @@ export function simulateBloom(w, shotCount) {
     spreads.push(spread);
     spread = clamp(spread + sInc);
     if (shot < shotCount - 1) {
-      let rem = secBetweenShots;
-      while (rem > 1e-12) {
-        const step  = Math.min(dt, rem);
-        const delta = Math.max(spread - baseline, 0);
-        spread = clamp(spread - step * (coef * Math.pow(delta, exp_) + offset));
-        rem -= step;
+      const secBetweenShots = shotIntervalAfter(w, shot + 1);
+      if (isBurstGapAfter(w, shot + 1)) {
+        const firingTime = Math.min(60 / (w.rpm ?? 600), secBetweenShots);
+        const notFiringTime = Math.max(0, secBetweenShots - firingTime);
+        spread = applySpreadRecovery(spread, firingTime, firingRecovery, baseline, sMax, dt);
+        spread = applySpreadRecovery(spread, notFiringTime, notFiringRecovery, baseline, sMax, dt);
+      } else {
+        spread = applySpreadRecovery(spread, secBetweenShots, firingRecovery, baseline, sMax, dt);
       }
     }
   }
@@ -243,7 +288,6 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
   const amount      = selectedRecoilAmountFor(w);
   const variation   = selectedRecoilVariationFor(w);
   const compensation = compensationFn() / 100;
-  const interShotTime = 60 / (w.rpm ?? 600);
   let cx = 0, cy = 0;
   for (let i = 1; i < shots; i++) {
     const dir    = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
@@ -251,6 +295,7 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
     const angle  = dir + spread;
     cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
     cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
+    const interShotTime = shotIntervalAfter(w, i);
     cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
     cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
     pts.push({ x: cx, y: cy });
