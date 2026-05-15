@@ -142,6 +142,17 @@ If game mechanics change (not just data), edit the relevant module:
 
 ---
 
+## Known Follow-Up Notes
+
+- **SL9 burst timing:** Season 3 sym.gg data shows `RoF = 674.999` and
+  `BurstRoF = 771.428`. Screen-recording review agrees with a 3-round burst
+  cadence of roughly 77.8 ms between shots 1-2 and 2-3, then roughly 111.1 ms
+  after shot 3 before the next burst. This mirrors the M16A4-style post-burst
+  delay pattern and should be revisited for recoil/bloom timing, but no data or
+  simulator change has been made yet.
+
+---
+
 ## Data Validation
 
 Run the validation script after data edits and before committing season updates:
