@@ -1,0 +1,37 @@
+{
+  "_comment": "Per-weapon ADS recoil decay tables from sym.gg. retain = exp(-decFactor * decOffset * interShotTime^decTimeExp) ^ decExp. Source of truth for index.html, preview_bloom.html, preview_distance.html.",
+
+  "RECOIL_DEC": {
+    "m433": 72,    "b36a4": 72,    "sor556": 72,   "ak4d": 104,   "tr7": 104,    "kord6p67": 55,
+    "nvo228e": 76, "l85a3": 72,    "vcr2": 72,
+    "m4a1": 57,    "m277": 76,     "ak205": 48,    "m417a2": 76,  "grtbc": 57,   "qbz192": 57,
+    "sg553r": 72,  "sor300sc": 72,
+    "sgx": 55,     "pw5a3": 55,    "pw7a2": 46,    "umg40": 57,   "usg90": 48,   "kv9": 55,
+    "scw10": 72,   "sl9": 55,      "cz3a1": 55,
+    "l110": 72,    "drsiar": 72,   "m60": 104,     "rpkm": 76,    "m123k": 72,   "m250": 76,
+    "kts100": 72,  "m240l": 104,   "m121a2": 104,
+    "m39emr": 16,  "lmr27": 13.7,  "svk86": 21.5,  "svdm": 16,    "grtcps": 13.7,
+    "m2010esr": 70,"sv98": 70,     "psr": 70,      "miniscout": 70,
+    "m87a1": 70,   "m1014": 21.5,  "ks18k": 21.5,  "db12": 70,
+    "p18": 13.7,   "es57": 12,     "m45a1": 16,    "m44": 21.5,   "ggh22": 13.7,  "m357trait": 21.5,  "vz61": 40
+  },
+
+  "RECOIL_DEC_TEXP": {
+    "m433": 1.200,  "b36a4": 1.200,  "sor556": 1.200, "ak4d": 1.459,    "tr7": 1.459,    "kord6p67": 1.023,
+    "nvo228e": 1.240, "l85a3": 1.200, "vcr2": 1.200,
+    "m4a1": 1.045,  "m277": 1.240,   "ak205": 0.905,  "m417a2": 1.240,  "grtbc": 1.045,  "qbz192": 1.045,
+    "sg553r": 1.200, "sor300sc": 1.200,
+    "sgx": 1.023,   "pw5a3": 1.023,  "pw7a2": 0.919,  "umg40": 1.045,   "usg90": 0.905,  "kv9": 1.023,
+    "scw10": 1.200, "sl9": 1.023,    "cz3a1": 1.023,
+    "l110": 1.200,  "drsiar": 1.200, "m60": 1.459,    "rpkm": 1.240,    "m123k": 1.200,  "m250": 1.240,
+    "kts100": 1.200, "m240l": 1.459, "m121a2": 1.459,
+    "m39emr": 0.750, "lmr27": 0.5555, "svk86": 1.333, "svdm": 0.750,    "grtcps": 0.5555,
+    "m2010esr": 4.000, "sv98": 4.000, "psr": 4.000,   "miniscout": 4.000,
+    "m87a1": 4.000, "m1014": 1.333,  "ks18k": 1.333,  "db12": 4.000,
+    "p18": 0.5555,  "es57": 0.398,   "m45a1": 0.750,  "m44": 1.333,  "ggh22": 0.5555, "m357trait": 1.333, "vz61": 0.840
+  },
+
+  "RECOIL_DEC_EXP": {
+    "m2010esr": 0.6, "sv98": 0.6, "psr": 0.6, "miniscout": 0.6, "m87a1": 0.6, "db12": 0.6
+  }
+}

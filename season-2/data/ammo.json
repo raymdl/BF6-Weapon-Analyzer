@@ -1,0 +1,527 @@
+{
+  "AMMO": [
+    {
+      "id": "standard",
+      "name": "Standard",
+      "hsMult": null
+    },
+    {
+      "id": "penetration",
+      "name": "Penetration",
+      "hsMult": null,
+      "adsRecoilTierMod": -1
+    },
+    {
+      "id": "lightweight",
+      "name": "Lightweight",
+      "hsMult": null,
+      "adsMoveSpeedTierShift": -1
+    },
+    {
+      "id": "long_range",
+      "name": "Long-Range",
+      "hsMult": null,
+      "noEffect": true
+    },
+    {
+      "id": "hollow_pt",
+      "name": "Hollow Point",
+      "hsMult": "hp"
+    },
+    {
+      "id": "frangible",
+      "name": "Frangible",
+      "hsMult": null,
+      "noEffect": true
+    },
+    {
+      "id": "synthetic",
+      "name": "Synthetic",
+      "hsMult": 1.75
+    },
+    {
+      "id": "buckshot",
+      "name": "Buckshot",
+      "hsMult": 1.0
+    },
+    {
+      "id": "flechette",
+      "name": "Flechette",
+      "hsMult": 1.0
+    },
+    {
+      "id": "slugs",
+      "name": "Slugs",
+      "hsMult": 1.34
+    }
+  ],
+  "WEAPON_AMMO": {
+    "m433": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "b36a4": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "sor556": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "ak4d": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "tr7": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "kord6p67": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "nvo228e": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "l85a3": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "vcr2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "m4a1": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "m277": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "ak205": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 25
+      }
+    },
+    "m417a2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "grtbc": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "qbz192": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 25
+      }
+    },
+    "sg553r": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "sor300sc": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "sgx": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "pw5a3": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "pw7a2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "umg40": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 25
+      }
+    },
+    "usg90": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "kv9": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "scw10": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "sl9": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "cz3a1": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "l110": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "drsiar": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "m60": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "rpkm": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "synthetic": 30
+      }
+    },
+    "m123k": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "m250": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "kts100": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "m240l": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "m121a2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "m39emr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "long_range": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "lmr27": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "synthetic": 30
+      }
+    },
+    "svk86": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "svdm": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "grtcps": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "synthetic": 30
+      }
+    },
+    "m2010esr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "sv98": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "psr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "miniscout": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20
+      }
+    },
+    "m87a1": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "flechette": 30,
+        "slugs": 40
+      }
+    },
+    "m1014": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "flechette": 30,
+        "slugs": 40
+      }
+    },
+    "ks18k": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "flechette": 30,
+        "slugs": 40
+      }
+    },
+    "db12": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "flechette": 30,
+        "slugs": 40
+      }
+    }
+  }
+}

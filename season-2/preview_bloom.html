@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom Bubble Placement Preview - Season 2 Legacy</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0f0f;
+    color: #c8d8d8;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 18px;
+  }
+  h1 {
+    color: #d8e6e6;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .sub {
+    color: #7a9898;
+    font-size: 11px;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    max-width: 980px;
+  }
+  .controls {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .preview-layout {
+    align-items: flex-start;
+    display: flex;
+    gap: 14px;
+  }
+  .preview-sidebar {
+    background: #0d1414;
+    border: 1px solid #1e2e2e;
+    border-radius: 4px;
+    flex: 0 0 208px;
+    max-height: calc(100vh - 112px);
+    overflow-y: auto;
+  }
+  .preview-sidebar::-webkit-scrollbar { width: 3px; }
+  .preview-sidebar::-webkit-scrollbar-thumb { background: #273a3a; }
+  .preview-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .sb-sec,
+  .att-sec {
+    border-bottom: 1px solid #1e2e2e;
+    padding: 6px 11px;
+  }
+  .sb-lbl {
+    color: #7a9898;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .class-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .cbtn {
+    background: #111a1a;
+    border: 1px solid #273a3a;
+    border-radius: 3px;
+    color: #7a9898;
+    font-size: 11px;
+    min-height: 22px;
+    padding: 2px 6px;
+  }
+  .cbtn:hover,
+  .cbtn.on {
+    background: rgba(201, 162, 39, 0.1);
+    border-color: #c9a227;
+    color: #c9a227;
+  }
+  .wlist {
+    display: flex;
+    flex-direction: column;
+  }
+  .wbtn {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgba(40, 48, 48, 0.55);
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    color: #c8d8d8;
+    font-size: 13px;
+    min-height: 24px;
+    overflow: hidden;
+    padding: 3px 11px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .wbtn:hover { background: #111a1a; }
+  .wbtn.on {
+    background: rgba(201, 162, 39, 0.1);
+    border-left-color: #c9a227;
+    color: #c9a227;
+  }
+  .no-w,
+  .att-note {
+    color: #7a9898;
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .att-head {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .att-total {
+    color: #c9a227;
+    font-size: 10px;
+  }
+  .att-total.over { color: #d94b3d; }
+  .att-row {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+  .att-lbl {
+    color: #7a9898;
+    flex: 0 0 41px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .att-sel {
+    flex: 1;
+    min-width: 0;
+    min-height: 24px;
+    padding: 2px 6px;
+  }
+  .compact-input {
+    width: 48px;
+  }
+  .loadout-stats {
+    color: #9fc8c8;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .loadout-stats strong {
+    color: #d8e6e6;
+    font-weight: 700;
+  }
+  .error {
+    color: #d94b3d;
+    display: none;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  label {
+    color: #9ab0b0;
+    font-size: 12px;
+  }
+  select,
+  input {
+    background: #111a1a;
+    border: 1px solid #273a3a;
+    border-radius: 4px;
+    color: #c8d8d8;
+    font-size: 12px;
+    min-height: 28px;
+    padding: 5px 9px;
+  }
+  select:focus,
+  input:focus {
+    border-color: #4d8080;
+    outline: none;
+  }
+  button {
+    background: #121c1c;
+    border: 1px solid #273a3a;
+    border-radius: 4px;
+    color: #9ab0b0;
+    cursor: pointer;
+    font-size: 11px;
+    min-height: 26px;
+    padding: 4px 8px;
+  }
+  button:hover { border-color: #4d8080; color: #d8e6e6; }
+  .segmented {
+    border: 1px solid #273a3a;
+    border-radius: 4px;
+    display: inline-flex;
+    overflow: hidden;
+  }
+  .segmented button {
+    border: 0;
+    border-radius: 0;
+    border-right: 1px solid #273a3a;
+    min-width: 70px;
+  }
+  .segmented button:last-child { border-right: 0; }
+  .segmented button.on {
+    background: #c9a227;
+    color: #061010;
+    font-weight: 700;
+  }
+  .panels {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    max-width: 1160px;
+  }
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .panel-title {
+    color: #c9a227;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .panel-desc {
+    color: #789292;
+    font-size: 10px;
+    line-height: 1.45;
+    min-height: 30px;
+  }
+  .bubble-row {
+    display: grid;
+    gap: 6px;
+  }
+  .bubble-input {
+    width: 100%;
+  }
+  .preset-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  canvas {
+    background: #080d0d;
+    border: 1px solid #1e2e2e;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+  }
+  .graph-shell {
+    position: relative;
+  }
+  .scale-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: absolute;
+    right: 13px;
+    top: 13px;
+    z-index: 2;
+  }
+  .pan-controls {
+    bottom: calc(5.294% + 4px);
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    position: absolute;
+    right: 13px;
+    z-index: 2;
+  }
+  .scale-btn {
+    align-items: center;
+    background: rgba(8, 13, 13, 0.82);
+    border-color: #345050;
+    color: #d8e6e6;
+    display: flex;
+    font-size: 14px;
+    font-weight: 700;
+    height: 20px;
+    justify-content: center;
+    line-height: 1;
+    min-height: 20px;
+    padding: 3px;
+    width: 20px;
+  }
+  .pan-icon {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    line-height: 1;
+    width: 100%;
+  }
+  .pan-btn[data-pan="left"] .pan-icon { transform: rotate(-90deg); }
+  .pan-btn[data-pan="right"] .pan-icon { transform: rotate(90deg); }
+  .pan-btn[data-pan="down"] .pan-icon { transform: rotate(180deg); }
+  .scale-btn:hover,
+  .pan-btn:hover {
+    border-color: #c9a227;
+    color: #c9a227;
+  }
+  .pan-btn {
+    align-items: center;
+    background: rgba(8, 13, 13, 0.82);
+    border-color: #345050;
+    color: #d8e6e6;
+    display: flex;
+    font-size: 11px;
+    font-weight: 700;
+    height: 20px;
+    justify-content: center;
+    line-height: 1;
+    min-height: 20px;
+    padding: 3px;
+    width: 20px;
+  }
+  .scale-readout {
+    color: #6f8888;
+    font-size: 10px;
+    line-height: 1.3;
+  }
+  .readout {
+    color: #6f8888;
+    font-size: 10px;
+    line-height: 1.45;
+    min-height: 28px;
+  }
+  .note {
+    color: #5f7676;
+    font-size: 10px;
+    line-height: 1.45;
+    margin-top: 14px;
+    max-width: 980px;
+  }
+  .bullet-table-wrap {
+    margin-top: 16px;
+    max-width: 1160px;
+    overflow-x: auto;
+  }
+  .table-title {
+    color: #d8e6e6;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+  }
+  table {
+    border-collapse: collapse;
+    font-size: 11px;
+    min-width: 640px;
+    width: 100%;
+  }
+  th,
+  td {
+    border-bottom: 1px solid #1c2b2b;
+    padding: 6px 8px;
+    text-align: right;
+    white-space: nowrap;
+  }
+  th {
+    background: #101818;
+    color: #91aaaa;
+    font-weight: 700;
+  }
+  td {
+    color: #b9cccc;
+  }
+  .delta {
+    color: #6f8888;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 6px;
+    min-width: 48px;
+    text-align: left;
+  }
+  .delta.up { color: #d0a92b; }
+  .delta.down { color: #56c464; }
+  th:first-child,
+  td:first-child {
+    color: #c9a227;
+    text-align: left;
+  }
+  tbody tr:hover td {
+    background: #0f1717;
+  }
+  @media (max-width: 900px) {
+    .preview-layout { flex-direction: column; }
+    .preview-sidebar {
+      flex-basis: auto;
+      max-height: none;
+      width: 100%;
+    }
+    .panels { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<h1>Bloom Bubble Placement Preview - Season 2 Legacy</h1>
+<p class="sub">Compare three bubble schedules side by side. Each panel draws the same recoil-only reference path over the same bloom cloud; only the selected bullet numbers with spread bubbles change.</p>
+<div id="loadError" class="error"></div>
+
+<div class="preview-layout">
+<aside class="preview-sidebar">
+  <div class="sb-sec">
+    <div class="sb-lbl">Class</div>
+    <div class="class-filter" id="classFilter"></div>
+  </div>
+  <div class="sb-sec">
+    <div class="sb-lbl">Weapon</div>
+    <div class="wlist" id="weaponList"></div>
+  </div>
+  <div class="att-sec" id="attachmentSection"></div>
+</aside>
+
+<main class="preview-main">
+<div class="controls">
+  <label>Aim:
+    <span class="segmented" id="aimControls">
+      <button type="button" class="on" data-aim="ads">ADS</button>
+      <button type="button" data-aim="hip">Hipfire</button>
+    </span>
+  </label>
+  <label>Movement:
+    <span class="segmented" id="stanceControls">
+      <button type="button" class="on" data-stance="stand">Standing</button>
+      <button type="button" data-stance="move">Moving</button>
+    </span>
+  </label>
+  <label>Shots <input id="shotCountInput" class="compact-input" type="text" inputmode="numeric" value="20"></label>
+  <button id="redrawBtn" type="button">Redraw Reference</button>
+  <button id="resetBtn" type="button">Reset Reference</button>
+  <span id="loadoutStats" class="loadout-stats"></span>
+</div>
+
+<div class="panels">
+  <section class="panel" data-panel="0">
+    <div class="panel-title">Approach A - Sparse</div>
+    <div class="panel-desc">A low-clutter read: enough checkpoints to see early, mid, and late bloom growth.</div>
+    <div class="bubble-row">
+      <input class="bubble-input" id="bubbleA" value="1, 2, 3, 10, 20" aria-label="Approach A bubble bullets">
+      <div class="preset-row">
+        <button type="button" data-target="bubbleA" data-value="1, 2, 3, 10, 20">Sparse</button>
+        <button type="button" data-target="bubbleA" data-value="2, 5, 10, 15, 20">Milestones</button>
+        <button type="button" data-target="bubbleA" data-value="2, 6, 10, 14, 18, 20">Even 6</button>
+      </div>
+    </div>
+    <div class="graph-shell">
+      <div class="scale-controls">
+        <button class="scale-btn" type="button" data-scale="in" title="Zoom in">+</button>
+        <button class="scale-btn" type="button" data-scale="out" title="Zoom out">–</button>
+      </div>
+      <div class="pan-controls" aria-label="Move chart area">
+        <button class="pan-btn" type="button" data-pan="left" title="Move chart left"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="up" title="Move chart up"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="down" title="Move chart down"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="right" title="Move chart right"><span class="pan-icon">▲</span></button>
+      </div>
+      <canvas id="cA" width="340" height="340"></canvas>
+    </div>
+    <div class="scale-readout"></div>
+    <div class="readout" id="readA"></div>
+  </section>
+
+  <section class="panel" data-panel="1">
+    <div class="panel-title">Approach B - Milestones</div>
+    <div class="panel-desc">Classic landmark bullets; useful when the audience expects round-number checkpoints.</div>
+    <div class="bubble-row">
+      <input class="bubble-input" id="bubbleB" value="1, 2, 3, 5, 8, 13, 20" aria-label="Approach B bubble bullets">
+      <div class="preset-row">
+        <button type="button" data-target="bubbleB" data-value="2, 8, 14, 20">Sparse</button>
+        <button type="button" data-target="bubbleB" data-value="1, 2, 3, 5, 8, 13, 20">Milestones</button>
+        <button type="button" data-target="bubbleB" data-value="2, 4, 6, 8, 10, 12, 14, 16, 18, 20">Every 2</button>
+      </div>
+    </div>
+    <div class="graph-shell">
+      <div class="scale-controls">
+        <button class="scale-btn" type="button" data-scale="in" title="Zoom in">+</button>
+        <button class="scale-btn" type="button" data-scale="out" title="Zoom out">–</button>
+      </div>
+      <div class="pan-controls" aria-label="Move chart area">
+        <button class="pan-btn" type="button" data-pan="left" title="Move chart left"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="up" title="Move chart up"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="down" title="Move chart down"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="right" title="Move chart right"><span class="pan-icon">▲</span></button>
+      </div>
+      <canvas id="cB" width="340" height="340"></canvas>
+    </div>
+    <div class="scale-readout"></div>
+    <div class="readout" id="readB"></div>
+  </section>
+
+  <section class="panel" data-panel="2">
+    <div class="panel-title">Approach C - Dense</div>
+    <div class="panel-desc">More diagnostic: shows bloom growth cadence clearly, with a higher chance of visual clutter.</div>
+    <div class="bubble-row">
+      <input class="bubble-input" id="bubbleC" value="2, 4, 6, 8, 10, 12, 14, 16, 18, 20" aria-label="Approach C bubble bullets">
+      <div class="preset-row">
+        <button type="button" data-target="bubbleC" data-value="2, 6, 10, 14, 18, 20">Even 6</button>
+        <button type="button" data-target="bubbleC" data-value="3, 6, 9, 12, 15, 18, 20">Every 3-ish</button>
+        <button type="button" data-target="bubbleC" data-value="2, 4, 6, 8, 10, 12, 14, 16, 18, 20">Every 2</button>
+      </div>
+    </div>
+    <div class="graph-shell">
+      <div class="scale-controls">
+        <button class="scale-btn" type="button" data-scale="in" title="Zoom in">+</button>
+        <button class="scale-btn" type="button" data-scale="out" title="Zoom out">–</button>
+      </div>
+      <div class="pan-controls" aria-label="Move chart area">
+        <button class="pan-btn" type="button" data-pan="left" title="Move chart left"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="up" title="Move chart up"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="down" title="Move chart down"><span class="pan-icon">▲</span></button>
+        <button class="pan-btn" type="button" data-pan="right" title="Move chart right"><span class="pan-icon">▲</span></button>
+      </div>
+      <canvas id="cC" width="340" height="340"></canvas>
+    </div>
+    <div class="scale-readout"></div>
+    <div class="readout" id="readC"></div>
+  </section>
+</div>
+
+<div class="bullet-table-wrap">
+  <div class="table-title">Per-Bullet Recoil And Spread</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Bullet</th>
+        <th>Horizontal Recoil</th>
+        <th>Vertical Recoil</th>
+        <th>Total Recoil</th>
+        <th>Pre-Shot Spread Radius</th>
+      </tr>
+    </thead>
+    <tbody id="bulletTable"></tbody>
+  </table>
+</div>
+
+<p class="note">Type bullet numbers separated by commas or spaces. Bullet 1 is the origin marker, so schedules usually start at bullet 2. Bubble radius uses the selected aim and movement state.</p>
+</main>
+</div>
+
+<script type="module">
+import {
+  setSimContext, mulberry32, whash,
+  recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
+  selectedRecoilAmountFor, selectedRecoilVariationFor,
+  spreadBounds, spreadDynamics, selectedSpreadIncFor,
+  simulateBloom, genRecoilPts,
+} from './sim/core.js';
+import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
+import * as Loadout from './sim/loadout.js';
+// ── DATA — loaded in parallel ─────────────────────────────────────────────────
+// (top-level await — requires module script + http server)
+const [EMBEDDED_WEAPONS, _balance, _atts, _ammo, _recoilDecay] = await Promise.all([
+  fetch('./data/weapons.json').then(r => r.json()),
+  fetch('./data/balance_tables.json').then(r => r.json()),
+  fetch('./data/attachments.json').then(r => r.json()),
+  fetch('./data/ammo.json').then(r => r.json()),
+  fetch('./data/recoil_decay.json').then(r => r.json()),
+]);
+const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+        BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+        ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS } = _balance;
+const HP_HS_HIGH = new Set(_HP_HS_HIGH);
+const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+        WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
+const { AMMO, WEAPON_AMMO } = _ammo;
+const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
+setAttachmentContext({
+  MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
+  AMMO,
+  RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+  BASE_HS_MULT, HP_HS_HIGH,
+  MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+  ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
+});
+const LOADOUT_DATA = {
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+  WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
+  AMMO, WEAPON_AMMO,
+};
+let WEAPONS = [];
+let selectedClass = 'Assault Rifle';
+let selectedWeaponId = 'm433';
+const blankAtts = Loadout.blankAtts;
+let selectedAtts = blankAtts();
+let aimState = 'ads';
+let stanceState = 'stand';
+setSimContext({
+  aimState, stanceState,
+  RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP,
+  compensationFn: () => 0,
+});
+
+const DEFAULT_RC_H = 5;
+let scaleH = DEFAULT_RC_H;
+let panX = 0;
+let panY = 0;
+const DEFAULT_YMIN = -1.0;
+const PAN_STEP = 0.5;
+const DEFAULT_SHOTS = 20;
+const CLOUD_RUNS = 12;
+const COL = '#c9a227';
+let refSeed = 0;
+
+function classShort(cls) {
+  return {
+    'Assault Rifle':'AR',
+    'Carbine':'Carb',
+    'SMG':'SMG',
+    'LMG':'LMG',
+    'DMR':'DMR',
+    'Sniper Rifle':'Sniper',
+    'Shotgun':'SG',
+  }[cls] ?? cls;
+}
+
+function spreadKey() {
+  return `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
+}
+
+function rawSelectedWeapon() {
+  return WEAPONS.find(w => w.id === selectedWeaponId) ?? WEAPONS[0];
+}
+
+function selectedWeapon() {
+  const raw = rawSelectedWeapon();
+  return raw ? applyAttachments(raw, selectedAtts) : null;
+}
+
+function computeAttPts(atts, weapon) {
+  return Loadout.computeAttPts(atts, weapon, LOADOUT_DATA);
+}
+
+function validateAtts(atts, weapon) {
+  Loadout.resetAttsForWeapon(atts, weapon, LOADOUT_DATA);
+}
+
+function renderAttachmentSection() {
+  Loadout.renderAttachmentSection({
+    containerId: 'attachmentSection',
+    atts: selectedAtts,
+    weapon: rawSelectedWeapon(),
+    data: LOADOUT_DATA,
+    onChange: () => { renderSidebar(); redraw(); },
+  });
+}
+function renderSidebar() {
+  const cf = document.getElementById('classFilter');
+  const wl = document.getElementById('weaponList');
+  cf.innerHTML = '';
+  CLASSES.forEach(cls => {
+    const btn = document.createElement('button');
+    btn.className = `cbtn${cls === selectedClass ? ' on' : ''}`;
+    btn.textContent = classShort(cls);
+    btn.title = cls;
+    btn.onclick = () => { selectedClass = cls; renderSidebar(); };
+    cf.appendChild(btn);
+  });
+
+  wl.innerHTML = '';
+  const weapons = WEAPONS.filter(w => w.cls === selectedClass);
+  if (!weapons.length) wl.innerHTML = '<div class="no-w">No weapons</div>';
+  weapons.forEach(w => {
+    const btn = document.createElement('button');
+    btn.className = `wbtn${w.id === selectedWeaponId ? ' on' : ''}`;
+    btn.textContent = w.name;
+    btn.onclick = () => {
+      selectedWeaponId = w.id;
+      selectedAtts = blankAtts();
+      validateAtts(selectedAtts, w);
+      renderSidebar();
+      redraw();
+    };
+    wl.appendChild(btn);
+  });
+  renderAttachmentSection();
+}
+
+function updateLoadoutStats(w) {
+  const el = document.getElementById('loadoutStats');
+  if (!el || !w) return;
+  const group = recoilGroup(w);
+  const dir = group.dir ?? w.recoilDir ?? 0;
+  const variation = selectedRecoilVariationFor(w);
+  const amount = selectedRecoilAmountFor(w);
+  const spreadInc = selectedSpreadIncFor(w);
+  el.innerHTML = [
+    `<strong>${wLabel(w)}</strong>`,
+    `Recoil/Shot: ${amount.toFixed(2)} deg`,
+    `Dir: ${dir >= 0 ? '+' : ''}${dir.toFixed(1)} deg`,
+    `Var: +/-${variation.toFixed(1)} deg`,
+    `Spread/Shot: ${spreadInc.toFixed(2)} deg`,
+  ].join(' | ');
+}
+
+const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun'];
+
+
+
+
+
+
+
+// preview_bloom has no recoil-control UI; gating still lives in the helper for symmetry with index.html.
+
+
+
+
+function scaleYMax() {
+  return scaleH * 2 - 1;
+}
+
+function viewXMin() { return -scaleH + panX; }
+function viewXMax() { return scaleH + panX; }
+function viewYMin() { return DEFAULT_YMIN + panY; }
+function viewYMax() { return scaleYMax() + panY; }
+
+function fmtDeg(v) {
+  return v.toFixed(1).replace('.0', '');
+}
+
+function scaleText() {
+  return `View: ${fmtDeg(viewXMin())} deg to ${fmtDeg(viewXMax())} deg H / ${fmtDeg(viewYMin())} deg to ${fmtDeg(viewYMax())} deg V`;
+}
+
+
+
+
+
+function makeCoord(canvas) {
+  const PL = 28, PR = 8, PT = 8, PB = 18;
+  const PW = canvas.width - PL - PR, PH = canvas.height - PT - PB;
+  const xMin = viewXMin();
+  const xMax = viewXMax();
+  const yMin = viewYMin();
+  const yMax = viewYMax();
+  return {
+    PL, PT, PW, PH,
+    xMin, xMax, yMin, yMax,
+    toX: xDeg => PL + ((xDeg - xMin) / (xMax - xMin)) * PW,
+    toY: yDeg => PT + PH - ((yDeg - yMin) / (yMax - yMin)) * PH,
+  };
+}
+
+function drawBase(canvas, c) {
+  const ctx = canvas.getContext('2d');
+  const { PL, PT, PW, PH, toX, toY, xMin, xMax, yMin, yMax } = c;
+  ctx.fillStyle = '#080d0d';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = 'rgba(40,52,52,0.6)';
+  ctx.lineWidth = 0.4;
+  for (let v = Math.ceil(yMin); v <= Math.floor(yMax); v++) {
+    const y = toY(v);
+    ctx.beginPath(); ctx.moveTo(PL, y); ctx.lineTo(PL + PW, y); ctx.stroke();
+  }
+  for (let h = Math.ceil(xMin); h <= Math.floor(xMax); h++) {
+    const x = toX(h);
+    ctx.beginPath(); ctx.moveTo(x, PT); ctx.lineTo(x, PT + PH); ctx.stroke();
+  }
+  ctx.strokeStyle = 'rgba(150,165,165,0.6)';
+  ctx.lineWidth = 1.5;
+  if (xMin <= 0 && xMax >= 0) {
+    ctx.beginPath(); ctx.moveTo(toX(0), PT); ctx.lineTo(toX(0), PT + PH); ctx.stroke();
+  }
+  if (yMin <= 0 && yMax >= 0) {
+    ctx.beginPath(); ctx.moveTo(PL, toY(0)); ctx.lineTo(PL + PW, toY(0)); ctx.stroke();
+  }
+
+  const ox = toX(0), oy = toY(0);
+  if (xMin <= 0 && xMax >= 0 && yMin <= 0 && yMax >= 0) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.moveTo(ox - 6, oy); ctx.lineTo(ox + 6, oy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ox, oy - 6); ctx.lineTo(ox, oy + 6); ctx.stroke();
+  }
+
+  ctx.fillStyle = 'rgba(100,120,120,0.75)';
+  ctx.font = '9px Arial, Helvetica, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let v = Math.ceil(yMin); v <= Math.floor(yMax); v++) ctx.fillText(v + ' deg', PL - 3, toY(v));
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let h = Math.ceil(xMin); h <= Math.floor(xMax); h++) {
+    if (h !== 0) ctx.fillText(h + ' deg', toX(h), PT + PH + 3);
+  }
+  return ctx;
+}
+
+
+
+function parseBullets(value) {
+  const shotCount = selectedShotCount();
+  const seen = new Set();
+  return value
+    .split(/[^0-9]+/)
+    .map(x => parseInt(x, 10))
+    .filter(n => Number.isFinite(n) && n >= 1 && n <= shotCount && !seen.has(n) && seen.add(n));
+}
+
+function drawPanel(canvas, readout, w, bulletNums) {
+  const shotCount = selectedShotCount();
+  const c = makeCoord(canvas);
+  const ctx = drawBase(canvas, c);
+  const { PL, PT, PW, PH, toX, toY } = c;
+  const blooms = simulateBloom(w, shotCount);
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(PL, PT, PW, PH);
+  ctx.clip();
+
+  for (let s = 1; s <= CLOUD_RUNS; s++) {
+    const recoilPts = genRecoilPts(w, s * 0x9e3779b9, shotCount);
+    const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
+    recoilPts.forEach((p, i) => {
+      const bloom = blooms[i] ?? spreadBounds(w)[0];
+      const bAng = rngB() * Math.PI * 2;
+      const bR = bloom * rngB();
+      ctx.beginPath();
+      ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(p.y + bR * Math.sin(bAng)), 2, 0, Math.PI * 2);
+      ctx.fillStyle = COL + '38';
+      ctx.fill();
+    });
+  }
+
+  const pts = genRecoilPts(w, refSeed, shotCount);
+  const bubbleIdxs = bulletNums.map(n => n - 1);
+
+  bubbleIdxs.forEach(idx => {
+    const p = pts[idx];
+    if (!p) return;
+    const bloom = blooms[idx] ?? spreadBounds(w)[0];
+    const x = toX(p.x), y = toY(p.y);
+    const r = Math.abs(toX(p.x + bloom) - x);
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = COL + '1a';
+    ctx.strokeStyle = COL + 'aa';
+    ctx.lineWidth = 1.2;
+    ctx.fill();
+    ctx.stroke();
+  });
+
+  ctx.beginPath();
+  pts.forEach((p, i) => {
+    const x = toX(p.x), y = toY(p.y);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = COL;
+  ctx.lineWidth = 2.2;
+  ctx.globalAlpha = 0.9;
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  pts.forEach((p, i) => {
+    ctx.beginPath();
+    ctx.arc(toX(p.x), toY(p.y), 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = COL;
+    ctx.fill();
+  });
+
+  ctx.restore();
+
+  const spreadText = bulletNums.map(n => `${n}: ${(blooms[n - 1] ?? spreadBounds(w)[0]).toFixed(2)} deg`).join('  ');
+  readout.textContent = bulletNums.length ? spreadText : 'No bubble bullets selected.';
+}
+
+function renderBulletTable(w) {
+  const tbody = document.getElementById('bulletTable');
+  const shotCount = selectedShotCount();
+  const pts = genRecoilPts(w, refSeed, shotCount);
+  const blooms = simulateBloom(w, shotCount);
+  const fmtStat = (value, prev) => {
+    const delta = prev == null ? null : value - prev;
+    const deltaClass = delta == null ? '' : delta > 0.004 ? ' up' : delta < -0.004 ? ' down' : '';
+    const deltaText = delta == null ? '+0.00' : `${delta >= 0 ? '+' : ''}${delta.toFixed(2)}`;
+    return `${value.toFixed(2)} deg <span class="delta${deltaClass}">${deltaText}</span>`;
+  };
+  tbody.innerHTML = pts.map((p, i) => {
+    const prev = i > 0 ? pts[i - 1] : null;
+    const total = Math.hypot(p.x, p.y);
+    const prevTotal = prev ? Math.hypot(prev.x, prev.y) : null;
+    const spread = blooms[i] ?? spreadBounds(w)[0];
+    const prevSpread = i > 0 ? (blooms[i - 1] ?? spreadBounds(w)[0]) : null;
+    return `<tr>
+      <td>${i + 1}</td>
+      <td>${fmtStat(p.x, prev?.x ?? null)}</td>
+      <td>${fmtStat(p.y, prev?.y ?? null)}</td>
+      <td>${fmtStat(total, prevTotal)}</td>
+      <td>${fmtStat(spread, prevSpread)}</td>
+    </tr>`;
+  }).join('');
+}
+
+function selectedShotCount() {
+  const input = document.getElementById('shotCountInput');
+  if (!input) return DEFAULT_SHOTS;
+  return Math.max(1, Math.min(100, Math.round(+input.value || DEFAULT_SHOTS)));
+}
+
+function syncShotCount() {
+  document.getElementById('shotCountInput').value = selectedShotCount();
+  redraw();
+}
+
+const panelConfig = [
+  { canvas: 'cA', input: 'bubbleA', readout: 'readA' },
+  { canvas: 'cB', input: 'bubbleB', readout: 'readB' },
+  { canvas: 'cC', input: 'bubbleC', readout: 'readC' },
+];
+
+function redraw() {
+  const w = selectedWeapon();
+  if (!w) return;
+  updateLoadoutStats(w);
+  document.querySelectorAll('.scale-readout').forEach(el => {
+    el.textContent = scaleText();
+  });
+  panelConfig.forEach(({ canvas, input, readout }) => {
+    const nums = parseBullets(document.getElementById(input).value);
+    drawPanel(document.getElementById(canvas), document.getElementById(readout), w, nums);
+  });
+  renderBulletTable(w);
+}
+
+document.querySelectorAll('.bubble-input').forEach(input => {
+  input.addEventListener('input', redraw);
+});
+document.getElementById('shotCountInput').addEventListener('change', syncShotCount);
+document.getElementById('shotCountInput').addEventListener('input', syncShotCount);
+document.querySelectorAll('[data-target][data-value]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById(btn.dataset.target).value = btn.dataset.value;
+    redraw();
+  });
+});
+document.querySelectorAll('[data-scale]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    scaleH += btn.dataset.scale === 'in' ? -0.5 : 0.5;
+    scaleH = Math.max(2, Math.min(10, scaleH));
+    redraw();
+  });
+});
+document.querySelectorAll('[data-pan]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const dir = btn.dataset.pan;
+    if (dir === 'left') panX -= PAN_STEP;
+    if (dir === 'right') panX += PAN_STEP;
+    if (dir === 'up') panY += PAN_STEP;
+    if (dir === 'down') panY -= PAN_STEP;
+    redraw();
+  });
+});
+document.querySelectorAll('[data-aim]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    aimState = btn.dataset.aim;
+    setSimContext({ aimState });
+    document.querySelectorAll('[data-aim]').forEach(x => x.classList.toggle('on', x === btn));
+    renderSidebar();
+    redraw();
+  });
+});
+document.querySelectorAll('[data-stance]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    stanceState = btn.dataset.stance;
+    setSimContext({ stanceState });
+    document.querySelectorAll('[data-stance]').forEach(x => x.classList.toggle('on', x === btn));
+    renderSidebar();
+    redraw();
+  });
+});
+document.getElementById('redrawBtn').addEventListener('click', () => {
+  refSeed = (Math.random() * 0x100000000) >>> 0;
+  redraw();
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  refSeed = 0;
+  redraw();
+});
+
+async function init() {
+  WEAPONS = EMBEDDED_WEAPONS;
+  try {
+    if (!WEAPONS.some(w => w.id === selectedWeaponId)) selectedWeaponId = WEAPONS[0]?.id;
+    selectedClass = rawSelectedWeapon()?.cls ?? selectedClass;
+    validateAtts(selectedAtts, rawSelectedWeapon());
+    renderSidebar();
+    redraw();
+  } catch (err) {
+    const el = document.getElementById('loadError');
+    el.style.display = 'block';
+    el.textContent = `Could not render the preview. Details: ${err.message}`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
