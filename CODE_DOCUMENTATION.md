@@ -8,8 +8,8 @@ tools used to test recoil/bloom visualization ideas and validate distance projec
 
 ## High-Level Architecture
 
-The site is a self-contained set of static files served via a local dev server (Vite on
-`localhost:5174` by default). There is no build step, but pages use `<script type="module">`
+The site is a self-contained set of static files served via a local Python HTTP server
+(`python -m http.server 5175`). There is no build step, but pages use `<script type="module">`
 so they require HTTP — opening the HTML files directly as `file://` URLs will fail.
 
 ```
@@ -31,7 +31,7 @@ BF6 Project/
     attachments.js          ← Canonical ordered attachment slot definitions
 
   data/
-    weapons.json            ← All 55 weapon base stats (one object per weapon)
+    weapons.json            ← All 58 weapon base stats (one object per weapon)
     attachments.json        ← Attachment catalogs + per-weapon availability
     ammo.json               ← Ammo types + per-weapon availability
     recoil_decay.json       ← Per-weapon ADS recoil decay table
@@ -155,6 +155,7 @@ scanning catalog arrays on every render.
 | `_adsMoveSpeedMult` | Final ADS move speed multiplier |
 | `_hipSpreadTierMod` | Total hipfire spread tier shift |
 | `_weaponSway` | Weapon sway delta |
+| `_visualRecoil` | Visual recoil modifier from ergo (negative = reduced, `0` = unchanged) |
 | `_hsMult` | Final headshot multiplier |
 
 **`applyAttachments` output — modified base fields:**
@@ -168,6 +169,8 @@ scanning catalog arrays on every render.
 | `spread` | Hip spread min shifted by tier if `hipSpreadTierMod ≠ 0` |
 | `mag` | Replaced by selected magazine count |
 | `tacRld` | Replaced by magazine reload or Mag Catch reload |
+| `fireMode` | Overridden to `'auto'` when ergo has `setsFireModeAuto: true` (e.g. Full Auto on M16A4) |
+| `burstRounds` | Set to `undefined` when `setsFireModeAuto` ergo is active, suppressing the burst badge |
 
 ---
 
@@ -222,12 +225,13 @@ data bundle passed by each page.
 
 ### `data/weapons.json`
 
-Array of 55 weapon objects. The `cls` field drives the class filter buttons in the UI.
+Array of 58 weapon objects. The `cls` field drives the class filter buttons in the UI.
 Current classes: `Assault Rifle`, `Carbine`, `SMG`, `LMG`, `DMR`, `Sniper Rifle`, `Shotgun`.
 
 Seven sidearms (`cls: "Sidearm"`) are present in the file but intentionally hidden from the
 UI — `"Sidearm"` is not in the `CLASSES` array in either page. They will surface once
-attachment availability data is ready.
+attachment availability data is ready. The 51 non-sidearm weapons span the seven
+supported classes; three new weapons (M16A4, RPK-74M, L115) were added in Season 3.
 
 **Required fields per weapon object:**
 
@@ -248,7 +252,9 @@ attachment availability data is ready.
 | `recoilIncAds` | number | ADS bloom increase per shot |
 | `spreadMax` | number | Fallback maximum spread |
 | `adsTime` | number | Estimated ADS time in ms (fallback; balance table tiers take precedence) |
-| `fireMode` | string | `auto`, `semi`, `bolt`, or `pump` |
+| `fireMode` | string | `auto`, `semi`, `burst`, `bolt`, or `pump` |
+| `burstRounds` | number | *(burst weapons only)* Rounds per burst trigger pull |
+| `burstBurstsPerMinute` | number | *(burst weapons only)* Bursts per minute; used by recoil sim for inter-burst timing |
 
 **Optional but important fields:**
 

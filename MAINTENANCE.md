@@ -43,8 +43,11 @@ current supported classes while accepting `Sidearm` as explicitly hidden.
    - Required fields: `id`, `name`, `cls`, `cal`, `rpm`, `mag`, `tacRld`,
      `emptyRld`, `bulletVel`, `recoilV`, `recoilDir`, `recoilVar`,
      `recoilIncAds`, `spreadMax`, `adsTime`, `fireMode`
+   - For burst weapons: also add `burstRounds` (rounds per trigger pull) and
+     `burstBurstsPerMinute` (burst cadence; `rpm` stays as the average full-auto
+     equivalent used for TTK; the burst sim uses `burstBurstsPerMinute`)
    - Optional but important: `recoil` (ads/hip groups), `spread` (per-stance
-     min/max), `spreadDyn` (bloom dynamics), `damage` (range dropoff array)
+     min/max), `spreadDyn` (bloom dynamics), `dmg` (range dropoff array)
 2. Add entry to `data/attachments.json` → `WEAPON_ATTS`
    - Keys: `muzzle`, `barrel`, `barrelDef`, `grip`, `laser` (arrays of IDs)
 3. Add magazine data to `data/attachments.json` → `WEAPON_MAG`
@@ -118,12 +121,15 @@ reads. Omit a field (or set to neutral) if the attachment has no effect there.
 | `adsSpreadIncMult` | float | `1` | Multiplies ADS bloom-per-shot (`recoilIncAds`) |
 | `adsSpreadDecayBoost` | float | `0` | Extra ADS bloom decay coefficient |
 | `movingAdsSpreadTierMod` | int | `0` | Shifts moving-ADS min spread tier |
-| `adsTimeTierMod` | int | `0` | Shifts ADS speed tier (neg = faster) |
+| `adsTimeTierMod` | int | `0` | Shifts ADS speed tier (pos = faster) |
 | `adsMoveSpeedTierShift` | int | `0` | Shifts ADS move speed tier |
 | `vMult` | float | `1` | Multiplies bullet velocity |
 | `sway` | float | `0` | Adds to weapon sway (from muzzle) |
 | `worldSpot` | float | `54` | World spotting distance override (from muzzle) |
 | `minimapSpot` | float | `150` | Minimap spotting distance override (from muzzle) |
+| `sprintRecoveryTierShift` | int | `0` | *(ergos only)* Shifts sprint recovery tier |
+| `visualRecoil` | int | `0` | *(ergos only)* Visual recoil modifier; negative = reduced, positive = increased |
+| `setsFireModeAuto` | bool | `false` | *(ergos only)* Overrides burst weapon to full-auto fire mode |
 
 ---
 
@@ -145,11 +151,14 @@ If game mechanics change (not just data), edit the relevant module:
 ## Known Follow-Up Notes
 
 - **SL9 burst timing:** Season 3 sym.gg data shows `RoF = 674.999` and
-  `BurstRoF = 771.428`. Screen-recording review agrees with a 3-round burst
-  cadence of roughly 77.8 ms between shots 1-2 and 2-3, then roughly 111.1 ms
-  after shot 3 before the next burst. This mirrors the M16A4-style post-burst
-  delay pattern and should be revisited for recoil/bloom timing, but no data or
-  simulator change has been made yet.
+  `BurstRoF = 771.428`. Screen-recording verification (frame-by-frame timestamp
+  analysis across 5 full magazines) confirms a 3-round burst cadence of ~78 ms
+  between shots (≈771 RPM intra-burst), with a post-burst delay that brings the
+  sustained average to ~675 RPM. This mirrors the M16A4-style burst pattern.
+  Currently, `weapons.json` stores the weapon as `fireMode: "auto"` with
+  `rpm: 675`. The burst recoil/bloom timing model has not yet been applied.
+  **Pending:** add `burstRounds: 3` and `burstBurstsPerMinute` to the SL9 entry
+  and verify the burst badge displays correctly.
 
 ---
 
