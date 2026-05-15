@@ -426,19 +426,17 @@
       "id": "ptt_grip_pod",
       "name": "PTT Grip Pod",
       "adsRecoilTierMod": 0,
-      "movingAdsSpreadTierMod": 0,
+      "movingAdsSpreadTierMod": 1,
       "adsTimeTierMod": 0,
-      "pts": 10,
-      "noEffect": true
+      "pts": 10
     },
     {
       "id": "qd_grip_pod",
       "name": "QD Grip Pod",
       "adsRecoilTierMod": 0,
-      "movingAdsSpreadTierMod": 0,
-      "adsTimeTierMod": 0,
-      "pts": 10,
-      "noEffect": true
+      "movingAdsSpreadTierMod": 1,
+      "adsTimeTierMod": 1,
+      "pts": 10
     },
     {
       "id": "classic_grip_pod",
