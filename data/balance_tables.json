@@ -47,7 +47,10 @@
     "m87a1": 0.94,
     "m1014": 0.94,
     "ks18k": 0.94,
-    "db12": 0.94
+    "db12": 0.94,
+    "m16a4": 0.9425,
+    "rpk74m": 0.9317,
+    "l115": 0.94
   },
   "HIP_SPREAD_TIERS": {
     "Class A": [
@@ -150,7 +153,10 @@
     "m44": "Class A",
     "ggh22": "Class A",
     "m357trait": "Class A",
-    "vz61": "Class B"
+    "vz61": "Class B",
+    "m16a4": "Class C",
+    "rpk74m": "Class D",
+    "l115": "Class D"
   },
   "BASE_HS_MULT": {
     "m39emr": 1.5,
@@ -163,7 +169,8 @@
     "m87a1": 1.0,
     "m1014": 1.0,
     "ks18k": 1.0,
-    "db12": 1.0
+    "db12": 1.0,
+    "l115": 1.75
   },
   "HP_HS_HIGH": [
     "m39emr",

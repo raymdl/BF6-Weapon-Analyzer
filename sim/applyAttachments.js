@@ -76,11 +76,17 @@ export function applyAttachments(w, atts) {
   const las = LASERS_BY_ID[atts.laser]  ?? LASERS[0];
   const ammoType = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
 
+  // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────
+  const ergoData = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
+  const ergoSprintRecoveryTierShift = ergoData.sprintRecoveryTierShift ?? 0;
+  const ergoAdsRecoilTierMod = ergoData.adsRecoilTierMod ?? 0;
+
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
   // Tier formula: effectiveRecoilV = recoilV × ADSRecoilAmountMultiplier ^ (sum of tier mods)
   const totalAdsRecoilTierMod = (grp.adsRecoilTierMod ?? 0)
     + (muz.adsRecoilTierMod ?? 0)
-    + (ammoType.adsRecoilTierMod ?? 0);
+    + (ammoType.adsRecoilTierMod ?? 0)
+    + ergoAdsRecoilTierMod;
   const mult = RECOIL_MULT[w.id] ?? 0.94;
   const adsRecoilPerShot       = +(w.recoilV * Math.pow(mult, totalAdsRecoilTierMod)).toFixed(3);
   const adsRecoilReductionPct  = +(100 * (1 - Math.pow(mult, totalAdsRecoilTierMod))).toFixed(1);
@@ -145,10 +151,6 @@ export function applyAttachments(w, atts) {
   // ── Ammo display ──────────────────────────────────────────────────────────────
   const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
 
-  // ── Ergonomics ────────────────────────────────────────────────────────────────
-  const ergoData = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
-  const ergoSprintRecoveryTierShift = ergoData.sprintRecoveryTierShift ?? 0;
-
   // ── Magazine stats ────────────────────────────────────────────────────────────
   const wm       = WEAPON_MAG[w.id] ?? null;
   const magId    = atts.mag ?? wm?.def ?? null;
@@ -198,12 +200,15 @@ export function applyAttachments(w, atts) {
     _worldSpot:              muz.worldSpot   ?? 54,
     _minimapSpot:            muz.minimapSpot ?? 150,
     _weaponSway:             weaponSway,
+    _visualRecoil:           ergoData.visualRecoil ?? 0,
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
     _movingAdsMinSpreadDeg:  movingAdsMinSpreadDeg,
     _adsTimeTierMod:         combinedAdsTimeTierMod,
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult,
     _hsMult:                 hsMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
+    fireMode:    ergoData.setsFireModeAuto ? 'auto' : w.fireMode,
+    burstRounds: ergoData.setsFireModeAuto ? undefined : w.burstRounds,
     spread:      spreadOverride ?? w.spread,
     recoilV:     adsRecoilPerShot,
     recoilVar:   adsRecoilVariation,

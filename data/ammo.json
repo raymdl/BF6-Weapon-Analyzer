@@ -149,6 +149,16 @@
         "frangible": 20
       }
     },
+    "m16a4": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
     "m4a1": {
       "def": "standard",
       "ammo": {
@@ -404,6 +414,16 @@
         "frangible": 20
       }
     },
+    "rpk74m": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
     "m39emr": {
       "def": "standard",
       "ammo": {
@@ -475,6 +495,15 @@
       }
     },
     "psr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "l115": {
       "def": "standard",
       "ammo": {
         "standard": 5,

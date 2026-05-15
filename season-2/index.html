@@ -20,9 +20,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .logo{font-size:1.05rem;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase}
 .logo span{color:var(--muted);font-weight:400}
 .hdr-tag{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
-.legacy-link{font-size:0.65rem;color:var(--accent2);border:1px solid #2a3a48;border-radius:3px;padding:2px 6px;text-decoration:none;background:rgba(77,148,208,.08)}
-.legacy-link:hover{border-color:var(--accent2);color:#8fbce0}
-.loadout-btn{display:none;margin-left:auto;padding:5px 10px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:var(--accent2);border-radius:4px;font-size:0.72rem;letter-spacing:.04em}
+.legacy-link{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px;text-decoration:none;margin-left:auto}
+.legacy-link:hover{border-color:#666;color:#ccc}
+.loadout-btn{display:none;padding:5px 10px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:var(--accent2);border-radius:4px;font-size:0.72rem;letter-spacing:.04em}
 .loadout-close{display:none}
 .loadout-backdrop{display:none}
 .app{display:flex;flex:1;overflow:hidden}
@@ -270,7 +270,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 <header>
   <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
   <div class="hdr-tag">Season 2 (Updated 12 MAY 2026)</div>
-  <a class="legacy-link" href="../">Current</a>
+  <a class="legacy-link" href="../">Current Season</a>
   <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections">Loadout</button>
 </header>
 <div class="app">

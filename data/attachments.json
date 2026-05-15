@@ -403,6 +403,76 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 5
+    },
+    {
+      "id": "underslung_mount",
+      "name": "Underslung Mount",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 0,
+      "pts": 10,
+      "noEffect": true
+    },
+    {
+      "id": "bipod",
+      "name": "Bipod",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 0,
+      "pts": 10,
+      "noEffect": true
+    },
+    {
+      "id": "ptt_grip_pod",
+      "name": "PTT Grip Pod",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 0,
+      "pts": 10,
+      "noEffect": true
+    },
+    {
+      "id": "qd_grip_pod",
+      "name": "QD Grip Pod",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 0,
+      "pts": 10,
+      "noEffect": true
+    },
+    {
+      "id": "classic_grip_pod",
+      "name": "Classic Grip Pod",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 0,
+      "pts": 20,
+      "noEffect": true
+    },
+    {
+      "id": "bipod_sr",
+      "name": "Bipod",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 0,
+      "pts": 10,
+      "noEffect": true
+    },
+    {
+      "id": "qd_grip_pod_sr",
+      "name": "QD Grip Pod",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 1,
+      "adsTimeTierMod": 1,
+      "pts": 10
+    },
+    {
+      "id": "classic_grip_pod_sr",
+      "name": "Classic Grip Pod",
+      "adsRecoilTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 1,
+      "pts": 20
     }
   ],
   "LASERS": [
@@ -523,6 +593,19 @@
       "name": "ADS Bolt",
       "pts": 30,
       "noEffect": true
+    },
+    {
+      "id": "buffer",
+      "name": "Buffer",
+      "pts": 5,
+      "visualRecoil": -1
+    },
+    {
+      "id": "full_auto",
+      "name": "Full Auto",
+      "pts": 25,
+      "adsRecoilTierMod": -1,
+      "setsFireModeAuto": true
     }
   ],
   "WEAPON_ATTS": {
@@ -917,6 +1000,58 @@
       "laser": [
         "50mw_violet",
         "5mw_red",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ]
+    },
+    "m16a4": {
+      "muzzle": [
+        "flash_hider",
+        "flash_comp",
+        "sp_brake",
+        "linear_comp",
+        "dp_brake",
+        "std_supp",
+        "cqb_supp",
+        "long_supp",
+        "light_supp",
+        "comp_brake"
+      ],
+      "barrel": [
+        "basic",
+        "heavy",
+        "extended",
+        "heavy_ext",
+        "light",
+        "short"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "classic_vert",
+        "underslung_mount",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "slim_handstop",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
+      ],
+      "laser": [
+        "5mw_red",
+        "50mw_violet",
         "5mw_green",
         "50mw_green",
         "50mw_blue",
@@ -2012,6 +2147,55 @@
         "120mw_blue"
       ]
     },
+    "rpk74m": {
+      "muzzle": [
+        "flash_hider",
+        "flash_comp",
+        "sp_brake",
+        "linear_comp",
+        "dp_brake",
+        "std_supp",
+        "cqb_supp",
+        "long_supp",
+        "light_supp",
+        "comp_brake"
+      ],
+      "barrel": [
+        "basic",
+        "heavy",
+        "heavy_ext",
+        "short"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "classic_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "slim_handstop",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
+      ],
+      "laser": [
+        "5mw_red",
+        "50mw_violet",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ]
+    },
     "m39emr": {
       "muzzle": [
         "flash_hider",
@@ -2129,7 +2313,10 @@
         "stipp_stubby",
         "lp_stubby",
         "slim_angled",
-        "full_angled"
+        "full_angled",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr"
       ],
       "laser": [
         "50mw_violet",
@@ -2172,7 +2359,10 @@
         "lp_stubby",
         "adj_angled",
         "slim_angled",
-        "full_angled"
+        "full_angled",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr"
       ],
       "laser": [
         "50mw_violet",
@@ -2248,7 +2438,10 @@
       "grip": [
         "full_angled_sr",
         "lp_stubby_sr",
-        "slim_angled_sr"
+        "slim_angled_sr",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr"
       ],
       "laser": [
         "50mw_violet",
@@ -2275,7 +2468,10 @@
       "grip": [
         "lp_stubby_sr",
         "full_angled_sr",
-        "slim_angled_sr"
+        "slim_angled_sr",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr"
       ],
       "laser": [
         "50mw_green"
@@ -2299,7 +2495,10 @@
       "grip": [
         "lp_stubby_sr",
         "full_angled_sr",
-        "slim_angled_sr"
+        "slim_angled_sr",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr"
       ],
       "laser": [
         "50mw_violet",
@@ -2332,7 +2531,10 @@
       "grip": [
         "full_angled_sr",
         "lp_stubby_sr",
-        "slim_angled_sr"
+        "slim_angled_sr",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr"
       ],
       "laser": [
         "50mw_violet",
@@ -2341,6 +2543,32 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ]
+    },
+    "l115": {
+      "muzzle": [
+        "dp_brake",
+        "sp_brake",
+        "comp_brake",
+        "std_supp",
+        "long_supp",
+        "cqb_supp",
+        "light_supp"
+      ],
+      "barrel": [
+        "basic",
+        "light",
+        "extended",
+        "short"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "full_angled_sr",
+        "lp_stubby_sr",
+        "slim_angled_sr",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr"
       ]
     },
     "m87a1": {
@@ -2743,6 +2971,28 @@
         "reg": 3151,
         "fast": null
       }
+    },
+    "m16a4": {
+      "avail": [
+        "match_trigger",
+        "rail_cover",
+        "buffer",
+        "full_auto",
+        "mag_flare"
+      ]
+    },
+    "rpk74m": {
+      "avail": [
+        "buffer",
+        "mag_flare",
+        "match_trigger"
+      ]
+    },
+    "l115": {
+      "avail": [
+        "mag_catch",
+        "ads_bolt"
+      ]
     }
   },
   "WEAPON_MAG": {
@@ -5187,6 +5437,192 @@
           "tacRld": 2154,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 1
+        }
+      }
+    },
+    "m16a4": {
+      "defAds": 4,
+      "defSpr": 3,
+      "defAms": 5,
+      "def": "30_rnd",
+      "mags": {
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 5,
+          "mag": 20,
+          "tacRld": 1950,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": -2
+        },
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "tacRld": 2200,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -2
+        },
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 5,
+          "mag": 30,
+          "tacRld": 2200,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "30_fast": {
+          "name": "30 Fast",
+          "pts": 10,
+          "mag": 30,
+          "tacRld": 1950,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 0
+        },
+        "36_rnd": {
+          "name": "36 Rnd",
+          "pts": 15,
+          "mag": 36,
+          "tacRld": 2200,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1
+        },
+        "40_rnd": {
+          "name": "40 Rnd",
+          "pts": 25,
+          "mag": 40,
+          "tacRld": 2200,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1
+        },
+        "40_fast": {
+          "name": "40 Fast",
+          "pts": 30,
+          "mag": 40,
+          "tacRld": 1950,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 1
+        }
+      }
+    },
+    "rpk74m": {
+      "defAds": 5,
+      "defSpr": 4,
+      "defAms": 6,
+      "def": "45_rnd",
+      "mags": {
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 5,
+          "mag": 30,
+          "tacRld": 2784,
+          "adsTimeTierShift": -2,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": -2
+        },
+        "36_rnd": {
+          "name": "36 Rnd",
+          "pts": 5,
+          "mag": 36,
+          "tacRld": 2784,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": -2
+        },
+        "45_rnd": {
+          "name": "45 Rnd",
+          "pts": 5,
+          "mag": 45,
+          "tacRld": 2784,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "30_fast": {
+          "name": "30 Fast",
+          "pts": 10,
+          "mag": 30,
+          "tacRld": 2464,
+          "adsTimeTierShift": -2,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": -2
+        },
+        "45_fast": {
+          "name": "45 Fast",
+          "pts": 10,
+          "mag": 45,
+          "tacRld": 2464,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 0
+        },
+        "50_rnd": {
+          "name": "50 Rnd",
+          "pts": 10,
+          "mag": 50,
+          "tacRld": 2784,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1
+        },
+        "60_rnd": {
+          "name": "60 Rnd",
+          "pts": 20,
+          "mag": 60,
+          "tacRld": 2784,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1
+        },
+        "95_rnd": {
+          "name": "95 Rnd",
+          "pts": 50,
+          "mag": 95,
+          "tacRld": 2784,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 2
+        }
+      }
+    },
+    "l115": {
+      "defAds": 6,
+      "defSpr": 4,
+      "defAms": 6,
+      "def": "5_rnd",
+      "mags": {
+        "5_rnd": {
+          "name": "5 Rnd",
+          "pts": 5,
+          "mag": 5,
+          "tacRld": 2750,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0
+        },
+        "7_rnd": {
+          "name": "7 Rnd",
+          "pts": 15,
+          "mag": 7,
+          "tacRld": 2750,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1
+        },
+        "7_fast": {
+          "name": "7 Fast",
+          "pts": 20,
+          "mag": 7,
+          "tacRld": 2434,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }

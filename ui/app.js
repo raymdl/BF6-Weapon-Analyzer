@@ -10,12 +10,13 @@ import * as Loadout from '../sim/loadout.js';
 
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
 
+const _v = Date.now();
 const [W, _recoilDecay, _balance, _atts, _ammo] = await Promise.all([
-  fetch('./data/weapons.json').then(r => r.json()),
-  fetch('./data/recoil_decay.json').then(r => r.json()),
-  fetch('./data/balance_tables.json').then(r => r.json()),
-  fetch('./data/attachments.json').then(r => r.json()),
-  fetch('./data/ammo.json').then(r => r.json()),
+  fetch(`./data/weapons.json?v=${_v}`).then(r => r.json()),
+  fetch(`./data/recoil_decay.json?v=${_v}`).then(r => r.json()),
+  fetch(`./data/balance_tables.json?v=${_v}`).then(r => r.json()),
+  fetch(`./data/attachments.json?v=${_v}`).then(r => r.json()),
+  fetch(`./data/ammo.json?v=${_v}`).then(r => r.json()),
 ]);
 
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
@@ -291,14 +292,21 @@ function renderOverview() {
 
   const hdr = document.getElementById('wHeader');
   hdr.innerHTML = '';
+  const appendBurstBadge = (w, hdr) => {
+    if (!w.burstRounds) return;
+    const label = w.fireMode === 'burst' ? `${w.burstRounds}-RD BURST ONLY` : `${w.burstRounds}-RD BURST`;
+    const bb = document.createElement('span'); bb.className = 'wbadge-burst'; bb.textContent = label; hdr.appendChild(bb);
+  };
   if (w1) {
     const s = document.createElement('span'); s.className = 'wname'; s.textContent = wLabel(w1); hdr.appendChild(s);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w1.cls; hdr.appendChild(b);
+    appendBurstBadge(w1, hdr);
   }
   if (w2) {
     const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 6px'; vs.textContent = 'vs'; hdr.appendChild(vs);
     const s = document.createElement('span'); s.className = 'wname2'; s.textContent = wLabel(w2); hdr.appendChild(s);
     const b = document.createElement('span'); b.className = 'wbadge'; b.style.borderColor = 'var(--accent2)'; b.style.color = 'var(--accent2)'; b.textContent = w2.cls; hdr.appendChild(b);
+    appendBurstBadge(w2, hdr);
   }
 
   const grid = document.getElementById('sGrid');
@@ -324,8 +332,8 @@ function renderOverview() {
       tooltip: 'Rounds available in the selected magazine.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
       tooltip: 'Tactical reload time in seconds, using the selected magazine and Mag Catch when applicable.' },
-    { lbl: 'Draw Spd',    k: 'deployT',                                  unit: 's',   fmt: v => v ?? '—',                            lowerBetter: true,
-      tooltip: 'Weapon deploy time in seconds. Lower is faster.' },
+    { lbl: 'Wpn Draw Spd', k: 'deployT',                                  unit: 's',   fmt: v => v ?? '—',                            lowerBetter: true,
+      tooltip: 'Sprint to fire time. Lower is faster.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
       tooltip: 'ADS vertical recoil added per shot after ADS recoil-tier attachment effects.' },
     { lbl: 'Recoil Dir',  k: 'recoilDir',                                unit: '°',   fmt: v => ((-v) >= 0 ? '+' : '') + (-v),       absDiff: true, group: 'recoil',
@@ -961,6 +969,12 @@ function renderAttachmentStats(loadouts) {
       const decreased = swayVal < 0;
       const tip = escAttr('Weapon sway from selected attachments. Decreased is better; increased is worse.');
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Weapon Sway</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${decreased ? 'Decreased' : 'Increased'}</div></div>`);
+    }
+    const vrVal = cur._visualRecoil ?? 0;
+    if (vrVal !== 0) {
+      const reduced = vrVal < 0;
+      const tip = escAttr('Visual recoil from selected attachments. Reduced is better; increased is worse.');
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Visual Recoil</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Reduced' : 'Increased'}</div></div>`);
     }
     if (!chips.length) return;
     rendered = true;
