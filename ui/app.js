@@ -11,13 +11,28 @@ import * as Loadout from '../sim/loadout.js';
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
 
 const _v = Date.now();
+let _dataLastModified = null;
 const [W, _recoilDecay, _balance, _atts, _ammo] = await Promise.all([
-  fetch(`./data/weapons.json?v=${_v}`).then(r => r.json()),
+  fetch(`./data/weapons.json?v=${_v}`).then(r => { _dataLastModified = r.headers.get('Last-Modified'); return r.json(); }),
   fetch(`./data/recoil_decay.json?v=${_v}`).then(r => r.json()),
   fetch(`./data/balance_tables.json?v=${_v}`).then(r => r.json()),
   fetch(`./data/attachments.json?v=${_v}`).then(r => r.json()),
   fetch(`./data/ammo.json?v=${_v}`).then(r => r.json()),
 ]);
+
+// Update header date from the data file's Last-Modified header (set by GitHub Pages
+// from the file's last commit date — updates automatically on every data push).
+{
+  const tag = document.querySelector('.hdr-tag');
+  if (tag && _dataLastModified) {
+    const d = new Date(_dataLastModified);
+    const mon = d.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' }).toUpperCase();
+    const day = d.getUTCDate();
+    const yr  = d.getUTCFullYear();
+    const prefix = tag.textContent.replace(/\(Updated.*\)/, '').trim();
+    tag.textContent = `${prefix} (Updated ${day} ${mon} ${yr})`;
+  }
+}
 
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
