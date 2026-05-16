@@ -5525,6 +5525,15 @@
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": -2
         },
+        "30_fast": {
+          "name": "30 Fast",
+          "pts": 10,
+          "mag": 30,
+          "tacRld": 2464,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -2
+        },
         "36_rnd": {
           "name": "36 Rnd",
           "pts": 5,
@@ -5542,15 +5551,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
-        },
-        "30_fast": {
-          "name": "30 Fast",
-          "pts": 10,
-          "mag": 30,
-          "tacRld": 2464,
-          "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
         },
         "45_fast": {
           "name": "45 Fast",
