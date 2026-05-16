@@ -192,7 +192,7 @@
       "id": "extended",
       "name": "Extended",
       "vMult": 1.25,
-      "adsTimeTierMod": 0,
+      "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1.0,
       "pts": 15
