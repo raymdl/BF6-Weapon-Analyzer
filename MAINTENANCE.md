@@ -51,6 +51,16 @@ current supported classes while accepting `Sidearm` as explicitly hidden.
 2. Add entry to `data/attachments.json` → `WEAPON_ATTS`
    - Keys: `muzzle`, `barrel`, `barrelDef`, `grip`, `laser` (arrays of IDs)
 3. Add magazine data to `data/attachments.json` → `WEAPON_MAG`
+   - **Required per weapon**: `defAds`, `defSpr`, `defAms` (base tier indices), `def` (default mag ID),
+     and a `mags` object with every available magazine
+   - **Per magazine**: `name`, `pts`, `mag` (capacity), `tacRld` (ms), `adsTimeTierShift`,
+     `sprintRecoveryTierShift`, `adsMoveSpeedTierShift`
+   - Capture all magazine screenshots in-game (one per mag, with Basic barrel + Iron Sights)
+     so tier shifts can be back-calculated from the displayed ADS time, sprint recovery, and
+     ADS move speed multiplier values. Use `ADS_SPD_TIERS`, `SPRINT_REC_TIERS`, and
+     `ADS_MOVE_TIERS` in `data/balance_tables.json` to map display values to tier indices.
+   - Verify `defAds` by confirming the displayed ADS time on the default mag with a known
+     barrel (e.g. Basic barrel adds `adsTimeTierMod: +1`)
 4. Add ammo data to `data/ammo.json` → `WEAPON_AMMO` (if non-standard)
 5. Add ergo data to `data/attachments.json` → `WEAPON_ERGO` (if applicable)
 6. Add recoil decay values to `data/recoil_decay.json`
