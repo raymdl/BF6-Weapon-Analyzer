@@ -3,7 +3,7 @@ import {
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilVariationFor,
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
-  simulateBloom, genRecoilPts,
+  simulateBloom, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
 import * as Loadout from '../sim/loadout.js';
@@ -732,15 +732,31 @@ function selectedEffectiveSpreadMax(w) {
   const [baseline, sMax] = spreadBounds(w);
   const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return baseline;
-  const coef = dyn.firingCoef ?? 0, exp_ = dyn.firingExp ?? 1;
-  const offset = (dyn.firingOffset ?? 0) * (1 + (state.recoil.aim === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0));
-  const T = 60 / (w.rpm ?? 600), dt = 1 / 60;
+  const firingCoef = dyn.firingCoef ?? 0, firingExp = dyn.firingExp ?? 1;
+  const firingOffset = (dyn.firingOffset ?? 0) * (1 + (state.recoil.aim === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0));
+  const notFiringCoef = dyn.notFiringCoef ?? firingCoef;
+  const notFiringExp = dyn.notFiringExp ?? firingExp;
+  const notFiringOffset = dyn.notFiringOffset ?? firingOffset;
+  const dt = 1 / 60;
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
+  const applyRecovery = (s, seconds, coef, exp_, offset) => {
+    let rem = seconds;
+    while (rem > 1e-12) { const step = Math.min(dt, rem); s = clamp(s - step * (coef * Math.pow(Math.max(s - baseline, 0), exp_) + offset)); rem -= step; }
+    return s;
+  };
   let s = baseline;
   for (let i = 0; i < SPREAD_EFFECTIVE_MAX_SHOTS; i++) {
     s = clamp(s + sInc);
-    let rem = T;
-    while (rem > 1e-12) { const step = Math.min(dt, rem); s = clamp(s - step * (coef * Math.pow(Math.max(s - baseline, 0), exp_) + offset)); rem -= step; }
+    const shotIdx = i + 1;
+    const T = shotIntervalAfter(w, shotIdx);
+    if (isBurstGapAfter(w, shotIdx)) {
+      const firingTime = Math.min(60 / (w.rpm ?? 600), T);
+      const notFiringTime = Math.max(0, T - firingTime);
+      s = applyRecovery(s, firingTime, firingCoef, firingExp, firingOffset);
+      s = applyRecovery(s, notFiringTime, notFiringCoef, notFiringExp, notFiringOffset);
+    } else {
+      s = applyRecovery(s, T, firingCoef, firingExp, firingOffset);
+    }
   }
   return +s.toFixed(3);
 }
