@@ -421,7 +421,8 @@
         "penetration": 5,
         "lightweight": 10,
         "hollow_pt": 20,
-        "frangible": 20
+        "frangible": 20,
+        "synthetic": 25
       }
     },
     "m39emr": {
