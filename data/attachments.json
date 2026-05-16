@@ -5580,7 +5580,7 @@
           "adsMoveSpeedTierShift": 1
         },
         "95_rnd": {
-          "name": "95 Rnd Drum",
+          "name": "95 Rnd",
           "pts": 25,
           "mag": 95,
           "tacRld": 2909,
