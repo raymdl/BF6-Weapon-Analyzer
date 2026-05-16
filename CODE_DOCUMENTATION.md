@@ -9,7 +9,7 @@ tools used to test recoil/bloom visualization ideas and validate distance projec
 ## High-Level Architecture
 
 The site is a self-contained set of static files served via a local Python HTTP server
-(`python -m http.server 5175`). There is no build step, but pages use `<script type="module">`
+(`python -m http.server 5174`). There is no build step, but pages use `<script type="module">`
 so they require HTTP — opening the HTML files directly as `file://` URLs will fail.
 
 ```
