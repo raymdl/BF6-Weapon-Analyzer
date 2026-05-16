@@ -346,7 +346,7 @@ function renderOverview() {
       tooltip: 'Rounds available in the selected magazine.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
       tooltip: 'Tactical reload time in seconds, using the selected magazine and Mag Catch when applicable.' },
-    { lbl: 'Wpn Draw Spd', k: 'deployT',                                  unit: 's',   fmt: v => v ?? '—',                            lowerBetter: true,
+    { lbl: 'Draw Spd', k: 'deployT',                                  unit: 's',   fmt: v => v ?? '—',                            lowerBetter: true,
       tooltip: 'Sprint to fire time. Lower is faster.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
       tooltip: 'ADS vertical recoil added per shot after ADS recoil-tier attachment effects.' },
