@@ -150,7 +150,9 @@ function getBTKWithHS(weapon, range, headshots) {
 }
 function getTTK(weapon, btk) {
   if (!weapon.rpm) return null;
-  return Math.round((btk - 1) / (weapon.rpm / 60) * 1000);
+  let ms = 0;
+  for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
+  return Math.round(ms);
 }
 function fmtTTK(ms) {
   return ms === null ? '—' : ms === 0 ? '0ms' : ms + 'ms';
