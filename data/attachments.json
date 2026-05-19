@@ -1845,7 +1845,7 @@
       ],
       "barrel": [
         "heavy",
-        "extended",
+        "heavy_ext",
         "light"
       ],
       "barrelDef": "heavy",
