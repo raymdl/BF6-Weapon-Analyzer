@@ -538,6 +538,11 @@
   ],
   "LIGHTS": [
     {
+      "id": "none",
+      "name": "None",
+      "pts": 0
+    },
+    {
       "id": "ads_taclight",
       "name": "ADS Taclight",
       "movingAdsSpreadTierMod": 0,
