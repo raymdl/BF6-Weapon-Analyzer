@@ -1845,7 +1845,7 @@
       ],
       "barrel": [
         "heavy",
-        "heavy_ext",
+        "extended",
         "light"
       ],
       "barrelDef": "heavy",
@@ -1895,6 +1895,7 @@
         "heavy",
         "heavy_ext",
         "extended",
+        "light",
         "short"
       ],
       "barrelDef": "basic",
@@ -2134,7 +2135,7 @@
       "barrel": [
         "heavy",
         "heavy_ext",
-        "light"
+        "short"
       ],
       "barrelDef": "heavy",
       "grip": [
@@ -2374,7 +2375,7 @@
       "barrel": [
         "basic",
         "extended",
-        "short"
+        "light"
       ],
       "barrelDef": "basic",
       "grip": [
