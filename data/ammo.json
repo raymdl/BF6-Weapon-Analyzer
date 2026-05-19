@@ -552,6 +552,66 @@
         "flechette": 30,
         "slugs": 40
       }
+    },
+    "p18": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15
+      }
+    },
+    "es57": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15
+      }
+    },
+    "m45a1": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15
+      }
+    },
+    "m44": {
+      "def": "standard",
+      "ammo": {
+        "standard": 0,
+        "hollow_pt": 20
+      }
+    },
+    "ggh22": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15
+      }
+    },
+    "m357trait": {
+      "def": "standard",
+      "ammo": {
+        "standard": 0,
+        "hollow_pt": 20
+      }
+    },
+    "vz61": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15,
+        "synthetic": 25
+      }
     }
   }
 }

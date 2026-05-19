@@ -73,9 +73,14 @@ export function applyAttachments(w, atts) {
 
   const muz = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
   const bar = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
-  const grp = GRIPS_BY_ID[atts.grip]    ?? GRIPS[0];
-  const las = LASERS_BY_ID[atts.laser]  ?? LASERS[0];
-  const lit = _ctx.LIGHTS_BY_ID[atts.light] ?? _ctx.LIGHTS[0];
+  // Combined slot: atts.laser may hold a grip or light ID for weapons like VZ.61/GRT-BC/SL9
+  const laserIsGrip  = !LASERS_BY_ID[atts.laser] && !!GRIPS_BY_ID[atts.laser];
+  const laserIsLight = !LASERS_BY_ID[atts.laser] && !laserIsGrip && !!_ctx.LIGHTS_BY_ID[atts.laser];
+  const grp = laserIsGrip ? GRIPS_BY_ID[atts.laser]  : (GRIPS_BY_ID[atts.grip]  ?? GRIPS[0]);
+  const las = laserIsGrip ? LASERS[0]                  : (LASERS_BY_ID[atts.laser] ?? LASERS[0]);
+  const lit = laserIsLight
+    ? _ctx.LIGHTS_BY_ID[atts.laser]
+    : (_ctx.LIGHTS_BY_ID[atts.light] ?? _ctx.LIGHTS[0]);
   const ammoType = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
 
   // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────

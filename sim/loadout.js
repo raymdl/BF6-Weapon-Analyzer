@@ -63,12 +63,15 @@ export function computeAttPts(atts, weapon, data) {
   const wm = data.WEAPON_MAG[wid] ?? null;
   const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
   const ergoPts = lookups.ERGOS[atts.ergo ?? 'none']?.pts ?? 0;
+  // Combined slot: atts.laser may hold a grip or light ID
+  const laserGrip  = lookups.GRIPS?.[atts.laser] ?? null;
+  const laserLight = !laserGrip ? (lookups.LIGHTS?.[atts.laser] ?? null) : null;
   return getAttPts(lookups.SIGHTS[atts.sight ?? 'iron'], wid)
     + getAttPts(lookups.MUZZLES[atts.muzzle], wid)
     + getAttPts(lookups.BARRELS[atts.barrel], wid)
-    + getAttPts(lookups.GRIPS[atts.grip], wid)
-    + getAttPts(lookups.LASERS[atts.laser], wid)
-    + getAttPts(lookups.LIGHTS[atts.light], wid)
+    + getAttPts(laserGrip ?? lookups.GRIPS[atts.grip], wid)
+    + getAttPts(laserGrip ? null : lookups.LASERS[atts.laser], wid)
+    + getAttPts(laserLight ?? lookups.LIGHTS[atts.light], wid)
     + (data.WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
     + magPts
     + ergoPts;
@@ -162,6 +165,11 @@ export function renderAttachmentSection({
       appendSelectRow(container, { label, value: 'none', options: [{ id: 'none', text: 'None' }], onChange: () => {}, disabled: true });
       return;
     }
+    // Combined grip+laser+light slot: grip dropdown is disabled (options live in Laser)
+    if (key === 'grip' && wa?.laserGripLightCombined) {
+      appendSelectRow(container, { label, value: 'none', options: [{ id: 'none', text: 'None' }], onChange: () => {}, disabled: true });
+      return;
+    }
 
     const source = attDataSource[dataKey];
     if (!weapon || !source) {
@@ -175,13 +183,23 @@ export function renderAttachmentSection({
       return;
     }
 
-    // Combined laser/light slot: merge light options into the laser dropdown
+    // Combined laser/light slot: merge light (and optionally grip) options into the laser dropdown
     let allowedIds = wa?.[key];
     let effectiveSource = source;
     if (key === 'laser' && wa?.laserLightCombined) {
       const lightIds = wa?.light ?? [];
       allowedIds = allowedIds != null ? [...allowedIds, ...lightIds] : lightIds.length ? lightIds : null;
-      effectiveSource = [...source, ...(attDataSource.LIGHTS ?? []).filter(a => a.id !== 'none')];
+      if (wa?.laserGripLightCombined) {
+        // VZ.61-style: none first, then grips, then lasers (skip none), then lights
+        effectiveSource = [
+          source[0], // 'none' laser entry
+          ...(attDataSource.GRIPS ?? []).filter(a => a.id !== 'none'),
+          ...source.slice(1),
+          ...(attDataSource.LIGHTS ?? []).filter(a => a.id !== 'none'),
+        ];
+      } else {
+        effectiveSource = [...source, ...(attDataSource.LIGHTS ?? []).filter(a => a.id !== 'none')];
+      }
     }
 
     const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;

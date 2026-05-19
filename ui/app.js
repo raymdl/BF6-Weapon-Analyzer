@@ -72,10 +72,10 @@ const ATT_BY_ID = {
 
 // ── CONSTANTS ─────────────────────────────────────────────────────────────────
 
-const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun'];
+const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun', 'Sidearm'];
 const CLASS_SHORT = {
   'Assault Rifle': 'AR', 'Carbine': 'Carb', 'SMG': 'SMG',
-  'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'SG',
+  'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'SG', 'Sidearm': 'Pistol',
 };
 
 const DEFAULT_COMPENSATION = 85;

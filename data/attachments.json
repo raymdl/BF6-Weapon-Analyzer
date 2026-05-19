@@ -344,7 +344,10 @@
       "adsRecoilTierMod": 5,
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
-      "pts": 45
+      "pts": 45,
+      "weaponPts": {
+        "vz61": 35
+      }
     },
     {
       "id": "adj_angled",
@@ -485,7 +488,15 @@
       "name": "5 MW Red",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -1,
-      "pts": 10
+      "pts": 10,
+      "weaponPts": {
+        "p18": 5,
+        "es57": 5,
+        "m45a1": 5,
+        "ggh22": 5,
+        "m357trait": 5,
+        "vz61": 5
+      }
     },
     {
       "id": "5mw_green",
@@ -526,14 +537,30 @@
       "name": "Combo Red",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -1,
-      "pts": 0
+      "pts": 0,
+      "weaponPts": {
+        "p18": 20,
+        "es57": 20,
+        "m45a1": 20,
+        "ggh22": 20,
+        "m357trait": 20,
+        "vz61": 20
+      }
     },
     {
       "id": "combo_green",
       "name": "Combo Green",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -2,
-      "pts": 0
+      "pts": 0,
+      "weaponPts": {
+        "p18": 20,
+        "es57": 20,
+        "m45a1": 20,
+        "ggh22": 20,
+        "m357trait": 20,
+        "vz61": 20
+      }
     }
   ],
   "LIGHTS": [
@@ -547,14 +574,30 @@
       "name": "Taclight - Aimed",
       "movingAdsSpreadTierMod": 0,
       "pts": 0,
-      "noEffect": true
+      "noEffect": true,
+      "weaponPts": {
+        "p18": 5,
+        "es57": 5,
+        "m45a1": 5,
+        "ggh22": 5,
+        "m357trait": 5,
+        "vz61": 5
+      }
     },
     {
       "id": "flashlight",
       "name": "Flashlight",
       "movingAdsSpreadTierMod": 0,
       "pts": 0,
-      "hipSpreadDecayBoost": 0.15
+      "hipSpreadDecayBoost": 0.15,
+      "weaponPts": {
+        "p18": 10,
+        "es57": 10,
+        "m45a1": 10,
+        "ggh22": 10,
+        "m357trait": 10,
+        "vz61": 10
+      }
     },
     {
       "id": "hip_taclight",
@@ -617,6 +660,12 @@
       "pts": 25,
       "adsRecoilTierMod": -1,
       "setsFireModeAuto": true
+    },
+    {
+      "id": "fast_deploy",
+      "name": "Fast Deploy",
+      "pts": 5,
+      "noEffect": true
     }
   ],
   "WEAPON_ATTS": {
@@ -3112,6 +3161,200 @@
         "50mw_blue",
         "120mw_blue"
       ]
+    },
+    "p18": {
+      "laserLightCombined": true,
+      "muzzle": [
+        "flash_hider",
+        "sp_brake",
+        "std_supp",
+        "cqb_supp"
+      ],
+      "barrel": [
+        "basic",
+        "light"
+      ],
+      "barrelDef": "basic",
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "combo_red",
+        "combo_green",
+        "50mw_green"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight"
+      ],
+      "grip": [],
+      "sight": [
+        "iron",
+        "std_optic"
+      ]
+    },
+    "es57": {
+      "laserLightCombined": true,
+      "muzzle": [
+        "flash_hider",
+        "sp_brake",
+        "std_supp",
+        "cqb_supp"
+      ],
+      "barrel": [
+        "basic",
+        "light"
+      ],
+      "barrelDef": "basic",
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "combo_red",
+        "combo_green",
+        "50mw_green"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight"
+      ],
+      "grip": [],
+      "sight": [
+        "iron",
+        "std_optic"
+      ]
+    },
+    "m45a1": {
+      "laserLightCombined": true,
+      "muzzle": [
+        "flash_hider",
+        "sp_brake",
+        "std_supp",
+        "cqb_supp"
+      ],
+      "barrel": [
+        "basic",
+        "light"
+      ],
+      "barrelDef": "basic",
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "combo_red",
+        "combo_green",
+        "50mw_green"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight"
+      ],
+      "grip": [],
+      "sight": [
+        "iron",
+        "std_optic"
+      ]
+    },
+    "ggh22": {
+      "laserLightCombined": true,
+      "muzzle": [
+        "flash_hider",
+        "sp_brake",
+        "std_supp",
+        "cqb_supp"
+      ],
+      "barrel": [
+        "basic",
+        "light"
+      ],
+      "barrelDef": "basic",
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "combo_red",
+        "combo_green",
+        "50mw_green"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight"
+      ],
+      "grip": [],
+      "sight": [
+        "iron",
+        "std_optic"
+      ]
+    },
+    "m44": {
+      "muzzle": [],
+      "barrel": [
+        "basic",
+        "extended",
+        "short"
+      ],
+      "barrelDef": "basic",
+      "laser": [],
+      "light": [],
+      "grip": [],
+      "sight": [
+        "iron",
+        "std_optic"
+      ]
+    },
+    "m357trait": {
+      "laserLightCombined": true,
+      "muzzle": [],
+      "barrel": [
+        "basic"
+      ],
+      "barrelDef": "basic",
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "combo_red",
+        "combo_green",
+        "50mw_green"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight"
+      ],
+      "grip": [],
+      "sight": [
+        "iron",
+        "std_optic"
+      ]
+    },
+    "vz61": {
+      "laserLightCombined": true,
+      "laserGripLightCombined": true,
+      "muzzle": [
+        "sp_brake",
+        "std_supp",
+        "cqb_supp"
+      ],
+      "barrel": [
+        "basic"
+      ],
+      "barrelDef": "basic",
+      "laser": [
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "lp_stubby",
+        "cmpct_handstop",
+        "5mw_red",
+        "5mw_green",
+        "combo_red",
+        "combo_green",
+        "50mw_green"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight"
+      ],
+      "grip": [],
+      "sight": [
+        "iron",
+        "std_optic"
+      ]
     }
   },
   "WEAPON_ERGO": {
@@ -3403,6 +3646,45 @@
       "avail": [
         "mag_catch",
         "ads_bolt"
+      ]
+    },
+    "p18": {
+      "avail": [
+        "mag_catch",
+        "fast_deploy"
+      ]
+    },
+    "es57": {
+      "avail": [
+        "mag_catch"
+      ]
+    },
+    "m45a1": {
+      "avail": [
+        "mag_catch",
+        "fast_deploy"
+      ]
+    },
+    "m44": {
+      "avail": [
+        "mag_catch",
+        "fast_deploy"
+      ]
+    },
+    "ggh22": {
+      "avail": [
+        "mag_catch",
+        "fast_deploy"
+      ]
+    },
+    "m357trait": {
+      "avail": [
+        "fast_deploy"
+      ]
+    },
+    "vz61": {
+      "avail": [
+        "mag_catch"
       ]
     }
   },
@@ -6035,6 +6317,174 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
+        }
+      }
+    },
+    "p18": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 4,
+      "def": "17_rnd",
+      "mags": {
+        "17_rnd": {
+          "name": "17 Rnd",
+          "pts": 5,
+          "mag": 17,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "21_rnd": {
+          "name": "21 Rnd",
+          "pts": 15,
+          "mag": 21,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        }
+      }
+    },
+    "es57": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 4,
+      "def": "20_rnd",
+      "mags": {
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 40,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        }
+      }
+    },
+    "m45a1": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 4,
+      "def": "7_rnd",
+      "mags": {
+        "7_rnd": {
+          "name": "7 Rnd",
+          "pts": 5,
+          "mag": 7,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "11_rnd": {
+          "name": "11 Rnd",
+          "pts": 25,
+          "mag": 11,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        }
+      }
+    },
+    "m44": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 4,
+      "def": "6_rnd",
+      "mags": {
+        "6_rnd": {
+          "name": "6 Rnd",
+          "pts": 5,
+          "mag": 6,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        }
+      }
+    },
+    "ggh22": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 4,
+      "def": "15_rnd",
+      "mags": {
+        "15_rnd": {
+          "name": "15 Rnd",
+          "pts": 5,
+          "mag": 15,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 20,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "22_rnd": {
+          "name": "22 Rnd",
+          "pts": 30,
+          "mag": 22,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        }
+      }
+    },
+    "m357trait": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 4,
+      "def": "8_rnd",
+      "mags": {
+        "8_rnd": {
+          "name": "8 Rnd",
+          "pts": 5,
+          "mag": 8,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "8_fast": {
+          "name": "8 Rnd Fast",
+          "pts": 10,
+          "mag": 8,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        }
+      }
+    },
+    "vz61": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 4,
+      "def": "10_rnd",
+      "mags": {
+        "10_rnd": {
+          "name": "10 Rnd",
+          "pts": 5,
+          "mag": 10,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 40,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
         }
       }
     }
