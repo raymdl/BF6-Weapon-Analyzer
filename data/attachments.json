@@ -544,7 +544,7 @@
     },
     {
       "id": "ads_taclight",
-      "name": "ADS Taclight",
+      "name": "Taclight - Aimed",
       "movingAdsSpreadTierMod": 0,
       "pts": 0,
       "noEffect": true
@@ -558,7 +558,7 @@
     },
     {
       "id": "hip_taclight",
-      "name": "HIP Taclight",
+      "name": "Taclight - Hipfire",
       "movingAdsSpreadTierMod": 0,
       "pts": 0,
       "noEffect": true
@@ -667,6 +667,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "b36a4": {
@@ -718,6 +723,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "sor556": {
@@ -769,6 +779,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "ak4d": {
@@ -818,6 +833,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "tr7": {
@@ -863,6 +883,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "kord6p67": {
@@ -963,6 +988,11 @@
         "50mw_green",
         "120mw_blue",
         "50mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "l85a3": {
@@ -1015,6 +1045,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "vcr2": {
@@ -1064,6 +1099,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m16a4": {
@@ -1116,6 +1156,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m4a1": {
@@ -1166,6 +1211,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m277": {
@@ -1217,6 +1267,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "ak205": {
@@ -1260,6 +1315,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m417a2": {
@@ -1308,6 +1368,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "grtbc": {
@@ -1353,7 +1418,9 @@
         "120mw_blue"
       ],
       "light": [
-        "flashlight"
+        "flashlight",
+        "ads_taclight",
+        "hip_taclight"
       ]
     },
     "qbz192": {
@@ -1393,6 +1460,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "sg553r": {
@@ -1436,6 +1508,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "sor300sc": {
@@ -1482,6 +1559,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "sgx": {
@@ -1524,6 +1606,11 @@
         "5mw_green",
         "120mw_blue",
         "50mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "pw5a3": {
@@ -1564,6 +1651,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "pw7a2": {
@@ -1605,6 +1697,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "umg40": {
@@ -1648,6 +1745,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "usg90": {
@@ -1678,6 +1780,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "kv9": {
@@ -1719,6 +1826,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "scw10": {
@@ -1760,6 +1872,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "sl9": {
@@ -1847,6 +1964,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "l110": {
@@ -1894,6 +2016,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "drsiar": {
@@ -1945,6 +2072,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m60": {
@@ -1995,7 +2127,9 @@
         "120mw_blue"
       ],
       "light": [
-        "flashlight"
+        "flashlight",
+        "ads_taclight",
+        "hip_taclight"
       ]
     },
     "rpkm": {
@@ -2046,6 +2180,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m123k": {
@@ -2091,6 +2230,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m250": {
@@ -2138,6 +2282,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "kts100": {
@@ -2237,6 +2386,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m121a2": {
@@ -2283,6 +2437,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "rpk74m": {
@@ -2332,6 +2491,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m39emr": {
@@ -2382,6 +2546,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2433,6 +2600,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2482,6 +2652,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2532,6 +2705,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2583,6 +2759,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2621,6 +2800,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2649,6 +2831,9 @@
         "50mw_green"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2684,6 +2869,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2723,6 +2911,9 @@
         "120mw_blue"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2752,6 +2943,9 @@
         "classic_grip_pod_sr"
       ],
       "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight",
         "range_finder"
       ]
     },
@@ -2786,6 +2980,11 @@
         "5mw_green",
         "50mw_green",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "m1014": {
@@ -2852,6 +3051,11 @@
         "5mw_green",
         "50mw_green",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "db12": {

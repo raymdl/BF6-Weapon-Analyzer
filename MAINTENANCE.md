@@ -143,6 +143,18 @@ reads. Omit a field (or set to neutral) if the attachment has no effect there.
 
 ---
 
+## In-Game Name Aliases
+
+Some attachments have different names in-game vs. in our data IDs. Known mappings:
+
+| Data ID / Name | In-Game Name |
+|---|---|
+| `ads_taclight` / Taclight - Aimed | "Taclight - Aimed" (also called "ADS Taclight") |
+| `hip_taclight` / Taclight - Hipfire | "Taclight - Hipfire" (also called "HIP Taclight") |
+| `linear_comp` / Linear Comp | "Converter" (also appears as "Linear Compensator") |
+
+---
+
 ## Where Simulation Logic Lives
 
 If game mechanics change (not just data), edit the relevant module:
