@@ -358,7 +358,7 @@ function renderOverview() {
       estFn: w => !w._adsTimeMs && w.adsTime != null },
     { lbl: 'ADS Mov Spd', k: '_adsMoveSpeedMult',                        unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true, group: 'mobility',
       tooltip: 'Movement speed multiplier while aiming down sights. Can be affected by magazine, grip, and ammo selections.' },
-    { lbl: 'Draw Speed',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true, group: 'mobility',
+    { lbl: 'Draw Spd',    k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true, group: 'mobility',
       tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
     { lbl: 'Mag Size',    k: 'mag',                                      unit: 'rds', fmt: v => v,                                   higherBetter: true,
       tooltip: 'Rounds available in the selected magazine.' },
