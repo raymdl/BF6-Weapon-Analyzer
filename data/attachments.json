@@ -3673,8 +3673,8 @@
     },
     "m44": {
       "avail": [
-        "mag_catch",
-        "fast_deploy"
+        "fast_deploy",
+        "fast_deploy_10"
       ]
     },
     "ggh22": {
