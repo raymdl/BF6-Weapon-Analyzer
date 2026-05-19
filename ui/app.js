@@ -579,7 +579,7 @@ function renderChart() {
   if (w1) datasets.push(buildDs(w1, '#c9a227', wLabel(w1)));
   if (w2) datasets.push(buildDs(w2, '#4d94d0', wLabel(w2)));
   const maxDmg = Math.max(0, ...[w1, w2].filter(Boolean).flatMap(w => labels.map(r => w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r))));
-  const dmgYMax = maxDmg > 50 ? 100 : 50;
+  const dmgYMax = maxDmg >= 50 ? 100 : 50;
   updateDmgChart(ctx, {
     type: 'line', data: { labels, datasets },
     options: {
