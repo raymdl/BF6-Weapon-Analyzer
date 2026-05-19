@@ -1421,7 +1421,8 @@
         "flashlight",
         "ads_taclight",
         "hip_taclight"
-      ]
+      ],
+      "laserLightCombined": true
     },
     "qbz192": {
       "muzzle": [
@@ -1923,7 +1924,8 @@
         "ads_taclight",
         "hip_taclight",
         "flashlight"
-      ]
+      ],
+      "laserLightCombined": true
     },
     "cz3a1": {
       "muzzle": [

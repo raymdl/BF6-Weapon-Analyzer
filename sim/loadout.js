@@ -157,6 +157,12 @@ export function renderAttachmentSection({
   };
 
   ATTACHMENT_SLOT_KEYS.forEach(({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
+    // Combined laser/light slot: light dropdown is disabled (options live in Laser)
+    if (key === 'light' && wa?.laserLightCombined) {
+      appendSelectRow(container, { label, value: 'none', options: [{ id: 'none', text: 'None' }], onChange: () => {}, disabled: true });
+      return;
+    }
+
     const source = attDataSource[dataKey];
     if (!weapon || !source) {
       appendSelectRow(container, {
@@ -169,9 +175,17 @@ export function renderAttachmentSection({
       return;
     }
 
-    const allowedIds = wa?.[key];
+    // Combined laser/light slot: merge light options into the laser dropdown
+    let allowedIds = wa?.[key];
+    let effectiveSource = source;
+    if (key === 'laser' && wa?.laserLightCombined) {
+      const lightIds = wa?.light ?? [];
+      allowedIds = allowedIds != null ? [...allowedIds, ...lightIds] : lightIds.length ? lightIds : null;
+      effectiveSource = [...source, ...(attDataSource.LIGHTS ?? []).filter(a => a.id !== 'none')];
+    }
+
     const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
-    let visible = allowedSet ? source.filter(a => allowedSet.has(a.id)) : source;
+    let visible = allowedSet ? effectiveSource.filter(a => allowedSet.has(a.id)) : effectiveSource;
     if (isBarrel) visible = visible.filter(a => a.id !== 'none');
 
     if (visible.length <= (isBarrel ? 0 : 1)) {
