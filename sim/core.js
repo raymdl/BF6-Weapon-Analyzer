@@ -241,7 +241,7 @@ export function simulateBloom(w, shotCount) {
     coef: dyn.firingCoef ?? 0,
     exp: dyn.firingExp ?? 1,
     offset: (dyn.firingOffset ?? 0) *
-      (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : 0)),
+      (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : (w._hipSpreadDecayBoost ?? 0))),
   };
   const notFiringRecovery = {
     coef: dyn.notFiringCoef ?? firingRecovery.coef,

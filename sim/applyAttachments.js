@@ -28,7 +28,7 @@
 let _ctx = {
   MUZZLES: [], BARRELS: [], GRIPS: [], LASERS: [], LIGHTS: [],
   AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {},
-  MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {},
+  MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {}, LIGHTS_BY_ID: {},
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},
   RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
   BASE_HS_MULT: {}, HP_HS_HIGH: new Set(),
@@ -46,6 +46,7 @@ export function setAttachmentContext(updates) {
   if (updates.BARRELS) _ctx.BARRELS_BY_ID = byId(_ctx.BARRELS);
   if (updates.GRIPS) _ctx.GRIPS_BY_ID = byId(_ctx.GRIPS);
   if (updates.LASERS) _ctx.LASERS_BY_ID = byId(_ctx.LASERS);
+  if (updates.LIGHTS) _ctx.LIGHTS_BY_ID = byId(_ctx.LIGHTS);
   if (updates.AMMO) _ctx.AMMO_BY_ID = byId(_ctx.AMMO);
   if (updates.ERGOS) _ctx.ERGOS_BY_ID = byId(_ctx.ERGOS);
 }
@@ -74,6 +75,7 @@ export function applyAttachments(w, atts) {
   const bar = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
   const grp = GRIPS_BY_ID[atts.grip]    ?? GRIPS[0];
   const las = LASERS_BY_ID[atts.laser]  ?? LASERS[0];
+  const lit = _ctx.LIGHTS_BY_ID[atts.light] ?? _ctx.LIGHTS[0];
   const ammoType = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
 
   // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────
@@ -197,6 +199,7 @@ export function applyAttachments(w, atts) {
     _label:                  allTags.length ? `${w.name} (${allTags.join(' · ')})` : w.name,
     _adsRecoilReductionPct:  adsRecoilReductionPct,
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,
+    _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
     _worldSpot:              muz.worldSpot   ?? 54,
     _minimapSpot:            muz.minimapSpot ?? 150,
     _weaponSway:             weaponSway,

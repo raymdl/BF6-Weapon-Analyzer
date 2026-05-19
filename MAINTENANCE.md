@@ -137,6 +137,7 @@ reads. Omit a field (or set to neutral) if the attachment has no effect there.
 | `sway` | float | `0` | Adds to weapon sway (from muzzle) |
 | `worldSpot` | float | `54` | World spotting distance override (from muzzle) |
 | `minimapSpot` | float | `150` | Minimap spotting distance override (from muzzle) |
+| `hipSpreadDecayBoost` | float | `0` | *(lights only)* Extra hipfire bloom decay coefficient |
 | `sprintRecoveryTierShift` | int | `0` | *(ergos only)* Shifts sprint recovery tier |
 | `visualRecoil` | int | `0` | *(ergos only)* Visual recoil modifier; negative = reduced, positive = increased |
 | `setsFireModeAuto` | bool | `false` | *(ergos only)* Overrides burst weapon to full-auto fire mode |

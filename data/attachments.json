@@ -554,14 +554,14 @@
       "name": "Flashlight",
       "movingAdsSpreadTierMod": 0,
       "pts": 0,
-      "noEffect": true
+      "hipSpreadDecayBoost": 0.15
     },
     {
       "id": "hip_taclight",
       "name": "Taclight - Hipfire",
       "movingAdsSpreadTierMod": 0,
       "pts": 0,
-      "noEffect": true
+      "hipSpreadDecayBoost": 0.15
     },
     {
       "id": "range_finder",
