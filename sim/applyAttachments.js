@@ -26,7 +26,7 @@
 // ── ATTACHMENT CONTEXT ────────────────────────────────────────────────────────
 
 let _ctx = {
-  MUZZLES: [], BARRELS: [], GRIPS: [], LASERS: [],
+  MUZZLES: [], BARRELS: [], GRIPS: [], LASERS: [], LIGHTS: [],
   AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {},
   MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {},
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},

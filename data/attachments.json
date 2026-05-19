@@ -534,7 +534,9 @@
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -2,
       "pts": 0
-    },
+    }
+  ],
+  "LIGHTS": [
     {
       "id": "ads_taclight",
       "name": "ADS Taclight",
@@ -896,10 +898,12 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue",
+        "combo_green"
+      ],
+      "light": [
         "ads_taclight",
         "hip_taclight",
-        "flashlight",
-        "combo_green"
+        "flashlight"
       ]
     },
     "nvo228e": {
@@ -1330,13 +1334,15 @@
       "laser": [
         "50mw_violet",
         "5mw_red",
-        "flashlight",
         "5mw_green",
         "combo_red",
         "50mw_green",
         "50mw_blue",
         "combo_green",
         "120mw_blue"
+      ],
+      "light": [
+        "flashlight"
       ]
     },
     "qbz192": {
@@ -1776,17 +1782,19 @@
         "cmpct_handstop"
       ],
       "laser": [
-        "ads_taclight",
-        "hip_taclight",
         "50mw_violet",
         "5mw_red",
         "5mw_green",
-        "flashlight",
         "50mw_green",
         "50mw_blue",
         "combo_red",
         "120mw_blue",
         "combo_green"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "cz3a1": {
@@ -1970,11 +1978,13 @@
       "laser": [
         "50mw_violet",
         "5mw_red",
-        "flashlight",
         "5mw_green",
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "flashlight"
       ]
     },
     "rpkm": {
@@ -2159,16 +2169,18 @@
       ],
       "laser": [
         "50mw_violet",
-        "hip_taclight",
-        "ads_taclight",
         "5mw_red",
-        "flashlight",
         "5mw_green",
         "50mw_green",
         "combo_red",
         "50mw_blue",
         "120mw_blue",
         "combo_green"
+      ],
+      "light": [
+        "hip_taclight",
+        "ads_taclight",
+        "flashlight"
       ]
     },
     "m240l": {
@@ -2759,7 +2771,8 @@
         "lp_stubby",
         "full_angled"
       ],
-      "laser": [
+      "laser": [],
+      "light": [
         "ads_taclight",
         "hip_taclight",
         "flashlight"

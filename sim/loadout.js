@@ -15,6 +15,7 @@ function getLookups(data) {
       BARRELS: byId(data.BARRELS),
       GRIPS: byId(data.GRIPS),
       LASERS: byId(data.LASERS),
+      LIGHTS: byId(data.LIGHTS),
       AMMO: byId(data.AMMO),
       ERGOS: byId(data.ERGOS),
     };
@@ -30,6 +31,7 @@ export function blankAtts() {
     barrel: 'none',
     grip: 'none',
     laser: 'none',
+    light: 'none',
     ammo: 'standard',
     mag: null,
     ergo: 'none',
@@ -41,6 +43,7 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.muzzle = 'none';
   atts.grip = 'none';
   atts.laser = 'none';
+  atts.light = 'none';
   const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
   atts.barrel = wa?.barrelDef ?? 'basic';
   atts.ammo = data.WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
@@ -65,6 +68,7 @@ export function computeAttPts(atts, weapon, data) {
     + getAttPts(lookups.BARRELS[atts.barrel], wid)
     + getAttPts(lookups.GRIPS[atts.grip], wid)
     + getAttPts(lookups.LASERS[atts.laser], wid)
+    + getAttPts(lookups.LIGHTS[atts.light], wid)
     + (data.WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
     + magPts
     + ergoPts;
@@ -83,6 +87,7 @@ export function hasSelectedAssumedAtt(atts, data) {
     ['barrel', lookups.BARRELS],
     ['grip', lookups.GRIPS],
     ['laser', lookups.LASERS],
+    ['light', lookups.LIGHTS],
     ['ammo', lookups.AMMO],
     ['ergo', lookups.ERGOS],
   ];
@@ -142,6 +147,7 @@ export function renderAttachmentSection({
     BARRELS: data.BARRELS,
     GRIPS: data.GRIPS,
     LASERS: data.LASERS,
+    LIGHTS: data.LIGHTS,
   };
 
   const handleChange = (key, value) => {

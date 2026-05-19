@@ -16,6 +16,7 @@ export const ATTACHMENT_SLOT_KEYS = [
   { key: 'muzzle', label: 'Muzzle', dataKey: 'MUZZLES', noWeaponText: 'None' },
   { key: 'barrel', label: 'Barrel', dataKey: 'BARRELS', noWeaponText: 'Basic Barrel', isBarrel: true },
   { key: 'laser',  label: 'Laser',  dataKey: 'LASERS',  noWeaponText: 'None' },
+  { key: 'light',  label: 'Light',  dataKey: 'LIGHTS',  noWeaponText: 'None' },
   { key: 'sight',  label: 'Sight',  dataKey: 'SIGHTS',  noWeaponText: 'Iron Sights' },
   { key: 'grip',   label: 'Grip',   dataKey: 'GRIPS',   noWeaponText: 'None' },
 ];
