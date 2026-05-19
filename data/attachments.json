@@ -3013,7 +3013,14 @@
         "lp_stubby",
         "full_angled"
       ],
-      "laser": [],
+      "laser": [
+        "50mw_violet",
+        "5mw_red",
+        "50mw_blue",
+        "5mw_green",
+        "50mw_green",
+        "120mw_blue"
+      ],
       "light": [
         "ads_taclight",
         "hip_taclight",
