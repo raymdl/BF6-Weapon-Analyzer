@@ -631,15 +631,21 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "classic_vert",
+        "underslung_mount",
         "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
-        "full_angled",
         "stipp_stubby",
-        "adj_angled",
         "lp_stubby",
+        "full_angled",
+        "adj_angled",
         "slim_angled",
-        "classic_vert"
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -677,6 +683,7 @@
         "ribbed_vert",
         "6h64_vert",
         "classic_vert",
+        "underslung_mount",
         "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
@@ -684,7 +691,12 @@
         "lp_stubby",
         "adj_angled",
         "slim_angled",
-        "full_angled"
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -721,15 +733,21 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "underslung_mount",
         "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
         "stipp_stubby",
+        "lp_stubby",
         "adj_angled",
         "full_angled",
         "classic_vert",
-        "lp_stubby",
-        "slim_angled"
+        "slim_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -773,7 +791,12 @@
         "canted_stubby",
         "slim_angled",
         "adj_angled",
-        "full_angled"
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -814,7 +837,11 @@
         "classic_vert",
         "lp_stubby",
         "canted_stubby",
-        "stipp_stubby"
+        "stipp_stubby",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -853,9 +880,14 @@
         "classic_vert",
         "canted_stubby",
         "stipp_stubby",
+        "lp_stubby",
         "slim_angled",
         "full_angled",
-        "lp_stubby"
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -893,16 +925,21 @@
       "grip": [
         "fold_vert",
         "alloy_vert",
-        "slim_angled",
         "ribbed_vert",
         "6h64_vert",
         "classic_vert",
         "fold_stubby",
-        "full_angled",
         "ribbed_stubby",
         "canted_stubby",
         "lp_stubby",
-        "stipp_stubby"
+        "stipp_stubby",
+        "slim_angled",
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -940,15 +977,21 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
-        "adj_angled",
         "classic_vert",
-        "stipp_stubby",
+        "underslung_mount",
         "fold_stubby",
+        "stipp_stubby",
         "ribbed_stubby",
         "lp_stubby",
         "canted_stubby",
+        "adj_angled",
         "slim_angled",
-        "full_angled"
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -993,7 +1036,11 @@
         "6h64_vert",
         "stipp_stubby",
         "classic_vert",
-        "lp_stubby"
+        "lp_stubby",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1080,16 +1127,22 @@
         "fold_vert",
         "alloy_vert",
         "ribbed_vert",
-        "fold_stubby",
-        "classic_vert",
         "6h64_vert",
-        "adj_angled",
-        "slim_angled",
+        "classic_vert",
+        "underslung_mount",
+        "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
-        "full_angled",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1125,16 +1178,22 @@
         "fold_vert",
         "alloy_vert",
         "ribbed_vert",
-        "fold_stubby",
         "6h64_vert",
-        "adj_angled",
-        "slim_angled",
+        "classic_vert",
+        "underslung_mount",
+        "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
-        "full_angled",
-        "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1167,16 +1226,17 @@
         "fold_vert",
         "alloy_vert",
         "ribbed_vert",
-        "fold_stubby",
         "6h64_vert",
-        "slim_angled",
-        "slim_handstop",
+        "classic_vert",
+        "underslung_mount",
+        "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
-        "full_angled",
         "stipp_stubby",
-        "classic_vert",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_angled",
+        "slim_handstop",
+        "full_angled"
       ],
       "laser": [
         "50mw_violet",
@@ -1209,16 +1269,22 @@
         "fold_vert",
         "alloy_vert",
         "ribbed_vert",
-        "classic_vert",
-        "fold_stubby",
         "6h64_vert",
-        "adj_angled",
-        "slim_angled",
+        "classic_vert",
+        "underslung_mount",
+        "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
-        "full_angled",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1297,7 +1363,11 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1337,6 +1407,7 @@
         "ribbed_stubby",
         "canted_stubby",
         "full_angled",
+        "slim_handstop",
         "classic_vert",
         "stipp_stubby",
         "lp_stubby"
@@ -1380,6 +1451,7 @@
         "6h64_vert",
         "slim_angled",
         "full_angled",
+        "slim_handstop",
         "ribbed_stubby",
         "canted_stubby",
         "classic_vert",
@@ -1789,7 +1861,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1834,7 +1911,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1877,7 +1959,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1923,7 +2010,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -1963,7 +2055,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -2005,7 +2102,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -2047,7 +2149,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -2092,7 +2199,12 @@
         "full_angled",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -2134,7 +2246,11 @@
         "stipp_stubby",
         "6h64_vert",
         "lp_stubby",
-        "classic_vert"
+        "classic_vert",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -2226,7 +2342,12 @@
         "lp_stubby",
         "adj_angled",
         "full_angled",
-        "slim_angled"
+        "slim_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -2269,7 +2390,12 @@
         "stipp_stubby",
         "lp_stubby",
         "adj_angled",
-        "full_angled"
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -2312,6 +2438,7 @@
         "lp_stubby",
         "slim_angled",
         "full_angled",
+        "slim_handstop",
         "bipod_sr",
         "qd_grip_pod_sr",
         "classic_grip_pod_sr"
@@ -2358,6 +2485,7 @@
         "adj_angled",
         "slim_angled",
         "full_angled",
+        "slim_handstop",
         "bipod_sr",
         "qd_grip_pod_sr",
         "classic_grip_pod_sr"
@@ -2404,7 +2532,11 @@
         "6h64_vert",
         "stipp_stubby",
         "classic_vert",
-        "lp_stubby"
+        "lp_stubby",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
