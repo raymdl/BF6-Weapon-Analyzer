@@ -665,13 +665,13 @@
       "id": "fast_deploy",
       "name": "Fast Deploy",
       "pts": 5,
-      "sprintRecoveryTierShift": 1
+      "sprintRecoveryTierShift": -1
     },
     {
       "id": "fast_deploy_10",
       "name": "Fast Deploy",
       "pts": 10,
-      "sprintRecoveryTierShift": 2
+      "sprintRecoveryTierShift": -2
     }
   ],
   "WEAPON_ATTS": {
