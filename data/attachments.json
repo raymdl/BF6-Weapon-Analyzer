@@ -2830,7 +2830,12 @@
         "classic_grip_pod_sr"
       ],
       "laser": [
-        "50mw_green"
+        "50mw_violet",
+        "5mw_red",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
       ],
       "light": [
         "ads_taclight",
@@ -2949,6 +2954,14 @@
         "hip_taclight",
         "flashlight",
         "range_finder"
+      ],
+      "laser": [
+        "50mw_violet",
+        "5mw_red",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
       ]
     },
     "m87a1": {
