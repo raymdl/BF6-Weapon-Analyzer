@@ -562,6 +562,12 @@
       "movingAdsSpreadTierMod": 0,
       "pts": 0,
       "noEffect": true
+    },
+    {
+      "id": "range_finder",
+      "name": "Range Finder",
+      "pts": 15,
+      "noEffect": true
     }
   ],
   "ERGOS": [
@@ -2374,6 +2380,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "lmr27": {
@@ -2422,6 +2431,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "svk86": {
@@ -2468,6 +2480,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "svdm": {
@@ -2515,6 +2530,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "grtcps": {
@@ -2563,6 +2581,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "m2010esr": {
@@ -2598,6 +2619,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "sv98": {
@@ -2623,6 +2647,9 @@
       ],
       "laser": [
         "50mw_green"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "psr": {
@@ -2655,6 +2682,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "miniscout": {
@@ -2691,6 +2721,9 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "l115": {
@@ -2717,6 +2750,9 @@
         "bipod_sr",
         "qd_grip_pod_sr",
         "classic_grip_pod_sr"
+      ],
+      "light": [
+        "range_finder"
       ]
     },
     "m87a1": {
