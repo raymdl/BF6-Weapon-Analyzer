@@ -27,10 +27,9 @@ scripts/
 All three pages (`index.html`, `preview_bloom.html`, `preview_distance.html`)
 load from these files. **One edit → all pages updated.**
 
-Sidearms are currently allowed in `data/weapons.json` as raw/incomplete data,
-but they are intentionally unsupported in the UI until their damage and loadout
-data is complete. `scripts/validate-data.mjs` enforces this by validating the
-current supported classes while accepting `Sidearm` as explicitly hidden.
+All eight weapon classes are fully supported in the UI, including `Sidearm` (displayed
+as `Pistol` in the class filter). `scripts/validate-data.mjs` validates all supported
+classes including sidearms.
 
 ---
 
@@ -50,11 +49,17 @@ current supported classes while accepting `Sidearm` as explicitly hidden.
      min/max), `spreadDyn` (bloom dynamics), `dmg` (range dropoff array)
 2. Add entry to `data/attachments.json` → `WEAPON_ATTS`
    - Keys: `muzzle`, `barrel`, `barrelDef`, `grip`, `laser` (arrays of IDs)
+   - For sidearms that merge light options into the Laser dropdown: add `laserLightCombined: true`
+   - For the VZ.61 (grip+laser+light all in Laser dropdown): add `laserGripLightCombined: true`
 3. Add magazine data to `data/attachments.json` → `WEAPON_MAG`
    - **Required per weapon**: `defAds`, `defSpr`, `defAms` (base tier indices), `def` (default mag ID),
      and a `mags` object with every available magazine
    - **Per magazine**: `name`, `pts`, `mag` (capacity), `tacRld` (ms), `adsTimeTierShift`,
      `sprintRecoveryTierShift`, `adsMoveSpeedTierShift`
+   - **Deriving `defSpr`**: look up the weapon's `UnDeployTime` from sym.gg, convert to ms
+     (e.g. 0.233334 → 233 ms), find its tier in `SPRINT_REC_TIERS` (1-indexed), then subtract 1
+     for the universal in-game draw speed adjustment: `defSpr = tier - 1`. Verify by confirming
+     that the default magazine's displayed draw speed matches `SPRINT_REC_TIERS[defSpr + shift - 1]`.
    - Capture all magazine screenshots in-game (one per mag, with Basic barrel + Iron Sights)
      so tier shifts can be back-calculated from the displayed ADS time, sprint recovery, and
      ADS move speed multiplier values. Use `ADS_SPD_TIERS`, `SPRINT_REC_TIERS`, and
@@ -109,7 +114,7 @@ Edit the relevant weapon object in `data/weapons.json`.
 
 Edit `data/balance_tables.json`:
 - `ADS_SPD_TIERS` — ADS time in ms for tiers 1–8
-- `SPRINT_REC_TIERS` — Sprint-to-fire recovery in ms for tiers 1–8
+- `SPRINT_REC_TIERS` — Draw speed / sprint-to-fire recovery in ms for tiers 1–12
 - `ADS_MOVE_TIERS` — ADS move speed multiplier for tiers 1–8
 - `MOVING_ACC_TIERS` — Moving ADS min spread in degrees for tiers 1–8
 - `RECOIL_MULT` — Per-weapon ADS recoil tier multiplier

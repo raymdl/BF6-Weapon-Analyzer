@@ -4,8 +4,10 @@ __pycache__/
 # Local convenience launchers and helper scripts.
 serve.bat
 Open - *.url
-gen_dmg.py
-read_xlsx.py
 
 # Local Codex/Claude scratch, migration, and extraction helpers.
 .claude/
+memory/
+
+# Local data utilities.
+data/check_all.sh

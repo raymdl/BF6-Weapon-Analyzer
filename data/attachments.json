@@ -3697,7 +3697,7 @@
   "WEAPON_MAG": {
     "ks18k": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "8_rnd",
       "mags": {
@@ -3707,7 +3707,7 @@
           "mag": 4,
           "tacRld": 2750,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -3,
           "adsMoveSpeedTierShift": -1
         },
         "4_fast": {
@@ -3725,7 +3725,7 @@
           "mag": 8,
           "tacRld": 2750,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "8_fast": {
@@ -3734,14 +3734,13 @@
           "mag": 8,
           "tacRld": 2434,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "ak205": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "30_rnd",
       "mags": {
@@ -3751,7 +3750,7 @@
           "mag": 30,
           "tacRld": 2484,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -3760,7 +3759,6 @@
           "mag": 30,
           "tacRld": 2198,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -3769,7 +3767,6 @@
           "mag": 36,
           "tacRld": 2484,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -3778,7 +3775,6 @@
           "mag": 40,
           "tacRld": 2484,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -3787,7 +3783,7 @@
           "mag": 40,
           "tacRld": 2198,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_rnd": {
@@ -3796,7 +3792,6 @@
           "mag": 45,
           "tacRld": 2484,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_fast": {
@@ -3805,7 +3800,7 @@
           "mag": 45,
           "tacRld": 2198,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "50_rnd": {
@@ -3814,14 +3809,13 @@
           "mag": 50,
           "tacRld": 2484,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "ak4d": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "20_rnd",
       "mags": {
@@ -3831,7 +3825,7 @@
           "mag": 15,
           "tacRld": 2467,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "15_fast": {
@@ -3840,7 +3834,6 @@
           "mag": 15,
           "tacRld": 2183,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -3849,7 +3842,7 @@
           "mag": 20,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_fast": {
@@ -3858,7 +3851,6 @@
           "mag": 20,
           "tacRld": 2183,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "30_rnd": {
@@ -3867,14 +3859,13 @@
           "mag": 30,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "b36a4": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -3884,7 +3875,7 @@
           "mag": 20,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -3893,7 +3884,7 @@
           "mag": 20,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -3902,7 +3893,7 @@
           "mag": 30,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -3911,7 +3902,6 @@
           "mag": 30,
           "tacRld": 2110,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -3920,7 +3910,6 @@
           "mag": 36,
           "tacRld": 2384,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -3929,7 +3918,6 @@
           "mag": 40,
           "tacRld": 2384,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -3938,7 +3926,7 @@
           "mag": 40,
           "tacRld": 2110,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_rnd": {
@@ -3947,7 +3935,6 @@
           "mag": 45,
           "tacRld": 2384,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_fast": {
@@ -3956,14 +3943,14 @@
           "mag": 45,
           "tacRld": 2110,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "cz3a1": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "30_rnd",
       "mags": {
@@ -3973,7 +3960,7 @@
           "mag": 20,
           "tacRld": 1962,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -3,
           "adsMoveSpeedTierShift": 0
         },
         "30_rnd": {
@@ -3982,7 +3969,7 @@
           "mag": 30,
           "tacRld": 2217,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -3991,7 +3978,6 @@
           "mag": 30,
           "tacRld": 1962,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "35_rnd": {
@@ -4000,7 +3986,6 @@
           "mag": 35,
           "tacRld": 2217,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "35_fast": {
@@ -4009,14 +3994,14 @@
           "mag": 35,
           "tacRld": 1962,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "db12": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 6,
       "defAms": 4,
       "def": "7_rnd",
       "mags": {
@@ -4026,14 +4011,14 @@
           "mag": 14,
           "tacRld": 2348,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -3,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "drsiar": {
       "defAds": 6,
-      "defSpr": 4,
+      "defSpr": 8,
       "defAms": 6,
       "def": "30_rnd",
       "mags": {
@@ -4043,7 +4028,7 @@
           "mag": 30,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -4052,7 +4037,6 @@
           "mag": 30,
           "tacRld": 2183,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -4061,7 +4045,6 @@
           "mag": 36,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -4070,7 +4053,6 @@
           "mag": 40,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -4079,7 +4061,7 @@
           "mag": 40,
           "tacRld": 2183,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_rnd": {
@@ -4088,7 +4070,6 @@
           "mag": 45,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_fast": {
@@ -4097,7 +4078,7 @@
           "mag": 45,
           "tacRld": 2183,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "50_rnd": {
@@ -4106,7 +4087,6 @@
           "mag": 50,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "60_rnd": {
@@ -4115,14 +4095,14 @@
           "mag": 60,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "grtbc": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "30_rnd",
       "mags": {
@@ -4132,7 +4112,7 @@
           "mag": 30,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -4141,7 +4121,6 @@
           "mag": 30,
           "tacRld": 2212,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -4150,7 +4129,6 @@
           "mag": 36,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_rnd": {
@@ -4159,7 +4137,6 @@
           "mag": 45,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_fast": {
@@ -4168,14 +4145,14 @@
           "mag": 45,
           "tacRld": 2212,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "grtcps": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "20_rnd",
       "mags": {
@@ -4185,7 +4162,7 @@
           "mag": 15,
           "tacRld": 2750,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -4194,7 +4171,7 @@
           "mag": 20,
           "tacRld": 2750,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_fast": {
@@ -4203,7 +4180,6 @@
           "mag": 20,
           "tacRld": 2434,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "30_rnd": {
@@ -4212,14 +4188,13 @@
           "mag": 30,
           "tacRld": 2750,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "kord6p67": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -4229,7 +4204,7 @@
           "mag": 30,
           "tacRld": 2450,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -4238,7 +4213,6 @@
           "mag": 30,
           "tacRld": 2168,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -4247,7 +4221,6 @@
           "mag": 36,
           "tacRld": 2450,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -4256,7 +4229,6 @@
           "mag": 40,
           "tacRld": 2450,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -4265,7 +4237,7 @@
           "mag": 40,
           "tacRld": 2168,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_rnd": {
@@ -4274,7 +4246,6 @@
           "mag": 45,
           "tacRld": 2450,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_fast": {
@@ -4283,14 +4254,14 @@
           "mag": 45,
           "tacRld": 2168,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "kts100": {
       "defAds": 6,
-      "defSpr": 5,
+      "defSpr": 8,
       "defAms": 6,
       "def": "60_rnd",
       "mags": {
@@ -4300,7 +4271,6 @@
           "mag": 45,
           "tacRld": 2876,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "45_fast": {
@@ -4309,8 +4279,8 @@
           "mag": 45,
           "tacRld": 2545,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 1
         },
         "50_rnd": {
           "name": "50 Rnd",
@@ -4318,7 +4288,6 @@
           "mag": 50,
           "tacRld": 2876,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "60_rnd": {
@@ -4327,7 +4296,6 @@
           "mag": 60,
           "tacRld": 3250,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "60_fast": {
@@ -4336,8 +4304,8 @@
           "mag": 60,
           "tacRld": 2876,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 1
         },
         "100_rnd": {
           "name": "100 Rnd",
@@ -4345,14 +4313,14 @@
           "mag": 100,
           "tacRld": 3250,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 1
         }
       }
     },
     "kv9": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "17_rnd",
       "mags": {
@@ -4362,7 +4330,7 @@
           "mag": 17,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "17_fast": {
@@ -4371,7 +4339,6 @@
           "mag": 17,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "23_rnd": {
@@ -4380,7 +4347,6 @@
           "mag": 23,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "27_rnd": {
@@ -4389,14 +4355,13 @@
           "mag": 27,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "l110": {
       "defAds": 7,
-      "defSpr": 6,
+      "defSpr": 10,
       "defAms": 7,
       "def": "100_rnd",
       "mags": {
@@ -4406,7 +4371,7 @@
           "mag": 100,
           "tacRld": 6500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "200_rnd": {
@@ -4422,7 +4387,7 @@
     },
     "l85a3": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -4432,7 +4397,7 @@
           "mag": 20,
           "tacRld": 2767,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -4441,7 +4406,7 @@
           "mag": 20,
           "tacRld": 2449,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -4450,7 +4415,7 @@
           "mag": 30,
           "tacRld": 2767,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -4459,7 +4424,6 @@
           "mag": 30,
           "tacRld": 2449,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -4468,7 +4432,6 @@
           "mag": 36,
           "tacRld": 2767,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -4477,7 +4440,6 @@
           "mag": 40,
           "tacRld": 2767,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -4486,7 +4448,7 @@
           "mag": 40,
           "tacRld": 2449,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_rnd": {
@@ -4495,7 +4457,6 @@
           "mag": 45,
           "tacRld": 2767,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_fast": {
@@ -4504,14 +4465,14 @@
           "mag": 45,
           "tacRld": 2449,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "lmr27": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "10_rnd",
       "mags": {
@@ -4521,7 +4482,7 @@
           "mag": 10,
           "tacRld": 2854,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "10_fast": {
@@ -4530,7 +4491,6 @@
           "mag": 10,
           "tacRld": 2526,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "15_rnd": {
@@ -4539,7 +4499,6 @@
           "mag": 15,
           "tacRld": 2854,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "15_fast": {
@@ -4548,7 +4507,7 @@
           "mag": 15,
           "tacRld": 2526,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "20_rnd": {
@@ -4557,7 +4516,6 @@
           "mag": 20,
           "tacRld": 2854,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "20_fast": {
@@ -4566,14 +4524,14 @@
           "mag": 20,
           "tacRld": 2526,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "m60": {
       "defAds": 6,
-      "defSpr": 6,
+      "defSpr": 10,
       "defAms": 5,
       "def": "100_rnd",
       "mags": {
@@ -4583,7 +4541,7 @@
           "mag": 50,
           "tacRld": 4534,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "100_rnd": {
@@ -4592,14 +4550,14 @@
           "mag": 100,
           "tacRld": 7350,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 2
         }
       }
     },
     "m1014": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "6_rnd",
       "mags": {
@@ -4609,7 +4567,7 @@
           "mag": 4,
           "tacRld": 1784,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1
         },
         "4_fast": {
@@ -4618,7 +4576,7 @@
           "mag": 4,
           "tacRld": 1784,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1
         },
         "6_rnd": {
@@ -4627,14 +4585,14 @@
           "mag": 6,
           "tacRld": 1784,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "m121a2": {
       "defAds": 7,
-      "defSpr": 7,
+      "defSpr": 10,
       "defAms": 7,
       "def": "50_rnd",
       "mags": {
@@ -4644,7 +4602,7 @@
           "mag": 50,
           "tacRld": 6267,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "50_fast": {
@@ -4653,7 +4611,6 @@
           "mag": 50,
           "tacRld": 5550,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "100_rnd": {
@@ -4662,14 +4619,14 @@
           "mag": 100,
           "tacRld": 6267,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
+          "sprintRecoveryTierShift": 2,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "m123k": {
       "defAds": 7,
-      "defSpr": 6,
+      "defSpr": 10,
       "defAms": 7,
       "def": "100_rnd",
       "mags": {
@@ -4679,7 +4636,7 @@
           "mag": 100,
           "tacRld": 6650,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "200_rnd": {
@@ -4695,7 +4652,7 @@
     },
     "m2010esr": {
       "defAds": 6,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 6,
       "def": "5_rnd",
       "mags": {
@@ -4705,7 +4662,7 @@
           "mag": 5,
           "tacRld": 3234,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "5_fast": {
@@ -4714,7 +4671,6 @@
           "mag": 5,
           "tacRld": 2862,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "8_rnd": {
@@ -4723,14 +4679,13 @@
           "mag": 8,
           "tacRld": 3234,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "m240l": {
       "defAds": 7,
-      "defSpr": 6,
+      "defSpr": 10,
       "defAms": 7,
       "def": "50_rnd",
       "mags": {
@@ -4740,7 +4695,7 @@
           "mag": 50,
           "tacRld": 4250,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "75_rnd": {
@@ -4749,7 +4704,7 @@
           "mag": 75,
           "tacRld": 7000,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "100_rnd": {
@@ -4758,14 +4713,13 @@
           "mag": 100,
           "tacRld": 7000,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "m250": {
       "defAds": 7,
-      "defSpr": 6,
+      "defSpr": 10,
       "defAms": 7,
       "def": "50_rnd",
       "mags": {
@@ -4775,7 +4729,7 @@
           "mag": 50,
           "tacRld": 5750,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "100_rnd": {
@@ -4791,7 +4745,7 @@
     },
     "m277": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "20_rnd",
       "mags": {
@@ -4801,7 +4755,7 @@
           "mag": 15,
           "tacRld": 2110,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -4810,7 +4764,7 @@
           "mag": 20,
           "tacRld": 2183,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_fast": {
@@ -4819,7 +4773,6 @@
           "mag": 20,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "25_rnd": {
@@ -4828,7 +4781,6 @@
           "mag": 25,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "25_fast": {
@@ -4837,7 +4789,7 @@
           "mag": 25,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "30_rnd": {
@@ -4846,14 +4798,13 @@
           "mag": 30,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "m39emr": {
       "defAds": 6,
-      "defSpr": 4,
+      "defSpr": 8,
       "defAms": 6,
       "def": "20_rnd",
       "mags": {
@@ -4863,7 +4814,7 @@
           "mag": 15,
           "tacRld": 2534,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "15_fast": {
@@ -4872,7 +4823,6 @@
           "mag": 15,
           "tacRld": 2242,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -4881,7 +4831,7 @@
           "mag": 20,
           "tacRld": 2534,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_fast": {
@@ -4890,7 +4840,6 @@
           "mag": 20,
           "tacRld": 2242,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "25_rnd": {
@@ -4899,14 +4848,13 @@
           "mag": 25,
           "tacRld": 2534,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "m417a2": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "20_rnd",
       "mags": {
@@ -4916,7 +4864,7 @@
           "mag": 10,
           "tacRld": 2183,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -3,
           "adsMoveSpeedTierShift": -2
         },
         "20_rnd": {
@@ -4925,7 +4873,7 @@
           "mag": 20,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_fast": {
@@ -4934,7 +4882,6 @@
           "mag": 20,
           "tacRld": 2183,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "25_rnd": {
@@ -4943,14 +4890,13 @@
           "mag": 25,
           "tacRld": 2467,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "m433": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -4960,7 +4906,7 @@
           "mag": 20,
           "tacRld": 2384,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -4969,7 +4915,7 @@
           "mag": 20,
           "tacRld": 2110,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -4978,7 +4924,7 @@
           "mag": 30,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -4987,7 +4933,6 @@
           "mag": 30,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -4996,7 +4941,6 @@
           "mag": 36,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -5005,7 +4949,6 @@
           "mag": 40,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -5014,15 +4957,6 @@
           "mag": 40,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
-          "adsMoveSpeedTierShift": 1
-        },
-        "45_rnd": {
-          "name": "45 Rnd",
-          "pts": 35,
-          "mag": 45,
-          "tacRld": 2467,
-          "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
@@ -5030,7 +4964,7 @@
     },
     "m4a1": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "30_rnd",
       "mags": {
@@ -5040,7 +4974,7 @@
           "mag": 20,
           "tacRld": 2000,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -3,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -5049,7 +4983,7 @@
           "mag": 20,
           "tacRld": 1947,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -5058,7 +4992,7 @@
           "mag": 30,
           "tacRld": 2200,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5067,7 +5001,6 @@
           "mag": 30,
           "tacRld": 1947,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5076,7 +5009,6 @@
           "mag": 36,
           "tacRld": 2000,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -5085,7 +5017,6 @@
           "mag": 40,
           "tacRld": 2000,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -5094,14 +5025,14 @@
           "mag": 40,
           "tacRld": 1947,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "m87a1": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "7_rnd",
       "mags": {
@@ -5111,7 +5042,7 @@
           "mag": 5,
           "tacRld": 1334,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1
         },
         "5_fast": {
@@ -5120,7 +5051,7 @@
           "mag": 5,
           "tacRld": 1334,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1
         },
         "6_rnd": {
@@ -5129,7 +5060,7 @@
           "mag": 6,
           "tacRld": 1334,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1
         },
         "7_rnd": {
@@ -5138,14 +5069,14 @@
           "mag": 7,
           "tacRld": 1334,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "miniscout": {
       "defAds": 5,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "10_rnd",
       "mags": {
@@ -5155,7 +5086,7 @@
           "mag": 10,
           "tacRld": 2334,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "10_fast": {
@@ -5164,7 +5095,6 @@
           "mag": 10,
           "tacRld": 2006,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "15_rnd": {
@@ -5173,7 +5103,6 @@
           "mag": 15,
           "tacRld": 2334,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "15_fast": {
@@ -5182,7 +5111,7 @@
           "mag": 15,
           "tacRld": 2006,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -5191,7 +5120,6 @@
           "mag": 20,
           "tacRld": 2334,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "20_fast": {
@@ -5200,14 +5128,14 @@
           "mag": 20,
           "tacRld": 2006,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "nvo228e": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -5217,7 +5145,7 @@
           "mag": 20,
           "tacRld": 2500,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -5226,7 +5154,7 @@
           "mag": 20,
           "tacRld": 2212,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -5235,7 +5163,7 @@
           "mag": 30,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5244,7 +5172,6 @@
           "mag": 30,
           "tacRld": 2212,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5253,7 +5180,6 @@
           "mag": 36,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -5262,7 +5188,6 @@
           "mag": 40,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -5271,14 +5196,14 @@
           "mag": 40,
           "tacRld": 2212,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "psr": {
       "defAds": 7,
-      "defSpr": 4,
+      "defSpr": 8,
       "defAms": 6,
       "def": "10_rnd",
       "mags": {
@@ -5288,7 +5213,7 @@
           "mag": 7,
           "tacRld": 3350,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "10_rnd": {
@@ -5297,14 +5222,14 @@
           "mag": 10,
           "tacRld": 3350,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "pw5a3": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "30_rnd",
       "mags": {
@@ -5314,7 +5239,7 @@
           "mag": 20,
           "tacRld": 2227,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -5323,7 +5248,7 @@
           "mag": 30,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5332,7 +5257,6 @@
           "mag": 30,
           "tacRld": 2227,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "40_rnd": {
@@ -5341,14 +5265,13 @@
           "mag": 40,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "pw7a2": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 1,
       "def": "30_rnd",
       "mags": {
@@ -5358,7 +5281,7 @@
           "mag": 20,
           "tacRld": 1933,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "30_rnd": {
@@ -5367,7 +5290,7 @@
           "mag": 30,
           "tacRld": 2184,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5376,7 +5299,6 @@
           "mag": 30,
           "tacRld": 1933,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "40_rnd": {
@@ -5385,14 +5307,13 @@
           "mag": 40,
           "tacRld": 2184,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 3
         }
       }
     },
     "qbz192": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "30_rnd",
       "mags": {
@@ -5402,7 +5323,7 @@
           "mag": 30,
           "tacRld": 2567,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5411,7 +5332,6 @@
           "mag": 30,
           "tacRld": 2272,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5420,7 +5340,6 @@
           "mag": 36,
           "tacRld": 2567,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -5429,14 +5348,13 @@
           "mag": 40,
           "tacRld": 2567,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "rpkm": {
       "defAds": 6,
-      "defSpr": 4,
+      "defSpr": 8,
       "defAms": 6,
       "def": "40_rnd",
       "mags": {
@@ -5446,7 +5364,7 @@
           "mag": 30,
           "tacRld": 2800,
           "adsTimeTierShift": -2,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_fast": {
@@ -5455,7 +5373,6 @@
           "mag": 30,
           "tacRld": 2478,
           "adsTimeTierShift": -2,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": -2
         },
         "36_rnd": {
@@ -5464,7 +5381,7 @@
           "mag": 36,
           "tacRld": 2800,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "40_rnd": {
@@ -5473,7 +5390,7 @@
           "mag": 40,
           "tacRld": 2800,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "40_fast": {
@@ -5482,7 +5399,6 @@
           "mag": 40,
           "tacRld": 2478,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "60_rnd": {
@@ -5491,7 +5407,6 @@
           "mag": 60,
           "tacRld": 2800,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "75_rnd": {
@@ -5500,14 +5415,13 @@
           "mag": 75,
           "tacRld": 2800,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "scw10": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "15_rnd",
       "mags": {
@@ -5517,7 +5431,7 @@
           "mag": 15,
           "tacRld": 2600,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "15_fast": {
@@ -5526,7 +5440,6 @@
           "mag": 15,
           "tacRld": 2301,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -5535,7 +5448,6 @@
           "mag": 20,
           "tacRld": 2600,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "25_rnd": {
@@ -5544,14 +5456,13 @@
           "mag": 25,
           "tacRld": 2600,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "sg553r": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "30_rnd",
       "mags": {
@@ -5561,7 +5472,7 @@
           "mag": 20,
           "tacRld": 2500,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -3,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -5570,7 +5481,7 @@
           "mag": 20,
           "tacRld": 2212,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -5579,7 +5490,7 @@
           "mag": 30,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5588,7 +5499,6 @@
           "mag": 30,
           "tacRld": 2212,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5597,7 +5507,6 @@
           "mag": 36,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -5606,7 +5515,6 @@
           "mag": 40,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -5615,14 +5523,14 @@
           "mag": 40,
           "tacRld": 2212,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "sgx": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "30_rnd",
       "mags": {
@@ -5632,7 +5540,7 @@
           "mag": 30,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5641,7 +5549,6 @@
           "mag": 30,
           "tacRld": 2227,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5650,7 +5557,6 @@
           "mag": 36,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "41_rnd": {
@@ -5659,14 +5565,13 @@
           "mag": 41,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "sl9": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "30_rnd",
       "mags": {
@@ -5676,7 +5581,7 @@
           "mag": 30,
           "tacRld": 2650,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "60_rnd": {
@@ -5685,14 +5590,14 @@
           "mag": 60,
           "tacRld": 2650,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "sor300sc": {
       "defAds": 4,
-      "defSpr": 2,
+      "defSpr": 6,
       "defAms": 4,
       "def": "30_rnd",
       "mags": {
@@ -5702,7 +5607,7 @@
           "mag": 20,
           "tacRld": 2250,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -3,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -5711,7 +5616,7 @@
           "mag": 20,
           "tacRld": 1991,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -5720,7 +5625,7 @@
           "mag": 30,
           "tacRld": 2250,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5729,7 +5634,6 @@
           "mag": 30,
           "tacRld": 1991,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5738,7 +5642,6 @@
           "mag": 36,
           "tacRld": 2250,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -5747,7 +5650,6 @@
           "mag": 40,
           "tacRld": 2250,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -5756,14 +5658,14 @@
           "mag": 40,
           "tacRld": 1991,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "sv98": {
       "defAds": 6,
-      "defSpr": 2,
+      "defSpr": 7,
       "defAms": 4,
       "def": "10_rnd",
       "mags": {
@@ -5773,14 +5675,14 @@
           "mag": 10,
           "tacRld": 2334,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "svdm": {
       "defAds": 6,
-      "defSpr": 4,
+      "defSpr": 8,
       "defAms": 6,
       "def": "10_rnd",
       "mags": {
@@ -5790,7 +5692,7 @@
           "mag": 5,
           "tacRld": 2212,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "10_rnd": {
@@ -5799,7 +5701,7 @@
           "mag": 10,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "10_fast": {
@@ -5808,7 +5710,6 @@
           "mag": 10,
           "tacRld": 2212,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -5817,14 +5718,13 @@
           "mag": 20,
           "tacRld": 2500,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "svk86": {
       "defAds": 7,
-      "defSpr": 5,
+      "defSpr": 9,
       "defAms": 7,
       "def": "10_rnd",
       "mags": {
@@ -5834,7 +5734,7 @@
           "mag": 10,
           "tacRld": 2967,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "10_fast": {
@@ -5843,14 +5743,13 @@
           "mag": 10,
           "tacRld": 2626,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "umg40": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "30_rnd",
       "mags": {
@@ -5860,7 +5759,7 @@
           "mag": 25,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "25_fast": {
@@ -5869,7 +5768,6 @@
           "mag": 25,
           "tacRld": 2227,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -5878,7 +5776,7 @@
           "mag": 30,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5887,7 +5785,6 @@
           "mag": 30,
           "tacRld": 2227,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5896,14 +5793,13 @@
           "mag": 36,
           "tacRld": 2517,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "usg90": {
       "defAds": 3,
-      "defSpr": 1,
+      "defSpr": 5,
       "defAms": 3,
       "def": "50_rnd",
       "mags": {
@@ -5913,14 +5809,14 @@
           "mag": 50,
           "tacRld": 3000,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "sor556": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -5930,7 +5826,7 @@
           "mag": 20,
           "tacRld": 2384,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -5939,7 +5835,7 @@
           "mag": 20,
           "tacRld": 2110,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -5948,7 +5844,7 @@
           "mag": 30,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -5957,7 +5853,6 @@
           "mag": 30,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -5966,7 +5861,6 @@
           "mag": 36,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -5975,7 +5869,6 @@
           "mag": 40,
           "tacRld": 2384,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -5984,7 +5877,7 @@
           "mag": 40,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "45_fast": {
@@ -5993,14 +5886,14 @@
           "mag": 45,
           "tacRld": 2110,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "tr7": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "20_rnd",
       "mags": {
@@ -6010,7 +5903,7 @@
           "mag": 10,
           "tacRld": 2124,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -3
         },
         "15_rnd": {
@@ -6019,7 +5912,7 @@
           "mag": 15,
           "tacRld": 2124,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_rnd": {
@@ -6028,7 +5921,7 @@
           "mag": 20,
           "tacRld": 2400,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "20_fast": {
@@ -6037,7 +5930,6 @@
           "mag": 20,
           "tacRld": 2124,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "25_rnd": {
@@ -6046,7 +5938,6 @@
           "mag": 25,
           "tacRld": 2400,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "25_fast": {
@@ -6055,7 +5946,7 @@
           "mag": 25,
           "tacRld": 2124,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "30_rnd": {
@@ -6064,14 +5955,13 @@
           "mag": 30,
           "tacRld": 2400,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "vcr2": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -6081,7 +5971,7 @@
           "mag": 20,
           "tacRld": 2154,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "20_rnd": {
@@ -6090,7 +5980,7 @@
           "mag": 20,
           "tacRld": 2434,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -6099,7 +5989,7 @@
           "mag": 30,
           "tacRld": 2434,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -6108,7 +5998,6 @@
           "mag": 30,
           "tacRld": 2154,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -6117,7 +6006,6 @@
           "mag": 36,
           "tacRld": 2434,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -6126,7 +6014,6 @@
           "mag": 40,
           "tacRld": 2434,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -6135,14 +6022,14 @@
           "mag": 40,
           "tacRld": 2154,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "m16a4": {
       "defAds": 5,
-      "defSpr": 3,
+      "defSpr": 7,
       "defAms": 5,
       "def": "30_rnd",
       "mags": {
@@ -6152,7 +6039,7 @@
           "mag": 20,
           "tacRld": 2200,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": -1,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "20_fast": {
@@ -6161,7 +6048,7 @@
           "mag": 20,
           "tacRld": 1950,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "30_rnd": {
@@ -6170,7 +6057,7 @@
           "mag": 30,
           "tacRld": 2200,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "30_fast": {
@@ -6179,7 +6066,6 @@
           "mag": 30,
           "tacRld": 1950,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "36_rnd": {
@@ -6188,7 +6074,6 @@
           "mag": 36,
           "tacRld": 2200,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_rnd": {
@@ -6197,7 +6082,6 @@
           "mag": 40,
           "tacRld": 2200,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "40_fast": {
@@ -6206,14 +6090,14 @@
           "mag": 40,
           "tacRld": 1950,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       }
     },
     "rpk74m": {
       "defAds": 6,
-      "defSpr": 4,
+      "defSpr": 8,
       "defAms": 6,
       "def": "45_rnd",
       "mags": {
@@ -6223,7 +6107,7 @@
           "mag": 30,
           "tacRld": 2784,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2
         },
         "30_fast": {
@@ -6241,7 +6125,7 @@
           "mag": 36,
           "tacRld": 2784,
           "adsTimeTierShift": -1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2
         },
         "45_rnd": {
@@ -6250,7 +6134,7 @@
           "mag": 45,
           "tacRld": 2784,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "45_fast": {
@@ -6259,7 +6143,6 @@
           "mag": 45,
           "tacRld": 2464,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0
         },
         "50_rnd": {
@@ -6268,7 +6151,6 @@
           "mag": 50,
           "tacRld": 2784,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "60_rnd": {
@@ -6277,7 +6159,6 @@
           "mag": 60,
           "tacRld": 2784,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         },
         "95_rnd": {
@@ -6286,14 +6167,13 @@
           "mag": 95,
           "tacRld": 2909,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 2,
           "adsMoveSpeedTierShift": 0
         }
       }
     },
     "l115": {
       "defAds": 7,
-      "defSpr": 4,
+      "defSpr": 7,
       "defAms": 6,
       "def": "5_rnd",
       "mags": {
@@ -6303,7 +6183,7 @@
           "mag": 5,
           "tacRld": 2750,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0
         },
         "7_rnd": {
@@ -6312,7 +6192,6 @@
           "mag": 7,
           "tacRld": 2750,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 1
         },
         "7_fast": {
@@ -6327,8 +6206,8 @@
       }
     },
     "p18": {
-      "defAds": 4,
-      "defSpr": 4,
+      "defAds": 3,
+      "defSpr": 3,
       "defAms": 4,
       "def": "17_rnd",
       "mags": {
@@ -6337,22 +6216,24 @@
           "pts": 5,
           "mag": 17,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 1934
         },
         "21_rnd": {
           "name": "21 Rnd",
           "pts": 15,
           "mag": 21,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 1934
         }
       }
     },
     "es57": {
-      "defAds": 4,
-      "defSpr": 4,
+      "defAds": 2,
+      "defSpr": 2,
       "defAms": 4,
       "def": "20_rnd",
       "mags": {
@@ -6361,22 +6242,24 @@
           "pts": 5,
           "mag": 20,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 2017
         },
         "30_rnd": {
           "name": "30 Rnd",
           "pts": 40,
           "mag": 30,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 2017
         }
       }
     },
     "m45a1": {
-      "defAds": 4,
-      "defSpr": 4,
+      "defAds": 3,
+      "defSpr": 3,
       "defAms": 4,
       "def": "7_rnd",
       "mags": {
@@ -6385,22 +6268,24 @@
           "pts": 5,
           "mag": 7,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 1867
         },
         "11_rnd": {
           "name": "11 Rnd",
           "pts": 25,
           "mag": 11,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 1867
         }
       }
     },
     "m44": {
       "defAds": 4,
-      "defSpr": 4,
+      "defSpr": 6,
       "defAms": 4,
       "def": "6_rnd",
       "mags": {
@@ -6409,14 +6294,15 @@
           "pts": 5,
           "mag": 6,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -3,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 3400
         }
       }
     },
     "ggh22": {
-      "defAds": 4,
-      "defSpr": 4,
+      "defAds": 3,
+      "defSpr": 3,
       "defAms": 4,
       "def": "15_rnd",
       "mags": {
@@ -6425,30 +6311,33 @@
           "pts": 5,
           "mag": 15,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 1934
         },
         "20_rnd": {
           "name": "20 Rnd",
           "pts": 20,
           "mag": 20,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 1934
         },
         "22_rnd": {
           "name": "22 Rnd",
           "pts": 30,
           "mag": 22,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 1934
         }
       }
     },
     "m357trait": {
-      "defAds": 4,
-      "defSpr": 4,
+      "defAds": 3,
+      "defSpr": 5,
       "defAms": 4,
       "def": "8_rnd",
       "mags": {
@@ -6457,21 +6346,23 @@
           "pts": 5,
           "mag": 8,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -3,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 3067
         },
         "8_fast": {
           "name": "8 Rnd Fast",
           "pts": 10,
           "mag": 8,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -2,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 2741
         }
       }
     },
     "vz61": {
-      "defAds": 4,
+      "defAds": 3,
       "defSpr": 4,
       "defAms": 4,
       "def": "10_rnd",
@@ -6481,16 +6372,18 @@
           "pts": 5,
           "mag": 10,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 2134
         },
         "20_rnd": {
           "name": "20 Rnd",
           "pts": 40,
           "mag": 20,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 0,
+          "tacRld": 2134
         }
       }
     }

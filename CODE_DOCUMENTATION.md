@@ -46,7 +46,7 @@ BF6 Project/
 ```
 
 Local-only helper files are intentionally ignored and should not be committed:
-`serve.bat`, `Open - *.url`, `gen_dmg.py`, `read_xlsx.py`, and `.claude/`.
+`serve.bat`, `Open - *.url`, `.claude/`, `memory/`, and `data/check_all.sh`.
 
 ### Data Flow
 
@@ -151,12 +151,30 @@ scanning catalog arrays on every render.
 | `_movingAdsMinSpreadDeg` | Final moving ADS minimum spread in degrees |
 | `_adsTimeTierMod` | Combined grip + barrel ADS tier shift |
 | `_adsTimeMs` | Final ADS time in ms (from balance table, `null` if no mag data) |
-| `_sprintRecoveryMs` | Final sprint recovery in ms (from balance table) |
+| `_sprintRecoveryMs` | Final draw speed / sprint-to-fire recovery in ms (from `SPRINT_REC_TIERS`) |
 | `_adsMoveSpeedMult` | Final ADS move speed multiplier |
 | `_hipSpreadTierMod` | Total hipfire spread tier shift |
 | `_weaponSway` | Weapon sway delta |
 | `_visualRecoil` | Visual recoil modifier from ergo (negative = reduced, `0` = unchanged) |
 | `_hsMult` | Final headshot multiplier |
+
+**Combined-slot routing (`laserLightCombined` / `laserGripLightCombined`):**
+
+Some weapons merge multiple physical slots into the Laser dropdown to match their
+in-game UI. Two flags on `WEAPON_ATTS[id]` control this:
+
+| Flag | Weapons | Behavior |
+|---|---|---|
+| `laserLightCombined` | Most sidearms | Light options appear in the Laser dropdown; the Light slot is disabled |
+| `laserGripLightCombined` | VZ.61 | Grip, laser, and light options all appear in the Laser dropdown; Grip slot is disabled |
+
+`applyAttachments` detects which physical category a selected laser-slot ID belongs to
+by checking `GRIPS_BY_ID` and `LIGHTS_BY_ID` maps at runtime, then routes it to the
+correct effect lookup (grip effects, light effects, or laser effects). This means the
+combined-slot routing requires no separate data field beyond the flag — the attachment ID
+itself determines which effect path is used.
+
+---
 
 **`applyAttachments` output — modified base fields:**
 
@@ -226,12 +244,11 @@ data bundle passed by each page.
 ### `data/weapons.json`
 
 Array of 58 weapon objects. The `cls` field drives the class filter buttons in the UI.
-Current classes: `Assault Rifle`, `Carbine`, `SMG`, `LMG`, `DMR`, `Sniper Rifle`, `Shotgun`.
+Current classes: `Assault Rifle`, `Carbine`, `SMG`, `LMG`, `DMR`, `Sniper Rifle`, `Shotgun`, `Sidearm`.
 
-Seven sidearms (`cls: "Sidearm"`) are present in the file but intentionally hidden from the
-UI — `"Sidearm"` is not in the `CLASSES` array in either page. They will surface once
-attachment availability data is ready. The 51 non-sidearm weapons span the seven
-supported classes; three new weapons (M16A4, RPK-74M, L115) were added in Season 3.
+Seven sidearms (`cls: "Sidearm"`) are fully supported. They display under a `Pistol` button
+in the class filter (`CLASS_SHORT` maps `"Sidearm"` → `"Pistol"`). Three weapons (M16A4,
+RPK-74M, L115) were added in Season 3.
 
 **Required fields per weapon object:**
 
@@ -329,7 +346,7 @@ Tier lookup tables used by `applyAttachments`:
 | Key | Description |
 |---|---|
 | `ADS_SPD_TIERS` | ADS time in ms for tiers 1–8 |
-| `SPRINT_REC_TIERS` | Sprint-to-fire recovery in ms for tiers 1–8 |
+| `SPRINT_REC_TIERS` | Sprint-to-fire recovery (draw speed) in ms for tiers 1–12 |
 | `ADS_MOVE_TIERS` | ADS move speed multiplier for tiers 1–8 |
 | `MOVING_ACC_TIERS` | Moving ADS min spread in degrees for tiers 1–8 |
 | `RECOIL_MULT` | Per-weapon ADS recoil tier multiplier |
@@ -445,8 +462,8 @@ Primary app. Major JS regions (line numbers approximate, drift as file changes):
 - **`ui/app.js`**: JSON fetch (`Promise.all`), context setup, app state, sidebar/loadout rendering, overview cards, chart rendering, recoil/bloom canvas, attachment effect chips, and event wiring.
 
 **Class filter buttons** (`CLASSES` array): `Assault Rifle`, `Carbine`, `SMG`, `LMG`,
-`DMR`, `Sniper Rifle`, `Shotgun`. Button labels come from `CLASS_SHORT`:
-`AR`, `Carb`, `SMG`, `LMG`, `DMR`, `Sniper`, `SG`.
+`DMR`, `Sniper Rifle`, `Shotgun`, `Sidearm`. Button labels come from `CLASS_SHORT`:
+`AR`, `Carb`, `SMG`, `LMG`, `DMR`, `Sniper`, `SG`, `Pistol`.
 
 **Attachment state shape:**
 ```js
