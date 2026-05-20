@@ -61,11 +61,21 @@ const attachmentSets = {
   laser: new Set(attachments.LASERS.map(a => a.id)),
 };
 
+const lightsSet = new Set((attachments.LIGHTS ?? []).map(a => a.id));
+
 for (const [weaponId, weaponAtts] of Object.entries(attachments.WEAPON_ATTS)) {
   if (!weaponIds.has(weaponId)) fail(`WEAPON_ATTS references unknown weapon ${weaponId}`);
   for (const [slot, validIds] of Object.entries(attachmentSets)) {
+    // laserGripLightCombined: laser slot may contain grip or light IDs
+    // laserLightCombined: laser slot may contain light IDs
+    const extraIds = slot === 'laser'
+      ? new Set([
+          ...(weaponAtts.laserGripLightCombined ? attachmentSets.grip : []),
+          ...((weaponAtts.laserLightCombined || weaponAtts.laserGripLightCombined) ? lightsSet : []),
+        ])
+      : new Set();
     for (const id of weaponAtts[slot] ?? []) {
-      if (!validIds.has(id)) fail(`${weaponId}: ${slot} references unknown attachment ${id}`);
+      if (!validIds.has(id) && !extraIds.has(id)) fail(`${weaponId}: ${slot} references unknown attachment ${id}`);
     }
   }
   if (weaponAtts.barrelDef && !attachmentSets.barrel.has(weaponAtts.barrelDef)) {
