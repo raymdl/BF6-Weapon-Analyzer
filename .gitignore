@@ -8,6 +8,8 @@ Open - *.url
 # Local Codex/Claude scratch, migration, and extraction helpers.
 .claude/
 memory/
+CLAUDE.md
+TODO.md
 
 # Local data utilities.
 data/check_all.sh
