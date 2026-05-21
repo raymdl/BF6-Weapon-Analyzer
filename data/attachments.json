@@ -663,13 +663,13 @@
     },
     {
       "id": "fast_deploy",
-      "name": "Fast Deploy",
+      "name": "Speed Holster",
       "pts": 5,
       "sprintRecoveryTierShift": -1
     },
     {
       "id": "fast_deploy_10",
-      "name": "Fast Deploy",
+      "name": "Gunslinger",
       "pts": 10,
       "sprintRecoveryTierShift": -2
     },
@@ -677,6 +677,23 @@
       "id": "burst_training",
       "name": "Burst Training",
       "pts": 15,
+      "adsRecoilVariationMult": 0.77,
+      "setsFireModeBurst": true,
+      "assumed": true
+    },
+    {
+      "id": "burst_mode",
+      "name": "Burst Mode",
+      "pts": 10,
+      "adsRecoilVariationMult": 0.77,
+      "setsFireModeBurst": true,
+      "assumed": true
+    },
+    {
+      "id": "grtbc_burst_mode",
+      "name": "Burst Mode",
+      "pts": 10,
+      "adsRecoilTierMod": 1,
       "adsRecoilVariationMult": 0.77,
       "setsFireModeBurst": true,
       "assumed": true
@@ -3469,7 +3486,8 @@
     "grtbc": {
       "avail": [
         "mag_catch",
-        "match_trigger"
+        "match_trigger",
+        "grtbc_burst_mode"
       ],
       "magCatchRld": {
         "reg": 2352,
@@ -3544,7 +3562,7 @@
     "sl9": {
       "avail": [
         "mag_catch",
-        "burst_training"
+        "burst_mode"
       ],
       "magCatchRld": {
         "reg": 2493,

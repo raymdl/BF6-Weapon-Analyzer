@@ -1770,6 +1770,9 @@
     "spreadMax": 6,
     "adsTime": 195,
     "fireMode": "auto",
+    "burstRounds": 3,
+    "burstRpm": 830,
+    "burstBurstsPerMinute": 240.12729639809058,
     "spreadDyn": {
       "ads": {
         "inc": 0.228,

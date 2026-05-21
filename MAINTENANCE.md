@@ -178,15 +178,19 @@ If game mechanics change (not just data), edit the relevant module:
 
 ## Known Follow-Up Notes
 
-- **SL9 burst timing:** Season 3 sym.gg data shows `RoF = 674.999` and
-  `BurstRoF = 771.428`. Screen-recording verification (frame-by-frame timestamp
-  analysis across 5 full magazines) confirms a 3-round burst cadence of ~78 ms
-  between shots (≈771 RPM intra-burst), with a post-burst delay that brings the
-  sustained average to ~675 RPM. This mirrors the M16A4-style burst pattern.
-  Currently, `weapons.json` stores the weapon as `fireMode: "auto"` with
-  `rpm: 675`. The burst recoil/bloom timing model has not yet been applied.
-  **Pending:** add `burstRounds: 3` and `burstBurstsPerMinute` to the SL9 entry
-  and verify the burst badge displays correctly.
+- **Burst ergos:** `Burst Training` and `Burst Mode` both switch the weapon into
+  burst fire and apply `adsRecoilVariationMult: 0.77`. `Burst Mode` costs 10
+  points. Burst size and cadence are weapon-specific and should live on the
+  weapon record. GRT-BC uses an internal `grtbc_burst_mode` entry with the same
+  visible name because only GRT-BC's Burst Mode also applies a 1-tier ADS recoil
+  amount improvement.
+- **Burst timing fields:** leave `burstBurstsPerMinute` blank when a weapon has
+  no extra post-burst delay in game. The sim treats that as normal shot cadence
+  between every round, even while the weapon is labeled as burst fire.
+- **GRT-BC Burst Mode timing:** modeled from the burst-mode recording as a
+  3-round burst with `burstRpm: 830` and 33 ms of extra post-burst delay. This
+  yields `burstBurstsPerMinute: 240.12729639809058` and an effective sustained
+  fire rate of about 720 RPM while Burst Mode is selected.
 
 ---
 
