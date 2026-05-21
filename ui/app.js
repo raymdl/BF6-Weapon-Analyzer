@@ -365,9 +365,9 @@ function renderOverview() {
       tooltip: 'Damage dealt by one body shot at 0m before range falloff.' },
     { lbl: 'HS Mult',     k: '_hsMult',                                  unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Headshot damage multiplier after ammo effects are applied.' },
-    { lbl: 'Fire Rate',   k: 'rpm',                                      unit: 'RPM', fmt: v => v ?? '—',                            higherBetter: true,
+    { lbl: 'Fire Rate',   k: 'rpm',                                      unit: 'RPM', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Weapon fire rate in rounds per minute.' },
-    { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true,
+    { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Projectile velocity after barrel effects are applied. Higher values reduce travel time and lead.' },
     { lbl: 'Mag Size',    k: 'mag',                                      unit: 'Rds', fmt: v => v,                                   higherBetter: true,
       tooltip: 'Rounds available in the selected magazine.' },
@@ -378,16 +378,18 @@ function renderOverview() {
       estFn: w => !w._adsTimeMs && w.adsTime != null },
     { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true, group: 'mobility',
       tooltip: 'Movement speed multiplier while aiming down sights. Can be affected by magazine, grip, and ammo selections.' },
-    { lbl: 'Draw Spd',    k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
+    { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
       tooltip: 'Time to equip/switch to the weapon in seconds. Lower is faster.' },
-    { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true, group: 'mobility',
+    { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true,
       tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
       tooltip: 'ADS vertical recoil added per shot after ADS recoil-tier attachment effects.' },
     { lbl: 'Recoil Dir',  k: 'recoilDir',                                unit: '°',   fmt: v => ((-v) >= 0 ? '+' : '') + (-v),       absDiff: true, group: 'recoil',
       tooltip: 'Average recoil direction from vertical. Positive values pull right; negative values pull left.' },
-    { lbl: 'Mov Spread',   k: '_movingAdsMinSpreadDeg',                  unit: '°',   fmt: v => v != null ? v.toFixed(2) : '0.32',   lowerBetter: true, group: 'recoil',
-      tooltip: 'ADS spread while moving. Lower is more accurate. Can be affected by laser and barrel selections.' },
+    { lbl: 'STD/Mov Sprd', compute: w => ({ stand: w.spread?.adsStand?.[0] ?? 0.05, move: w._movingAdsMinSpreadDeg ?? w.spread?.adsMove?.[0] ?? 0.32 }), unit: '',
+      fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
+      noDiff: true, group: 'recoil',
+      tooltip: 'Standing ADS spread and moving ADS spread. Lower is more accurate. Moving ADS spread can be affected by laser and barrel selections.' },
     { lbl: '3D/Map Spot', compute: w => ({ spot: w._worldSpot, minimap: w._minimapSpot }), unit: '',
       fmt: obj => { const s = obj && obj.spot > 0 ? `${obj.spot}<span class="sunit">m</span>` : '–'; const m = obj && obj.minimap > 0 ? `${obj.minimap}<span class="sunit">m</span>` : '–'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true,
@@ -412,7 +414,7 @@ function renderOverview() {
       let diff = '';
       if (!f.noDiff && v1 != null && v2 != null && v1 !== v2) {
         if (f.absDiff) {
-          const delta = Math.round(v2 - v1);
+          const delta = Math.round((-v2) - (-v1));
           diff = `<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta > 0 ? '+' : ''}${delta}°</span>`;
         } else if (f.absoluteDelta) {
           const delta = Math.round(v2 - v1);
@@ -1002,7 +1004,7 @@ function renderAttachmentStats(loadouts) {
   const metrics = [
     { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
-    { lbl: 'Draw Speed',          val: w => w._sprintRecoveryMs,             unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Weapon Draw Speed and Sprint-to-Fire recovery time. Can be affected by magazine and ergo attachments.' },
+    { lbl: 'Sprint-to-Fire Time', val: w => w._sprintRecoveryMs,             unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel effects. Higher reduces travel time and lead.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
