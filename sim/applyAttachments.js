@@ -101,7 +101,8 @@ export function applyAttachments(w, atts) {
   // ADS-only multiplier on ADSRecoilDirectionVariation-derived recoilVar
   const adsRecoilVariation = +(w.recoilVar
     * (muz.adsRecoilVariationMult ?? 1)
-    * (grp.adsRecoilVariationMult ?? 1)).toFixed(3);
+    * (grp.adsRecoilVariationMult ?? 1)
+    * (ergoData.adsRecoilVariationMult ?? 1)).toFixed(3);
 
   // ── Display tags ─────────────────────────────────────────────────────────────
   const tags = [muz, bar, grp, las].filter(a => a.id !== 'none').map(a => a.name);
@@ -198,6 +199,15 @@ export function applyAttachments(w, atts) {
   const magTags  = magData?.name && magData.name !== wm?.mags?.[wm?.def]?.name ? [magData.name] : [];
   const ergoTags = ergoData.id !== 'none' ? [ergoData.name] : [];
   const allTags  = [...tags, ...(ammoName ? [ammoName] : []), ...magTags, ...ergoTags];
+  const fireMode = ergoData.setsFireModeAuto ? 'auto'
+    : ergoData.setsFireModeBurst ? 'burst'
+      : w.fireMode;
+  const burstRounds = ergoData.setsFireModeAuto ? undefined
+    : ergoData.burstRounds ?? w.burstRounds;
+  const burstBurstsPerMinute = ergoData.setsFireModeAuto ? undefined
+    : ergoData.burstBurstsPerMinute ?? w.burstBurstsPerMinute;
+  const burstRpm = ergoData.setsFireModeAuto ? undefined
+    : ergoData.burstRpm ?? w.burstRpm;
 
   return {
     ...w,
@@ -215,8 +225,11 @@ export function applyAttachments(w, atts) {
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult,
     _hsMult:                 hsMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
-    fireMode:    ergoData.setsFireModeAuto ? 'auto' : w.fireMode,
-    burstRounds: ergoData.setsFireModeAuto ? undefined : w.burstRounds,
+    rpm:         fireMode === 'burst' && burstRpm ? burstRpm : w.rpm,
+    fireMode,
+    burstRounds,
+    burstBurstsPerMinute,
+    burstRpm,
     spread:      spreadOverride ?? w.spread,
     recoilV:     adsRecoilPerShot,
     recoilVar:   adsRecoilVariation,

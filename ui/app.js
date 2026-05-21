@@ -315,10 +315,20 @@ function renderOverview() {
 
   const hdr = document.getElementById('wHeader');
   hdr.innerHTML = '';
+  const burstBadgeTooltip = w => {
+    if (w.fireMode !== 'burst' || !w.burstRounds) return '';
+    const intraMs = 1000 * (60 / (w.burstRpm ?? w.rpm ?? 600));
+    const postMs = 1000 * shotIntervalAfter(w, w.burstRounds);
+    const extraMs = Math.max(0, postMs - intraMs);
+    const effectiveRpm = w.burstBurstsPerMinute
+      ? w.burstBurstsPerMinute * w.burstRounds
+      : 60000 / postMs;
+    const delayText = extraMs >= 0.5 ? `${extraMs.toFixed(0)}ms` : 'None';
+    return `Burst Delay: ${delayText}\nEffective fire rate: ${effectiveRpm.toFixed(0)}RPM`;
+  };
   const appendFireModeBadge = (w, hdr) => {
     if (!w) return;
     const label =
-      w.fireMode === 'auto' && w.burstRounds ? `Auto + ${w.burstRounds}-Rd Burst` :
       w.fireMode === 'burst' && w.burstRounds ? `${w.burstRounds}-Rd Burst` :
       w.fireMode === 'burst' ? 'Burst' :
       w.fireMode === 'auto' ? 'Full Auto' :
@@ -327,7 +337,13 @@ function renderOverview() {
       w.fireMode === 'pump' ? 'Pump Action' :
       null;
     if (!label) return;
-    const bb = document.createElement('span'); bb.className = 'wbadge-burst'; bb.textContent = label; hdr.appendChild(bb);
+    const bb = document.createElement('span'); bb.className = 'wbadge-burst'; bb.textContent = label;
+    const tooltip = burstBadgeTooltip(w);
+    if (tooltip) {
+      bb.title = tooltip;
+      bb.setAttribute('aria-label', `${label}. ${tooltip.replace(/\n/g, '. ')}`);
+    }
+    hdr.appendChild(bb);
   };
   if (w1) {
     const s = document.createElement('span'); s.className = 'wname'; s.textContent = wLabel(w1); hdr.appendChild(s);
@@ -516,7 +532,7 @@ function renderChart() {
         } } },
         scales: {
           x: { title: { display: true, text: 'Range (m)', color: '#7a8a8a', font: { size: 11 }, padding: { top: 4, bottom: 0 } }, ticks: { color: '#7a8a8a', maxTicksLimit: 10 }, grid: { color: 'rgba(40,48,48,0.6)' } },
-          y: { min: 1, max: 8, title: { display: true, text: 'Bullets to Kill', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 1, precision: 0 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+          y: { min: 1, max: 9, title: { display: true, text: 'Bullets to Kill', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 1, precision: 0 }, grid: { color: 'rgba(40,48,48,0.6)' } },
         },
       },
     });

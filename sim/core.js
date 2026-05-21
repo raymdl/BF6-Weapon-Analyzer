@@ -189,7 +189,7 @@ export function selectedSpreadIncFor(w) {
 
 /** Seconds between this shot and the next shot for the current fire mode. */
 export function shotIntervalAfter(w, shotIndex) {
-  const shotRpm = w.rpm ?? 600;
+  const shotRpm = w.fireMode === 'burst' && w.burstRpm ? w.burstRpm : (w.rpm ?? 600);
   const normalInterval = 60 / shotRpm;
   const burstRounds = w.fireMode === 'burst' ? (w.burstRounds ?? 0) : 0;
   const burstsPerMinute = w.burstBurstsPerMinute ?? 0;

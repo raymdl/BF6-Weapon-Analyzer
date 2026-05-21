@@ -672,6 +672,14 @@
       "name": "Fast Deploy",
       "pts": 10,
       "sprintRecoveryTierShift": -2
+    },
+    {
+      "id": "burst_training",
+      "name": "Burst Training",
+      "pts": 15,
+      "adsRecoilVariationMult": 0.77,
+      "setsFireModeBurst": true,
+      "assumed": true
     }
   ],
   "WEAPON_ATTS": {
@@ -3399,7 +3407,8 @@
     },
     "kord6p67": {
       "avail": [
-        "match_trigger"
+        "match_trigger",
+        "burst_training"
       ]
     },
     "nvo228e": {
@@ -3492,12 +3501,18 @@
     },
     "pw5a3": {
       "avail": [
-        "mag_catch"
+        "mag_catch",
+        "burst_training"
       ],
       "magCatchRld": {
         "reg": 2368,
         "fast": 2095
       }
+    },
+    "kv9": {
+      "avail": [
+        "burst_training"
+      ]
     },
     "pw7a2": {
       "avail": [
@@ -3528,7 +3543,8 @@
     },
     "sl9": {
       "avail": [
-        "mag_catch"
+        "mag_catch",
+        "burst_training"
       ],
       "magCatchRld": {
         "reg": 2493,
