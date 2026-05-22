@@ -166,9 +166,7 @@ export function applyAttachments(w, atts) {
   const magAdsTimeTierShift       = magData?.adsTimeTierShift       ?? 0;
   const magSprintRecoveryTierShift = magData?.sprintRecoveryTierShift ?? 0;
   const magAdsMoveSpeedTierShift  = magData?.adsMoveSpeedTierShift  ?? 0;
-  const gripSprintRecoveryTierShift = grp.sprintRecoveryExcludeClasses?.includes(w.cls)
-    ? 0
-    : (grp.sprintRecoveryTierShift ?? 0);
+  const gripSprintRecoveryTierShift = grp.sprintRecoveryTierShift ?? 0;
   const magMag    = magData?.mag   ?? null;
   const magTacRld = magData?.tacRld ?? null;
 
@@ -237,6 +235,7 @@ export function applyAttachments(w, atts) {
     _minimapSpot:            muz.minimapSpot ?? 150,
     _weaponSway:             weaponSway,
     _visualRecoil:           ergoData.visualRecoil ?? 0,
+    _laserVisible:           las.laserVisible ?? null,
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
     _movingAdsMinSpreadDeg:  movingAdsMinSpreadDeg,
     _adsTimeTierMod:         combinedAdsTimeTierMod,
@@ -254,7 +253,7 @@ export function applyAttachments(w, atts) {
     recoilIncAds: w.recoilIncAds != null
       ? +(w.recoilIncAds * (bar.adsSpreadIncMult ?? 1)).toFixed(3)
       : null,
-    bulletVel: w.bulletVel != null ? Math.round(w.bulletVel * bar.vMult) : null,
+    bulletVel: w.bulletVel != null ? Math.round(w.bulletVel * (bar.velMult ?? 1)) : null,
     deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : w.deployT,
     mag:    magMag ?? w.mag,
     tacRld: magCatchTacRld != null ? +(magCatchTacRld / 1000).toFixed(3)

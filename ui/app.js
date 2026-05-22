@@ -1015,7 +1015,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS bloom/spread recovery per second while firing after muzzle effects. Higher clears bloom faster.' },
     { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire bloom/spread recovery per second while firing after light effects. Higher clears bloom faster.' },
     { lbl: 'Mov Spread',          val: w => w._movingAdsMinSpreadDeg,        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
-    { lbl: 'Hip Min',             val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
+    { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
     { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes your 3D world position. None or shorter is better.' },
     { lbl: 'Minimap Spot',        val: w => w._minimapSpot,                  unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes you on the minimap. None or shorter is better.' },
     { lbl: 'HS Mult',             val: w => w._hsMult,                       unit: '×',   dec: 2, higherBetter: true, tooltip: 'Headshot damage multiplier after ammo effects. Higher increases headshot damage.' },
@@ -1047,6 +1047,11 @@ function renderAttachmentStats(loadouts) {
       const reduced = vrVal < 0;
       const tip = escAttr('Visual recoil from selected attachments. Reduced is better; increased is worse.');
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Visual Recoil</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Decreased' : 'Increased'}</div></div>`);
+    }
+    if (cur._laserVisible != null) {
+      const visible = cur._laserVisible;
+      const tip = escAttr('Whether the selected laser is visible to enemies.');
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Laser Visibility</div><div class="att-chip-val" style="color:${visible ? 'var(--red)' : 'var(--green)'}">${visible ? 'Visible' : 'Not Visible'}</div></div>`);
     }
     if (!chips.length) return;
     rendered = true;

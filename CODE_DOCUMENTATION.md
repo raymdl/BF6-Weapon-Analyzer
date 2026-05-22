@@ -183,7 +183,7 @@ itself determines which effect path is used.
 | `recoilV` | Scaled by ADS recoil tier formula: `w.recoilV × mult^tierMod` |
 | `recoilVar` | Scaled by muzzle/grip `adsRecoilVariationMult` |
 | `recoilIncAds` | Scaled by barrel `adsSpreadIncMult` |
-| `bulletVel` | Scaled by barrel `vMult` |
+| `bulletVel` | Scaled by barrel `velMult` |
 | `spread` | Hip spread min shifted by tier if `hipSpreadTierMod ≠ 0` |
 | `mag` | Replaced by selected magazine count |
 | `tacRld` | Replaced by magazine reload or Mag Catch reload |
@@ -303,7 +303,7 @@ Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `ERGOS`, `WEAPON_ATTS`,
 | `movingAdsSpreadTierMod` | `0` | Shifts moving ADS min spread tier |
 | `adsTimeTierMod` | `0` | Shifts ADS speed tier |
 | `adsMoveSpeedTierShift` | `0` | Shifts ADS move speed tier |
-| `vMult` | `1` | Multiplies bullet velocity |
+| `velMult` | `1` | Multiplies bullet velocity |
 | `sway` | `0` | Adds to weapon sway |
 | `worldSpot` | `54` | World spotting distance override (muzzle only) |
 | `minimapSpot` | `150` | Minimap spotting distance override (muzzle only) |
@@ -524,8 +524,7 @@ legacy `validateAtts()` name still exists as a compatibility wrapper.
 ### Attachment Point Counter (`computeAttPts`)
 
 Sums points across sight, muzzle, barrel, grip, laser, ammo, magazine, and ergo. Over-100 loadouts
-are marked with the `.over` class. Weapon-specific point overrides (`weaponPts`) are resolved
-by `getAttPts()`.
+are marked with the `.over` class.
 
 Seven attachment stats are marked `assumed: true` and trigger a sidebar footnote when selected:
 Linear Compensator, Compensated Brake, Flash Compensator, Long Suppressor, Lightened

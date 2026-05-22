@@ -93,7 +93,7 @@ Edit the relevant weapon object in `data/weapons.json`.
 1. Add the attachment object to the relevant array in `data/attachments.json`
    (`MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `ERGOS`)
    - Include all effect fields: `adsRecoilTierMod`, `hipSpreadTierMod`,
-     `adsSpreadIncMult`, `vMult`, `sway`, `adsSpreadDecayBoost`, etc.
+     `adsSpreadIncMult`, `velMult`, `sway`, `adsSpreadDecayBoost`, etc.
      (copy shape from an existing attachment of the same type)
    - Set fields to `0` or `1` (neutral values) for effects that don't apply
 2. Add the attachment ID to `WEAPON_ATTS[weaponId].muzzle/barrel/etc.` for
@@ -138,7 +138,7 @@ reads. Omit a field (or set to neutral) if the attachment has no effect there.
 | `movingAdsSpreadTierMod` | int | `0` | Shifts moving-ADS min spread tier |
 | `adsTimeTierMod` | int | `0` | Shifts ADS speed tier (pos = faster) |
 | `adsMoveSpeedTierShift` | int | `0` | Shifts ADS move speed tier |
-| `vMult` | float | `1` | Multiplies bullet velocity |
+| `velMult` | float | `1` | Multiplies bullet velocity |
 | `sway` | float | `0` | Adds to weapon sway (from muzzle) |
 | `worldSpot` | float | `54` | World spotting distance override (from muzzle) |
 | `minimapSpot` | float | `150` | Minimap spotting distance override (from muzzle) |
@@ -200,10 +200,10 @@ If game mechanics change (not just data), edit the relevant module:
   until full deploy data is published on sym.gg. The app maps each weapon's base
   `deployT` to the closest deploy tier, then applies the selected magazine's
   `sprintRecoveryTierShift` as the deploy-time tier modifier.
-- **Grip sprint/deploy modifiers:** normal `Slim Handstop`, `Adjustable Angled`,
-  `Slim Angled`, and `Full Angled` grips each apply `sprintRecoveryTierShift: -1`,
-  which also modifies placeholder deploy time. Class-specific SMG uses of those
-  same grip IDs are excluded via `sprintRecoveryExcludeClasses`.
+- **Grip sprint modifiers:** normal `Slim Handstop`, `Adjustable Angled`,
+  `Slim Angled`, and `Full Angled` grips each apply `sprintRecoveryTierShift: -1`.
+  Class-specific variants with different stats use separate attachment IDs, such
+  as `slim_angled_smg`, rather than runtime exclusion fields.
 
 ---
 

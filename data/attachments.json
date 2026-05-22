@@ -163,68 +163,68 @@
     {
       "id": "none",
       "name": "None",
-      "vMult": 1.0,
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1.0,
-      "pts": 0
+      "adsSpreadIncMult": 1,
+      "pts": 0,
+      "velMult": 1
     },
     {
       "id": "basic",
       "name": "Basic",
-      "vMult": 1.0,
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1.0,
-      "pts": 10
+      "adsSpreadIncMult": 1,
+      "pts": 10,
+      "velMult": 1
     },
     {
       "id": "short",
       "name": "Short",
-      "vMult": 0.8,
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1.0,
+      "adsSpreadIncMult": 1,
       "hipSpreadTierMod": -1,
-      "pts": 15
+      "pts": 15,
+      "velMult": 0.8
     },
     {
       "id": "extended",
       "name": "Extended",
-      "vMult": 1.25,
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1.0,
-      "pts": 15
+      "adsSpreadIncMult": 1,
+      "pts": 15,
+      "velMult": 1.25
     },
     {
       "id": "heavy",
       "name": "Heavy",
-      "vMult": 1.0,
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 0.9,
       "assumed": true,
-      "pts": 10
+      "pts": 10,
+      "velMult": 1
     },
     {
       "id": "heavy_ext",
       "name": "Heavy Extended",
-      "vMult": 1.25,
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 0.9,
       "assumed": true,
-      "pts": 10
+      "pts": 10,
+      "velMult": 1.25
     },
     {
       "id": "light",
       "name": "Light",
-      "vMult": 1.0,
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
-      "adsSpreadIncMult": 1.0,
-      "pts": 20
+      "adsSpreadIncMult": 1,
+      "pts": 20,
+      "velMult": 1
     }
   ],
   "GRIPS": [
@@ -237,17 +237,29 @@
       "pts": 0
     },
     {
-      "id": "factory_angled",
+      "id": "factory_angled_sl9",
       "name": "Factory Angled",
       "adsRecoilTierMod": 1,
       "movingAdsSpreadTierMod": 0,
       "adsTimeTierMod": 1,
-      "pts": 0,
-      "weaponPts": {
-        "sl9": 20,
-        "lmr27": 25,
-        "db12": 15
-      }
+      "pts": 20
+    },
+    {
+      "id": "factory_angled_lmr27",
+      "name": "Factory Angled",
+      "adsRecoilTierMod": 1,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 1,
+      "sprintRecoveryTierShift": 1,
+      "pts": 25
+    },
+    {
+      "id": "factory_angled_db12",
+      "name": "Factory Angled",
+      "adsRecoilTierMod": 1,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 15
     },
     {
       "id": "cmpct_handstop",
@@ -265,9 +277,6 @@
       "movingAdsSpreadTierMod": 0,
       "adsTimeTierMod": 1,
       "sprintRecoveryTierShift": -1,
-      "sprintRecoveryExcludeClasses": [
-        "SMG"
-      ],
       "pts": 15
     },
     {
@@ -348,10 +357,7 @@
       "adsRecoilTierMod": 5,
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
-      "pts": 45,
-      "weaponPts": {
-        "vz61": 35
-      }
+      "pts": 45
     },
     {
       "id": "adj_angled",
@@ -360,9 +366,6 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "sprintRecoveryTierShift": -1,
-      "sprintRecoveryExcludeClasses": [
-        "SMG"
-      ],
       "pts": 15
     },
     {
@@ -372,20 +375,16 @@
       "movingAdsSpreadTierMod": 0,
       "adsTimeTierMod": 1,
       "sprintRecoveryTierShift": -1,
-      "sprintRecoveryExcludeClasses": [
-        "SMG"
-      ],
-      "pts": 25,
-      "weaponPts": {
-        "sgx": 20,
-        "pw5a3": 20,
-        "pw7a2": 20,
-        "umg40": 20,
-        "usg90": 20,
-        "kv9": 20,
-        "scw10": 20,
-        "cz3a1": 20
-      }
+      "pts": 25
+    },
+    {
+      "id": "slim_angled_smg",
+      "name": "Slim Angled",
+      "adsRecoilTierMod": 1,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 1,
+      "sprintRecoveryTierShift": 0,
+      "pts": 20
     },
     {
       "id": "full_angled",
@@ -394,9 +393,6 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "sprintRecoveryTierShift": -1,
-      "sprintRecoveryExcludeClasses": [
-        "SMG"
-      ],
       "pts": 25
     },
     {
@@ -413,6 +409,7 @@
       "adsRecoilTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "adsTimeTierMod": 1,
+      "sprintRecoveryTierShift": -1,
       "pts": 15
     },
     {
@@ -504,27 +501,22 @@
       "name": "5 MW Red",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -1,
-      "pts": 10,
-      "weaponPts": {
-        "p18": 5,
-        "es57": 5,
-        "m45a1": 5,
-        "ggh22": 5,
-        "m357trait": 5,
-        "vz61": 5
-      }
+      "laserVisible": false,
+      "pts": 5
     },
     {
       "id": "5mw_green",
       "name": "5 MW Green",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -1,
+      "laserVisible": true,
       "pts": 10
     },
     {
       "id": "50mw_violet",
       "name": "50 MW Violet",
       "movingAdsSpreadTierMod": 1,
+      "laserVisible": false,
       "pts": 10
     },
     {
@@ -532,6 +524,7 @@
       "name": "50 MW Green",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -2,
+      "laserVisible": true,
       "pts": 20
     },
     {
@@ -539,6 +532,7 @@
       "name": "50 MW Blue",
       "movingAdsSpreadTierMod": 1,
       "hipSpreadTierMod": -1,
+      "laserVisible": true,
       "pts": 20
     },
     {
@@ -546,6 +540,7 @@
       "name": "120 MW Blue",
       "movingAdsSpreadTierMod": 1,
       "hipSpreadTierMod": -2,
+      "laserVisible": true,
       "pts": 30
     },
     {
@@ -553,30 +548,16 @@
       "name": "Combo Red",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -1,
-      "pts": 0,
-      "weaponPts": {
-        "p18": 20,
-        "es57": 20,
-        "m45a1": 20,
-        "ggh22": 20,
-        "m357trait": 20,
-        "vz61": 20
-      }
+      "laserVisible": false,
+      "pts": 20
     },
     {
       "id": "combo_green",
       "name": "Combo Green",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -2,
-      "pts": 0,
-      "weaponPts": {
-        "p18": 20,
-        "es57": 20,
-        "m45a1": 20,
-        "ggh22": 20,
-        "m357trait": 20,
-        "vz61": 20
-      }
+      "laserVisible": true,
+      "pts": 20
     }
   ],
   "LIGHTS": [
@@ -588,39 +569,26 @@
     {
       "id": "ads_taclight",
       "name": "Taclight - Aimed",
-      "movingAdsSpreadTierMod": 0,
-      "pts": 0,
-      "noEffect": true,
-      "weaponPts": {
-        "p18": 5,
-        "es57": 5,
-        "m45a1": 5,
-        "ggh22": 5,
-        "m357trait": 5,
-        "vz61": 5
-      }
+      "pts": 5,
+      "noEffect": true
     },
     {
       "id": "flashlight",
       "name": "Flashlight",
-      "movingAdsSpreadTierMod": 0,
-      "pts": 0,
+      "pts": 10,
       "hipSpreadDecayBoost": 0.15,
-      "weaponPts": {
-        "p18": 10,
-        "es57": 10,
-        "m45a1": 10,
-        "ggh22": 10,
-        "m357trait": 10,
-        "vz61": 10
+      "assumedFields": {
+        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
       }
     },
     {
       "id": "hip_taclight",
       "name": "Taclight - Hipfire",
-      "movingAdsSpreadTierMod": 0,
-      "pts": 0,
-      "hipSpreadDecayBoost": 0.15
+      "pts": 15,
+      "hipSpreadDecayBoost": 0.15,
+      "assumedFields": {
+        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
+      }
     },
     {
       "id": "range_finder",
@@ -1693,7 +1661,7 @@
         "lp_stubby",
         "canted_stubby",
         "cmpct_handstop",
-        "slim_angled",
+        "slim_angled_smg",
         "stipp_stubby"
       ],
       "laser": [
@@ -1739,7 +1707,7 @@
         "stipp_stubby",
         "lp_stubby",
         "cmpct_handstop",
-        "slim_angled"
+        "slim_angled_smg"
       ],
       "laser": [
         "50mw_violet",
@@ -1779,7 +1747,7 @@
         "alloy_vert",
         "ribbed_vert",
         "fold_stubby",
-        "slim_angled",
+        "slim_angled_smg",
         "6h64_vert",
         "ribbed_stubby",
         "canted_stubby",
@@ -1827,7 +1795,7 @@
         "alloy_vert",
         "ribbed_vert",
         "fold_stubby",
-        "slim_angled",
+        "slim_angled_smg",
         "6h64_vert",
         "ribbed_stubby",
         "canted_stubby",
@@ -1914,7 +1882,7 @@
         "canted_stubby",
         "stipp_stubby",
         "cmpct_handstop",
-        "slim_angled"
+        "slim_angled_smg"
       ],
       "laser": [
         "50mw_violet",
@@ -1960,7 +1928,7 @@
         "canted_stubby",
         "stipp_stubby",
         "cmpct_handstop",
-        "slim_angled"
+        "slim_angled_smg"
       ],
       "laser": [
         "50mw_violet",
@@ -1997,8 +1965,7 @@
       ],
       "barrelDef": "basic",
       "grip": [
-        "factory_angled",
-        "adj_angled",
+        "factory_angled_sl9",
         "fold_stubby",
         "lp_stubby",
         "ribbed_stubby",
@@ -2045,7 +2012,7 @@
         "fold_vert",
         "fold_stubby",
         "cmpct_handstop",
-        "slim_angled",
+        "slim_angled_smg",
         "alloy_vert",
         "ribbed_stubby",
         "ribbed_vert",
@@ -2670,7 +2637,7 @@
       ],
       "barrelDef": "basic",
       "grip": [
-        "factory_angled",
+        "factory_angled_lmr27",
         "fold_vert",
         "alloy_vert",
         "ribbed_vert",
@@ -3186,7 +3153,7 @@
       ],
       "barrelDef": "basic",
       "grip": [
-        "factory_angled",
+        "factory_angled_db12",
         "slim_handstop",
         "fold_vert",
         "alloy_vert",
@@ -3385,7 +3352,7 @@
         "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
-        "lp_stubby",
+        "stipp_stubby",
         "cmpct_handstop",
         "5mw_red",
         "5mw_green",
