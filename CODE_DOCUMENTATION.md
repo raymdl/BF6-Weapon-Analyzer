@@ -230,8 +230,8 @@ with their own DOM class names.
 | `resetAttsForWeapon(weapon)` | Alias for default loadout reset on weapon switch |
 | `validateAtts(weapon)` | Backwards-compatible alias retained for older page code |
 | `computeAttPts(weapon, atts, data)` | Sums attachment points across sight, muzzle, barrel, grip, laser, ammo, mag, and ergo |
-| `hasSelectedAssumedAtt(weapon, atts, data)` | Detects selected attachments flagged `assumed: true` |
-| `attDisplayName(id, data)` | Resolves an attachment ID to display text |
+| `hasSelectedAssumedAtt(atts, data)` | Detects selected attachments with assumed attachment or field-level modifier data |
+| `attDisplayName(a)` | Resolves an attachment object to display text, including the assumed-data marker |
 | `renderAttachmentSection(config)` | Builds a slot dropdown row using the shared slot metadata |
 
 The module caches attachment catalog lookup maps with a `WeakMap` keyed by the
@@ -526,9 +526,9 @@ legacy `validateAtts()` name still exists as a compatibility wrapper.
 Sums points across sight, muzzle, barrel, grip, laser, ammo, magazine, and ergo. Over-100 loadouts
 are marked with the `.over` class.
 
-Seven attachment stats are marked `assumed: true` and trigger a sidebar footnote when selected:
-Linear Compensator, Compensated Brake, Flash Compensator, Long Suppressor, Lightened
-Suppressor, Heavy Barrel, Heavy Extended Barrel.
+Attachment assumptions are tagged either with `assumed: true` for a whole attachment
+entry or with `assumedFields` for specific modifier fields. Both forms trigger the
+sidebar footnote when selected.
 
 ---
 
@@ -582,8 +582,9 @@ rate, measured return curve, and source used.
 ### 2 — Provenance not encoded in data objects *(open)*
 
 The distinction between source-backed, assumed, and screenshot-derived values is described
-in this document but not tagged in the data files themselves. Attachment entries use
-`assumed: true` for one category, but source/date metadata is absent elsewhere.
+in this document but not fully tagged in the data files themselves. Attachment entries can
+use `assumed: true` or field-level `assumedFields`, but source/date metadata is absent
+elsewhere.
 
 **Suggested fix:** Add lightweight provenance metadata (`source`, `sourceDate`,
 `derivedFromScreenshot`) where practical, especially on calibrated attachment effect values.
@@ -615,11 +616,11 @@ Mag Flare, Match Trigger, ADS Bolt.
 
 ### 5 — Assumed attachment stats need revisiting when datamined data arrives *(open)*
 
-The seven `assumed: true` attachments listed in the sidebar footnote are pending
-datamined confirmation. Values may be inaccurate.
+Attachment effects marked with `assumed: true` or `assumedFields` are pending datamined
+confirmation. Values may be inaccurate.
 
-**Action:** When updated data is available, clear `assumed: true` and update the
-effect fields and this document.
+**Action:** When updated data is available, clear `assumed: true` or the relevant
+`assumedFields` entries, then update the effect fields and this document.
 
 ---
 
@@ -659,7 +660,7 @@ Remaining test gaps:
 
 1. **Add Playwright visual smoke coverage.** Capture desktop, tablet, and mobile flows for the main app plus the two preview pages. This protects the responsive loadout overlay, Chart.js rendering, and recoil canvas from quiet regressions.
 2. **Validate recoil decay (note 1).** Pick one auto weapon, record post-burst recovery at known RPM, compare to model output, and document the measured curve.
-3. **Verify assumed attachment stats (note 5).** Block for the next reliable data drop; clear `assumed: true` as values become source-backed.
+3. **Verify assumed attachment stats (note 5).** Block for the next reliable data drop; clear `assumed: true` or field-level `assumedFields` as values become source-backed.
 4. **Improve `noEffect` attachment signaling (note 4).** Add a compact tooltip or legend only if user confusion shows up in testing.
 
 ### Longer-Term

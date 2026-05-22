@@ -13,3 +13,14 @@ TODO.md
 
 # Local data utilities.
 data/check_all.sh
+
+# Generated analysis/export artifacts.
+outputs/BF6 Actual Burst Shot Timestamps*.xlsx
+outputs/BF6 Weapon and Attachment Stats*.xlsx
+outputs/~$*.xlsx
+outputs/actual_shot_timestamps_raw.json
+outputs/ammo_sheets/
+sl9_recheck/
+
+# Local one-off export helpers.
+scripts/export_dmg.py

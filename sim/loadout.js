@@ -56,6 +56,10 @@ export function getAttPts(a) {
   return a.pts ?? 0;
 }
 
+function isAssumedAtt(a) {
+  return !!(a?.assumed || (a?.assumedFields && Object.keys(a.assumedFields).length));
+}
+
 export function computeAttPts(atts, weapon, data) {
   const wid = weapon?.id;
   if (!wid) return 0;
@@ -78,23 +82,23 @@ export function computeAttPts(atts, weapon, data) {
 }
 
 export function attDisplayName(a) {
-  return a?.assumed ? `${a.name}*` : a.name;
+  return isAssumedAtt(a) ? `${a.name}*` : a.name;
 }
 
 export function hasSelectedAssumedAtt(atts, data) {
   if (!atts) return false;
   const lookups = getLookups(data);
-  const slotSources = [
-    ['sight', lookups.SIGHTS, 'iron'],
-    ['muzzle', lookups.MUZZLES],
-    ['barrel', lookups.BARRELS],
-    ['grip', lookups.GRIPS],
-    ['laser', lookups.LASERS],
-    ['light', lookups.LIGHTS],
-    ['ammo', lookups.AMMO],
-    ['ergo', lookups.ERGOS],
+  const selected = [
+    lookups.SIGHTS[atts.sight ?? 'iron'],
+    lookups.MUZZLES[atts.muzzle],
+    lookups.BARRELS[atts.barrel],
+    lookups.GRIPS[atts.grip],
+    lookups.LASERS[atts.laser] ?? lookups.GRIPS[atts.laser] ?? lookups.LIGHTS[atts.laser],
+    lookups.LIGHTS[atts.light],
+    lookups.AMMO[atts.ammo],
+    lookups.ERGOS[atts.ergo],
   ];
-  return slotSources.some(([key, source, fallback]) => source[atts[key] ?? fallback]?.assumed);
+  return selected.some(isAssumedAtt);
 }
 
 export function updateAttTotal(containerId, atts, weapon, data) {
@@ -222,7 +226,7 @@ export function renderAttachmentSection({
       label,
       value: atts[key],
       options: visible.map(a => {
-        const pts = getAttPts(a, weapon.id);
+        const pts = getAttPts(a);
         const name = attDisplayName(a);
         return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect };
       }),
