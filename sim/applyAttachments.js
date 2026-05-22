@@ -16,7 +16,7 @@
  *     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
  *     BASE_HS_MULT, HP_HS_HIGH,
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
- *     ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
+ *     ADS_SPD_TIERS, SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
  *   });
  *
  *   // Then call freely:
@@ -33,7 +33,7 @@ let _ctx = {
   RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
   BASE_HS_MULT: {}, HP_HS_HIGH: new Set(),
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
-  ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], ADS_MOVE_TIERS: [],
+  ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], PRIMARY_SPRINT_REC_TIERS: [], SIDEARM_SPRINT_REC_TIERS: [], DEPLOY_TIME_TIERS: [], ADS_MOVE_TIERS: [],
 };
 
 function byId(items) {
@@ -68,7 +68,7 @@ export function applyAttachments(w, atts) {
     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
     BASE_HS_MULT, HP_HS_HIGH,
     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-    ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
+    ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
   } = _ctx;
 
   const muz = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
@@ -166,6 +166,9 @@ export function applyAttachments(w, atts) {
   const magAdsTimeTierShift       = magData?.adsTimeTierShift       ?? 0;
   const magSprintRecoveryTierShift = magData?.sprintRecoveryTierShift ?? 0;
   const magAdsMoveSpeedTierShift  = magData?.adsMoveSpeedTierShift  ?? 0;
+  const gripSprintRecoveryTierShift = grp.sprintRecoveryExcludeClasses?.includes(w.cls)
+    ? 0
+    : (grp.sprintRecoveryTierShift ?? 0);
   const magMag    = magData?.mag   ?? null;
   const magTacRld = magData?.tacRld ?? null;
 
@@ -179,20 +182,35 @@ export function applyAttachments(w, atts) {
   }
 
   // ── Tier index resolution ─────────────────────────────────────────────────────
-  // Clamp all tier indices to [0, 7] (8 tiers total, 0-based).
-  let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null;
+  // Clamp all tier indices to each stat table's 0-based bounds.
+  let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null, _deployTimeMs = null;
   if (wm) {
     const adsIdx = Math.max(0, Math.min(7,
       (wm.defAds - 1) + magAdsTimeTierShift - combinedAdsTimeTierMod));
-    const sprIdx = Math.max(0, Math.min(7,
-      (wm.defSpr - 1) + magSprintRecoveryTierShift + ergoSprintRecoveryTierShift));
+    const sprintRecTiers = wm.sprintRecoveryTierTable === 'sidearm'
+      ? (SIDEARM_SPRINT_REC_TIERS.length ? SIDEARM_SPRINT_REC_TIERS : SPRINT_REC_TIERS)
+      : (PRIMARY_SPRINT_REC_TIERS.length ? PRIMARY_SPRINT_REC_TIERS : SPRINT_REC_TIERS);
+    const sprIdx = Math.max(0, Math.min(sprintRecTiers.length - 1,
+      (wm.defSpr - 1) + magSprintRecoveryTierShift + gripSprintRecoveryTierShift + ergoSprintRecoveryTierShift));
     const amsIdx = Math.max(0, Math.min(7,
       (wm.defAms - 1) + magAdsMoveSpeedTierShift
       + (grp.adsMoveSpeedTierShift ?? 0)
       + (ammoType.adsMoveSpeedTierShift ?? 0)));
     _adsTimeMs       = ADS_SPD_TIERS[adsIdx];
-    _sprintRecoveryMs = SPRINT_REC_TIERS[sprIdx];
+    _sprintRecoveryMs = sprintRecTiers[sprIdx];
     _adsMoveSpeedMult = ADS_MOVE_TIERS[amsIdx];
+    if (w.deployT != null && DEPLOY_TIME_TIERS.length) {
+      const baseDeployMs = w.deployT * 1000;
+      let baseDeployIdx = 0;
+      for (let i = 1; i < DEPLOY_TIME_TIERS.length; i++) {
+        if (Math.abs(DEPLOY_TIME_TIERS[i] - baseDeployMs) < Math.abs(DEPLOY_TIME_TIERS[baseDeployIdx] - baseDeployMs)) {
+          baseDeployIdx = i;
+        }
+      }
+      const deployIdx = Math.max(0, Math.min(DEPLOY_TIME_TIERS.length - 1,
+        baseDeployIdx + magSprintRecoveryTierShift + gripSprintRecoveryTierShift));
+      _deployTimeMs = DEPLOY_TIME_TIERS[deployIdx];
+    }
   }
 
   // ── Label ─────────────────────────────────────────────────────────────────────
@@ -222,7 +240,7 @@ export function applyAttachments(w, atts) {
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
     _movingAdsMinSpreadDeg:  movingAdsMinSpreadDeg,
     _adsTimeTierMod:         combinedAdsTimeTierMod,
-    _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult,
+    _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs,
     _hsMult:                 hsMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
     rpm:         fireMode === 'burst' && burstRpm ? burstRpm : w.rpm,
@@ -237,6 +255,7 @@ export function applyAttachments(w, atts) {
       ? +(w.recoilIncAds * (bar.adsSpreadIncMult ?? 1)).toFixed(3)
       : null,
     bulletVel: w.bulletVel != null ? Math.round(w.bulletVel * bar.vMult) : null,
+    deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : w.deployT,
     mag:    magMag ?? w.mag,
     tacRld: magCatchTacRld != null ? +(magCatchTacRld / 1000).toFixed(3)
           : magTacRld      != null ? +(magTacRld      / 1000).toFixed(3)

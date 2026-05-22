@@ -19,8 +19,9 @@ const SUPPORTED_CLASSES = new Set([
   'DMR',
   'Sniper Rifle',
   'Shotgun',
+  'Sidearm',
 ]);
-const INTENTIONALLY_UNSUPPORTED_CLASSES = new Set(['Sidearm']);
+const INTENTIONALLY_UNSUPPORTED_CLASSES = new Set();
 
 const errors = [];
 const fail = message => errors.push(message);

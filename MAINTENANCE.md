@@ -191,6 +191,19 @@ If game mechanics change (not just data), edit the relevant module:
   3-round burst with `burstRpm: 830` and 33 ms of extra post-burst delay. This
   yields `burstBurstsPerMinute: 240.12729639809058` and an effective sustained
   fire rate of about 720 RPM while Burst Mode is selected.
+- **Sprint recovery tiers:** primary weapons use `PRIMARY_SPRINT_REC_TIERS`;
+  sidearms use `SIDEARM_SPRINT_REC_TIERS`. `WEAPON_MAG[weaponId].defSpr` stores
+  the workbook's adjusted base sprint recovery tier after the weapon-specific
+  tier adjustment. Magazine entries store the workbook's `Magazine Tier Modifier`
+  as `sprintRecoveryTierShift`; do not apply a universal `-1` adjustment.
+- **Deploy time tiers:** `DEPLOY_TIME_TIERS` is a placeholder universal scale
+  until full deploy data is published on sym.gg. The app maps each weapon's base
+  `deployT` to the closest deploy tier, then applies the selected magazine's
+  `sprintRecoveryTierShift` as the deploy-time tier modifier.
+- **Grip sprint/deploy modifiers:** normal `Slim Handstop`, `Adjustable Angled`,
+  `Slim Angled`, and `Full Angled` grips each apply `sprintRecoveryTierShift: -1`,
+  which also modifies placeholder deploy time. Class-specific SMG uses of those
+  same grip IDs are excluded via `sprintRecoveryExcludeClasses`.
 
 ---
 

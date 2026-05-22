@@ -37,7 +37,7 @@ const [W, _recoilDecay, _balance, _atts, _ammo] = await Promise.all([
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
         BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-        ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS } = _balance;
+        ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS } = _balance;
 const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 
 const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
@@ -123,7 +123,7 @@ setAttachmentContext({
   RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
   BASE_HS_MULT, HP_HS_HIGH,
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-  ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
+  ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
 });
 
 // ── DAMAGE HELPERS ────────────────────────────────────────────────────────────
@@ -1004,7 +1004,8 @@ function renderAttachmentStats(loadouts) {
   const metrics = [
     { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
-    { lbl: 'Sprint-to-Fire Time', val: w => w._sprintRecoveryMs,             unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
+    { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
+    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in seconds. Lower is faster.' },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel effects. Higher reduces travel time and lead.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
@@ -1045,7 +1046,7 @@ function renderAttachmentStats(loadouts) {
     if (vrVal !== 0) {
       const reduced = vrVal < 0;
       const tip = escAttr('Visual recoil from selected attachments. Reduced is better; increased is worse.');
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Visual Recoil</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Reduced' : 'Increased'}</div></div>`);
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Visual Recoil</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Decreased' : 'Increased'}</div></div>`);
     }
     if (!chips.length) return;
     rendered = true;
