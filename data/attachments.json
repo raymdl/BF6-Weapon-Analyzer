@@ -3602,6 +3602,7 @@
     "cz3a1": {
       "avail": [
         "mag_catch",
+        "burst_training",
         "buffer"
       ],
       "magCatchRld": {
@@ -3769,6 +3770,7 @@
     },
     "umg40": {
       "avail": [
+        "burst_training",
         "buffer"
       ]
     },

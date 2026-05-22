@@ -3280,6 +3280,7 @@
     "spreadMax": 6,
     "adsTime": 170,
     "fireMode": "auto",
+    "burstRounds": 3,
     "spreadDyn": {
       "ads": {
         "inc": 0.21,
