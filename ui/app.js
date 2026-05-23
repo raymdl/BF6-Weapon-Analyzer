@@ -160,10 +160,27 @@ function fmtTTK(ms) {
 }
 function maxRange(weapons) {
   const cls = weapons.filter(Boolean).map(w => w.cls);
-  if (cls.includes('Sniper Rifle')) return 275;
-  if (cls.includes('DMR')) return 130;
-  if (cls.includes('Shotgun')) return 55;
-  return 90;
+  return cls.includes('Sniper Rifle') ? 200 : 100;
+}
+function chartXAxis(maxRangeMeters) {
+  const step = maxRangeMeters === 200 ? 25 : 10;
+  return {
+    title: { display: true, text: 'Range (m)', color: '#7a8a8a', font: { size: 11 }, padding: { top: 4, bottom: 0 } },
+    ticks: { color: '#7a8a8a' },
+    grid: { color: 'rgba(40,48,48,0.6)' },
+    afterBuildTicks: scale => {
+      scale.ticks = scale.ticks.filter(t => {
+        const label = Number(scale.getLabelForValue(t.value));
+        return Number.isFinite(label) && label % step === 0;
+      });
+    },
+  };
+}
+function damageYMax(weapons) {
+  const cls = weapons.filter(Boolean).map(w => w.cls);
+  if (cls.some(c => c === 'Sniper Rifle' || c === 'Shotgun')) return 100;
+  if (cls.includes('DMR')) return 70;
+  return 40;
 }
 function btkRanges(w1, w2) {
   const cls = [w1, w2].filter(Boolean).map(w => w.cls);
@@ -533,7 +550,7 @@ function renderChart() {
           label: i => { const w = i.dataset._weapon; const btk = i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w, btk))})`; },
         } } },
         scales: {
-          x: { title: { display: true, text: 'Range (m)', color: '#7a8a8a', font: { size: 11 }, padding: { top: 4, bottom: 0 } }, ticks: { color: '#7a8a8a', maxTicksLimit: 10 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+          x: chartXAxis(mr),
           y: { min: 1, max: 9, title: { display: true, text: 'Bullets to Kill', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 1, precision: 0 }, grid: { color: 'rgba(40,48,48,0.6)' } },
         },
       },
@@ -571,7 +588,7 @@ function renderChart() {
           },
         } } },
         scales: {
-          x: { title: { display: true, text: 'Range (m)', color: '#7a8a8a', font: { size: 11 }, padding: { top: 4, bottom: 0 } }, ticks: { color: '#7a8a8a', maxTicksLimit: 10 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+          x: chartXAxis(mr),
           y: { min: 0, max: yMax, title: { display: true, text: showAds ? 'ADS + Time to Kill (ms)' : 'Time to Kill (ms)', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
         },
       },
@@ -596,8 +613,7 @@ function renderChart() {
   const datasets = [...threshDs];
   if (w1) datasets.push(buildDs(w1, '#c9a227', wLabel(w1)));
   if (w2) datasets.push(buildDs(w2, '#4d94d0', wLabel(w2)));
-  const maxDmg = Math.max(0, ...[w1, w2].filter(Boolean).flatMap(w => labels.map(r => w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r))));
-  const dmgYMax = maxDmg >= 50 ? 100 : 50;
+  const dmgYMax = damageYMax([w1, w2]);
   updateDmgChart(ctx, {
     type: 'line', data: { labels, datasets },
     options: {
@@ -611,7 +627,7 @@ function renderChart() {
         },
       } },
       scales: {
-        x: { title: { display: true, text: 'Range (m)', color: '#7a8a8a', font: { size: 11 }, padding: { top: 4, bottom: 0 } }, ticks: { color: '#7a8a8a', maxTicksLimit: 10 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+        x: chartXAxis(mr),
         y: { min: 0, max: dmgYMax, title: { display: true, text: 'Damage per shot', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a' }, grid: { color: 'rgba(40,48,48,0.6)' } },
       },
     },
