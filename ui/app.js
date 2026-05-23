@@ -160,7 +160,7 @@ function fmtTTK(ms) {
 }
 function maxRange(weapons) {
   const cls = weapons.filter(Boolean).map(w => w.cls);
-  return cls.includes('Sniper Rifle') ? 200 : 100;
+  return cls.includes('Sniper Rifle') ? 200 : 90;
 }
 function chartXAxis(maxRangeMeters) {
   const step = maxRangeMeters === 200 ? 25 : 10;
