@@ -33,6 +33,7 @@ let _ctx = {
   RECOIL_DEC_EXP:{},
   RECOIL_DEC_TEXP:{},
   compensationFn: () => 0,  // page provides; bloom stub returns 0
+  platformRecoilMultFn: () => 1,
 };
 
 export function setSimContext(updates) {
@@ -128,12 +129,16 @@ export function recoilVariation(group) {
  * In ADS the raw group amount is scaled so that attachment tier changes are
  * reflected through the ADSRecoilAmountMultiplier ladder.
  */
-export function selectedRecoilAmountFor(w) {
+export function selectedRecoilAmountBeforePlatformFor(w) {
   const g = recoilGroup(w);
   if (_ctx.aimState !== 'ads') return recoilAmount(g);
   const adsBase = recoilAmount(baseRecoilGroup(w));
   const attachmentMult = adsBase > 0 ? (w.recoilV ?? adsBase) / adsBase : 1;
   return recoilAmount(g) * attachmentMult;
+}
+
+export function selectedRecoilAmountFor(w) {
+  return selectedRecoilAmountBeforePlatformFor(w) * _ctx.platformRecoilMultFn();
 }
 
 /** Recoil directional variation for the current weapon + aim state. */

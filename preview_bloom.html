@@ -440,6 +440,12 @@
   <label>Shots <input id="shotCountInput" class="compact-input" type="text" inputmode="numeric" value="20"></label>
   <button id="redrawBtn" type="button">Redraw Reference</button>
   <button id="resetBtn" type="button">Reset Reference</button>
+  <label>Platform:
+    <span class="segmented" id="platformControls">
+      <button type="button" class="on" data-platform="pc">PC</button>
+      <button type="button" data-platform="console">Console</button>
+    </span>
+  </label>
   <span id="loadoutStats" class="loadout-stats"></span>
 </div>
 
@@ -576,6 +582,7 @@ const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
         WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
 const { AMMO, WEAPON_AMMO } = _ammo;
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
+const CONSOLE_RECOIL_MULT = 0.89;
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
   AMMO,
@@ -596,10 +603,12 @@ const blankAtts = Loadout.blankAtts;
 let selectedAtts = blankAtts();
 let aimState = 'ads';
 let stanceState = 'stand';
+let platformState = 'pc';
 setSimContext({
   aimState, stanceState,
   RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP,
   compensationFn: () => 0,
+  platformRecoilMultFn: selectedPlatformRecoilMult,
 });
 
 const DEFAULT_RC_H = 5;
@@ -627,6 +636,10 @@ function classShort(cls) {
 
 function spreadKey() {
   return `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
+}
+
+function selectedPlatformRecoilMult() {
+  return platformState === 'console' ? CONSOLE_RECOIL_MULT : 1;
 }
 
 function rawSelectedWeapon() {
@@ -979,6 +992,13 @@ document.querySelectorAll('[data-stance]').forEach(btn => {
     setSimContext({ stanceState });
     document.querySelectorAll('[data-stance]').forEach(x => x.classList.toggle('on', x === btn));
     renderSidebar();
+    redraw();
+  });
+});
+document.querySelectorAll('[data-platform]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    platformState = btn.dataset.platform === 'console' ? 'console' : 'pc';
+    document.querySelectorAll('[data-platform]').forEach(x => x.classList.toggle('on', x === btn));
     redraw();
   });
 });

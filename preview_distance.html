@@ -491,6 +491,11 @@
     <input id="compensationInput" class="compact-input" type="number" min="0" max="125" step="1" value="85">
     <span class="readout">%</span>
   </span>
+  <span class="control-label">Platform:</span>
+  <span class="segmented">
+    <button id="platformPc" class="on" type="button" onclick="setPlatform('pc')">PC</button>
+    <button id="platformConsole" type="button" onclick="setPlatform('console')">Console</button>
+  </span>
   <span id="compensationStats" class="loadout-stats"></span>
 </div>
 
@@ -606,6 +611,7 @@ const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
         WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
 const { AMMO, WEAPON_AMMO } = _ammo;
 const { RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP } = _recoilDecay;
+const CONSOLE_RECOIL_MULT = 0.89;
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
   AMMO,
@@ -626,10 +632,12 @@ const blankAtts = Loadout.blankAtts;
 let selectedAtts = blankAtts();
 let aimState = 'ads';
 let stanceState = 'stand';
+let platformState = 'pc';
 setSimContext({
   aimState, stanceState,
   RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP,
   compensationFn: selectedCompensationLevel,
+  platformRecoilMultFn: selectedPlatformRecoilMult,
 });
 let refSeed = 0;
 const viewLayers = { spray: true, path: false, bloom: false };
@@ -670,6 +678,10 @@ function classShort(cls) {
 
 function spreadKey() {
   return `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
+}
+
+function selectedPlatformRecoilMult() {
+  return platformState === 'console' ? CONSOLE_RECOIL_MULT : 1;
 }
 
 
@@ -1206,6 +1218,13 @@ function setRecoilControl(value) {
   redraw();
 }
 
+function setPlatform(value) {
+  platformState = value === 'console' ? 'console' : 'pc';
+  document.getElementById('platformPc').classList.toggle('on', platformState === 'pc');
+  document.getElementById('platformConsole').classList.toggle('on', platformState === 'console');
+  redraw();
+}
+
 function selectedCompensationLevel() {
   return recoilControl ? compensationLevel : 0;
 }
@@ -1352,7 +1371,7 @@ init();
 // Bridge to window so inline onclick="…" attributes can resolve these (module scope is not global)
 Object.assign(window, {
   adjustPanelZoom, panPanelView, redrawRandom, resetPanelView,
-  setAim, setBloomDisplayMode, setRecoilControl, setStance, setTargetAimPoint, toggleViewLayer,
+  setAim, setBloomDisplayMode, setPlatform, setRecoilControl, setStance, setTargetAimPoint, toggleViewLayer,
 });
 </script>
 </body>

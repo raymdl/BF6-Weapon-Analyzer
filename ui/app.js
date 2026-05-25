@@ -1,7 +1,7 @@
 import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
-  selectedRecoilAmountFor, selectedRecoilVariationFor,
+  selectedRecoilAmountFor, selectedRecoilAmountBeforePlatformFor, selectedRecoilVariationFor,
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
   simulateBloom, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
 } from '../sim/core.js';
@@ -88,6 +88,7 @@ const BLOOM_FALLBACK_SHOTS = [1, 2, 3, 5, 8, 13, 20];
 const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
 const SPREAD_BAR_SCALE = 9.1;
 const RECOIL_BAR_SCALE = 3;
+const CONSOLE_RECOIL_MULT = 0.89;
 
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 
@@ -101,6 +102,7 @@ const state = {
   recoil: {
     aim: 'ads', stance: 'stand',
     layers: { scatter: true, spray: true, path: false, bloom: false, cone: false },
+    platform: 'pc',
     control: false,
     compensationLevel: DEFAULT_COMPENSATION,
     refSeed: 0,
@@ -116,6 +118,7 @@ setSimContext({
   aimState: 'ads', stanceState: 'stand',
   RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP,
   compensationFn: selectedCompensationLevel,
+  platformRecoilMultFn: selectedPlatformRecoilMult,
 });
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
@@ -216,6 +219,9 @@ function defaultAppliedWeapon(weapon) {
 
 function selectedCompensationLevel() {
   return state.recoil.control ? state.recoil.compensationLevel : 0;
+}
+function selectedPlatformRecoilMult() {
+  return state.recoil.platform === 'console' ? CONSOLE_RECOIL_MULT : 1;
 }
 
 // ── SIDEBAR ───────────────────────────────────────────────────────────────────
@@ -743,6 +749,10 @@ function setRecoilStance(stance) {
   setSimContext({ stanceState: state.recoil.stance });
   renderRecoil();
 }
+function setRecoilPlatform(platform) {
+  state.recoil.platform = platform === 'console' ? 'console' : 'pc';
+  renderRecoil();
+}
 function randomizeRecoilReference() {
   state.recoil.refSeed = (Math.random() * 0x100000000) >>> 0;
   renderRecoil();
@@ -1099,6 +1109,8 @@ function renderRecoil() {
   document.getElementById('rcAimHip')?.classList.toggle('on', aim === 'hip');
   document.getElementById('rcStanceStand')?.classList.toggle('on', stance === 'stand');
   document.getElementById('rcStanceMove')?.classList.toggle('on', stance === 'move');
+  document.getElementById('rcPlatformPc')?.classList.toggle('on', state.recoil.platform === 'pc');
+  document.getElementById('rcPlatformConsole')?.classList.toggle('on', state.recoil.platform === 'console');
   syncCompensationControls();
 
   const shotsInput = document.getElementById('rcBloomShotsInput');
@@ -1189,7 +1201,7 @@ function renderRecoil() {
       const ttHtml = (selW, atts, colCls) => {
         if (!selW || !atts) return '';
         const mk = o => ({ ...defaultAttsForWeapon(selW), ...o });
-        const ra = w => selectedRecoilAmountFor(w);
+        const ra = w => selectedRecoilAmountBeforePlatformFor(w);
         const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
         const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
         const ammoObj = ATT_BY_ID.AMMO[atts.ammo ?? 'standard'] ?? AMMO[0];
@@ -1208,7 +1220,12 @@ function renderRecoil() {
           try_(ammoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id });
         if (ergoObj.id !== 'none' || (ergoObj.adsRecoilTierMod ?? 0) !== 0)
           try_(ergoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id, ergo: ergoObj.id });
-        const withAtts = prev, comp = +(withAtts * compPct).toFixed(2), effVal = +(withAtts - comp).toFixed(2);
+        if (state.recoil.platform === 'console') {
+          const after = +(prev * CONSOLE_RECOIL_MULT).toFixed(2), d = +(after - prev).toFixed(2);
+          lines.push(`<div class="rc-tt-row"><span>Console Recoil Reduction</span><span class="rc-tt-neg">−${Math.abs(d).toFixed(2)}°</span></div>`);
+          prev = after;
+        }
+        const comp = +(prev * compPct).toFixed(2), effVal = +(prev - comp).toFixed(2);
         if (comp >= 0.005) lines.push(`<div class="rc-tt-row"><span>Recoil Compensation (${Math.round(compPct * 100)}%)</span><span class="rc-tt-neg">−${comp.toFixed(2)}°</span></div>`);
         const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${selW.name}</div>` : '';
         const effLbl = aim === 'hip' ? 'Effective Hipfire Recoil' : 'Effective ADS Recoil';
@@ -1371,6 +1388,8 @@ function bindEvents() {
   document.getElementById('rcStanceMove').addEventListener('click', () => setRecoilStance('move'));
   document.getElementById('rcControlOff').addEventListener('click', () => setRecoilControl(false));
   document.getElementById('rcControlOn').addEventListener('click', () => setRecoilControl(true));
+  document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
+  document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
 
   // Recoil overlays
   document.getElementById('rcModeScatter').addEventListener('click', () => toggleRecoilLayer('scatter'));
