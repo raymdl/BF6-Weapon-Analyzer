@@ -202,7 +202,7 @@
       "name": "Heavy",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.9,
+      "adsSpreadIncMult": 0.67,
       "assumed": true,
       "pts": 10,
       "velMult": 1
@@ -212,7 +212,7 @@
       "name": "Heavy Extended",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.9,
+      "adsSpreadIncMult": 0.67,
       "assumed": true,
       "pts": 10,
       "velMult": 1.25
