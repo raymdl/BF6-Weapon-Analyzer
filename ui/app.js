@@ -1027,6 +1027,7 @@ function renderAttachmentStats(loadouts) {
     const dyn = w.spreadDyn?.hip;
     return (dyn?.firingOffset ?? 3.31) * (1 + (w._hipSpreadDecayBoost ?? 0));
   };
+  const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
   const metrics = [
     { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
@@ -1037,6 +1038,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
     { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.' },
     { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after ADS-only variation modifiers. Lower is more consistent.' },
+    { lbl: 'ADS Recoil Recovery', val: adsRecoilDecay,                       unit: 'x',   dec: 2, higherBetter: true, tooltip: 'ADS recoil recovery/decay multiplier applied to the weapon recoil decay factor. Higher returns to center faster.' },
     { lbl: 'ADS Spread/Shot',     val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS bloom/spread increase per shot after ADS-only spread modifiers. Lower builds bloom more slowly.' },
     { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS bloom/spread recovery per second while firing after muzzle effects. Higher clears bloom faster.' },
     { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire bloom/spread recovery per second while firing after light effects. Higher clears bloom faster.' },

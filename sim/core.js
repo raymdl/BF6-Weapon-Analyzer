@@ -286,7 +286,8 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
   const rng = mulberry32((whash(w.id) ^ seed) >>> 0);
   const pts  = [{ x: 0, y: 0 }];
   const group = recoilGroup(w);
-  const decF    = group.decFactor  ?? RECOIL_DEC[w.id]     ?? 72;
+  const baseDecF = group.decFactor  ?? RECOIL_DEC[w.id]     ?? 72;
+  const decF    = baseDecF * (_ctx.aimState === 'ads' ? (w._adsRecoilDecayMult ?? 1) : 1);
   const decExp  = group.decExp     ?? RECOIL_DEC_EXP[w.id]  ?? 1;
   const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
   const decOffset = group.decOffset ?? 0.06;
