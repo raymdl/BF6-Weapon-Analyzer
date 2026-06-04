@@ -68,8 +68,12 @@ export function computeAttPts(atts, weapon, data) {
   const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
   const ergoPts = lookups.ERGOS[atts.ergo ?? 'none']?.pts ?? 0;
   // Combined slot: atts.laser may hold a grip or light ID
-  const laserGrip  = lookups.GRIPS?.[atts.laser] ?? null;
-  const laserLight = !laserGrip ? (lookups.LIGHTS?.[atts.laser] ?? null) : null;
+  const laserGrip  = !lookups.LASERS[atts.laser] && !!lookups.GRIPS?.[atts.laser]
+    ? lookups.GRIPS[atts.laser]
+    : null;
+  const laserLight = !lookups.LASERS[atts.laser] && !laserGrip && !!lookups.LIGHTS?.[atts.laser]
+    ? lookups.LIGHTS[atts.laser]
+    : null;
   return getAttPts(lookups.SIGHTS[atts.sight ?? 'iron'])
     + getAttPts(lookups.MUZZLES[atts.muzzle])
     + getAttPts(lookups.BARRELS[atts.barrel])
