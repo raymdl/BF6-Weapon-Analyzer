@@ -103,7 +103,7 @@
     },
     {
       "id": "flash_comp",
-      "name": "Flash Compensator",
+      "name": "Flash Comp",
       "adsRecoilTierMod": 0,
       "adsRecoilVariationMult": 1,
       "adsRecoilDecayMult": 1.1,
