@@ -131,7 +131,7 @@ reads. Omit a field (or set to neutral) if the attachment has no effect there.
 | Field | Type | Neutral | Effect |
 |---|---|---|---|
 | `adsRecoilTierMod` | int | `0` | Shifts ADS recoil amount tier (neg = less recoil) |
-| `adsRecoilVariationMult` | float | `1` | Multiplies recoil directional variation |
+| `adsRecoilVariationTierMod` | int | `0` | Shifts ADS recoil variation tier (pos = less variation, via per-weapon `dirVarMult`) |
 | `hipSpreadTierMod` | int | `0` | Shifts hip spread tier (pos = worse) |
 | `adsSpreadIncMult` | float | `1` | Multiplies ADS bloom-per-shot (`recoilIncAds`) |
 | `adsSpreadDecayBoost` | float | `0` | Extra ADS bloom decay coefficient |
@@ -179,7 +179,8 @@ If game mechanics change (not just data), edit the relevant module:
 ## Known Follow-Up Notes
 
 - **Burst ergos:** `Burst Training` and `Burst Mode` both switch the weapon into
-  burst fire and apply `adsRecoilVariationMult: 0.77`. `Burst Mode` costs 10
+  burst fire and apply `adsRecoilVariationTierMod: 3` (3 tiers of the weapon's
+  own `dirVarMult`, per SheetOnMyFace's tier-system finding). `Burst Mode` costs 10
   points. Burst size and cadence are weapon-specific and should live on the
   weapon record. GRT-BC uses an internal `grtbc_burst_mode` entry with the same
   visible name because only GRT-BC's Burst Mode also applies a 1-tier ADS recoil

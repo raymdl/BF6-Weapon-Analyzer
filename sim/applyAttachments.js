@@ -98,11 +98,16 @@ export function applyAttachments(w, atts) {
   const adsRecoilPerShot       = +(w.recoilV * Math.pow(mult, totalAdsRecoilTierMod)).toFixed(3);
   const adsRecoilReductionPct  = +(100 * (1 - Math.pow(mult, totalAdsRecoilTierMod))).toFixed(1);
 
-  // ADS-only multiplier on ADSRecoilDirectionVariation-derived recoilVar
-  const adsRecoilVariation = +(w.recoilVar
-    * (muz.adsRecoilVariationMult ?? 1)
-    * (grp.adsRecoilVariationMult ?? 1)
-    * (ergoData.adsRecoilVariationMult ?? 1)).toFixed(3);
+  // ADS recoil variation tier ladder (same scheme as recoil amount):
+  // effective = ADSRecoilDirectionVariation × ADSRecoilDirectionVariationMultiplier
+  //             ^ (ADSRecoilDirectionVariationMultiplierExponent + sum of tier mods)
+  // The multiplier and baked-in exponent are per-weapon (recoil.ads group).
+  const totalAdsVarTierMod = (muz.adsRecoilVariationTierMod ?? 0)
+    + (grp.adsRecoilVariationTierMod ?? 0)
+    + (ergoData.adsRecoilVariationTierMod ?? 0);
+  const adsVarGroup = w.recoil?.ads;
+  const adsRecoilVariation = +((adsVarGroup?.dirVar ?? w.recoilVar ?? 0)
+    * Math.pow(adsVarGroup?.dirVarMult ?? 1, (adsVarGroup?.dirVarExp ?? 0) + totalAdsVarTierMod)).toFixed(3);
 
   // ── Display tags ─────────────────────────────────────────────────────────────
   const tags = [muz, bar, grp, las].filter(a => a.id !== 'none').map(a => a.name);
@@ -183,14 +188,14 @@ export function applyAttachments(w, atts) {
   // Clamp all tier indices to each stat table's 0-based bounds.
   let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null, _deployTimeMs = null;
   if (wm) {
-    const adsIdx = Math.max(0, Math.min(7,
+    const adsIdx = Math.max(0, Math.min(ADS_SPD_TIERS.length - 1,
       (wm.defAds - 1) + magAdsTimeTierShift - combinedAdsTimeTierMod));
     const sprintRecTiers = wm.sprintRecoveryTierTable === 'sidearm'
       ? (SIDEARM_SPRINT_REC_TIERS.length ? SIDEARM_SPRINT_REC_TIERS : SPRINT_REC_TIERS)
       : (PRIMARY_SPRINT_REC_TIERS.length ? PRIMARY_SPRINT_REC_TIERS : SPRINT_REC_TIERS);
     const sprIdx = Math.max(0, Math.min(sprintRecTiers.length - 1,
       (wm.defSpr - 1) + magSprintRecoveryTierShift + gripSprintRecoveryTierShift + ergoSprintRecoveryTierShift));
-    const amsIdx = Math.max(0, Math.min(7,
+    const amsIdx = Math.max(0, Math.min(ADS_MOVE_TIERS.length - 1,
       (wm.defAms - 1) + magAdsMoveSpeedTierShift
       + (grp.adsMoveSpeedTierShift ?? 0)
       + (ammoType.adsMoveSpeedTierShift ?? 0)));

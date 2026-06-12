@@ -2,7 +2,8 @@ import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilAmountBeforePlatformFor, selectedRecoilVariationFor,
-  spreadBounds, spreadDynamics, selectedSpreadIncFor,
+  spreadBounds, selectedSpreadIncFor,
+  spreadRecoveries, applySpreadRecovery,
   simulateBloom, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
@@ -10,15 +11,27 @@ import * as Loadout from '../sim/loadout.js';
 
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
 
-const _v = Date.now();
+async function fetchJson(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
+  return r;
+}
+
+let W, _recoilDecay, _balance, _atts, _ammo;
 let _dataLastModified = null;
-const [W, _recoilDecay, _balance, _atts, _ammo] = await Promise.all([
-  fetch(`./data/weapons.json?v=${_v}`).then(r => { _dataLastModified = r.headers.get('Last-Modified'); return r.json(); }),
-  fetch(`./data/recoil_decay.json?v=${_v}`).then(r => r.json()),
-  fetch(`./data/balance_tables.json?v=${_v}`).then(r => r.json()),
-  fetch(`./data/attachments.json?v=${_v}`).then(r => r.json()),
-  fetch(`./data/ammo.json?v=${_v}`).then(r => r.json()),
-]);
+try {
+  [W, _recoilDecay, _balance, _atts, _ammo] = await Promise.all([
+    fetchJson('./data/weapons.json').then(r => { _dataLastModified = r.headers.get('Last-Modified'); return r.json(); }),
+    fetchJson('./data/recoil_decay.json').then(r => r.json()),
+    fetchJson('./data/balance_tables.json').then(r => r.json()),
+    fetchJson('./data/attachments.json').then(r => r.json()),
+    fetchJson('./data/ammo.json').then(r => r.json()),
+  ]);
+} catch (err) {
+  document.body.insertAdjacentHTML('beforeend',
+    '<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0e0e;color:#e05555;font-family:sans-serif;font-size:1rem">Failed to load weapon data. Please reload the page.</div>');
+  throw err;
+}
 
 // Update header date from the data file's Last-Modified header (set by GitHub Pages
 // from the file's last commit date — updates automatically on every data push).
@@ -382,7 +395,6 @@ function renderOverview() {
 
   const grid = document.getElementById('sGrid');
   grid.innerHTML = '';
-  const primary = w1 || w2;
   const fields = [
     { lbl: 'Base Dmg',    compute: w => getDmg(w, 0),                    unit: '',    fmt: v => v.toFixed(1),                       higherBetter: true,
       tooltip: 'Damage dealt by one body shot at 0m before range falloff.' },
@@ -402,7 +414,7 @@ function renderOverview() {
     { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true, group: 'mobility',
       tooltip: 'Movement speed multiplier while aiming down sights. Can be affected by magazine, grip, and ammo selections.' },
     { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
-      tooltip: 'Time to equip/switch to the weapon in seconds. Lower is faster. Attachment effects are assumed placeholders until full attachment data is published.' },
+      tooltip: 'Time to equip/switch to the weapon in milliseconds. Lower is faster. Attachment effects are assumed placeholders until full attachment data is published.' },
     { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true,
       tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
@@ -418,7 +430,7 @@ function renderOverview() {
       noDiff: true,
       tooltip: 'Distance at which you are spotted in the 3D world and on the minimap while firing. "–" means you are never 3D spotted.' },
   ];
-  if (primary.pellets) fields.splice(4, 0, { lbl: 'Pellets', k: 'pellets', unit: '', fmt: v => v,
+  if (w1?.pellets || w2?.pellets) fields.splice(4, 0, { lbl: 'Pellets', k: 'pellets', unit: '', fmt: v => v ?? '—',
     tooltip: 'Number of pellets fired per shot. Shotgun damage is pellet damage multiplied by this count.' });
 
   fields.forEach(f => {
@@ -491,36 +503,23 @@ function updateDmgChart(ctx, config) {
 }
 
 function registerTooltipPositioners() {
-  if (!Chart.Tooltip.positioners.smartFloat) {
-    Chart.Tooltip.positioners.smartFloat = function(elements, eventPos) {
-      const ca = this.chart.chartArea;
-      if (!ca) return false;
-      const ys = elements.map(e => e.element.y);
-      const minY = ys.length ? Math.min(...ys) : (ca.top + ca.bottom) / 2;
-      const maxY = ys.length ? Math.max(...ys) : (ca.top + ca.bottom) / 2;
-      const half = 48, gap = 8;
-      let y = minY - gap - half;
-      if (y < ca.top + half) y = maxY + gap + half;
-      y = Math.min(Math.max(y, ca.top + half), ca.bottom - half);
-      return { x: Math.min(Math.max(eventPos.x, ca.left), ca.right), y };
-    };
-  }
-  if (!Chart.Tooltip.positioners.smartFloatFiltered) {
-    Chart.Tooltip.positioners.smartFloatFiltered = function(elements, eventPos) {
-      const ca = this.chart.chartArea;
-      if (!ca) return false;
-      const weaponEls = elements.filter(el => !this.chart.data.datasets[el.datasetIndex]?.borderDash);
-      const src = weaponEls.length ? weaponEls : elements;
-      const ys = src.map(e => e.element.y);
-      const minY = ys.length ? Math.min(...ys) : (ca.top + ca.bottom) / 2;
-      const maxY = ys.length ? Math.max(...ys) : (ca.top + ca.bottom) / 2;
-      const half = 48, gap = 8;
-      let y = minY - gap - half;
-      if (y < ca.top + half) y = maxY + gap + half;
-      y = Math.min(Math.max(y, ca.top + half), ca.bottom - half);
-      return { x: Math.min(Math.max(eventPos.x, ca.left), ca.right), y };
-    };
-  }
+  if (Chart.Tooltip.positioners.smartFloat) return;
+  // Positions the tooltip near the weapon lines, ignoring dashed datasets
+  // (BTK baselines and damage-threshold lines).
+  Chart.Tooltip.positioners.smartFloat = function(elements, eventPos) {
+    const ca = this.chart.chartArea;
+    if (!ca) return false;
+    const weaponEls = elements.filter(el => !this.chart.data.datasets[el.datasetIndex]?.borderDash);
+    const src = weaponEls.length ? weaponEls : elements;
+    const ys = src.map(e => e.element.y);
+    const minY = ys.length ? Math.min(...ys) : (ca.top + ca.bottom) / 2;
+    const maxY = ys.length ? Math.max(...ys) : (ca.top + ca.bottom) / 2;
+    const half = 48, gap = 8;
+    let y = minY - gap - half;
+    if (y < ca.top + half) y = maxY + gap + half;
+    y = Math.min(Math.max(y, ca.top + half), ca.bottom - half);
+    return { x: Math.min(Math.max(eventPos.x, ca.left), ca.right), y };
+  };
 }
 
 function renderChart() {
@@ -625,7 +624,7 @@ function renderChart() {
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
       layout: { padding: { bottom: 0 } },
-      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, position: 'smartFloatFiltered', yAlign: 'center', caretSize: 0,
+      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, position: 'smartFloat', yAlign: 'center', caretSize: 0,
         filter: i => !i.dataset.borderDash,
         callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
@@ -790,22 +789,11 @@ function signedOppositeDegrees(deg) {
 }
 
 function selectedEffectiveSpreadMax(w) {
-  const dyn = spreadDynamics(w);
   const [baseline, sMax] = spreadBounds(w);
   const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return baseline;
-  const firingCoef = dyn.firingCoef ?? 0, firingExp = dyn.firingExp ?? 1;
-  const firingOffset = (dyn.firingOffset ?? 0) * (1 + (state.recoil.aim === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : (w._hipSpreadDecayBoost ?? 0)));
-  const notFiringCoef = dyn.notFiringCoef ?? firingCoef;
-  const notFiringExp = dyn.notFiringExp ?? firingExp;
-  const notFiringOffset = dyn.notFiringOffset ?? firingOffset;
-  const dt = 1 / 60;
+  const { firing, notFiring } = spreadRecoveries(w);
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
-  const applyRecovery = (s, seconds, coef, exp_, offset) => {
-    let rem = seconds;
-    while (rem > 1e-12) { const step = Math.min(dt, rem); s = clamp(s - step * (coef * Math.pow(Math.max(s - baseline, 0), exp_) + offset)); rem -= step; }
-    return s;
-  };
   let s = baseline;
   for (let i = 0; i < SPREAD_EFFECTIVE_MAX_SHOTS; i++) {
     s = clamp(s + sInc);
@@ -814,10 +802,10 @@ function selectedEffectiveSpreadMax(w) {
     if (isBurstGapAfter(w, shotIdx)) {
       const firingTime = Math.min(60 / (w.rpm ?? 600), T);
       const notFiringTime = Math.max(0, T - firingTime);
-      s = applyRecovery(s, firingTime, firingCoef, firingExp, firingOffset);
-      s = applyRecovery(s, notFiringTime, notFiringCoef, notFiringExp, notFiringOffset);
+      s = applySpreadRecovery(s, firingTime, firing, baseline, sMax);
+      s = applySpreadRecovery(s, notFiringTime, notFiring, baseline, sMax);
     } else {
-      s = applyRecovery(s, T, firingCoef, firingExp, firingOffset);
+      s = applySpreadRecovery(s, T, firing, baseline, sMax);
     }
   }
   return +s.toFixed(3);
@@ -866,8 +854,6 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   const cols = ['#c9a227', '#4d94d0'];
   const drawOrder = [weapon1, weapon2].filter(Boolean);
   const spreadBubbleIdxs = getBloomBulletIdxs(N);
-  window._spreadBubbleIdxs = spreadBubbleIdxs;
-  window._cloudRuns = CLOUD_RUNS;
 
   // Pass 0 — Scatter cloud
   if (layers.scatter) drawOrder.forEach(w => {
@@ -1008,7 +994,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   });
 
   ctx.restore();
-  return { xMin, xMax, yMin, yMax };
+  return { xMin, xMax, yMin, yMax, spreadBubbleIdxs };
 }
 
 function renderAttachmentStats(loadouts) {
@@ -1032,7 +1018,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
     { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
-    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in seconds. Lower is faster. Attachment effects are assumed placeholders until full attachment data is published.' },
+    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds. Lower is faster. Attachment effects are assumed placeholders until full attachment data is published.' },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel effects. Higher reduces travel time and lead.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
@@ -1131,7 +1117,7 @@ function renderRecoil() {
       layers.cone    ? 'cone' : null,
     ].filter(Boolean).join(' + ');
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
-    const bloomNote = layers.bloom ? ` Bubbles = potential spread on bullets ${(window._spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
+    const bloomNote = layers.bloom ? ` Bubbles = potential spread on bullets ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = bloom envelope across all shots.' : '';
     noteEl.textContent = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${bloomNote}${coneNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
   }
@@ -1159,18 +1145,25 @@ function renderRecoil() {
         if (aim === 'ads') {
           const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
           const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
-          const baseVar = selW.recoilVar ?? 0;
+          const ergo = ATT_BY_ID.ERGOS[atts.ergo ?? 'none'] ?? ERGOS[0];
+          // Tier ladder: dirVar × dirVarMult ^ (dirVarExp + attachment tier mods)
+          const adsG = selW.recoil?.ads;
+          const varRaw  = adsG?.dirVar ?? selW.recoilVar ?? 0;
+          const varMult = adsG?.dirVarMult ?? 1;
+          let varTiers  = adsG?.dirVarExp ?? 0;
+          const baseVar = +(varRaw * Math.pow(varMult, varTiers)).toFixed(2);
           varLines.push(`<div class="rc-tt-row"><span>Base Weapon Variation</span><span>${baseVar.toFixed(2)}°</span></div>`);
           let prev = baseVar;
-          if ((muz.adsRecoilVariationMult ?? 1) !== 1) {
-            const after = +(prev * muz.adsRecoilVariationMult).toFixed(2), d = +(after - prev).toFixed(2);
-            if (Math.abs(d) >= 0.005) varLines.push(`<div class="rc-tt-row"><span>${muz.name}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`);
+          const varStep = (lbl, tierMod) => {
+            if (!tierMod) return;
+            varTiers += tierMod;
+            const after = +(varRaw * Math.pow(varMult, varTiers)).toFixed(2), d = +(after - prev).toFixed(2);
+            if (Math.abs(d) >= 0.005) varLines.push(`<div class="rc-tt-row"><span>${lbl}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`);
             prev = after;
-          }
-          if ((grp.adsRecoilVariationMult ?? 1) !== 1) {
-            const after = +(prev * grp.adsRecoilVariationMult).toFixed(2), d = +(after - prev).toFixed(2);
-            if (Math.abs(d) >= 0.005) varLines.push(`<div class="rc-tt-row"><span>${grp.name}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`);
-          }
+          };
+          varStep(muz.name, muz.adsRecoilVariationTierMod ?? 0);
+          varStep(grp.name, grp.adsRecoilVariationTierMod ?? 0);
+          varStep(ergo.name, ergo.adsRecoilVariationTierMod ?? 0);
         }
         const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${selW.name}</div>` : '';
         const effVar = selectedRecoilVariationFor(w);
@@ -1414,7 +1407,6 @@ function bindEvents() {
   // Inputs
   document.getElementById('rcBloomShotsInput')?.addEventListener('input', renderRecoil);
   document.getElementById('rcShotCountInput')?.addEventListener('change', syncRecoilShotCount);
-  document.getElementById('rcShotCountInput')?.addEventListener('input', syncRecoilShotCount);
   document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));
   document.getElementById('rcCompRange')?.addEventListener('input', () => syncCompensationLevel('range'));
 }

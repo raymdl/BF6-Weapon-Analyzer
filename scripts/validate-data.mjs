@@ -87,6 +87,26 @@ for (const [weaponId, weaponAtts] of Object.entries(attachments.WEAPON_ATTS)) {
   }
 }
 
+// Every supported non-sidearm weapon must declare each attachment slot.
+// An explicit empty array means the weapon deliberately takes nothing in that
+// slot (e.g. USG-90 has no grip rail); an absent key means forgotten data.
+// Light (and for VZ.61-style weapons, grip) options live in the laser slot
+// when the combined-slot flags are set. The DB-12 legitimately has no light slot.
+const LIGHT_SLOT_EXEMPT = new Set(['db12']);
+const REQUIRED_ATT_SLOTS = ['muzzle', 'barrel', 'laser', 'light', 'grip'];
+for (const weapon of weapons) {
+  if (!SUPPORTED_CLASSES.has(weapon.cls) || weapon.cls === 'Sidearm') continue;
+  const weaponAtts = attachments.WEAPON_ATTS[weapon.id];
+  if (!weaponAtts) continue; // reported as missing WEAPON_ATTS below
+  for (const slot of REQUIRED_ATT_SLOTS) {
+    if (slot === 'light' && (weaponAtts.laserLightCombined || weaponAtts.laserGripLightCombined || LIGHT_SLOT_EXEMPT.has(weapon.id))) continue;
+    if (slot === 'grip' && weaponAtts.laserGripLightCombined) continue;
+    if (!Array.isArray(weaponAtts[slot])) {
+      fail(`${weapon.id}: ${slot} slot is missing from WEAPON_ATTS (use [] if the weapon takes none)`);
+    }
+  }
+}
+
 for (const weaponId of supportedWeaponIds) {
   if (!attachments.WEAPON_ATTS[weaponId]) fail(`${weaponId}: missing WEAPON_ATTS`);
   if (!recoilDecay.RECOIL_DEC?.[weaponId]) fail(`${weaponId}: missing RECOIL_DEC`);

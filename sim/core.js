@@ -217,7 +217,29 @@ export function isBurstGapAfter(w, shotIndex) {
     && (shotIndex - 1) % burstRounds === burstRounds - 1;
 }
 
-function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt) {
+/**
+ * Firing / not-firing spread recovery parameters for the current aim state,
+ * with the muzzle/light decay boost applied to the firing offset.
+ */
+export function spreadRecoveries(w) {
+  const { aimState } = _ctx;
+  const dyn = spreadDynamics(w);
+  const firing = {
+    coef: dyn.firingCoef ?? 0,
+    exp: dyn.firingExp ?? 1,
+    offset: (dyn.firingOffset ?? 0) *
+      (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : (w._hipSpreadDecayBoost ?? 0))),
+  };
+  const notFiring = {
+    coef: dyn.notFiringCoef ?? firing.coef,
+    exp: dyn.notFiringExp ?? firing.exp,
+    offset: dyn.notFiringOffset ?? firing.offset,
+  };
+  return { firing, notFiring };
+}
+
+/** Step spread recovery over `seconds`, clamped to [baseline, sMax]. */
+export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt = 1 / 60) {
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
   let rem = seconds;
   while (rem > 1e-12) {
@@ -237,22 +259,10 @@ function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt) {
  * Returns an array of per-shot pre-fire spread values in degrees.
  */
 export function simulateBloom(w, shotCount) {
-  const { aimState } = _ctx;
-  const dyn = spreadDynamics(w);
   const [baseline, sMax] = spreadBounds(w);
   const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return Array(shotCount).fill(baseline);
-  const firingRecovery = {
-    coef: dyn.firingCoef ?? 0,
-    exp: dyn.firingExp ?? 1,
-    offset: (dyn.firingOffset ?? 0) *
-      (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : (w._hipSpreadDecayBoost ?? 0))),
-  };
-  const notFiringRecovery = {
-    coef: dyn.notFiringCoef ?? firingRecovery.coef,
-    exp: dyn.notFiringExp ?? firingRecovery.exp,
-    offset: dyn.notFiringOffset ?? firingRecovery.offset,
-  };
+  const { firing: firingRecovery, notFiring: notFiringRecovery } = spreadRecoveries(w);
   const dt = 1 / 60;
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
   let spread = baseline;

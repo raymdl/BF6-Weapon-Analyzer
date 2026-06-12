@@ -181,7 +181,7 @@ itself determines which effect path is used.
 | Field | Modification |
 |---|---|
 | `recoilV` | Scaled by ADS recoil tier formula: `w.recoilV × mult^tierMod` |
-| `recoilVar` | Scaled by muzzle/grip `adsRecoilVariationMult` |
+| `recoilVar` | Tier ladder: `dirVar × dirVarMult^(dirVarExp + adsRecoilVariationTierMod sum)` |
 | `recoilIncAds` | Scaled by barrel `adsSpreadIncMult` |
 | `bulletVel` | Scaled by barrel `velMult` |
 | `spread` | Hip spread min shifted by tier if `hipSpreadTierMod ≠ 0` |
@@ -296,7 +296,7 @@ Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `ERGOS`, `WEAPON_ATTS`,
 | Field | Neutral | Description |
 |---|---|---|
 | `adsRecoilTierMod` | `0` | Shifts ADS recoil amount tier |
-| `adsRecoilVariationMult` | `1` | Multiplies ADS recoil direction variation |
+| `adsRecoilVariationTierMod` | `0` | Shifts ADS recoil variation tier (uses per-weapon `dirVarMult`) |
 | `hipSpreadTierMod` | `0` | Shifts hipfire min spread tier |
 | `adsSpreadIncMult` | `1` | Multiplies ADS bloom per shot |
 | `adsSpreadDecayBoost` | `0` | Extra ADS bloom decay coefficient |

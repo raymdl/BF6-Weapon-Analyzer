@@ -41,9 +41,7 @@
     {
       "id": "none",
       "name": "None",
-      "adsRecoilTierMod": 0,
-      "adsRecoilVariationMult": 1,
-      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
       "worldSpot": 54,
       "minimapSpot": 150,
       "pts": 0
@@ -51,9 +49,7 @@
     {
       "id": "sp_brake",
       "name": "Single-Port Brake",
-      "adsRecoilTierMod": 1,
-      "adsRecoilVariationMult": 1,
-      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 1,      "adsSpreadDecayBoost": 0,
       "sway": 1,
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -62,9 +58,7 @@
     {
       "id": "dp_brake",
       "name": "Double-Port Brake",
-      "adsRecoilTierMod": 1,
-      "adsRecoilVariationMult": 1,
-      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 1,      "adsSpreadDecayBoost": 0,
       "worldSpot": 54,
       "minimapSpot": 150,
       "pts": 10
@@ -72,9 +66,7 @@
     {
       "id": "comp_brake",
       "name": "Compensated Brake",
-      "adsRecoilTierMod": 1,
-      "adsRecoilVariationMult": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 1,      "adsRecoilDecayMult": 1.1,
       "assumed": true,
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -84,7 +76,7 @@
       "id": "linear_comp",
       "name": "Linear Comp",
       "adsRecoilTierMod": -1,
-      "adsRecoilVariationMult": 0.77,
+      "adsRecoilVariationTierMod": 3,
       "adsSpreadDecayBoost": 0,
       "assumed": true,
       "worldSpot": 54,
@@ -94,9 +86,7 @@
     {
       "id": "flash_hider",
       "name": "Flash Hider",
-      "adsRecoilTierMod": 0,
-      "adsRecoilVariationMult": 1,
-      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
       "worldSpot": 0,
       "minimapSpot": 150,
       "pts": 10
@@ -104,9 +94,7 @@
     {
       "id": "flash_comp",
       "name": "Flash Comp",
-      "adsRecoilTierMod": 0,
-      "adsRecoilVariationMult": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 0,      "adsRecoilDecayMult": 1.1,
       "assumed": true,
       "worldSpot": 0,
       "minimapSpot": 150,
@@ -115,9 +103,7 @@
     {
       "id": "std_supp",
       "name": "Std. Suppressor",
-      "adsRecoilTierMod": 0,
-      "adsRecoilVariationMult": 1,
-      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
       "hipSpreadTierMod": 1,
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -126,9 +112,7 @@
     {
       "id": "long_supp",
       "name": "Long Suppressor",
-      "adsRecoilTierMod": 0,
-      "adsRecoilVariationMult": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 0,      "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
       "sway": 1,
       "assumed": true,
@@ -139,9 +123,7 @@
     {
       "id": "light_supp",
       "name": "Lightened Suppressor",
-      "adsRecoilTierMod": 0,
-      "adsRecoilVariationMult": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 0,      "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
       "assumed": true,
       "worldSpot": 0,
@@ -151,9 +133,7 @@
     {
       "id": "cqb_supp",
       "name": "CQB Suppressor",
-      "adsRecoilTierMod": 0,
-      "adsRecoilVariationMult": 1,
-      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
       "worldSpot": 0,
       "minimapSpot": 21,
       "pts": 30
@@ -661,7 +641,7 @@
       "id": "burst_training",
       "name": "Burst Training",
       "pts": 15,
-      "adsRecoilVariationMult": 0.77,
+      "adsRecoilVariationTierMod": 3,
       "setsFireModeBurst": true,
       "assumed": true
     },
@@ -669,7 +649,7 @@
       "id": "burst_mode",
       "name": "Burst Mode",
       "pts": 10,
-      "adsRecoilVariationMult": 0.77,
+      "adsRecoilVariationTierMod": 3,
       "setsFireModeBurst": true,
       "assumed": true
     },
@@ -678,7 +658,7 @@
       "name": "Burst Mode",
       "pts": 10,
       "adsRecoilTierMod": 1,
-      "adsRecoilVariationMult": 0.77,
+      "adsRecoilVariationTierMod": 3,
       "setsFireModeBurst": true,
       "assumed": true
     }
