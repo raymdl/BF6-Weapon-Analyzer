@@ -739,11 +739,15 @@ assumed attachments are still unconfirmed.
 
 ### 6 — M16A4/VZ.61 `amountExp: -2` anomaly *(open question)*
 
-Every weapon's `recoil.ads.amountExp` is `-3` except the M16A4 and VZ.61 (both `-2`,
-both burst-by-default). In-game screenshots showed the Full Auto ergo does not move the
-*variation* exponent, but whether the amount exponent relates to default fire mode is
-unconfirmed. Display rounding in the in-game menu (1 decimal) makes the amount ladder
-hard to verify from screenshots alone.
+Among automatic-fire weapons, `recoil.ads.amountExp` is normally `-3`. The M16A4 and
+VZ.61 are the only two automatics at `-2`. (Non-automatic weapons — bolt-action snipers
+and semi-auto sidearms — use `0`.)
+
+These two don't share a fire mode: the M16A4 is burst-by-default while the VZ.61 is
+full-auto, so the `-2` is **not** explained by burst fire. In-game screenshots also
+showed the Full Auto ergo does not move the M16A4's *variation* exponent. Whatever drives
+`-2` for exactly these two weapons is unknown. Display rounding in the in-game menu
+(1 decimal) makes the amount ladder hard to verify from screenshots alone.
 
 ---
 

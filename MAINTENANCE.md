@@ -243,11 +243,13 @@ Credit: tier-system discovery by SheetOnMyFace.
   3-round burst with `burstRpm: 830` and 33 ms of extra post-burst delay. This
   yields `burstBurstsPerMinute: 240.12729639809058` and an effective sustained
   fire rate of about 720 RPM while Burst Mode is selected.
-- **`amountExp` anomaly (open question):** every weapon's `recoil.ads.amountExp`
-  is `-3` except the M16A4 and VZ.61 (both `-2`, both burst-by-default). Whether
-  this relates to default fire mode is unconfirmed — the in-game menu rounds
-  recoil amount to 1 decimal, which is too coarse to verify the amount ladder
-  from screenshots. The variation stat is the better field for tier-math checks.
+- **`amountExp` anomaly (open question):** automatic-fire weapons normally have
+  `recoil.ads.amountExp: -3`; the M16A4 and VZ.61 are the only automatics at `-2`
+  (non-automatic weapons use `0`). These two don't share a fire mode — the M16A4
+  is burst-by-default, the VZ.61 is full-auto — so the `-2` is not a burst effect.
+  What drives it is unconfirmed; the in-game menu rounds recoil amount to 1 decimal,
+  too coarse to verify the amount ladder from screenshots. The variation stat is the
+  better field for tier-math checks.
 - **Sprint recovery tiers:** primary weapons use `PRIMARY_SPRINT_REC_TIERS`;
   sidearms use `SIDEARM_SPRINT_REC_TIERS`. `WEAPON_MAG[weaponId].defSpr` stores
   the workbook's adjusted base sprint recovery tier after the weapon-specific
