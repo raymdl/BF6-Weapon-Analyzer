@@ -237,6 +237,150 @@ function selectedPlatformRecoilMult() {
   return state.recoil.platform === 'console' ? CONSOLE_RECOIL_MULT : 1;
 }
 
+// ── URL STATE (SHARE / PERSIST) ─────────────────────────────────────────────────
+// The full loadout + analysis view is encoded into the location hash so it can be
+// shared (Discord) and survives reloads. Only non-default values are written, so a
+// single-weapon URL stays short. View-only state (zoom, pan, overlay layers, random
+// reference seed) is intentionally excluded.
+
+const ATT_ORDER = ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'ammo', 'ergo', 'mag'];
+let _restoringUrl = false;
+let _urlSyncTimer = null;
+
+function encodeAtts(a) {
+  return ATT_ORDER.map(k => a[k] ?? '').join('-');
+}
+
+function isValidAtt(weapon, key, v) {
+  switch (key) {
+    case 'sight':  return !!ATT_BY_ID.SIGHTS[v];
+    case 'muzzle': return !!ATT_BY_ID.MUZZLES[v];
+    case 'barrel': return !!ATT_BY_ID.BARRELS[v];
+    case 'grip':   return !!ATT_BY_ID.GRIPS[v];
+    case 'laser':  return !!(ATT_BY_ID.LASERS[v] || ATT_BY_ID.GRIPS[v] || ATT_BY_ID.LIGHTS[v]);
+    case 'light':  return !!ATT_BY_ID.LIGHTS[v];
+    case 'ammo':   return !!ATT_BY_ID.AMMO[v];
+    case 'ergo':   return !!ATT_BY_ID.ERGOS[v];
+    case 'mag':    return !!WEAPON_MAG[weapon.id]?.mags?.[v];
+    default:       return false;
+  }
+}
+
+function decodeAtts(weapon, str) {
+  const atts = defaultAttsForWeapon(weapon);
+  if (!str) return atts;
+  const parts = str.split('-');
+  ATT_ORDER.forEach((k, i) => {
+    const v = parts[i];
+    if (v == null) return;
+    if (v === '') { if (k === 'mag') atts.mag = null; return; }
+    if (isValidAtt(weapon, k, v)) atts[k] = v;
+  });
+  return atts;
+}
+
+function encodeState() {
+  const p = new URLSearchParams();
+  const s0 = state.slots[0];
+  if (s0.weapon) { p.set('w', s0.weapon.id); p.set('a', encodeAtts(s0.atts)); }
+  if (state.comparing) {
+    p.set('cmp', '1');
+    const s1 = state.slots[1];
+    if (s1.weapon) { p.set('w2', s1.weapon.id); p.set('a2', encodeAtts(s1.atts)); }
+  }
+  if (state.chart.mode !== 'dmg') p.set('cm', state.chart.mode);
+  if (state.chart.btkHS) p.set('hs', state.chart.btkHS);
+  if (state.chart.showAds) p.set('ads', '1');
+  if (state.recoil.aim !== 'ads') p.set('ra', state.recoil.aim);
+  if (state.recoil.stance !== 'stand') p.set('rs', state.recoil.stance);
+  if (state.recoil.platform !== 'pc') p.set('rp', state.recoil.platform);
+  if (state.recoil.control) p.set('rcc', state.recoil.compensationLevel);
+  const shots = selectedRecoilShotCount();
+  if (shots !== 20) p.set('sh', shots);
+  return p.toString();
+}
+
+function syncUrl() {
+  if (_restoringUrl) return;
+  const qs = encodeState();
+  const newHash = qs ? '#' + qs : '';
+  if ((location.hash || '') === newHash) return;
+  history.replaceState(null, '', newHash || location.pathname + location.search);
+}
+
+function scheduleUrlSync() {
+  if (_restoringUrl) return;
+  clearTimeout(_urlSyncTimer);
+  _urlSyncTimer = setTimeout(syncUrl, 200);
+}
+
+function applyChartStateToDom() {
+  const { mode, btkHS, showAds } = state.chart;
+  document.getElementById('modeDmg').classList.toggle('on', mode === 'dmg');
+  document.getElementById('modeBtk').classList.toggle('on', mode === 'btk');
+  document.getElementById('modeTtk').classList.toggle('on', mode === 'ttk');
+  const isTtk = mode === 'ttk';
+  const adsBtn = document.getElementById('adsToggleBtn');
+  adsBtn.style.display = isTtk ? '' : 'none';
+  adsBtn.classList.toggle('on', isTtk && showAds);
+  document.getElementById('chartTitle').textContent =
+    mode === 'btk' ? 'BTK Chart' : mode === 'ttk' ? (showAds ? 'ADS+TTK Chart' : 'TTK Chart') : 'Damage Chart';
+  const sel = document.getElementById('btkHsSelect');
+  sel.style.display = (mode === 'btk' || mode === 'ttk') ? '' : 'none';
+  sel.value = btkHS;
+}
+
+function restoreFromUrl() {
+  const hash = location.hash.replace(/^#/, '');
+  if (!hash) return;
+  let p;
+  try { p = new URLSearchParams(hash); } catch { return; }
+
+  const w1 = p.get('w') && W.find(x => x.id === p.get('w'));
+  if (w1) {
+    state.slots[0].cls = w1.cls;
+    state.slots[0].weapon = w1;
+    state.slots[0].atts = decodeAtts(w1, p.get('a'));
+  }
+  if (p.get('cmp') === '1') {
+    state.comparing = true;
+    const w2 = p.get('w2') && W.find(x => x.id === p.get('w2'));
+    if (w2) {
+      state.slots[1].cls = w2.cls;
+      state.slots[1].weapon = w2;
+      state.slots[1].atts = decodeAtts(w2, p.get('a2'));
+    }
+  }
+
+  const cm = p.get('cm'); if (cm === 'btk' || cm === 'ttk') state.chart.mode = cm;
+  const hs = parseInt(p.get('hs'), 10); if (hs >= 1 && hs <= 3) state.chart.btkHS = hs;
+  if (p.get('ads') === '1' && state.chart.mode === 'ttk') state.chart.showAds = true;
+  if (p.get('ra') === 'hip') state.recoil.aim = 'hip';
+  if (p.get('rs') === 'move') state.recoil.stance = 'move';
+  if (p.get('rp') === 'console') state.recoil.platform = 'console';
+  const rcc = p.get('rcc');
+  if (rcc != null) {
+    const v = parseInt(rcc, 10);
+    if (Number.isFinite(v)) { state.recoil.control = true; state.recoil.compensationLevel = Math.max(0, Math.min(125, v)); }
+  }
+
+  // Reflect the pieces of state that render functions don't set themselves.
+  if (state.comparing) {
+    document.getElementById('cmpBtn').classList.add('on');
+    document.getElementById('cmpSection').style.display = 'block';
+  }
+  setSimContext({ aimState: state.recoil.aim, stanceState: state.recoil.stance });
+  const sh = parseInt(p.get('sh'), 10);
+  if (Number.isFinite(sh)) {
+    const c = Math.max(1, Math.min(100, sh));
+    const input = document.getElementById('rcShotCountInput');
+    if (input) input.value = c;
+    const titleCount = document.getElementById('rcShotTitleCount');
+    if (titleCount) titleCount.textContent = c;
+  }
+  applyChartStateToDom();
+}
+
 // ── SIDEBAR ───────────────────────────────────────────────────────────────────
 
 function buildClassFilter(containerId, slotIdx) {
@@ -332,6 +476,7 @@ function cloneCompareLoadout() {
 // ── OVERVIEW ──────────────────────────────────────────────────────────────────
 
 function renderStats() {
+  scheduleUrlSync();
   const w1 = state.slots[0].weapon;
   const w2 = state.comparing ? state.slots[1].weapon : null;
   const hasAny = w1 || w2;
@@ -523,6 +668,7 @@ function registerTooltipPositioners() {
 }
 
 function renderChart() {
+  scheduleUrlSync();
   registerTooltipPositioners();
 
   const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
@@ -1076,6 +1222,7 @@ function renderAttachmentStats(loadouts) {
 }
 
 function renderRecoil() {
+  scheduleUrlSync();
   const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
   const w2 = state.comparing && state.slots[1].weapon ? applyAttachments(state.slots[1].weapon, state.slots[1].atts) : null;
   const shotCount = selectedRecoilShotCount();
@@ -1346,6 +1493,59 @@ function setLoadoutOverlay(open) {
   document.getElementById('loadoutOpenBtn')?.setAttribute('aria-expanded', open ? 'true' : 'false');
 }
 
+// ── MOBILE TOOLTIPS ─────────────────────────────────────────────────────────────
+// On touch devices (no hover), tapping an info card / chip shows its `title` text in
+// a floating bubble, and tapping a recoil-stat row pins its rich breakdown popup.
+// Desktop hover behavior is untouched (gated on `hover: none`).
+
+function initMobileTooltips() {
+  const tip = document.createElement('div');
+  tip.className = 'm-tip';
+  document.body.appendChild(tip);
+  let openRow = null;
+
+  const hideBubble = () => tip.classList.remove('show');
+  const closeRow = () => { if (openRow) { openRow.classList.remove('tt-open'); openRow = null; } };
+
+  const positionBubble = el => {
+    const r = el.getBoundingClientRect();
+    tip.style.left = '0px'; tip.style.top = '0px';
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = r.left + r.width / 2 - tw / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+    let top = r.bottom + 6;
+    if (top + th > window.innerHeight - 8) top = Math.max(8, r.top - th - 6);
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  };
+
+  document.addEventListener('click', e => {
+    if (!matchMedia('(hover: none)').matches) return;
+
+    const row = e.target.closest('.rc-row');
+    if (row && row.querySelector('.rc-tt')) {
+      hideBubble();
+      if (openRow === row) { closeRow(); }
+      else { closeRow(); row.classList.add('tt-open'); openRow = row; }
+      return;
+    }
+
+    const info = e.target.closest('.scard[title], .att-chip[title], .wbadge[title], .wbadge-burst[title]');
+    if (info) {
+      closeRow();
+      const text = info.getAttribute('title');
+      if (text) { tip.textContent = text; positionBubble(info); tip.classList.add('show'); }
+      else hideBubble();
+      return;
+    }
+
+    closeRow();
+    hideBubble();
+  });
+
+  window.addEventListener('resize', () => { closeRow(); hideBubble(); });
+}
+
 // ── EVENT BINDING ─────────────────────────────────────────────────────────────
 
 function bindEvents() {
@@ -1362,6 +1562,27 @@ function bindEvents() {
     renderStats();
   });
   document.getElementById('cloneLoadoutBtn').addEventListener('click', cloneCompareLoadout);
+
+  // Share / copy link
+  document.getElementById('shareBtn')?.addEventListener('click', async () => {
+    const btn = document.getElementById('shareBtn');
+    syncUrl();
+    const url = location.href;
+    let ok = false;
+    try { await navigator.clipboard.writeText(url); ok = true; } catch { /* fall through */ }
+    if (!ok) {
+      const t = document.createElement('input');
+      t.value = url; t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select();
+      try { ok = document.execCommand('copy'); } catch { /* ignore */ }
+      t.remove();
+    }
+    const orig = btn.textContent;
+    btn.textContent = ok ? 'Link copied!' : 'Copy failed';
+    btn.classList.toggle('copied', ok);
+    clearTimeout(btn._resetTimer);
+    btn._resetTimer = setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1600);
+  });
 
   // Loadout overlay (responsive)
   document.getElementById('loadoutOpenBtn')?.addEventListener('click', () => setLoadoutOverlay(true));
@@ -1413,6 +1634,10 @@ function bindEvents() {
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 
+_restoringUrl = true;
+restoreFromUrl();
 bindEvents();
 renderSidebar();
 renderStats();
+_restoringUrl = false;
+initMobileTooltips();

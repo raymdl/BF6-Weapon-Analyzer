@@ -12,6 +12,7 @@
   --accent:#c9a227; --accent2:#4d94d0;
   --text:#dde3e3; --muted:#7a8a8a; --border:#283030;
   --green:#56c464; --red:#e05555;
+  --share-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cline x1='8.6' y1='13.5' x2='15.4' y2='17.5'/%3E%3Cline x1='15.4' y1='6.5' x2='8.6' y2='10.5'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;font-size:14px}
@@ -22,6 +23,16 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .hdr-tag{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .legacy-link{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px;text-decoration:none;margin-left:auto}
 .legacy-link:hover{border-color:#666;color:#ccc}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.66rem;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:3px 10px;background:rgba(201,162,39,.1);letter-spacing:.04em;transition:all .15s}
+.share-btn::before{content:"";width:10px;height:10px;flex-shrink:0;background:currentColor;-webkit-mask:var(--share-icon) center/contain no-repeat;mask:var(--share-icon) center/contain no-repeat}
+.share-btn:hover{background:rgba(201,162,39,.18)}
+.share-btn.copied{color:var(--green);border-color:var(--green);background:rgba(86,196,100,.12)}
+.overview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:5px}
+.overview-head .ptitle{margin-bottom:0}
+/* Mobile tap tooltip */
+.m-tip{position:fixed;z-index:300;display:none;max-width:280px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-size:0.72rem;line-height:1.45;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.6);pointer-events:none}
+.m-tip.show{display:block}
+.rc-row.tt-open .rc-tt{display:block}
 .loadout-btn{display:none;padding:5px 10px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:var(--accent2);border-radius:4px;font-size:0.72rem;letter-spacing:.04em}
 .loadout-close{display:none}
 .loadout-backdrop{display:none}
@@ -313,7 +324,10 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
     </div>
     <div id="statsArea" style="display:none">
       <div class="panel" id="overviewPanel">
-        <div class="ptitle">Overview</div>
+        <div class="overview-head">
+          <div class="ptitle">Overview</div>
+          <button class="share-btn" id="shareBtn" type="button" title="Copy a shareable link to this loadout and view">Share Loadout</button>
+        </div>
         <div id="wHeader" class="w-header"></div>
         <div id="sGrid" class="sgrid"></div>
       </div>
