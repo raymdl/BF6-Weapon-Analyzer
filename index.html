@@ -395,32 +395,6 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                 </div>
               </div>
               <div class="rc-group">
-                <div class="rc-group-hd">Recoil Control</div>
-                <div class="rc-subrow">
-                  <div class="rc-pair">
-                    <div class="rc-sub">Compensation</div>
-                    <div class="rc-group-row">
-                      <button class="mode-btn rc-mode-btn on" id="rcControlOff" title="Do not compensate recoil">Off</button>
-                      <button class="mode-btn rc-mode-btn" id="rcControlOn" title="Compensate expected recoil direction">On</button>
-                    </div>
-                    <span id="rcCompRow" class="rc-comp-row disabled">
-                      <input id="rcCompRange" class="rc-comp-range" type="range" min="0" max="125" step="1" value="85">
-                      <input id="rcCompInput" class="rc-comp-input" type="text" inputmode="numeric" value="0" title="Recoil compensation percentage">
-                      <span class="rc-btn-label">%</span>
-                    </span>
-                  </div>
-                </div>
-                <div class="rc-subrow">
-                  <div class="rc-pair">
-                    <div class="rc-sub">Platform</div>
-                    <div class="rc-group-row">
-                      <button class="mode-btn rc-mode-btn on" id="rcPlatformPc" title="Use PC recoil values">PC</button>
-                      <button class="mode-btn rc-mode-btn" id="rcPlatformConsole" title="Apply console recoil reduction">Console</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="rc-group">
                 <div class="rc-group-hd">Overlays</div>
                 <div class="rc-subrow">
                   <div class="rc-pair">
@@ -444,6 +418,32 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                     <div class="rc-sub" id="rcShotsLabel">On Rounds</div>
                     <div class="rc-group-row">
                       <input id="rcBloomShotsInput" class="rc-shots-input" type="text" value="1, 2, 3, 5, 8, 13, 20" title="Which bullets to show bloom bubbles on. Comma-separated, ranges (e.g. 1-5), 'all', or 'every N'">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-group">
+                <div class="rc-group-hd">Recoil Control</div>
+                <div class="rc-subrow">
+                  <div class="rc-pair">
+                    <div class="rc-sub">Compensation</div>
+                    <div class="rc-group-row">
+                      <button class="mode-btn rc-mode-btn on" id="rcControlOff" title="Do not compensate recoil">Off</button>
+                      <button class="mode-btn rc-mode-btn" id="rcControlOn" title="Compensate expected recoil direction">On</button>
+                    </div>
+                    <span id="rcCompRow" class="rc-comp-row disabled">
+                      <input id="rcCompRange" class="rc-comp-range" type="range" min="0" max="125" step="1" value="85">
+                      <input id="rcCompInput" class="rc-comp-input" type="text" inputmode="numeric" value="0" title="Recoil compensation percentage">
+                      <span class="rc-btn-label">%</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="rc-subrow">
+                  <div class="rc-pair">
+                    <div class="rc-sub">Platform</div>
+                    <div class="rc-group-row">
+                      <button class="mode-btn rc-mode-btn on" id="rcPlatformPc" title="Use PC recoil values">PC</button>
+                      <button class="mode-btn rc-mode-btn" id="rcPlatformConsole" title="Apply console recoil reduction">Console</button>
                     </div>
                   </div>
                 </div>
