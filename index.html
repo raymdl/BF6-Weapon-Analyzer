@@ -28,7 +28,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .share-btn::before{content:"";width:10px;height:10px;flex-shrink:0;background:currentColor;-webkit-mask:var(--share-icon) center/contain no-repeat;mask:var(--share-icon) center/contain no-repeat}
 .share-btn:hover{background:rgba(201,162,39,.18)}
 .share-btn.copied{color:var(--green);border-color:var(--green);background:rgba(86,196,100,.12)}
-.overview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:5px}
+.overview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:3px}
 .overview-head .ptitle{margin-bottom:0}
 /* Mobile tap tooltip */
 .m-tip{position:fixed;z-index:300;display:none;max-width:280px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-size:0.72rem;line-height:1.45;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.6);pointer-events:none}
@@ -64,13 +64,13 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .clone-btn:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
 .clone-btn:disabled{opacity:.38;cursor:not-allowed;color:var(--muted);border-color:var(--border);background:var(--bg3)}
 /* Main */
-.main{flex:1;overflow-y:auto;overflow-x:hidden;padding:8px;display:flex;flex-direction:column;gap:11px}
+.main{flex:1;overflow-y:auto;overflow-x:hidden;padding:8px;display:flex;flex-direction:column;gap:9px}
 .main::-webkit-scrollbar{width:4px}
 .main::-webkit-scrollbar-thumb{background:var(--border)}
 .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);gap:6px;text-align:center}
 .empty-t{font-size:1rem;color:var(--text)}
 /* Panel */
-.panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:8px}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:6px 8px}
 .ptitle{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:5px;font-weight:600}
 /* Quick stats */
 .w-header{display:flex;align-items:baseline;gap:5px;flex-wrap:wrap;margin-bottom:5px}
@@ -79,14 +79,14 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .wbadge-burst{font-size:0.68rem;color:#c8960a;border:1px solid rgba(200,150,10,.4);border-radius:3px;padding:2px 6px}
 .sgroups{column-count:2;column-gap:20px}
-.sgroup{break-inside:avoid;border-left:2px solid var(--border);padding-left:10px;margin-bottom:13px}
+.sgroup{break-inside:avoid;border-left:2px solid var(--border);padding-left:10px;margin-bottom:11px}
 .sgroup:last-child{margin-bottom:0}
-.sgroup-hd{font-size:0.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px}
+.sgroup-hd{font-size:0.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:5px}
-.scard{background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:5px 9px;letter-spacing:-0.03em}
+.scard{background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:4px 8px;letter-spacing:-0.03em}
 .scard.stat-group{background:#202929}
 .sgrid .sval,.sgrid .scmp-row{white-space:nowrap}
-.slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:2px;white-space:nowrap}
+.slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:1px;white-space:nowrap}
 .sval{font-size:0.9rem;font-weight:700}
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
 .sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
@@ -335,7 +335,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
       </div>
       <div class="panel" style="padding:0;overflow:hidden">
         <div style="display:flex;align-items:stretch">
-          <div style="flex:1;min-width:0;padding:13px;border-right:1px solid var(--border)">
+          <div style="flex:1;min-width:0;padding:11px 13px;border-right:1px solid var(--border)">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:9px">
               <div style="display:flex;align-items:center;gap:8px">
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Damage Chart</div>
@@ -355,7 +355,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
             </div>
             <div class="chart-wrap"><canvas id="dmgChart"></canvas><div class="rc-legend" id="chartLegend"></div></div>
           </div>
-          <div style="flex:1;min-width:0;padding:13px">
+          <div style="flex:1;min-width:0;padding:11px 13px">
             <div class="ptitle">Bullets / Time to Kill</div>
             <div id="btkArea"></div>
           </div>
