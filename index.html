@@ -78,8 +78,8 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .wname2{font-size:15px;font-weight:700;color:var(--accent2)}
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .wbadge-burst{font-size:0.68rem;color:#c8960a;border:1px solid rgba(200,150,10,.4);border-radius:3px;padding:2px 6px}
-.sgroups{column-count:2;column-gap:20px}
-.sgroup{break-inside:avoid;border-left:2px solid var(--border);padding-left:10px;margin-bottom:11px}
+.sgroups{display:grid;grid-template-columns:1fr 1fr;gap:11px 20px}
+.sgroup{border-left:2px solid var(--border);padding-left:10px}
 .sgroup:last-child{margin-bottom:0}
 .sgroup-hd{font-size:0.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,112px);gap:5px}
@@ -247,7 +247,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
   .panel{padding:10px;border-radius:5px}
   .w-header{gap:6px}
   .wname,.wname2{font-size:1rem}
-  .sgroups{column-count:1}
+  .sgroups{grid-template-columns:1fr}
   .sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .scard{padding:7px 8px}
   #statsArea > .panel:nth-of-type(2) > div > div{padding:10px!important}

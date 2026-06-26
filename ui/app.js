@@ -668,8 +668,8 @@ function renderOverview() {
   };
   const STAT_SECTIONS = [
     { key: 'combat',   label: 'Combat',      color: '#c9a227' },
-    { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
     { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
+    { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
     { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
   ];
   STAT_SECTIONS.forEach(sec => {
