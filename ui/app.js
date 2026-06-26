@@ -584,6 +584,7 @@ function renderOverview() {
   }
   if (w2) {
     const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px;font-size:12px'; vs.textContent = 'vs'; hdr.appendChild(vs);
+    const br = document.createElement('span'); br.style.cssText = 'flex-basis:100%;height:0'; hdr.appendChild(br);
     const s = document.createElement('span'); s.className = 'wname2'; s.textContent = wLabel(w2); hdr.appendChild(s);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w2.cls; hdr.appendChild(b);
     appendFireModeBadge(w2, hdr);
@@ -671,29 +672,35 @@ function renderOverview() {
     { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
     { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
   ];
-  STAT_SECTIONS.forEach(sec => {
-    const secFields = fields.filter(f => (SEC_OF[f.lbl] || 'combat') === sec.key);
-    if (!secFields.length) return;
-    const block = document.createElement('div');
-    block.className = 'sgroup';
-    block.style.borderLeftColor = sec.color;
-    const hd = document.createElement('div');
-    hd.className = 'sgroup-hd';
-    hd.style.color = sec.color;
-    hd.textContent = sec.label;
-    block.appendChild(hd);
-    const sg = document.createElement('div');
-    sg.className = 'sgrid';
-    secFields.forEach(f => {
-      const card = document.createElement('div');
-      card.className = 'scard';
-      if (f.tooltip) card.title = f.tooltip;
-      card.innerHTML = `<div class="slbl">${f.lbl}</div>` + cardValueHtml(f);
-      sg.appendChild(card);
+  for (let i = 0; i < STAT_SECTIONS.length; i += 2) {
+    const row = document.createElement('div');
+    row.className = 'sgrow';
+    [STAT_SECTIONS[i], STAT_SECTIONS[i + 1]].forEach(sec => {
+      if (!sec) return;
+      const secFields = fields.filter(f => (SEC_OF[f.lbl] || 'combat') === sec.key);
+      if (!secFields.length) return;
+      const block = document.createElement('div');
+      block.className = 'sgroup';
+      block.style.borderLeftColor = sec.color;
+      const hd = document.createElement('div');
+      hd.className = 'sgroup-hd';
+      hd.style.color = sec.color;
+      hd.textContent = sec.label;
+      block.appendChild(hd);
+      const sg = document.createElement('div');
+      sg.className = 'sgrid';
+      secFields.forEach(f => {
+        const card = document.createElement('div');
+        card.className = 'scard';
+        if (f.tooltip) card.title = f.tooltip;
+        card.innerHTML = `<div class="slbl">${f.lbl}</div>` + cardValueHtml(f);
+        sg.appendChild(card);
+      });
+      block.appendChild(sg);
+      row.appendChild(block);
     });
-    block.appendChild(sg);
-    grid.appendChild(block);
-  });
+    grid.appendChild(row);
+  }
 }
 
 // ── CHART ─────────────────────────────────────────────────────────────────────
