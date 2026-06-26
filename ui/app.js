@@ -584,7 +584,6 @@ function renderOverview() {
   }
   if (w2) {
     const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px;font-size:12px'; vs.textContent = 'vs'; hdr.appendChild(vs);
-    const br = document.createElement('span'); br.style.cssText = 'flex-basis:100%;height:0'; hdr.appendChild(br);
     const s = document.createElement('span'); s.className = 'wname2'; s.textContent = wLabel(w2); hdr.appendChild(s);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w2.cls; hdr.appendChild(b);
     appendFireModeBadge(w2, hdr);
