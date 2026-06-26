@@ -247,46 +247,97 @@ const ATT_ORDER = ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'ammo'
 let _restoringUrl = false;
 let _urlSyncTimer = null;
 
-function encodeAtts(a) {
-  return ATT_ORDER.map(k => a[k] ?? '').join('-');
+// Attachments are encoded as <key><catalogIndex> tokens (e.g. "M5B3K2"), and only
+// slots that differ from the weapon's default are written — keeping share URLs short.
+// Keys: S sight, M muzzle, B barrel, G grip, A ammo, E ergo, K mag, T light,
+// L laser; R/H = a grip/light occupying a combined laser slot (VZ.61, sidearms).
+// NOTE: this relies on the catalog arrays being append-only (never reorder/remove
+// existing entries) so previously shared links keep resolving to the same item.
+const magKeysFor = weapon => Object.keys(WEAPON_MAG[weapon.id]?.mags ?? {});
+const catIdx = (arr, id) => arr.findIndex(x => x.id === id);
+
+function encodeAtts(weapon, a) {
+  const def = defaultAttsForWeapon(weapon);
+  const out = [];
+  const emit = (key, arr, id) => { const i = catIdx(arr, id); if (i >= 0) out.push(key + i); };
+  if (a.sight  !== def.sight)  emit('S', SIGHTS,  a.sight);
+  if (a.muzzle !== def.muzzle) emit('M', MUZZLES, a.muzzle);
+  if (a.barrel !== def.barrel) emit('B', BARRELS, a.barrel);
+  if (a.grip   !== def.grip)   emit('G', GRIPS,   a.grip);
+  if (a.laser  !== def.laser) {
+    if (catIdx(LASERS, a.laser) >= 0)      emit('L', LASERS, a.laser);
+    else if (catIdx(GRIPS, a.laser) >= 0)  emit('R', GRIPS,  a.laser);
+    else if (catIdx(LIGHTS, a.laser) >= 0) emit('H', LIGHTS, a.laser);
+  }
+  if (a.light !== def.light) emit('T', LIGHTS, a.light);
+  if (a.ammo  !== def.ammo)  emit('A', AMMO,   a.ammo);
+  if (a.ergo  !== def.ergo)  emit('E', ERGOS,  a.ergo);
+  if ((a.mag ?? '') !== (def.mag ?? '')) {
+    const i = magKeysFor(weapon).indexOf(a.mag);
+    if (i >= 0) out.push('K' + i);
+  }
+  return out.join('');
 }
 
-function isValidAtt(weapon, key, v) {
-  switch (key) {
-    case 'sight':  return !!ATT_BY_ID.SIGHTS[v];
-    case 'muzzle': return !!ATT_BY_ID.MUZZLES[v];
-    case 'barrel': return !!ATT_BY_ID.BARRELS[v];
-    case 'grip':   return !!ATT_BY_ID.GRIPS[v];
-    case 'laser':  return !!(ATT_BY_ID.LASERS[v] || ATT_BY_ID.GRIPS[v] || ATT_BY_ID.LIGHTS[v]);
-    case 'light':  return !!ATT_BY_ID.LIGHTS[v];
-    case 'ammo':   return !!ATT_BY_ID.AMMO[v];
-    case 'ergo':   return !!ATT_BY_ID.ERGOS[v];
-    case 'mag':    return !!WEAPON_MAG[weapon.id]?.mags?.[v];
-    default:       return false;
-  }
+// Legacy positional decoder for the original dash-joined ID format.
+function decodeAttsLegacy(weapon, str) {
+  const atts = defaultAttsForWeapon(weapon);
+  const valid = (key, v) => {
+    switch (key) {
+      case 'sight':  return !!ATT_BY_ID.SIGHTS[v];
+      case 'muzzle': return !!ATT_BY_ID.MUZZLES[v];
+      case 'barrel': return !!ATT_BY_ID.BARRELS[v];
+      case 'grip':   return !!ATT_BY_ID.GRIPS[v];
+      case 'laser':  return !!(ATT_BY_ID.LASERS[v] || ATT_BY_ID.GRIPS[v] || ATT_BY_ID.LIGHTS[v]);
+      case 'light':  return !!ATT_BY_ID.LIGHTS[v];
+      case 'ammo':   return !!ATT_BY_ID.AMMO[v];
+      case 'ergo':   return !!ATT_BY_ID.ERGOS[v];
+      case 'mag':    return !!WEAPON_MAG[weapon.id]?.mags?.[v];
+      default:       return false;
+    }
+  };
+  str.split('-').forEach((v, i) => {
+    const k = ATT_ORDER[i];
+    if (!k || v == null) return;
+    if (v === '') { if (k === 'mag') atts.mag = null; return; }
+    if (valid(k, v)) atts[k] = v;
+  });
+  return atts;
 }
 
 function decodeAtts(weapon, str) {
+  if (!str) return defaultAttsForWeapon(weapon);
+  if (str.includes('-')) return decodeAttsLegacy(weapon, str);
   const atts = defaultAttsForWeapon(weapon);
-  if (!str) return atts;
-  const parts = str.split('-');
-  ATT_ORDER.forEach((k, i) => {
-    const v = parts[i];
-    if (v == null) return;
-    if (v === '') { if (k === 'mag') atts.mag = null; return; }
-    if (isValidAtt(weapon, k, v)) atts[k] = v;
-  });
+  const magKeys = magKeysFor(weapon);
+  const set = (arr, i, slot) => { if (arr[i]) atts[slot] = arr[i].id; };
+  let m;
+  const re = /([A-Z])(\d+)/g;
+  while ((m = re.exec(str))) {
+    const k = m[1], i = +m[2];
+    if      (k === 'S') set(SIGHTS,  i, 'sight');
+    else if (k === 'M') set(MUZZLES, i, 'muzzle');
+    else if (k === 'B') set(BARRELS, i, 'barrel');
+    else if (k === 'G') set(GRIPS,   i, 'grip');
+    else if (k === 'L') set(LASERS,  i, 'laser');
+    else if (k === 'R') set(GRIPS,   i, 'laser');
+    else if (k === 'H') set(LIGHTS,  i, 'laser');
+    else if (k === 'T') set(LIGHTS,  i, 'light');
+    else if (k === 'A') set(AMMO,    i, 'ammo');
+    else if (k === 'E') set(ERGOS,   i, 'ergo');
+    else if (k === 'K' && magKeys[i]) atts.mag = magKeys[i];
+  }
   return atts;
 }
 
 function encodeState() {
   const p = new URLSearchParams();
   const s0 = state.slots[0];
-  if (s0.weapon) { p.set('w', s0.weapon.id); p.set('a', encodeAtts(s0.atts)); }
+  if (s0.weapon) { p.set('w', s0.weapon.id); const a = encodeAtts(s0.weapon, s0.atts); if (a) p.set('a', a); }
   if (state.comparing) {
     p.set('cmp', '1');
     const s1 = state.slots[1];
-    if (s1.weapon) { p.set('w2', s1.weapon.id); p.set('a2', encodeAtts(s1.atts)); }
+    if (s1.weapon) { p.set('w2', s1.weapon.id); const a2 = encodeAtts(s1.weapon, s1.atts); if (a2) p.set('a2', a2); }
   }
   if (state.chart.mode !== 'dmg') p.set('cm', state.chart.mode);
   if (state.chart.btkHS) p.set('hs', state.chart.btkHS);
@@ -578,38 +629,71 @@ function renderOverview() {
   if (w1?.pellets || w2?.pellets) fields.splice(4, 0, { lbl: 'Pellets', k: 'pellets', unit: '', fmt: v => v ?? '—',
     tooltip: 'Number of pellets fired per shot. Shotgun damage is pellet damage multiplied by this count.' });
 
-  fields.forEach(f => {
-    const card = document.createElement('div');
-    card.className = 'scard' + (f.group ? ' stat-group' : '');
-    if (f.tooltip) card.title = f.tooltip;
-    card.innerHTML = `<div class="slbl">${f.lbl}</div>`;
+  const cardValueHtml = f => {
     const getVal = w => f.compute ? f.compute(w) : w?.[f.k];
     const isEst = w => f.estFn ? f.estFn(w) : f.est;
     if (!w2 || !state.comparing) {
       const wx = w1 || w2;
       const v = getVal(wx);
-      card.innerHTML += `<div class="sval c1">${f.fmt(v)}<span class="sunit">${f.unit}</span>${isEst(wx) ? '<span class="sest">est</span>' : ''}</div>`;
-    } else {
-      const v1 = w1 ? getVal(w1) : null, v2 = w2 ? getVal(w2) : null;
-      let diff = '';
-      if (!f.noDiff && v1 != null && v2 != null && v1 !== v2) {
-        if (f.absDiff) {
-          const delta = Math.round((-v2) - (-v1));
-          diff = `<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta > 0 ? '+' : ''}${delta}°</span>`;
-        } else if (f.absoluteDelta) {
-          const delta = Math.round(v2 - v1);
-          const w2better = (f.higherBetter && delta > 0) || (f.lowerBetter && delta < 0);
-          diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${delta > 0 ? '+' : ''}${delta}m</span>`;
-        } else {
-          const pct = Math.round(Math.abs(v2 - v1) / Math.max(Math.abs(v1), 0.001) * 100);
-          const w2better = (f.higherBetter && v2 > v1) || (f.lowerBetter && v2 < v1);
-          diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${w2better ? '+' : '-'}${pct}%</span>`;
-        }
-      }
-      const est1 = w1 ? isEst(w1) : false, est2 = w2 ? isEst(w2) : false;
-      card.innerHTML += `<div class="scmp"><div class="scmp-row"><span class="sval c1">${v1 != null ? f.fmt(v1) : '—'}<span class="sunit">${f.unit}</span>${est1 ? '<span class="sest">est</span>' : ''}</span></div><div class="scmp-row"><span class="sval c2">${v2 != null ? f.fmt(v2) : '—'}<span class="sunit">${f.unit}</span>${est2 ? '<span class="sest">est</span>' : ''}</span>${diff}</div></div>`;
+      return `<div class="sval c1">${f.fmt(v)}<span class="sunit">${f.unit}</span>${isEst(wx) ? '<span class="sest">est</span>' : ''}</div>`;
     }
-    grid.appendChild(card);
+    const v1 = w1 ? getVal(w1) : null, v2 = w2 ? getVal(w2) : null;
+    let diff = '';
+    if (!f.noDiff && v1 != null && v2 != null && v1 !== v2) {
+      if (f.absDiff) {
+        const delta = Math.round((-v2) - (-v1));
+        diff = `<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta > 0 ? '+' : ''}${delta}°</span>`;
+      } else if (f.absoluteDelta) {
+        const delta = Math.round(v2 - v1);
+        const w2better = (f.higherBetter && delta > 0) || (f.lowerBetter && delta < 0);
+        diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${delta > 0 ? '+' : ''}${delta}m</span>`;
+      } else {
+        const pct = Math.round(Math.abs(v2 - v1) / Math.max(Math.abs(v1), 0.001) * 100);
+        const w2better = (f.higherBetter && v2 > v1) || (f.lowerBetter && v2 < v1);
+        diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${w2better ? '+' : '-'}${pct}%</span>`;
+      }
+    }
+    const est1 = w1 ? isEst(w1) : false, est2 = w2 ? isEst(w2) : false;
+    return `<div class="scmp"><div class="scmp-row"><span class="sval c1">${v1 != null ? f.fmt(v1) : '—'}<span class="sunit">${f.unit}</span>${est1 ? '<span class="sest">est</span>' : ''}</span></div><div class="scmp-row"><span class="sval c2">${v2 != null ? f.fmt(v2) : '—'}<span class="sunit">${f.unit}</span>${est2 ? '<span class="sest">est</span>' : ''}</span>${diff}</div></div>`;
+  };
+
+  // Group the stat cards into labelled, colour-accented sections for scannability.
+  const SEC_OF = {
+    'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
+    'Pellets': 'combat', 'Mag Size': 'combat', 'Tac Reload': 'combat',
+    'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Sprint Rec': 'mobility',
+    'Recoil/Shot': 'recoil', 'Recoil Dir': 'recoil', 'STD/Mov Sprd': 'recoil',
+    '3D/Map Spot': 'conceal',
+  };
+  const STAT_SECTIONS = [
+    { key: 'combat',   label: 'Combat',      color: '#c9a227' },
+    { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
+    { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
+    { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
+  ];
+  STAT_SECTIONS.forEach(sec => {
+    const secFields = fields.filter(f => (SEC_OF[f.lbl] || 'combat') === sec.key);
+    if (!secFields.length) return;
+    const block = document.createElement('div');
+    block.className = 'sgroup';
+    block.style.borderLeftColor = sec.color;
+    const hd = document.createElement('div');
+    hd.className = 'sgroup-hd';
+    hd.style.color = sec.color;
+    hd.textContent = sec.label;
+    block.appendChild(hd);
+    const sg = document.createElement('div');
+    sg.className = 'sgrid';
+    const WIDE = new Set(['STD/Mov Sprd', '3D/Map Spot']);
+    secFields.forEach(f => {
+      const card = document.createElement('div');
+      card.className = 'scard' + (WIDE.has(f.lbl) ? ' scard-wide' : '');
+      if (f.tooltip) card.title = f.tooltip;
+      card.innerHTML = `<div class="slbl">${f.lbl}</div>` + cardValueHtml(f);
+      sg.appendChild(card);
+    });
+    block.appendChild(sg);
+    grid.appendChild(block);
   });
 }
 
@@ -677,6 +761,10 @@ function renderChart() {
   const mr = maxRange([w1, w2]);
   const labels = []; for (let r = 0; r <= mr; r++) labels.push(r);
   const ctx = document.getElementById('dmgChart');
+
+  const legEl = document.getElementById('chartLegend');
+  if (legEl) legEl.innerHTML = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
+    .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${w.name}</span></div>`).join('');
 
   if (mode === 'btk') {
     const btkDs = (w, color, label, slot, headshots = btkHS, baseline = false) => ({

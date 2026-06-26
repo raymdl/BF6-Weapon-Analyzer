@@ -230,6 +230,15 @@ Credit: tier-system discovery by SheetOnMyFace.
 
 ## Known Follow-Up Notes
 
+- **Share links are catalog-index encoded (keep catalogs append-only):** the
+  shareable loadout URL (in `ui/app.js`) encodes each attachment as its index in
+  the catalog array (`SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`,
+  `AMMO`, `ERGOS`) and each mag as its index in the weapon's `mags`. To keep
+  previously shared links resolving to the same attachment, **only append new
+  entries to these arrays — never reorder or delete existing ones.** Weapon IDs
+  are stored as strings, so reordering `weapons.json` is safe. The decoder also
+  still understands the original dash-joined ID format (e.g.
+  `a=iron-linear_comp-...`) so older links keep working.
 - **Burst ergos:** `Burst Training` and `Burst Mode` both switch the weapon into
   burst fire and apply `adsRecoilVariationTierMod: 3` (3 tiers of the weapon's
   own `dirVarMult`). `Burst Mode` costs 10 points. Burst size and cadence are
