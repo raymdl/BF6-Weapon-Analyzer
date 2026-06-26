@@ -667,17 +667,21 @@ function renderOverview() {
     'Recoil/Shot': 'recoil', 'Recoil Dir': 'recoil', 'STD/Mov Sprd': 'recoil',
     '3D/Map Spot': 'conceal',
   };
-  const STAT_SECTIONS = [
-    { key: 'combat',   label: 'Combat',      color: '#c9a227' },
-    { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
-    { key: 'ammo',     label: 'Ammo',        color: '#78a840' },
-    { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
-    { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
+  const STAT_ROWS = [
+    [
+      { key: 'combat',   label: 'Combat',      color: '#c9a227' },
+      { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
+      { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
+    ],
+    [
+      { key: 'ammo',     label: 'Ammo',        color: '#78a840' },
+      { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
+    ],
   ];
-  for (let i = 0; i < STAT_SECTIONS.length; i += 2) {
+  for (const rowSecs of STAT_ROWS) {
     const row = document.createElement('div');
     row.className = 'sgrow';
-    [STAT_SECTIONS[i], STAT_SECTIONS[i + 1]].forEach(sec => {
+    rowSecs.forEach(sec => {
       if (!sec) return;
       const secFields = fields.filter(f => (SEC_OF[f.lbl] || 'combat') === sec.key);
       if (!secFields.length) return;
@@ -1275,6 +1279,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes your 3D world position. None or shorter is better.' },
     { lbl: 'Minimap Spot',        val: w => w._minimapSpot,                  unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes you on the minimap. None or shorter is better.' },
     { lbl: 'HS Mult',             val: w => w._hsMult,                       unit: '×',   dec: 2, higherBetter: true, tooltip: 'Headshot damage multiplier after ammo effects. Higher increases headshot damage.' },
+    { lbl: 'Collateral Mult',    val: w => w._collateralMult,               unit: '×',   dec: 2, higherBetter: true, tooltip: 'Damage multiplier applied to bullets that pass through a target or surface. Varies by ammo type and weapon class.' },
   ];
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
@@ -1418,8 +1423,8 @@ function renderRecoil() {
       const tt2 = state.comparing ? ttHtml(state.slots[1].weapon, w2, state.slots[1].atts, 'c2') : '';
       return {
         lbl: 'Recoil Direction ± Variation',
-        val1: w1 ? (((-selectedRecoilDirectionFor(w1)) >= 0 ? '+' : '') + (-selectedRecoilDirectionFor(w1))) + '° ±' + selectedRecoilVariationFor(w1).toFixed(1) + '°' : null,
-        val2: w2 ? (((-selectedRecoilDirectionFor(w2)) >= 0 ? '+' : '') + (-selectedRecoilDirectionFor(w2))) + '° ±' + selectedRecoilVariationFor(w2).toFixed(1) + '°' : null,
+        val1: w1 ? (((-selectedRecoilDirectionFor(w1)) >= 0 ? '+' : '') + (-selectedRecoilDirectionFor(w1))) + '° ± ' + selectedRecoilVariationFor(w1).toFixed(1) + '°' : null,
+        val2: w2 ? (((-selectedRecoilDirectionFor(w2)) >= 0 ? '+' : '') + (-selectedRecoilDirectionFor(w2))) + '° ± ' + selectedRecoilVariationFor(w2).toFixed(1) + '°' : null,
         centeredRange: true,
         barStart1: w1 ? (-selectedRecoilDirectionFor(w1) - selectedRecoilVariationFor(w1)) / 180 : 0,
         bar1:      w1 ? (-selectedRecoilDirectionFor(w1) + selectedRecoilVariationFor(w1)) / 180 : 0,
