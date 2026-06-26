@@ -4,47 +4,47 @@
       "id": "standard",
       "name": "Standard",
       "hsMult": null,
-      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75, "SMG": 0.57, "Sidearm": 0.57 }
+      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75, "Sniper Rifle": 0.75, "SMG": 0.57, "Sidearm": 0.57 }
     },
     {
       "id": "penetration",
       "name": "Penetration",
       "hsMult": null,
       "adsRecoilTierMod": -1,
-      "collateralMult": { "Assault Rifle": 1.00, "Carbine": 1.00, "LMG": 1.00, "DMR": 1.00, "SMG": 0.75, "Sidearm": 0.75 }
+      "collateralMult": { "Assault Rifle": 1.00, "Carbine": 1.00, "LMG": 1.00, "DMR": 1.00, "Sniper Rifle": 1.00, "SMG": 0.75, "Sidearm": 0.75 }
     },
     {
       "id": "lightweight",
       "name": "Lightweight",
       "hsMult": null,
       "adsMoveSpeedTierShift": -1,
-      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75 }
+      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75, "Sniper Rifle": 0.75 }
     },
     {
       "id": "long_range",
       "name": "Long-Range",
       "hsMult": null,
       "noEffect": true,
-      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75 }
+      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75, "Sniper Rifle": 0.75 }
     },
     {
       "id": "hollow_pt",
       "name": "Hollow Point",
       "hsMult": "hp",
-      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
+      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "Sniper Rifle": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
     },
     {
       "id": "frangible",
       "name": "Frangible",
       "hsMult": null,
       "noEffect": true,
-      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
+      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "Sniper Rifle": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
     },
     {
       "id": "synthetic",
       "name": "Synthetic",
       "hsMult": 1.75,
-      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
+      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "Sniper Rifle": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
     },
     {
       "id": "buckshot",
