@@ -661,7 +661,7 @@ function renderOverview() {
   // Group the stat cards into labelled, colour-accented sections for scannability.
   const SEC_OF = {
     'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
-    'Pellets': 'combat', 'Mag Size': 'combat', 'Tac Reload': 'combat',
+    'Pellets': 'combat', 'Mag Size': 'combat', 'Tac Reload': 'mobility',
     'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Sprint Rec': 'mobility',
     'Recoil/Shot': 'recoil', 'Recoil Dir': 'recoil', 'STD/Mov Sprd': 'recoil',
     '3D/Map Spot': 'conceal',
