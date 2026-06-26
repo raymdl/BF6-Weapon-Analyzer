@@ -3,56 +3,66 @@
     {
       "id": "standard",
       "name": "Standard",
-      "hsMult": null
+      "hsMult": null,
+      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75, "SMG": 0.57, "Sidearm": 0.57 }
     },
     {
       "id": "penetration",
       "name": "Penetration",
       "hsMult": null,
-      "adsRecoilTierMod": -1
+      "adsRecoilTierMod": -1,
+      "collateralMult": { "Assault Rifle": 1.00, "Carbine": 1.00, "LMG": 1.00, "DMR": 1.00, "SMG": 0.75, "Sidearm": 0.75 }
     },
     {
       "id": "lightweight",
       "name": "Lightweight",
       "hsMult": null,
-      "adsMoveSpeedTierShift": -1
+      "adsMoveSpeedTierShift": -1,
+      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75 }
     },
     {
       "id": "long_range",
       "name": "Long-Range",
       "hsMult": null,
-      "noEffect": true
+      "noEffect": true,
+      "collateralMult": { "Assault Rifle": 0.75, "Carbine": 0.75, "LMG": 0.75, "DMR": 0.75 }
     },
     {
       "id": "hollow_pt",
       "name": "Hollow Point",
-      "hsMult": "hp"
+      "hsMult": "hp",
+      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
     },
     {
       "id": "frangible",
       "name": "Frangible",
       "hsMult": null,
-      "noEffect": true
+      "noEffect": true,
+      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
     },
     {
       "id": "synthetic",
       "name": "Synthetic",
-      "hsMult": 1.75
+      "hsMult": 1.75,
+      "collateralMult": { "Assault Rifle": 0.67, "Carbine": 0.67, "LMG": 0.67, "DMR": 0.67, "SMG": 0.50, "Sidearm": 0.50 }
     },
     {
       "id": "buckshot",
       "name": "Buckshot",
-      "hsMult": 1.0
+      "hsMult": 1.0,
+      "collateralMult": { "Shotgun": 0.33 }
     },
     {
       "id": "flechette",
       "name": "Flechette",
-      "hsMult": 1.0
+      "hsMult": 1.0,
+      "collateralMult": { "Shotgun": 0.57 }
     },
     {
       "id": "slugs",
       "name": "Slugs",
-      "hsMult": 1.34
+      "hsMult": 1.34,
+      "collateralMult": { "Shotgun": 0.33 }
     }
   ],
   "WEAPON_AMMO": {

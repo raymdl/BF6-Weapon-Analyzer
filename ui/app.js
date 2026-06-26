@@ -604,6 +604,8 @@ function renderOverview() {
       tooltip: 'Rounds available in the selected magazine.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
       tooltip: 'Tactical reload time in seconds, using the selected magazine and Mag Catch when applicable.' },
+    { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
+      tooltip: 'Damage multiplier applied to bullets that pass through a target or surface. Varies by ammo type and weapon class.' },
     { lbl: 'ADS Time',    compute: w => w._adsTimeMs ?? w.adsTime,       unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true, group: 'mobility',
       tooltip: 'Time to aim down sights. Can be affected by magazine, barrel, and grip selections.',
       estFn: w => !w._adsTimeMs && w.adsTime != null },
@@ -660,7 +662,7 @@ function renderOverview() {
   // Group the stat cards into labelled, colour-accented sections for scannability.
   const SEC_OF = {
     'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
-    'Pellets': 'combat', 'Mag Size': 'combat', 'Tac Reload': 'mobility',
+    'Pellets': 'combat', 'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
     'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Sprint Rec': 'mobility',
     'Recoil/Shot': 'recoil', 'Recoil Dir': 'recoil', 'STD/Mov Sprd': 'recoil',
     '3D/Map Spot': 'conceal',
@@ -668,6 +670,7 @@ function renderOverview() {
   const STAT_SECTIONS = [
     { key: 'combat',   label: 'Combat',      color: '#c9a227' },
     { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
+    { key: 'ammo',     label: 'Ammo',        color: '#78a840' },
     { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
     { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
   ];

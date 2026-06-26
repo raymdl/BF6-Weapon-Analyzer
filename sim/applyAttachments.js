@@ -163,6 +163,7 @@ export function applyAttachments(w, atts) {
 
   // ── Ammo display ──────────────────────────────────────────────────────────────
   const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
+  const collateralMult = ammoType.collateralMult?.[w.cls] ?? null;
 
   // ── Magazine stats ────────────────────────────────────────────────────────────
   const wm       = WEAPON_MAG[w.id] ?? null;
@@ -247,6 +248,7 @@ export function applyAttachments(w, atts) {
     _adsTimeTierMod:         combinedAdsTimeTierMod,
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs,
     _hsMult:                 hsMult,
+    _collateralMult:         collateralMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
     rpm:         fireMode === 'burst' && burstRpm ? burstRpm : w.rpm,
     fireMode,
