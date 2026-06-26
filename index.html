@@ -82,11 +82,10 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .sgroup{break-inside:avoid;border-left:2px solid var(--border);padding-left:10px;margin-bottom:13px}
 .sgroup:last-child{margin-bottom:0}
 .sgroup-hd{font-size:0.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px}
-.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:5px}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:5px}
 .scard{background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:5px 9px;letter-spacing:-0.03em}
 .scard.stat-group{background:#202929}
-.scard-wide{grid-column:span 2}
-.scard-wide .sval,.scard-wide .scmp-row{white-space:nowrap}
+.sgrid .sval,.sgrid .scmp-row{white-space:nowrap}
 .slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:2px;white-space:nowrap}
 .sval{font-size:0.9rem;font-weight:700}
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
@@ -108,9 +107,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:grid;grid-template-columns:456px repeat(2,minmax(260px,1fr));column-gap:14px;align-items:start;position:relative}
+.rc-layout{display:grid;grid-template-columns:430px repeat(2,minmax(260px,1fr));column-gap:14px;align-items:start;position:relative}
 .rc-head{grid-column:1/-1;margin-bottom:9px}
-.rc-plot{width:456px;flex:0 0 456px}
+.rc-plot{width:430px;flex:0 0 430px}
 .rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
 .rc-head .ptitle{margin-bottom:0}
 .rc-title{grid-column:1 / -1;white-space:nowrap}
@@ -138,7 +137,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-ref-actions{position:absolute;top:12px;right:10px;z-index:2;display:flex;gap:3px}
 .rc-ref-actions .rc-mode-btn{background:rgba(77,148,208,.1);border-color:#2a3a48;color:#6a9ec0}
 canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
-.rc-canvas-wrap{position:relative;width:456px;height:456px}
+.rc-canvas-wrap{position:relative;width:430px;height:430px}
 .rc-scale-controls{position:absolute;top:42px;right:10px;z-index:2;display:flex;flex-direction:column;gap:4px}
 .rc-pan-controls{position:absolute;right:10px;bottom:20px;z-index:2;display:flex;gap:4px}
 .rc-scale-btn,.rc-pan-btn{width:20px;height:20px;min-height:20px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:4px;color:#6a9ec0;font-weight:700;line-height:1}
@@ -198,7 +197,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
 
 @media (max-width:1270px){
-  .rc-layout{grid-template-columns:minmax(360px,456px) minmax(0,1fr);row-gap:18px;column-gap:16px}
+  .rc-layout{grid-template-columns:minmax(340px,430px) minmax(0,1fr);row-gap:18px;column-gap:16px}
   .att-stats{grid-column:1/-1;border-left:none;padding-left:0;align-self:auto}
   .att-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 }
@@ -467,7 +466,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
                 <button class="rc-pan-btn" type="button" data-pan="down" title="Move chart down"><span class="rc-pan-icon"></span></button>
                 <button class="rc-pan-btn" type="button" data-pan="right" title="Move chart right"><span class="rc-pan-icon"></span></button>
               </div>
-              <canvas id="rcMain" class="rcv" width="456" height="456"></canvas>
+              <canvas id="rcMain" class="rcv" width="430" height="430"></canvas>
             </div>
             <div class="rc-legend" id="rcLegend"></div>
             <div class="rc-note"></div>

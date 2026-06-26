@@ -684,10 +684,9 @@ function renderOverview() {
     block.appendChild(hd);
     const sg = document.createElement('div');
     sg.className = 'sgrid';
-    const WIDE = new Set(['STD/Mov Sprd', '3D/Map Spot']);
     secFields.forEach(f => {
       const card = document.createElement('div');
-      card.className = 'scard' + (WIDE.has(f.lbl) ? ' scard-wide' : '');
+      card.className = 'scard';
       if (f.tooltip) card.title = f.tooltip;
       card.innerHTML = `<div class="slbl">${f.lbl}</div>` + cardValueHtml(f);
       sg.appendChild(card);
