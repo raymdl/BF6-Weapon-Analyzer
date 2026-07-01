@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distance Spray Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0f0f;
+    color: #c8d8d8;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 18px;
+  }
+  h1 {
+    color: #d8e6e6;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .sub {
+    color: #7a9898;
+    font-size: 11px;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    max-width: none;
+    white-space: nowrap;
+  }
+  .controls {
+    align-items: center;
+    column-gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 6px;
+    margin-bottom: 14px;
+  }
+  .preview-layout {
+    align-items: flex-start;
+    display: flex;
+    gap: 14px;
+  }
+  .preview-sidebar {
+    background: #0d1414;
+    border: 1px solid #1e2e2e;
+    border-radius: 4px;
+    flex: 0 0 208px;
+    max-height: calc(100vh - 112px);
+    overflow-y: auto;
+  }
+  .preview-sidebar::-webkit-scrollbar { width: 3px; }
+  .preview-sidebar::-webkit-scrollbar-thumb { background: #273a3a; }
+  .preview-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .sb-sec,
+  .att-sec {
+    border-bottom: 1px solid #1e2e2e;
+    padding: 6px 11px;
+  }
+  .sb-lbl {
+    color: #7a9898;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .class-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .cbtn {
+    background: #111a1a;
+    border: 1px solid #273a3a;
+    border-radius: 3px;
+    color: #7a9898;
+    font-size: 11px;
+    min-height: 22px;
+    padding: 2px 6px;
+  }
+  .cbtn:hover,
+  .cbtn.on {
+    background: rgba(201, 162, 39, 0.1);
+    border-color: #c9a227;
+    color: #c9a227;
+  }
+  .wlist {
+    display: flex;
+    flex-direction: column;
+  }
+  .wbtn {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgba(40, 48, 48, 0.55);
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    color: #c8d8d8;
+    font-size: 13px;
+    min-height: 24px;
+    overflow: hidden;
+    padding: 3px 11px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .wbtn:hover { background: #111a1a; }
+  .wbtn.on {
+    background: rgba(201, 162, 39, 0.1);
+    border-left-color: #c9a227;
+    color: #c9a227;
+  }
+  .no-w,
+  .att-note {
+    color: #7a9898;
+    font-size: 12px;
+    padding: 8px 0;
+  }
+  .att-head {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .att-total {
+    color: #c9a227;
+    font-size: 10px;
+  }
+  .att-total.over { color: #d94b3d; }
+  .att-row {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 4px;
+  }
+  .att-lbl {
+    color: #7a9898;
+    flex: 0 0 41px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .att-sel {
+    flex: 1;
+    min-width: 0;
+    min-height: 24px;
+    padding: 2px 6px;
+  }
+  label {
+    color: #9ab0b0;
+    font-size: 12px;
+  }
+  select,
+  input {
+    background: #111a1a;
+    border: 1px solid #273a3a;
+    border-radius: 4px;
+    color: #c8d8d8;
+    font-size: 12px;
+    min-height: 28px;
+    padding: 5px 9px;
+  }
+  select:focus,
+  input:focus {
+    border-color: #4d8080;
+    outline: none;
+  }
+  button {
+    background: #121c1c;
+    border: 1px solid #273a3a;
+    border-radius: 4px;
+    color: #9ab0b0;
+    cursor: pointer;
+    font-size: 11px;
+    min-height: 26px;
+    padding: 4px 8px;
+  }
+  button:hover { border-color: #4d8080; color: #d8e6e6; }
+  .segmented {
+    border: 1px solid #273a3a;
+    border-radius: 4px;
+    display: inline-flex;
+    overflow: hidden;
+  }
+  .segmented button {
+    border: 0;
+    border-radius: 0;
+    border-right: 1px solid #273a3a;
+    min-width: 54px;
+    white-space: nowrap;
+  }
+  .segmented button:last-child { border-right: 0; }
+  .segmented button.on {
+    background: #c9a227;
+    color: #061010;
+    font-weight: 700;
+  }
+  .mode-group button { min-width: 104px; }
+  .distance-row {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+  }
+  .bloom-bullets-row {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+  }
+  .bloom-bullets-row.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .bloom-bullets-input {
+    width: 122px;
+  }
+  .bloom-shape-group button {
+    min-width: 76px;
+  }
+  .compact-input {
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 48px;
+  }
+  .distance-input {
+    padding-left: 7px;
+    padding-right: 7px;
+    width: 58px;
+  }
+  .control-label {
+    color: #9ab0b0;
+    font-size: 12px;
+  }
+  .compensation-row {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+  }
+  .compensation-row.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .loadout-stats {
+    color: #9ab0b0;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .loadout-stats strong {
+    color: #c8d8d8;
+    font-weight: 700;
+  }
+  .row-break {
+    flex-basis: 100%;
+    height: 0;
+  }
+  input[type="range"] {
+    min-height: auto;
+    padding: 0;
+    width: 93px;
+  }
+  .wall-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    max-width: 1160px;
+  }
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .panel-title {
+    align-items: center;
+    color: #c9a227;
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+    justify-content: space-between;
+    letter-spacing: 0.05em;
+    min-height: 28px;
+    text-transform: uppercase;
+  }
+  .panel-title span:last-child {
+    color: #789292;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .custom-panel-title {
+    gap: 12px;
+  }
+  .custom-panel-title .distance-row {
+    color: #9ab0b0;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-left: auto;
+    text-transform: none;
+  }
+  .canvas-wrap {
+    position: relative;
+  }
+  .view-scale-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    z-index: 2;
+  }
+  .view-pan-controls {
+    bottom: 8px;
+    display: flex;
+    gap: 4px;
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+  }
+  .view-scale-btn,
+  .view-pan-btn {
+    align-items: center;
+    background: rgba(8, 13, 13, 0.82);
+    border: 1px solid #345050;
+    border-radius: 4px;
+    color: #c8d8d8;
+    display: flex;
+    font-weight: 700;
+    height: 20px;
+    justify-content: center;
+    line-height: 1;
+    min-height: 20px;
+    padding: 3px;
+    width: 20px;
+  }
+  .view-scale-btn:hover,
+  .view-pan-btn:hover {
+    border-color: #c9a227;
+    color: #c9a227;
+  }
+  .view-scale-icon {
+    display: block;
+    fill: none;
+    height: 10px;
+    overflow: visible;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    width: 10px;
+  }
+  .view-reset-icon {
+    font-size: 12px;
+    line-height: 1;
+    transform: translate(0, -1px);
+  }
+  .view-pan-icon {
+    display: block;
+    height: 0;
+    width: 0;
+  }
+  .view-pan-btn[data-pan="up"] .view-pan-icon {
+    border-bottom: 5px solid currentColor;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+  .view-pan-btn[data-pan="down"] .view-pan-icon {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+  }
+  .view-pan-btn[data-pan="left"] .view-pan-icon {
+    border-bottom: 4px solid transparent;
+    border-right: 5px solid currentColor;
+    border-top: 4px solid transparent;
+  }
+  .view-pan-btn[data-pan="right"] .view-pan-icon {
+    border-bottom: 4px solid transparent;
+    border-left: 5px solid currentColor;
+    border-top: 4px solid transparent;
+  }
+  canvas {
+    background: #080d0d;
+    border: 1px solid #1e2e2e;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+  }
+  .readout {
+    color: #6f8888;
+    font-size: 10px;
+    line-height: 1.45;
+    min-height: 28px;
+  }
+  .hit-count {
+    color: #d8e6e6;
+    font-weight: 700;
+  }
+  .note {
+    color: #5f7676;
+    font-size: 10px;
+    line-height: 1.45;
+    margin-top: 14px;
+    max-width: 980px;
+  }
+  .error {
+    background: #2a1515;
+    border: 1px solid #734040;
+    border-radius: 4px;
+    color: #f0c0b8;
+    display: none;
+    font-size: 12px;
+    line-height: 1.45;
+    margin-bottom: 14px;
+    max-width: 980px;
+    padding: 10px 12px;
+  }
+  @media (max-width: 820px) {
+    .preview-layout { flex-direction: column; }
+    .preview-sidebar {
+      flex-basis: auto;
+      max-height: none;
+      width: 100%;
+    }
+    .wall-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<h1>Distance Spray Preview</h1>
+<p class="sub">Projects the existing recoil and bloom simulation from angular degrees onto a flat wall at selected distances. The dot positions are still produced by the same recoil and spread model; only the display unit changes to meters on the wall.</p>
+<div id="loadError" class="error"></div>
+
+<div class="preview-layout">
+<aside class="preview-sidebar">
+  <div class="sb-sec">
+    <div class="sb-lbl">Class</div>
+    <div class="class-filter" id="classFilter"></div>
+  </div>
+  <div class="sb-sec">
+    <div class="sb-lbl">Weapon</div>
+    <div class="wlist" id="weaponList"></div>
+  </div>
+  <div class="att-sec" id="attachmentSection"></div>
+</aside>
+
+<main class="preview-main">
+<div class="controls">
+  <span class="segmented">
+    <button id="aimAds" class="on" type="button" onclick="setAim('ads')">ADS</button>
+    <button id="aimHip" type="button" onclick="setAim('hip')">Hipfire</button>
+  </span>
+  <span class="segmented">
+    <button id="stanceStand" class="on" type="button" onclick="setStance('stand')">Standing</button>
+    <button id="stanceMove" type="button" onclick="setStance('move')">Moving</button>
+  </span>
+  <label>Shots <input id="shotCountInput" class="compact-input" type="number" min="1" max="100" step="1" value="20"></label>
+  <button type="button" onclick="redrawRandom()">Redraw Spray</button>
+  <span class="segmented mode-group">
+    <button id="modeSpray" class="on" type="button" onclick="toggleViewLayer('spray')">Spray Pattern</button>
+    <button id="modePath" type="button" onclick="toggleViewLayer('path')">Recoil Path</button>
+    <button id="modeBloom" type="button" onclick="toggleViewLayer('bloom')">Bloom Bubbles</button>
+  </span>
+  <span id="bloomBulletsRow" class="bloom-bullets-row">
+    <label for="bloomBulletsInput">Bubbles on Shots:</label>
+    <input id="bloomBulletsInput" class="bloom-bullets-input" type="text" value="1, 2, 3, 5, 8, 13, 20">
+  </span>
+  <span id="bloomShapeGroup" class="segmented bloom-shape-group">
+    <button id="bloomIndividual" class="on" type="button" onclick="setBloomDisplayMode('individual')">Individual</button>
+    <button id="bloomOutline" type="button" onclick="setBloomDisplayMode('outline')">Outline</button>
+  </span>
+  <span class="control-label">Target Aim:</span>
+  <span class="segmented">
+    <button id="targetAimChest" class="on" type="button" onclick="setTargetAimPoint('chest')">Chest</button>
+    <button id="targetAimHead" type="button" onclick="setTargetAimPoint('head')">Head</button>
+  </span>
+  <span class="row-break"></span>
+  <span id="recoilStats" class="loadout-stats"></span>
+  <span class="control-label">Recoil Control:</span>
+  <span class="segmented">
+    <button id="controlOff" class="on" type="button" onclick="setRecoilControl(false)">Off</button>
+    <button id="controlOn" type="button" onclick="setRecoilControl(true)">On</button>
+  </span>
+  <span id="compensationRow" class="compensation-row">
+    <label for="compensationRange">Compensation Level</label>
+    <input id="compensationRange" type="range" min="0" max="125" step="1" value="85">
+    <input id="compensationInput" class="compact-input" type="number" min="0" max="125" step="1" value="85">
+    <span class="readout">%</span>
+  </span>
+  <span class="control-label">Platform:</span>
+  <span class="segmented">
+    <button id="platformPc" class="on" type="button" onclick="setPlatform('pc')">PC</button>
+    <button id="platformConsole" type="button" onclick="setPlatform('console')">Console</button>
+  </span>
+  <span id="compensationStats" class="loadout-stats"></span>
+</div>
+
+<div class="wall-grid">
+  <section class="panel">
+    <div class="panel-title"><span>5 m wall</span><span id="scale10"></span></div>
+    <div class="canvas-wrap">
+      <div class="view-scale-controls">
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wall10', 'in')" title="Zoom in"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wall10', 'out')" title="Zoom out"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="resetPanelView('wall10')" title="Reset view"><span class="view-reset-icon">&#8634;</span></button>
+      </div>
+      <div class="view-pan-controls" aria-label="Move 5 m wall view">
+        <button class="view-pan-btn" type="button" data-pan="left" onclick="panPanelView('wall10', 'left')" title="Move view left"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="up" onclick="panPanelView('wall10', 'up')" title="Move view up"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="down" onclick="panPanelView('wall10', 'down')" title="Move view down"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="right" onclick="panPanelView('wall10', 'right')" title="Move view right"><span class="view-pan-icon"></span></button>
+      </div>
+      <canvas id="wall10" width="541" height="429"></canvas>
+    </div>
+    <div class="readout" id="read10"></div>
+  </section>
+  <section class="panel">
+    <div class="panel-title"><span>10 m wall</span><span id="scale20"></span></div>
+    <div class="canvas-wrap">
+      <div class="view-scale-controls">
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wall20', 'in')" title="Zoom in"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wall20', 'out')" title="Zoom out"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="resetPanelView('wall20')" title="Reset view"><span class="view-reset-icon">&#8634;</span></button>
+      </div>
+      <div class="view-pan-controls" aria-label="Move 10 m wall view">
+        <button class="view-pan-btn" type="button" data-pan="left" onclick="panPanelView('wall20', 'left')" title="Move view left"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="up" onclick="panPanelView('wall20', 'up')" title="Move view up"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="down" onclick="panPanelView('wall20', 'down')" title="Move view down"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="right" onclick="panPanelView('wall20', 'right')" title="Move view right"><span class="view-pan-icon"></span></button>
+      </div>
+      <canvas id="wall20" width="541" height="429"></canvas>
+    </div>
+    <div class="readout" id="read20"></div>
+  </section>
+  <section class="panel">
+    <div class="panel-title"><span>20 m wall</span><span id="scale30"></span></div>
+    <div class="canvas-wrap">
+      <div class="view-scale-controls">
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wall30', 'in')" title="Zoom in"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wall30', 'out')" title="Zoom out"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="resetPanelView('wall30')" title="Reset view"><span class="view-reset-icon">&#8634;</span></button>
+      </div>
+      <div class="view-pan-controls" aria-label="Move 20 m wall view">
+        <button class="view-pan-btn" type="button" data-pan="left" onclick="panPanelView('wall30', 'left')" title="Move view left"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="up" onclick="panPanelView('wall30', 'up')" title="Move view up"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="down" onclick="panPanelView('wall30', 'down')" title="Move view down"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="right" onclick="panPanelView('wall30', 'right')" title="Move view right"><span class="view-pan-icon"></span></button>
+      </div>
+      <canvas id="wall30" width="541" height="429"></canvas>
+    </div>
+    <div class="readout" id="read30"></div>
+  </section>
+  <section class="panel">
+    <div class="panel-title custom-panel-title">
+      <span id="customTitle">30 m wall</span>
+      <span class="distance-row">
+        <label for="distanceRange">Custom distance</label>
+        <input id="distanceRange" type="range" min="5" max="150" step="5" value="30">
+        <input id="distanceInput" class="distance-input" type="number" min="1" max="150" step="1" value="30">
+      </span>
+      <span id="scaleCustom"></span>
+    </div>
+    <div class="canvas-wrap">
+      <div class="view-scale-controls">
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wallCustom', 'in')" title="Zoom in"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="adjustPanelZoom('wallCustom', 'out')" title="Zoom out"><svg class="view-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
+        <button class="view-scale-btn" type="button" onclick="resetPanelView('wallCustom')" title="Reset view"><span class="view-reset-icon">&#8634;</span></button>
+      </div>
+      <div class="view-pan-controls" aria-label="Move custom wall view">
+        <button class="view-pan-btn" type="button" data-pan="left" onclick="panPanelView('wallCustom', 'left')" title="Move view left"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="up" onclick="panPanelView('wallCustom', 'up')" title="Move view up"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="down" onclick="panPanelView('wallCustom', 'down')" title="Move view down"><span class="view-pan-icon"></span></button>
+        <button class="view-pan-btn" type="button" data-pan="right" onclick="panPanelView('wallCustom', 'right')" title="Move view right"><span class="view-pan-icon"></span></button>
+      </div>
+      <canvas id="wallCustom" width="541" height="429"></canvas>
+    </div>
+    <div class="readout" id="readCustom"></div>
+  </section>
+</div>
+
+<p class="note">Projection uses tan(angle) * distance for both recoil and spread offsets. Spread landing uses uniform-over-radius sampling, matching the current app behavior.</p>
+</main>
+</div>
+
+<script type="module">
+import {
+  setSimContext, mulberry32, whash,
+  recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
+  selectedRecoilAmountFor, selectedRecoilVariationFor,
+  spreadBounds, spreadDynamics, selectedSpreadIncFor,
+  simulateBloom, genRecoilPts,
+} from './sim/core.js';
+import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
+import * as Loadout from './sim/loadout.js';
+const EMBEDDED_WEAPONS = await fetch('./data/weapons.json').then(r => r.json());
+const [_balance, _atts, _ammo, _recoilDecay] = await Promise.all([
+  fetch('./data/balance_tables.json').then(r => r.json()),
+  fetch('./data/attachments.json').then(r => r.json()),
+  fetch('./data/ammo.json').then(r => r.json()),
+  fetch('./data/recoil_decay.json').then(r => r.json()),
+]);
+const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+        BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+        ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS } = _balance;
+const HP_HS_HIGH = new Set(_HP_HS_HIGH);
+const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+        WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
+const { AMMO, WEAPON_AMMO } = _ammo;
+const { RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP } = _recoilDecay;
+const CONSOLE_RECOIL_MULT = 0.89;
+setAttachmentContext({
+  MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
+  AMMO,
+  RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+  BASE_HS_MULT, HP_HS_HIGH,
+  MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+  ADS_SPD_TIERS, SPRINT_REC_TIERS, ADS_MOVE_TIERS,
+});
+const LOADOUT_DATA = {
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, ERGOS,
+  WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
+  AMMO, WEAPON_AMMO,
+};
+let WEAPONS = [];
+let selectedClass = 'Assault Rifle';
+let selectedWeaponId = 'm433';
+const blankAtts = Loadout.blankAtts;
+let selectedAtts = blankAtts();
+let aimState = 'ads';
+let stanceState = 'stand';
+let platformState = 'pc';
+setSimContext({
+  aimState, stanceState,
+  RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP,
+  compensationFn: selectedCompensationLevel,
+  platformRecoilMultFn: selectedPlatformRecoilMult,
+});
+let refSeed = 0;
+const viewLayers = { spray: true, path: false, bloom: false };
+let bloomDisplayMode = 'individual';
+let targetAimPoint = 'chest';
+let recoilControl = false;
+const DEFAULT_COMPENSATION = 85;
+let compensationLevel = DEFAULT_COMPENSATION;
+const DEFAULT_SHOTS = 20;
+const RUNS = 14;
+const VIEW_HALF_ANGLE_DEG = 14;
+const VIEW_Y_MIN_ANGLE_DEG = -9.65;
+const TARGET_HEIGHT_CM = 180;
+const TARGET_SHOULDER_CM = 46;
+const TARGET_AIM_SVG_Y = {
+  chest: 66.5,
+  head: 18,
+};
+const panelViews = {
+  wall10: { zoom: 1, panX: 0, panY: 0 },
+  wall20: { zoom: 1, panX: 0, panY: 0 },
+  wall30: { zoom: 1, panX: 0, panY: 0 },
+  wallCustom: { zoom: 1, panX: 0, panY: 0 },
+};
+const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun'];
+
+function classShort(cls) {
+  return {
+    'Assault Rifle': 'AR',
+    'Carbine': 'Carb',
+    'SMG': 'SMG',
+    'LMG': 'LMG',
+    'DMR': 'DMR',
+    'Sniper Rifle': 'Sniper',
+    'Shotgun': 'SG',
+  }[cls] ?? cls;
+}
+
+function spreadKey() {
+  return `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
+}
+
+function selectedPlatformRecoilMult() {
+  return platformState === 'console' ? CONSOLE_RECOIL_MULT : 1;
+}
+
+
+
+
+
+
+
+function normalizeDegrees(deg) {
+  return ((deg % 360) + 360) % 360;
+}
+
+function signedDegrees(deg) {
+  const value = ((deg + 180) % 360 + 360) % 360 - 180;
+  return value === 0 ? 0 : value;
+}
+
+function formatDeg(value) {
+  const signed = signedDegrees(value);
+  const prefix = signed > 0 ? '+' : '';
+  return `${prefix}${signed.toFixed(1)} deg`;
+}
+
+function updateLoadoutStats() {
+  const recoilEl = document.getElementById('recoilStats');
+  const compensationEl = document.getElementById('compensationStats');
+  if (!recoilEl || !compensationEl) return;
+  const w = selectedWeapon();
+  if (!w) {
+    recoilEl.textContent = '';
+    compensationEl.textContent = '';
+    return;
+  }
+  const group = recoilGroup(w);
+  const dir = group.dir ?? w.recoilDir ?? 0;
+  const variation = selectedRecoilVariationFor(w);
+  const amount = selectedRecoilAmountFor(w);
+  recoilEl.innerHTML = [
+    `<strong>Recoil Direction:</strong> ${formatDeg(dir)}`,
+    `<strong>Variation:</strong> +/-${variation.toFixed(1)} deg`,
+  ].join(' | ');
+  const level = selectedCompensationLevel();
+  const compDir = recoilControl ? normalizeDegrees(dir + 180) : 0;
+  const compAmount = amount * (level / 100);
+  compensationEl.innerHTML = `<strong>Compensation:</strong> ${compDir.toFixed(1)} deg / ${compAmount.toFixed(2)} deg per shot (${level}%)`;
+}
+
+
+
+
+
+
+function cmAtDistance(angleDeg, distanceM) {
+  return Math.tan(angleDeg * Math.PI / 180) * distanceM * 100;
+}
+
+function formatMeters(cm) {
+  const m = cm / 100;
+  if (Math.abs(m) < 0.005) return '0 m';
+  return `${m.toFixed(2).replace(/\.00$/, '').replace(/0$/, '')} m`;
+}
+
+function niceGridStep(spanCm) {
+  const target = spanCm / 5;
+  return [25, 50, 100, 200, 250, 500, 1000].find(step => step >= target) ?? 1000;
+}
+
+
+
+
+function projectedRun(w, distanceM, recoilSeed, bloomSeed, includeBloom = true) {
+  const shots = selectedShotCount();
+  const pts = genRecoilPts(w, recoilSeed, shots);
+  const blooms = simulateBloom(w, shots);
+  const rng = mulberry32((whash(w.id) ^ bloomSeed ^ 0xdeadbeef) >>> 0);
+  return pts.map((p, i) => {
+    let xDeg = p.x;
+    let yDeg = p.y;
+    if (includeBloom) {
+      const bloom = blooms[i] ?? spreadBounds(w)[0];
+      const bAng = rng() * Math.PI * 2;
+      const bR = bloom * rng();
+      xDeg += bR * Math.cos(bAng);
+      yDeg += bR * Math.sin(bAng);
+    }
+    return {
+      xCm: cmAtDistance(xDeg, distanceM),
+      yCm: cmAtDistance(yDeg, distanceM),
+      recoilXDeg: p.x,
+      recoilYDeg: p.y,
+    };
+  });
+}
+
+function drawWall(canvas, readout, distanceM, scaleEl) {
+  const w = selectedWeapon();
+  if (!w) return;
+
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const PL = 42, PR = 35, PT = 14, PB = 43;
+  const PW = W - PL - PR, PH = H - PT - PB;
+  const view = panelViews[canvas.id] ?? { zoom: 1, panX: 0, panY: 0 };
+  const zoom = Math.max(0.5, Math.min(10, view.zoom || 1));
+  const xHalf = cmAtDistance(VIEW_HALF_ANGLE_DEG, distanceM) / zoom;
+  const xSpan = xHalf * 2;
+  const ySpan = xSpan * (PH / PW);
+  const xMin = -xHalf + view.panX, xMax = xHalf + view.panX;
+  const yBaseMin = cmAtDistance(VIEW_Y_MIN_ANGLE_DEG, distanceM);
+  const yBaseSpan = cmAtDistance(VIEW_HALF_ANGLE_DEG, distanceM) * 2 * (PH / PW);
+  const yCenter = yBaseMin + yBaseSpan / 2 + view.panY;
+  const yMin = yCenter - ySpan / 2;
+  const yMax = yMin + ySpan;
+  const toX = x => PL + ((x - xMin) / (xMax - xMin)) * PW;
+  const toY = y => PT + PH - ((y - yMin) / (yMax - yMin)) * PH;
+
+  ctx.fillStyle = '#080d0d';
+  ctx.fillRect(0, 0, W, H);
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(PL, PT, PW, PH);
+  ctx.clip();
+
+  const grid = 100;
+  ctx.strokeStyle = 'rgba(40,52,52,0.65)';
+  ctx.lineWidth = 0.5;
+  for (let x = Math.ceil(xMin / grid) * grid; x <= xMax; x += grid) {
+    ctx.beginPath(); ctx.moveTo(toX(x), PT); ctx.lineTo(toX(x), PT + PH); ctx.stroke();
+  }
+  for (let y = Math.ceil(yMin / grid) * grid; y <= yMax; y += grid) {
+    ctx.beginPath(); ctx.moveTo(PL, toY(y)); ctx.lineTo(PL + PW, toY(y)); ctx.stroke();
+  }
+  ctx.strokeStyle = 'rgba(150,165,165,0.65)';
+  ctx.lineWidth = 1.4;
+  if (xMin <= 0 && xMax >= 0) {
+    ctx.beginPath(); ctx.moveTo(toX(0), PT); ctx.lineTo(toX(0), PT + PH); ctx.stroke();
+  }
+  if (yMin <= 0 && yMax >= 0) {
+    ctx.beginPath(); ctx.moveTo(PL, toY(0)); ctx.lineTo(PL + PW, toY(0)); ctx.stroke();
+  }
+
+  const targetHitTest = drawTarget(ctx, toX, toY);
+
+  const primary = projectedRun(w, distanceM, refSeed >>> 0, refSeed >>> 0, true);
+  const pathPts = projectedRun(w, distanceM, refSeed >>> 0, refSeed >>> 0, false);
+  const hitFlags = primary.map(targetHitTest);
+  const shotRadius = 2.7 * (5 / distanceM) * zoom;
+
+  if (viewLayers.bloom) drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM);
+
+  if (viewLayers.path) {
+    ctx.beginPath();
+    pathPts.forEach((p, i) => {
+      const x = toX(p.xCm), y = toY(p.yCm);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.strokeStyle = 'rgba(201,162,39,0.72)';
+    ctx.lineWidth = 2.1;
+    ctx.stroke();
+  }
+  if (viewLayers.spray) {
+    primary.forEach((p, i) => {
+      ctx.beginPath();
+      ctx.arc(toX(p.xCm), toY(p.yCm), shotRadius, 0, Math.PI * 2);
+      ctx.fillStyle = hitFlags[i] ? '#d94b3d' : '#c9a227';
+      ctx.fill();
+    });
+  }
+  ctx.restore();
+
+  ctx.strokeStyle = '#1e2e2e';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(PL, PT, PW, PH);
+  ctx.fillStyle = 'rgba(120,146,146,0.85)';
+  ctx.font = '10px Arial, Helvetica, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  for (let x = Math.ceil(xMin / grid) * grid; x <= xMax; x += grid) {
+    if (x !== 0) ctx.fillText(formatMeters(x), toX(x), PT + PH + 5);
+  }
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let y = Math.ceil(yMin / grid) * grid; y <= yMax; y += grid) {
+    ctx.fillText(formatMeters(y), PL - 4, toY(y));
+  }
+
+  const last = primary[primary.length - 1];
+  const maxOffset = Math.max(...primary.map(p => Math.hypot(p.xCm, p.yCm)));
+  const targetHits = primary.filter(targetHitTest).length;
+  const oneDeg = cmAtDistance(1, distanceM);
+  readout.innerHTML = `<span class="hit-count">Hits on target: ${targetHits}/${primary.length}</span>. Final shot: ${formatMeters(last.xCm)} H, ${formatMeters(last.yCm)} V. Max primary offset: ${formatMeters(maxOffset)}.`;
+  scaleEl.textContent = zoom === 1 ? `1 deg = ${formatMeters(oneDeg)}` : `1 deg = ${formatMeters(oneDeg)} / ${zoom.toFixed(1).replace('.0', '')}x`;
+}
+
+function drawTarget(ctx, toX, toY) {
+  const svgPath = `M104.265,117.959c-0.304,3.58,2.126,22.529,3.38,29.959c0.597,3.52,2.234,9.255,1.645,12.3c-0.841,4.244-1.084,9.736-0.621,12.934c0.292,1.942,1.211,10.899-0.104,14.175c-0.688,1.718-1.949,10.522-1.949,10.522c-3.285,8.294-1.431,7.886-1.431,7.886c1.017,1.248,2.759,0.098,2.759,0.098c1.327,0.846,2.246-0.201,2.246-0.201c1.139,0.943,2.467-0.116,2.467-0.116c1.431,0.743,2.758-0.627,2.758-0.627c0.822,0.414,1.023-0.109,1.023-0.109c2.466-0.158-1.376-8.05-1.376-8.05c-0.92-7.088,0.913-11.033,0.913-11.033c6.004-17.805,6.309-22.53,3.909-29.24c-0.676-1.937-0.847-2.704-0.536-3.545c0.719-1.941,0.195-9.748,1.072-12.848c1.692-5.979,3.361-21.142,4.231-28.217c1.169-9.53-4.141-22.308-4.141-22.308c-1.163-5.2,0.542-23.727,0.542-23.727c2.381,3.705,2.29,10.245,2.29,10.245c-0.378,6.859,5.541,17.342,5.541,17.342c2.844,4.332,3.921,8.442,3.921,8.747c0,1.248-0.273,4.269-0.273,4.269l0.109,2.631c0.049,0.67,0.426,2.977,0.365,4.092c-0.444,6.862,0.646,5.571,0.646,5.571c0.92,0,1.931-5.522,1.931-5.522c0,1.424-0.348,5.687,0.42,7.295c0.919,1.918,1.595-0.329,1.607-0.78c0.243-8.737,0.768-6.448,0.768-6.448c0.511,7.088,1.139,8.689,2.265,8.135c0.853-0.407,0.073-8.506,0.073-8.506c1.461,4.811,2.569,5.577,2.569,5.577c2.411,1.693,0.92-2.983,0.585-3.909c-1.784-4.92-1.839-6.625-1.839-6.625c2.229,4.421,3.909,4.257,3.909,4.257c2.174-0.694-1.9-6.954-4.287-9.953c-1.218-1.528-2.789-3.574-3.245-4.789c-0.743-2.058-1.304-8.674-1.304-8.674c-0.225-7.807-2.155-11.198-2.155-11.198c-3.3-5.282-3.921-15.135-3.921-15.135l-0.146-16.635c-1.157-11.347-9.518-11.429-9.518-11.429c-8.451-1.258-9.627-3.988-9.627-3.988c-1.79-2.576-0.767-7.514-0.767-7.514c1.485-1.208,2.058-4.415,2.058-4.415c2.466-1.891,2.345-4.658,1.206-4.628c-0.914,0.024-0.707-0.733-0.707-0.733C115.068,0.636,104.01,0,104.01,0h-1.688c0,0-11.063,0.636-9.523,13.089c0,0,0.207,0.758-0.715,0.733c-1.136-0.03-1.242,2.737,1.215,4.628c0,0,0.572,3.206,2.058,4.415c0,0,1.023,4.938-0.767,7.514c0,0-1.172,2.73-9.627,3.988c0,0-8.375,0.082-9.514,11.429l-0.158,16.635c0,0-0.609,9.853-3.922,15.135c0,0-1.921,3.392-2.143,11.198c0,0-0.563,6.616-1.303,8.674c-0.451,1.209-2.021,3.255-3.249,4.789c-2.408,2.993-6.455,9.24-4.29,9.953c0,0,1.689,0.164,3.909-4.257c0,0-0.046,1.693-1.827,6.625c-0.35,0.914-1.839,5.59,0.573,3.909c0,0,1.117-0.767,2.569-5.577c0,0-0.779,8.099,0.088,8.506c1.133,0.555,1.751-1.047,2.262-8.135c0,0,0.524-2.289,0.767,6.448c0.012,0.451,0.673,2.698,1.596,0.78c0.779-1.608,0.429-5.864,0.429-7.295c0,0,0.999,5.522,1.933,5.522c0,0,1.099,1.291,0.648-5.571c-0.073-1.121,0.32-3.422,0.369-4.092l0.106-2.631c0,0-0.274-3.014-0.274-4.269c0-0.311,1.078-4.415,3.921-8.747c0,0,5.913-10.488,5.532-17.342c0,0-0.082-6.54,2.299-10.245c0,0,1.69,18.526,0.545,23.727c0,0-5.319,12.778-4.146,22.308c0.864,7.094,2.53,22.237,4.226,28.217c0.886,3.094,0.362,10.899,1.072,12.848c0.32,0.847,0.152,1.627-0.536,3.545c-2.387,6.71-2.083,11.436,3.921,29.24c0,0,1.848,3.945,0.914,11.033c0,0-3.836,7.892-1.379,8.05c0,0,0.192,0.523,1.023,0.109c0,0,1.327,1.37,2.761,0.627c0,0,1.328,1.06,2.463,0.116c0,0,0.91,1.047,2.237,0.201c0,0,1.742,1.175,2.777-0.098c0,0,1.839,0.408-1.435-7.886c0,0-1.254-8.793-1.945-10.522c-1.318-3.275-0.387-12.251-0.106-14.175c0.453-3.216,0.21-8.695-0.618-12.934c-0.606-3.038,1.035-8.774,1.641-12.3c1.245-7.423,3.685-26.373,3.38-29.959l1.008,0.354C103.809,118.312,104.265,117.959,104.265,117.959z`;
+  const path = new Path2D(svgPath);
+  const viewBoxHeight = 206.326;
+  const viewBoxCenterX = 103.163;
+  const aimSvgY = TARGET_AIM_SVG_Y[targetAimPoint] ?? TARGET_AIM_SVG_Y.chest;
+  const cmPerSvgUnit = TARGET_HEIGHT_CM / viewBoxHeight;
+  const pxPerCm = Math.abs(toX(1) - toX(0));
+  const svgToPx = cmPerSvgUnit * pxPerCm;
+  const targetX = toX(0) - viewBoxCenterX * svgToPx;
+  const targetY = toY(0) - aimSvgY * svgToPx;
+
+  ctx.save();
+  ctx.translate(targetX, targetY);
+  ctx.scale(svgToPx, svgToPx);
+  ctx.strokeStyle = 'rgba(170,190,190,0.52)';
+  ctx.lineWidth = 1.8 / svgToPx;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.fillStyle = 'rgba(170,190,190,0.035)';
+  ctx.fill(path);
+  ctx.stroke(path);
+  ctx.restore();
+
+  return point => {
+    const svgX = (toX(point.xCm) - targetX) / svgToPx;
+    const svgY = (toY(point.yCm) - targetY) / svgToPx;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    const hit = ctx.isPointInPath(path, svgX, svgY);
+    ctx.restore();
+    return hit;
+  };
+}
+
+function drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM) {
+  const blooms = simulateBloom(w, selectedShotCount());
+  if (bloomDisplayMode === 'outline') {
+    drawBloomEnvelope(ctx, toX, toY, w, pathPts, blooms, distanceM);
+    return;
+  }
+  const idxs = selectedBloomCircleIndexes();
+  ctx.save();
+  ctx.fillStyle = 'rgba(201,162,39,0.08)';
+  ctx.strokeStyle = 'rgba(201,162,39,0.42)';
+  ctx.lineWidth = 1.1;
+  idxs.forEach(idx => {
+    const p = pathPts[idx];
+    if (!p) return;
+    const radiusCm = cmAtDistance(blooms[idx] ?? spreadBounds(w)[0], distanceM);
+    const x = toX(p.xCm);
+    const y = toY(p.yCm);
+    const r = Math.abs(toX(p.xCm + radiusCm) - x);
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+  });
+  ctx.restore();
+}
+
+function drawBloomEnvelope(ctx, toX, toY, w, pathPts, blooms, distanceM) {
+  const circles = pathPts.map((p, idx) => {
+    const radiusCm = cmAtDistance(blooms[idx] ?? spreadBounds(w)[0], distanceM);
+    const x = toX(p.xCm);
+    const y = toY(p.yCm);
+    const r = Math.abs(toX(p.xCm + radiusCm) - x);
+    return { x, y, r };
+  }).filter(c => Number.isFinite(c.x) && Number.isFinite(c.y) && Number.isFinite(c.r));
+  if (!circles.length) return;
+
+  const TWO_PI = Math.PI * 2;
+  const connectedCircles = [];
+  circles.forEach((circle, idx) => {
+    if (idx > 0) {
+      const prev = circles[idx - 1];
+      const dx = circle.x - prev.x;
+      const dy = circle.y - prev.y;
+      const distance = Math.hypot(dx, dy);
+      const steps = Math.max(1, Math.ceil(distance / Math.max(2, Math.min(prev.r, circle.r) * 0.65)));
+      for (let step = 1; step < steps; step++) {
+        const t = step / steps;
+        const smoothT = t * t * (3 - 2 * t);
+        connectedCircles.push({
+          x: prev.x + dx * t,
+          y: prev.y + dy * t,
+          r: prev.r + (circle.r - prev.r) * smoothT,
+        });
+      }
+    }
+    connectedCircles.push(circle);
+  });
+  const normalizeAngle = angle => ((angle % TWO_PI) + TWO_PI) % TWO_PI;
+  const addCoveredInterval = (intervals, start, end) => {
+    start = normalizeAngle(start);
+    end = normalizeAngle(end);
+    if (end < start) intervals.push([start, TWO_PI], [0, end]);
+    else intervals.push([start, end]);
+  };
+  const mergeIntervals = intervals => {
+    if (!intervals.length) return [];
+    intervals.sort((a, b) => a[0] - b[0]);
+    const merged = [intervals[0].slice()];
+    for (let i = 1; i < intervals.length; i++) {
+      const current = intervals[i];
+      const last = merged[merged.length - 1];
+      if (current[0] <= last[1] + 1e-4) last[1] = Math.max(last[1], current[1]);
+      else merged.push(current.slice());
+    }
+    return merged;
+  };
+  const uncoveredIntervals = covered => {
+    const merged = mergeIntervals(covered);
+    if (!merged.length) return [[0, TWO_PI]];
+    if (merged.length === 1 && merged[0][0] <= 0 && merged[0][1] >= TWO_PI) return [];
+    const gaps = [];
+    let cursor = 0;
+    merged.forEach(interval => {
+      if (interval[0] > cursor + 1e-4) gaps.push([cursor, interval[0]]);
+      cursor = Math.max(cursor, interval[1]);
+    });
+    if (cursor < TWO_PI - 1e-4) gaps.push([cursor, TWO_PI]);
+    return gaps;
+  };
+
+  ctx.save();
+  ctx.beginPath();
+  connectedCircles.forEach(c => {
+    ctx.moveTo(c.x + c.r, c.y);
+    ctx.arc(c.x, c.y, c.r, 0, TWO_PI);
+  });
+  ctx.fillStyle = 'rgba(201,162,39,0.16)';
+  ctx.fill();
+
+  ctx.beginPath();
+  connectedCircles.forEach((circle, circleIdx) => {
+    const covered = [];
+    let fullyCovered = false;
+    connectedCircles.forEach((other, otherIdx) => {
+      if (otherIdx === circleIdx) return;
+      const dx = other.x - circle.x;
+      const dy = other.y - circle.y;
+      const d = Math.hypot(dx, dy);
+      if (d < 1e-6) {
+        if (other.r >= circle.r) fullyCovered = true;
+        return;
+      }
+      if (d >= circle.r + other.r) return;
+      if (d <= other.r - circle.r) {
+        fullyCovered = true;
+        return;
+      }
+      if (d <= circle.r - other.r) return;
+      const theta = Math.atan2(dy, dx);
+      const alpha = Math.acos(Math.max(-1, Math.min(1, (d * d + circle.r * circle.r - other.r * other.r) / (2 * d * circle.r))));
+      addCoveredInterval(covered, theta - alpha, theta + alpha);
+    });
+    if (fullyCovered) return;
+    uncoveredIntervals(covered).forEach(([start, end]) => {
+      ctx.moveTo(circle.x + Math.cos(start) * circle.r, circle.y + Math.sin(start) * circle.r);
+      ctx.arc(circle.x, circle.y, circle.r, start, end);
+    });
+  });
+  ctx.strokeStyle = 'rgba(201,162,39,0.66)';
+  ctx.lineWidth = 1.4;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.stroke();
+  ctx.restore();
+}
+
+function selectedBloomCircleIndexes() {
+  const input = document.getElementById('bloomBulletsInput');
+  const shotCount = selectedShotCount();
+  const fallback = [1, 2, 3, 5, 8, 13, 20];
+  const values = parseBloomBulletSpec(input?.value ?? '', shotCount);
+  const bullets = values.length ? values : fallback.filter(v => v <= shotCount);
+  return [...new Set(bullets)].map(v => v - 1);
+}
+
+function parseBloomBulletSpec(spec, shotCount) {
+  const text = spec.trim().toLowerCase();
+  if (!text) return [];
+  if (text === 'all') return range(1, shotCount);
+
+  const everyMatch = text.match(/^every\s+(\d+)$/);
+  if (everyMatch) {
+    const step = Math.max(1, Math.round(Number(everyMatch[1])));
+    const values = [];
+    for (let shot = 1; shot <= shotCount; shot += step) values.push(shot);
+    return values;
+  }
+
+  const values = [];
+  text.split(/[,;\s]+/).forEach(part => {
+    if (!part) return;
+    const rangeMatch = part.match(/^(\d+)\s*-\s*(\d+)$/);
+    if (rangeMatch) {
+      const start = Math.round(Number(rangeMatch[1]));
+      const end = Math.round(Number(rangeMatch[2]));
+      values.push(...range(Math.min(start, end), Math.max(start, end)));
+      return;
+    }
+    const value = Math.round(Number(part));
+    if (Number.isFinite(value)) values.push(value);
+  });
+  return values.filter(v => v >= 1 && v <= shotCount);
+}
+
+function range(start, end) {
+  const values = [];
+  for (let value = start; value <= end; value++) values.push(value);
+  return values;
+}
+
+function rawSelectedWeapon() {
+  return WEAPONS.find(w => w.id === selectedWeaponId) ?? WEAPONS[0];
+}
+
+function selectedWeapon() {
+  const raw = rawSelectedWeapon();
+  return applyAttachments(raw, selectedAtts);
+}
+
+function computeAttPts(atts, weapon) {
+  return Loadout.computeAttPts(atts, weapon, LOADOUT_DATA);
+}
+
+function validateAtts(atts, weapon) {
+  Loadout.resetAttsForWeapon(atts, weapon, LOADOUT_DATA);
+}
+
+function renderAttachmentSection() {
+  Loadout.renderAttachmentSection({
+    containerId: 'attachmentSection',
+    atts: selectedAtts,
+    weapon: rawSelectedWeapon(),
+    data: LOADOUT_DATA,
+    onChange: () => { renderSidebar(); redraw(); },
+  });
+}
+function renderSidebar() {
+  const cf = document.getElementById('classFilter');
+  const wl = document.getElementById('weaponList');
+  cf.innerHTML = '';
+  CLASSES.forEach(cls => {
+    const btn = document.createElement('button');
+    btn.className = `cbtn${cls === selectedClass ? ' on' : ''}`;
+    btn.textContent = classShort(cls);
+    btn.title = cls;
+    btn.onclick = () => { selectedClass = cls; renderSidebar(); };
+    cf.appendChild(btn);
+  });
+
+  wl.innerHTML = '';
+  const weapons = WEAPONS.filter(w => w.cls === selectedClass);
+  if (!weapons.length) wl.innerHTML = '<div class="no-w">No weapons</div>';
+  weapons.forEach(w => {
+    const btn = document.createElement('button');
+    btn.className = `wbtn${w.id === selectedWeaponId ? ' on' : ''}`;
+    btn.textContent = w.name;
+    btn.onclick = () => {
+      selectedWeaponId = w.id;
+      selectedAtts = blankAtts();
+      validateAtts(selectedAtts, w);
+      renderSidebar();
+      redraw();
+    };
+    wl.appendChild(btn);
+  });
+  renderAttachmentSection();
+}
+
+function setAim(value) {
+  aimState = value;
+  setSimContext({ aimState });
+  document.getElementById('aimAds').classList.toggle('on', value === 'ads');
+  document.getElementById('aimHip').classList.toggle('on', value === 'hip');
+  renderSidebar();
+  redraw();
+}
+
+function setStance(value) {
+  stanceState = value;
+  setSimContext({ stanceState });
+  document.getElementById('stanceStand').classList.toggle('on', value === 'stand');
+  document.getElementById('stanceMove').classList.toggle('on', value === 'move');
+  renderSidebar();
+  redraw();
+}
+
+function toggleViewLayer(layer) {
+  viewLayers[layer] = !viewLayers[layer];
+  if (!viewLayers.spray && !viewLayers.path && !viewLayers.bloom) viewLayers[layer] = true;
+  syncViewLayerButtons();
+  syncBloomBulletsControl();
+  redraw();
+}
+
+function syncViewLayerButtons() {
+  document.getElementById('modeSpray').classList.toggle('on', viewLayers.spray);
+  document.getElementById('modePath').classList.toggle('on', viewLayers.path);
+  document.getElementById('modeBloom').classList.toggle('on', viewLayers.bloom);
+}
+
+function setBloomDisplayMode(value) {
+  bloomDisplayMode = value === 'outline' ? 'outline' : 'individual';
+  document.getElementById('bloomIndividual').classList.toggle('on', bloomDisplayMode === 'individual');
+  document.getElementById('bloomOutline').classList.toggle('on', bloomDisplayMode === 'outline');
+  syncBloomBulletsControl();
+  redraw();
+}
+
+function setTargetAimPoint(value) {
+  targetAimPoint = value === 'head' ? 'head' : 'chest';
+  document.getElementById('targetAimChest').classList.toggle('on', targetAimPoint === 'chest');
+  document.getElementById('targetAimHead').classList.toggle('on', targetAimPoint === 'head');
+  redraw();
+}
+
+function syncBloomBulletsControl() {
+  const row = document.getElementById('bloomBulletsRow');
+  const input = document.getElementById('bloomBulletsInput');
+  const group = document.getElementById('bloomShapeGroup');
+  if (!row || !input || !group) return;
+  const enabled = viewLayers.bloom;
+  const bulletsEnabled = enabled && bloomDisplayMode === 'individual';
+  group.classList.toggle('disabled', !enabled);
+  row.classList.toggle('disabled', !bulletsEnabled);
+  input.disabled = !bulletsEnabled;
+  group.querySelectorAll('button').forEach(btn => { btn.disabled = !enabled; });
+}
+
+function setRecoilControl(value) {
+  recoilControl = value;
+  document.getElementById('controlOff').classList.toggle('on', !value);
+  document.getElementById('controlOn').classList.toggle('on', value);
+  syncCompensationControls();
+  redraw();
+}
+
+function setPlatform(value) {
+  platformState = value === 'console' ? 'console' : 'pc';
+  document.getElementById('platformPc').classList.toggle('on', platformState === 'pc');
+  document.getElementById('platformConsole').classList.toggle('on', platformState === 'console');
+  redraw();
+}
+
+function selectedCompensationLevel() {
+  return recoilControl ? compensationLevel : 0;
+}
+
+function syncCompensationControls() {
+  const row = document.getElementById('compensationRow');
+  const input = document.getElementById('compensationInput');
+  const range = document.getElementById('compensationRange');
+  if (!row || !input || !range) return;
+  const visibleValue = recoilControl ? compensationLevel : 0;
+  row.classList.toggle('disabled', !recoilControl);
+  input.disabled = !recoilControl;
+  range.disabled = !recoilControl;
+  input.value = visibleValue;
+  range.value = visibleValue;
+}
+
+function syncCompensationLevel() {
+  const input = document.getElementById('compensationInput');
+  const value = Number(input.value);
+  compensationLevel = Math.max(0, Math.min(125, Math.round(Number.isFinite(value) ? value : DEFAULT_COMPENSATION)));
+  syncCompensationControls();
+  redraw();
+}
+
+function syncCompensationFromRange() {
+  const value = +document.getElementById('compensationRange').value;
+  compensationLevel = Math.max(0, Math.min(125, Math.round(Number.isFinite(value) ? value : DEFAULT_COMPENSATION)));
+  syncCompensationControls();
+  redraw();
+}
+
+function selectedShotCount() {
+  const input = document.getElementById('shotCountInput');
+  if (!input) return DEFAULT_SHOTS;
+  return Math.max(1, Math.min(100, Math.round(+input.value || DEFAULT_SHOTS)));
+}
+
+function syncShotCount() {
+  document.getElementById('shotCountInput').value = selectedShotCount();
+  redraw();
+}
+
+function panelDistance(panelId) {
+  if (panelId === 'wall10') return 5;
+  if (panelId === 'wall20') return 10;
+  if (panelId === 'wall30') return 20;
+  return customDistance();
+}
+
+function panelViewSpan(panelId) {
+  const view = panelViews[panelId] ?? { zoom: 1 };
+  return cmAtDistance(VIEW_HALF_ANGLE_DEG, panelDistance(panelId)) * 2 / Math.max(0.5, view.zoom || 1);
+}
+
+function adjustPanelZoom(panelId, dir) {
+  const view = panelViews[panelId];
+  if (!view) return;
+  view.zoom *= dir === 'in' ? 1.25 : 0.8;
+  view.zoom = Math.max(0.5, Math.min(10, view.zoom));
+  redraw();
+}
+
+function resetPanelView(panelId) {
+  const view = panelViews[panelId];
+  if (!view) return;
+  view.zoom = 1;
+  view.panX = 0;
+  view.panY = 0;
+  redraw();
+}
+
+function panPanelView(panelId, dir) {
+  const view = panelViews[panelId];
+  if (!view) return;
+  const step = panelViewSpan(panelId) * 0.12;
+  if (dir === 'left') view.panX -= step;
+  if (dir === 'right') view.panX += step;
+  if (dir === 'up') view.panY += step;
+  if (dir === 'down') view.panY -= step;
+  redraw();
+}
+
+function redrawRandom() {
+  refSeed = (Math.random() * 0x100000000) >>> 0;
+  redraw();
+}
+
+function syncDistanceFromRange() {
+  const value = +document.getElementById('distanceRange').value;
+  document.getElementById('distanceInput').value = value;
+  redraw();
+}
+
+function syncDistanceFromInput() {
+  const input = document.getElementById('distanceInput');
+  const value = Math.max(1, Math.min(150, +input.value || 30));
+  input.value = value;
+  document.getElementById('distanceRange').value = Math.max(5, Math.min(150, value));
+  redraw();
+}
+
+function customDistance() {
+  return Math.max(1, +document.getElementById('distanceInput').value || 30);
+}
+
+function redraw() {
+  const custom = customDistance();
+  document.getElementById('customTitle').textContent = `${custom} m wall`;
+  syncViewLayerButtons();
+  syncBloomBulletsControl();
+  syncCompensationControls();
+  updateLoadoutStats();
+  drawWall(document.getElementById('wall10'), document.getElementById('read10'), 5, document.getElementById('scale10'));
+  drawWall(document.getElementById('wall20'), document.getElementById('read20'), 10, document.getElementById('scale20'));
+  drawWall(document.getElementById('wall30'), document.getElementById('read30'), 20, document.getElementById('scale30'));
+  drawWall(document.getElementById('wallCustom'), document.getElementById('readCustom'), custom, document.getElementById('scaleCustom'));
+}
+
+async function init() {
+  WEAPONS = EMBEDDED_WEAPONS;
+  try {
+    if (!WEAPONS.some(w => w.id === selectedWeaponId)) selectedWeaponId = WEAPONS[0]?.id;
+    selectedClass = rawSelectedWeapon()?.cls ?? selectedClass;
+    validateAtts(selectedAtts, rawSelectedWeapon());
+    renderSidebar();
+    redraw();
+  } catch (err) {
+    const el = document.getElementById('loadError');
+    el.style.display = 'block';
+    el.textContent = `Could not render the preview. Details: ${err.message}`;
+  }
+}
+
+document.getElementById('distanceRange').addEventListener('input', syncDistanceFromRange);
+document.getElementById('distanceInput').addEventListener('change', syncDistanceFromInput);
+document.getElementById('shotCountInput').addEventListener('change', syncShotCount);
+document.getElementById('bloomBulletsInput').addEventListener('change', redraw);
+document.getElementById('bloomBulletsInput').addEventListener('input', redraw);
+document.getElementById('compensationInput').addEventListener('change', syncCompensationLevel);
+document.getElementById('compensationRange').addEventListener('input', syncCompensationFromRange);
+init();
+
+// Bridge to window so inline onclick="…" attributes can resolve these (module scope is not global)
+Object.assign(window, {
+  adjustPanelZoom, panPanelView, redrawRandom, resetPanelView,
+  setAim, setBloomDisplayMode, setPlatform, setRecoilControl, setStance, setTargetAimPoint, toggleViewLayer,
+});
+</script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0e1cac698a442b6abd238207d509270"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>
