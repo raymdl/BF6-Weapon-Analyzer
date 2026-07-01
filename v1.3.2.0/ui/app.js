@@ -33,20 +33,6 @@ try {
   throw err;
 }
 
-// Update header date from the data file's Last-Modified header (set by GitHub Pages
-// from the file's last commit date — updates automatically on every data push).
-{
-  const tag = document.querySelector('.hdr-tag');
-  if (tag && _dataLastModified) {
-    const d = new Date(_dataLastModified);
-    const mon = d.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' }).toUpperCase();
-    const day = d.getUTCDate();
-    const yr  = d.getUTCFullYear();
-    const prefix = tag.textContent.replace(/\(Updated.*\)/, '').trim();
-    tag.textContent = `${prefix} (Updated ${day} ${mon} ${yr})`;
-  }
-}
-
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
         BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
