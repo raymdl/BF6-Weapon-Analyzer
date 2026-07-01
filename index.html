@@ -24,6 +24,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .hdr-tag{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .legacy-link{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px;text-decoration:none;margin-left:auto}
 .legacy-link:hover{border-color:#666;color:#ccc}
+.archive-group{display:flex;align-items:center;gap:6px;margin-left:auto}
+.archive-group .legacy-link{margin-left:0}
+.archive-label{font-size:0.65rem;color:var(--muted)}
 .share-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.66rem;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:3px 10px;background:rgba(201,162,39,.1);letter-spacing:.04em;transition:all .15s}
 .share-btn::before{content:"";width:10px;height:10px;flex-shrink:0;background:currentColor;-webkit-mask:var(--share-icon) center/contain no-repeat;mask:var(--share-icon) center/contain no-repeat}
 .share-btn:hover{background:rgba(201,162,39,.18)}
@@ -234,6 +237,7 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
   .logo{font-size:.95rem;letter-spacing:2px}
   .hdr-tag{font-size:.58rem}
   .legacy-link{font-size:.58rem}
+  .archive-label{font-size:.58rem}
   .sidebar{inset:8px;width:auto;top:8px;bottom:8px;left:8px;right:8px;transform:translateY(-10px)}
   body.loadout-open .sidebar{transform:translateY(0)}
   .sb-scroll{display:block}
@@ -285,8 +289,11 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 <header>
   <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
   <div class="hdr-tag">Season 3 (Updated 15 MAY 2026)</div>
-  <a class="legacy-link" href="./v1.2.3.0/">v1.2.3.0 Archive</a>
-  <a class="legacy-link" href="./v1.3.2.0/">v1.3.2.0 Archive</a>
+  <div class="archive-group">
+    <span class="archive-label">Archives:</span>
+    <a class="legacy-link" href="./v1.2.3.0/">v1.2.3.0</a>
+    <a class="legacy-link" href="./v1.3.2.0/">v1.3.2.0</a>
+  </div>
   <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections">Loadout</button>
 </header>
 <div class="app">
