@@ -28,7 +28,7 @@ All three pages (`index.html`, `preview_bloom.html`, `preview_distance.html`)
 load from these files. **One edit → all pages updated.**
 
 All eight weapon classes are fully supported in the UI, including `Sidearm` (displayed
-as `Pistol` in the class filter). The `v1.2.3.0/` and `v1.3.2.0/` directories are frozen
+as `Pistol` in the class filter). The `v1.2.3.0/` and `v1.3.1.0/` directories are frozen
 archives of previous versions of the site — never edit them during normal maintenance.
 
 ---
