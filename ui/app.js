@@ -42,8 +42,8 @@ try {
     const mon = d.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' }).toUpperCase();
     const day = d.getUTCDate();
     const yr  = d.getUTCFullYear();
-    const prefix = tag.textContent.replace(/\(Updated.*\)/, '').trim();
-    tag.textContent = `${prefix} (Updated ${day} ${mon} ${yr})`;
+    const prefix = tag.textContent.replace(/- Updated.*$/, '').trim();
+    tag.textContent = `${prefix} - Updated ${day} ${mon} ${yr}`;
   }
 }
 
