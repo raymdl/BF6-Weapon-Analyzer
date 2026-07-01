@@ -41,7 +41,8 @@ BF6 Project/
   scripts/
     validate-data.mjs       ← Cross-file data validation used locally and by CI
 
-  season-2/                 ← Frozen archive of the Season 2 site (do not edit)
+  v1.2.3.0/                 ← Frozen archive of the v1.2.3.0 site (do not edit)
+  v1.3.2.0/                 ← Frozen archive of the v1.3.2.0 site (do not edit)
 
   CODE_DOCUMENTATION.md     ← Architecture and behavior reference
   MAINTENANCE.md            ← Season/patch update checklist (data edits)
