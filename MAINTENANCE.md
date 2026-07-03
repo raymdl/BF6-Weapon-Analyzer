@@ -33,6 +33,29 @@ archives of previous versions of the site — never edit them during normal main
 
 ---
 
+## Patch Update Workflow
+
+```mermaid
+flowchart TD
+    P["Game patch / season drop"] --> N["Read patch notes —<br/>capture exact numbers now"]
+    P --> SY["Wait for sym.gg datamine<br/>(spread, recoil, velocity tables)"]
+    N --> E["Edit data/*.json<br/>(checklists below)"]
+    SY --> E
+    E --> V["node scripts/validate-data.mjs"]
+    V -- fail --> E
+    V -- pass --> L["Local check via serve.bat —<br/>spot-check BTK/TTK vs sym.gg,<br/>eyeball recoil/bloom sim"]
+    L --> AR{"New balance<br/>version?"}
+    AR -- yes --> F["Freeze current site into vX.Y.Z.0/<br/>archive + add archive button"]
+    AR -- no --> H["Update header season tag +<br/>footer data credit"]
+    F --> H
+    H --> C["Commit + push<br/>(CI re-runs validate-data)"]
+```
+
+For a visual explanation of how the recoil/bloom simulation itself works, see the
+**Recoil / Bloom Model** section in `CODE_DOCUMENTATION.md`.
+
+---
+
 ## Season / Patch Checklist
 
 ### New Weapon
@@ -88,6 +111,9 @@ archives of previous versions of the site — never edit them during normal main
 7. Add hip spread class to `data/balance_tables.json` → `HIP_CLS`
 8. Add headshot multiplier to `data/balance_tables.json` → `BASE_HS_MULT`
    (only if it differs from the default 1.34)
+9. Add limb-damage class to `data/balance_tables.json` → `LIMB_CLASS`
+   (`auto` for AR/Carbine/SMG/LMG incl. burst rifles, `dmr`, `sniper`;
+   omit for shotguns and sidearms)
 
 ### Weapon Stat Changes (recoil, spread, damage, ADS time, etc.)
 
@@ -138,6 +164,11 @@ Edit `data/balance_tables.json`:
 - `RECOIL_MULT` — per-weapon ADS recoil **amount** tier multiplier
 - `HIP_SPREAD_TIERS` — hip spread values by class and tier
 - `BASE_HS_MULT` — per-weapon base headshot multiplier
+- `LIMB_CLASS` — per-weapon limb-damage class (`auto` / `dmr` / `sniper`); omit for
+  shotguns and sidearms, which take no limb penalty (Update 1.3.3.0)
+- `LIMB_CLASS_MULT` — arm/leg/abdomen damage multiplier per limb class
+- `AUTO_HS_MULT` — headshot multipliers for `auto`-class weapons keyed by ammo
+  (`standard`, `hp`, `synthetic`); non-auto weapons keep `BASE_HS_MULT` / ammo values
 
 Tier tables can be resized freely — `sim/applyAttachments.js` clamps indices to each
 table's actual length.

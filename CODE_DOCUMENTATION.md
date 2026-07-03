@@ -55,6 +55,39 @@ Local-only helper files are intentionally ignored and should not be committed:
 
 ### Data Flow
 
+```mermaid
+flowchart LR
+    subgraph DATA["data/"]
+        WJ["weapons.json"]
+        AJ["attachments.json"]
+        MJ["ammo.json"]
+        RJ["recoil_decay.json"]
+        BJ["balance_tables.json"]
+    end
+    subgraph SIM["sim/ — shared by all 3 pages"]
+        AA["applyAttachments.js<br/>raw weapon + atts → derived weapon"]
+        CO["core.js<br/>recoil + bloom math"]
+        LO["loadout.js + attachments.js<br/>defaults / points / sidebar"]
+    end
+    subgraph UI["ui/app.js (index.html)"]
+        OV["Overview stat cards"]
+        CH["DMG / BTK / TTK chart"]
+        BT["BTK / TTK table"]
+        RC["Recoil & bloom canvas"]
+        AS["Attachment sidebar"]
+    end
+    DATA -->|"setAttachmentContext()"| AA
+    DATA -->|"setSimContext()"| CO
+    DATA --> LO
+    AA -->|"derived weapon"| OV
+    AA --> CH
+    AA --> BT
+    AA --> RC
+    CO -->|"genRecoilPts() / simulateBloom()"| RC
+    CO -->|"shotIntervalAfter() → TTK"| CH
+    LO --> AS
+```
+
 1. Page loads → `<script type="module">` fetches all five JSON files via `Promise.all`.
    Each fetch goes through a `fetchJson` helper that rejects on non-OK responses; any
    failure renders a full-screen "Failed to load weapon data" message (mirroring the
@@ -462,8 +495,14 @@ TTK is burst-cadence aware: `shotIntervalAfter` returns the normal inter-shot in
 within a burst and the longer post-burst pause between bursts, so burst weapons get a
 realistic stepped TTK rather than a naive `(btk-1)/rpm`.
 
-`getBTKWithHS(w, range, headshots)` allocates headshots first, then finishes with body shots.
-Uses `w._hsMult` (from `applyAttachments`) with fallback to 1.34.
+`getBTKWithHits(w, range, headshots, zoneMult)` allocates headshots first, then finishes
+with body shots at `zoneMult` (1 = chest, `w._limbMult` = arms/legs/abdomen). Uses
+`w._hsMult` (from `applyAttachments`) with fallback to 1.34. Hit order never matters —
+damage is additive — so "N headshots + rest chest" and "N headshots + rest limbs" are the
+best/worst band edges drawn on the BTK/TTK/damage charts (Update 1.3.3.0 limb multipliers:
+`LIMB_CLASS` / `LIMB_CLASS_MULT` in `data/balance_tables.json`; automatics also use the
+raised `AUTO_HS_MULT` headshot tiers keyed by ammo: standard 1.40, hollow point 1.57,
+synthetic 1.80).
 
 ### Recoil Amount and Variation Tier Ladders
 
@@ -494,6 +533,35 @@ from the weapon's recoil group directly.
 ---
 
 ## Recoil / Bloom Model
+
+### The Model at a Glance
+
+Every simulated shot is the sum of two independent mechanisms: a **recoil path** (where
+the aim point has drifted to) and a **bloom circle** (how large the random cone has grown).
+The rendered spray pattern samples one impact per shot inside that shot's bloom circle,
+centered on that shot's recoil-path point.
+
+![Spray simulation model: recoil path, bloom circles, sampled impacts](docs/img/spray-model.svg)
+
+Per-shot pipeline (each lane advances between shots, then both feed the impact sample):
+
+```mermaid
+flowchart TD
+    START(["shot i fired"]) --> KICK["Recoil kick<br/>angle = recoil dir ± uniform(variation)<br/>aim point += (sin, cos) × amount"]
+    KICK --> COMP["Subtract compensation vector<br/>(recoil control %, along expected dir)"]
+    COMP --> DECAY["Recoil decay toward (0,0) over inter-shot time<br/>Δr = (abs(r)^decExp + decOffset) × decFactor × dt × t^decTimeExp"]
+    START --> BLOOM["Bloom: spread += inc<br/>clamped to [min, max]"]
+    BLOOM --> RECOV["Spread recovery over inter-shot time<br/>firing params; post-burst gaps add a not-firing segment"]
+    DECAY --> CENTER["shot i+1 center = decayed aim point"]
+    RECOV --> RADIUS["shot i+1 radius = recovered spread"]
+    CENTER --> SAMPLE["impact = center + random point in circle<br/>r = radius × rng() — uniform over radius (center-weighted)"]
+    RADIUS --> SAMPLE
+```
+
+Both lanes are stepped per shot inside `genRecoilPts()` (recoil lane) and
+`simulateBloom()` (bloom lane); the impact sampling happens at render time in
+`drawRecoilFixed()`. The RNG is seeded from the weapon ID (`whash`) so patterns are
+deterministic per weapon until the user rerolls the seed.
 
 ### Sources and Provenance
 
@@ -581,8 +649,9 @@ sub-objects: `state.slots[0/1]` (class, weapon, atts per loadout), `state.chart`
 (mode, btkHS, showAds), and `state.recoil` (aim, stance, layers, platform, control,
 compensation, seed, scale, pan).
 
-**Chart tooltips** use a single custom positioner (`smartFloat`) that floats the tooltip
-near the weapon lines and ignores dashed datasets (BTK baselines, damage thresholds).
+**Chart tooltips** use Chart.js default positioning (`mode: 'index'`, `intersect: false`).
+Baseline and band-fill datasets are filtered out of tooltip content; band values are
+folded into each weapon's line entry as a `chest–limbs` range instead.
 
 ---
 

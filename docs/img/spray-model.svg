@@ -1,0 +1,64 @@
+<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Spray simulation model: recoil path points with growing bloom circles and sampled impact points">
+  <rect x="0" y="0" width="680" height="400" rx="8" fill="#0e1315"/>
+
+  <!-- origin crosshair -->
+  <line x1="150" y1="330" x2="190" y2="330" stroke="#3a4646" stroke-width="1"/>
+  <line x1="170" y1="310" x2="170" y2="350" stroke="#3a4646" stroke-width="1"/>
+  <text x="170" y="368" fill="#7a8a8a" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle">aim point (shot 1)</text>
+
+  <!-- bloom circles (pre-shot spread radius per shot) -->
+  <g stroke="#4d94d0" stroke-width="1.5" fill="rgba(77,148,208,0.10)">
+    <circle cx="170" cy="330" r="6"/>
+    <circle cx="178" cy="286" r="12"/>
+    <circle cx="168" cy="244" r="17"/>
+    <circle cx="186" cy="204" r="22"/>
+    <circle cx="180" cy="168" r="27"/>
+    <circle cx="192" cy="136" r="31"/>
+  </g>
+
+  <!-- recoil path -->
+  <polyline points="170,330 178,286 168,244 186,204 180,168 192,136"
+            fill="none" stroke="#c9a227" stroke-width="2"/>
+  <g fill="#c9a227">
+    <circle cx="170" cy="330" r="3"/>
+    <circle cx="178" cy="286" r="3"/>
+    <circle cx="168" cy="244" r="3"/>
+    <circle cx="186" cy="204" r="3"/>
+    <circle cx="180" cy="168" r="3"/>
+    <circle cx="192" cy="136" r="3"/>
+  </g>
+  <text x="214" y="132" fill="#7a8a8a" font-family="Segoe UI, sans-serif" font-size="11">shot 6</text>
+
+  <!-- sampled impact points -->
+  <g fill="#e8eded">
+    <circle cx="172" cy="327" r="2.5"/>
+    <circle cx="183" cy="290" r="2.5"/>
+    <circle cx="162" cy="240" r="2.5"/>
+    <circle cx="196" cy="208" r="2.5"/>
+    <circle cx="168" cy="160" r="2.5"/>
+    <circle cx="204" cy="148" r="2.5"/>
+  </g>
+
+  <!-- legend / annotations -->
+  <g font-family="Segoe UI, sans-serif">
+    <line x1="380" y1="120" x2="410" y2="120" stroke="#c9a227" stroke-width="2"/>
+    <circle cx="395" cy="120" r="3" fill="#c9a227"/>
+    <text x="420" y="124" fill="#cfd8d8" font-size="13">Recoil path — genRecoilPts()</text>
+    <text x="420" y="141" fill="#7a8a8a" font-size="11">aim point before each shot; per-shot kick = amount</text>
+    <text x="420" y="156" fill="#7a8a8a" font-size="11">at (recoil dir ± uniform variation), minus compensation</text>
+
+    <circle cx="395" cy="190" r="9" stroke="#4d94d0" stroke-width="1.5" fill="rgba(77,148,208,0.10)"/>
+    <text x="420" y="194" fill="#cfd8d8" font-size="13">Bloom circle — simulateBloom()</text>
+    <text x="420" y="211" fill="#7a8a8a" font-size="11">pre-shot spread radius; grows +inc per shot,</text>
+    <text x="420" y="226" fill="#7a8a8a" font-size="11">recovers between shots, clamped to [min, max]</text>
+
+    <circle cx="395" cy="260" r="2.5" fill="#e8eded"/>
+    <text x="420" y="264" fill="#cfd8d8" font-size="13">Impact point</text>
+    <text x="420" y="281" fill="#7a8a8a" font-size="11">random sample inside the bloom circle,</text>
+    <text x="420" y="296" fill="#7a8a8a" font-size="11">r = radius × rng() — uniform over radius (center-weighted)</text>
+
+    <text x="380" y="340" fill="#7a8a8a" font-size="11">Between shots: recoil decays toward zero (applyRecoilDecay)</text>
+    <text x="380" y="355" fill="#7a8a8a" font-size="11">and spread recovers (applySpreadRecovery). All units are degrees</text>
+    <text x="380" y="370" fill="#7a8a8a" font-size="11">of angle — the distance tool projects them via tan(θ) × distance.</text>
+  </g>
+</svg>
