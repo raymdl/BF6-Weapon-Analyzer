@@ -1,3 +1,5 @@
+import { resolveHitMultipliers } from './damage.js';
+
 /**
  * sim/applyAttachments.js — Applies attachment effects to a raw weapon object.
  *
@@ -14,7 +16,7 @@
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
  *     AMMO,
  *     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
- *     BASE_HS_MULT, HP_HS_HIGH,
+ *     BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
  *     ADS_SPD_TIERS, SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
  *   });
@@ -32,6 +34,7 @@ let _ctx = {
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},
   RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
   BASE_HS_MULT: {}, HP_HS_HIGH: new Set(),
+  LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
   ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], PRIMARY_SPRINT_REC_TIERS: [], SIDEARM_SPRINT_REC_TIERS: [], DEPLOY_TIME_TIERS: [], ADS_MOVE_TIERS: [],
 };
@@ -66,7 +69,7 @@ export function applyAttachments(w, atts) {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
     MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
-    BASE_HS_MULT, HP_HS_HIGH,
+    BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
     ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
   } = _ctx;
@@ -153,13 +156,16 @@ export function applyAttachments(w, atts) {
     }
   }
 
-  // ── Headshot multiplier ───────────────────────────────────────────────────────
-  const baseHsMult = BASE_HS_MULT[w.id] ?? 1.34;
-  const hsMult = ammoType.hsMult === null || ammoType.hsMult === undefined
-    ? baseHsMult
-    : ammoType.hsMult === 'hp'
-      ? (HP_HS_HIGH.has(w.id) ? 1.75 : 1.5)
-      : ammoType.hsMult;
+  // ── Headshot & limb multipliers ───────────────────────────────────────────────
+  // Update 1.3.3.0: limb (arm/leg/abdomen) damage multiplier by limb class, and
+  // raised headshot multipliers for automatic weapons (per ammo type).
+  const {
+    headshotMultiplier: hsMult,
+    limbMultiplier: limbMult,
+    limbClass,
+  } = resolveHitMultipliers(w.id, ammoType, {
+    BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+  });
 
   // ── Ammo display ──────────────────────────────────────────────────────────────
   const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
@@ -248,6 +254,8 @@ export function applyAttachments(w, atts) {
     _adsTimeTierMod:         combinedAdsTimeTierMod,
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs,
     _hsMult:                 hsMult,
+    _limbMult:               limbMult,
+    _limbClass:              limbClass,
     _collateralMult:         collateralMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
     rpm:         fireMode === 'burst' && burstRpm ? burstRpm : w.rpm,

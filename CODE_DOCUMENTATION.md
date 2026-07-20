@@ -454,7 +454,7 @@ Damage is **stepped zones**, not interpolated. `getDmg(w, range)` walks forward 
 ### BTK / TTK Calculations
 
 ```js
-BTK = ceil(100 / dmg)        // body shots; pellets multiply dmg for shotguns
+BTK = ceil(100 / dmg)        // unarmored chest shots; pellets multiply dmg for shotguns
 TTK = Σ shotIntervalAfter(w, i) for i in 1..btk-1, in ms   // null when rpm is null
 ```
 
@@ -462,8 +462,18 @@ TTK is burst-cadence aware: `shotIntervalAfter` returns the normal inter-shot in
 within a burst and the longer post-burst pause between bursts, so burst weapons get a
 realistic stepped TTK rather than a naive `(btk-1)/rpm`.
 
-`getBTKWithHS(w, range, headshots)` allocates headshots first, then finishes with body shots.
-Uses `w._hsMult` (from `applyAttachments`) with fallback to 1.34.
+`getBTKWithHits(w, range, headshots, zoneMult)` allocates headshots first, then finishes
+with non-head shots at `zoneMult` (1 = unarmored chest, `w._limbMult` = stomach/arms/legs). Uses
+`w._hsMult` (from `applyAttachments`) with fallback to 1.34. Hit order never matters —
+damage is additive — so "N headshots + rest chest" and "N headshots + rest limbs" are the
+best/worst band edges drawn on the BTK/TTK/damage charts (Update 1.3.3.0 limb multipliers:
+`LIMB_CLASS` / `LIMB_CLASS_MULT` in `data/balance_tables.json`; automatics also use the
+raised `AUTO_HS_MULT` headshot tiers keyed by ammo: standard 1.40, hollow point 1.57,
+synthetic 1.80).
+
+The normal analyzer does not model REDSEC armor. Its `1.00×` chest line is explicitly
+the unarmored Multiplayer case; armor-specific chest multipliers must remain a separate
+future mode rather than being folded into ordinary BTK/TTK.
 
 ### Recoil Amount and Variation Tier Ladders
 
@@ -581,8 +591,9 @@ sub-objects: `state.slots[0/1]` (class, weapon, atts per loadout), `state.chart`
 (mode, btkHS, showAds), and `state.recoil` (aim, stance, layers, platform, control,
 compensation, seed, scale, pan).
 
-**Chart tooltips** use a single custom positioner (`smartFloat`) that floats the tooltip
-near the weapon lines and ignores dashed datasets (BTK baselines, damage thresholds).
+**Chart tooltips** use Chart.js default positioning (`mode: 'index'`, `intersect: false`).
+Baseline and band-fill datasets are filtered out of tooltip content; band values are
+folded into each weapon's line entry as a `chest–limbs` range instead.
 
 ---
 

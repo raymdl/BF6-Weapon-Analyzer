@@ -7,6 +7,7 @@ import {
   simulateBloom, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
+import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
 
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
@@ -49,7 +50,8 @@ try {
 
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
-        BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+        BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+        MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
         ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS } = _balance;
 const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 
@@ -137,7 +139,7 @@ setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
   AMMO,
   RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
-  BASE_HS_MULT, HP_HS_HIGH,
+  BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
   ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
 });
@@ -145,25 +147,16 @@ setAttachmentContext({
 // ── DAMAGE HELPERS ────────────────────────────────────────────────────────────
 
 function getDmg(weapon, range) {
-  const pts = weapon.dmg;
-  let d = pts[0].d;
-  for (let i = 0; i < pts.length; i++) {
-    if (range >= pts[i].r) d = pts[i].d;
-  }
-  return d;
+  return damageAtRange(weapon, range);
 }
-function getBTK(weapon, range) {
-  const d = weapon.pellets ? getDmg(weapon, range) * weapon.pellets : getDmg(weapon, range);
-  return Math.ceil(100 / d);
+function limbMult(weapon) {
+  return weapon._limbMult ?? 1;
 }
-function getBTKWithHS(weapon, range, headshots) {
-  const d = weapon.pellets ? getDmg(weapon, range) * weapon.pellets : getDmg(weapon, range);
-  if (!headshots) return Math.ceil(100 / d);
-  const hsMult = weapon._hsMult ?? 1.34;
-  const minPureHS = Math.ceil(100 / (d * hsMult));
-  if (minPureHS <= headshots) return minPureHS;
-  const remaining = 100 - headshots * d * hsMult;
-  return headshots + Math.ceil(remaining / d);
+// Bullets to kill with `headshots` headshots and every remaining hit on a non-head
+// zone with damage multiplier `zoneMult` (1 = chest, weapon's limb mult = arms/legs).
+// Hit order is irrelevant — damage is additive.
+function getBTKWithHits(weapon, range, headshots = 0, zoneMult = 1) {
+  return bulletsToKillAtRange(weapon, range, { headshots, bodyMultiplier: zoneMult });
 }
 function getTTK(weapon, btk) {
   if (!weapon.rpm) return null;
@@ -593,9 +586,11 @@ function renderOverview() {
   grid.innerHTML = '';
   const fields = [
     { lbl: 'Base Dmg',    compute: w => getDmg(w, 0),                    unit: '',    fmt: v => v.toFixed(1),                       higherBetter: true,
-      tooltip: 'Damage dealt by one body shot at 0m before range falloff.' },
+      tooltip: 'Damage dealt by one unarmored chest shot at 0m before range falloff. REDSEC armor is not modeled.' },
     { lbl: 'HS Mult',     k: '_hsMult',                                  unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Headshot damage multiplier after ammo effects are applied.' },
+    { lbl: 'Limb Mult',   k: '_limbMult',                                unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
+      tooltip: 'Damage multiplier for stomach, arm, and leg hits (Update 1.3.3.0). Unarmored chest hits are 1.00×. REDSEC armor is not modeled. Does not apply to shotguns or sidearms.' },
     { lbl: 'Fire Rate',   k: 'rpm',                                      unit: 'RPM', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Weapon fire rate in rounds per minute.' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
@@ -743,29 +738,23 @@ function updateDmgChart(ctx, config) {
   dmgChart.update('none');
 }
 
-function registerTooltipPositioners() {
-  if (Chart.Tooltip.positioners.smartFloat) return;
-  // Positions the tooltip near the weapon lines, ignoring dashed datasets
-  // (BTK baselines and damage-threshold lines).
-  Chart.Tooltip.positioners.smartFloat = function(elements, eventPos) {
-    const ca = this.chart.chartArea;
-    if (!ca) return false;
-    const weaponEls = elements.filter(el => !this.chart.data.datasets[el.datasetIndex]?.borderDash);
-    const src = weaponEls.length ? weaponEls : elements;
-    const ys = src.map(e => e.element.y);
-    const minY = ys.length ? Math.min(...ys) : (ca.top + ca.bottom) / 2;
-    const maxY = ys.length ? Math.max(...ys) : (ca.top + ca.bottom) / 2;
-    const half = 48, gap = 8;
-    let y = minY - gap - half;
-    if (y < ca.top + half) y = maxY + gap + half;
-    y = Math.min(Math.max(y, ca.top + half), ca.bottom - half);
-    return { x: Math.min(Math.max(eventPos.x, ca.left), ca.right), y };
+// Where the two compared weapons' lines coincide, dash the weapon-1 line
+// (drawn on top — Chart.js paints lower dataset indices last) so weapon 2's
+// color shows through the gaps as an alternating two-color line.
+function dashOverlap(datasets) {
+  const solids = datasets.filter(ds => ds._weapon && !ds.isBand && !ds.isBaseline && !ds.borderDash);
+  if (solids.length !== 2) return;
+  const [top, under] = solids;
+  top.segment = {
+    borderDash: ctx =>
+      top.data[ctx.p0DataIndex] === under.data[ctx.p0DataIndex] &&
+      top.data[ctx.p1DataIndex] === under.data[ctx.p1DataIndex]
+        ? [5, 5] : undefined,
   };
 }
 
 function renderChart() {
   scheduleUrlSync();
-  registerTooltipPositioners();
 
   const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
   const w2 = state.comparing && state.slots[1].weapon ? applyAttachments(state.slots[1].weapon, state.slots[1].atts) : null;
@@ -775,34 +764,62 @@ function renderChart() {
   const ctx = document.getElementById('dmgChart');
 
   const legEl = document.getElementById('chartLegend');
-  if (legEl) legEl.innerHTML = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
-    .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${w.name}</span></div>`).join('');
+  if (legEl) {
+    let legHtml = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
+      .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${w.name}</span></div>`).join('');
+    if ([w1, w2].some(w => w && limbMult(w) !== 1)) {
+      legHtml += '<div class="rc-legend-item" style="color:var(--muted);margin-left:auto"><span>line = unarmored chest · shaded = stomach/limbs</span></div>';
+    }
+    legEl.innerHTML = legHtml;
+  }
 
   if (mode === 'btk') {
     const btkDs = (w, color, label, slot, headshots = btkHS, baseline = false) => ({
-      label, data: labels.map(r => getBTKWithHS(w, r, headshots)),
+      label, data: labels.map(r => getBTKWithHits(w, r, headshots)),
       borderColor: color, backgroundColor: 'transparent',
       borderWidth: baseline ? 1.5 : 2, borderDash: baseline ? [6, 5] : undefined,
       pointRadius: 0, tension: 0, stepped: 'before',
       isBaseline: baseline, _weaponSlot: slot, _weapon: w,
     });
+    // Limb band: soft fill between the all-chest line and the all-limb worst case.
+    const bandDs = (w, fillColor, slot) => ({
+      label: `${wLabel(w)} (limbs)`,
+      data: labels.map(r => getBTKWithHits(w, r, btkHS, limbMult(w))),
+      borderColor: 'transparent', backgroundColor: fillColor,
+      borderWidth: 0, pointRadius: 0, tension: 0, stepped: 'before',
+      fill: '-1', isBand: true, _weaponSlot: slot, _weapon: w,
+    });
     const datasets = [];
     if (btkHS > 0 && w1) datasets.push(btkDs(w1, 'rgba(201,162,39,0.28)', `${wLabel(w1)} (0 HS)`, 1, 0, true));
     if (btkHS > 0 && w2) datasets.push(btkDs(w2, 'rgba(77,148,208,0.28)', `${wLabel(w2)} (0 HS)`, 2, 0, true));
-    if (w1) datasets.push(btkDs(w1, '#c9a227', wLabel(w1), 1));
-    if (w2) datasets.push(btkDs(w2, '#4d94d0', wLabel(w2), 2));
+    if (w1) {
+      datasets.push(btkDs(w1, '#c9a227', wLabel(w1), 1));
+      if (limbMult(w1) !== 1) datasets.push(bandDs(w1, 'rgba(201,162,39,0.16)', 1));
+    }
+    if (w2) {
+      datasets.push(btkDs(w2, '#4d94d0', wLabel(w2), 2));
+      if (limbMult(w2) !== 1) datasets.push(bandDs(w2, 'rgba(77,148,208,0.16)', 2));
+    }
+    dashOverlap(datasets);
+    const yMax = Math.max(9, ...datasets.flatMap(ds => ds.data));
     updateDmgChart(ctx, {
       type: 'line', data: { labels, datasets },
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
-        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, position: 'smartFloat', yAlign: 'center', caretSize: 0, filter: i => !i.dataset.isBaseline, callbacks: {
+        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, filter: i => !i.dataset.isBaseline && !i.dataset.isBand, callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
-          label: i => { const w = i.dataset._weapon; const btk = i.raw; return `${w.name}: ${btk} BTK (${fmtTTK(getTTK(w, btk))})`; },
+          label: i => {
+            const w = i.dataset._weapon;
+            const chest = i.raw;
+            const limb = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
+            if (limb === chest) return `${w.name}: ${chest} BTK (${fmtTTK(getTTK(w, chest))})`;
+            return `${w.name}: ${chest}–${limb} BTK chest–limbs (${fmtTTK(getTTK(w, chest))}–${fmtTTK(getTTK(w, limb))})`;
+          },
         } } },
         scales: {
           x: chartXAxis(mr),
-          y: { min: 1, max: 9, title: { display: true, text: 'Bullets to Kill', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 1, precision: 0 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+          y: { min: 1, max: yMax, title: { display: true, text: 'Bullets to Kill', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 1, precision: 0 }, grid: { color: 'rgba(40,48,48,0.6)' } },
         },
       },
     });
@@ -810,17 +827,26 @@ function renderChart() {
   }
 
   if (mode === 'ttk') {
-    const ttkDs = (w, color, label) => ({
-      label, data: labels.map(r => {
-        const btk = getBTKWithHS(w, r, btkHS);
-        return (getTTK(w, btk) ?? 0) + (showAds ? (w._adsTimeMs ?? 0) : 0);
-      }),
-      borderColor: color, backgroundColor: 'transparent',
-      borderWidth: 2, pointRadius: 0, tension: 0, stepped: 'before', _weapon: w,
+    const ttkAt = (w, r, zoneMult = 1) => {
+      const btk = getBTKWithHits(w, r, btkHS, zoneMult);
+      return (getTTK(w, btk) ?? 0) + (showAds ? (w._adsTimeMs ?? 0) : 0);
+    };
+    const ttkDs = (w, color, label, zoneMult = 1, band = false) => ({
+      label, data: labels.map(r => ttkAt(w, r, zoneMult)),
+      borderColor: band ? 'transparent' : color, backgroundColor: band ? color : 'transparent',
+      borderWidth: band ? 0 : 2, pointRadius: 0, tension: 0, stepped: 'before',
+      fill: band ? '-1' : false, isBand: band, _weapon: w,
     });
     const datasets = [];
-    if (w1) datasets.push(ttkDs(w1, '#c9a227', wLabel(w1)));
-    if (w2) datasets.push(ttkDs(w2, '#4d94d0', wLabel(w2)));
+    if (w1) {
+      datasets.push(ttkDs(w1, '#c9a227', wLabel(w1)));
+      if (limbMult(w1) !== 1) datasets.push(ttkDs(w1, 'rgba(201,162,39,0.16)', `${wLabel(w1)} (limbs)`, limbMult(w1), true));
+    }
+    if (w2) {
+      datasets.push(ttkDs(w2, '#4d94d0', wLabel(w2)));
+      if (limbMult(w2) !== 1) datasets.push(ttkDs(w2, 'rgba(77,148,208,0.16)', `${wLabel(w2)} (limbs)`, limbMult(w2), true));
+    }
+    dashOverlap(datasets);
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
     updateDmgChart(ctx, {
@@ -828,11 +854,15 @@ function renderChart() {
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
-        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, position: 'smartFloat', yAlign: 'center', caretSize: 0, callbacks: {
+        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, filter: i => !i.dataset.isBand, callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
           label: i => {
             const w = i.dataset._weapon;
-            const btk = getBTKWithHS(w, i.dataIndex, btkHS);
+            const btk = getBTKWithHits(w, i.dataIndex, btkHS);
+            const limbBtk = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
+            if (limbBtk !== btk) {
+              return `${w.name}: ${fmtTTK(i.raw)}–${fmtTTK(ttkAt(w, i.dataIndex, limbMult(w)))} (${btk}–${limbBtk} BTK chest–limbs)`;
+            }
             const ttk = getTTK(w, btk);
             if (showAds && w._adsTimeMs) return `${w.name}: ${fmtTTK(i.raw)} (${fmtTTK(ttk)} TTK + ${w._adsTimeMs}ms ADS)`;
             return `${w.name}: ${fmtTTK(i.raw)} (${btk} BTK)`;
@@ -848,33 +878,61 @@ function renderChart() {
   }
 
   // Damage chart
+  const dmgAt = (w, r, zoneMult = 1) => Math.min(100, damagePerShotAtRange(w, r) * zoneMult);
   const buildDs = (w, color, label) => ({
-    label, data: labels.map(r => +(Math.min(100, w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r)).toFixed(2))),
+    label, data: labels.map(r => +dmgAt(w, r).toFixed(2)),
     borderColor: color, backgroundColor: 'transparent',
     borderWidth: 2, pointRadius: 0, tension: 0, stepped: 'before', _weapon: w,
   });
+  // Limb band: soft fill between the chest damage curve and the limb damage curve.
+  const limbDs = (w, fillColor) => ({
+    label: `${wLabel(w)} (limbs)`,
+    data: labels.map(r => +dmgAt(w, r, limbMult(w)).toFixed(2)),
+    borderColor: 'transparent', backgroundColor: fillColor,
+    borderWidth: 0, pointRadius: 0, tension: 0, stepped: 'before',
+    fill: '-1', isBand: true, _weapon: w,
+  });
+  // Preserve the existing chest-BTK reference lines underneath the new bands.
   const primaryW = w1 || w2;
   const thresholds = []; const seen = new Set();
-  for (let r = 0; r <= mr; r++) { const btk = getBTK(primaryW, r); if (!seen.has(btk)) { seen.add(btk); thresholds.push({ btk, dmg: 100 / btk }); } }
-  const threshDs = thresholds.slice(0, 6).map(t => ({
-    label: `${t.btk}BTK`, data: labels.map(() => +(100 / t.btk).toFixed(2)),
+  for (let r = 0; r <= mr; r++) {
+    const btk = getBTKWithHits(primaryW, r);
+    if (!seen.has(btk)) { seen.add(btk); thresholds.push({ btk, dmg: 100 / btk }); }
+  }
+  const thresholdDatasets = thresholds.slice(0, 6).map(t => ({
+    label: `${t.btk}BTK`, data: labels.map(() => +t.dmg.toFixed(2)),
     borderColor: 'rgba(150,150,150,0.18)', backgroundColor: 'transparent',
     borderWidth: 1, borderDash: [4, 4], pointRadius: 0, tension: 0,
+    isBaseline: true,
   }));
-  const datasets = [...threshDs];
-  if (w1) datasets.push(buildDs(w1, '#c9a227', wLabel(w1)));
-  if (w2) datasets.push(buildDs(w2, '#4d94d0', wLabel(w2)));
+  const datasets = [...thresholdDatasets];
+  if (w1) {
+    datasets.push(buildDs(w1, '#c9a227', wLabel(w1)));
+    if (limbMult(w1) !== 1) datasets.push(limbDs(w1, 'rgba(201,162,39,0.16)'));
+  }
+  if (w2) {
+    datasets.push(buildDs(w2, '#4d94d0', wLabel(w2)));
+    if (limbMult(w2) !== 1) datasets.push(limbDs(w2, 'rgba(77,148,208,0.16)'));
+  }
+  dashOverlap(datasets);
   const dmgYMax = damageYMax([w1, w2]);
   updateDmgChart(ctx, {
     type: 'line', data: { labels, datasets },
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
       layout: { padding: { bottom: 0 } },
-      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, position: 'smartFloat', yAlign: 'center', caretSize: 0,
-        filter: i => !i.dataset.borderDash,
+      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false,
+        filter: i => !i.dataset.isBand && !i.dataset.isBaseline,
         callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
-          label: i => { if (i.dataset.borderDash) return null; const r = i.dataIndex; const w = i.dataset._weapon; const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r); return `${w.name}: ${d.toFixed(1)} dmg (${Math.ceil(100 / d)} BTK)`; },
+          label: i => {
+            const r = i.dataIndex; const w = i.dataset._weapon;
+            const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
+            const line = `${w.name}: ${d.toFixed(1)} dmg (${getBTKWithHits(w, r)} BTK)`;
+            if (limbMult(w) === 1) return line;
+            const dl = d * limbMult(w), dh = d * (w._hsMult ?? 1.34);
+            return [line, `  stomach/limbs ${dl.toFixed(1)} (${getBTKWithHits(w, r, 0, limbMult(w))} BTK) · head ${Math.min(100, dh).toFixed(1)}`];
+          },
         },
       } },
       scales: {
@@ -896,11 +954,20 @@ function renderBTK() {
   if (w1) html += `<th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
   if (w2) html += `<th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
   html += '</tr></thead><tbody>';
+  // Each cell shows chest–limb ranges when the limb multiplier changes the outcome.
+  const cells = (w, r) => {
+    const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
+    const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
+    const tTxt = bl !== b
+      ? `${fmtT(w, getTTK(w, b)).replace(/ms$/, '')}–${fmtT(w, getTTK(w, bl))}`
+      : fmtT(w, getTTK(w, b));
+    return { bTxt, tTxt };
+  };
   let prev1 = null, prev2 = null;
   ranges.forEach(r => {
     html += `<tr><td class="rng">${r}m</td>`;
-    if (w1) { const b = getBTKWithHS(w1, r, btkHS), t = getTTK(w1, b), chg = prev1 !== null && b !== prev1; html += `<td class="bv${chg ? ' bchg' : ''}">${b}</td><td class="tv">${fmtT(w1, t)}</td>`; prev1 = b; }
-    if (w2) { const b = getBTKWithHS(w2, r, btkHS), t = getTTK(w2, b), chg = prev2 !== null && b !== prev2; html += `<td class="bv${chg ? ' bchg2' : ''}">${b}</td><td class="tv">${fmtT(w2, t)}</td>`; prev2 = b; }
+    if (w1) { const { bTxt, tTxt } = cells(w1, r); const chg = prev1 !== null && bTxt !== prev1; html += `<td class="bv${chg ? ' bchg' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev1 = bTxt; }
+    if (w2) { const { bTxt, tTxt } = cells(w2, r); const chg = prev2 !== null && bTxt !== prev2; html += `<td class="bv${chg ? ' bchg2' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev2 = bTxt; }
     html += '</tr>';
   });
   html += '</tbody></table>';

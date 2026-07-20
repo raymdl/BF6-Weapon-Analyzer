@@ -88,6 +88,9 @@ archives of previous versions of the site — never edit them during normal main
 7. Add hip spread class to `data/balance_tables.json` → `HIP_CLS`
 8. Add headshot multiplier to `data/balance_tables.json` → `BASE_HS_MULT`
    (only if it differs from the default 1.34)
+9. Add limb-damage class to `data/balance_tables.json` → `LIMB_CLASS`
+   (`auto` for AR/Carbine/SMG/LMG incl. burst rifles, `dmr`, `sniper`;
+   omit for shotguns and sidearms)
 
 ### Weapon Stat Changes (recoil, spread, damage, ADS time, etc.)
 
@@ -138,6 +141,11 @@ Edit `data/balance_tables.json`:
 - `RECOIL_MULT` — per-weapon ADS recoil **amount** tier multiplier
 - `HIP_SPREAD_TIERS` — hip spread values by class and tier
 - `BASE_HS_MULT` — per-weapon base headshot multiplier
+- `LIMB_CLASS` — per-weapon limb-damage class (`auto` / `dmr` / `sniper`); omit for
+  shotguns and sidearms, which take no limb penalty (Update 1.3.3.0)
+- `LIMB_CLASS_MULT` — stomach/arm/leg damage multiplier per limb class
+- `AUTO_HS_MULT` — headshot multipliers for `auto`-class weapons keyed by ammo
+  (`standard`, `hp`, `synthetic`); non-auto weapons keep `BASE_HS_MULT` / ammo values
 
 Tier tables can be resized freely — `sim/applyAttachments.js` clamps indices to each
 table's actual length.

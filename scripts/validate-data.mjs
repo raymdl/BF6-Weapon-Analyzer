@@ -149,6 +149,41 @@ for (const weaponId of balance.HP_HS_HIGH ?? []) {
   if (!weaponIds.has(weaponId)) fail(`HP_HS_HIGH references unknown weapon ${weaponId}`);
 }
 
+for (const [weaponId, limbClass] of Object.entries(balance.LIMB_CLASS ?? {})) {
+  if (!weaponIds.has(weaponId)) fail(`LIMB_CLASS references unknown weapon ${weaponId}`);
+  if (!(limbClass in (balance.LIMB_CLASS_MULT ?? {}))) {
+    fail(`${weaponId}: LIMB_CLASS references unknown limb class ${limbClass}`);
+  }
+}
+
+const expectedLimbClassByWeaponClass = {
+  'Assault Rifle': 'auto',
+  Carbine: 'auto',
+  SMG: 'auto',
+  LMG: 'auto',
+  DMR: 'dmr',
+  'Sniper Rifle': 'sniper',
+};
+for (const weapon of weapons) {
+  if (!SUPPORTED_CLASSES.has(weapon.cls)) continue;
+  const expected = expectedLimbClassByWeaponClass[weapon.cls] ?? null;
+  const actual = balance.LIMB_CLASS?.[weapon.id] ?? null;
+  if (actual !== expected) {
+    fail(`${weapon.id}: expected LIMB_CLASS ${expected ?? 'omitted'} for ${weapon.cls}, found ${actual ?? 'omitted'}`);
+  }
+}
+for (const [limbClass, multiplier] of Object.entries(balance.LIMB_CLASS_MULT ?? {})) {
+  if (!Number.isFinite(multiplier) || multiplier <= 0 || multiplier > 1) {
+    fail(`LIMB_CLASS_MULT.${limbClass} must be a finite number in (0, 1]`);
+  }
+}
+for (const ammoTier of ['standard', 'hp', 'synthetic']) {
+  const multiplier = balance.AUTO_HS_MULT?.[ammoTier];
+  if (!Number.isFinite(multiplier) || multiplier <= 1) {
+    fail(`AUTO_HS_MULT.${ammoTier} must be a finite number greater than 1`);
+  }
+}
+
 if (errors.length) {
   console.error(`Data validation failed with ${errors.length} issue(s):`);
   for (const error of errors) console.error(`- ${error}`);
