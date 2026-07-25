@@ -17,12 +17,12 @@ data/check_all.sh
 # Local screenshot corpus for the attachment audit (~1.7 GB of captures).
 Weapon Attachments/
 
-# Generated analysis/export artifacts.
-outputs/BF6 Actual Burst Shot Timestamps*.xlsx
-outputs/BF6 Weapon and Attachment Stats*.xlsx
-outputs/~$*.xlsx
-outputs/actual_shot_timestamps_raw.json
-outputs/ammo_sheets/
+# Generated analysis/export artifacts: video frames, OCR dumps and audit
+# captures run to hundreds of megabytes, so the whole directory is local-only.
+# The exceptions are the exports that back committed data and must stay with it.
+outputs/*
+!outputs/damage_falloff.xlsx
+!outputs/sym-damage-refresh-*/
 sl9_recheck/
 
 # Local one-off export helpers.
