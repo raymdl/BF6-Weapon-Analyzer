@@ -50,14 +50,32 @@ test('calculates mixed head/chest and head/limb sequences independently of hit o
 });
 
 test('handles breakpoint lookup, exact lethal boundaries, and zone aliases', () => {
-  const weapon = { dmg: [{ r: 0, d: 26 }, { r: 20, d: 20 }], _hsMult: 1.4, _limbMult: 0.84 };
+  // Sym encodes a stepped tier as a repeated range: 26 holds through 20 m.
+  const weapon = { dmg: [{ r: 0, d: 26 }, { r: 20, d: 26 }, { r: 20, d: 20 }], _hsMult: 1.4, _limbMult: 0.84 };
   assert.equal(damageAtRange(weapon, 19.99), 26);
-  assert.equal(damageAtRange(weapon, 20), 20);
+  assert.equal(damageAtRange(weapon, 20), 26);
+  assert.equal(damageAtRange(weapon, 20.01), 20);
+  assert.equal(damageAtRange(weapon, 99), 20);
   assert.equal(bulletsToKillWithHits(25, { bodyMultiplier: 1 }), 4);
   assert.equal(zoneMultiplierForWeapon(weapon, 'chest'), 1);
   assert.equal(zoneMultiplierForWeapon(weapon, 'stomach'), 0.84);
   assert.equal(zoneMultiplierForWeapon(weapon, 'arms'), 0.84);
   assert.equal(zoneMultiplierForWeapon(weapon, 'head'), 1.4);
+});
+
+// Confirmed by the Sym developers: bolt-actions ramp linearly between tiers,
+// every other class steps. Both come from the same polyline — distinct ranges
+// interpolate, repeated ranges drop instantly.
+test('interpolates linearly between distinct ranges and clamps outside the curve', () => {
+  const sniper = { dmg: [{ r: 0, d: 80 }, { r: 36, d: 80 }, { r: 54, d: 100 }, { r: 75, d: 100 }, { r: 100, d: 62 }] };
+  assert.equal(damageAtRange(sniper, 36), 80);
+  assert.equal(damageAtRange(sniper, 45), 90);
+  assert.equal(damageAtRange(sniper, 54), 100);
+  assert.equal(damageAtRange(sniper, 75), 100);
+  assert.equal(damageAtRange(sniper, 87.5), 81);
+  assert.equal(damageAtRange(sniper, 100), 62);
+  assert.equal(damageAtRange(sniper, 250), 62);
+  assert.equal(damageAtRange(sniper, -5), 80);
 });
 
 test('classifies every current site weapon according to the 1.3.3.0 hit-zone rules', () => {
@@ -76,7 +94,9 @@ test('classifies every current site weapon according to the 1.3.3.0 hit-zone rul
   };
 
   for (const weapon of weapons) {
-    const [expectedClass, expectedLimb, expectedAutomaticHead] = expectedByClass[weapon.cls];
+    const [expectedClass, expectedLimb, expectedAutomaticHead] = weapon.id === 'vz61'
+      ? ['auto', 0.84, 1.4]
+      : expectedByClass[weapon.cls];
     const resolved = resolveHitMultipliers(weapon.id, { id: 'standard', hsMult: null }, actualTables);
     assert.equal(resolved.limbClass, expectedClass, `${weapon.id} limb class`);
     assert.equal(resolved.limbMultiplier, expectedLimb, `${weapon.id} limb multiplier`);
@@ -84,4 +104,96 @@ test('classifies every current site weapon according to the 1.3.3.0 hit-zone rul
       assert.equal(resolved.headshotMultiplier, expectedAutomaticHead, `${weapon.id} standard head multiplier`);
     }
   }
+});
+
+test('uses EA sniper sweet-spot windows and preserves the Mini Scout exception', () => {
+  const weapons = readJson('../data/weapons.json');
+  const provenance = readJson('../data/provenance/damage-1.3.3.0.json');
+  const expected = {
+    sv98: [54, 75],
+    m2010esr: [75, 100],
+    psr: [90, 120],
+    l115: [100, 133],
+  };
+  for (const [id, [start, end]] of Object.entries(expected)) {
+    const weapon = weapons.find(item => item.id === id);
+    const record = provenance.sniperSweetSpots.find(item => item.weaponId === id);
+    assert.deepEqual(weapon.sweetSpot, { rangeM: [start, end], source: 'EA' });
+    assert.deepEqual(record.rangeM, [start, end]);
+    assert.equal(record.source, 'EA');
+    // The sweet spot is the flat 100 plateau; damage ramps in and out of it.
+    assert.ok(damageAtRange(weapon, start - 1) < 100, `${id} ramps into the sweet spot`);
+    assert.equal(damageAtRange(weapon, start), 100);
+    assert.equal(damageAtRange(weapon, end - 1), 100);
+    assert.equal(damageAtRange(weapon, end), 100);
+    assert.ok(damageAtRange(weapon, end + 1) < 100, `${id} ramps out of the sweet spot`);
+    assert.equal(weapon.dmg.at(-1).d, 62, `${id} minimum damage`);
+  }
+  const miniScout = weapons.find(item => item.id === 'miniscout');
+  assert.deepEqual(miniScout.sweetSpot, { rangeM: null, source: 'EA' });
+  assert.equal(miniScout.dmg.some(point => point.d === 100), false);
+});
+
+test('every live damage breakpoint carries explicit source provenance', () => {
+  const weapons = readJson('../data/weapons.json');
+  for (const weapon of weapons) {
+    if (!Array.isArray(weapon.dmg)) continue;
+    for (const point of weapon.dmg) assert.ok(['EA', 'Sym', 'in-game'].includes(point.source), `${weapon.id} source`);
+  }
+});
+
+test('uses the refreshed Sym game-file damage tiers', () => {
+  const weapons = readJson('../data/weapons.json');
+  const curves = Object.fromEntries(weapons.map(weapon => [weapon.id, weapon.dmg?.map(point => point.d)]));
+
+  assert.deepEqual(curves.m433, [26.05, 26.05, 20.67, 20.67, 17.13]);
+  assert.deepEqual(curves.ak4d, [35.22, 35.22, 26.05, 26.05, 20.67]);
+  assert.deepEqual(curves.nvo228e, [35.22, 35.22, 27.48, 27.48, 21.56, 21.56, 20.67, 20.67, 17.13]);
+  assert.deepEqual(curves.pw5a3, [26.05, 26.05, 20.67, 20.67, 17.13, 17.13, 14.62, 14.62, 12.76]);
+  assert.deepEqual(curves.m39emr, [41.5, 41.5, 37.6, 37.6, 34.4]);
+  assert.deepEqual(curves.lmr27, [29.4, 29.4, 27.5, 27.5, 26.2]);
+  assert.deepEqual(curves.svk86, [66.7, 66.7, 57.2, 57.2, 52.4]);
+
+  for (const weapon of weapons) {
+    assert.equal(weapon.damageStatus, 'provisional', `${weapon.id} status`);
+    assert.equal(weapon.dmg.every(point => point.source === 'Sym'), true, `${weapon.id} source`);
+  }
+});
+
+test('steps every non-sniper class and reads the NVO-228E tiers at whole metres', () => {
+  const weapons = readJson('../data/weapons.json');
+  const byId = Object.fromEntries(weapons.map(weapon => [weapon.id, weapon]));
+
+  const nvo = byId.nvo228e;
+  assert.equal(damageAtRange(nvo, 9), 35.22);
+  assert.equal(damageAtRange(nvo, 10), 27.48);
+  assert.equal(damageAtRange(nvo, 21), 27.48);
+  assert.equal(damageAtRange(nvo, 22), 21.56);
+  assert.equal(damageAtRange(nvo, 36), 21.56);
+  assert.equal(damageAtRange(nvo, 37), 20.67);
+  assert.equal(damageAtRange(nvo, 75), 20.67);
+  assert.equal(damageAtRange(nvo, 76), 17.13);
+
+  // Bolt-actions ramp across their sweet spot and shotguns carry a 1 m blend at
+  // each tier boundary. Every other class repeats each boundary range, so no
+  // sampled range may land strictly between two adjacent tier values.
+  const stepped = weapon => weapon.cls !== 'Sniper Rifle' && weapon.cls !== 'Shotgun';
+  for (const weapon of weapons.filter(stepped)) {
+    const tiers = new Set(weapon.dmg.map(point => point.d));
+    for (let range = 0; range <= 150; range += 0.5) {
+      assert.ok(tiers.has(damageAtRange(weapon, range)), `${weapon.id} stepped at ${range}m`);
+    }
+  }
+
+  // User-confirmed: the M250 has a special profile with no falloff at any range.
+  // Sym stops its curve at 15 m, which must stay a flat clamp, not a gap to fill.
+  const m250 = byId.m250;
+  assert.deepEqual(m250.dmg.map(point => point.d), [26.05, 26.05]);
+  for (const range of [0, 15, 16, 50, 75, 150, 500]) {
+    assert.equal(damageAtRange(m250, range), 26.05, `m250 flat at ${range}m`);
+  }
+
+  assert.deepEqual(byId.vz61.dmg.map(point => point.d), [17.13, 17.13, 15.07, 15.07, 13.09, 13.09, 12.76, 12.76, 11.32]);
+  assert.deepEqual(byId.m87a1.dmg.map(point => point.d), [8.4, 8.4, 7.2, 7.2, 5.6, 5.6, 3.8]);
+  assert.deepEqual(byId.db12.dmg.map(point => point.d), [5.6, 5.6, 3.3, 3.3, 2.5]);
 });

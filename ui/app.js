@@ -9,6 +9,8 @@ import {
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
+import { createShareCodec } from '../sim/share-state.js';
+import { drawTarget, summarizeTargetImpacts, targetAimOffset, targetFrame, targetMarkerRadius, whenTargetImageReady } from '../sim/target.js';
 
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
 
@@ -93,17 +95,73 @@ const CLASS_SHORT = {
   'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'SG', 'Sidearm': 'Pistol',
 };
 
-const DEFAULT_COMPENSATION = 85;
 const RECOIL_SCALE_MIN = 2;
 const RECOIL_SCALE_MAX = 10;
 const RECOIL_SCALE_STEP = 0.5;
 const RECOIL_PAN_STEP = 0.5;
+// The target view frames the soldier and the projected pattern together. The
+// figure fills most of the plot at close range and shrinks only as far as it
+// must to keep a long-range pattern in shot, so the growing spread is legible
+// against a body that stays recognisable.
+const TARGET_FRAME_FILL = 0.72;
+const TARGET_FRAME_MIN_FILL = 0.22;
+// Target-view zoom is expressed as real optic magnification. A 1x sight is
+// taken to show this much vertical field, so every step on the ladder frames
+// the soldier the way that scope would in game.
+const ADS_1X_VFOV_DEG = 40;
+// The in-game optic ladder, extended past both ends so the plot can pull back
+// for a whole long-range pattern or push in past any real scope.
+const SCOPE_MAGNIFICATIONS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12, 16, 20];
+const PLOT_PAD = { l: 28, r: 8, t: 8, b: 18 };
 const CLOUD_RUNS = 10;
 const BLOOM_FALLBACK_SHOTS = [1, 2, 3, 5, 8, 13, 20];
 const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
 const SPREAD_BAR_SCALE = 9.1;
 const RECOIL_BAR_SCALE = 3;
 const CONSOLE_RECOIL_MULT = 0.89;
+
+// Sym.gg exports effective RPM as timing-derived decimals. Keep those raw
+// values for calculations, but display the supplied in-game integer mapping.
+const IN_GAME_RPM_BY_SYM = new Map(Object.entries({
+  '37.67438356': 37,
+  '38.11762015': 38,
+  '44.08160187': 44,
+  '46.34995365': 46,
+  '51.00000000': 51,
+  '149.99900000': 150,
+  '163.63600000': 164,
+  '224.99900000': 225,
+  '257.14200000': 257,
+  '299.99900000': 300,
+  '327.27200000': 327,
+  '359.99900000': 360,
+  '399.99900000': 400,
+  '449.99900000': 450,
+  '514.28500000': 514,
+  '553.84600000': 553,
+  '568.42100000': 568,
+  '599.99900000': 600,
+  '635.29400000': 635,
+  '654.54500000': 654,
+  '674.99900000': 675,
+  '685.71400000': 686,
+  '719.99900000': 720,
+  '771.42800000': 771,
+  '799.99900000': 800,
+  '818.18100000': 818,
+  '830.76900000': 830,
+  '899.99900000': 900,
+  '947.36800000': 947,
+  '981.81800000': 981,
+  '1079.99900000': 1080,
+}));
+
+function formatInGameRpm(value) {
+  if (value == null) return '—';
+  const raw = Number(value);
+  if (!Number.isFinite(raw)) return value;
+  return IN_GAME_RPM_BY_SYM.get(raw.toFixed(8)) ?? value;
+}
 
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 
@@ -116,12 +174,21 @@ const state = {
   chart: { mode: 'dmg', btkHS: 0, showAds: false },
   recoil: {
     aim: 'ads', stance: 'stand',
+    view: 'angle', distance: 30, targetAim: 'chest', customAim: { x: 0, y: 0 },
     layers: { scatter: true, spray: true, path: false, bloom: false, cone: false },
+    // Scatter is far too noisy over a soldier, so each view keeps its own
+    // overlay choices and its own sensible starting point.
+    savedLayers: {
+      angle: { scatter: true, spray: true, path: false, bloom: false, cone: false },
+      target: { scatter: false, spray: true, path: false, bloom: false, cone: false },
+    },
     platform: 'pc',
-    control: false,
-    compensationLevel: DEFAULT_COMPENSATION,
+    // 0% means no compensation, so the slider is the whole control.
+    compensationLevel: 0,
     refSeed: 0,
     scaleH: 5, panX: 0, panY: 0,
+    // null magnification means "fit the burst", resolved per render.
+    magnification: null, distancePanX: 0, distancePanY: 0,
   },
 };
 
@@ -159,7 +226,7 @@ function getBTKWithHits(weapon, range, headshots = 0, zoneMult = 1) {
   return bulletsToKillAtRange(weapon, range, { headshots, bodyMultiplier: zoneMult });
 }
 function getTTK(weapon, btk) {
-  if (!weapon.rpm) return null;
+  if (!weapon.rpm || btk == null || !Number.isFinite(btk)) return null;
   let ms = 0;
   for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
   return Math.round(ms);
@@ -210,6 +277,11 @@ function defaultAttsForWeapon(weapon) {
   resetAttsForWeapon(atts, weapon);
   return atts;
 }
+const shareCodec = createShareCodec({
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
+  WEAPON_MAG,
+  defaultAttsForWeapon,
+});
 const defaultAppliedWeaponCache = new Map();
 function defaultAppliedWeapon(weapon) {
   if (!weapon) return null;
@@ -224,7 +296,7 @@ function defaultAppliedWeapon(weapon) {
 // ── COMPENSATION ──────────────────────────────────────────────────────────────
 
 function selectedCompensationLevel() {
-  return state.recoil.control ? state.recoil.compensationLevel : 0;
+  return state.recoil.compensationLevel;
 }
 function selectedPlatformRecoilMult() {
   return state.recoil.platform === 'console' ? CONSOLE_RECOIL_MULT : 1;
@@ -324,24 +396,7 @@ function decodeAtts(weapon, str) {
 }
 
 function encodeState() {
-  const p = new URLSearchParams();
-  const s0 = state.slots[0];
-  if (s0.weapon) { p.set('w', s0.weapon.id); const a = encodeAtts(s0.weapon, s0.atts); if (a) p.set('a', a); }
-  if (state.comparing) {
-    p.set('cmp', '1');
-    const s1 = state.slots[1];
-    if (s1.weapon) { p.set('w2', s1.weapon.id); const a2 = encodeAtts(s1.weapon, s1.atts); if (a2) p.set('a2', a2); }
-  }
-  if (state.chart.mode !== 'dmg') p.set('cm', state.chart.mode);
-  if (state.chart.btkHS) p.set('hs', state.chart.btkHS);
-  if (state.chart.showAds) p.set('ads', '1');
-  if (state.recoil.aim !== 'ads') p.set('ra', state.recoil.aim);
-  if (state.recoil.stance !== 'stand') p.set('rs', state.recoil.stance);
-  if (state.recoil.platform !== 'pc') p.set('rp', state.recoil.platform);
-  if (state.recoil.control) p.set('rcc', state.recoil.compensationLevel);
-  const shots = selectedRecoilShotCount();
-  if (shots !== 20) p.set('sh', shots);
-  return p.toString();
+  return shareCodec.encodeState(state, selectedRecoilShotCount);
 }
 
 function syncUrl() {
@@ -375,26 +430,11 @@ function applyChartStateToDom() {
 }
 
 function restoreFromUrl() {
-  const hash = location.hash.replace(/^#/, '');
-  if (!hash) return;
-  let p;
-  try { p = new URLSearchParams(hash); } catch { return; }
-
-  const w1 = p.get('w') && W.find(x => x.id === p.get('w'));
-  if (w1) {
-    state.slots[0].cls = w1.cls;
-    state.slots[0].weapon = w1;
-    state.slots[0].atts = decodeAtts(w1, p.get('a'));
-  }
-  if (p.get('cmp') === '1') {
-    state.comparing = true;
-    const w2 = p.get('w2') && W.find(x => x.id === p.get('w2'));
-    if (w2) {
-      state.slots[1].cls = w2.cls;
-      state.slots[1].weapon = w2;
-      state.slots[1].atts = decodeAtts(w2, p.get('a2'));
-    }
-  }
+  const p = shareCodec.restoreFromHash(state, location.hash, W);
+  if (!p) return;
+  // A link that lands straight in the target view still gets that view's
+  // overlay defaults rather than the angle plot's.
+  applyViewLayers(state.recoil.view);
 
   const cm = p.get('cm'); if (cm === 'btk' || cm === 'ttk') state.chart.mode = cm;
   const hs = parseInt(p.get('hs'), 10); if (hs >= 1 && hs <= 3) state.chart.btkHS = hs;
@@ -402,11 +442,6 @@ function restoreFromUrl() {
   if (p.get('ra') === 'hip') state.recoil.aim = 'hip';
   if (p.get('rs') === 'move') state.recoil.stance = 'move';
   if (p.get('rp') === 'console') state.recoil.platform = 'console';
-  const rcc = p.get('rcc');
-  if (rcc != null) {
-    const v = parseInt(rcc, 10);
-    if (Number.isFinite(v)) { state.recoil.control = true; state.recoil.compensationLevel = Math.max(0, Math.min(125, v)); }
-  }
 
   // Reflect the pieces of state that render functions don't set themselves.
   if (state.comparing) {
@@ -583,15 +618,24 @@ function renderOverview() {
   }
 
   const grid = document.getElementById('sGrid');
+  grid.parentElement?.querySelectorAll('.damage-provenance-note, .sweet-spot-note').forEach(el => el.remove());
+  const sweetSpots = [w1, w2].filter(weapon => weapon?.sweetSpot?.source === 'EA');
+  if (sweetSpots.length) {
+    const note = document.createElement('div');
+    note.className = 'att-note sweet-spot-note';
+    note.textContent = sweetSpots.map(weapon => {
+      const range = weapon.sweetSpot.rangeM;
+      return range ? `${weapon.name} EA sweet spot: ${range[0]}–${range[1]} m.` : `${weapon.name}: no EA sweet spot.`;
+    }).join(' ');
+    grid.parentElement?.insertBefore(note, grid);
+  }
   grid.innerHTML = '';
   const fields = [
-    { lbl: 'Base Dmg',    compute: w => getDmg(w, 0),                    unit: '',    fmt: v => v.toFixed(1),                       higherBetter: true,
+    { lbl: 'Base Dmg',    compute: w => getDmg(w, 0),                    unit: '',    fmt: v => v != null ? v.toFixed(1) : '—',       higherBetter: true,
       tooltip: 'Damage dealt by one unarmored chest shot at 0m before range falloff. REDSEC armor is not modeled.' },
     { lbl: 'HS Mult',     k: '_hsMult',                                  unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Headshot damage multiplier after ammo effects are applied.' },
-    { lbl: 'Limb Mult',   k: '_limbMult',                                unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
-      tooltip: 'Damage multiplier for stomach, arm, and leg hits (Update 1.3.3.0). Unarmored chest hits are 1.00×. REDSEC armor is not modeled. Does not apply to shotguns or sidearms.' },
-    { lbl: 'Fire Rate',   k: 'rpm',                                      unit: 'RPM', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
+    { lbl: 'Fire Rate',   compute: w => w.cls === 'Shotgun' ? null : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
       tooltip: 'Weapon fire rate in rounds per minute.' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Projectile velocity after barrel effects are applied. Higher values reduce travel time and lead.' },
@@ -767,10 +811,17 @@ function renderChart() {
   if (legEl) {
     let legHtml = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
       .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${w.name}</span></div>`).join('');
-    if ([w1, w2].some(w => w && limbMult(w) !== 1)) {
-      legHtml += '<div class="rc-legend-item" style="color:var(--muted);margin-left:auto"><span>line = unarmored chest · shaded = stomach/limbs</span></div>';
-    }
     legEl.innerHTML = legHtml;
+  }
+
+  const missingDamage = [w1, w2].some(weapon => weapon && (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0));
+  if (missingDamage) {
+    if (dmgChart) {
+      dmgChart.destroy();
+      dmgChart = null;
+    }
+    if (legEl) legEl.innerHTML += '<div class="rc-legend-item" style="color:var(--muted);margin-left:auto">Damage/BTK/TTK unavailable for a selected weapon.</div>';
+    return;
   }
 
   if (mode === 'btk') {
@@ -879,17 +930,20 @@ function renderChart() {
 
   // Damage chart
   const dmgAt = (w, r, zoneMult = 1) => Math.min(100, damagePerShotAtRange(w, r) * zoneMult);
+  // Bolt-actions fall off linearly between tiers (confirmed by Sym); every other
+  // class drops instantly, so only snipers get a straight line instead of a step.
+  const steppedFor = w => (w.cls === 'Sniper Rifle' ? false : 'before');
   const buildDs = (w, color, label) => ({
     label, data: labels.map(r => +dmgAt(w, r).toFixed(2)),
     borderColor: color, backgroundColor: 'transparent',
-    borderWidth: 2, pointRadius: 0, tension: 0, stepped: 'before', _weapon: w,
+    borderWidth: 2, pointRadius: 0, tension: 0, stepped: steppedFor(w), _weapon: w,
   });
   // Limb band: soft fill between the chest damage curve and the limb damage curve.
   const limbDs = (w, fillColor) => ({
     label: `${wLabel(w)} (limbs)`,
     data: labels.map(r => +dmgAt(w, r, limbMult(w)).toFixed(2)),
     borderColor: 'transparent', backgroundColor: fillColor,
-    borderWidth: 0, pointRadius: 0, tension: 0, stepped: 'before',
+    borderWidth: 0, pointRadius: 0, tension: 0, stepped: steppedFor(w),
     fill: '-1', isBand: true, _weapon: w,
   });
   // Preserve the existing chest-BTK reference lines underneath the new bands.
@@ -957,6 +1011,7 @@ function renderBTK() {
   // Each cell shows chest–limb ranges when the limb multiplier changes the outcome.
   const cells = (w, r) => {
     const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
+    if (b == null || bl == null) return { bTxt: '—', tTxt: '—' };
     const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
     const tTxt = bl !== b
       ? `${fmtT(w, getTTK(w, b)).replace(/ms$/, '')}–${fmtT(w, getTTK(w, bl))}`
@@ -1020,27 +1075,20 @@ function syncRecoilShotCount() {
   renderRecoil();
 }
 
-function setRecoilControl(value) {
-  state.recoil.control = !!value;
-  syncCompensationControls();
-  renderRecoil();
-}
+// The slider is the whole control: 0% is "no compensation", so there is no
+// separate on/off toggle to keep in sync with it.
 function syncCompensationControls() {
-  const { control, compensationLevel } = state.recoil;
-  const visibleValue = control ? compensationLevel : 0;
-  document.getElementById('rcControlOff')?.classList.toggle('on', !control);
-  document.getElementById('rcControlOn')?.classList.toggle('on', control);
-  const row = document.getElementById('rcCompRow');
+  const level = state.recoil.compensationLevel;
   const range = document.getElementById('rcCompRange');
   const input = document.getElementById('rcCompInput');
-  row?.classList.toggle('disabled', !control);
-  if (range) { range.disabled = !control; range.value = visibleValue; }
-  if (input) { input.disabled = !control; input.value = visibleValue; }
+  document.getElementById('rcCompRow')?.classList.toggle('idle', level <= 0);
+  if (range) { range.value = level; paintRange(range, { idle: level <= 0 }); }
+  if (input && document.activeElement !== input) input.value = level;
 }
 function syncCompensationLevel(source = 'input') {
   const el = document.getElementById(source === 'range' ? 'rcCompRange' : 'rcCompInput');
-  const raw = +(el?.value ?? DEFAULT_COMPENSATION);
-  state.recoil.compensationLevel = Math.max(0, Math.min(125, Math.round(Number.isFinite(raw) ? raw : DEFAULT_COMPENSATION)));
+  const raw = +(el?.value ?? 0);
+  state.recoil.compensationLevel = Math.max(0, Math.min(125, Math.round(Number.isFinite(raw) ? raw : 0)));
   syncCompensationControls();
   renderRecoil();
 }
@@ -1061,6 +1109,87 @@ function setRecoilStance(stance) {
   setSimContext({ stanceState: state.recoil.stance });
   renderRecoil();
 }
+function applyViewLayers(view) {
+  const saved = state.recoil.savedLayers[view];
+  if (saved) state.recoil.layers = { ...saved };
+}
+function setRecoilView(view) {
+  const next = view === 'target' ? 'target' : 'angle';
+  if (state.recoil.view === next) return;
+  // Each view remembers its own overlays, so the target view can start without
+  // the scatter cloud without discarding the angle plot's setup.
+  state.recoil.savedLayers[state.recoil.view] = { ...state.recoil.layers };
+  state.recoil.view = next;
+  applyViewLayers(next);
+  // Flag the swap so the plot and its stats fade in together, which reads as
+  // one chart changing lens rather than two unrelated panels appearing.
+  ['rcPlotColumn', 'rcStats'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('rc-view-swap');
+    void el.offsetWidth;
+    el.classList.add('rc-view-swap');
+  });
+  renderRecoil();
+}
+function resetTargetAim() {
+  state.recoil.targetAim = 'chest';
+  renderRecoil();
+}
+function currentAimOffset() {
+  return targetAimOffset(state.recoil.targetAim, state.recoil.customAim);
+}
+/** Drop the aim point at a plot position, in world centimetres. */
+function setCustomAimAt(worldX, worldY) {
+  state.recoil.customAim = { x: worldX, y: worldY };
+  state.recoil.targetAim = 'custom';
+  renderRecoil();
+}
+function canvasToWorld(clientX, clientY, canvas) {
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width || !rect.height) return null;
+  const { PW, PH } = plotBox();
+  const u = ((clientX - rect.left) * canvas.width / rect.width - PLOT_PAD.l) / PW;
+  const v = ((clientY - rect.top) * canvas.height / rect.height - PLOT_PAD.t) / PH;
+  const view = recoilViewport();
+  return {
+    x: view.xCenter + (u - 0.5) * view.xSpan,
+    y: view.yCenter + (0.5 - v) * view.ySpan,
+  };
+}
+function syncTargetDistance(source = 'input') {
+  const el = document.getElementById(source === 'range' ? 'rcDistanceRange' : 'rcDistanceInput');
+  const raw = +(el?.value ?? 30);
+  state.recoil.distance = Math.max(1, Math.min(150, Math.round(Number.isFinite(raw) ? raw : 30)));
+  renderRecoil();
+}
+function syncZoomFromSlider() {
+  const el = document.getElementById('rcZoomRange');
+  const raw = +(el?.value ?? 50);
+  if (state.recoil.view === 'target') {
+    setMagnificationIndex(raw);
+  } else {
+    // scaleH is a half-span in degrees, so a wider span means less zoom.
+    const pct = Math.max(0, Math.min(100, raw)) / 100;
+    state.recoil.scaleH = RECOIL_SCALE_MAX - pct * (RECOIL_SCALE_MAX - RECOIL_SCALE_MIN);
+  }
+  renderRecoil();
+}
+/** The zoom slider indexes the magnification ladder in target view, percent in angle view. */
+function zoomSliderBounds() {
+  return state.recoil.view === 'target'
+    ? { min: 0, max: SCOPE_MAGNIFICATIONS.length - 1, step: 1, value: SCOPE_MAGNIFICATIONS.indexOf(currentMagnification()) }
+    : { min: 0, max: 100, step: 1, value: (RECOIL_SCALE_MAX - state.recoil.scaleH) / (RECOIL_SCALE_MAX - RECOIL_SCALE_MIN) * 100 };
+}
+/** Paint the filled portion of a range input so every slider reads the same. */
+function paintRange(el, { idle = false } = {}) {
+  if (!el) return;
+  const min = +el.min || 0;
+  const max = +el.max || 100;
+  const pct = max === min ? 0 : ((+el.value - min) / (max - min)) * 100;
+  el.style.setProperty('--fill', `${Math.max(0, Math.min(100, pct))}%`);
+  el.classList.toggle('idle', idle);
+}
 function setRecoilPlatform(platform) {
   state.recoil.platform = platform === 'console' ? 'console' : 'pc';
   renderRecoil();
@@ -1073,16 +1202,131 @@ function resetRecoilReference() {
   state.recoil.refSeed = 0;
   renderRecoil();
 }
+function cmAtDistance(angleDeg, distanceM = state.recoil.distance) {
+  return Math.tan(angleDeg * Math.PI / 180) * distanceM * 100;
+}
+function plotBox() {
+  const canvas = document.getElementById('rcMain');
+  const cw = canvas?.width || 430;
+  const ch = canvas?.height || 430;
+  return { PW: cw - PLOT_PAD.l - PLOT_PAD.r, PH: ch - PLOT_PAD.t - PLOT_PAD.b };
+}
+// Base framing for the target view. It is deliberately keyed on the loadout,
+// burst length and range only: rerolling the sample or moving the aim point
+// must never yank the user's zoom and pan out from under them, so both are
+// measured against the deterministic seed and the default chest aim.
+let targetBaseFrame = null;
+let targetBaseFrameKey = '';
+
+function computeTargetBaseFrame(weapons, shotCount) {
+  const live = weapons.filter(Boolean);
+  // Only the loadout, burst length and range refit the view. Stance, input
+  // device and the recoil-control slider deliberately do not: dragging a
+  // slider must not make the chart lurch under the pointer.
+  const key = [live.map(w => w.id).join('+'), shotCount, state.recoil.distance].join('|');
+  if (key === targetBaseFrameKey && targetBaseFrame) return;
+  targetBaseFrameKey = key;
+
+  const frame = targetFrame();
+  let top = frame.topY;
+  let bottom = frame.bottomY;
+  live.forEach(weapon => {
+    const points = genRecoilPts(weapon, 0, shotCount);
+    const blooms = simulateBloom(weapon, shotCount);
+    points.forEach((point, i) => {
+      const bloom = blooms[i] ?? spreadBounds(weapon)[0];
+      top = Math.max(top, cmAtDistance(point.y + bloom));
+      bottom = Math.min(bottom, cmAtDistance(point.y - bloom));
+    });
+  });
+  const minSpan = frame.heightCm / TARGET_FRAME_FILL;
+  const maxSpan = frame.heightCm / TARGET_FRAME_MIN_FILL;
+  targetBaseFrame = {
+    fitSpan: Math.min(maxSpan, Math.max(minSpan, (top - bottom) * 1.1)),
+    wantedCenterY: (top + bottom) / 2,
+  };
+}
+
+/**
+ * Where to centre the plot for a given field of view. A wide field drifts up
+ * toward the pattern; a tight one pins to the figure so zooming in never
+ * climbs off into empty sky above the soldier's head.
+ */
+function targetCenterY(ySpan) {
+  const frame = targetFrame();
+  const slack = Math.max(0, (ySpan - frame.heightCm) / 2);
+  const wanted = targetBaseFrame?.wantedCenterY ?? frame.centerY;
+  return Math.max(frame.centerY - slack, Math.min(frame.centerY + slack, wanted));
+}
+
+/** Vertical field, in target-plane centimetres, seen through an `m`x optic. */
+function spanCmAtMagnification(m) {
+  return 2 * cmAtDistance(ADS_1X_VFOV_DEG / m / 2);
+}
+/** Lowest magnification on the ladder that still fits the wanted span. */
+function fitMagnification(spanCm) {
+  for (let i = SCOPE_MAGNIFICATIONS.length - 1; i >= 0; i--) {
+    if (spanCmAtMagnification(SCOPE_MAGNIFICATIONS[i]) >= spanCm) return SCOPE_MAGNIFICATIONS[i];
+  }
+  return SCOPE_MAGNIFICATIONS[0];
+}
+function currentMagnification() {
+  if (state.recoil.magnification != null) return state.recoil.magnification;
+  return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL);
+}
+function recoilViewport() {
+  if (state.recoil.view === 'target') {
+    const { PW, PH } = plotBox();
+    const ySpan = spanCmAtMagnification(currentMagnification());
+    return {
+      xSpan: ySpan * (PW / PH),
+      ySpan,
+      xCenter: state.recoil.distancePanX,
+      yCenter: targetCenterY(ySpan) + state.recoil.distancePanY,
+    };
+  }
+  return {
+    xSpan: state.recoil.scaleH * 2,
+    ySpan: state.recoil.scaleH * 2,
+    xCenter: state.recoil.panX,
+    yCenter: state.recoil.scaleH - 1 + state.recoil.panY,
+  };
+}
+function setMagnificationIndex(index) {
+  const clamped = Math.max(0, Math.min(SCOPE_MAGNIFICATIONS.length - 1, Math.round(index)));
+  state.recoil.magnification = SCOPE_MAGNIFICATIONS[clamped];
+}
 function adjustRecoilScale(dir) {
-  state.recoil.scaleH += dir === 'in' ? -RECOIL_SCALE_STEP : RECOIL_SCALE_STEP;
-  state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX, state.recoil.scaleH));
+  if (state.recoil.view === 'target') {
+    const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
+    setMagnificationIndex(index + (dir === 'in' ? 1 : -1));
+  } else {
+    state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX,
+      state.recoil.scaleH + (dir === 'in' ? -RECOIL_SCALE_STEP : RECOIL_SCALE_STEP)));
+  }
   renderRecoil();
 }
 function resetRecoilView() {
+  if (state.recoil.view === 'target') {
+    state.recoil.magnification = null;
+    state.recoil.distancePanX = 0;
+    state.recoil.distancePanY = 0;
+    renderRecoil();
+    return;
+  }
   state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
   renderRecoil();
 }
 function panRecoilView(dir) {
+  if (state.recoil.view === 'target') {
+    const step = recoilViewport().xSpan * 0.12;
+    if (dir === 'left')  state.recoil.distancePanX -= step;
+    if (dir === 'right') state.recoil.distancePanX += step;
+    if (dir === 'up')    state.recoil.distancePanY += step;
+    if (dir === 'down')  state.recoil.distancePanY -= step;
+    renderRecoil();
+    return;
+  }
   if (dir === 'left')  state.recoil.panX -= RECOIL_PAN_STEP;
   if (dir === 'right') state.recoil.panX += RECOIL_PAN_STEP;
   if (dir === 'up')    state.recoil.panY += RECOIL_PAN_STEP;
@@ -1090,11 +1334,63 @@ function panRecoilView(dir) {
   renderRecoil();
 }
 
-function recoilXMin() { return -state.recoil.scaleH + state.recoil.panX; }
-function recoilXMax() { return  state.recoil.scaleH + state.recoil.panX; }
-function recoilYMin() { return -1 + state.recoil.panY; }
-function recoilYMax() { return (state.recoil.scaleH * 2 - 1) + state.recoil.panY; }
+function panRecoilByPixels(dx, dy, canvas) {
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  const { xSpan, ySpan } = recoilViewport();
+  const { PW, PH } = plotBox();
+  const dxWorld = dx * (canvas.width / rect.width) / PW * xSpan;
+  const dyWorld = dy * (canvas.height / rect.height) / PH * ySpan;
+  if (state.recoil.view === 'target') {
+    state.recoil.distancePanX -= dxWorld;
+    state.recoil.distancePanY += dyWorld;
+  } else {
+    state.recoil.panX -= dxWorld;
+    state.recoil.panY += dyWorld;
+  }
+  renderRecoil();
+}
+
+function zoomRecoilAtPointer(deltaY, clientX, clientY, canvas) {
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  const { PW, PH } = plotBox();
+  const canvasX = (clientX - rect.left) * canvas.width / rect.width;
+  const canvasY = (clientY - rect.top) * canvas.height / rect.height;
+  const u = Math.max(0, Math.min(1, (canvasX - PLOT_PAD.l) / PW));
+  const v = Math.max(0, Math.min(1, (canvasY - PLOT_PAD.t) / PH));
+  const before = recoilViewport();
+  const worldX = before.xCenter + (u - 0.5) * before.xSpan;
+  const worldY = before.yCenter + (0.5 - v) * before.ySpan;
+
+  if (state.recoil.view === 'target') {
+    const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
+    setMagnificationIndex(index + (deltaY < 0 ? 1 : -1));
+    const after = recoilViewport();
+    state.recoil.distancePanX = worldX - (u - 0.5) * after.xSpan;
+    state.recoil.distancePanY = worldY - (0.5 - v) * after.ySpan - (after.yCenter - state.recoil.distancePanY);
+  } else {
+    state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX, state.recoil.scaleH * (deltaY < 0 ? 1 / 1.16 : 1.16)));
+    const after = recoilViewport();
+    state.recoil.panX = worldX - (u - 0.5) * after.xSpan;
+    state.recoil.panY = worldY - (0.5 - v) * after.ySpan - (state.recoil.scaleH - 1);
+  }
+  renderRecoil();
+}
+
 function fmtAxisDeg(v) { return v.toFixed(1).replace('.0', ''); }
+function fmtAxisMeters(cm) {
+  const meters = cm / 100;
+  const decimals = Math.abs(meters) < 1 ? 1 : 0;
+  return `${meters.toFixed(decimals).replace(/\.0$/, '')}m`;
+}
+function niceDistanceGridStep(spanCm) {
+  const raw = spanCm / 5;
+  const magnitude = 10 ** Math.floor(Math.log10(Math.max(raw, 1)));
+  const normalized = raw / magnitude;
+  const nice = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
+  return nice * magnitude;
+}
 function normalizeDegrees(deg) { return ((deg % 360) + 360) % 360; }
 function signedOppositeDegrees(deg) {
   const n = normalizeDegrees(deg + 180);
@@ -1128,38 +1424,56 @@ function selectedRecoilDirectionFor(w) { return recoilGroup(w).dir ?? w.recoilDi
 function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   const ctx = canvas.getContext('2d');
   const CW = canvas.width, CH = canvas.height;
-  const PL = 28, PR = 8, PT = 8, PB = 18;
+  const PL = PLOT_PAD.l, PR = PLOT_PAD.r, PT = PLOT_PAD.t, PB = PLOT_PAD.b;
   const PW = CW - PL - PR, PH = CH - PT - PB;
   const N = selectedRecoilShotCount();
-  const xMin = recoilXMin(), xMax = recoilXMax();
-  const yMin = recoilYMin(), yMax = recoilYMax();
-  const toX = xDeg => PL + ((xDeg - xMin) / (xMax - xMin)) * PW;
-  const toY = yDeg => PT + PH - ((yDeg - yMin) / (yMax - yMin)) * PH;
+  const isTargetView = state.recoil.view === 'target';
+  const view = recoilViewport();
+  const xMin = view.xCenter - view.xSpan / 2, xMax = view.xCenter + view.xSpan / 2;
+  const yMin = view.yCenter - view.ySpan / 2, yMax = view.yCenter + view.ySpan / 2;
+  const mapX = value => PL + ((value - xMin) / (xMax - xMin)) * PW;
+  const mapY = value => PT + PH - ((value - yMin) / (yMax - yMin)) * PH;
+  // In target view the figure is pinned to world zero and the aim point is what
+  // moves, so shot angles are projected relative to the aim offset.
+  const aimOffset = isTargetView ? currentAimOffset() : { x: 0, y: 0 };
+  const toX = angleDeg => mapX(isTargetView ? aimOffset.x + cmAtDistance(angleDeg) : angleDeg);
+  const toY = angleDeg => mapY(isTargetView ? aimOffset.y + cmAtDistance(angleDeg) : angleDeg);
 
   ctx.fillStyle = '#080d0d'; ctx.fillRect(0, 0, CW, CH);
 
-  const vMin1 = Math.ceil(yMin), vMax1 = Math.floor(yMax);
-  const hMin1 = Math.ceil(xMin), hMax1 = Math.floor(xMax);
+  const gridStep = isTargetView ? niceDistanceGridStep(xMax - xMin) : 1;
+  const vMin1 = Math.ceil(yMin / gridStep) * gridStep, vMax1 = Math.floor(yMax / gridStep) * gridStep;
+  const hMin1 = Math.ceil(xMin / gridStep) * gridStep, hMax1 = Math.floor(xMax / gridStep) * gridStep;
   ctx.strokeStyle = 'rgba(40,52,52,0.6)'; ctx.lineWidth = 0.4;
-  for (let v = vMin1; v <= vMax1; v++) { const y = toY(v); ctx.beginPath(); ctx.moveTo(PL, y); ctx.lineTo(PL + PW, y); ctx.stroke(); }
-  for (let h = hMin1; h <= hMax1; h++) { const x = toX(h); ctx.beginPath(); ctx.moveTo(x, PT); ctx.lineTo(x, PT + PH); ctx.stroke(); }
+  for (let v = vMin1; v <= vMax1; v += gridStep) { const y = mapY(v); ctx.beginPath(); ctx.moveTo(PL, y); ctx.lineTo(PL + PW, y); ctx.stroke(); }
+  for (let h = hMin1; h <= hMax1; h += gridStep) { const x = mapX(h); ctx.beginPath(); ctx.moveTo(x, PT); ctx.lineTo(x, PT + PH); ctx.stroke(); }
 
-  ctx.strokeStyle = 'rgba(150,165,165,0.6)'; ctx.lineWidth = 1.5;
-  if (xMin <= 0 && xMax >= 0) { ctx.beginPath(); ctx.moveTo(toX(0), PT); ctx.lineTo(toX(0), PT + PH); ctx.stroke(); }
-  if (yMin <= 0 && yMax >= 0) { ctx.beginPath(); ctx.moveTo(PL, toY(0)); ctx.lineTo(PL + PW, toY(0)); ctx.stroke(); }
+  // The angle plot's origin is the aim point, so full-length axes read well
+  // there. In target view the grid is anchored to the body instead, and a
+  // discrete crosshair marks where the shooter is aiming.
+  if (!isTargetView) {
+    ctx.strokeStyle = 'rgba(150,165,165,0.6)'; ctx.lineWidth = 1.5;
+    if (xMin <= 0 && xMax >= 0) { ctx.beginPath(); ctx.moveTo(mapX(0), PT); ctx.lineTo(mapX(0), PT + PH); ctx.stroke(); }
+    if (yMin <= 0 && yMax >= 0) { ctx.beginPath(); ctx.moveTo(PL, mapY(0)); ctx.lineTo(PL + PW, mapY(0)); ctx.stroke(); }
+  }
 
-  const ox = toX(0), oy = toY(0);
-  if (xMin <= 0 && xMax >= 0 && yMin <= 0 && yMax >= 0) {
-    ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.lineWidth = 0.8;
-    ctx.beginPath(); ctx.moveTo(ox - 6, oy); ctx.lineTo(ox + 6, oy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(ox, oy - 6); ctx.lineTo(ox, oy + 6); ctx.stroke();
+  const ox = mapX(aimOffset.x), oy = mapY(aimOffset.y);
+  if (ox >= PL && ox <= PL + PW && oy >= PT && oy <= PT + PH) {
+    ctx.strokeStyle = isTargetView ? 'rgba(255,255,255,0.72)' : 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = isTargetView ? 1.1 : 0.8;
+    const arm = isTargetView ? 8 : 6;
+    ctx.beginPath(); ctx.moveTo(ox - arm, oy); ctx.lineTo(ox + arm, oy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ox, oy - arm); ctx.lineTo(ox, oy + arm); ctx.stroke();
+    if (isTargetView) {
+      ctx.beginPath(); ctx.arc(ox, oy, 3.2, 0, Math.PI * 2); ctx.stroke();
+    }
   }
 
   ctx.fillStyle = 'rgba(100,120,120,0.75)'; ctx.font = '9px sans-serif';
   ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
-  for (let v = vMin1; v <= vMax1; v++) ctx.fillText(v + '°', PL - 3, toY(v));
+  for (let v = vMin1; v <= vMax1; v += gridStep) ctx.fillText(isTargetView ? fmtAxisMeters(v) : v + '°', PL - 3, mapY(v));
   ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-  for (let h = hMin1; h <= hMax1; h++) ctx.fillText(h + '°', toX(h), PT + PH + 3);
+  for (let h = hMin1; h <= hMax1; h += gridStep) ctx.fillText(isTargetView ? fmtAxisMeters(h) : h + '°', mapX(h), PT + PH + 3);
 
   ctx.save();
   ctx.beginPath(); ctx.rect(PL, PT, PW, PH); ctx.clip();
@@ -1167,6 +1481,11 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   const cols = ['#c9a227', '#4d94d0'];
   const drawOrder = [weapon1, weapon2].filter(Boolean);
   const spreadBubbleIdxs = getBloomBulletIdxs(N);
+  const targetHitTest = isTargetView ? drawTarget(ctx, mapX, mapY) : null;
+  const pxPerCm = isTargetView ? PW / (xMax - xMin) : 0;
+  const sprayDotRadius = isTargetView ? targetMarkerRadius(pxPerCm) : 2.5;
+  const scatterDotRadius = isTargetView ? targetMarkerRadius(pxPerCm, 1.25) : 2;
+  const targetHits = [];
 
   // Pass 0 — Scatter cloud
   if (layers.scatter) drawOrder.forEach(w => {
@@ -1179,7 +1498,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
         const bloom = blooms[i] ?? spreadBounds(w)[0];
         const bAng = rngB() * Math.PI * 2, bR = bloom * rngB();
         ctx.beginPath();
-        ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(p.y + bR * Math.sin(bAng)), 2, 0, Math.PI * 2);
+        ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(p.y + bR * Math.sin(bAng)), scatterDotRadius, 0, Math.PI * 2);
         ctx.fillStyle = col + '38'; ctx.fill();
       });
     }
@@ -1200,6 +1519,14 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
         return { x: p.x + bR * Math.cos(bAng), y: p.y + bR * Math.sin(bAng) };
       });
     })();
+    let sprayZones = null;
+    if (targetHitTest) {
+      sprayZones = sprayPts.map(p => targetHitTest({
+        xCm: aimOffset.x + cmAtDistance(p.x),
+        yCm: aimOffset.y + cmAtDistance(p.y),
+      }));
+      targetHits.push({ weapon: w, zones: sprayZones, hits: sprayZones.filter(Boolean).length, total: sprayPts.length });
+    }
 
     if (layers.bloom) {
       spreadBubbleIdxs.forEach(idx => {
@@ -1300,14 +1627,33 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       ctx.lineWidth = 2.2; ctx.stroke();
     }
 
-    if (layers.spray) sprayPts.forEach(p => {
-      ctx.beginPath(); ctx.arc(toX(p.x), toY(p.y), 2.5, 0, Math.PI * 2);
+    if (layers.spray) sprayPts.forEach((p, i) => {
+      const x = toX(p.x), y = toY(p.y);
+      if (!sprayZones) {
+        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius, 0, Math.PI * 2);
+        ctx.fillStyle = col; ctx.fill();
+        return;
+      }
+      // Colour stays purely weapon identity. Hits read as bigger solid dots
+      // with a dark separator so they lift off the figure; misses fade back.
+      if (!sprayZones[i]) {
+        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius * 0.85, 0, Math.PI * 2);
+        ctx.fillStyle = col + '55'; ctx.fill();
+        return;
+      }
+      const r = sprayDotRadius * 1.3;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.fillStyle = col; ctx.fill();
+      if (r > 1.6) {
+        ctx.strokeStyle = 'rgba(8,13,13,0.85)';
+        ctx.lineWidth = Math.min(1.4, r * 0.32);
+        ctx.stroke();
+      }
     });
   });
 
   ctx.restore();
-  return { xMin, xMax, yMin, yMax, spreadBubbleIdxs };
+  return { xMin, xMax, yMin, yMax, spreadBubbleIdxs, isTargetView, targetHits };
 }
 
 function renderAttachmentStats(loadouts) {
@@ -1389,6 +1735,50 @@ function renderAttachmentStats(loadouts) {
   el.innerHTML = html;
 }
 
+function renderTargetImpactStats(entries) {
+  const el = document.getElementById('rcStats');
+  if (!el) return;
+  const colors = ['c1', 'c2'];
+  const fmtDamage = value => value == null ? '—' : value.toFixed(1);
+  const fmtMult = value => value == null ? '' : `<span class="target-zone-mult">${value.toFixed(2)}×</span>`;
+  // 100 health is a kill; 75 leaves the target one body shot from dying.
+  const damageClass = value => value == null ? '' : value >= 100 ? ' class="dmg-kill"' : value >= 75 ? ' class="dmg-crit"' : '';
+  const aimLabel = state.recoil.targetAim === 'custom' ? 'custom aim' : `${state.recoil.targetAim} aim`;
+  let html = `<div class="rc-stats-head"><div class="ptitle">Target Impact Stats</div><div class="rc-stats-context">${state.recoil.distance} m · ${aimLabel}</div></div>`;
+
+  entries.forEach((entry, index) => {
+    const summary = summarizeTargetImpacts(entry.weapon, state.recoil.distance, entry.zones);
+    const kill = summary.lethalShot == null
+      ? '<strong>None</strong>'
+      : `<strong title="Took ${summary.lethalHit} hits out of the first ${summary.lethalShot} shots fired">${summary.lethalHit} / ${summary.lethalShot}</strong>`;
+    // Only the running total decides a kill, so per-zone damage stays neutral.
+    const rows = summary.zones.map(zone => `
+      <tr${zone.hits ? '' : ' class="no-hits"'}>
+        <th scope="row">${zone.label} ${fmtMult(zone.multiplier)}</th>
+        <td>${zone.hits}</td>
+        <td>${fmtDamage(zone.damagePerHit)}</td>
+        <td>${fmtDamage(zone.damage)}</td>
+      </tr>`).join('');
+    html += `
+      <section class="target-impact-card">
+        <div class="target-impact-weapon ${colors[index] ?? ''}">${wLabel(entry.weapon)}</div>
+        <div class="target-impact-summary">
+          <div><span>Acc</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
+          <div><span>Miss</span><strong>${summary.misses}</strong></div>
+          <div><span>Damage</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal, 75+ leaves one body shot to kill">${fmtDamage(summary.totalDamage)}</strong></div>
+          <div><span>Lethal</span>${kill}</div>
+        </div>
+        <table class="target-zone-table">
+          <thead><tr><th>Body Part</th><th>Hits</th><th>Dmg / Hit</th><th>Damage</th></tr></thead>
+
+          <tbody>${rows}</tbody>
+        </table>
+      </section>`;
+  });
+  html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Lethal shot assumes 100 health and follows the plotted hit order; total damage is the uncapped sum of every plotted hit.</div>';
+  el.innerHTML = html;
+}
+
 function renderRecoil() {
   scheduleUrlSync();
   const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
@@ -1396,13 +1786,16 @@ function renderRecoil() {
   const shotCount = selectedRecoilShotCount();
   const titleCount = document.getElementById('rcShotTitleCount');
   if (titleCount) titleCount.textContent = shotCount;
+  // The base frame feeds the auto magnification, so it has to settle before
+  // any of the control read-outs are written.
+  if (state.recoil.view === 'target') computeTargetBaseFrame([w1, w2], shotCount);
 
   renderAttachmentStats([
     { weapon: state.slots[0].weapon, atts: state.slots[0].atts, colClass: 'c1' },
     { weapon: state.comparing ? state.slots[1].weapon : null, atts: state.slots[1].atts, colClass: 'c2' },
   ]);
 
-  const { aim, stance, layers, control, refSeed } = state.recoil;
+  const { aim, stance, layers, refSeed } = state.recoil;
   document.getElementById('rcModeScatter')?.classList.toggle('on', layers.scatter);
   document.getElementById('rcModeBloom')?.classList.toggle('on', layers.spray);
   document.getElementById('rcModePath')?.classList.toggle('on', layers.path);
@@ -1412,6 +1805,52 @@ function renderRecoil() {
   document.getElementById('rcAimHip')?.classList.toggle('on', aim === 'hip');
   document.getElementById('rcStanceStand')?.classList.toggle('on', stance === 'stand');
   document.getElementById('rcStanceMove')?.classList.toggle('on', stance === 'move');
+  const isTarget = state.recoil.view === 'target';
+  ['rcViewAngle', 'rcViewTarget'].forEach(id => {
+    const tab = document.getElementById(id);
+    if (!tab) return;
+    const on = (id === 'rcViewTarget') === isTarget;
+    tab.classList.toggle('on', on);
+    tab.setAttribute('aria-selected', String(on));
+  });
+  const distanceField = document.getElementById('rcDistanceField');
+  if (distanceField) distanceField.hidden = !isTarget;
+  if (!isTarget) document.getElementById('rcMain')?.classList.remove('aiming');
+  const hint = document.getElementById('rcHint');
+  if (hint) {
+    hint.textContent = isTarget
+      ? 'Ctrl + click to aim · Shift + drag to pan · Shift + scroll to zoom'
+      : 'Shift + drag to pan · Shift + scroll to zoom';
+  }
+  const aimReadout = document.getElementById('rcAimReadout');
+  if (aimReadout) aimReadout.hidden = !isTarget;
+  const aimText = document.getElementById('rcAimText');
+  if (aimText) {
+    const offset = currentAimOffset();
+    aimText.textContent = state.recoil.targetAim === 'chest'
+      ? 'Aim: centre chest'
+      : `Aim: ${(offset.x / 100).toFixed(2)} m, ${(offset.y / 100).toFixed(2)} m`;
+  }
+  document.getElementById('rcAimReset').hidden = state.recoil.targetAim === 'chest';
+  const distanceRange = document.getElementById('rcDistanceRange');
+  const distanceInput = document.getElementById('rcDistanceInput');
+  if (distanceRange) { distanceRange.value = Math.max(5, state.recoil.distance); paintRange(distanceRange); }
+  if (distanceInput && document.activeElement !== distanceInput) distanceInput.value = state.recoil.distance;
+  const zoomRange = document.getElementById('rcZoomRange');
+  if (zoomRange) {
+    const bounds = zoomSliderBounds();
+    zoomRange.min = bounds.min; zoomRange.max = bounds.max; zoomRange.step = bounds.step;
+    zoomRange.value = bounds.value;
+    paintRange(zoomRange);
+  }
+  const zoomReadout = document.getElementById('rcZoomReadout');
+  if (zoomReadout) {
+    const magnification = isTarget ? currentMagnification() : null;
+    zoomReadout.textContent = isTarget ? `${magnification.toFixed(2)}×` : `±${fmtAxisDeg(state.recoil.scaleH)}°`;
+    zoomReadout.title = isTarget
+      ? `Optic magnification. The plot shows the same field a ${magnification.toFixed(2)}× sight would at this range.`
+      : 'Horizontal half-span of the plot, in degrees.';
+  }
   document.getElementById('rcPlatformPc')?.classList.toggle('on', state.recoil.platform === 'pc');
   document.getElementById('rcPlatformConsole')?.classList.toggle('on', state.recoil.platform === 'console');
   syncCompensationControls();
@@ -1434,7 +1873,14 @@ function renderRecoil() {
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
     const bloomNote = layers.bloom ? ` Bubbles = potential spread on bullets ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = bloom envelope across all shots.' : '';
-    noteEl.textContent = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${bloomNote}${coneNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
+    const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${bloomNote}${coneNote}`;
+    if (axis.isTargetView) {
+      const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${wLabel(weapon)} ${hits}/${total}`).join(' · ');
+      const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss. Colour is the weapon, and the per-zone breakdown is in the stats table.' : '';
+      noteEl.textContent = `${layerNote}${ringNote} Same simulation, projected onto a 180 cm soldier at ${state.recoil.distance} m — the pattern covers more of the target the further out it lands.${hitSummary ? ` Reference hits: ${hitSummary}.` : ''} Zoom matches optic magnification against an assumed ${ADS_1X_VFOV_DEG}° vertical field at 1×; grid marks ${fmtAxisMeters(niceDistanceGridStep(axis.xMax - axis.xMin))}.`;
+    } else {
+      noteEl.textContent = `${layerNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
+    }
   }
 
   const leg = document.getElementById('rcLegend');
@@ -1442,6 +1888,11 @@ function renderRecoil() {
   [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w).forEach(([w, col]) => {
     leg.innerHTML += `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${wLabel(w)}</span></div>`;
   });
+
+  if (axis?.isTargetView) {
+    renderTargetImpactStats(axis.targetHits);
+    return;
+  }
 
   // Recoil / Spread stats panel
   const compPct = selectedCompensationLevel() / 100;
@@ -1618,7 +2069,7 @@ function renderRecoil() {
     })(),
   ];
 
-  let html = '<div class="ptitle" style="margin-bottom:9px">Recoil / Spread Stats</div>';
+  let html = `<div class="rc-stats-head" style="margin-bottom:9px"><div class="ptitle">Recoil / Spread Stats</div><div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : 'Standing'}</div></div>`;
   stats.forEach(s => {
     if (s.val1 === null && s.val2 === null) return;
     html += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
@@ -1770,8 +2221,9 @@ function bindEvents() {
   document.getElementById('rcAimHip').addEventListener('click', () => setRecoilAim('hip'));
   document.getElementById('rcStanceStand').addEventListener('click', () => setRecoilStance('stand'));
   document.getElementById('rcStanceMove').addEventListener('click', () => setRecoilStance('move'));
-  document.getElementById('rcControlOff').addEventListener('click', () => setRecoilControl(false));
-  document.getElementById('rcControlOn').addEventListener('click', () => setRecoilControl(true));
+  document.getElementById('rcViewAngle').addEventListener('click', () => setRecoilView('angle'));
+  document.getElementById('rcViewTarget').addEventListener('click', () => setRecoilView('target'));
+  document.getElementById('rcAimReset').addEventListener('click', resetTargetAim);
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
 
@@ -1788,16 +2240,80 @@ function bindEvents() {
   document.getElementById('rcZoomIn').addEventListener('click', () => adjustRecoilScale('in'));
   document.getElementById('rcZoomOut').addEventListener('click', () => adjustRecoilScale('out'));
   document.getElementById('rcResetView').addEventListener('click', resetRecoilView);
-  document.querySelector('.rc-pan-controls').addEventListener('click', e => {
-    const btn = e.target.closest('[data-pan]');
-    if (btn) panRecoilView(btn.dataset.pan);
+  const recoilCanvas = document.getElementById('rcMain');
+  // Dragging replaced the pan buttons, so the keyboard needs its own way in.
+  recoilCanvas.addEventListener('keydown', e => {
+    const pan = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' }[e.key];
+    if (pan) { e.preventDefault(); panRecoilView(pan); return; }
+    if (e.key === '+' || e.key === '=') { e.preventDefault(); adjustRecoilScale('in'); }
+    else if (e.key === '-' || e.key === '_') { e.preventDefault(); adjustRecoilScale('out'); }
+    else if (e.key === '0') { e.preventDefault(); resetRecoilView(); }
   });
+  // Touch is left to the browser so the page still scrolls under a finger;
+  // pointer dragging is for mouse and pen.
+  const CLICK_SLOP = 4;
+  let recoilDrag = null;
+  // Both plot gestures are modifier-gated, and the cursor names whichever one
+  // is armed: Shift to pan or zoom, Ctrl to place the aim point.
+  const setPanReady = on => recoilCanvas.classList.toggle('panready', on);
+  const setAimReady = on => recoilCanvas.classList.toggle('aiming', on && state.recoil.view === 'target');
+  const syncModifiers = e => { setPanReady(e.shiftKey); setAimReady(e.ctrlKey || e.metaKey); };
+  document.addEventListener('keydown', syncModifiers);
+  document.addEventListener('keyup', syncModifiers);
+  window.addEventListener('blur', () => { setPanReady(false); setAimReady(false); });
+  recoilCanvas.addEventListener('pointermove', syncModifiers);
+
+  recoilCanvas.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || e.pointerType === 'touch') return;
+    recoilDrag = { x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY, pointerId: e.pointerId, moved: false, pan: e.shiftKey };
+    try { recoilCanvas.setPointerCapture(e.pointerId); } catch { /* pointer already gone */ }
+    if (recoilDrag.pan) recoilCanvas.classList.add('dragging');
+    e.preventDefault();
+  });
+  recoilCanvas.addEventListener('pointermove', e => {
+    if (!recoilDrag || recoilDrag.pointerId !== e.pointerId) return;
+    const dx = e.clientX - recoilDrag.x;
+    const dy = e.clientY - recoilDrag.y;
+    recoilDrag.x = e.clientX;
+    recoilDrag.y = e.clientY;
+    if (Math.abs(e.clientX - recoilDrag.startX) > CLICK_SLOP || Math.abs(e.clientY - recoilDrag.startY) > CLICK_SLOP) {
+      recoilDrag.moved = true;
+    }
+    if (recoilDrag.pan && recoilDrag.moved) panRecoilByPixels(dx, dy, recoilCanvas);
+    e.preventDefault();
+  });
+  const endRecoilDrag = e => {
+    if (!recoilDrag || recoilDrag.pointerId !== e.pointerId) return;
+    const wasClick = !recoilDrag.moved && !recoilDrag.pan;
+    recoilDrag = null;
+    recoilCanvas.classList.remove('dragging');
+    // Ctrl+click places the aim point, so an ordinary click on the plot never
+    // moves it by accident. Shift stays reserved for panning.
+    if (e.type !== 'pointerup' || !wasClick || state.recoil.view !== 'target') return;
+    if (!(e.ctrlKey || e.metaKey)) return;
+    const world = canvasToWorld(e.clientX, e.clientY, recoilCanvas);
+    if (world) setCustomAimAt(world.x, world.y);
+  };
+  recoilCanvas.addEventListener('pointerup', endRecoilDrag);
+  recoilCanvas.addEventListener('pointercancel', endRecoilDrag);
+  // Plain scrolling belongs to the page; zooming needs Shift so the chart
+  // cannot swallow the wheel while someone is reading past it.
+  recoilCanvas.addEventListener('wheel', e => {
+    if (!e.shiftKey) return;
+    e.preventDefault();
+    // Browsers remap a shifted wheel to the horizontal axis, so take whichever
+    // delta actually carries the gesture.
+    zoomRecoilAtPointer(e.deltaY || e.deltaX, e.clientX, e.clientY, recoilCanvas);
+  }, { passive: false });
 
   // Inputs
   document.getElementById('rcBloomShotsInput')?.addEventListener('input', renderRecoil);
   document.getElementById('rcShotCountInput')?.addEventListener('change', syncRecoilShotCount);
   document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));
   document.getElementById('rcCompRange')?.addEventListener('input', () => syncCompensationLevel('range'));
+  document.getElementById('rcDistanceInput')?.addEventListener('change', () => syncTargetDistance('input'));
+  document.getElementById('rcDistanceRange')?.addEventListener('input', () => syncTargetDistance('range'));
+  document.getElementById('rcZoomRange')?.addEventListener('input', syncZoomFromSlider);
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
@@ -1809,3 +2325,6 @@ renderSidebar();
 renderStats();
 _restoringUrl = false;
 initMobileTooltips();
+whenTargetImageReady().then(() => {
+  if (state.recoil.view === 'target') renderRecoil();
+});

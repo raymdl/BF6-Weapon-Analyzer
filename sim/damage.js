@@ -37,19 +37,34 @@ export function resolveHitMultipliers(weaponId, ammoType, tables = {}) {
   };
 }
 
+/**
+ * Evaluate a Sym-shaped damage curve.
+ *
+ * `dmg` mirrors the Sym `dists`/`dmgs` pair list: an ordered polyline where a
+ * repeated range is an instant tier drop and distinct ranges are a linear ramp
+ * (sniper sweet spots, shotgun pellet falloff). At a repeated range the tier
+ * that ends there still applies, so the NVO-228E reads 35.22 at 9 m and 27.48
+ * at 10 m. Ranges outside the curve clamp to the first/last value.
+ */
 export function damageAtRange(weapon, range) {
   const points = weapon?.dmg;
-  if (!Array.isArray(points) || points.length === 0) return 0;
-  let damage = points[0].d;
-  for (const point of points) {
-    if (range >= point.r) damage = point.d;
+  if (!Array.isArray(points) || points.length === 0) return null;
+  if (range <= points[0].r) return points[0].d;
+  for (let i = 1; i < points.length; i++) {
+    const previous = points[i - 1];
+    const point = points[i];
+    if (range > point.r) continue;
+    // A repeated range keeps the outgoing tier; a ramp interpolates into it.
+    if (point.r === previous.r) return previous.d;
+    return previous.d + (point.d - previous.d) * ((range - previous.r) / (point.r - previous.r));
   }
-  return damage;
+  return points.at(-1).d;
 }
 
 export function damagePerShotAtRange(weapon, range) {
   const pelletCount = weapon?.pellets ?? 1;
-  return damageAtRange(weapon, range) * pelletCount;
+  const damage = damageAtRange(weapon, range);
+  return damage == null ? null : damage * pelletCount;
 }
 
 export function zoneMultiplierForWeapon(weapon, zone) {
@@ -64,6 +79,7 @@ export function bulletsToKillWithHits(damagePerShot, {
   headshotMultiplier = 1,
   bodyMultiplier = 1,
 } = {}) {
+  if (damagePerShot == null) return null;
   if (!(damagePerShot > 0) || !(health > 0)) return Infinity;
   const headDamage = damagePerShot * headshotMultiplier;
   const bodyDamage = damagePerShot * bodyMultiplier;

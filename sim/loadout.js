@@ -45,7 +45,10 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.laser = 'none';
   atts.light = 'none';
   const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
-  atts.barrel = wa?.barrelDef ?? 'basic';
+  // A new weapon may have a reviewed base record before its in-game barrel
+  // coverage exists. Keep that state fail-closed instead of silently applying
+  // the site's generic Basic barrel assumption.
+  atts.barrel = wa ? (wa.barrelDef ?? 'none') : 'basic';
   atts.ammo = data.WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
   atts.mag = data.WEAPON_MAG[weapon?.id]?.def ?? null;
   atts.ergo = 'none';
@@ -306,6 +309,11 @@ export function renderAttachmentSection({
   }
 
   updateAttTotal(containerId, atts, weapon, data);
+  const pendingPp19Coverage = weapon?.id === 'pp19'
+    && ['muzzle', 'barrel', 'grip', 'laser', 'light'].every(key => Array.isArray(wa?.[key]) && wa[key].length === 0);
+  if (pendingPp19Coverage) {
+    container.insertAdjacentHTML('beforeend', '<div class="att-note pp19-coverage-note">PP-19 attachment availability and effects: needs measurement.</div>');
+  }
   if (showAssumedFootnote && hasSelectedAssumedAtt(atts, data)) {
     container.insertAdjacentHTML('beforeend', '<div class="att-note assumed-note">* Assumed stats until datamined attachment values are available.</div>');
   }

@@ -3,45 +3,45 @@
     "id": "m433",
     "name": "M433",
     "cls": "Assault Rifle",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 830,
+    "cal": "5.56×45mm NATO",
+    "rpm": 830.769,
     "mag": 31,
     "tacRld": 2.384,
     "emptyRld": 2.967,
-    "deployT": 0.63,
-    "bulletVel": 670,
-    "recoilV": 0.7801,
-    "recoilDir": -22.0,
-    "recoilVar": 50.9,
-    "recoilIncAds": 0.27,
+    "deployT": 0.633334,
+    "bulletVel": 630,
+    "recoilV": 0.7933323350025011,
+    "recoilDir": -22,
+    "recoilVar": 41.4,
+    "recoilIncAds": 0.36,
     "spreadMax": 7,
     "adsTime": 250,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -51,12 +51,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -22.0,
-        "amount": 0.6583,
+        "dir": -22,
+        "amount": 0.6695,
         "amountMult": 0.945,
         "amountExp": -3,
-        "dirVar": 50.9,
-        "dirVarMult": 0.919233,
+        "dirVar": 41.4,
+        "dirVarMult": 0.922146,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -67,12 +67,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -22.0,
-        "amount": 0.6583,
+        "dir": -22,
+        "amount": 0.6695,
         "amountMult": 0.945,
         "amountExp": -3,
-        "dirVar": 50.9,
-        "dirVarMult": 0.919233,
+        "dirVar": 41.4,
+        "dirVarMult": 0.922146,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -104,69 +104,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "b36a4",
     "name": "B36A4",
     "cls": "Assault Rifle",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 720,
+    "cal": "5.56×45mm NATO",
+    "rpm": 719.999,
     "mag": 31,
     "tacRld": 2.384,
     "emptyRld": 2.95,
-    "deployT": 0.63,
-    "bulletVel": 780,
-    "recoilV": 0.6987,
-    "recoilDir": -15.0,
-    "recoilVar": 37.4,
-    "recoilIncAds": 0.27,
+    "deployT": 0.633334,
+    "bulletVel": 740,
+    "recoilV": 0.7264767922329352,
+    "recoilDir": -15,
+    "recoilVar": 28,
+    "recoilIncAds": 0.36,
     "spreadMax": 7,
     "adsTime": 250,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -176,12 +183,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -15.0,
-        "amount": 0.5803,
+        "dir": -15,
+        "amount": 0.6034,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 37.4,
-        "dirVarMult": 0.916351,
+        "dirVar": 28,
+        "dirVarMult": 0.918362,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -192,12 +199,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -15.0,
-        "amount": 0.5803,
+        "dir": -15,
+        "amount": 0.6034,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 37.4,
-        "dirVarMult": 0.916351,
+        "dirVar": 28,
+        "dirVarMult": 0.918362,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -229,69 +236,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "sor556",
     "name": "SOR-556 MK2",
     "cls": "Assault Rifle",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 568,
+    "cal": "5.56×45mm NATO",
+    "rpm": 568.421,
     "mag": 31,
     "tacRld": 2.384,
     "emptyRld": 2.667,
-    "deployT": 0.63,
-    "bulletVel": 800,
-    "recoilV": 0.6185,
-    "recoilDir": -9.0,
-    "recoilVar": 17.3,
-    "recoilIncAds": 0.27,
+    "deployT": 0.633334,
+    "bulletVel": 768,
+    "recoilV": 0.6232874910249844,
+    "recoilDir": -9,
+    "recoilVar": 12.7,
+    "recoilIncAds": 0.36,
     "spreadMax": 7,
     "adsTime": 260,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -301,12 +315,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -9.0,
-        "amount": 0.5002,
+        "dir": -9,
+        "amount": 0.5041,
         "amountMult": 0.9317,
         "amountExp": -3,
-        "dirVar": 17.3,
-        "dirVarMult": 0.908981,
+        "dirVar": 12.7,
+        "dirVarMult": 0.909447,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -317,12 +331,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -9.0,
-        "amount": 0.5002,
+        "dir": -9,
+        "amount": 0.5041,
         "amountMult": 0.9317,
         "amountExp": -3,
-        "dirVar": 17.3,
-        "dirVarMult": 0.908981,
+        "dirVar": 12.7,
+        "dirVarMult": 0.909447,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -354,69 +368,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "ak4d",
     "name": "AK4D",
     "cls": "Assault Rifle",
-    "cal": "7.62\u00d751mm NATO",
-    "rpm": 514,
+    "cal": "7.62×51mm NATO",
+    "rpm": 514.285,
     "mag": 21,
     "tacRld": 2.467,
     "emptyRld": 3.3,
-    "deployT": 0.63,
-    "bulletVel": 720,
-    "recoilV": 0.8484,
-    "recoilDir": -18.0,
-    "recoilVar": 25.4,
-    "recoilIncAds": 0.392,
+    "deployT": 0.633334,
+    "bulletVel": 680,
+    "recoilV": 0.852210725925926,
+    "recoilDir": -18,
+    "recoilVar": 20,
+    "recoilIncAds": 0.523,
     "spreadMax": 7,
     "adsTime": 270,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.392,
+        "inc": 0.523,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -426,12 +447,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -18.0,
-        "amount": 0.6991,
+        "dir": -18,
+        "amount": 0.7022,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 25.4,
-        "dirVarMult": 0.915484,
+        "dirVar": 20,
+        "dirVarMult": 0.916278,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -442,12 +463,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -18.0,
-        "amount": 0.6991,
+        "dir": -18,
+        "amount": 0.7022,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 25.4,
-        "dirVarMult": 0.915484,
+        "dirVar": 20,
+        "dirVarMult": 0.916278,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -479,69 +500,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 33.34
+        "r": 21,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 25
-      },
-      {
-        "r": 35.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 20
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "tr7",
     "name": "TR7",
     "cls": "Assault Rifle",
-    "cal": "7.62\u00d751mm NATO",
-    "rpm": 720,
+    "cal": "7.62×51mm NATO",
+    "rpm": 719.999,
     "mag": 21,
     "tacRld": 2.35,
     "emptyRld": 3.3,
-    "deployT": 0.63,
-    "bulletVel": 648,
-    "recoilV": 1.165,
-    "recoilDir": 20.0,
-    "recoilVar": 47.1,
-    "recoilIncAds": 0.39,
+    "deployT": 0.633334,
+    "bulletVel": 604,
+    "recoilV": 1.1595971107513876,
+    "recoilDir": 20,
+    "recoilVar": 40.8,
+    "recoilIncAds": 0.523,
     "spreadMax": 7,
     "adsTime": 255,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.392,
+        "inc": 0.523,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -551,12 +579,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 20.0,
-        "amount": 0.9963,
+        "dir": 20,
+        "amount": 0.9917,
         "amountMult": 0.9492,
         "amountExp": -3,
-        "dirVar": 47.1,
-        "dirVarMult": 0.926365,
+        "dirVar": 40.8,
+        "dirVarMult": 0.928083,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -567,12 +595,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 20.0,
-        "amount": 0.9963,
+        "dir": 20,
+        "amount": 0.9917,
         "amountMult": 0.9492,
         "amountExp": -3,
-        "dirVar": 47.1,
-        "dirVarMult": 0.926365,
+        "dirVar": 40.8,
+        "dirVarMult": 0.928083,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -604,70 +632,77 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 33.34
+        "r": 21,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 25
-      },
-      {
-        "r": 35.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 20
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "kord6p67",
     "name": "KORD 6P67",
     "cls": "Assault Rifle",
-    "cal": "5.45\u00d739mm",
-    "rpm": 900,
+    "cal": "5.45×39mm",
+    "rpm": 899.999,
     "mag": 31,
     "tacRld": 2.45,
     "emptyRld": 3.017,
-    "deployT": 0.63,
-    "bulletVel": 760,
-    "recoilV": 0.5524,
-    "recoilDir": 18.0,
-    "recoilVar": 35.3,
-    "recoilIncAds": 0.21,
+    "deployT": 0.633334,
+    "bulletVel": 724,
+    "recoilV": 0.5410650819182649,
+    "recoilDir": 18,
+    "recoilVar": 28.9,
+    "recoilIncAds": 0.28,
     "spreadMax": 7,
     "adsTime": 240,
     "fireMode": "auto",
     "burstRounds": 2,
     "spreadDyn": {
       "ads": {
-        "inc": 0.21,
+        "inc": 0.28,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.378,
+        "inc": 0.504,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -677,12 +712,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 18.0,
-        "amount": 0.4588,
+        "dir": 18,
+        "amount": 0.4494,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 35.3,
-        "dirVarMult": 0.916858,
+        "dirVar": 28.9,
+        "dirVarMult": 0.918198,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -693,12 +728,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 18.0,
-        "amount": 0.4588,
+        "dir": 18,
+        "amount": 0.4494,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 35.3,
-        "dirVarMult": 0.916858,
+        "dirVar": 28.9,
+        "dirVarMult": 0.918198,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -730,69 +765,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 20
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
-      },
-      {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "nvo228e",
     "name": "NVO-228E",
     "cls": "Assault Rifle",
-    "cal": "7.62\u00d739mm",
-    "rpm": 654,
+    "cal": "7.62×39mm",
+    "rpm": 654.545,
     "mag": 31,
     "tacRld": 2.434,
     "emptyRld": 2.9,
-    "deployT": 0.63,
-    "bulletVel": 671,
-    "recoilV": 0.7525,
-    "recoilDir": -12.0,
-    "recoilVar": 36.8,
-    "recoilIncAds": 0.31,
+    "deployT": 0.633334,
+    "bulletVel": 626,
+    "recoilV": 0.7326801731267338,
+    "recoilDir": -12,
+    "recoilVar": 28.9,
+    "recoilIncAds": 0.409,
     "spreadMax": 7,
     "adsTime": 260,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.307,
+        "inc": 0.409,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.552,
+        "inc": 0.736,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -802,12 +844,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -12.0,
-        "amount": 0.6234,
+        "dir": -12,
+        "amount": 0.607,
         "amountMult": 0.9392,
         "amountExp": -3,
-        "dirVar": 36.8,
-        "dirVarMult": 0.915415,
+        "dirVar": 28.9,
+        "dirVarMult": 0.917129,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -818,12 +860,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -12.0,
-        "amount": 0.6234,
+        "dir": -12,
+        "amount": 0.607,
         "amountMult": 0.9392,
         "amountExp": -3,
-        "dirVar": 36.8,
-        "dirVarMult": 0.915415,
+        "dirVar": 28.9,
+        "dirVarMult": 0.917129,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -855,69 +897,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 27.25
+        "r": 9,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 21.4
+        "r": 9,
+        "d": 27.48,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 27.48,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "l85a3",
     "name": "L85A3",
     "cls": "Assault Rifle",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 635,
+    "cal": "5.56×45mm NATO",
+    "rpm": 635.294,
     "mag": 31,
     "tacRld": 2.7,
     "emptyRld": 2.667,
-    "deployT": 0.63,
-    "bulletVel": 814,
-    "recoilV": 0.6698,
-    "recoilDir": 12.0,
-    "recoilVar": 29.4,
-    "recoilIncAds": 0.27,
+    "deployT": 0.633334,
+    "bulletVel": 778,
+    "recoilV": 0.6740692990342647,
+    "recoilDir": 12,
+    "recoilVar": 22.8,
+    "recoilIncAds": 0.36,
     "spreadMax": 7,
     "adsTime": 230,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -927,12 +996,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 12.0,
-        "amount": 0.5489,
+        "dir": 12,
+        "amount": 0.5524,
         "amountMult": 0.9358,
         "amountExp": -3,
-        "dirVar": 29.4,
-        "dirVarMult": 0.912494,
+        "dirVar": 22.8,
+        "dirVarMult": 0.913643,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -943,12 +1012,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 12.0,
-        "amount": 0.5489,
+        "dir": 12,
+        "amount": 0.5524,
         "amountMult": 0.9358,
         "amountExp": -3,
-        "dirVar": 29.4,
-        "dirVarMult": 0.912494,
+        "dirVar": 22.8,
+        "dirVarMult": 0.913643,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -980,69 +1049,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "vcr2",
     "name": "VCR-2",
     "cls": "Assault Rifle",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 900,
+    "cal": "5.56×45mm NATO",
+    "rpm": 899.999,
     "mag": 31,
     "tacRld": 2.334,
-    "emptyRld": 3.0,
-    "deployT": 0.63,
-    "bulletVel": 704,
-    "recoilV": 0.8135,
-    "recoilDir": 18.0,
-    "recoilVar": 64.9,
-    "recoilIncAds": 0.27,
+    "emptyRld": 3,
+    "deployT": 0.633334,
+    "bulletVel": 660,
+    "recoilV": 0.8205740274617134,
+    "recoilDir": 18,
+    "recoilVar": 50.3,
+    "recoilIncAds": 0.36,
     "spreadMax": 7,
     "adsTime": 255,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -1052,12 +1128,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 18.0,
-        "amount": 0.692,
+        "dir": 18,
+        "amount": 0.698,
         "amountMult": 0.9475,
         "amountExp": -3,
-        "dirVar": 64.9,
-        "dirVarMult": 0.917044,
+        "dirVar": 50.3,
+        "dirVarMult": 0.922964,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1068,12 +1144,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 18.0,
-        "amount": 0.692,
+        "dir": 18,
+        "amount": 0.698,
         "amountMult": 0.9475,
         "amountExp": -3,
-        "dirVar": 64.9,
-        "dirVarMult": 0.917044,
+        "dirVar": 50.3,
+        "dirVarMult": 0.922964,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1105,41 +1181,48 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m16a4",
     "name": "M16A4",
     "cls": "Assault Rifle",
     "cal": "5.56x45mm NATO",
-    "rpm": 771,
+    "rpm": 771.428,
     "mag": 31,
     "tacRld": 2.2,
     "emptyRld": 2.634,
-    "deployT": 0.6333,
-    "bulletVel": 720,
-    "recoilV": 0.7139,
-    "recoilDir": -21.0,
-    "recoilVar": 46.4,
-    "recoilIncAds": 0.27,
+    "deployT": 0.633334,
+    "bulletVel": 680,
+    "recoilV": 0.7302661666514224,
+    "recoilDir": -21,
+    "recoilVar": 37.5,
+    "recoilIncAds": 0.36,
     "spreadMax": 7,
     "adsTime": null,
     "fireMode": "burst",
@@ -1147,154 +1230,161 @@
     "burstBurstsPerMinute": 224.999,
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
-        "firstShotMul": 1.0,
-        "distExp": 0.67
+        "firstShotMul": 1,
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
-        "idleOffset": 25.0,
-        "firingCoef": 0.51,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
-        "firstShotMul": 1.0,
+        "firstShotMul": 1,
         "distExp": 0.5
       }
     },
     "recoil": {
       "ads": {
-        "dir": -21.0,
-        "amount": 0.6342,
+        "dir": -21,
+        "amount": 0.6487,
         "amountMult": 0.9425,
         "amountExp": -2,
-        "dirVar": 46.4,
-        "dirVarMult": 0.917233,
+        "dirVar": 37.5,
+        "dirVarMult": 0.919722,
         "dirVarExp": 3,
-        "decNorm": 1.0,
-        "decExp": 1.0,
+        "decNorm": 1,
+        "decExp": 1,
         "decTimeExp": 1.2,
         "decOffset": 0.06,
         "duration": 0.025,
-        "decFactor": 72.0,
-        "shootingDecScale": 1.0
+        "decFactor": 72,
+        "shootingDecScale": 1
       },
       "hip": {
-        "dir": -21.0,
-        "amount": 0.6342,
+        "dir": -21,
+        "amount": 0.6487,
         "amountMult": 0.9425,
         "amountExp": -2,
-        "dirVar": 46.4,
-        "dirVarMult": 0.917233,
+        "dirVar": 37.5,
+        "dirVarMult": 0.919722,
         "dirVarExp": 3,
-        "decNorm": 1.0,
-        "decExp": 1.0,
+        "decNorm": 1,
+        "decExp": 1,
         "decTimeExp": 1.2,
         "decOffset": 0.06,
         "duration": 0.025,
-        "decFactor": 72.0,
-        "shootingDecScale": 1.0
+        "decFactor": 72,
+        "shootingDecScale": 1
       }
     },
     "spread": {
       "adsStand": [
         0.05,
-        7.0
+        7
       ],
       "adsMove": [
         0.32,
-        8.0
+        8
       ],
       "hipStand": [
         2.432,
-        7.0
+        7
       ],
       "hipMove": [
         3.04,
-        8.0
+        8
       ]
     },
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m4a1",
     "name": "M4A1",
     "cls": "Carbine",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 900,
+    "cal": "5.56×45mm NATO",
+    "rpm": 899.999,
     "mag": 31,
     "tacRld": 2.15,
     "emptyRld": 2.634,
-    "deployT": 0.53,
-    "bulletVel": 630,
-    "recoilV": 0.8585,
-    "recoilDir": -18.0,
-    "recoilVar": 37.9,
-    "recoilIncAds": 0.23,
+    "deployT": 0.533334,
+    "bulletVel": 590,
+    "recoilV": 0.8482748505471913,
+    "recoilDir": -18,
+    "recoilVar": 30.7,
+    "recoilIncAds": 0.304,
     "spreadMax": 6,
     "adsTime": 200,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.228,
+        "inc": 0.304,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -1304,12 +1394,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -18.0,
-        "amount": 0.7188,
+        "dir": -18,
+        "amount": 0.7102,
         "amountMult": 0.9425,
         "amountExp": -3,
-        "dirVar": 37.9,
-        "dirVarMult": 0.919624,
+        "dirVar": 30.7,
+        "dirVarMult": 0.921205,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1320,12 +1410,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -18.0,
-        "amount": 0.7188,
+        "dir": -18,
+        "amount": 0.7102,
         "amountMult": 0.9425,
         "amountExp": -3,
-        "dirVar": 37.9,
-        "dirVarMult": 0.919624,
+        "dirVar": 30.7,
+        "dirVarMult": 0.921205,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1357,69 +1447,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 21.4
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 17.83
+        "r": 9,
+        "d": 21.56,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m277",
     "name": "M277",
     "cls": "Carbine",
-    "cal": "6.8\u00d751mm",
-    "rpm": 720,
+    "cal": "6.8×51mm",
+    "rpm": 719.999,
     "mag": 21,
     "tacRld": 2.334,
     "emptyRld": 2.5,
-    "deployT": 0.53,
-    "bulletVel": 624,
-    "recoilV": 0.9647,
-    "recoilDir": -22.0,
-    "recoilVar": 39.4,
-    "recoilIncAds": 0.31,
+    "deployT": 0.533334,
+    "bulletVel": 592,
+    "recoilV": 0.9542958007305558,
+    "recoilDir": -22,
+    "recoilVar": 34.4,
+    "recoilIncAds": 0.409,
     "spreadMax": 6,
     "adsTime": 210,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.307,
+        "inc": 0.409,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -1429,12 +1546,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -22.0,
-        "amount": 0.8097,
+        "dir": -22,
+        "amount": 0.801,
         "amountMult": 0.9433,
         "amountExp": -3,
-        "dirVar": 39.4,
-        "dirVarMult": 0.920338,
+        "dirVar": 34.4,
+        "dirVarMult": 0.921523,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1445,12 +1562,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -22.0,
-        "amount": 0.8097,
+        "dir": -22,
+        "amount": 0.801,
         "amountMult": 0.9433,
         "amountExp": -3,
-        "dirVar": 39.4,
-        "dirVarMult": 0.920338,
+        "dirVar": 34.4,
+        "dirVarMult": 0.921523,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1482,69 +1599,66 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
-      },
-      {
-        "r": 9.5,
-        "d": 25
-      },
-      {
-        "r": 20.5,
-        "d": 25
-      },
-      {
-        "r": 35.5,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 20
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "ak205",
     "name": "AK-205",
     "cls": "Carbine",
-    "cal": "5.45\u00d739mm",
-    "rpm": 720,
+    "cal": "5.45×39mm",
+    "rpm": 719.999,
     "mag": 31,
     "tacRld": 2.384,
     "emptyRld": 2.8,
-    "deployT": 0.53,
-    "bulletVel": 737,
-    "recoilV": 0.5115,
-    "recoilDir": 6.0,
-    "recoilVar": 7.8,
-    "recoilIncAds": 0.18,
+    "deployT": 0.533334,
+    "bulletVel": 708,
+    "recoilV": 0.5082994245768439,
+    "recoilDir": 6,
+    "recoilVar": 7.4,
+    "recoilIncAds": 0.239,
     "spreadMax": 6,
     "adsTime": 200,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.179,
+        "inc": 0.239,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.323,
+        "inc": 0.43,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -1554,12 +1668,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 6.0,
-        "amount": 0.4104,
+        "dir": 6,
+        "amount": 0.4078,
         "amountMult": 0.9292,
         "amountExp": -3,
-        "dirVar": 7.8,
-        "dirVarMult": 0.906524,
+        "dirVar": 7.4,
+        "dirVarMult": 0.906545,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1570,12 +1684,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 6.0,
-        "amount": 0.4104,
+        "dir": 6,
+        "amount": 0.4078,
         "amountMult": 0.9292,
         "amountExp": -3,
-        "dirVar": 7.8,
-        "dirVarMult": 0.906524,
+        "dirVar": 7.4,
+        "dirVarMult": 0.906545,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1607,69 +1721,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 20
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 17.83
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 15
+        "r": 9,
+        "d": 17.74,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 15.07,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 15.07,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m417a2",
     "name": "M417 A2",
     "cls": "Carbine",
-    "cal": "7.62\u00d751mm NATO",
-    "rpm": 654,
+    "cal": "7.62×51mm NATO",
+    "rpm": 654.545,
     "mag": 21,
     "tacRld": 2.467,
     "emptyRld": 2.567,
-    "deployT": 0.53,
-    "bulletVel": 600,
-    "recoilV": 0.9516,
-    "recoilDir": -16.0,
-    "recoilVar": 19.8,
-    "recoilIncAds": 0.31,
+    "deployT": 0.533334,
+    "bulletVel": 560,
+    "recoilV": 0.9354648009443473,
+    "recoilDir": -16,
+    "recoilVar": 15.4,
+    "recoilIncAds": 0.409,
     "spreadMax": 6,
     "adsTime": 230,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.307,
+        "inc": 0.409,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.552,
+        "inc": 0.736,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -1679,12 +1820,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -16.0,
-        "amount": 0.7884,
+        "dir": -16,
+        "amount": 0.775,
         "amountMult": 0.9392,
         "amountExp": -3,
-        "dirVar": 19.8,
-        "dirVarMult": 0.918546,
+        "dirVar": 15.4,
+        "dirVarMult": 0.919032,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1695,12 +1836,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -16.0,
-        "amount": 0.7884,
+        "dir": -16,
+        "amount": 0.775,
         "amountMult": 0.9392,
         "amountExp": -3,
-        "dirVar": 19.8,
-        "dirVarMult": 0.918546,
+        "dirVar": 15.4,
+        "dirVarMult": 0.919032,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1732,41 +1873,68 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 27.25
+        "r": 9,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 21.4
+        "r": 9,
+        "d": 27.48,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 27.48,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "grtbc",
     "name": "GRT-BC",
     "cls": "Carbine",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 830,
+    "cal": "5.56×45mm NATO",
+    "rpm": 830.769,
     "mag": 31,
     "tacRld": 2.5,
     "emptyRld": 3.35,
-    "deployT": 0.53,
-    "bulletVel": 599,
-    "recoilV": 0.8168,
-    "recoilDir": 16.0,
-    "recoilVar": 31.2,
-    "recoilIncAds": 0.23,
+    "deployT": 0.533334,
+    "bulletVel": 563,
+    "recoilV": 0.8070225287267756,
+    "recoilDir": 16,
+    "recoilVar": 26.1,
+    "recoilIncAds": 0.304,
     "spreadMax": 6,
     "adsTime": 195,
     "fireMode": "auto",
@@ -1775,29 +1943,29 @@
     "burstBurstsPerMinute": 240.12729639809058,
     "spreadDyn": {
       "ads": {
-        "inc": 0.228,
+        "inc": 0.304,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -1807,12 +1975,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 16.0,
-        "amount": 0.6784,
+        "dir": 16,
+        "amount": 0.6703,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 31.2,
-        "dirVarMult": 0.917751,
+        "dirVar": 26.1,
+        "dirVarMult": 0.918691,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1823,12 +1991,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 16.0,
-        "amount": 0.6784,
+        "dir": 16,
+        "amount": 0.6703,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 31.2,
-        "dirVarMult": 0.917751,
+        "dirVar": 26.1,
+        "dirVarMult": 0.918691,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1860,69 +2028,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 21.4
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 17.83
+        "r": 9,
+        "d": 21.56,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "qbz192",
     "name": "QBZ-192",
     "cls": "Carbine",
-    "cal": "5.8\u00d742mm",
-    "rpm": 771,
+    "cal": "5.8×42mm",
+    "rpm": 771.428,
     "mag": 31,
     "tacRld": 2.567,
     "emptyRld": 2.784,
-    "deployT": 0.53,
-    "bulletVel": 644,
-    "recoilV": 0.7829,
-    "recoilDir": -10.0,
-    "recoilVar": 23.5,
-    "recoilIncAds": 0.23,
+    "deployT": 0.533334,
+    "bulletVel": 608,
+    "recoilV": 0.7716257185185186,
+    "recoilDir": -10,
+    "recoilVar": 19.9,
+    "recoilIncAds": 0.304,
     "spreadMax": 6,
     "adsTime": 200,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.228,
+        "inc": 0.304,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -1932,12 +2127,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -10.0,
-        "amount": 0.6451,
+        "dir": -10,
+        "amount": 0.6358,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 23.5,
-        "dirVarMult": 0.915786,
+        "dirVar": 19.9,
+        "dirVarMult": 0.916291,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1948,12 +2143,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -10.0,
-        "amount": 0.6451,
+        "dir": -10,
+        "amount": 0.6358,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 23.5,
-        "dirVarMult": 0.915786,
+        "dirVar": 19.9,
+        "dirVarMult": 0.916291,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -1985,70 +2180,97 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 21.4
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 17.83
+        "r": 9,
+        "d": 21.56,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "sg553r",
     "name": "SG 553R",
     "cls": "Carbine",
-    "cal": "7.62\u00d739mm",
-    "rpm": 720,
+    "cal": "7.62×39mm",
+    "rpm": 719.999,
     "mag": 31,
     "tacRld": 2.45,
     "emptyRld": 2.867,
-    "deployT": 0.53,
-    "bulletVel": 519,
-    "recoilV": 0.8215,
-    "recoilDir": -20.0,
-    "recoilVar": 43.3,
-    "recoilIncAds": 0.27,
+    "deployT": 0.533334,
+    "bulletVel": 483,
+    "recoilV": 0.826647274688653,
+    "recoilDir": -20,
+    "recoilVar": 35.8,
+    "recoilIncAds": 0.36,
     "spreadMax": 6,
     "adsTime": 205,
     "fireMode": "auto",
     "burstRounds": 3,
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.552,
+        "inc": 0.736,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2058,12 +2280,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -20.0,
-        "amount": 0.6823,
+        "dir": -20,
+        "amount": 0.6866,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 43.3,
-        "dirVarMult": 0.914735,
+        "dirVar": 35.8,
+        "dirVarMult": 0.91674,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2074,12 +2296,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -20.0,
-        "amount": 0.6823,
+        "dir": -20,
+        "amount": 0.6866,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 43.3,
-        "dirVarMult": 0.914735,
+        "dirVar": 35.8,
+        "dirVarMult": 0.91674,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2111,69 +2333,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 9,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "sor300sc",
     "name": "SOR-300SC",
     "cls": "Carbine",
     "cal": ".300 BLK",
-    "rpm": 600,
+    "rpm": 599.999,
     "mag": 31,
     "tacRld": 2.25,
     "emptyRld": 3.284,
-    "deployT": 0.53,
-    "bulletVel": 563,
-    "recoilV": 0.7601,
-    "recoilDir": -12.0,
-    "recoilVar": 19.2,
-    "recoilIncAds": 0.27,
+    "deployT": 0.533334,
+    "bulletVel": 528,
+    "recoilV": 0.7416865095483536,
+    "recoilDir": -12,
+    "recoilVar": 15.8,
+    "recoilIncAds": 0.36,
     "spreadMax": 6,
     "adsTime": 195,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.552,
+        "inc": 0.736,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2183,12 +2432,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -12.0,
-        "amount": 0.6197,
+        "dir": -12,
+        "amount": 0.6047,
         "amountMult": 0.9342,
         "amountExp": -3,
-        "dirVar": 19.2,
-        "dirVarMult": 0.912033,
+        "dirVar": 15.8,
+        "dirVarMult": 0.912427,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2199,12 +2448,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -12.0,
-        "amount": 0.6197,
+        "dir": -12,
+        "amount": 0.6047,
         "amountMult": 0.9342,
         "amountExp": -3,
-        "dirVar": 19.2,
-        "dirVarMult": 0.912033,
+        "dirVar": 15.8,
+        "dirVarMult": 0.912427,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2236,69 +2485,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 9,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "sgx",
     "name": "SGX",
     "cls": "SMG",
-    "cal": "9\u00d719mm",
-    "rpm": 830,
+    "cal": "9×19mm",
+    "rpm": 830.769,
     "mag": 31,
     "tacRld": 2.517,
     "emptyRld": 2.917,
-    "deployT": 0.47,
-    "bulletVel": 402,
-    "recoilV": 0.6039,
-    "recoilDir": -18.0,
-    "recoilVar": 39.8,
-    "recoilIncAds": 0.21,
+    "deployT": 0.466667,
+    "bulletVel": 378,
+    "recoilV": 0.6011482210263789,
+    "recoilDir": -18,
+    "recoilVar": 31.7,
+    "recoilIncAds": 0.28,
     "spreadMax": 6,
     "adsTime": 175,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.21,
+        "inc": 0.28,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2308,12 +2584,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -18.0,
-        "amount": 0.4989,
+        "dir": -18,
+        "amount": 0.4966,
         "amountMult": 0.9383,
         "amountExp": -3,
-        "dirVar": 39.8,
-        "dirVarMult": 0.913411,
+        "dirVar": 31.7,
+        "dirVarMult": 0.915368,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2324,12 +2600,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -18.0,
-        "amount": 0.4989,
+        "dir": -18,
+        "amount": 0.4966,
         "amountMult": 0.9383,
         "amountExp": -3,
-        "dirVar": 39.8,
-        "dirVarMult": 0.913411,
+        "dirVar": 31.7,
+        "dirVarMult": 0.915368,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2361,70 +2637,97 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "pw5a3",
     "name": "PW5A3",
     "cls": "SMG",
-    "cal": "9\u00d719mm",
-    "rpm": 771,
+    "cal": "9×19mm",
+    "rpm": 771.428,
     "mag": 31,
     "tacRld": 2.517,
     "emptyRld": 2.9,
-    "deployT": 0.47,
-    "bulletVel": 432,
-    "recoilV": 0.5702,
-    "recoilDir": -10.0,
-    "recoilVar": 33.2,
-    "recoilIncAds": 0.21,
+    "deployT": 0.466667,
+    "bulletVel": 408,
+    "recoilV": 0.5635141243555819,
+    "recoilDir": -10,
+    "recoilVar": 28.3,
+    "recoilIncAds": 0.28,
     "spreadMax": 6,
     "adsTime": 175,
     "fireMode": "auto",
     "burstRounds": 3,
     "spreadDyn": {
       "ads": {
-        "inc": 0.21,
+        "inc": 0.28,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2434,12 +2737,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -10.0,
-        "amount": 0.4673,
+        "dir": -10,
+        "amount": 0.4618,
         "amountMult": 0.9358,
         "amountExp": -3,
-        "dirVar": 33.2,
-        "dirVarMult": 0.911685,
+        "dirVar": 28.3,
+        "dirVarMult": 0.912707,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2450,12 +2753,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -10.0,
-        "amount": 0.4673,
+        "dir": -10,
+        "amount": 0.4618,
         "amountMult": 0.9358,
         "amountExp": -3,
-        "dirVar": 33.2,
-        "dirVarMult": 0.911685,
+        "dirVar": 28.3,
+        "dirVarMult": 0.912707,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2487,69 +2790,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "pw7a2",
     "name": "PW7A2",
     "cls": "SMG",
-    "cal": "4.6\u00d730mm",
-    "rpm": 947,
+    "cal": "4.6×30mm",
+    "rpm": 947.368,
     "mag": 31,
     "tacRld": 2.1,
     "emptyRld": 2.967,
-    "deployT": 0.47,
-    "bulletVel": 600,
-    "recoilV": 0.5205,
-    "recoilDir": -10.0,
-    "recoilVar": 33.3,
-    "recoilIncAds": 0.17,
+    "deployT": 0.466667,
+    "bulletVel": 576,
+    "recoilV": 0.5091176296296296,
+    "recoilDir": -10,
+    "recoilVar": 27.8,
+    "recoilIncAds": 0.221,
     "spreadMax": 6,
     "adsTime": 165,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.166,
+        "inc": 0.221,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.299,
+        "inc": 0.398,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2559,12 +2889,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -10.0,
-        "amount": 0.4289,
+        "dir": -10,
+        "amount": 0.4195,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 33.3,
-        "dirVarMult": 0.913947,
+        "dirVar": 27.8,
+        "dirVarMult": 0.915065,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2575,12 +2905,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -10.0,
-        "amount": 0.4289,
+        "dir": -10,
+        "amount": 0.4195,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 33.3,
-        "dirVarMult": 0.913947,
+        "dirVar": 27.8,
+        "dirVarMult": 0.915065,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2612,70 +2942,77 @@
     "dmg": [
       {
         "r": 0,
-        "d": 16.67
+        "d": 17.13,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 16.67
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 14.29
-      },
-      {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "umg40",
     "name": "UMG-40",
     "cls": "SMG",
     "cal": ".40 S&W",
-    "rpm": 635,
+    "rpm": 635.294,
     "mag": 31,
     "tacRld": 2.517,
     "emptyRld": 2.917,
-    "deployT": 0.47,
-    "bulletVel": 488,
-    "recoilV": 0.6065,
-    "recoilDir": -16.0,
-    "recoilVar": 17.4,
-    "recoilIncAds": 0.23,
+    "deployT": 0.466667,
+    "bulletVel": 467,
+    "recoilV": 0.6022807459596908,
+    "recoilDir": -16,
+    "recoilVar": 13,
+    "recoilIncAds": 0.304,
     "spreadMax": 6,
     "adsTime": 175,
     "fireMode": "auto",
     "burstRounds": 2,
     "spreadDyn": {
       "ads": {
-        "inc": 0.228,
+        "inc": 0.304,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2685,12 +3022,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -16.0,
-        "amount": 0.4891,
+        "dir": -16,
+        "amount": 0.4857,
         "amountMult": 0.9308,
         "amountExp": -3,
-        "dirVar": 17.4,
-        "dirVarMult": 0.907788,
+        "dirVar": 13,
+        "dirVarMult": 0.908244,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2701,12 +3038,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -16.0,
-        "amount": 0.4891,
+        "dir": -16,
+        "amount": 0.4857,
         "amountMult": 0.9308,
         "amountExp": -3,
-        "dirVar": 17.4,
-        "dirVarMult": 0.907788,
+        "dirVar": 13,
+        "dirVarMult": 0.908244,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2738,69 +3075,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 21.4
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 17.83
+        "r": 9,
+        "d": 21.56,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "usg90",
     "name": "USG-90",
     "cls": "SMG",
-    "cal": "5.7\u00d728mm",
-    "rpm": 900,
+    "cal": "5.7×28mm",
+    "rpm": 899.999,
     "mag": 51,
     "tacRld": 2.867,
     "emptyRld": 3.167,
-    "deployT": 0.47,
-    "bulletVel": 570,
-    "recoilV": 0.5556,
-    "recoilDir": 10.0,
-    "recoilVar": 42.8,
-    "recoilIncAds": 0.18,
+    "deployT": 0.466667,
+    "bulletVel": 543,
+    "recoilV": 0.5471688016080739,
+    "recoilDir": 10,
+    "recoilVar": 35.5,
+    "recoilIncAds": 0.239,
     "spreadMax": 6,
     "adsTime": 185,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.179,
+        "inc": 0.239,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.323,
+        "inc": 0.43,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2810,12 +3174,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 10.0,
-        "amount": 0.4566,
+        "dir": 10,
+        "amount": 0.4497,
         "amountMult": 0.9367,
         "amountExp": -3,
-        "dirVar": 42.8,
-        "dirVarMult": 0.910359,
+        "dirVar": 35.5,
+        "dirVarMult": 0.912355,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2826,12 +3190,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 10.0,
-        "amount": 0.4566,
+        "dir": 10,
+        "amount": 0.4497,
         "amountMult": 0.9367,
         "amountExp": -3,
-        "dirVar": 42.8,
-        "dirVarMult": 0.910359,
+        "dirVar": 35.5,
+        "dirVarMult": 0.912355,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2863,70 +3227,97 @@
     "dmg": [
       {
         "r": 0,
-        "d": 20
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 17.83
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 15
+        "r": 9,
+        "d": 17.74,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 17.74,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 15.07,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 15.07,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "kv9",
     "name": "KV9",
     "cls": "SMG",
-    "cal": "9\u00d719mm",
-    "rpm": 1080,
+    "cal": "9×19mm",
+    "rpm": 1079.999,
     "mag": 18,
     "tacRld": 2.384,
     "emptyRld": 2.9,
-    "deployT": 0.47,
-    "bulletVel": 348,
-    "recoilV": 0.5423,
-    "recoilDir": 22.0,
-    "recoilVar": 57.6,
-    "recoilIncAds": 0.21,
+    "deployT": 0.466667,
+    "bulletVel": 362,
+    "recoilV": 0.5380755478069144,
+    "recoilDir": 22,
+    "recoilVar": 50,
+    "recoilIncAds": 0.28,
     "spreadMax": 6,
     "adsTime": 165,
     "fireMode": "auto",
     "burstRounds": 2,
     "spreadDyn": {
       "ads": {
-        "inc": 0.21,
+        "inc": 0.28,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -2936,12 +3327,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 22.0,
-        "amount": 0.4613,
+        "dir": 22,
+        "amount": 0.4577,
         "amountMult": 0.9475,
         "amountExp": -3,
-        "dirVar": 57.6,
-        "dirVarMult": 0.920281,
+        "dirVar": 50,
+        "dirVarMult": 0.923064,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2952,12 +3343,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 22.0,
-        "amount": 0.4613,
+        "dir": 22,
+        "amount": 0.4577,
         "amountMult": 0.9475,
         "amountExp": -3,
-        "dirVar": 57.6,
-        "dirVarMult": 0.920281,
+        "dirVar": 50,
+        "dirVarMult": 0.923064,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -2989,69 +3380,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "scw10",
     "name": "SCW-10",
     "cls": "SMG",
-    "cal": "10\u00d725mm",
-    "rpm": 800,
+    "cal": "10×25mm",
+    "rpm": 799.999,
     "mag": 16,
     "tacRld": 2.55,
     "emptyRld": 3.05,
-    "deployT": 0.47,
-    "bulletVel": 428,
-    "recoilV": 0.7528,
-    "recoilDir": -18.0,
-    "recoilVar": 35.0,
-    "recoilIncAds": 0.27,
+    "deployT": 0.466667,
+    "bulletVel": 398,
+    "recoilV": 0.7124297727932585,
+    "recoilDir": -18,
+    "recoilVar": 33.5,
+    "recoilIncAds": 0.36,
     "spreadMax": 6,
     "adsTime": 185,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.552,
+        "inc": 0.736,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3061,12 +3479,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -18.0,
-        "amount": 0.6337,
+        "dir": -18,
+        "amount": 0.5997,
         "amountMult": 0.9442,
         "amountExp": -3,
-        "dirVar": 35.0,
-        "dirVarMult": 0.92261,
+        "dirVar": 33.5,
+        "dirVarMult": 0.922931,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3077,12 +3495,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -18.0,
-        "amount": 0.6337,
+        "dir": -18,
+        "amount": 0.5997,
         "amountMult": 0.9442,
         "amountExp": -3,
-        "dirVar": 35.0,
-        "dirVarMult": 0.92261,
+        "dirVar": 33.5,
+        "dirVarMult": 0.922931,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3114,41 +3532,68 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 9,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "sl9",
     "name": "SL9",
     "cls": "SMG",
-    "cal": "9\u00d719mm",
-    "rpm": 675,
+    "cal": "9×19mm",
+    "rpm": 674.999,
     "mag": 31,
     "tacRld": 2.734,
     "emptyRld": 3.284,
-    "deployT": 0.47,
-    "bulletVel": 510,
-    "recoilV": 0.5266,
-    "recoilDir": 0.0,
-    "recoilVar": 16.2,
-    "recoilIncAds": 0.21,
+    "deployT": 0.466667,
+    "bulletVel": 486,
+    "recoilV": 0.5240016637500265,
+    "recoilDir": 0,
+    "recoilVar": 13,
+    "recoilIncAds": 0.28,
     "spreadMax": 6,
     "adsTime": 180,
     "fireMode": "auto",
@@ -3157,29 +3602,29 @@
     "burstBurstsPerMinute": 337.5,
     "spreadDyn": {
       "ads": {
-        "inc": 0.21,
+        "inc": 0.28,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3189,12 +3634,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 0.0,
-        "amount": 0.4259,
+        "dir": 0,
+        "amount": 0.4238,
         "amountMult": 0.9317,
         "amountExp": -3,
-        "dirVar": 16.2,
-        "dirVarMult": 0.909106,
+        "dirVar": 13,
+        "dirVarMult": 0.909421,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3205,12 +3650,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 0.0,
-        "amount": 0.4259,
+        "dir": 0,
+        "amount": 0.4238,
         "amountMult": 0.9317,
         "amountExp": -3,
-        "dirVar": 16.2,
-        "dirVarMult": 0.909106,
+        "dirVar": 13,
+        "dirVarMult": 0.909421,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3242,70 +3687,97 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "cz3a1",
     "name": "CZ3A1",
     "cls": "SMG",
-    "cal": "9\u00d719mm",
-    "rpm": 981,
+    "cal": "9×19mm",
+    "rpm": 981.818,
     "mag": 31,
     "tacRld": 2.217,
     "emptyRld": 2.95,
-    "deployT": 0.47,
-    "bulletVel": 360,
-    "recoilV": 0.6982,
-    "recoilDir": -15.0,
-    "recoilVar": 59.1,
-    "recoilIncAds": 0.21,
+    "deployT": 0.466667,
+    "bulletVel": 336,
+    "recoilV": 0.6848687077127121,
+    "recoilDir": -15,
+    "recoilVar": 50.8,
+    "recoilIncAds": 0.28,
     "spreadMax": 6,
     "adsTime": 170,
     "fireMode": "auto",
     "burstRounds": 3,
     "spreadDyn": {
       "ads": {
-        "inc": 0.21,
+        "inc": 0.28,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3315,12 +3787,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -15.0,
-        "amount": 0.5877,
+        "dir": -15,
+        "amount": 0.5765,
         "amountMult": 0.9442,
         "amountExp": -3,
-        "dirVar": 59.1,
-        "dirVarMult": 0.914887,
+        "dirVar": 50.8,
+        "dirVarMult": 0.918141,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3331,12 +3803,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -15.0,
-        "amount": 0.5877,
+        "dir": -15,
+        "amount": 0.5765,
         "amountMult": 0.9442,
         "amountExp": -3,
-        "dirVar": 59.1,
-        "dirVarMult": 0.914887,
+        "dirVar": 50.8,
+        "dirVarMult": 0.918141,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3368,23 +3840,201 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
+      }
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+  },
+  {
+    "id": "pp19",
+    "name": "PP-19",
+    "cls": "SMG",
+    "cal": "9×19mm",
+    "rpm": 719.999,
+    "mag": 31,
+    "tacRld": 2.417,
+    "emptyRld": 2.967,
+    "deployT": 0.466667,
+    "bulletVel": 444,
+    "recoilV": 0.5434529043176682,
+    "recoilDir": 6,
+    "recoilVar": 18,
+    "recoilIncAds": 0.28,
+    "spreadMax": 6,
+    "fireMode": "auto",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.28,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.2,
+        "firingExp": 2.5,
+        "firingOffset": 2.7,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.547,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
+        "firingExp": 2.5,
+        "firingOffset": 4.86,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": 6,
+        "amount": 0.4418,
+        "amountMult": 0.9333,
+        "amountExp": -3,
+        "dirVar": 18,
+        "dirVarMult": 0.910998,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.023,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 55,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": 6,
+        "amount": 0.4418,
+        "amountMult": 0.9333,
+        "amountExp": -3,
+        "dirVar": 18,
+        "dirVarMult": 0.910998,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.023,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 55,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.804,
+        6
+      ],
+      "hipMove": [
+        2.255,
+        6
+      ]
+    },
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "dmg": [
+      {
+        "r": 0,
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 9,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Sym"
       }
     ]
   },
@@ -3392,45 +4042,45 @@
     "id": "l110",
     "name": "L110",
     "cls": "LMG",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 720,
+    "cal": "5.56×45mm NATO",
+    "rpm": 719.999,
     "mag": 100,
     "tacRld": 6.5,
     "emptyRld": 7.734,
-    "deployT": 1.0,
-    "bulletVel": 780,
-    "recoilV": 0.5579,
-    "recoilDir": 0.0,
-    "recoilVar": 39.4,
-    "recoilIncAds": 0.27,
+    "deployT": 1.000004,
+    "bulletVel": 740,
+    "recoilV": 0.5658669081032143,
+    "recoilDir": 0,
+    "recoilVar": 31,
+    "recoilIncAds": 0.36,
     "spreadMax": 11,
     "adsTime": 380,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3440,12 +4090,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 0.0,
-        "amount": 0.4634,
+        "dir": 0,
+        "amount": 0.47,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 39.4,
-        "dirVarMult": 0.915835,
+        "dirVar": 31,
+        "dirVarMult": 0.917792,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3456,12 +4106,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 0.0,
-        "amount": 0.4634,
+        "dir": 0,
+        "amount": 0.47,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 39.4,
-        "dirVarMult": 0.915835,
+        "dirVar": 31,
+        "dirVarMult": 0.917792,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3493,69 +4143,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "drsiar",
     "name": "DRS-IAR",
     "cls": "LMG",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 771,
+    "cal": "5.56×45mm NATO",
+    "rpm": 771.428,
     "mag": 31,
     "tacRld": 2.467,
     "emptyRld": 2.95,
-    "deployT": 0.73,
-    "bulletVel": 720,
-    "recoilV": 0.6986,
-    "recoilDir": -14.0,
-    "recoilVar": 35.2,
-    "recoilIncAds": 0.27,
+    "deployT": 0.733334,
+    "bulletVel": 680,
+    "recoilV": 0.7074531033217424,
+    "recoilDir": -14,
+    "recoilVar": 29.3,
+    "recoilIncAds": 0.36,
     "spreadMax": 9,
     "adsTime": 280,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3565,12 +4222,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -14.0,
-        "amount": 0.5849,
+        "dir": -14,
+        "amount": 0.5923,
         "amountMult": 0.9425,
         "amountExp": -3,
-        "dirVar": 35.2,
-        "dirVarMult": 0.920263,
+        "dirVar": 29.3,
+        "dirVarMult": 0.921469,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3581,12 +4238,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -14.0,
-        "amount": 0.5849,
+        "dir": -14,
+        "amount": 0.5923,
         "amountMult": 0.9425,
         "amountExp": -3,
-        "dirVar": 35.2,
-        "dirVarMult": 0.920263,
+        "dirVar": 29.3,
+        "dirVarMult": 0.921469,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3618,69 +4275,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m60",
     "name": "M/60",
     "cls": "LMG",
-    "cal": "7.62\u00d751mm NATO",
-    "rpm": 514,
+    "cal": "7.62×51mm NATO",
+    "rpm": 514.285,
     "mag": 100,
     "tacRld": 7.284,
     "emptyRld": 8.05,
-    "deployT": 1.0,
-    "bulletVel": 720,
-    "recoilV": 0.7284,
-    "recoilDir": 0.0,
-    "recoilVar": 38.8,
-    "recoilIncAds": 0.39,
+    "deployT": 1.000004,
+    "bulletVel": 680,
+    "recoilV": 0.7361877333333333,
+    "recoilDir": 0,
+    "recoilVar": 29.9,
+    "recoilIncAds": 0.523,
     "spreadMax": 11,
     "adsTime": 420,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.392,
+        "inc": 0.523,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3690,12 +4354,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 0.0,
-        "amount": 0.6002,
+        "dir": 0,
+        "amount": 0.6066,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 38.8,
-        "dirVarMult": 0.912594,
+        "dirVar": 29.9,
+        "dirVarMult": 0.914665,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3706,12 +4370,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 0.0,
-        "amount": 0.6002,
+        "dir": 0,
+        "amount": 0.6066,
         "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 38.8,
-        "dirVarMult": 0.912594,
+        "dirVar": 29.9,
+        "dirVarMult": 0.914665,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3743,69 +4407,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 33.34
+        "r": 21,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 25
-      },
-      {
-        "r": 35.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 20
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "rpkm",
     "name": "RPKM",
     "cls": "LMG",
-    "cal": "7.62\u00d739mm",
-    "rpm": 553,
+    "cal": "7.62×39mm",
+    "rpm": 553.846,
     "mag": 41,
     "tacRld": 2.8,
     "emptyRld": 3.284,
-    "deployT": 0.73,
-    "bulletVel": 670,
-    "recoilV": 0.662,
-    "recoilDir": 5.0,
-    "recoilVar": 22.7,
-    "recoilIncAds": 0.31,
+    "deployT": 0.733334,
+    "bulletVel": 630,
+    "recoilV": 0.6552679088502079,
+    "recoilDir": 5,
+    "recoilVar": 17.5,
+    "recoilIncAds": 0.409,
     "spreadMax": 9,
     "adsTime": 310,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.307,
+        "inc": 0.409,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.552,
+        "inc": 0.736,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3815,12 +4486,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 5.0,
-        "amount": 0.5382,
+        "dir": 5,
+        "amount": 0.5327,
         "amountMult": 0.9333,
         "amountExp": -3,
-        "dirVar": 22.7,
-        "dirVarMult": 0.910355,
+        "dirVar": 17.5,
+        "dirVarMult": 0.911058,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3831,12 +4502,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 5.0,
-        "amount": 0.5382,
+        "dir": 5,
+        "amount": 0.5327,
         "amountMult": 0.9333,
         "amountExp": -3,
-        "dirVar": 22.7,
-        "dirVarMult": 0.910355,
+        "dirVar": 17.5,
+        "dirVarMult": 0.911058,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3868,69 +4539,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 27.25
+        "r": 9,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 21.4
+        "r": 9,
+        "d": 27.48,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 27.48,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 21.56,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m123k",
     "name": "M123K",
     "cls": "LMG",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 830,
+    "cal": "5.56×45mm NATO",
+    "rpm": 830.769,
     "mag": 100,
     "tacRld": 6.65,
     "emptyRld": 7.434,
-    "deployT": 1.0,
-    "bulletVel": 670,
-    "recoilV": 0.6149,
-    "recoilDir": -10.0,
-    "recoilVar": 55.9,
-    "recoilIncAds": 0.27,
+    "deployT": 1.000004,
+    "bulletVel": 630,
+    "recoilV": 0.6107296272745169,
+    "recoilDir": -10,
+    "recoilVar": 47.7,
+    "recoilIncAds": 0.36,
     "spreadMax": 11,
     "adsTime": 400,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -3940,12 +4638,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -10.0,
-        "amount": 0.5189,
+        "dir": -10,
+        "amount": 0.5154,
         "amountMult": 0.945,
         "amountExp": -3,
-        "dirVar": 55.9,
-        "dirVarMult": 0.917368,
+        "dirVar": 47.7,
+        "dirVarMult": 0.920302,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3956,12 +4654,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -10.0,
-        "amount": 0.5189,
+        "dir": -10,
+        "amount": 0.5154,
         "amountMult": 0.945,
         "amountExp": -3,
-        "dirVar": 55.9,
-        "dirVarMult": 0.917368,
+        "dirVar": 47.7,
+        "dirVarMult": 0.920302,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -3993,69 +4691,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m250",
     "name": "M250",
     "cls": "LMG",
-    "cal": "6.8\u00d751mm",
-    "rpm": 675,
+    "cal": "6.8×51mm",
+    "rpm": 674.999,
     "mag": 50,
     "tacRld": 5.75,
     "emptyRld": 6.134,
-    "deployT": 1.0,
-    "bulletVel": 760,
-    "recoilV": 0.7329,
-    "recoilDir": -14.0,
-    "recoilVar": 39.7,
-    "recoilIncAds": 0.31,
+    "deployT": 1.000004,
+    "bulletVel": 724,
+    "recoilV": 0.7266832146901031,
+    "recoilDir": -14,
+    "recoilVar": 35.9,
+    "recoilIncAds": 0.409,
     "spreadMax": 11,
     "adsTime": 360,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.307,
+        "inc": 0.409,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -4065,12 +4770,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -14.0,
-        "amount": 0.6136,
+        "dir": -14,
+        "amount": 0.6084,
         "amountMult": 0.9425,
         "amountExp": -3,
-        "dirVar": 39.7,
-        "dirVarMult": 0.919167,
+        "dirVar": 35.9,
+        "dirVarMult": 0.920102,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4081,12 +4786,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -14.0,
-        "amount": 0.6136,
+        "dir": -14,
+        "amount": 0.6084,
         "amountMult": 0.9425,
         "amountExp": -3,
-        "dirVar": 39.7,
-        "dirVarMult": 0.919167,
+        "dirVar": 35.9,
+        "dirVarMult": 0.920102,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4118,69 +4823,61 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
-      },
-      {
-        "r": 20.5,
-        "d": 25
-      },
-      {
-        "r": 35.5,
-        "d": 25
-      },
-      {
-        "r": 75,
-        "d": 25
+        "r": 15,
+        "d": 26.05,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); special damage profile: no falloff at any range (user-confirmed)"
   },
   {
     "id": "kts100",
     "name": "KTS100 MK8",
     "cls": "LMG",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 514,
+    "cal": "5.56×45mm NATO",
+    "rpm": 514.285,
     "mag": 60,
     "tacRld": 3.25,
     "emptyRld": 3.984,
-    "deployT": 0.73,
-    "bulletVel": 840,
-    "recoilV": 0.5239,
-    "recoilDir": 8.0,
-    "recoilVar": 10.9,
-    "recoilIncAds": 0.27,
+    "deployT": 0.733334,
+    "bulletVel": 808,
+    "recoilV": 0.5249051373057618,
+    "recoilDir": 8,
+    "recoilVar": 9.5,
+    "recoilIncAds": 0.36,
     "spreadMax": 9,
     "adsTime": 320,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.27,
+        "inc": 0.36,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -4190,12 +4887,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 8.0,
-        "amount": 0.4191,
+        "dir": 8,
+        "amount": 0.4199,
         "amountMult": 0.9283,
         "amountExp": -3,
-        "dirVar": 10.9,
-        "dirVarMult": 0.905152,
+        "dirVar": 9.5,
+        "dirVarMult": 0.90525,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4206,12 +4903,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 8.0,
-        "amount": 0.4191,
+        "dir": 8,
+        "amount": 0.4199,
         "amountMult": 0.9283,
         "amountExp": -3,
-        "dirVar": 10.9,
-        "dirVarMult": 0.905152,
+        "dirVar": 9.5,
+        "dirVarMult": 0.90525,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4243,69 +4940,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
-      },
-      {
-        "r": 35.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 16.67
+        "d": 20.67,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m240l",
     "name": "M240L",
     "cls": "LMG",
-    "cal": "7.62\u00d751mm NATO",
-    "rpm": 600,
+    "cal": "7.62×51mm NATO",
+    "rpm": 599.999,
     "mag": 50,
     "tacRld": 4.034,
     "emptyRld": 5.6,
-    "deployT": 1.0,
-    "bulletVel": 630,
-    "recoilV": 0.8075,
-    "recoilDir": 5.0,
-    "recoilVar": 41.8,
-    "recoilIncAds": 0.39,
+    "deployT": 1.000004,
+    "bulletVel": 590,
+    "recoilV": 0.8064454775462087,
+    "recoilDir": 5,
+    "recoilVar": 34.5,
+    "recoilIncAds": 0.523,
     "spreadMax": 11,
     "adsTime": 410,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.392,
+        "inc": 0.523,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -4315,12 +5019,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": 5.0,
-        "amount": 0.6778,
+        "dir": 5,
+        "amount": 0.6769,
         "amountMult": 0.9433,
         "amountExp": -3,
-        "dirVar": 41.8,
-        "dirVarMult": 0.919701,
+        "dirVar": 34.5,
+        "dirVarMult": 0.921501,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4331,12 +5035,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 5.0,
-        "amount": 0.6778,
+        "dir": 5,
+        "amount": 0.6769,
         "amountMult": 0.9433,
         "amountExp": -3,
-        "dirVar": 41.8,
-        "dirVarMult": 0.919701,
+        "dirVar": 34.5,
+        "dirVarMult": 0.921501,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4368,69 +5072,76 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 33.34
+        "r": 21,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 25
-      },
-      {
-        "r": 35.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 20
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m121a2",
     "name": "M121 A2",
     "cls": "LMG",
-    "cal": "7.62\u00d751mm NATO",
-    "rpm": 654,
+    "cal": "7.62×51mm NATO",
+    "rpm": 654.545,
     "mag": 50,
     "tacRld": 6.267,
     "emptyRld": 7.25,
-    "deployT": 1.0,
-    "bulletVel": 600,
-    "recoilV": 0.803,
-    "recoilDir": -7.0,
-    "recoilVar": 39.5,
-    "recoilIncAds": 0.39,
+    "deployT": 1.000004,
+    "bulletVel": 560,
+    "recoilV": 0.805977209331897,
+    "recoilDir": -7,
+    "recoilVar": 31.8,
+    "recoilIncAds": 0.523,
     "spreadMax": 11,
     "adsTime": 390,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.392,
+        "inc": 0.523,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -4440,12 +5151,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -7.0,
-        "amount": 0.6794,
+        "dir": -7,
+        "amount": 0.6819,
         "amountMult": 0.9458,
         "amountExp": -3,
-        "dirVar": 39.5,
-        "dirVarMult": 0.923734,
+        "dirVar": 31.8,
+        "dirVarMult": 0.925433,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4456,12 +5167,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -7.0,
-        "amount": 0.6794,
+        "dir": -7,
+        "amount": 0.6819,
         "amountMult": 0.9458,
         "amountExp": -3,
-        "dirVar": 39.5,
-        "dirVarMult": 0.923734,
+        "dirVar": 31.8,
+        "dirVarMult": 0.925433,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -4493,166 +5204,180 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 33.34
+        "r": 21,
+        "d": 35.22,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 25
-      },
-      {
-        "r": 35.5,
-        "d": 25
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 20
+        "d": 26.05,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "rpk74m",
     "name": "RPK-74M",
     "cls": "LMG",
     "cal": "5.45x39mm",
-    "rpm": 686,
+    "rpm": 685.714,
     "mag": 46,
     "tacRld": 2.784,
     "emptyRld": 3.1,
-    "deployT": 0.7333,
-    "bulletVel": 840,
-    "recoilV": 0.4811,
-    "recoilDir": 6.0,
-    "recoilVar": 18.9,
-    "recoilIncAds": 0.21,
+    "deployT": 0.733334,
+    "bulletVel": 808,
+    "recoilV": 0.47528607726642336,
+    "recoilDir": 6,
+    "recoilVar": 16.1,
+    "recoilIncAds": 0.28,
     "spreadMax": 9,
     "adsTime": null,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.21,
+        "inc": 0.28,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
-        "firstShotMul": 1.0,
-        "distExp": 0.67
+        "firstShotMul": 1,
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.378,
+        "inc": 0.504,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
-        "idleOffset": 25.0,
-        "firingCoef": 0.51,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
-        "firstShotMul": 1.0,
+        "firstShotMul": 1,
         "distExp": 0.5
       }
     },
     "recoil": {
       "ads": {
-        "dir": 6.0,
-        "amount": 0.3891,
+        "dir": 6,
+        "amount": 0.3844,
         "amountMult": 0.9317,
         "amountExp": -3,
-        "dirVar": 18.9,
-        "dirVarMult": 0.908784,
+        "dirVar": 16.1,
+        "dirVarMult": 0.909117,
         "dirVarExp": 0,
-        "decNorm": 1.0,
-        "decExp": 1.0,
+        "decNorm": 1,
+        "decExp": 1,
         "decTimeExp": 1.023,
         "decOffset": 0.06,
         "duration": 0.025,
-        "decFactor": 55.0,
-        "shootingDecScale": 1.0
+        "decFactor": 55,
+        "shootingDecScale": 1
       },
       "hip": {
-        "dir": 6.0,
-        "amount": 0.3891,
+        "dir": 6,
+        "amount": 0.3844,
         "amountMult": 0.9317,
         "amountExp": -3,
-        "dirVar": 18.9,
-        "dirVarMult": 0.908784,
+        "dirVar": 16.1,
+        "dirVarMult": 0.909117,
         "dirVarExp": 0,
-        "decNorm": 1.0,
-        "decExp": 1.0,
+        "decNorm": 1,
+        "decExp": 1,
         "decTimeExp": 1.023,
         "decOffset": 0.06,
         "duration": 0.025,
-        "decFactor": 55.0,
-        "shootingDecScale": 1.0
+        "decFactor": 55,
+        "shootingDecScale": 1
       }
     },
     "spread": {
       "adsStand": [
         0.05,
-        9.0
+        9
       ],
       "adsMove": [
         0.32,
-        10.0
+        10
       ],
       "hipStand": [
         3.352,
-        9.0
+        9
       ],
       "hipMove": [
         4.19,
-        10.0
+        10
       ]
     },
     "dmg": [
       {
         "r": 0,
-        "d": 20
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
-      },
-      {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 17.13,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m39emr",
     "name": "M39 EMR",
     "cls": "DMR",
-    "cal": "7.62\u00d751mm NATO",
-    "rpm": 257,
+    "cal": "7.62×51mm NATO",
+    "rpm": 257.142,
     "mag": 21,
     "tacRld": 2.534,
     "emptyRld": 2.85,
-    "deployT": 0.73,
-    "bulletVel": 800,
-    "recoilV": 1.7458,
-    "recoilDir": -12.0,
-    "recoilVar": 8.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.733334,
+    "bulletVel": 760,
+    "recoilV": 1.745759610105661,
+    "recoilDir": -12,
+    "recoilVar": 8,
+    "recoilIncAds": 0,
     "spreadMax": 9,
     "adsTime": 320,
     "fireMode": "semi",
@@ -4670,17 +5395,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.378,
+        "inc": 0.504,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.145714,
+        "firingCoef": 0.142857,
         "firingExp": 2.5,
-        "firingOffset": 0.945714,
+        "firingOffset": 1.388571,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -4690,11 +5415,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -12.0,
+        "dir": -12,
         "amount": 1.45,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 8.0,
+        "dirVar": 8,
         "dirVarMult": 0.920616,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -4706,11 +5431,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -12.0,
+        "dir": -12,
         "amount": 1.45,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 8.0,
+        "dirVar": 8,
         "dirVarMult": 0.920616,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -4743,41 +5468,48 @@
     "dmg": [
       {
         "r": 0,
-        "d": 40
+        "d": 41.5,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 40
+        "r": 21,
+        "d": 41.5,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 37.67
-      },
-      {
-        "r": 35.5,
-        "d": 37.67
+        "r": 21,
+        "d": 37.6,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 33.34
+        "d": 37.6,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 34.4,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "lmr27",
     "name": "LMR27",
     "cls": "DMR",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 450,
+    "cal": "5.56×45mm NATO",
+    "rpm": 449.999,
     "mag": 11,
     "tacRld": 3.034,
     "emptyRld": 3.067,
-    "deployT": 0.63,
-    "bulletVel": 880,
-    "recoilV": 0.915,
-    "recoilDir": 10.0,
-    "recoilVar": 11.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.633334,
+    "bulletVel": 800,
+    "recoilV": 0.9150188301243465,
+    "recoilDir": 10,
+    "recoilVar": 11,
+    "recoilIncAds": 0,
     "spreadMax": 7,
     "adsTime": 340,
     "fireMode": "semi",
@@ -4795,17 +5527,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.299,
+        "inc": 0.398,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.19125,
+        "firingCoef": 0.1875,
         "firingExp": 2.5,
-        "firingOffset": 1.24125,
+        "firingOffset": 1.8225,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -4815,11 +5547,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": 10.0,
+        "dir": 10,
         "amount": 0.76,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 11.0,
+        "dirVar": 11,
         "dirVarMult": 0.920441,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -4831,11 +5563,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 10.0,
+        "dir": 10,
         "amount": 0.76,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 11.0,
+        "dirVar": 11,
         "dirVarMult": 0.920441,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -4868,41 +5600,48 @@
     "dmg": [
       {
         "r": 0,
-        "d": 28.5
+        "d": 29.4,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 28.5
+        "r": 21,
+        "d": 29.4,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 27.25
-      },
-      {
-        "r": 35.5,
-        "d": 27.25
+        "r": 21,
+        "d": 27.5,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 25
+        "d": 27.5,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 26.2,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "svk86",
     "name": "SVK-8.6",
     "cls": "DMR",
     "cal": ".338 Lapua Mag",
-    "rpm": 150,
+    "rpm": 149.999,
     "mag": 11,
     "tacRld": 2.967,
     "emptyRld": 4.217,
-    "deployT": 0.87,
-    "bulletVel": 720,
-    "recoilV": 3.0099,
-    "recoilDir": -7.0,
-    "recoilVar": 20.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.866667,
+    "bulletVel": 680,
+    "recoilV": 3.00993036225114,
+    "recoilDir": -7,
+    "recoilVar": 20,
+    "recoilIncAds": 0,
     "spreadMax": 9,
     "adsTime": 380,
     "fireMode": "semi",
@@ -4920,17 +5659,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.085,
+        "firingCoef": 0.0833333,
         "firingExp": 2.5,
-        "firingOffset": 0.551667,
+        "firingOffset": 0.81,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -4940,11 +5679,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -7.0,
+        "dir": -7,
         "amount": 2.5,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 20.0,
+        "dirVar": 20,
         "dirVarMult": 0.919578,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -4956,11 +5695,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -7.0,
+        "dir": -7,
         "amount": 2.5,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 20.0,
+        "dirVar": 20,
         "dirVarMult": 0.919578,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -4993,41 +5732,48 @@
     "dmg": [
       {
         "r": 0,
-        "d": 66.67
+        "d": 66.7,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 60
+        "r": 9,
+        "d": 66.7,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 50
+        "r": 9,
+        "d": 57.2,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 50
+        "r": 21,
+        "d": 57.2,
+        "source": "Sym"
       },
       {
-        "r": 75,
-        "d": 50
+        "r": 21,
+        "d": 52.4,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "svdm",
     "name": "SVDM",
     "cls": "DMR",
-    "cal": "7.62\u00d754mmR",
-    "rpm": 300,
+    "cal": "7.62×54mmR",
+    "rpm": 299.999,
     "mag": 11,
     "tacRld": 2.5,
     "emptyRld": 3.45,
-    "deployT": 0.73,
-    "bulletVel": 800,
-    "recoilV": 1.5652,
-    "recoilDir": 4.0,
-    "recoilVar": 10.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.733334,
+    "bulletVel": 760,
+    "recoilV": 1.5651637883705927,
+    "recoilDir": 4,
+    "recoilVar": 10,
+    "recoilIncAds": 0,
     "spreadMax": 9,
     "adsTime": 360,
     "fireMode": "semi",
@@ -5045,17 +5791,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.378,
+        "inc": 0.504,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.145714,
+        "firingCoef": 0.142857,
         "firingExp": 2.5,
-        "firingOffset": 0.945714,
+        "firingOffset": 1.388571,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -5065,11 +5811,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": 4.0,
+        "dir": 4,
         "amount": 1.3,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 10.0,
+        "dirVar": 10,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5081,11 +5827,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 4.0,
+        "dir": 4,
         "amount": 1.3,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 10.0,
+        "dirVar": 10,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5118,41 +5864,48 @@
     "dmg": [
       {
         "r": 0,
-        "d": 40
+        "d": 41.5,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 40
+        "r": 21,
+        "d": 41.5,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 37.67
-      },
-      {
-        "r": 35.5,
-        "d": 37.67
+        "r": 21,
+        "d": 37.6,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 33.34
+        "d": 37.6,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 34.4,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "grtcps",
     "name": "GRT-CPS",
     "cls": "DMR",
-    "cal": "5.56\u00d745mm NATO",
-    "rpm": 360,
+    "cal": "5.56×45mm NATO",
+    "rpm": 359.999,
     "mag": 21,
     "tacRld": 2.75,
     "emptyRld": 3.284,
-    "deployT": 0.63,
-    "bulletVel": 800,
-    "recoilV": 1.0595,
-    "recoilDir": -5.0,
-    "recoilVar": 8.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.633334,
+    "bulletVel": 760,
+    "recoilV": 1.0594954875124012,
+    "recoilDir": -5,
+    "recoilVar": 8,
+    "recoilIncAds": 0,
     "spreadMax": 9,
     "adsTime": 330,
     "fireMode": "semi",
@@ -5170,17 +5923,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.299,
+        "inc": 0.398,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.19125,
+        "firingCoef": 0.1875,
         "firingExp": 2.5,
-        "firingOffset": 1.24125,
+        "firingOffset": 1.8225,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -5190,11 +5943,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -5.0,
+        "dir": -5,
         "amount": 0.88,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 8.0,
+        "dirVar": 8,
         "dirVarMult": 0.920616,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5206,11 +5959,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -5.0,
+        "dir": -5,
         "amount": 0.88,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 8.0,
+        "dirVar": 8,
         "dirVarMult": 0.920616,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5243,41 +5996,48 @@
     "dmg": [
       {
         "r": 0,
-        "d": 28.5
+        "d": 29.4,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 28.5
+        "r": 21,
+        "d": 29.4,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 27.25
-      },
-      {
-        "r": 35.5,
-        "d": 27.25
+        "r": 21,
+        "d": 27.5,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 25
+        "d": 27.5,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 26.2,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m2010esr",
     "name": "M2010 ESR",
     "cls": "Sniper Rifle",
     "cal": ".300 Win Mag",
-    "rpm": 44,
+    "rpm": 44.0816018658339,
     "mag": 6,
     "tacRld": 3.234,
     "emptyRld": 3.934,
-    "deployT": 0.63,
-    "bulletVel": 800,
+    "deployT": 0.633334,
+    "bulletVel": 760,
     "recoilV": 1.5,
-    "recoilDir": -5.0,
-    "recoilVar": 10.0,
-    "recoilIncAds": 0.0,
+    "recoilDir": -5,
+    "recoilVar": 10,
+    "recoilIncAds": 0,
     "spreadMax": 9,
     "adsTime": 500,
     "fireMode": "bolt",
@@ -5295,17 +6055,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 1.8,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.051,
+        "firingCoef": 0.05,
         "firingExp": 2.5,
-        "firingOffset": 0.331,
+        "firingOffset": 0.486,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -5315,11 +6075,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -5.0,
+        "dir": -5,
         "amount": 1.5,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 10.0,
+        "dirVar": 10,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5331,11 +6091,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -5.0,
-        "amount": 4.0,
+        "dir": -5,
+        "amount": 4,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 10.0,
+        "dirVar": 10,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5367,34 +6127,51 @@
     },
     "dmg": [
       {
-        "r": 0,
-        "d": 80
+        "r": 54,
+        "d": 80,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 100
+        "d": 100,
+        "source": "Sym"
       },
       {
-        "r": 120,
-        "d": 62.5
+        "r": 100,
+        "d": 100,
+        "source": "Sym"
+      },
+      {
+        "r": 133,
+        "d": 62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
+    "sweetSpot": {
+      "rangeM": [
+        75,
+        100
+      ],
+      "source": "EA"
+    }
   },
   {
     "id": "sv98",
     "name": "SV-98",
     "cls": "Sniper Rifle",
-    "cal": "7.62\u00d754mmR",
-    "rpm": 37,
+    "cal": "7.62×54mmR",
+    "rpm": 37.67438355865456,
     "mag": 11,
     "tacRld": 2.984,
     "emptyRld": 3.967,
-    "deployT": 0.63,
-    "bulletVel": 720,
+    "deployT": 0.633334,
+    "bulletVel": 680,
     "recoilV": 1.25,
-    "recoilDir": -5.0,
-    "recoilVar": 10.0,
-    "recoilIncAds": 0.0,
+    "recoilDir": -5,
+    "recoilVar": 10,
+    "recoilIncAds": 0,
     "spreadMax": 9,
     "adsTime": 520,
     "fireMode": "bolt",
@@ -5412,17 +6189,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 1.8,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.051,
+        "firingCoef": 0.05,
         "firingExp": 2.5,
-        "firingOffset": 0.331,
+        "firingOffset": 0.486,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -5432,11 +6209,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -5.0,
+        "dir": -5,
         "amount": 1.25,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 10.0,
+        "dirVar": 10,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5448,11 +6225,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -5.0,
-        "amount": 3.0,
+        "dir": -5,
+        "amount": 3,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 10.0,
+        "dirVar": 10,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5485,33 +6262,55 @@
     "dmg": [
       {
         "r": 0,
-        "d": 80
+        "d": 80,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 80,
+        "source": "Sym"
       },
       {
         "r": 54,
-        "d": 100
+        "d": 100,
+        "source": "Sym"
       },
       {
-        "r": 90,
-        "d": 62.5
+        "r": 75,
+        "d": 100,
+        "source": "Sym"
+      },
+      {
+        "r": 100,
+        "d": 62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
+    "sweetSpot": {
+      "rangeM": [
+        54,
+        75
+      ],
+      "source": "EA"
+    }
   },
   {
     "id": "psr",
     "name": "PSR",
     "cls": "Sniper Rifle",
     "cal": ".338 Norma Mag",
-    "rpm": 38,
+    "rpm": 38.11762015220833,
     "mag": 11,
     "tacRld": 3.35,
     "emptyRld": 4.35,
-    "deployT": 0.73,
-    "bulletVel": 720,
+    "deployT": 0.733334,
+    "bulletVel": 680,
     "recoilV": 1.8,
-    "recoilDir": -4.0,
-    "recoilVar": 12.0,
-    "recoilIncAds": 0.0,
+    "recoilDir": -4,
+    "recoilVar": 12,
+    "recoilIncAds": 0,
     "spreadMax": 11,
     "adsTime": 550,
     "fireMode": "bolt",
@@ -5529,17 +6328,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 1.8,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.051,
+        "firingCoef": 0.05,
         "firingExp": 2.5,
-        "firingOffset": 0.331,
+        "firingOffset": 0.486,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -5549,11 +6348,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -4.0,
+        "dir": -4,
         "amount": 1.8,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5565,11 +6364,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -4.0,
-        "amount": 5.0,
+        "dir": -4,
+        "amount": 5,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5601,34 +6400,51 @@
     },
     "dmg": [
       {
-        "r": 0,
-        "d": 80
+        "r": 75,
+        "d": 80,
+        "source": "Sym"
       },
       {
-        "r": 100,
-        "d": 100
+        "r": 90,
+        "d": 100,
+        "source": "Sym"
       },
       {
-        "r": 150,
-        "d": 62.5
+        "r": 120,
+        "d": 100,
+        "source": "Sym"
+      },
+      {
+        "r": 160,
+        "d": 62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
+    "sweetSpot": {
+      "rangeM": [
+        90,
+        120
+      ],
+      "source": "EA"
+    }
   },
   {
     "id": "miniscout",
     "name": "Mini Scout",
     "cls": "Sniper Rifle",
-    "cal": "5.56\u00d745mm NATO",
+    "cal": "5.56×45mm NATO",
     "rpm": 51,
     "mag": 11,
     "tacRld": 2.334,
     "emptyRld": 3.9,
-    "deployT": 0.53,
-    "bulletVel": 800,
-    "recoilV": 1.0,
-    "recoilDir": -5.0,
-    "recoilVar": 5.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.533334,
+    "bulletVel": 760,
+    "recoilV": 1,
+    "recoilDir": -5,
+    "recoilVar": 5,
+    "recoilIncAds": 0,
     "spreadMax": 7,
     "adsTime": 430,
     "fireMode": "bolt",
@@ -5646,17 +6462,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 1.8,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.051,
+        "firingCoef": 0.05,
         "firingExp": 2.5,
-        "firingOffset": 0.331,
+        "firingOffset": 0.486,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -5666,11 +6482,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -5.0,
-        "amount": 1.0,
+        "dir": -5,
+        "amount": 1,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 5.0,
+        "dirVar": 5,
         "dirVarMult": 0.920735,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5682,11 +6498,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -5.0,
+        "dir": -5,
         "amount": 2.5,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 5.0,
+        "dirVar": 5,
         "dirVarMult": 0.920735,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5719,29 +6535,42 @@
     "dmg": [
       {
         "r": 0,
-        "d": 64
+        "d": 62,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 62,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 50
+        "d": 58,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear falloff, no EA sweet spot",
+    "sweetSpot": {
+      "rangeM": null,
+      "source": "EA"
+    }
   },
   {
     "id": "l115",
     "name": "L115",
     "cls": "Sniper Rifle",
     "cal": ".338 Lapua Magnum",
-    "rpm": 46,
+    "rpm": 46.349953649969095,
     "mag": 6,
     "tacRld": 2.75,
     "emptyRld": 4.233,
-    "deployT": 0.6333,
-    "bulletVel": 703,
-    "recoilV": 2.0,
-    "recoilDir": -8.0,
-    "recoilVar": 4.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.633334,
+    "bulletVel": 664,
+    "recoilV": 2,
+    "recoilDir": -8,
+    "recoilVar": 4,
+    "recoilIncAds": 0,
     "spreadMax": 9,
     "adsTime": null,
     "fireMode": "bolt",
@@ -5750,7 +6579,7 @@
         "inc": 0,
         "idleTime": 0.4,
         "idleCoef": 0,
-        "idleExp": 1.0,
+        "idleExp": 1,
         "idleOffset": 6.5,
         "firingCoef": 0,
         "firingExp": 0.25,
@@ -5758,107 +6587,124 @@
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
-        "firstShotMul": 1.0,
-        "distExp": 0.67
+        "firstShotMul": 1,
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 1.8,
         "idleCoef": 0,
         "idleExp": 0.25,
-        "idleOffset": 25.0,
-        "firingCoef": 0.051,
+        "idleOffset": 25,
+        "firingCoef": 0.05,
         "firingExp": 2.5,
-        "firingOffset": 0.331,
+        "firingOffset": 0.486,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
-        "firstShotMul": 1.0,
+        "firstShotMul": 1,
         "distExp": 0.5
       }
     },
     "recoil": {
       "ads": {
-        "dir": -8.0,
-        "amount": 2.0,
+        "dir": -8,
+        "amount": 2,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 4.0,
+        "dirVar": 4,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
-        "decNorm": 1.0,
+        "decNorm": 1,
         "decExp": 0.6,
-        "decTimeExp": 4.0,
+        "decTimeExp": 4,
         "decOffset": 0.06,
         "duration": 0.025,
-        "decFactor": 70.0,
-        "shootingDecScale": 1.0
+        "decFactor": 70,
+        "shootingDecScale": 1
       },
       "hip": {
-        "dir": -8.0,
+        "dir": -8,
         "amount": 5.2,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 4.0,
+        "dirVar": 4,
         "dirVarMult": 0.920506,
         "dirVarExp": 0,
-        "decNorm": 1.0,
+        "decNorm": 1,
         "decExp": 0.6,
-        "decTimeExp": 4.0,
+        "decTimeExp": 4,
         "decOffset": 0.06,
         "duration": 0.025,
-        "decFactor": 70.0,
-        "shootingDecScale": 1.0
+        "decFactor": 70,
+        "shootingDecScale": 1
       }
     },
     "spread": {
       "adsStand": [
-        0.0,
-        9.0
+        0,
+        9
       ],
       "adsMove": [
         0.32,
-        10.0
+        10
       ],
       "hipStand": [
         3.352,
-        9.0
+        9
       ],
       "hipMove": [
         4.19,
-        10.0
+        10
       ]
     },
     "dmg": [
       {
-        "r": 0,
-        "d": 80
+        "r": 75,
+        "d": 80,
+        "source": "Sym"
       },
       {
-        "r": 120,
-        "d": 100
+        "r": 100,
+        "d": 100,
+        "source": "Sym"
+      },
+      {
+        "r": 133,
+        "d": 100,
+        "source": "Sym"
       },
       {
         "r": 175,
-        "d": 62.5
+        "d": 62,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
+    "sweetSpot": {
+      "rangeM": [
+        100,
+        133
+      ],
+      "source": "EA"
+    }
   },
   {
     "id": "m87a1",
     "name": "M87A1",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
-    "rpm": null,
+    "rpm": 1799.999,
     "mag": 8,
     "tacRld": null,
     "emptyRld": null,
-    "deployT": null,
-    "bulletVel": null,
-    "recoilV": 3.6119,
-    "recoilDir": -10.0,
-    "recoilVar": 12.0,
-    "recoilIncAds": null,
+    "deployT": 0.633334,
+    "bulletVel": 400,
+    "recoilV": 3.6119164347013677,
+    "recoilDir": -10,
+    "recoilVar": 12,
+    "recoilIncAds": 0.001,
     "spreadMax": 5,
     "adsTime": 250,
     "fireMode": "pump",
@@ -5876,17 +6722,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 1.2,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.051,
+        "firingCoef": 0.05,
         "firingExp": 2.5,
-        "firingOffset": 0.331,
+        "firingOffset": 0.486,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -5896,11 +6742,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -10.0,
-        "amount": 3.0,
+        "dir": -10,
+        "amount": 3,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5912,11 +6758,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -10.0,
-        "amount": 3.0,
+        "dir": -10,
+        "amount": 3,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -5950,37 +6796,58 @@
     "dmg": [
       {
         "r": 0,
-        "d": 8.4
+        "d": 8.4,
+        "source": "Sym"
+      },
+      {
+        "r": 8,
+        "d": 8.4,
+        "source": "Sym"
       },
       {
         "r": 9,
-        "d": 7.2
+        "d": 7.2,
+        "source": "Sym"
+      },
+      {
+        "r": 15,
+        "d": 7.2,
+        "source": "Sym"
       },
       {
         "r": 16,
-        "d": 5.6
+        "d": 5.6,
+        "source": "Sym"
+      },
+      {
+        "r": 30,
+        "d": 5.6,
+        "source": "Sym"
       },
       {
         "r": 31,
-        "d": 3.8
+        "d": 3.8,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
   },
   {
     "id": "m1014",
     "name": "M1014",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
-    "rpm": null,
+    "rpm": 199.999,
     "mag": 7,
     "tacRld": null,
     "emptyRld": null,
-    "deployT": null,
-    "bulletVel": null,
-    "recoilV": 2.4079,
-    "recoilDir": -5.0,
-    "recoilVar": 15.0,
-    "recoilIncAds": null,
+    "deployT": 0.633334,
+    "bulletVel": 400,
+    "recoilV": 2.407944289800912,
+    "recoilDir": -5,
+    "recoilVar": 15,
+    "recoilIncAds": 0.001,
     "spreadMax": 5,
     "adsTime": 260,
     "fireMode": "semi",
@@ -5998,17 +6865,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.706,
+        "inc": 0.941,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.051,
+        "firingCoef": 0.05,
         "firingExp": 2.5,
-        "firingOffset": 0.331,
+        "firingOffset": 0.486,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6018,11 +6885,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -5.0,
-        "amount": 2.0,
+        "dir": -5,
+        "amount": 2,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6034,11 +6901,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -5.0,
-        "amount": 2.0,
+        "dir": -5,
+        "amount": 2,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6072,37 +6939,58 @@
     "dmg": [
       {
         "r": 0,
-        "d": 7.2
+        "d": 7.2,
+        "source": "Sym"
+      },
+      {
+        "r": 8,
+        "d": 7.2,
+        "source": "Sym"
       },
       {
         "r": 9,
-        "d": 5.0
+        "d": 5,
+        "source": "Sym"
+      },
+      {
+        "r": 15,
+        "d": 5,
+        "source": "Sym"
       },
       {
         "r": 16,
-        "d": 3.1
+        "d": 3.1,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 3.1,
+        "source": "Sym"
       },
       {
         "r": 22,
-        "d": 2.3
+        "d": 2.3,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
   },
   {
     "id": "ks18k",
     "name": "18.5KS-K",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
-    "rpm": null,
+    "rpm": 299.999,
     "mag": 9,
     "tacRld": null,
     "emptyRld": null,
-    "deployT": null,
-    "bulletVel": null,
-    "recoilV": 1.6856,
-    "recoilDir": 8.0,
-    "recoilVar": 12.0,
-    "recoilIncAds": null,
+    "deployT": 0.533334,
+    "bulletVel": 400,
+    "recoilV": 1.6855610028606383,
+    "recoilDir": 8,
+    "recoilVar": 12,
+    "recoilIncAds": 0.001,
     "spreadMax": 5,
     "adsTime": 270,
     "fireMode": "semi",
@@ -6120,17 +7008,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.085,
+        "firingCoef": 0.0833333,
         "firingExp": 2.5,
-        "firingOffset": 0.551667,
+        "firingOffset": 0.81,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6140,11 +7028,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": 8.0,
+        "dir": 8,
         "amount": 1.4,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6156,11 +7044,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 8.0,
+        "dir": 8,
         "amount": 1.4,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6194,33 +7082,48 @@
     "dmg": [
       {
         "r": 0,
-        "d": 5.0
+        "d": 5,
+        "source": "Sym"
+      },
+      {
+        "r": 15,
+        "d": 5,
+        "source": "Sym"
       },
       {
         "r": 16,
-        "d": 2.8
+        "d": 2.8,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 2.8,
+        "source": "Sym"
       },
       {
         "r": 22,
-        "d": 2.0
+        "d": 2,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
   },
   {
     "id": "db12",
     "name": "DB-12",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
-    "rpm": null,
+    "rpm": 359.999,
     "mag": 16,
     "tacRld": null,
     "emptyRld": null,
-    "deployT": null,
-    "bulletVel": null,
-    "recoilV": 2.7089,
-    "recoilDir": 0.0,
-    "recoilVar": 15.0,
-    "recoilIncAds": null,
+    "deployT": 0.533334,
+    "bulletVel": 400,
+    "recoilV": 2.708937326026026,
+    "recoilDir": 0,
+    "recoilVar": 15,
+    "recoilIncAds": 0.001,
     "spreadMax": 5,
     "adsTime": 240,
     "fireMode": "pump",
@@ -6238,17 +7141,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 1.2,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.085,
+        "firingCoef": 0.0833333,
         "firingExp": 2.5,
-        "firingOffset": 0.551667,
+        "firingOffset": 0.81,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6258,11 +7161,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": 0.0,
+        "dir": 0,
         "amount": 2.25,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6274,11 +7177,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 0.0,
+        "dir": 0,
         "amount": 2.25,
         "amountMult": 0.94,
         "amountExp": -3,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6312,39 +7215,54 @@
     "dmg": [
       {
         "r": 0,
-        "d": 5.0
+        "d": 5.6,
+        "source": "Sym"
+      },
+      {
+        "r": 15,
+        "d": 5.6,
+        "source": "Sym"
       },
       {
         "r": 16,
-        "d": 3.3
+        "d": 3.3,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 3.3,
+        "source": "Sym"
       },
       {
         "r": 22,
-        "d": 2.5
+        "d": 2.5,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
   },
   {
     "id": "p18",
     "name": "P18",
     "cls": "Sidearm",
-    "cal": "9\u00d719mm",
-    "rpm": 400,
+    "cal": "9×19mm",
+    "rpm": 399.999,
     "mag": 18,
     "tacRld": 1.934,
-    "emptyRld": 2.117,
-    "deployT": 0.267,
+    "emptyRld": 2.167,
+    "deployT": 0.266667,
     "bulletVel": 350,
     "recoilV": 1.2,
-    "recoilDir": -5.0,
-    "recoilVar": 15.0,
-    "recoilIncAds": 0.0,
+    "recoilDir": -5,
+    "recoilVar": 15,
+    "recoilIncAds": 0,
     "spreadMax": 6,
     "adsTime": 175,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
-        "inc": 0.0,
+        "inc": 0,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 1,
@@ -6356,17 +7274,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.299,
+        "inc": 0.398,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.19125,
+        "firingCoef": 0.1875,
         "firingExp": 2.5,
-        "firingOffset": 1.24125,
+        "firingOffset": 1.8225,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6376,11 +7294,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -5.0,
+        "dir": -5,
         "amount": 1.2,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6392,11 +7310,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -5.0,
+        "dir": -5,
         "amount": 1.2,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6429,47 +7347,74 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 25,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 20
+        "r": 9,
+        "d": 25,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 16.67
+        "r": 9,
+        "d": 20,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 20,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 16.7,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 16.7,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.3,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.3,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.5,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "es57",
     "name": "ES 5.7",
     "cls": "Sidearm",
-    "cal": "5.7\u00d728mm",
-    "rpm": 450,
+    "cal": "5.7×28mm",
+    "rpm": 449.999,
     "mag": 21,
     "tacRld": 2.017,
     "emptyRld": 2.2,
-    "deployT": 0.233,
-    "bulletVel": 650,
-    "recoilV": 1.0,
-    "recoilDir": 5.0,
-    "recoilVar": 15.0,
-    "recoilIncAds": 0.0,
+    "deployT": 0.233334,
+    "bulletVel": 510,
+    "recoilV": 1,
+    "recoilDir": 5,
+    "recoilVar": 15,
+    "recoilIncAds": 0,
     "spreadMax": 6,
     "adsTime": 175,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
-        "inc": 0.0,
+        "inc": 0,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 1,
@@ -6481,17 +7426,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.299,
+        "inc": 0.398,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.255,
+        "firingCoef": 0.25,
         "firingExp": 2.5,
-        "firingOffset": 1.655,
+        "firingOffset": 2.43,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6501,11 +7446,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": 5.0,
-        "amount": 1.0,
+        "dir": 5,
+        "amount": 1,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6517,11 +7462,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 5.0,
-        "amount": 1.0,
+        "dir": 5,
+        "amount": 1,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6554,47 +7499,74 @@
     "dmg": [
       {
         "r": 0,
-        "d": 20
+        "d": 20,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 17.83
+        "r": 9,
+        "d": 20,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 15
+        "r": 9,
+        "d": 17.7,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 14.29
+        "r": 21,
+        "d": 17.7,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 15,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 15,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 14.3,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.3,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.5,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m45a1",
     "name": "M45A1",
     "cls": "Sidearm",
     "cal": ".45 ACP",
-    "rpm": 327,
+    "rpm": 327.272,
     "mag": 8,
     "tacRld": 1.867,
-    "emptyRld": 2.0,
-    "deployT": 0.267,
+    "emptyRld": 2,
+    "deployT": 0.266667,
     "bulletVel": 336,
     "recoilV": 1.67,
-    "recoilDir": 0.0,
-    "recoilVar": 12.0,
-    "recoilIncAds": 0.0,
+    "recoilDir": 0,
+    "recoilVar": 12,
+    "recoilIncAds": 0,
     "spreadMax": 6,
     "adsTime": 200,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
-        "inc": 0.0,
+        "inc": 0,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 1,
@@ -6606,17 +7578,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.378,
+        "inc": 0.504,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.145714,
+        "firingCoef": 0.142857,
         "firingExp": 2.5,
-        "firingOffset": 0.945714,
+        "firingOffset": 1.388571,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6626,11 +7598,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": 0.0,
+        "dir": 0,
         "amount": 1.67,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6642,11 +7614,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 0.0,
+        "dir": 0,
         "amount": 1.67,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6679,51 +7651,84 @@
     "dmg": [
       {
         "r": 0,
-        "d": 33.34
+        "d": 33.4,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 25
+        "r": 9,
+        "d": 33.4,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 20
+        "r": 9,
+        "d": 25,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 25,
+        "source": "Sym"
       },
       {
-        "r": 53.5,
-        "d": 14.34
+        "r": 21,
+        "d": 20,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 20,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 16.7,
+        "source": "Sym"
+      },
+      {
+        "r": 54,
+        "d": 16.7,
+        "source": "Sym"
+      },
+      {
+        "r": 54,
+        "d": 14.3,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 12.5
+        "d": 14.3,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 12.5,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m44",
     "name": "M44",
     "cls": "Sidearm",
     "cal": ".44 Magnum",
-    "rpm": 164,
+    "rpm": 163.636,
     "mag": 6,
     "tacRld": 3.4,
     "emptyRld": null,
-    "deployT": 0.4,
+    "deployT": 0.400001,
     "bulletVel": 440,
-    "recoilV": 6.0,
-    "recoilDir": -8.0,
-    "recoilVar": 12.0,
-    "recoilIncAds": 0.0,
+    "recoilV": 6,
+    "recoilDir": -8,
+    "recoilVar": 12,
+    "recoilIncAds": 0,
     "spreadMax": 6,
     "adsTime": 225,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
-        "inc": 0.0,
+        "inc": 0,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 1,
@@ -6735,17 +7740,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.085,
+        "firingCoef": 0.0833333,
         "firingExp": 2.5,
-        "firingOffset": 0.551667,
+        "firingOffset": 0.81,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6755,11 +7760,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -8.0,
-        "amount": 6.0,
+        "dir": -8,
+        "amount": 6,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6771,11 +7776,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -8.0,
-        "amount": 6.0,
+        "dir": -8,
+        "amount": 6,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6808,47 +7813,64 @@
     "dmg": [
       {
         "r": 0,
-        "d": 66.67
+        "d": 66.7,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 60
+        "r": 9,
+        "d": 66.7,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 33.34
+        "r": 9,
+        "d": 59.9,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 33.34
+        "r": 21,
+        "d": 59.9,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 33.4,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 25
+        "d": 33.4,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 25,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "ggh22",
     "name": "GGH-22",
     "cls": "Sidearm",
-    "cal": "9\u00d719mm",
-    "rpm": 360,
+    "cal": "9×19mm",
+    "rpm": 359.999,
     "mag": 16,
     "tacRld": 1.934,
     "emptyRld": 2.25,
-    "deployT": 0.267,
+    "deployT": 0.266667,
     "bulletVel": 400,
     "recoilV": 1.5,
-    "recoilDir": -7.0,
-    "recoilVar": 12.0,
-    "recoilIncAds": 0.0,
+    "recoilDir": -7,
+    "recoilVar": 12,
+    "recoilIncAds": 0,
     "spreadMax": 6,
     "adsTime": 175,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
-        "inc": 0.0,
+        "inc": 0,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 1,
@@ -6860,17 +7882,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.299,
+        "inc": 0.398,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.19125,
+        "firingCoef": 0.1875,
         "firingExp": 2.5,
-        "firingOffset": 1.24125,
+        "firingOffset": 1.8225,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -6880,11 +7902,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -7.0,
+        "dir": -7,
         "amount": 1.5,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6896,11 +7918,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -7.0,
+        "dir": -7,
         "amount": 1.5,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 12.0,
+        "dirVar": 12,
         "dirVarMult": 0.920371,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -6933,47 +7955,74 @@
     "dmg": [
       {
         "r": 0,
-        "d": 25
+        "d": 25,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 21.4
+        "r": 9,
+        "d": 25,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 17.83
+        "r": 9,
+        "d": 21.5,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 16.67
+        "r": 21,
+        "d": 21.5,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 17.7,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 17.7,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 16.7,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 14.29
+        "d": 16.7,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 14.3,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "m357trait",
     "name": "M357 Trait",
     "cls": "Sidearm",
     "cal": ".357 Magnum",
-    "rpm": 225,
+    "rpm": 224.999,
     "mag": 8,
     "tacRld": 3.067,
     "emptyRld": null,
-    "deployT": 0.35,
+    "deployT": 0.350001,
     "bulletVel": 410,
-    "recoilV": 3.0,
-    "recoilDir": -10.0,
-    "recoilVar": 15.0,
-    "recoilIncAds": 0.0,
+    "recoilV": 3,
+    "recoilDir": -10,
+    "recoilVar": 15,
+    "recoilIncAds": 0,
     "spreadMax": 6,
     "adsTime": 225,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
-        "inc": 0.0,
+        "inc": 0,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 1,
@@ -6985,17 +8034,17 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.486,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.085,
+        "firingCoef": 0.0833333,
         "firingExp": 2.5,
-        "firingOffset": 0.551667,
+        "firingOffset": 0.81,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -7005,11 +8054,11 @@
     },
     "recoil": {
       "ads": {
-        "dir": -10.0,
-        "amount": 3.0,
+        "dir": -10,
+        "amount": 3,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -7021,11 +8070,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -10.0,
-        "amount": 3.0,
+        "dir": -10,
+        "amount": 3,
         "amountMult": 0.94,
         "amountExp": 0,
-        "dirVar": 15.0,
+        "dirVar": 15,
         "dirVarMult": 0.920121,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -7058,69 +8107,96 @@
     "dmg": [
       {
         "r": 0,
-        "d": 50
+        "d": 50,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 37.67
+        "r": 9,
+        "d": 50,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 27.25
+        "r": 9,
+        "d": 37.5,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 25
+        "r": 21,
+        "d": 37.5,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 27.3,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 27.3,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 25,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 20
+        "d": 25,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 20,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   },
   {
     "id": "vz61",
     "name": "VZ. 61",
     "cls": "Sidearm",
-    "cal": "7.65\u00d717mm",
-    "rpm": 818,
+    "cal": "7.65×17mm",
+    "rpm": 818.181,
     "mag": 11,
     "tacRld": 2.134,
-    "emptyRld": 2.667,
-    "deployT": 0.4,
-    "bulletVel": 326,
-    "recoilV": 0.4972,
-    "recoilDir": -10.0,
-    "recoilVar": 20.8,
-    "recoilIncAds": 0.151,
+    "emptyRld": 2.833,
+    "deployT": 0.400001,
+    "bulletVel": 313,
+    "recoilV": 0.5074041324896612,
+    "recoilDir": -10,
+    "recoilVar": 18.4,
+    "recoilIncAds": 0.209,
     "spreadMax": 6,
     "adsTime": 175,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.151,
+        "inc": 0.209,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.272,
+        "inc": 0.376,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -7130,12 +8206,12 @@
     },
     "recoil": {
       "ads": {
-        "dir": -10.0,
-        "amount": 0.4285,
+        "dir": -10,
+        "amount": 0.4059,
         "amountMult": 0.9283,
-        "amountExp": -2,
-        "dirVar": 20.8,
-        "dirVarMult": 0.904055,
+        "amountExp": -3,
+        "dirVar": 18.4,
+        "dirVarMult": 0.904386,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -7146,12 +8222,12 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": -10.0,
-        "amount": 0.4285,
+        "dir": -10,
+        "amount": 0.4059,
         "amountMult": 0.9283,
-        "amountExp": -2,
-        "dirVar": 20.8,
-        "dirVarMult": 0.904055,
+        "amountExp": -3,
+        "dirVar": 18.4,
+        "dirVarMult": 0.904386,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -7183,24 +8259,51 @@
     "dmg": [
       {
         "r": 0,
-        "d": 16.67
+        "d": 17.13,
+        "source": "Sym"
       },
       {
-        "r": 9.5,
-        "d": 15
+        "r": 9,
+        "d": 17.13,
+        "source": "Sym"
       },
       {
-        "r": 20.5,
-        "d": 13.13
+        "r": 9,
+        "d": 15.07,
+        "source": "Sym"
       },
       {
-        "r": 35.5,
-        "d": 12.5
+        "r": 21,
+        "d": 15.07,
+        "source": "Sym"
+      },
+      {
+        "r": 21,
+        "d": 13.09,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 13.09,
+        "source": "Sym"
+      },
+      {
+        "r": 36,
+        "d": 12.76,
+        "source": "Sym"
       },
       {
         "r": 75,
-        "d": 11.22
+        "d": 12.76,
+        "source": "Sym"
+      },
+      {
+        "r": 75,
+        "d": 11.32,
+        "source": "Sym"
       }
-    ]
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
   }
 ]

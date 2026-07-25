@@ -336,6 +336,12 @@
         "frangible": 20
       }
     },
+    "pp19": {
+      "def": "standard",
+      "ammo": {
+        "standard": 0
+      }
+    },
     "l110": {
       "def": "standard",
       "ammo": {

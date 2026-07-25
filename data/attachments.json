@@ -2016,6 +2016,13 @@
         "flashlight"
       ]
     },
+    "pp19": {
+      "muzzle": [],
+      "barrel": [],
+      "grip": [],
+      "laser": [],
+      "light": []
+    },
     "l110": {
       "muzzle": [
         "flash_hider",
@@ -3557,6 +3564,9 @@
         "fast": 1846
       }
     },
+    "pp19": {
+      "avail": []
+    },
     "l110": {
       "avail": [
         "rail_cover",
@@ -4066,6 +4076,10 @@
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
       "sprintRecoveryTierTable": "primary"
+    },
+    "pp19": {
+      "def": null,
+      "mags": {}
     },
     "db12": {
       "defAds": 3,

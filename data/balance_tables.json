@@ -50,7 +50,15 @@
     "db12": 0.94,
     "m16a4": 0.9425,
     "rpk74m": 0.9317,
-    "l115": 0.94
+    "l115": 0.94,
+    "pp19": 0.9333,
+    "es57": 0.94,
+    "ggh22": 0.94,
+    "m357trait": 0.94,
+    "m44": 0.94,
+    "m45a1": 0.94,
+    "p18": 0.94,
+    "vz61": 0.9283
   },
   "HIP_SPREAD_TIERS": {
     "Class A": [
@@ -156,7 +164,8 @@
     "vz61": "Class B",
     "m16a4": "Class C",
     "rpk74m": "Class D",
-    "l115": "Class D"
+    "l115": "Class D",
+    "pp19": "Class B"
   },
   "BASE_HS_MULT": {
     "m39emr": 1.5,
@@ -166,10 +175,10 @@
     "sv98": 1.75,
     "psr": 1.75,
     "miniscout": 1.75,
-    "m87a1": 1.0,
-    "m1014": 1.0,
-    "ks18k": 1.0,
-    "db12": 1.0,
+    "m87a1": 1,
+    "m1014": 1,
+    "ks18k": 1,
+    "db12": 1,
     "l115": 1.75
   },
   "HP_HS_HIGH": [
@@ -234,7 +243,9 @@
     "sv98": "sniper",
     "psr": "sniper",
     "miniscout": "sniper",
-    "l115": "sniper"
+    "l115": "sniper",
+    "vz61": "auto",
+    "pp19": "auto"
   },
   "MOVING_ACC_TIERS": [
     0.05,

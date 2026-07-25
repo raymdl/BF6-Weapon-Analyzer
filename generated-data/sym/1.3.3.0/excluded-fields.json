@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "release": "1.3.3.0",
+  "reloadPolicy": {
+    "shellByShell": [
+      "590a1",
+      "m1014",
+      "185ksk",
+      "dp12"
+    ],
+    "unsupportedValue": "null",
+    "note": "Shell-by-shell reloads are not representable by scalar site timing fields; unsupported N/A values remain null."
+  },
+  "noGo": [
+    "Do not write damage.dmgs or damage.dists from this importer; scripts/apply-sym-damage.mjs owns the live damage curves.",
+    "Do not add gravity/drag to the live schema or implement flight-time behavior.",
+    "Do not add PP-19 to live data during Phase 2; it remains a normalized new-record candidate for Phase 3."
+  ],
+  "fields": [
+    {
+      "field": "gravity",
+      "decision": "normalized-only",
+      "note": "Retained in the versioned Sym snapshot; Phase 6 owns live schema/UI and flight behavior.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 0
+    },
+    {
+      "field": "drag",
+      "decision": "normalized-only",
+      "note": "Retained in the versioned Sym snapshot; do not expose or simulate bullet flight in this phase.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 58
+    },
+    {
+      "field": "damage.dmgs",
+      "decision": "owned-by-damage-refresh",
+      "note": "Live damage comes from the 2026-07-25 Sym snapshot via scripts/apply-sym-damage.mjs; this importer must not write it.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 0
+    },
+    {
+      "field": "damage.dists",
+      "decision": "owned-by-damage-refresh",
+      "note": "Live damage breakpoints come from the 2026-07-25 Sym snapshot via scripts/apply-sym-damage.mjs; this importer must not write it.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 2
+    },
+    {
+      "field": "ammo",
+      "decision": "normalized-only",
+      "note": "Sym ammo codenames are retained for reconciliation; the site caliber label is a display value, not this raw identifier.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 5
+    },
+    {
+      "field": "mags.NumMags",
+      "decision": "normalized-only",
+      "note": "The current site schema does not expose Sym reserve-mag count.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 0
+    },
+    {
+      "field": "reload.ReloadSpeed",
+      "decision": "normalized-only",
+      "note": "The current site schema has no reload-speed multiplier field.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 0
+    },
+    {
+      "field": "reload.ReloadThrs",
+      "decision": "normalized-only",
+      "note": "The current site schema does not expose the raw reload threshold.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 0
+    },
+    {
+      "field": "deploy.UnDeployTime",
+      "decision": "normalized-only",
+      "note": "The current site schema stores deploy time but has no undeploy-time field.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 0
+    },
+    {
+      "field": "spread.*Crouch* / spread.*Prone*",
+      "decision": "normalized-only",
+      "note": "Full stance fields are retained in the raw normalized source record; the current simulator only consumes stand/move bounds.",
+      "sourceRecordCount": 59,
+      "reconciledPatchRowCount": 0
+    }
+  ],
+  "provenance": {
+    "sourcePath": "outputs\\019f7fec-2532-7c40-943b-f4e5df4d1de1\\sym_bf6_1.3.3.0.json",
+    "sourceBytes": 306610,
+    "sourceSha256": "129C2A552D508E864FF09A1593A4A705C11F0B5F4B19C925BC83F9A96F4B6A4B",
+    "patchPath": "outputs\\019f7fec-2532-7c40-943b-f4e5df4d1de1\\sym_bf6_patch_content.js",
+    "patchBytes": 78373,
+    "patchSha256": "9C8EB51F4A619A11EF5D6284E9E929DD76AE1FCB5B62583802A9950DD31C844E",
+    "baseline": {
+      "type": "git",
+      "requested": "git:2df4811:data/weapons.json",
+      "commit": "2df4811cb29753f90770944c476d8000effbe962",
+      "path": "data/weapons.json"
+    }
+  }
+}

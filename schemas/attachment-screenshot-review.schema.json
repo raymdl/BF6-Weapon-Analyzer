@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kdm.local/schemas/attachment-screenshot-review.schema.json",
+  "title": "BF6 Attachment Screenshot Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "generatedAt", "status", "recordCount", "attachmentDetailCount", "weaponsProcessed", "records"],
+  "properties": {
+    "$schema": { "const": "../../schemas/attachment-screenshot-review.schema.json" },
+    "schemaVersion": { "const": 4 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "status": { "type": "string" },
+    "source": { "type": "string" },
+    "extractionMethod": { "type": "string" },
+    "reviewPolicy": { "type": "string" },
+    "recordCount": { "type": "integer", "minimum": 0 },
+    "attachmentDetailCount": { "type": "integer", "minimum": 0 },
+    "mappingReviewedCount": { "type": "integer", "minimum": 0 },
+    "weaponsProcessed": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "knownGaps": { "type": "array", "items": { "type": "string" } },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "attachmentType": {
+      "enum": ["Overview", "Muzzle", "Barrel", "Grip", "Magazine", "Ammo", "Ergonomics", "Laser", "Light", "Laser/Light", "Range Finder", "Sight", "Unknown"]
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["weaponName", "attachmentType", "attachmentSubtype", "attachmentCost", "attachmentName", "attachmentDescription", "stats", "statComparisons", "source", "extractionStatus", "reviewStatus", "mappingReviewStatus", "reviewer", "reviewDate", "reviewConflicts", "statFieldReasons", "notes"],
+      "properties": {
+        "weaponName": { "type": "string", "minLength": 1 },
+        "attachmentType": { "$ref": "#/$defs/attachmentType" },
+        "attachmentSubtype": { "type": ["string", "null"], "description": "Displayed card subtype. Supported new values include Subsonic, Sub HP, Sub Pen, Suppressed, and Range Pen." },
+        "attachmentCost": { "type": ["number", "null"] },
+        "attachmentName": { "type": "string", "minLength": 1 },
+        "attachmentDescription": { "type": ["string", "null"] },
+        "stats": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/stats" }] },
+        "statComparisons": { "type": ["object", "null"], "additionalProperties": { "$ref": "#/$defs/comparison" } },
+        "source": { "$ref": "#/$defs/source" },
+        "extractionStatus": { "type": "string" },
+        "reviewStatus": { "type": "string" },
+        "mappingReviewStatus": { "type": "string" },
+        "reviewer": { "type": ["string", "null"] },
+        "reviewDate": { "type": ["string", "null"] },
+        "reviewConflicts": { "type": "array" },
+        "statFieldReasons": { "type": ["object", "null"], "additionalProperties": { "type": "string" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["damage", "rateOfFireRpm", "magazineSize", "hipfire", "precision", "control", "mobility", "fireModes", "reloadTimeSeconds", "muzzleVelocityMps", "adsTimeMs", "headshotMultiplier", "longRangeDamage", "spotOnFire3dM", "spotOnFire2dM", "opponentHealthRegenDelaySeconds", "collateralMultiplier", "reloadInAds", "adsMoveSpeedMultiplier", "sprintRecoveryMs", "recoilAmountDegrees", "recoilVariationDegrees"],
+      "properties": {
+        "damage": { "type": ["number", "null"] },
+        "rateOfFireRpm": { "type": ["number", "null"] },
+        "magazineSize": { "type": ["number", "null"] },
+        "hipfire": { "type": ["number", "null"] },
+        "precision": { "type": ["number", "null"] },
+        "control": { "type": ["number", "null"] },
+        "mobility": { "type": ["number", "null"] },
+        "fireModes": { "type": ["array", "null"], "items": { "type": "string" } },
+        "reloadTimeSeconds": { "type": ["number", "null"] },
+        "muzzleVelocityMps": { "type": ["number", "null"] },
+        "adsTimeMs": { "type": ["number", "null"] },
+        "headshotMultiplier": { "type": ["number", "null"] },
+        "longRangeDamage": { "type": ["number", "null"] },
+        "spotOnFire3dM": { "type": ["number", "null"] },
+        "spotOnFire2dM": { "type": ["number", "null"] },
+        "opponentHealthRegenDelaySeconds": { "type": ["number", "null"] },
+        "collateralMultiplier": { "type": ["number", "null"] },
+        "reloadInAds": { "type": ["boolean", "null"] },
+        "adsMoveSpeedMultiplier": { "type": ["number", "null"] },
+        "sprintRecoveryMs": { "type": ["number", "null"] },
+        "recoilAmountDegrees": { "type": ["number", "null"] },
+        "recoilVariationDegrees": { "type": ["number", "null"] }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "required": ["direction", "effect"],
+      "properties": {
+        "direction": { "enum": ["up", "down"] },
+        "effect": { "enum": ["buff", "penalty"] },
+        "source": { "type": "string" },
+        "displayText": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["originalPath", "originalFilename", "proposedFilename", "currentPath", "renameApplied", "captureOrder", "captureTimestamp", "resolution", "rawAttachmentDescriptionOcr", "rawFullScreenOcr"],
+      "properties": {
+        "originalPath": { "type": "string" },
+        "originalFilename": { "type": "string" },
+        "proposedFilename": { "type": "string" },
+        "currentPath": { "type": "string" },
+        "renameApplied": { "type": "boolean" },
+        "captureOrder": { "type": "integer", "minimum": 0 },
+        "captureTimestamp": { "type": ["string", "null"] },
+        "resolution": { "type": "string" },
+        "rawAttachmentDescriptionOcr": { "type": ["string", "null"] },
+        "rawFullScreenOcr": { "type": "string" }
+      }
+    }
+  }
+}

@@ -194,7 +194,7 @@ export function applyAttachments(w, atts) {
   // ── Tier index resolution ─────────────────────────────────────────────────────
   // Clamp all tier indices to each stat table's 0-based bounds.
   let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null, _deployTimeMs = null;
-  if (wm) {
+  if (wm?.defAds != null && wm?.defSpr != null && wm?.defAms != null) {
     const adsIdx = Math.max(0, Math.min(ADS_SPD_TIERS.length - 1,
       (wm.defAds - 1) + magAdsTimeTierShift - combinedAdsTimeTierMod));
     const sprintRecTiers = wm.sprintRecoveryTierTable === 'sidearm'

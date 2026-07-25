@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "release": "1.3.3.0",
+  "provenance": {
+    "sourcePath": "outputs\\019f7fec-2532-7c40-943b-f4e5df4d1de1\\sym_bf6_1.3.3.0.json",
+    "sourceBytes": 306610,
+    "sourceSha256": "129C2A552D508E864FF09A1593A4A705C11F0B5F4B19C925BC83F9A96F4B6A4B",
+    "patchPath": "outputs\\019f7fec-2532-7c40-943b-f4e5df4d1de1\\sym_bf6_patch_content.js",
+    "patchBytes": 78373,
+    "patchSha256": "9C8EB51F4A619A11EF5D6284E9E929DD76AE1FCB5B62583802A9950DD31C844E",
+    "baseline": {
+      "type": "git",
+      "requested": "git:2df4811:data/weapons.json",
+      "commit": "2df4811cb29753f90770944c476d8000effbe962",
+      "path": "data/weapons.json"
+    }
+  },
+  "entries": [
+    {
+      "codename": "hk433",
+      "siteId": "m433",
+      "displayName": "M433",
+      "status": "existing"
+    },
+    {
+      "codename": "g36",
+      "siteId": "b36a4",
+      "displayName": "B36A4",
+      "status": "existing"
+    },
+    {
+      "codename": "scarl",
+      "siteId": "sor556",
+      "displayName": "SOR-556 MK2",
+      "status": "existing"
+    },
+    {
+      "codename": "g3a4",
+      "siteId": "ak4d",
+      "displayName": "AK4D",
+      "status": "existing"
+    },
+    {
+      "codename": "tavor7",
+      "siteId": "tr7",
+      "displayName": "TR7",
+      "status": "existing"
+    },
+    {
+      "codename": "6p67",
+      "siteId": "kord6p67",
+      "displayName": "KORD 6P67",
+      "status": "existing"
+    },
+    {
+      "codename": "ace32",
+      "siteId": "nvo228e",
+      "displayName": "NVO-228E",
+      "status": "existing"
+    },
+    {
+      "codename": "l85a3",
+      "siteId": "l85a3",
+      "displayName": "L85A3",
+      "status": "existing"
+    },
+    {
+      "codename": "vhs2",
+      "siteId": "vcr2",
+      "displayName": "VCR-2",
+      "status": "existing"
+    },
+    {
+      "codename": "m16a3",
+      "siteId": "m16a4",
+      "displayName": "M16A4",
+      "status": "existing"
+    },
+    {
+      "codename": "m4a1",
+      "siteId": "m4a1",
+      "displayName": "M4A1",
+      "status": "existing"
+    },
+    {
+      "codename": "xm7",
+      "siteId": "m277",
+      "displayName": "M277",
+      "status": "existing"
+    },
+    {
+      "codename": "ak205",
+      "siteId": "ak205",
+      "displayName": "AK-205",
+      "status": "existing"
+    },
+    {
+      "codename": "hk417a2",
+      "siteId": "m417a2",
+      "displayName": "M417 A2",
+      "status": "existing"
+    },
+    {
+      "codename": "msbsgrotb",
+      "siteId": "grtbc",
+      "displayName": "GRT-BC",
+      "status": "existing"
+    },
+    {
+      "codename": "qbz192",
+      "siteId": "qbz192",
+      "displayName": "QBZ-192",
+      "status": "existing"
+    },
+    {
+      "codename": "sig553r",
+      "siteId": "sg553r",
+      "displayName": "SG 553R",
+      "status": "existing"
+    },
+    {
+      "codename": "scarsc",
+      "siteId": "sor300sc",
+      "displayName": "SOR-300SC",
+      "status": "existing"
+    },
+    {
+      "codename": "mpx",
+      "siteId": "sgx",
+      "displayName": "SGX",
+      "status": "existing"
+    },
+    {
+      "codename": "mp5mli",
+      "siteId": "pw5a3",
+      "displayName": "PW5A3",
+      "status": "existing"
+    },
+    {
+      "codename": "mp7a2",
+      "siteId": "pw7a2",
+      "displayName": "PW7A2",
+      "status": "existing"
+    },
+    {
+      "codename": "ump40",
+      "siteId": "umg40",
+      "displayName": "UMG-40",
+      "status": "existing"
+    },
+    {
+      "codename": "p90",
+      "siteId": "usg90",
+      "displayName": "USG-90",
+      "status": "existing"
+    },
+    {
+      "codename": "vector",
+      "siteId": "kv9",
+      "displayName": "KV9",
+      "status": "existing"
+    },
+    {
+      "codename": "apc10",
+      "siteId": "scw10",
+      "displayName": "SCW-10",
+      "status": "existing"
+    },
+    {
+      "codename": "apdw",
+      "siteId": "sl9",
+      "displayName": "SL9",
+      "status": "existing"
+    },
+    {
+      "codename": "scorpionevo3",
+      "siteId": "cz3a1",
+      "displayName": "CZ3A1",
+      "status": "existing"
+    },
+    {
+      "codename": "pp19",
+      "siteId": "pp19",
+      "displayName": "PP-19",
+      "status": "new-reserved"
+    },
+    {
+      "codename": "minimi",
+      "siteId": "l110",
+      "displayName": "L110",
+      "status": "existing"
+    },
+    {
+      "codename": "m27iar",
+      "siteId": "drsiar",
+      "displayName": "DRS-IAR",
+      "status": "existing"
+    },
+    {
+      "codename": "m60e6",
+      "siteId": "m60",
+      "displayName": "M/60",
+      "status": "existing"
+    },
+    {
+      "codename": "rpkm",
+      "siteId": "rpkm",
+      "displayName": "RPKM",
+      "status": "existing"
+    },
+    {
+      "codename": "mg4k",
+      "siteId": "m123k",
+      "displayName": "M123K",
+      "status": "existing"
+    },
+    {
+      "codename": "m250",
+      "siteId": "m250",
+      "displayName": "M250",
+      "status": "existing"
+    },
+    {
+      "codename": "ultimax",
+      "siteId": "kts100",
+      "displayName": "KTS100 MK8",
+      "status": "existing"
+    },
+    {
+      "codename": "m240l",
+      "siteId": "m240l",
+      "displayName": "M240L",
+      "status": "existing"
+    },
+    {
+      "codename": "mg5",
+      "siteId": "m121a2",
+      "displayName": "M121 A2",
+      "status": "existing"
+    },
+    {
+      "codename": "rpk74m",
+      "siteId": "rpk74m",
+      "displayName": "RPK-74M",
+      "status": "existing"
+    },
+    {
+      "codename": "m39emr",
+      "siteId": "m39emr",
+      "displayName": "M39 EMR",
+      "status": "existing"
+    },
+    {
+      "codename": "aradmr",
+      "siteId": "lmr27",
+      "displayName": "LMR27",
+      "status": "existing"
+    },
+    {
+      "codename": "svch",
+      "siteId": "svk86",
+      "displayName": "SVK-8.6",
+      "status": "existing"
+    },
+    {
+      "codename": "svdm",
+      "siteId": "svdm",
+      "displayName": "SVDM",
+      "status": "existing"
+    },
+    {
+      "codename": "msbsgrotcps",
+      "siteId": "grtcps",
+      "displayName": "GRT-CPS",
+      "status": "existing"
+    },
+    {
+      "codename": "m2010esr",
+      "siteId": "m2010esr",
+      "displayName": "M2010 ESR",
+      "status": "existing"
+    },
+    {
+      "codename": "sv98m",
+      "siteId": "sv98",
+      "displayName": "SV-98",
+      "status": "existing"
+    },
+    {
+      "codename": "mrad",
+      "siteId": "psr",
+      "displayName": "PSR",
+      "status": "existing"
+    },
+    {
+      "codename": "minifix",
+      "siteId": "miniscout",
+      "displayName": "Mini Scout",
+      "status": "existing"
+    },
+    {
+      "codename": "l115a3",
+      "siteId": "l115",
+      "displayName": "L115",
+      "status": "existing"
+    },
+    {
+      "codename": "590a1",
+      "siteId": "m87a1",
+      "displayName": "M87A1",
+      "status": "existing"
+    },
+    {
+      "codename": "m1014",
+      "siteId": "m1014",
+      "displayName": "M1014",
+      "status": "existing"
+    },
+    {
+      "codename": "185ksk",
+      "siteId": "ks18k",
+      "displayName": "18.5KS-K",
+      "status": "existing"
+    },
+    {
+      "codename": "dp12",
+      "siteId": "db12",
+      "displayName": "DB-12",
+      "status": "existing"
+    },
+    {
+      "codename": "m18",
+      "siteId": "p18",
+      "displayName": "P18",
+      "status": "existing"
+    },
+    {
+      "codename": "fiveseven",
+      "siteId": "es57",
+      "displayName": "ES 5.7",
+      "status": "existing"
+    },
+    {
+      "codename": "m45a1",
+      "siteId": "m45a1",
+      "displayName": "M45A1",
+      "status": "existing"
+    },
+    {
+      "codename": "raginghunter",
+      "siteId": "m44",
+      "displayName": "M44",
+      "status": "existing"
+    },
+    {
+      "codename": "g22",
+      "siteId": "ggh22",
+      "displayName": "GGH-22",
+      "status": "existing"
+    },
+    {
+      "codename": "trr8",
+      "siteId": "m357trait",
+      "displayName": "M357 Trait",
+      "status": "existing"
+    },
+    {
+      "codename": "skorpion",
+      "siteId": "vz61",
+      "displayName": "VZ. 61",
+      "status": "existing"
+    }
+  ]
+}

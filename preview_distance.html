@@ -597,6 +597,7 @@ import {
 import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
 import { zoneMultiplierForWeapon } from './sim/damage.js';
 import * as Loadout from './sim/loadout.js';
+import { TARGET_ZONE_COLORS, drawTarget, targetAimOffset, targetMarkerRadius, whenTargetImageReady } from './sim/target.js';
 const EMBEDDED_WEAPONS = await fetch('./data/weapons.json').then(r => r.json());
 const [_balance, _atts, _ammo, _recoilDecay] = await Promise.all([
   fetch('./data/balance_tables.json').then(r => r.json()),
@@ -652,12 +653,6 @@ const DEFAULT_SHOTS = 20;
 const RUNS = 14;
 const VIEW_HALF_ANGLE_DEG = 14;
 const VIEW_Y_MIN_ANGLE_DEG = -9.65;
-const TARGET_HEIGHT_CM = 180;
-const TARGET_SHOULDER_CM = 58;
-const TARGET_AIM_SVG_Y = {
-  chest: 66.5,
-  head: 18,
-};
 const panelViews = {
   wall10: { zoom: 1, panX: 0, panY: 0 },
   wall20: { zoom: 1, panX: 0, panY: 0 },
@@ -825,12 +820,16 @@ function drawWall(canvas, readout, distanceM, scaleEl) {
     ctx.beginPath(); ctx.moveTo(PL, toY(0)); ctx.lineTo(PL + PW, toY(0)); ctx.stroke();
   }
 
-  const targetHitTest = drawTarget(ctx, toX, toY);
+  // drawTarget now pins the figure to its own world origin, so shift the
+  // mappers by the aim offset to keep this preview's aim-origin coordinates.
+  const aimOffset = targetAimOffset(targetAimPoint);
+  const hitTest = drawTarget(ctx, x => toX(x - aimOffset.x), y => toY(y - aimOffset.y));
+  const targetHitTest = p => hitTest({ xCm: p.xCm + aimOffset.x, yCm: p.yCm + aimOffset.y });
 
   const primary = projectedRun(w, distanceM, refSeed >>> 0, refSeed >>> 0, true);
   const pathPts = projectedRun(w, distanceM, refSeed >>> 0, refSeed >>> 0, false);
   const hitZones = primary.map(targetHitTest);
-  const shotRadius = 2.7 * (5 / distanceM) * zoom;
+  const shotRadius = targetMarkerRadius(Math.abs(toX(1) - toX(0)));
 
   if (viewLayers.bloom) drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM);
 
@@ -885,128 +884,8 @@ function drawWall(canvas, readout, distanceM, scaleEl) {
   scaleEl.textContent = zoom === 1 ? `1 deg = ${formatMeters(oneDeg)}` : `1 deg = ${formatMeters(oneDeg)} / ${zoom.toFixed(1).replace('.0', '')}x`;
 }
 
-// Illustrative broad soldier silhouette (wide shoulders/chest, thick arms and
-// legs, helmeted head). It is not authoritative BF6 collision geometry. Right-half outline
-// as [x offset from centerline, y from top] in view units; 206.3 units tall =
-// TARGET_HEIGHT_CM, so 1 unit ≈ 0.87 cm. The left half is mirrored at runtime.
-const TARGET_VIEW_HEIGHT = 206.3;
-const TARGET_HALF_OUTLINE = [
-  // head (rounded dome — near-flat at the apex so smoothing doesn't peak it)
-  [0, 0], [4, 0.5], [7.5, 1.6], [10, 3.2], [12, 5.6], [13.2, 8.8], [13.7, 13], [13.4, 18], [11.9, 22.8], [9.4, 26.5],
-  // neck
-  [8.8, 29.5], [9.6, 31.5],
-  // trapezius slope out to the shoulder
-  [17, 34], [24.5, 36.5], [30, 39.5],
-  // deltoid
-  [34.2, 43], [35.6, 49],
-  // outer upper arm, elbow flared out (relaxed A-pose)
-  [36.6, 56], [37.2, 63], [37.2, 69],
-  // outer forearm angling back in toward the hip
-  [36.4, 76], [35.4, 84], [34, 91], [32.6, 97],
-  // gloved fist resting at the hip (knuckles bulge outward)
-  [33.4, 101], [33.2, 107], [31, 112], [27.5, 112.5],
-  // inner fist / wrist
-  [24, 108], [23.8, 102],
-  // inner forearm back up to the elbow
-  [24.5, 94], [25.5, 87], [26.4, 80],
-  // inner upper arm up to the armpit
-  [26.6, 73], [25, 65], [22.8, 57],
-  // armpit notch, then the torso side: broad chest V-tapering to the waist
-  [21.8, 54.5], [21.6, 62], [20, 72], [18.2, 84], [18.4, 92], [20.2, 100], [22.8, 108],
-  // outer leg
-  [24, 118], [23, 130], [21.6, 141], [20.6, 148], [19.8, 156], [19.4, 163],
-  [18.4, 173], [16.6, 183], [15.4, 190],
-  // boot
-  [17.2, 195], [18.6, 200], [18.9, 205], [18.6, 206.3], [17.2, 206.3], [8.8, 206.3], [7.5, 206.3],
-  // inner leg up to the crotch
-  [7.3, 201], [7.6, 195], [8, 189], [8.4, 178], [8.2, 166], [6.8, 153], [5.6, 146],
-  [4.6, 134], [3.2, 122], [1.8, 114], [0, 110.5],
-];
-// Damage-zone boundaries in view units (Update 1.3.3.0 zones: head does the
-// most damage, chest is normal, stomach/arms/legs are reduced). Arms are any
-// hit outside the torso-side boundary between the traps and the fists.
-const ZONE_HEAD_MAX_Y = 33;
-const ZONE_CHEST_MAX_Y = 84;
-const ZONE_STOMACH_MAX_Y = 112;
-const TORSO_SIDE_BOUNDARY = [
-  [16, 33], [25, 40], [25, 50], [22.2, 57], [22, 62], [22, 72],
-  [20, 84], [18.4, 92], [20.2, 100], [22.8, 108], [23.8, 113],
-];
-const ZONE_COLORS = { head: '#f23f3f', chest: '#ff7b1c', stomach: '#ffe14d', arms: '#ffe14d', legs: '#ffe14d' };
+const ZONE_COLORS = TARGET_ZONE_COLORS;
 const MISS_COLOR = 'rgba(154,164,164,0.8)';
-
-function torsoHalfWidthAt(y) {
-  const b = TORSO_SIDE_BOUNDARY;
-  if (y <= b[0][1]) return b[0][0];
-  for (let i = 1; i < b.length; i++) {
-    if (y <= b[i][1]) {
-      const t = (y - b[i - 1][1]) / (b[i][1] - b[i - 1][1]);
-      return b[i - 1][0] + (b[i][0] - b[i - 1][0]) * t;
-    }
-  }
-  return b[b.length - 1][0];
-}
-
-function zoneAt(x, y) {
-  if (y < ZONE_HEAD_MAX_Y) return 'head';
-  if (y < ZONE_STOMACH_MAX_Y + 1 && Math.abs(x) > torsoHalfWidthAt(y)) return 'arms';
-  if (y < ZONE_CHEST_MAX_Y) return 'chest';
-  if (y < ZONE_STOMACH_MAX_Y) return 'stomach';
-  return 'legs';
-}
-
-let _targetPath = null;
-function targetPath() {
-  if (_targetPath) return _targetPath;
-  const right = TARGET_HALF_OUTLINE;
-  const left = right.slice(1, -1).reverse().map(([x, y]) => [-x, y]);
-  const pts = [...right, ...left];
-  const p = new Path2D();
-  p.moveTo(pts[0][0], pts[0][1]);
-  for (let i = 1; i < pts.length - 1; i++) {
-    const [x1, y1] = pts[i];
-    const [x2, y2] = pts[i + 1];
-    p.quadraticCurveTo(x1, y1, (x1 + x2) / 2, (y1 + y2) / 2);
-  }
-  const [lx, ly] = pts[pts.length - 1];
-  p.quadraticCurveTo(lx, ly, pts[0][0], pts[0][1]);
-  p.closePath();
-  _targetPath = p;
-  return p;
-}
-
-function drawTarget(ctx, toX, toY) {
-  const path = targetPath();
-  const aimSvgY = TARGET_AIM_SVG_Y[targetAimPoint] ?? TARGET_AIM_SVG_Y.chest;
-  const cmPerSvgUnit = TARGET_HEIGHT_CM / TARGET_VIEW_HEIGHT;
-  const pxPerCm = Math.abs(toX(1) - toX(0));
-  const svgToPx = cmPerSvgUnit * pxPerCm;
-  const targetX = toX(0);
-  const targetY = toY(0) - aimSvgY * svgToPx;
-
-  ctx.save();
-  ctx.translate(targetX, targetY);
-  ctx.scale(svgToPx, svgToPx);
-  ctx.strokeStyle = 'rgba(170,190,190,0.52)';
-  ctx.lineWidth = 1.8 / svgToPx;
-  ctx.lineJoin = 'round';
-  ctx.lineCap = 'round';
-  ctx.fillStyle = 'rgba(170,190,190,0.035)';
-  ctx.fill(path);
-  ctx.stroke(path);
-  ctx.restore();
-
-  // Returns the damage zone the shot lands in, or null on a miss.
-  return point => {
-    const svgX = (toX(point.xCm) - targetX) / svgToPx;
-    const svgY = (toY(point.yCm) - targetY) / svgToPx;
-    ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    const hit = ctx.isPointInPath(path, svgX, svgY);
-    ctx.restore();
-    return hit ? zoneAt(svgX, svgY) : null;
-  };
-}
 
 function drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM) {
   const blooms = simulateBloom(w, selectedShotCount());
@@ -1463,6 +1342,7 @@ document.getElementById('bloomBulletsInput').addEventListener('input', redraw);
 document.getElementById('compensationInput').addEventListener('change', syncCompensationLevel);
 document.getElementById('compensationRange').addEventListener('input', syncCompensationFromRange);
 init();
+whenTargetImageReady().then(redraw);
 
 // Bridge to window so inline onclick="…" attributes can resolve these (module scope is not global)
 Object.assign(window, {

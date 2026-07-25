@@ -1,15 +1,19 @@
 import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { damageAtRange } from '../sim/damage.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const readJson = file => JSON.parse(readFileSync(resolve(root, file), 'utf8'));
+const dataRoot = process.env.DATA_ROOT ? resolve(process.env.DATA_ROOT) : root;
+const readJson = file => JSON.parse(readFileSync(resolve(dataRoot, file), 'utf8'));
 
 const weapons = readJson('data/weapons.json');
 const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const recoilDecay = readJson('data/recoil_decay.json');
 const balance = readJson('data/balance_tables.json');
+const pp19Provenance = readJson('data/provenance/pp19-1.3.3.0.json');
+const damageProvenance = readJson('data/provenance/damage-1.3.3.0.json');
 
 const SUPPORTED_CLASSES = new Set([
   'Assault Rifle',
@@ -22,6 +26,7 @@ const SUPPORTED_CLASSES = new Set([
   'Sidearm',
 ]);
 const INTENTIONALLY_UNSUPPORTED_CLASSES = new Set();
+const DAMAGE_POINT_SOURCES = new Set(['EA', 'Sym', 'in-game']);
 
 const errors = [];
 const fail = message => errors.push(message);
@@ -41,18 +46,114 @@ for (const weapon of weapons) {
   for (const key of ['name', 'cls', 'cal', 'fireMode']) {
     if (weapon[key] == null) fail(`${weapon.id}: missing ${key}`);
   }
+  for (const key of ['tacRld', 'emptyRld']) {
+    if (weapon[key] !== null && !Number.isFinite(weapon[key])) {
+      fail(`${weapon.id}: ${key} must be numeric or null`);
+    }
+  }
   if (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0) {
     fail(`${weapon.id}: dmg must be a non-empty breakpoint array`);
   } else {
+    if (weapon.damageStatus !== 'provisional' && weapon.damageStatus !== 'verified') {
+      fail(`${weapon.id}: damageStatus must be provisional or verified`);
+    }
     for (const point of weapon.dmg) {
       if (!Number.isFinite(point.r) || !Number.isFinite(point.d)) {
         fail(`${weapon.id}: dmg breakpoint must contain numeric r and d`);
+      }
+      if (!DAMAGE_POINT_SOURCES.has(point.source)) {
+        fail(`${weapon.id}: dmg breakpoint source must be EA, Sym, or in-game`);
       }
     }
   }
 }
 
 const supportedWeaponIds = new Set(weapons.filter(w => SUPPORTED_CLASSES.has(w.cls)).map(w => w.id));
+
+const pp19 = weapons.find(weapon => weapon.id === 'pp19');
+if (weapons.length !== 59) fail(`release 1.3.3.0 requires 59 weapon records; found ${weapons.length}`);
+if (supportedWeaponIds.size !== 59) fail(`release 1.3.3.0 requires 59 supported weapons; found ${supportedWeaponIds.size}`);
+if (!pp19) fail('pp19: required release 1.3.3.0 weapon record is missing');
+if (pp19) {
+  if (pp19.cls !== 'SMG') fail('pp19: expected SMG class');
+  if (pp19.damageStatus !== 'provisional') fail('pp19: damageStatus must remain provisional until in-game validation');
+  if (pp19Provenance.release !== '1.3.3.0' || pp19Provenance.weaponId !== 'pp19') {
+    fail('pp19: provenance record does not identify release 1.3.3.0 / weapon pp19');
+  }
+  if (pp19Provenance.capture?.status !== 'not-recorded') {
+    fail('pp19: capture status changed without a reviewed in-game evidence package');
+  }
+  if (pp19Provenance.damage?.status !== 'provisional-community-tested') {
+    fail('pp19: damage provenance must remain provisional-community-tested');
+  }
+  for (const point of pp19Provenance.damage?.breakpoints ?? []) {
+    if (!DAMAGE_POINT_SOURCES.has(point.source)) fail('pp19: damage provenance breakpoint source is missing or invalid');
+  }
+  if (JSON.stringify(pp19.dmg) !== JSON.stringify(pp19Provenance.damage?.breakpoints)) {
+    fail('pp19: live damage curve must match its provisional provenance breakpoints');
+  }
+  const requiredCrossFileEntries = [
+    ['WEAPON_ATTS', attachments.WEAPON_ATTS?.pp19],
+    ['WEAPON_ERGO', attachments.WEAPON_ERGO?.pp19],
+    ['WEAPON_MAG', attachments.WEAPON_MAG?.pp19],
+    ['WEAPON_AMMO', ammo.WEAPON_AMMO?.pp19],
+    ['RECOIL_DEC', recoilDecay.RECOIL_DEC?.pp19],
+    ['RECOIL_DEC_TEXP', recoilDecay.RECOIL_DEC_TEXP?.pp19],
+    ['RECOIL_MULT', balance.RECOIL_MULT?.pp19],
+    ['HIP_CLS', balance.HIP_CLS?.pp19],
+    ['LIMB_CLASS', balance.LIMB_CLASS?.pp19],
+  ];
+  for (const [tableName, value] of requiredCrossFileEntries) {
+    if (value == null) fail(`pp19: missing cross-file entry ${tableName}`);
+  }
+  for (const slot of ['muzzle', 'barrel', 'grip', 'laser', 'light']) {
+    if (!Array.isArray(attachments.WEAPON_ATTS?.pp19?.[slot])) {
+      fail(`pp19: ${slot} slot is missing from WEAPON_ATTS`);
+    }
+  }
+  if (attachments.WEAPON_MAG?.pp19 && !('mags' in attachments.WEAPON_MAG.pp19)) {
+    fail('pp19: WEAPON_MAG must declare a mags object, even while coverage is pending');
+  }
+}
+
+if (damageProvenance.release !== '1.3.3.0' || damageProvenance.baseDamage?.status !== 'provisional-community-tested') {
+  fail('damage provenance must remain pinned to 1.3.3.0 with provisional base-damage status');
+}
+const expectedSweetSpots = {
+  sv98: [54, 75],
+  m2010esr: [75, 100],
+  psr: [90, 120],
+  l115: [100, 133],
+};
+for (const [weaponId, rangeM] of Object.entries(expectedSweetSpots)) {
+  const weapon = weapons.find(item => item.id === weaponId);
+  const provenance = damageProvenance.sniperSweetSpots?.find(item => item.weaponId === weaponId);
+  if (!weapon || !provenance || provenance.status !== 'applied' || provenance.source !== 'EA') {
+    fail(`${weaponId}: missing applied EA sweet-spot provenance`);
+    continue;
+  }
+  if (JSON.stringify(provenance.rangeM) !== JSON.stringify(rangeM)
+      || JSON.stringify(weapon.sweetSpot?.rangeM) !== JSON.stringify(rangeM)
+      || weapon.sweetSpot?.source !== 'EA') {
+    fail(`${weaponId}: runtime/provenance sweet-spot range mismatch`);
+  }
+  // The Sym curve holds 100 across the whole sweet-spot window and ramps out of
+  // it, so assert the evaluated window rather than a single labelled breakpoint.
+  const [start, end] = rangeM;
+  if (damageAtRange(weapon, start) !== 100 || damageAtRange(weapon, end) !== 100) {
+    fail(`${weaponId}: damage curve does not hold 100 across the EA sweet spot`);
+  }
+  if (!(damageAtRange(weapon, start - 1) < 100) || !(damageAtRange(weapon, end + 1) < 100)) {
+    fail(`${weaponId}: damage curve does not encode the EA sweet-spot endpoints`);
+  }
+}
+const miniScout = weapons.find(item => item.id === 'miniscout');
+const miniProvenance = damageProvenance.sniperSweetSpots?.find(item => item.weaponId === 'miniscout');
+if (!miniScout || !miniProvenance || miniProvenance.status !== 'exception'
+    || miniProvenance.source !== 'EA' || miniScout.sweetSpot?.rangeM !== null
+    || miniScout.sweetSpot?.source !== 'EA') {
+  fail('miniscout: Mini Scout no-sweet-spot exception is missing or untagged');
+}
 
 const attachmentSets = {
   sight: new Set(attachments.SIGHTS.map(a => a.id)),
@@ -166,7 +267,7 @@ const expectedLimbClassByWeaponClass = {
 };
 for (const weapon of weapons) {
   if (!SUPPORTED_CLASSES.has(weapon.cls)) continue;
-  const expected = expectedLimbClassByWeaponClass[weapon.cls] ?? null;
+  const expected = weapon.id === 'vz61' ? 'auto' : (expectedLimbClassByWeaponClass[weapon.cls] ?? null);
   const actual = balance.LIMB_CLASS?.[weapon.id] ?? null;
   if (actual !== expected) {
     fail(`${weapon.id}: expected LIMB_CLASS ${expected ?? 'omitted'} for ${weapon.cls}, found ${actual ?? 'omitted'}`);

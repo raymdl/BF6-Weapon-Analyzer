@@ -22,7 +22,25 @@
       "declaredVersion": "1.3.3.0",
       "declaredVersionDate": "30 JUN 2026",
       "authority": "Raw base weapon, recoil, spread/recovery, reload, deploy, magazine, gravity, and base-drag fields",
-      "excludedFromAutomaticImport": ["damage.dmgs", "damage.dists"]
+      "excludedFromAutomaticImport": ["damage.dmgs", "damage.dists"],
+      "supersededFor": {
+        "fields": ["damage.dmgs", "damage.dists"],
+        "by": "sym-bf6-json-damage-refresh"
+      }
+    },
+    {
+      "id": "sym-bf6-json-damage-refresh",
+      "url": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
+      "path": "outputs/sym-damage-refresh-2026-07-25/sym_bf6_1.3.3.0_damage-2026-07-25.json",
+      "downloadedFileName": "sym_bf6_1.3.3.0_damage-2026-07-25.json",
+      "retrievedDate": "2026-07-25",
+      "sha256": "878475E5D8751E5CC11F37A2F95F8D4075BD07D8A7C7EC53B1676EACF4CE646C",
+      "bytes": 306794,
+      "declaredVersion": "1.3.3.0",
+      "declaredVersionDate": "30 JUN 2026",
+      "authority": "Base damage curves (damage.dmgs and damage.dists) for all 59 weapons",
+      "comparison": "Every non-damage field is byte-identical to sym-bf6-json; only damage.dmgs and damage.dists differ, on 50 of 59 weapons.",
+      "appliedBy": "scripts/apply-sym-damage.mjs"
     },
     {
       "id": "sym-before-after-payload",
