@@ -4,7 +4,7 @@ import {
   selectedRecoilAmountFor, selectedRecoilAmountBeforePlatformFor, selectedRecoilVariationFor,
   spreadBounds, selectedSpreadIncFor,
   spreadRecoveries, applySpreadRecovery,
-  simulateBloom, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
+  simulateSpread, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange } from '../sim/damage.js';
@@ -177,17 +177,17 @@ const state = {
   recoil: {
     aim: 'ads', stance: 'stand',
     view: 'angle', distance: 30, targetAim: 'chest', customAim: { x: 0, y: 0 },
-    layers: { scatter: true, spray: true, path: false, bloom: false, cone: false },
+    layers: { scatter: true, spray: true, path: false, spread: false, cone: false },
     // Scatter is far too noisy over a soldier, so each view keeps its own
     // overlay choices and its own sensible starting point.
     savedLayers: {
-      angle: { scatter: true, spray: true, path: false, bloom: false, cone: false },
-      target: { scatter: false, spray: true, path: false, bloom: false, cone: false },
+      angle: { scatter: true, spray: true, path: false, spread: false, cone: false },
+      target: { scatter: false, spray: true, path: false, spread: false, cone: false },
     },
     platform: 'pc',
-    bloomPreset: 'growth',
+    spreadPreset: 'growth',
     // Transient: whether the custom shot-list popover is open.
-    bloomEditing: false,
+    spreadEditing: false,
     // 0% means no compensation, so the slider is the whole control.
     compensationLevel: 0,
     refSeed: 0,
@@ -198,6 +198,8 @@ const state = {
 };
 
 let dmgChart = null;
+// Held so the observer is not collected while it still has an observation.
+let plotResizeObserver = null;
 
 // ── SIM CONTEXT INIT ──────────────────────────────────────────────────────────
 
@@ -1055,9 +1057,9 @@ function renderBTK() {
   document.getElementById('btkArea').innerHTML = html;
 }
 
-// ── RECOIL / BLOOM ────────────────────────────────────────────────────────────
+// ── RECOIL / SPREAD ────────────────────────────────────────────────────────────
 
-function parseBloomBulletSpec(spec, shotCount) {
+function parseSpreadBulletSpec(spec, shotCount) {
   const text = spec.trim().toLowerCase();
   if (!text) return [];
   if (text === 'all') return Array.from({ length: shotCount }, (_, i) => i + 1);
@@ -1089,24 +1091,24 @@ function parseBloomBulletSpec(spec, shotCount) {
  * geometrically — dense early, sparse across the plateau — and adapts to
  * whatever burst length is set rather than assuming 20.
  */
-function bloomGrowthCurve(shotCount) {
+function spreadGrowthCurve(shotCount) {
   if (shotCount < 2) return [];
   const out = [];
   for (let v = 2; v < shotCount; v = Math.max(v + 1, Math.round(v * 1.6))) out.push(v);
   out.push(shotCount);
   return out;
 }
-function bloomPresetShots(preset, shotCount) {
+function spreadPresetShots(preset, shotCount) {
   switch (preset) {
     case 'all':    return Array.from({ length: shotCount - 1 }, (_, i) => i + 2);
     case 'early':  return [2, 3, 4, 5, 6].filter(v => v <= shotCount);
-    case 'custom': return parseBloomBulletSpec(document.getElementById('rcBloomShotsInput')?.value ?? '', shotCount);
-    default:       return bloomGrowthCurve(shotCount);
+    case 'custom': return parseSpreadBulletSpec(document.getElementById('rcSpreadShotsInput')?.value ?? '', shotCount);
+    default:       return spreadGrowthCurve(shotCount);
   }
 }
-function getBloomBulletIdxs(N) {
-  const values = bloomPresetShots(state.recoil.bloomPreset, N);
-  const bullets = values.length ? values : bloomGrowthCurve(N);
+function getSpreadBulletIdxs(N) {
+  const values = spreadPresetShots(state.recoil.spreadPreset, N);
+  const bullets = values.length ? values : spreadGrowthCurve(N);
   return [...new Set(bullets)].map(v => v - 1);
 }
 function selectedRecoilShotCount() {
@@ -1141,7 +1143,7 @@ function toggleRecoilLayer(layer) {
   if (!(layer in state.recoil.layers)) return;
   state.recoil.layers[layer] = !state.recoil.layers[layer];
   const l = state.recoil.layers;
-  if (!l.scatter && !l.spray && !l.path && !l.bloom && !l.cone) l[layer] = true;
+  if (!l.scatter && !l.spray && !l.path && !l.spread && !l.cone) l[layer] = true;
   renderRecoil();
 }
 function setRecoilAim(aim) {
@@ -1270,11 +1272,11 @@ function computeTargetBaseFrame(weapons, shotCount) {
   let bottom = frame.bottomY;
   live.forEach(weapon => {
     const points = genRecoilPts(weapon, 0, shotCount);
-    const blooms = simulateBloom(weapon, shotCount);
+    const spreads = simulateSpread(weapon, shotCount);
     points.forEach((point, i) => {
-      const bloom = blooms[i] ?? spreadBounds(weapon)[0];
-      top = Math.max(top, cmAtDistance(point.y + bloom));
-      bottom = Math.min(bottom, cmAtDistance(point.y - bloom));
+      const spread = spreads[i] ?? spreadBounds(weapon)[0];
+      top = Math.max(top, cmAtDistance(point.y + spread));
+      bottom = Math.min(bottom, cmAtDistance(point.y - spread));
     });
   });
   const minSpan = frame.heightCm / TARGET_FRAME_FILL;
@@ -1323,9 +1325,15 @@ function recoilViewport() {
       yCenter: targetCenterY(ySpan) + state.recoil.distancePanY,
     };
   }
+  // Recoil runs vertically, so the degree scale drives the vertical span and
+  // the horizontal one follows the plot's shape. On a near-square plot this is
+  // what it always was; in a wide popout it shows more sideways instead of
+  // stretching the pattern.
+  const { PW, PH } = plotBox();
+  const ySpan = state.recoil.scaleH * 2;
   return {
-    xSpan: state.recoil.scaleH * 2,
-    ySpan: state.recoil.scaleH * 2,
+    xSpan: ySpan * (PW / PH),
+    ySpan,
     xCenter: state.recoil.panX,
     yCenter: state.recoil.scaleH - 1 + state.recoil.panY,
   };
@@ -1464,7 +1472,23 @@ function selectedEffectiveSpreadMax(w) {
 }
 function selectedRecoilDirectionFor(w) { return recoilGroup(w).dir ?? w.recoilDir ?? 0; }
 
+/**
+ * Match the backing store to the rendered size so the plot stays crisp as its
+ * column grows, rather than upscaling a fixed 430px bitmap.
+ */
+function syncPlotCanvasSize(canvas) {
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width) return;
+  const w = Math.max(240, Math.round(rect.width));
+  const h = Math.max(240, Math.round(rect.height || rect.width));
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+  }
+}
+
 function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
+  syncPlotCanvasSize(canvas);
   const ctx = canvas.getContext('2d');
   const CW = canvas.width, CH = canvas.height;
   const PL = PLOT_PAD.l, PR = PLOT_PAD.r, PT = PLOT_PAD.t, PB = PLOT_PAD.b;
@@ -1523,7 +1547,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
 
   const cols = ['#c9a227', '#4d94d0'];
   const drawOrder = [weapon1, weapon2].filter(Boolean);
-  const spreadBubbleIdxs = getBloomBulletIdxs(N);
+  const spreadBubbleIdxs = getSpreadBulletIdxs(N);
   const targetHitTest = isTargetView ? drawTarget(ctx, mapX, mapY) : null;
   const pxPerCm = isTargetView ? PW / (xMax - xMin) : 0;
   const sprayDotRadius = isTargetView ? targetMarkerRadius(pxPerCm) : 2.5;
@@ -1533,13 +1557,13 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   // Pass 0 — Scatter cloud
   if (layers.scatter) drawOrder.forEach(w => {
     const col = cols[w === weapon1 ? 0 : 1];
-    const blooms = simulateBloom(w, N);
+    const spreads = simulateSpread(w, N);
     for (let s = 1; s <= CLOUD_RUNS; s++) {
       const recoilPts = genRecoilPts(w, s * 0x9e3779b9, N);
       const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
       recoilPts.forEach((p, i) => {
-        const bloom = blooms[i] ?? spreadBounds(w)[0];
-        const bAng = rngB() * Math.PI * 2, bR = bloom * rngB();
+        const spread = spreads[i] ?? spreadBounds(w)[0];
+        const bAng = rngB() * Math.PI * 2, bR = spread * rngB();
         ctx.beginPath();
         ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(p.y + bR * Math.sin(bAng)), scatterDotRadius, 0, Math.PI * 2);
         ctx.fillStyle = col + '38'; ctx.fill();
@@ -1547,18 +1571,18 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     }
   });
 
-  // Pass 1 — Reference run with bloom jitter + overlays
+  // Pass 1 — Reference run with spread jitter + overlays
   drawOrder.forEach(w => {
     const col = cols[w === weapon1 ? 0 : 1];
     const weaponRefSeed = refSeed >>> 0;
     const pts = genRecoilPts(w, weaponRefSeed, N);
-    const blooms = simulateBloom(w, N);
+    const spreads = simulateSpread(w, N);
 
     const sprayPts = (() => {
       const rngRef = mulberry32((whash(w.id) ^ weaponRefSeed ^ 0xdeadbeef) >>> 0);
       return pts.map((p, i) => {
-        const bloom = blooms[i] ?? spreadBounds(w)[0];
-        const bAng = rngRef() * Math.PI * 2, bR = bloom * rngRef();
+        const spread = spreads[i] ?? spreadBounds(w)[0];
+        const bAng = rngRef() * Math.PI * 2, bR = spread * rngRef();
         return { x: p.x + bR * Math.cos(bAng), y: p.y + bR * Math.sin(bAng) };
       });
     })();
@@ -1571,11 +1595,11 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       targetHits.push({ weapon: w, zones: sprayZones, hits: sprayZones.filter(Boolean).length, total: sprayPts.length });
     }
 
-    if (layers.bloom) {
+    if (layers.spread) {
       spreadBubbleIdxs.forEach(idx => {
         const p = pts[idx]; if (!p) return;
-        const bloom = blooms[idx] ?? spreadBounds(w)[0];
-        const x = toX(p.x), y = toY(p.y), r = Math.abs(toX(p.x + bloom) - x);
+        const spread = spreads[idx] ?? spreadBounds(w)[0];
+        const x = toX(p.x), y = toY(p.y), r = Math.abs(toX(p.x + spread) - x);
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fillStyle = col + '1a'; ctx.strokeStyle = col + 'aa'; ctx.lineWidth = 1.2;
         ctx.fill(); ctx.stroke();
@@ -1584,8 +1608,8 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
 
     if (layers.cone) {
       const coneCircles = pts.map((p, idx) => {
-        const bloom = blooms[idx] ?? spreadBounds(w)[0];
-        const x = toX(p.x), y = toY(p.y), r = Math.abs(toX(p.x + bloom) - x);
+        const spread = spreads[idx] ?? spreadBounds(w)[0];
+        const x = toX(p.x), y = toY(p.y), r = Math.abs(toX(p.x + spread) - x);
         return { x, y, r };
       }).filter(c => Number.isFinite(c.x) && Number.isFinite(c.y) && Number.isFinite(c.r) && c.r > 0.5);
       if (coneCircles.length) {
@@ -1838,9 +1862,9 @@ function renderRecoil() {
 
   const { aim, stance, layers, refSeed } = state.recoil;
   document.getElementById('rcModeScatter')?.classList.toggle('on', layers.scatter);
-  document.getElementById('rcModeBloom')?.classList.toggle('on', layers.spray);
+  document.getElementById('rcModeSpread')?.classList.toggle('on', layers.spray);
   document.getElementById('rcModePath')?.classList.toggle('on', layers.path);
-  document.getElementById('rcBloomToggleBtn')?.classList.toggle('on', layers.bloom);
+  document.getElementById('rcSpreadToggleBtn')?.classList.toggle('on', layers.spread);
   document.getElementById('rcConeToggleBtn')?.classList.toggle('on', layers.cone);
   document.getElementById('rcAimAds')?.classList.toggle('on', aim === 'ads');
   document.getElementById('rcAimHip')?.classList.toggle('on', aim === 'hip');
@@ -1895,26 +1919,28 @@ function renderRecoil() {
   document.getElementById('rcPlatformConsole')?.classList.toggle('on', state.recoil.platform === 'console');
   syncCompensationControls();
 
-  const bloomPreset = document.getElementById('rcBloomPreset');
-  const shotsInput = document.getElementById('rcBloomShotsInput');
-  if (bloomPreset) {
-    bloomPreset.value = state.recoil.bloomPreset;
-    bloomPreset.disabled = !layers.bloom;
+  const spreadPreset = document.getElementById('rcSpreadPreset');
+  const shotsInput = document.getElementById('rcSpreadShotsInput');
+  if (spreadPreset) {
+    spreadPreset.value = state.recoil.spreadPreset;
+    // Stays live while Bubbles is off — picking a preset is the natural way to
+    // turn them on — so it only dims rather than greying out of sight.
+    spreadPreset.classList.toggle('idle', !layers.spread);
     // Show the chosen shots on the option itself, so the list stays readable
     // once the editor has closed.
-    const customOpt = bloomPreset.querySelector('option[value="custom"]');
+    const customOpt = spreadPreset.querySelector('option[value="custom"]');
     if (customOpt) {
       const list = (shotsInput?.value ?? '').trim();
-      customOpt.textContent = state.recoil.bloomPreset === 'custom' && list ? `Custom: ${list}` : 'Custom…';
+      customOpt.textContent = state.recoil.spreadPreset === 'custom' && list ? `Custom: ${list}` : 'Custom…';
     }
   }
   // The freeform list is a popover, open only while being edited, so revealing
   // it never moves the buttons beside it.
   if (shotsInput) {
-    shotsInput.hidden = !(state.recoil.bloomPreset === 'custom' && state.recoil.bloomEditing);
-    shotsInput.disabled = !layers.bloom;
+    shotsInput.hidden = !(state.recoil.spreadPreset === 'custom' && state.recoil.spreadEditing);
+    shotsInput.classList.toggle('idle', !layers.spread);
   }
-  document.getElementById('rcShotsLabel')?.classList.toggle('rc-shots-label--disabled', !layers.bloom);
+  document.getElementById('rcShotsLabel')?.classList.toggle('rc-shots-label--disabled', !layers.spread);
 
   const axis = drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
   const noteEl = document.querySelector('.rc-note');
@@ -1924,13 +1950,13 @@ function renderRecoil() {
       layers.scatter ? 'scatter' : null,
       layers.spray   ? 'spray pattern' : null,
       layers.path    ? 'recoil path' : null,
-      layers.bloom   ? 'spread bubbles' : null,
+      layers.spread   ? 'spread bubbles' : null,
       layers.cone    ? 'cone' : null,
     ].filter(Boolean).join(' + ');
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
-    const bloomNote = layers.bloom ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
+    const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
-    const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${bloomNote}${coneNote}`;
+    const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (axis.isTargetView) {
       const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${wLabel(weapon)} ${hits}/${total}`).join(' · ');
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss. Colour is the weapon, and the per-zone breakdown is in the stats table.' : '';
@@ -2099,8 +2125,8 @@ function renderRecoil() {
       const mn1 = b1 ? b1[0] : null, mn2 = b2 ? b2[0] : null;
       const fmtR = (mn, mx) => mn != null && mx != null ? `${mn.toFixed(2)}° → ${mx.toFixed(2)}°` : null;
       const SAMPLE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-      const sim1 = w1 ? simulateBloom(w1, 15) : null;
-      const sim2 = w2 && state.comparing ? simulateBloom(w2, 15) : null;
+      const sim1 = w1 ? simulateSpread(w1, 15) : null;
+      const sim2 = w2 && state.comparing ? simulateSpread(w2, 15) : null;
       let tt = '';
       if (sim1 || sim2) {
         const aimLbl = aim === 'hip' ? 'Hipfire' : 'ADS';
@@ -2260,6 +2286,35 @@ function bindEvents() {
     btn._resetTimer = setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1600);
   });
 
+  // Pop the pattern into its own window, carrying the current loadout and view
+  // across in the hash so it opens on exactly what you were looking at.
+  document.getElementById('rcPopoutBtn')?.addEventListener('click', () => {
+    syncUrl();
+    const url = `${location.pathname}?popout=1${location.hash}`;
+    window.open(url, 'bf6-spray-popout', 'popup=yes,width=1100,height=900');
+  });
+
+  // Redraw when the plot column changes width, so a resize or a panel collapse
+  // rescales the pattern instead of leaving a stretched bitmap.
+  const plotCanvas = document.getElementById('rcMain');
+  let lastPlotSize = '';
+  const repaintIfResized = () => {
+    if (!plotCanvas) return;
+    const rect = plotCanvas.getBoundingClientRect();
+    const size = `${Math.round(rect.width)}x${Math.round(rect.height)}`;
+    if (!rect.width || size === lastPlotSize) return;
+    lastPlotSize = size;
+    renderRecoil();
+  };
+  if (plotCanvas && typeof ResizeObserver !== 'undefined') {
+    plotResizeObserver = new ResizeObserver(repaintIfResized);
+    plotResizeObserver.observe(plotCanvas);
+  }
+  // Belt and braces: a plain resize listener covers anything the observer
+  // misses, and both are debounced through the size check above.
+  window.addEventListener('resize', repaintIfResized);
+  requestAnimationFrame(repaintIfResized);
+
   // Panel collapse
   document.querySelectorAll('.panel-toggle[data-collapse]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2293,10 +2348,10 @@ function bindEvents() {
 
   // Recoil overlays
   document.getElementById('rcModeScatter').addEventListener('click', () => toggleRecoilLayer('scatter'));
-  document.getElementById('rcModeBloom').addEventListener('click', () => toggleRecoilLayer('spray'));
+  document.getElementById('rcModeSpread').addEventListener('click', () => toggleRecoilLayer('spray'));
   document.getElementById('rcModePath').addEventListener('click', () => toggleRecoilLayer('path'));
   document.getElementById('rcConeToggleBtn').addEventListener('click', () => toggleRecoilLayer('cone'));
-  document.getElementById('rcBloomToggleBtn').addEventListener('click', () => toggleRecoilLayer('bloom'));
+  document.getElementById('rcSpreadToggleBtn').addEventListener('click', () => toggleRecoilLayer('spread'));
 
   // Recoil canvas controls
   document.getElementById('rcZoomIn').addEventListener('click', () => adjustRecoilScale('in'));
@@ -2369,31 +2424,33 @@ function bindEvents() {
   }, { passive: false });
 
   // Inputs
-  const bloomPresetSel = document.getElementById('rcBloomPreset');
-  const bloomShotsInput = document.getElementById('rcBloomShotsInput');
-  const closeBloomEditor = () => {
-    if (!state.recoil.bloomEditing) return;
-    state.recoil.bloomEditing = false;
+  const spreadPresetSel = document.getElementById('rcSpreadPreset');
+  const spreadShotsInput = document.getElementById('rcSpreadShotsInput');
+  const closeSpreadEditor = () => {
+    if (!state.recoil.spreadEditing) return;
+    state.recoil.spreadEditing = false;
     renderRecoil();
   };
-  bloomPresetSel?.addEventListener('change', e => {
-    state.recoil.bloomPreset = e.target.value;
-    state.recoil.bloomEditing = state.recoil.bloomPreset === 'custom';
+  spreadPresetSel?.addEventListener('change', e => {
+    state.recoil.spreadPreset = e.target.value;
+    state.recoil.spreadEditing = state.recoil.spreadPreset === 'custom';
+    // Choosing which shots get bubbles implies wanting to see them.
+    if (!state.recoil.layers.spread) toggleRecoilLayer('spread');
     renderRecoil();
-    if (state.recoil.bloomEditing) bloomShotsInput?.focus();
+    if (state.recoil.spreadEditing) spreadShotsInput?.focus();
   });
   // Re-open the editor by clicking the menu again once Custom is already set.
-  bloomPresetSel?.addEventListener('click', () => {
-    if (state.recoil.bloomPreset !== 'custom' || state.recoil.bloomEditing) return;
-    state.recoil.bloomEditing = true;
+  spreadPresetSel?.addEventListener('click', () => {
+    if (state.recoil.spreadPreset !== 'custom' || state.recoil.spreadEditing) return;
+    state.recoil.spreadEditing = true;
     renderRecoil();
   });
-  bloomShotsInput?.addEventListener('input', renderRecoil);
-  bloomShotsInput?.addEventListener('blur', closeBloomEditor);
-  bloomShotsInput?.addEventListener('keydown', e => {
+  spreadShotsInput?.addEventListener('input', renderRecoil);
+  spreadShotsInput?.addEventListener('blur', closeSpreadEditor);
+  spreadShotsInput?.addEventListener('keydown', e => {
     if (e.key !== 'Enter' && e.key !== 'Escape') return;
     e.preventDefault();
-    bloomShotsInput.blur();
+    spreadShotsInput.blur();
   });
   document.getElementById('rcShotCountInput')?.addEventListener('change', syncRecoilShotCount);
   document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));
@@ -2404,6 +2461,11 @@ function bindEvents() {
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
+
+// Popout mode strips the dashboard down to the pattern and its controls.
+if (new URLSearchParams(location.search).get('popout') === '1') {
+  document.body.classList.add('is-popout');
+}
 
 _restoringUrl = true;
 restoreFromUrl();

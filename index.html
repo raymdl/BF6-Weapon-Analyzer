@@ -46,6 +46,23 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 #recoilPanel.is-collapsed .rc-groups,#recoilPanel.is-collapsed .rc-plot,
 #recoilPanel.is-collapsed #rcStats,#recoilPanel.is-collapsed #attStats{display:none}
 #recoilPanel.is-collapsed .rc-head{margin-bottom:0}
+.rc-popout-btn{margin-left:8px;padding:2px 8px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:3px;color:#6a9ec0;font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle}
+.rc-popout-btn:hover{border-color:var(--accent);color:var(--accent)}
+/* Popout: the pattern gets the whole window with its controls docked beside it,
+   and everything belonging to the dashboard is hidden. */
+body.is-popout header,body.is-popout .sidebar,body.is-popout .footer,
+body.is-popout .loadout-backdrop,body.is-popout #overviewPanel,body.is-popout #chartsPanel,
+body.is-popout .panel-toggle,body.is-popout .rc-popout-btn,body.is-popout #attStats{display:none}
+body.is-popout .main{padding:8px;gap:0}
+body.is-popout #recoilPanel{border:0;background:none;padding:0}
+body.is-popout .rc-layout{grid-template-columns:minmax(0,1fr) minmax(290px,360px);grid-template-rows:auto minmax(0,1fr);align-items:stretch;column-gap:12px;height:calc(100vh - 16px)}
+body.is-popout .rc-head{grid-column:1/-1}
+body.is-popout .rc-plot{display:flex;flex-direction:column;min-height:0}
+body.is-popout .rc-viewport{display:flex;flex-direction:column;min-height:0;flex:1}
+body.is-popout .rc-canvas-wrap{flex:1;min-height:0;position:relative}
+body.is-popout canvas.rcv{position:absolute;inset:0;aspect-ratio:auto;width:100%;height:100%}
+body.is-popout #rcStats{overflow-y:auto;min-height:0;max-height:100%}
+body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 /* Mobile tap tooltip */
 .m-tip{position:fixed;z-index:300;display:none;max-width:280px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-size:0.72rem;line-height:1.45;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.6);pointer-events:none}
 .m-tip.show{display:block}
@@ -73,7 +90,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .no-w{padding:10px 11px;color:var(--muted);font-size:0.78rem}
 .cmp-btn{margin:5px 11px;width:calc(100% - 22px);padding:4px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:0.78rem;transition:all .15s}
 .mode-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 8px;font-size:0.65rem;cursor:pointer;letter-spacing:.04em;transition:all .15s}
-.mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);font-weight:700}
+.mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
 .cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
 .cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
 .clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:3px;padding:2px 7px;font-size:0.62rem;letter-spacing:.04em;transition:all .15s}
@@ -124,9 +141,10 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:grid;grid-template-columns:432px repeat(2,minmax(260px,1fr));column-gap:14px;align-items:start;position:relative}
+.rc-layout{display:grid;grid-template-columns:minmax(432px,1.45fr) minmax(250px,1fr) minmax(250px,1fr);column-gap:14px;align-items:start;position:relative}
 .rc-head{grid-column:1/-1;margin-bottom:9px}
-.rc-plot{width:432px;flex:0 0 432px}
+/* Capped so an ultrawide window does not turn the plot into the whole page. */
+.rc-plot{min-width:0;max-width:620px}
 .rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
 .rc-head .ptitle{margin-bottom:0}
 .rc-title{grid-column:1 / -1;white-space:nowrap}
@@ -149,7 +167,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-shots-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:106px;outline:none}
 .rc-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:3px 5px;font:inherit;font-size:0.65rem;min-height:22px;cursor:pointer;outline:none;min-width:0}
 .rc-select:focus{border-color:var(--accent)}
-.rc-select:disabled{opacity:.35;cursor:not-allowed}
+.rc-select.idle{opacity:.62}
 .rc-select option{background:var(--bg2)}
 .rc-shots-input[hidden]{display:none}
 /* The custom shot list floats over the panel so revealing it never nudges the
@@ -162,7 +180,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .seg>.mode-btn{border:0;border-radius:0;background:transparent;padding:0 9px;min-height:20px}
 .seg>.mode-btn+.mode-btn{border-left:1px solid var(--border)}
 .seg>.mode-btn:hover:not(.on){background:rgba(255,255,255,.05);color:#c3cece}
-.seg>.mode-btn.on{background:var(--accent);color:#1a2020}
+.seg>.mode-btn.on{background:var(--accent);color:#1a2020;text-shadow:0 0 .45px currentColor}
 .rc-field{display:flex;align-items:center;gap:6px;min-width:0}
 .rc-field-lbl{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:#738383;white-space:nowrap;flex-shrink:0}
 .rc-range{-webkit-appearance:none;appearance:none;height:14px;flex:0 1 auto;background:transparent;outline:none;cursor:pointer;--fill:0%}
@@ -197,7 +215,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-comp-row .rc-comp-range{flex:0 0 62px}
 .rc-comp-row.idle .rc-field-lbl,.rc-comp-row.idle .rc-num{opacity:.6}
 .rc-shots-input:focus{border-color:var(--accent)}
-.rc-shots-input:disabled{opacity:0.35;cursor:not-allowed}
+.rc-shots-input.idle{opacity:0.62}
 .rc-shots-label--disabled{opacity:0.35}
 .rc-mode-btn{display:inline-flex;align-items:center;justify-content:center;min-height:22px;padding-block:0;padding-inline:7px;white-space:nowrap}
 /* Cursor states the mode: crosshair places an aim point, the hand pans. */
@@ -297,7 +315,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
 
 @media (max-width:1270px){
-  .rc-layout{grid-template-columns:minmax(340px,432px) minmax(0,1fr);row-gap:18px;column-gap:16px}
+  .rc-layout{grid-template-columns:minmax(340px,1.35fr) minmax(0,1fr);row-gap:18px;column-gap:16px}
   .att-stats{grid-column:1/-1;border-left:none;padding-left:0;align-self:auto}
   .att-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 }
@@ -359,7 +377,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
   .rc-title{white-space:normal}
   .rc-group{flex-basis:100%}
   .rc-stats{border-left:none;padding-left:0;align-self:auto}
-  .rc-plot{width:100%;flex-basis:auto;min-width:0}
+  .rc-plot{min-width:0}
   .rc-tab{flex:1 1 0;padding-inline:8px}
   .rc-viewbar .rc-range{flex:1 1 70px}
   .rc-hint{display:none}
@@ -471,7 +489,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
             <div class="ptitle rc-title">
               <button class="panel-toggle" data-collapse="recoil" type="button" aria-expanded="true" title="Collapse the recoil and spread pattern">▾</button>
               Recoil &amp; Spread Pattern (Simulated -
-              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"> Shots)</div>
+              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"> Shots)
+              <button class="rc-popout-btn" id="rcPopoutBtn" type="button" title="Open the pattern in its own window, sized to fill it">Pop Out &#8599;</button></div>
             <div class="rc-groups">
               <div class="rc-group">
                 <div class="rc-group-hd">Soldier Aim Controls</div>
@@ -516,7 +535,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                     <div class="rc-sub">Pattern</div>
                     <div class="rc-group-row">
                       <button class="mode-btn rc-mode-btn on" id="rcModeScatter" title="Show faded simulated scatter runs">Scatter</button>
-                      <button class="mode-btn rc-mode-btn on" id="rcModeBloom" title="Show the solid reference run dots">Spray Pattern</button>
+                      <button class="mode-btn rc-mode-btn on" id="rcModeSpread" title="Show the solid reference run dots">Spray Pattern</button>
                       <button class="mode-btn rc-mode-btn" id="rcModePath" title="Draw the recoil-only reference path">Recoil Path</button>
                     </div>
                   </div>
@@ -526,19 +545,19 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                     <div class="rc-sub">Spread</div>
                     <div class="rc-group-row">
                       <button class="mode-btn rc-mode-btn" id="rcConeToggleBtn" title="Show the spread envelope cone across all shots">Cone</button>
-                      <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" title="Show potential spread bubbles on selected shots">Bubbles</button>
+                      <button class="mode-btn rc-mode-btn" id="rcSpreadToggleBtn" title="Show potential spread bubbles on selected shots">Bubbles</button>
                     </div>
                   </div>
                   <div class="rc-pair rc-pair-grow">
                     <div class="rc-sub" id="rcShotsLabel">Bubbles On</div>
                     <div class="rc-group-row rc-group-row-grow rc-bubble-field">
-                      <select id="rcBloomPreset" class="rc-select" title="Which shots get a spread bubble. Shot 1 is skipped — it fires from resting spread, so it has no bubble to show.">
+                      <select id="rcSpreadPreset" class="rc-select" title="Which shots get a spread bubble. Shot 1 is skipped — it fires from resting spread, so it has no bubble to show.">
                         <option value="growth">Growth Curve</option>
                         <option value="early">Early Shots</option>
                         <option value="all">All Shots</option>
                         <option value="custom">Custom…</option>
                       </select>
-                      <input id="rcBloomShotsInput" class="rc-shots-input rc-custom-pop" type="text" value="2, 3, 5, 8, 13, 20" hidden aria-label="Custom shot numbers for spread bubbles" title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'. Press Enter or click away to close.">
+                      <input id="rcSpreadShotsInput" class="rc-shots-input rc-custom-pop" type="text" value="2, 3, 5, 8, 13, 20" hidden aria-label="Custom shot numbers for spread bubbles" title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'. Press Enter or click away to close.">
                     </div>
                   </div>
                 </div>

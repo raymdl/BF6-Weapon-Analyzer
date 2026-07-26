@@ -2,7 +2,7 @@
  * sim/core.js — Shared simulation math for BF6 Weapon Analyzer
  *
  * Contains all pure-math functions that were previously copy-pasted across
- * index.html, preview_bloom.html, and preview_distance.html.
+ * index.html, preview_spread.html, and preview_distance.html.
  *
  * Usage in each page's <script type="module">:
  *
@@ -11,7 +11,7 @@
  *     recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
  *     selectedRecoilAmountFor, selectedRecoilVariationFor,
  *     spreadBounds, spreadDynamics, selectedSpreadIncFor,
- *     simulateBloom, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
+ *     simulateSpread, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
  *   } from './sim/core.js';
  *
  *   // Call once on load (after JSON data is fetched):
@@ -32,7 +32,7 @@ let _ctx = {
   RECOIL_DEC:    {},
   RECOIL_DEC_EXP:{},
   RECOIL_DEC_TEXP:{},
-  compensationFn: () => 0,  // page provides; bloom stub returns 0
+  compensationFn: () => 0,  // page provides; spread stub returns 0
   platformRecoilMultFn: () => 1,
 };
 
@@ -168,7 +168,7 @@ export function spreadBounds(w) {
 }
 
 /**
- * Bloom spread dynamics for the current aim state.
+ * Spread spread dynamics for the current aim state.
  * For ADS, overrides `inc` with the weapon's recoilIncAds field so attachment
  * scaling of spread-per-shot is preserved.
  */
@@ -255,10 +255,10 @@ export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, d
 // ── SIMULATION ────────────────────────────────────────────────────────────────
 
 /**
- * Simulate bloom spread for `shotCount` shots.
+ * Simulate spread spread for `shotCount` shots.
  * Returns an array of per-shot pre-fire spread values in degrees.
  */
-export function simulateBloom(w, shotCount) {
+export function simulateSpread(w, shotCount) {
   const [baseline, sMax] = spreadBounds(w);
   const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return Array(shotCount).fill(baseline);

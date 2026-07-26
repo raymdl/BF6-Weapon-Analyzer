@@ -204,19 +204,19 @@
     display: flex;
     gap: 8px;
   }
-  .bloom-bullets-row {
+  .spread-bullets-row {
     align-items: center;
     display: flex;
     gap: 6px;
   }
-  .bloom-bullets-row.disabled {
+  .spread-bullets-row.disabled {
     opacity: 0.45;
     pointer-events: none;
   }
-  .bloom-bullets-input {
+  .spread-bullets-input {
     width: 122px;
   }
-  .bloom-shape-group button {
+  .spread-shape-group button {
     min-width: 76px;
   }
   .compact-input {
@@ -432,7 +432,7 @@
 </head>
 <body>
 <h1>Distance Spray Preview</h1>
-<p class="sub">Projects the existing recoil and bloom simulation from angular degrees onto a flat wall at selected distances. The dot positions are still produced by the same recoil and spread model; only the display unit changes to meters on the wall.</p>
+<p class="sub">Projects the existing recoil and spread simulation from angular degrees onto a flat wall at selected distances. The dot positions are still produced by the same recoil and spread model; only the display unit changes to meters on the wall.</p>
 <div id="loadError" class="error"></div>
 
 <div class="preview-layout">
@@ -463,15 +463,15 @@
   <span class="segmented mode-group">
     <button id="modeSpray" class="on" type="button" onclick="toggleViewLayer('spray')">Spray Pattern</button>
     <button id="modePath" type="button" onclick="toggleViewLayer('path')">Recoil Path</button>
-    <button id="modeBloom" type="button" onclick="toggleViewLayer('bloom')">Bloom Bubbles</button>
+    <button id="modeSpread" type="button" onclick="toggleViewLayer('spread')">Spread Bubbles</button>
   </span>
-  <span id="bloomBulletsRow" class="bloom-bullets-row">
-    <label for="bloomBulletsInput">Bubbles on Shots:</label>
-    <input id="bloomBulletsInput" class="bloom-bullets-input" type="text" value="1, 2, 3, 5, 8, 13, 20">
+  <span id="spreadBulletsRow" class="spread-bullets-row">
+    <label for="spreadBulletsInput">Bubbles on Shots:</label>
+    <input id="spreadBulletsInput" class="spread-bullets-input" type="text" value="1, 2, 3, 5, 8, 13, 20">
   </span>
-  <span id="bloomShapeGroup" class="segmented bloom-shape-group">
-    <button id="bloomIndividual" class="on" type="button" onclick="setBloomDisplayMode('individual')">Individual</button>
-    <button id="bloomOutline" type="button" onclick="setBloomDisplayMode('outline')">Outline</button>
+  <span id="spreadShapeGroup" class="segmented spread-shape-group">
+    <button id="spreadIndividual" class="on" type="button" onclick="setSpreadDisplayMode('individual')">Individual</button>
+    <button id="spreadOutline" type="button" onclick="setSpreadDisplayMode('outline')">Outline</button>
   </span>
   <span class="control-label">Target Aim:</span>
   <span class="segmented">
@@ -592,7 +592,7 @@ import {
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilVariationFor,
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
-  simulateBloom, genRecoilPts,
+  simulateSpread, genRecoilPts,
 } from './sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
 import { zoneMultiplierForWeapon } from './sim/damage.js';
@@ -643,8 +643,8 @@ setSimContext({
   platformRecoilMultFn: selectedPlatformRecoilMult,
 });
 let refSeed = 0;
-const viewLayers = { spray: true, path: false, bloom: false };
-let bloomDisplayMode = 'individual';
+const viewLayers = { spray: true, path: false, spread: false };
+let spreadDisplayMode = 'individual';
 let targetAimPoint = 'chest';
 let recoilControl = false;
 const DEFAULT_COMPENSATION = 85;
@@ -749,18 +749,18 @@ function niceGridStep(spanCm) {
 
 
 
-function projectedRun(w, distanceM, recoilSeed, bloomSeed, includeBloom = true) {
+function projectedRun(w, distanceM, recoilSeed, spreadSeed, includeSpread = true) {
   const shots = selectedShotCount();
   const pts = genRecoilPts(w, recoilSeed, shots);
-  const blooms = simulateBloom(w, shots);
-  const rng = mulberry32((whash(w.id) ^ bloomSeed ^ 0xdeadbeef) >>> 0);
+  const spreads = simulateSpread(w, shots);
+  const rng = mulberry32((whash(w.id) ^ spreadSeed ^ 0xdeadbeef) >>> 0);
   return pts.map((p, i) => {
     let xDeg = p.x;
     let yDeg = p.y;
-    if (includeBloom) {
-      const bloom = blooms[i] ?? spreadBounds(w)[0];
+    if (includeSpread) {
+      const spread = spreads[i] ?? spreadBounds(w)[0];
       const bAng = rng() * Math.PI * 2;
-      const bR = bloom * rng();
+      const bR = spread * rng();
       xDeg += bR * Math.cos(bAng);
       yDeg += bR * Math.sin(bAng);
     }
@@ -831,7 +831,7 @@ function drawWall(canvas, readout, distanceM, scaleEl) {
   const hitZones = primary.map(targetHitTest);
   const shotRadius = targetMarkerRadius(Math.abs(toX(1) - toX(0)));
 
-  if (viewLayers.bloom) drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM);
+  if (viewLayers.spread) drawSpreadBubbles(ctx, toX, toY, w, pathPts, distanceM);
 
   if (viewLayers.path) {
     ctx.beginPath();
@@ -887,13 +887,13 @@ function drawWall(canvas, readout, distanceM, scaleEl) {
 const ZONE_COLORS = TARGET_ZONE_COLORS;
 const MISS_COLOR = 'rgba(154,164,164,0.8)';
 
-function drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM) {
-  const blooms = simulateBloom(w, selectedShotCount());
-  if (bloomDisplayMode === 'outline') {
-    drawBloomEnvelope(ctx, toX, toY, w, pathPts, blooms, distanceM);
+function drawSpreadBubbles(ctx, toX, toY, w, pathPts, distanceM) {
+  const spreads = simulateSpread(w, selectedShotCount());
+  if (spreadDisplayMode === 'outline') {
+    drawSpreadEnvelope(ctx, toX, toY, w, pathPts, spreads, distanceM);
     return;
   }
-  const idxs = selectedBloomCircleIndexes();
+  const idxs = selectedSpreadCircleIndexes();
   ctx.save();
   ctx.fillStyle = 'rgba(201,162,39,0.08)';
   ctx.strokeStyle = 'rgba(201,162,39,0.42)';
@@ -901,7 +901,7 @@ function drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM) {
   idxs.forEach(idx => {
     const p = pathPts[idx];
     if (!p) return;
-    const radiusCm = cmAtDistance(blooms[idx] ?? spreadBounds(w)[0], distanceM);
+    const radiusCm = cmAtDistance(spreads[idx] ?? spreadBounds(w)[0], distanceM);
     const x = toX(p.xCm);
     const y = toY(p.yCm);
     const r = Math.abs(toX(p.xCm + radiusCm) - x);
@@ -913,9 +913,9 @@ function drawBloomBubbles(ctx, toX, toY, w, pathPts, distanceM) {
   ctx.restore();
 }
 
-function drawBloomEnvelope(ctx, toX, toY, w, pathPts, blooms, distanceM) {
+function drawSpreadEnvelope(ctx, toX, toY, w, pathPts, spreads, distanceM) {
   const circles = pathPts.map((p, idx) => {
-    const radiusCm = cmAtDistance(blooms[idx] ?? spreadBounds(w)[0], distanceM);
+    const radiusCm = cmAtDistance(spreads[idx] ?? spreadBounds(w)[0], distanceM);
     const x = toX(p.xCm);
     const y = toY(p.yCm);
     const r = Math.abs(toX(p.xCm + radiusCm) - x);
@@ -1023,16 +1023,16 @@ function drawBloomEnvelope(ctx, toX, toY, w, pathPts, blooms, distanceM) {
   ctx.restore();
 }
 
-function selectedBloomCircleIndexes() {
-  const input = document.getElementById('bloomBulletsInput');
+function selectedSpreadCircleIndexes() {
+  const input = document.getElementById('spreadBulletsInput');
   const shotCount = selectedShotCount();
   const fallback = [1, 2, 3, 5, 8, 13, 20];
-  const values = parseBloomBulletSpec(input?.value ?? '', shotCount);
+  const values = parseSpreadBulletSpec(input?.value ?? '', shotCount);
   const bullets = values.length ? values : fallback.filter(v => v <= shotCount);
   return [...new Set(bullets)].map(v => v - 1);
 }
 
-function parseBloomBulletSpec(spec, shotCount) {
+function parseSpreadBulletSpec(spec, shotCount) {
   const text = spec.trim().toLowerCase();
   if (!text) return [];
   if (text === 'all') return range(1, shotCount);
@@ -1145,23 +1145,23 @@ function setStance(value) {
 
 function toggleViewLayer(layer) {
   viewLayers[layer] = !viewLayers[layer];
-  if (!viewLayers.spray && !viewLayers.path && !viewLayers.bloom) viewLayers[layer] = true;
+  if (!viewLayers.spray && !viewLayers.path && !viewLayers.spread) viewLayers[layer] = true;
   syncViewLayerButtons();
-  syncBloomBulletsControl();
+  syncSpreadBulletsControl();
   redraw();
 }
 
 function syncViewLayerButtons() {
   document.getElementById('modeSpray').classList.toggle('on', viewLayers.spray);
   document.getElementById('modePath').classList.toggle('on', viewLayers.path);
-  document.getElementById('modeBloom').classList.toggle('on', viewLayers.bloom);
+  document.getElementById('modeSpread').classList.toggle('on', viewLayers.spread);
 }
 
-function setBloomDisplayMode(value) {
-  bloomDisplayMode = value === 'outline' ? 'outline' : 'individual';
-  document.getElementById('bloomIndividual').classList.toggle('on', bloomDisplayMode === 'individual');
-  document.getElementById('bloomOutline').classList.toggle('on', bloomDisplayMode === 'outline');
-  syncBloomBulletsControl();
+function setSpreadDisplayMode(value) {
+  spreadDisplayMode = value === 'outline' ? 'outline' : 'individual';
+  document.getElementById('spreadIndividual').classList.toggle('on', spreadDisplayMode === 'individual');
+  document.getElementById('spreadOutline').classList.toggle('on', spreadDisplayMode === 'outline');
+  syncSpreadBulletsControl();
   redraw();
 }
 
@@ -1172,13 +1172,13 @@ function setTargetAimPoint(value) {
   redraw();
 }
 
-function syncBloomBulletsControl() {
-  const row = document.getElementById('bloomBulletsRow');
-  const input = document.getElementById('bloomBulletsInput');
-  const group = document.getElementById('bloomShapeGroup');
+function syncSpreadBulletsControl() {
+  const row = document.getElementById('spreadBulletsRow');
+  const input = document.getElementById('spreadBulletsInput');
+  const group = document.getElementById('spreadShapeGroup');
   if (!row || !input || !group) return;
-  const enabled = viewLayers.bloom;
-  const bulletsEnabled = enabled && bloomDisplayMode === 'individual';
+  const enabled = viewLayers.spread;
+  const bulletsEnabled = enabled && spreadDisplayMode === 'individual';
   group.classList.toggle('disabled', !enabled);
   row.classList.toggle('disabled', !bulletsEnabled);
   input.disabled = !bulletsEnabled;
@@ -1310,7 +1310,7 @@ function redraw() {
   const custom = customDistance();
   document.getElementById('customTitle').textContent = `${custom} m wall`;
   syncViewLayerButtons();
-  syncBloomBulletsControl();
+  syncSpreadBulletsControl();
   syncCompensationControls();
   updateLoadoutStats();
   drawWall(document.getElementById('wall10'), document.getElementById('read10'), 5, document.getElementById('scale10'));
@@ -1337,8 +1337,8 @@ async function init() {
 document.getElementById('distanceRange').addEventListener('input', syncDistanceFromRange);
 document.getElementById('distanceInput').addEventListener('change', syncDistanceFromInput);
 document.getElementById('shotCountInput').addEventListener('change', syncShotCount);
-document.getElementById('bloomBulletsInput').addEventListener('change', redraw);
-document.getElementById('bloomBulletsInput').addEventListener('input', redraw);
+document.getElementById('spreadBulletsInput').addEventListener('change', redraw);
+document.getElementById('spreadBulletsInput').addEventListener('input', redraw);
 document.getElementById('compensationInput').addEventListener('change', syncCompensationLevel);
 document.getElementById('compensationRange').addEventListener('input', syncCompensationFromRange);
 init();
@@ -1347,7 +1347,7 @@ whenTargetImageReady().then(redraw);
 // Bridge to window so inline onclick="…" attributes can resolve these (module scope is not global)
 Object.assign(window, {
   adjustPanelZoom, panPanelView, redrawRandom, resetPanelView,
-  setAim, setBloomDisplayMode, setPlatform, setRecoilControl, setStance, setTargetAimPoint, toggleViewLayer,
+  setAim, setSpreadDisplayMode, setPlatform, setRecoilControl, setStance, setTargetAimPoint, toggleViewLayer,
 });
 </script>
 <!-- Cloudflare Web Analytics -->

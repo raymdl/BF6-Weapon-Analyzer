@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bloom Bubble Placement Preview</title>
+<title>Spread Bubble Placement Preview</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -406,8 +406,8 @@
 </style>
 </head>
 <body>
-<h1>Bloom Bubble Placement Preview</h1>
-<p class="sub">Compare three bubble schedules side by side. Each panel draws the same recoil-only reference path over the same bloom cloud; only the selected bullet numbers with spread bubbles change.</p>
+<h1>Spread Bubble Placement Preview</h1>
+<p class="sub">Compare three bubble schedules side by side. Each panel draws the same recoil-only reference path over the same spread cloud; only the selected bullet numbers with spread bubbles change.</p>
 <div id="loadError" class="error"></div>
 
 <div class="preview-layout">
@@ -452,7 +452,7 @@
 <div class="panels">
   <section class="panel" data-panel="0">
     <div class="panel-title">Approach A - Sparse</div>
-    <div class="panel-desc">A low-clutter read: enough checkpoints to see early, mid, and late bloom growth.</div>
+    <div class="panel-desc">A low-clutter read: enough checkpoints to see early, mid, and late spread growth.</div>
     <div class="bubble-row">
       <input class="bubble-input" id="bubbleA" value="1, 2, 3, 10, 20" aria-label="Approach A bubble bullets">
       <div class="preset-row">
@@ -508,7 +508,7 @@
 
   <section class="panel" data-panel="2">
     <div class="panel-title">Approach C - Dense</div>
-    <div class="panel-desc">More diagnostic: shows bloom growth cadence clearly, with a higher chance of visual clutter.</div>
+    <div class="panel-desc">More diagnostic: shows spread growth cadence clearly, with a higher chance of visual clutter.</div>
     <div class="bubble-row">
       <input class="bubble-input" id="bubbleC" value="2, 4, 6, 8, 10, 12, 14, 16, 18, 20" aria-label="Approach C bubble bullets">
       <div class="preset-row">
@@ -561,7 +561,7 @@ import {
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilVariationFor,
   spreadBounds, spreadDynamics, selectedSpreadIncFor,
-  simulateBloom, genRecoilPts,
+  simulateSpread, genRecoilPts,
 } from './sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from './sim/applyAttachments.js';
 import * as Loadout from './sim/loadout.js';
@@ -726,7 +726,7 @@ const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle'
 
 
 
-// preview_bloom has no recoil-control UI; gating still lives in the helper for symmetry with index.html.
+// preview_spread has no recoil-control UI; gating still lives in the helper for symmetry with index.html.
 
 
 
@@ -828,7 +828,7 @@ function drawPanel(canvas, readout, w, bulletNums) {
   const c = makeCoord(canvas);
   const ctx = drawBase(canvas, c);
   const { PL, PT, PW, PH, toX, toY } = c;
-  const blooms = simulateBloom(w, shotCount);
+  const spreads = simulateSpread(w, shotCount);
 
   ctx.save();
   ctx.beginPath();
@@ -839,9 +839,9 @@ function drawPanel(canvas, readout, w, bulletNums) {
     const recoilPts = genRecoilPts(w, s * 0x9e3779b9, shotCount);
     const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
     recoilPts.forEach((p, i) => {
-      const bloom = blooms[i] ?? spreadBounds(w)[0];
+      const spread = spreads[i] ?? spreadBounds(w)[0];
       const bAng = rngB() * Math.PI * 2;
-      const bR = bloom * rngB();
+      const bR = spread * rngB();
       ctx.beginPath();
       ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(p.y + bR * Math.sin(bAng)), 2, 0, Math.PI * 2);
       ctx.fillStyle = COL + '38';
@@ -855,9 +855,9 @@ function drawPanel(canvas, readout, w, bulletNums) {
   bubbleIdxs.forEach(idx => {
     const p = pts[idx];
     if (!p) return;
-    const bloom = blooms[idx] ?? spreadBounds(w)[0];
+    const spread = spreads[idx] ?? spreadBounds(w)[0];
     const x = toX(p.x), y = toY(p.y);
-    const r = Math.abs(toX(p.x + bloom) - x);
+    const r = Math.abs(toX(p.x + spread) - x);
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
     ctx.fillStyle = COL + '1a';
@@ -888,7 +888,7 @@ function drawPanel(canvas, readout, w, bulletNums) {
 
   ctx.restore();
 
-  const spreadText = bulletNums.map(n => `${n}: ${(blooms[n - 1] ?? spreadBounds(w)[0]).toFixed(2)} deg`).join('  ');
+  const spreadText = bulletNums.map(n => `${n}: ${(spreads[n - 1] ?? spreadBounds(w)[0]).toFixed(2)} deg`).join('  ');
   readout.textContent = bulletNums.length ? spreadText : 'No bubble bullets selected.';
 }
 
@@ -896,7 +896,7 @@ function renderBulletTable(w) {
   const tbody = document.getElementById('bulletTable');
   const shotCount = selectedShotCount();
   const pts = genRecoilPts(w, refSeed, shotCount);
-  const blooms = simulateBloom(w, shotCount);
+  const spreads = simulateSpread(w, shotCount);
   const fmtStat = (value, prev) => {
     const delta = prev == null ? null : value - prev;
     const deltaClass = delta == null ? '' : delta > 0.004 ? ' up' : delta < -0.004 ? ' down' : '';
@@ -907,8 +907,8 @@ function renderBulletTable(w) {
     const prev = i > 0 ? pts[i - 1] : null;
     const total = Math.hypot(p.x, p.y);
     const prevTotal = prev ? Math.hypot(prev.x, prev.y) : null;
-    const spread = blooms[i] ?? spreadBounds(w)[0];
-    const prevSpread = i > 0 ? (blooms[i - 1] ?? spreadBounds(w)[0]) : null;
+    const spread = spreads[i] ?? spreadBounds(w)[0];
+    const prevSpread = i > 0 ? (spreads[i - 1] ?? spreadBounds(w)[0]) : null;
     return `<tr>
       <td>${i + 1}</td>
       <td>${fmtStat(p.x, prev?.x ?? null)}</td>
