@@ -102,7 +102,7 @@ const RECOIL_PAN_STEP = 0.5;
 // The target view frames the soldier and the projected pattern together. The
 // figure fills most of the plot at close range and shrinks only as far as it
 // must to keep a long-range pattern in shot, so the growing spread is legible
-// against a body that stays recognisable.
+// against a body that stays recognizable.
 const TARGET_FRAME_FILL = 0.72;
 const TARGET_FRAME_MIN_FILL = 0.22;
 // Target-view zoom is expressed as real optic magnification. A 1x sight is
@@ -114,7 +114,6 @@ const ADS_1X_VFOV_DEG = 40;
 const SCOPE_MAGNIFICATIONS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12, 16, 20];
 const PLOT_PAD = { l: 28, r: 8, t: 8, b: 18 };
 const CLOUD_RUNS = 10;
-const BLOOM_FALLBACK_SHOTS = [1, 2, 3, 5, 8, 13, 20];
 const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
 const SPREAD_BAR_SCALE = 9.1;
 const RECOIL_BAR_SCALE = 3;
@@ -183,6 +182,7 @@ const state = {
       target: { scatter: false, spray: true, path: false, bloom: false, cone: false },
     },
     platform: 'pc',
+    bloomPreset: 'growth',
     // 0% means no compensation, so the slider is the whole control.
     compensationLevel: 0,
     refSeed: 0,
@@ -264,7 +264,7 @@ function btkRanges(w1, w2) {
   if (cls.includes('DMR'))          return [0, 15, 30, 50, 75, 100];
   if (cls.every(c => c === 'Shotgun')) return [0, 5, 10, 15, 20, 25, 30];
   if (cls.includes('Shotgun'))      return [0, 5, 10, 15, 20, 25, 30, 50, 75];
-  return [0, 10, 20, 30, 40, 50, 75];
+  return [0, 10, 20, 30, 40, 50, 60, 70, 80];
 }
 
 // ── LOADOUT HELPERS ───────────────────────────────────────────────────────────
@@ -454,8 +454,6 @@ function restoreFromUrl() {
     const c = Math.max(1, Math.min(100, sh));
     const input = document.getElementById('rcShotCountInput');
     if (input) input.value = c;
-    const titleCount = document.getElementById('rcShotTitleCount');
-    if (titleCount) titleCount.textContent = c;
   }
   applyChartStateToDom();
 }
@@ -698,7 +696,7 @@ function renderOverview() {
     return `<div class="scmp"><div class="scmp-row"><span class="sval c1">${v1 != null ? f.fmt(v1) : '—'}<span class="sunit">${f.unit}</span>${est1 ? '<span class="sest">est</span>' : ''}</span></div><div class="scmp-row"><span class="sval c2">${v2 != null ? f.fmt(v2) : '—'}<span class="sunit">${f.unit}</span>${est2 ? '<span class="sest">est</span>' : ''}</span>${diff}</div></div>`;
   };
 
-  // Group the stat cards into labelled, colour-accented sections for scannability.
+  // Group the stat cards into labeled, color-accented sections for scannability.
   const SEC_OF = {
     'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
     'Pellets': 'combat', 'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
@@ -860,12 +858,13 @@ function renderChart() {
         layout: { padding: { bottom: 0 } },
         plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, filter: i => !i.dataset.isBaseline && !i.dataset.isBand, callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
+          // Bullet view: bullet counts only, no timings.
           label: i => {
             const w = i.dataset._weapon;
             const chest = i.raw;
             const limb = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
-            if (limb === chest) return `${w.name}: ${chest} BTK (${fmtTTK(getTTK(w, chest))})`;
-            return `${w.name}: ${chest}–${limb} BTK chest–limbs (${fmtTTK(getTTK(w, chest))}–${fmtTTK(getTTK(w, limb))})`;
+            if (limb === chest) return `${w.name}: ${chest} BTK`;
+            return `${w.name}: ${chest}–${limb} BTK chest–limbs`;
           },
         } } },
         scales: {
@@ -907,16 +906,16 @@ function renderChart() {
         layout: { padding: { bottom: 0 } },
         plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, filter: i => !i.dataset.isBand, callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
+          // Time view: timings only, no bullet counts.
           label: i => {
             const w = i.dataset._weapon;
             const btk = getBTKWithHits(w, i.dataIndex, btkHS);
             const limbBtk = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
             if (limbBtk !== btk) {
-              return `${w.name}: ${fmtTTK(i.raw)}–${fmtTTK(ttkAt(w, i.dataIndex, limbMult(w)))} (${btk}–${limbBtk} BTK chest–limbs)`;
+              return `${w.name}: ${fmtTTK(i.raw)}–${fmtTTK(ttkAt(w, i.dataIndex, limbMult(w)))} chest–limbs`;
             }
-            const ttk = getTTK(w, btk);
-            if (showAds && w._adsTimeMs) return `${w.name}: ${fmtTTK(i.raw)} (${fmtTTK(ttk)} TTK + ${w._adsTimeMs}ms ADS)`;
-            return `${w.name}: ${fmtTTK(i.raw)} (${btk} BTK)`;
+            if (showAds && w._adsTimeMs) return `${w.name}: ${fmtTTK(i.raw)} incl. ${w._adsTimeMs}ms ADS`;
+            return `${w.name}: ${fmtTTK(i.raw)}`;
           },
         } } },
         scales: {
@@ -979,13 +978,14 @@ function renderChart() {
         filter: i => !i.dataset.isBand && !i.dataset.isBaseline,
         callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
+          // Damage view: damage only. Bullet and time counts live in their own views.
           label: i => {
             const r = i.dataIndex; const w = i.dataset._weapon;
             const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
-            const line = `${w.name}: ${d.toFixed(1)} dmg (${getBTKWithHits(w, r)} BTK)`;
+            const line = `${w.name}: ${d.toFixed(1)} dmg`;
             if (limbMult(w) === 1) return line;
             const dl = d * limbMult(w), dh = d * (w._hsMult ?? 1.34);
-            return [line, `  stomach/limbs ${dl.toFixed(1)} (${getBTKWithHits(w, r, 0, limbMult(w))} BTK) · head ${Math.min(100, dh).toFixed(1)}`];
+            return [line, `  limbs ${dl.toFixed(1)} · head ${Math.min(100, dh).toFixed(1)}`];
           },
         },
       } },
@@ -1056,10 +1056,31 @@ function parseBloomBulletSpec(spec, shotCount) {
   });
   return out.filter(v => v >= 1 && v <= shotCount);
 }
+/**
+ * Bubble sample points. Shot 1 is always skipped: it fires from the resting
+ * spread, so its bubble is a dot. Spread then climbs fast over the next few
+ * shots before flattening at the effective maximum, so the default samples
+ * geometrically — dense early, sparse across the plateau — and adapts to
+ * whatever burst length is set rather than assuming 20.
+ */
+function bloomGrowthCurve(shotCount) {
+  if (shotCount < 2) return [];
+  const out = [];
+  for (let v = 2; v < shotCount; v = Math.max(v + 1, Math.round(v * 1.6))) out.push(v);
+  out.push(shotCount);
+  return out;
+}
+function bloomPresetShots(preset, shotCount) {
+  switch (preset) {
+    case 'all':    return Array.from({ length: shotCount - 1 }, (_, i) => i + 2);
+    case 'early':  return [2, 3, 4, 5, 6].filter(v => v <= shotCount);
+    case 'custom': return parseBloomBulletSpec(document.getElementById('rcBloomShotsInput')?.value ?? '', shotCount);
+    default:       return bloomGrowthCurve(shotCount);
+  }
+}
 function getBloomBulletIdxs(N) {
-  const input = document.getElementById('rcBloomShotsInput');
-  const values = parseBloomBulletSpec(input?.value ?? '', N);
-  const bullets = values.length ? values : BLOOM_FALLBACK_SHOTS.filter(v => v <= N);
+  const values = bloomPresetShots(state.recoil.bloomPreset, N);
+  const bullets = values.length ? values : bloomGrowthCurve(N);
   return [...new Set(bullets)].map(v => v - 1);
 }
 function selectedRecoilShotCount() {
@@ -1070,8 +1091,6 @@ function syncRecoilShotCount() {
   const count = selectedRecoilShotCount();
   const input = document.getElementById('rcShotCountInput');
   if (input) input.value = count;
-  const titleCount = document.getElementById('rcShotTitleCount');
-  if (titleCount) titleCount.textContent = count;
   renderRecoil();
 }
 
@@ -1132,18 +1151,18 @@ function setRecoilView(view) {
   });
   renderRecoil();
 }
-function resetTargetAim() {
-  state.recoil.targetAim = 'chest';
+/**
+ * Ctrl+click mirrors what the player actually does: point somewhere and fire a
+ * fresh burst. So it both places the aim point and rolls a new spray sample.
+ */
+function fireAtAimPoint(worldX, worldY) {
+  state.recoil.customAim = { x: worldX, y: worldY };
+  state.recoil.targetAim = 'custom';
+  state.recoil.refSeed = (Math.random() * 0x100000000) >>> 0;
   renderRecoil();
 }
 function currentAimOffset() {
   return targetAimOffset(state.recoil.targetAim, state.recoil.customAim);
-}
-/** Drop the aim point at a plot position, in world centimetres. */
-function setCustomAimAt(worldX, worldY) {
-  state.recoil.customAim = { x: worldX, y: worldY };
-  state.recoil.targetAim = 'custom';
-  renderRecoil();
 }
 function canvasToWorld(clientX, clientY, canvas) {
   const rect = canvas.getBoundingClientRect();
@@ -1194,14 +1213,6 @@ function setRecoilPlatform(platform) {
   state.recoil.platform = platform === 'console' ? 'console' : 'pc';
   renderRecoil();
 }
-function randomizeRecoilReference() {
-  state.recoil.refSeed = (Math.random() * 0x100000000) >>> 0;
-  renderRecoil();
-}
-function resetRecoilReference() {
-  state.recoil.refSeed = 0;
-  renderRecoil();
-}
 function cmAtDistance(angleDeg, distanceM = state.recoil.distance) {
   return Math.tan(angleDeg * Math.PI / 180) * distanceM * 100;
 }
@@ -1220,10 +1231,11 @@ let targetBaseFrameKey = '';
 
 function computeTargetBaseFrame(weapons, shotCount) {
   const live = weapons.filter(Boolean);
-  // Only the loadout, burst length and range refit the view. Stance, input
-  // device and the recoil-control slider deliberately do not: dragging a
-  // slider must not make the chart lurch under the pointer.
-  const key = [live.map(w => w.id).join('+'), shotCount, state.recoil.distance].join('|');
+  // Only the loadout and range refit the view. Shot count, stance, input device
+  // and the recoil-control slider deliberately do not: changing a control must
+  // not make the chart lurch. A longer burst simply runs off frame until the
+  // user asks for a refit.
+  const key = [live.map(w => w.id).join('+'), state.recoil.distance].join('|');
   if (key === targetBaseFrameKey && targetBaseFrame) return;
   targetBaseFrameKey = key;
 
@@ -1248,7 +1260,7 @@ function computeTargetBaseFrame(weapons, shotCount) {
 }
 
 /**
- * Where to centre the plot for a given field of view. A wide field drifts up
+ * Where to center the plot for a given field of view. A wide field drifts up
  * toward the pattern; a tight one pins to the figure so zooming in never
  * climbs off into empty sky above the soldier's head.
  */
@@ -1306,11 +1318,16 @@ function adjustRecoilScale(dir) {
   }
   renderRecoil();
 }
+/** The one reset: framing back to the fit, aim back to center chest, and the
+ *  original deterministic spray sample. */
 function resetRecoilView() {
+  state.recoil.refSeed = 0;
   if (state.recoil.view === 'target') {
     state.recoil.magnification = null;
     state.recoil.distancePanX = 0;
     state.recoil.distancePanY = 0;
+    state.recoil.targetAim = 'chest';
+    state.recoil.customAim = { x: 0, y: 0 };
     renderRecoil();
     return;
   }
@@ -1784,8 +1801,6 @@ function renderRecoil() {
   const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
   const w2 = state.comparing && state.slots[1].weapon ? applyAttachments(state.slots[1].weapon, state.slots[1].atts) : null;
   const shotCount = selectedRecoilShotCount();
-  const titleCount = document.getElementById('rcShotTitleCount');
-  if (titleCount) titleCount.textContent = shotCount;
   // The base frame feeds the auto magnification, so it has to settle before
   // any of the control read-outs are written.
   if (state.recoil.view === 'target') computeTargetBaseFrame([w1, w2], shotCount);
@@ -1819,7 +1834,7 @@ function renderRecoil() {
   const hint = document.getElementById('rcHint');
   if (hint) {
     hint.textContent = isTarget
-      ? 'Ctrl + click to aim · Shift + drag to pan · Shift + scroll to zoom'
+      ? 'Ctrl + click to aim and fire · Shift + drag to pan · Shift + scroll to zoom'
       : 'Shift + drag to pan · Shift + scroll to zoom';
   }
   const aimReadout = document.getElementById('rcAimReadout');
@@ -1828,10 +1843,9 @@ function renderRecoil() {
   if (aimText) {
     const offset = currentAimOffset();
     aimText.textContent = state.recoil.targetAim === 'chest'
-      ? 'Aim: centre chest'
+      ? 'Aim: center chest'
       : `Aim: ${(offset.x / 100).toFixed(2)} m, ${(offset.y / 100).toFixed(2)} m`;
   }
-  document.getElementById('rcAimReset').hidden = state.recoil.targetAim === 'chest';
   const distanceRange = document.getElementById('rcDistanceRange');
   const distanceInput = document.getElementById('rcDistanceInput');
   if (distanceRange) { distanceRange.value = Math.max(5, state.recoil.distance); paintRange(distanceRange); }
@@ -1855,8 +1869,15 @@ function renderRecoil() {
   document.getElementById('rcPlatformConsole')?.classList.toggle('on', state.recoil.platform === 'console');
   syncCompensationControls();
 
+  const bloomPreset = document.getElementById('rcBloomPreset');
   const shotsInput = document.getElementById('rcBloomShotsInput');
-  if (shotsInput) shotsInput.disabled = !layers.bloom;
+  if (bloomPreset) { bloomPreset.value = state.recoil.bloomPreset; bloomPreset.disabled = !layers.bloom; }
+  // The freeform list only surfaces for Custom, so the common cases stay a
+  // single menu pick instead of a syntax to learn.
+  if (shotsInput) {
+    shotsInput.hidden = state.recoil.bloomPreset !== 'custom';
+    shotsInput.disabled = !layers.bloom;
+  }
   document.getElementById('rcShotsLabel')?.classList.toggle('rc-shots-label--disabled', !layers.bloom);
 
   const axis = drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
@@ -2223,7 +2244,6 @@ function bindEvents() {
   document.getElementById('rcStanceMove').addEventListener('click', () => setRecoilStance('move'));
   document.getElementById('rcViewAngle').addEventListener('click', () => setRecoilView('angle'));
   document.getElementById('rcViewTarget').addEventListener('click', () => setRecoilView('target'));
-  document.getElementById('rcAimReset').addEventListener('click', resetTargetAim);
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
 
@@ -2235,8 +2255,6 @@ function bindEvents() {
   document.getElementById('rcBloomToggleBtn').addEventListener('click', () => toggleRecoilLayer('bloom'));
 
   // Recoil canvas controls
-  document.getElementById('rcResetRef').addEventListener('click', resetRecoilReference);
-  document.getElementById('rcRedrawRef').addEventListener('click', randomizeRecoilReference);
   document.getElementById('rcZoomIn').addEventListener('click', () => adjustRecoilScale('in'));
   document.getElementById('rcZoomOut').addEventListener('click', () => adjustRecoilScale('out'));
   document.getElementById('rcResetView').addEventListener('click', resetRecoilView);
@@ -2292,7 +2310,7 @@ function bindEvents() {
     if (e.type !== 'pointerup' || !wasClick || state.recoil.view !== 'target') return;
     if (!(e.ctrlKey || e.metaKey)) return;
     const world = canvasToWorld(e.clientX, e.clientY, recoilCanvas);
-    if (world) setCustomAimAt(world.x, world.y);
+    if (world) fireAtAimPoint(world.x, world.y);
   };
   recoilCanvas.addEventListener('pointerup', endRecoilDrag);
   recoilCanvas.addEventListener('pointercancel', endRecoilDrag);
@@ -2307,6 +2325,11 @@ function bindEvents() {
   }, { passive: false });
 
   // Inputs
+  document.getElementById('rcBloomPreset')?.addEventListener('change', e => {
+    state.recoil.bloomPreset = e.target.value;
+    renderRecoil();
+    if (state.recoil.bloomPreset === 'custom') document.getElementById('rcBloomShotsInput')?.focus();
+  });
   document.getElementById('rcBloomShotsInput')?.addEventListener('input', renderRecoil);
   document.getElementById('rcShotCountInput')?.addEventListener('change', syncRecoilShotCount);
   document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));

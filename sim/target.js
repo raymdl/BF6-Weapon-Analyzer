@@ -76,7 +76,7 @@ export function targetZoneAt(x, y) {
  * The figure is pinned to fixed world centimetres so that changing the aim
  * point slides the spray across a stationary soldier rather than dragging the
  * soldier around under a stationary spray. World y is screen-up, with zero at
- * the centre-chest aim point.
+ * the center-chest aim point.
  */
 export function targetFrame() {
   const topY = (TARGET_AIM_Y.chest / TARGET_VIEW_HEIGHT) * TARGET_HEIGHT_CM;

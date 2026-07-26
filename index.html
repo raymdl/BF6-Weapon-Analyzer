@@ -117,6 +117,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
 .rc-head .ptitle{margin-bottom:0}
 .rc-title{grid-column:1 / -1;white-space:nowrap}
+/* Shot count lives in the title it appears in, rather than a group of its own. */
+.rc-title-num{width:28px;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:1px 3px;font:inherit;font-size:.65rem;font-variant-numeric:tabular-nums;text-align:right;outline:none;vertical-align:baseline}
+.rc-title-num:focus{border-color:var(--accent)}
 .rc-groups{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
 .rc-group{flex:1 1 210px;min-width:0;border:1px solid #2c3636;border-radius:6px;padding:7px 9px 9px;background:#121717}
 /* A group with only a couple of controls hugs them instead of stretching. */
@@ -131,8 +134,11 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-sub{font-size:0.58rem;letter-spacing:.05em;text-transform:uppercase;color:#6f7e7e;flex-shrink:0;margin:0}
 .rc-group-row{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .rc-shots-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:106px;outline:none}
-.rc-shot-count-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:32px;outline:none}
-.rc-shot-count-input:focus{border-color:var(--accent)}
+.rc-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:3px 5px;font:inherit;font-size:0.65rem;min-height:22px;cursor:pointer;outline:none;min-width:0}
+.rc-select:focus{border-color:var(--accent)}
+.rc-select:disabled{opacity:.35;cursor:not-allowed}
+.rc-select option{background:var(--bg2)}
+.rc-shots-input[hidden]{display:none}
 /* Shared control primitives — one visual language for every toggle, slider and number field */
 .seg{display:inline-flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;background:var(--bg3);overflow:hidden;flex-shrink:0}
 /* Segmented and standalone toggles land on the same outer height (22px). */
@@ -158,7 +164,9 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 /* Chart viewport — tab strip, contextual bar and canvas read as one card */
 .rc-viewport{border:1px solid var(--border);border-radius:6px;background:#0b1010;overflow:hidden;min-width:0}
 .rc-tabstrip{display:flex;align-items:stretch;flex-wrap:wrap;background:#151b1b;border-bottom:1px solid var(--border)}
-.rc-tab{appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;color:#7f9090;font:inherit;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px 6px;cursor:pointer;white-space:nowrap;transition:color .13s,background .13s,border-color .13s}
+/* The label names what the tabs do; the tabs then split the rest of the strip. */
+.rc-tabstrip-lbl{display:flex;align-items:center;padding:0 11px;font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6f7e7e;border-right:1px solid var(--border);flex-shrink:0}
+.rc-tab{flex:1 1 0;appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;color:#7f9090;font:inherit;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px 6px;cursor:pointer;white-space:nowrap;transition:color .13s,background .13s,border-color .13s}
 .rc-tab:hover:not(.on){color:#cdd6d6;background:rgba(255,255,255,.035)}
 .rc-tab.on{color:var(--accent);background:#0b1010;border-bottom-color:var(--accent)}
 .rc-viewbar{display:flex;align-items:center;gap:7px 14px;flex-wrap:wrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
@@ -199,31 +207,31 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:0}
 .rc-stats-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:0}
 .rc-stats-head .ptitle{margin-bottom:0}
-.rc-stats-context{font-size:.56rem;color:#7d8c8c;letter-spacing:.03em;white-space:nowrap}
+.rc-stats-context{font-size:.62rem;color:#7d8c8c;letter-spacing:.03em;white-space:nowrap}
 @keyframes rcViewSwap{from{opacity:.25;transform:translateY(3px)}to{opacity:1;transform:none}}
 .rc-view-swap{animation:rcViewSwap .19s ease-out}
 @media (prefers-reduced-motion:reduce){.rc-view-swap{animation:none}}
-.target-impact-card{border:1px solid #2b3737;border-radius:5px;background:#101515;padding:6px 7px}
-.target-impact-weapon{font-size:.65rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.target-impact-card{border:1px solid #2b3737;border-radius:5px;background:#101515;padding:8px 10px}
+.target-impact-weapon{font-size:.78rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .target-impact-weapon.c1{color:var(--accent)}
 .target-impact-weapon.c2{color:var(--accent2)}
-.target-impact-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:5px;padding:4px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
+.target-impact-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:7px;padding:6px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
 .target-impact-summary>div{display:flex;align-items:baseline;gap:4px;min-width:0;padding:1px 6px;border-right:1px solid #263131;white-space:nowrap}
 .target-impact-summary>div:first-child{padding-left:1px}
 .target-impact-summary>div:last-child{padding-right:1px;border-right:0}
-.target-impact-summary span{font-size:.47rem;letter-spacing:.045em;text-transform:uppercase;color:#718080}
-.target-impact-summary strong{font-size:.64rem;color:#d4dddd;line-height:1}
+.target-impact-summary span{font-size:.56rem;letter-spacing:.045em;text-transform:uppercase;color:#718080}
+.target-impact-summary strong{font-size:.8rem;color:#d4dddd;line-height:1}
 .target-zone-mult{color:#7d8c8c;font-size:.92em;margin-left:2px}
-.target-impact-summary small{font-size:.47rem;color:#677575;overflow:hidden;text-overflow:ellipsis}
-.target-zone-table{width:100%;border-collapse:collapse;font-size:.58rem}
-.target-zone-table th,.target-zone-table td{padding:3px 3px;border-bottom:1px solid rgba(43,55,55,.75);text-align:right;white-space:nowrap}
+.target-impact-summary small{font-size:.56rem;color:#677575;overflow:hidden;text-overflow:ellipsis}
+.target-zone-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.target-zone-table th,.target-zone-table td{padding:5px 4px;border-bottom:1px solid rgba(43,55,55,.75);text-align:right;white-space:nowrap}
 .target-zone-table th:first-child{text-align:left}
-.target-zone-table thead th{font-size:.5rem;font-weight:500;letter-spacing:.045em;text-transform:uppercase;color:#718080}
+.target-zone-table thead th{font-size:.6rem;font-weight:500;letter-spacing:.045em;text-transform:uppercase;color:#718080}
 .target-zone-table tbody th{font-weight:500;color:#aab7b7}
 .target-zone-table tbody td{color:#c6d0d0}
 .target-zone-table tbody tr:last-child th,.target-zone-table tbody tr:last-child td{border-bottom:none}
-.target-impact-note{font-size:.5rem;line-height:1.35;color:#667474}
-/* Damage read-out colouring — after the base cell colours so it wins. */
+.target-impact-note{font-size:.6rem;line-height:1.4;color:#667474}
+/* Damage read-out coloring — after the base cell colors so it wins. */
 .target-zone-table tbody tr.no-hits th,.target-zone-table tbody tr.no-hits td{opacity:.5}
 .target-impact-summary strong.dmg-kill{color:var(--red)}
 .target-impact-summary strong.dmg-crit{color:var(--accent)}
@@ -441,7 +449,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
       <div class="panel">
         <div class="rc-layout">
           <div class="rc-head">
-            <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (Simulated - <span id="rcShotTitleCount">20</span> Shots)</div>
+            <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (Simulated -
+              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"> Shots)</div>
             <div class="rc-groups">
               <div class="rc-group">
                 <div class="rc-group-hd">Soldier Aim Controls</div>
@@ -479,24 +488,6 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                   </div>
                 </div>
               </div>
-              <div class="rc-group rc-group--compact">
-                <div class="rc-group-hd">Spray Simulation</div>
-                <div class="rc-subrow">
-                  <div class="rc-pair">
-                    <div class="rc-sub">Shots</div>
-                    <div class="rc-group-row">
-                      <input id="rcShotCountInput" class="rc-num rc-shot-count-input" type="text" inputmode="numeric" value="20" title="Number of shots to simulate">
-                    </div>
-                  </div>
-                  <div class="rc-pair">
-                    <div class="rc-sub">Sample Spray</div>
-                    <div class="rc-group-row">
-                      <button class="mode-btn rc-mode-btn" id="rcRedrawRef" title="Roll a new random spray sample. Zoom and pan are left alone.">Reroll</button>
-                      <button class="mode-btn rc-mode-btn" id="rcResetRef" title="Go back to the original deterministic spray sample">Reset</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div class="rc-group">
                 <div class="rc-group-hd">Chart Overlays</div>
                 <div class="rc-subrow">
@@ -520,7 +511,13 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                   <div class="rc-pair rc-pair-grow">
                     <div class="rc-sub" id="rcShotsLabel">On Rounds</div>
                     <div class="rc-group-row rc-group-row-grow">
-                      <input id="rcBloomShotsInput" class="rc-shots-input" type="text" value="1, 2, 3, 5, 8, 13, 20" title="Which bullets to show bloom bubbles on. Comma-separated, ranges (e.g. 1-5), 'all', or 'every N'">
+                      <select id="rcBloomPreset" class="rc-select" title="Which rounds get a bloom bubble. Shot 1 is skipped — it fires from resting spread, so it has no bubble to show.">
+                        <option value="growth">Growth Curve</option>
+                        <option value="early">Early Shots</option>
+                        <option value="all">All Shots</option>
+                        <option value="custom">Custom…</option>
+                      </select>
+                      <input id="rcBloomShotsInput" class="rc-shots-input" type="text" value="2, 3, 5, 8, 13, 20" hidden title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'">
                     </div>
                   </div>
                 </div>
@@ -530,6 +527,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
           <div class="rc-plot" id="rcPlotColumn">
             <div class="rc-viewport">
               <div class="rc-tabstrip" role="tablist" aria-label="Chart view">
+                <span class="rc-tabstrip-lbl" aria-hidden="true">View</span>
                 <button class="rc-tab on" id="rcViewAngle" type="button" role="tab" aria-selected="true" aria-controls="rcMain" title="Plot the pattern in angular degrees, independent of range">Angle Plot</button>
                 <button class="rc-tab" id="rcViewTarget" type="button" role="tab" aria-selected="false" aria-controls="rcMain" title="Project the same pattern onto a soldier-sized target at a chosen range">Soldier Target</button>
               </div>
@@ -550,16 +548,13 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                 <div class="rc-scale-controls">
                   <button class="rc-scale-btn" id="rcZoomOut" type="button" title="Zoom out"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
                   <button class="rc-scale-btn" id="rcZoomIn" type="button" title="Zoom in"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
-                  <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset zoom and position"><span class="rc-reset-icon">↺</span></button>
+                  <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample"><span class="rc-reset-icon">↺</span></button>
                 </div>
                 <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and bloom pattern plot. Use arrow keys to pan and plus or minus to zoom."></canvas>
               </div>
               <div class="rc-viewfoot">
                 <span class="rc-hint" id="rcHint">Shift + drag to pan · Shift + scroll to zoom</span>
-                <span class="rc-aim-readout" id="rcAimReadout" hidden>
-                  <span id="rcAimText">Aim: chest</span>
-                  <button class="rc-linkbtn" id="rcAimReset" type="button" title="Put the aim point back on centre chest">Reset</button>
-                </span>
+                <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText">Aim: center chest</span></span>
               </div>
             </div>
             <div class="rc-legend" id="rcLegend"></div>
