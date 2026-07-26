@@ -170,6 +170,9 @@ const state = {
     { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts() },
   ],
   comparing: false,
+  // Panels fold away so the page can be sized for a screenshot without giving
+  // up canvas space.
+  collapsed: { overview: false, charts: false, recoil: false },
   chart: { mode: 'dmg', btkHS: 0, showAds: false },
   recoil: {
     aim: 'ads', stance: 'stand',
@@ -183,6 +186,8 @@ const state = {
     },
     platform: 'pc',
     bloomPreset: 'growth',
+    // Transient: whether the custom shot-list popover is open.
+    bloomEditing: false,
     // 0% means no compensation, so the slider is the whole control.
     compensationLevel: 0,
     refSeed: 0,
@@ -413,6 +418,26 @@ function scheduleUrlSync() {
   _urlSyncTimer = setTimeout(syncUrl, 200);
 }
 
+const COLLAPSE_PANELS = { overview: 'overviewPanel', charts: 'chartsPanel', recoil: 'recoilPanel' };
+
+function applyCollapseToDom() {
+  Object.entries(COLLAPSE_PANELS).forEach(([key, id]) => {
+    const panel = document.getElementById(id);
+    const on = !!state.collapsed[key];
+    panel?.classList.toggle('is-collapsed', on);
+    const toggle = document.querySelector(`.panel-toggle[data-collapse="${key}"]`);
+    if (toggle) toggle.setAttribute('aria-expanded', String(!on));
+  });
+}
+function setPanelCollapsed(key, collapsed) {
+  if (!(key in state.collapsed)) return;
+  state.collapsed[key] = collapsed;
+  applyCollapseToDom();
+  scheduleUrlSync();
+  // Chart.js sizes to a hidden box as zero, so it needs a nudge on reveal.
+  if (key === 'charts' && !collapsed) dmgChart?.resize();
+}
+
 function applyChartStateToDom() {
   const { mode, btkHS, showAds } = state.chart;
   document.getElementById('modeDmg').classList.toggle('on', mode === 'dmg');
@@ -456,6 +481,7 @@ function restoreFromUrl() {
     if (input) input.value = c;
   }
   applyChartStateToDom();
+  applyCollapseToDom();
 }
 
 // ── SIDEBAR ───────────────────────────────────────────────────────────────────
@@ -1701,9 +1727,9 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.' },
     { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after ADS-only variation modifiers. Lower is more consistent.' },
     { lbl: 'ADS Recoil Recovery', val: adsRecoilDecay,                       unit: 'x',   dec: 2, higherBetter: true, tooltip: 'ADS recoil recovery/decay multiplier applied to the weapon recoil decay factor. Higher returns to center faster.' },
-    { lbl: 'ADS Spread/Shot',     val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS bloom/spread increase per shot after ADS-only spread modifiers. Lower builds bloom more slowly.' },
-    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS bloom/spread recovery per second while firing after muzzle effects. Higher clears bloom faster.' },
-    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire bloom/spread recovery per second while firing after light effects. Higher clears bloom faster.' },
+    { lbl: 'ADS Spread/Shot',     val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after ADS-only spread modifiers. Lower builds spread more slowly.' },
+    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle effects. Higher clears spread faster.' },
+    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing after light effects. Higher clears spread faster.' },
     { lbl: 'Mov Spread',          val: w => w._movingAdsMinSpreadDeg,        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
     { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
     { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes your 3D world position. None or shorter is better.' },
@@ -1871,11 +1897,21 @@ function renderRecoil() {
 
   const bloomPreset = document.getElementById('rcBloomPreset');
   const shotsInput = document.getElementById('rcBloomShotsInput');
-  if (bloomPreset) { bloomPreset.value = state.recoil.bloomPreset; bloomPreset.disabled = !layers.bloom; }
-  // The freeform list only surfaces for Custom, so the common cases stay a
-  // single menu pick instead of a syntax to learn.
+  if (bloomPreset) {
+    bloomPreset.value = state.recoil.bloomPreset;
+    bloomPreset.disabled = !layers.bloom;
+    // Show the chosen shots on the option itself, so the list stays readable
+    // once the editor has closed.
+    const customOpt = bloomPreset.querySelector('option[value="custom"]');
+    if (customOpt) {
+      const list = (shotsInput?.value ?? '').trim();
+      customOpt.textContent = state.recoil.bloomPreset === 'custom' && list ? `Custom: ${list}` : 'Custom…';
+    }
+  }
+  // The freeform list is a popover, open only while being edited, so revealing
+  // it never moves the buttons beside it.
   if (shotsInput) {
-    shotsInput.hidden = state.recoil.bloomPreset !== 'custom';
+    shotsInput.hidden = !(state.recoil.bloomPreset === 'custom' && state.recoil.bloomEditing);
     shotsInput.disabled = !layers.bloom;
   }
   document.getElementById('rcShotsLabel')?.classList.toggle('rc-shots-label--disabled', !layers.bloom);
@@ -1888,12 +1924,12 @@ function renderRecoil() {
       layers.scatter ? 'scatter' : null,
       layers.spray   ? 'spray pattern' : null,
       layers.path    ? 'recoil path' : null,
-      layers.bloom   ? 'bloom' : null,
+      layers.bloom   ? 'spread bubbles' : null,
       layers.cone    ? 'cone' : null,
     ].filter(Boolean).join(' + ');
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
-    const bloomNote = layers.bloom ? ` Bubbles = potential spread on bullets ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
-    const coneNote  = layers.cone  ? ' Cone = bloom envelope across all shots.' : '';
+    const bloomNote = layers.bloom ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
+    const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${bloomNote}${coneNote}`;
     if (axis.isTargetView) {
       const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${wLabel(weapon)} ${hits}/${total}`).join(' · ');
@@ -2224,6 +2260,14 @@ function bindEvents() {
     btn._resetTimer = setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1600);
   });
 
+  // Panel collapse
+  document.querySelectorAll('.panel-toggle[data-collapse]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.collapse;
+      setPanelCollapsed(key, !state.collapsed[key]);
+    });
+  });
+
   // Loadout overlay (responsive)
   document.getElementById('loadoutOpenBtn')?.addEventListener('click', () => setLoadoutOverlay(true));
   document.getElementById('loadoutCloseBtn')?.addEventListener('click', () => setLoadoutOverlay(false));
@@ -2325,12 +2369,32 @@ function bindEvents() {
   }, { passive: false });
 
   // Inputs
-  document.getElementById('rcBloomPreset')?.addEventListener('change', e => {
-    state.recoil.bloomPreset = e.target.value;
+  const bloomPresetSel = document.getElementById('rcBloomPreset');
+  const bloomShotsInput = document.getElementById('rcBloomShotsInput');
+  const closeBloomEditor = () => {
+    if (!state.recoil.bloomEditing) return;
+    state.recoil.bloomEditing = false;
     renderRecoil();
-    if (state.recoil.bloomPreset === 'custom') document.getElementById('rcBloomShotsInput')?.focus();
+  };
+  bloomPresetSel?.addEventListener('change', e => {
+    state.recoil.bloomPreset = e.target.value;
+    state.recoil.bloomEditing = state.recoil.bloomPreset === 'custom';
+    renderRecoil();
+    if (state.recoil.bloomEditing) bloomShotsInput?.focus();
   });
-  document.getElementById('rcBloomShotsInput')?.addEventListener('input', renderRecoil);
+  // Re-open the editor by clicking the menu again once Custom is already set.
+  bloomPresetSel?.addEventListener('click', () => {
+    if (state.recoil.bloomPreset !== 'custom' || state.recoil.bloomEditing) return;
+    state.recoil.bloomEditing = true;
+    renderRecoil();
+  });
+  bloomShotsInput?.addEventListener('input', renderRecoil);
+  bloomShotsInput?.addEventListener('blur', closeBloomEditor);
+  bloomShotsInput?.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== 'Escape') return;
+    e.preventDefault();
+    bloomShotsInput.blur();
+  });
   document.getElementById('rcShotCountInput')?.addEventListener('change', syncRecoilShotCount);
   document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));
   document.getElementById('rcCompRange')?.addEventListener('input', () => syncCompensationLevel('range'));

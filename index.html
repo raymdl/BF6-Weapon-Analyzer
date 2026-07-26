@@ -31,8 +31,21 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .share-btn::before{content:"";width:10px;height:10px;flex-shrink:0;background:currentColor;-webkit-mask:var(--share-icon) center/contain no-repeat;mask:var(--share-icon) center/contain no-repeat}
 .share-btn:hover{background:rgba(201,162,39,.18)}
 .share-btn.copied{color:var(--green);border-color:var(--green);background:rgba(86,196,100,.12)}
-.overview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:3px}
+.overview-head{display:flex;align-items:center;gap:8px;margin-bottom:3px}
 .overview-head .ptitle{margin-bottom:0}
+.overview-head .share-btn{margin-left:auto}
+/* Collapsible panels — each keeps its heading so it can be reopened, and the
+   caret costs no extra height because it sits in a row that already exists. */
+.panel-toggle{width:15px;height:15px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;padding:0;background:none;border:0;color:#6f7e7e;font-size:.6rem;line-height:1;vertical-align:middle;transition:transform .15s,color .15s}
+.panel-toggle:hover{color:var(--accent)}
+.panel-toggle[aria-expanded="false"]{transform:rotate(-90deg)}
+.rc-title .panel-toggle{margin-right:2px}
+#overviewPanel.is-collapsed #sGrid{display:none}
+#chartsPanel.is-collapsed .chart-wrap,#chartsPanel.is-collapsed #btkArea{display:none}
+#chartsPanel.is-collapsed [style*="margin-bottom:9px"]{margin-bottom:0!important}
+#recoilPanel.is-collapsed .rc-groups,#recoilPanel.is-collapsed .rc-plot,
+#recoilPanel.is-collapsed #rcStats,#recoilPanel.is-collapsed #attStats{display:none}
+#recoilPanel.is-collapsed .rc-head{margin-bottom:0}
 /* Mobile tap tooltip */
 .m-tip{position:fixed;z-index:300;display:none;max-width:280px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-size:0.72rem;line-height:1.45;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.6);pointer-events:none}
 .m-tip.show{display:block}
@@ -139,13 +152,17 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .rc-select:disabled{opacity:.35;cursor:not-allowed}
 .rc-select option{background:var(--bg2)}
 .rc-shots-input[hidden]{display:none}
+/* The custom shot list floats over the panel so revealing it never nudges the
+   Cone/Bubbles buttons. It closes on Enter, Escape or a click elsewhere. */
+.rc-bubble-field{position:relative}
+.rc-custom-pop{position:absolute;left:0;top:calc(100% + 4px);z-index:40;width:150px;box-shadow:0 5px 14px rgba(0,0,0,.55)}
 /* Shared control primitives — one visual language for every toggle, slider and number field */
 .seg{display:inline-flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;background:var(--bg3);overflow:hidden;flex-shrink:0}
 /* Segmented and standalone toggles land on the same outer height (22px). */
 .seg>.mode-btn{border:0;border-radius:0;background:transparent;padding:0 9px;min-height:20px}
 .seg>.mode-btn+.mode-btn{border-left:1px solid var(--border)}
 .seg>.mode-btn:hover:not(.on){background:rgba(255,255,255,.05);color:#c3cece}
-.seg>.mode-btn.on{background:var(--accent);color:#1a2020;font-weight:700}
+.seg>.mode-btn.on{background:var(--accent);color:#1a2020}
 .rc-field{display:flex;align-items:center;gap:6px;min-width:0}
 .rc-field-lbl{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:#738383;white-space:nowrap;flex-shrink:0}
 .rc-range{-webkit-appearance:none;appearance:none;height:14px;flex:0 1 auto;background:transparent;outline:none;cursor:pointer;--fill:0%}
@@ -164,8 +181,6 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 /* Chart viewport — tab strip, contextual bar and canvas read as one card */
 .rc-viewport{border:1px solid var(--border);border-radius:6px;background:#0b1010;overflow:hidden;min-width:0}
 .rc-tabstrip{display:flex;align-items:stretch;flex-wrap:wrap;background:#151b1b;border-bottom:1px solid var(--border)}
-/* The label names what the tabs do; the tabs then split the rest of the strip. */
-.rc-tabstrip-lbl{display:flex;align-items:center;padding:0 11px;font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6f7e7e;border-right:1px solid var(--border);flex-shrink:0}
 .rc-tab{flex:1 1 0;appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;color:#7f9090;font:inherit;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px 6px;cursor:pointer;white-space:nowrap;transition:color .13s,background .13s,border-color .13s}
 .rc-tab:hover:not(.on){color:#cdd6d6;background:rgba(255,255,255,.035)}
 .rc-tab.on{color:var(--accent);background:#0b1010;border-bottom-color:var(--accent)}
@@ -340,6 +355,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
   .btk-tbl th,.btk-tbl td{padding:4px}
   .rc-layout{display:grid;grid-template-columns:1fr;gap:12px}
   .rc-head{gap:8px}
+  /* The caret pushes the nowrap title past a narrow viewport, so let it wrap. */
+  .rc-title{white-space:normal}
   .rc-group{flex-basis:100%}
   .rc-stats{border-left:none;padding-left:0;align-self:auto}
   .rc-plot{width:100%;flex-basis:auto;min-width:0}
@@ -412,17 +429,19 @@ canvas.rcv:focus-visible{outline-offset:-2px}
     <div id="statsArea" style="display:none">
       <div class="panel" id="overviewPanel">
         <div class="overview-head">
+          <button class="panel-toggle" data-collapse="overview" type="button" aria-expanded="true" aria-controls="sGrid" title="Collapse the stat cards">▾</button>
           <div class="ptitle">Overview</div>
           <button class="share-btn" id="shareBtn" type="button" title="Copy a shareable link to this loadout and view">Share Loadout</button>
         </div>
         <div id="wHeader" class="w-header"></div>
         <div id="sGrid" class="sgroups"></div>
       </div>
-      <div class="panel" style="padding:0;overflow:hidden">
+      <div class="panel" id="chartsPanel" style="padding:0;overflow:hidden">
         <div style="display:flex;align-items:stretch">
           <div style="flex:1;min-width:0;padding:11px 13px;border-right:1px solid var(--border)">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:9px">
               <div style="display:flex;align-items:center;gap:8px">
+                <button class="panel-toggle" data-collapse="charts" type="button" aria-expanded="true" title="Collapse the damage chart and kill table">▾</button>
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Damage Chart</div>
                 <div style="display:flex;gap:3px">
                   <button class="mode-btn on" id="modeDmg" title="Shows damage per shot across range, with faint BTK threshold lines.">DMG</button>
@@ -446,10 +465,12 @@ canvas.rcv:focus-visible{outline-offset:-2px}
           </div>
         </div>
       </div>
-      <div class="panel">
+      <div class="panel" id="recoilPanel">
         <div class="rc-layout">
           <div class="rc-head">
-            <div class="ptitle rc-title">Recoil &amp; Bloom Pattern (Simulated -
+            <div class="ptitle rc-title">
+              <button class="panel-toggle" data-collapse="recoil" type="button" aria-expanded="true" title="Collapse the recoil and spread pattern">▾</button>
+              Recoil &amp; Spread Pattern (Simulated -
               <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"> Shots)</div>
             <div class="rc-groups">
               <div class="rc-group">
@@ -502,22 +523,22 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                 </div>
                 <div class="rc-subrow">
                   <div class="rc-pair">
-                    <div class="rc-sub">Bloom</div>
+                    <div class="rc-sub">Spread</div>
                     <div class="rc-group-row">
-                      <button class="mode-btn rc-mode-btn" id="rcConeToggleBtn" title="Show the bloom envelope cone across all shots">Cone</button>
-                      <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" title="Show potential bloom spread bubbles on selected bullets">Bubbles</button>
+                      <button class="mode-btn rc-mode-btn" id="rcConeToggleBtn" title="Show the spread envelope cone across all shots">Cone</button>
+                      <button class="mode-btn rc-mode-btn" id="rcBloomToggleBtn" title="Show potential spread bubbles on selected shots">Bubbles</button>
                     </div>
                   </div>
                   <div class="rc-pair rc-pair-grow">
-                    <div class="rc-sub" id="rcShotsLabel">On Rounds</div>
-                    <div class="rc-group-row rc-group-row-grow">
-                      <select id="rcBloomPreset" class="rc-select" title="Which rounds get a bloom bubble. Shot 1 is skipped — it fires from resting spread, so it has no bubble to show.">
+                    <div class="rc-sub" id="rcShotsLabel">Bubbles On</div>
+                    <div class="rc-group-row rc-group-row-grow rc-bubble-field">
+                      <select id="rcBloomPreset" class="rc-select" title="Which shots get a spread bubble. Shot 1 is skipped — it fires from resting spread, so it has no bubble to show.">
                         <option value="growth">Growth Curve</option>
                         <option value="early">Early Shots</option>
                         <option value="all">All Shots</option>
                         <option value="custom">Custom…</option>
                       </select>
-                      <input id="rcBloomShotsInput" class="rc-shots-input" type="text" value="2, 3, 5, 8, 13, 20" hidden title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'">
+                      <input id="rcBloomShotsInput" class="rc-shots-input rc-custom-pop" type="text" value="2, 3, 5, 8, 13, 20" hidden aria-label="Custom shot numbers for spread bubbles" title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'. Press Enter or click away to close.">
                     </div>
                   </div>
                 </div>
@@ -527,7 +548,6 @@ canvas.rcv:focus-visible{outline-offset:-2px}
           <div class="rc-plot" id="rcPlotColumn">
             <div class="rc-viewport">
               <div class="rc-tabstrip" role="tablist" aria-label="Chart view">
-                <span class="rc-tabstrip-lbl" aria-hidden="true">View</span>
                 <button class="rc-tab on" id="rcViewAngle" type="button" role="tab" aria-selected="true" aria-controls="rcMain" title="Plot the pattern in angular degrees, independent of range">Angle Plot</button>
                 <button class="rc-tab" id="rcViewTarget" type="button" role="tab" aria-selected="false" aria-controls="rcMain" title="Project the same pattern onto a soldier-sized target at a chosen range">Soldier Target</button>
               </div>
@@ -550,7 +570,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                   <button class="rc-scale-btn" id="rcZoomIn" type="button" title="Zoom in"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
                   <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample"><span class="rc-reset-icon">↺</span></button>
                 </div>
-                <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and bloom pattern plot. Use arrow keys to pan and plus or minus to zoom."></canvas>
+                <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and spread pattern plot. Use arrow keys to pan and plus or minus to zoom."></canvas>
               </div>
               <div class="rc-viewfoot">
                 <span class="rc-hint" id="rcHint">Shift + drag to pan · Shift + scroll to zoom</span>
@@ -567,7 +587,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
     </div>
   </main>
 </div>
-<div class="footer"><span>Data: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.3.3.0 (30 JUN 2026) &nbsp;·&nbsp; Bloom decay model: <a href="https://www.youtube.com/@Dr.SmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a> &nbsp;·&nbsp; Data Validation: <a href="https://www.reddit.com/user/SheetOnMyFace/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SheetOnMyFace</a></span><span>Discord: Raymdl</span></div>
+<div class="footer"><span>Data: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.3.3.0 (30 JUN 2026) &nbsp;·&nbsp; Spread decay model: <a href="https://www.youtube.com/@Dr.SmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a> &nbsp;·&nbsp; Data Validation: <a href="https://www.reddit.com/user/SheetOnMyFace/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SheetOnMyFace</a></span><span>Discord: Raymdl</span></div>
 
 <script type="module" src="./ui/app.js"></script>
 <!-- Cloudflare Web Analytics -->

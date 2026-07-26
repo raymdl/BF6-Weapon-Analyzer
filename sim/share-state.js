@@ -154,6 +154,8 @@ export function createShareCodec({
         params.set('ray', state.recoil.customAim.y.toFixed(1));
       }
     }
+    const collapsed = Object.entries(state.collapsed ?? {}).filter(([, on]) => on).map(([key]) => key);
+    if (collapsed.length) params.set('cl', collapsed.join('.'));
     const shots = selectedRecoilShotCount();
     if (shots !== 20) params.set('sh', shots);
     return params.toString();
@@ -204,6 +206,12 @@ export function createShareCodec({
         x: Number.isFinite(x) ? x : 0,
         y: Number.isFinite(y) ? y : 0,
       };
+    }
+    const collapsed = params.get('cl');
+    if (collapsed && state.collapsed) {
+      collapsed.split('.').forEach(key => {
+        if (key in state.collapsed) state.collapsed[key] = true;
+      });
     }
     const compensation = parseInt(params.get('rcc'), 10);
     if (Number.isFinite(compensation)) {
