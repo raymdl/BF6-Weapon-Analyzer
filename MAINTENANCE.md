@@ -33,6 +33,29 @@ archives of previous versions of the site — never edit them during normal main
 
 ---
 
+## Patch Update Workflow
+
+```mermaid
+flowchart TD
+    P["Game patch / season drop"] --> N["Read patch notes —<br/>capture exact numbers now"]
+    P --> SY["Wait for sym.gg datamine<br/>(spread, recoil, velocity tables)"]
+    N --> E["Edit data/*.json<br/>(checklists below)"]
+    SY --> E
+    E --> V["node scripts/validate-data.mjs"]
+    V -- fail --> E
+    V -- pass --> L["Local check via serve.bat —<br/>spot-check BTK/TTK vs sym.gg,<br/>eyeball recoil/spread sim"]
+    L --> AR{"New balance<br/>version?"}
+    AR -- yes --> F["Freeze current site into vX.Y.Z.0/<br/>archive + add archive button"]
+    AR -- no --> H["Update header season tag +<br/>footer data credit"]
+    F --> H
+    H --> C["Commit + push<br/>(CI re-runs validate-data)"]
+```
+
+For a visual explanation of how the recoil/spread simulation itself works, see the
+**Recoil / Spread Model** section in `CODE_DOCUMENTATION.md`.
+
+---
+
 ## Season / Patch Checklist
 
 ### New Weapon

@@ -55,6 +55,39 @@ Local-only helper files are intentionally ignored and should not be committed:
 
 ### Data Flow
 
+```mermaid
+flowchart LR
+    subgraph DATA["data/"]
+        WJ["weapons.json"]
+        AJ["attachments.json"]
+        MJ["ammo.json"]
+        RJ["recoil_decay.json"]
+        BJ["balance_tables.json"]
+    end
+    subgraph SIM["sim/ — shared by all 3 pages"]
+        AA["applyAttachments.js<br/>raw weapon + atts → derived weapon"]
+        CO["core.js<br/>recoil + spread math"]
+        LO["loadout.js + attachments.js<br/>defaults / points / sidebar"]
+    end
+    subgraph UI["ui/app.js (index.html)"]
+        OV["Overview stat cards"]
+        CH["DMG / BTK / TTK chart"]
+        BT["BTK / TTK table"]
+        RC["Recoil & spread canvas"]
+        AS["Attachment sidebar"]
+    end
+    DATA -->|"setAttachmentContext()"| AA
+    DATA -->|"setSimContext()"| CO
+    DATA --> LO
+    AA -->|"derived weapon"| OV
+    AA --> CH
+    AA --> BT
+    AA --> RC
+    CO -->|"genRecoilPts() / simulateSpread()"| RC
+    CO -->|"shotIntervalAfter() → TTK"| CH
+    LO --> AS
+```
+
 1. Page loads → `<script type="module">` fetches all five JSON files via `Promise.all`.
    Each fetch goes through a `fetchJson` helper that rejects on non-OK responses; any
    failure renders a full-screen "Failed to load weapon data" message (mirroring the
@@ -504,6 +537,35 @@ from the weapon's recoil group directly.
 ---
 
 ## Recoil / Spread Model
+
+### The Model at a Glance
+
+Every simulated shot is the sum of two independent mechanisms: a **recoil path** (where
+the aim point has drifted to) and a **spread circle** (how large the random cone has grown).
+The rendered spray pattern samples one impact per shot inside that shot's spread circle,
+centered on that shot's recoil-path point.
+
+![Spray simulation model: recoil path, spread circles, sampled impacts](docs/img/spray-model.svg)
+
+Per-shot pipeline (each lane advances between shots, then both feed the impact sample):
+
+```mermaid
+flowchart TD
+    START(["shot i fired"]) --> KICK["Recoil kick<br/>angle = recoil dir ± uniform(variation)<br/>aim point += (sin, cos) × amount"]
+    KICK --> COMP["Subtract compensation vector<br/>(recoil control %, along expected dir)"]
+    COMP --> DECAY["Recoil decay toward (0,0) over inter-shot time<br/>Δr = (abs(r)^decExp + decOffset) × decFactor × dt × t^decTimeExp"]
+    START --> SPREAD["Spread: spread += inc<br/>clamped to [min, max]"]
+    SPREAD --> RECOV["Spread recovery over inter-shot time<br/>firing params; post-burst gaps add a not-firing segment"]
+    DECAY --> CENTER["shot i+1 center = decayed aim point"]
+    RECOV --> RADIUS["shot i+1 radius = recovered spread"]
+    CENTER --> SAMPLE["impact = center + random point in circle<br/>r = radius × rng() — uniform over radius (center-weighted)"]
+    RADIUS --> SAMPLE
+```
+
+Both lanes are stepped per shot inside `genRecoilPts()` (recoil lane) and
+`simulateSpread()` (spread lane); the impact sampling happens at render time in
+`drawRecoilFixed()`. The RNG is seeded from the weapon ID (`whash`) so patterns are
+deterministic per weapon until the user rerolls the seed.
 
 ### Sources and Provenance
 
