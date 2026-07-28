@@ -4,7 +4,7 @@
 
 Update the BF6 Weapon Analyzer from its current v1.3.1.0 data/model to a version-pinned v1.3.3.0 release without mixing confirmed EA mechanics, freshly datamined Sym.gg values, and still-unverified in-game damage values.
 
-The release should add the PP-19, update recoil/bloom/velocity data across the existing arsenal, model the new hit-zone multipliers, show the revised sniper sweet spots, and clearly state any mechanic the site does not yet simulate (especially bullet drag and REDSEC armor).
+The release should add the PP-19, update recoil/spread/velocity data across the existing arsenal, model the new hit-zone multipliers, show the revised sniper sweet spots, and clearly state any mechanic the site does not yet simulate (especially bullet drag and REDSEC armor).
 
 ## Working protocol for Codex and Luna sessions
 
@@ -70,7 +70,7 @@ This file is the shared handoff and progress ledger. Every implementation sessio
 - **Phase 5 remaining no-go:** community-tested tiers are sufficient for temporary live calculations, not final confirmation. Exact game-file floats/breakpoints plus sniper, shotgun, and untested sidearm base values remain unresolved. No provisional base damage is labeled confirmed.
 - **Pre-test scope decision:** the all-weapon attachment refresh and Phase 6 drag/gravity solver may be deferred without blocking a base/default-configuration test build. Non-default attachment output must be labeled as pre-patch/unverified, or the test instructions must explicitly exclude it; PP-19 attachment slots remain fail-closed. This is a test-build allowance, not final attachment approval.
 - **Pre-test UI issue:** the root header and footer still identify the live page as v1.3.1.0 even though the worktree contains v1.3.3.0 data. Update them before hands-on testing so screenshots and reports cannot be attributed to the wrong data version.
-- **Pre-test regression gap:** the importer verifies source fields and effective recoil math, but the suite still lacks representative end-to-end recoil/bloom output fixtures for the changed high-output, low-output, burst, and PP-19 behaviors. Add those fixtures before treating visual results as a release candidate.
+- **Pre-test regression gap:** the importer verifies source fields and effective recoil math, but the suite still lacks representative end-to-end recoil/spread output fixtures for the changed high-output, low-output, burst, and PP-19 behaviors. Add those fixtures before treating visual results as a release candidate.
 
 The three review bullets immediately above preserve the original gate findings; the remediation status and evidence are recorded here.
 
@@ -153,12 +153,12 @@ The three review bullets immediately above preserve the original gate findings; 
 - This is not a blanket vertical-recoil reduction. Effective per-shot recoil amount is nearly flat across the arsenal: approximately -0.3% on average in the current-to-new comparison, with individual changes from about -5.4% (SCW-10) to +4.0% (B36A4). The practical change is a narrower, more learnable recoil direction, not universally lower kick.
 - Attachment-tier behavior must be recalculated too. The new `ADSRecoilDirectionVariationMultiplier` values affect variation-reducing attachments even when the base exponent is zero.
 
-### Bloom / dispersion
+### Spread / dispersion
 
 - Raw ADS spread increase per shot rises by roughly one-third for the affected automatic weapons in the JSON (for example 0.270 to 0.360 or 0.392 to 0.523). Hip spread increase also rises by roughly one-third across the file.
-- The recovery model changes at the same time: ADS firing recovery offset moves from 1.84 to 2.70 for the affected automatics, the coefficient moves from 1.22 to 1.20, and spread-distance exponent changes from 0.67 to 0.50. Therefore raw per-shot bloom alone overstates the sustained-fire penalty.
-- Running the site's present bloom simulation with the new inputs shows the intended split by weapon character. Representative 10-shot ADS spread changes are approximately: M433 +9%, TR7 +8%, VCR-2 +10%, M16A4 +30% (burst-cadence sensitive), while SOR-556 MK2 -6%, UMG-40 -14%, SL9 -15%, KTS100 MK8 -21%, and AK-205 -41%.
-- The result matches EA's stated design: higher-output weapons demand more burst discipline, while low-output weapons can be equally or more forgiving. The site should present simulated shot-by-shot spread, not label every weapon as simply “more bloom.”
+- The recovery model changes at the same time: ADS firing recovery offset moves from 1.84 to 2.70 for the affected automatics, the coefficient moves from 1.22 to 1.20, and spread-distance exponent changes from 0.67 to 0.50. Therefore raw per-shot spread alone overstates the sustained-fire penalty.
+- Running the site's present spread simulation with the new inputs shows the intended split by weapon character. Representative 10-shot ADS spread changes are approximately: M433 +9%, TR7 +8%, VCR-2 +10%, M16A4 +30% (burst-cadence sensitive), while SOR-556 MK2 -6%, UMG-40 -14%, SL9 -15%, KTS100 MK8 -21%, and AK-205 -41%.
+- The result matches EA's stated design: higher-output weapons demand more burst discipline, while low-output weapons can be equally or more forgiving. The site should present simulated shot-by-shot spread, not label every weapon as simply “more spread.”
 
 ### Velocity and drag
 
@@ -298,12 +298,17 @@ Use one Luna session per assignment below. Each session must follow the working 
 - [ ] 4.5 Re-run attachment application for recoil-amount, recoil-variation, spread-growth, spread-recovery, and moving-spread modifiers.
 - [~] 4.6 Audit attachment data for **all 59 weapons**, not only PP-19. The current filesystem contains 11 Assault Rifle folders and 701 retained screenshots (one overview per folder), including 63 EF88 screenshots with no 2560x1440 copies. The current artifact contains 629 new Assault Rifle detail records: L85A3's 67 detail rows are fully user-reviewed, M16A4/EF88 have targeted corrections only, and the other rows remain provisional. The other 47 weapons remain uncaptured. Treat existing attachment values as pre-patch until checked against v1.3.3.0 evidence.
 - [ ] 4.7 For every weapon/barrel/ammunition combination, capture the displayed muzzle velocity and calculate both the absolute value and modifier versus that weapon's updated base velocity. The Assault Rifle batch captures barrel/ammunition screens, but 0 velocity fixtures have been reviewed or promoted; short, extended/long, fluted, and weapon-unique combinations remain open until manually checked.
-- [~] 4.8 Refresh every attachment field used by the site: availability, attachment-point cost, recoil amount/direction/variation, spread/bloom growth and recovery, ADS and hip behavior, movement spread, ADS/deploy/sprint-to-fire handling, magazine capacity, reload times, projectile velocity, drag wording/effect, and any compatibility restrictions. The current artifact contains 745 screenshot-linked records across M433, PP-19, and the retained Assault Rifle evidence. Of 629 new Assault Rifle detail records, 617 are fully transcribed; the remaining 12 are NVO-228E muzzle screens with overlay-obscured fields. L85A3 has 67 fully reviewed detail rows; 0 screenshot-derived values are promoted and no live attachment files changed.
+- [~] 4.8 Refresh every attachment field used by the site: availability, attachment-point cost, recoil amount/direction/variation, spread growth and recovery, ADS and hip behavior, movement spread, ADS/deploy/sprint-to-fire handling, magazine capacity, reload times, projectile velocity, drag wording/effect, and any compatibility restrictions. The current artifact contains 745 screenshot-linked records across M433, PP-19, and the retained Assault Rifle evidence. Of 629 new Assault Rifle detail records, 617 are fully transcribed; the remaining 12 are NVO-228E muzzle screens with overlay-obscured fields. L85A3 has 67 fully reviewed detail rows; 0 screenshot-derived values are promoted and no live attachment files changed.
 - [~] 4.9 Produce a weapon-by-attachment coverage matrix with `verified`, `changed`, `unchanged`, `not available`, and `needs measurement` states. The refreshed report covers the 11 Assault Rifles plus PP-19, preserves original/current paths, capture timestamps, resolutions, OCR, comparison indicators, duplicates, and review state, and reports the 12 NVO overlay blockers separately. L85A3 is reviewed; the remaining captured weapons are provisional, 0 records are promoted, and 47 weapons remain uncaptured.
 - [ ] 4.10 Add automated fixtures for attachments whose percentage modifier is applied to a changed base value; verify that the UI shows the resulting v1.3.3.0 absolute stat rather than a stale cached absolute value.
 - [ ] 4.11 Add before/after fixtures for representative high-output and low-output weapons so future refactors preserve the new character split.
 
 ### Phase 4 attachment screenshot batch ledger (2026-07-23 rerun)
+
+- **2026-07-26 LMG batch:** 10 LMG folders were captured and audited: 545 screenshots total (10 overview/context captures and 535 detail panels). All 545 source screenshots were renamed with the reversible LMG manifest, reconciled into the canonical review/OCR artifacts, and visually checked for attachment mapping. The KTS100 MK8 shared selector is represented as `Laser/Light` for all 12 options; no physical-slot field was added.
+- **Inventory correction:** an earlier 546-screenshot statement was a counting error. The authoritative per-folder sum is 545: 69 + 57 + 51 + 47 + 49 + 51 + 51 + 52 + 60 + 58.
+- **LMG review boundary:** LMG rows remain `provisional-review-required`; 0 LMG values are fully user-reviewed or promoted to live data. Nulls retain field-specific reasons, raw OCR remains separate from reviewed transcription, and the workbook/render previews were rebuilt with the LMG class palette.
+- **LMG validation:** the recurring gate confirms 545 current paths, sequential capture order, no timestamp-named files, no `Unknown` mappings, no case-insensitive rename collisions, no promotions, workbook row/path alignment, and no formula errors. Semantic idempotence passed for review JSON, rename manifest, and coverage report.
 
 - Captured/inventoried: 11 Assault Rifle folders; 701 retained screenshots; 690 detail captures plus 11 overview/context captures. EF88 is 63/63 with no deleted full-resolution evidence resurrected.
 - Transcribed/generated: 745 screenshot-linked records in the refreshed JSON (including retained M433 and PP-19 reference records); 38 mapping fields were visually checked, but 0 records are manually reviewed and 0 values are considered promoted/final.
@@ -362,7 +367,7 @@ Use one Luna session per assignment below. Each session must follow the working 
 
 - [ ] T1 Update the root header/footer to v1.3.3.0 / 30 JUN 2026 and show 59 weapons; retain the working v1.3.1.0 archive link.
 - [ ] T2 Add a visible test-build scope note: damage curves are provisional, REDSEC armor is not modeled, projectile travel/drag/gravity is not simulated, and non-default attachment values remain pre-patch/unverified pending the later attachment refresh.
-- [ ] T3 Add representative deterministic recoil/bloom fixtures covering one high-output automatic, one low-output automatic, one burst weapon, and PP-19; keep the existing 24-test baseline passing.
+- [ ] T3 Add representative deterministic recoil/spread fixtures covering one high-output automatic, one low-output automatic, one burst weapon, and PP-19; keep the existing 24-test baseline passing.
 - [ ] T4 Run the automated gate again, then hand off to browser QA for both comparison slots, share-link restoration, charts/tooltips, breakpoint/zone checks, PP-19 base/default state, desktop, and mobile.
 
 The full documentation refresh, all-weapon attachment audit, exact damage confirmation, and Phase 6 solver are not prerequisites for this hands-on test build. They remain release-follow-up work unless the test exposes a dependency.
@@ -378,7 +383,7 @@ The full documentation refresh, all-weapon attachment audit, exact damage confir
 ### 8. Validation gates
 
 - [ ] 8.1 Run `node scripts/validate-data.mjs` and expand it to require PP-19 cross-file coverage, valid hit-zone classes, provenance presence, and matching damage distance/value array lengths. Gravity/drag live-schema validation belongs to deferred Phase 6.
-- [ ] 8.2 Run unit tests for damage/BTK, recoil effective values, bloom fixtures, and attachment tiers. A ballistics-solver test suite belongs to deferred Phase 6.
+- [ ] 8.2 Run unit tests for damage/BTK, recoil effective values, spread fixtures, and attachment tiers. A ballistics-solver test suite belongs to deferred Phase 6.
 - [ ] 8.3 Compare every weapon count and ID across weapons, attachments, magazines, ammo, recoil decay, and balance tables; require an attachment-audit status for every weapon.
 - [ ] 8.4 Confirm existing shared URLs still resolve to the same attachments; only append to ordered attachment arrays and catalogs.
 - [ ] 8.5 Spot-check at least one Assault Rifle, Carbine, SMG, LMG, DMR, sniper, shotgun, sidearm, burst weapon, and PP-19 in both comparison slots.

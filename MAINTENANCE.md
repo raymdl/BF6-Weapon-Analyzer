@@ -15,7 +15,7 @@ data/
   balance_tables.json   ← Tier tables (ADS speed, sprint recovery, spread, etc.)
 
 sim/
-  core.js               ← Shared simulation math (recoil, bloom, spread)
+  core.js               ← Shared simulation math (recoil, spread)
   applyAttachments.js   ← Applies attachment effects to a weapon object
   loadout.js            ← Shared loadout defaults, point totals, and attachment UI
   attachments.js        ← Ordered list of attachment slot types (UI metadata)
@@ -24,7 +24,7 @@ scripts/
   validate-data.mjs     ← Cross-file data integrity checks used by CI
 ```
 
-All three pages (`index.html`, `preview_bloom.html`, `preview_distance.html`)
+All three pages (`index.html`, `preview_spread.html`, `preview_distance.html`)
 load from these files. **One edit → all pages updated.**
 
 All eight weapon classes are fully supported in the UI, including `Sidearm` (displayed
@@ -51,7 +51,7 @@ archives of previous versions of the site — never edit them during normal main
      tier ladder reads `dirVarMult`/`dirVarExp` from this group; without it,
      variation tier attachments (Convertor, burst ergos) have no effect on the
      weapon. Every current weapon has a `recoil.ads` group.
-   - Also important: `spread` (per-stance min/max), `spreadDyn` (bloom dynamics),
+   - Also important: `spread` (per-stance min/max), `spreadDyn` (spread dynamics),
      `dmg` (range dropoff array)
    - Conventions: top-level `recoilV` is the **effective** value
      (`amount × amountMult^amountExp`); top-level `recoilVar` is the **raw**
@@ -103,7 +103,7 @@ Edit the relevant weapon object in `data/weapons.json`.
   `dirVarExp` — the app computes the effective value from these
 - **Recoil decay**: `data/recoil_decay.json` → `RECOIL_DEC[weaponId]` etc., or the
   decay fields in the weapon's `recoil.ads` group
-- **Bloom per shot**: `recoilIncAds` (ADS) or `spreadDyn.hip.inc` (hip)
+- **Spread per shot**: `recoilIncAds` (ADS) or `spreadDyn.hip.inc` (hip)
 - **Spread min/max**: `spread.adsStand`, `spread.adsMove`, `spread.hipStand`, `spread.hipMove`
 - **Damage dropoff**: `dmg` array — `[{r: range_m, d: damage}, ...]`
 - **Fire rate**: `rpm`
@@ -163,8 +163,8 @@ reads. Omit a field if the attachment has no effect there.
 | `adsRecoilVariationTierMod` | int | `0` | Shifts ADS recoil **variation** tier (pos = less variation, via per-weapon `dirVarMult`) |
 | `adsRecoilDecayMult` | float | `1` | *(muzzles)* Multiplies ADS recoil decay factor (>1 = recovers faster) |
 | `hipSpreadTierMod` | int | `0` | Shifts hip spread tier (pos = worse) |
-| `adsSpreadIncMult` | float | `1` | *(barrels)* Multiplies ADS bloom-per-shot (`recoilIncAds`) |
-| `adsSpreadDecayBoost` | float | `0` | *(muzzles)* Extra ADS bloom decay coefficient |
+| `adsSpreadIncMult` | float | `1` | *(barrels)* Multiplies ADS spread-per-shot (`recoilIncAds`) |
+| `adsSpreadDecayBoost` | float | `0` | *(muzzles)* Extra ADS spread decay coefficient |
 | `movingAdsSpreadTierMod` | int | `0` | Shifts moving-ADS min spread tier |
 | `adsTimeTierMod` | int | `0` | Shifts ADS speed tier (pos = faster) |
 | `adsMoveSpeedTierShift` | int | `0` | Shifts ADS move speed tier |
@@ -172,7 +172,7 @@ reads. Omit a field if the attachment has no effect there.
 | `sway` | float | `0` | *(muzzles)* Adds to weapon sway |
 | `worldSpot` | float | `54` | *(muzzles)* World spotting distance override |
 | `minimapSpot` | float | `150` | *(muzzles)* Minimap spotting distance override |
-| `hipSpreadDecayBoost` | float | `0` | *(lights)* Extra hipfire bloom decay coefficient |
+| `hipSpreadDecayBoost` | float | `0` | *(lights)* Extra hipfire spread decay coefficient |
 | `laserVisible` | bool | — | *(lasers)* Whether the beam is visible to enemies |
 | `sprintRecoveryTierShift` | int | `0` | *(grips, ergos)* Shifts sprint recovery tier |
 | `visualRecoil` | int | `0` | *(ergos)* Visual recoil modifier; negative = reduced |
@@ -205,7 +205,7 @@ If game mechanics change (not just data), edit the relevant module:
 | Mechanic | File |
 |---|---|
 | Recoil path simulation | `sim/core.js` → `genRecoilPts` |
-| Bloom/spread simulation | `sim/core.js` → `simulateBloom` |
+| Spread simulation | `sim/core.js` → `simulateSpread` |
 | Spread recovery model | `sim/core.js` → `spreadRecoveries` / `applySpreadRecovery` |
 | Recoil decay formula | `sim/core.js` → `applyRecoilDecay` |
 | Attachment stat application | `sim/applyAttachments.js` → `applyAttachments` |

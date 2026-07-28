@@ -1,8 +1,8 @@
 # BF6 Weapon Analyzer — Code Documentation
 
 This document describes the current structure and behavior of the BF6 Weapon Analyzer project.
-`index.html` is the primary app. `preview_bloom.html` and `preview_distance.html` are companion
-tools used to test recoil/bloom visualization ideas and validate distance projections.
+`index.html` is the primary app. `preview_spread.html` and `preview_distance.html` are companion
+tools used to test recoil/spread visualization ideas and validate distance projections.
 
 ---
 
@@ -16,7 +16,7 @@ URLs will fail.
 ```
 BF6 Project/
   index.html                ← Primary weapon analyzer app
-  preview_bloom.html        ← Recoil/bloom chart experiment tool
+  preview_spread.html       ← Recoil/spread chart experiment tool
   preview_distance.html     ← Distance-wall spray projection tool
 
   ui/
@@ -26,7 +26,7 @@ BF6 Project/
     chart.umd.min.js        ← Local Chart.js bundle used by index.html
 
   sim/
-    core.js                 ← Shared simulation math (RNG, recoil, bloom)
+    core.js                 ← Shared simulation math (RNG, recoil, spread)
     applyAttachments.js     ← Attachment effect application + derived stats
     loadout.js              ← Shared loadout defaults, point totals, and sidebar helpers
     attachments.js          ← Canonical ordered attachment slot definitions
@@ -118,7 +118,7 @@ Call `setSimContext` once after JSON loads, then again whenever `aimState`/`stan
 | `selectedSpreadIncFor(w)` | Spread increase per shot for current aim state |
 | `spreadRecoveries(w)` | `{ firing, notFiring }` recovery params (coef/exp/offset) with decay boosts applied |
 | `applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt?)` | Steps spread recovery over a time interval |
-| `simulateBloom(w, shots)` | Returns per-shot pre-fire spread array in degrees |
+| `simulateSpread(w, shots)` | Returns per-shot pre-fire spread array in degrees |
 | `shotIntervalAfter(w, shotIndex)` | Seconds between shot N and N+1, burst-cadence aware |
 | `isBurstGapAfter(w, shotIndex)` | True when the next interval is a post-burst pause |
 | `genRecoilPts(w, seed, shots)` | Returns deterministic recoil point array `[{x, y}, …]` |
@@ -176,9 +176,9 @@ scanning catalog arrays on every render.
 |---|---|
 | `_label` | Weapon name + attachment tags joined by ` · ` |
 | `_adsRecoilReductionPct` | ADS recoil reduction % for UI display |
-| `_adsSpreadDecayBoost` | Extra ADS bloom decay from muzzle |
+| `_adsSpreadDecayBoost` | Extra ADS spread decay from muzzle |
 | `_adsRecoilDecayMult` | ADS recoil decay multiplier from muzzle (1 = unchanged) |
-| `_hipSpreadDecayBoost` | Extra hipfire bloom decay from light |
+| `_hipSpreadDecayBoost` | Extra hipfire spread decay from light |
 | `_worldSpot`, `_minimapSpot` | Firing exposure distances |
 | `_movingAdsSpreadTierMod` | Total moving ADS accuracy tier shift |
 | `_movingAdsMinSpreadDeg` | Final moving ADS minimum spread in degrees |
@@ -303,7 +303,7 @@ the class filter (`CLASS_SHORT` maps `"Sidearm"` → `"Pistol"`).
 | `recoilV` | number | **Effective** ADS recoil per shot (= `ADSRecoilAmount × ADSRecoilAmountMultiplier^ADSRecoilAmountMultiplierExponent`) |
 | `recoilDir` | number | Recoil direction angle from vertical (degrees) |
 | `recoilVar` | number | **Raw** ADS recoil direction variation (= `ADSRecoilDirectionVariation`); the effective value is derived from the `recoil.ads` group at runtime |
-| `recoilIncAds` | number | ADS bloom increase per shot |
+| `recoilIncAds` | number | ADS spread increase per shot |
 | `spreadMax` | number | Fallback maximum spread |
 | `adsTime` | number | Estimated ADS time in ms (fallback; balance table tiers take precedence) |
 | `fireMode` | string | `auto`, `semi`, `burst`, `bolt`, or `pump` |
@@ -341,8 +341,8 @@ Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`, `ERGOS`,
 | `adsRecoilVariationTierMod` | `0` | Shifts ADS recoil variation tier (uses per-weapon `dirVarMult`) |
 | `adsRecoilDecayMult` | `1` | Multiplies ADS recoil decay factor (muzzle) |
 | `hipSpreadTierMod` | `0` | Shifts hipfire min spread tier |
-| `adsSpreadIncMult` | `1` | Multiplies ADS bloom per shot |
-| `adsSpreadDecayBoost` | `0` | Extra ADS bloom decay coefficient |
+| `adsSpreadIncMult` | `1` | Multiplies ADS spread per shot |
+| `adsSpreadDecayBoost` | `0` | Extra ADS spread decay coefficient |
 | `movingAdsSpreadTierMod` | `0` | Shifts moving ADS min spread tier |
 | `adsTimeTierMod` | `0` | Shifts ADS speed tier |
 | `adsMoveSpeedTierShift` | `0` | Shifts ADS move speed tier |
@@ -440,7 +440,7 @@ applyAttachments(rawWeapon, selectedAtts)   ← reads data from setAttachmentCon
        │
        ├─► renderOverview()
        ├─► renderChart() / renderBTK()
-       ├─► renderRecoil() → genRecoilPts() / simulateBloom()
+       ├─► renderRecoil() → genRecoilPts() / simulateSpread()
        └─► renderAttachmentStats()
 ```
 
@@ -503,12 +503,12 @@ from the weapon's recoil group directly.
 
 ---
 
-## Recoil / Bloom Model
+## Recoil / Spread Model
 
 ### Sources and Provenance
 
 - **sym.gg** — all raw weapon and attachment stats; field naming conventions
-- **Dr. Smiley Henry** — bloom/spread decay model reference
+- **Dr. Smiley Henry** — spread decay model reference
 - **TheXclusiveAce** — in-game spray-pattern sanity checks
 - **SORROW** — additional weapon data reference
 - **SheetOnMyFace** — data validation; recoil variation tier-system discovery
@@ -517,7 +517,7 @@ Items sourced directly from data: damage breakpoints, RPM, mag, reload timings, 
 recoil formula inputs, spread min/max, spread increase/decay inputs, attachment costs/effects.
 
 Items that are visually calibrated: recoil chart scale defaults, scatter run count,
-bloom bubble round schedule defaults (`1, 2, 3, 5, 8, 13, 20`), bloom cone rendering shape,
+spread bubble round schedule defaults (`1, 2, 3, 5, 8, 13, 20`), spread cone rendering shape,
 distance wall panel sizes and human target overlay.
 
 ### Recoil Path (`genRecoilPts`)
@@ -532,7 +532,7 @@ For each shot:
    (`applyRecoilDecay`, using the weapon group's decay parameters and the
    muzzle's `_adsRecoilDecayMult` when aiming).
 
-### Bloom / Spread (`simulateBloom`)
+### Spread (`simulateSpread`)
 
 - Starts at the stance/aim spread minimum (`spreadBounds`).
 - Adds `spreadInc` per shot.
@@ -548,7 +548,7 @@ For each shot:
 
 - Off: compensation = 0, controls disabled.
 - On: compensation % (default 85%, max 125%) subtracts the expected recoil vector per shot.
-  Variation and bloom remain fully active.
+  Variation and spread remain fully active.
 
 ### Platform
 
@@ -573,7 +573,7 @@ Primary app:
 - **`index.html`**: metadata, local Chart.js include (with load-failure fallback), CSS,
   static HTML shell, and the `ui/app.js` module entry point.
 - **`ui/app.js`**: JSON fetch (`Promise.all` with error fallback), context setup, app
-  state, sidebar/loadout rendering, overview cards, chart rendering, recoil/bloom canvas,
+  state, sidebar/loadout rendering, overview cards, chart rendering, recoil/spread canvas,
   attachment effect chips, and event wiring.
 
 **Class filter buttons** (`CLASSES` array): `Assault Rifle`, `Carbine`, `SMG`, `LMG`,
@@ -597,9 +597,9 @@ folded into each weapon's line entry as a `chest–limbs` range instead.
 
 ---
 
-### `preview_bloom.html`
+### `preview_spread.html`
 
-Recoil/bloom chart experiment tool. Three side-by-side chart approaches with independent
+Recoil/spread chart experiment tool. Three side-by-side chart approaches with independent
 bubble schedules, a class/weapon/attachment sidebar, and configurable shot count. Imports
 all three `sim/` modules and all five `data/` JSON files. Attachment selections are applied
 through `applyAttachments(rawWeapon, selectedAtts)`, matching the main app and distance
@@ -616,7 +616,7 @@ Distance-wall spray projection tool. Full attachment sidebar (imports all three 
 modules and all five `data/` JSON files). Panels: 5 m, 10 m, 20 m, custom distance.
 Human target outline (180 cm) with hit count. Independent per-panel zoom/pan state.
 
-Useful for validating how angular recoil/bloom translates to practical engagement distances.
+Useful for validating how angular recoil/spread translates to practical engagement distances.
 
 ---
 
@@ -664,8 +664,8 @@ The app is static and render-on-change, but the busiest paths avoid avoidable re
   `ETag`/`Last-Modified` instead of re-downloading ~310 KB.
 - `renderChart()` reuses the existing Chart.js instance via `updateDmgChart()` and
   calls `chart.update('none')` instead of destroying/recreating the canvas state.
-- `drawRecoilFixed()` computes recoil points, bloom radii, and spray points once per
-  weapon per draw and reuses them across scatter, spray path, bloom, and cone layers.
+- `drawRecoilFixed()` computes recoil points, spread radii, and spray points once per
+  weapon per draw and reuses them across scatter, spray path, spread, and cone layers.
 - Default applied weapon baselines are cached per raw weapon object for attachment stat
   comparisons.
 
@@ -714,12 +714,12 @@ elsewhere.
 
 ---
 
-### 3 — Bloom cone is a visualization envelope, not a game primitive *(informational)*
+### 3 — Spread cone is a visualization envelope, not a game primitive *(informational)*
 
-The cone/outline view hugs the modeled per-shot bloom circles. It is not a convex hull,
+The cone/outline view hugs the modeled per-shot spread circles. It is not a convex hull,
 not a guarantee of uniform fill inside the envelope, and not a direct game mechanic.
 
-Chart notes already say "bloom envelope across modeled shots" but this distinction should
+Chart notes already say "spread envelope across modeled shots" but this distinction should
 stay prominent in any future user-facing documentation.
 
 ---
@@ -775,7 +775,7 @@ Remaining test gaps:
 - Attachment effect field completeness beyond neutral/default behavior
 - Uniform-over-radius sampling correctness
 - Recoil control compensation math
-- Bloom cone/envelope rendering consistency
+- Spread cone/envelope rendering consistency
 
 ---
 
@@ -794,4 +794,4 @@ Remaining test gaps:
 2. **Expand validation if data churn increases.** JSON Schema or stricter effect-field checks would be useful once the data format stabilizes further.
 3. **Add provenance metadata to data files (note 2).** Source/date tags become more valuable as assumed, screenshot-derived, and datamined values coexist.
 4. **Track performance baselines.** The current caches reduce obvious rework, but larger dashboards or multi-state comparisons should measure render cost explicitly.
-5. **Formalize visual regression screenshots.** Once Playwright smoke coverage exists, promote key screenshots into a baseline workflow before large recoil, bloom, or layout changes.
+5. **Formalize visual regression screenshots.** Once Playwright smoke coverage exists, promote key screenshots into a baseline workflow before large recoil, spread, or layout changes.

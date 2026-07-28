@@ -168,7 +168,7 @@ export function spreadBounds(w) {
 }
 
 /**
- * Spread spread dynamics for the current aim state.
+ * Spread growth/recovery dynamics for the current aim state.
  * For ADS, overrides `inc` with the weapon's recoilIncAds field so attachment
  * scaling of spread-per-shot is preserved.
  */
@@ -255,7 +255,7 @@ export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, d
 // ── SIMULATION ────────────────────────────────────────────────────────────────
 
 /**
- * Simulate spread spread for `shotCount` shots.
+ * Simulate spread growth across `shotCount` shots.
  * Returns an array of per-shot pre-fire spread values in degrees.
  */
 export function simulateSpread(w, shotCount) {
