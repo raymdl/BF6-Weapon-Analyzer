@@ -17,6 +17,35 @@ data/check_all.sh
 # Local screenshot corpus for the attachment audit (~1.7 GB of captures).
 Weapon Attachments/
 
+# The attachment screenshot audit is a one-off exercise, not part of the site.
+# Its tooling reads the local screenshot corpus and the ignored audit outputs
+# below, so none of it builds or tests on a clean clone. Everything stays local;
+# only values promoted into data/ come back to the repo.
+*ATTACHMENT_SCREENSHOT_AUDIT*.md
+*_ATTACHMENT_SCREENSHOT_AUDIT_PROMPT.md
+schemas/attachment-screenshot-review.schema.json
+schemas/outputs/
+scripts/*attachment-screenshot*
+scripts/build-attachment-capture-order.mjs
+scripts/extract-attachment-panel-ocr.ps1
+scripts/extract-attachment-stat-comparisons.ps1
+scripts/extract-missing-attachment-fields.ps1
+scripts/organize-attachment-screenshot-folders.ps1
+scripts/reconcile-attachment-ocr-paths.mjs
+scripts/reconcile-lmg-ocr-paths.mjs
+scripts/*-dmr-*.mjs
+scripts/*-dmr-*.py
+scripts/*-lmg-*.mjs
+scripts/*-lmg-*.py
+scripts/verify-workbook-alignment.py
+scripts/compare-audit-idempotence.mjs
+scripts/reconcile-and-prune-attachment-overrides.mjs
+
+# Local analysis workbooks at the repo root. Values that matter are promoted
+# into data/; the exports under outputs/ that back committed data are handled
+# by the outputs rules below.
+/*.xlsx
+
 # Generated analysis/export artifacts: video frames, OCR dumps and audit
 # captures run to hundreds of megabytes, so the whole directory is local-only.
 # The exceptions are the exports that back committed data and must stay with it.
