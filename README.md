@@ -104,8 +104,10 @@ node --test
 Node discovers the `scripts/*.test.mjs` files on its own. Don't pass the directory —
 `node --test scripts/` tries to resolve it as a module and fails on Node 24.
 
-On the `codex/update-1.3.3.0` branch as of this writing, the validator passes for 59/59 weapons and
-the four test files pass 26/26.
+On the `codex/update-1.3.3.0` branch as of this writing, the validator passes for 59/59 weapons.
+A clean clone runs 26 tests: 18 pass and 8 skip. The skipped ones verify the Sym.gg import against
+the pinned raw dump, which lives under the gitignored `outputs/` tree — they run in full on a
+checkout that has it, and each reports why it skipped.
 
 ## Documentation
 
