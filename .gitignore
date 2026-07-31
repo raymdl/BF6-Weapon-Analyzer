@@ -28,6 +28,11 @@ Weapon Attachments/
 *_ATTACHMENT_SCREENSHOT_AUDIT_PROMPT.md
 schemas/outputs/
 scripts/*attachment-screenshot*
+# Reads only the tracked schema and review JSON, so it runs on a clean clone and
+# guards the tracked data against drifting from its declared contract. The
+# taxonomy test stays local: it imports the taxonomy module, which the review
+# builder also imports, and none of that chain runs without the corpus.
+!scripts/attachment-screenshot-schema.test.mjs
 scripts/audit-sweep.mjs
 scripts/build-attachment-capture-order.mjs
 scripts/extract-corpus-recoil-glyphs.py
