@@ -19,14 +19,26 @@ Weapon Attachments/
 
 # The attachment screenshot audit is a one-off exercise, not part of the site.
 # Its tooling reads the local screenshot corpus and the ignored audit outputs
-# below, so none of it builds or tests on a clean clone. Everything stays local;
-# only values promoted into data/ come back to the repo.
-*ATTACHMENT_SCREENSHOT_AUDIT*.md
+# below, so none of it builds or tests on a clean clone; only values promoted
+# into data/ come back to the repo.
+#
+# The audit's instructions and correction history ARE tracked, because they are
+# the only record of how the corpus was built and corrected and are too valuable
+# to keep on one machine. The per-class handoff prompts stay local.
 *_ATTACHMENT_SCREENSHOT_AUDIT_PROMPT.md
 schemas/attachment-screenshot-review.schema.json
 schemas/outputs/
 scripts/*attachment-screenshot*
+scripts/audit-sweep.mjs
 scripts/build-attachment-capture-order.mjs
+scripts/build-attachment-workbook.py
+scripts/extract-corpus-recoil-glyphs.py
+# Contact-sheet and review-crop generators for the audit's visual passes.
+scripts/make-*-sheets.py
+scripts/make-*-review.py
+scripts/make-*-crops.py
+scripts/*-sidearm-*.mjs
+scripts/*-sidearm-*.py
 scripts/extract-attachment-panel-ocr.ps1
 scripts/extract-attachment-stat-comparisons.ps1
 scripts/extract-missing-attachment-fields.ps1
@@ -56,3 +68,9 @@ sl9_recheck/
 
 # Local one-off export helpers.
 scripts/export_dmg.py
+
+# Throwaway inspection scripts.
+tmp/
+
+# Excel lock files left behind while a workbook is open.
+~$*.xlsx
