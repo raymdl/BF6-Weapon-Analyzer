@@ -66,6 +66,30 @@ outputs/*
 !outputs/sym-damage-refresh-*/
 sl9_recheck/
 
+# The attachment audit's curated data is tracked, along with the scripts that
+# produced it. These are hand-corrected over many passes and cannot be
+# regenerated: rebuilding from OCR drops records and reverts manual fixes, so
+# the JSON is the artifact, not a build product. Everything else in the audit
+# tree stays local -- the raw OCR dumps regenerate from the screenshots, the
+# contact sheets and workbooks regenerate from the JSON, and the dated backups
+# are superseded by git history once this is tracked.
+!outputs/attachment-audit/
+outputs/attachment-audit/*
+!outputs/attachment-audit/*.mjs
+!outputs/attachment-audit/*.py
+!outputs/attachment-audit/attachment-screenshot-review.json
+!outputs/attachment-audit/capture-order.json
+!outputs/attachment-audit/manual-review-overrides.json
+!outputs/attachment-audit/coverage-report.json
+!outputs/attachment-audit/rename-manifest.json
+!outputs/attachment-audit/rename-provenance.json
+!outputs/attachment-audit/stat-comparisons.json
+!outputs/attachment-audit/visual-stat-map.json
+!outputs/attachment-audit/recoil-visual-map.json
+!outputs/attachment-audit/field-ocr.json
+!outputs/attachment-audit/highlight-cards.json
+!outputs/attachment-audit/cost-ocr.json
+
 # Local one-off export helpers.
 scripts/export_dmg.py
 

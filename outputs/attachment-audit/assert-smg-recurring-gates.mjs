@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+
+const root = process.env.BF6_ATTACHMENT_AUDIT_ROOT ?? 'outputs/attachment-audit-smg';
+const review = JSON.parse(fs.readFileSync(`${root}/attachment-screenshot-review.json`, 'utf8'));
+const manifest = JSON.parse(fs.readFileSync(`${root}/rename-manifest.json`, 'utf8'));
+const records = review.records.filter(record => /[\\/]Weapon Attachments[\\/]SMG[\\/]/i.test(record.source.currentPath));
+const manifestEntries = manifest.entries.filter(entry => /[\\/]Weapon Attachments[\\/]SMG[\\/]/i.test(entry.sourcePath) || /[\\/]Weapon Attachments[\\/]SMG[\\/]/i.test(entry.targetPath));
+const details = records.filter(record => record.stats);
+const failures = [];
+const missingPaths = records.filter(record => !fs.existsSync(record.source.currentPath));
+const timestampCurrent = records.filter(record => /Battlefield 6 Screenshot/.test(record.source.currentPath));
+const nullStats = details.flatMap(record => Object.entries(record.stats).filter(([, value]) => value == null).map(([field]) => `${record.source.currentPath} | ${field}`));
+const badMetadata = details.filter(record => record.attachmentType === 'Unknown' || record.attachmentCost == null || !record.attachmentName || !record.attachmentSubtype);
+const badDescriptions = details.filter(record => record.attachmentName !== 'None' && (!record.attachmentDescription || /\b(?:ot|tiring|mlnimap|rnlnimap|solcliers|provicles|recluces)\b/i.test(record.attachmentDescription)));
+const targetGroups = Map.groupBy(manifestEntries, entry => entry.targetPath.toLowerCase());
+const collisions = [...targetGroups.values()].filter(entries => entries.length > 1);
+if (records.length !== 509 || details.length !== 499) failures.push(`Unexpected row count ${records.length}/${details.length}`);
+if (missingPaths.length) failures.push(`${missingPaths.length} missing current paths`);
+if (timestampCurrent.length) failures.push(`${timestampCurrent.length} timestamp current paths remain`);
+if (nullStats.length) failures.push(`${nullStats.length} null stats remain`);
+if (badMetadata.length) failures.push(`${badMetadata.length} metadata failures remain`);
+if (badDescriptions.length) failures.push(`${badDescriptions.length} description failures remain`);
+if (collisions.length) failures.push(`${collisions.length} destination collisions remain`);
+if (failures.length) throw new Error(`${failures.join('; ')}\n${[...nullStats, ...badMetadata.map(r => r.source.currentPath), ...badDescriptions.map(r => r.source.currentPath)].slice(0, 30).join('\n')}`);
+console.log(JSON.stringify({records: records.length, details: details.length, comparisons: details.reduce((sum, record) => sum + Object.keys(record.statComparisons ?? {}).length, 0), timestampCurrent: 0, missingPaths: 0, nullStats: 0, badMetadata: 0, badDescriptions: 0, collisions: 0}, null, 2));
