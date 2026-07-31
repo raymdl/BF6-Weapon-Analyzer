@@ -81,25 +81,25 @@ As of **2026-07-31**, review JSON `generatedAt` 2026-07-31T05:44:11Z, schema v4.
 
 | Measure | Value |
 |---|---|
-| Records | 3,206 |
-| Attachment-detail records (excludes 62 per-weapon Overview captures) | 3,144 |
+| Records | 3,177 |
+| Attachment-detail records (excludes 62 per-weapon Overview captures) | 3,115 |
 | Weapons | 62, all eight classes |
 | Null stat cells | **0** |
 | Records with no stats block | **0** |
 | Non-Overview null costs | **0** |
 | Null descriptions (excluding `None` attachments) | **0** |
 | Visible comparison indicators stored | 5,681 |
-| Duplicate identity groups whose stats disagree | **0** (29 duplicate groups exist, all agreeing) |
+| Duplicate identity groups whose stats disagree | **0** (the 29 former M1014 canonical duplicates are excluded; source PNGs are retained) |
 | Timestamp-named files still referenced | **0** |
 | Records pointing at a missing file | **0** |
 | Screenshots on disk with no record | **0** |
-| `reviewStatus: reviewed` | 201 of 3,144 |
-| `mappingReviewStatus: visually-checked` | 2,096 of 3,144 |
+| `reviewStatus: reviewed` | 201 of 3,115 |
+| `mappingReviewStatus: visually-checked` | 2,078 of 3,115 |
 
 **Transcription is complete; review is not.** Every displayed field across all eight weapon
 classes has been transcribed and every null has been resolved. What remains is the human
 review gate: only 201 detail records carry `reviewStatus: reviewed`, and `extractionStatus`
-is still `provisional-review-required` on all 3,144. Transcription completion is not review
+is still `provisional-review-required` on all 3,115. Transcription completion is not review
 completion and is not promotion authorization.
 
 Coverage note: **M44** is the only weapon with no Light, Laser, or Laser/Light records
@@ -111,7 +111,7 @@ rather than separate Laser and Light groups — see [§9](#9-attachment-categori
 
 ## 3. Open items
 
-1. **`reviewStatus` is `reviewed` on only 201 of 3,144 detail records.** This is the main
+1. **`reviewStatus` is `reviewed` on only 201 of 3,115 detail records.** This is the main
    remaining work. Review one full row at a time; record reviewer and date only after title,
    subtype, cost, description, every displayed stat, arrow direction and colour effect have
    been checked against that record's own screenshot.
@@ -126,11 +126,10 @@ rather than separate Laser and Light groups — see [§9](#9-attachment-categori
    screen with. Either extend the glyph pass to the variation row or accept that only ladder
    membership guards that column.
 
-3. **`scripts/audit-sweep.mjs` still reports 392 findings in 17 weapons**, dominated by two
-   column failures — `sprintRecoveryMs` reading 0 on six DMR/sniper weapons, and
-   `adsMoveSpeedMultiplier` reading an off-table 0.5 on GRT-CPS, LMR27, M1014 and M87A1. Both
-   are total within the affected weapon, so those columns carry no usable information and need
-   re-capture rather than repair. Full triage in `DERIVED_ATTACHMENT_MODEL.md` §8.
+3. **`scripts/audit-sweep.mjs` is clean:** 0 errors and 0 warnings. Its 30 informational rows
+   are 27 direct Subsonic treatments, two direct ADS-move screenshot exceptions, and SL9 Burst
+   Mode. Keep those registers path-specific; a changed or unregistered source must fail rather
+   than be treated as another safe exception. Full triage is in `DERIVED_ATTACHMENT_MODEL.md` §8.
 
 4. **The 1.3.3.0 site update plan Phase 4 ledger is not updated** for the 2026-07-31 import
    and repairs. See [§20](#20-handoff-report).
@@ -157,6 +156,11 @@ rather than separate Laser and Light groups — see [§9](#9-attachment-categori
 7. **Record identity is not filename position.** Match records to screenshots by identity, never
    by numeric filename prefix. This is what broke on 2026-07-31
    ([§18.5](#185-2026-07-31--missing-attachment-import-and-its-repairs)).
+8. **A detailed stats page is an admission gate.** Before any OCR or transcription, classify each
+   detail screenshot as detailed or compact. A compact selector/collapsed panel is ineligible even
+   when it exposes some values: do not OCR, crop, transcribe, infer, add null reasons, rename,
+   create a review record, or use it in comparisons. Notify the user with its exact source path
+   and request a replacement detailed-stats screenshot.
 
 ---
 
@@ -169,14 +173,20 @@ Unless the user explicitly asks for an inventory-only or OCR-only pass, this is 
 assignment. Do **not** stop after inventory, OCR, provisional JSON, parser adaptation or
 workbook generation. Parser uncertainty opens the visual-review and transcription steps; it
 does not authorize leaving a readable field null or postponing a reviewed rename. Direct
-inspection of the screenshot is sufficient for the manual visual-review gates. Ask the user
-only when the screenshot itself is unreadable, obscured, missing, or needs a judgment that
-cannot be resolved from captured evidence.
+inspection of the screenshot is sufficient for the manual visual-review gates. Immediately
+notify the user when a capture shows a compact panel instead of the detailed stats page;
+otherwise ask only when the screenshot itself is unreadable, obscured, missing, or needs a
+judgment that cannot be resolved from captured evidence.
 
 1. **Stage.** One folder per weapon under `Weapon Attachments/<Class>/<Weapon>/`. Keep original
    files until inventory, hashes and before-counts are recorded. Require one overview/context
    screenshot anchoring weapon identity. New captures for an existing weapon may be staged under
    `Weapon Attachments/Missing/<Weapon>/`.
+   - **Compact-panel stop gate.** Inspect each staged detail screenshot at original resolution
+     before running OCR. If it is a compact selector or collapsed stat panel rather than the
+     detailed stats page, report the exact source path, weapon and attachment to the user and ask
+     for a new detailed capture. Do not process that file further or emit a provisional record;
+     resume only after a replacement is staged.
 2. **OCR.** Run `scripts/extract-attachment-screenshot-ocr.ps1` for broad OCR, then
    `scripts/extract-attachment-panel-ocr.ps1` for fixed panel regions. Keep the pre-rename OCR
    pass — it is the only record of which staged capture a record came from.
@@ -190,8 +200,9 @@ cannot be resolved from captured evidence.
    across every weapon folder. It must inspect red/green pixels and the triangular arrow
    separately from numeric OCR. A rounded value matching the baseline still carries its visible
    comparison, such as red `↑0.7`.
-   - For 1365×768 captures, `RECOIL AMOUNT` sits at roughly `y=675..705` and `RECOIL VARIATION`
-     at `y=700..732`. Scale from actual dimensions and keep compact-panel detection separate.
+   - For 1365×768 detailed captures, `RECOIL AMOUNT` sits at roughly `y=675..705` and `RECOIL
+     VARIATION` at `y=700..732`. Scale from actual dimensions and run the compact-panel stop gate
+     before attempting any field crop.
      The older `690..710` / `710..730` crops miss the coloured recoil amount and collapse the
      class-wide comparison count.
    - An implausibly low per-field or class-wide comparison count is an extractor failure.
@@ -223,7 +234,10 @@ cannot be resolved from captured evidence.
     `outputs/attachment-audit/apply-20260731-canonical-order-renumber.mjs`. The review builder
     numbers filenames by capture order, so this pass puts them back into canonical order and
     rewrites `capture-order.json` — see [§10.1](#101-what-the-numeric-prefix-means).
-12. **Rebuild the workbook** — [§14](#14-the-reference-workbook).
+12. **Build the workbook once, at finalization only** — after all JSON and screenshot gates pass,
+    run `python scripts/build-attachment-workbook.py` exactly once; see
+    [§14](#14-the-reference-workbook). Never use `@oai/artifact-tool` or the superseded
+    JavaScript builder during audit iteration.
 13. **Run the regression gates** — [§15](#15-regression-gates). Record screenshot, detail-row,
     transcribed, reviewed, blocked, renamed, promoted and tested counts separately in the
     Phase 4 ledger.
@@ -235,8 +249,11 @@ cannot be resolved from captured evidence.
 A weapon-class run is not complete because provisional artifacts exist. Before reporting it
 finished, all of the following must hold:
 
-1. Every attachment-detail screenshot has been through the fixed-panel field parser, the
-   missing-field OCR passes and the comparison-indicator extractor.
+1. No compact-panel screenshot entered OCR, field extraction, transcription, renaming, review
+   JSON, comparison extraction or workbook input. Each was reported to the user with its exact
+   source path and awaits a detailed-stats replacement. Every admitted attachment-detail
+   screenshot has been through the fixed-panel field parser, the missing-field OCR passes and the
+   comparison-indicator extractor.
 2. Every visible required field is populated from screenshot evidence. Each remaining `null`
    identifies the exact field, screenshot and evidence-based reason, using `needs recapture`
    only when the screenshot itself is unreadable or obscured. Ordinary parser failure is not an
@@ -284,9 +301,10 @@ convenience shortcut in an older helper script.
 4. **Do not overwrite a targeted fix with a later bulk pass.** Merge overrides by exact
    screenshot and field, with targeted visually reviewed entries winning. Add a regression check
    for every specifically corrected row.
-5. **Compact panels are field-specific, not row-wide failures.** Transcribe every field visibly
-   present in a compact selector screenshot. Leave only genuinely absent fields null, with the
-   exact screenshot and field-specific reason.
+5. **Compact panels are rejected captures.** A compact selector or collapsed stat panel is not
+   partial evidence. Do not transcribe visible fields, infer the rest, create field-specific nulls
+   or spend OCR/crop work on it. Report the exact source path to the user and wait for a detailed
+   stats-page replacement.
 6. **Computer vision is triage, not authority.** Contact sheets, glyph templates, bar matching
    and colour thresholds locate candidates. A value becomes reviewed only after the
    original-resolution screenshot is opened and the field, decimal, unit, arrow and colour are
@@ -322,7 +340,8 @@ convenience shortcut in an older helper script.
     where an arrow with an unchanged value is a discrepancy requiring review.
 15. **Read the printed recoil number directly.** Normalize to reference UI coordinates and read
     the displayed glyphs. The arrow is comparison metadata and must never be used to calculate or
-    force a different value. Compact panels without the recoil row stay null with a reason.
+    force a different value. A compact panel triggers the recapture gate; it never produces a
+    recoil null or a partial record.
 16. **Enforce the Basic-barrel cardinality gate.** Zero or one `Basic` barrel per weapon, never
     more. On a conflict, stop before emitting artifacts and visually distinguish the outlined
     inspected tile from the green checked equipped tile. Do not resolve from velocity alone.
@@ -356,16 +375,23 @@ One attachment-overview screen per weapon showing `CUSTOMIZE <weapon name>` in t
 It anchors identity for every detail screenshot in that folder, takes capture order `0`, and is
 stored as `00_<Weapon>_attachment_overview.png`.
 
-### 8.3 Detail screenshots
+### 8.3 Detailed stats-page screenshots
 
 One detail screen for every selectable option in every available slot: sight/optic, muzzle,
 barrel, underbarrel, magazine, ammunition, ergonomics, left/right/top accessory positions, and
-any weapon-specific slot.
+any weapon-specific slot. Each detail screen must show the **detailed stats page** with the full
+right-side stat panel.
 
 The white bracket and green checkmark identify the **equipped** item. They do **not** identify
 the attachment whose stats are displayed. The thick border and changed card tint identify the
 **highlighted** attachment, which controls the name, description, cost, subtype and right-side
 stats to transcribe.
+
+A compact selector, collapsed panel or other partial stat view is a rejected capture even if
+individual stats are visible. Keep it only long enough to identify and report the source path,
+weapon and attachment to the user; request a replacement detailed-stats screenshot. Do not run
+OCR, field crops, comparison extraction, transcription, null-reasoning, renaming or workbook
+generation for that compact file.
 
 ### 8.4 Baseline coverage
 
@@ -377,6 +403,8 @@ weapon.
 ### 8.5 Image quality
 
 - 1365×768 is readable and acceptable; preserve the original aspect ratio.
+- Capture the full detailed stats page; a compact selector/collapsed panel is recapture-only and
+  must not enter the audit pipeline.
 - Do not crop the attachment cards, title/description, or the right-side stats panel.
 - Avoid notifications, chat overlays, performance overlays and cursor placement over values.
 - If an overlay obscures a value that may change, recapture.
@@ -679,7 +707,10 @@ stat labels; repeated screenshots collapsed to an implausibly identical name; `U
 categories or subtypes; case-insensitive target collisions; duplicate-pair metadata mismatches.
 Record these as parser exceptions — they are not unreadable captures.
 
-### Step 5 — Transcribe displayed stats
+### Step 5 — Transcribe detailed-page stats
+
+Apply this step only to detail captures that passed the compact-panel stop gate in
+[§5](#5-weapon-class-runbook). A compact panel is not eligible for partial transcription.
 
 1. Read the fixed right-side stat panel by field position.
 2. Preserve displayed precision: `2.384 s`, `630 m/s`, `x1.40`, `0.8°`.
@@ -753,7 +784,13 @@ Build it with:
 python scripts/build-attachment-workbook.py
 ```
 
-Takes about six seconds for all 3,206 records. Options: `--json PATH`, `--out PATH`.
+**Build-once finalization rule.** Do not generate a workbook while OCR, screenshot replacement,
+JSON correction, or audit triage is still in progress. Complete and verify the canonical JSON
+first, then run the documented Python command **once** at the end and spot-check only the sheets
+whose data changed. Never use `@oai/artifact-tool` or
+`outputs/attachment-audit/build-workbook.mjs`; both are prohibited for this audit.
+
+Takes about six seconds for all 3,177 canonical records. Options: `--json PATH`, `--out PATH`.
 
 ### What it produces
 
@@ -829,8 +866,8 @@ they cost far more time than they were worth for an artifact that feeds nothing:
 
 Data correctness is the review JSON's job. Run [§15](#15-regression-gates) against the JSON
 instead — it is the artifact that matters, and it is where every defect in
-[§18](#18-correction-history) actually lived. Rebuild the workbook afterwards and spot-check
-only the sheets whose data changed.
+[§18](#18-correction-history) actually lived. After the final JSON gate passes, build the workbook
+once and spot-check only the sheets whose data changed.
 
 The previous builder, `outputs/attachment-audit/build-workbook.mjs`, is superseded. It required
 the Codex-only `@oai/artifact-tool` package, could not run outside that sandbox, and rewrote the
@@ -896,14 +933,17 @@ same capacity regardless of name, suspect the capture, not the cell.
 | Provenance uniqueness | No two records share an `originalFilename` |
 | Filesystem agreement | Zero stale paths, zero screenshots on disk without a record |
 | Casing | [§11.5](#115-casing-validation) |
-| Ladder membership | Recoil amount sits on `RECOIL_MULT[weapon]^n`, recoil variation on `dirVarMult[weapon]^n`, velocity on `0.8^n` |
+| Ladder membership | Recoil amount sits on `RECOIL_MULT[weapon]^n`, recoil variation on `dirVarMult[weapon]^n`, normal velocity on `0.8^n`; subsonic uses an exact reviewed treatment register |
 | Schema types | `fireModes` is an array, never a string |
 
 The ladder gate is the only one that catches a column that is uniformly wrong across a weapon —
 every other check compares records against their siblings, so a shared error looks like the
 baseline. It found all five recoil-variation defects in
-[§18.6](#186-2026-07-31--open-item-fixes). Run `scripts/audit-sweep.mjs` and treat a
-zero-finding result as the requirement, not a bonus.
+[§18.6](#186-2026-07-31--open-item-fixes). Run `scripts/audit-sweep.mjs` and require zero
+errors, zero warnings, and no unregistered/stale treatment or exception entries; reviewed
+informational entries are expected. Its recoil-amount comparison must use the hidden-precision
+weapon base, float32 display conversion and positive one-decimal round-half-up rule pinned in
+`DERIVED_ATTACHMENT_MODEL.md` §5.6.
 
 ---
 
@@ -1017,6 +1057,8 @@ Two non-casing defects found during the same review:
 
 Left alone deliberately: the 10 shotgun chamber-inclusive capacity contradictions, and the seven
 AK-205 laser records whose **collapsed stat panel** shows only four bars and four icons.
+This is historical evidence only. Under the current compact-panel stop gate, a newly encountered
+or re-audited compact capture is reported for recapture rather than partially transcribed.
 The collapsed panel is a **per-screenshot** condition, not a per-slot rule — 322 records share the
 `SELECT RIGHT ACCESSORY` header and most show the full panel. Never encode
 "RIGHT ACCESSORY ⇒ these fields are null".

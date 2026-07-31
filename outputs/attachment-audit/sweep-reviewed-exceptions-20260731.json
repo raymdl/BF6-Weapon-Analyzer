@@ -1,0 +1,32 @@
+{
+  "kind": "sweep-reviewed-exception-register",
+  "reviewedAt": "2026-07-31",
+  "policy": "Each exception is keyed by direct screenshot source path, field, and exact value. Any mismatch or unregistered counterpart remains an error.",
+  "exceptions": [
+    {
+      "check": "off-tier-table",
+      "field": "adsMoveSpeedMultiplier",
+      "weaponName": "CZ3A1",
+      "attachmentType": "Magazine",
+      "attachmentName": "20Rnd Fast Mag",
+      "expectedValue": 1,
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\SMG\\CZ3A1\\40_CZ3A1_Magazine_20Rnd_Fast_Mag.png",
+      "rationale": "Direct source panel reads x1.00, a reviewed exception to the shared ADS-move tier table."
+    },
+    {
+      "check": "off-tier-table",
+      "field": "adsMoveSpeedMultiplier",
+      "weaponName": "PP-19",
+      "attachmentType": "Magazine",
+      "attachmentName": "20Rnd Fast Mag",
+      "expectedValue": 1,
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\SMG\\PP-19\\39_PP-19_Magazine_20Rnd_Fast_Mag.png",
+      "rationale": "Direct source panel reads x1.00, a reviewed exception to the shared ADS-move tier table."
+    }
+  ],
+  "counts": {
+    "exceptions": 2,
+    "recoilLadder": 0,
+    "adsMoveTier": 2
+  }
+}

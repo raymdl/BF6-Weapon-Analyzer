@@ -1,0 +1,3264 @@
+{
+  "kind": "bulk-suspect-screenshot-recapture",
+  "reviewedAt": "2026-07-31",
+  "sourcePolicy": "Every entry was read directly from its original screenshot field strip; no averages, interpolation, or weapon-wide default was used.",
+  "corrected": [
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\01_GRT-CPS_Muzzle_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Hider",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\02_GRT-CPS_Muzzle_Flash_Hider.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Comp",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\03_GRT-CPS_Muzzle_Flash_Comp.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensator",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\04_GRT-CPS_Muzzle_Compensator.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Linear Comp",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\05_GRT-CPS_Muzzle_Linear_Comp.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Single-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\06_GRT-CPS_Muzzle_Single-Port_Brake.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Double-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\07_GRT-CPS_Muzzle_Double-Port_Brake.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensated Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\08_GRT-CPS_Muzzle_Compensated_Brake.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Standard Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\09_GRT-CPS_Muzzle_Standard_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Long Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\10_GRT-CPS_Muzzle_Long_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\11_GRT-CPS_Muzzle_CQB_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\12_GRT-CPS_Muzzle_Lightened_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Barrel",
+      "attachmentName": "20\" Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\13_GRT-CPS_Barrel_Basic.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Barrel",
+      "attachmentName": "16\" Rifle",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\14_GRT-CPS_Barrel_Basic_16in_Rifle.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Barrel",
+      "attachmentName": "14.5\" Carbine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\15_GRT-CPS_Barrel_Short.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Barrel",
+      "attachmentName": "16\" Fluted",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\16_GRT-CPS_Barrel_Light.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Light",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\17_GRT-CPS_Light_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Aimed",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\18_GRT-CPS_Light_Taclight_-_Aimed.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Light",
+      "attachmentName": "Flashlight",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\19_GRT-CPS_Light_Flashlight.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Hipfire",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\20_GRT-CPS_Light_Taclight_-_Hipfire.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Light",
+      "attachmentName": "Range Finder",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\21_GRT-CPS_Light_Range_Finder.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\29_GRT-CPS_Grip_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\30_GRT-CPS_Grip_Folding_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\31_GRT-CPS_Grip_Folding_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Alloy Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\32_GRT-CPS_Grip_Alloy_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\33_GRT-CPS_Grip_Ribbed_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\36_GRT-CPS_Grip_Ribbed_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\37_GRT-CPS_Grip_Canted_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Handstop",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\40_GRT-CPS_Grip_Slim_Handstop.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\41_GRT-CPS_Grip_Slim_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Full Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\42_GRT-CPS_Grip_Full_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Bipod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\43_GRT-CPS_Grip_Bipod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "PTT Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\44_GRT-CPS_Grip_PTT_Grip_Pod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "QD Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\45_GRT-CPS_Grip_QD_Grip_Pod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\46_GRT-CPS_Grip_Classic_Grip_Pod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Magazine",
+      "attachmentName": "20Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\47_GRT-CPS_Magazine_20Rnd_Magazine.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Magazine",
+      "attachmentName": "20Rnd Fast Mag",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\48_GRT-CPS_Magazine_20Rnd_Fast_Mag.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Magazine",
+      "attachmentName": "15Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\49_GRT-CPS_Magazine_15Rnd_Magazine.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Ammo",
+      "attachmentName": "Hollow Point",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\51_GRT-CPS_Ammo_Hollow_Point.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Ammo",
+      "attachmentName": "FMJ",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\52_GRT-CPS_Ammo_Standard.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Ammo",
+      "attachmentName": "Tungsten Core",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\53_GRT-CPS_Ammo_Penetration.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Ammo",
+      "attachmentName": "Frangible",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\55_GRT-CPS_Ammo_Frangible.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Ammo",
+      "attachmentName": "Synthetic Tip",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\56_GRT-CPS_Ammo_Synthetic.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\57_GRT-CPS_Ergonomics_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Aftermarket Buffer",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\58_GRT-CPS_Ergonomics_Aftermarket_Buffer.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Laser",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\22_GRT-CPS_Laser_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Red",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\23_GRT-CPS_Laser_5_MW_Red.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\24_GRT-CPS_Laser_50_MW_Violet.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\25_GRT-CPS_Laser_5_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\26_GRT-CPS_Laser_50_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\27_GRT-CPS_Laser_50_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "GRT-CPS",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\28_GRT-CPS_Laser_120_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\01_LMR27_Muzzle_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Hider",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\02_LMR27_Muzzle_Flash_Hider.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Comp",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\03_LMR27_Muzzle_Flash_Comp.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Single-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\04_LMR27_Muzzle_Single-Port_Brake.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensator",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\05_LMR27_Muzzle_Compensator.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Linear Comp",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\06_LMR27_Muzzle_Linear_Comp.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Double-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\07_LMR27_Muzzle_Double-Port_Brake.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensated Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\08_LMR27_Muzzle_Compensated_Brake.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Standard Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\09_LMR27_Muzzle_Standard_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Long Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\10_LMR27_Muzzle_Long_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\11_LMR27_Muzzle_CQB_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\12_LMR27_Muzzle_Lightened_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Barrel",
+      "attachmentName": "21.5\" Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\13_LMR27_Barrel_Basic.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Barrel",
+      "attachmentName": "24\" Extended",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\14_LMR27_Barrel_Extended.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Barrel",
+      "attachmentName": "21.5\" Fluted",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\15_LMR27_Barrel_Light.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Light",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\16_LMR27_Light_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Aimed",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\17_LMR27_Light_Taclight_-_Aimed.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Light",
+      "attachmentName": "Flashlight",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\18_LMR27_Light_Flashlight.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Hipfire",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\19_LMR27_Light_Taclight_-_Hipfire.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Light",
+      "attachmentName": "Range Finder",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\20_LMR27_Light_Range_Finder.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\28_LMR27_Grip_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\29_LMR27_Grip_Folding_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Handstop",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\30_LMR27_Grip_Slim_Handstop.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Factory Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\31_LMR27_Grip_FACTORY_ANGLED.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Bipod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\32_LMR27_Grip_Bipod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Alloy Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\33_LMR27_Grip_Alloy_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\34_LMR27_Grip_Ribbed_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\37_LMR27_Grip_Folding_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\38_LMR27_Grip_Ribbed_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\39_LMR27_Grip_Canted_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Adjustable Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\42_LMR27_Grip_Adjustable_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Full Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\43_LMR27_Grip_Full_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "PTT Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\44_LMR27_Grip_PTT_Grip_Pod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "QD Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\45_LMR27_Grip_QD_Grip_Pod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\46_LMR27_Grip_Classic_Grip_Pod.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Magazine",
+      "attachmentName": "10Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\47_LMR27_Magazine_10Rnd_Magazine.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Magazine",
+      "attachmentName": "10Rnd Fast Mag",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\48_LMR27_Magazine_10Rnd_Fast_Mag.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Ammo",
+      "attachmentName": "FMJ",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\53_LMR27_Ammo_Standard.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Ammo",
+      "attachmentName": "Tungsten Core",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\54_LMR27_Ammo_Penetration.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Ammo",
+      "attachmentName": "Frangible",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\55_LMR27_Ammo_Frangible.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Ammo",
+      "attachmentName": "Hollow Point",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\56_LMR27_Ammo_Hollow_Point.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Ammo",
+      "attachmentName": "Synthetic Tip",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\57_LMR27_Ammo_Synthetic.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\58_LMR27_Ergonomics_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Improved Mag Catch",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\59_LMR27_Ergonomics_Improved_Mag_Catch.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Laser",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\21_LMR27_Laser_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Red",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\22_LMR27_Laser_5_MW_Red.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\23_LMR27_Laser_50_MW_Violet.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\24_LMR27_Laser_5_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\25_LMR27_Laser_50_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\26_LMR27_Laser_50_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "LMR27",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\LMR27\\27_LMR27_Laser_120_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\01_M1014_Muzzle_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensator",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\02_M1014_Muzzle_Compensator.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\03_M1014_Muzzle_CQB_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\04_M1014_Muzzle_Lightened_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Barrel",
+      "attachmentName": "18.5\" Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\05_M1014_Barrel_Basic.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Barrel",
+      "attachmentName": "22.5\" Extended",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\06_M1014_Barrel_Extended.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Light",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\07_M1014_Light_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Aimed",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\08_M1014_Light_Taclight_-_Aimed.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Hipfire",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\09_M1014_Light_Taclight_-_Hipfire.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Light",
+      "attachmentName": "Flashlight",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\10_M1014_Light_Flashlight.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\25_M1014_Grip_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Handstop",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\26_M1014_Grip_Slim_Handstop.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\27_M1014_Grip_Folding_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Alloy Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\28_M1014_Grip_Alloy_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\29_M1014_Grip_Ribbed_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\32_M1014_Grip_Folding_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\33_M1014_Grip_Ribbed_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\34_M1014_Grip_Canted_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Adjustable Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\37_M1014_Grip_Adjustable_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\38_M1014_Grip_Slim_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Grip",
+      "attachmentName": "Full Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\39_M1014_Grip_Full_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Magazine",
+      "attachmentName": "6 Shell Tube",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\55_M1014_Magazine_6_SHELL_TUBE.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Ammo",
+      "attachmentName": "Buckshot",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\61_M1014_Ammo_Standard.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Ammo",
+      "attachmentName": "#00 Buckshot",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\62_M1014_Ammo_00_Buckshot.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Ammo",
+      "attachmentName": "Flechette",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\63_M1014_Ammo_Flechette.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Ammo",
+      "attachmentName": "Slugs",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\64_M1014_Ammo_Slugs.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Laser",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\11_M1014_Laser_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\12_M1014_Laser_50_MW_Violet.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Red",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\13_M1014_Laser_5_MW_Red.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\14_M1014_Laser_5_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\15_M1014_Laser_50_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\16_M1014_Laser_50_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M1014",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M1014\\17_M1014_Laser_120_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\01_M87A1_Muzzle_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensator",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\02_M87A1_Muzzle_Compensator.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\03_M87A1_Muzzle_CQB_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\04_M87A1_Muzzle_Lightened_Suppressor.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Barrel",
+      "attachmentName": "20\" Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\05_M87A1_Barrel_Basic.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Barrel",
+      "attachmentName": "24\" Extended",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\06_M87A1_Barrel_Extended.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Light",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\07_M87A1_Light_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Aimed",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\08_M87A1_Light_Taclight_-_Aimed.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Light",
+      "attachmentName": "Flashlight",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\09_M87A1_Light_Flashlight.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Hipfire",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\10_M87A1_Light_Taclight_-_Hipfire.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\18_M87A1_Grip_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\19_M87A1_Grip_Folding_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Alloy Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\20_M87A1_Grip_Alloy_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\21_M87A1_Grip_Ribbed_Vertical.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\23_M87A1_Grip_Folding_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\24_M87A1_Grip_Ribbed_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\25_M87A1_Grip_Canted_Stubby.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Handstop",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\27_M87A1_Grip_Slim_Handstop.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Adjustable Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\28_M87A1_Grip_Adjustable_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\29_M87A1_Grip_Slim_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Full Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\32_M87A1_Grip_Full_Angled.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Magazine",
+      "attachmentName": "7 Shell Tube",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\33_M87A1_Magazine_7_SHELL_TUBE.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Ammo",
+      "attachmentName": "#01 Buckshot",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\37_M87A1_Ammo_Standard.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Ammo",
+      "attachmentName": "#00 Buckshot",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\38_M87A1_Ammo_00_Buckshot.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Ammo",
+      "attachmentName": "Flechette",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\39_M87A1_Ammo_Flechette.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Ammo",
+      "attachmentName": "Slugs",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\40_M87A1_Ammo_Slugs.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Laser",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\11_M87A1_Laser_None.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Red",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\12_M87A1_Laser_5_MW_Red.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\13_M87A1_Laser_50_MW_Violet.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\14_M87A1_Laser_5_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\15_M87A1_Laser_50_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\16_M87A1_Laser_50_MW_Green.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\17_M87A1_Laser_120_MW_Blue.png",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.5,
+      "after": 0.6,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\01_M39 EMR_Muzzle_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Hider",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\02_M39 EMR_Muzzle_Flash_Hider.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Comp",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\03_M39 EMR_Muzzle_Flash_Comp.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Single-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\04_M39 EMR_Muzzle_Single-Port_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensator",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\05_M39 EMR_Muzzle_Compensator.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Linear Comp",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\06_M39 EMR_Muzzle_Linear_Comp.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Standard Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\07_M39 EMR_Muzzle_Standard_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\08_M39 EMR_Muzzle_Lightened_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Double-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\09_M39 EMR_Muzzle_Double-Port_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensated Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\10_M39 EMR_Muzzle_Compensated_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\11_M39 EMR_Muzzle_CQB_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Long Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\12_M39 EMR_Muzzle_Long_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Barrel",
+      "attachmentName": "18\" EBR",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\13_M39 EMR_Barrel_Basic.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Barrel",
+      "attachmentName": "22\" Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\14_M39 EMR_Barrel_Extended.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Barrel",
+      "attachmentName": "16\" Short",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\15_M39 EMR_Barrel_Short.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\29_M39 EMR_Grip_Folding_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Alloy Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\30_M39 EMR_Grip_Alloy_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\31_M39 EMR_Grip_Ribbed_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "6H64 Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\33_M39 EMR_Grip_6H64_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\34_M39 EMR_Grip_Classic_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\35_M39 EMR_Grip_Folding_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\36_M39 EMR_Grip_Ribbed_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\37_M39 EMR_Grip_Canted_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Stippled Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\38_M39 EMR_Grip_Stippled_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Low-Profile Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\39_M39 EMR_Grip_Low-Profile_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "PTT Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\44_M39 EMR_Grip_PTT_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "QD Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\45_M39 EMR_Grip_QD_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\46_M39 EMR_Grip_Classic_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Magazine",
+      "attachmentName": "20Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\47_M39 EMR_Magazine_20Rnd_Magazine.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Magazine",
+      "attachmentName": "15Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\50_M39 EMR_Magazine_15Rnd_Magazine.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ammo",
+      "attachmentName": "FMJ",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\52_M39 EMR_Ammo_Standard.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Tungsten Core",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\53_M39 EMR_Ammo_Penetration.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Polymer Case",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\54_M39 EMR_Ammo_Lightweight.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Match Grade",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\55_M39 EMR_Ammo_Long-range.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Frangible",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\56_M39 EMR_Ammo_Frangible.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Hollow Point",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\57_M39 EMR_Ammo_Hollow_Point.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\58_M39 EMR_Ergonomics_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Aftermarket Buffer",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\59_M39 EMR_Ergonomics_Aftermarket_Buffer.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Improved Mag Catch",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\60_M39 EMR_Ergonomics_Improved_Mag_Catch.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Laser",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\21_M39 EMR_Laser_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Red",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\22_M39 EMR_Laser_5_MW_Red.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\23_M39 EMR_Laser_50_MW_Violet.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\24_M39 EMR_Laser_5_MW_Green.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\25_M39 EMR_Laser_50_MW_Green.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\26_M39 EMR_Laser_50_MW_Blue.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "M39 EMR",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\M39 EMR\\27_M39 EMR_Laser_120_MW_Blue.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\01_PSR_Muzzle_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Hider",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\02_PSR_Muzzle_Flash_Hider.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Single-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\03_PSR_Muzzle_Single-Port_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Double-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\04_PSR_Muzzle_Double-Port_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensated Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\05_PSR_Muzzle_Compensated_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Standard Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\06_PSR_Muzzle_Standard_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Long Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\07_PSR_Muzzle_Long_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\08_PSR_Muzzle_Lightened_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\09_PSR_Muzzle_CQB_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Barrel",
+      "attachmentName": "26\" Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\10_PSR_Barrel_Basic.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Barrel",
+      "attachmentName": "27\" MK22",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\11_PSR_Barrel_Extended.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Grip",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\24_PSR_Grip_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Grip",
+      "attachmentName": "Low-Profile Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\25_PSR_Grip_Low-Profile_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Grip",
+      "attachmentName": "Bipod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\28_PSR_Grip_Bipod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Grip",
+      "attachmentName": "QD Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\29_PSR_Grip_QD_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\30_PSR_Grip_Classic_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Magazine",
+      "attachmentName": "10Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\31_PSR_Magazine_10Rnd_Magazine.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Magazine",
+      "attachmentName": "7Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\32_PSR_Magazine_7Rnd_Magazine.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Ammo",
+      "attachmentName": "FMJ",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\33_PSR_Ammo_Standard.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Tungsten Core",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\34_PSR_Ammo_Penetration.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Match Grade",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\35_PSR_Ammo_Long-range.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Ammo",
+      "attachmentName": "Frangible",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\36_PSR_Ammo_Frangible.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\37_PSR_Ergonomics_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Improved Mag Catch",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\38_PSR_Ergonomics_Improved_Mag_Catch.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "DLC Bolt",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\39_PSR_Ergonomics_DLC_Bolt.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Laser",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\17_PSR_Laser_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\19_PSR_Laser_50_MW_Violet.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\20_PSR_Laser_5_MW_Green.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\21_PSR_Laser_50_MW_Green.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\22_PSR_Laser_50_MW_Blue.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "PSR",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\23_PSR_Laser_120_MW_Blue.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\01_SVDM_Muzzle_None.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Single-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\03_SVDM_Muzzle_Single-Port_Brake.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Double-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\04_SVDM_Muzzle_Double-Port_Brake.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensated Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\05_SVDM_Muzzle_Compensated_Brake.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Standard Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\07_SVDM_Muzzle_Standard_Suppressor.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\08_SVDM_Muzzle_CQB_Suppressor.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\09_SVDM_Muzzle_Lightened_Suppressor.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Long Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\10_SVDM_Muzzle_Long_Suppressor.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "565MM Para",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\11_SVDM_Barrel_Basic.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "550MM Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\12_SVDM_Barrel_Short.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "620MM Classic",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\13_SVDM_Barrel_Extended.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "565MM Fluted",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\14_SVDM_Barrel_Light.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\26_SVDM_Laser_120_MW_Blue.png",
+      "field": "damage",
+      "before": 0,
+      "after": 41,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\01_SVDM_Muzzle_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Hider",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\02_SVDM_Muzzle_Flash_Hider.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Single-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\03_SVDM_Muzzle_Single-Port_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Double-Port Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\04_SVDM_Muzzle_Double-Port_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Compensated Brake",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\05_SVDM_Muzzle_Compensated_Brake.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Linear Comp",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\06_SVDM_Muzzle_Linear_Comp.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Standard Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\07_SVDM_Muzzle_Standard_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "CQB Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\08_SVDM_Muzzle_CQB_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Lightened Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\09_SVDM_Muzzle_Lightened_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Long Suppressor",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\10_SVDM_Muzzle_Long_Suppressor.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "565MM Para",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\11_SVDM_Barrel_Basic.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "550MM Factory",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\12_SVDM_Barrel_Short.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "620MM Classic",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\13_SVDM_Barrel_Extended.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Barrel",
+      "attachmentName": "565MM Fluted",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\14_SVDM_Barrel_Light.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Hipfire",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\17_SVDM_Light_Taclight_-_Hipfire.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Light",
+      "attachmentName": "Range Finder",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\19_SVDM_Light_Range_Finder.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\27_SVDM_Grip_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\28_SVDM_Grip_Folding_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Alloy Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\30_SVDM_Grip_Alloy_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\31_SVDM_Grip_Ribbed_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "6H64 Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\32_SVDM_Grip_6H64_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\33_SVDM_Grip_Classic_Vertical.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\34_SVDM_Grip_Folding_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\35_SVDM_Grip_Ribbed_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\36_SVDM_Grip_Canted_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Stippled Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\37_SVDM_Grip_Stippled_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Low-Profile Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\38_SVDM_Grip_Low-Profile_Stubby.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Bipod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\42_SVDM_Grip_Bipod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "PTT Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\43_SVDM_Grip_PTT_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "QD Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\44_SVDM_Grip_QD_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\45_SVDM_Grip_Classic_Grip_Pod.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Magazine",
+      "attachmentName": "10Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\46_SVDM_Magazine_10Rnd_Magazine.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Magazine",
+      "attachmentName": "5Rnd Magazine",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\47_SVDM_Magazine_5Rnd_Magazine.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ammo",
+      "attachmentName": "FMJ",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\50_SVDM_Ammo_Standard.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ammo",
+      "attachmentName": "Tungsten Core",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\51_SVDM_Ammo_Penetration.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ammo",
+      "attachmentName": "Match Grade",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\52_SVDM_Ammo_Long-range.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ammo",
+      "attachmentName": "Frangible",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\53_SVDM_Ammo_Frangible.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ammo",
+      "attachmentName": "Hollow Point",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\54_SVDM_Ammo_Hollow_Point.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\55_SVDM_Ergonomics_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Aftermarket Buffer",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\56_SVDM_Ergonomics_Aftermarket_Buffer.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Improved Mag Catch",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\57_SVDM_Ergonomics_Improved_Mag_Catch.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\20_SVDM_Laser_None.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\21_SVDM_Laser_50_MW_Violet.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Red",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\22_SVDM_Laser_5_MW_Red.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\23_SVDM_Laser_5_MW_Green.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\24_SVDM_Laser_50_MW_Green.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\25_SVDM_Laser_50_MW_Blue.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVDM",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVDM\\26_SVDM_Laser_120_MW_Blue.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "None",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\26_SVK-8.6_Grip_None.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Folding Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\27_SVK-8.6_Grip_Folding_Vertical.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Alloy Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\28_SVK-8.6_Grip_Alloy_Vertical.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\29_SVK-8.6_Grip_Ribbed_Vertical.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "6H64 Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\30_SVK-8.6_Grip_6H64_Vertical.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\31_SVK-8.6_Grip_Classic_Vertical.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Ribbed Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\33_SVK-8.6_Grip_Ribbed_Stubby.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\34_SVK-8.6_Grip_Canted_Stubby.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Stippled Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\35_SVK-8.6_Grip_Stippled_Stubby.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Handstop",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\36_SVK-8.6_Grip_Slim_Handstop.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Bipod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\37_SVK-8.6_Grip_Bipod.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "PTT Grip Pod",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\38_SVK-8.6_Grip_PTT_Grip_Pod.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\40_SVK-8.6_Grip_Slim_Angled.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Full Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\41_SVK-8.6_Grip_Full_Angled.png",
+      "field": "damage",
+      "before": 0,
+      "after": 66,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\40_SVK-8.6_Grip_Slim_Angled.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    },
+    {
+      "weaponName": "SVK-8.6",
+      "attachmentType": "Grip",
+      "attachmentName": "Full Angled",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\SVK-8.6\\41_SVK-8.6_Grip_Full_Angled.png",
+      "field": "sprintRecoveryMs",
+      "before": 0,
+      "after": 200,
+      "result": "corrected"
+    }
+  ],
+  "verifiedUnchanged": [
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Vertical",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\30_M87A1_Grip_Classic_Vertical.png",
+      "field": "recoilAmountDegrees",
+      "value": 2.7,
+      "result": "screenshot-confirmed-unchanged"
+    },
+    {
+      "weaponName": "M87A1",
+      "attachmentType": "Grip",
+      "attachmentName": "Low-Profile Stubby",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\M87A1\\31_M87A1_Grip_Low-Profile_Stubby.png",
+      "field": "recoilAmountDegrees",
+      "value": 2.7,
+      "result": "screenshot-confirmed-unchanged"
+    }
+  ],
+  "counts": {
+    "duplicateRecordsRemoved": 29,
+    "sourcePngsDeleted": 0,
+    "correctedFields": 323,
+    "alreadyCorrectFields": 0,
+    "verifiedUnchangedFields": 2
+  }
+}

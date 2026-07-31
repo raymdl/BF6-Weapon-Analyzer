@@ -55,7 +55,7 @@ test('Phase 0 fixtures are complete, full-roster, and path-portable', () => {
   assert.equal(inputs.auditSummary.stats.length, 3115);
   assert.equal(inputs.auditSummary.weaponNames.length, 62);
   assert.equal(inputs.subsonicTreatments.length, 27);
-  assert.equal(inputs.exceptions.length, 2);
+  assert.equal(inputs.exceptions.length, 0);
   assert.equal(inputs.bulkRecapture.counts.correctedFields, 323);
   assert.equal(inputs.bulkRecapture.counts.duplicateRecordsRemoved, 29);
   assert.equal(inputs.dedupeExclusions.exclusions.length, 29);
@@ -78,12 +78,11 @@ test('Phase 0 fixtures are complete, full-roster, and path-portable', () => {
   }
 });
 
-test('sweep is exactly 30 informational findings with no warnings or errors', () => {
+test('sweep is exactly 28 informational findings with no warnings or errors', () => {
   const report = runSweep({ root: DEFAULT_ROOT });
-  assert.deepEqual(report.severityCounts, { error: 0, warn: 0, info: 30 });
+  assert.deepEqual(report.severityCounts, { error: 0, warn: 0, info: 28 });
   assert.deepEqual(report.counts, {
     'fire-mode-ergo': 1,
-    'reviewed-exception': 2,
     'subsonic-treatment': 27,
   });
   assert.equal(report.findings.filter(finding => finding.check === 'recoil-ladder').length, 0);
@@ -156,7 +155,7 @@ test('barrel velocity and every current ADS, sprint-recovery, and ADS-move table
   const adsMoveOverrides = new Set(inputs.exceptions
     .filter(item => item.check === 'off-tier-table' && item.field === 'adsMoveSpeedMultiplier')
     .map(item => sourceIdentity(item.sourcePath)));
-  assert.equal(adsMoveOverrides.size, 2);
+  assert.equal(adsMoveOverrides.size, 0);
   assert.ok(adsTable.length > 0 && adsMoveTable.length > 0 && sprintTable.length > 0);
   for (const row of auditRows) {
     const { stats } = row;

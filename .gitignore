@@ -33,7 +33,6 @@ scripts/*attachment-screenshot*
 # taxonomy test stays local: it imports the taxonomy module, which the review
 # builder also imports, and none of that chain runs without the corpus.
 !scripts/attachment-screenshot-schema.test.mjs
-scripts/audit-sweep.mjs
 scripts/build-attachment-capture-order.mjs
 scripts/extract-corpus-recoil-glyphs.py
 # Contact-sheet and review-crop generators for the audit's visual passes.
@@ -92,6 +91,11 @@ outputs/attachment-audit/*
 !outputs/attachment-audit/field-ocr.json
 !outputs/attachment-audit/highlight-cards.json
 !outputs/attachment-audit/cost-ocr.json
+!outputs/attachment-audit/subsonic-velocity-treatments-20260731.json
+!outputs/attachment-audit/sweep-reviewed-exceptions-20260731.json
+!outputs/attachment-audit/bulk-suspect-recapture-summary-20260731.json
+!outputs/attachment-audit/deduped-source-record-exclusions-20260731.json
+!outputs/attachment-audit/sl9-detailed-recapture-20260731.json
 
 # Local one-off export helpers.
 scripts/export_dmg.py

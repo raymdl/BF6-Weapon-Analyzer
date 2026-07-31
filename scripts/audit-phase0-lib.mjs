@@ -222,8 +222,8 @@ export function loadPhase0Inputs(root = DEFAULT_ROOT) {
   if (subsonicTreatments.length !== 27 || subsonic.counts?.treatments !== 27) {
     throw new Error(`Subsonic treatment fixture must contain 27 rows; found ${subsonicTreatments.length}`);
   }
-  if (exceptions.length !== 2 || reviewedExceptions.counts?.exceptions !== 2) {
-    throw new Error(`Reviewed sweep exception fixture must contain the two retained ADS-move rows; found ${exceptions.length}`);
+  if (exceptions.length !== 0 || reviewedExceptions.counts?.exceptions !== 0) {
+    throw new Error(`Reviewed sweep exception fixture must be empty after the ADS-move 1.0 migration; found ${exceptions.length}`);
   }
   if (bulkRecapture.kind !== 'bulk-suspect-screenshot-recapture'
       || bulkRecapture.counts?.correctedFields !== 323
