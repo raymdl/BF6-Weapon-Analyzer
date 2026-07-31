@@ -43,6 +43,100 @@ function byId(items) {
   return Object.fromEntries((items ?? []).map(item => [item.id, item]));
 }
 
+function hasOwn(record, field) {
+  return record != null && Object.hasOwn(record, field);
+}
+
+function millisecondsToSeconds(milliseconds) {
+  return milliseconds == null ? null : +(milliseconds / 1000).toFixed(3);
+}
+
+/**
+ * Resolve tactical reload timing while legacy and derived attachment data coexist.
+ *
+ * `branch`, `mode`, and `reason` are deliberately returned by this narrow helper
+ * for focused tests; applyAttachments only exposes the resolved tactical reload.
+ */
+export function resolveReloadTiming({
+  weaponTacRld,
+  magData = null,
+  ergoData = null,
+  weaponErgo = null,
+} = {}) {
+  const hasReloadSpeedTier = hasOwn(magData, 'reloadSpeedTier');
+  const hasTacRldOverride = hasOwn(magData, 'tacRldOverrideMs');
+  const hasReloadSpeedMult = hasOwn(ergoData, 'reloadSpeedMult');
+  const hasDerivedReload = hasReloadSpeedTier || hasTacRldOverride || hasReloadSpeedMult;
+
+  // Keep the old display-name fallback and precedence exactly intact while the
+  // derived fields are absent or cannot be trusted.
+  let magCatchTacRld = null;
+  if (ergoData?.id === 'mag_catch' && weaponErgo?.magCatchRld) {
+    const isFastMag = !!(magData?.name?.toLowerCase().includes('fast'));
+    const milliseconds = isFastMag
+      ? (weaponErgo.magCatchRld.fast ?? weaponErgo.magCatchRld.reg)
+      : weaponErgo.magCatchRld.reg;
+    if (milliseconds != null) magCatchTacRld = milliseconds;
+  }
+  const legacyTacRld = magCatchTacRld != null
+    ? millisecondsToSeconds(magCatchTacRld)
+    : magData?.tacRld != null
+      ? millisecondsToSeconds(magData.tacRld)
+      : weaponTacRld;
+  const legacy = reason => ({ tacRld: legacyTacRld, branch: 'legacy', reason });
+
+  if (!hasDerivedReload) return legacy('no-derived-fields');
+
+  const validReloadSpeedTier = !hasReloadSpeedTier
+    || (typeof magData.reloadSpeedTier === 'number'
+      && Number.isFinite(magData.reloadSpeedTier)
+      && Number.isInteger(magData.reloadSpeedTier)
+      && magData.reloadSpeedTier >= 0);
+  const validTacRldOverride = !hasTacRldOverride
+    || (typeof magData.tacRldOverrideMs === 'number'
+      && Number.isFinite(magData.tacRldOverrideMs)
+      && Number.isInteger(magData.tacRldOverrideMs)
+      && magData.tacRldOverrideMs > 0);
+  const validReloadSpeedMult = !hasReloadSpeedMult
+    || (typeof ergoData.reloadSpeedMult === 'number'
+      && Number.isFinite(ergoData.reloadSpeedMult)
+      && ergoData.reloadSpeedMult > 0);
+  if (!validReloadSpeedTier || !validTacRldOverride || !validReloadSpeedMult) {
+    return legacy('invalid-derived-input');
+  }
+
+  // An override plus Mag Catch or another derived ergonomic multiplier has no
+  // captured stacking rule yet. Keep it on the exact legacy path for now.
+  if (hasTacRldOverride && (ergoData?.id === 'mag_catch' || hasReloadSpeedMult)) {
+    return legacy('unresolved-override-stack');
+  }
+
+  if (hasTacRldOverride) {
+    return {
+      tacRld: millisecondsToSeconds(magData.tacRldOverrideMs),
+      branch: 'derived',
+      mode: 'override',
+      reason: 'derived-override',
+    };
+  }
+
+  if (typeof weaponTacRld !== 'number' || !Number.isFinite(weaponTacRld) || weaponTacRld <= 0) {
+    return legacy('invalid-derived-base');
+  }
+  const magMult = 1.13 ** (hasReloadSpeedTier ? magData.reloadSpeedTier : 0);
+  const ergoMult = hasReloadSpeedMult ? ergoData.reloadSpeedMult : 1;
+  const derivedTacRld = +(weaponTacRld / (magMult * ergoMult)).toFixed(3);
+  if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {
+    return legacy('invalid-derived-result');
+  }
+  return {
+    tacRld: derivedTacRld,
+    branch: 'derived',
+    mode: 'normal',
+    reason: 'derived-normal',
+  };
+}
+
 export function setAttachmentContext(updates) {
   Object.assign(_ctx, updates);
   if (updates.MUZZLES) _ctx.MUZZLES_BY_ID = byId(_ctx.MUZZLES);
@@ -180,16 +274,13 @@ export function applyAttachments(w, atts) {
   const magAdsMoveSpeedTierShift  = magData?.adsMoveSpeedTierShift  ?? 0;
   const gripSprintRecoveryTierShift = grp.sprintRecoveryTierShift ?? 0;
   const magMag    = magData?.mag   ?? null;
-  const magTacRld = magData?.tacRld ?? null;
-
-  // Mag Catch tacRld override: use per-weapon reload time based on fast/regular mag
   const we = WEAPON_ERGO[w.id] ?? null;
-  let magCatchTacRld = null;
-  if (ergoData.id === 'mag_catch' && we?.magCatchRld) {
-    const isFastMag = !!(magData?.name?.toLowerCase().includes('fast'));
-    const rld = isFastMag ? (we.magCatchRld.fast ?? we.magCatchRld.reg) : we.magCatchRld.reg;
-    if (rld != null) magCatchTacRld = rld;
-  }
+  const reloadResolution = resolveReloadTiming({
+    weaponTacRld: w.tacRld,
+    magData,
+    ergoData,
+    weaponErgo: we,
+  });
 
   // ── Tier index resolution ─────────────────────────────────────────────────────
   // Clamp all tier indices to each stat table's 0-based bounds.
@@ -272,9 +363,7 @@ export function applyAttachments(w, atts) {
     bulletVel: w.bulletVel != null ? Math.round(w.bulletVel * (bar.velMult ?? 1)) : null,
     deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : w.deployT,
     mag:    magMag ?? w.mag,
-    tacRld: magCatchTacRld != null ? +(magCatchTacRld / 1000).toFixed(3)
-          : magTacRld      != null ? +(magTacRld      / 1000).toFixed(3)
-          : w.tacRld,
+    tacRld: reloadResolution.tacRld,
   };
 }
 
