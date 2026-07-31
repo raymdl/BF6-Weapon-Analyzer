@@ -26,12 +26,10 @@ Weapon Attachments/
 # the only record of how the corpus was built and corrected and are too valuable
 # to keep on one machine. The per-class handoff prompts stay local.
 *_ATTACHMENT_SCREENSHOT_AUDIT_PROMPT.md
-schemas/attachment-screenshot-review.schema.json
 schemas/outputs/
 scripts/*attachment-screenshot*
 scripts/audit-sweep.mjs
 scripts/build-attachment-capture-order.mjs
-scripts/build-attachment-workbook.py
 scripts/extract-corpus-recoil-glyphs.py
 # Contact-sheet and review-crop generators for the audit's visual passes.
 scripts/make-*-sheets.py
