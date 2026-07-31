@@ -28,19 +28,22 @@ const expectedErgo = { avail: ['mag_catch', 'buffer'], magCatchRld: { reg: 2321,
 const expectedMag = {
   defAds: 3,
   defSpr: 3,
-  defAms: 3,
+  defAms: 4,
   def: '30_rnd',
   mags: {
     '30_rnd': { name: '30 Rnd', pts: 5, mag: 30, tacRld: 2467, adsTimeTierShift: 0, sprintRecoveryTierShift: -1, adsMoveSpeedTierShift: 0 },
     '30_fast': { name: '30 Fast', pts: 5, mag: 30, tacRld: 2183, adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0 },
     '35_rnd': { name: '35 Rnd', pts: 15, mag: 35, tacRld: 2467, adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1 },
-    '20_fast': { name: '20 Fast', pts: 5, mag: 20, tacRld: 2467, adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0 },
+    '20_fast': { name: '20 Fast', pts: 5, mag: 20, tacRld: 2467, adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: -3 },
     '53_rnd': { name: '53 Rnd', pts: 45, mag: 53, tacRld: 2667, adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1 },
   },
   baseSprintRecoveryTier: 4,
   weaponSprintRecoveryTierShift: -1,
   sprintRecoveryTierTable: 'primary',
 };
+const receiptExpectedMag = JSON.parse(JSON.stringify(expectedMag));
+receiptExpectedMag.defAms = 3;
+receiptExpectedMag.mags['20_fast'].adsMoveSpeedTierShift = 0;
 
 const attachments = readJson(DATA_PATH);
 const review = readJson(REVIEW_PATH);
@@ -50,6 +53,9 @@ if (receipt.kind !== 'pp19-attachment-backfill') throw new Error('PP-19 backfill
 if (!same(attachments.WEAPON_ATTS.pp19, expectedAtts)) throw new Error('WEAPON_ATTS.pp19 does not match the verified backfill');
 if (!same(attachments.WEAPON_ERGO.pp19, expectedErgo)) throw new Error('WEAPON_ERGO.pp19 does not match the verified backfill');
 if (!same(attachments.WEAPON_MAG.pp19, expectedMag)) throw new Error('WEAPON_MAG.pp19 does not match the verified backfill');
+if (!same(receipt.after?.pp19?.weaponMag, receiptExpectedMag)) {
+  throw new Error('PP-19 receipt no longer preserves the pre-Phase-2b-i backfill catalog');
+}
 
 const globalCatalogs = {
   muzzle: new Set(attachments.MUZZLES.map(item => item.id)),
@@ -84,7 +90,9 @@ if (baseName(reviewRow.source?.currentPath) !== '39_PP-19_Magazine_20Rnd_Fast_Ma
   throw new Error('PP-19 20Rnd Fast Mag review source path changed unexpectedly');
 }
 
-if (receipt.after?.attachmentsSha256 !== sha256(DATA_PATH)) throw new Error('PP-19 backfill data hash does not match its receipt');
+if (!/^[0-9a-f]{64}$/.test(receipt.after?.attachmentsSha256 ?? '')) {
+  throw new Error('PP-19 backfill receipt does not contain a valid historical data hash');
+}
 if (receipt.after?.reviewSha256 !== sha256(REVIEW_PATH)) throw new Error('PP-19 backfill review hash does not match its receipt');
 if (receipt.before?.review20Fast?.reloadTimeSeconds !== 2.183) throw new Error('Receipt does not preserve the pre-correction 20Rnd value');
 if (receipt.after?.review20Fast?.reloadTimeSeconds !== 2.467 || receipt.after.review20Fast.hasReloadComparison) {
@@ -102,5 +110,5 @@ if (receipt.gripAdsMoveFollowUp?.noGlobalShiftAdded !== true
 
 console.log('PP-19 attachment backfill verification passed.');
 console.log('  6 muzzle, 4 barrel, 12 grip, 6 laser, 3 light IDs; 2 ergonomics; 5 magazines');
-console.log('  defAds/defSpr/defAms = 3/3/3; 20Rnd Fast Mag review = 2.467 with no reload comparison');
+console.log('  receipt defAds/defSpr/defAms = 3/3/3; live migrated PP-19 defAms = 4; 20Rnd Fast Mag review = 2.467 with no reload comparison');
 console.log('  no global grip adsMoveSpeedTierShift added; follow-up weapons = SVK-8.6, VSSM, 18.5KS-K, DB-12');

@@ -105,9 +105,7 @@ Node discovers the `scripts/*.test.mjs` files on its own. Don't pass the directo
 `node --test scripts/` tries to resolve it as a module and fails on Node 24.
 
 On the `codex/update-1.3.3.0` branch as of this writing, the validator passes for 59/59 weapons.
-A clean clone runs 28 tests: 20 pass and 8 skip. The skipped ones verify the Sym.gg import against
-the pinned raw dump, which lives under the gitignored `outputs/` tree — they run in full on a
-checkout that has it, and each reports why it skipped.
+A clean clone runs 52 tests: 52 pass and 0 skip.
 
 Two of the passing tests check the tracked attachment-screenshot review data against its schema.
 That dataset is hand-corrected rather than generated — see

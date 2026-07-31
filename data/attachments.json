@@ -3800,7 +3800,7 @@
     "ks18k": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "8_rnd",
       "mags": {
         "4_rnd": {
@@ -3847,7 +3847,7 @@
     "ak205": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -3930,7 +3930,7 @@
     "ak4d": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -3986,7 +3986,7 @@
     "b36a4": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -4078,7 +4078,7 @@
     "cz3a1": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "20_fast": {
@@ -4088,7 +4088,7 @@
           "tacRld": 1962,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": -3
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -4134,7 +4134,7 @@
     "pp19": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4171,7 +4171,7 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": -3
         },
         "53_rnd": {
           "name": "53 Rnd",
@@ -4190,7 +4190,7 @@
     "db12": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 4,
+      "defAms": 5,
       "def": "7_rnd",
       "mags": {
         "7_rnd": {
@@ -4210,7 +4210,7 @@
     "drsiar": {
       "defAds": 6,
       "defSpr": 6,
-      "defAms": 6,
+      "defAms": 7,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4302,7 +4302,7 @@
     "grtbc": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4358,7 +4358,7 @@
     "grtcps": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -4405,7 +4405,7 @@
     "kord6p67": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4479,7 +4479,7 @@
     "kts100": {
       "defAds": 6,
       "defSpr": 6,
-      "defAms": 6,
+      "defAms": 7,
       "def": "60_rnd",
       "mags": {
         "45_rnd": {
@@ -4544,7 +4544,7 @@
     "kv9": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "17_rnd",
       "mags": {
         "17_rnd": {
@@ -4591,7 +4591,7 @@
     "l110": {
       "defAds": 7,
       "defSpr": 8,
-      "defAms": 7,
+      "defAms": 8,
       "def": "100_rnd",
       "mags": {
         "100_rnd": {
@@ -4620,7 +4620,7 @@
     "l85a3": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -4712,7 +4712,7 @@
     "lmr27": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -4777,7 +4777,7 @@
     "m60": {
       "defAds": 6,
       "defSpr": 8,
-      "defAms": 5,
+      "defAms": 6,
       "def": "100_rnd",
       "mags": {
         "50_rnd": {
@@ -4806,7 +4806,7 @@
     "m1014": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "6_rnd",
       "mags": {
         "4_rnd": {
@@ -4844,7 +4844,7 @@
     "m121a2": {
       "defAds": 7,
       "defSpr": 8,
-      "defAms": 7,
+      "defAms": 8,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -4882,7 +4882,7 @@
     "m123k": {
       "defAds": 7,
       "defSpr": 8,
-      "defAms": 7,
+      "defAms": 8,
       "def": "100_rnd",
       "mags": {
         "100_rnd": {
@@ -4911,7 +4911,7 @@
     "m2010esr": {
       "defAds": 6,
       "defSpr": 5,
-      "defAms": 6,
+      "defAms": 7,
       "def": "5_rnd",
       "mags": {
         "5_rnd": {
@@ -4949,7 +4949,7 @@
     "m240l": {
       "defAds": 7,
       "defSpr": 8,
-      "defAms": 7,
+      "defAms": 8,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -4987,7 +4987,7 @@
     "m250": {
       "defAds": 7,
       "defSpr": 8,
-      "defAms": 7,
+      "defAms": 8,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -5016,7 +5016,7 @@
     "m277": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -5081,7 +5081,7 @@
     "m39emr": {
       "defAds": 6,
       "defSpr": 6,
-      "defAms": 6,
+      "defAms": 7,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -5137,7 +5137,7 @@
     "m417a2": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "20_rnd",
       "mags": {
         "10_rnd": {
@@ -5184,7 +5184,7 @@
     "m433": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5258,7 +5258,7 @@
     "m4a1": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5332,7 +5332,7 @@
     "m87a1": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "7_rnd",
       "mags": {
         "5_rnd": {
@@ -5379,7 +5379,7 @@
     "miniscout": {
       "defAds": 5,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -5444,7 +5444,7 @@
     "nvo228e": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5518,7 +5518,7 @@
     "psr": {
       "defAds": 7,
       "defSpr": 6,
-      "defAms": 6,
+      "defAms": 7,
       "def": "10_rnd",
       "mags": {
         "7_rnd": {
@@ -5547,7 +5547,7 @@
     "pw5a3": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5594,7 +5594,7 @@
     "pw7a2": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 1,
+      "defAms": 2,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5641,7 +5641,7 @@
     "qbz192": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -5688,7 +5688,7 @@
     "rpkm": {
       "defAds": 6,
       "defSpr": 6,
-      "defAms": 6,
+      "defAms": 7,
       "def": "40_rnd",
       "mags": {
         "30_rnd": {
@@ -5762,7 +5762,7 @@
     "scw10": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "15_rnd",
       "mags": {
         "15_rnd": {
@@ -5809,7 +5809,7 @@
     "sg553r": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5883,7 +5883,7 @@
     "sgx": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -5930,7 +5930,7 @@
     "sl9": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -5959,7 +5959,7 @@
     "sor300sc": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -6033,7 +6033,7 @@
     "sv98": {
       "defAds": 6,
       "defSpr": 5,
-      "defAms": 4,
+      "defAms": 5,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -6053,7 +6053,7 @@
     "svdm": {
       "defAds": 6,
       "defSpr": 6,
-      "defAms": 6,
+      "defAms": 7,
       "def": "10_rnd",
       "mags": {
         "5_rnd": {
@@ -6100,7 +6100,7 @@
     "svk86": {
       "defAds": 7,
       "defSpr": 7,
-      "defAms": 7,
+      "defAms": 8,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -6129,7 +6129,7 @@
     "umg40": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "25_rnd": {
@@ -6185,7 +6185,7 @@
     "usg90": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 3,
+      "defAms": 4,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -6205,7 +6205,7 @@
     "sor556": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -6288,7 +6288,7 @@
     "tr7": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "20_rnd",
       "mags": {
         "10_fast": {
@@ -6362,7 +6362,7 @@
     "vcr2": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "20_fast": {
@@ -6436,7 +6436,7 @@
     "m16a4": {
       "defAds": 5,
       "defSpr": 5,
-      "defAms": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -6510,7 +6510,7 @@
     "rpk74m": {
       "defAds": 6,
       "defSpr": 6,
-      "defAms": 6,
+      "defAms": 7,
       "def": "45_rnd",
       "mags": {
         "30_rnd": {
@@ -6593,7 +6593,7 @@
     "l115": {
       "defAds": 7,
       "defSpr": 5,
-      "defAms": 6,
+      "defAms": 7,
       "def": "5_rnd",
       "mags": {
         "5_rnd": {
@@ -6631,7 +6631,7 @@
     "p18": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 4,
+      "defAms": 5,
       "def": "17_rnd",
       "mags": {
         "17_rnd": {
@@ -6660,7 +6660,7 @@
     "es57": {
       "defAds": 2,
       "defSpr": 2,
-      "defAms": 4,
+      "defAms": 5,
       "def": "20_rnd",
       "mags": {
         "20_rnd": {
@@ -6689,7 +6689,7 @@
     "m45a1": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 4,
+      "defAms": 5,
       "def": "7_rnd",
       "mags": {
         "7_rnd": {
@@ -6718,7 +6718,7 @@
     "m44": {
       "defAds": 4,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "6_rnd",
       "mags": {
         "6_rnd": {
@@ -6738,7 +6738,7 @@
     "ggh22": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 4,
+      "defAms": 5,
       "def": "15_rnd",
       "mags": {
         "15_rnd": {
@@ -6776,7 +6776,7 @@
     "m357trait": {
       "defAds": 3,
       "defSpr": 3,
-      "defAms": 4,
+      "defAms": 5,
       "def": "8_rnd",
       "mags": {
         "8_rnd": {
@@ -6805,7 +6805,7 @@
     "vz61": {
       "defAds": 3,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 5,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {

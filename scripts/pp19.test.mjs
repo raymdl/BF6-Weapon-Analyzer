@@ -139,7 +139,7 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
   assert.deepEqual(attachments.WEAPON_MAG.pp19, {
     defAds: 3,
     defSpr: 3,
-    defAms: 3,
+    defAms: 4,
     def: '30_rnd',
     mags: {
       '30_rnd': {
@@ -156,7 +156,7 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
       },
       '20_fast': {
         name: '20 Fast', pts: 5, mag: 20, tacRld: 2467,
-        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: -3,
       },
       '53_rnd': {
         name: '53 Rnd', pts: 45, mag: 53, tacRld: 2667,
@@ -193,9 +193,7 @@ test('PP-19 magazine and ergonomic values resolve to the reviewed legacy outputs
     '30_rnd': { tacRld: 2.467, mag: 30, ads: 167, sprint: 100, move: 0.75 },
     '30_fast': { tacRld: 2.183, mag: 30, ads: 167, sprint: 133, move: 0.75 },
     '35_rnd': { tacRld: 2.467, mag: 35, ads: 167, sprint: 133, move: 0.67 },
-    // x1.00 is a reviewed source value, but the current table has no 1.0 rung;
-    // Phase 2b-i owns that separate table/index migration.
-    '20_fast': { tacRld: 2.467, mag: 20, ads: 167, sprint: 133, move: 0.75 },
+    '20_fast': { tacRld: 2.467, mag: 20, ads: 167, sprint: 133, move: 1.0 },
     '53_rnd': { tacRld: 2.667, mag: 53, ads: 167, sprint: 133, move: 0.67 },
   };
   for (const [mag, values] of Object.entries(expected)) {
