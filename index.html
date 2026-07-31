@@ -36,10 +36,13 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .overview-head .share-btn{margin-left:auto}
 /* Collapsible panels — each keeps its heading so it can be reopened, and the
    caret costs no extra height because it sits in a row that already exists. */
-.panel-toggle{width:15px;height:15px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;padding:0;background:none;border:0;color:#6f7e7e;font-size:.6rem;line-height:1;vertical-align:middle;transition:transform .15s,color .15s}
-.panel-toggle:hover{color:var(--accent)}
-.panel-toggle[aria-expanded="false"]{transform:rotate(-90deg)}
-.rc-title .panel-toggle{margin-right:2px}
+/* Boxed so the caret reads as a control rather than punctuation next to the title. */
+.panel-toggle{width:21px;height:21px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;padding:0;background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:4px;color:#9fb0b0;line-height:1;vertical-align:middle;transition:color .15s,border-color .15s,background .15s}
+.panel-toggle:hover{color:var(--accent);border-color:var(--accent);background:rgba(201,162,39,.12)}
+.panel-toggle:focus-visible{outline:1px solid var(--accent);outline-offset:1px}
+.panel-toggle-icon{display:block;width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .15s}
+.panel-toggle[aria-expanded="false"] .panel-toggle-icon{transform:rotate(-90deg)}
+.rc-title .panel-toggle{margin-right:5px}
 #overviewPanel.is-collapsed #sGrid{display:none}
 #chartsPanel.is-collapsed .chart-wrap,#chartsPanel.is-collapsed #btkArea{display:none}
 #chartsPanel.is-collapsed [style*="margin-bottom:9px"]{margin-bottom:0!important}
@@ -57,7 +60,9 @@ body.is-popout .main{padding:8px;gap:0}
 body.is-popout #recoilPanel{border:0;background:none;padding:0}
 body.is-popout .rc-layout{grid-template-columns:minmax(0,1fr) minmax(290px,360px);grid-template-rows:auto minmax(0,1fr);align-items:stretch;column-gap:12px;height:calc(100vh - 16px)}
 body.is-popout .rc-head{grid-column:1/-1}
-body.is-popout .rc-plot{display:flex;flex-direction:column;min-height:0}
+/* The pop-out sizes itself to its own window, so the main page's width cap
+   must not apply here — otherwise the plot leaves a dead column beside it. */
+body.is-popout .rc-plot{display:flex;flex-direction:column;min-height:0;max-width:none}
 body.is-popout .rc-viewport{display:flex;flex-direction:column;min-height:0;flex:1}
 body.is-popout .rc-canvas-wrap{flex:1;min-height:0;position:relative}
 body.is-popout canvas.rcv{position:absolute;inset:0;aspect-ratio:auto;width:100%;height:100%}
@@ -141,10 +146,10 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:grid;grid-template-columns:minmax(432px,1.45fr) minmax(250px,1fr) minmax(250px,1fr);column-gap:14px;align-items:start;position:relative}
+.rc-layout{display:grid;grid-template-columns:minmax(346px,1.02fr) minmax(250px,1fr) minmax(250px,1fr);column-gap:14px;align-items:start;position:relative}
 .rc-head{grid-column:1/-1;margin-bottom:9px}
 /* Capped so an ultrawide window does not turn the plot into the whole page. */
-.rc-plot{min-width:0;max-width:620px}
+.rc-plot{min-width:0;max-width:496px}
 .rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
 .rc-head .ptitle{margin-bottom:0}
 .rc-title{grid-column:1 / -1;white-space:nowrap}
@@ -241,6 +246,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-stats-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:0}
 .rc-stats-head .ptitle{margin-bottom:0}
 .rc-stats-context{font-size:.62rem;color:#7d8c8c;letter-spacing:.03em;white-space:nowrap}
+/* Separates the two stacked stat blocks in the pop-out. */
+.rc-stats-split{flex-shrink:0;border-top:1px solid var(--border);margin:4px 0 2px}
 @keyframes rcViewSwap{from{opacity:.25;transform:translateY(3px)}to{opacity:1;transform:none}}
 .rc-view-swap{animation:rcViewSwap .19s ease-out}
 @media (prefers-reduced-motion:reduce){.rc-view-swap{animation:none}}
@@ -315,7 +322,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
 
 @media (max-width:1270px){
-  .rc-layout{grid-template-columns:minmax(340px,1.35fr) minmax(0,1fr);row-gap:18px;column-gap:16px}
+  .rc-layout{grid-template-columns:minmax(272px,0.85fr) minmax(0,1fr);row-gap:18px;column-gap:16px}
   .att-stats{grid-column:1/-1;border-left:none;padding-left:0;align-self:auto}
   .att-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 }
@@ -447,7 +454,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
     <div id="statsArea" style="display:none">
       <div class="panel" id="overviewPanel">
         <div class="overview-head">
-          <button class="panel-toggle" data-collapse="overview" type="button" aria-expanded="true" aria-controls="sGrid" title="Collapse the stat cards">▾</button>
+          <button class="panel-toggle" data-collapse="overview" data-collapse-label="the stat cards" type="button" aria-expanded="true" aria-controls="sGrid"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
           <div class="ptitle">Overview</div>
           <button class="share-btn" id="shareBtn" type="button" title="Copy a shareable link to this loadout and view">Share Loadout</button>
         </div>
@@ -459,7 +466,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
           <div style="flex:1;min-width:0;padding:11px 13px;border-right:1px solid var(--border)">
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:9px">
               <div style="display:flex;align-items:center;gap:8px">
-                <button class="panel-toggle" data-collapse="charts" type="button" aria-expanded="true" title="Collapse the damage chart and kill table">▾</button>
+                <button class="panel-toggle" data-collapse="charts" data-collapse-label="the damage chart and kill table" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Damage Chart</div>
                 <div style="display:flex;gap:3px">
                   <button class="mode-btn on" id="modeDmg" title="Shows damage per shot across range, with faint BTK threshold lines.">DMG</button>
@@ -487,7 +494,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
         <div class="rc-layout">
           <div class="rc-head">
             <div class="ptitle rc-title">
-              <button class="panel-toggle" data-collapse="recoil" type="button" aria-expanded="true" title="Collapse the recoil and spread pattern">▾</button>
+              <button class="panel-toggle" data-collapse="recoil" data-collapse-label="the recoil and spread pattern" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
               Recoil &amp; Spread Pattern (Simulated -
               <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"> Shots)
               <button class="rc-popout-btn" id="rcPopoutBtn" type="button" title="Open the pattern in its own window, sized to fill it">Pop Out &#8599;</button></div>

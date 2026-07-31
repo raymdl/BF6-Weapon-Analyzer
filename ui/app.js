@@ -428,7 +428,14 @@ function applyCollapseToDom() {
     const on = !!state.collapsed[key];
     panel?.classList.toggle('is-collapsed', on);
     const toggle = document.querySelector(`.panel-toggle[data-collapse="${key}"]`);
-    if (toggle) toggle.setAttribute('aria-expanded', String(!on));
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', String(!on));
+      // The caret alone does not say what it does, so the label carries it.
+      const what = toggle.dataset.collapseLabel ?? 'this section';
+      const action = `${on ? 'Expand' : 'Collapse'} ${what}`;
+      toggle.title = action;
+      toggle.setAttribute('aria-label', action);
+    }
   });
 }
 function setPanelCollapsed(key, collapsed) {
@@ -1802,9 +1809,7 @@ function renderAttachmentStats(loadouts) {
   el.innerHTML = html;
 }
 
-function renderTargetImpactStats(entries) {
-  const el = document.getElementById('rcStats');
-  if (!el) return;
+function targetImpactStatsHtml(entries) {
   const colors = ['c1', 'c2'];
   const fmtDamage = value => value == null ? '—' : value.toFixed(1);
   const fmtMult = value => value == null ? '' : `<span class="target-zone-mult">${value.toFixed(2)}×</span>`;
@@ -1843,7 +1848,7 @@ function renderTargetImpactStats(entries) {
       </section>`;
   });
   html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Lethal shot assumes 100 health and follows the plotted hit order; total damage is the uncapped sum of every plotted hit.</div>';
-  el.innerHTML = html;
+  return html;
 }
 
 function renderRecoil() {
@@ -1972,8 +1977,12 @@ function renderRecoil() {
     leg.innerHTML += `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${wLabel(w)}</span></div>`;
   });
 
-  if (axis?.isTargetView) {
-    renderTargetImpactStats(axis.targetHits);
+  // The pop-out has room for both tables, so it stacks recoil/spread over the
+  // impact breakdown instead of swapping one for the other.
+  const stacksStats = document.body.classList.contains('is-popout');
+  const targetHtml = axis?.isTargetView ? targetImpactStatsHtml(axis.targetHits) : '';
+  if (targetHtml && !stacksStats) {
+    document.getElementById('rcStats').innerHTML = targetHtml;
     return;
   }
 
@@ -2185,7 +2194,9 @@ function renderRecoil() {
     if (s.tooltip) html += s.tooltip;
     html += '</div>';
   });
-  document.getElementById('rcStats').innerHTML = html;
+  document.getElementById('rcStats').innerHTML = targetHtml
+    ? `${html}<div class="rc-stats-split"></div>${targetHtml}`
+    : html;
 }
 
 // ── LOADOUT OVERLAY ───────────────────────────────────────────────────────────
