@@ -7,13 +7,23 @@ register of what the models provably do not cover.
 Two models, one argument:
 
 - **Reload** — a base time plus two speed multipliers ([§1.1](#11-reload)).
-- **Everything else** — every numeric attachment effect appears to be an **integer step on a
-  shared ladder**, so the site can store one tier integer per attachment instead of a stat block
-  per weapon-attachment pair ([§1.2](#12-tier-ladders)).
+- **Tier-eligible stats** — velocity, recoil amount/variation, ADS time, sprint recovery, and ADS
+  move speed appear to be integer steps on shared ladders. Absolute assignments and unresolved
+  fields stay explicit rather than being forced into this model ([§1.2](#12-tier-ladders)).
 
-Status: **proposal, not started.** No code or data has changed. Written against
-`codex/update-1.3.3.0` at the v1.3.3.0 data set. Verified against the attachment audit at
-**3,206 records, 3,144 carrying stats, 62 weapons**, re-checked 2026-07-31.
+Status: **Phase 0, Phase 1, and Phase 1b complete; Phase 2 and later unstarted.** The audit tooling is portable and
+fixture-gated, and the Sym importer now carries `ReloadSpeed` with `18.5KS-K` reclassified as
+scalar. Remaining runtime and schema work is unstarted. Written against `codex/update-1.3.3.0` at
+the v1.3.3.0 data set. Verified against the current tracked attachment audit at **3,177 records,
+3,115 carrying stats, 62 weapons**, re-checked 2026-07-31 after the intentional M1014
+canonical-record dedupe and SL9 detailed recaptures.
+
+Two findings from the 2026-07-31 review changed the plan's shape. `ADS_MOVE_TIERS` is missing a
+`1.0` top rung — arrow-confirmed on two weapons, and the index migration measures as
+output-identical, so it is now scheduled as [Phase 2b-i](#2b-i--ads-move-10-tier) rather than
+deferred. And `PP-19 / 20Rnd Fast Mag` is a named fast magazine that does not receive the reload
+multiplier in game ([§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug)),
+which cost the model its one clean sweep and produced three new validation gates.
 
 Consolidates the former `RELOAD_MODEL_IMPLEMENTATION.md` and
 `ATTACHMENT_TIER_MODEL_IMPLEMENTATION.md`. Audit process, naming rules and correction history
@@ -31,7 +41,7 @@ live in `BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md`. The triage runner is
 - [5. Exceptions register](#5-exceptions-register)
 - [6. Migration](#6-migration)
 - [7. Validation](#7-validation)
-- [8. Remaining scrape errors](#8-remaining-scrape-errors)
+- [8. Audit status — 2026-07-31](#8-audit-status--2026-07-31)
 - [9. Scrape data quality](#9-scrape-data-quality)
 - [10. What this unlocks for undocumented weapons](#10-what-this-unlocks-for-undocumented-weapons)
 - [11. Open questions](#11-open-questions)
@@ -55,12 +65,22 @@ Multipliers are **reload speed** multipliers and stack multiplicatively. Express
 reduction: fast mag −11.504%, Mag Catch −5.927%, both −16.749%. Never add the percentages;
 1.13 x 1.063 = 1.20119, not 1.193.
 
+Reload validation has two categories:
+
+- **Scalar magazine reloads** — every non-tube-fed weapon plus the box-magazine `18.5KS-K`.
+  These use the formula above, shared reload tiers/classes, and explicit animation overrides.
+- **Tube-fed shotgun reloads** — `DB-12`, `M1014`, and `M87A1`. Sym exposes a per-shell time,
+  while the in-game panel exposes a different aggregate/display value. Keep these fail-closed and
+  validate them in a shotgun-specific category until the simulator has an explicit tube-reload
+  contract. Do not feed either value through the scalar magazine formula.
+
 `emptyRld` takes the same treatment: `ReloadEmpty / ReloadSpeed`. Whether the attachment
 multipliers apply to empty reload is **unverified** — see [§11](#11-open-questions).
 
-**Why `ReloadSpeed` is required.** It is currently discarded by the importer, and it is not
-cosmetic: raw `ReloadLeft` matches the in-game displayed value for **zero** of the 15 weapons
-where `ReloadSpeed != 1.0`. 15 of 59 weapons (25%) are affected, across every class.
+**Why `ReloadSpeed` is required.** Phase 1 now retains the source value as live provenance and
+uses it to derive the displayed base timing; raw `ReloadLeft` matches the in-game displayed value
+for **zero** of the 15 weapons where `ReloadSpeed != 1.0`. Absent values default to `1.0`, while
+invalid present values fail closed. All 59 live weapon records now carry a finite positive value.
 
 Worked example — AK-205: `ReloadLeft` 2.384, `ReloadSpeed` 0.959742, displayed 2.484.
 Mag Catch: 2.484 / 1.063 = 2.337, which is what the screenshot shows. Deriving from raw
@@ -69,7 +89,8 @@ Mag Catch: 2.484 / 1.063 = 2.337, which is what the screenshot shows. Deriving f
 ### 1.2 Tier ladders
 
 ```
-velocity(barrel, ammo) = base_velocity x 0.8^n         # n = integer tier steps, global ladder
+normalVelocity(barrel, ammo) = base_velocity x 0.8^n  # n = integer tier steps, global ladder
+subsonicVelocity(ammo)      = velocityTreatment       # path-scoped tier or absolute assignment
 recoil(attachments)    = base_recoil   x RECOIL_MULT[weapon]^n
 recoilVar(attachments) = base_dirVar   x dirVarMult[weapon]^n
 adsTime / sprintRec / adsMoveSpeed     = TABLE[base_index + n]
@@ -78,7 +99,9 @@ adsTime / sprintRec / adsMoveSpeed     = TABLE[base_index + n]
 Three ladder kinds, one rule. `n` is a small signed integer contributed by each equipped
 attachment and summed across slots.
 
-- **Global geometric** — velocity, ratio exactly `0.8` per step (`1.25` upward).
+- **Global geometric** — normal velocity, ratio exactly `0.8` per step (`1.25` upward).
+- **Weapon-ammo-specific subsonic treatment** — a reviewed tier or absolute assignment that stays
+  outside the normal ladder; see [§5.4](#54-velocity--subsonic-treatment-registered).
 - **Per-weapon geometric** — recoil amount uses `RECOIL_MULT[weapon]`, recoil variation uses
   `recoil.ads.dirVarMult`. Both already exist for all 59 weapons.
 - **Global lookup table** — ADS time, sprint recovery and ADS move speed index into
@@ -87,7 +110,7 @@ attachment and summed across slots.
 Some effects are not ladders at all but **absolute assignments**, and forcing them into a ladder
 would be wrong. Subsonic ammo sets spot-on-fire to a fixed 27 m / 64 m regardless of the weapon's
 base 54 m / 150 m; Subsonic HP sets the headshot multiplier to 1.57. These are constants, not
-multipliers — see [§4.4](#44-velocity-ammo-and-recoil-become-tier-shifts).
+multipliers — see [§4.4](#44-longer-term-velocity-ammo-and-recoil-targets).
 
 ---
 
@@ -100,29 +123,43 @@ in-game re-captures.
 
 | Claim | Result |
 |---|---|
-| `base = ReloadLeft / ReloadSpeed` | 55/55 non-shell weapons, each backed by 35–52 screenshots |
+| `base = ReloadLeft / ReloadSpeed` | 56/56 scalar-capable weapons, including box-mag `18.5KS-K` |
 | Mag Catch = `base / 1.063` | **27/27** |
-| Fast mag = `base / 1.13` | **92/92**, including the one at `1.13^2` (KTS100 45Rnd Fast) |
+| Fast mag = `base / 1.13` | **91/92**, including the one at `1.13^2` (KTS100 45Rnd Fast); the one miss is the registered `PP-19 20Rnd Fast Mag` in-game anomaly ([§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug)) |
 | Raw `ReloadLeft` without `ReloadSpeed` | 0/15 affected weapons |
 
-The fast-mag and Mag Catch rows were 92/93 and 27/27 when first measured; the audit has since
-been corrected, and the model now reproduces **every** reload value in the scrape with no
-exceptions outside [§5](#5-exceptions-register).
+The updated audit contains 43 stat-bearing `18.5KS-K` records. Regular 4/8-round magazines read
+`2.750`; both fast magazines read `2.434`, matching `2.750 / 1.13` after display rounding. This
+confirms that `18.5KS-K` belongs in the scalar category even though the other three shotguns do
+not.
 
-Nine scrape values initially disagreed with the model. All nine were re-checked in game and
-**all nine were scrape errors** — the model's prediction was correct every time:
+The fast-mag and Mag Catch rows were 92/93 and 27/27 when first measured. The audit has since been
+corrected, and the model reproduces every reload value in the scrape except the one registered
+in-game anomaly in [§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug).
 
-| Weapon / attachment | Scraped | Actual |
-|---|---|---|
-| SL9 Improved Mag Catch | 2.650 | 2.493 |
-| M433 20/30/40Rnd Fast | 2.384 | 2.110 |
-| SOR-556 MK2 20/40/45Rnd Fast | 2.000 | 2.110 |
-| PP-19 20Rnd Fast | 2.467 | 2.183 |
-| SGX 36Rnd Fast | 2.517 | 2.227 |
+Nine scrape values initially disagreed with the model and were corrected in one pass
+(`apply-20260728-reload-and-sl9-corrections.mjs`). **Eight were scrape errors; one was not.**
 
-Five of the nine scraped **exactly the weapon's base value** — the failure mode to expect from
-OCR reading the wrong panel or a pre-selection state. It produces a plausible number, so nothing
-downstream flags it.
+| Weapon / attachment | Scraped | Corrected to | Source screenshot | Verdict |
+|---|---|---|---|---|
+| SL9 Improved Mag Catch | 2.650 | 2.493 | replacement capture | scrape error |
+| M433 20/30/40Rnd Fast | 2.384 | 2.110 | `▼2.110S` | scrape error |
+| SOR-556 MK2 20/40/45Rnd Fast | 2.000 | 2.110 | `▼2.110S` | scrape error |
+| SGX 30Rnd Fast | 2.517 | 2.227 | `▼2.227S` | scrape error |
+| **PP-19 20Rnd Fast** | **2.467** | ~~2.183~~ | **`2.467S`, no change arrow** | **correction reverted** — see [§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug) |
+
+Seven of the eight genuine errors scraped **exactly the weapon's base value** — the failure mode to
+expect from OCR reading the wrong panel or a pre-selection state. It produces a plausible number,
+so nothing downstream flags it.
+
+**That heuristic is what produced the ninth row, and it is the lesson to carry forward.** "Reads
+exactly the base" was treated as sufficient proof of an OCR error, so `PP-19 / 20Rnd Fast Mag` was
+rewritten to the model's prediction even though the panel genuinely displays the base value. The
+same script then stamped every corrected row with a `direction: 'down'` green comparison, so the
+record ended up carrying a change indicator its own source image does not have. A magazine reading
+exactly its weapon's base is *evidence for* an OCR error, never proof — the panel has to be read
+before the value is replaced. This is the one place where the model overrode a correct reading, and
+it is why [§7](#7-validation) check 1 alone is not a sufficient gate.
 
 A tenth disagreement was a different and more dangerous class. The scrape held
 `RPK-74M / 36Rnd Magazine` with `reloadTimeSeconds: 2.950` while its own `magazineSize` read
@@ -135,13 +172,14 @@ and it is why Phase 3 must not auto-classify.
 
 | Claim | Result |
 |---|---|
-| Velocity change = integer step of `x0.8` | 115 / 118 records |
-| — barrels | 88 / 88, every one exactly ±1 step |
+| Normal attachment-induced velocity change = integer step of `x0.8` | **99 / 99 records** |
+| — barrels | 94 / 94 |
 | — grips | 5 / 5 |
-| — ammo | 22 / 25 (3 exceptions, [§5](#5-exceptions-register)) |
-| Recoil amount = integer tier of `RECOIL_MULT[weapon]` | **99.8%** |
+| — ordinary/non-subsonic ammo | 282 / 282 retain the weapon's panel baseline; no changed rows |
+| — subsonic ammo | 27 / 27 use the separate treatment in [§5.4](#54-velocity--subsonic-treatment-registered) |
+| Recoil amount = integer tier of `RECOIL_MULT[weapon]` | **100% when computed from the hidden-precision weapon base** |
 | Recoil variation = integer tier of `dirVarMult[weapon]` | **100%** since the 2026-07-31 correction |
-| ADS time / sprint recovery / ADS move are table members | all but the errors in [§8](#8-remaining-scrape-errors) |
+| ADS time / sprint recovery / ADS move are table members | current dispositions and exact overrides are in [§8](#8-audit-status--2026-07-31) |
 
 The recoil result is the important one. It is not a curve fit — `RECOIL_MULT` is already in
 `data/balance_tables.json`, sourced from Sym, and virtually all of nearly three thousand
@@ -153,7 +191,34 @@ transcription error, verified by magnifying the RECOIL VARIATION row of the sour
 see [§9.2](#92-what-was-wrong-and-why-it-matters-here). The ladder was right and the data was
 wrong in all five weapons, which is the same result as the nine reload disagreements.
 
-### 2.3 A caveat on pinning the exact integer
+M16A4 is an explicit baked-exponent check, not an exception. Sym supplies raw `dirVar = 37.5`,
+`dirVarMult = 0.919722`, and `dirVarExp = 3`; the effective base is
+`37.5 × 0.919722³ = 29.174`, displayed as `29.2`. Linear Comp contributes another +3 variation
+tiers, producing `37.5 × 0.919722⁶ = 22.697`, displayed as `22.7`. Both values exactly match the
+audit, so comparisons must use the effective value rather than comparing the panel directly with
+raw `dirVar`.
+
+### 2.3 Shotgun-specific audit pass
+
+Treat shotguns as their own validation category, not as generic exceptions mixed into every
+weapon-wide metric. The current audit contains **157 shotgun stat records** and **2,958
+non-shotgun stat records**. Splitting the existing sweep findings this way produces:
+
+- four direct-source shotgun recoil readings (`DB-12` and `M87A1`) remain explicit
+  in the audit, but exact-base recomputation proves they are ordinary +3/+5 tier results rather
+  than shotgun-specific ladder exceptions;
+- the non-shotgun set has no unregistered recoil or velocity ladder error; all 27 Subsonic rows
+  use their separate reviewed treatment;
+- the former `M1014` and `M87A1` ADS-move/zero-read capture failures were source-corrected and are
+  now covered by regression gates;
+- `18.5KS-K` remains in the shotgun reporting category but uses the scalar reload policy described
+  in [§1.1](#11-reload).
+
+The split is a validation boundary, not permission to average or promote shotgun values. Tube-fed
+reload, chambered-round capacity conventions, speedloaders, and burst/intra-burst rates remain
+shotgun-specific contracts. Recoil uses the same per-weapon ladder contract as other classes.
+
+### 2.4 A caveat on pinning the exact integer
 
 Ladder *membership* is proven. The specific tier integer per attachment often is not, because the
 in-game panel shows recoil to one decimal. A single 0.1 step frequently admits two adjacent
@@ -166,9 +231,9 @@ let Phase 3 auto-assign them.
 
 Where the ladder step is large relative to display precision the integers *are* pinnable.
 Velocity is the clean case: a ±1 step moves 670 to 837 or 536, unmistakable at integer precision,
-which is why 88/88 barrels resolve exactly.
+which is why 94/94 changed barrel records resolve exactly.
 
-### 2.4 Worked example — PP-19
+### 2.5 Worked example — PP-19
 
 The whole point of a derived model is that a weapon with no bespoke data still resolves. PP-19
 with `RECOIL_MULT = 0.9333`, base recoil 0.5, base velocity 444:
@@ -182,7 +247,84 @@ with `RECOIL_MULT = 0.9333`, base recoil 0.5, base velocity 444:
 | Fast mag (`base / 1.13`) | 2.1832 | 2.183 ✓ |
 | 53Rnd drum | registered override | 2.667 ✓ |
 
-Zero PP-19-specific numbers were needed beyond `RECOIL_MULT`, `ReloadSpeed` and one override.
+The normal PP-19 derivation needs no bespoke value beyond `RECOIL_MULT`, `ReloadSpeed` and one
+reload override. Its Subsonic rows are separately source-registered as
+`subsonicVelocityTier: 3`; that is an explicit ammo treatment, not a normal-velocity exception
+silently absorbed by the barrel ladder.
+
+### 2.6 Sym tier-table cross-check — 2026-07-31
+
+A Sym Discord post published five raw tier ladders — Undeploy, Deploy, Sprint-to-Fire, ADS, and
+ADS Strafe. It is a community source and its numbers must be confirmed against real Sym data
+before `data/balance_tables.json` is edited, but it is checkable against our own readings, and the
+checks are decisive.
+
+| Sym column | Our table | Result |
+|---|---|---|
+| ADS Speeds | `ADS_SPD_TIERS` | **exact match**, 8/8 |
+| ADS Strafe Speeds | `ADS_MOVE_TIERS` | ours is a contiguous subset: Sym adds `1.0` on top and `0.37` / `0.325` below our floor |
+| Sprint to Fire Delays | `PRIMARY_` / `SIDEARM_SPRINT_REC_TIERS` | clean windows onto Sym's ladder **once two phantom values are removed** |
+| Deploy Speeds | `DEPLOY_TIME_TIERS` | ours is a **merged primary+sidearm ladder**; Sym's column is primaries only |
+| Undeploy Speeds | — | not modelled; no consumer |
+
+**The float32 display contract is confirmed on a second, independent stat.** Sym publishes exact
+values; our `ADS_MOVE_TIERS` holds panel-derived two-decimal values. The
+[§5.6](#56-recoil-amount--shotgun-false-positives-resolved-by-exact-bases) rule —
+`Math.round(Math.fround(v) * 100) / 100` — reproduces all eight of our entries. Plain double
+rounding does not:
+
+| Sym exact | double → 2dp | float32 → 2dp | ours |
+|---|---|---|---|
+| 0.825 | 0.83 | **0.82** | 0.82 |
+| 0.475 | 0.48 | **0.47** | 0.47 |
+
+That contract was derived from a single knife-edge recoil case at one decimal. It now reproduces a
+different stat at two decimals across eleven values, so it is the project-wide panel-rounding rule,
+not a shotgun-recoil special case.
+
+**Two phantom tier values.** `PRIMARY_SPRINT_REC_TIERS` contains `333` and
+`SIDEARM_SPRINT_REC_TIERS` contains `117`. Neither is in Sym's Sprint-to-Fire ladder, and neither
+is observed in any of the 3,115 audit records — all ten observed values are in Sym's list. Both
+*do* appear in Sym's Undeploy column, which suggests they were cross-contaminated from the wrong
+ladder. Removing them makes both tables exact contiguous slices:
+
+```
+Sym:      50, 67, 83, 100, 133, 167, 200, 233, 267, 300, 350, 400
+PRIMARY:          83, 100, 133, 167, 200, 233, 267, 300, ---, 350   <- drop 333
+SIDEARM:      67, 83, 100, ---, 133, 167, 200, 233                  <- drop 117
+```
+
+#### Draw time is one stat behind two columns
+
+A Sym team member's explanation in the same thread — draw time drives both sprint recovery and
+unholster time — is a falsifiable claim, and our data confirms it. Taking each weapon's baseline
+sprint recovery and its `deployT`, then indexing both into Sym's own two columns:
+
+| Sprint-to-Fire | index | Deploy | index |
+|---:|---:|---:|---:|
+| 100 | 3 | 467 | 3 |
+| 133 | 4 | 533 | 4 |
+| 167 | 5 | 633 | 5 |
+| 200 | 6 | 733 | 6 |
+| 233 | 7 | 867 | 7 |
+| 267 | 8 | 1000 | 8 |
+
+**Identical index, 52 of 52 primaries, zero exceptions.** The two columns are not independent
+ladders; they are two renderings of one underlying draw-time tier.
+
+All seven weapons that break the rule are sidearms, and they are exactly the seven already flagged
+`sprintRecoveryTierTable: 'sidearm'`:
+
+| Weapon | Sprint rec | Deploy | Group |
+|---|---:|---:|---|
+| ES 5.7, GGH-22, P18, M45A1 | 67 / 83 | 233 / 267 | semi-auto pistols |
+| M357 Trait, M44, VZ. 61 | 83 / 100 | 350 / 400 | two revolvers plus the only full-auto sidearm |
+
+Sidearms therefore need their own deploy ladder, which does not exist —
+`DEPLOY_TIME_TIERS` is `[200, 233, 267]` prepended to Sym's entire primary column, i.e. a merged
+table whose three extra fast entries exist only to accommodate sidearms. The sidearm group splits
+further into semi-auto pistols and a revolver/full-auto set, so the sidearm ladder must be derived
+rather than assumed to be a fixed offset. See [§11](#11-open-questions).
 
 ---
 
@@ -201,8 +343,8 @@ Zero PP-19-specific numbers were needed beyond `RECOIL_MULT`, `ReloadSpeed` and 
 | `data/balance_tables.json` | `RECOIL_MULT`, `ADS_SPD_TIERS`, `ADS_MOVE_TIERS`, sprint tables | — |
 | `sim/applyAttachments.js:185-192` | Mag Catch override; detects fast mags by matching `"fast"` in the display name | — |
 | `sim/applyAttachments.js:275-277` | precedence: `magCatchTacRld` → `magTacRld` → `w.tacRld` | — |
-| `scripts/sym-import.mjs:349-357` | `normalizedReloadFields()` — writes raw `ReloadLeft`/`ReloadEmpty`, no `ReloadSpeed` | — |
-| `generated-data/sym/1.3.3.0/excluded-fields.json` | `reload.ReloadSpeed` marked `normalized-only` | — |
+| `scripts/sym-import.mjs` | `normalizedReloadFields()` — derives `ReloadLeft`/`ReloadEmpty` using `ReloadSpeed` and retains the provenance field | Phase 1 |
+| `generated-data/sym/1.3.3.0/excluded-fields.json` | `reload.ReloadSpeed` is promoted to live `reloadSpeed`; it is no longer excluded | Phase 1 |
 
 Roughly 280 hardcoded reload numbers, each an independent transcription with no cross-check. Two
 are known wrong today: `M277` (2.183, should be 2.384) and `LMR27` (2.854, should be 3.034).
@@ -239,53 +381,92 @@ Store `tacRld`/`emptyRld` pre-divided rather than dividing at runtime. The displ
 every consumer wants, `reloadSpeed` is retained for provenance and for the validator, and nothing
 downstream needs to know the formula.
 
-### 4.2 Magazines — reload class and tier shifts
+### 4.2 Magazines — shared reload tier, weapon-specific option data
 
 ```jsonc
-"30_fast": { "name": "30 Fast", "pts": 10, "mag": 30, "reloadMult": 1.13 },
-"30_rnd":  { "name": "30 Rnd",  "pts": 0,  "mag": 30 },                      // omitted = 1.0
-"53_rnd":  { "name": "53 Rnd",  "pts": 10, "mag": 53, "tacRldOverride": 2667 }
+"30_fast": { "name": "30 Fast", "pts": 10, "mag": 30, "reloadSpeedTier": 1 },
+"30_rnd":  { "name": "30 Rnd",  "pts": 0,  "mag": 30, "reloadSpeedTier": 0 },
+"53_rnd":  { "name": "53 Rnd",  "pts": 10, "mag": 53, "tacRldOverrideMs": 2667 }
 ```
 
-`reloadMult` is explicit data, not inferred from the name. This kills the substring match and
-makes the nine capacity-for-speed magazines correct by construction. Magazine tier shifts move
-onto the magazine class in the same catalog rather than being restated inside every `WEAPON_MAG`.
+`reloadSpeedTier` is explicit data, not inferred from the name. Its shared ladder constant is
+`1.13`; tier 2 means `1.13²`. This kills the substring match and makes the nine
+capacity-for-speed magazines correct by construction. `tacRldOverrideMs` is a machine-readable,
+unit-explicit escape hatch limited to the registered animation exceptions.
+
+The name is unreliable in **both** directions, which is why neither the display string nor the
+measured ratio may drive classification:
+
+- nine magazines carry the 1.13 multiplier with no "Fast" in the name ([§5.3](#53-magazine-multiplier-classes-measured));
+- `PP-19 / 20Rnd Fast Mag` is named a fast magazine and is `reloadSpeedTier: 0`
+  ([§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug)).
+
+Keep magazine capacity, attachment-point cost, ADS-time shift, sprint-recovery shift, ADS-move
+shift, display name, availability, and default selection inside the weapon-specific `WEAPON_MAG`
+entry. Current magazine IDs are not global effect classes: reused IDs have weapon-specific tier
+and cost variants. Do not move those fields into a broad global magazine catalog in this
+migration.
 
 ### 4.3 Ergonomics
 
-Delete all 17 `magCatchRld` blocks. Add one multiplier to the `ERGOS` catalog entry:
+After equivalence validation, delete all 17 `magCatchRld` blocks. Add one multiplier to the
+`ERGOS` catalog entry:
 
 ```jsonc
-{ "id": "mag_catch", "name": "Mag Catch", "pts": 5, "reloadMult": 1.063 }
+{ "id": "mag_catch", "name": "Mag Catch", "pts": 5, "reloadSpeedMult": 1.063 }
 ```
 
 One number replaces 34.
 
-### 4.4 Velocity, ammo and recoil become tier shifts
+### 4.4 Longer-term velocity, ammo and recoil targets
+
+Only barrel velocity is in the first implementation scope. Normal ammo velocity and subsonic
+velocity are separate contracts: do not force Subsonic into the ordinary `0.8^n` barrel/ammo
+ladder.
 
 - `BARRELS[*].velMult` → `velTierMod`, against a global `0.8` ladder constant in
-  `balance_tables.json`.
-- `AMMO` gains `velTierMod`, plus the absolute-assignment fields `spotOnFire3d` / `spotOnFire2d`
-  and a headshot override, so subsonic rounds can be expressed at all.
+  `balance_tables.json`, for normal velocity behavior only.
+- Put a future subsonic value on the weapon-specific option, not the global `AMMO` catalog:
+  `velocityTreatment: { kind: "subsonic-tier", subsonicVelocityTier: 3, displayRounding: "floor" }`.
+  The absolute forms are `subsonic-absolute` with `subsonicVelocityMps`, and
+  `subsonic-tungsten-absolute` with `combinesWith: "penetration"`.
+- The 27 source-backed instances live in
+  `outputs/attachment-audit/subsonic-velocity-treatments-20260731.json`. They do **not**
+  authorize adding unverified availability, cost, or live resolver behavior to `data/ammo.json`.
+  An unlisted subsonic option must fail validation rather than inherit a generic normal-ammo tier.
+- Barrel-plus-subsonic precedence is not yet measured. A future resolver must remain fail-closed
+  for that combination until direct evidence specifies the order.
 - `adsRecoilTierMod` extends to grips and ammo; add a sibling `recoilVarTierMod`.
 
 ### 4.5 `sim/applyAttachments.js`
 
 ```js
-const magMult  = magData?.reloadMult ?? 1;
-const ergoMult = ergoData?.reloadMult ?? 1;
-const override = magData?.tacRldOverride ?? null;
+const hasDerivedReload = magData?.reloadSpeedTier != null
+  || magData?.tacRldOverrideMs != null
+  || ergoData?.reloadSpeedMult != null;
+const magMult = 1.13 ** (magData?.reloadSpeedTier ?? 0);
+const ergoMult = ergoData?.reloadSpeedMult ?? 1;
+const derivedTacRld = magData?.tacRldOverrideMs != null
+  ? +(magData.tacRldOverrideMs / 1000).toFixed(3)
+  : w.tacRld != null
+    ? +(w.tacRld / (magMult * ergoMult)).toFixed(3)
+    : null;
+const legacyTacRld = magCatchTacRld != null ? +(magCatchTacRld / 1000).toFixed(3)
+  : magTacRld != null ? +(magTacRld / 1000).toFixed(3)
+  : w.tacRld;
+const unresolvedOverrideStack = magData?.tacRldOverrideMs != null
+  && ergoData?.id === 'mag_catch';
 
-tacRld: override != null ? +(override / 1000).toFixed(3)
-      : w.tacRld != null ? +(w.tacRld / (magMult * ergoMult)).toFixed(3)
-      : null,
+tacRld: hasDerivedReload && !unresolvedOverrideStack ? derivedTacRld : legacyTacRld,
 ```
 
 Rounding must stay `toFixed(3)` applied **once, at the end**. Rounding an intermediate then
 dividing again reproduces the game's numbers only by luck; the stacked KTS100 case
 (`base / 1.13 / 1.13`) is the one that will expose a mistake here.
 
-Delete the `magCatchRld` lookup and the `isFastMag` name match entirely.
+Keep this dual-read path while old and new data coexist. Delete the `magCatchRld` lookup,
+per-magazine `tacRld`, and `isFastMag` name match only after exhaustive old-versus-new loadout
+equivalence passes.
 
 ---
 
@@ -317,12 +498,14 @@ For contrast, `M121 A2` has three magazines, `ReloadSpeed` 1.0, and its belt pou
 ### 5.2 Shell-by-shell reloads
 
 `DB-12`, `M1014`, `M87A1` — sym's `ReloadLeft` is a **per-shell** time (0.866, 0.400, 0.700), not
-a full reload. Already handled by `SPECIAL_RELOAD_POLICY.shellByShell` in
-`scripts/sym-import.mjs:42-46`, which nulls these. Leave that behavior exactly as is.
+the aggregate/display value recorded by the audit (2.348, 1.784, 1.334). They form the explicit
+tube-fed-shotgun category (`shell-by-shell-null` in the current importer) and remain null in the
+scalar site fields until a shotgun-specific runtime contract exists.
 
-**18.5KS-K is listed under that policy in sym but is not shell-by-shell in game** — it feeds from
-box magazines (4Rnd/8Rnd), displays a normal scalar reload, and follows the 1.13 rule. It must not
-be excluded.
+**18.5KS-K is not shell-by-shell in game** — it feeds from box magazines (4Rnd/8Rnd), displays a
+normal scalar reload, and follows the 1.13 rule. The importer policy and characterization test now
+classify it as `scalar-numeric-or-null`, producing `tacRld: 2.75` and `emptyRld: 3.7` from the
+pinned Sym row. Do not add it back to the tube-fed exception set.
 
 ### 5.3 Magazine multiplier classes, measured
 
@@ -337,17 +520,27 @@ The nine non-"Fast"-named magazines in the 1.13 class: TR7 15Rnd, M277 15Rnd, PW
 PW7A2 20Rnd, SVDM 5Rnd, M417 A2 20Rnd, M357 Trait 8Rnd Moon Clip, KTS100 45Rnd & 60Rnd,
 M121 A2 50Rnd Belt Pouch. All measure 1.1292–1.1302, i.e. 1.13 within display rounding.
 
-### 5.4 Velocity — unresolved
+### 5.4 Velocity — subsonic treatment registered
 
-| Weapon / attachment | Reading | Model predicts | Note |
-|---|---|---|---|
-| USG-90 Subsonic | 543 → 265 | 278 (−3 steps) | 3.21 steps; off-ladder |
-| USG-90 Subsonic HP | 543 → 265 | 278 | same reading |
-| PW7A2 Subsonic Tungsten | 576 → 341 | 369 (−2) or 295 (−3) | combined item, 2.35 steps |
+All 27 Subsonic / Subsonic HP / Subsonic Tungsten source rows were directly reviewed from their
+velocity strips and are registered in
+`outputs/attachment-audit/subsonic-velocity-treatments-20260731.json`. The generic normal-ammo
+velocity ladder excludes only those exact source paths; a new or renamed Subsonic capture remains
+an error until it has its own reviewed treatment.
 
-All three are **unresolved**, not registered exceptions. PW7A2's is a combined Subsonic+Tungsten
-item, so it plausibly stacks two effects; USG-90 has no such explanation. Re-capture all three
-before writing anything. Do not invent a fractional step to accommodate them.
+| Treatment | Rows | Direct result |
+|---|---:|---|
+| `subsonic-tier: 1` | 2 P18 rows | `floor(350 × 0.8) = 280` |
+| `subsonic-tier: 2` | 10 CZ3A1, KV9, PW5A3, SCW-10 and SGX rows | ordinary floor-rounded `0.8²` |
+| `subsonic-tier: 3` | 10 PP-19, SG 553R, SL9, SOR-300SC and UMG-40 rows | ordinary floor-rounded `0.8³` |
+| `subsonic-absolute` | 2 M417 A2 rows | 560 → **273 m/s** |
+| `subsonic-absolute` | 2 USG-90 rows | 543 → **265 m/s** |
+| `subsonic-tungsten-absolute` | 1 PW7A2 row | 576 → **341 m/s**, explicitly composite with penetration |
+
+This is a unique subsonic treatment, not a fractional normal-ammo velocity tier. It resolves the
+five former off-ladder errors without widening the normal ladder or guessing a runtime precedence.
+There is no class split: SMGs span tier 2, tier 3, an absolute treatment, and the Tungsten
+composite, while Carbines span tier 3 and an absolute treatment.
 
 ### 5.5 Recoil variation — Linear Comp — **resolved, not an exception**
 
@@ -367,12 +560,36 @@ the magnified RECOIL VARIATION row of the source screenshot on 2026-07-31; the a
 `outputs/attachment-audit/apply-20260731-open-item-fixes.mjs`. `recoilVarTierMod` does **not**
 need a flat-multiplier sibling.
 
-### 5.6 Recoil amount
+### 5.6 Recoil amount — shotgun false positives resolved by exact bases
 
-DB-12 and M87A1 each have two grip readings off the `x0.94` ladder (2.7 → 2.3, 3.6 → 2.7). Both
-are shotguns, both appear in other error classes in [§8](#8-remaining-scrape-errors), and both sit
-inside otherwise-suspect captures. Re-capture before deciding whether these are exceptions or
-errors.
+The four source readings are correct, but their “off-ladder” classification is not. The old sweep
+anchored the ladder to the one-decimal modal panel value. Using the hidden-precision weapon base and
+the attachment's existing tier gives the displayed result exactly:
+
+- DB-12 Ribbed Vertical / Canted Stubby: `2.708937326 × 0.94³ = 2.250` → **2.3°**;
+- M87A1 Classic Vertical / Low-Profile Stubby: `3.611916435 × 0.94⁵ = 2.650` → **2.7°**.
+
+No shotgun-specific recoil ladder or absolute override is needed. The Phase 0 sweep now anchors
+recoil checks to `data/weapons.json` hidden-precision bases, and the four stale entries have been
+deleted from `sweep-reviewed-exceptions-20260731.json`.
+
+**The display-rounding contract — project-wide, not just this check.** Calculate from the
+hidden-precision base, convert the result to the game's float32 display domain (`Math.fround`
+equivalent), then apply round-half-up at the panel's decimal count:
+
+```js
+const display = (value, dp) => Math.round(Math.fround(value) * 10 ** dp) / 10 ** dp;
+```
+
+This is a display contract, not a tolerance; floor and round-half-even are not interchangeable.
+Here `2.708937326026026 × 0.94³ = 2.2500000000000004` becomes float32 `2.25` and displays **2.3°**
+for DB-12, while M87A1's hidden-base result is approximately `2.6508` and displays **2.7°**.
+
+The rule was derived from that single knife-edge case, but
+[§2.6](#26-sym-tier-table-cross-check--2026-07-31) confirms it independently against a different
+stat at two decimals: Sym's exact `ADS Strafe` values reproduce all eight of our `ADS_MOVE_TIERS`
+entries under it, and `0.825 → 0.82` / `0.475 → 0.47` fail under plain double rounding. Apply it
+wherever a computed value is compared with a panel reading.
 
 ### 5.7 Fire-mode ergonomics
 
@@ -381,113 +598,324 @@ ergonomic changes the fire mode, so rate of fire legitimately changes. Any invar
 must exempt ergonomics matching `/burst|full auto/i`. The sweep does this; a naive check reports
 it as an error.
 
+### 5.8 Named fast magazine without fast-mag treatment — suspected game bug
+
+`PP-19 / 20Rnd Fast Mag` is named and described as a fast magazine but **does not receive the
+1.13 reload multiplier in game**. This is believed to be an EA-side bug, not a model exception and
+not a scrape error.
+
+| | Reload | Panel indicator |
+|---|---|---|
+| PP-19 base (30Rnd Magazine) | 2.467 | — |
+| PP-19 30Rnd Fast Mag | 2.183 | `▼2.183S` green |
+| **PP-19 20Rnd Fast Mag** | **2.467** | **no arrow** |
+| Model prediction for a fast mag | 2.183 | — |
+
+Evidence: `39_PP-19_Magazine_20Rnd_Fast_Mag.png` shows `RELOAD TIME 2.467S` in plain white with no
+change arrow, while `37_PP-19_Magazine_30Rnd_Fast_Mag.png` on the same weapon and the same panel
+shows `▼2.183S`. The panel demonstrably renders the reduction when it exists. The 20Rnd option does
+receive its other fast-mag-class effects — sprint recovery moves to 133 ms and ADS move to
+`x1.00` — so only the reload multiplier is missing. PP-19 has not changed in game since
+2026-07-20, which postdates the capture, so the screenshot is current.
+
+**Treatment.** Record the captured value. `reloadSpeedTier: 0` despite the name, with an explicit
+register entry rather than a silent per-magazine absolute:
+
+```jsonc
+"20_fast": {
+  "name": "20Rnd Fast Mag", "pts": 5, "mag": 20,
+  "reloadSpeedTier": 0,
+  "suspectedGameBug": {
+    "field": "reloadSpeedTier",
+    "expectedWhenFixed": 1,
+    "expectedReloadSeconds": 2.183,
+    "observedReloadSeconds": 2.467,
+    "observedOn": "2026-07-20",
+    "note": "Named/described as a fast magazine but does not receive the 1.13 reload multiplier in game."
+  }
+}
+```
+
+**Revert trigger.** At every Sym drop or game patch, re-capture this one panel. If it reads
+`2.183`, set `reloadSpeedTier: 1`, delete the `suspectedGameBug` block, and drop the sweep register
+entry — no other change is needed. If it still reads `2.467`, leave it and record the re-check
+date. The validator must fail if `reloadSpeedTier: 0` is ever paired with a reload that matches
+`base / 1.13`, so a silent in-game fix cannot sit unnoticed.
+
+This is also the sharpest justification for [§4.2](#42-magazines--shared-reload-tier-weapon-specific-option-data)
+making the tier explicit data. The nine unnamed 1.13 magazines show the display name can *omit*
+a speed effect; this one shows it can *assert* an effect that is not there. The current
+substring `isFastMag` match gets this magazine wrong today, and a Phase 4 migration that classifies
+by name or by measured ratio would bake the wrong tier in permanently.
+
 ---
 
 ## 6. Migration
 
-Each phase is independently committable and leaves the site working. Phase 0 is not optional.
+No phase may delete or rename a field before every current consumer can read both schemas. The
+tracked screenshot review is a required characterization fixture, not an optional local input.
 
-### Phase 0 — correct the scrape
+### Phase 0 — characterization tests and portable validation
 
-Apply [§8](#8-remaining-scrape-errors). The scrape is the fixture every later phase validates
-against; migrating first would bake its errors into shared multipliers, where one bad value
-affects a whole class rather than one cell. A wrong tier constant is worse than a wrong absolute.
+**Completed audit prerequisite:** Terra session `019fb8ed-c9b5-7e20-8367-4c3590d4db8e` closed the
+former §8.1–§8.3 data issues: impossible-zero and bulk table failures are corrected, duplicate
+canonical records are removed with provenance retained, and field-by-slot discovery has
+`unresolvedCount: 0`.
 
-### Phase 1 — importer carries `ReloadSpeed`
+1. Track `scripts/audit-sweep.mjs` and `scripts/audit-field-slot-discovery.mjs`, make both resolve
+   paths relative to the repository, separate pure checks from report writing, and run read-only
+   in CI on Windows and other platforms. Require the tracked review JSON and path-specific
+   registers/receipts; a missing fixture must fail rather than produce an empty register.
+2. Change recoil-ladder validation to use each weapon's hidden-precision `recoilV` base rather than
+   the rounded panel mode. Use the §5.6 float32 round-half-up display contract explicitly. Remove
+   the four now-stale shotgun exception receipts and expect the sweep to report 30 informational
+   rows with no errors or warnings.
+3. Add characterization tests before changing runtime data. Cover the current scalar reload
+   result for every weapon/magazine/ergonomic combination, the shotgun categories in
+   [§2.3](#23-shotgun-specific-audit-pass), registered animation overrides, barrel velocity, and
+   all current tier-table outputs.
+4. Require the tracked `attachment-screenshot-review.json` fixture in CI. Do not silently skip the
+   full-roster comparison in a clean clone.
+5. Derive weapon class from the source path or the canonical weapon map—the record schema has no
+   class field—and report shotguns separately without changing their reload policy.
+6. Keep explicit impossible-zero checks in addition to null checks. A fully populated stat object is
+   not clean when fields such as damage, sprint recovery, or ADS move contain sentinel zeroes.
+7. Track and run `scripts/audit-field-slot-discovery.mjs`; require its current
+   `unresolvedCount: 0` receipt before assigning tier fields or consolidating catalogs.
+8. Apply [§8](#8-audit-status--2026-07-31) only to columns used by the phase being implemented.
+   Fail closed on unresolved values instead of widening tolerance.
 
-1. `scripts/sym-import.mjs`: extend `normalizedReloadFields()` to read `reload.ReloadSpeed`,
-   default 1.0 when absent, and emit `tacRld = ReloadLeft / ReloadSpeed`,
-   `emptyRld = ReloadEmpty / ReloadSpeed`, `reloadSpeed`. Keep the shell-by-shell null path ahead
-   of the division.
-2. Remove the `reload.ReloadSpeed` entry from `EXCLUDED_SOURCE_FIELDS` (line ~80) and add
-   `'reload.ReloadSpeed': 'reloadSpeed'` to the property→site-field map (line ~474).
-3. Re-run the importer. Expect the diff to touch `tacRld` and `emptyRld` on exactly 15 weapons and
-   add `reloadSpeed` to all 59.
+### Phase 1 — importer correction and `ReloadSpeed` — completed 2026-07-31
 
-**Gate:** the generated diff lists 15 weapons and no others. Any weapon outside the known 15 means
-the division was applied where `ReloadSpeed` was absent rather than 1.0.
+1. **Completed prerequisite:** remove `18.5KS-K` from the tube-fed shotgun null policy and pin its
+   scalar `2.75` / `3.7` importer characterization.
+2. **Completed:** `normalizedReloadFields()` reads `reload.ReloadSpeed`, defaults it to 1.0 only
+   when absent, fails closed for invalid present values, and emits `tacRld = ReloadLeft /
+   ReloadSpeed`, `emptyRld = ReloadEmpty / ReloadSpeed`, and `reloadSpeed`. Only the three tube-fed
+   shotguns retain both scalar timing fields as null; `18.5KS-K` remains scalar at `2.75` / `3.7`.
+3. **Completed:** removed `reload.ReloadSpeed` from `EXCLUDED_SOURCE_FIELDS` and mapped it to the
+   live field.
+4. **Verified:** the importer changes base reload timing on exactly these 15 non-1.0 records:
+   `AK-205`, `L85A3`, `M240L`, `M277`, `M4A1`, `M60`, `NVO-228E`, `PP-19`, `PW7A2`, `SCW-10`,
+   `SG 553R`, `SL9`, `TR7`, `USG-90`, and `VCR-2`; all 59 live records carry `reloadSpeed`.
+   PP-19 receives only the Phase 1 reload-field promotion because its other live fields are
+   separately curated.
 
-### Phase 2 — schema and validator
+### Phase 1b — PP-19 attachment backfill
 
-1. `scripts/validate-data.mjs`: extend the numeric-or-null loop (line 49) to cover `reloadSpeed`;
-   assert `0.5 < reloadSpeed <= 1.5` when present.
-2. Assert every magazine `reloadMult` is an allowed value, and every `tacRldOverride` names a
-   weapon in the exceptions register.
-3. Add a consistency check: for weapons without an override, recomputing
-   `tacRld / (magMult x ergoMult)` must reproduce the recorded value.
+PP-19 shipped from Sym data before its attachments were captured, so it is a stub in **all three**
+per-weapon catalogs: `WEAPON_ATTS.pp19` has five empty slot arrays, `WEAPON_ERGO.pp19` is
+`{ "avail": [] }`, and `WEAPON_MAG.pp19` is `{ "def": null, "mags": {} }`. It is the only weapon
+with no selectable attachments.
 
-### Phase 3 — reload data conversion
+This must land before Phase 4, because two later gates are silently vacuous without it:
 
-1. One-shot migration reading the current absolute magazine `tacRld` values, computing
-   `base / value`, classifying each into 1.0 / 1.13 / 1.13² / override.
-2. **Fail on any magazine outside a tolerance of 0.005 of a known class** that is not already in
-   the register. This forces a human decision instead of silently inventing a multiplier.
-   (0.002 was too tight — `M121 A2 / 50Rnd Belt Pouch` misses it by 4 ms, inside display rounding.)
-3. Emit `reloadMult` / `tacRldOverride`; delete `tacRld` from magazines and `magCatchRld` from
-   `WEAPON_ERGO`.
-4. Fix `M277` (→ 2.384) and `LMR27` (→ 3.034), currently stale.
+- **Phase 5** names PP-19 as a required equivalence case; enumerating "every valid currently
+  selectable loadout" for a weapon with no attachments yields one loadout and proves nothing.
+- **Phase 0 step 3** claims characterization covers "every weapon/magazine/ergonomic combination,"
+  and its test passes — but that test iterates the audit review JSON, not `data/attachments.json`,
+  so it never notices that the site data cannot produce those combinations.
 
-### Phase 4 — velocity
+The 51 captured PP-19 records cover Muzzle 7, Barrel 4, Grip 13, Laser 7, Light 4, Magazine 5,
+Ergonomics 3, Ammo 7, and one Overview. Backfill the seven slots the current schema supports; Ammo
+stays out because there is no `WEAPON_AMMO` catalog and its schema is a deferred prerequisite, which
+leaves PP-19 with the same ammo gap every other weapon has.
 
-1. Add the global `0.8` ladder constant to `balance_tables.json`.
-2. Convert `BARRELS[*].velMult` → `velTierMod`. All 88 barrel readings are ±1, so this is
-   mechanical.
-3. Gate: recomputing every barrel's velocity from `bulletVel x 0.8^n` reproduces the scrape for
-   all 88 records.
+The work is purely **additive** — no existing loadout resolves differently, because PP-19 currently
+has none — so it does not perturb the Phase 0 baseline the way an index migration would. Full
+procedure, per-slot source values and gates are in `PP19_ATTACHMENT_BACKFILL_INSTRUCTIONS.md`.
 
-### Phase 5 — ammo, including subsonic
+Extend the Phase 0 characterization test to assert per-weapon attachment-catalog coverage against
+`data/attachments.json`, so a stubbed weapon can never again pass as covered.
 
-1. Add `velTierMod`, `spotOnFire3d`, `spotOnFire2d` to the `AMMO` schema.
-2. Add `subsonic` and `subsonic_hp` entries per [§4.4](#44-velocity-ammo-and-recoil-become-tier-shifts).
-3. Populate `WEAPON_AMMO[*].ammo.subsonic.velTierMod`.
-4. Gate: USG-90 and PW7A2 must be resolved or explicitly registered first — do not ship a
-   fractional step.
+**Completed 2026-07-31.** PP-19 now has the seven supported attachment-slot catalogs: six muzzle,
+four barrel, twelve grip, six laser, three light, two ergonomics, and five magazine entries. The
+name-to-ID mapping uses existing global catalog IDs only; `barrelDef` is `basic`, and the magazine
+baseline is `defAds / defSpr / defAms = 3 / 3 / 3` with `30_rnd` selected by default. `magCatchRld`
+is `{ reg: 2321, fast: 2054 }`, and the five legacy magazine reload values are `2467`, `2183`,
+`2467`, `2467`, and the registered `2667` ms drum override. The `20Rnd Fast Mag` audit record was
+corrected from the model-predicted `2.183` to its screenshot value `2.467`, with the fabricated
+reload comparison removed.
 
-### Phase 6 — recoil tier shifts
+The backfill does not add `adsMoveSpeedTierShift` to any shared grip entry. PP-19 uses the standard
+SMG IDs `6h64_vert`, `classic_vert`, `stipp_stubby`, and `lp_stubby`; its current resolver therefore
+leaves those four grip readings at `0.75` until the separate ADS-move/`ADS_MOVE_TIERS` migration.
+Four weapons — `SVK-8.6`, `VSSM`, `18.5KS-K`, and `DB-12` — also use the standard IDs but show no
+shift and remain unexplained by the existing `_sr` variants; they are input to that separate item.
+The eight weapons without ergonomics catalogs are explicit coverage exemptions, and Ammo remains
+out of scope.
 
-1. Extend `adsRecoilTierMod` to grips and ammo; add `recoilVarTierMod`.
-2. **Do not auto-derive the integers from the scrape** ([§2.3](#23-a-caveat-on-pinning-the-exact-integer)).
-   Source them from Sym, or capture at finer precision. Where neither is available, leave the
-   attachment's tier absent and fall back to current behaviour rather than guessing.
-3. Gate: every populated tier reproduces the scrape to display rounding for every weapon carrying
-   that attachment.
+### Phase 2 — dual-read runtime support
 
-### Phase 7 — runtime and magazine catalog
+1. Teach `sim/applyAttachments.js` to prefer `reloadSpeedTier`, `reloadSpeedMult`, and
+   `tacRldOverrideMs` when present, while preserving the existing `tacRld`, `magCatchRld`, and
+   display-name fallback for legacy records.
+2. Add telemetry/test assertions showing which branch each fixture uses. Missing derived fields
+   must select the legacy path, not silently behave like a zero tier.
+3. Keep override-plus-Mag-Catch combinations on the legacy path until their precedence is captured
+   in game or explicitly prohibited by validation.
 
-Apply the `sim/applyAttachments.js` change from [§4.5](#45-simapplyattachmentsjs) and delete the
-dead `magCatchRld` and `isFastMag` code. Move magazine tier shifts to the class catalog, only
-after the ADS-move column is re-captured.
+### Phase 2b — tier-table corrections
 
-### Phase 8 — regression test
+Three independent corrections from [§2.6](#26-sym-tier-table-cross-check--2026-07-31), grouped
+because they share one hazard: each shifts stored indices or changes resolved output for many
+weapons at once. All are independent of the reload migration. Do them after Phase 2 so a Phase 5
+equivalence diff has one possible cause, not two, and land each as **its own commit**.
 
-Add `scripts/reload.test.mjs` and extend the same pattern to the ladders:
+Confirm every ladder against real Sym data before editing `balance_tables.json`. The §2.6 source is
+a community post; its claims are corroborated by our own readings, but the tables themselves are
+not yet first-party.
 
-- Assert the four canonical reload combinations for a representative weapon per pattern: TR7
-  (plain), AK-205 (`ReloadSpeed != 1`), SL9 (`ReloadSpeed > 1`), KTS100 MK8 (stacked 1.13²),
-  M240L (override), M1014 (shell-by-shell null).
-- Assert the exact multipliers `1.13`, `1.063`, their product `1.20119`, and the `0.8` velocity
-  ladder constant.
-- Assert one weapon per ladder kind, including PP-19 as the no-bespoke-data case
-  ([§2.4](#24-worked-example--pp-19)).
-- Cross-check the whole roster against the screenshot scrape **when present**, and skip cleanly
-  when it is not — `outputs/` is gitignored, so a clean clone must not fail. Follow the pattern in
-  `scripts/sym-import.test.mjs`.
+#### 2b-i — ADS-move `1.0` tier
+
+1. Prepend `1.0` to `ADS_MOVE_TIERS`.
+2. Increment all 58 `WEAPON_MAG[*].defAms` values by one. Leave every `adsMoveSpeedTierShift`
+   untouched — the shifts are relative and must not move.
+3. Set CZ3A1 `20_fast` to `adsMoveSpeedTierShift: -3`, and PP-19 `20_fast` likewise once
+   [Phase 1b](#phase-1b--pp-19-attachment-backfill) has landed. `-3` is in range: the existing
+   shift distribution is `{-3:1, -2:31, -1:7, 0:133, 1:86, 2:1, 3:1}`.
+4. **Gate:** re-run the full loadout enumeration and require **zero** output changes across all 260
+   magazine loadouts. Any diff means an index was missed.
+5. Delete the two ADS-move entries from `sweep-reviewed-exceptions-20260731.json`; the sweep falls
+   from 30 to 28 informational rows.
+6. Sym also lists `0.37` and `0.325` below our floor. No weapon in the audit reads below `0.42`, so
+   add them only with a first-party source, and never to satisfy a single reading.
+
+#### 2b-ii — sprint-recovery phantom entries
+
+Remove `333` from `PRIMARY_SPRINT_REC_TIERS` and `117` from `SIDEARM_SPRINT_REC_TIERS`. Neither is
+observed in any of the 3,115 records and neither exists in Sym's ladder. Removal shifts every index
+above it, so decrement the affected `defSpr` values in lockstep and apply the same zero-diff
+enumeration gate as 2b-i.
+
+#### 2b-iii — grip ADS-move shift
+
+`6h64_vert`, `classic_vert`, `stipp_stubby` and `lp_stubby` shift ADS move by `+1` on 45 of 49
+weapons, but no `GRIPS` entry defines `adsMoveSpeedTierShift`, so the resolver's
+`grp.adsMoveSpeedTierShift ?? 0` currently returns 0 for all of them. Every one of those 45 weapons
+is wrong against its panel today.
+
+Add `adsMoveSpeedTierShift: 1` to the four catalog entries. This is **not** a per-weapon override
+and needs no schema or resolver work: where a grip genuinely differs by class, the catalog already
+uses a suffixed variant ID — `lp_stubby_sr` (referenced by exactly `m2010esr`, `sv98`, `psr`,
+`miniscout`, `l115`), `slim_angled_smg`, `full_angled_sr`, and per-weapon forms such as
+`factory_angled_sl9`. Follow that pattern for any divergence.
+
+Four weapons — `SVK-8.6`, `VSSM`, `18.5KS-K`, `DB-12` — use the standard grip IDs yet show no
+ADS-move shift, and are not explained by an existing variant. Two are shotguns and one is a
+no-Sym-data weapon; resolve them with new suffixed variants before this lands, and do not
+generalise from them.
+
+Because this changes resolved output for 45 weapons it must not ride along in
+[Phase 1b](#phase-1b--pp-19-attachment-backfill), whose whole value is being purely additive.
+
+#### 2b-iv — index-base hardening
+
+Prefer making `defAms` and `defSpr` 0-based in the same pass, with a validator asserting each
+against its table length. `balance_tables.json` already has this shape in `HIP_SPREAD_BASE_IDX`. A
+hand-maintained 1-based index that must stay in lockstep with a table length is a silent-failure
+hazard: one weapon added with an old-style index shifts every stat by a tier with nothing to catch
+it — which is exactly how the two phantom entries in 2b-ii survived.
+
+### Phase 3 — schema, shared reload tier, and exception register
+
+1. Add the shared `1.13` magazine-speed ladder constant and the `reloadSpeedTier` integer.
+2. Add `reloadSpeedMult: 1.063` to Mag Catch.
+3. Define machine-readable animation exceptions keyed by weapon ID and magazine ID, using
+   unit-explicit `tacRldOverrideMs`. Validate IDs, integer millisecond units, and membership in the
+   exception register.
+4. Preserve weapon-specific magazine capacity, point cost, ADS-time shift, sprint-recovery shift,
+   ADS-move shift, availability, and default selection.
+5. Validate `reloadSpeed`, tier bounds, and recomputed screenshot values with a 0.005-second
+   display tolerance. Any unregistered miss is an error requiring review.
+6. Add the `suspectedGameBug` block from [§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug)
+   to the schema, and assert its invariant: a magazine carrying one must **not** currently match its
+   `expectedReloadSeconds`. That way an in-game fix fails the build instead of sitting unnoticed
+   behind a stale tier.
+
+### Phase 4 — additive reload-data migration
+
+Populate `reloadSpeedTier`, `reloadSpeedMult`, and `tacRldOverrideMs` without deleting legacy
+`tacRld` or `magCatchRld`. The migration may classify only the known 1.0 / 1.13 / 1.13² groups and
+registered overrides. Emit an exact, reviewable before/after manifest from the current HEAD.
+
+**Do not classify by display name or by measured ratio alone.** `PP-19 / 20Rnd Fast Mag` measures
+at exactly 1.0 and is named a fast magazine; both signals disagree, and only the screenshot
+resolves it. Any magazine whose name and measured class conflict must halt the migration for a
+human decision rather than defaulting either way. Requires [Phase 1b](#phase-1b--pp-19-attachment-backfill),
+without which PP-19's five magazines are not in the site data to classify at all.
+
+### Phase 5 — exhaustive old-versus-new equivalence
+
+Enumerate every valid currently selectable loadout for every weapon, including point-limit and
+combined-slot rules. Run the legacy and derived resolvers over the same inputs and compare every
+user-visible output, not only reload. Require zero unexplained differences. Include explicit cases
+for AK-205, SL9, KTS100 MK8, M60, M240L, PP-19, `18.5KS-K`, and all three tube-fed shotguns.
+
+### Phase 6 — reload cutover and cleanup
+
+Only after Phase 5 passes, make the derived branch authoritative and delete per-magazine `tacRld`,
+per-weapon `magCatchRld`, and display-name `isFastMag` inference. Re-run the exhaustive comparison
+against the preserved pre-cutover fixture and perform stat-card QA.
+
+### Phase 7 — barrel velocity as a separate migration
+
+Treat barrel velocity as its own small change after reload is stable: add the `0.8` constant,
+dual-read `velTierMod` with legacy `velMult`, populate the seven barrel tiers, verify all 94 changed
+barrel records, then remove `velMult` in a later cleanup commit. Do not combine this with ammo velocity,
+and do not use it to consolidate the broader barrel catalog. First inventory and preserve every
+other barrel-driven effect; the current audit contains multiple barrel records whose sprint
+recovery differs from the weapon modal baseline even though the current attachment schema does not
+model a barrel sprint-recovery shift.
+
+### Deferred independent migrations — subsonic, ammo catalogs, magazines, and recoil
+
+Do not implement these as part of the reload or barrel-velocity migrations. Resume only after:
+
+- `WEAPON_AMMO` has an explicit schema that separates point cost from weapon-specific effects;
+- ammo/muzzle/barrel precedence for velocity and spotting is specified and captured;
+- override-plus-ergonomic reload precedence is resolved;
+- exact recoil tier integers and the canonical field name are sourced;
+- any broader magazine catalog proves that weapon-specific movement, ADS, cost, and availability
+  data remain lossless.
+
+Subsonic is its own future resolver path, not an extension of normal velocity. The 22 tiered rows
+may reuse the `0.8` arithmetic internally, but the four M417 A2/USG-90 absolute rows and PW7A2
+Subsonic+Tungsten composite remain weapon-ammo-specific. Do not add `273`, `265`, or `341` as
+members of a global velocity ladder, and do not add fractional normal tiers. The M417 A2 and
+USG-90 ratios are both near `0.488` despite belonging to different classes; that is weak evidence
+for a named subsonic profile, not for a class ladder. Keep the absolute form until more weapons or
+source data establish the profile and its rounding/stacking precedence.
 
 ---
 
 ## 7. Validation
 
-The scrape is a test fixture, not a data source. Run two checks, not one:
+The scrape is a test fixture, not a data source. Run three checks, not one:
 
-1. **Value check** — does the reading match the model? This caught the nine reload errors in
-   [§2.1](#21-reload) and the 22 recoil-variation errors in [§2.2](#22-tier-ladders).
+1. **Value check** — does the reading match the model? This caught eight of the nine reload errors
+   in [§2.1](#21-reload) and the 22 recoil-variation errors in [§2.2](#22-tier-ladders).
 2. **Cross-field consistency** — does the capacity in the attachment *name* match the record's
    `magazineSize`? Does the same name appear twice for one weapon with different stats? This needs
    no model at all, and it is what catches a mislabel like the RPK-74M 36Rnd, where the value was
    right and the *name* was wrong.
+3. **Field-by-slot consistency** — for each stat, identify every slot that changes it and compare
+   that inventory with the runtime resolver. This must discover effects before migration rather
+   than assuming, for example, that only magazines, grips, and ergonomics change sprint recovery.
+4. **Name-versus-effect consistency** — flag every magazine whose display name implies a speed
+   effect it does not have, and every magazine that has one its name does not imply. Both
+   directions occur: nine unnamed 1.13 magazines, and the `PP-19 20Rnd Fast Mag` in
+   [§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug). A hit is a
+   request for a screenshot read, never a licence to rewrite the value.
 
-Check 2 is worth running across every stat column, not just reload. If magazine names were misread
-once, they were misread elsewhere, and every other stat inherits the same wrong label.
+Checks 2, 3 and 4 are worth running across every stat column, not just reload. If magazine names
+were misread once, they were misread elsewhere, and every other stat inherits the same wrong label.
+
+**Check 1 may never rewrite a reading on its own.** A disagreement between the model and the panel
+is a request to go read the screenshot, and the screenshot wins. The one time this was inverted —
+rewriting `PP-19 / 20Rnd Fast Mag` to the model's prediction because it "read exactly the base" —
+the model was wrong and the scrape was right, and the resulting record was invisible to every
+subsequent sweep precisely because it now agreed with the model.
 
 Manual QA after the runtime phase — check the reload figure in the stat card for:
 
@@ -496,97 +924,90 @@ Manual QA after the runtime phase — check the reload figure in the stat card f
 - SL9 (the only `ReloadSpeed > 1.0`; base 2.650, Mag Catch 2.493)
 - KTS100 MK8 45Rnd Fast (2.545)
 - M240L across all three magazines (4.250 / 7.100 / 7.100)
-- a shotgun (reload stays blank, not 0.400)
+- `18.5KS-K` regular/fast magazines (2.750 / 2.434)
+- each tube-fed shotgun (scalar reload stays blank; never surface Sym's 0.866 / 0.400 / 0.700
+  per-shell values as a full reload)
 
 ---
 
-## 8. Remaining scrape errors
+## 8. Audit status — 2026-07-31
 
-Runner: `scripts/audit-sweep.mjs`. Output: `outputs/attachment-audit/sweep-findings.json`.
+Runner: `scripts/audit-sweep.mjs` (default invocation is read-only; use `--write-report` to
+materialize the report). Output: `outputs/attachment-audit/sweep-findings.json`.
 
-**392 findings (362 errors) across 331 distinct records, in 17 of 62 weapons** as of 2026-07-31,
-down from 445 findings in 29 weapons when this plan was written. The recoil-variation and
-NVO-228E classes have since been cleared.
+**30 informational findings, 0 errors, 0 warnings** across 3,115 stat-bearing records in 62
+weapons. The 30 are deliberate, path-specific audit contracts: 27 reviewed Subsonic velocity
+treatments, two direct ADS-move screenshot exceptions, and the SL9 Burst Mode fire-mode change.
+The four former shotgun recoil exception receipts were removed after hidden-precision recomputation
+matched their source readings. This is the Phase 0 verified steady state, not a generic tolerance.
 
-The distribution is the useful part: 377 of the 392 fall in **eight weapons**, and within those
-they cluster by slot or by column. This is not scattered OCR noise — these are localized capture
-failures, so re-capture fixes them wholesale rather than cell by cell.
+No informational row is a live-site promotion. A changed screenshot, source path, or saved value
+invalidates its matching register entry and fails the sweep instead of inheriting a broad tolerance.
 
-### 8.1 Bulk-suspect captures — re-capture, do not repair
+### 8.1 Bulk-suspect captures — resolved by source recapture
 
-| Weapon | Findings | Dominant failure |
-|---|---|---|
-| M1014 | 85 | `adsMoveSpeedMultiplier` off-table x46, plus 29 benign duplicates |
-| SVDM | 61 | `sprintRecoveryMs` = 0 x61 |
-| GRT-CPS | 52 | `adsMoveSpeedMultiplier` off-table x40 |
-| LMR27 | 51 | `adsMoveSpeedMultiplier` off-table x42 |
-| M39 EMR | 46 | `sprintRecoveryMs` = 0 x46 |
-| M87A1 | 35 | `adsMoveSpeedMultiplier` off-table x28 |
-| PSR | 31 | `sprintRecoveryMs` = 0 x31 |
-| SVK-8.6 | 16 | `sprintRecoveryMs` = 0 x16 |
+The eight former bulk groups were corrected only after direct screenshot review:
 
-Two systematic column failures account for most of it:
+- 323 source-backed field corrections across M1014, SVDM, GRT-CPS, LMR27, M39 EMR, M87A1, PSR
+  and SVK-8.6; two apparent M87A1 recoil defects were verified as unchanged source readings.
+- Five isolated sprint-recovery zeroes (M2010 ESR and Mini Scout) were re-read as 200 ms.
+- The 29 identical M1014 canonical JSON duplicates were excluded with a path ledger; their source
+  PNGs were retained in the audit backup.
 
-- **`sprintRecoveryMs` = 0** on six weapons — M2010 ESR, M39 EMR, Mini Scout, PSR, SVDM, SVK-8.6.
-  All DMR/sniper. 0 is not a possible value; the parser is reading a field that renders
-  differently on these weapons' panels.
-- **`adsMoveSpeedMultiplier` = 0.5** on GRT-CPS, LMR27, M1014, M87A1. `0.5` is not in
-  `ADS_MOVE_TIERS` (`0.54` and `0.47` bracket it).
+The correction and dedupe receipts are
+`outputs/attachment-audit/bulk-suspect-recapture-summary-20260731.json` and
+`outputs/attachment-audit/deduped-source-record-exclusions-20260731.json`. The sweep now has no
+impossible-zero or off-table bulk failures.
 
-Because both failures are per-weapon and total within that weapon, the affected columns carry no
-usable information for those weapons and must not be averaged, interpolated, or promoted.
+### 8.2 Current tail and resolved regression cases
 
-### 8.2 Tail — individually correctable
+There is no unregistered current tail:
 
-**`magazineSize` leaking across slots.** A muzzle, laser, light, barrel, ammo or ergonomic cannot
-change capacity, so every one of these is a misread:
+- **Subsonic:** 27 direct paths use the separate treatment in
+  `subsonic-velocity-treatments-20260731.json`: 22 floor-rounded subsonic tiers, four
+  weapon-specific absolute assignments, and one Subsonic+Tungsten composite. The five former
+  velocity-ladder errors are resolved without treating a fractional normal-ammo step as valid.
+- **Shotgun recoil:** DB-12 Ribbed Vertical / Canted Stubby and M87A1 Classic Vertical /
+  Low-Profile Stubby retain their source-read 2.3° / 2.7° values. Exact weapon bases reproduce all
+  four with the existing +3/+5 tiers under the pinned float32 round-half-up display rule; they are
+  no longer exception receipts.
+- **ADS move:** CZ3A1 and PP-19 20Rnd Fast Mag directly read `x1.00` and are two exact reviewed
+  overrides. Both source panels show `▲X1.00` with a **green change arrow** against their equipped
+  30Rnd baseline, so this is a real tier and not a placeholder or pre-selection read — a
+  change-arrow is exactly what the [§9.2](#92-what-was-wrong-and-why-it-matters-here) wrong-panel
+  failure mode cannot produce. `ADS_MOVE_TIERS` is missing a `1.0` top rung; adding it is scheduled
+  as its own migration in [§6](#6-migration), not absorbed into the reload work.
+- **Fire mode:** SL9 Burst Mode remains one informational ergonomic RPM change.
 
-```
-ES 5.7   Barrel/122MM Factory        30 -> base 20
-GGH-22   Muzzle/Standard Suppressor  20 -> base 15
-GGH-22   Muzzle/CQB Suppressor       22 -> base 15
-M2010    Ergonomics/DLC Bolt          8 -> base 5
-M433     Light/None, Taclight-Aimed  40 -> base 30
-M433     Light/Flashlight            36 -> base 30
-M433     Laser/50 MW Violet, Green   20 -> base 30
-MiniScout Ammo/Frangible             15 -> base 10
-MiniScout Laser/None                 15 -> base 10
-MiniScout Laser/5 MW Red, 50 Violet  20 -> base 10
-SOR-556  Grip/Underslung Mount       14 -> base 30
-VSSM     Ammo/Match Grade            70 -> base 20
-VSSM     Ammo/Frangible              10 -> base 20
-VSSM     Ergonomics/Improved MagCatch 52 -> base 20
-VZ. 61   Ergonomics/Improved MagCatch 20 -> base 10
-```
+The earlier cross-slot magazine-capacity leaks, RPM digit drops, and M250 damage outlier are no
+longer present in the updated JSON. Move them out of “remaining work,” but retain their checks as
+regression gates. The 11 surviving magazine-name/capacity contradictions are the legitimate
+shotgun chambered-round cases described in [§9.1](#91-current-state--2026-07-31).
 
-The three **VSSM** entries matter — it is one of the three weapons with no Sym data, and its
-capacity column is already known-bad. VSSM's magazine capacities are not trustworthy as captured.
+### 8.3 Field-by-slot discovery findings
 
-**Digit drops in RPM:** `PSR / Muzzle / Compensated Brake` reads 8, should be 38;
-`SV-98 / Muzzle / Lightened Suppressor` the same.
+The modal-baseline pass is now fully dispositioned:
 
-**Other single cells:**
+| Disposition | Records | Current handling |
+|---|---:|---|
+| Direct screenshot correction | 55 | Saved in the review JSON and durable manual overrides |
+| Historical compact-panel null | 24 | Superseded by the SL9 detailed replacement captures |
+| Screenshot-confirmed attachment effect | 22 | Retained without changing the current resolver contract |
+| SL9 detailed slot-context value | 24 | Retained path-by-path; `None` also shows it, so it is **not** inferred as a Laser/Light modifier |
+| Unresolved field-by-slot finding | **0** | Required before broad catalog consolidation |
 
-```
-M250     Grip/None                  damage 5, base 26
-CZ3A1    Magazine/20Rnd Fast Mag    adsMoveSpeedMultiplier 1 (not a table member)
-PP-19    Magazine/20Rnd Fast Mag    adsMoveSpeedMultiplier 1 (not a table member)
-```
+The 24 SL9 values are deliberately classified as context, not effects: the detailed `None`
+screen shares `collateralMultiplier: 0` and `sprintRecoveryMs: 167` with every option in the
+selector. They remain visible and path-scoped in the review JSON, while the resolver contract is
+left unchanged. This is why the discovery rule uses an exact receipt rather than widening the
+allowed Laser/Light slots.
 
-The two `adsMoveSpeedMultiplier = 1` readings are both on a 20Rnd Fast Mag. `1.0` sits above the
-table's top entry of `0.91`. Either the table is missing a no-penalty tier or both are misreads;
-one in-game check on PP-19's 20Rnd Fast Mag settles it.
-
-**Shotgun speedloaders** — `M1014 4Rnd Speedloader -> 5`, `M87A1 5Rnd Speedloader -> 6`, all off by
-exactly one. This is the chambered-round convention rather than an error, since live `mag` counts
-the chamber and the panel does not. Confirm once, then exempt speedloaders from the check.
-
-### 8.3 Cross-source conflicts — audit vs Sym
+### 8.4 Cross-source conflicts — audit vs Sym
 
 | Weapon | Field | Audit | Sym | Assessment |
 |---|---|---|---|---|
 | M4A1 | recoil variation | ~~40.7~~ **30.7** | 30.7 | **resolved** — screenshots confirm Sym; corrected 2026-07-31 |
-| M16A4 | recoil variation | 29.2 | 37.5 | **unresolved**, needs an in-game read |
+| M16A4 | effective recoil variation | 29.2 | `37.5 × 0.919722³ = 29.174` | **resolved** — raw value, multiplier, and baked exponent reproduce the panel |
 
 Explained, no action needed: DB-12 and M87A1 RPM (Sym stores intra-burst rate, panel stores the
 usable rate), L115 velocity 742 vs 664, and ±1 rounding on M2010 ESR, M44, Mini Scout and M277.
@@ -595,19 +1016,27 @@ That M4A1 resolved *through* the model — a corrupted baseline made a good atta
 broken — is [§7](#7-validation) holding up again: the model is self-checking and the hardcoded
 table is not.
 
-### 8.4 Recommended order
+### 8.5 Ongoing guardrails
 
-1. Re-capture the eight weapons in [§8.1](#81-bulk-suspect-captures--re-capture-do-not-repair) as
-   whole captures.
-2. Fix the tail cells in [§8.2](#82-tail--individually-correctable); confirm the two `amv = 1` and
-   the speedloader readings in game first.
-3. Read M16A4 recoil variation in game ([§8.3](#83-cross-source-conflicts--audit-vs-sym)).
-4. Resolve USG-90 Subsonic and PW7A2 Subsonic Tungsten ([§5.4](#54-velocity--unresolved)).
-5. Re-run `scripts/audit-sweep.mjs` and require the error count to fall to the registered
-   exceptions only.
+1. For any newly recaptured row, update the exact source-path receipt first; never normalize it
+   to a weapon modal value.
+2. Re-run `scripts/audit-sweep.mjs` and require **zero errors and zero warnings**. Informational
+   rows are allowed only when their direct source path is present in a treatment or exception
+   register.
+3. Re-run `scripts/audit-field-slot-discovery.mjs` and require `unresolvedCount: 0`. A new
+   slot relationship needs either a direct correction, an explicit current-context disposition,
+   or a measured resolver change.
+4. Keep ammo/subsonic availability and barrel-plus-subsonic precedence out of live data until
+   direct screenshots and focused runtime tests establish them.
+5. Build the workbook once, only after all JSON gates pass, using
+   `python scripts/build-attachment-workbook.py`; never use `@oai/artifact-tool`.
+6. The portable Phase 0 runners must pass from a clean clone with all required fixtures present;
+   their default invocations write no report and must not inspect the screenshot corpus.
 
-Nothing here blocks Phase 1–4 — the reload and barrel columns are clean. It does block Phase 5
-(ammo, gated on USG-90/PW7A2) and Phase 7 (magazine classes, gated on the ADS-move column).
+The screenshot-audit correction work no longer blocks the scoped reload migration or a
+velocity-only barrel-field conversion. The remaining boundary is evidence, not audit cleanliness:
+do not promote the proposed subsonic treatment until option availability, stacking precedence, and
+focused runtime behavior are all captured.
 
 ---
 
@@ -619,26 +1048,34 @@ now are.
 
 ### 9.1 Current state — 2026-07-31
 
-Measured against `attachment-screenshot-review.json`, 3,206 records, 62 weapons:
+Measured against `attachment-screenshot-review.json`, 3,177 records, 3,115 detail/stat rows,
+62 weapons:
 
 | Check | Result |
 |---|---|
 | Fast mag = `base / 1.13` | 92/92 |
 | Mag Catch = `base / 1.063` | 27/27 |
-| Recoil variation on the `dirVarMult` ladder | 100% |
+| Recoil variation on the `dirVarMult` ladder | 100%, except no unregistered source reading |
 | Magazine name capacity ⇔ `magazineSize` | 11 contradictions, **all legitimate** |
 | Null stat cells | 0 |
+| Impossible zero reads | 0 |
+| Generic ADS-move tier misses | 0; 2 direct `x1.00` weapon-magazine overrides are registered |
+| Generic recoil-amount ladder misses | 0; hidden-precision bases and the pinned display rule reproduce all source readings |
+| Generic normal-ammo velocity misses | 0; 27 direct Subsonic treatments are separate |
 | Non-Overview null costs | 0 |
 | Duplicate identity groups with disagreeing stats | 0 |
 | Barrel subtype ⇔ velocity multiplier | 0 disagreements |
+| Field-by-slot unresolved findings | 0 |
 
 The 11 remaining capacity contradictions are the shotgun tubes and speedloaders whose displayed
 capacity excludes the chambered round — DB-12 `7 Shell Dual Tubes`→16, M1014 `6 Shell Tube`→7 and
 `4Rnd Speedloader`→5, M87A1 `7 Shell Tube`→8, `5Rnd Speedloader`→6. Correct as recorded.
 
-**The scrape is usable as a Phase 8 fixture** for reload, recoil and velocity. It is not usable
-for `sprintRecoveryMs` or `adsMoveSpeedMultiplier` on the weapons in
-[§8.1](#81-bulk-suspect-captures--re-capture-do-not-repair).
+**The scrape is usable as a required characterization fixture** for reload, recoil and barrel
+velocity. “No nulls” is not a cleanliness result by itself: the impossible-zero, sweep-register,
+and field-by-slot reports must gate whichever columns a migration consumes. The current sweep is
+clean, while subsonic live behavior remains deferred for the separate evidence reasons in
+[§4.4](#44-longer-term-velocity-ammo-and-recoil-targets).
 
 ### 9.2 What was wrong, and why it matters here
 
@@ -689,9 +1126,33 @@ time. They are listed because the *shapes* recur.
    share a reload; only Magazine and Ergonomics may differ.
 7. **Ladder membership** — the only check that catches a uniformly wrong column.
 8. **No silent field regressions** — diff every pass against the previous artifact.
+9. **Impossible zeroes** — validate field semantics separately from null presence.
+10. **Field-by-slot inventory** — report every stat change outside the runtime's expected modifying
+    slots and require an explicit “legitimate effect” or “bad reading” disposition.
+11. **Name-versus-effect** — a magazine named `/fast/i` whose reload equals its weapon's base, or an
+    unnamed magazine whose reload equals `base / 1.13`. Both are screenshot-read requests. This is
+    the gate that would have caught [§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug).
+12. **Correction provenance** — every bulk correction pass must carry a per-record source receipt,
+    and may not synthesize a `statComparisons` direction that the source screenshot does not show.
+    The 2026-07-28 pass stamped a green `direction: 'down'` on all nine reload corrections, which
+    made the one bad row look independently corroborated.
+13. **Catalog coverage** — every weapon in `data/weapons.json` must have non-empty attachment
+    entries in `WEAPON_ATTS`, `WEAPON_ERGO` and `WEAPON_MAG`, or an explicit registered exemption.
+    PP-19 sat empty across all three while the characterization test reported full coverage,
+    because that test reads the audit JSON rather than the site data.
+14. **Draw-time lock** — for every primary, the `deployT` tier index must equal the sprint-recovery
+    tier index ([§2.6](#26-sym-tier-table-cross-check--2026-07-31)). This holds 52/52 today with no
+    exceptions, so any disagreement is a bad `deployT`, a bad sprint baseline, or a weapon that has
+    been misclassified as a primary. Sidearms are exempt until their deploy ladder is derived.
+    This is free cross-validation between two columns that currently have no relationship in the
+    data, and it is the same shape as gate 7 — the kind that catches a uniformly wrong column.
+15. **Tier-table membership** — every value in every ladder in `balance_tables.json` must be
+    observed in the audit or backed by a first-party source. `333` and `117` were in shipped tables,
+    matched no reading, and belonged to a different ladder entirely.
 
-All eight are implemented or asserted by `scripts/audit-sweep.mjs` and the verify scripts under
-`outputs/attachment-audit/`. They are restated in
+The existing sweep and verify scripts implement or assert the first nine checks. Phase 0 adds the
+portable field-by-slot report before any broad schema inference; gates 11–13 are new and follow
+from the 2026-07-31 review. The original eight gates are also restated in
 `BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md` §15.
 
 ---
@@ -709,7 +1170,8 @@ Already determinable from the audit panel alone:
 | `spread.hipStand` / `hipMove` | Follows from `HIP_CLS` via `HIP_SPREAD_TIERS`. |
 | `spread.adsStand` / `adsMove` | Universal constants 0.05 / 0.32 (0 for the four bolt snipers). |
 | `rpm`, `mag`, `bulletVel`, ADS time, sprint recovery, ADS move | Read directly; calibrated exact against all 59 existing weapons. |
-| `recoilV`, `recoilVar` | Read directly, but only to 1 dp — see [§2.3](#23-a-caveat-on-pinning-the-exact-integer). |
+| `recoilV`, `recoilVar` | Read directly, but only to 1 dp — see [§2.4](#24-a-caveat-on-pinning-the-exact-integer). |
+| **`deployT`** (primaries only) | **New.** Deploy and sprint recovery share one tier index on 52/52 primaries ([§2.6](#26-sym-tier-table-cross-check--2026-07-31)), and sprint recovery is read directly from the panel. All three undocumented weapons are primaries — EF88 is an Assault Rifle, BROD 3 a Carbine, VSSM a DMR — so it applies to each. |
 
 Still blocked, and not derivable from any ladder:
 
@@ -718,16 +1180,19 @@ Still blocked, and not derivable from any ladder:
    and 0.409 among existing weapons.
 3. **`spreadDyn`** — 12 parameters x two aim states.
 4. **Recoil decay** — `decFactor`, `decTimeExp`, `decExp`, `decOffset`, `duration`.
-5. **`recoilDir`**, **`emptyRld`**, **`deployT`**, **`spreadMax`**.
+5. **`recoilDir`**, **`emptyRld`**, **`spreadMax`**.
 
-So the tier model does not unblock the three new weapons. It does mean that when Sym publishes,
-only the anchors are needed — no per-attachment capture work.
+The tier model still does not unblock the three new weapons outright, but the draw-time lock takes
+`deployT` off the blocked list for all three — one fewer field to wait on, and the first field this
+model has recovered rather than merely compressed. When Sym publishes, only the anchors are needed
+— no per-attachment capture work.
 
 ---
 
 ## 11. Open questions
 
-Resolve before or during Phase 1; none blocks starting.
+Resolve before Phase 2; the Phase 1 importer correction is complete and these questions do not
+authorize runtime or attachment-schema work.
 
 1. **Do the attachment multipliers apply to `emptyRld`?** Untested — the audit only captured
    tactical reload. Until confirmed, apply multipliers to `tacRld` only and derive `emptyRld` from
@@ -737,49 +1202,85 @@ Resolve before or during Phase 1; none blocks starting.
 3. ~~**Does Linear Comp use a flat 0.789 variation multiplier instead of the tier ladder?**~~
    **Resolved 2026-07-31** — it is a plain −3 tier step on all four weapons; four bad baselines
    created the illusion. See [§5.5](#55-recoil-variation--linear-comp--resolved-not-an-exception).
-4. **Is the velocity ladder anchored globally or per weapon?** The `0.8` step is confirmed.
-   Whether every weapon's base velocity sits on one shared absolute ladder is not tested, and it
-   changes whether `bulletVel` stays a float or becomes an index.
+4. ~~**Is the velocity ladder anchored globally or per weapon?**~~ **Resolved for this migration.**
+   Keep the base velocity per weapon and apply the global relative `0.8` step. The current audit
+   provides no reason to replace `bulletVel` with a shared absolute index, and Subsonic remains a
+   separate treatment.
 5. **Can recoil tier integers be sourced from Sym?** If yes,
-   [§2.3](#23-a-caveat-on-pinning-the-exact-integer) stops being a limitation and Phase 6 becomes
-   mechanical. If no, the site keeps per-weapon recoil and gains nothing on that column.
-6. **Does `ADS_MOVE_TIERS` need a 1.0 top tier?** Two 20Rnd Fast Mag readings say maybe
-   ([§8.2](#82-tail--individually-correctable)).
+   [§2.4](#24-a-caveat-on-pinning-the-exact-integer) stops being a limitation and the deferred
+   recoil migration becomes mechanical. If no, the site keeps the current recoil fields.
+6. ~~**Does `ADS_MOVE_TIERS` need a 1.0 top tier?**~~ **Yes — resolved 2026-07-31, scheduled as
+   Phase 2b.** Both `x1.00` panels carry a green change arrow, so the tier is real. The former
+   objection — that prepending shifts every stored `defAms` index — was measured and is not a
+   blocker: incrementing all 58 `defAms` values alongside the table is output-identical across all
+   **260** magazine loadouts, because the tier shifts are relative and no loadout currently reaches
+   either clamp (grips and ammo contribute no `adsMoveSpeedTierShift` at all). The real
+   prerequisites are the PP-19 backfill and landing it as an isolated commit; see
+   [Phase 2b-i](#2b-i--ads-move-10-tier).
 7. **Are `ReloadSpeed` and `RECOIL_MULT` stable across patches?** If `ReloadSpeed` moves while the
    M60/M240L alternate times track it, both magazines are scaled and each weapon needs one raw
    alternate time rather than one per magazine. `RECOIL_MULT` matters more — it anchors the recoil
    ladder for all 59 weapons. Only answerable at the next Sym drop.
-8. **Are there `reloadMult` values other than 1.13?** Nothing in the current data suggests so once
-   the SOR-556 scrape error is discounted, but Phase 3 should fail loudly rather than assume.
+8. **Are there magazine reload-speed steps other than 1.13?** Nothing in the current data suggests
+   so once the SOR-556 scrape error is discounted, but validation must fail loudly rather than
+   silently inventing another tier.
+9. ~~**Which out-of-slot stat changes are legitimate attachment effects?**~~ **Resolved for the
+   current audit.** Section 8.3 has `unresolvedCount: 0`; keep that report as a recurring gate rather
+   than reopening the disposed rows during reload migration.
+10. **What is the sidearm deploy ladder?** `DEPLOY_TIME_TIERS` is a merged primary+sidearm table
+    ([§2.6](#26-sym-tier-table-cross-check--2026-07-31)). The seven sidearms split into two groups
+    that do not share one offset from the sprint ladder: `ES 5.7 / GGH-22 / P18 / M45A1` (semi-auto
+    pistols) against `M357 Trait / M44 / VZ. 61` (two revolvers plus the only full-auto sidearm).
+    That grouping is mechanically plausible rather than noise, but the ladder must be derived from a
+    first-party source or fresh captures, not inferred from seven points. Splitting
+    `DEPLOY_TIME_TIERS` into primary and sidearm tables mirrors the existing
+    `PRIMARY_` / `SIDEARM_SPRINT_REC_TIERS` split and is the likely shape.
+11. **Should `drawTimeTier` become a derived field?** Sprint recovery and deploy are one underlying
+    stat for every primary, so two per-weapon fields could collapse to a single integer plus two
+    lookup tables — the same shape as the reload work, and it would remove a whole class of
+    inconsistency by construction. Out of scope for the current migration. Blocked on the sidearm
+    ladder in question 10, since a derived field must cover the whole roster or none of it.
+12. **Do four weapons need grip class variants?** `SVK-8.6`, `VSSM`, `18.5KS-K` and `DB-12` use the
+    standard `6h64_vert` / `classic_vert` / `stipp_stubby` / `lp_stubby` IDs but take no ADS-move
+    shift, unlike the other 45. They are **two DMRs and two shotguns**, which suggests `_dmr` and
+    `_shotgun` variants in the same family as the existing `_sr` / `_smg` forms rather than four
+    unrelated exceptions. Note the split is not simply per class: `M39 EMR` and `SVDM` are also DMRs
+    and *do* take the shift, so confirm against each weapon's panel before creating variants.
+    Resolve before [Phase 2b-iii](#2b-iii--grip-ads-move-shift), and do not add a per-weapon
+    override mechanism.
 
 ---
 
 ## 12. Risk and rollback
 
-Each phase touches `data/` plus one function in `sim/applyAttachments.js`, and each is separately
-revertible. Only the runtime phase has user-visible effect.
+Dual-read support lands before data migration, and legacy fields remain present through exhaustive
+equivalence. That makes each preparatory phase revertible without leaving runtime and data on
+different schemas. The user-visible cutover is isolated to Phase 6; barrel velocity follows in a
+separate migration.
 
 The dominant risk is a silent wrong number — the same failure mode as the current hardcoded
 tables, but applied at scale. A wrong absolute affects one cell; a wrong **tier constant** affects
 every weapon carrying that attachment, and a wrong **ladder ratio** affects every weapon. The
-mitigations are Phase 0 (fix the scrape first), the per-phase recompute gates, the tolerance gate
-in Phase 3, and the [§2.3](#23-a-caveat-on-pinning-the-exact-integer) rule that unpinnable
+mitigations are Phase 0 portable characterization, column-specific evidence corrections, the
+per-phase recompute gates, the tolerance gate in Phase 3, and the
+[§2.4](#24-a-caveat-on-pinning-the-exact-integer) rule that unpinnable
 integers are left absent rather than guessed.
 
 Second risk is over-generalizing. [§5](#5-exceptions-register) exists because some effects do not
-fit — the two reload-animation drums, the M60/M240L belts, and possibly the three subsonic
-velocity outliers. A model that quietly absorbs its exceptions by widening tolerance is worse than
+   fit — the two reload-animation drums, the M60/M240L belts, and the direct subsonic velocity
+   treatments. A model that quietly absorbs its exceptions by widening tolerance is worse than
 a hardcoded table, because it looks principled while being wrong. Note that the one apparent
 counter-example that would have justified a whole new mechanism — Linear Comp on recoil variation
 — turned out to be bad data, not a real exception. That cuts both ways: keep the register
 explicit, keep the sweep in CI, and re-check the data before adding a mechanism to accommodate it.
 
-Third risk is scope creep into the attachment audit. This work needs the reload, recoil and
-velocity columns; the audit's other open items are independent.
+Third risk is scope creep into the attachment audit. The first implementation needs only reload;
+the subsequent barrel-only migration needs the barrel velocity column. Ammo and recoil evidence
+remain deferred with their schemas.
 
-Net: roughly 280 hardcoded reload numbers become 59 base times, 2 shared multipliers, ~102
-magazine class tags and 5 overrides. Velocity collapses from 7 per-barrel multipliers plus
-per-weapon anchors to one global constant plus 7 integers. Recoil variation and amount move from
-per-weapon-per-attachment readings to one integer per attachment against multipliers already in
-the data. And the whole thing is checkable against 3,144 in-game readings by a script that already
-exists.
+Scoped net: roughly 280 hardcoded reload numbers become 59 base times, one shared magazine-speed
+step, one Mag Catch multiplier, explicit per-magazine reload tiers, and five unit-explicit
+overrides—without moving weapon-specific movement/ADS/cost data. Barrel velocity later replaces
+seven multipliers with one constant plus seven integers. Ammo/subsonic, broad magazine catalogs,
+and new recoil fields remain deferred. The tracked 3,115-detail-row fixture becomes a required,
+portable regression gate before either legacy field set is removed.

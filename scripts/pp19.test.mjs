@@ -68,8 +68,9 @@ test('PP-19 is the 59th firearm in the SMG order', () => {
 test('PP-19 base values match the pinned normalized Sym row and damage stays provisional', () => {
   assert.equal(pp19.rpm, 719.999);
   assert.equal(pp19.mag, 31);
-  assert.equal(pp19.tacRld, 2.417);
-  assert.equal(pp19.emptyRld, 2.967);
+  assert.equal(pp19.reloadSpeed, 0.979732);
+  assert.equal(pp19.tacRld, 2.467);
+  assert.equal(pp19.emptyRld, 3.028);
   assert.equal(pp19.deployT, 0.466667);
   assert.equal(pp19.bulletVel, 444);
   assert.equal(pp19.recoilDir, 6);
@@ -106,16 +107,57 @@ test('PP-19 base values match the pinned normalized Sym row and damage stays pro
   assert.deepEqual(provenance.damage.breakpoints, pp19.dmg);
 });
 
-test('PP-19 cross-file entries are present and fail closed on unknown attachments', () => {
+test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () => {
   assert.deepEqual(attachments.WEAPON_ATTS.pp19, {
-    muzzle: [],
-    barrel: [],
-    grip: [],
-    laser: [],
-    light: [],
+    muzzle: ['flash_hider', 'flash_comp', 'dp_brake', 'comp_brake', 'linear_comp', 'cqb_supp'],
+    barrel: ['basic', 'light', 'extended', 'heavy'],
+    barrelDef: 'basic',
+    grip: [
+      'fold_vert', 'alloy_vert', 'ribbed_vert', '6h64_vert', 'classic_vert',
+      'fold_stubby', 'ribbed_stubby', 'canted_stubby', 'stipp_stubby', 'lp_stubby',
+      'cmpct_handstop', 'slim_angled_smg',
+    ],
+    laser: ['5mw_red', '50mw_violet', '5mw_green', '50mw_green', '50mw_blue', '120mw_blue'],
+    light: ['ads_taclight', 'flashlight', 'hip_taclight'],
   });
-  assert.deepEqual(attachments.WEAPON_ERGO.pp19, { avail: [] });
-  assert.deepEqual(attachments.WEAPON_MAG.pp19, { def: null, mags: {} });
+  assert.deepEqual(attachments.WEAPON_ERGO.pp19, {
+    avail: ['mag_catch', 'buffer'],
+    magCatchRld: { reg: 2321, fast: 2054 },
+  });
+  assert.deepEqual(attachments.WEAPON_MAG.pp19, {
+    defAds: 3,
+    defSpr: 3,
+    defAms: 3,
+    def: '30_rnd',
+    mags: {
+      '30_rnd': {
+        name: '30 Rnd', pts: 5, mag: 30, tacRld: 2467,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: -1, adsMoveSpeedTierShift: 0,
+      },
+      '30_fast': {
+        name: '30 Fast', pts: 5, mag: 30, tacRld: 2183,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0,
+      },
+      '35_rnd': {
+        name: '35 Rnd', pts: 15, mag: 35, tacRld: 2467,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1,
+      },
+      '20_fast': {
+        name: '20 Fast', pts: 5, mag: 20, tacRld: 2467,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0,
+      },
+      '53_rnd': {
+        name: '53 Rnd', pts: 45, mag: 53, tacRld: 2667,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1,
+      },
+    },
+    baseSprintRecoveryTier: 4,
+    weaponSprintRecoveryTierShift: -1,
+    sprintRecoveryTierTable: 'primary',
+  });
+  for (const id of ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby']) {
+    assert.equal(Object.hasOwn(attachments.GRIPS.find(grip => grip.id === id), 'adsMoveSpeedTierShift'), false, `${id} must remain unshifted in this backfill`);
+  }
   assert.deepEqual(ammo.WEAPON_AMMO.pp19, { def: 'standard', ammo: { standard: 0 } });
   assert.equal(recoilDecay.RECOIL_DEC.pp19, 55);
   assert.equal(recoilDecay.RECOIL_DEC_TEXP.pp19, 1.023);
@@ -126,7 +168,40 @@ test('PP-19 cross-file entries are present and fail closed on unknown attachment
   assert.equal(provenance.attachmentCoverage.status, 'needs measurement');
 });
 
-test('PP-19 default loadout and comparison input remain serializable without guessed attachments', () => {
+test('PP-19 magazine and ergonomic values resolve to the reviewed legacy outputs', () => {
+  const apply = ({ mag, grip = 'none', ergo = 'none' }) => {
+    const atts = blankAtts();
+    atts.barrel = 'basic';
+    atts.mag = mag;
+    atts.grip = grip;
+    atts.ergo = ergo;
+    return applyAttachments(pp19, atts);
+  };
+  const expected = {
+    '30_rnd': { tacRld: 2.467, mag: 30, ads: 167, sprint: 100, move: 0.75 },
+    '30_fast': { tacRld: 2.183, mag: 30, ads: 167, sprint: 133, move: 0.75 },
+    '35_rnd': { tacRld: 2.467, mag: 35, ads: 167, sprint: 133, move: 0.67 },
+    // x1.00 is a reviewed source value, but the current table has no 1.0 rung;
+    // Phase 2b-i owns that separate table/index migration.
+    '20_fast': { tacRld: 2.467, mag: 20, ads: 167, sprint: 133, move: 0.75 },
+    '53_rnd': { tacRld: 2.667, mag: 53, ads: 167, sprint: 133, move: 0.67 },
+  };
+  for (const [mag, values] of Object.entries(expected)) {
+    const applied = apply({ mag });
+    assert.equal(applied.tacRld, values.tacRld, `${mag} tactical reload`);
+    assert.equal(applied.mag, values.mag, `${mag} capacity`);
+    assert.equal(applied._adsTimeMs, values.ads, `${mag} ADS time`);
+    assert.equal(applied._sprintRecoveryMs, values.sprint, `${mag} sprint recovery`);
+    assert.equal(applied._adsMoveSpeedMult, values.move, `${mag} ADS move`);
+  }
+  assert.equal(apply({ mag: '30_rnd', ergo: 'mag_catch' }).tacRld, 2.321);
+  assert.equal(apply({ mag: '30_rnd', ergo: 'buffer' }).tacRld, 2.467);
+  // The legacy name-based branch is intentionally wrong for this one combination;
+  // the receipt preserves the true 2.321 s value for Phase 2's derived branch.
+  assert.equal(apply({ mag: '20_fast', ergo: 'mag_catch' }).tacRld, 2.054);
+});
+
+test('PP-19 default audited loadout and comparison input remain serializable', () => {
   const atts = blankAtts();
   resetAttsForWeapon(atts, pp19, {
     WEAPON_ATTS: attachments.WEAPON_ATTS,
@@ -136,20 +211,20 @@ test('PP-19 default loadout and comparison input remain serializable without gue
   assert.deepEqual(atts, {
     sight: 'iron',
     muzzle: 'none',
-    barrel: 'none',
+    barrel: 'basic',
     grip: 'none',
     laser: 'none',
     light: 'none',
     ammo: 'standard',
-    mag: null,
+    mag: '30_rnd',
     ergo: 'none',
   });
 
   const applied = applyAttachments(pp19, atts);
   assert.equal(applied.bulletVel, 444);
-  assert.equal(applied.mag, 31);
-  assert.equal(applied.tacRld, 2.417);
-  assert.equal(applied.deployT, 0.466667);
+  assert.equal(applied.mag, 30);
+  assert.equal(applied.tacRld, 2.467);
+  assert.equal(applied.deployT, 0.4);
   assert.ok(Number.isFinite(applied.recoilV));
   assert.equal(applied.fireMode, 'auto');
 
@@ -200,7 +275,7 @@ test('PP-19 default loadout and comparison input remain serializable without gue
   assert.ok(params instanceof URLSearchParams);
   assert.equal(restored.slots[0].weapon.id, 'pp19');
   assert.equal(restored.slots[1].weapon.id, 'pp19');
-  assert.equal(restored.slots[0].atts.mag, null);
+  assert.equal(restored.slots[0].atts.mag, '30_rnd');
   assert.equal(restored.comparing, true);
   assert.deepEqual(restored.chart, { mode: 'btk', btkHS: 2, showAds: false });
   assert.equal(restored.recoil.aim, 'hip');

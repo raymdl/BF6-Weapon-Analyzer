@@ -41,7 +41,8 @@
     {
       "id": "none",
       "name": "None",
-      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,
+      "adsSpreadDecayBoost": 0,
       "worldSpot": 54,
       "minimapSpot": 150,
       "pts": 0
@@ -49,7 +50,8 @@
     {
       "id": "sp_brake",
       "name": "Single-Port Brake",
-      "adsRecoilTierMod": 1,      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 1,
+      "adsSpreadDecayBoost": 0,
       "sway": 1,
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -58,7 +60,8 @@
     {
       "id": "dp_brake",
       "name": "Double-Port Brake",
-      "adsRecoilTierMod": 1,      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 1,
+      "adsSpreadDecayBoost": 0,
       "worldSpot": 54,
       "minimapSpot": 150,
       "pts": 10
@@ -66,7 +69,8 @@
     {
       "id": "comp_brake",
       "name": "Compensated Brake",
-      "adsRecoilTierMod": 1,      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 1,
+      "adsRecoilDecayMult": 1.1,
       "assumed": true,
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -86,7 +90,8 @@
     {
       "id": "flash_hider",
       "name": "Flash Hider",
-      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,
+      "adsSpreadDecayBoost": 0,
       "worldSpot": 0,
       "minimapSpot": 150,
       "pts": 10
@@ -94,7 +99,8 @@
     {
       "id": "flash_comp",
       "name": "Flash Comp",
-      "adsRecoilTierMod": 0,      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 0,
+      "adsRecoilDecayMult": 1.1,
       "assumed": true,
       "worldSpot": 0,
       "minimapSpot": 150,
@@ -103,7 +109,8 @@
     {
       "id": "std_supp",
       "name": "Std. Suppressor",
-      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,
+      "adsSpreadDecayBoost": 0,
       "hipSpreadTierMod": 1,
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -112,7 +119,8 @@
     {
       "id": "long_supp",
       "name": "Long Suppressor",
-      "adsRecoilTierMod": 0,      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 0,
+      "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
       "sway": 1,
       "assumed": true,
@@ -123,7 +131,8 @@
     {
       "id": "light_supp",
       "name": "Lightened Suppressor",
-      "adsRecoilTierMod": 0,      "adsRecoilDecayMult": 1.1,
+      "adsRecoilTierMod": 0,
+      "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
       "assumed": true,
       "worldSpot": 0,
@@ -133,7 +142,8 @@
     {
       "id": "cqb_supp",
       "name": "CQB Suppressor",
-      "adsRecoilTierMod": 0,      "adsSpreadDecayBoost": 0,
+      "adsRecoilTierMod": 0,
+      "adsSpreadDecayBoost": 0,
       "worldSpot": 0,
       "minimapSpot": 21,
       "pts": 30
@@ -2017,11 +2027,48 @@
       ]
     },
     "pp19": {
-      "muzzle": [],
-      "barrel": [],
-      "grip": [],
-      "laser": [],
-      "light": []
+      "muzzle": [
+        "flash_hider",
+        "flash_comp",
+        "dp_brake",
+        "comp_brake",
+        "linear_comp",
+        "cqb_supp"
+      ],
+      "barrel": [
+        "basic",
+        "light",
+        "extended",
+        "heavy"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "classic_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "cmpct_handstop",
+        "slim_angled_smg"
+      ],
+      "laser": [
+        "5mw_red",
+        "50mw_violet",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight"
+      ]
     },
     "l110": {
       "muzzle": [
@@ -3565,7 +3612,14 @@
       }
     },
     "pp19": {
-      "avail": []
+      "avail": [
+        "mag_catch",
+        "buffer"
+      ],
+      "magCatchRld": {
+        "reg": 2321,
+        "fast": 2054
+      }
     },
     "l110": {
       "avail": [
@@ -4078,8 +4132,60 @@
       "sprintRecoveryTierTable": "primary"
     },
     "pp19": {
-      "def": null,
-      "mags": {}
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 3,
+      "def": "30_rnd",
+      "mags": {
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 5,
+          "mag": 30,
+          "tacRld": 2467,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0
+        },
+        "30_fast": {
+          "name": "30 Fast",
+          "pts": 5,
+          "mag": 30,
+          "tacRld": 2183,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "35_rnd": {
+          "name": "35 Rnd",
+          "pts": 15,
+          "mag": 35,
+          "tacRld": 2467,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1
+        },
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 5,
+          "mag": 20,
+          "tacRld": 2467,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0
+        },
+        "53_rnd": {
+          "name": "53 Rnd",
+          "pts": 45,
+          "mag": 53,
+          "tacRld": 2667,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1
+        }
+      },
+      "baseSprintRecoveryTier": 4,
+      "weaponSprintRecoveryTierShift": -1,
+      "sprintRecoveryTierTable": "primary"
     },
     "db12": {
       "defAds": 3,
