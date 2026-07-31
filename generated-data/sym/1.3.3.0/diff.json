@@ -6,8 +6,8 @@
     "existingWeaponCount": 58,
     "newWeaponCount": 1,
     "changedWeaponCount": 58,
-    "changedFieldCount": 942,
-    "liveDataWriteCount": 873,
+    "changedFieldCount": 1031,
+    "liveDataWriteCount": 961,
     "damageCurveWrites": 0,
     "gravityDragWrites": 0
   },
@@ -22,6 +22,23 @@
           "path": "rpm",
           "current": 720,
           "source": 719.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.959742,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.384,
+          "source": 2.484,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 2.8,
+          "source": 2.917,
           "policy": "Sym import"
         },
         {
@@ -147,6 +164,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.63,
           "source": 0.633334,
@@ -266,6 +288,11 @@
           "path": "rpm",
           "current": 720,
           "source": 719.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -391,6 +418,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.47,
           "source": 0.466667,
@@ -513,6 +545,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": null,
           "source": 0.533334,
@@ -572,6 +609,11 @@
           "path": "rpm",
           "current": 771,
           "source": 771.428,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -697,6 +739,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.233,
           "source": 0.233334,
@@ -747,6 +794,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.267,
           "source": 0.266667,
@@ -788,6 +840,11 @@
           "path": "rpm",
           "current": 830,
           "source": 830.769,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -913,6 +970,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.63,
           "source": 0.633334,
@@ -966,6 +1028,11 @@
           "path": "rpm",
           "current": 900,
           "source": 899.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -1091,6 +1158,23 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": null,
+          "source": 2.75,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": null,
+          "source": 3.7,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": null,
           "source": 0.533334,
@@ -1150,6 +1234,11 @@
           "path": "rpm",
           "current": 514,
           "source": 514.285,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -1275,6 +1364,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.47,
           "source": 0.466667,
@@ -1394,6 +1488,11 @@
           "path": "rpm",
           "current": 720,
           "source": 719.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -1519,6 +1618,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.6333,
           "source": 0.633334,
@@ -1566,6 +1670,23 @@
           "path": "rpm",
           "current": 635,
           "source": 635.294,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.975786,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.7,
+          "source": 2.767,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 2.667,
+          "source": 2.733,
           "policy": "Sym import"
         },
         {
@@ -1691,6 +1812,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.63,
           "source": 0.633334,
@@ -1744,6 +1870,11 @@
           "path": "rpm",
           "current": null,
           "source": 199.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -1806,6 +1937,11 @@
           "path": "rpm",
           "current": 654,
           "source": 654.545,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -1931,6 +2067,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 1,
           "source": 1.000004,
@@ -2050,6 +2191,11 @@
           "path": "rpm",
           "current": 771,
           "source": 771.428,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -2175,6 +2321,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.63,
           "source": 0.633334,
@@ -2222,6 +2373,23 @@
           "path": "rpm",
           "current": 600,
           "source": 599.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.949176,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 4.034,
+          "source": 4.25,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 5.6,
+          "source": 5.9,
           "policy": "Sym import"
         },
         {
@@ -2347,6 +2515,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 1,
           "source": 1.000004,
@@ -2466,6 +2639,23 @@
           "path": "rpm",
           "current": 720,
           "source": 719.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.979026,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.334,
+          "source": 2.384,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 2.5,
+          "source": 2.554,
           "policy": "Sym import"
         },
         {
@@ -2591,6 +2781,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.35,
           "source": 0.350001,
@@ -2632,6 +2827,11 @@
           "path": "rpm",
           "current": 257,
           "source": 257.142,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -2688,6 +2888,11 @@
           "path": "rpm",
           "current": 654,
           "source": 654.545,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -2813,6 +3018,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.63,
           "source": 0.633334,
@@ -2935,6 +3145,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.4,
           "source": 0.400001,
@@ -2979,6 +3194,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.267,
           "source": 0.266667,
@@ -3020,6 +3240,23 @@
           "path": "rpm",
           "current": 900,
           "source": 899.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.977272,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.15,
+          "source": 2.2,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 2.634,
+          "source": 2.695,
           "policy": "Sym import"
         },
         {
@@ -3145,6 +3382,23 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 0.99102,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 7.284,
+          "source": 7.35,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 8.05,
+          "source": 8.123,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 1,
           "source": 1.000004,
@@ -3267,6 +3521,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": null,
           "source": 0.633334,
@@ -3323,6 +3582,11 @@
       "status": "existing",
       "changes": [
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.53,
           "source": 0.533334,
@@ -3370,6 +3634,23 @@
           "path": "rpm",
           "current": 654,
           "source": 654.545,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.973599,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.434,
+          "source": 2.5,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 2.9,
+          "source": 2.979,
           "policy": "Sym import"
         },
         {
@@ -3495,6 +3776,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "emptyRld",
           "current": 2.117,
           "source": 2.167,
@@ -3549,13 +3835,18 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 0.979732,
+          "policy": "Sym import"
+        },
+        {
           "path": "tacRld",
-          "source": 2.417,
+          "source": 2.467,
           "policy": "Sym import"
         },
         {
           "path": "emptyRld",
-          "source": 2.967,
+          "source": 3.028,
           "policy": "Sym import"
         },
         {
@@ -3910,6 +4201,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.73,
           "source": 0.733334,
@@ -3957,6 +4253,11 @@
           "path": "rpm",
           "current": 771,
           "source": 771.428,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -4082,6 +4383,23 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 0.961538,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.1,
+          "source": 2.184,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 2.967,
+          "source": 3.086,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.47,
           "source": 0.466667,
@@ -4201,6 +4519,11 @@
           "path": "rpm",
           "current": 771,
           "source": 771.428,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -4326,6 +4649,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.7333,
           "source": 0.733334,
@@ -4445,6 +4773,11 @@
           "path": "rpm",
           "current": 553,
           "source": 553.846,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -4570,6 +4903,23 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 0.980769,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.55,
+          "source": 2.6,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 3.05,
+          "source": 3.11,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.47,
           "source": 0.466667,
@@ -4689,6 +5039,23 @@
           "path": "rpm",
           "current": 720,
           "source": 719.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.979999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.45,
+          "source": 2.5,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 2.867,
+          "source": 2.926,
           "policy": "Sym import"
         },
         {
@@ -4814,6 +5181,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.47,
           "source": 0.466667,
@@ -4933,6 +5305,23 @@
           "path": "rpm",
           "current": 675,
           "source": 674.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1.031698,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.734,
+          "source": 2.65,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 3.284,
+          "source": 3.183,
           "policy": "Sym import"
         },
         {
@@ -5058,6 +5447,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.53,
           "source": 0.533334,
@@ -5177,6 +5571,11 @@
           "path": "rpm",
           "current": 568,
           "source": 568.421,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -5302,6 +5701,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.63,
           "source": 0.633334,
@@ -5349,6 +5753,11 @@
           "path": "rpm",
           "current": 300,
           "source": 299.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {
@@ -5408,6 +5817,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.87,
           "source": 0.866667,
@@ -5461,6 +5875,23 @@
           "path": "rpm",
           "current": 720,
           "source": 719.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.979166,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.35,
+          "source": 2.4,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 3.3,
+          "source": 3.37,
           "policy": "Sym import"
         },
         {
@@ -5586,6 +6017,11 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 1,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.47,
           "source": 0.466667,
@@ -5705,6 +6141,23 @@
           "path": "rpm",
           "current": 900,
           "source": 899.999,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 0.955666,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.867,
+          "source": 3,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 3.167,
+          "source": 3.314,
           "policy": "Sym import"
         },
         {
@@ -5830,6 +6283,23 @@
           "policy": "Sym import"
         },
         {
+          "path": "reloadSpeed",
+          "source": 0.958915,
+          "policy": "Sym import"
+        },
+        {
+          "path": "tacRld",
+          "current": 2.334,
+          "source": 2.434,
+          "policy": "Sym import"
+        },
+        {
+          "path": "emptyRld",
+          "current": 3,
+          "source": 3.129,
+          "policy": "Sym import"
+        },
+        {
           "path": "deployT",
           "current": 0.63,
           "source": 0.633334,
@@ -5949,6 +6419,11 @@
           "path": "rpm",
           "current": 818,
           "source": 818.181,
+          "policy": "Sym import"
+        },
+        {
+          "path": "reloadSpeed",
+          "source": 1,
           "policy": "Sym import"
         },
         {

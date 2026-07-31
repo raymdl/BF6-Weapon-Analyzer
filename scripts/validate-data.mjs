@@ -51,6 +51,9 @@ for (const weapon of weapons) {
       fail(`${weapon.id}: ${key} must be numeric or null`);
     }
   }
+  if (!Number.isFinite(weapon.reloadSpeed) || weapon.reloadSpeed <= 0) {
+    fail(`${weapon.id}: reloadSpeed must be a finite positive number`);
+  }
   if (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0) {
     fail(`${weapon.id}: dmg must be a non-empty breakpoint array`);
   } else {

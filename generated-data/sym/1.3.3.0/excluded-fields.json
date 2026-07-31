@@ -5,11 +5,10 @@
     "shellByShell": [
       "590a1",
       "m1014",
-      "185ksk",
       "dp12"
     ],
     "unsupportedValue": "null",
-    "note": "Shell-by-shell reloads are not representable by scalar site timing fields; unsupported N/A values remain null."
+    "note": "Tube-fed shotgun per-shell reloads are not representable by scalar site timing fields; unsupported N/A values remain null. The box-magazine 18.5KS-K remains scalar."
   },
   "noGo": [
     "Do not write damage.dmgs or damage.dists from this importer; scripts/apply-sym-damage.mjs owns the live damage curves.",
@@ -56,13 +55,6 @@
       "field": "mags.NumMags",
       "decision": "normalized-only",
       "note": "The current site schema does not expose Sym reserve-mag count.",
-      "sourceRecordCount": 59,
-      "reconciledPatchRowCount": 0
-    },
-    {
-      "field": "reload.ReloadSpeed",
-      "decision": "normalized-only",
-      "note": "The current site schema has no reload-speed multiplier field.",
       "sourceRecordCount": 59,
       "reconciledPatchRowCount": 0
     },

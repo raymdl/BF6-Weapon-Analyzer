@@ -40,9 +40,9 @@ const PATCH_WEAPON_NAME_ALIASES = Object.freeze({ 'DP-12': 'dp12' });
 // measured aggregate policy. M44 and M357 Trait retain their numeric tactical
 // reload and normalize unsupported empty reload values to null.
 export const SPECIAL_RELOAD_POLICY = Object.freeze({
-  shellByShell: Object.freeze(['590a1', 'm1014', '185ksk', 'dp12']),
+  shellByShell: Object.freeze(['590a1', 'm1014', 'dp12']),
   unsupportedValue: 'null',
-  note: 'Shell-by-shell reloads are not representable by scalar site timing fields; unsupported N/A values remain null.',
+  note: 'Tube-fed shotgun per-shell reloads are not representable by scalar site timing fields; unsupported N/A values remain null. The box-magazine 18.5KS-K remains scalar.',
 });
 
 const EXCLUDED_SOURCE_FIELDS = Object.freeze([
@@ -75,11 +75,6 @@ const EXCLUDED_SOURCE_FIELDS = Object.freeze([
     field: 'mags.NumMags',
     decision: 'normalized-only',
     note: 'The current site schema does not expose Sym reserve-mag count.',
-  },
-  {
-    field: 'reload.ReloadSpeed',
-    decision: 'normalized-only',
-    note: 'The current site schema has no reload-speed multiplier field.',
   },
   {
     field: 'reload.ReloadThrs',
@@ -366,13 +361,39 @@ function numericOrNull(value) {
   return Number.isFinite(number) ? number : null;
 }
 
+function normalizedReloadSpeed(row) {
+  const reload = row.reload;
+  const hasReloadSpeed = reload != null
+    && Object.prototype.hasOwnProperty.call(reload, 'ReloadSpeed');
+  if (!hasReloadSpeed) return 1.0;
+
+  const raw = reload.ReloadSpeed;
+  const reloadSpeed = numericValue(raw);
+  if (!Number.isFinite(reloadSpeed) || reloadSpeed <= 0) {
+    throw new Error(`${row.codename ?? row.displayname ?? '<unknown>'}: reload.ReloadSpeed must be a finite positive number when present; received ${String(raw)}`);
+  }
+  return reloadSpeed;
+}
+
+function reloadSecondsOrNull(value, reloadSpeed) {
+  const seconds = numericOrNull(value);
+  return seconds == null ? null : Number((seconds / reloadSpeed).toFixed(3));
+}
+
 export function normalizedReloadFields(row) {
   if (SPECIAL_RELOAD_POLICY.shellByShell.includes(row.codename)) {
-    return { tacRld: null, emptyRld: null, policy: 'shell-by-shell-null' };
+    return {
+      tacRld: null,
+      emptyRld: null,
+      reloadSpeed: normalizedReloadSpeed(row),
+      policy: 'shell-by-shell-null',
+    };
   }
+  const reloadSpeed = normalizedReloadSpeed(row);
   return {
-    tacRld: numericOrNull(row.reload?.ReloadLeft),
-    emptyRld: numericOrNull(row.reload?.ReloadEmpty),
+    tacRld: reloadSecondsOrNull(row.reload?.ReloadLeft, reloadSpeed),
+    emptyRld: reloadSecondsOrNull(row.reload?.ReloadEmpty, reloadSpeed),
+    reloadSpeed,
     policy: 'scalar-numeric-or-null',
   };
 }
@@ -387,6 +408,7 @@ function sourceSiteFields(row) {
   const fields = {
     rpm: row.rof?.RoF ?? null,
     mag: row.mags?.MagSize ?? null,
+    reloadSpeed: reload.reloadSpeed,
     tacRld: reload.tacRld,
     emptyRld: reload.emptyRld,
     deployT: row.deploy?.DeployTime ?? null,
@@ -418,7 +440,6 @@ function sourceExcludedFields(row) {
     drag: row.drag,
     ammo: row.ammo,
     'mags.NumMags': row.mags?.NumMags,
-    'reload.ReloadSpeed': row.reload?.ReloadSpeed,
     'reload.ReloadThrs': row.reload?.ReloadThrs,
     'deploy.UnDeployTime': row.deploy?.UnDeployTime,
     'damage.dmgs': clone(row.damage?.dmgs ?? null),
@@ -471,6 +492,7 @@ function patchSourceValue(row, property) {
 
 function patchSiteTarget(property) {
   if (property === 'velocity') return 'bulletVel';
+  if (property === 'reload.ReloadSpeed') return 'reloadSpeed';
   if (property === 'reload.ReloadEmpty') return 'emptyRld';
   if (property === 'ADSRecoilAmount') return 'recoil.ads.amount';
   if (property === 'ADSRecoilAmountMultiplierExponent') return 'recoil.ads.amountExp';
@@ -778,11 +800,20 @@ function applySiteFields(currentWeapon, siteFields) {
 }
 
 export function buildLiveData(currentWeapons, currentRecoilDecay, currentBalance, normalizedSnapshot) {
+  const byId = new Map(normalizedSnapshot.weapons.map(record => [record.siteId, record]));
   const existing = normalizedSnapshot.weapons.filter(record => record.status === 'existing');
-  const byId = new Map(existing.map(record => [record.siteId, record]));
   const weapons = currentWeapons.map(weapon => {
     const record = byId.get(weapon.id);
-    return record ? applySiteFields(weapon, record.siteFields) : weapon;
+    if (!record) return weapon;
+    if (record.status === 'existing') return applySiteFields(weapon, record.siteFields);
+    // New records already have a separately curated live shape. Promote only
+    // the Phase 1 reload fields so the importer cannot overwrite unrelated
+    // stats while still covering every normalized weapon.
+    return applySiteFields(weapon, {
+      reloadSpeed: record.siteFields.reloadSpeed,
+      tacRld: record.siteFields.tacRld,
+      emptyRld: record.siteFields.emptyRld,
+    });
   });
 
   const recoilDecay = clone(currentRecoilDecay);
@@ -818,7 +849,7 @@ export async function main(argv = process.argv.slice(2)) {
     console.log('Default mode writes only review artifacts under generated-data/sym/1.3.3.0.');
     console.log(`Default baseline is ${DEFAULT_BASELINE_SPEC}; git baselines are resolved to a full commit SHA in every artifact.`);
     console.log('--baseline=PATH compares against an explicit JSON file; --baseline=git:REF:PATH reads a git baseline without writing it.');
-    console.log('--write-data applies only the safe Phase 2 fields after artifacts are generated.');
+    console.log('--write-data applies the approved importer fields after artifacts are generated.');
     return;
   }
   const root = DEFAULT_ROOT;

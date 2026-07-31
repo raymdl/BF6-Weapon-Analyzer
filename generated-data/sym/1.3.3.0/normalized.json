@@ -31,8 +31,9 @@
       "siteFields": {
         "rpm": 719.999,
         "mag": 31,
-        "tacRld": 2.384,
-        "emptyRld": 2.8,
+        "reloadSpeed": 0.959742,
+        "tacRld": 2.484,
+        "emptyRld": 2.917,
         "deployT": 0.533334,
         "bulletVel": 708,
         "recoilV": 0.5082994245768439,
@@ -130,7 +131,6 @@
         "drag": 0.0035,
         "ammo": "545x39mm",
         "mags.NumMags": 8,
-        "reload.ReloadSpeed": 0.959742,
         "reload.ReloadThrs": 0.62,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -337,6 +337,7 @@
       "siteFields": {
         "rpm": 514.285,
         "mag": 21,
+        "reloadSpeed": 1,
         "tacRld": 2.467,
         "emptyRld": 3.3,
         "deployT": 0.633334,
@@ -436,7 +437,6 @@
         "drag": 0.0035,
         "ammo": "762x51mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.55,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -627,6 +627,7 @@
       "siteFields": {
         "rpm": 719.999,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.384,
         "emptyRld": 2.95,
         "deployT": 0.633334,
@@ -726,7 +727,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.58,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -917,6 +917,7 @@
       "siteFields": {
         "rpm": 981.818,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.217,
         "emptyRld": 2.95,
         "deployT": 0.466667,
@@ -1016,7 +1017,6 @@
         "drag": 0.0035,
         "ammo": "9x19mm",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.72,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -1223,6 +1223,7 @@
       "siteFields": {
         "rpm": 359.999,
         "mag": 16,
+        "reloadSpeed": 1,
         "tacRld": null,
         "emptyRld": null,
         "deployT": 0.533334,
@@ -1323,7 +1324,6 @@
         "drag": 0.0035,
         "ammo": "12gano01buck275",
         "mags.NumMags": 6,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.9,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -1571,6 +1571,7 @@
       "siteFields": {
         "rpm": 771.428,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.467,
         "emptyRld": 2.95,
         "deployT": 0.733334,
@@ -1670,7 +1671,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.63,
         "deploy.UnDeployTime": 0.266667,
         "damage.dmgs": [
@@ -1861,6 +1861,7 @@
       "siteFields": {
         "rpm": 449.999,
         "mag": 21,
+        "reloadSpeed": 1,
         "tacRld": 2.017,
         "emptyRld": 2.2,
         "deployT": 0.233334,
@@ -1960,7 +1961,6 @@
         "drag": 0.0035,
         "ammo": "57x28mm",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.8,
         "deploy.UnDeployTime": 0.100001,
         "damage.dmgs": [
@@ -2167,6 +2167,7 @@
       "siteFields": {
         "rpm": 359.999,
         "mag": 16,
+        "reloadSpeed": 1,
         "tacRld": 1.934,
         "emptyRld": 2.25,
         "deployT": 0.266667,
@@ -2266,7 +2267,6 @@
         "drag": 0.0035,
         "ammo": ".40sw",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.62,
         "deploy.UnDeployTime": 0.116667,
         "damage.dmgs": [
@@ -2473,6 +2473,7 @@
       "siteFields": {
         "rpm": 830.769,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.5,
         "emptyRld": 3.35,
         "deployT": 0.533334,
@@ -2572,7 +2573,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.65,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -2779,6 +2779,7 @@
       "siteFields": {
         "rpm": 359.999,
         "mag": 21,
+        "reloadSpeed": 1,
         "tacRld": 2.75,
         "emptyRld": 3.284,
         "deployT": 0.633334,
@@ -2878,7 +2879,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 8,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.7,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -3069,6 +3069,7 @@
       "siteFields": {
         "rpm": 899.999,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.45,
         "emptyRld": 3.017,
         "deployT": 0.633334,
@@ -3168,7 +3169,6 @@
         "drag": 0.0035,
         "ammo": "545x39mm",
         "mags.NumMags": 8,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.66,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -3355,12 +3355,13 @@
       "sourceClass": "shotgun",
       "siteClass": "Shotgun",
       "status": "existing",
-      "reloadPolicy": "shell-by-shell-null",
+      "reloadPolicy": "scalar-numeric-or-null",
       "siteFields": {
         "rpm": 299.999,
         "mag": 9,
-        "tacRld": null,
-        "emptyRld": null,
+        "reloadSpeed": 1,
+        "tacRld": 2.75,
+        "emptyRld": 3.7,
         "deployT": 0.533334,
         "bulletVel": 400,
         "recoilV": 1.6855610028606383,
@@ -3459,7 +3460,6 @@
         "drag": 0.0035,
         "ammo": "12gano01buck275",
         "mags.NumMags": 6,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.82,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -3650,6 +3650,7 @@
       "siteFields": {
         "rpm": 514.285,
         "mag": 60,
+        "reloadSpeed": 1,
         "tacRld": 3.25,
         "emptyRld": 3.984,
         "deployT": 0.733334,
@@ -3749,7 +3750,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.74,
         "deploy.UnDeployTime": 0.266667,
         "damage.dmgs": [
@@ -3940,6 +3940,7 @@
       "siteFields": {
         "rpm": 1079.999,
         "mag": 18,
+        "reloadSpeed": 1,
         "tacRld": 2.384,
         "emptyRld": 2.9,
         "deployT": 0.466667,
@@ -4039,7 +4040,6 @@
         "drag": 0.0035,
         "ammo": "9x19mm",
         "mags.NumMags": 12,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.78,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -4246,6 +4246,7 @@
       "siteFields": {
         "rpm": 719.999,
         "mag": 100,
+        "reloadSpeed": 1,
         "tacRld": 6.5,
         "emptyRld": 7.734,
         "deployT": 1.000004,
@@ -4345,7 +4346,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 2,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.83,
         "deploy.UnDeployTime": 0.333334,
         "damage.dmgs": [
@@ -4536,6 +4536,7 @@
       "siteFields": {
         "rpm": 46.349953649969095,
         "mag": 6,
+        "reloadSpeed": 1,
         "tacRld": 2.75,
         "emptyRld": 4.233,
         "deployT": 0.633334,
@@ -4635,7 +4636,6 @@
         "drag": 0.0035,
         "ammo": ".338lapuamagnum2",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.75,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -4826,8 +4826,9 @@
       "siteFields": {
         "rpm": 635.294,
         "mag": 31,
-        "tacRld": 2.7,
-        "emptyRld": 2.667,
+        "reloadSpeed": 0.975786,
+        "tacRld": 2.767,
+        "emptyRld": 2.733,
         "deployT": 0.633334,
         "bulletVel": 778,
         "recoilV": 0.6740692990342647,
@@ -4925,7 +4926,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 0.975786,
         "reload.ReloadThrs": 0.63,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -5116,6 +5116,7 @@
       "siteFields": {
         "rpm": 449.999,
         "mag": 11,
+        "reloadSpeed": 1,
         "tacRld": 3.034,
         "emptyRld": 3.067,
         "deployT": 0.633334,
@@ -5215,7 +5216,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 15,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.71,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -5406,6 +5406,7 @@
       "siteFields": {
         "rpm": 199.999,
         "mag": 7,
+        "reloadSpeed": 1,
         "tacRld": null,
         "emptyRld": null,
         "deployT": 0.633334,
@@ -5506,7 +5507,6 @@
         "drag": 0.0035,
         "ammo": "12gano01buck300",
         "mags.NumMags": 6,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.86,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -5762,6 +5762,7 @@
       "siteFields": {
         "rpm": 654.545,
         "mag": 50,
+        "reloadSpeed": 1,
         "tacRld": 6.267,
         "emptyRld": 7.25,
         "deployT": 1.000004,
@@ -5861,7 +5862,6 @@
         "drag": 0.0035,
         "ammo": "762x51mm NATO",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.88,
         "deploy.UnDeployTime": 0.333334,
         "damage.dmgs": [
@@ -6052,6 +6052,7 @@
       "siteFields": {
         "rpm": 830.769,
         "mag": 100,
+        "reloadSpeed": 1,
         "tacRld": 6.65,
         "emptyRld": 7.434,
         "deployT": 1.000004,
@@ -6151,7 +6152,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 2,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.81,
         "deploy.UnDeployTime": 0.333334,
         "damage.dmgs": [
@@ -6342,6 +6342,7 @@
       "siteFields": {
         "rpm": 771.428,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.2,
         "emptyRld": 2.634,
         "deployT": 0.633334,
@@ -6441,7 +6442,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.59,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -6632,6 +6632,7 @@
       "siteFields": {
         "rpm": 44.0816018658339,
         "mag": 6,
+        "reloadSpeed": 1,
         "tacRld": 3.234,
         "emptyRld": 3.934,
         "deployT": 0.633334,
@@ -6731,7 +6732,6 @@
         "drag": 0.0035,
         "ammo": ".300winmag",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.73,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -6922,8 +6922,9 @@
       "siteFields": {
         "rpm": 599.999,
         "mag": 50,
-        "tacRld": 4.034,
-        "emptyRld": 5.6,
+        "reloadSpeed": 0.949176,
+        "tacRld": 4.25,
+        "emptyRld": 5.9,
         "deployT": 1.000004,
         "bulletVel": 590,
         "recoilV": 0.8064454775462087,
@@ -7021,7 +7022,6 @@
         "drag": 0.0035,
         "ammo": "762x51mm NATO",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 0.949176,
         "reload.ReloadThrs": 0.79,
         "deploy.UnDeployTime": 0.333334,
         "damage.dmgs": [
@@ -7212,6 +7212,7 @@
       "siteFields": {
         "rpm": 674.999,
         "mag": 50,
+        "reloadSpeed": 1,
         "tacRld": 5.75,
         "emptyRld": 6.134,
         "deployT": 1.000004,
@@ -7311,7 +7312,6 @@
         "drag": 0.0035,
         "ammo": "68x51mm",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.8,
         "deploy.UnDeployTime": 0.333334,
         "damage.dmgs": [
@@ -7490,8 +7490,9 @@
       "siteFields": {
         "rpm": 719.999,
         "mag": 21,
-        "tacRld": 2.334,
-        "emptyRld": 2.5,
+        "reloadSpeed": 0.979026,
+        "tacRld": 2.384,
+        "emptyRld": 2.554,
         "deployT": 0.533334,
         "bulletVel": 592,
         "recoilV": 0.9542958007305558,
@@ -7589,7 +7590,6 @@
         "drag": 0.0035,
         "ammo": "68x51mm",
         "mags.NumMags": 8,
-        "reload.ReloadSpeed": 0.979026,
         "reload.ReloadThrs": 0.6,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -7772,6 +7772,7 @@
       "siteFields": {
         "rpm": 224.999,
         "mag": 8,
+        "reloadSpeed": 1,
         "tacRld": 3.067,
         "emptyRld": null,
         "deployT": 0.350001,
@@ -7871,7 +7872,6 @@
         "drag": 0.0035,
         "ammo": ".357magnum",
         "mags.NumMags": 8,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.67,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -8078,6 +8078,7 @@
       "siteFields": {
         "rpm": 257.142,
         "mag": 21,
+        "reloadSpeed": 1,
         "tacRld": 2.534,
         "emptyRld": 2.85,
         "deployT": 0.733334,
@@ -8177,7 +8178,6 @@
         "drag": 0.0035,
         "ammo": "762x51mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.67,
         "deploy.UnDeployTime": 0.266667,
         "damage.dmgs": [
@@ -8368,6 +8368,7 @@
       "siteFields": {
         "rpm": 654.545,
         "mag": 21,
+        "reloadSpeed": 1,
         "tacRld": 2.467,
         "emptyRld": 2.567,
         "deployT": 0.533334,
@@ -8467,7 +8468,6 @@
         "drag": 0.0035,
         "ammo": "762x51mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.56,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -8674,6 +8674,7 @@
       "siteFields": {
         "rpm": 830.769,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.384,
         "emptyRld": 2.967,
         "deployT": 0.633334,
@@ -8773,7 +8774,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.59,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -8964,6 +8964,7 @@
       "siteFields": {
         "rpm": 163.636,
         "mag": 6,
+        "reloadSpeed": 1,
         "tacRld": 3.4,
         "emptyRld": null,
         "deployT": 0.400001,
@@ -9063,7 +9064,6 @@
         "drag": 0.0035,
         "ammo": ".44magnum",
         "mags.NumMags": 5,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.72,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -9262,6 +9262,7 @@
       "siteFields": {
         "rpm": 327.272,
         "mag": 8,
+        "reloadSpeed": 1,
         "tacRld": 1.867,
         "emptyRld": 2,
         "deployT": 0.266667,
@@ -9361,7 +9362,6 @@
         "drag": 0.0035,
         "ammo": ".45acp",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.65,
         "deploy.UnDeployTime": 0.116667,
         "damage.dmgs": [
@@ -9576,8 +9576,9 @@
       "siteFields": {
         "rpm": 899.999,
         "mag": 31,
-        "tacRld": 2.15,
-        "emptyRld": 2.634,
+        "reloadSpeed": 0.977272,
+        "tacRld": 2.2,
+        "emptyRld": 2.695,
         "deployT": 0.533334,
         "bulletVel": 590,
         "recoilV": 0.8482748505471913,
@@ -9675,7 +9676,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 0.977272,
         "reload.ReloadThrs": 0.61,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -9882,8 +9882,9 @@
       "siteFields": {
         "rpm": 514.285,
         "mag": 100,
-        "tacRld": 7.284,
-        "emptyRld": 8.05,
+        "reloadSpeed": 0.99102,
+        "tacRld": 7.35,
+        "emptyRld": 8.123,
         "deployT": 1.000004,
         "bulletVel": 680,
         "recoilV": 0.7361877333333333,
@@ -9981,7 +9982,6 @@
         "drag": 0.0035,
         "ammo": "762x51mm NATO",
         "mags.NumMags": 2,
-        "reload.ReloadSpeed": 0.99102,
         "reload.ReloadThrs": 0.86,
         "deploy.UnDeployTime": 0.333334,
         "damage.dmgs": [
@@ -10172,6 +10172,7 @@
       "siteFields": {
         "rpm": 1799.999,
         "mag": 8,
+        "reloadSpeed": 1,
         "tacRld": null,
         "emptyRld": null,
         "deployT": 0.633334,
@@ -10272,7 +10273,6 @@
         "drag": 0.0035,
         "ammo": "12gano01buck300",
         "mags.NumMags": 5,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.9,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -10528,6 +10528,7 @@
       "siteFields": {
         "rpm": 51,
         "mag": 11,
+        "reloadSpeed": 1,
         "tacRld": 2.334,
         "emptyRld": 3.9,
         "deployT": 0.533334,
@@ -10627,7 +10628,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 5,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.64,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -10810,8 +10810,9 @@
       "siteFields": {
         "rpm": 654.545,
         "mag": 31,
-        "tacRld": 2.434,
-        "emptyRld": 2.9,
+        "reloadSpeed": 0.973599,
+        "tacRld": 2.5,
+        "emptyRld": 2.979,
         "deployT": 0.633334,
         "bulletVel": 626,
         "recoilV": 0.7326801731267338,
@@ -10909,7 +10910,6 @@
         "drag": 0.0035,
         "ammo": "762x39mm",
         "mags.NumMags": 6,
-        "reload.ReloadSpeed": 0.973599,
         "reload.ReloadThrs": 0.6,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -11116,6 +11116,7 @@
       "siteFields": {
         "rpm": 399.999,
         "mag": 18,
+        "reloadSpeed": 1,
         "tacRld": 1.934,
         "emptyRld": 2.167,
         "deployT": 0.266667,
@@ -11215,7 +11216,6 @@
         "drag": 0.0035,
         "ammo": "9x19mm",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.61,
         "deploy.UnDeployTime": 0.116667,
         "damage.dmgs": [
@@ -11422,8 +11422,9 @@
       "siteFields": {
         "rpm": 719.999,
         "mag": 31,
-        "tacRld": 2.417,
-        "emptyRld": 2.967,
+        "reloadSpeed": 0.979732,
+        "tacRld": 2.467,
+        "emptyRld": 3.028,
         "deployT": 0.466667,
         "bulletVel": 444,
         "recoilV": 0.5434529043176682,
@@ -11521,7 +11522,6 @@
         "drag": 0.0035,
         "ammo": "9x19mm",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 0.979732,
         "reload.ReloadThrs": 0.56,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -11728,6 +11728,7 @@
       "siteFields": {
         "rpm": 38.11762015220833,
         "mag": 11,
+        "reloadSpeed": 1,
         "tacRld": 3.35,
         "emptyRld": 4.35,
         "deployT": 0.733334,
@@ -11827,7 +11828,6 @@
         "drag": 0.0035,
         "ammo": ".338normamagnum",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.68,
         "deploy.UnDeployTime": 0.266667,
         "damage.dmgs": [
@@ -12018,6 +12018,7 @@
       "siteFields": {
         "rpm": 771.428,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.517,
         "emptyRld": 2.9,
         "deployT": 0.466667,
@@ -12117,7 +12118,6 @@
         "drag": 0.0035,
         "ammo": "9x19mm",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.59,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -12324,8 +12324,9 @@
       "siteFields": {
         "rpm": 947.368,
         "mag": 31,
-        "tacRld": 2.1,
-        "emptyRld": 2.967,
+        "reloadSpeed": 0.961538,
+        "tacRld": 2.184,
+        "emptyRld": 3.086,
         "deployT": 0.466667,
         "bulletVel": 576,
         "recoilV": 0.5091176296296296,
@@ -12423,7 +12424,6 @@
         "drag": 0.0035,
         "ammo": "46x30",
         "mags.NumMags": 9,
-        "reload.ReloadSpeed": 0.961538,
         "reload.ReloadThrs": 0.73,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -12614,6 +12614,7 @@
       "siteFields": {
         "rpm": 771.428,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.567,
         "emptyRld": 2.784,
         "deployT": 0.533334,
@@ -12713,7 +12714,6 @@
         "drag": 0.0035,
         "ammo": "58x42mm",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.72,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -12920,6 +12920,7 @@
       "siteFields": {
         "rpm": 685.714,
         "mag": 46,
+        "reloadSpeed": 1,
         "tacRld": 2.784,
         "emptyRld": 3.1,
         "deployT": 0.733334,
@@ -13019,7 +13020,6 @@
         "drag": 0.0035,
         "ammo": "545x39mm",
         "mags.NumMags": 5,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.7,
         "deploy.UnDeployTime": 0.266667,
         "damage.dmgs": [
@@ -13210,6 +13210,7 @@
       "siteFields": {
         "rpm": 553.846,
         "mag": 41,
+        "reloadSpeed": 1,
         "tacRld": 2.8,
         "emptyRld": 3.284,
         "deployT": 0.733334,
@@ -13309,7 +13310,6 @@
         "drag": 0.0035,
         "ammo": "762x39mm",
         "mags.NumMags": 5,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.7,
         "deploy.UnDeployTime": 0.266667,
         "damage.dmgs": [
@@ -13516,8 +13516,9 @@
       "siteFields": {
         "rpm": 799.999,
         "mag": 16,
-        "tacRld": 2.55,
-        "emptyRld": 3.05,
+        "reloadSpeed": 0.980769,
+        "tacRld": 2.6,
+        "emptyRld": 3.11,
         "deployT": 0.466667,
         "bulletVel": 398,
         "recoilV": 0.7124297727932585,
@@ -13615,7 +13616,6 @@
         "drag": 0.0035,
         "ammo": "10x25mm",
         "mags.NumMags": 11,
-        "reload.ReloadSpeed": 0.980769,
         "reload.ReloadThrs": 0.57,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -13822,8 +13822,9 @@
       "siteFields": {
         "rpm": 719.999,
         "mag": 31,
-        "tacRld": 2.45,
-        "emptyRld": 2.867,
+        "reloadSpeed": 0.979999,
+        "tacRld": 2.5,
+        "emptyRld": 2.926,
         "deployT": 0.533334,
         "bulletVel": 483,
         "recoilV": 0.826647274688653,
@@ -13921,7 +13922,6 @@
         "drag": 0.0035,
         "ammo": "762x39mm",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 0.979999,
         "reload.ReloadThrs": 0.63,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -14128,6 +14128,7 @@
       "siteFields": {
         "rpm": 830.769,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.517,
         "emptyRld": 2.917,
         "deployT": 0.466667,
@@ -14227,7 +14228,6 @@
         "drag": 0.0035,
         "ammo": "9x19mm",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.58,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -14434,8 +14434,9 @@
       "siteFields": {
         "rpm": 674.999,
         "mag": 31,
-        "tacRld": 2.734,
-        "emptyRld": 3.284,
+        "reloadSpeed": 1.031698,
+        "tacRld": 2.65,
+        "emptyRld": 3.183,
         "deployT": 0.466667,
         "bulletVel": 486,
         "recoilV": 0.5240016637500265,
@@ -14533,7 +14534,6 @@
         "drag": 0.0035,
         "ammo": "9x19mm",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1.031698,
         "reload.ReloadThrs": 0.71,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -14740,6 +14740,7 @@
       "siteFields": {
         "rpm": 599.999,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.25,
         "emptyRld": 3.284,
         "deployT": 0.533334,
@@ -14839,7 +14840,6 @@
         "drag": 0.0035,
         "ammo": ".300blk",
         "mags.NumMags": 6,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.73,
         "deploy.UnDeployTime": 0.200001,
         "damage.dmgs": [
@@ -15046,6 +15046,7 @@
       "siteFields": {
         "rpm": 568.421,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.384,
         "emptyRld": 2.667,
         "deployT": 0.633334,
@@ -15145,7 +15146,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.73,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -15336,6 +15336,7 @@
       "siteFields": {
         "rpm": 37.67438355865456,
         "mag": 11,
+        "reloadSpeed": 1,
         "tacRld": 2.984,
         "emptyRld": 3.967,
         "deployT": 0.633334,
@@ -15435,7 +15436,6 @@
         "drag": 0.0035,
         "ammo": "762x54mmr",
         "mags.NumMags": 4,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.78,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -15626,6 +15626,7 @@
       "siteFields": {
         "rpm": 299.999,
         "mag": 11,
+        "reloadSpeed": 1,
         "tacRld": 2.5,
         "emptyRld": 3.45,
         "deployT": 0.733334,
@@ -15725,7 +15726,6 @@
         "drag": 0.0035,
         "ammo": "762x54mmr",
         "mags.NumMags": 13,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.78,
         "deploy.UnDeployTime": 0.266667,
         "damage.dmgs": [
@@ -15916,6 +15916,7 @@
       "siteFields": {
         "rpm": 149.999,
         "mag": 11,
+        "reloadSpeed": 1,
         "tacRld": 2.967,
         "emptyRld": 4.217,
         "deployT": 0.866667,
@@ -16015,7 +16016,6 @@
         "drag": 0.0035,
         "ammo": ".338lapuamagnum",
         "mags.NumMags": 9,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.72,
         "deploy.UnDeployTime": 0.300001,
         "damage.dmgs": [
@@ -16206,8 +16206,9 @@
       "siteFields": {
         "rpm": 719.999,
         "mag": 21,
-        "tacRld": 2.35,
-        "emptyRld": 3.3,
+        "reloadSpeed": 0.979166,
+        "tacRld": 2.4,
+        "emptyRld": 3.37,
         "deployT": 0.633334,
         "bulletVel": 604,
         "recoilV": 1.1595971107513876,
@@ -16305,7 +16306,6 @@
         "drag": 0.0035,
         "ammo": "762x51mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 0.979166,
         "reload.ReloadThrs": 0.65,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -16496,6 +16496,7 @@
       "siteFields": {
         "rpm": 635.294,
         "mag": 31,
+        "reloadSpeed": 1,
         "tacRld": 2.517,
         "emptyRld": 2.917,
         "deployT": 0.466667,
@@ -16595,7 +16596,6 @@
         "drag": 0.0035,
         "ammo": ".40sw",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.59,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -16802,8 +16802,9 @@
       "siteFields": {
         "rpm": 899.999,
         "mag": 51,
-        "tacRld": 2.867,
-        "emptyRld": 3.167,
+        "reloadSpeed": 0.955666,
+        "tacRld": 3,
+        "emptyRld": 3.314,
         "deployT": 0.466667,
         "bulletVel": 543,
         "recoilV": 0.5471688016080739,
@@ -16901,7 +16902,6 @@
         "drag": 0.0035,
         "ammo": "57x28mm",
         "mags.NumMags": 5,
-        "reload.ReloadSpeed": 0.955666,
         "reload.ReloadThrs": 0.74,
         "deploy.UnDeployTime": 0.166667,
         "damage.dmgs": [
@@ -17108,8 +17108,9 @@
       "siteFields": {
         "rpm": 899.999,
         "mag": 31,
-        "tacRld": 2.334,
-        "emptyRld": 3,
+        "reloadSpeed": 0.958915,
+        "tacRld": 2.434,
+        "emptyRld": 3.129,
         "deployT": 0.633334,
         "bulletVel": 660,
         "recoilV": 0.8205740274617134,
@@ -17207,7 +17208,6 @@
         "drag": 0.0035,
         "ammo": "556x45mm NATO",
         "mags.NumMags": 7,
-        "reload.ReloadSpeed": 0.958915,
         "reload.ReloadThrs": 0.63,
         "deploy.UnDeployTime": 0.233334,
         "damage.dmgs": [
@@ -17398,6 +17398,7 @@
       "siteFields": {
         "rpm": 818.181,
         "mag": 11,
+        "reloadSpeed": 1,
         "tacRld": 2.134,
         "emptyRld": 2.833,
         "deployT": 0.400001,
@@ -17497,7 +17498,6 @@
         "drag": 0.0035,
         "ammo": "32acp",
         "mags.NumMags": 6,
-        "reload.ReloadSpeed": 1,
         "reload.ReloadThrs": 0.72,
         "deploy.UnDeployTime": 0.133334,
         "damage.dmgs": [

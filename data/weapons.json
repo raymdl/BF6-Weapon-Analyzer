@@ -129,7 +129,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "b36a4",
@@ -261,7 +262,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "sor556",
@@ -393,7 +395,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "ak4d",
@@ -525,7 +528,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "tr7",
@@ -534,8 +538,8 @@
     "cal": "7.62×51mm NATO",
     "rpm": 719.999,
     "mag": 21,
-    "tacRld": 2.35,
-    "emptyRld": 3.3,
+    "tacRld": 2.4,
+    "emptyRld": 3.37,
     "deployT": 0.633334,
     "bulletVel": 604,
     "recoilV": 1.1595971107513876,
@@ -657,7 +661,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.979166
   },
   {
     "id": "kord6p67",
@@ -790,7 +795,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "nvo228e",
@@ -799,8 +805,8 @@
     "cal": "7.62×39mm",
     "rpm": 654.545,
     "mag": 31,
-    "tacRld": 2.434,
-    "emptyRld": 2.9,
+    "tacRld": 2.5,
+    "emptyRld": 2.979,
     "deployT": 0.633334,
     "bulletVel": 626,
     "recoilV": 0.7326801731267338,
@@ -942,7 +948,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.973599
   },
   {
     "id": "l85a3",
@@ -951,8 +958,8 @@
     "cal": "5.56×45mm NATO",
     "rpm": 635.294,
     "mag": 31,
-    "tacRld": 2.7,
-    "emptyRld": 2.667,
+    "tacRld": 2.767,
+    "emptyRld": 2.733,
     "deployT": 0.633334,
     "bulletVel": 778,
     "recoilV": 0.6740692990342647,
@@ -1074,7 +1081,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.975786
   },
   {
     "id": "vcr2",
@@ -1083,8 +1091,8 @@
     "cal": "5.56×45mm NATO",
     "rpm": 899.999,
     "mag": 31,
-    "tacRld": 2.334,
-    "emptyRld": 3,
+    "tacRld": 2.434,
+    "emptyRld": 3.129,
     "deployT": 0.633334,
     "bulletVel": 660,
     "recoilV": 0.8205740274617134,
@@ -1206,7 +1214,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.958915
   },
   {
     "id": "m16a4",
@@ -1340,7 +1349,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m4a1",
@@ -1349,8 +1359,8 @@
     "cal": "5.56×45mm NATO",
     "rpm": 899.999,
     "mag": 31,
-    "tacRld": 2.15,
-    "emptyRld": 2.634,
+    "tacRld": 2.2,
+    "emptyRld": 2.695,
     "deployT": 0.533334,
     "bulletVel": 590,
     "recoilV": 0.8482748505471913,
@@ -1492,7 +1502,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.977272
   },
   {
     "id": "m277",
@@ -1501,8 +1512,8 @@
     "cal": "6.8×51mm",
     "rpm": 719.999,
     "mag": 21,
-    "tacRld": 2.334,
-    "emptyRld": 2.5,
+    "tacRld": 2.384,
+    "emptyRld": 2.554,
     "deployT": 0.533334,
     "bulletVel": 592,
     "recoilV": 0.9542958007305558,
@@ -1614,7 +1625,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.979026
   },
   {
     "id": "ak205",
@@ -1623,8 +1635,8 @@
     "cal": "5.45×39mm",
     "rpm": 719.999,
     "mag": 31,
-    "tacRld": 2.384,
-    "emptyRld": 2.8,
+    "tacRld": 2.484,
+    "emptyRld": 2.917,
     "deployT": 0.533334,
     "bulletVel": 708,
     "recoilV": 0.5082994245768439,
@@ -1766,7 +1778,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.959742
   },
   {
     "id": "m417a2",
@@ -1918,7 +1931,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "grtbc",
@@ -2073,7 +2087,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "qbz192",
@@ -2225,7 +2240,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "sg553r",
@@ -2234,8 +2250,8 @@
     "cal": "7.62×39mm",
     "rpm": 719.999,
     "mag": 31,
-    "tacRld": 2.45,
-    "emptyRld": 2.867,
+    "tacRld": 2.5,
+    "emptyRld": 2.926,
     "deployT": 0.533334,
     "bulletVel": 483,
     "recoilV": 0.826647274688653,
@@ -2378,7 +2394,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.979999
   },
   {
     "id": "sor300sc",
@@ -2530,7 +2547,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "sgx",
@@ -2682,7 +2700,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "pw5a3",
@@ -2835,7 +2854,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "pw7a2",
@@ -2844,8 +2864,8 @@
     "cal": "4.6×30mm",
     "rpm": 947.368,
     "mag": 31,
-    "tacRld": 2.1,
-    "emptyRld": 2.967,
+    "tacRld": 2.184,
+    "emptyRld": 3.086,
     "deployT": 0.466667,
     "bulletVel": 576,
     "recoilV": 0.5091176296296296,
@@ -2967,7 +2987,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.961538
   },
   {
     "id": "umg40",
@@ -3120,7 +3141,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "usg90",
@@ -3129,8 +3151,8 @@
     "cal": "5.7×28mm",
     "rpm": 899.999,
     "mag": 51,
-    "tacRld": 2.867,
-    "emptyRld": 3.167,
+    "tacRld": 3,
+    "emptyRld": 3.314,
     "deployT": 0.466667,
     "bulletVel": 543,
     "recoilV": 0.5471688016080739,
@@ -3272,7 +3294,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.955666
   },
   {
     "id": "kv9",
@@ -3425,7 +3448,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "scw10",
@@ -3434,8 +3458,8 @@
     "cal": "10×25mm",
     "rpm": 799.999,
     "mag": 16,
-    "tacRld": 2.55,
-    "emptyRld": 3.05,
+    "tacRld": 2.6,
+    "emptyRld": 3.11,
     "deployT": 0.466667,
     "bulletVel": 398,
     "recoilV": 0.7124297727932585,
@@ -3577,7 +3601,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.980769
   },
   {
     "id": "sl9",
@@ -3586,8 +3611,8 @@
     "cal": "9×19mm",
     "rpm": 674.999,
     "mag": 31,
-    "tacRld": 2.734,
-    "emptyRld": 3.284,
+    "tacRld": 2.65,
+    "emptyRld": 3.183,
     "deployT": 0.466667,
     "bulletVel": 486,
     "recoilV": 0.5240016637500265,
@@ -3732,7 +3757,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1.031698
   },
   {
     "id": "cz3a1",
@@ -3885,7 +3911,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "pp19",
@@ -3894,8 +3921,8 @@
     "cal": "9×19mm",
     "rpm": 719.999,
     "mag": 31,
-    "tacRld": 2.417,
-    "emptyRld": 2.967,
+    "tacRld": 2.467,
+    "emptyRld": 3.028,
     "deployT": 0.466667,
     "bulletVel": 444,
     "recoilV": 0.5434529043176682,
@@ -4036,7 +4063,8 @@
         "d": 12.76,
         "source": "Sym"
       }
-    ]
+    ],
+    "reloadSpeed": 0.979732
   },
   {
     "id": "l110",
@@ -4168,7 +4196,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "drsiar",
@@ -4300,7 +4329,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m60",
@@ -4309,8 +4339,8 @@
     "cal": "7.62×51mm NATO",
     "rpm": 514.285,
     "mag": 100,
-    "tacRld": 7.284,
-    "emptyRld": 8.05,
+    "tacRld": 7.35,
+    "emptyRld": 8.123,
     "deployT": 1.000004,
     "bulletVel": 680,
     "recoilV": 0.7361877333333333,
@@ -4432,7 +4462,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.99102
   },
   {
     "id": "rpkm",
@@ -4584,7 +4615,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m123k",
@@ -4716,7 +4748,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m250",
@@ -4833,7 +4866,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); special damage profile: no falloff at any range (user-confirmed)"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); special damage profile: no falloff at any range (user-confirmed)",
+    "reloadSpeed": 1
   },
   {
     "id": "kts100",
@@ -4965,7 +4999,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m240l",
@@ -4974,8 +5009,8 @@
     "cal": "7.62×51mm NATO",
     "rpm": 599.999,
     "mag": 50,
-    "tacRld": 4.034,
-    "emptyRld": 5.6,
+    "tacRld": 4.25,
+    "emptyRld": 5.9,
     "deployT": 1.000004,
     "bulletVel": 590,
     "recoilV": 0.8064454775462087,
@@ -5097,7 +5132,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 0.949176
   },
   {
     "id": "m121a2",
@@ -5229,7 +5265,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "rpk74m",
@@ -5361,7 +5398,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m39emr",
@@ -5493,7 +5531,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "lmr27",
@@ -5625,7 +5664,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "svk86",
@@ -5757,7 +5797,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "svdm",
@@ -5889,7 +5930,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "grtcps",
@@ -6021,7 +6063,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m2010esr",
@@ -6155,7 +6198,8 @@
         100
       ],
       "source": "EA"
-    }
+    },
+    "reloadSpeed": 1
   },
   {
     "id": "sv98",
@@ -6294,7 +6338,8 @@
         75
       ],
       "source": "EA"
-    }
+    },
+    "reloadSpeed": 1
   },
   {
     "id": "psr",
@@ -6428,7 +6473,8 @@
         120
       ],
       "source": "EA"
-    }
+    },
+    "reloadSpeed": 1
   },
   {
     "id": "miniscout",
@@ -6554,7 +6600,8 @@
     "sweetSpot": {
       "rangeM": null,
       "source": "EA"
-    }
+    },
+    "reloadSpeed": 1
   },
   {
     "id": "l115",
@@ -6688,7 +6735,8 @@
         133
       ],
       "source": "EA"
-    }
+    },
+    "reloadSpeed": 1
   },
   {
     "id": "m87a1",
@@ -6831,7 +6879,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "reloadSpeed": 1
   },
   {
     "id": "m1014",
@@ -6974,7 +7023,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "reloadSpeed": 1
   },
   {
     "id": "ks18k",
@@ -6983,8 +7033,8 @@
     "cal": "12ga (00 Buck)",
     "rpm": 299.999,
     "mag": 9,
-    "tacRld": null,
-    "emptyRld": null,
+    "tacRld": 2.75,
+    "emptyRld": 3.7,
     "deployT": 0.533334,
     "bulletVel": 400,
     "recoilV": 1.6855610028606383,
@@ -7107,7 +7157,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "reloadSpeed": 1
   },
   {
     "id": "db12",
@@ -7240,7 +7291,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "reloadSpeed": 1
   },
   {
     "id": "p18",
@@ -7392,7 +7444,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "es57",
@@ -7544,7 +7597,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m45a1",
@@ -7706,7 +7760,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m44",
@@ -7848,7 +7903,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "ggh22",
@@ -8000,7 +8056,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "m357trait",
@@ -8152,7 +8209,8 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   },
   {
     "id": "vz61",
@@ -8304,6 +8362,7 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "reloadSpeed": 1
   }
 ]

@@ -5,12 +5,15 @@ import { test } from 'node:test';
 import {
   DEFAULT_BASELINE_SPEC,
   DEFAULT_ROOT,
+  SPECIAL_RELOAD_POLICY,
   buildEaReconciliation,
   buildImportResult,
   buildNormalizedSnapshot,
   buildLiveData,
   loadPinnedInputs,
+  normalizedReloadFields,
   readBaselineWeapons,
+  reconcilePatchDeltas,
 } from './sym-import.mjs';
 import { SYM_WEAPON_MAP } from './sym-weapon-map.mjs';
 
@@ -97,6 +100,7 @@ test('keeps damage and gravity/drag outside the live write candidate', needsPinn
     assert.equal(result.excluded.fields.find(entry => entry.field === field).decision, 'owned-by-damage-refresh');
   }
   assert.equal(result.excluded.fields.find(field => field.field === 'drag').decision, 'normalized-only');
+  assert.equal(result.excluded.fields.some(field => field.field === 'reload.ReloadSpeed'), false);
   assert.ok(result.normalized.weapons.find(weapon => weapon.siteId === 'pp19').sourceExcluded.drag);
 });
 
@@ -111,15 +115,31 @@ test('uses an immutable resolved baseline provenance', () => {
 test('keeps reload timing fields numeric-or-null and applies special reload policy', needsPinnedInputs, () => {
   const normalized = buildNormalizedSnapshot(inputs.source, currentWeapons);
   const byId = new Map(normalized.weapons.map(weapon => [weapon.siteId, weapon]));
+  assert.equal(normalized.weapons.length, 59);
   for (const weapon of normalized.weapons) {
+    assert.equal(Number.isFinite(weapon.siteFields.reloadSpeed), true);
+    assert.equal(weapon.siteFields.reloadSpeed > 0, true);
     assert.ok(weapon.siteFields.tacRld === null || Number.isFinite(weapon.siteFields.tacRld));
     assert.ok(weapon.siteFields.emptyRld === null || Number.isFinite(weapon.siteFields.emptyRld));
   }
-  for (const id of ['m87a1', 'm1014', 'ks18k', 'db12']) {
+  for (const id of ['m87a1', 'm1014', 'db12']) {
     assert.equal(byId.get(id).reloadPolicy, 'shell-by-shell-null');
     assert.equal(byId.get(id).siteFields.tacRld, null);
     assert.equal(byId.get(id).siteFields.emptyRld, null);
   }
+  assert.deepEqual(
+    normalized.weapons
+      .filter(weapon => weapon.siteFields.tacRld === null && weapon.siteFields.emptyRld === null)
+      .map(weapon => weapon.siteId)
+      .sort(),
+    ['db12', 'm1014', 'm87a1'],
+  );
+  assert.equal(byId.get('ks18k').reloadPolicy, 'scalar-numeric-or-null');
+  assert.equal(byId.get('ks18k').siteFields.tacRld, 2.75);
+  assert.equal(byId.get('ks18k').siteFields.emptyRld, 3.7);
+  const currentKs18k = currentWeapons.find(weapon => weapon.id === 'ks18k');
+  assert.equal(currentKs18k.tacRld, 2.75);
+  assert.equal(currentKs18k.emptyRld, 3.7);
   assert.equal(byId.get('m44').siteFields.tacRld, 3.4);
   assert.equal(byId.get('m44').siteFields.emptyRld, null);
   assert.equal(byId.get('m357trait').siteFields.emptyRld, null);
@@ -131,11 +151,88 @@ test('keeps reload timing fields numeric-or-null and applies special reload poli
     assert.ok(weapon.tacRld === null || Number.isFinite(weapon.tacRld));
     assert.ok(weapon.emptyRld === null || Number.isFinite(weapon.emptyRld));
   }
-  for (const id of ['m87a1', 'm1014', 'ks18k', 'db12']) {
+  for (const id of ['m87a1', 'm1014', 'db12']) {
     const weapon = live.weapons.find(candidate => candidate.id === id);
     assert.equal(weapon.tacRld, null);
     assert.equal(weapon.emptyRld, null);
   }
+  const ks18k = live.weapons.find(candidate => candidate.id === 'ks18k');
+  assert.equal(ks18k.tacRld, 2.75);
+  assert.equal(ks18k.emptyRld, 3.7);
+});
+
+test('derives scalar reloads from ReloadSpeed and changes exactly the known 15 non-1.0 weapons', needsPinnedInputs, () => {
+  const normalized = buildNormalizedSnapshot(inputs.source, currentWeapons);
+  const byCodename = new Map(Object.values(inputs.source).filter(row => row?.codename).map(row => [row.codename, row]));
+  const bySiteId = new Map(normalized.weapons.map(weapon => [weapon.siteId, weapon]));
+  const mapByCodename = new Map(SYM_WEAPON_MAP.map(entry => [entry.codename, entry]));
+  const affected = [...byCodename.values()]
+    .filter(row => row.reload?.ReloadSpeed !== 1)
+    .map(row => mapByCodename.get(row.codename).siteId)
+    .sort();
+  assert.deepEqual(affected, [
+    'ak205', 'l85a3', 'm240l', 'm277', 'm4a1', 'm60', 'nvo228e', 'pp19',
+    'pw7a2', 'scw10', 'sg553r', 'sl9', 'tr7', 'usg90', 'vcr2',
+  ]);
+
+  for (const row of byCodename.values()) {
+    const siteId = mapByCodename.get(row.codename).siteId;
+    const normalizedRow = bySiteId.get(siteId);
+    const speed = row.reload.ReloadSpeed;
+    assert.equal(normalizedRow.siteFields.reloadSpeed, speed);
+    if (SPECIAL_RELOAD_POLICY.shellByShell.includes(row.codename)) continue;
+    assert.equal(normalizedRow.siteFields.tacRld, Number((row.reload.ReloadLeft / speed).toFixed(3)));
+    const expectedEmpty = row.reload.ReloadEmpty === 'N/A'
+      ? null
+      : Number((row.reload.ReloadEmpty / speed).toFixed(3));
+    assert.equal(normalizedRow.siteFields.emptyRld, expectedEmpty);
+  }
+
+  const ak205 = bySiteId.get('ak205');
+  assert.equal(ak205.siteFields.tacRld, 2.484);
+  assert.equal(ak205.siteFields.emptyRld, 2.917);
+
+  const currentRecoilDecay = JSON.parse(readFileSync(join(DEFAULT_ROOT, 'data', 'recoil_decay.json'), 'utf8'));
+  const currentBalance = JSON.parse(readFileSync(join(DEFAULT_ROOT, 'data', 'balance_tables.json'), 'utf8'));
+  const live = buildLiveData(currentWeapons, currentRecoilDecay, currentBalance, normalized);
+  assert.equal(live.weapons.length, 59);
+  assert.equal(live.weapons.filter(weapon => Number.isFinite(weapon.reloadSpeed)).length, 59);
+  const pp19 = live.weapons.find(weapon => weapon.id === 'pp19');
+  assert.equal(pp19.reloadSpeed, 0.979732);
+  assert.equal(pp19.tacRld, 2.467);
+  assert.equal(pp19.emptyRld, 3.028);
+  assert.equal(pp19.recoilV, currentWeapons.find(weapon => weapon.id === 'pp19').recoilV);
+});
+
+test('ReloadSpeed defaults only when absent and rejects invalid present values', () => {
+  assert.equal(normalizedReloadFields({ codename: 'missing-speed', reload: { ReloadLeft: 2, ReloadEmpty: 3 } }).reloadSpeed, 1.0);
+  for (const value of [null, 0, -1, Number.NaN, Number.POSITIVE_INFINITY, 'N/A', '']) {
+    assert.throws(
+      () => normalizedReloadFields({ codename: 'invalid-speed', reload: { ReloadSpeed: value } }),
+      /invalid-speed: reload\.ReloadSpeed must be a finite positive number/,
+    );
+  }
+});
+
+test('maps reload.ReloadSpeed to the live reloadSpeed target', needsPinnedInputs, () => {
+  const ak205 = Object.values(inputs.source).find(row => row?.codename === 'ak205');
+  const result = reconcilePatchDeltas(inputs.source, baselineWeapons, [{
+    weapon: ak205.displayname,
+    changes: [{ prop: 'reload.ReloadSpeed', old: 1, new: ak205.reload.ReloadSpeed }],
+  }]);
+  assert.equal(result.rows[0].siteTarget, 'reloadSpeed');
+  assert.equal(result.rows[0].sourcePath, 'reload.ReloadSpeed');
+  assert.equal(result.rows[0].sourceStatus, 'matched');
+  assert.equal(result.rows[0].baselineStatus, 'not-represented');
+});
+
+test('preserves the separate M60 and M240L alternate-magazine timing contract', () => {
+  const attachments = JSON.parse(readFileSync(join(DEFAULT_ROOT, 'data', 'attachments.json'), 'utf8'));
+  assert.equal(attachments.WEAPON_MAG.m60.mags['50_rnd'].tacRld, 4534);
+  assert.equal(attachments.WEAPON_MAG.m60.mags['100_rnd'].tacRld, 7350);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['50_rnd'].tacRld, 4250);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['75_rnd'].tacRld, 7000);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['100_rnd'].tacRld, 7000);
 });
 
 test('reconciles every EA velocity and recoil-variation line to pinned Sym values', needsPinnedInputs, () => {
