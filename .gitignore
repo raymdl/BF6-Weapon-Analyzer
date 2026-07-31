@@ -103,6 +103,9 @@ scripts/export_dmg.py
 # Required Phase 2b-i characterization fixture.
 !scripts/ads-move-phase2b-i-baseline.json
 
+# Required Phase 2b-ii characterization fixture.
+!scripts/sprint-rec-phase2b-ii-baseline.json
+
 # Throwaway inspection scripts.
 tmp/
 
