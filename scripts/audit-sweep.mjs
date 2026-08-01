@@ -13,7 +13,6 @@ import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_ROOT,
   TUBE_FED_SHOTGUNS,
-  RELOAD_ANIMATION_OVERRIDES,
   auditModelCoverage,
   classFromSourcePath,
   classSummary,
@@ -24,7 +23,6 @@ import {
   modalValue,
   normalizeWeaponName,
   reloadRowMatches,
-  RELOAD_SCREENSHOT_EXCEPTIONS,
   sourceIdentity,
 } from './audit-phase0-lib.mjs';
 
@@ -41,7 +39,6 @@ const NEVER_ZERO = [
 ];
 
 const FIRE_MODE_ERGOS = /burst|full auto/i;
-const MAG_MULT = 1.13;
 const ERGO_MULT = 1.063;
 
 function addFinding(findings, severity, check, weapon, attachment, detail) {
@@ -114,7 +111,12 @@ function runTierChecks({ findings, byWeapon, balance, consumeReviewedException }
 
 export function runSweep({ root = DEFAULT_ROOT } = {}) {
   const inputs = loadPhase0Inputs(root);
-  const { audit, balance, weapons, subsonicTreatments, exceptions: reviewedExceptions } = inputs;
+  const {
+    audit, balance, weapons, subsonicTreatments, exceptions: reviewedExceptions,
+    reloadExceptions,
+  } = inputs;
+  const animationOverrides = reloadExceptions.animationOverrides;
+  const screenshotExceptions = reloadExceptions.screenshotExceptions;
   const byWeapon = buildByWeapon(audit);
   const findings = [];
   const byName = new Map(weapons.map(weapon => [normalizeWeaponName(weapon.name), weapon]));
@@ -280,7 +282,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
 
   // Check 6: scalar reloads include every weapon except the three tube-fed
   // shotguns.  18.5KS-K therefore remains in this loop.
-  const animationOverrideKeys = new Set(RELOAD_ANIMATION_OVERRIDES.keys());
+  const animationOverrideKeys = new Set(animationOverrides.keys());
   for (const [weaponName, rows] of byWeapon) {
     if (TUBE_FED_SHOTGUNS.has(weaponName)) continue;
     const base = modalValue(rows, 'reloadTimeSeconds');
@@ -290,13 +292,16 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
       if (value == null || value === 0) continue;
       const tag = `${row.attachmentType}/${row.attachmentName}`;
       const overrideKey = `${weaponName}/${row.attachmentName}`;
-      if (!reloadRowMatches(row, base)) {
+      if (!reloadRowMatches(row, base, {
+        reloadSpeedLadder: balance.RELOAD_SPEED_LADDER,
+        animationOverrides,
+      })) {
         addFinding(findings, 'error', 'reload-model', weaponName, tag,
-          `${value} matches no scalar reload combination for base ${base}; expected base / 1.13^k / 1.063 or a registered animation override`);
+          `${value} matches no scalar reload combination for base ${base}; expected base / ${balance.RELOAD_SPEED_LADDER}^k / ${ERGO_MULT} or a registered animation override`);
         continue;
       }
       if (animationOverrideKeys.has(overrideKey)) continue;
-      const screenshotException = RELOAD_SCREENSHOT_EXCEPTIONS.get(overrideKey);
+      const screenshotException = screenshotExceptions.get(overrideKey);
       if (screenshotException && Math.abs(value - screenshotException.observed) <= 0.002) continue;
       const isMagCatch = /mag catch/i.test(row.attachmentName || '');
       if (isMagCatch && Math.abs(value - base) <= 0.002) {
@@ -304,7 +309,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
           `Mag Catch reads exactly the weapon base ${base} — expected ${(base / ERGO_MULT).toFixed(3)}`);
       } else if (/fast/i.test(row.attachmentName || '') && Math.abs(value - base) <= 0.002) {
         addFinding(findings, 'error', 'reload-model', weaponName, tag,
-          `Fast mag reads exactly the weapon base ${base} — expected ${(base / MAG_MULT).toFixed(3)}`);
+          `Fast mag reads exactly the weapon base ${base} — expected ${(base / balance.RELOAD_SPEED_LADDER).toFixed(3)}`);
       }
     }
   }

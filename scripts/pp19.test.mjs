@@ -54,6 +54,7 @@ const baseAttachmentContext = {
   SIDEARM_SPRINT_REC_TIERS: balance.SIDEARM_SPRINT_REC_TIERS,
   DEPLOY_TIME_TIERS: balance.DEPLOY_TIME_TIERS,
   ADS_MOVE_TIERS: balance.ADS_MOVE_TIERS,
+  RELOAD_SPEED_LADDER: balance.RELOAD_SPEED_LADDER,
 };
 
 setAttachmentContext(baseAttachmentContext);

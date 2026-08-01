@@ -1,4 +1,5 @@
 {
+  "RELOAD_SPEED_LADDER": 1.13,
   "RECOIL_MULT": {
     "m433": 0.945,
     "b36a4": 0.94,

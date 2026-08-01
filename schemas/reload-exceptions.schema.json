@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kdm.local/schemas/reload-exceptions.schema.json",
+  "title": "BF6 reload exception register",
+  "type": "object",
+  "required": ["$schema", "schemaVersion", "animationOverrides", "screenshotExceptions", "counts"],
+  "properties": {
+    "$schema": { "const": "../schemas/reload-exceptions.schema.json" },
+    "schemaVersion": { "const": 1 },
+    "animationOverrides": { "$ref": "#/$defs/weaponMagazineMap" },
+    "screenshotExceptions": { "$ref": "#/$defs/screenshotWeaponMagazineMap" },
+    "counts": {
+      "type": "object",
+      "required": ["animationOverrideRecords", "animationOverrideEntries", "screenshotExceptionEntries"],
+      "properties": {
+        "animationOverrideRecords": { "type": "integer", "minimum": 0 },
+        "animationOverrideEntries": { "type": "integer", "minimum": 0 },
+        "screenshotExceptionEntries": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "weaponMagazineMap": {
+      "type": "object",
+      "additionalProperties": { "type": "object", "additionalProperties": { "$ref": "#/$defs/animationException" } }
+    },
+    "screenshotWeaponMagazineMap": {
+      "type": "object",
+      "additionalProperties": { "type": "object", "additionalProperties": { "$ref": "#/$defs/screenshotException" } }
+    },
+    "animationException": {
+      "type": "object",
+      "required": ["tacRldOverrideMs", "displayName", "recordKey"],
+      "properties": {
+        "tacRldOverrideMs": { "type": "integer", "exclusiveMinimum": 0 },
+        "displayName": { "type": "string", "minLength": 1 },
+        "recordKey": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "screenshotException": {
+      "type": "object",
+      "required": ["observedReloadMs", "displayName", "observedOn", "reason"],
+      "properties": {
+        "observedReloadMs": { "type": "integer", "exclusiveMinimum": 0 },
+        "displayName": { "type": "string", "minLength": 1 },
+        "observedOn": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

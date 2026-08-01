@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/reload-exceptions.schema.json",
+  "schemaVersion": 1,
+  "animationOverrides": {
+    "m240l": {
+      "75_rnd": {
+        "tacRldOverrideMs": 7100,
+        "displayName": "75Rnd Belt Box",
+        "recordKey": "m240l-belt-box"
+      },
+      "100_rnd": {
+        "tacRldOverrideMs": 7100,
+        "displayName": "100Rnd Belt Box",
+        "recordKey": "m240l-belt-box"
+      }
+    },
+    "m60": {
+      "50_rnd": {
+        "tacRldOverrideMs": 4534,
+        "displayName": "50Rnd Loose Belt",
+        "recordKey": "m60-loose-belt"
+      }
+    },
+    "pp19": {
+      "53_rnd": {
+        "tacRldOverrideMs": 2667,
+        "displayName": "53Rnd Magazine",
+        "recordKey": "pp19-53-rnd"
+      }
+    },
+    "rpk74m": {
+      "95_rnd": {
+        "tacRldOverrideMs": 2950,
+        "displayName": "95Rnd Drum",
+        "recordKey": "rpk74m-95-rnd"
+      }
+    }
+  },
+  "screenshotExceptions": {
+    "pp19": {
+      "20_fast": {
+        "observedReloadMs": 2467,
+        "displayName": "20Rnd Fast Mag",
+        "observedOn": "2026-07-20",
+        "reason": "direct screenshot reads base reload with no reload arrow"
+      }
+    }
+  },
+  "counts": {
+    "animationOverrideRecords": 4,
+    "animationOverrideEntries": 5,
+    "screenshotExceptionEntries": 1
+  }
+}

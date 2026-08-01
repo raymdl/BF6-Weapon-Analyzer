@@ -2,6 +2,12 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { damageAtRange } from '../sim/damage.js';
+import {
+  TUBE_FED_SHOTGUNS,
+  loadReloadExceptionRegister,
+  modalValue,
+  reloadRowMatches,
+} from './audit-phase0-lib.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataRoot = process.env.DATA_ROOT ? resolve(process.env.DATA_ROOT) : root;
@@ -30,6 +36,17 @@ const DAMAGE_POINT_SOURCES = new Set(['EA', 'Sym', 'in-game']);
 
 const errors = [];
 const fail = message => errors.push(message);
+const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
+let reloadExceptions = null;
+try {
+  reloadExceptions = loadReloadExceptionRegister(dataRoot);
+} catch (error) {
+  fail(error.message);
+}
+
+if (!Number.isFinite(balance.RELOAD_SPEED_LADDER) || balance.RELOAD_SPEED_LADDER <= 0) {
+  fail('RELOAD_SPEED_LADDER must be a finite positive number');
+}
 
 const weaponIds = new Set();
 for (const weapon of weapons) {
@@ -247,7 +264,97 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
       fail(`${weaponId}: ${field} must be an integer in [0, ${table.length - 1}] for ${tableName}; found ${value}`);
     }
   }
+  for (const [magazineId, magazine] of Object.entries(magData.mags ?? {})) {
+    if (Object.hasOwn(magazine, 'reloadSpeedTier')
+        && (!Number.isInteger(magazine.reloadSpeedTier) || magazine.reloadSpeedTier < 0)) {
+      fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer`);
+    }
+    if (Object.hasOwn(magazine, 'tacRldOverrideMs')
+        && (!Number.isInteger(magazine.tacRldOverrideMs) || magazine.tacRldOverrideMs <= 0)) {
+      fail(`${weaponId}/${magazineId}: tacRldOverrideMs must be a positive integer number of milliseconds`);
+    }
+    if (Object.hasOwn(magazine, 'suspectedGameBug')) {
+      const bug = magazine.suspectedGameBug;
+      if (bug == null || typeof bug !== 'object' || Array.isArray(bug)) {
+        fail(`${weaponId}/${magazineId}: suspectedGameBug must be an object`);
+      } else {
+        if (bug.field !== 'reloadSpeedTier') fail(`${weaponId}/${magazineId}: suspectedGameBug.field must be reloadSpeedTier`);
+        if (!Number.isInteger(bug.expectedWhenFixed) || bug.expectedWhenFixed < 0) {
+          fail(`${weaponId}/${magazineId}: suspectedGameBug.expectedWhenFixed must be a non-negative integer`);
+        }
+        for (const field of ['expectedReloadSeconds', 'observedReloadSeconds']) {
+          if (!Number.isFinite(bug[field]) || bug[field] <= 0) {
+            fail(`${weaponId}/${magazineId}: suspectedGameBug.${field} must be a positive finite number`);
+          }
+        }
+        for (const field of ['observedOn', 'note']) {
+          if (typeof bug[field] !== 'string' || !bug[field]) {
+            fail(`${weaponId}/${magazineId}: suspectedGameBug.${field} must be a non-empty string`);
+          }
+        }
+        const weapon = weaponById.get(weaponId);
+        const observedSeconds = Number.isFinite(magazine.tacRld)
+          ? magazine.tacRld / 1000
+          : weapon?.tacRld;
+        if (Number.isFinite(observedSeconds) && Number.isFinite(bug.expectedReloadSeconds)
+            && Math.abs(observedSeconds - bug.expectedReloadSeconds) <= 0.005) {
+          fail(`${weaponId}/${magazineId}: suspectedGameBug is stale; current reload matches expectedReloadSeconds`);
+        }
+      }
+    }
+    if (Object.hasOwn(magazine, 'tacRldOverrideMs') && reloadExceptions) {
+      const registered = reloadExceptions.register.animationOverrides?.[weaponId]?.[magazineId];
+      if (!registered) fail(`${weaponId}/${magazineId}: tacRldOverrideMs is not in the animation exception register`);
+    }
+  }
 }
+
+for (const ergo of attachments.ERGOS ?? []) {
+  if (Object.hasOwn(ergo, 'reloadSpeedMult')
+      && (!Number.isFinite(ergo.reloadSpeedMult) || ergo.reloadSpeedMult <= 0)) {
+    fail(`${ergo.id}: reloadSpeedMult must be a positive finite number`);
+  }
+}
+
+function validateScreenshotReloads() {
+  let review;
+  try {
+    review = JSON.parse(readFileSync(resolve(root, 'outputs/attachment-audit/attachment-screenshot-review.json'), 'utf8'));
+  } catch (error) {
+    fail(`reload screenshot fixture could not be read: ${error.message}`);
+    return;
+  }
+  if (!reloadExceptions || !Array.isArray(review.records)) return;
+  const rowsByWeapon = new Map();
+  for (const row of review.records) {
+    const rows = rowsByWeapon.get(row.weaponName) ?? [];
+    rows.push(row);
+    rowsByWeapon.set(row.weaponName, rows);
+  }
+  for (const [weaponName, rows] of rowsByWeapon) {
+    if (TUBE_FED_SHOTGUNS.has(weaponName)) continue;
+    const base = modalValue(rows, 'reloadTimeSeconds');
+    if (base == null) {
+      fail(`${weaponName}: reload screenshot rows have no scalar base`);
+      continue;
+    }
+    for (const row of rows) {
+      const observed = row.stats?.reloadTimeSeconds;
+      if (observed == null || observed === 0) continue;
+      const displayKey = `${weaponName}/${row.attachmentName}`;
+      const screenshotException = reloadExceptions.screenshotExceptions.get(displayKey);
+      if (screenshotException && Math.abs(observed - screenshotException.observed) <= 0.005) continue;
+      if (!reloadRowMatches(row, base, {
+        reloadSpeedLadder: balance.RELOAD_SPEED_LADDER,
+        animationOverrides: reloadExceptions.animationOverrides,
+      })) {
+        fail(`${displayKey}: screenshot reload ${observed}s is an unregistered model miss for base ${base}s`);
+      }
+    }
+  }
+}
+
+validateScreenshotReloads();
 
 for (const [weaponId, ammoData] of Object.entries(ammo.WEAPON_AMMO)) {
   if (!weaponIds.has(weaponId)) fail(`WEAPON_AMMO references unknown weapon ${weaponId}`);

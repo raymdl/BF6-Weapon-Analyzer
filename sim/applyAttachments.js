@@ -37,6 +37,7 @@ let _ctx = {
   LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
   ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], PRIMARY_SPRINT_REC_TIERS: [], SIDEARM_SPRINT_REC_TIERS: [], DEPLOY_TIME_TIERS: [], ADS_MOVE_TIERS: [],
+  RELOAD_SPEED_LADDER: 1.13,
 };
 
 function byId(items) {
@@ -123,7 +124,7 @@ export function resolveReloadTiming({
   if (typeof weaponTacRld !== 'number' || !Number.isFinite(weaponTacRld) || weaponTacRld <= 0) {
     return legacy('invalid-derived-base');
   }
-  const magMult = 1.13 ** (hasReloadSpeedTier ? magData.reloadSpeedTier : 0);
+  const magMult = _ctx.RELOAD_SPEED_LADDER ** (hasReloadSpeedTier ? magData.reloadSpeedTier : 0);
   const ergoMult = hasReloadSpeedMult ? ergoData.reloadSpeedMult : 1;
   const derivedTacRld = +(weaponTacRld / (magMult * ergoMult)).toFixed(3);
   if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {

@@ -13,25 +13,11 @@ export const PHASE0_FIXTURES = Object.freeze({
   bulkRecapture: 'outputs/attachment-audit/bulk-suspect-recapture-summary-20260731.json',
   dedupeExclusions: 'outputs/attachment-audit/deduped-source-record-exclusions-20260731.json',
   sl9Recapture: 'outputs/attachment-audit/sl9-detailed-recapture-20260731.json',
+  reloadExceptions: 'data/reload-exceptions.json',
 });
 
 export const TUBE_FED_SHOTGUNS = new Set(['DB-12', 'M1014', 'M87A1']);
-
-export const RELOAD_ANIMATION_OVERRIDES = new Map([
-  ['M240L/75Rnd Belt Box', 7.1],
-  ['M240L/100Rnd Belt Box', 7.1],
-  ['M60/50Rnd Loose Belt', 4.534],
-  ['PP-19/53Rnd Magazine', 2.667],
-  ['RPK-74M/95Rnd Drum', 2.95],
-]);
-
-// Direct screenshot exception: the PP-19 20Rnd Fast Mag is named fast but
-// retains the base reload in game. Keep this separate from animation overrides
-// so the sweep does not convert a reviewed source reading back to the model's
-// 1.13 prediction.
-export const RELOAD_SCREENSHOT_EXCEPTIONS = new Map([
-  ['PP-19/20Rnd Fast Mag', { observed: 2.467, reason: 'direct screenshot reads base reload with no reload arrow' }],
-]);
+export const DEFAULT_RELOAD_SPEED_LADDER = 1.13;
 
 const REQUIRED_REGISTER_KINDS = Object.freeze({
   subsonic: ['subsonic-velocity-treatment-register', 'treatments'],
@@ -53,6 +39,72 @@ export function readRequiredJson(root, relativePath, label = relativePath) {
     throw new Error(`Invalid required Phase 0 fixture: ${label} (${relativePath}): ${error.message}`, { cause: error });
   }
 }
+
+export function loadReloadExceptionRegister(root = DEFAULT_ROOT) {
+  const register = readRequiredJson(root, PHASE0_FIXTURES.reloadExceptions, 'reload exception register');
+  if (register.schemaVersion !== 1 || register.$schema !== '../schemas/reload-exceptions.schema.json') {
+    throw new Error('Invalid reload exception register schema declaration');
+  }
+  const attachments = readRequiredJson(root, 'data/attachments.json', 'attachment catalog for reload exception register');
+  const weapons = readRequiredJson(root, 'data/weapons.json', 'weapon catalog for reload exception register');
+  const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
+  const animationOverrides = new Map();
+  const screenshotExceptions = new Map();
+  const animationRecords = new Set();
+  let animationEntries = 0;
+  for (const [weaponId, magazines] of Object.entries(register.animationOverrides ?? {})) {
+    const weapon = weaponById.get(weaponId);
+    if (!weapon) throw new Error(`reload animation register references unknown weapon ${weaponId}`);
+    for (const [magazineId, entry] of Object.entries(magazines ?? {})) {
+      if (!attachments.WEAPON_MAG?.[weaponId]?.mags?.[magazineId]) {
+        throw new Error(`reload animation register references unknown magazine ${weaponId}/${magazineId}`);
+      }
+      if (!Number.isInteger(entry.tacRldOverrideMs) || entry.tacRldOverrideMs <= 0) {
+        throw new Error(`reload animation register ${weaponId}/${magazineId} requires a positive integer tacRldOverrideMs`);
+      }
+      if (typeof entry.displayName !== 'string' || !entry.displayName) {
+        throw new Error(`reload animation register ${weaponId}/${magazineId} requires a displayName`);
+      }
+      if (typeof entry.recordKey !== 'string' || !entry.recordKey) {
+        throw new Error(`reload animation register ${weaponId}/${magazineId} requires a recordKey`);
+      }
+      animationRecords.add(entry.recordKey);
+      animationEntries++;
+      const auditWeaponName = weapon.name.replaceAll('/', '');
+      animationOverrides.set(`${auditWeaponName}/${entry.displayName}`, entry.tacRldOverrideMs / 1000);
+    }
+  }
+  for (const [weaponId, magazines] of Object.entries(register.screenshotExceptions ?? {})) {
+    const weapon = weaponById.get(weaponId);
+    if (!weapon) throw new Error(`reload screenshot register references unknown weapon ${weaponId}`);
+    for (const [magazineId, entry] of Object.entries(magazines ?? {})) {
+      if (!attachments.WEAPON_MAG?.[weaponId]?.mags?.[magazineId]) {
+        throw new Error(`reload screenshot register references unknown magazine ${weaponId}/${magazineId}`);
+      }
+      if (!Number.isInteger(entry.observedReloadMs) || entry.observedReloadMs <= 0) {
+        throw new Error(`reload screenshot register ${weaponId}/${magazineId} requires a positive integer observedReloadMs`);
+      }
+      if (typeof entry.displayName !== 'string' || !entry.displayName) {
+        throw new Error(`reload screenshot register ${weaponId}/${magazineId} requires a displayName`);
+      }
+      const auditWeaponName = weapon.name.replaceAll('/', '');
+      screenshotExceptions.set(`${auditWeaponName}/${entry.displayName}`, {
+        observed: entry.observedReloadMs / 1000,
+        reason: entry.reason,
+      });
+    }
+  }
+  if (register.counts?.animationOverrideRecords !== animationRecords.size
+      || register.counts?.animationOverrideEntries !== animationEntries
+      || register.counts?.screenshotExceptionEntries !== screenshotExceptions.size) {
+    throw new Error('reload exception register counts do not match its ID-keyed entries');
+  }
+  return { register, animationOverrides, screenshotExceptions };
+}
+
+const DEFAULT_RELOAD_REGISTERS = loadReloadExceptionRegister(DEFAULT_ROOT);
+export const RELOAD_ANIMATION_OVERRIDES = DEFAULT_RELOAD_REGISTERS.animationOverrides;
+export const RELOAD_SCREENSHOT_EXCEPTIONS = DEFAULT_RELOAD_REGISTERS.screenshotExceptions;
 
 function sourceMatch(value) {
   const normalized = String(value ?? '').replace(/\\/g, '/');
@@ -132,8 +184,8 @@ export function matchesDisplayOneDecimal(value, displayed) {
   return roundDisplayOneDecimal(value) === displayed;
 }
 
-export function reloadCandidates(baseValue) {
-  const fast = 1.13;
+export function reloadCandidates(baseValue, reloadSpeedLadder = DEFAULT_RELOAD_SPEED_LADDER) {
+  const fast = reloadSpeedLadder;
   const magCatch = 1.063;
   return [
     baseValue,
@@ -145,16 +197,20 @@ export function reloadCandidates(baseValue) {
   ];
 }
 
-export function reloadOverrideFor(weaponName, attachmentName) {
-  return RELOAD_ANIMATION_OVERRIDES.get(`${weaponName}/${attachmentName}`);
+export function reloadOverrideFor(weaponName, attachmentName, animationOverrides = RELOAD_ANIMATION_OVERRIDES) {
+  return animationOverrides.get(`${weaponName}/${attachmentName}`);
 }
 
-export function reloadRowMatches(row, baseValue) {
+export function reloadRowMatches(row, baseValue, {
+  reloadSpeedLadder = DEFAULT_RELOAD_SPEED_LADDER,
+  animationOverrides = RELOAD_ANIMATION_OVERRIDES,
+} = {}) {
   const observed = row.stats?.reloadTimeSeconds;
   if (observed == null || observed === 0) return true;
-  const override = reloadOverrideFor(row.weaponName, row.attachmentName);
+  const override = reloadOverrideFor(row.weaponName, row.attachmentName, animationOverrides);
   if (override != null) return Math.abs(observed - override) <= 0.0005;
-  return reloadCandidates(baseValue).some(candidate => Math.abs(Number(candidate.toFixed(3)) - observed) <= 0.005);
+  return reloadCandidates(baseValue, reloadSpeedLadder)
+    .some(candidate => Math.abs(Number(candidate.toFixed(3)) - observed) <= 0.005);
 }
 
 export function classSummary(audit) {
@@ -215,6 +271,7 @@ export function loadPhase0Inputs(root = DEFAULT_ROOT) {
   const bulkRecapture = readRequiredJson(root, PHASE0_FIXTURES.bulkRecapture, 'bulk recapture receipt');
   const dedupeExclusions = readRequiredJson(root, PHASE0_FIXTURES.dedupeExclusions, 'dedupe exclusion receipt');
   const sl9Recapture = readRequiredJson(root, PHASE0_FIXTURES.sl9Recapture, 'SL9 detailed recapture receipt');
+  const reloadExceptions = loadReloadExceptionRegister(root);
 
   const auditSummary = validateAuditFixture(audit);
   const subsonicTreatments = validateRegister(subsonic, 'subsonic velocity register', REQUIRED_REGISTER_KINDS.subsonic);
@@ -252,6 +309,7 @@ export function loadPhase0Inputs(root = DEFAULT_ROOT) {
     bulkRecapture,
     dedupeExclusions,
     sl9Recapture,
+    reloadExceptions,
     auditSummary,
   };
 }

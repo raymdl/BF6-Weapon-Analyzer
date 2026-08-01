@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kdm.local/schemas/attachment-model.schema.json",
+  "title": "BF6 derived attachment model fragments",
+  "type": "object",
+  "properties": {
+    "magazine": { "$ref": "#/$defs/magazine" },
+    "ergo": { "$ref": "#/$defs/ergo" }
+  },
+  "$defs": {
+    "magazine": {
+      "type": "object",
+      "properties": {
+        "reloadSpeedTier": { "type": "integer", "minimum": 0 },
+        "tacRldOverrideMs": { "type": "integer", "exclusiveMinimum": 0 },
+        "suspectedGameBug": { "$ref": "#/$defs/suspectedGameBug" }
+      }
+    },
+    "ergo": {
+      "type": "object",
+      "properties": {
+        "reloadSpeedMult": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "suspectedGameBug": {
+      "type": "object",
+      "required": [
+        "field",
+        "expectedWhenFixed",
+        "expectedReloadSeconds",
+        "observedReloadSeconds",
+        "observedOn",
+        "note"
+      ],
+      "properties": {
+        "field": { "const": "reloadSpeedTier" },
+        "expectedWhenFixed": { "type": "integer", "minimum": 0 },
+        "expectedReloadSeconds": { "type": "number", "exclusiveMinimum": 0 },
+        "observedReloadSeconds": { "type": "number", "exclusiveMinimum": 0 },
+        "observedOn": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
