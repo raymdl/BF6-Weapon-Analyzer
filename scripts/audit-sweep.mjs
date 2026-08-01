@@ -216,7 +216,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
       let hit = null;
       for (let tier = -6; tier <= 6; tier += 1) {
         const predicted = velocityBase * (0.8 ** tier);
-        if (Math.floor(predicted) === value || Math.round(predicted) === value) {
+        if (Math.floor(predicted) === value) {
           hit = tier;
           break;
         }

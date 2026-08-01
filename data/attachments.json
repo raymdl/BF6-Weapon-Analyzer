@@ -157,7 +157,8 @@
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
       "pts": 0,
-      "velMult": 1
+      "velMult": 1,
+      "velTierMod": 0
     },
     {
       "id": "basic",
@@ -166,7 +167,8 @@
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
       "pts": 10,
-      "velMult": 1
+      "velMult": 1,
+      "velTierMod": 0
     },
     {
       "id": "short",
@@ -176,7 +178,8 @@
       "adsSpreadIncMult": 1,
       "hipSpreadTierMod": -1,
       "pts": 15,
-      "velMult": 0.8
+      "velMult": 0.8,
+      "velTierMod": -1
     },
     {
       "id": "extended",
@@ -185,7 +188,8 @@
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
       "pts": 15,
-      "velMult": 1.25
+      "velMult": 1.25,
+      "velTierMod": 1
     },
     {
       "id": "heavy",
@@ -195,7 +199,8 @@
       "adsSpreadIncMult": 0.9,
       "assumed": true,
       "pts": 10,
-      "velMult": 1
+      "velMult": 1,
+      "velTierMod": 0
     },
     {
       "id": "heavy_ext",
@@ -205,7 +210,8 @@
       "adsSpreadIncMult": 0.9,
       "assumed": true,
       "pts": 10,
-      "velMult": 1.25
+      "velMult": 1.25,
+      "velTierMod": 1
     },
     {
       "id": "light",
@@ -214,7 +220,8 @@
       "movingAdsSpreadTierMod": 1,
       "adsSpreadIncMult": 1,
       "pts": 20,
-      "velMult": 1
+      "velMult": 1,
+      "velTierMod": 0
     }
   ],
   "GRIPS": [

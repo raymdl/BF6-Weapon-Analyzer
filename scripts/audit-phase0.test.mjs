@@ -177,7 +177,7 @@ test('barrel velocity and every current ADS, sprint-recovery, and ADS-move table
     assert.equal([...Array(13)].some((_, index) => {
       const tier = index - 6;
       const predicted = base * (0.8 ** tier);
-      return Math.floor(predicted) === value || Math.round(predicted) === value;
+      return Math.floor(predicted) === value;
     }), true, `${row.weaponName}/${row.attachmentName} barrel velocity`);
   }
 });

@@ -47,6 +47,9 @@ try {
 if (!Number.isFinite(balance.RELOAD_SPEED_LADDER) || balance.RELOAD_SPEED_LADDER <= 0) {
   fail('RELOAD_SPEED_LADDER must be a finite positive number');
 }
+if (balance.VELOCITY_LADDER !== 0.8) {
+  fail('VELOCITY_LADDER must be exactly 0.8');
+}
 
 const weaponIds = new Set();
 for (const weapon of weapons) {
@@ -182,6 +185,23 @@ const attachmentSets = {
   grip: new Set(attachments.GRIPS.map(a => a.id)),
   laser: new Set(attachments.LASERS.map(a => a.id)),
 };
+
+for (const barrel of attachments.BARRELS ?? []) {
+  if (!Object.hasOwn(barrel, 'velTierMod')) {
+    fail(`${barrel.id}: velTierMod is required during the barrel-velocity dual-read phase`);
+  } else if (!Number.isInteger(barrel.velTierMod)) {
+    fail(`${barrel.id}: velTierMod must be an integer`);
+  }
+  if (!Number.isFinite(barrel.velMult) || barrel.velMult <= 0) {
+    fail(`${barrel.id}: legacy velMult must remain a finite positive number during the dual-read phase`);
+  }
+  if (Number.isInteger(barrel.velTierMod) && Number.isFinite(balance.VELOCITY_LADDER)) {
+    const expected = balance.VELOCITY_LADDER ** (-barrel.velTierMod);
+    if (barrel.velMult !== expected) {
+      fail(`${barrel.id}: velMult ${barrel.velMult} does not exactly equal VELOCITY_LADDER ** -velTierMod (${expected})`);
+    }
+  }
+}
 
 const lightsSet = new Set((attachments.LIGHTS ?? []).map(a => a.id));
 

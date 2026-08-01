@@ -19,6 +19,7 @@ import { resolveHitMultipliers } from './damage.js';
  *     BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
  *     ADS_SPD_TIERS, SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
+ *     VELOCITY_LADDER,
  *   });
  *
  *   // Then call freely:
@@ -38,7 +39,19 @@ let _ctx = {
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
   ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], PRIMARY_SPRINT_REC_TIERS: [], SIDEARM_SPRINT_REC_TIERS: [], DEPLOY_TIME_TIERS: [], ADS_MOVE_TIERS: [],
   RELOAD_SPEED_LADDER: 1.13,
+  VELOCITY_LADDER: 0.8,
 };
+
+// JavaScript cannot represent 0.8 exactly. Correct only a product that is
+// infinitesimally below an integer because of that representation error; real
+// fractional display values such as 837.5 must still floor normally.
+export const VELOCITY_DISPLAY_EPSILON = 1e-9;
+
+export function floorVelocityDisplay(value) {
+  const nearest = Math.round(value);
+  if (nearest > value && nearest - value < VELOCITY_DISPLAY_EPSILON) return nearest;
+  return Math.floor(value);
+}
 
 function byId(items) {
   return Object.fromEntries((items ?? []).map(item => [item.id, item]));
@@ -50,6 +63,44 @@ function hasOwn(record, field) {
 
 function millisecondsToSeconds(milliseconds) {
   return milliseconds == null ? null : +(milliseconds / 1000).toFixed(3);
+}
+
+/**
+ * Resolve a barrel's normal-velocity multiplier while the legacy and derived
+ * fields coexist. Positive velTierMod is the velocity buff direction: the
+ * signed field therefore applies the inverse power of the 0.8 ladder.
+ */
+export function resolveBarrelVelocity({ barData = null, velocityLadder = _ctx.VELOCITY_LADDER } = {}) {
+  const hasVelTierMod = hasOwn(barData, 'velTierMod');
+  const hasVelMult = hasOwn(barData, 'velMult');
+
+  if (hasVelTierMod) {
+    const validTier = typeof barData.velTierMod === 'number'
+      && Number.isFinite(barData.velTierMod)
+      && Number.isInteger(barData.velTierMod);
+    const validLadder = typeof velocityLadder === 'number'
+      && Number.isFinite(velocityLadder)
+      && velocityLadder > 0;
+    if (!validTier || !validLadder) {
+      return { multiplier: null, branch: 'derived', mode: 'tier', reason: 'invalid-derived-input' };
+    }
+    const multiplier = velocityLadder ** (-barData.velTierMod);
+    if (!Number.isFinite(multiplier) || multiplier <= 0) {
+      return { multiplier: null, branch: 'derived', mode: 'tier', reason: 'invalid-derived-result' };
+    }
+    return {
+      multiplier,
+      branch: 'derived',
+      mode: 'tier',
+      velTierMod: barData.velTierMod,
+      reason: 'derived-tier',
+    };
+  }
+
+  if (typeof barData?.velMult === 'number' && Number.isFinite(barData.velMult) && barData.velMult > 0) {
+    return { multiplier: barData.velMult, branch: 'legacy', mode: 'velMult', reason: 'legacy-velMult' };
+  }
+  return { multiplier: null, branch: 'legacy', mode: 'velMult', reason: 'missing-legacy-velMult' };
 }
 
 /**
@@ -150,6 +201,7 @@ export function applyAttachments(w, atts) {
 
   const muz = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
   const bar = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
+  const velocityResolution = resolveBarrelVelocity({ barData: bar });
   // Combined slot: atts.laser may hold a grip or light ID for weapons like VZ.61/GRT-BC/SL9
   const laserIsGrip  = !LASERS_BY_ID[atts.laser] && !!GRIPS_BY_ID[atts.laser];
   const laserIsLight = !LASERS_BY_ID[atts.laser] && !laserIsGrip && !!_ctx.LIGHTS_BY_ID[atts.laser];
@@ -338,7 +390,9 @@ export function applyAttachments(w, atts) {
     recoilIncAds: w.recoilIncAds != null
       ? +(w.recoilIncAds * (bar.adsSpreadIncMult ?? 1)).toFixed(3)
       : null,
-    bulletVel: w.bulletVel != null ? Math.round(w.bulletVel * (bar.velMult ?? 1)) : null,
+    bulletVel: w.bulletVel != null && velocityResolution.multiplier != null
+      ? floorVelocityDisplay(w.bulletVel * velocityResolution.multiplier)
+      : null,
     deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : w.deployT,
     mag:    magMag ?? w.mag,
     tacRld: reloadResolution.tacRld,

@@ -15,6 +15,7 @@ const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const weapons = readJson('data/weapons.json');
 const manifest = readJson('scripts/reload-phase4-migration-manifest.json');
+const barrelVelocityManifest = readJson('scripts/barrel-velocity-phase7-manifest.json');
 const preMigrationState = readJson('scripts/reload-phase4-pre-migration-state.json');
 const phase5ChangedValues = new Map(manifest.changedValues.map(entry => [entry.key, entry.afterMs]));
 const phase5MagCatchCorrections = new Map(manifest.legacyMagCatchCorrections.map(entry => [entry.weaponId, entry.after]));
@@ -44,6 +45,7 @@ const sharedContext = {
   DEPLOY_TIME_TIERS: readJson('data/balance_tables.json').DEPLOY_TIME_TIERS,
   ADS_MOVE_TIERS: readJson('data/balance_tables.json').ADS_MOVE_TIERS,
   RELOAD_SPEED_LADDER: readJson('data/balance_tables.json').RELOAD_SPEED_LADDER,
+  VELOCITY_LADDER: readJson('data/balance_tables.json').VELOCITY_LADDER,
 };
 
 const currentModel = {
@@ -117,6 +119,23 @@ function withoutId(value) {
 
 function sourceById(items) {
   return new Map((items ?? []).map(item => [item.id, item]));
+}
+
+function phase5HistoricalDisplayProjection(output, weapon, atts) {
+  // The tracked Phase 5 fixture is a reload-migration regression artifact. Its
+  // pinned complete-output digests predate the normal-velocity display ruling,
+  // so retain the old rounded display in this fixture-only projection. The
+  // actual floor display is compared separately by the Phase 7 gate below.
+  const barrel = sourceById(currentModel.BARRELS).get(atts.barrel) ?? currentModel.BARRELS[0];
+  if (output.bulletVel == null || weapon.bulletVel == null || barrel?.velMult == null) return output;
+  return { ...output, bulletVel: Math.round(weapon.bulletVel * barrel.velMult) };
+}
+
+function historicalRoundedBulletVelocity(weapon, atts) {
+  const barrel = sourceById(currentModel.BARRELS).get(atts.barrel) ?? currentModel.BARRELS[0];
+  return weapon.bulletVel != null && barrel?.velMult != null
+    ? Math.round(weapon.bulletVel * barrel.velMult)
+    : null;
 }
 
 function uniqueIds(ids) {
@@ -372,6 +391,104 @@ function applyWith(modelContext, model, weapon, atts) {
   return applyAttachments(weapon, atts);
 }
 
+/**
+ * Compare the full Phase 5 witness suite's barrel velocity against a model
+ * with velTierMod removed. The latter must select the retained velMult path;
+ * this stays an assertion-only extension so the reload fixture and digests do
+ * not change when the barrel field is added.
+ */
+export function compareBarrelVelocityLegacyAndDerived(enumeration) {
+  const legacyBarrels = structuredClone(currentModel.BARRELS);
+  for (const barrel of legacyBarrels) delete barrel.velTierMod;
+  const corpusEvidenceByPair = new Map(barrelVelocityManifest.explainedDifferences
+    .filter(entry => entry.barrelId != null)
+    .map(entry => [`${entry.weaponId}/${entry.barrelId}`, entry]));
+  const invalidCorpusEvidence = barrelVelocityManifest.explainedDifferences.filter(entry => (
+    entry.disposition !== 'explained-floor-display-difference'
+      || entry.observedVelocityMps !== entry.floorVelocityMps
+      || entry.observedVelocityMps === entry.legacyRoundedVelocityMps
+  ));
+  assert.deepEqual(invalidCorpusEvidence, [], 'invalid Phase 7 barrel velocity evidence classification');
+  let comparedCases = 0;
+  let mismatchCases = 0;
+  const mismatches = [];
+  const historicalDisplayDifferencePairs = new Set();
+  const unexplainedHistoricalDisplayDifferencePairs = new Set();
+  const unexplainedHistoricalDisplayDifferences = [];
+  for (const { weapon, suites } of enumeration.weaponEntries) {
+    for (const suite of suites) cartesianDimensions(suite.dimensions, selection => {
+      const row = caseFromSelection(weapon, selection);
+      setAttachmentContext({
+        BARRELS: currentModel.BARRELS,
+        ERGOS: currentModel.ERGOS,
+        WEAPON_MAG: currentModel.WEAPON_MAG,
+        WEAPON_ERGO: currentModel.WEAPON_ERGO,
+      });
+      const derivedOutput = applyAttachments(weapon, row.atts);
+      setAttachmentContext({
+        BARRELS: legacyBarrels,
+        ERGOS: currentModel.ERGOS,
+        WEAPON_MAG: currentModel.WEAPON_MAG,
+        WEAPON_ERGO: currentModel.WEAPON_ERGO,
+      });
+      const legacyOutput = applyAttachments(weapon, row.atts);
+      if (!Object.is(derivedOutput.bulletVel, legacyOutput.bulletVel)) {
+        mismatchCases += 1;
+        if (mismatches.length < 25) {
+          mismatches.push({
+            caseKey: row.caseKey,
+            derived: derivedOutput.bulletVel,
+            legacy: legacyOutput.bulletVel,
+          });
+        }
+      }
+      const historicalLegacyBulletVel = historicalRoundedBulletVelocity(weapon, row.atts);
+      if (!Object.is(derivedOutput.bulletVel, historicalLegacyBulletVel)) {
+        const pairKey = `${row.weaponId}/${row.atts.barrel}`;
+        historicalDisplayDifferencePairs.add(pairKey);
+        const evidence = corpusEvidenceByPair.get(pairKey);
+        if (!evidence
+          || evidence.baseVelocityMps !== weapon.bulletVel
+          || evidence.floorVelocityMps !== derivedOutput.bulletVel
+          || evidence.legacyRoundedVelocityMps !== historicalLegacyBulletVel) {
+          unexplainedHistoricalDisplayDifferencePairs.add(pairKey);
+          if (!unexplainedHistoricalDisplayDifferences.some(entry => entry.pairKey === pairKey)) {
+            unexplainedHistoricalDisplayDifferences.push({
+              pairKey,
+              caseKey: row.caseKey,
+              derived: derivedOutput.bulletVel,
+              historicalLegacy: historicalLegacyBulletVel,
+              evidence: evidence ?? null,
+            });
+          }
+        }
+      }
+      comparedCases += 1;
+      if (comparedCases % 25000 === 0) {
+        console.log(`Phase 7 barrel velocity equivalence: ${comparedCases}/${enumeration.counts.reducedComparisonCaseCount}; ${mismatchCases} mismatches`);
+      }
+    });
+  }
+  return {
+    comparedCases,
+    mismatchCases,
+    mismatches,
+    historicalDisplayDifferencePairs: historicalDisplayDifferencePairs.size,
+    historicalDisplayDifferenceKeys: [...historicalDisplayDifferencePairs].sort(),
+    unexplainedHistoricalDisplayDifferencePairs: unexplainedHistoricalDisplayDifferencePairs.size,
+    unexplainedHistoricalDisplayDifferences,
+    corpusEvidence: {
+      changedRecords: barrelVelocityManifest.counts.changedRecords,
+      indiscriminatingRecords: barrelVelocityManifest.counts.indiscriminatingRecords,
+      discriminatingRecords: barrelVelocityManifest.counts.discriminatingRecords,
+      explainedRecords: barrelVelocityManifest.explainedDifferences.length,
+      unexplainedRecords: invalidCorpusEvidence.length,
+      liveSelectablePairs: historicalDisplayDifferencePairs.size,
+      sourceOnlyRecords: barrelVelocityManifest.counts.sourceOnlyRecords,
+    },
+  };
+}
+
 function diffPaths(left, right, prefix = '') {
   if (Object.is(left, right)) return [];
   if (typeof left !== 'object' || left === null || typeof right !== 'object' || right === null) return [prefix || '$'];
@@ -424,8 +541,16 @@ function compareEnumeration(enumeration) {
   for (const { weapon, suites } of enumeration.weaponEntries) {
     for (const suite of suites) cartesianDimensions(suite.dimensions, selection => {
       const row = caseFromSelection(weapon, selection);
-      const currentOutput = applyWith(currentContext, currentModel, weapon, row.atts);
-      const historicalLegacyOutput = applyWith(legacyContext, legacy, weapon, row.atts);
+      const currentOutput = phase5HistoricalDisplayProjection(
+        applyWith(currentContext, currentModel, weapon, row.atts),
+        weapon,
+        row.atts,
+      );
+      const historicalLegacyOutput = phase5HistoricalDisplayProjection(
+        applyWith(legacyContext, legacy, weapon, row.atts),
+        weapon,
+        row.atts,
+      );
       historicalLegacyOutput.tacRld = legacyReloadSeconds(row.weaponId, row.atts.mag, row.atts.ergo);
       const legacyOutput = { ...historicalLegacyOutput };
       // The pre-cutover fixture contains the old aggregate values for the
@@ -572,6 +697,8 @@ function compareNamedCases() {
 export function buildPhase5Fixture() {
   const enumeration = buildEquivalenceEnumeration();
   const comparison = compareEnumeration(enumeration);
+  const barrelVelocityComparison = compareBarrelVelocityLegacyAndDerived(enumeration);
+  assert.equal(barrelVelocityComparison.mismatchCases, 0, JSON.stringify(barrelVelocityComparison));
   const namedCases = compareNamedCases();
   assert.equal(comparison.counts.unexplainedDifferenceCases, 0, JSON.stringify({
     fieldDifferenceCounts: comparison.fieldDifferenceCounts,
