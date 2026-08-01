@@ -424,7 +424,7 @@ migration.
 
 ### 4.3 Ergonomics
 
-After equivalence validation, delete all 17 `magCatchRld` blocks. Add one multiplier to the
+After equivalence validation, delete all 18 `magCatchRld` blocks. Add one multiplier to the
 `ERGOS` catalog entry:
 
 ```jsonc
