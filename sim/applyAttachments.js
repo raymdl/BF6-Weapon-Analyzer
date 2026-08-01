@@ -53,40 +53,20 @@ function millisecondsToSeconds(milliseconds) {
 }
 
 /**
- * Resolve tactical reload timing while legacy and derived attachment data coexist.
+ * Resolve tactical reload timing from the derived attachment model.
  *
  * `branch`, `mode`, and `reason` are deliberately returned by this narrow helper
  * for focused tests; applyAttachments only exposes the resolved tactical reload.
+ * Invalid or unsupported scalar reload inputs fail closed with a null timing.
  */
 export function resolveReloadTiming({
   weaponTacRld,
   magData = null,
   ergoData = null,
-  weaponErgo = null,
 } = {}) {
   const hasReloadSpeedTier = hasOwn(magData, 'reloadSpeedTier');
   const hasTacRldOverride = hasOwn(magData, 'tacRldOverrideMs');
   const hasReloadSpeedMult = hasOwn(ergoData, 'reloadSpeedMult');
-  const hasDerivedReload = hasReloadSpeedTier || hasTacRldOverride || hasReloadSpeedMult;
-
-  // Keep the old display-name fallback and precedence exactly intact while the
-  // derived fields are absent or cannot be trusted.
-  let magCatchTacRld = null;
-  if (ergoData?.id === 'mag_catch' && weaponErgo?.magCatchRld) {
-    const isFastMag = !!(magData?.name?.toLowerCase().includes('fast'));
-    const milliseconds = isFastMag
-      ? (weaponErgo.magCatchRld.fast ?? weaponErgo.magCatchRld.reg)
-      : weaponErgo.magCatchRld.reg;
-    if (milliseconds != null) magCatchTacRld = milliseconds;
-  }
-  const legacyTacRld = magCatchTacRld != null
-    ? millisecondsToSeconds(magCatchTacRld)
-    : magData?.tacRld != null
-      ? millisecondsToSeconds(magData.tacRld)
-      : weaponTacRld;
-  const legacy = reason => ({ tacRld: legacyTacRld, branch: 'legacy', reason });
-
-  if (!hasDerivedReload) return legacy('no-derived-fields');
 
   const validReloadSpeedTier = !hasReloadSpeedTier
     || (typeof magData.reloadSpeedTier === 'number'
@@ -103,18 +83,17 @@ export function resolveReloadTiming({
       && Number.isFinite(ergoData.reloadSpeedMult)
       && ergoData.reloadSpeedMult > 0);
   if (!validReloadSpeedTier || !validTacRldOverride || !validReloadSpeedMult) {
-    return legacy('invalid-derived-input');
-  }
-
-  // An override plus Mag Catch or another derived ergonomic multiplier has no
-  // captured stacking rule yet. Keep it on the exact legacy path for now.
-  if (hasTacRldOverride && (ergoData?.id === 'mag_catch' || hasReloadSpeedMult)) {
-    return legacy('unresolved-override-stack');
+    return { tacRld: null, branch: 'derived', reason: 'invalid-derived-input' };
   }
 
   if (hasTacRldOverride) {
+    const ergoMult = hasReloadSpeedMult ? ergoData.reloadSpeedMult : 1;
+    const derivedTacRld = millisecondsToSeconds(magData.tacRldOverrideMs / ergoMult);
+    if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {
+      return { tacRld: null, branch: 'derived', reason: 'invalid-derived-result' };
+    }
     return {
-      tacRld: millisecondsToSeconds(magData.tacRldOverrideMs),
+      tacRld: derivedTacRld,
       branch: 'derived',
       mode: 'override',
       reason: 'derived-override',
@@ -122,13 +101,13 @@ export function resolveReloadTiming({
   }
 
   if (typeof weaponTacRld !== 'number' || !Number.isFinite(weaponTacRld) || weaponTacRld <= 0) {
-    return legacy('invalid-derived-base');
+    return { tacRld: null, branch: 'derived', reason: 'invalid-derived-base' };
   }
   const magMult = _ctx.RELOAD_SPEED_LADDER ** (hasReloadSpeedTier ? magData.reloadSpeedTier : 0);
   const ergoMult = hasReloadSpeedMult ? ergoData.reloadSpeedMult : 1;
   const derivedTacRld = +(weaponTacRld / (magMult * ergoMult)).toFixed(3);
   if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {
-    return legacy('invalid-derived-result');
+    return { tacRld: null, branch: 'derived', reason: 'invalid-derived-result' };
   }
   return {
     tacRld: derivedTacRld,
@@ -275,12 +254,10 @@ export function applyAttachments(w, atts) {
   const magAdsMoveSpeedTierShift  = magData?.adsMoveSpeedTierShift  ?? 0;
   const gripSprintRecoveryTierShift = grp.sprintRecoveryTierShift ?? 0;
   const magMag    = magData?.mag   ?? null;
-  const we = WEAPON_ERGO[w.id] ?? null;
   const reloadResolution = resolveReloadTiming({
     weaponTacRld: w.tacRld,
     magData,
     ergoData,
-    weaponErgo: we,
   });
 
   // ── Tier index resolution ─────────────────────────────────────────────────────

@@ -46,9 +46,24 @@
       }
     }
   },
+  "composedLoadoutEvidence": {
+    "pp19": {
+      "53_rnd+mag_catch": {
+        "magazineId": "53_rnd",
+        "ergonomicId": "mag_catch",
+        "observedReloadMs": 2509,
+        "observedOn": "2026-08-01",
+        "receipt": "outputs/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs",
+        "evidenceKind": "composed-loadout",
+        "singleAttachmentPanel": false,
+        "note": "Operator in-game capture with the 53Rnd drum and Improved Mag Catch equipped together; this is composed-loadout evidence, not a single-attachment panel."
+      }
+    }
+  },
   "counts": {
     "animationOverrideRecords": 4,
     "animationOverrideEntries": 5,
-    "screenshotExceptionEntries": 1
+    "screenshotExceptionEntries": 1,
+    "composedLoadoutEvidenceEntries": 1
   }
 }

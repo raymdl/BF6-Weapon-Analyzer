@@ -133,10 +133,7 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
     laser: ['5mw_red', '50mw_violet', '5mw_green', '50mw_green', '50mw_blue', '120mw_blue'],
     light: ['ads_taclight', 'flashlight', 'hip_taclight'],
   });
-  assert.deepEqual(attachments.WEAPON_ERGO.pp19, {
-    avail: ['mag_catch', 'buffer'],
-    magCatchRld: { reg: 2321, fast: 2054 },
-  });
+  assert.deepEqual(attachments.WEAPON_ERGO.pp19, { avail: ['mag_catch', 'buffer'] });
   assert.equal(attachments.ERGOS.find(ergo => ergo.id === 'mag_catch').reloadSpeedMult, 1.063);
   assert.deepEqual(attachments.WEAPON_MAG.pp19, {
     defAds: 2,
@@ -145,19 +142,19 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
     def: '30_rnd',
     mags: {
       '30_rnd': {
-        name: '30 Rnd', pts: 5, mag: 30, tacRld: 2467,
+        name: '30 Rnd', pts: 5, mag: 30,
         adsTimeTierShift: 0, sprintRecoveryTierShift: -1, adsMoveSpeedTierShift: 0, reloadSpeedTier: 0,
       },
       '30_fast': {
-        name: '30 Fast', pts: 5, mag: 30, tacRld: 2183,
+        name: '30 Fast', pts: 5, mag: 30,
         adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0, reloadSpeedTier: 1,
       },
       '35_rnd': {
-        name: '35 Rnd', pts: 15, mag: 35, tacRld: 2467,
+        name: '35 Rnd', pts: 15, mag: 35,
         adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1, reloadSpeedTier: 0,
       },
       '20_fast': {
-        name: '20 Fast', pts: 5, mag: 20, tacRld: 2467,
+        name: '20 Fast', pts: 5, mag: 20,
         adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: -3, reloadSpeedTier: 0,
         suspectedGameBug: {
           field: 'reloadSpeedTier', expectedWhenFixed: 1, expectedReloadSeconds: 2.183,
@@ -166,7 +163,7 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
         },
       },
       '53_rnd': {
-        name: '53 Rnd', pts: 45, mag: 53, tacRld: 2667,
+        name: '53 Rnd', pts: 45, mag: 53,
         adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1, tacRldOverrideMs: 2667,
       },
     },
@@ -187,7 +184,7 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
   assert.equal(provenance.attachmentCoverage.status, 'needs measurement');
 });
 
-test('PP-19 magazine and ergonomic values resolve to the reviewed legacy outputs', () => {
+test('PP-19 magazine and ergonomic values resolve to the reviewed derived outputs', () => {
   const apply = ({ mag, grip = 'none', ergo = 'none' }) => {
     const atts = blankAtts();
     atts.barrel = 'basic';
@@ -214,17 +211,16 @@ test('PP-19 magazine and ergonomic values resolve to the reviewed legacy outputs
   assert.equal(apply({ mag: '30_rnd', ergo: 'mag_catch' }).tacRld, 2.321);
   assert.equal(apply({ mag: '30_rnd', ergo: 'buffer' }).tacRld, 2.467);
   assert.equal(apply({ mag: '20_fast', ergo: 'mag_catch' }).tacRld, 2.321);
+  assert.equal(apply({ mag: '53_rnd', ergo: 'mag_catch' }).tacRld, 2.509);
 });
 
-test('Phase 2 dual-read preserves legacy precedence and branch selection', () => {
+test('Phase 6 derived reload preserves numeric tier and multiplier branch selection', () => {
   const none = attachments.ERGOS.find(ergo => ergo.id === 'none');
   const magCatch = attachments.ERGOS.find(ergo => ergo.id === 'mag_catch');
-  const weaponErgo = attachments.WEAPON_ERGO.pp19;
   const resolve = (mag, ergo = none) => resolveReloadTiming({
     weaponTacRld: pp19.tacRld,
     magData: attachments.WEAPON_MAG.pp19.mags[mag],
     ergoData: ergo,
-    weaponErgo,
   });
 
   assert.deepEqual(resolve('30_rnd'), {
@@ -245,16 +241,21 @@ test('Phase 2 dual-read preserves legacy precedence and branch selection', () =>
     mode: 'normal',
     reason: 'derived-normal',
   });
+  assert.deepEqual(resolve('53_rnd', magCatch), {
+    tacRld: 2.509,
+    branch: 'derived',
+    mode: 'override',
+    reason: 'derived-override',
+  });
 });
 
 test('Phase 2 derived reload uses explicit numeric tiers and ergonomic multipliers', () => {
   const tierResults = [0, 1, 2].map(reloadSpeedTier => resolveReloadTiming({
     weaponTacRld: pp19.tacRld,
-    // Deliberately conflicting names and tacRld values prove the derived path
+    // Deliberately conflicting names and legacy-looking values prove the derived path
     // reads the numeric tier rather than inferring from display text.
     magData: {
       name: reloadSpeedTier === 1 ? 'Regular Magazine' : 'Fast Magazine',
-      tacRld: 1111,
       reloadSpeedTier,
     },
     ergoData: { id: 'none' },
@@ -265,7 +266,7 @@ test('Phase 2 derived reload uses explicit numeric tiers and ergonomic multiplie
 
   const ergonomic = resolveReloadTiming({
     weaponTacRld: pp19.tacRld,
-    magData: { name: 'Regular Magazine', tacRld: 1111 },
+    magData: { name: 'Regular Magazine' },
     ergoData: { id: 'synthetic_ergo', reloadSpeedMult: 1.063 },
   });
   assert.deepEqual(ergonomic, {
@@ -276,10 +277,10 @@ test('Phase 2 derived reload uses explicit numeric tiers and ergonomic multiplie
   });
 });
 
-test('Phase 2 override and invalid-input guards fail closed', () => {
+test('Phase 6 override stacking and invalid-input guards fail closed', () => {
   const override = resolveReloadTiming({
     weaponTacRld: pp19.tacRld,
-    magData: { name: '53 Rnd', tacRld: 1111, tacRldOverrideMs: 2667 },
+    magData: { name: '53 Rnd', tacRldOverrideMs: 2667 },
     ergoData: { id: 'none' },
   });
   assert.deepEqual(override, {
@@ -289,32 +290,32 @@ test('Phase 2 override and invalid-input guards fail closed', () => {
     reason: 'derived-override',
   });
 
-  const unresolvedStack = resolveReloadTiming({
+  const composedStack = resolveReloadTiming({
     weaponTacRld: pp19.tacRld,
-    magData: { name: '20 Fast', tacRld: 2467, tacRldOverrideMs: 2667 },
-    ergoData: { id: 'mag_catch' },
-    weaponErgo: attachments.WEAPON_ERGO.pp19,
+    magData: { name: '53 Rnd', tacRldOverrideMs: 2667 },
+    ergoData: { id: 'mag_catch', reloadSpeedMult: 1.063 },
   });
-  assert.deepEqual(unresolvedStack, {
-    tacRld: 2.054,
-    branch: 'legacy',
-    reason: 'unresolved-override-stack',
+  assert.deepEqual(composedStack, {
+    tacRld: 2.509,
+    branch: 'derived',
+    mode: 'override',
+    reason: 'derived-override',
   });
 
   for (const [label, input] of [
-    ['negative tier', { magData: { tacRld: 2467, reloadSpeedTier: -1 }, ergoData: { id: 'none' } }],
-    ['string tier', { magData: { tacRld: 2467, reloadSpeedTier: '1' }, ergoData: { id: 'none' } }],
-    ['zero override', { magData: { tacRld: 2467, tacRldOverrideMs: 0 }, ergoData: { id: 'none' } }],
-    ['non-finite multiplier', { magData: { tacRld: 2467 }, ergoData: { id: 'synthetic_ergo', reloadSpeedMult: NaN } }],
+    ['negative tier', { magData: { reloadSpeedTier: -1 }, ergoData: { id: 'none' } }],
+    ['string tier', { magData: { reloadSpeedTier: '1' }, ergoData: { id: 'none' } }],
+    ['zero override', { magData: { tacRldOverrideMs: 0 }, ergoData: { id: 'none' } }],
+    ['non-finite multiplier', { magData: {}, ergoData: { id: 'synthetic_ergo', reloadSpeedMult: NaN } }],
   ]) {
     const result = resolveReloadTiming({ weaponTacRld: pp19.tacRld, ...input });
-    assert.equal(result.branch, 'legacy', label);
+    assert.equal(result.branch, 'derived', label);
     assert.equal(result.reason, 'invalid-derived-input', label);
-    assert.equal(result.tacRld, 2.467, label);
+    assert.equal(result.tacRld, null, label);
   }
 });
 
-test('PP-19 derived fixture resolves through applyAttachments without production promotion', () => {
+test('PP-19 derived fixture resolves through applyAttachments after production cutover', () => {
   assert.equal(
     Object.values(attachments.WEAPON_MAG).some(weaponMag => Object.values(weaponMag.mags ?? {})
       .some(mag => Object.hasOwn(mag, 'reloadSpeedTier') || Object.hasOwn(mag, 'tacRldOverrideMs'))),
@@ -345,7 +346,6 @@ test('PP-19 derived fixture resolves through applyAttachments without production
     weaponTacRld: pp19.tacRld,
     magData: syntheticMag.mags[derivedMagId],
     ergoData: syntheticErgos.find(ergo => ergo.id === 'mag_catch'),
-    weaponErgo: attachments.WEAPON_ERGO.pp19,
   });
   assert.equal(branch.branch, 'derived');
   assert.equal(branch.tacRld, 2.321);

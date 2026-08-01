@@ -11,7 +11,7 @@ Two models, one argument:
   move speed appear to be integer steps on shared ladders. Absolute assignments and unresolved
   fields stay explicit rather than being forced into this model ([§1.2](#12-tier-ladders)).
 
-Status: **Phase 0, Phase 1, Phase 1b, Phase 2, and Phase 2b complete; Phase 3 and later unstarted.** The audit tooling is portable and
+Status: **Phase 0, Phase 1, Phase 1b, Phase 2, Phase 2b, Phase 3, Phase 4, Phase 5, and Phase 6 complete.** The audit tooling is portable and
 fixture-gated, the Sym importer carries `ReloadSpeed` with `18.5KS-K` reclassified as scalar, and
 the runtime now dual-reads explicitly supplied derived reload fields without promoting them into
 production data. Written against `codex/update-1.3.3.0` at
@@ -337,7 +337,7 @@ rather than assumed to be a fixed offset. See [§11](#11-open-questions).
 |---|---|---|
 | `data/weapons.json` | `tacRld`, `emptyRld` scalars | 55 / 53 of 59 weapons |
 | `data/attachments.json` → `WEAPON_MAG[*].mags[*].tacRld` | per-magazine absolute ms | 265 magazines across 59 weapons |
-| `data/attachments.json` → `WEAPON_ERGO[*].magCatchRld` | `{reg, fast}` ms pair | 18 weapons |
+| `data/attachments.json` → `WEAPON_ERGO[*].magCatchRld` | `{reg, fast}` ms pair | 24 weapons before Phase 6 cleanup |
 | `data/attachments.json` → `BARRELS[*].velMult` | per-barrel absolute velocity multiplier | — |
 | `data/attachments.json` → `MUZZLES[*].adsRecoilTierMod` | already a tier shift — the pattern to extend | — |
 | `data/attachments.json` → `BARRELS[*].adsTimeTierMod` | already a tier shift | — |
@@ -424,14 +424,15 @@ migration.
 
 ### 4.3 Ergonomics
 
-After equivalence validation, delete all 18 `magCatchRld` blocks. Add one multiplier to the
+After equivalence validation, delete all 24 `magCatchRld` blocks. Add one multiplier to the
 `ERGOS` catalog entry:
 
 ```jsonc
 { "id": "mag_catch", "name": "Mag Catch", "pts": 5, "reloadSpeedMult": 1.063 }
 ```
 
-One number replaces 34.
+One number replaces 48 — 24 blocks of `{reg, fast}`, of which 39 slots carried a value and 9
+`fast` slots were null.
 
 ### 4.4 Longer-term velocity, ammo and recoil targets
 
@@ -1012,11 +1013,26 @@ combined-slot rules. Run the legacy and derived resolvers over the same inputs a
 user-visible output, not only reload. Require zero unexplained differences. Include explicit cases
 for AK-205, SL9, KTS100 MK8, M60, M240L, PP-19, `18.5KS-K`, and all three tube-fed shotguns.
 
-### Phase 6 — reload cutover and cleanup
+### Phase 6 — reload cutover and cleanup — completed 2026-08-01
 
-Only after Phase 5 passes, make the derived branch authoritative and delete per-magazine `tacRld`,
-per-weapon `magCatchRld`, and display-name `isFastMag` inference. Re-run the exhaustive comparison
-against the preserved pre-cutover fixture and perform stat-card QA.
+The derived branch is authoritative. The resolver now computes normal reloads as
+`weapon.tacRld / (1.13 ** reloadSpeedTier * reloadSpeedMult)` and override reloads as
+`tacRldOverrideMs / reloadSpeedMult`, rounding once at the displayed three-decimal boundary.
+The PP-19 `53Rnd` drum plus Improved Mag Catch composes to `2.509 s` from the first-party
+operator receipt `outputs/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs`.
+That receipt is explicitly composed-loadout evidence, not a single-attachment panel.
+
+All 265 per-magazine `tacRld` fields, all 24 per-weapon `magCatchRld` blocks, and the resolver's
+display-name fast-mag inference are deleted. Invalid scalar bases fail closed, so DB-12, M1014,
+and M87A1 remain blank rather than surfacing a per-shell or aggregate legacy number. The validator
+rejects either legacy representation if reintroduced.
+
+The reload baseline now records the post-cutover digest while retaining the pre-migration digest.
+The exhaustive attachment fixture retains the pre-cutover Phase 5 difference digest (`578` witness
+differences) and records the post-cutover result (`658` witness differences: those same six keys
+plus the single new PP-19 override-stack key, repeated across its separability witnesses). Its
+comparison normalizes the three tube-fed shotguns to the explicit scalar-null contract while
+retaining their historical values in the transition record.
 
 ### Phase 7 — barrel velocity as a separate migration
 
@@ -1077,16 +1093,28 @@ rewriting `PP-19 / 20Rnd Fast Mag` to the model's prediction because it "read ex
 the model was wrong and the scrape was right, and the resulting record was invisible to every
 subsequent sweep precisely because it now agreed with the model.
 
-Manual QA after the runtime phase — check the reload figure in the stat card for:
+Manual stat-card QA after the runtime phase. The first group pins the analytical cases — one
+weapon per interesting property, chosen so that a value which must *not* move is watched as
+closely as one that must. The second group covers the figures this migration changed.
 
-- a `ReloadSpeed = 1.0` weapon with a fast mag (GRT-BC)
-- a `ReloadSpeed != 1.0` weapon with Mag Catch (AK-205 → 2.337)
-- SL9 (the only `ReloadSpeed > 1.0`; base 2.650, Mag Catch 2.493)
-- KTS100 MK8 45Rnd Fast (2.545)
-- M240L across all three magazines (4.250 / 7.100 / 7.100)
+Structural cases:
+
+- a `ReloadSpeed = 1.0` weapon with a fast mag (GRT-BC → 2.500 / 2.212)
+- SL9, the only `ReloadSpeed > 1.0` weapon (base 2.650, Mag Catch 2.493)
+- KTS100 MK8 45Rnd Fast, the sole `1.13²` magazine (2.545)
 - `18.5KS-K` regular/fast magazines (2.750 / 2.434)
-- each tube-fed shotgun (scalar reload stays blank; never surface Sym's 0.866 / 0.400 / 0.700
-  per-shell values as a full reload)
+- M240L across all three magazines (4.250 / 7.100 / 7.100)
+- each tube-fed shotgun: reload stays blank — never `null` text, `NaN`, `undefined`, a raw
+  millisecond integer, or Sym's per-shell 0.866 / 0.400 / 0.700
+
+Changed-value cases:
+
+- AK-205 and the six Mag Catch backfills: L115, P18, ES 5.7, M45A1, GGH-22, and VZ. 61
+- PP-19, including `53Rnd + Mag Catch = 2.509 s`
+- LMR27, SV-98, M4A1, M277, and RPK-74M
+
+`scripts/reload-phase6-stat-card-qa.mjs` executes both groups and asserts the rendered string, not
+only the resolved number.
 
 ---
 

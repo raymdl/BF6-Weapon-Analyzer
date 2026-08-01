@@ -226,13 +226,16 @@ test('maps reload.ReloadSpeed to the live reloadSpeed target', needsPinnedInputs
   assert.equal(result.rows[0].baselineStatus, 'not-represented');
 });
 
-test('preserves the separate M60 and M240L alternate-magazine timing contract', () => {
+test('preserves the separate M60 and M240L alternate-magazine derived timing contract', () => {
   const attachments = JSON.parse(readFileSync(join(DEFAULT_ROOT, 'data', 'attachments.json'), 'utf8'));
-  assert.equal(attachments.WEAPON_MAG.m60.mags['50_rnd'].tacRld, 4534);
-  assert.equal(attachments.WEAPON_MAG.m60.mags['100_rnd'].tacRld, 7350);
-  assert.equal(attachments.WEAPON_MAG.m240l.mags['50_rnd'].tacRld, 4250);
-  assert.equal(attachments.WEAPON_MAG.m240l.mags['75_rnd'].tacRld, 7100);
-  assert.equal(attachments.WEAPON_MAG.m240l.mags['100_rnd'].tacRld, 7100);
+  assert.equal(attachments.WEAPON_MAG.m60.mags['50_rnd'].tacRldOverrideMs, 4534);
+  assert.equal(attachments.WEAPON_MAG.m60.mags['100_rnd'].reloadSpeedTier, 0);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['50_rnd'].reloadSpeedTier, 0);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['75_rnd'].tacRldOverrideMs, 7100);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['100_rnd'].tacRldOverrideMs, 7100);
+  assert.equal(Object.values(attachments.WEAPON_MAG)
+    .flatMap(weaponMag => Object.values(weaponMag.mags ?? {}))
+    .some(mag => Object.hasOwn(mag, 'tacRld')), false);
 });
 
 test('reconciles every EA velocity and recoil-variation line to pinned Sym values', needsPinnedInputs, () => {

@@ -3569,11 +3569,7 @@
       "avail": [
         "mag_catch",
         "match_trigger"
-      ],
-      "magCatchRld": {
-        "reg": 2258,
-        "fast": 1998
-      }
+      ]
     },
     "kord6p67": {
       "avail": [
@@ -3605,22 +3601,14 @@
         "match_trigger",
         "rail_cover",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2070,
-        "fast": 1832
-      }
+      ]
     },
     "m277": {
       "avail": [
         "mag_catch",
         "mag_flare",
         "match_trigger"
-      ],
-      "magCatchRld": {
-        "reg": 2243,
-        "fast": 1985
-      }
+      ]
     },
     "ak205": {
       "avail": [
@@ -3628,11 +3616,7 @@
         "mag_flare",
         "match_trigger",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2337,
-        "fast": 2068
-      }
+      ]
     },
     "m417a2": {
       "avail": [
@@ -3647,11 +3631,7 @@
         "match_trigger",
         "grtbc_burst_mode",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2352,
-        "fast": 2081
-      }
+      ]
     },
     "qbz192": {
       "avail": [
@@ -3665,11 +3645,7 @@
         "mag_catch",
         "match_trigger",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2352,
-        "fast": 2081
-      }
+      ]
     },
     "sor300sc": {
       "avail": [
@@ -3684,11 +3660,7 @@
         "mag_catch",
         "burst_training",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2368,
-        "fast": 2095
-      }
+      ]
     },
     "kv9": {
       "avail": [
@@ -3698,61 +3670,37 @@
     "pw7a2": {
       "avail": [
         "mag_catch"
-      ],
-      "magCatchRld": {
-        "reg": 2055,
-        "fast": 1818
-      }
+      ]
     },
     "usg90": {
       "avail": [
         "mag_catch",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2822,
-        "fast": null
-      }
+      ]
     },
     "scw10": {
       "avail": [
         "mag_catch"
-      ],
-      "magCatchRld": {
-        "reg": 2446,
-        "fast": 2165
-      }
+      ]
     },
     "sl9": {
       "avail": [
         "mag_catch",
         "burst_mode"
-      ],
-      "magCatchRld": {
-        "reg": 2493,
-        "fast": null
-      }
+      ]
     },
     "cz3a1": {
       "avail": [
         "mag_catch",
         "burst_training",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2086,
-        "fast": 1846
-      }
+      ]
     },
     "pp19": {
       "avail": [
         "mag_catch",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2321,
-        "fast": 2054
-      }
+      ]
     },
     "l110": {
       "avail": [
@@ -3796,30 +3744,18 @@
       "avail": [
         "mag_catch",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2384,
-        "fast": 2110
-      }
+      ]
     },
     "lmr27": {
       "avail": [
         "mag_catch"
-      ],
-      "magCatchRld": {
-        "reg": 2854,
-        "fast": 2526
-      }
+      ]
     },
     "svdm": {
       "avail": [
         "mag_catch",
         "buffer"
-      ],
-      "magCatchRld": {
-        "reg": 2352,
-        "fast": 2081
-      }
+      ]
     },
     "m2010esr": {
       "avail": [
@@ -3830,21 +3766,13 @@
       "avail": [
         "mag_catch",
         "ads_bolt"
-      ],
-      "magCatchRld": {
-        "reg": 2807,
-        "fast": null
-      }
+      ]
     },
     "psr": {
       "avail": [
         "mag_catch",
         "ads_bolt"
-      ],
-      "magCatchRld": {
-        "reg": 3151,
-        "fast": null
-      }
+      ]
     },
     "m16a4": {
       "avail": [
@@ -3866,40 +3794,24 @@
       "avail": [
         "mag_catch",
         "ads_bolt"
-      ],
-      "magCatchRld": {
-        "reg": 2587,
-        "fast": 2289
-      }
+      ]
     },
     "p18": {
       "avail": [
         "mag_catch",
         "fast_deploy"
-      ],
-      "magCatchRld": {
-        "reg": 1819,
-        "fast": null
-      }
+      ]
     },
     "es57": {
       "avail": [
         "mag_catch"
-      ],
-      "magCatchRld": {
-        "reg": 1897,
-        "fast": null
-      }
+      ]
     },
     "m45a1": {
       "avail": [
         "mag_catch",
         "fast_deploy"
-      ],
-      "magCatchRld": {
-        "reg": 1756,
-        "fast": null
-      }
+      ]
     },
     "m44": {
       "avail": [
@@ -3911,11 +3823,7 @@
       "avail": [
         "mag_catch",
         "fast_deploy"
-      ],
-      "magCatchRld": {
-        "reg": 1819,
-        "fast": null
-      }
+      ]
     },
     "m357trait": {
       "avail": [
@@ -3925,11 +3833,7 @@
     "vz61": {
       "avail": [
         "mag_catch"
-      ],
-      "magCatchRld": {
-        "reg": 2008,
-        "fast": null
-      }
+      ]
     },
     "sgx": {
       "avail": [
@@ -3964,7 +3868,6 @@
           "name": "4 Rnd",
           "pts": 5,
           "mag": 4,
-          "tacRld": 2750,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1,
@@ -3974,7 +3877,6 @@
           "name": "4 Fast",
           "pts": 10,
           "mag": 4,
-          "tacRld": 2434,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -1,
@@ -3984,7 +3886,6 @@
           "name": "8 Rnd",
           "pts": 5,
           "mag": 8,
-          "tacRld": 2750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -3994,7 +3895,6 @@
           "name": "8 Fast",
           "pts": 10,
           "mag": 8,
-          "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4015,7 +3915,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2484,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4025,7 +3924,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2198,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4035,7 +3933,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4045,7 +3942,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4055,7 +3951,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2198,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4065,7 +3960,6 @@
           "name": "45 Rnd",
           "pts": 35,
           "mag": 45,
-          "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4075,7 +3969,6 @@
           "name": "45 Fast",
           "pts": 40,
           "mag": 45,
-          "tacRld": 2198,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4085,7 +3978,6 @@
           "name": "50 Rnd",
           "pts": 45,
           "mag": 50,
-          "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4106,7 +3998,6 @@
           "name": "15 Rnd",
           "pts": 5,
           "mag": 15,
-          "tacRld": 2467,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4116,7 +4007,6 @@
           "name": "15 Fast",
           "pts": 10,
           "mag": 15,
-          "tacRld": 2183,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4126,7 +4016,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4136,7 +4025,6 @@
           "name": "20 Fast",
           "pts": 10,
           "mag": 20,
-          "tacRld": 2183,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4146,7 +4034,6 @@
           "name": "30 Rnd",
           "pts": 40,
           "mag": 30,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4167,7 +4054,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -4177,7 +4063,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -4187,7 +4072,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4197,7 +4081,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2110,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4207,7 +4090,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2384,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4217,7 +4099,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2384,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4227,7 +4108,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2110,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4237,7 +4117,6 @@
           "name": "45 Rnd",
           "pts": 35,
           "mag": 45,
-          "tacRld": 2384,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4247,7 +4126,6 @@
           "name": "45 Fast",
           "pts": 40,
           "mag": 45,
-          "tacRld": 2110,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4268,7 +4146,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 1962,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -3,
@@ -4278,7 +4155,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2217,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4288,7 +4164,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 1962,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4298,7 +4173,6 @@
           "name": "35 Rnd",
           "pts": 15,
           "mag": 35,
-          "tacRld": 2217,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4308,7 +4182,6 @@
           "name": "35 Fast",
           "pts": 20,
           "mag": 35,
-          "tacRld": 1962,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
@@ -4329,7 +4202,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4339,7 +4211,6 @@
           "name": "30 Fast",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2183,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0,
@@ -4349,7 +4220,6 @@
           "name": "35 Rnd",
           "pts": 15,
           "mag": 35,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 1,
@@ -4359,7 +4229,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": -3,
@@ -4377,7 +4246,6 @@
           "name": "53 Rnd",
           "pts": 45,
           "mag": 53,
-          "tacRld": 2667,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 1,
@@ -4398,7 +4266,6 @@
           "name": "14 Rnd",
           "pts": 5,
           "mag": 14,
-          "tacRld": 2348,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4419,7 +4286,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4429,7 +4295,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2183,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4439,7 +4304,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4449,7 +4313,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4459,7 +4322,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2183,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4469,7 +4331,6 @@
           "name": "45 Rnd",
           "pts": 35,
           "mag": 45,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4479,7 +4340,6 @@
           "name": "45 Fast",
           "pts": 40,
           "mag": 45,
-          "tacRld": 2183,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4489,7 +4349,6 @@
           "name": "50 Rnd",
           "pts": 45,
           "mag": 50,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4499,7 +4358,6 @@
           "name": "60 Rnd",
           "pts": 55,
           "mag": 60,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4520,7 +4378,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4530,7 +4387,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2212,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4540,7 +4396,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4550,7 +4405,6 @@
           "name": "45 Rnd",
           "pts": 35,
           "mag": 45,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4560,7 +4414,6 @@
           "name": "45 Fast",
           "pts": 40,
           "mag": 45,
-          "tacRld": 2212,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4581,7 +4434,6 @@
           "name": "15 Rnd",
           "pts": 5,
           "mag": 15,
-          "tacRld": 2750,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4591,7 +4443,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4601,7 +4452,6 @@
           "name": "20 Fast",
           "pts": 10,
           "mag": 20,
-          "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4611,7 +4461,6 @@
           "name": "30 Rnd",
           "pts": 40,
           "mag": 30,
-          "tacRld": 2750,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4632,7 +4481,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2450,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4642,7 +4490,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2168,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4652,7 +4499,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2450,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4662,7 +4508,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2450,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4672,7 +4517,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2168,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4682,7 +4526,6 @@
           "name": "45 Rnd",
           "pts": 35,
           "mag": 45,
-          "tacRld": 2450,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4692,7 +4535,6 @@
           "name": "45 Fast",
           "pts": 40,
           "mag": 45,
-          "tacRld": 2168,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4713,7 +4555,6 @@
           "name": "45 Rnd",
           "pts": 5,
           "mag": 45,
-          "tacRld": 2876,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4723,7 +4564,6 @@
           "name": "45 Fast",
           "pts": 10,
           "mag": 45,
-          "tacRld": 2545,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 1,
@@ -4733,7 +4573,6 @@
           "name": "50 Rnd",
           "pts": 5,
           "mag": 50,
-          "tacRld": 2876,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4743,7 +4582,6 @@
           "name": "60 Rnd",
           "pts": 5,
           "mag": 60,
-          "tacRld": 3250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4753,7 +4591,6 @@
           "name": "60 Fast",
           "pts": 10,
           "mag": 60,
-          "tacRld": 2876,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 1,
@@ -4763,7 +4600,6 @@
           "name": "100 Rnd",
           "pts": 45,
           "mag": 100,
-          "tacRld": 3250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 1,
@@ -4784,7 +4620,6 @@
           "name": "17 Rnd",
           "pts": 5,
           "mag": 17,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4794,7 +4629,6 @@
           "name": "17 Fast",
           "pts": 10,
           "mag": 17,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4804,7 +4638,6 @@
           "name": "23 Rnd",
           "pts": 25,
           "mag": 23,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4814,7 +4647,6 @@
           "name": "27 Rnd",
           "pts": 45,
           "mag": 27,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4835,7 +4667,6 @@
           "name": "100 Rnd",
           "pts": 5,
           "mag": 100,
-          "tacRld": 6500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4845,7 +4676,6 @@
           "name": "200 Rnd",
           "pts": 50,
           "mag": 200,
-          "tacRld": 6500,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4866,7 +4696,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2767,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -4876,7 +4705,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2449,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -4886,7 +4714,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2767,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4896,7 +4723,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2449,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4906,7 +4732,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2767,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4916,7 +4741,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2767,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4926,7 +4750,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2449,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4936,7 +4759,6 @@
           "name": "45 Rnd",
           "pts": 35,
           "mag": 45,
-          "tacRld": 2767,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4946,7 +4768,6 @@
           "name": "45 Fast",
           "pts": 40,
           "mag": 45,
-          "tacRld": 2449,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4967,7 +4788,6 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 3034,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -4977,7 +4797,6 @@
           "name": "10 Fast",
           "pts": 10,
           "mag": 10,
-          "tacRld": 2685,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4987,7 +4806,6 @@
           "name": "15 Rnd",
           "pts": 20,
           "mag": 15,
-          "tacRld": 3034,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4997,7 +4815,6 @@
           "name": "15 Fast",
           "pts": 25,
           "mag": 15,
-          "tacRld": 2685,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5007,7 +4824,6 @@
           "name": "20 Rnd",
           "pts": 45,
           "mag": 20,
-          "tacRld": 3034,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5017,7 +4833,6 @@
           "name": "20 Fast",
           "pts": 50,
           "mag": 20,
-          "tacRld": 2685,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5038,7 +4853,6 @@
           "name": "50 Rnd",
           "pts": 5,
           "mag": 50,
-          "tacRld": 4534,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5048,7 +4862,6 @@
           "name": "100 Rnd",
           "pts": 5,
           "mag": 100,
-          "tacRld": 7350,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 2,
@@ -5069,7 +4882,6 @@
           "name": "4 Rnd",
           "pts": 5,
           "mag": 4,
-          "tacRld": 1784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1,
@@ -5079,7 +4891,6 @@
           "name": "4 Fast",
           "pts": 10,
           "mag": 4,
-          "tacRld": 1784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1,
@@ -5089,7 +4900,6 @@
           "name": "6 Rnd",
           "pts": 5,
           "mag": 6,
-          "tacRld": 1784,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5110,7 +4920,6 @@
           "name": "50 Rnd",
           "pts": 5,
           "mag": 50,
-          "tacRld": 6267,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5120,7 +4929,6 @@
           "name": "50 Fast",
           "pts": 10,
           "mag": 50,
-          "tacRld": 5546,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5130,7 +4938,6 @@
           "name": "100 Rnd",
           "pts": 55,
           "mag": 100,
-          "tacRld": 6267,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5151,7 +4958,6 @@
           "name": "100 Rnd",
           "pts": 5,
           "mag": 100,
-          "tacRld": 6650,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5161,7 +4967,6 @@
           "name": "200 Rnd",
           "pts": 50,
           "mag": 200,
-          "tacRld": 6650,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5182,7 +4987,6 @@
           "name": "5 Rnd",
           "pts": 5,
           "mag": 5,
-          "tacRld": 3234,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5192,7 +4996,6 @@
           "name": "5 Fast",
           "pts": 10,
           "mag": 5,
-          "tacRld": 2862,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5202,7 +5005,6 @@
           "name": "8 Rnd",
           "pts": 25,
           "mag": 8,
-          "tacRld": 3234,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5223,7 +5025,6 @@
           "name": "50 Rnd",
           "pts": 5,
           "mag": 50,
-          "tacRld": 4250,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5233,7 +5034,6 @@
           "name": "75 Rnd",
           "pts": 10,
           "mag": 75,
-          "tacRld": 7100,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5243,7 +5043,6 @@
           "name": "100 Rnd",
           "pts": 25,
           "mag": 100,
-          "tacRld": 7100,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5264,7 +5063,6 @@
           "name": "50 Rnd",
           "pts": 5,
           "mag": 50,
-          "tacRld": 5750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5274,7 +5072,6 @@
           "name": "100 Rnd",
           "pts": 55,
           "mag": 100,
-          "tacRld": 5750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5295,7 +5092,6 @@
           "name": "15 Rnd",
           "pts": 5,
           "mag": 15,
-          "tacRld": 2110,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5305,7 +5101,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5315,7 +5110,6 @@
           "name": "20 Fast",
           "pts": 10,
           "mag": 20,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5325,7 +5119,6 @@
           "name": "25 Rnd",
           "pts": 20,
           "mag": 25,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5335,7 +5128,6 @@
           "name": "25 Fast",
           "pts": 25,
           "mag": 25,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5345,7 +5137,6 @@
           "name": "30 Rnd",
           "pts": 40,
           "mag": 30,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5366,7 +5157,6 @@
           "name": "15 Rnd",
           "pts": 5,
           "mag": 15,
-          "tacRld": 2534,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5376,7 +5166,6 @@
           "name": "15 Fast",
           "pts": 10,
           "mag": 15,
-          "tacRld": 2242,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5386,7 +5175,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2534,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5396,7 +5184,6 @@
           "name": "20 Fast",
           "pts": 10,
           "mag": 20,
-          "tacRld": 2242,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5406,7 +5193,6 @@
           "name": "25 Rnd",
           "pts": 20,
           "mag": 25,
-          "tacRld": 2534,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5427,7 +5213,6 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2183,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -5437,7 +5222,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5447,7 +5231,6 @@
           "name": "20 Fast",
           "pts": 10,
           "mag": 20,
-          "tacRld": 2183,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5457,7 +5240,6 @@
           "name": "25 Rnd",
           "pts": 20,
           "mag": 25,
-          "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5478,7 +5260,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2384,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -5488,7 +5269,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2110,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -5498,7 +5278,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5508,7 +5287,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5518,7 +5296,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5528,7 +5305,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5538,7 +5314,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5559,7 +5334,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2200,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -5569,7 +5343,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 1947,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -5579,7 +5352,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5589,7 +5361,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 1947,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5599,7 +5370,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5609,7 +5379,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5619,7 +5388,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 1947,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5640,7 +5408,6 @@
           "name": "5 Rnd",
           "pts": 5,
           "mag": 5,
-          "tacRld": 1334,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1,
@@ -5650,7 +5417,6 @@
           "name": "5 Fast",
           "pts": 20,
           "mag": 5,
-          "tacRld": 1334,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1,
@@ -5660,7 +5426,6 @@
           "name": "6 Rnd",
           "pts": 5,
           "mag": 6,
-          "tacRld": 1334,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1,
@@ -5670,7 +5435,6 @@
           "name": "7 Rnd",
           "pts": 5,
           "mag": 7,
-          "tacRld": 1334,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5691,7 +5455,6 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2334,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5701,7 +5464,6 @@
           "name": "10 Fast",
           "pts": 10,
           "mag": 10,
-          "tacRld": 2065,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5711,7 +5473,6 @@
           "name": "15 Rnd",
           "pts": 30,
           "mag": 15,
-          "tacRld": 2334,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5721,7 +5482,6 @@
           "name": "15 Fast",
           "pts": 35,
           "mag": 15,
-          "tacRld": 2065,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
@@ -5731,7 +5491,6 @@
           "name": "20 Rnd",
           "pts": 55,
           "mag": 20,
-          "tacRld": 2334,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5741,7 +5500,6 @@
           "name": "20 Fast",
           "pts": 60,
           "mag": 20,
-          "tacRld": 2065,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
@@ -5762,7 +5520,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2500,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -5772,7 +5529,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2212,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -5782,7 +5538,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5792,7 +5547,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2212,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5802,7 +5556,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5812,7 +5565,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5822,7 +5574,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2212,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -5843,7 +5594,6 @@
           "name": "7 Rnd",
           "pts": 5,
           "mag": 7,
-          "tacRld": 3350,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5853,7 +5603,6 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 3350,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5874,7 +5623,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2227,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -5884,7 +5632,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5894,7 +5641,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5904,7 +5650,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -5925,7 +5670,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 1933,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5935,7 +5679,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2184,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5945,7 +5688,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 1933,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5955,7 +5697,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2184,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 3,
           "sprintRecoveryTierShift": 0,
@@ -5976,7 +5717,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2567,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -5986,7 +5726,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2272,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5996,7 +5735,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2567,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6006,7 +5744,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2567,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6027,7 +5764,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2800,
           "adsTimeTierShift": -2,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6037,7 +5773,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2478,
           "adsTimeTierShift": -2,
           "adsMoveSpeedTierShift": -2,
           "sprintRecoveryTierShift": 0,
@@ -6047,7 +5782,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2800,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6057,7 +5791,6 @@
           "name": "40 Rnd",
           "pts": 5,
           "mag": 40,
-          "tacRld": 2800,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6067,7 +5800,6 @@
           "name": "40 Fast",
           "pts": 10,
           "mag": 40,
-          "tacRld": 2478,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6077,7 +5809,6 @@
           "name": "60 Rnd",
           "pts": 30,
           "mag": 60,
-          "tacRld": 2800,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6087,7 +5818,6 @@
           "name": "75 Rnd",
           "pts": 50,
           "mag": 75,
-          "tacRld": 2800,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6108,7 +5838,6 @@
           "name": "15 Rnd",
           "pts": 5,
           "mag": 15,
-          "tacRld": 2600,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6118,7 +5847,6 @@
           "name": "15 Fast",
           "pts": 10,
           "mag": 15,
-          "tacRld": 2301,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6128,7 +5856,6 @@
           "name": "20 Rnd",
           "pts": 20,
           "mag": 20,
-          "tacRld": 2600,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6138,7 +5865,6 @@
           "name": "25 Rnd",
           "pts": 45,
           "mag": 25,
-          "tacRld": 2600,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6159,7 +5885,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2500,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -6169,7 +5894,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2212,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6179,7 +5903,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6189,7 +5912,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2212,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6199,7 +5921,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6209,7 +5930,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6219,7 +5939,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2212,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -6240,7 +5959,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6250,7 +5968,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6260,7 +5977,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6270,7 +5986,6 @@
           "name": "41 Rnd",
           "pts": 25,
           "mag": 41,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6291,7 +6006,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2650,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6301,7 +6015,6 @@
           "name": "60 Rnd",
           "pts": 55,
           "mag": 60,
-          "tacRld": 2650,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
@@ -6322,7 +6035,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2250,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -6332,7 +6044,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 1991,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6342,7 +6053,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2250,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6352,7 +6062,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 1991,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6362,7 +6071,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6372,7 +6080,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6382,7 +6089,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 1991,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -6403,7 +6109,6 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2984,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6424,7 +6129,6 @@
           "name": "5 Rnd",
           "pts": 5,
           "mag": 5,
-          "tacRld": 2212,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6434,7 +6138,6 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6444,7 +6147,6 @@
           "name": "10 Fast",
           "pts": 10,
           "mag": 10,
-          "tacRld": 2212,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6454,7 +6156,6 @@
           "name": "20 Rnd",
           "pts": 45,
           "mag": 20,
-          "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6475,7 +6176,6 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2967,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6485,7 +6185,6 @@
           "name": "10 Fast",
           "pts": 10,
           "mag": 10,
-          "tacRld": 2626,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6506,7 +6205,6 @@
           "name": "25 Rnd",
           "pts": 5,
           "mag": 25,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6516,7 +6214,6 @@
           "name": "25 Fast",
           "pts": 10,
           "mag": 25,
-          "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": -2,
           "sprintRecoveryTierShift": 0,
@@ -6526,7 +6223,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6536,7 +6232,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6546,7 +6241,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6567,7 +6261,6 @@
           "name": "50 Rnd",
           "pts": 5,
           "mag": 50,
-          "tacRld": 3000,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6588,7 +6281,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2384,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -6598,7 +6290,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2110,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6608,7 +6299,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6618,7 +6308,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6628,7 +6317,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6638,7 +6326,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6648,7 +6335,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -6658,7 +6344,6 @@
           "name": "45 Fast",
           "pts": 40,
           "mag": 45,
-          "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -6679,7 +6364,6 @@
           "name": "10 Fast",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2124,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -3,
@@ -6689,7 +6373,6 @@
           "name": "15 Rnd",
           "pts": 5,
           "mag": 15,
-          "tacRld": 2124,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6699,7 +6382,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2400,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6709,7 +6391,6 @@
           "name": "20 Fast",
           "pts": 10,
           "mag": 20,
-          "tacRld": 2124,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6719,7 +6400,6 @@
           "name": "25 Rnd",
           "pts": 20,
           "mag": 25,
-          "tacRld": 2400,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6729,7 +6409,6 @@
           "name": "25 Fast",
           "pts": 25,
           "mag": 25,
-          "tacRld": 2124,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -6739,7 +6418,6 @@
           "name": "30 Rnd",
           "pts": 40,
           "mag": 30,
-          "tacRld": 2400,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6760,7 +6438,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2154,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6770,7 +6447,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2434,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -6780,7 +6456,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2434,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6790,7 +6465,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2154,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6800,7 +6474,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6810,7 +6483,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6820,7 +6492,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 2154,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -6841,7 +6512,6 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2200,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -6851,7 +6521,6 @@
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 1947,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6861,7 +6530,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6871,7 +6539,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 1947,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6881,7 +6548,6 @@
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6891,7 +6557,6 @@
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6901,7 +6566,6 @@
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 1947,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -6922,7 +6586,6 @@
           "name": "30 Rnd",
           "pts": 5,
           "mag": 30,
-          "tacRld": 2784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
@@ -6932,7 +6595,6 @@
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 2464,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6942,7 +6604,6 @@
           "name": "36 Rnd",
           "pts": 5,
           "mag": 36,
-          "tacRld": 2784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
@@ -6952,7 +6613,6 @@
           "name": "45 Rnd",
           "pts": 5,
           "mag": 45,
-          "tacRld": 2784,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -6962,7 +6622,6 @@
           "name": "45 Fast",
           "pts": 10,
           "mag": 45,
-          "tacRld": 2464,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6972,7 +6631,6 @@
           "name": "50 Rnd",
           "pts": 10,
           "mag": 50,
-          "tacRld": 2784,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6982,7 +6640,6 @@
           "name": "60 Rnd",
           "pts": 20,
           "mag": 60,
-          "tacRld": 2784,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -6992,7 +6649,6 @@
           "name": "95 Rnd",
           "pts": 25,
           "mag": 95,
-          "tacRld": 2950,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -7013,7 +6669,6 @@
           "name": "5 Rnd",
           "pts": 5,
           "mag": 5,
-          "tacRld": 2750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
@@ -7023,7 +6678,6 @@
           "name": "7 Rnd",
           "pts": 15,
           "mag": 7,
-          "tacRld": 2750,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -7033,7 +6687,6 @@
           "name": "7 Fast",
           "pts": 20,
           "mag": 7,
-          "tacRld": 2434,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
@@ -7057,7 +6710,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934,
           "reloadSpeedTier": 0
         },
         "21_rnd": {
@@ -7067,7 +6719,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934,
           "reloadSpeedTier": 0
         }
       },
@@ -7088,7 +6739,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2017,
           "reloadSpeedTier": 0
         },
         "30_rnd": {
@@ -7098,7 +6748,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2017,
           "reloadSpeedTier": 0
         }
       },
@@ -7119,7 +6768,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1867,
           "reloadSpeedTier": 0
         },
         "11_rnd": {
@@ -7129,7 +6777,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1867,
           "reloadSpeedTier": 0
         }
       },
@@ -7150,7 +6797,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 3400,
           "reloadSpeedTier": 0
         }
       },
@@ -7171,7 +6817,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934,
           "reloadSpeedTier": 0
         },
         "20_rnd": {
@@ -7181,7 +6826,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934,
           "reloadSpeedTier": 0
         },
         "22_rnd": {
@@ -7191,7 +6835,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934,
           "reloadSpeedTier": 0
         }
       },
@@ -7212,7 +6855,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 3067,
           "reloadSpeedTier": 0
         },
         "8_fast": {
@@ -7222,7 +6864,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2714,
           "reloadSpeedTier": 1
         }
       },
@@ -7243,7 +6884,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2134,
           "reloadSpeedTier": 0
         },
         "20_rnd": {
@@ -7253,7 +6893,6 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2134,
           "reloadSpeedTier": 0
         }
       },

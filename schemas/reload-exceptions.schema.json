@@ -3,19 +3,21 @@
   "$id": "https://kdm.local/schemas/reload-exceptions.schema.json",
   "title": "BF6 reload exception register",
   "type": "object",
-  "required": ["$schema", "schemaVersion", "animationOverrides", "screenshotExceptions", "counts"],
+  "required": ["$schema", "schemaVersion", "animationOverrides", "screenshotExceptions", "composedLoadoutEvidence", "counts"],
   "properties": {
     "$schema": { "const": "../schemas/reload-exceptions.schema.json" },
     "schemaVersion": { "const": 1 },
     "animationOverrides": { "$ref": "#/$defs/weaponMagazineMap" },
     "screenshotExceptions": { "$ref": "#/$defs/screenshotWeaponMagazineMap" },
+    "composedLoadoutEvidence": { "$ref": "#/$defs/composedLoadoutMap" },
     "counts": {
       "type": "object",
-      "required": ["animationOverrideRecords", "animationOverrideEntries", "screenshotExceptionEntries"],
+      "required": ["animationOverrideRecords", "animationOverrideEntries", "screenshotExceptionEntries", "composedLoadoutEvidenceEntries"],
       "properties": {
         "animationOverrideRecords": { "type": "integer", "minimum": 0 },
         "animationOverrideEntries": { "type": "integer", "minimum": 0 },
-        "screenshotExceptionEntries": { "type": "integer", "minimum": 0 }
+        "screenshotExceptionEntries": { "type": "integer", "minimum": 0 },
+        "composedLoadoutEvidenceEntries": { "type": "integer", "minimum": 0 }
       },
       "additionalProperties": false
     }
@@ -47,6 +49,25 @@
         "displayName": { "type": "string", "minLength": 1 },
         "observedOn": { "type": "string", "minLength": 1 },
         "reason": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "composedLoadoutMap": {
+      "type": "object",
+      "additionalProperties": { "type": "object", "additionalProperties": { "$ref": "#/$defs/composedLoadoutEvidence" } }
+    },
+    "composedLoadoutEvidence": {
+      "type": "object",
+      "required": ["magazineId", "ergonomicId", "observedReloadMs", "observedOn", "receipt", "evidenceKind", "singleAttachmentPanel", "note"],
+      "properties": {
+        "magazineId": { "type": "string", "minLength": 1 },
+        "ergonomicId": { "type": "string", "minLength": 1 },
+        "observedReloadMs": { "type": "integer", "exclusiveMinimum": 0 },
+        "observedOn": { "type": "string", "minLength": 1 },
+        "receipt": { "type": "string", "minLength": 1 },
+        "evidenceKind": { "const": "composed-loadout" },
+        "singleAttachmentPanel": { "const": false },
+        "note": { "type": "string", "minLength": 1 }
       },
       "additionalProperties": false
     }

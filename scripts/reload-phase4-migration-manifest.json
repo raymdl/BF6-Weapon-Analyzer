@@ -9,7 +9,8 @@
   "source": {
     "screenshotFixture": "outputs/attachment-audit/attachment-screenshot-review.json",
     "exceptionRegister": "data/reload-exceptions.json",
-    "preMigrationBaselineDigest": "f6a4d7681f1e4157d3022f81737f61f29e6ff9837e377c8500cde6c83384d48e"
+    "preMigrationBaselineDigest": "f6a4d7681f1e4157d3022f81737f61f29e6ff9837e377c8500cde6c83384d48e",
+    "composedLoadoutReceipt": "outputs/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs"
   },
   "magCatchEvidence": {
     "corpusRows": 27,
@@ -17,6 +18,17 @@
     "model": "base / 1.063",
     "toleranceSeconds": 0.005,
     "note": "All reviewed Improved Mag Catch corpus rows match the universal 1.063 reload-speed multiplier, including the six weapons whose legacy blocks were absent."
+  },
+  "phase6CutoverEvidence": {
+    "key": "pp19/53_rnd/mag_catch",
+    "evidenceKind": "composed-loadout",
+    "singleAttachmentPanel": false,
+    "observedReloadMs": 2509,
+    "overrideMs": 2667,
+    "reloadSpeedMult": 1.063,
+    "formula": "2667 / 1.063 = 2508.94 ms, displayed as 2.509 s",
+    "receipt": "outputs/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs",
+    "note": "The operator captured the PP-19 53Rnd drum and Improved Mag Catch together. This is composed-loadout evidence, not a single-attachment panel; it resolves the former unresolved-override-stack branch."
   },
   "counts": {
     "magazineEntries": 265,
@@ -31,7 +43,8 @@
     "changedMagazineValues": 23,
     "legacyMagCatchCorrections": 7,
     "legacyMagCatchStackingDifferences": 6,
-    "magCatchEvidenceRows": 27
+    "magCatchEvidenceRows": 27,
+    "composedLoadoutEvidenceEntries": 1
   },
   "classificationConflicts": [
     {

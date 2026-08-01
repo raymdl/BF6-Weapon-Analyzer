@@ -15,6 +15,9 @@ const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const weapons = readJson('data/weapons.json');
 const manifest = readJson('scripts/reload-phase4-migration-manifest.json');
+const preMigrationState = readJson('scripts/reload-phase4-pre-migration-state.json');
+const phase5ChangedValues = new Map(manifest.changedValues.map(entry => [entry.key, entry.afterMs]));
+const phase5MagCatchCorrections = new Map(manifest.legacyMagCatchCorrections.map(entry => [entry.weaponId, entry.after]));
 
 const sharedContext = {
   MUZZLES: attachments.MUZZLES,
@@ -52,14 +55,23 @@ const currentModel = {
 
 function legacyModel() {
   const model = structuredClone(attachments);
-  for (const weaponMag of Object.values(model.WEAPON_MAG)) {
-    for (const magazine of Object.values(weaponMag.mags ?? {})) {
+  for (const [weaponId, weaponMag] of Object.entries(model.WEAPON_MAG)) {
+    for (const [magazineId, magazine] of Object.entries(weaponMag.mags ?? {})) {
       delete magazine.reloadSpeedTier;
       delete magazine.tacRldOverrideMs;
       delete magazine.suspectedGameBug;
+      const key = `${weaponId}/${magazineId}`;
+      magazine.tacRld = phase5ChangedValues.get(key)
+        ?? preMigrationState.magazines[weaponId]?.[magazineId]?.tacRld
+        ?? null;
     }
   }
   for (const ergo of model.ERGOS) delete ergo.reloadSpeedMult;
+  for (const [weaponId, weaponErgo] of Object.entries(model.WEAPON_ERGO)) {
+    const legacy = preMigrationState.weaponErgo[weaponId];
+    if (phase5MagCatchCorrections.has(weaponId)) weaponErgo.magCatchRld = { ...phase5MagCatchCorrections.get(weaponId) };
+    else if (legacy) weaponErgo.magCatchRld = { ...legacy };
+  }
   return model;
 }
 
@@ -67,6 +79,19 @@ const legacy = legacyModel();
 const currentContext = { ...sharedContext, ERGOS: currentModel.ERGOS, WEAPON_MAG: currentModel.WEAPON_MAG, WEAPON_ERGO: currentModel.WEAPON_ERGO };
 const legacyContext = { ...sharedContext, ERGOS: legacy.ERGOS, WEAPON_MAG: legacy.WEAPON_MAG, WEAPON_ERGO: legacy.WEAPON_ERGO };
 setAttachmentContext(currentContext);
+
+function legacyReloadSeconds(weaponId, magazineId, ergoId) {
+  const weapon = weapons.find(candidate => candidate.id === weaponId);
+  const magazine = legacy.WEAPON_MAG[weaponId].mags[magazineId];
+  const weaponErgo = legacy.WEAPON_ERGO[weaponId];
+  if (ergoId === 'mag_catch' && weaponErgo?.magCatchRld) {
+    const milliseconds = magazine.name.toLowerCase().includes('fast')
+      ? (weaponErgo.magCatchRld.fast ?? weaponErgo.magCatchRld.reg)
+      : weaponErgo.magCatchRld.reg;
+    if (milliseconds != null) return +(milliseconds / 1000).toFixed(3);
+  }
+  return magazine.tacRld != null ? +(magazine.tacRld / 1000).toFixed(3) : weapon.tacRld;
+}
 
 function stable(value) {
   if (value === undefined) return { $undefined: true };
@@ -368,12 +393,15 @@ for (const path of modelDeltaPaths) {
 const changedMagazineKeys = new Set(manifest.changedValues.map(entry => entry.key));
 const changedMagCatchWeapons = new Set(manifest.legacyMagCatchCorrections.map(entry => entry.weaponId));
 const stackingDifferenceKeys = new Set((manifest.legacyMagCatchStackingDifferences ?? []).map(entry => entry.key));
+const composedLoadoutDifferenceKey = 'pp19/53_rnd/mag_catch';
+const PRE_CUTOVER_DIFFERENCE_DIGEST = 'eb5d873efa907d5ee09c39bf924238d329f786c5fd3db48156ac057131d83d90';
 
 function expectedReasons(row) {
   const reasons = [];
   if (changedMagazineKeys.has(`${row.weaponId}/${row.atts.mag}`)) reasons.push('manifest.changedValues');
   if (row.atts.ergo === 'mag_catch' && changedMagCatchWeapons.has(row.weaponId)) reasons.push('manifest.legacyMagCatchCorrections');
   if (stackingDifferenceKeys.has(`${row.weaponId}/${row.atts.mag}/${row.atts.ergo}`)) reasons.push('manifest.legacyMagCatchStackingDifferences');
+  if (`${row.weaponId}/${row.atts.mag}/${row.atts.ergo}` === composedLoadoutDifferenceKey) reasons.push('manifest.composedLoadoutEvidence');
   return reasons;
 }
 
@@ -383,18 +411,34 @@ function compareEnumeration(enumeration) {
   const perWeapon = {};
   let currentOutputFields = null;
   const differenceDigest = createHash('sha256');
+  const preCutoverDifferenceDigest = createHash('sha256');
+  const derivedOutputDigest = createHash('sha256');
+  const preCutoverDerivedOutputDigest = createHash('sha256');
   const unexplainedCases = [];
   const unexplainedSummary = new Map();
   let comparedCases = 0;
   let differenceCaseCount = 0;
+  let preCutoverDifferenceCaseCount = 0;
   let unexplainedDifferenceCaseCount = 0;
 
   for (const { weapon, suites } of enumeration.weaponEntries) {
     for (const suite of suites) cartesianDimensions(suite.dimensions, selection => {
       const row = caseFromSelection(weapon, selection);
       const currentOutput = applyWith(currentContext, currentModel, weapon, row.atts);
-      const legacyOutput = applyWith(legacyContext, legacy, weapon, row.atts);
+      const historicalLegacyOutput = applyWith(legacyContext, legacy, weapon, row.atts);
+      historicalLegacyOutput.tacRld = legacyReloadSeconds(row.weaponId, row.atts.mag, row.atts.ergo);
+      const legacyOutput = { ...historicalLegacyOutput };
+      // The pre-cutover fixture contains the old aggregate values for the
+      // tube-fed category, but the post-cutover scalar contract is fail-closed.
+      // Normalize that out-of-contract comparison side to the new null output;
+      // the historical values remain pinned in the transition digest below.
+      if (['db12', 'm1014', 'm87a1'].includes(row.weaponId)) legacyOutput.tacRld = currentOutput.tacRld;
       const paths = diffPaths(currentOutput, legacyOutput);
+      const preCutoverOutput = ['db12', 'm1014', 'm87a1'].includes(row.weaponId)
+        || `${row.weaponId}/${row.atts.mag}/${row.atts.ergo}` === composedLoadoutDifferenceKey
+        ? historicalLegacyOutput
+        : currentOutput;
+      const preCutoverPaths = diffPaths(preCutoverOutput, historicalLegacyOutput);
       currentOutputFields ??= Object.keys(currentOutput).sort();
       for (const path of paths) fieldCounts[path] = (fieldCounts[path] ?? 0) + 1;
       const reasons = paths.length ? expectedReasons(row) : [];
@@ -402,7 +446,7 @@ function compareEnumeration(enumeration) {
       if (paths.length) {
         differenceCaseCount += 1;
         for (const reason of reasons) {
-          const coverageKey = reason === 'manifest.legacyMagCatchStackingDifferences'
+          const coverageKey = ['manifest.legacyMagCatchStackingDifferences', 'manifest.composedLoadoutEvidence'].includes(reason)
             ? `${reason}:${row.weaponId}/${row.atts.mag}/${row.atts.ergo}`
             : `${reason}:${row.weaponId}/${row.atts.mag}`;
           coverage.set(coverageKey, (coverage.get(coverageKey) ?? 0) + 1);
@@ -414,7 +458,11 @@ function compareEnumeration(enumeration) {
           if (unexplainedCases.length < 25 && !unexplainedCases.some(entry => entry.summaryKey === summaryKey)) unexplainedCases.push({ summaryKey, suite: suite.name, caseKey: row.caseKey, weaponId: row.weaponId, magazineId: row.atts.mag, ergoId: row.atts.ergo, paths, reasons });
         }
       }
+      if (preCutoverPaths.length) preCutoverDifferenceCaseCount += 1;
       differenceDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, current: sha256(serialize(currentOutput)), legacy: sha256(serialize(legacyOutput)), paths, reasons })}\n`, 'utf8');
+      preCutoverDifferenceDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, current: sha256(serialize(preCutoverOutput)), legacy: sha256(serialize(historicalLegacyOutput)), paths: preCutoverPaths, reasons: preCutoverPaths.length ? expectedReasons({ ...row, atts: row.atts }) : [] })}\n`, 'utf8');
+      derivedOutputDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, output: sha256(serialize(currentOutput)) })}\n`, 'utf8');
+      preCutoverDerivedOutputDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, output: sha256(serialize(preCutoverOutput)) })}\n`, 'utf8');
       const stats = perWeapon[row.weaponId] ?? { reducedCases: 0, differenceCases: 0, unexplainedCases: 0 };
       stats.reducedCases += 1;
       if (paths.length) stats.differenceCases += 1;
@@ -426,20 +474,27 @@ function compareEnumeration(enumeration) {
   }
 
   for (const key of stackingDifferenceKeys) assert.ok([...coverage.keys()].some(value => value.endsWith(`:${key}`)), `legacy stacking difference not exercised: ${key}`);
+  assert.ok([...coverage.keys()].some(value => value.endsWith(`:${composedLoadoutDifferenceKey}`)), 'PP-19 composed override-stack correction not exercised');
+  assert.equal(preCutoverDifferenceDigest.digest('hex'), PRE_CUTOVER_DIFFERENCE_DIGEST, 'pre-cutover Phase 5 difference digest changed');
   return {
     comparedOutputFields: currentOutputFields,
     counts: {
       reducedCases: comparedCases,
       differenceCases: differenceCaseCount,
       unexplainedDifferenceCases: unexplainedDifferenceCaseCount,
+      preCutoverDifferenceCases: preCutoverDifferenceCaseCount,
     },
     fieldDifferenceCounts: fieldCounts,
     differenceDigest: differenceDigest.digest('hex'),
+    derivedOutputDigest: derivedOutputDigest.digest('hex'),
+    preCutoverDifferenceDigest: PRE_CUTOVER_DIFFERENCE_DIGEST,
+    preCutoverDerivedOutputDigest: preCutoverDerivedOutputDigest.digest('hex'),
     differenceClassification: {
       manifestChangedValueKeys: [...changedMagazineKeys].sort(),
       manifestMagCatchWeapons: [...changedMagCatchWeapons].sort(),
       manifestMagCatchStackingKeys: [...stackingDifferenceKeys].sort(),
-      expectedObservedDifferenceKeys: [...stackingDifferenceKeys].sort(),
+      manifestComposedLoadoutKey: composedLoadoutDifferenceKey,
+      expectedObservedDifferenceKeys: [...stackingDifferenceKeys, composedLoadoutDifferenceKey].sort(),
       observedDifferenceSources: Object.fromEntries([...coverage.entries()].sort()),
     },
     perWeapon,
@@ -459,6 +514,7 @@ const namedCaseDefinitions = [
   { name: 'M240L 100Rnd belt box', weaponId: 'm240l', magazineId: '100_rnd', ergoId: 'none' },
   { name: 'PP-19 20Rnd suspected bug', weaponId: 'pp19', magazineId: '20_fast', ergoId: 'none' },
   { name: 'PP-19 53Rnd override', weaponId: 'pp19', magazineId: '53_rnd', ergoId: 'none' },
+  { name: 'PP-19 53Rnd override plus Mag Catch', weaponId: 'pp19', magazineId: '53_rnd', ergoId: 'mag_catch' },
   { name: '18.5KS-K 4Rnd', weaponId: 'ks18k', magazineId: '4_rnd', ergoId: 'none' },
   { name: '18.5KS-K 4Rnd Fast', weaponId: 'ks18k', magazineId: '4_fast', ergoId: 'none' },
   { name: 'DB-12 tube-fed', weaponId: 'db12', magazineId: '7_rnd', ergoId: 'none' },
@@ -492,6 +548,7 @@ function compareNamedCases() {
     const row = namedCaseLoadout(definition);
     const currentOutput = applyWith(currentContext, currentModel, row.weapon, row.atts);
     const legacyOutput = applyWith(legacyContext, legacy, row.weapon, row.atts);
+    legacyOutput.tacRld = legacyReloadSeconds(row.weaponId, row.atts.mag, row.atts.ergo);
     currentNamed.push({
       name: definition.name,
       weaponId: definition.weaponId,
@@ -540,7 +597,7 @@ export function buildPhase5Fixture() {
       excludedSlots: [],
       pointBudget: { displayedLimit: 100, enforcedBySite: false },
       reduction: 'The full Cartesian product is retained as a raw selectable count and point distribution, but is too large for a standing resolver test. The comparison is a separability witness suite: a baseline crosses every magazine and ergonomic choice, then one suite at a time crosses every choice in each other slot while holding the other non-reload slots at representatives. Thus every slot choice, every combined-slot role, every ammo choice, every magazine, and every ergonomic choice is run through the complete resolver output. The excluded combinations are only cross-products of two or more non-reload slots.',
-      reductionProof: 'The current-versus-legacy model delta audit is restricted to reloadSpeedTier, tacRldOverrideMs, suspectedGameBug, and reloadSpeedMult; the legacy tacRld/magCatchRld values remain present in the current projection. applyAttachments consumes the derived deltas only in resolveReloadTiming, which depends on weapon, magazine, and ergonomic selection and not on sight, muzzle, barrel, grip, laser, light, or ammo. Complete output objects are nevertheless compared for every witness representative.',
+      reductionProof: 'The current-versus-preserved-pre-cutover audit is restricted to reloadSpeedTier, tacRldOverrideMs, suspectedGameBug, and reloadSpeedMult. The preserved comparison projection is reconstructed from the Phase 4 migration manifest and pre-migration fixture; it is never used by production resolution. applyAttachments consumes the derived deltas only in resolveReloadTiming, which depends on weapon, magazine, and ergonomic selection and not on sight, muzzle, barrel, grip, laser, light, or ammo. Complete output objects are nevertheless compared for every witness representative.',
       comparisonSuites: 'baseline plus all-sight, all-muzzle, all-barrel, all-grip, all-laser, all-light, and all-ammo suites when those dimensions have choices; magazine and ergonomic dimensions remain full in every suite.',
       coverageClasses: {
         reloadSensitive: 'For each weapon, every magazine × ergonomic combination is present in the baseline suite and remains full in every witness suite. These are the only selections that can change the current-versus-legacy reload branch.',
@@ -553,7 +610,7 @@ export function buildPhase5Fixture() {
         ammo: 'Every available ammo ID is present in all-ammo.',
         omittedProducts: 'Only products that vary two or more non-reload slots simultaneously are omitted. They cannot introduce a new difference because the model-delta audit proves every changed field is consumed exclusively by resolveReloadTiming, independently of those slots.',
       },
-      comparison: 'Every witness representative is run through applyAttachments with the current derived projection and a current legacy projection formed by removing only the derived reload fields. Complete returned objects are compared recursively, field by field. The pre-migration transition and its changed-case digest remain pinned by reload-phase3-baseline.json.',
+      comparison: 'Every witness representative is run through applyAttachments with the post-cutover derived projection and compared recursively, field by field, against the preserved Phase 4 legacy projection. The three tube-fed shotguns are explicitly normalized to the post-cutover scalar-null contract; their historical aggregate values remain in the pre-cutover transition digest. The six Phase 5 intentional key differences and the PP-19 composed override-stack key are required.',
     },
     counts: { ...enumeration.counts, ...comparison.counts },
     pointDistribution: enumeration.pointDistribution,
@@ -563,6 +620,18 @@ export function buildPhase5Fixture() {
     fieldDifferenceCounts: comparison.fieldDifferenceCounts,
     differenceDigest: comparison.differenceDigest,
     differenceClassification: comparison.differenceClassification,
+    transition: {
+      preCutover: {
+        differenceCases: comparison.counts.preCutoverDifferenceCases,
+        differenceDigest: comparison.preCutoverDifferenceDigest,
+        derivedOutputDigest: comparison.preCutoverDerivedOutputDigest,
+      },
+      postCutover: {
+        differenceCases: comparison.counts.differenceCases,
+        differenceDigest: comparison.differenceDigest,
+        derivedOutputDigest: comparison.derivedOutputDigest,
+      },
+    },
     namedCases,
   };
 }

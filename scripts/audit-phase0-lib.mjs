@@ -94,9 +94,35 @@ export function loadReloadExceptionRegister(root = DEFAULT_ROOT) {
       });
     }
   }
+  let composedLoadoutEvidenceEntries = 0;
+  for (const [weaponId, loadouts] of Object.entries(register.composedLoadoutEvidence ?? {})) {
+    const weapon = weaponById.get(weaponId);
+    if (!weapon) throw new Error(`reload composed-loadout register references unknown weapon ${weaponId}`);
+    for (const [loadoutId, entry] of Object.entries(loadouts ?? {})) {
+      if (!attachments.WEAPON_MAG?.[weaponId]?.mags?.[entry.magazineId]) {
+        throw new Error(`reload composed-loadout register references unknown magazine ${weaponId}/${entry.magazineId}`);
+      }
+      if (!attachments.WEAPON_ERGO?.[weaponId]?.avail?.includes(entry.ergonomicId)) {
+        throw new Error(`reload composed-loadout register references unavailable ergonomic ${weaponId}/${entry.ergonomicId}`);
+      }
+      if (!Number.isInteger(entry.observedReloadMs) || entry.observedReloadMs <= 0) {
+        throw new Error(`reload composed-loadout register ${weaponId}/${loadoutId} requires a positive integer observedReloadMs`);
+      }
+      if (entry.evidenceKind !== 'composed-loadout' || entry.singleAttachmentPanel !== false) {
+        throw new Error(`reload composed-loadout register ${weaponId}/${loadoutId} must identify composed-loadout evidence`);
+      }
+      for (const field of ['observedOn', 'receipt', 'note']) {
+        if (typeof entry[field] !== 'string' || !entry[field]) {
+          throw new Error(`reload composed-loadout register ${weaponId}/${loadoutId} requires ${field}`);
+        }
+      }
+      composedLoadoutEvidenceEntries++;
+    }
+  }
   if (register.counts?.animationOverrideRecords !== animationRecords.size
       || register.counts?.animationOverrideEntries !== animationEntries
-      || register.counts?.screenshotExceptionEntries !== screenshotExceptions.size) {
+      || register.counts?.screenshotExceptionEntries !== screenshotExceptions.size
+      || register.counts?.composedLoadoutEvidenceEntries !== composedLoadoutEvidenceEntries) {
     throw new Error('reload exception register counts do not match its ID-keyed entries');
   }
   return { register, animationOverrides, screenshotExceptions };

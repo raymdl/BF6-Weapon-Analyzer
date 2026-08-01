@@ -15,11 +15,14 @@ function generated() {
   return actual;
 }
 
-test('Phase 5 complete attachment equivalence matches the tracked witness fixture', () => {
+test('Phase 6 complete attachment equivalence matches the tracked post-cutover witness fixture', () => {
   const result = generated();
   assert.deepEqual(result, fixture);
   assert.equal(result.counts.unexplainedDifferenceCases, 0);
-  assert.deepEqual(result.fieldDifferenceCounts, { tacRld: 578 });
+  assert.deepEqual(result.fieldDifferenceCounts, { tacRld: 658 });
+  assert.equal(result.transition.preCutover.differenceCases, 578);
+  assert.equal(result.transition.postCutover.differenceCases, 658);
+  assert.equal(result.transition.preCutover.differenceDigest, 'eb5d873efa907d5ee09c39bf924238d329f786c5fd3db48156ac057131d83d90');
   assert.deepEqual(result.differenceClassification.manifestMagCatchStackingKeys, [
     'm277/15_rnd/mag_catch',
     'pp19/20_fast/mag_catch',
@@ -28,9 +31,11 @@ test('Phase 5 complete attachment equivalence matches the tracked witness fixtur
     'svdm/5_rnd/mag_catch',
     'tr7/15_rnd/mag_catch',
   ]);
+  assert.equal(result.differenceClassification.manifestComposedLoadoutKey, 'pp19/53_rnd/mag_catch');
+  assert.ok(result.differenceClassification.expectedObservedDifferenceKeys.includes('pp19/53_rnd/mag_catch'));
 });
 
-test('Phase 5 named loadouts pin the migration edge cases', () => {
+test('Phase 6 named loadouts pin the migration edge cases', () => {
   const named = new Map(generated().namedCases.map(row => [row.name, row]));
   const expected = new Map([
     ['AK-205 Mag Catch', [2.337, []]],
@@ -43,18 +48,19 @@ test('Phase 5 named loadouts pin the migration edge cases', () => {
     ['M240L 100Rnd belt box', [7.1, []]],
     ['PP-19 20Rnd suspected bug', [2.467, []]],
     ['PP-19 53Rnd override', [2.667, []]],
+    ['PP-19 53Rnd override plus Mag Catch', [2.509, ['tacRld'], 2.321]],
     ['18.5KS-K 4Rnd', [2.75, []]],
     ['18.5KS-K 4Rnd Fast', [2.434, []]],
-    ['DB-12 tube-fed', [2.348, []]],
-    ['M1014 tube-fed', [1.784, []]],
-    ['M87A1 tube-fed', [1.334, []]],
+    ['DB-12 tube-fed', [null, ['tacRld'], 2.348]],
+    ['M1014 tube-fed', [null, ['tacRld'], 1.784]],
+    ['M87A1 tube-fed', [null, ['tacRld'], 1.334]],
   ]);
 
-  for (const [name, [reload, paths]] of expected) {
+  for (const [name, [reload, paths, historicalReload = reload]] of expected) {
     const row = named.get(name);
     assert.ok(row, `missing named case ${name}`);
     assert.equal(row.currentTacRld, reload, name);
-    assert.equal(row.legacyTacRld, reload, name);
+    assert.equal(row.legacyTacRld, historicalReload, name);
     assert.deepEqual(row.diffPaths, paths, name);
   }
 
@@ -69,7 +75,7 @@ test('Phase 5 named loadouts pin the migration edge cases', () => {
   }
 });
 
-test('Phase 5 covers combined selectors and explicit empty grip behavior', () => {
+test('Phase 6 covers combined selectors and explicit empty grip behavior', () => {
   const named = new Map(generated().namedCases.map(row => [row.name, row]));
   const combined = [
     ['VZ. 61 combined laser/grip/light', 'fold_stubby'],
@@ -94,7 +100,7 @@ test('Phase 5 covers combined selectors and explicit empty grip behavior', () =>
   assert.deepEqual(usg90.diffPaths, []);
 });
 
-test('Phase 5 pins the six corpus-backed Mag Catch legacy omissions', () => {
+test('Phase 6 retains the six corpus-backed Mag Catch backfills in the manifest', () => {
   const expected = {
     l115: { reg: 2587, fast: 2289 },
     p18: { reg: 1819, fast: null },
@@ -103,9 +109,9 @@ test('Phase 5 pins the six corpus-backed Mag Catch legacy omissions', () => {
     ggh22: { reg: 1819, fast: null },
     vz61: { reg: 2008, fast: null },
   };
-  for (const [weaponId, magCatchRld] of Object.entries(expected)) {
-    assert.deepEqual(attachments.WEAPON_ERGO[weaponId].magCatchRld, magCatchRld, weaponId);
-  }
+  assert.equal(Object.values(attachments.WEAPON_ERGO).some(ergo => Object.hasOwn(ergo, 'magCatchRld')), false);
+  const corrections = new Map(manifest.legacyMagCatchCorrections.map(entry => [entry.weaponId, entry]));
+  for (const [weaponId, magCatchRld] of Object.entries(expected)) assert.deepEqual(corrections.get(weaponId).after, magCatchRld, weaponId);
   assert.equal(manifest.counts.legacyMagCatchCorrections, 7);
   assert.equal(manifest.counts.magCatchEvidenceRows, 27);
   assert.equal(manifest.magCatchEvidence.corpusRows, 27);

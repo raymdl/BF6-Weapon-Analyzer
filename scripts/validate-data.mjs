@@ -268,10 +268,10 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
     const hasReloadSpeedTier = Object.hasOwn(magazine, 'reloadSpeedTier');
     const hasTacRldOverride = Object.hasOwn(magazine, 'tacRldOverrideMs');
     if (hasReloadSpeedTier === hasTacRldOverride) {
-      fail(`${weaponId}/${magazineId}: exactly one of reloadSpeedTier or tacRldOverrideMs is required after the additive reload migration`);
+      fail(`${weaponId}/${magazineId}: exactly one of reloadSpeedTier or tacRldOverrideMs is required after the reload cutover`);
     }
-    if (!Object.hasOwn(magazine, 'tacRld')) {
-      fail(`${weaponId}/${magazineId}: legacy tacRld must remain during the additive reload migration`);
+    if (Object.hasOwn(magazine, 'tacRld')) {
+      fail(`${weaponId}/${magazineId}: legacy tacRld must be absent after the reload cutover`);
     }
     if (Object.hasOwn(magazine, 'reloadSpeedTier')
         && (!Number.isInteger(magazine.reloadSpeedTier) || magazine.reloadSpeedTier < 0)) {
@@ -301,11 +301,13 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
           }
         }
         const weapon = weaponById.get(weaponId);
-        const observedSeconds = Number.isFinite(magazine.tacRld)
-          ? magazine.tacRld / 1000
-          : weapon?.tacRld;
-        if (Number.isFinite(observedSeconds) && Number.isFinite(bug.expectedReloadSeconds)
-            && Math.abs(observedSeconds - bug.expectedReloadSeconds) <= 0.005) {
+        const derivedSeconds = Object.hasOwn(magazine, 'tacRldOverrideMs')
+          ? magazine.tacRldOverrideMs / 1000
+          : Number.isFinite(weapon?.tacRld)
+            ? weapon.tacRld / (balance.RELOAD_SPEED_LADDER ** magazine.reloadSpeedTier)
+            : null;
+        if (Number.isFinite(derivedSeconds) && Number.isFinite(bug.expectedReloadSeconds)
+            && Math.abs(derivedSeconds - bug.expectedReloadSeconds) <= 0.005) {
           fail(`${weaponId}/${magazineId}: suspectedGameBug is stale; current reload matches expectedReloadSeconds`);
         }
       }
@@ -321,6 +323,12 @@ for (const ergo of attachments.ERGOS ?? []) {
   if (Object.hasOwn(ergo, 'reloadSpeedMult')
       && (!Number.isFinite(ergo.reloadSpeedMult) || ergo.reloadSpeedMult <= 0)) {
     fail(`${ergo.id}: reloadSpeedMult must be a positive finite number`);
+  }
+}
+
+for (const [weaponId, weaponErgo] of Object.entries(attachments.WEAPON_ERGO ?? {})) {
+  if (Object.hasOwn(weaponErgo, 'magCatchRld')) {
+    fail(`${weaponId}: legacy magCatchRld must be absent after the reload cutover`);
   }
 }
 
