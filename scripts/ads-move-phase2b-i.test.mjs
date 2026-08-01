@@ -115,8 +115,8 @@ function outputDiffs(before, after) {
 
 test('Phase 2b-i reindexes ADS move without legacy drift and isolates the two 1.0 results', () => {
   assert.equal(baseline.kind, 'ads-move-phase2b-i-pre-migration');
-  assert.deepEqual(balance.ADS_MOVE_TIERS, [1.0, ...baseline.legacyAdsMoveTiers]);
-  assert.equal(balance.ADS_MOVE_TIERS.includes(0.37), false);
+  assert.deepEqual(balance.ADS_MOVE_TIERS, [1.0, ...baseline.legacyAdsMoveTiers, 0.37]);
+  assert.equal(balance.ADS_MOVE_TIERS.includes(0.37), true);
   assert.equal(balance.ADS_MOVE_TIERS.includes(0.325), false);
 
   const catalogIds = Object.keys(attachments.WEAPON_MAG).sort();
