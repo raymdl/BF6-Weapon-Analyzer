@@ -15,6 +15,7 @@ const ammo = readJson('data/ammo.json');
 const balance = readJson('data/balance_tables.json');
 const weapons = readJson('data/weapons.json');
 const phase2bBaseline = readJson('scripts/ads-move-phase2b-iii-baseline.json');
+const preMigrationState = readJson('scripts/reload-phase4-pre-migration-state.json');
 const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
 
 const baseContext = {
@@ -105,16 +106,16 @@ function detailCases(cases) {
   return sortedCases(cases).filter(row => sampleKeys.has(row.caseKey));
 }
 
-function reloadCases(enumeration) {
+function reloadCases(enumeration, modelAttachments = attachments) {
   return enumeration.cases.map(row => {
     const weapon = weaponById.get(row.weaponId);
-    const magazine = attachments.WEAPON_MAG[row.weaponId].mags[row.magazineId];
-    const ergo = attachments.ERGOS.find(candidate => candidate.id === row.ergoId) ?? { id: 'none' };
+    const magazine = modelAttachments.WEAPON_MAG[row.weaponId].mags[row.magazineId];
+    const ergo = modelAttachments.ERGOS.find(candidate => candidate.id === row.ergoId) ?? { id: 'none' };
     const resolution = resolveReloadTiming({
       weaponTacRld: weapon.tacRld,
       magData: magazine,
       ergoData: ergo,
-      weaponErgo: attachments.WEAPON_ERGO[row.weaponId],
+      weaponErgo: modelAttachments.WEAPON_ERGO[row.weaponId],
     });
     return {
       caseKey: row.caseKey,
@@ -134,9 +135,41 @@ function reloadCases(enumeration) {
   });
 }
 
+function legacyAttachments() {
+  const model = structuredClone(attachments);
+  for (const [weaponId, weaponMag] of Object.entries(model.WEAPON_MAG)) {
+    for (const [magazineId, magazine] of Object.entries(weaponMag.mags ?? {})) {
+      delete magazine.reloadSpeedTier;
+      delete magazine.tacRldOverrideMs;
+      delete magazine.suspectedGameBug;
+      const legacy = preMigrationState.magazines[weaponId]?.[magazineId];
+      magazine.tacRld = legacy?.tacRld ?? null;
+    }
+  }
+  for (const ergo of model.ERGOS) delete ergo.reloadSpeedMult;
+  for (const [weaponId, weaponErgo] of Object.entries(model.WEAPON_ERGO)) {
+    const legacy = preMigrationState.weaponErgo[weaponId];
+    if (legacy) weaponErgo.magCatchRld = { ...legacy };
+    else delete weaponErgo.magCatchRld;
+  }
+  return model;
+}
+
+function changedCases(actual, previous) {
+  const previousByKey = new Map(previous.map(row => [row.caseKey, row]));
+  return sortedCases(actual.filter(row => row.tacticalReloadMs !== previousByKey.get(row.caseKey)?.tacticalReloadMs)
+    .map(row => ({
+      caseKey: row.caseKey,
+      previousTacticalReloadMs: previousByKey.get(row.caseKey)?.tacticalReloadMs ?? null,
+      newTacticalReloadMs: row.tacticalReloadMs,
+    })));
+}
+
 function buildFixture() {
   const enumeration = buildEnumeration({ attachments, ammo, balance, weapons });
   const cases = sortedCases(reloadCases(enumeration));
+  const previousCases = sortedCases(reloadCases(enumeration, legacyAttachments()));
+  const migrationChangedCases = changedCases(cases, previousCases);
   return {
     kind: 'reload-phase3-baseline',
     units: { tacticalReloadMs: 'integer milliseconds; null for scalar-null reloads' },
@@ -148,6 +181,12 @@ function buildFixture() {
       value: sha256(canonicalSerialization(cases)),
     },
     perWeaponDigest: perWeaponDigests(cases),
+    migration: {
+      previousDigest: sha256(canonicalSerialization(previousCases)),
+      changedCaseCount: migrationChangedCases.length,
+      changedCaseKeysDigest: sha256(migrationChangedCases.map(row => row.caseKey).join('\n')),
+      changedCases: migrationChangedCases,
+    },
     detailSelection: { sampleCasesPerWeapon: 3, detailCaseCount: detailCases(cases).length },
     detailCases: detailCases(cases),
   };
@@ -161,24 +200,35 @@ test('Phase 3 reload baseline reuses the complete 70,634-case Phase 2b enumerati
   const enumeration = buildEnumeration({ attachments, ammo, balance, weapons });
   assert.deepEqual(enumeration.counts, phase2bBaseline.counts);
   const actual = sortedCases(reloadCases(enumeration));
+  const previous = sortedCases(reloadCases(enumeration, legacyAttachments()));
   assert.equal(baseline.kind, 'reload-phase3-baseline');
   assert.deepEqual(baseline.scope, enumeration.scope);
   assert.deepEqual(baseline.counts, enumeration.counts);
   assert.deepEqual(baseline.detailCases, detailCases(actual));
   assert.equal(sha256(canonicalSerialization(actual)), baseline.digest.value);
   assert.deepEqual(perWeaponDigests(actual), baseline.perWeaponDigest);
+  assert.equal(sha256(canonicalSerialization(previous)), baseline.migration.previousDigest);
+  assert.equal(baseline.migration.previousDigest, preMigrationState.baselineDigest);
+  const actualChangedCases = changedCases(actual, previous);
+  assert.deepEqual(actualChangedCases, baseline.migration.changedCases);
+  assert.equal(actualChangedCases.length, baseline.migration.changedCaseCount);
+  assert.equal(sha256(actualChangedCases.map(row => row.caseKey).join('\n')), baseline.migration.changedCaseKeysDigest);
 });
 
-test('Phase 3 reload baseline records the legacy branch and absent derived fields at entry', () => {
+test('Phase 4 reload baseline pins derived branch identity and the intentional legacy fallbacks', () => {
   const actual = sortedCases(reloadCases(buildEnumeration({ attachments, ammo, balance, weapons })));
-  assert.equal(actual.every(row => row.branch === 'legacy'), true);
-  assert.equal(actual.every(row => row.reloadSpeedTier === null), true);
-  assert.equal(actual.every(row => row.reloadSpeedMult === null), true);
-  assert.equal(actual.every(row => row.overrideApplied === false), true);
-  assert.deepEqual([...new Set(actual.map(row => row.reason))], ['no-derived-fields']);
+  const expectedReasons = new Set(['derived-normal', 'derived-override', 'invalid-derived-base', 'unresolved-override-stack']);
+  assert.equal(actual.every(row => expectedReasons.has(row.reason)), true);
+  assert.equal(actual.filter(row => row.branch === 'derived').length > 0, true);
+  assert.equal(actual.every(row => row.overrideApplied === (row.reloadSpeedTier === null)), true);
+  assert.equal(actual.filter(row => row.branch === 'legacy').every(row => ['invalid-derived-base', 'unresolved-override-stack'].includes(row.reason)), true);
+  assert.equal(actual.filter(row => row.reason === 'invalid-derived-base').every(row => row.reloadSpeedTier === 0), true);
+  assert.equal(actual.filter(row => row.reason === 'unresolved-override-stack').every(row => row.overrideApplied), true);
+  assert.equal(actual.filter(row => row.reloadSpeedTier === 2).every(row => row.weaponId === 'kts100' && row.magazineId === '45_fast'), true);
+  assert.equal(actual.filter(row => row.reloadSpeedMult !== null).every(row => row.ergoId === 'mag_catch' && row.reloadSpeedMult === 1.063), true);
 });
 
-test('Phase 3 keeps derived fields out of production data and declares the suspected-game-bug schema', () => {
+test('Phase 4 populates the additive reload schema without deleting legacy fields', () => {
   const modelSchema = readJson('schemas/attachment-model.schema.json');
   const bugSchema = modelSchema.$defs.suspectedGameBug;
   assert.deepEqual(bugSchema.required, [
@@ -190,7 +240,16 @@ test('Phase 3 keeps derived fields out of production data and declares the suspe
     animationOverrideEntries: 5,
     screenshotExceptionEntries: 1,
   });
-  assert.equal(Object.values(attachments.WEAPON_MAG).some(weaponMag => Object.values(weaponMag.mags ?? {})
-    .some(mag => Object.hasOwn(mag, 'reloadSpeedTier') || Object.hasOwn(mag, 'tacRldOverrideMs'))), false);
-  assert.equal(attachments.ERGOS.some(ergo => Object.hasOwn(ergo, 'reloadSpeedMult')), false);
+  const magazines = Object.values(attachments.WEAPON_MAG).flatMap(weaponMag => Object.values(weaponMag.mags ?? {}));
+  assert.equal(magazines.every(mag => Object.hasOwn(mag, 'reloadSpeedTier') || Object.hasOwn(mag, 'tacRldOverrideMs')), true);
+  assert.equal(magazines.every(mag => Object.hasOwn(mag, 'tacRldOverrideMs') || Object.hasOwn(mag, 'reloadSpeedTier')), true);
+  assert.equal(magazines.some(mag => Object.hasOwn(mag, 'tacRldOverrideMs')), true);
+  assert.equal(attachments.ERGOS.find(ergo => ergo.id === 'mag_catch').reloadSpeedMult, 1.063);
+  assert.equal(magazines.every(mag => Object.hasOwn(mag, 'tacRld')), true);
+  assert.equal(Object.entries(preMigrationState.weaponErgo)
+    .filter(([, weaponErgo]) => weaponErgo)
+    .every(([weaponId]) => Object.hasOwn(attachments.WEAPON_ERGO[weaponId], 'magCatchRld')), true);
+  const pp19Bug = attachments.WEAPON_MAG.pp19.mags['20_fast'].suspectedGameBug;
+  assert.equal(pp19Bug.expectedReloadSeconds, 2.183);
+  assert.equal(pp19Bug.observedReloadSeconds, 2.467);
 });

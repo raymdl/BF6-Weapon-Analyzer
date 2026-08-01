@@ -265,6 +265,14 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
     }
   }
   for (const [magazineId, magazine] of Object.entries(magData.mags ?? {})) {
+    const hasReloadSpeedTier = Object.hasOwn(magazine, 'reloadSpeedTier');
+    const hasTacRldOverride = Object.hasOwn(magazine, 'tacRldOverrideMs');
+    if (hasReloadSpeedTier === hasTacRldOverride) {
+      fail(`${weaponId}/${magazineId}: exactly one of reloadSpeedTier or tacRldOverrideMs is required after the additive reload migration`);
+    }
+    if (!Object.hasOwn(magazine, 'tacRld')) {
+      fail(`${weaponId}/${magazineId}: legacy tacRld must remain during the additive reload migration`);
+    }
     if (Object.hasOwn(magazine, 'reloadSpeedTier')
         && (!Number.isInteger(magazine.reloadSpeedTier) || magazine.reloadSpeedTier < 0)) {
       fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer`);

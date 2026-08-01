@@ -137,6 +137,7 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
     avail: ['mag_catch', 'buffer'],
     magCatchRld: { reg: 2321, fast: 2054 },
   });
+  assert.equal(attachments.ERGOS.find(ergo => ergo.id === 'mag_catch').reloadSpeedMult, 1.063);
   assert.deepEqual(attachments.WEAPON_MAG.pp19, {
     defAds: 2,
     defSpr: 2,
@@ -145,23 +146,28 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
     mags: {
       '30_rnd': {
         name: '30 Rnd', pts: 5, mag: 30, tacRld: 2467,
-        adsTimeTierShift: 0, sprintRecoveryTierShift: -1, adsMoveSpeedTierShift: 0,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: -1, adsMoveSpeedTierShift: 0, reloadSpeedTier: 0,
       },
       '30_fast': {
         name: '30 Fast', pts: 5, mag: 30, tacRld: 2183,
-        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 0, reloadSpeedTier: 1,
       },
       '35_rnd': {
         name: '35 Rnd', pts: 15, mag: 35, tacRld: 2467,
-        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1, reloadSpeedTier: 0,
       },
       '20_fast': {
         name: '20 Fast', pts: 5, mag: 20, tacRld: 2467,
-        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: -3,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: -3, reloadSpeedTier: 0,
+        suspectedGameBug: {
+          field: 'reloadSpeedTier', expectedWhenFixed: 1, expectedReloadSeconds: 2.183,
+          observedReloadSeconds: 2.467, observedOn: '2026-07-20',
+          note: 'Named/described as a fast magazine but does not receive the 1.13 reload multiplier in game.',
+        },
       },
       '53_rnd': {
         name: '53 Rnd', pts: 45, mag: 53, tacRld: 2667,
-        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1,
+        adsTimeTierShift: 0, sprintRecoveryTierShift: 0, adsMoveSpeedTierShift: 1, tacRldOverrideMs: 2667,
       },
     },
     baseSprintRecoveryTier: 4,
@@ -207,9 +213,7 @@ test('PP-19 magazine and ergonomic values resolve to the reviewed legacy outputs
   }
   assert.equal(apply({ mag: '30_rnd', ergo: 'mag_catch' }).tacRld, 2.321);
   assert.equal(apply({ mag: '30_rnd', ergo: 'buffer' }).tacRld, 2.467);
-  // The legacy name-based branch is intentionally wrong for this one combination;
-  // the receipt preserves the true 2.321 s value for Phase 2's derived branch.
-  assert.equal(apply({ mag: '20_fast', ergo: 'mag_catch' }).tacRld, 2.054);
+  assert.equal(apply({ mag: '20_fast', ergo: 'mag_catch' }).tacRld, 2.321);
 });
 
 test('Phase 2 dual-read preserves legacy precedence and branch selection', () => {
@@ -225,18 +229,21 @@ test('Phase 2 dual-read preserves legacy precedence and branch selection', () =>
 
   assert.deepEqual(resolve('30_rnd'), {
     tacRld: 2.467,
-    branch: 'legacy',
-    reason: 'no-derived-fields',
+    branch: 'derived',
+    mode: 'normal',
+    reason: 'derived-normal',
   });
   assert.deepEqual(resolve('30_rnd', magCatch), {
     tacRld: 2.321,
-    branch: 'legacy',
-    reason: 'no-derived-fields',
+    branch: 'derived',
+    mode: 'normal',
+    reason: 'derived-normal',
   });
   assert.deepEqual(resolve('20_fast', magCatch), {
-    tacRld: 2.054,
-    branch: 'legacy',
-    reason: 'no-derived-fields',
+    tacRld: 2.321,
+    branch: 'derived',
+    mode: 'normal',
+    reason: 'derived-normal',
   });
 });
 
@@ -311,9 +318,9 @@ test('PP-19 derived fixture resolves through applyAttachments without production
   assert.equal(
     Object.values(attachments.WEAPON_MAG).some(weaponMag => Object.values(weaponMag.mags ?? {})
       .some(mag => Object.hasOwn(mag, 'reloadSpeedTier') || Object.hasOwn(mag, 'tacRldOverrideMs'))),
-    false,
+    true,
   );
-  assert.equal(attachments.ERGOS.some(ergo => Object.hasOwn(ergo, 'reloadSpeedMult')), false);
+  assert.equal(attachments.ERGOS.some(ergo => Object.hasOwn(ergo, 'reloadSpeedMult')), true);
 
   const derivedMagId = 'synthetic_20_fast';
   const syntheticMag = {
@@ -349,11 +356,11 @@ test('PP-19 derived fixture resolves through applyAttachments without production
   }, () => applyAttachments(pp19, atts));
   assert.equal(applied.tacRld, 2.321);
 
-  const productionLegacy = applyAttachments(pp19, {
+  const productionDerived = applyAttachments(pp19, {
     ...atts,
     mag: '20_fast',
   });
-  assert.equal(productionLegacy.tacRld, 2.054);
+  assert.equal(productionDerived.tacRld, 2.321);
 });
 
 test('PP-19 default audited loadout and comparison input remain serializable', () => {

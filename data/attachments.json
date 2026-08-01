@@ -740,7 +740,8 @@
     {
       "id": "mag_catch",
       "name": "Mag Catch",
-      "pts": 5
+      "pts": 5,
+      "reloadSpeedMult": 1.063
     },
     {
       "id": "match_trigger",
@@ -3629,8 +3630,8 @@
         "buffer"
       ],
       "magCatchRld": {
-        "reg": 2484,
-        "fast": 2198
+        "reg": 2337,
+        "fast": 2068
       }
     },
     "m417a2": {
@@ -3942,7 +3943,8 @@
           "tacRld": 2750,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -1
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 0
         },
         "4_fast": {
           "name": "4 Fast",
@@ -3951,7 +3953,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -1
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 1
         },
         "8_rnd": {
           "name": "8 Rnd",
@@ -3960,7 +3963,8 @@
           "tacRld": 2750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "8_fast": {
           "name": "8 Fast",
@@ -3969,7 +3973,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -3989,7 +3994,8 @@
           "tacRld": 2484,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -3998,7 +4004,8 @@
           "tacRld": 2198,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -4007,7 +4014,8 @@
           "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -4016,7 +4024,8 @@
           "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -4025,7 +4034,8 @@
           "tacRld": 2198,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "45_rnd": {
           "name": "45 Rnd",
@@ -4034,7 +4044,8 @@
           "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",
@@ -4043,7 +4054,8 @@
           "tacRld": 2198,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "50_rnd": {
           "name": "50 Rnd",
@@ -4052,7 +4064,8 @@
           "tacRld": 2484,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -4072,7 +4085,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "15_fast": {
           "name": "15 Fast",
@@ -4081,7 +4095,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -4090,7 +4105,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -4099,7 +4115,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -4108,7 +4125,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -4128,7 +4146,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -4137,7 +4156,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -4146,7 +4166,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -4155,7 +4176,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -4164,7 +4186,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -4173,7 +4196,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -4182,7 +4206,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "45_rnd": {
           "name": "45 Rnd",
@@ -4191,7 +4216,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",
@@ -4200,7 +4226,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -4220,7 +4247,8 @@
           "tacRld": 1962,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -3
+          "adsMoveSpeedTierShift": -3,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -4229,7 +4257,8 @@
           "tacRld": 2217,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -4238,7 +4267,8 @@
           "tacRld": 1962,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "35_rnd": {
           "name": "35 Rnd",
@@ -4247,7 +4277,8 @@
           "tacRld": 2217,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "35_fast": {
           "name": "35 Fast",
@@ -4256,7 +4287,8 @@
           "tacRld": 1962,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -4276,7 +4308,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -4285,7 +4318,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "35_rnd": {
           "name": "35 Rnd",
@@ -4294,7 +4328,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -4303,7 +4338,16 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": -3
+          "adsMoveSpeedTierShift": -3,
+          "reloadSpeedTier": 0,
+          "suspectedGameBug": {
+            "field": "reloadSpeedTier",
+            "expectedWhenFixed": 1,
+            "expectedReloadSeconds": 2.183,
+            "observedReloadSeconds": 2.467,
+            "observedOn": "2026-07-20",
+            "note": "Named/described as a fast magazine but does not receive the 1.13 reload multiplier in game."
+          }
         },
         "53_rnd": {
           "name": "53 Rnd",
@@ -4312,7 +4356,8 @@
           "tacRld": 2667,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "tacRldOverrideMs": 2667
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -4332,7 +4377,8 @@
           "tacRld": 2348,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -4352,7 +4398,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -4361,7 +4408,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -4370,7 +4418,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -4379,7 +4428,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -4388,7 +4438,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "45_rnd": {
           "name": "45 Rnd",
@@ -4397,7 +4448,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",
@@ -4406,7 +4458,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "50_rnd": {
           "name": "50 Rnd",
@@ -4415,7 +4468,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "60_rnd": {
           "name": "60 Rnd",
@@ -4424,7 +4478,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -4444,7 +4499,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -4453,7 +4509,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -4462,7 +4519,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_rnd": {
           "name": "45 Rnd",
@@ -4471,7 +4529,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",
@@ -4480,7 +4539,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -4500,7 +4560,8 @@
           "tacRld": 2750,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -4509,7 +4570,8 @@
           "tacRld": 2750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -4518,7 +4580,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -4527,7 +4590,8 @@
           "tacRld": 2750,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -4547,7 +4611,8 @@
           "tacRld": 2450,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -4556,7 +4621,8 @@
           "tacRld": 2168,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -4565,7 +4631,8 @@
           "tacRld": 2450,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -4574,7 +4641,8 @@
           "tacRld": 2450,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -4583,7 +4651,8 @@
           "tacRld": 2168,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "45_rnd": {
           "name": "45 Rnd",
@@ -4592,7 +4661,8 @@
           "tacRld": 2450,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",
@@ -4601,7 +4671,8 @@
           "tacRld": 2168,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -4621,7 +4692,8 @@
           "tacRld": 2876,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "45_fast": {
           "name": "45 Fast",
@@ -4630,7 +4702,8 @@
           "tacRld": 2545,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 1
+          "sprintRecoveryTierShift": 1,
+          "reloadSpeedTier": 2
         },
         "50_rnd": {
           "name": "50 Rnd",
@@ -4639,7 +4712,8 @@
           "tacRld": 2876,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "60_rnd": {
           "name": "60 Rnd",
@@ -4648,7 +4722,8 @@
           "tacRld": 3250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "60_fast": {
           "name": "60 Fast",
@@ -4657,7 +4732,8 @@
           "tacRld": 2876,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 1
+          "sprintRecoveryTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "100_rnd": {
           "name": "100 Rnd",
@@ -4666,7 +4742,8 @@
           "tacRld": 3250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 1
+          "sprintRecoveryTierShift": 1,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -4686,7 +4763,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "17_fast": {
           "name": "17 Fast",
@@ -4695,7 +4773,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "23_rnd": {
           "name": "23 Rnd",
@@ -4704,7 +4783,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "27_rnd": {
           "name": "27 Rnd",
@@ -4713,7 +4793,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -4733,7 +4814,8 @@
           "tacRld": 6500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "200_rnd": {
           "name": "200 Rnd",
@@ -4742,7 +4824,8 @@
           "tacRld": 6500,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 9,
@@ -4762,7 +4845,8 @@
           "tacRld": 2767,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -4771,7 +4855,8 @@
           "tacRld": 2449,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -4780,7 +4865,8 @@
           "tacRld": 2767,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -4789,7 +4875,8 @@
           "tacRld": 2449,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -4798,7 +4885,8 @@
           "tacRld": 2767,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -4807,7 +4895,8 @@
           "tacRld": 2767,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -4816,7 +4905,8 @@
           "tacRld": 2449,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "45_rnd": {
           "name": "45 Rnd",
@@ -4825,7 +4915,8 @@
           "tacRld": 2767,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",
@@ -4834,7 +4925,8 @@
           "tacRld": 2449,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -4851,55 +4943,61 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2854,
+          "tacRld": 3034,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "10_fast": {
           "name": "10 Fast",
           "pts": 10,
           "mag": 10,
-          "tacRld": 2526,
+          "tacRld": 2685,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "15_rnd": {
           "name": "15 Rnd",
           "pts": 20,
           "mag": 15,
-          "tacRld": 2854,
+          "tacRld": 3034,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "15_fast": {
           "name": "15 Fast",
           "pts": 25,
           "mag": 15,
-          "tacRld": 2526,
+          "tacRld": 2685,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
           "pts": 45,
           "mag": 20,
-          "tacRld": 2854,
+          "tacRld": 3034,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
           "pts": 50,
           "mag": 20,
-          "tacRld": 2526,
+          "tacRld": 2685,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -4919,7 +5017,8 @@
           "tacRld": 4534,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "tacRldOverrideMs": 4534
         },
         "100_rnd": {
           "name": "100 Rnd",
@@ -4928,7 +5027,8 @@
           "tacRld": 7350,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 2
+          "adsMoveSpeedTierShift": 2,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 9,
@@ -4948,7 +5048,8 @@
           "tacRld": 1784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -1
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 0
         },
         "4_fast": {
           "name": "4 Fast",
@@ -4957,7 +5058,8 @@
           "tacRld": 1784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -1
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 0
         },
         "6_rnd": {
           "name": "6 Rnd",
@@ -4966,7 +5068,8 @@
           "tacRld": 1784,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -4986,16 +5089,18 @@
           "tacRld": 6267,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "50_fast": {
           "name": "50 Fast",
           "pts": 10,
           "mag": 50,
-          "tacRld": 5550,
+          "tacRld": 5546,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "100_rnd": {
           "name": "100 Rnd",
@@ -5004,7 +5109,8 @@
           "tacRld": 6267,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 9,
@@ -5024,7 +5130,8 @@
           "tacRld": 6650,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "200_rnd": {
           "name": "200 Rnd",
@@ -5033,7 +5140,8 @@
           "tacRld": 6650,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 9,
@@ -5053,7 +5161,8 @@
           "tacRld": 3234,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "5_fast": {
           "name": "5 Fast",
@@ -5062,7 +5171,8 @@
           "tacRld": 2862,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "8_rnd": {
           "name": "8 Rnd",
@@ -5071,7 +5181,8 @@
           "tacRld": 3234,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -5091,25 +5202,28 @@
           "tacRld": 4250,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "75_rnd": {
           "name": "75 Rnd",
           "pts": 10,
           "mag": 75,
-          "tacRld": 7000,
+          "tacRld": 7100,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "tacRldOverrideMs": 7100
         },
         "100_rnd": {
           "name": "100 Rnd",
           "pts": 25,
           "mag": 100,
-          "tacRld": 7000,
+          "tacRld": 7100,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "tacRldOverrideMs": 7100
         }
       },
       "baseSprintRecoveryTier": 9,
@@ -5129,7 +5243,8 @@
           "tacRld": 5750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "100_rnd": {
           "name": "100 Rnd",
@@ -5138,7 +5253,8 @@
           "tacRld": 5750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 9,
@@ -5158,16 +5274,18 @@
           "tacRld": 2110,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2183,
+          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5176,7 +5294,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "25_rnd": {
           "name": "25 Rnd",
@@ -5185,7 +5304,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "25_fast": {
           "name": "25 Fast",
@@ -5194,16 +5314,18 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
           "pts": 40,
           "mag": 30,
-          "tacRld": 2500,
+          "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -5223,7 +5345,8 @@
           "tacRld": 2534,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "15_fast": {
           "name": "15 Fast",
@@ -5232,7 +5355,8 @@
           "tacRld": 2242,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -5241,7 +5365,8 @@
           "tacRld": 2534,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5250,7 +5375,8 @@
           "tacRld": 2242,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "25_rnd": {
           "name": "25 Rnd",
@@ -5259,7 +5385,8 @@
           "tacRld": 2534,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -5279,7 +5406,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -5288,7 +5416,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5297,7 +5426,8 @@
           "tacRld": 2183,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "25_rnd": {
           "name": "25 Rnd",
@@ -5306,7 +5436,8 @@
           "tacRld": 2467,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -5326,7 +5457,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5335,7 +5467,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5344,7 +5477,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5353,7 +5487,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -5362,7 +5497,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -5371,7 +5507,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -5380,7 +5517,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -5397,10 +5535,11 @@
           "name": "20 Rnd",
           "pts": 5,
           "mag": 20,
-          "tacRld": 2000,
+          "tacRld": 2200,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5409,7 +5548,8 @@
           "tacRld": 1947,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5418,7 +5558,8 @@
           "tacRld": 2200,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5427,25 +5568,28 @@
           "tacRld": 1947,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
           "pts": 15,
           "mag": 36,
-          "tacRld": 2000,
+          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
           "pts": 25,
           "mag": 40,
-          "tacRld": 2000,
+          "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -5454,7 +5598,8 @@
           "tacRld": 1947,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -5474,7 +5619,8 @@
           "tacRld": 1334,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -1
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 0
         },
         "5_fast": {
           "name": "5 Fast",
@@ -5483,7 +5629,8 @@
           "tacRld": 1334,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -1
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 0
         },
         "6_rnd": {
           "name": "6 Rnd",
@@ -5492,7 +5639,8 @@
           "tacRld": 1334,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -1
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 0
         },
         "7_rnd": {
           "name": "7 Rnd",
@@ -5501,7 +5649,8 @@
           "tacRld": 1334,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -5521,16 +5670,18 @@
           "tacRld": 2334,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "10_fast": {
           "name": "10 Fast",
           "pts": 10,
           "mag": 10,
-          "tacRld": 2006,
+          "tacRld": 2065,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "15_rnd": {
           "name": "15 Rnd",
@@ -5539,16 +5690,18 @@
           "tacRld": 2334,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "15_fast": {
           "name": "15 Fast",
           "pts": 35,
           "mag": 15,
-          "tacRld": 2006,
+          "tacRld": 2065,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -5557,16 +5710,18 @@
           "tacRld": 2334,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
           "pts": 60,
           "mag": 20,
-          "tacRld": 2006,
+          "tacRld": 2065,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -5586,7 +5741,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5595,7 +5751,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5604,7 +5761,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5613,7 +5771,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -5622,7 +5781,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -5631,7 +5791,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -5640,7 +5801,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -5660,7 +5822,8 @@
           "tacRld": 3350,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "10_rnd": {
           "name": "10 Rnd",
@@ -5669,7 +5832,8 @@
           "tacRld": 3350,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -5689,7 +5853,8 @@
           "tacRld": 2227,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5698,7 +5863,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5707,7 +5873,8 @@
           "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -5716,7 +5883,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -5736,7 +5904,8 @@
           "tacRld": 1933,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5745,7 +5914,8 @@
           "tacRld": 2184,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5754,7 +5924,8 @@
           "tacRld": 1933,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -5763,7 +5934,8 @@
           "tacRld": 2184,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 3,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -5783,7 +5955,8 @@
           "tacRld": 2567,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5792,7 +5965,8 @@
           "tacRld": 2272,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -5801,7 +5975,8 @@
           "tacRld": 2567,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -5810,7 +5985,8 @@
           "tacRld": 2567,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -5830,7 +6006,8 @@
           "tacRld": 2800,
           "adsTimeTierShift": -2,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5839,7 +6016,8 @@
           "tacRld": 2478,
           "adsTimeTierShift": -2,
           "adsMoveSpeedTierShift": -2,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -5848,7 +6026,8 @@
           "tacRld": 2800,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -5857,7 +6036,8 @@
           "tacRld": 2800,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -5866,7 +6046,8 @@
           "tacRld": 2478,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "60_rnd": {
           "name": "60 Rnd",
@@ -5875,7 +6056,8 @@
           "tacRld": 2800,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "75_rnd": {
           "name": "75 Rnd",
@@ -5884,7 +6066,8 @@
           "tacRld": 2800,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -5904,7 +6087,8 @@
           "tacRld": 2600,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "15_fast": {
           "name": "15 Fast",
@@ -5913,7 +6097,8 @@
           "tacRld": 2301,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -5922,7 +6107,8 @@
           "tacRld": 2600,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "25_rnd": {
           "name": "25 Rnd",
@@ -5931,7 +6117,8 @@
           "tacRld": 2600,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -5951,7 +6138,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5960,7 +6148,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5969,7 +6158,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -5978,7 +6168,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -5987,7 +6178,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -5996,7 +6188,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -6005,7 +6198,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -6025,7 +6219,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -6034,7 +6229,8 @@
           "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6043,7 +6239,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "41_rnd": {
           "name": "41 Rnd",
@@ -6052,7 +6249,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -6072,7 +6270,8 @@
           "tacRld": 2650,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "60_rnd": {
           "name": "60 Rnd",
@@ -6081,7 +6280,8 @@
           "tacRld": 2650,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -6101,7 +6301,8 @@
           "tacRld": 2250,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -6110,7 +6311,8 @@
           "tacRld": 1991,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6119,7 +6321,8 @@
           "tacRld": 2250,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -6128,7 +6331,8 @@
           "tacRld": 1991,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6137,7 +6341,8 @@
           "tacRld": 2250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -6146,7 +6351,8 @@
           "tacRld": 2250,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -6155,7 +6361,8 @@
           "tacRld": 1991,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 5,
@@ -6172,10 +6379,11 @@
           "name": "10 Rnd",
           "pts": 5,
           "mag": 10,
-          "tacRld": 2334,
+          "tacRld": 2984,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -6195,7 +6403,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "10_rnd": {
           "name": "10 Rnd",
@@ -6204,7 +6413,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "10_fast": {
           "name": "10 Fast",
@@ -6213,7 +6423,8 @@
           "tacRld": 2212,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6222,7 +6433,8 @@
           "tacRld": 2500,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -6242,7 +6454,8 @@
           "tacRld": 2967,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "10_fast": {
           "name": "10 Fast",
@@ -6251,7 +6464,8 @@
           "tacRld": 2626,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 8,
@@ -6271,7 +6485,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "25_fast": {
           "name": "25 Fast",
@@ -6280,7 +6495,8 @@
           "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": -2,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6289,7 +6505,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -6298,7 +6515,8 @@
           "tacRld": 2227,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6307,7 +6525,8 @@
           "tacRld": 2517,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -6327,7 +6546,8 @@
           "tacRld": 3000,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -6347,7 +6567,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -6356,7 +6577,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6365,7 +6587,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -6374,7 +6597,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6383,7 +6607,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -6392,7 +6617,8 @@
           "tacRld": 2384,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -6401,7 +6627,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "45_fast": {
           "name": "45 Fast",
@@ -6410,7 +6637,8 @@
           "tacRld": 2110,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -6430,7 +6658,8 @@
           "tacRld": 2124,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -3
+          "adsMoveSpeedTierShift": -3,
+          "reloadSpeedTier": 1
         },
         "15_rnd": {
           "name": "15 Rnd",
@@ -6439,7 +6668,8 @@
           "tacRld": 2124,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6448,7 +6678,8 @@
           "tacRld": 2400,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
@@ -6457,7 +6688,8 @@
           "tacRld": 2124,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "25_rnd": {
           "name": "25 Rnd",
@@ -6466,7 +6698,8 @@
           "tacRld": 2400,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "25_fast": {
           "name": "25 Fast",
@@ -6475,7 +6708,8 @@
           "tacRld": 2124,
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6484,7 +6718,8 @@
           "tacRld": 2400,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -6504,7 +6739,8 @@
           "tacRld": 2154,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6513,7 +6749,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6522,7 +6759,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -6531,7 +6769,8 @@
           "tacRld": 2154,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6540,7 +6779,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -6549,7 +6789,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
@@ -6558,7 +6799,8 @@
           "tacRld": 2154,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -6578,16 +6820,18 @@
           "tacRld": 2200,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "20_fast": {
           "name": "20 Fast",
           "pts": 5,
           "mag": 20,
-          "tacRld": 1950,
+          "tacRld": 1947,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6596,16 +6840,18 @@
           "tacRld": 2200,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
           "pts": 10,
           "mag": 30,
-          "tacRld": 1950,
+          "tacRld": 1947,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6614,7 +6860,8 @@
           "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -6623,16 +6870,18 @@
           "tacRld": 2200,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "40_fast": {
           "name": "40 Fast",
           "pts": 30,
           "mag": 40,
-          "tacRld": 1950,
+          "tacRld": 1947,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -6652,7 +6901,8 @@
           "tacRld": 2784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "30_fast": {
           "name": "30 Fast",
@@ -6661,7 +6911,8 @@
           "tacRld": 2464,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6670,7 +6921,8 @@
           "tacRld": 2784,
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": -2
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
         },
         "45_rnd": {
           "name": "45 Rnd",
@@ -6679,7 +6931,8 @@
           "tacRld": 2784,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",
@@ -6688,7 +6941,8 @@
           "tacRld": 2464,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 1
         },
         "50_rnd": {
           "name": "50 Rnd",
@@ -6697,7 +6951,8 @@
           "tacRld": 2784,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "60_rnd": {
           "name": "60 Rnd",
@@ -6706,16 +6961,18 @@
           "tacRld": 2784,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "95_rnd": {
           "name": "95 Rnd",
           "pts": 25,
           "mag": 95,
-          "tacRld": 2909,
+          "tacRld": 2950,
           "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "tacRldOverrideMs": 2950
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -6735,7 +6992,8 @@
           "tacRld": 2750,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "7_rnd": {
           "name": "7 Rnd",
@@ -6744,7 +7002,8 @@
           "tacRld": 2750,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0
+          "sprintRecoveryTierShift": 0,
+          "reloadSpeedTier": 0
         },
         "7_fast": {
           "name": "7 Fast",
@@ -6753,7 +7012,8 @@
           "tacRld": 2434,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 1
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -6773,7 +7033,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934
+          "tacRld": 1934,
+          "reloadSpeedTier": 0
         },
         "21_rnd": {
           "name": "21 Rnd",
@@ -6782,7 +7043,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934
+          "tacRld": 1934,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -6802,7 +7064,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2017
+          "tacRld": 2017,
+          "reloadSpeedTier": 0
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6811,7 +7074,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2017
+          "tacRld": 2017,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 3,
@@ -6831,7 +7095,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1867
+          "tacRld": 1867,
+          "reloadSpeedTier": 0
         },
         "11_rnd": {
           "name": "11 Rnd",
@@ -6840,7 +7105,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1867
+          "tacRld": 1867,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -6860,7 +7126,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 3400
+          "tacRld": 3400,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 7,
@@ -6880,7 +7147,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934
+          "tacRld": 1934,
+          "reloadSpeedTier": 0
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6889,7 +7157,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934
+          "tacRld": 1934,
+          "reloadSpeedTier": 0
         },
         "22_rnd": {
           "name": "22 Rnd",
@@ -6898,7 +7167,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 1934
+          "tacRld": 1934,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 4,
@@ -6918,7 +7188,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 3067
+          "tacRld": 3067,
+          "reloadSpeedTier": 0
         },
         "8_fast": {
           "name": "8 Fast",
@@ -6927,7 +7198,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2741
+          "tacRld": 2714,
+          "reloadSpeedTier": 1
         }
       },
       "baseSprintRecoveryTier": 6,
@@ -6947,7 +7219,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2134
+          "tacRld": 2134,
+          "reloadSpeedTier": 0
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6956,7 +7229,8 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
-          "tacRld": 2134
+          "tacRld": 2134,
+          "reloadSpeedTier": 0
         }
       },
       "baseSprintRecoveryTier": 5,

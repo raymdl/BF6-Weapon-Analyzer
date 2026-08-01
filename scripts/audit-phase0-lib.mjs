@@ -102,9 +102,34 @@ export function loadReloadExceptionRegister(root = DEFAULT_ROOT) {
   return { register, animationOverrides, screenshotExceptions };
 }
 
-const DEFAULT_RELOAD_REGISTERS = loadReloadExceptionRegister(DEFAULT_ROOT);
-export const RELOAD_ANIMATION_OVERRIDES = DEFAULT_RELOAD_REGISTERS.animationOverrides;
-export const RELOAD_SCREENSHOT_EXCEPTIONS = DEFAULT_RELOAD_REGISTERS.screenshotExceptions;
+let defaultReloadRegisters;
+const defaultAnimationOverrides = new Map();
+const defaultScreenshotExceptions = new Map();
+
+function ensureDefaultReloadRegisters() {
+  if (!defaultReloadRegisters) {
+    defaultReloadRegisters = loadReloadExceptionRegister(DEFAULT_ROOT);
+    for (const [key, value] of defaultReloadRegisters.animationOverrides) defaultAnimationOverrides.set(key, value);
+    for (const [key, value] of defaultReloadRegisters.screenshotExceptions) defaultScreenshotExceptions.set(key, value);
+  }
+  return defaultReloadRegisters;
+}
+
+function lazyMap(map) {
+  return new Proxy(map, {
+    get(target, property) {
+      ensureDefaultReloadRegisters();
+      const value = Reflect.get(target, property, target);
+      return typeof value === 'function' ? value.bind(target) : value;
+    },
+  });
+}
+
+// These retain the historical exported names while deferring register parsing
+// until a consumer actually reads a default map. Validator callers can then
+// catch malformed-register errors from their explicit load call.
+export const RELOAD_ANIMATION_OVERRIDES = lazyMap(defaultAnimationOverrides);
+export const RELOAD_SCREENSHOT_EXCEPTIONS = lazyMap(defaultScreenshotExceptions);
 
 function sourceMatch(value) {
   const normalized = String(value ?? '').replace(/\\/g, '/');

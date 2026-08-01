@@ -231,8 +231,8 @@ test('preserves the separate M60 and M240L alternate-magazine timing contract', 
   assert.equal(attachments.WEAPON_MAG.m60.mags['50_rnd'].tacRld, 4534);
   assert.equal(attachments.WEAPON_MAG.m60.mags['100_rnd'].tacRld, 7350);
   assert.equal(attachments.WEAPON_MAG.m240l.mags['50_rnd'].tacRld, 4250);
-  assert.equal(attachments.WEAPON_MAG.m240l.mags['75_rnd'].tacRld, 7000);
-  assert.equal(attachments.WEAPON_MAG.m240l.mags['100_rnd'].tacRld, 7000);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['75_rnd'].tacRld, 7100);
+  assert.equal(attachments.WEAPON_MAG.m240l.mags['100_rnd'].tacRld, 7100);
 });
 
 test('reconciles every EA velocity and recoil-variation line to pinned Sym values', needsPinnedInputs, () => {
