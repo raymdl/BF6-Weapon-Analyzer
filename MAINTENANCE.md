@@ -33,6 +33,34 @@ archives of previous versions of the site — never edit them during normal main
 
 ---
 
+### Screenshot override ledger
+
+Screenshot corrections in `outputs/attachment-audit/manual-review-overrides.json` are keyed on
+`sourcePath`, which must equal the record's `source.currentPath`. Any screenshot renumbering pass
+must re-key the ledger at the same time; otherwise corrections silently become orphaned and will
+not apply on re-import. After renumbering, assert that every ledger path exists and that no path
+is duplicated before rebuilding derived artifacts.
+
+### Ammo stat rules
+
+`headshotMultiplier`, `collateralMultiplier` and `opponentHealthRegenDelaySeconds` follow from the
+weapon class and the equipped ammunition, so they are checkable without re-reading screenshots:
+
+```
+python scripts/validate-ammo-stat-rules.py
+```
+
+This must report zero violations. Run it after any transcription batch — it caught 283 bad values
+on 2026-08-01. The rules, and the per-weapon exceptions that matter more than the rules, are in
+section 21 of `BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md`. A new violation is usually a bad
+transcription, but confirm the weapon against its screenshot before mass-correcting: on the first
+run, 213 of 494 violations were the rules being incomplete rather than the data being wrong.
+
+Two known traps live in that section. The GRT-CPS and VSSM do not default to Standard ammo, so
+their non-ammo captures show a different row. The EF88 and BROD 3 headshot values intentionally
+disagree with their screenshots because EA has confirmed those stat screens are bugged — do not
+"correct" them back to the captured value.
+
 ## Patch Update Workflow
 
 ```mermaid

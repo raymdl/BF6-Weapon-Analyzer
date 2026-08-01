@@ -796,7 +796,10 @@ Takes about six seconds for all 3,177 canonical records. Options: `--json PATH`,
 
 - **Overview** sheet first: an attachment-option matrix. Rows are type / field / option value;
   columns are weapons grouped by class. Each available cell is an internal `HYPERLINK` to that
-  weapon's row; unavailable options show a muted em dash. Attachment types appear in the order
+  weapon's row, and its display text is that weapon's **attachment cost** for the option (`?`
+  when the cost is missing or non-numeric) — reading across a row makes an odd cost stand out,
+  which is how the sniper-only grip variants were caught. Unavailable options show a muted em
+  dash. Attachment types appear in the order
   `Muzzle`, `Barrel`, `Light`, `Laser`, `Laser/Light`, `Grip/Laser/Light`, `Grip`, `Magazine`,
   `Ammo`, `Ergonomics` — the three accessory types stay adjacent so the shared-selector weapons
   read against the separate-selector ones. For `Barrel` and `Ammo` the option key is the
@@ -820,7 +823,9 @@ Takes about six seconds for all 3,177 canonical records. Options: `--json PATH`,
   Because rows follow type order rather than capture order, the numeric prefix in
   `Current Screenshot Filename` is no longer monotonic down the sheet — that prefix still records
   capture order and remains the authority for it.
-- **Source Index** and **Read Me** as the final two sheets.
+- **Source Index** and **Read Me** as the final two sheets. In Source Index the
+  **Current Screenshot Path** cell shows the filename and hyperlinks to the capture on disk, so a
+  row can be checked against its screenshot without leaving the workbook.
 
 **Attachment-type tints.** Column A uses one hue family per attachment type on both the Overview
 and the weapon sheets, all at the same lightness so no block dominates. This is what makes the
@@ -1228,6 +1233,134 @@ reason runbook step 10 reconciles paths first.
 
 ---
 
+### 18.9 2026-08-01 — magazine costs and ledger path reconciliation
+
+**Magazine cost corrections: 17 records.** Tier 1 applied 11 base-31 price-ladder corrections
+without re-reading screenshots: each value contradicted its own weapon's internal ordering.
+B36A4, M16A4 and SOR-556 MK2 `20Rnd Magazine` changed **50 -> 5**; M433 `20Rnd Magazine`
+**10 -> 5**, `30Rnd Magazine` **20 -> 5**, `36Rnd Magazine` **0 -> 15**, and `40Rnd Fast Mag`
+**10 -> 30**; M16A4, SOR-556 MK2 and VCR-2 `20Rnd Fast Mag` changed **15 -> 5**; and KORD
+6P67 `40Rnd Magazine` changed **5 -> 25**.
+
+The reusable stock-31 ladder is: for every stock-31 weapon across Assault Rifle, Carbine, SMG
+and LMG, Standard `20/30 Rnd = 5`, `36 = 15`, `40 = 25`, `45 = 35`, `50 = 45`, `60 = 55`;
+Fast Mag `20 = 5`, `30 = 10`, `40 = 30`, `45 = 40`.
+
+Tier 2 re-read nine candidates from the original screenshots after cross-weapon comparison
+flagging. Six were corrected: EF88 `42Rnd Magazine` **5 -> 25**, LMR27 `15Rnd Fast Mag`
+**5 -> 25**, TR7 `20Rnd Magazine` **15 -> 5**, M277 `30Rnd Magazine` **20 -> 40**, GRT-CPS
+`30Rnd Magazine` **5 -> 40**, and PP-19 `30Rnd Fast Mag` **5 -> 10**. Three were confirmed
+unchanged: M417 A2 `25Rnd Magazine` **15**, M121 A2 `50Rnd Belt Pouch` **10**, and M240L
+`100Rnd Belt Box` **25**.
+
+**Tile-selection gate.** In the magazine grid, the EQUIPPED tile has a white border and green
+checkmark and is usually the first tile. The VIEWED tile, which the panel title describes and
+whose cost belongs in the record, has the lighter highlight box and no checkmark. Match the
+title to the tile by both capacity and variant word: `RND` and `FAST` are separate tiles at
+different prices. Two initial misreads demonstrate the gate: EF88 `42Rnd Magazine` was first
+read from the adjacent `36 RND` tile instead of `42 RND`; M121 A2 `50Rnd Belt Pouch` was first
+read from the equipped `50 RND` tile instead of the viewed `50 FAST` tile. The latter also
+contradicted the panel description, "50 round belt pouch with faster reloads".
+
+`source.rawFullScreenOcr` is not admissible cost evidence. It is garbled; TR7 `20Rnd Magazine`
+contains `ø25` in that field while the screenshot cost is **5**. Costs must be read from the
+image grid.
+
+**Ledger path reconciliation.** The canonical-order renumbering left **1,765 of 2,982** override
+entries keyed to screenshot filenames that no longer exist, so their corrections could never
+apply on re-import. Two rounds re-keyed **1,479** of them in place to the matched record's
+`source.currentPath`, leaving **286 outstanding**.
+
+Round 1 resolved 1,094 entries on `(weaponName, attachmentType, attachmentName)`. Round 2
+resolved a further 385 on the **prefix-stripped screenshot filename**, which survives the
+renumbering intact: the entries round 1 deferred as `ambiguous-no-record` mostly have null or
+pre-normalization metadata, not unidentifiable captures. The two keys were checked against each
+other on the 1,188 orphans where both resolve uniquely and agree on 1,187; the exception is EF88
+`Light`/`None`, where the capture was reclassified `Light` -> `Laser` so the filename word itself
+changed and only the metadata key is correct. Prefer the metadata key, and treat the filename key
+as the fallback it is.
+
+**Re-keying a dead entry makes its updates live again, so round 2 re-keyed only entries whose
+updates already equal the record.** That gate matters: 13 otherwise-eligible orphans were left
+dead because they would have regressed the record — an OCR-garbage `attachmentName`
+(`TUNGSTENGORe-vov.-4` over `Tungsten Core`), magazine sizes larger than the magazine (48 on a
+20-round), a stuck `mobility` of 50 repeated across unrelated weapons, and a cross-type reload
+time. All were superseded by the 2026-07-28 corpus-wide repairs in section 18.4. A revived stale
+override is worse than a dead one.
+
+The 286 still outstanding, itemised in
+`outputs/attachment-audit/ledger-path-drift-20260801-round2.json`, all need a judgment call
+rather than a key repair: 190 resolve onto a record that already has a live entry and whose values
+they merely restate, so they carry no information; 58 resolve onto an occupied record but disagree
+with it, needing per-field adjudication — the 12 SL9 `Laser/Light` entries are the hard case, where
+the live entry is right on `spotOnFire2dM` (150) but appears wrong on `collateralMultiplier` (0);
+13 are the superseded set above; 11 are KORD 6P67 captures from before its separate `Light` and
+`Laser` selectors were consolidated into one `Laser/Light` selector, whose `updates.attachmentType`
+would regress that consolidation; and 14 are `_duplicate-2` M1014 remnants whose captures no longer
+exist at all. Do not merge or heuristically resolve these without screenshot evidence.
+
+The idempotent passes are `outputs/attachment-audit/apply-20260801-magazine-cost-corrections.mjs`,
+`outputs/attachment-audit/apply-20260801-tier2-magazine-costs.mjs`, and
+`outputs/attachment-audit/apply-20260801-ledger-path-reconciliation.mjs`, followed by
+`outputs/attachment-audit/apply-20260801-ledger-path-reconciliation-round2.mjs`. Evidence artifacts
+are `outputs/attachment-audit/tier2-20260801-magazine-cost-validation.json`,
+`outputs/attachment-audit/ledger-path-drift-20260801.json` and
+`outputs/attachment-audit/ledger-path-drift-20260801-round2.json`. Host-side finalization regenerated
+the workbook at **62 weapons / 65 sheets / 3,177 records**, with all 17 corrected magazine costs
+visible in Overview.
+
+### 18.10 2026-08-01 — by-class ammo stat rules and 283 corrections
+
+Three stats are set by weapon class and equipped ammunition rather than by the attachment being
+inspected, so they are checkable corpus-wide without re-reading screenshots. Encoding them caught
+283 bad values. The rules and their exceptions are in section 21; the gate is
+`scripts/validate-ammo-stat-rules.py`, which must report zero violations.
+
+The raw check produced 494 violations, of which **213 were the rules being wrong, not the data** —
+every one traced to a per-weapon exception now encoded in section 21. Do not mass-correct against
+a class rule before confirming the deviating weapons individually; the false-positive rate here
+was 43%.
+
+The 283 real corrections, by signature:
+
+- **EF88 and BROD 3 headshot — 123 records.** Both stat screens understate the multiplier; EA has
+  acknowledged this and confirmed the in-game value is the class value. **These records
+  deliberately disagree with their screenshots**, the only place in the corpus where that is true.
+  Do not "fix" them back to the captured value.
+- **`collateralMultiplier` of 0 — 92 records** on L85A3, VSSM and SL9. Zero is never valid.
+  Screenshots confirmed L85A3 0.75, SL9 0.57, VSSM 1.00.
+- **Regen delay bleed — 28 records.** Frangible rows had lost their 9s while adjacent captures had
+  wrongly inherited them, and the same for Flechette's 7s on shotguns. One M433 record read 10,
+  which is not a legal value.
+- **Values reading exactly `1` — 25 records.** Synthetic Tip headshot and SMG/Sidearm Tungsten Core
+  collateral, both the arrow-glyph misparse of section 18.4.
+- **13 records the user confirmed in game**, having no automatic signature.
+
+Two SVK-8.6 ammo costs were corrected in the same pass: `Match Grade` 20 -> **10** and
+`Hollow Point` 15 -> **20**. A follow-up run added VSSM `Tungsten Match` collateral 0 -> **1.00**
+once ammo keying moved from subtype to attachment name (section 21.5), bringing the pass to 284.
+
+Applied by `outputs/attachment-audit/apply-20260801-ammo-stat-rule-corrections.mjs`, mirrored into
+the override ledger, which grew 2,982 -> 3,041 entries with no duplicate paths.
+
+**Evidence-block paths.** Evidence records the screenshot behind a correction, under either a
+`source` or a `sourcePath` key depending on which pass wrote it. Anything walking these must check
+both. The renumbering left 744 of them naming files that no longer exist — the same drift as the
+ledger keys, one layer down, and inert because nothing matches on them. 231 that resolved to
+exactly one record were re-pointed by
+`outputs/attachment-audit/apply-20260801-evidence-path-reconciliation.mjs`. **513 remain dead on
+purpose**: 2 are ambiguous and 511 name captures that are genuinely gone — raw
+`Battlefield 6 Screenshot ...` originals and removed `_duplicate-2` files. A path to a capture that
+no longer exists is history, not drift, and rewriting it would fabricate provenance.
+
+**Untranscribed captures on disk.** 33 PNGs under `Weapon Attachments/` are referenced by no
+record: 3 in an `M433/Examples/` folder, 1 oddly-named L110 grip capture, and 29 M1014
+`_duplicate-2` files. The M1014 set is **not** a transcription gap — it is a second capture of
+attachments already covered, matching M1014's existing 15 Grip / 7 Laser / 4 Ammo / 3 Magazine
+records exactly. Left in place; do not transcribe them as new records.
+
+---
+
 ## 19. Stop conditions
 
 Stop and report rather than guessing if:
@@ -1273,3 +1406,112 @@ Update `BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md` after each batch — Task 4.6 we
 inventoried/reviewed, 4.7 barrel/ammunition velocity coverage, 4.8 fields reviewed and promoted,
 4.9 coverage-matrix status, 4.10 modifier-to-absolute-value fixtures. Do not mark a task complete
 because screenshots exist; distinguish captured, transcribed, reviewed, promoted and tested.
+
+---
+
+## 21. Ammo stat rules by weapon class
+
+`headshotMultiplier`, `collateralMultiplier` and `opponentHealthRegenDelaySeconds` are determined
+by weapon class and the ammunition in the ammo slot. They do not vary by the attachment being
+inspected, so any record disagreeing with its class rule is transcribed wrong — subject to the
+exceptions below, which are real and numerous.
+
+**Non-ammo records carry the default-ammo values.** The stat panel shows the loadout as configured
+while that attachment was captured, and the ammo slot sits at its default. Only the ammo slot
+drives regen delay, so **every non-ammo record must read 5s**.
+
+### 21.1 Headshot multiplier
+
+| Class | Ammo | Value |
+|---|---|---|
+| Sniper Rifle | all | 1.75 |
+| DMR — GRT-CPS, LMR27 | Standard, Penetration, Lightweight, Frangible, Long-Range | 1.34 |
+| DMR — GRT-CPS, LMR27 | Hollow Point | 1.50 |
+| DMR — GRT-CPS, LMR27 | Synthetic | 1.75 |
+| DMR — M39 EMR, SVDM, SVK-8.6 | Standard, Penetration, Lightweight, Frangible, Long-Range | 1.50 |
+| DMR — M39 EMR, SVDM, SVK-8.6 | Hollow Point | 1.75 |
+| DMR — VSSM | all | 1.80 |
+| Shotgun | #01 Buckshot, #00 Buckshot, Flechette | 1.00 |
+| Shotgun | Slugs | 1.34 |
+| Full auto / burst, incl. VZ. 61 | Standard, Penetration, Lightweight, Frangible | 1.40 |
+| Full auto / burst, incl. VZ. 61 | Hollow Point, Subsonic HP | 1.57 |
+| Full auto / burst, incl. VZ. 61 | Synthetic | 1.80 |
+
+Semi-automatic sidearms other than the VZ. 61 have no stated rule and are not checked.
+
+### 21.2 Collateral multiplier
+
+| Class | Ammo | Value |
+|---|---|---|
+| AR, Carbine, LMG, DMR, Sniper | Hollow Point, Frangible, Synthetic | 0.67 |
+| AR, Carbine, LMG, DMR, Sniper | Standard, Lightweight | 0.75 |
+| AR, Carbine, LMG, DMR, Sniper | Penetration | 1.00 |
+| SMG, Sidearm | Frangible, Hollow Point, Subsonic, Subsonic HP | 0.50 |
+| SMG, Sidearm | Standard | 0.57 |
+| SMG, Sidearm | Penetration | 0.75 |
+| Shotgun | #01 Buckshot, #00 Buckshot, Slugs | 0.33 |
+| Shotgun | Flechette | 0.57 |
+
+### 21.3 Opponent health regen delay
+
+Flechette **7s**, Frangible **9s**, everything else — including every non-ammo record — **5s**.
+
+### 21.4 Per-weapon exceptions
+
+These are confirmed, not suspected. They accounted for 213 of the 494 raw violations on the first
+pass, so treat the class tables as a first approximation and this list as authoritative.
+
+**Weapons that do not default to Standard ammo.** Their non-ammo captures show a different row:
+
+| Weapon | Default ammo | Consequence |
+|---|---|---|
+| GRT-CPS | Hollow Point | non-ammo records read 1.50 headshot / 0.67 collateral |
+| VSSM | Penetration | non-ammo records read 1.00 collateral; it has no Standard ammo at all, its set being Tungsten Match, Tungsten Core, Match Grade and Frangible |
+
+**Raised collateral scale.** The PW7A2, USG-90 and ES 5.7 sit one tier above the SMG/Sidearm
+table: **0.67** where the class says 0.57, **0.83** where it says 0.75, **0.57** where it says
+0.50. Confirmed for the PW7A2 and USG-90 on every row; the ES 5.7 is confirmed on Standard only.
+
+**Weapons holding their Standard value on the frangible / hollow-point rows**, rather than
+dropping a tier: M45A1 at **0.57** and M121 A2 at **0.75**. Their classmates do drop — P18, M44
+and VZ. 61 are 0.50 on both rows.
+
+**EF88 and BROD 3 headshot.** The stat screen is bugged and understates it; the in-game value is
+the class value. Their records intentionally diverge from their captures. See section 18.10.
+
+### 21.5 Ammo naming — key on the name, not the subtype
+
+`attachmentSubtype` does not partition the ammunition cleanly, so keying rules on it produces
+wrong answers. `Match Grade` files under **both** `Long-range` and `Range Pen`, and `Range Pen`
+also holds `Tungsten Match`, which is a penetration round. Reading `Range Pen` as a penetration
+subtype therefore prices five Match Grade records at 1.00 when they are 0.75.
+
+Worse, `Range Pen` was not always a real category. On the L115, M2010 ESR and SV-98 the Match
+Grade round had been transcribed from the adjacent **PENETRATION** tile rather than the viewed
+**LONG-RANGE** one, taking that tile's subtype *and* its cost of 5. All three screenshots show
+`LONG-RANGE` at 10, and the panel description — "Long-range, standard-penetration ammunition" — is
+almost certainly what pulled the transcription toward the penetration slot. Corrected on
+2026-08-01 to `Long-range` at cost 10, which matches the five Match Grade records that were
+already right, and the captures were renamed from `_Ammo_Range_Pen.png` to `_Ammo_Long-range.png`
+with the ledger re-keyed in the same operation by
+`outputs/attachment-audit/apply-20260801-match-grade-subtype-rename.mjs`.
+
+Only the VSSM's `Tungsten Match` is a genuine `Range Pen` round.
+
+The attachment **name** does partition cleanly, so it takes precedence wherever it is one of:
+
+| Attachment name | Rule category |
+|---|---|
+| Tungsten Core | Penetration |
+| Tungsten Match | Penetration |
+| Match Grade | Long-Range |
+| Subsonic Tungsten | Subsonic Tungsten — its own row, see below |
+
+`Long-Range` sits with Standard and Lightweight at **0.75** collateral for the heavy classes,
+confirmed across all eight Match Grade records.
+
+`Subsonic Tungsten` is a penetration round by name but does **not** take the penetration value:
+on the PW7A2 it reads 0.67, the same as that weapon's Standard row, not its 0.83 penetration row.
+It appears once in the corpus, so it is carried as its own category rather than generalised.
+
+Shotgun shells file every round under the `Standard` subtype, so they key on attachment name too.

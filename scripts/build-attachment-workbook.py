@@ -16,10 +16,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
 from pathlib import Path
+from urllib.parse import quote
 
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
@@ -270,6 +272,24 @@ def read_existing_option_order(path):
         return {}
 
 
+def _link_label(cost):
+    """HYPERLINK friendly-name argument for an overview cell: the attachment cost.
+
+    A whole-number cost goes in bare so the cell reads as a number; anything else (a missing
+    cost, or a non-numeric capture) falls back to a quoted string so the formula still parses.
+    """
+    if isinstance(cost, bool) or cost is None:
+        return '"?"'
+    if isinstance(cost, int):
+        return str(cost)
+    if isinstance(cost, float) and cost.is_integer():
+        return str(int(cost))
+    text = str(cost).strip()
+    if not text:
+        return '"?"'
+    return '"' + text.replace('"', '""') + '"'
+
+
 def write_overview(workbook, weapons, classes, order, row_lookup, established_order):
     sheet = workbook.create_sheet("Overview", 0)
     sheet.sheet_view.showGridLines = False
@@ -308,7 +328,11 @@ def write_overview(workbook, weapons, classes, order, row_lookup, established_or
                 continue
             value = (record.get("attachmentSubtype") if attachment_type in SUBTYPE_KEYED_TYPES
                      else record.get("attachmentName"))
-            target.setdefault((weapon, attachment_type, value), row_lookup[weapon][id(record)])
+            # the display text is the attachment cost, not "Link": an inconsistent cost between
+            # weapons on the same row is then visible at a glance, which is how the sniper grip
+            # variants were caught. The hyperlink target is unchanged.
+            target.setdefault((weapon, attachment_type, value),
+                              (row_lookup[weapon][id(record)], record.get("attachmentCost")))
 
     # Row 1 labels are centred with Center Across Selection rather than merged cells: the label
     # spans its group visually while every cell stays individually selectable, so whole columns
@@ -377,7 +401,8 @@ def write_overview(workbook, weapons, classes, order, row_lookup, established_or
             cell = sheet.cell(row, column)
             hit = target.get((weapon, attachment_type, value))
             if hit:
-                cell.value = f"=HYPERLINK(\"#'{weapon}'!B{hit}\",\"Link\")"
+                hit_row, cost = hit
+                cell.value = f"=HYPERLINK(\"#'{weapon}'!B{hit_row}\",{_link_label(cost)})"
                 cell.font = Font(sz=10, color=LINK, underline="single")
             else:
                 cell.value = "—"
@@ -427,6 +452,16 @@ def write_source_index(workbook, records):
         for index, value in enumerate(values, start=1):
             cell = sheet.cell(row, index, value)
             cell.font = Font(sz=10)
+        # Column 9 opens the capture itself: the filename reads better than the absolute path,
+        # and the path is still there as the link target.
+        current = source.get("currentPath")
+        if current:
+            cell = sheet.cell(row, 9, os.path.basename(current))
+            # Leave the drive colon and separators literal; Excel wants file:///C:/... with only
+            # spaces and other unsafe characters percent-encoded.
+            cell.hyperlink = f"file:///{quote(current.replace(chr(92), '/'), safe='/:')}"
+            cell.font = Font(sz=10, color=LINK, underline="single")
+    sheet.column_dimensions["I"].width = 46
     return len(ordered)
 
 
