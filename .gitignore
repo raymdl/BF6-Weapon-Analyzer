@@ -118,3 +118,6 @@ tmp/
 
 # Excel lock files left behind while a workbook is open.
 ~$*.xlsx
+
+# Scratch area for files kept around after a one-off review pass.
+local archive/
