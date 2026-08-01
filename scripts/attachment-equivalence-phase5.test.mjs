@@ -2,7 +2,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
-import { buildPhase5Fixture } from './attachment-equivalence-phase5.mjs';
+import {
+  assertPhase5Separability,
+  buildPhase5Fixture,
+} from './attachment-equivalence-phase5.mjs';
 
 const root = join(import.meta.dirname, '..');
 const fixture = JSON.parse(readFileSync(join(root, 'scripts/attachment-equivalence-phase5.json'), 'utf8'));
@@ -33,6 +36,15 @@ test('Phase 6 complete attachment equivalence matches the tracked post-cutover w
   ]);
   assert.equal(result.differenceClassification.manifestComposedLoadoutKey, 'pp19/53_rnd/mag_catch');
   assert.ok(result.differenceClassification.expectedObservedDifferenceKeys.includes('pp19/53_rnd/mag_catch'));
+});
+
+test('Phase 4 executes the Phase 5 reload and barrel velocity separability premise', () => {
+  const result = assertPhase5Separability();
+  const expectedCases = generated().counts.reducedComparisonCaseCount;
+  assert.equal(result.reloadMismatchCases, 0);
+  assert.equal(result.barrelVelocityMismatchCases, 0);
+  assert.equal(result.reloadComparedCases, expectedCases);
+  assert.equal(result.barrelVelocityComparedCases, expectedCases);
 });
 
 test('Phase 6 named loadouts pin the migration edge cases', () => {

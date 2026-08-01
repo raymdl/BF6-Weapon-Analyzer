@@ -346,7 +346,10 @@ function caseFromSelection(weapon, selection) {
   };
 }
 
+let cachedEnumeration = null;
+
 export function buildEquivalenceEnumeration() {
+  if (cachedEnumeration) return cachedEnumeration;
   const weaponEntries = [];
   const perWeapon = {};
   let rawSelectableCaseCount = 0;
@@ -372,7 +375,7 @@ export function buildEquivalenceEnumeration() {
       console.log(`Phase 5 enumeration: ${index + 1}/${sortedWeapons.length} weapons; ${reducedComparisonCaseCount} reduced cases built`);
     }
   }
-  return {
+  cachedEnumeration = {
     weaponEntries,
     counts: {
       weapons: weapons.length,
@@ -384,11 +387,55 @@ export function buildEquivalenceEnumeration() {
     pointDistribution,
     perWeapon,
   };
+  return cachedEnumeration;
 }
 
 function applyWith(modelContext, model, weapon, atts) {
   setAttachmentContext({ ERGOS: model.ERGOS, WEAPON_MAG: model.WEAPON_MAG, WEAPON_ERGO: model.WEAPON_ERGO });
   return applyAttachments(weapon, atts);
+}
+
+export function assertPhase5Separability(enumeration = buildEquivalenceEnumeration()) {
+  const reloadValues = new Map();
+  const velocityValues = new Map();
+  const reloadMismatches = [];
+  const velocityMismatches = [];
+  let reloadComparedCases = 0;
+  let velocityComparedCases = 0;
+
+  setAttachmentContext(currentContext);
+  for (const { weapon, suites } of enumeration.weaponEntries) {
+    for (const suite of suites) cartesianDimensions(suite.dimensions, selection => {
+      const row = caseFromSelection(weapon, selection);
+      const output = applyWith(currentContext, currentModel, weapon, row.atts);
+      const reloadKey = `${row.weaponId}/${row.atts.mag}/${row.atts.ergo}`;
+      const previousReload = reloadValues.get(reloadKey);
+      if (previousReload === undefined) reloadValues.set(reloadKey, output.tacRld);
+      else if (!Object.is(previousReload, output.tacRld) && reloadMismatches.length < 25) {
+        reloadMismatches.push({ caseKey: row.caseKey, reloadKey, expected: previousReload, actual: output.tacRld });
+      }
+      reloadComparedCases += 1;
+
+      const velocityKey = `${row.weaponId}/${row.atts.barrel}`;
+      const previousVelocity = velocityValues.get(velocityKey);
+      if (previousVelocity === undefined) velocityValues.set(velocityKey, output.bulletVel);
+      else if (!Object.is(previousVelocity, output.bulletVel) && velocityMismatches.length < 25) {
+        velocityMismatches.push({ caseKey: row.caseKey, velocityKey, expected: previousVelocity, actual: output.bulletVel });
+      }
+      velocityComparedCases += 1;
+    });
+  }
+
+  assert.equal(reloadMismatches.length, 0, `Phase 4 reload separability failed: ${JSON.stringify(reloadMismatches)}`);
+  assert.equal(velocityMismatches.length, 0, `Phase 4 barrel velocity separability failed: ${JSON.stringify(velocityMismatches)}`);
+  return {
+    reloadComparedCases,
+    reloadComparedKeys: reloadValues.size,
+    barrelVelocityComparedCases: velocityComparedCases,
+    barrelVelocityComparedKeys: velocityValues.size,
+    reloadMismatchCases: reloadMismatches.length,
+    barrelVelocityMismatchCases: velocityMismatches.length,
+  };
 }
 
 /**
@@ -723,8 +770,8 @@ export function buildPhase5Fixture() {
       rawSelectableDimensions: 'weapon × sight × muzzle × selectable barrel × selectable grip × selectable laser/light choice(s) × available ammo × magazine × available ergonomic',
       excludedSlots: [],
       pointBudget: { displayedLimit: 100, enforcedBySite: false },
-      reduction: 'The full Cartesian product is retained as a raw selectable count and point distribution, but is too large for a standing resolver test. The comparison is a separability witness suite: a baseline crosses every magazine and ergonomic choice, then one suite at a time crosses every choice in each other slot while holding the other non-reload slots at representatives. Thus every slot choice, every combined-slot role, every ammo choice, every magazine, and every ergonomic choice is run through the complete resolver output. The excluded combinations are only cross-products of two or more non-reload slots.',
-      reductionProof: 'The current-versus-preserved-pre-cutover audit is restricted to reloadSpeedTier, tacRldOverrideMs, suspectedGameBug, and reloadSpeedMult. The preserved comparison projection is reconstructed from the Phase 4 migration manifest and pre-migration fixture; it is never used by production resolution. applyAttachments consumes the derived deltas only in resolveReloadTiming, which depends on weapon, magazine, and ergonomic selection and not on sight, muzzle, barrel, grip, laser, light, or ammo. Complete output objects are nevertheless compared for every witness representative.',
+      reduction: 'The full Cartesian product is retained as a raw selectable count and point distribution, but is too large for a standing resolver test. The comparison is a separability witness suite: a baseline crosses every magazine and ergonomic choice, then one suite at a time crosses every choice in each other slot while holding the other non-reload slots at representatives. Thus every slot choice, every combined-slot role, every ammo choice, every magazine, and every ergonomic choice is run through the complete resolver output. The excluded combinations are only cross-products of two or more non-reload slots. The executable Phase 4 separability gate independently varies each non-reload slot and checks reload timing invariance with weapon, magazine, and ergonomic held fixed, plus barrel velocity invariance with weapon and barrel held fixed.',
+      reductionProof: 'The current-versus-preserved-pre-cutover audit is restricted to reloadSpeedTier, tacRldOverrideMs, suspectedGameBug, and reloadSpeedMult. The preserved comparison projection is reconstructed from the Phase 4 migration manifest and pre-migration fixture; it is never used by production resolution. applyAttachments consumes the derived deltas only in resolveReloadTiming, which depends on weapon, magazine, and ergonomic selection and not on sight, muzzle, barrel, grip, laser, light, or ammo. Complete output objects are nevertheless compared for every witness representative, and the executable Phase 4 separability gate directly enforces the stated reload and barrel-velocity independence premise.',
       comparisonSuites: 'baseline plus all-sight, all-muzzle, all-barrel, all-grip, all-laser, all-light, and all-ammo suites when those dimensions have choices; magazine and ergonomic dimensions remain full in every suite.',
       coverageClasses: {
         reloadSensitive: 'For each weapon, every magazine × ergonomic combination is present in the baseline suite and remains full in every witness suite. These are the only selections that can change the current-versus-legacy reload branch.',
@@ -735,7 +782,7 @@ export function buildPhase5Fixture() {
         laser: 'Every selectable laser or combined laser/grip/light choice is present in all-laser, with combined role resolution preserved.',
         light: 'Every selectable light is present in all-light; laserLightCombined weapons correctly keep light fixed to none because those choices live in laser.',
         ammo: 'Every available ammo ID is present in all-ammo.',
-        omittedProducts: 'Only products that vary two or more non-reload slots simultaneously are omitted. They cannot introduce a new difference because the model-delta audit proves every changed field is consumed exclusively by resolveReloadTiming, independently of those slots.',
+        omittedProducts: 'Only products that vary two or more non-reload slots simultaneously are omitted. The executable Phase 4 separability gate checks their independence one slot at a time, while the model-delta audit proves every changed field is consumed exclusively by resolveReloadTiming, independently of those slots.',
       },
       comparison: 'Every witness representative is run through applyAttachments with the post-cutover derived projection and compared recursively, field by field, against the preserved Phase 4 legacy projection. The three tube-fed shotguns are explicitly normalized to the post-cutover scalar-null contract; their historical aggregate values remain in the pre-cutover transition digest. The six Phase 5 intentional key differences and the PP-19 composed override-stack key are required.',
     },

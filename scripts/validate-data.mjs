@@ -33,6 +33,7 @@ const SUPPORTED_CLASSES = new Set([
 ]);
 const INTENTIONALLY_UNSUPPORTED_CLASSES = new Set();
 const DAMAGE_POINT_SOURCES = new Set(['EA', 'Sym', 'in-game']);
+const MAX_RELOAD_SPEED_TIER = 2;
 
 const errors = [];
 const fail = message => errors.push(message);
@@ -294,8 +295,10 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
       fail(`${weaponId}/${magazineId}: legacy tacRld must be absent after the reload cutover`);
     }
     if (Object.hasOwn(magazine, 'reloadSpeedTier')
-        && (!Number.isInteger(magazine.reloadSpeedTier) || magazine.reloadSpeedTier < 0)) {
-      fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer`);
+        && (!Number.isInteger(magazine.reloadSpeedTier)
+          || magazine.reloadSpeedTier < 0
+          || magazine.reloadSpeedTier > MAX_RELOAD_SPEED_TIER)) {
+      fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
     }
     if (Object.hasOwn(magazine, 'tacRldOverrideMs')
         && (!Number.isInteger(magazine.tacRldOverrideMs) || magazine.tacRldOverrideMs <= 0)) {
@@ -307,8 +310,10 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
         fail(`${weaponId}/${magazineId}: suspectedGameBug must be an object`);
       } else {
         if (bug.field !== 'reloadSpeedTier') fail(`${weaponId}/${magazineId}: suspectedGameBug.field must be reloadSpeedTier`);
-        if (!Number.isInteger(bug.expectedWhenFixed) || bug.expectedWhenFixed < 0) {
-          fail(`${weaponId}/${magazineId}: suspectedGameBug.expectedWhenFixed must be a non-negative integer`);
+        if (!Number.isInteger(bug.expectedWhenFixed)
+            || bug.expectedWhenFixed < 0
+            || bug.expectedWhenFixed > MAX_RELOAD_SPEED_TIER) {
+          fail(`${weaponId}/${magazineId}: suspectedGameBug.expectedWhenFixed must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
         }
         for (const field of ['expectedReloadSeconds', 'observedReloadSeconds']) {
           if (!Number.isFinite(bug[field]) || bug[field] <= 0) {
@@ -326,15 +331,40 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
           : Number.isFinite(weapon?.tacRld)
             ? weapon.tacRld / (balance.RELOAD_SPEED_LADDER ** magazine.reloadSpeedTier)
             : null;
+        if (reloadExceptions) {
+          const registeredObservation = reloadExceptions.register.screenshotExceptions?.[weaponId]?.[magazineId];
+          if (!registeredObservation) {
+            fail(`${weaponId}/${magazineId}: suspectedGameBug observedReloadSeconds is not in the screenshot exception register`);
+          } else if (Math.abs(bug.observedReloadSeconds - (registeredObservation.observedReloadMs / 1000)) > 0.005) {
+            fail(`${weaponId}/${magazineId}: suspectedGameBug observedReloadSeconds mismatch: data/attachments.json=${bug.observedReloadSeconds}s, data/reload-exceptions.json=${registeredObservation.observedReloadMs}ms`);
+          }
+        }
         if (Number.isFinite(derivedSeconds) && Number.isFinite(bug.expectedReloadSeconds)
             && Math.abs(derivedSeconds - bug.expectedReloadSeconds) <= 0.005) {
           fail(`${weaponId}/${magazineId}: suspectedGameBug is stale; current reload matches expectedReloadSeconds`);
+        } else if (Number.isFinite(derivedSeconds) && Number.isFinite(bug.observedReloadSeconds)
+            && Math.abs(derivedSeconds - bug.observedReloadSeconds) > 0.005) {
+          fail(`${weaponId}/${magazineId}: suspectedGameBug reload drift is unexplained; derived reload ${derivedSeconds.toFixed(3)}s does not match observedReloadSeconds ${bug.observedReloadSeconds.toFixed(3)}s`);
         }
       }
     }
     if (Object.hasOwn(magazine, 'tacRldOverrideMs') && reloadExceptions) {
       const registered = reloadExceptions.register.animationOverrides?.[weaponId]?.[magazineId];
       if (!registered) fail(`${weaponId}/${magazineId}: tacRldOverrideMs is not in the animation exception register`);
+      else if (registered.tacRldOverrideMs !== magazine.tacRldOverrideMs) {
+        fail(`${weaponId}/${magazineId}: tacRldOverrideMs mismatch: data/attachments.json=${magazine.tacRldOverrideMs}, data/reload-exceptions.json=${registered.tacRldOverrideMs}`);
+      }
+    }
+  }
+}
+
+if (reloadExceptions) {
+  for (const [weaponId, magazines] of Object.entries(reloadExceptions.register.animationOverrides ?? {})) {
+    for (const magazineId of Object.keys(magazines)) {
+      const magazine = attachments.WEAPON_MAG?.[weaponId]?.mags?.[magazineId];
+      if (!magazine || !Object.hasOwn(magazine, 'tacRldOverrideMs')) {
+        fail(`${weaponId}/${magazineId}: dangling tacRldOverrideMs in data/reload-exceptions.json; no matching override exists in data/attachments.json`);
+      }
     }
   }
 }
