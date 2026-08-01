@@ -110,8 +110,8 @@ function indexRecord(rawIndex, table) {
   };
 }
 
-function selectableGripIds(weaponId) {
-  const weaponAtts = attachments.WEAPON_ATTS[weaponId] ?? {};
+function selectableGripIds(weaponId, modelAttachments = attachments) {
+  const weaponAtts = modelAttachments.WEAPON_ATTS[weaponId] ?? {};
   const ids = weaponAtts.laserGripLightCombined
     ? (weaponAtts.laser ?? []).filter(id => gripById.has(id))
     : (weaponAtts.grip ?? []);
@@ -213,7 +213,7 @@ function buildEnumeration({
     assert.ok(barrel, `${weapon.id} has unknown default barrel ${barrelId}`);
 
     const magazineIds = Object.keys(weaponMag.mags ?? {}).sort();
-    const gripIds = selectableGripIds(weapon.id);
+    const gripIds = selectableGripIds(weapon.id, modelAttachments);
     const ergoIds = selectableErgoIds(weapon.id);
     const ammoIds = selectableAmmoIds(weapon.id);
     assert.ok(magazineIds.length, `${weapon.id} has no selectable magazines`);
@@ -501,6 +501,38 @@ function preMigrationAttachments() {
   return model;
 }
 
+function historicalPreMigrationAttachments() {
+  const model = preMigrationAttachments();
+  for (const gripId of ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby']) {
+    delete model.GRIPS.find(grip => grip.id === gripId).adsMoveSpeedTierShift;
+  }
+  const variantBases = {
+    svk86: {
+      '6h64_vert_svk86': '6h64_vert',
+      'classic_vert_svk86': 'classic_vert',
+      'stipp_stubby_svk86': 'stipp_stubby',
+      'lp_stubby_svk86': 'lp_stubby',
+    },
+    ks18k: {
+      '6h64_vert_ks18k': '6h64_vert',
+      'classic_vert_ks18k': 'classic_vert',
+      'stipp_stubby_ks18k': 'stipp_stubby',
+      'lp_stubby_ks18k': 'lp_stubby',
+    },
+    db12: {
+      '6h64_vert_db12': '6h64_vert',
+      'classic_vert_db12': 'classic_vert',
+      'stipp_stubby_db12': 'stipp_stubby',
+      'lp_stubby_db12': 'lp_stubby',
+    },
+  };
+  for (const [weaponId, mappings] of Object.entries(variantBases)) {
+    model.WEAPON_ATTS[weaponId].grip = model.WEAPON_ATTS[weaponId].grip
+      .map(gripId => mappings[gripId] ?? gripId);
+  }
+  return model;
+}
+
 function preMigrationBalance() {
   return {
     ...balance,
@@ -637,21 +669,30 @@ function phantomOccupancyFor(cases) {
 function buildFixture() {
   const actual = buildEnumeration();
   const previous = buildEnumeration({
-    modelAttachments: preMigrationAttachments(),
+    modelAttachments: historicalPreMigrationAttachments(),
     modelBalance: preMigrationBalance(),
     verifyResolver: false,
     kind: 'sprint-recovery-phase2b-ii-pre-migration',
   });
+  const transitionPrevious = buildEnumeration({
+    modelAttachments: preMigrationAttachments(),
+    modelBalance: preMigrationBalance(),
+    verifyResolver: false,
+    kind: 'sprint-recovery-phase2b-ii-pre-migration-with-phase2b-iii',
+  });
   const cases = sortedCases(actual.cases);
   const previousCases = sortedCases(previous.cases);
-  const diffs = migrationDiffs(previousCases, cases);
+  const transitionPreviousCases = sortedCases(transitionPrevious.cases);
+  const diffs = migrationDiffs(transitionPreviousCases, cases);
   const source = sourceFidelity();
   const sourceDerivations = sourceDerivationEvidence();
   const phantom = phantomOccupancyFor(previousCases);
-  const preClampKeys = clampCaseKeysFor(previousCases);
+  const preClampKeys = clampCaseKeysFor(transitionPreviousCases);
+  const historicalPreClampKeys = clampCaseKeysFor(previousCases);
   const postClampKeys = clampCaseKeysFor(cases);
   const detailKeys = new Set([
     ...detailCases(previousCases).map(row => row.caseKey),
+    ...detailCases(transitionPreviousCases).map(row => row.caseKey),
     ...detailCases(cases).map(row => row.caseKey),
     ...diffs.map(diff => diff.caseKey),
   ]);
@@ -685,7 +726,7 @@ function buildFixture() {
         composedCaseDiffCount: diffs.length,
         sprintRecoveryValueDiffCount: sprintDiffs.length,
         deployValueDiffCount: deployDiffs.length,
-        deployClampCountBefore: previous.clampCounts.deploy,
+        deployClampCountBefore: transitionPrevious.clampCounts.deploy,
         deployClampCountAfter: actual.clampCounts.deploy,
         deployClampCaseKeysAdded: postClampKeys.deploy.filter(key => !preClampKeys.deploy.includes(key)),
         deployClampCaseKeysRemoved: preClampKeys.deploy.filter(key => !postClampKeys.deploy.includes(key)),
@@ -703,7 +744,7 @@ function buildFixture() {
       perWeaponDigest: perWeaponDigests(previousCases),
       rawIndexHistograms: rawIndexHistograms(previousCases),
       phantomOccupancy: phantom,
-      clampCaseKeys: preClampKeys,
+      clampCaseKeys: historicalPreClampKeys,
     },
     detailSelection: {
       primaryRawIndexAtLeast: 7,
@@ -731,12 +772,23 @@ function current() {
 let preMigrationEnumeration;
 function preMigration() {
   preMigrationEnumeration ??= buildEnumeration({
-    modelAttachments: preMigrationAttachments(),
+    modelAttachments: historicalPreMigrationAttachments(),
     modelBalance: preMigrationBalance(),
     verifyResolver: false,
     kind: 'sprint-recovery-phase2b-ii-pre-migration',
   });
   return preMigrationEnumeration;
+}
+
+let phase2BeforeEnumeration;
+function phase2Before() {
+  phase2BeforeEnumeration ??= buildEnumeration({
+    modelAttachments: preMigrationAttachments(),
+    modelBalance: preMigrationBalance(),
+    verifyResolver: false,
+    kind: 'sprint-recovery-phase2b-ii-pre-migration-with-phase2b-iii',
+  });
+  return phase2BeforeEnumeration;
 }
 
 test('Phase 2b-ii reconstructs the complete post-migration enumeration', () => {
@@ -796,7 +848,7 @@ test('Phase 2b-ii enforces source fidelity and the derived shift register', () =
 });
 
 test('Phase 2b-ii proves the enumerated transition and phantom disposition', () => {
-  const before = preMigration();
+  const before = phase2Before();
   const after = current();
   const diffs = migrationDiffs(before.cases, after.cases);
   assert.deepEqual(diffs, baseline.migration.migrationDiffs);
@@ -819,7 +871,7 @@ test('Phase 2b-ii proves the enumerated transition and phantom disposition', () 
 
 test('Phase 2b-ii preserves sprint clamp identity and does not grow deploy clamps', () => {
   const actual = current();
-  const before = preMigration();
+  const before = phase2Before();
   assert.deepEqual(actual.clampCounts, {
     sprintRecovery: 40,
     adsMove: 0,

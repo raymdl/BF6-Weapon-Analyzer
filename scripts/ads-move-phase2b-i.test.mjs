@@ -165,7 +165,7 @@ test('Phase 2b-i retains source-backed 1.0 evidence and removes only resolved ex
   assert.equal(attachments.WEAPON_MAG.cz3a1.mags['20_fast'].adsMoveSpeedTierShift, -3);
   assert.equal(attachments.WEAPON_MAG.pp19.mags['20_fast'].adsMoveSpeedTierShift, -3);
   for (const gripId of ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby']) {
-    assert.equal(Object.hasOwn(attachments.GRIPS.find(grip => grip.id === gripId), 'adsMoveSpeedTierShift'), false, gripId);
+    assert.equal(Object.hasOwn(attachments.GRIPS.find(grip => grip.id === gripId), 'adsMoveSpeedTierShift'), true, gripId);
   }
 
   for (const source of baseline.sourceBackedOnePointZero) {

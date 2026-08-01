@@ -11,7 +11,7 @@ Two models, one argument:
   move speed appear to be integer steps on shared ladders. Absolute assignments and unresolved
   fields stay explicit rather than being forced into this model ([§1.2](#12-tier-ladders)).
 
-Status: **Phase 0, Phase 1, Phase 1b, Phase 2, Phase 2b-i, and Phase 2b-ii complete; Phase 2b-iii and later unstarted.** The audit tooling is portable and
+Status: **Phase 0, Phase 1, Phase 1b, Phase 2, Phase 2b-i, Phase 2b-ii, and Phase 2b-iii complete; Phase 2b-iv and later unstarted.** The audit tooling is portable and
 fixture-gated, the Sym importer carries `ReloadSpeed` with `18.5KS-K` reclassified as scalar, and
 the runtime now dual-reads explicitly supplied derived reload fields without promoting them into
 production data. Written against `codex/update-1.3.3.0` at
@@ -264,7 +264,7 @@ are decisive.
 | Sym column | Our table | Result |
 |---|---|---|
 | ADS Speeds | `ADS_SPD_TIERS` | **exact match**, 8/8 |
-| ADS Strafe Speeds | `ADS_MOVE_TIERS` | ours matches Sym's `1.0` top rung; Sym adds `0.37` / `0.325` below our floor |
+| ADS Strafe Speeds | `ADS_MOVE_TIERS` | ours matches Sym's `1.0` top rung and now includes first-party `0.37`; `0.325` remains unsourced and out |
 | Sprint to Fire Delays | `PRIMARY_` / `SIDEARM_SPRINT_REC_TIERS` | clean windows onto Sym's ladder **once two phantom values are removed** |
 | Deploy Speeds | `DEPLOY_TIME_TIERS` | ours is a **merged primary+sidearm ladder**; Sym's column is primaries only |
 | Undeploy Speeds | — | not modelled; no consumer |
@@ -744,7 +744,7 @@ The backfill does not add `adsMoveSpeedTierShift` to any shared grip entry. PP-1
 SMG IDs `6h64_vert`, `classic_vert`, `stipp_stubby`, and `lp_stubby`; its current resolver therefore
 leaves those four grip readings at `0.75` until the separate ADS-move/`ADS_MOVE_TIERS` migration.
 Four weapons — `SVK-8.6`, `VSSM`, `18.5KS-K`, and `DB-12` — also use the standard IDs but show no
-shift and remain unexplained by the existing `_sr` variants; they are input to that separate item.
+shift; their source-backed suffixed variants are resolved in [Phase 2b-iii](#2b-iii--grip-ads-move-shift).
 The eight weapons without ergonomics catalogs are explicit coverage exemptions, and Ammo remains
 out of scope.
 
@@ -795,15 +795,18 @@ not yet first-party.
    behavior changed.
 5. Delete the two ADS-move entries from `sweep-reviewed-exceptions-20260731.json`; the sweep falls
    from 30 to 28 informational rows.
-6. Sym also lists `0.37` and `0.325` below our floor. No weapon in the audit reads below `0.42`, so
-   add them only with a first-party source, and never to satisfy a single reading.
+6. Sym also lists `0.37` and `0.325` below our floor. An operator in-game capture dated
+   2026-07-31 now provides first-party evidence for `0.37`: L110 + 200-round belt box + 6H64
+   Vertical reads `X0.37`. It is appended to `ADS_MOVE_TIERS`; `0.325` remains unsourced and
+   out. The `0.37` entry is therefore source-backed, not added merely to satisfy a composed case.
 
 **Completed 2026-07-31.** `ADS_MOVE_TIERS` now begins with `1.0`; all 59 populated `defAms`
 values were incremented exactly once. The reindex-only context was output-identical across all 265
 current magazine entries, including the 260 pre-PP-19 entries. The final live-data diff contains
 only CZ3A1/`20_fast` and PP-19/`20_fast`, each changing only `_adsMoveSpeedMult` from `0.75` to
 `1.0`. The two source-backed exception rows were removed, leaving 28 informational sweep findings;
-no `0.37`/`0.325` tier or global grip shift was added.
+no global grip shift was added. The later Step A append of `0.37` is separately source-backed by
+the operator's 2026-07-31 in-game L110 composed capture; `0.325` remains out.
 
 #### 2b-ii — sprint-recovery phantom entries
 
@@ -827,6 +830,7 @@ The revised gates pass:
   0 warnings, 0 errors. The 151 phantom occupants are explicitly source-disposed: 135 primary
   cases become 300 (the 350 belt-box / 233 negative-grip evidence) and 16 sidearm cases become
   100 (the 133 large-magazine / 67 Speed Holster evidence).
+- The 12 `l110/200_rnd/{full_angled,slim_angled,slim_handstop}/rail_cover/{frangible,hollow_pt,penetration,standard}` cases move from 300 to 267 as the source-correct re-derivation crosses the deleted 333 rung.
 - **No new clamps:** the 40 pre-existing sprint clamp case keys are identical before and after.
   Deploy clamps decrease from 522 to 435, with no new deploy-clamp keys; 87 former deploy clamp
   keys leave the upper bound.
@@ -842,7 +846,8 @@ later hardening work rather than distorting the source-correct sprint shifts.
 #### 2b-iii — grip ADS-move shift
 
 `6h64_vert`, `classic_vert`, `stipp_stubby` and `lp_stubby` shift ADS move by `+1` on 45 of 49
-weapons, but no `GRIPS` entry defines `adsMoveSpeedTierShift`, so the resolver's
+source-complete standard-grip weapons, with VZ. 61 providing an additional composite-grip source
+reading, but no `GRIPS` entry defines `adsMoveSpeedTierShift`, so the resolver's
 `grp.adsMoveSpeedTierShift ?? 0` currently returns 0 for all of them. Every one of those 45 weapons
 is wrong against its panel today.
 
@@ -854,11 +859,28 @@ uses a suffixed variant ID — `lp_stubby_sr` (referenced by exactly `m2010esr`,
 
 Four weapons — `SVK-8.6`, `VSSM`, `18.5KS-K`, `DB-12` — use the standard grip IDs yet show no
 ADS-move shift, and are not explained by an existing variant. Two are shotguns and one is a
-no-Sym-data weapon; resolve them with new suffixed variants before this lands, and do not
-generalise from them.
+source-only weapon; resolve them with new suffixed variants before this lands, and do not
+generalise from them. VSSM is source-covered but remains outside the 59-weapon runtime catalog.
 
-Because this changes resolved output for 45 weapons it must not ride along in
+Because this changes resolved output for 44 live weapons (45 source-complete standard-grip weapons,
+with EF88 and BROD 3 source-only, plus the separately source-backed VZ. 61 composite grip), it must not ride along in
 [Phase 1b](#phase-1b--pp-19-attachment-backfill), whose whole value is being purely additive.
+
+**Completed 2026-07-31.** Step B added `adsMoveSpeedTierShift: 1` to the four shared grip entries.
+The source-backed exceptions use suffixed clones without the shift: `*_svk86` referenced by
+`svk86`, `*_ks18k` referenced by `ks18k`, and `*_db12` referenced by `db12`; the corresponding
+`*_vssm` definitions are retained for source-only VSSM, which has no `WEAPON_ATTS` entry.
+The full 70,634-case transition changes 15,680 composed cases across 44 live weapons; SVK-8.6,
+18.5KS-K, DB-12, and source-only VSSM are excluded. VZ. 61 is included because its composite
+`Stippled Stubby` panel reads `0.67` versus `0.75` for None.
+
+The tracked ADS-move fixture anchors the pre-Phase-3 digest at
+`c5a6c3d2c021a44dd04fd3e5bed4366a40674aca1c6e15e6578620be7049b5fe` and pins the post-transition
+full digest and changed-case digest. The mirror-versus-resolver check passes for every case.
+ADS-move clamps are zero; the 40 sprint clamp keys remain identical by identity, and deploy
+clamps remain 435 with no new keys. The first-party L110 composed panel reproduces ADS move
+`0.37`, sprint recovery `350 ms`, ADS time `500 ms`, and tactical reload `6.500 s`. The source
+gates remain 59/59 validation, 28 info / 0 warn / 0 err audit sweep, and unresolved 0.
 
 #### 2b-iv — index-base hardening
 

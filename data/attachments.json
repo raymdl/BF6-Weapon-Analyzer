@@ -299,6 +299,7 @@
       "adsRecoilTierMod": 4,
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
+      "adsMoveSpeedTierShift": 1,
       "pts": 25
     },
     {
@@ -307,6 +308,7 @@
       "adsRecoilTierMod": 5,
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
+      "adsMoveSpeedTierShift": 1,
       "pts": 35
     },
     {
@@ -339,6 +341,7 @@
       "adsRecoilTierMod": 4,
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
+      "adsMoveSpeedTierShift": 1,
       "pts": 35
     },
     {
@@ -347,6 +350,7 @@
       "adsRecoilTierMod": 5,
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
+      "adsMoveSpeedTierShift": 1,
       "pts": 45
     },
     {
@@ -384,6 +388,134 @@
       "adsTimeTierMod": 1,
       "sprintRecoveryTierShift": -1,
       "pts": 25
+    },
+    {
+      "id": "6h64_vert_svk86",
+      "name": "6H64 Vertical",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 25
+    },
+    {
+      "id": "classic_vert_svk86",
+      "name": "Classic Vertical",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 35
+    },
+    {
+      "id": "stipp_stubby_svk86",
+      "name": "Stippled Stubby",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 35
+    },
+    {
+      "id": "lp_stubby_svk86",
+      "name": "Low-Profile Stubby",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 45
+    },
+    {
+      "id": "6h64_vert_vssm",
+      "name": "6H64 Vertical",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 25
+    },
+    {
+      "id": "classic_vert_vssm",
+      "name": "Classic Vertical",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 35
+    },
+    {
+      "id": "stipp_stubby_vssm",
+      "name": "Stippled Stubby",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 35
+    },
+    {
+      "id": "lp_stubby_vssm",
+      "name": "Low-Profile Stubby",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 45
+    },
+    {
+      "id": "6h64_vert_ks18k",
+      "name": "6H64 Vertical",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 25
+    },
+    {
+      "id": "classic_vert_ks18k",
+      "name": "Classic Vertical",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 35
+    },
+    {
+      "id": "stipp_stubby_ks18k",
+      "name": "Stippled Stubby",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 35
+    },
+    {
+      "id": "lp_stubby_ks18k",
+      "name": "Low-Profile Stubby",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 45
+    },
+    {
+      "id": "6h64_vert_db12",
+      "name": "6H64 Vertical",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 25
+    },
+    {
+      "id": "classic_vert_db12",
+      "name": "Classic Vertical",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 0,
+      "pts": 35
+    },
+    {
+      "id": "stipp_stubby_db12",
+      "name": "Stippled Stubby",
+      "adsRecoilTierMod": 4,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 35
+    },
+    {
+      "id": "lp_stubby_db12",
+      "name": "Low-Profile Stubby",
+      "adsRecoilTierMod": 5,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 45
     },
     {
       "id": "lp_stubby_sr",
@@ -2727,14 +2859,14 @@
         "fold_vert",
         "alloy_vert",
         "ribbed_vert",
-        "6h64_vert",
-        "classic_vert",
+        "6h64_vert_svk86",
+        "classic_vert_svk86",
         "fold_stubby",
         "ribbed_stubby",
         "adj_angled",
         "canted_stubby",
-        "stipp_stubby",
-        "lp_stubby",
+        "stipp_stubby_svk86",
+        "lp_stubby_svk86",
         "slim_angled",
         "full_angled",
         "slim_handstop",
@@ -3152,15 +3284,15 @@
       "grip": [
         "alloy_vert",
         "ribbed_stubby",
-        "stipp_stubby",
+        "stipp_stubby_ks18k",
         "slim_angled",
         "fold_vert",
         "fold_stubby",
-        "6h64_vert",
+        "6h64_vert_ks18k",
         "canted_stubby",
         "ribbed_vert",
-        "classic_vert",
-        "lp_stubby",
+        "classic_vert_ks18k",
+        "lp_stubby_ks18k",
         "full_angled"
       ],
       "laser": [
@@ -3193,13 +3325,13 @@
         "alloy_vert",
         "fold_stubby",
         "ribbed_vert",
-        "6h64_vert",
+        "6h64_vert_db12",
         "slim_angled",
         "ribbed_stubby",
         "canted_stubby",
-        "classic_vert",
-        "stipp_stubby",
-        "lp_stubby"
+        "classic_vert_db12",
+        "stipp_stubby_db12",
+        "lp_stubby_db12"
       ],
       "laser": [
         "50mw_violet",
