@@ -284,16 +284,17 @@ That contract was derived from a single knife-edge recoil case at one decimal. I
 different stat at two decimals across eleven values, so it is the project-wide panel-rounding rule,
 not a shotgun-recoil special case.
 
-**Two phantom tier values.** `PRIMARY_SPRINT_REC_TIERS` contains `333` and
-`SIDEARM_SPRINT_REC_TIERS` contains `117`. Neither is in Sym's Sprint-to-Fire ladder, and neither
-is observed in any of the 3,115 audit records — all ten observed values are in Sym's list. Both
-*do* appear in Sym's Undeploy column, which suggests they were cross-contaminated from the wrong
-ladder. Removing them makes both tables exact contiguous slices:
+**Two phantom tier values — removed in [2b-ii](#2b-ii--sprint-recovery-phantom-entries).**
+`PRIMARY_SPRINT_REC_TIERS` contained `333` and `SIDEARM_SPRINT_REC_TIERS` contained `117`. Neither
+is in Sym's Sprint-to-Fire ladder, and neither is observed in any of the 3,115 audit records — all
+ten observed values are in Sym's list. Both *do* appear in Sym's Undeploy column, which suggests
+they were cross-contaminated from the wrong ladder. Removing them made both tables exact contiguous
+slices, which is their shipped shape today:
 
 ```
 Sym:      50, 67, 83, 100, 133, 167, 200, 233, 267, 300, 350, 400
-PRIMARY:          83, 100, 133, 167, 200, 233, 267, 300, ---, 350   <- drop 333
-SIDEARM:      67, 83, 100, ---, 133, 167, 200, 233                  <- drop 117
+PRIMARY:          83, 100, 133, 167, 200, 233, 267, 300, ---, 350   <- 333 dropped
+SIDEARM:      67, 83, 100, ---, 133, 167, 200, 233                  <- 117 dropped
 ```
 
 #### Draw time is one stat behind two columns
@@ -335,14 +336,17 @@ rather than assumed to be a fixed offset. See [§11](#11-open-questions).
 | Location | Content | Count |
 |---|---|---|
 | `data/weapons.json` | `tacRld`, `emptyRld` scalars | 55 / 53 of 59 weapons |
-| `data/attachments.json` → `WEAPON_MAG[*].mags[*].tacRld` | per-magazine absolute ms | 260 magazines |
-| `data/attachments.json` → `WEAPON_ERGO[*].magCatchRld` | `{reg, fast}` ms pair | 17 weapons |
+| `data/attachments.json` → `WEAPON_MAG[*].mags[*].tacRld` | per-magazine absolute ms | 265 magazines across 59 weapons |
+| `data/attachments.json` → `WEAPON_ERGO[*].magCatchRld` | `{reg, fast}` ms pair | 18 weapons |
 | `data/attachments.json` → `BARRELS[*].velMult` | per-barrel absolute velocity multiplier | — |
 | `data/attachments.json` → `MUZZLES[*].adsRecoilTierMod` | already a tier shift — the pattern to extend | — |
 | `data/attachments.json` → `BARRELS[*].adsTimeTierMod` | already a tier shift | — |
 | `data/attachments.json` → `WEAPON_MAG[*].mags[*].*TierShift` | tier shifts, but restated per weapon | — |
 | `data/ammo.json` → `AMMO[*]` | 10 global entries; no velocity field, no subsonic entries | — |
 | `data/balance_tables.json` | `RECOIL_MULT`, `ADS_SPD_TIERS`, `ADS_MOVE_TIERS`, sprint tables | — |
+| `data/attachments.json` → `WEAPON_MAG[*].{defAds,defSpr,defAms}` | **0-based** stored tier indices, validator-bounded | 59 weapons, Phase 2b-iv |
+| `data/attachments.json` → `WEAPON_MAG[*].{baseSprintRecoveryTier,weaponSprintRecoveryTierShift}` | present on all 59; read by **no** resolver or validator — see below | — |
+| `data/attachments.json` → `GRIPS[*].adsMoveSpeedTierShift` | `+1` on the four shared grip IDs; suffixed `*_svk86` / `*_ks18k` / `*_db12` / `*_vssm` clones carry no shift | Phase 2b-iii |
 | `sim/applyAttachments.js:185-192` | Mag Catch override; detects fast mags by matching `"fast"` in the display name | — |
 | `sim/applyAttachments.js:275-277` | precedence: `magCatchTacRld` → `magTacRld` → `w.tacRld` | — |
 | `scripts/sym-import.mjs` | `normalizedReloadFields()` — derives `ReloadLeft`/`ReloadEmpty` using `ReloadSpeed` and retains the provenance field | Phase 1 |
@@ -350,6 +354,15 @@ rather than assumed to be a fixed offset. See [§11](#11-open-questions).
 
 Roughly 280 hardcoded reload numbers, each an independent transcription with no cross-check. Two
 are known wrong today: `M277` (2.183, should be 2.384) and `LMR27` (2.854, should be 3.034).
+
+**One inert field pair survived 2b-iv on the old convention.** Every `WEAPON_MAG` entry carries
+`baseSprintRecoveryTier` and `weaponSprintRecoveryTierShift`, but nothing reads them: the resolver
+uses `defSpr`, and `validate-data.mjs` bounds only the three `def*` indices. They are currently
+self-consistent for all 59 weapons under `defSpr === baseSprintRecoveryTier +
+weaponSprintRecoveryTierShift - 1` — i.e. they are still **1-based** while `defSpr` is 0-based.
+Nothing detects that divergence, which is the same silent-failure shape 2b-iv set out to remove.
+Either bound them in the validator or delete them; do not let Phase 3/4 add a second reader that
+picks the wrong convention.
 
 The current fast-mag detection is a substring match on the magazine's display name. That is
 already insufficient — nine magazines carry the 1.13 multiplier without "Fast" in the name
@@ -734,17 +747,20 @@ The Phase 0 characterization test now asserts per-weapon attachment-catalog cove
 **Completed 2026-07-31.** PP-19 now has the seven supported attachment-slot catalogs: six muzzle,
 four barrel, twelve grip, six laser, three light, two ergonomics, and five magazine entries. The
 name-to-ID mapping uses existing global catalog IDs only; `barrelDef` is `basic`, and the magazine
-baseline is `defAds / defSpr / defAms = 3 / 3 / 3` with `30_rnd` selected by default. `magCatchRld`
+baseline was `defAds / defSpr / defAms = 3 / 3 / 3` on the then-current 1-based convention with
+`30_rnd` selected by default. Those stored values are now **2 / 2 / 3**: 2b-i incremented every
+`defAms`, then 2b-iv made all three fields 0-based. The resolved panel readings are unchanged.
+`magCatchRld`
 is `{ reg: 2321, fast: 2054 }`, and the five legacy magazine reload values are `2467`, `2183`,
 `2467`, `2467`, and the registered `2667` ms drum override. The `20Rnd Fast Mag` audit record was
 corrected from the model-predicted `2.183` to its screenshot value `2.467`, with the fabricated
 reload comparison removed.
 
-The backfill does not add `adsMoveSpeedTierShift` to any shared grip entry. PP-19 uses the standard
-SMG IDs `6h64_vert`, `classic_vert`, `stipp_stubby`, and `lp_stubby`; its current resolver therefore
-leaves those four grip readings at `0.75` until the separate ADS-move/`ADS_MOVE_TIERS` migration.
-Four weapons — `SVK-8.6`, `VSSM`, `18.5KS-K`, and `DB-12` — also use the standard IDs but show no
-shift; their source-backed suffixed variants are resolved in [Phase 2b-iii](#2b-iii--grip-ads-move-shift).
+The backfill itself did not add `adsMoveSpeedTierShift` to any shared grip entry. PP-19 uses the
+standard SMG IDs `6h64_vert`, `classic_vert`, `stipp_stubby`, and `lp_stubby`, so those four grip
+readings sat at `0.75` until [Phase 2b-iii](#2b-iii--grip-ads-move-shift) landed the `+1` shift on
+the shared entries. Four weapons — `SVK-8.6`, `VSSM`, `18.5KS-K`, and `DB-12` — also use the
+standard IDs but show no shift; 2b-iii resolved them with suffixed clones.
 The eight weapons without ergonomics catalogs are explicit coverage exemptions, and Ammo remains
 out of scope.
 
@@ -916,6 +932,11 @@ it — which is exactly how the two phantom entries in 2b-ii survived.
 
 ### Phase 3 — schema, shared reload tier, and exception register
 
+**Gate state at Phase 3 entry (verified at HEAD `6936036`):** `node --test` 65/65 pass, 0 skip;
+`validate-data.mjs` 59/59; `audit-sweep.mjs` 28 info / 0 warn / 0 error over 3,115 stat rows;
+reload evidence re-measured at 91/92 fast-mag and 27/27 Mag Catch, the single miss being the
+registered PP-19 screenshot exception.
+
 1. Add the shared `1.13` magazine-speed ladder constant and the `reloadSpeedTier` integer.
 2. Add `reloadSpeedMult: 1.063` to Mag Catch.
 3. Define machine-readable animation exceptions keyed by weapon ID and magazine ID, using
@@ -929,6 +950,48 @@ it — which is exactly how the two phantom entries in 2b-ii survived.
    to the schema, and assert its invariant: a magazine carrying one must **not** currently match its
    `expectedReloadSeconds`. That way an in-game fix fails the build instead of sitting unnoticed
    behind a stale tier.
+
+#### Prerequisite — the regression instrument does not cover reload
+
+**Do this before touching reload data.** The 70,634-case fixture built across 2b-ii/2b-iii/2b-iv
+pins sprint recovery, ADS move, ADS time and deploy. It does **not** enumerate composed tactical
+reload, so a Phase 3/4 change that moves a resolved reload value produces a clean digest and no
+failing test. That is precisely the Phase-1 situation that motivated the fixture in the first
+place; the instrument must cover the column being migrated *before* the migration, not after.
+
+Build the reload-aware baseline over the same enumeration and pin, per case: resolved tactical
+reload in ms, which resolver branch was selected (`magCatchTacRld` → `magTacRld` → `w.tacRld`
+legacy versus derived), the tier integer, the multiplier, and whether an override was in force.
+Branch identity matters as much as the value: the dual-read resolver from Phase 2 can return the
+right number down the wrong path, and Phase 6 deletes the legacy path.
+
+#### Exception-register contract — current tooling shape
+
+The Phase 3 register wants **weapon-ID / magazine-ID keys with integer millisecond units**. The
+existing tooling is the other shape: `RELOAD_ANIMATION_OVERRIDES` in
+[audit-phase0-lib.mjs:20-30](scripts/audit-phase0-lib.mjs:20) is keyed by
+`"<display weapon name>/<display attachment name>"` with float **seconds** values, and
+`RELOAD_SCREENSHOT_EXCEPTIONS` immediately below it uses the same key shape. Phase 3 either
+converts both or maintains a mapping; leaving two key conventions in place reintroduces the
+display-name matching this migration is trying to delete.
+
+Count the register carefully: there are **four** animation-override records but **five** map
+entries, because M240L's 75Rnd and 100Rnd Belt Boxes both take 7.100. The [§5.1](#51-magazines-that-change-the-reload-animation)
+table is per-record; the code map is per-magazine. A validator asserting "register size" must say
+which one it means.
+
+`PP-19 / 20Rnd Fast Mag` is a *separate* register from the animation overrides and must stay
+separate — it is the `suspectedGameBug` case, not an override. It is still the single miss behind
+the 91/92 fast-mag figure in [§2.1](#21-reload), re-verified at Phase 3 entry.
+
+#### Carried-forward risks — none block Phase 3
+
+The 40 sprint lower-bound clamps and 435 deploy upper-bound clamps from 2b-iv are pre-existing
+composed-index findings, and the deploy/sprint coupling at
+[applyAttachments.js:311](sim/applyAttachments.js:311) — deploy reuses the magazine *sprint* shift
+— is a model-coupling concern for later hardening. Neither interferes with reload, **provided
+Phase 3 leaves sprint fields alone and keeps deploy in the regression baseline.** If Phase 3 ever
+needs to touch a sprint shift, that coupling silently moves deploy output too.
 
 ### Phase 4 — additive reload-data migration
 
@@ -1289,8 +1352,10 @@ model has recovered rather than merely compressed. When Sym publishes, only the 
 
 ## 11. Open questions
 
-Resolve before Phase 2; the Phase 1 importer correction is complete and these questions do not
-authorize runtime or attachment-schema work.
+Eight of the twelve are resolved. The four still open — 1, 5, 10 and 11 — are empty-reload
+multipliers, recoil tier derivation, the sidearm deploy ladder, and the derived `drawTimeTier`.
+**None of them blocks Phase 3**, but question 1 must be answered before `emptyRld` is migrated.
+These questions do not authorize runtime or attachment-schema work on their own.
 
 1. **Do the attachment multipliers apply to `emptyRld`?** Untested — the audit only captured
    tactical reload. Until confirmed, apply multipliers to `tacRld` only and derive `emptyRld` from
@@ -1312,8 +1377,10 @@ authorize runtime or attachment-schema work.
    objection — that prepending shifts every stored `defAms` index — was measured and is not a
    blocker: incrementing all 59 `defAms` values alongside the table is output-identical across all
    **265** current magazine loadouts, including the **260** pre-PP-19 entries, because the tier
-   shifts are relative and no loadout currently reaches either clamp (grips and ammo contribute no
-   `adsMoveSpeedTierShift` at all). The PP-19 backfill and isolated-commit prerequisite are now
+   shifts are relative and no loadout currently reaches either clamp (at the time of that
+   measurement grips and ammo contributed no `adsMoveSpeedTierShift` at all; 2b-iii has since given
+   the four shared grip IDs a `+1`, and ADS-move clamps remain zero after it). The PP-19 backfill
+   and isolated-commit prerequisite are now
    satisfied; see [Phase 2b-i](#2b-i--ads-move-10-tier).
 7. **Are `ReloadSpeed` and `RECOIL_MULT` stable across patches?** If `ReloadSpeed` moves while the
    M60/M240L alternate times track it, both magazines are scaled and each weapon needs one raw
@@ -1338,14 +1405,16 @@ authorize runtime or attachment-schema work.
     lookup tables — the same shape as the reload work, and it would remove a whole class of
     inconsistency by construction. Out of scope for the current migration. Blocked on the sidearm
     ladder in question 10, since a derived field must cover the whole roster or none of it.
-12. **Do four weapons need grip class variants?** `SVK-8.6`, `VSSM`, `18.5KS-K` and `DB-12` use the
-    standard `6h64_vert` / `classic_vert` / `stipp_stubby` / `lp_stubby` IDs but take no ADS-move
-    shift, unlike the other 45. They are **two DMRs and two shotguns**, which suggests `_dmr` and
-    `_shotgun` variants in the same family as the existing `_sr` / `_smg` forms rather than four
-    unrelated exceptions. Note the split is not simply per class: `M39 EMR` and `SVDM` are also DMRs
-    and *do* take the shift, so confirm against each weapon's panel before creating variants.
-    Resolve before [Phase 2b-iii](#2b-iii--grip-ads-move-shift), and do not add a per-weapon
-    override mechanism.
+12. ~~**Do four weapons need grip class variants?**~~ **Resolved and landed 2026-07-31 in Phase
+    2b-iii.** `SVK-8.6`, `VSSM`, `18.5KS-K` and `DB-12` use the standard `6h64_vert` /
+    `classic_vert` / `stipp_stubby` / `lp_stubby` IDs but take no ADS-move shift, unlike the other
+    45. The anticipated `_dmr` / `_shotgun` class families were **not** what the source supported:
+    the split is not per class (`M39 EMR` and `SVDM` are also DMRs and *do* take the shift), so the
+    four were resolved with **per-weapon suffixed clones** — `*_svk86`, `*_vssm`, `*_ks18k`,
+    `*_db12` — following the existing `factory_angled_sl9` precedent. That is still catalog data
+    referenced by `WEAPON_ATTS`, not a per-weapon override mechanism in the resolver, so the
+    original prohibition holds. Anything similar in future should reuse this shape rather than
+    inventing a class taxonomy the panels do not support.
 
 ---
 
@@ -1412,8 +1481,9 @@ Every mapped attachment uses an existing global catalog ID:
 
 The reviewed baseline is 2.467 s tactical reload, 167 ms ADS time, 100 ms sprint recovery, 0.75
 ADS-move multiplier, 444 m/s muzzle velocity, and a 30-round magazine. The stored magazine bases
-are defAds/defSpr/defAms = 3/3/3, the default is 30_rnd, and Mag Catch uses
-magCatchRld = { reg: 2321, fast: 2054 }.
+were defAds/defSpr/defAms = 3/3/3 at backfill close, the default is 30_rnd, and Mag Catch uses
+magCatchRld = { reg: 2321, fast: 2054 }. Those stored indices are 2/2/3 today, after the 2b-i
+defAms increment and the 2b-iv 0-based conversion; the resolved readings above are unchanged.
 
 | Magazine ID | Points | Capacity | Legacy tactical reload (ms) | ADS / sprint / ADS-move shifts at backfill close |
 |---|---:|---:|---:|---|
@@ -1439,14 +1509,17 @@ fixture; Phase 3/4 must add those reviewed fields before production PP-19 switch
 path.
 
 No shared grip ADS-move shift was added during the backfill. The four standard IDs
-6h64_vert, classic_vert, stipp_stubby, and lp_stubby require the separately gated Phase 2b-iii
-work, including resolution of the four weapons that use those IDs without the shift:
-SVK-8.6, VSSM, 18.5KS-K, and DB-12.
+6h64_vert, classic_vert, stipp_stubby, and lp_stubby were handled by the separately gated
+Phase 2b-iii work, which landed the +1 shift on those four entries and resolved the four weapons
+that use them without the shift — SVK-8.6, VSSM, 18.5KS-K, and DB-12 — via per-weapon suffixed
+clones.
 
 ### Verification retained
 
 The backfill verifier confirms the exact catalog counts (6 muzzle, 4 barrel, 12 grip, 6 laser,
 3 light, 2 ergonomics, 5 magazines), the 3/3/3 magazine bases, the screenshot correction, the
-known legacy mismatch, and the absence of a global grip shift. The Phase 0 catalog-coverage test
+known legacy mismatch, and the absence of a global grip shift. It is a dated receipt for the
+backfill commit, not a live gate: the last three of those assertions describe the pre-2b state and
+no longer hold at HEAD. The Phase 0 catalog-coverage test
 also registers the eight ergonomics-free weapons explicitly, so an empty future weapon catalog
 cannot pass silently.

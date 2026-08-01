@@ -89,15 +89,19 @@ For a visual explanation of how the recoil/spread simulation itself works, see t
    - For the VZ.61 (grip+laser+light all in Laser dropdown): add
      `laserGripLightCombined: true`
 3. Add magazine data to `data/attachments.json` → `WEAPON_MAG`
-   - **Required per weapon**: `defAds`, `defSpr`, `defAms` (base tier indices), `def` (default mag ID),
+   - **Required per weapon**: `defAds`, `defSpr`, `defAms` (**0-based** base tier indices), `def` (default mag ID),
      and a `mags` object with every available magazine
    - **Per magazine**: `name`, `pts`, `mag` (capacity), `tacRld` (ms), `adsTimeTierShift`,
      `sprintRecoveryTierShift`, `adsMoveSpeedTierShift`
    - Sidearms: set `sprintRecoveryTierTable: "sidearm"` to use `SIDEARM_SPRINT_REC_TIERS`
    - **Deriving `defSpr`**: look up the weapon's `UnDeployTime` from sym.gg, convert to ms
-     (e.g. 0.233334 → 233 ms), find its tier in the sprint recovery table (1-indexed), then
-     subtract 1 for the universal in-game draw speed adjustment: `defSpr = tier - 1`. Verify
+     (e.g. 0.233334 → 233 ms), find its **0-based** index in the sprint recovery table, then
+     subtract 1 for the universal in-game draw speed adjustment: `defSpr = index - 1`. Verify
      by confirming that the default magazine's displayed draw speed matches the table value.
+   - All three base indices are 0-based as of Phase 2b-iv; `scripts/validate-data.mjs` rejects
+     any value outside `[0, table.length - 1]`, selecting the primary or sidearm sprint table by
+     `sprintRecoveryTierTable`. A 1-based value from an older note will now fail validation
+     rather than silently shifting every stat by one tier.
    - Capture all magazine screenshots in-game (one per mag, with Basic barrel + Iron Sights)
      so tier shifts can be back-calculated from the displayed ADS time, sprint recovery, and
      ADS move speed multiplier values. Use `ADS_SPD_TIERS`, the sprint recovery tables, and
@@ -293,7 +297,7 @@ Credit: tier-system discovery by SheetOnMyFace.
 - **Sprint recovery tiers:** primary weapons use `PRIMARY_SPRINT_REC_TIERS`;
   sidearms use `SIDEARM_SPRINT_REC_TIERS`. `WEAPON_MAG[weaponId].defSpr` stores
   the workbook's adjusted base sprint recovery tier after the weapon-specific
-  tier adjustment. Magazine entries store the workbook's `Magazine Tier Modifier`
+  tier adjustment, as a 0-based index. Magazine entries store the workbook's `Magazine Tier Modifier`
   as `sprintRecoveryTierShift`; do not apply a universal `-1` adjustment.
 - **Deploy time tiers:** `DEPLOY_TIME_TIERS` is a placeholder universal scale
   until full deploy data is published on sym.gg. The app maps each weapon's base

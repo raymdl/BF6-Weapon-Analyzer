@@ -389,9 +389,9 @@ Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`, `ERGOS`,
 - `WEAPON_ATTS[id]` — allowed muzzle/barrel/laser/light/grip IDs, plus `barrelDef` and
   the combined-slot flags. An explicit empty array (e.g. USG-90 `grip: []`) means the
   weapon deliberately takes nothing in that slot; an *absent* key fails validation.
-- `WEAPON_MAG[id]` — magazine variants with tier shift overrides, plus base tier indices
-  (`defAds`, `defSpr`, `defAms`) and `sprintRecoveryTierTable` (`'sidearm'` to use the
-  sidearm sprint table)
+- `WEAPON_MAG[id]` — magazine variants with tier shift overrides, plus 0-based base tier
+  indices (`defAds`, `defSpr`, `defAms`, each bounds-checked by `validate-data.mjs`) and
+  `sprintRecoveryTierTable` (`'sidearm'` to use the sidearm sprint table)
 - `WEAPON_ERGO[id]` — ergonomics availability (`avail`) and Mag Catch reload times
   (`magCatchRld.reg` / `.fast`)
 
