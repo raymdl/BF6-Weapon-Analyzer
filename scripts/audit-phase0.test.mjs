@@ -31,6 +31,11 @@ import {
   STATS,
 } from './audit-sweep.mjs';
 import { runFieldSlotDiscovery } from './audit-field-slot-discovery.mjs';
+import {
+  deriveFieldSlotAsymmetryInventory,
+  fieldSlotAsymmetryDrift,
+  loadFieldSlotAsymmetryInventory,
+} from '../outputs/attachment-audit/build-20260801-field-slot-asymmetry-inventory.mjs';
 
 const inputs = loadPhase0Inputs(DEFAULT_ROOT);
 const auditRows = inputs.auditSummary.stats;
@@ -338,5 +343,67 @@ test('default CLI checks are read-only, work outside the repository cwd, and fai
   } finally {
     rmSync(tempCwd, { recursive: true, force: true });
     rmSync(missingRoot, { recursive: true, force: true });
+  }
+});
+
+function copyFieldSlotInventoryFixture() {
+  const root = mkdtempSync(path.join(tmpdir(), 'bf6-field-slot-inventory-'));
+  const files = new Set([
+    ...Object.values(PHASE0_FIXTURES),
+    'data/attachments.json',
+    'data/ammo.json',
+    'outputs/attachment-audit/field-slot-asymmetry-inventory-20260801.json',
+  ]);
+  for (const relativePath of files) {
+    const destination = path.join(root, relativePath);
+    fs.mkdirSync(path.dirname(destination), { recursive: true });
+    fs.copyFileSync(path.join(DEFAULT_ROOT, relativePath), destination);
+  }
+  return root;
+}
+
+function assertFieldSlotInventoryPinned(root) {
+  const actual = deriveFieldSlotAsymmetryInventory(root);
+  const expected = loadFieldSlotAsymmetryInventory(root);
+  assert.deepEqual(actual.statColumns, expected.statColumns);
+  assert.deepEqual(actual.counts, expected.counts);
+  assert.deepEqual(actual.records, expected.records);
+  assert.deepEqual(fieldSlotAsymmetryDrift(root), {
+    unexpected: [],
+    missing: [],
+    duplicates: [],
+    changed: [],
+  });
+}
+
+test('field-slot asymmetry inventory rejects isolated new and disappearing keys', () => {
+  assertFieldSlotInventoryPinned(DEFAULT_ROOT);
+  const root = copyFieldSlotInventoryFixture();
+  const reviewPath = path.join(root, PHASE0_FIXTURES.audit);
+  const readReview = () => JSON.parse(fs.readFileSync(reviewPath, 'utf8'));
+  const writeReview = review => fs.writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
+  try {
+    const originalReview = readReview();
+    const newAsymmetry = structuredClone(originalReview);
+    const newRow = newAsymmetry.records.find(row => row.weaponName === 'AK4D' && row.attachmentType === 'Muzzle');
+    assert.ok(newRow);
+    newRow.stats.reloadTimeSeconds = 99.999;
+    writeReview(newAsymmetry);
+    assert.deepEqual(fieldSlotAsymmetryDrift(root).unexpected, ['reloadTimeSeconds|Muzzle']);
+    assert.throws(() => assertFieldSlotInventoryPinned(root));
+
+    writeReview(originalReview);
+    const disappearingAsymmetry = structuredClone(originalReview);
+    const vssmRows = disappearingAsymmetry.records.filter(row => row.weaponName === 'VSSM');
+    const vssmBarrel = disappearingAsymmetry.records.find(row => (
+      row.weaponName === 'VSSM' && row.attachmentType === 'Barrel' && row.attachmentName === '200MM ASM'
+    ));
+    assert.ok(vssmBarrel);
+    vssmBarrel.stats.spotOnFire2dM = modalValue(vssmRows, 'spotOnFire2dM');
+    writeReview(disappearingAsymmetry);
+    assert.deepEqual(fieldSlotAsymmetryDrift(root).missing, ['spotOnFire2dM|Barrel']);
+    assert.throws(() => assertFieldSlotInventoryPinned(root));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
   }
 });
