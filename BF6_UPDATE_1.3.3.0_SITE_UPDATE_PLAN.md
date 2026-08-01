@@ -35,6 +35,8 @@ This file is the shared handoff and progress ledger. Every implementation sessio
 | 2026-07-20 | Codex | Luna B remediation + Luna D / Phase 5 safe pass | Started from `2df4811cb29753f90770944c476d8000effbe962`. Rechecked Fable's three findings, the Phase 5 prerequisites, and the EA sweet-spot endpoints. This session will add fail-closed negative validation, exercise the application share-state module, normalize PP-19 display data, and apply only the independently explicit EA sniper windows; exact base-damage floats remain blocked pending in-game evidence. |
 | 2026-07-20 | Codex | Provisional damage unblock + Luna C handoff | Applied community-tested post-1.3.3.0 automatic and DMR upper-torso tiers to the existing weapon families while retaining current range breakpoints; recorded VZ.61 as tested unchanged and corrected its special automatic `0.84x` limb class; added PP-19 with the user-confirmed PW5A3 damage model; and kept every affected curve explicitly provisional. Sniper, shotgun, and untested sidearm values remain unchanged. Phase 4 may now continue at the attachment behavior/audit boundary; PP-19 attachment maps remain fail-closed and `needs measurement`. |
 | 2026-07-20 | Codex review | Pre-test scope gate | Re-ran the current automated baseline: validator passes for 59/59 weapons, focused tests pass 24/24, syntax checks pass for the shared damage/loadout/attachment/share-state/UI modules, and `git diff --check` passes. With attachment refresh and Phase 6 deferred, the remaining pre-test work is the minimal Phase 7 version/disclaimer pass plus representative recoil/bloom regression fixtures. Hands-on browser QA is then the next gate. |
+| 2026-07-21 → 08-01 | Codex + Claude | Derived Attachment Model, Phases 0-7 | Ran as a separate workstream under `DERIVED_ATTACHMENT_MODEL.md`. Completed the full attachment screenshot audit (3,177 records, 62 weapons, all classes), then replaced the hardcoded per-magazine reload tables and per-barrel velocity multipliers with derived models. **This is the first promotion of screenshot-derived values into live attachment data** — see [§4.12](#412-derived-attachment-model-integration--2026-08-01). Validator 59/59; suite 83/83. |
+| 2026-08-01 | Claude | Derived model gate repairs + §7 checks | Fixed four gates that passed when they should have failed closed, then ran the model's four validation checks as executable gates. Surfaced 74 tier mismatches, of which six were adjudicated against original screenshots: **four are live site errors, two are corpus transcription errors.** All findings are pinned to tracked inventories; no `data/` value was changed. Commits `6e2ffa1`, `0e81dc9`, `719a4e5`, `62a4909`, `b14c394`, `984566a`. |
 
 ## Findings and open issues
 
@@ -296,10 +298,10 @@ Use one Luna session per assignment below. Each session must follow the working 
 - [x] 4.3 Update recoil amount, direction, multiplier, exponent, and recovery fields even when the patch-note headline only mentions variation; the pinned importer and fixtures cover the live source fields.
 - [x] 4.4 Update ADS/hip spread increments, stance bounds, idle/firing/not-firing recovery coefficients, offsets, exponents, and spread-distance exponent from the pinned source.
 - [ ] 4.5 Re-run attachment application for recoil-amount, recoil-variation, spread-growth, spread-recovery, and moving-spread modifiers.
-- [~] 4.6 Audit attachment data for **all 59 weapons**, not only PP-19. The current filesystem contains 11 Assault Rifle folders and 701 retained screenshots (one overview per folder), including 63 EF88 screenshots with no 2560x1440 copies. The current artifact contains 629 new Assault Rifle detail records: L85A3's 67 detail rows are fully user-reviewed, M16A4/EF88 have targeted corrections only, and the other rows remain provisional. The other 47 weapons remain uncaptured. Treat existing attachment values as pre-patch until checked against v1.3.3.0 evidence.
-- [ ] 4.7 For every weapon/barrel/ammunition combination, capture the displayed muzzle velocity and calculate both the absolute value and modifier versus that weapon's updated base velocity. The Assault Rifle batch captures barrel/ammunition screens, but 0 velocity fixtures have been reviewed or promoted; short, extended/long, fluted, and weapon-unique combinations remain open until manually checked.
-- [~] 4.8 Refresh every attachment field used by the site: availability, attachment-point cost, recoil amount/direction/variation, spread growth and recovery, ADS and hip behavior, movement spread, ADS/deploy/sprint-to-fire handling, magazine capacity, reload times, projectile velocity, drag wording/effect, and any compatibility restrictions. The current artifact contains 745 screenshot-linked records across M433, PP-19, and the retained Assault Rifle evidence. Of 629 new Assault Rifle detail records, 617 are fully transcribed; the remaining 12 are NVO-228E muzzle screens with overlay-obscured fields. L85A3 has 67 fully reviewed detail rows; 0 screenshot-derived values are promoted and no live attachment files changed.
-- [~] 4.9 Produce a weapon-by-attachment coverage matrix with `verified`, `changed`, `unchanged`, `not available`, and `needs measurement` states. The refreshed report covers the 11 Assault Rifles plus PP-19, preserves original/current paths, capture timestamps, resolutions, OCR, comparison indicators, duplicates, and review state, and reports the 12 NVO overlay blockers separately. L85A3 is reviewed; the remaining captured weapons are provisional, 0 records are promoted, and 47 weapons remain uncaptured.
+- [x] 4.6 Audit attachment data for **all 59 weapons**, not only PP-19. **Complete as of 2026-08-01** — the corpus is 3,177 records across 62 weapons covering every class; see [§4.12](#412-derived-attachment-model-integration--2026-08-01). 201 rows are `reviewed`; the remainder are provisional, which still constrains which columns a future migration may consume. The paragraph below is the historical Assault-Rifle-only state and is superseded. *(Historical: 11 Assault Rifle folders, 701 retained screenshots, 629 detail records, L85A3 reviewed, 47 weapons then uncaptured.)*
+- [~] 4.7 For every weapon/barrel/ammunition combination, capture the displayed muzzle velocity and calculate both the absolute value and modifier versus that weapon's updated base velocity. **Barrel half complete** — velocity is a signed tier on the `0.8` ladder across all 216 barrel records, and the migration corrected 20 weapon/barrel pairs that displayed 1 m/s high. **Ammo half deferred with cause**: no selectable ammo type carries a velocity field and there is no subsonic ammo id, so the 27 subsonic treatments describe an unimplemented feature rather than a missing measurement. Do not resolve this without lifting the Phase 6 / ammo-catalog deferral.
+- [~] 4.8 Refresh every attachment field used by the site: availability, attachment-point cost, recoil amount/direction/variation, spread growth and recovery, ADS and hip behavior, movement spread, ADS/deploy/sprint-to-fire handling, magazine capacity, reload times, projectile velocity, drag wording/effect, and any compatibility restrictions. **Reload timing, magazine capacity, ADS-move tiers and barrel velocity are live and derived** as of 2026-08-01 — see [§4.12](#412-derived-attachment-model-integration--2026-08-01). **Recoil, spread, deploy/draw and empty reload remain on pre-patch values** and are the substantive remainder of this task. Empty reload is specifically blocked on `DERIVED_ATTACHMENT_MODEL.md` open question 1: whether attachment multipliers apply to `emptyRld` is untested, so it needs a handful of in-game captures before migration.
+- [x] 4.9 Produce a weapon-by-attachment coverage matrix with `verified`, `changed`, `unchanged`, `not available`, and `needs measurement` states. **Superseded by something stronger**: coverage is now four machine-generated, deterministic inventories under `outputs/attachment-audit/`, each pinned by a test assertion so a new finding fails the suite and a vanishing one fails too. A narrative matrix could go stale silently; these cannot. See [§4.12](#412-derived-attachment-model-integration--2026-08-01) for the open-item counts and their owners.
 - [ ] 4.10 Add automated fixtures for attachments whose percentage modifier is applied to a changed base value; verify that the UI shows the resulting v1.3.3.0 absolute stat rather than a stale cached absolute value.
 - [ ] 4.11 Add before/after fixtures for representative high-output and low-output weapons so future refactors preserve the new character split.
 
@@ -339,6 +341,96 @@ Use one Luna session per assignment below. Each session must follow the working 
 - Transcription: 512 Carbine detail rows contain 1,263 comparison indicators with arrow direction and buff/penalty effect, including the corrected AK-205 compact Laser indicators and Linear Comp recoil indicators. All 80 previously missing Carbine costs are visually transcribed; required fields remain explicit and fail-closed where the compact selector does not display the expanded lower panel. Unknown mappings are 0.
 - Validation: current screenshot paths were reconciled after rename, `renameApplied` matches the filesystem for all 521 Carbine records, the workbook's 9 Carbine sheets plus Source Index and Read Me were visually inspected, and the builder is semantically idempotent across two runs. No screenshot-derived value was promoted into live site data.
 
+### 4.12 Derived Attachment Model integration — 2026-08-01
+
+A separate workstream, planned in `DERIVED_ATTACHMENT_MODEL.md`, ran between 2026-07-21 and
+2026-08-01 and materially changes the state of Tasks 4.6 through 4.9. **Read this before picking up
+any Phase 4 task**, because several statements elsewhere in this file predate it.
+
+#### What changed, and the one claim that is now false
+
+Every earlier Phase 4 record in this file says some variant of *"0 screenshot-derived values are
+promoted into live attachment data."* **That is no longer true.** The derived-model workstream
+promoted the following, and did so deliberately and under gates:
+
+| Live data | Count | Replaced |
+|---|---|---|
+| `reloadSpeedTier` on magazines | 260 | 265 per-magazine `tacRld` values |
+| `tacRldOverrideMs` on magazines | 5 | animation-override reloads, now in a register |
+| `reloadSpeedMult` on ergonomics | 1 | 24 per-weapon `magCatchRld` blocks |
+| `velTierMod` on barrels | 7 | per-barrel `velMult` (7 legacy occurrences remain for cleanup) |
+
+The promotion gate the earlier records were protecting is still intact in spirit: nothing was
+promoted from a raw OCR reading. Each value is a small integer tier on a shared ladder, derived
+from the audit and then required to reproduce every affected screenshot reading exactly, with the
+legacy and derived resolvers compared across 88,694 witness loadouts.
+
+The migration also found live bugs the hardcoded tables had been hiding: AK-205 Mag Catch stored
+the undiscounted base reload; six weapons offered Mag Catch with no data block, so it did nothing;
+23 magazine reload transcriptions were wrong; and 20 weapon/barrel pairs displayed a velocity 1 m/s
+high because the resolver rounded where the game floors.
+
+#### Effect on the Phase 4 tasks
+
+- **4.6** — the audit is no longer 12 of 59 weapons. The corpus is **3,177 records across 62
+  weapons**, covering every class. The "other 47 weapons remain uncaptured" wording below is stale.
+  201 rows carry `reviewStatus: reviewed`; the rest remain provisional, which still matters for any
+  column a future migration wants to consume.
+- **4.7** — the **barrel** half is done: barrel velocity is a signed tier on the `0.8` ladder across
+  all 216 barrel records. The **ammo** half is not, and is blocked for a specific reason rather
+  than an oversight: no selectable ammo type on the site carries a velocity field, and there is no
+  subsonic ammo id at all. The 27 subsonic velocity treatments in the corpus describe an
+  unimplemented feature. See the scope warning below.
+- **4.8** — reload timing, magazine capacity, ADS-move tiers and barrel velocity are now live and
+  derived. Recoil, spread, deploy/draw and empty-reload remain on their pre-patch values.
+- **4.9** — coverage is now machine-generated and pinned rather than narrative. Four tracked
+  inventories under `outputs/attachment-audit/` record every open item, and each is asserted by the
+  test suite so a new finding fails and a vanishing one fails too.
+
+#### Release-relevant defects this surfaced
+
+Running the model's value check as a *prediction* rather than a ladder-membership test surfaced 74
+disagreements between the site and the screenshot corpus. Six were adjudicated by reading the
+original panels, and they fall on both sides:
+
+| Weapon / magazine | Field | Game panel | Site shows | Wrong side |
+|---|---|---|---|---|
+| PSR 7Rnd | ADS time | 300 ms | 367 ms | **site** |
+| PSR 10Rnd | ADS move | 0.47 | 0.54 | **site** |
+| M2010 ESR 8Rnd | ADS move | 0.47 | 0.54 | **site** |
+| SV-98 10Rnd | ADS move | 0.54 | 0.67 | **site** |
+| M2010 ESR 8Rnd | ADS time | 300 ms | 300 ms (corpus says 250) | corpus |
+| M2010 ESR 5Rnd Fast | ADS time | 300 ms | 300 ms (corpus says 250) | corpus |
+
+**Four are live site errors on shipping weapons.** PSR 10Rnd and SV-98 10Rnd are *default*
+magazines, so those are wrong base indices rather than per-magazine shifts — they are what a user
+sees before touching a single attachment. These are release-relevant and are called out in the
+next-steps section below.
+
+That both directions occur is the reason `DERIVED_ATTACHMENT_MODEL.md` §7 forbids resolving a
+model-versus-reading disagreement by rule. Correcting either side automatically would have broken
+working data. The same pattern recurred in the field-by-slot check, where the corpus recorded five
+grips changing muzzle velocity: the one panel read directly showed the grip was *locked and never
+equipped*, so the reading was a transcription error, not a grip effect.
+
+#### Open items now tracked, with owners
+
+| Item | Count | Where | Needs |
+|---|---|---|---|
+| Unadjudicated tier mismatches | 68 | `model-tier-mismatch-inventory-20260801.json` | operator captures |
+| Unread grip-velocity rows | 4 | `field-slot-asymmetry-inventory-20260801.json` | operator captures |
+| `adsTimeMs` corpus-only slot effects | 18 | same | operator captures |
+| SOR-556 MK2 45Rnd with no `WEAPON_MAG` entry | 1 | `name-effect-coverage-inventory-20260801.json` | catalog mapping, not recapture |
+| Possible dead `recoilVariationDegrees` ergonomic path | 1 | same | code review |
+
+#### Scope warning for the next session
+
+`DERIVED_ATTACHMENT_MODEL.md` §7.7 lists ammo effects on velocity, ADS time and spotting, including
+several **Match Grade** rows. Those sit exactly on the boundary of deferred Phase 6 Task 6.3 and the
+deferred ammo-catalog migration. **Recording them in an inventory is not authorization to start
+Phase 6.** Working protocol rule 6 still governs: Phase 6 remains deferred and must not be
+implemented in the current sessions.
+
 ### 5. Resolve damage and sweet spots
 
 - [x] 5.1 Enter the EA-confirmed hit-zone/headshot multipliers independently of base damage.
@@ -362,6 +454,36 @@ Use one Luna session per assignment below. Each session must follow the working 
 - [ ] 6.6 For the current release, state plainly that damage/BTK/TTK assumes a hit and does not simulate projectile travel. This wording belongs to Phase 7 even though the solver is deferred.
 
 ### 7. UI, documentation, and archive updates
+
+#### Next steps — start here (set 2026-08-01)
+
+Work these in order. N1 is new and jumped the queue because it ships wrong numbers on default
+loadouts; T1-T4 were already the nearest release-relevant milestone and are unchanged.
+
+- [ ] **N1 Fix the four confirmed live ADS errors.** PSR 7Rnd ADS time, and the ADS-move values for
+      PSR 10Rnd, M2010 ESR 8Rnd and SV-98 10Rnd. All four are adjudicated against original panels
+      in [§4.12](#412-derived-attachment-model-integration--2026-08-01) — no new captures needed.
+      Two are *default* magazines, so they are wrong base `defAms` indices rather than per-magazine
+      shifts; fix the base index, do not paper over it with a magazine shift. Expect the
+      `model-tier-mismatch` inventory to shrink, which will fail its pin assertion until the
+      inventory is regenerated — that is the gate working, not a break.
+- [ ] **N2 Correct the two confirmed corpus transcription errors** (M2010 ESR 8Rnd and 5Rnd Fast
+      ADS time, recorded as 250 where the panel reads 300) and the 18.5KS-K Alloy Vertical velocity
+      row. Corpus edits need a written receipt under `outputs/attachment-audit/`, per
+      `DERIVED_ATTACHMENT_MODEL.md` §9.2 — a rebuild that silently re-derives curated values has
+      already caused a regression once.
+- [ ] **N3 Resolve the SOR-556 MK2 45Rnd mapping.** It is a supported magazine with a corpus
+      screenshot but no `WEAPON_MAG` entry, which made it invisible to the prediction sweep. This
+      is catalog work, not a recapture.
+- [ ] **T1-T4 below** — the minimum gate before hands-on testing.
+
+Blocked on operator captures, not on engineering: the 68 unadjudicated tier mismatches, the 4
+unread grip-velocity rows, and the 18 `adsTimeMs` corpus-only rows. Each is pinned and inventoried,
+so they can wait without decaying.
+
+Do **not** start: Phase 6 ballistics, the ammo/subsonic velocity work, the deferred recoil or
+magazine-catalog migrations, or `DERIVED_ATTACHMENT_MODEL.md` open questions 5, 10 and 11. All
+remain deferred under working protocol rule 6.
 
 #### Minimum gate before user hands-on testing
 
@@ -445,6 +567,16 @@ This is a separate required pass from PP-19 onboarding. Run it for every existin
 - Transcribed: 690 attachment-detail rows plus 11 overview rows. Enhanced field-specific OCR and exact visual-crop matching populate the workbook while retaining explicit null reasons for unreadable/obscured fields.
 - Cleaned: known AK4D barrel subtype corrections, laser/light mappings, repeated descriptions, ADS artifacts, title leakage, and lowercase-start truncations are addressed.
 - Review state: still provisional; no screenshot-derived Assault Rifle values have been promoted into live site data. Manual screenshot review, modifier derivation, and focused attachment tests remain open.
+
+**Amended 2026-08-01** — two criteria below were written assuming no attachment value would be
+promoted this release. Reload timing and barrel velocity now are, under the derived-model gates in
+[§4.12](#412-derived-attachment-model-integration--2026-08-01). Add to the criteria:
+
+- No known-wrong attachment value ships. The four confirmed live ADS errors in §4.12 are release
+  blockers; the 68 unadjudicated tier mismatches are not, provided they remain inventoried and
+  pinned rather than silently accepted.
+- Every derived attachment value reproduces its screenshot reading, and the derived-versus-legacy
+  equivalence and separability gates pass.
 
 - The site contains 59 firearms and PP-19 has complete cross-file attachment/magazine/ammo coverage.
 - Recoil, spread/recovery, velocity, deploy/reload, and base drag are traceable to the pinned Sym.gg v1.3.3.0 JSON.
