@@ -11,6 +11,13 @@
     "exceptionRegister": "data/reload-exceptions.json",
     "preMigrationBaselineDigest": "f6a4d7681f1e4157d3022f81737f61f29e6ff9837e377c8500cde6c83384d48e"
   },
+  "magCatchEvidence": {
+    "corpusRows": 27,
+    "matchedRows": 27,
+    "model": "base / 1.063",
+    "toleranceSeconds": 0.005,
+    "note": "All reviewed Improved Mag Catch corpus rows match the universal 1.063 reload-speed multiplier, including the six weapons whose legacy blocks were absent."
+  },
   "counts": {
     "magazineEntries": 265,
     "classCounts": {
@@ -22,7 +29,9 @@
     "animationOverrideRecords": 4,
     "animationOverrideEntries": 5,
     "changedMagazineValues": 23,
-    "legacyMagCatchCorrections": 1
+    "legacyMagCatchCorrections": 7,
+    "legacyMagCatchStackingDifferences": 6,
+    "magCatchEvidenceRows": 27
   },
   "classificationConflicts": [
     {
@@ -162,6 +171,146 @@
         "fast": 2068
       },
       "evidence": "AK-205 / Improved Mag Catch screenshot plus the measured 1.063 Mag Catch multiplier; fast value also uses the direct Fast Mag screenshot and the 1.13 ladder."
+    },
+    {
+      "weaponId": "l115",
+      "weaponName": "L115",
+      "correctionType": "missing-legacy-block",
+      "before": {
+        "block": null,
+        "legacyResolution": "no Mag Catch block; weapon base or magazine value used"
+      },
+      "after": {
+        "reg": 2587,
+        "fast": 2289
+      },
+      "evidence": "Sniper Rifle/L115/33_L115_Ergonomics_Improved_Mag_Catch.png; corpus reading 2.587 s matches base / 1.063, and 7 Fast uses the same stacked Mag Catch-plus-fast rule."
+    },
+    {
+      "weaponId": "p18",
+      "weaponName": "P18",
+      "correctionType": "missing-legacy-block",
+      "before": {
+        "block": null,
+        "legacyResolution": "no Mag Catch block; weapon base or magazine value used"
+      },
+      "after": {
+        "reg": 1819,
+        "fast": null
+      },
+      "evidence": "Sidearm/P18/26_P18_Ergonomics_Improved_Mag_Catch.png; corpus reading 1.819 s matches base / 1.063. No fast magazine exists."
+    },
+    {
+      "weaponId": "es57",
+      "weaponName": "ES 5.7",
+      "correctionType": "missing-legacy-block",
+      "before": {
+        "block": null,
+        "legacyResolution": "no Mag Catch block; weapon base or magazine value used"
+      },
+      "after": {
+        "reg": 1897,
+        "fast": null
+      },
+      "evidence": "Sidearm/ES 5.7/20_ES 5.7_Ergonomics_Improved_Mag_Catch.png; corpus reading 1.897 s matches base / 1.063. No fast magazine exists."
+    },
+    {
+      "weaponId": "m45a1",
+      "weaponName": "M45A1",
+      "correctionType": "missing-legacy-block",
+      "before": {
+        "block": null,
+        "legacyResolution": "no Mag Catch block; weapon base or magazine value used"
+      },
+      "after": {
+        "reg": 1756,
+        "fast": null
+      },
+      "evidence": "Sidearm/M45A1/23_M45A1_Ergonomics_Improved_Mag_Catch.png; corpus reading 1.756 s matches base / 1.063. No fast magazine exists."
+    },
+    {
+      "weaponId": "ggh22",
+      "weaponName": "GGH-22",
+      "correctionType": "missing-legacy-block",
+      "before": {
+        "block": null,
+        "legacyResolution": "no Mag Catch block; weapon base or magazine value used"
+      },
+      "after": {
+        "reg": 1819,
+        "fast": null
+      },
+      "evidence": "Sidearm/GGH-22/22_GGH-22_Ergonomics_Improved_Mag_Catch.png; corpus reading 1.819 s matches base / 1.063. No fast magazine exists."
+    },
+    {
+      "weaponId": "vz61",
+      "weaponName": "VZ. 61",
+      "correctionType": "missing-legacy-block",
+      "before": {
+        "block": null,
+        "legacyResolution": "no Mag Catch block; weapon base or magazine value used"
+      },
+      "after": {
+        "reg": 2008,
+        "fast": null
+      },
+      "evidence": "Sidearm/VZ. 61/28_VZ. 61_Ergonomics_Improved_Mag_Catch.png; corpus reading 2.008 s matches base / 1.063. No fast magazine exists."
+    }
+  ],
+  "legacyMagCatchStackingDifferences": [
+    {
+      "key": "m277/15_rnd/mag_catch",
+      "weaponId": "m277",
+      "magazineId": "15_rnd",
+      "legacyMs": 2243,
+      "derivedMs": 1985,
+      "reason": "The tier-1 magazine is not named Fast, so the legacy name-based Mag Catch branch applies reg instead of stacking the explicit tier.",
+      "evidence": "Carbine/M277/51_M277_Magazine_15Rnd_Magazine.png; the corpus classifies this non-Fast-named magazine as reloadSpeedTier 1."
+    },
+    {
+      "key": "pp19/20_fast/mag_catch",
+      "weaponId": "pp19",
+      "magazineId": "20_fast",
+      "legacyMs": 2054,
+      "derivedMs": 2321,
+      "reason": "The registered suspectedGameBug explicitly keeps this named Fast magazine at reloadSpeedTier 0; the legacy name-based branch incorrectly uses its fast Mag Catch value.",
+      "evidence": "SMG/PP-19/39_PP-19_Magazine_20Rnd_Fast_Mag.png and the suspectedGameBug register entry."
+    },
+    {
+      "key": "pw5a3/20_rnd/mag_catch",
+      "weaponId": "pw5a3",
+      "magazineId": "20_rnd",
+      "legacyMs": 2368,
+      "derivedMs": 2095,
+      "reason": "The tier-1 magazine is not named Fast, so the legacy name-based Mag Catch branch applies reg instead of stacking the explicit tier.",
+      "evidence": "SMG/PW5A3/40_PW5A3_Magazine_20Rnd_Magazine.png; the corpus classifies this non-Fast-named magazine as reloadSpeedTier 1."
+    },
+    {
+      "key": "pw7a2/20_rnd/mag_catch",
+      "weaponId": "pw7a2",
+      "magazineId": "20_rnd",
+      "legacyMs": 2055,
+      "derivedMs": 1818,
+      "reason": "The tier-1 magazine is not named Fast, so the legacy name-based Mag Catch branch applies reg instead of stacking the explicit tier.",
+      "evidence": "SMG/PW7A2/40_PW7A2_Magazine_20Rnd_Magazine.png; the corpus classifies this non-Fast-named magazine as reloadSpeedTier 1."
+    },
+    {
+      "key": "svdm/5_rnd/mag_catch",
+      "weaponId": "svdm",
+      "magazineId": "5_rnd",
+      "legacyMs": 2352,
+      "derivedMs": 2081,
+      "reason": "The tier-1 magazine is not named Fast, so the legacy name-based Mag Catch branch applies reg instead of stacking the explicit tier.",
+      "evidence": "outputs/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs (panel: DMR/SVDM/47_SVDM_Magazine_5Rnd_Magazine.png); the operator capture confirms the tier-1 reload change."
+    },
+    {
+      "key": "tr7/15_rnd/mag_catch",
+      "weaponId": "tr7",
+      "magazineId": "15_rnd",
+      "legacyMs": 2258,
+      "derivedMs": 1998,
+      "reason": "The tier-1 magazine is not named Fast, so the legacy name-based Mag Catch branch applies reg instead of stacking the explicit tier.",
+      "evidence": "Assault Rifle/TR7/44_TR7_Magazine_15Rnd_Magazine.png; the corpus classifies this non-Fast-named magazine as reloadSpeedTier 1."
     }
   ],
   "changedValues": [

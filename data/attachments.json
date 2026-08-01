@@ -3866,24 +3866,40 @@
       "avail": [
         "mag_catch",
         "ads_bolt"
-      ]
+      ],
+      "magCatchRld": {
+        "reg": 2587,
+        "fast": 2289
+      }
     },
     "p18": {
       "avail": [
         "mag_catch",
         "fast_deploy"
-      ]
+      ],
+      "magCatchRld": {
+        "reg": 1819,
+        "fast": null
+      }
     },
     "es57": {
       "avail": [
         "mag_catch"
-      ]
+      ],
+      "magCatchRld": {
+        "reg": 1897,
+        "fast": null
+      }
     },
     "m45a1": {
       "avail": [
         "mag_catch",
         "fast_deploy"
-      ]
+      ],
+      "magCatchRld": {
+        "reg": 1756,
+        "fast": null
+      }
     },
     "m44": {
       "avail": [
@@ -3895,7 +3911,11 @@
       "avail": [
         "mag_catch",
         "fast_deploy"
-      ]
+      ],
+      "magCatchRld": {
+        "reg": 1819,
+        "fast": null
+      }
     },
     "m357trait": {
       "avail": [
@@ -3905,7 +3925,11 @@
     "vz61": {
       "avail": [
         "mag_catch"
-      ]
+      ],
+      "magCatchRld": {
+        "reg": 2008,
+        "fast": null
+      }
     },
     "sgx": {
       "avail": [

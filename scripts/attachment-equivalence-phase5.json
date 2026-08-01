@@ -1,0 +1,3307 @@
+{
+  "kind": "attachment-equivalence-phase5",
+  "schemaVersion": 1,
+  "scope": {
+    "description": "All currently selectable attachment dimensions are included: sight, muzzle, barrel, grip, laser, light, ammo, magazine, and ergonomic. The site displays a 100-point total and marks totals over 100, but does not disable or reject those selections, so both within-budget and over-budget selections are included.",
+    "rawSelectableDimensions": "weapon × sight × muzzle × selectable barrel × selectable grip × selectable laser/light choice(s) × available ammo × magazine × available ergonomic",
+    "excludedSlots": [],
+    "pointBudget": {
+      "displayedLimit": 100,
+      "enforcedBySite": false
+    },
+    "reduction": "The full Cartesian product is retained as a raw selectable count and point distribution, but is too large for a standing resolver test. The comparison is a separability witness suite: a baseline crosses every magazine and ergonomic choice, then one suite at a time crosses every choice in each other slot while holding the other non-reload slots at representatives. Thus every slot choice, every combined-slot role, every ammo choice, every magazine, and every ergonomic choice is run through the complete resolver output. The excluded combinations are only cross-products of two or more non-reload slots.",
+    "reductionProof": "The current-versus-legacy model delta audit is restricted to reloadSpeedTier, tacRldOverrideMs, suspectedGameBug, and reloadSpeedMult; the legacy tacRld/magCatchRld values remain present in the current projection. applyAttachments consumes the derived deltas only in resolveReloadTiming, which depends on weapon, magazine, and ergonomic selection and not on sight, muzzle, barrel, grip, laser, light, or ammo. Complete output objects are nevertheless compared for every witness representative.",
+    "comparisonSuites": "baseline plus all-sight, all-muzzle, all-barrel, all-grip, all-laser, all-light, and all-ammo suites when those dimensions have choices; magazine and ergonomic dimensions remain full in every suite.",
+    "coverageClasses": {
+      "reloadSensitive": "For each weapon, every magazine × ergonomic combination is present in the baseline suite and remains full in every witness suite. These are the only selections that can change the current-versus-legacy reload branch.",
+      "sight": "Every selectable sight is present in all-sight; baseline additionally preserves the iron-versus-optic output classes.",
+      "muzzle": "Every selectable muzzle is present in all-muzzle; muzzle effects are compared in the complete returned object.",
+      "barrel": "Every selectable barrel is present in all-barrel; barrel effects are compared in the complete returned object.",
+      "grip": "Every selectable grip is present in all-grip, including VZ.61 combined-slot grip choices.",
+      "laser": "Every selectable laser or combined laser/grip/light choice is present in all-laser, with combined role resolution preserved.",
+      "light": "Every selectable light is present in all-light; laserLightCombined weapons correctly keep light fixed to none because those choices live in laser.",
+      "ammo": "Every available ammo ID is present in all-ammo.",
+      "omittedProducts": "Only products that vary two or more non-reload slots simultaneously are omitted. They cannot introduce a new difference because the model-delta audit proves every changed field is consumed exclusively by resolveReloadTiming, independently of those slots."
+    },
+    "comparison": "Every witness representative is run through applyAttachments with the current derived projection and a current legacy projection formed by removing only the derived reload fields. Complete returned objects are compared recursively, field by field. The pre-migration transition and its changed-case digest remain pinned by reload-phase3-baseline.json."
+  },
+  "counts": {
+    "weapons": 59,
+    "rawSelectableCaseCount": 525687124,
+    "reducedComparisonCaseCount": 88694,
+    "rawOverBudgetCaseCount": 437307093,
+    "rawWithinBudgetCaseCount": 88380031,
+    "reducedCases": 88694,
+    "differenceCases": 578,
+    "unexplainedDifferenceCases": 0
+  },
+  "pointDistribution": {
+    "20": 8,
+    "25": 356,
+    "30": 2222,
+    "35": 9750,
+    "40": 32755,
+    "45": 92653,
+    "50": 227932,
+    "55": 500533,
+    "60": 998936,
+    "65": 1836010,
+    "70": 3139046,
+    "75": 5031113,
+    "80": 7602455,
+    "85": 10885823,
+    "90": 14823804,
+    "95": 19258449,
+    "100": 23938186,
+    "105": 28522528,
+    "110": 32652077,
+    "115": 35964602,
+    "120": 38175440,
+    "125": 39106775,
+    "130": 38700570,
+    "135": 37051048,
+    "140": 34339755,
+    "145": 30847908,
+    "150": 26873822,
+    "155": 22719849,
+    "160": 18648248,
+    "165": 14860707,
+    "170": 11498820,
+    "175": 8632948,
+    "180": 6286023,
+    "185": 4432359,
+    "190": 3023049,
+    "195": 1990181,
+    "200": 1261782,
+    "205": 768832,
+    "210": 448349,
+    "215": 249778,
+    "220": 132139,
+    "225": 66149,
+    "230": 31158,
+    "235": 13657,
+    "240": 5565,
+    "245": 2048,
+    "250": 681,
+    "255": 194,
+    "260": 44,
+    "265": 8
+  },
+  "modelDeltaPaths": [
+    "ERGOS.3.reloadSpeedMult",
+    "WEAPON_MAG.ak205.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.ak205.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ak205.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ak205.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.ak205.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ak205.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.ak205.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ak205.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ak4d.mags.15_fast.reloadSpeedTier",
+    "WEAPON_MAG.ak4d.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ak4d.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.ak4d.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ak4d.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.b36a4.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.cz3a1.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.cz3a1.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.cz3a1.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.cz3a1.mags.35_fast.reloadSpeedTier",
+    "WEAPON_MAG.cz3a1.mags.35_rnd.reloadSpeedTier",
+    "WEAPON_MAG.db12.mags.7_rnd.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.drsiar.mags.60_rnd.reloadSpeedTier",
+    "WEAPON_MAG.es57.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.es57.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ggh22.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ggh22.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ggh22.mags.22_rnd.reloadSpeedTier",
+    "WEAPON_MAG.grtbc.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.grtbc.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.grtbc.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.grtbc.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.grtbc.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.grtcps.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.grtcps.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.grtcps.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.grtcps.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kord6p67.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.kord6p67.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kord6p67.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kord6p67.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.kord6p67.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kord6p67.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.kord6p67.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ks18k.mags.4_fast.reloadSpeedTier",
+    "WEAPON_MAG.ks18k.mags.4_rnd.reloadSpeedTier",
+    "WEAPON_MAG.ks18k.mags.8_fast.reloadSpeedTier",
+    "WEAPON_MAG.ks18k.mags.8_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kts100.mags.100_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kts100.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.kts100.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kts100.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kts100.mags.60_fast.reloadSpeedTier",
+    "WEAPON_MAG.kts100.mags.60_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kv9.mags.17_fast.reloadSpeedTier",
+    "WEAPON_MAG.kv9.mags.17_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kv9.mags.23_rnd.reloadSpeedTier",
+    "WEAPON_MAG.kv9.mags.27_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l110.mags.100_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l110.mags.200_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l115.mags.5_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l115.mags.7_fast.reloadSpeedTier",
+    "WEAPON_MAG.l115.mags.7_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.l85a3.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.lmr27.mags.10_fast.reloadSpeedTier",
+    "WEAPON_MAG.lmr27.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.lmr27.mags.15_fast.reloadSpeedTier",
+    "WEAPON_MAG.lmr27.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.lmr27.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.lmr27.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m1014.mags.4_fast.reloadSpeedTier",
+    "WEAPON_MAG.m1014.mags.4_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m1014.mags.6_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m121a2.mags.100_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m121a2.mags.50_fast.reloadSpeedTier",
+    "WEAPON_MAG.m121a2.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m123k.mags.100_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m123k.mags.200_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m16a4.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.m16a4.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m16a4.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.m16a4.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m16a4.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m16a4.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.m16a4.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m2010esr.mags.5_fast.reloadSpeedTier",
+    "WEAPON_MAG.m2010esr.mags.5_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m2010esr.mags.8_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m240l.mags.100_rnd.tacRldOverrideMs",
+    "WEAPON_MAG.m240l.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m240l.mags.75_rnd.tacRldOverrideMs",
+    "WEAPON_MAG.m250.mags.100_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m250.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m277.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m277.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.m277.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m277.mags.25_fast.reloadSpeedTier",
+    "WEAPON_MAG.m277.mags.25_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m277.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m357trait.mags.8_fast.reloadSpeedTier",
+    "WEAPON_MAG.m357trait.mags.8_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m39emr.mags.15_fast.reloadSpeedTier",
+    "WEAPON_MAG.m39emr.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m39emr.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.m39emr.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m39emr.mags.25_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m417a2.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m417a2.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.m417a2.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m417a2.mags.25_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m433.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.m433.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m433.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.m433.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m433.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m433.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.m433.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m44.mags.6_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m45a1.mags.11_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m45a1.mags.7_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m4a1.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.m4a1.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m4a1.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.m4a1.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m4a1.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m4a1.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.m4a1.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m60.mags.100_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m60.mags.50_rnd.tacRldOverrideMs",
+    "WEAPON_MAG.m87a1.mags.5_fast.reloadSpeedTier",
+    "WEAPON_MAG.m87a1.mags.5_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m87a1.mags.6_rnd.reloadSpeedTier",
+    "WEAPON_MAG.m87a1.mags.7_rnd.reloadSpeedTier",
+    "WEAPON_MAG.miniscout.mags.10_fast.reloadSpeedTier",
+    "WEAPON_MAG.miniscout.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.miniscout.mags.15_fast.reloadSpeedTier",
+    "WEAPON_MAG.miniscout.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.miniscout.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.miniscout.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.nvo228e.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.nvo228e.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.nvo228e.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.nvo228e.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.nvo228e.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.nvo228e.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.nvo228e.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.p18.mags.17_rnd.reloadSpeedTier",
+    "WEAPON_MAG.p18.mags.21_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pp19.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.pp19.mags.20_fast.suspectedGameBug",
+    "WEAPON_MAG.pp19.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.pp19.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pp19.mags.35_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pp19.mags.53_rnd.tacRldOverrideMs",
+    "WEAPON_MAG.psr.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.psr.mags.7_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pw5a3.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pw5a3.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.pw5a3.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pw5a3.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pw7a2.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pw7a2.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.pw7a2.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.pw7a2.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.qbz192.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.qbz192.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.qbz192.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.qbz192.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.45_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.60_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpk74m.mags.95_rnd.tacRldOverrideMs",
+    "WEAPON_MAG.rpkm.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.rpkm.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpkm.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpkm.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.rpkm.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpkm.mags.60_rnd.reloadSpeedTier",
+    "WEAPON_MAG.rpkm.mags.75_rnd.reloadSpeedTier",
+    "WEAPON_MAG.scw10.mags.15_fast.reloadSpeedTier",
+    "WEAPON_MAG.scw10.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.scw10.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.scw10.mags.25_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sg553r.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.sg553r.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sg553r.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.sg553r.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sg553r.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sg553r.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.sg553r.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sgx.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.sgx.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sgx.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sgx.mags.41_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sl9.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sl9.mags.60_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor300sc.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.sor300sc.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor300sc.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.sor300sc.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor300sc.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor300sc.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.sor300sc.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.sor556.mags.45_fast.reloadSpeedTier",
+    "WEAPON_MAG.sv98.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.svdm.mags.10_fast.reloadSpeedTier",
+    "WEAPON_MAG.svdm.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.svdm.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.svdm.mags.5_rnd.reloadSpeedTier",
+    "WEAPON_MAG.svk86.mags.10_fast.reloadSpeedTier",
+    "WEAPON_MAG.svk86.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.tr7.mags.10_fast.reloadSpeedTier",
+    "WEAPON_MAG.tr7.mags.15_rnd.reloadSpeedTier",
+    "WEAPON_MAG.tr7.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.tr7.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.tr7.mags.25_fast.reloadSpeedTier",
+    "WEAPON_MAG.tr7.mags.25_rnd.reloadSpeedTier",
+    "WEAPON_MAG.tr7.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.umg40.mags.25_fast.reloadSpeedTier",
+    "WEAPON_MAG.umg40.mags.25_rnd.reloadSpeedTier",
+    "WEAPON_MAG.umg40.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.umg40.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.umg40.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.usg90.mags.50_rnd.reloadSpeedTier",
+    "WEAPON_MAG.vcr2.mags.20_fast.reloadSpeedTier",
+    "WEAPON_MAG.vcr2.mags.20_rnd.reloadSpeedTier",
+    "WEAPON_MAG.vcr2.mags.30_fast.reloadSpeedTier",
+    "WEAPON_MAG.vcr2.mags.30_rnd.reloadSpeedTier",
+    "WEAPON_MAG.vcr2.mags.36_rnd.reloadSpeedTier",
+    "WEAPON_MAG.vcr2.mags.40_fast.reloadSpeedTier",
+    "WEAPON_MAG.vcr2.mags.40_rnd.reloadSpeedTier",
+    "WEAPON_MAG.vz61.mags.10_rnd.reloadSpeedTier",
+    "WEAPON_MAG.vz61.mags.20_rnd.reloadSpeedTier"
+  ],
+  "perWeapon": {
+    "ak205": {
+      "rawSelectableCases": 18144000,
+      "reducedComparisonCases": 3920,
+      "overBudgetCases": 16729229,
+      "reducedCases": 3920,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 80
+        },
+        {
+          "name": "all-sight",
+          "cases": 240
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 800
+        },
+        {
+          "name": "all-barrel",
+          "cases": 240
+        },
+        {
+          "name": "all-grip",
+          "cases": 1200
+        },
+        {
+          "name": "all-laser",
+          "cases": 560
+        },
+        {
+          "name": "all-light",
+          "cases": 320
+        },
+        {
+          "name": "all-ammo",
+          "cases": 480
+        }
+      ]
+    },
+    "ak4d": {
+      "rawSelectableCases": 11970000,
+      "reducedComparisonCases": 1620,
+      "overBudgetCases": 9490429,
+      "reducedCases": 1620,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 30
+        },
+        {
+          "name": "all-sight",
+          "cases": 90
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 300
+        },
+        {
+          "name": "all-barrel",
+          "cases": 150
+        },
+        {
+          "name": "all-grip",
+          "cases": 570
+        },
+        {
+          "name": "all-laser",
+          "cases": 210
+        },
+        {
+          "name": "all-light",
+          "cases": 120
+        },
+        {
+          "name": "all-ammo",
+          "cases": 150
+        }
+      ]
+    },
+    "b36a4": {
+      "rawSelectableCases": 32659200,
+      "reducedComparisonCases": 3078,
+      "overBudgetCases": 27902934,
+      "reducedCases": 3078,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 54
+        },
+        {
+          "name": "all-sight",
+          "cases": 162
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 540
+        },
+        {
+          "name": "all-barrel",
+          "cases": 324
+        },
+        {
+          "name": "all-grip",
+          "cases": 1080
+        },
+        {
+          "name": "all-laser",
+          "cases": 378
+        },
+        {
+          "name": "all-light",
+          "cases": 216
+        },
+        {
+          "name": "all-ammo",
+          "cases": 324
+        }
+      ]
+    },
+    "cz3a1": {
+      "rawSelectableCases": 5241600,
+      "reducedComparisonCases": 1800,
+      "overBudgetCases": 4229833,
+      "reducedCases": 1800,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 40
+        },
+        {
+          "name": "all-sight",
+          "cases": 120
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 400
+        },
+        {
+          "name": "all-barrel",
+          "cases": 120
+        },
+        {
+          "name": "all-grip",
+          "cases": 520
+        },
+        {
+          "name": "all-laser",
+          "cases": 280
+        },
+        {
+          "name": "all-light",
+          "cases": 160
+        },
+        {
+          "name": "all-ammo",
+          "cases": 160
+        }
+      ]
+    },
+    "db12": {
+      "rawSelectableCases": 26460,
+      "reducedComparisonCases": 74,
+      "overBudgetCases": 20030,
+      "reducedCases": 74,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 2
+        },
+        {
+          "name": "all-sight",
+          "cases": 6
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 6
+        },
+        {
+          "name": "all-barrel",
+          "cases": 2
+        },
+        {
+          "name": "all-grip",
+          "cases": 28
+        },
+        {
+          "name": "all-laser",
+          "cases": 14
+        },
+        {
+          "name": "all-light",
+          "cases": 10
+        },
+        {
+          "name": "all-ammo",
+          "cases": 6
+        }
+      ]
+    },
+    "drsiar": {
+      "rawSelectableCases": 37920960,
+      "reducedComparisonCases": 4032,
+      "overBudgetCases": 34792332,
+      "reducedCases": 4032,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 72
+        },
+        {
+          "name": "all-sight",
+          "cases": 216
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 792
+        },
+        {
+          "name": "all-barrel",
+          "cases": 432
+        },
+        {
+          "name": "all-grip",
+          "cases": 1368
+        },
+        {
+          "name": "all-laser",
+          "cases": 504
+        },
+        {
+          "name": "all-light",
+          "cases": 288
+        },
+        {
+          "name": "all-ammo",
+          "cases": 360
+        }
+      ]
+    },
+    "es57": {
+      "rawSelectableCases": 2560,
+      "reducedComparisonCases": 304,
+      "overBudgetCases": 575,
+      "reducedCases": 304,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 16
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 80
+        },
+        {
+          "name": "all-barrel",
+          "cases": 32
+        },
+        {
+          "name": "all-grip",
+          "cases": 16
+        },
+        {
+          "name": "all-laser",
+          "cases": 64
+        },
+        {
+          "name": "all-light",
+          "cases": 16
+        },
+        {
+          "name": "all-ammo",
+          "cases": 64
+        }
+      ]
+    },
+    "ggh22": {
+      "rawSelectableCases": 5760,
+      "reducedComparisonCases": 684,
+      "overBudgetCases": 685,
+      "reducedCases": 684,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 36
+        },
+        {
+          "name": "all-sight",
+          "cases": 36
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 180
+        },
+        {
+          "name": "all-barrel",
+          "cases": 72
+        },
+        {
+          "name": "all-grip",
+          "cases": 36
+        },
+        {
+          "name": "all-laser",
+          "cases": 144
+        },
+        {
+          "name": "all-light",
+          "cases": 36
+        },
+        {
+          "name": "all-ammo",
+          "cases": 144
+        }
+      ]
+    },
+    "grtbc": {
+      "rawSelectableCases": 3564000,
+      "reducedComparisonCases": 4200,
+      "overBudgetCases": 2946080,
+      "reducedCases": 4200,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 100
+        },
+        {
+          "name": "all-sight",
+          "cases": 300
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 1100
+        },
+        {
+          "name": "all-barrel",
+          "cases": 300
+        },
+        {
+          "name": "all-grip",
+          "cases": 1200
+        },
+        {
+          "name": "all-laser",
+          "cases": 600
+        },
+        {
+          "name": "all-light",
+          "cases": 100
+        },
+        {
+          "name": "all-ammo",
+          "cases": 500
+        }
+      ]
+    },
+    "grtcps": {
+      "rawSelectableCases": 7983360,
+      "reducedComparisonCases": 880,
+      "overBudgetCases": 6538430,
+      "reducedCases": 880,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 48
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 176
+        },
+        {
+          "name": "all-barrel",
+          "cases": 64
+        },
+        {
+          "name": "all-grip",
+          "cases": 288
+        },
+        {
+          "name": "all-laser",
+          "cases": 112
+        },
+        {
+          "name": "all-light",
+          "cases": 80
+        },
+        {
+          "name": "all-ammo",
+          "cases": 96
+        }
+      ]
+    },
+    "kord6p67": {
+      "rawSelectableCases": 10886400,
+      "reducedComparisonCases": 2184,
+      "overBudgetCases": 9873978,
+      "reducedCases": 2184,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 42
+        },
+        {
+          "name": "all-sight",
+          "cases": 126
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 420
+        },
+        {
+          "name": "all-barrel",
+          "cases": 126
+        },
+        {
+          "name": "all-grip",
+          "cases": 756
+        },
+        {
+          "name": "all-laser",
+          "cases": 336
+        },
+        {
+          "name": "all-light",
+          "cases": 168
+        },
+        {
+          "name": "all-ammo",
+          "cases": 210
+        }
+      ]
+    },
+    "ks18k": {
+      "rawSelectableCases": 524160,
+      "reducedComparisonCases": 608,
+      "overBudgetCases": 451200,
+      "reducedCases": 608,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 48
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 80
+        },
+        {
+          "name": "all-barrel",
+          "cases": 32
+        },
+        {
+          "name": "all-grip",
+          "cases": 208
+        },
+        {
+          "name": "all-laser",
+          "cases": 112
+        },
+        {
+          "name": "all-light",
+          "cases": 64
+        },
+        {
+          "name": "all-ammo",
+          "cases": 48
+        }
+      ]
+    },
+    "kts100": {
+      "rawSelectableCases": 11547360,
+      "reducedComparisonCases": 1944,
+      "overBudgetCases": 9201549,
+      "reducedCases": 1944,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 36
+        },
+        {
+          "name": "all-sight",
+          "cases": 108
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 396
+        },
+        {
+          "name": "all-barrel",
+          "cases": 108
+        },
+        {
+          "name": "all-grip",
+          "cases": 648
+        },
+        {
+          "name": "all-laser",
+          "cases": 324
+        },
+        {
+          "name": "all-light",
+          "cases": 144
+        },
+        {
+          "name": "all-ammo",
+          "cases": 180
+        }
+      ]
+    },
+    "kv9": {
+      "rawSelectableCases": 2096640,
+      "reducedComparisonCases": 720,
+      "overBudgetCases": 1828522,
+      "reducedCases": 720,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 48
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 160
+        },
+        {
+          "name": "all-barrel",
+          "cases": 48
+        },
+        {
+          "name": "all-grip",
+          "cases": 208
+        },
+        {
+          "name": "all-laser",
+          "cases": 112
+        },
+        {
+          "name": "all-light",
+          "cases": 64
+        },
+        {
+          "name": "all-ammo",
+          "cases": 64
+        }
+      ]
+    },
+    "l110": {
+      "rawSelectableCases": 3193344,
+      "reducedComparisonCases": 816,
+      "overBudgetCases": 2733649,
+      "reducedCases": 816,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 48
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 176
+        },
+        {
+          "name": "all-barrel",
+          "cases": 48
+        },
+        {
+          "name": "all-grip",
+          "cases": 288
+        },
+        {
+          "name": "all-laser",
+          "cases": 112
+        },
+        {
+          "name": "all-light",
+          "cases": 64
+        },
+        {
+          "name": "all-ammo",
+          "cases": 64
+        }
+      ]
+    },
+    "l115": {
+      "rawSelectableCases": 1693440,
+      "reducedComparisonCases": 702,
+      "overBudgetCases": 1270750,
+      "reducedCases": 702,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 18
+        },
+        {
+          "name": "all-sight",
+          "cases": 54
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 144
+        },
+        {
+          "name": "all-barrel",
+          "cases": 72
+        },
+        {
+          "name": "all-grip",
+          "cases": 126
+        },
+        {
+          "name": "all-laser",
+          "cases": 126
+        },
+        {
+          "name": "all-light",
+          "cases": 90
+        },
+        {
+          "name": "all-ammo",
+          "cases": 72
+        }
+      ]
+    },
+    "l85a3": {
+      "rawSelectableCases": 23950080,
+      "reducedComparisonCases": 2088,
+      "overBudgetCases": 20296720,
+      "reducedCases": 2088,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 36
+        },
+        {
+          "name": "all-sight",
+          "cases": 108
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 396
+        },
+        {
+          "name": "all-barrel",
+          "cases": 216
+        },
+        {
+          "name": "all-grip",
+          "cases": 720
+        },
+        {
+          "name": "all-laser",
+          "cases": 252
+        },
+        {
+          "name": "all-light",
+          "cases": 144
+        },
+        {
+          "name": "all-ammo",
+          "cases": 216
+        }
+      ]
+    },
+    "lmr27": {
+      "rawSelectableCases": 7900200,
+      "reducedComparisonCases": 1296,
+      "overBudgetCases": 7103080,
+      "reducedCases": 1296,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 24
+        },
+        {
+          "name": "all-sight",
+          "cases": 72
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 264
+        },
+        {
+          "name": "all-barrel",
+          "cases": 72
+        },
+        {
+          "name": "all-grip",
+          "cases": 456
+        },
+        {
+          "name": "all-laser",
+          "cases": 168
+        },
+        {
+          "name": "all-light",
+          "cases": 120
+        },
+        {
+          "name": "all-ammo",
+          "cases": 120
+        }
+      ]
+    },
+    "m1014": {
+      "rawSelectableCases": 63504,
+      "reducedComparisonCases": 216,
+      "overBudgetCases": 52688,
+      "reducedCases": 216,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 6
+        },
+        {
+          "name": "all-sight",
+          "cases": 18
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 18
+        },
+        {
+          "name": "all-barrel",
+          "cases": 6
+        },
+        {
+          "name": "all-grip",
+          "cases": 84
+        },
+        {
+          "name": "all-laser",
+          "cases": 42
+        },
+        {
+          "name": "all-light",
+          "cases": 24
+        },
+        {
+          "name": "all-ammo",
+          "cases": 18
+        }
+      ]
+    },
+    "m121a2": {
+      "rawSelectableCases": 1360800,
+      "reducedComparisonCases": 306,
+      "overBudgetCases": 1040761,
+      "reducedCases": 306,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 6
+        },
+        {
+          "name": "all-sight",
+          "cases": 18
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 60
+        },
+        {
+          "name": "all-barrel",
+          "cases": 18
+        },
+        {
+          "name": "all-grip",
+          "cases": 108
+        },
+        {
+          "name": "all-laser",
+          "cases": 42
+        },
+        {
+          "name": "all-light",
+          "cases": 24
+        },
+        {
+          "name": "all-ammo",
+          "cases": 30
+        }
+      ]
+    },
+    "m123k": {
+      "rawSelectableCases": 685440,
+      "reducedComparisonCases": 196,
+      "overBudgetCases": 541709,
+      "reducedCases": 196,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 4
+        },
+        {
+          "name": "all-sight",
+          "cases": 12
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 40
+        },
+        {
+          "name": "all-barrel",
+          "cases": 12
+        },
+        {
+          "name": "all-grip",
+          "cases": 68
+        },
+        {
+          "name": "all-laser",
+          "cases": 28
+        },
+        {
+          "name": "all-light",
+          "cases": 16
+        },
+        {
+          "name": "all-ammo",
+          "cases": 16
+        }
+      ]
+    },
+    "m16a4": {
+      "rawSelectableCases": 46569600,
+      "reducedComparisonCases": 4788,
+      "overBudgetCases": 38182898,
+      "reducedCases": 4788,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 84
+        },
+        {
+          "name": "all-sight",
+          "cases": 252
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 924
+        },
+        {
+          "name": "all-barrel",
+          "cases": 504
+        },
+        {
+          "name": "all-grip",
+          "cases": 1680
+        },
+        {
+          "name": "all-laser",
+          "cases": 588
+        },
+        {
+          "name": "all-light",
+          "cases": 336
+        },
+        {
+          "name": "all-ammo",
+          "cases": 420
+        }
+      ]
+    },
+    "m2010esr": {
+      "rawSelectableCases": 1058400,
+      "reducedComparisonCases": 480,
+      "overBudgetCases": 815226,
+      "reducedCases": 480,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 12
+        },
+        {
+          "name": "all-sight",
+          "cases": 36
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 120
+        },
+        {
+          "name": "all-barrel",
+          "cases": 36
+        },
+        {
+          "name": "all-grip",
+          "cases": 84
+        },
+        {
+          "name": "all-laser",
+          "cases": 84
+        },
+        {
+          "name": "all-light",
+          "cases": 60
+        },
+        {
+          "name": "all-ammo",
+          "cases": 48
+        }
+      ]
+    },
+    "m240l": {
+      "rawSelectableCases": 2449440,
+      "reducedComparisonCases": 600,
+      "overBudgetCases": 1891915,
+      "reducedCases": 600,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 12
+        },
+        {
+          "name": "all-sight",
+          "cases": 36
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 108
+        },
+        {
+          "name": "all-barrel",
+          "cases": 36
+        },
+        {
+          "name": "all-grip",
+          "cases": 216
+        },
+        {
+          "name": "all-laser",
+          "cases": 84
+        },
+        {
+          "name": "all-light",
+          "cases": 48
+        },
+        {
+          "name": "all-ammo",
+          "cases": 60
+        }
+      ]
+    },
+    "m250": {
+      "rawSelectableCases": 561792,
+      "reducedComparisonCases": 204,
+      "overBudgetCases": 430298,
+      "reducedCases": 204,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 4
+        },
+        {
+          "name": "all-sight",
+          "cases": 12
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 44
+        },
+        {
+          "name": "all-barrel",
+          "cases": 8
+        },
+        {
+          "name": "all-grip",
+          "cases": 76
+        },
+        {
+          "name": "all-laser",
+          "cases": 28
+        },
+        {
+          "name": "all-light",
+          "cases": 16
+        },
+        {
+          "name": "all-ammo",
+          "cases": 16
+        }
+      ]
+    },
+    "m277": {
+      "rawSelectableCases": 17740800,
+      "reducedComparisonCases": 2640,
+      "overBudgetCases": 14654981,
+      "reducedCases": 2640,
+      "differenceCases": 110,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 48
+        },
+        {
+          "name": "all-sight",
+          "cases": 144
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 528
+        },
+        {
+          "name": "all-barrel",
+          "cases": 240
+        },
+        {
+          "name": "all-grip",
+          "cases": 960
+        },
+        {
+          "name": "all-laser",
+          "cases": 336
+        },
+        {
+          "name": "all-light",
+          "cases": 192
+        },
+        {
+          "name": "all-ammo",
+          "cases": 192
+        }
+      ]
+    },
+    "m357trait": {
+      "rawSelectableCases": 128,
+      "reducedComparisonCases": 192,
+      "overBudgetCases": 0,
+      "reducedCases": 192,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 16
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 16
+        },
+        {
+          "name": "all-barrel",
+          "cases": 16
+        },
+        {
+          "name": "all-grip",
+          "cases": 16
+        },
+        {
+          "name": "all-laser",
+          "cases": 64
+        },
+        {
+          "name": "all-light",
+          "cases": 16
+        },
+        {
+          "name": "all-ammo",
+          "cases": 32
+        }
+      ]
+    },
+    "m39emr": {
+      "rawSelectableCases": 11850300,
+      "reducedComparisonCases": 1650,
+      "overBudgetCases": 8819606,
+      "reducedCases": 1650,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 30
+        },
+        {
+          "name": "all-sight",
+          "cases": 90
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 330
+        },
+        {
+          "name": "all-barrel",
+          "cases": 90
+        },
+        {
+          "name": "all-grip",
+          "cases": 570
+        },
+        {
+          "name": "all-laser",
+          "cases": 210
+        },
+        {
+          "name": "all-light",
+          "cases": 150
+        },
+        {
+          "name": "all-ammo",
+          "cases": 180
+        }
+      ]
+    },
+    "m417a2": {
+      "rawSelectableCases": 8064000,
+      "reducedComparisonCases": 1696,
+      "overBudgetCases": 6403746,
+      "reducedCases": 1696,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 32
+        },
+        {
+          "name": "all-sight",
+          "cases": 96
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 320
+        },
+        {
+          "name": "all-barrel",
+          "cases": 96
+        },
+        {
+          "name": "all-grip",
+          "cases": 640
+        },
+        {
+          "name": "all-laser",
+          "cases": 224
+        },
+        {
+          "name": "all-light",
+          "cases": 128
+        },
+        {
+          "name": "all-ammo",
+          "cases": 160
+        }
+      ]
+    },
+    "m433": {
+      "rawSelectableCases": 14112000,
+      "reducedComparisonCases": 2268,
+      "overBudgetCases": 11840404,
+      "reducedCases": 2268,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 42
+        },
+        {
+          "name": "all-sight",
+          "cases": 126
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 420
+        },
+        {
+          "name": "all-barrel",
+          "cases": 168
+        },
+        {
+          "name": "all-grip",
+          "cases": 840
+        },
+        {
+          "name": "all-laser",
+          "cases": 294
+        },
+        {
+          "name": "all-light",
+          "cases": 168
+        },
+        {
+          "name": "all-ammo",
+          "cases": 210
+        }
+      ]
+    },
+    "m44": {
+      "rawSelectableCases": 36,
+      "reducedComparisonCases": 66,
+      "overBudgetCases": 0,
+      "reducedCases": 66,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 6
+        },
+        {
+          "name": "all-sight",
+          "cases": 6
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 6
+        },
+        {
+          "name": "all-barrel",
+          "cases": 18
+        },
+        {
+          "name": "all-grip",
+          "cases": 6
+        },
+        {
+          "name": "all-laser",
+          "cases": 6
+        },
+        {
+          "name": "all-light",
+          "cases": 6
+        },
+        {
+          "name": "all-ammo",
+          "cases": 12
+        }
+      ]
+    },
+    "m45a1": {
+      "rawSelectableCases": 3840,
+      "reducedComparisonCases": 456,
+      "overBudgetCases": 334,
+      "reducedCases": 456,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 24
+        },
+        {
+          "name": "all-sight",
+          "cases": 24
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 120
+        },
+        {
+          "name": "all-barrel",
+          "cases": 48
+        },
+        {
+          "name": "all-grip",
+          "cases": 24
+        },
+        {
+          "name": "all-laser",
+          "cases": 96
+        },
+        {
+          "name": "all-light",
+          "cases": 24
+        },
+        {
+          "name": "all-ammo",
+          "cases": 96
+        }
+      ]
+    },
+    "m4a1": {
+      "rawSelectableCases": 31046400,
+      "reducedComparisonCases": 4620,
+      "overBudgetCases": 25170410,
+      "reducedCases": 4620,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 84
+        },
+        {
+          "name": "all-sight",
+          "cases": 252
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 924
+        },
+        {
+          "name": "all-barrel",
+          "cases": 336
+        },
+        {
+          "name": "all-grip",
+          "cases": 1680
+        },
+        {
+          "name": "all-laser",
+          "cases": 588
+        },
+        {
+          "name": "all-light",
+          "cases": 336
+        },
+        {
+          "name": "all-ammo",
+          "cases": 420
+        }
+      ]
+    },
+    "m60": {
+      "rawSelectableCases": 3160080,
+      "reducedComparisonCases": 636,
+      "overBudgetCases": 2237334,
+      "reducedCases": 636,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 12
+        },
+        {
+          "name": "all-sight",
+          "cases": 36
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 132
+        },
+        {
+          "name": "all-barrel",
+          "cases": 36
+        },
+        {
+          "name": "all-grip",
+          "cases": 228
+        },
+        {
+          "name": "all-laser",
+          "cases": 84
+        },
+        {
+          "name": "all-light",
+          "cases": 48
+        },
+        {
+          "name": "all-ammo",
+          "cases": 60
+        }
+      ]
+    },
+    "m87a1": {
+      "rawSelectableCases": 84672,
+      "reducedComparisonCases": 288,
+      "overBudgetCases": 71330,
+      "reducedCases": 288,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 8
+        },
+        {
+          "name": "all-sight",
+          "cases": 24
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 24
+        },
+        {
+          "name": "all-barrel",
+          "cases": 8
+        },
+        {
+          "name": "all-grip",
+          "cases": 112
+        },
+        {
+          "name": "all-laser",
+          "cases": 56
+        },
+        {
+          "name": "all-light",
+          "cases": 32
+        },
+        {
+          "name": "all-ammo",
+          "cases": 24
+        }
+      ]
+    },
+    "miniscout": {
+      "rawSelectableCases": 1058400,
+      "reducedComparisonCases": 480,
+      "overBudgetCases": 834635,
+      "reducedCases": 480,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 12
+        },
+        {
+          "name": "all-sight",
+          "cases": 36
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 120
+        },
+        {
+          "name": "all-barrel",
+          "cases": 48
+        },
+        {
+          "name": "all-grip",
+          "cases": 84
+        },
+        {
+          "name": "all-laser",
+          "cases": 84
+        },
+        {
+          "name": "all-light",
+          "cases": 60
+        },
+        {
+          "name": "all-ammo",
+          "cases": 36
+        }
+      ]
+    },
+    "nvo228e": {
+      "rawSelectableCases": 13970880,
+      "reducedComparisonCases": 2226,
+      "overBudgetCases": 11525106,
+      "reducedCases": 2226,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 42
+        },
+        {
+          "name": "all-sight",
+          "cases": 126
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 462
+        },
+        {
+          "name": "all-barrel",
+          "cases": 168
+        },
+        {
+          "name": "all-grip",
+          "cases": 756
+        },
+        {
+          "name": "all-laser",
+          "cases": 294
+        },
+        {
+          "name": "all-light",
+          "cases": 168
+        },
+        {
+          "name": "all-ammo",
+          "cases": 210
+        }
+      ]
+    },
+    "p18": {
+      "rawSelectableCases": 3840,
+      "reducedComparisonCases": 456,
+      "overBudgetCases": 129,
+      "reducedCases": 456,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 24
+        },
+        {
+          "name": "all-sight",
+          "cases": 24
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 120
+        },
+        {
+          "name": "all-barrel",
+          "cases": 48
+        },
+        {
+          "name": "all-grip",
+          "cases": 24
+        },
+        {
+          "name": "all-laser",
+          "cases": 96
+        },
+        {
+          "name": "all-light",
+          "cases": 24
+        },
+        {
+          "name": "all-ammo",
+          "cases": 96
+        }
+      ]
+    },
+    "pp19": {
+      "rawSelectableCases": 917280,
+      "reducedComparisonCases": 1200,
+      "overBudgetCases": 549355,
+      "reducedCases": 1200,
+      "differenceCases": 80,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 30
+        },
+        {
+          "name": "all-sight",
+          "cases": 90
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 210
+        },
+        {
+          "name": "all-barrel",
+          "cases": 120
+        },
+        {
+          "name": "all-grip",
+          "cases": 390
+        },
+        {
+          "name": "all-laser",
+          "cases": 210
+        },
+        {
+          "name": "all-light",
+          "cases": 120
+        },
+        {
+          "name": "all-ammo",
+          "cases": 30
+        }
+      ]
+    },
+    "psr": {
+      "rawSelectableCases": 564480,
+      "reducedComparisonCases": 444,
+      "overBudgetCases": 338546,
+      "reducedCases": 444,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 12
+        },
+        {
+          "name": "all-sight",
+          "cases": 36
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 96
+        },
+        {
+          "name": "all-barrel",
+          "cases": 24
+        },
+        {
+          "name": "all-grip",
+          "cases": 84
+        },
+        {
+          "name": "all-laser",
+          "cases": 84
+        },
+        {
+          "name": "all-light",
+          "cases": 60
+        },
+        {
+          "name": "all-ammo",
+          "cases": 48
+        }
+      ]
+    },
+    "pw5a3": {
+      "rawSelectableCases": 3494400,
+      "reducedComparisonCases": 1440,
+      "overBudgetCases": 2850302,
+      "reducedCases": 1440,
+      "differenceCases": 90,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 32
+        },
+        {
+          "name": "all-sight",
+          "cases": 96
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 320
+        },
+        {
+          "name": "all-barrel",
+          "cases": 64
+        },
+        {
+          "name": "all-grip",
+          "cases": 416
+        },
+        {
+          "name": "all-laser",
+          "cases": 224
+        },
+        {
+          "name": "all-light",
+          "cases": 128
+        },
+        {
+          "name": "all-ammo",
+          "cases": 160
+        }
+      ]
+    },
+    "pw7a2": {
+      "rawSelectableCases": 1921920,
+      "reducedComparisonCases": 736,
+      "overBudgetCases": 1399504,
+      "reducedCases": 736,
+      "differenceCases": 92,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 48
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 176
+        },
+        {
+          "name": "all-barrel",
+          "cases": 32
+        },
+        {
+          "name": "all-grip",
+          "cases": 208
+        },
+        {
+          "name": "all-laser",
+          "cases": 112
+        },
+        {
+          "name": "all-light",
+          "cases": 64
+        },
+        {
+          "name": "all-ammo",
+          "cases": 80
+        }
+      ]
+    },
+    "qbz192": {
+      "rawSelectableCases": 2322432,
+      "reducedComparisonCases": 1440,
+      "overBudgetCases": 1748456,
+      "reducedCases": 1440,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 32
+        },
+        {
+          "name": "all-sight",
+          "cases": 96
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 128
+        },
+        {
+          "name": "all-barrel",
+          "cases": 64
+        },
+        {
+          "name": "all-grip",
+          "cases": 576
+        },
+        {
+          "name": "all-laser",
+          "cases": 224
+        },
+        {
+          "name": "all-light",
+          "cases": 128
+        },
+        {
+          "name": "all-ammo",
+          "cases": 192
+        }
+      ]
+    },
+    "rpk74m": {
+      "rawSelectableCases": 26966016,
+      "reducedComparisonCases": 3520,
+      "overBudgetCases": 21474693,
+      "reducedCases": 3520,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 64
+        },
+        {
+          "name": "all-sight",
+          "cases": 192
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 704
+        },
+        {
+          "name": "all-barrel",
+          "cases": 256
+        },
+        {
+          "name": "all-grip",
+          "cases": 1216
+        },
+        {
+          "name": "all-laser",
+          "cases": 448
+        },
+        {
+          "name": "all-light",
+          "cases": 256
+        },
+        {
+          "name": "all-ammo",
+          "cases": 384
+        }
+      ]
+    },
+    "rpkm": {
+      "rawSelectableCases": 29494080,
+      "reducedComparisonCases": 3136,
+      "overBudgetCases": 24899307,
+      "reducedCases": 3136,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 56
+        },
+        {
+          "name": "all-sight",
+          "cases": 168
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 616
+        },
+        {
+          "name": "all-barrel",
+          "cases": 280
+        },
+        {
+          "name": "all-grip",
+          "cases": 1064
+        },
+        {
+          "name": "all-laser",
+          "cases": 392
+        },
+        {
+          "name": "all-light",
+          "cases": 224
+        },
+        {
+          "name": "all-ammo",
+          "cases": 336
+        }
+      ]
+    },
+    "scw10": {
+      "rawSelectableCases": 2096640,
+      "reducedComparisonCases": 720,
+      "overBudgetCases": 1770467,
+      "reducedCases": 720,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 48
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 160
+        },
+        {
+          "name": "all-barrel",
+          "cases": 48
+        },
+        {
+          "name": "all-grip",
+          "cases": 208
+        },
+        {
+          "name": "all-laser",
+          "cases": 112
+        },
+        {
+          "name": "all-light",
+          "cases": 64
+        },
+        {
+          "name": "all-ammo",
+          "cases": 64
+        }
+      ]
+    },
+    "sg553r": {
+      "rawSelectableCases": 10866240,
+      "reducedComparisonCases": 2688,
+      "overBudgetCases": 9215112,
+      "reducedCases": 2688,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 56
+        },
+        {
+          "name": "all-sight",
+          "cases": 168
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 616
+        },
+        {
+          "name": "all-barrel",
+          "cases": 168
+        },
+        {
+          "name": "all-grip",
+          "cases": 784
+        },
+        {
+          "name": "all-laser",
+          "cases": 392
+        },
+        {
+          "name": "all-light",
+          "cases": 224
+        },
+        {
+          "name": "all-ammo",
+          "cases": 280
+        }
+      ]
+    },
+    "sgx": {
+      "rawSelectableCases": 2795520,
+      "reducedComparisonCases": 736,
+      "overBudgetCases": 2227168,
+      "reducedCases": 736,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 16
+        },
+        {
+          "name": "all-sight",
+          "cases": 48
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 160
+        },
+        {
+          "name": "all-barrel",
+          "cases": 64
+        },
+        {
+          "name": "all-grip",
+          "cases": 208
+        },
+        {
+          "name": "all-laser",
+          "cases": 112
+        },
+        {
+          "name": "all-light",
+          "cases": 64
+        },
+        {
+          "name": "all-ammo",
+          "cases": 64
+        }
+      ]
+    },
+    "sl9": {
+      "rawSelectableCases": 864000,
+      "reducedComparisonCases": 936,
+      "overBudgetCases": 697834,
+      "reducedCases": 936,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 24
+        },
+        {
+          "name": "all-sight",
+          "cases": 72
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 240
+        },
+        {
+          "name": "all-barrel",
+          "cases": 120
+        },
+        {
+          "name": "all-grip",
+          "cases": 192
+        },
+        {
+          "name": "all-laser",
+          "cases": 144
+        },
+        {
+          "name": "all-light",
+          "cases": 24
+        },
+        {
+          "name": "all-ammo",
+          "cases": 120
+        }
+      ]
+    },
+    "sor300sc": {
+      "rawSelectableCases": 20697600,
+      "reducedComparisonCases": 3570,
+      "overBudgetCases": 17439885,
+      "reducedCases": 3570,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 70
+        },
+        {
+          "name": "all-sight",
+          "cases": 210
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 770
+        },
+        {
+          "name": "all-barrel",
+          "cases": 280
+        },
+        {
+          "name": "all-grip",
+          "cases": 1120
+        },
+        {
+          "name": "all-laser",
+          "cases": 490
+        },
+        {
+          "name": "all-light",
+          "cases": 280
+        },
+        {
+          "name": "all-ammo",
+          "cases": 350
+        }
+      ]
+    },
+    "sor556": {
+      "rawSelectableCases": 44352000,
+      "reducedComparisonCases": 4560,
+      "overBudgetCases": 36373157,
+      "reducedCases": 4560,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 80
+        },
+        {
+          "name": "all-sight",
+          "cases": 240
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 880
+        },
+        {
+          "name": "all-barrel",
+          "cases": 400
+        },
+        {
+          "name": "all-grip",
+          "cases": 1600
+        },
+        {
+          "name": "all-laser",
+          "cases": 560
+        },
+        {
+          "name": "all-light",
+          "cases": 320
+        },
+        {
+          "name": "all-ammo",
+          "cases": 480
+        }
+      ]
+    },
+    "sv98": {
+      "rawSelectableCases": 282240,
+      "reducedComparisonCases": 210,
+      "overBudgetCases": 163624,
+      "reducedCases": 210,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 6
+        },
+        {
+          "name": "all-sight",
+          "cases": 18
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 24
+        },
+        {
+          "name": "all-barrel",
+          "cases": 24
+        },
+        {
+          "name": "all-grip",
+          "cases": 42
+        },
+        {
+          "name": "all-laser",
+          "cases": 42
+        },
+        {
+          "name": "all-light",
+          "cases": 30
+        },
+        {
+          "name": "all-ammo",
+          "cases": 24
+        }
+      ]
+    },
+    "svdm": {
+      "rawSelectableCases": 9072000,
+      "reducedComparisonCases": 1272,
+      "overBudgetCases": 7198925,
+      "reducedCases": 1272,
+      "differenceCases": 106,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 24
+        },
+        {
+          "name": "all-sight",
+          "cases": 72
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 240
+        },
+        {
+          "name": "all-barrel",
+          "cases": 96
+        },
+        {
+          "name": "all-grip",
+          "cases": 432
+        },
+        {
+          "name": "all-laser",
+          "cases": 168
+        },
+        {
+          "name": "all-light",
+          "cases": 120
+        },
+        {
+          "name": "all-ammo",
+          "cases": 120
+        }
+      ]
+    },
+    "svk86": {
+      "rawSelectableCases": 1134000,
+      "reducedComparisonCases": 208,
+      "overBudgetCases": 752973,
+      "reducedCases": 208,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 4
+        },
+        {
+          "name": "all-sight",
+          "cases": 12
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 40
+        },
+        {
+          "name": "all-barrel",
+          "cases": 12
+        },
+        {
+          "name": "all-grip",
+          "cases": 72
+        },
+        {
+          "name": "all-laser",
+          "cases": 28
+        },
+        {
+          "name": "all-light",
+          "cases": 20
+        },
+        {
+          "name": "all-ammo",
+          "cases": 20
+        }
+      ]
+    },
+    "tr7": {
+      "rawSelectableCases": 11642400,
+      "reducedComparisonCases": 2100,
+      "overBudgetCases": 9578699,
+      "reducedCases": 2100,
+      "differenceCases": 100,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 42
+        },
+        {
+          "name": "all-sight",
+          "cases": 126
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 462
+        },
+        {
+          "name": "all-barrel",
+          "cases": 168
+        },
+        {
+          "name": "all-grip",
+          "cases": 630
+        },
+        {
+          "name": "all-laser",
+          "cases": 294
+        },
+        {
+          "name": "all-light",
+          "cases": 168
+        },
+        {
+          "name": "all-ammo",
+          "cases": 210
+        }
+      ]
+    },
+    "umg40": {
+      "rawSelectableCases": 8190000,
+      "reducedComparisonCases": 1440,
+      "overBudgetCases": 6677588,
+      "reducedCases": 1440,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 30
+        },
+        {
+          "name": "all-sight",
+          "cases": 90
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 300
+        },
+        {
+          "name": "all-barrel",
+          "cases": 150
+        },
+        {
+          "name": "all-grip",
+          "cases": 390
+        },
+        {
+          "name": "all-laser",
+          "cases": 210
+        },
+        {
+          "name": "all-light",
+          "cases": 120
+        },
+        {
+          "name": "all-ammo",
+          "cases": 150
+        }
+      ]
+    },
+    "usg90": {
+      "rawSelectableCases": 110880,
+      "reducedComparisonCases": 216,
+      "overBudgetCases": 27766,
+      "reducedCases": 216,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 6
+        },
+        {
+          "name": "all-sight",
+          "cases": 18
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 66
+        },
+        {
+          "name": "all-barrel",
+          "cases": 24
+        },
+        {
+          "name": "all-grip",
+          "cases": 6
+        },
+        {
+          "name": "all-laser",
+          "cases": 42
+        },
+        {
+          "name": "all-light",
+          "cases": 24
+        },
+        {
+          "name": "all-ammo",
+          "cases": 30
+        }
+      ]
+    },
+    "vcr2": {
+      "rawSelectableCases": 14747040,
+      "reducedComparisonCases": 2268,
+      "overBudgetCases": 11999629,
+      "reducedCases": 2268,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 42
+        },
+        {
+          "name": "all-sight",
+          "cases": 126
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 462
+        },
+        {
+          "name": "all-barrel",
+          "cases": 168
+        },
+        {
+          "name": "all-grip",
+          "cases": 798
+        },
+        {
+          "name": "all-laser",
+          "cases": 294
+        },
+        {
+          "name": "all-light",
+          "cases": 168
+        },
+        {
+          "name": "all-ammo",
+          "cases": 210
+        }
+      ]
+    },
+    "vz61": {
+      "rawSelectableCases": 2080,
+      "reducedComparisonCases": 440,
+      "overBudgetCases": 588,
+      "reducedCases": 440,
+      "differenceCases": 0,
+      "unexplainedCases": 0,
+      "comparisonSuites": [
+        {
+          "name": "baseline",
+          "cases": 24
+        },
+        {
+          "name": "all-sight",
+          "cases": 24
+        },
+        {
+          "name": "all-muzzle",
+          "cases": 96
+        },
+        {
+          "name": "all-barrel",
+          "cases": 24
+        },
+        {
+          "name": "all-grip",
+          "cases": 24
+        },
+        {
+          "name": "all-laser",
+          "cases": 104
+        },
+        {
+          "name": "all-light",
+          "cases": 24
+        },
+        {
+          "name": "all-ammo",
+          "cases": 120
+        }
+      ]
+    }
+  },
+  "comparedOutputFields": [
+    "_adsMoveSpeedMult",
+    "_adsRecoilDecayMult",
+    "_adsRecoilReductionPct",
+    "_adsSpreadDecayBoost",
+    "_adsTimeMs",
+    "_adsTimeTierMod",
+    "_collateralMult",
+    "_deployTimeMs",
+    "_hipSpreadDecayBoost",
+    "_hipSpreadTierMod",
+    "_hsMult",
+    "_label",
+    "_laserVisible",
+    "_limbClass",
+    "_limbMult",
+    "_minimapSpot",
+    "_movingAdsMinSpreadDeg",
+    "_movingAdsSpreadTierMod",
+    "_sprintRecoveryMs",
+    "_visualRecoil",
+    "_weaponSway",
+    "_worldSpot",
+    "adsTime",
+    "bulletVel",
+    "burstBurstsPerMinute",
+    "burstRounds",
+    "burstRpm",
+    "cal",
+    "cls",
+    "damageSource",
+    "damageStatus",
+    "deployT",
+    "dmg",
+    "emptyRld",
+    "fireMode",
+    "id",
+    "mag",
+    "name",
+    "recoil",
+    "recoilDir",
+    "recoilIncAds",
+    "recoilV",
+    "recoilVar",
+    "reloadSpeed",
+    "rpm",
+    "spread",
+    "spreadDyn",
+    "spreadMax",
+    "tacRld"
+  ],
+  "fieldDifferenceCounts": {
+    "tacRld": 578
+  },
+  "differenceDigest": "eb5d873efa907d5ee09c39bf924238d329f786c5fd3db48156ac057131d83d90",
+  "differenceClassification": {
+    "manifestChangedValueKeys": [
+      "lmr27/10_fast",
+      "lmr27/10_rnd",
+      "lmr27/15_fast",
+      "lmr27/15_rnd",
+      "lmr27/20_fast",
+      "lmr27/20_rnd",
+      "m121a2/50_fast",
+      "m16a4/20_fast",
+      "m16a4/30_fast",
+      "m16a4/40_fast",
+      "m240l/100_rnd",
+      "m240l/75_rnd",
+      "m277/20_rnd",
+      "m277/30_rnd",
+      "m357trait/8_fast",
+      "m4a1/20_rnd",
+      "m4a1/36_rnd",
+      "m4a1/40_rnd",
+      "miniscout/10_fast",
+      "miniscout/15_fast",
+      "miniscout/20_fast",
+      "rpk74m/95_rnd",
+      "sv98/10_rnd"
+    ],
+    "manifestMagCatchWeapons": [
+      "ak205",
+      "es57",
+      "ggh22",
+      "l115",
+      "m45a1",
+      "p18",
+      "vz61"
+    ],
+    "manifestMagCatchStackingKeys": [
+      "m277/15_rnd/mag_catch",
+      "pp19/20_fast/mag_catch",
+      "pw5a3/20_rnd/mag_catch",
+      "pw7a2/20_rnd/mag_catch",
+      "svdm/5_rnd/mag_catch",
+      "tr7/15_rnd/mag_catch"
+    ],
+    "expectedObservedDifferenceKeys": [
+      "m277/15_rnd/mag_catch",
+      "pp19/20_fast/mag_catch",
+      "pw5a3/20_rnd/mag_catch",
+      "pw7a2/20_rnd/mag_catch",
+      "svdm/5_rnd/mag_catch",
+      "tr7/15_rnd/mag_catch"
+    ],
+    "observedDifferenceSources": {
+      "manifest.legacyMagCatchStackingDifferences:m277/15_rnd/mag_catch": 110,
+      "manifest.legacyMagCatchStackingDifferences:pp19/20_fast/mag_catch": 80,
+      "manifest.legacyMagCatchStackingDifferences:pw5a3/20_rnd/mag_catch": 90,
+      "manifest.legacyMagCatchStackingDifferences:pw7a2/20_rnd/mag_catch": 92,
+      "manifest.legacyMagCatchStackingDifferences:svdm/5_rnd/mag_catch": 106,
+      "manifest.legacyMagCatchStackingDifferences:tr7/15_rnd/mag_catch": 100
+    }
+  },
+  "namedCases": [
+    {
+      "name": "AK-205 Mag Catch",
+      "weaponId": "ak205",
+      "magazineId": "30_rnd",
+      "ergoId": "mag_catch",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "ak205/iron/none/basic/none/none/none/30_rnd/mag_catch/standard",
+      "currentTacRld": 2.337,
+      "legacyTacRld": 2.337,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "SL9 Mag Catch",
+      "weaponId": "sl9",
+      "magazineId": "30_rnd",
+      "ergoId": "mag_catch",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "sl9/iron/none/basic/none/none/none/30_rnd/mag_catch/standard",
+      "currentTacRld": 2.493,
+      "legacyTacRld": 2.493,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "KTS100 MK8 45Rnd Fast stacked tier",
+      "weaponId": "kts100",
+      "magazineId": "45_fast",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "kts100/iron/none/heavy/none/none/none/45_fast/none/standard",
+      "currentTacRld": 2.545,
+      "legacyTacRld": 2.545,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "M60 50Rnd alternate",
+      "weaponId": "m60",
+      "magazineId": "50_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "m60/iron/none/heavy/none/none/none/50_rnd/none/standard",
+      "currentTacRld": 4.534,
+      "legacyTacRld": 4.534,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "M60 100Rnd",
+      "weaponId": "m60",
+      "magazineId": "100_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "m60/iron/none/heavy/none/none/none/100_rnd/none/standard",
+      "currentTacRld": 7.35,
+      "legacyTacRld": 7.35,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "M240L 50Rnd",
+      "weaponId": "m240l",
+      "magazineId": "50_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "m240l/iron/none/heavy/none/none/none/50_rnd/none/standard",
+      "currentTacRld": 4.25,
+      "legacyTacRld": 4.25,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "M240L 75Rnd belt box",
+      "weaponId": "m240l",
+      "magazineId": "75_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "m240l/iron/none/heavy/none/none/none/75_rnd/none/standard",
+      "currentTacRld": 7.1,
+      "legacyTacRld": 7.1,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "M240L 100Rnd belt box",
+      "weaponId": "m240l",
+      "magazineId": "100_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "m240l/iron/none/heavy/none/none/none/100_rnd/none/standard",
+      "currentTacRld": 7.1,
+      "legacyTacRld": 7.1,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "PP-19 20Rnd suspected bug",
+      "weaponId": "pp19",
+      "magazineId": "20_fast",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "pp19/iron/none/basic/none/none/none/20_fast/none/standard",
+      "currentTacRld": 2.467,
+      "legacyTacRld": 2.467,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "PP-19 53Rnd override",
+      "weaponId": "pp19",
+      "magazineId": "53_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "pp19/iron/none/basic/none/none/none/53_rnd/none/standard",
+      "currentTacRld": 2.667,
+      "legacyTacRld": 2.667,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "18.5KS-K 4Rnd",
+      "weaponId": "ks18k",
+      "magazineId": "4_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "ks18k/iron/none/basic/none/none/none/4_rnd/none/buckshot",
+      "currentTacRld": 2.75,
+      "legacyTacRld": 2.75,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "18.5KS-K 4Rnd Fast",
+      "weaponId": "ks18k",
+      "magazineId": "4_fast",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "ks18k/iron/none/basic/none/none/none/4_fast/none/buckshot",
+      "currentTacRld": 2.434,
+      "legacyTacRld": 2.434,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "DB-12 tube-fed",
+      "weaponId": "db12",
+      "magazineId": "7_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "db12/iron/none/basic/none/none/none/7_rnd/none/buckshot",
+      "currentTacRld": 2.348,
+      "legacyTacRld": 2.348,
+      "diffPaths": [],
+      "tubeFedScalarNull": {
+        "currentWeaponTacRld": null,
+        "legacyWeaponTacRld": null,
+        "currentEmptyRld": null,
+        "legacyEmptyRld": null
+      }
+    },
+    {
+      "name": "M1014 tube-fed",
+      "weaponId": "m1014",
+      "magazineId": "4_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "m1014/iron/none/basic/none/none/none/4_rnd/none/buckshot",
+      "currentTacRld": 1.784,
+      "legacyTacRld": 1.784,
+      "diffPaths": [],
+      "tubeFedScalarNull": {
+        "currentWeaponTacRld": null,
+        "legacyWeaponTacRld": null,
+        "currentEmptyRld": null,
+        "legacyEmptyRld": null
+      }
+    },
+    {
+      "name": "M87A1 tube-fed",
+      "weaponId": "m87a1",
+      "magazineId": "5_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "m87a1/iron/none/basic/none/none/none/5_rnd/none/buckshot",
+      "currentTacRld": 1.334,
+      "legacyTacRld": 1.334,
+      "diffPaths": [],
+      "tubeFedScalarNull": {
+        "currentWeaponTacRld": null,
+        "legacyWeaponTacRld": null,
+        "currentEmptyRld": null,
+        "legacyEmptyRld": null
+      }
+    },
+    {
+      "name": "VZ. 61 combined laser/grip/light",
+      "weaponId": "vz61",
+      "magazineId": "10_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "fold_stubby",
+      "lightId": "none",
+      "caseKey": "vz61/iron/none/basic/none/fold_stubby/none/10_rnd/none/standard",
+      "currentTacRld": 2.134,
+      "legacyTacRld": 2.134,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "GRT-BC combined laser/light",
+      "weaponId": "grtbc",
+      "magazineId": "30_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "50mw_violet",
+      "lightId": "none",
+      "caseKey": "grtbc/iron/none/basic/none/50mw_violet/none/30_rnd/none/standard",
+      "currentTacRld": 2.5,
+      "legacyTacRld": 2.5,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "SL9 combined laser/light",
+      "weaponId": "sl9",
+      "magazineId": "30_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "50mw_violet",
+      "lightId": "none",
+      "caseKey": "sl9/iron/none/basic/none/50mw_violet/none/30_rnd/none/standard",
+      "currentTacRld": 2.65,
+      "legacyTacRld": 2.65,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "P18 combined laser/light",
+      "weaponId": "p18",
+      "magazineId": "17_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "5mw_red",
+      "lightId": "none",
+      "caseKey": "p18/iron/none/basic/none/5mw_red/none/17_rnd/none/standard",
+      "currentTacRld": 1.934,
+      "legacyTacRld": 1.934,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "ES 5.7 combined laser/light",
+      "weaponId": "es57",
+      "magazineId": "20_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "5mw_red",
+      "lightId": "none",
+      "caseKey": "es57/iron/none/basic/none/5mw_red/none/20_rnd/none/standard",
+      "currentTacRld": 2.017,
+      "legacyTacRld": 2.017,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "M45A1 combined laser/light",
+      "weaponId": "m45a1",
+      "magazineId": "7_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "5mw_red",
+      "lightId": "none",
+      "caseKey": "m45a1/iron/none/basic/none/5mw_red/none/7_rnd/none/standard",
+      "currentTacRld": 1.867,
+      "legacyTacRld": 1.867,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "GGH-22 combined laser/light",
+      "weaponId": "ggh22",
+      "magazineId": "15_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "5mw_red",
+      "lightId": "none",
+      "caseKey": "ggh22/iron/none/basic/none/5mw_red/none/15_rnd/none/standard",
+      "currentTacRld": 1.934,
+      "legacyTacRld": 1.934,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "M357 Trait combined laser/light",
+      "weaponId": "m357trait",
+      "magazineId": "8_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "5mw_red",
+      "lightId": "none",
+      "caseKey": "m357trait/iron/none/basic/none/5mw_red/none/8_rnd/none/standard",
+      "currentTacRld": 3.067,
+      "legacyTacRld": 3.067,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    },
+    {
+      "name": "USG-90 explicit empty grip",
+      "weaponId": "usg90",
+      "magazineId": "50_rnd",
+      "ergoId": "none",
+      "gripId": "none",
+      "laserId": "none",
+      "lightId": "none",
+      "caseKey": "usg90/iron/none/basic/none/none/none/50_rnd/none/standard",
+      "currentTacRld": 3,
+      "legacyTacRld": 3,
+      "diffPaths": [],
+      "tubeFedScalarNull": null
+    }
+  ]
+}
