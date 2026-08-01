@@ -4609,7 +4609,7 @@
           "mag": 200,
           "tacRld": 6500,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       },
@@ -4871,7 +4871,7 @@
           "mag": 100,
           "tacRld": 6267,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       },
@@ -4900,7 +4900,7 @@
           "mag": 200,
           "tacRld": 6650,
           "adsTimeTierShift": 1,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       },
@@ -5005,7 +5005,7 @@
           "mag": 100,
           "tacRld": 5750,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1
         }
       },
@@ -6648,7 +6648,7 @@
           "pts": 15,
           "mag": 21,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "tacRld": 1934
         }
@@ -6706,7 +6706,7 @@
           "pts": 25,
           "mag": 11,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "tacRld": 1867
         }
@@ -6755,7 +6755,7 @@
           "pts": 20,
           "mag": 20,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "tacRld": 1934
         },
@@ -6764,7 +6764,7 @@
           "pts": 30,
           "mag": 22,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "tacRld": 1934
         }
@@ -6822,7 +6822,7 @@
           "pts": 40,
           "mag": 20,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 0,
           "tacRld": 2134
         }

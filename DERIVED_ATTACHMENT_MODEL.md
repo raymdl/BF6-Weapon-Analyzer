@@ -11,7 +11,7 @@ Two models, one argument:
   move speed appear to be integer steps on shared ladders. Absolute assignments and unresolved
   fields stay explicit rather than being forced into this model ([§1.2](#12-tier-ladders)).
 
-Status: **Phase 0, Phase 1, Phase 1b, Phase 2, and Phase 2b-i complete; Phase 2b-ii and later unstarted.** The audit tooling is portable and
+Status: **Phase 0, Phase 1, Phase 1b, Phase 2, Phase 2b-i, and Phase 2b-ii complete; Phase 2b-iii and later unstarted.** The audit tooling is portable and
 fixture-gated, the Sym importer carries `ReloadSpeed` with `18.5KS-K` reclassified as scalar, and
 the runtime now dual-reads explicitly supplied derived reload fields without promoting them into
 production data. Written against `codex/update-1.3.3.0` at
@@ -807,10 +807,37 @@ no `0.37`/`0.325` tier or global grip shift was added.
 
 #### 2b-ii — sprint-recovery phantom entries
 
-Remove `333` from `PRIMARY_SPRINT_REC_TIERS` and `117` from `SIDEARM_SPRINT_REC_TIERS`. Neither is
-observed in any of the 3,115 records and neither exists in Sym's ladder. Removal shifts every index
-above it, so decrement the affected `defSpr` values in lockstep and apply the same zero-diff
-enumeration gate as 2b-i.
+**Completed 2026-07-31.** Removed `333` from `PRIMARY_SPRINT_REC_TIERS` and `117` from
+`SIDEARM_SPRINT_REC_TIERS`. Neither phantom value occurs in the 3,115 source sprint-recovery
+readings. The source-backed re-derivation changed nine magazine sprint shifts from `+2` to `+1`:
+
+- primary 350-ms records: `l110/200_rnd`, `m121a2/100_rnd`, `m123k/200_rnd`, and `m250/100_rnd`;
+- sidearm 133-ms records: `ggh22/20_rnd`, `ggh22/22_rnd`, `m45a1/11_rnd`, and `p18/21_rnd`;
+- sidearm 167-ms record: `vz61/20_rnd`.
+
+No `defSpr` values changed: every base reading still maps to the same 1-based stored base index
+after the new ladder is considered. The tracked
+`scripts/sprint-rec-phase2b-ii-baseline.json` pins both sides of the transition for all 70,634
+enumerated cases, including the full migration diff list.
+
+The revised gates pass:
+
+- **Source fidelity:** all 3,115 source sprint readings remain on the new tables, with zero
+  off-table readings; `validate-data.mjs` remains 59/59 and `audit-sweep.mjs` remains 28 info,
+  0 warnings, 0 errors. The 151 phantom occupants are explicitly source-disposed: 135 primary
+  cases become 300 (the 350 belt-box / 233 negative-grip evidence) and 16 sidearm cases become
+  100 (the 133 large-magazine / 67 Speed Holster evidence).
+- **No new clamps:** the 40 pre-existing sprint clamp case keys are identical before and after.
+  Deploy clamps decrease from 522 to 435, with no new deploy-clamp keys; 87 former deploy clamp
+  keys leave the upper bound.
+- **Enumerated diff:** 255 unique composed cases change value: 163 sprint-recovery values and
+  108 deploy-time values. Every case, old/new raw index, old/new clamped index, value, and
+  re-derivation cause is committed in the fixture.
+
+Deploy time reuses the sprint magazine shift in the current resolver, so the nine source-backed
+sprint re-derivations also change 108 composed deploy outputs. The audit corpus has no deploy-time
+source field to contradict those changes; this is recorded as a model-coupling concern for the
+later hardening work rather than distorting the source-correct sprint shifts.
 
 #### 2b-iii — grip ADS-move shift
 
