@@ -11,10 +11,19 @@ Two models, one argument:
   move speed appear to be integer steps on shared ladders. Absolute assignments and unresolved
   fields stay explicit rather than being forced into this model ([§1.2](#12-tier-ladders)).
 
-Status: **Phase 0, Phase 1, Phase 1b, Phase 2, Phase 2b, Phase 3, Phase 4, Phase 5, and Phase 6 complete.** The audit tooling is portable and
+Status: **Phase 0 through Phase 7 complete**, and the [§7](#7-validation) validation checks are now
+executable rather than described. The audit tooling is portable and
 fixture-gated, the Sym importer carries `ReloadSpeed` with `18.5KS-K` reclassified as scalar, and
-the runtime now dual-reads explicitly supplied derived reload fields without promoting them into
-production data. Written against `codex/update-1.3.3.0` at
+the reload cutover is done — the derived branch is authoritative and both legacy representations
+are rejected if reintroduced. Barrel velocity is a signed tier on the `0.8` ladder.
+
+A 2026-08-01 review found four gates that passed when they should have failed closed, and fixing
+them is recorded in [§7.6](#76-fail-closed-gate-repairs--2026-08-01). Running the four §7 checks
+as executable gates then surfaced findings that are inventoried, pinned, and unresolved by design —
+see [§7.7](#77-executable-check-results--2026-08-01). Two of those findings were adjudicated
+against the original screenshots and confirm that **both** the site and the corpus are wrong in
+places, which is why §7's rule against resolving a disagreement by rule is load-bearing rather than
+cautionary. Written against `codex/update-1.3.3.0` at
 the v1.3.3.0 data set. Verified against the current tracked attachment audit at **3,177 records,
 3,115 carrying stats, 62 weapons**, re-checked 2026-07-31 after the intentional M1014
 canonical-record dedupe and SL9 detailed recaptures.
@@ -655,11 +664,13 @@ register entry rather than a silent per-magazine absolute:
 **Revert trigger.** At every Sym drop or game patch, re-capture this one panel. If it reads
 `2.183`, set `reloadSpeedTier: 1`, delete the `suspectedGameBug` block, and drop the sweep register
 entry — no other change is needed. If it still reads `2.467`, leave it and record the re-check
-date. The validator must fail if `reloadSpeedTier: 0` is ever paired with a reload that matches
-`base / 1.13`, so a silent in-game fix cannot sit unnoticed.
+date. The validator fails if `reloadSpeedTier: 0` is ever paired with a reload that matches
+`base / 1.13`, so a silent in-game fix cannot sit unnoticed — and since 2026-08-01 it also fails if
+the derived reload *departs from* `observedReloadSeconds` without reaching the expected-fixed
+value, so an unexplained edit cannot sit unnoticed either. See [§7.6](#76-fail-closed-gate-repairs--2026-08-01).
 
 This is also the sharpest justification for [§4.2](#42-magazines--shared-reload-tier-weapon-specific-option-data)
-making the tier explicit data. The nine unnamed 1.13 magazines show the display name can *omit*
+making the tier explicit data. The eleven unnamed 1.13 magazines show the display name can *omit*
 a speed effect; this one shows it can *assert* an effect that is not there. The current
 substring `isFastMag` match gets this magazine wrong today, and a Phase 4 migration that classifies
 by name or by measured ratio would bake the wrong tier in permanently.
@@ -931,7 +942,7 @@ hand-maintained 1-based index that must stay in lockstep with a table length is 
 hazard: one weapon added with an old-style index shifts every stat by a tier with nothing to catch
 it — which is exactly how the two phantom entries in 2b-ii survived.
 
-### Phase 3 — schema, shared reload tier, and exception register
+### Phase 3 — schema, shared reload tier, and exception register — completed 2026-08-01
 
 **Gate state at Phase 3 entry (verified at HEAD `6936036`):** `node --test` 65/65 pass, 0 skip;
 `validate-data.mjs` 59/59; `audit-sweep.mjs` 28 info / 0 warn / 0 error over 3,115 stat rows;
@@ -994,7 +1005,7 @@ composed-index findings, and the deploy/sprint coupling at
 Phase 3 leaves sprint fields alone and keeps deploy in the regression baseline.** If Phase 3 ever
 needs to touch a sprint shift, that coupling silently moves deploy output too.
 
-### Phase 4 — additive reload-data migration
+### Phase 4 — additive reload-data migration — completed 2026-08-01
 
 Populate `reloadSpeedTier`, `reloadSpeedMult`, and `tacRldOverrideMs` without deleting legacy
 `tacRld` or `magCatchRld`. The migration may classify only the known 1.0 / 1.13 / 1.13² groups and
@@ -1006,12 +1017,28 @@ resolves it. Any magazine whose name and measured class conflict must halt the m
 human decision rather than defaulting either way. Requires [Phase 1b](#phase-1b--pp-19-attachment-backfill),
 without which PP-19's five magazines are not in the site data to classify at all.
 
-### Phase 5 — exhaustive old-versus-new equivalence
+### Phase 5 — exhaustive old-versus-new equivalence — completed 2026-08-01
 
 Enumerate every valid currently selectable loadout for every weapon, including point-limit and
 combined-slot rules. Run the legacy and derived resolvers over the same inputs and compare every
 user-visible output, not only reload. Require zero unexplained differences. Include explicit cases
 for AK-205, SL9, KTS100 MK8, M60, M240L, PP-19, `18.5KS-K`, and all three tube-fed shotguns.
+
+**As built, and why it is not a literal Cartesian product.** The full product is 525,687,124
+selectable cases, which is not a viable standing test. The fixture retains that raw count and the
+point distribution, but compares 88,694 reduced witnesses: a baseline crossing every magazine and
+ergonomic choice, then one suite at a time crossing every choice in each remaining slot while
+holding the other non-reload slots at representatives. Every individual slot choice, combined-slot
+role, ammo, magazine and ergonomic is therefore run through the complete resolver output. Only
+products varying two or more *non-reload* slots simultaneously are omitted, and those cannot move
+either migrated property because reload resolves from weapon/magazine/ergonomic alone and velocity
+from the barrel alone.
+
+That separability argument is the load-bearing part of the claim, so as of 2026-08-01 it is
+executed rather than asserted — see [§7.6](#76-fail-closed-gate-repairs--2026-08-01) — and it has
+been checked against the game corpus, not only the resolver, in
+[§7.7](#77-executable-check-results--2026-08-01). Anyone reading "exhaustive" in the heading above
+should read this paragraph as the precise claim.
 
 ### Phase 6 — reload cutover and cleanup — completed 2026-08-01
 
@@ -1034,9 +1061,15 @@ plus the single new PP-19 override-stack key, repeated across its separability w
 comparison normalizes the three tube-fed shotguns to the explicit scalar-null contract while
 retaining their historical values in the transition record.
 
-### Phase 7 — barrel velocity as a separate migration
+### Phase 7 — barrel velocity as a separate migration — completed 2026-08-01
 
-Treat barrel velocity as its own small change after reload is stable: add the `0.8` constant,
+Barrel velocity is a signed tier on the `0.8` ladder. The migration found that 20 weapon/barrel
+pairs displayed a velocity 1 m/s high, because the resolver rounded where the game floors; display
+now floors. `velMult` removal remains deferred, as does ammo velocity — see the deferred list
+below, and [§7.7](#77-executable-check-results--2026-08-01) for why subsonic is an unimplemented
+feature rather than an unmodelled coupling.
+
+The original plan follows. Treat barrel velocity as its own small change after reload is stable: add the `0.8` constant,
 dual-read `velTierMod` with legacy `velMult`, populate the seven barrel tiers, verify all 94 changed
 barrel records, then remove `velMult` in a later cleanup commit. Do not combine this with ammo velocity,
 and do not use it to consolidate the broader barrel catalog. First inventory and preserve every
@@ -1080,7 +1113,7 @@ The scrape is a test fixture, not a data source. Run three checks, not one:
    than assuming, for example, that only magazines, grips, and ergonomics change sprint recovery.
 4. **Name-versus-effect consistency** — flag every magazine whose display name implies a speed
    effect it does not have, and every magazine that has one its name does not imply. Both
-   directions occur: nine unnamed 1.13 magazines, and the `PP-19 20Rnd Fast Mag` in
+   directions occur: eleven unnamed 1.13 magazines, and the `PP-19 20Rnd Fast Mag` in
    [§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug). A hit is a
    request for a screenshot read, never a licence to rewrite the value.
 
@@ -1115,6 +1148,125 @@ Changed-value cases:
 
 `scripts/reload-phase6-stat-card-qa.mjs` executes both groups and asserts the rendered string, not
 only the resolved number.
+
+### 7.6 Fail-closed gate repairs — 2026-08-01
+
+A review of the completed Phase 3–7 work found four gates that passed when they should have failed
+closed. None had produced a wrong number yet; each would have accepted one silently. All four are
+fixed and each is covered by a test that was verified to discriminate — the gate was disabled and
+the test observed to fail, one gate at a time.
+
+| Gate | Accepted before | Now |
+|---|---|---|
+| Reload override ⇔ register | Only that a register *key* existed | Values must match exactly; a dangling register record is also reported |
+| `reloadSpeedTier` bound | Any non-negative integer | `[0, 2]`, citing the Phase 4 contract; `suspectedGameBug.expectedWhenFixed` too |
+| `suspectedGameBug` staleness | Only the derived value *reaching* `expectedReloadSeconds` | Two-sided — leaving `observedReloadSeconds` is an unexplained drift |
+| Phase 5 separability | Nothing; the premise was fixture prose | A standing test asserts the invariance |
+
+The override gate mattered because the millisecond value is carried in **two** files: the runtime
+reads `data/attachments.json` while screenshot validation reads the register. Editing either left
+both gates green while the site rendered a number the screenshot gate believed it had validated.
+
+The staleness gate mattered because [§5.8](#58-named-fast-magazine-without-fast-mag-treatment--suspected-game-bug)
+is the one record this document warns was once rewritten to match the model. Setting its tier to 2
+yields 1.932 s — neither the observed 2.467 nor the expected-fixed 2.183 — and the old guard
+accepted it. `observedReloadSeconds` is now also reconciled against the screenshot register, the
+same two-source problem as the overrides.
+
+The separability repair is the substantive one. Phase 5 compares 88,694 reduced witnesses against
+525,687,124 raw selectable cases. That reduction is sound — reload resolves from weapon, magazine
+and ergonomic alone, velocity from the barrel alone, and those dimensions stay fully crossed — but
+the premise existed only as prose in the fixture. A future change coupling a muzzle or an ammo
+choice to reload would have made that prose quietly false with every gate still passing. The
+premise is now executed: reload output must be invariant across every non-reload slot, velocity
+across every non-barrel slot. Verified by injecting an ammo-to-reload and a muzzle-to-velocity
+coupling and observing both fail.
+
+### 7.7 Executable check results — 2026-08-01
+
+The four checks above were run as executable gates rather than described procedures. Findings are
+inventoried, pinned, and deliberately unresolved: each inventory is generated by a committed
+deterministic script and pinned by an assertion, so a **new** finding fails the suite and a
+**vanishing** one fails too. A finding that disappears silently is the same invisibility problem
+[§7](#7-validation) describes.
+
+**Check 1 — value check.** For `adsTimeMs`, `sprintRecoveryMs` and `adsMoveSpeedMultiplier` the
+check only asked whether a reading was a *member* of the correct ladder. A value on the wrong rung
+of the right ladder passed, so three of the model's seven columns had a check that could not fail
+for the error it existed to catch. It now predicts from base index plus tier shift. That surfaced
+**74 disagreements across 27 weapons**, recorded in
+`outputs/attachment-audit/model-tier-mismatch-inventory-20260801.json`.
+
+Six sit on rows marked `reviewed`, and their panels were read directly. The result is why this
+section forbids resolving a disagreement by rule:
+
+| Weapon / magazine | Field | Game panel | Site | Corpus | Wrong side |
+|---|---|---|---|---|---|
+| PSR 7Rnd | ADS time | 300 | 367 | 300 | site |
+| PSR 10Rnd | ADS move | 0.47 | 0.54 | 0.47 | site |
+| M2010 ESR 8Rnd | ADS move | 0.47 | 0.54 | 0.47 | site |
+| SV-98 10Rnd | ADS move | 0.54 | 0.67 | 0.54 | site |
+| M2010 ESR 8Rnd | ADS time | 300 | 300 | 250 | corpus |
+| M2010 ESR 5Rnd Fast | ADS time | 300 | 300 | 250 | corpus |
+
+Four are live site errors and two are corpus transcription errors. Correcting either side by rule
+would have broken working data. PSR 10Rnd and SV-98 10Rnd are *default* magazines, so those are
+wrong base indices rather than per-magazine shifts. Because a third of the adjudicated sample is
+corpus-side, the check reports at `warn` rather than accusing the data. The remaining 68 are
+unadjudicated and need operator captures.
+
+**Check 2 — cross-field consistency.** The name-capacity half matched only names containing `Rnd`,
+so six shell-named shotgun rows were never checked at all. Shell names are now parsed with the two
+tube conventions encoded as rules rather than whitelisted: a tube label excludes the chambered
+round, and DB-12 carries two tubes and two chambered rounds. An error of any other size still
+fails. The duplicate-identity half already spanned all nineteen stat columns; that list is now
+pinned so a column cannot be dropped from the comparison silently. Zero findings.
+
+**Check 3 — field-by-slot consistency.** The existing discovery pass checked seven fields against
+modal values and never inspected the resolver, so it could not answer the question this section
+poses. Both inventories are now derived independently — the corpus side from the screenshot
+records, the resolver side by varying each slot through `applyAttachments` — and compared per stat
+column, with all 59 asymmetries pinned in
+`outputs/attachment-audit/field-slot-asymmetry-inventory-20260801.json`.
+
+This was run specifically to test the Phase 5 separability premise against the *game*, not merely
+against the resolver. Both halves hold. Reload's two inventories are exactly `Ergonomics` and
+`Magazine`. Velocity holds for the implemented surface: the corpus shows ammo changing velocity,
+but no selectable ammo type carries a velocity field and there is no subsonic ammo id at all —
+`bulletVel` is 708 for AK-205 across every selectable ammo. Subsonic is an unimplemented feature,
+not an unmodeled coupling.
+
+One asymmetry was adjudicated. The corpus recorded five grips changing muzzle velocity, which is
+implausible on its face. The `18.5KS-K Alloy Vertical` panel reads 400 M/S against the corpus's
+500, and the grip is displayed *locked* — so it was never equipped and the panel was showing the
+weapon baseline. A confirmed corpus transcription error, the same failure mode as Check 1. Four
+others share the signature and remain unread. Twenty barrel sprint-recovery rows are the documented
+Heavy Ext deferral in `docs/BARREL_VELOCITY_PHASE7_INVENTORY.md`, not new findings. Thirty-nine are
+out of scope because the site renders derived equivalents rather than the raw corpus bar columns.
+
+**Check 4 — name-versus-effect consistency.** Now executable in both directions. Eleven magazines
+carry `reloadSpeedTier: 1` without a name implying it — this document previously said nine.
+Five are named for speed without the tier; `PP-19 20Rnd Fast Mag` is detected and *explained* by
+its register entry rather than suppressed, which is what the two-sided staleness guard in §7.6
+exists to protect. The other four are annotated with structural context: M1014 and M87A1 are
+tube-fed and carry no scalar reload at all under the Phase 6 contract, while M44 and M357 Trait are
+scalar revolver reloads where tier 0 does apply. None is suppressed — a screenshot read is still
+what would settle whether a speedloader confers an effect the model does not represent.
+
+Extending name-versus-effect to the handling stats was assessed and **declined**: attachment
+descriptions are prose, combine several effects, and carry OCR noise, so they cannot be mapped
+reliably onto tier ladders. A check that fires on prose ambiguity is worse than no check.
+
+The check also surfaced something that is not a name-versus-effect disagreement at all:
+`SOR-556 MK2 / 45Rnd Magazine` is a supported magazine whose screenshot is mapped in the corpus but
+which has no live `WEAPON_MAG` or Phase 4 manifest entry. That coverage hole made the magazine
+invisible to Check 1's prediction sweep as well. It is filed under its own check and inventory
+rather than buried in a consistency count, and it needs catalog mapping review, not a recapture.
+
+**Open and requiring operator captures.** 68 unadjudicated tier mismatches; 4 unread grip-velocity
+rows; 18 `adsTimeMs` corpus-only rows across Laser, Muzzle, Ammo and Ergonomics; 1 `spotOnFire2dM`
+VSSM barrel case; one possible dead `recoilVariationDegrees` ergonomic path in the resolver; and
+the SOR-556 MK2 mapping. No `data/` or corpus value was changed by any of this work.
 
 ---
 
@@ -1170,7 +1322,7 @@ There is no unregistered current tail:
 
 The earlier cross-slot magazine-capacity leaks, RPM digit drops, and M250 damage outlier are no
 longer present in the updated JSON. Move them out of “remaining work,” but retain their checks as
-regression gates. The 11 surviving magazine-name/capacity contradictions are the legitimate
+regression gates. The 8 surviving magazine-name/capacity contradictions are the legitimate
 shotgun chambered-round cases described in [§9.1](#91-current-state--2026-07-31).
 
 ### 8.3 Field-by-slot discovery findings
@@ -1245,7 +1397,7 @@ Measured against `attachment-screenshot-review.json`, 3,177 records, 3,115 detai
 | Fast mag = `base / 1.13` | 92/92 |
 | Mag Catch = `base / 1.063` | 27/27 |
 | Recoil variation on the `dirVarMult` ladder | 100%, except no unregistered source reading |
-| Magazine name capacity ⇔ `magazineSize` | 11 contradictions, **all legitimate** |
+| Magazine name capacity ⇔ `magazineSize` | 8 contradictions, **all legitimate** |
 | Null stat cells | 0 |
 | Impossible zero reads | 0 |
 | Generic ADS-move tier misses | 0; 2 direct `x1.00` weapon-magazine overrides are registered |
@@ -1256,9 +1408,12 @@ Measured against `attachment-screenshot-review.json`, 3,177 records, 3,115 detai
 | Barrel subtype ⇔ velocity multiplier | 0 disagreements |
 | Field-by-slot unresolved findings | 0 |
 
-The 11 remaining capacity contradictions are the shotgun tubes and speedloaders whose displayed
-capacity excludes the chambered round — DB-12 `7 Shell Dual Tubes`→16, M1014 `6 Shell Tube`→7 and
-`4Rnd Speedloader`→5, M87A1 `7 Shell Tube`→8, `5Rnd Speedloader`→6. Correct as recorded.
+The 8 remaining capacity contradictions are the shotgun tubes and speedloaders whose displayed
+capacity excludes the chambered round — DB-12 `7 Shell Dual Tubes`→16, M1014 `6 Shell Tube`→7,
+`4 Shell Tube`→5 and `4Rnd Speedloader`→5, M87A1 `7 Shell Tube`→8, `6 Shell Tube`→7,
+`5 Shell Tube`→6 and `5Rnd Speedloader`→6. Correct as recorded, and now checked rather than
+assumed: the name-capacity rule previously matched only `Rnd` names, so all six shell-named rows
+were skipped outright until 2026-08-01.
 
 **The scrape is usable as a required characterization fixture** for reload, recoil and barrel
 velocity. “No nulls” is not a cleanliness result by itself: the impossible-zero, sweep-register,

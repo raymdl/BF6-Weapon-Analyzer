@@ -105,7 +105,7 @@ Node discovers the `scripts/*.test.mjs` files on its own. Don't pass the directo
 `node --test scripts/` tries to resolve it as a module and fails on Node 24.
 
 On the `codex/update-1.3.3.0` branch as of this writing, the validator passes for 59/59 weapons.
-A clean clone runs 65 tests: 65 pass and 0 skip.
+A clean clone runs 83 tests: 83 pass and 0 skip.
 
 Two of the passing tests check the tracked attachment-screenshot review data against its schema.
 That dataset is hand-corrected rather than generated — see
