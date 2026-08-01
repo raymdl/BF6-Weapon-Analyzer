@@ -229,6 +229,24 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
   if (magData.def && !magData.mags?.[magData.def]) {
     fail(`${weaponId}: WEAPON_MAG def "${magData.def}" is not present in mags`);
   }
+
+  const sprintTableName = magData.sprintRecoveryTierTable === 'sidearm'
+    ? 'SIDEARM_SPRINT_REC_TIERS'
+    : 'PRIMARY_SPRINT_REC_TIERS';
+  const sprintTable = magData.sprintRecoveryTierTable === 'sidearm'
+    ? (balance.SIDEARM_SPRINT_REC_TIERS?.length ? balance.SIDEARM_SPRINT_REC_TIERS : balance.SPRINT_REC_TIERS)
+    : (balance.PRIMARY_SPRINT_REC_TIERS?.length ? balance.PRIMARY_SPRINT_REC_TIERS : balance.SPRINT_REC_TIERS);
+  const baseIndexTables = [
+    ['defAds', 'ADS_SPD_TIERS', balance.ADS_SPD_TIERS],
+    ['defAms', 'ADS_MOVE_TIERS', balance.ADS_MOVE_TIERS],
+    ['defSpr', sprintTableName, sprintTable],
+  ];
+  for (const [field, tableName, table] of baseIndexTables) {
+    const value = magData[field];
+    if (!Number.isInteger(value) || value < 0 || value >= table.length) {
+      fail(`${weaponId}: ${field} must be an integer in [0, ${table.length - 1}] for ${tableName}; found ${value}`);
+    }
+  }
 }
 
 for (const [weaponId, ammoData] of Object.entries(ammo.WEAPON_AMMO)) {

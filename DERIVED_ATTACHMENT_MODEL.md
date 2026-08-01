@@ -11,7 +11,7 @@ Two models, one argument:
   move speed appear to be integer steps on shared ladders. Absolute assignments and unresolved
   fields stay explicit rather than being forced into this model ([§1.2](#12-tier-ladders)).
 
-Status: **Phase 0, Phase 1, Phase 1b, Phase 2, Phase 2b-i, Phase 2b-ii, and Phase 2b-iii complete; Phase 2b-iv and later unstarted.** The audit tooling is portable and
+Status: **Phase 0, Phase 1, Phase 1b, Phase 2, and Phase 2b complete; Phase 3 and later unstarted.** The audit tooling is portable and
 fixture-gated, the Sym importer carries `ReloadSpeed` with `18.5KS-K` reclassified as scalar, and
 the runtime now dual-reads explicitly supplied derived reload fields without promoting them into
 production data. Written against `codex/update-1.3.3.0` at
@@ -884,7 +884,31 @@ gates remain 59/59 validation, 28 info / 0 warn / 0 err audit sweep, and unresol
 
 #### 2b-iv — index-base hardening
 
-Prefer making `defAms` and `defSpr` 0-based in the same pass, with a validator asserting each
+**Completed 2026-07-31.** All 59 `WEAPON_MAG` base indices were converted from 1-based to 0-based:
+`defAds`, `defAms`, and `defSpr` each decreased by exactly one. `defAds` was included even though
+the original item named only `defAms` and `defSpr`, because all three fields used the identical
+`(value - 1)` resolver compensation; leaving ADS time on the old convention would preserve the
+same representation inconsistency this hardening removes. The resolver now consumes all three
+stored values directly, while retaining its runtime clamps as a last line of defence.
+
+The complete 70,634-case Phase 3 enumeration is strict zero-diff after the representation change:
+the full SHA-256 digest remains
+`08d8da9b78ad0429f292e60ee8808874c9f54b41a4612227d91b09e6b290ad29`, all 59 per-weapon digests
+remain identical, and every raw index, resolved value, and clamp flag is unchanged. Clamp identity
+also remains exact: 40 sprint lower-bound case keys, 435 deploy upper-bound case keys, zero ADS-move
+clamps, and zero ADS-time clamps.
+
+`scripts/validate-data.mjs` now fails loudly unless every stored base index is an integer in
+`[0, table.length - 1]`, selecting the primary or sidearm sprint table through the same
+`sprintRecoveryTierTable` rule as the resolver. A temporary out-of-range mutation was rejected by
+the validator and then restored. The 40 sprint cases with composed raw index `-1` and the 435
+deploy upper-bound cases remain pre-existing findings, not base-index failures: a valid base plus
+an attachment shift can still compose outside a table. Resolving them requires source-backed
+base/shift model work and is outside 2b-iv. The recommended later hardening is to turn runtime
+clamping into a diagnostic assertion (or a development-mode throw) after those composed cases are
+source-resolved; production clamping remains in place for now as a safety boundary.
+
+The implementation plan was to make `defAms` and `defSpr` 0-based in the same pass, with a validator asserting each
 against its table length. `balance_tables.json` already has this shape in `HIP_SPREAD_BASE_IDX`. A
 hand-maintained 1-based index that must stay in lockstep with a table length is a silent-failure
 hazard: one weapon added with an old-style index shifts every stat by a tier with nothing to catch

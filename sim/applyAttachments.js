@@ -287,14 +287,14 @@ export function applyAttachments(w, atts) {
   let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null, _deployTimeMs = null;
   if (wm?.defAds != null && wm?.defSpr != null && wm?.defAms != null) {
     const adsIdx = Math.max(0, Math.min(ADS_SPD_TIERS.length - 1,
-      (wm.defAds - 1) + magAdsTimeTierShift - combinedAdsTimeTierMod));
+      wm.defAds + magAdsTimeTierShift - combinedAdsTimeTierMod));
     const sprintRecTiers = wm.sprintRecoveryTierTable === 'sidearm'
       ? (SIDEARM_SPRINT_REC_TIERS.length ? SIDEARM_SPRINT_REC_TIERS : SPRINT_REC_TIERS)
       : (PRIMARY_SPRINT_REC_TIERS.length ? PRIMARY_SPRINT_REC_TIERS : SPRINT_REC_TIERS);
     const sprIdx = Math.max(0, Math.min(sprintRecTiers.length - 1,
-      (wm.defSpr - 1) + magSprintRecoveryTierShift + gripSprintRecoveryTierShift + ergoSprintRecoveryTierShift));
+      wm.defSpr + magSprintRecoveryTierShift + gripSprintRecoveryTierShift + ergoSprintRecoveryTierShift));
     const amsIdx = Math.max(0, Math.min(ADS_MOVE_TIERS.length - 1,
-      (wm.defAms - 1) + magAdsMoveSpeedTierShift
+      wm.defAms + magAdsMoveSpeedTierShift
       + (grp.adsMoveSpeedTierShift ?? 0)
       + (ammoType.adsMoveSpeedTierShift ?? 0)));
     _adsTimeMs       = ADS_SPD_TIERS[adsIdx];

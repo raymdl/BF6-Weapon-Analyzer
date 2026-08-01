@@ -176,6 +176,7 @@ function buildEnumeration({
   modelAttachments = attachments,
   modelBalance = balance,
   verifyResolver = true,
+  indexBase = 0,
   kind = 'sprint-recovery-phase2b-ii-post-migration',
 } = {}) {
   const modelGripById = new Map(modelAttachments.GRIPS.map(grip => [grip.id, grip]));
@@ -238,15 +239,15 @@ function buildEnumeration({
           for (const ammoId of ammoIds) {
             const ammoType = modelAmmoById.get(ammoId);
             const caseKey = `${weapon.id}/${magazineId}/${gripId}/${ergoId}/${ammoId}`;
-            const rawAdsTime = (weaponMag.defAds - 1)
+            const rawAdsTime = (weaponMag.defAds - indexBase)
               + (magazine.adsTimeTierShift ?? 0)
               - (grip.adsTimeTierMod ?? 0)
               - (barrel.adsTimeTierMod ?? 0);
-            const rawSprintRecovery = (weaponMag.defSpr - 1)
+            const rawSprintRecovery = (weaponMag.defSpr - indexBase)
               + (magazine.sprintRecoveryTierShift ?? 0)
               + (grip.sprintRecoveryTierShift ?? 0)
               + (ergo.sprintRecoveryTierShift ?? 0);
-            const rawAdsMove = (weaponMag.defAms - 1)
+            const rawAdsMove = (weaponMag.defAms - indexBase)
               + (magazine.adsMoveSpeedTierShift ?? 0)
               + (grip.adsMoveSpeedTierShift ?? 0)
               + (ammoType.adsMoveSpeedTierShift ?? 0);
@@ -494,9 +495,17 @@ function clampCaseKeysFor(cases) {
 }
 
 function preMigrationAttachments() {
-  const model = structuredClone(attachments);
+  const model = legacyIndexAttachments();
   for (const derivation of SPRINT_SHIFT_DERIVATIONS) {
     model.WEAPON_MAG[derivation.weaponId].mags[derivation.magazineId].sprintRecoveryTierShift = derivation.oldShift;
+  }
+  return model;
+}
+
+function legacyIndexAttachments() {
+  const model = structuredClone(attachments);
+  for (const weaponMag of Object.values(model.WEAPON_MAG)) {
+    for (const field of ['defAds', 'defSpr', 'defAms']) weaponMag[field] += 1;
   }
   return model;
 }
@@ -672,12 +681,14 @@ function buildFixture() {
     modelAttachments: historicalPreMigrationAttachments(),
     modelBalance: preMigrationBalance(),
     verifyResolver: false,
+    indexBase: 1,
     kind: 'sprint-recovery-phase2b-ii-pre-migration',
   });
   const transitionPrevious = buildEnumeration({
     modelAttachments: preMigrationAttachments(),
     modelBalance: preMigrationBalance(),
     verifyResolver: false,
+    indexBase: 1,
     kind: 'sprint-recovery-phase2b-ii-pre-migration-with-phase2b-iii',
   });
   const cases = sortedCases(actual.cases);
@@ -775,6 +786,7 @@ function preMigration() {
     modelAttachments: historicalPreMigrationAttachments(),
     modelBalance: preMigrationBalance(),
     verifyResolver: false,
+    indexBase: 1,
     kind: 'sprint-recovery-phase2b-ii-pre-migration',
   });
   return preMigrationEnumeration;
@@ -786,6 +798,7 @@ function phase2Before() {
     modelAttachments: preMigrationAttachments(),
     modelBalance: preMigrationBalance(),
     verifyResolver: false,
+    indexBase: 1,
     kind: 'sprint-recovery-phase2b-ii-pre-migration-with-phase2b-iii',
   });
   return phase2BeforeEnumeration;
@@ -893,11 +906,11 @@ test('Phase 2b-ii preserves sprint clamp identity and does not grow deploy clamp
   );
 });
 
-test('Phase 2b-ii removes the phantom rungs without changing index base', () => {
+test('Phase 2b-ii keeps the corrected sprint ladders under the 0-based base representation', () => {
   const actual = current();
   assert.deepEqual(balance.PRIMARY_SPRINT_REC_TIERS, [83, 100, 133, 167, 200, 233, 267, 300, 350]);
   assert.deepEqual(balance.SIDEARM_SPRINT_REC_TIERS, [67, 83, 100, 133, 167, 200, 233]);
-  assert.deepEqual(actual.defSprDistribution, { 2: 1, 3: 15, 4: 12, 5: 17, 6: 7, 7: 1, 8: 6 });
+  assert.deepEqual(actual.defSprDistribution, { 1: 1, 2: 15, 3: 12, 4: 17, 5: 7, 6: 1, 7: 6 });
 
   const primary = [...weaponById.values()]
     .filter(weapon => attachments.WEAPON_MAG[weapon.id].sprintRecoveryTierTable !== 'sidearm');
@@ -905,10 +918,10 @@ test('Phase 2b-ii removes the phantom rungs without changing index base', () => 
     .filter(weapon => attachments.WEAPON_MAG[weapon.id].sprintRecoveryTierTable === 'sidearm');
   assert.equal(primary.length, 52);
   assert.equal(sidearms.length, 7);
-  assert.deepEqual(primary.filter(weapon => attachments.WEAPON_MAG[weapon.id].defSpr >= 9), [],
-    'no primary base defSpr currently lies above the phantom 333 rung');
+  assert.deepEqual(primary.filter(weapon => attachments.WEAPON_MAG[weapon.id].defSpr >= 8), [],
+    'no primary base defSpr currently lies above the corrected ladder');
   assert.deepEqual(sidearms
-    .filter(weapon => attachments.WEAPON_MAG[weapon.id].defSpr >= 4)
+    .filter(weapon => attachments.WEAPON_MAG[weapon.id].defSpr >= 3)
     .map(weapon => weapon.id)
     .sort(), ['m44', 'vz61']);
   assert.equal(actual.cases.some(row => row.sprintRecovery.value === 333 || row.sprintRecovery.value === 117), false);

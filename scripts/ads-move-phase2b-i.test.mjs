@@ -69,7 +69,9 @@ function buildLegacyMagazineCatalog() {
   const result = structuredClone(attachments.WEAPON_MAG);
   for (const [weaponId, expectedDefAms] of Object.entries(baseline.legacyDefAms)) {
     assert.ok(result[weaponId], `missing legacy catalog fixture weapon ${weaponId}`);
-    result[weaponId].defAms = expectedDefAms;
+    // The historical fixture stores the pre-2b-i 1-based value; the live
+    // resolver now consumes the equivalent 0-based representation.
+    result[weaponId].defAms = expectedDefAms - 1;
   }
   return targetShiftCatalog(result, 0);
 }
@@ -123,7 +125,7 @@ test('Phase 2b-i reindexes ADS move without legacy drift and isolates the two 1.
   assert.equal(catalogIds.length, 59);
   assert.deepEqual(catalogIds, Object.keys(baseline.legacyDefAms).sort());
   for (const [weaponId, legacyDefAms] of Object.entries(baseline.legacyDefAms)) {
-    assert.equal(attachments.WEAPON_MAG[weaponId].defAms, legacyDefAms + 1, `${weaponId} defAms`);
+    assert.equal(attachments.WEAPON_MAG[weaponId].defAms, legacyDefAms, `${weaponId} defAms`);
   }
 
   const rows = currentMagazineRows();

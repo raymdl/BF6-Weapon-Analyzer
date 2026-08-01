@@ -3930,9 +3930,9 @@
   },
   "WEAPON_MAG": {
     "ks18k": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "8_rnd",
       "mags": {
         "4_rnd": {
@@ -3977,9 +3977,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "ak205": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4060,9 +4060,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "ak4d": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -4116,9 +4116,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "b36a4": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -4208,9 +4208,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "cz3a1": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "30_rnd",
       "mags": {
         "20_fast": {
@@ -4264,9 +4264,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "pp19": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4320,9 +4320,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "db12": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 5,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 4,
       "def": "7_rnd",
       "mags": {
         "7_rnd": {
@@ -4340,9 +4340,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "drsiar": {
-      "defAds": 6,
-      "defSpr": 6,
-      "defAms": 7,
+      "defAds": 5,
+      "defSpr": 5,
+      "defAms": 6,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4432,9 +4432,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "grtbc": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4488,9 +4488,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "grtcps": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -4535,9 +4535,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "kord6p67": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -4609,9 +4609,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "kts100": {
-      "defAds": 6,
-      "defSpr": 6,
-      "defAms": 7,
+      "defAds": 5,
+      "defSpr": 5,
+      "defAms": 6,
       "def": "60_rnd",
       "mags": {
         "45_rnd": {
@@ -4674,9 +4674,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "kv9": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "17_rnd",
       "mags": {
         "17_rnd": {
@@ -4721,9 +4721,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "l110": {
-      "defAds": 7,
-      "defSpr": 8,
-      "defAms": 8,
+      "defAds": 6,
+      "defSpr": 7,
+      "defAms": 7,
       "def": "100_rnd",
       "mags": {
         "100_rnd": {
@@ -4750,9 +4750,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "l85a3": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -4842,9 +4842,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "lmr27": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -4907,9 +4907,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m60": {
-      "defAds": 6,
-      "defSpr": 8,
-      "defAms": 6,
+      "defAds": 5,
+      "defSpr": 7,
+      "defAms": 5,
       "def": "100_rnd",
       "mags": {
         "50_rnd": {
@@ -4936,9 +4936,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m1014": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "6_rnd",
       "mags": {
         "4_rnd": {
@@ -4974,9 +4974,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m121a2": {
-      "defAds": 7,
-      "defSpr": 8,
-      "defAms": 8,
+      "defAds": 6,
+      "defSpr": 7,
+      "defAms": 7,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -5012,9 +5012,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m123k": {
-      "defAds": 7,
-      "defSpr": 8,
-      "defAms": 8,
+      "defAds": 6,
+      "defSpr": 7,
+      "defAms": 7,
       "def": "100_rnd",
       "mags": {
         "100_rnd": {
@@ -5041,9 +5041,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m2010esr": {
-      "defAds": 6,
-      "defSpr": 5,
-      "defAms": 7,
+      "defAds": 5,
+      "defSpr": 4,
+      "defAms": 6,
       "def": "5_rnd",
       "mags": {
         "5_rnd": {
@@ -5079,9 +5079,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m240l": {
-      "defAds": 7,
-      "defSpr": 8,
-      "defAms": 8,
+      "defAds": 6,
+      "defSpr": 7,
+      "defAms": 7,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -5117,9 +5117,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m250": {
-      "defAds": 7,
-      "defSpr": 8,
-      "defAms": 8,
+      "defAds": 6,
+      "defSpr": 7,
+      "defAms": 7,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -5146,9 +5146,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m277": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -5211,9 +5211,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m39emr": {
-      "defAds": 6,
-      "defSpr": 6,
-      "defAms": 7,
+      "defAds": 5,
+      "defSpr": 5,
+      "defAms": 6,
       "def": "20_rnd",
       "mags": {
         "15_rnd": {
@@ -5267,9 +5267,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m417a2": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "20_rnd",
       "mags": {
         "10_rnd": {
@@ -5314,9 +5314,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m433": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5388,9 +5388,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m4a1": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5462,9 +5462,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m87a1": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "7_rnd",
       "mags": {
         "5_rnd": {
@@ -5509,9 +5509,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "miniscout": {
-      "defAds": 5,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 4,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -5574,9 +5574,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "nvo228e": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5648,9 +5648,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "psr": {
-      "defAds": 7,
-      "defSpr": 6,
-      "defAms": 7,
+      "defAds": 6,
+      "defSpr": 5,
+      "defAms": 6,
       "def": "10_rnd",
       "mags": {
         "7_rnd": {
@@ -5677,9 +5677,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "pw5a3": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5724,9 +5724,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "pw7a2": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 2,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 1,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -5771,9 +5771,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "qbz192": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -5818,9 +5818,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "rpkm": {
-      "defAds": 6,
-      "defSpr": 6,
-      "defAms": 7,
+      "defAds": 5,
+      "defSpr": 5,
+      "defAms": 6,
       "def": "40_rnd",
       "mags": {
         "30_rnd": {
@@ -5892,9 +5892,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "scw10": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "15_rnd",
       "mags": {
         "15_rnd": {
@@ -5939,9 +5939,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "sg553r": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -6013,9 +6013,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "sgx": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -6060,9 +6060,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "sl9": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "30_rnd",
       "mags": {
         "30_rnd": {
@@ -6089,9 +6089,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "sor300sc": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -6163,9 +6163,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "sv98": {
-      "defAds": 6,
-      "defSpr": 5,
-      "defAms": 5,
+      "defAds": 5,
+      "defSpr": 4,
+      "defAms": 4,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -6183,9 +6183,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "svdm": {
-      "defAds": 6,
-      "defSpr": 6,
-      "defAms": 7,
+      "defAds": 5,
+      "defSpr": 5,
+      "defAms": 6,
       "def": "10_rnd",
       "mags": {
         "5_rnd": {
@@ -6230,9 +6230,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "svk86": {
-      "defAds": 7,
-      "defSpr": 7,
-      "defAms": 8,
+      "defAds": 6,
+      "defSpr": 6,
+      "defAms": 7,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -6259,9 +6259,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "umg40": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "30_rnd",
       "mags": {
         "25_rnd": {
@@ -6315,9 +6315,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "usg90": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 4,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 3,
       "def": "50_rnd",
       "mags": {
         "50_rnd": {
@@ -6335,9 +6335,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "sor556": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -6418,9 +6418,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "tr7": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "20_rnd",
       "mags": {
         "10_fast": {
@@ -6492,9 +6492,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "vcr2": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_fast": {
@@ -6566,9 +6566,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "m16a4": {
-      "defAds": 5,
-      "defSpr": 5,
-      "defAms": 6,
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
       "def": "30_rnd",
       "mags": {
         "20_rnd": {
@@ -6640,9 +6640,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "rpk74m": {
-      "defAds": 6,
-      "defSpr": 6,
-      "defAms": 7,
+      "defAds": 5,
+      "defSpr": 5,
+      "defAms": 6,
       "def": "45_rnd",
       "mags": {
         "30_rnd": {
@@ -6723,9 +6723,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "l115": {
-      "defAds": 7,
-      "defSpr": 5,
-      "defAms": 7,
+      "defAds": 6,
+      "defSpr": 4,
+      "defAms": 6,
       "def": "5_rnd",
       "mags": {
         "5_rnd": {
@@ -6761,9 +6761,9 @@
       "sprintRecoveryTierTable": "primary"
     },
     "p18": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 5,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 4,
       "def": "17_rnd",
       "mags": {
         "17_rnd": {
@@ -6790,9 +6790,9 @@
       "sprintRecoveryTierTable": "sidearm"
     },
     "es57": {
-      "defAds": 2,
-      "defSpr": 2,
-      "defAms": 5,
+      "defAds": 1,
+      "defSpr": 1,
+      "defAms": 4,
       "def": "20_rnd",
       "mags": {
         "20_rnd": {
@@ -6819,9 +6819,9 @@
       "sprintRecoveryTierTable": "sidearm"
     },
     "m45a1": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 5,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 4,
       "def": "7_rnd",
       "mags": {
         "7_rnd": {
@@ -6848,9 +6848,9 @@
       "sprintRecoveryTierTable": "sidearm"
     },
     "m44": {
-      "defAds": 4,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "6_rnd",
       "mags": {
         "6_rnd": {
@@ -6868,9 +6868,9 @@
       "sprintRecoveryTierTable": "sidearm"
     },
     "ggh22": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 5,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 4,
       "def": "15_rnd",
       "mags": {
         "15_rnd": {
@@ -6906,9 +6906,9 @@
       "sprintRecoveryTierTable": "sidearm"
     },
     "m357trait": {
-      "defAds": 3,
-      "defSpr": 3,
-      "defAms": 5,
+      "defAds": 2,
+      "defSpr": 2,
+      "defAms": 4,
       "def": "8_rnd",
       "mags": {
         "8_rnd": {
@@ -6935,9 +6935,9 @@
       "sprintRecoveryTierTable": "sidearm"
     },
     "vz61": {
-      "defAds": 3,
-      "defSpr": 4,
-      "defAms": 5,
+      "defAds": 2,
+      "defSpr": 3,
+      "defAms": 4,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {

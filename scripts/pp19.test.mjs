@@ -137,9 +137,9 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
     magCatchRld: { reg: 2321, fast: 2054 },
   });
   assert.deepEqual(attachments.WEAPON_MAG.pp19, {
-    defAds: 3,
-    defSpr: 3,
-    defAms: 4,
+    defAds: 2,
+    defSpr: 2,
+    defAms: 3,
     def: '30_rnd',
     mags: {
       '30_rnd': {

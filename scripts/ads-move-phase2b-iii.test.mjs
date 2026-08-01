@@ -25,6 +25,7 @@ const STANDARD_SHIFTED_GRIPS = ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp
 const SOURCE_GRIP_NAMES = ['None', '6H64 Vertical', 'Classic Vertical', 'Stippled Stubby', 'Low-Profile Stubby'];
 const EXEMPT_SOURCE_WEAPONS = new Set(['SVK-8.6', 'VSSM', '18.5KS-K', 'DB-12']);
 const PRE_PHASE3_DIGEST = 'c5a6c3d2c021a44dd04fd3e5bed4366a40674aca1c6e15e6578620be7049b5fe';
+const PRE_PHASE4_DIGEST = '08d8da9b78ad0429f292e60ee8808874c9f54b41a4612227d91b09e6b290ad29';
 const VARIANT_BASES = {
   svk86: {
     '6h64_vert_svk86': '6h64_vert',
@@ -186,15 +187,15 @@ function buildEnumeration({
       const ergo = modelErgoById.get(ergoId) ?? { id: 'none' };
       const ammoType = ammoById.get(ammoId);
       const caseKey = `${weapon.id}/${magazineId}/${gripId}/${ergoId}/${ammoId}`;
-      const rawAdsTime = (weaponMag.defAds - 1)
+      const rawAdsTime = weaponMag.defAds
         + (magazine.adsTimeTierShift ?? 0)
         - (grip.adsTimeTierMod ?? 0)
         - (modelBarrelById.get(barrelId).adsTimeTierMod ?? 0);
-      const rawSprintRecovery = (weaponMag.defSpr - 1)
+      const rawSprintRecovery = weaponMag.defSpr
         + (magazine.sprintRecoveryTierShift ?? 0)
         + (grip.sprintRecoveryTierShift ?? 0)
         + (ergo.sprintRecoveryTierShift ?? 0);
-      const rawAdsMove = (weaponMag.defAms - 1)
+      const rawAdsMove = weaponMag.defAms
         + (magazine.adsMoveSpeedTierShift ?? 0)
         + (grip.adsMoveSpeedTierShift ?? 0)
         + (ammoType.adsMoveSpeedTierShift ?? 0);
@@ -598,6 +599,19 @@ test('Phase 2b-iii adds no clamps and preserves existing sprint/deploy clamp ide
   assert.deepEqual(clampCaseKeysFor(actual.cases), baseline.clampCaseKeys);
   assert.deepEqual(baseline.migration.prePhase3ClampCaseKeys, clampCaseKeysFor(previous.cases));
   assert.deepEqual(baseline.migration.postPhase3ClampCaseKeys, baseline.clampCaseKeys);
+});
+
+test('Phase 2b-iv converts base indices with strict full-enumeration zero-diff', () => {
+  const actual = current();
+  const digest = sha256(canonicalSerialization(actual.cases));
+  assert.equal(baseline.digest.value, PRE_PHASE4_DIGEST, 'the committed Phase 3 digest is the Phase 4 anchor');
+  assert.equal(digest, PRE_PHASE4_DIGEST, '0-based representation must preserve every composed case');
+  assert.equal(digest, baseline.digest.value);
+  assert.deepEqual(perWeaponDigests(actual.cases), baseline.perWeaponDigest);
+  assert.deepEqual(rawIndexHistograms(actual.cases), baseline.rawIndexHistograms);
+  assert.deepEqual(clampCaseKeysFor(actual.cases), baseline.clampCaseKeys);
+  assert.deepEqual(actual.clampCounts, { sprintRecovery: 40, adsMove: 0, adsTime: 0, deploy: 435 });
+  assert.deepEqual(actual.cases.filter(row => row.adsMove.clamped), []);
 });
 
 test('L110 200-round 6H64 Vertical reproduces the complete first-party composed panel', () => {
