@@ -22,7 +22,13 @@ import {
   sourceIdentity,
   sourceRelativePath,
 } from './audit-phase0-lib.mjs';
-import { runSweep } from './audit-sweep.mjs';
+import {
+  inventoryDrift,
+  isAllowedModelTierWarning,
+  loadModelTierMismatchInventory,
+  modelTierMismatchKey,
+  runSweep,
+} from './audit-sweep.mjs';
 import { runFieldSlotDiscovery } from './audit-field-slot-discovery.mjs';
 
 const inputs = loadPhase0Inputs(DEFAULT_ROOT);
@@ -78,13 +84,30 @@ test('Phase 0 fixtures are complete, full-roster, and path-portable', () => {
   }
 });
 
-test('sweep is exactly 28 informational findings with no warnings or errors', () => {
+test('sweep pins inventoried model-tier mismatches and rejects other warnings', () => {
   const report = runSweep({ root: DEFAULT_ROOT });
-  assert.deepEqual(report.severityCounts, { error: 0, warn: 0, info: 28 });
+  const inventoryKeys = loadModelTierMismatchInventory(DEFAULT_ROOT);
+  const modelWarnings = report.findings.filter(finding => (
+    finding.severity === 'warn' && finding.check === 'model-tier-mismatch'
+  ));
+  assert.equal(modelWarnings.length, 74);
+  assert.deepEqual(new Set(modelWarnings.map(modelTierMismatchKey)), inventoryKeys);
+  assert.deepEqual(inventoryDrift(report, DEFAULT_ROOT), {
+    unexpected: [],
+    missing: [],
+    duplicates: [],
+  });
+  assert.equal(isAllowedModelTierWarning(modelWarnings[0], inventoryKeys), true);
+  assert.equal(isAllowedModelTierWarning({ ...modelWarnings[0], check: 'other-warning' }, inventoryKeys), false);
+  assert.deepEqual(report.severityCounts, { error: 0, warn: 74, info: 28 });
   assert.deepEqual(report.counts, {
     'fire-mode-ergo': 1,
+    'model-tier-mismatch': 74,
     'subsonic-treatment': 27,
   });
+  assert.deepEqual(report.findings.filter(finding => (
+    finding.severity === 'warn' && finding.check !== 'model-tier-mismatch'
+  )), []);
   assert.equal(report.findings.filter(finding => finding.check === 'recoil-ladder').length, 0);
   assert.equal(report.findings.filter(finding => finding.check === 'recoilvar-ladder').length, 0);
   assert.deepEqual(report.classes.shotgun, {

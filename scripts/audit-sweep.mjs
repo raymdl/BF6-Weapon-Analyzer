@@ -45,6 +45,61 @@ function addFinding(findings, severity, check, weapon, attachment, detail) {
   findings.push({ severity, check, weapon, attachment, detail });
 }
 
+const MODEL_TIER_INVENTORY = 'outputs/attachment-audit/model-tier-mismatch-inventory-20260801.json';
+
+function mismatchField(detail) {
+  const match = /^(\w+) predicted -?\d+(?:\.\d+)?, observed -?\d+(?:\.\d+)?$/.exec(detail);
+  if (!match) throw new Error(`Invalid model-tier-mismatch detail: ${detail}`);
+  return match[1];
+}
+
+export function modelTierMismatchKey(finding) {
+  if (finding?.check !== 'model-tier-mismatch') throw new Error('Expected a model-tier-mismatch finding');
+  return `${finding.weapon}|${finding.attachment}|${mismatchField(finding.detail)}`;
+}
+
+function inventoryRecordKey(record) {
+  if (!record || typeof record.weapon !== 'string' || typeof record.attachment !== 'string'
+      || typeof record.field !== 'string') {
+    throw new Error('Invalid model-tier mismatch inventory record');
+  }
+  return `${record.weapon}|${record.attachment}|${record.field}`;
+}
+
+export function loadModelTierMismatchInventory(root = DEFAULT_ROOT) {
+  const inventoryPath = path.join(root, MODEL_TIER_INVENTORY);
+  if (!fs.existsSync(inventoryPath)) throw new Error(`Missing model-tier mismatch inventory: ${MODEL_TIER_INVENTORY}`);
+  let inventory;
+  try {
+    inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
+  } catch (error) {
+    throw new Error(`Invalid model-tier mismatch inventory: ${error.message}`, { cause: error });
+  }
+  if (!Array.isArray(inventory.records)) throw new Error('Model-tier mismatch inventory has no records array');
+  const keys = inventory.records.map(inventoryRecordKey);
+  if (new Set(keys).size !== keys.length) throw new Error('Model-tier mismatch inventory contains duplicate keys');
+  return new Set(keys);
+}
+
+export function inventoryDrift(report, root = DEFAULT_ROOT) {
+  const expected = loadModelTierMismatchInventory(root);
+  const actualKeys = report.findings
+    .filter(finding => finding.severity === 'warn' && finding.check === 'model-tier-mismatch')
+    .map(modelTierMismatchKey);
+  const actual = new Set(actualKeys);
+  return {
+    unexpected: [...actual].filter(key => !expected.has(key)).sort(),
+    missing: [...expected].filter(key => !actual.has(key)).sort(),
+    duplicates: actualKeys.filter((key, index) => actualKeys.indexOf(key) !== index).sort(),
+  };
+}
+
+export function isAllowedModelTierWarning(finding, inventoryKeys) {
+  return finding?.severity === 'warn'
+    && finding.check === 'model-tier-mismatch'
+    && inventoryKeys.has(modelTierMismatchKey(finding));
+}
+
 function sourceKey(value) {
   return sourceIdentity(value);
 }
@@ -72,7 +127,42 @@ function buildByWeapon(audit) {
   return byWeapon;
 }
 
-function runTierChecks({ findings, byWeapon, balance, consumeReviewedException }) {
+function magazineModelForRow(row, weaponMag) {
+  const match = String(row.attachmentName ?? '').match(/\b(\d+)\s*(?:RND|ROUND|SHELL)/i);
+  if (!match) return null;
+  const capacity = Number(match[1]);
+  const fast = /fast/i.test(row.attachmentName ?? '');
+  const candidates = Object.entries(weaponMag?.mags ?? {})
+    .filter(([, magazine]) => magazine.mag === capacity && /fast/i.test(magazine.name ?? '') === fast);
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function tierValue(table, rawIndex) {
+  if (!Array.isArray(table) || !table.length || !Number.isInteger(rawIndex)) return null;
+  const index = Math.max(0, Math.min(table.length - 1, rawIndex));
+  return table[index];
+}
+
+function predictMagazineTiers({ row, weaponMag, weaponAtts, attachments, balance }) {
+  const magazineEntry = magazineModelForRow(row, weaponMag);
+  if (!magazineEntry) return null;
+  const [, magazine] = magazineEntry;
+  const defaultBarrel = attachments.BARRELS?.find(barrel => barrel.id === (weaponAtts?.barrelDef ?? 'none'));
+  if (!defaultBarrel) return null;
+  const sprintTable = weaponMag.sprintRecoveryTierTable === 'sidearm'
+    ? (balance.SIDEARM_SPRINT_REC_TIERS?.length ? balance.SIDEARM_SPRINT_REC_TIERS : balance.SPRINT_REC_TIERS)
+    : (balance.PRIMARY_SPRINT_REC_TIERS?.length ? balance.PRIMARY_SPRINT_REC_TIERS : balance.SPRINT_REC_TIERS);
+  return {
+    adsTimeMs: tierValue(balance.ADS_SPD_TIERS,
+      weaponMag.defAds + (magazine.adsTimeTierShift ?? 0) - (defaultBarrel.adsTimeTierMod ?? 0)),
+    sprintRecoveryMs: tierValue(sprintTable,
+      weaponMag.defSpr + (magazine.sprintRecoveryTierShift ?? 0)),
+    adsMoveSpeedMultiplier: tierValue(balance.ADS_MOVE_TIERS,
+      weaponMag.defAms + (magazine.adsMoveSpeedTierShift ?? 0)),
+  };
+}
+
+function runTierChecks({ findings, byWeapon, balance, attachments, byName, consumeReviewedException }) {
   const tables = {
     adsTimeMs: { table: balance.ADS_SPD_TIERS, tolerance: 1 },
     adsMoveSpeedMultiplier: { table: balance.ADS_MOVE_TIERS, tolerance: 0.005 },
@@ -87,6 +177,39 @@ function runTierChecks({ findings, byWeapon, balance, consumeReviewedException }
           if (consumeReviewedException(row, 'off-tier-table', field, value)) continue;
           addFinding(findings, 'error', 'off-tier-table', weaponName, `${row.attachmentType}/${row.attachmentName}`,
             `${field} = ${value} is not a member of [${table.join(', ')}]`);
+        }
+      }
+    }
+
+    const weapon = byName.get(normalizeWeaponName(weaponName));
+    const weaponMag = attachments.WEAPON_MAG?.[weapon?.id];
+    if (weaponMag) {
+      for (const row of rows) {
+        const predicted = row.attachmentType === 'Magazine'
+          ? predictMagazineTiers({
+            row,
+            weaponMag,
+            weaponAtts: attachments.WEAPON_ATTS?.[weapon.id],
+            attachments,
+            balance,
+          })
+          : null;
+        if (!predicted) continue;
+        for (const [field, tolerance] of Object.entries({
+          adsTimeMs: 1,
+          sprintRecoveryMs: 1,
+          adsMoveSpeedMultiplier: 0.005,
+        })) {
+          const value = row.stats[field];
+          if (value == null || value === 0 || predicted[field] == null) continue;
+          if (Math.abs(predicted[field] - value) > tolerance) {
+            // §7 says the screenshot settles a model-versus-reading disagreement.
+            // Adjudication has found defects on both sides, so report this as a
+            // warning rather than accusing either the model or the corpus.
+            addFinding(findings, 'warn', 'model-tier-mismatch', weaponName,
+              `${row.attachmentType}/${row.attachmentName}`,
+              `${field} predicted ${predicted[field]}, observed ${value}`);
+          }
         }
       }
     }
@@ -115,6 +238,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
     audit, balance, weapons, subsonicTreatments, exceptions: reviewedExceptions,
     reloadExceptions,
   } = inputs;
+  const attachments = JSON.parse(fs.readFileSync(path.join(root, 'data', 'attachments.json'), 'utf8'));
   const animationOverrides = reloadExceptions.animationOverrides;
   const screenshotExceptions = reloadExceptions.screenshotExceptions;
   const byWeapon = buildByWeapon(audit);
@@ -278,7 +402,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
     }
   }
 
-  runTierChecks({ findings, byWeapon, balance, consumeReviewedException });
+  runTierChecks({ findings, byWeapon, balance, attachments, byName, consumeReviewedException });
 
   // Check 6: scalar reloads include every weapon except the three tube-fed
   // shotguns.  18.5KS-K therefore remains in this loop.
@@ -477,7 +601,14 @@ export function main(args = process.argv.slice(2)) {
     fs.writeFileSync(output, `${JSON.stringify(report, null, 1)}\n`);
     console.log('\nwrote', output);
   }
-  if (report.severityCounts.error || report.severityCounts.warn) process.exitCode = 1;
+  const inventoryKeys = loadModelTierMismatchInventory();
+  const drift = inventoryDrift(report);
+  if (drift.unexpected.length || drift.missing.length || drift.duplicates.length) {
+    console.error('model-tier-mismatch inventory drift:', JSON.stringify(drift));
+  }
+  const blocking = report.findings.filter(finding => finding.severity === 'error'
+    || (finding.severity === 'warn' && !isAllowedModelTierWarning(finding, inventoryKeys)));
+  if (blocking.length || drift.unexpected.length || drift.missing.length || drift.duplicates.length) process.exitCode = 1;
   return report;
 }
 
