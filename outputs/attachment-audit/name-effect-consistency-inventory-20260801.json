@@ -1,0 +1,261 @@
+{
+  "kind": "name-effect-consistency-inventory",
+  "schemaVersion": 1,
+  "source": "scripts/audit-sweep.mjs",
+  "field": "reloadSpeedTier",
+  "nameImplicationPattern": "\\b(?:fast|speedloader)\\b",
+  "counts": {
+    "total": 16,
+    "byDirection": {
+      "reload-speed-tier-without-name": 11,
+      "named-without-reload-speed-tier": 5
+    }
+  },
+  "records": [
+    {
+      "weapon": "KTS100 MK8",
+      "attachment": "Magazine/45Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "45_rnd",
+      "modelMagazineName": "45 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/LMG/KTS100 MK8/47_KTS100 MK8_Magazine_45Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "KTS100 MK8",
+      "attachment": "Magazine/50Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "50_rnd",
+      "modelMagazineName": "50 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/LMG/KTS100 MK8/48_KTS100 MK8_Magazine_50Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "KTS100 MK8",
+      "attachment": "Magazine/60Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "60_fast",
+      "modelMagazineName": "60 Fast",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/LMG/KTS100 MK8/50_KTS100 MK8_Magazine_60RND_MAGAZINE.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "M1014",
+      "attachment": "Magazine/4Rnd Speedloader",
+      "direction": "named-without-reload-speed-tier",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "4_fast",
+      "modelMagazineName": "4 Fast",
+      "reloadSpeedTier": 0,
+      "nameImpliesReloadSpeed": true,
+      "source": "Weapon Attachments/Shotgun/M1014/56_M1014_Magazine_4RND_SPEEDLOADER.png",
+      "screenshotException": null,
+      "structuralContext": {
+        "kind": "tube-fed-scalar-null",
+        "contract": "DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup",
+        "reason": "Tube-fed shotgun reload remains scalar-null; reloadSpeedTier=0 is a structural marker, not an applicable scalar ladder rung."
+      },
+      "coverageContext": null
+    },
+    {
+      "weapon": "M121 A2",
+      "attachment": "Magazine/50Rnd Belt Pouch",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "50_fast",
+      "modelMagazineName": "50 Fast",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/LMG/M121 A2/45_M121 A2_Magazine_50RND_BELT_POUCH.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "M277",
+      "attachment": "Magazine/15Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "15_rnd",
+      "modelMagazineName": "15 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Carbine/M277/51_M277_Magazine_15Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "M357 Trait",
+      "attachment": "Magazine/8Rnd Moon Clip",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "8_fast",
+      "modelMagazineName": "8 Fast",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Sidearm/M357 Trait/11_M357 Trait_Magazine_8RND_MOON_CLIP.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "M357 Trait",
+      "attachment": "Magazine/8Rnd Speedloader",
+      "direction": "named-without-reload-speed-tier",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "8_rnd",
+      "modelMagazineName": "8 Rnd",
+      "reloadSpeedTier": 0,
+      "nameImpliesReloadSpeed": true,
+      "source": "Weapon Attachments/Sidearm/M357 Trait/10_M357 Trait_Magazine_8RND_SPEEDLOADER.png",
+      "screenshotException": null,
+      "structuralContext": {
+        "kind": "scalar-revolver",
+        "contract": "DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup",
+        "reason": "Revolver reload is scalar and tier 0 is applicable; this is not the tube-fed scalar-null exemption."
+      },
+      "coverageContext": null
+    },
+    {
+      "weapon": "M417 A2",
+      "attachment": "Magazine/10Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "10_rnd",
+      "modelMagazineName": "10 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Carbine/M417 A2/48_M417 A2_Magazine_10Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "M44",
+      "attachment": "Magazine/6Rnd Speedloader",
+      "direction": "named-without-reload-speed-tier",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "6_rnd",
+      "modelMagazineName": "6 Rnd",
+      "reloadSpeedTier": 0,
+      "nameImpliesReloadSpeed": true,
+      "source": "Weapon Attachments/Sidearm/M44/04_M44_Magazine_6RND_SPEEDLOADER.png",
+      "screenshotException": null,
+      "structuralContext": {
+        "kind": "scalar-revolver",
+        "contract": "DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup",
+        "reason": "Revolver reload is scalar and tier 0 is applicable; this is not the tube-fed scalar-null exemption."
+      },
+      "coverageContext": null
+    },
+    {
+      "weapon": "M87A1",
+      "attachment": "Magazine/5Rnd Speedloader",
+      "direction": "named-without-reload-speed-tier",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "5_fast",
+      "modelMagazineName": "5 Fast",
+      "reloadSpeedTier": 0,
+      "nameImpliesReloadSpeed": true,
+      "source": "Weapon Attachments/Shotgun/M87A1/35_M87A1_Magazine_5RND_SPEEDLOADER.png",
+      "screenshotException": null,
+      "structuralContext": {
+        "kind": "tube-fed-scalar-null",
+        "contract": "DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup",
+        "reason": "Tube-fed shotgun reload remains scalar-null; reloadSpeedTier=0 is a structural marker, not an applicable scalar ladder rung."
+      },
+      "coverageContext": null
+    },
+    {
+      "weapon": "PP-19",
+      "attachment": "Magazine/20Rnd Fast Mag",
+      "direction": "named-without-reload-speed-tier",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "20_fast",
+      "modelMagazineName": "20 Fast",
+      "reloadSpeedTier": 0,
+      "nameImpliesReloadSpeed": true,
+      "source": "Weapon Attachments/SMG/PP-19/39_PP-19_Magazine_20Rnd_Fast_Mag.png",
+      "screenshotException": {
+        "observedReloadMs": 2467,
+        "displayName": "20Rnd Fast Mag",
+        "observedOn": "2026-07-20",
+        "reason": "direct screenshot reads base reload with no reload arrow"
+      },
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "PW5A3",
+      "attachment": "Magazine/20Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "20_rnd",
+      "modelMagazineName": "20 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/SMG/PW5A3/40_PW5A3_Magazine_20Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "PW7A2",
+      "attachment": "Magazine/20Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "20_rnd",
+      "modelMagazineName": "20 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/SMG/PW7A2/40_PW7A2_Magazine_20Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "SVDM",
+      "attachment": "Magazine/5Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "5_rnd",
+      "modelMagazineName": "5 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/DMR/SVDM/47_SVDM_Magazine_5Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    },
+    {
+      "weapon": "TR7",
+      "attachment": "Magazine/15Rnd Magazine",
+      "direction": "reload-speed-tier-without-name",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": "15_rnd",
+      "modelMagazineName": "15 Rnd",
+      "reloadSpeedTier": 1,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Assault Rifle/TR7/44_TR7_Magazine_15Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": null
+    }
+  ]
+}

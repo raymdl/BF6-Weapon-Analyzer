@@ -98,6 +98,8 @@ outputs/attachment-audit/*
 !outputs/attachment-audit/sl9-detailed-recapture-20260731.json
 !outputs/attachment-audit/model-tier-mismatch-inventory-20260801.json
 !outputs/attachment-audit/field-slot-asymmetry-inventory-20260801.json
+!outputs/attachment-audit/name-effect-consistency-inventory-20260801.json
+!outputs/attachment-audit/name-effect-coverage-inventory-20260801.json
 
 # Local one-off export helpers.
 scripts/export_dmg.py

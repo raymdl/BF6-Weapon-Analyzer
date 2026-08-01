@@ -1,0 +1,32 @@
+{
+  "kind": "name-effect-coverage-inventory",
+  "schemaVersion": 1,
+  "source": "scripts/audit-sweep.mjs",
+  "field": "reloadSpeedTier",
+  "nameImplicationPattern": "\\b(?:fast|speedloader)\\b",
+  "counts": {
+    "total": 1,
+    "byDirection": {
+      "unmapped-model-attachment": 1
+    }
+  },
+  "records": [
+    {
+      "weapon": "SOR-556 MK2",
+      "attachment": "Magazine/45Rnd Magazine",
+      "direction": "unmapped-model-attachment",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": null,
+      "modelMagazineName": null,
+      "reloadSpeedTier": null,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Assault Rifle/SOR-556 MK2/57_SOR-556 MK2_Magazine_45Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": {
+        "kind": "screenshot-present-no-live-catalog-entry",
+        "reason": "The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map."
+      }
+    }
+  ]
+}

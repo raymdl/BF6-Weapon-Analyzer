@@ -25,8 +25,16 @@ import {
 import {
   inventoryDrift,
   isAllowedModelTierWarning,
+  isAllowedNameEffectWarning,
+  isAllowedNameEffectCoverageWarning,
   loadModelTierMismatchInventory,
+  loadNameEffectConsistencyInventory,
+  loadNameEffectCoverageInventory,
   modelTierMismatchKey,
+  nameEffectInventoryDrift,
+  nameEffectKey,
+  nameEffectCoverageInventoryDrift,
+  nameEffectCoverageKey,
   runSweep,
   STATS,
 } from './audit-sweep.mjs';
@@ -90,30 +98,93 @@ test('Phase 0 fixtures are complete, full-roster, and path-portable', () => {
   }
 });
 
-test('sweep pins inventoried model-tier mismatches and rejects other warnings', () => {
+test('sweep pins inventoried model-tier and name-effect warnings and rejects other warnings', () => {
   const report = runSweep({ root: DEFAULT_ROOT });
   const inventoryKeys = loadModelTierMismatchInventory(DEFAULT_ROOT);
+  const nameEffectInventoryKeys = loadNameEffectConsistencyInventory(DEFAULT_ROOT);
+  const nameEffectCoverageInventoryKeys = loadNameEffectCoverageInventory(DEFAULT_ROOT);
   const modelWarnings = report.findings.filter(finding => (
     finding.severity === 'warn' && finding.check === 'model-tier-mismatch'
   ));
+  const nameEffectWarnings = report.findings.filter(finding => (
+    finding.severity === 'warn' && finding.check === 'name-effect-consistency'
+  ));
+  const nameEffectCoverageWarnings = report.findings.filter(finding => (
+    finding.severity === 'warn' && finding.check === 'name-effect-coverage'
+  ));
   assert.equal(modelWarnings.length, 74);
+  assert.equal(nameEffectWarnings.length, 16);
+  assert.equal(nameEffectCoverageWarnings.length, 1);
   assert.deepEqual(new Set(modelWarnings.map(modelTierMismatchKey)), inventoryKeys);
+  assert.deepEqual(new Set(nameEffectWarnings.map(nameEffectKey)), nameEffectInventoryKeys);
+  assert.deepEqual(new Set(nameEffectCoverageWarnings.map(nameEffectCoverageKey)), nameEffectCoverageInventoryKeys);
   assert.deepEqual(inventoryDrift(report, DEFAULT_ROOT), {
+    unexpected: [],
+    missing: [],
+    duplicates: [],
+  });
+  assert.deepEqual(nameEffectInventoryDrift(report, DEFAULT_ROOT), {
+    unexpected: [],
+    missing: [],
+    duplicates: [],
+  });
+  assert.deepEqual(nameEffectCoverageInventoryDrift(report, DEFAULT_ROOT), {
     unexpected: [],
     missing: [],
     duplicates: [],
   });
   assert.equal(isAllowedModelTierWarning(modelWarnings[0], inventoryKeys), true);
   assert.equal(isAllowedModelTierWarning({ ...modelWarnings[0], check: 'other-warning' }, inventoryKeys), false);
-  assert.deepEqual(report.severityCounts, { error: 0, warn: 74, info: 28 });
+  assert.equal(isAllowedNameEffectWarning(nameEffectWarnings[0], nameEffectInventoryKeys), true);
+  assert.equal(isAllowedNameEffectWarning({ ...nameEffectWarnings[0], check: 'other-warning' }, nameEffectInventoryKeys), false);
+  assert.equal(isAllowedNameEffectCoverageWarning(nameEffectCoverageWarnings[0], nameEffectCoverageInventoryKeys), true);
+  assert.equal(isAllowedNameEffectCoverageWarning({ ...nameEffectCoverageWarnings[0], check: 'other-warning' }, nameEffectCoverageInventoryKeys), false);
+  assert.deepEqual(report.severityCounts, { error: 0, warn: 91, info: 28 });
   assert.deepEqual(report.counts, {
     'fire-mode-ergo': 1,
     'model-tier-mismatch': 74,
+    'name-effect-consistency': 16,
+    'name-effect-coverage': 1,
     'subsonic-treatment': 27,
   });
   assert.deepEqual(report.findings.filter(finding => (
-    finding.severity === 'warn' && finding.check !== 'model-tier-mismatch'
+    finding.severity === 'warn'
+      && !['model-tier-mismatch', 'name-effect-consistency', 'name-effect-coverage'].includes(finding.check)
   )), []);
+  const pp19 = nameEffectWarnings.find(finding => finding.weapon === 'PP-19');
+  assert.equal(pp19.direction, 'named-without-reload-speed-tier');
+  assert.equal(pp19.screenshotException.observedReloadMs, 2467);
+  assert.equal(nameEffectWarnings.filter(finding => finding.direction === 'reload-speed-tier-without-name').length, 11);
+  assert.equal(nameEffectWarnings.filter(finding => finding.direction === 'named-without-reload-speed-tier').length, 5);
+  assert.deepEqual(nameEffectCoverageWarnings[0], {
+    severity: 'warn',
+    check: 'name-effect-coverage',
+    weapon: 'SOR-556 MK2',
+    attachment: 'Magazine/45Rnd Magazine',
+    detail: 'corpus screenshot exists, but no corresponding live WEAPON_MAG or Phase 4 migration-manifest entry exists',
+    direction: 'unmapped-model-attachment',
+    field: 'reloadSpeedTier',
+    magazineId: null,
+    modelMagazineName: null,
+    reloadSpeedTier: null,
+    nameImpliesReloadSpeed: false,
+    source: 'Weapon Attachments/Assault Rifle/SOR-556 MK2/57_SOR-556 MK2_Magazine_45Rnd_Magazine.png',
+    screenshotException: null,
+    coverageContext: {
+      kind: 'screenshot-present-no-live-catalog-entry',
+      reason: 'The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map.',
+    },
+  });
+  const m1014 = nameEffectWarnings.find(finding => finding.weapon === 'M1014');
+  const m87a1 = nameEffectWarnings.find(finding => finding.weapon === 'M87A1');
+  const m44 = nameEffectWarnings.find(finding => finding.weapon === 'M44');
+  const m357Speedloader = nameEffectWarnings.find(finding => finding.attachment === 'Magazine/8Rnd Speedloader');
+  assert.equal(m1014.structuralContext.kind, 'tube-fed-scalar-null');
+  assert.equal(m87a1.structuralContext.kind, 'tube-fed-scalar-null');
+  assert.equal(m44.structuralContext.kind, 'scalar-revolver');
+  assert.equal(m357Speedloader.structuralContext.kind, 'scalar-revolver');
+  assert.match(m1014.structuralContext.contract, /DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
+  assert.match(m44.structuralContext.contract, /DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
   assert.equal(report.findings.filter(finding => finding.check === 'recoil-ladder').length, 0);
   assert.equal(report.findings.filter(finding => finding.check === 'recoilvar-ladder').length, 0);
   assert.deepEqual(report.classes.shotgun, {
@@ -122,6 +193,74 @@ test('sweep pins inventoried model-tier mismatches and rejects other warnings', 
     weaponNames: ['18.5KS-K', 'DB-12', 'M1014', 'M87A1'],
   });
   assert.deepEqual(report.coverage.modelUnmappedWeapons, ['BROD 3', 'EF88', 'VSSM']);
+});
+
+function copyNameEffectInventoryFixture() {
+  const root = mkdtempSync(path.join(tmpdir(), 'bf6-name-effect-inventory-'));
+  const files = new Set([
+    ...Object.values(PHASE0_FIXTURES),
+    'data/attachments.json',
+    'outputs/attachment-audit/name-effect-consistency-inventory-20260801.json',
+    'outputs/attachment-audit/name-effect-coverage-inventory-20260801.json',
+  ]);
+  for (const relativePath of files) {
+    const destination = path.join(root, relativePath);
+    fs.mkdirSync(path.dirname(destination), { recursive: true });
+    fs.copyFileSync(path.join(DEFAULT_ROOT, relativePath), destination);
+  }
+  return root;
+}
+
+function assertNameEffectInventoryPinned(root) {
+  const report = runSweep({ root });
+  const inventoryKeys = loadNameEffectConsistencyInventory(root);
+  const coverageInventoryKeys = loadNameEffectCoverageInventory(root);
+  const warnings = report.findings.filter(finding => (
+    finding.severity === 'warn' && finding.check === 'name-effect-consistency'
+  ));
+  assert.deepEqual(new Set(warnings.map(nameEffectKey)), inventoryKeys);
+  assert.deepEqual(nameEffectInventoryDrift(report, root), {
+    unexpected: [],
+    missing: [],
+    duplicates: [],
+  });
+  const coverageWarnings = report.findings.filter(finding => (
+    finding.severity === 'warn' && finding.check === 'name-effect-coverage'
+  ));
+  assert.deepEqual(new Set(coverageWarnings.map(nameEffectCoverageKey)), coverageInventoryKeys);
+  assert.deepEqual(nameEffectCoverageInventoryDrift(report, root), {
+    unexpected: [],
+    missing: [],
+    duplicates: [],
+  });
+}
+
+test('name-effect inventory rejects isolated new and disappearing reload-name findings', () => {
+  const root = copyNameEffectInventoryFixture();
+  const attachmentsPath = path.join(root, 'data', 'attachments.json');
+  const readAttachments = () => JSON.parse(fs.readFileSync(attachmentsPath, 'utf8'));
+  const writeAttachments = attachments => fs.writeFileSync(attachmentsPath, `${JSON.stringify(attachments, null, 2)}\n`);
+  try {
+    assertNameEffectInventoryPinned(root);
+
+    const newFinding = readAttachments();
+    newFinding.WEAPON_MAG.ak4d.mags['20_rnd'].reloadSpeedTier = 1;
+    writeAttachments(newFinding);
+    const newReport = runSweep({ root });
+    const newDrift = nameEffectInventoryDrift(newReport, root);
+    assert.deepEqual(newDrift.unexpected, ['AK4D|Magazine/20Rnd Magazine|reload-speed-tier-without-name']);
+    assert.throws(() => assertNameEffectInventoryPinned(root));
+
+    const disappearingFinding = readAttachments();
+    disappearingFinding.WEAPON_MAG.kts100.mags['45_rnd'].reloadSpeedTier = 0;
+    writeAttachments(disappearingFinding);
+    const disappearingReport = runSweep({ root });
+    const disappearingDrift = nameEffectInventoryDrift(disappearingReport, root);
+    assert.deepEqual(disappearingDrift.missing, ['KTS100 MK8|Magazine/45Rnd Magazine|reload-speed-tier-without-name']);
+    assert.throws(() => assertNameEffectInventoryPinned(root));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('cross-field consistency checks named capacity and every stat in duplicate identities', () => {

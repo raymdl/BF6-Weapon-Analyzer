@@ -14,6 +14,7 @@ export const PHASE0_FIXTURES = Object.freeze({
   dedupeExclusions: 'outputs/attachment-audit/deduped-source-record-exclusions-20260731.json',
   sl9Recapture: 'outputs/attachment-audit/sl9-detailed-recapture-20260731.json',
   reloadExceptions: 'data/reload-exceptions.json',
+  reloadMigrationManifest: 'scripts/reload-phase4-migration-manifest.json',
 });
 
 export const TUBE_FED_SHOTGUNS = new Set(['DB-12', 'M1014', 'M87A1']);
@@ -322,6 +323,7 @@ export function loadPhase0Inputs(root = DEFAULT_ROOT) {
   const bulkRecapture = readRequiredJson(root, PHASE0_FIXTURES.bulkRecapture, 'bulk recapture receipt');
   const dedupeExclusions = readRequiredJson(root, PHASE0_FIXTURES.dedupeExclusions, 'dedupe exclusion receipt');
   const sl9Recapture = readRequiredJson(root, PHASE0_FIXTURES.sl9Recapture, 'SL9 detailed recapture receipt');
+  const reloadMigrationManifest = readRequiredJson(root, PHASE0_FIXTURES.reloadMigrationManifest, 'reload migration manifest');
   const reloadExceptions = loadReloadExceptionRegister(root);
 
   const auditSummary = validateAuditFixture(audit);
@@ -347,6 +349,21 @@ export function loadPhase0Inputs(root = DEFAULT_ROOT) {
     throw new Error('SL9 detailed recapture receipt must contain 12 replacement records');
   }
   for (const item of sl9Recapture.records) sourceIdentity(item.canonicalPath);
+  if (reloadMigrationManifest.kind !== 'reload-phase4-migration-manifest'
+      || !Array.isArray(reloadMigrationManifest.magazines)
+      || reloadMigrationManifest.magazines.length !== reloadMigrationManifest.counts?.magazineEntries) {
+    throw new Error('Reload migration manifest is missing its complete magazine mapping');
+  }
+  const manifestKeys = new Set();
+  for (const item of reloadMigrationManifest.magazines) {
+    if (typeof item.key !== 'string' || typeof item.weaponId !== 'string'
+        || typeof item.magazineId !== 'string' || typeof item.evidence?.source !== 'string') {
+      throw new Error('Reload migration manifest contains an incomplete magazine mapping');
+    }
+    if (manifestKeys.has(item.key)) throw new Error(`Reload migration manifest repeats ${item.key}`);
+    manifestKeys.add(item.key);
+    sourceIdentity(`Weapon Attachments/${item.evidence.source}`);
+  }
 
   return {
     root,
@@ -360,6 +377,7 @@ export function loadPhase0Inputs(root = DEFAULT_ROOT) {
     bulkRecapture,
     dedupeExclusions,
     sl9Recapture,
+    reloadMigrationManifest,
     reloadExceptions,
     auditSummary,
   };

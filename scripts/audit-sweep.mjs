@@ -24,6 +24,7 @@ import {
   normalizeWeaponName,
   reloadRowMatches,
   sourceIdentity,
+  sourceRelativePath,
 } from './audit-phase0-lib.mjs';
 
 export const STATS = [
@@ -40,12 +41,15 @@ const NEVER_ZERO = [
 
 const FIRE_MODE_ERGOS = /burst|full auto/i;
 const ERGO_MULT = 1.063;
+const RELOAD_SPEED_NAME = /\b(?:fast|speedloader)\b/i;
 
-function addFinding(findings, severity, check, weapon, attachment, detail) {
-  findings.push({ severity, check, weapon, attachment, detail });
+function addFinding(findings, severity, check, weapon, attachment, detail, metadata = {}) {
+  findings.push({ severity, check, weapon, attachment, detail, ...metadata });
 }
 
 const MODEL_TIER_INVENTORY = 'outputs/attachment-audit/model-tier-mismatch-inventory-20260801.json';
+const NAME_EFFECT_INVENTORY = 'outputs/attachment-audit/name-effect-consistency-inventory-20260801.json';
+const NAME_EFFECT_COVERAGE_INVENTORY = 'outputs/attachment-audit/name-effect-coverage-inventory-20260801.json';
 
 function mismatchField(detail) {
   const match = /^(\w+) predicted -?\d+(?:\.\d+)?, observed -?\d+(?:\.\d+)?$/.exec(detail);
@@ -98,6 +102,102 @@ export function isAllowedModelTierWarning(finding, inventoryKeys) {
   return finding?.severity === 'warn'
     && finding.check === 'model-tier-mismatch'
     && inventoryKeys.has(modelTierMismatchKey(finding));
+}
+
+export function nameEffectKey(finding) {
+  if (finding?.check !== 'name-effect-consistency' || typeof finding.direction !== 'string') {
+    throw new Error('Expected a name-effect-consistency finding');
+  }
+  return `${finding.weapon}|${finding.attachment}|${finding.direction}`;
+}
+
+function nameEffectInventoryRecordKey(record) {
+  if (!record || typeof record.weapon !== 'string' || typeof record.attachment !== 'string'
+      || typeof record.direction !== 'string') {
+    throw new Error('Invalid name-effect consistency inventory record');
+  }
+  return `${record.weapon}|${record.attachment}|${record.direction}`;
+}
+
+export function loadNameEffectConsistencyInventory(root = DEFAULT_ROOT) {
+  const inventoryPath = path.join(root, NAME_EFFECT_INVENTORY);
+  if (!fs.existsSync(inventoryPath)) throw new Error(`Missing name-effect consistency inventory: ${NAME_EFFECT_INVENTORY}`);
+  let inventory;
+  try {
+    inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
+  } catch (error) {
+    throw new Error(`Invalid name-effect consistency inventory: ${error.message}`, { cause: error });
+  }
+  if (!Array.isArray(inventory.records)) throw new Error('Name-effect consistency inventory has no records array');
+  const keys = inventory.records.map(nameEffectInventoryRecordKey);
+  if (new Set(keys).size !== keys.length) throw new Error('Name-effect consistency inventory contains duplicate keys');
+  return new Set(keys);
+}
+
+export function nameEffectInventoryDrift(report, root = DEFAULT_ROOT) {
+  const expected = loadNameEffectConsistencyInventory(root);
+  const actualKeys = report.findings
+    .filter(finding => finding.severity === 'warn' && finding.check === 'name-effect-consistency')
+    .map(nameEffectKey);
+  const actual = new Set(actualKeys);
+  return {
+    unexpected: [...actual].filter(key => !expected.has(key)).sort(),
+    missing: [...expected].filter(key => !actual.has(key)).sort(),
+    duplicates: actualKeys.filter((key, index) => actualKeys.indexOf(key) !== index).sort(),
+  };
+}
+
+export function isAllowedNameEffectWarning(finding, inventoryKeys) {
+  return finding?.severity === 'warn'
+    && finding.check === 'name-effect-consistency'
+    && inventoryKeys.has(nameEffectKey(finding));
+}
+
+export function nameEffectCoverageKey(finding) {
+  if (finding?.check !== 'name-effect-coverage' || typeof finding.direction !== 'string') {
+    throw new Error('Expected a name-effect-coverage finding');
+  }
+  return `${finding.weapon}|${finding.attachment}|${finding.direction}`;
+}
+
+export function loadNameEffectCoverageInventory(root = DEFAULT_ROOT) {
+  const inventoryPath = path.join(root, NAME_EFFECT_COVERAGE_INVENTORY);
+  if (!fs.existsSync(inventoryPath)) throw new Error(`Missing name-effect coverage inventory: ${NAME_EFFECT_COVERAGE_INVENTORY}`);
+  let inventory;
+  try {
+    inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
+  } catch (error) {
+    throw new Error(`Invalid name-effect coverage inventory: ${error.message}`, { cause: error });
+  }
+  if (!Array.isArray(inventory.records)) throw new Error('Name-effect coverage inventory has no records array');
+  const keys = inventory.records.map(record => {
+    if (!record || typeof record.weapon !== 'string' || typeof record.attachment !== 'string'
+        || typeof record.direction !== 'string') {
+      throw new Error('Invalid name-effect coverage inventory record');
+    }
+    return `${record.weapon}|${record.attachment}|${record.direction}`;
+  });
+  if (new Set(keys).size !== keys.length) throw new Error('Name-effect coverage inventory contains duplicate keys');
+  return new Set(keys);
+}
+
+export function nameEffectCoverageInventoryDrift(report, root = DEFAULT_ROOT) {
+  const expected = loadNameEffectCoverageInventory(root);
+  const actualKeys = report.findings
+    .filter(finding => finding.severity === 'warn' && finding.check === 'name-effect-coverage')
+    .map(nameEffectCoverageKey);
+  const actual = new Set(actualKeys);
+  return {
+    unexpected: [...actual].filter(key => !expected.has(key)).sort(),
+    missing: [...expected].filter(key => !actual.has(key)).sort(),
+    duplicates: actualKeys.filter((key, index) => actualKeys.indexOf(key) !== index).sort(),
+  };
+}
+
+export function isAllowedNameEffectCoverageWarning(finding, inventoryKeys) {
+  return finding?.severity === 'warn'
+    && finding.check === 'name-effect-coverage'
+    && inventoryKeys.has(nameEffectCoverageKey(finding));
 }
 
 function sourceKey(value) {
@@ -232,11 +332,110 @@ function runTierChecks({ findings, byWeapon, balance, attachments, byName, consu
   }
 }
 
+function runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadExceptions, reloadMigrationManifest }) {
+  // §7 Check 4 treats both Fast and Speedloader as names that imply reload
+  // speed. A mismatch is a screenshot-read request, including when the
+  // scalar reload tier is intentionally zero for a tube-fed option.
+  const manifestBySource = new Map(reloadMigrationManifest.magazines.map(item => [
+    sourceIdentity(`Weapon Attachments/${item.evidence.source}`), item,
+  ]));
+
+  for (const [weaponName, rows] of byWeapon) {
+    if (!byName.has(normalizeWeaponName(weaponName))) continue;
+    for (const row of rows) {
+      if (row.attachmentType !== 'Magazine') continue;
+      const manifest = manifestBySource.get(sourceIdentity(row.source.currentPath));
+      if (!manifest) {
+        addFinding(findings, 'warn', 'name-effect-coverage', weaponName,
+          `${row.attachmentType}/${row.attachmentName}`,
+          'corpus screenshot exists, but no corresponding live WEAPON_MAG or Phase 4 migration-manifest entry exists', {
+            direction: 'unmapped-model-attachment',
+            field: 'reloadSpeedTier',
+            magazineId: null,
+            modelMagazineName: null,
+            reloadSpeedTier: null,
+            nameImpliesReloadSpeed: RELOAD_SPEED_NAME.test(row.attachmentName ?? ''),
+            source: sourceRelativePath(row.source.currentPath),
+            screenshotException: null,
+            coverageContext: {
+              kind: 'screenshot-present-no-live-catalog-entry',
+              reason: 'The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map.',
+            },
+          });
+        continue;
+      }
+      const magazine = attachments.WEAPON_MAG?.[manifest.weaponId]?.mags?.[manifest.magazineId];
+      if (!magazine) {
+        addFinding(findings, 'warn', 'name-effect-coverage', weaponName,
+          `${row.attachmentType}/${row.attachmentName}`,
+          `migration manifest maps to missing live magazine ${manifest.weaponId}/${manifest.magazineId}`, {
+            direction: 'unmapped-model-attachment',
+            field: 'reloadSpeedTier',
+            magazineId: manifest.magazineId,
+            modelMagazineName: null,
+            reloadSpeedTier: null,
+            nameImpliesReloadSpeed: RELOAD_SPEED_NAME.test(row.attachmentName ?? ''),
+            source: sourceRelativePath(row.source.currentPath),
+            screenshotException: null,
+            coverageContext: {
+              kind: 'manifest-points-to-missing-live-catalog-entry',
+              reason: `The Phase 4 manifest points to ${manifest.weaponId}/${manifest.magazineId}, but that live catalog entry is absent.`,
+            },
+          });
+        continue;
+      }
+      const nameImpliesReloadSpeed = RELOAD_SPEED_NAME.test(row.attachmentName ?? '');
+      const reloadSpeedTier = Number.isInteger(magazine.reloadSpeedTier) ? magazine.reloadSpeedTier : 0;
+      const hasReloadSpeedEffect = reloadSpeedTier > 0;
+      if (nameImpliesReloadSpeed === hasReloadSpeedEffect) continue;
+
+      const direction = nameImpliesReloadSpeed
+        ? 'named-without-reload-speed-tier'
+        : 'reload-speed-tier-without-name';
+      const registerEntry = reloadExceptions.register.screenshotExceptions?.[manifest.weaponId]?.[manifest.magazineId] ?? null;
+      const detail = nameImpliesReloadSpeed
+        ? `name implies reload speed but reloadSpeedTier=${reloadSpeedTier}`
+        : `reloadSpeedTier=${reloadSpeedTier} implies reload speed but name does not`;
+      const registerDetail = registerEntry
+        ? `; screenshot exception register records ${registerEntry.observedReloadMs} ms: ${registerEntry.reason}`
+        : '';
+      const structuralContext = nameImpliesReloadSpeed && !hasReloadSpeedEffect
+        ? (TUBE_FED_SHOTGUNS.has(weaponName)
+          ? {
+            kind: 'tube-fed-scalar-null',
+            contract: 'DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup',
+            reason: 'Tube-fed shotgun reload remains scalar-null; reloadSpeedTier=0 is a structural marker, not an applicable scalar ladder rung.',
+          }
+          : ['M44', 'M357 Trait'].includes(weaponName)
+            ? {
+              kind: 'scalar-revolver',
+              contract: 'DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup',
+              reason: 'Revolver reload is scalar and tier 0 is applicable; this is not the tube-fed scalar-null exemption.',
+            }
+            : null)
+        : null;
+      addFinding(findings, 'warn', 'name-effect-consistency', weaponName,
+        `${row.attachmentType}/${row.attachmentName}`,
+        `${detail}${registerDetail}`, {
+          direction,
+          field: 'reloadSpeedTier',
+          magazineId: manifest.magazineId,
+          modelMagazineName: magazine.name,
+          reloadSpeedTier,
+          nameImpliesReloadSpeed,
+          source: sourceRelativePath(row.source.currentPath),
+          screenshotException: registerEntry,
+          structuralContext,
+        });
+    }
+  }
+}
+
 export function runSweep({ root = DEFAULT_ROOT } = {}) {
   const inputs = loadPhase0Inputs(root);
   const {
     audit, balance, weapons, subsonicTreatments, exceptions: reviewedExceptions,
-    reloadExceptions,
+    reloadExceptions, reloadMigrationManifest,
   } = inputs;
   const attachments = JSON.parse(fs.readFileSync(path.join(root, 'data', 'attachments.json'), 'utf8'));
   const animationOverrides = reloadExceptions.animationOverrides;
@@ -403,6 +602,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
   }
 
   runTierChecks({ findings, byWeapon, balance, attachments, byName, consumeReviewedException });
+  runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadExceptions, reloadMigrationManifest });
 
   // Check 6: scalar reloads include every weapon except the three tube-fed
   // shotguns.  18.5KS-K therefore remains in this loop.
@@ -606,13 +806,29 @@ export function main(args = process.argv.slice(2)) {
     console.log('\nwrote', output);
   }
   const inventoryKeys = loadModelTierMismatchInventory();
+  const nameEffectInventoryKeys = loadNameEffectConsistencyInventory();
+  const nameEffectCoverageInventoryKeys = loadNameEffectCoverageInventory();
   const drift = inventoryDrift(report);
+  const nameEffectDrift = nameEffectInventoryDrift(report);
+  const nameEffectCoverageDrift = nameEffectCoverageInventoryDrift(report);
   if (drift.unexpected.length || drift.missing.length || drift.duplicates.length) {
     console.error('model-tier-mismatch inventory drift:', JSON.stringify(drift));
   }
+  if (nameEffectDrift.unexpected.length || nameEffectDrift.missing.length || nameEffectDrift.duplicates.length) {
+    console.error('name-effect consistency inventory drift:', JSON.stringify(nameEffectDrift));
+  }
+  if (nameEffectCoverageDrift.unexpected.length || nameEffectCoverageDrift.missing.length || nameEffectCoverageDrift.duplicates.length) {
+    console.error('name-effect coverage inventory drift:', JSON.stringify(nameEffectCoverageDrift));
+  }
   const blocking = report.findings.filter(finding => finding.severity === 'error'
-    || (finding.severity === 'warn' && !isAllowedModelTierWarning(finding, inventoryKeys)));
-  if (blocking.length || drift.unexpected.length || drift.missing.length || drift.duplicates.length) process.exitCode = 1;
+    || (finding.severity === 'warn'
+      && !isAllowedModelTierWarning(finding, inventoryKeys)
+      && !isAllowedNameEffectWarning(finding, nameEffectInventoryKeys)
+      && !isAllowedNameEffectCoverageWarning(finding, nameEffectCoverageInventoryKeys)));
+  if (blocking.length
+      || drift.unexpected.length || drift.missing.length || drift.duplicates.length
+      || nameEffectDrift.unexpected.length || nameEffectDrift.missing.length || nameEffectDrift.duplicates.length
+      || nameEffectCoverageDrift.unexpected.length || nameEffectCoverageDrift.missing.length || nameEffectCoverageDrift.duplicates.length) process.exitCode = 1;
   return report;
 }
 
