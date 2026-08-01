@@ -570,27 +570,26 @@
     {
       "id": "ptt_grip_pod",
       "name": "PTT Grip Pod",
-      "adsRecoilTierMod": 0,
-      "movingAdsSpreadTierMod": 1,
+      "adsRecoilTierMod": 2,
+      "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
-      "pts": 10
+      "pts": 20
     },
     {
       "id": "qd_grip_pod",
       "name": "QD Grip Pod",
-      "adsRecoilTierMod": 0,
-      "movingAdsSpreadTierMod": 1,
+      "adsRecoilTierMod": 2,
+      "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
-      "pts": 10
+      "pts": 30
     },
     {
       "id": "classic_grip_pod",
       "name": "Classic Grip Pod",
-      "adsRecoilTierMod": 0,
-      "movingAdsSpreadTierMod": 0,
-      "adsTimeTierMod": 0,
-      "pts": 20,
-      "noEffect": true
+      "adsRecoilTierMod": 2,
+      "movingAdsSpreadTierMod": -1,
+      "adsTimeTierMod": 1,
+      "pts": 30
     },
     {
       "id": "bipod_sr",
@@ -605,7 +604,7 @@
       "id": "qd_grip_pod_sr",
       "name": "QD Grip Pod",
       "adsRecoilTierMod": 0,
-      "movingAdsSpreadTierMod": 1,
+      "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 10
     },
@@ -3910,7 +3909,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "ak205": {
       "defAds": 3,
@@ -3993,7 +3995,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "ak4d": {
       "defAds": 4,
@@ -4049,7 +4054,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "b36a4": {
       "defAds": 4,
@@ -4141,7 +4149,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "cz3a1": {
       "defAds": 2,
@@ -4197,7 +4208,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "pp19": {
       "defAds": 2,
@@ -4261,7 +4275,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "db12": {
       "defAds": 2,
@@ -4281,7 +4298,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -2,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "db12",
+      "drawTimeOffset": 9
     },
     "drsiar": {
       "defAds": 5,
@@ -4373,7 +4393,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 5,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "grtbc": {
       "defAds": 3,
@@ -4429,7 +4452,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "grtcps": {
       "defAds": 4,
@@ -4476,7 +4502,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "kord6p67": {
       "defAds": 4,
@@ -4550,7 +4579,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "kts100": {
       "defAds": 5,
@@ -4615,7 +4647,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 5,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "kv9": {
       "defAds": 2,
@@ -4662,7 +4697,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "l110": {
       "defAds": 6,
@@ -4691,7 +4729,10 @@
       },
       "baseSprintRecoveryTier": 9,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 7,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "l85a3": {
       "defAds": 4,
@@ -4783,7 +4824,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "lmr27": {
       "defAds": 4,
@@ -4848,7 +4892,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m60": {
       "defAds": 5,
@@ -4877,7 +4924,10 @@
       },
       "baseSprintRecoveryTier": 9,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 7,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m1014": {
       "defAds": 4,
@@ -4915,7 +4965,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m121a2": {
       "defAds": 6,
@@ -4953,7 +5006,10 @@
       },
       "baseSprintRecoveryTier": 9,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 7,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m123k": {
       "defAds": 6,
@@ -4982,7 +5038,10 @@
       },
       "baseSprintRecoveryTier": 9,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 7,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m2010esr": {
       "defAds": 5,
@@ -5020,7 +5079,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m240l": {
       "defAds": 6,
@@ -5058,7 +5120,10 @@
       },
       "baseSprintRecoveryTier": 9,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 7,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m250": {
       "defAds": 6,
@@ -5087,7 +5152,10 @@
       },
       "baseSprintRecoveryTier": 9,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 7,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m277": {
       "defAds": 3,
@@ -5152,7 +5220,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m39emr": {
       "defAds": 5,
@@ -5208,7 +5279,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 5,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m417a2": {
       "defAds": 3,
@@ -5255,7 +5329,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m433": {
       "defAds": 4,
@@ -5329,7 +5406,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m4a1": {
       "defAds": 3,
@@ -5403,7 +5483,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m87a1": {
       "defAds": 4,
@@ -5450,7 +5533,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "miniscout": {
       "defAds": 4,
@@ -5515,7 +5601,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "nvo228e": {
       "defAds": 4,
@@ -5589,7 +5678,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "psr": {
       "defAds": 6,
@@ -5618,7 +5710,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 5,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "pw5a3": {
       "defAds": 2,
@@ -5665,7 +5760,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "pw7a2": {
       "defAds": 2,
@@ -5712,7 +5810,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "qbz192": {
       "defAds": 3,
@@ -5759,7 +5860,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "rpkm": {
       "defAds": 5,
@@ -5833,7 +5937,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 5,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "scw10": {
       "defAds": 2,
@@ -5880,7 +5987,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "sg553r": {
       "defAds": 3,
@@ -5954,7 +6064,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "sgx": {
       "defAds": 2,
@@ -6001,7 +6114,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "sl9": {
       "defAds": 2,
@@ -6030,7 +6146,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "sor300sc": {
       "defAds": 3,
@@ -6104,7 +6223,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "sv98": {
       "defAds": 5,
@@ -6124,7 +6246,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "svdm": {
       "defAds": 5,
@@ -6171,7 +6296,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 5,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "svk86": {
       "defAds": 6,
@@ -6200,7 +6328,10 @@
       },
       "baseSprintRecoveryTier": 8,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 6,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "umg40": {
       "defAds": 2,
@@ -6256,7 +6387,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "usg90": {
       "defAds": 2,
@@ -6276,7 +6410,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "sor556": {
       "defAds": 4,
@@ -6359,7 +6496,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "tr7": {
       "defAds": 4,
@@ -6433,7 +6573,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "vcr2": {
       "defAds": 4,
@@ -6507,7 +6650,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "m16a4": {
       "defAds": 4,
@@ -6581,7 +6727,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "rpk74m": {
       "defAds": 5,
@@ -6664,7 +6813,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 5,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "l115": {
       "defAds": 6,
@@ -6702,7 +6854,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "primary"
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     },
     "p18": {
       "defAds": 2,
@@ -6731,7 +6886,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "sidearm"
+      "sprintRecoveryTierTable": "sidearm",
+      "drawTimeTier": 1,
+      "drawTimeGroup": "semiAutoSidearm",
+      "drawTimeOffset": 5
     },
     "es57": {
       "defAds": 1,
@@ -6760,7 +6918,10 @@
       },
       "baseSprintRecoveryTier": 3,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "sidearm"
+      "sprintRecoveryTierTable": "sidearm",
+      "drawTimeTier": 0,
+      "drawTimeGroup": "semiAutoSidearm",
+      "drawTimeOffset": 5
     },
     "m45a1": {
       "defAds": 2,
@@ -6789,7 +6950,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "sidearm"
+      "sprintRecoveryTierTable": "sidearm",
+      "drawTimeTier": 1,
+      "drawTimeGroup": "semiAutoSidearm",
+      "drawTimeOffset": 5
     },
     "m44": {
       "defAds": 3,
@@ -6809,7 +6973,10 @@
       },
       "baseSprintRecoveryTier": 7,
       "weaponSprintRecoveryTierShift": -3,
-      "sprintRecoveryTierTable": "sidearm"
+      "sprintRecoveryTierTable": "sidearm",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "revolverOrAutoSidearm",
+      "drawTimeOffset": 7
     },
     "ggh22": {
       "defAds": 2,
@@ -6847,7 +7014,10 @@
       },
       "baseSprintRecoveryTier": 4,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "sidearm"
+      "sprintRecoveryTierTable": "sidearm",
+      "drawTimeTier": 1,
+      "drawTimeGroup": "semiAutoSidearm",
+      "drawTimeOffset": 5
     },
     "m357trait": {
       "defAds": 2,
@@ -6876,7 +7046,10 @@
       },
       "baseSprintRecoveryTier": 6,
       "weaponSprintRecoveryTierShift": -3,
-      "sprintRecoveryTierTable": "sidearm"
+      "sprintRecoveryTierTable": "sidearm",
+      "drawTimeTier": 1,
+      "drawTimeGroup": "revolverOrAutoSidearm",
+      "drawTimeOffset": 7
     },
     "vz61": {
       "defAds": 2,
@@ -6905,7 +7078,10 @@
       },
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -1,
-      "sprintRecoveryTierTable": "sidearm"
+      "sprintRecoveryTierTable": "sidearm",
+      "drawTimeTier": 2,
+      "drawTimeGroup": "revolverOrAutoSidearm",
+      "drawTimeOffset": 7
     }
   }
 }

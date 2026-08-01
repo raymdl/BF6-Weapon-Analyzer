@@ -19,6 +19,7 @@ import { resolveHitMultipliers } from './damage.js';
  *     BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
  *     ADS_SPD_TIERS, SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
+ *     DRAW_TIME_AXIS,
  *     VELOCITY_LADDER,
  *   });
  *
@@ -38,6 +39,7 @@ let _ctx = {
   LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
   ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], PRIMARY_SPRINT_REC_TIERS: [], SIDEARM_SPRINT_REC_TIERS: [], DEPLOY_TIME_TIERS: [], ADS_MOVE_TIERS: [],
+  DRAW_TIME_AXIS: null,
   RELOAD_SPEED_LADDER: 1.13,
   VELOCITY_LADDER: 0.8,
 };
@@ -63,6 +65,144 @@ function hasOwn(record, field) {
 
 function millisecondsToSeconds(milliseconds) {
   return milliseconds == null ? null : +(milliseconds / 1000).toFixed(3);
+}
+
+function invalidDrawTime(reason) {
+  return {
+    valid: false,
+    reason,
+    baseDrawTimeTier: null,
+    effectiveDrawTimeTier: null,
+    offsetGroup: null,
+    offset: null,
+    sprint: null,
+    deploy: null,
+    deployErgonomicsException: null,
+  };
+}
+
+function integerField(record, field) {
+  return Number.isInteger(record?.[field]);
+}
+
+function clampTierCoordinate(rawIndex, table) {
+  if (!Array.isArray(table) || table.length === 0) return null;
+  const index = Math.max(0, Math.min(table.length - 1, rawIndex));
+  return {
+    rawIndex,
+    index,
+    clamped: index !== rawIndex,
+    value: table[index],
+  };
+}
+
+/**
+ * Resolve the canonical draw-time coordinate into the two player-visible
+ * renderings. The integer in WEAPON_MAG is a coordinate on the named shared
+ * axis; each lookup explicitly subtracts its own coordinate origin. Offsets
+ * therefore remain source-axis rungs, never milliseconds or runtime indices.
+ *
+ * Ergonomics are a registered sprint-only exception during this transition:
+ * the legacy deploy renderer applied magazine and grip shifts, but not the
+ * ergonomics sprint shift. The exception is represented in the return value
+ * and is validator/test-covered rather than silently omitted.
+ */
+export function resolveDrawTime({
+  weaponMag = null,
+  magazineSprintRecoveryTierShift = 0,
+  gripSprintRecoveryTierShift = 0,
+  ergonomicsSprintRecoveryTierShift = 0,
+  axis = _ctx.DRAW_TIME_AXIS,
+  primarySprintTable = _ctx.PRIMARY_SPRINT_REC_TIERS,
+  sidearmSprintTable = _ctx.SIDEARM_SPRINT_REC_TIERS,
+  deployTable = _ctx.DEPLOY_TIME_TIERS,
+} = {}) {
+  if (!axis || typeof axis !== 'object') return invalidDrawTime('missing-axis-contract');
+  if (!weaponMag || !integerField(weaponMag, 'drawTimeTier')
+      || !integerField(weaponMag, 'drawTimeOffset')
+      || typeof weaponMag.drawTimeGroup !== 'string') {
+    return invalidDrawTime('missing-or-invalid-derived-fields');
+  }
+  const [minTier, maxTier] = axis.baseCoordinateRange ?? [];
+  if (!Number.isInteger(minTier) || !Number.isInteger(maxTier)
+      || weaponMag.drawTimeTier < minTier || weaponMag.drawTimeTier > maxTier) {
+    return invalidDrawTime('base-draw-time-out-of-bounds');
+  }
+  const expectedOffset = axis.offsets?.[weaponMag.drawTimeGroup];
+  if (!Number.isInteger(expectedOffset) || expectedOffset !== weaponMag.drawTimeOffset) {
+    return invalidDrawTime('invalid-group-offset-selection');
+  }
+
+  const sprintTableKey = weaponMag.sprintRecoveryTierTable;
+  if (sprintTableKey !== 'primary' && sprintTableKey !== 'sidearm') {
+    return invalidDrawTime('invalid-sprint-recovery-tier-table');
+  }
+  const sprintContract = axis.sprintToFire?.[sprintTableKey];
+  const sprintTable = sprintTableKey === 'sidearm' ? sidearmSprintTable : primarySprintTable;
+  const deployContract = axis.deploy;
+  if (!sprintContract || !Number.isInteger(sprintContract.coordinateOrigin)
+      || !deployContract || !Number.isInteger(deployContract.coordinateOrigin)
+      || !Array.isArray(sprintTable) || sprintTable.length === 0
+      || !Array.isArray(deployTable) || deployTable.length === 0) {
+    return invalidDrawTime('incomplete-axis-contract');
+  }
+  const shifts = {
+    magazine: magazineSprintRecoveryTierShift,
+    grip: gripSprintRecoveryTierShift,
+    ergonomics: ergonomicsSprintRecoveryTierShift,
+  };
+  if (Object.values(shifts).some(value => !Number.isInteger(value))) {
+    return invalidDrawTime('non-integer-attachment-shift');
+  }
+
+  const effectiveDrawTimeTier = weaponMag.drawTimeTier
+    + shifts.magazine + shifts.grip + shifts.ergonomics;
+  const sprintCoordinate = effectiveDrawTimeTier;
+  const sprintIndex = clampTierCoordinate(
+    sprintCoordinate - sprintContract.coordinateOrigin,
+    sprintTable,
+  );
+  const deployErgonomicsException = axis.shiftPolicy?.namedExceptions?.find(
+    exception => exception.id === 'ergonomics-sprint-only',
+  );
+  if (!deployErgonomicsException
+      || deployErgonomicsException.source !== 'ergonomics.sprintRecoveryTierShift'
+      || deployErgonomicsException.excludedRendering !== 'deploy') {
+    return invalidDrawTime('missing-ergonomics-deploy-exception');
+  }
+  // The shared effective coordinate includes every sprint-to-fire shift exactly
+  // once. The named exception removes only the ergonomics contribution from the
+  // deploy coordinate to preserve the pre-migration, directly characterized path.
+  const deployCoordinate = effectiveDrawTimeTier
+    + weaponMag.drawTimeOffset - shifts.ergonomics;
+  const deployIndex = clampTierCoordinate(
+    deployCoordinate - deployContract.coordinateOrigin,
+    deployTable,
+  );
+
+  return {
+    valid: true,
+    reason: 'derived-draw-time',
+    baseDrawTimeTier: weaponMag.drawTimeTier,
+    effectiveDrawTimeTier,
+    offsetGroup: weaponMag.drawTimeGroup,
+    offset: weaponMag.drawTimeOffset,
+    sprint: {
+      table: sprintTableKey,
+      coordinate: sprintCoordinate,
+      coordinateOrigin: sprintContract.coordinateOrigin,
+      index: sprintIndex,
+    },
+    deploy: {
+      coordinate: deployCoordinate,
+      coordinateOrigin: deployContract.coordinateOrigin,
+      index: deployIndex,
+    },
+    deployErgonomicsException: {
+      id: deployErgonomicsException.id,
+      adjustment: -shifts.ergonomics,
+    },
+  };
 }
 
 /**
@@ -197,6 +337,7 @@ export function applyAttachments(w, atts) {
     BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
     ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
+    DRAW_TIME_AXIS,
   } = _ctx;
 
   const muz = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
@@ -315,32 +456,29 @@ export function applyAttachments(w, atts) {
   // ── Tier index resolution ─────────────────────────────────────────────────────
   // Clamp all tier indices to each stat table's 0-based bounds.
   let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null, _deployTimeMs = null;
+  let _drawTimeResolution = null;
   if (wm?.defAds != null && wm?.defSpr != null && wm?.defAms != null) {
     const adsIdx = Math.max(0, Math.min(ADS_SPD_TIERS.length - 1,
       wm.defAds + magAdsTimeTierShift - combinedAdsTimeTierMod));
-    const sprintRecTiers = wm.sprintRecoveryTierTable === 'sidearm'
-      ? (SIDEARM_SPRINT_REC_TIERS.length ? SIDEARM_SPRINT_REC_TIERS : SPRINT_REC_TIERS)
-      : (PRIMARY_SPRINT_REC_TIERS.length ? PRIMARY_SPRINT_REC_TIERS : SPRINT_REC_TIERS);
-    const sprIdx = Math.max(0, Math.min(sprintRecTiers.length - 1,
-      wm.defSpr + magSprintRecoveryTierShift + gripSprintRecoveryTierShift + ergoSprintRecoveryTierShift));
     const amsIdx = Math.max(0, Math.min(ADS_MOVE_TIERS.length - 1,
       wm.defAms + magAdsMoveSpeedTierShift
       + (grp.adsMoveSpeedTierShift ?? 0)
       + (ammoType.adsMoveSpeedTierShift ?? 0)));
     _adsTimeMs       = ADS_SPD_TIERS[adsIdx];
-    _sprintRecoveryMs = sprintRecTiers[sprIdx];
     _adsMoveSpeedMult = ADS_MOVE_TIERS[amsIdx];
-    if (w.deployT != null && DEPLOY_TIME_TIERS.length) {
-      const baseDeployMs = w.deployT * 1000;
-      let baseDeployIdx = 0;
-      for (let i = 1; i < DEPLOY_TIME_TIERS.length; i++) {
-        if (Math.abs(DEPLOY_TIME_TIERS[i] - baseDeployMs) < Math.abs(DEPLOY_TIME_TIERS[baseDeployIdx] - baseDeployMs)) {
-          baseDeployIdx = i;
-        }
-      }
-      const deployIdx = Math.max(0, Math.min(DEPLOY_TIME_TIERS.length - 1,
-        baseDeployIdx + magSprintRecoveryTierShift + gripSprintRecoveryTierShift));
-      _deployTimeMs = DEPLOY_TIME_TIERS[deployIdx];
+    _drawTimeResolution = resolveDrawTime({
+      weaponMag: wm,
+      magazineSprintRecoveryTierShift: magSprintRecoveryTierShift,
+      gripSprintRecoveryTierShift,
+      ergonomicsSprintRecoveryTierShift: ergoSprintRecoveryTierShift,
+      axis: DRAW_TIME_AXIS,
+      primarySprintTable: PRIMARY_SPRINT_REC_TIERS,
+      sidearmSprintTable: SIDEARM_SPRINT_REC_TIERS,
+      deployTable: DEPLOY_TIME_TIERS,
+    });
+    if (_drawTimeResolution.valid) {
+      _sprintRecoveryMs = _drawTimeResolution.sprint.index.value;
+      _deployTimeMs = _drawTimeResolution.deploy.index.value;
     }
   }
 
@@ -393,7 +531,7 @@ export function applyAttachments(w, atts) {
     bulletVel: w.bulletVel != null && velocityResolution.multiplier != null
       ? floorVelocityDisplay(w.bulletVel * velocityResolution.multiplier)
       : null,
-    deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : w.deployT,
+    deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : null,
     mag:    magMag ?? w.mag,
     tacRld: reloadResolution.tacRld,
   };

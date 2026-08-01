@@ -5,6 +5,11 @@ import { test } from 'node:test';
 import { join } from 'node:path';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
 import { blankAtts } from '../sim/loadout.js';
+import {
+  correctionRecordFor,
+  restoreApprovedGripCorrections,
+  selectedCorrectionRecord,
+} from './grip-pod-correction-deltas.mjs';
 
 const root = join(import.meta.dirname, '..');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
@@ -15,6 +20,7 @@ const ammo = readJson('data/ammo.json');
 const balance = readJson('data/balance_tables.json');
 const weapons = readJson('data/weapons.json');
 const review = readJson('outputs/attachment-audit/attachment-screenshot-review.json');
+const drawTimeBaseline = readJson('scripts/draw-time-phase3-baseline.json');
 const gripById = new Map(attachments.GRIPS.map(grip => [grip.id, grip]));
 const ergoById = new Map(attachments.ERGOS.map(ergo => [ergo.id, ergo]));
 const ammoById = new Map(ammo.AMMO.map(ammoType => [ammoType.id, ammoType]));
@@ -92,6 +98,7 @@ const baseContext = {
   SIDEARM_SPRINT_REC_TIERS: balance.SIDEARM_SPRINT_REC_TIERS,
   DEPLOY_TIME_TIERS: balance.DEPLOY_TIME_TIERS,
   ADS_MOVE_TIERS: balance.ADS_MOVE_TIERS,
+  DRAW_TIME_AXIS: balance.DRAW_TIME_AXIS,
   RELOAD_SPEED_LADDER: balance.RELOAD_SPEED_LADDER,
 };
 
@@ -148,7 +155,10 @@ function sprintTableNameFor(weaponMag) {
 }
 
 function deployBaseIndex(weapon, modelBalance) {
-  const baseDeployMs = weapon.deployT * 1000;
+  // Historical characterization only: the live resolver must never derive a
+  // deploy index by nearest-value search. The frozen draw-time fixture retains
+  // the old 59 deployT readings after the live field is removed.
+  const baseDeployMs = (weapon.deployT ?? drawTimeBaseline.legacyDeployT[weapon.id].deployT) * 1000;
   let baseIndex = 0;
   for (let i = 1; i < modelBalance.DEPLOY_TIME_TIERS.length; i++) {
     if (Math.abs(modelBalance.DEPLOY_TIME_TIERS[i] - baseDeployMs)
@@ -157,6 +167,15 @@ function deployBaseIndex(weapon, modelBalance) {
     }
   }
   return baseIndex;
+}
+
+function derivedDeployBaseIndex(weapon, modelAttachments, modelBalance) {
+  const weaponMag = modelAttachments.WEAPON_MAG[weapon.id];
+  const axis = modelBalance.DRAW_TIME_AXIS;
+  assert.ok(weaponMag?.drawTimeGroup, `${weapon.id} missing derived draw-time group`);
+  const deployCoordinate = weaponMag.drawTimeTier + weaponMag.drawTimeOffset;
+  const rawIndex = deployCoordinate - axis.deploy.coordinateOrigin;
+  return Math.max(0, Math.min(modelBalance.DEPLOY_TIME_TIERS.length - 1, rawIndex));
 }
 
 function loadoutFor({ weaponId, barrelId, magazineId, gripId, ergoId, ammoId }) {
@@ -204,7 +223,6 @@ function buildEnumeration({
   for (const weapon of sortedWeapons) {
     const weaponMag = modelAttachments.WEAPON_MAG[weapon.id];
     assert.ok(weaponMag, `missing magazine catalog for ${weapon.id}`);
-    assert.notEqual(weapon.deployT, null, `${weapon.id} has no deploy time`);
     assert.notEqual(weaponMag.defAds, null, `${weapon.id} has no defAds`);
     assert.notEqual(weaponMag.defSpr, null, `${weapon.id} has no defSpr`);
     assert.notEqual(weaponMag.defAms, null, `${weapon.id} has no defAms`);
@@ -229,7 +247,9 @@ function buildEnumeration({
     const sprintTable = sprintTableFor(weaponMag, modelBalance);
     const sprintTableName = sprintTableNameFor(weaponMag);
     tableCaseCounts[sprintTableName] += magazineIds.length * gripIds.length * ergoIds.length * ammoIds.length;
-    const baseDeployIdx = deployBaseIndex(weapon, modelBalance);
+    const baseDeployIdx = indexBase === 0
+      ? derivedDeployBaseIndex(weapon, modelAttachments, modelBalance)
+      : deployBaseIndex(weapon, modelBalance);
 
     for (const magazineId of magazineIds) {
       const magazine = weaponMag.mags[magazineId];
@@ -244,7 +264,13 @@ function buildEnumeration({
               + (magazine.adsTimeTierShift ?? 0)
               - (grip.adsTimeTierMod ?? 0)
               - (barrel.adsTimeTierMod ?? 0);
-            const rawSprintRecovery = (weaponMag.defSpr - indexBase)
+            const sprintCoordinateOrigin = indexBase === 0
+              ? (sprintTableName === 'sidearm'
+                ? modelBalance.DRAW_TIME_AXIS.sprintToFire.sidearm.coordinateOrigin
+                : modelBalance.DRAW_TIME_AXIS.sprintToFire.primary.coordinateOrigin)
+              : indexBase;
+            const rawSprintRecovery = (indexBase === 0 ? weaponMag.drawTimeTier : weaponMag.defSpr)
+              - sprintCoordinateOrigin
               + (magazine.sprintRecoveryTierShift ?? 0)
               + (grip.sprintRecoveryTierShift ?? 0)
               + (ergo.sprintRecoveryTierShift ?? 0);
@@ -368,23 +394,55 @@ function canonicalValue(value) {
   return JSON.stringify(value);
 }
 
-function canonicalRow(row) {
-  return `{${CANONICAL_FIELDS.map(([key, get]) => `${JSON.stringify(key)}:${canonicalValue(get(row))}`).join(',')}}`;
+function rowCorrectionRecord(row, modelAttachments = attachments) {
+  const atts = loadoutFor({
+    weaponId: row.weaponId,
+    barrelId: modelAttachments.WEAPON_ATTS[row.weaponId]?.barrelDef ?? 'none',
+    magazineId: row.magazineId,
+    gripId: row.gripId,
+    ergoId: row.ergoId,
+    ammoId: row.ammoId,
+  });
+  return selectedCorrectionRecord(row.weaponId, atts, modelAttachments);
+}
+
+const projectedCanonicalFields = {
+  adsTime: new Set(['adsTime.rawIndex', 'adsTime.index', 'adsTime.clamped', 'adsTime.value']),
+  adsMove: new Set(['adsMove.rawIndex', 'adsMove.index', 'adsMove.clamped', 'adsMove.value']),
+};
+
+function canonicalProjectionToken(record, key) {
+  if (!record) return null;
+  for (const [group, keys] of Object.entries(projectedCanonicalFields)) {
+    if (keys.has(key) && record.changedCatalogFields.some(change => (
+      (group === 'adsTime' && change.field === 'adsTimeTierMod')
+      || (group === 'adsMove' && change.field === 'movingAdsSpreadTierMod')
+    ))) return `approved-grip-pod:${record.id}:${group}`;
+  }
+  return null;
+}
+
+function canonicalRow(row, { projectApproved = false } = {}) {
+  const record = projectApproved ? rowCorrectionRecord(row) : null;
+  return `{${CANONICAL_FIELDS.map(([key, get]) => {
+    const token = canonicalProjectionToken(record, key);
+    return `${JSON.stringify(key)}:${canonicalValue(token ?? get(row))}`;
+  }).join(',')}}`;
 }
 
 function sortedCases(cases) {
   return [...cases].sort((a, b) => a.caseKey.localeCompare(b.caseKey));
 }
 
-function canonicalSerialization(cases) {
-  return sortedCases(cases).map(canonicalRow).join('\n');
+function canonicalSerialization(cases, options = {}) {
+  return sortedCases(cases).map(row => canonicalRow(row, options)).join('\n');
 }
 
 function sha256(serialization) {
   return createHash('sha256').update(serialization, 'utf8').digest('hex');
 }
 
-function rawIndexHistograms(cases) {
+function rawIndexHistograms(cases, { projectApproved = false } = {}) {
   const result = {
     sprintRecovery: { primary: {}, sidearm: {} },
     adsMove: { primary: {}, sidearm: {} },
@@ -393,6 +451,7 @@ function rawIndexHistograms(cases) {
   };
   for (const row of cases) {
     const table = row.sprintTable;
+    const record = projectApproved ? rowCorrectionRecord(row) : null;
     for (const [name, index] of [
       ['sprintRecovery', row.sprintRecovery.rawIndex],
       ['adsMove', row.adsMove.rawIndex],
@@ -400,7 +459,9 @@ function rawIndexHistograms(cases) {
       ['deploy', row.deploy.rawIndex],
     ]) {
       const histogram = result[name][table];
-      histogram[index] = (histogram[index] ?? 0) + 1;
+      const projection = canonicalProjectionToken(record, `${name}.rawIndex`);
+      const bucket = projection ?? index;
+      histogram[bucket] = (histogram[bucket] ?? 0) + 1;
     }
   }
   return result;
@@ -481,11 +542,24 @@ function legacyBuildFixture() {
   };
 }
 
-function perWeaponDigests(cases) {
+function perWeaponDigests(cases, options = {}) {
   return Object.fromEntries([...weaponById.keys()].sort().map(weaponId => [
     weaponId,
-    sha256(canonicalSerialization(cases.filter(row => row.weaponId === weaponId))),
+    sha256(canonicalSerialization(cases.filter(row => row.weaponId === weaponId), options)),
   ]));
+}
+
+function projectedDetailCases(cases) {
+  return cases.map(row => {
+    const copy = structuredClone(row);
+    const record = rowCorrectionRecord(copy);
+    for (const [name, keys] of Object.entries(projectedCanonicalFields)) {
+      const token = canonicalProjectionToken(record, `${name}.rawIndex`);
+      if (!token) continue;
+      copy[name] = Object.fromEntries([...keys].map(key => [key.split('.')[1], token]));
+    }
+    return copy;
+  });
 }
 
 function clampCaseKeysFor(cases) {
@@ -807,6 +881,13 @@ function phase2Before() {
 
 test('Phase 2b-ii reconstructs the complete post-migration enumeration', () => {
   const actual = current();
+  const restoredPost = buildEnumeration({
+    modelAttachments: restoreApprovedGripCorrections(attachments),
+    modelBalance: balance,
+    verifyResolver: false,
+    indexBase: 0,
+    kind: 'sprint-recovery-phase2b-ii-post-migration-restored-grip-pods',
+  });
   assert.equal(baseline.kind, 'sprint-recovery-phase2b-ii-post-migration');
   assert.deepEqual(baseline.digest, {
     algorithm: 'SHA-256',
@@ -817,33 +898,54 @@ test('Phase 2b-ii reconstructs the complete post-migration enumeration', () => {
   assert.deepEqual(actual.counts, baseline.counts);
   assert.deepEqual(actual.defSprDistribution, baseline.defSprDistribution);
   assert.deepEqual(actual.clampCounts, baseline.clampCounts);
-  const canonical = canonicalSerialization(actual.cases);
-  assert.equal(sha256(canonical), baseline.digest.value);
+  assert.equal(baseline.digest.value, '08d8da9b78ad0429f292e60ee8808874c9f54b41a4612227d91b09e6b290ad29');
+  const projection = { projectApproved: true };
+  const canonical = canonicalSerialization(actual.cases, projection);
+  assert.equal(sha256(canonical), sha256(canonicalSerialization(restoredPost.cases, projection)));
+  assert.equal(sha256(canonicalSerialization(restoredPost.cases)), baseline.digest.value);
   assert.deepEqual(
     Object.fromEntries([...weaponById.keys()].sort().map(weaponId => [
       weaponId,
-      sha256(canonicalSerialization(actual.cases.filter(row => row.weaponId === weaponId))),
+      sha256(canonicalSerialization(actual.cases.filter(row => row.weaponId === weaponId), projection)),
     ])),
-    baseline.perWeaponDigest,
+    perWeaponDigests(restoredPost.cases, projection),
   );
-  assert.deepEqual(rawIndexHistograms(actual.cases), baseline.rawIndexHistograms);
-  assert.deepEqual(sortedCases(actual.cases).filter(row => new Set(baseline.detailCases.map(detail => detail.caseKey)).has(row.caseKey)),
-    baseline.detailCases);
+  assert.deepEqual(perWeaponDigests(restoredPost.cases), baseline.perWeaponDigest);
+  assert.deepEqual(rawIndexHistograms(restoredPost.cases), baseline.rawIndexHistograms);
+  assert.deepEqual(rawIndexHistograms(actual.cases, projection), rawIndexHistograms(restoredPost.cases, projection));
+  assert.deepEqual(
+    projectedDetailCases(sortedCases(actual.cases).filter(row => new Set(baseline.detailCases.map(detail => detail.caseKey)).has(row.caseKey))),
+    projectedDetailCases(sortedCases(restoredPost.cases).filter(row => new Set(baseline.detailCases.map(detail => detail.caseKey)).has(row.caseKey))),
+  );
+  const registeredCaseCount = actual.cases.filter(row => correctionRecordFor(row.gripId)).length;
+  assert.ok(registeredCaseCount > 0, 'post-migration witness must surface registered Grip Pod selections');
+  console.log(`Sprint approved Grip Pod projected cases: ${registeredCaseCount}`);
 });
 
 test('Phase 2b-ii anchors the complete pre-migration digest and histograms', () => {
   const actual = preMigration();
   const pinned = baseline.preMigration;
+  const restoredHistorical = buildEnumeration({
+    modelAttachments: restoreApprovedGripCorrections(historicalPreMigrationAttachments()),
+    modelBalance: preMigrationBalance(),
+    verifyResolver: false,
+    indexBase: 1,
+    kind: 'sprint-recovery-phase2b-ii-pre-migration-restored-grip-pods',
+  });
   assert.equal(pinned.kind, 'sprint-recovery-phase2b-ii-pre-migration');
   assert.deepEqual(actual.scope, pinned.scope);
   assert.deepEqual(actual.counts, pinned.counts);
   assert.deepEqual(actual.defSprDistribution, pinned.defSprDistribution);
   assert.deepEqual(actual.clampCounts, pinned.clampCounts);
-  assert.equal(sha256(canonicalSerialization(actual.cases)), pinned.digest.value);
-  assert.deepEqual(perWeaponDigests(actual.cases), pinned.perWeaponDigest);
-  assert.deepEqual(rawIndexHistograms(actual.cases), pinned.rawIndexHistograms);
-  assert.deepEqual(clampCaseKeysFor(actual.cases), pinned.clampCaseKeys);
   assert.equal(pinned.digest.value, '298b89de410b7d84c6de7ae219f72b9ce6ec1d60f36bb6c98b37f5aa9b0837bd');
+  const projection = { projectApproved: true };
+  assert.equal(sha256(canonicalSerialization(restoredHistorical.cases)), pinned.digest.value);
+  assert.deepEqual(perWeaponDigests(restoredHistorical.cases), pinned.perWeaponDigest);
+  assert.deepEqual(rawIndexHistograms(restoredHistorical.cases), pinned.rawIndexHistograms);
+  assert.equal(sha256(canonicalSerialization(actual.cases, projection)), sha256(canonicalSerialization(restoredHistorical.cases, projection)));
+  assert.deepEqual(perWeaponDigests(actual.cases, projection), perWeaponDigests(restoredHistorical.cases, projection));
+  assert.deepEqual(rawIndexHistograms(actual.cases, projection), rawIndexHistograms(restoredHistorical.cases, projection));
+  assert.deepEqual(clampCaseKeysFor(actual.cases), pinned.clampCaseKeys);
 });
 
 test('Phase 2b-ii enforces source fidelity and the derived shift register', () => {

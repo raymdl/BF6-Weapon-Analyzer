@@ -5,6 +5,13 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
 import { blankAtts, computeAttPts } from '../sim/loadout.js';
+import {
+  APPROVED_GRIP_IDS,
+  assertOnlyApprovedOutputDelta,
+  neutralizeApprovedGripOption,
+  restoreApprovedGripCorrections,
+  selectedCorrectionRecord,
+} from './grip-pod-correction-deltas.mjs';
 
 const root = join(import.meta.dirname, '..');
 const fixturePath = join(root, 'scripts/attachment-equivalence-phase5.json');
@@ -44,6 +51,7 @@ const sharedContext = {
   SIDEARM_SPRINT_REC_TIERS: readJson('data/balance_tables.json').SIDEARM_SPRINT_REC_TIERS,
   DEPLOY_TIME_TIERS: readJson('data/balance_tables.json').DEPLOY_TIME_TIERS,
   ADS_MOVE_TIERS: readJson('data/balance_tables.json').ADS_MOVE_TIERS,
+  DRAW_TIME_AXIS: readJson('data/balance_tables.json').DRAW_TIME_AXIS,
   RELOAD_SPEED_LADDER: readJson('data/balance_tables.json').RELOAD_SPEED_LADDER,
   VELOCITY_LADDER: readJson('data/balance_tables.json').VELOCITY_LADDER,
 };
@@ -80,6 +88,10 @@ function legacyModel() {
 const legacy = legacyModel();
 const currentContext = { ...sharedContext, ERGOS: currentModel.ERGOS, WEAPON_MAG: currentModel.WEAPON_MAG, WEAPON_ERGO: currentModel.WEAPON_ERGO };
 const legacyContext = { ...sharedContext, ERGOS: legacy.ERGOS, WEAPON_MAG: legacy.WEAPON_MAG, WEAPON_ERGO: legacy.WEAPON_ERGO };
+const restoredCurrentModel = restoreApprovedGripCorrections(currentModel);
+const restoredLegacyModel = restoreApprovedGripCorrections(legacy);
+const restoredCurrentContext = { ...sharedContext, GRIPS: restoredCurrentModel.GRIPS, ERGOS: restoredCurrentModel.ERGOS, WEAPON_MAG: restoredCurrentModel.WEAPON_MAG, WEAPON_ERGO: restoredCurrentModel.WEAPON_ERGO };
+const restoredLegacyContext = { ...sharedContext, GRIPS: restoredLegacyModel.GRIPS, ERGOS: restoredLegacyModel.ERGOS, WEAPON_MAG: restoredLegacyModel.WEAPON_MAG, WEAPON_ERGO: restoredLegacyModel.WEAPON_ERGO };
 setAttachmentContext(currentContext);
 
 function legacyReloadSeconds(weaponId, magazineId, ergoId) {
@@ -155,7 +167,12 @@ function optionSignature({ current, legacyValue, semantic = null, points }) {
 function groupedOptions(options) {
   const groups = new Map();
   for (const option of options) {
-    const key = optionSignature(option);
+    // Preserve the frozen reduced witness's quotient boundaries for the five
+    // explicitly registered Grip Pod corrections. The live option values still
+    // flow through applyAttachments; only equivalence grouping is neutralized
+    // to the reviewed pre-correction record so this gate cannot accept a new
+    // unregistered option or an arbitrary digest refresh.
+    const key = optionSignature(neutralizeApprovedGripOption(option));
     if (!groups.has(key)) groups.set(key, { ...option, multiplicity: 0 });
     groups.get(key).multiplicity += 1;
   }
@@ -363,7 +380,14 @@ export function buildEquivalenceEnumeration() {
     const suites = comparisonSuites(Object.fromEntries(dimensions));
     const rawCount = dimensions.reduce((total, [, options]) => total * options.reduce((sum, option) => sum + option.multiplicity, 0), 1);
     const reducedCount = suites.reduce((suiteTotal, suite) => suiteTotal + suite.dimensions.reduce((total, [, options]) => total * options.length, 1), 0);
-    const distribution = buildPointDistribution(dimensions.map(([, options]) => options.flatMap(option => Array(option.multiplicity).fill(option))));
+    // Keep the frozen point-budget witness comparable through the explicit
+    // register. This is metadata-only: resolver output comparisons above still
+    // use the live records, and the register preserves the live sniper prices
+    // already present in this fixture (10/20) despite their approved before
+    // values being recorded as 30.
+    const distribution = buildPointDistribution(dimensions.map(([, options]) => options.flatMap(option => (
+      Array(option.multiplicity).fill(neutralizeApprovedGripOption(option))
+    ))));
     const overBudget = [...distribution.entries()].filter(([points]) => points > 100).reduce((sum, [, count]) => sum + count, 0);
     rawSelectableCaseCount += rawCount;
     reducedComparisonCaseCount += reducedCount;
@@ -391,7 +415,7 @@ export function buildEquivalenceEnumeration() {
 }
 
 function applyWith(modelContext, model, weapon, atts) {
-  setAttachmentContext({ ERGOS: model.ERGOS, WEAPON_MAG: model.WEAPON_MAG, WEAPON_ERGO: model.WEAPON_ERGO });
+  setAttachmentContext({ ...modelContext, ERGOS: model.ERGOS, WEAPON_MAG: model.WEAPON_MAG, WEAPON_ERGO: model.WEAPON_ERGO });
   return applyAttachments(weapon, atts);
 }
 
@@ -439,7 +463,7 @@ export function assertPhase5Separability(enumeration = buildEquivalenceEnumerati
 }
 
 /**
- * Compare the full Phase 5 witness suite's barrel velocity against a model
+ * Compare the Phase 5 separability witness suite's barrel velocity against a model
  * with velTierMod removed. The latter must select the retained velMult path;
  * this stays an assertion-only extension so the reload fixture and digests do
  * not change when the barrel field is added.
@@ -584,6 +608,7 @@ function compareEnumeration(enumeration) {
   let differenceCaseCount = 0;
   let preCutoverDifferenceCaseCount = 0;
   let unexplainedDifferenceCaseCount = 0;
+  const witnessedCorrectionIds = new Set();
 
   for (const { weapon, suites } of enumeration.weaponEntries) {
     for (const suite of suites) cartesianDimensions(suite.dimensions, selection => {
@@ -599,6 +624,31 @@ function compareEnumeration(enumeration) {
         row.atts,
       );
       historicalLegacyOutput.tacRld = legacyReloadSeconds(row.weaponId, row.atts.mag, row.atts.ergo);
+      const correction = selectedCorrectionRecord(row.weaponId, row.atts, currentModel);
+      let digestCurrentOutput = currentOutput;
+      let digestHistoricalLegacyOutput = historicalLegacyOutput;
+      if (correction) {
+        const restoredCurrentOutput = phase5HistoricalDisplayProjection(
+          applyWith(restoredCurrentContext, restoredCurrentModel, weapon, row.atts),
+          weapon,
+          row.atts,
+        );
+        digestHistoricalLegacyOutput = phase5HistoricalDisplayProjection(
+          applyWith(restoredLegacyContext, restoredLegacyModel, weapon, row.atts),
+          weapon,
+          row.atts,
+        );
+        digestHistoricalLegacyOutput.tacRld = historicalLegacyOutput.tacRld;
+        if (!witnessedCorrectionIds.has(correction.id)) {
+          const delta = assertOnlyApprovedOutputDelta(restoredCurrentOutput, currentOutput, correction);
+          for (const field of ['_sprintRecoveryMs', '_deployTimeMs', 'deployT']) {
+            assert.equal(currentOutput[field], restoredCurrentOutput[field], `${row.caseKey} Grip Pod correction changed ${field}`);
+          }
+          assert.ok(delta.gripId === correction.id);
+          witnessedCorrectionIds.add(correction.id);
+        }
+        digestCurrentOutput = restoredCurrentOutput;
+      }
       const legacyOutput = { ...historicalLegacyOutput };
       // The pre-cutover fixture contains the old aggregate values for the
       // tube-fed category, but the post-cutover scalar contract is fail-closed.
@@ -611,6 +661,12 @@ function compareEnumeration(enumeration) {
         ? historicalLegacyOutput
         : currentOutput;
       const preCutoverPaths = diffPaths(preCutoverOutput, historicalLegacyOutput);
+      const digestLegacyOutput = { ...digestHistoricalLegacyOutput };
+      if (['db12', 'm1014', 'm87a1'].includes(row.weaponId)) digestLegacyOutput.tacRld = digestCurrentOutput.tacRld;
+      const digestPreCutoverOutput = ['db12', 'm1014', 'm87a1'].includes(row.weaponId)
+        || `${row.weaponId}/${row.atts.mag}/${row.atts.ergo}` === composedLoadoutDifferenceKey
+        ? digestHistoricalLegacyOutput
+        : digestCurrentOutput;
       currentOutputFields ??= Object.keys(currentOutput).sort();
       for (const path of paths) fieldCounts[path] = (fieldCounts[path] ?? 0) + 1;
       const reasons = paths.length ? expectedReasons(row) : [];
@@ -631,10 +687,10 @@ function compareEnumeration(enumeration) {
         }
       }
       if (preCutoverPaths.length) preCutoverDifferenceCaseCount += 1;
-      differenceDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, current: sha256(serialize(currentOutput)), legacy: sha256(serialize(legacyOutput)), paths, reasons })}\n`, 'utf8');
-      preCutoverDifferenceDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, current: sha256(serialize(preCutoverOutput)), legacy: sha256(serialize(historicalLegacyOutput)), paths: preCutoverPaths, reasons: preCutoverPaths.length ? expectedReasons({ ...row, atts: row.atts }) : [] })}\n`, 'utf8');
-      derivedOutputDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, output: sha256(serialize(currentOutput)) })}\n`, 'utf8');
-      preCutoverDerivedOutputDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, output: sha256(serialize(preCutoverOutput)) })}\n`, 'utf8');
+      differenceDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, current: sha256(serialize(digestCurrentOutput)), legacy: sha256(serialize(digestLegacyOutput)), paths, reasons })}\n`, 'utf8');
+      preCutoverDifferenceDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, current: sha256(serialize(digestPreCutoverOutput)), legacy: sha256(serialize(digestHistoricalLegacyOutput)), paths: preCutoverPaths, reasons: preCutoverPaths.length ? expectedReasons({ ...row, atts: row.atts }) : [] })}\n`, 'utf8');
+      derivedOutputDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, output: sha256(serialize(digestCurrentOutput)) })}\n`, 'utf8');
+      preCutoverDerivedOutputDigest.update(`${serialize({ suite: suite.name, caseKey: row.caseKey, output: sha256(serialize(digestPreCutoverOutput)) })}\n`, 'utf8');
       const stats = perWeapon[row.weaponId] ?? { reducedCases: 0, differenceCases: 0, unexplainedCases: 0 };
       stats.reducedCases += 1;
       if (paths.length) stats.differenceCases += 1;
@@ -645,6 +701,7 @@ function compareEnumeration(enumeration) {
     });
   }
 
+  assert.deepEqual([...witnessedCorrectionIds].sort(), [...APPROVED_GRIP_IDS].sort(), 'Phase 5 registered Grip Pod witness coverage changed');
   for (const key of stackingDifferenceKeys) assert.ok([...coverage.keys()].some(value => value.endsWith(`:${key}`)), `legacy stacking difference not exercised: ${key}`);
   assert.ok([...coverage.keys()].some(value => value.endsWith(`:${composedLoadoutDifferenceKey}`)), 'PP-19 composed override-stack correction not exercised');
   assert.equal(preCutoverDifferenceDigest.digest('hex'), PRE_CUTOVER_DIFFERENCE_DIGEST, 'pre-cutover Phase 5 difference digest changed');
@@ -766,11 +823,11 @@ export function buildPhase5Fixture() {
     kind: 'attachment-equivalence-phase5',
     schemaVersion: 1,
     scope: {
-      description: 'All currently selectable attachment dimensions are included: sight, muzzle, barrel, grip, laser, light, ammo, magazine, and ergonomic. The site displays a 100-point total and marks totals over 100, but does not disable or reject those selections, so both within-budget and over-budget selections are included.',
+      description: 'All currently selectable attachment dimensions are represented across the reduced separability witness suite: sight, muzzle, barrel, grip, laser, light, ammo, magazine, and ergonomic. The site displays a 100-point total and marks totals over 100, but does not disable or reject those selections, so both within-budget and over-budget selections are represented.',
       rawSelectableDimensions: 'weapon × sight × muzzle × selectable barrel × selectable grip × selectable laser/light choice(s) × available ammo × magazine × available ergonomic',
       excludedSlots: [],
       pointBudget: { displayedLimit: 100, enforcedBySite: false },
-      reduction: 'The full Cartesian product is retained as a raw selectable count and point distribution, but is too large for a standing resolver test. The comparison is a separability witness suite: a baseline crosses every magazine and ergonomic choice, then one suite at a time crosses every choice in each other slot while holding the other non-reload slots at representatives. Thus every slot choice, every combined-slot role, every ammo choice, every magazine, and every ergonomic choice is run through the complete resolver output. The excluded combinations are only cross-products of two or more non-reload slots. The executable Phase 4 separability gate independently varies each non-reload slot and checks reload timing invariance with weapon, magazine, and ergonomic held fixed, plus barrel velocity invariance with weapon and barrel held fixed.',
+      reduction: 'The literal Cartesian product is retained as a raw selectable count and point distribution, but is too large for a standing resolver test. The comparison is a reduced separability witness suite: a baseline crosses every magazine and ergonomic choice, then one suite at a time crosses every choice in each other slot while holding the other non-reload slots at representatives. Thus every slot choice, every combined-slot role, every ammo choice, every magazine, and every ergonomic choice is run through the resolver output. The excluded combinations are only cross-products of two or more non-reload slots. The executable Phase 4 separability gate independently varies each non-reload slot and checks reload timing invariance with weapon, magazine, and ergonomic held fixed, plus barrel velocity invariance with weapon and barrel held fixed.',
       reductionProof: 'The current-versus-preserved-pre-cutover audit is restricted to reloadSpeedTier, tacRldOverrideMs, suspectedGameBug, and reloadSpeedMult. The preserved comparison projection is reconstructed from the Phase 4 migration manifest and pre-migration fixture; it is never used by production resolution. applyAttachments consumes the derived deltas only in resolveReloadTiming, which depends on weapon, magazine, and ergonomic selection and not on sight, muzzle, barrel, grip, laser, light, or ammo. Complete output objects are nevertheless compared for every witness representative, and the executable Phase 4 separability gate directly enforces the stated reload and barrel-velocity independence premise.',
       comparisonSuites: 'baseline plus all-sight, all-muzzle, all-barrel, all-grip, all-laser, all-light, and all-ammo suites when those dimensions have choices; magazine and ergonomic dimensions remain full in every suite.',
       coverageClasses: {

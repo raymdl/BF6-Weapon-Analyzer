@@ -67,6 +67,9 @@ for (const weapon of weapons) {
   for (const key of ['name', 'cls', 'cal', 'fireMode']) {
     if (weapon[key] == null) fail(`${weapon.id}: missing ${key}`);
   }
+  if (Object.hasOwn(weapon, 'deployT')) {
+    fail(`${weapon.id}: legacy deployT must be absent after the draw-time cutover`);
+  }
   for (const key of ['tacRld', 'emptyRld']) {
     if (weapon[key] !== null && !Number.isFinite(weapon[key])) {
       fail(`${weapon.id}: ${key} must be numeric or null`);
@@ -93,6 +96,84 @@ for (const weapon of weapons) {
 }
 
 const supportedWeaponIds = new Set(weapons.filter(w => SUPPORTED_CLASSES.has(w.cls)).map(w => w.id));
+
+const DRAW_TIME_GROUPS = {
+  semiAutoSidearm: new Set(['es57', 'ggh22', 'p18', 'm45a1']),
+  revolverOrAutoSidearm: new Set(['m357trait', 'm44', 'vz61']),
+  db12: new Set(['db12']),
+};
+const EXPECTED_DRAW_TIME_OFFSETS = {
+  primary: 8,
+  db12: 9,
+  semiAutoSidearm: 5,
+  revolverOrAutoSidearm: 7,
+};
+const drawTimeAxis = balance.DRAW_TIME_AXIS;
+if (drawTimeAxis == null || typeof drawTimeAxis !== 'object' || Array.isArray(drawTimeAxis)) {
+  fail('DRAW_TIME_AXIS must be a named object contract');
+} else {
+  const expectedAxis = {
+    version: 1,
+    coordinateName: 'drawTimeTier',
+    baseCoordinateRange: [0, 7],
+    coordinateRange: [-1, 15],
+    sprintPrimary: { table: 'PRIMARY_SPRINT_REC_TIERS', coordinateOrigin: 0 },
+    sprintSidearm: { table: 'SIDEARM_SPRINT_REC_TIERS', coordinateOrigin: -1 },
+    deploy: { table: 'DEPLOY_TIME_TIERS', coordinateOrigin: 4, coordinateRange: [4, 15] },
+  };
+  if (drawTimeAxis.version !== expectedAxis.version) fail('DRAW_TIME_AXIS.version must be 1');
+  if (drawTimeAxis.coordinateName !== expectedAxis.coordinateName) fail('DRAW_TIME_AXIS.coordinateName must be drawTimeTier');
+  if (JSON.stringify(drawTimeAxis.baseCoordinateRange) !== JSON.stringify(expectedAxis.baseCoordinateRange)) {
+    fail('DRAW_TIME_AXIS.baseCoordinateRange must be [0, 7]');
+  }
+  if (JSON.stringify(drawTimeAxis.coordinateRange) !== JSON.stringify(expectedAxis.coordinateRange)) {
+    fail('DRAW_TIME_AXIS.coordinateRange must be [-1, 15]');
+  }
+  for (const [path, expected] of [
+    ['sprintToFire.primary', expectedAxis.sprintPrimary],
+    ['sprintToFire.sidearm', expectedAxis.sprintSidearm],
+    ['deploy', expectedAxis.deploy],
+  ]) {
+    const actual = path === 'deploy'
+      ? drawTimeAxis.deploy
+      : drawTimeAxis.sprintToFire?.[path.endsWith('primary') ? 'primary' : 'sidearm'];
+    if (actual?.table !== expected.table || actual?.coordinateOrigin !== expected.coordinateOrigin) {
+      fail(`DRAW_TIME_AXIS.${path} must use ${expected.table} with coordinateOrigin ${expected.coordinateOrigin}`);
+    }
+    if (path === 'deploy' && JSON.stringify(actual?.coordinateRange) !== JSON.stringify(expected.coordinateRange)) {
+      fail('DRAW_TIME_AXIS.deploy.coordinateRange must be [4, 15]');
+    }
+  }
+  for (const [group, offset] of Object.entries(EXPECTED_DRAW_TIME_OFFSETS)) {
+    if (drawTimeAxis.offsets?.[group] !== offset) fail(`DRAW_TIME_AXIS.offsets.${group} must be ${offset}`);
+  }
+  const expectedPrimary = [...supportedWeaponIds]
+    .filter(weaponId => !Object.values(DRAW_TIME_GROUPS).some(ids => ids.has(weaponId)))
+    .sort();
+  const expectedGroups = {
+    primary: expectedPrimary,
+    db12: [...DRAW_TIME_GROUPS.db12].sort(),
+    semiAutoSidearm: [...DRAW_TIME_GROUPS.semiAutoSidearm].sort(),
+    revolverOrAutoSidearm: [...DRAW_TIME_GROUPS.revolverOrAutoSidearm].sort(),
+  };
+  if (expectedGroups.primary.length !== 51) fail(`draw-time standard primary set must contain 51 weapons; found ${expectedGroups.primary.length}`);
+  const actualGroups = drawTimeAxis.weaponGroups ?? {};
+  if (JSON.stringify(Object.keys(actualGroups).sort()) !== JSON.stringify(Object.keys(expectedGroups).sort())) {
+    fail('DRAW_TIME_AXIS.weaponGroups must contain exactly primary, db12, semiAutoSidearm, and revolverOrAutoSidearm');
+  }
+  for (const [group, expectedIds] of Object.entries(expectedGroups)) {
+    const actualIds = actualGroups[group];
+    if (!Array.isArray(actualIds) || new Set(actualIds).size !== actualIds.length
+        || JSON.stringify([...actualIds].sort()) !== JSON.stringify(expectedIds)) {
+      fail(`DRAW_TIME_AXIS.weaponGroups.${group} is not the exact approved weapon set`);
+    }
+  }
+}
+
+const resolverSource = readFileSync(resolve(root, 'sim/applyAttachments.js'), 'utf8');
+if (/Math\.abs\(DEPLOY_TIME_TIERS/.test(resolverSource) || /baseDeployIdx/.test(resolverSource)) {
+  fail('sim/applyAttachments.js must not contain a nearest-value deploy resolver path');
+}
 
 const pp19 = weapons.find(weapon => weapon.id === 'pp19');
 if (weapons.length !== 59) fail(`release 1.3.3.0 requires 59 weapon records; found ${weapons.length}`);
@@ -284,6 +365,30 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
     if (!Number.isInteger(value) || value < 0 || value >= table.length) {
       fail(`${weaponId}: ${field} must be an integer in [0, ${table.length - 1}] for ${tableName}; found ${value}`);
     }
+  }
+  const expectedGroup = Object.entries(DRAW_TIME_GROUPS).find(([, ids]) => ids.has(weaponId))?.[0] ?? 'primary';
+  const expectedSprintTable = expectedGroup === 'primary' || expectedGroup === 'db12' ? 'primary' : 'sidearm';
+  if (magData.drawTimeGroup !== expectedGroup) {
+    fail(`${weaponId}: drawTimeGroup must be ${expectedGroup}; found ${magData.drawTimeGroup}`);
+  }
+  if (!Number.isInteger(magData.drawTimeOffset)
+      || magData.drawTimeOffset !== EXPECTED_DRAW_TIME_OFFSETS[expectedGroup]) {
+    fail(`${weaponId}: drawTimeOffset must be ${EXPECTED_DRAW_TIME_OFFSETS[expectedGroup]}; found ${magData.drawTimeOffset}`);
+  }
+  const [minDrawTimeTier, maxDrawTimeTier] = drawTimeAxis?.baseCoordinateRange ?? [NaN, NaN];
+  if (!Number.isInteger(magData.drawTimeTier)
+      || magData.drawTimeTier < minDrawTimeTier || magData.drawTimeTier > maxDrawTimeTier) {
+    fail(`${weaponId}: drawTimeTier must be an integer in [${minDrawTimeTier}, ${maxDrawTimeTier}]; found ${magData.drawTimeTier}`);
+  }
+  if (magData.sprintRecoveryTierTable !== expectedSprintTable) {
+    fail(`${weaponId}: sprintRecoveryTierTable must be ${expectedSprintTable} for ${expectedGroup}`);
+  }
+  const sprintOrigin = expectedSprintTable === 'sidearm'
+    ? drawTimeAxis?.sprintToFire?.sidearm?.coordinateOrigin
+    : drawTimeAxis?.sprintToFire?.primary?.coordinateOrigin;
+  if (Number.isInteger(magData.defSpr) && Number.isInteger(sprintOrigin)
+      && magData.drawTimeTier !== magData.defSpr + sprintOrigin) {
+    fail(`${weaponId}: drawTimeTier does not match the explicit Sprint-to-Fire coordinate conversion`);
   }
   for (const [magazineId, magazine] of Object.entries(magData.mags ?? {})) {
     const hasReloadSpeedTier = Object.hasOwn(magazine, 'reloadSpeedTier');

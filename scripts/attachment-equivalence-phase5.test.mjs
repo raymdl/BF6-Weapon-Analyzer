@@ -18,7 +18,7 @@ function generated() {
   return actual;
 }
 
-test('Phase 6 complete attachment equivalence matches the tracked post-cutover witness fixture', () => {
+test('Phase 6 reduced attachment separability witness matches the tracked post-cutover fixture', () => {
   const result = generated();
   assert.deepEqual(result, fixture);
   assert.equal(result.counts.unexplainedDifferenceCases, 0);

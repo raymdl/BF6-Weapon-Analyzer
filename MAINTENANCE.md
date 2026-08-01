@@ -89,15 +89,16 @@ For a visual explanation of how the recoil/spread simulation itself works, see t
    - For the VZ.61 (grip+laser+light all in Laser dropdown): add
      `laserGripLightCombined: true`
 3. Add magazine data to `data/attachments.json` → `WEAPON_MAG`
-   - **Required per weapon**: `defAds`, `defSpr`, `defAms` (**0-based** base tier indices), `def` (default mag ID),
+    - **Required per weapon**: `defAds`, `defSpr`, `defAms` (**0-based** base tier indices), `drawTimeTier`,
+      `drawTimeGroup`, `drawTimeOffset`, `def` (default mag ID),
      and a `mags` object with every available magazine
    - **Per magazine**: `name`, `pts`, `mag` (capacity), `tacRld` (ms), `adsTimeTierShift`,
      `sprintRecoveryTierShift`, `adsMoveSpeedTierShift`
    - Sidearms: set `sprintRecoveryTierTable: "sidearm"` to use `SIDEARM_SPRINT_REC_TIERS`
-   - **Deriving `defSpr`**: look up the weapon's `UnDeployTime` from sym.gg, convert to ms
-     (e.g. 0.233334 → 233 ms), find its **0-based** index in the sprint recovery table, then
-     subtract 1 for the universal in-game draw speed adjustment: `defSpr = index - 1`. Verify
-     by confirming that the default magazine's displayed draw speed matches the table value.
+    - **Deriving draw time**: `drawTimeTier` is the zero-based coordinate on the shared
+      Sprint-to-Fire/Deploy axis. Primary weapons use the primary sprint origin; sidearms use
+      the explicit sidearm origin. Select exactly one approved `drawTimeGroup` and its matching
+      rung offset from `DRAW_TIME_AXIS`; offsets are not milliseconds or raw deploy-table indices.
    - All three base indices are 0-based as of Phase 2b-iv; `scripts/validate-data.mjs` rejects
      any value outside `[0, table.length - 1]`, selecting the primary or sidearm sprint table by
      `sprintRecoveryTierTable`. A 1-based value from an older note will now fail validation
@@ -299,10 +300,11 @@ Credit: tier-system discovery by SheetOnMyFace.
   the workbook's adjusted base sprint recovery tier after the weapon-specific
   tier adjustment, as a 0-based index. Magazine entries store the workbook's `Magazine Tier Modifier`
   as `sprintRecoveryTierShift`; do not apply a universal `-1` adjustment.
-- **Deploy time tiers:** `DEPLOY_TIME_TIERS` is a placeholder universal scale
-  until full deploy data is published on sym.gg. The app maps each weapon's base
-  `deployT` to the closest deploy tier, then applies the selected magazine's
-  `sprintRecoveryTierShift` as the deploy-time tier modifier.
+- **Draw-time axis:** `DRAW_TIME_AXIS` converts one effective draw coordinate into the distinct
+  primary/sidearm Sprint-to-Fire table and the Deploy table. Magazine, grip, and ergonomics
+  shifts are inventoried explicitly; ergonomics remain a named Sprint-to-Fire-only exception
+  during the transition. The live resolver has no nearest-value deploy fallback, and the old
+  `weapons.json.deployT` field is retained only in the frozen transition fixture.
 - **Grip sprint modifiers:** normal `Slim Handstop`, `Adjustable Angled`,
   `Slim Angled`, and `Full Angled` grips each apply `sprintRecoveryTierShift: -1`.
   Class-specific variants with different stats use separate attachment IDs, such

@@ -185,7 +185,7 @@ setAttachmentContext({
   BASE_HS_MULT, HP_HS_HIGH,
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
   ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS,
-  SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
+  SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS, DRAW_TIME_AXIS,
 });
 ```
 
@@ -201,6 +201,7 @@ scanning catalog arrays on every render.
 |---|---|
 | `setAttachmentContext(updates)` | Merges updates into the module-level context |
 | `applyAttachments(w, atts)` | Returns a new weapon object with all attachment effects applied. Does not mutate `w`. |
+| `resolveDrawTime(options)` | Purely resolves the shared draw-time coordinate into Sprint-to-Fire and Deploy table records. Fails closed on incomplete derived data. |
 | `wLabel(w)` | Returns `w._label` if set, otherwise `w.name` |
 
 **`applyAttachments` output — private display fields (`_` prefix):**
@@ -253,7 +254,7 @@ itself determines which effect path is used.
 | `spread` | Hip spread min shifted by tier if `hipSpreadTierMod ≠ 0` |
 | `mag` | Replaced by selected magazine count |
 | `tacRld` | Replaced by magazine reload or Mag Catch reload |
-| `deployT` | Replaced by deploy tier lookup when available |
+| `deployT` | Derived display field rendered from the shared draw-time axis; raw `weapons.json` records no longer store it |
 | `fireMode` | Overridden to `'auto'` (`setsFireModeAuto`) or `'burst'` (`setsFireModeBurst`) by ergos |
 | `burstRounds`, `burstRpm`, `burstBurstsPerMinute` | Overridden by burst ergos; cleared when `setsFireModeAuto` is active |
 | `rpm` | Replaced by `burstRpm` while a burst fire mode is active |
@@ -347,7 +348,7 @@ the class filter (`CLASS_SHORT` maps `"Sidearm"` → `"Pistol"`).
 
 | Field | Description |
 |---|---|
-| `deployT` | Deploy/holster time in seconds |
+| `deployT` | Legacy transition evidence only; omitted from live `weapons.json` after the draw-time cutover |
 | `pellets` | Shotgun pellet count |
 | `dmg` | Stepped damage breakpoints as `[{r, d}, ...]` |
 | `recoil.ads` / `recoil.hip` | Full formula inputs per aim state (maps to sym.gg `ADSRecoil*` / `HIPRecoil*`) |
@@ -390,8 +391,9 @@ Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`, `ERGOS`,
   the combined-slot flags. An explicit empty array (e.g. USG-90 `grip: []`) means the
   weapon deliberately takes nothing in that slot; an *absent* key fails validation.
 - `WEAPON_MAG[id]` — magazine variants with tier shift overrides, plus 0-based base tier
-  indices (`defAds`, `defSpr`, `defAms`, each bounds-checked by `validate-data.mjs`) and
-  `sprintRecoveryTierTable` (`'sidearm'` to use the sidearm sprint table)
+  indices (`defAds`, `defSpr`, `defAms`, each bounds-checked by `validate-data.mjs`),
+  `sprintRecoveryTierTable`, and the required shared-axis fields
+  `drawTimeTier`, `drawTimeGroup`, and `drawTimeOffset`
 - `WEAPON_ERGO[id]` — ergonomics availability (`avail`) and Mag Catch reload times
   (`magCatchRld.reg` / `.fast`)
 
@@ -439,7 +441,8 @@ Tier lookup tables used by `applyAttachments`:
 | `SPRINT_REC_TIERS` | Legacy sprint-to-fire recovery table (fallback) |
 | `PRIMARY_SPRINT_REC_TIERS` | Sprint-to-fire recovery in ms for primary weapons |
 | `SIDEARM_SPRINT_REC_TIERS` | Sprint-to-fire recovery in ms for sidearms |
-| `DEPLOY_TIME_TIERS` | Deploy time in ms per tier (placeholder universal scale) |
+| `DEPLOY_TIME_TIERS` | Deploy time in ms per converted shared-axis coordinate |
+| `DRAW_TIME_AXIS` | Named coordinate origins, table conversion formulas, approved offsets, exact weapon groups, and the ergonomics sprint-only exception |
 | `ADS_MOVE_TIERS` | ADS move speed multiplier per tier |
 | `MOVING_ACC_TIERS` | Moving ADS min spread in degrees per tier |
 | `DEFAULT_MOV_TIER` | Default moving-ADS tier index |

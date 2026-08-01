@@ -54,7 +54,8 @@ const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
         BASE_HS_MULT, HP_HS_HIGH: _HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
         MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-        ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS } = _balance;
+        ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
+        DRAW_TIME_AXIS } = _balance;
 const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 
 const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
@@ -216,6 +217,7 @@ setAttachmentContext({
   BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
   ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
+  DRAW_TIME_AXIS,
   RELOAD_SPEED_LADDER: balance.RELOAD_SPEED_LADDER,
   VELOCITY_LADDER: balance.VELOCITY_LADDER,
 });
@@ -686,7 +688,7 @@ function renderOverview() {
     { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true, group: 'mobility',
       tooltip: 'Movement speed multiplier while aiming down sights. Can be affected by magazine, grip, and ammo selections.' },
     { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
-      tooltip: 'Time to equip/switch to the weapon in milliseconds. Lower is faster. Attachment effects are assumed placeholders until full attachment data is published.' },
+      tooltip: 'Time to equip/switch to the weapon in milliseconds after magazine and grip effects. Lower is faster.' },
     { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true,
       tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
@@ -1753,7 +1755,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
     { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
-    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds. Lower is faster. Attachment effects are assumed placeholders until full attachment data is published.' },
+    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after magazine and grip effects. Lower is faster.' },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel effects. Higher reduces travel time and lead.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },

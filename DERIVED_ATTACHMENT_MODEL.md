@@ -849,7 +849,7 @@ readings. The source-backed re-derivation changed nine magazine sprint shifts fr
 No `defSpr` values changed: every base reading still maps to the same 1-based stored base index
 after the new ladder is considered. The tracked
 `scripts/sprint-rec-phase2b-ii-baseline.json` pins both sides of the transition for all 70,634
-enumerated cases, including the full migration diff list.
+bounded timing-effective cases, including the full migration diff list.
 
 The revised gates pass:
 
@@ -919,7 +919,7 @@ the original item named only `defAms` and `defSpr`, because all three fields use
 same representation inconsistency this hardening removes. The resolver now consumes all three
 stored values directly, while retaining its runtime clamps as a last line of defence.
 
-The complete 70,634-case Phase 3 enumeration is strict zero-diff after the representation change:
+The bounded 70,634-case Phase 3 timing enumeration is strict zero-diff after the representation change:
 the full SHA-256 digest remains
 `08d8da9b78ad0429f292e60ee8808874c9f54b41a4612227d91b09e6b290ad29`, all 59 per-weapon digests
 remain identical, and every raw index, resolved value, and clamp flag is unchanged. Clamp identity
@@ -1017,14 +1017,15 @@ resolves it. Any magazine whose name and measured class conflict must halt the m
 human decision rather than defaulting either way. Requires [Phase 1b](#phase-1b--pp-19-attachment-backfill),
 without which PP-19's five magazines are not in the site data to classify at all.
 
-### Phase 5 — exhaustive old-versus-new equivalence — completed 2026-08-01
+### Phase 5 — reduced old-versus-new equivalence/separability witness — completed 2026-08-01
 
-Enumerate every valid currently selectable loadout for every weapon, including point-limit and
-combined-slot rules. Run the legacy and derived resolvers over the same inputs and compare every
-user-visible output, not only reload. Require zero unexplained differences. Include explicit cases
-for AK-205, SL9, KTS100 MK8, M60, M240L, PP-19, `18.5KS-K`, and all three tube-fed shotguns.
+Represent every currently selectable attachment dimension across reduced separability witnesses,
+including point-limit and combined-slot rules. Run the legacy and derived resolvers over the same
+inputs and compare every witness's user-visible output, not only reload. Require zero unexplained
+differences. Include explicit cases for AK-205, SL9, KTS100 MK8, M60, M240L, PP-19, `18.5KS-K`,
+and all three tube-fed shotguns.
 
-**As built, and why it is not a literal Cartesian product.** The full product is 525,687,124
+**As built, and why it is a reduced separability witness.** The literal product is 525,687,124
 selectable cases, which is not a viable standing test. The fixture retains that raw count and the
 point distribution, but compares 88,694 reduced witnesses: a baseline crossing every magazine and
 ergonomic choice, then one suite at a time crossing every choice in each remaining slot while
@@ -1037,8 +1038,8 @@ from the barrel alone.
 That separability argument is the load-bearing part of the claim, so as of 2026-08-01 it is
 executed rather than asserted — see [§7.6](#76-fail-closed-gate-repairs--2026-08-01) — and it has
 been checked against the game corpus, not only the resolver, in
-[§7.7](#77-executable-check-results--2026-08-01). Anyone reading "exhaustive" in the heading above
-should read this paragraph as the precise claim.
+[§7.7](#77-executable-check-results--2026-08-01). This paragraph is the precise coverage claim:
+the suite is reduced, not the literal legal attachment Cartesian product.
 
 ### Phase 6 — reload cutover and cleanup — completed 2026-08-01
 
@@ -1055,7 +1056,7 @@ and M87A1 remain blank rather than surfacing a per-shell or aggregate legacy num
 rejects either legacy representation if reintroduced.
 
 The reload baseline now records the post-cutover digest while retaining the pre-migration digest.
-The exhaustive attachment fixture retains the pre-cutover Phase 5 difference digest (`578` witness
+The reduced attachment witness fixture retains the pre-cutover Phase 5 difference digest (`578` witness
 differences) and records the post-cutover result (`658` witness differences: those same six keys
 plus the single new PP-19 override-stack key, repeated across its separability witnesses). Its
 comparison normalizes the three tube-fed shotguns to the explicit scalar-null contract while
@@ -1535,8 +1536,8 @@ model has recovered rather than merely compressed. When Sym publishes, only the 
 
 ## 11. Open questions
 
-Eight of the twelve are resolved. The four still open — 1, 5, 10 and 11 — are empty-reload
-multipliers, recoil tier derivation, the sidearm deploy ladder, and the derived `drawTimeTier`.
+Eleven of the twelve are resolved. The remaining open question — 1 — is empty-reload
+multipliers.
 **None of them blocks Phase 3**, but question 1 must be answered before `emptyRld` is migrated.
 These questions do not authorize runtime or attachment-schema work on their own.
 
@@ -1552,9 +1553,97 @@ These questions do not authorize runtime or attachment-schema work on their own.
    Keep the base velocity per weapon and apply the global relative `0.8` step. The current audit
    provides no reason to replace `bulletVel` with a shared absolute index, and Subsonic remains a
    separate treatment.
-5. **Can recoil tier integers be sourced from Sym?** If yes,
-   [§2.4](#24-a-caveat-on-pinning-the-exact-integer) stops being a limitation and the deferred
-   recoil migration becomes mechanical. If no, the site keeps the current recoil fields.
+5. ~~**Can recoil tier integers be sourced from Sym?**~~ **No — resolved 2026-08-01.** Sym has
+   not published attachment data, so grip recoil integers are not Sym-sourced or datamined. The
+   visible attachment-cost formula is instead a strong, independently reproducible check of the
+   existing in-game tier observations. It supports the current grip values but does not by itself
+   authorize the deferred recoil migration.
+
+   **Manual cost-reconciliation test (for Luna; do not automate or promote data).** Use the
+   first-party attachment cards as the sole input; transcribe the displayed attachment cost by
+   direct visual review, never mastery unlock level or OCR alone. Test each distinct `GRIPS[*].id`
+   that has a reviewed card, including weapon-specific variants as separate cases. Before reading
+   its stored `adsRecoilTierMod`, total every *other* visible effect using the card's buff/debuff
+   direction and the displayed point schedule: ADS-time and ADS-movement-accuracy effects are
+   ±10 each; ADS-movement-speed and sprint-to-fire/weapon-swap effects are ±5 each; bipod,
+   fire-while-sprinting, and auxiliary-mode functions are +10 each. Then calculate
+   `impliedRecoilTier = (attachmentCost - nonRecoilPointTotal) / 10`.
+
+   Acceptance requires an integer from 0 through 5 and an exact match to the stored grip recoil
+   tier for every eligible card. Keep the raw cost, effect transcription, subtotal, implied tier,
+   screenshot path, and review date with each result. Use Alloy Vertical (`20 - 0 = 2`) and
+   Folding Stubby (`20 - 10 - (-10) = 2`) as initial control cases, then include at least one
+   independently reviewed card for each populated tier 0–5. Any non-integer result, ambiguous
+   card, missing effect, or mismatch is a failed/unresolved case: record it and leave the model
+   unchanged. This validates the tier hypothesis against first-party UI economics; it does not
+   turn the values into source-backed data.
+
+   **2026-08-01 disposition — targeted Grip correction after the Draw-Time migration.** The
+   evidence-only test is complete; it did not change live attachment data. Its result is not a
+   global rejection of the point formula. It identified stale hand-entered Grip Pod fields and one
+   prose-versus-panel discrepancy:
+
+   - `slim_angled_smg` remains recoil `+1`, ADS-time `+1`, and Sprint-Recovery shift `0`. The
+     shared card description incorrectly claims weapon-draw speed; all eight SMG cards cost `20`
+     and retain their baseline Sprint Recovery, whereas the regular Slim Angled costs `25` and has
+     the draw benefit. Keep the zero shift and pin it with a targeted regression assertion and a
+     short provenance note here; do not add a speculative runtime metadata field.
+   - The sniper-rifle Grip `attachmentCost` receipts have a broader normal-variant substitution
+     defect: every non-`None` grip cost is stale, not only Slim/Full Angled. The operator directly
+     verified the existing screenshots: for each of the five sniper rifles, Low-Profile Stubby is
+     `10`, Slim Angled `15`, Full Angled `5`, Bipod `10`, QD Grip Pod `10`, and Classic Grip Pod
+     `20` (`None: 0` is already correct). The live `slim_angled_sr` (`15`) and
+     `full_angled_sr` (`5`) catalog values are already correct. Correct only the stale canonical
+     review `attachmentCost` receipts and verify every saved row and screenshot path; do not copy
+     normal-rifle values or infer prices.
+   - Plain `bipod` and `bipod_sr` remain static recoil tier `0`: their cards preserve the unmounted
+     panel recoil and describe a conditional mounted reduction that the current simulator does not
+     model. Standard Grip Pods are different. Direct panel math matches recoil tier `+2` for all
+     28 reviewed standard PTT rows, all 28 standard QD rows, and all 28 standard Classic rows.
+     The sniper-specific `qd_grip_pod_sr` and `classic_grip_pod_sr` rows retain tier `0` (five
+     reviewed rows each); they do not display the ordinary passive recoil reduction.
+
+   **Scoped correction and validation record — implemented 2026-08-01.** The Draw-Time migration
+   was reviewed independently before this focused reference-data correction landed:
+
+   1. Preserve all Draw-Time files and make no workbook rebuild or broad audit regeneration. In
+      `outputs/attachment-audit/attachment-screenshot-review.json`, restore all 30 stale non-None
+      sniper Grip receipts: five rows each for Low-Profile Stubby `10`, Slim Angled `15`, Full
+      Angled `5`, Bipod `10`, QD Grip Pod `10`, and Classic Grip Pod `20`. Verify every exact saved
+      value, identity, and screenshot path; `None: 0` remains untouched. The listed costs are
+      operator-verified from existing screenshots; no recapture is needed.
+   2. Correct the standard live Grip Pod rows: `ptt_grip_pod`, `qd_grip_pod`, and
+      `classic_grip_pod` receive recoil tier `+2`; retain `0` on `qd_grip_pod_sr`,
+      `classic_grip_pod_sr`, `bipod`, and `bipod_sr`. Reconcile each Pod's directly reviewed point
+      cost and visible ADS/ADS-moving-accuracy effects at the same time, including removal of the
+      stale `classic_grip_pod.noEffect` marker. Do not copy a standard Pod effect onto a sniper
+      variant.
+   3. Add one narrowly scoped regression test that asserts all seven verified sniper Grip costs
+      across all five weapons (including `None: 0`), the saved identities and screenshot paths,
+      standard-Pod tier-2 panel reconstruction, sniper-variant and plain-Bipod tier-0
+      reconstruction, and the `slim_angled_smg` no-draw contract. The test must use direct
+      screenshot pairings and the recoil ladder, not an inferred generic auxiliary-function point
+      price.
+   4. Supersede the evidence-only reconciliation artifact's blanket "cost-formula rejected"
+      conclusion. State instead that ordinary grips are corroborated, standard Grip Pods were stale
+      catalog data confirmed by direct panel math, and conditional/sniper Pod functions are outside
+      the generic cost-to-recoil proof.
+
+   The completed regression uses
+   `scripts/grip-pod-correction-delta-register.json` to enumerate all fourteen approved catalog
+   deltas across `ptt_grip_pod`, `qd_grip_pod`, `classic_grip_pod`, `qd_grip_pod_sr`, and
+   `classic_grip_pod_sr` (including the two sniper price-only corrections and the removed
+   `classic_grip_pod.noEffect`). Draw-Time, Sprint, and Phase 5 preserve their frozen evidence and
+   digests by restoring only these registered fields for their historical projections; the focused
+   reconciliation test requires exact register/live-catalog agreement and rejects any extra delta.
+
+   **Separate follow-up — sniper Slim Angled Mobility bug.** Do not change the global Slim Angled
+   definition or infer a hidden field from the composite Mobility stat. The reviewed current cards
+   show `M2010 ESR` in the expected order (Slim `52` > Low-Profile `50` > Full `46`), while the
+   other four rifles are anomalous: Mini Scout Slim/Full `56`, Low-Profile `60`; L115 Slim `46`,
+   Full `42`, Low-Profile `50`; SV-98 Slim `48`, Full `46`, Low-Profile `50`; PSR Slim `34`,
+   Full/Low-Profile `38`. Preserve these raw readings as a named suspected in-game bug and schedule
+   fresh current-patch side-by-side captures before any simulator behavior changes.
 6. ~~**Does `ADS_MOVE_TIERS` need a 1.0 top tier?**~~ **Yes — resolved and landed 2026-07-31 in
    Phase 2b-i.** Both `x1.00` panels carry a green change arrow, so the tier is real. The former
    objection — that prepending shifts every stored `defAms` index — was measured and is not a
@@ -1575,19 +1664,56 @@ These questions do not authorize runtime or attachment-schema work on their own.
 9. ~~**Which out-of-slot stat changes are legitimate attachment effects?**~~ **Resolved for the
    current audit.** Section 8.3 has `unresolvedCount: 0`; keep that report as a recurring gate rather
    than reopening the disposed rows during reload migration.
-10. **What is the sidearm deploy ladder?** `DEPLOY_TIME_TIERS` is a merged primary+sidearm table
-    ([§2.6](#26-sym-tier-table-cross-check--2026-07-31)). The seven sidearms split into two groups
-    that do not share one offset from the sprint ladder: `ES 5.7 / GGH-22 / P18 / M45A1` (semi-auto
-    pistols) against `M357 Trait / M44 / VZ. 61` (two revolvers plus the only full-auto sidearm).
-    That grouping is mechanically plausible rather than noise, but the ladder must be derived from a
-    first-party source or fresh captures, not inferred from seven points. Splitting
-    `DEPLOY_TIME_TIERS` into primary and sidearm tables mirrors the existing
-    `PRIMARY_` / `SIDEARM_SPRINT_REC_TIERS` split and is the likely shape.
-11. **Should `drawTimeTier` become a derived field?** Sprint recovery and deploy are one underlying
-    stat for every primary, so two per-weapon fields could collapse to a single integer plus two
-    lookup tables — the same shape as the reload work, and it would remove a whole class of
-    inconsistency by construction. Out of scope for the current migration. Blocked on the sidearm
-    ladder in question 10, since a derived field must cover the whole roster or none of it.
+10. ~~**What is the sidearm deploy ladder?**~~ **Resolved 2026-08-01 — Sprint-to-Fire/Deploy
+    Time Offset model.** The sidearms are not one group: `ES 5.7 / GGH-22 / P18 / M45A1` use a
+    `+5` offset; `M357 Trait / M44 / VZ. 61` use `+7`. Standard primaries use `+8`; `DB-12` is
+    the sole `+9` exception. These are offsets in **rungs on the shared Sprint-to-Fire/Deploy
+    source axis**, never milliseconds and never a raw addition to an index in the current merged
+    `DEPLOY_TIME_TIERS` array. The resolver must encode that axis explicitly rather than relying on
+    nearest-value lookup.
+11. ~~**Should `drawTimeTier` become a derived field?**~~ **Yes — approved as the next isolated
+    migration.** One canonical integer plus the Sprint-to-Fire and Deploy lookup paths replaces
+    duplicate independent baselines. It must cover all 59 weapons, including the three offset
+    families and DB-12 exception, or not land at all.
+
+    **Implementation plan — Draw-Time Offset migration.**
+
+    1. Freeze a bounded timing-effective pre-migration fixture for every supported weapon across
+       magazine, selectable grip, selectable ergonomic, and available ammo choices, using each
+       weapon's default `barrelDef`. Record Sprint-to-Fire, Deploy, raw tier coordinates, clamp
+       events, and a deterministic digest. Sight, muzzle, laser, and light cross-products are
+       covered by the separately described reduced Phase 5 separability witness. Preserve the
+       current 59 `deployT` readings as transition evidence; do not use a nearest-value calculation
+       as the new source of truth.
+    2. Define a named shared-axis contract in `data/balance_tables.json`: the Sprint-to-Fire and
+       Deploy tables, their axis-coordinate conversion, and the four named offsets
+       (`primary: 8`, `semiAutoSidearm: 5`, `revolverOrAutoSidearm: 7`, `db12: 9`). Keep the
+       primary/sidearm sprint tables distinct. The conversion helper must make the coordinate
+       origin explicit, so `+8` cannot accidentally mean `defSpr + 8` in a trimmed runtime table.
+    3. Add a zero-based `drawTimeTier` and an explicit group/offset selection to every
+       `WEAPON_MAG` entry. Map exactly 51 standard primaries, `DB-12`, the four named semi-auto
+       pistols, and `M357 Trait`/`M44`/`VZ. 61`; reject unknown, duplicate, or uncovered weapons.
+       During the transition, derive the legacy Sprint-to-Fire and Deploy baselines from this new
+       representation and assert exact agreement with the preserved values before deleting live
+       `weapons.json.deployT`.
+    4. Replace the resolver's nearest-`DEPLOY_TIME_TIERS` search with a pure draw-time resolver.
+       Compute one effective draw-time coordinate, apply every supported Sprint-to-Fire tier shift
+       once, clamp independently at each rendered table boundary, and render both Sprint-to-Fire
+       and Deploy from that coordinate plus the selected offset. Inventory magazine, grip, and
+       ergonomics shifts explicitly; a source that changes one rendering but not the other needs
+       direct evidence and a named exception, never an accidental omission.
+    5. Add a focused `draw-time` characterization test and validator rules. They must verify all
+       59 base weapons against the preserved readings, exact membership in the four groups,
+       no nearest-value fallback, integer/bounded tier fields, no new unregistered clamps, and
+       output equivalence for the bounded pre-migration timing fixture. Include direct boundary and
+       attachment-shift cases for each group, particularly one standard primary, all four pistols,
+       all three revolver/automatic sidearms, and DB-12.
+    6. Run `node scripts/validate-data.mjs`, the existing sprint-recovery characterization suite,
+       the new draw-time suite, and the reduced attachment-equivalence witness suite. Regenerate
+       any baseline only through an explicit `--write-baseline` path after independently reviewing
+       the complete diff and recording its digest. The migration is complete only when live `deployT` is removed,
+       no legacy nearest-deploy code remains, validation passes, and the fixture proves no
+       unintended player-visible change.
 12. ~~**Do four weapons need grip class variants?**~~ **Resolved and landed 2026-07-31 in Phase
     2b-iii.** `SVK-8.6`, `VSSM`, `18.5KS-K` and `DB-12` use the standard `6h64_vert` /
     `classic_vert` / `stipp_stubby` / `lp_stubby` IDs but take no ADS-move shift, unlike the other

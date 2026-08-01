@@ -326,5 +326,132 @@
     733,
     867,
     1000
-  ]
+  ],
+  "DRAW_TIME_AXIS": {
+    "version": 1,
+    "coordinateName": "drawTimeTier",
+    "baseCoordinateRange": [
+      0,
+      7
+    ],
+    "coordinateRange": [
+      -1,
+      15
+    ],
+    "sprintToFire": {
+      "primary": {
+        "table": "PRIMARY_SPRINT_REC_TIERS",
+        "coordinateOrigin": 0,
+        "indexFormula": "coordinate - coordinateOrigin"
+      },
+      "sidearm": {
+        "table": "SIDEARM_SPRINT_REC_TIERS",
+        "coordinateOrigin": -1,
+        "indexFormula": "coordinate - coordinateOrigin"
+      }
+    },
+    "deploy": {
+      "table": "DEPLOY_TIME_TIERS",
+      "coordinateOrigin": 4,
+      "coordinateRange": [
+        4,
+        15
+      ],
+      "indexFormula": "coordinate - coordinateOrigin"
+    },
+    "offsets": {
+      "primary": 8,
+      "db12": 9,
+      "semiAutoSidearm": 5,
+      "revolverOrAutoSidearm": 7
+    },
+    "weaponGroups": {
+      "primary": [
+        "ak205",
+        "ak4d",
+        "b36a4",
+        "cz3a1",
+        "drsiar",
+        "grtbc",
+        "grtcps",
+        "kord6p67",
+        "ks18k",
+        "kts100",
+        "kv9",
+        "l110",
+        "l115",
+        "l85a3",
+        "lmr27",
+        "m1014",
+        "m121a2",
+        "m123k",
+        "m16a4",
+        "m2010esr",
+        "m240l",
+        "m250",
+        "m277",
+        "m39emr",
+        "m417a2",
+        "m433",
+        "m4a1",
+        "m60",
+        "m87a1",
+        "miniscout",
+        "nvo228e",
+        "pp19",
+        "psr",
+        "pw5a3",
+        "pw7a2",
+        "qbz192",
+        "rpk74m",
+        "rpkm",
+        "scw10",
+        "sg553r",
+        "sgx",
+        "sl9",
+        "sor300sc",
+        "sor556",
+        "sv98",
+        "svdm",
+        "svk86",
+        "tr7",
+        "umg40",
+        "usg90",
+        "vcr2"
+      ],
+      "semiAutoSidearm": [
+        "es57",
+        "ggh22",
+        "m45a1",
+        "p18"
+      ],
+      "revolverOrAutoSidearm": [
+        "m357trait",
+        "m44",
+        "vz61"
+      ],
+      "db12": [
+        "db12"
+      ]
+    },
+    "shiftPolicy": {
+      "sprintToFire": [
+        "magazine.sprintRecoveryTierShift",
+        "grip.sprintRecoveryTierShift",
+        "ergonomics.sprintRecoveryTierShift"
+      ],
+      "deploy": [
+        "magazine.sprintRecoveryTierShift",
+        "grip.sprintRecoveryTierShift"
+      ],
+      "namedExceptions": [
+        {
+          "id": "ergonomics-sprint-only",
+          "source": "ergonomics.sprintRecoveryTierShift",
+          "excludedRendering": "deploy",
+          "evidence": "legacy 70634-case fixture; no deploy shift field exists in the reviewed ergonomics records"
+        }
+      ]
+    }
+  }
 }

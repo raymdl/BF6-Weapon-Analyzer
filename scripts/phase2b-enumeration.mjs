@@ -45,14 +45,10 @@ function sprintTableNameFor(weaponMag) {
   return weaponMag.sprintRecoveryTierTable === 'sidearm' ? 'sidearm' : 'primary';
 }
 
-function deployBaseIndex(weapon, modelBalance) {
-  const baseDeployMs = weapon.deployT * 1000;
-  let baseIndex = 0;
-  for (let i = 1; i < modelBalance.DEPLOY_TIME_TIERS.length; i++) {
-    if (Math.abs(modelBalance.DEPLOY_TIME_TIERS[i] - baseDeployMs)
-      < Math.abs(modelBalance.DEPLOY_TIME_TIERS[baseIndex] - baseDeployMs)) baseIndex = i;
-  }
-  return baseIndex;
+function deployBaseIndex(weaponMag, modelBalance) {
+  const rawIndex = weaponMag.drawTimeTier + weaponMag.drawTimeOffset
+    - modelBalance.DRAW_TIME_AXIS.deploy.coordinateOrigin;
+  return Math.max(0, Math.min(modelBalance.DEPLOY_TIME_TIERS.length - 1, rawIndex));
 }
 
 function loadoutFor({ modelAttachments, weaponId, barrelId, magazineId, gripId, ergoId, ammoId }) {
@@ -105,7 +101,7 @@ export function buildEnumeration({
     const ammoIds = selectableAmmoIds({ ammo, weaponId: weapon.id });
     const sprintTable = sprintTableFor(weaponMag, modelBalance);
     const sprintTableName = sprintTableNameFor(weaponMag);
-    const baseDeployIdx = deployBaseIndex(weapon, modelBalance);
+    const baseDeployIdx = deployBaseIndex(weaponMag, modelBalance);
     magazineEntryCount += magazineIds.length;
     dimensionTotals.gripChoices += gripIds.length;
     dimensionTotals.ergoChoices += ergoIds.length;
