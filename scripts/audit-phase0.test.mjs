@@ -28,6 +28,7 @@ import {
   loadModelTierMismatchInventory,
   modelTierMismatchKey,
   runSweep,
+  STATS,
 } from './audit-sweep.mjs';
 import { runFieldSlotDiscovery } from './audit-field-slot-discovery.mjs';
 
@@ -116,6 +117,73 @@ test('sweep pins inventoried model-tier mismatches and rejects other warnings', 
     weaponNames: ['18.5KS-K', 'DB-12', 'M1014', 'M87A1'],
   });
   assert.deepEqual(report.coverage.modelUnmappedWeapons, ['BROD 3', 'EF88', 'VSSM']);
+});
+
+test('cross-field consistency checks named capacity and every stat in duplicate identities', () => {
+  assert.deepEqual(STATS, [
+    'damage', 'longRangeDamage', 'muzzleVelocityMps', 'headshotMultiplier', 'collateralMultiplier',
+    'spotOnFire3dM', 'spotOnFire2dM', 'recoilAmountDegrees', 'recoilVariationDegrees', 'adsTimeMs',
+    'sprintRecoveryMs', 'adsMoveSpeedMultiplier', 'reloadTimeSeconds', 'rateOfFireRpm', 'magazineSize',
+    'hipfire', 'precision', 'control', 'mobility',
+  ]);
+
+  const root = mkdtempSync(path.join(tmpdir(), 'bf6-phase0-check2-'));
+  const fixturePaths = new Set([...Object.values(PHASE0_FIXTURES), 'data/attachments.json']);
+  for (const relativePath of fixturePaths) {
+    const destination = path.join(root, relativePath);
+    fs.mkdirSync(path.dirname(destination), { recursive: true });
+    fs.copyFileSync(path.join(DEFAULT_ROOT, relativePath), destination);
+  }
+
+  const reviewPath = path.join(root, PHASE0_FIXTURES.audit);
+  const readReview = () => JSON.parse(fs.readFileSync(reviewPath, 'utf8'));
+  const writeReview = review => fs.writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
+  const originalReview = JSON.parse(fs.readFileSync(
+    path.join(DEFAULT_ROOT, PHASE0_FIXTURES.audit), 'utf8',
+  ));
+  try {
+    const capacityReview = readReview();
+    const capacityRow = capacityReview.records.find(row => (
+      row.weaponName === 'B36A4'
+      && row.attachmentType === 'Magazine'
+      && row.attachmentName === '30Rnd Magazine'
+      && row.stats
+    ));
+    assert.ok(capacityRow);
+    capacityRow.stats.magazineSize = 29;
+    writeReview(capacityReview);
+    assert.equal(runSweep({ root }).findings.some(finding => (
+      finding.check === 'name-vs-capacity'
+      && finding.weapon === 'B36A4'
+      && finding.attachment === 'Magazine/30Rnd Magazine'
+    )), true);
+
+    for (const field of STATS) {
+      const duplicateReview = structuredClone(originalReview);
+      const sourceRow = duplicateReview.records.find(row => (
+        row.weaponName === 'B36A4'
+        && row.attachmentType === 'Magazine'
+        && row.attachmentName === '30Rnd Magazine'
+        && row.stats
+      ));
+      sourceRow.stats.magazineSize = 30;
+      const duplicate = structuredClone(sourceRow);
+      duplicate.stats[field] = typeof duplicate.stats[field] === 'number'
+        ? duplicate.stats[field] + 1
+        : 12345;
+      duplicateReview.records.push(duplicate);
+      duplicateReview.recordCount += 1;
+      duplicateReview.attachmentDetailCount += 1;
+      writeReview(duplicateReview);
+      assert.equal(runSweep({ root }).findings.some(finding => (
+        finding.check === 'duplicate-conflict'
+        && finding.weapon === 'B36A4'
+        && finding.attachment === 'Magazine/30Rnd Magazine'
+      )), true, `duplicate comparison omitted ${field}`);
+    }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('recoil amount uses hidden recoilV and the pinned float32 round-half-up display rule', () => {

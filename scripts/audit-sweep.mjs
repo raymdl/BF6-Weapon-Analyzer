@@ -26,7 +26,7 @@ import {
   sourceIdentity,
 } from './audit-phase0-lib.mjs';
 
-const STATS = [
+export const STATS = [
   'damage', 'longRangeDamage', 'muzzleVelocityMps', 'headshotMultiplier', 'collateralMultiplier',
   'spotOnFire3dM', 'spotOnFire2dM', 'recoilAmountDegrees', 'recoilVariationDegrees', 'adsTimeMs',
   'sprintRecoveryMs', 'adsMoveSpeedMultiplier', 'reloadTimeSeconds', 'rateOfFireRpm', 'magazineSize',
@@ -442,12 +442,16 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
   for (const [weaponName, rows] of byWeapon) {
     for (const row of rows) {
       if (row.attachmentType !== 'Magazine') continue;
-      const match = /(\d+)\s*rnd/i.exec(row.attachmentName || '');
+      const match = /(\d+)\s*(?:rnd|shell)/i.exec(row.attachmentName || '');
       if (!match) continue;
       const named = Number(match[1]);
       const actual = row.stats.magazineSize;
-      const includesChamberedRound = /speedloader/i.test(row.attachmentName || '') && actual === named + 1;
-      if (actual != null && named !== actual && !includesChamberedRound) {
+      const name = row.attachmentName || '';
+      // Tube and speedloader labels exclude chambered rounds. Dual tubes carry
+      // two named tubes and two chambered rounds in the displayed total.
+      const includesChamberedRound = /(?:speedloader|shell)/i.test(name) && actual === named + 1;
+      const includesTwoChamberedRounds = /dual tubes/i.test(name) && actual === (named * 2) + 2;
+      if (actual != null && named !== actual && !includesChamberedRound && !includesTwoChamberedRounds) {
         addFinding(findings, 'error', 'name-vs-capacity', weaponName, `Magazine/${row.attachmentName}`,
           `name says ${named}, magazineSize reads ${actual}`);
       }
