@@ -262,7 +262,7 @@ function predictMagazineTiers({ row, weaponMag, weaponAtts, attachments, balance
   };
 }
 
-function runTierChecks({ findings, byWeapon, balance, attachments, byName, consumeReviewedException }) {
+function runTierChecks({ findings, byWeapon, balance, attachments, byName, consumeReviewedException, estimatedWeaponNames }) {
   const tables = {
     adsTimeMs: { table: balance.ADS_SPD_TIERS, tolerance: 1 },
     adsMoveSpeedMultiplier: { table: balance.ADS_MOVE_TIERS, tolerance: 0.005 },
@@ -302,7 +302,8 @@ function runTierChecks({ findings, byWeapon, balance, attachments, byName, consu
         })) {
           const value = row.stats[field];
           if (value == null || value === 0 || predicted[field] == null) continue;
-          if (Math.abs(predicted[field] - value) > tolerance) {
+          if (Math.abs(predicted[field] - value) > tolerance
+              && !estimatedWeaponNames.has(normalizeWeaponName(weaponName))) {
             // §7 says the screenshot settles a model-versus-reading disagreement.
             // Adjudication has found defects on both sides, so report this as a
             // warning rather than accusing either the model or the corpus.
@@ -332,7 +333,7 @@ function runTierChecks({ findings, byWeapon, balance, attachments, byName, consu
   }
 }
 
-function runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadExceptions, reloadMigrationManifest }) {
+function runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadExceptions, reloadMigrationManifest, estimatedWeaponNames }) {
   // §7 Check 4 treats both Fast and Speedloader as names that imply reload
   // speed. A mismatch is a screenshot-read request, including when the
   // scalar reload tier is intentionally zero for a tube-fed option.
@@ -342,6 +343,7 @@ function runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadEx
 
   for (const [weaponName, rows] of byWeapon) {
     if (!byName.has(normalizeWeaponName(weaponName))) continue;
+    if (estimatedWeaponNames.has(normalizeWeaponName(weaponName))) continue;
     for (const row of rows) {
       if (row.attachmentType !== 'Magazine') continue;
       const manifest = manifestBySource.get(sourceIdentity(row.source.currentPath));
@@ -443,6 +445,9 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
   const byWeapon = buildByWeapon(audit);
   const findings = [];
   const byName = new Map(weapons.map(weapon => [normalizeWeaponName(weapon.name), weapon]));
+  const estimatedWeaponNames = new Set(weapons
+    .filter(weapon => weapon?.estimated === true)
+    .map(weapon => normalizeWeaponName(weapon.name)));
   const subsonicBySource = new Map(subsonicTreatments.map(treatment => [sourceKey(treatment.sourcePath), treatment]));
   const exceptionByKey = new Map(reviewedExceptions.map(exception => [exceptionKey(exception), exception]));
   const seenSubsonicTreatments = new Set();
@@ -557,7 +562,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
   for (const [weaponName, rows] of byWeapon) {
     const weapon = byName.get(normalizeWeaponName(weaponName));
     const multiplier = weapon && balance.RECOIL_MULT?.[weapon.id];
-    if (!weapon || !multiplier) continue;
+    if (!weapon || !multiplier || estimatedWeaponNames.has(normalizeWeaponName(weaponName))) continue;
     const base = hiddenRecoilAmountBase(weapon);
     for (const row of rows) {
       const value = row.stats.recoilAmountDegrees;
@@ -582,7 +587,7 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
   for (const [weaponName, rows] of byWeapon) {
     const weapon = byName.get(normalizeWeaponName(weaponName));
     const multiplier = weapon?.recoil?.ads?.dirVarMult;
-    if (!weapon || !multiplier) continue;
+    if (!weapon || !multiplier || estimatedWeaponNames.has(normalizeWeaponName(weaponName))) continue;
     const base = hiddenRecoilVariationBase(weapon);
     for (const row of rows) {
       const value = row.stats.recoilVariationDegrees;
@@ -601,8 +606,8 @@ export function runSweep({ root = DEFAULT_ROOT } = {}) {
     }
   }
 
-  runTierChecks({ findings, byWeapon, balance, attachments, byName, consumeReviewedException });
-  runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadExceptions, reloadMigrationManifest });
+  runTierChecks({ findings, byWeapon, balance, attachments, byName, consumeReviewedException, estimatedWeaponNames });
+  runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadExceptions, reloadMigrationManifest, estimatedWeaponNames });
 
   // Check 6: scalar reloads include every weapon except the three tube-fed
   // shotguns.  18.5KS-K therefore remains in this loop.

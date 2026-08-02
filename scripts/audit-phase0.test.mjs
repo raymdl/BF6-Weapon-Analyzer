@@ -344,7 +344,7 @@ test('recoil amount uses hidden recoilV and the pinned float32 round-half-up dis
   for (const [weaponName, rows] of rowsByWeapon) {
     const weapon = weaponByName.get(weaponName.toLowerCase().replace(/[^a-z0-9]/g, ''));
     const multiplier = weapon && inputs.balance.RECOIL_MULT?.[weapon.id];
-    if (!weapon || !multiplier) continue;
+    if (!weapon || !multiplier || weapon.estimated) continue;
     assertLadder(rows, 'recoilAmountDegrees', hiddenRecoilAmountBase(weapon), multiplier);
     assertLadder(rows, 'recoilVariationDegrees', hiddenRecoilVariationBase(weapon), weapon.recoil.ads.dirVarMult);
   }

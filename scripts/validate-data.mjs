@@ -156,7 +156,7 @@ if (drawTimeAxis == null || typeof drawTimeAxis !== 'object' || Array.isArray(dr
     semiAutoSidearm: [...DRAW_TIME_GROUPS.semiAutoSidearm].sort(),
     revolverOrAutoSidearm: [...DRAW_TIME_GROUPS.revolverOrAutoSidearm].sort(),
   };
-  if (expectedGroups.primary.length !== 51) fail(`draw-time standard primary set must contain 51 weapons; found ${expectedGroups.primary.length}`);
+  if (expectedGroups.primary.length !== 53) fail(`draw-time standard primary set must contain 53 weapons; found ${expectedGroups.primary.length}`);
   const actualGroups = drawTimeAxis.weaponGroups ?? {};
   if (JSON.stringify(Object.keys(actualGroups).sort()) !== JSON.stringify(Object.keys(expectedGroups).sort())) {
     fail('DRAW_TIME_AXIS.weaponGroups must contain exactly primary, db12, semiAutoSidearm, and revolverOrAutoSidearm');
@@ -176,8 +176,8 @@ if (/Math\.abs\(DEPLOY_TIME_TIERS/.test(resolverSource) || /baseDeployIdx/.test(
 }
 
 const pp19 = weapons.find(weapon => weapon.id === 'pp19');
-if (weapons.length !== 59) fail(`release 1.3.3.0 requires 59 weapon records; found ${weapons.length}`);
-if (supportedWeaponIds.size !== 59) fail(`release 1.3.3.0 requires 59 supported weapons; found ${supportedWeaponIds.size}`);
+if (weapons.length !== 61) fail(`release 1.3.3.0 requires 61 weapon records; found ${weapons.length}`);
+if (supportedWeaponIds.size !== 61) fail(`release 1.3.3.0 requires 61 supported weapons; found ${supportedWeaponIds.size}`);
 if (!pp19) fail('pp19: required release 1.3.3.0 weapon record is missing');
 if (pp19) {
   if (pp19.cls !== 'SMG') fail('pp19: expected SMG class');

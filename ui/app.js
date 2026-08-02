@@ -218,8 +218,8 @@ setAttachmentContext({
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
   ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
   DRAW_TIME_AXIS,
-  RELOAD_SPEED_LADDER: balance.RELOAD_SPEED_LADDER,
-  VELOCITY_LADDER: balance.VELOCITY_LADDER,
+  RELOAD_SPEED_LADDER: _balance.RELOAD_SPEED_LADDER,
+  VELOCITY_LADDER: _balance.VELOCITY_LADDER,
 });
 
 // ── DAMAGE HELPERS ────────────────────────────────────────────────────────────
@@ -526,7 +526,7 @@ function buildWeaponList(containerId, slotIdx) {
     const isActive = w === slot.weapon;
     const b = document.createElement('button');
     b.className = 'wbtn' + (isActive ? (slotIdx === 0 ? ' p1' : ' p2') : '');
-    b.textContent = w.name;
+    b.textContent = w.estimated ? `${w.name} — ESTIMATED` : w.name;
     b.onclick = () => {
       slot.weapon = w;
       resetAttsForWeapon(slot.atts, w);
@@ -554,13 +554,18 @@ function buildAttachmentSection(containerId, slotIdx) {
 
 function updateAssumedFootnote() {
   document.querySelectorAll('.att-note.assumed-note').forEach(el => el.remove());
-  const hasAssumed =
-    Loadout.hasSelectedAssumedAtt(state.slots[0].atts, LOADOUT_DATA) ||
-    (state.comparing && Loadout.hasSelectedAssumedAtt(state.slots[1].atts, LOADOUT_DATA));
-  const noteTarget = document.getElementById(state.comparing ? 'attSection2' : 'attSection1');
-  if (hasAssumed && noteTarget)
-    noteTarget.insertAdjacentHTML('beforeend',
-      '<div class="att-note assumed-note">* Assumed stats until datamined attachment values are available.</div>');
+  document.querySelectorAll('.att-note.estimate-note').forEach(el => el.remove());
+  const selected = [state.slots[0], ...(state.comparing ? [state.slots[1]] : [])];
+  selected.forEach((slot, index) => {
+    const noteTarget = document.getElementById(`attSection${index + 1}`);
+    if (!noteTarget) return;
+    if (slot.weapon?.estimated)
+      noteTarget.insertAdjacentHTML('beforeend',
+        '<div class="att-note estimate-note">* Similar-weapon estimate pending Sym full statistics.</div>');
+    if (Loadout.hasSelectedAssumedAtt(slot.atts, LOADOUT_DATA))
+      noteTarget.insertAdjacentHTML('beforeend',
+        '<div class="att-note assumed-note">* Assumed stats until datamined attachment values are available.</div>');
+  });
 }
 
 function renderSidebar() {
@@ -642,15 +647,26 @@ function renderOverview() {
     }
     hdr.appendChild(bb);
   };
+  const appendEstimateBadge = (w, hdr) => {
+    if (!w?.estimated) return;
+    const badge = document.createElement('span');
+    badge.className = 'wbadge-estimated';
+    badge.textContent = 'ESTIMATED';
+    badge.title = 'Similar-weapon estimate pending Sym full statistics.';
+    badge.setAttribute('aria-label', badge.title);
+    hdr.appendChild(badge);
+  };
   if (w1) {
     const s = document.createElement('span'); s.className = 'wname'; s.textContent = wLabel(w1); hdr.appendChild(s);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w1.cls; hdr.appendChild(b);
+    appendEstimateBadge(w1, hdr);
     appendFireModeBadge(w1, hdr);
   }
   if (w2) {
     const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px;font-size:12px'; vs.textContent = 'vs'; hdr.appendChild(vs);
     const s = document.createElement('span'); s.className = 'wname2'; s.textContent = wLabel(w2); hdr.appendChild(s);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w2.cls; hdr.appendChild(b);
+    appendEstimateBadge(w2, hdr);
     appendFireModeBadge(w2, hdr);
   }
 

@@ -76,7 +76,7 @@ const sniperCostByName = new Map([
   ['QD Grip Pod', 10],
   ['Classic Grip Pod', 20],
 ]);
-const modelMissingAuditNames = new Set(['BROD 3', 'EF88', 'VSSM']);
+const modelMissingAuditNames = new Set(['VSSM']);
 
 const expectedApprovedCatalogDiffs = {
   ptt_grip_pod: [

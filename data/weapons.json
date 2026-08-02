@@ -8305,5 +8305,394 @@
     "damageStatus": "provisional",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
     "reloadSpeed": 1
+  },
+  {
+    "id": "brod3",
+    "name": "BROD 3",
+    "cls": "Carbine",
+    "cal": "5.56×45mm NATO",
+    "rpm": 830.7692307692307,
+    "mag": 31,
+    "tacRld": 2.217,
+    "emptyRld": 3.35,
+    "bulletVel": 580,
+    "recoilV": 0.8070225287267756,
+    "recoilDir": -16,
+    "recoilVar": 24.3,
+    "recoilIncAds": 0.304,
+    "spreadMax": 6,
+    "adsTime": 200,
+    "fireMode": "auto",
+    "burstRounds": 3,
+    "burstRpm": 830,
+    "burstBurstsPerMinute": 240.12729639809058,
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.304,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.2,
+        "firingExp": 2.5,
+        "firingOffset": 2.7,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.547,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
+        "firingExp": 2.5,
+        "firingOffset": 4.86,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -16,
+        "amount": 0.6703,
+        "amountMult": 0.94,
+        "amountExp": -3,
+        "dirVar": 24.3,
+        "dirVarMult": 0.918691,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.045,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 57,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -16,
+        "amount": 0.6703,
+        "amountMult": 0.94,
+        "amountExp": -3,
+        "dirVar": 24.3,
+        "dirVarMult": 0.918691,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.045,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 57,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        7
+      ],
+      "hipStand": [
+        1.804,
+        6
+      ],
+      "hipMove": [
+        2.255,
+        7
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 26,
+        "source": "Sym",
+        "provenance": "measured close endpoint 26; estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 9,
+        "d": 26.05,
+        "source": "Sym",
+        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 9,
+        "d": 21.56,
+        "source": "Sym",
+        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 21,
+        "d": 21.56,
+        "source": "Sym",
+        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 21,
+        "d": 17.74,
+        "source": "Sym",
+        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 36,
+        "d": 17.74,
+        "source": "Sym",
+        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Sym",
+        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Sym",
+        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 75,
+        "d": 14,
+        "source": "Sym",
+        "provenance": "measured long endpoint 14; estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+      }
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Estimated from GRT-BC donor dropoff model; BROD 3 panel endpoints measured at 26 and 14; pending Sym full statistics",
+    "reloadSpeed": 1,
+    "estimated": true,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "estimated",
+      "donor": {
+        "weaponId": "grtbc",
+        "name": "GRT-BC",
+        "model": "direct donor model; recoil direction sign flipped"
+      },
+      "measured": {
+        "adsTime": 200,
+        "tacRld": 2.217,
+        "bulletVel": 580,
+        "recoilVar": 24.3,
+        "recoilDir": -16,
+        "rpmRule": "10800/13",
+        "mag": 31,
+        "damageEndpoints": [
+          26,
+          14
+        ]
+      },
+      "estimatedFields": [
+        "emptyRld",
+        "reloadSpeed",
+        "recoil.ads.dirVarMult",
+        "recoil.ads.dirVarExp",
+        "recoil.ads formula fields",
+        "spreadDyn",
+        "spread",
+        "damage breakpoint distances"
+      ],
+      "damage": {
+        "status": "provisional",
+        "donorModel": "grtbc",
+        "measuredEndpoints": {
+          "close": 26,
+          "long": 14
+        },
+        "replacement": "Replace with Sym full statistics when published."
+      }
+    }
+  },
+  {
+    "id": "ef88",
+    "name": "EF88",
+    "cls": "Assault Rifle",
+    "cal": "5.56×45mm NATO",
+    "rpm": 675,
+    "mag": 31,
+    "tacRld": 2.416,
+    "emptyRld": 2.8415,
+    "bulletVel": 670,
+    "recoilV": 0.7002730456335999,
+    "recoilDir": 12,
+    "recoilVar": 20.4,
+    "recoilIncAds": 0.36,
+    "spreadMax": 7,
+    "adsTime": 250,
+    "fireMode": "auto",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.36,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.2,
+        "firingExp": 2.5,
+        "firingOffset": 2.7,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.648,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
+        "firingExp": 2.5,
+        "firingOffset": 4.86,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": 12,
+        "amount": 0.5779000000000001,
+        "amountMult": 0.9379,
+        "amountExp": -3,
+        "dirVar": 20.4,
+        "dirVarMult": 0.9160025,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 72,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": 12,
+        "amount": 0.5779000000000001,
+        "amountMult": 0.9379,
+        "amountExp": -3,
+        "dirVar": 20.4,
+        "dirVarMult": 0.9160025,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 72,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        7
+      ],
+      "adsMove": [
+        0.32,
+        8
+      ],
+      "hipStand": [
+        2.432,
+        7
+      ],
+      "hipMove": [
+        3.04,
+        8
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 26,
+        "source": "Sym",
+        "provenance": "measured close endpoint 26; estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 21,
+        "d": 26.05,
+        "source": "Sym",
+        "provenance": "estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 21,
+        "d": 20.67,
+        "source": "Sym",
+        "provenance": "estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Sym",
+        "provenance": "estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+      },
+      {
+        "r": 75,
+        "d": 17,
+        "source": "Sym",
+        "provenance": "measured long endpoint 17; estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+      }
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Estimated from B36A4/L85A3 midpoint dropoff model; EF88 panel endpoints measured at 26 and 17; pending Sym full statistics",
+    "reloadSpeed": 0.987893,
+    "estimated": true,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "estimated",
+      "donor": {
+        "weaponIds": [
+          "b36a4",
+          "l85a3"
+        ],
+        "names": [
+          "B36A4",
+          "L85A3"
+        ],
+        "model": "exact midpoint where needed; spreadDyn copied from byte-identical AR donors"
+      },
+      "measured": {
+        "adsTime": 250,
+        "tacRld": 2.416,
+        "bulletVel": 670,
+        "recoilVar": 20.4,
+        "recoilDir": 12,
+        "rpmRule": "10800/16",
+        "mag": 31,
+        "damageEndpoints": [
+          26,
+          17
+        ]
+      },
+      "estimatedFields": [
+        "emptyRld",
+        "reloadSpeed",
+        "recoilV midpoint",
+        "recoil formula midpoint",
+        "recoil.ads.dirVarMult midpoint",
+        "damage breakpoint distances"
+      ],
+      "damage": {
+        "status": "provisional",
+        "donorModel": "l85a3",
+        "measuredEndpoints": {
+          "close": 26,
+          "long": 17
+        },
+        "replacement": "Replace with Sym full statistics when published."
+      }
+    }
   }
 ]

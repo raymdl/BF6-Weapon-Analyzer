@@ -38,6 +38,8 @@ This file is the shared handoff and progress ledger. Every implementation sessio
 | 2026-07-21 → 08-01 | Codex + Claude | Derived Attachment Model, Phases 0-7 | Ran as a separate workstream under `DERIVED_ATTACHMENT_MODEL.md`. Completed the full attachment screenshot audit (3,177 records, 62 weapons, all classes), then replaced the hardcoded per-magazine reload tables and per-barrel velocity multipliers with derived models. **This is the first promotion of screenshot-derived values into live attachment data** — see [§4.12](#412-derived-attachment-model-integration--2026-08-01). Validator 59/59; suite 83/83. |
 | 2026-08-01 | Claude | Derived model gate repairs + §7 checks | Fixed four gates that passed when they should have failed closed, then ran the model's four validation checks as executable gates. Surfaced 74 tier mismatches, of which six were adjudicated against original screenshots: **four are live site errors, two are corpus transcription errors.** All findings are pinned to tracked inventories; no `data/` value was changed. Commits `6e2ffa1`, `0e81dc9`, `719a4e5`, `62a4909`, `b14c394`, `984566a`. |
 
+| 2026-08-02 | Codex | Task 2 — BROD 3 / EF88 estimate plug | Added both as the only `estimated: true` weapons, taking the live roster from 59 to 61. BROD 3 uses the GRT-BC model with `recoilDir: -16`; EF88 uses the B36A4/L85A3 midpoint with `recoilDir: +12`; both retain provisional donor-model damage and persistent UI estimate labelling. VSSM, Task 1 witness re-baseline, Phase 6, workbook rebuilds, and screenshot recapture remain excluded. |
+
 ## Findings and open issues
 
 - Claude's worktree started from the same commit as the Codex branch, so the port did not require conflict resolution.
@@ -130,7 +132,7 @@ The three review bullets immediately above preserve the original gate findings; 
 - Sym.gg charts: https://sym.gg/legacy/index.html?game=bf6&page=charts
 - Downloaded JSON reports `version: 1.3.3.0`, `versionDate: 30 JUN 2026`, contains 59 firearms, and has SHA-256 `129C2A552D508E864FF09A1593A4A705C11F0B5F4B19C925BC83F9A96F4B6A4B`.
 - Sym.gg's patch page publishes 1,038 field deltas for the 58 weapons that existed in both v1.3.1.0 and v1.3.3.0. It is the preferred before/after source; PP-19 is absent because it is a new record rather than a delta.
-- The live source tree currently contains 58 firearms. The only firearm in the downloaded Sym.gg JSON that is absent from `data/weapons.json` is the PP-19.
+- The live source tree currently contains 61 firearms. BROD 3 and EF88 are explicitly labelled estimates from reviewed corpus data and donor models; VSSM remains absent pending Sym full statistics.
 - The new EOD Bot Arm is a melee weapon. The analyzer does not model melee weapons, so it should remain out of scope unless melee support becomes a separate feature.
 - Claude's `claude/bold-williamson-97fab6` worktree supplied the initial limb/headshot/UI work. Its focused changes have now been ported and stabilized on `codex/update-1.3.3.0`; it still does not supply the updated Sym.gg recoil, spread, velocity, damage, attachments, or PP-19 data.
 - The Sym.gg JSON is not safe as the sole damage source. It still exposes legacy 25/33-style values and at least some old sniper sweet-spot endpoints (for example M2010 ESR still reaches its 100-damage tier through 120 m), while EA explicitly documents new sweet spots and minor base-damage adjustments.
@@ -494,16 +496,32 @@ The rule that prevents recurrence is in `MAINTENANCE.md`: the ledger is keyed on
 deliberately left dead because reviving them would have regressed the record with superseded
 values — a revived stale override is worse than an orphaned one.
 
-### 4.14 BROD 3, EF88 and VSSM — captured but not shippable — 2026-08-01
+### 4.14 BROD 3, EF88 and VSSM — estimates and exclusion — 2026-08-02
 
-Three weapons have a complete attachment corpus and no live record. They were added to the game in
-late July 2026 and Sym.gg has not published their weapon stats yet.
+Three weapons have a complete attachment corpus. Sym.gg has not published full weapon statistics
+for any of them. The prior 4.14 instruction to not add all three is superseded only for BROD 3 and
+EF88 by the bounded estimate decision recorded below; VSSM remains excluded.
 
 | Weapon | Corpus records | Slots captured |
 |---|---|---|
 | EF88 | 63 | Muzzle, Barrel, Grip, Magazine, Ammo, Ergonomics, Laser, Light |
 | BROD 3 | 62 | Muzzle, Barrel, Grip, Magazine, Ammo, Ergonomics, Laser, Light |
-| VSSM | 44 | Barrel, Grip, Magazine, Ammo, Ergonomics, Laser, Light — **no Muzzle**, it is integrally suppressed |
+| VSSM | 44 | Barrel, Grip, Magazine, Ammo, Ergonomics, Laser, Light — **no Muzzle**, it is integrally suppressed; excluded |
+
+#### Task 2 estimate decision
+
+BROD 3 and EF88 are live as exactly two explicitly labelled estimates, bringing the release roster
+from 59 to 61 weapons. BROD 3 uses GRT-BC as its donor/model, with `recoilDir: -16` as the
+user-confirmed sign flip. EF88 uses the B36A4/L85A3 midpoint where needed, with `recoilDir: +12`;
+its `recoilV` is the exact donor midpoint and its measured `recoilVar: 20.4` overrides any midpoint.
+Both use measured `mag: 31`, headshot multiplier `1.40`, and the documented `10800/n` RPM rule.
+
+Damage remains `provisional`: BROD 3 uses the GRT-BC dropoff model with measured endpoints 26 → 14;
+EF88 uses the L85A3 model with measured endpoints 26 → 17. Every unknown donor-derived field is
+marked estimated in `data/provenance/brod3-ef88-estimates-1.3.3.0.json`; no inferred value is a
+direct measurement. The UI displays an ESTIMATED badge and the footnote “Similar-weapon estimate
+pending Sym full statistics.” Replace the donor-derived fields and provisional curves when Sym
+publishes full statistics.
 
 Related but separate: the corpus calls the M/60 **`M60`**, deliberately, to keep `/` out of Windows
 paths and Excel references. The weapon id `m60` matches on both sides, so **join corpus to live data
@@ -511,15 +529,15 @@ by id, never by name** — a name join silently drops this weapon.
 
 #### What the screenshots already give us
 
-Everything the attachment UI displays, for all three: `rpm`, `mag`, `tacRld`, `bulletVel`,
+Everything the attachment UI displays, for both estimates: `rpm`, `mag`, `tacRld`, `bulletVel`,
 `adsTime`, `fireMode`, `recoilV` and `recoilVar`, plus enough to build every cross-file attachment
 table — `WEAPON_ATTS`, `WEAPON_MAG` (tier shifts back-calculate from the displayed ADS time, sprint
-recovery and ADS move speed), `WEAPON_AMMO` and `WEAPON_ERGO`. The VSSM needs an explicit
-`"muzzle": []`, since the validator requires all five slot arrays to be present.
+recovery and ADS move speed), `WEAPON_AMMO` and `WEAPON_ERGO`. VSSM remains excluded from this
+task and receives no live cross-file entry.
 
 #### What is missing, and why the corpus cannot supply it
 
-Every field below is present on all 59 live weapons, so none is optional. None is visible anywhere
+Every field below is present on all 61 live weapons, so none is optional. None is visible anywhere
 in the attachment UI — these are simulation internals.
 
 | Field | Notes |
@@ -530,17 +548,18 @@ in the attachment UI — these are simulation internals.
 | `spreadDyn` | `ads` and `hip` dynamics |
 | `spreadMax`, `recoilDir`, `recoilIncAds` | scalars |
 | `cal` | caliber string; a required key in the validator |
-| `emptyRld` | empty reload; not on the stat panel. 54 of 59 live weapons carry it |
+| `emptyRld` | empty reload; not on the stat panel. 56 of 61 live weapons carry it |
 | `reloadSpeed` | tier value |
 | `RECOIL_DEC`, `RECOIL_DEC_EXP`, `RECOIL_DEC_TEXP` | `data/recoil_decay.json`, keyed per weapon id |
 | `RECOIL_MULT`, `HIP_CLS`, `LIMB_CLASS` | `data/balance_tables.json`, keyed per weapon id, not per class |
 
 The minimum to merely pass validation is `cal`, `dmg`, `tacRld`, `emptyRld` and the cross-file
-entries — but a weapon added without `recoil` and `spread` would simulate wrongly while looking
-complete, which is worse than not shipping it. **Do not add these three until Sym publishes.**
+entries. BROD 3 and EF88 are the narrow exception to the prior no-add rule: their donor-derived
+`recoil`, `spread`, reload and damage model are allowed only with the estimate badge, persistent
+footnote and provenance above. **Do not add VSSM until Sym publishes.**
 
-The bounded, useful work available now is to pre-build their attachment tables from the corpus so
-that adding them later is a data merge rather than a fresh audit.
+The corpus remains the source of truth for their attachment availability and tier shifts; do not
+rebuild workbooks or recapture screenshots as part of this estimate plug.
 
 ### 5. Resolve damage and sweet spots
 
@@ -598,7 +617,7 @@ remain deferred under working protocol rule 6.
 
 #### Minimum gate before user hands-on testing
 
-- [ ] T1 Update the root header/footer to v1.3.3.0 / 30 JUN 2026 and show 59 weapons; retain the working v1.3.1.0 archive link.
+- [ ] T1 Update the root header/footer to v1.3.3.0 / 30 JUN 2026 and show 61 weapons; retain the working v1.3.1.0 archive link.
 - [ ] T2 Add a visible test-build scope note: damage curves are provisional, REDSEC armor is not modeled, projectile travel/drag/gravity is not simulated, and non-default attachment values remain pre-patch/unverified pending the later attachment refresh.
 - [ ] T3 Add representative deterministic recoil/spread fixtures covering one high-output automatic, one low-output automatic, one burst weapon, and PP-19; keep the existing 24-test baseline passing.
 - [ ] T4 Run the automated gate again, then hand off to browser QA for both comparison slots, share-link restoration, charts/tooltips, breakpoint/zone checks, PP-19 base/default state, desktop, and mobile.
@@ -606,7 +625,7 @@ remain deferred under working protocol rule 6.
 The full documentation refresh, all-weapon attachment audit, exact damage confirmation, and Phase 6 solver are not prerequisites for this hands-on test build. They remain release-follow-up work unless the test exposes a dependency.
 
 - [ ] 7.1 Update the header/version date to Season 3 v1.3.3.0 / 30 JUN 2026.
-- [ ] 7.2 Update the weapon count from 58 to 59 and document PP-19 data provenance.
+- [ ] 7.2 Update the weapon count from 58 to 61 and document PP-19 plus the BROD 3/EF88 estimate provenance.
 - [ ] 7.3 Add hit-zone legend/help text that explains chest, stomach/limbs, head, and armor scope.
 - [ ] 7.4 Ensure shaded chest-to-limb bands remain readable for two-weapon comparisons and color-blind/high-contrast usage.
 - [ ] 7.5 Verify tooltips never combine chest and limb values into a misleading single number.
@@ -670,7 +689,7 @@ promoted this release. Reload timing and barrel velocity now are, under the deri
 - Every derived attachment value reproduces its screenshot reading, and the derived-versus-legacy
   equivalence and separability gates pass.
 
-- The site contains 59 firearms and PP-19 has complete cross-file attachment/magazine/ammo coverage.
+- The site contains 61 firearms: PP-19 has complete cross-file attachment/magazine/ammo coverage, and BROD 3/EF88 are the only explicitly labelled estimates.
 - Recoil, spread/recovery, velocity, deploy/reload, and base drag are traceable to the pinned Sym.gg v1.3.3.0 JSON.
 - Every weapon has an attachment-audit status, and every barrel/ammunition combination that changes velocity has a current v1.3.3.0 absolute value or an explicit `needs measurement` flag.
 - Hit-zone and automatic headshot multipliers match EA's values.

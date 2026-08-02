@@ -232,6 +232,37 @@
       "pts": 20,
       "velMult": 1,
       "velTierMod": 0
+    },
+    {
+      "id": "cryo",
+      "name": "Cryogenic",
+      "adsTimeTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsSpreadIncMult": 1,
+      "pts": 20,
+      "velMult": 1,
+      "velTierMod": 0
+    },
+    {
+      "id": "ext_light",
+      "name": "Extended Light",
+      "adsTimeTierMod": 0,
+      "movingAdsSpreadTierMod": 1,
+      "adsSpreadIncMult": 1,
+      "pts": 25,
+      "velMult": 1.25,
+      "velTierMod": 1
+    },
+    {
+      "id": "short_light",
+      "name": "Short Light",
+      "adsTimeTierMod": 1,
+      "movingAdsSpreadTierMod": 1,
+      "adsSpreadIncMult": 1,
+      "hipSpreadTierMod": -1,
+      "pts": 25,
+      "velMult": 0.8,
+      "velTierMod": -1
     }
   ],
   "GRIPS": [
@@ -3594,6 +3625,123 @@
         "iron",
         "std_optic"
       ]
+    },
+    "brod3": {
+      "muzzle": [
+        "none",
+        "flash_hider",
+        "sp_brake",
+        "dp_brake",
+        "compensator",
+        "linear_comp",
+        "std_supp",
+        "flash_comp",
+        "comp_brake",
+        "long_supp",
+        "cqb_supp",
+        "light_supp"
+      ],
+      "barrel": [
+        "basic",
+        "extended",
+        "short",
+        "light"
+      ],
+      "grip": [
+        "none",
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "slim_angled",
+        "full_angled",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "6h64_vert",
+        "classic_vert",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "slim_handstop",
+        "classic_grip_pod"
+      ],
+      "laser": [
+        "none",
+        "5mw_red",
+        "50mw_violet",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "none",
+        "flashlight",
+        "hip_taclight",
+        "ads_taclight"
+      ],
+      "barrelDef": "basic"
+    },
+    "ef88": {
+      "muzzle": [
+        "none",
+        "flash_hider",
+        "flash_comp",
+        "sp_brake",
+        "dp_brake",
+        "compensator",
+        "linear_comp",
+        "std_supp",
+        "long_supp",
+        "cqb_supp",
+        "comp_brake",
+        "light_supp"
+      ],
+      "barrel": [
+        "basic",
+        "extended",
+        "heavy_ext",
+        "short",
+        "light",
+        "cryo",
+        "ext_light",
+        "short_light"
+      ],
+      "grip": [
+        "none",
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "full_angled",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_vert",
+        "lp_stubby",
+        "classic_grip_pod"
+      ],
+      "laser": [
+        "none",
+        "5mw_red",
+        "50mw_violet",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "none",
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight"
+      ],
+      "barrelDef": "basic"
     }
   },
   "WEAPON_ERGO": {
@@ -3912,6 +4060,23 @@
     "ks18k": {
       "avail": [
         "buffer"
+      ]
+    },
+    "brod3": {
+      "avail": [
+        "none",
+        "mag_catch",
+        "match_trigger",
+        "rail_cover",
+        "buffer"
+      ]
+    },
+    "ef88": {
+      "avail": [
+        "none",
+        "mag_catch",
+        "buffer",
+        "match_trigger"
       ]
     }
   },
@@ -7143,6 +7308,142 @@
       "drawTimeTier": 2,
       "drawTimeGroup": "revolverOrAutoSidearm",
       "drawTimeOffset": 7
+    },
+    "brod3": {
+      "defAds": 3,
+      "defSpr": 3,
+      "defAms": 4,
+      "def": "30_rnd",
+      "mags": {
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 5,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
+        },
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
+        },
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -2,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
+        },
+        "30_fast": {
+          "name": "30 Fast",
+          "pts": 10,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
+        },
+        "36_rnd": {
+          "name": "36 Rnd",
+          "pts": 15,
+          "mag": 36,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
+        },
+        "40_rnd": {
+          "name": "40 Rnd",
+          "pts": 25,
+          "mag": 40,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
+        },
+        "40_fast": {
+          "name": "40 Fast",
+          "pts": 30,
+          "mag": 40,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
+        }
+      },
+      "baseSprintRecoveryTier": 5,
+      "weaponSprintRecoveryTierShift": -1,
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 3,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
+    },
+    "ef88": {
+      "defAds": 4,
+      "defSpr": 4,
+      "defAms": 5,
+      "def": "30_rnd",
+      "mags": {
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 5,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
+        },
+        "30_fast": {
+          "name": "30 Fast",
+          "pts": 10,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
+        },
+        "36_rnd": {
+          "name": "36 Rnd",
+          "pts": 15,
+          "mag": 36,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
+        },
+        "42_rnd": {
+          "name": "42 Rnd",
+          "pts": 25,
+          "mag": 42,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
+        },
+        "42_fast": {
+          "name": "42 Fast",
+          "pts": 30,
+          "mag": 42,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 2,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1
+        }
+      },
+      "baseSprintRecoveryTier": 6,
+      "weaponSprintRecoveryTierShift": -1,
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
     }
   }
 }

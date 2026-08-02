@@ -13,7 +13,8 @@ vendored copy of Chart.js.
 
 The v1.3.3.0 update lives on the `codex/update-1.3.3.0` branch and **is not live yet.** That branch
 carries the new Sym.gg damage data, the reworked recoil model, the PP-19 (bringing the roster from
-58 to 59 weapons), and the 1.3.3.0 hit-zone multipliers. It is still a test build: several release
+58 to 59 weapons), plus explicitly labelled estimated BROD 3 and EF88 records (61 total), and the
+1.3.3.0 hit-zone multipliers. It is still a test build: several release
 gates in [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](migration/1.3.3.0/BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md) are open,
 most notably the attachment-value refresh, the visible provisional-data disclaimer, and browser QA.
 Anything in this README describing 1.3.3.0 behavior describes that branch, not what is published.
@@ -104,7 +105,10 @@ node --test
 Node discovers the `scripts/*.test.mjs` files on its own. Don't pass the directory —
 `node --test scripts/` tries to resolve it as a module and fails on Node 24.
 
-On the `codex/update-1.3.3.0` branch as of this writing, the validator passes for 59/59 weapons.
+On the `codex/update-1.3.3.0` branch as of this writing, the validator passes for 61/61 weapons.
+BROD 3 and EF88 are the only estimated weapons; their donor-derived simulation fields and
+provisional damage curves must be replaced when Sym publishes full statistics. VSSM remains
+excluded until then.
 A clean clone runs 83 tests: 83 pass and 0 skip.
 
 Two of the passing tests check the tracked attachment-screenshot review data against its schema.

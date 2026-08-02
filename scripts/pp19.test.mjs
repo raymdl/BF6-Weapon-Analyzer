@@ -69,8 +69,8 @@ function withAttachmentContext(overrides, callback) {
   }
 }
 
-test('PP-19 is the 59th firearm in the SMG order', () => {
-  assert.equal(weapons.length, 59);
+test('PP-19 remains before the two appended estimated firearms', () => {
+  assert.equal(weapons.length, 61);
   const czIndex = weapons.findIndex(weapon => weapon.id === 'cz3a1');
   assert.equal(weapons[czIndex + 1]?.id, 'pp19');
   assert.equal(pp19.name, 'PP-19');

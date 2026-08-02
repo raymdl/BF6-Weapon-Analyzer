@@ -60,7 +60,9 @@
     "m44": 0.94,
     "m45a1": 0.94,
     "p18": 0.94,
-    "vz61": 0.9283
+    "vz61": 0.9283,
+    "brod3": 0.94,
+    "ef88": 0.9379
   },
   "HIP_SPREAD_TIERS": {
     "Class A": [
@@ -167,7 +169,9 @@
     "m16a4": "Class C",
     "rpk74m": "Class D",
     "l115": "Class D",
-    "pp19": "Class B"
+    "pp19": "Class B",
+    "brod3": "Class B",
+    "ef88": "Class C"
   },
   "BASE_HS_MULT": {
     "m39emr": 1.5,
@@ -273,7 +277,9 @@
     "miniscout": "sniper",
     "l115": "sniper",
     "vz61": "auto",
-    "pp19": "auto"
+    "pp19": "auto",
+    "brod3": "auto",
+    "ef88": "auto"
   },
   "MOVING_ACC_TIERS": [
     0.05,
@@ -308,7 +314,7 @@
     350
   ],
   "ADS_MOVE_TIERS": [
-    1.0,
+    1,
     0.91,
     0.82,
     0.75,
@@ -443,7 +449,9 @@
         "tr7",
         "umg40",
         "usg90",
-        "vcr2"
+        "vcr2",
+        "brod3",
+        "ef88"
       ],
       "semiAutoSidearm": [
         "es57",

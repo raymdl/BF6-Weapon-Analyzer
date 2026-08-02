@@ -14,9 +14,36 @@ const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const balance = readJson('data/balance_tables.json');
 const weapons = readJson('data/weapons.json');
-const phase2bBaseline = readJson('scripts/ads-move-phase2b-iii-baseline.json');
 const preMigrationState = readJson('scripts/reload-phase4-pre-migration-state.json');
+const preMigrationWeaponIds = new Set(Object.keys(preMigrationState.magazines));
 const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
+
+const EXPECTED_RELOAD_SCOPE = Object.freeze({
+  weaponCount: 61,
+  magazineEntryCount: 278,
+  caseDimensions: 'weapon × magazine × selectable grip × selectable ergonomic × available ammo',
+  gripSelection: 'none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot',
+  ergoSelection: 'none plus WEAPON_ERGO[weapon].avail',
+  ammoSelection: 'all IDs in WEAPON_AMMO[weapon].ammo, including standard-only weapons',
+  barrelSelection: 'weapon barrelDef only; barrels do not affect sprint recovery or ADS move',
+  caseKey: 'weaponId/magazineId/gripId/ergoId/ammoId',
+});
+
+const EXPECTED_RELOAD_COUNTS = Object.freeze({
+  weapons: 61,
+  magazineEntries: 278,
+  gripChoices: 850,
+  ergoChoices: 183,
+  ammoChoices: 279,
+  cases: 77564,
+  primaryCases: 77330,
+  sidearmCases: 234,
+});
+
+const EXPECTED_RELOAD_DIGEST = '640db63286b1506d8fa17bce7af4f98b3092265079da3329d9529f95599456a7';
+const EXPECTED_PREVIOUS_DIGEST = 'e524734f8581903935f3dc3286bad6d1da2f32b5026836be41bf1a21df154051';
+const EXPECTED_CHANGED_CASE_COUNT = 10322;
+const EXPECTED_CHANGED_CASE_KEYS_DIGEST = 'c2f831145d84efc8a4042fa0d828d32a45f5e8bcb458ef3e5efc0b7476170ae4';
 
 const baseContext = {
   MUZZLES: attachments.MUZZLES,
@@ -214,23 +241,37 @@ const generatedBaseline = process.argv.includes('--write-baseline') ? buildFixtu
 if (generatedBaseline) writeFileSync(baselinePath, `${JSON.stringify(generatedBaseline, null, 2)}\n`);
 const baseline = generatedBaseline ?? readJson('scripts/reload-phase3-baseline.json');
 
-test('Phase 3 reload baseline reuses the complete 70,634-case Phase 2b enumeration', () => {
+test('Phase 3 reload baseline pins the complete 77,564-case live-roster enumeration', () => {
   const enumeration = buildEnumeration({ attachments, ammo, balance, weapons });
-  assert.deepEqual(enumeration.counts, phase2bBaseline.counts);
+  assert.deepEqual(enumeration.scope, EXPECTED_RELOAD_SCOPE);
+  assert.deepEqual(enumeration.counts, EXPECTED_RELOAD_COUNTS);
   const actual = sortedCases(reloadCases(enumeration));
   const previous = sortedCases(preCutoverReloadCases(enumeration));
   assert.equal(baseline.kind, 'reload-phase3-baseline');
-  assert.deepEqual(baseline.scope, enumeration.scope);
-  assert.deepEqual(baseline.counts, enumeration.counts);
+  assert.deepEqual(baseline.scope, EXPECTED_RELOAD_SCOPE);
+  assert.deepEqual(baseline.counts, EXPECTED_RELOAD_COUNTS);
   assert.deepEqual(baseline.detailCases, detailCases(actual));
-  assert.equal(sha256(canonicalSerialization(actual)), baseline.digest.value);
+  assert.equal(sha256(canonicalSerialization(actual)), EXPECTED_RELOAD_DIGEST);
+  assert.equal(baseline.digest.value, EXPECTED_RELOAD_DIGEST);
   assert.deepEqual(perWeaponDigests(actual), baseline.perWeaponDigest);
-  assert.equal(sha256(canonicalSerialization(previous)), baseline.migration.previousDigest);
-  assert.equal(baseline.migration.previousDigest, preMigrationState.baselineDigest);
+  assert.equal(sha256(canonicalSerialization(previous)), EXPECTED_PREVIOUS_DIGEST);
+  assert.equal(baseline.migration.previousDigest, EXPECTED_PREVIOUS_DIGEST);
+  assert.equal(
+    sha256(canonicalSerialization(previous.filter(row => preMigrationWeaponIds.has(row.weaponId)))),
+    preMigrationState.baselineDigest,
+  );
   const actualChangedCases = changedCases(actual, previous);
   assert.deepEqual(actualChangedCases, baseline.migration.changedCases);
-  assert.equal(actualChangedCases.length, baseline.migration.changedCaseCount);
-  assert.equal(sha256(actualChangedCases.map(row => row.caseKey).join('\n')), baseline.migration.changedCaseKeysDigest);
+  assert.equal(actualChangedCases.length, EXPECTED_CHANGED_CASE_COUNT);
+  assert.equal(baseline.migration.changedCaseCount, EXPECTED_CHANGED_CASE_COUNT);
+  assert.equal(sha256(actualChangedCases.map(row => row.caseKey).join('\n')), EXPECTED_CHANGED_CASE_KEYS_DIGEST);
+  assert.equal(baseline.migration.changedCaseKeysDigest, EXPECTED_CHANGED_CASE_KEYS_DIGEST);
+  assert.deepEqual(
+    [...new Set(actualChangedCases
+      .map(row => row.caseKey.split('/')[0])
+      .filter(weaponId => !preMigrationWeaponIds.has(weaponId)))].sort(),
+    ['brod3', 'ef88'],
+  );
 });
 
 test('Phase 6 reload baseline is entirely authoritative derived output', () => {

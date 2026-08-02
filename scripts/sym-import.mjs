@@ -311,8 +311,13 @@ export function validateWeaponMap(source, currentWeapons = [], mapEntries = SYM_
     if (!sourceByCodename.has(entry.codename)) errors.push(`mapping has no source record for Sym codename ${entry.codename}`);
   }
   const mappedSiteIds = new Set([...mapByCodename.values()].map(entry => entry.siteId));
+  const estimatedSiteIds = new Set(currentWeapons
+    .filter(weapon => weapon?.estimated === true)
+    .map(weapon => weapon.id));
   for (const weapon of currentWeapons) {
-    if (!mappedSiteIds.has(weapon.id)) errors.push(`missing Sym mapping for current site weapon ID ${weapon.id}`);
+    if (!mappedSiteIds.has(weapon.id) && !estimatedSiteIds.has(weapon.id)) {
+      errors.push(`missing Sym mapping for current site weapon ID ${weapon.id}`);
+    }
   }
   if (errors.length) throw new Error(`Sym weapon mapping validation failed:\n- ${errors.join('\n- ')}`);
   return { mapByCodename, mapBySiteId, sourceByCodename };

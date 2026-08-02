@@ -14,8 +14,8 @@
     "roundHits": 69,
     "discriminatingFloorHits": 25,
     "discriminatingRoundHits": 0,
-    "liveSelectablePairs": 20,
-    "sourceOnlyRecords": 5
+    "liveSelectablePairs": 21,
+    "sourceOnlyRecords": 4
   },
   "explainedDifferences": [
     {
@@ -51,7 +51,7 @@
     {
       "weaponId": "ef88",
       "weaponName": "EF88",
-      "barrelId": null,
+      "barrelId": "ext_light",
       "attachmentSubtype": "Ext Light",
       "attachmentName": "20\" Marksman",
       "baseVelocityMps": 670,

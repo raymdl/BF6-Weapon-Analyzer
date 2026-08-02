@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "release": "1.3.3.0",
+  "status": "estimated",
+  "weapons": [
+    {
+      "schemaVersion": 1,
+      "status": "estimated",
+      "donor": {
+        "weaponId": "grtbc",
+        "name": "GRT-BC",
+        "model": "direct donor model; recoil direction sign flipped"
+      },
+      "measured": {
+        "adsTime": 200,
+        "tacRld": 2.217,
+        "bulletVel": 580,
+        "recoilVar": 24.3,
+        "recoilDir": -16,
+        "rpmRule": "10800/13",
+        "mag": 31,
+        "damageEndpoints": [
+          26,
+          14
+        ]
+      },
+      "estimatedFields": [
+        "emptyRld",
+        "reloadSpeed",
+        "recoil.ads.dirVarMult",
+        "recoil.ads.dirVarExp",
+        "recoil.ads formula fields",
+        "spreadDyn",
+        "spread",
+        "damage breakpoint distances"
+      ],
+      "damage": {
+        "status": "provisional",
+        "donorModel": "grtbc",
+        "measuredEndpoints": {
+          "close": 26,
+          "long": 14
+        },
+        "replacement": "Replace with Sym full statistics when published."
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "status": "estimated",
+      "donor": {
+        "weaponIds": [
+          "b36a4",
+          "l85a3"
+        ],
+        "names": [
+          "B36A4",
+          "L85A3"
+        ],
+        "model": "exact midpoint where needed; spreadDyn copied from byte-identical AR donors"
+      },
+      "measured": {
+        "adsTime": 250,
+        "tacRld": 2.416,
+        "bulletVel": 670,
+        "recoilVar": 20.4,
+        "recoilDir": 12,
+        "rpmRule": "10800/16",
+        "mag": 31,
+        "damageEndpoints": [
+          26,
+          17
+        ]
+      },
+      "estimatedFields": [
+        "emptyRld",
+        "reloadSpeed",
+        "recoilV midpoint",
+        "recoil formula midpoint",
+        "recoil.ads.dirVarMult midpoint",
+        "damage breakpoint distances"
+      ],
+      "damage": {
+        "status": "provisional",
+        "donorModel": "l85a3",
+        "measuredEndpoints": {
+          "close": 26,
+          "long": 17
+        },
+        "replacement": "Replace with Sym full statistics when published."
+      }
+    }
+  ],
+  "replacementCondition": "Replace estimated donor-derived simulation fields and provisional damage curves when Sym publishes full statistics."
+}

@@ -178,7 +178,10 @@ test('steps every non-sniper class and reads the NVO-228E tiers at whole metres'
   // each tier boundary. Every other class repeats each boundary range, so no
   // sampled range may land strictly between two adjacent tier values.
   const stepped = weapon => weapon.cls !== 'Sniper Rifle' && weapon.cls !== 'Shotgun';
-  for (const weapon of weapons.filter(stepped)) {
+  // Provisional estimates retain donor-derived damage shapes until Sym publishes
+  // the weapon-specific curve; their endpoint/dropoff contract is covered by
+  // estimated-weapons.test.mjs instead of this measured-shape assertion.
+  for (const weapon of weapons.filter(weapon => stepped(weapon) && !weapon.estimated)) {
     const tiers = new Set(weapon.dmg.map(point => point.d));
     for (let range = 0; range <= 150; range += 0.5) {
       assert.ok(tiers.has(damageAtRange(weapon, range)), `${weapon.id} stepped at ${range}m`);

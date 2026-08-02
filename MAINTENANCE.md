@@ -61,6 +61,21 @@ their non-ammo captures show a different row. The EF88 and BROD 3 headshot value
 disagree with their screenshots because EA has confirmed those stat screens are bugged — do not
 "correct" them back to the captured value.
 
+### Estimated weapons (current roster: 61)
+
+BROD 3 and EF88 are the only estimated weapons. They are explicitly marked with `estimated: true`
+and an `ESTIMATED` UI badge. BROD 3 uses the GRT-BC donor/model with confirmed `recoilDir: -16`;
+EF88 uses the B36A4/L85A3 midpoint where needed with confirmed `recoilDir: +12` and the exact
+donor midpoint for `recoilV`. Their damage curves remain `provisional`: BROD 3 uses the GRT-BC
+dropoff model with measured endpoints 26 and 14, while EF88 uses the L85A3 model with measured
+endpoints 26 and 17. Unknown donor-derived fields are listed in
+`data/provenance/brod3-ef88-estimates-1.3.3.0.json` and must not be described as direct measurements.
+
+When Sym publishes full statistics, replace the donor-derived fields and provisional damage curves,
+remove the estimate state only after the replacement is validated, and retain VSSM excluded until
+the same publication gate is met. The prior “do not add” guidance is superseded only for BROD 3 and
+EF88 under these constraints.
+
 ## Patch Update Workflow
 
 ```mermaid
