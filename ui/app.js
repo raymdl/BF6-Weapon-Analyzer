@@ -21,10 +21,9 @@ async function fetchJson(url) {
 }
 
 let W, _recoilDecay, _balance, _atts, _ammo;
-let _dataLastModified = null;
 try {
   [W, _recoilDecay, _balance, _atts, _ammo] = await Promise.all([
-    fetchJson('./data/weapons.json').then(r => { _dataLastModified = r.headers.get('Last-Modified'); return r.json(); }),
+    fetchJson('./data/weapons.json').then(r => r.json()),
     fetchJson('./data/recoil_decay.json').then(r => r.json()),
     fetchJson('./data/balance_tables.json').then(r => r.json()),
     fetchJson('./data/attachments.json').then(r => r.json()),
@@ -34,20 +33,6 @@ try {
   document.body.insertAdjacentHTML('beforeend',
     '<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0e0e;color:#e05555;font-family:sans-serif;font-size:1rem">Failed to load weapon data. Please reload the page.</div>');
   throw err;
-}
-
-// Update header date from the data file's Last-Modified header (set by GitHub Pages
-// from the file's last commit date — updates automatically on every data push).
-{
-  const tag = document.querySelector('.hdr-tag');
-  if (tag && _dataLastModified) {
-    const d = new Date(_dataLastModified);
-    const mon = d.toLocaleString('en-GB', { month: 'short', timeZone: 'UTC' }).toUpperCase();
-    const day = d.getUTCDate();
-    const yr  = d.getUTCFullYear();
-    const prefix = tag.textContent.replace(/- Updated.*$/, '').trim();
-    tag.textContent = `${prefix} - Updated ${day} ${mon} ${yr}`;
-  }
 }
 
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
@@ -197,6 +182,26 @@ const state = {
     magnification: null, distancePanX: 0, distancePanY: 0,
   },
 };
+
+const ASSUMED_STATS_NOTE = '* Estimated stats until full datamined values are available';
+
+function weaponDisplayLabel(w) {
+  const label = wLabel(w);
+  if (!w?.estimated) return label;
+  const name = w.name ?? label;
+  const suffix = label.startsWith(name) ? label.slice(name.length) : '';
+  return `${name}*${suffix}`;
+}
+
+function chartWeaponDisplayLabel(w) {
+  const name = w?.name ?? wLabel(w);
+  return w?.estimated ? `${name}*` : name;
+}
+
+function weaponAriaLabel(w) {
+  const label = weaponDisplayLabel(w);
+  return w?.estimated ? `${label} Estimated weapon` : label;
+}
 
 let dmgChart = null;
 // Held so the observer is not collected while it still has an observation.
@@ -460,8 +465,6 @@ function applyChartStateToDom() {
   const adsBtn = document.getElementById('adsToggleBtn');
   adsBtn.style.display = isTtk ? '' : 'none';
   adsBtn.classList.toggle('on', isTtk && showAds);
-  document.getElementById('chartTitle').textContent =
-    mode === 'btk' ? 'BTK Chart' : mode === 'ttk' ? (showAds ? 'ADS+TTK Chart' : 'TTK Chart') : 'Damage Chart';
   const sel = document.getElementById('btkHsSelect');
   sel.style.display = (mode === 'btk' || mode === 'ttk') ? '' : 'none';
   sel.value = btkHS;
@@ -526,7 +529,8 @@ function buildWeaponList(containerId, slotIdx) {
     const isActive = w === slot.weapon;
     const b = document.createElement('button');
     b.className = 'wbtn' + (isActive ? (slotIdx === 0 ? ' p1' : ' p2') : '');
-    b.textContent = w.estimated ? `${w.name} — ESTIMATED` : w.name;
+    b.textContent = weaponDisplayLabel(w);
+    b.setAttribute('aria-label', weaponAriaLabel(w));
     b.onclick = () => {
       slot.weapon = w;
       resetAttsForWeapon(slot.atts, w);
@@ -544,7 +548,6 @@ function buildAttachmentSection(containerId, slotIdx) {
     atts: slot.atts,
     weapon: slot.weapon,
     data: LOADOUT_DATA,
-    showAssumedFootnote: false,
     onChange: () => {
       updateAssumedFootnote();
       renderStats();
@@ -554,17 +557,16 @@ function buildAttachmentSection(containerId, slotIdx) {
 
 function updateAssumedFootnote() {
   document.querySelectorAll('.att-note.assumed-note').forEach(el => el.remove());
-  document.querySelectorAll('.att-note.estimate-note').forEach(el => el.remove());
   const selected = [state.slots[0], ...(state.comparing ? [state.slots[1]] : [])];
   selected.forEach((slot, index) => {
     const noteTarget = document.getElementById(`attSection${index + 1}`);
     if (!noteTarget) return;
-    if (slot.weapon?.estimated)
-      noteTarget.insertAdjacentHTML('beforeend',
-        '<div class="att-note estimate-note">* Similar-weapon estimate pending Sym full statistics.</div>');
-    if (Loadout.hasSelectedAssumedAtt(slot.atts, LOADOUT_DATA))
-      noteTarget.insertAdjacentHTML('beforeend',
-        '<div class="att-note assumed-note">* Assumed stats until datamined attachment values are available.</div>');
+    if (slot.weapon?.estimated || Loadout.hasSelectedAssumedAtt(slot.atts, LOADOUT_DATA, slot.weapon)) {
+      const note = document.createElement('div');
+      note.className = 'att-note assumed-note';
+      note.textContent = ASSUMED_STATS_NOTE;
+      noteTarget.appendChild(note);
+    }
   });
 }
 
@@ -647,26 +649,33 @@ function renderOverview() {
     }
     hdr.appendChild(bb);
   };
-  const appendEstimateBadge = (w, hdr) => {
+  const appendWeaponName = (w, className, hdr) => {
+    const s = document.createElement('span');
+    s.className = className;
+    s.textContent = weaponDisplayLabel(w);
+    s.setAttribute('aria-label', weaponAriaLabel(w));
+    hdr.appendChild(s);
+  };
+  const appendEstimatedBadge = (w, hdr) => {
     if (!w?.estimated) return;
     const badge = document.createElement('span');
     badge.className = 'wbadge-estimated';
-    badge.textContent = 'ESTIMATED';
-    badge.title = 'Similar-weapon estimate pending Sym full statistics.';
+    badge.textContent = 'Estimated';
+    badge.title = 'Estimated weapon statistics.';
     badge.setAttribute('aria-label', badge.title);
     hdr.appendChild(badge);
   };
   if (w1) {
-    const s = document.createElement('span'); s.className = 'wname'; s.textContent = wLabel(w1); hdr.appendChild(s);
+    appendWeaponName(w1, 'wname', hdr);
+    appendEstimatedBadge(w1, hdr);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w1.cls; hdr.appendChild(b);
-    appendEstimateBadge(w1, hdr);
     appendFireModeBadge(w1, hdr);
   }
   if (w2) {
     const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px;font-size:12px'; vs.textContent = 'vs'; hdr.appendChild(vs);
-    const s = document.createElement('span'); s.className = 'wname2'; s.textContent = wLabel(w2); hdr.appendChild(s);
+    appendWeaponName(w2, 'wname2', hdr);
+    appendEstimatedBadge(w2, hdr);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w2.cls; hdr.appendChild(b);
-    appendEstimateBadge(w2, hdr);
     appendFireModeBadge(w2, hdr);
   }
 
@@ -678,7 +687,8 @@ function renderOverview() {
     note.className = 'att-note sweet-spot-note';
     note.textContent = sweetSpots.map(weapon => {
       const range = weapon.sweetSpot.rangeM;
-      return range ? `${weapon.name} EA sweet spot: ${range[0]}–${range[1]} m.` : `${weapon.name}: no EA sweet spot.`;
+      const displayName = weaponDisplayLabel(weapon);
+      return range ? `${displayName} EA sweet spot: ${range[0]}–${range[1]} m.` : `${displayName}: no EA sweet spot.`;
     }).join(' ');
     grid.parentElement?.insertBefore(note, grid);
   }
@@ -713,13 +723,44 @@ function renderOverview() {
       tooltip: 'Average recoil direction from vertical. Positive values pull right; negative values pull left.' },
     { lbl: 'STD/Mov Sprd', compute: w => ({ stand: w.spread?.adsStand?.[0] ?? 0.05, move: w._movingAdsMinSpreadDeg ?? w.spread?.adsMove?.[0] ?? 0.32 }), unit: '',
       fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
-      noDiff: true, group: 'recoil',
+      noDiff: true, group: 'spread',
       tooltip: 'Standing ADS spread and moving ADS spread. Lower is more accurate. Moving ADS spread can be affected by laser and barrel selections.' },
     { lbl: '3D/Map Spot', compute: w => ({ spot: w._worldSpot, minimap: w._minimapSpot }), unit: '',
       fmt: obj => { const s = obj && obj.spot > 0 ? `${obj.spot}<span class="sunit">m</span>` : '–'; const m = obj && obj.minimap > 0 ? `${obj.minimap}<span class="sunit">m</span>` : '–'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true,
       tooltip: 'Distance at which you are spotted in the 3D world and on the minimap while firing. "–" means you are never 3D spotted.' },
   ];
+  const overviewLabels = {
+    'Base Dmg': 'Base Damage',
+    'HS Mult': 'Headshot Mult',
+    'Bullet Vel': 'Bullet Velocity',
+    'Mag Size': 'Magazine Size',
+    'Strafe Spd': 'Strafe Speed',
+    'Deploy Spd': 'Deploy Speed',
+    'Sprint Rec': 'Sprint Recovery',
+    'Recoil/Shot': 'Recoil Amount',
+    'Recoil Dir': 'Recoil Direction',
+    'STD/Mov Sprd': 'STD/Mov Spread',
+    '3D/Map Spot': '3D/2D Spotting',
+  };
+  fields.splice(fields.findIndex(f => f.lbl === 'Recoil Dir'), 0, {
+    lbl: 'Recoil Variation',
+    k: 'recoilVar',
+    unit: '\u00b0',
+    fmt: v => v.toFixed(1),
+    lowerBetter: true,
+    group: 'recoil',
+    tooltip: 'ADS recoil-direction variation after ADS-only variation modifiers. Lower is more consistent.',
+  });
+  fields.splice(fields.findIndex(f => f.lbl === 'STD/Mov Sprd'), 0, {
+    lbl: 'Spread Inc/Shot',
+    k: 'recoilIncAds',
+    unit: '\u00b0',
+    fmt: v => v.toFixed(2),
+    lowerBetter: true,
+    group: 'spread',
+    tooltip: 'ADS spread increase per shot after ADS-only spread modifiers. Lower builds spread more slowly.',
+  });
   if (w1?.pellets || w2?.pellets) fields.splice(4, 0, { lbl: 'Pellets', k: 'pellets', unit: '', fmt: v => v ?? '—',
     tooltip: 'Number of pellets fired per shot. Shotgun damage is pellet damage multiplied by this count.' });
 
@@ -756,18 +797,20 @@ function renderOverview() {
     'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
     'Pellets': 'combat', 'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
     'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Sprint Rec': 'mobility',
-    'Recoil/Shot': 'recoil', 'Recoil Dir': 'recoil', 'STD/Mov Sprd': 'recoil',
+    'Recoil/Shot': 'recoil', 'Recoil Variation': 'recoil', 'Recoil Dir': 'recoil',
+    'Spread Inc/Shot': 'spread', 'STD/Mov Sprd': 'spread',
     '3D/Map Spot': 'conceal',
   };
   const STAT_ROWS = [
     [
       { key: 'combat',   label: 'Combat',      color: '#c9a227' },
       { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
-      { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
+      { key: 'spread',   label: 'Spread',      color: '#4d94d0' },
     ],
     [
       { key: 'ammo',     label: 'Ammo',        color: '#78a840' },
-      { key: 'mobility', label: 'Mobility',    color: '#4d94d0' },
+      { key: 'mobility', label: 'Mobility',    color: '#4f9c98' },
+      { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
     ],
   ];
   for (const rowSecs of STAT_ROWS) {
@@ -791,7 +834,7 @@ function renderOverview() {
         const card = document.createElement('div');
         card.className = 'scard';
         if (f.tooltip) card.title = f.tooltip;
-        card.innerHTML = `<div class="slbl">${f.lbl}</div>` + cardValueHtml(f);
+        card.innerHTML = `<div class="slbl">${overviewLabels[f.lbl] ?? f.lbl}</div>` + cardValueHtml(f);
         sg.appendChild(card);
       });
       block.appendChild(sg);
@@ -811,14 +854,12 @@ function setChartMode(m) {
   const isTtk = m === 'ttk';
   if (!isTtk) { state.chart.showAds = false; document.getElementById('adsToggleBtn').classList.remove('on'); }
   document.getElementById('adsToggleBtn').style.display = isTtk ? '' : 'none';
-  document.getElementById('chartTitle').textContent = m === 'btk' ? 'BTK Chart' : m === 'ttk' ? (state.chart.showAds ? 'ADS+TTK Chart' : 'TTK Chart') : 'Damage Chart';
   document.getElementById('btkHsSelect').style.display = (m === 'btk' || m === 'ttk') ? '' : 'none';
   renderChart();
 }
 function toggleAdsToggle() {
   state.chart.showAds = !state.chart.showAds;
   document.getElementById('adsToggleBtn').classList.toggle('on', state.chart.showAds);
-  document.getElementById('chartTitle').textContent = state.chart.showAds ? 'ADS+TTK Chart' : 'TTK Chart';
   renderChart();
   renderBTK();
 }
@@ -863,7 +904,7 @@ function renderChart() {
   const legEl = document.getElementById('chartLegend');
   if (legEl) {
     let legHtml = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
-      .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${w.name}</span></div>`).join('');
+      .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${chartWeaponDisplayLabel(w)}</span></div>`).join('');
     legEl.innerHTML = legHtml;
   }
 
@@ -887,21 +928,21 @@ function renderChart() {
     });
     // Limb band: soft fill between the all-chest line and the all-limb worst case.
     const bandDs = (w, fillColor, slot) => ({
-      label: `${wLabel(w)} (limbs)`,
+      label: `${chartWeaponDisplayLabel(w)} (limbs)`,
       data: labels.map(r => getBTKWithHits(w, r, btkHS, limbMult(w))),
       borderColor: 'transparent', backgroundColor: fillColor,
       borderWidth: 0, pointRadius: 0, tension: 0, stepped: 'before',
       fill: '-1', isBand: true, _weaponSlot: slot, _weapon: w,
     });
     const datasets = [];
-    if (btkHS > 0 && w1) datasets.push(btkDs(w1, 'rgba(201,162,39,0.28)', `${wLabel(w1)} (0 HS)`, 1, 0, true));
-    if (btkHS > 0 && w2) datasets.push(btkDs(w2, 'rgba(77,148,208,0.28)', `${wLabel(w2)} (0 HS)`, 2, 0, true));
+    if (btkHS > 0 && w1) datasets.push(btkDs(w1, 'rgba(201,162,39,0.28)', `${chartWeaponDisplayLabel(w1)} (0 HS)`, 1, 0, true));
+    if (btkHS > 0 && w2) datasets.push(btkDs(w2, 'rgba(77,148,208,0.28)', `${chartWeaponDisplayLabel(w2)} (0 HS)`, 2, 0, true));
     if (w1) {
-      datasets.push(btkDs(w1, '#c9a227', wLabel(w1), 1));
+      datasets.push(btkDs(w1, '#c9a227', chartWeaponDisplayLabel(w1), 1));
       if (limbMult(w1) !== 1) datasets.push(bandDs(w1, 'rgba(201,162,39,0.16)', 1));
     }
     if (w2) {
-      datasets.push(btkDs(w2, '#4d94d0', wLabel(w2), 2));
+      datasets.push(btkDs(w2, '#4d94d0', chartWeaponDisplayLabel(w2), 2));
       if (limbMult(w2) !== 1) datasets.push(bandDs(w2, 'rgba(77,148,208,0.16)', 2));
     }
     dashOverlap(datasets);
@@ -918,8 +959,9 @@ function renderChart() {
             const w = i.dataset._weapon;
             const chest = i.raw;
             const limb = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
-            if (limb === chest) return `${w.name}: ${chest} BTK`;
-            return `${w.name}: ${chest}–${limb} BTK chest–limbs`;
+            const displayName = chartWeaponDisplayLabel(w);
+            if (limb === chest) return `${displayName}: ${chest} BTK`;
+            return `${displayName}: ${chest}–${limb} BTK chest–limbs`;
           },
         } } },
         scales: {
@@ -944,12 +986,12 @@ function renderChart() {
     });
     const datasets = [];
     if (w1) {
-      datasets.push(ttkDs(w1, '#c9a227', wLabel(w1)));
-      if (limbMult(w1) !== 1) datasets.push(ttkDs(w1, 'rgba(201,162,39,0.16)', `${wLabel(w1)} (limbs)`, limbMult(w1), true));
+      datasets.push(ttkDs(w1, '#c9a227', chartWeaponDisplayLabel(w1)));
+      if (limbMult(w1) !== 1) datasets.push(ttkDs(w1, 'rgba(201,162,39,0.16)', `${chartWeaponDisplayLabel(w1)} (limbs)`, limbMult(w1), true));
     }
     if (w2) {
-      datasets.push(ttkDs(w2, '#4d94d0', wLabel(w2)));
-      if (limbMult(w2) !== 1) datasets.push(ttkDs(w2, 'rgba(77,148,208,0.16)', `${wLabel(w2)} (limbs)`, limbMult(w2), true));
+      datasets.push(ttkDs(w2, '#4d94d0', chartWeaponDisplayLabel(w2)));
+      if (limbMult(w2) !== 1) datasets.push(ttkDs(w2, 'rgba(77,148,208,0.16)', `${chartWeaponDisplayLabel(w2)} (limbs)`, limbMult(w2), true));
     }
     dashOverlap(datasets);
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
@@ -967,10 +1009,12 @@ function renderChart() {
             const btk = getBTKWithHits(w, i.dataIndex, btkHS);
             const limbBtk = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
             if (limbBtk !== btk) {
-              return `${w.name}: ${fmtTTK(i.raw)}–${fmtTTK(ttkAt(w, i.dataIndex, limbMult(w)))} chest–limbs`;
+              const displayName = chartWeaponDisplayLabel(w);
+              return `${displayName}: ${fmtTTK(i.raw)}–${fmtTTK(ttkAt(w, i.dataIndex, limbMult(w)))} chest–limbs`;
             }
-            if (showAds && w._adsTimeMs) return `${w.name}: ${fmtTTK(i.raw)} incl. ${w._adsTimeMs}ms ADS`;
-            return `${w.name}: ${fmtTTK(i.raw)}`;
+            const displayName = chartWeaponDisplayLabel(w);
+            if (showAds && w._adsTimeMs) return `${displayName}: ${fmtTTK(i.raw)} incl. ${w._adsTimeMs}ms ADS`;
+            return `${displayName}: ${fmtTTK(i.raw)}`;
           },
         } } },
         scales: {
@@ -994,32 +1038,19 @@ function renderChart() {
   });
   // Limb band: soft fill between the chest damage curve and the limb damage curve.
   const limbDs = (w, fillColor) => ({
-    label: `${wLabel(w)} (limbs)`,
+    label: `${chartWeaponDisplayLabel(w)} (limbs)`,
     data: labels.map(r => +dmgAt(w, r, limbMult(w)).toFixed(2)),
     borderColor: 'transparent', backgroundColor: fillColor,
     borderWidth: 0, pointRadius: 0, tension: 0, stepped: steppedFor(w),
     fill: '-1', isBand: true, _weapon: w,
   });
-  // Preserve the existing chest-BTK reference lines underneath the new bands.
-  const primaryW = w1 || w2;
-  const thresholds = []; const seen = new Set();
-  for (let r = 0; r <= mr; r++) {
-    const btk = getBTKWithHits(primaryW, r);
-    if (!seen.has(btk)) { seen.add(btk); thresholds.push({ btk, dmg: 100 / btk }); }
-  }
-  const thresholdDatasets = thresholds.slice(0, 6).map(t => ({
-    label: `${t.btk}BTK`, data: labels.map(() => +t.dmg.toFixed(2)),
-    borderColor: 'rgba(150,150,150,0.18)', backgroundColor: 'transparent',
-    borderWidth: 1, borderDash: [4, 4], pointRadius: 0, tension: 0,
-    isBaseline: true,
-  }));
-  const datasets = [...thresholdDatasets];
+  const datasets = [];
   if (w1) {
-    datasets.push(buildDs(w1, '#c9a227', wLabel(w1)));
+    datasets.push(buildDs(w1, '#c9a227', chartWeaponDisplayLabel(w1)));
     if (limbMult(w1) !== 1) datasets.push(limbDs(w1, 'rgba(201,162,39,0.16)'));
   }
   if (w2) {
-    datasets.push(buildDs(w2, '#4d94d0', wLabel(w2)));
+    datasets.push(buildDs(w2, '#4d94d0', chartWeaponDisplayLabel(w2)));
     if (limbMult(w2) !== 1) datasets.push(limbDs(w2, 'rgba(77,148,208,0.16)'));
   }
   dashOverlap(datasets);
@@ -1030,14 +1061,14 @@ function renderChart() {
       responsive: true, maintainAspectRatio: false, animation: false,
       layout: { padding: { bottom: 0 } },
       plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false,
-        filter: i => !i.dataset.isBand && !i.dataset.isBaseline,
+        filter: i => !i.dataset.isBand,
         callbacks: {
           title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
           // Damage view: damage only. Bullet and time counts live in their own views.
           label: i => {
             const r = i.dataIndex; const w = i.dataset._weapon;
             const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
-            const line = `${w.name}: ${d.toFixed(1)} dmg`;
+            const line = `${chartWeaponDisplayLabel(w)}: ${d.toFixed(1)} dmg`;
             if (limbMult(w) === 1) return line;
             const dl = d * limbMult(w), dh = d * (w._hsMult ?? 1.34);
             return [line, `  limbs ${dl.toFixed(1)} · head ${Math.min(100, dh).toFixed(1)}`];
@@ -1112,8 +1143,8 @@ function parseSpreadBulletSpec(spec, shotCount) {
   return out.filter(v => v >= 1 && v <= shotCount);
 }
 /**
- * Bubble sample points. Shot 1 is always skipped: it fires from the resting
- * spread, so its bubble is a dot. Spread then climbs fast over the next few
+ * Named preset bubble samples include Shot 1 to show first-shot spread,
+ * especially useful for movement and hipfire. Spread then climbs fast over the next few
  * shots before flattening at the effective maximum, so the default samples
  * geometrically — dense early, sparse across the plateau — and adapts to
  * whatever burst length is set rather than assuming 20.
@@ -1127,10 +1158,13 @@ function spreadGrowthCurve(shotCount) {
 }
 function spreadPresetShots(preset, shotCount) {
   switch (preset) {
-    case 'all':    return Array.from({ length: shotCount - 1 }, (_, i) => i + 2);
-    case 'early':  return [2, 3, 4, 5, 6].filter(v => v <= shotCount);
+    case 'all':    return Array.from({ length: Math.max(0, shotCount) }, (_, i) => i + 1);
+    case 'early':  return [1, 2, 3, 4, 5, 6].filter(v => v <= shotCount);
     case 'custom': return parseSpreadBulletSpec(document.getElementById('rcSpreadShotsInput')?.value ?? '', shotCount);
-    default:       return spreadGrowthCurve(shotCount);
+    default: {
+      const growth = spreadGrowthCurve(shotCount);
+      return shotCount >= 1 ? [1, ...growth] : growth;
+    }
   }
 }
 function getSpreadBulletIdxs(N) {
@@ -1155,8 +1189,7 @@ function syncCompensationControls() {
   const level = state.recoil.compensationLevel;
   const range = document.getElementById('rcCompRange');
   const input = document.getElementById('rcCompInput');
-  document.getElementById('rcCompRow')?.classList.toggle('idle', level <= 0);
-  if (range) { range.value = level; paintRange(range, { idle: level <= 0 }); }
+  if (range) { range.value = level; paintRange(range); }
   if (input && document.activeElement !== input) input.value = level;
 }
 function syncCompensationLevel(source = 'input') {
@@ -1256,13 +1289,12 @@ function zoomSliderBounds() {
     : { min: 0, max: 100, step: 1, value: (RECOIL_SCALE_MAX - state.recoil.scaleH) / (RECOIL_SCALE_MAX - RECOIL_SCALE_MIN) * 100 };
 }
 /** Paint the filled portion of a range input so every slider reads the same. */
-function paintRange(el, { idle = false } = {}) {
+function paintRange(el) {
   if (!el) return;
   const min = +el.min || 0;
   const max = +el.max || 100;
   const pct = max === min ? 0 : ((+el.value - min) / (max - min)) * 100;
   el.style.setProperty('--fill', `${Math.max(0, Math.min(100, pct))}%`);
-  el.classList.toggle('idle', idle);
 }
 function setRecoilPlatform(platform) {
   state.recoil.platform = platform === 'console' ? 'console' : 'pc';
@@ -1788,11 +1820,49 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'HS Mult',             val: w => w._hsMult,                       unit: '×',   dec: 2, higherBetter: true, tooltip: 'Headshot damage multiplier after ammo effects. Higher increases headshot damage.' },
     { lbl: 'Collateral Mult',    val: w => w._collateralMult,               unit: '×',   dec: 2, higherBetter: true, tooltip: 'Damage multiplier applied to bullets that pass through a target or surface. Varies by ammo type and weapon class.' },
   ];
+  const estimatedFieldsForMetric = {
+    'ADS Time': ['adsTimeTierMod', 'adsTimeTierShift'],
+    'ADS Move': ['adsMoveSpeedTierShift'],
+    'Sprint-to-Fire Speed': ['sprintRecoveryTierShift', 'adsTimeTierShift'],
+    'Weapon Draw Speed': ['sprintRecoveryTierShift', 'adsTimeTierShift', 'drawTimeTier', 'drawTimeOffset'],
+    'Bullet Vel': ['velMult', 'velTierMod'],
+    'Mag Size': ['mag'],
+    'Tac Reload': ['tacRld', 'tacRldOverrideMs', 'reloadSpeedTier', 'reloadSpeedMult'],
+    'ADS Recoil/Shot': ['adsRecoilTierMod'],
+    'ADS Recoil Variation': ['adsRecoilVariationTierMod'],
+    'ADS Recoil Recovery': ['adsRecoilDecayMult'],
+    'ADS Spread/Shot': ['adsSpreadIncMult'],
+    'ADS Spread Recovery': ['adsSpreadDecayBoost'],
+    'Hip Spread Recovery': ['hipSpreadDecayBoost'],
+    'Mov Spread': ['movingAdsSpreadTierMod'],
+    'Hipfire Spread': ['hipSpreadTierMod'],
+    '3D Spot': ['worldSpot'],
+    'Minimap Spot': ['minimapSpot'],
+    'HS Mult': ['hsMult', 'headshotMult'],
+    'Collateral Mult': ['collateralMult'],
+  };
+  const selectedAttachmentRecords = (weapon, atts) => {
+    const wm = WEAPON_MAG[weapon.id];
+    return [
+      ATT_BY_ID.SIGHTS[atts.sight],
+      ATT_BY_ID.MUZZLES[atts.muzzle],
+      ATT_BY_ID.BARRELS[atts.barrel],
+      ATT_BY_ID.GRIPS[atts.grip],
+      ATT_BY_ID.LASERS[atts.laser] ?? ATT_BY_ID.GRIPS[atts.laser] ?? ATT_BY_ID.LIGHTS[atts.laser],
+      ATT_BY_ID.LIGHTS[atts.light],
+      ATT_BY_ID.AMMO[atts.ammo],
+      ATT_BY_ID.ERGOS[atts.ergo],
+      wm?.mags?.[atts.mag ?? wm.def],
+    ].filter(Boolean);
+  };
+  const hasEstimatedEffect = (fields, records) => (fields ?? []).some(field => records.some(att =>
+    Object.hasOwn(att.assumedFields ?? {}, field)));
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
   loadouts.filter(x => x.weapon).forEach(({ weapon, atts, colClass }) => {
     const base = defaultAppliedWeapon(weapon);
     const cur = applyAttachments(weapon, atts);
+    const selectedAttachments = selectedAttachmentRecords(weapon, atts);
     const chips = [];
     metrics.forEach(m => {
       const baseVal = m.val(base), curVal = m.val(cur);
@@ -1801,29 +1871,33 @@ function renderAttachmentStats(loadouts) {
       if (Math.abs(delta) < 0.0005) return;
       const better = (m.higherBetter && delta > 0) || (m.lowerBetter && delta < 0);
       const color = better ? 'var(--green)' : 'var(--red)';
+      const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments) ? '*' : ''}`;
       const tip = escAttr(m.tooltip ?? m.lbl);
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${m.lbl}</div><div class="att-chip-val" style="color:${color}">${signed(delta, m.unit, m.dec)}</div></div>`);
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${signed(delta, m.unit, m.dec)}</div></div>`);
     });
     const swayVal = cur._weaponSway ?? 0;
     if (swayVal !== 0) {
       const decreased = swayVal < 0;
       const tip = escAttr('Weapon sway from selected attachments. Decreased is better; increased is worse.');
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Weapon Sway</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${decreased ? 'Decreased' : 'Increased'}</div></div>`);
+      const label = `Weapon Sway${hasEstimatedEffect(['sway'], selectedAttachments) ? '*' : ''}`;
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${decreased ? 'Decreased' : 'Increased'}</div></div>`);
     }
     const vrVal = cur._visualRecoil ?? 0;
     if (vrVal !== 0) {
       const reduced = vrVal < 0;
       const tip = escAttr('Visual recoil from selected attachments. Reduced is better; increased is worse.');
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Visual Recoil</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Decreased' : 'Increased'}</div></div>`);
+      const label = `Visual Recoil${hasEstimatedEffect(['visualRecoil'], selectedAttachments) ? '*' : ''}`;
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Decreased' : 'Increased'}</div></div>`);
     }
     if (cur._laserVisible != null) {
       const visible = cur._laserVisible;
       const tip = escAttr('Whether the selected laser is visible to enemies.');
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">Laser Visibility</div><div class="att-chip-val" style="color:${visible ? 'var(--red)' : 'var(--green)'}">${visible ? 'Visible' : 'Not Visible'}</div></div>`);
+      const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments) ? '*' : ''}`;
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${visible ? 'var(--red)' : 'var(--green)'}">${visible ? 'Visible' : 'Not Visible'}</div></div>`);
     }
     if (!chips.length) return;
     rendered = true;
-    html += `<div class="att-block"><div class="att-name ${colClass}">${weapon.name}</div><div class="att-grid">${chips.join('')}</div></div>`;
+    html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div><div class="att-grid">${chips.join('')}</div></div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
   el.innerHTML = html;
@@ -1853,7 +1927,7 @@ function targetImpactStatsHtml(entries) {
       </tr>`).join('');
     html += `
       <section class="target-impact-card">
-        <div class="target-impact-weapon ${colors[index] ?? ''}">${wLabel(entry.weapon)}</div>
+        <div class="target-impact-weapon ${colors[index] ?? ''}">${weaponDisplayLabel(entry.weapon)}</div>
         <div class="target-impact-summary">
           <div><span>Acc</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
           <div><span>Miss</span><strong>${summary.misses}</strong></div>
@@ -1983,7 +2057,7 @@ function renderRecoil() {
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (axis.isTargetView) {
-      const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${wLabel(weapon)} ${hits}/${total}`).join(' · ');
+      const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${weaponDisplayLabel(weapon)} ${hits}/${total}`).join(' · ');
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss. Colour is the weapon, and the per-zone breakdown is in the stats table.' : '';
       noteEl.textContent = `${layerNote}${ringNote} Same simulation, projected onto a 180 cm soldier at ${state.recoil.distance} m — the pattern covers more of the target the further out it lands.${hitSummary ? ` Reference hits: ${hitSummary}.` : ''} Zoom matches optic magnification against an assumed ${ADS_1X_VFOV_DEG}° vertical field at 1×; grid marks ${fmtAxisMeters(niceDistanceGridStep(axis.xMax - axis.xMin))}.`;
     } else {
@@ -1994,7 +2068,7 @@ function renderRecoil() {
   const leg = document.getElementById('rcLegend');
   leg.innerHTML = '';
   [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w).forEach(([w, col]) => {
-    leg.innerHTML += `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${wLabel(w)}</span></div>`;
+    leg.innerHTML += `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${weaponDisplayLabel(w)}</span></div>`;
   });
 
   // The pop-out has room for both tables, so it stacks recoil/spread over the
@@ -2043,7 +2117,7 @@ function renderRecoil() {
           varStep(grp.name, grp.adsRecoilVariationTierMod ?? 0);
           varStep(ergo.name, ergo.adsRecoilVariationTierMod ?? 0);
         }
-        const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${selW.name}</div>` : '';
+        const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${weaponDisplayLabel(selW)}</div>` : '';
         const effVar = selectedRecoilVariationFor(w);
         return wn
           + `<div class="rc-tt-row rc-tt-eff"><span>Recoil Direction</span><span>${dirStr}</span></div>` + dirLines.join('')
@@ -2100,7 +2174,7 @@ function renderRecoil() {
         }
         const comp = +(prev * compPct).toFixed(2), effVal = +(prev - comp).toFixed(2);
         if (comp >= 0.005) lines.push(`<div class="rc-tt-row"><span>Recoil Compensation (${Math.round(compPct * 100)}%)</span><span class="rc-tt-neg">−${comp.toFixed(2)}°</span></div>`);
-        const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${selW.name}</div>` : '';
+        const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${weaponDisplayLabel(selW)}</div>` : '';
         const effLbl = aim === 'hip' ? 'Effective Hipfire Recoil' : 'Effective ADS Recoil';
         return wn + `<div class="rc-tt-row rc-tt-eff"><span>${effLbl}</span><span>${effVal.toFixed(2)}°</span></div><div class="rc-tt-row"><span>Base Weapon Recoil</span><span>${baseRecoil.toFixed(2)}°</span></div>` + lines.join('');
       };
@@ -2132,7 +2206,7 @@ function renderRecoil() {
           const d = +(eff - base).toFixed(3);
           if (Math.abs(d) >= 0.005) lines.push(`<div class="rc-tt-row"><span>${bar.name}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`);
         }
-        const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${selW.name}</div>` : '';
+        const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${weaponDisplayLabel(selW)}</div>` : '';
         return wn + `<div class="rc-tt-row rc-tt-eff"><span>Effective ${aimLbl} SIPS</span><span>${eff.toFixed(2)}°</span></div><div class="rc-tt-row"><span>Base ${aimLbl} SIPS</span><span>${base.toFixed(2)}°</span></div>` + lines.join('');
       };
       const tt1 = base1 != null ? ttHtml(state.slots[0].weapon, w1, state.slots[0].atts, base1, eff1, 'c1') : '';
@@ -2161,8 +2235,8 @@ function renderRecoil() {
         const aimLbl = aim === 'hip' ? 'Hipfire' : 'ADS';
         const stanceLbl = stance === 'move' ? 'Moving' : 'Standing';
         const spreadHdr = `Effective Spread (${aimLbl} | ${stanceLbl})`;
-        const thW1 = state.slots[0].weapon ? `<th style="color:var(--accent)">${state.slots[0].weapon.name}</th>` : '';
-        const thW2 = sim2 && state.slots[1].weapon ? `<th style="color:var(--accent2)">${state.slots[1].weapon.name}</th>` : '';
+        const thW1 = state.slots[0].weapon ? `<th style="color:var(--accent)">${weaponDisplayLabel(state.slots[0].weapon)}</th>` : '';
+        const thW2 = sim2 && state.slots[1].weapon ? `<th style="color:var(--accent2)">${weaponDisplayLabel(state.slots[1].weapon)}</th>` : '';
         const rows = SAMPLE.map(n => {
           const i = n - 1;
           const c1 = sim1 && i < sim1.length ? `<td>${sim1[i].toFixed(2)}°</td>` : '';
@@ -2322,7 +2396,7 @@ function bindEvents() {
   document.getElementById('rcPopoutBtn')?.addEventListener('click', () => {
     syncUrl();
     const url = `${location.pathname}?popout=1${location.hash}`;
-    window.open(url, 'bf6-spray-popout', 'popup=yes,width=1100,height=900');
+    window.open(url, 'bf6-spray-popout', 'popup=yes,width=1100,height=980');
   });
 
   // Redraw when the plot column changes width, so a resize or a panel collapse

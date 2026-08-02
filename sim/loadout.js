@@ -59,7 +59,7 @@ export function getAttPts(a) {
   return a.pts ?? 0;
 }
 
-function isAssumedAtt(a) {
+export function isAssumedAtt(a) {
   return !!(a?.assumed || (a?.assumedFields && Object.keys(a.assumedFields).length));
 }
 
@@ -92,9 +92,10 @@ export function attDisplayName(a) {
   return isAssumedAtt(a) ? `${a.name}*` : a.name;
 }
 
-export function hasSelectedAssumedAtt(atts, data) {
+export function hasSelectedAssumedAtt(atts, data, weapon = null) {
   if (!atts) return false;
   const lookups = getLookups(data);
+  const wm = data.WEAPON_MAG?.[weapon?.id];
   const selected = [
     lookups.SIGHTS[atts.sight ?? 'iron'],
     lookups.MUZZLES[atts.muzzle],
@@ -104,6 +105,7 @@ export function hasSelectedAssumedAtt(atts, data) {
     lookups.LIGHTS[atts.light],
     lookups.AMMO[atts.ammo],
     lookups.ERGOS[atts.ergo],
+    wm?.mags?.[atts.mag ?? wm.def],
   ];
   return selected.some(isAssumedAtt);
 }
@@ -136,7 +138,9 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   if (disabled) {
     sel.disabled = true;
   } else {
-    sel.onchange = () => onChange(sel.value);
+    sel.onchange = () => {
+      onChange(sel.value);
+    };
   }
   row.appendChild(span);
   row.appendChild(sel);
@@ -150,7 +154,6 @@ export function renderAttachmentSection({
   weapon,
   data,
   onChange = () => {},
-  showAssumedFootnote = true,
 }) {
   if (!container) return;
   container.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
@@ -222,7 +225,7 @@ export function renderAttachmentSection({
       appendSelectRow(container, {
         label,
         value: single?.id ?? '',
-        options: [{ id: single?.id ?? '', text: single?.name ?? noWeaponText }],
+        options: [{ id: single?.id ?? '', text: single ? attDisplayName(single) : noWeaponText, assumed: isAssumedAtt(single) }],
         onChange: () => {},
         disabled: true,
       });
@@ -235,7 +238,7 @@ export function renderAttachmentSection({
       options: visible.map(a => {
         const pts = getAttPts(a);
         const name = attDisplayName(a);
-        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect };
+        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
       }),
       onChange: value => handleChange(key, value),
     });
@@ -249,7 +252,8 @@ export function renderAttachmentSection({
       value: atts.ammo ?? wAmmo.def,
       options: ammoList.map(a => {
         const pts = wAmmo.ammo[a.id] ?? 0;
-        return { id: a.id, text: pts > 0 ? `${a.name} [${pts}]` : a.name, noEffect: a.noEffect };
+        const name = attDisplayName(a);
+        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
       }),
       onChange: value => handleChange('ammo', value),
     });
@@ -270,7 +274,8 @@ export function renderAttachmentSection({
       value: atts.mag ?? wm.def,
       options: Object.entries(wm.mags).map(([id, m]) => ({
         id,
-        text: m.pts > 0 ? `${m.name} [${m.pts}]` : m.name,
+        text: m.pts > 0 ? `${attDisplayName(m)} [${m.pts}]` : attDisplayName(m),
+        assumed: isAssumedAtt(m),
       })),
       onChange: value => handleChange('mag', value),
     });
@@ -293,8 +298,9 @@ export function renderAttachmentSection({
         value: atts.ergo ?? 'none',
         options: visibleErgos.map(e => ({
         id: e.id,
-        text: e.pts > 0 ? `${e.name} [${e.pts}]` : e.name,
+        text: e.pts > 0 ? `${attDisplayName(e)} [${e.pts}]` : attDisplayName(e),
         noEffect: e.noEffect,
+        assumed: isAssumedAtt(e),
       })),
       onChange: value => handleChange('ergo', value),
     });
@@ -313,8 +319,5 @@ export function renderAttachmentSection({
     && ['muzzle', 'barrel', 'grip', 'laser', 'light'].every(key => Array.isArray(wa?.[key]) && wa[key].length === 0);
   if (pendingPp19Coverage) {
     container.insertAdjacentHTML('beforeend', '<div class="att-note pp19-coverage-note">PP-19 attachment availability and effects: needs measurement.</div>');
-  }
-  if (showAssumedFootnote && hasSelectedAssumedAtt(atts, data)) {
-    container.insertAdjacentHTML('beforeend', '<div class="att-note assumed-note">* Assumed stats until datamined attachment values are available.</div>');
   }
 }

@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import { createShareCodec } from '../sim/share-state.js';
+import { attDisplayName, isAssumedAtt } from '../sim/loadout.js';
 
 const root = join(import.meta.dirname, '..');
 const read = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
@@ -13,6 +14,7 @@ const balance = read('data/balance_tables.json');
 const recoil = read('data/recoil_decay.json');
 const ui = readFileSync(join(root, 'ui/app.js'), 'utf8');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
+const loadout = readFileSync(join(root, 'sim/loadout.js'), 'utf8');
 const estimated = weapons.filter(weapon => weapon.estimated === true);
 const byId = id => weapons.find(weapon => weapon.id === id);
 
@@ -88,10 +90,17 @@ test('new attachment tokens are append-only and share state round-trips', () => 
   assert.deepEqual(codec.decodeAtts(weapon, encoded), atts);
 });
 
-test('estimated badge and per-slot footnote are wired for normal and compare selections', () => {
-  assert.match(ui, /w\.estimated \? `\$\{w\.name\} — ESTIMATED`/);
+test('estimated and assumed statuses use markers and one consolidated note', () => {
+  assert.match(ui, /weaponDisplayLabel\(w\)/);
+  assert.match(ui, /return w\?\.estimated \? `\$\{label\} Estimated weapon` : label/);
+  assert.match(ui, /ASSUMED_STATS_NOTE/);
+  assert.match(ui, /const ASSUMED_STATS_NOTE = '\* Estimated stats until full datamined values are available';/);
   assert.match(ui, /wbadge-estimated/);
-  assert.match(ui, /Similar-weapon estimate pending Sym full statistics/);
-  assert.match(ui, /state\.slots\[1\]/);
-  assert.match(html, /wbadge-estimated/);
+  assert.match(ui, /slot\.weapon\?\.estimated \|\| Loadout\.hasSelectedAssumedAtt\(slot\.atts, LOADOUT_DATA, slot\.weapon\)/);
+  assert.doesNotMatch(ui, /— ESTIMATED|estimate-note|Similar-weapon estimate pending Sym full statistics/);
+  assert.doesNotMatch(loadout, /showAssumedFootnote|Assumed stats until datamined attachment values are available/);
+  assert.match(loadout, /attDisplayName\(m\)/);
+  assert.equal(attDisplayName({ name: 'Flashlight', assumedFields: { hipSpreadDecayBoost: 'pending' } }), 'Flashlight*');
+  assert.equal(isAssumedAtt({ assumed: true }), true);
+  assert.equal((ui.match(/\* Estimated stats until full datamined values are available/g) ?? []).length, 1);
 });

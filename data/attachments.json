@@ -206,8 +206,10 @@
       "name": "Heavy",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.9,
-      "assumed": true,
+      "adsSpreadIncMult": 0.80,
+      "assumedFields": {
+        "adsSpreadIncMult": true
+      },
       "pts": 10,
       "velMult": 1,
       "velTierMod": 0
@@ -217,8 +219,10 @@
       "name": "Heavy Extended",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.9,
-      "assumed": true,
+      "adsSpreadIncMult": 0.80,
+      "assumedFields": {
+        "adsSpreadIncMult": true
+      },
       "pts": 10,
       "velMult": 1.25,
       "velTierMod": 1
@@ -238,7 +242,10 @@
       "name": "Cryogenic",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1,
+      "adsSpreadIncMult": 0.80,
+      "assumedFields": {
+        "adsSpreadIncMult": true
+      },
       "pts": 20,
       "velMult": 1,
       "velTierMod": 0

@@ -94,8 +94,8 @@ flowchart LR
    Chart.js load-failure fallback in `index.html`).
 2. Data files are fetched without cache-busting query strings — GitHub Pages serves
    proper `ETag`/`Last-Modified` headers, so browsers revalidate and pick up new data
-   automatically. The header's "Updated …" date is derived at runtime from the
-   `Last-Modified` header on `weapons.json` (set by Pages from the file's last commit).
+   automatically. The header's "Updated …" date is static site content in `index.html`;
+   it is not derived from response or repository metadata at runtime.
 3. Data is pushed into `sim/core.js` via `setSimContext()` and `sim/applyAttachments.js`
    via `setAttachmentContext()`.
 4. `sim/loadout.js` provides shared attachment defaults, point totals, assumed-stat
