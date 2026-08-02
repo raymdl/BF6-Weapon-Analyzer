@@ -162,10 +162,11 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .rc-plot{min-width:0;max-width:496px}
 .rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
 .rc-head .ptitle{margin-bottom:0}
-.rc-title{grid-column:1 / -1;white-space:nowrap}
+.rc-title{grid-column:1 / -1;white-space:nowrap;display:flex;align-items:center;flex-wrap:wrap}
 /* Shot count lives in the title it appears in, rather than a group of its own. */
 .rc-title-num{width:28px;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:1px 3px;font:inherit;font-size:.65rem;font-variant-numeric:tabular-nums;text-align:right;outline:none;vertical-align:baseline}
 .rc-title-num:focus{border-color:var(--accent)}
+.rc-shot-suffix{margin-left:4px}
 .rc-groups{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
 .rc-group{flex:1 1 210px;min-width:0;border:1px solid #2c3636;border-radius:6px;padding:7px 9px 9px;background:#121717}
 /* A group with only a couple of controls hugs them instead of stretching. */
@@ -503,7 +504,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
             <div class="ptitle rc-title">
               <button class="panel-toggle" data-collapse="recoil" data-collapse-label="the recoil and spread pattern" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
               Recoil &amp; Spread Pattern (Simulated -
-              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"> Shots)
+              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"><span class="rc-shot-suffix">Shots)</span>
               <button class="rc-popout-btn" id="rcPopoutBtn" type="button" title="Open the pattern in its own window, sized to fill it">Pop Out &#8599;</button></div>
             <div class="rc-groups">
               <div class="rc-group">
