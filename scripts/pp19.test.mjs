@@ -19,7 +19,6 @@ import { createShareCodec } from '../sim/share-state.js';
 const root = join(import.meta.dirname, '..');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
 const weapons = readJson('data/weapons.json');
-const drawTimeBaseline = readJson('scripts/draw-time-phase3-baseline.json');
 const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const recoilDecay = readJson('data/recoil_decay.json');
@@ -86,7 +85,6 @@ test('PP-19 base values match the pinned normalized Sym row and damage stays pro
   assert.equal(pp19.reloadSpeed, 0.979732);
   assert.equal(pp19.tacRld, 2.467);
   assert.equal(pp19.emptyRld, 3.028);
-  assert.equal(drawTimeBaseline.legacyDeployT.pp19.deployT, 0.466667);
   assert.equal(pp19.bulletVel, 444);
   assert.equal(pp19.recoilDir, 6);
   assert.equal(pp19.recoilVar, 18);

@@ -155,7 +155,7 @@ export function main(args = process.argv.slice(2)) {
   if (writeReport) {
     const output = reportPath
       ? (path.isAbsolute(reportPath) ? reportPath : path.resolve(DEFAULT_ROOT, reportPath))
-      : path.join(DEFAULT_ROOT, 'outputs/attachment-audit/field-slot-discovery-findings.json');
+      : path.join(DEFAULT_ROOT, 'migration/1.3.3.0/attachment-audit/field-slot-discovery-findings.json');
     fs.writeFileSync(output, `${JSON.stringify(report, null, 2)}\n`);
     console.log('wrote', output);
   }

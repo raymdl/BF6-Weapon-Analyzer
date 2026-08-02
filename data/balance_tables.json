@@ -183,6 +183,32 @@
     "db12": 1,
     "l115": 1.75
   },
+  "COLLATERAL_MULT_OVERRIDE": {
+    "pw7a2": {
+      "standard": 0.67,
+      "penetration": 0.83,
+      "frangible": 0.57,
+      "hollow_pt": 0.57,
+      "synthetic": 0.57
+    },
+    "usg90": {
+      "standard": 0.67,
+      "penetration": 0.83,
+      "frangible": 0.57,
+      "hollow_pt": 0.57
+    },
+    "es57": {
+      "standard": 0.67
+    },
+    "m45a1": {
+      "frangible": 0.57,
+      "hollow_pt": 0.57
+    },
+    "m121a2": {
+      "frangible": 0.75,
+      "hollow_pt": 0.75
+    }
+  },
   "HP_HS_HIGH": [
     "m39emr",
     "svk86",

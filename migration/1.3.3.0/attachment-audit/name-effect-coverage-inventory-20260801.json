@@ -1,0 +1,83 @@
+{
+  "kind": "name-effect-coverage-inventory",
+  "schemaVersion": 1,
+  "source": "scripts/audit-sweep.mjs",
+  "field": "reloadSpeedTier",
+  "nameImplicationPattern": "\\b(?:fast|speedloader)\\b",
+  "counts": {
+    "total": 4,
+    "byDirection": {
+      "unmapped-model-attachment": 4
+    }
+  },
+  "records": [
+    {
+      "weapon": "M1014",
+      "attachment": "Magazine/4 Shell Tube",
+      "direction": "unmapped-model-attachment",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": null,
+      "modelMagazineName": null,
+      "reloadSpeedTier": null,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Shotgun/M1014/35_M1014_Magazine_4_SHELL_TUBE.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": {
+        "kind": "screenshot-present-no-live-catalog-entry",
+        "reason": "The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map."
+      }
+    },
+    {
+      "weapon": "M1014",
+      "attachment": "Magazine/4Rnd Speedloader",
+      "direction": "unmapped-model-attachment",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": null,
+      "modelMagazineName": null,
+      "reloadSpeedTier": null,
+      "nameImpliesReloadSpeed": true,
+      "source": "Weapon Attachments/Shotgun/M1014/34_M1014_Magazine_4RND_SPEEDLOADER.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": {
+        "kind": "screenshot-present-no-live-catalog-entry",
+        "reason": "The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map."
+      }
+    },
+    {
+      "weapon": "M1014",
+      "attachment": "Magazine/6 Shell Tube",
+      "direction": "unmapped-model-attachment",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": null,
+      "modelMagazineName": null,
+      "reloadSpeedTier": null,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Shotgun/M1014/33_M1014_Magazine_6_SHELL_TUBE.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": {
+        "kind": "screenshot-present-no-live-catalog-entry",
+        "reason": "The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map."
+      }
+    },
+    {
+      "weapon": "SOR-556 MK2",
+      "attachment": "Magazine/45Rnd Magazine",
+      "direction": "unmapped-model-attachment",
+      "field": "reloadSpeedTier",
+      "modelMagazineId": null,
+      "modelMagazineName": null,
+      "reloadSpeedTier": null,
+      "nameImpliesReloadSpeed": false,
+      "source": "Weapon Attachments/Assault Rifle/SOR-556 MK2/57_SOR-556 MK2_Magazine_45Rnd_Magazine.png",
+      "screenshotException": null,
+      "structuralContext": null,
+      "coverageContext": {
+        "kind": "screenshot-present-no-live-catalog-entry",
+        "reason": "The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map."
+      }
+    }
+  ]
+}

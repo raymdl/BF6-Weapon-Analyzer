@@ -20,7 +20,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REVIEW = ROOT / "outputs" / "attachment-audit" / "attachment-screenshot-review.json"
+REVIEW = ROOT / "migration" / "1.3.3.0" / "attachment-audit" / "attachment-screenshot-review.json"
 
 # Ammo subtypes and shotgun ammo names map onto the rule vocabulary. Shotguns file every shell
 # under the Standard subtype, so they key on the attachment name instead.

@@ -2,7 +2,7 @@
   "kind": "barrel-velocity-phase7-evidence-manifest",
   "schemaVersion": 1,
   "source": {
-    "screenshotFixture": "outputs/attachment-audit/attachment-screenshot-review.json",
+    "screenshotFixture": "migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json",
     "displayRounding": "floor",
     "purpose": "The 25 changed corpus records where floor and round differ. Every observed panel value matches floor; the prior rounded display is retained only as the explained legacy difference in the equivalence comparison."
   },

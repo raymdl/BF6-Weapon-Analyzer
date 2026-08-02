@@ -403,7 +403,7 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
         && (!Number.isInteger(magazine.reloadSpeedTier)
           || magazine.reloadSpeedTier < 0
           || magazine.reloadSpeedTier > MAX_RELOAD_SPEED_TIER)) {
-      fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
+      fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
     }
     if (Object.hasOwn(magazine, 'tacRldOverrideMs')
         && (!Number.isInteger(magazine.tacRldOverrideMs) || magazine.tacRldOverrideMs <= 0)) {
@@ -418,7 +418,7 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
         if (!Number.isInteger(bug.expectedWhenFixed)
             || bug.expectedWhenFixed < 0
             || bug.expectedWhenFixed > MAX_RELOAD_SPEED_TIER) {
-          fail(`${weaponId}/${magazineId}: suspectedGameBug.expectedWhenFixed must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
+          fail(`${weaponId}/${magazineId}: suspectedGameBug.expectedWhenFixed must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
         }
         for (const field of ['expectedReloadSeconds', 'observedReloadSeconds']) {
           if (!Number.isFinite(bug[field]) || bug[field] <= 0) {
@@ -490,7 +490,7 @@ for (const [weaponId, weaponErgo] of Object.entries(attachments.WEAPON_ERGO ?? {
 function validateScreenshotReloads() {
   let review;
   try {
-    review = JSON.parse(readFileSync(resolve(root, 'outputs/attachment-audit/attachment-screenshot-review.json'), 'utf8'));
+    review = JSON.parse(readFileSync(resolve(root, 'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json'), 'utf8'));
   } catch (error) {
     fail(`reload screenshot fixture could not be read: ${error.message}`);
     return;
@@ -547,6 +547,20 @@ for (const weaponId of Object.keys(balance.BASE_HS_MULT ?? {})) {
 }
 for (const weaponId of balance.HP_HS_HIGH ?? []) {
   if (!weaponIds.has(weaponId)) fail(`HP_HS_HIGH references unknown weapon ${weaponId}`);
+}
+for (const [weaponId, ammoOverrides] of Object.entries(balance.COLLATERAL_MULT_OVERRIDE ?? {})) {
+  if (!weaponIds.has(weaponId)) {
+    fail(`COLLATERAL_MULT_OVERRIDE references unknown weapon ${weaponId}`);
+    continue;
+  }
+  const availableAmmo = ammo.WEAPON_AMMO?.[weaponId]?.ammo ?? {};
+  for (const ammoId of Object.keys(ammoOverrides ?? {})) {
+    if (!ammo.AMMO.some(a => a.id === ammoId)) {
+      fail(`COLLATERAL_MULT_OVERRIDE.${weaponId} references unknown ammo ${ammoId}`);
+    } else if (!(ammoId in availableAmmo)) {
+      fail(`COLLATERAL_MULT_OVERRIDE.${weaponId}.${ammoId} is not available to the weapon`);
+    }
+  }
 }
 
 for (const [weaponId, limbClass] of Object.entries(balance.LIMB_CLASS ?? {})) {

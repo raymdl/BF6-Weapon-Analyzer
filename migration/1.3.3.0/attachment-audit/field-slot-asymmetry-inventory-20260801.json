@@ -1,0 +1,1779 @@
+{
+  "kind": "field-slot-asymmetry-inventory",
+  "schemaVersion": 1,
+  "source": "migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json plus current resolver behavior",
+  "generatedBy": "migration/1.3.3.0/attachment-audit/build-20260801-field-slot-asymmetry-inventory.mjs",
+  "policy": "Corpus evidence is reported without rewriting data or screenshots; screenshots settle disagreements.",
+  "statColumns": [
+    "damage",
+    "longRangeDamage",
+    "muzzleVelocityMps",
+    "headshotMultiplier",
+    "collateralMultiplier",
+    "spotOnFire3dM",
+    "spotOnFire2dM",
+    "recoilAmountDegrees",
+    "recoilVariationDegrees",
+    "adsTimeMs",
+    "sprintRecoveryMs",
+    "adsMoveSpeedMultiplier",
+    "reloadTimeSeconds",
+    "rateOfFireRpm",
+    "magazineSize",
+    "hipfire",
+    "precision",
+    "control",
+    "mobility"
+  ],
+  "counts": {
+    "total": 58,
+    "byClassification": {
+      "confirmed-corpus-error": 1,
+      "known-deferral": 4,
+      "likely-corpus-error": 0,
+      "out-of-scope": 39,
+      "possible-dead-code": 1,
+      "unadjudicated": 13
+    }
+  },
+  "records": [
+    {
+      "field": "damage",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Ammo"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Ammo",
+        "attachment": "Slugs",
+        "observed": 75,
+        "modalBaseline": 80,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/41_18.5KS-K_Ammo_Slugs.png"
+      },
+      "evidenceCount": 4,
+      "resolverOutput": "dmg",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The resolver exposes dmg, but no selectable ammo type changes that damage curve."
+    },
+    {
+      "field": "longRangeDamage",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Ammo"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "DB-12",
+        "slot": "Ammo",
+        "attachment": "Slugs",
+        "observed": 30,
+        "modalBaseline": 40,
+        "sourcePath": "Weapon Attachments/Shotgun/DB-12/35_DB-12_Ammo_Slugs.png"
+      },
+      "evidenceCount": 3,
+      "resolverOutput": "dmg",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The resolver exposes dmg, but no selectable ammo type changes that damage curve."
+    },
+    {
+      "field": "muzzleVelocityMps",
+      "slot": "Grip",
+      "corpusObservedSlots": [
+        "Barrel",
+        "Grip",
+        "Ammo"
+      ],
+      "resolverModeledSlots": [
+        "Barrel"
+      ],
+      "example": {
+        "weapon": "DB-12",
+        "slot": "Grip",
+        "attachment": "Classic Vertical",
+        "observed": 500,
+        "modalBaseline": 400,
+        "sourcePath": "Weapon Attachments/Shotgun/DB-12/24_DB-12_Grip_Classic_Vertical.png"
+      },
+      "evidenceCount": 4,
+      "resolverOutput": "bulletVel",
+      "classification": "confirmed-corpus-error",
+      "source": null,
+      "note": "One Grip velocity row is screenshot-confirmed as a locked, unequipped baseline transcription error; four matching Grip rows remain unverified.",
+      "adjudication": {
+        "screenshotPath": "Weapon Attachments/Shotgun/18.5KS-K/23_18.5KS-K_Grip_Alloy_Vertical.png",
+        "panelValue": 400,
+        "recordedCorpusValue": 400,
+        "equipped": false,
+        "locked": true,
+        "note": "Claude read the panel directly on 2026-08-01; the panel reads MUZZLE VELOCITY 400M/S and shows the grip locked at 18.5KS-K Mastery 2, so it is not equipped and the panel is the weapon baseline."
+      },
+      "unverifiedExamples": [
+        {
+          "weapon": "DB-12",
+          "slot": "Grip",
+          "attachment": "Classic Vertical",
+          "observed": 500,
+          "modalBaseline": 400,
+          "sourcePath": "Weapon Attachments/Shotgun/DB-12/24_DB-12_Grip_Classic_Vertical.png",
+          "status": "unadjudicated"
+        },
+        {
+          "weapon": "M433",
+          "slot": "Grip",
+          "attachment": "6H64 Vertical",
+          "observed": 787,
+          "modalBaseline": 630,
+          "sourcePath": "Weapon Attachments/Assault Rifle/M433/31_M433_Grip_6H64_Vertical.png",
+          "status": "unadjudicated"
+        },
+        {
+          "weapon": "M433",
+          "slot": "Grip",
+          "attachment": "Adjustable Angled",
+          "observed": 504,
+          "modalBaseline": 630,
+          "sourcePath": "Weapon Attachments/Assault Rifle/M433/40_M433_Grip_Adjustable_Angled.png",
+          "status": "unadjudicated"
+        },
+        {
+          "weapon": "M87A1",
+          "slot": "Grip",
+          "attachment": "Ribbed Vertical",
+          "observed": 500,
+          "modalBaseline": 400,
+          "sourcePath": "Weapon Attachments/Shotgun/M87A1/21_M87A1_Grip_Ribbed_Vertical.png",
+          "status": "unadjudicated"
+        }
+      ]
+    },
+    {
+      "field": "muzzleVelocityMps",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Barrel",
+        "Grip",
+        "Ammo"
+      ],
+      "resolverModeledSlots": [
+        "Barrel"
+      ],
+      "example": {
+        "weapon": "CZ3A1",
+        "slot": "Ammo",
+        "attachment": "Subsonic",
+        "observed": 215,
+        "modalBaseline": 336,
+        "sourcePath": "Weapon Attachments/SMG/CZ3A1/48_CZ3A1_Ammo_Subsonic.png"
+      },
+      "evidenceCount": 27,
+      "resolverOutput": "bulletVel",
+      "classification": "known-deferral",
+      "source": "migration/1.3.3.0/attachment-audit/subsonic-velocity-treatments-20260731.json; data/ammo.json (no selectable subsonic ammo type)",
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "spotOnFire3dM",
+      "slot": "Barrel",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Laser",
+        "Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "M433",
+        "slot": "Barrel",
+        "attachment": "14.5\" Standard",
+        "observed": 0,
+        "modalBaseline": 54,
+        "sourcePath": "Weapon Attachments/Assault Rifle/M433/14_M433_Barrel_Short.png"
+      },
+      "evidenceCount": 2,
+      "resolverOutput": "_worldSpot",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The corpus shows a non-muzzle difference while the resolver models spot-on-fire range from the muzzle only."
+    },
+    {
+      "field": "spotOnFire3dM",
+      "slot": "Laser",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Laser",
+        "Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "EF88",
+        "slot": "Laser",
+        "attachment": "None",
+        "observed": 0,
+        "modalBaseline": 75,
+        "sourcePath": "Weapon Attachments/Assault Rifle/EF88/25_EF88_Laser_None.png"
+      },
+      "evidenceCount": 7,
+      "resolverOutput": "_worldSpot",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The corpus shows a non-muzzle difference while the resolver models spot-on-fire range from the muzzle only."
+    },
+    {
+      "field": "spotOnFire3dM",
+      "slot": "Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Laser",
+        "Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "EF88",
+        "slot": "Light",
+        "attachment": "None",
+        "observed": 0,
+        "modalBaseline": 75,
+        "sourcePath": "Weapon Attachments/Assault Rifle/EF88/21_EF88_Light_None.png"
+      },
+      "evidenceCount": 4,
+      "resolverOutput": "_worldSpot",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The corpus shows a non-muzzle difference while the resolver models spot-on-fire range from the muzzle only."
+    },
+    {
+      "field": "spotOnFire3dM",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Laser",
+        "Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "CZ3A1",
+        "slot": "Ammo",
+        "attachment": "Subsonic",
+        "observed": 27,
+        "modalBaseline": 54,
+        "sourcePath": "Weapon Attachments/SMG/CZ3A1/48_CZ3A1_Ammo_Subsonic.png"
+      },
+      "evidenceCount": 33,
+      "resolverOutput": "_worldSpot",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The corpus shows a non-muzzle difference while the resolver models spot-on-fire range from the muzzle only."
+    },
+    {
+      "field": "spotOnFire3dM",
+      "slot": "Magazine",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Laser",
+        "Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "EF88",
+        "slot": "Magazine",
+        "attachment": "42Rnd Fast Mag",
+        "observed": 0,
+        "modalBaseline": 75,
+        "sourcePath": "Weapon Attachments/Assault Rifle/EF88/52_EF88_Magazine_42Rnd_Fast_Mag.png"
+      },
+      "evidenceCount": 1,
+      "resolverOutput": "_worldSpot",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The corpus shows a non-muzzle difference while the resolver models spot-on-fire range from the muzzle only."
+    },
+    {
+      "field": "spotOnFire3dM",
+      "slot": "Ergonomics",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Laser",
+        "Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "EF88",
+        "slot": "Ergonomics",
+        "attachment": "None",
+        "observed": 0,
+        "modalBaseline": 75,
+        "sourcePath": "Weapon Attachments/Assault Rifle/EF88/59_EF88_Ergonomics_None.png"
+      },
+      "evidenceCount": 6,
+      "resolverOutput": "_worldSpot",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "The corpus shows a non-muzzle difference while the resolver models spot-on-fire range from the muzzle only."
+    },
+    {
+      "field": "spotOnFire2dM",
+      "slot": "Barrel",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Ammo"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "VSSM",
+        "slot": "Barrel",
+        "attachment": "200MM ASM",
+        "observed": 21,
+        "modalBaseline": 9,
+        "sourcePath": "Weapon Attachments/DMR/VSSM/02_VSSM_Barrel_Suppressed_200MM_ASM.png"
+      },
+      "evidenceCount": 1,
+      "resolverOutput": "_minimapSpot",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "spotOnFire2dM",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Ammo"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle"
+      ],
+      "example": {
+        "weapon": "CZ3A1",
+        "slot": "Ammo",
+        "attachment": "Subsonic",
+        "observed": 64,
+        "modalBaseline": 150,
+        "sourcePath": "Weapon Attachments/SMG/CZ3A1/48_CZ3A1_Ammo_Subsonic.png"
+      },
+      "evidenceCount": 27,
+      "resolverOutput": "_minimapSpot",
+      "classification": "known-deferral",
+      "source": "migration/1.3.3.0/attachment-audit/subsonic-velocity-treatments-20260731.json; data/ammo.json (no selectable subsonic ammo type)",
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "recoilVariationDegrees",
+      "slot": "Ergonomics",
+      "corpusObservedSlots": [
+        "Muzzle"
+      ],
+      "resolverModeledSlots": [
+        "Muzzle",
+        "Ergonomics"
+      ],
+      "example": {
+        "weapon": "KORD 6P67",
+        "slot": "Ergonomics",
+        "attachment": "Burst Training",
+        "selectedId": "burst_training",
+        "baseline": 28.9,
+        "resolved": 22.372,
+        "resolverOutput": "recoilVar"
+      },
+      "evidenceCount": 1,
+      "resolverOutput": "recoilVar",
+      "classification": "possible-dead-code",
+      "source": null,
+      "note": "The resolver changes this output for Ergonomics, but the corpus has no corresponding Ergonomics effect."
+    },
+    {
+      "field": "adsTimeMs",
+      "slot": "Muzzle",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Barrel",
+        "Grip",
+        "Grip/Laser/Light",
+        "Magazine"
+      ],
+      "example": {
+        "weapon": "M2010 ESR",
+        "slot": "Muzzle",
+        "attachment": "Flash Hider",
+        "observed": 367,
+        "modalBaseline": 300,
+        "sourcePath": "Weapon Attachments/Sniper Rifle/M2010 ESR/02_M2010 ESR_Muzzle_Flash_Hider.png"
+      },
+      "evidenceCount": 3,
+      "resolverOutput": "_adsTimeMs",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "adsTimeMs",
+      "slot": "Laser",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Barrel",
+        "Grip",
+        "Grip/Laser/Light",
+        "Magazine"
+      ],
+      "example": {
+        "weapon": "M433",
+        "slot": "Laser",
+        "attachment": "5 MW Red",
+        "observed": 200,
+        "modalBaseline": 250,
+        "sourcePath": "Weapon Attachments/Assault Rifle/M433/21_M433_Laser_5_MW_Red.png"
+      },
+      "evidenceCount": 3,
+      "resolverOutput": "_adsTimeMs",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "adsTimeMs",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Barrel",
+        "Grip",
+        "Grip/Laser/Light",
+        "Magazine"
+      ],
+      "example": {
+        "weapon": "M2010 ESR",
+        "slot": "Ammo",
+        "attachment": "FMJ",
+        "observed": 250,
+        "modalBaseline": 300,
+        "sourcePath": "Weapon Attachments/Sniper Rifle/M2010 ESR/36_M2010 ESR_Ammo_Standard.png"
+      },
+      "evidenceCount": 10,
+      "resolverOutput": "_adsTimeMs",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "adsTimeMs",
+      "slot": "Ergonomics",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Barrel",
+        "Grip",
+        "Grip/Laser/Light",
+        "Magazine"
+      ],
+      "example": {
+        "weapon": "SV-98",
+        "slot": "Ergonomics",
+        "attachment": "None",
+        "observed": 250,
+        "modalBaseline": 300,
+        "sourcePath": "Weapon Attachments/Sniper Rifle/SV-98/35_SV-98_Ergonomics_None.png"
+      },
+      "evidenceCount": 2,
+      "resolverOutput": "_adsTimeMs",
+      "classification": "unadjudicated",
+      "source": null,
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "sprintRecoveryMs",
+      "slot": "Barrel",
+      "corpusObservedSlots": [
+        "Barrel",
+        "Grip",
+        "Laser/Light",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Grip",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "example": {
+        "weapon": "AK4D",
+        "slot": "Barrel",
+        "attachment": "600MM DMR",
+        "observed": 200,
+        "modalBaseline": 167,
+        "sourcePath": "Weapon Attachments/Assault Rifle/AK4D/15_AK4D_Barrel_HEAVY_EXT.png"
+      },
+      "evidenceCount": 20,
+      "resolverOutput": "_sprintRecoveryMs",
+      "classification": "known-deferral",
+      "source": "../BARREL_VELOCITY_PHASE7_INVENTORY.md (§ Sprint-recovery anomalies (deferred))",
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "sprintRecoveryMs",
+      "slot": "Laser/Light",
+      "corpusObservedSlots": [
+        "Barrel",
+        "Grip",
+        "Laser/Light",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [
+        "Grip",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "example": {
+        "weapon": "SL9",
+        "slot": "Laser/Light",
+        "attachment": "None",
+        "observed": 167,
+        "modalBaseline": 100,
+        "sourcePath": "Weapon Attachments/SMG/SL9/18_SL9_Laser-Light_None.png"
+      },
+      "evidenceCount": 12,
+      "resolverOutput": "_sprintRecoveryMs",
+      "classification": "known-deferral",
+      "source": "migration/1.3.3.0/attachment-audit/sl9-detailed-recapture-20260731.json",
+      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Muzzle",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Muzzle",
+        "attachment": "Lightened Suppressor",
+        "observed": 37,
+        "modalBaseline": 42,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/06_18.5KS-K_Muzzle_Lightened_Suppressor.png"
+      },
+      "evidenceCount": 171,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Barrel",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "AK4D",
+        "slot": "Barrel",
+        "attachment": "409MM US",
+        "observed": 47,
+        "modalBaseline": 40,
+        "sourcePath": "Weapon Attachments/Assault Rifle/AK4D/16_AK4D_Barrel_Short.png"
+      },
+      "evidenceCount": 35,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Grip",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "LMR27",
+        "slot": "Grip",
+        "attachment": "Bipod",
+        "observed": 44,
+        "modalBaseline": 40,
+        "sourcePath": "Weapon Attachments/DMR/LMR27/32_LMR27_Grip_Bipod.png"
+      },
+      "evidenceCount": 8,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Laser",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Laser",
+        "attachment": "50 MW Green",
+        "observed": 56,
+        "modalBaseline": 42,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/17_18.5KS-K_Laser_50_MW_Green.png"
+      },
+      "evidenceCount": 235,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "AK-205",
+        "slot": "Light",
+        "attachment": "Flashlight",
+        "observed": 51,
+        "modalBaseline": 47,
+        "sourcePath": "Weapon Attachments/Carbine/AK-205/17_AK-205_Light_Flashlight.png"
+      },
+      "evidenceCount": 100,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Laser/Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "ES 5.7",
+        "slot": "Laser/Light",
+        "attachment": "Flashlight",
+        "observed": 50,
+        "modalBaseline": 54,
+        "sourcePath": "Weapon Attachments/Sidearm/ES 5.7/11_ES 5.7_Laser-Light_Flashlight.png"
+      },
+      "evidenceCount": 65,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Grip/Laser/Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "VZ. 61",
+        "slot": "Grip/Laser/Light",
+        "attachment": "Flashlight",
+        "observed": 51,
+        "modalBaseline": 47,
+        "sourcePath": "Weapon Attachments/Sidearm/VZ. 61/11_VZ. 61_Grip-Laser-Light_Flashlight.png"
+      },
+      "evidenceCount": 5,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Ammo",
+        "attachment": "Slugs",
+        "observed": 11,
+        "modalBaseline": 42,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/41_18.5KS-K_Ammo_Slugs.png"
+      },
+      "evidenceCount": 8,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Magazine",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "ES 5.7",
+        "slot": "Magazine",
+        "attachment": "20Rnd Magazine",
+        "observed": 11,
+        "modalBaseline": 54,
+        "sourcePath": "Weapon Attachments/Sidearm/ES 5.7/17_ES 5.7_Magazine_20Rnd_Magazine.png"
+      },
+      "evidenceCount": 6,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "hipfire",
+      "slot": "Ergonomics",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "ES 5.7",
+        "slot": "Ergonomics",
+        "attachment": "None",
+        "observed": 59,
+        "modalBaseline": 54,
+        "sourcePath": "Weapon Attachments/Sidearm/ES 5.7/19_ES 5.7_Ergonomics_None.png"
+      },
+      "evidenceCount": 14,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Muzzle",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "AK-205",
+        "slot": "Muzzle",
+        "attachment": "Double-Port Brake",
+        "observed": 89,
+        "modalBaseline": 88,
+        "sourcePath": "Weapon Attachments/Carbine/AK-205/04_AK-205_Muzzle_Double-Port_Brake.png"
+      },
+      "evidenceCount": 165,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Barrel",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "AK-205",
+        "slot": "Barrel",
+        "attachment": "314MM Prototype",
+        "observed": 90,
+        "modalBaseline": 88,
+        "sourcePath": "Weapon Attachments/Carbine/AK-205/12_AK-205_Barrel_314MM_PROTOTYPE.png"
+      },
+      "evidenceCount": 63,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Grip",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Grip",
+        "attachment": "Classic Vertical",
+        "observed": 16,
+        "modalBaseline": 14,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/26_18.5KS-K_Grip_Classic_Vertical.png"
+      },
+      "evidenceCount": 597,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Laser",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "BROD 3",
+        "slot": "Laser",
+        "attachment": "None",
+        "observed": 31,
+        "modalBaseline": 1,
+        "sourcePath": "Weapon Attachments/Carbine/BROD 3/21_BROD 3_Laser_None.png"
+      },
+      "evidenceCount": 29,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "M39 EMR",
+        "slot": "Light",
+        "attachment": "None",
+        "observed": 69,
+        "modalBaseline": 65,
+        "sourcePath": "Weapon Attachments/DMR/M39 EMR/16_M39 EMR_Light_None.png"
+      },
+      "evidenceCount": 12,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Laser/Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "ES 5.7",
+        "slot": "Laser/Light",
+        "attachment": "Taclight - Aimed",
+        "observed": 50,
+        "modalBaseline": 57,
+        "sourcePath": "Weapon Attachments/Sidearm/ES 5.7/10_ES 5.7_Laser-Light_Taclight_-_Aimed.png"
+      },
+      "evidenceCount": 6,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Grip/Laser/Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "VZ. 61",
+        "slot": "Grip/Laser/Light",
+        "attachment": "Canted Stubby",
+        "observed": 69,
+        "modalBaseline": 61,
+        "sourcePath": "Weapon Attachments/Sidearm/VZ. 61/07_VZ. 61_Grip-Laser-Light_Canted_Stubby.png"
+      },
+      "evidenceCount": 6,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "AK-205",
+        "slot": "Ammo",
+        "attachment": "Tungsten Core",
+        "observed": 86,
+        "modalBaseline": 88,
+        "sourcePath": "Weapon Attachments/Carbine/AK-205/49_AK-205_Ammo_Tungsten_Core.png"
+      },
+      "evidenceCount": 73,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Magazine",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "DB-12",
+        "slot": "Magazine",
+        "attachment": "7 Shell Dual Tubes",
+        "observed": 37,
+        "modalBaseline": 6,
+        "sourcePath": "Weapon Attachments/Shotgun/DB-12/31_DB-12_Magazine_7_SHELL_DUAL_TUBES.png"
+      },
+      "evidenceCount": 16,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "precision",
+      "slot": "Ergonomics",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "M16A4",
+        "slot": "Ergonomics",
+        "attachment": "A3 Receiver",
+        "observed": 24,
+        "modalBaseline": 27,
+        "sourcePath": "Weapon Attachments/Assault Rifle/M16A4/68_M16A4_Ergonomics_A3_RECEIVER.png"
+      },
+      "evidenceCount": 7,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Muzzle",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Muzzle",
+        "attachment": "Triple-Port Brake",
+        "observed": 16,
+        "modalBaseline": 15,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/04_18.5KS-K_Muzzle_TRIPLE-PORT_BRAKE.png"
+      },
+      "evidenceCount": 181,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Barrel",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "BROD 3",
+        "slot": "Barrel",
+        "attachment": "11\" Mid",
+        "observed": 45,
+        "modalBaseline": 35,
+        "sourcePath": "Weapon Attachments/Carbine/BROD 3/13_BROD 3_Barrel_Basic.png"
+      },
+      "evidenceCount": 5,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Grip",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Grip",
+        "attachment": "Folding Vertical",
+        "observed": 18,
+        "modalBaseline": 15,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/22_18.5KS-K_Grip_Folding_Vertical.png"
+      },
+      "evidenceCount": 669,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Laser",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "DB-12",
+        "slot": "Laser",
+        "attachment": "None",
+        "observed": 13,
+        "modalBaseline": 9,
+        "sourcePath": "Weapon Attachments/Shotgun/DB-12/10_DB-12_Laser_None.png"
+      },
+      "evidenceCount": 6,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "RPK-74M",
+        "slot": "Light",
+        "attachment": "None",
+        "observed": 60,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/LMG/RPK-74M/16_RPK-74M_Light_None.png"
+      },
+      "evidenceCount": 4,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Grip/Laser/Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "VZ. 61",
+        "slot": "Grip/Laser/Light",
+        "attachment": "Canted Stubby",
+        "observed": 61,
+        "modalBaseline": 57,
+        "sourcePath": "Weapon Attachments/Sidearm/VZ. 61/07_VZ. 61_Grip-Laser-Light_Canted_Stubby.png"
+      },
+      "evidenceCount": 4,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Ammo",
+        "attachment": "Slugs",
+        "observed": 14,
+        "modalBaseline": 15,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/41_18.5KS-K_Ammo_Slugs.png"
+      },
+      "evidenceCount": 85,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Magazine",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "DB-12",
+        "slot": "Magazine",
+        "attachment": "7 Shell Dual Tubes",
+        "observed": 13,
+        "modalBaseline": 9,
+        "sourcePath": "Weapon Attachments/Shotgun/DB-12/31_DB-12_Magazine_7_SHELL_DUAL_TUBES.png"
+      },
+      "evidenceCount": 6,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "control",
+      "slot": "Ergonomics",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "BROD 3",
+        "slot": "Ergonomics",
+        "attachment": "Match Trigger",
+        "observed": 43,
+        "modalBaseline": 35,
+        "sourcePath": "Weapon Attachments/Carbine/BROD 3/59_BROD 3_Ergonomics_Match_Trigger.png"
+      },
+      "evidenceCount": 4,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Muzzle",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Muzzle",
+        "attachment": "Compensator",
+        "observed": 58,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/03_18.5KS-K_Muzzle_Compensator.png"
+      },
+      "evidenceCount": 56,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Barrel",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Barrel",
+        "attachment": "430MM Factory",
+        "observed": 56,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/08_18.5KS-K_Barrel_Extended.png"
+      },
+      "evidenceCount": 129,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Grip",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Grip",
+        "attachment": "Slim Handstop",
+        "observed": 66,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/21_18.5KS-K_Grip_Slim_Handstop.png"
+      },
+      "evidenceCount": 560,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Laser",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Laser",
+        "attachment": "120 MW Blue",
+        "observed": 64,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/19_18.5KS-K_Laser_120_MW_Blue.png"
+      },
+      "evidenceCount": 157,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Light",
+        "attachment": "None",
+        "observed": 64,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/09_18.5KS-K_Light_None.png"
+      },
+      "evidenceCount": 17,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Laser/Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "GRT-BC",
+        "slot": "Laser/Light",
+        "attachment": "50 MW Violet",
+        "observed": 64,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Carbine/GRT-BC/21_GRT-BC_Laser-Light_50_MW_Violet.png"
+      },
+      "evidenceCount": 11,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Grip/Laser/Light",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "VZ. 61",
+        "slot": "Grip/Laser/Light",
+        "attachment": "Compact Handstop",
+        "observed": 73,
+        "modalBaseline": 69,
+        "sourcePath": "Weapon Attachments/Sidearm/VZ. 61/09_VZ. 61_Grip-Laser-Light_Compact_Handstop.png"
+      },
+      "evidenceCount": 2,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Ammo",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Ammo",
+        "attachment": "Buckshot",
+        "observed": 66,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/38_18.5KS-K_Ammo_Standard.png"
+      },
+      "evidenceCount": 54,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Magazine",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Magazine",
+        "attachment": "4Rnd Magazine",
+        "observed": 72,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/35_18.5KS-K_Magazine_4RND_MAGAZINE.png"
+      },
+      "evidenceCount": 209,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    },
+    {
+      "field": "mobility",
+      "slot": "Ergonomics",
+      "corpusObservedSlots": [
+        "Muzzle",
+        "Barrel",
+        "Grip",
+        "Laser",
+        "Light",
+        "Laser/Light",
+        "Grip/Laser/Light",
+        "Ammo",
+        "Magazine",
+        "Ergonomics"
+      ],
+      "resolverModeledSlots": [],
+      "example": {
+        "weapon": "18.5KS-K",
+        "slot": "Ergonomics",
+        "attachment": "None",
+        "observed": 70,
+        "modalBaseline": 50,
+        "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/42_18.5KS-K_Ergonomics_None.png"
+      },
+      "evidenceCount": 24,
+      "resolverOutput": null,
+      "classification": "out-of-scope",
+      "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
+      "note": "The site does not render this raw corpus column as a selectable runtime stat; no live resolver field is expected."
+    }
+  ]
+}

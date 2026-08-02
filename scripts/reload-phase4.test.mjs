@@ -64,8 +64,8 @@ test('Phase 6 validator rejects malformed or reintroduced legacy reload shapes i
       delete register.screenshotExceptions.pp19['20_fast'];
       register.counts.screenshotExceptionEntries -= 1;
     }, 'pp19/20_fast: suspectedGameBug observedReloadSeconds is not in the screenshot exception register');
-    assertRejects(data => { data.WEAPON_MAG.ak4d.mags['15_rnd'].reloadSpeedTier = 3; }, 'reloadSpeedTier must be a non-negative integer in [0, 2] per DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)');
-    assertRejects(data => { data.WEAPON_MAG.pp19.mags['20_fast'].suspectedGameBug.expectedWhenFixed = 3; }, 'suspectedGameBug.expectedWhenFixed must be a non-negative integer in [0, 2] per DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)');
+    assertRejects(data => { data.WEAPON_MAG.ak4d.mags['15_rnd'].reloadSpeedTier = 3; }, 'reloadSpeedTier must be a non-negative integer in [0, 2] per migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)');
+    assertRejects(data => { data.WEAPON_MAG.pp19.mags['20_fast'].suspectedGameBug.expectedWhenFixed = 3; }, 'suspectedGameBug.expectedWhenFixed must be a non-negative integer in [0, 2] per migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)');
     assertRejects(data => { data.WEAPON_MAG.pp19.mags['20_fast'].reloadSpeedTier = 2; }, 'suspectedGameBug reload drift is unexplained; derived reload 1.932s does not match observedReloadSeconds 2.467s');
 
     writeFileSync(registerPath, '{');

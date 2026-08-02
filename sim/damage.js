@@ -25,6 +25,8 @@ export function resolveHitMultipliers(weaponId, ammoType, tables = {}) {
   if (ammoType?.hsMult === null || ammoType?.hsMult === undefined) {
     headshotMultiplier = baseHeadshotMultiplier;
   } else if (ammoType.hsMult === 'hp') {
+    // Snipers would fall through to 1.5 here, but none equips Hollow Point:
+    // their base headshot multiplier already guarantees a one-shot kill.
     headshotMultiplier = hpHsHigh.has(weaponId) ? 1.75 : (autoHs?.hp ?? 1.5);
   } else {
     headshotMultiplier = autoHs?.[ammoType.id] ?? ammoType.hsMult;

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
@@ -14,9 +14,7 @@ import {
 } from './grip-pod-correction-deltas.mjs';
 
 const root = join(import.meta.dirname, '..');
-const fixturePath = join(root, 'scripts/attachment-equivalence-phase5.json');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
-const writeJson = (file, value) => writeFileSync(join(root, file), `${JSON.stringify(value, null, 2)}\n`);
 
 const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
@@ -865,9 +863,4 @@ export function buildPhase5Fixture() {
     },
     namedCases,
   };
-}
-
-if (process.argv.includes('--write-fixture')) {
-  writeJson('scripts/attachment-equivalence-phase5.json', buildPhase5Fixture());
-  console.log('Phase 5 equivalence fixture written.');
 }

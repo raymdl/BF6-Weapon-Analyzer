@@ -7,10 +7,10 @@
     "screenshotToleranceSeconds": 0.005
   },
   "source": {
-    "screenshotFixture": "outputs/attachment-audit/attachment-screenshot-review.json",
+    "screenshotFixture": "migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json",
     "exceptionRegister": "data/reload-exceptions.json",
-    "preMigrationBaselineDigest": "f6a4d7681f1e4157d3022f81737f61f29e6ff9837e377c8500cde6c83384d48e",
-    "composedLoadoutReceipt": "outputs/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs"
+    "preMigrationBaselineDigest": "0db51324035c9284534dd952abb4588bf9a1c0df2051abc3eecc92aee47f197b",
+    "composedLoadoutReceipt": "migration/1.3.3.0/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs"
   },
   "magCatchEvidence": {
     "corpusRows": 27,
@@ -27,7 +27,7 @@
     "overrideMs": 2667,
     "reloadSpeedMult": 1.063,
     "formula": "2667 / 1.063 = 2508.94 ms, displayed as 2.509 s",
-    "receipt": "outputs/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs",
+    "receipt": "migration/1.3.3.0/attachment-audit/apply-20260801-pp19-override-mag-catch-recapture.mjs",
     "note": "The operator captured the PP-19 53Rnd drum and Improved Mag Catch together. This is composed-loadout evidence, not a single-attachment panel; it resolves the former unresolved-override-stack branch."
   },
   "counts": {
@@ -81,7 +81,7 @@
       "screenshotName": "5Rnd Magazine",
       "measuredClass": "tier0 corpus OCR base-read",
       "resolution": "operator in-game recapture dated 2026-07-31 reads tier 1 with a green downward reload-change arrow",
-      "source": "outputs/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs"
+      "source": "migration/1.3.3.0/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs"
     },
     {
       "key": "m357trait/8_fast",
@@ -89,7 +89,7 @@
       "screenshotName": "8Rnd Moon Clip",
       "measuredClass": "tier0 corpus OCR base-read",
       "resolution": "operator in-game recapture dated 2026-07-31 reads tier 1 with a green downward reload-change arrow",
-      "source": "outputs/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs"
+      "source": "migration/1.3.3.0/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs"
     }
   ],
   "screenshotNameEffectMismatches": [
@@ -314,7 +314,7 @@
       "legacyMs": 2352,
       "derivedMs": 2081,
       "reason": "The tier-1 magazine is not named Fast, so the legacy name-based Mag Catch branch applies reg instead of stacking the explicit tier.",
-      "evidence": "outputs/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs (panel: DMR/SVDM/47_SVDM_Magazine_5Rnd_Magazine.png); the operator capture confirms the tier-1 reload change."
+      "evidence": "migration/1.3.3.0/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs (panel: DMR/SVDM/47_SVDM_Magazine_5Rnd_Magazine.png); the operator capture confirms the tier-1 reload change."
     },
     {
       "key": "tr7/15_rnd/mag_catch",
@@ -508,7 +508,7 @@
       "field": "tacRld",
       "beforeMs": 2741,
       "afterMs": 2714,
-      "evidence": "outputs/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs (panel: Sidearm/M357 Trait/11_M357 Trait_Magazine_8RND_MOON_CLIP.png)",
+      "evidence": "migration/1.3.3.0/attachment-audit/apply-20260731-svdm-m357-operator-recapture.mjs (panel: Sidearm/M357 Trait/11_M357 Trait_Magazine_8RND_MOON_CLIP.png)",
       "justification": "Operator in-game recapture dated 2026-07-31 reads 2.714 s with a green downward reload-change arrow, superseding the corpus OCR base-read of 3.067 s; the legacy 2741 ms value was a 2714 digit transposition and is corrected to 2714 ms."
     }
   ],

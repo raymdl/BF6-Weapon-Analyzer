@@ -147,6 +147,16 @@
       "worldSpot": 0,
       "minimapSpot": 21,
       "pts": 30
+    },
+    {
+      "id": "compensator",
+      "name": "Compensator",
+      "adsRecoilTierMod": 0,
+      "adsRecoilDecayMult": 1.1,
+      "assumed": true,
+      "worldSpot": 54,
+      "minimapSpot": 150,
+      "pts": 10
     }
   ],
   "BARRELS": [
@@ -823,7 +833,8 @@
         "dp_brake",
         "long_supp",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -877,7 +888,8 @@
         "comp_brake",
         "long_supp",
         "light_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -934,7 +946,8 @@
         "cqb_supp",
         "comp_brake",
         "long_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -989,7 +1002,8 @@
         "std_supp",
         "light_supp",
         "cqb_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1044,7 +1058,8 @@
         "cqb_supp",
         "long_supp",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1146,7 +1161,8 @@
         "cqb_supp",
         "long_supp",
         "light_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1199,7 +1215,8 @@
         "cqb_supp",
         "long_supp",
         "light_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1256,7 +1273,8 @@
         "dp_brake",
         "long_supp",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1310,7 +1328,8 @@
         "cqb_supp",
         "long_supp",
         "light_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1367,7 +1386,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1422,7 +1442,8 @@
         "comp_brake",
         "std_supp",
         "long_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1525,7 +1546,8 @@
         "std_supp",
         "long_supp",
         "light_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1579,7 +1601,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1672,7 +1695,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1720,7 +1744,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1770,7 +1795,8 @@
         "cqb_supp",
         "long_supp",
         "light_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1817,7 +1843,8 @@
         "cqb_supp",
         "long_supp",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1908,7 +1935,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1957,7 +1985,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -1991,7 +2020,8 @@
         "dp_brake",
         "long_supp",
         "light_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -2037,7 +2067,8 @@
         "cqb_supp",
         "long_supp",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -2083,7 +2114,8 @@
         "long_supp",
         "dp_brake",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -2129,7 +2161,8 @@
         "cqb_supp",
         "long_supp",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -2220,7 +2253,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "heavy",
@@ -2272,7 +2306,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -2328,7 +2363,8 @@
         "sp_brake",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "heavy",
@@ -2435,7 +2471,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "heavy",
@@ -2486,7 +2523,8 @@
         "comp_brake",
         "std_supp",
         "long_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "heavy",
@@ -2538,7 +2576,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "heavy",
@@ -2641,7 +2680,8 @@
         "cqb_supp",
         "comp_brake",
         "long_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "short",
@@ -2747,7 +2787,8 @@
         "cqb_supp",
         "dp_brake",
         "long_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -2801,7 +2842,8 @@
         "long_supp",
         "dp_brake",
         "light_supp",
-        "comp_brake"
+        "comp_brake",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -2960,7 +3002,8 @@
         "dp_brake",
         "long_supp",
         "comp_brake",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -3128,7 +3171,8 @@
         "std_supp",
         "long_supp",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -3203,7 +3247,8 @@
     "m87a1": {
       "muzzle": [
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic"
@@ -3241,7 +3286,8 @@
     "m1014": {
       "muzzle": [
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic"
@@ -3281,7 +3327,8 @@
         "flash_hider",
         "dp_brake",
         "cqb_supp",
-        "light_supp"
+        "light_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -3355,7 +3402,8 @@
         "flash_hider",
         "sp_brake",
         "std_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -3385,7 +3433,8 @@
         "flash_hider",
         "sp_brake",
         "std_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -3415,7 +3464,8 @@
         "flash_hider",
         "sp_brake",
         "std_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -3445,7 +3495,8 @@
         "flash_hider",
         "sp_brake",
         "std_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic",
@@ -3515,7 +3566,8 @@
       "muzzle": [
         "sp_brake",
         "std_supp",
-        "cqb_supp"
+        "cqb_supp",
+        "compensator"
       ],
       "barrel": [
         "basic"
@@ -5072,7 +5124,7 @@
           "pts": 25,
           "mag": 8,
           "adsTimeTierShift": 0,
-          "adsMoveSpeedTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 0
         }
@@ -5686,16 +5738,16 @@
     "psr": {
       "defAds": 6,
       "defSpr": 5,
-      "defAms": 6,
+      "defAms": 7,
       "def": "10_rnd",
       "mags": {
         "7_rnd": {
           "name": "7 Rnd",
           "pts": 5,
           "mag": 7,
-          "adsTimeTierShift": 0,
+          "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
-          "adsMoveSpeedTierShift": 0,
+          "adsMoveSpeedTierShift": -1,
           "reloadSpeedTier": 0
         },
         "10_rnd": {
@@ -6231,7 +6283,7 @@
     "sv98": {
       "defAds": 5,
       "defSpr": 4,
-      "defAms": 4,
+      "defAms": 6,
       "def": "10_rnd",
       "mags": {
         "10_rnd": {
@@ -6483,6 +6535,15 @@
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
           "reloadSpeedTier": 1
+        },
+        "45_rnd": {
+          "name": "45 Rnd",
+          "pts": 35,
+          "mag": 45,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
         },
         "45_fast": {
           "name": "45 Fast",

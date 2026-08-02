@@ -43,7 +43,7 @@ import {
   deriveFieldSlotAsymmetryInventory,
   fieldSlotAsymmetryDrift,
   loadFieldSlotAsymmetryInventory,
-} from '../outputs/attachment-audit/build-20260801-field-slot-asymmetry-inventory.mjs';
+} from '../migration/1.3.3.0/attachment-audit/build-20260801-field-slot-asymmetry-inventory.mjs';
 
 const inputs = loadPhase0Inputs(DEFAULT_ROOT);
 const auditRows = inputs.auditSummary.stats;
@@ -112,7 +112,7 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   const nameEffectCoverageWarnings = report.findings.filter(finding => (
     finding.severity === 'warn' && finding.check === 'name-effect-coverage'
   ));
-  assert.equal(modelWarnings.length, 74);
+  assert.equal(modelWarnings.length, 68);
   assert.equal(nameEffectWarnings.length, 16);
   assert.equal(nameEffectCoverageWarnings.length, 1);
   assert.deepEqual(new Set(modelWarnings.map(modelTierMismatchKey)), inventoryKeys);
@@ -139,10 +139,10 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   assert.equal(isAllowedNameEffectWarning({ ...nameEffectWarnings[0], check: 'other-warning' }, nameEffectInventoryKeys), false);
   assert.equal(isAllowedNameEffectCoverageWarning(nameEffectCoverageWarnings[0], nameEffectCoverageInventoryKeys), true);
   assert.equal(isAllowedNameEffectCoverageWarning({ ...nameEffectCoverageWarnings[0], check: 'other-warning' }, nameEffectCoverageInventoryKeys), false);
-  assert.deepEqual(report.severityCounts, { error: 0, warn: 91, info: 28 });
+  assert.deepEqual(report.severityCounts, { error: 0, warn: 85, info: 28 });
   assert.deepEqual(report.counts, {
     'fire-mode-ergo': 1,
-    'model-tier-mismatch': 74,
+    'model-tier-mismatch': 68,
     'name-effect-consistency': 16,
     'name-effect-coverage': 1,
     'subsonic-treatment': 27,
@@ -183,8 +183,8 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   assert.equal(m87a1.structuralContext.kind, 'tube-fed-scalar-null');
   assert.equal(m44.structuralContext.kind, 'scalar-revolver');
   assert.equal(m357Speedloader.structuralContext.kind, 'scalar-revolver');
-  assert.match(m1014.structuralContext.contract, /DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
-  assert.match(m44.structuralContext.contract, /DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
+  assert.match(m1014.structuralContext.contract, /migration\/1\.3\.3\.0\/DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
+  assert.match(m44.structuralContext.contract, /migration\/1\.3\.3\.0\/DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
   assert.equal(report.findings.filter(finding => finding.check === 'recoil-ladder').length, 0);
   assert.equal(report.findings.filter(finding => finding.check === 'recoilvar-ladder').length, 0);
   assert.deepEqual(report.classes.shotgun, {
@@ -200,8 +200,8 @@ function copyNameEffectInventoryFixture() {
   const files = new Set([
     ...Object.values(PHASE0_FIXTURES),
     'data/attachments.json',
-    'outputs/attachment-audit/name-effect-consistency-inventory-20260801.json',
-    'outputs/attachment-audit/name-effect-coverage-inventory-20260801.json',
+    'migration/1.3.3.0/attachment-audit/name-effect-consistency-inventory-20260801.json',
+    'migration/1.3.3.0/attachment-audit/name-effect-coverage-inventory-20260801.json',
   ]);
   for (const relativePath of files) {
     const destination = path.join(root, relativePath);
@@ -462,8 +462,8 @@ test('attachment catalogs cover every weapon with explicit ergonomics-free exemp
 });
 
 test('default CLI checks are read-only, work outside the repository cwd, and fail on missing fixtures', () => {
-  const sweepOutput = path.join(DEFAULT_ROOT, 'outputs/attachment-audit/sweep-findings.json');
-  const fieldOutput = path.join(DEFAULT_ROOT, 'outputs/attachment-audit/field-slot-discovery-findings.json');
+  const sweepOutput = path.join(DEFAULT_ROOT, 'migration/1.3.3.0/attachment-audit/sweep-findings.json');
+  const fieldOutput = path.join(DEFAULT_ROOT, 'migration/1.3.3.0/attachment-audit/field-slot-discovery-findings.json');
   const before = new Map([sweepOutput, fieldOutput].map(file => [file, fs.existsSync(file) ? fs.statSync(file).mtimeNs : null]));
   const tempCwd = mkdtempSync(path.join(tmpdir(), 'bf6-phase0-cwd-'));
   const missingRoot = mkdtempSync(path.join(tmpdir(), 'bf6-phase0-missing-'));
@@ -491,7 +491,7 @@ function copyFieldSlotInventoryFixture() {
     ...Object.values(PHASE0_FIXTURES),
     'data/attachments.json',
     'data/ammo.json',
-    'outputs/attachment-audit/field-slot-asymmetry-inventory-20260801.json',
+    'migration/1.3.3.0/attachment-audit/field-slot-asymmetry-inventory-20260801.json',
   ]);
   for (const relativePath of files) {
     const destination = path.join(root, relativePath);

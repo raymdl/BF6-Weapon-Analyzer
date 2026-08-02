@@ -109,7 +109,7 @@ test('Phase 7 derived and legacy barrel velocity are bit-identical for every sel
 });
 
 test('Phase 7 audit corpus barrel velocity is 94/94 on the signed normal ladder with floor display', () => {
-  const audit = readJson('outputs/attachment-audit/attachment-screenshot-review.json');
+  const audit = readJson('migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json');
   const allRows = audit.records.filter(row => row.stats);
   const barrelRows = allRows.filter(row => row.attachmentType === 'Barrel');
   const byWeapon = new Map();
@@ -211,7 +211,7 @@ test('Phase 7 velocity flooring has a guarded floating-point edge', () => {
 test('Phase 7 extends the Phase 5 witness comparison with an explicit legacy velocity path', () => {
   const enumeration = buildEquivalenceEnumeration();
   const result = compareBarrelVelocityLegacyAndDerived(enumeration);
-  assert.equal(result.comparedCases, 88694);
+  assert.equal(result.comparedCases, 90682);
   assert.equal(result.mismatchCases, 0, JSON.stringify(result.mismatches));
   assert.equal(result.historicalDisplayDifferencePairs, 20);
   assert.equal(result.unexplainedHistoricalDisplayDifferencePairs, 0, JSON.stringify(result.unexplainedHistoricalDisplayDifferences));

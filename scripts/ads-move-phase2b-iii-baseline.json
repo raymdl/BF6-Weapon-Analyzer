@@ -2,7 +2,7 @@
   "kind": "ads-move-phase2b-iii-post-migration",
   "scope": {
     "weaponCount": 59,
-    "magazineEntryCount": 265,
+    "magazineEntryCount": 266,
     "caseDimensions": "weapon × magazine × selectable grip × selectable ergonomic × available ammo",
     "gripSelection": "none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot",
     "ergoSelection": "none plus WEAPON_ERGO[weapon].avail",
@@ -12,12 +12,12 @@
   },
   "counts": {
     "weapons": 59,
-    "magazineEntries": 265,
+    "magazineEntries": 266,
     "gripChoices": 815,
     "ergoChoices": 172,
     "ammoChoices": 268,
-    "cases": 70634,
-    "primaryCases": 70400,
+    "cases": 71234,
+    "primaryCases": 71000,
     "sidearmCases": 234
   },
   "defSprDistribution": {
@@ -1865,7 +1865,7 @@
         }
       }
     },
-    "changedCaseCount": 15680,
+    "changedCaseCount": 15800,
     "changedWeaponCount": 44,
     "changedWeaponIds": [
       "ak205",
@@ -1913,7 +1913,7 @@
       "vcr2",
       "vz61"
     ],
-    "changedCaseKeysDigest": "ae1924405a389558d03084291e7f3038302af0c46b2a6f0f0d6285b16603d19a",
+    "changedCaseKeysDigest": "045d160c7f89dd0d2392e96a86e203da04f7107563927651e52acd2b7326c0ae",
     "changedByWeapon": {
       "ak205": 960,
       "ak4d": 300,
@@ -1953,7 +1953,7 @@
       "sgx": 128,
       "sl9": 60,
       "sor300sc": 700,
-      "sor556": 960,
+      "sor556": 1080,
       "svdm": 240,
       "tr7": 420,
       "umg40": 300,

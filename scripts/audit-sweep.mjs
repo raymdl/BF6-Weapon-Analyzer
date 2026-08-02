@@ -47,9 +47,9 @@ function addFinding(findings, severity, check, weapon, attachment, detail, metad
   findings.push({ severity, check, weapon, attachment, detail, ...metadata });
 }
 
-const MODEL_TIER_INVENTORY = 'outputs/attachment-audit/model-tier-mismatch-inventory-20260801.json';
-const NAME_EFFECT_INVENTORY = 'outputs/attachment-audit/name-effect-consistency-inventory-20260801.json';
-const NAME_EFFECT_COVERAGE_INVENTORY = 'outputs/attachment-audit/name-effect-coverage-inventory-20260801.json';
+const MODEL_TIER_INVENTORY = 'migration/1.3.3.0/attachment-audit/model-tier-mismatch-inventory-20260801.json';
+const NAME_EFFECT_INVENTORY = 'migration/1.3.3.0/attachment-audit/name-effect-consistency-inventory-20260801.json';
+const NAME_EFFECT_COVERAGE_INVENTORY = 'migration/1.3.3.0/attachment-audit/name-effect-coverage-inventory-20260801.json';
 
 function mismatchField(detail) {
   const match = /^(\w+) predicted -?\d+(?:\.\d+)?, observed -?\d+(?:\.\d+)?$/.exec(detail);
@@ -403,13 +403,13 @@ function runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadEx
         ? (TUBE_FED_SHOTGUNS.has(weaponName)
           ? {
             kind: 'tube-fed-scalar-null',
-            contract: 'DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup',
+            contract: 'migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup',
             reason: 'Tube-fed shotgun reload remains scalar-null; reloadSpeedTier=0 is a structural marker, not an applicable scalar ladder rung.',
           }
           : ['M44', 'M357 Trait'].includes(weaponName)
             ? {
               kind: 'scalar-revolver',
-              contract: 'DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup',
+              contract: 'migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 Phase 6 — reload cutover and cleanup',
               reason: 'Revolver reload is scalar and tier 0 is applicable; this is not the tube-fed scalar-null exemption.',
             }
             : null)
@@ -801,7 +801,7 @@ export function main(args = process.argv.slice(2)) {
   if (writeReport) {
     const output = reportPath
       ? (path.isAbsolute(reportPath) ? reportPath : path.resolve(DEFAULT_ROOT, reportPath))
-      : path.join(DEFAULT_ROOT, 'outputs/attachment-audit/sweep-findings.json');
+      : path.join(DEFAULT_ROOT, 'migration/1.3.3.0/attachment-audit/sweep-findings.json');
     fs.writeFileSync(output, `${JSON.stringify(report, null, 1)}\n`);
     console.log('\nwrote', output);
   }

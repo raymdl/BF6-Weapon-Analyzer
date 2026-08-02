@@ -468,7 +468,7 @@
         "standard": 5,
         "penetration": 5,
         "long_range": 10,
-        "hollow_pt": 15,
+        "hollow_pt": 20,
         "frangible": 20
       }
     },
@@ -483,7 +483,7 @@
       }
     },
     "grtcps": {
-      "def": "standard",
+      "def": "hollow_pt",
       "ammo": {
         "standard": 5,
         "penetration": 5,

@@ -18,7 +18,7 @@ const sourcePath = row => row.source.currentPath
 
 const attachments = readJson('data/attachments.json');
 const weapons = readJson('data/weapons.json');
-const review = readJson('outputs/attachment-audit/attachment-screenshot-review.json');
+const review = readJson('migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json');
 const register = readJson('data/reload-exceptions.json');
 const oldBaseline = readJson('scripts/reload-phase3-baseline.json');
 const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
@@ -287,7 +287,7 @@ const manifest = {
     screenshotToleranceSeconds: 0.005,
   },
   source: {
-    screenshotFixture: 'outputs/attachment-audit/attachment-screenshot-review.json',
+    screenshotFixture: 'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json',
     exceptionRegister: 'data/reload-exceptions.json',
     preMigrationBaselineDigest: oldBaseline.digest.value,
   },

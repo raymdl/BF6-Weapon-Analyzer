@@ -14,7 +14,7 @@ vendored copy of Chart.js.
 The v1.3.3.0 update lives on the `codex/update-1.3.3.0` branch and **is not live yet.** That branch
 carries the new Sym.gg damage data, the reworked recoil model, the PP-19 (bringing the roster from
 58 to 59 weapons), and the 1.3.3.0 hit-zone multipliers. It is still a test build: several release
-gates in [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md) are open,
+gates in [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](migration/1.3.3.0/BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md) are open,
 most notably the attachment-value refresh, the visible provisional-data disclaimer, and browser QA.
 Anything in this README describing 1.3.3.0 behavior describes that branch, not what is published.
 
@@ -109,7 +109,7 @@ A clean clone runs 83 tests: 83 pass and 0 skip.
 
 Two of the passing tests check the tracked attachment-screenshot review data against its schema.
 That dataset is hand-corrected rather than generated — see
-[BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md](BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md)
+[BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md](migration/1.3.3.0/BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md)
 — so the test exists to catch it drifting from its declared contract.
 
 ## Documentation
@@ -117,7 +117,7 @@ That dataset is hand-corrected rather than generated — see
 - [CODE_DOCUMENTATION.md](CODE_DOCUMENTATION.md) — architecture, module APIs, data field reference,
   the recoil/spread model, rendering flow, and known-issue notes.
 - [MAINTENANCE.md](MAINTENANCE.md) — practical "where do I change X" guide for data and stat updates.
-- [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md) — the 1.3.3.0
+- [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](migration/1.3.3.0/BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md) — the 1.3.3.0
   release plan, progress log, and open checklist.
 The in-game attachment screenshot audit is a one-off exercise and is kept entirely local: its
 instructions, OCR and workbook tooling, review schema, and the ~1.7 GB screenshot corpus are all

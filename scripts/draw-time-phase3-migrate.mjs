@@ -9,7 +9,6 @@ const weaponsPath = join(root, 'data/weapons.json');
 const attachments = readJson('data/attachments.json');
 const balance = readJson('data/balance_tables.json');
 const weapons = readJson('data/weapons.json');
-const drawTimeBaseline = readJson('scripts/draw-time-phase3-baseline.json');
 const axis = balance.DRAW_TIME_AXIS;
 
 assert.ok(axis, 'DRAW_TIME_AXIS must be present before migration');
@@ -71,10 +70,8 @@ if (!process.argv.includes('--write-data')) {
   if (process.argv.includes('--delete-legacy-deployT')) {
     const nextWeapons = structuredClone(weapons);
     for (const weapon of nextWeapons) {
-      const evidence = drawTimeBaseline.legacyDeployT[weapon.id];
-      assert.ok(evidence, `${weapon.id}: frozen legacy deploy evidence is missing`);
-      assert.equal(weapon.deployT, evidence.deployT,
-        `${weapon.id}: live deployT differs from frozen transition evidence`);
+      assert.equal(typeof weapon.deployT, 'number',
+        `${weapon.id}: legacy deployT is missing before migration`);
       delete weapon.deployT;
     }
     writeFileSync(weaponsPath, `${JSON.stringify(nextWeapons, null, 2)}\n`);

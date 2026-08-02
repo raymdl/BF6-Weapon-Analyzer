@@ -16,7 +16,7 @@ import { resolveHitMultipliers } from './damage.js';
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
  *     AMMO,
  *     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
- *     BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+ *     BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
  *     ADS_SPD_TIERS, SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
  *     DRAW_TIME_AXIS,
@@ -35,7 +35,7 @@ let _ctx = {
   MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {}, LIGHTS_BY_ID: {},
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},
   RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
-  BASE_HS_MULT: {}, HP_HS_HIGH: new Set(),
+  BASE_HS_MULT: {}, COLLATERAL_MULT_OVERRIDE: {}, HP_HS_HIGH: new Set(),
   LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
   ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], PRIMARY_SPRINT_REC_TIERS: [], SIDEARM_SPRINT_REC_TIERS: [], DEPLOY_TIME_TIERS: [], ADS_MOVE_TIERS: [],
@@ -334,7 +334,7 @@ export function applyAttachments(w, atts) {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
     MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
-    BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+    BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
     ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
     DRAW_TIME_AXIS,
@@ -436,7 +436,8 @@ export function applyAttachments(w, atts) {
 
   // ── Ammo display ──────────────────────────────────────────────────────────────
   const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
-  const collateralMult = ammoType.collateralMult?.[w.cls] ?? null;
+  const collateralMult = COLLATERAL_MULT_OVERRIDE[w.id]?.[ammoType.id]
+    ?? ammoType.collateralMult?.[w.cls] ?? null;
 
   // ── Magazine stats ────────────────────────────────────────────────────────────
   const wm       = WEAPON_MAG[w.id] ?? null;

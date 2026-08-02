@@ -5,7 +5,7 @@
   },
   "scope": {
     "weaponCount": 59,
-    "magazineEntryCount": 265,
+    "magazineEntryCount": 266,
     "caseDimensions": "weapon × magazine × selectable grip × selectable ergonomic × available ammo",
     "gripSelection": "none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot",
     "ergoSelection": "none plus WEAPON_ERGO[weapon].avail",
@@ -15,18 +15,18 @@
   },
   "counts": {
     "weapons": 59,
-    "magazineEntries": 265,
+    "magazineEntries": 266,
     "gripChoices": 815,
     "ergoChoices": 172,
     "ammoChoices": 268,
-    "cases": 70634,
-    "primaryCases": 70400,
+    "cases": 71234,
+    "primaryCases": 71000,
     "sidearmCases": 234
   },
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-reload-row-v1",
-    "value": "36a52f5c9ad6e30de70298418029144e71069b09f43c9568324c1b426887f2cd"
+    "value": "24e7726a43992795623da265fb2387c1fa721e38424ac88d3f43efd4daf7b648"
   },
   "perWeaponDigest": {
     "ak205": "f5d1f23d261c64b192354c219c4173fca13be68d6b07c3e5a28755f36310f7b9",
@@ -79,7 +79,7 @@
     "sgx": "7716c1304c93da252b0f4834a6192da1b47ad800f2efbbf7a10dd0ad0c0f4866",
     "sl9": "4c07d3029f9638b0be5d06f7037e986c4ba420aba01496fe1e37663b0592d068",
     "sor300sc": "0dd068008b77fb4566a9c099b7f7fa2965ea1eaaec82163ef44ee85349c8816c",
-    "sor556": "e46a5283a1d8dff736c8a3dfc7009887bf2e8ef91810eb5abab3bfc950ec5298",
+    "sor556": "201f26200f726aa2c2f3601ce7115dcb105d5253bc78f8e069a03155b6ec5ce4",
     "sv98": "bb5fef71ba7b54e1ebbf10ecb90615e80e603d604f40f251433f8d77590b472f",
     "svdm": "59063bfcb83ee32468a252a48bcaf47edfd7ff4c0157e85de6c069583aa0c06a",
     "svk86": "8f7fb61e8c20b89b3c79d55f6742efeac665f0799a93bd725b757b48dc0ed6c7",
@@ -90,7 +90,7 @@
     "vz61": "e96683020d6d27edfe717d7d1fbf4fb10d8af05c388e5a142133d876a1dec162"
   },
   "migration": {
-    "previousDigest": "f6a4d7681f1e4157d3022f81737f61f29e6ff9837e377c8500cde6c83384d48e",
+    "previousDigest": "0db51324035c9284534dd952abb4588bf9a1c0df2051abc3eecc92aee47f197b",
     "changedCaseCount": 7016,
     "changedCaseKeysDigest": "0d3d937ffa8db44f7e06b60d674379f9c2a95ad7f05b068d2669663df873e8bb",
     "changedCases": [

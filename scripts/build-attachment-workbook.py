@@ -1,11 +1,11 @@
 """Build the BF6 attachment reference workbook from the screenshot-review JSON.
 
-This is a human-readable view of `outputs/attachment-audit/attachment-screenshot-review.json`
+This is a human-readable view of `migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json`
 so the records can be browsed without reading raw JSON. It is a reference artifact: nothing
 here feeds the live site, so the script does presentation only and leaves data validation to
-the audit scripts under `outputs/attachment-audit/`.
+the audit scripts under `migration/1.3.3.0/attachment-audit/`.
 
-Replaces the older `outputs/attachment-audit/build-workbook.mjs`, which required the
+Replaces the older `migration/1.3.3.0/attachment-audit/build-workbook.mjs`, which required the
 Codex-only `@oai/artifact-tool` package and then rewrote the resulting OOXML with regexes to
 apply borders and fills. This runs anywhere Python and openpyxl are available.
 
@@ -28,7 +28,7 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_JSON = ROOT / "outputs" / "attachment-audit" / "attachment-screenshot-review.json"
+DEFAULT_JSON = ROOT / "migration" / "1.3.3.0" / "attachment-audit" / "attachment-screenshot-review.json"
 DEFAULT_OUT = ROOT / "BF6_Attachment_Stats_Review.xlsx"
 
 CLASS_ORDER = ["Assault Rifle", "Carbine", "SMG", "LMG", "DMR", "Sniper Rifle", "Shotgun", "Sidearm"]

@@ -75,40 +75,34 @@ sl9_recheck/
 # tree stays local -- the raw OCR dumps regenerate from the screenshots, the
 # contact sheets and workbooks regenerate from the JSON, and the dated backups
 # are superseded by git history once this is tracked.
-!outputs/attachment-audit/
-outputs/attachment-audit/*
-!outputs/attachment-audit/*.mjs
-!outputs/attachment-audit/*.py
-!outputs/attachment-audit/attachment-screenshot-review.json
-!outputs/attachment-audit/capture-order.json
-!outputs/attachment-audit/manual-review-overrides.json
-!outputs/attachment-audit/coverage-report.json
-!outputs/attachment-audit/rename-manifest.json
-!outputs/attachment-audit/rename-provenance.json
-!outputs/attachment-audit/stat-comparisons.json
-!outputs/attachment-audit/visual-stat-map.json
-!outputs/attachment-audit/recoil-visual-map.json
-!outputs/attachment-audit/field-ocr.json
-!outputs/attachment-audit/highlight-cards.json
-!outputs/attachment-audit/cost-ocr.json
-!outputs/attachment-audit/subsonic-velocity-treatments-20260731.json
-!outputs/attachment-audit/sweep-reviewed-exceptions-20260731.json
-!outputs/attachment-audit/bulk-suspect-recapture-summary-20260731.json
-!outputs/attachment-audit/deduped-source-record-exclusions-20260731.json
-!outputs/attachment-audit/sl9-detailed-recapture-20260731.json
-!outputs/attachment-audit/model-tier-mismatch-inventory-20260801.json
-!outputs/attachment-audit/field-slot-asymmetry-inventory-20260801.json
-!outputs/attachment-audit/name-effect-consistency-inventory-20260801.json
-!outputs/attachment-audit/name-effect-coverage-inventory-20260801.json
+!migration/1.3.3.0/attachment-audit/
+migration/1.3.3.0/attachment-audit/*
+!migration/1.3.3.0/attachment-audit/*.mjs
+!migration/1.3.3.0/attachment-audit/*.py
+!migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json
+!migration/1.3.3.0/attachment-audit/capture-order.json
+!migration/1.3.3.0/attachment-audit/manual-review-overrides.json
+!migration/1.3.3.0/attachment-audit/coverage-report.json
+!migration/1.3.3.0/attachment-audit/rename-manifest.json
+!migration/1.3.3.0/attachment-audit/rename-provenance.json
+!migration/1.3.3.0/attachment-audit/stat-comparisons.json
+!migration/1.3.3.0/attachment-audit/visual-stat-map.json
+!migration/1.3.3.0/attachment-audit/recoil-visual-map.json
+!migration/1.3.3.0/attachment-audit/field-ocr.json
+!migration/1.3.3.0/attachment-audit/highlight-cards.json
+!migration/1.3.3.0/attachment-audit/cost-ocr.json
+!migration/1.3.3.0/attachment-audit/subsonic-velocity-treatments-20260731.json
+!migration/1.3.3.0/attachment-audit/sweep-reviewed-exceptions-20260731.json
+!migration/1.3.3.0/attachment-audit/bulk-suspect-recapture-summary-20260731.json
+!migration/1.3.3.0/attachment-audit/deduped-source-record-exclusions-20260731.json
+!migration/1.3.3.0/attachment-audit/sl9-detailed-recapture-20260731.json
+!migration/1.3.3.0/attachment-audit/model-tier-mismatch-inventory-20260801.json
+!migration/1.3.3.0/attachment-audit/field-slot-asymmetry-inventory-20260801.json
+!migration/1.3.3.0/attachment-audit/name-effect-consistency-inventory-20260801.json
+!migration/1.3.3.0/attachment-audit/name-effect-coverage-inventory-20260801.json
 
 # Local one-off export helpers.
 scripts/export_dmg.py
-
-# Required Phase 2b-i characterization fixture.
-!scripts/ads-move-phase2b-i-baseline.json
-
-# Required Phase 2b-ii characterization fixture.
-!scripts/sprint-rec-phase2b-ii-baseline.json
 
 # Required Phase 2b-iii characterization fixture.
 !scripts/ads-move-phase2b-iii-baseline.json

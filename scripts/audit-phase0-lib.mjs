@@ -5,14 +5,14 @@ import { fileURLToPath } from 'node:url';
 export const DEFAULT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 export const PHASE0_FIXTURES = Object.freeze({
-  audit: 'outputs/attachment-audit/attachment-screenshot-review.json',
+  audit: 'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json',
   balance: 'data/balance_tables.json',
   weapons: 'data/weapons.json',
-  subsonic: 'outputs/attachment-audit/subsonic-velocity-treatments-20260731.json',
-  reviewedExceptions: 'outputs/attachment-audit/sweep-reviewed-exceptions-20260731.json',
-  bulkRecapture: 'outputs/attachment-audit/bulk-suspect-recapture-summary-20260731.json',
-  dedupeExclusions: 'outputs/attachment-audit/deduped-source-record-exclusions-20260731.json',
-  sl9Recapture: 'outputs/attachment-audit/sl9-detailed-recapture-20260731.json',
+  subsonic: 'migration/1.3.3.0/attachment-audit/subsonic-velocity-treatments-20260731.json',
+  reviewedExceptions: 'migration/1.3.3.0/attachment-audit/sweep-reviewed-exceptions-20260731.json',
+  bulkRecapture: 'migration/1.3.3.0/attachment-audit/bulk-suspect-recapture-summary-20260731.json',
+  dedupeExclusions: 'migration/1.3.3.0/attachment-audit/deduped-source-record-exclusions-20260731.json',
+  sl9Recapture: 'migration/1.3.3.0/attachment-audit/sl9-detailed-recapture-20260731.json',
   reloadExceptions: 'data/reload-exceptions.json',
   reloadMigrationManifest: 'scripts/reload-phase4-migration-manifest.json',
 });

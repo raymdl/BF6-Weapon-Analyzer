@@ -1,7 +1,7 @@
 """Build the decision workbook for the override-ledger entries that are still orphaned.
 
 After the two 2026-08-01 path-reconciliation rounds, 286 entries in
-`outputs/attachment-audit/manual-review-overrides.json` still point at screenshot filenames that
+`migration/1.3.3.0/attachment-audit/manual-review-overrides.json` still point at screenshot filenames that
 no longer exist. Each one needs a human call rather than a key repair, so this renders them with
 the before/after each choice implies: what the record holds today, what the live entry already
 sets, and what the orphan would set if it were revived.
@@ -25,8 +25,8 @@ from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
 
 ROOT = Path(__file__).resolve().parent.parent
-REVIEW = ROOT / "outputs" / "attachment-audit" / "attachment-screenshot-review.json"
-LEDGER = ROOT / "outputs" / "attachment-audit" / "manual-review-overrides.json"
+REVIEW = ROOT / "migration" / "1.3.3.0" / "attachment-audit" / "attachment-screenshot-review.json"
+LEDGER = ROOT / "migration" / "1.3.3.0" / "attachment-audit" / "manual-review-overrides.json"
 DEFAULT_OUT = ROOT / "BF6_Ledger_Orphan_Decisions.xlsx"
 
 HEAD = "FF1E3A8A"
@@ -311,7 +311,7 @@ def classify_violation(item):
 
 
 def load_violations():
-    path = ROOT / "outputs" / "attachment-audit" / "ammo-rule-violations-20260801.json"
+    path = ROOT / "migration" / "1.3.3.0" / "attachment-audit" / "ammo-rule-violations-20260801.json"
     if not path.exists():
         return []
     items = json.loads(path.read_text(encoding="utf-8"))

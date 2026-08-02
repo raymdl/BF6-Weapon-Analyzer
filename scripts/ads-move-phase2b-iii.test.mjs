@@ -14,7 +14,7 @@ const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const balance = readJson('data/balance_tables.json');
 const weapons = readJson('data/weapons.json');
-const review = readJson('outputs/attachment-audit/attachment-screenshot-review.json');
+const review = readJson('migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json');
 const gripById = new Map(attachments.GRIPS.map(grip => [grip.id, grip]));
 const ergoById = new Map(attachments.ERGOS.map(ergo => [ergo.id, ergo]));
 const ammoById = new Map(ammo.AMMO.map(ammoType => [ammoType.id, ammoType]));
