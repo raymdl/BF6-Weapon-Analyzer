@@ -44,12 +44,14 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .panel-toggle[aria-expanded="false"] .panel-toggle-icon{transform:rotate(-90deg)}
 .rc-title .panel-toggle{margin-right:5px}
 #overviewPanel.is-collapsed #sGrid{display:none}
-#chartsPanel.is-collapsed .chart-wrap,#chartsPanel.is-collapsed #btkArea{display:none}
+#chartsPanel.is-collapsed .chart-wrap,#chartsPanel.is-collapsed .chart-column-table{display:none}
+#chartsPanel.is-collapsed .chart-column-main{border-right:0}
 #chartsPanel.is-collapsed .chart-head{margin-bottom:0!important}
+#chartsPanel.is-collapsed .chart-mode-controls,#chartsPanel.is-collapsed #btkHsSelect{display:none!important}
 #recoilPanel.is-collapsed .rc-groups,#recoilPanel.is-collapsed .rc-plot,
 #recoilPanel.is-collapsed #rcStats,#recoilPanel.is-collapsed #attStats{display:none}
 #recoilPanel.is-collapsed .rc-head{margin-bottom:0}
-.rc-popout-btn{margin-left:8px;padding:2px 8px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:3px;color:#6a9ec0;font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle}
+.rc-popout-btn{margin-left:8px;padding:2px 8px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:3px;color:#6a9ec0;font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle;position:relative;top:-1px}
 .rc-popout-btn:hover{border-color:var(--accent);color:var(--accent)}
 /* Popout: the pattern gets the whole window with its controls docked beside it,
    and everything belonging to the dashboard is hidden. */
@@ -142,6 +144,7 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .d-dn{background:rgba(224,85,85,.15);color:var(--red)}
 /* Chart */
 .chart-head{margin-bottom:14px}
+.chart-table-head{height:21px;display:flex;align-items:center}
 .chart-wrap{position:relative;height:225px}
 .chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
 /* BTK table */
@@ -467,12 +470,12 @@ canvas.rcv:focus-visible{outline-offset:-2px}
       </div>
       <div class="panel" id="chartsPanel" style="padding:0;overflow:hidden">
         <div style="display:flex;align-items:stretch">
-          <div style="flex:1;min-width:0;padding:6px 8px;border-right:1px solid var(--border)">
+          <div class="chart-column chart-column-main" style="flex:1;min-width:0;padding:6px 8px;border-right:1px solid var(--border)">
             <div class="chart-head" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
               <div style="display:flex;align-items:center;gap:8px">
                 <button class="panel-toggle" data-collapse="charts" data-collapse-label="the damage chart and kill table" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Comparison Chart</div>
-                <div style="display:flex;gap:3px">
+                <div class="chart-mode-controls" style="display:flex;gap:3px">
                   <button class="mode-btn on" id="modeDmg" title="Shows damage per shot across range.">DMG</button>
                   <button class="mode-btn" id="modeBtk" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
                   <button class="mode-btn" id="modeTtk" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
@@ -488,8 +491,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
             </div>
             <div class="chart-wrap"><canvas id="dmgChart"></canvas><div class="rc-legend" id="chartLegend"></div></div>
           </div>
-          <div style="flex:1;min-width:0;padding:11px 13px">
-            <div class="ptitle">Bullets / Time to Kill</div>
+          <div class="chart-column chart-column-table" style="flex:1;min-width:0;padding:6px 8px">
+            <div class="ptitle chart-table-head">Bullets / Time to Kill</div>
             <div id="btkArea"></div>
           </div>
         </div>
