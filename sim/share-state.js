@@ -141,6 +141,7 @@ export function createShareCodec({
     if (state.chart.mode !== 'dmg') params.set('cm', state.chart.mode);
     if (state.chart.btkHS) params.set('hs', state.chart.btkHS);
     if (state.chart.showAds) params.set('ads', '1');
+    if (state.chart.showVel) params.set('vel', '1');
     if (state.recoil.aim !== 'ads') params.set('ra', state.recoil.aim);
     if (state.recoil.stance !== 'stand') params.set('rs', state.recoil.stance);
     if (state.recoil.platform !== 'pc') params.set('rp', state.recoil.platform);
@@ -148,6 +149,7 @@ export function createShareCodec({
     if (state.recoil.view === 'target') {
       params.set('rv', 'target');
       if (state.recoil.distance !== 30) params.set('rd', state.recoil.distance);
+      if (state.recoil.zeroDistance !== 100) params.set('rz', state.recoil.zeroDistance);
       if (state.recoil.targetAim !== 'chest') params.set('rta', state.recoil.targetAim);
       if (state.recoil.targetAim === 'custom') {
         params.set('rax', state.recoil.customAim.x.toFixed(1));
@@ -191,12 +193,15 @@ export function createShareCodec({
     const headshots = parseInt(params.get('hs'), 10);
     if (headshots >= 1 && headshots <= 3) state.chart.btkHS = headshots;
     if (params.get('ads') === '1' && state.chart.mode === 'ttk') state.chart.showAds = true;
+    if (params.get('vel') === '1' && state.chart.mode === 'ttk') state.chart.showVel = true;
     if (params.get('ra') === 'hip') state.recoil.aim = 'hip';
     if (params.get('rs') === 'move') state.recoil.stance = 'move';
     if (params.get('rp') === 'console') state.recoil.platform = 'console';
     if (params.get('rv') === 'target') state.recoil.view = 'target';
     const distance = parseInt(params.get('rd'), 10);
-    if (Number.isFinite(distance)) state.recoil.distance = Math.max(1, Math.min(150, distance));
+    if (Number.isFinite(distance)) state.recoil.distance = Math.max(5, Math.min(300, distance));
+    const zeroDistance = parseInt(params.get('rz'), 10);
+    if ([100, 200, 300, 400, 500].includes(zeroDistance)) state.recoil.zeroDistance = zeroDistance;
     const targetAim = params.get('rta');
     if (targetAim === 'head' || targetAim === 'custom') state.recoil.targetAim = targetAim;
     if (state.recoil.targetAim === 'custom') {

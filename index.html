@@ -96,6 +96,8 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .cmp-btn{margin:5px 11px;width:calc(100% - 22px);padding:4px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:0.78rem;transition:all .15s}
 .mode-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 8px;font-size:0.65rem;cursor:pointer;letter-spacing:.04em;transition:all .15s}
 .mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
+#velToggleBtn{color:#b39a52;border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.06)}
+#velToggleBtn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
 .cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
 .cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
 .clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:3px;padding:2px 7px;font-size:0.62rem;letter-spacing:.04em;transition:all .15s}
@@ -212,6 +214,8 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 /* Both fields share the row, so the sliders take every spare pixel for finer
    dragging instead of leaving a gap on the right. */
 .rc-viewbar .rc-field{flex:1 1 0;min-width:0}
+.rc-viewbar #rcDistanceField{flex:0 1 65%}
+.rc-viewbar #rcZoomField{flex:1 1 calc(35% - 14px)}
 .rc-viewbar .rc-range{flex:1 1 60px;min-width:54px}
 .rc-viewbar [hidden]{display:none}
 .rc-comp-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:42px;outline:none}
@@ -231,6 +235,10 @@ canvas.rcv.panready,canvas.rcv.panready.aiming{cursor:grab}
 canvas.rcv.dragging,canvas.rcv.dragging.aiming{cursor:grabbing}
 canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-canvas-wrap{position:relative;line-height:0}
+.rc-zero-readout{position:absolute;top:8px;right:8px;z-index:2;display:flex;align-items:center;gap:5px;color:#8fa0a0;font-size:.63rem;line-height:1;text-transform:uppercase;letter-spacing:.06em}
+.rc-zero-readout[hidden]{display:none}
+.rc-zero-cycle{appearance:none;border:1px solid #2c3838;border-radius:4px;background:rgba(12,18,18,.78);color:var(--accent);font:inherit;padding:4px 6px;cursor:pointer;backdrop-filter:blur(2px)}
+.rc-zero-cycle:hover{border-color:var(--accent);color:#e1c852}
 .rc-scale-controls{position:absolute;right:8px;bottom:8px;z-index:2;display:flex;align-items:center;gap:3px}
 .rc-scale-btn{width:21px;height:21px;min-height:21px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#8fa0a0;font-weight:700;line-height:1;backdrop-filter:blur(2px)}
 .rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
@@ -474,6 +482,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                   <button class="mode-btn" id="modeBtk" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
                   <button class="mode-btn" id="modeTtk" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
                   <button class="mode-btn" id="adsToggleBtn" style="display:none;margin-left:3px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
+                  <button class="mode-btn" id="velToggleBtn" style="display:none" title="Adds the lethal projectile's level-target flight time once to the TTK chart and table.">+VEL</button>
                 </div>
               </div>
               <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer">
@@ -581,7 +590,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
               <div class="rc-viewbar">
                 <span class="rc-field" id="rcDistanceField" hidden>
                   <span class="rc-field-lbl">Distance</span>
-                  <input class="rc-range" id="rcDistanceRange" type="range" min="5" max="150" step="5" value="30" aria-label="Target distance in meters">
+                  <input class="rc-range" id="rcDistanceRange" type="range" min="5" max="300" step="5" value="30" aria-label="Target distance in meters">
                   <input class="rc-num" id="rcDistanceInput" type="text" inputmode="numeric" size="3" style="width:31px" aria-label="Target distance in meters" value="30">
                   <span class="rc-field-lbl">m</span>
                 </span>
@@ -592,6 +601,10 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                 </span>
               </div>
               <div class="rc-canvas-wrap">
+                <div class="rc-zero-readout" id="rcZeroReadout" hidden>
+                  <span>Zeroing</span>
+                  <button class="rc-zero-cycle" id="rcZeroCycleBtn" type="button" title="Cycle DMR/sniper zero distance">100 m</button>
+                </div>
                 <div class="rc-scale-controls">
                   <button class="rc-scale-btn" id="rcZoomOut" type="button" title="Zoom out"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>
                   <button class="rc-scale-btn" id="rcZoomIn" type="button" title="Zoom in"><svg class="rc-scale-icon" viewBox="0 0 10 10"><line x1="5" y1="1.5" x2="5" y2="8.5"/><line x1="1.5" y1="5" x2="8.5" y2="5"/></svg></button>

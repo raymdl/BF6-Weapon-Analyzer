@@ -624,8 +624,53 @@ to the recoil amount via `platformRecoilMultFn` in the sim context.
 
 `metersOnWall = Math.tan(radians) × distanceMeters`
 
-Same angular model as the main app, different display units. Not a projectile simulator —
+Same angular model as the main app, different display units. Not a projectile simulator -
 does not model bullet travel time, drag, sight height, or zeroing.
+
+### Projectile Ballistics (main app)
+
+`data/ballistics.json` promotes the v1.3.3.0 Sym snapshot's source-excluded
+gravity/drag inputs into a small, explicitly scoped runtime catalog. It names the
+59 source-backed weapon IDs, uses gravity `-9.81 m/s^2`, and uses base drag
+`0.0035 / m`. A selected build must have both a listed source-backed weapon ID
+and a resolved positive `bulletVel`; otherwise projectile timing and target drop
+are unavailable rather than using a plausible fallback. This currently leaves the
+estimated BROD 3 and EF88 outside the model.
+
+`sim/ballistics.js` is the shared calculation layer:
+
+- Level-flight timing uses the measured closed form
+  `t(x) = expm1(drag * x) / (drag * muzzleVelocity)`. The reference cases are
+  500 m at 800 m/s: `1.245171 s` at `0.0025` drag and `0.810902 s` at `0.001`.
+- Soldier Target trajectory integrates `dp/dt = v` and
+  `dv/dt = (0, gravity) - drag * |v| * v` with RK4 steps.
+- Barrel velocity continues to come from `applyAttachments`, so barrel velocity
+  effects reach both features. Long-Range / Match Grade uses `0.002` drag.
+  The generic Penetration catalog token uses `0.002` only for DMRs and Sniper
+  Rifles, where it represents Tungsten Match; it deliberately remains base drag
+  for other classes because that generic token can mean Tungsten Core instead.
+
+**TTK +VEL:** `+VEL` is an independent toggle beside `+ADS`. At each plotted
+range the displayed time is firing TTK plus the level-target flight time of the
+lethal projectile *once*; `+ADS` adds on top when selected. The chart, tooltip,
+axis label, and kill table all use the same total. This is arrival timing for a
+level, stationary target only: it does not calculate moving-target lead, terrain,
+elevation, or whether un-compensated drop would make a shot miss. Builds without
+validated projectile inputs display VEL as unavailable.
+
+**Soldier Target:** the target view is ballistic while Angle Plot remains purely
+angular. Spray dots, scatter, recoil path, bubbles, cone, and hit-zone summary all
+share the same per-build projectile Y offset. DMRs and Sniper Rifles expose a
+100/200/300/400/500 m zero selector (default 100 m). The model solves the small
+launch angle whose trajectory crosses the selected zero plane, then projects that
+same trajectory at target distance. It is intentionally sight-height-free, so it
+is an aimed-line approximation rather than a complete optic model. Non-DMR/Sniper
+projectiles show bore-line drop until their zeroing inputs are sourced. In compare
+mode, the one selector is applied only to each zero-capable build; other builds
+remain bore-line-relative. Target distance is 5-300 m, the Distance/Zoom slider
+space is 65/35, and Soldier Target shows a compact top-right Zeroing button that
+cycles through the available ranges. URL state carries `vel` and `rz` alongside
+existing state.
 
 ---
 
@@ -653,8 +698,8 @@ Primary app:
 
 **App state** is consolidated in `ui/app.js` as a single `state` object with three
 sub-objects: `state.slots[0/1]` (class, weapon, atts per loadout), `state.chart`
-(mode, btkHS, showAds), and `state.recoil` (aim, stance, layers, platform, control,
-compensation, seed, scale, pan).
+(mode, btkHS, showAds, showVel), and `state.recoil` (aim, stance, layers, platform,
+control, compensation, seed, scale, pan, target distance, zero distance).
 
 **Chart tooltips** use Chart.js default positioning (`mode: 'index'`, `intersect: false`).
 Baseline and band-fill datasets are filtered out of tooltip content; band values are

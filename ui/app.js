@@ -11,6 +11,7 @@ import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange } from '../si
 import * as Loadout from '../sim/loadout.js';
 import { createShareCodec } from '../sim/share-state.js';
 import { drawTarget, summarizeTargetImpacts, targetAimOffset, targetFrame, targetMarkerRadius, whenTargetImageReady } from '../sim/target.js';
+import { flightTimeAtDistance, isProjectileModel, zeroRelativeVerticalOffset } from '../sim/ballistics.js';
 
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
 
@@ -20,15 +21,16 @@ async function fetchJson(url) {
   return r;
 }
 
-let W, _recoilDecay, _balance, _atts, _ammo;
+let W, _recoilDecay, _balance, _atts, _ammo, _ballistics;
 let _dataLastModified = null;
 try {
-  [W, _recoilDecay, _balance, _atts, _ammo] = await Promise.all([
+  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics] = await Promise.all([
     fetchJson('./data/weapons.json').then(r => { _dataLastModified = r.headers.get('Last-Modified'); return r.json(); }),
     fetchJson('./data/recoil_decay.json').then(r => r.json()),
     fetchJson('./data/balance_tables.json').then(r => r.json()),
     fetchJson('./data/attachments.json').then(r => r.json()),
     fetchJson('./data/ammo.json').then(r => r.json()),
+    fetchJson('./data/ballistics.json').then(r => r.json()),
   ]);
 } catch (err) {
   document.body.insertAdjacentHTML('beforeend',
@@ -61,6 +63,7 @@ const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
         WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
 const { AMMO, WEAPON_AMMO } = _ammo;
+const BALLISTIC_WEAPON_IDS = new Set(_ballistics.weaponIds ?? []);
 
 const LOADOUT_DATA = {
   SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
@@ -174,10 +177,10 @@ const state = {
   // Panels fold away so the page can be sized for a screenshot without giving
   // up canvas space.
   collapsed: { overview: false, charts: false, recoil: false },
-  chart: { mode: 'dmg', btkHS: 0, showAds: false },
+  chart: { mode: 'dmg', btkHS: 0, showAds: false, showVel: false },
   recoil: {
     aim: 'ads', stance: 'stand',
-    view: 'angle', distance: 30, targetAim: 'chest', customAim: { x: 0, y: 0 },
+    view: 'angle', distance: 30, targetAim: 'chest', customAim: { x: 0, y: 0 }, zeroDistance: 100,
     layers: { scatter: true, spray: true, path: false, spread: false, cone: false },
     // Scatter is far too noisy over a soldier, so each view keeps its own
     // overlay choices and its own sensible starting point.
@@ -241,6 +244,45 @@ function getTTK(weapon, btk) {
   let ms = 0;
   for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
   return Math.round(ms);
+}
+function dragForSelectedAmmo(weapon, atts) {
+  const configured = _ballistics.ammoDragPerMeter?.[atts?.ammo];
+  if (typeof configured === 'number') return configured;
+  if (configured && typeof configured === 'object' && typeof configured[weapon.cls] === 'number') return configured[weapon.cls];
+  return _ballistics.baseDragPerMeter;
+}
+function projectileModelFor(weapon, atts) {
+  if (!weapon || !BALLISTIC_WEAPON_IDS.has(weapon.id)) return null;
+  const model = {
+    velocityMps: weapon.bulletVel,
+    dragPerMeter: dragForSelectedAmmo(weapon, atts),
+    gravityMps2: _ballistics.gravityMps2,
+  };
+  return isProjectileModel(model) ? model : null;
+}
+function selectedWeaponBuild(slot) {
+  if (!slot?.weapon) return null;
+  const build = applyAttachments(slot.weapon, slot.atts);
+  const projectileModel = projectileModelFor(build, slot.atts);
+  return projectileModel ? { ...build, _projectileModel: projectileModel } : build;
+}
+function isZeroableWeapon(weapon) {
+  return weapon?.cls === 'DMR' || weapon?.cls === 'Sniper Rifle';
+}
+function zeroDistanceFor(weapon) {
+  return isZeroableWeapon(weapon) ? state.recoil.zeroDistance : null;
+}
+const targetDropCache = new Map();
+function targetVerticalOffsetMeters(weapon) {
+  const model = weapon?._projectileModel;
+  if (!model) return 0;
+  const zeroDistance = zeroDistanceFor(weapon);
+  const key = [weapon.id, model.velocityMps, model.dragPerMeter, model.gravityMps2, state.recoil.distance, zeroDistance ?? 'bore'].join('|');
+  if (targetDropCache.has(key)) return targetDropCache.get(key);
+  const value = zeroRelativeVerticalOffset(model, state.recoil.distance, zeroDistance);
+  const resolved = Number.isFinite(value) ? value : 0;
+  targetDropCache.set(key, resolved);
+  return resolved;
 }
 function fmtTTK(ms) {
   return ms === null ? '—' : ms === 0 ? '0ms' : ms + 'ms';
@@ -452,7 +494,7 @@ function setPanelCollapsed(key, collapsed) {
 }
 
 function applyChartStateToDom() {
-  const { mode, btkHS, showAds } = state.chart;
+  const { mode, btkHS, showAds, showVel } = state.chart;
   document.getElementById('modeDmg').classList.toggle('on', mode === 'dmg');
   document.getElementById('modeBtk').classList.toggle('on', mode === 'btk');
   document.getElementById('modeTtk').classList.toggle('on', mode === 'ttk');
@@ -460,6 +502,9 @@ function applyChartStateToDom() {
   const adsBtn = document.getElementById('adsToggleBtn');
   adsBtn.style.display = isTtk ? '' : 'none';
   adsBtn.classList.toggle('on', isTtk && showAds);
+  const velBtn = document.getElementById('velToggleBtn');
+  velBtn.style.display = isTtk ? '' : 'none';
+  velBtn.classList.toggle('on', isTtk && showVel);
   document.getElementById('chartTitle').textContent =
     mode === 'btk' ? 'BTK Chart' : mode === 'ttk' ? (showAds ? 'ADS+TTK Chart' : 'TTK Chart') : 'Damage Chart';
   const sel = document.getElementById('btkHsSelect');
@@ -477,6 +522,7 @@ function restoreFromUrl() {
   const cm = p.get('cm'); if (cm === 'btk' || cm === 'ttk') state.chart.mode = cm;
   const hs = parseInt(p.get('hs'), 10); if (hs >= 1 && hs <= 3) state.chart.btkHS = hs;
   if (p.get('ads') === '1' && state.chart.mode === 'ttk') state.chart.showAds = true;
+  if (p.get('vel') === '1' && state.chart.mode === 'ttk') state.chart.showVel = true;
   if (p.get('ra') === 'hip') state.recoil.aim = 'hip';
   if (p.get('rs') === 'move') state.recoil.stance = 'move';
   if (p.get('rp') === 'console') state.recoil.platform = 'console';
@@ -809,8 +855,14 @@ function setChartMode(m) {
   document.getElementById('modeBtk').classList.toggle('on', m === 'btk');
   document.getElementById('modeTtk').classList.toggle('on', m === 'ttk');
   const isTtk = m === 'ttk';
-  if (!isTtk) { state.chart.showAds = false; document.getElementById('adsToggleBtn').classList.remove('on'); }
+  if (!isTtk) {
+    state.chart.showAds = false;
+    state.chart.showVel = false;
+    document.getElementById('adsToggleBtn').classList.remove('on');
+    document.getElementById('velToggleBtn').classList.remove('on');
+  }
   document.getElementById('adsToggleBtn').style.display = isTtk ? '' : 'none';
+  document.getElementById('velToggleBtn').style.display = isTtk ? '' : 'none';
   document.getElementById('chartTitle').textContent = m === 'btk' ? 'BTK Chart' : m === 'ttk' ? (state.chart.showAds ? 'ADS+TTK Chart' : 'TTK Chart') : 'Damage Chart';
   document.getElementById('btkHsSelect').style.display = (m === 'btk' || m === 'ttk') ? '' : 'none';
   renderChart();
@@ -819,6 +871,12 @@ function toggleAdsToggle() {
   state.chart.showAds = !state.chart.showAds;
   document.getElementById('adsToggleBtn').classList.toggle('on', state.chart.showAds);
   document.getElementById('chartTitle').textContent = state.chart.showAds ? 'ADS+TTK Chart' : 'TTK Chart';
+  renderChart();
+  renderBTK();
+}
+function toggleVelToggle() {
+  state.chart.showVel = !state.chart.showVel;
+  document.getElementById('velToggleBtn').classList.toggle('on', state.chart.showVel);
   renderChart();
   renderBTK();
 }
@@ -853,9 +911,9 @@ function dashOverlap(datasets) {
 function renderChart() {
   scheduleUrlSync();
 
-  const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
-  const w2 = state.comparing && state.slots[1].weapon ? applyAttachments(state.slots[1].weapon, state.slots[1].atts) : null;
-  const { mode, btkHS, showAds } = state.chart;
+  const w1 = selectedWeaponBuild(state.slots[0]);
+  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  const { mode, btkHS, showAds, showVel } = state.chart;
   const mr = maxRange([w1, w2]);
   const labels = []; for (let r = 0; r <= mr; r++) labels.push(r);
   const ctx = document.getElementById('dmgChart');
@@ -875,6 +933,13 @@ function renderChart() {
     }
     if (legEl) legEl.innerHTML += '<div class="rc-legend-item" style="color:var(--muted);margin-left:auto">Damage/BTK/TTK unavailable for a selected weapon.</div>';
     return;
+  }
+
+  if (mode === 'ttk' && showVel) {
+    const unavailable = [w1, w2].filter(weapon => weapon && !weapon._projectileModel);
+    if (unavailable.length && legEl) {
+      legEl.innerHTML += `<div class="rc-legend-item" style="color:var(--muted);margin-left:auto">+VEL unavailable: ${unavailable.map(wLabel).join(', ')} lacks validated projectile inputs.</div>`;
+    }
   }
 
   if (mode === 'btk') {
@@ -934,8 +999,13 @@ function renderChart() {
   if (mode === 'ttk') {
     const ttkAt = (w, r, zoneMult = 1) => {
       const btk = getBTKWithHits(w, r, btkHS, zoneMult);
-      return (getTTK(w, btk) ?? 0) + (showAds ? (w._adsTimeMs ?? 0) : 0);
+      const firingTtk = getTTK(w, btk);
+      if (firingTtk == null) return null;
+      const flightTime = showVel ? flightTimeAtDistance(w._projectileModel, r) : 0;
+      if (flightTime == null) return null;
+      return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
     };
+    const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
     const ttkDs = (w, color, label, zoneMult = 1, band = false) => ({
       label, data: labels.map(r => ttkAt(w, r, zoneMult)),
       borderColor: band ? 'transparent' : color, backgroundColor: band ? color : 'transparent',
@@ -967,15 +1037,18 @@ function renderChart() {
             const btk = getBTKWithHits(w, i.dataIndex, btkHS);
             const limbBtk = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
             if (limbBtk !== btk) {
-              return `${w.name}: ${fmtTTK(i.raw)}–${fmtTTK(ttkAt(w, i.dataIndex, limbMult(w)))} chest–limbs`;
+              return `${w.name}: ${fmtTtkAt(i.raw)}–${fmtTtkAt(ttkAt(w, i.dataIndex, limbMult(w)))} chest–limbs`;
             }
-            if (showAds && w._adsTimeMs) return `${w.name}: ${fmtTTK(i.raw)} incl. ${w._adsTimeMs}ms ADS`;
-            return `${w.name}: ${fmtTTK(i.raw)}`;
+            const additions = [];
+            if (showAds && w._adsTimeMs) additions.push(`${w._adsTimeMs}ms ADS`);
+            if (showVel) additions.push(`${Math.round((flightTimeAtDistance(w._projectileModel, i.dataIndex) ?? 0) * 1000)}ms flight`);
+            if (additions.length) return `${w.name}: ${fmtTtkAt(i.raw)} incl. ${additions.join(' + ')}`;
+            return `${w.name}: ${fmtTtkAt(i.raw)}`;
           },
         } } },
         scales: {
           x: chartXAxis(mr),
-          y: { min: 0, max: yMax, title: { display: true, text: showAds ? 'ADS + Time to Kill (ms)' : 'Time to Kill (ms)', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+          y: { min: 0, max: yMax, title: { display: true, text: `${[showAds && 'ADS', showVel && 'Flight', 'Time to Kill'].filter(Boolean).join(' + ')} (ms)`, color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
         },
       },
     });
@@ -1053,12 +1126,19 @@ function renderChart() {
 }
 
 function renderBTK() {
-  const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
-  const w2 = state.comparing && state.slots[1].weapon ? applyAttachments(state.slots[1].weapon, state.slots[1].atts) : null;
-  const { btkHS, showAds } = state.chart;
+  const w1 = selectedWeaponBuild(state.slots[0]);
+  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  const { btkHS, showAds, showVel } = state.chart;
   const ranges = btkRanges(w1, w2);
-  const ttkHdr = showAds ? 'ADS+TTK' : 'TTK';
-  const fmtT = (w, t) => { const base = t ?? 0; return fmtTTK(showAds && w._adsTimeMs ? base + w._adsTimeMs : t); };
+  const ttkHdr = [showAds && 'ADS', showVel && 'Flight', 'TTK'].filter(Boolean).join('+');
+  const ttkAt = (w, range, btk) => {
+    const firingTtk = getTTK(w, btk);
+    if (firingTtk == null) return null;
+    const flightTime = showVel ? flightTimeAtDistance(w._projectileModel, range) : 0;
+    if (flightTime == null) return null;
+    return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
+  };
+  const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
   let html = '<table class="btk-tbl"><thead><tr><th>Range</th>';
   if (w1) html += `<th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
   if (w2) html += `<th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
@@ -1069,8 +1149,8 @@ function renderBTK() {
     if (b == null || bl == null) return { bTxt: '—', tTxt: '—' };
     const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
     const tTxt = bl !== b
-      ? `${fmtT(w, getTTK(w, b)).replace(/ms$/, '')}–${fmtT(w, getTTK(w, bl))}`
-      : fmtT(w, getTTK(w, b));
+      ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
+      : fmtTtkAt(ttkAt(w, r, b));
     return { bTxt, tTxt };
   };
   let prev1 = null, prev2 = null;
@@ -1234,7 +1314,7 @@ function canvasToWorld(clientX, clientY, canvas) {
 function syncTargetDistance(source = 'input') {
   const el = document.getElementById(source === 'range' ? 'rcDistanceRange' : 'rcDistanceInput');
   const raw = +(el?.value ?? 30);
-  state.recoil.distance = Math.max(1, Math.min(150, Math.round(Number.isFinite(raw) ? raw : 30)));
+  state.recoil.distance = Math.max(5, Math.min(300, Math.round(Number.isFinite(raw) ? raw : 30)));
   renderRecoil();
 }
 function syncZoomFromSlider() {
@@ -1268,6 +1348,12 @@ function setRecoilPlatform(platform) {
   state.recoil.platform = platform === 'console' ? 'console' : 'pc';
   renderRecoil();
 }
+function cycleTargetZero() {
+  const zeroes = [100, 200, 300, 400, 500];
+  const current = zeroes.indexOf(state.recoil.zeroDistance);
+  state.recoil.zeroDistance = zeroes[(current + 1) % zeroes.length];
+  renderRecoil();
+}
 function cmAtDistance(angleDeg, distanceM = state.recoil.distance) {
   return Math.tan(angleDeg * Math.PI / 180) * distanceM * 100;
 }
@@ -1290,7 +1376,11 @@ function computeTargetBaseFrame(weapons, shotCount) {
   // and the recoil-control slider deliberately do not: changing a control must
   // not make the chart lurch. A longer burst simply runs off frame until the
   // user asks for a refit.
-  const key = [live.map(w => w.id).join('+'), state.recoil.distance].join('|');
+  const key = [
+    live.map(w => [w.id, w.bulletVel, w._projectileModel?.dragPerMeter ?? 'unavailable'].join(':')).join('+'),
+    state.recoil.distance,
+    state.recoil.zeroDistance,
+  ].join('|');
   if (key === targetBaseFrameKey && targetBaseFrame) return;
   targetBaseFrameKey = key;
 
@@ -1300,10 +1390,11 @@ function computeTargetBaseFrame(weapons, shotCount) {
   live.forEach(weapon => {
     const points = genRecoilPts(weapon, 0, shotCount);
     const spreads = simulateSpread(weapon, shotCount);
+    const ballisticOffsetCm = targetVerticalOffsetMeters(weapon) * 100;
     points.forEach((point, i) => {
       const spread = spreads[i] ?? spreadBounds(weapon)[0];
-      top = Math.max(top, cmAtDistance(point.y + spread));
-      bottom = Math.min(bottom, cmAtDistance(point.y - spread));
+      top = Math.max(top, ballisticOffsetCm + cmAtDistance(point.y + spread));
+      bottom = Math.min(bottom, ballisticOffsetCm + cmAtDistance(point.y - spread));
     });
   });
   const minSpan = frame.heightCm / TARGET_FRAME_FILL;
@@ -1531,7 +1622,8 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   // moves, so shot angles are projected relative to the aim offset.
   const aimOffset = isTargetView ? currentAimOffset() : { x: 0, y: 0 };
   const toX = angleDeg => mapX(isTargetView ? aimOffset.x + cmAtDistance(angleDeg) : angleDeg);
-  const toY = angleDeg => mapY(isTargetView ? aimOffset.y + cmAtDistance(angleDeg) : angleDeg);
+  const targetImpactYcm = (weapon, angleDeg) => aimOffset.y + cmAtDistance(angleDeg) + targetVerticalOffsetMeters(weapon) * 100;
+  const toY = (weapon, angleDeg) => mapY(isTargetView ? targetImpactYcm(weapon, angleDeg) : angleDeg);
 
   ctx.fillStyle = '#080d0d'; ctx.fillRect(0, 0, CW, CH);
 
@@ -1543,24 +1635,11 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   for (let h = hMin1; h <= hMax1; h += gridStep) { const x = mapX(h); ctx.beginPath(); ctx.moveTo(x, PT); ctx.lineTo(x, PT + PH); ctx.stroke(); }
 
   // The angle plot's origin is the aim point, so full-length axes read well
-  // there. In target view the grid is anchored to the body instead, and a
-  // discrete crosshair marks where the shooter is aiming.
+  // there. In target view the grid is anchored to the body.
   if (!isTargetView) {
     ctx.strokeStyle = 'rgba(150,165,165,0.6)'; ctx.lineWidth = 1.5;
     if (xMin <= 0 && xMax >= 0) { ctx.beginPath(); ctx.moveTo(mapX(0), PT); ctx.lineTo(mapX(0), PT + PH); ctx.stroke(); }
     if (yMin <= 0 && yMax >= 0) { ctx.beginPath(); ctx.moveTo(PL, mapY(0)); ctx.lineTo(PL + PW, mapY(0)); ctx.stroke(); }
-  }
-
-  const ox = mapX(aimOffset.x), oy = mapY(aimOffset.y);
-  if (ox >= PL && ox <= PL + PW && oy >= PT && oy <= PT + PH) {
-    ctx.strokeStyle = isTargetView ? 'rgba(255,255,255,0.72)' : 'rgba(255,255,255,0.4)';
-    ctx.lineWidth = isTargetView ? 1.1 : 0.8;
-    const arm = isTargetView ? 8 : 6;
-    ctx.beginPath(); ctx.moveTo(ox - arm, oy); ctx.lineTo(ox + arm, oy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(ox, oy - arm); ctx.lineTo(ox, oy + arm); ctx.stroke();
-    if (isTargetView) {
-      ctx.beginPath(); ctx.arc(ox, oy, 3.2, 0, Math.PI * 2); ctx.stroke();
-    }
   }
 
   ctx.fillStyle = 'rgba(100,120,120,0.75)'; ctx.font = '9px sans-serif';
@@ -1592,7 +1671,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
         const spread = spreads[i] ?? spreadBounds(w)[0];
         const bAng = rngB() * Math.PI * 2, bR = spread * rngB();
         ctx.beginPath();
-        ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(p.y + bR * Math.sin(bAng)), scatterDotRadius, 0, Math.PI * 2);
+        ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(w, p.y + bR * Math.sin(bAng)), scatterDotRadius, 0, Math.PI * 2);
         ctx.fillStyle = col + '38'; ctx.fill();
       });
     }
@@ -1617,7 +1696,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     if (targetHitTest) {
       sprayZones = sprayPts.map(p => targetHitTest({
         xCm: aimOffset.x + cmAtDistance(p.x),
-        yCm: aimOffset.y + cmAtDistance(p.y),
+        yCm: targetImpactYcm(w, p.y),
       }));
       targetHits.push({ weapon: w, zones: sprayZones, hits: sprayZones.filter(Boolean).length, total: sprayPts.length });
     }
@@ -1626,7 +1705,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       spreadBubbleIdxs.forEach(idx => {
         const p = pts[idx]; if (!p) return;
         const spread = spreads[idx] ?? spreadBounds(w)[0];
-        const x = toX(p.x), y = toY(p.y), r = Math.abs(toX(p.x + spread) - x);
+        const x = toX(p.x), y = toY(w, p.y), r = Math.abs(toX(p.x + spread) - x);
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fillStyle = col + '1a'; ctx.strokeStyle = col + 'aa'; ctx.lineWidth = 1.2;
         ctx.fill(); ctx.stroke();
@@ -1636,7 +1715,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     if (layers.cone) {
       const coneCircles = pts.map((p, idx) => {
         const spread = spreads[idx] ?? spreadBounds(w)[0];
-        const x = toX(p.x), y = toY(p.y), r = Math.abs(toX(p.x + spread) - x);
+        const x = toX(p.x), y = toY(w, p.y), r = Math.abs(toX(p.x + spread) - x);
         return { x, y, r };
       }).filter(c => Number.isFinite(c.x) && Number.isFinite(c.y) && Number.isFinite(c.r) && c.r > 0.5);
       if (coneCircles.length) {
@@ -1716,13 +1795,13 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
 
     if (layers.path && pts.length > 1) {
       ctx.beginPath();
-      pts.forEach((p, i) => { const x = toX(p.x), y = toY(p.y); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+      pts.forEach((p, i) => { const x = toX(p.x), y = toY(w, p.y); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
       ctx.strokeStyle = col === '#c9a227' ? 'rgba(201,162,39,0.72)' : 'rgba(77,148,208,0.72)';
       ctx.lineWidth = 2.2; ctx.stroke();
     }
 
     if (layers.spray) sprayPts.forEach((p, i) => {
-      const x = toX(p.x), y = toY(p.y);
+      const x = toX(p.x), y = toY(w, p.y);
       if (!sprayZones) {
         ctx.beginPath(); ctx.arc(x, y, sprayDotRadius, 0, Math.PI * 2);
         ctx.fillStyle = col; ctx.fill();
@@ -1873,8 +1952,8 @@ function targetImpactStatsHtml(entries) {
 
 function renderRecoil() {
   scheduleUrlSync();
-  const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
-  const w2 = state.comparing && state.slots[1].weapon ? applyAttachments(state.slots[1].weapon, state.slots[1].atts) : null;
+  const w1 = selectedWeaponBuild(state.slots[0]);
+  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
   const shotCount = selectedRecoilShotCount();
   // The base frame feeds the auto magnification, so it has to settle before
   // any of the control read-outs are written.
@@ -1905,6 +1984,10 @@ function renderRecoil() {
   });
   const distanceField = document.getElementById('rcDistanceField');
   if (distanceField) distanceField.hidden = !isTarget;
+  const zeroReadout = document.getElementById('rcZeroReadout');
+  if (zeroReadout) zeroReadout.hidden = !isTarget || ![w1, w2].some(isZeroableWeapon);
+  const zeroCycle = document.getElementById('rcZeroCycleBtn');
+  if (zeroCycle) zeroCycle.textContent = `${state.recoil.zeroDistance} m`;
   if (!isTarget) document.getElementById('rcMain')?.classList.remove('aiming');
   const hint = document.getElementById('rcHint');
   if (hint) {
@@ -1920,6 +2003,12 @@ function renderRecoil() {
     aimText.textContent = state.recoil.targetAim === 'chest'
       ? 'Aim: center chest'
       : `Aim: ${(offset.x / 100).toFixed(2)} m, ${(offset.y / 100).toFixed(2)} m`;
+    if (isTarget && w1) {
+      const zero = zeroDistanceFor(w1);
+      aimText.textContent += w1._projectileModel
+        ? ` · ${Math.abs(targetVerticalOffsetMeters(w1)).toFixed(2)} m ${zero == null ? 'bore-line drop' : `from ${zero} m zero`}`
+        : ' · projectile inputs unavailable';
+    }
   }
   const distanceRange = document.getElementById('rcDistanceRange');
   const distanceInput = document.getElementById('rcDistanceInput');
@@ -1985,7 +2074,13 @@ function renderRecoil() {
     if (axis.isTargetView) {
       const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${wLabel(weapon)} ${hits}/${total}`).join(' · ');
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss. Colour is the weapon, and the per-zone breakdown is in the stats table.' : '';
+      const ballisticNote = [w1, w2].filter(Boolean).map(weapon => {
+        if (!weapon._projectileModel) return `${wLabel(weapon)} projectile inputs unavailable`;
+        const zero = zeroDistanceFor(weapon);
+        return `${wLabel(weapon)} ${Math.abs(targetVerticalOffsetMeters(weapon)).toFixed(2)} m ${zero == null ? 'below bore line' : `relative to ${zero} m zero`}`;
+      }).join(' · ');
       noteEl.textContent = `${layerNote}${ringNote} Same simulation, projected onto a 180 cm soldier at ${state.recoil.distance} m — the pattern covers more of the target the further out it lands.${hitSummary ? ` Reference hits: ${hitSummary}.` : ''} Zoom matches optic magnification against an assumed ${ADS_1X_VFOV_DEG}° vertical field at 1×; grid marks ${fmtAxisMeters(niceDistanceGridStep(axis.xMax - axis.xMin))}.`;
+      noteEl.textContent += ` Ballistics: ${ballisticNote}.`;
     } else {
       noteEl.textContent = `${layerNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
     }
@@ -2365,6 +2460,7 @@ function bindEvents() {
   document.getElementById('modeBtk').addEventListener('click', () => setChartMode('btk'));
   document.getElementById('modeTtk').addEventListener('click', () => setChartMode('ttk'));
   document.getElementById('adsToggleBtn').addEventListener('click', toggleAdsToggle);
+  document.getElementById('velToggleBtn').addEventListener('click', toggleVelToggle);
   document.getElementById('btkHsSelect').addEventListener('change', e => setBtkHS(+e.target.value));
 
   // Recoil aim / stance / control
@@ -2376,6 +2472,7 @@ function bindEvents() {
   document.getElementById('rcViewTarget').addEventListener('click', () => setRecoilView('target'));
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
+  document.getElementById('rcZeroCycleBtn')?.addEventListener('click', cycleTargetZero);
 
   // Recoil overlays
   document.getElementById('rcModeScatter').addEventListener('click', () => toggleRecoilLayer('scatter'));

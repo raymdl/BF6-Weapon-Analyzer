@@ -1,0 +1,23 @@
+{
+  "release": "1.3.3.0",
+  "source": "generated-data/sym/1.3.3.0/normalized.json sourceExcluded gravity and drag fields",
+  "gravityMps2": -9.81,
+  "baseDragPerMeter": 0.0035,
+  "weaponIds": [
+    "ak205", "ak4d", "b36a4", "cz3a1", "db12", "drsiar", "es57", "ggh22",
+    "grtbc", "grtcps", "kord6p67", "ks18k", "kts100", "kv9", "l110", "l115",
+    "l85a3", "lmr27", "m1014", "m121a2", "m123k", "m16a4", "m2010esr", "m240l",
+    "m250", "m277", "m357trait", "m39emr", "m417a2", "m433", "m44", "m45a1",
+    "m4a1", "m60", "m87a1", "miniscout", "nvo228e", "p18", "pp19", "psr",
+    "pw5a3", "pw7a2", "qbz192", "rpk74m", "rpkm", "scw10", "sg553r", "sgx",
+    "sl9", "sor300sc", "sor556", "sv98", "svdm", "svk86", "tr7", "umg40",
+    "usg90", "vcr2", "vz61"
+  ],
+  "ammoDragPerMeter": {
+    "long_range": 0.002,
+    "penetration": {
+      "DMR": 0.002,
+      "Sniper Rifle": 0.002
+    }
+  }
+}
