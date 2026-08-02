@@ -1,8 +1,8 @@
 {
   "kind": "ads-move-phase2b-iii-post-migration",
   "scope": {
-    "weaponCount": 59,
-    "magazineEntryCount": 266,
+    "weaponCount": 61,
+    "magazineEntryCount": 278,
     "caseDimensions": "weapon × magazine × selectable grip × selectable ergonomic × available ammo",
     "gripSelection": "none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot",
     "ergoSelection": "none plus WEAPON_ERGO[weapon].avail",
@@ -11,26 +11,26 @@
     "caseKey": "weaponId/magazineId/gripId/ergoId/ammoId"
   },
   "counts": {
-    "weapons": 59,
-    "magazineEntries": 266,
-    "gripChoices": 815,
-    "ergoChoices": 172,
-    "ammoChoices": 268,
-    "cases": 71234,
-    "primaryCases": 71000,
+    "weapons": 61,
+    "magazineEntries": 278,
+    "gripChoices": 850,
+    "ergoChoices": 183,
+    "ammoChoices": 279,
+    "cases": 77564,
+    "primaryCases": 77330,
     "sidearmCases": 234
   },
   "defSprDistribution": {
     "1": 1,
     "2": 15,
-    "3": 12,
-    "4": 17,
+    "3": 13,
+    "4": 18,
     "5": 7,
     "6": 1,
     "7": 6
   },
   "clampCounts": {
-    "sprintRecovery": 40,
+    "sprintRecovery": 55,
     "adsMove": 0,
     "adsTime": 0,
     "deploy": 435
@@ -38,82 +38,84 @@
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-row-v1",
-    "value": "08d8da9b78ad0429f292e60ee8808874c9f54b41a4612227d91b09e6b290ad29"
+    "value": "34987458cd85f02ac64f6153f5bafa830be6b3a6595505baf9689da81bcda541"
   },
   "perWeaponDigest": {
     "ak205": "5be96e6c30e16e41920f335385dfcce10c9c79af6f0edd2da82af4c672d43a7c",
-    "ak4d": "a0945e31b338fa77584a3f5d1b92667ea98bfdc04a5e966042ff00a1c78aae58",
-    "b36a4": "8f05215360041de1c151f41e8edc0f450f5c2e3e9d7010cde7014fb4a911314a",
+    "ak4d": "c3ec40779f9eadb1a6f846791bdf27e2062f9471dc30955e05fe45421a23949f",
+    "b36a4": "f0beeb892e17d29ecbe8ef7a8622de89d6cab295a0cd8d01acf4d4a381e16786",
+    "brod3": "b99e594b7c0ddb42197d528729dbf2e27dbe49f16dd7e2785e7c026a188bc296",
     "cz3a1": "f7ea25bfa59e01eebbd2ac433d69434374d5b670efd484d4ea1ad0972c063c42",
     "db12": "1e625ff1e5f97a5992babd169f64f389edd0cce1a10d1fa08dbdfc478e98ab5c",
-    "drsiar": "68708c15bd37d68073190d1c4cab6d34ab18a4e415c40f4fc9da1795247a61a6",
+    "drsiar": "c32a5a5f9abec545df7feca0ec5ba524b6330443846fc07daaaf2cdd06be434e",
+    "ef88": "595a06a8bc14871c1b423d2110ae9149eb495f97c7afc7954b8f14e2aa67c2ec",
     "es57": "c8a90a0ce607f845a6e1f367a28d38b12569ffd1e1a2c92cd62f313be69b7565",
     "ggh22": "cf4f7dbbeedb62bb8f4ed1a7a3d03692705ce705021c0c17ad38cc707f485e36",
     "grtbc": "b484adf0af883c7c657048aaaf5c99375b68677a9bd36f8f9142a695c4e3dc12",
-    "grtcps": "a8e01ffbb7ec9045820080441314d015056e9f96797c28cc20cfdc5b363fdfdc",
-    "kord6p67": "bba71e07afee8d5baedf62809f17e52aa1a3e2790d03cfee2e421d1f29b3cd4f",
+    "grtcps": "182e3fcbe0cc8485010150d0f9da948d53ce49d288eb2a65114d7c389af248c7",
+    "kord6p67": "e47119720cd9410e51a43b3ad5a723d81f4a652f021b2a9cf5c18f06ee789d28",
     "ks18k": "f733be2b7aaf72b9dc5771bf1ad14bfe8cdc5964a51c6192525d65f73fe023ad",
-    "kts100": "853fd839a6a638d3cd39e7145f0d82fa13506b89234d5edd82d39b6907f19f81",
+    "kts100": "d6194108f864dac1300aaf642ac16ddfc816cdc7067d8cb697bd976eb01d1ded",
     "kv9": "410cd6a827b3febe940b858db85f8c71e70c75f3ba9243c26727a680f50d1a8c",
-    "l110": "2676b18cba6931eb7ca8835fd25ead40ae698096931037caa87881e141dfae68",
+    "l110": "c894151dce260331668887ebe5384c0a619788c9c6a207f61634fc5974605196",
     "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
-    "l85a3": "20f7ced72255acf27059d9ae70727a8028300d79d01bdd2f8a799963e17ecf5d",
-    "lmr27": "1be9ca0a1dfb4f396fab341a330f2f3e84b4a20998bcb06804259745af7d8386",
+    "l85a3": "14d74f19712b451ae9e4d0aafddf72fa87e435c0c2c4e246cf0aa031f0261dca",
+    "lmr27": "351644f10368ea93b0e15a4d4d86004b895a8fbca72652c1547fc01948e7acc5",
     "m1014": "1292ee48df3ef97c6ed1b87f32f6615b563883294b92e108113662a2c8b21672",
-    "m121a2": "24d9b04c61faa8cdb4a2d64a2487e913478c087369f781de7a73bae269c5b02d",
-    "m123k": "d030fe28ca436448a025a99876453081da3b54372e8f4edccd601f7a60760ff6",
-    "m16a4": "22392032f9f176d2cc01e1aa526700130f28e294b2dee7103dea793d052bf27f",
-    "m2010esr": "04ce0a833cd741817e671291c2c46440b48d5da02c98b55c1c415e1fae8c377a",
-    "m240l": "a241d28340517e73d775d922804e62b8e776f5da43547601a33d74e6c1c7cdec",
-    "m250": "836ffe956b8a56e1b42e0390f278bd607c98b4997346ae61e1b170396402e09e",
-    "m277": "60f4ff3b6b752cc2475f92399b8446d8d04533d81ad051df6d529b56dcee388b",
+    "m121a2": "b63283b405b21b3be90943dff86b3f581509843494bf6598c3e12588610d33b9",
+    "m123k": "54984d6bf34a9515fbc2bed15e7ff86a371c9bc0cf48545dd8fc4e1a1bf88b59",
+    "m16a4": "0db683bff3c944a083c1147e254e820aa55f3d81276730610000bfcbf8855c7d",
+    "m2010esr": "ebe20aa8f3840edf2777bd45f0699aed9cd8ff985a1a4453b3add265b761a635",
+    "m240l": "2c6b9fc574033113d9ad01072c2cd4361e931b0e41c1a42e4d355ac6abe7d004",
+    "m250": "04ee7dd2908cfab474342cf22673aea5ecb8115153d98632ddd1d191f990683a",
+    "m277": "f92c2305b075ca8ac6ecbd83424d54e856156fd319d3a91dd06c838a081845c8",
     "m357trait": "aea5a684d4655de46242d24baee1ae2359cd2dcb11b74d4ea3ed9fcde6ff87a8",
-    "m39emr": "0b434aec60525bd9b44ef0c3e25b7bd0a6b5d701eae0b7b540bc56c4c2b11054",
-    "m417a2": "824aa976150cb9f685b60500c0faa27e536d2ed3c03c17d626358f739c14a4a7",
-    "m433": "cbc40c114a4c1b3a1edb7f2fabdd219375270ea68cd47c63ee576037d8193ebf",
+    "m39emr": "084eeee341500e7cc65af61c190b9d6ea052e0cceaa088dbb49c328052cc385f",
+    "m417a2": "586d957088154c1a8632000f8984bf92bd4263d5c88132e6c93a572e0063ed1e",
+    "m433": "74476d176d25c60ddcd36ad1797878c948b5de0ffa870998391511593ffdfa23",
     "m44": "50b9753b378db6a50609085924d0939207101e9c93f378b3d5a828854b10cb5f",
     "m45a1": "72df88304ca40fd9f110d297c86d4bb4f35d2482308f03600a234f7c3090cee3",
-    "m4a1": "fe77541625e15cb74b65795bcfcc687e543f5198734425be2f75bae904020925",
-    "m60": "284260a4994247313d71cfb71a3d8f80b1a3da275be092d775a2f097b172693b",
+    "m4a1": "f22c21484e8fce265038e76b34bc403ac44f2aaf280705dab07c576a0c55179a",
+    "m60": "de9a28bcb2ac0aff49f9d13a416fec371a8a565cfbd179cd0a2db4b9b799e277",
     "m87a1": "1b169313a7a7c477ccb20de79c1a3fa8c1c7dde229a03e0e8a37652a220c5cc1",
     "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
-    "nvo228e": "b3c85483a4c6981fb3fa7a7a53b2fee5f3a8bd31d43d293b56a84b8a614ce37e",
+    "nvo228e": "6c75cb365788f0c83765bf018e1d8d9bca1e0436e2bb782d5643094780be5612",
     "p18": "e73ce53f4c570b3ef78b0173d89befd0c4ae320bd0241329f897696c09beed17",
     "pp19": "5b52f790a70c66b120735c664180aae9a772d337939c5487cb5ac727bcab378b",
-    "psr": "9ab639668332f4d230fc2f06c20329258ace2870daf6801415466255414c1535",
+    "psr": "e54ffe2630714fb706110fa8b95e89ac79de2815569b488be4d4b79cd68df791",
     "pw5a3": "6c0a09de185739c94f9204df22cc00bb67e6ee29aada9ef886759c1872d1f36e",
     "pw7a2": "e50efcdca1b4d83b3feb7b70d446aeeb613fffa307b207f328792d55cd761c05",
-    "qbz192": "22c78e5621c37231eeaf8b21cfe86fd732d7d03cb201dbddd747ae263edffaaa",
-    "rpk74m": "6d94521209bfe1cd16a4ec656627c882cf2e894b0d1ad5f31572fe2cf19ef531",
-    "rpkm": "ea07774ee450ebe41d347d7e6d6a8eab017f3c71053ebad9b6cbcd404ea5fe0f",
+    "qbz192": "85f8bae0f7c16c3f3305bf165b9cf6f1818a5ee143b51acc165c4eb3b2b88bf6",
+    "rpk74m": "384bbef5f672e34c0b0cf2f3cd8f8343916eb793349ca2933b4bfe6c792bb105",
+    "rpkm": "7c6f2749c52cdaae439f2ff6d6a27799b930ff6228b21f42c2d9bc3257210d62",
     "scw10": "077c75cca530935053f1d84b0ddcba7ed230f66240f3483486750df8d92b7c4a",
     "sg553r": "a8fb14b412055087f8b5414d36a74de85f599edb3e7a4b9290074b4b56e18c0d",
     "sgx": "9d576337e332d30740239cb7dd8c21133248df46ac665e662bbb4e7f7ab32e6a",
     "sl9": "232d6e463d586129384f78676eb49fa1e4677c31aba900b4b86b5bec13bcee11",
     "sor300sc": "6292071b2e13c922d01f6ea864252091aac0cb8832897fbc7e4b5026527ec3df",
-    "sor556": "ab4a01029cecd7c9e1977a6b3a306bd89ec066b6b1f3f037fb5415d8bac07f96",
-    "sv98": "2b5297a79a53ae965be2b5fc80c2a59cec483b3265f83967752f784df4a18dd2",
+    "sor556": "064ce77f5a17e8a929e234986f1fc8bf4ff233335a99044112023ba06dbb0e07",
+    "sv98": "454c25c23a373ceefb204db4aee1a8d1b3273fb84a821098f2d1a74366ff8c52",
     "svdm": "d4e7808ec3dc5f09b3ca53da5fb0c0cf6a15ddb4bfe94dd3ab1e45bcae2e308d",
     "svk86": "364d931b0f19f477d77d7dce96dc5723629e20207f20ea6320929c924d37720e",
-    "tr7": "b6b21ff4026c398c40273bfb990e64e468ece60af3a4459fa0f50151edc722e1",
+    "tr7": "40d78055a59f441895ba3d7f398969b6d85bd93a85e075ea08293bb4ae0d183f",
     "umg40": "765ce378524d0e25499bec1d8d53fa3f8c548acd3bf3b796b442e02a423f3180",
     "usg90": "adbe21770bcf986057ed71d7d4b6cce0de5caaab371e3978141520309dad1de3",
-    "vcr2": "63fe2a9a89406edcd09f2fdb119a13fe7432fd8476931e8f0f01b11b7add0cd8",
+    "vcr2": "2ed88d1a566b5747e27c1024e066142367da4ee6c38893d498ce6debc0478eaa",
     "vz61": "56744dcef07c3e3b87757c563cc09854ff3c3bb80c1b9fda25e4de984de9a764"
   },
   "rawIndexHistograms": {
     "sprintRecovery": {
       "primary": {
-        "0": 834,
-        "1": 5369,
-        "2": 12936,
-        "3": 18606,
-        "4": 18413,
-        "5": 11160,
-        "6": 2382,
+        "0": 1014,
+        "1": 6059,
+        "2": 13920,
+        "3": 19998,
+        "4": 20237,
+        "5": 12525,
+        "6": 2862,
         "7": 285,
         "8": 375,
-        "-1": 40
+        "-1": 55
       },
       "sidearm": {
         "0": 24,
@@ -126,13 +128,13 @@
     "adsMove": {
       "primary": {
         "0": 171,
-        "1": 1285,
-        "2": 3209,
-        "3": 7894,
-        "4": 12037,
-        "5": 17077,
-        "6": 18024,
-        "7": 8863,
+        "1": 1453,
+        "2": 3929,
+        "3": 8254,
+        "4": 13055,
+        "5": 19314,
+        "6": 19911,
+        "7": 9403,
         "8": 1728,
         "9": 112
       },
@@ -143,14 +145,14 @@
     },
     "adsTime": {
       "primary": {
-        "0": 4334,
-        "1": 16149,
-        "2": 21942,
-        "3": 17373,
-        "4": 7562,
-        "5": 1892,
-        "6": 968,
-        "7": 180
+        "0": 5030,
+        "1": 18743,
+        "2": 25054,
+        "3": 18609,
+        "4": 6977,
+        "5": 1857,
+        "6": 900,
+        "7": 160
       },
       "sidearm": {
         "0": 96,
@@ -160,13 +162,13 @@
     },
     "deploy": {
       "primary": {
-        "4": 580,
-        "5": 4807,
-        "6": 12596,
-        "7": 19021,
-        "8": 18570,
-        "9": 11184,
-        "10": 2895,
+        "4": 670,
+        "5": 5437,
+        "6": 13616,
+        "7": 20281,
+        "8": 20580,
+        "9": 12624,
+        "10": 3375,
         "11": 312,
         "12": 435
       },
@@ -182,6 +184,21 @@
   },
   "clampCaseKeys": {
     "sprintRecovery": [
+      "brod3/20_rnd/full_angled/rail_cover/frangible",
+      "brod3/20_rnd/full_angled/rail_cover/hollow_pt",
+      "brod3/20_rnd/full_angled/rail_cover/lightweight",
+      "brod3/20_rnd/full_angled/rail_cover/penetration",
+      "brod3/20_rnd/full_angled/rail_cover/standard",
+      "brod3/20_rnd/slim_angled/rail_cover/frangible",
+      "brod3/20_rnd/slim_angled/rail_cover/hollow_pt",
+      "brod3/20_rnd/slim_angled/rail_cover/lightweight",
+      "brod3/20_rnd/slim_angled/rail_cover/penetration",
+      "brod3/20_rnd/slim_angled/rail_cover/standard",
+      "brod3/20_rnd/slim_handstop/rail_cover/frangible",
+      "brod3/20_rnd/slim_handstop/rail_cover/hollow_pt",
+      "brod3/20_rnd/slim_handstop/rail_cover/lightweight",
+      "brod3/20_rnd/slim_handstop/rail_cover/penetration",
+      "brod3/20_rnd/slim_handstop/rail_cover/standard",
       "m4a1/20_rnd/adj_angled/rail_cover/frangible",
       "m4a1/20_rnd/adj_angled/rail_cover/hollow_pt",
       "m4a1/20_rnd/adj_angled/rail_cover/lightweight",
@@ -730,8 +747,10 @@
         "ak205",
         "ak4d",
         "b36a4",
+        "brod3",
         "cz3a1",
         "drsiar",
+        "ef88",
         "grtbc",
         "grtcps",
         "kord6p67",
@@ -772,10 +791,7 @@
         "vcr2",
         "vz61"
       ],
-      "sourceOnlyShiftedWeaponNames": [
-        "BROD 3",
-        "EF88"
-      ],
+      "sourceOnlyShiftedWeaponNames": [],
       "additionalCompositeShift": {
         "weaponName": "VZ. 61",
         "attachmentType": "Grip/Laser/Light",
@@ -1162,23 +1178,23 @@
         "M1014": {
           "None": {
             "value": 0.6,
-            "file": "25_M1014_Grip_None.png"
+            "file": "18_M1014_Grip_None.png"
           },
           "6H64 Vertical": {
             "value": 0.54,
-            "file": "30_M1014_Grip_6H64_Vertical.png"
+            "file": "23_M1014_Grip_6H64_Vertical.png"
           },
           "Classic Vertical": {
             "value": 0.54,
-            "file": "31_M1014_Grip_Classic_Vertical.png"
+            "file": "24_M1014_Grip_Classic_Vertical.png"
           },
           "Stippled Stubby": {
             "value": 0.54,
-            "file": "35_M1014_Grip_Stippled_Stubby.png"
+            "file": "28_M1014_Grip_Stippled_Stubby.png"
           },
           "Low-Profile Stubby": {
             "value": 0.54,
-            "file": "36_M1014_Grip_Low-Profile_Stubby.png"
+            "file": "29_M1014_Grip_Low-Profile_Stubby.png"
           }
         },
         "M121 A2": {
@@ -1865,14 +1881,16 @@
         }
       }
     },
-    "changedCaseCount": 15800,
-    "changedWeaponCount": 44,
+    "changedCaseCount": 17240,
+    "changedWeaponCount": 46,
     "changedWeaponIds": [
       "ak205",
       "ak4d",
       "b36a4",
+      "brod3",
       "cz3a1",
       "drsiar",
+      "ef88",
       "grtbc",
       "grtcps",
       "kord6p67",
@@ -1913,13 +1931,15 @@
       "vcr2",
       "vz61"
     ],
-    "changedCaseKeysDigest": "045d160c7f89dd0d2392e96a86e203da04f7107563927651e52acd2b7326c0ae",
+    "changedCaseKeysDigest": "158b9fc9601701cd3d0800ef613242d26fa8d4890bba08d8ed766bcea2a50394",
     "changedByWeapon": {
       "ak205": 960,
       "ak4d": 300,
       "b36a4": 648,
+      "brod3": 840,
       "cz3a1": 320,
       "drsiar": 720,
+      "ef88": 600,
       "grtbc": 500,
       "grtcps": 192,
       "kord6p67": 420,
@@ -1961,18 +1981,33 @@
       "vz61": 20
     },
     "valueChanges": {
-      "0.67->0.6": 2896,
-      "0.75->0.67": 2244,
-      "0.6->0.54": 4164,
-      "0.54->0.47": 3592,
-      "0.82->0.75": 792,
+      "0.67->0.6": 3200,
+      "0.75->0.67": 2292,
+      "0.6->0.54": 4732,
+      "0.54->0.47": 3992,
+      "0.82->0.75": 984,
+      "0.91->0.82": 516,
       "1->0.91": 76,
       "0.47->0.42": 1336,
-      "0.42->0.37": 112,
-      "0.91->0.82": 468
+      "0.42->0.37": 112
     },
     "prePhase3ClampCaseKeys": {
       "sprintRecovery": [
+        "brod3/20_rnd/full_angled/rail_cover/frangible",
+        "brod3/20_rnd/full_angled/rail_cover/hollow_pt",
+        "brod3/20_rnd/full_angled/rail_cover/lightweight",
+        "brod3/20_rnd/full_angled/rail_cover/penetration",
+        "brod3/20_rnd/full_angled/rail_cover/standard",
+        "brod3/20_rnd/slim_angled/rail_cover/frangible",
+        "brod3/20_rnd/slim_angled/rail_cover/hollow_pt",
+        "brod3/20_rnd/slim_angled/rail_cover/lightweight",
+        "brod3/20_rnd/slim_angled/rail_cover/penetration",
+        "brod3/20_rnd/slim_angled/rail_cover/standard",
+        "brod3/20_rnd/slim_handstop/rail_cover/frangible",
+        "brod3/20_rnd/slim_handstop/rail_cover/hollow_pt",
+        "brod3/20_rnd/slim_handstop/rail_cover/lightweight",
+        "brod3/20_rnd/slim_handstop/rail_cover/penetration",
+        "brod3/20_rnd/slim_handstop/rail_cover/standard",
         "m4a1/20_rnd/adj_angled/rail_cover/frangible",
         "m4a1/20_rnd/adj_angled/rail_cover/hollow_pt",
         "m4a1/20_rnd/adj_angled/rail_cover/lightweight",
@@ -2456,6 +2491,21 @@
     },
     "postPhase3ClampCaseKeys": {
       "sprintRecovery": [
+        "brod3/20_rnd/full_angled/rail_cover/frangible",
+        "brod3/20_rnd/full_angled/rail_cover/hollow_pt",
+        "brod3/20_rnd/full_angled/rail_cover/lightweight",
+        "brod3/20_rnd/full_angled/rail_cover/penetration",
+        "brod3/20_rnd/full_angled/rail_cover/standard",
+        "brod3/20_rnd/slim_angled/rail_cover/frangible",
+        "brod3/20_rnd/slim_angled/rail_cover/hollow_pt",
+        "brod3/20_rnd/slim_angled/rail_cover/lightweight",
+        "brod3/20_rnd/slim_angled/rail_cover/penetration",
+        "brod3/20_rnd/slim_angled/rail_cover/standard",
+        "brod3/20_rnd/slim_handstop/rail_cover/frangible",
+        "brod3/20_rnd/slim_handstop/rail_cover/hollow_pt",
+        "brod3/20_rnd/slim_handstop/rail_cover/lightweight",
+        "brod3/20_rnd/slim_handstop/rail_cover/penetration",
+        "brod3/20_rnd/slim_handstop/rail_cover/standard",
         "m4a1/20_rnd/adj_angled/rail_cover/frangible",
         "m4a1/20_rnd/adj_angled/rail_cover/hollow_pt",
         "m4a1/20_rnd/adj_angled/rail_cover/lightweight",
@@ -2941,8 +2991,8 @@
   "preMigration": {
     "kind": "ads-move-phase2b-iii-pre-migration",
     "scope": {
-      "weaponCount": 59,
-      "magazineEntryCount": 265,
+      "weaponCount": 61,
+      "magazineEntryCount": 278,
       "caseDimensions": "weapon × magazine × selectable grip × selectable ergonomic × available ammo",
       "gripSelection": "none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot",
       "ergoSelection": "none plus WEAPON_ERGO[weapon].avail",
@@ -2951,26 +3001,26 @@
       "caseKey": "weaponId/magazineId/gripId/ergoId/ammoId"
     },
     "counts": {
-      "weapons": 59,
-      "magazineEntries": 265,
-      "gripChoices": 815,
-      "ergoChoices": 172,
-      "ammoChoices": 268,
-      "cases": 70634,
-      "primaryCases": 70400,
+      "weapons": 61,
+      "magazineEntries": 278,
+      "gripChoices": 850,
+      "ergoChoices": 183,
+      "ammoChoices": 279,
+      "cases": 77564,
+      "primaryCases": 77330,
       "sidearmCases": 234
     },
     "defSprDistribution": {
       "1": 1,
       "2": 15,
-      "3": 12,
-      "4": 17,
+      "3": 13,
+      "4": 18,
       "5": 7,
       "6": 1,
       "7": 6
     },
     "clampCounts": {
-      "sprintRecovery": 40,
+      "sprintRecovery": 55,
       "adsMove": 0,
       "adsTime": 0,
       "deploy": 435
@@ -2978,82 +3028,84 @@
     "digest": {
       "algorithm": "SHA-256",
       "format": "canonical-row-v1",
-      "value": "c5a6c3d2c021a44dd04fd3e5bed4366a40674aca1c6e15e6578620be7049b5fe"
+      "value": "d9a45b666849ae1474accea4d01ebd7fedc8330ae628d321726b9bad16d49af7"
     },
     "perWeaponDigest": {
       "ak205": "429316af0dad59ac8caf500fe91656da310b9fc084414934dc8319937c58bba4",
-      "ak4d": "05a649094166e045bf7c94f8f188f0c83482e647e6f5d0075cd1ce4b47a239d0",
-      "b36a4": "ba4958adc3791f57f262e657e89433776a133c12da7d27e1169301b2836f3e2d",
+      "ak4d": "a4879a2a292cbe722cae3200f8943ecad5e0af39e152716bcabc878ba08fa932",
+      "b36a4": "dc902689597b04ee311c80f17cdb83857bc65f795dab0ad3bdc9ebfd5267fd91",
+      "brod3": "fbd6ea21a33afc005708ba52a9f13fa54b46757aa3443dde01ce2ffc4fd5f377",
       "cz3a1": "3183633ab44d17ae0dbf1b8bf73ebe860ae64320df57f73a657c68c0008847dc",
       "db12": "dbbe9b944f5693bf44c253977bff6fbb7fdb4e52e5c9a007e302ed2f9a8dac9e",
-      "drsiar": "0f5c95a11165f9f900104193cc0137fbcd5fcd8804d11a96dd090bc37041f377",
+      "drsiar": "255733dd607e7d7df97f9d732e8b7d04736810289f839afe98e4ffe408e41ca0",
+      "ef88": "13e95209dde434331ec47bc2ee359c1566b59f42e54a1c30825da7ba78e6c68e",
       "es57": "c8a90a0ce607f845a6e1f367a28d38b12569ffd1e1a2c92cd62f313be69b7565",
       "ggh22": "cf4f7dbbeedb62bb8f4ed1a7a3d03692705ce705021c0c17ad38cc707f485e36",
       "grtbc": "02689020ce82a6619e777df55f141044147d828e2df6f21085bdc0aacc48c470",
-      "grtcps": "ea5a3ecc4e84c4937df6026dbb5d0dea5fe2a9cb0c1e811e9c6d95416e125478",
-      "kord6p67": "571b5b2588cf0d0defa0fd72b810fb236cff407578c1f9aad5929c104fd93c9b",
+      "grtcps": "2a9e0bb9396806b28608ccb9df90b779bc98064c17f1ba6ea5dcfbeba46191f1",
+      "kord6p67": "926376678c14f6cb34311d72d266faed766581f573c53ddb74bd2f79614bee11",
       "ks18k": "07a4c9122220815309c09413b2c23c470db28969fe24a411081d4d4138f1ce38",
-      "kts100": "602306b559dbc7bc73857682418227c3393bbef9a09182bbd6e715cd27af7acc",
+      "kts100": "fc1e888dd9c8851bee4315e03b61ce805c6af118191d1a398a9932058046d80c",
       "kv9": "634a160672b95237b34c9dde61e4d824f8756bc456a45f5dc37c1abd9013e0b3",
-      "l110": "a3edca751beb6b5ecbffc81442c89977ecb08b84c895221b1a9ecb7e1e5f485c",
+      "l110": "fad26ea613e12fe2e38467d2406699ef393d43ecc135886da6f50ec26de6c6c5",
       "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
-      "l85a3": "b58af051c0b0d14612ddbe3e11819be920ab2369d6962ca3ae8c1b77de872bfd",
-      "lmr27": "6fd0df25158de3561aa6c1f644dafe91b2612b0395ff07105390a428f9a9186e",
+      "l85a3": "d4a3d79a626ec0dbcb0aa9a1cadda20572756cc594276c7bfbdacf02dedf5aab",
+      "lmr27": "12dca64795408c0649b63cc7b0d4ffdaa572060beb5d9efb3b88390a7b8598cd",
       "m1014": "3ee3bcb87f2502106cbb60999c59c0df83cb1448b799e85dd62a03eb0c864d09",
-      "m121a2": "312b6d7cfd8f4b1bc63c6495c25d2cb94030ace8618fa9d3cc01bafe385cab3b",
-      "m123k": "9fb9fddf3cc4bae7969ef0ddfb2e41a595ed9c49ec2e705cd1549db386ff1838",
-      "m16a4": "0d0524c8313751769b736e37dcd83cbb2e52bc7f8fe0d1c3880be416ffb0814c",
-      "m2010esr": "04ce0a833cd741817e671291c2c46440b48d5da02c98b55c1c415e1fae8c377a",
-      "m240l": "bc3d7818c4d5d388ddec67a0020863ad9de1cc13466496b5364f1e9e29037580",
-      "m250": "f7f363aa65d259717f8f6c8b06d99a87aa72cc01bb777ee5c1098f5650402972",
-      "m277": "4cad73b388eb8b0e20cd539a74162887a9f3095d16f25019500402a8f3ba1c20",
+      "m121a2": "233d3c3ed57b73176e14de9a7de504b3b24f6f049fa9d919e0a1b4b80480f3bd",
+      "m123k": "90454b27cabb2432b3a87d717543a6730a276e3cd8c295fb6aaecc91b71cdbda",
+      "m16a4": "466cead3899752045928a74308948974897309e5e4b7e887b7ad85b1edbf5387",
+      "m2010esr": "ebe20aa8f3840edf2777bd45f0699aed9cd8ff985a1a4453b3add265b761a635",
+      "m240l": "3a4a5f9c1a14699c2b138434509d9de6028a51189bab730c64db7ca4339989f6",
+      "m250": "2aec820fddea04b51cc82eea5096e6aaa421d4db8aa2d339015539ed23f94267",
+      "m277": "5d2746f93ed14e30867580aed329e69b1f41068ee8980d5aa9d982c7ef6d8921",
       "m357trait": "aea5a684d4655de46242d24baee1ae2359cd2dcb11b74d4ea3ed9fcde6ff87a8",
-      "m39emr": "118b8a8ca68fcde87737c64199ecea5b89df4fb5bb84d216ce9ac1f300eb9b99",
-      "m417a2": "827df0543d27fb33c74d335b7de430d230b81ffc004d81848bb2a9165f1851e9",
-      "m433": "17da54e9b9495f2cc10536fdb7457f6838f7ad4945ba41d4e51cb256a3f68cce",
+      "m39emr": "5f6510d5920b334dcfe1ff15024a967dcfb05a9cca46a14dfa885c215f4a8f26",
+      "m417a2": "3d62f2bd545ae3ec8cbdad8e8d7f9a29eec7d0dea31c219d3ad2908f01565c33",
+      "m433": "dcb2ad5ea2e2bbfdc9513a984c69b096885a8a7d755d7c4925f658d8ebe5e508",
       "m44": "50b9753b378db6a50609085924d0939207101e9c93f378b3d5a828854b10cb5f",
       "m45a1": "72df88304ca40fd9f110d297c86d4bb4f35d2482308f03600a234f7c3090cee3",
-      "m4a1": "84cf866db673f7f2fbf2f3be7a426b349090672d9746891e3c5da5ccd7dc7a3d",
-      "m60": "ef82a25ba66aebd678594d26a63942a402e00efc66408c957f3165d0e79c3570",
+      "m4a1": "654fc27b0455f782495dfb2d9360409f6e7a9a6287247185717ba71a417c7264",
+      "m60": "7f21f9e86df7241e6ea44dafe7f532b57a61f516cd2c8c4e6d5e829b414a33c7",
       "m87a1": "2a63caa41833cfa9b73e34cbdfc6065450ff57eb43c7c7dd6fa4fbfaa001f345",
       "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
-      "nvo228e": "c092aa303a0253fdfd2b3f8fe8363d4a9aa4f6100164ecc5869cc44fb46c7250",
+      "nvo228e": "3512164257fb7da0d11ef2231c34dda35073c6e8efacd0fae560d6d7e96d0597",
       "p18": "e73ce53f4c570b3ef78b0173d89befd0c4ae320bd0241329f897696c09beed17",
       "pp19": "872554ad6ab298088e3da7c30620a5b6e843bf2beb34127845e7fcfd3db6404f",
-      "psr": "9ab639668332f4d230fc2f06c20329258ace2870daf6801415466255414c1535",
+      "psr": "e54ffe2630714fb706110fa8b95e89ac79de2815569b488be4d4b79cd68df791",
       "pw5a3": "b76f70d0ecb8a8fc6d69150a7a28a6028431be2f5aeec814464c12a72ecfd0fa",
       "pw7a2": "340b8a2b6d075c50d6165e474a5e333f16dac503cdbd99bd4076d10031578134",
-      "qbz192": "ed0d6b6d1a7083ea24bc7ec6dcd215f4143b16b6832b529a06c35ab29965ca83",
-      "rpk74m": "2d7c966f8026e1900db2f58a8a5b1dc42d639712a9a26c34efe38b8fb90d3020",
-      "rpkm": "8ef060a0ce6d78d1dc147f4e26e020381705f4da21b41628e6ecb972af989945",
+      "qbz192": "a88ab1a5deb61b706d955b4e0e267b4e6dd89239679201ecb6220a890f5ab80e",
+      "rpk74m": "a8cf10adf837d5b0d275ba93f6aa4c03154f20adfb8f67a2d36bff8857a45af8",
+      "rpkm": "16fb223f99e3cfb029fcb02177b3d39fd80a8f450df331e857409ed8390faf53",
       "scw10": "136f9c6a8072b86d7df9067e1c7d95b5960a9f43e48ba4a6f74f573d83dbc0f1",
       "sg553r": "44c3b626e56a071164c854ba5dd018776a44d6211108b0627ce7f0a6f3f2b4eb",
       "sgx": "26775600349590f428d397c7b3961ffedd3125f5224f4617d84f352da682ecc5",
       "sl9": "71b1eb4be1c466e20742544f8b2fca6a6c4fe0f4440b60c1c838b660d10ec051",
       "sor300sc": "f963de0124ea693c944331d1bd76ca902edcb877c98a2a03178ae308f9ef1f13",
-      "sor556": "9d571ffbbcf207c4acb25ef03ff8a2f25bcda6864eb214c9d42d514375cceb61",
-      "sv98": "2b5297a79a53ae965be2b5fc80c2a59cec483b3265f83967752f784df4a18dd2",
+      "sor556": "7cd6efab40c4a034e07ca2d20b3a66a70eebe40dddea1af17a64311db29b7f5f",
+      "sv98": "454c25c23a373ceefb204db4aee1a8d1b3273fb84a821098f2d1a74366ff8c52",
       "svdm": "8fe9341992e1e79300d16329c2c0c58981bf24426f93ba30317e19acd336eb03",
       "svk86": "fa1e14e60d5288ceee0e1287f240fd87a69e0403ac276c0d6f46d92e357ae0b3",
-      "tr7": "82f6fecdb9576d4ea062a9fa91c7d5fc11559c456c913ae45628d2c25cbd9a94",
+      "tr7": "bf05153d2cd2a4f91be85b14a8a86e797b68ef83de88e91b901a2bfbc3e656bb",
       "umg40": "e1e9852d70ccbb9d94fb51e91cbb6c21da329a1ed18703ef43ac8556f60906d8",
       "usg90": "adbe21770bcf986057ed71d7d4b6cce0de5caaab371e3978141520309dad1de3",
-      "vcr2": "509570ad4b7bca35867757a9407ae408b8a9ff00adc70299908180d2c2d0f44a",
+      "vcr2": "62ba3869a3f28a7a1db6d8a0d38b0472bc0222ea111b665c7a69839f022c0ace",
       "vz61": "c7b0a490eadf9fbc57a58ecb31ae9a797854204b0b0a7473ec3c2028c4e40e96"
     },
     "rawIndexHistograms": {
       "sprintRecovery": {
         "primary": {
-          "0": 834,
-          "1": 5369,
-          "2": 12936,
-          "3": 18606,
-          "4": 18413,
-          "5": 11160,
-          "6": 2382,
+          "0": 1014,
+          "1": 6059,
+          "2": 13920,
+          "3": 19998,
+          "4": 20237,
+          "5": 12525,
+          "6": 2862,
           "7": 285,
           "8": 375,
-          "-1": 40
+          "-1": 55
         },
         "sidearm": {
           "0": 24,
@@ -3066,13 +3118,13 @@
       "adsMove": {
         "primary": {
           "0": 247,
-          "1": 1677,
-          "2": 3533,
-          "3": 9346,
-          "4": 12669,
-          "5": 18365,
-          "6": 17452,
-          "7": 6607,
+          "1": 1893,
+          "2": 4397,
+          "3": 9562,
+          "4": 13943,
+          "5": 20866,
+          "6": 19171,
+          "7": 6747,
           "8": 504
         },
         "sidearm": {
@@ -3081,14 +3133,14 @@
       },
       "adsTime": {
         "primary": {
-          "0": 4334,
-          "1": 16149,
-          "2": 21942,
-          "3": 17373,
-          "4": 7562,
-          "5": 1892,
-          "6": 968,
-          "7": 180
+          "0": 5030,
+          "1": 18743,
+          "2": 25054,
+          "3": 18609,
+          "4": 6977,
+          "5": 1857,
+          "6": 900,
+          "7": 160
         },
         "sidearm": {
           "0": 96,
@@ -3098,13 +3150,13 @@
       },
       "deploy": {
         "primary": {
-          "4": 580,
-          "5": 4807,
-          "6": 12596,
-          "7": 19021,
-          "8": 18570,
-          "9": 11184,
-          "10": 2895,
+          "4": 670,
+          "5": 5437,
+          "6": 13616,
+          "7": 20281,
+          "8": 20580,
+          "9": 12624,
+          "10": 3375,
           "11": 312,
           "12": 435
         },
@@ -3120,6 +3172,21 @@
     },
     "clampCaseKeys": {
       "sprintRecovery": [
+        "brod3/20_rnd/full_angled/rail_cover/frangible",
+        "brod3/20_rnd/full_angled/rail_cover/hollow_pt",
+        "brod3/20_rnd/full_angled/rail_cover/lightweight",
+        "brod3/20_rnd/full_angled/rail_cover/penetration",
+        "brod3/20_rnd/full_angled/rail_cover/standard",
+        "brod3/20_rnd/slim_angled/rail_cover/frangible",
+        "brod3/20_rnd/slim_angled/rail_cover/hollow_pt",
+        "brod3/20_rnd/slim_angled/rail_cover/lightweight",
+        "brod3/20_rnd/slim_angled/rail_cover/penetration",
+        "brod3/20_rnd/slim_angled/rail_cover/standard",
+        "brod3/20_rnd/slim_handstop/rail_cover/frangible",
+        "brod3/20_rnd/slim_handstop/rail_cover/hollow_pt",
+        "brod3/20_rnd/slim_handstop/rail_cover/lightweight",
+        "brod3/20_rnd/slim_handstop/rail_cover/penetration",
+        "brod3/20_rnd/slim_handstop/rail_cover/standard",
         "m4a1/20_rnd/adj_angled/rail_cover/frangible",
         "m4a1/20_rnd/adj_angled/rail_cover/hollow_pt",
         "m4a1/20_rnd/adj_angled/rail_cover/lightweight",
@@ -3605,7 +3672,7 @@
   "detailSelection": {
     "topRawIndexAtLeast": 9,
     "sampleCasesPerWeapon": 3,
-    "detailCaseCount": 646
+    "detailCaseCount": 667
   },
   "detailCases": [
     {
@@ -3906,6 +3973,600 @@
       }
     },
     {
+      "caseKey": "brod3/20_fast/6h64_vert/buffer/frangible",
+      "weaponId": "brod3",
+      "magazineId": "20_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "buffer",
+      "ammoId": "frangible",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 1,
+        "index": 1,
+        "clamped": false,
+        "value": 167
+      },
+      "sprintRecovery": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 133
+      },
+      "adsMove": {
+        "rawIndex": 3,
+        "index": 3,
+        "clamped": false,
+        "value": 0.75
+      },
+      "deploy": {
+        "rawIndex": 6,
+        "index": 6,
+        "clamped": false,
+        "value": 467
+      }
+    },
+    {
+      "caseKey": "brod3/20_fast/6h64_vert/buffer/hollow_pt",
+      "weaponId": "brod3",
+      "magazineId": "20_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "buffer",
+      "ammoId": "hollow_pt",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 1,
+        "index": 1,
+        "clamped": false,
+        "value": 167
+      },
+      "sprintRecovery": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 133
+      },
+      "adsMove": {
+        "rawIndex": 3,
+        "index": 3,
+        "clamped": false,
+        "value": 0.75
+      },
+      "deploy": {
+        "rawIndex": 6,
+        "index": 6,
+        "clamped": false,
+        "value": 467
+      }
+    },
+    {
+      "caseKey": "brod3/20_fast/6h64_vert/buffer/lightweight",
+      "weaponId": "brod3",
+      "magazineId": "20_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "buffer",
+      "ammoId": "lightweight",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 1,
+        "index": 1,
+        "clamped": false,
+        "value": 167
+      },
+      "sprintRecovery": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 133
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 6,
+        "index": 6,
+        "clamped": false,
+        "value": 467
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/full_angled/rail_cover/frangible",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "full_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "frangible",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/full_angled/rail_cover/hollow_pt",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "full_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "hollow_pt",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/full_angled/rail_cover/lightweight",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "full_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "lightweight",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 1,
+        "index": 1,
+        "clamped": false,
+        "value": 0.91
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/full_angled/rail_cover/penetration",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "full_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "penetration",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/full_angled/rail_cover/standard",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "full_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "standard",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_angled/rail_cover/frangible",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "frangible",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_angled/rail_cover/hollow_pt",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "hollow_pt",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_angled/rail_cover/lightweight",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "lightweight",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 1,
+        "index": 1,
+        "clamped": false,
+        "value": 0.91
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_angled/rail_cover/penetration",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "penetration",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_angled/rail_cover/standard",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "standard",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_handstop/rail_cover/frangible",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_handstop",
+      "ergoId": "rail_cover",
+      "ammoId": "frangible",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_handstop/rail_cover/hollow_pt",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_handstop",
+      "ergoId": "rail_cover",
+      "ammoId": "hollow_pt",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_handstop/rail_cover/lightweight",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_handstop",
+      "ergoId": "rail_cover",
+      "ammoId": "lightweight",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 1,
+        "index": 1,
+        "clamped": false,
+        "value": 0.91
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_handstop/rail_cover/penetration",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_handstop",
+      "ergoId": "rail_cover",
+      "ammoId": "penetration",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "brod3/20_rnd/slim_handstop/rail_cover/standard",
+      "weaponId": "brod3",
+      "magazineId": "20_rnd",
+      "gripId": "slim_handstop",
+      "ergoId": "rail_cover",
+      "ammoId": "standard",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
       "caseKey": "cz3a1/20_fast/6h64_vert/buffer/frangible",
       "weaponId": "cz3a1",
       "magazineId": "20_fast",
@@ -4200,6 +4861,105 @@
         "index": 9,
         "clamped": false,
         "value": 733
+      }
+    },
+    {
+      "caseKey": "ef88/30_fast/6h64_vert/buffer/frangible",
+      "weaponId": "ef88",
+      "magazineId": "30_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "buffer",
+      "ammoId": "frangible",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 3,
+        "index": 3,
+        "clamped": false,
+        "value": 250
+      },
+      "sprintRecovery": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 200
+      },
+      "adsMove": {
+        "rawIndex": 6,
+        "index": 6,
+        "clamped": false,
+        "value": 0.54
+      },
+      "deploy": {
+        "rawIndex": 8,
+        "index": 8,
+        "clamped": false,
+        "value": 633
+      }
+    },
+    {
+      "caseKey": "ef88/30_fast/6h64_vert/buffer/hollow_pt",
+      "weaponId": "ef88",
+      "magazineId": "30_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "buffer",
+      "ammoId": "hollow_pt",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 3,
+        "index": 3,
+        "clamped": false,
+        "value": 250
+      },
+      "sprintRecovery": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 200
+      },
+      "adsMove": {
+        "rawIndex": 6,
+        "index": 6,
+        "clamped": false,
+        "value": 0.54
+      },
+      "deploy": {
+        "rawIndex": 8,
+        "index": 8,
+        "clamped": false,
+        "value": 633
+      }
+    },
+    {
+      "caseKey": "ef88/30_fast/6h64_vert/buffer/lightweight",
+      "weaponId": "ef88",
+      "magazineId": "30_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "buffer",
+      "ammoId": "lightweight",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 3,
+        "index": 3,
+        "clamped": false,
+        "value": 250
+      },
+      "sprintRecovery": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 200
+      },
+      "adsMove": {
+        "rawIndex": 5,
+        "index": 5,
+        "clamped": false,
+        "value": 0.6
+      },
+      "deploy": {
+        "rawIndex": 8,
+        "index": 8,
+        "clamped": false,
+        "value": 633
       }
     },
     {
@@ -7214,10 +7974,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7247,10 +8007,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7280,10 +8040,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7313,10 +8073,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7346,10 +8106,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7379,10 +8139,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7412,10 +8172,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7445,10 +8205,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7478,10 +8238,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7511,10 +8271,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7544,10 +8304,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7577,10 +8337,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -7610,10 +8370,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -7643,10 +8403,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -7676,10 +8436,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -7709,10 +8469,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -14078,10 +14838,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -14111,10 +14871,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -14144,10 +14904,10 @@
       "ammoId": "lightweight",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -14177,10 +14937,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -14210,10 +14970,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16520,10 +17280,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16553,10 +17313,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16586,10 +17346,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16619,10 +17379,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 500
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18797,10 +19557,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18830,10 +19590,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18863,10 +19623,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18896,10 +19656,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 5,
+        "index": 5,
         "clamped": false,
-        "value": 433
+        "value": 367
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -22307,10 +23067,10 @@
         "value": 200
       },
       "adsMove": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 0.54
+        "value": 0.47
       },
       "deploy": {
         "rawIndex": 8,
@@ -22340,10 +23100,10 @@
         "value": 200
       },
       "adsMove": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 0.54
+        "value": 0.47
       },
       "deploy": {
         "rawIndex": 8,
@@ -22373,10 +23133,10 @@
         "value": 200
       },
       "adsMove": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 0.54
+        "value": 0.47
       },
       "deploy": {
         "rawIndex": 8,
@@ -24155,10 +24915,10 @@
         "value": 167
       },
       "adsMove": {
-        "rawIndex": 4,
-        "index": 4,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 0.67
+        "value": 0.54
       },
       "deploy": {
         "rawIndex": 7,
@@ -24188,10 +24948,10 @@
         "value": 167
       },
       "adsMove": {
-        "rawIndex": 4,
-        "index": 4,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 0.67
+        "value": 0.54
       },
       "deploy": {
         "rawIndex": 7,
@@ -24221,10 +24981,10 @@
         "value": 167
       },
       "adsMove": {
-        "rawIndex": 4,
-        "index": 4,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 0.67
+        "value": 0.54
       },
       "deploy": {
         "rawIndex": 7,

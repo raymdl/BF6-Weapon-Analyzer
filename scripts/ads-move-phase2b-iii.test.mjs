@@ -9,6 +9,7 @@ import { blankAtts } from '../sim/loadout.js';
 const root = join(import.meta.dirname, '..');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
 const baselinePath = join(root, 'scripts/ads-move-phase2b-iii-baseline.json');
+const rosterGuard = readJson('scripts/ads-move-phase2b-iii-roster-guard.json');
 
 const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
@@ -24,8 +25,8 @@ const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
 const STANDARD_SHIFTED_GRIPS = ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby'];
 const SOURCE_GRIP_NAMES = ['None', '6H64 Vertical', 'Classic Vertical', 'Stippled Stubby', 'Low-Profile Stubby'];
 const EXEMPT_SOURCE_WEAPONS = new Set(['SVK-8.6', 'VSSM', '18.5KS-K', 'DB-12']);
-const PRE_PHASE3_DIGEST = 'c5a6c3d2c021a44dd04fd3e5bed4366a40674aca1c6e15e6578620be7049b5fe';
-const PRE_PHASE4_DIGEST = '08d8da9b78ad0429f292e60ee8808874c9f54b41a4612227d91b09e6b290ad29';
+const PRE_PHASE3_DIGEST = 'd9a45b666849ae1474accea4d01ebd7fedc8330ae628d321726b9bad16d49af7';
+const PRE_PHASE4_DIGEST = '34987458cd85f02ac64f6153f5bafa830be6b3a6595505baf9689da81bcda541';
 const VARIANT_BASES = {
   svk86: {
     '6h64_vert_svk86': '6h64_vert',
@@ -145,6 +146,7 @@ function loadoutFor({ weaponId, barrelId, magazineId, gripId, ergoId, ammoId }) 
 }
 
 function buildEnumeration({
+  modelWeapons = weapons,
   modelAttachments = attachments,
   modelBalance = balance,
   verifyResolver = true,
@@ -160,7 +162,7 @@ function buildEnumeration({
   const dimensionTotals = { gripChoices: 0, ergoChoices: 0, ammoChoices: 0 };
   let magazineEntryCount = 0;
 
-  for (const weapon of [...weapons].sort((a, b) => a.id.localeCompare(b.id))) {
+  for (const weapon of [...modelWeapons].sort((a, b) => a.id.localeCompare(b.id))) {
     const weaponMag = modelAttachments.WEAPON_MAG[weapon.id];
     assert.ok(weaponMag, `missing magazine catalog for ${weapon.id}`);
     const weaponAtts = modelAttachments.WEAPON_ATTS[weapon.id] ?? {};
@@ -231,7 +233,7 @@ function buildEnumeration({
   return {
     kind,
     scope: {
-      weaponCount: weapons.length,
+      weaponCount: modelWeapons.length,
       magazineEntryCount,
       caseDimensions: 'weapon × magazine × selectable grip × selectable ergonomic × available ammo',
       gripSelection: 'none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot',
@@ -241,7 +243,7 @@ function buildEnumeration({
       caseKey: 'weaponId/magazineId/gripId/ergoId/ammoId',
     },
     counts: {
-      weapons: weapons.length, magazineEntries: magazineEntryCount,
+      weapons: modelWeapons.length, magazineEntries: magazineEntryCount,
       gripChoices: dimensionTotals.gripChoices, ergoChoices: dimensionTotals.ergoChoices,
       ammoChoices: dimensionTotals.ammoChoices, cases: rows.length,
       primaryCases: tableCaseCounts.primary, sidearmCases: tableCaseCounts.sidearm,
@@ -291,8 +293,8 @@ function sha256(serialization) {
   return createHash('sha256').update(serialization, 'utf8').digest('hex');
 }
 
-function perWeaponDigests(cases) {
-  return Object.fromEntries([...weaponById.keys()].sort().map(weaponId => [
+function perWeaponDigests(cases, weaponIds = weaponById.keys()) {
+  return Object.fromEntries([...weaponIds].sort().map(weaponId => [
     weaponId, sha256(canonicalSerialization(cases.filter(row => row.weaponId === weaponId))),
   ]));
 }
@@ -359,8 +361,8 @@ function sourceGripEvidence() {
     vz61Shifted.stats.adsMoveSpeedMultiplier);
   liveShiftedWeaponIds.push(weaponIdByName.get(normalize('VZ. 61')));
   liveShiftedWeaponIds.sort();
-  assert.equal(liveShiftedWeaponIds.length, 44, 'live shifted weapons');
-  assert.deepEqual(sourceOnlyShiftedWeaponNames, ['BROD 3', 'EF88']);
+  assert.equal(liveShiftedWeaponIds.length, 46, 'live shifted weapons');
+  assert.deepEqual(sourceOnlyShiftedWeaponNames, []);
 
   const panelReadings = {};
   for (const weaponName of completeNames) {
@@ -522,6 +524,19 @@ test('Phase 2b-iii reconstructs the complete post-migration enumeration', () => 
   assert.deepEqual(actual.clampCounts, baseline.clampCounts);
   assert.equal(sha256(canonicalSerialization(actual.cases)), baseline.digest.value);
   assert.deepEqual(perWeaponDigests(actual.cases), baseline.perWeaponDigest);
+  const priorWeaponIds = Object.keys(rosterGuard.perWeaponDigest).sort();
+  const currentWeaponIds = Object.keys(baseline.perWeaponDigest).sort();
+  const priorWeapons = weapons.filter(weapon => priorWeaponIds.includes(weapon.id));
+  const priorEnumeration = buildEnumeration({ modelWeapons: priorWeapons, kind: 'ads-move-phase2b-iii-current-59-roster' });
+  const fullRosterPriorCases = actual.cases.filter(row => priorWeaponIds.includes(row.weaponId));
+  assert.equal(rosterGuard.weaponCount, 59);
+  assert.equal(priorWeaponIds.length, rosterGuard.weaponCount);
+  assert.equal(priorEnumeration.cases.length, rosterGuard.caseCount);
+  assert.deepEqual(priorEnumeration.cases, fullRosterPriorCases);
+  assert.equal(sha256(canonicalSerialization(priorEnumeration.cases)), rosterGuard.caseDigest);
+  assert.deepEqual(perWeaponDigests(fullRosterPriorCases, priorWeaponIds), rosterGuard.perWeaponDigest);
+  assert.deepEqual(rosterGuard.addedWeaponIds, ['brod3', 'ef88']);
+  assert.deepEqual(currentWeaponIds.filter(weaponId => !priorWeaponIds.includes(weaponId)), rosterGuard.addedWeaponIds);
   assert.deepEqual(rawIndexHistograms(actual.cases), baseline.rawIndexHistograms);
   assert.deepEqual(detailCases(actual.cases), baseline.detailCases);
 });
@@ -536,16 +551,16 @@ test('Phase 2b-iii anchors the complete pre-migration digest', () => {
   assert.deepEqual(perWeaponDigests(actual.cases), baseline.preMigration.perWeaponDigest);
 });
 
-test('Phase 2b-iii records source fidelity and the 44-weapon live population', () => {
+test('Phase 2b-iii records source fidelity and the 46-weapon live population', () => {
   const source = sourceGripEvidence();
   assert.deepEqual(balance.ADS_MOVE_TIERS, [1, 0.91, 0.82, 0.75, 0.67, 0.6, 0.54, 0.47, 0.42, 0.37]);
   assert.equal(balance.ADS_MOVE_TIERS.includes(0.325), false);
   assert.deepEqual(source, baseline.migration.sourceEvidence);
   assert.equal(source.sourceCompleteWeaponCount, 49);
   assert.equal(source.sourceShiftedWeaponCount, 45);
-  assert.equal(source.liveShiftedWeaponIds.length, 44);
+  assert.equal(source.liveShiftedWeaponIds.length, 46);
   assert.deepEqual(source.sourceExceptionWeaponNames, ['18.5KS-K', 'DB-12', 'SVK-8.6', 'VSSM']);
-  assert.deepEqual(source.sourceOnlyShiftedWeaponNames, ['BROD 3', 'EF88']);
+  assert.deepEqual(source.sourceOnlyShiftedWeaponNames, []);
   for (const gripId of STANDARD_SHIFTED_GRIPS) assert.equal(gripById.get(gripId).adsMoveSpeedTierShift, 1, gripId);
   for (const mappings of Object.values(VARIANT_BASES)) {
     for (const variantId of Object.keys(mappings)) assert.equal(gripById.get(variantId).adsMoveSpeedTierShift, undefined, variantId);
@@ -561,7 +576,7 @@ test('Phase 2b-iii enumerates exactly the intended ADS-move transition', () => {
   const expectedGripIds = new Set(STANDARD_SHIFTED_GRIPS);
   assert.deepEqual(baseline.migration.changedWeaponIds, sourceGripEvidence().liveShiftedWeaponIds);
   assert.equal(diffs.length, baseline.migration.changedCaseCount);
-  assert.equal(new Set(diffs.map(diff => diff.weaponId)).size, 44);
+  assert.equal(new Set(diffs.map(diff => diff.weaponId)).size, 46);
   assert.deepEqual([...new Set(diffs.map(diff => diff.weaponId))].sort(), baseline.migration.changedWeaponIds);
   assert.equal(changedCaseKeysDigest(diffs), baseline.migration.changedCaseKeysDigest);
   assert.deepEqual(Object.fromEntries([...new Set(diffs.map(diff => diff.weaponId))].sort().map(weaponId => [
@@ -589,7 +604,7 @@ test('Phase 2b-iii enumerates exactly the intended ADS-move transition', () => {
 test('Phase 2b-iii adds no clamps and preserves existing sprint/deploy clamp identities', () => {
   const actual = current();
   const previous = before();
-  assert.deepEqual(actual.clampCounts, { sprintRecovery: 40, adsMove: 0, adsTime: 0, deploy: 435 });
+  assert.deepEqual(actual.clampCounts, { sprintRecovery: 55, adsMove: 0, adsTime: 0, deploy: 435 });
   assert.deepEqual(actual.cases.filter(row => row.adsMove.clamped), []);
   assert.deepEqual(actual.cases.filter(row => row.sprintRecovery.clamped).map(row => row.caseKey),
     previous.cases.filter(row => row.sprintRecovery.clamped).map(row => row.caseKey));
@@ -609,7 +624,7 @@ test('Phase 2b-iv converts base indices with strict full-enumeration zero-diff',
   assert.deepEqual(perWeaponDigests(actual.cases), baseline.perWeaponDigest);
   assert.deepEqual(rawIndexHistograms(actual.cases), baseline.rawIndexHistograms);
   assert.deepEqual(clampCaseKeysFor(actual.cases), baseline.clampCaseKeys);
-  assert.deepEqual(actual.clampCounts, { sprintRecovery: 40, adsMove: 0, adsTime: 0, deploy: 435 });
+  assert.deepEqual(actual.clampCounts, { sprintRecovery: 55, adsMove: 0, adsTime: 0, deploy: 435 });
   assert.deepEqual(actual.cases.filter(row => row.adsMove.clamped), []);
 });
 
