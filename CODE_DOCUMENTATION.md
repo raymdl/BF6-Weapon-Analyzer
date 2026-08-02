@@ -94,8 +94,8 @@ flowchart LR
    Chart.js load-failure fallback in `index.html`).
 2. Data files are fetched without cache-busting query strings — GitHub Pages serves
    proper `ETag`/`Last-Modified` headers, so browsers revalidate and pick up new data
-   automatically. The header's "Updated …" date is derived at runtime from the
-   `Last-Modified` header on `weapons.json` (set by Pages from the file's last commit).
+   automatically. The header's "Updated …" date is static site content in `index.html`;
+   it is not derived from response or repository metadata at runtime.
 3. Data is pushed into `sim/core.js` via `setSimContext()` and `sim/applyAttachments.js`
    via `setAttachmentContext()`.
 4. `sim/loadout.js` provides shared attachment defaults, point totals, assumed-stat
@@ -608,6 +608,39 @@ For each shot:
 - Shot positions are sampled **uniform over radius** (not uniform over area):
   `r = spreadRadius × rng()` — this matches the franchise convention and makes shot
   distributions visually center-weighted (half the shots land in the inner 25% of the area).
+
+#### Heavy-type barrel SIPS calibration *(provisional)*
+
+`Heavy`, `Heavy Extended`, and `Cryogenic` currently use
+`adsSpreadIncMult: 0.80`. That field is deliberately marked in
+`assumedFields`: it is an Analyzer fit, not a confirmed literal in-game attachment
+parameter.
+
+A Sym community discussion reported that Heavy reduces raw SIPS by one third, which
+would imply a direct raw multiplier of `2/3` (`0.667`). The Analyzer cannot apply
+that value literally and still reproduce the supplied sustained-fire spread curve,
+because `simulateSpread` adds SIPS and then applies nonlinear firing recovery after
+every shot. At low spread, the offset term alone can absorb most of a reduced SIPS
+increment; the coefficient/exponent term adds further recovery as bloom grows.
+
+The calibration uses M16A4 with its Full Auto ergonomics attachment (ADS standing,
+16 shots). Its Basic SIPS is `0.360°`, the minimum spread is `0.050°`, and the
+Basic shot-16 spread is `1.025°`. The supplied reference graph retains approximately
+`(0.75 - 0.10) / (1.06 - 0.10) ≈ 68%` of Basic bloom above minimum. In this
+Analyzer, the corresponding results are:
+
+| Multiplier applied to Analyzer SIPS | Shot-16 spread | Basic bloom retained above minimum |
+|---|---:|---:|
+| `0.667` (literal raw claim) | `0.391°` | `35.0%` |
+| `0.780` | `0.700°` | `66.6%` |
+| `0.800` (current rounded fit) | `0.739°` | `70.7%` |
+
+`0.80` is therefore a rounded `0.78–0.80` output fit, chosen within the precision of
+the graph reading; it does **not** mean Heavy is believed to reduce the game's raw
+SIPS by only 20%. Do not add guessed Heavy-specific firing-recovery changes on top
+of this fit. Replace the field-level assumption only when exact Heavy spread-recovery
+parameters or repeatable in-game Basic-versus-Heavy curves are available, then
+recalibrate against multiple automatic weapons and fire rates.
 
 ### Recoil Control
 
