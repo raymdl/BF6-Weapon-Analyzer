@@ -420,10 +420,10 @@ test('PP-19 default audited loadout and comparison input remain serializable', (
       { cls: pp19.cls, weapon: pp19, atts: defaultAttsForWeapon(pp19) },
     ],
     comparing: true,
-    chart: { mode: 'btk', btkHS: 2, showAds: false },
+    chart: { mode: 'ttk', btkHS: 2, showAds: true, showVel: true },
     recoil: {
       aim: 'hip', stance: 'move', platform: 'console', control: true,
-      compensationLevel: 72,
+      compensationLevel: 72, view: 'target', distance: 260, zeroDistance: 300,
     },
   };
   const share = shareCodec.encodeState(sourceState, () => 20);
@@ -433,8 +433,8 @@ test('PP-19 default audited loadout and comparison input remain serializable', (
       { cls: 'Assault Rifle', weapon: null, atts: blankAtts() },
     ],
     comparing: false,
-    chart: { mode: 'dmg', btkHS: 0, showAds: false },
-    recoil: { aim: 'ads', stance: 'stand', platform: 'pc', control: false, compensationLevel: 85 },
+    chart: { mode: 'dmg', btkHS: 0, showAds: false, showVel: false },
+    recoil: { aim: 'ads', stance: 'stand', platform: 'pc', control: false, compensationLevel: 85, view: 'angle', distance: 30, zeroDistance: 100 },
   };
   const params = shareCodec.restoreFromHash(restored, `#${share}`, weapons);
   assert.ok(params instanceof URLSearchParams);
@@ -442,11 +442,14 @@ test('PP-19 default audited loadout and comparison input remain serializable', (
   assert.equal(restored.slots[1].weapon.id, 'pp19');
   assert.equal(restored.slots[0].atts.mag, '30_rnd');
   assert.equal(restored.comparing, true);
-  assert.deepEqual(restored.chart, { mode: 'btk', btkHS: 2, showAds: false });
+  assert.deepEqual(restored.chart, { mode: 'ttk', btkHS: 2, showAds: true, showVel: true });
   assert.equal(restored.recoil.aim, 'hip');
   assert.equal(restored.recoil.stance, 'move');
   assert.equal(restored.recoil.platform, 'console');
   assert.equal(restored.recoil.compensationLevel, 72);
+  assert.equal(restored.recoil.view, 'target');
+  assert.equal(restored.recoil.distance, 260);
+  assert.equal(restored.recoil.zeroDistance, 300);
 });
 
 test('release validator rejects a 58-weapon fixture with PP-19 removed', () => {
