@@ -97,10 +97,17 @@ const TARGET_FRAME_MIN_FILL = 0.22;
 // Target-view zoom is expressed as real optic magnification. A 1x sight is
 // taken to show this much vertical field, so every step on the ladder frames
 // the soldier the way that scope would in game.
-const ADS_1X_VFOV_DEG = 40;
+const ADS_1X_VFOV_DEG = 103;
 // The in-game optic ladder, extended past both ends so the plot can pull back
 // for a whole long-range pattern or push in past any real scope.
-const SCOPE_MAGNIFICATIONS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12, 16, 20];
+const SCOPE_MAGNIFICATIONS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12, 16, 20, 30, 40];
+const TARGET_DISTANCE_MIN = 5;
+const TARGET_DISTANCE_MAX = 300;
+const TARGET_DEFAULT_DISTANCE = 20;
+const TARGET_DEFAULT_MAGNIFICATION = 2.5;
+const TARGET_DEFAULT_Y_MIN_M = -1.5;
+const TARGET_DEFAULT_Y_MAX_M = 3.5;
+const TARGET_DEFAULT_CENTER_Y_CM = ((TARGET_DEFAULT_Y_MIN_M + TARGET_DEFAULT_Y_MAX_M) / 2) * 100;
 const PLOT_PAD = { l: 28, r: 8, t: 8, b: 18 };
 const CLOUD_RUNS = 10;
 const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
@@ -138,6 +145,7 @@ const IN_GAME_RPM_BY_SYM = new Map(Object.entries({
   '799.99900000': 800,
   '818.18100000': 818,
   '830.76900000': 830,
+  '830.76923077': 830,
   '899.99900000': 900,
   '947.36800000': 947,
   '981.81800000': 981,
@@ -165,7 +173,7 @@ const state = {
   chart: { mode: 'dmg', btkHS: 0, showAds: false, showVel: false },
   recoil: {
     aim: 'ads', stance: 'stand',
-    view: 'angle', distance: 30, targetAim: 'chest', customAim: { x: 0, y: 0 }, zeroDistance: 100,
+    view: 'angle', distance: 20, targetAim: 'chest', customAim: { x: 0, y: 0 }, zeroDistance: 100,
     layers: { scatter: true, spray: true, path: false, spread: false, cone: false },
     // Scatter is far too noisy over a soldier, so each view keeps its own
     // overlay choices and its own sensible starting point.
@@ -181,8 +189,8 @@ const state = {
     compensationLevel: 0,
     refSeed: 0,
     scaleH: 5, panX: 0, panY: 0,
-    // null magnification means "fit the burst", resolved per render.
-    magnification: null, distancePanX: 0, distancePanY: 0,
+    // Target view starts at 2.5×; null remains the automatic-fit sentinel.
+    magnification: 2.5, distancePanX: 0, distancePanY: 0,
   },
 };
 
@@ -250,16 +258,32 @@ function getTTK(weapon, btk) {
   for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
   return Math.round(ms);
 }
+const DEFAULT_PROJECTILE_DRAG_PER_METER = 0.0035;
+function projectileSourceFor(weapon) {
+  if (!weapon) return null;
+  if (BALLISTIC_WEAPON_IDS.has(weapon.id)) return weapon;
+  const donor = weapon.provenance?.donor ?? {};
+  const donorIds = [
+    donor.weaponId,
+    ...(Array.isArray(donor.weaponIds) ? donor.weaponIds : []),
+  ].filter(Boolean);
+  return donorIds
+    .map(id => W.find(candidate => candidate.id === id))
+    .find(candidate => candidate && BALLISTIC_WEAPON_IDS.has(candidate.id)) ?? null;
+}
 function dragForSelectedAmmo(weapon, atts) {
   const configured = _ballistics.ammoDragPerMeter?.[atts?.ammo];
   if (typeof configured === 'number') return configured;
   if (configured && typeof configured === 'object' && typeof configured[weapon.cls] === 'number') return configured[weapon.cls];
-  return _ballistics.baseDragPerMeter;
+  return Number.isFinite(_ballistics.baseDragPerMeter)
+    ? _ballistics.baseDragPerMeter
+    : DEFAULT_PROJECTILE_DRAG_PER_METER;
 }
 function projectileModelFor(weapon, atts) {
-  if (!weapon || !BALLISTIC_WEAPON_IDS.has(weapon.id)) return null;
+  const source = projectileSourceFor(weapon);
+  if (!source) return null;
   const model = {
-    velocityMps: weapon.bulletVel,
+    velocityMps: Number.isFinite(weapon?.bulletVel) ? weapon.bulletVel : source.bulletVel,
     dragPerMeter: dragForSelectedAmmo(weapon, atts),
     gravityMps2: _ballistics.gravityMps2,
   };
@@ -312,7 +336,7 @@ function chartXAxis(maxRangeMeters) {
 }
 function damageYMax(weapons) {
   const cls = weapons.filter(Boolean).map(w => w.cls);
-  if (cls.some(c => c === 'Sniper Rifle' || c === 'Shotgun')) return 100;
+  if (cls.some(c => c === 'Sniper Rifle' || c === 'Shotgun')) return 105;
   if (cls.includes('DMR')) return 70;
   return 40;
 }
@@ -726,18 +750,6 @@ function renderOverview() {
   }
 
   const grid = document.getElementById('sGrid');
-  grid.parentElement?.querySelectorAll('.damage-provenance-note, .sweet-spot-note').forEach(el => el.remove());
-  const sweetSpots = [w1, w2].filter(weapon => weapon?.sweetSpot?.source === 'EA');
-  if (sweetSpots.length) {
-    const note = document.createElement('div');
-    note.className = 'att-note sweet-spot-note';
-    note.textContent = sweetSpots.map(weapon => {
-      const range = weapon.sweetSpot.rangeM;
-      const displayName = weaponDisplayLabel(weapon);
-      return range ? `${displayName} EA sweet spot: ${range[0]}–${range[1]} m.` : `${displayName}: no EA sweet spot.`;
-    }).join(' ');
-    grid.parentElement?.insertBefore(note, grid);
-  }
   grid.innerHTML = '';
   const fields = [
     { lbl: 'Base Dmg',    compute: w => getDmg(w, 0),                    unit: '',    fmt: v => v != null ? v.toFixed(1) : '—',       higherBetter: true,
@@ -921,13 +933,28 @@ function toggleVelToggle() {
   renderChart();
   renderBTK();
 }
-function toggleVelToggle() {
-  state.chart.showVel = !state.chart.showVel;
-  document.getElementById('velToggleBtn').classList.toggle('on', state.chart.showVel);
-  renderChart();
-  renderBTK();
-}
 function setBtkHS(n) { state.chart.btkHS = n; renderChart(); renderBTK(); }
+
+const damageHeadroomMask = {
+  id: 'damage-headroom-mask',
+  beforeDatasetsDraw(chart) {
+    if (chart.options.scales?.y?.max !== 105) return;
+    const { chartArea, ctx, scales } = chart;
+    const y100 = scales.y?.getPixelForValue(100);
+    if (!chartArea || !Number.isFinite(y100) || y100 <= chartArea.top) return;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, Math.max(0, y100 - chartArea.top + 1));
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.strokeStyle = 'rgba(40,48,48,0.6)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(chartArea.left, y100);
+    ctx.lineTo(chartArea.right, y100);
+    ctx.stroke();
+    ctx.restore();
+  },
+};
 
 function updateDmgChart(ctx, config) {
   if (!dmgChart) {
@@ -982,13 +1009,6 @@ function renderChart() {
     return;
   }
 
-  if (mode === 'ttk' && showVel) {
-    const unavailable = [w1, w2].filter(weapon => weapon && !weapon._projectileModel);
-    if (unavailable.length && legEl) {
-      legEl.innerHTML += `<div class="rc-legend-item" style="color:var(--muted);margin-left:auto">+VEL unavailable: ${unavailable.map(chartWeaponDisplayLabel).join(', ')} lacks validated projectile inputs.</div>`;
-    }
-  }
-
   if (mode === 'btk') {
     const btkDs = (w, color, label, slot, headshots = btkHS, baseline = false) => ({
       label, data: labels.map(r => getBTKWithHits(w, r, headshots)),
@@ -1019,7 +1039,7 @@ function renderChart() {
     dashOverlap(datasets);
     const yMax = Math.max(9, ...datasets.flatMap(ds => ds.data));
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets },
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
@@ -1073,7 +1093,7 @@ function renderChart() {
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets },
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
@@ -1098,7 +1118,7 @@ function renderChart() {
         } } },
         scales: {
           x: chartXAxis(mr),
-          y: { min: 0, max: yMax, title: { display: true, text: `${[showAds && 'ADS', showVel && 'Flight', 'Time to Kill'].filter(Boolean).join(' + ')} (ms)`, color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+          y: { min: 0, max: yMax, title: { display: true, text: `${['Time to Kill', showAds && 'ADS', showVel && 'Flight'].filter(Boolean).join(' + ')} (ms)`, color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
         },
       },
     });
@@ -1135,7 +1155,7 @@ function renderChart() {
   dashOverlap(datasets);
   const dmgYMax = damageYMax([w1, w2]);
   updateDmgChart(ctx, {
-    type: 'line', data: { labels, datasets },
+    type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask],
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
       layout: { padding: { bottom: 0 } },
@@ -1156,7 +1176,11 @@ function renderChart() {
       } },
       scales: {
         x: chartXAxis(mr),
-        y: { min: 0, max: dmgYMax, title: { display: true, text: 'Damage per shot', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a' }, grid: { color: 'rgba(40,48,48,0.6)' } },
+        y: { min: 0, max: dmgYMax, title: { display: true, text: 'Damage per shot', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a' }, grid: { color: 'rgba(40,48,48,0.6)' }, afterBuildTicks: scale => {
+          scale.ticks = scale.ticks.filter(t => Number(t.value) <= 100);
+          if (dmgYMax === 105 && !scale.ticks.some(t => Number(t.value) === 100)) scale.ticks.push({ value: 100 });
+          scale.ticks.sort((a, b) => Number(a.value) - Number(b.value));
+        } },
       },
     },
   });
@@ -1167,7 +1191,7 @@ function renderBTK() {
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
   const { btkHS, showAds, showVel } = state.chart;
   const ranges = btkRanges(w1, w2);
-  const ttkHdr = [showAds && 'ADS', showVel && 'Flight', 'TTK'].filter(Boolean).join('+');
+  const ttkHdr = ['TTK', showAds && 'ADS', showVel && 'Flight'].filter(Boolean).join('+');
   const ttkAt = (w, range, btk) => {
     const firingTtk = getTTK(w, btk);
     if (firingTtk == null) return null;
@@ -1274,12 +1298,12 @@ function syncRecoilShotCount() {
 function syncCompensationControls() {
   const level = state.recoil.compensationLevel;
   const range = document.getElementById('rcCompRange');
-  const input = document.getElementById('rcCompInput');
+  const readout = document.getElementById('rcCompReadout');
   if (range) { range.value = level; paintRange(range); }
-  if (input && document.activeElement !== input) input.value = level;
+  if (readout) readout.textContent = `${level}%`;
 }
-function syncCompensationLevel(source = 'input') {
-  const el = document.getElementById(source === 'range' ? 'rcCompRange' : 'rcCompInput');
+function syncCompensationLevel() {
+  const el = document.getElementById('rcCompRange');
   const raw = +(el?.value ?? 0);
   state.recoil.compensationLevel = Math.max(0, Math.min(125, Math.round(Number.isFinite(raw) ? raw : 0)));
   syncCompensationControls();
@@ -1350,10 +1374,24 @@ function canvasToWorld(clientX, clientY, canvas) {
     y: view.yCenter + (0.5 - v) * view.ySpan,
   };
 }
-function syncTargetDistance(source = 'input') {
-  const el = document.getElementById(source === 'range' ? 'rcDistanceRange' : 'rcDistanceInput');
-  const raw = +(el?.value ?? 30);
-  state.recoil.distance = Math.max(5, Math.min(300, Math.round(Number.isFinite(raw) ? raw : 30)));
+function snapTargetDistance(distance) {
+  const clamped = Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX,
+    Number.isFinite(distance) ? distance : TARGET_DEFAULT_DISTANCE));
+  const step = clamped <= 20 ? 1 : clamped <= 60 ? 2 : clamped <= 150 ? 5 : 10;
+  return Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(clamped / step) * step));
+}
+function syncTargetDistance() {
+  if (state.recoil.view === 'target' && state.recoil.magnification == null) {
+    state.recoil.magnification = currentMagnification();
+  }
+  const el = document.getElementById('rcDistanceRange');
+  const raw = +(el?.value ?? 0);
+  const distance = state.recoil.view === 'target'
+    ? TARGET_DISTANCE_MIN * Math.pow(TARGET_DISTANCE_MAX / TARGET_DISTANCE_MIN, Math.max(0, Math.min(100, raw)) / 100)
+    : raw;
+  state.recoil.distance = state.recoil.view === 'target'
+    ? snapTargetDistance(distance)
+    : Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(Number.isFinite(distance) ? distance : TARGET_DEFAULT_DISTANCE)));
   renderRecoil();
 }
 function syncZoomFromSlider() {
@@ -1401,21 +1439,18 @@ function plotBox() {
   const ch = canvas?.height || 430;
   return { PW: cw - PLOT_PAD.l - PLOT_PAD.r, PH: ch - PLOT_PAD.t - PLOT_PAD.b };
 }
-// Base framing for the target view. It is deliberately keyed on the loadout,
-// burst length and range only: rerolling the sample or moving the aim point
-// must never yank the user's zoom and pan out from under them, so both are
-// measured against the deterministic seed and the default chest aim.
+// Base framing only recalculates for range/zeroing changes. Weapon selection
+// must not yank the user's target-view zoom or pan out from under them.
 let targetBaseFrame = null;
 let targetBaseFrameKey = '';
+let targetDisplaySettingsLoaded = false;
 
 function computeTargetBaseFrame(weapons, shotCount) {
   const live = weapons.filter(Boolean);
-  // Only the loadout and range refit the view. Shot count, stance, input device
-  // and the recoil-control slider deliberately do not: changing a control must
-  // not make the chart lurch. A longer burst simply runs off frame until the
-  // user asks for a refit.
+  // Shot count, stance, input device, recoil control, and loadout changes do
+  // not refit the view. A longer burst simply runs off frame until the user
+  // asks for a refit.
   const key = [
-    live.map(w => [w.id, w.bulletVel, w._projectileModel?.dragPerMeter ?? 'unavailable'].join(':')).join('+'),
     state.recoil.distance,
     state.recoil.zeroDistance,
   ].join('|');
@@ -1439,7 +1474,7 @@ function computeTargetBaseFrame(weapons, shotCount) {
   const maxSpan = frame.heightCm / TARGET_FRAME_MIN_FILL;
   targetBaseFrame = {
     fitSpan: Math.min(maxSpan, Math.max(minSpan, (top - bottom) * 1.1)),
-    wantedCenterY: (top + bottom) / 2,
+    wantedCenterY: TARGET_DEFAULT_CENTER_Y_CM,
   };
 }
 
@@ -1456,24 +1491,32 @@ function targetCenterY(ySpan) {
 }
 
 /** Vertical field, in target-plane centimetres, seen through an `m`x optic. */
-function spanCmAtMagnification(m) {
-  return 2 * cmAtDistance(ADS_1X_VFOV_DEG / m / 2);
+function spanCmAtMagnification(m, fovDeg = ADS_1X_VFOV_DEG) {
+  return 2 * cmAtDistance(fovDeg / m / 2);
 }
 /** Lowest magnification on the ladder that still fits the wanted span. */
-function fitMagnification(spanCm) {
+function fitMagnification(spanCm, fovDeg = ADS_1X_VFOV_DEG) {
   for (let i = SCOPE_MAGNIFICATIONS.length - 1; i >= 0; i--) {
-    if (spanCmAtMagnification(SCOPE_MAGNIFICATIONS[i]) >= spanCm) return SCOPE_MAGNIFICATIONS[i];
+    if (spanCmAtMagnification(SCOPE_MAGNIFICATIONS[i], fovDeg) >= spanCm) return SCOPE_MAGNIFICATIONS[i];
   }
   return SCOPE_MAGNIFICATIONS[0];
 }
 function currentMagnification() {
   if (state.recoil.magnification != null) return state.recoil.magnification;
-  return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL);
+  const fovDeg = Math.max(1, Math.min(179, +(document.getElementById('rcTargetFov')?.value ?? ADS_1X_VFOV_DEG) || ADS_1X_VFOV_DEG));
+  return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL, fovDeg);
 }
 function recoilViewport() {
   if (state.recoil.view === 'target') {
     const { PW, PH } = plotBox();
-    const ySpan = spanCmAtMagnification(currentMagnification());
+    const fovDeg = Math.max(1, Math.min(179, +(document.getElementById('rcTargetFov')?.value ?? ADS_1X_VFOV_DEG) || ADS_1X_VFOV_DEG));
+    const detectedHeight = Math.max(1, Math.round(window.screen?.height || 1080));
+    const enteredHeight = +(document.getElementById('rcTargetHeight')?.value ?? '');
+    const fullScreenHeight = Number.isFinite(enteredHeight) && enteredHeight > 0
+      ? Math.max(1, Math.round(enteredHeight))
+      : detectedHeight;
+    // Fullscreen compensation: plot world span = optical span × (plot pixel height / selected display height).
+    const ySpan = spanCmAtMagnification(currentMagnification(), fovDeg) * (PH / fullScreenHeight);
     return {
       xSpan: ySpan * (PW / PH),
       ySpan,
@@ -1508,12 +1551,13 @@ function adjustRecoilScale(dir) {
   }
   renderRecoil();
 }
-/** The one reset: framing back to the fit, aim back to center chest, and the
- *  original deterministic spray sample. */
+/** The one reset: return each view to its own framing defaults, aim back to
+ *  center chest, and restore the original deterministic spray sample. */
 function resetRecoilView() {
   state.recoil.refSeed = 0;
   if (state.recoil.view === 'target') {
-    state.recoil.magnification = null;
+    state.recoil.distance = TARGET_DEFAULT_DISTANCE;
+    state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
     state.recoil.distancePanX = 0;
     state.recoil.distancePanY = 0;
     state.recoil.targetAim = 'chest';
@@ -1848,8 +1892,8 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       // Colour stays purely weapon identity. Hits read as bigger solid dots
       // with a dark separator so they lift off the figure; misses fade back.
       if (!sprayZones[i]) {
-        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius * 0.85, 0, Math.PI * 2);
-        ctx.fillStyle = col + '55'; ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius, 0, Math.PI * 2);
+        ctx.fillStyle = col + '80'; ctx.fill();
         return;
       }
       const r = sprayDotRadius * 1.3;
@@ -1990,7 +2034,7 @@ function renderAttachmentStats(loadouts) {
 
 function targetImpactStatsHtml(entries) {
   const colors = ['c1', 'c2'];
-  const fmtDamage = value => value == null ? '—' : value.toFixed(1);
+  const fmtDamage = value => value == null ? '—' : Math.min(100, value).toFixed(1);
   const fmtMult = value => value == null ? '' : `<span class="target-zone-mult">${value.toFixed(2)}×</span>`;
   // 100 health is a kill; 75 leaves the target one body shot from dying.
   const damageClass = value => value == null ? '' : value >= 100 ? ' class="dmg-kill"' : value >= 75 ? ' class="dmg-crit"' : '';
@@ -2015,7 +2059,7 @@ function targetImpactStatsHtml(entries) {
         <div class="target-impact-weapon ${colors[index] ?? ''}">${weaponDisplayLabel(entry.weapon)}</div>
         <div class="target-impact-summary">
           <div><span>Acc</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
-          <div><span>Miss</span><strong>${summary.misses}</strong></div>
+          <div><span>Hits</span><strong>${summary.hits} / ${summary.totalShots}</strong></div>
           <div><span>Damage</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal, 75+ leaves one body shot to kill">${fmtDamage(summary.totalDamage)}</strong></div>
           <div><span>Lethal</span>${kill}</div>
         </div>
@@ -2026,11 +2070,12 @@ function targetImpactStatsHtml(entries) {
         </table>
       </section>`;
   });
-  html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Lethal shot assumes 100 health and follows the plotted hit order; total damage is the uncapped sum of every plotted hit.</div>';
+  html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Displayed damage is capped at 100.0 because further damage is irrelevant after a kill; lethality still follows the plotted hit order.</div>';
   return html;
 }
 
 function renderRecoil() {
+  if (state.recoil.view === 'target') state.recoil.distance = snapTargetDistance(state.recoil.distance);
   scheduleUrlSync();
   const w1 = selectedWeaponBuild(state.slots[0]);
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
@@ -2055,6 +2100,25 @@ function renderRecoil() {
   document.getElementById('rcStanceStand')?.classList.toggle('on', stance === 'stand');
   document.getElementById('rcStanceMove')?.classList.toggle('on', stance === 'move');
   const isTarget = state.recoil.view === 'target';
+  const targetControls = document.getElementById('rcTargetControls');
+  if (targetControls) targetControls.hidden = !isTarget;
+  const targetWidthInput = document.getElementById('rcTargetWidth');
+  const targetHeightInput = document.getElementById('rcTargetHeight');
+  const targetFovInput = document.getElementById('rcTargetFov');
+  if (!targetDisplaySettingsLoaded) {
+    targetDisplaySettingsLoaded = true;
+    if (targetWidthInput) targetWidthInput.value = Math.max(1, Math.round(window.screen?.width || 1920));
+    if (targetHeightInput) targetHeightInput.value = Math.max(1, Math.round(window.screen?.height || 1080));
+    if (targetFovInput) targetFovInput.value = String(ADS_1X_VFOV_DEG);
+    try {
+      const storedWidth = Number(localStorage.getItem('bf6.targetResolutionWidth'));
+      const storedHeight = Number(localStorage.getItem('bf6.targetResolutionHeight'));
+      const storedFov = Number(localStorage.getItem('bf6.targetFov'));
+      if (targetWidthInput && Number.isFinite(storedWidth) && storedWidth > 0) targetWidthInput.value = String(Math.round(storedWidth));
+      if (targetHeightInput && Number.isFinite(storedHeight) && storedHeight > 0) targetHeightInput.value = String(Math.round(storedHeight));
+      if (targetFovInput && Number.isFinite(storedFov) && storedFov >= 1 && storedFov <= 179) targetFovInput.value = String(Math.round(storedFov));
+    } catch { /* localStorage may be unavailable in a restricted browser context. */ }
+  }
   ['rcViewAngle', 'rcViewTarget'].forEach(id => {
     const tab = document.getElementById(id);
     if (!tab) return;
@@ -2072,7 +2136,7 @@ function renderRecoil() {
   const hint = document.getElementById('rcHint');
   if (hint) {
     hint.textContent = isTarget
-      ? 'Ctrl + click to aim and fire · Shift + drag to pan · Shift + scroll to zoom'
+      ? 'Ctrl + click to aim · Shift + drag to pan · Shift + scroll to zoom'
       : 'Shift + drag to pan · Shift + scroll to zoom';
   }
   const aimReadout = document.getElementById('rcAimReadout');
@@ -2085,15 +2149,25 @@ function renderRecoil() {
       : `Aim: ${(offset.x / 100).toFixed(2)} m, ${(offset.y / 100).toFixed(2)} m`;
     if (isTarget && w1) {
       const zero = zeroDistanceFor(w1);
-      aimText.textContent += w1._projectileModel
-        ? ` · ${Math.abs(targetVerticalOffsetMeters(w1)).toFixed(2)} m ${zero == null ? 'bore-line drop' : `from ${zero} m zero`}`
-        : ' · projectile inputs unavailable';
+      if (w1._projectileModel && zero != null) {
+        aimText.textContent += ` · ${Math.abs(targetVerticalOffsetMeters(w1)).toFixed(2)} m from ${zero} m zero`;
+      }
     }
   }
   const distanceRange = document.getElementById('rcDistanceRange');
-  const distanceInput = document.getElementById('rcDistanceInput');
-  if (distanceRange) { distanceRange.value = Math.max(5, state.recoil.distance); paintRange(distanceRange); }
-  if (distanceInput && document.activeElement !== distanceInput) distanceInput.value = state.recoil.distance;
+  const distanceReadout = document.getElementById('rcDistanceReadout');
+  if (distanceRange) {
+    if (isTarget) {
+      distanceRange.min = 0; distanceRange.max = 100; distanceRange.step = 1;
+      const distance = Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, state.recoil.distance));
+      distanceRange.value = Math.log(distance / TARGET_DISTANCE_MIN) / Math.log(TARGET_DISTANCE_MAX / TARGET_DISTANCE_MIN) * 100;
+    } else {
+      distanceRange.min = TARGET_DISTANCE_MIN; distanceRange.max = TARGET_DISTANCE_MAX; distanceRange.step = 5;
+      distanceRange.value = Math.max(TARGET_DISTANCE_MIN, state.recoil.distance);
+    }
+    paintRange(distanceRange);
+  }
+  if (distanceReadout) distanceReadout.textContent = `${state.recoil.distance} m`;
   const zoomRange = document.getElementById('rcZoomRange');
   if (zoomRange) {
     const bounds = zoomSliderBounds();
@@ -2115,10 +2189,11 @@ function renderRecoil() {
 
   const spreadPreset = document.getElementById('rcSpreadPreset');
   const shotsInput = document.getElementById('rcSpreadShotsInput');
+  const bubblePresetGroup = document.querySelector('.rc-bubble-preset-group');
+  if (bubblePresetGroup) bubblePresetGroup.hidden = !layers.spread;
   if (spreadPreset) {
     spreadPreset.value = state.recoil.spreadPreset;
-    // Stays live while Bubbles is off — picking a preset is the natural way to
-    // turn them on — so it only dims rather than greying out of sight.
+    // Preserve the selected preset while the Bubbles overlay is toggled off.
     spreadPreset.classList.toggle('idle', !layers.spread);
     // Show the chosen shots on the option itself, so the list stays readable
     // once the editor has closed.
@@ -2134,8 +2209,6 @@ function renderRecoil() {
     shotsInput.hidden = !(state.recoil.spreadPreset === 'custom' && state.recoil.spreadEditing);
     shotsInput.classList.toggle('idle', !layers.spread);
   }
-  document.getElementById('rcShotsLabel')?.classList.toggle('rc-shots-label--disabled', !layers.spread);
-
   const axis = drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
   const noteEl = document.querySelector('.rc-note');
   const stateLabel = `${aim.toUpperCase()} / ${stance === 'move' ? 'MOV' : 'STD'}`;
@@ -2152,15 +2225,15 @@ function renderRecoil() {
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (axis.isTargetView) {
+      const targetFovDeg = Math.max(1, Math.min(179, +(document.getElementById('rcTargetFov')?.value ?? ADS_1X_VFOV_DEG) || ADS_1X_VFOV_DEG));
       const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${weaponDisplayLabel(weapon)} ${hits}/${total}`).join(' · ');
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss. Colour is the weapon, and the per-zone breakdown is in the stats table.' : '';
-      const ballisticNote = [w1, w2].filter(Boolean).map(weapon => {
-        if (!weapon._projectileModel) return `${weaponDisplayLabel(weapon)} projectile inputs unavailable`;
+      const ballisticNote = [w1, w2].filter(weapon => weapon?._projectileModel).map(weapon => {
         const zero = zeroDistanceFor(weapon);
         return `${weaponDisplayLabel(weapon)} ${Math.abs(targetVerticalOffsetMeters(weapon)).toFixed(2)} m ${zero == null ? 'below bore line' : `relative to ${zero} m zero`}`;
       }).join(' · ');
-      noteEl.textContent = `${layerNote}${ringNote} Same simulation, projected onto a 180 cm soldier at ${state.recoil.distance} m — the pattern covers more of the target the further out it lands.${hitSummary ? ` Reference hits: ${hitSummary}.` : ''} Zoom matches optic magnification against an assumed ${ADS_1X_VFOV_DEG}° vertical field at 1×; grid marks ${fmtAxisMeters(niceDistanceGridStep(axis.xMax - axis.xMin))}.`;
-      noteEl.textContent += ` Ballistics: ${ballisticNote}.`;
+      noteEl.textContent = `${layerNote}${ringNote} Same simulation, projected onto a 180 cm soldier at ${state.recoil.distance} m — the pattern covers more of the target the further out it lands.${hitSummary ? ` Reference hits: ${hitSummary}.` : ''} Zoom matches optic magnification against an assumed ${targetFovDeg}° vertical field at 1×; grid marks ${fmtAxisMeters(niceDistanceGridStep(axis.xMax - axis.xMin))}.`;
+      if (ballisticNote) noteEl.textContent += ` Ballistics: ${ballisticNote}.`;
     } else {
       noteEl.textContent = `${layerNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
     }
@@ -2562,8 +2635,6 @@ function bindEvents() {
   document.getElementById('rcSpreadToggleBtn').addEventListener('click', () => toggleRecoilLayer('spread'));
 
   // Recoil canvas controls
-  document.getElementById('rcZoomIn').addEventListener('click', () => adjustRecoilScale('in'));
-  document.getElementById('rcZoomOut').addEventListener('click', () => adjustRecoilScale('out'));
   document.getElementById('rcResetView').addEventListener('click', resetRecoilView);
   const recoilCanvas = document.getElementById('rcMain');
   // Dragging replaced the pan buttons, so the keyboard needs its own way in.
@@ -2661,11 +2732,30 @@ function bindEvents() {
     spreadShotsInput.blur();
   });
   document.getElementById('rcShotCountInput')?.addEventListener('change', syncRecoilShotCount);
-  document.getElementById('rcCompInput')?.addEventListener('change', () => syncCompensationLevel('input'));
-  document.getElementById('rcCompRange')?.addEventListener('input', () => syncCompensationLevel('range'));
-  document.getElementById('rcDistanceInput')?.addEventListener('change', () => syncTargetDistance('input'));
-  document.getElementById('rcDistanceRange')?.addEventListener('input', () => syncTargetDistance('range'));
+  document.getElementById('rcCompRange')?.addEventListener('input', syncCompensationLevel);
+  document.getElementById('rcDistanceRange')?.addEventListener('input', syncTargetDistance);
   document.getElementById('rcZoomRange')?.addEventListener('input', syncZoomFromSlider);
+  document.getElementById('rcTargetWidth')?.addEventListener('input', e => {
+    const value = Number(e.currentTarget.value);
+    if (Number.isFinite(value) && value > 0) {
+      try { localStorage.setItem('bf6.targetResolutionWidth', String(value)); } catch { /* storage is optional. */ }
+    }
+    renderRecoil();
+  });
+  document.getElementById('rcTargetHeight')?.addEventListener('input', e => {
+    const value = Number(e.currentTarget.value);
+    if (Number.isFinite(value) && value > 0) {
+      try { localStorage.setItem('bf6.targetResolutionHeight', String(value)); } catch { /* storage is optional. */ }
+    }
+    renderRecoil();
+  });
+  document.getElementById('rcTargetFov')?.addEventListener('input', e => {
+    const value = Number(e.currentTarget.value);
+    if (Number.isFinite(value) && value >= 1 && value <= 179) {
+      try { localStorage.setItem('bf6.targetFov', String(value)); } catch { /* storage is optional. */ }
+    }
+    renderRecoil();
+  });
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
