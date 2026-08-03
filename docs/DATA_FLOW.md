@@ -26,6 +26,16 @@ Solid arrows move values. **Dashed arrows carry no values at all** — they are 
 artifact is used to test another. The screenshot corpus reaches `data/` only through a human
 promotion step, never automatically.
 
+<img src="img/data-flow-pipeline.svg" alt="Pipeline from upstream sources through staging and promotion gates into data/ and the runtime" width="100%">
+
+<details>
+<summary>Diagram source (mermaid)</summary>
+
+The SVG above is rendered from this source and committed alongside it, so the diagram
+looks the same everywhere. GitHub's mermaid renderer lays subgraphs out differently from
+the one this was drawn with, which is why it is embedded as an image rather than a live
+fence. Re-render with `node scripts/render-docs-diagrams.mjs` after editing.
+
 ```mermaid
 flowchart TB
   classDef src     fill:#DCEBE4,stroke:#2E6B57,stroke-width:1.5px,color:#12231C
@@ -130,8 +140,123 @@ flowchart TB
   SIM -.->|"resolver output is<br/>diffed against the corpus"| S7
 ```
 
+</details>
+
 The two dashed edges at the bottom are the important ones: the screenshot corpus and the resolver
 are compared *to each other*, and a disagreement is recorded rather than auto-resolved.
+
+### Every edge, box to box
+
+The diagram above groups each artifact by stage, which is what mermaid's subgraphs are for — but it
+also means mermaid clips every edge at the group boundary, so an arrow appears to leave the group
+rather than the box it actually starts from. This second view drops the grouping and draws each edge
+between the two boxes it really connects. Same pipeline, same colours; read it when you want to
+trace one specific path.
+
+<img src="img/data-flow-pipeline-detail.svg" alt="The same pipeline with grouping removed, so every arrow runs between the two specific artifacts it connects" width="100%">
+
+<details>
+<summary>Diagram source (mermaid)</summary>
+
+```mermaid
+flowchart TB
+  classDef src     fill:#DCEBE4,stroke:#2E6B57,stroke-width:1.5px,color:#12231C
+  classDef stage   fill:#DEE8F2,stroke:#46688C,stroke-width:1.5px,color:#14202C
+  classDef live    fill:#F3E4CB,stroke:#96682A,stroke-width:1.5px,color:#2E2008
+  classDef ref     fill:#E3E6E9,stroke:#656E79,stroke-width:1.5px,color:#1D2227
+  classDef gate    fill:#FFFFFF,stroke:#171B21,stroke-width:1.5px,color:#171B21
+  classDef runtime fill:#EFE3F0,stroke:#7A4A80,stroke-width:1.5px,color:#2A162C
+
+  EA["EA update notes<br/>declared mechanics, hit zones,<br/>velocity + recoil changes"]
+  SYM["sym.gg bf6.json<br/>pinned sha256 129C2A55…<br/>306,610 bytes"]
+  SYMD["sym.gg damage republish<br/>2026-07-25<br/>damage.dmgs / damage.dists only"]
+  SHOT["In-game screenshots<br/>~1.7 GB · gitignored · local only"]
+  COMM["Community research<br/>Henry · TheXclusiveAce<br/>SORROW · SheetOnMyFace"]
+  class EA,SYM,SYMD,SHOT,COMM src
+
+  GEN["generated-data/sym/1.3.3.0/<br/>mapping · normalized · diff<br/>reconciliation · excluded-fields"]
+  AUD["attachment-screenshot-review.json<br/>3,177 records · 3,115 with stats<br/>62 weapons"]
+  OCR["field-ocr · cost-ocr · visual-stat-map<br/>manual-review-overrides<br/>rename-manifest + provenance"]
+  class GEN,AUD,OCR stage
+
+  IMP["scripts/sym-import.mjs<br/>default mode writes review artifacts ONLY"]
+  DMG["scripts/apply-sym-damage.mjs --write<br/>the only writer of damage curves"]
+  APPLY["migration apply-*.mjs<br/>one scoped, reviewed correction each"]
+  S7{{"§7 four checks<br/>value · cross-field<br/>field-by-slot · name-vs-effect"}}
+  HUMAN{{"Manual adjudication<br/>screenshot wins;<br/>a model may never rewrite a reading"}}
+  class IMP,DMG,APPLY,S7,HUMAN gate
+
+  WEAP["weapons.json<br/>identity, rpm, recoil, spread,<br/>damage curve"]
+  ATT["attachments.json<br/>shared modifier tables +<br/>WEAPON_ATTS / MAG / ERGO"]
+  AMMOD["ammo.json<br/>AMMO + WEAPON_AMMO<br/>+ velocityTreatments"]
+  BAL["balance_tables.json<br/>tier ladders + class rules"]
+  BALL["ballistics.json"]
+  RD["recoil_decay.json"]
+  class WEAP,ATT,AMMOD,BAL,BALL,RD live
+
+  PROV["provenance/*.json<br/>source authority + field policy"]
+  RLX["reload-exceptions.json"]
+  class PROV,RLX ref
+
+  SIM["sim/ — applyAttachments, damage,<br/>ballistics, loadout, core"]
+  APP["ui/app.js"]
+  SITE["GitHub Pages<br/>raymdl.github.io"]
+  class SIM,APP,SITE runtime
+
+  EA   --> DMG
+  EA   --> APPLY
+  SYM  --> IMP
+  SYMD --> DMG
+  SHOT --> AUD
+  AUD  --> OCR
+  OCR  --> APPLY
+  COMM --> APPLY
+
+  IMP   --> GEN
+  GEN   -.->|"reviewed by hand,<br/>then hand-applied"| WEAP
+  DMG   --> WEAP
+  APPLY --> S7
+  S7    --> HUMAN
+  HUMAN --> ATT
+  HUMAN --> AMMOD
+  HUMAN --> BAL
+
+  PROV -.->|"declares which source<br/>owns which field"| IMP
+  PROV -.-> DMG
+  RLX  -.-> S7
+
+  WEAP  --> SIM
+  ATT   --> SIM
+  AMMOD --> SIM
+  BAL   --> SIM
+  BALL  --> SIM
+  RD    --> SIM
+  SIM   --> APP --> SITE
+
+  AUD -.->|"TEST FIXTURE:<br/>compared against, never copied in"| S7
+  SIM -.->|"resolver output is<br/>diffed against the corpus"| S7
+
+  EA --- SYM
+  SYM --- SYMD
+  SYMD --- SHOT
+  SHOT --- COMM
+  GEN --- AUD
+  AUD --- OCR
+  IMP --- DMG
+  DMG --- APPLY
+  WEAP --- ATT
+  ATT --- AMMOD
+  AMMOD --- BAL
+  BAL --- BALL
+  BALL --- RD
+  PROV --- RLX
+  SIM --- APP
+  APP --- SITE
+  %% hidden ordering links keep each stage in one vertical column
+  linkStyle 28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43 stroke-width:0px,opacity:0
+```
+
+</details>
 
 ---
 
@@ -153,6 +278,16 @@ which source **wins** when two disagree, and which fields no remote source can a
 
 Not every value in `data/` has the same standing. Two of these classes carry an explicit marker so
 the UI can footnote them; the rest are load-bearing without qualification.
+
+<img src="img/data-flow-value-class.svg" alt="Decision flow for how a single stat earns its provenance class" width="100%">
+
+<details>
+<summary>Diagram source (mermaid)</summary>
+
+The SVG above is rendered from this source and committed alongside it, so the diagram
+looks the same everywhere. GitHub's mermaid renderer lays subgraphs out differently from
+the one this was drawn with, which is why it is embedded as an image rather than a live
+fence. Re-render with `node scripts/render-docs-diagrams.mjs` after editing.
 
 ```mermaid
 flowchart TB
@@ -182,6 +317,8 @@ flowchart TB
   class RULE,OVR derive
   class EST,ASM warn
 ```
+
+</details>
 
 The bottom path is the one that keeps the model honest: a value with no evidence is omitted, not
 filled with a plausible default.
