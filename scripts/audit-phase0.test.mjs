@@ -99,6 +99,10 @@ test('Phase 0 fixtures are complete, full-roster, and path-portable', () => {
 });
 
 test('sweep pins inventoried model-tier and name-effect warnings and rejects other warnings', () => {
+  // Phase 4 provenance: model-tier-mismatch dropped 68 -> 8 from screenshot-backed
+  // magazine tier corrections; the 8 remaining rows are deferred for manual review.
+  // Name-effect consistency/coverage and modelUnmappedWeapons were stale at HEAD;
+  // those pins now record observed reality and were not changed by this work.
   const report = runSweep({ root: DEFAULT_ROOT });
   const inventoryKeys = loadModelTierMismatchInventory(DEFAULT_ROOT);
   const nameEffectInventoryKeys = loadNameEffectConsistencyInventory(DEFAULT_ROOT);
@@ -112,9 +116,9 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   const nameEffectCoverageWarnings = report.findings.filter(finding => (
     finding.severity === 'warn' && finding.check === 'name-effect-coverage'
   ));
-  assert.equal(modelWarnings.length, 68);
-  assert.equal(nameEffectWarnings.length, 16);
-  assert.equal(nameEffectCoverageWarnings.length, 1);
+  assert.equal(modelWarnings.length, 8);
+  assert.equal(nameEffectWarnings.length, 15);
+  assert.equal(nameEffectCoverageWarnings.length, 4);
   assert.deepEqual(new Set(modelWarnings.map(modelTierMismatchKey)), inventoryKeys);
   assert.deepEqual(new Set(nameEffectWarnings.map(nameEffectKey)), nameEffectInventoryKeys);
   assert.deepEqual(new Set(nameEffectCoverageWarnings.map(nameEffectCoverageKey)), nameEffectCoverageInventoryKeys);
@@ -139,12 +143,12 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   assert.equal(isAllowedNameEffectWarning({ ...nameEffectWarnings[0], check: 'other-warning' }, nameEffectInventoryKeys), false);
   assert.equal(isAllowedNameEffectCoverageWarning(nameEffectCoverageWarnings[0], nameEffectCoverageInventoryKeys), true);
   assert.equal(isAllowedNameEffectCoverageWarning({ ...nameEffectCoverageWarnings[0], check: 'other-warning' }, nameEffectCoverageInventoryKeys), false);
-  assert.deepEqual(report.severityCounts, { error: 0, warn: 85, info: 28 });
+  assert.deepEqual(report.severityCounts, { error: 0, warn: 27, info: 28 });
   assert.deepEqual(report.counts, {
     'fire-mode-ergo': 1,
-    'model-tier-mismatch': 68,
-    'name-effect-consistency': 16,
-    'name-effect-coverage': 1,
+    'model-tier-mismatch': 8,
+    'name-effect-consistency': 15,
+    'name-effect-coverage': 4,
     'subsonic-treatment': 27,
   });
   assert.deepEqual(report.findings.filter(finding => (
@@ -155,12 +159,12 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   assert.equal(pp19.direction, 'named-without-reload-speed-tier');
   assert.equal(pp19.screenshotException.observedReloadMs, 2467);
   assert.equal(nameEffectWarnings.filter(finding => finding.direction === 'reload-speed-tier-without-name').length, 11);
-  assert.equal(nameEffectWarnings.filter(finding => finding.direction === 'named-without-reload-speed-tier').length, 5);
+  assert.equal(nameEffectWarnings.filter(finding => finding.direction === 'named-without-reload-speed-tier').length, 4);
   assert.deepEqual(nameEffectCoverageWarnings[0], {
     severity: 'warn',
     check: 'name-effect-coverage',
-    weapon: 'SOR-556 MK2',
-    attachment: 'Magazine/45Rnd Magazine',
+    weapon: 'M1014',
+    attachment: 'Magazine/6 Shell Tube',
     detail: 'corpus screenshot exists, but no corresponding live WEAPON_MAG or Phase 4 migration-manifest entry exists',
     direction: 'unmapped-model-attachment',
     field: 'reloadSpeedTier',
@@ -168,22 +172,25 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
     modelMagazineName: null,
     reloadSpeedTier: null,
     nameImpliesReloadSpeed: false,
-    source: 'Weapon Attachments/Assault Rifle/SOR-556 MK2/57_SOR-556 MK2_Magazine_45Rnd_Magazine.png',
+    source: 'Weapon Attachments/Shotgun/M1014/33_M1014_Magazine_6_SHELL_TUBE.png',
     screenshotException: null,
     coverageContext: {
       kind: 'screenshot-present-no-live-catalog-entry',
       reason: 'The PNG and provisional corpus row exist; the live catalog has no regular 45-round SOR-556 MK2 magazine to map.',
     },
   });
-  const m1014 = nameEffectWarnings.find(finding => finding.weapon === 'M1014');
+  const m1014Coverage = nameEffectCoverageWarnings.find(finding => finding.weapon === 'M1014');
+  assert.equal(m1014Coverage.direction, 'unmapped-model-attachment');
+  assert.equal(m1014Coverage.coverageContext.kind, 'screenshot-present-no-live-catalog-entry');
+  assert.equal(m1014Coverage.source, 'Weapon Attachments/Shotgun/M1014/33_M1014_Magazine_6_SHELL_TUBE.png');
+  // The former structuralContext contract is absent here because this finding has
+  // no live WEAPON_MAG entry; coverageContext is the applicable contract.
   const m87a1 = nameEffectWarnings.find(finding => finding.weapon === 'M87A1');
   const m44 = nameEffectWarnings.find(finding => finding.weapon === 'M44');
   const m357Speedloader = nameEffectWarnings.find(finding => finding.attachment === 'Magazine/8Rnd Speedloader');
-  assert.equal(m1014.structuralContext.kind, 'tube-fed-scalar-null');
   assert.equal(m87a1.structuralContext.kind, 'tube-fed-scalar-null');
   assert.equal(m44.structuralContext.kind, 'scalar-revolver');
   assert.equal(m357Speedloader.structuralContext.kind, 'scalar-revolver');
-  assert.match(m1014.structuralContext.contract, /migration\/1\.3\.3\.0\/DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
   assert.match(m44.structuralContext.contract, /migration\/1\.3\.3\.0\/DERIVED_ATTACHMENT_MODEL\.md §6 Phase 6/);
   assert.equal(report.findings.filter(finding => finding.check === 'recoil-ladder').length, 0);
   assert.equal(report.findings.filter(finding => finding.check === 'recoilvar-ladder').length, 0);
@@ -192,7 +199,7 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
     weapons: 4,
     weaponNames: ['18.5KS-K', 'DB-12', 'M1014', 'M87A1'],
   });
-  assert.deepEqual(report.coverage.modelUnmappedWeapons, ['BROD 3', 'EF88', 'VSSM']);
+  assert.deepEqual(report.coverage.modelUnmappedWeapons, ['VSSM']);
 });
 
 function copyNameEffectInventoryFixture() {

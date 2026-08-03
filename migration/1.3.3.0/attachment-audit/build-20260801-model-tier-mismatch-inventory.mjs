@@ -119,11 +119,11 @@ const records = findings.map(finding => {
   };
 });
 
-assert.equal(records.length, 68, `expected 68 mismatch findings, found ${records.length}`);
+assert.equal(records.length, 8, `expected 8 mismatch findings, found ${records.length}`);
 assert.equal(records.filter(record => record.adjudication !== 'unadjudicated').length, 0);
 assert.equal(records.filter(record => record.adjudication === 'site-bug').length, 0);
 assert.equal(records.filter(record => record.adjudication === 'corpus-error').length, 0);
-assert.equal(records.filter(record => record.adjudication === 'unadjudicated').length, 68);
+assert.equal(records.filter(record => record.adjudication === 'unadjudicated').length, 8);
 
 const inventory = {
   kind: 'model-tier-mismatch-inventory',
@@ -131,7 +131,7 @@ const inventory = {
   source: 'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json',
   generatedBy: 'migration/1.3.3.0/attachment-audit/build-20260801-model-tier-mismatch-inventory.mjs',
   policy: '§7 screenshot wins; disagreements are reported and never resolved by rewriting the corpus or data.',
-  counts: { total: 68, siteBug: 0, corpusError: 0, unadjudicated: 68 },
+  counts: { total: 8, siteBug: 0, corpusError: 0, unadjudicated: 8 },
   records,
 };
 
