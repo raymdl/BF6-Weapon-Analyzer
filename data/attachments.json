@@ -282,7 +282,7 @@
     {
       "id": "ext_light",
       "name": "Extended Light",
-      "adsTimeTierMod": 0,
+      "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
       "adsSpreadIncMult": 1,
       "pts": 25,
