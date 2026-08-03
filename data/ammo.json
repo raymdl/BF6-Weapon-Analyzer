@@ -137,10 +137,7 @@
       },
       "worldSpot": 27,
       "minimapSpot": 64,
-      "suppressedMinimapSpot": 9,
-      "assumedFields": {
-        "suppressedMinimapSpot": true
-      }
+      "suppressedMinimapSpot": 9
     },
     {
       "id": "subsonic_hp",
@@ -157,10 +154,7 @@
       },
       "worldSpot": 27,
       "minimapSpot": 64,
-      "suppressedMinimapSpot": 9,
-      "assumedFields": {
-        "suppressedMinimapSpot": true
-      }
+      "suppressedMinimapSpot": 9
     },
     {
       "id": "subsonic_pen",
@@ -178,10 +172,7 @@
       },
       "worldSpot": 27,
       "minimapSpot": 64,
-      "suppressedMinimapSpot": 9,
-      "assumedFields": {
-        "suppressedMinimapSpot": true
-      }
+      "suppressedMinimapSpot": 9
     },
     {
       "id": "range_pen",
