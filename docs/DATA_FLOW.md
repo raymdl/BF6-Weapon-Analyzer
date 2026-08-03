@@ -26,15 +26,9 @@ Solid arrows move values. **Dashed arrows carry no values at all** — they are 
 artifact is used to test another. The screenshot corpus reaches `data/` only through a human
 promotion step, never automatically.
 
-<img src="img/data-flow-pipeline.svg" alt="Pipeline from upstream sources through staging and promotion gates into data/ and the runtime" width="100%">
-
-<details open>
-<summary>Diagram source (mermaid)</summary>
-
-The SVG above is rendered from this source and committed alongside it, so the diagram
-looks the same everywhere. GitHub's mermaid renderer lays subgraphs out differently from
-the one this was drawn with, which is why it is embedded as an image rather than a live
-fence. Re-render with `node scripts/render-docs-diagrams.mjs` after editing.
+> GitHub lays subgraphs out differently from current mermaid, so this renders wider and flatter
+> here than it does elsewhere, and each arrow is clipped at its group's edge rather than meeting
+> the box it starts from. The content is the same either way.
 
 ```mermaid
 flowchart TB
@@ -140,8 +134,6 @@ flowchart TB
   SIM -.->|"resolver output is<br/>diffed against the corpus"| S7
 ```
 
-</details>
-
 The two dashed edges at the bottom are the important ones: the screenshot corpus and the resolver
 are compared *to each other*, and a disagreement is recorded rather than auto-resolved.
 
@@ -154,7 +146,7 @@ which source **wins** when two disagree, and which fields no remote source can a
 
 | Policy | Fields | Reaches `data/` how |
 |---|---|---|
-| `eaOverride` | Hit-zone multipliers, automatic headshot multipliers, explicitly listed velocity and recoil changes, sniper sweet-spot ranges | Overrides Sym wherever the two disagree |
+| `eaOverride` | Hit-zone multipliers, automatic headshot multipliers, explicitly listed velocity and recoil changes | Overrides Sym wherever the two disagree |
 | `symImport` | Weapon identity and class, rate of fire, velocity, gravity, drag, magazine and reload, deploy, recoil, spread and recovery | Staged to `generated-data/`, reviewed, then applied |
 | `inGameRequired` | Post-patch damage floats, PP-19 attachment availability and point costs, all barrel × ammunition velocity combinations, attachment effects no current source exposes | Screenshot evidence → §7 gates → manual promotion |
 | `deferred` | REDSEC armor simulation; bullet drag, travel-time, remaining-velocity, lead and drop simulation | Not modeled — absent rather than guessed |
@@ -165,16 +157,6 @@ which source **wins** when two disagree, and which fields no remote source can a
 
 Not every value in `data/` has the same standing. Two of these classes carry an explicit marker so
 the UI can footnote them; the rest are load-bearing without qualification.
-
-<img src="img/data-flow-value-class.svg" alt="Decision flow for how a single stat earns its provenance class" width="100%">
-
-<details open>
-<summary>Diagram source (mermaid)</summary>
-
-The SVG above is rendered from this source and committed alongside it, so the diagram
-looks the same everywhere. GitHub's mermaid renderer lays subgraphs out differently from
-the one this was drawn with, which is why it is embedded as an image rather than a live
-fence. Re-render with `node scripts/render-docs-diagrams.mjs` after editing.
 
 ```mermaid
 flowchart TB
@@ -204,8 +186,6 @@ flowchart TB
   class RULE,OVR derive
   class EST,ASM warn
 ```
-
-</details>
 
 The bottom path is the one that keeps the model honest: a value with no evidence is omitted, not
 filled with a plausible default.
