@@ -241,16 +241,19 @@ reads. Omit a field if the attachment has no effect there.
 | `adsMoveSpeedTierShift` | int | `0` | Shifts ADS move speed tier |
 | `velMult` | float | `1` | *(barrels)* Multiplies bullet velocity |
 | `sway` | float | `0` | *(muzzles)* Adds to weapon sway |
-| `worldSpot` | float | `54` | *(muzzles)* World spotting distance override |
-| `minimapSpot` | float | `150` | *(muzzles)* Minimap spotting distance override |
+| `worldSpot` | float | `54` | *(muzzles, ammo)* World spotting distance override; muzzle and ammo take the tighter value |
+| `minimapSpot` | float | `150` | *(muzzles, ammo)* Minimap spotting distance override; muzzle and ammo take the tighter value |
+| `suppressedMinimapSpot` | float | — | *(ammo)* Minimap spotting used when the muzzle is a suppressor (subsonic + suppressor stacks past either alone) |
+| `suppressor` | bool | `false` | *(muzzles)* Marks the muzzle as a suppressor for ammo interactions |
 | `hipSpreadDecayBoost` | float | `0` | *(lights)* Extra hipfire spread decay coefficient |
 | `laserVisible` | bool | — | *(lasers)* Whether the beam is visible to enemies |
-| `sprintRecoveryTierShift` | int | `0` | *(grips, ergos)* Shifts sprint recovery tier |
+| `sprintRecoveryTierShift` | int | `0` | *(grips, ergos, barrels)* Shifts sprint recovery tier (pos = slower) |
 | `visualRecoil` | int | `0` | *(ergos)* Visual recoil modifier; negative = reduced |
 | `setsFireModeAuto` | bool | `false` | *(ergos)* Overrides burst weapon to full-auto fire mode |
 | `setsFireModeBurst` | bool | `false` | *(ergos)* Overrides weapon to burst fire mode |
 | `burstRounds` / `burstRpm` / `burstBurstsPerMinute` | num | — | *(burst ergos)* Burst cadence overrides applied while burst mode is active |
 | `hsMult` | num \| `'hp'` \| `null` | `null` | *(ammo)* Headshot multiplier override; `'hp'` = 1.5×/1.75× per `HP_HS_HIGH` |
+| `velocityTreatment` | obj | — | *(`WEAPON_AMMO[w].velocityTreatments[ammoId]`)* Per weapon/ammo muzzle-velocity override for loads outside the normal ladder — `subsonic-tier` steps the 0.8 ladder, the absolute kinds pin a transcribed value |
 | `pts` | int | `0` | Attachment point cost |
 | `noEffect` | bool | `false` | Renders greyed; present in-game but changes no modeled stat |
 | `assumed` / `assumedFields` | bool / obj | — | Marks values pending datamined confirmation; triggers the sidebar footnote |

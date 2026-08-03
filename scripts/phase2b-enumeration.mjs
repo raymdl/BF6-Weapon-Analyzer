@@ -166,7 +166,7 @@ export function buildEnumeration({
       gripSelection: 'none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot',
       ergoSelection: 'none plus WEAPON_ERGO[weapon].avail',
       ammoSelection: 'all IDs in WEAPON_AMMO[weapon].ammo, including standard-only weapons',
-      barrelSelection: 'weapon barrelDef only; barrels do not affect sprint recovery or ADS move',
+      barrelSelection: 'weapon barrelDef only; no weapon defaults to a barrel carrying a sprint recovery shift',
       caseKey: 'weaponId/magazineId/gripId/ergoId/ammoId',
     },
     counts: {

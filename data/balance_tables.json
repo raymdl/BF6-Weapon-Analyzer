@@ -193,13 +193,16 @@
       "penetration": 0.83,
       "frangible": 0.57,
       "hollow_pt": 0.57,
-      "synthetic": 0.57
+      "synthetic": 0.57,
+      "subsonic_pen": 0.67
     },
     "usg90": {
       "standard": 0.67,
       "penetration": 0.83,
       "frangible": 0.57,
-      "hollow_pt": 0.57
+      "hollow_pt": 0.57,
+      "subsonic": 0.57,
+      "subsonic_hp": 0.57
     },
     "es57": {
       "standard": 0.67

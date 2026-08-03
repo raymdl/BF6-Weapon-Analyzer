@@ -26,14 +26,14 @@
     "mobility"
   ],
   "counts": {
-    "total": 58,
+    "total": 55,
     "byClassification": {
       "confirmed-corpus-error": 1,
-      "known-deferral": 4,
+      "known-deferral": 2,
       "likely-corpus-error": 0,
       "out-of-scope": 39,
       "possible-dead-code": 1,
-      "unadjudicated": 13
+      "unadjudicated": 12
     }
   },
   "records": [
@@ -188,7 +188,8 @@
         "Ergonomics"
       ],
       "resolverModeledSlots": [
-        "Muzzle"
+        "Muzzle",
+        "Ammo"
       ],
       "example": {
         "weapon": "M433",
@@ -217,7 +218,8 @@
         "Ergonomics"
       ],
       "resolverModeledSlots": [
-        "Muzzle"
+        "Muzzle",
+        "Ammo"
       ],
       "example": {
         "weapon": "EF88",
@@ -246,7 +248,8 @@
         "Ergonomics"
       ],
       "resolverModeledSlots": [
-        "Muzzle"
+        "Muzzle",
+        "Ammo"
       ],
       "example": {
         "weapon": "EF88",
@@ -257,35 +260,6 @@
         "sourcePath": "Weapon Attachments/Assault Rifle/EF88/21_EF88_Light_None.png"
       },
       "evidenceCount": 4,
-      "resolverOutput": "_worldSpot",
-      "classification": "unadjudicated",
-      "source": null,
-      "note": "The corpus shows a non-muzzle difference while the resolver models spot-on-fire range from the muzzle only."
-    },
-    {
-      "field": "spotOnFire3dM",
-      "slot": "Ammo",
-      "corpusObservedSlots": [
-        "Muzzle",
-        "Barrel",
-        "Laser",
-        "Light",
-        "Ammo",
-        "Magazine",
-        "Ergonomics"
-      ],
-      "resolverModeledSlots": [
-        "Muzzle"
-      ],
-      "example": {
-        "weapon": "CZ3A1",
-        "slot": "Ammo",
-        "attachment": "Subsonic",
-        "observed": 27,
-        "modalBaseline": 54,
-        "sourcePath": "Weapon Attachments/SMG/CZ3A1/48_CZ3A1_Ammo_Subsonic.png"
-      },
-      "evidenceCount": 33,
       "resolverOutput": "_worldSpot",
       "classification": "unadjudicated",
       "source": null,
@@ -304,7 +278,8 @@
         "Ergonomics"
       ],
       "resolverModeledSlots": [
-        "Muzzle"
+        "Muzzle",
+        "Ammo"
       ],
       "example": {
         "weapon": "EF88",
@@ -333,7 +308,8 @@
         "Ergonomics"
       ],
       "resolverModeledSlots": [
-        "Muzzle"
+        "Muzzle",
+        "Ammo"
       ],
       "example": {
         "weapon": "EF88",
@@ -358,7 +334,8 @@
         "Ammo"
       ],
       "resolverModeledSlots": [
-        "Muzzle"
+        "Muzzle",
+        "Ammo"
       ],
       "example": {
         "weapon": "VSSM",
@@ -372,31 +349,6 @@
       "resolverOutput": "_minimapSpot",
       "classification": "unadjudicated",
       "source": null,
-      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
-    },
-    {
-      "field": "spotOnFire2dM",
-      "slot": "Ammo",
-      "corpusObservedSlots": [
-        "Muzzle",
-        "Barrel",
-        "Ammo"
-      ],
-      "resolverModeledSlots": [
-        "Muzzle"
-      ],
-      "example": {
-        "weapon": "CZ3A1",
-        "slot": "Ammo",
-        "attachment": "Subsonic",
-        "observed": 64,
-        "modalBaseline": 150,
-        "sourcePath": "Weapon Attachments/SMG/CZ3A1/48_CZ3A1_Ammo_Subsonic.png"
-      },
-      "evidenceCount": 27,
-      "resolverOutput": "_minimapSpot",
-      "classification": "known-deferral",
-      "source": "migration/1.3.3.0/attachment-audit/subsonic-velocity-treatments-20260731.json; data/ammo.json (no selectable subsonic ammo type)",
       "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
     },
     {
@@ -558,35 +510,6 @@
     },
     {
       "field": "sprintRecoveryMs",
-      "slot": "Barrel",
-      "corpusObservedSlots": [
-        "Barrel",
-        "Grip",
-        "Laser/Light",
-        "Magazine",
-        "Ergonomics"
-      ],
-      "resolverModeledSlots": [
-        "Grip",
-        "Magazine",
-        "Ergonomics"
-      ],
-      "example": {
-        "weapon": "AK4D",
-        "slot": "Barrel",
-        "attachment": "600MM DMR",
-        "observed": 200,
-        "modalBaseline": 167,
-        "sourcePath": "Weapon Attachments/Assault Rifle/AK4D/15_AK4D_Barrel_HEAVY_EXT.png"
-      },
-      "evidenceCount": 20,
-      "resolverOutput": "_sprintRecoveryMs",
-      "classification": "known-deferral",
-      "source": "../BARREL_VELOCITY_PHASE7_INVENTORY.md (§ Sprint-recovery anomalies (deferred))",
-      "note": "Corpus and resolver inventories differ; screenshot or operator adjudication is required before changing data or the model."
-    },
-    {
-      "field": "sprintRecoveryMs",
       "slot": "Laser/Light",
       "corpusObservedSlots": [
         "Barrel",
@@ -596,6 +519,7 @@
         "Ergonomics"
       ],
       "resolverModeledSlots": [
+        "Barrel",
         "Grip",
         "Magazine",
         "Ergonomics"

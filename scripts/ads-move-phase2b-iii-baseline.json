@@ -7,7 +7,7 @@
     "gripSelection": "none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot",
     "ergoSelection": "none plus WEAPON_ERGO[weapon].avail",
     "ammoSelection": "all IDs in WEAPON_AMMO[weapon].ammo, including standard-only weapons",
-    "barrelSelection": "weapon barrelDef only; barrels do not affect sprint recovery or ADS move",
+    "barrelSelection": "weapon barrelDef only; no weapon defaults to a barrel carrying a sprint recovery shift",
     "caseKey": "weaponId/magazineId/gripId/ergoId/ammoId"
   },
   "counts": {
@@ -15,10 +15,10 @@
     "magazineEntries": 278,
     "gripChoices": 853,
     "ergoChoices": 183,
-    "ammoChoices": 279,
-    "cases": 77609,
-    "primaryCases": 77375,
-    "sidearmCases": 234
+    "ammoChoices": 310,
+    "cases": 83491,
+    "primaryCases": 83245,
+    "sidearmCases": 246
   },
   "defSprDistribution": {
     "1": 1,
@@ -30,7 +30,7 @@
     "7": 6
   },
   "clampCounts": {
-    "sprintRecovery": 55,
+    "sprintRecovery": 63,
     "adsMove": 0,
     "adsTime": 0,
     "deploy": 435
@@ -38,14 +38,14 @@
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-row-v1",
-    "value": "7c1b30b279ae9f796a55bc5902d4b30b260c2e12766bf994e16817e6ccac9d7d"
+    "value": "cd52dc05e98408099adf17b1819c5bfcc57b1186edc2bb21fa82187386eb65cc"
   },
   "perWeaponDigest": {
     "ak205": "5be96e6c30e16e41920f335385dfcce10c9c79af6f0edd2da82af4c672d43a7c",
     "ak4d": "c3ec40779f9eadb1a6f846791bdf27e2062f9471dc30955e05fe45421a23949f",
     "b36a4": "3586b76ea53d2438829e5ac64b594fa8315bc611431dc5da15e1fde506b42c99",
     "brod3": "b99e594b7c0ddb42197d528729dbf2e27dbe49f16dd7e2785e7c026a188bc296",
-    "cz3a1": "39b4e7bc54b58afa7611aa168534617f8ef9d86836a90dcc5db28eec8daf41de",
+    "cz3a1": "d9356328446d58d26f31921a0143d9b88274af79a102d4280fee63ccaaa1beb9",
     "db12": "1e625ff1e5f97a5992babd169f64f389edd0cce1a10d1fa08dbdfc478e98ab5c",
     "drsiar": "c32a5a5f9abec545df7feca0ec5ba524b6330443846fc07daaaf2cdd06be434e",
     "ef88": "595a06a8bc14871c1b423d2110ae9149eb495f97c7afc7954b8f14e2aa67c2ec",
@@ -56,7 +56,7 @@
     "kord6p67": "e47119720cd9410e51a43b3ad5a723d81f4a652f021b2a9cf5c18f06ee789d28",
     "ks18k": "92061085e0ee06ae96886f67d8be360c3c1342aa5438ec10e33c8a18535bb638",
     "kts100": "f5fb294c5f7c59ebed8903d77b500118fd794e196cee5c43784375ac68be8d1f",
-    "kv9": "1ee9eac6cd3f102ab806cfc4a05a673b175fc15ead608563bce332f5146f9e44",
+    "kv9": "1a213d4b348f03d855cb7c1330da6adc8d5cb88073dc201d717864c86cfb1e51",
     "l110": "c894151dce260331668887ebe5384c0a619788c9c6a207f61634fc5974605196",
     "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
     "l85a3": "14d74f19712b451ae9e4d0aafddf72fa87e435c0c2c4e246cf0aa031f0261dca",
@@ -71,7 +71,7 @@
     "m277": "f92c2305b075ca8ac6ecbd83424d54e856156fd319d3a91dd06c838a081845c8",
     "m357trait": "aea5a684d4655de46242d24baee1ae2359cd2dcb11b74d4ea3ed9fcde6ff87a8",
     "m39emr": "084eeee341500e7cc65af61c190b9d6ea052e0cceaa088dbb49c328052cc385f",
-    "m417a2": "586d957088154c1a8632000f8984bf92bd4263d5c88132e6c93a572e0063ed1e",
+    "m417a2": "528bbacae302bc7f6f769165baea08acc80cfc01914b1d1830f953ba80e619b9",
     "m433": "74476d176d25c60ddcd36ad1797878c948b5de0ffa870998391511593ffdfa23",
     "m44": "bae969a65d5cf34721c0056ef76ca8b1bae7fd43807c317d97baf62e94edcd89",
     "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
@@ -80,66 +80,66 @@
     "m87a1": "fb69519233fedb9fe9b19eb741f060c059fa33a6a0334ed3d70f0d66f9f7c205",
     "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
     "nvo228e": "6c75cb365788f0c83765bf018e1d8d9bca1e0436e2bb782d5643094780be5612",
-    "p18": "d7ea019e08a6a9afd6e4badc5677be5fed027ba6d6890d3d5c12ce7a9c844431",
-    "pp19": "5b52f790a70c66b120735c664180aae9a772d337939c5487cb5ac727bcab378b",
+    "p18": "d2c813043166745bf1ad85735896784642f2385db7ab7b98ab1f675b536ff9cc",
+    "pp19": "27fd7734262bb17f0230fe5cec4e9433d8ce6413fc318715cf4e08019c1d8e49",
     "psr": "e54ffe2630714fb706110fa8b95e89ac79de2815569b488be4d4b79cd68df791",
-    "pw5a3": "6c0a09de185739c94f9204df22cc00bb67e6ee29aada9ef886759c1872d1f36e",
-    "pw7a2": "8c3a3f19f8878829d2bf6df7687767936ada7b553c1b2733cd4f84b5e4b3e115",
+    "pw5a3": "ed912d53ca2c40196afdb373c12f9a02887ae569fbb64af8cbf6926d6427d622",
+    "pw7a2": "611ca9fab6dfc85c46c4e21db3811b2d8583fbbb3e5be415296b677606a537ac",
     "qbz192": "85f8bae0f7c16c3f3305bf165b9cf6f1818a5ee143b51acc165c4eb3b2b88bf6",
     "rpk74m": "3d368bd3932080b0b8614eecb67cf0bcdd6081d232528cb712c20786fba62175",
     "rpkm": "16df611cd0d83e7ba6e006d5bda51b2b611da743b2ae9babd7cb2c682aaaca09",
-    "scw10": "98089480b26342c8882557e121e3057ca85e03c12a33d7310cbd21512e7266ff",
-    "sg553r": "a8fb14b412055087f8b5414d36a74de85f599edb3e7a4b9290074b4b56e18c0d",
-    "sgx": "3c8f6a6f4a94cbd7d0343a54d5d0f97723a087bb1c4e5d0523384504504c85e3",
-    "sl9": "5aeaea7ff533b781f350d352667fd955d410453e93d4779ac4ba3625ab5aa8e6",
-    "sor300sc": "6292071b2e13c922d01f6ea864252091aac0cb8832897fbc7e4b5026527ec3df",
+    "scw10": "8f8d40586339be30ba0f209a1273ef6bc2f7d45121e8a9fef6d373cdad8efb7f",
+    "sg553r": "aa4104749c10e9c39e8eb5c39603d1174d3da7ce68918e12f7de3996a5819fec",
+    "sgx": "1682e823df48aed8810c244d7bfa3abea8423e49ab4304142b4ada9fee455c2e",
+    "sl9": "36378edfea440482a063239d139021ce3968b6da653a16eab5ac55a5b8b8d23d",
+    "sor300sc": "a4d7e1192051bea367ecb247251572e06e73561ea70e0f3258dd1d02936065f8",
     "sor556": "064ce77f5a17e8a929e234986f1fc8bf4ff233335a99044112023ba06dbb0e07",
     "sv98": "454c25c23a373ceefb204db4aee1a8d1b3273fb84a821098f2d1a74366ff8c52",
     "svdm": "d4e7808ec3dc5f09b3ca53da5fb0c0cf6a15ddb4bfe94dd3ab1e45bcae2e308d",
     "svk86": "364d931b0f19f477d77d7dce96dc5723629e20207f20ea6320929c924d37720e",
     "tr7": "092f67b48d8d13390b5e05871c232009ccc03796a81feb715c08fe8e2ad4bed4",
-    "umg40": "765ce378524d0e25499bec1d8d53fa3f8c548acd3bf3b796b442e02a423f3180",
-    "usg90": "adbe21770bcf986057ed71d7d4b6cce0de5caaab371e3978141520309dad1de3",
+    "umg40": "a83f6226e72a2f6f1d09c34e3823fdc7d782fba700ca8e84a8f21e31b23a3aff",
+    "usg90": "803fe398c62dfeced0a769c3f9946aac7a9fc93839a0f28ae401541e90d65617",
     "vcr2": "2ed88d1a566b5747e27c1024e066142367da4ee6c38893d498ce6debc0478eaa",
     "vz61": "67e47466f6f6d3d253b2b2694eff3c39c695b67027acdb35e6e42fec01b3468e"
   },
   "rawIndexHistograms": {
     "sprintRecovery": {
       "primary": {
-        "0": 1020,
-        "1": 6086,
-        "2": 13977,
-        "3": 20298,
-        "4": 20552,
+        "0": 1252,
+        "1": 7578,
+        "2": 16891,
+        "3": 21338,
+        "4": 20736,
         "5": 12165,
         "6": 2562,
         "7": 285,
         "8": 375,
-        "-1": 55
+        "-1": 63
       },
       "sidearm": {
-        "0": 24,
-        "1": 30,
-        "2": 88,
-        "3": 32,
+        "0": 26,
+        "1": 34,
+        "2": 90,
+        "3": 36,
         "4": 60
       }
     },
     "adsMove": {
       "primary": {
-        "0": 171,
-        "1": 1273,
-        "2": 3849,
-        "3": 7636,
-        "4": 13622,
-        "5": 19730,
-        "6": 20167,
+        "0": 405,
+        "1": 1575,
+        "2": 4465,
+        "3": 8826,
+        "4": 15586,
+        "5": 21046,
+        "6": 20415,
         "7": 9167,
         "8": 1648,
         "9": 112
       },
       "sidearm": {
-        "2": 100,
+        "2": 112,
         "3": 56,
         "4": 68,
         "5": 10
@@ -147,9 +147,9 @@
     },
     "adsTime": {
       "primary": {
-        "0": 5042,
-        "1": 18848,
-        "2": 26506,
+        "0": 6998,
+        "1": 21956,
+        "2": 27312,
         "3": 18345,
         "4": 5717,
         "5": 1857,
@@ -158,17 +158,17 @@
       },
       "sidearm": {
         "0": 96,
-        "1": 132,
+        "1": 144,
         "2": 6
       }
     },
     "deploy": {
       "primary": {
-        "4": 676,
-        "5": 5464,
-        "6": 13628,
-        "7": 20416,
-        "8": 21210,
+        "4": 876,
+        "5": 6924,
+        "6": 16534,
+        "7": 21512,
+        "8": 21418,
         "9": 12309,
         "10": 2925,
         "11": 312,
@@ -176,9 +176,9 @@
       },
       "sidearm": {
         "0": 8,
-        "1": 36,
+        "1": 42,
         "2": 8,
-        "3": 52,
+        "3": 58,
         "4": 70,
         "6": 60
       }
@@ -226,21 +226,29 @@
       "sor300sc/20_rnd/adj_angled/rail_cover/lightweight",
       "sor300sc/20_rnd/adj_angled/rail_cover/penetration",
       "sor300sc/20_rnd/adj_angled/rail_cover/standard",
+      "sor300sc/20_rnd/adj_angled/rail_cover/subsonic",
+      "sor300sc/20_rnd/adj_angled/rail_cover/subsonic_hp",
       "sor300sc/20_rnd/full_angled/rail_cover/frangible",
       "sor300sc/20_rnd/full_angled/rail_cover/hollow_pt",
       "sor300sc/20_rnd/full_angled/rail_cover/lightweight",
       "sor300sc/20_rnd/full_angled/rail_cover/penetration",
       "sor300sc/20_rnd/full_angled/rail_cover/standard",
+      "sor300sc/20_rnd/full_angled/rail_cover/subsonic",
+      "sor300sc/20_rnd/full_angled/rail_cover/subsonic_hp",
       "sor300sc/20_rnd/slim_angled/rail_cover/frangible",
       "sor300sc/20_rnd/slim_angled/rail_cover/hollow_pt",
       "sor300sc/20_rnd/slim_angled/rail_cover/lightweight",
       "sor300sc/20_rnd/slim_angled/rail_cover/penetration",
       "sor300sc/20_rnd/slim_angled/rail_cover/standard",
+      "sor300sc/20_rnd/slim_angled/rail_cover/subsonic",
+      "sor300sc/20_rnd/slim_angled/rail_cover/subsonic_hp",
       "sor300sc/20_rnd/slim_handstop/rail_cover/frangible",
       "sor300sc/20_rnd/slim_handstop/rail_cover/hollow_pt",
       "sor300sc/20_rnd/slim_handstop/rail_cover/lightweight",
       "sor300sc/20_rnd/slim_handstop/rail_cover/penetration",
-      "sor300sc/20_rnd/slim_handstop/rail_cover/standard"
+      "sor300sc/20_rnd/slim_handstop/rail_cover/standard",
+      "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic",
+      "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic_hp"
     ],
     "adsMove": [],
     "adsTime": [],
@@ -1883,7 +1891,7 @@
         }
       }
     },
-    "changedCaseCount": 17240,
+    "changedCaseCount": 18888,
     "changedWeaponCount": 46,
     "changedWeaponIds": [
       "ak205",
@@ -1933,20 +1941,20 @@
       "vcr2",
       "vz61"
     ],
-    "changedCaseKeysDigest": "158b9fc9601701cd3d0800ef613242d26fa8d4890bba08d8ed766bcea2a50394",
+    "changedCaseKeysDigest": "940063db9d79323010daf22c7cb5188d889db5273224b454e134b1e9ee56bc99",
     "changedByWeapon": {
       "ak205": 960,
       "ak4d": 300,
       "b36a4": 648,
       "brod3": 840,
-      "cz3a1": 320,
+      "cz3a1": 480,
       "drsiar": 720,
       "ef88": 600,
       "grtbc": 500,
       "grtcps": 192,
       "kord6p67": 420,
       "kts100": 360,
-      "kv9": 128,
+      "kv9": 192,
       "l110": 128,
       "l85a3": 432,
       "lmr27": 240,
@@ -1958,38 +1966,38 @@
       "m250": 32,
       "m277": 384,
       "m39emr": 360,
-      "m417a2": 320,
+      "m417a2": 448,
       "m433": 420,
       "m4a1": 840,
       "m60": 120,
       "m87a1": 48,
       "nvo228e": 420,
-      "pp19": 60,
-      "pw5a3": 320,
-      "pw7a2": 160,
+      "pp19": 420,
+      "pw5a3": 448,
+      "pw7a2": 192,
       "qbz192": 384,
       "rpk74m": 768,
       "rpkm": 672,
-      "scw10": 128,
-      "sg553r": 560,
-      "sgx": 128,
-      "sl9": 60,
-      "sor300sc": 700,
+      "scw10": 192,
+      "sg553r": 784,
+      "sgx": 192,
+      "sl9": 84,
+      "sor300sc": 980,
       "sor556": 1080,
       "svdm": 240,
       "tr7": 420,
-      "umg40": 300,
+      "umg40": 420,
       "vcr2": 420,
       "vz61": 20
     },
     "valueChanges": {
-      "0.67->0.6": 3540,
-      "0.75->0.67": 2032,
-      "0.6->0.54": 4748,
+      "0.67->0.6": 4128,
+      "0.75->0.67": 2476,
+      "0.6->0.54": 4996,
       "0.54->0.47": 4056,
-      "0.82->0.75": 984,
-      "0.91->0.82": 436,
-      "1->0.91": 76,
+      "0.82->0.75": 1160,
+      "0.91->0.82": 524,
+      "1->0.91": 180,
       "0.47->0.42": 1256,
       "0.42->0.37": 112
     },
@@ -2035,21 +2043,29 @@
         "sor300sc/20_rnd/adj_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/adj_angled/rail_cover/penetration",
         "sor300sc/20_rnd/adj_angled/rail_cover/standard",
+        "sor300sc/20_rnd/adj_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/adj_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/full_angled/rail_cover/frangible",
         "sor300sc/20_rnd/full_angled/rail_cover/hollow_pt",
         "sor300sc/20_rnd/full_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/full_angled/rail_cover/penetration",
         "sor300sc/20_rnd/full_angled/rail_cover/standard",
+        "sor300sc/20_rnd/full_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/full_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/slim_angled/rail_cover/frangible",
         "sor300sc/20_rnd/slim_angled/rail_cover/hollow_pt",
         "sor300sc/20_rnd/slim_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/slim_angled/rail_cover/penetration",
         "sor300sc/20_rnd/slim_angled/rail_cover/standard",
+        "sor300sc/20_rnd/slim_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/slim_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/slim_handstop/rail_cover/frangible",
         "sor300sc/20_rnd/slim_handstop/rail_cover/hollow_pt",
         "sor300sc/20_rnd/slim_handstop/rail_cover/lightweight",
         "sor300sc/20_rnd/slim_handstop/rail_cover/penetration",
-        "sor300sc/20_rnd/slim_handstop/rail_cover/standard"
+        "sor300sc/20_rnd/slim_handstop/rail_cover/standard",
+        "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic",
+        "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic_hp"
       ],
       "adsMove": [],
       "adsTime": [],
@@ -2533,21 +2549,29 @@
         "sor300sc/20_rnd/adj_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/adj_angled/rail_cover/penetration",
         "sor300sc/20_rnd/adj_angled/rail_cover/standard",
+        "sor300sc/20_rnd/adj_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/adj_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/full_angled/rail_cover/frangible",
         "sor300sc/20_rnd/full_angled/rail_cover/hollow_pt",
         "sor300sc/20_rnd/full_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/full_angled/rail_cover/penetration",
         "sor300sc/20_rnd/full_angled/rail_cover/standard",
+        "sor300sc/20_rnd/full_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/full_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/slim_angled/rail_cover/frangible",
         "sor300sc/20_rnd/slim_angled/rail_cover/hollow_pt",
         "sor300sc/20_rnd/slim_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/slim_angled/rail_cover/penetration",
         "sor300sc/20_rnd/slim_angled/rail_cover/standard",
+        "sor300sc/20_rnd/slim_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/slim_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/slim_handstop/rail_cover/frangible",
         "sor300sc/20_rnd/slim_handstop/rail_cover/hollow_pt",
         "sor300sc/20_rnd/slim_handstop/rail_cover/lightweight",
         "sor300sc/20_rnd/slim_handstop/rail_cover/penetration",
-        "sor300sc/20_rnd/slim_handstop/rail_cover/standard"
+        "sor300sc/20_rnd/slim_handstop/rail_cover/standard",
+        "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic",
+        "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic_hp"
       ],
       "adsMove": [],
       "adsTime": [],
@@ -2999,7 +3023,7 @@
       "gripSelection": "none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot",
       "ergoSelection": "none plus WEAPON_ERGO[weapon].avail",
       "ammoSelection": "all IDs in WEAPON_AMMO[weapon].ammo, including standard-only weapons",
-      "barrelSelection": "weapon barrelDef only; barrels do not affect sprint recovery or ADS move",
+      "barrelSelection": "weapon barrelDef only; no weapon defaults to a barrel carrying a sprint recovery shift",
       "caseKey": "weaponId/magazineId/gripId/ergoId/ammoId"
     },
     "counts": {
@@ -3007,10 +3031,10 @@
       "magazineEntries": 278,
       "gripChoices": 853,
       "ergoChoices": 183,
-      "ammoChoices": 279,
-      "cases": 77609,
-      "primaryCases": 77375,
-      "sidearmCases": 234
+      "ammoChoices": 310,
+      "cases": 83491,
+      "primaryCases": 83245,
+      "sidearmCases": 246
     },
     "defSprDistribution": {
       "1": 1,
@@ -3022,7 +3046,7 @@
       "7": 6
     },
     "clampCounts": {
-      "sprintRecovery": 55,
+      "sprintRecovery": 63,
       "adsMove": 0,
       "adsTime": 0,
       "deploy": 435
@@ -3030,14 +3054,14 @@
     "digest": {
       "algorithm": "SHA-256",
       "format": "canonical-row-v1",
-      "value": "190cd3ea7d2b28db7ee3586738062ed2fb6fb720ae58e436e47251a285abf2e9"
+      "value": "13335dd2e386e46a8885be7a26c1737f0aeb9a04fa02aa947d70a3b49a721cd2"
     },
     "perWeaponDigest": {
       "ak205": "429316af0dad59ac8caf500fe91656da310b9fc084414934dc8319937c58bba4",
       "ak4d": "a4879a2a292cbe722cae3200f8943ecad5e0af39e152716bcabc878ba08fa932",
       "b36a4": "3bab8604ac4d23252a2180ccdaa4d52d1ed9670d400f77b71b31794312f73d13",
       "brod3": "fbd6ea21a33afc005708ba52a9f13fa54b46757aa3443dde01ce2ffc4fd5f377",
-      "cz3a1": "593c01540022044c6ca78c805f699a6f88c392f1756d20fa836198271d2cc687",
+      "cz3a1": "7bc8ee13d1b42cb971ecb827f52aff307b3a08a0e8ec6386433ed04342a427de",
       "db12": "dbbe9b944f5693bf44c253977bff6fbb7fdb4e52e5c9a007e302ed2f9a8dac9e",
       "drsiar": "255733dd607e7d7df97f9d732e8b7d04736810289f839afe98e4ffe408e41ca0",
       "ef88": "13e95209dde434331ec47bc2ee359c1566b59f42e54a1c30825da7ba78e6c68e",
@@ -3048,7 +3072,7 @@
       "kord6p67": "926376678c14f6cb34311d72d266faed766581f573c53ddb74bd2f79614bee11",
       "ks18k": "fab1b8897df6abc477029a09ee064cc5fc70864020bca97f971f3d23d3a49024",
       "kts100": "dcdc727a52ffd8cb64c270174376c2570d2fa57ec0555c78f3d0e723d65a6915",
-      "kv9": "18f5ad5c4b5de7c51dcefcfb898ffe7a50912ef6a3897df8a867697cda594874",
+      "kv9": "8fd36d4dc9ba90a6f45b15ca622ea758465988af3659bbbf22c8e6b1ce6c179f",
       "l110": "fad26ea613e12fe2e38467d2406699ef393d43ecc135886da6f50ec26de6c6c5",
       "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
       "l85a3": "d4a3d79a626ec0dbcb0aa9a1cadda20572756cc594276c7bfbdacf02dedf5aab",
@@ -3063,7 +3087,7 @@
       "m277": "5d2746f93ed14e30867580aed329e69b1f41068ee8980d5aa9d982c7ef6d8921",
       "m357trait": "aea5a684d4655de46242d24baee1ae2359cd2dcb11b74d4ea3ed9fcde6ff87a8",
       "m39emr": "5f6510d5920b334dcfe1ff15024a967dcfb05a9cca46a14dfa885c215f4a8f26",
-      "m417a2": "3d62f2bd545ae3ec8cbdad8e8d7f9a29eec7d0dea31c219d3ad2908f01565c33",
+      "m417a2": "3f5ebbe47417c381b01e496fdfb16d88532fda5a66bc6005f317b158fab1e350",
       "m433": "dcb2ad5ea2e2bbfdc9513a984c69b096885a8a7d755d7c4925f658d8ebe5e508",
       "m44": "bae969a65d5cf34721c0056ef76ca8b1bae7fd43807c317d97baf62e94edcd89",
       "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
@@ -3072,74 +3096,74 @@
       "m87a1": "af36630c762034167b136ae782b16ef6d22775a1c372b64801562c2c5366c8e6",
       "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
       "nvo228e": "3512164257fb7da0d11ef2231c34dda35073c6e8efacd0fae560d6d7e96d0597",
-      "p18": "d7ea019e08a6a9afd6e4badc5677be5fed027ba6d6890d3d5c12ce7a9c844431",
-      "pp19": "872554ad6ab298088e3da7c30620a5b6e843bf2beb34127845e7fcfd3db6404f",
+      "p18": "d2c813043166745bf1ad85735896784642f2385db7ab7b98ab1f675b536ff9cc",
+      "pp19": "ec2d82e162710d3dc2aa5a180ed6b882e4d52223bcd851c827a1599fe7057c1f",
       "psr": "e54ffe2630714fb706110fa8b95e89ac79de2815569b488be4d4b79cd68df791",
-      "pw5a3": "b76f70d0ecb8a8fc6d69150a7a28a6028431be2f5aeec814464c12a72ecfd0fa",
-      "pw7a2": "e9ff3c4bf6baa78b90999901bd1e2a0512b58f11fc7dd519f8d8af0f387e3657",
+      "pw5a3": "0f0c3ea0155550cf47fe75c86667aad4cac1f31a3a6d007c6b00707a94ef6834",
+      "pw7a2": "b17d61d012e9a5c653a60254cd9c7dd95ede8e95392c1616cf7b9974c0b0050b",
       "qbz192": "a88ab1a5deb61b706d955b4e0e267b4e6dd89239679201ecb6220a890f5ab80e",
       "rpk74m": "60303e5c880aed3562f6aa400d5728bbd4994267c3a478cee88d47b3d1769e17",
       "rpkm": "e76325dd3462348dfd29d5bb787be78d0fa2e96f6d416e9f69edf75622fbdb6f",
-      "scw10": "73aa9a566ac1b78b6f4ee23aa5f9e8b3c6389832e4e877483c295b1711efe15e",
-      "sg553r": "44c3b626e56a071164c854ba5dd018776a44d6211108b0627ce7f0a6f3f2b4eb",
-      "sgx": "444d0f5588e4b081aa2385d0ebb5ba1c00971e72f2400d95151bc78141ccd0f5",
-      "sl9": "9a95b91fec0a81aaecd6e868296bdd92eb8c8261dd302048e7320a242343788e",
-      "sor300sc": "f963de0124ea693c944331d1bd76ca902edcb877c98a2a03178ae308f9ef1f13",
+      "scw10": "671d4e6e3499899f1900a696d2f51762e8cc35ed34ac5cce2dc981d74320cdd9",
+      "sg553r": "0a0ad09121b67a36f6f3968c48fc8c5ed2ee178022e8471d60a3558c6f1dea6d",
+      "sgx": "adc5b438afef36f8ea0dca0eb47f2f80fb736d649c2421a6ecb76e7b90517195",
+      "sl9": "6e92c65330b71e383f13b384a188df51d7f641d00c01a8291c5455abeb82e1d8",
+      "sor300sc": "723382c208a94f293c088b74ef252742e1a7968e36f5a4f99141d4563d6e6ede",
       "sor556": "7cd6efab40c4a034e07ca2d20b3a66a70eebe40dddea1af17a64311db29b7f5f",
       "sv98": "454c25c23a373ceefb204db4aee1a8d1b3273fb84a821098f2d1a74366ff8c52",
       "svdm": "8fe9341992e1e79300d16329c2c0c58981bf24426f93ba30317e19acd336eb03",
       "svk86": "fa1e14e60d5288ceee0e1287f240fd87a69e0403ac276c0d6f46d92e357ae0b3",
       "tr7": "ba6cba9aba1480aec86f8bbccda11e74e908e9795c88eb4501f0981b38699fd1",
-      "umg40": "e1e9852d70ccbb9d94fb51e91cbb6c21da329a1ed18703ef43ac8556f60906d8",
-      "usg90": "adbe21770bcf986057ed71d7d4b6cce0de5caaab371e3978141520309dad1de3",
+      "umg40": "b8d54e00a8ebee26d2084a415807a3bb75342528b4ac62b5dccc44a79e4acb0b",
+      "usg90": "803fe398c62dfeced0a769c3f9946aac7a9fc93839a0f28ae401541e90d65617",
       "vcr2": "62ba3869a3f28a7a1db6d8a0d38b0472bc0222ea111b665c7a69839f022c0ace",
       "vz61": "2134eef74f5ddf0107a31d6c9fa4104d7aab430ccfa4dcd17937bc96cee409c2"
     },
     "rawIndexHistograms": {
       "sprintRecovery": {
         "primary": {
-          "0": 1020,
-          "1": 6086,
-          "2": 13977,
-          "3": 20298,
-          "4": 20552,
+          "0": 1252,
+          "1": 7578,
+          "2": 16891,
+          "3": 21338,
+          "4": 20736,
           "5": 12165,
           "6": 2562,
           "7": 285,
           "8": 375,
-          "-1": 55
+          "-1": 63
         },
         "sidearm": {
-          "0": 24,
-          "1": 30,
-          "2": 88,
-          "3": 32,
+          "0": 26,
+          "1": 34,
+          "2": 90,
+          "3": 36,
           "4": 60
         }
       },
       "adsMove": {
         "primary": {
-          "0": 247,
-          "1": 1633,
-          "2": 4397,
-          "3": 8674,
-          "4": 15130,
-          "5": 20948,
+          "0": 585,
+          "1": 1919,
+          "2": 5101,
+          "3": 10132,
+          "4": 17238,
+          "5": 21924,
           "6": 19475,
           "7": 6367,
           "8": 504
         },
         "sidearm": {
-          "2": 100,
+          "2": 112,
           "3": 66,
           "4": 68
         }
       },
       "adsTime": {
         "primary": {
-          "0": 5042,
-          "1": 18848,
-          "2": 26506,
+          "0": 6998,
+          "1": 21956,
+          "2": 27312,
           "3": 18345,
           "4": 5717,
           "5": 1857,
@@ -3148,17 +3172,17 @@
         },
         "sidearm": {
           "0": 96,
-          "1": 132,
+          "1": 144,
           "2": 6
         }
       },
       "deploy": {
         "primary": {
-          "4": 676,
-          "5": 5464,
-          "6": 13628,
-          "7": 20416,
-          "8": 21210,
+          "4": 876,
+          "5": 6924,
+          "6": 16534,
+          "7": 21512,
+          "8": 21418,
           "9": 12309,
           "10": 2925,
           "11": 312,
@@ -3166,9 +3190,9 @@
         },
         "sidearm": {
           "0": 8,
-          "1": 36,
+          "1": 42,
           "2": 8,
-          "3": 52,
+          "3": 58,
           "4": 70,
           "6": 60
         }
@@ -3216,21 +3240,29 @@
         "sor300sc/20_rnd/adj_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/adj_angled/rail_cover/penetration",
         "sor300sc/20_rnd/adj_angled/rail_cover/standard",
+        "sor300sc/20_rnd/adj_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/adj_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/full_angled/rail_cover/frangible",
         "sor300sc/20_rnd/full_angled/rail_cover/hollow_pt",
         "sor300sc/20_rnd/full_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/full_angled/rail_cover/penetration",
         "sor300sc/20_rnd/full_angled/rail_cover/standard",
+        "sor300sc/20_rnd/full_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/full_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/slim_angled/rail_cover/frangible",
         "sor300sc/20_rnd/slim_angled/rail_cover/hollow_pt",
         "sor300sc/20_rnd/slim_angled/rail_cover/lightweight",
         "sor300sc/20_rnd/slim_angled/rail_cover/penetration",
         "sor300sc/20_rnd/slim_angled/rail_cover/standard",
+        "sor300sc/20_rnd/slim_angled/rail_cover/subsonic",
+        "sor300sc/20_rnd/slim_angled/rail_cover/subsonic_hp",
         "sor300sc/20_rnd/slim_handstop/rail_cover/frangible",
         "sor300sc/20_rnd/slim_handstop/rail_cover/hollow_pt",
         "sor300sc/20_rnd/slim_handstop/rail_cover/lightweight",
         "sor300sc/20_rnd/slim_handstop/rail_cover/penetration",
-        "sor300sc/20_rnd/slim_handstop/rail_cover/standard"
+        "sor300sc/20_rnd/slim_handstop/rail_cover/standard",
+        "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic",
+        "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic_hp"
       ],
       "adsMove": [],
       "adsTime": [],
@@ -3676,7 +3708,7 @@
   "detailSelection": {
     "topRawIndexAtLeast": 9,
     "sampleCasesPerWeapon": 3,
-    "detailCaseCount": 667
+    "detailCaseCount": 675
   },
   "detailCases": [
     {
@@ -22952,12 +22984,12 @@
       }
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/buffer/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/frangible",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
       "ergoId": "buffer",
-      "ammoId": "standard",
+      "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -22985,12 +23017,12 @@
       }
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/mag_catch/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/hollow_pt",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
-      "ergoId": "mag_catch",
-      "ammoId": "standard",
+      "ergoId": "buffer",
+      "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -23018,12 +23050,12 @@
       }
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/none/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/penetration",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
-      "ergoId": "none",
-      "ammoId": "standard",
+      "ergoId": "buffer",
+      "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -24305,6 +24337,72 @@
       }
     },
     {
+      "caseKey": "sor300sc/20_rnd/adj_angled/rail_cover/subsonic",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "adj_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "sor300sc/20_rnd/adj_angled/rail_cover/subsonic_hp",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "adj_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic_hp",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
       "caseKey": "sor300sc/20_rnd/full_angled/rail_cover/frangible",
       "weaponId": "sor300sc",
       "magazineId": "20_rnd",
@@ -24443,6 +24541,72 @@
       "gripId": "full_angled",
       "ergoId": "rail_cover",
       "ammoId": "standard",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "sor300sc/20_rnd/full_angled/rail_cover/subsonic",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "full_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "sor300sc/20_rnd/full_angled/rail_cover/subsonic_hp",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "full_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic_hp",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 0,
@@ -24635,6 +24799,72 @@
       }
     },
     {
+      "caseKey": "sor300sc/20_rnd/slim_angled/rail_cover/subsonic",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "slim_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "sor300sc/20_rnd/slim_angled/rail_cover/subsonic_hp",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "slim_angled",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic_hp",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
       "caseKey": "sor300sc/20_rnd/slim_handstop/rail_cover/frangible",
       "weaponId": "sor300sc",
       "magazineId": "20_rnd",
@@ -24773,6 +25003,72 @@
       "gripId": "slim_handstop",
       "ergoId": "rail_cover",
       "ammoId": "standard",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "slim_handstop",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 133
+      },
+      "sprintRecovery": {
+        "rawIndex": -1,
+        "index": 0,
+        "clamped": true,
+        "value": 83
+      },
+      "adsMove": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 0.82
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
+      "caseKey": "sor300sc/20_rnd/slim_handstop/rail_cover/subsonic_hp",
+      "weaponId": "sor300sc",
+      "magazineId": "20_rnd",
+      "gripId": "slim_handstop",
+      "ergoId": "rail_cover",
+      "ammoId": "subsonic_hp",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 0,

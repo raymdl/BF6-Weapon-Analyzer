@@ -138,6 +138,7 @@
     {
       "id": "std_supp",
       "name": "Std. Suppressor",
+      "suppressor": true,
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
       "hipSpreadTierMod": 1,
@@ -148,6 +149,7 @@
     {
       "id": "long_supp",
       "name": "Long Suppressor",
+      "suppressor": true,
       "adsRecoilTierMod": 0,
       "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
@@ -160,6 +162,7 @@
     {
       "id": "light_supp",
       "name": "Lightened Suppressor",
+      "suppressor": true,
       "adsRecoilTierMod": 0,
       "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
@@ -171,6 +174,7 @@
     {
       "id": "cqb_supp",
       "name": "CQB Suppressor",
+      "suppressor": true,
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
       "worldSpot": 0,
@@ -223,7 +227,7 @@
     {
       "id": "extended",
       "name": "Extended",
-      "adsTimeTierMod": 1,
+      "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
       "pts": 5,
@@ -247,6 +251,7 @@
       "id": "heavy_ext",
       "name": "Heavy Extended",
       "adsTimeTierMod": 0,
+      "sprintRecoveryTierShift": 1,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 0.80,
       "assumedFields": {
@@ -269,7 +274,7 @@
     {
       "id": "cryo",
       "name": "Cryogenic",
-      "adsTimeTierMod": 0,
+      "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 0.80,
       "assumedFields": {
@@ -282,7 +287,7 @@
     {
       "id": "ext_light",
       "name": "Extended Light",
-      "adsTimeTierMod": 0,
+      "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
       "adsSpreadIncMult": 1,
       "pts": 25,
