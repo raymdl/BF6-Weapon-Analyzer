@@ -89,6 +89,13 @@ flowchart TB
   end
   class SIM,APP,SITE runtime
 
+  EA ~~~ SYM ~~~ SYMD ~~~ SHOT ~~~ COMM
+  GEN ~~~ AUD ~~~ OCR
+  IMP ~~~ DMG ~~~ APPLY ~~~ S7 ~~~ HUMAN
+  WEAP ~~~ ATT ~~~ AMMOD ~~~ BAL ~~~ BALL ~~~ RD
+  PROV ~~~ RLX
+  SIM ~~~ APP ~~~ SITE
+
   EA   --> DMG
   EA   --> APPLY
   SYM  --> IMP
