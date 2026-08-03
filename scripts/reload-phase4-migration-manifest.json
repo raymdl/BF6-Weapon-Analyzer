@@ -388,7 +388,7 @@
       "field": "tacRld",
       "beforeMs": 7000,
       "afterMs": 7100,
-      "evidence": "LMG/M240L/43_M240L_Magazine_75RND_BELT_BO.png",
+      "evidence": "LMG/M240L/43_M240L_Magazine_75Rnd_Belt_Box.png",
       "justification": "Reviewed screenshot reads 7.100 s; the ID-keyed animation register pins 7100 ms."
     },
     {
@@ -396,7 +396,7 @@
       "field": "tacRld",
       "beforeMs": 7000,
       "afterMs": 7100,
-      "evidence": "LMG/M240L/44_M240L_Magazine_I0ORND_BELT_BOX.png",
+      "evidence": "LMG/M240L/44_M240L_Magazine_100Rnd_Belt_Box.png",
       "justification": "Reviewed screenshot reads 7.100 s; the ID-keyed animation register pins 7100 ms."
     },
     {
@@ -1999,7 +1999,7 @@
         "reloadSpeedTier": 0
       },
       "evidence": {
-        "source": "LMG/KTS100 MK8/51_KTS100 MK8_Magazine_I00RND_DRUM_MAG.png",
+        "source": "LMG/KTS100 MK8/51_KTS100 MK8_Magazine_100Rnd_Drum_Mag.png",
         "observedReloadMs": 3250,
         "observedReloadSeconds": 3.25,
         "screenshotName": "100Rnd Drum Mag",
@@ -2637,7 +2637,7 @@
         "reloadSpeedTier": 0
       },
       "evidence": {
-        "source": "LMG/M121 A2/46_M121 A2_Magazine_I00RND_BELT_BOX.png",
+        "source": "LMG/M121 A2/46_M121 A2_Magazine_100Rnd_Belt_Box.png",
         "observedReloadMs": 6267,
         "observedReloadSeconds": 6.267,
         "screenshotName": "100Rnd Belt Box",
@@ -2791,7 +2791,7 @@
         "tacRldOverrideMs": 7100
       },
       "evidence": {
-        "source": "LMG/M240L/43_M240L_Magazine_75RND_BELT_BO.png",
+        "source": "LMG/M240L/43_M240L_Magazine_75Rnd_Belt_Box.png",
         "observedReloadMs": 7100,
         "observedReloadSeconds": 7.1,
         "screenshotName": "75Rnd Belt Box",
@@ -2813,7 +2813,7 @@
         "tacRldOverrideMs": 7100
       },
       "evidence": {
-        "source": "LMG/M240L/44_M240L_Magazine_I0ORND_BELT_BOX.png",
+        "source": "LMG/M240L/44_M240L_Magazine_100Rnd_Belt_Box.png",
         "observedReloadMs": 7100,
         "observedReloadSeconds": 7.1,
         "screenshotName": "100Rnd Belt Box",
@@ -2857,7 +2857,7 @@
         "reloadSpeedTier": 0
       },
       "evidence": {
-        "source": "LMG/M250/46_M250_Magazine_I00RND_BELT_POUCH.png",
+        "source": "LMG/M250/46_M250_Magazine_100Rnd_Belt_Pouch.png",
         "observedReloadMs": 5750,
         "observedReloadSeconds": 5.75,
         "screenshotName": "100Rnd Belt Pouch",

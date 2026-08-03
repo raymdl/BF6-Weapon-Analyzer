@@ -14663,7 +14663,7 @@
           "type": "Barrel",
           "name": "407MM CIV-S",
           "subtype": "Heavy Ext",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\SMG\\USG-90\\15_USG-90_Barrel_Extended.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\SMG\\USG-90\\15_USG-90_Barrel_Heavy_Ext.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },
@@ -15808,7 +15808,7 @@
           "type": "Barrel",
           "name": "349MM SB",
           "subtype": "Basic",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\L110\\13_L110_Barrel_Basic.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\L110\\13_L110_Barrel_Heavy.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },
@@ -16352,7 +16352,7 @@
           "type": "Barrel",
           "name": "450MM Standard",
           "subtype": "Basic",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M123K\\12_M123K_Barrel_Basic.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M123K\\12_M123K_Barrel_Heavy.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },
@@ -17617,7 +17617,7 @@
           "type": "Barrel",
           "name": "406MM Standard",
           "subtype": "Basic",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M250\\13_M250_Barrel_Basic.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M250\\13_M250_Barrel_Heavy.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },
@@ -18211,7 +18211,7 @@
           "type": "Barrel",
           "name": "17\" Factory",
           "subtype": "Heavy",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M60\\13_M60_Barrel_Basic.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M60\\13_M60_Barrel_Heavy.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },
@@ -19548,7 +19548,7 @@
           "type": "Barrel",
           "name": "20\" Factory",
           "subtype": "Extended",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\13_GRT-CPS_Barrel_Basic.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\13_GRT-CPS_Barrel_Extended.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },
@@ -19556,7 +19556,7 @@
           "type": "Barrel",
           "name": "16\" Rifle",
           "subtype": "Basic",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\14_GRT-CPS_Barrel_Basic_16in_Rifle.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\GRT-CPS\\14_GRT-CPS_Barrel_Basic.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },
@@ -35638,7 +35638,7 @@
           "type": "Barrel",
           "name": "550MM Infantry",
           "subtype": "Basic",
-          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M121 A2\\12_M121 A2_Barrel_Basic.png",
+          "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M121 A2\\12_M121 A2_Barrel_Heavy.png",
           "duplicate": false,
           "status": "provisional-review-required"
         },

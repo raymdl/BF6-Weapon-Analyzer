@@ -557,7 +557,7 @@ These are wrong values, not casing problems. Each was verified against its scree
 |---|---|---|---|
 | SOR-556 MK2 | `FACTORY` | `14.5" FACTORY` | `17_SOR-556 MK2_Barrel_Short.png` — length prefix dropped |
 | PP-19 | `367MM` | `367MM CIV` | `10_PP-19_Barrel_Basic_ambiguous-2.png` — suffix dropped |
-| USG-90 | `407MM CIV-s` | `407MM CIV-S` | `15_USG-90_Barrel_Extended.png` |
+| USG-90 | `407MM CIV-s` | `407MM CIV-S` | `15_USG-90_Barrel_Heavy_Ext.png` |
 | SOR-556 MK2 | `16" us` | `16" US` | `13_SOR-556 MK2_Barrel_Basic.png` |
 | VCR-2 | `18" us` | `18" US` | same pattern; `us` is never correct |
 | — | `AFTERMARKET B` | `AFTERMARKET BUFFER` | truncated |

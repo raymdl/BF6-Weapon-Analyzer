@@ -52968,8 +52968,8 @@
   },
   {
     "weapon": "USG-90",
-    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\SMG\\USG-90\\15_USG-90_Barrel_Extended.png",
-    "sourceName": "15_USG-90_Barrel_Extended.png",
+    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\SMG\\USG-90\\15_USG-90_Barrel_Heavy_Ext.png",
+    "sourceName": "15_USG-90_Barrel_Heavy_Ext.png",
     "resolution": "1365x768",
     "comparisons": {
       "precision": {
@@ -57269,8 +57269,8 @@
   },
   {
     "weapon": "L110",
-    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\L110\\13_L110_Barrel_Basic.png",
-    "sourceName": "13_L110_Barrel_Basic.png",
+    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\L110\\13_L110_Barrel_Heavy.png",
+    "sourceName": "13_L110_Barrel_Heavy.png",
     "resolution": "1365x768",
     "comparisons": {}
   },
@@ -59271,8 +59271,8 @@
   },
   {
     "weapon": "M123K",
-    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M123K\\12_M123K_Barrel_Basic.png",
-    "sourceName": "12_M123K_Barrel_Basic.png",
+    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M123K\\12_M123K_Barrel_Heavy.png",
+    "sourceName": "12_M123K_Barrel_Heavy.png",
     "resolution": "1365x768",
     "comparisons": {}
   },
@@ -63323,8 +63323,8 @@
   },
   {
     "weapon": "M250",
-    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M250\\13_M250_Barrel_Basic.png",
-    "sourceName": "13_M250_Barrel_Basic.png",
+    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M250\\13_M250_Barrel_Heavy.png",
+    "sourceName": "13_M250_Barrel_Heavy.png",
     "resolution": "1365x768",
     "comparisons": {}
   },
@@ -65346,8 +65346,8 @@
   },
   {
     "weapon": "M60",
-    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M60\\13_M60_Barrel_Basic.png",
-    "sourceName": "13_M60_Barrel_Basic.png",
+    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M60\\13_M60_Barrel_Heavy.png",
+    "sourceName": "13_M60_Barrel_Heavy.png",
     "resolution": "1365x768",
     "comparisons": {}
   },
@@ -88005,8 +88005,8 @@
   },
   {
     "weapon": "M121 A2",
-    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M121 A2\\12_M121 A2_Barrel_Basic.png",
-    "sourceName": "12_M121 A2_Barrel_Basic.png",
+    "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\LMG\\M121 A2\\12_M121 A2_Barrel_Heavy.png",
+    "sourceName": "12_M121 A2_Barrel_Heavy.png",
     "resolution": "1365x768",
     "comparisons": {}
   },
