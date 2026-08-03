@@ -13,11 +13,11 @@
   "counts": {
     "weapons": 61,
     "magazineEntries": 278,
-    "gripChoices": 850,
+    "gripChoices": 853,
     "ergoChoices": 183,
     "ammoChoices": 279,
-    "cases": 77564,
-    "primaryCases": 77330,
+    "cases": 77609,
+    "primaryCases": 77375,
     "sidearmCases": 234
   },
   "defSprDistribution": {
@@ -38,7 +38,7 @@
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-row-v1",
-    "value": "34987458cd85f02ac64f6153f5bafa830be6b3a6595505baf9689da81bcda541"
+    "value": "079ff6d82ade0a3bcaa4411723012f89c32a263eba794229ac1373a2a8f27112"
   },
   "perWeaponDigest": {
     "ak205": "5be96e6c30e16e41920f335385dfcce10c9c79af6f0edd2da82af4c672d43a7c",
@@ -54,14 +54,14 @@
     "grtbc": "b484adf0af883c7c657048aaaf5c99375b68677a9bd36f8f9142a695c4e3dc12",
     "grtcps": "182e3fcbe0cc8485010150d0f9da948d53ce49d288eb2a65114d7c389af248c7",
     "kord6p67": "e47119720cd9410e51a43b3ad5a723d81f4a652f021b2a9cf5c18f06ee789d28",
-    "ks18k": "f733be2b7aaf72b9dc5771bf1ad14bfe8cdc5964a51c6192525d65f73fe023ad",
+    "ks18k": "92061085e0ee06ae96886f67d8be360c3c1342aa5438ec10e33c8a18535bb638",
     "kts100": "d6194108f864dac1300aaf642ac16ddfc816cdc7067d8cb697bd976eb01d1ded",
     "kv9": "410cd6a827b3febe940b858db85f8c71e70c75f3ba9243c26727a680f50d1a8c",
     "l110": "c894151dce260331668887ebe5384c0a619788c9c6a207f61634fc5974605196",
     "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
     "l85a3": "14d74f19712b451ae9e4d0aafddf72fa87e435c0c2c4e246cf0aa031f0261dca",
     "lmr27": "351644f10368ea93b0e15a4d4d86004b895a8fbca72652c1547fc01948e7acc5",
-    "m1014": "1292ee48df3ef97c6ed1b87f32f6615b563883294b92e108113662a2c8b21672",
+    "m1014": "69cb52f616221c8ae3cbd78407eef4a8f608ae3ca30b688063d0ff1fa0f3bc4f",
     "m121a2": "b63283b405b21b3be90943dff86b3f581509843494bf6598c3e12588610d33b9",
     "m123k": "54984d6bf34a9515fbc2bed15e7ff86a371c9bc0cf48545dd8fc4e1a1bf88b59",
     "m16a4": "0db683bff3c944a083c1147e254e820aa55f3d81276730610000bfcbf8855c7d",
@@ -77,7 +77,7 @@
     "m45a1": "72df88304ca40fd9f110d297c86d4bb4f35d2482308f03600a234f7c3090cee3",
     "m4a1": "f22c21484e8fce265038e76b34bc403ac44f2aaf280705dab07c576a0c55179a",
     "m60": "de9a28bcb2ac0aff49f9d13a416fec371a8a565cfbd179cd0a2db4b9b799e277",
-    "m87a1": "1b169313a7a7c477ccb20de79c1a3fa8c1c7dde229a03e0e8a37652a220c5cc1",
+    "m87a1": "fb69519233fedb9fe9b19eb741f060c059fa33a6a0334ed3d70f0d66f9f7c205",
     "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
     "nvo228e": "6c75cb365788f0c83765bf018e1d8d9bca1e0436e2bb782d5643094780be5612",
     "p18": "e73ce53f4c570b3ef78b0173d89befd0c4ae320bd0241329f897696c09beed17",
@@ -106,9 +106,9 @@
   "rawIndexHistograms": {
     "sprintRecovery": {
       "primary": {
-        "0": 1014,
-        "1": 6059,
-        "2": 13920,
+        "0": 1020,
+        "1": 6086,
+        "2": 13932,
         "3": 19998,
         "4": 20237,
         "5": 12525,
@@ -130,9 +130,9 @@
         "0": 171,
         "1": 1453,
         "2": 3929,
-        "3": 8254,
-        "4": 13055,
-        "5": 19314,
+        "3": 8266,
+        "4": 13082,
+        "5": 19320,
         "6": 19911,
         "7": 9403,
         "8": 1728,
@@ -145,9 +145,9 @@
     },
     "adsTime": {
       "primary": {
-        "0": 5030,
-        "1": 18743,
-        "2": 25054,
+        "0": 5042,
+        "1": 18770,
+        "2": 25060,
         "3": 18609,
         "4": 6977,
         "5": 1857,
@@ -162,9 +162,9 @@
     },
     "deploy": {
       "primary": {
-        "4": 670,
-        "5": 5437,
-        "6": 13616,
+        "4": 676,
+        "5": 5464,
+        "6": 13628,
         "7": 20281,
         "8": 20580,
         "9": 12624,
@@ -3003,11 +3003,11 @@
     "counts": {
       "weapons": 61,
       "magazineEntries": 278,
-      "gripChoices": 850,
+      "gripChoices": 853,
       "ergoChoices": 183,
       "ammoChoices": 279,
-      "cases": 77564,
-      "primaryCases": 77330,
+      "cases": 77609,
+      "primaryCases": 77375,
       "sidearmCases": 234
     },
     "defSprDistribution": {
@@ -3028,7 +3028,7 @@
     "digest": {
       "algorithm": "SHA-256",
       "format": "canonical-row-v1",
-      "value": "d9a45b666849ae1474accea4d01ebd7fedc8330ae628d321726b9bad16d49af7"
+      "value": "bad89c84addc8cfc88957cda2c475d96201ec3a1d11f0bb4ff493c24bd6b5aa8"
     },
     "perWeaponDigest": {
       "ak205": "429316af0dad59ac8caf500fe91656da310b9fc084414934dc8319937c58bba4",
@@ -3044,14 +3044,14 @@
       "grtbc": "02689020ce82a6619e777df55f141044147d828e2df6f21085bdc0aacc48c470",
       "grtcps": "2a9e0bb9396806b28608ccb9df90b779bc98064c17f1ba6ea5dcfbeba46191f1",
       "kord6p67": "926376678c14f6cb34311d72d266faed766581f573c53ddb74bd2f79614bee11",
-      "ks18k": "07a4c9122220815309c09413b2c23c470db28969fe24a411081d4d4138f1ce38",
+      "ks18k": "fab1b8897df6abc477029a09ee064cc5fc70864020bca97f971f3d23d3a49024",
       "kts100": "fc1e888dd9c8851bee4315e03b61ce805c6af118191d1a398a9932058046d80c",
       "kv9": "634a160672b95237b34c9dde61e4d824f8756bc456a45f5dc37c1abd9013e0b3",
       "l110": "fad26ea613e12fe2e38467d2406699ef393d43ecc135886da6f50ec26de6c6c5",
       "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
       "l85a3": "d4a3d79a626ec0dbcb0aa9a1cadda20572756cc594276c7bfbdacf02dedf5aab",
       "lmr27": "12dca64795408c0649b63cc7b0d4ffdaa572060beb5d9efb3b88390a7b8598cd",
-      "m1014": "3ee3bcb87f2502106cbb60999c59c0df83cb1448b799e85dd62a03eb0c864d09",
+      "m1014": "936e80b9491b3339fd58bc6e76c4f1051f94a9e8315968b7686f055f553c703b",
       "m121a2": "233d3c3ed57b73176e14de9a7de504b3b24f6f049fa9d919e0a1b4b80480f3bd",
       "m123k": "90454b27cabb2432b3a87d717543a6730a276e3cd8c295fb6aaecc91b71cdbda",
       "m16a4": "466cead3899752045928a74308948974897309e5e4b7e887b7ad85b1edbf5387",
@@ -3067,7 +3067,7 @@
       "m45a1": "72df88304ca40fd9f110d297c86d4bb4f35d2482308f03600a234f7c3090cee3",
       "m4a1": "654fc27b0455f782495dfb2d9360409f6e7a9a6287247185717ba71a417c7264",
       "m60": "7f21f9e86df7241e6ea44dafe7f532b57a61f516cd2c8c4e6d5e829b414a33c7",
-      "m87a1": "2a63caa41833cfa9b73e34cbdfc6065450ff57eb43c7c7dd6fa4fbfaa001f345",
+      "m87a1": "af36630c762034167b136ae782b16ef6d22775a1c372b64801562c2c5366c8e6",
       "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
       "nvo228e": "3512164257fb7da0d11ef2231c34dda35073c6e8efacd0fae560d6d7e96d0597",
       "p18": "e73ce53f4c570b3ef78b0173d89befd0c4ae320bd0241329f897696c09beed17",
@@ -3096,9 +3096,9 @@
     "rawIndexHistograms": {
       "sprintRecovery": {
         "primary": {
-          "0": 1014,
-          "1": 6059,
-          "2": 13920,
+          "0": 1020,
+          "1": 6086,
+          "2": 13932,
           "3": 19998,
           "4": 20237,
           "5": 12525,
@@ -3120,9 +3120,9 @@
           "0": 247,
           "1": 1893,
           "2": 4397,
-          "3": 9562,
-          "4": 13943,
-          "5": 20866,
+          "3": 9574,
+          "4": 13970,
+          "5": 20872,
           "6": 19171,
           "7": 6747,
           "8": 504
@@ -3133,9 +3133,9 @@
       },
       "adsTime": {
         "primary": {
-          "0": 5030,
-          "1": 18743,
-          "2": 25054,
+          "0": 5042,
+          "1": 18770,
+          "2": 25060,
           "3": 18609,
           "4": 6977,
           "5": 1857,
@@ -3150,9 +3150,9 @@
       },
       "deploy": {
         "primary": {
-          "4": 670,
-          "5": 5437,
-          "6": 13616,
+          "4": 676,
+          "5": 5464,
+          "6": 13628,
           "7": 20281,
           "8": 20580,
           "9": 12624,

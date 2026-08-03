@@ -123,7 +123,7 @@ test('PP-19 base values match the pinned normalized Sym row and damage stays pro
 test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () => {
   assert.deepEqual(attachments.WEAPON_ATTS.pp19, {
     muzzle: ['flash_hider', 'flash_comp', 'dp_brake', 'comp_brake', 'linear_comp', 'cqb_supp'],
-    barrel: ['basic', 'light', 'extended', 'heavy'],
+    barrel: ['basic', 'light', 'extended', 'cryo'],
     barrelDef: 'basic',
     grip: [
       'fold_vert', 'alloy_vert', 'ribbed_vert', '6h64_vert', 'classic_vert',

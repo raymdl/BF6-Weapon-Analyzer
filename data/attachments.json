@@ -67,6 +67,35 @@
       "pts": 10
     },
     {
+      "id": "slant_brake",
+      "name": "Slant Brake",
+      "adsRecoilTierMod": 1,
+      "adsSpreadDecayBoost": 0,
+      "sway": 1,
+      "worldSpot": 54,
+      "minimapSpot": 150,
+      "pts": 5
+    },
+    {
+      "id": "tp_brake",
+      "name": "Triple-Port Brake",
+      "adsRecoilTierMod": 1,
+      "adsSpreadDecayBoost": 0,
+      "worldSpot": 54,
+      "minimapSpot": 150,
+      "pts": 10
+    },
+    {
+      "id": "thread_prot",
+      "name": "Thread Protector",
+      "adsRecoilTierMod": 1,
+      "adsSpreadDecayBoost": 0,
+      "sway": 1,
+      "worldSpot": 54,
+      "minimapSpot": 150,
+      "pts": 5
+    },
+    {
       "id": "comp_brake",
       "name": "Compensated Brake",
       "adsRecoilTierMod": 1,
@@ -935,7 +964,8 @@
         "extended",
         "heavy_ext",
         "short",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -992,7 +1022,8 @@
         "short",
         "heavy",
         "extended",
-        "heavy_ext"
+        "heavy_ext",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1048,7 +1079,8 @@
         "heavy",
         "extended",
         "heavy_ext",
-        "short"
+        "short",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1139,6 +1171,7 @@
     "kord6p67": {
       "muzzle": [
         "sp_brake",
+        "dp_brake",
         "flash_hider",
         "flash_comp",
         "linear_comp",
@@ -1151,7 +1184,8 @@
       "barrel": [
         "basic",
         "heavy",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1206,7 +1240,8 @@
         "basic",
         "extended",
         "short",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1262,7 +1297,8 @@
         "extended",
         "heavy_ext",
         "short",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1375,7 +1411,8 @@
         "extended",
         "heavy_ext",
         "light",
-        "short"
+        "short",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1488,7 +1525,8 @@
         "heavy",
         "extended",
         "heavy_ext",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1541,7 +1579,8 @@
       "barrel": [
         "basic",
         "heavy",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1590,7 +1629,8 @@
       "barrel": [
         "basic",
         "extended",
-        "short"
+        "short",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1686,7 +1726,8 @@
       ],
       "barrel": [
         "basic",
-        "extended"
+        "extended",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1789,7 +1830,8 @@
         "basic",
         "extended",
         "short",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1886,7 +1928,8 @@
       ],
       "barrel": [
         "basic",
-        "extended"
+        "extended",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1932,7 +1975,8 @@
       ],
       "barrel": [
         "basic",
-        "heavy"
+        "heavy",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -1981,7 +2025,8 @@
         "heavy",
         "extended",
         "heavy_ext",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -2030,7 +2075,8 @@
         "basic",
         "heavy",
         "heavy_ext",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [],
@@ -2160,7 +2206,8 @@
         "heavy",
         "extended",
         "heavy_ext",
-        "light"
+        "light",
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -2249,7 +2296,7 @@
         "basic",
         "light",
         "extended",
-        "heavy"
+        "cryo"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -2448,7 +2495,7 @@
       "muzzle": [
         "flash_hider",
         "flash_comp",
-        "sp_brake",
+        "slant_brake",
         "linear_comp",
         "dp_brake",
         "comp_brake",
@@ -2764,7 +2811,7 @@
       "muzzle": [
         "flash_hider",
         "flash_comp",
-        "sp_brake",
+        "slant_brake",
         "linear_comp",
         "dp_brake",
         "std_supp",
@@ -2927,7 +2974,7 @@
     "svk86": {
       "muzzle": [
         "sp_brake",
-        "dp_brake",
+        "tp_brake",
         "std_supp",
         "flash_hider",
         "linear_comp",
@@ -3127,9 +3174,11 @@
     },
     "sv98": {
       "muzzle": [
+        "flash_comp",
+        "tp_brake",
+        "thread_prot",
         "comp_brake",
-        "dp_brake",
-        "long_supp"
+        "light_supp"
       ],
       "barrel": [
         "basic",
@@ -3166,6 +3215,7 @@
         "flash_hider",
         "comp_brake",
         "sp_brake",
+        "dp_brake",
         "std_supp",
         "long_supp",
         "cqb_supp",
@@ -3289,7 +3339,8 @@
         "compensator"
       ],
       "barrel": [
-        "basic"
+        "basic",
+        "extended"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -3305,7 +3356,8 @@
         "ribbed_vert",
         "classic_vert",
         "lp_stubby",
-        "full_angled"
+        "full_angled",
+        "slim_handstop"
       ],
       "laser": [
         "50mw_violet",
@@ -3328,7 +3380,8 @@
         "compensator"
       ],
       "barrel": [
-        "basic"
+        "basic",
+        "extended"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -3344,7 +3397,8 @@
         "ribbed_vert",
         "classic_vert",
         "lp_stubby",
-        "full_angled"
+        "full_angled",
+        "slim_handstop"
       ],
       "laser": [
         "50mw_violet",
@@ -3363,7 +3417,7 @@
     "ks18k": {
       "muzzle": [
         "flash_hider",
-        "dp_brake",
+        "tp_brake",
         "cqb_supp",
         "light_supp",
         "compensator"
@@ -3385,7 +3439,8 @@
         "ribbed_vert",
         "classic_vert_ks18k",
         "lp_stubby_ks18k",
-        "full_angled"
+        "full_angled",
+        "slim_handstop"
       ],
       "laser": [
         "50mw_violet",
@@ -3407,7 +3462,8 @@
         "cqb_supp"
       ],
       "barrel": [
-        "basic"
+        "basic",
+        "extended"
       ],
       "barrelDef": "basic",
       "grip": [
@@ -3432,6 +3488,11 @@
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
       ]
     },
     "p18": {

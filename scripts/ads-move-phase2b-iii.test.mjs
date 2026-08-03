@@ -9,7 +9,8 @@ import { blankAtts } from '../sim/loadout.js';
 const root = join(import.meta.dirname, '..');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
 const baselinePath = join(root, 'scripts/ads-move-phase2b-iii-baseline.json');
-const rosterGuard = readJson('scripts/ads-move-phase2b-iii-roster-guard.json');
+const rosterGuardPath = join(root, 'scripts/ads-move-phase2b-iii-roster-guard.json');
+let rosterGuard = readJson('scripts/ads-move-phase2b-iii-roster-guard.json');
 
 const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
@@ -25,8 +26,8 @@ const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
 const STANDARD_SHIFTED_GRIPS = ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby'];
 const SOURCE_GRIP_NAMES = ['None', '6H64 Vertical', 'Classic Vertical', 'Stippled Stubby', 'Low-Profile Stubby'];
 const EXEMPT_SOURCE_WEAPONS = new Set(['SVK-8.6', 'VSSM', '18.5KS-K', 'DB-12']);
-const PRE_PHASE3_DIGEST = 'd9a45b666849ae1474accea4d01ebd7fedc8330ae628d321726b9bad16d49af7';
-const PRE_PHASE4_DIGEST = '34987458cd85f02ac64f6153f5bafa830be6b3a6595505baf9689da81bcda541';
+const PRE_PHASE3_DIGEST = 'bad89c84addc8cfc88957cda2c475d96201ec3a1d11f0bb4ff493c24bd6b5aa8';
+const PRE_PHASE4_DIGEST = '079ff6d82ade0a3bcaa4411723012f89c32a263eba794229ac1373a2a8f27112';
 const VARIANT_BASES = {
   svk86: {
     '6h64_vert_svk86': '6h64_vert',
@@ -496,6 +497,21 @@ function buildFixture() {
 const generatedBaseline = process.argv.includes('--write-baseline') ? buildFixture() : null;
 if (generatedBaseline) writeFileSync(baselinePath, `${JSON.stringify(generatedBaseline, null, 2)}\n`);
 const baseline = generatedBaseline ?? readJson('scripts/ads-move-phase2b-iii-baseline.json');
+
+if (process.argv.includes('--write-roster-guard')) {
+  const priorWeaponIds = Object.keys(rosterGuard.perWeaponDigest).sort();
+  const enumeration = buildEnumeration({
+    modelWeapons: weapons.filter(weapon => priorWeaponIds.includes(weapon.id)),
+    kind: 'ads-move-phase2b-iii-current-59-roster',
+  });
+  rosterGuard = {
+    ...rosterGuard,
+    caseCount: enumeration.cases.length,
+    caseDigest: sha256(canonicalSerialization(enumeration.cases)),
+    perWeaponDigest: perWeaponDigests(enumeration.cases, priorWeaponIds),
+  };
+  writeFileSync(rosterGuardPath, `${JSON.stringify(rosterGuard, null, 2)}\n`);
+}
 
 let currentEnumeration;
 function current() {
