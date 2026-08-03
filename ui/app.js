@@ -2225,15 +2225,8 @@ function renderRecoil() {
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (axis.isTargetView) {
-      const targetFovDeg = Math.max(1, Math.min(179, +(document.getElementById('rcTargetFov')?.value ?? ADS_1X_VFOV_DEG) || ADS_1X_VFOV_DEG));
-      const hitSummary = axis.targetHits.map(({ weapon, hits, total }) => `${weaponDisplayLabel(weapon)} ${hits}/${total}`).join(' · ');
-      const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss. Colour is the weapon, and the per-zone breakdown is in the stats table.' : '';
-      const ballisticNote = [w1, w2].filter(weapon => weapon?._projectileModel).map(weapon => {
-        const zero = zeroDistanceFor(weapon);
-        return `${weaponDisplayLabel(weapon)} ${Math.abs(targetVerticalOffsetMeters(weapon)).toFixed(2)} m ${zero == null ? 'below bore line' : `relative to ${zero} m zero`}`;
-      }).join(' · ');
-      noteEl.textContent = `${layerNote}${ringNote} Same simulation, projected onto a 180 cm soldier at ${state.recoil.distance} m — the pattern covers more of the target the further out it lands.${hitSummary ? ` Reference hits: ${hitSummary}.` : ''} Zoom matches optic magnification against an assumed ${targetFovDeg}° vertical field at 1×; grid marks ${fmtAxisMeters(niceDistanceGridStep(axis.xMax - axis.xMin))}.`;
-      if (ballisticNote) noteEl.textContent += ` Ballistics: ${ballisticNote}.`;
+      const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
+      noteEl.textContent = `${layerNote}${ringNote}`;
     } else {
       noteEl.textContent = `${layerNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
     }
