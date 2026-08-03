@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
+import { deriveSweetSpot, hasSweetSpot } from './sweet-spot.mjs';
+
 import {
   bulletsToKillWithHits,
   damageAtRange,
@@ -106,31 +108,31 @@ test('classifies every current site weapon according to the 1.3.3.0 hit-zone rul
   }
 });
 
-test('uses EA sniper sweet-spot windows and preserves the Mini Scout exception', () => {
+test('derives sniper sweet spots from the curve and preserves the Mini Scout exception', () => {
   const weapons = readJson('../data/weapons.json');
-  const provenance = readJson('../data/provenance/damage-1.3.3.0.json');
-  const expected = {
-    sv98: [54, 75],
-    m2010esr: [75, 100],
-    psr: [90, 120],
-    l115: [100, 133],
-  };
-  for (const [id, [start, end]] of Object.entries(expected)) {
-    const weapon = weapons.find(item => item.id === id);
-    const record = provenance.sniperSweetSpots.find(item => item.weaponId === id);
-    assert.deepEqual(weapon.sweetSpot, { rangeM: [start, end], source: 'EA' });
-    assert.deepEqual(record.rangeM, [start, end]);
-    assert.equal(record.source, 'EA');
-    // The sweet spot is the flat 100 plateau; damage ramps in and out of it.
-    assert.ok(damageAtRange(weapon, start - 1) < 100, `${id} ramps into the sweet spot`);
+  const snipers = weapons.filter(weapon => weapon.cls === 'Sniper Rifle');
+  assert.ok(snipers.length > 0);
+
+  // No weapon stores a sweet-spot window. EA's 1.3.3.0 notes described the current ones, but
+  // that was a point-in-time post and a later update may move them; a stored window would
+  // outrank the imported curve. The window is whatever the curve says it is.
+  assert.deepEqual(weapons.filter(weapon => 'sweetSpot' in weapon), []);
+
+  const withPlateau = snipers.filter(weapon => hasSweetSpot(weapon));
+  assert.ok(withPlateau.length >= 4, 'bolt-actions carry a sweet-spot plateau');
+  for (const weapon of withPlateau) {
+    const [start, end] = deriveSweetSpot(weapon).rangeM;
+    assert.ok(end > start, `${weapon.id} sweet spot spans a range`);
+    // The sweet spot is the flat plateau; damage ramps in and out of it.
+    assert.ok(damageAtRange(weapon, start - 1) < 100, `${weapon.id} ramps into the sweet spot`);
     assert.equal(damageAtRange(weapon, start), 100);
-    assert.equal(damageAtRange(weapon, end - 1), 100);
     assert.equal(damageAtRange(weapon, end), 100);
-    assert.ok(damageAtRange(weapon, end + 1) < 100, `${id} ramps out of the sweet spot`);
-    assert.equal(weapon.dmg.at(-1).d, 62, `${id} minimum damage`);
+    assert.ok(damageAtRange(weapon, end + 1) < 100, `${weapon.id} ramps out of the sweet spot`);
+    assert.equal(weapon.dmg.at(-1).d, 62, `${weapon.id} minimum damage`);
   }
+
   const miniScout = weapons.find(item => item.id === 'miniscout');
-  assert.deepEqual(miniScout.sweetSpot, { rangeM: null, source: 'EA' });
+  assert.equal(hasSweetSpot(miniScout), false);
   assert.equal(miniScout.dmg.some(point => point.d === 100), false);
 });
 
