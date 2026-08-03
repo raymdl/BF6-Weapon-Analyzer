@@ -223,7 +223,7 @@
     {
       "id": "extended",
       "name": "Extended",
-      "adsTimeTierMod": 1,
+      "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
       "pts": 5,
@@ -269,7 +269,7 @@
     {
       "id": "cryo",
       "name": "Cryogenic",
-      "adsTimeTierMod": 0,
+      "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 0.80,
       "assumedFields": {
