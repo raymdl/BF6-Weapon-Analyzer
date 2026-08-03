@@ -684,7 +684,7 @@
       "id": "5mw_green",
       "name": "5 MW Green",
       "movingAdsSpreadTierMod": 0,
-      "hipSpreadTierMod": -1,
+      "hipSpreadTierMod": -2,
       "laserVisible": true,
       "pts": 10
     },
@@ -699,7 +699,7 @@
       "id": "50mw_green",
       "name": "50 MW Green",
       "movingAdsSpreadTierMod": 0,
-      "hipSpreadTierMod": -2,
+      "hipSpreadTierMod": -3,
       "laserVisible": true,
       "pts": 20
     },
@@ -707,7 +707,7 @@
       "id": "50mw_blue",
       "name": "50 MW Blue",
       "movingAdsSpreadTierMod": 1,
-      "hipSpreadTierMod": -1,
+      "hipSpreadTierMod": -2,
       "laserVisible": true,
       "pts": 20
     },
@@ -715,7 +715,7 @@
       "id": "120mw_blue",
       "name": "120 MW Blue",
       "movingAdsSpreadTierMod": 1,
-      "hipSpreadTierMod": -2,
+      "hipSpreadTierMod": -3,
       "laserVisible": true,
       "pts": 30
     },

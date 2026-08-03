@@ -780,10 +780,14 @@ function renderOverview() {
       tooltip: 'ADS vertical recoil added per shot after ADS recoil-tier attachment effects.' },
     { lbl: 'Recoil Dir',  k: 'recoilDir',                                unit: '°',   fmt: v => ((-v) >= 0 ? '+' : '') + (-v),       absDiff: true, group: 'recoil',
       tooltip: 'Average recoil direction from vertical. Positive values pull right; negative values pull left.' },
-    { lbl: 'STD/Mov Sprd', compute: w => ({ stand: w.spread?.adsStand?.[0] ?? 0.05, move: w._movingAdsMinSpreadDeg ?? w.spread?.adsMove?.[0] ?? 0.32 }), unit: '',
+    { lbl: 'ADS Spread', compute: w => ({ stand: w.spread?.adsStand?.[0] ?? 0.05, move: w._movingAdsMinSpreadDeg ?? w.spread?.adsMove?.[0] ?? 0.32 }), unit: '',
       fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true, group: 'spread',
-      tooltip: 'Standing ADS spread and moving ADS spread. Lower is more accurate. Moving ADS spread can be affected by laser and barrel selections.' },
+      tooltip: 'Base standing ADS spread and moving ADS spread. Lower is more accurate.' },
+    { lbl: 'Hipfire Spread', compute: w => ({ stand: w.spread?.hipStand?.[0], move: w.spread?.hipMove?.[0] }), unit: '',
+      fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
+      noDiff: true, group: 'spread',
+      tooltip: 'Base standing hipfire spread and moving hipfire spread. Lower is more accurate.' },
     { lbl: '3D/Map Spot', compute: w => ({ spot: w._worldSpot, minimap: w._minimapSpot }), unit: '',
       fmt: obj => { const s = obj && obj.spot > 0 ? `${obj.spot}<span class="sunit">m</span>` : '–'; const m = obj && obj.minimap > 0 ? `${obj.minimap}<span class="sunit">m</span>` : '–'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true,
@@ -799,7 +803,7 @@ function renderOverview() {
     'Sprint Rec': 'Sprint Recovery',
     'Recoil/Shot': 'Recoil Amount',
     'Recoil Dir': 'Recoil Direction',
-    'STD/Mov Sprd': 'STD/Mov Spread',
+    'ADS Spread': 'ADS Spread',
     '3D/Map Spot': '3D/2D Spotting',
   };
   fields.splice(fields.findIndex(f => f.lbl === 'Recoil Dir'), 0, {
@@ -811,7 +815,7 @@ function renderOverview() {
     group: 'recoil',
     tooltip: 'ADS recoil-direction variation after ADS-only variation modifiers. Lower is more consistent.',
   });
-  fields.splice(fields.findIndex(f => f.lbl === 'STD/Mov Sprd'), 0, {
+  fields.splice(fields.findIndex(f => f.lbl === 'ADS Spread'), 0, {
     lbl: 'Spread Inc/Shot',
     k: 'recoilIncAds',
     unit: '\u00b0',
@@ -857,7 +861,7 @@ function renderOverview() {
     'Pellets': 'combat', 'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
     'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Sprint Rec': 'mobility',
     'Recoil/Shot': 'recoil', 'Recoil Variation': 'recoil', 'Recoil Dir': 'recoil',
-    'Spread Inc/Shot': 'spread', 'STD/Mov Sprd': 'spread',
+    'Spread Inc/Shot': 'spread', 'ADS Spread': 'spread', 'Hipfire Spread': 'spread',
     '3D/Map Spot': 'conceal',
   };
   const STAT_ROWS = [
