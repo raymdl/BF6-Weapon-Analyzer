@@ -22,8 +22,8 @@
   },
   "defSprDistribution": {
     "1": 1,
-    "2": 15,
-    "3": 13,
+    "2": 14,
+    "3": 14,
     "4": 18,
     "5": 7,
     "6": 1,
@@ -38,7 +38,7 @@
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-row-v1",
-    "value": "cd52dc05e98408099adf17b1819c5bfcc57b1186edc2bb21fa82187386eb65cc"
+    "value": "39c3a42767371c1ec4f7d6d433424dec04f2f0525a5a1bf1164a69f70cea3a66"
   },
   "perWeaponDigest": {
     "ak205": "5be96e6c30e16e41920f335385dfcce10c9c79af6f0edd2da82af4c672d43a7c",
@@ -46,7 +46,7 @@
     "b36a4": "3586b76ea53d2438829e5ac64b594fa8315bc611431dc5da15e1fde506b42c99",
     "brod3": "b99e594b7c0ddb42197d528729dbf2e27dbe49f16dd7e2785e7c026a188bc296",
     "cz3a1": "d9356328446d58d26f31921a0143d9b88274af79a102d4280fee63ccaaa1beb9",
-    "db12": "1e625ff1e5f97a5992babd169f64f389edd0cce1a10d1fa08dbdfc478e98ab5c",
+    "db12": "16c1308cdc149c3b6b0985230066cc304ea9d4119ad67c6d8f7edb11c039fe9a",
     "drsiar": "c32a5a5f9abec545df7feca0ec5ba524b6330443846fc07daaaf2cdd06be434e",
     "ef88": "595a06a8bc14871c1b423d2110ae9149eb495f97c7afc7954b8f14e2aa67c2ec",
     "es57": "65685f0710860156f58750c181980aca42eaa2f9554b52742f115d55a0c28a9b",
@@ -106,9 +106,9 @@
   "rawIndexHistograms": {
     "sprintRecovery": {
       "primary": {
-        "0": 1252,
-        "1": 7578,
-        "2": 16891,
+        "0": 1246,
+        "1": 7548,
+        "2": 16927,
         "3": 21338,
         "4": 20736,
         "5": 12165,
@@ -147,9 +147,9 @@
     },
     "adsTime": {
       "primary": {
-        "0": 6998,
-        "1": 21956,
-        "2": 27312,
+        "0": 6974,
+        "1": 21962,
+        "2": 27330,
         "3": 18345,
         "4": 5717,
         "5": 1857,
@@ -165,9 +165,9 @@
     "deploy": {
       "primary": {
         "4": 876,
-        "5": 6924,
-        "6": 16534,
-        "7": 21512,
+        "5": 6918,
+        "6": 16504,
+        "7": 21548,
         "8": 21418,
         "9": 12309,
         "10": 2925,
@@ -3038,8 +3038,8 @@
     },
     "defSprDistribution": {
       "1": 1,
-      "2": 15,
-      "3": 13,
+      "2": 14,
+      "3": 14,
       "4": 18,
       "5": 7,
       "6": 1,
@@ -3054,7 +3054,7 @@
     "digest": {
       "algorithm": "SHA-256",
       "format": "canonical-row-v1",
-      "value": "13335dd2e386e46a8885be7a26c1737f0aeb9a04fa02aa947d70a3b49a721cd2"
+      "value": "062b2f26b3646625fea50ce3c33a27f5fe97dda110ae7982ff37fec507a1bd7a"
     },
     "perWeaponDigest": {
       "ak205": "429316af0dad59ac8caf500fe91656da310b9fc084414934dc8319937c58bba4",
@@ -3062,7 +3062,7 @@
       "b36a4": "3bab8604ac4d23252a2180ccdaa4d52d1ed9670d400f77b71b31794312f73d13",
       "brod3": "fbd6ea21a33afc005708ba52a9f13fa54b46757aa3443dde01ce2ffc4fd5f377",
       "cz3a1": "7bc8ee13d1b42cb971ecb827f52aff307b3a08a0e8ec6386433ed04342a427de",
-      "db12": "dbbe9b944f5693bf44c253977bff6fbb7fdb4e52e5c9a007e302ed2f9a8dac9e",
+      "db12": "f0af02d7015d58b67b81e1eb5e45a6cd4dbf2a01669bdd4f28a923488d138b37",
       "drsiar": "255733dd607e7d7df97f9d732e8b7d04736810289f839afe98e4ffe408e41ca0",
       "ef88": "13e95209dde434331ec47bc2ee359c1566b59f42e54a1c30825da7ba78e6c68e",
       "es57": "65685f0710860156f58750c181980aca42eaa2f9554b52742f115d55a0c28a9b",
@@ -3122,9 +3122,9 @@
     "rawIndexHistograms": {
       "sprintRecovery": {
         "primary": {
-          "0": 1252,
-          "1": 7578,
-          "2": 16891,
+          "0": 1246,
+          "1": 7548,
+          "2": 16927,
           "3": 21338,
           "4": 20736,
           "5": 12165,
@@ -3161,9 +3161,9 @@
       },
       "adsTime": {
         "primary": {
-          "0": 6998,
-          "1": 21956,
-          "2": 27312,
+          "0": 6974,
+          "1": 21962,
+          "2": 27330,
           "3": 18345,
           "4": 5717,
           "5": 1857,
@@ -3179,9 +3179,9 @@
       "deploy": {
         "primary": {
           "4": 876,
-          "5": 6924,
-          "6": 16534,
-          "7": 21512,
+          "5": 6918,
+          "6": 16504,
+          "7": 21548,
           "8": 21418,
           "9": 12309,
           "10": 2925,
@@ -4710,16 +4710,16 @@
       "ammoId": "buckshot",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 167
+        "value": 200
       },
       "sprintRecovery": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 100
+        "value": 133
       },
       "adsMove": {
         "rawIndex": 4,
@@ -4728,10 +4728,10 @@
         "value": 0.67
       },
       "deploy": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 467
+        "value": 533
       }
     },
     {
@@ -4743,16 +4743,16 @@
       "ammoId": "flechette",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 167
+        "value": 200
       },
       "sprintRecovery": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 100
+        "value": 133
       },
       "adsMove": {
         "rawIndex": 4,
@@ -4761,10 +4761,10 @@
         "value": 0.67
       },
       "deploy": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 467
+        "value": 533
       }
     },
     {
@@ -4776,16 +4776,16 @@
       "ammoId": "slugs",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 167
+        "value": 200
       },
       "sprintRecovery": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 100
+        "value": 133
       },
       "adsMove": {
         "rawIndex": 4,
@@ -4794,10 +4794,10 @@
         "value": 0.67
       },
       "deploy": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 467
+        "value": 533
       }
     },
     {

@@ -4579,8 +4579,8 @@
       "drawTimeOffset": 8
     },
     "db12": {
-      "defAds": 2,
-      "defSpr": 2,
+      "defAds": 3,
+      "defSpr": 3,
       "defAms": 4,
       "def": "7_rnd",
       "mags": {
@@ -4597,7 +4597,7 @@
       "baseSprintRecoveryTier": 5,
       "weaponSprintRecoveryTierShift": -2,
       "sprintRecoveryTierTable": "primary",
-      "drawTimeTier": 2,
+      "drawTimeTier": 3,
       "drawTimeGroup": "db12",
       "drawTimeOffset": 9
     },
