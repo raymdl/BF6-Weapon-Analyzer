@@ -25,7 +25,7 @@ const EXPECTED_RELOAD_SCOPE = Object.freeze({
   gripSelection: 'none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot',
   ergoSelection: 'none plus WEAPON_ERGO[weapon].avail',
   ammoSelection: 'all IDs in WEAPON_AMMO[weapon].ammo, including standard-only weapons',
-  barrelSelection: 'weapon barrelDef only; barrels do not affect sprint recovery or ADS move',
+  barrelSelection: 'weapon barrelDef only; no weapon defaults to a barrel carrying a sprint recovery shift',
   caseKey: 'weaponId/magazineId/gripId/ergoId/ammoId',
 });
 
@@ -34,16 +34,16 @@ const EXPECTED_RELOAD_COUNTS = Object.freeze({
   magazineEntries: 278,
   gripChoices: 853,
   ergoChoices: 183,
-  ammoChoices: 279,
-  cases: 77609,
-  primaryCases: 77375,
-  sidearmCases: 234,
+  ammoChoices: 310,
+  cases: 83491,
+  primaryCases: 83245,
+  sidearmCases: 246,
 });
 
-const EXPECTED_RELOAD_DIGEST = '13e15487aef3c6682998374e1b14237dcc26b2fcc34b6f0598cd106f989df069';
-const EXPECTED_PREVIOUS_DIGEST = '042b6aba7fb6a1f2abb4bef41c86a42a528f5fc4ed788fbfffc4b8199304c84c';
-const EXPECTED_CHANGED_CASE_COUNT = 10343;
-const EXPECTED_CHANGED_CASE_KEYS_DIGEST = '8100253c084c8b6a8b5dc97b8338e4aee421c99bef6916e71350df533a5a5584';
+const EXPECTED_RELOAD_DIGEST = '406870b7916feffda98deabddd9928f977845f2b811d5fa46900a9f86c6f25d5';
+const EXPECTED_PREVIOUS_DIGEST = '0a5f0040df2fd522db8022386e2be2673b6dc457af29fba79534711276bb597e';
+const EXPECTED_CHANGED_CASE_COUNT = 10542;
+const EXPECTED_CHANGED_CASE_KEYS_DIGEST = '28fdbcafc24134cad73cdd1aef4cf9f5cc8ac8812b684e65c719d072f7792e5f';
 
 const baseContext = {
   MUZZLES: attachments.MUZZLES,
@@ -241,7 +241,7 @@ const generatedBaseline = process.argv.includes('--write-baseline') ? buildFixtu
 if (generatedBaseline) writeFileSync(baselinePath, `${JSON.stringify(generatedBaseline, null, 2)}\n`);
 const baseline = generatedBaseline ?? readJson('scripts/reload-phase3-baseline.json');
 
-test('Phase 3 reload baseline pins the complete 77,609-case live-roster enumeration', () => {
+test('Phase 3 reload baseline pins the complete 83,491-case live-roster enumeration', () => {
   const enumeration = buildEnumeration({ attachments, ammo, balance, weapons });
   assert.deepEqual(enumeration.scope, EXPECTED_RELOAD_SCOPE);
   assert.deepEqual(enumeration.counts, EXPECTED_RELOAD_COUNTS);
