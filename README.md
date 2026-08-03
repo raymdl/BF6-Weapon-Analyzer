@@ -208,6 +208,8 @@ That dataset is hand-corrected rather than generated — see
 - [CODE_DOCUMENTATION.md](CODE_DOCUMENTATION.md) — architecture, module APIs, data field reference,
   the recoil/spread/ballistics model, rendering flow, and known-issue notes.
 - [MAINTENANCE.md](MAINTENANCE.md) — practical "where do I change X" guide for data and stat updates.
+- [docs/DATA_FLOW.md](docs/DATA_FLOW.md) — where each number comes from: sources, staging, promotion
+  gates, and which evidence is reference-only. Diagrams render on GitHub.
 - [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](migration/1.3.3.0/BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md) — the 1.3.3.0
   release plan, progress log, and open checklist.
 - [DERIVED_ATTACHMENT_MODEL.md](migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md) — how screenshot

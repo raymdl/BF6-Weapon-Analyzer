@@ -243,7 +243,7 @@ reads. Omit a field if the attachment has no effect there.
 | `sway` | float | `0` | *(muzzles)* Adds to weapon sway |
 | `worldSpot` | float | `54` | *(muzzles, ammo)* World spotting distance override; muzzle and ammo take the tighter value |
 | `minimapSpot` | float | `150` | *(muzzles, ammo)* Minimap spotting distance override; muzzle and ammo take the tighter value |
-| `suppressedMinimapSpot` | float | — | *(ammo)* Minimap spotting used when the muzzle is a suppressor (subsonic + suppressor stacks past either alone) |
+| `suppressedMinimapSpot` | float | — | *(ammo)* Minimap spotting used when the muzzle is a suppressor (subsonic + suppressor stacks past either alone). The 9 m value is operator-confirmed in game 2026-08-03; no capture exists yet because every ammo panel in the corpus was shot without a muzzle and every suppressor panel with standard ammo. VSSM, whose integral suppressor pairs with inherently subsonic 9×39, is the only corpus record that shows it. |
 | `suppressor` | bool | `false` | *(muzzles)* Marks the muzzle as a suppressor for ammo interactions |
 | `hipSpreadDecayBoost` | float | `0` | *(lights)* Extra hipfire spread decay coefficient |
 | `laserVisible` | bool | — | *(lasers)* Whether the beam is visible to enemies |
