@@ -28,7 +28,7 @@ const OUT_DIR = join(ROOT, 'docs', 'img');
 const CHECK_ONLY = process.argv.includes('--check');
 
 // Diagram order in the document. Adding a fence means adding a name here.
-const NAMES = ['data-flow-pipeline', 'data-flow-pipeline-detail', 'data-flow-value-class'];
+const NAMES = ['data-flow-pipeline', 'data-flow-value-class'];
 
 const CHROMIUM_CANDIDATES = [
   process.env.CHROMIUM_PATH,
