@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SYM_WEAPON_MAP } from './sym-weapon-map.mjs';
+import { hasSweetSpot } from './sweet-spot.mjs';
 
 export const RELEASE = '1.3.3.0';
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -68,9 +69,11 @@ export function damageSourceLabel(weapon) {
   const exception = WEAPON_EXCEPTION_LABELS[weapon.id];
   if (exception) return `${SNAPSHOT_LABEL}; ${exception}`;
   if (weapon.cls === 'Sniper Rifle') {
-    return weapon.sweetSpot?.rangeM
-      ? `${SNAPSHOT_LABEL}; linear sweet-spot falloff, EA sweet-spot window confirmed by Sym`
-      : `${SNAPSHOT_LABEL}; linear falloff, no EA sweet spot`;
+    // Read the window off the curve rather than a stored one, so a future Sym refresh that
+    // moves a sweet spot is described by the label it produces instead of an older claim.
+    return hasSweetSpot(weapon)
+      ? `${SNAPSHOT_LABEL}; linear sweet-spot falloff`
+      : `${SNAPSHOT_LABEL}; linear falloff, no sweet spot`;
   }
   if (weapon.cls === 'Shotgun') return `${SNAPSHOT_LABEL}; per-pellet damage with a 1 m blend at each tier boundary`;
   return `${SNAPSHOT_LABEL}; stepped tiers, provisional pending in-game confirmation`;

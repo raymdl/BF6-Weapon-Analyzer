@@ -44,9 +44,10 @@ spread increments, stance bounds, and idle/firing/not-firing recovery coefficien
 **1.3.3.0 hit zones.** Limb multipliers are class-based — automatic `0.84`, DMR `0.91`, sniper
 `0.67`, shotgun and sidearm `1.00` — and automatic headshots run the ammo-tier ladder
 `1.40 / 1.57 / 1.80` (standard / hollow point / synthetic). Zone naming is explicit: **unarmored
-chest** and **stomach/limbs** replace the old ambiguous "body". EA's revised sniper sweet-spot ranges
-are applied as provenance-tagged overrides, with the Mini Scout exception preserved. All of this
-lives in `sim/damage.js`, so every page resolves zones the same way.
+chest** and **stomach/limbs** replace the old ambiguous "body". Sniper sweet spots are read off the
+Sym damage curve rather than stored, so a later refresh that moves a window flows straight through;
+the Mini Scout, which has no plateau, needs no exception to say so. All of this lives in
+`sim/damage.js`, so every page resolves zones the same way.
 
 **Projectile ballistics (new).** `sim/ballistics.js` and `data/ballistics.json` add level-flight
 timing and target drop for the 59 source-backed weapons:
