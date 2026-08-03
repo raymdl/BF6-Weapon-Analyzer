@@ -197,7 +197,7 @@
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
-      "pts": 15,
+      "pts": 5,
       "velMult": 1.25,
       "velTierMod": 1
     },
