@@ -12,6 +12,7 @@
     "data/ammo.json",
     "data/attachments.json",
     "data/balance_tables.json",
+    "data/ballistics.json",
     "data/recoil_decay.json",
     "data/weapons.json"
   ],
