@@ -217,11 +217,11 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .rc-tab{flex:1 1 0;appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;color:#7f9090;font:inherit;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px 6px;cursor:pointer;white-space:nowrap;transition:color .13s,background .13s,border-color .13s}
 .rc-tab:hover:not(.on){color:#cdd6d6;background:rgba(255,255,255,.035)}
 .rc-tab.on{color:var(--accent);background:#0b1010;border-bottom-color:var(--accent)}
-.rc-viewbar{display:flex;align-items:center;gap:7px 14px;flex-wrap:wrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
+.rc-viewbar{display:flex;align-items:center;gap:7px 14px;flex-wrap:nowrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
 /* Both fields share the row, so the sliders take every spare pixel for finer
    dragging instead of leaving a gap on the right. */
 .rc-viewbar .rc-field{flex:1 1 0;min-width:0}
-.rc-viewbar #rcDistanceField{flex:0 1 60%}
+.rc-viewbar #rcDistanceField{flex:0 1 calc(60% - 35px)}
 .rc-viewbar #rcZoomField{flex:1 1 calc(40% - 14px)}
 .rc-viewbar .rc-range{flex:1 1 60px;min-width:54px}
 .rc-viewbar [hidden]{display:none}
@@ -242,7 +242,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-target-controls{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;padding:3px 9px;min-height:26px;color:#8fa0a0;font-size:.58rem;line-height:1}
 .rc-target-controls[hidden]{display:none}
 .rc-target-group{display:flex;align-items:center;gap:4px;white-space:nowrap}
-.rc-target-controls input{height:21px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;color:var(--text);font:inherit;outline:none;padding:2px 3px;text-align:right}
+.rc-target-controls input{height:21px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;color:var(--text);font:inherit;outline:none;padding:2px 5px 2px 3px;text-align:right}
 .rc-target-controls input[type=number]{appearance:textfield;-moz-appearance:textfield}
 .rc-target-controls input[type=number]::-webkit-inner-spin-button,.rc-target-controls input[type=number]::-webkit-outer-spin-button{margin:0;-webkit-appearance:none}
 .rc-target-controls .rc-target-resolution-input{width:36px}
@@ -253,19 +253,21 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-zero-readout[hidden]{display:none}
 .rc-zero-cycle{appearance:none;border:1px solid #2c3838;border-radius:4px;background:rgba(12,18,18,.78);color:var(--accent);font:inherit;padding:4px 6px;cursor:pointer;backdrop-filter:blur(2px)}
 .rc-zero-cycle:hover{border-color:var(--accent);color:#e1c852}
-.rc-scale-controls{position:absolute;right:8px;top:8px;z-index:2;display:flex;align-items:center;gap:3px}
+.rc-scale-controls{position:absolute;right:8px;top:8px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px}
 .rc-scale-btn{width:21px;height:21px;min-height:21px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#8fa0a0;font-weight:700;line-height:1;backdrop-filter:blur(2px)}
 .rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
+#rcCrosshairToggle[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 /* Footer strip under the plot — keeps hints and the aim read-out off the axes. */
 .rc-viewfoot{display:flex;align-items:flex-end;gap:10px;padding:4px 9px;min-height:22px;background:#0e1414;border-top:1px solid var(--border)}
 .rc-hint{flex:1 1 auto;min-width:0;font-size:.55rem;letter-spacing:.03em;color:var(--text);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
 .rc-aim-readout{display:flex;align-items:flex-end;justify-content:flex-end;flex:0 1 auto;max-width:42%;min-width:0;gap:7px;font-size:.55rem;color:#8c9a9a;white-space:normal;text-align:right;line-height:1.35;font-variant-numeric:tabular-nums}
 .rc-aim-readout[hidden]{display:none}
 .rc-viewbar #rcDistanceReadout{flex:0 0 36px;width:36px;text-align:right}
+.rc-viewbar #rcResetView{flex:0 0 21px;margin-left:auto}
 .rc-linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent2);text-decoration:underline;letter-spacing:.03em}
 .rc-linkbtn:hover{color:var(--accent)}
-.rc-scale-icon{display:block;width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
-.rc-reset-icon{font-size:12px;line-height:1;transform:translate(0px,-1px)}
+.rc-scale-icon{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.rc-reset-icon{display:block;font-size:14px;line-height:14px;transform:translate(-0.5px,-0.5px)}
 .rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:0}
 .rc-stats-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:0}
 .rc-stats-head .ptitle{margin-bottom:0}
@@ -601,10 +603,13 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                   <input class="rc-range" id="rcZoomRange" type="range" min="0" max="100" step="1" value="50" aria-label="Chart zoom">
                   <output class="rc-readout" id="rcZoomReadout" for="rcZoomRange">±5°</output>
                 </span>
+                <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample"><span class="rc-reset-icon">↺</span></button>
               </div>
               <div class="rc-canvas-wrap">
                 <div class="rc-scale-controls">
-                  <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample"><span class="rc-reset-icon">↺</span></button>
+                  <button class="rc-scale-btn" id="rcCrosshairToggle" type="button" title="Hide crosshair overlay" aria-label="Hide crosshair overlay" aria-pressed="true">
+                    <svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3.55"/><circle cx="5" cy="5" r="1.25"/><line x1="5" y1="0.25" x2="5" y2="1.45"/><line x1="5" y1="8.55" x2="5" y2="9.75"/><line x1="0.25" y1="5" x2="1.45" y2="5"/><line x1="8.55" y1="5" x2="9.75" y2="5"/></svg>
+                  </button>
                 </div>
                 <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and spread pattern plot. Use arrow keys to pan and plus or minus to zoom."></canvas>
               </div>

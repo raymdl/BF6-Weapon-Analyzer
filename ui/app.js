@@ -189,6 +189,7 @@ const state = {
     compensationLevel: 0,
     refSeed: 0,
     scaleH: 5, panX: 0, panY: 0,
+    crosshair: true,
     // Target view starts at 2.5×; null remains the automatic-fit sentinel.
     magnification: 2.5, distancePanX: 0, distancePanY: 0,
   },
@@ -1316,6 +1317,10 @@ function toggleRecoilLayer(layer) {
   if (!l.scatter && !l.spray && !l.path && !l.spread && !l.cone) l[layer] = true;
   renderRecoil();
 }
+function toggleRecoilCrosshair() {
+  state.recoil.crosshair = !state.recoil.crosshair;
+  renderRecoil();
+}
 function setRecoilAim(aim) {
   state.recoil.aim = aim === 'hip' ? 'hip' : 'ads';
   setSimContext({ aimState: state.recoil.aim });
@@ -1724,6 +1729,20 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     if (yMin <= 0 && yMax >= 0) { ctx.beginPath(); ctx.moveTo(PL, mapY(0)); ctx.lineTo(PL + PW, mapY(0)); ctx.stroke(); }
   }
 
+  if (state.recoil.crosshair) {
+    const ox = mapX(aimOffset.x), oy = mapY(aimOffset.y);
+    if (ox >= PL && ox <= PL + PW && oy >= PT && oy <= PT + PH) {
+      ctx.strokeStyle = isTargetView ? 'rgba(255,255,255,0.72)' : 'rgba(255,255,255,0.4)';
+      ctx.lineWidth = isTargetView ? 1.1 : 0.8;
+      const arm = isTargetView ? 8 : 6;
+      ctx.beginPath(); ctx.moveTo(ox - arm, oy); ctx.lineTo(ox + arm, oy); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(ox, oy - arm); ctx.lineTo(ox, oy + arm); ctx.stroke();
+      if (isTargetView) {
+        ctx.beginPath(); ctx.arc(ox, oy, 3.2, 0, Math.PI * 2); ctx.stroke();
+      }
+    }
+  }
+
   ctx.fillStyle = 'rgba(100,120,120,0.75)'; ctx.font = '9px sans-serif';
   ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
   for (let v = vMin1; v <= vMax1; v += gridStep) ctx.fillText(isTargetView ? fmtAxisMeters(v) : v + '°', PL - 3, mapY(v));
@@ -2099,6 +2118,13 @@ function renderRecoil() {
   document.getElementById('rcAimHip')?.classList.toggle('on', aim === 'hip');
   document.getElementById('rcStanceStand')?.classList.toggle('on', stance === 'stand');
   document.getElementById('rcStanceMove')?.classList.toggle('on', stance === 'move');
+  const crosshairToggle = document.getElementById('rcCrosshairToggle');
+  if (crosshairToggle) {
+    crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
+    const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
+    crosshairToggle.title = label;
+    crosshairToggle.setAttribute('aria-label', label);
+  }
   const isTarget = state.recoil.view === 'target';
   const targetControls = document.getElementById('rcTargetControls');
   if (targetControls) targetControls.hidden = !isTarget;
@@ -2629,6 +2655,7 @@ function bindEvents() {
 
   // Recoil canvas controls
   document.getElementById('rcResetView').addEventListener('click', resetRecoilView);
+  document.getElementById('rcCrosshairToggle').addEventListener('click', toggleRecoilCrosshair);
   const recoilCanvas = document.getElementById('rcMain');
   // Dragging replaced the pan buttons, so the keyboard needs its own way in.
   recoilCanvas.addEventListener('keydown', e => {
