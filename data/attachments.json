@@ -753,7 +753,11 @@
       "name": "Combo Red",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -1,
+      "hipSpreadDecayBoost": 0.15,
       "laserVisible": false,
+      "assumedFields": {
+        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
+      },
       "pts": 20
     },
     {
@@ -761,7 +765,11 @@
       "name": "Combo Green",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -2,
+      "hipSpreadDecayBoost": 0.15,
       "laserVisible": true,
+      "assumedFields": {
+        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
+      },
       "pts": 20
     }
   ],
