@@ -371,7 +371,20 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 /* Footer */
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
 
+/* The three-column recoil layout reserves 240 + 375 + 375 plus two 14px gaps —
+   1018px of track that never shrinks. Narrower than that it kept its size and
+   overran: between 981 and 1279 the Attachment Effects column was clipped
+   inside .main (233px of it gone at 1000px), and below 980 the page itself
+   scrolled sideways. Step down to two columns, then to one.
+   The popout window drives its own two-column grid off body.is-popout and is
+   excluded here — it sizes to its own window, not this breakpoint. */
+@media (max-width:1279px){
+  body:not(.is-popout) .rc-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  body:not(.is-popout) .rc-plot{grid-column:1/-1}
+}
 @media (max-width:980px){
+  body:not(.is-popout) .rc-layout{grid-template-columns:minmax(0,1fr);gap:12px}
+  body:not(.is-popout) .rc-plot{grid-column:1/-1}
   body{height:auto;min-height:100vh;overflow:auto}
   body.loadout-open{overflow:hidden}
   header{position:sticky;top:0;z-index:20;flex-wrap:wrap;height:auto;min-height:46px;padding-block:8px}
