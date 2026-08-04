@@ -428,7 +428,18 @@ canvas.rcv:focus-visible{outline-offset:-2px}
   /* The caret pushes the nowrap title past a narrow viewport, so let it wrap. */
   .rc-title{white-space:normal}
   .rc-group{flex-basis:100%}
-  .rc-groups > .rc-group{flex-basis:100%}
+  /* The 55/45 split is set with :first-child/:nth-child(2), which outrank a
+     plain `.rc-groups > .rc-group` here — so this override has to match their
+     specificity or the panels keep splitting the row on a phone. */
+  .rc-groups > .rc-group,
+  .rc-groups > .rc-group:first-child,
+  .rc-groups > .rc-group:nth-child(2){flex-basis:100%}
+  /* Desktop keeps each labelled control group on one unbroken line, which a
+     phone viewport is too narrow to hold — the Pattern row alone overran the
+     panel and scrolled the whole page sideways. Here the group may shrink and
+     its buttons wrap inside it; the groups still stack in collection order. */
+  .rc-control-group{flex:0 1 auto;min-width:0;white-space:normal}
+  .rc-control-group .rc-group-row{flex-wrap:wrap}
   .rc-stats{border-left:none;padding-left:0;align-self:auto}
   .rc-plot{min-width:0}
   .rc-tab{flex:1 1 0;padding-inline:8px}
