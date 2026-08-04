@@ -73,7 +73,7 @@
       "id": "frangible",
       "name": "Frangible",
       "hsMult": null,
-      "noEffect": true,
+      "healthRegenDelayS": 9,
       "collateralMult": {
         "Assault Rifle": 0.67,
         "Carbine": 0.67,

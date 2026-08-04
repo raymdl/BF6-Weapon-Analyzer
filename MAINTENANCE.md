@@ -253,6 +253,7 @@ reads. Omit a field if the attachment has no effect there.
 | `setsFireModeBurst` | bool | `false` | *(ergos)* Overrides weapon to burst fire mode |
 | `burstRounds` / `burstRpm` / `burstBurstsPerMinute` | num | — | *(burst ergos)* Burst cadence overrides applied while burst mode is active |
 | `hsMult` | num \| `'hp'` \| `null` | `null` | *(ammo)* Headshot multiplier override; `'hp'` = 1.5×/1.75× per `HP_HS_HIGH` |
+| `healthRegenDelayS` | num | `HEALTH_REGEN_DELAY_S` (5) | *(ammo)* Seconds before a hit enemy begins regenerating. Frangible holds the victim at 9s; the Attachment Effects panel renders the gap as an "Enemy Health Regen" chip |
 | `velocityTreatment` | obj | — | *(`WEAPON_AMMO[w].velocityTreatments[ammoId]`)* Per weapon/ammo muzzle-velocity override for loads outside the normal ladder — `subsonic-tier` steps the 0.8 ladder, the absolute kinds pin a transcribed value |
 | `pts` | int | `0` | Attachment point cost |
 | `noEffect` | bool | `false` | Renders greyed; present in-game but changes no modeled stat |

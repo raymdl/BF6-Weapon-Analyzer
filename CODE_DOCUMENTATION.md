@@ -873,8 +873,12 @@ Several options carry `noEffect: true` — they appear in dropdowns, add point c
 change no stat. Current signal is grey styling. Users who miss this may assume all
 point-cost attachments are modeled.
 
-Examples: Compact Handstop, Long-Range ammo, Frangible ammo, several lasers/lights,
+Examples: Compact Handstop, Long-Range ammo, several lasers/lights,
 Mag Flare, Match Trigger, ADS Bolt.
+
+Frangible ammo left this list once its enemy health-regeneration delay (5s → 9s) was
+modeled as `healthRegenDelayS`; it now surfaces an "Enemy Health Regen" chip in the
+Attachment Effects panel.
 
 **Suggested follow-up:** Add a tooltip or legend if user confusion becomes a pattern.
 
