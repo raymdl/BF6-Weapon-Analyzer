@@ -2,7 +2,7 @@
   "AMMO": [
     {
       "id": "standard",
-      "name": "FMJ",
+      "name": "Standard",
       "hsMult": null,
       "collateralMult": {
         "Assault Rifle": 0.75,
@@ -16,7 +16,7 @@
     },
     {
       "id": "penetration",
-      "name": "Tungsten Core",
+      "name": "Penetration",
       "hsMult": null,
       "adsRecoilTierMod": -1,
       "collateralMult": {
@@ -31,7 +31,7 @@
     },
     {
       "id": "lightweight",
-      "name": "Polymer Case",
+      "name": "Lightweight",
       "hsMult": null,
       "adsMoveSpeedTierShift": -1,
       "collateralMult": {
@@ -44,7 +44,7 @@
     },
     {
       "id": "long_range",
-      "name": "Match Grade",
+      "name": "Long-Range",
       "hsMult": null,
       "noEffect": true,
       "collateralMult": {
@@ -86,7 +86,7 @@
     },
     {
       "id": "synthetic",
-      "name": "Synthetic Tip",
+      "name": "Synthetic",
       "hsMult": 1.75,
       "collateralMult": {
         "Assault Rifle": 0.67,
@@ -101,6 +101,22 @@
     {
       "id": "buckshot",
       "name": "Buckshot",
+      "hsMult": 1,
+      "collateralMult": {
+        "Shotgun": 0.33
+      }
+    },
+    {
+      "id": "buckshot_00",
+      "name": "#00 Buckshot",
+      "hsMult": 1,
+      "collateralMult": {
+        "Shotgun": 0.33
+      }
+    },
+    {
+      "id": "buckshot_m87a1",
+      "name": "#01 BUCK",
       "hsMult": 1,
       "collateralMult": {
         "Shotgun": 0.33
@@ -141,7 +157,7 @@
     },
     {
       "id": "subsonic_hp",
-      "name": "Subsonic HP",
+      "name": "Sub HP",
       "hsMult": "hp",
       "collateralMult": {
         "Assault Rifle": 0.67,
@@ -158,7 +174,7 @@
     },
     {
       "id": "subsonic_pen",
-      "name": "Subsonic Tungsten",
+      "name": "Sub Pen",
       "hsMult": null,
       "adsRecoilTierMod": -1,
       "collateralMult": {
@@ -841,9 +857,10 @@
       }
     },
     "m87a1": {
-      "def": "buckshot",
+      "def": "buckshot_m87a1",
       "ammo": {
-        "buckshot": 10,
+        "buckshot_m87a1": 10,
+        "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
       }
@@ -852,6 +869,7 @@
       "def": "buckshot",
       "ammo": {
         "buckshot": 10,
+        "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
       }
@@ -860,6 +878,7 @@
       "def": "buckshot",
       "ammo": {
         "buckshot": 10,
+        "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
       }
@@ -868,6 +887,7 @@
       "def": "buckshot",
       "ammo": {
         "buckshot": 10,
+        "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
       }

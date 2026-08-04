@@ -18,15 +18,15 @@
     "magazineEntries": 278,
     "gripChoices": 860,
     "ergoChoices": 185,
-    "ammoChoices": 314,
-    "cases": 86497,
-    "primaryCases": 86245,
+    "ammoChoices": 318,
+    "cases": 86728,
+    "primaryCases": 86476,
     "sidearmCases": 252
   },
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-reload-row-v1",
-    "value": "023ef5d8f68d13e6b00552595ea28bb3875b1e243d9fe8cebec58d36fa52e95c"
+    "value": "7f6abf51631404ff6e0367bcd32d1204498ea452e0c0023f096f7cfdfc1a5f3a"
   },
   "perWeaponDigest": {
     "ak205": "f5d1f23d261c64b192354c219c4173fca13be68d6b07c3e5a28755f36310f7b9",
@@ -34,7 +34,7 @@
     "b36a4": "c8dd27b9b62db77d9168a1abebc16a02208b696adbe1dee941e14f1aaa5eb9bc",
     "brod3": "0cd52f81ba5f242aaa43577448eadf461180285b468b7f0022cfd79f93208ca9",
     "cz3a1": "4ebcfade9a7e07140bb4c343cc73db5c478202c837d8eb89b8d28c2ce8253f7d",
-    "db12": "ed760d6754856eaa2ed41c9a4d8eec09cc563ec73b10eeddcd43c61e86923dfb",
+    "db12": "415060976e8ca4e7b7a135a9b83b61cc9d22489631514d435e6647424cf4e429",
     "drsiar": "5dcf86c47b9e3e5c3bf7853047e634ac895c0e3002ea266b8bb60012a230b9f1",
     "ef88": "4a49e5846905e3535535701f09111fc8c7748642eb9777df47816f3100a44b81",
     "es57": "1cf73eefc90049f1d7df7346b8c47dbf872d084c433de105075eee5e9cd23501",
@@ -42,14 +42,14 @@
     "grtbc": "2b2a677027479449520fd14b6d40304442b8ec91d06a8145e1d9cd941a9b9a0d",
     "grtcps": "781651d057fe2c47f350e567cb1a64c8ed1973f2440b30a5cb1c2f9159cd7c8d",
     "kord6p67": "495f93351e9e369a3f11902d1a0de0fc35e620953a8a8ace82bb1eddbc96864a",
-    "ks18k": "00d2db8277720a79568de48183bb5b6b86b581222e045d9619d8d3bb6626eee3",
+    "ks18k": "cf5d47514f1c5233dee852ec53725bb5163bf10649d97ce3123040a52a7d3c7e",
     "kts100": "7f9843b65a7a02126fe4d50f52c107577a5491278635a744ac125965de94ccf2",
     "kv9": "9eb63b37775e2f3f26bea5781aa280b8e415e39a1d6800d8fcc46d21cea6a9f6",
     "l110": "760d0c1430e2f95dfbde20bdcd420cb9db6bbfbb5ee3544342c0b23215076aa2",
     "l115": "ca8850d4d1b12dbbf27faf4e6ca919e1e868253cfa6de71eac11a6d2cd183bd3",
     "l85a3": "596d12aeba5fa8d0f121b552bab2d489c6ac780690a56c0d7f761f268467a54f",
     "lmr27": "6f15f3763d2e9f301839c0a395c02645eb403071f7812f3f16f4ba77e93e342e",
-    "m1014": "c6de7a4f75b6fe3a863165251c92c0d571a84bc2369e4d71aa8b32e63e0bbce5",
+    "m1014": "48b3c11c11a0e4d9df6b5addf15677ab64f8205514d252c1e03edb714e057652",
     "m121a2": "3a0d3e10f269f8e58ee59d0deb88203b4ae915ef39c1be5350b2538b07b3f043",
     "m123k": "a35913458b0aa9971afc94cb8857ad135d4898ee5c02faa856c0bb2adac49c7f",
     "m16a4": "bbd3cc47bc1bd768bb0f4c5305091db3261c76601c3ab79733f73ebd1a314703",
@@ -65,7 +65,7 @@
     "m45a1": "10d2182cbcd003122f0337d7f35693bc9d603cd09f6c93a7aaf8e381496375c8",
     "m4a1": "241bebcf5e1d8112152f0c5fabb41c01646d00def620edacdb2cf76ab1ef076d",
     "m60": "66986c7c9a23d32141d57f5df206a5fc72615f29417714d59a9e2f4ec1b3af78",
-    "m87a1": "ba7a072d7bd661fd5f61a5b504467426a8ed5a9302f6e2740d747c903ff8a22b",
+    "m87a1": "b08312d1aa96342c8f1b7bff420c18e4e5aafe3837ecf644eecaa2e6311097e8",
     "miniscout": "aaf0b96f92e7d07c3c5745b8da1bb6698f5a68bd4988d013db731dd7e7966f86",
     "nvo228e": "98dff8e6faf44fa39537e61d43f5d460259a525ececd544dacb685e541b429cb",
     "p18": "419e6ac72d0d680203d9bf136b18383e6a635a5860a754b7aea55eb37d1eac17",
@@ -92,9 +92,9 @@
     "vz61": "e96683020d6d27edfe717d7d1fbf4fb10d8af05c388e5a142133d876a1dec162"
   },
   "migration": {
-    "previousDigest": "3e81fce5cc56a80e5562c12da639653abda7c7bd17b944bb7db3d9bb0bdd1367",
-    "changedCaseCount": 10547,
-    "changedCaseKeysDigest": "5ad9fe9da0ad16074a84a3bfb8b3cda0aa0ddab2b1cfbe0323368091937bbad1",
+    "previousDigest": "2463971e9776e24fd7de650026cb54c3fe8b408407cb73f52151533e74befc1a",
+    "changedCaseCount": 10666,
+    "changedCaseKeysDigest": "1ee5932fdf3f7888c49760c509b086e77a92877d0eb34f8b2facc3ec4036b400",
     "changedCases": [
       {
         "caseKey": "ak205/30_fast/6h64_vert/mag_catch/frangible",
@@ -13602,6 +13602,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "db12/7_rnd/6h64_vert_db12/none/buckshot_00",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "db12/7_rnd/6h64_vert_db12/none/flechette",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
@@ -13613,6 +13618,11 @@
       },
       {
         "caseKey": "db12/7_rnd/alloy_vert/none/buckshot",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "db12/7_rnd/alloy_vert/none/buckshot_00",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
       },
@@ -13632,6 +13642,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "db12/7_rnd/canted_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "db12/7_rnd/canted_stubby/none/flechette",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
@@ -13643,6 +13658,11 @@
       },
       {
         "caseKey": "db12/7_rnd/classic_vert_db12/none/buckshot",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "db12/7_rnd/classic_vert_db12/none/buckshot_00",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
       },
@@ -13662,6 +13682,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "db12/7_rnd/factory_angled_db12/none/buckshot_00",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "db12/7_rnd/factory_angled_db12/none/flechette",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
@@ -13673,6 +13698,11 @@
       },
       {
         "caseKey": "db12/7_rnd/fold_stubby/none/buckshot",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "db12/7_rnd/fold_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
       },
@@ -13692,6 +13722,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "db12/7_rnd/fold_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "db12/7_rnd/fold_vert/none/flechette",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
@@ -13703,6 +13738,11 @@
       },
       {
         "caseKey": "db12/7_rnd/lp_stubby_db12/none/buckshot",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "db12/7_rnd/lp_stubby_db12/none/buckshot_00",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
       },
@@ -13722,6 +13762,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "db12/7_rnd/none/none/buckshot_00",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "db12/7_rnd/none/none/flechette",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
@@ -13733,6 +13778,11 @@
       },
       {
         "caseKey": "db12/7_rnd/ribbed_stubby/none/buckshot",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "db12/7_rnd/ribbed_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
       },
@@ -13752,6 +13802,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "db12/7_rnd/ribbed_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "db12/7_rnd/ribbed_vert/none/flechette",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
@@ -13763,6 +13818,11 @@
       },
       {
         "caseKey": "db12/7_rnd/slim_angled/none/buckshot",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "db12/7_rnd/slim_angled/none/buckshot_00",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
       },
@@ -13782,6 +13842,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "db12/7_rnd/slim_handstop/none/buckshot_00",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "db12/7_rnd/slim_handstop/none/flechette",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
@@ -13793,6 +13858,11 @@
       },
       {
         "caseKey": "db12/7_rnd/stipp_stubby_db12/none/buckshot",
+        "previousTacticalReloadMs": 2348,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "db12/7_rnd/stipp_stubby_db12/none/buckshot_00",
         "previousTacticalReloadMs": 2348,
         "newTacticalReloadMs": null
       },
@@ -23812,6 +23882,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/6h64_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/6h64_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -23823,6 +23898,11 @@
       },
       {
         "caseKey": "m1014/4_fast/adj_angled/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_fast/adj_angled/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -23842,6 +23922,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/alloy_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/alloy_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -23853,6 +23938,11 @@
       },
       {
         "caseKey": "m1014/4_fast/canted_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_fast/canted_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -23872,6 +23962,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/classic_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/classic_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -23883,6 +23978,11 @@
       },
       {
         "caseKey": "m1014/4_fast/fold_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_fast/fold_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -23902,6 +24002,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/fold_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/fold_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -23913,6 +24018,11 @@
       },
       {
         "caseKey": "m1014/4_fast/full_angled/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_fast/full_angled/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -23932,6 +24042,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/lp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/lp_stubby/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -23943,6 +24058,11 @@
       },
       {
         "caseKey": "m1014/4_fast/none/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_fast/none/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -23962,6 +24082,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/ribbed_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/ribbed_stubby/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -23973,6 +24098,11 @@
       },
       {
         "caseKey": "m1014/4_fast/ribbed_vert/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_fast/ribbed_vert/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -23992,6 +24122,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/slim_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/slim_angled/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24003,6 +24138,11 @@
       },
       {
         "caseKey": "m1014/4_fast/slim_handstop/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_fast/slim_handstop/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24022,6 +24162,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_fast/stipp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_fast/stipp_stubby/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24033,6 +24178,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/6h64_vert/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/6h64_vert/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24052,6 +24202,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_rnd/adj_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_rnd/adj_angled/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24063,6 +24218,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/alloy_vert/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/alloy_vert/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24082,6 +24242,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_rnd/canted_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_rnd/canted_stubby/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24093,6 +24258,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/classic_vert/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/classic_vert/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24112,6 +24282,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_rnd/fold_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_rnd/fold_stubby/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24123,6 +24298,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/fold_vert/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/fold_vert/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24142,6 +24322,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_rnd/full_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_rnd/full_angled/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24153,6 +24338,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/lp_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/lp_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24172,6 +24362,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_rnd/none/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_rnd/none/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24183,6 +24378,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/ribbed_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/ribbed_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24202,6 +24402,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_rnd/ribbed_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_rnd/ribbed_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24213,6 +24418,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/slim_angled/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/slim_angled/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24232,6 +24442,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/4_rnd/slim_handstop/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/4_rnd/slim_handstop/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24243,6 +24458,11 @@
       },
       {
         "caseKey": "m1014/4_rnd/stipp_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/4_rnd/stipp_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24262,6 +24482,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/6h64_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/6h64_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24273,6 +24498,11 @@
       },
       {
         "caseKey": "m1014/6_rnd/adj_angled/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/6_rnd/adj_angled/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24292,6 +24522,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/alloy_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/alloy_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24303,6 +24538,11 @@
       },
       {
         "caseKey": "m1014/6_rnd/canted_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/6_rnd/canted_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24322,6 +24562,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/classic_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/classic_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24333,6 +24578,11 @@
       },
       {
         "caseKey": "m1014/6_rnd/fold_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/6_rnd/fold_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24352,6 +24602,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/fold_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/fold_vert/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24363,6 +24618,11 @@
       },
       {
         "caseKey": "m1014/6_rnd/full_angled/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/6_rnd/full_angled/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24382,6 +24642,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/lp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/lp_stubby/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24393,6 +24658,11 @@
       },
       {
         "caseKey": "m1014/6_rnd/none/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/6_rnd/none/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24412,6 +24682,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/ribbed_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/ribbed_stubby/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24423,6 +24698,11 @@
       },
       {
         "caseKey": "m1014/6_rnd/ribbed_vert/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/6_rnd/ribbed_vert/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -24442,6 +24722,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/slim_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/slim_angled/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24457,6 +24742,11 @@
         "newTacticalReloadMs": null
       },
       {
+        "caseKey": "m1014/6_rnd/slim_handstop/none/buckshot_00",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
         "caseKey": "m1014/6_rnd/slim_handstop/none/flechette",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
@@ -24468,6 +24758,11 @@
       },
       {
         "caseKey": "m1014/6_rnd/stipp_stubby/none/buckshot",
+        "previousTacticalReloadMs": 1784,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m1014/6_rnd/stipp_stubby/none/buckshot_00",
         "previousTacticalReloadMs": 1784,
         "newTacticalReloadMs": null
       },
@@ -46092,7 +46387,12 @@
         "newTacticalReloadMs": 2200
       },
       {
-        "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot",
+        "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46107,7 +46407,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/adj_angled/none/buckshot",
+        "caseKey": "m87a1/5_fast/adj_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/adj_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46122,7 +46427,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/alloy_vert/none/buckshot",
+        "caseKey": "m87a1/5_fast/alloy_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/alloy_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46137,7 +46447,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/canted_stubby/none/buckshot",
+        "caseKey": "m87a1/5_fast/canted_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/canted_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46152,7 +46467,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/classic_vert/none/buckshot",
+        "caseKey": "m87a1/5_fast/classic_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/classic_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46167,7 +46487,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/fold_stubby/none/buckshot",
+        "caseKey": "m87a1/5_fast/fold_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/fold_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46182,7 +46507,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/fold_vert/none/buckshot",
+        "caseKey": "m87a1/5_fast/fold_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/fold_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46197,7 +46527,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/full_angled/none/buckshot",
+        "caseKey": "m87a1/5_fast/full_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/full_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46212,7 +46547,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/lp_stubby/none/buckshot",
+        "caseKey": "m87a1/5_fast/lp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/lp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46227,7 +46567,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/none/none/buckshot",
+        "caseKey": "m87a1/5_fast/none/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/none/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46242,7 +46587,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/ribbed_stubby/none/buckshot",
+        "caseKey": "m87a1/5_fast/ribbed_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/ribbed_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46257,7 +46607,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/ribbed_vert/none/buckshot",
+        "caseKey": "m87a1/5_fast/ribbed_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/ribbed_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46272,7 +46627,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/slim_angled/none/buckshot",
+        "caseKey": "m87a1/5_fast/slim_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/slim_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46287,7 +46647,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/slim_handstop/none/buckshot",
+        "caseKey": "m87a1/5_fast/slim_handstop/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/slim_handstop/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46302,7 +46667,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_fast/stipp_stubby/none/buckshot",
+        "caseKey": "m87a1/5_fast/stipp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_fast/stipp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46317,7 +46687,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/6h64_vert/none/buckshot",
+        "caseKey": "m87a1/5_rnd/6h64_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/6h64_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46332,7 +46707,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/adj_angled/none/buckshot",
+        "caseKey": "m87a1/5_rnd/adj_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/adj_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46347,7 +46727,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/alloy_vert/none/buckshot",
+        "caseKey": "m87a1/5_rnd/alloy_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/alloy_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46362,7 +46747,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/canted_stubby/none/buckshot",
+        "caseKey": "m87a1/5_rnd/canted_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/canted_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46377,7 +46767,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/classic_vert/none/buckshot",
+        "caseKey": "m87a1/5_rnd/classic_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/classic_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46392,7 +46787,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/fold_stubby/none/buckshot",
+        "caseKey": "m87a1/5_rnd/fold_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/fold_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46407,7 +46807,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/fold_vert/none/buckshot",
+        "caseKey": "m87a1/5_rnd/fold_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/fold_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46422,7 +46827,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/full_angled/none/buckshot",
+        "caseKey": "m87a1/5_rnd/full_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/full_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46437,7 +46847,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/lp_stubby/none/buckshot",
+        "caseKey": "m87a1/5_rnd/lp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/lp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46452,7 +46867,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/none/none/buckshot",
+        "caseKey": "m87a1/5_rnd/none/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/none/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46467,7 +46887,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/ribbed_stubby/none/buckshot",
+        "caseKey": "m87a1/5_rnd/ribbed_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/ribbed_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46482,7 +46907,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/ribbed_vert/none/buckshot",
+        "caseKey": "m87a1/5_rnd/ribbed_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/ribbed_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46497,7 +46927,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/slim_angled/none/buckshot",
+        "caseKey": "m87a1/5_rnd/slim_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/slim_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46512,7 +46947,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/slim_handstop/none/buckshot",
+        "caseKey": "m87a1/5_rnd/slim_handstop/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/slim_handstop/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46527,7 +46967,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/5_rnd/stipp_stubby/none/buckshot",
+        "caseKey": "m87a1/5_rnd/stipp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/5_rnd/stipp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46542,7 +46987,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/6h64_vert/none/buckshot",
+        "caseKey": "m87a1/6_rnd/6h64_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/6h64_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46557,7 +47007,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/adj_angled/none/buckshot",
+        "caseKey": "m87a1/6_rnd/adj_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/adj_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46572,7 +47027,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/alloy_vert/none/buckshot",
+        "caseKey": "m87a1/6_rnd/alloy_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/alloy_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46587,7 +47047,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/canted_stubby/none/buckshot",
+        "caseKey": "m87a1/6_rnd/canted_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/canted_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46602,7 +47067,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/classic_vert/none/buckshot",
+        "caseKey": "m87a1/6_rnd/classic_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/classic_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46617,7 +47087,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/fold_stubby/none/buckshot",
+        "caseKey": "m87a1/6_rnd/fold_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/fold_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46632,7 +47107,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/fold_vert/none/buckshot",
+        "caseKey": "m87a1/6_rnd/fold_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/fold_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46647,7 +47127,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/full_angled/none/buckshot",
+        "caseKey": "m87a1/6_rnd/full_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/full_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46662,7 +47147,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/lp_stubby/none/buckshot",
+        "caseKey": "m87a1/6_rnd/lp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/lp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46677,7 +47167,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/none/none/buckshot",
+        "caseKey": "m87a1/6_rnd/none/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/none/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46692,7 +47187,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/ribbed_stubby/none/buckshot",
+        "caseKey": "m87a1/6_rnd/ribbed_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/ribbed_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46707,7 +47207,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/ribbed_vert/none/buckshot",
+        "caseKey": "m87a1/6_rnd/ribbed_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/ribbed_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46722,7 +47227,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/slim_angled/none/buckshot",
+        "caseKey": "m87a1/6_rnd/slim_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/slim_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46737,7 +47247,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/slim_handstop/none/buckshot",
+        "caseKey": "m87a1/6_rnd/slim_handstop/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/slim_handstop/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46752,7 +47267,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/6_rnd/stipp_stubby/none/buckshot",
+        "caseKey": "m87a1/6_rnd/stipp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/6_rnd/stipp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46767,7 +47287,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/6h64_vert/none/buckshot",
+        "caseKey": "m87a1/7_rnd/6h64_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/6h64_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46782,7 +47307,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/adj_angled/none/buckshot",
+        "caseKey": "m87a1/7_rnd/adj_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/adj_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46797,7 +47327,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/alloy_vert/none/buckshot",
+        "caseKey": "m87a1/7_rnd/alloy_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/alloy_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46812,7 +47347,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/canted_stubby/none/buckshot",
+        "caseKey": "m87a1/7_rnd/canted_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/canted_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46827,7 +47367,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/classic_vert/none/buckshot",
+        "caseKey": "m87a1/7_rnd/classic_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/classic_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46842,7 +47387,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/fold_stubby/none/buckshot",
+        "caseKey": "m87a1/7_rnd/fold_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/fold_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46857,7 +47407,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/fold_vert/none/buckshot",
+        "caseKey": "m87a1/7_rnd/fold_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/fold_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46872,7 +47427,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/full_angled/none/buckshot",
+        "caseKey": "m87a1/7_rnd/full_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/full_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46887,7 +47447,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/lp_stubby/none/buckshot",
+        "caseKey": "m87a1/7_rnd/lp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/lp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46902,7 +47467,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/none/none/buckshot",
+        "caseKey": "m87a1/7_rnd/none/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/none/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46917,7 +47487,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/ribbed_stubby/none/buckshot",
+        "caseKey": "m87a1/7_rnd/ribbed_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/ribbed_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46932,7 +47507,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/ribbed_vert/none/buckshot",
+        "caseKey": "m87a1/7_rnd/ribbed_vert/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/ribbed_vert/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46947,7 +47527,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/slim_angled/none/buckshot",
+        "caseKey": "m87a1/7_rnd/slim_angled/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/slim_angled/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46962,7 +47547,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/slim_handstop/none/buckshot",
+        "caseKey": "m87a1/7_rnd/slim_handstop/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/slim_handstop/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -46977,7 +47567,12 @@
         "newTacticalReloadMs": null
       },
       {
-        "caseKey": "m87a1/7_rnd/stipp_stubby/none/buckshot",
+        "caseKey": "m87a1/7_rnd/stipp_stubby/none/buckshot_00",
+        "previousTacticalReloadMs": 1334,
+        "newTacticalReloadMs": null
+      },
+      {
+        "caseKey": "m87a1/7_rnd/stipp_stubby/none/buckshot_m87a1",
         "previousTacticalReloadMs": 1334,
         "newTacticalReloadMs": null
       },
@@ -53079,12 +53674,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "db12/7_rnd/6h64_vert_db12/none/flechette",
+      "caseKey": "db12/7_rnd/6h64_vert_db12/none/buckshot_00",
       "weaponId": "db12",
       "magazineId": "7_rnd",
       "gripId": "6h64_vert_db12",
       "ergoId": "none",
-      "ammoId": "flechette",
+      "ammoId": "buckshot_00",
       "tacticalReloadMs": null,
       "branch": "derived",
       "mode": null,
@@ -53094,12 +53689,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "db12/7_rnd/6h64_vert_db12/none/slugs",
+      "caseKey": "db12/7_rnd/6h64_vert_db12/none/flechette",
       "weaponId": "db12",
       "magazineId": "7_rnd",
       "gripId": "6h64_vert_db12",
       "ergoId": "none",
-      "ammoId": "slugs",
+      "ammoId": "flechette",
       "tacticalReloadMs": null,
       "branch": "derived",
       "mode": null,
@@ -53439,12 +54034,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/flechette",
+      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/buckshot_00",
       "weaponId": "ks18k",
       "magazineId": "4_fast",
       "gripId": "6h64_vert_ks18k",
       "ergoId": "buffer",
-      "ammoId": "flechette",
+      "ammoId": "buckshot_00",
       "tacticalReloadMs": 2434,
       "branch": "derived",
       "mode": "normal",
@@ -53454,12 +54049,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/slugs",
+      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/flechette",
       "weaponId": "ks18k",
       "magazineId": "4_fast",
       "gripId": "6h64_vert_ks18k",
       "ergoId": "buffer",
-      "ammoId": "slugs",
+      "ammoId": "flechette",
       "tacticalReloadMs": 2434,
       "branch": "derived",
       "mode": "normal",
@@ -53754,12 +54349,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "m1014/4_fast/6h64_vert/none/flechette",
+      "caseKey": "m1014/4_fast/6h64_vert/none/buckshot_00",
       "weaponId": "m1014",
       "magazineId": "4_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "flechette",
+      "ammoId": "buckshot_00",
       "tacticalReloadMs": null,
       "branch": "derived",
       "mode": null,
@@ -53769,12 +54364,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "m1014/4_fast/6h64_vert/none/slugs",
+      "caseKey": "m1014/4_fast/6h64_vert/none/flechette",
       "weaponId": "m1014",
       "magazineId": "4_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "slugs",
+      "ammoId": "flechette",
       "tacticalReloadMs": null,
       "branch": "derived",
       "mode": null,
@@ -54459,12 +55054,27 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot",
+      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_00",
       "weaponId": "m87a1",
       "magazineId": "5_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "buckshot",
+      "ammoId": "buckshot_00",
+      "tacticalReloadMs": null,
+      "branch": "derived",
+      "mode": null,
+      "reason": "invalid-derived-base",
+      "reloadSpeedTier": 0,
+      "reloadSpeedMult": null,
+      "overrideApplied": false
+    },
+    {
+      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_m87a1",
+      "weaponId": "m87a1",
+      "magazineId": "5_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "none",
+      "ammoId": "buckshot_m87a1",
       "tacticalReloadMs": null,
       "branch": "derived",
       "mode": null,
@@ -54480,21 +55090,6 @@
       "gripId": "6h64_vert",
       "ergoId": "none",
       "ammoId": "flechette",
-      "tacticalReloadMs": null,
-      "branch": "derived",
-      "mode": null,
-      "reason": "invalid-derived-base",
-      "reloadSpeedTier": 0,
-      "reloadSpeedMult": null,
-      "overrideApplied": false
-    },
-    {
-      "caseKey": "m87a1/5_fast/6h64_vert/none/slugs",
-      "weaponId": "m87a1",
-      "magazineId": "5_fast",
-      "gripId": "6h64_vert",
-      "ergoId": "none",
-      "ammoId": "slugs",
       "tacticalReloadMs": null,
       "branch": "derived",
       "mode": null,

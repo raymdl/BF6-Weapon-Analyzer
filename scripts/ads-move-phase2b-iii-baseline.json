@@ -15,9 +15,9 @@
     "magazineEntries": 278,
     "gripChoices": 860,
     "ergoChoices": 185,
-    "ammoChoices": 314,
-    "cases": 86497,
-    "primaryCases": 86245,
+    "ammoChoices": 318,
+    "cases": 86728,
+    "primaryCases": 86476,
     "sidearmCases": 252
   },
   "defSprDistribution": {
@@ -38,7 +38,7 @@
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-row-v1",
-    "value": "0ec9d0d5fc0804c757d3fa1cdc65c548c6b25b79b3b2360a181d22ef24c2ce52"
+    "value": "1b47edab4f05f6577825aee4ce80bbe47df00c72bff71fde0486da44f7b926d7"
   },
   "perWeaponDigest": {
     "ak205": "5be96e6c30e16e41920f335385dfcce10c9c79af6f0edd2da82af4c672d43a7c",
@@ -46,7 +46,7 @@
     "b36a4": "55a7f11f477ad4b81d5cbe4f7ede6c0b262b47a23d411f15dfe538ea2ff1bfc3",
     "brod3": "2cb9c962338da9b18dd29e8ae875f384e5f3561d5546c4ebeae995a0bb3ceba8",
     "cz3a1": "d9356328446d58d26f31921a0143d9b88274af79a102d4280fee63ccaaa1beb9",
-    "db12": "16c1308cdc149c3b6b0985230066cc304ea9d4119ad67c6d8f7edb11c039fe9a",
+    "db12": "fd403038bd710eec20eab9dba54df31a42b139831917b2769c3e5bd8d5817f58",
     "drsiar": "5138bdbb8bb3e186aca69fdda075cc0854fa1e07c15ac70345d770751155db17",
     "ef88": "edb704addc1b5585da769e1cfa2edae52e849e213a8ecb9b02384c0e871e2c05",
     "es57": "65685f0710860156f58750c181980aca42eaa2f9554b52742f115d55a0c28a9b",
@@ -54,14 +54,14 @@
     "grtbc": "b484adf0af883c7c657048aaaf5c99375b68677a9bd36f8f9142a695c4e3dc12",
     "grtcps": "c562659a439b6f555daa770b59c5a15a2326d5baec40e212b27bd02c4b84375e",
     "kord6p67": "8f2de1e460c30b3812788db51d4f7760a7562f42c0920e2b0f89284def16901d",
-    "ks18k": "92061085e0ee06ae96886f67d8be360c3c1342aa5438ec10e33c8a18535bb638",
+    "ks18k": "cfa1055c7514ef9ff7805fcd1c81242ef3b725c595407a390545ae6b62a843c8",
     "kts100": "2ac2b4b8cfe7fa01a3a4cf3a947700dd1097c90cd9ff77bed3034f52b1b49bcc",
     "kv9": "1a213d4b348f03d855cb7c1330da6adc8d5cb88073dc201d717864c86cfb1e51",
     "l110": "007cffb7b069eac8e988084e92329e6ad15df71dad101da2ade78355ec79a7bb",
     "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
     "l85a3": "ef40b9caa9affc497339fd61f7374cdfb17b63cc17018313da6c0c7bcfa2a7eb",
     "lmr27": "01395ff76527f996acaec3cc1caddb1b842fd2866da55edeb8677f8398019189",
-    "m1014": "69cb52f616221c8ae3cbd78407eef4a8f608ae3ca30b688063d0ff1fa0f3bc4f",
+    "m1014": "bca1756d5d164e59e36a51c8cc2439b919eaa5dc4d57b5c25260a3af625bf112",
     "m121a2": "9512f517fc456fe4d139ff326747dbfd101d2fb299b0a9755e75c6fca99ac11b",
     "m123k": "6c5479c3e93c80377d8850025c5833d39e0ac47b7bdcb8e2df7f3070e9952a32",
     "m16a4": "3127679b699acb27ed0432f6f706b427d39a7f695aa96be732a0e8de07f5d220",
@@ -77,7 +77,7 @@
     "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
     "m4a1": "d8cc1dd5d2824cfc751b0df6fe5d3b239d3fca03632d6c141df08e331c43305e",
     "m60": "12f3e7d8eedb9f8975e71ef0095b08d7643b3d16cf1ec343d8dbb8f1a408c91d",
-    "m87a1": "bf786233d210419a69c6378b1390b22bea44539982ef80dc6fa424cdd20bbbfe",
+    "m87a1": "811da9cdb07cb51f17bbdc85f458b605020321f72faebc45355573386c833568",
     "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
     "nvo228e": "b370c981e8d580db6360668acc844e8fe5f642a5b6966594c501b5ae9d6aa392",
     "p18": "d2c813043166745bf1ad85735896784642f2385db7ab7b98ab1f675b536ff9cc",
@@ -106,10 +106,10 @@
   "rawIndexHistograms": {
     "sprintRecovery": {
       "primary": {
-        "0": 1267,
-        "1": 7772,
-        "2": 17177,
-        "3": 22008,
+        "0": 1273,
+        "1": 7828,
+        "2": 17302,
+        "3": 22052,
         "4": 21748,
         "5": 12953,
         "6": 2597,
@@ -130,10 +130,10 @@
         "0": 405,
         "1": 1595,
         "2": 4593,
-        "3": 8957,
-        "4": 15864,
-        "5": 21688,
-        "6": 21334,
+        "3": 9013,
+        "4": 15989,
+        "5": 21730,
+        "6": 21342,
         "7": 9909,
         "8": 1788,
         "9": 112
@@ -147,10 +147,10 @@
     },
     "adsTime": {
       "primary": {
-        "0": 6922,
-        "1": 21771,
-        "2": 26873,
-        "3": 20256,
+        "0": 6954,
+        "1": 21871,
+        "2": 26954,
+        "3": 20274,
         "4": 7279,
         "5": 1996,
         "6": 968,
@@ -164,10 +164,10 @@
     },
     "deploy": {
       "primary": {
-        "4": 897,
-        "5": 7142,
-        "6": 16721,
-        "7": 21972,
+        "4": 903,
+        "5": 7196,
+        "6": 16836,
+        "7": 22028,
         "8": 22082,
         "9": 13529,
         "10": 3155,
@@ -1891,7 +1891,7 @@
         }
       }
     },
-    "changedCaseCount": 19600,
+    "changedCaseCount": 19628,
     "changedWeaponCount": 46,
     "changedWeaponIds": [
       "ak205",
@@ -1941,7 +1941,7 @@
       "vcr2",
       "vz61"
     ],
-    "changedCaseKeysDigest": "19e454abb91a35117ff6a66f14ea2c46080418c9943346cf31c1cb28397be654",
+    "changedCaseKeysDigest": "ea7bf71fb613366963dd815f744ad58de8067bd23f0357d33270860d173a46d3",
     "changedByWeapon": {
       "ak205": 960,
       "ak4d": 300,
@@ -1958,7 +1958,7 @@
       "l110": 128,
       "l85a3": 432,
       "lmr27": 240,
-      "m1014": 36,
+      "m1014": 48,
       "m121a2": 60,
       "m123k": 32,
       "m16a4": 840,
@@ -1970,7 +1970,7 @@
       "m433": 420,
       "m4a1": 840,
       "m60": 120,
-      "m87a1": 48,
+      "m87a1": 64,
       "nvo228e": 420,
       "pp19": 420,
       "pw5a3": 448,
@@ -1991,9 +1991,9 @@
       "vz61": 20
     },
     "valueChanges": {
-      "0.67->0.6": 4230,
+      "0.67->0.6": 4250,
       "0.75->0.67": 2526,
-      "0.6->0.54": 5168,
+      "0.6->0.54": 5176,
       "0.54->0.47": 4248,
       "0.82->0.75": 1208,
       "0.91->0.82": 532,
@@ -3031,9 +3031,9 @@
       "magazineEntries": 278,
       "gripChoices": 860,
       "ergoChoices": 185,
-      "ammoChoices": 314,
-      "cases": 86497,
-      "primaryCases": 86245,
+      "ammoChoices": 318,
+      "cases": 86728,
+      "primaryCases": 86476,
       "sidearmCases": 252
     },
     "defSprDistribution": {
@@ -3054,7 +3054,7 @@
     "digest": {
       "algorithm": "SHA-256",
       "format": "canonical-row-v1",
-      "value": "92c0a5ad6127ea5d331589d73b3c9c994dfb33535bd6bf29ae7fb5d4b9f13b21"
+      "value": "b94f974e757b1d0ecc5fab1c904a9cfe24b423aa84b19dc42dc08dca2ce2d42c"
     },
     "perWeaponDigest": {
       "ak205": "429316af0dad59ac8caf500fe91656da310b9fc084414934dc8319937c58bba4",
@@ -3062,7 +3062,7 @@
       "b36a4": "b78efb25fe36008b3fa703c4b594b9c989ee3b4cc1ec1c487092a2c7915b8468",
       "brod3": "998b5242a5d18c7348f5f46c7d7b653ece7ebec916815fd8b81c974645687dbf",
       "cz3a1": "7bc8ee13d1b42cb971ecb827f52aff307b3a08a0e8ec6386433ed04342a427de",
-      "db12": "f0af02d7015d58b67b81e1eb5e45a6cd4dbf2a01669bdd4f28a923488d138b37",
+      "db12": "ac9418c44e7ab74740fa9d80611b836d03e1d2b88742f942547bc7dfceece83e",
       "drsiar": "2cb19fdf361d49eae80b4e3707cea96878e92251531a2556bfbd0fe3ec872292",
       "ef88": "46f30b9c8a4e28b821348e85f46056ace7e1279a380c0a70b1886800240cbd82",
       "es57": "65685f0710860156f58750c181980aca42eaa2f9554b52742f115d55a0c28a9b",
@@ -3070,14 +3070,14 @@
       "grtbc": "02689020ce82a6619e777df55f141044147d828e2df6f21085bdc0aacc48c470",
       "grtcps": "2c9987847e96b7fa5b6ec9488b948f757f88e429a0539fbfecfe06ff0564d127",
       "kord6p67": "0556c176b5644637f632e2943abc89fbaea0dfd92a2b5152a94267d02da7b15c",
-      "ks18k": "fab1b8897df6abc477029a09ee064cc5fc70864020bca97f971f3d23d3a49024",
+      "ks18k": "e479717a2272ef3eb02e0ee594d409e0b194eade90d15b6d13c9150da240273b",
       "kts100": "9baa65233440c23a57acd65444a4111525b76e72a50b0c0287e33073404cf4f5",
       "kv9": "8fd36d4dc9ba90a6f45b15ca622ea758465988af3659bbbf22c8e6b1ce6c179f",
       "l110": "84ef41e21bfefa36472411c54be9a5414340aa6463b5367d1d8653ff1facbaaa",
       "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
       "l85a3": "fdd73f596706d1ec5b56f6d3a39361af3ec561067307e244e50c66807600562d",
       "lmr27": "208539d690387a626080bc145b6b34d299eb31441edd922a93216d22af4db19c",
-      "m1014": "936e80b9491b3339fd58bc6e76c4f1051f94a9e8315968b7686f055f553c703b",
+      "m1014": "b50430442ffbe38e7d442bbc98880d8f5ebf2a67cad5120f76262d0cc8bcfbef",
       "m121a2": "11b53a74be7480d6f2f37812ddf810637e48e1e50a2b6db8c8529305c28bfdbc",
       "m123k": "0a68007df54077376fe6ee18edb8cc85a7aa202d151be9e9e12862c6c9a59867",
       "m16a4": "6c89c0f1dca63b7cbe16ab17a6f20bc7c62915033a0843a3042bd609796cc627",
@@ -3093,7 +3093,7 @@
       "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
       "m4a1": "f2e481382c00c74f198be94198b2a10015b3fff02f8a7900d5a78fa2042c0fae",
       "m60": "bc3287c5bd020b84f8b09216edb8d903564a2053c83d0e06cc80b8c0f34856f7",
-      "m87a1": "feb1bd48872d78bae00112045728fec21fe94ec55e1b63549a35fbe9080efae7",
+      "m87a1": "ff4295602897c72f2fc0560939f19fc87ee857102bbfd3666c4cd196cf90bb96",
       "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
       "nvo228e": "6b23f639503af0aad01c0fd32de33d0cca36b717e2a028cb03fb715395824844",
       "p18": "d2c813043166745bf1ad85735896784642f2385db7ab7b98ab1f675b536ff9cc",
@@ -3122,10 +3122,10 @@
     "rawIndexHistograms": {
       "sprintRecovery": {
         "primary": {
-          "0": 1267,
-          "1": 7772,
-          "2": 17177,
-          "3": 22008,
+          "0": 1273,
+          "1": 7828,
+          "2": 17302,
+          "3": 22052,
           "4": 21748,
           "5": 12953,
           "6": 2597,
@@ -3146,9 +3146,9 @@
           "0": 585,
           "1": 1947,
           "2": 5269,
-          "3": 10265,
-          "4": 17568,
-          "5": 22636,
+          "3": 10321,
+          "4": 17713,
+          "5": 22666,
           "6": 20414,
           "7": 7057,
           "8": 504
@@ -3161,10 +3161,10 @@
       },
       "adsTime": {
         "primary": {
-          "0": 6922,
-          "1": 21771,
-          "2": 26873,
-          "3": 20256,
+          "0": 6954,
+          "1": 21871,
+          "2": 26954,
+          "3": 20274,
           "4": 7279,
           "5": 1996,
           "6": 968,
@@ -3178,10 +3178,10 @@
       },
       "deploy": {
         "primary": {
-          "4": 897,
-          "5": 7142,
-          "6": 16721,
-          "7": 21972,
+          "4": 903,
+          "5": 7196,
+          "6": 16836,
+          "7": 22028,
           "8": 22082,
           "9": 13529,
           "10": 3155,
@@ -4735,12 +4735,12 @@
       }
     },
     {
-      "caseKey": "db12/7_rnd/6h64_vert_db12/none/flechette",
+      "caseKey": "db12/7_rnd/6h64_vert_db12/none/buckshot_00",
       "weaponId": "db12",
       "magazineId": "7_rnd",
       "gripId": "6h64_vert_db12",
       "ergoId": "none",
-      "ammoId": "flechette",
+      "ammoId": "buckshot_00",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,
@@ -4768,12 +4768,12 @@
       }
     },
     {
-      "caseKey": "db12/7_rnd/6h64_vert_db12/none/slugs",
+      "caseKey": "db12/7_rnd/6h64_vert_db12/none/flechette",
       "weaponId": "db12",
       "magazineId": "7_rnd",
       "gripId": "6h64_vert_db12",
       "ergoId": "none",
-      "ammoId": "slugs",
+      "ammoId": "flechette",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,
@@ -5527,12 +5527,12 @@
       }
     },
     {
-      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/flechette",
+      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/buckshot_00",
       "weaponId": "ks18k",
       "magazineId": "4_fast",
       "gripId": "6h64_vert_ks18k",
       "ergoId": "buffer",
-      "ammoId": "flechette",
+      "ammoId": "buckshot_00",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -5560,12 +5560,12 @@
       }
     },
     {
-      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/slugs",
+      "caseKey": "ks18k/4_fast/6h64_vert_ks18k/buffer/flechette",
       "weaponId": "ks18k",
       "magazineId": "4_fast",
       "gripId": "6h64_vert_ks18k",
       "ergoId": "buffer",
-      "ammoId": "slugs",
+      "ammoId": "flechette",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -14140,12 +14140,12 @@
       }
     },
     {
-      "caseKey": "m1014/4_fast/6h64_vert/none/flechette",
+      "caseKey": "m1014/4_fast/6h64_vert/none/buckshot_00",
       "weaponId": "m1014",
       "magazineId": "4_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "flechette",
+      "ammoId": "buckshot_00",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,
@@ -14173,12 +14173,12 @@
       }
     },
     {
-      "caseKey": "m1014/4_fast/6h64_vert/none/slugs",
+      "caseKey": "m1014/4_fast/6h64_vert/none/flechette",
       "weaponId": "m1014",
       "magazineId": "4_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "slugs",
+      "ammoId": "flechette",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,
@@ -22588,12 +22588,45 @@
       }
     },
     {
-      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot",
+      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_00",
       "weaponId": "m87a1",
       "magazineId": "5_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "buckshot",
+      "ammoId": "buckshot_00",
+      "sprintTable": "primary",
+      "adsTime": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 200
+      },
+      "sprintRecovery": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 133
+      },
+      "adsMove": {
+        "rawIndex": 5,
+        "index": 5,
+        "clamped": false,
+        "value": 0.6
+      },
+      "deploy": {
+        "rawIndex": 6,
+        "index": 6,
+        "clamped": false,
+        "value": 467
+      }
+    },
+    {
+      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_m87a1",
+      "weaponId": "m87a1",
+      "magazineId": "5_fast",
+      "gripId": "6h64_vert",
+      "ergoId": "none",
+      "ammoId": "buckshot_m87a1",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,
@@ -22627,39 +22660,6 @@
       "gripId": "6h64_vert",
       "ergoId": "none",
       "ammoId": "flechette",
-      "sprintTable": "primary",
-      "adsTime": {
-        "rawIndex": 2,
-        "index": 2,
-        "clamped": false,
-        "value": 200
-      },
-      "sprintRecovery": {
-        "rawIndex": 2,
-        "index": 2,
-        "clamped": false,
-        "value": 133
-      },
-      "adsMove": {
-        "rawIndex": 5,
-        "index": 5,
-        "clamped": false,
-        "value": 0.6
-      },
-      "deploy": {
-        "rawIndex": 6,
-        "index": 6,
-        "clamped": false,
-        "value": 467
-      }
-    },
-    {
-      "caseKey": "m87a1/5_fast/6h64_vert/none/slugs",
-      "weaponId": "m87a1",
-      "magazineId": "5_fast",
-      "gripId": "6h64_vert",
-      "ergoId": "none",
-      "ammoId": "slugs",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,

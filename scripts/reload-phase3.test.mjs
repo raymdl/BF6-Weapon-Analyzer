@@ -34,16 +34,16 @@ const EXPECTED_RELOAD_COUNTS = Object.freeze({
   magazineEntries: 278,
   gripChoices: 860,
   ergoChoices: 185,
-  ammoChoices: 314,
-  cases: 86497,
-  primaryCases: 86245,
+  ammoChoices: 318,
+  cases: 86728,
+  primaryCases: 86476,
   sidearmCases: 252,
 });
 
-const EXPECTED_RELOAD_DIGEST = '023ef5d8f68d13e6b00552595ea28bb3875b1e243d9fe8cebec58d36fa52e95c';
-const EXPECTED_PREVIOUS_DIGEST = '3e81fce5cc56a80e5562c12da639653abda7c7bd17b944bb7db3d9bb0bdd1367';
-const EXPECTED_CHANGED_CASE_COUNT = 10547;
-const EXPECTED_CHANGED_CASE_KEYS_DIGEST = '5ad9fe9da0ad16074a84a3bfb8b3cda0aa0ddab2b1cfbe0323368091937bbad1';
+const EXPECTED_RELOAD_DIGEST = '7f6abf51631404ff6e0367bcd32d1204498ea452e0c0023f096f7cfdfc1a5f3a';
+const EXPECTED_PREVIOUS_DIGEST = '2463971e9776e24fd7de650026cb54c3fe8b408407cb73f52151533e74befc1a';
+const EXPECTED_CHANGED_CASE_COUNT = 10666;
+const EXPECTED_CHANGED_CASE_KEYS_DIGEST = '1ee5932fdf3f7888c49760c509b086e77a92877d0eb34f8b2facc3ec4036b400';
 
 const baseContext = {
   MUZZLES: attachments.MUZZLES,
@@ -241,7 +241,7 @@ const generatedBaseline = process.argv.includes('--write-baseline') ? buildFixtu
 if (generatedBaseline) writeFileSync(baselinePath, `${JSON.stringify(generatedBaseline, null, 2)}\n`);
 const baseline = generatedBaseline ?? readJson('scripts/reload-phase3-baseline.json');
 
-test('Phase 3 reload baseline pins the complete 86,497-case live-roster enumeration', () => {
+test('Phase 3 reload baseline pins the complete 86,728-case live-roster enumeration', () => {
   const enumeration = buildEnumeration({ attachments, ammo, balance, weapons });
   assert.deepEqual(enumeration.scope, EXPECTED_RELOAD_SCOPE);
   assert.deepEqual(enumeration.counts, EXPECTED_RELOAD_COUNTS);

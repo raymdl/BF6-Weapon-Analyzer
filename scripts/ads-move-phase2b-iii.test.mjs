@@ -26,8 +26,8 @@ const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
 const STANDARD_SHIFTED_GRIPS = ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby'];
 const SOURCE_GRIP_NAMES = ['None', '6H64 Vertical', 'Classic Vertical', 'Stippled Stubby', 'Low-Profile Stubby'];
 const EXEMPT_SOURCE_WEAPONS = new Set(['SVK-8.6', 'VSSM', '18.5KS-K', 'DB-12']);
-const PRE_PHASE3_DIGEST = '92c0a5ad6127ea5d331589d73b3c9c994dfb33535bd6bf29ae7fb5d4b9f13b21';
-const PRE_PHASE4_DIGEST = '0ec9d0d5fc0804c757d3fa1cdc65c548c6b25b79b3b2360a181d22ef24c2ce52';
+const PRE_PHASE3_DIGEST = 'b94f974e757b1d0ecc5fab1c904a9cfe24b423aa84b19dc42dc08dca2ce2d42c';
+const PRE_PHASE4_DIGEST = '1b47edab4f05f6577825aee4ce80bbe47df00c72bff71fde0486da44f7b926d7';
 const VARIANT_BASES = {
   svk86: {
     '6h64_vert_svk86': '6h64_vert',
