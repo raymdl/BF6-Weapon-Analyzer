@@ -100,7 +100,7 @@
     },
     {
       "id": "buckshot",
-      "name": "Buckshot",
+      "name": "#01 BUCK",
       "hsMult": 1,
       "collateralMult": {
         "Shotgun": 0.33
@@ -108,15 +108,7 @@
     },
     {
       "id": "buckshot_00",
-      "name": "#00 Buckshot",
-      "hsMult": 1,
-      "collateralMult": {
-        "Shotgun": 0.33
-      }
-    },
-    {
-      "id": "buckshot_m87a1",
-      "name": "#01 BUCK",
+      "name": "#00 BUCK",
       "hsMult": 1,
       "collateralMult": {
         "Shotgun": 0.33
@@ -857,9 +849,9 @@
       }
     },
     "m87a1": {
-      "def": "buckshot_m87a1",
+      "def": "buckshot",
       "ammo": {
-        "buckshot_m87a1": 10,
+        "buckshot": 10,
         "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40

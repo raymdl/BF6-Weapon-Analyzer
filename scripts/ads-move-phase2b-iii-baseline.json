@@ -38,7 +38,7 @@
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-row-v1",
-    "value": "1b47edab4f05f6577825aee4ce80bbe47df00c72bff71fde0486da44f7b926d7"
+    "value": "f0ec5ad34e2b1a9d554819fdb2ff78be6e7190c9f2b6db793bcde081597d25bc"
   },
   "perWeaponDigest": {
     "ak205": "5be96e6c30e16e41920f335385dfcce10c9c79af6f0edd2da82af4c672d43a7c",
@@ -77,7 +77,7 @@
     "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
     "m4a1": "d8cc1dd5d2824cfc751b0df6fe5d3b239d3fca03632d6c141df08e331c43305e",
     "m60": "12f3e7d8eedb9f8975e71ef0095b08d7643b3d16cf1ec343d8dbb8f1a408c91d",
-    "m87a1": "811da9cdb07cb51f17bbdc85f458b605020321f72faebc45355573386c833568",
+    "m87a1": "61e8447e45dc03b78e986cf60ce56000fca1119440a2438bfff13013d3706cc1",
     "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
     "nvo228e": "b370c981e8d580db6360668acc844e8fe5f642a5b6966594c501b5ae9d6aa392",
     "p18": "d2c813043166745bf1ad85735896784642f2385db7ab7b98ab1f675b536ff9cc",
@@ -1941,7 +1941,7 @@
       "vcr2",
       "vz61"
     ],
-    "changedCaseKeysDigest": "ea7bf71fb613366963dd815f744ad58de8067bd23f0357d33270860d173a46d3",
+    "changedCaseKeysDigest": "c8d7193bf0207ed944975ead50aaf1b29616843c6a8b988d29936b689cf2082a",
     "changedByWeapon": {
       "ak205": 960,
       "ak4d": 300,
@@ -3054,7 +3054,7 @@
     "digest": {
       "algorithm": "SHA-256",
       "format": "canonical-row-v1",
-      "value": "b94f974e757b1d0ecc5fab1c904a9cfe24b423aa84b19dc42dc08dca2ce2d42c"
+      "value": "0857223479cb960dafdc2099079f100370685df4d8f5712dce807364d0133761"
     },
     "perWeaponDigest": {
       "ak205": "429316af0dad59ac8caf500fe91656da310b9fc084414934dc8319937c58bba4",
@@ -3093,7 +3093,7 @@
       "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
       "m4a1": "f2e481382c00c74f198be94198b2a10015b3fff02f8a7900d5a78fa2042c0fae",
       "m60": "bc3287c5bd020b84f8b09216edb8d903564a2053c83d0e06cc80b8c0f34856f7",
-      "m87a1": "ff4295602897c72f2fc0560939f19fc87ee857102bbfd3666c4cd196cf90bb96",
+      "m87a1": "cb606f53bfb50b0f9a7e9863eedbeacfd668714afd333831989da2c8aae369ec",
       "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
       "nvo228e": "6b23f639503af0aad01c0fd32de33d0cca36b717e2a028cb03fb715395824844",
       "p18": "d2c813043166745bf1ad85735896784642f2385db7ab7b98ab1f675b536ff9cc",
@@ -22588,12 +22588,12 @@
       }
     },
     {
-      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_00",
+      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot",
       "weaponId": "m87a1",
       "magazineId": "5_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "buckshot_00",
+      "ammoId": "buckshot",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,
@@ -22621,12 +22621,12 @@
       }
     },
     {
-      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_m87a1",
+      "caseKey": "m87a1/5_fast/6h64_vert/none/buckshot_00",
       "weaponId": "m87a1",
       "magazineId": "5_fast",
       "gripId": "6h64_vert",
       "ergoId": "none",
-      "ammoId": "buckshot_m87a1",
+      "ammoId": "buckshot_00",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 2,
