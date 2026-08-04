@@ -1628,7 +1628,7 @@
       "example": {
         "weapon": "18.5KS-K",
         "slot": "Ammo",
-        "attachment": "Buckshot",
+        "attachment": "#01 Buckshot",
         "observed": 66,
         "modalBaseline": 50,
         "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/38_18.5KS-K_Ammo_Standard.png"
