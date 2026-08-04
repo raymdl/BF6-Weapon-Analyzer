@@ -240,6 +240,7 @@ setAttachmentContext({
   DRAW_TIME_AXIS,
   RELOAD_SPEED_LADDER: _balance.RELOAD_SPEED_LADDER,
   VELOCITY_LADDER: _balance.VELOCITY_LADDER,
+  HEALTH_REGEN_DELAY_S: _balance.HEALTH_REGEN_DELAY_S,
 });
 
 // ── DAMAGE HELPERS ────────────────────────────────────────────────────────────
@@ -2043,6 +2044,14 @@ function renderAttachmentStats(loadouts) {
       const tip = escAttr('Visual recoil from selected attachments. Reduced is better; increased is worse.');
       const label = `Visual Recoil${hasEstimatedEffect(['visualRecoil'], selectedAttachments) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Decreased' : 'Increased'}</div></div>`);
+    }
+    const regenDelayDelta = (cur._healthRegenDelayS ?? 0) - (base._healthRegenDelayS ?? 0);
+    if (regenDelayDelta !== 0) {
+      // Shown from the victim's side: frangible pushes the delay 5s → 9s, which
+      // reads as the enemy losing 4s of regeneration.
+      const tip = escAttr('Delay before a hit enemy begins regenerating health. Frangible rounds hold them at 9s instead of the standard 5s.');
+      const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayS'], selectedAttachments) ? '*' : ''}`;
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:var(--red)">${signed(-regenDelayDelta, 's', 0)}</div></div>`);
     }
     if (cur._laserVisible != null) {
       const visible = cur._laserVisible;

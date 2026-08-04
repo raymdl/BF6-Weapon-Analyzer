@@ -1,6 +1,7 @@
 {
   "RELOAD_SPEED_LADDER": 1.13,
   "VELOCITY_LADDER": 0.8,
+  "HEALTH_REGEN_DELAY_S": 5,
   "RECOIL_MULT": {
     "m433": 0.945,
     "b36a4": 0.94,

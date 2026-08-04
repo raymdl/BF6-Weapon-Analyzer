@@ -20,7 +20,7 @@ import { resolveHitMultipliers } from './damage.js';
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
  *     ADS_SPD_TIERS, SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
  *     DRAW_TIME_AXIS,
- *     VELOCITY_LADDER,
+ *     VELOCITY_LADDER, HEALTH_REGEN_DELAY_S,
  *   });
  *
  *   // Then call freely:
@@ -42,6 +42,7 @@ let _ctx = {
   DRAW_TIME_AXIS: null,
   RELOAD_SPEED_LADDER: 1.13,
   VELOCITY_LADDER: 0.8,
+  HEALTH_REGEN_DELAY_S: 5,
 };
 
 // JavaScript cannot represent 0.8 exactly. Correct only a product that is
@@ -478,6 +479,11 @@ export function applyAttachments(w, atts) {
     suppressedMinimapSpot ?? ammoType.minimapSpot ?? Infinity,
   );
 
+  // ── Enemy health regeneration delay ───────────────────────────────────────────
+  // Time before a hit enemy starts regenerating. The global baseline is the
+  // 5s carried in balance_tables; frangible rounds hold the victim at 9s.
+  const healthRegenDelayS = ammoType.healthRegenDelayS ?? _ctx.HEALTH_REGEN_DELAY_S;
+
   // ── Ammo display ──────────────────────────────────────────────────────────────
   const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
   const collateralMult = COLLATERAL_MULT_OVERRIDE[w.id]?.[ammoType.id]
@@ -577,6 +583,7 @@ export function applyAttachments(w, atts) {
     _limbClass:              limbClass,
     _collateralMult:         collateralMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
+    _healthRegenDelayS:      healthRegenDelayS,
     rpm:         fireMode === 'burst' && burstRpm ? burstRpm : w.rpm,
     fireMode,
     burstRounds,
