@@ -85,6 +85,26 @@ function defaultAtts(weapon) {
   return atts;
 }
 
+/**
+ * Every subsonic ammo subtype in the taxonomy. A new subsonic load added to
+ * ammo.json must appear here, which in turn forces the coverage test below to
+ * account for it rather than passing over it in silence.
+ */
+const SUBSONIC_AMMO_IDS = new Set(['subsonic', 'subsonic_hp', 'subsonic_pen']);
+
+/** Every (weapon, ammoId) pair where the weapon offers that subsonic load. */
+function offeredSubsonicPairs() {
+  const pairs = [];
+  for (const [weaponId, entry] of Object.entries(WEAPON_AMMO)) {
+    const weapon = weaponById.get(weaponId);
+    if (!weapon) continue;
+    for (const ammoId of Object.keys(entry?.ammo ?? {})) {
+      if (SUBSONIC_AMMO_IDS.has(ammoId)) pairs.push({ weapon, ammoId });
+    }
+  }
+  return pairs;
+}
+
 /** Every (weapon, ammoId) pair that carries a velocity treatment. */
 function treatedPairs() {
   const pairs = [];
@@ -130,6 +150,39 @@ test('the live entrypoints hand WEAPON_AMMO to the attachment resolver', () => {
 test('the corpus still carries subsonic velocity treatments to assert against', () => {
   const pairs = treatedPairs();
   assert.ok(pairs.length >= 20, `expected the treated pairs to survive, saw ${pairs.length}`);
+});
+
+test('every subsonic load a weapon offers carries a velocity treatment', () => {
+  // The behavioural tests below enumerate the treatments table, so a weapon
+  // that gains a subsonic option without a treatment would slip past them and
+  // render at its supersonic velocity. Drive the check off the offered ammo.
+  const treated = new Set(treatedPairs().map(({ weapon, ammoId }) => `${weapon.id}/${ammoId}`));
+  const missing = offeredSubsonicPairs()
+    .map(({ weapon, ammoId }) => `${weapon.id}/${ammoId}`)
+    .filter(key => !treated.has(key));
+  assert.deepEqual(missing, [], `subsonic loads offered without a velocity treatment: ${missing.join(', ')}`);
+});
+
+test('no velocity treatment is stranded on an ammo type the weapon cannot equip', () => {
+  const offered = new Set(offeredSubsonicPairs().map(({ weapon, ammoId }) => `${weapon.id}/${ammoId}`));
+  const stranded = treatedPairs()
+    .map(({ weapon, ammoId }) => `${weapon.id}/${ammoId}`)
+    .filter(key => !offered.has(key));
+  assert.deepEqual(stranded, [], `velocity treatments for unequippable ammo: ${stranded.join(', ')}`);
+});
+
+test('all three subsonic subtypes and all three treatment kinds stay exercised', () => {
+  const pairs = treatedPairs();
+  assert.deepEqual(
+    new Set(pairs.map(pair => pair.ammoId)),
+    SUBSONIC_AMMO_IDS,
+    'each subsonic subtype must have at least one treated weapon',
+  );
+  assert.deepEqual(
+    new Set(pairs.map(pair => pair.treatment.kind)),
+    new Set(['subsonic-tier', 'subsonic-absolute', 'subsonic-tungsten-absolute']),
+    'each treatment kind must have at least one treated weapon',
+  );
 });
 
 test('every treated ammo type resolves below its standard-load velocity', () => {
