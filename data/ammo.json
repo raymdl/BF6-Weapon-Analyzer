@@ -2,7 +2,7 @@
   "AMMO": [
     {
       "id": "standard",
-      "name": "Standard",
+      "name": "FMJ",
       "hsMult": null,
       "collateralMult": {
         "Assault Rifle": 0.75,
@@ -16,7 +16,7 @@
     },
     {
       "id": "penetration",
-      "name": "Penetration",
+      "name": "Tungsten Core",
       "hsMult": null,
       "adsRecoilTierMod": -1,
       "collateralMult": {
@@ -31,7 +31,7 @@
     },
     {
       "id": "lightweight",
-      "name": "Lightweight",
+      "name": "Polymer Case",
       "hsMult": null,
       "adsMoveSpeedTierShift": -1,
       "collateralMult": {
@@ -44,7 +44,7 @@
     },
     {
       "id": "long_range",
-      "name": "Long-Range",
+      "name": "Match Grade",
       "hsMult": null,
       "noEffect": true,
       "collateralMult": {
@@ -86,7 +86,7 @@
     },
     {
       "id": "synthetic",
-      "name": "Synthetic",
+      "name": "Synthetic Tip",
       "hsMult": 1.75,
       "collateralMult": {
         "Assault Rifle": 0.67,
@@ -141,7 +141,7 @@
     },
     {
       "id": "subsonic_hp",
-      "name": "Sub HP",
+      "name": "Subsonic HP",
       "hsMult": "hp",
       "collateralMult": {
         "Assault Rifle": 0.67,
@@ -158,7 +158,7 @@
     },
     {
       "id": "subsonic_pen",
-      "name": "Sub Pen",
+      "name": "Subsonic Tungsten",
       "hsMult": null,
       "adsRecoilTierMod": -1,
       "collateralMult": {

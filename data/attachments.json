@@ -137,7 +137,7 @@
     },
     {
       "id": "std_supp",
-      "name": "Std. Suppressor",
+      "name": "Standard Suppressor",
       "suppressor": true,
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
@@ -829,13 +829,13 @@
     },
     {
       "id": "mag_flare",
-      "name": "Mag Flare",
+      "name": "Magwell Flare",
       "pts": 10,
       "noEffect": true
     },
     {
       "id": "mag_catch",
-      "name": "Mag Catch",
+      "name": "Improved Mag Catch",
       "pts": 5,
       "reloadSpeedMult": 1.063
     },
@@ -847,19 +847,19 @@
     },
     {
       "id": "ads_bolt",
-      "name": "ADS Bolt",
+      "name": "DLC Bolt",
       "pts": 30,
       "noEffect": true
     },
     {
       "id": "buffer",
-      "name": "Buffer",
+      "name": "Aftermarket Buffer",
       "pts": 5,
       "visualRecoil": -1
     },
     {
       "id": "full_auto",
-      "name": "Full Auto",
+      "name": "A3 Receiver",
       "pts": 25,
       "adsRecoilTierMod": -1,
       "setsFireModeAuto": true
@@ -894,7 +894,7 @@
     },
     {
       "id": "grtbc_burst_mode",
-      "name": "Burst Mode",
+      "name": "Burst Training",
       "pts": 10,
       "adsRecoilTierMod": 1,
       "adsRecoilVariationTierMod": 3,

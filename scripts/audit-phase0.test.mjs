@@ -387,7 +387,7 @@ test('scalar reload characterization covers all weapons, magazine/ergonomic comb
   }
   assert.deepEqual(RELOAD_SCREENSHOT_EXCEPTIONS.get('PP-19/20Rnd Fast Mag'), {
     observed: 2.467,
-    reason: 'direct screenshot reads base reload with no reload arrow',
+    reason: 'Known in-game bug, not a modelling decision: the 20Rnd Fast Mag reads the base reload with no reload arrow. Reported to EA at https://forums.ea.com/idea/battlefield-6-bug-reports-en/incorrect-stats-for-pp-19s-20-round-fast-magazine/13472218 - do not use this card as evidence when deriving Fast-magazine rules.',
   });
 
   const ks18k = inputs.weapons.find(weapon => weapon.id === 'ks18k');

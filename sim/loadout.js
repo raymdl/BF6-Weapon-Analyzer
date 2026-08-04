@@ -261,7 +261,7 @@ export function renderAttachmentSection({
     appendSelectRow(container, {
       label: 'Ammo',
       value: 'standard',
-      options: [{ id: 'standard', text: 'Standard' }],
+      options: [{ id: 'standard', text: 'FMJ' }],
       onChange: () => {},
       disabled: true,
     });
