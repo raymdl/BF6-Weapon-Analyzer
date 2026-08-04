@@ -389,16 +389,6 @@ export function applyAttachments(w, atts) {
   const sightSway  = atts.sight === 'iron' ? -1 : 0;
   const weaponSway = (muz.sway ?? 0) + sightSway;
 
-  // ── Moving ADS spread ─────────────────────────────────────────────────────────
-  const movingAdsSpreadTierMod = (grp.movingAdsSpreadTierMod ?? 0)
-    + (las.movingAdsSpreadTierMod ?? 0)
-    + (bar.movingAdsSpreadTierMod ?? 0);
-  const movingAdsSpreadTier    = Math.min(
-    Math.max(DEFAULT_MOV_TIER - movingAdsSpreadTierMod, 0),
-    MOVING_ACC_TIERS.length - 1,
-  );
-  const movingAdsMinSpreadDeg  = MOVING_ACC_TIERS[movingAdsSpreadTier];
-
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
   // Suppressors push up 1 tier (worse accuracy), short barrel drops 1 (better)
   const hipSpreadTierMod = (muz.hipSpreadTierMod ?? 0)
@@ -447,6 +437,20 @@ export function applyAttachments(w, atts) {
   const magSprintRecoveryTierShift = magData?.sprintRecoveryTierShift ?? 0;
   const magAdsMoveSpeedTierShift  = magData?.adsMoveSpeedTierShift  ?? 0;
   const gripSprintRecoveryTierShift = grp.sprintRecoveryTierShift ?? 0;
+
+  // ── Moving ADS spread ─────────────────────────────────────────────────────────
+  // High-capacity belt boxes name this axis in their descriptions, so magazines
+  // contribute alongside the grip, laser and barrel.
+  const movingAdsSpreadTierMod = (grp.movingAdsSpreadTierMod ?? 0)
+    + (las.movingAdsSpreadTierMod ?? 0)
+    + (bar.movingAdsSpreadTierMod ?? 0)
+    + (magData?.movingAdsSpreadTierMod ?? 0);
+  const movingAdsSpreadTier    = Math.min(
+    Math.max(DEFAULT_MOV_TIER - movingAdsSpreadTierMod, 0),
+    MOVING_ACC_TIERS.length - 1,
+  );
+  const movingAdsMinSpreadDeg  = MOVING_ACC_TIERS[movingAdsSpreadTier];
+
   const magMag    = magData?.mag   ?? null;
   const reloadResolution = resolveReloadTiming({
     weaponTacRld: w.tacRld,

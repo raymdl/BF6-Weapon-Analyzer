@@ -3,7 +3,7 @@
   "units": {
     "tacRld": "integer milliseconds; null means the legacy field was absent"
   },
-  "baselineDigest": "21487fb575d95450bbb51dc39c6d5021ef6c716b1216a8c13f07bb82f46a6b8a",
+  "baselineDigest": "2868d07f881d06c07d900228582aeb60d0b3aec784d148cff80ea11450588eec",
   "magazines": {
     "ks18k": {
       "4_rnd": {

@@ -100,9 +100,10 @@ test('Phase 0 fixtures are complete, full-roster, and path-portable', () => {
 
 test('sweep pins inventoried model-tier and name-effect warnings and rejects other warnings', () => {
   // Phase 4 provenance: model-tier-mismatch dropped 68 -> 8 from screenshot-backed
-  // magazine tier corrections; the 8 remaining rows are deferred for manual review.
-  // Name-effect consistency/coverage and modelUnmappedWeapons were stale at HEAD;
-  // those pins now record observed reality and were not changed by this work.
+  // magazine tier corrections, then 8 -> 0 once the deferred identity cases were
+  // settled by manual review. Name-effect consistency/coverage and
+  // modelUnmappedWeapons were stale at HEAD; those pins now record observed
+  // reality and were not changed by this work.
   const report = runSweep({ root: DEFAULT_ROOT });
   const inventoryKeys = loadModelTierMismatchInventory(DEFAULT_ROOT);
   const nameEffectInventoryKeys = loadNameEffectConsistencyInventory(DEFAULT_ROOT);
@@ -116,7 +117,7 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   const nameEffectCoverageWarnings = report.findings.filter(finding => (
     finding.severity === 'warn' && finding.check === 'name-effect-coverage'
   ));
-  assert.equal(modelWarnings.length, 8);
+  assert.equal(modelWarnings.length, 0);
   assert.equal(nameEffectWarnings.length, 15);
   assert.equal(nameEffectCoverageWarnings.length, 4);
   assert.deepEqual(new Set(modelWarnings.map(modelTierMismatchKey)), inventoryKeys);
@@ -137,16 +138,21 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
     missing: [],
     duplicates: [],
   });
-  assert.equal(isAllowedModelTierWarning(modelWarnings[0], inventoryKeys), true);
-  assert.equal(isAllowedModelTierWarning({ ...modelWarnings[0], check: 'other-warning' }, inventoryKeys), false);
+  // The inventory is empty, so every model-tier warning is now unexpected.
+  assert.equal(isAllowedModelTierWarning({
+    severity: 'warn',
+    check: 'model-tier-mismatch',
+    weapon: 'SVDM',
+    attachment: 'Magazine/10Rnd Magazine',
+    detail: 'adsTimeMs predicted 300, observed 250',
+  }, inventoryKeys), false);
   assert.equal(isAllowedNameEffectWarning(nameEffectWarnings[0], nameEffectInventoryKeys), true);
   assert.equal(isAllowedNameEffectWarning({ ...nameEffectWarnings[0], check: 'other-warning' }, nameEffectInventoryKeys), false);
   assert.equal(isAllowedNameEffectCoverageWarning(nameEffectCoverageWarnings[0], nameEffectCoverageInventoryKeys), true);
   assert.equal(isAllowedNameEffectCoverageWarning({ ...nameEffectCoverageWarnings[0], check: 'other-warning' }, nameEffectCoverageInventoryKeys), false);
-  assert.deepEqual(report.severityCounts, { error: 0, warn: 27, info: 28 });
+  assert.deepEqual(report.severityCounts, { error: 0, warn: 19, info: 28 });
   assert.deepEqual(report.counts, {
     'fire-mode-ergo': 1,
-    'model-tier-mismatch': 8,
     'name-effect-consistency': 15,
     'name-effect-coverage': 4,
     'subsonic-treatment': 27,

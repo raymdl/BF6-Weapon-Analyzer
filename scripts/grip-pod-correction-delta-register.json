@@ -19,10 +19,11 @@
       "id": "qd_grip_pod",
       "displayName": "QD Grip Pod",
       "variant": "standard",
-      "directCardCorrection": "The standard card is a recoil-reduction Grip Pod with ADS-time improvement and a moving-ADS accuracy penalty; its direct paired cards support passive recoil tier 2.",
+      "directCardCorrection": "The standard card is a recoil-reduction Grip Pod with ADS-time improvement and no moving-ADS accuracy effect and no ADS-time effect; its direct paired cards support passive recoil tier 2. Its captured ADS time equals the PTT pod on 32/32 standard weapons and the Classic pod on only 4/32, and the five captures that do improve ADS time are the snipers, which use qd_grip_pod_sr. All 27 captured QD descriptions omit the moving-ADS clause that the PTT and Classic pods carry, so the axis stays neutral.",
       "changedCatalogFields": [
         { "field": "adsRecoilTierMod", "before": 0, "after": 2, "playerVisibleFields": ["_adsRecoilReductionPct", "recoilV"] },
-        { "field": "movingAdsSpreadTierMod", "before": 1, "after": -1, "playerVisibleFields": ["_movingAdsSpreadTierMod", "_movingAdsMinSpreadDeg"] },
+        { "field": "movingAdsSpreadTierMod", "before": 1, "after": 0, "playerVisibleFields": ["_movingAdsSpreadTierMod", "_movingAdsMinSpreadDeg"] },
+        { "field": "adsTimeTierMod", "before": 1, "after": 0, "playerVisibleFields": ["_adsTimeTierMod", "_adsTimeMs"] },
         { "field": "pts", "before": 10, "after": 30, "playerVisibleFields": [] }
       ]
     },

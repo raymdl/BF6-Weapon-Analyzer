@@ -86,7 +86,8 @@ const expectedApprovedCatalogDiffs = {
   ],
   qd_grip_pod: [
     { field: 'adsRecoilTierMod', before: 0, after: 2, playerVisibleFields: ['_adsRecoilReductionPct', 'recoilV'] },
-    { field: 'movingAdsSpreadTierMod', before: 1, after: -1, playerVisibleFields: ['_movingAdsSpreadTierMod', '_movingAdsMinSpreadDeg'] },
+    { field: 'movingAdsSpreadTierMod', before: 1, after: 0, playerVisibleFields: ['_movingAdsSpreadTierMod', '_movingAdsMinSpreadDeg'] },
+    { field: 'adsTimeTierMod', before: 1, after: 0, playerVisibleFields: ['_adsTimeTierMod', '_adsTimeMs'] },
     { field: 'pts', before: 10, after: 30, playerVisibleFields: [] },
   ],
   classic_grip_pod: [
@@ -232,7 +233,7 @@ test('sniper Grip Pods and bipods stay at static recoil tier 0', () => {
 test('catalog Grip Pod fields use resolver signs and amended captured costs', () => {
   const expected = {
     ptt_grip_pod: { recoil: 2, moving: -1, adsTime: 0, pts: 20 },
-    qd_grip_pod: { recoil: 2, moving: -1, adsTime: 1, pts: 30 },
+    qd_grip_pod: { recoil: 2, moving: 0, adsTime: 0, pts: 30 },
     classic_grip_pod: { recoil: 2, moving: -1, adsTime: 1, pts: 30 },
     qd_grip_pod_sr: { recoil: 0, moving: -1, adsTime: 1, pts: 10 },
     classic_grip_pod_sr: { recoil: 0, moving: 0, adsTime: 1, pts: 20 },

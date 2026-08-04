@@ -656,8 +656,8 @@
       "id": "qd_grip_pod",
       "name": "QD Grip Pod",
       "adsRecoilTierMod": 2,
-      "movingAdsSpreadTierMod": -1,
-      "adsTimeTierMod": 1,
+      "movingAdsSpreadTierMod": 0,
+      "adsTimeTierMod": 0,
       "pts": 30
     },
     {
@@ -2225,7 +2225,12 @@
         "ribbed_stubby",
         "canted_stubby",
         "stipp_stubby",
-        "cmpct_handstop"
+        "cmpct_handstop",
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "classic_vert"
       ],
       "laser": [
         "50mw_violet",
@@ -3013,8 +3018,9 @@
         "full_angled",
         "slim_handstop",
         "bipod_sr",
-        "qd_grip_pod_sr",
-        "classic_grip_pod_sr"
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -3066,8 +3072,9 @@
         "full_angled",
         "slim_handstop",
         "bipod_sr",
-        "qd_grip_pod_sr",
-        "classic_grip_pod_sr"
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
       ],
       "laser": [
         "50mw_violet",
@@ -3926,7 +3933,8 @@
       "avail": [
         "mag_catch",
         "match_trigger",
-        "buffer"
+        "buffer",
+        "burst_training"
       ]
     },
     "sor300sc": {
@@ -3995,7 +4003,8 @@
       "avail": [
         "mag_flare",
         "match_trigger",
-        "buffer"
+        "buffer",
+        "rail_cover"
       ]
     },
     "m60": {
@@ -4574,8 +4583,8 @@
       "drawTimeOffset": 8
     },
     "db12": {
-      "defAds": 2,
-      "defSpr": 2,
+      "defAds": 3,
+      "defSpr": 3,
       "defAms": 4,
       "def": "7_rnd",
       "mags": {
@@ -4590,9 +4599,9 @@
         }
       },
       "baseSprintRecoveryTier": 5,
-      "weaponSprintRecoveryTierShift": -2,
+      "weaponSprintRecoveryTierShift": -1,
       "sprintRecoveryTierTable": "primary",
-      "drawTimeTier": 2,
+      "drawTimeTier": 3,
       "drawTimeGroup": "db12",
       "drawTimeOffset": 9
     },
@@ -4925,7 +4934,7 @@
           "mag": 60,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 1,
+          "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 1
         },
         "100_rnd": {
@@ -5017,6 +5026,7 @@
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
+          "movingAdsSpreadTierMod": -1,
           "reloadSpeedTier": 0
         }
       },
@@ -5326,6 +5336,7 @@
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
+          "movingAdsSpreadTierMod": -1,
           "reloadSpeedTier": 0
         }
       },
@@ -5399,6 +5410,7 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
+          "movingAdsSpreadTierMod": 1,
           "tacRldOverrideMs": 7100
         },
         "100_rnd": {
@@ -5809,7 +5821,7 @@
           "name": "6 Rnd",
           "pts": 5,
           "mag": 6,
-          "adsTimeTierShift": -1,
+          "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -1,
           "reloadSpeedTier": 0
@@ -6572,7 +6584,7 @@
           "name": "10 Fast",
           "pts": 10,
           "mag": 10,
-          "adsTimeTierShift": -1,
+          "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 1
@@ -7324,7 +7336,7 @@
     "m357trait": {
       "defAds": 2,
       "defSpr": 2,
-      "defAms": 4,
+      "defAms": 2,
       "def": "8_rnd",
       "mags": {
         "8_rnd": {
