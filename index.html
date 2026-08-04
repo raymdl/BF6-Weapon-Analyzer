@@ -273,12 +273,35 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-stats-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:0}
 .rc-stats-head .ptitle{margin-bottom:0}
 .rc-stats-context{font-size:.62rem;color:#7d8c8c;letter-spacing:.03em;white-space:nowrap}
+/* Same strip as the plot's view tabs, but selected reads as neutral light
+   rather than gold: gold and blue already stand for weapon 1 and weapon 2
+   throughout this panel, and these tabs pick a readout, not a weapon. */
+/* The plot's strip gets its rounded top from the viewport box clipping it;
+   this one is bare, so it rounds and clips itself to match. */
+/* Mirrors .rc-viewport: one continuous box holding the tab strip and the
+   stats below it, on the panel's own grey so it reads as part of the panel
+   rather than a well cut into it. */
+.rc-stats-box{border:1px solid var(--border);border-radius:6px;background:var(--bg2);overflow:hidden;min-width:0}
+.rc-stats-body{display:flex;flex-direction:column;gap:9px;padding:10px}
+/* The box supplies the column's edge, so the divider rule would double up. */
+.rc-stats.is-boxed{border-left:0;padding-left:0}
+/* The strip is recessed so unselected tabs sit back, and the selected tab
+   carries the body's own grey so the two surfaces join. Selected stays
+   neutral: gold and blue already mean weapon 1 and weapon 2. */
+.rc-stats-tabstrip{background:#101414}
+.rc-stats-tabstrip .rc-tab.on{color:var(--text);background:var(--bg2);border-bottom-color:#8fa3a3}
+/* Impact stats need a projected target, so that tab greys out in angle view. */
+.rc-stats-tabstrip .rc-tab[disabled]{color:#465050;cursor:default}
+.rc-stats-tabstrip .rc-tab[disabled]:hover{color:#465050;background:transparent}
 /* Separates the two stacked stat blocks in the pop-out. */
 .rc-stats-split{flex-shrink:0;border-top:1px solid var(--border);margin:4px 0 2px}
 @keyframes rcViewSwap{from{opacity:.25;transform:translateY(3px)}to{opacity:1;transform:none}}
 .rc-view-swap{animation:rcViewSwap .19s ease-out}
 @media (prefers-reduced-motion:reduce){.rc-view-swap{animation:none}}
-.target-impact-card{border:1px solid #2b3737;border-radius:5px;background:#101515;padding:8px 10px}
+.target-impact-card,.rc-stats-card{border:1px solid #2b3737;border-radius:5px;background:#101515;padding:8px 10px}
+/* The rows used to be spaced by the column's own gap; inside a card they
+   need their own. */
+.rc-stats-card{display:flex;flex-direction:column;gap:9px}
 .target-impact-weapon{font-size:.78rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .target-impact-weapon.c1{color:var(--accent)}
 .target-impact-weapon.c2{color:var(--accent2)}

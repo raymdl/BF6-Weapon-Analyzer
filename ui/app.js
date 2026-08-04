@@ -174,6 +174,9 @@ const state = {
   recoil: {
     aim: 'ads', stance: 'stand',
     view: 'angle', distance: 20, targetAim: 'chest', customAim: { x: 0, y: 0 }, zeroDistance: 100,
+    // The target view has room for one stats block at a time, so it swaps
+    // between the impact breakdown and the recoil/spread readout.
+    targetStatsTab: 'impact',
     layers: { scatter: true, spray: true, path: false, spread: false, cone: false },
     // Scatter is far too noisy over a soldier, so each view keeps its own
     // overlay choices and its own sensible starting point.
@@ -2055,14 +2058,35 @@ function renderAttachmentStats(loadouts) {
   el.innerHTML = html;
 }
 
-function targetImpactStatsHtml(entries) {
+/**
+ * Mirrors the plot's Angle Plot / Soldier Target tab strip so the stats column
+ * swaps the same way the chart does. Impact stats only exist once the pattern
+ * is projected onto a soldier, so that tab greys out in the angle view. The
+ * pop-out stacks both blocks, so it has nothing to swap and gets no strip.
+ */
+function statsTabsHtml(active, impactEnabled) {
+  const tab = (key, label, disabled, title) => {
+    const on = active === key;
+    return `<button class="rc-tab${on ? ' on' : ''}" type="button" role="tab" aria-selected="${on}"`
+      + `${disabled ? ' disabled aria-disabled="true"' : ''} data-stats-tab="${key}" title="${title}">${label}</button>`;
+  };
+  return `<div class="rc-tabstrip rc-stats-tabstrip" role="tablist" aria-label="Stats view">`
+    + tab('recoil', 'Recoil / Spread Stats', false, 'Show the recoil and spread stats for this loadout')
+    + tab('impact', 'Target Impact Stats', !impactEnabled,
+        impactEnabled ? 'Show the per-body-part damage breakdown' : 'Switch the plot to Soldier Target to see impact stats')
+    + `</div>`;
+}
+
+function targetImpactStatsHtml(entries, showHeading = false) {
   const colors = ['c1', 'c2'];
   const fmtDamage = value => value == null ? '—' : Math.min(100, value).toFixed(1);
   const fmtMult = value => value == null ? '' : `<span class="target-zone-mult">${value.toFixed(2)}×</span>`;
   // 100 health is a kill; 75 leaves the target one body shot from dying.
   const damageClass = value => value == null ? '' : value >= 100 ? ' class="dmg-kill"' : value >= 75 ? ' class="dmg-crit"' : '';
-  const aimLabel = state.recoil.targetAim === 'custom' ? 'custom aim' : `${state.recoil.targetAim} aim`;
-  let html = `<div class="rc-stats-head"><div class="ptitle">Target Impact Stats</div><div class="rc-stats-context">${state.recoil.distance} m · ${aimLabel}</div></div>`;
+  // The tab strip names the block, so the heading is only needed where the
+  // strip is absent. Range and aim point already live on the distance slider
+  // and the aim read-out, so no context line is repeated here.
+  let html = showHeading ? '<div class="rc-stats-head"><div class="ptitle">Target Impact Stats</div></div>' : '';
 
   entries.forEach((entry, index) => {
     const summary = summarizeTargetImpacts(entry.weapon, state.recoil.distance, entry.zones);
@@ -2271,9 +2295,19 @@ function renderRecoil() {
   // The pop-out has room for both tables, so it stacks recoil/spread over the
   // impact breakdown instead of swapping one for the other.
   const stacksStats = document.body.classList.contains('is-popout');
-  const targetHtml = axis?.isTargetView ? targetImpactStatsHtml(axis.targetHits) : '';
-  if (targetHtml && !stacksStats) {
-    document.getElementById('rcStats').innerHTML = targetHtml;
+  const isTargetView = !!axis?.isTargetView;
+  // Impact stats need a projected target, so the angle view always falls back
+  // to the recoil block no matter which tab was last picked.
+  const activeStatsTab = isTargetView && state.recoil.targetStatsTab === 'impact' ? 'impact' : 'recoil';
+  const tabsHtml = stacksStats ? '' : statsTabsHtml(activeStatsTab, isTargetView);
+  const targetHtml = isTargetView ? targetImpactStatsHtml(axis.targetHits, stacksStats) : '';
+  // The strip and the stats it labels share one bordered box, the same way the
+  // plot's tabs and canvas do, so the selected tab sits on its own content.
+  const statsEl = document.getElementById('rcStats');
+  const boxed = body => tabsHtml ? `<div class="rc-stats-box">${tabsHtml}<div class="rc-stats-body">${body}</div></div>` : body;
+  statsEl.classList.toggle('is-boxed', !!tabsHtml);
+  if (targetHtml && !stacksStats && activeStatsTab === 'impact') {
+    statsEl.innerHTML = boxed(targetHtml);
     return;
   }
 
@@ -2452,10 +2486,13 @@ function renderRecoil() {
     })(),
   ];
 
-  let html = `<div class="rc-stats-head" style="margin-bottom:9px"><div class="ptitle">Recoil / Spread Stats</div><div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : 'Standing'}</div></div>`;
+  // With the strip present it already names the block, and the aim/stance it
+  // describes is set by the controls right above it.
+  const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : 'Standing'}</div>`;
+  let rowsHtml = '';
   stats.forEach(s => {
     if (s.val1 === null && s.val2 === null) return;
-    html += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
+    rowsHtml += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
     const renderBar = (start, end, col, tick = null, ghost = null) => {
       if (s.centeredRange) {
         const a = Math.max(-1, Math.min(1, start ?? 0)), b = Math.max(-1, Math.min(1, end ?? 0));
@@ -2480,14 +2517,19 @@ function renderRecoil() {
       }
       return `<div class="rc-bar"><div class="rc-fill" style="width:${Math.min(end * 100, 100).toFixed(1)}%;background:${col}"></div></div>`;
     };
-    if (s.val1 != null) html += renderBar(s.barStart1, s.bar1, s.col1, s.tick1 ?? null, s.layeredData1 ?? null);
-    if (s.val2 != null) html += renderBar(s.barStart2, s.bar2, s.col2, s.tick2 ?? null, s.layeredData2 ?? null);
-    if (s.tooltip) html += s.tooltip;
-    html += '</div>';
+    if (s.val1 != null) rowsHtml += renderBar(s.barStart1, s.bar1, s.col1, s.tick1 ?? null, s.layeredData1 ?? null);
+    if (s.val2 != null) rowsHtml += renderBar(s.barStart2, s.bar2, s.col2, s.tick2 ?? null, s.layeredData2 ?? null);
+    if (s.tooltip) rowsHtml += s.tooltip;
+    rowsHtml += '</div>';
   });
-  document.getElementById('rcStats').innerHTML = targetHtml
+  // Inside the box the rows get a card of their own, matching the sub-panel
+  // each weapon's impact breakdown sits in.
+  const html = tabsHtml
+    ? `<section class="rc-stats-card">${rowsHtml}</section>`
+    : `<div class="rc-stats-head" style="margin-bottom:9px"><div class="ptitle">Recoil / Spread Stats</div>${rcContext}</div>${rowsHtml}`;
+  statsEl.innerHTML = stacksStats && targetHtml
     ? `${html}<div class="rc-stats-split"></div>${targetHtml}`
-    : html;
+    : boxed(html);
 }
 
 // ── LOADOUT OVERLAY ───────────────────────────────────────────────────────────
@@ -2646,6 +2688,14 @@ function bindEvents() {
   document.getElementById('rcStanceMove').addEventListener('click', () => setRecoilStance('move'));
   document.getElementById('rcViewAngle').addEventListener('click', () => setRecoilView('angle'));
   document.getElementById('rcViewTarget').addEventListener('click', () => setRecoilView('target'));
+  // The stats panel is rebuilt on every render, so the toggle is delegated.
+  document.getElementById('rcStats').addEventListener('click', e => {
+    const btn = e.target.closest('[data-stats-tab]');
+    const tab = btn && !btn.disabled ? btn.dataset.statsTab : null;
+    if (!tab || tab === state.recoil.targetStatsTab) return;
+    state.recoil.targetStatsTab = tab;
+    renderRecoil();
+  });
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
   document.getElementById('rcZeroCycleBtn')?.addEventListener('click', cycleTargetZero);
