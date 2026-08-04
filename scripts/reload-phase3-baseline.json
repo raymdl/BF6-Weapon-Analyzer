@@ -16,17 +16,17 @@
   "counts": {
     "weapons": 61,
     "magazineEntries": 278,
-    "gripChoices": 853,
-    "ergoChoices": 183,
-    "ammoChoices": 279,
-    "cases": 77609,
-    "primaryCases": 77375,
-    "sidearmCases": 234
+    "gripChoices": 860,
+    "ergoChoices": 185,
+    "ammoChoices": 287,
+    "cases": 81139,
+    "primaryCases": 80899,
+    "sidearmCases": 240
   },
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-reload-row-v1",
-    "value": "13e15487aef3c6682998374e1b14237dcc26b2fcc34b6f0598cd106f989df069"
+    "value": "8241a70febd2b381225d9f76e90aa3465d97e3639041a72d823b5cf22e8e62e4"
   },
   "perWeaponDigest": {
     "ak205": "f5d1f23d261c64b192354c219c4173fca13be68d6b07c3e5a28755f36310f7b9",
@@ -35,7 +35,7 @@
     "brod3": "0cd52f81ba5f242aaa43577448eadf461180285b468b7f0022cfd79f93208ca9",
     "cz3a1": "56e98127de441b991e566adaa1453accdd87976be345f991c96e44503fc75d74",
     "db12": "ed760d6754856eaa2ed41c9a4d8eec09cc563ec73b10eeddcd43c61e86923dfb",
-    "drsiar": "dd7c7115eb4d5b2802b58a42228f01f3a01daf7485c7dfcb60c71d454d996e7c",
+    "drsiar": "5dcf86c47b9e3e5c3bf7853047e634ac895c0e3002ea266b8bb60012a230b9f1",
     "ef88": "4a49e5846905e3535535701f09111fc8c7748642eb9777df47816f3100a44b81",
     "es57": "1cf73eefc90049f1d7df7346b8c47dbf872d084c433de105075eee5e9cd23501",
     "ggh22": "5cb8dd06888f11932d20a96990a7c6085f11357e5e775c67f3497bec2a7ddd60",
@@ -43,7 +43,7 @@
     "grtcps": "781651d057fe2c47f350e567cb1a64c8ed1973f2440b30a5cb1c2f9159cd7c8d",
     "kord6p67": "495f93351e9e369a3f11902d1a0de0fc35e620953a8a8ace82bb1eddbc96864a",
     "ks18k": "00d2db8277720a79568de48183bb5b6b86b581222e045d9619d8d3bb6626eee3",
-    "kts100": "f6c43b4ac05b156c953682e915a367e04c31ae673639a2af1b163d1377443ebc",
+    "kts100": "7f9843b65a7a02126fe4d50f52c107577a5491278635a744ac125965de94ccf2",
     "kv9": "f66729fed282469dd593c218b364f543c4fff3b1cbcd0e7eb53b90a77870c487",
     "l110": "760d0c1430e2f95dfbde20bdcd420cb9db6bbfbb5ee3544342c0b23215076aa2",
     "l115": "ca8850d4d1b12dbbf27faf4e6ca919e1e868253cfa6de71eac11a6d2cd183bd3",
@@ -61,7 +61,7 @@
     "m39emr": "7d10362ea6aa59fc646b5246dcdef70efa455bba9a0c84082d703b2a13b8f462",
     "m417a2": "d8e6d4c70f7869663f5e2f2b104c14e4f5f01bd515a5be946a7250e5353b5c3b",
     "m433": "9af25d32fe446c0d1f089fb49ea8f6325f681577f40836a137838eaf85f31730",
-    "m44": "f222de18039b0c9f168b6b69e52a2013984942b8da700b418c302179d062a60a",
+    "m44": "2f0de4672f85ab1749a01a38ee09669e1c22c47349bf50c491ddbc06b986c5b9",
     "m45a1": "10d2182cbcd003122f0337d7f35693bc9d603cd09f6c93a7aaf8e381496375c8",
     "m4a1": "241bebcf5e1d8112152f0c5fabb41c01646d00def620edacdb2cf76ab1ef076d",
     "m60": "66986c7c9a23d32141d57f5df206a5fc72615f29417714d59a9e2f4ec1b3af78",
@@ -69,7 +69,7 @@
     "miniscout": "aaf0b96f92e7d07c3c5745b8da1bb6698f5a68bd4988d013db731dd7e7966f86",
     "nvo228e": "98dff8e6faf44fa39537e61d43f5d460259a525ececd544dacb685e541b429cb",
     "p18": "3cd8711b12cfac0ea7e26203e70b75e198bfcc56a790cdf07af24c716e07dcd9",
-    "pp19": "8d3ee8809130fd203b3acaa27f0c14ede969ff57daf765766f709fe7bb4e61c2",
+    "pp19": "7c72e1fe1ebda2420f52728351bf9f4ed32fcbb73bd77aaebb2808eb738f8195",
     "psr": "f88f0eb90f04e0bb10f2689e88766cbc9a6afda09fb4077c3cf0d70208d54dd2",
     "pw5a3": "59b28f447248d53c4a385932e5e75eb5d91d017a41659dc14fe5f436200e4be9",
     "pw7a2": "435d44018946a4f4ff3360467785016681bab3f04c778ea4935cfa536c76c186",
@@ -77,14 +77,14 @@
     "rpk74m": "5acc385199598ac8e4313e049bdd5e544216d10e0cbb24ce676655d1331d6530",
     "rpkm": "7284268a869a967e0d70a7f75d36481e38254eab930a306408d5bafa15432984",
     "scw10": "e8f9dae03f2f7fa98b637d0da25484c4ebb14cd9e263eb8f7d35d691b5f527f0",
-    "sg553r": "dca43b587099ddfe5248a51c231084ea3aa9ea436472e5c3f5033d1199a9c1e4",
+    "sg553r": "06a8dba2d8b0dcd923f601b1f019f8484d9edac6bfbbbc26d38ac321bbdac23c",
     "sgx": "7716c1304c93da252b0f4834a6192da1b47ad800f2efbbf7a10dd0ad0c0f4866",
-    "sl9": "4c07d3029f9638b0be5d06f7037e986c4ba420aba01496fe1e37663b0592d068",
+    "sl9": "43d80c6f891b24fa8191987e3b800a79c96c0319f9d90550749339398ee1df15",
     "sor300sc": "0dd068008b77fb4566a9c099b7f7fa2965ea1eaaec82163ef44ee85349c8816c",
     "sor556": "201f26200f726aa2c2f3601ce7115dcb105d5253bc78f8e069a03155b6ec5ce4",
     "sv98": "bb5fef71ba7b54e1ebbf10ecb90615e80e603d604f40f251433f8d77590b472f",
-    "svdm": "59063bfcb83ee32468a252a48bcaf47edfd7ff4c0157e85de6c069583aa0c06a",
-    "svk86": "8f7fb61e8c20b89b3c79d55f6742efeac665f0799a93bd725b757b48dc0ed6c7",
+    "svdm": "583197ff453956dd2a0b91ca6b44a8e39957e2bbf5d601c55ff8f654863c5e3a",
+    "svk86": "7ceba54dad23f55ba36d78f443f3acdccba52de501d7c525aa781751d20cf8ff",
     "tr7": "e30936e0976e3f402c6a7bf297c278a3b042e9ac6279b90b9958dc6d3d2566bf",
     "umg40": "aaead59fd59423ea80662ff6b8a60454adbb8162dc56960d34be6865ca405ffd",
     "usg90": "8c9bf9da4c74e4d966c6c9ca8a1e63594d4a1cac05d0e90f583f9d0e6ace956f",
@@ -92,9 +92,9 @@
     "vz61": "e96683020d6d27edfe717d7d1fbf4fb10d8af05c388e5a142133d876a1dec162"
   },
   "migration": {
-    "previousDigest": "042b6aba7fb6a1f2abb4bef41c86a42a528f5fc4ed788fbfffc4b8199304c84c",
-    "changedCaseCount": 10343,
-    "changedCaseKeysDigest": "8100253c084c8b6a8b5dc97b8338e4aee421c99bef6916e71350df533a5a5584",
+    "previousDigest": "6e024f65b9b6e2d74563e530c688457bf1b89193082dcc52371fe3769a23f4f6",
+    "changedCaseCount": 10452,
+    "changedCaseKeysDigest": "9df1aff0edd746f4c5654d5f088330c1e66581c6fb70f82be213ffa5bb0b5a84",
     "changedCases": [
       {
         "caseKey": "ak205/30_fast/6h64_vert/mag_catch/frangible",
@@ -47347,7 +47347,42 @@
         "newTacticalReloadMs": 1819
       },
       {
+        "caseKey": "pp19/20_fast/6h64_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/6h64_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/6h64_vert/mag_catch/penetration",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
         "caseKey": "pp19/20_fast/6h64_vert/mag_catch/standard",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/6h64_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/alloy_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/alloy_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/alloy_vert/mag_catch/penetration",
         "previousTacticalReloadMs": 2054,
         "newTacticalReloadMs": 2321
       },
@@ -47357,7 +47392,47 @@
         "newTacticalReloadMs": 2321
       },
       {
+        "caseKey": "pp19/20_fast/alloy_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/canted_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/canted_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/canted_stubby/mag_catch/penetration",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
         "caseKey": "pp19/20_fast/canted_stubby/mag_catch/standard",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/canted_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/classic_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/classic_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/classic_vert/mag_catch/penetration",
         "previousTacticalReloadMs": 2054,
         "newTacticalReloadMs": 2321
       },
@@ -47367,7 +47442,47 @@
         "newTacticalReloadMs": 2321
       },
       {
+        "caseKey": "pp19/20_fast/classic_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/cmpct_handstop/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/cmpct_handstop/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/cmpct_handstop/mag_catch/penetration",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
         "caseKey": "pp19/20_fast/cmpct_handstop/mag_catch/standard",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/cmpct_handstop/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/fold_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/fold_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/fold_stubby/mag_catch/penetration",
         "previousTacticalReloadMs": 2054,
         "newTacticalReloadMs": 2321
       },
@@ -47377,7 +47492,47 @@
         "newTacticalReloadMs": 2321
       },
       {
+        "caseKey": "pp19/20_fast/fold_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/fold_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/fold_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/fold_vert/mag_catch/penetration",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
         "caseKey": "pp19/20_fast/fold_vert/mag_catch/standard",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/fold_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/lp_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/lp_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/lp_stubby/mag_catch/penetration",
         "previousTacticalReloadMs": 2054,
         "newTacticalReloadMs": 2321
       },
@@ -47387,7 +47542,47 @@
         "newTacticalReloadMs": 2321
       },
       {
+        "caseKey": "pp19/20_fast/lp_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/none/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/none/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/none/mag_catch/penetration",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
         "caseKey": "pp19/20_fast/none/mag_catch/standard",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/none/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/ribbed_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/ribbed_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/ribbed_stubby/mag_catch/penetration",
         "previousTacticalReloadMs": 2054,
         "newTacticalReloadMs": 2321
       },
@@ -47397,7 +47592,47 @@
         "newTacticalReloadMs": 2321
       },
       {
+        "caseKey": "pp19/20_fast/ribbed_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/ribbed_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/ribbed_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/ribbed_vert/mag_catch/penetration",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
         "caseKey": "pp19/20_fast/ribbed_vert/mag_catch/standard",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/ribbed_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/slim_angled_smg/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/slim_angled_smg/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/slim_angled_smg/mag_catch/penetration",
         "previousTacticalReloadMs": 2054,
         "newTacticalReloadMs": 2321
       },
@@ -47407,12 +47642,72 @@
         "newTacticalReloadMs": 2321
       },
       {
+        "caseKey": "pp19/20_fast/slim_angled_smg/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/stipp_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/stipp_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/20_fast/stipp_stubby/mag_catch/penetration",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
         "caseKey": "pp19/20_fast/stipp_stubby/mag_catch/standard",
         "previousTacticalReloadMs": 2054,
         "newTacticalReloadMs": 2321
       },
       {
+        "caseKey": "pp19/20_fast/stipp_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2054,
+        "newTacticalReloadMs": 2321
+      },
+      {
+        "caseKey": "pp19/53_rnd/6h64_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/6h64_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/6h64_vert/mag_catch/penetration",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
         "caseKey": "pp19/53_rnd/6h64_vert/mag_catch/standard",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/6h64_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/alloy_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/alloy_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/alloy_vert/mag_catch/penetration",
         "previousTacticalReloadMs": 2321,
         "newTacticalReloadMs": 2509
       },
@@ -47422,7 +47717,47 @@
         "newTacticalReloadMs": 2509
       },
       {
+        "caseKey": "pp19/53_rnd/alloy_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/canted_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/canted_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/canted_stubby/mag_catch/penetration",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
         "caseKey": "pp19/53_rnd/canted_stubby/mag_catch/standard",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/canted_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/classic_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/classic_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/classic_vert/mag_catch/penetration",
         "previousTacticalReloadMs": 2321,
         "newTacticalReloadMs": 2509
       },
@@ -47432,7 +47767,47 @@
         "newTacticalReloadMs": 2509
       },
       {
+        "caseKey": "pp19/53_rnd/classic_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/cmpct_handstop/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/cmpct_handstop/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/cmpct_handstop/mag_catch/penetration",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
         "caseKey": "pp19/53_rnd/cmpct_handstop/mag_catch/standard",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/cmpct_handstop/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/fold_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/fold_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/fold_stubby/mag_catch/penetration",
         "previousTacticalReloadMs": 2321,
         "newTacticalReloadMs": 2509
       },
@@ -47442,7 +47817,47 @@
         "newTacticalReloadMs": 2509
       },
       {
+        "caseKey": "pp19/53_rnd/fold_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/fold_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/fold_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/fold_vert/mag_catch/penetration",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
         "caseKey": "pp19/53_rnd/fold_vert/mag_catch/standard",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/fold_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/lp_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/lp_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/lp_stubby/mag_catch/penetration",
         "previousTacticalReloadMs": 2321,
         "newTacticalReloadMs": 2509
       },
@@ -47452,7 +47867,47 @@
         "newTacticalReloadMs": 2509
       },
       {
+        "caseKey": "pp19/53_rnd/lp_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/none/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/none/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/none/mag_catch/penetration",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
         "caseKey": "pp19/53_rnd/none/mag_catch/standard",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/none/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/ribbed_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/ribbed_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/ribbed_stubby/mag_catch/penetration",
         "previousTacticalReloadMs": 2321,
         "newTacticalReloadMs": 2509
       },
@@ -47462,7 +47917,47 @@
         "newTacticalReloadMs": 2509
       },
       {
+        "caseKey": "pp19/53_rnd/ribbed_stubby/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/ribbed_vert/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/ribbed_vert/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/ribbed_vert/mag_catch/penetration",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
         "caseKey": "pp19/53_rnd/ribbed_vert/mag_catch/standard",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/ribbed_vert/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/slim_angled_smg/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/slim_angled_smg/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/slim_angled_smg/mag_catch/penetration",
         "previousTacticalReloadMs": 2321,
         "newTacticalReloadMs": 2509
       },
@@ -47472,7 +47967,32 @@
         "newTacticalReloadMs": 2509
       },
       {
+        "caseKey": "pp19/53_rnd/slim_angled_smg/mag_catch/synthetic",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/stipp_stubby/mag_catch/frangible",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/stipp_stubby/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/stipp_stubby/mag_catch/penetration",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
         "caseKey": "pp19/53_rnd/stipp_stubby/mag_catch/standard",
+        "previousTacticalReloadMs": 2321,
+        "newTacticalReloadMs": 2509
+      },
+      {
+        "caseKey": "pp19/53_rnd/stipp_stubby/mag_catch/synthetic",
         "previousTacticalReloadMs": 2321,
         "newTacticalReloadMs": 2509
       },
@@ -50812,27 +51332,27 @@
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/classic_grip_pod_sr/mag_catch/frangible",
+        "caseKey": "svdm/5_rnd/classic_grip_pod/mag_catch/frangible",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/classic_grip_pod_sr/mag_catch/hollow_pt",
+        "caseKey": "svdm/5_rnd/classic_grip_pod/mag_catch/hollow_pt",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/classic_grip_pod_sr/mag_catch/long_range",
+        "caseKey": "svdm/5_rnd/classic_grip_pod/mag_catch/long_range",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/classic_grip_pod_sr/mag_catch/penetration",
+        "caseKey": "svdm/5_rnd/classic_grip_pod/mag_catch/penetration",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/classic_grip_pod_sr/mag_catch/standard",
+        "caseKey": "svdm/5_rnd/classic_grip_pod/mag_catch/standard",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
@@ -50987,27 +51507,52 @@
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/qd_grip_pod_sr/mag_catch/frangible",
+        "caseKey": "svdm/5_rnd/ptt_grip_pod/mag_catch/frangible",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/qd_grip_pod_sr/mag_catch/hollow_pt",
+        "caseKey": "svdm/5_rnd/ptt_grip_pod/mag_catch/hollow_pt",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/qd_grip_pod_sr/mag_catch/long_range",
+        "caseKey": "svdm/5_rnd/ptt_grip_pod/mag_catch/long_range",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/qd_grip_pod_sr/mag_catch/penetration",
+        "caseKey": "svdm/5_rnd/ptt_grip_pod/mag_catch/penetration",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
       {
-        "caseKey": "svdm/5_rnd/qd_grip_pod_sr/mag_catch/standard",
+        "caseKey": "svdm/5_rnd/ptt_grip_pod/mag_catch/standard",
+        "previousTacticalReloadMs": 2352,
+        "newTacticalReloadMs": 2081
+      },
+      {
+        "caseKey": "svdm/5_rnd/qd_grip_pod/mag_catch/frangible",
+        "previousTacticalReloadMs": 2352,
+        "newTacticalReloadMs": 2081
+      },
+      {
+        "caseKey": "svdm/5_rnd/qd_grip_pod/mag_catch/hollow_pt",
+        "previousTacticalReloadMs": 2352,
+        "newTacticalReloadMs": 2081
+      },
+      {
+        "caseKey": "svdm/5_rnd/qd_grip_pod/mag_catch/long_range",
+        "previousTacticalReloadMs": 2352,
+        "newTacticalReloadMs": 2081
+      },
+      {
+        "caseKey": "svdm/5_rnd/qd_grip_pod/mag_catch/penetration",
+        "previousTacticalReloadMs": 2352,
+        "newTacticalReloadMs": 2081
+      },
+      {
+        "caseKey": "svdm/5_rnd/qd_grip_pod/mag_catch/standard",
         "previousTacticalReloadMs": 2352,
         "newTacticalReloadMs": 2081
       },
@@ -52119,12 +52664,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "drsiar/30_fast/6h64_vert/buffer/penetration",
+      "caseKey": "drsiar/30_fast/6h64_vert/buffer/lightweight",
       "weaponId": "drsiar",
       "magazineId": "30_fast",
       "gripId": "6h64_vert",
       "ergoId": "buffer",
-      "ammoId": "penetration",
+      "ammoId": "lightweight",
       "tacticalReloadMs": 2183,
       "branch": "derived",
       "mode": "normal",
@@ -52479,12 +53024,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "kts100/100_rnd/6h64_vert/match_trigger/penetration",
+      "caseKey": "kts100/100_rnd/6h64_vert/match_trigger/lightweight",
       "weaponId": "kts100",
       "magazineId": "100_rnd",
       "gripId": "6h64_vert",
       "ergoId": "match_trigger",
-      "ammoId": "penetration",
+      "ammoId": "lightweight",
       "tacticalReloadMs": 3250,
       "branch": "derived",
       "mode": "normal",
@@ -53259,6 +53804,21 @@
       "overrideApplied": false
     },
     {
+      "caseKey": "m44/6_rnd/none/fast_deploy_10/frangible",
+      "weaponId": "m44",
+      "magazineId": "6_rnd",
+      "gripId": "none",
+      "ergoId": "fast_deploy_10",
+      "ammoId": "frangible",
+      "tacticalReloadMs": 3400,
+      "branch": "derived",
+      "mode": "normal",
+      "reason": "derived-normal",
+      "reloadSpeedTier": 0,
+      "reloadSpeedMult": null,
+      "overrideApplied": false
+    },
+    {
       "caseKey": "m44/6_rnd/none/fast_deploy_10/hollow_pt",
       "weaponId": "m44",
       "magazineId": "6_rnd",
@@ -53274,27 +53834,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "m44/6_rnd/none/fast_deploy_10/standard",
+      "caseKey": "m44/6_rnd/none/fast_deploy_10/penetration",
       "weaponId": "m44",
       "magazineId": "6_rnd",
       "gripId": "none",
       "ergoId": "fast_deploy_10",
-      "ammoId": "standard",
-      "tacticalReloadMs": 3400,
-      "branch": "derived",
-      "mode": "normal",
-      "reason": "derived-normal",
-      "reloadSpeedTier": 0,
-      "reloadSpeedMult": null,
-      "overrideApplied": false
-    },
-    {
-      "caseKey": "m44/6_rnd/none/fast_deploy/hollow_pt",
-      "weaponId": "m44",
-      "magazineId": "6_rnd",
-      "gripId": "none",
-      "ergoId": "fast_deploy",
-      "ammoId": "hollow_pt",
+      "ammoId": "penetration",
       "tacticalReloadMs": 3400,
       "branch": "derived",
       "mode": "normal",
@@ -53619,12 +54164,12 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/buffer/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/frangible",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
       "ergoId": "buffer",
-      "ammoId": "standard",
+      "ammoId": "frangible",
       "tacticalReloadMs": 2467,
       "branch": "derived",
       "mode": "normal",
@@ -53634,27 +54179,27 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/mag_catch/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/hollow_pt",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
-      "ergoId": "mag_catch",
-      "ammoId": "standard",
-      "tacticalReloadMs": 2321,
+      "ergoId": "buffer",
+      "ammoId": "hollow_pt",
+      "tacticalReloadMs": 2467,
       "branch": "derived",
       "mode": "normal",
       "reason": "derived-normal",
       "reloadSpeedTier": 0,
-      "reloadSpeedMult": 1.063,
+      "reloadSpeedMult": null,
       "overrideApplied": false
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/none/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/penetration",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
-      "ergoId": "none",
-      "ammoId": "standard",
+      "ergoId": "buffer",
+      "ammoId": "penetration",
       "tacticalReloadMs": 2467,
       "branch": "derived",
       "mode": "normal",
@@ -54069,10 +54614,10 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "sl9/30_rnd/canted_stubby/burst_mode/frangible",
+      "caseKey": "sl9/30_rnd/6h64_vert/burst_mode/frangible",
       "weaponId": "sl9",
       "magazineId": "30_rnd",
-      "gripId": "canted_stubby",
+      "gripId": "6h64_vert",
       "ergoId": "burst_mode",
       "ammoId": "frangible",
       "tacticalReloadMs": 2650,
@@ -54084,10 +54629,10 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "sl9/30_rnd/canted_stubby/burst_mode/hollow_pt",
+      "caseKey": "sl9/30_rnd/6h64_vert/burst_mode/hollow_pt",
       "weaponId": "sl9",
       "magazineId": "30_rnd",
-      "gripId": "canted_stubby",
+      "gripId": "6h64_vert",
       "ergoId": "burst_mode",
       "ammoId": "hollow_pt",
       "tacticalReloadMs": 2650,
@@ -54099,10 +54644,10 @@
       "overrideApplied": false
     },
     {
-      "caseKey": "sl9/30_rnd/canted_stubby/burst_mode/penetration",
+      "caseKey": "sl9/30_rnd/6h64_vert/burst_mode/penetration",
       "weaponId": "sl9",
       "magazineId": "30_rnd",
-      "gripId": "canted_stubby",
+      "gripId": "6h64_vert",
       "ergoId": "burst_mode",
       "ammoId": "penetration",
       "tacticalReloadMs": 2650,

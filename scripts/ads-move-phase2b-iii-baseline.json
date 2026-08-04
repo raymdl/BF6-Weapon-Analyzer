@@ -13,17 +13,17 @@
   "counts": {
     "weapons": 61,
     "magazineEntries": 278,
-    "gripChoices": 853,
-    "ergoChoices": 183,
-    "ammoChoices": 279,
-    "cases": 77609,
-    "primaryCases": 77375,
-    "sidearmCases": 234
+    "gripChoices": 860,
+    "ergoChoices": 185,
+    "ammoChoices": 287,
+    "cases": 81139,
+    "primaryCases": 80899,
+    "sidearmCases": 240
   },
   "defSprDistribution": {
     "1": 1,
-    "2": 15,
-    "3": 13,
+    "2": 14,
+    "3": 14,
     "4": 18,
     "5": 7,
     "6": 1,
@@ -38,139 +38,139 @@
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-row-v1",
-    "value": "7c1b30b279ae9f796a55bc5902d4b30b260c2e12766bf994e16817e6ccac9d7d"
+    "value": "5288c578dce3f72c823401acf8f183cb33372552ad0f15acf6cb923ab72b8dc6"
   },
   "perWeaponDigest": {
     "ak205": "5be96e6c30e16e41920f335385dfcce10c9c79af6f0edd2da82af4c672d43a7c",
-    "ak4d": "c3ec40779f9eadb1a6f846791bdf27e2062f9471dc30955e05fe45421a23949f",
-    "b36a4": "3586b76ea53d2438829e5ac64b594fa8315bc611431dc5da15e1fde506b42c99",
-    "brod3": "b99e594b7c0ddb42197d528729dbf2e27dbe49f16dd7e2785e7c026a188bc296",
+    "ak4d": "ff437cc2be52922aafc6a6e93b27814af851dc09d810b648dee01f9ea15177bf",
+    "b36a4": "55a7f11f477ad4b81d5cbe4f7ede6c0b262b47a23d411f15dfe538ea2ff1bfc3",
+    "brod3": "2cb9c962338da9b18dd29e8ae875f384e5f3561d5546c4ebeae995a0bb3ceba8",
     "cz3a1": "39b4e7bc54b58afa7611aa168534617f8ef9d86836a90dcc5db28eec8daf41de",
-    "db12": "1e625ff1e5f97a5992babd169f64f389edd0cce1a10d1fa08dbdfc478e98ab5c",
-    "drsiar": "c32a5a5f9abec545df7feca0ec5ba524b6330443846fc07daaaf2cdd06be434e",
-    "ef88": "595a06a8bc14871c1b423d2110ae9149eb495f97c7afc7954b8f14e2aa67c2ec",
+    "db12": "16c1308cdc149c3b6b0985230066cc304ea9d4119ad67c6d8f7edb11c039fe9a",
+    "drsiar": "5138bdbb8bb3e186aca69fdda075cc0854fa1e07c15ac70345d770751155db17",
+    "ef88": "edb704addc1b5585da769e1cfa2edae52e849e213a8ecb9b02384c0e871e2c05",
     "es57": "65685f0710860156f58750c181980aca42eaa2f9554b52742f115d55a0c28a9b",
     "ggh22": "093dd2a0c494242cafcad14f3becfe502df401e1bb70014213118eef543fb75c",
     "grtbc": "b484adf0af883c7c657048aaaf5c99375b68677a9bd36f8f9142a695c4e3dc12",
-    "grtcps": "182e3fcbe0cc8485010150d0f9da948d53ce49d288eb2a65114d7c389af248c7",
-    "kord6p67": "e47119720cd9410e51a43b3ad5a723d81f4a652f021b2a9cf5c18f06ee789d28",
+    "grtcps": "c562659a439b6f555daa770b59c5a15a2326d5baec40e212b27bd02c4b84375e",
+    "kord6p67": "8f2de1e460c30b3812788db51d4f7760a7562f42c0920e2b0f89284def16901d",
     "ks18k": "92061085e0ee06ae96886f67d8be360c3c1342aa5438ec10e33c8a18535bb638",
-    "kts100": "f5fb294c5f7c59ebed8903d77b500118fd794e196cee5c43784375ac68be8d1f",
+    "kts100": "2ac2b4b8cfe7fa01a3a4cf3a947700dd1097c90cd9ff77bed3034f52b1b49bcc",
     "kv9": "1ee9eac6cd3f102ab806cfc4a05a673b175fc15ead608563bce332f5146f9e44",
-    "l110": "c894151dce260331668887ebe5384c0a619788c9c6a207f61634fc5974605196",
+    "l110": "007cffb7b069eac8e988084e92329e6ad15df71dad101da2ade78355ec79a7bb",
     "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
-    "l85a3": "14d74f19712b451ae9e4d0aafddf72fa87e435c0c2c4e246cf0aa031f0261dca",
-    "lmr27": "351644f10368ea93b0e15a4d4d86004b895a8fbca72652c1547fc01948e7acc5",
+    "l85a3": "ef40b9caa9affc497339fd61f7374cdfb17b63cc17018313da6c0c7bcfa2a7eb",
+    "lmr27": "01395ff76527f996acaec3cc1caddb1b842fd2866da55edeb8677f8398019189",
     "m1014": "69cb52f616221c8ae3cbd78407eef4a8f608ae3ca30b688063d0ff1fa0f3bc4f",
-    "m121a2": "b63283b405b21b3be90943dff86b3f581509843494bf6598c3e12588610d33b9",
-    "m123k": "54984d6bf34a9515fbc2bed15e7ff86a371c9bc0cf48545dd8fc4e1a1bf88b59",
-    "m16a4": "0db683bff3c944a083c1147e254e820aa55f3d81276730610000bfcbf8855c7d",
+    "m121a2": "9512f517fc456fe4d139ff326747dbfd101d2fb299b0a9755e75c6fca99ac11b",
+    "m123k": "6c5479c3e93c80377d8850025c5833d39e0ac47b7bdcb8e2df7f3070e9952a32",
+    "m16a4": "3127679b699acb27ed0432f6f706b427d39a7f695aa96be732a0e8de07f5d220",
     "m2010esr": "ebe20aa8f3840edf2777bd45f0699aed9cd8ff985a1a4453b3add265b761a635",
-    "m240l": "2c6b9fc574033113d9ad01072c2cd4361e931b0e41c1a42e4d355ac6abe7d004",
-    "m250": "04ee7dd2908cfab474342cf22673aea5ecb8115153d98632ddd1d191f990683a",
-    "m277": "f92c2305b075ca8ac6ecbd83424d54e856156fd319d3a91dd06c838a081845c8",
-    "m357trait": "aea5a684d4655de46242d24baee1ae2359cd2dcb11b74d4ea3ed9fcde6ff87a8",
-    "m39emr": "084eeee341500e7cc65af61c190b9d6ea052e0cceaa088dbb49c328052cc385f",
-    "m417a2": "586d957088154c1a8632000f8984bf92bd4263d5c88132e6c93a572e0063ed1e",
-    "m433": "74476d176d25c60ddcd36ad1797878c948b5de0ffa870998391511593ffdfa23",
-    "m44": "bae969a65d5cf34721c0056ef76ca8b1bae7fd43807c317d97baf62e94edcd89",
+    "m240l": "2297a711d0424d37049906eb419738d9e858b8081c5085ba8ccabb554cbaa2f0",
+    "m250": "4694106985e6502a52c12cab831da76a2125e73fb388a413097da4e5510071e7",
+    "m277": "38e7345e3fd7b1ff29d0e4959fb3ed45ef9800ff77888dcb40292b082779bf91",
+    "m357trait": "031a97819ae989ecd1574b5eb28a7c12b7e3873ecb0ce24a33678e0aa24f0afe",
+    "m39emr": "44ff1ffc88c6a0e9a631b36fdd11febddbe51e9a754fcbb447837481f604236c",
+    "m417a2": "81e1f572aa11d211e5128348532db82a95a6b5114d815381d3a102db5ab91bb4",
+    "m433": "159fc2bf19ab50bce3189dd686da3a8435669bfaf8c513d3796fce5bc07c7904",
+    "m44": "ba764ab63f3c2d9add4f59ec7d7ef1f4b81af697cf4e20326d40172c43baf221",
     "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
-    "m4a1": "f22c21484e8fce265038e76b34bc403ac44f2aaf280705dab07c576a0c55179a",
-    "m60": "de9a28bcb2ac0aff49f9d13a416fec371a8a565cfbd179cd0a2db4b9b799e277",
-    "m87a1": "fb69519233fedb9fe9b19eb741f060c059fa33a6a0334ed3d70f0d66f9f7c205",
+    "m4a1": "d8cc1dd5d2824cfc751b0df6fe5d3b239d3fca03632d6c141df08e331c43305e",
+    "m60": "12f3e7d8eedb9f8975e71ef0095b08d7643b3d16cf1ec343d8dbb8f1a408c91d",
+    "m87a1": "bf786233d210419a69c6378b1390b22bea44539982ef80dc6fa424cdd20bbbfe",
     "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
-    "nvo228e": "6c75cb365788f0c83765bf018e1d8d9bca1e0436e2bb782d5643094780be5612",
+    "nvo228e": "b370c981e8d580db6360668acc844e8fe5f642a5b6966594c501b5ae9d6aa392",
     "p18": "d7ea019e08a6a9afd6e4badc5677be5fed027ba6d6890d3d5c12ce7a9c844431",
-    "pp19": "5b52f790a70c66b120735c664180aae9a772d337939c5487cb5ac727bcab378b",
+    "pp19": "4c1b21494952fb1e5416ebcf63bfe898e137a4adc841e19d5d23ef27cee64aed",
     "psr": "e54ffe2630714fb706110fa8b95e89ac79de2815569b488be4d4b79cd68df791",
     "pw5a3": "6c0a09de185739c94f9204df22cc00bb67e6ee29aada9ef886759c1872d1f36e",
     "pw7a2": "8c3a3f19f8878829d2bf6df7687767936ada7b553c1b2733cd4f84b5e4b3e115",
-    "qbz192": "85f8bae0f7c16c3f3305bf165b9cf6f1818a5ee143b51acc165c4eb3b2b88bf6",
-    "rpk74m": "3d368bd3932080b0b8614eecb67cf0bcdd6081d232528cb712c20786fba62175",
-    "rpkm": "16df611cd0d83e7ba6e006d5bda51b2b611da743b2ae9babd7cb2c682aaaca09",
+    "qbz192": "a6a2e748a112bb65e0b3fa2d50b6922454fae50efe1ae58d7a280803b8c7262e",
+    "rpk74m": "f2cc372e07bc3fcec97144dac1828e6d787f0a58c5b05e37164e2216a3f41588",
+    "rpkm": "2da48054ddf567be186256a100f460339086f2fa13daca6c72182cd43351975f",
     "scw10": "98089480b26342c8882557e121e3057ca85e03c12a33d7310cbd21512e7266ff",
-    "sg553r": "a8fb14b412055087f8b5414d36a74de85f599edb3e7a4b9290074b4b56e18c0d",
+    "sg553r": "e12487ea397a55ba64689ffdedc6e00a3cc200cd5843ea3d87e68f5a8ef1e30a",
     "sgx": "3c8f6a6f4a94cbd7d0343a54d5d0f97723a087bb1c4e5d0523384504504c85e3",
-    "sl9": "5aeaea7ff533b781f350d352667fd955d410453e93d4779ac4ba3625ab5aa8e6",
+    "sl9": "3febcd15701a8a85ac1651c1568f7814b98a016c08a8799a4950b49d06d11468",
     "sor300sc": "6292071b2e13c922d01f6ea864252091aac0cb8832897fbc7e4b5026527ec3df",
-    "sor556": "064ce77f5a17e8a929e234986f1fc8bf4ff233335a99044112023ba06dbb0e07",
+    "sor556": "7c926279aa8cf185da4014a3ddfc747dabd4b45e1c557949c35b9f95518f821d",
     "sv98": "454c25c23a373ceefb204db4aee1a8d1b3273fb84a821098f2d1a74366ff8c52",
-    "svdm": "d4e7808ec3dc5f09b3ca53da5fb0c0cf6a15ddb4bfe94dd3ab1e45bcae2e308d",
-    "svk86": "364d931b0f19f477d77d7dce96dc5723629e20207f20ea6320929c924d37720e",
-    "tr7": "092f67b48d8d13390b5e05871c232009ccc03796a81feb715c08fe8e2ad4bed4",
+    "svdm": "42e14c5bebe3d05343be617911645baac7f8726d1e482d13362086b3d510eee4",
+    "svk86": "cef472345171ac51ed86be5c96df7965d32b980a807690c144131172b3d7294d",
+    "tr7": "270b0831d2a69404ea44de02ad98b3da30dc154c833dab23f67f4f9bd2167738",
     "umg40": "765ce378524d0e25499bec1d8d53fa3f8c548acd3bf3b796b442e02a423f3180",
     "usg90": "adbe21770bcf986057ed71d7d4b6cce0de5caaab371e3978141520309dad1de3",
-    "vcr2": "2ed88d1a566b5747e27c1024e066142367da4ee6c38893d498ce6debc0478eaa",
+    "vcr2": "7d76a63d9c9be7ab1293fdb8dbf6f715496ed88dff04eca8031a13d564065bc4",
     "vz61": "67e47466f6f6d3d253b2b2694eff3c39c695b67027acdb35e6e42fec01b3468e"
   },
   "rawIndexHistograms": {
     "sprintRecovery": {
       "primary": {
-        "0": 1020,
-        "1": 6086,
-        "2": 13977,
-        "3": 20298,
-        "4": 20552,
-        "5": 12165,
-        "6": 2562,
+        "0": 1029,
+        "1": 6372,
+        "2": 14825,
+        "3": 20866,
+        "4": 21542,
+        "5": 12953,
+        "6": 2597,
         "7": 285,
         "8": 375,
         "-1": 55
       },
       "sidearm": {
-        "0": 24,
-        "1": 30,
-        "2": 88,
+        "0": 26,
+        "1": 32,
+        "2": 90,
         "3": 32,
         "4": 60
       }
     },
     "adsMove": {
       "primary": {
-        "0": 171,
-        "1": 1273,
-        "2": 3849,
-        "3": 7636,
-        "4": 13622,
-        "5": 19730,
-        "6": 20167,
-        "7": 9167,
-        "8": 1648,
+        "0": 279,
+        "1": 1341,
+        "2": 3937,
+        "3": 7949,
+        "4": 14142,
+        "5": 20380,
+        "6": 21062,
+        "7": 9909,
+        "8": 1788,
         "9": 112
       },
       "sidearm": {
-        "2": 100,
-        "3": 56,
-        "4": 68,
+        "2": 108,
+        "3": 62,
+        "4": 60,
         "5": 10
       }
     },
     "adsTime": {
       "primary": {
-        "0": 5042,
-        "1": 18848,
-        "2": 26506,
-        "3": 18345,
-        "4": 5717,
-        "5": 1857,
-        "6": 900,
-        "7": 160
+        "0": 5302,
+        "1": 18935,
+        "2": 25983,
+        "3": 20256,
+        "4": 7279,
+        "5": 1996,
+        "6": 968,
+        "7": 180
       },
       "sidearm": {
         "0": 96,
         "1": 132,
-        "2": 6
+        "2": 12
       }
     },
     "deploy": {
       "primary": {
-        "4": 676,
-        "5": 5464,
-        "6": 13628,
-        "7": 20416,
-        "8": 21210,
-        "9": 12309,
-        "10": 2925,
+        "4": 691,
+        "5": 5774,
+        "6": 14377,
+        "7": 20774,
+        "8": 21852,
+        "9": 13529,
+        "10": 3155,
         "11": 312,
         "12": 435
       },
@@ -179,7 +179,7 @@
         "1": 36,
         "2": 8,
         "3": 52,
-        "4": 70,
+        "4": 76,
         "6": 60
       }
     }
@@ -1883,7 +1883,7 @@
         }
       }
     },
-    "changedCaseCount": 17240,
+    "changedCaseCount": 18112,
     "changedWeaponCount": 46,
     "changedWeaponIds": [
       "ak205",
@@ -1933,19 +1933,19 @@
       "vcr2",
       "vz61"
     ],
-    "changedCaseKeysDigest": "158b9fc9601701cd3d0800ef613242d26fa8d4890bba08d8ed766bcea2a50394",
+    "changedCaseKeysDigest": "2ad38a102fe89e9f7a9f0b6a270820721c8f388f4a4a42ea3b8473b99afc0667",
     "changedByWeapon": {
       "ak205": 960,
       "ak4d": 300,
       "b36a4": 648,
       "brod3": 840,
       "cz3a1": 320,
-      "drsiar": 720,
+      "drsiar": 1080,
       "ef88": 600,
       "grtbc": 500,
       "grtcps": 192,
       "kord6p67": 420,
-      "kts100": 360,
+      "kts100": 432,
       "kv9": 128,
       "l110": 128,
       "l85a3": 432,
@@ -1964,16 +1964,16 @@
       "m60": 120,
       "m87a1": 48,
       "nvo228e": 420,
-      "pp19": 60,
+      "pp19": 300,
       "pw5a3": 320,
       "pw7a2": 160,
       "qbz192": 384,
       "rpk74m": 768,
       "rpkm": 672,
       "scw10": 128,
-      "sg553r": 560,
+      "sg553r": 700,
       "sgx": 128,
-      "sl9": 60,
+      "sl9": 120,
       "sor300sc": 700,
       "sor556": 1080,
       "svdm": 240,
@@ -1983,14 +1983,14 @@
       "vz61": 20
     },
     "valueChanges": {
-      "0.67->0.6": 3540,
-      "0.75->0.67": 2032,
-      "0.6->0.54": 4748,
-      "0.54->0.47": 4056,
-      "0.82->0.75": 984,
-      "0.91->0.82": 436,
-      "1->0.91": 76,
-      "0.47->0.42": 1256,
+      "0.67->0.6": 3710,
+      "0.75->0.67": 2166,
+      "0.6->0.54": 4896,
+      "0.54->0.47": 4248,
+      "0.82->0.75": 1016,
+      "0.91->0.82": 444,
+      "1->0.91": 124,
+      "0.47->0.42": 1396,
       "0.42->0.37": 112
     },
     "prePhase3ClampCaseKeys": {
@@ -3005,17 +3005,17 @@
     "counts": {
       "weapons": 61,
       "magazineEntries": 278,
-      "gripChoices": 853,
-      "ergoChoices": 183,
-      "ammoChoices": 279,
-      "cases": 77609,
-      "primaryCases": 77375,
-      "sidearmCases": 234
+      "gripChoices": 860,
+      "ergoChoices": 185,
+      "ammoChoices": 287,
+      "cases": 81139,
+      "primaryCases": 80899,
+      "sidearmCases": 240
     },
     "defSprDistribution": {
       "1": 1,
-      "2": 15,
-      "3": 13,
+      "2": 14,
+      "3": 14,
       "4": 18,
       "5": 7,
       "6": 1,
@@ -3030,137 +3030,137 @@
     "digest": {
       "algorithm": "SHA-256",
       "format": "canonical-row-v1",
-      "value": "190cd3ea7d2b28db7ee3586738062ed2fb6fb720ae58e436e47251a285abf2e9"
+      "value": "9890d022eb9f367552c272e58b75fee6c266dafbaeda34d2ea6ee04093675a9c"
     },
     "perWeaponDigest": {
       "ak205": "429316af0dad59ac8caf500fe91656da310b9fc084414934dc8319937c58bba4",
-      "ak4d": "a4879a2a292cbe722cae3200f8943ecad5e0af39e152716bcabc878ba08fa932",
-      "b36a4": "3bab8604ac4d23252a2180ccdaa4d52d1ed9670d400f77b71b31794312f73d13",
-      "brod3": "fbd6ea21a33afc005708ba52a9f13fa54b46757aa3443dde01ce2ffc4fd5f377",
+      "ak4d": "a7251c8956d7586a35b863924eb8bbb5b6d57e385c29a7f45677277f642a8dc0",
+      "b36a4": "b78efb25fe36008b3fa703c4b594b9c989ee3b4cc1ec1c487092a2c7915b8468",
+      "brod3": "998b5242a5d18c7348f5f46c7d7b653ece7ebec916815fd8b81c974645687dbf",
       "cz3a1": "593c01540022044c6ca78c805f699a6f88c392f1756d20fa836198271d2cc687",
-      "db12": "dbbe9b944f5693bf44c253977bff6fbb7fdb4e52e5c9a007e302ed2f9a8dac9e",
-      "drsiar": "255733dd607e7d7df97f9d732e8b7d04736810289f839afe98e4ffe408e41ca0",
-      "ef88": "13e95209dde434331ec47bc2ee359c1566b59f42e54a1c30825da7ba78e6c68e",
+      "db12": "f0af02d7015d58b67b81e1eb5e45a6cd4dbf2a01669bdd4f28a923488d138b37",
+      "drsiar": "2cb19fdf361d49eae80b4e3707cea96878e92251531a2556bfbd0fe3ec872292",
+      "ef88": "46f30b9c8a4e28b821348e85f46056ace7e1279a380c0a70b1886800240cbd82",
       "es57": "65685f0710860156f58750c181980aca42eaa2f9554b52742f115d55a0c28a9b",
       "ggh22": "093dd2a0c494242cafcad14f3becfe502df401e1bb70014213118eef543fb75c",
       "grtbc": "02689020ce82a6619e777df55f141044147d828e2df6f21085bdc0aacc48c470",
-      "grtcps": "2a9e0bb9396806b28608ccb9df90b779bc98064c17f1ba6ea5dcfbeba46191f1",
-      "kord6p67": "926376678c14f6cb34311d72d266faed766581f573c53ddb74bd2f79614bee11",
+      "grtcps": "2c9987847e96b7fa5b6ec9488b948f757f88e429a0539fbfecfe06ff0564d127",
+      "kord6p67": "0556c176b5644637f632e2943abc89fbaea0dfd92a2b5152a94267d02da7b15c",
       "ks18k": "fab1b8897df6abc477029a09ee064cc5fc70864020bca97f971f3d23d3a49024",
-      "kts100": "dcdc727a52ffd8cb64c270174376c2570d2fa57ec0555c78f3d0e723d65a6915",
+      "kts100": "9baa65233440c23a57acd65444a4111525b76e72a50b0c0287e33073404cf4f5",
       "kv9": "18f5ad5c4b5de7c51dcefcfb898ffe7a50912ef6a3897df8a867697cda594874",
-      "l110": "fad26ea613e12fe2e38467d2406699ef393d43ecc135886da6f50ec26de6c6c5",
+      "l110": "84ef41e21bfefa36472411c54be9a5414340aa6463b5367d1d8653ff1facbaaa",
       "l115": "b63c918f79e41090409db63510d9393f207b0ca9cb29a284487063e4d72dd50c",
-      "l85a3": "d4a3d79a626ec0dbcb0aa9a1cadda20572756cc594276c7bfbdacf02dedf5aab",
-      "lmr27": "12dca64795408c0649b63cc7b0d4ffdaa572060beb5d9efb3b88390a7b8598cd",
+      "l85a3": "fdd73f596706d1ec5b56f6d3a39361af3ec561067307e244e50c66807600562d",
+      "lmr27": "208539d690387a626080bc145b6b34d299eb31441edd922a93216d22af4db19c",
       "m1014": "936e80b9491b3339fd58bc6e76c4f1051f94a9e8315968b7686f055f553c703b",
-      "m121a2": "233d3c3ed57b73176e14de9a7de504b3b24f6f049fa9d919e0a1b4b80480f3bd",
-      "m123k": "90454b27cabb2432b3a87d717543a6730a276e3cd8c295fb6aaecc91b71cdbda",
-      "m16a4": "466cead3899752045928a74308948974897309e5e4b7e887b7ad85b1edbf5387",
+      "m121a2": "11b53a74be7480d6f2f37812ddf810637e48e1e50a2b6db8c8529305c28bfdbc",
+      "m123k": "0a68007df54077376fe6ee18edb8cc85a7aa202d151be9e9e12862c6c9a59867",
+      "m16a4": "6c89c0f1dca63b7cbe16ab17a6f20bc7c62915033a0843a3042bd609796cc627",
       "m2010esr": "ebe20aa8f3840edf2777bd45f0699aed9cd8ff985a1a4453b3add265b761a635",
-      "m240l": "3a4a5f9c1a14699c2b138434509d9de6028a51189bab730c64db7ca4339989f6",
-      "m250": "2aec820fddea04b51cc82eea5096e6aaa421d4db8aa2d339015539ed23f94267",
-      "m277": "5d2746f93ed14e30867580aed329e69b1f41068ee8980d5aa9d982c7ef6d8921",
-      "m357trait": "aea5a684d4655de46242d24baee1ae2359cd2dcb11b74d4ea3ed9fcde6ff87a8",
-      "m39emr": "5f6510d5920b334dcfe1ff15024a967dcfb05a9cca46a14dfa885c215f4a8f26",
-      "m417a2": "3d62f2bd545ae3ec8cbdad8e8d7f9a29eec7d0dea31c219d3ad2908f01565c33",
-      "m433": "dcb2ad5ea2e2bbfdc9513a984c69b096885a8a7d755d7c4925f658d8ebe5e508",
-      "m44": "bae969a65d5cf34721c0056ef76ca8b1bae7fd43807c317d97baf62e94edcd89",
+      "m240l": "da98ba0070fe0e74b5fc46ac9b3c82f6f7fb67b7361d9d3c792e1b8c309a8b4e",
+      "m250": "f2fc7b8d1f4b8d5720b6a03649039d6233c9d5cefb8dd95943a74aee436bc3d2",
+      "m277": "72827db98583389072801490e763c8e7c3aa830c0f8c58148f6b6880b50d8d55",
+      "m357trait": "031a97819ae989ecd1574b5eb28a7c12b7e3873ecb0ce24a33678e0aa24f0afe",
+      "m39emr": "7060de33f7ee5953b90f7545eddfbd0f7745684b248c078740863dced5b92426",
+      "m417a2": "b20d07fbecf5c87a1de96906280266a02bf39d853c7be4abfb4c7fa80d7b0224",
+      "m433": "e21f4eb53eeef5d0a26eb1ab59c6553c25d8c6d4ba90b531090f129e58a7d94b",
+      "m44": "ba764ab63f3c2d9add4f59ec7d7ef1f4b81af697cf4e20326d40172c43baf221",
       "m45a1": "f6a31e731bef24fbdc03c416157aaab8d4a5f90a5a884045d9d683a1ed1d4f48",
-      "m4a1": "654fc27b0455f782495dfb2d9360409f6e7a9a6287247185717ba71a417c7264",
-      "m60": "7f21f9e86df7241e6ea44dafe7f532b57a61f516cd2c8c4e6d5e829b414a33c7",
-      "m87a1": "af36630c762034167b136ae782b16ef6d22775a1c372b64801562c2c5366c8e6",
+      "m4a1": "f2e481382c00c74f198be94198b2a10015b3fff02f8a7900d5a78fa2042c0fae",
+      "m60": "bc3287c5bd020b84f8b09216edb8d903564a2053c83d0e06cc80b8c0f34856f7",
+      "m87a1": "feb1bd48872d78bae00112045728fec21fe94ec55e1b63549a35fbe9080efae7",
       "miniscout": "4d70334d53b0e43125a133c6f2ad48c5d537ad2b17fc7cc52cda0f9b2905ed11",
-      "nvo228e": "3512164257fb7da0d11ef2231c34dda35073c6e8efacd0fae560d6d7e96d0597",
+      "nvo228e": "6b23f639503af0aad01c0fd32de33d0cca36b717e2a028cb03fb715395824844",
       "p18": "d7ea019e08a6a9afd6e4badc5677be5fed027ba6d6890d3d5c12ce7a9c844431",
-      "pp19": "872554ad6ab298088e3da7c30620a5b6e843bf2beb34127845e7fcfd3db6404f",
+      "pp19": "1a86a1001a3fb1de5820db814000a822eec1928c197f3e5e25c4a820782553d8",
       "psr": "e54ffe2630714fb706110fa8b95e89ac79de2815569b488be4d4b79cd68df791",
       "pw5a3": "b76f70d0ecb8a8fc6d69150a7a28a6028431be2f5aeec814464c12a72ecfd0fa",
       "pw7a2": "e9ff3c4bf6baa78b90999901bd1e2a0512b58f11fc7dd519f8d8af0f387e3657",
-      "qbz192": "a88ab1a5deb61b706d955b4e0e267b4e6dd89239679201ecb6220a890f5ab80e",
-      "rpk74m": "60303e5c880aed3562f6aa400d5728bbd4994267c3a478cee88d47b3d1769e17",
-      "rpkm": "e76325dd3462348dfd29d5bb787be78d0fa2e96f6d416e9f69edf75622fbdb6f",
+      "qbz192": "bc311d250ca97430d816180eb17093f5f63c72adab5af61ee86d65c47c897b1d",
+      "rpk74m": "a815fc15b2baaf6d4e17418234d4e52c7a9d7dad75f5800fd2884492383ea62f",
+      "rpkm": "c7ec2191f79ab42fccac3755783bda501270a72a53a3571b537af9e5b0f5e2af",
       "scw10": "73aa9a566ac1b78b6f4ee23aa5f9e8b3c6389832e4e877483c295b1711efe15e",
-      "sg553r": "44c3b626e56a071164c854ba5dd018776a44d6211108b0627ce7f0a6f3f2b4eb",
+      "sg553r": "89431719907407ab6f9041b59dae84397a7460dd5f4d5ccc360e952c521c6d8e",
       "sgx": "444d0f5588e4b081aa2385d0ebb5ba1c00971e72f2400d95151bc78141ccd0f5",
-      "sl9": "9a95b91fec0a81aaecd6e868296bdd92eb8c8261dd302048e7320a242343788e",
+      "sl9": "f2529a20517c371ab181ee315b8be5e90a6e0089473ddf625683d8128b936dd2",
       "sor300sc": "f963de0124ea693c944331d1bd76ca902edcb877c98a2a03178ae308f9ef1f13",
-      "sor556": "7cd6efab40c4a034e07ca2d20b3a66a70eebe40dddea1af17a64311db29b7f5f",
+      "sor556": "20a1e236d2ee6052dc9f3a792c0313f344743d38926741ae7c9bd2c833088a75",
       "sv98": "454c25c23a373ceefb204db4aee1a8d1b3273fb84a821098f2d1a74366ff8c52",
-      "svdm": "8fe9341992e1e79300d16329c2c0c58981bf24426f93ba30317e19acd336eb03",
-      "svk86": "fa1e14e60d5288ceee0e1287f240fd87a69e0403ac276c0d6f46d92e357ae0b3",
-      "tr7": "ba6cba9aba1480aec86f8bbccda11e74e908e9795c88eb4501f0981b38699fd1",
+      "svdm": "1d2de0c11ae724971d31c82f8810b8d51426526d10e1eeb5c2c379d4b0298834",
+      "svk86": "28fa28ebbc562804015f1583f3a731844bfb49da30ad2c75bc0fa4872e9967de",
+      "tr7": "eee0bdc18e202717df35c2d6f2b64d68b6d8e79a468560dedebcb6aa29444a86",
       "umg40": "e1e9852d70ccbb9d94fb51e91cbb6c21da329a1ed18703ef43ac8556f60906d8",
       "usg90": "adbe21770bcf986057ed71d7d4b6cce0de5caaab371e3978141520309dad1de3",
-      "vcr2": "62ba3869a3f28a7a1db6d8a0d38b0472bc0222ea111b665c7a69839f022c0ace",
+      "vcr2": "4b7e58bf19ade6f1834b64b272731dd64bce9fc9ec9fbddf20b43011626e7ae4",
       "vz61": "2134eef74f5ddf0107a31d6c9fa4104d7aab430ccfa4dcd17937bc96cee409c2"
     },
     "rawIndexHistograms": {
       "sprintRecovery": {
         "primary": {
-          "0": 1020,
-          "1": 6086,
-          "2": 13977,
-          "3": 20298,
-          "4": 20552,
-          "5": 12165,
-          "6": 2562,
+          "0": 1029,
+          "1": 6372,
+          "2": 14825,
+          "3": 20866,
+          "4": 21542,
+          "5": 12953,
+          "6": 2597,
           "7": 285,
           "8": 375,
           "-1": 55
         },
         "sidearm": {
-          "0": 24,
-          "1": 30,
-          "2": 88,
+          "0": 26,
+          "1": 32,
+          "2": 90,
           "3": 32,
           "4": 60
         }
       },
       "adsMove": {
         "primary": {
-          "0": 247,
-          "1": 1633,
-          "2": 4397,
-          "3": 8674,
-          "4": 15130,
-          "5": 20948,
-          "6": 19475,
-          "7": 6367,
+          "0": 403,
+          "1": 1661,
+          "2": 4509,
+          "3": 9089,
+          "4": 15686,
+          "5": 21576,
+          "6": 20414,
+          "7": 7057,
           "8": 504
         },
         "sidearm": {
-          "2": 100,
-          "3": 66,
-          "4": 68
+          "2": 108,
+          "3": 72,
+          "4": 60
         }
       },
       "adsTime": {
         "primary": {
-          "0": 5042,
-          "1": 18848,
-          "2": 26506,
-          "3": 18345,
-          "4": 5717,
-          "5": 1857,
-          "6": 900,
-          "7": 160
+          "0": 5302,
+          "1": 18935,
+          "2": 25983,
+          "3": 20256,
+          "4": 7279,
+          "5": 1996,
+          "6": 968,
+          "7": 180
         },
         "sidearm": {
           "0": 96,
           "1": 132,
-          "2": 6
+          "2": 12
         }
       },
       "deploy": {
         "primary": {
-          "4": 676,
-          "5": 5464,
-          "6": 13628,
-          "7": 20416,
-          "8": 21210,
-          "9": 12309,
-          "10": 2925,
+          "4": 691,
+          "5": 5774,
+          "6": 14377,
+          "7": 20774,
+          "8": 21852,
+          "9": 13529,
+          "10": 3155,
           "11": 312,
           "12": 435
         },
@@ -3169,7 +3169,7 @@
           "1": 36,
           "2": 8,
           "3": 52,
-          "4": 70,
+          "4": 76,
           "6": 60
         }
       }
@@ -4678,16 +4678,16 @@
       "ammoId": "buckshot",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 167
+        "value": 200
       },
       "sprintRecovery": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 100
+        "value": 133
       },
       "adsMove": {
         "rawIndex": 4,
@@ -4696,10 +4696,10 @@
         "value": 0.67
       },
       "deploy": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 467
+        "value": 533
       }
     },
     {
@@ -4711,16 +4711,16 @@
       "ammoId": "flechette",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 167
+        "value": 200
       },
       "sprintRecovery": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 100
+        "value": 133
       },
       "adsMove": {
         "rawIndex": 4,
@@ -4729,10 +4729,10 @@
         "value": 0.67
       },
       "deploy": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 467
+        "value": 533
       }
     },
     {
@@ -4744,16 +4744,16 @@
       "ammoId": "slugs",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 167
+        "value": 200
       },
       "sprintRecovery": {
-        "rawIndex": 1,
-        "index": 1,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 100
+        "value": 133
       },
       "adsMove": {
         "rawIndex": 4,
@@ -4762,10 +4762,10 @@
         "value": 0.67
       },
       "deploy": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 467
+        "value": 533
       }
     },
     {
@@ -4835,12 +4835,12 @@
       }
     },
     {
-      "caseKey": "drsiar/30_fast/6h64_vert/buffer/penetration",
+      "caseKey": "drsiar/30_fast/6h64_vert/buffer/lightweight",
       "weaponId": "drsiar",
       "magazineId": "30_fast",
       "gripId": "6h64_vert",
       "ergoId": "buffer",
-      "ammoId": "penetration",
+      "ammoId": "lightweight",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 4,
@@ -4855,10 +4855,10 @@
         "value": 233
       },
       "adsMove": {
-        "rawIndex": 7,
-        "index": 7,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 0.47
+        "value": 0.54
       },
       "deploy": {
         "rawIndex": 9,
@@ -5627,12 +5627,12 @@
       }
     },
     {
-      "caseKey": "kts100/100_rnd/6h64_vert/match_trigger/penetration",
+      "caseKey": "kts100/100_rnd/6h64_vert/match_trigger/lightweight",
       "weaponId": "kts100",
       "magazineId": "100_rnd",
       "gripId": "6h64_vert",
       "ergoId": "match_trigger",
-      "ammoId": "penetration",
+      "ammoId": "lightweight",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 5,
@@ -5647,10 +5647,10 @@
         "value": 233
       },
       "adsMove": {
-        "rawIndex": 8,
-        "index": 8,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 0.42
+        "value": 0.47
       },
       "deploy": {
         "rawIndex": 9,
@@ -11674,10 +11674,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11707,10 +11707,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11740,10 +11740,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11773,10 +11773,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11806,10 +11806,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11839,10 +11839,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11872,10 +11872,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11905,10 +11905,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11938,10 +11938,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -11971,10 +11971,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -12004,10 +12004,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -12037,10 +12037,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -12070,10 +12070,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -12103,10 +12103,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -12136,10 +12136,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -12169,10 +12169,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 7,
@@ -15997,10 +15997,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16030,10 +16030,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16063,10 +16063,10 @@
       "ammoId": "lightweight",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16096,10 +16096,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -16129,10 +16129,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18208,10 +18208,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18241,10 +18241,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18274,10 +18274,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -18307,10 +18307,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 6,
-        "index": 6,
+        "rawIndex": 7,
+        "index": 7,
         "clamped": false,
-        "value": 433
+        "value": 500
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -20485,10 +20485,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -20518,10 +20518,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -20551,10 +20551,10 @@
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -20584,10 +20584,10 @@
       "ammoId": "standard",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 5,
-        "index": 5,
+        "rawIndex": 6,
+        "index": 6,
         "clamped": false,
-        "value": 367
+        "value": 433
       },
       "sprintRecovery": {
         "rawIndex": 8,
@@ -21124,10 +21124,10 @@
         "value": 83
       },
       "adsMove": {
-        "rawIndex": 4,
-        "index": 4,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 0.67
+        "value": 0.82
       },
       "deploy": {
         "rawIndex": 4,
@@ -21157,10 +21157,10 @@
         "value": 83
       },
       "adsMove": {
-        "rawIndex": 4,
-        "index": 4,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 0.67
+        "value": 0.82
       },
       "deploy": {
         "rawIndex": 4,
@@ -21190,10 +21190,10 @@
         "value": 100
       },
       "adsMove": {
-        "rawIndex": 4,
-        "index": 4,
+        "rawIndex": 2,
+        "index": 2,
         "clamped": false,
-        "value": 0.67
+        "value": 0.82
       },
       "deploy": {
         "rawIndex": 4,
@@ -21500,6 +21500,39 @@
       }
     },
     {
+      "caseKey": "m44/6_rnd/none/fast_deploy_10/frangible",
+      "weaponId": "m44",
+      "magazineId": "6_rnd",
+      "gripId": "none",
+      "ergoId": "fast_deploy_10",
+      "ammoId": "frangible",
+      "sprintTable": "sidearm",
+      "adsTime": {
+        "rawIndex": 2,
+        "index": 2,
+        "clamped": false,
+        "value": 200
+      },
+      "sprintRecovery": {
+        "rawIndex": 0,
+        "index": 0,
+        "clamped": false,
+        "value": 67
+      },
+      "adsMove": {
+        "rawIndex": 3,
+        "index": 3,
+        "clamped": false,
+        "value": 0.75
+      },
+      "deploy": {
+        "rawIndex": 4,
+        "index": 4,
+        "clamped": false,
+        "value": 350
+      }
+    },
+    {
       "caseKey": "m44/6_rnd/none/fast_deploy_10/hollow_pt",
       "weaponId": "m44",
       "magazineId": "6_rnd",
@@ -21533,12 +21566,12 @@
       }
     },
     {
-      "caseKey": "m44/6_rnd/none/fast_deploy_10/standard",
+      "caseKey": "m44/6_rnd/none/fast_deploy_10/penetration",
       "weaponId": "m44",
       "magazineId": "6_rnd",
       "gripId": "none",
       "ergoId": "fast_deploy_10",
-      "ammoId": "standard",
+      "ammoId": "penetration",
       "sprintTable": "sidearm",
       "adsTime": {
         "rawIndex": 2,
@@ -21551,39 +21584,6 @@
         "index": 0,
         "clamped": false,
         "value": 67
-      },
-      "adsMove": {
-        "rawIndex": 3,
-        "index": 3,
-        "clamped": false,
-        "value": 0.75
-      },
-      "deploy": {
-        "rawIndex": 4,
-        "index": 4,
-        "clamped": false,
-        "value": 350
-      }
-    },
-    {
-      "caseKey": "m44/6_rnd/none/fast_deploy/hollow_pt",
-      "weaponId": "m44",
-      "magazineId": "6_rnd",
-      "gripId": "none",
-      "ergoId": "fast_deploy",
-      "ammoId": "hollow_pt",
-      "sprintTable": "sidearm",
-      "adsTime": {
-        "rawIndex": 2,
-        "index": 2,
-        "clamped": false,
-        "value": 200
-      },
-      "sprintRecovery": {
-        "rawIndex": 1,
-        "index": 1,
-        "clamped": false,
-        "value": 83
       },
       "adsMove": {
         "rawIndex": 3,
@@ -22952,12 +22952,12 @@
       }
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/buffer/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/frangible",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
       "ergoId": "buffer",
-      "ammoId": "standard",
+      "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -22985,12 +22985,12 @@
       }
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/mag_catch/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/hollow_pt",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
-      "ergoId": "mag_catch",
-      "ammoId": "standard",
+      "ergoId": "buffer",
+      "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -23018,12 +23018,12 @@
       }
     },
     {
-      "caseKey": "pp19/20_fast/6h64_vert/none/standard",
+      "caseKey": "pp19/20_fast/6h64_vert/buffer/penetration",
       "weaponId": "pp19",
       "magazineId": "20_fast",
       "gripId": "6h64_vert",
-      "ergoId": "none",
-      "ammoId": "standard",
+      "ergoId": "buffer",
+      "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
         "rawIndex": 1,
@@ -23942,18 +23942,18 @@
       }
     },
     {
-      "caseKey": "sl9/30_rnd/canted_stubby/burst_mode/frangible",
+      "caseKey": "sl9/30_rnd/6h64_vert/burst_mode/frangible",
       "weaponId": "sl9",
       "magazineId": "30_rnd",
-      "gripId": "canted_stubby",
+      "gripId": "6h64_vert",
       "ergoId": "burst_mode",
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 0,
-        "index": 0,
+        "rawIndex": 1,
+        "index": 1,
         "clamped": false,
-        "value": 133
+        "value": 167
       },
       "sprintRecovery": {
         "rawIndex": 1,
@@ -23962,10 +23962,10 @@
         "value": 100
       },
       "adsMove": {
-        "rawIndex": 3,
-        "index": 3,
+        "rawIndex": 4,
+        "index": 4,
         "clamped": false,
-        "value": 0.75
+        "value": 0.67
       },
       "deploy": {
         "rawIndex": 5,
@@ -23975,18 +23975,18 @@
       }
     },
     {
-      "caseKey": "sl9/30_rnd/canted_stubby/burst_mode/hollow_pt",
+      "caseKey": "sl9/30_rnd/6h64_vert/burst_mode/hollow_pt",
       "weaponId": "sl9",
       "magazineId": "30_rnd",
-      "gripId": "canted_stubby",
+      "gripId": "6h64_vert",
       "ergoId": "burst_mode",
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 0,
-        "index": 0,
+        "rawIndex": 1,
+        "index": 1,
         "clamped": false,
-        "value": 133
+        "value": 167
       },
       "sprintRecovery": {
         "rawIndex": 1,
@@ -23995,10 +23995,10 @@
         "value": 100
       },
       "adsMove": {
-        "rawIndex": 3,
-        "index": 3,
+        "rawIndex": 4,
+        "index": 4,
         "clamped": false,
-        "value": 0.75
+        "value": 0.67
       },
       "deploy": {
         "rawIndex": 5,
@@ -24008,18 +24008,18 @@
       }
     },
     {
-      "caseKey": "sl9/30_rnd/canted_stubby/burst_mode/penetration",
+      "caseKey": "sl9/30_rnd/6h64_vert/burst_mode/penetration",
       "weaponId": "sl9",
       "magazineId": "30_rnd",
-      "gripId": "canted_stubby",
+      "gripId": "6h64_vert",
       "ergoId": "burst_mode",
       "ammoId": "penetration",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 0,
-        "index": 0,
+        "rawIndex": 1,
+        "index": 1,
         "clamped": false,
-        "value": 133
+        "value": 167
       },
       "sprintRecovery": {
         "rawIndex": 1,
@@ -24028,10 +24028,10 @@
         "value": 100
       },
       "adsMove": {
-        "rawIndex": 3,
-        "index": 3,
+        "rawIndex": 4,
+        "index": 4,
         "clamped": false,
-        "value": 0.75
+        "value": 0.67
       },
       "deploy": {
         "rawIndex": 5,
@@ -25006,10 +25006,10 @@
       "ammoId": "frangible",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 3,
-        "index": 3,
+        "rawIndex": 4,
+        "index": 4,
         "clamped": false,
-        "value": 250
+        "value": 300
       },
       "sprintRecovery": {
         "rawIndex": 5,
@@ -25039,10 +25039,10 @@
       "ammoId": "hollow_pt",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 3,
-        "index": 3,
+        "rawIndex": 4,
+        "index": 4,
         "clamped": false,
-        "value": 250
+        "value": 300
       },
       "sprintRecovery": {
         "rawIndex": 5,
@@ -25072,10 +25072,10 @@
       "ammoId": "long_range",
       "sprintTable": "primary",
       "adsTime": {
-        "rawIndex": 3,
-        "index": 3,
+        "rawIndex": 4,
+        "index": 4,
         "clamped": false,
-        "value": 250
+        "value": 300
       },
       "sprintRecovery": {
         "rawIndex": 5,

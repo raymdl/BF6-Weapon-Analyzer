@@ -397,7 +397,11 @@
     "pp19": {
       "def": "standard",
       "ammo": {
-        "standard": 0
+        "standard": 0,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15,
+        "synthetic": 20
       }
     },
     "l110": {
@@ -416,7 +420,8 @@
         "penetration": 5,
         "hollow_pt": 15,
         "frangible": 20,
-        "synthetic": 20
+        "synthetic": 20,
+        "lightweight": 10
       }
     },
     "m60": {
@@ -465,7 +470,8 @@
         "penetration": 5,
         "hollow_pt": 15,
         "frangible": 20,
-        "synthetic": 20
+        "synthetic": 20,
+        "lightweight": 10
       }
     },
     "m240l": {
@@ -658,7 +664,9 @@
       "def": "standard",
       "ammo": {
         "standard": 0,
-        "hollow_pt": 20
+        "hollow_pt": 20,
+        "penetration": 5,
+        "frangible": 20
       }
     },
     "ggh22": {

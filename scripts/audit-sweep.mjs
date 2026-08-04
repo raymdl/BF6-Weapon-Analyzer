@@ -227,11 +227,20 @@ function buildByWeapon(audit) {
   return byWeapon;
 }
 
+// Capacity and the standard/Fast distinction come from attachmentSubtype, which
+// is the label on the magazine's own card in the selection grid. The display
+// name cannot be used: it varies per weapon and frequently omits Fast even when
+// the card says FAST -- KTS100's 60Rnd Magazine, M121 A2's 50Rnd Belt Pouch and
+// M357 Trait's 8Rnd Moon Clip are all Fast cards, and M357 Trait's Speedloader
+// is a standard card despite a name that reads like a reload attachment.
+// Shotguns are carded N Shell rather than N Rnd because they are shell-fed, but
+// the two are the same capacity here; a shotgun speedloader is carded N FAST and
+// is the reload-speed variant like any Fast Mag.
 function magazineModelForRow(row, weaponMag) {
-  const match = String(row.attachmentName ?? '').match(/\b(\d+)\s*(?:RND|ROUND|SHELL)/i);
+  const match = /^(\d+)\s+(Rnd|Shell|Fast)$/i.exec(String(row.attachmentSubtype ?? '').trim());
   if (!match) return null;
   const capacity = Number(match[1]);
-  const fast = /fast/i.test(row.attachmentName ?? '');
+  const fast = /^fast$/i.test(match[2]);
   const candidates = Object.entries(weaponMag?.mags ?? {})
     .filter(([, magazine]) => magazine.mag === capacity && /fast/i.test(magazine.name ?? '') === fast);
   return candidates.length === 1 ? candidates[0] : null;
