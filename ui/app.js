@@ -232,7 +232,7 @@ setSimContext({
 });
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
-  AMMO,
+  AMMO, WEAPON_AMMO,
   RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
   BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
@@ -763,7 +763,7 @@ function renderOverview() {
     { lbl: 'Fire Rate',   compute: w => w.cls === 'Shotgun' ? null : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
       tooltip: 'Weapon fire rate in rounds per minute.' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
-      tooltip: 'Projectile velocity after barrel effects are applied. Higher values reduce travel time and lead.' },
+      tooltip: 'Projectile velocity after barrel and ammunition effects are applied. Subsonic loads fire markedly slower. Higher values reduce travel time and lead.' },
     { lbl: 'Mag Size',    k: 'mag',                                      unit: 'Rds', fmt: v => v,                                   higherBetter: true,
       tooltip: 'Rounds available in the selected magazine.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
@@ -1959,7 +1959,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
     { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
     { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after magazine and grip effects. Lower is faster.' },
-    { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel effects. Higher reduces travel time and lead.' },
+    { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel and ammunition effects. Subsonic loads fire markedly slower. Higher reduces travel time and lead.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
     { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.' },
