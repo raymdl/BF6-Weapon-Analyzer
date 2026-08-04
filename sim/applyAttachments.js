@@ -31,7 +31,7 @@ import { resolveHitMultipliers } from './damage.js';
 
 let _ctx = {
   MUZZLES: [], BARRELS: [], GRIPS: [], LASERS: [], LIGHTS: [],
-  AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {},
+  AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {}, WEAPON_AMMO: {},
   MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {}, LIGHTS_BY_ID: {},
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},
   RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
@@ -112,6 +112,7 @@ export function resolveDrawTime({
   magazineSprintRecoveryTierShift = 0,
   gripSprintRecoveryTierShift = 0,
   ergonomicsSprintRecoveryTierShift = 0,
+  barrelSprintRecoveryTierShift = 0,
   axis = _ctx.DRAW_TIME_AXIS,
   primarySprintTable = _ctx.PRIMARY_SPRINT_REC_TIERS,
   sidearmSprintTable = _ctx.SIDEARM_SPRINT_REC_TIERS,
@@ -150,13 +151,14 @@ export function resolveDrawTime({
     magazine: magazineSprintRecoveryTierShift,
     grip: gripSprintRecoveryTierShift,
     ergonomics: ergonomicsSprintRecoveryTierShift,
+    barrel: barrelSprintRecoveryTierShift,
   };
   if (Object.values(shifts).some(value => !Number.isInteger(value))) {
     return invalidDrawTime('non-integer-attachment-shift');
   }
 
   const effectiveDrawTimeTier = weaponMag.drawTimeTier
-    + shifts.magazine + shifts.grip + shifts.ergonomics;
+    + shifts.magazine + shifts.grip + shifts.ergonomics + shifts.barrel;
   const sprintCoordinate = effectiveDrawTimeTier;
   const sprintIndex = clampTierCoordinate(
     sprintCoordinate - sprintContract.coordinateOrigin,
@@ -203,6 +205,39 @@ export function resolveDrawTime({
       adjustment: -shifts.ergonomics,
     },
   };
+}
+
+/**
+ * Resolve the pre-barrel muzzle velocity for an ammunition type.
+ *
+ * Subsonic loads sit outside the normal-ammo velocity ladder, so their drop is
+ * carried per weapon/ammo pair in `WEAPON_AMMO[weaponId].velocityTreatments`
+ * rather than inferred. A `subsonic-tier` treatment steps the weapon's base
+ * velocity down the shared 0.8 ladder; the absolute kinds pin a directly
+ * transcribed value. The barrel multiplier is applied by the caller, so an
+ * absolute treatment is the velocity at the capture barrel.
+ */
+export function resolveAmmoVelocity({
+  baseVelocityMps = null,
+  treatment = null,
+  velocityLadder = _ctx.VELOCITY_LADDER,
+} = {}) {
+  if (baseVelocityMps == null) return { velocity: null, reason: 'missing-base-velocity' };
+  if (!treatment) return { velocity: baseVelocityMps, reason: 'no-treatment' };
+
+  if (treatment.kind === 'subsonic-tier') {
+    const tier = treatment.subsonicVelocityTier;
+    if (!Number.isInteger(tier) || tier < 0) {
+      return { velocity: baseVelocityMps, reason: 'invalid-subsonic-tier' };
+    }
+    return { velocity: baseVelocityMps * velocityLadder ** tier, reason: 'subsonic-tier' };
+  }
+
+  const absolute = treatment.subsonicVelocityMps;
+  if (Number.isFinite(absolute) && absolute > 0) {
+    return { velocity: absolute, reason: treatment.kind ?? 'subsonic-absolute' };
+  }
+  return { velocity: baseVelocityMps, reason: 'unrecognized-treatment' };
 }
 
 /**
@@ -424,6 +459,25 @@ export function applyAttachments(w, atts) {
     BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
   });
 
+  // ── Ammo velocity ─────────────────────────────────────────────────────────────
+  const ammoVelocity = resolveAmmoVelocity({
+    baseVelocityMps: w.bulletVel,
+    treatment: _ctx.WEAPON_AMMO?.[w.id]?.velocityTreatments?.[ammoType.id] ?? null,
+  });
+
+  // ── Spot-on-fire ranges ───────────────────────────────────────────────────────
+  // Muzzle and ammo both suppress the signature; the tighter of the two wins.
+  // A subsonic load fired through a suppressor drops 2D spotting further than
+  // either does alone, carried as the ammo's suppressed minimap range.
+  const suppressedMinimapSpot = muz.suppressor === true
+    ? ammoType.suppressedMinimapSpot
+    : null;
+  const worldSpot = Math.min(muz.worldSpot ?? 54, ammoType.worldSpot ?? Infinity);
+  const minimapSpot = Math.min(
+    muz.minimapSpot ?? 150,
+    suppressedMinimapSpot ?? ammoType.minimapSpot ?? Infinity,
+  );
+
   // ── Ammo display ──────────────────────────────────────────────────────────────
   const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
   const collateralMult = COLLATERAL_MULT_OVERRIDE[w.id]?.[ammoType.id]
@@ -476,6 +530,7 @@ export function applyAttachments(w, atts) {
       magazineSprintRecoveryTierShift: magSprintRecoveryTierShift,
       gripSprintRecoveryTierShift,
       ergonomicsSprintRecoveryTierShift: ergoSprintRecoveryTierShift,
+      barrelSprintRecoveryTierShift: bar.sprintRecoveryTierShift ?? 0,
       axis: DRAW_TIME_AXIS,
       primarySprintTable: PRIMARY_SPRINT_REC_TIERS,
       sidearmSprintTable: SIDEARM_SPRINT_REC_TIERS,
@@ -508,8 +563,8 @@ export function applyAttachments(w, atts) {
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
-    _worldSpot:              muz.worldSpot   ?? 54,
-    _minimapSpot:            muz.minimapSpot ?? 150,
+    _worldSpot:              worldSpot,
+    _minimapSpot:            minimapSpot,
     _weaponSway:             weaponSway,
     _visualRecoil:           ergoData.visualRecoil ?? 0,
     _laserVisible:           las.laserVisible ?? null,
@@ -533,8 +588,8 @@ export function applyAttachments(w, atts) {
     recoilIncAds: w.recoilIncAds != null
       ? +(w.recoilIncAds * (bar.adsSpreadIncMult ?? 1)).toFixed(3)
       : null,
-    bulletVel: w.bulletVel != null && velocityResolution.multiplier != null
-      ? floorVelocityDisplay(w.bulletVel * velocityResolution.multiplier)
+    bulletVel: ammoVelocity.velocity != null && velocityResolution.multiplier != null
+      ? floorVelocityDisplay(ammoVelocity.velocity * velocityResolution.multiplier)
       : null,
     deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : null,
     mag:    magMag ?? w.mag,

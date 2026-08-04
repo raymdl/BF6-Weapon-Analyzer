@@ -26,8 +26,8 @@ const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
 const STANDARD_SHIFTED_GRIPS = ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby'];
 const SOURCE_GRIP_NAMES = ['None', '6H64 Vertical', 'Classic Vertical', 'Stippled Stubby', 'Low-Profile Stubby'];
 const EXEMPT_SOURCE_WEAPONS = new Set(['SVK-8.6', 'VSSM', '18.5KS-K', 'DB-12']);
-const PRE_PHASE3_DIGEST = '9890d022eb9f367552c272e58b75fee6c266dafbaeda34d2ea6ee04093675a9c';
-const PRE_PHASE4_DIGEST = '5288c578dce3f72c823401acf8f183cb33372552ad0f15acf6cb923ab72b8dc6';
+const PRE_PHASE3_DIGEST = '92c0a5ad6127ea5d331589d73b3c9c994dfb33535bd6bf29ae7fb5d4b9f13b21';
+const PRE_PHASE4_DIGEST = '0ec9d0d5fc0804c757d3fa1cdc65c548c6b25b79b3b2360a181d22ef24c2ce52';
 const VARIANT_BASES = {
   svk86: {
     '6h64_vert_svk86': '6h64_vert',
@@ -240,7 +240,7 @@ function buildEnumeration({
       gripSelection: 'none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot',
       ergoSelection: 'none plus WEAPON_ERGO[weapon].avail',
       ammoSelection: 'all IDs in WEAPON_AMMO[weapon].ammo, including standard-only weapons',
-      barrelSelection: 'weapon barrelDef only; barrels do not affect sprint recovery or ADS move',
+      barrelSelection: 'weapon barrelDef only; no weapon defaults to a barrel carrying a sprint recovery shift',
       caseKey: 'weaponId/magazineId/gripId/ergoId/ammoId',
     },
     counts: {
@@ -620,7 +620,7 @@ test('Phase 2b-iii enumerates exactly the intended ADS-move transition', () => {
 test('Phase 2b-iii adds no clamps and preserves existing sprint/deploy clamp identities', () => {
   const actual = current();
   const previous = before();
-  assert.deepEqual(actual.clampCounts, { sprintRecovery: 55, adsMove: 0, adsTime: 0, deploy: 435 });
+  assert.deepEqual(actual.clampCounts, { sprintRecovery: 63, adsMove: 0, adsTime: 0, deploy: 435 });
   assert.deepEqual(actual.cases.filter(row => row.adsMove.clamped), []);
   assert.deepEqual(actual.cases.filter(row => row.sprintRecovery.clamped).map(row => row.caseKey),
     previous.cases.filter(row => row.sprintRecovery.clamped).map(row => row.caseKey));
@@ -640,7 +640,7 @@ test('Phase 2b-iv converts base indices with strict full-enumeration zero-diff',
   assert.deepEqual(perWeaponDigests(actual.cases), baseline.perWeaponDigest);
   assert.deepEqual(rawIndexHistograms(actual.cases), baseline.rawIndexHistograms);
   assert.deepEqual(clampCaseKeysFor(actual.cases), baseline.clampCaseKeys);
-  assert.deepEqual(actual.clampCounts, { sprintRecovery: 55, adsMove: 0, adsTime: 0, deploy: 435 });
+  assert.deepEqual(actual.clampCounts, { sprintRecovery: 63, adsMove: 0, adsTime: 0, deploy: 435 });
   assert.deepEqual(actual.cases.filter(row => row.adsMove.clamped), []);
 });
 

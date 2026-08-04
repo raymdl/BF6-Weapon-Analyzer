@@ -121,6 +121,73 @@
       "collateralMult": {
         "Shotgun": 0.33
       }
+    },
+    {
+      "id": "subsonic",
+      "name": "Subsonic",
+      "hsMult": null,
+      "collateralMult": {
+        "Assault Rifle": 0.67,
+        "Carbine": 0.67,
+        "LMG": 0.67,
+        "DMR": 0.67,
+        "Sniper Rifle": 0.67,
+        "SMG": 0.5,
+        "Sidearm": 0.5
+      },
+      "worldSpot": 27,
+      "minimapSpot": 64,
+      "suppressedMinimapSpot": 9
+    },
+    {
+      "id": "subsonic_hp",
+      "name": "Sub HP",
+      "hsMult": "hp",
+      "collateralMult": {
+        "Assault Rifle": 0.67,
+        "Carbine": 0.67,
+        "LMG": 0.67,
+        "DMR": 0.67,
+        "Sniper Rifle": 0.67,
+        "SMG": 0.5,
+        "Sidearm": 0.5
+      },
+      "worldSpot": 27,
+      "minimapSpot": 64,
+      "suppressedMinimapSpot": 9
+    },
+    {
+      "id": "subsonic_pen",
+      "name": "Sub Pen",
+      "hsMult": null,
+      "adsRecoilTierMod": -1,
+      "collateralMult": {
+        "Assault Rifle": 1,
+        "Carbine": 1,
+        "LMG": 1,
+        "DMR": 1,
+        "Sniper Rifle": 1,
+        "SMG": 0.75,
+        "Sidearm": 0.75
+      },
+      "worldSpot": 27,
+      "minimapSpot": 64,
+      "suppressedMinimapSpot": 9
+    },
+    {
+      "id": "range_pen",
+      "name": "Range Pen",
+      "hsMult": null,
+      "adsRecoilTierMod": -1,
+      "collateralMult": {
+        "Assault Rifle": 1,
+        "Carbine": 1,
+        "LMG": 1,
+        "DMR": 1,
+        "Sniper Rifle": 1,
+        "SMG": 0.75,
+        "Sidearm": 0.75
+      }
     }
   ],
   "WEAPON_AMMO": {
@@ -264,7 +331,19 @@
         "penetration": 5,
         "lightweight": 10,
         "hollow_pt": 20,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 273
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 273
+        }
       }
     },
     "grtbc": {
@@ -295,7 +374,21 @@
         "penetration": 5,
         "lightweight": 10,
         "hollow_pt": 20,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
       }
     },
     "sor300sc": {
@@ -305,7 +398,21 @@
         "penetration": 5,
         "lightweight": 10,
         "hollow_pt": 20,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic_hp": 30,
+        "subsonic": 10
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
       }
     },
     "sgx": {
@@ -314,7 +421,21 @@
         "standard": 5,
         "penetration": 5,
         "hollow_pt": 15,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
       }
     },
     "pw5a3": {
@@ -324,7 +445,21 @@
         "penetration": 5,
         "hollow_pt": 15,
         "frangible": 20,
-        "synthetic": 20
+        "synthetic": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
       }
     },
     "pw7a2": {
@@ -334,7 +469,15 @@
         "penetration": 5,
         "hollow_pt": 15,
         "frangible": 20,
-        "synthetic": 20
+        "synthetic": 20,
+        "subsonic_pen": 10
+      },
+      "velocityTreatments": {
+        "subsonic_pen": {
+          "kind": "subsonic-tungsten-absolute",
+          "subsonicVelocityMps": 341,
+          "combinesWith": "penetration"
+        }
       }
     },
     "umg40": {
@@ -344,7 +487,21 @@
         "penetration": 5,
         "hollow_pt": 15,
         "frangible": 20,
-        "synthetic": 25
+        "synthetic": 25,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
       }
     },
     "usg90": {
@@ -354,7 +511,19 @@
         "penetration": 5,
         "lightweight": 10,
         "hollow_pt": 15,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 265
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 265
+        }
       }
     },
     "kv9": {
@@ -363,7 +532,21 @@
         "standard": 5,
         "penetration": 5,
         "hollow_pt": 15,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
       }
     },
     "scw10": {
@@ -372,7 +555,21 @@
         "standard": 5,
         "penetration": 5,
         "hollow_pt": 15,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 35
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
       }
     },
     "sl9": {
@@ -382,7 +579,21 @@
         "penetration": 5,
         "hollow_pt": 15,
         "frangible": 20,
-        "synthetic": 20
+        "synthetic": 20,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
       }
     },
     "cz3a1": {
@@ -391,17 +602,45 @@
         "standard": 5,
         "penetration": 5,
         "hollow_pt": 15,
-        "frangible": 20
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
       }
     },
     "pp19": {
       "def": "standard",
       "ammo": {
-        "standard": 0,
+        "standard": 5,
         "penetration": 5,
-        "frangible": 20,
         "hollow_pt": 15,
-        "synthetic": 20
+        "frangible": 20,
+        "synthetic": 20,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
       }
     },
     "l110": {
@@ -639,7 +878,21 @@
         "standard": 5,
         "penetration": 5,
         "frangible": 20,
-        "hollow_pt": 15
+        "hollow_pt": 15,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        }
       }
     },
     "es57": {

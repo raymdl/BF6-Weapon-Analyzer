@@ -177,9 +177,9 @@ test('PP-19 attachment catalogs contain the reviewed seven-slot backfill', () =>
   for (const id of ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby']) {
     assert.equal(Object.hasOwn(attachments.GRIPS.find(grip => grip.id === id), 'adsMoveSpeedTierShift'), true, `${id} must carry the Phase 2b-iii shift`);
   }
-  // The 2026-07-31 seven-slot backfill recorded the seven PP-19 ammo captures as
-  // 'out-of-scope; no WEAPON_AMMO catalog change'. They are now applied from those captures.
-  assert.deepEqual(ammo.WEAPON_AMMO.pp19, { def: 'standard', ammo: { standard: 0, penetration: 5, frangible: 20, hollow_pt: 15, synthetic: 20 } });
+  assert.deepEqual(ammo.WEAPON_AMMO.pp19.ammo, {
+    standard: 5, penetration: 5, hollow_pt: 15, frangible: 20, synthetic: 20, subsonic: 10, subsonic_hp: 25,
+  });
   assert.equal(recoilDecay.RECOIL_DEC.pp19, 55);
   assert.equal(recoilDecay.RECOIL_DEC_TEXP.pp19, 1.023);
   assert.equal(balance.RECOIL_MULT.pp19, 0.9333);

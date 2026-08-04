@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { damageAtRange } from '../sim/damage.js';
+import { deriveSweetSpot, SWEET_SPOT_DAMAGE } from './sweet-spot.mjs';
 import {
   TUBE_FED_SHOTGUNS,
   loadReloadExceptionRegister,
@@ -224,40 +225,27 @@ if (pp19) {
 if (damageProvenance.release !== '1.3.3.0' || damageProvenance.baseDamage?.status !== 'provisional-community-tested') {
   fail('damage provenance must remain pinned to 1.3.3.0 with provisional base-damage status');
 }
-const expectedSweetSpots = {
-  sv98: [54, 75],
-  m2010esr: [75, 100],
-  psr: [90, 120],
-  l115: [100, 133],
-};
-for (const [weaponId, rangeM] of Object.entries(expectedSweetSpots)) {
-  const weapon = weapons.find(item => item.id === weaponId);
-  const provenance = damageProvenance.sniperSweetSpots?.find(item => item.weaponId === weaponId);
-  if (!weapon || !provenance || provenance.status !== 'applied' || provenance.source !== 'EA') {
-    fail(`${weaponId}: missing applied EA sweet-spot provenance`);
+// Sweet spots are read off the Sym curve, never pinned to a distance. EA's 1.3.3.0 patch notes
+// described the current windows, but that was a point-in-time post and EA have said sweet spots
+// may move again; pinning those numbers would make a stale post outrank a future import. Assert
+// the shape a bolt-action curve must have instead, so new distances flow through untouched.
+for (const weapon of weapons.filter(item => item.cls === 'Sniper Rifle')) {
+  const { rangeM } = deriveSweetSpot(weapon);
+  if (rangeM === null) continue;
+  const [start, end] = rangeM;
+  if (!(end > start)) {
+    fail(`${weapon.id}: sweet-spot plateau does not span a range`);
     continue;
   }
-  if (JSON.stringify(provenance.rangeM) !== JSON.stringify(rangeM)
-      || JSON.stringify(weapon.sweetSpot?.rangeM) !== JSON.stringify(rangeM)
-      || weapon.sweetSpot?.source !== 'EA') {
-    fail(`${weaponId}: runtime/provenance sweet-spot range mismatch`);
+  if (damageAtRange(weapon, start) !== SWEET_SPOT_DAMAGE || damageAtRange(weapon, end) !== SWEET_SPOT_DAMAGE) {
+    fail(`${weapon.id}: damage curve does not hold ${SWEET_SPOT_DAMAGE} across its sweet spot`);
   }
-  // The Sym curve holds 100 across the whole sweet-spot window and ramps out of
-  // it, so assert the evaluated window rather than a single labelled breakpoint.
-  const [start, end] = rangeM;
-  if (damageAtRange(weapon, start) !== 100 || damageAtRange(weapon, end) !== 100) {
-    fail(`${weaponId}: damage curve does not hold 100 across the EA sweet spot`);
-  }
-  if (!(damageAtRange(weapon, start - 1) < 100) || !(damageAtRange(weapon, end + 1) < 100)) {
-    fail(`${weaponId}: damage curve does not encode the EA sweet-spot endpoints`);
+  if (!(damageAtRange(weapon, start - 1) < SWEET_SPOT_DAMAGE) || !(damageAtRange(weapon, end + 1) < SWEET_SPOT_DAMAGE)) {
+    fail(`${weapon.id}: damage curve does not ramp in and out of its sweet spot`);
   }
 }
-const miniScout = weapons.find(item => item.id === 'miniscout');
-const miniProvenance = damageProvenance.sniperSweetSpots?.find(item => item.weaponId === 'miniscout');
-if (!miniScout || !miniProvenance || miniProvenance.status !== 'exception'
-    || miniProvenance.source !== 'EA' || miniScout.sweetSpot?.rangeM !== null
-    || miniScout.sweetSpot?.source !== 'EA') {
-  fail('miniscout: Mini Scout no-sweet-spot exception is missing or untagged');
+if (weapons.some(weapon => 'sweetSpot' in weapon)) {
+  fail('sweetSpot is derived from the damage curve and must not be stored on a weapon');
 }
 
 const attachmentSets = {

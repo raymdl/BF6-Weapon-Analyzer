@@ -6147,14 +6147,7 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
-    "sweetSpot": {
-      "rangeM": [
-        75,
-        100
-      ],
-      "source": "EA"
-    },
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
     "reloadSpeed": 1
   },
   {
@@ -6286,14 +6279,7 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
-    "sweetSpot": {
-      "rangeM": [
-        54,
-        75
-      ],
-      "source": "EA"
-    },
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
     "reloadSpeed": 1
   },
   {
@@ -6420,14 +6406,7 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
-    "sweetSpot": {
-      "rangeM": [
-        90,
-        120
-      ],
-      "source": "EA"
-    },
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
     "reloadSpeed": 1
   },
   {
@@ -6549,11 +6528,7 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear falloff, no EA sweet spot",
-    "sweetSpot": {
-      "rangeM": null,
-      "source": "EA"
-    },
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear falloff, no sweet spot",
     "reloadSpeed": 1
   },
   {
@@ -6680,14 +6655,7 @@
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff, EA sweet-spot window confirmed by Sym",
-    "sweetSpot": {
-      "rangeM": [
-        100,
-        133
-      ],
-      "source": "EA"
-    },
+    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
     "reloadSpeed": 1
   },
   {

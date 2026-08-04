@@ -6,7 +6,7 @@
     {
       "id": "ea-update-notes",
       "url": "https://www.ea.com/games/battlefield/redsec/news/battlefield-6-game-update-1-3-3-0",
-      "authority": "Declared mechanics, hit-zone multipliers, explicit velocity and recoil changes, drag changes, and sniper sweet spots"
+      "authority": "Declared mechanics, hit-zone multipliers, explicit velocity and recoil changes, drag changes"
     },
     {
       "id": "ea-gunplay-deep-dive",
@@ -22,9 +22,15 @@
       "declaredVersion": "1.3.3.0",
       "declaredVersionDate": "30 JUN 2026",
       "authority": "Raw base weapon, recoil, spread/recovery, reload, deploy, magazine, gravity, and base-drag fields",
-      "excludedFromAutomaticImport": ["damage.dmgs", "damage.dists"],
+      "excludedFromAutomaticImport": [
+        "damage.dmgs",
+        "damage.dists"
+      ],
       "supersededFor": {
-        "fields": ["damage.dmgs", "damage.dists"],
+        "fields": [
+          "damage.dmgs",
+          "damage.dists"
+        ],
         "by": "sym-bf6-json-damage-refresh"
       }
     },
@@ -57,8 +63,7 @@
     "eaOverride": [
       "hit-zone multipliers",
       "automatic headshot multipliers",
-      "explicitly listed velocity and recoil changes",
-      "sniper sweet-spot ranges"
+      "explicitly listed velocity and recoil changes"
     ],
     "symImport": [
       "base weapon identity and class",
