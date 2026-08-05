@@ -7,6 +7,7 @@ import {
   simulateSpread, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
+import { captureView, captureFilename } from './capture.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
 import { createShareCodec } from '../sim/share-state.js';
@@ -2619,6 +2620,106 @@ function initMobileTooltips() {
 
 // ── EVENT BINDING ─────────────────────────────────────────────────────────────
 
+// ── SHARE MENU ────────────────────────────────────────────────────────────────
+
+/** Flashes the outcome on the Share button, which owns the menu. */
+function flashShare(text, ok) {
+  const btn = document.getElementById('shareBtn');
+  if (!btn) return;
+  btn._origText ??= btn.textContent;
+  btn.textContent = text;
+  btn.classList.toggle('copied', ok);
+  clearTimeout(btn._resetTimer);
+  btn._resetTimer = setTimeout(() => {
+    btn.textContent = btn._origText;
+    btn.classList.remove('copied');
+  }, 1600);
+}
+
+async function copyShareLink() {
+  syncUrl();
+  const url = location.href;
+  let ok = false;
+  try { await navigator.clipboard.writeText(url); ok = true; } catch { /* fall through */ }
+  if (!ok) {
+    const t = document.createElement('input');
+    t.value = url; t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.appendChild(t); t.select();
+    try { ok = document.execCommand('copy'); } catch { /* ignore */ }
+    t.remove();
+  }
+  flashShare(ok ? 'Link copied!' : 'Copy failed', ok);
+}
+
+async function copyShareImage(item) {
+  const label = item.textContent;
+  item.disabled = true;
+  item.textContent = 'Rendering…';
+  try {
+    const blob = await captureView();
+    // Firefox cannot write images to the clipboard, so fall back to a download
+    // rather than reporting a failure the user can do nothing about.
+    let copied = false;
+    try {
+      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        copied = true;
+      }
+    } catch { /* fall through to download */ }
+    if (!copied) {
+      const names = state.slots
+        .slice(0, state.comparing ? 2 : 1)
+        .map(s => s.weapon?.name);
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = captureFilename(names);
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+    }
+    flashShare(copied ? 'Image copied!' : 'Image saved!', true);
+  } catch {
+    flashShare('Capture failed', false);
+  } finally {
+    item.disabled = false;
+    item.textContent = label;
+  }
+}
+
+function bindShareMenu() {
+  const btn = document.getElementById('shareBtn');
+  const menu = document.getElementById('shareMenu');
+  if (!btn || !menu) return;
+
+  const close = () => {
+    menu.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+  };
+  const open = () => {
+    menu.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+  };
+
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (menu.hidden) open(); else close();
+  });
+  document.addEventListener('click', e => {
+    if (!menu.hidden && !menu.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !menu.hidden) { close(); btn.focus(); }
+  });
+
+  document.getElementById('shareLinkBtn')?.addEventListener('click', () => {
+    close();
+    copyShareLink();
+  });
+  document.getElementById('shareImgBtn')?.addEventListener('click', e => {
+    close();
+    copyShareImage(e.currentTarget);
+  });
+}
+
 function bindEvents() {
   // Logo → home. Every loadout and view choice lives in the location hash, so
   // reloading the bare path is the one reset guaranteed to match a cold load
@@ -2653,26 +2754,8 @@ function bindEvents() {
   });
   document.getElementById('cloneLoadoutBtn').addEventListener('click', cloneCompareLoadout);
 
-  // Share / copy link
-  document.getElementById('shareBtn')?.addEventListener('click', async () => {
-    const btn = document.getElementById('shareBtn');
-    syncUrl();
-    const url = location.href;
-    let ok = false;
-    try { await navigator.clipboard.writeText(url); ok = true; } catch { /* fall through */ }
-    if (!ok) {
-      const t = document.createElement('input');
-      t.value = url; t.style.position = 'fixed'; t.style.opacity = '0';
-      document.body.appendChild(t); t.select();
-      try { ok = document.execCommand('copy'); } catch { /* ignore */ }
-      t.remove();
-    }
-    const orig = btn.textContent;
-    btn.textContent = ok ? 'Link copied!' : 'Copy failed';
-    btn.classList.toggle('copied', ok);
-    clearTimeout(btn._resetTimer);
-    btn._resetTimer = setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1600);
-  });
+  // Share menu — copy the link, or a PNG of the whole view
+  bindShareMenu();
 
   // Pop the pattern into its own window, carrying the current loadout and view
   // across in the hash so it opens on exactly what you were looking at.

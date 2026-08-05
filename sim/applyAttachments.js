@@ -416,7 +416,8 @@ export function applyAttachments(w, atts) {
     * Math.pow(adsVarGroup?.dirVarMult ?? 1, (adsVarGroup?.dirVarExp ?? 0) + totalAdsVarTierMod)).toFixed(3);
 
   // ── Display tags ─────────────────────────────────────────────────────────────
-  const tags = [muz, bar, grp, las].filter(a => a.id !== 'none').map(a => a.name);
+  // Sight is deliberately absent: it never changes the numbers the label sits above.
+  const tags = [muz, bar, grp, las, lit].filter(a => a && a.id !== 'none').map(a => a.name);
 
   // ── ADS time ─────────────────────────────────────────────────────────────────
   const combinedAdsTimeTierMod = (grp.adsTimeTierMod ?? 0) + (bar.adsTimeTierMod ?? 0);
@@ -485,7 +486,11 @@ export function applyAttachments(w, atts) {
   const healthRegenDelayS = ammoType.healthRegenDelayS ?? _ctx.HEALTH_REGEN_DELAY_S;
 
   // ── Ammo display ──────────────────────────────────────────────────────────────
-  const ammoName = ammoType.id !== 'standard' ? ammoType.name : null;
+  // Ammo always shows, default included — a shared image should never leave the
+  // reader guessing whether Standard was a choice or just the slot being empty.
+  // Display-only casing, mirroring attDisplayName in loadout.js — the overview
+  // label would otherwise read "#01 BUCK" while the sidebar reads "#01 Buck".
+  const ammoName = ammoType.id !== 'none' ? ammoType.name.replace(/\bBUCK\b/g, 'Buck') : null;
   const collateralMult = COLLATERAL_MULT_OVERRIDE[w.id]?.[ammoType.id]
     ?? ammoType.collateralMult?.[w.cls] ?? null;
 
@@ -549,7 +554,9 @@ export function applyAttachments(w, atts) {
   }
 
   // ── Label ─────────────────────────────────────────────────────────────────────
-  const magTags  = magData?.name && magData.name !== wm?.mags?.[wm?.def]?.name ? [magData.name] : [];
+  // Magazine likewise always shows; magData already resolves to the weapon's
+  // default mag when no mag is selected, so this covers the stock case too.
+  const magTags  = magData?.name ? [magData.name] : [];
   const ergoTags = ergoData.id !== 'none' ? [ergoData.name] : [];
   const allTags  = [...tags, ...(ammoName ? [ammoName] : []), ...magTags, ...ergoTags];
   const fireMode = ergoData.setsFireModeAuto ? 'auto'
