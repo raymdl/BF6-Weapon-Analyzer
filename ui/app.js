@@ -759,8 +759,15 @@ function renderOverview() {
   const fields = [
     { lbl: 'Base Dmg',    compute: w => getDmg(w, 0),                    unit: '',    fmt: v => v != null ? v.toFixed(1) : '—',       higherBetter: true,
       tooltip: 'Damage dealt by one unarmored chest shot at 0m before range falloff. REDSEC armor is not modeled.' },
-    { lbl: 'HS Mult',     k: '_hsMult',                                  unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
-      tooltip: 'Headshot damage multiplier after ammo effects are applied.' },
+    // Two multipliers in one card, each carrying its own grey ×. Paired stats
+    // like this drop the comparison badge — there is no single number to diff.
+    { lbl: 'HS Mult',     compute: w => ({ hs: w?._hsMult, limb: w?._limbMult }), unit: '',
+      fmt: obj => {
+        const cell = v => (v != null ? `${v.toFixed(2)}<span class="sunit">×</span>` : '—');
+        return `${cell(obj?.hs)}<span class="sunit"> / </span>${cell(obj?.limb)}`;
+      },
+      noDiff: true,
+      tooltip: 'Headshot damage multiplier and limb (arm/leg/abdomen) multiplier, after ammo effects are applied.' },
     { lbl: 'Fire Rate',   compute: w => w.cls === 'Shotgun' ? null : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
       tooltip: 'Weapon fire rate in rounds per minute.' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
@@ -799,7 +806,7 @@ function renderOverview() {
   ];
   const overviewLabels = {
     'Base Dmg': 'Base Damage',
-    'HS Mult': 'Headshot Mult',
+    'HS Mult': 'HS/Limb Multiplier',
     'Bullet Vel': 'Bullet Velocity',
     'Mag Size': 'Magazine Size',
     'Strafe Spd': 'Strafe Speed',
@@ -868,16 +875,18 @@ function renderOverview() {
     'Spread Inc/Shot': 'spread', 'ADS Spread': 'spread', 'Hipfire Spread': 'spread',
     '3D/Map Spot': 'conceal',
   };
+  // Split so both rows carry the same number of cards (9 and 9) rather than
+  // grouping by theme alone, which left the first row noticeably longer.
   const STAT_ROWS = [
     [
       { key: 'combat',   label: 'Combat',      color: '#c9a227' },
-      { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
-      { key: 'spread',   label: 'Spread',      color: '#4d94d0' },
+      { key: 'mobility', label: 'Mobility',    color: '#4f9c98' },
+      { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
     ],
     [
       { key: 'ammo',     label: 'Ammo',        color: '#78a840' },
-      { key: 'mobility', label: 'Mobility',    color: '#4f9c98' },
-      { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
+      { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
+      { key: 'spread',   label: 'Spread',      color: '#4d94d0' },
     ],
   ];
   for (const rowSecs of STAT_ROWS) {
