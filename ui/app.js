@@ -806,7 +806,7 @@ function renderOverview() {
   ];
   const overviewLabels = {
     'Base Dmg': 'Base Damage',
-    'HS Mult': 'HS/Limb Multiplier',
+    'HS Mult': 'HS/Limb Mult',
     'Bullet Vel': 'Bullet Velocity',
     'Mag Size': 'Magazine Size',
     'Strafe Spd': 'Strafe Speed',
@@ -2099,7 +2099,9 @@ function targetImpactStatsHtml(entries, showHeading = false) {
   const colors = ['c1', 'c2'];
   const fmtDamage = value => value == null ? '—' : Math.min(100, value).toFixed(1);
   const fmtMult = value => value == null ? '' : `<span class="target-zone-mult">${value.toFixed(2)}×</span>`;
-  // 100 health is a kill; 75 leaves the target one body shot from dying.
+  // 100 health is a kill. 75 is the critical-assist threshold — it says nothing
+  // about a follow-up body shot, since that depends on the weapon's damage at
+  // this range.
   const damageClass = value => value == null ? '' : value >= 100 ? ' class="dmg-kill"' : value >= 75 ? ' class="dmg-crit"' : '';
   // The tab strip names the block, so the heading is only needed where the
   // strip is absent. Range and aim point already live on the distance slider
@@ -2125,7 +2127,7 @@ function targetImpactStatsHtml(entries, showHeading = false) {
         <div class="target-impact-summary">
           <div><span>Acc</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
           <div><span>Hits</span><strong>${summary.hits} / ${summary.totalShots}</strong></div>
-          <div><span>Damage</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal, 75+ leaves one body shot to kill">${fmtDamage(summary.totalDamage)}</strong></div>
+          <div><span>Damage</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal; 75+ counts as a critical assist">${fmtDamage(summary.totalDamage)}</strong></div>
           <div><span>Lethal</span>${kill}</div>
         </div>
         <table class="target-zone-table">
