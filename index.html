@@ -133,7 +133,7 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .sgroup:last-child{margin-bottom:0}
 .sgroup-hd{font-size:0.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
 .sgrid{display:flex;flex-wrap:wrap;gap:5px}
-.scard{width:112px;flex-shrink:0;background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:4px 8px;letter-spacing:-0.03em}
+.scard{width:106px;flex-shrink:0;background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:4px 8px;letter-spacing:-0.03em}
 .scard.stat-group{background:#202929}
 .sgrid .sval,.sgrid .scmp-row{white-space:nowrap}
 .slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:1px;white-space:nowrap}
@@ -214,6 +214,9 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .rc-range:disabled{cursor:not-allowed}
 .rc-readout{font-size:.63rem;font-variant-numeric:tabular-nums;color:#c6d0d0;white-space:nowrap;flex-shrink:0}
 .rc-readout .rc-unit{color:var(--muted);margin-left:1px}
+/* The distance and zoom values are read while dragging their slider, so they
+   carry a size up from the other read-outs. */
+.rc-viewbar .rc-readout{font-size:.72rem}
 /* Chart viewport — tab strip, contextual bar and canvas read as one card */
 .rc-viewport{border:1px solid var(--border);border-radius:6px;background:#0b1010;overflow:hidden;min-width:0}
 .rc-tabstrip{display:flex;align-items:stretch;flex-wrap:wrap;background:#151b1b;border-bottom:1px solid var(--border)}
@@ -283,14 +286,17 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 /* Mirrors .rc-viewport: one continuous box holding the tab strip and the
    stats below it, on the panel's own grey so it reads as part of the panel
    rather than a well cut into it. */
-.rc-stats-box{border:1px solid var(--border);border-radius:6px;background:var(--bg2);overflow:hidden;min-width:0}
+/* No clipping here: the stat rows hang their hover tooltip out of the box, and
+   overflow:hidden cut it off. The tab strip is the only child that meets the
+   rounded corners, so it rounds its own instead. */
+.rc-stats-box{border:1px solid var(--border);border-radius:6px;background:var(--bg2);min-width:0}
 .rc-stats-body{display:flex;flex-direction:column;gap:9px;padding:10px}
 /* The box supplies the column's edge, so the divider rule would double up. */
 .rc-stats.is-boxed{border-left:0;padding-left:0}
 /* The strip is recessed so unselected tabs sit back, and the selected tab
    carries the body's own grey so the two surfaces join. Selected stays
    neutral: gold and blue already mean weapon 1 and weapon 2. */
-.rc-stats-tabstrip{background:#101414}
+.rc-stats-tabstrip{background:#101414;border-radius:5px 5px 0 0;overflow:hidden}
 .rc-stats-tabstrip .rc-tab.on{color:var(--text);background:var(--bg2);border-bottom-color:#8fa3a3}
 /* Impact stats need a projected target, so that tab greys out in angle view. */
 .rc-stats-tabstrip .rc-tab[disabled]{color:#465050;cursor:default}
