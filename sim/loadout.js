@@ -88,8 +88,12 @@ export function computeAttPts(atts, weapon, data) {
     + ergoPts;
 }
 
+// Display-only casing fix: the corpus stores buckshot as "#01 BUCK"/"#00 BUCK",
+// which shouts next to every other title-cased option. The data keeps its name.
+const displayName = a => a.name.replace(/\bBUCK\b/g, 'Buck');
+
 export function attDisplayName(a) {
-  return isAssumedAtt(a) ? `${a.name}*` : a.name;
+  return isAssumedAtt(a) ? `${displayName(a)}*` : displayName(a);
 }
 
 export function hasSelectedAssumedAtt(atts, data, weapon = null) {

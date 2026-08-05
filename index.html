@@ -36,7 +36,14 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .share-btn.copied{color:var(--green);border-color:var(--green);background:rgba(86,196,100,.12)}
 .overview-head{display:flex;align-items:center;gap:8px;margin-bottom:3px}
 .overview-head .ptitle{margin-bottom:0}
-.overview-head .share-btn{margin-left:auto}
+.overview-head .share-wrap{margin-left:auto}
+/* Click-opened, not hover — a hover menu is unreachable on touch. */
+.share-wrap{position:relative}
+.share-menu{position:absolute;top:calc(100% + 4px);right:0;z-index:120;display:flex;flex-direction:column;min-width:132px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.6)}
+.share-menu[hidden]{display:none}
+.share-menu-item{text-align:left;background:none;border:0;border-radius:3px;color:var(--text);font-size:0.7rem;letter-spacing:.03em;padding:5px 9px}
+.share-menu-item:hover{background:var(--bg3);color:var(--accent)}
+.share-menu-item:disabled{color:var(--muted);cursor:progress}
 /* Collapsible panels — each keeps its heading so it can be reopened, and the
    caret costs no extra height because it sits in a row that already exists. */
 /* Boxed so the caret reads as a control rather than punctuation next to the title. */
@@ -532,7 +539,13 @@ canvas.rcv:focus-visible{outline-offset:-2px}
         <div class="overview-head">
           <button class="panel-toggle" data-collapse="overview" data-collapse-label="the stat cards" type="button" aria-expanded="true" aria-controls="sGrid"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
           <div class="ptitle">Overview</div>
-          <button class="share-btn" id="shareBtn" type="button" title="Copy a shareable link to this loadout and view">Share Loadout</button>
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="shareMenu" title="Share this loadout as a link or an image">Share Loadout</button>
+            <div class="share-menu" id="shareMenu" role="menu" hidden>
+              <button class="share-menu-item" id="shareLinkBtn" type="button" role="menuitem">Copy Link</button>
+              <button class="share-menu-item" id="shareImgBtn" type="button" role="menuitem">Copy Image</button>
+            </div>
+          </div>
         </div>
         <div id="wHeader" class="w-header"></div>
         <div id="sGrid" class="sgroups"></div>
