@@ -20,8 +20,10 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 button{cursor:pointer;font-family:inherit}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #eaf0f0;outline-offset:1px;border-radius:2px}
 header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;height:46px;display:flex;align-items:center;gap:14px;flex-shrink:0}
-.logo{font-size:1.05rem;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase}
-.logo span{color:var(--muted);font-weight:400}
+.logo{font-size:1.05rem;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase;text-decoration:none;display:inline-block}
+.logo span{color:var(--muted);font-weight:400;transition:color .12s}
+/* Resting appearance is unchanged; the hover only hints that it is a way home. */
+.logo:hover span,.logo:focus-visible span{color:var(--text)}
 .hdr-tag{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .legacy-link{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px;text-decoration:none;margin-left:auto}
 .legacy-link:hover{border-color:#666;color:#ccc}
@@ -473,7 +475,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 </head>
 <body>
 <header>
-  <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
+  <a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a>
   <div class="hdr-tag">Season 4: v1.3.3.0 - Updated 2 AUG 2026</div>
   <div class="archive-group">
     <span class="archive-label">Archives:</span>
