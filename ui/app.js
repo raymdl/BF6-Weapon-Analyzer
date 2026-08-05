@@ -2604,6 +2604,25 @@ function initMobileTooltips() {
 // ── EVENT BINDING ─────────────────────────────────────────────────────────────
 
 function bindEvents() {
+  // Logo → home. Every loadout and view choice lives in the location hash, so
+  // reloading the bare path is the one reset guaranteed to match a cold load
+  // rather than a hand-rolled teardown that misses a slot or a cached build.
+  const homeLink = document.getElementById('homeLink');
+  if (homeLink) {
+    const homeUrl = location.pathname;
+    homeLink.href = homeUrl;
+    homeLink.addEventListener('click', event => {
+      // Leave new-tab, new-window and middle-click to the browser.
+      if (event.defaultPrevented || event.button !== 0
+        || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      // Already home: nothing selected and nothing in the URL to clear.
+      if (!location.hash && !location.search) return;
+      history.replaceState(null, '', homeUrl);
+      location.reload();
+    });
+  }
+
   // Compare toggle
   document.getElementById('cmpBtn').addEventListener('click', () => {
     state.comparing = !state.comparing;
