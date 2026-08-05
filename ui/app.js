@@ -111,7 +111,13 @@ const TARGET_DEFAULT_CENTER_Y_CM = ((TARGET_DEFAULT_Y_MIN_M + TARGET_DEFAULT_Y_M
 const PLOT_PAD = { l: 28, r: 8, t: 8, b: 18 };
 const CLOUD_RUNS = 10;
 const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
-const SPREAD_BAR_SCALE = 9.1;
+// Ceiling for the Spread Min → Eff. Max bar, in degrees. One axis for every
+// aim state and stance, so the bar lengths stay comparable across the whole
+// app. The widest the model reaches is 9.37° (SVK-86, hipfire while moving,
+// with attachments), so this cannot go lower without clamping the top weapons
+// to a single full-width bar. scripts/spread-bar-scale.test.mjs holds it to
+// the corpus.
+const SPREAD_BAR_SCALE = 9.4;
 const RECOIL_BAR_SCALE = 3;
 const CONSOLE_RECOIL_MULT = 0.89;
 
@@ -835,8 +841,6 @@ function renderOverview() {
     group: 'spread',
     tooltip: 'ADS spread increase per shot after ADS-only spread modifiers. Lower builds spread more slowly.',
   });
-  if (w1?.pellets || w2?.pellets) fields.splice(4, 0, { lbl: 'Pellets', k: 'pellets', unit: '', fmt: v => v ?? '—',
-    tooltip: 'Number of pellets fired per shot. Shotgun damage is pellet damage multiplied by this count.' });
 
   const cardValueHtml = f => {
     const getVal = w => f.compute ? f.compute(w) : w?.[f.k];
@@ -869,7 +873,7 @@ function renderOverview() {
   // Group the stat cards into labeled, color-accented sections for scannability.
   const SEC_OF = {
     'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
-    'Pellets': 'combat', 'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
+    'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
     'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Sprint Rec': 'mobility',
     'Recoil/Shot': 'recoil', 'Recoil Variation': 'recoil', 'Recoil Dir': 'recoil',
     'Spread Inc/Shot': 'spread', 'ADS Spread': 'spread', 'Hipfire Spread': 'spread',
@@ -2473,6 +2477,7 @@ function renderRecoil() {
       };
     })(),
     (() => {
+      const barScale = SPREAD_BAR_SCALE;
       const e1 = w1 ? selectedEffectiveSpreadMax(w1) : null;
       const e2 = w2 ? selectedEffectiveSpreadMax(w2) : null;
       const b1 = w1 ? spreadBounds(w1) : null, b2 = w2 ? spreadBounds(w2) : null;
@@ -2499,8 +2504,8 @@ function renderRecoil() {
       return {
         lbl: 'Spread Min → Eff. Max',
         val1: fmtR(mn1, e1), val2: fmtR(mn2, e2),
-        barStart1: mn1 != null ? mn1 / SPREAD_BAR_SCALE : null, bar1: e1 != null ? e1 / SPREAD_BAR_SCALE : 0,
-        barStart2: mn2 != null ? mn2 / SPREAD_BAR_SCALE : null, bar2: e2 != null ? e2 / SPREAD_BAR_SCALE : 0,
+        barStart1: mn1 != null ? mn1 / barScale : null, bar1: e1 != null ? e1 / barScale : 0,
+        barStart2: mn2 != null ? mn2 / barScale : null, bar2: e2 != null ? e2 / barScale : 0,
         tooltip: tt, col1: '#c9a227', col2: '#4d94d0',
       };
     })(),
