@@ -24,8 +24,11 @@ from pathlib import Path
 from urllib.parse import quote
 
 from openpyxl import Workbook
+from openpyxl.formatting.rule import FormulaRule
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
+from openpyxl.workbook.defined_name import DefinedName
+from openpyxl.worksheet.datavalidation import DataValidation
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_JSON = ROOT / "migration" / "1.3.3.0" / "attachment-audit" / "attachment-screenshot-review.json"
@@ -181,6 +184,24 @@ def _fill(hex_colour):
     return PatternFill("solid", fgColor=argb(hex_colour))
 
 
+def _option_value(record):
+    """The value that identifies an option within its type: subtype for the subtype-keyed
+    types, attachment name for the rest. Same rule the Overview rows are keyed on."""
+    attachment_type = record.get("attachmentType")
+    return (record.get("attachmentSubtype") if attachment_type in SUBTYPE_KEYED_TYPES
+            else record.get("attachmentName"))
+
+
+def _displayed(record, getter, cmp_key):
+    """Cell value as the weapon sheets render it: an arrow-prefixed string where the game
+    showed a comparison arrow, the bare value otherwise."""
+    value = getter(record)
+    comparison = (record.get("statComparisons") or {}).get(cmp_key) if cmp_key else None
+    if comparison and value is not None:
+        return ("↑" if comparison.get("direction") == "up" else "↓") + str(value)
+    return value
+
+
 def write_weapon_sheet(workbook, weapon, weapon_class, records):
     tab, dark, light, light_text = PALETTE.get(weapon_class, PALETTE["Assault Rifle"])
     sheet = workbook.create_sheet(weapon[:31])
@@ -303,8 +324,7 @@ def write_overview(workbook, weapons, classes, order, row_lookup, established_or
             attachment_type = record.get("attachmentType")
             if attachment_type not in present:
                 continue
-            value = (record.get("attachmentSubtype") if attachment_type in SUBTYPE_KEYED_TYPES
-                     else record.get("attachmentName"))
+            value = _option_value(record)
             if value is None or value in present[attachment_type]:
                 continue
             present[attachment_type].add(value)
@@ -326,8 +346,7 @@ def write_overview(workbook, weapons, classes, order, row_lookup, established_or
             attachment_type = record.get("attachmentType")
             if attachment_type not in OVERVIEW_TYPE_ORDER:
                 continue
-            value = (record.get("attachmentSubtype") if attachment_type in SUBTYPE_KEYED_TYPES
-                     else record.get("attachmentName"))
+            value = _option_value(record)
             # the display text is the attachment cost, not "Link": an inconsistent cost between
             # weapons on the same row is then visible at a glance, which is how the sniper grip
             # variants were caught. The hyperlink target is unchanged.
@@ -424,7 +443,144 @@ def write_overview(workbook, weapons, classes, order, row_lookup, established_or
     sheet.column_dimensions["C"].width = 19
     sheet.row_dimensions[1].height = 15.75
     sheet.row_dimensions[2].height = 42
-    return len(rows)
+    return rows
+
+
+def _range_name(attachment_type):
+    """Defined-name suffix for a type's option list. The only character the type names carry
+    that a name cannot is the slash, so dropping it is enough to keep these unique."""
+    return "opt_" + attachment_type.replace("/", "")
+
+
+def write_lookup_data(workbook, weapons, order, option_rows):
+    """Hidden backing sheet for the By Attachment view: one row per record keyed on
+    weapon/type/option, plus the option lists the two dropdowns validate against."""
+    sheet = workbook.create_sheet("Lookup Data")
+    sheet.sheet_state = "hidden"
+
+    sheet.cell(1, 1, "Key")
+    for index, (header, _getter, _cmp, _width) in enumerate(COLUMNS, start=2):
+        sheet.cell(1, index, header)
+    row = 1
+    for weapon in order:
+        for record in weapons[weapon]:
+            value = _option_value(record)
+            if value is None:
+                continue
+            row += 1
+            sheet.cell(row, 1, f"{weapon}|{record.get('attachmentType')}|{value}")
+            for index, (_header, getter, cmp_key, _width) in enumerate(COLUMNS, start=2):
+                sheet.cell(row, index, _displayed(record, getter, cmp_key))
+    last_record_row = row
+
+    # Option lists live to the right of the records, one column per type, each published as a
+    # defined name so the dependent dropdown can reach it through INDIRECT.
+    by_type = {}
+    for attachment_type, _field, value in option_rows:
+        by_type.setdefault(attachment_type, []).append(value)
+    first_list_column = len(COLUMNS) + 3
+    types = [t for t in OVERVIEW_TYPE_ORDER if by_type.get(t)]
+    for offset, attachment_type in enumerate(types):
+        column = first_list_column + offset
+        letter = get_column_letter(column)
+        sheet.cell(1, column, attachment_type)
+        for value_offset, value in enumerate(by_type[attachment_type], start=2):
+            sheet.cell(value_offset, column, value)
+        workbook.defined_names.add(DefinedName(
+            _range_name(attachment_type),
+            attr_text=f"'Lookup Data'!${letter}$2:${letter}${len(by_type[attachment_type]) + 1}"))
+    type_column = get_column_letter(first_list_column + len(types) + 1)
+    sheet.cell(1, first_list_column + len(types) + 1, "Attachment Type")
+    for offset, attachment_type in enumerate(types, start=2):
+        sheet.cell(offset, first_list_column + len(types) + 1, attachment_type)
+    workbook.defined_names.add(DefinedName(
+        "opt_types", attr_text=f"'Lookup Data'!${type_column}$2:${type_column}${len(types) + 1}"))
+    return types, by_type, last_record_row
+
+
+def write_by_attachment(workbook, classes, order, types, by_type, record_rows):
+    """One attachment across the whole roster: pick a type and an option, read a row per weapon.
+
+    Every cell is a formula against the hidden Lookup Data sheet, so the view follows the
+    dropdowns without a rebuild and picks up new weapons or options on the next one.
+    """
+    sheet = workbook.create_sheet("By Attachment", 1)
+    sheet.sheet_view.showGridLines = False
+    sheet.freeze_panes = "B5"
+    columns = len(COLUMNS) + 1
+    default_type = types[0]
+
+    for row, label, value, list_formula in (
+        (1, "Attachment Type", default_type, "=opt_types"),
+        (2, "Attachment Name / Subtype", by_type[default_type][0],
+         '=INDIRECT("opt_"&SUBSTITUTE($B$1,"/",""))'),
+    ):
+        key = sheet.cell(row, 1, label)
+        key.font = Font(sz=10, bold=True, color=WHITE)
+        key.fill = _fill(OVERVIEW_HEAD)
+        picker = sheet.cell(row, 2, value)
+        picker.font = Font(sz=10, bold=True)
+        picker.alignment = Alignment(horizontal="left", vertical="center")
+        picker.border = Border(*(Side(style="thin", color=OVERVIEW_HEAD),) * 4)
+        validation = DataValidation(type="list", formula1=list_formula, allow_blank=False)
+        sheet.add_data_validation(validation)
+        validation.add(picker)
+
+    hint = sheet.cell(3, 1, "Pick a type and an option above. Every weapon gets a row; blank "
+                            "means that weapon does not offer the option.")
+    hint.font = Font(sz=9, italic=True, color=argb(MUTED))
+
+    header = sheet.cell(4, 1, "Weapon")
+    header.fill = _fill(OVERVIEW_HEAD)
+    header.font = Font(sz=10, bold=True, color=WHITE)
+    header.alignment = Alignment(vertical="bottom", horizontal="center", wrap_text=True)
+    for index, (text, _getter, _cmp, width) in enumerate(COLUMNS, start=2):
+        cell = sheet.cell(4, index, text)
+        cell.fill = _fill(OVERVIEW_HEAD)
+        cell.font = Font(sz=10, bold=True, color=WHITE)
+        cell.alignment = Alignment(vertical="bottom", horizontal="center", wrap_text=True)
+        sheet.column_dimensions[get_column_letter(index)].width = width
+    sheet.column_dimensions["A"].width = 21
+    sheet.row_dimensions[4].height = 48
+
+    keys = f"'Lookup Data'!$A$2:$A${record_rows}"
+    rule = Side(style="medium", color=BLOCK_RULE)
+    row = 4
+    previous_class = None
+    for weapon in order:
+        weapon_class = classes[weapon]
+        if weapon_class != previous_class:
+            row += 1
+            tab = PALETTE.get(weapon_class, PALETTE["Assault Rifle"])[0]
+            band = sheet.cell(row, 1, weapon_class)
+            band.font = Font(sz=11, bold=True, color=WHITE)
+            for column in range(1, columns + 1):
+                sheet.cell(row, column).fill = _fill(tab)
+                sheet.cell(row, column).alignment = Alignment(horizontal="centerContinuous",
+                                                              vertical="center")
+                sheet.cell(row, column).border = Border(bottom=rule)
+            previous_class = weapon_class
+        row += 1
+        light, light_text = PALETTE.get(weapon_class, PALETTE["Assault Rifle"])[2:4]
+        name = sheet.cell(row, 1, weapon)
+        name.fill = _fill(light)
+        name.font = Font(sz=10, bold=True, color=argb(light_text))
+        name.alignment = Alignment(vertical="top")
+        for index in range(2, columns + 1):
+            source = f"'Lookup Data'!${get_column_letter(index)}$2:${get_column_letter(index)}${record_rows}"
+            cell = sheet.cell(row, index,
+                              f'=IFERROR(INDEX({source},MATCH($A{row}&"|"&$B$1&"|"&$B$2,{keys},0)),"")')
+            cell.font = Font(sz=10)
+            cell.alignment = Alignment(vertical="top", wrap_text=index in (6, 29))
+
+    last_row = row
+    # The arrow prefix is what the weapon sheets carry; colour it the same way here.
+    value_range = f"B5:{get_column_letter(columns)}{last_row}"
+    for arrow, colour in (("↑", BUFF), ("↓", PENALTY)):
+        sheet.conditional_formatting.add(value_range, FormulaRule(
+            formula=[f'AND(ISTEXT(B5),LEFT(B5,1)="{arrow}")'],
+            font=Font(sz=10, bold=True, color=argb(colour)), stopIfTrue=False))
+    return last_row - 4
 
 
 def write_source_index(workbook, records):
@@ -494,6 +650,10 @@ def write_read_me(workbook, data, weapon_count, out_path, json_path):
         ("Blank cells", "A blank stat means the value was not readable in that screenshot. The "
                         "reason is recorded per field in the source JSON, not here."),
         ("Overview sheet", "Attachment option matrix. Each cell links to that weapon's row."),
+        ("By Attachment sheet", "One attachment across the whole roster. Pick an attachment type "
+                                "in B1 and an option in B2; each weapon's row fills in from the "
+                                "hidden Lookup Data sheet. A blank row means that weapon does not "
+                                "offer the option."),
     ]
     for offset, (label, value) in enumerate(entries):
         row = 3 + offset
@@ -524,6 +684,8 @@ def main():
     for weapon in order:
         row_lookup[weapon] = write_weapon_sheet(workbook, weapon, classes[weapon], weapons[weapon])
     option_rows = write_overview(workbook, weapons, classes, order, row_lookup, established_order)
+    types, by_type, record_rows = write_lookup_data(workbook, weapons, order, option_rows)
+    lookup_rows = write_by_attachment(workbook, classes, order, types, by_type, record_rows)
     index_rows = write_source_index(workbook, data["records"])
     write_read_me(workbook, data, len(order), args.out, args.json)
 
@@ -532,7 +694,8 @@ def main():
 
     print(f"wrote {args.out}")
     print(f"  weapons {len(order)} | sheets {len(workbook.sheetnames)} | "
-          f"records {len(data['records'])} | overview options {option_rows} | index rows {index_rows}")
+          f"records {len(data['records'])} | overview options {len(option_rows)} | "
+          f"by-attachment rows {lookup_rows} | index rows {index_rows}")
     print(f"  {time.time() - started:.1f}s")
 
 
