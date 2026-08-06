@@ -66,6 +66,13 @@ scripts/reconcile-and-prune-attachment-overrides.mjs
 outputs/*
 !outputs/damage_falloff.xlsx
 !outputs/sym-damage-refresh-*/
+# The attachment audit's curated review JSON and the reviewer's workbook are
+# hand-corrected artifacts, not build products, so they are tracked; the rest of
+# that directory stays local.
+!outputs/attachment-audit/
+outputs/attachment-audit/*
+!outputs/attachment-audit/attachment-screenshot-review.json
+!outputs/attachment-audit/BF6_Attachment_Stats_Review.xlsx
 sl9_recheck/
 
 # The attachment audit's curated data is tracked, along with the scripts that
