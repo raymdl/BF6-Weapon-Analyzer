@@ -169,7 +169,7 @@
         "modalBaseline": 336,
         "sourcePath": "Weapon Attachments/SMG/CZ3A1/48_CZ3A1_Ammo_Subsonic.png"
       },
-      "evidenceCount": 27,
+      "evidenceCount": 31,
       "resolverOutput": "bulletVel",
       "classification": "known-deferral",
       "source": "migration/1.3.3.0/attachment-audit/subsonic-velocity-treatments-20260731.json; data/ammo.json (no selectable subsonic ammo type)",
@@ -830,7 +830,7 @@
         "attachment": "None",
         "observed": 59,
         "modalBaseline": 54,
-        "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sidearm\\ES 5.7\\25_ES 5.7_Ergonomics_None.png"
+        "sourcePath": "Weapon Attachments/Sidearm/ES 5.7/25_ES 5.7_Ergonomics_None.png"
       },
       "evidenceCount": 14,
       "resolverOutput": null,
@@ -1072,7 +1072,7 @@
         "modalBaseline": 88,
         "sourcePath": "Weapon Attachments/Carbine/AK-205/49_AK-205_Ammo_Tungsten_Core.png"
       },
-      "evidenceCount": 73,
+      "evidenceCount": 75,
       "resolverOutput": null,
       "classification": "out-of-scope",
       "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",
@@ -1335,7 +1335,7 @@
         "modalBaseline": 15,
         "sourcePath": "Weapon Attachments/Shotgun/18.5KS-K/41_18.5KS-K_Ammo_Slugs.png"
       },
-      "evidenceCount": 85,
+      "evidenceCount": 87,
       "resolverOutput": null,
       "classification": "out-of-scope",
       "source": "ui/app.js (the site renders derived equivalents, not these raw corpus columns)",

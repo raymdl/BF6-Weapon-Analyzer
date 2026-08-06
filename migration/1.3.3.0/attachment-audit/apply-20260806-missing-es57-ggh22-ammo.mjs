@@ -133,7 +133,9 @@ for(const [old,newPath] of existing){fs.mkdirSync(path.dirname(newPath),{recursi
 for(const [tmp,newPath] of temps)fs.renameSync(tmp,newPath);
 
 // Rewrite the path-bearing JSON artifacts without touching their other contents.
-const rewrite=v=>{if(Array.isArray(v))return v.map(rewrite);if(v&&typeof v==='object'){for(const k of Object.keys(v))v[k]=rewrite(v[k]);return v;}if(typeof v==='string'){return pathMoves.get(norm(v))??v;}return v;};
+// Only absolute strings are remapped: some inventories store repo-relative paths, and resolving
+// those against the cwd would match a move and rewrite them to absolute form.
+const rewrite=v=>{if(Array.isArray(v))return v.map(rewrite);if(v&&typeof v==='object'){for(const k of Object.keys(v))v[k]=rewrite(v[k]);return v;}if(typeof v==='string'&&path.isAbsolute(v)){return pathMoves.get(norm(v))??v;}return v;};
 for(const name of fs.readdirSync(root).filter(n=>n.endsWith('.json')&&!n.includes('.before')&&!n.startsWith('attachment-screenshot-review.pre-')&&!n.startsWith('coverage-report.pre-')&&!n.startsWith('rename-manifest.pre-'))){
   const p=path.join(root,name);
   try{let d=name==='attachment-screenshot-review.json'?review:name==='manual-review-overrides.json'?manual:JSON.parse(fs.readFileSync(p,'utf8'));d=rewrite(d);fs.writeFileSync(p,`${JSON.stringify(d,null,2)}\n`);}catch{}

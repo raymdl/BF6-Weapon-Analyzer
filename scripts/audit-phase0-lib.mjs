@@ -329,8 +329,8 @@ export function loadPhase0Inputs(root = DEFAULT_ROOT) {
   const auditSummary = validateAuditFixture(audit);
   const subsonicTreatments = validateRegister(subsonic, 'subsonic velocity register', REQUIRED_REGISTER_KINDS.subsonic);
   const exceptions = validateRegister(reviewedExceptions, 'reviewed sweep exception register', REQUIRED_REGISTER_KINDS.reviewedExceptions);
-  if (subsonicTreatments.length !== 27 || subsonic.counts?.treatments !== 27) {
-    throw new Error(`Subsonic treatment fixture must contain 27 rows; found ${subsonicTreatments.length}`);
+  if (subsonicTreatments.length !== 31 || subsonic.counts?.treatments !== 31) {
+    throw new Error(`Subsonic treatment fixture must contain 31 rows; found ${subsonicTreatments.length}`);
   }
   if (exceptions.length !== 0 || reviewedExceptions.counts?.exceptions !== 0) {
     throw new Error(`Reviewed sweep exception fixture must be empty after the ADS-move 1.0 migration; found ${exceptions.length}`);

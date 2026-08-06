@@ -41,6 +41,66 @@
       "reviewMethod": "direct-source-screenshot-velocity-strip"
     },
     {
+      "weaponName": "ES 5.7",
+      "attachmentType": "Ammo",
+      "attachmentName": "Subsonic",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sidearm\\ES 5.7\\20_ES 5.7_Ammo_Subsonic.png",
+      "sourceFilename": "20_ES 5.7_Ammo_Subsonic.png",
+      "baseVelocityMps": 510,
+      "screenshotVelocityMps": 408,
+      "velocityTreatment": {
+        "kind": "subsonic-tier",
+        "subsonicVelocityTier": 1,
+        "displayRounding": "floor"
+      },
+      "reviewMethod": "direct-source-screenshot-velocity-strip"
+    },
+    {
+      "weaponName": "ES 5.7",
+      "attachmentType": "Ammo",
+      "attachmentName": "Subsonic HP",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sidearm\\ES 5.7\\21_ES 5.7_Ammo_Sub_HP.png",
+      "sourceFilename": "21_ES 5.7_Ammo_Sub_HP.png",
+      "baseVelocityMps": 510,
+      "screenshotVelocityMps": 408,
+      "velocityTreatment": {
+        "kind": "subsonic-tier",
+        "subsonicVelocityTier": 1,
+        "displayRounding": "floor"
+      },
+      "reviewMethod": "direct-source-screenshot-velocity-strip"
+    },
+    {
+      "weaponName": "GGH-22",
+      "attachmentType": "Ammo",
+      "attachmentName": "Subsonic",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sidearm\\GGH-22\\21_GGH-22_Ammo_Subsonic.png",
+      "sourceFilename": "21_GGH-22_Ammo_Subsonic.png",
+      "baseVelocityMps": 400,
+      "screenshotVelocityMps": 320,
+      "velocityTreatment": {
+        "kind": "subsonic-tier",
+        "subsonicVelocityTier": 1,
+        "displayRounding": "floor"
+      },
+      "reviewMethod": "direct-source-screenshot-velocity-strip"
+    },
+    {
+      "weaponName": "GGH-22",
+      "attachmentType": "Ammo",
+      "attachmentName": "Subsonic HP",
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sidearm\\GGH-22\\22_GGH-22_Ammo_Sub_HP.png",
+      "sourceFilename": "22_GGH-22_Ammo_Sub_HP.png",
+      "baseVelocityMps": 400,
+      "screenshotVelocityMps": 320,
+      "velocityTreatment": {
+        "kind": "subsonic-tier",
+        "subsonicVelocityTier": 1,
+        "displayRounding": "floor"
+      },
+      "reviewMethod": "direct-source-screenshot-velocity-strip"
+    },
+    {
       "weaponName": "KV9",
       "attachmentType": "Ammo",
       "attachmentName": "Subsonic",
@@ -413,10 +473,10 @@
     }
   ],
   "counts": {
-    "treatments": 27,
+    "treatments": 31,
     "byKind": {
       "subsonic-absolute": 4,
-      "subsonic-tier": 22,
+      "subsonic-tier": 26,
       "subsonic-tungsten-absolute": 1
     }
   }

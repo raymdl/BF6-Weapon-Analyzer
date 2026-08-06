@@ -18,15 +18,15 @@
     "magazineEntries": 278,
     "gripChoices": 860,
     "ergoChoices": 185,
-    "ammoChoices": 318,
-    "cases": 86728,
+    "ammoChoices": 322,
+    "cases": 86754,
     "primaryCases": 86476,
-    "sidearmCases": 252
+    "sidearmCases": 278
   },
   "digest": {
     "algorithm": "SHA-256",
     "format": "canonical-reload-row-v1",
-    "value": "8152863cdd4bead9f5dedc3c9b754077dc85526ac0c2ef6a49bc39ec0614a279"
+    "value": "cf0f3eecd50e5c5010f23a86097d221f66ea98e813e10acb2897b073bf98abba"
   },
   "perWeaponDigest": {
     "ak205": "f5d1f23d261c64b192354c219c4173fca13be68d6b07c3e5a28755f36310f7b9",
@@ -37,8 +37,8 @@
     "db12": "415060976e8ca4e7b7a135a9b83b61cc9d22489631514d435e6647424cf4e429",
     "drsiar": "5dcf86c47b9e3e5c3bf7853047e634ac895c0e3002ea266b8bb60012a230b9f1",
     "ef88": "4a49e5846905e3535535701f09111fc8c7748642eb9777df47816f3100a44b81",
-    "es57": "1cf73eefc90049f1d7df7346b8c47dbf872d084c433de105075eee5e9cd23501",
-    "ggh22": "5cb8dd06888f11932d20a96990a7c6085f11357e5e775c67f3497bec2a7ddd60",
+    "es57": "59efc366ec4d9c8d7fbc380ca96f4efec251e94882b91c46b084847df545647d",
+    "ggh22": "f6674cc9620a0a782578e0317aec80444f0f776d9ac07ddc42804496ed9f91f6",
     "grtbc": "2b2a677027479449520fd14b6d40304442b8ec91d06a8145e1d9cd941a9b9a0d",
     "grtcps": "781651d057fe2c47f350e567cb1a64c8ed1973f2440b30a5cb1c2f9159cd7c8d",
     "kord6p67": "495f93351e9e369a3f11902d1a0de0fc35e620953a8a8ace82bb1eddbc96864a",
@@ -92,9 +92,9 @@
     "vz61": "e96683020d6d27edfe717d7d1fbf4fb10d8af05c388e5a142133d876a1dec162"
   },
   "migration": {
-    "previousDigest": "d897c0796b2c1ed144f2c3b77f86a2a9f691ee48befb73a18f7bbbf587fd62e3",
-    "changedCaseCount": 10666,
-    "changedCaseKeysDigest": "19866c1a50473169989c6fce307a0e1ebcc02aec43a6b877b2db6eef229cfb52",
+    "previousDigest": "2a5ed47be2b3402ca5a0a3301332e981fb8d857dba1c59654428ae13f55d1f28",
+    "changedCaseCount": 10676,
+    "changedCaseKeysDigest": "7f20aaa18c881cc1d3a801f767000a8865643c00784a8934c5a8c9953938e611",
     "changedCases": [
       {
         "caseKey": "ak205/30_fast/6h64_vert/mag_catch/frangible",
@@ -20527,6 +20527,16 @@
         "newTacticalReloadMs": 1897
       },
       {
+        "caseKey": "es57/20_rnd/none/mag_catch/subsonic",
+        "previousTacticalReloadMs": 2017,
+        "newTacticalReloadMs": 1897
+      },
+      {
+        "caseKey": "es57/20_rnd/none/mag_catch/subsonic_hp",
+        "previousTacticalReloadMs": 2017,
+        "newTacticalReloadMs": 1897
+      },
+      {
         "caseKey": "es57/30_rnd/none/mag_catch/frangible",
         "previousTacticalReloadMs": 2017,
         "newTacticalReloadMs": 1897
@@ -20543,6 +20553,16 @@
       },
       {
         "caseKey": "es57/30_rnd/none/mag_catch/standard",
+        "previousTacticalReloadMs": 2017,
+        "newTacticalReloadMs": 1897
+      },
+      {
+        "caseKey": "es57/30_rnd/none/mag_catch/subsonic",
+        "previousTacticalReloadMs": 2017,
+        "newTacticalReloadMs": 1897
+      },
+      {
+        "caseKey": "es57/30_rnd/none/mag_catch/subsonic_hp",
         "previousTacticalReloadMs": 2017,
         "newTacticalReloadMs": 1897
       },
@@ -20567,6 +20587,16 @@
         "newTacticalReloadMs": 1819
       },
       {
+        "caseKey": "ggh22/15_rnd/none/mag_catch/subsonic",
+        "previousTacticalReloadMs": 1934,
+        "newTacticalReloadMs": 1819
+      },
+      {
+        "caseKey": "ggh22/15_rnd/none/mag_catch/subsonic_hp",
+        "previousTacticalReloadMs": 1934,
+        "newTacticalReloadMs": 1819
+      },
+      {
         "caseKey": "ggh22/20_rnd/none/mag_catch/frangible",
         "previousTacticalReloadMs": 1934,
         "newTacticalReloadMs": 1819
@@ -20587,6 +20617,16 @@
         "newTacticalReloadMs": 1819
       },
       {
+        "caseKey": "ggh22/20_rnd/none/mag_catch/subsonic",
+        "previousTacticalReloadMs": 1934,
+        "newTacticalReloadMs": 1819
+      },
+      {
+        "caseKey": "ggh22/20_rnd/none/mag_catch/subsonic_hp",
+        "previousTacticalReloadMs": 1934,
+        "newTacticalReloadMs": 1819
+      },
+      {
         "caseKey": "ggh22/22_rnd/none/mag_catch/frangible",
         "previousTacticalReloadMs": 1934,
         "newTacticalReloadMs": 1819
@@ -20603,6 +20643,16 @@
       },
       {
         "caseKey": "ggh22/22_rnd/none/mag_catch/standard",
+        "previousTacticalReloadMs": 1934,
+        "newTacticalReloadMs": 1819
+      },
+      {
+        "caseKey": "ggh22/22_rnd/none/mag_catch/subsonic",
+        "previousTacticalReloadMs": 1934,
+        "newTacticalReloadMs": 1819
+      },
+      {
+        "caseKey": "ggh22/22_rnd/none/mag_catch/subsonic_hp",
         "previousTacticalReloadMs": 1934,
         "newTacticalReloadMs": 1819
       },

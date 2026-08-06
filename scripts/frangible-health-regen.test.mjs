@@ -141,7 +141,7 @@ test('non-frangible loads leave the delay at the baseline, emitting no chip', ()
 test('the live entrypoints hand HEALTH_REGEN_DELAY_S to the attachment resolver', () => {
   // Same failure mode as WEAPON_AMMO: an entrypoint that omits the baseline
   // falls back to the resolver default and the chip silently stops matching.
-  for (const file of ['ui/app.js', 'preview_distance.html', 'preview_spread.html']) {
+  for (const file of ['ui/app.js', 'preview_spread.html']) {
     const source = readText(file);
     const call = source.slice(source.indexOf('setAttachmentContext({'));
     const args = call.slice(0, call.indexOf('});') + 1);

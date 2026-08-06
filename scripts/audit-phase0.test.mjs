@@ -71,10 +71,10 @@ function assertLadder(rows, field, base, multiplier) {
 }
 
 test('Phase 0 fixtures are complete, full-roster, and path-portable', () => {
-  assert.equal(inputs.audit.recordCount, 3177);
-  assert.equal(inputs.auditSummary.stats.length, 3115);
+  assert.equal(inputs.audit.recordCount, 3189);
+  assert.equal(inputs.auditSummary.stats.length, 3127);
   assert.equal(inputs.auditSummary.weaponNames.length, 62);
-  assert.equal(inputs.subsonicTreatments.length, 27);
+  assert.equal(inputs.subsonicTreatments.length, 31);
   assert.equal(inputs.exceptions.length, 0);
   assert.equal(inputs.bulkRecapture.counts.correctedFields, 323);
   assert.equal(inputs.bulkRecapture.counts.duplicateRecordsRemoved, 29);
@@ -150,12 +150,12 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
   assert.equal(isAllowedNameEffectWarning({ ...nameEffectWarnings[0], check: 'other-warning' }, nameEffectInventoryKeys), false);
   assert.equal(isAllowedNameEffectCoverageWarning(nameEffectCoverageWarnings[0], nameEffectCoverageInventoryKeys), true);
   assert.equal(isAllowedNameEffectCoverageWarning({ ...nameEffectCoverageWarnings[0], check: 'other-warning' }, nameEffectCoverageInventoryKeys), false);
-  assert.deepEqual(report.severityCounts, { error: 0, warn: 19, info: 28 });
+  assert.deepEqual(report.severityCounts, { error: 0, warn: 19, info: 32 });
   assert.deepEqual(report.counts, {
     'fire-mode-ergo': 1,
     'name-effect-consistency': 15,
     'name-effect-coverage': 4,
-    'subsonic-treatment': 27,
+    'subsonic-treatment': 31,
   });
   assert.deepEqual(report.findings.filter(finding => (
     finding.severity === 'warn'

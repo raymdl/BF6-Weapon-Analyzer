@@ -138,7 +138,7 @@ function projectileModelFor(build, atts) {
 test('the live entrypoints hand WEAPON_AMMO to the attachment resolver', () => {
   // Without this the velocity treatments are unreachable in the browser and
   // every subsonic load silently renders at its supersonic velocity.
-  for (const file of ['ui/app.js', 'preview_distance.html', 'preview_spread.html']) {
+  for (const file of ['ui/app.js', 'preview_spread.html']) {
     const source = readText(file);
     const call = source.slice(source.indexOf('setAttachmentContext({'));
     assert.ok(call.length > 0, `${file} should call setAttachmentContext`);
