@@ -66,13 +66,6 @@ scripts/reconcile-and-prune-attachment-overrides.mjs
 outputs/*
 !outputs/damage_falloff.xlsx
 !outputs/sym-damage-refresh-*/
-# The attachment audit's curated review JSON and the reviewer's workbook are
-# hand-corrected artifacts, not build products, so they are tracked; the rest of
-# that directory stays local.
-!outputs/attachment-audit/
-outputs/attachment-audit/*
-!outputs/attachment-audit/attachment-screenshot-review.json
-!outputs/attachment-audit/BF6_Attachment_Stats_Review.xlsx
 sl9_recheck/
 
 # The attachment audit's curated data is tracked, along with the scripts that
@@ -80,8 +73,8 @@ sl9_recheck/
 # regenerated: rebuilding from OCR drops records and reverts manual fixes, so
 # the JSON is the artifact, not a build product. Everything else in the audit
 # tree stays local -- the raw OCR dumps regenerate from the screenshots, the
-# contact sheets and workbooks regenerate from the JSON, and the dated backups
-# are superseded by git history once this is tracked.
+# contact sheets regenerate from the JSON, and the dated backups are superseded
+# by git history once this is tracked.
 !migration/1.3.3.0/attachment-audit/
 migration/1.3.3.0/attachment-audit/*
 !migration/1.3.3.0/attachment-audit/*.mjs
@@ -107,6 +100,9 @@ migration/1.3.3.0/attachment-audit/*
 !migration/1.3.3.0/attachment-audit/field-slot-asymmetry-inventory-20260801.json
 !migration/1.3.3.0/attachment-audit/name-effect-consistency-inventory-20260801.json
 !migration/1.3.3.0/attachment-audit/name-effect-coverage-inventory-20260801.json
+# The full review workbook: the reviewer-facing view of the JSON above, kept
+# with it so the review can be read without regenerating it.
+!migration/1.3.3.0/attachment-audit/BF6_Attachment_Stats_Review.xlsx
 
 # Local one-off export helpers.
 scripts/export_dmg.py
