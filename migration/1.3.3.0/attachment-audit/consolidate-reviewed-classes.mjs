@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = path.resolve('migration/1.3.3.0/attachment-audit');
 const sources = [
-  { className: 'DMR', root: path.resolve('migration/1.3.3.0/attachment-audit-dmr') },
+  { className: 'DMR', root: path.resolve('outputs/attachment-audit') },
   { className: 'Sniper Rifle', root: path.resolve('outputs/sniper-rifle-audit') },
   { className: 'Shotgun', root: path.resolve('outputs/shotgun-audit') },
   { className: 'Sidearm', root: path.resolve('outputs/sidearm-audit') },

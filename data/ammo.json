@@ -247,7 +247,7 @@
         "standard": 5,
         "penetration": 5,
         "lightweight": 10,
-        "hollow_pt": 15,
+        "hollow_pt": 20,
         "frangible": 20
       }
     },
@@ -759,7 +759,7 @@
         "penetration": 5,
         "lightweight": 10,
         "long_range": 10,
-        "hollow_pt": 15,
+        "hollow_pt": 20,
         "frangible": 20
       }
     },
@@ -789,7 +789,7 @@
         "standard": 5,
         "penetration": 5,
         "long_range": 10,
-        "hollow_pt": 15,
+        "hollow_pt": 20,
         "frangible": 20
       }
     },
