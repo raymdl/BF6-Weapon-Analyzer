@@ -50,8 +50,9 @@ DEFAULT_AMMO = {"GRT-CPS": "Hollow Point", "VSSM": "Penetration"}
 # Per-weapon departures from the class tables, confirmed against screenshots. The GRT-CPS needs
 # no headshot entry: its Hollow Point value is the class value now that the dmr_low table is right.
 WEAPON_HEADSHOT = {}
-# The PW7A2 and USG-90 sit one tier above the SMG/Sidearm table on every ammo row: 0.67 where the
-# class says 0.57, 0.83 where it says 0.75, 0.57 where it says 0.50. Both confirmed by the user.
+# The PW7A2, USG-90 and ES 5.7 sit one tier above the SMG/Sidearm table on every ammo row: 0.67
+# where the class says 0.57, 0.83 where it says 0.75, 0.57 where it says 0.50. The first two were
+# confirmed by the user; the ES 5.7 is confirmed by its own 2026-08-06 ammo captures.
 SPECIAL_SMG_COLLATERAL = {
     "Standard": 0.67, "Subsonic Tungsten": 0.67, "Penetration": 0.83,
     "Frangible": 0.57, "Hollow Point": 0.57, "Synthetic": 0.57,
@@ -61,7 +62,7 @@ WEAPON_COLLATERAL = {
     "GRT-CPS": {"Hollow Point": 0.67, "Standard": 0.75},
     "PW7A2": SPECIAL_SMG_COLLATERAL,
     "USG-90": SPECIAL_SMG_COLLATERAL,
-    "ES 5.7": {"Standard": 0.67},
+    "ES 5.7": SPECIAL_SMG_COLLATERAL,
     # These two hold their Standard value on the frangible/hollow-point rows rather than dropping
     # a tier, unlike their classmates. Both user-confirmed.
     "M45A1": {"Frangible": 0.57, "Hollow Point": 0.57},

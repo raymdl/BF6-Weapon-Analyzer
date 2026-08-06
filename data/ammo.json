@@ -913,7 +913,21 @@
         "standard": 5,
         "penetration": 5,
         "frangible": 20,
-        "hollow_pt": 15
+        "hollow_pt": 15,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        }
       }
     },
     "m45a1": {
@@ -940,7 +954,21 @@
         "standard": 5,
         "penetration": 5,
         "frangible": 20,
-        "hollow_pt": 15
+        "hollow_pt": 15,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        }
       }
     },
     "m357trait": {
