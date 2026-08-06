@@ -21,7 +21,6 @@
     "v1.3.1.0/"
   ],
   "developmentOnly": [
-    "preview_distance.html",
     "preview_spread.html"
   ],
   "notes": {

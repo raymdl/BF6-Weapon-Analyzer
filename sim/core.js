@@ -2,7 +2,7 @@
  * sim/core.js — Shared simulation math for BF6 Weapon Analyzer
  *
  * Contains all pure-math functions that were previously copy-pasted across
- * index.html, preview_spread.html, and preview_distance.html.
+ * index.html and preview_spread.html.
  *
  * Usage in each page's <script type="module">:
  *
