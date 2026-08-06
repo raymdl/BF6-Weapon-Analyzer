@@ -18,39 +18,61 @@ BF6 Project/
   index.html                ← Primary weapon analyzer app
   preview_spread.html       ← Recoil/spread chart experiment tool
 
+  sitemap.xml               ← Search-engine sitemap (homepage + frozen archives)
+
   ui/
     app.js                  ← Primary app state, rendering, chart, and recoil UI logic
+    capture.js              ← Renders the current view to a PNG for "Copy Image"
 
   vendor/
     chart.umd.min.js        ← Local Chart.js bundle used by index.html
 
+  assets/
+    favicon.svg             ← Site favicon
+    og-image.png            ← 1200x630 social/link-preview card
+    soldier-target.png      ← Soldier Target artwork
+
   sim/
     core.js                 ← Shared simulation math (RNG, recoil, spread)
+    damage.js               ← Damage falloff, hit zones, bullets-to-kill
+    ballistics.js           ← Flight time, RK4 trajectory, zero-relative drop
     applyAttachments.js     ← Attachment effect application + derived stats
     loadout.js              ← Shared loadout defaults, point totals, and sidebar helpers
     attachments.js          ← Canonical ordered attachment slot definitions
+    target.js               ← Soldier Target geometry, zones, and impact summary
+    share-state.js          ← URL-hash loadout share codec
 
   data/
-    weapons.json            ← All 58 weapon base stats (one object per weapon)
+    weapons.json            ← All 61 weapon base stats (one object per weapon)
     attachments.json        ← Attachment catalogs + per-weapon availability
     ammo.json               ← Ammo types + per-weapon availability
+    ballistics.json         ← Per-weapon gravity/drag inputs for the projectile model
     recoil_decay.json       ← Per-weapon ADS recoil decay table
     balance_tables.json     ← Tier tables (ADS speed, sprint recovery, spread, etc.)
+    provenance/             ← Per-release notes on where promoted values came from
 
   scripts/
     validate-data.mjs       ← Cross-file data validation used locally and by CI
+    validate-ship-surface.mjs ← Checks the declared runtime boundary still matches index.html
+
+  schemas/                  ← JSON schemas for the audit and reload-exception datasets
+  generated-data/sym/       ← Sym.gg import artifacts (mapping, normalized, diff, reconciliation)
+  migration/1.3.3.0/        ← Release plan, derived attachment model, audit inventories
 
   v1.2.3.0/                 ← Frozen archive of the v1.2.3.0 site (do not edit)
   v1.3.1.0/                 ← Frozen archive of the v1.3.1.0 site (do not edit)
 
+  ship-surface.json         ← Declares the live runtime boundary (paths + fetched data)
+  README.md                 ← Project overview, status, checks, known gaps
   CODE_DOCUMENTATION.md     ← Architecture and behavior reference
   MAINTENANCE.md            ← Season/patch update checklist (data edits)
-  TODO.md                   ← Open data gaps and follow-ups
+  docs/DATA_FLOW.md         ← Where each number comes from, and its promotion gates
   .gitignore
 ```
 
 Local-only helper files are intentionally ignored and should not be committed:
-`serve.bat`, `Open - *.url`, `.claude/`, `memory/`, and `outputs/`.
+`serve.bat`, `Open - *.url`, `.claude/`, `memory/`, `CLAUDE.md`, `TODO.md`, `outputs/`, and the
+`Weapon Attachments/` screenshot corpus.
 
 ### Data Flow
 
@@ -63,7 +85,7 @@ flowchart LR
         RJ["recoil_decay.json"]
         BJ["balance_tables.json"]
     end
-    subgraph SIM["sim/ — shared by all 3 pages"]
+    subgraph SIM["sim/ — shared by both pages"]
         AA["applyAttachments.js<br/>raw weapon + atts → derived weapon"]
         CO["core.js<br/>recoil + spread math"]
         LO["loadout.js + attachments.js<br/>defaults / points / sidebar"]
@@ -87,7 +109,7 @@ flowchart LR
     LO --> AS
 ```
 
-1. Page loads → `<script type="module">` fetches all five JSON files via `Promise.all`.
+1. Page loads → `<script type="module">` fetches all six JSON files via `Promise.all`.
    Each fetch goes through a `fetchJson` helper that rejects on non-OK responses; any
    failure renders a full-screen "Failed to load weapon data" message (mirroring the
    Chart.js load-failure fallback in `index.html`).
@@ -103,7 +125,7 @@ flowchart LR
    returns a derived weapon object.
 6. All renderers (overview cards, chart, BTK table, recoil canvas) consume the derived object.
 
-All three pages share the same `sim/` modules and the same `data/` JSON files. **One data edit applies to all pages.**
+Both pages share the same `sim/` modules and the same `data/` JSON files. **One data edit applies to all pages.**
 
 ---
 
@@ -111,7 +133,7 @@ All three pages share the same `sim/` modules and the same `data/` JSON files. *
 
 ### `sim/core.js`
 
-Pure simulation math. Previously copy-pasted across all three pages; now imported by all of them.
+Pure simulation math. Previously copy-pasted across the page files; now imported by both of them.
 
 **Context setter:**
 
@@ -262,7 +284,7 @@ itself determines which effect path is used.
 
 ### `sim/attachments.js`
 
-Single source of truth for attachment slot ordering and UI metadata. All three pages import
+Single source of truth for attachment slot ordering and UI metadata. Both pages import
 `ATTACHMENT_SLOT_KEYS` and iterate it to build their attachment sidebars. **Adding a new slot
 type = one entry here, all pages pick it up.**
 
@@ -289,9 +311,9 @@ Ammo, Mag, and Ergo are not in this list; they are rendered separately by
 
 ### `sim/loadout.js`
 
-Shared loadout UI and accounting helpers used by all three pages. The index page remains
-the golden source for behavior and styling; the preview pages call the same helpers with
-their own DOM class names.
+Shared loadout UI and accounting helpers used by both pages. The index page remains
+the golden source for behavior and styling; the preview page calls the same helpers with
+its own DOM class names.
 
 **Exports:**
 
@@ -311,11 +333,88 @@ data bundle passed by each page.
 
 ---
 
+### `sim/damage.js`
+
+Damage resolution and lethality. Every page resolves hit zones through this module, so a
+zone rule changes in one place.
+
+| Export | Description |
+|---|---|
+| `resolveHitMultipliers(weaponId, ammoType, tables)` | Head/chest/limb multipliers for a weapon+ammo pair, running the `auto`-class ammo-tier headshot ladder and the `LIMB_CLASS` ladder |
+| `damageAtRange(weapon, range)` | Interpolates the weapon's `dmg` dropoff array |
+| `damagePerShotAtRange(weapon, range)` | As above, multiplied out for multi-pellet weapons |
+| `zoneMultiplierForWeapon(weapon, zone)` | Multiplier for a single named zone |
+| `bulletsToKillWithHits(damagePerShot, opts)` | BTK for a specified mix of hit zones |
+| `bulletsToKillAtRange(weapon, range, opts)` | BTK at a range, the form the charts and kill table use |
+
+Sniper sweet spots are read off the damage curve rather than stored, so a data refresh that
+moves a window flows through without a code change.
+
+---
+
+### `sim/ballistics.js`
+
+Projectile flight model — see [Projectile Ballistics](#projectile-ballistics-main-app) for the
+formulas and their reference cases.
+
+| Export | Description |
+|---|---|
+| `isProjectileModel(model)` | Whether a build has both a source-backed entry and a usable `bulletVel` |
+| `flightTimeAtDistance(model, distanceM)` | Level-flight arrival time via the measured closed form |
+| `trajectoryAtDistance(model, distanceM, launchAngleRadians)` | RK4-integrated position at a distance |
+| `zeroRelativeVerticalOffset(model, distanceM, zeroDistanceM)` | Drop relative to the selected zero, or to the bore line when no zero applies |
+
+A build that fails `isProjectileModel` reports the feature as unavailable rather than falling
+back to a plausible-looking number.
+
+---
+
+### `sim/target.js`
+
+Soldier Target geometry and hit accounting: zone polygons, aim points, marker sizing, and the
+per-shot impact summary. Exports the target constants (`TARGET_HEIGHT_CM` 180,
+`TARGET_VIEW_HEIGHT`, `TARGET_AIM_Y`, `TARGET_ZONE_COLORS`, `TARGET_ZONE_ORDER`) alongside
+`targetZoneAt`, `targetFrame`, `targetAimOffset`, `targetMarkerRadius`,
+`summarizeTargetImpacts(weapon, range, shotZones, health)`, `drawTarget`, and
+`whenTargetImageReady` for callers that must wait on `assets/soldier-target.png`.
+
+---
+
+### `sim/share-state.js`
+
+The URL-hash loadout share codec, as a single `createShareCodec({ ...catalogs, defaultAttsForWeapon })`
+factory so the browser path and the focused tests exercise one implementation. Attachments encode
+as catalog **indices**, which is why the catalog arrays are append-only — see the share-link note in
+`MAINTENANCE.md`. The decoder still accepts the original dash-joined ID format, so older links keep
+resolving.
+
+---
+
+### `ui/capture.js`
+
+Renders the current view to a PNG for the "Copy Image" share action. No library: the whole page
+styles from one inline `<style>` block and every asset is same-origin or a data URI, so the DOM is
+serialised into an SVG `<foreignObject>` and drawn by the browser's own renderer, preserving
+`backdrop-filter`, masks, and grid exactly.
+
+| Export | Description |
+|---|---|
+| `captureView({ scale })` | Renders header + main column at full scroll height to a PNG `Blob` |
+| `captureFilename(labels)` | Builds the download filename from the loadout labels |
+
+Three non-obvious constraints are documented in the module header and are easy to break: canvas
+content does not survive `cloneNode` (each live canvas is swapped for an `<img>` of its
+`toDataURL()`), the capture root is a `<div>` so `body { … }` rules never match it (computed body
+typography is mirrored onto the root), and media queries inside a `<foreignObject>` resolve against
+the SVG width — which is what lets a phone emit the desktop layout.
+
+---
+
 ## Data Reference: `data/`
 
 ### `data/weapons.json`
 
-Array of 58 weapon objects. The `cls` field drives the class filter buttons in the UI.
+Array of 61 weapon objects. The `cls` field drives the class filter buttons in the UI.
 Current classes: `Assault Rifle` (10), `LMG` (10), `SMG` (9), `Carbine` (8), `Sidearm` (7),
 `DMR` (5), `Sniper Rifle` (5), `Shotgun` (4). Sidearms display under a `Pistol` button in
 the class filter (`CLASS_SHORT` maps `"Sidearm"` → `"Pistol"`).
@@ -705,11 +804,19 @@ existing state.
 
 Primary app:
 
-- **`index.html`**: metadata, local Chart.js include (with load-failure fallback), CSS,
+- **`index.html`**: head metadata, local Chart.js include (with load-failure fallback), CSS,
   static HTML shell, and the `ui/app.js` module entry point.
 - **`ui/app.js`**: JSON fetch (`Promise.all` with error fallback), context setup, app
   state, sidebar/loadout rendering, overview cards, chart rendering, recoil/spread canvas,
   attachment effect chips, and event wiring.
+- **`ui/capture.js`**: the "Copy Image" PNG export, loaded by `ui/app.js`.
+
+**Head metadata.** The `<head>` carries the search and social surface: title, meta description,
+`rel=canonical`, Open Graph and Twitter card tags, and a `WebApplication` JSON-LD block. The
+site name in the header is wrapped in an `<h1>` with `display:contents`, so the page has a real
+top-level heading without changing header layout. `assets/og-image.png` (1200x630) backs the
+link preview and carries its own season/version chip — regenerate it when the season tag
+changes.
 
 **Class filter buttons** (`CLASSES` array): `Assault Rifle`, `Carbine`, `SMG`, `LMG`,
 `DMR`, `Sniper Rifle`, `Shotgun`, `Sidearm`. Button labels come from `CLASS_SHORT`:
@@ -736,9 +843,10 @@ folded into each weapon's line entry as a `chest–limbs` range instead.
 
 Recoil/spread chart experiment tool. Three side-by-side chart approaches with independent
 bubble schedules, a class/weapon/attachment sidebar, and configurable shot count. Imports
-all three `sim/` modules and all five `data/` JSON files. Attachment selections are applied
-through `applyAttachments(rawWeapon, selectedAtts)`, matching the main app and distance
-preview. `compensationFn` is still stubbed to `() => 0` because this preview has no recoil
+`sim/core.js`, `sim/applyAttachments.js`, and `sim/loadout.js`, and fetches five of the six
+`data/` JSON files (everything but `ballistics.json`, which it has no use for). Attachment
+selections are applied through `applyAttachments(rawWeapon, selectedAtts)`, matching the main
+app. `compensationFn` is still stubbed to `() => 0` because this preview has no recoil
 control UI.
 
 Useful for testing rendering changes before porting to the main app.

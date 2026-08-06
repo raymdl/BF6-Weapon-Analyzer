@@ -105,7 +105,10 @@ index.html                ← Primary app shell
 preview_spread.html       ← Spread chart experiment tool
 
 ui/app.js                 ← App state, rendering, charts, recoil/target UI
+ui/capture.js             ← "Copy Image" PNG export of the current view
 vendor/chart.umd.min.js   ← Local Chart.js bundle
+assets/                   ← Favicon, soldier target artwork, social preview card
+sitemap.xml               ← Homepage + frozen archives, for search engines
 
 sim/
   core.js                 ← Shared simulation math (RNG, recoil, spread)
@@ -223,3 +226,29 @@ and apply scripts are tracked, but only values promoted out of them reach `data/
 GitHub Pages serves `main` at `https://raymdl.github.io/BF6-Weapon-Analyzer/`. There is no build
 step; pushing to `main` publishes. Because of that, treat `main` as the released version and keep
 in-progress release work on its own branch until the plan's gates pass.
+
+### Search and social metadata
+
+`index.html` carries the full search surface in its `<head>`: title, meta description,
+`rel=canonical`, Open Graph and Twitter card tags, and a `WebApplication` JSON-LD block. The site
+name is wrapped in an `<h1>` using `display:contents`, which gives the page a real top-level heading
+without changing header layout. `sitemap.xml` lists the homepage and the two frozen archives.
+
+`assets/og-image.png` (1200x630) backs link previews. It carries its own season/version chip, so
+**regenerate it when the season tag changes** — otherwise shared links advertise a stale patch.
+
+There is deliberately no `robots.txt`: it is only honored at `raymdl.github.io/robots.txt`, which is
+served by a user-site repo that does not exist. Submitting the sitemap directly covers the same
+ground.
+
+**Open follow-up — Google Search Console.** This needs a Google sign-in, so it cannot be automated
+from the repo:
+
+1. At `search.google.com/search-console`, add a **URL prefix** property for
+   `https://raymdl.github.io/BF6-Weapon-Analyzer/`.
+2. Verify with the **HTML tag** method and paste the resulting
+   `<meta name="google-site-verification" ...>` into the `<head>` of `index.html`.
+3. Sitemaps → submit `sitemap.xml`.
+4. URL Inspection → request indexing for the homepage. This is what forces the re-crawl that
+   replaces the stale "GitHub Pages documentation" search result with the current title,
+   description, and site name.

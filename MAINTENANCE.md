@@ -14,14 +14,21 @@ data/
   recoil_decay.json     ← Recoil recovery tables (RECOIL_DEC, _EXP, _TEXP)
   balance_tables.json   ← Tier tables (ADS speed, sprint recovery, spread, etc.)
 
+  ballistics.json       ← Per-weapon gravity/drag inputs for the projectile model
+
 sim/
   core.js               ← Shared simulation math (recoil, spread)
+  damage.js             ← Damage falloff, hit zones, bullets-to-kill
+  ballistics.js         ← Flight time, trajectory, zero-relative drop
   applyAttachments.js   ← Applies attachment effects to a weapon object
   loadout.js            ← Shared loadout defaults, point totals, and attachment UI
   attachments.js        ← Ordered list of attachment slot types (UI metadata)
+  target.js             ← Soldier Target geometry, zones, and impact summary
+  share-state.js        ← URL-hash loadout share codec
 
 scripts/
   validate-data.mjs     ← Cross-file data integrity checks used by CI
+  validate-ship-surface.mjs ← Checks the runtime boundary still matches index.html
 ```
 
 Both pages (`index.html`, `preview_spread.html`)
@@ -89,7 +96,7 @@ flowchart TD
     V -- pass --> L["Local check via serve.bat —<br/>spot-check BTK/TTK vs sym.gg,<br/>eyeball recoil/spread sim"]
     L --> AR{"New balance<br/>version?"}
     AR -- yes --> F["Freeze current site into vX.Y.Z.0/<br/>archive + add archive button"]
-    AR -- no --> H["Update header season tag +<br/>footer data credit"]
+    AR -- no --> H["Update header season tag,<br/>footer data credit +<br/>assets/og-image.png chip"]
     F --> H
     H --> C["Commit + push<br/>(CI re-runs validate-data)"]
 ```
