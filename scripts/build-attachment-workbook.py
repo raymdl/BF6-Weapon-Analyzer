@@ -118,6 +118,11 @@ COLUMNS = [
     ("Current Screenshot Filename", lambda r: _basename(r["source"].get("currentPath")), None, 39.375),
 ]
 
+# By Attachment sheet columns that hold a number rather than a label, offset by its weapon
+# column. Every stat carries a comparison key; the cost is the one number that does not.
+RIGHT_ALIGNED = {index + 2 for index, (header, _getter, cmp_key, _width) in enumerate(COLUMNS)
+                 if cmp_key or header == "Attachment Cost"}
+
 OVERVIEW_TYPE_ORDER = ["Muzzle", "Barrel", "Light", "Laser", "Laser/Light", "Grip/Laser/Light",
                        "Grip", "Magazine", "Ammo", "Ergonomics"]
 SUBTYPE_KEYED_TYPES = {"Barrel", "Ammo"}
@@ -554,16 +559,14 @@ def write_by_attachment(workbook, classes, order, types, by_type, record_rows):
             tab = PALETTE.get(weapon_class, PALETTE["Assault Rifle"])[0]
             band = sheet.cell(row, 1, weapon_class)
             band.font = Font(sz=11, bold=True, color=WHITE)
+            band.alignment = Alignment(horizontal="left", vertical="center")
             for column in range(1, columns + 1):
                 sheet.cell(row, column).fill = _fill(tab)
-                sheet.cell(row, column).alignment = Alignment(horizontal="centerContinuous",
-                                                              vertical="center")
                 sheet.cell(row, column).border = Border(bottom=rule)
             previous_class = weapon_class
         row += 1
         light, light_text = PALETTE.get(weapon_class, PALETTE["Assault Rifle"])[2:4]
         name = sheet.cell(row, 1, weapon)
-        name.fill = _fill(light)
         name.font = Font(sz=10, bold=True, color=argb(light_text))
         name.alignment = Alignment(vertical="top")
         for index in range(2, columns + 1):
@@ -571,7 +574,13 @@ def write_by_attachment(workbook, classes, order, types, by_type, record_rows):
             cell = sheet.cell(row, index,
                               f'=IFERROR(INDEX({source},MATCH($A{row}&"|"&$B$1&"|"&$B$2,{keys},0)),"")')
             cell.font = Font(sz=10)
-            cell.alignment = Alignment(vertical="top", wrap_text=index in (6, 29))
+            # Stat columns read as a column of numbers, so they sit top-right; the text columns
+            # keep their left edge and wrap.
+            cell.alignment = (Alignment(horizontal="right", vertical="top") if index in RIGHT_ALIGNED
+                              else Alignment(vertical="top", wrap_text=index in (6, 29)))
+        # the weapon's class tint carries across the row, not just its name cell
+        for column in range(1, columns + 1):
+            sheet.cell(row, column).fill = _fill(light)
 
     last_row = row
     # The arrow prefix is what the weapon sheets carry; colour it the same way here.
