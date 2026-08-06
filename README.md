@@ -93,18 +93,16 @@ Then open `http://localhost:5174/`.
 |---|---|
 | `index.html` | The primary analyzer: loadout sidebar, overview cards, damage/BTK/TTK charts, recoil and target panel |
 | `preview_spread.html` | Spread-visualization experiment tool — three chart approaches side by side |
-| `preview_distance.html` | Distance-wall spray projection: 5 m, 10 m, 20 m, and custom distance panels |
 
-The two preview pages are development tools for trying rendering ideas before porting them into the
-main app. They share the same `sim/` modules and data files as `index.html`. They are recorded as
-`developmentOnly` in `ship-surface.json` and are not loaded or linked by the live entrypoint.
+The preview page is a development tool for trying rendering ideas before porting them into the
+main app. It shares the same `sim/` modules and data files as `index.html`. It is recorded as
+`developmentOnly` in `ship-surface.json` and is not loaded or linked by the live entrypoint.
 
 ## Layout
 
 ```
 index.html                ← Primary app shell
 preview_spread.html       ← Spread chart experiment tool
-preview_distance.html     ← Distance projection tool
 
 ui/app.js                 ← App state, rendering, charts, recoil/target UI
 vendor/chart.umd.min.js   ← Local Chart.js bundle

@@ -24,7 +24,7 @@ scripts/
   validate-data.mjs     ← Cross-file data integrity checks used by CI
 ```
 
-All three pages (`index.html`, `preview_spread.html`, `preview_distance.html`)
+Both pages (`index.html`, `preview_spread.html`)
 load from these files. **One edit → all pages updated.**
 
 All eight weapon classes are fully supported in the UI, including `Sidearm` (displayed

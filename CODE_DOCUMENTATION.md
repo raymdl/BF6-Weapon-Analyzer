@@ -1,8 +1,8 @@
 # BF6 Weapon Analyzer — Code Documentation
 
 This document describes the current structure and behavior of the BF6 Weapon Analyzer project.
-`index.html` is the primary app. `preview_spread.html` and `preview_distance.html` are companion
-tools used to test recoil/spread visualization ideas and validate distance projections.
+`index.html` is the primary app. `preview_spread.html` is a companion tool used to test
+recoil/spread visualization ideas.
 
 ---
 
@@ -17,7 +17,6 @@ URLs will fail.
 BF6 Project/
   index.html                ← Primary weapon analyzer app
   preview_spread.html       ← Recoil/spread chart experiment tool
-  preview_distance.html     ← Distance-wall spray projection tool
 
   ui/
     app.js                  ← Primary app state, rendering, chart, and recoil UI logic
@@ -171,8 +170,8 @@ June 2026; see the Recoil Variation section below).
 
 ### `sim/applyAttachments.js`
 
-Applies all attachment effects to a raw weapon object. Replaces the two separate inline
-`applyAttachments` functions that previously lived in `index.html` and `preview_distance.html`.
+Applies all attachment effects to a raw weapon object. Replaces the separate inline
+`applyAttachments` functions that previously lived in the page files.
 
 **Context setter:**
 
@@ -653,13 +652,6 @@ recalibrate against multiple automatic weapons and fire rates.
 The recoil panel has a PC/Console toggle. Console applies `CONSOLE_RECOIL_MULT` (0.89)
 to the recoil amount via `platformRecoilMultFn` in the sim context.
 
-### Distance Projection (`preview_distance.html`)
-
-`metersOnWall = Math.tan(radians) × distanceMeters`
-
-Same angular model as the main app, different display units. Not a projectile simulator -
-does not model bullet travel time, drag, sight height, or zeroing.
-
 ### Projectile Ballistics (main app)
 
 `data/ballistics.json` promotes the v1.3.3.0 Sym snapshot's source-excluded
@@ -750,16 +742,6 @@ preview. `compensationFn` is still stubbed to `() => 0` because this preview has
 control UI.
 
 Useful for testing rendering changes before porting to the main app.
-
----
-
-### `preview_distance.html`
-
-Distance-wall spray projection tool. Full attachment sidebar (imports all three `sim/`
-modules and all five `data/` JSON files). Panels: 5 m, 10 m, 20 m, custom distance.
-Human target outline (180 cm) with hit count. Independent per-panel zoom/pan state.
-
-Useful for validating how angular recoil/spread translates to practical engagement distances.
 
 ---
 
