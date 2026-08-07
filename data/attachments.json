@@ -939,7 +939,8 @@
       "setsFireModeAuto": true,
       "assumedFields": {
         "recoilDecreaseFactorOverride": "Source sets ADS recoil decrease factor to 76 (base 13.7); the sim has no per-attachment decay override, so this effect is not modelled."
-      }
+      },
+      "autoRpm": 799.999
     }
   ],
   "WEAPON_ATTS": {

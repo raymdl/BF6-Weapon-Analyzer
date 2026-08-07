@@ -195,8 +195,8 @@ test('derives scalar reloads from ReloadSpeed and changes exactly the known 15 n
   const currentRecoilDecay = JSON.parse(readFileSync(join(DEFAULT_ROOT, 'data', 'recoil_decay.json'), 'utf8'));
   const currentBalance = JSON.parse(readFileSync(join(DEFAULT_ROOT, 'data', 'balance_tables.json'), 'utf8'));
   const live = buildLiveData(currentWeapons, currentRecoilDecay, currentBalance, normalized);
-  assert.equal(live.weapons.length, 61);
-  assert.equal(live.weapons.filter(weapon => Number.isFinite(weapon.reloadSpeed)).length, 61);
+  assert.equal(live.weapons.length, 62);
+  assert.equal(live.weapons.filter(weapon => Number.isFinite(weapon.reloadSpeed)).length, 62);
   const pp19 = live.weapons.find(weapon => weapon.id === 'pp19');
   assert.equal(pp19.reloadSpeed, 0.979732);
   assert.equal(pp19.tacRld, 2.467);

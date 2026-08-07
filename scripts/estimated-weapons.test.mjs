@@ -18,9 +18,11 @@ const loadout = readFileSync(join(root, 'sim/loadout.js'), 'utf8');
 const estimated = weapons.filter(weapon => weapon.estimated === true);
 const byId = id => weapons.find(weapon => weapon.id === id);
 
-test('exactly BROD 3 and EF88 are estimated with explicit donor provenance', () => {
-  assert.deepEqual(estimated.map(weapon => weapon.id), ['brod3', 'ef88']);
-  assert.equal(byId('vssm'), undefined);
+test('exactly BROD 3, EF88 and VSSM are estimated with explicit provenance', () => {
+  assert.deepEqual(estimated.map(weapon => weapon.id), ['brod3', 'ef88', 'vssm']);
+  assert.equal(byId('vssm').damageStatus, 'provisional');
+  assert.equal(byId('vssm').provenance.sourced.changelist, 28877515);
+  assert.ok(byId('vssm').provenance.notes.length > 0);
   assert.equal(byId('brod3').damageStatus, 'provisional');
   assert.equal(byId('ef88').damageStatus, 'provisional');
   assert.equal(byId('brod3').provenance.donor.weaponId, 'grtbc');
@@ -47,7 +49,7 @@ test('estimated weapons have complete cross-file coverage and five attachment sl
     assert.equal(recoil.RECOIL_DEC_TEXP[weapon.id] != null, true);
     assert.equal(balance.RECOIL_MULT[weapon.id] != null, true);
     assert.equal(balance.HIP_CLS[weapon.id] != null, true);
-    assert.equal(balance.LIMB_CLASS[weapon.id], 'auto');
+    assert.equal(balance.LIMB_CLASS[weapon.id], weapon.cls === 'DMR' ? 'dmr' : 'auto');
   }
 });
 
@@ -79,7 +81,7 @@ test('reviewed handling decisions and measured endpoint contracts are pinned', (
 });
 
 test('new attachment tokens are append-only and share state round-trips', () => {
-  assert.deepEqual(attachments.BARRELS.slice(-3).map(item => item.id), ['cryo', 'ext_light', 'short_light']);
+  assert.deepEqual(attachments.BARRELS.slice(-3).map(item => item.id), ['short_light', 'vssm_suppressed', 'vssm_suppressed_asm']);
   assert.equal(new Set(attachments.BARRELS.map(item => item.id)).size, attachments.BARRELS.length);
   const codec = createShareCodec({
     SIGHTS: attachments.SIGHTS, MUZZLES: attachments.MUZZLES, BARRELS: attachments.BARRELS,

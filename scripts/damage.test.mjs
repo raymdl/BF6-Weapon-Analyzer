@@ -156,9 +156,13 @@ test('uses the refreshed Sym game-file damage tiers', () => {
   assert.deepEqual(curves.lmr27, [29.4, 29.4, 27.5, 27.5, 26.2]);
   assert.deepEqual(curves.svk86, [66.7, 66.7, 57.2, 57.2, 52.4]);
 
+  // Every curve stays provisional and single-sourced. The Sym refresh covers the
+  // roster; VSSM's tiers were read in game, so it carries its own source.
+  const NON_SYM_CURVES = { vssm: 'in-game' };
   for (const weapon of weapons) {
     assert.equal(weapon.damageStatus, 'provisional', `${weapon.id} status`);
-    assert.equal(weapon.dmg.every(point => point.source === 'Sym'), true, `${weapon.id} source`);
+    const expected = NON_SYM_CURVES[weapon.id] ?? 'Sym';
+    assert.equal(weapon.dmg.every(point => point.source === expected), true, `${weapon.id} source`);
   }
 });
 

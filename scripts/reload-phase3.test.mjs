@@ -19,8 +19,8 @@ const preMigrationWeaponIds = new Set(Object.keys(preMigrationState.magazines));
 const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
 
 const EXPECTED_RELOAD_SCOPE = Object.freeze({
-  weaponCount: 61,
-  magazineEntryCount: 278,
+  weaponCount: 62,
+  magazineEntryCount: 283,
   caseDimensions: 'weapon × magazine × selectable grip × selectable ergonomic × available ammo',
   gripSelection: 'none plus WEAPON_ATTS.grip, or grip IDs in the combined VZ.61 laser slot',
   ergoSelection: 'none plus WEAPON_ERGO[weapon].avail',
@@ -30,20 +30,20 @@ const EXPECTED_RELOAD_SCOPE = Object.freeze({
 });
 
 const EXPECTED_RELOAD_COUNTS = Object.freeze({
-  weapons: 61,
-  magazineEntries: 278,
-  gripChoices: 860,
-  ergoChoices: 185,
-  ammoChoices: 322,
-  cases: 86754,
-  primaryCases: 86476,
+  weapons: 62,
+  magazineEntries: 283,
+  gripChoices: 878,
+  ergoChoices: 188,
+  ammoChoices: 326,
+  cases: 87834,
+  primaryCases: 87556,
   sidearmCases: 278,
 });
 
-const EXPECTED_RELOAD_DIGEST = 'cf0f3eecd50e5c5010f23a86097d221f66ea98e813e10acb2897b073bf98abba';
-const EXPECTED_PREVIOUS_DIGEST = '2a5ed47be2b3402ca5a0a3301332e981fb8d857dba1c59654428ae13f55d1f28';
-const EXPECTED_CHANGED_CASE_COUNT = 10676;
-const EXPECTED_CHANGED_CASE_KEYS_DIGEST = '7f20aaa18c881cc1d3a801f767000a8865643c00784a8934c5a8c9953938e611';
+const EXPECTED_RELOAD_DIGEST = 'd8bf9387d8d2c28cc0590be264ac7b20c522502d4c046a70353460d0722aa18f';
+const EXPECTED_PREVIOUS_DIGEST = '895ffaac971e5e14ddb24f96967c122cd1c93cd8e0c8247f6735192799c727a6';
+const EXPECTED_CHANGED_CASE_COUNT = 11324;
+const EXPECTED_CHANGED_CASE_KEYS_DIGEST = 'e7d5604eb928aa817bf4c514ef5e3dc417d47b0255ac87f850a2148993fe9180';
 
 const baseContext = {
   MUZZLES: attachments.MUZZLES,
@@ -241,7 +241,7 @@ const generatedBaseline = process.argv.includes('--write-baseline') ? buildFixtu
 if (generatedBaseline) writeFileSync(baselinePath, `${JSON.stringify(generatedBaseline, null, 2)}\n`);
 const baseline = generatedBaseline ?? readJson('scripts/reload-phase3-baseline.json');
 
-test('Phase 3 reload baseline pins the complete 86,754-case live-roster enumeration', () => {
+test('Phase 3 reload baseline pins the complete 87,834-case live-roster enumeration', () => {
   const enumeration = buildEnumeration({ attachments, ammo, balance, weapons });
   assert.deepEqual(enumeration.scope, EXPECTED_RELOAD_SCOPE);
   assert.deepEqual(enumeration.counts, EXPECTED_RELOAD_COUNTS);
@@ -270,7 +270,7 @@ test('Phase 3 reload baseline pins the complete 86,754-case live-roster enumerat
     [...new Set(actualChangedCases
       .map(row => row.caseKey.split('/')[0])
       .filter(weaponId => !preMigrationWeaponIds.has(weaponId)))].sort(),
-    ['brod3', 'ef88'],
+    ['brod3', 'ef88', 'vssm'],
   );
 });
 

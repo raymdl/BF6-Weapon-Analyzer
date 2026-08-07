@@ -53,7 +53,7 @@ const context = {
 
 setAttachmentContext(context);
 
-test('Phase 7 data has all ten exact velocity tiers and retains velMult', () => {
+test('Phase 7 data has all exact velocity tiers and retains velMult', () => {
   assert.equal(balance.VELOCITY_LADDER, 0.8);
   const expected = new Map([
     ['none', 0],
@@ -66,6 +66,8 @@ test('Phase 7 data has all ten exact velocity tiers and retains velMult', () => 
     ['cryo', 0],
     ['ext_light', 1],
     ['short_light', -1],
+    ['vssm_suppressed', 0],
+    ['vssm_suppressed_asm', 0],
   ]);
   assert.deepEqual(new Set(attachments.BARRELS.map(barrel => barrel.id)), new Set(expected.keys()));
   for (const barrel of attachments.BARRELS) {
@@ -214,7 +216,7 @@ test('Phase 7 velocity flooring has a guarded floating-point edge', () => {
 test('Phase 7 extends the Phase 5 witness comparison with an explicit legacy velocity path', () => {
   const enumeration = buildEquivalenceEnumeration();
   const result = compareBarrelVelocityLegacyAndDerived(enumeration);
-  assert.equal(result.comparedCases, 100612);
+  assert.equal(result.comparedCases, 101812);
   assert.equal(result.mismatchCases, 0, JSON.stringify(result.mismatches));
   assert.equal(result.historicalDisplayDifferencePairs, 23);
   assert.equal(result.unexplainedHistoricalDisplayDifferencePairs, 0, JSON.stringify(result.unexplainedHistoricalDisplayDifferences));

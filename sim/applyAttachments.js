@@ -568,6 +568,11 @@ export function applyAttachments(w, atts) {
     : ergoData.burstBurstsPerMinute ?? w.burstBurstsPerMinute;
   const burstRpm = ergoData.setsFireModeAuto ? undefined
     : ergoData.burstRpm ?? w.burstRpm;
+  // A receiver that converts the weapon to full auto can also cycle it faster
+  // than its stock rate: the VSSM fires 450 semi and 800 with the Folding Stock.
+  const autoRpm = ergoData.setsFireModeAuto
+    ? ergoData.autoRpm ?? w.autoRpm ?? null
+    : null;
 
   return {
     ...w,
@@ -591,7 +596,9 @@ export function applyAttachments(w, atts) {
     _collateralMult:         collateralMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
     _healthRegenDelayS:      healthRegenDelayS,
-    rpm:         fireMode === 'burst' && burstRpm ? burstRpm : w.rpm,
+    rpm:         fireMode === 'auto' && autoRpm ? autoRpm
+      : fireMode === 'burst' && burstRpm ? burstRpm : w.rpm,
+    autoRpm,
     fireMode,
     burstRounds,
     burstBurstsPerMinute,
