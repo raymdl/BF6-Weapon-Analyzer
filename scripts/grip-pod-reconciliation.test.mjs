@@ -211,6 +211,15 @@ test('standard Grip Pods are direct-paired tier 2 cards and preserve the four au
   for (const [name, expectation] of expected) {
     const rows = recordsFor(name, record => !normalizedPath(record.source?.currentPath).includes('/Sniper Rifle/'));
     assert.equal(rows.length, expectation.count, `${name} direct-card coverage`);
+    // KNOWN FAILURE — do not re-research: VSSM/QD Grip Pod displays 0.7, which
+    // is a tier 3 recoil benefit at tier 2 cost. Confirmed 2026-07-26 in the
+    // captures and in datamined changelist 28877515, which carries the same
+    // wrong tier for brod3, ef88, m16a3, rpk74m and vssm while every other
+    // weapon gets tier 2. It is a game bug, not a per-weapon variant, so the
+    // catalog keeps the intended tier 2 card and this row cannot pass. It will
+    // go green on its own once EA fixes the grip. Everything else reconciles:
+    // the other 17 VSSM grip captures confirm the catalog once the default
+    // Range Pen ammo tier is applied.
     for (const record of rows) assertDirectPairedRecoil(record, 2);
     assert.deepEqual(
       [...new Set(rows.filter(record => !weaponByName.has(normalizeWeaponName(record.weaponName))).map(record => record.weaponName))].sort(),
