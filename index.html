@@ -155,13 +155,40 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .wbadge-estimated{font-size:0.68rem;color:#d8704a;border:1px solid rgba(216,112,74,.65);border-radius:3px;padding:2px 6px}
 .wbadge-burst{font-size:0.68rem;color:#c8960a;border:1px solid rgba(200,150,10,.4);border-radius:3px;padding:2px 6px}
-.sgroups{display:flex;flex-direction:column;gap:11px}
+/* --sgroup-chrome is the group's border-left plus padding-left; the box is
+   border-box, so the flex basis above has to carry it. Keep the three in
+   step with the .sgroup and .sgrid rules that consume them.
+
+   The cards stop growing once the row reaches the width it gets in a shared
+   image, so a maximised desktop shows the same card widths the screenshot
+   does rather than drifting ever wider. --scard-max is what a card measures
+   at that width; the max-width stops the groups themselves there too, which
+   the track cap alone would not — they would keep growing and leave dead
+   space inside each group. --capture-width mirrors CAPTURE_WIDTH in
+   ui/capture.js, and --sgroups-inset is the padding between the main column
+   and this row, which the capture carries too. */
+.sgroups{display:flex;flex-direction:column;gap:11px;
+  --scard-min:108px;--scard-max:127px;--sgrid-gap:5px;--sgroup-chrome:12px;
+  --capture-width:1280px;--sgroups-inset:34px;
+  max-width:calc(var(--capture-width) - var(--sgroups-inset))}
 .sgrow{display:flex;align-items:start;gap:20px}
-.sgroup{border-left:2px solid var(--border);padding-left:10px}
+/* renderStatCards sets --n to the card count. The group then reproduces the
+   width it had when cards were pinned at --scard-min, and grows from there in
+   proportion to --n, so spare width splits by card count and every card lands
+   on the same width. Both halves matter: an equal share of the spare would
+   blow the single-card Concealment group up to the width of the four-card
+   ones, and leaving the basis to content would size each group by its longest
+   label instead of its card count. */
+.sgroup{border-left:2px solid var(--border);padding-left:10px;min-width:0;
+  flex-grow:var(--n,1);
+  flex-basis:calc(var(--sgroup-chrome) + var(--n,1)*var(--scard-min) + (var(--n,1) - 1)*var(--sgrid-gap))}
 .sgroup:last-child{margin-bottom:0}
 .sgroup-hd{font-size:0.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
-.sgrid{display:flex;flex-wrap:wrap;gap:5px}
-.scard{width:108px;flex-shrink:0;background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:4px 8px;letter-spacing:-0.03em}
+/* The track has to stay 1fr: auto-fit counts columns off the max track size
+   when that size is definite, so a fixed cap there fits fewer columns and
+   wraps the group early. The ceiling goes on the card instead. */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--scard-min),1fr));gap:var(--sgrid-gap)}
+.scard{max-width:var(--scard-max);background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:4px 8px;letter-spacing:-0.03em}
 .scard.stat-group{background:#202929}
 .sgrid .sval,.sgrid .scmp-row{white-space:nowrap}
 .slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:1px;white-space:nowrap}
@@ -498,7 +525,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
   .footer{align-items:flex-start;flex-direction:column;padding:7px 10px;gap:4px}
 }
 @media (max-width:430px){
-  .scard{width:100%}
+  .sgrid{grid-template-columns:1fr}
+  .scard{max-width:none}
   .att-grid{grid-template-columns:1fr}
   .mode-btn{padding-inline:7px}
   .rc-mode-btn{min-width:auto!important}

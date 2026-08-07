@@ -904,6 +904,10 @@ function renderOverview() {
       const block = document.createElement('div');
       block.className = 'sgroup';
       block.style.borderLeftColor = sec.color;
+      // Drives the group's flex basis and grow factor; see .sgroup in the
+      // stylesheet. Spare row width splits by card count, so cards stay a
+      // uniform width instead of the smallest group getting the widest cards.
+      block.style.setProperty('--n', String(secFields.length));
       const hd = document.createElement('div');
       hd.className = 'sgroup-hd';
       hd.style.color = sec.color;
