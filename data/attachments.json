@@ -100,7 +100,9 @@
       "name": "Compensated Brake",
       "adsRecoilTierMod": 1,
       "adsRecoilDecayMult": 1.1,
-      "assumed": true,
+      "assumedFields": {
+        "adsRecoilDecayMult": "Estimated recoil recovery effect; verify against datamined values when available."
+      },
       "worldSpot": 54,
       "minimapSpot": 150,
       "pts": 20
@@ -130,7 +132,9 @@
       "name": "Flash Comp",
       "adsRecoilTierMod": 0,
       "adsRecoilDecayMult": 1.1,
-      "assumed": true,
+      "assumedFields": {
+        "adsRecoilDecayMult": "Estimated recoil recovery effect; verify against datamined values when available."
+      },
       "worldSpot": 0,
       "minimapSpot": 150,
       "pts": 20
@@ -154,7 +158,9 @@
       "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
       "sway": 1,
-      "assumed": true,
+      "assumedFields": {
+        "adsRecoilDecayMult": "Estimated recoil recovery effect; verify against datamined values when available."
+      },
       "worldSpot": 0,
       "minimapSpot": 21,
       "pts": 25
@@ -166,7 +172,9 @@
       "adsRecoilTierMod": 0,
       "adsRecoilDecayMult": 1.1,
       "hipSpreadTierMod": 1,
-      "assumed": true,
+      "assumedFields": {
+        "adsRecoilDecayMult": "Estimated recoil recovery effect; verify against datamined values when available."
+      },
       "worldSpot": 0,
       "minimapSpot": 21,
       "pts": 30
@@ -186,7 +194,9 @@
       "name": "Compensator",
       "adsRecoilTierMod": 0,
       "adsRecoilDecayMult": 1.1,
-      "assumed": true,
+      "assumedFields": {
+        "adsRecoilDecayMult": "Estimated recoil recovery effect; verify against datamined values when available."
+      },
       "worldSpot": 54,
       "minimapSpot": 150,
       "pts": 10
