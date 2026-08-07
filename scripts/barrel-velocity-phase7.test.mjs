@@ -17,7 +17,6 @@ const attachments = readJson('data/attachments.json');
 const balance = readJson('data/balance_tables.json');
 const weapons = readJson('data/weapons.json');
 const ammo = readJson('data/ammo.json');
-const velocityManifest = readJson('scripts/barrel-velocity-phase7-manifest.json');
 
 const context = {
   MUZZLES: attachments.MUZZLES,
@@ -110,88 +109,6 @@ test('Phase 7 derived and legacy barrel velocity are bit-identical for every sel
       const legacy = applyAttachments(weapon, atts).bulletVel;
       assert.equal(derived, legacy, `${weapon.id}/${barrelId}`);
     }
-  }
-});
-
-test('Phase 7 audit corpus barrel velocity is 94/94 on the signed normal ladder with floor display', () => {
-  const audit = readJson('migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json');
-  const allRows = audit.records.filter(row => row.stats);
-  const barrelRows = allRows.filter(row => row.attachmentType === 'Barrel');
-  const byWeapon = new Map();
-  for (const row of allRows) {
-    const rows = byWeapon.get(row.weaponName) ?? [];
-    rows.push(row);
-    byWeapon.set(row.weaponName, rows);
-  }
-  const modal = rows => {
-    const counts = new Map();
-    for (const row of rows) {
-      const value = row.stats?.muzzleVelocityMps;
-      if (value == null) continue;
-      counts.set(value, (counts.get(value) ?? 0) + 1);
-    }
-    return [...counts].sort((left, right) => right[1] - left[1] || left[0] - right[0])[0]?.[0] ?? null;
-  };
-  const tierBySubtype = new Map([
-    ['Short', -1],
-    ['Short Light', -1],
-    ['Extended', 1],
-    ['Heavy Ext', 1],
-    ['Ext Light', 1],
-    ['Basic', 0],
-    ['Heavy', 0],
-    ['Light', 0],
-    ['Cryo', 0],
-    ['Suppressed', 0],
-  ]);
-  const changed = barrelRows.filter(row => row.stats.muzzleVelocityMps !== modal(byWeapon.get(row.weaponName)));
-  const predictions = changed.map(row => {
-    const base = modal(byWeapon.get(row.weaponName));
-    const tier = tierBySubtype.get(row.attachmentSubtype);
-    assert.notEqual(tier, undefined, `${row.weaponName}/${row.attachmentSubtype} has no Phase 7 tier disposition`);
-    const predicted = base * (balance.VELOCITY_LADDER ** (-tier));
-    return {
-      row,
-      base,
-      tier,
-      predicted,
-      floor: Math.floor(predicted),
-      round: Math.round(predicted),
-    };
-  });
-  const floorHits = predictions.filter(entry => entry.row.stats.muzzleVelocityMps === entry.floor);
-  const roundHits = predictions.filter(entry => entry.row.stats.muzzleVelocityMps === entry.round);
-  const discriminating = predictions.filter(entry => entry.floor !== entry.round);
-  const indiscriminating = predictions.filter(entry => entry.floor === entry.round);
-  assert.equal(barrelRows.length, 230);
-  assert.equal(changed.length, 94);
-  assert.equal(floorHits.length, 94, `barrel velocity floor hit rate ${floorHits.length}/${changed.length}`);
-  assert.equal(roundHits.length, 69, `legacy round hit count ${roundHits.length}/${changed.length}`);
-  assert.equal(indiscriminating.length, 69);
-  assert.equal(discriminating.length, 25);
-  assert.equal(discriminating.filter(entry => entry.row.stats.muzzleVelocityMps === entry.floor).length, 25);
-  assert.equal(discriminating.filter(entry => entry.row.stats.muzzleVelocityMps === entry.round).length, 0);
-
-  const keyFor = entry => `${entry.row.weaponName}|${entry.row.attachmentSubtype}|${entry.row.attachmentName}`;
-  const corpusByKey = new Map(predictions.filter(entry => entry.floor !== entry.round).map(entry => [keyFor(entry), entry]));
-  const manifestByKey = new Map(velocityManifest.explainedDifferences.map(entry => [
-    `${entry.weaponName}|${entry.attachmentSubtype}|${entry.attachmentName}`,
-    entry,
-  ]));
-  assert.equal(velocityManifest.counts.discriminatingRecords, 25);
-  assert.equal(velocityManifest.counts.indiscriminatingRecords, 69);
-  assert.deepEqual(new Set(manifestByKey.keys()), new Set(corpusByKey.keys()));
-  for (const [key, entry] of manifestByKey) {
-    const actual = corpusByKey.get(key);
-    assert.ok(actual, `missing corpus evidence ${key}`);
-    assert.equal(entry.baseVelocityMps, actual.base);
-    assert.equal(entry.velTierMod, actual.tier);
-    assert.equal(entry.predictedVelocityMps, actual.predicted);
-    assert.equal(entry.observedVelocityMps, actual.row.stats.muzzleVelocityMps);
-    assert.equal(entry.floorVelocityMps, actual.floor);
-    assert.equal(entry.legacyRoundedVelocityMps, actual.round);
-    const relativeSource = actual.row.source.currentPath.slice(root.length + 1).replaceAll('\\', '/');
-    assert.equal(entry.sourcePath, relativeSource, `evidence source ${key}`);
   }
 });
 

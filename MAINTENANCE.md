@@ -241,8 +241,10 @@ reads. Omit a field if the attachment has no effect there.
 | `adsRecoilVariationTierMod` | int | `0` | Shifts ADS recoil **variation** tier (pos = less variation, via per-weapon `dirVarMult`) |
 | `adsRecoilDecayMult` | float | `1` | *(muzzles)* Multiplies ADS recoil decay factor (>1 = recovers faster) |
 | `hipSpreadTierMod` | int | `0` | Shifts hip spread tier (pos = worse) |
-| `adsSpreadIncMult` | float | `1` | *(barrels)* Multiplies ADS spread-per-shot (`recoilIncAds`) |
+| `spreadIncMult` | float | `1` | *(barrels)* Multiplies spread-per-shot in every aim state (`recoilIncAds` and `spreadDyn.*.inc`) |
 | `adsSpreadDecayBoost` | float | `0` | *(muzzles)* Extra ADS spread decay coefficient |
+| `spreadFiringDecCoefMult` | float | `1` | *(barrels)* Multiplies firing spread-recovery coefficient, every aim state |
+| `spreadFiringDecOffsetMult` | float | `1` | *(barrels)* Multiplies firing spread-recovery offset, every aim state |
 | `movingAdsSpreadTierMod` | int | `0` | Shifts moving-ADS min spread tier |
 | `adsTimeTierMod` | int | `0` | Shifts ADS speed tier (pos = faster) |
 | `adsMoveSpeedTierShift` | int | `0` | Shifts ADS move speed tier |
