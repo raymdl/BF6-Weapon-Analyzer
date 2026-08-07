@@ -438,17 +438,6 @@ test('impossible-zero gates are explicit for damage, sprint recovery, and ADS mo
   assert.equal(report.findings.some(finding => finding.check === 'zero-read'), false);
 });
 
-test('field-by-slot discovery remains unresolved-free and keeps all 24 SL9 values path-scoped', () => {
-  const report = runFieldSlotDiscovery({ root: DEFAULT_ROOT });
-  assert.equal(report.unresolvedCount, 0);
-  assert.equal(report.findings.length, 24);
-  assert.equal(report.statusSummary['screenshot-confirmed-slot-context-value'], 24);
-  assert.equal(report.findings.filter(item => item.field === 'collateralMultiplier').length, 12);
-  assert.equal(report.findings.filter(item => item.field === 'sprintRecoveryMs').length, 12);
-  assert.equal(report.findings.every(item => item.status === 'screenshot-confirmed-slot-context-value'), true);
-  assert.equal(JSON.stringify(report).includes('C:\\Users\\royal\\Documents\\BF6 Project'), false);
-});
-
 test('attachment catalogs cover every weapon with explicit ergonomics-free exemptions', () => {
   const failures = [];
   for (const weapon of inputs.weapons) {

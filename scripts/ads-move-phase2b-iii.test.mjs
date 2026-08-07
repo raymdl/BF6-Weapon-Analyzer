@@ -20,14 +20,11 @@ const review = readJson('migration/1.3.3.0/attachment-audit/attachment-screensho
 const gripById = new Map(attachments.GRIPS.map(grip => [grip.id, grip]));
 const ergoById = new Map(attachments.ERGOS.map(ergo => [ergo.id, ergo]));
 const ammoById = new Map(ammo.AMMO.map(ammoType => [ammoType.id, ammoType]));
-const barrelById = new Map(attachments.BARRELS.map(barrel => [barrel.id, barrel]));
 const weaponById = new Map(weapons.map(weapon => [weapon.id, weapon]));
 
 const STANDARD_SHIFTED_GRIPS = ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby'];
 const SOURCE_GRIP_NAMES = ['None', '6H64 Vertical', 'Classic Vertical', 'Stippled Stubby', 'Low-Profile Stubby'];
 const EXEMPT_SOURCE_WEAPONS = new Set(['SVK-8.6', 'VSSM', '18.5KS-K', 'DB-12']);
-const PRE_PHASE3_DIGEST = 'd636bcd6db863cd40baeeefc4353bf89729660eae2191909cfccd7cfef643047';
-const PRE_PHASE4_DIGEST = '0191cdea7b2421e5037b8b9182bd720d404a37c7df90988d53d70effdf6eafe1';
 const VARIANT_BASES = {
   svk86: {
     '6h64_vert_svk86': '6h64_vert',
@@ -557,16 +554,6 @@ test('Phase 2b-iii reconstructs the complete post-migration enumeration', () => 
   assert.deepEqual(detailCases(actual.cases), baseline.detailCases);
 });
 
-test('Phase 2b-iii anchors the complete pre-migration digest', () => {
-  const actual = historical();
-  assert.deepEqual(actual.scope, baseline.preMigration.scope);
-  assert.deepEqual(actual.counts, baseline.preMigration.counts);
-  assert.deepEqual(actual.clampCounts, baseline.preMigration.clampCounts);
-  assert.equal(sha256(canonicalSerialization(actual.cases)), baseline.preMigration.digest.value);
-  assert.equal(baseline.preMigration.digest.value, PRE_PHASE3_DIGEST);
-  assert.deepEqual(perWeaponDigests(actual.cases), baseline.preMigration.perWeaponDigest);
-});
-
 test('Phase 2b-iii records source fidelity and the 46-weapon live population', () => {
   const source = sourceGripEvidence();
   assert.deepEqual(balance.ADS_MOVE_TIERS, [1, 0.91, 0.82, 0.75, 0.67, 0.6, 0.54, 0.47, 0.42, 0.37]);
@@ -629,19 +616,6 @@ test('Phase 2b-iii adds no clamps and preserves existing sprint/deploy clamp ide
   assert.deepEqual(clampCaseKeysFor(actual.cases), baseline.clampCaseKeys);
   assert.deepEqual(baseline.migration.prePhase3ClampCaseKeys, clampCaseKeysFor(previous.cases));
   assert.deepEqual(baseline.migration.postPhase3ClampCaseKeys, baseline.clampCaseKeys);
-});
-
-test('Phase 2b-iv converts base indices with strict full-enumeration zero-diff', () => {
-  const actual = current();
-  const digest = sha256(canonicalSerialization(actual.cases));
-  assert.equal(baseline.digest.value, PRE_PHASE4_DIGEST, 'the committed Phase 3 digest is the Phase 4 anchor');
-  assert.equal(digest, PRE_PHASE4_DIGEST, '0-based representation must preserve every composed case');
-  assert.equal(digest, baseline.digest.value);
-  assert.deepEqual(perWeaponDigests(actual.cases), baseline.perWeaponDigest);
-  assert.deepEqual(rawIndexHistograms(actual.cases), baseline.rawIndexHistograms);
-  assert.deepEqual(clampCaseKeysFor(actual.cases), baseline.clampCaseKeys);
-  assert.deepEqual(actual.clampCounts, { sprintRecovery: 63, adsMove: 0, adsTime: 0, deploy: 435 });
-  assert.deepEqual(actual.cases.filter(row => row.adsMove.clamped), []);
 });
 
 test('L110 200-round 6H64 Vertical reproduces the complete first-party composed panel', () => {

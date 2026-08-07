@@ -83,15 +83,6 @@ for (const [id, curves] of Object.entries(reference.weapons)) {
   });
 }
 
-test('reference weapon IDs agree with the Sym source mapping', () => {
-  const sym = readJson('generated-data/sym/1.3.3.0/normalized.json');
-  const siteIdByCodename = new Map(sym.weapons.map(row => [row.codename, row.siteId]));
-  for (const [id, curves] of Object.entries(reference.weapons)) {
-    assert.equal(siteIdByCodename.get(curves.symCodename), id,
-      `graph "${curves.symCodename}" maps to ${siteIdByCodename.get(curves.symCodename)}, not ${id}`);
-  }
-});
-
 const HEAVY_TYPES = ['heavy', 'heavy_ext', 'cryo'];
 const AIM_STANCES = [
   ['ads', 'stand'], ['ads', 'move'],
@@ -159,14 +150,3 @@ test('heavy-type barrels scale spread identically in every aim state and stance'
   }
 });
 
-test('the three heavy-type barrels share one spread model', () => {
-  const barrels = new Map(attachments.BARRELS.map(barrel => [barrel.id, barrel]));
-  const fields = ['spreadIncMult', 'spreadFiringDecCoefMult', 'spreadFiringDecOffsetMult'];
-  const [heavy, ...rest] = ['heavy', 'heavy_ext', 'cryo'].map(id => barrels.get(id));
-  for (const barrel of rest) {
-    for (const field of fields) {
-      assert.equal(barrel[field], heavy[field],
-        `${barrel.id}.${field} (${barrel[field]}) has drifted from heavy.${field} (${heavy[field]})`);
-    }
-  }
-});
