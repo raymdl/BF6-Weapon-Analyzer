@@ -92,27 +92,76 @@ test('reference weapon IDs agree with the Sym source mapping', () => {
   }
 });
 
+const HEAVY_TYPES = ['heavy', 'heavy_ext', 'cryo'];
+const AIM_STANCES = [
+  ['ads', 'stand'], ['ads', 'move'],
+  ['hip', 'stand'], ['hip', 'move'],
+];
+
+/** Run `body` in one aim/stance, then restore the ADS standing default. */
+function inState(aimState, stanceState, body) {
+  try {
+    core.setSimContext({ aimState, stanceState });
+    return body();
+  } finally {
+    core.setSimContext({ aimState: 'ads', stanceState: 'stand' });
+  }
+}
+
 test('heavy-type barrels never pin a weapon at its minimum spread', () => {
-  const heavyTypes = ['heavy', 'heavy_ext', 'cryo'];
   const pinned = [];
-  for (const weapon of weapons) {
-    if (!weapon.spreadDyn?.ads || weapon.recoilIncAds == null) continue;
-    const base = applyAttachments(weapon, { barrel: 'none' });
-    const [minimum] = core.spreadBounds(base);
-    // Only weapons that bloom without a barrel can regress into being pinned.
-    if (core.simulateSpread(base, 20).at(-1) <= minimum + 1e-9) continue;
-    for (const barrel of heavyTypes) {
-      const simulated = core.simulateSpread(applyAttachments(weapon, { barrel }), 20);
-      if (simulated.at(-1) <= minimum + 1e-9) pinned.push(`${weapon.id}/${barrel}`);
-    }
+  for (const [aimState, stanceState] of AIM_STANCES) {
+    inState(aimState, stanceState, () => {
+      for (const weapon of weapons) {
+        if (!weapon.spreadDyn?.ads || weapon.recoilIncAds == null) continue;
+        const base = applyAttachments(weapon, { barrel: 'none' });
+        const [minimum] = core.spreadBounds(base);
+        // Only weapons that bloom without a barrel can regress into being pinned.
+        if (core.simulateSpread(base, 20).at(-1) <= minimum + 1e-9) continue;
+        for (const barrel of HEAVY_TYPES) {
+          const simulated = core.simulateSpread(applyAttachments(weapon, { barrel }), 20);
+          if (simulated.at(-1) <= minimum + 1e-9) {
+            pinned.push(`${weapon.id}/${barrel}/${aimState}-${stanceState}`);
+          }
+        }
+      }
+    });
   }
   assert.deepEqual(pinned, [],
     `these builds sit at minimum spread for 20 shots: ${pinned.join(', ')}`);
 });
 
+test('heavy-type barrels scale spread identically in every aim state and stance', () => {
+  // Hipfire reads its spread-per-shot from spreadDyn.hip.inc and ADS from
+  // recoilIncAds, so the two paths have to be checked separately or a hipfire
+  // regression hides behind a passing ADS curve.
+  const barrel = attachments.BARRELS.find(entry => entry.id === 'heavy');
+  const weapon = byId.get('ak205');
+  const heavy = applyAttachments(weapon, { barrel: 'heavy' });
+
+  assert.equal(heavy.recoilIncAds, +(weapon.recoilIncAds * barrel.spreadIncMult).toFixed(3));
+  assert.equal(heavy.spreadDyn.hip.inc, +(weapon.spreadDyn.hip.inc * barrel.spreadIncMult).toFixed(3));
+
+  for (const [aimState, stanceState] of AIM_STANCES) {
+    inState(aimState, stanceState, () => {
+      const label = `${aimState}/${stanceState}`;
+      const stock = core.spreadRecoveries(applyAttachments(weapon, { barrel: 'none' })).firing;
+      const withHeavy = core.spreadRecoveries(heavy).firing;
+      assert.ok(Math.abs(withHeavy.coef / stock.coef - barrel.spreadFiringDecCoefMult) < 1e-9,
+        `${label}: firing coefficient scaled by ${withHeavy.coef / stock.coef}`);
+      assert.ok(Math.abs(withHeavy.offset / stock.offset - barrel.spreadFiringDecOffsetMult) < 1e-9,
+        `${label}: firing offset scaled by ${withHeavy.offset / stock.offset}`);
+      assert.equal(withHeavy.exp, stock.exp, `${label}: exponent must not move`);
+      assert.equal(
+        core.selectedSpreadIncFor(heavy) / core.selectedSpreadIncFor(applyAttachments(weapon, { barrel: 'none' })) > 0.66,
+        true, `${label}: spread-per-shot must be scaled, not zeroed`);
+    });
+  }
+});
+
 test('the three heavy-type barrels share one spread model', () => {
   const barrels = new Map(attachments.BARRELS.map(barrel => [barrel.id, barrel]));
-  const fields = ['adsSpreadIncMult', 'adsSpreadFiringDecCoefMult', 'adsSpreadFiringDecOffsetMult'];
+  const fields = ['spreadIncMult', 'spreadFiringDecCoefMult', 'spreadFiringDecOffsetMult'];
   const [heavy, ...rest] = ['heavy', 'heavy_ext', 'cryo'].map(id => barrels.get(id));
   for (const barrel of rest) {
     for (const field of fields) {

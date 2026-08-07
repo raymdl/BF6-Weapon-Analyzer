@@ -208,7 +208,7 @@
       "name": "None",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1,
+      "spreadIncMult": 1,
       "pts": 0,
       "velMult": 1,
       "velTierMod": 0
@@ -218,7 +218,7 @@
       "name": "Basic",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1,
+      "spreadIncMult": 1,
       "pts": 10,
       "velMult": 1,
       "velTierMod": 0
@@ -228,7 +228,7 @@
       "name": "Short",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1,
+      "spreadIncMult": 1,
       "hipSpreadTierMod": -1,
       "pts": 15,
       "velMult": 0.8,
@@ -239,7 +239,7 @@
       "name": "Extended",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 1,
+      "spreadIncMult": 1,
       "pts": 5,
       "velMult": 1.25,
       "velTierMod": 1
@@ -249,12 +249,12 @@
       "name": "Heavy",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.667,
-      "adsSpreadFiringDecCoefMult": 1.71,
-      "adsSpreadFiringDecOffsetMult": 0.667,
+      "spreadIncMult": 0.667,
+      "spreadFiringDecCoefMult": 1.71,
+      "spreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
-        "adsSpreadFiringDecCoefMult": true,
-        "adsSpreadFiringDecOffsetMult": true
+        "spreadFiringDecCoefMult": true,
+        "spreadFiringDecOffsetMult": true
       },
       "pts": 10,
       "velMult": 1,
@@ -266,12 +266,12 @@
       "adsTimeTierMod": 0,
       "sprintRecoveryTierShift": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.667,
-      "adsSpreadFiringDecCoefMult": 1.71,
-      "adsSpreadFiringDecOffsetMult": 0.667,
+      "spreadIncMult": 0.667,
+      "spreadFiringDecCoefMult": 1.71,
+      "spreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
-        "adsSpreadFiringDecCoefMult": true,
-        "adsSpreadFiringDecOffsetMult": true
+        "spreadFiringDecCoefMult": true,
+        "spreadFiringDecOffsetMult": true
       },
       "pts": 10,
       "velMult": 1.25,
@@ -282,7 +282,7 @@
       "name": "Light",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
-      "adsSpreadIncMult": 1,
+      "spreadIncMult": 1,
       "pts": 20,
       "velMult": 1,
       "velTierMod": 0
@@ -292,12 +292,12 @@
       "name": "Cryogenic",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.667,
-      "adsSpreadFiringDecCoefMult": 1.71,
-      "adsSpreadFiringDecOffsetMult": 0.667,
+      "spreadIncMult": 0.667,
+      "spreadFiringDecCoefMult": 1.71,
+      "spreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
-        "adsSpreadFiringDecCoefMult": true,
-        "adsSpreadFiringDecOffsetMult": true
+        "spreadFiringDecCoefMult": true,
+        "spreadFiringDecOffsetMult": true
       },
       "pts": 20,
       "velMult": 1,
@@ -308,7 +308,7 @@
       "name": "Extended Light",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
-      "adsSpreadIncMult": 1,
+      "spreadIncMult": 1,
       "pts": 25,
       "velMult": 1.25,
       "velTierMod": 1
@@ -318,7 +318,7 @@
       "name": "Short Light",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
-      "adsSpreadIncMult": 1,
+      "spreadIncMult": 1,
       "hipSpreadTierMod": -1,
       "pts": 25,
       "velMult": 0.8,

@@ -232,8 +232,8 @@ scanning catalog arrays on every render.
 | `_label` | Weapon name + attachment tags joined by ` · ` |
 | `_adsRecoilReductionPct` | ADS recoil reduction % for UI display |
 | `_adsSpreadDecayBoost` | Extra ADS spread decay from muzzle |
-| `_adsSpreadFiringDecCoefMult` | ADS firing spread-recovery coefficient multiplier from barrel (1 = unchanged) |
-| `_adsSpreadFiringDecOffsetMult` | ADS firing spread-recovery offset multiplier from barrel (1 = unchanged) |
+| `_spreadFiringDecCoefMult` | Firing spread-recovery coefficient multiplier from barrel, every aim state (1 = unchanged) |
+| `_spreadFiringDecOffsetMult` | Firing spread-recovery offset multiplier from barrel, every aim state (1 = unchanged) |
 | `_adsRecoilDecayMult` | ADS recoil decay multiplier from muzzle (1 = unchanged) |
 | `_hipSpreadDecayBoost` | Extra hipfire spread decay from light |
 | `_worldSpot`, `_minimapSpot` | Firing exposure distances |
@@ -272,7 +272,8 @@ itself determines which effect path is used.
 |---|---|
 | `recoilV` | ADS recoil amount tier formula: `w.recoilV × RECOIL_MULT[id]^(sum of adsRecoilTierMod)` |
 | `recoilVar` | ADS variation tier ladder: `dirVar × dirVarMult^(dirVarExp + sum of adsRecoilVariationTierMod)` — always the *effective* value, including the weapon's baked-in exponent |
-| `recoilIncAds` | Scaled by barrel `adsSpreadIncMult` |
+| `recoilIncAds` | Scaled by barrel `spreadIncMult` (ADS spread-per-shot) |
+| `spreadDyn` | Per-state `inc` scaled by barrel `spreadIncMult`; carries the hipfire spread-per-shot |
 | `bulletVel` | Scaled by barrel `velMult` |
 | `spread` | Hip spread min shifted by tier if `hipSpreadTierMod ≠ 0` |
 | `mag` | Replaced by selected magazine count |
@@ -475,10 +476,10 @@ Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`, `ERGOS`,
 | `adsRecoilVariationTierMod` | `0` | Shifts ADS recoil variation tier (uses per-weapon `dirVarMult`) |
 | `adsRecoilDecayMult` | `1` | Multiplies ADS recoil decay factor (muzzle) |
 | `hipSpreadTierMod` | `0` | Shifts hipfire min spread tier |
-| `adsSpreadIncMult` | `1` | Multiplies ADS spread per shot |
+| `spreadIncMult` | `1` | Multiplies spread per shot, ADS and hipfire alike |
 | `adsSpreadDecayBoost` | `0` | Extra ADS spread decay coefficient |
-| `adsSpreadFiringDecCoefMult` | `1` | Multiplies the ADS firing spread-recovery coefficient |
-| `adsSpreadFiringDecOffsetMult` | `1` | Multiplies the ADS firing spread-recovery offset |
+| `spreadFiringDecCoefMult` | `1` | Multiplies the firing spread-recovery coefficient, every aim state |
+| `spreadFiringDecOffsetMult` | `1` | Multiplies the firing spread-recovery offset, every aim state |
 | `movingAdsSpreadTierMod` | `0` | Shifts moving ADS min spread tier |
 | `adsTimeTierMod` | `0` | Shifts ADS speed tier |
 | `adsMoveSpeedTierShift` | `0` | Shifts ADS move speed tier |
@@ -717,9 +718,11 @@ For each shot:
 
 | Field | Value | Effect |
 |---|---:|---|
-| `adsSpreadIncMult` | `0.667` | ADS spread-per-shot (SIPS) cut by one third |
-| `adsSpreadFiringDecCoefMult` | `1.71` | ADS firing spread-recovery coefficient |
-| `adsSpreadFiringDecOffsetMult` | `0.667` | ADS firing spread-recovery offset |
+| `spreadIncMult` | `0.667` | Spread-per-shot (SIPS) cut by one third |
+| `spreadFiringDecCoefMult` | `1.71` | Firing spread-recovery coefficient |
+| `spreadFiringDecOffsetMult` | `0.667` | Firing spread-recovery offset |
+
+All three apply in both aim states and both stances.
 
 The exponent is unchanged. All three fields have to move together. `simulateSpread`
 recovers spread between shots at `firingCoef * delta^firingExp + firingOffset`, so
@@ -759,7 +762,7 @@ Per weapon the Heavy deviation lands at or below the Basic control's own error,
 i.e. the fit is as close as the reference plots can resolve. AK-205 reproduces the
 reference shot for shot (`0.182°` at shot 20 against a Basic `0.244°`).
 
-`adsSpreadIncMult` is no longer marked assumed: a one-third SIPS cut is what the
+`spreadIncMult` is no longer marked assumed: a one-third SIPS cut is what the
 Sym maintainer stated directly and what the curve fit independently recovers
 (`0.673` free-fitted). The two recovery multipliers stay in `assumedFields` — their
 *existence* is confirmed (the same source states the coefficient, exponent, and
@@ -767,10 +770,30 @@ offset all change) but the values here are fitted outputs, not datamined literal
 and the fitted offset direction disagrees with that source's recollection that the
 offset increases. Replace them if exact attachment parameters surface.
 
-The model is ADS-only, matching the reference data; no hipfire spread effect is
-claimed. `scripts/heavy-barrel-spread.test.mjs` pins all of this against
+**Scope of the evidence.** The reference curves are ADS standing sustained fire.
+The multipliers are nonetheless applied in both aim states and both stances, which
+is a deliberate extension rather than a measurement — hipfire and moving carry no
+reference data. Two things make it a safe default. Stance never had a say: spread
+*dynamics* are keyed on aim state alone, and stance only selects the minimum-spread
+floor, so moving already inherited whatever standing did. And scaling SIPS and the
+offset by the same factor preserves each weapon's margin over its recovery floor,
+so extending to hipfire cannot pin anything: AK-205 clears its hip floor by 6.2%
+(`0.43 x 12 rps = 5.16` against `4.86`) before and after. Across all 61 weapons and
+all four aim/stance combinations, no build is pinned that was not already flat.
+
+Two known consequences of the ADS-only evidence, both left as-is rather than
+guessed at:
+
+- Not-firing and idle recovery are unscaled, so burst weapons gain more than the
+  ~0.69 bloom ratio suggests — the M16A4's inter-burst gap recovers on untouched
+  parameters, landing it at `0.364`.
+- Shotguns sit at `spreadMax` in hipfire either way, so the barrel reads as
+  almost no change (`0.98`–`1.00`) simply because there is no bloom left to remove.
+
+`scripts/heavy-barrel-spread.test.mjs` pins all of this against
 `scripts/heavy-barrel-spread-reference.json`, including a guard that no heavy-type
-build pins a weapon at minimum spread.
+build pins a weapon at minimum spread in any aim state or stance, and a check that
+the hipfire path is scaled identically to the ADS one.
 
 ### Recoil Control
 
