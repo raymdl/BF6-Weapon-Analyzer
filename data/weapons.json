@@ -8284,10 +8284,10 @@
     "tacRld": 2.217,
     "emptyRld": 3.35,
     "bulletVel": 580,
-    "recoilV": 0.8070225287267756,
+    "recoilV": 0.8354362713464263,
     "recoilDir": -16,
     "recoilVar": 24.3,
-    "recoilIncAds": 0.304,
+    "recoilIncAds": 0.228,
     "spreadMax": 6,
     "adsTime": 200,
     "fireMode": "auto",
@@ -8296,29 +8296,29 @@
     "burstBurstsPerMinute": 240.12729639809058,
     "spreadDyn": {
       "ads": {
-        "inc": 0.304,
+        "inc": 0.228,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.2,
+        "firingCoef": 1.22,
         "firingExp": 2.5,
-        "firingOffset": 2.7,
+        "firingOffset": 1.84,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.5
+        "distExp": 0.67
       },
       "hip": {
-        "inc": 0.547,
+        "inc": 0.41,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.5,
+        "firingCoef": 0.51,
         "firingExp": 2.5,
-        "firingOffset": 4.86,
+        "firingOffset": 3.31,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -8329,11 +8329,11 @@
     "recoil": {
       "ads": {
         "dir": -16,
-        "amount": 0.6703,
+        "amount": 0.6939,
         "amountMult": 0.94,
         "amountExp": -3,
         "dirVar": 24.3,
-        "dirVarMult": 0.918691,
+        "dirVarMult": 0.918979,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -8345,11 +8345,11 @@
       },
       "hip": {
         "dir": -16,
-        "amount": 0.6703,
+        "amount": 0.6939,
         "amountMult": 0.94,
         "amountExp": -3,
         "dirVar": 24.3,
-        "dirVarMult": 0.918691,
+        "dirVarMult": 0.918979,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -8366,7 +8366,7 @@
         6
       ],
       "adsMove": [
-        0.32,
+        0.35,
         7
       ],
       "hipStand": [
@@ -8444,7 +8444,8 @@
       "donor": {
         "weaponId": "grtbc",
         "name": "GRT-BC",
-        "model": "direct donor model; recoil direction sign flipped"
+        "model": "direct donor model; recoil direction sign flipped",
+        "appliesTo": "damage curve only; ballistics fields replaced by the datamined changelist"
       },
       "measured": {
         "adsTime": 200,
@@ -8462,11 +8463,6 @@
       "estimatedFields": [
         "emptyRld",
         "reloadSpeed",
-        "recoil.ads.dirVarMult",
-        "recoil.ads.dirVarExp",
-        "recoil.ads formula fields",
-        "spreadDyn",
-        "spread",
         "damage breakpoint distances"
       ],
       "damage": {
@@ -8477,6 +8473,20 @@
           "long": 14
         },
         "replacement": "Replace with Sym full statistics when published."
+      },
+      "sourced": {
+        "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
+        "changelist": 28877515,
+        "fields": [
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "spreadMax",
+          "recoil",
+          "spread",
+          "spreadDyn"
+        ]
       }
     }
   },
@@ -8490,53 +8500,53 @@
     "tacRld": 2.416,
     "emptyRld": 2.8415,
     "bulletVel": 670,
-    "recoilV": 0.7002730456335999,
-    "recoilDir": 12,
-    "recoilVar": 20.4,
-    "recoilIncAds": 0.36,
+    "recoilV": 0.6720006428699492,
+    "recoilDir": 11,
+    "recoilVar": 20.3,
+    "recoilIncAds": 0.3,
     "spreadMax": 7,
     "adsTime": 250,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.36,
-        "idleTime": 0.4,
+        "inc": 0.3,
+        "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.2,
+        "firingCoef": 1.04,
         "firingExp": 2.5,
-        "firingOffset": 2.7,
+        "firingOffset": 2.05,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
-        "notFiringOffset": 7.2,
+        "notFiringOffset": 8,
         "firstShotMul": 1,
-        "distExp": 0.5
+        "distExp": 0.67
       },
       "hip": {
-        "inc": 0.648,
+        "inc": 0.54,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.5,
+        "firingCoef": 0.43,
         "firingExp": 2.5,
-        "firingOffset": 4.86,
+        "firingOffset": 3.69,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
-        "notFiringOffset": 12.96,
+        "notFiringOffset": 14.4,
         "firstShotMul": 1,
         "distExp": 0.5
       }
     },
     "recoil": {
       "ads": {
-        "dir": 12,
-        "amount": 0.5779000000000001,
-        "amountMult": 0.9379,
+        "dir": 11,
+        "amount": 0.59065,
+        "amountMult": 0.9579,
         "amountExp": -3,
-        "dirVar": 20.4,
-        "dirVarMult": 0.9160025,
+        "dirVar": 20.3,
+        "dirVarMult": 0.89864,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -8547,11 +8557,11 @@
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 12,
-        "amount": 0.5779000000000001,
-        "amountMult": 0.9379,
+        "dir": 11,
+        "amount": 0.59065,
+        "amountMult": 0.9579,
         "amountExp": -3,
-        "dirVar": 20.4,
+        "dirVar": 20.3,
         "dirVarMult": 0.9160025,
         "dirVarExp": 0,
         "decNorm": 1,
@@ -8565,11 +8575,11 @@
     },
     "spread": {
       "adsStand": [
-        0.05,
+        0.1,
         7
       ],
       "adsMove": [
-        0.32,
+        0.25,
         8
       ],
       "hipStand": [
@@ -8629,7 +8639,8 @@
           "B36A4",
           "L85A3"
         ],
-        "model": "exact midpoint where needed; spreadDyn copied from byte-identical AR donors"
+        "model": "exact midpoint where needed; spreadDyn copied from byte-identical AR donors",
+        "appliesTo": "damage curve only; ballistics fields replaced by the datamined changelist"
       },
       "measured": {
         "adsTime": 250,
@@ -8647,9 +8658,6 @@
       "estimatedFields": [
         "emptyRld",
         "reloadSpeed",
-        "recoilV midpoint",
-        "recoil formula midpoint",
-        "recoil.ads.dirVarMult midpoint",
         "damage breakpoint distances"
       ],
       "damage": {
@@ -8660,6 +8668,20 @@
           "long": 17
         },
         "replacement": "Replace with Sym full statistics when published."
+      },
+      "sourced": {
+        "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
+        "changelist": 28877515,
+        "fields": [
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "spreadMax",
+          "recoil",
+          "spread",
+          "spreadDyn"
+        ]
       }
     }
   }

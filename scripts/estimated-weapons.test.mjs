@@ -57,9 +57,14 @@ test('reviewed handling decisions and measured endpoint contracts are pinned', (
   assert.equal(brod.rpm, 10800 / 13);
   assert.equal(ef.rpm, 10800 / 16);
   assert.equal(brod.recoilDir, -16);
-  assert.equal(ef.recoilDir, 12);
-  assert.equal(brod.recoilV, byId('grtbc').recoilV);
-  assert.equal(ef.recoilV, (byId('b36a4').recoilV + byId('l85a3').recoilV) / 2);
+  assert.equal(ef.recoilDir, 11);
+  for (const weapon of [brod, ef]) {
+    const ads = weapon.recoil.ads;
+    assert.equal(weapon.recoilV, ads.amount * (ads.amountMult ** ads.amountExp));
+    assert.equal(weapon.recoilVar, ads.dirVar);
+    assert.equal(weapon.recoilIncAds, weapon.spreadDyn.ads.inc);
+    assert.equal(weapon.provenance.sourced.changelist, 28877515);
+  }
   assert.equal(brod.mag, 31);
   assert.equal(ef.mag, 31);
   assert.equal(brod.dmg[0].d, 26);
