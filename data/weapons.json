@@ -8850,13 +8850,12 @@
         ]
       },
       "estimatedFields": [
-        "fireMode",
         "cal",
         "reloadSpeed"
       ],
       "notes": [
         "emptyRld is null: the datamined table publishes a single reloadSec, which matches tacRld.",
-        "fireMode semi is inferred from the A3 Receiver ergonomics attachment, which sets full auto; the table carries no fire-mode field.",
+        "fireMode semi is confirmed in game; the Full Auto ergonomics card (40 pts, named \"Folding Stock\" on this weapon) converts it, same subtype as the M16 A3 Receiver.",
         "Magazine coverage (WEAPON_MAG.vssm) is pending in-game sprint-recovery and ADS-move default tier readings.",
         "Damage is the in-game curve, which drops the datamined 17.13 tier past 75 m."
       ]

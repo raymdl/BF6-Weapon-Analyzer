@@ -933,7 +933,7 @@
     },
     {
       "id": "full_auto_vssm",
-      "name": "A3 Receiver",
+      "name": "Folding Stock",
       "pts": 40,
       "adsRecoilVariationTierMod": -20,
       "setsFireModeAuto": true,
