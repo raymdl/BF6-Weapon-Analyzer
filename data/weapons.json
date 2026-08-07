@@ -8857,7 +8857,8 @@
         "fireMode semi is confirmed in game; the Full Auto ergonomics card (40 pts, named \"Folding Stock\" on this weapon) converts it, same subtype as the M16 A3 Receiver.",
         "Damage is the in-game curve, which drops the datamined 17.13 tier past 75 m.",
         "rpm 450 is the in-game semi-auto rate. The datamined table lists 800, which the captures show is the Folding Stock full-auto rate; the sim has no per-attachment rate override, so the stock rate is stored.",
-        "Magazine, grip, ammo and ergonomics coverage is derived from the 2026-07-26 VSSM screenshot corpus; all 43 captures reproduce in the sim."
+        "Magazine, grip, ammo and ergonomics coverage is derived from the 2026-07-26 VSSM screenshot corpus; all 43 captures reproduce in the sim.",
+        "QD Grip Pod displays a tier 3 recoil benefit on this weapon at tier 2 cost, in both the captures and the datamined table. The catalog keeps the intended tier 2 card."
       ]
     }
   }

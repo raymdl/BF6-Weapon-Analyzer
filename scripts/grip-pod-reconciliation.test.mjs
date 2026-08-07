@@ -76,7 +76,7 @@ const sniperCostByName = new Map([
   ['QD Grip Pod', 10],
   ['Classic Grip Pod', 20],
 ]);
-const modelMissingAuditNames = new Set(['VSSM']);
+const modelMissingAuditNames = new Set([]);
 
 const expectedApprovedCatalogDiffs = {
   ptt_grip_pod: [
@@ -114,11 +114,20 @@ function recordsFor(name, predicate = () => true) {
   return gripRecords.filter(record => record.attachmentName === name && predicate(record));
 }
 
+// Captures are taken on the weapon's factory build, so a default ammunition
+// card that shifts recoil is part of every displayed value. Standard ammo is
+// neutral, but the VSSM ships Range Pen, which costs one recoil tier.
+function defaultAmmoRecoilTierMod(weaponId) {
+  const defaultAmmoId = ammo.WEAPON_AMMO?.[weaponId]?.def ?? 'standard';
+  return ammo.AMMO.find(entry => entry.id === defaultAmmoId)?.adsRecoilTierMod ?? 0;
+}
+
 function assertRecoilTier(record, expectedTier) {
   const weapon = weaponByName.get(normalizeWeaponName(record.weaponName));
   assert.ok(weapon, `${record.weaponName} is not in the modeled weapon catalog`);
   const multiplier = balance.RECOIL_MULT?.[weapon.id];
   assert.ok(multiplier, `${weapon.id} has no recoil multiplier`);
+  expectedTier += defaultAmmoRecoilTierMod(weapon.id);
   const observed = record.stats?.recoilAmountDegrees;
   assert.notEqual(observed, null, `${record.weaponName}/${record.attachmentName} has no reviewed recoil amount`);
   const matchingTiers = [];
