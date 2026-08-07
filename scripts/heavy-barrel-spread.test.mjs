@@ -14,6 +14,9 @@
  * The fixture is read off the per-weapon graphs published in the Sym Discord,
  * which are drawn from the same datamined parameters `data/weapons.json`
  * imports, so the Basic curve doubles as a check on the base spread model.
+ * Graph titles are Sym codenames, resolved to site IDs through the `siteId`
+ * field in `generated-data/sym/1.3.3.0/normalized.json`. A weapon whose graph
+ * was captured on a non-default build carries that build in `attachments`.
  */
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -62,22 +65,32 @@ function maxDeviation(simulated, observed) {
 
 for (const [id, curves] of Object.entries(reference.weapons)) {
   const weapon = byId.get(id);
+  const build = barrel => ({ barrel, ...(curves.attachments ?? {}) });
 
   test(`${id}: base spread curve matches the Sym reference`, () => {
     assert.ok(weapon, `${id} is missing from data/weapons.json`);
-    const simulated = core.simulateSpread(applyAttachments(weapon, { barrel: 'none' }), reference.shots);
+    const simulated = core.simulateSpread(applyAttachments(weapon, build('none')), reference.shots);
     const { worst, worstShot } = maxDeviation(simulated, curves.basic);
     assert.ok(worst <= BASIC_TOLERANCE_DEG,
       `${id} Basic deviates ${worst.toFixed(4)}° at shot ${worstShot} (limit ${BASIC_TOLERANCE_DEG}°)`);
   });
 
   test(`${id}: heavy barrel spread curve matches the Sym reference`, () => {
-    const simulated = core.simulateSpread(applyAttachments(weapon, { barrel: 'heavy' }), reference.shots);
+    const simulated = core.simulateSpread(applyAttachments(weapon, build('heavy')), reference.shots);
     const { worst, worstShot } = maxDeviation(simulated, curves.heavy);
     assert.ok(worst <= HEAVY_TOLERANCE_DEG,
       `${id} Heavy deviates ${worst.toFixed(4)}° at shot ${worstShot} (limit ${HEAVY_TOLERANCE_DEG}°)`);
   });
 }
+
+test('reference weapon IDs agree with the Sym source mapping', () => {
+  const sym = readJson('generated-data/sym/1.3.3.0/normalized.json');
+  const siteIdByCodename = new Map(sym.weapons.map(row => [row.codename, row.siteId]));
+  for (const [id, curves] of Object.entries(reference.weapons)) {
+    assert.equal(siteIdByCodename.get(curves.symCodename), id,
+      `graph "${curves.symCodename}" maps to ${siteIdByCodename.get(curves.symCodename)}, not ${id}`);
+  }
+});
 
 test('heavy-type barrels never pin a weapon at its minimum spread', () => {
   const heavyTypes = ['heavy', 'heavy_ext', 'cryo'];

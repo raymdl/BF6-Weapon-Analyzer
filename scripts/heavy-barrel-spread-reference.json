@@ -1,12 +1,14 @@
 {
   "description": "Sym community ADS standing spread-per-shot curves (shots 1-20), read off the published with/without heavy-barrel graphs. null = point hidden behind the plot legend.",
   "source": "Sym Discord #bf-6, 2026-08-02 — per-weapon \"spread per shot, with and w/o hbar\" graphs",
+  "mapping": "Graph titles are Sym codenames; site IDs come from generated-data/sym/1.3.3.0/normalized.json.",
   "aimState": "ads",
   "stanceState": "stand",
   "shots": 20,
   "weapons": {
     "kord6p67": {
-      "symName": "6p67",
+      "symCodename": "6p67",
+      "name": "KORD 6P67",
       "basic": [
         null,
         0.1513,
@@ -53,7 +55,8 @@
       ]
     },
     "nvo228e": {
-      "symName": "ace32",
+      "symCodename": "ace32",
+      "name": "NVO-228E",
       "basic": [
         0.0568,
         0.2307,
@@ -100,7 +103,8 @@
       ]
     },
     "ak205": {
-      "symName": "ak205",
+      "symCodename": "ak205",
+      "name": "AK-205",
       "basic": [
         null,
         0.0633,
@@ -147,7 +151,8 @@
       ]
     },
     "sl9": {
-      "symName": "apdw",
+      "symCodename": "apdw",
+      "name": "SL9",
       "basic": [
         null,
         0.1046,
@@ -194,7 +199,8 @@
       ]
     },
     "b36a4": {
-      "symName": "g36",
+      "symCodename": "g36",
+      "name": "B36A4",
       "basic": [
         0.0559,
         0.1841,
@@ -241,7 +247,8 @@
       ]
     },
     "ak4d": {
-      "symName": "g3a4",
+      "symCodename": "g3a4",
+      "name": "AK4D",
       "basic": [
         null,
         0.2601,
@@ -288,7 +295,8 @@
       ]
     },
     "m417a2": {
-      "symName": "hk417a2",
+      "symCodename": "hk417a2",
+      "name": "M417 A2",
       "basic": [
         0.0568,
         0.2307,
@@ -335,7 +343,8 @@
       ]
     },
     "l85a3": {
-      "symName": "l85a3",
+      "symCodename": "l85a3",
+      "name": "L85A3",
       "basic": [
         null,
         0.182,
@@ -381,8 +390,12 @@
         0.58
       ]
     },
-    "drsiar": {
-      "symName": "m16a3",
+    "m16a4": {
+      "symCodename": "m16a3",
+      "name": "M16A4",
+      "attachments": {
+        "ergo": "full_auto"
+      },
       "basic": [
         null,
         0.2303,
@@ -429,7 +442,8 @@
       ]
     },
     "m240l": {
-      "symName": "m240l",
+      "symCodename": "m240l",
+      "name": "M240L",
       "basic": [
         0.0626,
         0.2979,
@@ -476,7 +490,8 @@
       ]
     },
     "m250": {
-      "symName": "m250",
+      "symCodename": "m250",
+      "name": "M250",
       "basic": [
         0.0575,
         0.2325,
@@ -522,8 +537,57 @@
         0.7125
       ]
     },
+    "drsiar": {
+      "symCodename": "m27iar",
+      "name": "DRS-IAR",
+      "basic": [
+        null,
+        0.2303,
+        0.3504,
+        0.4618,
+        0.607,
+        0.6834,
+        0.7472,
+        0.8511,
+        0.8811,
+        0.9011,
+        0.9775,
+        null,
+        0.9725,
+        1.0325,
+        1.0138,
+        1.0013,
+        1.0538,
+        1.0288,
+        1.0113,
+        1.0613
+      ],
+      "heavy": [
+        null,
+        0.1702,
+        0.2516,
+        0.3254,
+        0.4243,
+        0.4768,
+        0.5219,
+        0.5945,
+        0.6158,
+        0.632,
+        0.6834,
+        0.6821,
+        0.6821,
+        0.7234,
+        0.7121,
+        0.7046,
+        0.7397,
+        0.7247,
+        0.7121,
+        0.7459
+      ]
+    },
     "m60": {
-      "symName": "m60e6",
+      "symCodename": "m60e6",
+      "name": "M/60",
       "basic": [
         null,
         0.2601,
@@ -569,8 +633,9 @@
         0.6555
       ]
     },
-    "m433": {
-      "symName": "mg4k",
+    "m123k": {
+      "symCodename": "mg4k",
+      "name": "M123K",
       "basic": [
         null,
         0.2293,
@@ -617,7 +682,8 @@
       ]
     },
     "m121a2": {
-      "symName": "mg5",
+      "symCodename": "mg5",
+      "name": "M121 A2",
       "basic": [
         null,
         0.3414,
@@ -664,7 +730,8 @@
       ]
     },
     "l110": {
-      "symName": "minimi",
+      "symCodename": "minimi",
+      "name": "L110",
       "basic": [
         0.0536,
         0.1841,
@@ -711,7 +778,8 @@
       ]
     },
     "pw5a3": {
-      "symName": "mp5mli",
+      "symCodename": "mp5mli",
+      "name": "PW5A3",
       "basic": [
         0.0535,
         0.1483,
@@ -758,7 +826,8 @@
       ]
     },
     "pw7a2": {
-      "symName": "mp7a2",
+      "symCodename": "mp7a2",
+      "name": "PW7A2",
       "basic": [
         null,
         0.1329,
@@ -805,7 +874,8 @@
       ]
     },
     "usg90": {
-      "symName": "p90",
+      "symCodename": "p90",
+      "name": "USG-90",
       "basic": [
         null,
         0.1089,
@@ -852,7 +922,8 @@
       ]
     },
     "pp19": {
-      "symName": "pp19",
+      "symCodename": "pp19",
+      "name": "PP-19",
       "basic": [
         null,
         0.1046,
@@ -899,7 +970,8 @@
       ]
     },
     "qbz192": {
-      "symName": "qbz192",
+      "symCodename": "qbz192",
+      "name": "QBZ-192",
       "basic": [
         null,
         0.1731,
@@ -946,7 +1018,8 @@
       ]
     },
     "rpk74m": {
-      "symName": "rpk74m",
+      "symCodename": "rpk74m",
+      "name": "RPK-74M",
       "basic": [
         0.0522,
         0.1039,
@@ -993,7 +1066,8 @@
       ]
     },
     "rpkm": {
-      "symName": "rpkm",
+      "symCodename": "rpkm",
+      "name": "RPKM",
       "basic": [
         null,
         0.1851,
@@ -1040,7 +1114,8 @@
       ]
     },
     "sor556": {
-      "symName": "scarl",
+      "symCodename": "scarl",
+      "name": "SOR-556 MK2",
       "basic": [
         null,
         0.1379,
@@ -1087,7 +1162,8 @@
       ]
     },
     "sor300sc": {
-      "symName": "scarsc",
+      "symCodename": "scarsc",
+      "name": "SOR-300SC",
       "basic": [
         0.0536,
         0.1375,
@@ -1134,7 +1210,8 @@
       ]
     },
     "kts100": {
-      "symName": "ultimax",
+      "symCodename": "ultimax",
+      "name": "KTS100 MK8",
       "basic": [
         null,
         0.0914,
@@ -1181,7 +1258,8 @@
       ]
     },
     "umg40": {
-      "symName": "ump40",
+      "symCodename": "ump40",
+      "name": "UMG-40",
       "basic": [
         null,
         0.1269,
@@ -1228,7 +1306,8 @@
       ]
     },
     "m277": {
-      "symName": "xm7",
+      "symCodename": "xm7",
+      "name": "M277",
       "basic": [
         null,
         0.234,

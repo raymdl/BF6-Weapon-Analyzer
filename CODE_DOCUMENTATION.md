@@ -733,18 +733,26 @@ the weapon above its floor; the coefficient multiplier restores the plateau heig
 since it alone governs where growth and recovery balance once bloom is large.
 
 The calibration set is the per-weapon *"spread per shot, with and w/o hbar"* graphs
-published in the Sym Discord (2026-08-02), covering 27 distinct automatics across
-514–947 RPM. Those plots are generated from the same datamined parameters
-`data/weapons.json` imports, so the Basic curve is a control: it reproduces at a
-worst-case deviation of `0.118°` and a median under `0.02°` with no fitting at all,
-which is what makes the Heavy residual meaningful. Curves were read off the plots
-pixel-wise and the three multipliers fitted against all of them jointly:
+published in the Sym Discord (2026-08-02), covering 28 distinct automatics across
+514–947 RPM. Graph titles are Sym codenames; they resolve to site IDs through the
+`siteId` field in `generated-data/sym/1.3.3.0/normalized.json` rather than by name
+resemblance — `mg4k` is the M123K, `g3a4` the AK4D, `apdw` the SL9. The `m16a3`
+graph is the M16A4 running its A3 Receiver (full-auto) ergonomics, which the curve
+itself confirms: that build reproduces the reference to `0.034°` where the stock
+burst build misses by `0.460°`. `scripts/heavy-barrel-spread-reference.json` stores
+any such non-default build alongside the curve.
+
+Those plots are generated from the same datamined parameters `data/weapons.json`
+imports, so the Basic curve is a control: it reproduces at a worst-case deviation
+of `0.118°` and a median under `0.02°` with no fitting at all, which is what makes
+the Heavy residual meaningful. Curves were read off the plots pixel-wise and the
+three multipliers fitted against all of them jointly:
 
 | Model | RMSE vs reference |
 |---|---:|
 | SIPS `0.80` (the fit this replaced) | `0.161°` |
-| SIPS `0.667` alone | `0.310°` |
-| best SIPS-only multiplier (`0.878`) | `0.117°` |
+| SIPS `0.667` alone | `0.316°` |
+| best SIPS-only multiplier (`0.879`) | `0.114°` |
 | SIPS `0.667` + coefficient `1.71` + offset `0.667` | `0.009°` |
 
 Per weapon the Heavy deviation lands at or below the Basic control's own error,
