@@ -8790,51 +8790,41 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "EA"
+        "source": "in-game"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "EA"
+        "source": "in-game"
       },
       {
         "r": 9,
         "d": 27.48,
-        "source": "EA"
+        "source": "in-game"
       },
       {
         "r": 21,
         "d": 27.48,
-        "source": "EA"
+        "source": "in-game"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "EA"
+        "source": "in-game"
       },
       {
         "r": 36,
         "d": 21.56,
-        "source": "EA"
+        "source": "in-game"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "EA"
-      },
-      {
-        "r": 75,
-        "d": 20.67,
-        "source": "EA"
-      },
-      {
-        "r": 75,
-        "d": 17.13,
-        "source": "EA"
+        "source": "in-game"
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\"); game-file curve, pending in-game confirmation",
+    "damageSource": "In-game reading: NVO-228E tiers without the 75 m step; 20.67 is retained past 36 m. The datamined changelist 28877515 table lists a further 17.13 tier past 75 m that the weapon does not apply.",
     "reloadSpeed": 1,
     "estimated": true,
     "provenance": {
@@ -8856,8 +8846,7 @@
           "spreadMax",
           "recoil",
           "spread",
-          "spreadDyn",
-          "dmg"
+          "spreadDyn"
         ]
       },
       "estimatedFields": [
@@ -8868,7 +8857,8 @@
       "notes": [
         "emptyRld is null: the datamined table publishes a single reloadSec, which matches tacRld.",
         "fireMode semi is inferred from the A3 Receiver ergonomics attachment, which sets full auto; the table carries no fire-mode field.",
-        "Magazine coverage (WEAPON_MAG.vssm) is pending in-game sprint-recovery and ADS-move default tier readings."
+        "Magazine coverage (WEAPON_MAG.vssm) is pending in-game sprint-recovery and ADS-move default tier readings.",
+        "Damage is the in-game curve, which drops the datamined 17.13 tier past 75 m."
       ]
     }
   }
