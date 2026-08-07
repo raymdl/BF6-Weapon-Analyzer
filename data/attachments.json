@@ -249,9 +249,12 @@
       "name": "Heavy",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.80,
+      "adsSpreadIncMult": 0.667,
+      "adsSpreadFiringDecCoefMult": 1.71,
+      "adsSpreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
-        "adsSpreadIncMult": true
+        "adsSpreadFiringDecCoefMult": true,
+        "adsSpreadFiringDecOffsetMult": true
       },
       "pts": 10,
       "velMult": 1,
@@ -263,9 +266,12 @@
       "adsTimeTierMod": 0,
       "sprintRecoveryTierShift": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.80,
+      "adsSpreadIncMult": 0.667,
+      "adsSpreadFiringDecCoefMult": 1.71,
+      "adsSpreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
-        "adsSpreadIncMult": true
+        "adsSpreadFiringDecCoefMult": true,
+        "adsSpreadFiringDecOffsetMult": true
       },
       "pts": 10,
       "velMult": 1.25,
@@ -286,9 +292,12 @@
       "name": "Cryogenic",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "adsSpreadIncMult": 0.80,
+      "adsSpreadIncMult": 0.667,
+      "adsSpreadFiringDecCoefMult": 1.71,
+      "adsSpreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
-        "adsSpreadIncMult": true
+        "adsSpreadFiringDecCoefMult": true,
+        "adsSpreadFiringDecOffsetMult": true
       },
       "pts": 20,
       "velMult": 1,

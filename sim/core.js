@@ -220,15 +220,23 @@ export function isBurstGapAfter(w, shotIndex) {
 /**
  * Firing / not-firing spread recovery parameters for the current aim state,
  * with the muzzle/light decay boost applied to the firing offset.
+ *
+ * Heavy-type barrels additionally scale the ADS firing coefficient and offset
+ * (`_adsSpreadFiringDecCoefMult` / `_adsSpreadFiringDecOffsetMult`). Those two
+ * ride alongside the SIPS cut: reducing spread-per-shot on its own would drop
+ * the influx below the flat offset and pin low-SIPS weapons at minimum spread,
+ * which is not what the barrel does in game. See CODE_DOCUMENTATION.md.
  */
 export function spreadRecoveries(w) {
   const { aimState } = _ctx;
   const dyn = spreadDynamics(w);
+  const ads = aimState === 'ads';
   const firing = {
-    coef: dyn.firingCoef ?? 0,
+    coef: (dyn.firingCoef ?? 0) * (ads ? (w._adsSpreadFiringDecCoefMult ?? 1) : 1),
     exp: dyn.firingExp ?? 1,
     offset: (dyn.firingOffset ?? 0) *
-      (1 + (aimState === 'ads' ? (w._adsSpreadDecayBoost ?? 0) : (w._hipSpreadDecayBoost ?? 0))),
+      (ads ? (w._adsSpreadFiringDecOffsetMult ?? 1) : 1) *
+      (1 + (ads ? (w._adsSpreadDecayBoost ?? 0) : (w._hipSpreadDecayBoost ?? 0))),
   };
   const notFiring = {
     coef: dyn.notFiringCoef ?? firing.coef,

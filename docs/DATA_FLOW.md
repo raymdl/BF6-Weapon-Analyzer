@@ -201,8 +201,8 @@ named explicitly rather than weakening the rule — `COLLATERAL_MULT_OVERRIDE`, 
 shifts, and per-pair `velocityTreatments`.
 
 **Assumed.** `assumedFields` marks a value that reproduces an observed output curve without being a
-confirmed game parameter — the heavy-barrel `adsSpreadIncMult: 0.80` is the standing example. The UI
-footnotes these.
+confirmed game parameter — the heavy-barrel `adsSpreadFiringDecCoefMult` / `adsSpreadFiringDecOffsetMult`
+pair is the standing example. The UI footnotes these.
 
 **Visually calibrated.** Chart scale defaults, scatter run count, spread-bubble schedule, cone shape,
 distance-panel sizing. Design choices; they make no claim about game behaviour.

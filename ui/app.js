@@ -1966,7 +1966,9 @@ function renderAttachmentStats(loadouts) {
   const escAttr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const adsSpreadRecovery = w => {
     const dyn = w.spreadDyn?.ads;
-    return (dyn?.firingOffset ?? 1.84) * (1 + (w._adsSpreadDecayBoost ?? 0));
+    return (dyn?.firingOffset ?? 1.84)
+      * (w._adsSpreadFiringDecOffsetMult ?? 1)
+      * (1 + (w._adsSpreadDecayBoost ?? 0));
   };
   const hipSpreadRecovery = w => {
     const dyn = w.spreadDyn?.hip;
@@ -1985,7 +1987,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after ADS-only variation modifiers. Lower is more consistent.' },
     { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: 'x',   dec: 2, higherBetter: true, tooltip: 'ADS recoil recovery/decay multiplier applied to the weapon recoil decay factor. Higher returns to center faster.' },
     { lbl: 'ADS Spread/Shot',     val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after ADS-only spread modifiers. Lower builds spread more slowly.' },
-    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle effects. Higher clears spread faster.' },
+    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle and barrel effects. Higher clears spread faster.' },
     { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing after light effects. Higher clears spread faster.' },
     { lbl: 'Mov Spread',          val: w => w._movingAdsMinSpreadDeg,        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
     { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
@@ -2006,7 +2008,7 @@ function renderAttachmentStats(loadouts) {
     'ADS Recoil Variation': ['adsRecoilVariationTierMod'],
     'Recoil Recovery': ['adsRecoilDecayMult'],
     'ADS Spread/Shot': ['adsSpreadIncMult'],
-    'ADS Spread Recovery': ['adsSpreadDecayBoost'],
+    'ADS Spread Recovery': ['adsSpreadDecayBoost', 'adsSpreadFiringDecOffsetMult', 'adsSpreadFiringDecCoefMult'],
     'Hip Spread Recovery': ['hipSpreadDecayBoost'],
     'Mov Spread': ['movingAdsSpreadTierMod'],
     'Hipfire Spread': ['hipSpreadTierMod'],

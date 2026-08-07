@@ -243,6 +243,8 @@ reads. Omit a field if the attachment has no effect there.
 | `hipSpreadTierMod` | int | `0` | Shifts hip spread tier (pos = worse) |
 | `adsSpreadIncMult` | float | `1` | *(barrels)* Multiplies ADS spread-per-shot (`recoilIncAds`) |
 | `adsSpreadDecayBoost` | float | `0` | *(muzzles)* Extra ADS spread decay coefficient |
+| `adsSpreadFiringDecCoefMult` | float | `1` | *(barrels)* Multiplies ADS firing spread-recovery coefficient |
+| `adsSpreadFiringDecOffsetMult` | float | `1` | *(barrels)* Multiplies ADS firing spread-recovery offset |
 | `movingAdsSpreadTierMod` | int | `0` | Shifts moving-ADS min spread tier |
 | `adsTimeTierMod` | int | `0` | Shifts ADS speed tier (pos = faster) |
 | `adsMoveSpeedTierShift` | int | `0` | Shifts ADS move speed tier |

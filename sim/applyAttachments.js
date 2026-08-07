@@ -574,6 +574,8 @@ export function applyAttachments(w, atts) {
     _label:                  allTags.length ? `${w.name} (${allTags.join(' · ')})` : w.name,
     _adsRecoilReductionPct:  adsRecoilReductionPct,
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,
+    _adsSpreadFiringDecCoefMult:   bar.adsSpreadFiringDecCoefMult ?? 1,
+    _adsSpreadFiringDecOffsetMult: bar.adsSpreadFiringDecOffsetMult ?? 1,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
     _worldSpot:              worldSpot,
