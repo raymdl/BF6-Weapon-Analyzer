@@ -205,7 +205,8 @@ test('sweep pins inventoried model-tier and name-effect warnings and rejects oth
     weapons: 4,
     weaponNames: ['18.5KS-K', 'DB-12', 'M1014', 'M87A1'],
   });
-  assert.deepEqual(report.coverage.modelUnmappedWeapons, ['VSSM']);
+  // VSSM was the last audited weapon without a live model; it now has one.
+  assert.deepEqual(report.coverage.modelUnmappedWeapons, []);
 });
 
 function copyNameEffectInventoryFixture() {
