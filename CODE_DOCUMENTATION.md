@@ -232,6 +232,8 @@ scanning catalog arrays on every render.
 | `_label` | Weapon name + attachment tags joined by ` · ` |
 | `_adsRecoilReductionPct` | ADS recoil reduction % for UI display |
 | `_adsSpreadDecayBoost` | Extra ADS spread decay from muzzle |
+| `_spreadFiringDecCoefMult` | Firing spread-recovery coefficient multiplier from barrel, every aim state (1 = unchanged) |
+| `_spreadFiringDecOffsetMult` | Firing spread-recovery offset multiplier from barrel, every aim state (1 = unchanged) |
 | `_adsRecoilDecayMult` | ADS recoil decay multiplier from muzzle (1 = unchanged) |
 | `_hipSpreadDecayBoost` | Extra hipfire spread decay from light |
 | `_worldSpot`, `_minimapSpot` | Firing exposure distances |
@@ -270,7 +272,8 @@ itself determines which effect path is used.
 |---|---|
 | `recoilV` | ADS recoil amount tier formula: `w.recoilV × RECOIL_MULT[id]^(sum of adsRecoilTierMod)` |
 | `recoilVar` | ADS variation tier ladder: `dirVar × dirVarMult^(dirVarExp + sum of adsRecoilVariationTierMod)` — always the *effective* value, including the weapon's baked-in exponent |
-| `recoilIncAds` | Scaled by barrel `adsSpreadIncMult` |
+| `recoilIncAds` | Scaled by barrel `spreadIncMult` (ADS spread-per-shot) |
+| `spreadDyn` | Per-state `inc` scaled by barrel `spreadIncMult`; carries the hipfire spread-per-shot |
 | `bulletVel` | Scaled by barrel `velMult` |
 | `spread` | Hip spread min shifted by tier if `hipSpreadTierMod ≠ 0` |
 | `mag` | Replaced by selected magazine count |
@@ -473,8 +476,10 @@ Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`, `ERGOS`,
 | `adsRecoilVariationTierMod` | `0` | Shifts ADS recoil variation tier (uses per-weapon `dirVarMult`) |
 | `adsRecoilDecayMult` | `1` | Multiplies ADS recoil decay factor (muzzle) |
 | `hipSpreadTierMod` | `0` | Shifts hipfire min spread tier |
-| `adsSpreadIncMult` | `1` | Multiplies ADS spread per shot |
+| `spreadIncMult` | `1` | Multiplies spread per shot, ADS and hipfire alike |
 | `adsSpreadDecayBoost` | `0` | Extra ADS spread decay coefficient |
+| `spreadFiringDecCoefMult` | `1` | Multiplies the firing spread-recovery coefficient, every aim state |
+| `spreadFiringDecOffsetMult` | `1` | Multiplies the firing spread-recovery offset, every aim state |
 | `movingAdsSpreadTierMod` | `0` | Shifts moving ADS min spread tier |
 | `adsTimeTierMod` | `0` | Shifts ADS speed tier |
 | `adsMoveSpeedTierShift` | `0` | Shifts ADS move speed tier |
@@ -707,38 +712,88 @@ For each shot:
   `r = spreadRadius × rng()` — this matches the franchise convention and makes shot
   distributions visually center-weighted (half the shots land in the inner 25% of the area).
 
-#### Heavy-type barrel SIPS calibration *(provisional)*
+#### Heavy-type barrel spread calibration
 
-`Heavy`, `Heavy Extended`, and `Cryogenic` currently use
-`adsSpreadIncMult: 0.80`. That field is deliberately marked in
-`assumedFields`: it is an Analyzer fit, not a confirmed literal in-game attachment
-parameter.
+`Heavy`, `Heavy Extended`, and `Cryogenic` share one spread model:
 
-A Sym community discussion reported that Heavy reduces raw SIPS by one third, which
-would imply a direct raw multiplier of `2/3` (`0.667`). The Analyzer cannot apply
-that value literally and still reproduce the supplied sustained-fire spread curve,
-because `simulateSpread` adds SIPS and then applies nonlinear firing recovery after
-every shot. At low spread, the offset term alone can absorb most of a reduced SIPS
-increment; the coefficient/exponent term adds further recovery as bloom grows.
+| Field | Value | Effect |
+|---|---:|---|
+| `spreadIncMult` | `0.667` | Spread-per-shot (SIPS) cut by one third |
+| `spreadFiringDecCoefMult` | `1.71` | Firing spread-recovery coefficient |
+| `spreadFiringDecOffsetMult` | `0.667` | Firing spread-recovery offset |
 
-The calibration uses M16A4 with its Full Auto ergonomics attachment (ADS standing,
-16 shots). Its Basic SIPS is `0.360°`, the minimum spread is `0.050°`, and the
-Basic shot-16 spread is `1.025°`. The supplied reference graph retains approximately
-`(0.75 - 0.10) / (1.06 - 0.10) ≈ 68%` of Basic bloom above minimum. In this
-Analyzer, the corresponding results are:
+All three apply in both aim states and both stances.
 
-| Multiplier applied to Analyzer SIPS | Shot-16 spread | Basic bloom retained above minimum |
-|---|---:|---:|
-| `0.667` (literal raw claim) | `0.391°` | `35.0%` |
-| `0.780` | `0.700°` | `66.6%` |
-| `0.800` (current rounded fit) | `0.739°` | `70.7%` |
+The exponent is unchanged. All three fields have to move together. `simulateSpread`
+recovers spread between shots at `firingCoef * delta^firingExp + firingOffset`, so
+the flat offset is a floor the per-shot influx must clear before spread grows at
+all — AK-205 clears its own by 5.9% (`0.239 x 12 rps = 2.868` against an offset of
+`2.7`). Cutting SIPS alone therefore does not scale bloom down, it switches bloom
+off: at the earlier `0.80` fit seven automatics (AK-205, UMG-40, SL-9, PP-19,
+KTS-100, RPK-74M, Vz. 61) sat at minimum spread for a whole magazine, and at a
+literal `0.667` seventeen did. Scaling the offset by the same factor as SIPS keeps
+the weapon above its floor; the coefficient multiplier restores the plateau height,
+since it alone governs where growth and recovery balance once bloom is large.
 
-`0.80` is therefore a rounded `0.78–0.80` output fit, chosen within the precision of
-the graph reading; it does **not** mean Heavy is believed to reduce the game's raw
-SIPS by only 20%. Do not add guessed Heavy-specific firing-recovery changes on top
-of this fit. Replace the field-level assumption only when exact Heavy spread-recovery
-parameters or repeatable in-game Basic-versus-Heavy curves are available, then
-recalibrate against multiple automatic weapons and fire rates.
+The calibration set is the per-weapon *"spread per shot, with and w/o hbar"* graphs
+published in the Sym Discord (2026-08-02), covering 28 distinct automatics across
+514–947 RPM. Graph titles are Sym codenames; they resolve to site IDs through the
+`siteId` field in `generated-data/sym/1.3.3.0/normalized.json` rather than by name
+resemblance — `mg4k` is the M123K, `g3a4` the AK4D, `apdw` the SL9. The `m16a3`
+graph is the M16A4 running its A3 Receiver (full-auto) ergonomics, which the curve
+itself confirms: that build reproduces the reference to `0.034°` where the stock
+burst build misses by `0.460°`. `scripts/heavy-barrel-spread-reference.json` stores
+any such non-default build alongside the curve.
+
+Those plots are generated from the same datamined parameters `data/weapons.json`
+imports, so the Basic curve is a control: it reproduces at a worst-case deviation
+of `0.118°` and a median under `0.02°` with no fitting at all, which is what makes
+the Heavy residual meaningful. Curves were read off the plots pixel-wise and the
+three multipliers fitted against all of them jointly:
+
+| Model | RMSE vs reference |
+|---|---:|
+| SIPS `0.80` (the fit this replaced) | `0.161°` |
+| SIPS `0.667` alone | `0.316°` |
+| best SIPS-only multiplier (`0.879`) | `0.114°` |
+| SIPS `0.667` + coefficient `1.71` + offset `0.667` | `0.009°` |
+
+Per weapon the Heavy deviation lands at or below the Basic control's own error,
+i.e. the fit is as close as the reference plots can resolve. AK-205 reproduces the
+reference shot for shot (`0.182°` at shot 20 against a Basic `0.244°`).
+
+`spreadIncMult` is no longer marked assumed: a one-third SIPS cut is what the
+Sym maintainer stated directly and what the curve fit independently recovers
+(`0.673` free-fitted). The two recovery multipliers stay in `assumedFields` — their
+*existence* is confirmed (the same source states the coefficient, exponent, and
+offset all change) but the values here are fitted outputs, not datamined literals,
+and the fitted offset direction disagrees with that source's recollection that the
+offset increases. Replace them if exact attachment parameters surface.
+
+**Scope of the evidence.** The reference curves are ADS standing sustained fire.
+The multipliers are nonetheless applied in both aim states and both stances, which
+is a deliberate extension rather than a measurement — hipfire and moving carry no
+reference data. Two things make it a safe default. Stance never had a say: spread
+*dynamics* are keyed on aim state alone, and stance only selects the minimum-spread
+floor, so moving already inherited whatever standing did. And scaling SIPS and the
+offset by the same factor preserves each weapon's margin over its recovery floor,
+so extending to hipfire cannot pin anything: AK-205 clears its hip floor by 6.2%
+(`0.43 x 12 rps = 5.16` against `4.86`) before and after. Across all 61 weapons and
+all four aim/stance combinations, no build is pinned that was not already flat.
+
+Two known consequences of the ADS-only evidence, both left as-is rather than
+guessed at:
+
+- Not-firing and idle recovery are unscaled, so burst weapons gain more than the
+  ~0.69 bloom ratio suggests — the M16A4's inter-burst gap recovers on untouched
+  parameters, landing it at `0.364`.
+- Shotguns sit at `spreadMax` in hipfire either way, so the barrel reads as
+  almost no change (`0.98`–`1.00`) simply because there is no bloom left to remove.
+
+`scripts/heavy-barrel-spread.test.mjs` pins all of this against
+`scripts/heavy-barrel-spread-reference.json`, including a guard that no heavy-type
+build pins a weapon at minimum spread in any aim state or stance, and a check that
+the hipfire path is scaled identically to the ADS one.
 
 ### Recoil Control
 

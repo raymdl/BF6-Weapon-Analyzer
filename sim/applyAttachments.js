@@ -450,6 +450,18 @@ export function applyAttachments(w, atts) {
     }
   }
 
+  // ── Spread per shot ───────────────────────────────────────────────────────────
+  // Heavy-type barrels cut spread-per-shot in every aim state and stance. ADS
+  // reads its SIPS from `recoilIncAds` (scaled below) and hipfire from
+  // `spreadDyn.hip.inc`, so both have to be scaled to keep the two in step.
+  const spreadIncMult = bar.spreadIncMult ?? 1;
+  const spreadDynOverride = spreadIncMult === 1 || !w.spreadDyn
+    ? w.spreadDyn
+    : Object.fromEntries(Object.entries(w.spreadDyn).map(([state, dyn]) => [
+      state,
+      dyn?.inc != null ? { ...dyn, inc: +(dyn.inc * spreadIncMult).toFixed(3) } : dyn,
+    ]));
+
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
   // Update 1.3.3.0: limb (arm/leg/abdomen) damage multiplier by limb class, and
   // raised headshot multipliers for automatic weapons (per ammo type).
@@ -574,6 +586,8 @@ export function applyAttachments(w, atts) {
     _label:                  allTags.length ? `${w.name} (${allTags.join(' · ')})` : w.name,
     _adsRecoilReductionPct:  adsRecoilReductionPct,
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,
+    _spreadFiringDecCoefMult:   bar.spreadFiringDecCoefMult ?? 1,
+    _spreadFiringDecOffsetMult: bar.spreadFiringDecOffsetMult ?? 1,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
     _worldSpot:              worldSpot,
@@ -597,10 +611,11 @@ export function applyAttachments(w, atts) {
     burstBurstsPerMinute,
     burstRpm,
     spread:      spreadOverride ?? w.spread,
+    spreadDyn:   spreadDynOverride,
     recoilV:     adsRecoilPerShot,
     recoilVar:   adsRecoilVariation,
     recoilIncAds: w.recoilIncAds != null
-      ? +(w.recoilIncAds * (bar.adsSpreadIncMult ?? 1)).toFixed(3)
+      ? +(w.recoilIncAds * spreadIncMult).toFixed(3)
       : null,
     bulletVel: ammoVelocity.velocity != null && velocityResolution.multiplier != null
       ? floorVelocityDisplay(ammoVelocity.velocity * velocityResolution.multiplier)
