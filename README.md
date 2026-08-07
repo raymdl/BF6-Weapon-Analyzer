@@ -175,17 +175,14 @@ Node discovers the `scripts/*.test.mjs` files on its own. Don't pass the directo
 resolve a pinned baseline commit, so run them against a **full clone**; a shallow clone fails
 `sym-import.test.mjs` with `fatal: Needed a single revision`.
 
-Current state on a full clone of `main`: **79 tests, 67 pass, 2 fail, 10 skip.**
+Current state on a full clone of `main`: **151 tests, 150 pass, 1 fail, 0 skip.**
 
-- The 10 skips need the pinned `sym_bf6_1.3.3.0.json` under `outputs/`, which is gitignored. They
-  cover importer normalization, mapping failure modes, the recoil formula, reload policy, and EA
-  reconciliation.
-- The 2 failures are stale pin assertions over the tracked attachment audit corpus, not site
-  behavior: `audit-phase0.test.mjs` expects 24 field-by-slot findings and the corpus now yields 12,
-  and `barrel-velocity-phase7.test.mjs` expects an evidence path with a leftover truncated prefix
-  that the screenshot rename pass removed. Both predate the most recent data commits. These pins are
-  designed to fail loudly when an inventory changes so the change gets adjudicated rather than
-  silently absorbed — see the plan's §4.12.
+The one failure is `grip-pod-reconciliation.test.mjs` → *standard Grip Pods are direct-paired tier 2
+cards*, which fails by design: the QD Grip Pod is bugged on the VSSM and the catalog models the
+attachment as it is supposed to work.
+
+[**docs/TESTS.md**](docs/TESTS.md) explains what every test file is for, what it would catch, how to
+regenerate the enumeration baselines, and why that failure is expected.
 
 Two of the passing tests check the tracked attachment-screenshot review data against its schema.
 That dataset is hand-corrected rather than generated — see
