@@ -314,6 +314,26 @@
       "pts": 25,
       "velMult": 0.8,
       "velTierMod": -1
+    },
+    {
+      "id": "vssm_barrel",
+      "name": "VSSM Barrel",
+      "adsTimeTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsSpreadIncMult": 1,
+      "pts": 30,
+      "velMult": 1,
+      "velTierMod": 0
+    },
+    {
+      "id": "vssm_noport",
+      "name": "Vssmnoport Barrel",
+      "adsTimeTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "adsSpreadIncMult": 1,
+      "pts": 20,
+      "velMult": 1,
+      "velTierMod": 0
     }
   ],
   "GRIPS": [
@@ -910,6 +930,16 @@
       "adsRecoilVariationTierMod": 3,
       "setsFireModeBurst": true,
       "assumed": true
+    },
+    {
+      "id": "full_auto_vssm",
+      "name": "A3 Receiver",
+      "pts": 40,
+      "adsRecoilVariationTierMod": -20,
+      "setsFireModeAuto": true,
+      "assumedFields": {
+        "recoilDecreaseFactorOverride": "Source sets ADS recoil decrease factor to 76 (base 13.7); the sim has no per-attachment decay override, so this effect is not modelled."
+      }
     }
   ],
   "WEAPON_ATTS": {
@@ -3840,6 +3870,46 @@
         "hip_taclight"
       ],
       "barrelDef": "basic"
+    },
+    "vssm": {
+      "muzzle": [],
+      "barrel": [
+        "vssm_barrel",
+        "vssm_noport"
+      ],
+      "barrelDef": "vssm_barrel",
+      "grip": [
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert_vssm",
+        "classic_vert_vssm",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby_vssm",
+        "lp_stubby_vssm",
+        "slim_angled",
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
+      ],
+      "laser": [
+        "50mw_violet",
+        "5mw_red",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight"
+      ]
     }
   },
   "WEAPON_ERGO": {
@@ -4177,6 +4247,12 @@
         "mag_catch",
         "buffer",
         "match_trigger"
+      ]
+    },
+    "vssm": {
+      "avail": [
+        "mag_catch",
+        "full_auto_vssm"
       ]
     }
   },

@@ -1008,6 +1008,15 @@
         "frangible": 20,
         "synthetic": 20
       }
+    },
+    "vssm": {
+      "def": "range_pen",
+      "ammo": {
+        "penetration": 5,
+        "range_pen": 10,
+        "long_range": 10,
+        "frangible": 20
+      }
     }
   }
 }

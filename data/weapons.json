@@ -8684,5 +8684,192 @@
         ]
       }
     }
+  },
+  {
+    "id": "vssm",
+    "name": "VSSM",
+    "cls": "DMR",
+    "cal": "9×39mm",
+    "rpm": 799.999,
+    "mag": 21,
+    "tacRld": 2.467,
+    "emptyRld": null,
+    "bulletVel": 303,
+    "recoilV": 0.799909248014769,
+    "recoilDir": -13,
+    "recoilVar": 45,
+    "recoilIncAds": 0,
+    "spreadMax": 9,
+    "adsTime": 250,
+    "fireMode": "semi",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 6.85715,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.398,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.1875,
+        "firingExp": 2.5,
+        "firingOffset": 1.8225,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -13,
+        "amount": 0.6787,
+        "amountMult": 0.9467,
+        "amountExp": -3,
+        "dirVar": 45,
+        "dirVarMult": 0.923377,
+        "dirVarExp": 20,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 13.7,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -13,
+        "amount": 0.6787,
+        "amountMult": 0.9467,
+        "amountExp": -3,
+        "dirVar": 45.4,
+        "dirVarMult": 0.923377,
+        "dirVarExp": 20,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 13.7,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        9
+      ],
+      "adsMove": [
+        0.35,
+        10
+      ],
+      "hipStand": [
+        3.352,
+        9
+      ],
+      "hipMove": [
+        4.19,
+        10
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 35.22,
+        "source": "EA"
+      },
+      {
+        "r": 9,
+        "d": 35.22,
+        "source": "EA"
+      },
+      {
+        "r": 9,
+        "d": 27.48,
+        "source": "EA"
+      },
+      {
+        "r": 21,
+        "d": 27.48,
+        "source": "EA"
+      },
+      {
+        "r": 21,
+        "d": 21.56,
+        "source": "EA"
+      },
+      {
+        "r": 36,
+        "d": 21.56,
+        "source": "EA"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "EA"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "EA"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "EA"
+      }
+    ],
+    "damageStatus": "provisional",
+    "damageSource": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\"); game-file curve, pending in-game confirmation",
+    "reloadSpeed": 1,
+    "estimated": true,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "estimated",
+      "sourced": {
+        "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
+        "changelist": 28877515,
+        "fields": [
+          "rpm",
+          "mag",
+          "tacRld",
+          "bulletVel",
+          "adsTime",
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "spreadMax",
+          "recoil",
+          "spread",
+          "spreadDyn",
+          "dmg"
+        ]
+      },
+      "estimatedFields": [
+        "fireMode",
+        "cal",
+        "reloadSpeed"
+      ],
+      "notes": [
+        "emptyRld is null: the datamined table publishes a single reloadSec, which matches tacRld.",
+        "fireMode semi is inferred from the A3 Receiver ergonomics attachment, which sets full auto; the table carries no fire-mode field.",
+        "Magazine coverage (WEAPON_MAG.vssm) is pending in-game sprint-recovery and ADS-move default tier readings."
+      ]
+    }
   }
 ]

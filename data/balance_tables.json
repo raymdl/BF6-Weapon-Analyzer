@@ -63,7 +63,8 @@
     "p18": 0.94,
     "vz61": 0.9283,
     "brod3": 0.94,
-    "ef88": 0.9379
+    "ef88": 0.9579,
+    "vssm": 0.9467
   },
   "HIP_SPREAD_TIERS": {
     "Class A": [
@@ -172,7 +173,8 @@
     "l115": "Class D",
     "pp19": "Class B",
     "brod3": "Class B",
-    "ef88": "Class C"
+    "ef88": "Class C",
+    "vssm": "Class D"
   },
   "BASE_HS_MULT": {
     "m39emr": 1.5,
@@ -186,7 +188,8 @@
     "m1014": 1,
     "ks18k": 1,
     "db12": 1,
-    "l115": 1.75
+    "l115": 1.75,
+    "vssm": 1.8
   },
   "COLLATERAL_MULT_OVERRIDE": {
     "pw7a2": {
@@ -283,7 +286,8 @@
     "vz61": "auto",
     "pp19": "auto",
     "brod3": "auto",
-    "ef88": "auto"
+    "ef88": "auto",
+    "vssm": "dmr"
   },
   "MOVING_ACC_TIERS": [
     0.05,
