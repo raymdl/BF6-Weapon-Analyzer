@@ -61,6 +61,10 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .share-menu-item{text-align:left;background:none;border:0;border-radius:3px;color:var(--text);font-size:0.7rem;letter-spacing:.03em;padding:5px 9px}
 .share-menu-item:hover{background:var(--bg3);color:var(--accent)}
 .share-menu-item:disabled{color:var(--muted);cursor:progress}
+/* Busy uses :disabled above. This is the browser-can't-do-it state, which
+   stays focusable so its title explains why. */
+.share-menu-item[aria-disabled="true"]{color:var(--muted);cursor:not-allowed}
+.share-menu-item[aria-disabled="true"]:hover{background:none;color:var(--muted)}
 /* Collapsible panels — each keeps its heading so it can be reopened, and the
    caret costs no extra height because it sits in a row that already exists. */
 /* Boxed so the caret reads as a control rather than punctuation next to the title. */
@@ -561,6 +565,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
             <div class="share-menu" id="shareMenu" role="menu" hidden>
               <button class="share-menu-item" id="shareLinkBtn" type="button" role="menuitem">Copy Link</button>
               <button class="share-menu-item" id="shareImgBtn" type="button" role="menuitem">Copy Image</button>
+              <button class="share-menu-item" id="shareSaveImgBtn" type="button" role="menuitem">Save Image</button>
             </div>
           </div>
         </div>

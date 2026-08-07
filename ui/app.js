@@ -2651,31 +2651,43 @@ async function copyShareLink() {
   flashShare(ok ? 'Link copied!' : 'Copy failed', ok);
 }
 
-async function copyShareImage(item) {
+/**
+ * Whether the browser can put a PNG on the clipboard. Firefox has historically
+ * shipped navigator.clipboard.write without image support, so the copy path
+ * still falls back to a download if the write throws despite this check.
+ */
+const CAN_COPY_IMAGE = typeof ClipboardItem !== 'undefined' && !!navigator.clipboard?.write;
+
+/** Downloads a rendered capture under the current loadout's name. */
+function downloadCapture(blob) {
+  const names = state.slots
+    .slice(0, state.comparing ? 2 : 1)
+    .map(s => s.weapon?.name);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = captureFilename(names);
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+}
+
+/**
+ * Renders the view and either copies or saves it.
+ * @param {'copy'|'save'} mode Copy falls back to saving if the write fails.
+ */
+async function shareImage(item, mode) {
   const label = item.textContent;
   item.disabled = true;
   item.textContent = 'Rendering…';
   try {
     const blob = await captureView();
-    // Firefox cannot write images to the clipboard, so fall back to a download
-    // rather than reporting a failure the user can do nothing about.
     let copied = false;
-    try {
-      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard?.write) {
+    if (mode === 'copy' && CAN_COPY_IMAGE) {
+      try {
         await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
         copied = true;
-      }
-    } catch { /* fall through to download */ }
-    if (!copied) {
-      const names = state.slots
-        .slice(0, state.comparing ? 2 : 1)
-        .map(s => s.weapon?.name);
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = captureFilename(names);
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(a.href), 10000);
+      } catch { /* fall through to download */ }
     }
+    if (!copied) downloadCapture(blob);
     flashShare(copied ? 'Image copied!' : 'Image saved!', true);
   } catch {
     flashShare('Capture failed', false);
@@ -2714,9 +2726,21 @@ function bindShareMenu() {
     close();
     copyShareLink();
   });
-  document.getElementById('shareImgBtn')?.addEventListener('click', e => {
+  const imgBtn = document.getElementById('shareImgBtn');
+  // aria-disabled rather than disabled: the item stays focusable so its title
+  // can explain why it is greyed out, so the handler has to guard the click.
+  if (imgBtn && !CAN_COPY_IMAGE) {
+    imgBtn.setAttribute('aria-disabled', 'true');
+    imgBtn.title = 'This browser cannot copy images to the clipboard — use Save Image';
+  }
+  imgBtn?.addEventListener('click', e => {
+    if (!CAN_COPY_IMAGE) return;
     close();
-    copyShareImage(e.currentTarget);
+    shareImage(e.currentTarget, 'copy');
+  });
+  document.getElementById('shareSaveImgBtn')?.addEventListener('click', e => {
+    close();
+    shareImage(e.currentTarget, 'save');
   });
 }
 
