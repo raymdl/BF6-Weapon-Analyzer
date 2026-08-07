@@ -316,8 +316,8 @@
       "velTierMod": -1
     },
     {
-      "id": "vssm_barrel",
-      "name": "VSSM Barrel",
+      "id": "vssm_suppressed",
+      "name": "Suppressed",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
@@ -326,8 +326,8 @@
       "velTierMod": 0
     },
     {
-      "id": "vssm_noport",
-      "name": "Vssmnoport Barrel",
+      "id": "vssm_suppressed_asm",
+      "name": "Suppressed",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "adsSpreadIncMult": 1,
@@ -3874,21 +3874,21 @@
     "vssm": {
       "muzzle": [],
       "barrel": [
-        "vssm_barrel",
-        "vssm_noport"
+        "vssm_suppressed",
+        "vssm_suppressed_asm"
       ],
-      "barrelDef": "vssm_barrel",
+      "barrelDef": "vssm_suppressed",
       "grip": [
         "fold_vert",
         "alloy_vert",
         "ribbed_vert",
-        "6h64_vert_vssm",
-        "classic_vert_vssm",
+        "6h64_vert",
+        "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
-        "stipp_stubby_vssm",
-        "lp_stubby_vssm",
+        "stipp_stubby",
+        "lp_stubby",
         "slim_angled",
         "full_angled",
         "slim_handstop",
@@ -7621,6 +7621,63 @@
       "weaponSprintRecoveryTierShift": -1,
       "sprintRecoveryTierTable": "primary",
       "drawTimeTier": 4,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8
+    },
+    "vssm": {
+      "defAds": 3,
+      "defSpr": 2,
+      "defAms": 4,
+      "def": "20_rnd",
+      "mags": {
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
+        },
+        "10_rnd": {
+          "name": "10 Rnd",
+          "pts": 5,
+          "mag": 10,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0
+        },
+        "10_fast": {
+          "name": "10 Fast",
+          "pts": 10,
+          "mag": 10,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1
+        },
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 10,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
+        },
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 40,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
+        }
+      },
+      "sprintRecoveryTierTable": "primary",
+      "drawTimeTier": 2,
       "drawTimeGroup": "primary",
       "drawTimeOffset": 8
     }

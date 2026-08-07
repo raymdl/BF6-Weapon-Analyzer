@@ -8690,7 +8690,7 @@
     "name": "VSSM",
     "cls": "DMR",
     "cal": "9×39mm",
-    "rpm": 799.999,
+    "rpm": 449.999,
     "mag": 21,
     "tacRld": 2.467,
     "emptyRld": null,
@@ -8834,7 +8834,6 @@
         "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
         "changelist": 28877515,
         "fields": [
-          "rpm",
           "mag",
           "tacRld",
           "bulletVel",
@@ -8856,8 +8855,9 @@
       "notes": [
         "emptyRld is null: the datamined table publishes a single reloadSec, which matches tacRld.",
         "fireMode semi is confirmed in game; the Full Auto ergonomics card (40 pts, named \"Folding Stock\" on this weapon) converts it, same subtype as the M16 A3 Receiver.",
-        "Magazine coverage (WEAPON_MAG.vssm) is pending in-game sprint-recovery and ADS-move default tier readings.",
-        "Damage is the in-game curve, which drops the datamined 17.13 tier past 75 m."
+        "Damage is the in-game curve, which drops the datamined 17.13 tier past 75 m.",
+        "rpm 450 is the in-game semi-auto rate. The datamined table lists 800, which the captures show is the Folding Stock full-auto rate; the sim has no per-attachment rate override, so the stock rate is stored.",
+        "Magazine, grip, ammo and ergonomics coverage is derived from the 2026-07-26 VSSM screenshot corpus; all 43 captures reproduce in the sim."
       ]
     }
   }
