@@ -8858,7 +8858,7 @@
         "Damage is the in-game curve, which drops the datamined 17.13 tier past 75 m.",
         "rpm 450 is the in-game semi-auto rate. The datamined table lists 800, which the captures show is the Folding Stock full-auto rate; the sim has no per-attachment rate override, so the stock rate is stored.",
         "Magazine, grip, ammo and ergonomics coverage is derived from the 2026-07-26 VSSM screenshot corpus; all 43 captures reproduce in the sim.",
-        "QD Grip Pod is bugged on this weapon only: it displays a tier 3 recoil benefit at tier 2 cost. Changelist 28877515 also lists tier 3 for brod3, ef88, m16a3 and rpk74m, but those four read tier 2 in game on 2026-08-07, so the card stays a tier 2 card in the catalog."
+        "QD Grip Pod is bugged on this weapon only. It and Alloy Vertical are both tier 2 cards, and the 1.3.3.0 capture corpus shows them matching on BROD 3 (0.7), EF88 (0.6), M16A4 (0.6) and RPK-74M (0.4); on the VSSM Alloy reads 0.8 and QD reads 0.7, a tier 3 benefit at tier 2 cost. Changelist 28877515 lists tier 3 for all five, but it only manifests here, so the catalog keeps the tier 2 card."
       ]
     }
   }

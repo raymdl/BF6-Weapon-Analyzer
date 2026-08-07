@@ -212,15 +212,24 @@ test('standard Grip Pods are direct-paired tier 2 cards and preserve the four au
     const rows = recordsFor(name, record => !normalizedPath(record.source?.currentPath).includes('/Sniper Rifle/'));
     assert.equal(rows.length, expectation.count, `${name} direct-card coverage`);
     // KNOWN FAILURE — do not re-research: QD Grip Pod is bugged on the VSSM
-    // only. It displays 0.7 where tier 2 predicts 0.8, i.e. a tier 3 recoil
-    // benefit at tier 2 cost. Datamined changelist 28877515 also lists tier 3
-    // for brod3, ef88, m16a3 and rpk74m, but those four were checked in game
-    // on 2026-08-07 and read 0.7 / 0.6 / 0.6 / 0.4 — exactly tier 2, matching
-    // their Alloy Vertical. So the datamined tier does not manifest there and
-    // the card is a tier 2 card everywhere; only the VSSM applies it wrongly.
-    // The catalog keeps tier 2 and this row cannot pass until EA fixes it.
-    // Everything else reconciles: the other 17 VSSM grip captures confirm the
-    // catalog once the default Range Pen ammo tier is applied.
+    // only, and this corpus proves it without leaving the file. Alloy Vertical
+    // and QD Grip Pod are both tier 2 cards, so they must read the same value
+    // on a given weapon, and everywhere else they do:
+    //
+    //   weapon    None   Alloy   QD    tier 2 predicts
+    //   BROD 3    0.8    0.7     0.7   0.7
+    //   EF88      0.7    0.6     0.6   0.6
+    //   M16A4     0.7    0.6     0.6   0.6
+    //   RPK-74M   0.5    0.4     0.4   0.4
+    //   VSSM      0.8    0.8     0.7   0.8   <- QD undercuts its own tier
+    //
+    // Datamined changelist 28877515 lists tier 3 for brod3, ef88, m16a3,
+    // rpk74m and vssm, but the captures show it only manifests on the VSSM.
+    // The card is a tier 2 card everywhere; the VSSM hands out a tier 3 recoil
+    // benefit at tier 2 cost. The catalog keeps tier 2, so this row cannot
+    // pass until EA fixes the grip. Everything else reconciles: the other 17
+    // VSSM grip captures confirm the catalog once the default Range Pen ammo
+    // tier is applied.
     for (const record of rows) assertDirectPairedRecoil(record, 2);
     assert.deepEqual(
       [...new Set(rows.filter(record => !weaponByName.has(normalizeWeaponName(record.weaponName))).map(record => record.weaponName))].sort(),
