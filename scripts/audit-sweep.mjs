@@ -18,14 +18,14 @@ import {
   classSummary,
   hiddenRecoilAmountBase,
   hiddenRecoilVariationBase,
-  loadPhase0Inputs,
+  loadCaptureCorpus,
   matchesDisplayOneDecimal,
   modalValue,
   normalizeWeaponName,
   reloadRowMatches,
   sourceIdentity,
   sourceRelativePath,
-} from './audit-phase0-lib.mjs';
+} from './capture-corpus-lib.mjs';
 
 export const STATS = [
   'damage', 'longRangeDamage', 'muzzleVelocityMps', 'headshotMultiplier', 'collateralMultiplier',
@@ -443,7 +443,7 @@ function runNameEffectChecks({ findings, byWeapon, byName, attachments, reloadEx
 }
 
 export function runSweep({ root = DEFAULT_ROOT } = {}) {
-  const inputs = loadPhase0Inputs(root);
+  const inputs = loadCaptureCorpus(root);
   const {
     audit, balance, weapons, subsonicTreatments, exceptions: reviewedExceptions,
     reloadExceptions, reloadMigrationManifest,

@@ -9,7 +9,7 @@ import {
   setAttachmentContext,
   VELOCITY_DISPLAY_EPSILON,
 } from '../sim/applyAttachments.js';
-import { compareBarrelVelocityLegacyAndDerived, buildEquivalenceEnumeration } from './attachment-equivalence-phase5.mjs';
+import { compareBarrelVelocityLegacyAndDerived, buildEquivalenceEnumeration } from './attachment-equivalence.mjs';
 
 const root = join(import.meta.dirname, '..');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
@@ -52,7 +52,7 @@ const context = {
 
 setAttachmentContext(context);
 
-test('Phase 7 data has all exact velocity tiers and retains velMult', () => {
+test('the barrel catalog has all exact velocity tiers and retains velMult', () => {
   assert.equal(balance.VELOCITY_LADDER, 0.8);
   const expected = new Map([
     ['none', 0],
@@ -76,7 +76,7 @@ test('Phase 7 data has all exact velocity tiers and retains velMult', () => {
   }
 });
 
-test('Phase 7 velocity dual-read prefers velTierMod and falls back to velMult', () => {
+test('velocity dual-read prefers velTierMod and falls back to velMult', () => {
   assert.deepEqual(resolveBarrelVelocity({ barData: { velTierMod: -1, velMult: 0.8 } }), {
     multiplier: 0.8,
     branch: 'derived',
@@ -96,7 +96,7 @@ test('Phase 7 velocity dual-read prefers velTierMod and falls back to velMult', 
   assert.equal(resolveBarrelVelocity({ barData: { velTierMod: 1 } }).multiplier, 1.25);
 });
 
-test('Phase 7 derived and legacy barrel velocity are bit-identical for every selectable live barrel', () => {
+test('derived and legacy barrel velocity are bit-identical for every selectable live barrel', () => {
   const legacyBarrels = structuredClone(attachments.BARRELS);
   for (const barrel of legacyBarrels) delete barrel.velTierMod;
   for (const weapon of weapons) {
@@ -112,7 +112,7 @@ test('Phase 7 derived and legacy barrel velocity are bit-identical for every sel
   }
 });
 
-test('Phase 7 velocity flooring has a guarded floating-point edge', () => {
+test('velocity flooring has a guarded floating-point edge', () => {
   const nearIntegerProducts = [];
   for (const weapon of weapons) {
     for (const barrelId of attachments.WEAPON_ATTS[weapon.id]?.barrel ?? []) {
@@ -130,7 +130,7 @@ test('Phase 7 velocity flooring has a guarded floating-point edge', () => {
   assert.equal(floorVelocityDisplay(837.5), 837);
 });
 
-test('Phase 7 extends the Phase 5 witness comparison with an explicit legacy velocity path', () => {
+test('the full witness enumeration covers an explicit legacy velocity path', () => {
   const enumeration = buildEquivalenceEnumeration();
   const result = compareBarrelVelocityLegacyAndDerived(enumeration);
   assert.equal(result.comparedCases, 101812);

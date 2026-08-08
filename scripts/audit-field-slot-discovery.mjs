@@ -10,12 +10,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_ROOT,
-  PHASE0_FIXTURES,
-  loadPhase0Inputs,
+  CAPTURE_CORPUS_FIXTURES,
+  loadCaptureCorpus,
   rowsWithStats,
   sourceIdentity,
   sourceRelativePath,
-} from './audit-phase0-lib.mjs';
+} from './capture-corpus-lib.mjs';
 
 const FIELD_RULES = {
   longRangeDamage: { expectedSlotTypes: ['Ammo'] },
@@ -52,7 +52,7 @@ function reviewedSlotContexts(receipt) {
       contexts.set(`${field}|${sourceIdentity(item.canonicalPath)}`, {
         status: 'screenshot-confirmed-slot-context-value',
         disposition: 'Detailed SL9 Laser/Light capture, including None, displays this value. Retain it path-by-path; do not infer a Laser/Light modifier.',
-        receipt: PHASE0_FIXTURES.sl9Recapture,
+        receipt: CAPTURE_CORPUS_FIXTURES.sl9Recapture,
       });
     }
   }
@@ -60,7 +60,7 @@ function reviewedSlotContexts(receipt) {
 }
 
 export function runFieldSlotDiscovery({ root = DEFAULT_ROOT } = {}) {
-  const inputs = loadPhase0Inputs(root);
+  const inputs = loadCaptureCorpus(root);
   const audit = inputs.audit;
   const contexts = reviewedSlotContexts(inputs.sl9Recapture);
   const byWeapon = new Map();
@@ -118,7 +118,7 @@ export function runFieldSlotDiscovery({ root = DEFAULT_ROOT } = {}) {
   return {
     kind: 'field-by-slot-discovery',
     generatedAt: new Date().toISOString(),
-    source: PHASE0_FIXTURES.audit,
+    source: CAPTURE_CORPUS_FIXTURES.audit,
     rules: FIELD_RULES,
     summary,
     statusSummary,

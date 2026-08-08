@@ -9,12 +9,12 @@ node --test
 Node discovers `scripts/*.test.mjs` on its own. Don't pass the directory — `node --test scripts/`
 tries to resolve it as a module and fails on Node 24.
 
-**Current state on `main`: 45 tests, 45 pass, 0 fail, 0 skipped.**
+**Current state: 56 tests, 56 pass, 0 fail, 0 skipped** locally. A clean clone runs **52** — see [Local-only tests](#local-only-tests).
 
 `sym-import.test.mjs` resolves a pinned baseline commit, so it needs a **full clone**. A shallow
 clone fails it with `fatal: Needed a single revision`.
 
-The runner reports 45: **43 named `test()` blocks** across 7 files, plus two assert-style scripts
+The runner reports 56: **54 named `test()` blocks** across 8 files, plus two assert-style scripts
 that pass or throw as a unit.
 
 ---
@@ -39,7 +39,7 @@ the screenshot audit, the reload representation change, the ADS-move tier conver
 migrations have shipped. Nine files were retired once the captured baseline data was complete:
 
 `subsonic-velocity-surface` · `frangible-health-regen` · `pp19` · `grip-pod-reconciliation` ·
-`attachment-screenshot-schema` · `audit-phase0` · `reload-phase3` · `reload-phase4` ·
+`attachment-screenshot-schema` · `reload-phase3` · `reload-phase4` ·
 `heavy-barrel-spread`
 
 They were scaffolding for getting the data right, not cover for keeping it right. Their job ended
@@ -54,7 +54,77 @@ when the data landed. What remains is what still earns its place on a normal wor
 
 ## 1. Capture reconciliation
 
-### `attachment-screenshot-taxonomy.test.mjs` — 4 tests
+Ground truth is the screenshot corpus at `migration/1.3.3.0/attachment-audit/` — 62 weapons, 3,189
+records, 3,127 with transcribed stats.
+
+### `capture-corpus-integrity.test.mjs` — 11 tests
+
+The main sweep, restored after the migration cull because it is the one thing that checks the model
+still reproduces what the game displays. Formerly `audit-phase0.test.mjs`.
+
+**`capture corpus fixtures are complete, full-roster, and path-portable`**
+Corpus size (3,189 records, 3,127 stat rows, 62 weapons, 31 subsonic treatments), bulk-recapture
+counts, and that `sourceIdentity()` treats absolute and repo-relative screenshot paths as the same
+file while rejecting paths outside `Weapon Attachments/`. No audit script contains a hard-coded
+machine path.
+*Catches:* a fixture silently shrinking; a machine-specific path committed; the corpus and its
+summary drifting apart.
+
+**`sweep pins inventoried model-tier and name-effect warnings and rejects other warnings`**
+Runs the full sweep and asserts the warning set *exactly equals* the reviewed inventory — 0
+model-tier, 15 name-effect, 4 name-effect-coverage — plus exact severity counts.
+*Catches:* any new model/capture disagreement, and equally any inventoried one that quietly went
+away. Exact-set rather than "zero warnings" is deliberate: every disagreement gets adjudicated once
+and recorded, instead of accumulating unread noise.
+
+**`name-effect inventory rejects isolated new and disappearing reload-name findings`**
+Injects a synthetic finding into a temp corpus copy and asserts drift reports it as unexpected, then
+deletes an inventoried one and asserts it reports as missing.
+*Catches:* the drift detector itself breaking. A guard that can no longer fail is worse than none.
+
+**`cross-field consistency checks named capacity and every stat in duplicate identities`**
+Pins the stat list the sweep walks, then plants a magazine whose named capacity contradicts its value
+and a duplicate identity with divergent stats, asserting both are flagged.
+*Catches:* a "30Rnd" card carrying capacity 20; two captures of the same card disagreeing.
+
+**`recoil amount uses hidden recoilV and the pinned float32 round-half-up display rule`**
+Pins the hidden recoil base for DB-12 and the display rounding for DB-12, M87A1 and SVK-8.6 at tiers
+3–5, then walks every capture confirming each sits on its weapon's recoil ladder.
+*Catches:* rounding drift, and any recoil reading that cannot be explained by an integer tier step.
+This is the rule the VSSM grip analysis depended on.
+
+**`scalar reload characterization covers all weapons, magazine/ergonomic combinations, and overrides`**
+59 weapons use scalar reload, the three tube-fed shotguns are exactly DB-12/M1014/M87A1, and every
+captured reload row matches a registered scalar combination.
+*Catches:* a reload value that no tier/multiplier combination can produce — a transcription or model
+error.
+
+**`barrel velocity and every current ADS, sprint-recovery, and ADS-move table output stay in-table`**
+Every captured ADS time, sprint recovery and ADS-move multiplier is a value present in its balance
+ladder, with zero registered overrides.
+*Catches:* an off-ladder value, meaning either a bad read or a ladder missing a rung.
+
+**`impossible-zero gates are explicit for damage, sprint recovery, and ADS move`**
+No capture carries 0 for those fields, and the sweep emits no zero-read finding.
+*Catches:* OCR returning 0 for an unreadable field — a sentinel that would otherwise look like real
+data.
+
+**`attachment catalogs cover every weapon with explicit ergonomics-free exemptions`**
+Every weapon has `WEAPON_ATTS`, `WEAPON_ERGO` and `WEAPON_MAG` entries except a named exemption
+list, and each exempted weapon is confirmed to have no ergonomics captures.
+*Catches:* a weapon added to `weapons.json` without its catalog entries; an exemption that stopped
+being true.
+
+**`default CLI checks are read-only, work outside the repository cwd, and fail on missing fixtures`**
+Runs the audit scripts from a different cwd and asserts exit 0, no "wrote" output, unchanged file
+mtimes, and that a missing fixture root throws.
+*Catches:* an analysis script mutating tracked data as a side effect.
+
+**`field-slot asymmetry inventory rejects isolated new and disappearing keys`**
+The same injection/removal probe as the name-effect guard, for the field-slot inventory.
+*Catches:* the field-slot drift detector silently failing open.
+
+### `attachment-screenshot-taxonomy.test.mjs` — 4 tests *(local only)*
 
 Attachment subtype classification — how a captured card is identified.
 
@@ -86,7 +156,7 @@ a `Standard` default.
 
 ## 2. Enumeration baselines
 
-### `barrel-velocity-phase7.test.mjs` — 5 tests
+### `barrel-velocity.test.mjs` — 5 tests
 
 Builds every weapon × barrel combination and compares against the legacy path. The surviving
 blast-radius detector.
@@ -94,26 +164,26 @@ blast-radius detector.
 > Adding a weapon or a barrel changes these. That's the system working. Re-pin the counts as part of
 > the change and read the diff to confirm only the new entry's cases appeared.
 
-**`Phase 7 data has all exact velocity tiers and retains velMult`**
+**`the barrel catalog has all exact velocity tiers and retains velMult`**
 `VELOCITY_LADDER` is 0.8, the barrel id set matches expectations exactly (including
 `vssm_suppressed` and `vssm_suppressed_asm` at tier 0), and every barrel's `velMult` equals
 `0.8^(-velTierMod)`.
 *Catches:* a barrel added without a velocity tier, or the two fields disagreeing.
 
-**`Phase 7 velocity dual-read prefers velTierMod and falls back to velMult`**
+**`velocity dual-read prefers velTierMod and falls back to velMult`**
 Branch selection across present, absent and null combinations.
 *Catches:* the fallback path breaking for data that still carries only the old field.
 
-**`Phase 7 derived and legacy barrel velocity are bit-identical for every selectable live barrel`**
+**`derived and legacy barrel velocity are bit-identical for every selectable live barrel`**
 Every weapon × barrel pair produces identical velocity down to the bit under both paths.
 *Catches:* a change that moves a displayed number.
 
-**`Phase 7 velocity flooring has a guarded floating-point edge`**
+**`velocity flooring has a guarded floating-point edge`**
 `floorVelocityDisplay(613.9999999999999) === 614` but `floorVelocityDisplay(837.5) === 837`.
 *Catches:* two opposite failures in one test — a naive floor turning 614 m/s into 613, or an
 over-eager epsilon rounding a genuine fractional value up.
 
-**`Phase 7 extends the Phase 5 witness comparison with an explicit legacy velocity path`**
+**`the full witness enumeration covers an explicit legacy velocity path`**
 101,812 cases compared, zero mismatches, 23 historical display-difference pairs all explained by 25
 corpus records.
 *Catches:* an unexplained divergence between the derived and legacy velocity paths.
@@ -193,7 +263,7 @@ trajectory intersecting its selected zero, a 100 m zero dropping again beyond ze
 returning `null` rather than a fallback.
 *Catches:* drag model drift; a missing-input path inventing a plausible number.
 
-### `target.test.mjs` — assert-style script
+### `target-geometry.test.mjs` — assert-style script
 
 Target aspect ratio within 0.4–0.46, aim points (head 18, chest 66.5), zone boundaries for
 head/chest/stomach/arms/legs, and marker radius scaling with view.
@@ -270,7 +340,7 @@ Each estimated weapon has all five attachment slot arrays with ids resolving to 
 plus `WEAPON_ERGO`, `WEAPON_MAG`, `WEAPON_AMMO`, `RECOIL_DEC`, `RECOIL_DEC_TEXP`, `RECOIL_MULT`,
 `HIP_CLS` and a class-appropriate `LIMB_CLASS`.
 *Catches:* a half-added weapon that renders but computes wrongly. **This is now the main guard for a
-new weapon being complete** — the cross-file coverage checks in `audit-phase0` were retired with it.
+new weapon being complete** alongside the corpus integrity sweep.
 
 **`reviewed handling decisions and measured endpoint contracts are pinned`**
 BROD 3 and EF88 RPM as exact fractions (`10800/13`, `10800/16`), recoil directions, the internal
@@ -302,6 +372,39 @@ The site ships as static files with no build step, so a syntax error would other
 a browser. Cheap, and catches the most embarrassing failure available.
 
 ---
+
+## Local-only tests
+
+`attachment-screenshot-taxonomy.test.mjs` is **gitignored** and does not exist on a clean clone. It
+imports `attachment-screenshot-taxonomy.mjs`, which is part of the local screenshot-audit tooling and
+is ignored by the `scripts/*attachment-screenshot*` rule. So:
+
+| | Tests |
+| --- | --- |
+| Locally, with the audit tooling present | 56 |
+| Clean clone | 52 |
+
+That is deliberate — the tooling reads a ~1.7 GB local corpus that isn't committed — but it means the
+suite is smaller in CI than it looks here. Don't rename that file without also updating `.gitignore`;
+a name that stops matching the pattern would start tracking a test whose module isn't committed, and
+it would fail for everyone else.
+
+## Naming
+
+Test files are named for what they check, not for the migration that produced them. Four were
+renamed once their migrations shipped:
+
+| Was | Now |
+| --- | --- |
+| `audit-phase0.test.mjs` | `capture-corpus-integrity.test.mjs` |
+| `audit-phase0-lib.mjs` | `capture-corpus-lib.mjs` |
+| `barrel-velocity-phase7.test.mjs` | `barrel-velocity.test.mjs` |
+| `attachment-equivalence-phase5.mjs` | `attachment-equivalence.mjs` |
+| `target.test.mjs` | `target-geometry.test.mjs` |
+
+Test titles were renamed with them — `Phase 7 velocity flooring…` is now
+`velocity flooring has a guarded floating-point edge`. If a name only makes sense to someone who
+remembers a migration, it is the wrong name.
 
 ## Conventions
 

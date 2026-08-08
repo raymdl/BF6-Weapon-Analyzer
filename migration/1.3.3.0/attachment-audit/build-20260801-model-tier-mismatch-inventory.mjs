@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { DEFAULT_ROOT } from '../../../scripts/audit-phase0-lib.mjs';
+import { DEFAULT_ROOT } from '../../../scripts/capture-corpus-lib.mjs';
 import { runSweep } from '../../../scripts/audit-sweep.mjs';
 
 const ROOT = DEFAULT_ROOT;

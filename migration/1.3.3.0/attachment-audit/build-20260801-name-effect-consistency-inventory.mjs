@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { DEFAULT_ROOT } from '../../../scripts/audit-phase0-lib.mjs';
+import { DEFAULT_ROOT } from '../../../scripts/capture-corpus-lib.mjs';
 import { runSweep } from '../../../scripts/audit-sweep.mjs';
 
 export const NAME_EFFECT_INVENTORY_PATH = 'migration/1.3.3.0/attachment-audit/name-effect-consistency-inventory-20260801.json';

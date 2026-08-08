@@ -7,7 +7,7 @@ import {
   classFromSourcePath,
   normalizeWeaponName,
   sourceRelativePath,
-} from '../../../scripts/audit-phase0-lib.mjs';
+} from '../../../scripts/capture-corpus-lib.mjs';
 
 const ROOT = DEFAULT_ROOT;
 const AUDIT_RELATIVE = 'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json';

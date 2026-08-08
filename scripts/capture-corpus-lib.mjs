@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 export const DEFAULT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-export const PHASE0_FIXTURES = Object.freeze({
+export const CAPTURE_CORPUS_FIXTURES = Object.freeze({
   audit: 'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json',
   balance: 'data/balance_tables.json',
   weapons: 'data/weapons.json',
@@ -32,7 +32,7 @@ function fixturePath(root, relativePath) {
 export function readRequiredJson(root, relativePath, label = relativePath) {
   const absolutePath = fixturePath(root, relativePath);
   if (!fs.existsSync(absolutePath)) {
-    throw new Error(`Missing required Phase 0 fixture: ${label} (${relativePath})`);
+    throw new Error(`Missing required capture corpus fixture: ${label} (${relativePath})`);
   }
   try {
     return JSON.parse(fs.readFileSync(absolutePath, 'utf8'));
@@ -42,7 +42,7 @@ export function readRequiredJson(root, relativePath, label = relativePath) {
 }
 
 export function loadReloadExceptionRegister(root = DEFAULT_ROOT) {
-  const register = readRequiredJson(root, PHASE0_FIXTURES.reloadExceptions, 'reload exception register');
+  const register = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.reloadExceptions, 'reload exception register');
   if (register.schemaVersion !== 1 || register.$schema !== '../schemas/reload-exceptions.schema.json') {
     throw new Error('Invalid reload exception register schema declaration');
   }
@@ -314,16 +314,16 @@ function validateAuditFixture(audit) {
   return { stats, weaponNames: [...names].sort() };
 }
 
-export function loadPhase0Inputs(root = DEFAULT_ROOT) {
-  const audit = readRequiredJson(root, PHASE0_FIXTURES.audit, 'attachment screenshot review');
-  const balance = readRequiredJson(root, PHASE0_FIXTURES.balance, 'balance tables');
-  const weapons = readRequiredJson(root, PHASE0_FIXTURES.weapons, 'weapon hidden-precision bases');
-  const subsonic = readRequiredJson(root, PHASE0_FIXTURES.subsonic, 'subsonic velocity register');
-  const reviewedExceptions = readRequiredJson(root, PHASE0_FIXTURES.reviewedExceptions, 'reviewed sweep exception register');
-  const bulkRecapture = readRequiredJson(root, PHASE0_FIXTURES.bulkRecapture, 'bulk recapture receipt');
-  const dedupeExclusions = readRequiredJson(root, PHASE0_FIXTURES.dedupeExclusions, 'dedupe exclusion receipt');
-  const sl9Recapture = readRequiredJson(root, PHASE0_FIXTURES.sl9Recapture, 'SL9 detailed recapture receipt');
-  const reloadMigrationManifest = readRequiredJson(root, PHASE0_FIXTURES.reloadMigrationManifest, 'reload migration manifest');
+export function loadCaptureCorpus(root = DEFAULT_ROOT) {
+  const audit = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.audit, 'attachment screenshot review');
+  const balance = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.balance, 'balance tables');
+  const weapons = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.weapons, 'weapon hidden-precision bases');
+  const subsonic = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.subsonic, 'subsonic velocity register');
+  const reviewedExceptions = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.reviewedExceptions, 'reviewed sweep exception register');
+  const bulkRecapture = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.bulkRecapture, 'bulk recapture receipt');
+  const dedupeExclusions = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.dedupeExclusions, 'dedupe exclusion receipt');
+  const sl9Recapture = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.sl9Recapture, 'SL9 detailed recapture receipt');
+  const reloadMigrationManifest = readRequiredJson(root, CAPTURE_CORPUS_FIXTURES.reloadMigrationManifest, 'reload migration manifest');
   const reloadExceptions = loadReloadExceptionRegister(root);
 
   const auditSummary = validateAuditFixture(audit);

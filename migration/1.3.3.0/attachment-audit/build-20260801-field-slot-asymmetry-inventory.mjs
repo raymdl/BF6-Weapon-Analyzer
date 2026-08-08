@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applyAttachments, setAttachmentContext } from '../../../sim/applyAttachments.js';
-import { DEFAULT_ROOT, loadPhase0Inputs, modalValue, rowsWithStats, sourceRelativePath } from '../../../scripts/audit-phase0-lib.mjs';
+import { DEFAULT_ROOT, loadCaptureCorpus, modalValue, rowsWithStats, sourceRelativePath } from '../../../scripts/capture-corpus-lib.mjs';
 import { STATS } from '../../../scripts/audit-sweep.mjs';
 
 export const OUTPUT_RELATIVE_PATH = 'migration/1.3.3.0/attachment-audit/field-slot-asymmetry-inventory-20260801.json';
@@ -306,7 +306,7 @@ function noteFor(field, slot, classification) {
 }
 
 function buildInventory(root = DEFAULT_ROOT) {
-  const inputs = loadPhase0Inputs(root);
+  const inputs = loadCaptureCorpus(root);
   const corpus = deriveCorpusInventory(inputs.audit);
   const resolver = deriveResolverInventory(root);
   const records = [];

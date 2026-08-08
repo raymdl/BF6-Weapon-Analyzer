@@ -8,7 +8,7 @@ import {
   loadReloadExceptionRegister,
   modalValue,
   reloadRowMatches,
-} from './audit-phase0-lib.mjs';
+} from './capture-corpus-lib.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataRoot = process.env.DATA_ROOT ? resolve(process.env.DATA_ROOT) : root;
