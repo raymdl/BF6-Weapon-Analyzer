@@ -27,8 +27,8 @@ test('exactly BROD 3, EF88 and VSSM are estimated with explicit provenance', () 
   assert.equal(byId('ef88').damageStatus, 'provisional');
   assert.equal(byId('brod3').provenance.donor.weaponId, 'grtbc');
   assert.deepEqual(byId('ef88').provenance.donor.weaponIds, ['b36a4', 'l85a3']);
-  assert.deepEqual(byId('brod3').provenance.measured.damageEndpoints, [26, 14]);
-  assert.deepEqual(byId('ef88').provenance.measured.damageEndpoints, [26, 17]);
+  assert.deepEqual(byId('brod3').provenance.measured.displayedDamageEndpoints, [26, 14]);
+  assert.deepEqual(byId('ef88').provenance.measured.displayedDamageEndpoints, [26, 17]);
   assert.ok(byId('brod3').provenance.estimatedFields.length > 0);
   assert.ok(byId('ef88').provenance.estimatedFields.length > 0);
 });
@@ -53,9 +53,11 @@ test('estimated weapons have complete cross-file coverage and five attachment sl
   }
 });
 
-test('reviewed handling decisions and measured endpoint contracts are pinned', () => {
+test('reviewed handling decisions and exact donor damage curves are pinned', () => {
   const brod = byId('brod3');
   const ef = byId('ef88');
+  const grtbc = byId('grtbc');
+  const l85a3 = byId('l85a3');
   assert.equal(brod.rpm, 10800 / 13);
   assert.equal(ef.rpm, 10800 / 16);
   assert.equal(brod.recoilDir, -16);
@@ -69,10 +71,8 @@ test('reviewed handling decisions and measured endpoint contracts are pinned', (
   }
   assert.equal(brod.mag, 31);
   assert.equal(ef.mag, 31);
-  assert.equal(brod.dmg[0].d, 26);
-  assert.equal(brod.dmg.at(-1).d, 14);
-  assert.equal(ef.dmg[0].d, 26);
-  assert.equal(ef.dmg.at(-1).d, 17);
+  assert.deepEqual(brod.dmg.map(({ r, d }) => [r, d]), grtbc.dmg.map(({ r, d }) => [r, d]));
+  assert.deepEqual(ef.dmg.map(({ r, d }) => [r, d]), l85a3.dmg.map(({ r, d }) => [r, d]));
   assert.equal(brod.provenance.damage.donorModel, 'grtbc');
   assert.equal(ef.provenance.damage.donorModel, 'l85a3');
   assert.equal(attachments.WEAPON_MAG.brod3.mags['20_rnd'].adsTimeTierShift, -1);

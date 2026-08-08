@@ -19,7 +19,7 @@
         "recoilDir": -16,
         "rpmRule": "10800/13",
         "mag": 31,
-        "damageEndpoints": [
+        "displayedDamageEndpoints": [
           26,
           14
         ]
@@ -32,15 +32,17 @@
         "recoil.ads formula fields",
         "spreadDyn",
         "spread",
-        "damage breakpoint distances"
+        "damage breakpoint distances",
+        "damage endpoint display precision"
       ],
       "damage": {
         "status": "provisional",
         "donorModel": "grtbc",
-        "measuredEndpoints": {
+        "displayedEndpoints": {
           "close": 26,
           "long": 14
         },
+        "endpointPrecision": "whole-number panel display; donor profile remains authoritative",
         "replacement": "Replace with Sym full statistics when published."
       }
     },
@@ -66,7 +68,7 @@
         "recoilDir": 12,
         "rpmRule": "10800/16",
         "mag": 31,
-        "damageEndpoints": [
+        "displayedDamageEndpoints": [
           26,
           17
         ]
@@ -77,15 +79,17 @@
         "recoilV midpoint",
         "recoil formula midpoint",
         "recoil.ads.dirVarMult midpoint",
-        "damage breakpoint distances"
+        "damage breakpoint distances",
+        "damage endpoint display precision"
       ],
       "damage": {
         "status": "provisional",
         "donorModel": "l85a3",
-        "measuredEndpoints": {
+        "displayedEndpoints": {
           "close": 26,
           "long": 17
         },
+        "endpointPrecision": "whole-number panel display; donor profile remains authoritative",
         "replacement": "Replace with Sym full statistics when published."
       }
     }
