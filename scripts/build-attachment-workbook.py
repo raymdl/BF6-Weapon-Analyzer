@@ -118,6 +118,9 @@ COLUMNS = [
     ("Current Screenshot Filename", lambda r: _basename(r["source"].get("currentPath")), None, 39.375),
 ]
 
+# The Current Screenshot Filename column, which links to the capture it names.
+FILENAME_COLUMN = len(COLUMNS)
+
 # By Attachment sheet columns that hold a number rather than a label, offset by its weapon
 # column. Every stat carries a comparison key; the cost is the one number that does not.
 RIGHT_ALIGNED = {index + 2 for index, (header, _getter, cmp_key, _width) in enumerate(COLUMNS)
@@ -150,6 +153,15 @@ def _reload_in_ads(record):
 
 def _basename(path):
     return re.split(r"[\\/]", path)[-1] if path else None
+
+
+def _file_url(path):
+    """Link target Excel will open for a local capture.
+
+    Leave the drive colon and separators literal; Excel wants file:///C:/... with only spaces
+    and other unsafe characters percent-encoded.
+    """
+    return "file:///" + quote(path.replace("\\", "/"), safe="/:")
 
 
 def _weapon_class(record):
@@ -262,6 +274,10 @@ def write_weapon_sheet(workbook, weapon, weapon_class, records):
                 cell.font = Font(sz=10)
                 wrap = index in (5, 28)
                 cell.alignment = Alignment(vertical="top", wrap_text=wrap)
+            if index == FILENAME_COLUMN and value:
+                # The cell names the capture; clicking it opens that capture.
+                cell.hyperlink = _file_url(record["source"]["currentPath"])
+                cell.font = Font(sz=10, color=LINK, underline="single")
             if index == 1:
                 type_fill, type_text = type_style(record.get("attachmentType"))
                 cell.fill = _fill(type_fill)
@@ -622,9 +638,7 @@ def write_source_index(workbook, records):
         current = source.get("currentPath")
         if current:
             cell = sheet.cell(row, 9, os.path.basename(current))
-            # Leave the drive colon and separators literal; Excel wants file:///C:/... with only
-            # spaces and other unsafe characters percent-encoded.
-            cell.hyperlink = f"file:///{quote(current.replace(chr(92), '/'), safe='/:')}"
+            cell.hyperlink = _file_url(current)
             cell.font = Font(sz=10, color=LINK, underline="single")
     sheet.column_dimensions["I"].width = 46
     return len(ordered)
