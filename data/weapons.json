@@ -8381,61 +8381,61 @@
     "dmg": [
       {
         "r": 0,
-        "d": 26,
+        "d": 26.05,
         "source": "Sym",
-        "provenance": "measured close endpoint 26; estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
       },
       {
         "r": 9,
         "d": 26.05,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 9,
         "d": 21.56,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 21,
         "d": 21.56,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 21,
         "d": 17.74,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 36,
         "d": 17.74,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 36,
         "d": 17.13,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
         "d": 17.13,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
-        "d": 14,
+        "d": 14.62,
         "source": "Sym",
-        "provenance": "measured long endpoint 14; estimated GRT-BC donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Estimated from GRT-BC donor dropoff model; BROD 3 panel endpoints measured at 26 and 14; pending Sym full statistics",
+    "damageSource": "Exact GRT-BC donor dropoff model; BROD 3 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
     "reloadSpeed": 1,
     "estimated": true,
     "provenance": {
@@ -8455,7 +8455,7 @@
         "recoilDir": -16,
         "rpmRule": "10800/13",
         "mag": 31,
-        "damageEndpoints": [
+        "displayedDamageEndpoints": [
           26,
           14
         ]
@@ -8463,15 +8463,17 @@
       "estimatedFields": [
         "emptyRld",
         "reloadSpeed",
-        "damage breakpoint distances"
+        "damage breakpoint distances",
+        "damage endpoint display precision"
       ],
       "damage": {
         "status": "provisional",
         "donorModel": "grtbc",
-        "measuredEndpoints": {
+        "displayedEndpoints": {
           "close": 26,
           "long": 14
         },
+        "endpointPrecision": "whole-number panel display; donor profile remains authoritative",
         "replacement": "Replace with Sym full statistics when published."
       },
       "sourced": {
@@ -8594,37 +8596,37 @@
     "dmg": [
       {
         "r": 0,
-        "d": 26,
+        "d": 26.05,
         "source": "Sym",
-        "provenance": "measured close endpoint 26; estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
       },
       {
         "r": 21,
         "d": 26.05,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 21,
         "d": 20.67,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
         "d": 20.67,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
-        "d": 17,
+        "d": 17.13,
         "source": "Sym",
-        "provenance": "measured long endpoint 17; estimated L85A3 donor dropoff model; breakpoint distance pending Sym full statistics"
+        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
       }
     ],
     "damageStatus": "provisional",
-    "damageSource": "Estimated from B36A4/L85A3 midpoint dropoff model; EF88 panel endpoints measured at 26 and 17; pending Sym full statistics",
+    "damageSource": "Exact B36A4/L85A3 donor dropoff model; EF88 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
     "reloadSpeed": 0.987893,
     "estimated": true,
     "provenance": {
@@ -8650,7 +8652,7 @@
         "recoilDir": 12,
         "rpmRule": "10800/16",
         "mag": 31,
-        "damageEndpoints": [
+        "displayedDamageEndpoints": [
           26,
           17
         ]
@@ -8658,15 +8660,17 @@
       "estimatedFields": [
         "emptyRld",
         "reloadSpeed",
-        "damage breakpoint distances"
+        "damage breakpoint distances",
+        "damage endpoint display precision"
       ],
       "damage": {
         "status": "provisional",
         "donorModel": "l85a3",
-        "measuredEndpoints": {
+        "displayedEndpoints": {
           "close": 26,
           "long": 17
         },
+        "endpointPrecision": "whole-number panel display; donor profile remains authoritative",
         "replacement": "Replace with Sym full statistics when published."
       },
       "sourced": {
