@@ -2,7 +2,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve('C:/Users/royal/Documents/BF6 Project');
+const root = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer');
 const audit = path.join(root, 'migration', '1.3.3.0', 'attachment-audit');
 const current = JSON.parse(fs.readFileSync(path.join(audit, 'attachment-screenshot-review.json'), 'utf8'));
 const before = JSON.parse(fs.readFileSync(path.join(audit, 'pre-ak205-laser-recapture-20260728', 'attachment-screenshot-review.json'), 'utf8'));

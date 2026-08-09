@@ -2,7 +2,7 @@ import json, math
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-root = Path(r'C:/Users/royal/Documents/BF6 Project')
+root = Path(r'C:/Users/royal/Documents/BF6 Weapon Analyzer')
 audit = root / 'migration' / '1.3.3.0' / 'attachment-audit'
 doc = json.loads((audit / 'attachment-screenshot-review.json').read_text(encoding='utf-8'))
 rows = [r for r in doc['records'] if '\\Carbine\\' in r['source']['originalPath'] and r.get('stats') and r.get('attachmentCost') is None]

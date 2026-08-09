@@ -1,7 +1,7 @@
 import json, os
 from PIL import Image, ImageDraw, ImageFont
 
-root = r'C:\Users\royal\Documents\BF6 Project'
+root = r'C:\Users\royal\Documents\BF6 Weapon Analyzer'
 doc = json.load(open(os.path.join(root, 'migration', '1.3.3.0', 'attachment-audit', 'attachment-screenshot-review.json'), encoding='utf-8'))
 man = json.load(open(os.path.join(root, 'migration', '1.3.3.0', 'attachment-audit', 'rename-manifest.json'), encoding='utf-8'))
 records = {r['source']['originalPath']: r for r in doc['records']}

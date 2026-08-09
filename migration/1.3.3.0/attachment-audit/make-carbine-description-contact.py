@@ -2,7 +2,7 @@ import json, math
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
-root=Path(r'C:\Users\royal\Documents\BF6 Project')
+root=Path(r'C:\Users\royal\Documents\BF6 Weapon Analyzer')
 j=json.loads((root/'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json').read_text(encoding='utf-8'))
 rows=[]
 for r in j['records']:

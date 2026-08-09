@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve('C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit');
+const root = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit');
 const canonical = JSON.parse(fs.readFileSync(path.join(root, 'attachment-screenshot-review.json'), 'utf8'));
 const rebuilt = JSON.parse(fs.readFileSync(path.join(root, 'idempotence-null-fire-20260728', 'attachment-screenshot-review.json'), 'utf8'));
 const manualPath = path.join(root, 'manual-review-overrides.json');

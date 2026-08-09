@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve('C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit');
+const root = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit');
 const review = JSON.parse(fs.readFileSync(path.join(root, 'attachment-screenshot-review.json'), 'utf8'));
 const details = review.records.filter((row) => row.stats);
 const keep = new Set('US LE OH E3 SB LB MG SBR CQB LSW EBR SPR ASM COB DMR VMW 3LR HBAR MK22 US-LB SDM-R BOAR-F CUSTOM-H CIV CIV-S IAR A3 FMJ HP MW'.split(' '));

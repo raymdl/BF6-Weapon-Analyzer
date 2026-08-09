@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve('C:/Users/royal/Documents/BF6 Project');
+const root = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer');
 const audit = path.join(root, 'migration', '1.3.3.0', 'attachment-audit');
 const read = name => JSON.parse(fs.readFileSync(path.join(audit, name), 'utf8'));
 const review = read('attachment-screenshot-review.json');

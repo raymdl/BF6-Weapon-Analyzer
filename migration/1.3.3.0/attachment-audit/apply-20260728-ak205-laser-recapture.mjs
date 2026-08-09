@@ -2,7 +2,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const projectRoot = path.resolve('C:/Users/royal/Documents/BF6 Project');
+const projectRoot = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer');
 const auditRoot = path.join(projectRoot, 'migration', '1.3.3.0', 'attachment-audit');
 const missingRoot = path.join(projectRoot, 'Weapon Attachments', 'Missing', 'AK-205');
 const canonicalRoot = path.join(projectRoot, 'Weapon Attachments', 'Carbine', 'AK-205');

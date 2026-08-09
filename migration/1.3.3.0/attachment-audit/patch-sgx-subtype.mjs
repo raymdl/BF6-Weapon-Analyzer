@@ -1,6 +1,6 @@
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const workbookPath = 'C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit/BF6_Attachment_Stats_Review.xlsx';
+const workbookPath = 'C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit/BF6_Attachment_Stats_Review.xlsx';
 const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(workbookPath));
 const sheet = workbook.worksheets.getItem('SGX');
 sheet.getRange('C36').values = [['Magazine']];

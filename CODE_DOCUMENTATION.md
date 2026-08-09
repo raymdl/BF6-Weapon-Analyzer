@@ -14,7 +14,7 @@ use `<script type="module">` so they require HTTP — opening the HTML files dir
 URLs will fail.
 
 ```
-BF6 Project/
+BF6 Weapon Analyzer/
   index.html                ← Primary weapon analyzer app
   preview_spread.html       ← Recoil/spread chart experiment tool
 

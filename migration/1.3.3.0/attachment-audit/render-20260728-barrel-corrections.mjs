@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const root='C:/Users/royal/Documents/BF6 Project';
+const root='C:/Users/royal/Documents/BF6 Weapon Analyzer';
 const review=JSON.parse(await fs.readFile(`${root}/migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json`,'utf8'));
 const keys=new Set(['DRS-IAR|15','DRS-IAR|16','DRS-IAR|17','L110|14','L115|11','L115|12','L85A3|15','M121 A2|13','M121 A2|14','M123K|13','M123K|14','M2010 ESR|12','M250|14','M39 EMR|14','M433|13','M433|14','Mini Scout|13','Mini Scout|14','PSR|11','RPK-74M|15','RPKM|15','RPKM|16','SL9|15','SV-98|8','SVDM|12','UMG-40|15']);
 const workbook=await SpreadsheetFile.importXlsx(await FileBlob.load(`${root}/BF6_Attachment_Stats_Review.xlsx`));

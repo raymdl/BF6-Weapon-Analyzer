@@ -3,8 +3,8 @@ import path from 'node:path';
 import JSZip from 'jszip';
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const workbookPath = process.env.BF6_ATTACHMENT_WORKBOOK_PATH ?? 'C:/Users/royal/Documents/BF6 Project/BF6_Attachment_Stats_Review.xlsx';
-const reviewPath = 'C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json';
+const workbookPath = process.env.BF6_ATTACHMENT_WORKBOOK_PATH ?? 'C:/Users/royal/Documents/BF6 Weapon Analyzer/BF6_Attachment_Stats_Review.xlsx';
+const reviewPath = 'C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json';
 const review = JSON.parse(await fs.readFile(reviewPath, 'utf8'));
 const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(workbookPath));
 const detail = review.records.filter(record => record.stats);

@@ -2,7 +2,7 @@ import cv2, json, numpy as np
 from pathlib import Path
 import re
 
-root = Path(r'C:/Users/royal/Documents/BF6 Project')
+root = Path(r'C:/Users/royal/Documents/BF6 Weapon Analyzer')
 audit = root / 'migration' / '1.3.3.0' / 'attachment-audit'
 review = json.loads((audit / 'attachment-screenshot-review.json').read_text(encoding='utf-8'))
 visual_path = audit / 'visual-stat-map.json'

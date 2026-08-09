@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const auditRoot = path.resolve('C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit');
+const auditRoot = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit');
 const review = JSON.parse(fs.readFileSync(path.join(auditRoot, 'attachment-screenshot-review.json'), 'utf8'));
 const manual = JSON.parse(fs.readFileSync(path.join(auditRoot, 'manual-review-overrides.json'), 'utf8'));
 const summary = JSON.parse(fs.readFileSync(path.join(auditRoot, 'attachment-name-normalization-summary-20260728.json'), 'utf8'));

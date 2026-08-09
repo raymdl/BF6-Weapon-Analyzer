@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const root = 'C:/Users/royal/Documents/BF6 Project';
+const root = 'C:/Users/royal/Documents/BF6 Weapon Analyzer';
 const audit = `${root}/migration/1.3.3.0/attachment-audit`;
 const review = JSON.parse(fs.readFileSync(`${audit}/attachment-screenshot-review.json`, 'utf8'));
 const doc = JSON.parse(fs.readFileSync(`${audit}/manual-review-overrides.json`, 'utf8'));

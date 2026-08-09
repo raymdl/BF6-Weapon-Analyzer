@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
-root=Path(r'C:\Users\royal\Documents\BF6 Project')
+root=Path(r'C:\Users\royal\Documents\BF6 Weapon Analyzer')
 j=json.loads((root/'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json').read_text(encoding='utf-8'))
 rows=[r for r in j['records'] if '\\Weapon Attachments\\Carbine\\' in r['source']['currentPath'] and r.get('stats') and r['stats'].get('mobility') is None]
 out=root/'migration/1.3.3.0/attachment-audit/mobility-contact-sheets';out.mkdir(exist_ok=True)
