@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 import json, re, math
 
-root = Path(r'C:\Users\royal\Documents\BF6 Project')
+root = Path(r'C:\Users\royal\Documents\BF6 Weapon Analyzer')
 artifact = root / 'migration' / '1.3.3.0' / 'attachment-audit' / 'attachment-screenshot-review.json'
 records = json.loads(artifact.read_text(encoding='utf-8'))['records']
 flagged = [r for r in records if r.get('attachmentDescription') and re.match(r'[a-z]', r['attachmentDescription'])]

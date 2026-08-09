@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
-root=Path(r'C:\Users\royal\Documents\BF6 Project')
+root=Path(r'C:\Users\royal\Documents\BF6 Weapon Analyzer')
 j=json.loads((root/'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json').read_text(encoding='utf-8'))
 specs=[('AK-205',3),('AK-205',4),('BROD 3',4),('BROD 3',7),('BROD 3',50),('GRT-BC',3),('GRT-BC',5),('GRT-BC',9),('M277',3),('M277',5),('M417 A2',3),('M417 A2',4),('M417 A2',22),('M4A1',3),('M4A1',5),('SG 553R',3),('SG 553R',5),('SOR-300SC',3),('SOR-300SC',5),('SOR-300SC',11)]
 rows=[]

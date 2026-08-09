@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const workbookPath = 'C:/Users/royal/Documents/BF6 Project/BF6_Attachment_Stats_Review.xlsx';
+const workbookPath = 'C:/Users/royal/Documents/BF6 Weapon Analyzer/BF6_Attachment_Stats_Review.xlsx';
 const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(workbookPath));
 const sidearms = ['ES 5.7', 'GGH-22', 'M357 Trait', 'M44', 'M45A1', 'P18', 'VZ. 61'];
 const results = [];

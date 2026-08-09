@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const root = 'C:/Users/royal/Documents/BF6 Project';
+const root = 'C:/Users/royal/Documents/BF6 Weapon Analyzer';
 const audit = `${root}/migration/1.3.3.0/attachment-audit`;
 const source = fs.readFileSync(`${audit}/apply-carbine-visual-corrections.mjs`, 'utf8');
 for (const forbidden of ['descGroups', 'candidates[0]', 'repairDescription', 'records.filter(r => r.stats && r.stats.mobility == null)', 'stats?.mobility == null']) {

@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const root = 'C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit';
+const root = 'C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit';
 const weapons = new Set(['M433', 'PP-19']);
 const read = name => JSON.parse(fs.readFileSync(`${root}/${name}`, 'utf8'));
 const write = (name, value) => fs.writeFileSync(`${root}/${name}`, `${JSON.stringify(value, null, 2)}\n`);

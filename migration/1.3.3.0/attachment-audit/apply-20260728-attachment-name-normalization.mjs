@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const projectRoot = path.resolve('C:/Users/royal/Documents/BF6 Project');
+const projectRoot = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer');
 const auditRoot = path.join(projectRoot, 'migration', '1.3.3.0', 'attachment-audit');
 const read = (name) => JSON.parse(fs.readFileSync(path.join(auditRoot, name), 'utf8'));
 const write = (name, value) => fs.writeFileSync(path.join(auditRoot, name), `${JSON.stringify(value, null, 2)}\n`);

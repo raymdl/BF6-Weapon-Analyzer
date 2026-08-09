@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-ROOT = Path(r"C:\Users\royal\Documents\BF6 Project")
+ROOT = Path(r"C:\Users\royal\Documents\BF6 Weapon Analyzer")
 INPUT = Path(__import__('os').environ.get('BF6_ATTACHMENT_COMPARISON_INPUT', str(ROOT / "Weapon Attachments" / "Assault Rifle")))
 OUTPUT = Path(__import__('os').environ.get('BF6_ATTACHMENT_COMPARISON_OUTPUT', str(ROOT / "migration" / "1.3.3.0" / "attachment-audit" / "stat-comparisons.json")))
 FIELDS = [

@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 
-const root = 'C:/Users/royal/Documents/BF6 Project';
+const root = 'C:/Users/royal/Documents/BF6 Weapon Analyzer';
 const doc = JSON.parse(await fs.readFile(`${root}/migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json`, 'utf8'));
 const rows = doc.records.filter(r => r.attachmentType === 'Barrel' && Number.isFinite(r.stats?.muzzleVelocityMps));
 const multiplierForSubtype = subtype => {

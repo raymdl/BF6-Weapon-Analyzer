@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const root = path.resolve('C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit');
+const root = path.resolve('C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit');
 const temp = path.join(root, 'idempotence-name-normalization-20260728');
 const expected = JSON.parse(fs.readFileSync(path.join(temp, 'expected-review.json'), 'utf8'));
 const rebuilt = JSON.parse(fs.readFileSync(path.join(temp, 'attachment-screenshot-review.json'), 'utf8'));

@@ -1,8 +1,8 @@
 from pathlib import Path
 from PIL import Image, ImageDraw
 
-preview_dir = Path(r'C:\Users\royal\Documents\BF6 Project\outputs\019fab2b-c548-7ec1-9ada-fa5a3726bdf3\previews-final-review')
-output_dir = Path(r'C:\Users\royal\Documents\BF6 Project\outputs\019fab2b-c548-7ec1-9ada-fa5a3726bdf3\visual-qa')
+preview_dir = Path(r'C:\Users\royal\Documents\BF6 Weapon Analyzer\outputs\019fab2b-c548-7ec1-9ada-fa5a3726bdf3\previews-final-review')
+output_dir = Path(r'C:\Users\royal\Documents\BF6 Weapon Analyzer\outputs\019fab2b-c548-7ec1-9ada-fa5a3726bdf3\visual-qa')
 output_dir.mkdir(parents=True, exist_ok=True)
 files = sorted(p for p in preview_dir.glob('*.png') if '-reload-in-ads' not in p.name and '-screenshot-order' not in p.name)
 thumb_w, thumb_h, label_h, cols, rows = 640, 360, 28, 2, 4

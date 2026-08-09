@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-const root='C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit';
+const root='C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit';
 const doc=JSON.parse(await fs.readFile(`${root}/attachment-screenshot-review.json`,'utf8'));
 const fields=['damage','rateOfFireRpm','magazineSize','hipfire','precision','control','mobility','reloadTimeSeconds','muzzleVelocityMps','adsTimeMs','headshotMultiplier','longRangeDamage','spotOnFire3dM','spotOnFire2dM','opponentHealthRegenDelaySeconds','collateralMultiplier','adsMoveSpeedMultiplier','sprintRecoveryMs','recoilVariationDegrees'];
 const groups=Map.groupBy(doc.records.filter(r=>r.stats),r=>`${r.weaponName}|${r.attachmentType}`);

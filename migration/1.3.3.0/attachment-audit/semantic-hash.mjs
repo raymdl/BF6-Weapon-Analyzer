@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 
-const root = 'C:/Users/royal/Documents/BF6 Project/migration/1.3.3.0/attachment-audit';
+const root = 'C:/Users/royal/Documents/BF6 Weapon Analyzer/migration/1.3.3.0/attachment-audit';
 const normalize = value => {
   const copy = structuredClone(value);
   delete copy.generatedAt;
