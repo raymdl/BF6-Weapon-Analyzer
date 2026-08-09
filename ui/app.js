@@ -1983,6 +1983,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
     { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after magazine and grip effects. Lower is faster.' },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel and ammunition effects. Subsonic loads fire markedly slower. Higher reduces travel time and lead.' },
+    { lbl: 'Bullet Drag',         val: w => w._projectileModel?.dragPerMeter, unit: '/m', dec: 4, lowerBetter: true, tooltip: 'Projectile drag per metre. Lower drag preserves velocity longer and reduces long-range travel time and drop.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
     { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.' },
@@ -2004,6 +2005,7 @@ function renderAttachmentStats(loadouts) {
     'Sprint-to-Fire Speed': ['sprintRecoveryTierShift', 'adsTimeTierShift'],
     'Weapon Draw Speed': ['sprintRecoveryTierShift', 'adsTimeTierShift', 'drawTimeTier', 'drawTimeOffset'],
     'Bullet Vel': ['velMult', 'velTierMod'],
+    'Bullet Drag': ['dragPerMeter'],
     'Mag Size': ['mag'],
     'Tac Reload': ['tacRld', 'tacRldOverrideMs', 'reloadSpeedTier', 'reloadSpeedMult'],
     'ADS Recoil/Shot': ['adsRecoilTierMod'],
@@ -2038,8 +2040,11 @@ function renderAttachmentStats(loadouts) {
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
   loadouts.filter(x => x.weapon).forEach(({ weapon, atts, colClass }) => {
-    const base = defaultAppliedWeapon(weapon);
-    const cur = applyAttachments(weapon, atts);
+    const baseAtts = defaultAttsForWeapon(weapon);
+    const baseWeapon = defaultAppliedWeapon(weapon);
+    const curWeapon = applyAttachments(weapon, atts);
+    const base = { ...baseWeapon, _projectileModel: projectileModelFor(baseWeapon, baseAtts) };
+    const cur = { ...curWeapon, _projectileModel: projectileModelFor(curWeapon, atts) };
     const selectedAttachments = selectedAttachmentRecords(weapon, atts);
     const chips = [];
     metrics.forEach(m => {
