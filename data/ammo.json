@@ -46,7 +46,6 @@
       "id": "long_range",
       "name": "Long-Range",
       "hsMult": null,
-      "noEffect": true,
       "collateralMult": {
         "Assault Rifle": 0.75,
         "Carbine": 0.75,
