@@ -1280,6 +1280,16 @@ function applyViewLayers(view) {
   const saved = state.recoil.savedLayers[view];
   if (saved) state.recoil.layers = { ...saved };
 }
+/**
+ * The soldier PNG is only fetched once the target view is actually shown, so
+ * every route into that view has to ask for it: the tab, and a link or popout
+ * that lands there directly without ever passing through setRecoilView().
+ */
+function requestTargetImage() {
+  whenTargetImageReady().then(() => {
+    if (state.recoil.view === 'target') renderRecoil();
+  });
+}
 function setRecoilView(view) {
   const next = view === 'target' ? 'target' : 'angle';
   if (state.recoil.view === next) return;
@@ -1298,11 +1308,7 @@ function setRecoilView(view) {
     el.classList.add('rc-view-swap');
   });
   renderRecoil();
-  if (next === 'target') {
-    whenTargetImageReady().then(() => {
-      if (state.recoil.view === 'target') renderRecoil();
-    });
-  }
+  if (next === 'target') requestTargetImage();
 }
 /**
  * Ctrl+click mirrors what the player actually does: point somewhere and fire a
@@ -2962,3 +2968,4 @@ renderSidebar();
 renderStats();
 _restoringUrl = false;
 initMobileTooltips();
+if (state.recoil.view === 'target') requestTargetImage();

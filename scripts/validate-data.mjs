@@ -27,7 +27,9 @@ const SUPPORTED_CLASSES = new Set([
   'Sidearm',
 ]);
 const INTENTIONALLY_UNSUPPORTED_CLASSES = new Set();
-const DAMAGE_POINT_SOURCES = new Set(['EA', 'Sym', 'in-game']);
+// The live baseline declares which evidence a damage breakpoint may cite, so the
+// policy file governs the data rather than restating a constant kept beside it.
+const DAMAGE_POINT_SOURCES = new Set(liveBaseline.dataPolicy?.allowedDamagePointSources ?? []);
 const MAX_RELOAD_SPEED_TIER = 2;
 
 const errors = [];
@@ -84,7 +86,7 @@ for (const weapon of weapons) {
         fail(`${weapon.id}: dmg breakpoint must contain numeric r and d`);
       }
       if (!DAMAGE_POINT_SOURCES.has(point.source)) {
-        fail(`${weapon.id}: dmg breakpoint source must be EA, Sym, or in-game`);
+        fail(`${weapon.id}: dmg breakpoint source must be one of ${[...DAMAGE_POINT_SOURCES].join(', ')}`);
       }
     }
   }
@@ -211,10 +213,8 @@ if (pp19) {
 if (liveBaseline.dataPolicy?.damageStatus !== 'provisional') {
   fail('live baseline must declare the current provisional damage policy');
 }
-const allowedDamagePointSources = new Set(liveBaseline.dataPolicy?.allowedDamagePointSources ?? []);
-if (allowedDamagePointSources.size === 0
-    || [...allowedDamagePointSources].some(source => !DAMAGE_POINT_SOURCES.has(source))) {
-  fail('live baseline has an invalid damage point source policy');
+if (DAMAGE_POINT_SOURCES.size === 0) {
+  fail('live baseline must list the damage point sources a breakpoint may cite');
 }
 // Sweet spots are read from the current curve, never pinned to a distance.
 // Assert the required curve shape so a future data refresh can move the window.
