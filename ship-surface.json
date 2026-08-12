@@ -20,13 +20,11 @@
     "v1.2.3.0/",
     "v1.3.1.0/"
   ],
-  "developmentOnly": [
-    "preview_spread.html"
-  ],
+  "developmentOnly": [],
   "notes": {
-    "purpose": "Keep the live runtime boundary separate from migration research and other repository-only material.",
+    "purpose": "Define the files required by the current live site separately from repository-only reference material.",
     "update": "When the live entrypoint, its modules, assets, or fetched data change, update runtimePaths/runtimeData and run node scripts/validate-ship-surface.mjs.",
     "archives": "publishedArchives are frozen release links from index.html; they are published but are not dependencies of the current runtime surface.",
-    "previews": "The root preview pages are development experiments, not loaded or linked by the live entrypoint, so they are recorded as developmentOnly rather than shipped runtime paths."
+    "referenceData": "Reference audits and their ad-hoc validators are intentionally excluded from the live runtime and normal validation suite."
   }
 }

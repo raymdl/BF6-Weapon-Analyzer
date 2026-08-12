@@ -3,12 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { damageAtRange } from '../sim/damage.js';
 import { deriveSweetSpot, SWEET_SPOT_DAMAGE } from './sweet-spot.mjs';
-import {
-  TUBE_FED_SHOTGUNS,
-  loadReloadExceptionRegister,
-  modalValue,
-  reloadRowMatches,
-} from './capture-corpus-lib.mjs';
+import { loadReloadExceptionRegister } from './reload-exceptions.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataRoot = process.env.DATA_ROOT ? resolve(process.env.DATA_ROOT) : root;
@@ -19,8 +14,7 @@ const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const recoilDecay = readJson('data/recoil_decay.json');
 const balance = readJson('data/balance_tables.json');
-const pp19Provenance = readJson('data/provenance/pp19-1.3.3.0.json');
-const damageProvenance = readJson('data/provenance/damage-1.3.3.0.json');
+const liveBaseline = readJson('data/provenance/live-baseline.json');
 
 const SUPPORTED_CLASSES = new Set([
   'Assault Rifle',
@@ -177,27 +171,19 @@ if (/Math\.abs\(DEPLOY_TIME_TIERS/.test(resolverSource) || /baseDeployIdx/.test(
 }
 
 const pp19 = weapons.find(weapon => weapon.id === 'pp19');
-if (weapons.length !== 62) fail(`release 1.3.3.0 requires 62 weapon records; found ${weapons.length}`);
-if (supportedWeaponIds.size !== 62) fail(`release 1.3.3.0 requires 62 supported weapons; found ${supportedWeaponIds.size}`);
-if (!pp19) fail('pp19: required release 1.3.3.0 weapon record is missing');
+if (liveBaseline.status !== 'current-live' || !Number.isInteger(liveBaseline.weaponCount)) {
+  fail('data/provenance/live-baseline.json must identify the current live baseline and weapon count');
+}
+if (weapons.length !== liveBaseline.weaponCount) {
+  fail(`live baseline declares ${liveBaseline.weaponCount} weapon records; found ${weapons.length}`);
+}
+if (supportedWeaponIds.size !== weapons.length) {
+  fail(`every current weapon must use a supported class; found ${supportedWeaponIds.size}/${weapons.length}`);
+}
+if (!pp19) fail('pp19: required current weapon record is missing');
 if (pp19) {
   if (pp19.cls !== 'SMG') fail('pp19: expected SMG class');
   if (pp19.damageStatus !== 'provisional') fail('pp19: damageStatus must remain provisional until in-game validation');
-  if (pp19Provenance.release !== '1.3.3.0' || pp19Provenance.weaponId !== 'pp19') {
-    fail('pp19: provenance record does not identify release 1.3.3.0 / weapon pp19');
-  }
-  if (pp19Provenance.capture?.status !== 'not-recorded') {
-    fail('pp19: capture status changed without a reviewed in-game evidence package');
-  }
-  if (pp19Provenance.damage?.status !== 'provisional-community-tested') {
-    fail('pp19: damage provenance must remain provisional-community-tested');
-  }
-  for (const point of pp19Provenance.damage?.breakpoints ?? []) {
-    if (!DAMAGE_POINT_SOURCES.has(point.source)) fail('pp19: damage provenance breakpoint source is missing or invalid');
-  }
-  if (JSON.stringify(pp19.dmg) !== JSON.stringify(pp19Provenance.damage?.breakpoints)) {
-    fail('pp19: live damage curve must match its provisional provenance breakpoints');
-  }
   const requiredCrossFileEntries = [
     ['WEAPON_ATTS', attachments.WEAPON_ATTS?.pp19],
     ['WEAPON_ERGO', attachments.WEAPON_ERGO?.pp19],
@@ -222,13 +208,16 @@ if (pp19) {
   }
 }
 
-if (damageProvenance.release !== '1.3.3.0' || damageProvenance.baseDamage?.status !== 'provisional-community-tested') {
-  fail('damage provenance must remain pinned to 1.3.3.0 with provisional base-damage status');
+if (liveBaseline.dataPolicy?.damageStatus !== 'provisional') {
+  fail('live baseline must declare the current provisional damage policy');
 }
-// Sweet spots are read off the Sym curve, never pinned to a distance. EA's 1.3.3.0 patch notes
-// described the current windows, but that was a point-in-time post and EA have said sweet spots
-// may move again; pinning those numbers would make a stale post outrank a future import. Assert
-// the shape a bolt-action curve must have instead, so new distances flow through untouched.
+const allowedDamagePointSources = new Set(liveBaseline.dataPolicy?.allowedDamagePointSources ?? []);
+if (allowedDamagePointSources.size === 0
+    || [...allowedDamagePointSources].some(source => !DAMAGE_POINT_SOURCES.has(source))) {
+  fail('live baseline has an invalid damage point source policy');
+}
+// Sweet spots are read from the current curve, never pinned to a distance.
+// Assert the required curve shape so a future data refresh can move the window.
 for (const weapon of weapons.filter(item => item.cls === 'Sniper Rifle')) {
   const { rangeM } = deriveSweetSpot(weapon);
   if (rangeM === null) continue;
@@ -391,7 +380,7 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
         && (!Number.isInteger(magazine.reloadSpeedTier)
           || magazine.reloadSpeedTier < 0
           || magazine.reloadSpeedTier > MAX_RELOAD_SPEED_TIER)) {
-      fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
+      fail(`${weaponId}/${magazineId}: reloadSpeedTier must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}]`);
     }
     if (Object.hasOwn(magazine, 'tacRldOverrideMs')
         && (!Number.isInteger(magazine.tacRldOverrideMs) || magazine.tacRldOverrideMs <= 0)) {
@@ -406,7 +395,7 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
         if (!Number.isInteger(bug.expectedWhenFixed)
             || bug.expectedWhenFixed < 0
             || bug.expectedWhenFixed > MAX_RELOAD_SPEED_TIER) {
-          fail(`${weaponId}/${magazineId}: suspectedGameBug.expectedWhenFixed must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}] per migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md §6 (Phase 4)`);
+          fail(`${weaponId}/${magazineId}: suspectedGameBug.expectedWhenFixed must be a non-negative integer in [0, ${MAX_RELOAD_SPEED_TIER}]`);
         }
         for (const field of ['expectedReloadSeconds', 'observedReloadSeconds']) {
           if (!Number.isFinite(bug[field]) || bug[field] <= 0) {
@@ -474,46 +463,6 @@ for (const [weaponId, weaponErgo] of Object.entries(attachments.WEAPON_ERGO ?? {
     fail(`${weaponId}: legacy magCatchRld must be absent after the reload cutover`);
   }
 }
-
-function validateScreenshotReloads() {
-  let review;
-  try {
-    review = JSON.parse(readFileSync(resolve(root, 'migration/1.3.3.0/attachment-audit/attachment-screenshot-review.json'), 'utf8'));
-  } catch (error) {
-    fail(`reload screenshot fixture could not be read: ${error.message}`);
-    return;
-  }
-  if (!reloadExceptions || !Array.isArray(review.records)) return;
-  const rowsByWeapon = new Map();
-  for (const row of review.records) {
-    const rows = rowsByWeapon.get(row.weaponName) ?? [];
-    rows.push(row);
-    rowsByWeapon.set(row.weaponName, rows);
-  }
-  for (const [weaponName, rows] of rowsByWeapon) {
-    if (TUBE_FED_SHOTGUNS.has(weaponName)) continue;
-    const base = modalValue(rows, 'reloadTimeSeconds');
-    if (base == null) {
-      fail(`${weaponName}: reload screenshot rows have no scalar base`);
-      continue;
-    }
-    for (const row of rows) {
-      const observed = row.stats?.reloadTimeSeconds;
-      if (observed == null || observed === 0) continue;
-      const displayKey = `${weaponName}/${row.attachmentName}`;
-      const screenshotException = reloadExceptions.screenshotExceptions.get(displayKey);
-      if (screenshotException && Math.abs(observed - screenshotException.observed) <= 0.005) continue;
-      if (!reloadRowMatches(row, base, {
-        reloadSpeedLadder: balance.RELOAD_SPEED_LADDER,
-        animationOverrides: reloadExceptions.animationOverrides,
-      })) {
-        fail(`${displayKey}: screenshot reload ${observed}s is an unregistered model miss for base ${base}s`);
-      }
-    }
-  }
-}
-
-validateScreenshotReloads();
 
 for (const [weaponId, ammoData] of Object.entries(ammo.WEAPON_AMMO)) {
   if (!weaponIds.has(weaponId)) fail(`WEAPON_AMMO references unknown weapon ${weaponId}`);

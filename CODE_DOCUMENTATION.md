@@ -1,1089 +1,133 @@
-# BF6 Weapon Analyzer — Code Documentation
+# Code Documentation
 
-This document describes the current structure and behavior of the BF6 Weapon Analyzer project.
-`index.html` is the primary app. `preview_spread.html` is a companion tool used to test
-recoil/spread visualization ideas.
+## Architecture
 
----
+The analyzer is a static ES-module application:
 
-## High-Level Architecture
-
-The site is a self-contained set of static files served via a local Python HTTP server
-(`python -m http.server 5174`) and deployed on GitHub Pages. There is no build step, but pages
-use `<script type="module">` so they require HTTP — opening the HTML files directly as `file://`
-URLs will fail.
-
-```
-BF6 Weapon Analyzer/
-  index.html                ← Primary weapon analyzer app
-  preview_spread.html       ← Recoil/spread chart experiment tool
-
-  sitemap.xml               ← Search-engine sitemap (homepage + frozen archives)
-
-  ui/
-    app.js                  ← Primary app state, rendering, chart, and recoil UI logic
-    capture.js              ← Renders the current view to a PNG for "Copy Image"
-
-  vendor/
-    chart.umd.min.js        ← Local Chart.js bundle used by index.html
-
-  assets/
-    favicon.svg             ← Site favicon
-    og-image.png            ← 1200x630 social/link-preview card
-    soldier-target.png      ← Soldier Target artwork
-
-  sim/
-    core.js                 ← Shared simulation math (RNG, recoil, spread)
-    damage.js               ← Damage falloff, hit zones, bullets-to-kill
-    ballistics.js           ← Flight time, RK4 trajectory, zero-relative drop
-    applyAttachments.js     ← Attachment effect application + derived stats
-    loadout.js              ← Shared loadout defaults, point totals, and sidebar helpers
-    attachments.js          ← Canonical ordered attachment slot definitions
-    target.js               ← Soldier Target geometry, zones, and impact summary
-    share-state.js          ← URL-hash loadout share codec
-
-  data/
-    weapons.json            ← All 61 weapon base stats (one object per weapon)
-    attachments.json        ← Attachment catalogs + per-weapon availability
-    ammo.json               ← Ammo types + per-weapon availability
-    ballistics.json         ← Per-weapon gravity/drag inputs for the projectile model
-    recoil_decay.json       ← Per-weapon ADS recoil decay table
-    balance_tables.json     ← Tier tables (ADS speed, sprint recovery, spread, etc.)
-    provenance/             ← Per-release notes on where promoted values came from
-
-  scripts/
-    validate-data.mjs       ← Cross-file data validation used locally and by CI
-    validate-ship-surface.mjs ← Checks the declared runtime boundary still matches index.html
-
-  schemas/                  ← JSON schemas for the audit and reload-exception datasets
-  generated-data/sym/       ← Sym.gg import artifacts (mapping, normalized, diff, reconciliation)
-  migration/1.3.3.0/        ← Release plan, derived attachment model, audit inventories
-
-  v1.2.3.0/                 ← Frozen archive of the v1.2.3.0 site (do not edit)
-  v1.3.1.0/                 ← Frozen archive of the v1.3.1.0 site (do not edit)
-
-  ship-surface.json         ← Declares the live runtime boundary (paths + fetched data)
-  README.md                 ← Project overview, status, checks, known gaps
-  CODE_DOCUMENTATION.md     ← Architecture and behavior reference
-  MAINTENANCE.md            ← Season/patch update checklist (data edits)
-  docs/DATA_FLOW.md         ← Where each number comes from, and its promotion gates
-  .gitignore
+```text
+index.html
+  -> ui/app.js
+       -> sim/* calculation modules
+       -> ui/capture.js
+       -> data/*.json (JSON module imports)
+  -> vendor/chart.umd.min.js
 ```
 
-Local-only helper files are intentionally ignored and should not be committed:
-`serve.bat`, `Open - *.url`, `.claude/`, `memory/`, `CLAUDE.md`, `TODO.md`, `outputs/`, and the
-`Weapon Attachments/` screenshot corpus.
-
-### Data Flow
-
-```mermaid
-flowchart LR
-    subgraph DATA["data/"]
-        WJ["weapons.json"]
-        AJ["attachments.json"]
-        MJ["ammo.json"]
-        RJ["recoil_decay.json"]
-        BJ["balance_tables.json"]
-    end
-    subgraph SIM["sim/ — shared by both pages"]
-        AA["applyAttachments.js<br/>raw weapon + atts → derived weapon"]
-        CO["core.js<br/>recoil + spread math"]
-        LO["loadout.js + attachments.js<br/>defaults / points / sidebar"]
-    end
-    subgraph UI["ui/app.js (index.html)"]
-        OV["Overview stat cards"]
-        CH["DMG / BTK / TTK chart"]
-        BT["BTK / TTK table"]
-        RC["Recoil & spread canvas"]
-        AS["Attachment sidebar"]
-    end
-    DATA -->|"setAttachmentContext()"| AA
-    DATA -->|"setSimContext()"| CO
-    DATA --> LO
-    AA -->|"derived weapon"| OV
-    AA --> CH
-    AA --> BT
-    AA --> RC
-    CO -->|"genRecoilPts() / simulateSpread()"| RC
-    CO -->|"shotIntervalAfter() → TTK"| CH
-    LO --> AS
-```
-
-1. Page loads → `<script type="module">` fetches all six JSON files via `Promise.all`.
-   Each fetch goes through a `fetchJson` helper that rejects on non-OK responses; any
-   failure renders a full-screen "Failed to load weapon data" message (mirroring the
-   Chart.js load-failure fallback in `index.html`).
-2. Data files are fetched without cache-busting query strings — GitHub Pages serves
-   proper `ETag`/`Last-Modified` headers, so browsers revalidate and pick up new data
-   automatically. The header's "Updated …" date is static site content in `index.html`;
-   it is not derived from response or repository metadata at runtime.
-3. Data is pushed into `sim/core.js` via `setSimContext()` and `sim/applyAttachments.js`
-   via `setAttachmentContext()`.
-4. `sim/loadout.js` provides shared attachment defaults, point totals, assumed-stat
-   detection, and sidebar rendering helpers.
-5. User selects a weapon and attachments → `applyAttachments(rawWeapon, selectedAtts)`
-   returns a derived weapon object.
-6. All renderers (overview cards, chart, BTK table, recoil canvas) consume the derived object.
-
-Both pages share the same `sim/` modules and the same `data/` JSON files. **One data edit applies to all pages.**
-
----
-
-## Module Reference: `sim/`
-
-### `sim/core.js`
-
-Pure simulation math. Previously copy-pasted across the page files; now imported by both of them.
-
-**Context setter:**
-
-```js
-setSimContext({
-  aimState,              // 'ads' | 'hip'
-  stanceState,           // 'stand' | 'move'
-  RECOIL_DEC,            // per-weapon recoil decay factor (from recoil_decay.json)
-  RECOIL_DEC_EXP,        // per-weapon decay exponent
-  RECOIL_DEC_TEXP,       // per-weapon decay time exponent
-  compensationFn,        // () => number — page provides current compensation % (0–125)
-  platformRecoilMultFn,  // () => number — 1 for PC, CONSOLE_RECOIL_MULT (0.89) for console
-});
-```
-
-Call `setSimContext` once after JSON loads, then again whenever `aimState`/`stanceState` changes.
-
-**Exports:**
-
-| Export | Description |
-|---|---|
-| `setSimContext(updates)` | Merges updates into the module-level context |
-| `mulberry32(seed)` | Returns a Mulberry32 PRNG closure emitting floats in `[0, 1)` |
-| `whash(str)` | Stable 32-bit string hash (used to seed per-weapon RNG) |
-| `uniformDev(rng, val)` | Uniform sample across the full range `[-val, +val]` |
-| `applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, decOffset)` | Steps recoil toward zero over one inter-shot interval |
-| `recoilGroup(w)` | Returns `recoil.ads` or `recoil.hip` based on current aim state (legacy flat-field fallback) |
-| `baseRecoilGroup(w)` | Always returns the ADS group — the attachment-scaling baseline |
-| `recoilAmount(group)` | Effective amount from a group: `amount × amountMult^amountExp` |
-| `recoilVariation(group)` | Effective variation from a group: `dirVar × dirVarMult^dirVarExp` |
-| `selectedRecoilAmountFor(w)` | Recoil amount for current aim state, with attachment + platform scaling |
-| `selectedRecoilAmountBeforePlatformFor(w)` | Same but without the platform multiplier (used by tooltips) |
-| `selectedRecoilVariationFor(w)` | Recoil variation for current aim state, with attachment scaling |
-| `spreadBounds(w)` | `[min, max]` spread for current aim+stance state |
-| `spreadDynamics(w)` | Spread increase/decay model for current aim state |
-| `selectedSpreadIncFor(w)` | Spread increase per shot for current aim state |
-| `spreadRecoveries(w)` | `{ firing, notFiring }` recovery params (coef/exp/offset) with decay boosts applied |
-| `applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt?)` | Steps spread recovery over a time interval |
-| `simulateSpread(w, shots)` | Returns per-shot pre-fire spread array in degrees |
-| `shotIntervalAfter(w, shotIndex)` | Seconds between shot N and N+1, burst-cadence aware |
-| `isBurstGapAfter(w, shotIndex)` | True when the next interval is a post-burst pause |
-| `genRecoilPts(w, seed, shots)` | Returns deterministic recoil point array `[{x, y}, …]` |
-
-**`genRecoilPts(w, seed = 0, shots = 20)` argument order:** seed before shots.
-
-**Attachment scaling convention:** `selectedRecoilAmountFor` / `selectedRecoilVariationFor`
-expect an *attachment-applied* weapon. They derive the attachment multiplier as
-`w.recoilV / effectiveBase` (resp. `w.recoilVar / effectiveBase`), where the effective base is
-computed from the ADS recoil group (`amount × amountMult^amountExp` /
-`dirVar × dirVarMult^dirVarExp`). This means `applyAttachments` must output **effective**
-values in `recoilV`/`recoilVar` — including any exponent baked into the weapon itself —
-or the baked exponent silently cancels out (this was a real bug for the M16A4, fixed
-June 2026; see the Recoil Variation section below).
-
----
-
-### `sim/applyAttachments.js`
-
-Applies all attachment effects to a raw weapon object. Replaces the separate inline
-`applyAttachments` functions that previously lived in the page files.
-
-**Context setter:**
-
-```js
-setAttachmentContext({
-  MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
-  WEAPON_MAG, WEAPON_ERGO,
-  AMMO,
-  RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
-  BASE_HS_MULT, HP_HS_HIGH,
-  MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-  ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS,
-  SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS, DRAW_TIME_AXIS,
-});
-```
-
-Call once after all JSON data is fetched.
-
-`setAttachmentContext()` also builds per-catalog ID lookup maps. Hot paths in
-`applyAttachments()` resolve selected attachments from those maps instead of
-scanning catalog arrays on every render.
-
-**Exports:**
-
-| Export | Description |
-|---|---|
-| `setAttachmentContext(updates)` | Merges updates into the module-level context |
-| `applyAttachments(w, atts)` | Returns a new weapon object with all attachment effects applied. Does not mutate `w`. |
-| `resolveDrawTime(options)` | Purely resolves the shared draw-time coordinate into Sprint-to-Fire and Deploy table records. Fails closed on incomplete derived data. |
-| `wLabel(w)` | Returns `w._label` if set, otherwise `w.name` |
-
-**`applyAttachments` output — private display fields (`_` prefix):**
-
-| Field | Description |
-|---|---|
-| `_label` | Weapon name + attachment tags joined by ` · ` |
-| `_adsRecoilReductionPct` | ADS recoil reduction % for UI display |
-| `_adsSpreadDecayBoost` | Extra ADS spread decay from muzzle |
-| `_spreadFiringDecCoefMult` | Firing spread-recovery coefficient multiplier from barrel, every aim state (1 = unchanged) |
-| `_spreadFiringDecOffsetMult` | Firing spread-recovery offset multiplier from barrel, every aim state (1 = unchanged) |
-| `_adsRecoilDecayMult` | ADS recoil decay multiplier from muzzle (1 = unchanged) |
-| `_hipSpreadDecayBoost` | Extra hipfire spread decay from light |
-| `_worldSpot`, `_minimapSpot` | Firing exposure distances |
-| `_movingAdsSpreadTierMod` | Total moving ADS accuracy tier shift |
-| `_movingAdsMinSpreadDeg` | Final moving ADS minimum spread in degrees |
-| `_adsTimeTierMod` | Combined grip + barrel ADS tier shift |
-| `_adsTimeMs` | Final ADS time in ms (from balance table, `null` if no mag data) |
-| `_sprintRecoveryMs` | Final sprint-to-fire recovery in ms (from sprint recovery tiers) |
-| `_adsMoveSpeedMult` | Final ADS move speed multiplier |
-| `_deployTimeMs` | Final deploy time in ms (from `DEPLOY_TIME_TIERS`) |
-| `_hipSpreadTierMod` | Total hipfire spread tier shift |
-| `_weaponSway` | Weapon sway delta (muzzle + iron-sight bonus) |
-| `_visualRecoil` | Visual recoil modifier from ergo (negative = reduced, `0` = unchanged) |
-| `_laserVisible` | Whether the selected laser is enemy-visible (`null` when no laser) |
-| `_hsMult` | Final headshot multiplier |
-
-**Combined-slot routing (`laserLightCombined` / `laserGripLightCombined`):**
-
-Some weapons merge multiple physical slots into the Laser dropdown to match their
-in-game UI. Two flags on `WEAPON_ATTS[id]` control this:
-
-| Flag | Weapons | Behavior |
-|---|---|---|
-| `laserLightCombined` | Most sidearms, GRT-BC, SL9 | Light options appear in the Laser dropdown; the Light slot is disabled |
-| `laserGripLightCombined` | VZ.61 | Grip, laser, and light options all appear in the Laser dropdown; Grip slot is disabled |
-
-`applyAttachments` detects which physical category a selected laser-slot ID belongs to
-by checking `GRIPS_BY_ID` and `LIGHTS_BY_ID` maps at runtime, then routes it to the
-correct effect lookup (grip effects, light effects, or laser effects). This means the
-combined-slot routing requires no separate data field beyond the flag — the attachment ID
-itself determines which effect path is used.
-
-**`applyAttachments` output — modified base fields:**
-
-| Field | Modification |
-|---|---|
-| `recoilV` | ADS recoil amount tier formula: `w.recoilV × RECOIL_MULT[id]^(sum of adsRecoilTierMod)` |
-| `recoilVar` | ADS variation tier ladder: `dirVar × dirVarMult^(dirVarExp + sum of adsRecoilVariationTierMod)` — always the *effective* value, including the weapon's baked-in exponent |
-| `recoilIncAds` | Scaled by barrel `spreadIncMult` (ADS spread-per-shot) |
-| `spreadDyn` | Per-state `inc` scaled by barrel `spreadIncMult`; carries the hipfire spread-per-shot |
-| `bulletVel` | Scaled by barrel `velMult` |
-| `spread` | Hip spread min shifted by tier if `hipSpreadTierMod ≠ 0` |
-| `mag` | Replaced by selected magazine count |
-| `tacRld` | Replaced by magazine reload or Mag Catch reload |
-| `deployT` | Derived display field rendered from the shared draw-time axis; raw `weapons.json` records no longer store it |
-| `fireMode` | Overridden to `'auto'` (`setsFireModeAuto`) or `'burst'` (`setsFireModeBurst`) by ergos |
-| `burstRounds`, `burstRpm`, `burstBurstsPerMinute` | Overridden by burst ergos; cleared when `setsFireModeAuto` is active |
-| `rpm` | Replaced by `burstRpm` while a burst fire mode is active |
-
----
-
-### `sim/attachments.js`
-
-Single source of truth for attachment slot ordering and UI metadata. Both pages import
-`ATTACHMENT_SLOT_KEYS` and iterate it to build their attachment sidebars. **Adding a new slot
-type = one entry here, all pages pick it up.**
-
-```js
-export const ATTACHMENT_SLOT_KEYS = [
-  { key: 'muzzle', label: 'Muzzle', dataKey: 'MUZZLES', noWeaponText: 'None' },
-  { key: 'barrel', label: 'Barrel', dataKey: 'BARRELS', noWeaponText: 'Basic Barrel', isBarrel: true },
-  { key: 'laser',  label: 'Laser',  dataKey: 'LASERS',  noWeaponText: 'None' },
-  { key: 'light',  label: 'Light',  dataKey: 'LIGHTS',  noWeaponText: 'None' },
-  { key: 'sight',  label: 'Sight',  dataKey: 'SIGHTS',  noWeaponText: 'Iron Sights' },
-  { key: 'grip',   label: 'Grip',   dataKey: 'GRIPS',   noWeaponText: 'None' },
-];
-```
-
-`dataKey` is resolved against each page's own attachment data source. `isBarrel: true`
-marks the slot that always has at least one option (no 'None' choice). Slots are always
-rendered — when unavailable they appear disabled/greyed rather than hidden.
-
-Ammo, Mag, and Ergo are not in this list; they are rendered separately by
-`renderAttachmentSection` from their per-weapon maps (`WEAPON_AMMO`, `WEAPON_MAG`,
-`WEAPON_ERGO`).
-
----
-
-### `sim/loadout.js`
-
-Shared loadout UI and accounting helpers used by both pages. The index page remains
-the golden source for behavior and styling; the preview page calls the same helpers with
-its own DOM class names.
-
-**Exports:**
-
-| Export | Description |
-|---|---|
-| `blankAtts()` | Returns a fresh attachment-selection object with neutral defaults |
-| `resetAttsForWeapon(atts, weapon, data)` | Resets selections in place to the weapon's canonical defaults (default barrel/ammo/mag) |
-| `getAttPts(a)` | Point cost of one attachment object (`pts ?? 0`) |
-| `computeAttPts(atts, weapon, data)` | Sums attachment points across sight, muzzle, barrel, grip, laser, light, ammo, mag, and ergo (combined-slot aware) |
-| `hasSelectedAssumedAtt(atts, data)` | Detects selected attachments with assumed attachment or field-level modifier data |
-| `attDisplayName(a)` | Resolves an attachment object to display text, including the `*` assumed-data marker |
-| `updateAttTotal(containerId, atts, weapon, data)` | Refreshes the point-total readout, flagging totals over 100 |
-| `renderAttachmentSection(config)` | Builds the full attachment sidebar (slot dropdowns + ammo/mag/ergo rows) |
-
-The module caches attachment catalog lookup maps with a `WeakMap` keyed by the
-data bundle passed by each page.
-
----
-
-### `sim/damage.js`
-
-Damage resolution and lethality. Every page resolves hit zones through this module, so a
-zone rule changes in one place.
-
-| Export | Description |
-|---|---|
-| `resolveHitMultipliers(weaponId, ammoType, tables)` | Head/chest/limb multipliers for a weapon+ammo pair, running the `auto`-class ammo-tier headshot ladder and the `LIMB_CLASS` ladder |
-| `damageAtRange(weapon, range)` | Interpolates the weapon's `dmg` dropoff array |
-| `damagePerShotAtRange(weapon, range)` | As above, multiplied out for multi-pellet weapons |
-| `zoneMultiplierForWeapon(weapon, zone)` | Multiplier for a single named zone |
-| `bulletsToKillWithHits(damagePerShot, opts)` | BTK for a specified mix of hit zones |
-| `bulletsToKillAtRange(weapon, range, opts)` | BTK at a range, the form the charts and kill table use |
-
-Sniper sweet spots are read off the damage curve rather than stored, so a data refresh that
-moves a window flows through without a code change.
-
----
-
-### `sim/ballistics.js`
-
-Projectile flight model — see [Projectile Ballistics](#projectile-ballistics-main-app) for the
-formulas and their reference cases.
-
-| Export | Description |
-|---|---|
-| `isProjectileModel(model)` | Whether a build has both a source-backed entry and a usable `bulletVel` |
-| `flightTimeAtDistance(model, distanceM)` | Level-flight arrival time via the measured closed form |
-| `trajectoryAtDistance(model, distanceM, launchAngleRadians)` | RK4-integrated position at a distance |
-| `zeroRelativeVerticalOffset(model, distanceM, zeroDistanceM)` | Drop relative to the selected zero, or to the bore line when no zero applies |
-
-A build that fails `isProjectileModel` reports the feature as unavailable rather than falling
-back to a plausible-looking number.
-
----
-
-### `sim/target.js`
-
-Soldier Target geometry and hit accounting: zone polygons, aim points, marker sizing, and the
-per-shot impact summary. Exports the target constants (`TARGET_HEIGHT_CM` 180,
-`TARGET_VIEW_HEIGHT`, `TARGET_AIM_Y`, `TARGET_ZONE_COLORS`, `TARGET_ZONE_ORDER`) alongside
-`targetZoneAt`, `targetFrame`, `targetAimOffset`, `targetMarkerRadius`,
-`summarizeTargetImpacts(weapon, range, shotZones, health)`, `drawTarget`, and
-`whenTargetImageReady` for callers that must wait on `assets/soldier-target.png`.
-
----
-
-### `sim/share-state.js`
-
-The URL-hash loadout share codec, as a single `createShareCodec({ ...catalogs, defaultAttsForWeapon })`
-factory so the browser path and the focused tests exercise one implementation. Attachments encode
-as catalog **indices**, which is why the catalog arrays are append-only — see the share-link note in
-`MAINTENANCE.md`. The decoder still accepts the original dash-joined ID format, so older links keep
-resolving.
-
----
-
-### `ui/capture.js`
-
-Renders the current view to a PNG for the "Copy Image" share action. No library: the whole page
-styles from one inline `<style>` block and every asset is same-origin or a data URI, so the DOM is
-serialised into an SVG `<foreignObject>` and drawn by the browser's own renderer, preserving
-`backdrop-filter`, masks, and grid exactly.
-
-| Export | Description |
-|---|---|
-| `captureView({ scale })` | Renders header + main column at full scroll height to a PNG `Blob` |
-| `captureFilename(labels)` | Builds the download filename from the loadout labels |
-
-Three non-obvious constraints are documented in the module header and are easy to break: canvas
-content does not survive `cloneNode` (each live canvas is swapped for an `<img>` of its
-`toDataURL()`), the capture root is a `<div>` so `body { … }` rules never match it (computed body
-typography is mirrored onto the root), and media queries inside a `<foreignObject>` resolve against
-the SVG width — which is what lets a phone emit the desktop layout.
-
----
-
-## Data Reference: `data/`
-
-### `data/weapons.json`
-
-Array of 61 weapon objects. The `cls` field drives the class filter buttons in the UI.
-Current classes: `Assault Rifle` (10), `LMG` (10), `SMG` (9), `Carbine` (8), `Sidearm` (7),
-`DMR` (5), `Sniper Rifle` (5), `Shotgun` (4). Sidearms display under a `Pistol` button in
-the class filter (`CLASS_SHORT` maps `"Sidearm"` → `"Pistol"`).
-
-**Required fields per weapon object:**
-
-| Field | Type | Description |
-|---|---|---|
-| `id` | string | Stable internal key used across all data files |
-| `name` | string | Display name |
-| `cls` | string | Weapon class (drives filter buttons) |
-| `cal` | string | Caliber display text |
-| `rpm` | number \| null | Fire rate; `null` for bolt/pump weapons without meaningful auto-TTK |
-| `mag` | number | Base magazine size |
-| `tacRld` | number | Tactical reload in seconds |
-| `emptyRld` | number \| null | Empty reload in seconds; `null` for revolvers |
-| `bulletVel` | number | Muzzle velocity in m/s |
-| `recoilV` | number | **Effective** ADS recoil per shot (= `ADSRecoilAmount × ADSRecoilAmountMultiplier^ADSRecoilAmountMultiplierExponent`) |
-| `recoilDir` | number | Recoil direction angle from vertical (degrees) |
-| `recoilVar` | number | **Raw** ADS recoil direction variation (= `ADSRecoilDirectionVariation`); the effective value is derived from the `recoil.ads` group at runtime |
-| `recoilIncAds` | number | ADS spread increase per shot |
-| `spreadMax` | number | Fallback maximum spread |
-| `adsTime` | number | Estimated ADS time in ms (fallback; balance table tiers take precedence) |
-| `fireMode` | string | `auto`, `semi`, `burst`, `bolt`, or `pump` |
-| `burstRounds` | number | *(burst weapons only)* Rounds per burst trigger pull |
-| `burstBurstsPerMinute` | number | *(burst weapons only)* Bursts per minute; used by recoil sim for inter-burst timing |
-
-**Optional but important fields:**
-
-| Field | Description |
-|---|---|
-| `deployT` | Legacy transition evidence only; omitted from live `weapons.json` after the draw-time cutover |
-| `pellets` | Shotgun pellet count |
-| `dmg` | Stepped damage breakpoints as `[{r, d}, ...]` |
-| `recoil.ads` / `recoil.hip` | Full formula inputs per aim state (maps to sym.gg `ADSRecoil*` / `HIPRecoil*`) |
-| `spread.adsStand`, `.adsMove`, `.hipStand`, `.hipMove` | `[min, max]` spread in degrees |
-| `spreadDyn.ads` / `spreadDyn.hip` | Spread increase/decay model per aim state (sym.gg `ADSBaseSpread*` / `HIPBaseSpread*`) |
-
-**Recoil group fields** (`recoil.ads` / `recoil.hip`): `dir`, `amount`, `amountMult`,
-`amountExp`, `dirVar`, `dirVarMult`, `dirVarExp`, `decFactor`, `decExp`, `decTimeExp`,
-`decOffset`. The `*Mult`/`*Exp` pairs implement the in-game tier ladders (see the
-Recoil Variation section). Every weapon currently has a `recoil.ads` group.
-
----
-
-### `data/attachments.json`
-
-Keys: `SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`, `ERGOS`,
-`WEAPON_ATTS`, `WEAPON_ERGO`, `WEAPON_MAG`.
-
-**Attachment effect fields** (full reference in `MAINTENANCE.md`):
-
-| Field | Neutral | Description |
-|---|---|---|
-| `adsRecoilTierMod` | `0` | Shifts ADS recoil amount tier |
-| `adsRecoilVariationTierMod` | `0` | Shifts ADS recoil variation tier (uses per-weapon `dirVarMult`) |
-| `adsRecoilDecayMult` | `1` | Multiplies ADS recoil decay factor (muzzle) |
-| `hipSpreadTierMod` | `0` | Shifts hipfire min spread tier |
-| `spreadIncMult` | `1` | Multiplies spread per shot, ADS and hipfire alike |
-| `adsSpreadDecayBoost` | `0` | Extra ADS spread decay coefficient |
-| `spreadFiringDecCoefMult` | `1` | Multiplies the firing spread-recovery coefficient, every aim state |
-| `spreadFiringDecOffsetMult` | `1` | Multiplies the firing spread-recovery offset, every aim state |
-| `movingAdsSpreadTierMod` | `0` | Shifts moving ADS min spread tier |
-| `adsTimeTierMod` | `0` | Shifts ADS speed tier |
-| `adsMoveSpeedTierShift` | `0` | Shifts ADS move speed tier |
-| `velMult` | `1` | Multiplies bullet velocity |
-| `sway` | `0` | Adds to weapon sway |
-| `worldSpot` | `54` | World spotting distance override (muzzle only) |
-| `minimapSpot` | `150` | Minimap spotting distance override (muzzle only) |
-
-**Per-weapon maps:**
-
-- `WEAPON_ATTS[id]` — allowed muzzle/barrel/laser/light/grip IDs, plus `barrelDef` and
-  the combined-slot flags. An explicit empty array (e.g. USG-90 `grip: []`) means the
-  weapon deliberately takes nothing in that slot; an *absent* key fails validation.
-- `WEAPON_MAG[id]` — magazine variants with tier shift overrides, plus 0-based base tier
-  indices (`defAds`, `defSpr`, `defAms`, each bounds-checked by `validate-data.mjs`),
-  `sprintRecoveryTierTable`, and the required shared-axis fields
-  `drawTimeTier`, `drawTimeGroup`, and `drawTimeOffset`
-- `WEAPON_ERGO[id]` — ergonomics availability (`avail`) and Mag Catch reload times
-  (`magCatchRld.reg` / `.fast`)
-
----
-
-### `data/ammo.json`
-
-Keys: `AMMO` (catalog array), `WEAPON_AMMO` (per-weapon availability + point costs +
-default via `def`).
-
-`AMMO` entries use `hsMult: null` to inherit the weapon's default, `hsMult: 'hp'` for the
-hollow-point behavior (1.5× or 1.75× depending on `HP_HS_HIGH`), or a numeric override.
-Ammo can also carry `adsRecoilTierMod` and `adsMoveSpeedTierShift`.
-
----
-
-### `data/recoil_decay.json`
-
-Three maps keyed by weapon ID (legacy fallbacks — per-weapon `recoil.ads` group values
-take precedence when present):
-
-| Map | Description |
-|---|---|
-| `RECOIL_DEC` | Decay factor (`ADSRecoilDecreaseFactor`) |
-| `RECOIL_DEC_TEXP` | Decay time exponent (`ADSRecoilDecreaseTimeExponent`) |
-| `RECOIL_DEC_EXP` | Decay exponent override when ≠ 1 (bolt-actions and some shotguns use 0.6) |
-
-Decay formula (per 1/60 s frame, applied independently to each axis):
-
-```
-Δr = (|r|^decExp + decOffset) × decFactor × dt × t^decTimeExp
-```
-
-where `t` is time elapsed since the shot. Implemented in `sim/core.js → applyRecoilDecay`.
-
----
-
-### `data/balance_tables.json`
-
-Tier lookup tables used by `applyAttachments`:
-
-| Key | Description |
-|---|---|
-| `ADS_SPD_TIERS` | ADS time in ms per tier |
-| `SPRINT_REC_TIERS` | Legacy sprint-to-fire recovery table (fallback) |
-| `PRIMARY_SPRINT_REC_TIERS` | Sprint-to-fire recovery in ms for primary weapons |
-| `SIDEARM_SPRINT_REC_TIERS` | Sprint-to-fire recovery in ms for sidearms |
-| `DEPLOY_TIME_TIERS` | Deploy time in ms per converted shared-axis coordinate |
-| `DRAW_TIME_AXIS` | Named coordinate origins, table conversion formulas, approved offsets, exact weapon groups, and the ergonomics sprint-only exception |
-| `ADS_MOVE_TIERS` | ADS move speed multiplier per tier |
-| `MOVING_ACC_TIERS` | Moving ADS min spread in degrees per tier |
-| `DEFAULT_MOV_TIER` | Default moving-ADS tier index |
-| `RECOIL_MULT` | Per-weapon ADS recoil amount tier multiplier |
-| `HIP_SPREAD_TIERS` | Hip spread values by class and tier |
-| `HIP_SPREAD_BASE_IDX` | Base tier indices for hip spread keys |
-| `HIP_CLS` | Per-weapon hip spread class |
-| `BASE_HS_MULT` | Per-weapon base headshot multiplier (default 1.34) |
-| `HP_HS_HIGH` | Weapon IDs that use 1.75× HP headshot multiplier |
-
-Tier indices are clamped to each table's actual length in `applyAttachments`, so
-resizing a table is safe.
-
----
-
-## Core Data Model
-
-### Weapon Object Lifecycle
-
-```
-data/weapons.json
-       │
-       ▼
-   rawWeapon (W array)
-       │
-       ▼
-applyAttachments(rawWeapon, selectedAtts)   ← reads data from setAttachmentContext
-       │
-       ▼
- derivedWeapon (_label, modified recoilV, mag, tacRld, tier values…)
-       │
-       ├─► renderOverview()
-       ├─► renderChart() / renderBTK()
-       ├─► renderRecoil() → genRecoilPts() / simulateSpread()
-       └─► renderAttachmentStats()
-```
-
-All renderers consume the derived object. The raw weapon is never mutated.
-
-### Damage Model
-
-Damage is **stepped zones**, not interpolated. `getDmg(w, range)` walks forward through the
-`dmg` breakpoints and returns the value of the last breakpoint whose `r ≤ range`.
-
-### BTK / TTK Calculations
-
-```js
-BTK = ceil(100 / dmg)        // unarmored chest shots; pellets multiply dmg for shotguns
-TTK = Σ shotIntervalAfter(w, i) for i in 1..btk-1, in ms   // null when rpm is null
-```
-
-TTK is burst-cadence aware: `shotIntervalAfter` returns the normal inter-shot interval
-within a burst and the longer post-burst pause between bursts, so burst weapons get a
-realistic stepped TTK rather than a naive `(btk-1)/rpm`.
-
-`getBTKWithHits(w, range, headshots, zoneMult)` allocates headshots first, then finishes
-with non-head shots at `zoneMult` (1 = unarmored chest, `w._limbMult` = stomach/arms/legs). Uses
-`w._hsMult` (from `applyAttachments`) with fallback to 1.34. Hit order never matters —
-damage is additive — so "N headshots + rest chest" and "N headshots + rest limbs" are the
-best/worst band edges drawn on the BTK/TTK/damage charts (Update 1.3.3.0 limb multipliers:
-`LIMB_CLASS` / `LIMB_CLASS_MULT` in `data/balance_tables.json`; automatics also use the
-raised `AUTO_HS_MULT` headshot tiers keyed by ammo: standard 1.40, hollow point 1.57,
-synthetic 1.80).
-
-The normal analyzer does not model REDSEC armor. Its `1.00×` chest line is explicitly
-the unarmored Multiplayer case; armor-specific chest multipliers must remain a separate
-future mode rather than being folded into ordinary BTK/TTK.
-
-### Recoil Amount and Variation Tier Ladders
-
-Both ADS recoil stats use the same in-game tier system (confirmed against in-game
-advanced-stat menus with SheetOnMyFace, June 2026):
-
-```
-effective amount    = ADSRecoilAmount × ADSRecoilAmountMultiplier ^ (baked exponent + tier mods)
-effective variation = ADSRecoilDirectionVariation × ADSRecoilDirectionVariationMultiplier
-                      ^ (baked exponent + tier mods)
-```
-
-- The multiplier and baked exponent are **per-weapon** (stored in the `recoil.ads` group
-  as `amountMult`/`amountExp` and `dirVarMult`/`dirVarExp`).
-- Attachments contribute integer tier mods (`adsRecoilTierMod`,
-  `adsRecoilVariationTierMod`). The Linear Comp (in-game "Convertor") and the burst
-  ergos are worth 3 variation tiers each.
-- The M16A4 ships with `dirVarExp: 3` baked in (46.4° raw → 35.8° effective). In-game
-  screenshots confirmed this exponent is **innate to the weapon, not tied to burst
-  mode** — equipping the Full Auto ergo does not remove it.
-- Validated cases: M16A4 base 35.8°, +Convertor 27.6°, ±Full Auto unchanged;
-  M433 base 50.9°, +Convertor 39.5°. All match the model to 0.1°.
-
-Note: `RECOIL_MULT` in `balance_tables.json` (per-weapon, ~0.94 default) is the amount
-ladder multiplier used by `applyAttachments`; the variation ladder uses `dirVarMult`
-from the weapon's recoil group directly.
-
----
-
-## Recoil / Spread Model
-
-### The Model at a Glance
-
-Every simulated shot is the sum of two independent mechanisms: a **recoil path** (where
-the aim point has drifted to) and a **spread circle** (how large the random cone has grown).
-The rendered spray pattern samples one impact per shot inside that shot's spread circle,
-centered on that shot's recoil-path point.
-
-![Spray simulation model: recoil path, spread circles, sampled impacts](docs/img/spray-model.svg)
-
-Per-shot pipeline (each lane advances between shots, then both feed the impact sample):
-
-```mermaid
-flowchart TD
-    START(["shot i fired"]) --> KICK["Recoil kick<br/>angle = recoil dir ± uniform(variation)<br/>aim point += (sin, cos) × amount"]
-    KICK --> COMP["Subtract compensation vector<br/>(recoil control %, along expected dir)"]
-    COMP --> DECAY["Recoil decay toward (0,0) over inter-shot time<br/>Δr = (abs(r)^decExp + decOffset) × decFactor × dt × t^decTimeExp"]
-    START --> SPREAD["Spread: spread += inc<br/>clamped to [min, max]"]
-    SPREAD --> RECOV["Spread recovery over inter-shot time<br/>firing params; post-burst gaps add a not-firing segment"]
-    DECAY --> CENTER["shot i+1 center = decayed aim point"]
-    RECOV --> RADIUS["shot i+1 radius = recovered spread"]
-    CENTER --> SAMPLE["impact = center + random point in circle<br/>r = radius × rng() — uniform over radius (center-weighted)"]
-    RADIUS --> SAMPLE
-```
-
-Both lanes are stepped per shot inside `genRecoilPts()` (recoil lane) and
-`simulateSpread()` (spread lane); the impact sampling happens at render time in
-`drawRecoilFixed()`. The RNG is seeded from the weapon ID (`whash`) so patterns are
-deterministic per weapon until the user rerolls the seed.
-
-### Sources and Provenance
-
-- **sym.gg** — all raw weapon and attachment stats; field naming conventions
-- **Dr. Smiley Henry** — spread decay model reference
-- **TheXclusiveAce** — in-game spray-pattern sanity checks
-- **SORROW** — additional weapon data reference
-- **SheetOnMyFace** — data validation; recoil variation tier-system discovery
-
-Items sourced directly from data: damage breakpoints, RPM, mag, reload timings, bullet velocity,
-recoil formula inputs, spread min/max, spread increase/decay inputs, attachment costs/effects.
-
-Items that are visually calibrated: recoil chart scale defaults, scatter run count,
-spread bubble round schedule defaults (`1, 2, 3, 5, 8, 13, 20`), spread cone rendering shape,
-distance wall panel sizes and human target overlay.
-
-### Recoil Path (`genRecoilPts`)
-
-For each shot:
-1. Select ADS or hipfire recoil inputs based on `aimState`.
-2. Compute per-shot recoil amount, including attachment tier and platform scaling.
-3. Sample direction variation uniformly across the full `[-recoilVar, +recoilVar]` range.
-4. Add the horizontal and vertical delta to the running aim point.
-5. Subtract the compensation vector (recoil control), scaled by the compensation %.
-6. Apply inter-shot recoil decay toward zero before the next shot
-   (`applyRecoilDecay`, using the weapon group's decay parameters and the
-   muzzle's `_adsRecoilDecayMult` when aiming).
-
-### Spread (`simulateSpread`)
-
-- Starts at the stance/aim spread minimum (`spreadBounds`).
-- Adds `spreadInc` per shot.
-- Between shots, applies recovery using `spreadRecoveries(w)` — separate firing and
-  not-firing parameter sets; post-burst gaps split the interval into a firing segment
-  and a not-firing segment.
-- Clamps to `[baseline, spreadMax]` for the current state.
-- Shot positions are sampled **uniform over radius** (not uniform over area):
-  `r = spreadRadius × rng()` — this matches the franchise convention and makes shot
-  distributions visually center-weighted (half the shots land in the inner 25% of the area).
-
-#### Heavy-type barrel spread calibration
-
-`Heavy`, `Heavy Extended`, and `Cryogenic` share one spread model:
-
-| Field | Value | Effect |
-|---|---:|---|
-| `spreadIncMult` | `0.667` | Spread-per-shot (SIPS) cut by one third |
-| `spreadFiringDecCoefMult` | `1.71` | Firing spread-recovery coefficient |
-| `spreadFiringDecOffsetMult` | `0.667` | Firing spread-recovery offset |
-
-All three apply in both aim states and both stances.
-
-The exponent is unchanged. All three fields have to move together. `simulateSpread`
-recovers spread between shots at `firingCoef * delta^firingExp + firingOffset`, so
-the flat offset is a floor the per-shot influx must clear before spread grows at
-all — AK-205 clears its own by 5.9% (`0.239 x 12 rps = 2.868` against an offset of
-`2.7`). Cutting SIPS alone therefore does not scale bloom down, it switches bloom
-off: at the earlier `0.80` fit seven automatics (AK-205, UMG-40, SL-9, PP-19,
-KTS-100, RPK-74M, Vz. 61) sat at minimum spread for a whole magazine, and at a
-literal `0.667` seventeen did. Scaling the offset by the same factor as SIPS keeps
-the weapon above its floor; the coefficient multiplier restores the plateau height,
-since it alone governs where growth and recovery balance once bloom is large.
-
-The calibration set is the per-weapon *"spread per shot, with and w/o hbar"* graphs
-published in the Sym Discord (2026-08-02), covering 28 distinct automatics across
-514–947 RPM. Graph titles are Sym codenames; they resolve to site IDs through the
-`siteId` field in `generated-data/sym/1.3.3.0/normalized.json` rather than by name
-resemblance — `mg4k` is the M123K, `g3a4` the AK4D, `apdw` the SL9. The `m16a3`
-graph is the M16A4 running its A3 Receiver (full-auto) ergonomics, which the curve
-itself confirms: that build reproduces the reference to `0.034°` where the stock
-burst build misses by `0.460°`. `scripts/heavy-barrel-spread-reference.json` stores
-any such non-default build alongside the curve.
-
-Those plots are generated from the same datamined parameters `data/weapons.json`
-imports, so the Basic curve is a control: it reproduces at a worst-case deviation
-of `0.118°` and a median under `0.02°` with no fitting at all, which is what makes
-the Heavy residual meaningful. Curves were read off the plots pixel-wise and the
-three multipliers fitted against all of them jointly:
-
-| Model | RMSE vs reference |
-|---|---:|
-| SIPS `0.80` (the fit this replaced) | `0.161°` |
-| SIPS `0.667` alone | `0.316°` |
-| best SIPS-only multiplier (`0.879`) | `0.114°` |
-| SIPS `0.667` + coefficient `1.71` + offset `0.667` | `0.009°` |
-
-Per weapon the Heavy deviation lands at or below the Basic control's own error,
-i.e. the fit is as close as the reference plots can resolve. AK-205 reproduces the
-reference shot for shot (`0.182°` at shot 20 against a Basic `0.244°`).
-
-`spreadIncMult` is no longer marked assumed: a one-third SIPS cut is what the
-Sym maintainer stated directly and what the curve fit independently recovers
-(`0.673` free-fitted). The two recovery multipliers stay in `assumedFields` — their
-*existence* is confirmed (the same source states the coefficient, exponent, and
-offset all change) but the values here are fitted outputs, not datamined literals,
-and the fitted offset direction disagrees with that source's recollection that the
-offset increases. Replace them if exact attachment parameters surface.
-
-**Scope of the evidence.** The reference curves are ADS standing sustained fire.
-The multipliers are nonetheless applied in both aim states and both stances, which
-is a deliberate extension rather than a measurement — hipfire and moving carry no
-reference data. Two things make it a safe default. Stance never had a say: spread
-*dynamics* are keyed on aim state alone, and stance only selects the minimum-spread
-floor, so moving already inherited whatever standing did. And scaling SIPS and the
-offset by the same factor preserves each weapon's margin over its recovery floor,
-so extending to hipfire cannot pin anything: AK-205 clears its hip floor by 6.2%
-(`0.43 x 12 rps = 5.16` against `4.86`) before and after. Across all 61 weapons and
-all four aim/stance combinations, no build is pinned that was not already flat.
-
-Two known consequences of the ADS-only evidence, both left as-is rather than
-guessed at:
-
-- Not-firing and idle recovery are unscaled, so burst weapons gain more than the
-  ~0.69 bloom ratio suggests — the M16A4's inter-burst gap recovers on untouched
-  parameters, landing it at `0.364`.
-- Shotguns sit at `spreadMax` in hipfire either way, so the barrel reads as
-  almost no change (`0.98`–`1.00`) simply because there is no bloom left to remove.
-
-`scripts/heavy-barrel-spread.test.mjs` pins all of this against
-`scripts/heavy-barrel-spread-reference.json`, including a guard that no heavy-type
-build pins a weapon at minimum spread in any aim state or stance, and a check that
-the hipfire path is scaled identically to the ADS one.
-
-### Recoil Control
-
-- Off: compensation = 0, controls disabled.
-- On: compensation % (default 85%, max 125%) subtracts the expected recoil vector per shot.
-  Variation and spread remain fully active.
-
-### Platform
-
-The recoil panel has a PC/Console toggle. Console applies `CONSOLE_RECOIL_MULT` (0.89)
-to the recoil amount via `platformRecoilMultFn` in the sim context.
-
-### Projectile Ballistics (main app)
-
-`data/ballistics.json` promotes the v1.3.3.0 Sym snapshot's source-excluded
-gravity/drag inputs into a small, explicitly scoped runtime catalog. It names the
-59 source-backed weapon IDs, uses gravity `-9.81 m/s^2`, and uses base drag
-`0.0035 / m`. A selected build must have both a listed source-backed weapon ID
-and a resolved positive `bulletVel`; otherwise projectile timing and target drop
-are unavailable rather than using a plausible fallback. This currently leaves the
-estimated BROD 3 and EF88 outside the model.
-
-`sim/ballistics.js` is the shared calculation layer:
-
-- Level-flight timing uses the measured closed form
-  `t(x) = expm1(drag * x) / (drag * muzzleVelocity)`. The reference cases are
-  500 m at 800 m/s: `1.245171 s` at `0.0025` drag and `0.810902 s` at `0.001`.
-- Soldier Target trajectory integrates `dp/dt = v` and
-  `dv/dt = (0, gravity) - drag * |v| * v` with RK4 steps.
-- Barrel velocity continues to come from `applyAttachments`, so barrel velocity
-  effects reach both features. Long-Range / Match Grade uses `0.002` drag.
-  The generic Penetration catalog token uses `0.002` only for DMRs and Sniper
-  Rifles, where it represents Tungsten Match; it deliberately remains base drag
-  for other classes because that generic token can mean Tungsten Core instead.
-
-**TTK +VEL:** `+VEL` is an independent toggle beside `+ADS`. At each plotted
-range the displayed time is firing TTK plus the level-target flight time of the
-lethal projectile *once*; `+ADS` adds on top when selected. The chart, tooltip,
-axis label, and kill table all use the same total. This is arrival timing for a
-level, stationary target only: it does not calculate moving-target lead, terrain,
-elevation, or whether un-compensated drop would make a shot miss. Builds without
-validated projectile inputs display VEL as unavailable.
-
-**Soldier Target:** the target view is ballistic while Angle Plot remains purely
-angular. Spray dots, scatter, recoil path, bubbles, cone, and hit-zone summary all
-share the same per-build projectile Y offset. DMRs and Sniper Rifles expose a
-100/200/300/400/500 m zero selector (default 100 m). The model solves the small
-launch angle whose trajectory crosses the selected zero plane, then projects that
-same trajectory at target distance. It is intentionally sight-height-free, so it
-is an aimed-line approximation rather than a complete optic model. Non-DMR/Sniper
-projectiles show bore-line drop until their zeroing inputs are sourced. In compare
-mode, the one selector is applied only to each zero-capable build; other builds
-remain bore-line-relative. Target distance is 5-300 m, the Distance/Zoom slider
-space is 65/35, and Soldier Target shows a compact top-right Zeroing button that
-cycles through the available ranges. URL state carries `vel` and `rz` alongside
-existing state.
-
----
-
-## Page Reference
-
-### `index.html`
-
-Primary app:
-
-- **`index.html`**: head metadata, local Chart.js include (with load-failure fallback), CSS,
-  static HTML shell, and the `ui/app.js` module entry point.
-- **`ui/app.js`**: JSON fetch (`Promise.all` with error fallback), context setup, app
-  state, sidebar/loadout rendering, overview cards, chart rendering, recoil/spread canvas,
-  attachment effect chips, and event wiring.
-- **`ui/capture.js`**: the "Copy Image" PNG export, loaded by `ui/app.js`.
-
-**Head metadata.** The `<head>` carries the search and social surface: title, meta description,
-`rel=canonical`, Open Graph and Twitter card tags, and a `WebApplication` JSON-LD block. The
-site name in the header is wrapped in an `<h1>` with `display:contents`, so the page has a real
-top-level heading without changing header layout. `assets/og-image.png` (1200x630) backs the
-link preview and carries its own season/version chip — regenerate it when the season tag
-changes.
-
-**Class filter buttons** (`CLASSES` array): `Assault Rifle`, `Carbine`, `SMG`, `LMG`,
-`DMR`, `Sniper Rifle`, `Shotgun`, `Sidearm`. Button labels come from `CLASS_SHORT`:
-`AR`, `Carb`, `SMG`, `LMG`, `DMR`, `Sniper`, `SG`, `Pistol`.
-
-**Attachment state shape:**
-```js
-{ sight: 'iron', muzzle: 'none', barrel: '<default>', grip: 'none',
-  laser: 'none', light: 'none', ammo: 'standard', mag: null, ergo: 'none' }
-```
-
-**App state** is consolidated in `ui/app.js` as a single `state` object with three
-sub-objects: `state.slots[0/1]` (class, weapon, atts per loadout), `state.chart`
-(mode, btkHS, showAds, showVel), and `state.recoil` (aim, stance, layers, platform,
-control, compensation, seed, scale, pan, target distance, zero distance).
-
-**Chart tooltips** use Chart.js default positioning (`mode: 'index'`, `intersect: false`).
-Baseline and band-fill datasets are filtered out of tooltip content; band values are
-folded into each weapon's line entry as a `chest–limbs` range instead.
-
----
-
-### `preview_spread.html`
-
-Recoil/spread chart experiment tool. Three side-by-side chart approaches with independent
-bubble schedules, a class/weapon/attachment sidebar, and configurable shot count. Imports
-`sim/core.js`, `sim/applyAttachments.js`, and `sim/loadout.js`, and fetches five of the six
-`data/` JSON files (everything but `ballistics.json`, which it has no use for). Attachment
-selections are applied through `applyAttachments(rawWeapon, selectedAtts)`, matching the main
-app. `compensationFn` is still stubbed to `() => 0` because this preview has no recoil
-control UI.
-
-Useful for testing rendering changes before porting to the main app.
-
----
-
-## App State and Rendering Flow
-
-### Startup
-
-1. `<script type="module">` fetches all JSON files via `Promise.all` (`fetchJson` helper);
-   a failure shows a full-screen error message and aborts.
-2. `setSimContext(...)` and `setAttachmentContext(...)` are called with fetched data.
-3. Shared lookup maps are initialized for attachment and loadout resolution.
-4. `renderSidebar()` and `renderStats()` are called. With no weapon selected, `renderStats`
-   shows the empty state and returns.
-
-### Attachment Sidebar (`renderAttachmentSection`)
-
-`sim/loadout.js` iterates `ATTACHMENT_SLOT_KEYS` from `sim/attachments.js`. For each slot:
-- **No weapon selected**: renders disabled placeholder (greyed, never hidden).
-- **Weapon selected, one option**: renders disabled single-option row.
-- **Weapon selected, multiple options**: renders interactive dropdown.
-
-Ammo, Mag, and Ergo slots are built separately from their per-weapon maps using the same
-always-render / disable-when-unavailable pattern.
-
-Selecting a weapon resets to the canonical defaults with `resetAttsForWeapon()`.
-
-### Attachment Point Counter (`computeAttPts`)
-
-Sums points across sight, muzzle, barrel, grip, laser, light, ammo, magazine, and ergo.
-Over-100 loadouts are marked with the `.over` class.
-
-Attachment assumptions are tagged either with `assumed: true` for a whole attachment
-entry or with `assumedFields` for specific modifier fields. Both forms trigger the
-sidebar footnote when selected.
-
----
-
-## Performance Notes
-
-The app is static and render-on-change, but the busiest paths avoid avoidable rework:
-
-- Attachment catalogs are indexed once in `sim/applyAttachments.js`.
-- Shared loadout helpers cache their catalog indexes per page data bundle.
-- Data JSON is fetched without cache-busting, so repeat visits revalidate via
-  `ETag`/`Last-Modified` instead of re-downloading ~310 KB.
-- `renderChart()` reuses the existing Chart.js instance via `updateDmgChart()` and
-  calls `chart.update('none')` instead of destroying/recreating the canvas state.
-- `drawRecoilFixed()` computes recoil points, spread radii, and spray points once per
-  weapon per draw and reuses them across scatter, spray path, spread, and cone layers.
-- Default applied weapon baselines are cached per raw weapon object for attachment stat
-  comparisons.
-
----
-
-## How To Add or Update Data
-
-See **`MAINTENANCE.md`** for the full season/patch checklist. Quick summary:
-
-| Task | File(s) |
-|---|---|
-| New weapon | `data/weapons.json` + entries in all other `data/` files |
-| Recoil/stat change | `data/weapons.json` + `data/recoil_decay.json` |
-| New attachment | `data/attachments.json` (catalog + `WEAPON_ATTS` lists) |
-| New attachment *slot type* | `sim/attachments.js` (one entry) + `sim/applyAttachments.js` (handler) + `sim/loadout.js` if it affects UI/accounting |
-| New ammo type | `data/ammo.json` |
-| Balance table change | `data/balance_tables.json` |
-
-After data changes, run `node scripts/validate-data.mjs`. CI runs the same
-cross-file validation on every push and pull request.
-
----
-
-## Review Notes: Known Issues and Gaps
-
-### 1 — Recoil decrease model is unvalidated *(open)*
-
-The decay formula uses parameterized exponents from sym.gg fields. The directional behavior
-(returns toward zero) is consistent with a Reddit comment from a sym.gg developer, but the
-exact curve shape has not been tested against current in-game footage.
-
-**Suggested fix:** Document a validation pass per weapon — tested weapon, fire rate, frame
-rate, measured return curve, and source used.
-
----
-
-### 2 — Provenance not encoded in data objects *(open)*
-
-The distinction between source-backed, assumed, and screenshot-derived values is described
-in this document but not fully tagged in the data files themselves. Attachment entries can
-use `assumed: true` or field-level `assumedFields`, but source/date metadata is absent
-elsewhere.
-
-**Suggested fix:** Add lightweight provenance metadata (`source`, `sourceDate`,
-`derivedFromScreenshot`) where practical, especially on calibrated attachment effect values.
-
----
-
-### 3 — Spread cone is a visualization envelope, not a game primitive *(informational)*
-
-The cone/outline view hugs the modeled per-shot spread circles. It is not a convex hull,
-not a guarantee of uniform fill inside the envelope, and not a direct game mechanic.
-
-Chart notes already say "spread envelope across modeled shots" but this distinction should
-stay prominent in any future user-facing documentation.
-
----
-
-### 4 — `noEffect` attachments are present but unmodeled *(informational)*
-
-Several options carry `noEffect: true` — they appear in dropdowns, add point cost, but
-change no stat. Current signal is grey styling. Users who miss this may assume all
-point-cost attachments are modeled.
-
-Examples: Compact Handstop, Long-Range ammo, several lasers/lights,
-Mag Flare, Match Trigger, ADS Bolt.
-
-Frangible ammo left this list once its enemy health-regeneration delay (5s → 9s) was
-modeled as `healthRegenDelayS`; it now surfaces an "Enemy Health Regen" chip in the
-Attachment Effects panel.
-
-**Suggested follow-up:** Add a tooltip or legend if user confusion becomes a pattern.
-
----
-
-### 5 — Assumed attachment stats need revisiting when datamined data arrives *(open, partially validated)*
-
-Attachment effects marked with `assumed: true` or `assumedFields` are pending datamined
-confirmation. The Linear Comp's recoil effects (−1 amount tier, +3 variation tiers) were
-validated against in-game advanced stats in June 2026; its remaining fields and the other
-assumed attachments are still unconfirmed.
-
-**Action:** When updated data is available, clear `assumed: true` or the relevant
-`assumedFields` entries, then update the effect fields and this document.
-
----
-
-### 6 — M16A4/VZ.61 `amountExp: -2` anomaly *(open question)*
-
-Among automatic-fire weapons, `recoil.ads.amountExp` is normally `-3`. The M16A4 and
-VZ.61 are the only two automatics at `-2`. (Non-automatic weapons — bolt-action snipers
-and semi-auto sidearms — use `0`.)
-
-These two don't share a fire mode: the M16A4 is burst-by-default while the VZ.61 is
-full-auto, so the `-2` is **not** explained by burst fire. In-game screenshots also
-showed the Full Auto ergo does not move the M16A4's *variation* exponent. Whatever drives
-`-2` for exactly these two weapons is unknown. Display rounding in the in-game menu
-(1 decimal) makes the amount ladder hard to verify from screenshots alone.
-
----
-
-### 7 — No automated tests beyond data validation *(partially addressed)*
-
-`scripts/validate-data.mjs` checks the highest-risk data drift cases:
-cross-file weapon and attachment IDs, `WEAPON_ATTS` barrel defaults, magazine and ammo
-defaults, required fields for supported weapons, known classes, and per-slot attachment
-coverage for non-sidearm weapons (an explicit `[]` is allowed as "deliberately no
-options"; a missing slot key fails). CI runs the same script on every push.
-
-Remaining test gaps:
-- Attachment effect field completeness beyond neutral/default behavior
-- Uniform-over-radius sampling correctness
-- Recoil control compensation math
-- Spread cone/envelope rendering consistency
-
----
-
-## Maintenance Recommendations
-
-### Near-Term
-
-1. **Add Playwright visual smoke coverage.** Capture desktop, tablet, and mobile flows for the main app plus the two preview pages. This protects the responsive loadout overlay, Chart.js rendering, and recoil canvas from quiet regressions.
-2. **Validate recoil decay (note 1).** Pick one auto weapon, record post-burst recovery at known RPM, compare to model output, and document the measured curve.
-3. **Verify remaining assumed attachment stats (note 5).** Block for the next reliable data drop; clear `assumed: true` or field-level `assumedFields` as values become source-backed.
-4. **Improve `noEffect` attachment signaling (note 4).** Add a compact tooltip or legend only if user confusion shows up in testing.
-
-### Longer-Term
-
-1. **Further split `ui/app.js` only when needed.** Good next boundaries would be `ui/chart.js`, `ui/recoil.js`, and `ui/render.js`, but the current extraction already removed the worst `index.html` pressure.
-2. **Expand validation if data churn increases.** JSON Schema or stricter effect-field checks would be useful once the data format stabilizes further.
-3. **Add provenance metadata to data files (note 2).** Source/date tags become more valuable as assumed, screenshot-derived, and datamined values coexist.
-4. **Track performance baselines.** The current caches reduce obvious rework, but larger dashboards or multi-state comparisons should measure render cost explicitly.
-5. **Formalize visual regression screenshots.** Once Playwright smoke coverage exists, promote key screenshots into a baseline workflow before large recoil, spread, or layout changes.
+There is no compilation or server-side runtime. `index.html` owns the visual system and stable markup;
+`ui/app.js` owns state, rendering, browser events, charts, and responsive interactions; `sim/` owns
+reusable domain calculations. Live numerical inputs are maintained under `data/`.
+
+## State and sharing
+
+The application keeps two loadout slots plus chart, recoil, and collapsed-panel state. URL persistence
+is centralized in `sim/share-state.js`. Attachment tokens use catalog positions, so existing attachment
+catalogs are append-only for compatibility. Legacy positional links are decoded there as well.
+
+View-only details that do not describe a meaningful loadout are kept out of shared URLs where possible.
+URL writes are debounced so frequent UI changes do not repeatedly update history.
+
+## Loadouts
+
+`sim/loadout.js` owns blank/default attachment state, available option construction, point totals,
+assumed-data detection, and labeled select rendering. `sim/applyAttachments.js` transforms a base weapon
+into the selected build. UI code should consume that result rather than reapplying individual modifiers.
+
+Attachment lookup maps are created once in `ui/app.js` for display breakdowns. Source JSON is treated as
+read-only at runtime; attachment behavior belongs in the data or the shared application function, not an
+extra mutation after import.
+
+## Damage and lethality
+
+`sim/damage.js` resolves damage at range and hit-zone multipliers. Damage curves are piecewise linear
+between declared breakpoints and clamp outside the recorded range. The site derives:
+
+- damage per shot at a selected range;
+- bullets to kill for chest, limb, or mixed hit sequences;
+- time to kill from bullet count and shot timing;
+- optional ADS and lethal-projectile flight-time additions;
+- sniper sweet-spot behavior where supported.
+
+Exact source curves take precedence over rounded display readings. Class/ammunition hit-zone policy is
+validated against the entire current roster.
+
+## Recoil and spread
+
+`sim/core.js` owns recoil/spread primitives and current simulation context. It exports the shared spread
+bar ceiling and `effectiveSpreadMax()`, preventing the UI and tests from maintaining separate copies of
+the same simulation.
+
+The effective maximum advances the selected build for a bounded 50-shot sequence, applying firing and
+non-firing recovery across ordinary and burst gaps and clamping to the build's valid spread bounds. The
+spread-scale test sweeps current weapons, stances, aim states, and relevant attachments once, then checks
+both containment and useful chart utilization.
+
+`ui/app.js` renders two recoil lenses:
+
+- Angle Plot shows the weapon-space recoil/spread pattern independently of range.
+- Soldier Target projects the same pattern into physical space at a selected distance and optic view.
+
+`sim/target.js` owns target geometry, hit-zone classification, impact summaries, and target-image drawing.
+The image and alpha map are loaded lazily only after the Soldier Target view is selected. Importing the
+module does not fetch the image.
+
+## Ballistics
+
+`sim/ballistics.js` uses the declared weapon source set and projectile constants in
+`data/ballistics.json`. Barrel velocity supports the current tier model and a compatibility fallback for
+records that still expose the exact multiplier. Tests assert equivalent results for every selectable
+current barrel.
+
+Ballistic flight time is optional and appears only where the required projectile source data exists.
+Missing coverage must not be silently invented.
+
+## Rendering
+
+`renderSidebar()` rebuilds class, weapon, and attachment controls from state. `renderStats()` coordinates
+overview cards, charts, tables, recoil, and attachment effects. Chart.js objects are reused and updated.
+
+Selected controls expose `aria-pressed` or `aria-selected`. Attachment select labels are associated with
+their controls. On compact layouts the loadout sidebar becomes a modal dialog with focus trapping,
+Escape dismissal, inert background content, and opener-focus restoration.
+
+The stat-card layout uses content groups that wrap at intermediate widths. At phone widths groups become
+full width while the card grid retains two columns down to very narrow screens.
+
+## Capture
+
+`ui/capture.js` renders a shareable image from the current view. Clipboard support is detected at runtime;
+when image clipboard writing is unavailable or fails, the site downloads the PNG. Capture logic consumes
+the current rendered state and does not own weapon calculations.
+
+## Data and provenance
+
+The current data boundary is:
+
+- `weapons.json`: base roster and curves;
+- `attachments.json`: attachment catalogs and effects;
+- `ammo.json`: ammunition catalogs and weapon availability;
+- `balance_tables.json`: shared tier/table rules;
+- `recoil_decay.json`: recovery constants;
+- `ballistics.json`: projectile source set and constants;
+- `reload-exceptions.json`: explicit non-derived reload cases;
+- `provenance/live-baseline.json`: source identity and current policy.
+
+The completed attachment audit is a separate reference package under
+`reference-data/attachment-audit/`. It is not read by the runtime, data validator, product tests, or CI.
+
+## Performance characteristics
+
+The shipped application has no dependency install or build cost. Data is imported once, lookup maps and
+default applied builds are cached, charts are reused, URL writes are debounced, and the largest optional
+visual asset is lazy. The product suite is designed to finish quickly enough for routine use.
+
+For this project's size, keep optimization evidence-based. Prefer removing duplicate work, avoiding
+unnecessary network/asset loads, and caching stable derived values over adding infrastructure.
+
+## Extension rules
+
+1. Put formulas in `sim/`, not inline copies in rendering or tests.
+2. Put current source values in `data/` and record source policy in provenance.
+3. Keep runtime imports inside the declared ship surface.
+4. Preserve share-token ordering unless intentionally breaking compatibility.
+5. Add the smallest test that protects a material new behavior; avoid source-pattern tests.
+6. Treat historical version folders as frozen published pages.

@@ -34,29 +34,6 @@ core.setSimContext({
   compensationFn: () => 0, platformRecoilMultFn: () => 1,
 });
 
-// Mirrors ui/app.js selectedEffectiveSpreadMax().
-const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
-function effectiveSpreadMax(weapon) {
-  const [baseline, sMax] = core.spreadBounds(weapon);
-  const inc = core.selectedSpreadIncFor(weapon);
-  if (inc === 0) return baseline;
-  const { firing, notFiring } = core.spreadRecoveries(weapon);
-  const clamp = v => Math.min(Math.max(v, baseline), sMax);
-  let spread = baseline;
-  for (let i = 0; i < SPREAD_EFFECTIVE_MAX_SHOTS; i++) {
-    spread = clamp(spread + inc);
-    const gap = core.shotIntervalAfter(weapon, i + 1);
-    if (core.isBurstGapAfter(weapon, i + 1)) {
-      const firingTime = Math.min(60 / (weapon.rpm ?? 600), gap);
-      spread = core.applySpreadRecovery(spread, firingTime, firing, baseline, sMax, 1 / 60);
-      spread = core.applySpreadRecovery(spread, Math.max(0, gap - firingTime), notFiring, baseline, sMax, 1 / 60);
-    } else {
-      spread = core.applySpreadRecovery(spread, gap, firing, baseline, sMax, 1 / 60);
-    }
-  }
-  return clamp(spread);
-}
-
 /** Widest effective spread reachable in an aim state, over spread-moving attachments. */
 function corpusMaxFor(aimState) {
   let worst = { value: -Infinity, weaponId: null, stance: null, aimState };
@@ -73,7 +50,7 @@ function corpusMaxFor(aimState) {
       for (const atts of variants) {
         let build;
         try { build = applyAttachments(weapon, atts); } catch { continue; }
-        const value = effectiveSpreadMax(build);
+        const value = core.effectiveSpreadMax(build);
         if (Number.isFinite(value) && value > worst.value) worst = { value, weaponId: weapon.id, stance: stanceState, aimState };
       }
     }
@@ -81,18 +58,10 @@ function corpusMaxFor(aimState) {
   return worst;
 }
 
-// Kept in step with SPREAD_BAR_SCALE in ui/app.js.
-const SCALE = 9.4;
-
-test('ui/app.js still declares the scale this test pins', () => {
-  const source = readFileSync(join(root, 'ui/app.js'), 'utf8');
-  const match = source.match(/const SPREAD_BAR_SCALE = ([\d.]+);/);
-  assert.ok(match, 'SPREAD_BAR_SCALE must be declared as a single number');
-  assert.equal(Number(match[1]), SCALE, 'the bar scale drifted from the one under test');
-});
+const SCALE = core.SPREAD_BAR_SCALE;
+const worst = ['ads', 'hip'].map(corpusMaxFor).reduce((a, b) => (b.value > a.value ? b : a));
 
 test('the bar scale contains every aim state and stance in the corpus', () => {
-  const worst = ['ads', 'hip'].map(corpusMaxFor).reduce((a, b) => (b.value > a.value ? b : a));
   assert.ok(worst.value <= SCALE,
     `spread reaches ${worst.value.toFixed(3)}° (${worst.weaponId}, ${worst.aimState}/${worst.stance}) but the bar tops out at ${SCALE}°`);
 });
@@ -100,7 +69,6 @@ test('the bar scale contains every aim state and stance in the corpus', () => {
 test('the scale is not stranded far above what the model can reach', () => {
   // Headroom well past the maximum would push every bar into the left of the
   // track for no reason. The ceiling should sit just clear of the widest case.
-  const worst = ['ads', 'hip'].map(corpusMaxFor).reduce((a, b) => (b.value > a.value ? b : a));
   assert.ok(worst.value / SCALE >= 0.95,
     `the widest bar fills only ${(worst.value / SCALE * 100).toFixed(0)}% of the track; lower the scale toward ${worst.value.toFixed(2)}°`);
 });

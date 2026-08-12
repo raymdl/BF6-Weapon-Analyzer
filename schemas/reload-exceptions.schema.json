@@ -58,13 +58,13 @@
     },
     "composedLoadoutEvidence": {
       "type": "object",
-      "required": ["magazineId", "ergonomicId", "observedReloadMs", "observedOn", "receipt", "evidenceKind", "singleAttachmentPanel", "note"],
+      "required": ["magazineId", "ergonomicId", "observedReloadMs", "observedOn", "evidenceReference", "evidenceKind", "singleAttachmentPanel", "note"],
       "properties": {
         "magazineId": { "type": "string", "minLength": 1 },
         "ergonomicId": { "type": "string", "minLength": 1 },
         "observedReloadMs": { "type": "integer", "exclusiveMinimum": 0 },
         "observedOn": { "type": "string", "minLength": 1 },
-        "receipt": { "type": "string", "minLength": 1 },
+        "evidenceReference": { "type": "string", "minLength": 1 },
         "evidenceKind": { "const": "composed-loadout" },
         "singleAttachmentPanel": { "const": false },
         "note": { "type": "string", "minLength": 1 }

@@ -157,6 +157,9 @@ export function selectedRecoilVariationFor(w) {
  * [min, max] spread in degrees for the current aim+stance state.
  * Applies the _movingAdsMinSpreadDeg floor when moving ADS.
  */
+export const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
+export const SPREAD_BAR_SCALE = 9.4;
+
 export function spreadBounds(w) {
   const { aimState, stanceState } = _ctx;
   const key = `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
@@ -258,6 +261,29 @@ export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, d
     rem -= step;
   }
   return spread;
+}
+
+/** Effective spread reached across a representative sustained string. */
+export function effectiveSpreadMax(w, shots = SPREAD_EFFECTIVE_MAX_SHOTS) {
+  const [baseline, sMax] = spreadBounds(w);
+  const spreadInc = selectedSpreadIncFor(w);
+  if (spreadInc === 0) return baseline;
+  const { firing, notFiring } = spreadRecoveries(w);
+  const clamp = value => Math.min(Math.max(value, baseline), sMax);
+  let spread = baseline;
+  for (let index = 0; index < shots; index++) {
+    spread = clamp(spread + spreadInc);
+    const shotIndex = index + 1;
+    const interval = shotIntervalAfter(w, shotIndex);
+    if (isBurstGapAfter(w, shotIndex)) {
+      const firingTime = Math.min(60 / (w.rpm ?? 600), interval);
+      spread = applySpreadRecovery(spread, firingTime, firing, baseline, sMax);
+      spread = applySpreadRecovery(spread, Math.max(0, interval - firingTime), notFiring, baseline, sMax);
+    } else {
+      spread = applySpreadRecovery(spread, interval, firing, baseline, sMax);
+    }
+  }
+  return +clamp(spread).toFixed(3);
 }
 
 

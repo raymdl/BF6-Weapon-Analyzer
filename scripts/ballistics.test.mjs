@@ -20,12 +20,13 @@ assert.ok(trajectoryAtDistance(model, 100).yMeters < 0, 'an unzeroed bore-axis t
 
 const readJson = relative => JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));
 const catalog = readJson('../data/ballistics.json');
-const normalized = readJson('../generated-data/sym/1.3.3.0/normalized.json');
-assert.deepEqual([...catalog.weaponIds].sort(), normalized.weapons.map(weapon => weapon.siteId).sort(), 'runtime projectile availability exactly follows the source-backed weapon set');
-normalized.weapons.forEach(weapon => {
-  assert.equal(weapon.sourceExcluded.gravity, catalog.gravityMps2, `${weapon.siteId} gravity matches the source snapshot`);
-  assert.equal(weapon.sourceExcluded.drag, catalog.baseDragPerMeter, `${weapon.siteId} base drag matches the source snapshot`);
-});
+const weapons = readJson('../data/weapons.json');
+const nonEstimatedWeaponIds = weapons.filter(weapon => !weapon.estimated).map(weapon => weapon.id).sort();
+assert.deepEqual([...catalog.weaponIds].sort(), nonEstimatedWeaponIds, 'runtime projectile availability covers every directly sourced weapon');
+assert.equal(catalog.baseline, 'current-live');
+assert.equal(catalog.source, 'data/provenance/live-baseline.json#sym-bf6-json');
+assert.equal(catalog.gravityMps2, -9.81);
+assert.equal(catalog.baseDragPerMeter, 0.0035);
 assert.equal(catalog.ammoDragPerMeter.long_range, 0.002);
 assert.deepEqual(catalog.ammoDragPerMeter.penetration, { DMR: 0.002, 'Sniper Rifle': 0.002 });
 

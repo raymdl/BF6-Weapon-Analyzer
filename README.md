@@ -1,251 +1,84 @@
 # BF6 Weapon Analyzer
 
-An interactive weapon stats and ballistics analyzer for Battlefield 6 multiplayer. Compare two
-loadouts side by side, see damage-over-range, bullets-to-kill and time-to-kill curves, and inspect
-simulated recoil, spread and projectile drop with attachments applied.
+A static, client-side Battlefield 6 weapon comparison and recoil-analysis site. The current `main`
+branch is the live product baseline. It loads JSON data directly in the browser and has no build step,
+application server, database, or framework runtime.
 
-Static site — no build step, no dependencies, no framework. HTML, CSS, and ES modules, with a
-vendored copy of Chart.js.
+The header identifies the game/source version represented by the data. That version is provenance,
+not a development phase. Older published behavior remains available from the versioned archive links
+in the site header.
 
-## Status
+## Run locally
 
-**`main` is the live site and is on Season 4 v1.3.3.0.** Weapon data is pinned to the Sym.gg
-v1.3.3.0 snapshot (30 JUN 2026); the site header carries its own last-updated date for changes made
-after the data pin.
+Run `serve.bat`, or from the repository root:
 
-Older releases stay browsable as frozen archives under `v1.3.1.0/` and `v1.2.3.0/`, linked from the
-site header. Those directories are deliberately untouched by later changes.
-
-Release work continues in [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](migration/1.3.3.0/BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md),
-which tracks what shipped and what is still open. Anything still open is listed under
-[Known gaps](#known-gaps) below rather than left implied.
-
-## What changed in 1.3.3.0
-
-**Roster — 58 → 61 weapons.** PP-19 is fully sourced (base stats, recoil object, spread model,
-cross-file attachment/magazine/ammo coverage). BROD 3 and EF88 are carried as explicit **estimates**:
-their simulation fields are donor-derived and their damage curves provisional. The UI marks them with
-an `Estimated` badge and an asterisk on affected stats, and they are excluded from the projectile
-model rather than given a plausible-looking fallback. VSSM stays out of the roster until Sym
-publishes it. Current split:
-
-| Class | Count |  | Class | Count |
-|---|---|---|---|---|
-| Assault Rifle | 11 | | DMR | 5 |
-| Carbine | 9 | | Sniper Rifle | 5 |
-| SMG | 10 | | Shotgun | 4 |
-| LMG | 10 | | Sidearm | 7 |
-
-**Reworked recoil and spread.** Effective recoil is now recomputed by the importer as
-`amount x multiplier^exponent` with the raw ADS/hip components retained, rather than hand-copied.
-Recoil decay and multiplier tables were regenerated from the same pinned source, as were the ADS/hip
-spread increments, stance bounds, and idle/firing/not-firing recovery coefficients.
-
-**1.3.3.0 hit zones.** Limb multipliers are class-based — automatic `0.84`, DMR `0.91`, sniper
-`0.67`, shotgun and sidearm `1.00` — and automatic headshots run the ammo-tier ladder
-`1.40 / 1.57 / 1.80` (standard / hollow point / synthetic). Zone naming is explicit: **unarmored
-chest** and **stomach/limbs** replace the old ambiguous "body". Sniper sweet spots are read off the
-Sym damage curve rather than stored, so a later refresh that moves a window flows straight through;
-the Mini Scout, which has no plateau, needs no exception to say so. All of this lives in
-`sim/damage.js`, so every page resolves zones the same way.
-
-**Projectile ballistics (new).** `sim/ballistics.js` and `data/ballistics.json` add level-flight
-timing and target drop for the 59 source-backed weapons:
-
-- **TTK `+VEL`** is an independent toggle beside `+ADS`. It adds the lethal projectile's flight time
-  once, at each plotted range, across chart, tooltip, axis label and kill table. It is arrival timing
-  for a level, stationary target — no moving-target lead, terrain, or elevation.
-- **Soldier Target** is ballistic: spray dots, scatter, recoil path, bubbles, cone and the hit-zone
-  summary all share one per-build projectile Y offset. DMRs and snipers get a 100/200/300/400/500 m
-  zero selector (default 100 m) via a Zeroing button; other classes show bore-line drop until their
-  zeroing inputs are sourced. Target distance runs 5–300 m.
-
-Gravity is `-9.81 m/s²` and base drag `0.0035 /m`; Long-Range / Match Grade ammo uses `0.002`. A
-build needs both a listed weapon ID and a resolved positive `bulletVel` or the feature reports
-unavailable.
-
-**Attachment data.** Barrel velocity and reload timing are now *derived* from the in-game screenshot
-audit rather than assumed, under the gates in
-[DERIVED_ATTACHMENT_MODEL.md](migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md) — each derived value has
-to reproduce its screenshot reading and pass derived-versus-legacy equivalence. Alongside that:
-attachment vocabulary and per-weapon availability were corrected, the light half of the combo
-laser/light devices is now modelled, several attachment point costs were fixed, and 60 of 68 magazine
-tier mismatches were resolved from screenshot evidence.
-
-**Share links.** URL state now carries `vel` (TTK velocity toggle) and `rz` (zero distance) alongside
-the existing weapon, attachment, chart, recoil and target parameters. Attachment arrays are only ever
-appended to, so older share links keep resolving to the same build.
-
-## Running it locally
-
-Pages use `<script type="module">`, so opening the HTML files as `file://` URLs will fail. Serve the
-directory over HTTP:
-
-```bash
-python -m http.server 5174
+```powershell
+node scripts/serve.mjs
 ```
 
-Then open `http://localhost:5174/`.
+Then open <http://localhost:5174/>. A local server is required because browsers block the JSON
+`fetch()` calls when the page is opened with `file://`.
 
-## Pages
+## Project layout
 
-| Page | Purpose |
-|---|---|
-| `index.html` | The primary analyzer: loadout sidebar, overview cards, damage/BTK/TTK charts, recoil and target panel |
-| `preview_spread.html` | Spread-visualization experiment tool — three chart approaches side by side |
-
-The preview page is a development tool for trying rendering ideas before porting them into the
-main app. It shares the same `sim/` modules and data files as `index.html`. It is recorded as
-`developmentOnly` in `ship-surface.json` and is not loaded or linked by the live entrypoint.
-
-## Layout
-
-```
-index.html                ← Primary app shell
-preview_spread.html       ← Spread chart experiment tool
-
-ui/app.js                 ← App state, rendering, charts, recoil/target UI
-ui/capture.js             ← "Copy Image" PNG export of the current view
-vendor/chart.umd.min.js   ← Local Chart.js bundle
-assets/                   ← Favicon, soldier target artwork, social preview card
-sitemap.xml               ← Homepage + frozen archives, for search engines
-
-sim/
-  core.js                 ← Shared simulation math (RNG, recoil, spread)
-  damage.js               ← Damage falloff, hit zones, bullets-to-kill
-  ballistics.js           ← Flight time, RK4 trajectory, zero-relative drop
-  applyAttachments.js     ← Attachment effects and derived stats
-  loadout.js              ← Loadout defaults, point totals, sidebar helpers
-  attachments.js          ← Canonical attachment slot definitions
-  target.js               ← Distance-target geometry
-  share-state.js          ← URL-hash loadout sharing
-
-data/                     ← weapons, attachments, ammo, ballistics, balance tables,
-                            recoil decay, reload exceptions, provenance
-schemas/                  ← JSON schemas for the audit and reload-exception datasets
-scripts/                  ← Sym.gg importers, validators, migration scripts, tests
-generated-data/sym/       ← Sym.gg import artifacts: mapping, normalized, diff, reconciliation
-migration/1.3.3.0/        ← Release plan, derived attachment model, audit inventories
-v1.3.1.0/, v1.2.3.0/      ← Frozen published archives
-ship-surface.json         ← Declares the live runtime boundary (paths + fetched data)
+```text
+index.html                         Live page, styles, and accessible markup
+ui/                                Rendering, interaction, URL sharing, image capture
+sim/                               Weapon calculations and reusable domain logic
+data/                              Current live weapon and attachment data
+data/provenance/live-baseline.json Current source and policy record
+schemas/                            Schemas for maintained data contracts
+scripts/                            Product validation and focused regression tests
+reference-data/attachment-audit/   Completed attachment audit and ad-hoc tools
+assets/ and vendor/                 Shipped images and vendored browser dependency
+v1.3.1.0/ and v1.2.3.0/            Frozen, published historical site versions
+.local-archive/                     Ignored local-only historical working material
 ```
 
-## Data
+`.local-archive/` is deliberately not published or committed. The current archive includes a
+SHA-256 manifest so locally retained material can be checked before use.
 
-All weapon and attachment stats come from [sym.gg](https://sym.gg), with the spread decay model
-referenced from Dr. Smiley Henry, spray-pattern sanity checks from TheXclusiveAce, additional weapon
-data from SORROW, and validation plus the recoil variation tier-system discovery from SheetOnMyFace.
+## Validation
 
-A handful of values are visually calibrated rather than sourced — chart scale defaults, scatter run
-count, the spread bubble round schedule, cone rendering shape, and distance panel sizing. These are
-presentation choices, not claims about game behavior.
+Run the checks that protect the current product:
 
-Sym.gg imports run through `scripts/`, writing their mapping, normalized output, diff, and
-reconciliation into `generated-data/sym/<release>/` so a data change can be reviewed before it
-touches `data/`. Note that the sym.gg field names are mapped to site ids at import time
-(`hk433` → `m433`, `g36` → `b36a4`, and so on); the mapping is data, not a rename in the code.
-
-Scope note: the site models **multiplayer only.** REDSEC armor is out of scope and chest values are
-unarmored. Projectile flight time and drop *are* now modelled for source-backed weapons (see above),
-but firing TTK still assumes a hit — the model does not decide whether un-compensated drop, lead, or
-terrain would make a shot miss.
-
-## Checks
-
-Data validation (also run by CI on every push and pull request via
-`.github/workflows/validate-data.yml`):
-
-```bash
-node scripts/validate-data.mjs      # passes for 61/61 weapons
+```powershell
+node scripts/validate-data.mjs
 node scripts/validate-ship-surface.mjs
-```
-
-`validate-ship-surface.mjs` checks that the live runtime boundary declared in `ship-surface.json`
-still matches what `index.html` actually loads — update that file whenever the entrypoint, its
-modules, assets, or fetched data change.
-
-Unit tests, using the built-in Node test runner:
-
-```bash
 node --test
 ```
 
-Node discovers the `scripts/*.test.mjs` files on its own. Don't pass the directory —
-`node --test scripts/` tries to resolve it as a module and fails on Node 24. The importer tests
-resolve a pinned baseline commit, so run them against a **full clone**; a shallow clone fails
-`sym-import.test.mjs` with `fatal: Needed a single revision`.
+The normal suite is intentionally small. It covers current data integrity, damage and ballistics,
+attachment behavior, URL-state compatibility, estimated-weapon disclosure, runtime syntax, target
+geometry, and spread-scale bounds. It does not rerun completed capture/OCR work.
 
-Current state on a full clone of `main`: **151 tests, 150 pass, 1 fail, 0 skip.**
+The attachment audit is retained as reference data. Run it only when attachments or weapons change:
 
-The one failure is `grip-pod-reconciliation.test.mjs` → *standard Grip Pods are direct-paired tier 2
-cards*, which fails by design: the QD Grip Pod is bugged on the VSSM and the catalog models the
-attachment as it is supposed to work.
+```powershell
+node reference-data/attachment-audit/validate-reference.mjs
+```
 
-[**docs/TESTS.md**](docs/TESTS.md) explains what every test file is for, what it would catch, how to
-regenerate the enumeration baselines, and why that failure is expected.
+See [docs/TESTS.md](docs/TESTS.md) for the exact boundaries and
+[MAINTENANCE.md](MAINTENANCE.md) for update workflows.
 
-Two of the passing tests check the tracked attachment-screenshot review data against its schema.
-That dataset is hand-corrected rather than generated — see
-[BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md](migration/1.3.3.0/BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md)
-— so the test exists to catch it drifting from its declared contract.
+## Data policy
 
-## Known gaps
+- `data/` is the current live contract. Do not regenerate it merely to reproduce old intermediate work.
+- Preserve exact source facts and provenance. Estimated weapons remain visibly marked and documented.
+- Rounded UI readings are display evidence, not a replacement for exact source curves.
+- Keep source arrays and attachment catalogs stable where share-link compatibility depends on ordering.
+- Add a test only when it protects distinct product behavior that is not already covered more simply.
 
-- **BROD 3 / EF88** carry donor-derived simulation fields and provisional damage curves. Replace them
-  when Sym publishes full statistics; VSSM stays excluded until then.
-- **Four confirmed live ADS errors** remain open (PSR 7Rnd ADS time; ADS-move for PSR 10Rnd,
-  M2010 ESR 8Rnd, SV-98 10Rnd). Two are default magazines, so they are wrong base indices rather than
-  per-magazine shifts.
-- **Eight unadjudicated magazine tier mismatches**, four unread grip-velocity rows, and 18
-  corpus-only `adsTimeMs` rows are blocked on operator captures. Each is pinned and inventoried under
-  `migration/1.3.3.0/attachment-audit/`, so they can wait without decaying.
-- **Deferred to a later release:** the full drag/gravity schema fields and validator coverage, the
-  Match Grade ammo drag mapping, and a standalone ballistics panel with target lead and drop readouts.
+## Published historical versions
 
-## Documentation
+The folders `v1.3.1.0/` and `v1.2.3.0/` are intentionally published. They let visitors compare how
+weapons behaved in older versions of the game. Treat them as frozen pages: fix the live site in the
+current root unless the historical page itself is broken.
 
-- [CODE_DOCUMENTATION.md](CODE_DOCUMENTATION.md) — architecture, module APIs, data field reference,
-  the recoil/spread/ballistics model, rendering flow, and known-issue notes.
-- [MAINTENANCE.md](MAINTENANCE.md) — practical "where do I change X" guide for data and stat updates.
-- [docs/DATA_FLOW.md](docs/DATA_FLOW.md) — where each number comes from: sources, staging, promotion
-  gates, and which evidence is reference-only. Diagrams render on GitHub.
-- [BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md](migration/1.3.3.0/BF6_UPDATE_1.3.3.0_SITE_UPDATE_PLAN.md) — the 1.3.3.0
-  release plan, progress log, and open checklist.
-- [DERIVED_ATTACHMENT_MODEL.md](migration/1.3.3.0/DERIVED_ATTACHMENT_MODEL.md) — how screenshot
-  evidence becomes a shippable attachment value, and the gates it has to clear first.
+## Further documentation
 
-The in-game attachment screenshot audit is a one-off exercise and is kept largely local: its OCR and
-workbook tooling and the ~1.7 GB screenshot corpus are gitignored. The review dataset, inventories,
-and apply scripts are tracked, but only values promoted out of them reach `data/`.
-
-## Deployment
-
-GitHub Pages serves `main` at `https://raymdl.github.io/BF6-Weapon-Analyzer/`. There is no build
-step; pushing to `main` publishes. Because of that, treat `main` as the released version and keep
-in-progress release work on its own branch until the plan's gates pass.
-
-### Search and social metadata
-
-`index.html` carries the full search surface in its `<head>`: title, meta description,
-`rel=canonical`, Open Graph and Twitter card tags, and a `WebApplication` JSON-LD block. The site
-name is wrapped in an `<h1>` using `display:contents`, which gives the page a real top-level heading
-without changing header layout. `sitemap.xml` lists the homepage and the two frozen archives.
-
-`assets/og-image.png` (1200x630) backs link previews. It carries its own season/version chip, so
-**regenerate it when the season tag changes** — otherwise shared links advertise a stale patch.
-
-There is deliberately no `robots.txt`: it is only honored at `raymdl.github.io/robots.txt`, which is
-served by a user-site repo that does not exist. Submitting the sitemap directly covers the same
-ground.
-
-**Open follow-up — Google Search Console.** This needs a Google sign-in, so it cannot be automated
-from the repo:
-
-1. At `search.google.com/search-console`, add a **URL prefix** property for
-   `https://raymdl.github.io/BF6-Weapon-Analyzer/`.
-2. Verify with the **HTML tag** method and paste the resulting
-   `<meta name="google-site-verification" ...>` into the `<head>` of `index.html`.
-3. Sitemaps → submit `sitemap.xml`.
-4. URL Inspection → request indexing for the homepage. This is what forces the re-crawl that
-   replaces the stale "GitHub Pages documentation" search result with the current title,
-   description, and site name.
+- [CODE_DOCUMENTATION.md](CODE_DOCUMENTATION.md) — architecture and calculation boundaries
+- [docs/DATA_FLOW.md](docs/DATA_FLOW.md) — current source-to-browser flow
+- [docs/TESTS.md](docs/TESTS.md) — focused validation inventory
+- [MAINTENANCE.md](MAINTENANCE.md) — common update procedures
+- [reference-data/attachment-audit/README.md](reference-data/attachment-audit/README.md) — ad-hoc audit package

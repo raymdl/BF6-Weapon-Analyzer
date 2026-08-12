@@ -27,27 +27,28 @@ export const TARGET_ZONE_ORDER = Object.freeze([
 
 let targetImage = null;
 let targetAlpha = null;
-let resolveTargetReady;
-const targetReady = new Promise(resolve => { resolveTargetReady = resolve; });
+let targetReady = null;
 
-if (typeof Image !== 'undefined') {
-  targetImage = new Image();
-  targetImage.addEventListener('load', () => {
-    const alphaCanvas = document.createElement('canvas');
-    alphaCanvas.width = targetImage.naturalWidth;
-    alphaCanvas.height = targetImage.naturalHeight;
-    const alphaCtx = alphaCanvas.getContext('2d', { willReadFrequently: true });
-    alphaCtx.drawImage(targetImage, 0, 0);
-    targetAlpha = alphaCtx.getImageData(0, 0, alphaCanvas.width, alphaCanvas.height).data;
-    resolveTargetReady(true);
-  }, { once: true });
-  targetImage.addEventListener('error', () => resolveTargetReady(false), { once: true });
-  targetImage.src = new URL('../assets/soldier-target.png', import.meta.url).href;
-} else {
-  resolveTargetReady(false);
+function loadTargetImage() {
+  if (typeof Image === 'undefined') return Promise.resolve(false);
+  return new Promise(resolve => {
+    targetImage = new Image();
+    targetImage.addEventListener('load', () => {
+      const alphaCanvas = document.createElement('canvas');
+      alphaCanvas.width = targetImage.naturalWidth;
+      alphaCanvas.height = targetImage.naturalHeight;
+      const alphaCtx = alphaCanvas.getContext('2d', { willReadFrequently: true });
+      alphaCtx.drawImage(targetImage, 0, 0);
+      targetAlpha = alphaCtx.getImageData(0, 0, alphaCanvas.width, alphaCanvas.height).data;
+      resolve(true);
+    }, { once: true });
+    targetImage.addEventListener('error', () => resolve(false), { once: true });
+    targetImage.src = new URL('../assets/soldier-target.png', import.meta.url).href;
+  });
 }
 
 export function whenTargetImageReady() {
+  targetReady ??= loadTargetImage();
   return targetReady;
 }
 
