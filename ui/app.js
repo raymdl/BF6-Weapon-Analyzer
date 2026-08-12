@@ -2,9 +2,8 @@ import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilAmountBeforePlatformFor, selectedRecoilVariationFor,
-  spreadBounds, selectedSpreadIncFor,
-  spreadRecoveries, applySpreadRecovery,
-  simulateSpread, shotIntervalAfter, isBurstGapAfter, genRecoilPts,
+  spreadBounds, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
+  simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
 import { captureView, captureFilename } from './capture.js';
@@ -71,12 +70,6 @@ const ATT_BY_ID = {
   ERGOS:   byId(ERGOS),
 };
 
-// Grip ADS move speed overrides not present in source data
-['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby'].forEach(id => {
-  const grip = ATT_BY_ID.GRIPS[id];
-  if (grip) grip.adsMoveSpeedTierShift = 1;
-});
-
 // ── CONSTANTS ─────────────────────────────────────────────────────────────────
 
 const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun', 'Sidearm'];
@@ -111,14 +104,12 @@ const TARGET_DEFAULT_Y_MAX_M = 2.5;
 const TARGET_DEFAULT_CENTER_Y_CM = ((TARGET_DEFAULT_Y_MIN_M + TARGET_DEFAULT_Y_MAX_M) / 2) * 100;
 const PLOT_PAD = { l: 28, r: 8, t: 8, b: 18 };
 const CLOUD_RUNS = 10;
-const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
 // Ceiling for the Spread Min → Eff. Max bar, in degrees. One axis for every
 // aim state and stance, so the bar lengths stay comparable across the whole
 // app. The widest the model reaches is 9.37° (SVK-86, hipfire while moving,
 // with attachments), so this cannot go lower without clamping the top weapons
 // to a single full-width bar. scripts/spread-bar-scale.test.mjs holds it to
 // the corpus.
-const SPREAD_BAR_SCALE = 9.4;
 const RECOIL_BAR_SCALE = 3;
 const CONSOLE_RECOIL_MULT = 0.89;
 
@@ -402,7 +393,6 @@ function selectedPlatformRecoilMult() {
 // single-weapon URL stays short. View-only state (zoom, pan, overlay layers, random
 // reference seed) is intentionally excluded.
 
-const ATT_ORDER = ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'ammo', 'ergo', 'mag'];
 let _restoringUrl = false;
 let _urlSyncTimer = null;
 
@@ -412,83 +402,6 @@ let _urlSyncTimer = null;
 // L laser; R/H = a grip/light occupying a combined laser slot (VZ.61, sidearms).
 // NOTE: this relies on the catalog arrays being append-only (never reorder/remove
 // existing entries) so previously shared links keep resolving to the same item.
-const magKeysFor = weapon => Object.keys(WEAPON_MAG[weapon.id]?.mags ?? {});
-const catIdx = (arr, id) => arr.findIndex(x => x.id === id);
-
-function encodeAtts(weapon, a) {
-  const def = defaultAttsForWeapon(weapon);
-  const out = [];
-  const emit = (key, arr, id) => { const i = catIdx(arr, id); if (i >= 0) out.push(key + i); };
-  if (a.sight  !== def.sight)  emit('S', SIGHTS,  a.sight);
-  if (a.muzzle !== def.muzzle) emit('M', MUZZLES, a.muzzle);
-  if (a.barrel !== def.barrel) emit('B', BARRELS, a.barrel);
-  if (a.grip   !== def.grip)   emit('G', GRIPS,   a.grip);
-  if (a.laser  !== def.laser) {
-    if (catIdx(LASERS, a.laser) >= 0)      emit('L', LASERS, a.laser);
-    else if (catIdx(GRIPS, a.laser) >= 0)  emit('R', GRIPS,  a.laser);
-    else if (catIdx(LIGHTS, a.laser) >= 0) emit('H', LIGHTS, a.laser);
-  }
-  if (a.light !== def.light) emit('T', LIGHTS, a.light);
-  if (a.ammo  !== def.ammo)  emit('A', AMMO,   a.ammo);
-  if (a.ergo  !== def.ergo)  emit('E', ERGOS,  a.ergo);
-  if ((a.mag ?? '') !== (def.mag ?? '')) {
-    const i = magKeysFor(weapon).indexOf(a.mag);
-    if (i >= 0) out.push('K' + i);
-  }
-  return out.join('');
-}
-
-// Legacy positional decoder for the original dash-joined ID format.
-function decodeAttsLegacy(weapon, str) {
-  const atts = defaultAttsForWeapon(weapon);
-  const valid = (key, v) => {
-    switch (key) {
-      case 'sight':  return !!ATT_BY_ID.SIGHTS[v];
-      case 'muzzle': return !!ATT_BY_ID.MUZZLES[v];
-      case 'barrel': return !!ATT_BY_ID.BARRELS[v];
-      case 'grip':   return !!ATT_BY_ID.GRIPS[v];
-      case 'laser':  return !!(ATT_BY_ID.LASERS[v] || ATT_BY_ID.GRIPS[v] || ATT_BY_ID.LIGHTS[v]);
-      case 'light':  return !!ATT_BY_ID.LIGHTS[v];
-      case 'ammo':   return !!ATT_BY_ID.AMMO[v];
-      case 'ergo':   return !!ATT_BY_ID.ERGOS[v];
-      case 'mag':    return !!WEAPON_MAG[weapon.id]?.mags?.[v];
-      default:       return false;
-    }
-  };
-  str.split('-').forEach((v, i) => {
-    const k = ATT_ORDER[i];
-    if (!k || v == null) return;
-    if (v === '') { if (k === 'mag') atts.mag = null; return; }
-    if (valid(k, v)) atts[k] = v;
-  });
-  return atts;
-}
-
-function decodeAtts(weapon, str) {
-  if (!str) return defaultAttsForWeapon(weapon);
-  if (str.includes('-')) return decodeAttsLegacy(weapon, str);
-  const atts = defaultAttsForWeapon(weapon);
-  const magKeys = magKeysFor(weapon);
-  const set = (arr, i, slot) => { if (arr[i]) atts[slot] = arr[i].id; };
-  let m;
-  const re = /([A-Z])(\d+)/g;
-  while ((m = re.exec(str))) {
-    const k = m[1], i = +m[2];
-    if      (k === 'S') set(SIGHTS,  i, 'sight');
-    else if (k === 'M') set(MUZZLES, i, 'muzzle');
-    else if (k === 'B') set(BARRELS, i, 'barrel');
-    else if (k === 'G') set(GRIPS,   i, 'grip');
-    else if (k === 'L') set(LASERS,  i, 'laser');
-    else if (k === 'R') set(GRIPS,   i, 'laser');
-    else if (k === 'H') set(LIGHTS,  i, 'laser');
-    else if (k === 'T') set(LIGHTS,  i, 'light');
-    else if (k === 'A') set(AMMO,    i, 'ammo');
-    else if (k === 'E') set(ERGOS,   i, 'ergo');
-    else if (k === 'K' && magKeys[i]) atts.mag = magKeys[i];
-  }
-  return atts;
-}
-
 function encodeState() {
   return shareCodec.encodeState(state, selectedRecoilShotCount);
 }
@@ -536,16 +449,23 @@ function setPanelCollapsed(key, collapsed) {
 
 function applyChartStateToDom() {
   const { mode, btkHS, showAds, showVel } = state.chart;
-  document.getElementById('modeDmg').classList.toggle('on', mode === 'dmg');
-  document.getElementById('modeBtk').classList.toggle('on', mode === 'btk');
-  document.getElementById('modeTtk').classList.toggle('on', mode === 'ttk');
+  const press = (id, on) => {
+    const el = document.getElementById(id);
+    el.classList.toggle('on', on);
+    el.setAttribute('aria-pressed', String(on));
+  };
+  press('modeDmg', mode === 'dmg');
+  press('modeBtk', mode === 'btk');
+  press('modeTtk', mode === 'ttk');
   const isTtk = mode === 'ttk';
   const adsBtn = document.getElementById('adsToggleBtn');
   adsBtn.style.display = isTtk ? '' : 'none';
   adsBtn.classList.toggle('on', isTtk && showAds);
+  adsBtn.setAttribute('aria-pressed', String(isTtk && showAds));
   const velBtn = document.getElementById('velToggleBtn');
   velBtn.style.display = isTtk ? '' : 'none';
   velBtn.classList.toggle('on', isTtk && showVel);
+  velBtn.setAttribute('aria-pressed', String(isTtk && showVel));
   const sel = document.getElementById('btkHsSelect');
   sel.style.display = (mode === 'btk' || mode === 'ttk') ? '' : 'none';
   sel.value = btkHS;
@@ -569,6 +489,7 @@ function restoreFromUrl() {
   // Reflect the pieces of state that render functions don't set themselves.
   if (state.comparing) {
     document.getElementById('cmpBtn').classList.add('on');
+    document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
     document.getElementById('cmpSection').style.display = 'block';
   }
   setSimContext({ aimState: state.recoil.aim, stanceState: state.recoil.stance });
@@ -591,8 +512,10 @@ function buildClassFilter(containerId, slotIdx) {
   CLASSES.forEach(c => {
     const b = document.createElement('button');
     b.className = 'cbtn' + (c === activeClass ? ' on' : '');
+    b.type = 'button';
     b.textContent = CLASS_SHORT[c];
     b.title = c;
+    b.setAttribute('aria-pressed', String(c === activeClass));
     b.onclick = () => {
       state.slots[slotIdx].cls = c;
       renderSidebar();
@@ -611,8 +534,10 @@ function buildWeaponList(containerId, slotIdx) {
     const isActive = w === slot.weapon;
     const b = document.createElement('button');
     b.className = 'wbtn' + (isActive ? (slotIdx === 0 ? ' p1' : ' p2') : '');
+    b.type = 'button';
     b.textContent = weaponDisplayLabel(w);
     b.setAttribute('aria-label', weaponAriaLabel(w));
+    b.setAttribute('aria-pressed', String(isActive));
     b.onclick = () => {
       slot.weapon = w;
       resetAttsForWeapon(slot.atts, w);
@@ -673,6 +598,7 @@ function cloneCompareLoadout() {
   state.slots[1].weapon = state.slots[0].weapon;
   state.slots[1].atts = { ...state.slots[0].atts };
   document.getElementById('cmpBtn').classList.add('on');
+  document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
   document.getElementById('cmpSection').style.display = 'block';
   renderSidebar();
   renderStats();
@@ -933,30 +859,23 @@ function renderOverview() {
 
 function setChartMode(m) {
   state.chart.mode = m;
-  document.getElementById('modeDmg').classList.toggle('on', m === 'dmg');
-  document.getElementById('modeBtk').classList.toggle('on', m === 'btk');
-  document.getElementById('modeTtk').classList.toggle('on', m === 'ttk');
   const isTtk = m === 'ttk';
   if (!isTtk) {
     state.chart.showAds = false;
     state.chart.showVel = false;
-    document.getElementById('adsToggleBtn').classList.remove('on');
-    document.getElementById('velToggleBtn').classList.remove('on');
   }
-  document.getElementById('adsToggleBtn').style.display = isTtk ? '' : 'none';
-  document.getElementById('velToggleBtn').style.display = isTtk ? '' : 'none';
-  document.getElementById('btkHsSelect').style.display = (m === 'btk' || m === 'ttk') ? '' : 'none';
+  applyChartStateToDom();
   renderChart();
 }
 function toggleAdsToggle() {
   state.chart.showAds = !state.chart.showAds;
-  document.getElementById('adsToggleBtn').classList.toggle('on', state.chart.showAds);
+  applyChartStateToDom();
   renderChart();
   renderBTK();
 }
 function toggleVelToggle() {
   state.chart.showVel = !state.chart.showVel;
-  document.getElementById('velToggleBtn').classList.toggle('on', state.chart.showVel);
+  applyChartStateToDom();
   renderChart();
   renderBTK();
 }
@@ -1379,6 +1298,11 @@ function setRecoilView(view) {
     el.classList.add('rc-view-swap');
   });
   renderRecoil();
+  if (next === 'target') {
+    whenTargetImageReady().then(() => {
+      if (state.recoil.view === 'target') renderRecoil();
+    });
+  }
 }
 /**
  * Ctrl+click mirrors what the player actually does: point somewhere and fire a
@@ -1679,28 +1603,6 @@ function signedOppositeDegrees(deg) {
   return n > 180 ? n - 360 : n;
 }
 
-function selectedEffectiveSpreadMax(w) {
-  const [baseline, sMax] = spreadBounds(w);
-  const sInc = selectedSpreadIncFor(w);
-  if (sInc === 0) return baseline;
-  const { firing, notFiring } = spreadRecoveries(w);
-  const clamp = v => Math.min(Math.max(v, baseline), sMax);
-  let s = baseline;
-  for (let i = 0; i < SPREAD_EFFECTIVE_MAX_SHOTS; i++) {
-    s = clamp(s + sInc);
-    const shotIdx = i + 1;
-    const T = shotIntervalAfter(w, shotIdx);
-    if (isBurstGapAfter(w, shotIdx)) {
-      const firingTime = Math.min(60 / (w.rpm ?? 600), T);
-      const notFiringTime = Math.max(0, T - firingTime);
-      s = applySpreadRecovery(s, firingTime, firing, baseline, sMax);
-      s = applySpreadRecovery(s, notFiringTime, notFiring, baseline, sMax);
-    } else {
-      s = applySpreadRecovery(s, T, firing, baseline, sMax);
-    }
-  }
-  return +s.toFixed(3);
-}
 function selectedRecoilDirectionFor(w) { return recoilGroup(w).dir ?? w.recoilDir ?? 0; }
 
 /**
@@ -2175,15 +2077,21 @@ function renderRecoil() {
   ]);
 
   const { aim, stance, layers, refSeed } = state.recoil;
-  document.getElementById('rcModeScatter')?.classList.toggle('on', layers.scatter);
-  document.getElementById('rcModeSpread')?.classList.toggle('on', layers.spray);
-  document.getElementById('rcModePath')?.classList.toggle('on', layers.path);
-  document.getElementById('rcSpreadToggleBtn')?.classList.toggle('on', layers.spread);
-  document.getElementById('rcConeToggleBtn')?.classList.toggle('on', layers.cone);
-  document.getElementById('rcAimAds')?.classList.toggle('on', aim === 'ads');
-  document.getElementById('rcAimHip')?.classList.toggle('on', aim === 'hip');
-  document.getElementById('rcStanceStand')?.classList.toggle('on', stance === 'stand');
-  document.getElementById('rcStanceMove')?.classList.toggle('on', stance === 'move');
+  const pressed = (id, on) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.toggle('on', on);
+    el.setAttribute('aria-pressed', String(on));
+  };
+  pressed('rcModeScatter', layers.scatter);
+  pressed('rcModeSpread', layers.spray);
+  pressed('rcModePath', layers.path);
+  pressed('rcSpreadToggleBtn', layers.spread);
+  pressed('rcConeToggleBtn', layers.cone);
+  pressed('rcAimAds', aim === 'ads');
+  pressed('rcAimHip', aim === 'hip');
+  pressed('rcStanceStand', stance === 'stand');
+  pressed('rcStanceMove', stance === 'move');
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
@@ -2275,8 +2183,8 @@ function renderRecoil() {
       ? `Optic magnification. The plot shows the same field a ${magnification.toFixed(2)}× sight would at this range.`
       : 'Horizontal half-span of the plot, in degrees.';
   }
-  document.getElementById('rcPlatformPc')?.classList.toggle('on', state.recoil.platform === 'pc');
-  document.getElementById('rcPlatformConsole')?.classList.toggle('on', state.recoil.platform === 'console');
+  pressed('rcPlatformPc', state.recoil.platform === 'pc');
+  pressed('rcPlatformConsole', state.recoil.platform === 'console');
   syncCompensationControls();
 
   const spreadPreset = document.getElementById('rcSpreadPreset');
@@ -2492,8 +2400,8 @@ function renderRecoil() {
     })(),
     (() => {
       const barScale = SPREAD_BAR_SCALE;
-      const e1 = w1 ? selectedEffectiveSpreadMax(w1) : null;
-      const e2 = w2 ? selectedEffectiveSpreadMax(w2) : null;
+      const e1 = w1 ? effectiveSpreadMax(w1) : null;
+      const e2 = w2 ? effectiveSpreadMax(w2) : null;
       const b1 = w1 ? spreadBounds(w1) : null, b2 = w2 ? spreadBounds(w2) : null;
       const mn1 = b1 ? b1[0] : null, mn2 = b2 ? b2[0] : null;
       const fmtR = (mn, mx) => mn != null && mx != null ? `${mn.toFixed(2)}° → ${mx.toFixed(2)}°` : null;
@@ -2573,9 +2481,33 @@ function renderRecoil() {
 
 // ── LOADOUT OVERLAY ───────────────────────────────────────────────────────────
 
+let loadoutOverlayOpener = null;
+
 function setLoadoutOverlay(open) {
-  document.body.classList.toggle('loadout-open', !!open);
-  document.getElementById('loadoutOpenBtn')?.setAttribute('aria-expanded', open ? 'true' : 'false');
+  const shouldOpen = !!open;
+  const panel = document.getElementById('loadoutPanel');
+  const main = document.getElementById('main');
+  const header = document.querySelector('header');
+  if (shouldOpen) loadoutOverlayOpener = document.activeElement;
+  document.body.classList.toggle('loadout-open', shouldOpen);
+  document.getElementById('loadoutOpenBtn')?.setAttribute('aria-expanded', String(shouldOpen));
+  if (panel) {
+    if (shouldOpen) {
+      panel.setAttribute('role', 'dialog');
+      panel.setAttribute('aria-modal', 'true');
+    } else {
+      panel.removeAttribute('role');
+      panel.removeAttribute('aria-modal');
+    }
+  }
+  if (main) main.inert = shouldOpen;
+  if (header) header.inert = shouldOpen;
+  if (shouldOpen) {
+    requestAnimationFrame(() => document.getElementById('loadoutCloseBtn')?.focus());
+  } else if (loadoutOverlayOpener instanceof HTMLElement) {
+    loadoutOverlayOpener.focus();
+    loadoutOverlayOpener = null;
+  }
 }
 
 // ── MOBILE TOOLTIPS ─────────────────────────────────────────────────────────────
@@ -2781,6 +2713,7 @@ function bindEvents() {
   document.getElementById('cmpBtn').addEventListener('click', () => {
     state.comparing = !state.comparing;
     document.getElementById('cmpBtn').classList.toggle('on', state.comparing);
+    document.getElementById('cmpBtn').setAttribute('aria-pressed', String(state.comparing));
     document.getElementById('cmpSection').style.display = state.comparing ? 'block' : 'none';
     if (!state.comparing) {
       state.slots[1].weapon = null;
@@ -2835,7 +2768,26 @@ function bindEvents() {
   document.getElementById('loadoutOpenBtn')?.addEventListener('click', () => setLoadoutOverlay(true));
   document.getElementById('loadoutCloseBtn')?.addEventListener('click', () => setLoadoutOverlay(false));
   document.getElementById('loadoutBackdrop')?.addEventListener('click', () => setLoadoutOverlay(false));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') setLoadoutOverlay(false); });
+  const desktopLoadout = matchMedia('(min-width: 981px)');
+  desktopLoadout.addEventListener?.('change', () => {
+    if (desktopLoadout.matches && document.body.classList.contains('loadout-open')) setLoadoutOverlay(false);
+  });
+  document.addEventListener('keydown', e => {
+    if (!document.body.classList.contains('loadout-open')) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      setLoadoutOverlay(false);
+      return;
+    }
+    if (e.key !== 'Tab') return;
+    const panel = document.getElementById('loadoutPanel');
+    const focusable = [...panel.querySelectorAll('button:not(:disabled),select:not(:disabled),input:not(:disabled),a[href]')]
+      .filter(el => el.getClientRects().length);
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable.at(-1);
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   // Chart mode
   document.getElementById('modeDmg').addEventListener('click', () => setChartMode('dmg'));
@@ -3010,6 +2962,3 @@ renderSidebar();
 renderStats();
 _restoringUrl = false;
 initMobileTooltips();
-whenTargetImageReady().then(() => {
-  if (state.recoil.view === 'target') renderRecoil();
-});

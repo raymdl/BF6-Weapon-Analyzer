@@ -171,7 +171,7 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
   --scard-min:108px;--scard-max:127px;--sgrid-gap:5px;--sgroup-chrome:12px;
   --capture-width:1280px;--sgroups-inset:34px;
   max-width:calc(var(--capture-width) - var(--sgroups-inset))}
-.sgrow{display:flex;align-items:start;gap:20px}
+.sgrow{display:flex;align-items:start;gap:20px;flex-wrap:wrap}
 /* renderStatCards sets --n to the card count. The group then reproduces the
    width it had when cards were pinned at --scard-min, and grows from there in
    proportion to --n, so spare width splits by card count and every card lands
@@ -238,7 +238,7 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .rc-control-group .rc-group-row{flex-wrap:nowrap}
 .rc-group-row-grow{flex:1 1 auto;min-width:0}
 .rc-group-row-grow .rc-shots-input{width:100%}
-.rc-sub{font-size:0.58rem;letter-spacing:.05em;text-transform:uppercase;color:#6f7e7e;flex-shrink:0;margin:0}
+.rc-sub{font-size:0.58rem;letter-spacing:.05em;text-transform:uppercase;color:#93a0a0;flex-shrink:0;margin:0}
 .rc-group-row{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .rc-shots-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:106px;outline:none}
 .rc-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:3px 5px;font:inherit;font-size:0.65rem;min-height:22px;cursor:pointer;outline:none;min-width:0}
@@ -383,7 +383,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .target-zone-table tbody th{font-weight:500;color:#aab7b7}
 .target-zone-table tbody td{color:#c6d0d0}
 .target-zone-table tbody tr:last-child th,.target-zone-table tbody tr:last-child td{border-bottom:none}
-.target-impact-note{font-size:.6rem;line-height:1.4;color:#667474}
+.target-impact-note{font-size:.6rem;line-height:1.4;color:#93a0a0}
 /* Damage read-out coloring — after the base cell colors so it wins. */
 .target-zone-table tbody tr.no-hits th,.target-zone-table tbody tr.no-hits td{opacity:.5}
 .target-impact-summary strong.dmg-kill{color:var(--red)}
@@ -493,6 +493,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
   .w-header{gap:6px}
   .wname,.wname2{font-size:1rem}
   .sgrow{flex-direction:column}
+  .sgroup{width:100%;flex-basis:auto}
   .scard{padding:7px 8px}
   #statsArea > .panel:nth-of-type(2) > div > div{padding:10px!important}
   #statsArea > .panel:nth-of-type(2) > div > div:first-child > div:first-child{align-items:flex-start!important;flex-direction:column;gap:7px}
@@ -525,13 +526,17 @@ canvas.rcv:focus-visible{outline-offset:-2px}
   .footer{align-items:flex-start;flex-direction:column;padding:7px 10px;gap:4px}
 }
 @media (max-width:430px){
-  .sgrid{grid-template-columns:1fr}
+  .sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .scard{max-width:none}
   .att-grid{grid-template-columns:1fr}
   .mode-btn{padding-inline:7px}
   .rc-mode-btn{min-width:auto!important}
   .rc-shots-input{width:92px}
   .chart-wrap{height:188px}
+}
+@media (max-width:340px){.sgrid{grid-template-columns:1fr}}
+@media (pointer:coarse){
+  .loadout-btn,.cbtn,.wbtn,.mode-btn,.rc-tab,.rc-scale-btn,.loadout-close{min-height:36px}
 }
 </style>
 </head>
@@ -544,15 +549,15 @@ canvas.rcv:focus-visible{outline-offset:-2px}
     <a class="legacy-link" href="./v1.3.1.0/">1.3.1.0</a>
     <a class="legacy-link" href="./v1.2.3.0/">1.2.3.0</a>
   </div>
-  <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections">Loadout</button>
+  <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections" aria-controls="loadoutPanel" aria-expanded="false">Loadout</button>
 </header>
 <div class="app">
-  <aside class="sidebar">
+  <aside class="sidebar" id="loadoutPanel" aria-labelledby="loadoutTitle">
     <div class="loadout-modal-head">
-      <div class="loadout-modal-title">Loadout</div>
-      <button class="loadout-close" id="loadoutCloseBtn" type="button" title="Close loadout panel">×</button>
+      <div class="loadout-modal-title" id="loadoutTitle">Loadout</div>
+      <button class="loadout-close" id="loadoutCloseBtn" type="button" title="Close loadout panel" aria-label="Close loadout panel">×</button>
     </div>
-    <button class="cmp-btn" id="cmpBtn">+ Compare Loadout</button>
+    <button class="cmp-btn" id="cmpBtn" aria-pressed="false">+ Compare Loadout</button>
     <div class="sb-scroll">
       <div class="sb-sec">
         <div class="sb-lbl">Class</div>
@@ -577,7 +582,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
       </div>
     </div>
   </aside>
-  <div class="loadout-backdrop" id="loadoutBackdrop"></div>
+  <div class="loadout-backdrop" id="loadoutBackdrop" aria-hidden="true"></div>
   <main class="main" id="main">
     <div class="empty" id="emptyState">
       <div class="empty-t">Select a weapon to begin</div>
@@ -608,11 +613,11 @@ canvas.rcv:focus-visible{outline-offset:-2px}
                 <button class="panel-toggle" data-collapse="charts" data-collapse-label="the damage chart and kill table" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Comparison Chart</div>
                 <div class="chart-mode-controls" style="display:flex;gap:3px">
-                  <button class="mode-btn on" id="modeDmg" title="Shows damage per shot across range.">DMG</button>
-                  <button class="mode-btn" id="modeBtk" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
-                  <button class="mode-btn" id="modeTtk" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
-                  <button class="mode-btn" id="adsToggleBtn" style="display:none;margin-left:6px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
-                  <button class="mode-btn" id="velToggleBtn" style="display:none" title="Adds the lethal projectile's level-target flight time once to the TTK chart and table.">+VEL</button>
+                  <button class="mode-btn on" id="modeDmg" aria-pressed="true" title="Shows damage per shot across range.">DMG</button>
+                  <button class="mode-btn" id="modeBtk" aria-pressed="false" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
+                  <button class="mode-btn" id="modeTtk" aria-pressed="false" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
+                  <button class="mode-btn" id="adsToggleBtn" aria-pressed="false" style="display:none;margin-left:6px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
+                  <button class="mode-btn" id="velToggleBtn" aria-pressed="false" style="display:none" title="Adds the lethal projectile's level-target flight time once to the TTK chart and table.">+VEL</button>
                 </div>
               </div>
               <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer">

@@ -91,6 +91,7 @@ export function computeAttPts(atts, weapon, data) {
 // Display-only casing fix: the corpus stores buckshot as "#01 BUCK"/"#00 BUCK",
 // which shouts next to every other title-cased option. The data keeps its name.
 const displayName = a => a.name.replace(/\bBUCK\b/g, 'Buck');
+let selectSequence = 0;
 
 export function attDisplayName(a) {
   return isAssumedAtt(a) ? `${displayName(a)}*` : displayName(a);
@@ -126,11 +127,13 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   if (!options.length) return;
   const row = document.createElement('div');
   row.className = 'att-row';
-  const span = document.createElement('span');
-  span.className = 'att-lbl';
-  span.textContent = label;
+  const labelEl = document.createElement('label');
+  labelEl.className = 'att-lbl';
+  labelEl.textContent = label;
   const sel = document.createElement('select');
   sel.className = 'att-sel';
+  sel.id = `att-select-${++selectSequence}`;
+  labelEl.htmlFor = sel.id;
   options.forEach(optData => {
     const opt = document.createElement('option');
     opt.value = optData.id;
@@ -146,7 +149,7 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
       onChange(sel.value);
     };
   }
-  row.appendChild(span);
+  row.appendChild(labelEl);
   row.appendChild(sel);
   container.appendChild(row);
 }

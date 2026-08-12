@@ -1,6 +1,0 @@
-import fs from 'node:fs';import path from 'node:path';
-const root=path.resolve('migration/1.3.3.0/attachment-audit');
-const names=fs.readdirSync(root).filter(n=>n.endsWith('.json')&&/idempotence|before/i.test(n)&&!n.startsWith('attachment-screenshot-review.pre-'));
-function restore(v){if(Array.isArray(v)){for(const x of v)restore(x);return;}if(!v||typeof v!=='object')return;const type=v.attachmentType??v.type,name=v.attachmentName??v.name;if(type==='Magazine'&&typeof name==='string'){const old=/Fast Mag/i.test(name)?'Fast':'Magazine';if('attachmentSubtype'in v&&/^\d+ (?:Rnd|Fast|Shell)$/.test(v.attachmentSubtype??''))v.attachmentSubtype=old;if('subtype'in v&&/^\d+ (?:Rnd|Fast|Shell)$/.test(v.subtype??''))v.subtype=old;if(v.updates&&/^\d+ (?:Rnd|Fast|Shell)$/.test(v.updates.attachmentSubtype??''))v.updates.attachmentSubtype=old;}for(const x of Object.values(v))restore(x);}
-const restored=[];for(const name of names){const p=path.join(root,name);try{const d=JSON.parse(fs.readFileSync(p,'utf8'));const before=JSON.stringify(d);restore(d);if(JSON.stringify(d)!==before){fs.writeFileSync(p,`${JSON.stringify(d,null,2)}\n`);restored.push(name);}}catch{}}
-console.log(JSON.stringify({restored},null,2));

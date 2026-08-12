@@ -9,8 +9,6 @@ import {
   setAttachmentContext,
   VELOCITY_DISPLAY_EPSILON,
 } from '../sim/applyAttachments.js';
-import { compareBarrelVelocityLegacyAndDerived, buildEquivalenceEnumeration } from './attachment-equivalence.mjs';
-
 const root = join(import.meta.dirname, '..');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
 const attachments = readJson('data/attachments.json');
@@ -128,17 +126,4 @@ test('velocity flooring has a guarded floating-point edge', () => {
   assert.deepEqual(nearIntegerProducts, []);
   assert.equal(floorVelocityDisplay(613.9999999999999), 614);
   assert.equal(floorVelocityDisplay(837.5), 837);
-});
-
-test('the full witness enumeration covers an explicit legacy velocity path', () => {
-  const enumeration = buildEquivalenceEnumeration();
-  const result = compareBarrelVelocityLegacyAndDerived(enumeration);
-  assert.equal(result.comparedCases, 101812);
-  assert.equal(result.mismatchCases, 0, JSON.stringify(result.mismatches));
-  assert.equal(result.historicalDisplayDifferencePairs, 23);
-  assert.equal(result.unexplainedHistoricalDisplayDifferencePairs, 0, JSON.stringify(result.unexplainedHistoricalDisplayDifferences));
-  assert.equal(result.corpusEvidence.explainedRecords, 25);
-  assert.equal(result.corpusEvidence.unexplainedRecords, 0);
-  assert.equal(result.corpusEvidence.indiscriminatingRecords, 69);
-  assert.equal(result.corpusEvidence.discriminatingRecords, 25);
 });

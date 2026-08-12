@@ -1,389 +1,110 @@
-# BF6 Weapon Analyzer — Maintenance Guide
+# Maintenance Guide
 
-Quick reference for updating the tool when the game patches.
+This guide describes the current live project. The default maintenance path is a direct, reviewed
+change to the smallest relevant source file followed by the narrowest meaningful validation.
 
----
+## Before editing
 
-## File Map
+1. Confirm the checkout and branch you intend to change.
+2. Inspect `git status` and preserve unrelated local work.
+3. Identify whether the change affects live runtime data, simulation logic, presentation only,
+   published historical pages, or the ad-hoc attachment reference.
+4. Keep exact source provenance when changing supplied values.
 
-```
-data/
-  weapons.json          ← All weapon base stats (one object per weapon)
-  attachments.json      ← All attachments + per-weapon availability/costs
-  ammo.json             ← Ammo types + per-weapon availability/costs
-  recoil_decay.json     ← Recoil recovery tables (RECOIL_DEC, _EXP, _TEXP)
-  balance_tables.json   ← Tier tables (ADS speed, sprint recovery, spread, etc.)
+## Routine commands
 
-  ballistics.json       ← Per-weapon gravity/drag inputs for the projectile model
-
-sim/
-  core.js               ← Shared simulation math (recoil, spread)
-  damage.js             ← Damage falloff, hit zones, bullets-to-kill
-  ballistics.js         ← Flight time, trajectory, zero-relative drop
-  applyAttachments.js   ← Applies attachment effects to a weapon object
-  loadout.js            ← Shared loadout defaults, point totals, and attachment UI
-  attachments.js        ← Ordered list of attachment slot types (UI metadata)
-  target.js             ← Soldier Target geometry, zones, and impact summary
-  share-state.js        ← URL-hash loadout share codec
-
-scripts/
-  validate-data.mjs     ← Cross-file data integrity checks used by CI
-  validate-ship-surface.mjs ← Checks the runtime boundary still matches index.html
-```
-
-Both pages (`index.html`, `preview_spread.html`)
-load from these files. **One edit → all pages updated.**
-
-All eight weapon classes are fully supported in the UI, including `Sidearm` (displayed
-as `Pistol` in the class filter). The `v1.2.3.0/` and `v1.3.1.0/` directories are frozen
-archives of previous versions of the site — never edit them during normal maintenance.
-
----
-
-### Screenshot override ledger
-
-Screenshot corrections in `migration/1.3.3.0/attachment-audit/manual-review-overrides.json` are keyed on
-`sourcePath`, which must equal the record's `source.currentPath`. Any screenshot renumbering pass
-must re-key the ledger at the same time; otherwise corrections silently become orphaned and will
-not apply on re-import. After renumbering, assert that every ledger path exists and that no path
-is duplicated before rebuilding derived artifacts.
-
-### Ammo stat rules
-
-`headshotMultiplier`, `collateralMultiplier` and `opponentHealthRegenDelaySeconds` follow from the
-weapon class and the equipped ammunition, so they are checkable without re-reading screenshots:
-
-```
-python scripts/validate-ammo-stat-rules.py
-```
-
-This must report zero violations. Run it after any transcription batch — it caught 283 bad values
-on 2026-08-01. The rules, and the per-weapon exceptions that matter more than the rules, are in
-section 21 of `migration/1.3.3.0/BF6_ATTACHMENT_SCREENSHOT_AUDIT_INSTRUCTIONS.md`. A new violation is usually a bad
-transcription, but confirm the weapon against its screenshot before mass-correcting: on the first
-run, 213 of 494 violations were the rules being incomplete rather than the data being wrong.
-
-Two known traps live in that section. The GRT-CPS and VSSM do not default to Standard ammo, so
-their non-ammo captures show a different row. The EF88 and BROD 3 headshot values intentionally
-disagree with their screenshots because EA has confirmed those stat screens are bugged — do not
-"correct" them back to the captured value.
-
-### Estimated weapons (current roster: 61)
-
-BROD 3 and EF88 are the only estimated weapons. They are explicitly marked with `estimated: true`
-and an `ESTIMATED` UI badge. BROD 3 uses the GRT-BC donor/model with confirmed `recoilDir: -16`;
-EF88 uses the B36A4/L85A3 midpoint where needed with confirmed `recoilDir: +12` and the exact
-donor midpoint for `recoilV`. Their damage curves remain `provisional`: BROD 3 uses the GRT-BC
-dropoff model with measured endpoints 26 and 14, while EF88 uses the L85A3 model with measured
-endpoints 26 and 17. Unknown donor-derived fields are listed in
-`data/provenance/brod3-ef88-estimates-1.3.3.0.json` and must not be described as direct measurements.
-
-When Sym publishes full statistics, replace the donor-derived fields and provisional damage curves,
-remove the estimate state only after the replacement is validated, and retain VSSM excluded until
-the same publication gate is met. The prior “do not add” guidance is superseded only for BROD 3 and
-EF88 under these constraints.
-
-## Patch Update Workflow
-
-```mermaid
-flowchart TD
-    P["Game patch / season drop"] --> N["Read patch notes —<br/>capture exact numbers now"]
-    P --> SY["Wait for sym.gg datamine<br/>(spread, recoil, velocity tables)"]
-    N --> E["Edit data/*.json<br/>(checklists below)"]
-    SY --> E
-    E --> V["node scripts/validate-data.mjs"]
-    V -- fail --> E
-    V -- pass --> L["Local check via serve.bat —<br/>spot-check BTK/TTK vs sym.gg,<br/>eyeball recoil/spread sim"]
-    L --> AR{"New balance<br/>version?"}
-    AR -- yes --> F["Freeze current site into vX.Y.Z.0/<br/>archive + add archive button"]
-    AR -- no --> H["Update header season tag,<br/>footer data credit +<br/>assets/og-image.png chip"]
-    F --> H
-    H --> C["Commit + push<br/>(CI re-runs validate-data)"]
-```
-
-For a visual explanation of how the recoil/spread simulation itself works, see the
-**Recoil / Spread Model** section in `CODE_DOCUMENTATION.md`.
-
----
-
-## Season / Patch Checklist
-
-### New Weapon
-
-1. Add entry to `data/weapons.json`
-   - Copy the shape from an existing weapon of the same class
-   - Required fields: `id`, `name`, `cls`, `cal`, `rpm`, `mag`, `tacRld`,
-     `emptyRld`, `bulletVel`, `recoilV`, `recoilDir`, `recoilVar`,
-     `recoilIncAds`, `spreadMax`, `adsTime`, `fireMode`
-   - For burst weapons: also add `burstRounds` (rounds per trigger pull) and
-     `burstBurstsPerMinute` (burst cadence; `rpm` stays as the average full-auto
-     equivalent used for TTK; the burst sim uses `burstBurstsPerMinute`)
-   - Strongly recommended: `recoil.ads` (and `.hip`) groups with the full sym.gg
-     formula inputs — `amount`/`amountMult`/`amountExp`,
-     `dirVar`/`dirVarMult`/`dirVarExp`, and decay fields. The recoil **variation**
-     tier ladder reads `dirVarMult`/`dirVarExp` from this group; without it,
-     variation tier attachments (Convertor, burst ergos) have no effect on the
-     weapon. Every current weapon has a `recoil.ads` group.
-   - Also important: `spread` (per-stance min/max), `spreadDyn` (spread dynamics),
-     `dmg` (range dropoff array)
-   - Conventions: top-level `recoilV` is the **effective** value
-     (`amount × amountMult^amountExp`); top-level `recoilVar` is the **raw**
-     `ADSRecoilDirectionVariation` — the effective value is derived at runtime
-2. Add entry to `data/attachments.json` → `WEAPON_ATTS`
-   - Keys: `muzzle`, `barrel`, `barrelDef`, `laser`, `light`, `grip` (arrays of IDs)
-   - Every slot key must be present for non-sidearm weapons (CI enforces this).
-     Use an explicit empty array (e.g. `"grip": []` on the USG-90) when the weapon
-     deliberately takes nothing in a slot
-   - For weapons that merge light options into the Laser dropdown: add
-     `laserLightCombined: true`
-   - For the VZ.61 (grip+laser+light all in Laser dropdown): add
-     `laserGripLightCombined: true`
-3. Add magazine data to `data/attachments.json` → `WEAPON_MAG`
-    - **Required per weapon**: `defAds`, `defSpr`, `defAms` (**0-based** base tier indices), `drawTimeTier`,
-      `drawTimeGroup`, `drawTimeOffset`, `def` (default mag ID),
-     and a `mags` object with every available magazine
-   - **Per magazine**: `name`, `pts`, `mag` (capacity), `tacRld` (ms), `adsTimeTierShift`,
-     `sprintRecoveryTierShift`, `adsMoveSpeedTierShift`
-   - Sidearms: set `sprintRecoveryTierTable: "sidearm"` to use `SIDEARM_SPRINT_REC_TIERS`
-    - **Deriving draw time**: `drawTimeTier` is the zero-based coordinate on the shared
-      Sprint-to-Fire/Deploy axis. Primary weapons use the primary sprint origin; sidearms use
-      the explicit sidearm origin. Select exactly one approved `drawTimeGroup` and its matching
-      rung offset from `DRAW_TIME_AXIS`; offsets are not milliseconds or raw deploy-table indices.
-   - All three base indices are 0-based as of Phase 2b-iv; `scripts/validate-data.mjs` rejects
-     any value outside `[0, table.length - 1]`, selecting the primary or sidearm sprint table by
-     `sprintRecoveryTierTable`. A 1-based value from an older note will now fail validation
-     rather than silently shifting every stat by one tier.
-   - Capture all magazine screenshots in-game (one per mag, with Basic barrel + Iron Sights)
-     so tier shifts can be back-calculated from the displayed ADS time, sprint recovery, and
-     ADS move speed multiplier values. Use `ADS_SPD_TIERS`, the sprint recovery tables, and
-     `ADS_MOVE_TIERS` in `data/balance_tables.json` to map display values to tier indices.
-   - Verify `defAds` by confirming the displayed ADS time on the default mag with a known
-     barrel (e.g. Basic barrel adds `adsTimeTierMod: +1`)
-4. Add ammo data to `data/ammo.json` → `WEAPON_AMMO` (if non-standard)
-5. Add ergo data to `data/attachments.json` → `WEAPON_ERGO` (if applicable)
-6. Add recoil decay values to `data/recoil_decay.json`
-   - `RECOIL_DEC`, `RECOIL_DEC_EXP`, `RECOIL_DEC_TEXP` (keyed by weapon id)
-7. Add hip spread class to `data/balance_tables.json` → `HIP_CLS`
-8. Add headshot multiplier to `data/balance_tables.json` → `BASE_HS_MULT`
-   (only if it differs from the default 1.34)
-9. Add limb-damage class to `data/balance_tables.json` → `LIMB_CLASS`
-   (`auto` for AR/Carbine/SMG/LMG incl. burst rifles, `dmr`, `sniper`;
-   omit for shotguns and sidearms)
-
-### Weapon Stat Changes (recoil, spread, damage, ADS time, etc.)
-
-Edit the relevant weapon object in `data/weapons.json`.
-
-- **Recoil per shot**: `recoilV` (effective) and `recoil.ads.amount` + multiplier/exponent
-- **Recoil direction**: `recoilDir` and/or `recoil.ads.dir`
-- **Recoil variation**: `recoilVar` (raw) and `recoil.ads.dirVar`; if the patch changes
-  the weapon's tier multiplier or baked exponent, update `recoil.ads.dirVarMult` /
-  `dirVarExp` — the app computes the effective value from these
-- **Recoil decay**: `data/recoil_decay.json` → `RECOIL_DEC[weaponId]` etc., or the
-  decay fields in the weapon's `recoil.ads` group
-- **Spread per shot**: `recoilIncAds` (ADS) or `spreadDyn.hip.inc` (hip)
-- **Spread min/max**: `spread.adsStand`, `spread.adsMove`, `spread.hipStand`, `spread.hipMove`
-- **Damage dropoff**: `dmg` array — `[{r: range_m, d: damage}, ...]`
-- **Fire rate**: `rpm`
-- **ADS time**: `adsTime` (base ms); tier offsets live in `data/attachments.json`
-
-### New Attachment (new muzzle, barrel type, etc.)
-
-1. Add the attachment object to the relevant array in `data/attachments.json`
-   (`MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`, `ERGOS`)
-   - Include the effect fields that apply (see reference table below); omit
-     fields that don't apply — every reader defaults to the neutral value
-2. Add the attachment ID to `WEAPON_ATTS[weaponId].muzzle/barrel/etc.` for
-   every weapon that can equip it
-3. If it's a **new slot type** (e.g. Underbarrel): add one entry to
-   `sim/attachments.js` → `ATTACHMENT_SLOT_KEYS`, and add handling for its
-   effects in `sim/applyAttachments.js`. If the slot should render in the
-   shared sidebar or count toward attachment points, update `sim/loadout.js`
-   as well.
-
-### New Ammo Type
-
-1. Add entry to `data/ammo.json` → `AMMO`
-2. Add it to `data/ammo.json` → `WEAPON_AMMO[weaponId].ammo` for each
-   applicable weapon, with its attachment point cost
-
-### Balance Table Changes (ADS speed tiers, sprint recovery tiers, etc.)
-
-Edit `data/balance_tables.json`:
-- `ADS_SPD_TIERS` — ADS time in ms per tier
-- `PRIMARY_SPRINT_REC_TIERS` / `SIDEARM_SPRINT_REC_TIERS` — sprint-to-fire recovery in ms
-  (`SPRINT_REC_TIERS` is the legacy fallback)
-- `DEPLOY_TIME_TIERS` — deploy time in ms per tier (placeholder scale)
-- `ADS_MOVE_TIERS` — ADS move speed multiplier per tier
-- `MOVING_ACC_TIERS` — moving ADS min spread in degrees per tier
-- `RECOIL_MULT` — per-weapon ADS recoil **amount** tier multiplier
-- `HIP_SPREAD_TIERS` — hip spread values by class and tier
-- `BASE_HS_MULT` — per-weapon base headshot multiplier
-- `LIMB_CLASS` — per-weapon limb-damage class (`auto` / `dmr` / `sniper`); omit for
-  shotguns and sidearms, which take no limb penalty (Update 1.3.3.0)
-- `LIMB_CLASS_MULT` — stomach/arm/leg damage multiplier per limb class
-- `AUTO_HS_MULT` — headshot multipliers for `auto`-class weapons keyed by ammo
-  (`standard`, `hp`, `synthetic`); non-auto weapons keep `BASE_HS_MULT` / ammo values
-
-Tier tables can be resized freely — `sim/applyAttachments.js` clamps indices to each
-table's actual length.
-
----
-
-## Attachment Effect Fields Reference
-
-When adding a new attachment, these are the fields `sim/applyAttachments.js`
-reads. Omit a field if the attachment has no effect there.
-
-| Field | Type | Neutral | Effect |
-|---|---|---|---|
-| `adsRecoilTierMod` | int | `0` | Shifts ADS recoil **amount** tier (pos = less recoil, via per-weapon `RECOIL_MULT`) |
-| `adsRecoilVariationTierMod` | int | `0` | Shifts ADS recoil **variation** tier (pos = less variation, via per-weapon `dirVarMult`) |
-| `adsRecoilDecayMult` | float | `1` | *(muzzles)* Multiplies ADS recoil decay factor (>1 = recovers faster) |
-| `hipSpreadTierMod` | int | `0` | Shifts hip spread tier (pos = worse) |
-| `spreadIncMult` | float | `1` | *(barrels)* Multiplies spread-per-shot in every aim state (`recoilIncAds` and `spreadDyn.*.inc`) |
-| `adsSpreadDecayBoost` | float | `0` | *(muzzles)* Extra ADS spread decay coefficient |
-| `spreadFiringDecCoefMult` | float | `1` | *(barrels)* Multiplies firing spread-recovery coefficient, every aim state |
-| `spreadFiringDecOffsetMult` | float | `1` | *(barrels)* Multiplies firing spread-recovery offset, every aim state |
-| `movingAdsSpreadTierMod` | int | `0` | Shifts moving-ADS min spread tier |
-| `adsTimeTierMod` | int | `0` | Shifts ADS speed tier (pos = faster) |
-| `adsMoveSpeedTierShift` | int | `0` | Shifts ADS move speed tier |
-| `velMult` | float | `1` | *(barrels)* Multiplies bullet velocity |
-| `sway` | float | `0` | *(muzzles)* Adds to weapon sway |
-| `worldSpot` | float | `54` | *(muzzles, ammo)* World spotting distance override; muzzle and ammo take the tighter value |
-| `minimapSpot` | float | `150` | *(muzzles, ammo)* Minimap spotting distance override; muzzle and ammo take the tighter value |
-| `suppressedMinimapSpot` | float | — | *(ammo)* Minimap spotting used when the muzzle is a suppressor (subsonic + suppressor stacks past either alone). The 9 m value is operator-confirmed in game 2026-08-03; no capture exists yet because every ammo panel in the corpus was shot without a muzzle and every suppressor panel with standard ammo. VSSM, whose integral suppressor pairs with inherently subsonic 9×39, is the only corpus record that shows it. |
-| `suppressor` | bool | `false` | *(muzzles)* Marks the muzzle as a suppressor for ammo interactions |
-| `hipSpreadDecayBoost` | float | `0` | *(lights)* Extra hipfire spread decay coefficient |
-| `laserVisible` | bool | — | *(lasers)* Whether the beam is visible to enemies |
-| `sprintRecoveryTierShift` | int | `0` | *(grips, ergos, barrels)* Shifts sprint recovery tier (pos = slower) |
-| `visualRecoil` | int | `0` | *(ergos)* Visual recoil modifier; negative = reduced |
-| `setsFireModeAuto` | bool | `false` | *(ergos)* Overrides burst weapon to full-auto fire mode |
-| `setsFireModeBurst` | bool | `false` | *(ergos)* Overrides weapon to burst fire mode |
-| `burstRounds` / `burstRpm` / `burstBurstsPerMinute` | num | — | *(burst ergos)* Burst cadence overrides applied while burst mode is active |
-| `hsMult` | num \| `'hp'` \| `null` | `null` | *(ammo)* Headshot multiplier override; `'hp'` = 1.5×/1.75× per `HP_HS_HIGH` |
-| `healthRegenDelayS` | num | `HEALTH_REGEN_DELAY_S` (5) | *(ammo)* Seconds before a hit enemy begins regenerating. Frangible holds the victim at 9s; the Attachment Effects panel renders the gap as an "Enemy Health Regen" chip |
-| `velocityTreatment` | obj | — | *(`WEAPON_AMMO[w].velocityTreatments[ammoId]`)* Per weapon/ammo muzzle-velocity override for loads outside the normal ladder — `subsonic-tier` steps the 0.8 ladder, the absolute kinds pin a transcribed value |
-| `pts` | int | `0` | Attachment point cost |
-| `noEffect` | bool | `false` | Renders greyed; present in-game but changes no modeled stat |
-| `assumed` / `assumedFields` | bool / obj | — | Marks values pending datamined confirmation; triggers the sidebar footnote |
-
----
-
-## In-Game Name Aliases
-
-Some attachments have different names in-game vs. in our data IDs. Known mappings:
-
-| Data ID / Name | In-Game Name |
-|---|---|
-| `ads_taclight` / Taclight - Aimed | "Taclight - Aimed" (also called "ADS Taclight") |
-| `hip_taclight` / Taclight - Hipfire | "Taclight - Hipfire" (also called "HIP Taclight") |
-| `linear_comp` / Linear Comp | "Convertor" (also appears as "Linear Compensator") |
-
----
-
-## Where Simulation Logic Lives
-
-If game mechanics change (not just data), edit the relevant module:
-
-| Mechanic | File |
-|---|---|
-| Recoil path simulation | `sim/core.js` → `genRecoilPts` |
-| Spread simulation | `sim/core.js` → `simulateSpread` |
-| Spread recovery model | `sim/core.js` → `spreadRecoveries` / `applySpreadRecovery` |
-| Recoil decay formula | `sim/core.js` → `applyRecoilDecay` |
-| Attachment stat application | `sim/applyAttachments.js` → `applyAttachments` |
-| Loadout defaults / point totals / sidebar UI | `sim/loadout.js` |
-| Attachment slot order / new slot types | `sim/attachments.js` → `ATTACHMENT_SLOT_KEYS` |
-
----
-
-## Recoil Variation Tier System (validated June 2026)
-
-Recoil variation attachments work exactly like the recoil amount tier system —
-**not** as flat percentage multipliers:
-
-```
-effective variation = dirVar × dirVarMult ^ (dirVarExp + Σ adsRecoilVariationTierMod)
-```
-
-- `dirVar`, `dirVarMult`, `dirVarExp` live in each weapon's `recoil.ads` group
-  (sym.gg `ADSRecoilDirectionVariation[Multiplier[Exponent]]`)
-- The Convertor (`linear_comp`) and the burst ergos are worth **+3 tiers** each
-- The M16A4 ships with `dirVarExp: 3` baked in (46.4° raw → 35.8° effective).
-  In-game testing confirmed this is **innate to the weapon** — equipping Full Auto
-  does not remove it
-- Validated against in-game advanced stats (with SheetOnMyFace): M16A4 35.8°/27.6°
-  (base / +Convertor, unchanged by Full Auto), M433 50.9°/39.5°
-
-Credit: tier-system discovery by SheetOnMyFace.
-
----
-
-## Known Follow-Up Notes
-
-- **Share links are catalog-index encoded (keep catalogs append-only):** the
-  shareable loadout URL (in `ui/app.js`) encodes each attachment as its index in
-  the catalog array (`SIGHTS`, `MUZZLES`, `BARRELS`, `GRIPS`, `LASERS`, `LIGHTS`,
-  `AMMO`, `ERGOS`) and each mag as its index in the weapon's `mags`. To keep
-  previously shared links resolving to the same attachment, **only append new
-  entries to these arrays — never reorder or delete existing ones.** Weapon IDs
-  are stored as strings, so reordering `weapons.json` is safe. The decoder also
-  still understands the original dash-joined ID format (e.g.
-  `a=iron-linear_comp-...`) so older links keep working.
-- **Burst ergos:** `Burst Training` and `Burst Mode` both switch the weapon into
-  burst fire and apply `adsRecoilVariationTierMod: 3` (3 tiers of the weapon's
-  own `dirVarMult`). `Burst Mode` costs 10 points. Burst size and cadence are
-  weapon-specific and should live on the weapon record. GRT-BC uses an internal
-  `grtbc_burst_mode` entry with the same visible name because only GRT-BC's
-  Burst Mode also applies a 1-tier ADS recoil amount improvement.
-- **Burst timing fields:** leave `burstBurstsPerMinute` blank when a weapon has
-  no extra post-burst delay in game. The sim treats that as normal shot cadence
-  between every round, even while the weapon is labeled as burst fire.
-- **GRT-BC Burst Mode timing:** modeled from the burst-mode recording as a
-  3-round burst with `burstRpm: 830` and 33 ms of extra post-burst delay. This
-  yields `burstBurstsPerMinute: 240.12729639809058` and an effective sustained
-  fire rate of about 720 RPM while Burst Mode is selected.
-- **`amountExp` anomaly (open question):** automatic-fire weapons normally have
-  `recoil.ads.amountExp: -3`; the M16A4 and VZ.61 are the only automatics at `-2`
-  (non-automatic weapons use `0`). These two don't share a fire mode — the M16A4
-  is burst-by-default, the VZ.61 is full-auto — so the `-2` is not a burst effect.
-  What drives it is unconfirmed; the in-game menu rounds recoil amount to 1 decimal,
-  too coarse to verify the amount ladder from screenshots. The variation stat is the
-  better field for tier-math checks.
-- **Sprint recovery tiers:** primary weapons use `PRIMARY_SPRINT_REC_TIERS`;
-  sidearms use `SIDEARM_SPRINT_REC_TIERS`. `WEAPON_MAG[weaponId].defSpr` stores
-  the workbook's adjusted base sprint recovery tier after the weapon-specific
-  tier adjustment, as a 0-based index. Magazine entries store the workbook's `Magazine Tier Modifier`
-  as `sprintRecoveryTierShift`; do not apply a universal `-1` adjustment.
-- **Draw-time axis:** `DRAW_TIME_AXIS` converts one effective draw coordinate into the distinct
-  primary/sidearm Sprint-to-Fire table and the Deploy table. Magazine, grip, and ergonomics
-  shifts are inventoried explicitly; ergonomics remain a named Sprint-to-Fire-only exception
-  during the transition. The live resolver has no nearest-value deploy fallback, and the old
-  `weapons.json.deployT` field is retained only in the frozen transition fixture.
-- **Grip sprint modifiers:** normal `Slim Handstop`, `Adjustable Angled`,
-  `Slim Angled`, and `Full Angled` grips each apply `sprintRecoveryTierShift: -1`.
-  Class-specific variants with different stats use separate attachment IDs, such
-  as `slim_angled_smg`, rather than runtime exclusion fields.
-
----
-
-## Data Validation
-
-Run the validation script after data edits and before committing season updates:
-
-```bash
+```powershell
 node scripts/validate-data.mjs
+node scripts/validate-ship-surface.mjs
+node --test
 ```
 
-The script checks:
-- Cross-file weapon and attachment IDs (every reference must resolve)
-- Barrel, magazine, and ammo defaults exist in their own lists
-- Required weapon fields and known classes
-- Per-slot attachment coverage: every supported non-sidearm weapon must declare
-  `muzzle`, `barrel`, `laser`, `light`, and `grip` in `WEAPON_ATTS`. An explicit
-  `[]` means "deliberately no options" (e.g. USG-90 grip); an absent key fails.
-  Light is skipped for combined-slot weapons and the DB-12.
+For a UI change, serve the root on port 5174 and inspect the actual changed interaction at desktop,
+intermediate, tablet, and phone widths. Test keyboard operation when controls or dialogs change.
 
-The GitHub workflow runs the same script on every push and pull request so stale
-IDs or incomplete weapons fail loudly instead of producing wrong UI stats.
+## Updating weapon data
+
+Edit the maintained JSON under `data/`. `data/weapons.json` owns base weapon behavior;
+`data/attachments.json`, `data/ammo.json`, and `data/balance_tables.json` own selectable modifiers and
+shared tables. Projectile source coverage is declared in `data/ballistics.json`.
+
+After a weapon change:
+
+1. Run `node scripts/validate-data.mjs`.
+2. Run the focused test whose calculation changed.
+3. Run `node --test` before handoff.
+4. Open at least one representative weapon in the site and confirm the displayed value and dependent
+   chart or table.
+
+Do not copy rounded panel damage over exact damage curves. Do not present donor-derived or inferred
+fields as direct measurements. Estimated records must retain their markers, source notes, and complete
+cross-file coverage.
+
+## Updating attachments
+
+Attachment catalogs are used by saved/share URLs, so preserve existing item order and IDs. Append new
+items unless a compatibility change is explicitly intended. Confirm point totals, availability, and
+the affected calculation rather than adding a broad fixture.
+
+When a game update introduces new weapons or attachments, the completed attachment reference can be
+checked explicitly:
+
+```powershell
+node reference-data/attachment-audit/validate-reference.mjs
+```
+
+The reference package contains the canonical JSON, review workbook, validator, workbook builder, and
+ammo-stat rule checker. It is not part of CI or the normal product suite. The sorted screenshot library
+remains local under `reference-data/attachment-audit/Weapon Attachments/`; old correction tools and
+intermediate analysis remain under `.local-archive/`. Both locations are ignored by Git.
+
+## Reload exceptions
+
+`data/reload-exceptions.json` is a small explicit register for reload behavior that cannot be derived
+from the common model. Keep stable IDs and an `evidenceReference` for every entry. Validate with the
+normal data validator, which uses `scripts/reload-exceptions.mjs`.
+
+Prefer one clear exception record over a hidden UI override. If common behavior changes, remove an
+exception only after confirming the shared model now produces the same result.
+
+## Provenance
+
+`data/provenance/live-baseline.json` is the current source/policy record. Version numbers inside it
+identify where source values came from. Update it when the source snapshot, supported roster, or a
+current derivation policy changes.
+
+Avoid duplicating large source arrays in provenance. Record ownership, source identity, dates, and
+policy; leave the maintained numerical contract in `data/`.
+
+## Simulation and UI changes
+
+Reusable calculations belong in `sim/`; rendering and browser interaction belong in `ui/`. Keep one
+implementation of each formula. A UI-specific display scale may live beside the calculation when it
+is exported and directly tested, but do not mirror calculation code inside a test.
+
+The site intentionally uses plain modules and a static page. A framework, bundler, component library,
+backend, or browser-test harness should be added only if a concrete product need outweighs the extra
+maintenance for this personal project.
+
+For responsive work, preserve these behaviors:
+
+- stats wrap without horizontal page overflow;
+- the phone view keeps two compact stat cards per row where space permits;
+- the mobile loadout acts as a modal dialog, traps focus, closes with Escape, and restores focus;
+- selected toggle, class, and weapon state is available through ARIA, not color alone;
+- attachment selects have programmatic labels;
+- touch controls retain practical target sizes.
+
+## Historical versions
+
+`v1.3.1.0/` and `v1.2.3.0/` are frozen published snapshots. Keep their links in `index.html` and their
+paths in `ship-surface.json`. Do not make them dependencies of the current runtime.
+
+## Shipping checklist
+
+1. Run all three routine commands.
+2. Run `git diff --check`.
+3. Inspect `git status` and confirm every changed path belongs to the requested scope.
+4. For UI work, verify the served source and capture representative viewport evidence.
+5. Confirm archive links still resolve.
+6. Commit, push, or deploy only when explicitly requested.

@@ -80,7 +80,7 @@ test('interpolates linearly between distinct ranges and clamps outside the curve
   assert.equal(damageAtRange(sniper, -5), 80);
 });
 
-test('classifies every current site weapon according to the 1.3.3.0 hit-zone rules', () => {
+test('classifies every current site weapon according to the live hit-zone rules', () => {
   const weapons = readJson('../data/weapons.json');
   const balance = readJson('../data/balance_tables.json');
   const actualTables = { ...balance, HP_HS_HIGH: new Set(balance.HP_HS_HIGH) };
@@ -113,9 +113,8 @@ test('derives sniper sweet spots from the curve and preserves the Mini Scout exc
   const snipers = weapons.filter(weapon => weapon.cls === 'Sniper Rifle');
   assert.ok(snipers.length > 0);
 
-  // No weapon stores a sweet-spot window. EA's 1.3.3.0 notes described the current ones, but
-  // that was a point-in-time post and a later update may move them; a stored window would
-  // outrank the imported curve. The window is whatever the curve says it is.
+  // No weapon stores a sweet-spot window. A later update may move it, so the
+  // current damage curve remains the only runtime authority for the window.
   assert.deepEqual(weapons.filter(weapon => 'sweetSpot' in weapon), []);
 
   const withPlateau = snipers.filter(weapon => hasSweetSpot(weapon));

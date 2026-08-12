@@ -1,5 +1,0 @@
-import fs from 'node:fs/promises';import path from 'node:path';import {FileBlob,SpreadsheetFile} from '@oai/artifact-tool';
-const wb=await SpreadsheetFile.importXlsx(await FileBlob.load(path.resolve('BF6_Attachment_Stats_Review.xlsx')));const out=path.resolve('outputs/workbook-review-20260728/final-review-ranges');await fs.mkdir(out,{recursive:true});
-const ranges=new Map([['AK-205','A36:N45'],['RPKM','A24:N47'],['TR7','A50:N58'],['KTS100 MK8','A34:N41']]);
-for(const [sheet,range]of ranges){const image=await wb.render({sheetName:sheet,range,scale:1.2,format:'png'});await fs.writeFile(path.join(out,`${sheet.replace(/[^A-Za-z0-9-]/g,'_')}.png`),new Uint8Array(await image.arrayBuffer()));const inspect=await wb.inspect({kind:'table',sheetId:sheet,range,include:'values,formulas',tableMaxRows:30,tableMaxCols:14,maxChars:5000});await fs.writeFile(path.join(out,`${sheet.replace(/[^A-Za-z0-9-]/g,'_')}.inspect.ndjson`),inspect.ndjson);}
-console.log(JSON.stringify({rendered:[...ranges.entries()]},null,2));
