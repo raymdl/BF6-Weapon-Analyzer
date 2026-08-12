@@ -67,8 +67,9 @@ both containment and useful chart utilization.
 - Soldier Target projects the same pattern into physical space at a selected distance and optic view.
 
 `sim/target.js` owns target geometry, hit-zone classification, impact summaries, and target-image drawing.
-The image and alpha map are loaded lazily only after the Soldier Target view is selected. Importing the
-module does not fetch the image.
+The image and alpha map are loaded lazily only after the Soldier Target view is shown, whether the
+viewer switches to it or a shared link or popout opens directly into it. Importing the module does not
+fetch the image.
 
 ## Ballistics
 
