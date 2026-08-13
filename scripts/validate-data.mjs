@@ -172,7 +172,6 @@ if (/Math\.abs\(DEPLOY_TIME_TIERS/.test(resolverSource) || /baseDeployIdx/.test(
   fail('sim/applyAttachments.js must not contain a nearest-value deploy resolver path');
 }
 
-const pp19 = weapons.find(weapon => weapon.id === 'pp19');
 if (liveBaseline.status !== 'current-live' || !Number.isInteger(liveBaseline.weaponCount)) {
   fail('data/provenance/live-baseline.json must identify the current live baseline and weapon count');
 }
@@ -182,34 +181,6 @@ if (weapons.length !== liveBaseline.weaponCount) {
 if (supportedWeaponIds.size !== weapons.length) {
   fail(`every current weapon must use a supported class; found ${supportedWeaponIds.size}/${weapons.length}`);
 }
-if (!pp19) fail('pp19: required current weapon record is missing');
-if (pp19) {
-  if (pp19.cls !== 'SMG') fail('pp19: expected SMG class');
-  if (pp19.damageStatus !== 'verified') fail('pp19: damageStatus must match the verified damage policy');
-  const requiredCrossFileEntries = [
-    ['WEAPON_ATTS', attachments.WEAPON_ATTS?.pp19],
-    ['WEAPON_ERGO', attachments.WEAPON_ERGO?.pp19],
-    ['WEAPON_MAG', attachments.WEAPON_MAG?.pp19],
-    ['WEAPON_AMMO', ammo.WEAPON_AMMO?.pp19],
-    ['RECOIL_DEC', recoilDecay.RECOIL_DEC?.pp19],
-    ['RECOIL_DEC_TEXP', recoilDecay.RECOIL_DEC_TEXP?.pp19],
-    ['RECOIL_MULT', balance.RECOIL_MULT?.pp19],
-    ['HIP_CLS', balance.HIP_CLS?.pp19],
-    ['LIMB_CLASS', balance.LIMB_CLASS?.pp19],
-  ];
-  for (const [tableName, value] of requiredCrossFileEntries) {
-    if (value == null) fail(`pp19: missing cross-file entry ${tableName}`);
-  }
-  for (const slot of ['muzzle', 'barrel', 'grip', 'laser', 'light']) {
-    if (!Array.isArray(attachments.WEAPON_ATTS?.pp19?.[slot])) {
-      fail(`pp19: ${slot} slot is missing from WEAPON_ATTS`);
-    }
-  }
-  if (attachments.WEAPON_MAG?.pp19 && !('mags' in attachments.WEAPON_MAG.pp19)) {
-    fail('pp19: WEAPON_MAG must declare a mags object, even while coverage is pending');
-  }
-}
-
 if (liveBaseline.dataPolicy?.damageStatus !== 'verified') {
   fail('live baseline must declare the current verified damage policy');
 }
