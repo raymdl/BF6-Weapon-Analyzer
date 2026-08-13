@@ -2755,6 +2755,16 @@ function bindEvents() {
     window.open(url, 'bf6-spray-popout', 'popup=yes,width=1100,height=980');
   });
 
+  // In the popout the header is hidden, so the loadout panel gets its own
+  // toggle beside the title. It docks rather than overlays, so unlike the
+  // narrow-screen overlay it leaves the plot interactive while it is open.
+  const popoutLoadoutBtn = document.getElementById('rcLoadoutBtn');
+  popoutLoadoutBtn?.addEventListener('click', () => {
+    const open = !document.body.classList.contains('popout-loadout');
+    document.body.classList.toggle('popout-loadout', open);
+    popoutLoadoutBtn.setAttribute('aria-expanded', String(open));
+  });
+
   // Redraw when the plot column changes width, so a resize or a panel collapse
   // rescales the pattern instead of leaving a stretched bitmap.
   const plotCanvas = document.getElementById('rcMain');
