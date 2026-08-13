@@ -89,9 +89,11 @@ const RECOIL_PAN_STEP = 0.5;
 const TARGET_FRAME_FILL = 0.72;
 const TARGET_FRAME_MIN_FILL = 0.22;
 // Target-view zoom is expressed as real optic magnification. A 1x sight is
-// taken to show this much vertical field, so every step on the ladder frames
-// the soldier the way that scope would in game.
-const ADS_1X_VFOV_DEG = 103;
+// taken to show this much field, so every step on the ladder frames the
+// soldier the way that scope would in game. Battlefield 6 states field of
+// view horizontally, so this is a horizontal angle and the vertical field the
+// plot actually needs is derived from the display's aspect ratio.
+const ADS_1X_HFOV_DEG = 103;
 // The in-game optic ladder, extended past both ends so the plot can pull back
 // for a whole long-range pattern or push in past any real scope.
 const SCOPE_MAGNIFICATIONS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12, 16, 20, 30, 40];
@@ -1451,33 +1453,45 @@ function targetCenterY(ySpan) {
   return Math.max(frame.centerY - slack, Math.min(frame.centerY + slack, wanted));
 }
 
-/** Vertical field, in target-plane centimetres, seen through an `m`x optic. */
-function spanCmAtMagnification(m, fovDeg = ADS_1X_VFOV_DEG) {
-  return 2 * cmAtDistance(fovDeg / m / 2);
+/** The display the target view projects for: game resolution and horizontal FOV. */
+function targetDisplaySettings() {
+  const readPositive = (id, fallback) => {
+    const entered = +(document.getElementById(id)?.value ?? '');
+    return Number.isFinite(entered) && entered > 0 ? Math.max(1, Math.round(entered)) : fallback;
+  };
+  const enteredFov = +(document.getElementById('rcTargetFov')?.value ?? ADS_1X_HFOV_DEG);
+  return {
+    width: readPositive('rcTargetWidth', Math.max(1, Math.round(window.screen?.width || 1920))),
+    height: readPositive('rcTargetHeight', Math.max(1, Math.round(window.screen?.height || 1080))),
+    hFovDeg: Math.max(1, Math.min(179, enteredFov || ADS_1X_HFOV_DEG)),
+  };
+}
+/**
+ * Vertical field, in target-plane centimetres, seen through an `m`x optic.
+ * Magnification scales the tangent of the half-angle the way a real optic does;
+ * dividing the angle itself over-zooms badly at the wide fields shooters use.
+ */
+function spanCmAtMagnification(m, display = targetDisplaySettings()) {
+  const halfTanV = Math.tan(display.hFovDeg * Math.PI / 360) * (display.height / display.width) / m;
+  return 2 * halfTanV * state.recoil.distance * 100;
 }
 /** Lowest magnification on the ladder that still fits the wanted span. */
-function fitMagnification(spanCm, fovDeg = ADS_1X_VFOV_DEG) {
+function fitMagnification(spanCm, display = targetDisplaySettings()) {
   for (let i = SCOPE_MAGNIFICATIONS.length - 1; i >= 0; i--) {
-    if (spanCmAtMagnification(SCOPE_MAGNIFICATIONS[i], fovDeg) >= spanCm) return SCOPE_MAGNIFICATIONS[i];
+    if (spanCmAtMagnification(SCOPE_MAGNIFICATIONS[i], display) >= spanCm) return SCOPE_MAGNIFICATIONS[i];
   }
   return SCOPE_MAGNIFICATIONS[0];
 }
 function currentMagnification() {
   if (state.recoil.magnification != null) return state.recoil.magnification;
-  const fovDeg = Math.max(1, Math.min(179, +(document.getElementById('rcTargetFov')?.value ?? ADS_1X_VFOV_DEG) || ADS_1X_VFOV_DEG));
-  return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL, fovDeg);
+  return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL);
 }
 function recoilViewport() {
   if (state.recoil.view === 'target') {
     const { PW, PH } = plotBox();
-    const fovDeg = Math.max(1, Math.min(179, +(document.getElementById('rcTargetFov')?.value ?? ADS_1X_VFOV_DEG) || ADS_1X_VFOV_DEG));
-    const detectedHeight = Math.max(1, Math.round(window.screen?.height || 1080));
-    const enteredHeight = +(document.getElementById('rcTargetHeight')?.value ?? '');
-    const fullScreenHeight = Number.isFinite(enteredHeight) && enteredHeight > 0
-      ? Math.max(1, Math.round(enteredHeight))
-      : detectedHeight;
+    const display = targetDisplaySettings();
     // Fullscreen compensation: plot world span = optical span × (plot pixel height / selected display height).
-    const ySpan = spanCmAtMagnification(currentMagnification(), fovDeg) * (PH / fullScreenHeight);
+    const ySpan = spanCmAtMagnification(currentMagnification(), display) * (PH / display.height);
     return {
       xSpan: ySpan * (PW / PH),
       ySpan,
@@ -2115,7 +2129,7 @@ function renderRecoil() {
     targetDisplaySettingsLoaded = true;
     if (targetWidthInput) targetWidthInput.value = Math.max(1, Math.round(window.screen?.width || 1920));
     if (targetHeightInput) targetHeightInput.value = Math.max(1, Math.round(window.screen?.height || 1080));
-    if (targetFovInput) targetFovInput.value = String(ADS_1X_VFOV_DEG);
+    if (targetFovInput) targetFovInput.value = String(ADS_1X_HFOV_DEG);
     try {
       const storedWidth = Number(localStorage.getItem('bf6.targetResolutionWidth'));
       const storedHeight = Number(localStorage.getItem('bf6.targetResolutionHeight'));
