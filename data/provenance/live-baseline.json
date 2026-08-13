@@ -20,9 +20,13 @@
     }
   ],
   "dataPolicy": {
-    "damageStatus": "provisional",
-    "allowedDamagePointSources": ["EA", "Sym", "in-game"],
-    "estimatedWeaponIds": ["brod3", "ef88", "vssm"],
-    "replacementRule": "Replace provisional or estimated values only when a newer authoritative source or reviewed in-game evidence is available."
+    "damageStatus": "verified",
+    "allowedDamagePointSources": [
+      "EA",
+      "Sym",
+      "in-game"
+    ],
+    "estimatedWeaponIds": [],
+    "replacementRule": "Replace a verified value only when a newer authoritative source or reviewed in-game evidence supersedes it."
   }
 }

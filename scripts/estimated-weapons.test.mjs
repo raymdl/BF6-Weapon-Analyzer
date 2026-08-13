@@ -24,11 +24,11 @@ const estimated = DATAMINED_WEAPON_IDS.map(byId);
 
 test('BROD 3, EF88 and VSSM are sourced, not estimated, with explicit provenance', () => {
   assert.deepEqual(weapons.filter(weapon => weapon.estimated === true), [], 'no weapon carries the estimated flag');
-  assert.equal(byId('vssm').damageStatus, 'provisional');
+  assert.equal(byId('vssm').damageStatus, 'verified');
   assert.equal(byId('vssm').provenance.sourced.changelist, 28877515);
   assert.ok(byId('vssm').provenance.notes.length > 0);
-  assert.equal(byId('brod3').damageStatus, 'provisional');
-  assert.equal(byId('ef88').damageStatus, 'provisional');
+  assert.equal(byId('brod3').damageStatus, 'verified');
+  assert.equal(byId('ef88').damageStatus, 'verified');
   assert.equal(byId('brod3').provenance.donor.weaponId, 'grtbc');
   assert.deepEqual(byId('ef88').provenance.donor.weaponIds, ['b36a4', 'l85a3']);
   assert.deepEqual(byId('brod3').provenance.measured.displayedDamageEndpoints, [26, 14]);

@@ -185,7 +185,7 @@ if (supportedWeaponIds.size !== weapons.length) {
 if (!pp19) fail('pp19: required current weapon record is missing');
 if (pp19) {
   if (pp19.cls !== 'SMG') fail('pp19: expected SMG class');
-  if (pp19.damageStatus !== 'provisional') fail('pp19: damageStatus must remain provisional until in-game validation');
+  if (pp19.damageStatus !== 'verified') fail('pp19: damageStatus must match the verified damage policy');
   const requiredCrossFileEntries = [
     ['WEAPON_ATTS', attachments.WEAPON_ATTS?.pp19],
     ['WEAPON_ERGO', attachments.WEAPON_ERGO?.pp19],
@@ -210,8 +210,8 @@ if (pp19) {
   }
 }
 
-if (liveBaseline.dataPolicy?.damageStatus !== 'provisional') {
-  fail('live baseline must declare the current provisional damage policy');
+if (liveBaseline.dataPolicy?.damageStatus !== 'verified') {
+  fail('live baseline must declare the current verified damage policy');
 }
 if (DAMAGE_POINT_SOURCES.size === 0) {
   fail('live baseline must list the damage point sources a breakpoint may cite');

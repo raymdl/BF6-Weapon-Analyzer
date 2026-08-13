@@ -20,6 +20,10 @@ data/check_all.sh
 # reference-data/attachment-audit/.
 /reference-data/attachment-audit/Weapon Attachments/
 
+# Third-party datamined bundle kept for research only. Nothing in it is
+# authoritative for this site; see its README for what was and was not taken.
+/reference-data/companion-datamined/
+
 # Generated analysis and scratch output.
 outputs/
 schemas/outputs/
