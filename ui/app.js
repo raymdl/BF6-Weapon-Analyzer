@@ -285,10 +285,13 @@ function dragForSelectedAmmo(weapon, atts) {
     : DEFAULT_PROJECTILE_DRAG_PER_METER;
 }
 function projectileModelFor(weapon, atts) {
+  // A weapon's own bullet velocity is enough to time a shot, since drag and
+  // gravity come from the shared catalog for every weapon alike. The donor
+  // lookup only supplies a velocity to weapons that publish none, so gating on
+  // it stranded the one estimated weapon whose velocity is itself sourced.
   const source = projectileSourceFor(weapon);
-  if (!source) return null;
   const model = {
-    velocityMps: Number.isFinite(weapon?.bulletVel) ? weapon.bulletVel : source.bulletVel,
+    velocityMps: Number.isFinite(weapon?.bulletVel) ? weapon.bulletVel : source?.bulletVel,
     dragPerMeter: dragForSelectedAmmo(weapon, atts),
     gravityMps2: _ballistics.gravityMps2,
   };
