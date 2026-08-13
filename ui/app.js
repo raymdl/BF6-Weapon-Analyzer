@@ -2763,6 +2763,10 @@ function bindEvents() {
     const open = !document.body.classList.contains('popout-loadout');
     document.body.classList.toggle('popout-loadout', open);
     popoutLoadoutBtn.setAttribute('aria-expanded', String(open));
+    // The label carries the affordance: this button sits where Pop Out does on
+    // the dashboard, so it has to read as a panel toggle rather than a way back.
+    const label = document.getElementById('rcLoadoutBtnText');
+    if (label) label.textContent = open ? 'Hide Loadout' : 'Modify Loadout';
   });
 
   // Redraw when the plot column changes width, so a resize or a panel collapse

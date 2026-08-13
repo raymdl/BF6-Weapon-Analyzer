@@ -84,7 +84,8 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 #recoilPanel.is-collapsed .rc-head{margin-bottom:0}
 .rc-popout-btn,.rc-loadout-btn{margin-left:8px;padding:2px 8px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:3px;color:#6a9ec0;font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle;position:relative;top:-1px}
 .rc-popout-btn:hover,.rc-loadout-btn:hover{border-color:var(--accent);color:var(--accent)}
-.rc-loadout-btn{display:none}
+.rc-loadout-btn{display:none;align-items:center;gap:5px}
+.rc-loadout-icon{width:12px;height:10px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linejoin:round}
 /* Popout: the pattern gets the whole window with its controls docked beside it,
    and everything belonging to the dashboard is hidden. */
 body.is-popout header,body.is-popout .sidebar,body.is-popout .footer,
@@ -93,8 +94,9 @@ body.is-popout .panel-toggle,body.is-popout .rc-popout-btn,body.is-popout #attSt
 /* The loadout panel docks to the left of the plot, collapsed until asked for so
    the popout still opens as a full-bleed view. The narrow-screen rules turn the
    sidebar into a centred modal, which a docked panel has to opt back out of. */
-body.is-popout .rc-loadout-btn{display:inline-block}
+body.is-popout .rc-loadout-btn{display:inline-flex}
 body.is-popout .rc-loadout-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent)}
+body.is-popout .rc-loadout-btn[aria-expanded="true"] .rc-loadout-icon rect{fill:currentColor;fill-opacity:.2}
 body.is-popout .app{display:flex;overflow:hidden}
 body.is-popout.popout-loadout .sidebar{display:flex;position:static;inset:auto;width:198px;max-height:none;border:0;border-right:1px solid var(--border);border-radius:0;box-shadow:none;transform:none;opacity:1;pointer-events:auto}
 body.is-popout .sb-scroll{display:block}
@@ -654,7 +656,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
               Recoil &amp; Spread Pattern (Simulated -
               <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"><span class="rc-shot-suffix">Shots)</span>
               <button class="rc-popout-btn" id="rcPopoutBtn" type="button" title="Open the pattern in its own window, sized to fill it">Pop Out &#8599;</button>
-              <button class="rc-loadout-btn" id="rcLoadoutBtn" type="button" aria-controls="loadoutPanel" aria-expanded="false" title="Show or hide the loadout panel">Loadout</button></div>
+              <button class="rc-loadout-btn" id="rcLoadoutBtn" type="button" aria-controls="loadoutPanel" aria-expanded="false" title="Show or hide the weapon and attachment panel beside the plot"><svg class="rc-loadout-icon" viewBox="0 0 12 10" aria-hidden="true"><rect x="1" y="1" width="10" height="8" rx="1.2"/><line x1="4.6" y1="1" x2="4.6" y2="9"/></svg><span id="rcLoadoutBtnText">Modify Loadout</span></button></div>
             <div class="rc-groups">
               <div class="rc-group">
                 <div class="rc-group-hd">Soldier Aim Controls</div>
