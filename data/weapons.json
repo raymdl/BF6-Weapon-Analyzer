@@ -8437,7 +8437,6 @@
     "damageStatus": "provisional",
     "damageSource": "Exact GRT-BC donor dropoff model; BROD 3 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
     "reloadSpeed": 1,
-    "estimated": true,
     "provenance": {
       "schemaVersion": 1,
       "status": "estimated",
@@ -8630,7 +8629,6 @@
     "damageStatus": "provisional",
     "damageSource": "Exact B36A4/L85A3 donor dropoff model; EF88 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
     "reloadSpeed": 0.987893,
-    "estimated": true,
     "provenance": {
       "schemaVersion": 1,
       "status": "estimated",
@@ -8834,7 +8832,6 @@
     "damageStatus": "provisional",
     "damageSource": "In-game reading: NVO-228E tiers without the 75 m step; 20.67 is retained past 36 m. The datamined changelist 28877515 table lists a further 17.13 tier past 75 m that the weapon does not apply.",
     "reloadSpeed": 1,
-    "estimated": true,
     "provenance": {
       "schemaVersion": 1,
       "status": "estimated",

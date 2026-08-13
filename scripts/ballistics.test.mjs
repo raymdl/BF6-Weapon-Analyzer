@@ -21,8 +21,12 @@ assert.ok(trajectoryAtDistance(model, 100).yMeters < 0, 'an unzeroed bore-axis t
 const readJson = relative => JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));
 const catalog = readJson('../data/ballistics.json');
 const weapons = readJson('../data/weapons.json');
-const nonEstimatedWeaponIds = weapons.filter(weapon => !weapon.estimated).map(weapon => weapon.id).sort();
-assert.deepEqual([...catalog.weaponIds].sort(), nonEstimatedWeaponIds, 'runtime projectile availability covers every directly sourced weapon');
+// The catalog is the Sym baseline, so it covers every weapon Sym publishes.
+// These three reach the site through the datamined changelist instead and carry
+// their own sourced bulletVel, which projectileModelFor uses directly.
+const DATAMINED_WEAPON_IDS = ['brod3', 'ef88', 'vssm'];
+const symWeaponIds = weapons.filter(weapon => !DATAMINED_WEAPON_IDS.includes(weapon.id)).map(weapon => weapon.id).sort();
+assert.deepEqual([...catalog.weaponIds].sort(), symWeaponIds, 'runtime projectile availability covers every Sym-sourced weapon');
 assert.equal(catalog.baseline, 'current-live');
 assert.equal(catalog.source, 'data/provenance/live-baseline.json#sym-bf6-json');
 assert.equal(catalog.gravityMps2, -9.81);

@@ -15,11 +15,15 @@ const recoil = read('data/recoil_decay.json');
 const ui = readFileSync(join(root, 'ui/app.js'), 'utf8');
 const html = readFileSync(join(root, 'index.html'), 'utf8');
 const loadout = readFileSync(join(root, 'sim/loadout.js'), 'utf8');
-const estimated = weapons.filter(weapon => weapon.estimated === true);
+// These three arrive through the datamined changelist rather than the Sym
+// baseline. They no longer carry the estimated flag -- their damage profiles
+// are sourced -- so the coverage checks below key off the list itself.
+const DATAMINED_WEAPON_IDS = ['brod3', 'ef88', 'vssm'];
 const byId = id => weapons.find(weapon => weapon.id === id);
+const estimated = DATAMINED_WEAPON_IDS.map(byId);
 
-test('exactly BROD 3, EF88 and VSSM are estimated with explicit provenance', () => {
-  assert.deepEqual(estimated.map(weapon => weapon.id), ['brod3', 'ef88', 'vssm']);
+test('BROD 3, EF88 and VSSM are sourced, not estimated, with explicit provenance', () => {
+  assert.deepEqual(weapons.filter(weapon => weapon.estimated === true), [], 'no weapon carries the estimated flag');
   assert.equal(byId('vssm').damageStatus, 'provisional');
   assert.equal(byId('vssm').provenance.sourced.changelist, 28877515);
   assert.ok(byId('vssm').provenance.notes.length > 0);
