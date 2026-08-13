@@ -8383,55 +8383,55 @@
         "r": 0,
         "d": 26.05,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
       },
       {
         "r": 9,
         "d": 26.05,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 9,
         "d": 21.56,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 21,
         "d": 21.56,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 21,
         "d": 17.74,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 36,
         "d": 17.74,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 36,
         "d": 17.13,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
         "d": 17.13,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
         "d": 14.62,
         "source": "Sym",
-        "provenance": "estimated GRT-BC donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
       }
     ],
     "damageStatus": "provisional",
@@ -8445,7 +8445,7 @@
         "weaponId": "grtbc",
         "name": "GRT-BC",
         "model": "direct donor model; recoil direction sign flipped",
-        "appliesTo": "damage curve only; ballistics fields replaced by the datamined changelist"
+        "appliesTo": "damage tier magnitudes only; changelist 28877515 confirms this weapon shares the donor damage profile exactly, and replaces the ballistics fields"
       },
       "measured": {
         "source": "Battlefield 6 in-game attachment detail screenshots after update 1.3.3.0; reference-data/attachment-audit/attachment-screenshot-review.json, 30Rnd Magazine record",
@@ -8463,19 +8463,18 @@
       },
       "estimatedFields": [
         "emptyRld",
-        "reloadSpeed",
-        "damage breakpoint distances",
-        "damage endpoint display precision"
+        "reloadSpeed"
       ],
       "damage": {
-        "status": "provisional",
+        "status": "sourced",
         "donorModel": "grtbc",
         "displayedEndpoints": {
           "close": 26,
           "long": 14
         },
-        "endpointPrecision": "whole-number panel display; donor profile remains authoritative",
-        "replacement": "Replace with Sym full statistics when published."
+        "endpointPrecision": "whole-number panel display; donor magnitudes remain authoritative between endpoints",
+        "replacement": "Replace magnitudes with Sym weapon-specific statistics when published; the profile shape is settled.",
+        "profileSource": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\") lists this weapon's damageProfile as identical to the GRT-BC at every breakpoint, which sources the tier count and the breakpoint distances. That table carries pre-patch damage magnitudes and is not used for them: the values here are the current-live Sym figures for the shared profile, and match the in-game weapon panel endpoints."
       },
       "sourced": {
         "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
@@ -8488,7 +8487,9 @@
           "spreadMax",
           "recoil",
           "spread",
-          "spreadDyn"
+          "spreadDyn",
+          "damage breakpoint distances",
+          "damage tier profile"
         ]
       }
     }
@@ -8599,31 +8600,31 @@
         "r": 0,
         "d": 26.05,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
       },
       {
         "r": 21,
         "d": 26.05,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 21,
         "d": 20.67,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
         "d": 20.67,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
       },
       {
         "r": 75,
         "d": 17.13,
         "source": "Sym",
-        "provenance": "estimated L85A3 donor dropoff model; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
       }
     ],
     "damageStatus": "provisional",
@@ -8643,7 +8644,7 @@
           "L85A3"
         ],
         "model": "exact midpoint where needed; spreadDyn copied from byte-identical AR donors",
-        "appliesTo": "damage curve only; ballistics fields replaced by the datamined changelist"
+        "appliesTo": "damage tier magnitudes only; changelist 28877515 confirms this weapon shares the donor damage profile exactly, and replaces the ballistics fields"
       },
       "measured": {
         "source": "Battlefield 6 in-game attachment detail screenshots after update 1.3.3.0; reference-data/attachment-audit/attachment-screenshot-review.json, 30Rnd Magazine record",
@@ -8661,19 +8662,18 @@
       },
       "estimatedFields": [
         "emptyRld",
-        "reloadSpeed",
-        "damage breakpoint distances",
-        "damage endpoint display precision"
+        "reloadSpeed"
       ],
       "damage": {
-        "status": "provisional",
+        "status": "sourced",
         "donorModel": "l85a3",
         "displayedEndpoints": {
           "close": 26,
           "long": 17
         },
-        "endpointPrecision": "whole-number panel display; donor profile remains authoritative",
-        "replacement": "Replace with Sym full statistics when published."
+        "endpointPrecision": "whole-number panel display; donor magnitudes remain authoritative between endpoints",
+        "replacement": "Replace magnitudes with Sym weapon-specific statistics when published; the profile shape is settled.",
+        "profileSource": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\") lists this weapon's damageProfile as identical to the L85A3 at every breakpoint, which sources the tier count and the breakpoint distances. That table carries pre-patch damage magnitudes and is not used for them: the values here are the current-live Sym figures for the shared profile, and match the in-game weapon panel endpoints."
       },
       "sourced": {
         "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
@@ -8686,7 +8686,9 @@
           "spreadMax",
           "recoil",
           "spread",
-          "spreadDyn"
+          "spreadDyn",
+          "damage breakpoint distances",
+          "damage tier profile"
         ]
       }
     }
