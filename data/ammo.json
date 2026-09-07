@@ -120,7 +120,8 @@
       "hsMult": 1,
       "collateralMult": {
         "Shotgun": 0.57
-      }
+      },
+      "healthRegenDelayS": 7
     },
     {
       "id": "slugs",
