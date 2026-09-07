@@ -1,0 +1,117 @@
+{
+  "scope": "Seven operator-named Common/UI/Loadout/Menu/Screens assets",
+  "result": "No category formula or delegate binding established in readable XML values, external references, or recovered boxed defaults.",
+  "boxedCounts": {
+    "MenuLoadoutCharacterIconScreen": 20,
+    "MenuLoadoutInfoScreen": 12,
+    "MenuLoadoutScreen": 48
+  },
+  "boxedReferences": "Sound styles, fill gradients and UI images; no stat delegate pointer.",
+  "nextReference": "Common/UI/Loadout/Menu/Widgets/MenuLoadoutInfoTileCell",
+  "limitation": "Hashed data bindings and nested widgets remain unresolved; this does not prove formulas absent from the UI system.",
+  "sources": [
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuClassDetailsScreen",
+      "output": "MenuClassDetailsScreen.xml",
+      "sha256": "e8be2990e1b75b8c75db5fd787df2b2a2c42dde9211ac4c2bdcfbb8c475ec204"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutCharacterIconScreen",
+      "output": "MenuLoadoutCharacterIconScreen.xml",
+      "sha256": "bd5752a123ba78270f004873b1a030e75956f23c995c85c4dda38620e4498679"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutClassSelectScreen",
+      "output": "MenuLoadoutClassSelectScreen.xml",
+      "sha256": "1f2e18d3b19ca1aadfa9cdbac304dfd4e86e4179762a7dd9d3d9d0edb6dd9dd5"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutFieldUpgradesScreen",
+      "output": "MenuLoadoutFieldUpgradesScreen.xml",
+      "sha256": "292e5ca4abf8b2d944c7c871bda7ef12616961040c68ff9905fcbaa23e5e597c"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutInfoScreen",
+      "output": "MenuLoadoutInfoScreen.xml",
+      "sha256": "d45e873d71f1ffd0d3364f54431dd192287f92a33a37702bb7917c4fd46b3ccd"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutOverviewScreen",
+      "output": "MenuLoadoutOverviewScreen.xml",
+      "sha256": "54f78cf492ba0e0091e0a34769e752cbf34fe8375ecc3030c9b9225e70efc6be"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutScreen",
+      "output": "MenuLoadoutScreen.xml",
+      "sha256": "42023930c787b9f1c23af5bee32597d454e9236f2615edc7df8af3064b667ed1"
+    },
+    {
+      "kind": "boxed",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutCharacterIconScreen",
+      "output": "MenuLoadoutCharacterIconScreen-boxed.json",
+      "count": 20,
+      "sha256": "ba080949972cfb10436f278ff5f24c9b85f907cb65d9b3c0d457b3b37f2443e8"
+    },
+    {
+      "kind": "boxed",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutInfoScreen",
+      "output": "MenuLoadoutInfoScreen-boxed.json",
+      "count": 12,
+      "sha256": "85959afc5175664c5005dc94469cf9f7e04c61a1d703c29ae9a258c94ecc7cfc"
+    },
+    {
+      "kind": "boxed",
+      "name": "Common/UI/Loadout/Menu/Screens/MenuLoadoutScreen",
+      "output": "MenuLoadoutScreen-boxed.json",
+      "count": 48,
+      "sha256": "571bea28bee00867a9431228695abc0c10560f292a1bc3fec90f0e30f3a6b3eb"
+    }
+  ],
+  "infoTileFollowup": {
+    "chain": [
+      "MenuLoadoutInfoTileCell",
+      "MenuLoadoutInfoTile"
+    ],
+    "boxedCounts": [
+      3,
+      17
+    ],
+    "result": "The cell references the content tile. The content tile references fonts, color palette, hardware icon, spinner and texture-loading logic. No category delegate or formula established in inspected values or boxed defaults.",
+    "nextAction": "Stop following this presentation-only reference chain for formula discovery. Hashed dynamic bindings remain unresolved.",
+    "sources": [
+      {
+        "kind": "ebx",
+        "name": "Common/UI/Loadout/Menu/Widgets/MenuLoadoutInfoTileCell",
+        "output": "MenuLoadoutInfoTileCell.xml",
+        "sha256": "1b1251be34c3cdda971b06dd89fd5d55fadbcaf0ffd40d973237cbb0809c8aa4"
+      },
+      {
+        "kind": "boxed",
+        "name": "Common/UI/Loadout/Menu/Widgets/MenuLoadoutInfoTileCell",
+        "output": "MenuLoadoutInfoTileCell-boxed.json",
+        "count": 3,
+        "sha256": "5520a6c53e78d37febbfe6da60b5579ff9820a60d0c62ea7b01944a4c4f2d9c4"
+      },
+      {
+        "kind": "ebx",
+        "name": "Common/UI/Loadout/Menu/Widgets/MenuLoadoutInfoTile",
+        "output": "MenuLoadoutInfoTile.xml",
+        "sha256": "c4e241459b35b73e07337cd8b310e4a1d92445cc40db4b9d16158c7dad52aca3"
+      },
+      {
+        "kind": "boxed",
+        "name": "Common/UI/Loadout/Menu/Widgets/MenuLoadoutInfoTile",
+        "output": "MenuLoadoutInfoTile-boxed.json",
+        "count": 17,
+        "sha256": "1b326a194b9bba670f428819a0d8488d787710e4ab3463402f55a4ce534dfc0c"
+      }
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "executable": "C:\\Program Files\\EA Games\\Battlefield 6\\bf6.exe",
+  "sha256": "4f6a822e42c21e006f032f2bf9d993398e75218bb4822e0d0d1217ad2f8ee968",
+  "imageBase": "0x140000000",
+  "entryPointRva": "0xc20d000",
+  "sections": [
+    {
+      "name": ".text",
+      "rva": 4096,
+      "virtualSize": 119410959,
+      "raw": 1536,
+      "size": 119411200,
+      "flags": "0x60000020",
+      "entropy": 8.0
+    },
+    {
+      "name": "ctr",
+      "rva": 119418880,
+      "virtualSize": 17578531,
+      "raw": 119412736,
+      "size": 17579008,
+      "flags": "0x60000020",
+      "entropy": 8.0
+    },
+    {
+      "name": ".rdata",
+      "rva": 136998912,
+      "virtualSize": 23875116,
+      "raw": 136991744,
+      "size": 23875584,
+      "flags": "0x40000040",
+      "entropy": 6.2299
+    },
+    {
+      "name": ".data",
+      "rva": 160874496,
+      "virtualSize": 12735592,
+      "raw": 160867328,
+      "size": 6512640,
+      "flags": "0xc0000040",
+      "entropy": 8.0
+    },
+    {
+      "name": ".pdata",
+      "rva": 173613056,
+      "virtualSize": 7540164,
+      "raw": 167379968,
+      "size": 7540224,
+      "flags": "0x40000040",
+      "entropy": 7.2731
+    },
+    {
+      "name": "typeinfo",
+      "rva": 181153792,
+      "virtualSize": 5906480,
+      "raw": 174920192,
+      "size": 5906944,
+      "flags": "0xc0000040",
+      "entropy": 8.0
+    },
+    {
+      "name": "fieldinf",
+      "rva": 187064320,
+      "virtualSize": 2349712,
+      "raw": 180827136,
+      "size": 2350080,
+      "flags": "0xc0000040",
+      "entropy": 7.9999
+    },
+    {
+      "name": "_RDATA",
+      "rva": 189415424,
+      "virtualSize": 238344,
+      "raw": 183177216,
+      "size": 238592,
+      "flags": "0x40000040",
+      "entropy": 5.8377
+    },
+    {
+      "name": ".rodata",
+      "rva": 189657088,
+      "virtualSize": 3456,
+      "raw": 183415808,
+      "size": 3584,
+      "flags": "0x40000040",
+      "entropy": 4.031
+    },
+    {
+      "name": ".rsrc",
+      "rva": 189661184,
+      "virtualSize": 327800,
+      "raw": 183419392,
+      "size": 328192,
+      "flags": "0x40000040",
+      "entropy": 4.507
+    },
+    {
+      "name": ".reloc",
+      "rva": 189992960,
+      "virtualSize": 2402216,
+      "raw": 183747584,
+      "size": 2402304,
+      "flags": "0x40000040",
+      "entropy": 5.4681
+    },
+    {
+      "name": ".vm_sec",
+      "rva": 192397312,
+      "virtualSize": 49664,
+      "raw": 186149888,
+      "size": 49664,
+      "flags": "0xc0000040",
+      "entropy": 5.5607
+    },
+    {
+      "name": ".vlizer",
+      "rva": 192450560,
+      "virtualSize": 11024384,
+      "raw": 186199552,
+      "size": 11024384,
+      "flags": "0x60000060",
+      "entropy": 7.1496
+    },
+    {
+      "name": ".ooa",
+      "rva": 203476992,
+      "virtualSize": 1810,
+      "raw": 197223936,
+      "size": 2048,
+      "flags": "0x60000020",
+      "entropy": 2.5418
+    }
+  ],
+  "exceptionDirectoryRva": "0xbadae14",
+  "runtimeFunctionCount": 628598,
+  "sampledFunctionStarts": [
+    {
+      "index": 0,
+      "rva": "0x100d",
+      "length": 4248,
+      "instructions": [
+        "14000100d: mov byte ptr [eax], al",
+        "140001010: mov dl, 0xbc",
+        "140001012: xchg ebx, eax",
+        "140001013: cmp byte ptr [rdx + 0x3e], bh",
+        "140001016: mov esi, 0x803490b9",
+        "14000101b: jg 0x140001008",
+        "14000101d: push -0x154a0537",
+        "140001022: cmp ebp, dword ptr [rdx - 0x5a8f7bf]",
+        "140001028: clc ",
+        "14000102a: ret "
+      ]
+    },
+    {
+      "index": 157149,
+      "rva": "0x1f9e22f",
+      "length": 224,
+      "instructions": [
+        "141f9e22f: loope 0x141f9e23a",
+        "141f9e231: xchg ecx, eax",
+        "141f9e232: add eax, 0xd230df91",
+        "141f9e237: cld ",
+        "141f9e238: xchg edi, eax",
+        "141f9e239: xchg ebx, eax",
+        "141f9e23a: cmpsb byte ptr [rsi], byte ptr [rdi]",
+        "141f9e23b: lar eax, esp",
+        "141f9e23e: insb byte ptr [rdi], dx",
+        "141f9e23f: add al, 0x74"
+      ]
+    },
+    {
+      "index": 314299,
+      "rva": "0x407fdd0",
+      "length": 28,
+      "instructions": []
+    },
+    {
+      "index": 471448,
+      "rva": "0x6892c70",
+      "length": 19,
+      "instructions": [
+        "146892c70: and byte ptr [rdx + 0x312b00c1], dl"
+      ]
+    },
+    {
+      "index": 628597,
+      "rva": "0xbadaad0",
+      "length": 417,
+      "instructions": [
+        "14badaad0: pop qword ptr [rsp]",
+        "14badaad3: pop qword ptr [rsp + 0x10]",
+        "14badaad7: sub rsp, 8",
+        "14badaadb: sub rsp, 8",
+        "14badaadf: push r13",
+        "14badaae1: mov r13, rbx",
+        "14badaae4: mov qword ptr [rsp + 8], r13",
+        "14badaae9: pop r13",
+        "14badaaeb: pop qword ptr [rsp]",
+        "14badaaee: pop qword ptr [rsp + 0x20]"
+      ]
+    }
+  ],
+  "literalHashOffsets": {
+    "94388961": [],
+    "1c07201f": [
+      "0xa5b4445",
+      "0xbaf8c59"
+    ],
+    "bb838ff6": [],
+    "5e5631ff": [],
+    "743a3ce0": [],
+    "ed852f1b": []
+  },
+  "interpretation": "The main code and type metadata appear protected in the on-disk image. Near-maximal section entropy and incoherent sampled function-start disassembly support this inference; they do not identify the protection scheme or prove every function is inaccessible.",
+  "result": "No verified recoil, spread, modifier, or rating function recovered. Two literal 1c07201f matches occur in .pdata and .vlizer; neither establishes a callable graph function.",
+  "scope": "Read-only static analysis. No executable changes, game launch, process attachment, or protection removal."
+}

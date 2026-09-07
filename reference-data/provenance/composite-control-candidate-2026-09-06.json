@@ -1,0 +1,388 @@
+{
+  "status": "Four rifle baseline matches and two separate shotgun matches; native function semantics and active UI binding remain unconfirmed",
+  "candidate": "ControlAttributeDelegate1",
+  "formula": "96 / (1.1 * R * sin(V) / V + 0.75)^2.25 + 4",
+  "inputs": "R=current site effective recoil amount; V=current recoil variation converted to radians",
+  "rounding": "Nearest integer tested; game rounding behavior not yet independently established",
+  "captureEvidence": "reference-data/provenance/live-captures-2026-09-06.json",
+  "rows": [
+    {
+      "weapon": "m433",
+      "recoilAmount": 0.7933323350025011,
+      "variationDegrees": 41.4,
+      "observedControl": 40,
+      "candidateSin": 39.88006404971748,
+      "candidateSinRounded": 40,
+      "candidateTan": 29.11476770962553,
+      "otherControlDelegate": 39.54945735046669
+    },
+    {
+      "weapon": "b36a4",
+      "recoilAmount": 0.7264767922329352,
+      "variationDegrees": 28,
+      "observedControl": 42,
+      "candidateSin": 41.54970627306581,
+      "candidateSinRounded": 42,
+      "candidateTan": 36.44767990376588,
+      "otherControlDelegate": 42.922173976331386
+    },
+    {
+      "weapon": "ak4d",
+      "recoilAmount": 0.852210725925926,
+      "variationDegrees": 20,
+      "observedControl": 34,
+      "candidateSin": 34.34109575860583,
+      "candidateSinRounded": 34,
+      "candidateTan": 32.06107225052351,
+      "otherControlDelegate": 36.911344444860745
+    },
+    {
+      "weapon": "sor300sc",
+      "recoilAmount": 0.7416865095483536,
+      "variationDegrees": 15.8,
+      "observedControl": 40,
+      "candidateSin": 39.524639039101416,
+      "candidateSinRounded": 40,
+      "candidateTan": 37.95153714418474,
+      "otherControlDelegate": 42.11615955279045
+    }
+  ],
+  "limitations": [
+    "Six baseline loadouts and one older attachment screenshot checked; broader attachment coverage and current-build attachment verification remain open",
+    "Native unary function hash 3ee9cb97 is interpreted as sine based on these matches, not independently resolved",
+    "Zero-variation handling not checked",
+    "ControlAttributeDelegate1 must not be labeled Precision on its filename alone"
+  ],
+  "holdoutRows": [
+    {
+      "weapon": "db12",
+      "recoilAmount": 2.708937326026026,
+      "variationDegrees": 15,
+      "observedControl": 9,
+      "candidateSin": 9.06872257206034,
+      "candidateSinRounded": 9,
+      "role": "Separate shotgun check after identifying candidate from four rifles"
+    },
+    {
+      "weapon": "m87a1",
+      "recoilAmount": 3.6119164347013677,
+      "variationDegrees": 12,
+      "observedControl": 7,
+      "candidateSin": 6.959874246736447,
+      "candidateSinRounded": 7,
+      "role": "Separate shotgun check after identifying candidate from four rifles"
+    }
+  ],
+  "m87a1Capture": {
+    "source": "C:/Users/royal/Videos/NVIDIA/Battlefield 6/M87A1.mp4",
+    "frame": 0,
+    "displayedStats": {
+      "hipfire": 40,
+      "precision": 10,
+      "control": 7,
+      "mobility": 52,
+      "rateOfFire": 94,
+      "damage": 134,
+      "magazine": 8
+    },
+    "review": "Frame visually inspected; Basic barrel visible"
+  },
+  "zeroVariationReview": {
+    "resourceSha256": "ecd777cb6435732201b234b06691bc258a6427e485c906c0d3b099e6e2b04064",
+    "instructionCount": 20,
+    "instructionOffsets": [
+      0,
+      12,
+      16,
+      32,
+      68,
+      84,
+      120,
+      156,
+      184,
+      220,
+      256,
+      292,
+      328,
+      364,
+      400,
+      436,
+      472,
+      508,
+      544,
+      568
+    ],
+    "instructionOpcodes": [
+      "0x27",
+      "0x2d",
+      "0x2e",
+      "0x2",
+      "0x2e",
+      "0x2",
+      "0x2",
+      "0x1",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x2",
+      "0x34",
+      "0x2c"
+    ],
+    "result": "The decoded instruction chain is straight-line arithmetic with no observed conditional branch. Under the candidate arithmetic mapping, its numerator and denominator both reach zero at Variation=0. Native division semantics and upstream minimum/clamping remain unknown. Do not substitute the mathematical sinc limit as verified game behavior.",
+    "currentRosterZeroVariationWeapons": [],
+    "currentRosterMissingVariationWeapons": [],
+    "instructionLayoutCorrection": "The high 24 bits identify the next code-relative instruction offset, not a byte length relative to the current instruction."
+  },
+  "attachmentHoldout": {
+    "weapon": "m433",
+    "attachment": "Full Angled",
+    "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\42_M433_Grip_Full_Angled.png",
+    "sha256": "28f59ce961b568c729be48540229e2d9be97dab9b9ea2026f351bc5dbd356494",
+    "review": "Image visually inspected in this turn; audit JSON remains globally provisional",
+    "observed": {
+      "control": 45,
+      "recoilAmountDegrees": 0.7,
+      "recoilVariationDegrees": 41.4
+    },
+    "effectiveRecoilAmount": 0.7084656084656085,
+    "candidateControl": 44.76678063217584,
+    "roundedControl": 45,
+    "scope": "Existing older attachment capture; not a new current-build capture. Baseline values agree with the fresh M433 capture.",
+    "result": "Matches without fitting formula coefficients"
+  },
+  "additionalAttachmentChecks": [
+    {
+      "attachment": "Folding Vertical",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\28_M433_Grip_Folding_Vertical.png",
+      "sha256": "b6107a975d1bb0d089fe8eec0f4e8c37d87078400673647fc5da38a509845ae7",
+      "observedControl": 45,
+      "observedRecoilAmountDegrees": 0.7,
+      "observedRecoilVariationDegrees": 41.4,
+      "candidateControl": 44.76678063217584,
+      "review": "Screenshot visually checked; same two-tier recoil reduction as Full Angled"
+    },
+    {
+      "attachment": "Alloy Vertical",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\29_M433_Grip_Alloy_Vertical.png",
+      "sha256": "3c1e64fc59b9005af49433276eec094af106b47ebef458d2ecbcca280ad60eb6",
+      "observedControl": 45,
+      "observedRecoilAmountDegrees": 0.7,
+      "observedRecoilVariationDegrees": 41.4,
+      "candidateControl": 44.76678063217584,
+      "review": "Screenshot visually checked; same two-tier recoil reduction as Full Angled"
+    }
+  ],
+  "auditCorrection": {
+    "weapon": "M433",
+    "attachment": "Folding Vertical",
+    "fields": {
+      "precision": {
+        "before": 22,
+        "after": 21
+      },
+      "control": {
+        "before": 53,
+        "after": 45
+      },
+      "mobility": {
+        "before": 46,
+        "after": 48
+      }
+    },
+    "basis": "Direct visual reading of 28_M433_Grip_Folding_Vertical.png; audit review status otherwise unchanged"
+  },
+  "m433GripComparison": {
+    "evidence": "reference-data/provenance/m433-grip-screenshot-review-2026-09-06.json",
+    "rows": [
+      {
+        "attachment": "None",
+        "siteGripId": "none",
+        "recoilTier": 0,
+        "candidateControl": 39.88006404971748,
+        "roundedControl": 40,
+        "observedControl": 40,
+        "matches": true
+      },
+      {
+        "attachment": "Folding Vertical",
+        "siteGripId": "fold_vert",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      },
+      {
+        "attachment": "Alloy Vertical",
+        "siteGripId": "alloy_vert",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      },
+      {
+        "attachment": "Ribbed Vertical",
+        "siteGripId": "ribbed_vert",
+        "recoilTier": 3,
+        "candidateControl": 47.33721542669482,
+        "roundedControl": 47,
+        "observedControl": 47,
+        "matches": true
+      },
+      {
+        "attachment": "6H64 Vertical",
+        "siteGripId": "6h64_vert",
+        "recoilTier": 4,
+        "candidateControl": 49.9871121471449,
+        "roundedControl": 50,
+        "observedControl": 50,
+        "matches": true
+      },
+      {
+        "attachment": "Classic Vertical",
+        "siteGripId": "classic_vert",
+        "recoilTier": 5,
+        "candidateControl": 52.711868523664585,
+        "roundedControl": 53,
+        "observedControl": 53,
+        "matches": true
+      },
+      {
+        "attachment": "Underslung Mount",
+        "siteGripId": "underslung_mount",
+        "recoilTier": 0,
+        "candidateControl": 39.88006404971748,
+        "roundedControl": 40,
+        "observedControl": 40,
+        "matches": true
+      },
+      {
+        "attachment": "Folding Stubby",
+        "siteGripId": "fold_stubby",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      },
+      {
+        "attachment": "Ribbed Stubby",
+        "siteGripId": "ribbed_stubby",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      },
+      {
+        "attachment": "Canted Stubby",
+        "siteGripId": "canted_stubby",
+        "recoilTier": 3,
+        "candidateControl": 47.33721542669482,
+        "roundedControl": 47,
+        "observedControl": 47,
+        "matches": true
+      },
+      {
+        "attachment": "Stippled Stubby",
+        "siteGripId": "stipp_stubby",
+        "recoilTier": 4,
+        "candidateControl": 49.9871121471449,
+        "roundedControl": 50,
+        "observedControl": 50,
+        "matches": true
+      },
+      {
+        "attachment": "Low-Profile Stubby",
+        "siteGripId": "lp_stubby",
+        "recoilTier": 5,
+        "candidateControl": 52.711868523664585,
+        "roundedControl": 53,
+        "observedControl": 53,
+        "matches": true
+      },
+      {
+        "attachment": "Slim Handstop",
+        "siteGripId": "slim_handstop",
+        "recoilTier": 0,
+        "candidateControl": 39.88006404971748,
+        "roundedControl": 40,
+        "observedControl": 40,
+        "matches": true
+      },
+      {
+        "attachment": "Adjustable Angled",
+        "siteGripId": "adj_angled",
+        "recoilTier": 1,
+        "candidateControl": 42.2798869948696,
+        "roundedControl": 42,
+        "observedControl": 42,
+        "matches": true
+      },
+      {
+        "attachment": "Slim Angled",
+        "siteGripId": "slim_angled",
+        "recoilTier": 1,
+        "candidateControl": 42.2798869948696,
+        "roundedControl": 42,
+        "observedControl": 42,
+        "matches": true
+      },
+      {
+        "attachment": "Full Angled",
+        "siteGripId": "full_angled",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      },
+      {
+        "attachment": "Bipod",
+        "siteGripId": "bipod",
+        "recoilTier": 0,
+        "candidateControl": 39.88006404971748,
+        "roundedControl": 40,
+        "observedControl": 40,
+        "matches": true
+      },
+      {
+        "attachment": "PTT Grip Pod",
+        "siteGripId": "ptt_grip_pod",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      },
+      {
+        "attachment": "QD Grip Pod",
+        "siteGripId": "qd_grip_pod",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      },
+      {
+        "attachment": "Classic Grip Pod",
+        "siteGripId": "classic_grip_pod",
+        "recoilTier": 2,
+        "candidateControl": 44.76678063217584,
+        "roundedControl": 45,
+        "observedControl": 45,
+        "matches": true
+      }
+    ],
+    "matchCount": 20,
+    "count": 20,
+    "scope": "Unmounted menu previews. Existing site grip recoil tiers used without fitting coefficients."
+  }
+}

@@ -4,7 +4,7 @@
 
 The approved corrections are implemented. Eight point costs are fixed. Hip recoil now receives the existing grip, muzzle, and ammunition recoil tiers. VSSM Folding Stock hip spread and variation are fixed, and both suppressed barrels affect spotting. Subsonic recoil is corrected for the 12 source-mapped weapons; Slugs receive recoil and ADS spread effects. Compact-magazine moving-ADS and sway effects are added where the source selection is clear.
 
-The operator deferred heavy/Cryo barrels, light recovery, smooth recoil, and bolt-action tier magnitudes. Folding Stock recoil decay is also deferred. Those values and the approved hybrid/Canted attachment models remain unchanged.
+Follow-up review: the approved Heavy/Cryo aim-state correction is now implemented locally. Its existing spread/recovery multipliers apply only to ADS. New recovery constants, light recovery, smooth recoil, bolt-action tier magnitudes, and Folding Stock decay remain deferred. See the [detailed follow-up and complete exception lists](FROSTY_ATTACHMENT_REVIEW_DETAILS_2026-09-06.md). The audit's CQB/Lightened labels were reversed, and the six FMJ bindings are compound selectors, not source conflicts; the corrections below supersede those original claims.
 
 Validation: all 43 Node product tests, the 63-weapon data validator, and the published-file validator pass. The browser shows L115 Iron Sights at 15 points and a 35-point default total. Publication is authorized for all reviewed site changes in this task, including the earlier Frosty corrections and the v1.3.3.0 archive.
 
@@ -49,7 +49,7 @@ A selectable M433 with Ribbed Vertical changes ADS recoil from 0.793 to approxim
 
 ### 2. Heavy, Heavy Extended, and Cryo barrels apply effects to the wrong aim state
 
-**Deferred by the operator.** No barrel spread/recovery value or aim-state scope was changed.
+**Aim-state scope fixed locally in the follow-up.** Existing multipliers now target ADS only. Numerical recovery constants remain deferred.
 
 The linked source barrel modifier targets ADS: spread increment ×0.666667, firing recovery coefficient ×1.837117, and firing, non-firing, and idle recovery offsets ×0.666667. The site's common multipliers also change hip spread and recovery. Its recovery coefficient uses 1.71, and it does not apply all three offset changes.
 
@@ -113,18 +113,18 @@ ADS, draw, and movement shifts were compared using the correct site sign convent
 
 ## Source differences that need review before implementation
 
-- CQB source grip modifiers include a hip penalty of +1 in 50 mapped contexts where the current model uses zero. Review this against the previously accepted attachment model before changing it.
+- **Withdrawn after mapping correction:** the audit reversed CQB and Lightened suppressor labels. The hip penalty and Smooth effects belong to Lightened, not CQB. Corrected mapping yields 52 Lightened and 57 CQB paths. Long and Lightened share these effects; Long has the sway penalty. No CQB runtime correction is required.
 - Keep the operator-approved hybrid and Canted models unchanged. Their raw effect differences are recorded for review. Point costs must come from attachment records, not suffixes such as W25 or W40.
 - Deployed Bipod and Grippod effects are conditional. Source links include ADS spread and recovery changes, recoil tiers, and variation changes. The site has no deployed-state control. A `noEffect` site entry does not establish that deployment has no game effect; applying deployed modifiers all the time would also be wrong.
 - ADS reload, bolt rechamber, Match Trigger, Rangefinder, and other functional selectors need state or mechanic support. Labels alone do not reproduce their effects.
-- Per-optic camera, FOV, scope-glint, sway, and aim-controller data do not map to the site's six broad sight categories. The 2,256 optic records are inventoried, but packed or opaque camera values are not interpreted as ADS tiers.
+- Detailed optics are outside the operator's site scope. The 2,256 records remain audit inventory only.
 - Seven additional non-optic bindings appear in the expanded graph: conditional short barrels on MiniFix and BREN3; conditional short/extended barrels on G22; an M18 extended-magazine selector; and conditional extended suppressor selectors on MPX Compact Streamer and SRD9. They need composition review.
 
 ## Identity, availability, and export limits
 
-The comparator produced 3,341 selector comparisons: 2,994 mapped, 242 without selectors, 66 not listed on the site, 13 with ambiguous identity, two unmapped templates, six source/template conflicts, and 18 outside the site roster. It also found 31 site selections without a unique source mapping. These categories do not establish live availability. They include aliases, functional mounts, unavailable modes, and conflicting source labels.
+The original comparator produced 3,341 selector comparisons. After correcting the suppressor labels, these are 3,003 mapped, 242 without selectors, 57 not listed on the site, 13 with ambiguous identity, two unmapped templates, six compound standard-ammunition selectors, and 18 outside the site roster. There are 22 site selections without a unique mapping, down from 31. The follow-up lists all original 31 and identifies the nine recovered mappings. These categories do not establish live availability.
 
-The six source/template conflicts include ammunition attachments whose names indicate Frangible or Hollow Point but whose selectors point to FMJ. Subsonic Frangible was kept distinct from ordinary Frangible. Unmapped vertical-grip identities and compound Slim Angled selectors were not guessed.
+The six FMJ bindings occur on M121 A2 and M45A1 Frangible, Hollow Point, and Tungsten. The same Ability action also selects the correct specialty modifier. FMJ supplies an additional penetration-category selection; it does not replace specialty ammunition. The earlier conflict classification was incorrect. Subsonic Frangible remains distinct from ordinary Frangible.
 
 Field results are 5,500 matches, 36 display-rounded matches, 2,602 candidate differences, and 1,086 unmodeled comparisons. These are repeated field comparisons across attachment contexts, not counts of bugs. Some need default-loadout normalization, conditional-state support, or compound-selector resolution.
 
@@ -140,7 +140,7 @@ The initial pass changed the research extractor and created the report and evide
 
 ### Heavy/Cryo barrel spread and recovery
 
-There are two separate questions: which aim state the modifier targets, and how each recovery parameter affects the time between shots. The source links target ADS. The current shared barrel fields affect ADS and hip. Moving those fields to an ADS-only path is a plausible correction, but it must be reviewed together with the other recovery constants so that the final behavior is coherent.
+There are two separate questions: which aim state the modifier targets, and how each recovery parameter affects the time between shots. The source links target ADS. The follow-up implements the approved ADS-only scope. The recovery constant differences remain separate and deferred.
 
 For the next review, use one selectable Heavy, one Heavy Extended, and one Cryo loadout. Compare Basic versus the selected barrel while standing and moving, in both ADS and hip fire. Trace the increment, firing recovery coefficient, and firing/non-firing/idle offsets separately. Then compare a controlled short burst and the pause after it. A correct implementation should change only the source-targeted state, preserve the first-shot bounds unless explicitly modified, and avoid applying the same multiplier twice. Keep this separate from a general recoil-decay formula change.
 
@@ -170,10 +170,14 @@ For each affected weapon, resolve the selected attachment branch and deduplicate
 
 ### Ammunition baseline and magazine identity
 
+The [7 September magazine identity review](FROSTY_MAGAZINE_IDENTITY_REVIEW_2026-09-07.md) uses 12 original screenshots to classify all 13 former ambiguous bindings. It resolves the four shotgun identities and the two RPK-74M parent identities, separates six source-only candidates from captured site selections, and retains three unmatched extra bindings. It does not implement new magazine effects or availability.
+
+The subsequent [magazine model update](FROSTY_MAGAZINE_MODEL_UPDATE_2026-09-07.md) implements 11 supported field edits across nine RPK-74M, Mini Scout, and BROD 3 magazine entries. Its 287-selection sweep retains screenshot-supported baseline exceptions and records the missing evidence for state-dependent shotgun reloads. These changes are local, not published.
+
 Default ammunition may already be included in the base weapon's exported values. Applying its linked modifier again can double-count the effect. Establish whether the base configuration is before or after the factory selector before adding Buckshot hip dispersion. Slug and source-mapped Subsonic corrections use explicit non-default effects and are already implemented. No new ammunition availability was inferred.
 
 For magazines, capacity alone is insufficient when two variants have the same size but different reload behavior. Use the actual selector, capacity, reload operation, and factory default together. RPK-74M compound compact selectors remain excluded. The sway indicator can describe direction of change, but camera sway axes and numerical sway amplitude need their own supported model. Do not describe the current indicator as a complete sway simulation.
 
 ### Other source and availability gaps
 
-CQB hip penalties, remaining ordinary VSSM barrel ADS-time effects, and ambiguous grip identities need a comparison against the accepted factory loadout and operator-reviewed model. Deployed attachments need a defined deployed state. Functional attachments need their relevant mechanic, such as reload or rechamber behavior. Optics need per-optic identity and camera interpretation before they can replace broad sight categories. Source-only selectors and incomplete graph links need a resolved usable path or an in-game availability check. None of these should be enabled merely because an XML record exists.
+Remaining ordinary VSSM barrel ADS-time effects and ambiguous grip identities need a comparison against the accepted factory loadout. Deployed attachments need a defined deployed state. Functional attachments need their relevant mechanic, such as reload or rechamber behavior. Detailed optics will not be added. Source-only selectors and incomplete graph links need a resolved usable path or an in-game availability check. The CQB penalty allegation is withdrawn. The follow-up provides the full inventories and numerical examples.

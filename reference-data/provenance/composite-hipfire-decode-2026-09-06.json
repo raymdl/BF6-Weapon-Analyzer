@@ -1,0 +1,164 @@
+{
+  "status": "Partial resource decoding; no verified Hipfire formula",
+  "resourceSha256": "7d4470d20e1b6ac1e90a6b76c36cf049ca69511b32ce8eb667ecd0a086079a64",
+  "namedInputOffsets": {
+    "IncreasePerShotFraction": 16,
+    "MinAngle": 24,
+    "StandDispersionMinAngle": 32,
+    "MinAngleIndex": 40
+  },
+  "lookupValues": [
+    8.032,
+    4.848,
+    3.352,
+    2.432,
+    1.804,
+    1.352,
+    1.024,
+    0.784,
+    0.608,
+    0.476,
+    0.38,
+    2.16,
+    1.444,
+    0.972,
+    0.656,
+    0.444,
+    0.304,
+    0.208
+  ],
+  "lookupReview": "18 values copied into contiguous scratch slots. Integer constants include 18 and 17, consistent with count and final index, but lookup helper semantics remain unresolved. Do not assume this is one monotonic ladder: it jumps from 0.38 to 2.16.",
+  "branchReview": "Conditional instruction at code offset 192 targets 728. The fallback block at 728 loads MinAngle; it joins at 764 before StandDispersionMinAngle is added. Sequential next-offset traversal alone skips this alternate block.",
+  "remainingUnknowns": [
+    "Comparison direction at 32 and 156",
+    "Array helper and index clamp semantics",
+    "Unary functions at 924 and 1060",
+    "Exact input sourcing and attachment transformation"
+  ],
+  "runtimeChange": false,
+  "baselineCandidate": {
+    "formula": "10 * sqrt((0.425 / tan(radians(A * 1.25))) * 83.33333587646484 / 40.92409896850586)",
+    "assumptions": [
+      "Unary hash cb74bbb0 interpreted as tangent",
+      "Unary hash 437bec49 interpreted as square root",
+      "A provisionally uses current site standing hip spread",
+      "IncreasePerShotFraction branch provisionally uses factor 1, not 1.2",
+      "StandDispersionMinAngle contribution not separately established"
+    ],
+    "rows": [
+      {
+        "weapon": "m433",
+        "hipClass": "Class C",
+        "siteStandingSpreadDegrees": 2.432,
+        "observedHipfire": 40,
+        "candidate": 40.367783912805265,
+        "candidateRounded": 40,
+        "matches": true
+      },
+      {
+        "weapon": "b36a4",
+        "hipClass": "Class C",
+        "siteStandingSpreadDegrees": 2.432,
+        "observedHipfire": 40,
+        "candidate": 40.367783912805265,
+        "candidateRounded": 40,
+        "matches": true
+      },
+      {
+        "weapon": "ak4d",
+        "hipClass": "Class C",
+        "siteStandingSpreadDegrees": 2.432,
+        "observedHipfire": 40,
+        "candidate": 40.367783912805265,
+        "candidateRounded": 40,
+        "matches": true
+      },
+      {
+        "weapon": "sor300sc",
+        "hipClass": "Class B",
+        "siteStandingSpreadDegrees": 1.804,
+        "observedHipfire": 47,
+        "candidate": 46.88027694593819,
+        "candidateRounded": 47,
+        "matches": true
+      },
+      {
+        "weapon": "db12",
+        "hipClass": "Class C",
+        "siteStandingSpreadDegrees": 2.432,
+        "observedHipfire": 39,
+        "candidate": 40.367783912805265,
+        "candidateRounded": 40,
+        "matches": false
+      },
+      {
+        "weapon": "m87a1",
+        "hipClass": "Class C",
+        "siteStandingSpreadDegrees": 2.432,
+        "observedHipfire": 40,
+        "candidate": 40.367783912805265,
+        "candidateRounded": 40,
+        "matches": true
+      }
+    ],
+    "matches": 5,
+    "count": 6,
+    "decision": "Five of six matches; DB-12 mismatch retained. Not ready for runtime promotion."
+  },
+  "tableCrossCheck": {
+    "matchingClassBaseValues": {
+      "Class A": 1.352,
+      "Class B": 1.804,
+      "Class C": 2.432,
+      "Class D": 3.352,
+      "Class E": 4.848
+    },
+    "result": "All five current class standing base values occur in the exported lookup table; this does not establish each weapon index or its additional angle input."
+  },
+  "db12InputReview": {
+    "source": "..\\BF6 Datamining\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.xml",
+    "sha256": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "registryValues": {
+      "GS_DP12.MinMaxDispersion.Unzoomed.Standing.Stationary.MinAngle": "0.784",
+      "GS_DP12.UnzoomedMinAnglesArrayIndex": "0x00000003"
+    },
+    "interpretation": "Index 3 selects 2.432 if the exported graph uses zero-based direct lookup. The direct configured standing minimum is 0.784; do not replace the indexed value with this fallback without establishing branch semantics.",
+    "result": "The index supports the existing 2.432 candidate input. The separate StandDispersionMinAngle input source is still unresolved; no value inferred from the desired rating."
+  },
+  "db12FiringDispersionReview": {
+    "source": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\DP12_WB.xml",
+    "sha256": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f",
+    "structType": "Struct_8e53cf47",
+    "records": [
+      {
+        "Field_7baf4297": "1.2",
+        "Field_38941f45": "0x00000001",
+        "Field_0084b1d1": "0",
+        "Field_987d381c": "0x00000002",
+        "Field_60e4e484": "1.2",
+        "Field_18f6a79f": "0",
+        "Field_7cb2a25f": "True"
+      },
+      {
+        "Field_7baf4297": "1.2",
+        "Field_38941f45": "0x00000001",
+        "Field_0084b1d1": "0",
+        "Field_987d381c": "0x00000002",
+        "Field_60e4e484": "1.2",
+        "Field_18f6a79f": "0",
+        "Field_7cb2a25f": "True"
+      },
+      {
+        "Field_7baf4297": "1.2",
+        "Field_38941f45": "0x00000001",
+        "Field_0084b1d1": "0",
+        "Field_987d381c": "0x00000002",
+        "Field_60e4e484": "1.2",
+        "Field_18f6a79f": "0",
+        "Field_7cb2a25f": "True"
+      }
+    ],
+    "result": "Three firing-data dispersion-shaped records contain Field_7baf4297=1.2. This field is named MinAngle in registry-linked gun-sway dispersion blocks, but the exact firing-data role and UI input transformation are not yet established. These records do not directly provide the small additive correction needed by the simplified candidate.",
+    "decision": "Retain mismatch; do not infer an additive angle solely to fit rating 39."
+  }
+}

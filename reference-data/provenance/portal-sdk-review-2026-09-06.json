@@ -1,0 +1,26 @@
+{
+  "reviewDate": "2026-09-06",
+  "status": "API inspection only; no runtime calibration",
+  "sources": [
+    {
+      "repository": "battlefield-portal-community/PortalSDK",
+      "commit": "24b26d81fd5795db19fa1ded046e5bfda79b8a8f",
+      "fileDate": "2025-10-16",
+      "path": "example_mods/typedefs/mod/index.d.ts",
+      "localSha256": "4609726d1f9706114970a10e75ad5cec57ec064f2b6840e62a966b66d6815538"
+    },
+    {
+      "repository": "The-Sir-Community/ts-bf6-portal",
+      "commit": "8fc05900260148f4c7e916bbc1897bd473e72881",
+      "fileDate": "2025-10-31",
+      "path": "src/portalsdk/mod/index.d.ts",
+      "localSha256": "998a91d3823ed2af5c658ec24bcff8faed1b43aeff0ced661ffef1c55eba9ec4"
+    }
+  ],
+  "limits": [
+    "Both inspected mirrors are old and lack DB-12 in their weapon enum.",
+    "No per-shot callback or direct recoil/spread/rating getter was found in these declarations.",
+    "Timer precision, observation delay, facing-vector semantics and logging behavior remain untested."
+  ],
+  "report": "docs/PORTAL_SDK_RESEARCH_2026-09-06.md"
+}

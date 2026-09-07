@@ -1,0 +1,424 @@
+{
+  "schemaVersion": 1,
+  "source": "Frosty BF6SDK.dll reflection metadata; field types and indices only, not semantic names or formulas",
+  "sourceFiles": [
+    {
+      "path": "Profiles/BF6SDK.dll",
+      "sha256": "d6601d2eee9621f576b298cb7afcd8b67fb1a21329831dd86eb5493f29f1d55b"
+    },
+    {
+      "path": "FrostySdk.dll",
+      "sha256": "b880f681be770f2f3b189f80f73419f5b9568a1d67fdd739cbafd855fa2b6a9a"
+    }
+  ],
+  "types": {
+    "Class_d59e68b9": {
+      "__Id": {
+        "clrType": "FrostySdk.Ebx.CString",
+        "fieldIndex": -2
+      },
+      "Field_3ff76ddb": {
+        "clrType": "System.Single",
+        "fieldIndex": 9
+      },
+      "Field_42c8b257": {
+        "clrType": "System.Single",
+        "fieldIndex": 7
+      },
+      "Field_c06d0cbb": {
+        "clrType": "System.Single",
+        "fieldIndex": 8
+      },
+      "Field_605f79af": {
+        "clrType": "System.Collections.Generic.List`1[FrostySdk.Ebx.Struct_9bc51bd0]",
+        "fieldIndex": 6
+      },
+      "Field_a524635f": {
+        "clrType": "FrostySdk.Ebx.Enum_d7ed8292",
+        "fieldIndex": 4
+      },
+      "Field_e73c7944": {
+        "clrType": "System.UInt32",
+        "fieldIndex": 5
+      },
+      "Field_96e1b4f3": {
+        "clrType": "FrostySdk.Ebx.PointerRef",
+        "fieldIndex": 2
+      },
+      "Field_0c59fa06": {
+        "clrType": "FrostySdk.Ebx.CString",
+        "fieldIndex": 0
+      },
+      "Field_8cf424e7": {
+        "clrType": "System.Int32",
+        "fieldIndex": 3
+      },
+      "Field_c124c7d8": {
+        "clrType": "System.Int32",
+        "fieldIndex": 1
+      },
+      "__InstanceGuid": {
+        "clrType": "FrostySdk.Ebx.AssetClassGuid",
+        "fieldIndex": -1
+      }
+    },
+    "Class_850e9af6": {
+      "__Id": {
+        "clrType": "FrostySdk.Ebx.CString",
+        "fieldIndex": -2
+      },
+      "Field_3ff76ddb": {
+        "clrType": "System.Int32",
+        "fieldIndex": 9
+      },
+      "Field_42c8b257": {
+        "clrType": "System.Int32",
+        "fieldIndex": 7
+      },
+      "Field_c06d0cbb": {
+        "clrType": "System.Int32",
+        "fieldIndex": 8
+      },
+      "Field_605f79af": {
+        "clrType": "System.Collections.Generic.List`1[FrostySdk.Ebx.Struct_9bc51bd0]",
+        "fieldIndex": 6
+      },
+      "Field_a524635f": {
+        "clrType": "FrostySdk.Ebx.Enum_d7ed8292",
+        "fieldIndex": 4
+      },
+      "Field_e73c7944": {
+        "clrType": "System.UInt32",
+        "fieldIndex": 5
+      },
+      "Field_96e1b4f3": {
+        "clrType": "FrostySdk.Ebx.PointerRef",
+        "fieldIndex": 2
+      },
+      "Field_0c59fa06": {
+        "clrType": "FrostySdk.Ebx.CString",
+        "fieldIndex": 0
+      },
+      "Field_8cf424e7": {
+        "clrType": "System.Int32",
+        "fieldIndex": 3
+      },
+      "Field_c124c7d8": {
+        "clrType": "System.Int32",
+        "fieldIndex": 1
+      },
+      "__InstanceGuid": {
+        "clrType": "FrostySdk.Ebx.AssetClassGuid",
+        "fieldIndex": -1
+      }
+    },
+    "Class_18d40008": {
+      "__Id": {
+        "clrType": "FrostySdk.Ebx.CString",
+        "fieldIndex": -2
+      },
+      "Field_42c8b257": {
+        "clrType": "System.Boolean",
+        "fieldIndex": 7
+      },
+      "Field_605f79af": {
+        "clrType": "System.Collections.Generic.List`1[FrostySdk.Ebx.Struct_9bc51bd0]",
+        "fieldIndex": 6
+      },
+      "Field_a524635f": {
+        "clrType": "FrostySdk.Ebx.Enum_d7ed8292",
+        "fieldIndex": 4
+      },
+      "Field_e73c7944": {
+        "clrType": "System.UInt32",
+        "fieldIndex": 5
+      },
+      "Field_96e1b4f3": {
+        "clrType": "FrostySdk.Ebx.PointerRef",
+        "fieldIndex": 2
+      },
+      "Field_0c59fa06": {
+        "clrType": "FrostySdk.Ebx.CString",
+        "fieldIndex": 0
+      },
+      "Field_8cf424e7": {
+        "clrType": "System.Int32",
+        "fieldIndex": 3
+      },
+      "Field_c124c7d8": {
+        "clrType": "System.Int32",
+        "fieldIndex": 1
+      },
+      "__InstanceGuid": {
+        "clrType": "FrostySdk.Ebx.AssetClassGuid",
+        "fieldIndex": -1
+      }
+    },
+    "Struct_bcfafb0d": {
+      "Field_8bd6dcdd": {
+        "clrType": "System.Boolean",
+        "fieldIndex": 0
+      },
+      "Field_f888cb38": {
+        "clrType": "System.Single",
+        "fieldIndex": 1
+      },
+      "Field_865174fa": {
+        "clrType": "System.Single",
+        "fieldIndex": 2
+      },
+      "Field_7404fa33": {
+        "clrType": "System.Single",
+        "fieldIndex": 3
+      },
+      "Field_02433593": {
+        "clrType": "System.Int32",
+        "fieldIndex": 4
+      },
+      "Field_22810b21": {
+        "clrType": "System.Single",
+        "fieldIndex": 5
+      },
+      "Field_50b8fd5b": {
+        "clrType": "System.Single",
+        "fieldIndex": 6
+      },
+      "Field_22ce7cf3": {
+        "clrType": "System.Int32",
+        "fieldIndex": 7
+      },
+      "Field_9546447c": {
+        "clrType": "System.Single",
+        "fieldIndex": 8
+      },
+      "Field_ce4b3347": {
+        "clrType": "System.Single",
+        "fieldIndex": 9
+      },
+      "Field_a63f14a6": {
+        "clrType": "System.Single",
+        "fieldIndex": 10
+      },
+      "Field_2859e2fd": {
+        "clrType": "System.Single",
+        "fieldIndex": 11
+      },
+      "Field_b7e27231": {
+        "clrType": "System.Collections.Generic.List`1[System.Single]",
+        "fieldIndex": 12
+      },
+      "Field_205e8a1c": {
+        "clrType": "System.Single",
+        "fieldIndex": 13
+      },
+      "Field_65700a5d": {
+        "clrType": "System.Single",
+        "fieldIndex": 14
+      },
+      "Field_edbd0711": {
+        "clrType": "System.Single",
+        "fieldIndex": 15
+      },
+      "Field_eec30064": {
+        "clrType": "System.Collections.Generic.List`1[System.Single]",
+        "fieldIndex": 16
+      },
+      "Field_1afd1bf1": {
+        "clrType": "System.Single",
+        "fieldIndex": 17
+      },
+      "Field_28df1cde": {
+        "clrType": "System.Single",
+        "fieldIndex": 18
+      },
+      "Field_9045ba17": {
+        "clrType": "System.Single",
+        "fieldIndex": 19
+      },
+      "Field_39740463": {
+        "clrType": "System.Single",
+        "fieldIndex": 20
+      },
+      "Field_04490b34": {
+        "clrType": "System.Single",
+        "fieldIndex": 23
+      },
+      "Field_1d04f0f6": {
+        "clrType": "System.Single",
+        "fieldIndex": 24
+      },
+      "Field_5a02dd65": {
+        "clrType": "System.Single",
+        "fieldIndex": 25
+      },
+      "Field_9b46e71d": {
+        "clrType": "System.Single",
+        "fieldIndex": 26
+      },
+      "Field_0fc53def": {
+        "clrType": "System.UInt32",
+        "fieldIndex": 27
+      },
+      "Field_b468bc2c": {
+        "clrType": "System.Single",
+        "fieldIndex": 28
+      },
+      "Field_ddac0349": {
+        "clrType": "System.Single",
+        "fieldIndex": 29
+      },
+      "Field_89e9f16e": {
+        "clrType": "System.Single",
+        "fieldIndex": 30
+      },
+      "Field_1e41c505": {
+        "clrType": "System.Single",
+        "fieldIndex": 31
+      },
+      "Field_27f30454": {
+        "clrType": "System.Single",
+        "fieldIndex": 32
+      },
+      "Field_2a325077": {
+        "clrType": "FrostySdk.Ebx.Struct_9bc51bd0",
+        "fieldIndex": 33
+      }
+    },
+    "Struct_b1f8b400": {
+      "Field_4692836a": {
+        "clrType": "System.Single",
+        "fieldIndex": 3
+      },
+      "Field_98a799ba": {
+        "clrType": "System.Single",
+        "fieldIndex": 4
+      },
+      "Field_bbbfe9cc": {
+        "clrType": "System.Single",
+        "fieldIndex": 1
+      },
+      "Field_5695ee1c": {
+        "clrType": "System.Single",
+        "fieldIndex": 2
+      },
+      "Field_bbffe8bc": {
+        "clrType": "System.Boolean",
+        "fieldIndex": 0
+      }
+    },
+    "Struct_26e24b34": {
+      "Field_b7e27231": {
+        "clrType": "System.Collections.Generic.List`1[FrostySdk.Ebx.Struct_b1f8b400]",
+        "fieldIndex": 10
+      },
+      "Field_eec30064": {
+        "clrType": "System.Collections.Generic.List`1[FrostySdk.Ebx.Struct_b1f8b400]",
+        "fieldIndex": 14
+      },
+      "Field_f888cb38": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 1
+      },
+      "Field_b468bc2c": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 25
+      },
+      "Field_5a02dd65": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 23
+      },
+      "Field_39740463": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 18
+      },
+      "Field_9546447c": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 6
+      },
+      "Field_ddac0349": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 26
+      },
+      "Field_9045ba17": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 17
+      },
+      "Field_2859e2fd": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 9
+      },
+      "Field_27f30454": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 29
+      },
+      "Field_28df1cde": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 16
+      },
+      "Field_865174fa": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 2
+      },
+      "Field_205e8a1c": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 11
+      },
+      "Field_1e41c505": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 28
+      },
+      "Field_1afd1bf1": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 15
+      },
+      "Field_89e9f16e": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 27
+      },
+      "Field_22810b21": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 4
+      },
+      "Field_a63f14a6": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 8
+      },
+      "Field_1d04f0f6": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 22
+      },
+      "Field_04490b34": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 21
+      },
+      "Field_65700a5d": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 12
+      },
+      "Field_9b46e71d": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 24
+      },
+      "Field_ce4b3347": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 7
+      },
+      "Field_edbd0711": {
+        "clrType": "FrostySdk.Ebx.Struct_b1f8b400",
+        "fieldIndex": 13
+      },
+      "Field_02433593": {
+        "clrType": "FrostySdk.Ebx.Struct_d204f959",
+        "fieldIndex": 3
+      },
+      "Field_22ce7cf3": {
+        "clrType": "FrostySdk.Ebx.Struct_d204f959",
+        "fieldIndex": 5
+      },
+      "Field_8bd6dcdd": {
+        "clrType": "FrostySdk.Ebx.Struct_fbc2c31d",
+        "fieldIndex": 0
+      }
+    }
+  }
+}

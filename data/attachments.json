@@ -263,57 +263,57 @@
       "name": "None",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 1,
       "pts": 0,
       "velMult": 1,
-      "velTierMod": 0
+      "velTierMod": 0,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "basic",
       "name": "Basic",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 1,
       "pts": 10,
       "velMult": 1,
-      "velTierMod": 0
+      "velTierMod": 0,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "short",
       "name": "Short",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 1,
       "hipSpreadTierMod": -1,
       "pts": 15,
       "velMult": 0.8,
-      "velTierMod": -1
+      "velTierMod": -1,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "extended",
       "name": "Extended",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 1,
       "pts": 5,
       "velMult": 1.25,
-      "velTierMod": 1
+      "velTierMod": 1,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "heavy",
       "name": "Heavy",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 0.667,
-      "spreadFiringDecCoefMult": 1.71,
-      "spreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
         "spreadFiringDecCoefMult": true,
         "spreadFiringDecOffsetMult": true
       },
       "pts": 10,
       "velMult": 1,
-      "velTierMod": 0
+      "velTierMod": 0,
+      "adsSpreadIncMult": 0.667,
+      "adsSpreadFiringDecCoefMult": 1.71,
+      "adsSpreadFiringDecOffsetMult": 0.667
     },
     {
       "id": "heavy_ext",
@@ -321,89 +321,89 @@
       "adsTimeTierMod": 0,
       "sprintRecoveryTierShift": 1,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 0.667,
-      "spreadFiringDecCoefMult": 1.71,
-      "spreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
         "spreadFiringDecCoefMult": true,
         "spreadFiringDecOffsetMult": true
       },
       "pts": 10,
       "velMult": 1.25,
-      "velTierMod": 1
+      "velTierMod": 1,
+      "adsSpreadIncMult": 0.667,
+      "adsSpreadFiringDecCoefMult": 1.71,
+      "adsSpreadFiringDecOffsetMult": 0.667
     },
     {
       "id": "light",
       "name": "Light",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
-      "spreadIncMult": 1,
       "pts": 20,
       "velMult": 1,
-      "velTierMod": 0
+      "velTierMod": 0,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "cryo",
       "name": "Cryogenic",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 0.667,
-      "spreadFiringDecCoefMult": 1.71,
-      "spreadFiringDecOffsetMult": 0.667,
       "assumedFields": {
         "spreadFiringDecCoefMult": true,
         "spreadFiringDecOffsetMult": true
       },
       "pts": 20,
       "velMult": 1,
-      "velTierMod": 0
+      "velTierMod": 0,
+      "adsSpreadIncMult": 0.667,
+      "adsSpreadFiringDecCoefMult": 1.71,
+      "adsSpreadFiringDecOffsetMult": 0.667
     },
     {
       "id": "ext_light",
       "name": "Extended Light",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
-      "spreadIncMult": 1,
       "pts": 25,
       "velMult": 1.25,
-      "velTierMod": 1
+      "velTierMod": 1,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "short_light",
       "name": "Short Light",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 1,
-      "spreadIncMult": 1,
       "hipSpreadTierMod": -1,
       "pts": 25,
       "velMult": 0.8,
-      "velTierMod": -1
+      "velTierMod": -1,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "vssm_suppressed",
       "name": "Suppressed",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 1,
       "pts": 30,
       "velMult": 1,
       "velTierMod": 0,
       "suppressor": true,
       "worldSpot": 0,
-      "minimapSpot": 9
+      "minimapSpot": 9,
+      "adsSpreadIncMult": 1
     },
     {
       "id": "vssm_suppressed_asm",
       "name": "Suppressed",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "spreadIncMult": 1,
       "pts": 20,
       "velMult": 1,
       "velTierMod": 0,
       "suppressor": true,
       "worldSpot": 0,
-      "minimapSpot": 21
+      "minimapSpot": 21,
+      "adsSpreadIncMult": 1
     }
   ],
   "GRIPS": [
@@ -6311,7 +6311,7 @@
           "pts": 30,
           "mag": 15,
           "adsTimeTierShift": 0,
-          "adsMoveSpeedTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 0
         },
@@ -6321,7 +6321,7 @@
           "mag": 15,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
           "reloadSpeedTier": 1
         },
         "20_rnd": {
@@ -6329,7 +6329,7 @@
           "pts": 55,
           "mag": 20,
           "adsTimeTierShift": 0,
-          "adsMoveSpeedTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 0
         },
@@ -6339,7 +6339,7 @@
           "mag": 20,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
-          "adsMoveSpeedTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
           "reloadSpeedTier": 1
         }
       },
@@ -7532,7 +7532,9 @@
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -2,
           "adsMoveSpeedTierShift": -2,
-          "reloadSpeedTier": 0
+          "reloadSpeedTier": 0,
+          "movingAdsSpreadTierMod": 1,
+          "sway": -1
         },
         "30_fast": {
           "name": "30 Fast",
@@ -7541,7 +7543,9 @@
           "adsTimeTierShift": -1,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
-          "reloadSpeedTier": 1
+          "reloadSpeedTier": 1,
+          "movingAdsSpreadTierMod": 1,
+          "sway": -1
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -7971,7 +7975,7 @@
           "pts": 15,
           "mag": 36,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
+          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "reloadSpeedTier": 0
         },
@@ -7980,7 +7984,7 @@
           "pts": 25,
           "mag": 40,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 1,
+          "sprintRecoveryTierShift": 0,
           "adsMoveSpeedTierShift": 1,
           "reloadSpeedTier": 0
         },
@@ -7989,7 +7993,7 @@
           "pts": 30,
           "mag": 40,
           "adsTimeTierShift": 0,
-          "sprintRecoveryTierShift": 2,
+          "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
           "reloadSpeedTier": 1
         }

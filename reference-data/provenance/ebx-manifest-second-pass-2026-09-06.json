@@ -1,0 +1,526 @@
+{
+  "scope": "Second EBX manifest pass; filename/path triage followed by selected asset inspection, not a full semantic audit of all assets",
+  "manifest": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\ebx_manifest.csv",
+    "sha256": "d391353210a3306c9c7ab8193621eb459a7752e281f0d0b282abc8cbd7d75497",
+    "entryCount": 464499
+  },
+  "newStatResource": {
+    "asset": "Common/UI/Weapons/UIViewModel/WeaponUpgradeStats",
+    "rid": "9B23B13553C4C947",
+    "resourceType": "7dd4cc89",
+    "bytes": 14416,
+    "inputs": [
+      "PackageId",
+      "CurrAttachmentIdArray",
+      "UpgradeAttachmentIdArray",
+      "UpgradePointsDelta"
+    ],
+    "outputs": [
+      "PositiveStatCollectionDBD",
+      "NegativeStatCollectionDBD"
+    ],
+    "limitation": "Ports identify a stat-change pipeline, not its arithmetic or active multiplayer UI binding.",
+    "followup": {
+      "outputBinding": "Game/GlacierGranite/Common/UI/NumericalStatsUpgradeKitDBD",
+      "fields": [
+        "Name",
+        "Value",
+        "DisplayValue",
+        "Delta",
+        "ChevronCount",
+        "ShowChevrons",
+        "IsAttachmentEffect",
+        "IsValuePositive"
+      ],
+      "tags": {
+        "12873b1a-2925-45cc-964a-153026346e36": "Upgrade_Suppressor",
+        "15121523-2967-4080-87ea-000e4733cdd4": "Upgrade_SprintFire",
+        "47b77d25-4820-4800-ba7c-06f44c84c869": "Upgrade_FlashHider",
+        "838edf26-4ec5-4bda-8ad9-4fbcd59c59e0": "Upgrade_VariableZoom",
+        "edde3e59-77b0-4636-905d-c500594bfd13": "Upgrade_BetterDrag",
+        "23a61a5b-bac3-4e51-a362-1473dce766e8": "Upgrade_Flashlight",
+        "54fb3667-6f5b-4372-bfaf-abf8809c07cd": "Upgrade_ADSReload",
+        "c3129b76-49e5-4a4c-8d29-bdcb55a1c524": "Upgrade_SlowsRegen",
+        "9b8b887f-eb36-486a-8e4a-b69341f90438": "Upgrade_BetterPenetration",
+        "fd43468c-5a41-4174-8b78-60ff0cb0a102": "Upgrade_BetterGlint",
+        "d8f761a2-8c53-45bb-aba7-b98ddf3c9ef9": "Upgrade_Speedloader",
+        "95fbfebc-2990-4622-bbe4-8aca621b367a": "Upgrade_Slug",
+        "375569cf-6776-44ab-9420-9f64faab0b3a": "Upgrade_Bipod",
+        "bb590edf-ebfb-40de-a6a3-e01e877a6c93": "Upgrade_ADSRechamber",
+        "d82720f0-d752-4290-b0f4-29a2597ab2b3": "Upgrade_MatchTrigger",
+        "41a105fd-a0e5-4241-9e6c-5bad4b6dc38c": "Upgrade_Rangefinder"
+      },
+      "interpretation": "Upgrade-summary and stat-delta display pipeline; not established as the Control/Precision/Hipfire/Mobility formula source.",
+      "outputSha256": "7abd8e893a31ebf394148d158401fd2b52b4b013c3586dc01353d83aeab65815",
+      "tagSourceSha256": "5b8c224ca9ec62222e71513ab713d97eb0e39bb3729220dc7e4b4f78aa6b4158",
+      "decoderLimit": "The entry marker used for the small attribute delegates is absent here; their code-layout shortcut must not be applied unchanged."
+    }
+  },
+  "abilityStatsViewModels": {
+    "assets": [
+      "MenuWeapon_Attachment_AbilityStats",
+      "MenuWeapon_Package_AbilityStats"
+    ],
+    "namedBinding": "AbilityStatsBinding",
+    "resourceId": "0000000000000000",
+    "limitation": "No serialized resource at these two graph references; do not claim a formula from their names."
+  },
+  "seasonalMetadata": [
+    {
+      "file": "UIWeaponAttachmentMetadata.xml",
+      "count": 51,
+      "references": [
+        "[Ebx] Common/Hardware/Weapons/MG/Ultimax/AAM_Ultimax [3f63fe7b-8c37-40ab-9424-947fe52eb5cb]",
+        "[Ebx] Common/Hardware/Weapons/BoltAction/SV98M/AAM_SV98M [290b4b46-3d05-4a0a-b5aa-927088e4099f]",
+        "[Ebx] Common/Hardware/Weapons/SMG/MPX/AAM_MPX [8662a729-be73-4660-82e0-bbbd7ee97eb6]",
+        "[Ebx] Common/Hardware/Weapons/SMG/MP7A2/AAM_MP7A2 [532376e6-8dab-4542-8405-b503057af3ba]",
+        "[Ebx] Common/Hardware/Weapons/MG/Minimi/AAM_Minimi [e783ce4a-50c3-4b21-a18e-3952864c2635]",
+        "[Ebx] Common/Hardware/Weapons/MG/M27IAR/AAM_M27IAR [3373ec12-f912-47ca-8f89-b3875c3c6799]",
+        "[Ebx] Common/Hardware/Weapons/MG/M250/AAM_M250 [52cf7a3a-a4d4-47f0-9c4a-1235f589870b]",
+        "[Ebx] Common/Hardware/Weapons/BoltAction/M2010ESR/AAM_M2010ESR [56711d54-d52b-45fb-a392-8d5344c41578]",
+        "[Ebx] Common/Hardware/Weapons/Secondary/M18/AAM_M18 [d778a718-b083-4d07-8d7f-e44eef6b0c72]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/HK433/AAM_HK433 [b3ee4442-c10c-44e9-a478-7f97a79a0f4e]",
+        "[Ebx] Common/Hardware/Weapons/Carbine/HK417A2/AAM_HK417A2 [3d9b8ff1-22d8-419d-8915-7960d0770335]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/G36/AAM_G36 [44164942-ea66-46c0-bf68-0f402f012d44]",
+        "[Ebx] Common/Hardware/Weapons/DMR/ARADMR/AAM_ARADMR [72702f85-0545-46a9-be5d-1d1faebd6405]",
+        "[Ebx] Common/Hardware/Weapons/Carbine/AK205/AAM_AK205 [f168f9fd-51ba-4e4b-931f-9094553ded50]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/6p67/AAM_6P67 [6fbf6a0a-e768-4c91-b98f-24174bdc4c9c]",
+        "[Ebx] Common/Hardware/Weapons/Shotgun/590A1/AAM_590A1 [49f5450c-cb57-42c7-9065-2c152fd0fc9d]",
+        "[Ebx] Common/Hardware/weapons/Carbine/M4A1/AAM_M4A1 [706fca75-ae58-4f46-a6c4-6a375429171d]",
+        "[Ebx] Common/Hardware/Weapons/Carbine/XM7/AAM_XM7 [ea4490a2-e3c3-4bb6-8009-18f95a9e3304]",
+        "[Ebx] Common/Hardware/Weapons/Shotgun/185KSK/AAM_185KSK [ec75be8d-ac41-45ed-9572-7439973b4344]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/ACE32/AAM_ACE32 [a390687e-9ee4-400b-a97a-bd8d91b46c91]",
+        "[Ebx] Common/Hardware/weapons/SMG/APC10/AAM_APC10 [18039c1f-fbc1-4238-9cd4-e157a9082093]",
+        "[Ebx] Common/Hardware/weapons/SMG/APDW/AAM_APDW [90b1765f-446b-4c36-832f-0702cab6ae09]",
+        "[Ebx] Common/Hardware/Weapons/Secondary/FiveSeven/AAM_FiveSeven [5914004f-0e12-4530-b4e1-9e6aa64b2768]",
+        "[Ebx] Common/Hardware/Weapons/Secondary/G22/AAM_G22 [ade5757b-315b-4f01-9b95-3e06b72fa39a]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/G3A4/AAM_G3A4 [f71ebd92-08b2-4aed-ab71-468fee0cc283]",
+        "[Ebx] Common/Hardware/Weapons/Shotgun/KSG/AAM_KSG [c56f1efb-7969-4892-a154-b710e102a383]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/L85A3/AAM_L85A3 [d4a956b9-4763-4605-a672-40fd6abb4c1e]",
+        "[Ebx] Common/Hardware/Weapons/Shotgun/M1014/AAM_M1014 [bca9c37d-a5d7-47d7-865c-f294c0c237bb]",
+        "[Ebx] Common/Hardware/Weapons/MG/M240L/AAM_M240L [e36d1d6c-176e-4417-8391-d41f06e7425a]",
+        "[Ebx] Common/Hardware/Weapons/DMR/M39EMR/AAM_M39EMR [02195b93-3235-4828-badf-88dc2b8e7b57]",
+        "[Ebx] Common/Hardware/Weapons/Secondary/M45A1/AAM_M45A1 [1db1a526-e8fc-45af-a4b5-9ed8d923fb02]",
+        "[Ebx] Common/Hardware/weapons/MG/M60E6/AAM_M60E6 [05cd10b7-01ab-434b-9787-5952851a5fe3]",
+        "[Ebx] Common/Hardware/Weapons/MG/MG4K/AAM_MG4K [cefe96e2-5813-4fe5-999d-379ef2d102c9]",
+        "[Ebx] Common/Hardware/weapons/SMG/MP5MLI/AAM_MP5MLI [5e9b5a4e-0af4-455e-aaae-c1b667af7644]",
+        "[Ebx] Common/Hardware/Weapons/BoltAction/MRAD/AAM_MRAD [95cfb27b-1707-4650-8837-7e9a0183b7da]",
+        "[Ebx] Common/Hardware/Weapons/Carbine/MSBSGROTB/AAM_MSBSGROTB [2fa72c7f-985c-4d8f-bb6d-4fb54af59e0f]",
+        "[Ebx] Common/Hardware/weapons/SMG/P90/AAM_P90 [efe0470f-586d-441f-b59f-fd39acdf92b7]",
+        "[Ebx] Common/Hardware/Weapons/Carbine/QBZ192/AAM_QBZ192 [d70ce6a8-6a81-4db5-9d65-14683779dcce]",
+        "[Ebx] Common/Hardware/weapons/Secondary/RagingHunter/AAM_RagingHunter [bcd0fae3-319b-414d-9d78-4a68b505c1ed]",
+        "[Ebx] Common/Hardware/Weapons/MG/RPKM/AAM_RPKM [2d743fad-5aac-436c-b019-6ce32c41569d]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/SCARL/AAM_SCARL [43874158-8c27-4205-ac8f-84f0497cbd3b]",
+        "[Ebx] Common/Hardware/Weapons/Carbine/SCARSC/AAM_SCARSC [c27435bf-22e0-435a-9f72-17f981884bfa]",
+        "[Ebx] Common/Hardware/Weapons/Carbine/SIG553R/AAM_SIG553R [a950777b-6cb9-401e-a463-7d1eb5b6b9ff]",
+        "[Ebx] Common/Hardware/Weapons/DMR/SVCh/AAM_SVCh [9f226978-7b0d-4b61-9e44-b985cef8f6d2]",
+        "[Ebx] Common/Hardware/Weapons/DMR/SVDM/AAM_SVDM [d147f9d0-c995-4855-90b4-6d31f5a6e59a]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/Tavor7/AAM_Tavor7 [8de00fb9-ffc3-4792-bd19-c23e60d8e897]",
+        "[Ebx] Common/Hardware/weapons/Secondary/TRR8/AAM_TRR8 [97f293b3-f4e7-47c9-987f-7f1c9ebf86a4]",
+        "[Ebx] Common/Hardware/weapons/SMG/UMP40/AAM_UMP40 [ad92008c-2aa5-4b46-b5a9-ea48bca04d80]",
+        "[Ebx] Common/Hardware/weapons/SMG/Vector/AAM_Vector [0ffc18fd-b4ef-4a33-84ff-435261ef1a30]",
+        "[Ebx] Common/Hardware/Weapons/BoltAction/MiniFix/AAM_MiniFix [c9920eb2-a924-4701-b626-b1171e80c9f9]",
+        "[Ebx] Common/Hardware/Weapons/Shotgun/DP12/AAM_DP12 [841fce22-ea8e-4510-9e4f-bdb7165a736b]"
+      ],
+      "sha256": "e6cc7b496605163a792b29905a69e65aba6362f1ff96a3de42da53c99346a9ac"
+    },
+    {
+      "file": "UIWeaponAttachmentMetadata_S2B1.xml",
+      "count": 3,
+      "references": [
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/VHS2/AAM_VHS2 [b2662cbd-8688-4442-9644-60ae3f80532a]",
+        "[Ebx] Common/Hardware/Weapons/DMR/MSBSGROTCPS/AAM_MSBSGROTCPS [4a640ca6-36d8-4e0d-b2f5-6eea6bf97be2]",
+        "[Ebx] Common/Hardware/Weapons/MG/MG5/AAM_MG5 [c13506f3-307e-4604-8d5b-43af9313e80a]"
+      ],
+      "sha256": "44ad2845795f85f3198a5437ef7b6b50fca8a732f2f404837b5363eec43cf089"
+    },
+    {
+      "file": "UIWeaponAttachmentMetadata_S2B2.xml",
+      "count": 2,
+      "references": [
+        "[Ebx] Common/Hardware/Weapons/SMG/ScorpionEvo3/AAM_ScorpionEvo3 [ba501ca9-5dd4-4159-b392-8c3f58bd49a8]",
+        "[Ebx] Common/Hardware/Weapons/Secondary/Skorpion/AAM_Skorpion [9d5604ae-6e6e-466d-8b08-6cac4be1ef20]"
+      ],
+      "sha256": "42de829a7727784585c72edfdcec805c5ada2431a0b5bffb2bdf6b198b257514"
+    },
+    {
+      "file": "UIWeaponAttachmentMetadata_S3B1.xml",
+      "count": 4,
+      "references": [
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/M16A3/AAM_M16A3 [2f41de51-7877-4956-902b-8b64f0a9d1e2]",
+        "[Ebx] Common/Hardware/Weapons/MG/RPK74M/AAM_RPK74M [a23d9435-d811-4bf6-9bce-a74806cfcec6]",
+        "[Ebx] Common/Hardware/Weapons/SMG/PP19/AAM_PP19 [55158e18-e76c-49cc-a104-36c1535d5189]",
+        "[Ebx] Common/Hardware/Weapons/BoltAction/L115A3/AAM_L115A3 [336f601b-25df-4663-a0a8-c572001b0f06]"
+      ],
+      "sha256": "f79889ce36086ad8943a619724f8c22138fb7b06f4340997d92e927d72db415e"
+    },
+    {
+      "file": "UIWeaponAttachmentMetadata_S3B2.xml",
+      "count": 1,
+      "references": [
+        "[Ebx] Common/Hardware/Weapons/BoltAction/L115A3/AAM_L115A3 [336f601b-25df-4663-a0a8-c572001b0f06]"
+      ],
+      "sha256": "b9650b70668a2796096371fccaf432ecf4c0615d9d81f07d005c0486390d9154"
+    },
+    {
+      "file": "UIWeaponAttachmentMetadata_S4B1.xml",
+      "count": 4,
+      "references": [
+        "[Ebx] Common/Hardware/Weapons/Carbine/BREN3/AAM_BREN3 [7e360d10-2bad-452c-a445-a5abf773f230]",
+        "[Ebx] Common/Hardware/Weapons/DMR/VSSM/AAM_VSSM [33574b8e-0150-4736-abd1-02cc7bcfaff8]",
+        "[Ebx] Common/Hardware/Weapons/AssaultRifle/EF88/AAM_EF88 [aa3362eb-1343-46ed-b17e-3ce6a263740f]",
+        "[Ebx] Common/Hardware/Weapons/BoltAction/DesertTechHTI/AAM_DesertTechHTI [22bdd723-7a70-4077-9c60-3b1c7609f161]"
+      ],
+      "sha256": "e525833851a0166398c613fbc8a159586af852c7d3eff5db7fc72f509c145858"
+    }
+  ],
+  "seasonalTotalReferences": 65,
+  "seasonalUniqueReferences": 64,
+  "unmappedMetadata": "KSG has no mapped site ID in the current configuration-roster.json; metadata presence does not establish availability.",
+  "xmlCaution": "WeaponUpgradeStats.xml contains unescaped angle brackets in TypeRef generic names. Inspection escaped only these TypeRef values in memory; original export bytes are preserved.",
+  "sources": [
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Weapons/UIViewModel/MenuWeapon_Attachment_AbilityStats",
+      "output": "MenuWeapon_Attachment_AbilityStats.xml",
+      "sha256": "89d07dce1503ae4747dbf8c7c5dfd535fa5119995629c8d0851c578ff77c86aa"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Weapons/UIViewModel/MenuWeapon_Package_AbilityStats",
+      "output": "MenuWeapon_Package_AbilityStats.xml",
+      "sha256": "ce2ae58669c913d38f7f3f8608f4e6d66934e1317de72ec2fcec417fd6644446"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Weapons/UIViewModel/WeaponUpgradeStats",
+      "output": "WeaponUpgradeStats.xml",
+      "sha256": "c64fa98a06b5b81eb64f5e0ee01072edfdc0f75f9464c5cb80b1446bd67d3de4"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/S4/UIWeaponAttachmentMetadata_S4B1",
+      "output": "UIWeaponAttachmentMetadata_S4B1.xml",
+      "sha256": "e525833851a0166398c613fbc8a159586af852c7d3eff5db7fc72f509c145858"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/UIWeaponCustomizationSlotMetaData",
+      "output": "UIWeaponCustomizationSlotMetaData.xml",
+      "sha256": "0526910803f3a2c94c938719bd58411922a2ec12bada4fa1b74e200194530b48"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/WeaponCustomization/Logic/MenuWeapon_GetMetadata",
+      "output": "MenuWeapon_GetMetadata.xml",
+      "sha256": "7b09066cc06cf27537646a132d14db87dc21238ca93648ca09ba6e5354d69e28"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/S2/UIWeaponAttachmentMetadata_S2B1",
+      "output": "UIWeaponAttachmentMetadata_S2B1.xml",
+      "sha256": "44ad2845795f85f3198a5437ef7b6b50fca8a732f2f404837b5363eec43cf089"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/S2/UIWeaponAttachmentMetadata_S2B2",
+      "output": "UIWeaponAttachmentMetadata_S2B2.xml",
+      "sha256": "42de829a7727784585c72edfdcec805c5ada2431a0b5bffb2bdf6b198b257514"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/S3/UIWeaponAttachmentMetadata_S3B1",
+      "output": "UIWeaponAttachmentMetadata_S3B1.xml",
+      "sha256": "f79889ce36086ad8943a619724f8c22138fb7b06f4340997d92e927d72db415e"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/S3/UIWeaponAttachmentMetadata_S3B2",
+      "output": "UIWeaponAttachmentMetadata_S3B2.xml",
+      "sha256": "b9650b70668a2796096371fccaf432ecf4c0615d9d81f07d005c0486390d9154"
+    },
+    {
+      "kind": "res",
+      "rid": "9B23B13553C4C947",
+      "name": "common/ui/weapons/uiviewmodel/weaponupgradestats",
+      "type": "7dd4cc89",
+      "metadata": "00000000000000000000000000000000",
+      "output": "WeaponUpgradeStats.bin",
+      "sha256": "fd9d9f545d67e468c2dd3275ae6cbffe89d57ec2381ddf03f72769d63b49d57f"
+    }
+  ],
+  "binaryLayoutFollowup": {
+    "status": "Partial binary interpretation; not a decoded stat formula",
+    "resourceSha256": "fd9d9f545d67e468c2dd3275ae6cbffe89d57ec2381ddf03f72769d63b49d57f",
+    "candidateCodeStart": 2608,
+    "candidateCodeBytes": 10120,
+    "observations": [
+      {
+        "codeOffset": 372,
+        "rawWords": [
+          "00018426",
+          "00000002",
+          "0000050C",
+          "000014A8"
+        ],
+        "candidateNextOffset": 388,
+        "candidateAlternateOffset": 5288
+      },
+      {
+        "codeOffset": 5252,
+        "rawInstructionWord": "00015002",
+        "candidateNextOffset": 336
+      }
+    ],
+    "interpretation": "The forward traversal reaches a backward edge from 5252 to 336. The earlier opcode 0x26 at 372 contains 5288, which is the offset immediately after that backward-edge instruction. This supports a loop with an alternate exit as a layout hypothesis.",
+    "limits": [
+      "Opcode and branch operand semantics are not verified.",
+      "A repeated offset does not by itself disprove the candidate code layout.",
+      "No equation, category score, or runtime behavior has been established."
+    ],
+    "physicalLayout": {
+      "candidateInstructionCount": 298,
+      "candidateCodeBytes": 10120,
+      "hashPatchesOnInstructionBoundaries": 196,
+      "nonboundaryHashPatches": 0,
+      "nonboundaryNextOffsets": 0,
+      "candidateSwitchTables": [
+        {
+          "offset": 5948,
+          "caseCount": 9,
+          "size": 88
+        },
+        {
+          "offset": 8132,
+          "caseCount": 8,
+          "size": 80
+        },
+        {
+          "offset": 8504,
+          "caseCount": 1,
+          "size": 24
+        }
+      ],
+      "limit": "Complete byte coverage validates internal layout consistency only; function and control-flow semantics remain unverified."
+    }
+  },
+  "upgradeRecordTypeReview": {
+    "sourceFiles": [
+      {
+        "sha256": "475d13935b5dad7d9f8ed29e51b12fc38646a62f9dff6cfea0b42f3e37b3d935",
+        "path": "Profiles/BF6SDK.dll"
+      },
+      {
+        "sha256": "d3ae3498dfa12af9bd885f2404ad9a12b091f67e2a5391b0c572ac2a73d43687",
+        "path": "FrostySdk.dll"
+      }
+    ],
+    "recordType": "Struct_bce2b39d",
+    "fields": {
+      "Field_263797f2": {
+        "clrType": "System.Single",
+        "fieldIndex": 2
+      },
+      "Field_ba0e318e": {
+        "clrType": "FrostySdk.Ebx.Enum_ed852f1b",
+        "fieldIndex": 0
+      },
+      "Field_8cf424e7": {
+        "clrType": "System.Single",
+        "fieldIndex": 1
+      }
+    },
+    "enumType": "Enum_ed852f1b",
+    "enumEntries": [
+      {
+        "name": "Field_5033235a",
+        "value": 0
+      },
+      {
+        "name": "Field_9a80e00b",
+        "value": 1
+      },
+      {
+        "name": "Field_e7d32a5c",
+        "value": 2
+      },
+      {
+        "name": "Field_16e39a05",
+        "value": 3
+      },
+      {
+        "name": "Field_9fd78873",
+        "value": 4
+      },
+      {
+        "name": "Field_8ae8c9b7",
+        "value": 5
+      },
+      {
+        "name": "Field_15e440b8",
+        "value": 6
+      },
+      {
+        "name": "Field_c16f6510",
+        "value": 7
+      },
+      {
+        "name": "Field_6c9b2ef6",
+        "value": 8
+      },
+      {
+        "name": "Field_67440424",
+        "value": 9
+      },
+      {
+        "name": "Field_d66549c0",
+        "value": 10
+      },
+      {
+        "name": "Field_9f181ff6",
+        "value": 11
+      },
+      {
+        "name": "Field_f98ed353",
+        "value": 12
+      },
+      {
+        "name": "Field_e1169aaa",
+        "value": 13
+      },
+      {
+        "name": "Field_ab35ca39",
+        "value": 14
+      },
+      {
+        "name": "Field_dddc61d1",
+        "value": 15
+      },
+      {
+        "name": "Field_b5f95520",
+        "value": 16
+      },
+      {
+        "name": "Field_5cc17313",
+        "value": 17
+      },
+      {
+        "name": "Field_7c349ed2",
+        "value": 18
+      },
+      {
+        "name": "Field_1229df78",
+        "value": 19
+      },
+      {
+        "name": "Field_17126250",
+        "value": 20
+      },
+      {
+        "name": "Field_a266681b",
+        "value": 21
+      },
+      {
+        "name": "Field_cde1faca",
+        "value": 22
+      },
+      {
+        "name": "Field_78e4ef87",
+        "value": 23
+      },
+      {
+        "name": "Field_802cfad1",
+        "value": 24
+      },
+      {
+        "name": "Field_cf5ca4c7",
+        "value": 25
+      },
+      {
+        "name": "Field_d06e2624",
+        "value": 26
+      },
+      {
+        "name": "Field_a4772787",
+        "value": 27
+      },
+      {
+        "name": "Field_44531362",
+        "value": 28
+      },
+      {
+        "name": "Field_3ba6ccbf",
+        "value": 29
+      },
+      {
+        "name": "Field_0fd991f8",
+        "value": 30
+      },
+      {
+        "name": "Field_87808987",
+        "value": 31
+      },
+      {
+        "name": "Field_8eee10d6",
+        "value": 32
+      },
+      {
+        "name": "Field_5cf7a77a",
+        "value": 33
+      },
+      {
+        "name": "Field_2133cb7f",
+        "value": 34
+      },
+      {
+        "name": "Field_fb1a42fa",
+        "value": 35
+      },
+      {
+        "name": "Field_db72512a",
+        "value": 36
+      },
+      {
+        "name": "Field_b982d8d0",
+        "value": 37
+      },
+      {
+        "name": "Field_7482c0f8",
+        "value": 38
+      },
+      {
+        "name": "Field_ecbee56c",
+        "value": 39
+      },
+      {
+        "name": "Field_b34f7e36",
+        "value": 40
+      }
+    ],
+    "observation": "The record has an enum and two Single fields. All 41 enum members retain hashed names. The package and attachment ID record types each contain one UInt32 field.",
+    "limits": [
+      "The enum labels and float-field meanings remain unresolved.",
+      "No link to the four category scores is established.",
+      "The functions shared by the first nine-case branch blocks remain unresolved: 94388961, 8aefc858, 1c07201f."
+    ]
+  },
+  "weaponProviderReview": {
+    "sources": [
+      {
+        "kind": "ebx",
+        "name": "Common/UI/Weapons/Assets/WeaponAttachmentCollectionDataProviderLogic",
+        "output": "WeaponAttachmentCollectionDataProviderLogic.xml",
+        "sha256": "ce3339b8b8be04738929e0e3692cd95d2cfef37941148387e7927de9b7c72c29"
+      },
+      {
+        "kind": "ebx",
+        "name": "Common/UI/Weapons/Assets/WeaponMenuPresentableDataProviderLogic",
+        "output": "WeaponMenuPresentableDataProviderLogic.xml",
+        "sha256": "94b9a65f8dcc3e4d4ff231b15908dddf7b3b2f13cc78c927503aa82e05189a71"
+      }
+    ],
+    "finding": "Neither provider exports a serialized expression resource or a readable category formula. The attachment provider has one external reference, SelectAttachmentSlotIndexLogic. The presentable provider has no external EBX reference.",
+    "limit": "Hashed internal entities and native provider behavior remain unresolved; this does not exclude runtime stat calculations."
+  }
+}
