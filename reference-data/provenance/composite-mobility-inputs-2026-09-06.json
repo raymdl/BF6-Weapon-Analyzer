@@ -1,0 +1,225 @@
+{
+  "status": "Partial Mobility input check; not a complete formula validation",
+  "candidate": "D + 4*A + S + 2*M + 4*Z + 4*canFireWhileSprinting",
+  "source": "..\\BF6 Datamining\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.xml",
+  "sha256": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+  "rows": [
+    {
+      "weapon": "m433",
+      "registryNames": {
+        "animationZoom": "HK433_WB.AnimationZoomSettingsIndex.Index",
+        "sprint": "HK433_WB.SprintSettingsIndex.Index",
+        "adsMove": "HK433_WB.WeaponZoomedMoveSpeedMultiplierIndex.Index",
+        "movingSpread": "GS_HK433.MovingZoomedMinAnglesArrayIndex"
+      },
+      "indices": {
+        "animationZoom": 3,
+        "sprint": 5,
+        "adsMove": 6,
+        "movingSpread": 3
+      },
+      "knownSubtotal": 41,
+      "observedMobility": 52,
+      "unresolvedContribution": 11
+    },
+    {
+      "weapon": "db12",
+      "registryNames": {
+        "animationZoom": "DP12_WB.AnimationZoomSettingsIndex.Index",
+        "sprint": "DP12_WB.SprintSettingsIndex.Index",
+        "adsMove": "DP12_WB.WeaponZoomedMoveSpeedMultiplierIndex.Index",
+        "movingSpread": "GS_DP12.MovingZoomedMinAnglesArrayIndex"
+      },
+      "indices": {
+        "animationZoom": 4,
+        "sprint": 6,
+        "adsMove": 7,
+        "movingSpread": 3
+      },
+      "knownSubtotal": 48,
+      "observedMobility": 60,
+      "unresolvedContribution": 12
+    }
+  ],
+  "missingInputs": [
+    "WeaponDeployTimeIndex",
+    "CanFireWhileSprinting"
+  ],
+  "limitation": "Residual is arithmetic comparison only; do not assign it to either missing input without source evidence.",
+  "binaryWeightReview": {
+    "resourceSha256": "bd36b9e27c9d4f53b85b99a03191cbf925c49eb2a8dc8c5ad268c73796411591",
+    "namedInputByteOffsets": {
+      "WeaponDeployTimeIndex": 8,
+      "AnimationZoomSettingsIndex": 16,
+      "SprintSettingsIndex": 24,
+      "WeaponZoomedMoveSpeedMultiplierIndex": 32,
+      "MovingZoomedMinAnglesIndex": 40,
+      "CanFireWhileSprinting": 48
+    },
+    "integerConstants": [
+      4,
+      2,
+      0,
+      1
+    ],
+    "candidateWeights": {
+      "WeaponDeployTimeIndex": 1,
+      "AnimationZoomSettingsIndex": 4,
+      "SprintSettingsIndex": 1,
+      "WeaponZoomedMoveSpeedMultiplierIndex": 2,
+      "MovingZoomedMinAnglesIndex": 4
+    },
+    "booleanSelection": "Comparison with integer 1 followed by a select between 4 and 0; comparison native semantics still inferred",
+    "result": "Named XML ports and binary operands support the prior coefficient assignment. This does not resolve either missing input or prove active UI binding."
+  },
+  "m433AttachmentDeltaCheck": {
+    "evidence": "reference-data/provenance/m433-grip-screenshot-review-2026-09-06.json",
+    "siteConventionFormula": "4*adsTimeTierMod - 2*sprintRecoveryTierShift - 2*adsMoveSpeedTierShift + 4*movingAdsSpreadTierMod",
+    "interpretation": "The draw shift acts on both deploy and sprint inputs for these grips, each weighted 1. Negative site draw shifts improve speed; source graph uses increasing indices for the improvement.",
+    "scope": "M433 unmounted grip menu previews only; does not resolve base inputs or general ergonomics exceptions",
+    "rows": [
+      {
+        "attachment": "None",
+        "siteGripId": "none",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      },
+      {
+        "attachment": "Folding Vertical",
+        "siteGripId": "fold_vert",
+        "predictedDelta": -4,
+        "observedDelta": -4,
+        "matches": true
+      },
+      {
+        "attachment": "Alloy Vertical",
+        "siteGripId": "alloy_vert",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      },
+      {
+        "attachment": "Ribbed Vertical",
+        "siteGripId": "ribbed_vert",
+        "predictedDelta": -4,
+        "observedDelta": -4,
+        "matches": true
+      },
+      {
+        "attachment": "6H64 Vertical",
+        "siteGripId": "6h64_vert",
+        "predictedDelta": -6,
+        "observedDelta": -6,
+        "matches": true
+      },
+      {
+        "attachment": "Classic Vertical",
+        "siteGripId": "classic_vert",
+        "predictedDelta": -6,
+        "observedDelta": -6,
+        "matches": true
+      },
+      {
+        "attachment": "Underslung Mount",
+        "siteGripId": "underslung_mount",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      },
+      {
+        "attachment": "Folding Stubby",
+        "siteGripId": "fold_stubby",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      },
+      {
+        "attachment": "Ribbed Stubby",
+        "siteGripId": "ribbed_stubby",
+        "predictedDelta": 4,
+        "observedDelta": 4,
+        "matches": true
+      },
+      {
+        "attachment": "Canted Stubby",
+        "siteGripId": "canted_stubby",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      },
+      {
+        "attachment": "Stippled Stubby",
+        "siteGripId": "stipp_stubby",
+        "predictedDelta": -2,
+        "observedDelta": -2,
+        "matches": true
+      },
+      {
+        "attachment": "Low-Profile Stubby",
+        "siteGripId": "lp_stubby",
+        "predictedDelta": -2,
+        "observedDelta": -2,
+        "matches": true
+      },
+      {
+        "attachment": "Slim Handstop",
+        "siteGripId": "slim_handstop",
+        "predictedDelta": 6,
+        "observedDelta": 6,
+        "matches": true
+      },
+      {
+        "attachment": "Adjustable Angled",
+        "siteGripId": "adj_angled",
+        "predictedDelta": 2,
+        "observedDelta": 2,
+        "matches": true
+      },
+      {
+        "attachment": "Slim Angled",
+        "siteGripId": "slim_angled",
+        "predictedDelta": 6,
+        "observedDelta": 6,
+        "matches": true
+      },
+      {
+        "attachment": "Full Angled",
+        "siteGripId": "full_angled",
+        "predictedDelta": 2,
+        "observedDelta": 2,
+        "matches": true
+      },
+      {
+        "attachment": "Bipod",
+        "siteGripId": "bipod",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      },
+      {
+        "attachment": "PTT Grip Pod",
+        "siteGripId": "ptt_grip_pod",
+        "predictedDelta": -4,
+        "observedDelta": -4,
+        "matches": true
+      },
+      {
+        "attachment": "QD Grip Pod",
+        "siteGripId": "qd_grip_pod",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      },
+      {
+        "attachment": "Classic Grip Pod",
+        "siteGripId": "classic_grip_pod",
+        "predictedDelta": 0,
+        "observedDelta": 0,
+        "matches": true
+      }
+    ],
+    "matchCount": 20,
+    "count": 20
+  }
+}

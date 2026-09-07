@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "status": "unresolved",
+  "scope": "Precision graph UI binding",
+  "finding": "The two inspected UI containers do not establish that ControlAttributeDelegate1 supplies Precision. Direct boxed-value inspection recovers defaults omitted by XML, but no delegate binding.",
+  "assets": [
+    "WeaponAttributes",
+    "WeaponAttributes_ExtendedList"
+  ],
+  "boxedValues": {
+    "WeaponAttributes_ExtendedList": 2,
+    "WeaponAttributes": 14
+  },
+  "recoveredValues": "Boolean defaults; one hashed enum; dimensions 246 and 230; sound style pointer; layout structure. ExtendedList has two null inherited values.",
+  "limitation": "This excludes only bindings in the inspected boxed defaults. Runtime providers and other assets remain unresolved.",
+  "sources": [
+    {
+      "path": "outputs/frosty/composite-stats/WeaponAttributes.xml",
+      "sha256": "ac94f7450968f311e26e5ba2160a8e250a66be9af59fa411fb14cccae4125798"
+    },
+    {
+      "path": "outputs/frosty/composite-stats/WeaponAttributes_ExtendedList.xml",
+      "sha256": "3b0d7b124d3ab24540b9fae076039ddb0decceb76e0d8e19da12be14b382a446"
+    },
+    {
+      "path": "outputs/frosty/composite-stats/WeaponAttributes-boxed.json",
+      "sha256": "e285f10b3725762d37640dfee3f2010ec99fd6f093f4f09490487022ed730919"
+    },
+    {
+      "path": "outputs/frosty/composite-stats/WeaponAttributes_ExtendedList-boxed.json",
+      "sha256": "6f5ddbd0aefabc8fc5b6416b9efe2124c44b64e9af561fe959385280e12b33a1"
+    }
+  ],
+  "assetIndexReview": {
+    "queries": {
+      "WeaponAttributes": 16,
+      "WeaponStat": 18,
+      "AttributeConfig": 0
+    },
+    "finding": "No standalone WeaponAttributesConfig asset was found by name. WeaponStat matches include the already inspected WeaponStatsDBD and numerical stat manager configuration. No Precision binding was established.",
+    "xmlReferenceCheck": "Common XML search for the newer Control delegate asset name and file GUID matched only its own exported file.",
+    "limitation": "Name searches do not exclude embedded configuration or runtime code. Empty cache dependency lists do not prove absence of references.",
+    "sources": [
+      {
+        "path": "outputs/frosty/composite-stats/weapon-attributes-assets.json",
+        "sha256": "e35acb3546a0b51cb96652dd7a885a96131016b8d03d8bd263fba9676bbae3f3"
+      },
+      {
+        "path": "outputs/frosty/composite-stats/weapon-stat-assets.json",
+        "sha256": "c928a7fac180835fb60d72e13437fa822f855a673c7b78c7f4913f267b20f3dd"
+      },
+      {
+        "path": "outputs/frosty/composite-stats/attribute-config-assets.json",
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    ]
+  }
+}

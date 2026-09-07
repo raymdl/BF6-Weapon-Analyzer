@@ -1,0 +1,35 @@
+{
+  "scope": "Operator-suggested UI metadata paths",
+  "metadata": "UIWeaponAttachmentMetadata lists 51 weapon AAM tables. AAM_HK433 has 94 local entries and links individual attachments to AD metadata.",
+  "sample": "AD_AK126H64 contains icon atlas references and two hashed text records; no modifier arithmetic is established in this sample.",
+  "transform": "WeaponAttachmentTransformDBD exposes named anchors and offsets for sights, barrels, magazines, rails and other model parts.",
+  "weaponsAssetsCount": 44,
+  "limitation": "Metadata is useful for identity and UI cross-checks; the 51-table list is not proof of the complete multiplayer roster or current attachment availability. Transform bindings are not stat formulas.",
+  "sources": [
+    {
+      "kind": "find",
+      "query": "Common/UI/Weapons/Assets/",
+      "output": "weapons-ui-assets.json",
+      "count": 44,
+      "sha256": "debd2c973d3a41b8bb52fb34c86d8b78093dc4edf3ea966ea99bf4412260ec9f"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/MetaCore/3D/Shared/Databindings/WeaponAttachmentTransformDBD",
+      "output": "WeaponAttachmentTransformDBD.xml",
+      "sha256": "e0bef88ea8fd22e675138cb0da7b3e12f9fb2dfc511d54e6a5e7ee3c26b5791d"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/UIWeaponAttachmentMetadata",
+      "output": "UIWeaponAttachmentMetadata.xml",
+      "sha256": "e6cc7b496605163a792b29905a69e65aba6362f1ff96a3de42da53c99346a9ac"
+    },
+    {
+      "kind": "ebx",
+      "name": "Common/UI/Static/Metadata/Attachments/Shared/AD_AK126H64",
+      "output": "AD_AK126H64.xml",
+      "sha256": "dd3bbcc4e8eeed0e885efb3373f93a11013f911f719e0484431e93f5b56488c0"
+    }
+  ]
+}

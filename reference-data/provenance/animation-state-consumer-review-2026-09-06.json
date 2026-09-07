@@ -1,0 +1,180 @@
+{
+  "status": "consumer references established; semantics unresolved",
+  "recoilConsumers": [
+    "_AF/0141874E-47F8-19DC/1P.PostUpdate.ExpSOP",
+    "_AF/A6D0FF1D-D3DA-E6F0/1P.PostUpdate.ExpSOP"
+  ],
+  "recoilBindingField": "Field_202e54f7",
+  "compiledLayout": "First PostUpdate asset contains 8435 four-word records and 356 state references. Instruction semantics are not decoded.",
+  "boltController": "Animations/Kingston/Controllers/Wep.BoltAction.PRC",
+  "boltSpeedBindingField": "Field_65d592db",
+  "boltChildController": "Animations/Kingston/Controllers/Wep.1Por3P.BoltAction.BC",
+  "limitation": "A state reference does not establish read/write direction, equation, live activation or ballistic recoil behavior. Bolt controller connection does not prove shot scheduling.",
+  "sources": [
+    {
+      "kind": "ebx",
+      "name": "_AF/0141874E-47F8-19DC/1P.PostUpdate.ExpSOP",
+      "output": "1P.PostUpdate-0141874E.xml",
+      "sha256": "70abce35fa302bca0765868f1aafd7ded1dad48c517b9caf1b160ce8d0ea7ae3"
+    },
+    {
+      "kind": "ebx",
+      "name": "_AF/A6D0FF1D-D3DA-E6F0/1P.PostUpdate.ExpSOP",
+      "output": "1P.PostUpdate-A6D0FF1D.xml",
+      "sha256": "053f7b1ef20a867e0a1ec07f561b3b0c8b0b36de8cbd9d84cbcf9ea7313bf73e"
+    },
+    {
+      "kind": "ebx",
+      "name": "Animations/Kingston/Controllers/Wep.BoltAction.PRC",
+      "output": "Wep.BoltAction.PRC.xml",
+      "sha256": "68463dde7d58abdf185e00ec2bf345eeab31d1ea393f804a196e5f53c62c86b6"
+    }
+  ],
+  "typedLayout": {
+    "path": "outputs/frosty/composite-stats/state-types.json",
+    "sha256": "9c5ae5518d15e31a65b9d29fa7510398bfed6a3366de5b056bb1c1583f1c58e3",
+    "finding": "Current SDK confirms pointer state references, unsigned 32-bit auxiliary arrays, and single-precision controller scalars. It does not name their semantic roles.",
+    "stateIndices": {
+      "RecoilCompensationVelocity": 165,
+      "RecoilDirectionAmount": 166
+    },
+    "scope": "State indices refer only to 1P.PostUpdate-0141874E.xml",
+    "limitation": "Matching array lengths do not prove an offset mapping. Native instruction and read/write meanings remain unresolved."
+  },
+  "controllerTrace": {
+    "controller": "Animations/Kingston/Controllers/Wep.1Por3P.BoltAction.BC",
+    "firstPerson": "Animations/Glacier/Controllers/1P.Wep.BoltAction.SLC",
+    "nextChooser": "Animations/Glacier/Controllers/1P.Wep.Stand.BoltAction.CDBChooser",
+    "findings": "The first/third-person controller references FB.In1P.Bool. The first-person controller references a bolt animation chooser and a prone pose. This is an animation-selection path, not verified shot scheduling.",
+    "fieldNameCaution": "The exported GunSwayRecoilDataSet label in the branch object contains FB.In1P.Bool references. Do not interpret this label as a recoil data set in this class.",
+    "sources": [
+      {
+        "kind": "ebx",
+        "name": "Common/UI/Static/Config/BFUIWeaponCustomizationViewManagerConfig",
+        "output": "BFUIWeaponCustomizationViewManagerConfig.xml",
+        "sha256": "abfa2544c4dfb0ee1de174d2832b7766393b108a2c9e53560aa99c90b3c193cf"
+      },
+      {
+        "kind": "boxed",
+        "name": "Common/UI/Static/Config/BFUIWeaponCustomizationViewManagerConfig",
+        "output": "BFUIWeaponCustomizationViewManagerConfig-boxed.json",
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Kingston/Controllers/Wep.1Por3P.BoltAction.BC",
+        "output": "Wep.1Por3P.BoltAction.BC.xml",
+        "sha256": "6232cf32d967f24dedf792da6b60aa44b4f93af8dab3d2607215c23bc99ba1fc"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Controllers/1P.Wep.BoltAction.SLC",
+        "output": "1P.Wep.BoltAction.SLC.xml",
+        "sha256": "b06658f78ea4340ecbce1dcd1e9ab22574745539694e6fe170411f84ada9f513"
+      }
+    ]
+  },
+  "weaponDatabaseTrace": {
+    "asset": "Animations/Kingston/Controllers/1P.Wep.Stand.BoltAction.CDB",
+    "inputs": [
+      "Wep.GripPose.EnumGS",
+      "FB.Wep.SpecificWeapon.EnumGS"
+    ],
+    "entryCount": 11,
+    "shotgunEntries": [
+      "Animations/Glacier/Assets/1P/Weapons/Shotguns/590A1/1P.590A1.Stand.Pump.RC",
+      "Animations/Glacier/Assets/1P/Weapons/Shotguns/DP12/1P.DP12.Stand.Pump.RC",
+      "Animations/Glacier/Assets/1P/Weapons/Shotguns/KSG/1P.KSG.Stand.Pump.RC"
+    ],
+    "limitation": "Entry presence does not prove branch selection, animation duration or permission to fire.",
+    "sources": [
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Controllers/1P.Wep.Stand.BoltAction.CDBChooser",
+        "output": "1P.Wep.Stand.BoltAction.CDBChooser.xml",
+        "sha256": "66e8da44c4c01e407a0a5b7a8f4798f9e1573785179ed649e28f21e983f25f81"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Kingston/Controllers/1P.Wep.Stand.BoltAction.CDB",
+        "output": "1P.Wep.Stand.BoltAction.CDB.xml",
+        "sha256": "81dc143c398f8c4685f6174619639e3e0b540bfd0fbda4104c2c9db939451b57"
+      }
+    ]
+  },
+  "pumpClipReview": {
+    "status": "Raw branch comparison; timing units and runtime use unverified",
+    "controllerPolicy": "Both pump controllers reference Common.RandomPolicy and three clips each.",
+    "commonFields": {
+      "Field_2a910441": 48,
+      "Field_0e77826e": 60
+    },
+    "earlyExitFields": {
+      "Field_7e4474c2": 44,
+      "Field_46e2e98a": 4
+    },
+    "exitFields": {
+      "weapon590A1": {
+        "Field_7e4474c2": 11,
+        "Field_46e2e98a": 37
+      },
+      "weaponDP12": {
+        "Field_7e4474c2": 6,
+        "Field_46e2e98a": 42
+      }
+    },
+    "comparison": "All three variants for each weapon agree on these fields. The two weapons differ in Exit branch values despite the same approximate long shot interval in reviewed HUD captures.",
+    "limitation": "Do not equate Exit or clip extent with the next allowed shot. Field units, animation speed and branch evaluation are not established.",
+    "sources": [
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/590A1/1P.590A1.Stand.Pump.RC",
+        "output": "1P.590A1.Stand.Pump.RC.xml",
+        "sha256": "414e6c3efa9fe471da271a5f6ca2e428cd990047bfa0d569a4e5379d926d659e"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/DP12/1P.DP12.Stand.Pump.RC",
+        "output": "1P.DP12.Stand.Pump.RC.xml",
+        "sha256": "6137cf324d1a7eef177acf43fff4fcc4c54337ba5e68dfd0fe47582f32b79668"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/590A1/A_1P_590A1_Stand_Pump_01",
+        "output": "A_1P_590A1_Stand_Pump_01.xml",
+        "sha256": "7c5f09d7d00293a75422db40f122427db8c74afbf308d749aaebc9a31921aa7c"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/590A1/A_1P_590A1_Stand_Pump_02",
+        "output": "A_1P_590A1_Stand_Pump_02.xml",
+        "sha256": "1fc8ce31b0c2c3cfb349920a57ba52c959feb6a1ce0f9e5bec9abf81de8259ad"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/590A1/A_1P_590A1_Stand_Pump_03",
+        "output": "A_1P_590A1_Stand_Pump_03.xml",
+        "sha256": "9e308c83e2e203733ae11c971da49edd4fc77caa9843ecd4ade5df8004c31a2f"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/DP12/A_1P_DP12_Stand_Pump_01",
+        "output": "A_1P_DP12_Stand_Pump_01.xml",
+        "sha256": "1e310a6a182519d21430e4d9867e81c9b7e5b8e7c79d2e90dcbc56bf5d86c171"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/DP12/A_1P_DP12_Stand_Pump_02",
+        "output": "A_1P_DP12_Stand_Pump_02.xml",
+        "sha256": "2ce6674d3d540f93e026c126f8c9daa9061cec84d0f3e1e5c82c418134910a8c"
+      },
+      {
+        "kind": "ebx",
+        "name": "Animations/Glacier/Assets/1P/Weapons/Shotguns/DP12/A_1P_DP12_Stand_Pump_03",
+        "output": "A_1P_DP12_Stand_Pump_03.xml",
+        "sha256": "2a3cbf0f1892857a676dfdb75aa2a9685d0f54937b3ca796f0320d88dac2353e"
+      }
+    ]
+  }
+}

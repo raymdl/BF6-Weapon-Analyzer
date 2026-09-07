@@ -4,7 +4,7 @@ import test from 'node:test';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
 import { computeAttPts, resetAttsForWeapon } from '../sim/loadout.js';
 import { createShareCodec } from '../sim/share-state.js';
-import { setSimContext, simulateSpread, shotIntervalAfter, selectedRecoilAmountFor } from '../sim/core.js';
+import { setSimContext, simulateSpread, shotIntervalAfter, selectedRecoilAmountFor, spreadRecoveries } from '../sim/core.js';
 
 const read = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const weapons = read('../data/weapons.json');
@@ -228,4 +228,53 @@ test('compact magazine secondary effects reach the existing moving spread and sw
   assert.notEqual(compact._movingAdsMinSpreadDeg, base._movingAdsMinSpreadDeg);
   assert.equal(fast._weaponSway, base._weaponSway - 1);
   assert.equal(compact._weaponSway, base._weaponSway);
+  const rpk = weapon('rpk74m');
+  const rpkBase = build(rpk);
+  for (const mag of ['30_rnd', '30_fast']) {
+    const selected = build(rpk, { mag });
+    assert.equal(selected._movingAdsMinSpreadDeg, 0.22);
+    assert.equal(rpkBase._movingAdsMinSpreadDeg, 0.32);
+    assert.equal(selected._weaponSway, rpkBase._weaponSway - 1);
+    assert.deepEqual(selected.spreadDyn, rpkBase.spreadDyn);
+    assert.equal(selected.mag, 30);
+    assert.equal(selected.tacRld, mag === '30_fast' ? 2.464 : 2.784);
+  }
+});
+
+test('reviewed Mini Scout and BROD 3 magazines match captured handling values', () => {
+  const scout = weapon('miniscout');
+  assert.equal(build(scout)._adsMoveSpeedMult, 0.67);
+  for (const mag of ['15_rnd', '15_fast', '20_rnd', '20_fast']) {
+    const selected = build(scout, { mag });
+    assert.equal(selected._adsMoveSpeedMult, 0.6);
+    assert.equal(selected._adsTimeMs, 250);
+    assert.equal(selected.tacRld, mag.endsWith('fast') ? 2.065 : 2.334);
+  }
+  for (const mag of ['36_rnd', '40_rnd', '40_fast']) {
+    const brod = build(weapon('brod3'), { mag });
+    const fast = mag === '40_fast';
+    assert.equal(brod._sprintRecoveryMs, fast ? 200 : 167);
+    assert.equal(brod.deployT, fast ? 0.633 : 0.533);
+    assert.equal(brod.tacRld, fast ? 1.962 : 2.217);
+  }
+});
+
+test('Heavy, Heavy Extended and Cryo change ADS spread without changing hip spread or recovery', () => {
+  const w = weapon('b36a4');
+  const base = build(w);
+  for (const barrel of ['heavy', 'heavy_ext', 'cryo']) {
+    assert.ok(attachments.WEAPON_ATTS[w.id].barrel.includes(barrel));
+    const result = build(w, { barrel });
+    assert.equal(result.recoilIncAds, +(base.recoilIncAds * 0.667).toFixed(3));
+    assert.deepEqual(result.spreadDyn.hip, base.spreadDyn.hip);
+    for (const stanceState of ['stand', 'move']) {
+      setSimContext({ aimState: 'hip', stanceState });
+      assert.deepEqual(spreadRecoveries(result), spreadRecoveries(base));
+      assert.deepEqual(simulateSpread(result, 15), simulateSpread(base, 15));
+      setSimContext({ aimState: 'ads', stanceState });
+      assert.equal(spreadRecoveries(result).firing.coef, spreadRecoveries(base).firing.coef * 1.71);
+      assert.equal(spreadRecoveries(result).firing.offset, spreadRecoveries(base).firing.offset * 0.667);
+    }
+  }
+  setSimContext({ aimState: 'ads', stanceState: 'stand' });
 });

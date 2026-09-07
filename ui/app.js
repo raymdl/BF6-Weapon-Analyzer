@@ -1898,13 +1898,12 @@ function renderAttachmentStats(loadouts) {
   const adsSpreadRecovery = w => {
     const dyn = w.spreadDyn?.ads;
     return (dyn?.firingOffset ?? 1.84)
-      * (w._spreadFiringDecOffsetMult ?? 1)
+      * (w._adsSpreadFiringDecOffsetMult ?? 1)
       * (1 + (w._adsSpreadDecayBoost ?? 0));
   };
   const hipSpreadRecovery = w => {
     const dyn = w.spreadDyn?.hip;
     return (dyn?.firingOffset ?? 3.31)
-      * (w._spreadFiringDecOffsetMult ?? 1)
       * (1 + (w._hipSpreadDecayBoost ?? 0));
   };
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
@@ -1942,9 +1941,9 @@ function renderAttachmentStats(loadouts) {
     'ADS Recoil/Shot': ['adsRecoilTierMod'],
     'ADS Recoil Variation': ['adsRecoilVariationTierMod'],
     'Recoil Recovery': ['adsRecoilDecayMult'],
-    'Spread/Shot': ['spreadIncMult'],
-    'ADS Spread Recovery': ['adsSpreadDecayBoost', 'spreadFiringDecOffsetMult', 'spreadFiringDecCoefMult'],
-    'Hip Spread Recovery': ['hipSpreadDecayBoost', 'spreadFiringDecOffsetMult', 'spreadFiringDecCoefMult'],
+    'Spread/Shot': ['adsSpreadIncMult'],
+    'ADS Spread Recovery': ['adsSpreadDecayBoost', 'adsSpreadFiringDecOffsetMult', 'adsSpreadFiringDecCoefMult'],
+    'Hip Spread Recovery': ['hipSpreadDecayBoost'],
     'Mov Spread': ['movingAdsSpreadTierMod'],
     'Hipfire Spread': ['hipSpreadTierMod'],
     '3D Spot': ['worldSpot'],
@@ -2410,7 +2409,7 @@ function renderRecoil() {
         const bar = ATT_BY_ID.BARRELS[atts.barrel] ?? BARRELS[0];
         const lines = [];
         const effectNames = [
-          bar.spreadIncMult !== 1 && bar.spreadIncMult != null ? bar.name : null,
+          aim === 'ads' && bar.adsSpreadIncMult !== 1 && bar.adsSpreadIncMult != null ? bar.name : null,
           aim === 'ads' && ATT_BY_ID.AMMO[atts.ammo]?.adsSpreadDynOverride ? ATT_BY_ID.AMMO[atts.ammo].name : null,
           ATT_BY_ID.ERGOS[atts.ergo]?.[aim + 'SpreadDynOverride'] ? ATT_BY_ID.ERGOS[atts.ergo].name : null,
         ].filter(Boolean);

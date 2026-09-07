@@ -1,0 +1,39 @@
+{
+  "scope": "Read-only static inspection of the installed executable. The game executable was neither launched nor modified; no game process was attached.",
+  "executable": "bf6.exe",
+  "sha256": "4f6a822e42c21e006f032f2bf9d993398e75218bb4822e0d0d1217ad2f8ee968",
+  "machine": "x86-64",
+  "coffSymbolCount": 0,
+  "entryPointRva": "0xc20d000",
+  "entryPointSection": ".ooa",
+  "entryPointObservation": "NOP followed by an indirect jump; not a weapon timing function.",
+  "debugRecords": [
+    {
+      "type": 2,
+      "size": 112,
+      "pdbName": "BattlefieldGame.Main_Win64_retail.pdb",
+      "pdbBesideExecutable": false
+    },
+    {
+      "type": 12,
+      "size": 20
+    },
+    {
+      "type": 13,
+      "size": 1308
+    }
+  ],
+  "namedState": {
+    "text": "WeaponState_BoltActionDelay",
+    "fileOffset": "0x8cb9120",
+    "rva": "0x8cbad20"
+  },
+  "xrefProbe": {
+    "absolute64PointersFound": 0,
+    "rva32ValuesFound": 0,
+    "rexRipRelativeLeaOrMovMatchesFound": 0,
+    "limitations": "Only these direct encodings were checked. This is not a complete disassembly or proof that no code references exist."
+  },
+  "outcome": "No native timing or modifier consumer was identified. The named state does not establish timing arithmetic or state transitions.",
+  "tool": "Capstone 5.0.9 installed under ignored outputs/frosty/native-tools"
+}

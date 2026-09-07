@@ -464,10 +464,8 @@ export function applyAttachments(w, atts) {
   }
 
   // ── Spread per shot ───────────────────────────────────────────────────────────
-  // Heavy-type barrels cut spread-per-shot in every aim state and stance. ADS
-  // reads its SIPS from `recoilIncAds` (scaled below) and hipfire from
-  // `spreadDyn.hip.inc`, so both have to be scaled to keep the two in step.
-  const spreadIncMult = bar.spreadIncMult ?? 1;
+  // Heavy-type barrel modifiers target ADS. Hip spread keeps its own parameters.
+  const spreadIncMult = bar.adsSpreadIncMult ?? 1;
   const spreadDynBase = w.spreadDyn
     ? { ...w.spreadDyn,
       ads: { ...w.spreadDyn.ads, ...ammoType.adsSpreadDynOverride, ...ergoData.adsSpreadDynOverride },
@@ -479,7 +477,7 @@ export function applyAttachments(w, atts) {
     ? spreadDynBase
     : Object.fromEntries(Object.entries(spreadDynBase).map(([state, dyn]) => [
       state,
-      dyn?.inc != null ? { ...dyn, inc: +(dyn.inc * spreadIncMult).toFixed(3) } : dyn,
+      state === 'ads' && dyn?.inc != null ? { ...dyn, inc: +(dyn.inc * spreadIncMult).toFixed(3) } : dyn,
     ]));
 
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
@@ -628,8 +626,8 @@ export function applyAttachments(w, atts) {
     _label:                  allTags.length ? `${w.name} (${allTags.join(' · ')})` : w.name,
     _adsRecoilReductionPct:  adsRecoilReductionPct,
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,
-    _spreadFiringDecCoefMult:   bar.spreadFiringDecCoefMult ?? 1,
-    _spreadFiringDecOffsetMult: bar.spreadFiringDecOffsetMult ?? 1,
+    _adsSpreadFiringDecCoefMult:   bar.adsSpreadFiringDecCoefMult ?? 1,
+    _adsSpreadFiringDecOffsetMult: bar.adsSpreadFiringDecOffsetMult ?? 1,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
     _worldSpot:              worldSpot,
