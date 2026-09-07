@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BF6 Weapon Analyzer — Battlefield 6 Stats & Loadout Visualizer</title>
+<meta name="description" content="A Battlefield 6 weapon stats and recoil/spread visualizer: compare time-to-kill, damage drop-off, recoil and spread patterns, and full attachment effects for every multiplayer weapon. Updated for Season 4 (v1.3.3.0).">
+<link rel="canonical" href="https://raymdl.github.io/BF6-Weapon-Analyzer/v1.3.3.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BF6 Weapon Analyzer">
+<meta property="og:url" content="https://raymdl.github.io/BF6-Weapon-Analyzer/v1.3.3.0/">
+<meta property="og:title" content="BF6 Weapon Analyzer — Battlefield 6 Stats & Loadout Visualizer">
+<meta property="og:description" content="A Battlefield 6 weapon stats and recoil/spread visualizer: compare time-to-kill, damage drop-off, recoil and spread patterns, and full attachment effects for every multiplayer weapon.">
+<meta property="og:image" content="https://raymdl.github.io/BF6-Weapon-Analyzer/v1.3.3.0/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BF6 Weapon Analyzer — a Battlefield 6 weapon stats and recoil/spread visualizer: TTK, damage drop-off and attachments.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"BF6 Weapon Analyzer","url":"https://raymdl.github.io/BF6-Weapon-Analyzer/v1.3.3.0/","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","description":"A Battlefield 6 multiplayer weapon stats and recoil/spread visualizer: time-to-kill, damage drop-off, recoil and spread patterns, and attachment effects.","alternateName":"BF6 Recoil and Spread Visualizer","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+<script src="./vendor/chart.umd.min.js"></script>
+<script>if(!window.Chart){document.write('<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0e0e;color:#e05555;font-family:sans-serif;font-size:1rem">Chart.js failed to load. Please reload the page.</div>');}</script>
+<style>
+:root {
+  --bg:#0c0e0e; --bg2:#151a1a; --bg3:#1c2222;
+  --accent:#c9a227; --accent2:#4d94d0;
+  --text:#dde3e3; --muted:#7a8a8a; --border:#283030;
+  --green:#56c464; --red:#e05555;
+  --share-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cline x1='8.6' y1='13.5' x2='15.4' y2='17.5'/%3E%3Cline x1='15.4' y1='6.5' x2='8.6' y2='10.5'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden;font-size:14px}
+button{cursor:pointer;font-family:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid #eaf0f0;outline-offset:1px;border-radius:2px}
+header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;height:46px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+/* Wrapper exists only so the site name is the page's h1; it must not affect layout. */
+.logo-h1{font-size:inherit;font-weight:inherit;line-height:inherit;display:contents}
+.logo{font-size:1.05rem;font-weight:700;letter-spacing:3px;color:var(--accent);text-transform:uppercase;text-decoration:none;display:inline-block}
+.logo span{color:var(--muted);font-weight:400;transition:color .12s}
+/* Resting appearance is unchanged; the hover only hints that it is a way home. */
+.logo:hover span,.logo:focus-visible span{color:var(--text)}
+.hdr-tag{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
+.legacy-link{font-size:0.65rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px;text-decoration:none;margin-left:auto}
+.legacy-link:hover{border-color:#666;color:#ccc}
+.archive-group{display:flex;align-items:center;gap:6px;margin-left:auto}
+.archive-group .legacy-link{margin-left:0}
+.archive-label{font-size:0.65rem;color:var(--muted)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.66rem;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:3px 10px;background:rgba(201,162,39,.1);letter-spacing:.04em;transition:all .15s}
+.share-btn::before{content:"";width:10px;height:10px;flex-shrink:0;background:currentColor;-webkit-mask:var(--share-icon) center/contain no-repeat;mask:var(--share-icon) center/contain no-repeat}
+.share-btn:hover{background:rgba(201,162,39,.18)}
+.share-btn.copied{color:var(--green);border-color:var(--green);background:rgba(86,196,100,.12)}
+.overview-head{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.overview-head .ptitle{margin-bottom:0}
+.overview-head .share-wrap{margin-left:auto}
+/* Click-opened, not hover — a hover menu is unreachable on touch. */
+.share-wrap{position:relative}
+.share-menu{position:absolute;top:calc(100% + 4px);right:0;z-index:120;display:flex;flex-direction:column;min-width:132px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.6)}
+.share-menu[hidden]{display:none}
+.share-menu-item{text-align:left;background:none;border:0;border-radius:3px;color:var(--text);font-size:0.7rem;letter-spacing:.03em;padding:5px 9px}
+.share-menu-item:hover{background:var(--bg3);color:var(--accent)}
+.share-menu-item:disabled{color:var(--muted);cursor:progress}
+/* Busy uses :disabled above. This is the browser-can't-do-it state, which
+   stays focusable so its title explains why. */
+.share-menu-item[aria-disabled="true"]{color:var(--muted);cursor:not-allowed}
+.share-menu-item[aria-disabled="true"]:hover{background:none;color:var(--muted)}
+/* Collapsible panels — each keeps its heading so it can be reopened, and the
+   caret costs no extra height because it sits in a row that already exists. */
+/* Boxed so the caret reads as a control rather than punctuation next to the title. */
+.panel-toggle{width:21px;height:21px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;padding:0;background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:4px;color:#9fb0b0;line-height:1;vertical-align:middle;transition:color .15s,border-color .15s,background .15s}
+.panel-toggle:hover{color:var(--accent);border-color:var(--accent);background:rgba(201,162,39,.12)}
+.panel-toggle:focus-visible{outline:1px solid var(--accent);outline-offset:1px}
+.panel-toggle-icon{display:block;width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .15s}
+.panel-toggle[aria-expanded="false"] .panel-toggle-icon{transform:rotate(-90deg)}
+.rc-title .panel-toggle{margin-right:5px}
+#overviewPanel.is-collapsed #sGrid{display:none}
+#chartsPanel.is-collapsed .chart-wrap,#chartsPanel.is-collapsed .chart-column-table{display:none}
+#chartsPanel.is-collapsed .chart-column-main{border-right:0}
+#chartsPanel.is-collapsed .chart-head{margin-bottom:0!important}
+#chartsPanel.is-collapsed .chart-mode-controls,#chartsPanel.is-collapsed #btkHsSelect{display:none!important}
+#recoilPanel.is-collapsed .rc-groups,#recoilPanel.is-collapsed .rc-plot,
+#recoilPanel.is-collapsed #rcStats,#recoilPanel.is-collapsed #attStats{display:none}
+#recoilPanel.is-collapsed .rc-head{margin-bottom:0}
+.rc-popout-btn,.rc-loadout-btn{margin-left:8px;padding:2px 8px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:3px;color:#6a9ec0;font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle;position:relative;top:-1px}
+.rc-popout-btn:hover,.rc-loadout-btn:hover{border-color:var(--accent);color:var(--accent)}
+.rc-loadout-btn{display:none;align-items:center;gap:5px}
+.rc-loadout-icon{width:12px;height:10px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linejoin:round}
+/* Popout: the pattern gets the whole window with its controls docked beside it,
+   and everything belonging to the dashboard is hidden. */
+body.is-popout header,body.is-popout .sidebar,body.is-popout .footer,
+body.is-popout .loadout-backdrop,body.is-popout #overviewPanel,body.is-popout #chartsPanel,
+body.is-popout .panel-toggle,body.is-popout .rc-popout-btn,body.is-popout #attStats{display:none}
+/* The loadout panel docks to the left of the plot, collapsed until asked for so
+   the popout still opens as a full-bleed view. The narrow-screen rules turn the
+   sidebar into a centred modal, which a docked panel has to opt back out of. */
+body.is-popout .rc-loadout-btn{display:inline-flex}
+body.is-popout .rc-loadout-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent)}
+body.is-popout .rc-loadout-btn[aria-expanded="true"] .rc-loadout-icon rect{fill:currentColor;fill-opacity:.2}
+body.is-popout .app{display:flex;overflow:hidden}
+body.is-popout.popout-loadout .sidebar{display:flex;position:static;inset:auto;width:198px;max-height:none;border:0;border-right:1px solid var(--border);border-radius:0;box-shadow:none;transform:none;opacity:1;pointer-events:auto}
+body.is-popout .sb-scroll{display:block}
+body.is-popout .sb-sec,body.is-popout .att-sec{border-right:0}
+body.is-popout #cmpSection[style*="display: block"],body.is-popout #cmpSection[style*="display:block"]{display:block!important}
+body.is-popout .main{padding:8px;gap:0}
+body.is-popout #recoilPanel{border:0;background:none;padding:0}
+body.is-popout .rc-layout{grid-template-columns:minmax(0,1fr) minmax(290px,360px);grid-template-rows:auto minmax(0,1fr);align-items:stretch;column-gap:12px;height:calc(100vh - 16px)}
+body.is-popout .rc-head{grid-column:1/-1}
+/* The pop-out sizes itself to its own window, so the main page's width cap
+   must not apply here — otherwise the plot leaves a dead column beside it. */
+body.is-popout .rc-plot{display:flex;flex-direction:column;min-height:0;max-width:none}
+body.is-popout .rc-viewport{display:flex;flex-direction:column;min-height:0;flex:1}
+body.is-popout .rc-canvas-wrap{flex:1;min-height:0;position:relative}
+body.is-popout canvas.rcv{position:absolute;inset:0;aspect-ratio:auto;width:100%;height:100%}
+body.is-popout #rcStats{overflow-y:auto;min-height:0;max-height:100%;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+body.is-popout #rcStats::-webkit-scrollbar{width:3px}
+body.is-popout #rcStats::-webkit-scrollbar-thumb{background:var(--border)}
+body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
+/* Mobile tap tooltip */
+.m-tip{position:fixed;z-index:300;display:none;max-width:280px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-size:0.72rem;line-height:1.45;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.6);pointer-events:none}
+.m-tip.show{display:block}
+.rc-row.tt-open .rc-tt{display:block}
+.loadout-btn{display:none;padding:5px 10px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:var(--accent2);border-radius:4px;font-size:0.72rem;letter-spacing:.04em}
+.loadout-close{display:none}
+.loadout-backdrop{display:none}
+.app{display:flex;flex:1;overflow:hidden}
+/* Sidebar */
+.loadout-modal-head{display:none}
+.sidebar{width:198px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sb-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
+.sb-scroll::-webkit-scrollbar{width:3px}
+.sb-scroll::-webkit-scrollbar-thumb{background:var(--border)}
+.sb-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
+.sb-lbl{font-size:0.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600}
+.class-filter{display:flex;flex-wrap:wrap;gap:3px}
+.cbtn{padding:2px 6px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
+.cbtn:hover,.cbtn.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
+.wlist{display:flex;flex-direction:column}
+.wbtn{padding:2px 11px;text-align:left;background:none;border:none;border-bottom:1px solid rgba(40,48,48,.55);color:var(--text);font-size:0.82rem;transition:background .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent}
+.wbtn:hover{background:var(--bg3)}
+.wbtn.p1{background:rgba(201,162,39,.1);color:var(--accent);border-left-color:var(--accent)}
+.wbtn.p2{background:rgba(77,148,208,.1);color:var(--accent2);border-left-color:var(--accent2)}
+.no-w{padding:10px 11px;color:var(--muted);font-size:0.78rem}
+.cmp-btn{margin:5px 11px;width:calc(100% - 22px);padding:4px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:0.78rem;transition:all .15s}
+.mode-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 8px;font-size:0.65rem;cursor:pointer;letter-spacing:.04em;transition:all .15s}
+#modeDmg,#modeBtk,#modeTtk,#adsToggleBtn,#velToggleBtn{width:44px;display:inline-flex;align-items:center;justify-content:center}
+.mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
+#adsToggleBtn,#velToggleBtn{color:#b39a52;border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.06)}
+#adsToggleBtn.on,#velToggleBtn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
+.cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
+.cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:3px;padding:2px 7px;font-size:0.62rem;letter-spacing:.04em;transition:all .15s}
+.clone-btn:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
+.clone-btn:disabled{opacity:.38;cursor:not-allowed;color:var(--muted);border-color:var(--border);background:var(--bg3)}
+/* Main */
+.main{flex:1;overflow-y:auto;overflow-x:hidden;padding:8px;display:flex;flex-direction:column;gap:9px}
+.main::-webkit-scrollbar{width:4px}
+.main::-webkit-scrollbar-thumb{background:var(--border)}
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);gap:6px;text-align:center}
+.empty-t{font-size:1rem;color:var(--text)}
+/* Panel */
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:6px 8px}
+.ptitle{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:5px;font-weight:600}
+/* Quick stats */
+.w-header{display:flex;align-items:baseline;row-gap:3px;column-gap:5px;flex-wrap:wrap;margin-bottom:5px}
+.wname{font-size:15px;font-weight:700;color:var(--accent)}
+.wname2{font-size:15px;font-weight:700;color:var(--accent2)}
+.wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
+.wbadge-estimated{font-size:0.68rem;color:#d8704a;border:1px solid rgba(216,112,74,.65);border-radius:3px;padding:2px 6px}
+.wbadge-burst{font-size:0.68rem;color:#c8960a;border:1px solid rgba(200,150,10,.4);border-radius:3px;padding:2px 6px}
+/* --sgroup-chrome is the group's border-left plus padding-left; the box is
+   border-box, so the flex basis above has to carry it. Keep the three in
+   step with the .sgroup and .sgrid rules that consume them.
+
+   The cards stop growing once the row reaches the width it gets in a shared
+   image, so a maximised desktop shows the same card widths the screenshot
+   does rather than drifting ever wider. --scard-max is what a card measures
+   at that width; the max-width stops the groups themselves there too, which
+   the track cap alone would not — they would keep growing and leave dead
+   space inside each group. --capture-width mirrors CAPTURE_WIDTH in
+   ui/capture.js, and --sgroups-inset is the padding between the main column
+   and this row, which the capture carries too. */
+.sgroups{display:flex;flex-direction:column;gap:11px;
+  --scard-min:108px;--scard-max:127px;--sgrid-gap:5px;--sgroup-chrome:12px;
+  --capture-width:1280px;--sgroups-inset:34px;
+  max-width:calc(var(--capture-width) - var(--sgroups-inset))}
+.sgrow{display:flex;align-items:start;gap:20px;flex-wrap:wrap}
+/* renderStatCards sets --n to the card count. The group then reproduces the
+   width it had when cards were pinned at --scard-min, and grows from there in
+   proportion to --n, so spare width splits by card count and every card lands
+   on the same width. Both halves matter: an equal share of the spare would
+   blow the single-card Concealment group up to the width of the four-card
+   ones, and leaving the basis to content would size each group by its longest
+   label instead of its card count. */
+.sgroup{border-left:2px solid var(--border);padding-left:10px;min-width:0;
+  flex-grow:var(--n,1);
+  flex-basis:calc(var(--sgroup-chrome) + var(--n,1)*var(--scard-min) + (var(--n,1) - 1)*var(--sgrid-gap))}
+.sgroup:last-child{margin-bottom:0}
+.sgroup-hd{font-size:0.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+/* The track has to stay 1fr: auto-fit counts columns off the max track size
+   when that size is definite, so a fixed cap there fits fewer columns and
+   wraps the group early. The ceiling goes on the card instead. */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--scard-min),1fr));gap:var(--sgrid-gap)}
+.scard{max-width:var(--scard-max);background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:4px 8px;letter-spacing:-0.03em}
+.scard.stat-group{background:#202929}
+.sgrid .sval,.sgrid .scmp-row{white-space:nowrap}
+.slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:1px;white-space:nowrap}
+.sval{font-size:0.9rem;font-weight:700}
+.sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
+.sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
+.c1{color:var(--accent)} .c2{color:var(--accent2)}
+.scmp{display:flex;flex-direction:column;gap:0}.scmp-row{display:flex;align-items:baseline;gap:2px}
+.diff{font-size:0.62rem;padding:1px 2px;border-radius:3px;margin-left:1px;letter-spacing:-0.02em}
+.d-up{background:rgba(86,196,100,.15);color:var(--green)}
+.d-dn{background:rgba(224,85,85,.15);color:var(--red)}
+/* Chart */
+.chart-head{margin-bottom:14px}
+.chart-table-head{height:21px;display:flex;align-items:center}
+.chart-wrap{position:relative;height:225px}
+.chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
+/* BTK table */
+.btk-tbl{width:100%;border-collapse:collapse;font-size:0.78rem}
+.btk-tbl th{padding:4px 7px;color:var(--muted);text-align:center;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
+.btk-tbl td{padding:4px 7px;text-align:center;border-bottom:1px solid rgba(40,48,48,.45)}
+.btk-tbl tr:last-child td{border-bottom:none}
+.rng{color:var(--muted);font-size:0.7rem}
+.bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
+.tv{color:var(--muted);font-size:0.76rem}
+/* Recoil */
+.rc-layout{display:grid;grid-template-columns:clamp(240px,calc(100% - 778px),496px) minmax(375px,1fr) minmax(375px,1fr);column-gap:14px;align-items:start;position:relative}
+.rc-head{grid-column:1/-1;margin-bottom:9px}
+.rc-plot{min-width:0}
+.rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
+.rc-head .ptitle{margin-bottom:0}
+.rc-title{grid-column:1 / -1;white-space:nowrap;display:flex;align-items:center;flex-wrap:wrap}
+/* Shot count lives in the title it appears in, rather than a group of its own. */
+.rc-title-num{width:28px;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:1px 3px;font:inherit;font-size:.65rem;font-variant-numeric:tabular-nums;text-align:right;outline:none;vertical-align:baseline}
+.rc-title-num:focus{border-color:var(--accent)}
+.rc-shot-suffix{margin-left:4px}
+.rc-groups{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.rc-group{flex:1 1 210px;min-width:0;border:1px solid #2c3636;border-radius:6px;padding:7px 9px 9px;background:#121717}
+.rc-groups > .rc-group:first-child{flex-basis:calc(55% - 5px)}
+.rc-groups > .rc-group:nth-child(2){flex-basis:calc(45% - 5px)}
+/* A group with only a couple of controls hugs them instead of stretching. */
+.rc-group--compact{flex:0 1 auto}
+.rc-group-hd{font-size:0.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9fb0b0;margin-bottom:6px}
+.rc-control-collection{display:flex;align-items:center;gap:7px 12px;flex-wrap:wrap;margin-top:7px}
+.rc-control-collection:first-of-type{margin-top:0}
+.rc-control-group{display:flex;align-items:center;gap:8px;flex:0 0 auto;min-width:max-content;white-space:nowrap}
+.rc-control-group--grow{flex:1 1 auto}
+.rc-control-group .rc-group-row{flex-wrap:nowrap}
+.rc-group-row-grow{flex:1 1 auto;min-width:0}
+.rc-group-row-grow .rc-shots-input{width:100%}
+.rc-sub{font-size:0.58rem;letter-spacing:.05em;text-transform:uppercase;color:#93a0a0;flex-shrink:0;margin:0}
+.rc-group-row{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.rc-shots-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:106px;outline:none}
+.rc-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:3px 5px;font:inherit;font-size:0.65rem;min-height:22px;cursor:pointer;outline:none;min-width:0}
+#rcSpreadPreset{flex:0 0 98px;width:98px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rc-select:focus{border-color:var(--accent)}
+.rc-select.idle{opacity:.62}
+.rc-select option{background:var(--bg2)}
+.rc-shots-input[hidden]{display:none}
+/* The custom shot list floats over the panel so revealing it never nudges the
+   Cone/Bubbles buttons. It closes on Enter, Escape or a click elsewhere. */
+.rc-bubble-field{position:relative}
+.rc-custom-pop{position:absolute;left:0;top:calc(100% + 4px);z-index:40;width:150px;box-shadow:0 5px 14px rgba(0,0,0,.55)}
+/* Shared control primitives — one visual language for every toggle, slider and number field */
+.seg{display:inline-flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;background:var(--bg3);overflow:hidden;flex-shrink:0}
+/* Segmented and standalone toggles land on the same outer height (22px). */
+.seg>.mode-btn{border:0;border-radius:0;background:transparent;padding:0 7px;min-height:20px}
+.seg>.mode-btn+.mode-btn{border-left:0;position:relative}
+.seg>.mode-btn+.mode-btn::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border);z-index:2;pointer-events:none}
+.seg>.mode-btn:hover:not(.on){background:rgba(255,255,255,.05);color:#c3cece}
+.seg>.mode-btn.on{background:var(--accent);color:#1a2020;text-shadow:0 0 .45px currentColor}
+.rc-field{display:flex;align-items:center;gap:6px;min-width:0}
+.rc-field-lbl{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:#738383;white-space:nowrap;flex-shrink:0}
+.rc-range{-webkit-appearance:none;appearance:none;height:14px;flex:0 1 auto;background:transparent;outline:none;cursor:pointer;--fill:0%}
+.rc-range::-webkit-slider-runnable-track{height:4px;border-radius:3px;background:linear-gradient(90deg,var(--accent) var(--fill),#26302f var(--fill))}
+.rc-range::-moz-range-track{height:4px;border-radius:3px;background:linear-gradient(90deg,var(--accent) var(--fill),#26302f var(--fill))}
+.rc-range::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;margin-top:-3.5px;border-radius:50%;background:var(--accent);border:1px solid #6b5a1c;box-shadow:0 1px 3px rgba(0,0,0,.65)}
+.rc-range::-moz-range-thumb{width:11px;height:11px;border-radius:50%;background:var(--accent);border:1px solid #6b5a1c;box-shadow:0 1px 3px rgba(0,0,0,.65)}
+.rc-range:disabled{cursor:not-allowed}
+.rc-readout{font-size:.63rem;font-variant-numeric:tabular-nums;color:#c6d0d0;white-space:nowrap;flex-shrink:0}
+.rc-readout .rc-unit{color:var(--muted);margin-left:1px}
+/* The distance and zoom values are read while dragging their slider, so they
+   carry a size up from the other read-outs. */
+.rc-viewbar .rc-readout{font-size:.72rem}
+/* Chart viewport — tab strip, contextual bar and canvas read as one card */
+.rc-viewport{border:1px solid var(--border);border-radius:6px;background:#0b1010;overflow:hidden;min-width:0}
+.rc-tabstrip{display:flex;align-items:stretch;flex-wrap:wrap;background:#151b1b;border-bottom:1px solid var(--border)}
+.rc-tab{flex:1 1 0;appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;color:#7f9090;font:inherit;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px 6px;cursor:pointer;white-space:nowrap;transition:color .13s,background .13s,border-color .13s}
+.rc-tab:hover:not(.on){color:#cdd6d6;background:rgba(255,255,255,.035)}
+.rc-tab.on{color:var(--accent);background:#0b1010;border-bottom-color:var(--accent)}
+.rc-viewbar{display:flex;align-items:center;gap:7px 14px;flex-wrap:nowrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
+/* Both fields share the row, so the sliders take every spare pixel for finer
+   dragging instead of leaving a gap on the right. */
+.rc-viewbar .rc-field{flex:1 1 0;min-width:0}
+.rc-viewbar #rcDistanceField{flex:0 1 calc(60% - 35px)}
+.rc-viewbar #rcZoomField{flex:1 1 calc(40% - 14px)}
+.rc-viewbar .rc-range{flex:1 1 60px;min-width:54px}
+.rc-viewbar [hidden]{display:none}
+.rc-comp-range{width:62px}
+.rc-comp-row{display:flex;align-items:center;gap:5px;min-width:0}
+.rc-comp-row .rc-comp-range{flex:0 0 62px}
+.rc-shots-input:focus{border-color:var(--accent)}
+.rc-shots-input.idle{opacity:0.62}
+.rc-shots-label--disabled{opacity:0.35}
+.rc-mode-btn{display:inline-flex;align-items:center;justify-content:center;min-height:22px;padding-block:0;padding-inline:7px;white-space:nowrap}
+/* Cursor states the mode: crosshair places an aim point, the hand pans. */
+canvas.rcv{display:block;width:100%;height:auto;aspect-ratio:1;background:#080d0d;cursor:default;touch-action:pan-y}
+canvas.rcv.aiming{cursor:crosshair}
+canvas.rcv.panready,canvas.rcv.panready.aiming{cursor:grab}
+canvas.rcv.dragging,canvas.rcv.dragging.aiming{cursor:grabbing}
+canvas.rcv:focus-visible{outline-offset:-2px}
+.rc-canvas-wrap{position:relative;line-height:0}
+.rc-target-controls{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;padding:3px 9px;min-height:26px;color:#8fa0a0;font-size:.58rem;line-height:1}
+.rc-target-controls[hidden]{display:none}
+.rc-target-group{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.rc-target-controls input{height:21px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;color:var(--text);font:inherit;outline:none;padding:2px 5px 2px 3px;text-align:right}
+.rc-target-controls input[type=number]{appearance:textfield;-moz-appearance:textfield}
+.rc-target-controls input[type=number]::-webkit-inner-spin-button,.rc-target-controls input[type=number]::-webkit-outer-spin-button{margin:0;-webkit-appearance:none}
+.rc-target-controls .rc-target-resolution-input{width:36px}
+.rc-target-controls .rc-target-fov-input{width:29px}
+.rc-target-controls input:focus{border-color:var(--accent)}
+.rc-target-controls .rc-zero-readout{position:static;top:auto;right:auto;z-index:auto;margin-left:auto}
+.rc-zero-readout{position:absolute;top:8px;right:8px;z-index:2;display:flex;align-items:center;gap:5px;color:#8fa0a0;font-size:.63rem;line-height:1;text-transform:uppercase;letter-spacing:.06em}
+.rc-zero-readout[hidden]{display:none}
+.rc-zero-cycle{appearance:none;border:1px solid #2c3838;border-radius:4px;background:rgba(12,18,18,.78);color:var(--accent);font:inherit;padding:4px 6px;cursor:pointer;backdrop-filter:blur(2px)}
+.rc-zero-cycle:hover{border-color:var(--accent);color:#e1c852}
+.rc-scale-controls{position:absolute;right:8px;top:8px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px}
+.rc-scale-btn{width:21px;height:21px;min-height:21px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#8fa0a0;font-weight:700;line-height:1;backdrop-filter:blur(2px)}
+.rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
+#rcCrosshairToggle[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+/* Footer strip under the plot — keeps hints and the aim read-out off the axes. */
+.rc-viewfoot{display:flex;align-items:flex-end;gap:10px;padding:4px 9px;min-height:22px;background:#0e1414;border-top:1px solid var(--border)}
+.rc-hint{flex:1 1 auto;min-width:0;font-size:.55rem;letter-spacing:.03em;color:var(--text);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
+.rc-aim-readout{display:flex;align-items:flex-end;justify-content:flex-end;flex:0 1 auto;max-width:42%;min-width:0;gap:7px;font-size:.55rem;color:#8c9a9a;white-space:normal;text-align:right;line-height:1.35;font-variant-numeric:tabular-nums}
+.rc-aim-readout[hidden]{display:none}
+.rc-viewbar #rcDistanceReadout{flex:0 0 36px;width:36px;text-align:right}
+.rc-viewbar #rcResetView{flex:0 0 21px;margin-left:auto}
+.rc-linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent2);text-decoration:underline;letter-spacing:.03em}
+.rc-linkbtn:hover{color:var(--accent)}
+.rc-scale-icon{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.rc-reset-icon{display:block;font-size:14px;line-height:14px;transform:translate(-0.5px,-0.5px)}
+.rc-stats{display:flex;flex-direction:column;gap:9px;padding-top:0}
+.rc-stats-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:0}
+.rc-stats-head .ptitle{margin-bottom:0}
+.rc-stats-context{font-size:.62rem;color:#7d8c8c;letter-spacing:.03em;white-space:nowrap}
+/* Same strip as the plot's view tabs, but selected reads as neutral light
+   rather than gold: gold and blue already stand for weapon 1 and weapon 2
+   throughout this panel, and these tabs pick a readout, not a weapon. */
+/* The plot's strip gets its rounded top from the viewport box clipping it;
+   this one is bare, so it rounds and clips itself to match. */
+/* Mirrors .rc-viewport: one continuous box holding the tab strip and the
+   stats below it, on the panel's own grey so it reads as part of the panel
+   rather than a well cut into it. */
+/* No clipping here: the stat rows hang their hover tooltip out of the box, and
+   overflow:hidden cut it off. The tab strip is the only child that meets the
+   rounded corners, so it rounds its own instead. */
+.rc-stats-box{border:1px solid var(--border);border-radius:6px;background:var(--bg2);min-width:0}
+.rc-stats-body{display:flex;flex-direction:column;gap:9px;padding:10px}
+/* The box supplies the column's edge, so the divider rule would double up. */
+.rc-stats.is-boxed{border-left:0;padding-left:0}
+/* The strip is recessed so unselected tabs sit back, and the selected tab
+   carries the body's own grey so the two surfaces join. Selected stays
+   neutral: gold and blue already mean weapon 1 and weapon 2. */
+.rc-stats-tabstrip{background:#101414;border-radius:5px 5px 0 0;overflow:hidden}
+.rc-stats-tabstrip .rc-tab.on{color:var(--text);background:var(--bg2);border-bottom-color:#8fa3a3}
+/* Impact stats need a projected target, so that tab greys out in angle view. */
+.rc-stats-tabstrip .rc-tab[disabled]{color:#465050;cursor:default}
+.rc-stats-tabstrip .rc-tab[disabled]:hover{color:#465050;background:transparent}
+/* Separates the two stacked stat blocks in the pop-out. */
+.rc-stats-split{flex-shrink:0;border-top:1px solid var(--border);margin:4px 0 2px}
+@keyframes rcViewSwap{from{opacity:.25;transform:translateY(3px)}to{opacity:1;transform:none}}
+.rc-view-swap{animation:rcViewSwap .19s ease-out}
+@media (prefers-reduced-motion:reduce){.rc-view-swap{animation:none}}
+.target-impact-card,.rc-stats-card{border:1px solid #2b3737;border-radius:5px;background:#101515;padding:8px 10px}
+/* The rows used to be spaced by the column's own gap; inside a card they
+   need their own. */
+.rc-stats-card{display:flex;flex-direction:column;gap:9px}
+.target-impact-weapon{font-size:.78rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.target-impact-weapon.c1{color:var(--accent)}
+.target-impact-weapon.c2{color:var(--accent2)}
+.target-impact-summary{display:grid;grid-template-columns:22.5% 25% 27.5% 25%;margin-bottom:7px;padding:6px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
+.target-impact-summary>div{display:flex;align-items:baseline;gap:4px;min-width:0;padding:1px 6px;border-right:1px solid #263131;white-space:nowrap}
+.target-impact-summary>div:first-child{padding-left:1px}
+.target-impact-summary>div:last-child{padding-right:1px;border-right:0}
+.target-impact-summary span{font-size:.56rem;letter-spacing:.045em;text-transform:uppercase;color:#718080}
+.target-impact-summary strong{font-size:.8rem;color:#d4dddd;line-height:1}
+.target-zone-mult{color:#7d8c8c;font-size:.92em;margin-left:2px}
+.target-impact-summary small{font-size:.56rem;color:#677575;overflow:hidden;text-overflow:ellipsis}
+.target-zone-table{width:100%;border-collapse:collapse;font-size:.72rem}
+.target-zone-table th,.target-zone-table td{padding:5px 4px;border-bottom:1px solid rgba(43,55,55,.75);text-align:right;white-space:nowrap}
+.target-zone-table th:first-child{text-align:left}
+.target-zone-table thead th{font-size:.6rem;font-weight:500;letter-spacing:.045em;text-transform:uppercase;color:#718080}
+.target-zone-table tbody th{font-weight:500;color:#aab7b7}
+.target-zone-table tbody td{color:#c6d0d0}
+.target-zone-table tbody tr:last-child th,.target-zone-table tbody tr:last-child td{border-bottom:none}
+.target-impact-note{font-size:.6rem;line-height:1.4;color:#93a0a0}
+/* Damage read-out coloring — after the base cell colors so it wins. */
+.target-zone-table tbody tr.no-hits th,.target-zone-table tbody tr.no-hits td{opacity:.5}
+.target-impact-summary strong.dmg-kill{color:var(--red)}
+.target-impact-summary strong.dmg-crit{color:var(--accent)}
+.rc-row{display:flex;flex-direction:column;gap:3px}
+.rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
+.rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;position:relative}
+.rc-row{display:flex;flex-direction:column;gap:3px;position:relative}
+.rc-tt{display:none;position:absolute;left:0;top:calc(100% + 3px);z-index:200;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:8px 10px;min-width:240px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.5)}
+.rc-row:hover .rc-tt{display:block}
+.rc-tt-row{display:flex;justify-content:space-between;gap:16px;font-size:0.67rem;line-height:1.6;color:var(--muted);padding-left:8px}
+.rc-tt-eff{font-weight:700;color:var(--text);padding-left:0}
+.rc-tt-wname{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.rc-tt-pos{color:var(--red)}
+.rc-tt-neg{color:var(--green)}
+.rc-tt-tbl{width:100%;border-collapse:collapse;font-size:0.67rem}
+.rc-tt-tbl th,.rc-tt-tbl td{padding:1px 6px 1px 0;text-align:right;color:var(--muted);white-space:nowrap}
+.rc-tt-tbl th:first-child,.rc-tt-tbl td:first-child{text-align:left;color:var(--muted);padding-left:0}
+.rc-tt-tbl thead th{color:var(--text);font-weight:700;border-bottom:1px solid var(--border);padding-bottom:3px;margin-bottom:2px}
+.rc-tt-tbl thead th:first-child{color:var(--muted);font-weight:400}
+.rc-bar.centered{position:relative}
+.rc-fill{height:100%;border-radius:3px;transition:width .3s}
+.rc-stats,.att-stats{min-width:0;position:relative;align-self:stretch;border-left:1px solid var(--border);padding-left:13px}
+.att-block{margin-bottom:8px}
+.att-block:last-child{margin-bottom:0}
+.att-name{font-size:0.68rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-name.c1{color:var(--accent)} .att-name.c2{color:var(--accent2)}
+.att-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:4px}
+.att-chip{background:var(--bg3);border-radius:4px;padding:5px 6px;min-width:0}
+.att-chip-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-chip-val{font-size:0.72rem;font-weight:700;white-space:nowrap;letter-spacing:.3px}
+.att-empty{font-size:0.68rem;color:var(--muted);background:var(--bg3);border-radius:4px;padding:7px 8px}
+.rc-legend{display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;min-height:14px}
+.rc-legend-item{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--text)}
+.rc-legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.rc-note{font-size:0.6rem;color:var(--muted);margin-top:3px}
+/* Attachments sidebar */
+.att-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
+.att-row{display:flex;align-items:center;gap:5px;margin-bottom:4px}
+.att-lbl{font-size:0.6rem;color:var(--muted);width:40px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
+.att-sel{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-size:0.7rem;padding:2px 3px;border-radius:3px;cursor:pointer;min-width:0;outline:none}
+.att-sel:focus{border-color:var(--accent)}
+.att-sel option{background:var(--bg2)}
+.att-total{font-size:0.65rem;color:var(--accent);text-align:right;margin-top:4px;letter-spacing:.03em}
+.att-total.over{color:#c46464}
+.att-note{font-size:0.58rem;color:var(--muted);line-height:1.35;margin-top:5px}
+.wbtn.p1.p2{background:rgba(130,100,180,.13);border-left-color:var(--accent2);color:var(--accent2)}
+/* Footer */
+.footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+/* The three-column recoil layout reserves 240 + 375 + 375 plus two 14px gaps —
+   1018px of track that never shrinks. Narrower than that it kept its size and
+   overran: between 981 and 1279 the Attachment Effects column was clipped
+   inside .main (233px of it gone at 1000px), and below 980 the page itself
+   scrolled sideways. Step down to two columns, then to one.
+   The popout window drives its own two-column grid off body.is-popout and is
+   excluded here — it sizes to its own window, not this breakpoint. */
+@media (max-width:1279px){
+  body:not(.is-popout) .rc-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  body:not(.is-popout) .rc-plot{grid-column:1/-1}
+}
+@media (max-width:980px){
+  body:not(.is-popout) .rc-layout{grid-template-columns:minmax(0,1fr);gap:12px}
+  body:not(.is-popout) .rc-plot{grid-column:1/-1}
+  body{height:auto;min-height:100vh;overflow:auto}
+  body.loadout-open{overflow:hidden}
+  header{position:sticky;top:0;z-index:20;flex-wrap:wrap;height:auto;min-height:46px;padding-block:8px}
+  .loadout-btn{display:block}
+  .loadout-backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:50;opacity:0;pointer-events:none;transition:opacity .14s}
+  body.loadout-open .loadout-backdrop{opacity:1;pointer-events:auto}
+  .app{display:block;overflow:visible}
+  .sidebar{position:fixed;left:50%;top:14px;bottom:14px;z-index:60;width:min(760px,calc(100vw - 24px));max-height:none;border:1px solid var(--border);border-radius:7px;box-shadow:0 18px 44px rgba(0,0,0,.65);transform:translate(-50%,-10px);opacity:0;pointer-events:none;transition:opacity .14s,transform .14s}
+  body.loadout-open .sidebar{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+  .loadout-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
+  .loadout-modal-title{font-size:0.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+  .loadout-close{display:grid;place-items:center;width:28px;height:26px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:1rem;line-height:1}
+  .sb-scroll{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr);overflow:auto;min-height:0}
+  .sb-sec,.att-sec{border-bottom:0;border-right:1px solid var(--border)}
+  #cmpSection{grid-column:1/-1;border-top:1px solid var(--border)}
+  #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:grid!important;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
+  .cmp-hdr{grid-column:1/-1;border-top:0;border-bottom:1px solid var(--border)}
+  .main{overflow:visible;padding:10px}
+  #statsArea > .panel:nth-of-type(2) > div{flex-direction:column}
+  #statsArea > .panel:nth-of-type(2) > div > div:first-child{border-right:0!important;border-bottom:1px solid var(--border)}
+  .chart-head{margin-bottom:9px}
+  .chart-wrap{height:238px}
+}
+@media (max-width:720px){
+  body{font-size:13px}
+  header{align-items:flex-start;gap:6px}
+  .logo{font-size:.95rem;letter-spacing:2px}
+  .hdr-tag{font-size:.58rem}
+  .legacy-link{font-size:.58rem}
+  .archive-label{font-size:.58rem}
+  .sidebar{inset:8px;width:auto;top:8px;bottom:8px;left:8px;right:8px;transform:translateY(-10px)}
+  body.loadout-open .sidebar{transform:translateY(0)}
+  .sb-scroll{display:block}
+  .sb-sec,.att-sec{border-right:0;border-bottom:1px solid var(--border);padding:8px 10px}
+  .class-filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
+  .cbtn{flex:0 0 auto;padding:4px 8px}
+  .wlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:2px}
+  .wbtn{border:1px solid rgba(40,48,48,.55);border-left:2px solid transparent;border-radius:3px;padding:6px 8px}
+  .att-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px}
+  #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:block!important}
+  .main{padding:8px;gap:8px}
+  .panel{padding:10px;border-radius:5px}
+  .w-header{gap:6px}
+  .wname,.wname2{font-size:1rem}
+  .sgrow{flex-direction:column}
+  .sgroup{width:100%;flex-basis:auto}
+  .scard{padding:7px 8px}
+  #statsArea > .panel:nth-of-type(2) > div > div{padding:10px!important}
+  #statsArea > .panel:nth-of-type(2) > div > div:first-child > div:first-child{align-items:flex-start!important;flex-direction:column;gap:7px}
+  .chart-wrap{height:210px}
+  .btk-tbl{font-size:.72rem}
+  .btk-tbl th,.btk-tbl td{padding:4px}
+  .rc-layout{display:grid;grid-template-columns:1fr;gap:12px}
+  .rc-head{gap:8px}
+  /* The caret pushes the nowrap title past a narrow viewport, so let it wrap. */
+  .rc-title{white-space:normal}
+  .rc-group{flex-basis:100%}
+  /* The 55/45 split is set with :first-child/:nth-child(2), which outrank a
+     plain `.rc-groups > .rc-group` here — so this override has to match their
+     specificity or the panels keep splitting the row on a phone. */
+  .rc-groups > .rc-group,
+  .rc-groups > .rc-group:first-child,
+  .rc-groups > .rc-group:nth-child(2){flex-basis:100%}
+  /* Desktop keeps each labelled control group on one unbroken line, which a
+     phone viewport is too narrow to hold — the Pattern row alone overran the
+     panel and scrolled the whole page sideways. Here the group may shrink and
+     its buttons wrap inside it; the groups still stack in collection order. */
+  .rc-control-group{flex:0 1 auto;min-width:0;white-space:normal}
+  .rc-control-group .rc-group-row{flex-wrap:wrap}
+  .rc-stats{border-left:none;padding-left:0;align-self:auto}
+  .rc-plot{min-width:0}
+  .rc-tab{flex:1 1 0;padding-inline:8px}
+  .rc-viewbar .rc-range{flex:1 1 70px}
+  .rc-tt{position:static;min-width:0;margin-top:4px;box-shadow:none}
+  .att-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer{align-items:flex-start;flex-direction:column;padding:7px 10px;gap:4px}
+}
+@media (max-width:430px){
+  .sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .scard{max-width:none}
+  .att-grid{grid-template-columns:1fr}
+  .mode-btn{padding-inline:7px}
+  .rc-mode-btn{min-width:auto!important}
+  .rc-shots-input{width:92px}
+  .chart-wrap{height:188px}
+}
+@media (max-width:340px){.sgrid{grid-template-columns:1fr}}
+@media (pointer:coarse){
+  .loadout-btn,.cbtn,.wbtn,.mode-btn,.rc-tab,.rc-scale-btn,.loadout-close{min-height:36px}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1 class="logo-h1"><a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a></h1>
+  <div class="hdr-tag">v1.3.3.0 Archive (Updated 2 AUG 2026)</div>
+  <div class="archive-group">
+    <a class="legacy-link" href="../">Current Version</a>
+    <span class="archive-label">Archives:</span>
+    <a class="legacy-link" href="../v1.3.1.0/">1.3.1.0</a>
+    <a class="legacy-link" href="../v1.2.3.0/">1.2.3.0</a>
+  </div>
+  <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections" aria-controls="loadoutPanel" aria-expanded="false">Loadout</button>
+</header>
+<div class="app">
+  <aside class="sidebar" id="loadoutPanel" aria-labelledby="loadoutTitle">
+    <div class="loadout-modal-head">
+      <div class="loadout-modal-title" id="loadoutTitle">Loadout</div>
+      <button class="loadout-close" id="loadoutCloseBtn" type="button" title="Close loadout panel" aria-label="Close loadout panel">×</button>
+    </div>
+    <button class="cmp-btn" id="cmpBtn" aria-pressed="false">+ Compare Loadout</button>
+    <div class="sb-scroll">
+      <div class="sb-sec">
+        <div class="sb-lbl">Class</div>
+        <div class="class-filter" id="classFilter1"></div>
+      </div>
+      <div class="sb-sec" style="padding-top:6px">
+        <div class="sb-lbl">Weapon</div>
+        <div class="wlist" id="wList1"></div>
+      </div>
+      <div class="att-sec" id="attSection1"></div>
+      <div id="cmpSection" style="display:none">
+        <div class="cmp-hdr"><span>Compare Loadout</span><button class="clone-btn" id="cloneLoadoutBtn" type="button" title="Copy Weapon 1 and its attachments into Weapon 2">Clone</button></div>
+        <div class="sb-sec">
+          <div class="sb-lbl">Class</div>
+          <div class="class-filter" id="classFilter2"></div>
+        </div>
+        <div class="sb-sec" style="padding-top:6px">
+          <div class="sb-lbl">Weapon 2</div>
+          <div class="wlist" id="wList2"></div>
+        </div>
+        <div class="att-sec" id="attSection2"></div>
+      </div>
+    </div>
+  </aside>
+  <div class="loadout-backdrop" id="loadoutBackdrop" aria-hidden="true"></div>
+  <main class="main" id="main">
+    <div class="empty" id="emptyState">
+      <div class="empty-t">Select a weapon to begin</div>
+      <div>Choose a class and weapon from the sidebar</div>
+    </div>
+    <div id="statsArea" style="display:none">
+      <div class="panel" id="overviewPanel">
+        <div class="overview-head">
+          <button class="panel-toggle" data-collapse="overview" data-collapse-label="the stat cards" type="button" aria-expanded="true" aria-controls="sGrid"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
+          <div class="ptitle">Overview</div>
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="shareMenu" title="Share this loadout as a link or an image">Share Loadout</button>
+            <div class="share-menu" id="shareMenu" role="menu" hidden>
+              <button class="share-menu-item" id="shareLinkBtn" type="button" role="menuitem">Copy Link</button>
+              <button class="share-menu-item" id="shareImgBtn" type="button" role="menuitem">Copy Image</button>
+              <button class="share-menu-item" id="shareSaveImgBtn" type="button" role="menuitem">Save Image</button>
+            </div>
+          </div>
+        </div>
+        <div id="wHeader" class="w-header"></div>
+        <div id="sGrid" class="sgroups"></div>
+      </div>
+      <div class="panel" id="chartsPanel" style="padding:0;overflow:hidden">
+        <div style="display:flex;align-items:stretch">
+          <div class="chart-column chart-column-main" style="flex:1;min-width:0;padding:6px 8px;border-right:1px solid var(--border)">
+            <div class="chart-head" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <button class="panel-toggle" data-collapse="charts" data-collapse-label="the damage chart and kill table" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
+                <div class="ptitle" style="margin-bottom:0" id="chartTitle">Comparison Chart</div>
+                <div class="chart-mode-controls" style="display:flex;gap:3px">
+                  <button class="mode-btn on" id="modeDmg" aria-pressed="true" title="Shows damage per shot across range.">DMG</button>
+                  <button class="mode-btn" id="modeBtk" aria-pressed="false" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
+                  <button class="mode-btn" id="modeTtk" aria-pressed="false" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
+                  <button class="mode-btn" id="adsToggleBtn" aria-pressed="false" style="display:none;margin-left:6px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
+                  <button class="mode-btn" id="velToggleBtn" aria-pressed="false" style="display:none" title="Adds the lethal projectile's level-target flight time once to the TTK chart and table.">+VEL</button>
+                </div>
+              </div>
+              <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer">
+                <option value="0">0 Headshots</option>
+                <option value="1">1 Headshot</option>
+                <option value="2">2 Headshots</option>
+                <option value="3">3 Headshots</option>
+              </select>
+            </div>
+            <div class="chart-wrap"><canvas id="dmgChart"></canvas><div class="rc-legend" id="chartLegend"></div></div>
+          </div>
+          <div class="chart-column chart-column-table" style="flex:1;min-width:0;padding:6px 8px">
+            <div class="ptitle chart-table-head">Bullets / Time to Kill</div>
+            <div id="btkArea"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="recoilPanel">
+        <div class="rc-layout">
+          <div class="rc-head">
+            <div class="ptitle rc-title">
+              <button class="panel-toggle" data-collapse="recoil" data-collapse-label="the recoil and spread pattern" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
+              Recoil &amp; Spread Pattern (Simulated -
+              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"><span class="rc-shot-suffix">Shots)</span>
+              <button class="rc-popout-btn" id="rcPopoutBtn" type="button" title="Open the pattern in its own window, sized to fill it">Pop Out &#8599;</button>
+              <button class="rc-loadout-btn" id="rcLoadoutBtn" type="button" aria-controls="loadoutPanel" aria-expanded="false" title="Show or hide the weapon and attachment panel beside the plot"><svg class="rc-loadout-icon" viewBox="0 0 12 10" aria-hidden="true"><rect x="1" y="1" width="10" height="8" rx="1.2"/><line x1="4.6" y1="1" x2="4.6" y2="9"/></svg><span id="rcLoadoutBtnText">Modify Loadout</span></button></div>
+            <div class="rc-groups">
+              <div class="rc-group">
+                <div class="rc-group-hd">Soldier Aim Controls</div>
+                <div class="rc-control-collection">
+                  <div class="rc-control-group" data-control-group="position">
+                    <div class="rc-sub">Aim</div>
+                    <div class="rc-group-row seg">
+                      <button class="mode-btn rc-mode-btn on" id="rcAimAds" title="Use ADS recoil and spread values">ADS</button>
+                      <button class="mode-btn rc-mode-btn" id="rcAimHip" title="Use hipfire recoil and spread values">Hipfire</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="stance">
+                    <div class="rc-sub">Stance</div>
+                    <div class="rc-group-row seg">
+                      <button class="mode-btn rc-mode-btn on" id="rcStanceStand" title="Use standing spread values">Standing</button>
+                      <button class="mode-btn rc-mode-btn" id="rcStanceMove" title="Use moving spread values">Moving</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="input">
+                    <div class="rc-sub">Input</div>
+                    <div class="rc-group-row seg">
+                      <button class="mode-btn rc-mode-btn on" id="rcPlatformPc" title="Use PC recoil values">PC</button>
+                      <button class="mode-btn rc-mode-btn" id="rcPlatformConsole" title="Apply console recoil reduction">Console</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="recoil-control">
+                    <div class="rc-sub">Recoil Control</div>
+                    <span id="rcCompRow" class="rc-comp-row">
+                      <input id="rcCompRange" class="rc-range rc-comp-range" type="range" min="0" max="125" step="1" value="0" aria-label="Recoil compensation percentage" title="How much of the expected recoil the shooter pulls back down. 0% is no compensation.">
+                      <output id="rcCompReadout" class="rc-readout" for="rcCompRange">0%</output>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-group">
+                <div class="rc-group-hd">Chart Overlays</div>
+                <div class="rc-control-collection">
+                  <div class="rc-control-group" data-control-group="pattern">
+                    <div class="rc-sub">Pattern</div>
+                    <div class="rc-group-row">
+                      <button class="mode-btn rc-mode-btn on" id="rcModeScatter" title="Show faded scatter over 10 simulated runs">Scatter</button>
+                      <button class="mode-btn rc-mode-btn on" id="rcModeSpread" title="Show the solid reference run dots">Spray</button>
+                      <button class="mode-btn rc-mode-btn" id="rcModePath" title="Draw the recoil-only reference path">Recoil Path</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="spread">
+                    <div class="rc-sub">Spread</div>
+                    <div class="rc-group-row">
+                      <button class="mode-btn rc-mode-btn" id="rcConeToggleBtn" title="Show the spread envelope cone across all shots">Cone</button>
+                      <button class="mode-btn rc-mode-btn" id="rcSpreadToggleBtn" title="Show potential spread bubbles on selected shots">Bubbles</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group rc-control-group--grow rc-bubble-preset-group" data-control-group="bubbles">
+                    <div class="rc-group-row rc-group-row-grow rc-bubble-field">
+                      <select id="rcSpreadPreset" class="rc-select" title="Preset choices include Shot 1 to show first-shot spread, especially useful for movement/hipfire. Custom uses the shot numbers entered below.">
+                        <option value="growth">Growth Curve</option>
+                        <option value="early">Early Shots</option>
+                        <option value="all">All Shots</option>
+                        <option value="custom">Custom…</option>
+                      </select>
+                      <input id="rcSpreadShotsInput" class="rc-shots-input rc-custom-pop" type="text" value="2, 3, 5, 8, 13, 20" hidden aria-label="Custom shot numbers for spread bubbles" title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'. Press Enter or click away to close.">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rc-plot" id="rcPlotColumn">
+            <div class="rc-viewport">
+              <div class="rc-tabstrip" role="tablist" aria-label="Chart view">
+                <button class="rc-tab on" id="rcViewAngle" type="button" role="tab" aria-selected="true" aria-controls="rcMain" title="Plot the pattern in angular degrees, independent of range">Angle Plot</button>
+                <button class="rc-tab" id="rcViewTarget" type="button" role="tab" aria-selected="false" aria-controls="rcMain" title="Project the same pattern onto a soldier-sized target at a chosen range">Soldier Target</button>
+              </div>
+              <div class="rc-viewbar">
+                <span class="rc-field" id="rcDistanceField" hidden>
+                  <span class="rc-field-lbl">Distance</span>
+                  <input class="rc-range" id="rcDistanceRange" type="range" min="5" max="300" step="5" value="30" aria-label="Target distance in meters">
+                  <output class="rc-readout" id="rcDistanceReadout" for="rcDistanceRange">20 m</output>
+                </span>
+                <span class="rc-field" id="rcZoomField">
+                  <span class="rc-field-lbl">Zoom</span>
+                  <input class="rc-range" id="rcZoomRange" type="range" min="0" max="100" step="1" value="50" aria-label="Chart zoom">
+                  <output class="rc-readout" id="rcZoomReadout" for="rcZoomRange">±5°</output>
+                </span>
+                <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample"><span class="rc-reset-icon">↺</span></button>
+              </div>
+              <div class="rc-canvas-wrap">
+                <div class="rc-scale-controls">
+                  <button class="rc-scale-btn" id="rcCrosshairToggle" type="button" title="Hide crosshair overlay" aria-label="Hide crosshair overlay" aria-pressed="true">
+                    <svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3.55"/><circle cx="5" cy="5" r="1.25"/><line x1="5" y1="0.25" x2="5" y2="1.45"/><line x1="5" y1="8.55" x2="5" y2="9.75"/><line x1="0.25" y1="5" x2="1.45" y2="5"/><line x1="8.55" y1="5" x2="9.75" y2="5"/></svg>
+                  </button>
+                </div>
+                <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and spread pattern plot. Use arrow keys to pan and plus or minus to zoom."></canvas>
+              </div>
+              <div class="rc-target-controls" id="rcTargetControls" hidden>
+                <span class="rc-target-group"><span>RESOLUTION</span><input class="rc-target-resolution-input" id="rcTargetWidth" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display width in pixels"><span>×</span><input class="rc-target-resolution-input" id="rcTargetHeight" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display height in pixels"></span><span class="rc-target-group"><span>FOV</span><input class="rc-target-fov-input" id="rcTargetFov" type="number" min="1" max="179" step="1" value="103" inputmode="numeric" aria-label="Horizontal field of view in degrees" title="Horizontal field of view in degrees, matching the in-game FOV setting"></span>
+                <div class="rc-zero-readout" id="rcZeroReadout" hidden>
+                  <span>Zeroing</span>
+                  <button class="rc-zero-cycle" id="rcZeroCycleBtn" type="button" title="Cycle DMR/sniper zero distance">100 m</button>
+                </div>
+              </div>
+              <div class="rc-viewfoot">
+                <span class="rc-hint" id="rcHint">Shift + drag to pan · Shift + scroll to zoom</span>
+                <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText">Aim: center chest</span></span>
+              </div>
+            </div>
+            <div class="rc-legend" id="rcLegend"></div>
+            <div class="rc-note"></div>
+          </div>
+          <div class="rc-stats" id="rcStats"></div>
+          <div class="att-stats" id="attStats"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="footer"><span>Data: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.3.3.0 (30 JUN 2026) &nbsp;·&nbsp; Spread decay model: <a href="https://www.youtube.com/@Dr.SmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a> &nbsp;·&nbsp; Data Validation: <a href="https://www.reddit.com/user/SheetOnMyFace/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SheetOnMyFace</a></span><span>Discord: Raymdl</span></div>
+
+<script type="module" src="./ui/app.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0e1cac698a442b6abd238207d509270"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>

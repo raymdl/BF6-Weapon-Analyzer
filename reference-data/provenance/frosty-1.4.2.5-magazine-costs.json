@@ -1,0 +1,58 @@
+{
+  "sourceBuild": "1.4.2.5 (user supplied label)",
+  "scope": "Four magazine point costs only. Attachment cost fields take precedence over numeric selector-name suffixes. Magazine capacity and mechanics remain unchanged.",
+  "fields": [
+    {
+      "weaponId": "m417a2",
+      "magazineId": "25_rnd",
+      "previousPoints": 20,
+      "points": 15,
+      "sourcePath": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MAG_Extended1.xml",
+      "sha256": "c62c1d2784eb692151542e3ed32d958d3452dd6bc786fd678166cb9cf775e267",
+      "sourceField": "Class_a9b2eb87/Field_6ee865a5",
+      "rawValue": "0x0000000f",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_025Ext1_762N_W20"
+      ]
+    },
+    {
+      "weaponId": "rpk74m",
+      "magazineId": "95_rnd",
+      "previousPoints": 25,
+      "points": 50,
+      "sourcePath": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Extended3.xml",
+      "sha256": "230c8b3b7ae2f33999ec23ec1730e64688382008627f6811b33325e316266648",
+      "sourceField": "Class_a9b2eb87/Field_6ee865a5",
+      "rawValue": "0x00000032",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_095Ext3_RPK74M_W50"
+      ]
+    },
+    {
+      "weaponId": "rpkm",
+      "magazineId": "36_rnd",
+      "previousPoints": 15,
+      "points": 5,
+      "sourcePath": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact3.xml",
+      "sha256": "f59a418f80eb01663ec28d036bf0a27ca41cf219a41e543d8db67ac98c0cc9c2",
+      "sourceField": "Class_a9b2eb87/Field_6ee865a5",
+      "rawValue": "0x00000005",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_036Cpt3_RPKM_W05"
+      ]
+    },
+    {
+      "weaponId": "pp19",
+      "magazineId": "30_fast",
+      "previousPoints": 5,
+      "points": 10,
+      "sourcePath": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Fast.xml",
+      "sha256": "979edee10262dc95c065c649c156cb9f1306efff795232f24e9702df6204eb05",
+      "sourceField": "Class_a9b2eb87/Field_6ee865a5",
+      "rawValue": "0x0000000a",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10"
+      ]
+    }
+  ]
+}

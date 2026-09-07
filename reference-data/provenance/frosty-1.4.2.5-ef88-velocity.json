@@ -1,0 +1,145 @@
+{
+  "sourceBuild": "1.4.2.5",
+  "buildEvidence": "user-supplied export label",
+  "sourceRoot": "BF6 Datamining workspace; paths below are relative to its root",
+  "weaponId": "ef88",
+  "siteField": "bulletVel",
+  "previousValue": 670,
+  "value": 724,
+  "unit": "m/s",
+  "registry": {
+    "sourceXml": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml",
+    "name": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z",
+    "guid": "2df78004-cf5d-4116-b489-31fe1ff912af",
+    "raw": "724"
+  },
+  "wb": {
+    "weapon": "EF88",
+    "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml",
+    "path": "/File[@Guid='89ce0ae4-dae0-43bd-88e9-303747467f39']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_58d70acb/Struct_29ea5d2b/Field_0bf4f62b/Struct_739f3ac5",
+    "type": "Struct_739f3ac5",
+    "registryGuid": "ea138354-6005-497c-9722-d264930c3462",
+    "name": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed",
+    "rawScalars": {
+      "Field_3901db14": "0",
+      "Field_42fc0f5e": "0",
+      "Field_32a99b9c": "724"
+    },
+    "field": "Field_32a99b9c"
+  },
+  "barrelContext": {
+    "siteBarrelDef": "basic",
+    "evidence": {
+      "weapon": "EF88",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_BRL_BasicBarrel.xml",
+      "attachmentGuid": "e3d77fb6-038b-4a0e-aef7-12dbb5cf219e",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Barrel",
+        "guid": "9c0ba746-e08b-4fe8-8dad-ed7c63fdcc8c"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/AssaultRifle/EF88/U_PRG_EF88_BRL_BasicBarrel",
+        "guid": "8cc027fc-b68f-4912-aac7-ccad6de86e76"
+      },
+      "rawPointCost": "0x0000000a",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+          "guid": "63dffba0-2b73-44d4-b850-194131ddb59a",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Barrel",
+            "guid": "941cb5ad-f4f8-4e30-af26-2e618582343a"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+              "guid": "baba3ed9-a3f8-41de-b783-923dfbbb9699",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10",
+                    "guid": "f7b59868-d8c2-489e-927b-6f5bb375245f"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml",
+                      "guid": "17841af6-c296-4bcd-9cd1-5857d6bc4b5b",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+                      "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_4d248d91/member[@Index='11']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10",
+                        "guid": "504e3508-f31c-4f06-ad75-5c93bd312fc8"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10 [504e3508-f31c-4f06-ad75-5c93bd312fc8]",
+                      "rawBranch": "0x0000000c"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    },
+    "interpretation": "The explicit BasicBarrel selector joins to WB ADS animation/FOV effects and a GS ADS-time modifier. The site gives basic barrel velocity tier zero. No attachment velocity multiplier is baked into the promoted base value."
+  },
+  "limits": [
+    "This promotes only the base shot InitialSpeed.z; it does not validate all weapon mechanics, modifier formulas, or live server overrides.",
+    "Historical screenshot measurements remain provenance, not the current velocity source."
+  ],
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_BRL_BasicBarrel.xml": "e8f639d00ceb96fc8749c8805465f0470bb5553f89b19356e668fa7271d175a5",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml": "3370039bc8bc60af853f6266b81645e8f9245f0cbd395092b02aa4abd7e96aaa",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml": "655103f89ae0f7081d80016510154704f48640c0ea3ec9451b85183c03698964",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml": "777a128148c07b599dc7f11b1b8a392ba2f2e36597d825ccda3105aa14a19428",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml": "57266f610ed9c1e20c3113a2d8ac1b087d9aed2a92b22145e95ee4872659f6f2",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml": "d669dcc57fae81e49a67f9ea17bdd4b56704334eecefb9fa87698fe0475dd27e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10.xml": "f7112bd202d8ce9ed3de56146e23143e88cf8d0ce2b40b25ca48df8f36d95196",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml": "25aa059379e7d107717c3be859a5dfb419b70d2994d9c1a73caaf268d495f8ee",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10.xml": "a86b36f03216344eab3ac0134d4f43f174d90bfe72fcd8f7e4669105b77e26f9"
+  },
+  "inGameConfirmation": {
+    "source": "reference-data/provenance/ef88-basic-30-round.png",
+    "sha256": "b1d2e5eaf41416bf014eb710476057620569bf023791be10fd1bd4cdbf1317b7",
+    "context": "User identifies Basic barrel and 30-round magazine. Screenshot shows standard ammo selected, no muzzle, grip, right accessory or ergonomics; top optic is present.",
+    "screenshotValues": {
+      "muzzleVelocityMps": 724,
+      "magazine": 30,
+      "rpm": 675,
+      "reloadTimeSeconds": 2.4,
+      "adsTimeMs": 250,
+      "headshotMultiplier": 1.4,
+      "adsMovementMultiplier": 0.6,
+      "sprintRecoveryMs": 167,
+      "recoilAmountDegrees": 0.7,
+      "recoilVariationDegrees": 26.1,
+      "closeDamage": 26,
+      "longRangeDamage": 17
+    },
+    "userReportedOtherBarrels": {
+      "extendedDisplayedVelocityMps": 905,
+      "shortDisplayedVelocityMps": 579
+    },
+    "interpretation": "Base 724, Extended 724*1.25=905, Short 724*0.8=579.2 m/s. The current applyAttachments function floors its bulletVel result for display, producing the reported Short value 579. The source base velocity remains 724."
+  }
+}

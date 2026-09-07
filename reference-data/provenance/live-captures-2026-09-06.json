@@ -1,0 +1,149 @@
+{
+  "date": "2026-09-06",
+  "status": "Screenshots visually reviewed; displayed values only, not exact internal inputs or verified formulas",
+  "identityRule": "Use visible CUSTOMIZE weapon title; B36A4 Basic_20rnd filenames show AK4D",
+  "baselines": [
+    {
+      "weapon": "M433",
+      "source": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\M433 Basic_30rnd_StandardAmmo (2).png",
+      "sha256": "ab67695ae40ca076dea8e47647e01f5dfe0a331f5ca8ae2bc2f2039bc87eabc6",
+      "magazine": 30,
+      "hipfire": 40,
+      "precision": 20,
+      "control": 40,
+      "mobility": 52,
+      "displayedRecoilAmountDegrees": 0.8,
+      "displayedRecoilVariationDegrees": 41.4
+    },
+    {
+      "weapon": "AK4D",
+      "source": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\B36A4 Basic_20rnd_StandardAmmo (2).png",
+      "sha256": "176e00246b3799750d7be24ea90bee24e2dcd40951eb7ccd4c0ccfa635db4a4d",
+      "magazine": 20,
+      "hipfire": 40,
+      "precision": 25,
+      "control": 34,
+      "mobility": 52,
+      "displayedRecoilAmountDegrees": 0.9,
+      "displayedRecoilVariationDegrees": 20
+    },
+    {
+      "weapon": "B36A4",
+      "source": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\B36A4 Basic_30rnd_StandardAmmo (2).png",
+      "sha256": "bbcc55ce3784d94adb2c45ca94dc2d69c50dc9be38c1aeaa946004ebf868914d",
+      "magazine": 30,
+      "hipfire": 40,
+      "precision": 27,
+      "control": 42,
+      "mobility": 52,
+      "displayedRecoilAmountDegrees": 0.7,
+      "displayedRecoilVariationDegrees": 28
+    },
+    {
+      "weapon": "SOR-300SC",
+      "source": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\SOR-300SC Basic_30rnd_StandardAmmo (2).png",
+      "sha256": "cd540bff3f4424eb886f3467b331945c32967294afdeaf20d2b0143d26cead51",
+      "magazine": 30,
+      "hipfire": 47,
+      "precision": 40,
+      "control": 40,
+      "mobility": 60,
+      "displayedRecoilAmountDegrees": 0.7,
+      "displayedRecoilVariationDegrees": 15.8
+    }
+  ],
+  "db12": {
+    "rightRail": {
+      "status": "User confirms only three usual flashlight options; screenshot shows None plus three LIGHT entries",
+      "pointCostsInScreenOrder": [
+        5,
+        15,
+        10
+      ],
+      "fnElityAvailable": false,
+      "anPeq16bAvailable": false
+    },
+    "topRail": {
+      "labels": [
+        "Violet Laser",
+        "Red Laser",
+        "Green Laser",
+        "Green Laser",
+        "Blue Laser",
+        "Blue Laser"
+      ],
+      "pointCosts": [
+        10,
+        10,
+        10,
+        20,
+        20,
+        30
+      ]
+    },
+    "displayedStats": {
+      "damage": 89,
+      "rateOfFire": 150,
+      "magazine": 16,
+      "hipfire": 39,
+      "precision": 6,
+      "control": 9,
+      "mobility": 60
+    },
+    "screenshots": [
+      {
+        "path": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\DB-12.png",
+        "sha256": "ae6a399aaddc7f8891947f106d0cb072ec9a303779d274341478e4db8be40b5a"
+      },
+      {
+        "path": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\DB-12 (Right Accessory).png",
+        "sha256": "b027b7c3a51c776c976919c11c9df78d6df443ecf4d1dd6e3e033c3d4c21d87f"
+      },
+      {
+        "path": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\DB-12 (Top Accessory).png",
+        "sha256": "f855019c7f26f9610fef4ca5e37cb9cc92b87c2cd4dec01fc015196673b5c1fe"
+      }
+    ]
+  },
+  "ergonomics": {
+    "status": "User reconfirmed all previously queried options unavailable; availability request closed",
+    "options": {
+      "AK4D": [
+        "Improved Mag Catch"
+      ],
+      "SOR-300SC": [
+        "Improved Mag Catch"
+      ],
+      "M60": [
+        "Improved Mag Catch"
+      ],
+      "L110": [
+        "Aftermarket Buffer"
+      ],
+      "M1014": [
+        "Aftermarket Buffer"
+      ],
+      "ES 5.7": [
+        "Speed Holster"
+      ],
+      "M44": [
+        "Match Trigger"
+      ],
+      "GRT-CPS": [
+        "Burst Training"
+      ]
+    }
+  },
+  "videos": [
+    {
+      "path": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\DB-12.mp4",
+      "sha256": "37906c67d3e0a3ff992e790a499cc7180d9909f0d4fa9da84ca6d797d02d4ea9",
+      "status": "Readable; contact sheet inspected; frame-level shot timing not yet measured"
+    },
+    {
+      "path": "C:\\Users\\royal\\Videos\\NVIDIA\\Battlefield 6\\M87A1.mp4",
+      "sha256": "e045b1842a898b93e2ac6697a6fedeed07d591211e0104879e963fab99bf3c5c",
+      "status": "Readable; contact sheet inspected; frame-level shot timing not yet measured"
+    }
+  ]
+}

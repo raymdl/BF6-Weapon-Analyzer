@@ -1,0 +1,26 @@
+{
+  "sourceBuild": "1.4.2.5 (user supplied label)",
+  "scope": "Two weapon-specific FMJ point costs only. No ammo mechanics changed.",
+  "fields": [
+    {
+      "weaponId": "m44",
+      "ammoId": "standard",
+      "previousPoints": 0,
+      "points": 5,
+      "sourcePath": "Common/Hardware/weapons/Secondary/RagingHunter/Attachment_RagingHunter_AMO_FMJ.xml",
+      "sha256": "4e0ddc0a20890ee886628cc5b7048f3cd73ae59582998e5252ae7bb12162643b",
+      "sourceField": "Class_a9b2eb87/Field_6ee865a5",
+      "rawValue": "0x00000005"
+    },
+    {
+      "weaponId": "m357trait",
+      "ammoId": "standard",
+      "previousPoints": 0,
+      "points": 5,
+      "sourcePath": "Common/Hardware/weapons/Secondary/TRR8/Attachment_TRR8_AMO_FMJ.xml",
+      "sha256": "09037210b7fae1de06fe606d027e74bddcd1d21c1ab5380667e34de86e8ae2fd",
+      "sourceField": "Class_a9b2eb87/Field_6ee865a5",
+      "rawValue": "0x00000005"
+    }
+  ]
+}

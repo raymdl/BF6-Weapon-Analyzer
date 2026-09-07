@@ -1,0 +1,63 @@
+{
+  "source": "Common/Hardware/Weapons/Shotgun/KSG/MD_KSG.xml",
+  "sha256": "4de5d1e883cf32887002c886830342d2fdbc4568608c9264b206cb55172ac986",
+  "bytes": 1606925,
+  "rootObjects": 1091,
+  "repairedStructInstances": 207,
+  "repairedFieldCounts": {
+    "9": 207
+  },
+  "duplicateGuids": [
+    "00000001-0000-0000-0000-000000000000",
+    "00000002-0000-0000-0000-000000000000",
+    "00000003-0000-0000-0000-000000000000",
+    "00000004-0000-0000-0000-000000000000",
+    "00000005-0000-0000-0000-000000000000",
+    "00000006-0000-0000-0000-000000000000",
+    "00000007-0000-0000-0000-000000000000",
+    "00000008-0000-0000-0000-000000000000",
+    "00000009-0000-0000-0000-000000000000",
+    "0000000b-0000-0000-0000-000000000000"
+  ],
+  "unresolvedLocalReferences": [],
+  "arrayCountMismatches": [],
+  "interpretation": "Customization, animation and rendering dependencies; successful export does not establish weapon identity, multiplayer availability, or recoil/spread equations.",
+  "repairHandoffTask": "01a077a9-5820-7e73-a545-8401e6547c6c",
+  "status": "superseded-original-export",
+  "correctedExport": {
+    "sha256": "5a6fdabf2be85b0a26a2f950a5b9e47264dc27f145a86455621d8fee2654d8f4",
+    "objects": 1091,
+    "rootGuid": "fc004ab0-f359-4ef9-b7c6-c2ae6696f702",
+    "duplicateGuidGroups": 0,
+    "ambiguousOrMissingLocalRefs": 0,
+    "badArrayCounts": 0,
+    "repairedFieldCounts": {
+      "9": 207
+    },
+    "allNonIdentityContentUnchanged": true,
+    "promotedTo": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\KSG\\MD_KSG.xml",
+    "previousExportRetained": "outputs\\frosty\\live-review-2026-09-06\\MD_KSG-before-guid-fix.xml"
+  },
+  "readerFix": {
+    "cause": "Exported GUID was read from the class header instead of its 16-byte prefix after the recorded-class-origin repair.",
+    "equivalentSourceChange": "Position = classPos - 16; immediately before instanceGuid = ReadGuid() inside if (inst.IsExported).",
+    "installedCoreSha256": "d3ae3498dfa12af9bd885f2404ad9a12b091f67e2a5391b0c572ac2a73d43687",
+    "isolatedCoreSha256": "d3ae3498dfa12af9bd885f2404ad9a12b091f67e2a5391b0c572ac2a73d43687",
+    "installedCoreChanged": true,
+    "gsKsgControl": "Corrected GS_KSG XML is byte-identical to the original retained export.",
+    "runner": "outputs\\frosty\\live-review-2026-09-06\\guid-candidate\\FrostyCmd.exe",
+    "buildScript": "outputs\\frosty\\live-review-2026-09-06\\build-guid-candidate.ps1",
+    "mainInstallation": {
+      "installed": true,
+      "verifiedUtc": "2026-09-06T18:37:20.510173+00:00",
+      "readerSha256": "d3ae3498dfa12af9bd885f2404ad9a12b091f67e2a5391b0c572ac2a73d43687",
+      "bf6SdkSha256": "475d13935b5dad7d9f8ed29e51b12fc38646a62f9dff6cfea0b42f3e37b3d935",
+      "sourceChange": "FrostySdk/IO/EbxReaderRiff.cs: Position = classPos - 16 before ReadGuid",
+      "readerBackup": "FrostyEditor/bin/Release/Final/FrostySdk.backup-before-guid-fix-20260906.dll",
+      "sourceBackup": "FrostySdk/IO/EbxReaderRiff.backup-before-guid-fix-20260906.cs.txt",
+      "mainMdKsgExportSha256": "5a6fdabf2be85b0a26a2f950a5b9e47264dc27f145a86455621d8fee2654d8f4",
+      "mainExportMatchesVerifiedCandidate": true
+    },
+    "previousInstalledCoreSha256": "eaa8ee5c4f73190d915083d0779c3e8a48067a903a57313b81b5b3d1c878cfb0"
+  }
+}

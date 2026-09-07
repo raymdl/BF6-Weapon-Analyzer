@@ -1,0 +1,926 @@
+{
+  "scope": "Exported kill-switch defaults, not evaluated runtime availability. RagingHunter Match Trigger is True; the two quickdraw branches and recorded DB-12 rail branches are False.",
+  "rows": [
+    {
+      "weapon": "RagingHunter",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_MatchTrigger.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml",
+          "guid": "cdc63f6b-3da1-40bc-b150-a2faf6f9c504",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "2909be18-f3de-4f54-b0df-6d2a1ca1314d",
+              "name": "U_PRG_RagingHunter_ERG_MatchTrigger",
+              "defaultRaw": "True",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "RagingHunter",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_PistolQuickdraw.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml",
+          "guid": "e26df53c-38a9-4848-aac5-c40a2f524ed1",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+              "guid": "172a6107-fa50-45e2-9345-80c30dec33e7",
+              "name": "U_PRG_RagingHunter_ERG_PistolQuickdraw",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "RagingHunter",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_RevolverQuickdraw.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml",
+          "guid": "3001bd79-017f-4576-afa1-7dcd8fe49da1",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+              "guid": "0d39c78d-e5d3-4f2a-8329-2a3375f06889",
+              "name": "U_PRG_RagingHunter_ERG_RevolverQuickdraw",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_ANPEQ16B.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "91bc4cc6-f820-4521-981f-977b0e042cde",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "44055f5b-ecf6-4a16-845c-fab338b684da",
+              "name": "U_PRG_DP12_RGT_ANPEQ16B",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_FNElity.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "3865fb0b-7a3e-4ecf-8f7c-a60960e163dc",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "3bf5bc0a-6f63-4dd8-822f-1e67ca9f683c",
+              "name": "U_PRG_DP12_RGT_FNElity",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_ModuleMk3.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "867ae764-90e6-4966-91b8-602e795899c1",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S2_Weapons.xml",
+              "guid": "83c7cd11-0b45-403d-8e63-124c25ddd567",
+              "name": "U_PRG_DP12_RGT_ModuleMk3",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_RightRail.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "8e1f5599-529f-4a90-bdfc-94728ea0dccc",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "e09dd1fe-7c4a-4a72-b3d2-81463b5ea9f3",
+              "name": "U_PRG_DP12_RGT_RightRail",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_SF300.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "4e7e2d28-7fdf-4339-8053-61fff886bc5f",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "074540be-eb49-4f07-927b-383c21462919",
+              "name": "U_PRG_DP12_RGT_SF300",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_TLMissionLight.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "e4d51cf9-1993-4590-a1a7-db32be2b9198",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "da0da982-2460-414d-a139-90b76a36450f",
+              "name": "U_PRG_DP12_RGT_TLMissionLight",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_ANPEQ16B.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "ae21d470-3bb7-4861-87d5-a023270a6a9a",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S2_Weapons.xml",
+              "guid": "1ce96f18-abc5-4a0b-88c1-d3b5b8c29cbb",
+              "name": "U_PRG_DP12_TOP_ANPEQ16B",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_DBAL-A3.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "9d396b94-8058-4c20-b1a6-81c3e1662109",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "2d716b51-0f6f-4f6e-9f98-adf739611ed0",
+              "name": "U_PRG_DP12_TOP_DBALA3",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_LA-23.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "0386c389-75dd-4f06-9255-9c9d22fcf1ff",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "268aa581-ba02-464e-aa29-e7567c17fef9",
+              "name": "U_PRG_DP12_TOP_LA23PEQ",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_MeproSting.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "7fa3677a-7917-42eb-9207-7854d8e55671",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "4ed6c128-f5e6-44ae-a86a-a57cb4467188",
+              "name": "U_PRG_DP12_TOP_MeproSting",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_Perst4.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "9f167c0e-c0ce-4259-a90e-517f93597b62",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "7182dc63-c235-4771-88e2-476e059e7260",
+              "name": "U_PRG_DP12_TOP_Perst4",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_RaidXe.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "3525d739-da6c-4b35-8c86-bf99d2680bc0",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "119fe409-3be7-47a3-a1bf-48de08b3a46f",
+              "name": "U_PRG_DP12_TOP_RaidXe",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_TopRail.xml",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+          "guid": "85b553de-e061-45ad-996b-4de9b8728fe2",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "a9725c41-76f3-4083-ab0b-9d00f6c883b3",
+              "name": "U_PRG_DP12_TOP_TopRail",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S2_Weapons.xml": "96e94d89ff52cc088127ef9adfcbdef44387bc2d9e87545d49fede630769725e",
+    "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml": "13988d568111a8b7fa60891e9fbe374e8e6a68a9bf3b579af0d5a80e577b9d40",
+    "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml": "16001d5a00939d428e027591d695aa82e1d2e3b28104cc7da59b54f2d7bd07ff",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_MatchTrigger.xml": "a5849de8801c5a5eac3b6bcadfc930aa77a5f2c41ef4ae277ba0e72b356ddaa2",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_PistolQuickdraw.xml": "9260ee7cebd153b6c39ad515adbb6d571e5a7d1d8c205f7aea9d9c751edb711c",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_RevolverQuickdraw.xml": "41b0154b818ac634060ec0ddbe971fcff4e925305c906145ce3f32409779e597",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml": "e7796d05fa731e4aaf0575a50954cf763cb84d710229034105c7380be1f3ebd6",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_ANPEQ16B.xml": "1a3c4f1b7922f1ff984a02ff3b22bb329b443c5087ddee32a95d5d7d88c61b3c",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_FNElity.xml": "b5feafa76e610b9927d9a71e41a8a0b05bd90b61fe6951c9623d523580ead94c",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_ModuleMk3.xml": "0857e2d47076d4642a2a3621c53228235900b373e10f0196f76af6eb223005c3",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_RightRail.xml": "a09df1728e385249ca8b0b6124393ddf6f7df37133c869c61362e4b382763681",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_SF300.xml": "1ad2a491a2cb905cd42ee1068d6c95e14614dd4ff705e41d81eb46b300143074",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_TLMissionLight.xml": "5b404ad1e70055d70e14d163f8f26780cab63917fcd7a4d0cebc32043e31ea5c",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_ANPEQ16B.xml": "27d3dc463d254ace38cec855258d258752f311859e4b219734c1c336384232af",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_DBAL-A3.xml": "8ea2ba7ed0ae41d482fffe16a75799445a96205fd5c0c4564a57dd9ee3d27f29",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_LA-23.xml": "49413c4dad3e0aed8a4a91512c62e6bf0a05c5a9ef289e8e75d96f6842244d23",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_MeproSting.xml": "8f364ba2f33d98748133c8506789cd08817341ae8438d3c83c77047dc6a5fb8e",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_Perst4.xml": "ac8cab7df7759dbeb7791e267ad5031550c61a1b49c408094a19762eb29704b9",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_RaidXe.xml": "3d67539a3f0590efb3bdbb7d994f51d961dacb007b7568ab8aab8cc3919fb825",
+    "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_TopRail.xml": "ee3c2c68c675ba4a4d64a5423d8905aa690f506a2d38df1aebc65b99adbc72b1",
+    "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5",
+    "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml": "317e9454c102a8a8d73460fc2de9e15aec51c2e6b6f91b88e4e7af3043078355",
+    "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml": "3670f0b945fb1b97563e2cc4cc7e5a8f14e3db97985870ac55aaafe26bffcf1b",
+    "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.xml": "dbbf760418facbe6a3161766ad3122a6c5baca1090e738c9d89231b9a8e60b19",
+    "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRK.xml": "36076f9d470d1cfea357c47182fdcee50086bd5acc523f6e5ba1177e3d7f73a1",
+    "Common/Hardware/Weapons/BoltAction/SV98M/SV98M_Ability.xml": "a71349e6bc27963b977fca03426af063c07e90935afc904a25bd7d31f73086b7",
+    "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRS.xml": "b5aa2ddf295de33e2e6a15a8a1b5aef79570ed1021eab70f08b857f81f4eb59b",
+    "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_BRL_TreatedBarrel.xml": "41573ef72949ad6256ece103a5ff69225af21adce628b7d651e5d422159e7c64",
+    "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.xml": "5ba35855c62f89dbf98fbafd4d05d91aa98db4ed9017d18a49abc8f1d6d24520",
+    "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_BTM_ZenitcoRK2.xml": "28667864c60a228630e3e7348530128fad8ea89f985821e927b8fca3d340701c",
+    "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_AMO_SubsonicFrangible.xml": "6cf97526062f195418de6c03d175498f52fcf4eb6fe999a8dcc6b5543cc89d7c",
+    "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_Ability.xml": "a2d9ebd33dc0371e0c706bc68eeb3b54809fc53875641be0c1f3f602b6e613e0",
+    "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_AMO_SubsonicFrangible.xml": "f6adc35066554a2ff24c4d2ea389017394bc90548068618b017c248183df4c11",
+    "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_Ability.xml": "58de729b3f0175b81729517f3276356f6bc9c2579bf92efec17b6256a962dec5",
+    "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_AMO_SubsonicFrangible.xml": "3421d9bfabb43a295aeaacb794832cba2eb10ccc3e4d3a1de78432b08c2a4d08",
+    "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_Ability.xml": "bf62e290d576c8a2965deb34d1f0c31de1e9735680da9bee1dd14d27acd0a2e3",
+    "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_ERG_BurstFireEnable.xml": "a7ffa81001fbf7ce86fd6ff46d0ebbf0c373623ff921542273d38320e130193b",
+    "Common/Hardware/Weapons/DMR/MSBSGROTCPS/MSBSGROTCPS_Ability.xml": "49e42bd25fe4da48e7a31639275626881b0feeb87525b597ebcbca0fa6c25156",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_ZenitcoRK2.xml": "8165ea64492e3bbbf78329b8e0addd24b02bc733d110657cdaf10cb49249b2a8",
+    "Common/Hardware/Weapons/MG/M27IAR/M27IAR_Ability.xml": "77a4a79bde2a9c5b2b0ce5be73a1e35ba86a6d9b1908a16a11eac87eba40557b",
+    "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_ERG_RecoilBuffer.xml": "88190b5090d93be8222a1c36b93c8614202cfbbbdddd7f39fffdcd7799f8ff89",
+    "Common/Hardware/Weapons/MG/Minimi/Minimi_Ability.xml": "8d3d50917f4b60ac75035f2db0fd3c88da43ab4641ea690309cacaab77b17fc4",
+    "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_AMO_SubsonicFrangible.xml": "3cdd05f0755f73147359f00336d19a9c3c05e64310b4f9ca86f24fb113fa151c",
+    "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_Ability.xml": "e5f1e2ed8f95d9560c5b2198b26cafae5ae301047644a9fbb8aa6d9204514bcf",
+    "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_ERG_PistolQuickdraw.xml": "38cae430617ddd860a48871f1494b96a68d8bd8c005204323da439c2d3ad96d6",
+    "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_AMO_SubsonicFrangible.xml": "401cb4c04c4994b2d0cfc5457344162b374a137d6db3f963fe3fc2494d18f54a",
+    "Common/Hardware/Weapons/Secondary/G22/G22_Ability.xml": "487612294655e50f0f006fbdf5b99ba92e8d9630daab1897f66f6343d616e237",
+    "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BRL_ExtendedBarrel.xml": "def31d81f694cb571064f3441f77fd0edabeac42282986c05bbfb4eae72c78ec",
+    "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BRL_ShortBarrel.xml": "baa9e195c50d72ba6e288e0c12d3660b0aa0f98102089413a595966df2dc5ad8",
+    "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_AMO_SubsonicFrangible.xml": "4d7eb67e65eaa9510066dfadca646923511d60ae4d25131e7f5dee089750c7f0",
+    "Common/Hardware/Weapons/Secondary/M18/M18_Ability.xml": "6d2c1c438e2aef89243243fbc01fb71eaf43880cdbc3650a8920b4846247a00c",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_BTM_BottomRail.xml": "0b19045e9137f6c212537dc0b0dcc1a5f95d017b1e22b2f12c2323e942195e14",
+    "Common/Hardware/Weapons/Shotgun/KSG/Attachment_KSG_RGT_SF300.xml": "f29747e86f3cf618c52e2ef5890f197b6da9e8de2f1177ba9def5437dafa07e0",
+    "Common/Hardware/Weapons/Shotgun/KSG/KSG_Ability.xml": "486824fde6f9aa8147ea18142a12415099f4eeca10ef0085648edd1ea5cb47ef",
+    "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_ERG_RecoilBuffer.xml": "286de02866d6b81ac9a4eab8e3d481756f6136ed457e726f09d7e2a1f40c6492",
+    "Common/Hardware/Weapons/Shotgun/M1014/M1014_Ability.xml": "826dd15eb87ca89334d3d3a315a1e8c1a732fd867144a8137b4d4d8f9aec4e7a",
+    "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_AMO_SubsonicFrangible.xml": "2911341432c82dc3d5fb82ae57bb0612054c4421518c5fc9ad87388ae29903c4",
+    "Common/Hardware/Weapons/SMG/APC10/APC10_Ability.xml": "b3c1f9f8af3bfa9c81fa20f261d2884c5e67dce51f32aca8278a229a822225a9",
+    "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_AMO_SubsonicFrangible.xml": "bfddaa4cec10d7516a3fa14bb5f4e492bf95848e248729387523bc113ac524bd",
+    "Common/Hardware/Weapons/SMG/APDW/APDW_Ability.xml": "e98977c25b02d8b40e7d9904befa2cbaeb35dbfddcd98a8ffe0f73d7965f34b8",
+    "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_AMO_SubsonicFrangible.xml": "dac5612a76086c9965377e3e4dd60b9b4357b4683d3a086cd866d9aed55ce161",
+    "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_Ability.xml": "be3a8c098eee3877f527c1839d64c4bdbe7c02dff9604d2ee8f6322fe0d58885",
+    "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_AMO_SubsonicFrangible.xml": "1603af292bb017a019f8ea1dffece546b2527e5f0b985578c16e3f0693280faa",
+    "Common/Hardware/Weapons/SMG/MPX/MPX_Ability.xml": "15c2114dea54ba089a3b499010a9002b6250ced60d0ca818b12913d670eecfc4",
+    "Common/Hardware/Weapons/SMG/P90/Attachment_P90_AMO_SubsonicFrangible.xml": "7a7a7e088c40e637d91adc3210936dd8d4840dad7956b60af02a18ebfeb3f89d",
+    "Common/Hardware/Weapons/SMG/P90/P90_Ability.xml": "547f1e6e9fcce763824e4cb7781312e7cb41c71597ae64e09bce2067d4c3aff4",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_SubsonicFrangible.xml": "77926caace141a88c87e8793a133e97d9abdc08b8b39bf61d43b4ef7f463e674",
+    "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.xml": "3d0caab96a335e23513fad0f2706d16fe3c85e115eb60db48c2060daa81aa1ed",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact1.xml": "6f4681a5eaac75f27abc250e33847baedfdc7721a8595e57d203fb28107be4ac",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_RSMicroTactical.xml": "772b1b353550ba5afc791dd90dbe9b8bd502e3bceba5b3e6580d96203d063b38",
+    "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_AMO_SubsonicFrangible.xml": "886230f846215c80c266b35497e5c3db013d2783aae72fd6140a6d420888a1f7",
+    "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_Ability.xml": "d346b12e8aa077b8d8ae84d52b3c8636525cdfb32e2020947cb05f48b2447400",
+    "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_AMO_SubsonicFrangible.xml": "7117b46bc5fbe3df5cf46f201a84b32408b2260b2c32b74d5c3c1504a9dc94c9",
+    "Common/Hardware/Weapons/SMG/UMP40/UMP40_Ability.xml": "a879891fb872a087ac395e7a1255d8b9d2ec7bb1801e191ef532e58686ab085e",
+    "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_AMO_SubsonicFrangible.xml": "bdf9ef0aefb36056d6c85af1188a9d1a9902e8b25b322391ca03c3f7229e62cc",
+    "Common/Hardware/Weapons/SMG/Vector/Vector_Ability.xml": "a2278f9acd03ed76269742f42aa1845f0794e6b79cdbd4e6ef98a650282bcd32"
+  },
+  "graphSummary": {
+    "attachmentCount": 3326,
+    "branchDefaultCounts": {
+      "False": 3283,
+      "True": 32
+    },
+    "graphSha256": "559625dfb86bd32085811476f922fe39b937a6ec4196213f857e1790f71acde3",
+    "selectionPathsUnchanged": true
+  },
+  "trueDefaultBranches": [
+    {
+      "weapon": "DesertTechHTI",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml",
+      "abilityXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+      "branchGuid": "73307e1a-ed23-4eb2-9441-7e01528fdc59",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.xml",
+          "guid": "3c8374e2-f6ce-44c9-b324-5035fb8305fe",
+          "name": "U_PRG_DesertTechHTI_MZL_M50BigBoreSuppressor",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "SV98M",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRK.xml",
+      "abilityXml": "Common/Hardware/Weapons/BoltAction/SV98M/SV98M_Ability.xml",
+      "branchGuid": "18d5e4c9-94ca-4c89-b6dc-7eb1aa246713",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.xml",
+          "guid": "6206c211-1d3a-4151-8740-08d5b867a2f5",
+          "name": "U_PRG_SV98M_MZL_MagnusRRK",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "SV98M",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRS.xml",
+      "abilityXml": "Common/Hardware/Weapons/BoltAction/SV98M/SV98M_Ability.xml",
+      "branchGuid": "77c1f617-b77d-469e-88f5-2b2d8ffa620f",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.xml",
+          "guid": "00467b3d-3985-4fb3-a0c7-bb46ec50f743",
+          "name": "U_PRG_SV98M_MZL_MagnusRRS",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "BREN3",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_BRL_TreatedBarrel.xml",
+      "abilityXml": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.xml",
+      "branchGuid": "9e117f9c-ac2d-4e46-bdd5-8fa9f0f3863b",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.xml",
+          "guid": "e632e6ce-7f61-4d64-a098-02c66c29e46b",
+          "name": "U_PRG_BREN3_BRL_TreatedBarrel",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "BREN3",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_BTM_ZenitcoRK2.xml",
+      "abilityXml": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.xml",
+      "branchGuid": "b6fcfd96-7842-43a7-8900-90ecaee80a09",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.xml",
+          "guid": "f276fc30-ac8c-4374-9825-5c0e53be8c28",
+          "name": "U_PRG_BREN3_BTM_ZenitcoRK2",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "HK417A2",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_Ability.xml",
+      "branchGuid": "cc8a4562-d2cd-40ea-a4e2-f83e2012fd6b",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "7f897061-6c99-4db2-9694-b3a55c2d295c",
+          "name": "U_PRG_HK417A2_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "SCARSC",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_Ability.xml",
+      "branchGuid": "34e52c23-e51a-466d-b0a7-f02cd13f20b0",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "2477c20e-9312-46f8-a4b4-d7962506b8c3",
+          "name": "U_PRG_SCARSC_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "SIG553R",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_Ability.xml",
+      "branchGuid": "e1cfe129-d0f8-4897-a794-38a71f8b78cd",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "4ff901ca-ba2d-4d68-bb8f-2511acb41c88",
+          "name": "U_PRG_SIG553R_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "MSBSGROTCPS",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_ERG_BurstFireEnable.xml",
+      "abilityXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/MSBSGROTCPS_Ability.xml",
+      "branchGuid": "4a96fba7-75c2-4967-a3d2-92a002c48325",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "4484d1dc-48c2-4677-8495-a54c58db9cd6",
+          "name": "U_PRG_MSBSGROTCPS_ERG_BurstFireEnable",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "M27IAR",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_ZenitcoRK2.xml",
+      "abilityXml": "Common/Hardware/Weapons/MG/M27IAR/M27IAR_Ability.xml",
+      "branchGuid": "7e5a6822-4c72-4295-b9ae-78cf7c1d0ec5",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.xml",
+          "guid": "550ea6ec-607b-4b5c-adbe-93ed45ce14fe",
+          "name": "U_PRG_M27IAR_BTM_ZenitcoRK2",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "Minimi",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_ERG_RecoilBuffer.xml",
+      "abilityXml": "Common/Hardware/Weapons/MG/Minimi/Minimi_Ability.xml",
+      "branchGuid": "85414373-3538-4389-a08d-e7ad79fbcb76",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "0c9b61a3-2b56-4ac7-85fd-8e7389ff8f2b",
+          "name": "U_PRG_Minimi_ERG_RecoilBuffer",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "FiveSeven",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_Ability.xml",
+      "branchGuid": "5fed06a8-7c7a-4fb2-88b7-a4c519bbfb0f",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "85f039ef-723c-4730-be7f-529d11ca8f41",
+          "name": "U_PRG_FiveSeven_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "FiveSeven",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_ERG_PistolQuickdraw.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_Ability.xml",
+      "branchGuid": "9fad4892-bc98-4af3-b226-991f668fd91f",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "9d1c7ba7-89c7-4bcc-be20-8ed4c8b67bdf",
+          "name": "U_PRG_FiveSeven_ERG_PistolQuickdraw",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "G22",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/G22/G22_Ability.xml",
+      "branchGuid": "9f598523-da88-4e84-91ee-0c3d05957b4b",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "c7695953-5b94-4f8d-a5d7-e3b151a4c5c8",
+          "name": "U_PRG_G22_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "G22",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BRL_ExtendedBarrel.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/G22/G22_Ability.xml",
+      "branchGuid": "96d4bbda-32e7-421f-baae-a9b0293bc0a5",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+          "guid": "abd8b0f0-cbb6-4667-b022-fb482f1d96e9",
+          "name": "U_PRG_G22_BRL_ExtendedBarrel",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "G22",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BRL_ShortBarrel.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/G22/G22_Ability.xml",
+      "branchGuid": "8247ef9f-3b4b-47ea-b56a-cc8122054d53",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+          "guid": "673373f4-8a2d-4491-bfba-128562766136",
+          "name": "U_PRG_G22_BRL_ShortBarrel",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "M18",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/M18/M18_Ability.xml",
+      "branchGuid": "76c54ff5-2e09-4cad-b44b-44d4473415d9",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "14ee4029-8c44-48cd-8b65-b081f3fe6022",
+          "name": "U_PRG_M18_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "RagingHunter",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_BTM_BottomRail.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml",
+      "branchGuid": "23b02fd5-8987-45e4-a3b1-5f8469593872",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+          "guid": "08a60724-6986-4c93-992b-19e7fa490cd4",
+          "name": "U_PRG_RagingHunter_BTM_BottomRail",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "RagingHunter",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_MatchTrigger.xml",
+      "abilityXml": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml",
+      "branchGuid": "cdc63f6b-3da1-40bc-b150-a2faf6f9c504",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+          "guid": "2909be18-f3de-4f54-b0df-6d2a1ca1314d",
+          "name": "U_PRG_RagingHunter_ERG_MatchTrigger",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "KSG",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/KSG/Attachment_KSG_RGT_SF300.xml",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/KSG/KSG_Ability.xml",
+      "branchGuid": "32f39ba0-903f-450c-a921-cdc04207a538",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+          "guid": "27fa2e07-ab5d-4560-86c3-ac7b453d2d15",
+          "name": "U_PRG_KSG_RGT_SF300",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "M1014",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_ERG_RecoilBuffer.xml",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/M1014/M1014_Ability.xml",
+      "branchGuid": "1be5e43c-1f61-41d3-b22d-85d1844684b2",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "9c78e218-04e9-4994-9e30-362c5f00aa89",
+          "name": "U_PRG_M1014_ERG_RecoilBuffer",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "APC10",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/APC10/APC10_Ability.xml",
+      "branchGuid": "c817c4b8-4fcf-4cfa-80ab-0693eebd08a7",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "d880aeb9-652c-4970-b8ce-cd79299f7d25",
+          "name": "U_PRG_APC10_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "APDW",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/APDW/APDW_Ability.xml",
+      "branchGuid": "12c363ee-e622-439e-b05c-9989171930fa",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "1933210f-b4b9-4a58-85e6-05ab32684695",
+          "name": "U_PRG_APDW_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "MP5MLI",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_Ability.xml",
+      "branchGuid": "15d093b4-97a9-41e4-8566-85ea9edfa30d",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "fc32aa6a-5529-4c82-8f52-3607b7fd4e47",
+          "name": "U_PRG_MP5MLI_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "MPX",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/MPX/MPX_Ability.xml",
+      "branchGuid": "2d0b0130-e227-4b44-aa0a-fa16c067da7e",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "37477ebc-9e7e-4327-a232-dd7c1389d25a",
+          "name": "U_PRG_MPX_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "P90",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/P90/P90_Ability.xml",
+      "branchGuid": "c809a6ff-ebf0-412a-b53b-da32cff3243a",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "51042b96-9f8b-4234-a251-a10e599e31db",
+          "name": "U_PRG_P90_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "PP19",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.xml",
+      "branchGuid": "ec6cc1a5-79b5-466f-9657-60cc15d0729f",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "71ce0ef2-959b-4aae-b09e-befc165ae346",
+          "name": "U_PRG_PP19_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "PP19",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact1.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.xml",
+      "branchGuid": "b1917526-5086-4f7b-9693-3387a54825f4",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "08bd9710-883a-4b66-8ba8-eaa9865127fb",
+          "name": "U_PRG_PP19_MAG_Compact1",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "PP19",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_RSMicroTactical.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.xml",
+      "branchGuid": "b1ad616e-6c52-49c9-9b61-35c07c5e2ba5",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "156dd62e-d31c-425e-b5c8-d6ed2433a2a9",
+          "name": "U_PRG_PP19_MZL_RSMicroTactical",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "ScorpionEvo3",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_Ability.xml",
+      "branchGuid": "5c09fe92-de78-4e50-8031-4f1408aa7d7c",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "ff392bd9-8aa0-4b59-a427-7347ffa71580",
+          "name": "U_PRG_ScorpionEvo3_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "UMP40",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/UMP40/UMP40_Ability.xml",
+      "branchGuid": "67170b16-5ecb-4cc8-afba-a381d46ffa6f",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "56746d81-e69b-4893-b628-6739c2c9dbc2",
+          "name": "U_PRG_UMP40_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    },
+    {
+      "weapon": "Vector",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_AMO_SubsonicFrangible.xml",
+      "abilityXml": "Common/Hardware/Weapons/SMG/Vector/Vector_Ability.xml",
+      "branchGuid": "a31efa56-bc13-4846-b76a-ce92eb95216e",
+      "killswitch": {
+        "localFallbackRaw": "False",
+        "registry": {
+          "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+          "guid": "a3ecaaf6-b685-4c5e-98a8-fa0430b7e7aa",
+          "name": "U_PRG_Vector_AMO_SubsonicFrangible",
+          "defaultRaw": "True",
+          "scope": "exported default only; live overrides and activation logic are not evaluated"
+        }
+      }
+    }
+  ]
+}

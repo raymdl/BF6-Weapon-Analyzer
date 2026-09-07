@@ -1,0 +1,118 @@
+{
+  "weaponId": "brod3",
+  "sourceBuild": "1.4.2.5 (user supplied label)",
+  "scope": "Base spread configuration only. Current Sym values corroborate the raw-field candidates. No runtime recovery formula is inferred from these coefficients.",
+  "fields": [
+    {
+      "siteField": "recoilIncAds",
+      "siteValue": 0.228,
+      "rawValue": "0.304",
+      "candidateValue": 0.304,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_0084b1d1",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Zoomed.Stationary",
+      "candidateDistinctValues": 18,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.ADSBaseSpreadInc",
+      "symValue": 0.304
+    },
+    {
+      "siteField": "spreadDyn.ads.inc",
+      "siteValue": 0.228,
+      "rawValue": "0.304",
+      "candidateValue": 0.304,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_0084b1d1",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Zoomed.Stationary",
+      "candidateDistinctValues": 18,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.ADSBaseSpreadInc",
+      "symValue": 0.304
+    },
+    {
+      "siteField": "spreadDyn.ads.firingCoef",
+      "siteValue": 1.22,
+      "rawValue": "1.2",
+      "candidateValue": 1.2,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_2ca8533e",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Zoomed.Stationary",
+      "candidateDistinctValues": 8,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.ADSBaseSpreadFiringDecCoef",
+      "symValue": 1.2
+    },
+    {
+      "siteField": "spreadDyn.ads.firingOffset",
+      "siteValue": 1.84,
+      "rawValue": "2.7",
+      "candidateValue": 2.7,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_1b9eef5d",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Zoomed.Stationary",
+      "candidateDistinctValues": 8,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.ADSBaseSpreadFiringDecOffset",
+      "symValue": 2.7
+    },
+    {
+      "siteField": "spreadDyn.ads.distExp",
+      "siteValue": 0.67,
+      "rawValue": "0.5",
+      "candidateValue": 0.5,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_94efea57",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Zoomed.Stationary",
+      "candidateDistinctValues": 2,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.ADSBaseSpreadDistExp",
+      "symValue": 0.5
+    },
+    {
+      "siteField": "spreadDyn.hip.inc",
+      "siteValue": 0.41,
+      "rawValue": "0.547",
+      "candidateValue": 0.547,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_0084b1d1",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary",
+      "candidateDistinctValues": 18,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.HIPBaseSpreadInc",
+      "symValue": 0.547
+    },
+    {
+      "siteField": "spreadDyn.hip.firingCoef",
+      "siteValue": 0.51,
+      "rawValue": "0.5",
+      "candidateValue": 0.5,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_2ca8533e",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary",
+      "candidateDistinctValues": 8,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.HIPBaseSpreadFiringDecCoef",
+      "symValue": 0.5
+    },
+    {
+      "siteField": "spreadDyn.hip.firingOffset",
+      "siteValue": 3.31,
+      "rawValue": "4.86",
+      "candidateValue": 4.86,
+      "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_1b9eef5d",
+      "witnessBlockName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary",
+      "candidateDistinctValues": 8,
+      "candidateWeapons": 62,
+      "matches": false,
+      "symField": "bren3.spread.HIPBaseSpreadFiringDecOffset",
+      "symValue": 4.86
+    }
+  ],
+  "symSource": {
+    "url": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
+    "version": "1.4.2.0",
+    "sha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9"
+  },
+  "sourceXml": "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3.xml",
+  "sourceSha256": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc"
+}

@@ -63,7 +63,7 @@ test('reviewed handling decisions and exact donor damage curves are pinned', () 
   const grtbc = byId('grtbc');
   const l85a3 = byId('l85a3');
   assert.equal(brod.rpm, 10800 / 13);
-  assert.equal(ef.rpm, 10800 / 16);
+  assert.equal(ef.rpm, 674.999); // Frosty WB and named registry; replaces the older panel-derived rate.
   assert.equal(brod.recoilDir, -16);
   assert.equal(ef.recoilDir, 11);
   for (const weapon of [brod, ef]) {

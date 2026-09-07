@@ -118,6 +118,7 @@ const CONSOLE_RECOIL_MULT = 0.89;
 // Sym.gg exports effective RPM as timing-derived decimals. Keep those raw
 // values for calculations, but display the supplied in-game integer mapping.
 const IN_GAME_RPM_BY_SYM = new Map(Object.entries({
+  '31.91488230': 31,
   '37.67438356': 37,
   '38.11762015': 38,
   '44.08160187': 44,
@@ -125,6 +126,7 @@ const IN_GAME_RPM_BY_SYM = new Map(Object.entries({
   '51.00000000': 51,
   '149.99900000': 150,
   '163.63600000': 164,
+  '199.99900000': 200,
   '224.99900000': 225,
   '257.14200000': 257,
   '299.99900000': 300,
@@ -259,6 +261,8 @@ function getBTKWithHits(weapon, range, headshots = 0, zoneMult = 1) {
 }
 function getTTK(weapon, btk) {
   if (!weapon.rpm || btk == null || !Number.isFinite(btk)) return null;
+  // Raw firing RPM does not establish the pump cycle between shots.
+  if (weapon.fireMode === 'pump' && btk > 1) return null;
   let ms = 0;
   for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
   return Math.round(ms);
@@ -291,7 +295,8 @@ function projectileModelFor(weapon, atts) {
   // it stranded the one estimated weapon whose velocity is itself sourced.
   const source = projectileSourceFor(weapon);
   const model = {
-    velocityMps: Number.isFinite(weapon?.bulletVel) ? weapon.bulletVel : source?.bulletVel,
+    velocityMps: Number.isFinite(weapon?._projectileVelocityMps) ? weapon._projectileVelocityMps
+      : Number.isFinite(weapon?.bulletVel) ? weapon.bulletVel : source?.bulletVel,
     dragPerMeter: dragForSelectedAmmo(weapon, atts),
     gravityMps2: _ballistics.gravityMps2,
   };
@@ -369,7 +374,7 @@ function defaultAttsForWeapon(weapon) {
 }
 const shareCodec = createShareCodec({
   SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
-  WEAPON_MAG,
+  WEAPON_MAG, WEAPON_ERGO,
   defaultAttsForWeapon,
 });
 const defaultAppliedWeaponCache = new Map();
@@ -695,8 +700,8 @@ function renderOverview() {
   const grid = document.getElementById('sGrid');
   grid.innerHTML = '';
   const fields = [
-    { lbl: 'Base Dmg',    compute: w => getDmg(w, 0),                    unit: '',    fmt: v => v != null ? v.toFixed(1) : '—',       higherBetter: true,
-      tooltip: 'Damage dealt by one unarmored chest shot at 0m before range falloff. REDSEC armor is not modeled.' },
+    { lbl: 'Base Dmg',    compute: w => damagePerShotAtRange(w, 0),      unit: '',    fmt: v => v != null ? v.toFixed(1) : '—',       higherBetter: true,
+      tooltip: 'Damage dealt by one unarmored chest shot at 0m before range falloff. Shotgun totals assume all pellets hit. REDSEC armor is not modeled.' },
     // Two multipliers in one card, each carrying its own grey ×. Paired stats
     // like this drop the comparison badge — there is no single number to diff.
     { lbl: 'HS Mult',     compute: w => ({ hs: w?._hsMult, limb: w?._limbMult }), unit: '',
@@ -706,7 +711,7 @@ function renderOverview() {
       },
       noDiff: true,
       tooltip: 'Headshot damage multiplier and limb (arm/leg/abdomen) multiplier.' },
-    { lbl: 'Fire Rate',   compute: w => w.cls === 'Shotgun' ? null : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
+    { lbl: 'Fire Rate',   compute: w => w.fireMode === 'pump' ? null : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
       tooltip: 'Weapon fire rate in rounds per minute.' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Projectile velocity. Subsonic loads fire markedly slower. Higher values reduce travel time and lead.' },
@@ -792,8 +797,8 @@ function renderOverview() {
         const delta = Math.round(v2 - v1);
         const w2better = (f.higherBetter && delta > 0) || (f.lowerBetter && delta < 0);
         diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${delta > 0 ? '+' : ''}${delta}m</span>`;
-      } else {
-        const pct = Math.round(Math.abs(v2 - v1) / Math.max(Math.abs(v1), 0.001) * 100);
+      } else if (v1 !== 0 && v2 !== 0 && Number.parseFloat(f.fmt(v1)) !== 0 && Number.parseFloat(f.fmt(v2)) !== 0) {
+        const pct = Math.round(Math.abs(v2 - v1) / Math.abs(v1) * 100);
         const w2better = (f.higherBetter && v2 > v1) || (f.lowerBetter && v2 < v1);
         diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${w2better ? '+' : '-'}${pct}%</span>`;
       }
@@ -1078,9 +1083,10 @@ function renderChart() {
 
   // Damage chart
   const dmgAt = (w, r, zoneMult = 1) => Math.min(100, damagePerShotAtRange(w, r) * zoneMult);
-  // Bolt-actions fall off linearly between tiers (confirmed by Sym); every other
-  // class drops instantly, so only snipers get a straight line instead of a step.
-  const steppedFor = w => (w.cls === 'Sniper Rifle' ? false : 'before');
+  // Distinct ranges with different damage encode gradual falloff. This includes
+  // buckshot; slug and rifle curves use repeated ranges for instant tier drops.
+  const steppedFor = w => w.dmg.some((point, index, curve) => index > 0
+    && point.r > curve[index - 1].r && point.d !== curve[index - 1].d) ? false : 'before';
   const buildDs = (w, color, label) => ({
     label, data: labels.map(r => +dmgAt(w, r).toFixed(2)),
     borderColor: color, backgroundColor: 'transparent',
@@ -1162,7 +1168,7 @@ function renderBTK() {
     const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
     const tTxt = bl !== b
       ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
-      : fmtTtkAt(ttkAt(w, r, b));
+      : w.fireMode === 'pump' && b > 1 ? 'Unverified' : fmtTtkAt(ttkAt(w, r, b));
     return { bTxt, tTxt };
   };
   let prev1 = null, prev2 = null;
@@ -1905,18 +1911,18 @@ function renderAttachmentStats(loadouts) {
   const metrics = [
     { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
-    { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after magazine and ergonomics effects. Lower is faster.' },
-    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after magazine and grip effects. Lower is faster.' },
+    { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after attachment effects. Lower is faster.' },
+    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after attachment effects. Lower is faster.' },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel and ammunition effects. Subsonic loads fire markedly slower. Higher reduces travel time and lead.' },
     { lbl: 'Bullet Drag',         val: w => w._projectileModel?.dragPerMeter, unit: '/m', dec: 4, lowerBetter: true, tooltip: 'Projectile drag per metre. Lower drag preserves velocity longer and reduces long-range travel time and drop.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
     { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
     { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.' },
-    { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after ADS-only variation modifiers. Lower is more consistent.' },
+    { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after attachment effects. Lower is more consistent.' },
     { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: 'x',   dec: 2, higherBetter: true, tooltip: 'ADS recoil recovery/decay multiplier applied to the weapon recoil decay factor. Higher returns to center faster.' },
-    { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after spread modifiers. Hipfire is scaled by the same factor. Lower builds spread more slowly.' },
+    { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after attachment effects. Lower builds spread more slowly.' },
     { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle and barrel effects. Higher clears spread faster.' },
-    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing after light effects. Higher clears spread faster.' },
+    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing after attachment effects. Higher clears spread faster.' },
     { lbl: 'Mov Spread',          val: w => w._movingAdsMinSpreadDeg,        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
     { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
     { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes your 3D world position. None or shorter is better.' },
@@ -2246,7 +2252,8 @@ function renderRecoil() {
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
-    const layerNote = `Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
+    const timingNote = [w1, w2].some(w => w?.fireMode === 'pump') ? ' Pump-action cycling is not modeled in this pattern.' : '';
+    const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game.${timingNote} Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}`;
@@ -2294,12 +2301,12 @@ function renderRecoil() {
           dirLines.push(`<div class="rc-tt-row"><span>Compensation Direction (${Math.round(compPct * 100)}%)</span><span>${(compDir >= 0 ? '+' : '') + compDir.toFixed(1)}°</span></div>`);
         }
         const varLines = [];
-        if (aim === 'ads') {
+        {
           const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
           const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
           const ergo = ATT_BY_ID.ERGOS[atts.ergo ?? 'none'] ?? ERGOS[0];
           // Tier ladder: dirVar × dirVarMult ^ (dirVarExp + attachment tier mods)
-          const adsG = selW.recoil?.ads;
+          const adsG = selW.recoil?.[aim];
           const varRaw  = adsG?.dirVar ?? selW.recoilVar ?? 0;
           const varMult = adsG?.dirVarMult ?? 1;
           let varTiers  = adsG?.dirVarExp ?? 0;
@@ -2313,9 +2320,9 @@ function renderRecoil() {
             if (Math.abs(d) >= 0.005) varLines.push(`<div class="rc-tt-row"><span>${lbl}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`);
             prev = after;
           };
-          varStep(muz.name, muz.adsRecoilVariationTierMod ?? 0);
-          varStep(grp.name, grp.adsRecoilVariationTierMod ?? 0);
-          varStep(ergo.name, ergo.adsRecoilVariationTierMod ?? 0);
+          varStep(muz.name, muz[aim + 'RecoilVariationTierMod'] ?? 0);
+          varStep(grp.name, grp[aim + 'RecoilVariationTierMod'] ?? 0);
+          varStep(ergo.name, ergo[aim + 'RecoilVariationTierMod'] ?? 0);
         }
         const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${weaponDisplayLabel(selW)}</div>` : '';
         const effVar = selectedRecoilVariationFor(w);
@@ -2395,16 +2402,21 @@ function renderRecoil() {
     (() => {
       const aimLbl = aim === 'hip' ? 'Hipfire' : 'ADS';
       const eff1 = w1 ? selectedSpreadIncFor(w1) : null, eff2 = w2 ? selectedSpreadIncFor(w2) : null;
-      const base1 = w1 ? (aim === 'ads' ? (state.slots[0].weapon?.recoilIncAds ?? 0) : selectedSpreadIncFor(w1)) : null;
-      const base2 = w2 ? (aim === 'ads' ? (state.slots[1].weapon?.recoilIncAds ?? 0) : selectedSpreadIncFor(w2)) : null;
+      const base1 = w1 ? (aim === 'ads' ? (state.slots[0].weapon?.recoilIncAds ?? 0) : (state.slots[0].weapon?.spreadDyn?.hip?.inc ?? 0)) : null;
+      const base2 = w2 ? (aim === 'ads' ? (state.slots[1].weapon?.recoilIncAds ?? 0) : (state.slots[1].weapon?.spreadDyn?.hip?.inc ?? 0)) : null;
       const ld = (eff, base) => eff != null && base != null ? { eff, wa: base, scale: 1 } : null;
       const ttHtml = (selW, w, atts, base, eff, colCls) => {
         if (!selW || !w) return '';
         const bar = ATT_BY_ID.BARRELS[atts.barrel] ?? BARRELS[0];
         const lines = [];
-        if (aim === 'ads' && bar.id !== 'none') {
+        const effectNames = [
+          bar.spreadIncMult !== 1 && bar.spreadIncMult != null ? bar.name : null,
+          aim === 'ads' && ATT_BY_ID.AMMO[atts.ammo]?.adsSpreadDynOverride ? ATT_BY_ID.AMMO[atts.ammo].name : null,
+          ATT_BY_ID.ERGOS[atts.ergo]?.[aim + 'SpreadDynOverride'] ? ATT_BY_ID.ERGOS[atts.ergo].name : null,
+        ].filter(Boolean);
+        if (eff !== base) {
           const d = +(eff - base).toFixed(3);
-          if (Math.abs(d) >= 0.005) lines.push(`<div class="rc-tt-row"><span>${bar.name}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`);
+          if (Math.abs(d) >= 0.005) lines.push(`<div class="rc-tt-row"><span>${effectNames.join(' + ')}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`);
         }
         const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${weaponDisplayLabel(selW)}</div>` : '';
         return wn + `<div class="rc-tt-row rc-tt-eff"><span>Effective ${aimLbl} SIPS</span><span>${eff.toFixed(2)}°</span></div><div class="rc-tt-row"><span>Base ${aimLbl} SIPS</span><span>${base.toFixed(2)}°</span></div>` + lines.join('');

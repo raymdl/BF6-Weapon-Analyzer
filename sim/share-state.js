@@ -20,6 +20,7 @@ export function createShareCodec({
   AMMO = [],
   ERGOS = [],
   WEAPON_MAG = {},
+  WEAPON_ERGO = null,
   defaultAttsForWeapon,
 }) {
   if (typeof defaultAttsForWeapon !== 'function') {
@@ -76,7 +77,7 @@ export function createShareCodec({
         case 'laser': return !!(lookups.LASERS[id] || lookups.GRIPS[id] || lookups.LIGHTS[id]);
         case 'light': return !!lookups.LIGHTS[id];
         case 'ammo': return !!lookups.AMMO[id];
-        case 'ergo': return !!lookups.ERGOS[id];
+        case 'ergo': return !!lookups.ERGOS[id] && (!WEAPON_ERGO || id === 'none' || WEAPON_ERGO[weapon.id]?.avail.includes(id));
         case 'mag': return !!WEAPON_MAG[weapon.id]?.mags?.[id];
         default: return false;
       }
@@ -99,6 +100,8 @@ export function createShareCodec({
     const atts = defaultAttsForWeapon(weapon);
     const magKeys = magKeysFor(weapon);
     const set = (arr, index, slot) => {
+      if (slot === 'ergo' && WEAPON_ERGO && arr[index]?.id !== 'none'
+          && !WEAPON_ERGO[weapon.id]?.avail.includes(arr[index]?.id)) return;
       if (arr[index]) atts[slot] = arr[index].id;
     };
     let match;

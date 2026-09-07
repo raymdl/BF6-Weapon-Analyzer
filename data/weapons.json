@@ -535,7 +535,7 @@
     "rpm": 719.999,
     "mag": 21,
     "tacRld": 2.4,
-    "emptyRld": 3.37,
+    "emptyRld": 3.367,
     "bulletVel": 604,
     "recoilV": 1.1595971107513876,
     "recoilDir": 20,
@@ -657,7 +657,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.979166
+    "reloadSpeed": 0.979166,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/tr7"
+      }
+    }
   },
   {
     "id": "kord6p67",
@@ -800,7 +810,7 @@
     "rpm": 654.545,
     "mag": 31,
     "tacRld": 2.5,
-    "emptyRld": 2.979,
+    "emptyRld": 3.0,
     "bulletVel": 626,
     "recoilV": 0.7326801731267338,
     "recoilDir": -12,
@@ -942,7 +952,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.973599
+    "reloadSpeed": 0.973599,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/nvo228e"
+      }
+    }
   },
   {
     "id": "l85a3",
@@ -952,7 +972,7 @@
     "rpm": 635.294,
     "mag": 31,
     "tacRld": 2.767,
-    "emptyRld": 2.733,
+    "emptyRld": 2.834,
     "bulletVel": 778,
     "recoilV": 0.6740692990342647,
     "recoilDir": 12,
@@ -1074,7 +1094,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.975786
+    "reloadSpeed": 0.975786,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/l85a3"
+      }
+    }
   },
   {
     "id": "vcr2",
@@ -1084,7 +1114,7 @@
     "rpm": 899.999,
     "mag": 31,
     "tacRld": 2.434,
-    "emptyRld": 3.129,
+    "emptyRld": 3.117,
     "bulletVel": 660,
     "recoilV": 0.8205740274617134,
     "recoilDir": 18,
@@ -1206,7 +1236,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.958915
+    "reloadSpeed": 0.958915,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/vcr2"
+      }
+    }
   },
   {
     "id": "m16a4",
@@ -1350,7 +1390,7 @@
     "rpm": 899.999,
     "mag": 31,
     "tacRld": 2.2,
-    "emptyRld": 2.695,
+    "emptyRld": 2.634,
     "bulletVel": 590,
     "recoilV": 0.8482748505471913,
     "recoilDir": -18,
@@ -1492,7 +1532,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.977272
+    "reloadSpeed": 0.977272,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/m4a1"
+      }
+    }
   },
   {
     "id": "m277",
@@ -1502,7 +1552,7 @@
     "rpm": 719.999,
     "mag": 21,
     "tacRld": 2.384,
-    "emptyRld": 2.554,
+    "emptyRld": 2.55,
     "bulletVel": 592,
     "recoilV": 0.9542958007305558,
     "recoilDir": -22,
@@ -1614,7 +1664,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.979026
+    "reloadSpeed": 0.979026,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/m277"
+      }
+    }
   },
   {
     "id": "ak205",
@@ -2235,7 +2295,7 @@
     "rpm": 719.999,
     "mag": 31,
     "tacRld": 2.5,
-    "emptyRld": 2.926,
+    "emptyRld": 2.934,
     "bulletVel": 483,
     "recoilV": 0.826647274688653,
     "recoilDir": -20,
@@ -2378,7 +2438,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.979999
+    "reloadSpeed": 0.979999,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/sg553r"
+      }
+    }
   },
   {
     "id": "sor300sc",
@@ -2692,7 +2762,7 @@
     "rpm": 771.428,
     "mag": 31,
     "tacRld": 2.517,
-    "emptyRld": 2.9,
+    "emptyRld": 3.0,
     "bulletVel": 408,
     "recoilV": 0.5635141243555819,
     "recoilDir": -10,
@@ -2835,7 +2905,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/pw5a3"
+      }
+    }
   },
   {
     "id": "pw7a2",
@@ -2845,7 +2925,7 @@
     "rpm": 947.368,
     "mag": 31,
     "tacRld": 2.184,
-    "emptyRld": 3.086,
+    "emptyRld": 3.067,
     "bulletVel": 576,
     "recoilV": 0.5091176296296296,
     "recoilDir": -10,
@@ -2967,7 +3047,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.961538
+    "reloadSpeed": 0.961538,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/pw7a2"
+      }
+    }
   },
   {
     "id": "umg40",
@@ -3130,7 +3220,7 @@
     "rpm": 899.999,
     "mag": 51,
     "tacRld": 3,
-    "emptyRld": 3.314,
+    "emptyRld": 3.284,
     "bulletVel": 543,
     "recoilV": 0.5471688016080739,
     "recoilDir": 10,
@@ -3272,7 +3362,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.955666
+    "reloadSpeed": 0.955666,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/usg90"
+      }
+    }
   },
   {
     "id": "kv9",
@@ -3435,7 +3535,7 @@
     "rpm": 799.999,
     "mag": 16,
     "tacRld": 2.6,
-    "emptyRld": 3.11,
+    "emptyRld": 3.117,
     "bulletVel": 398,
     "recoilV": 0.7124297727932585,
     "recoilDir": -18,
@@ -3577,7 +3677,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.980769
+    "reloadSpeed": 0.980769,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/scw10"
+      }
+    }
   },
   {
     "id": "sl9",
@@ -3587,7 +3697,7 @@
     "rpm": 674.999,
     "mag": 31,
     "tacRld": 2.65,
-    "emptyRld": 3.183,
+    "emptyRld": 3.184,
     "bulletVel": 486,
     "recoilV": 0.5240016637500265,
     "recoilDir": 0,
@@ -3732,7 +3842,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 1.031698
+    "reloadSpeed": 1.031698,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/sl9"
+      }
+    }
   },
   {
     "id": "cz3a1",
@@ -3895,7 +4015,7 @@
     "rpm": 719.999,
     "mag": 31,
     "tacRld": 2.467,
-    "emptyRld": 3.028,
+    "emptyRld": 2.967,
     "bulletVel": 444,
     "recoilV": 0.5434529043176682,
     "recoilDir": 6,
@@ -4036,7 +4156,17 @@
         "source": "Sym"
       }
     ],
-    "reloadSpeed": 0.979732
+    "reloadSpeed": 0.979732,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/pp19"
+      }
+    }
   },
   {
     "id": "l110",
@@ -4310,7 +4440,7 @@
     "rpm": 514.285,
     "mag": 100,
     "tacRld": 7.35,
-    "emptyRld": 8.123,
+    "emptyRld": 8.15,
     "bulletVel": 680,
     "recoilV": 0.7361877333333333,
     "recoilDir": 0,
@@ -4432,7 +4562,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.99102
+    "reloadSpeed": 0.99102,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/m60"
+      }
+    }
   },
   {
     "id": "rpkm",
@@ -4975,7 +5115,7 @@
     "rpm": 599.999,
     "mag": 50,
     "tacRld": 4.25,
-    "emptyRld": 5.9,
+    "emptyRld": 5.6,
     "bulletVel": 590,
     "recoilV": 0.8064454775462087,
     "recoilDir": 5,
@@ -5097,7 +5237,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 0.949176
+    "reloadSpeed": 0.949176,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/m240l"
+      }
+    }
   },
   {
     "id": "m121a2",
@@ -6540,7 +6690,7 @@
     "mag": 6,
     "tacRld": 2.75,
     "emptyRld": 4.233,
-    "bulletVel": 664,
+    "bulletVel": 742,
     "recoilV": 2,
     "recoilDir": -8,
     "recoilVar": 4,
@@ -6656,7 +6806,158 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "bulletVel"
+        ],
+        "evidence": "reference-data/provenance/frosty-1.4.2.5-l115-velocity.json",
+        "note": "Raw WB InitialSpeed.z and the named registry agree on 742 m/s. The previous site value 664 m/s is retained in the evidence record. Other fields retain their existing sources."
+      }
+    }
+  },
+  {
+    "id": "interdictor",
+    "name": "Interdictor",
+    "cls": "Sniper Rifle",
+    "cal": ".416 Barrett",
+    "rpm": 31.914882299649403,
+    "mag": 6,
+    "tacRld": 3.5,
+    "emptyRld": 4.83,
+    "bulletVel": 732.7392,
+    "recoilV": 2.2,
+    "recoilDir": -8.0,
+    "recoilVar": 10.0,
+    "recoilIncAds": 0.0,
+    "spreadMax": 11.0,
+    "adsTime": 433,
+    "fireMode": "bolt",
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0.0,
+        "idleExp": 1.0,
+        "idleOffset": 5.45455,
+        "firingCoef": 0.0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0.0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1.0,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.941,
+        "idleTime": 1.8,
+        "idleCoef": 0.0,
+        "idleExp": 0.25,
+        "idleOffset": 25.0,
+        "firingCoef": 0.05,
+        "firingExp": 2.5,
+        "firingOffset": 0.486,
+        "notFiringCoef": 0.0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1.0,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -8.0,
+        "amount": 2.2,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 10.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1.0,
+        "decExp": 0.6,
+        "decTimeExp": 4.0,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 70.0,
+        "shootingDecScale": 1.0
+      },
+      "hip": {
+        "dir": -5.0,
+        "amount": 4.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 10.0,
+        "dirVarMult": 0.920506,
+        "dirVarExp": 0,
+        "decNorm": 1.0,
+        "decExp": 0.6,
+        "decTimeExp": 4.0,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 70.0,
+        "shootingDecScale": 1.0
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.0,
+        11.0
+      ],
+      "adsMove": [
+        0.3,
+        13.0
+      ],
+      "hipStand": [
+        4.848,
+        11.0
+      ],
+      "hipMove": [
+        6.06,
+        13.0
+      ]
+    },
+    "dmg": [
+      {
+        "r": 100,
+        "d": 80,
+        "source": "Frosty"
+      },
+      {
+        "r": 120,
+        "d": 150,
+        "source": "Frosty"
+      },
+      {
+        "r": 150,
+        "d": 150,
+        "source": "Frosty"
+      },
+      {
+        "r": 175,
+        "d": 62,
+        "source": "Frosty"
+      },
+      {
+        "r": 200,
+        "d": 62,
+        "source": "Frosty"
+      }
+    ],
+    "damageStatus": "verified",
+    "damageSource": "Frosty named .416 Barrett tweakable health curve, export label 1.4.2.5; 106-164 m whole-metre chest kill range corroborated by CoolGuy at 2:33.",
+    "reloadSpeed": 1.0,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "evidence": "reference-data/provenance/frosty-interdictor-integration.json",
+        "note": "Named registry and exported weapon/attachment graph; effective bolt RPM and identity use the retained Sym source. Basic/5 Rnd handling is panel-checked. Raw moving spread remains separate from the effective tier floor. Slim Angled handling is panel-checked; its moving ADS spread effect remains unmodeled and explicitly marked unverified."
+      }
+    }
   },
   {
     "id": "m87a1",
@@ -8282,12 +8583,12 @@
     "rpm": 830.7692307692307,
     "mag": 31,
     "tacRld": 2.217,
-    "emptyRld": 3.35,
-    "bulletVel": 580,
+    "emptyRld": 3.05,
+    "bulletVel": 563,
     "recoilV": 0.8354362713464263,
     "recoilDir": -16,
     "recoilVar": 24.3,
-    "recoilIncAds": 0.228,
+    "recoilIncAds": 0.304,
     "spreadMax": 6,
     "adsTime": 200,
     "fireMode": "auto",
@@ -8296,29 +8597,29 @@
     "burstBurstsPerMinute": 240.12729639809058,
     "spreadDyn": {
       "ads": {
-        "inc": 0.228,
+        "inc": 0.304,
         "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.22,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 1.84,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.41,
+        "inc": 0.547,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.51,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.31,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
         "notFiringOffset": 12.96,
@@ -8490,6 +8791,26 @@
           "damage breakpoint distances",
           "damage tier profile"
         ]
+      },
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "bulletVel",
+          "emptyRld",
+          "recoilIncAds",
+          "spreadDyn.ads.inc",
+          "spreadDyn.ads.firingCoef",
+          "spreadDyn.ads.firingOffset",
+          "spreadDyn.ads.distExp",
+          "spreadDyn.hip.inc",
+          "spreadDyn.hip.firingCoef",
+          "spreadDyn.hip.firingOffset"
+        ],
+        "evidence": "reference-data/provenance/frosty-1.4.2.5-brod3-velocity.json",
+        "note": "The raw BREN3 WB and named registry specify 563 m/s, independently corroborated by Sym. This supersedes the previous site value 580 m/s retained in the evidence record. Other fields retain their existing sources.",
+        "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/brod3",
+        "spreadEvidence": "reference-data/provenance/frosty-1.4.2.5-brod3-spread.json"
       }
     }
   },
@@ -8498,46 +8819,46 @@
     "name": "EF88",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
-    "rpm": 675,
+    "rpm": 674.999,
     "mag": 31,
-    "tacRld": 2.416,
-    "emptyRld": 2.8415,
-    "bulletVel": 670,
-    "recoilV": 0.6720006428699492,
+    "tacRld": 2.4,
+    "emptyRld": 3.534,
+    "bulletVel": 724,
+    "recoilV": 0.7239300740740741,
     "recoilDir": 11,
-    "recoilVar": 20.3,
-    "recoilIncAds": 0.3,
+    "recoilVar": 26.1,
+    "recoilIncAds": 0.36,
     "spreadMax": 7,
     "adsTime": 250,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
-        "inc": 0.3,
-        "idleTime": 0.6,
+        "inc": 0.36,
+        "idleTime": 0.4,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 7.5,
-        "firingCoef": 1.04,
+        "firingCoef": 1.2,
         "firingExp": 2.5,
-        "firingOffset": 2.05,
+        "firingOffset": 2.7,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
-        "notFiringOffset": 8,
+        "notFiringOffset": 7.2,
         "firstShotMul": 1,
-        "distExp": 0.67
+        "distExp": 0.5
       },
       "hip": {
-        "inc": 0.54,
+        "inc": 0.648,
         "idleTime": 0.6,
         "idleCoef": 0,
         "idleExp": 0.25,
         "idleOffset": 25,
-        "firingCoef": 0.43,
+        "firingCoef": 0.5,
         "firingExp": 2.5,
-        "firingOffset": 3.69,
+        "firingOffset": 4.86,
         "notFiringCoef": 0,
         "notFiringExp": 0.25,
-        "notFiringOffset": 14.4,
+        "notFiringOffset": 12.96,
         "firstShotMul": 1,
         "distExp": 0.5
       }
@@ -8545,11 +8866,11 @@
     "recoil": {
       "ads": {
         "dir": 11,
-        "amount": 0.59065,
-        "amountMult": 0.9579,
+        "amount": 0.5965,
+        "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 20.3,
-        "dirVarMult": 0.89864,
+        "dirVar": 26.1,
+        "dirVarMult": 0.915366,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -8561,11 +8882,11 @@
       },
       "hip": {
         "dir": 11,
-        "amount": 0.59065,
-        "amountMult": 0.9579,
+        "amount": 0.5965,
+        "amountMult": 0.9375,
         "amountExp": -3,
-        "dirVar": 20.3,
-        "dirVarMult": 0.9160025,
+        "dirVar": 26.1,
+        "dirVarMult": 0.915366,
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
@@ -8688,6 +9009,41 @@
           "damage breakpoint distances",
           "damage tier profile"
         ]
+      },
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "fields": [
+          "bulletVel",
+          "rpm",
+          "recoilVar",
+          "recoilIncAds",
+          "recoil.ads.amount",
+          "recoil.ads.amountMult",
+          "recoil.ads.dirVar",
+          "recoil.ads.dirVarMult",
+          "spreadDyn.ads.inc",
+          "spreadDyn.ads.idleTime",
+          "spreadDyn.ads.firingCoef",
+          "spreadDyn.ads.firingOffset",
+          "spreadDyn.ads.notFiringOffset",
+          "spreadDyn.ads.distExp",
+          "recoil.hip.amount",
+          "recoil.hip.amountMult",
+          "recoil.hip.dirVar",
+          "recoil.hip.dirVarMult",
+          "spreadDyn.hip.inc",
+          "spreadDyn.hip.firingCoef",
+          "spreadDyn.hip.firingOffset",
+          "spreadDyn.hip.notFiringOffset",
+          "recoilV",
+          "tacRld",
+          "emptyRld"
+        ],
+        "evidence": "reference-data/provenance/frosty-1.4.2.5-ef88-velocity.json",
+        "note": "Frosty replaces bulletVel and the listed recoil/spread configuration fields. Named registry values agree with raw XML. recoilV uses the existing site magnitude formula; RECOIL_MULT is synchronized with recoil.ads.amountMult. Historical screenshot and Companion values remain in provenance and are superseded only for these listed fields. Engine simulation formulas are not independently verified by this data change. Reload fields are superseded by the named reload entries, raw WB and Sym values; the partial reload also matches the user screenshot.",
+        "configurationEvidence": "reference-data/provenance/frosty-1.4.2.5-ef88-configuration.json",
+        "reloadEvidence": "reference-data/provenance/frosty-1.4.2.5-ef88-reload.json"
       }
     }
   },

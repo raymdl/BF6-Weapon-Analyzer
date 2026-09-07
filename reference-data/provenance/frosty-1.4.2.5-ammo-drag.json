@@ -1,0 +1,189 @@
+{
+  "scope": "Ordinary Tungsten retains base drag; VSSM MatchTungsten selects a lower-drag projectile. Penetration collision behavior and recoil modifiers are unchanged.",
+  "ordinaryTungsten": [
+    {
+      "siteId": "l115",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum2.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "m2010esr",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_.300WinMag.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "miniscout",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Bolt.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "psr",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_.338NormaMagnum.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "sv98",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Bolt.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "lmr27",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Semi.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "m39emr",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_Semi.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "grtcps",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Semi.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "svk86",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum_Semi.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "svdm",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Semi.xml",
+      "baseDrag": 0.0035
+    },
+    {
+      "siteId": "vssm",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_AMO_Tungsten.xml",
+      "effects": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml",
+          "guid": "510270a9-c1d6-4699-9442-b1523463053c",
+          "type": "Class_d11a23a2"
+        }
+      ],
+      "baseProjectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Semi.xml",
+      "baseDrag": 0.0035
+    }
+  ],
+  "rangePenetration": {
+    "weapon": "VSSM",
+    "attachmentXml": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_AMO_MatchTungsten.xml",
+    "selectorGuid": "40a6c2be-2da8-4330-97e7-32036bfa3fa5",
+    "effect": {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/TungstenCore/WPM_AMO_MatchTungstenCore_W10.xml",
+      "guid": "b5d717d5-401d-4a84-9eb4-50839ae3c261",
+      "type": "Class_b1afeb65"
+    },
+    "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Match.xml",
+    "projectileGuid": "2a47e87f-024a-4cc8-be7b-1af871350b71",
+    "drag": 0.002,
+    "gravity": -9.81
+  },
+  "sourceSha256": {
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_AMO_Tungsten.xml": "efc35fcd6b43aa769fdf803a703beb3d27a3fc61cc0b722d25a44be3ad0487e2",
+    "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_AMO_Tungsten.xml": "31ddb5e84756519b1614a6493d0ef3fd2ef0850199e9e4958954d35d5b6b7d80",
+    "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_AMO_Tungsten.xml": "6e198738473e96b59a936ece88b9c68d53212f3b3de61eec8defea355d725671",
+    "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_AMO_Tungsten.xml": "0a863bd78eb59fe433f50aaf59c7b447e40d6c3294f16feaa379024450a403c2",
+    "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_AMO_Tungsten.xml": "8b706a42dcd0c3ce2d69fb6abc48bce4802a40513d6a2abc743fc853511e7c4a",
+    "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_AMO_Tungsten.xml": "7554c5d20be6e3c96fbdefb179a5802cbeed6c2907d4a11b93f863f51896ec30",
+    "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_AMO_Tungsten.xml": "58f1d4442b5802444e00c31cc41fb2807c1d04059ce3879a848205ee8b0ed138",
+    "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_AMO_Tungsten.xml": "57cedf28ed0760e14fe0fc2901e5346f4de330e2a9211036ac8fea0de9509fa4",
+    "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_AMO_Tungsten.xml": "16a3ce4ec1ba6e6138fc2b1539b466fbbfaa8be3e2429ae71729d21d8340d786",
+    "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_AMO_Tungsten.xml": "44876db39a2e21653912296500e2634d8e6539ebeb87e1823ddad8128d681994",
+    "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_AMO_MatchTungsten.xml": "0199f5f34cfbdfaa91cf0133ae4d0d3e607786fed71ca7f3d02426040b9c2027",
+    "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_AMO_Tungsten.xml": "64858794d5ced63f0e755ddaaa61f662ba84463dfb19f79b41d0f0a9037b98b9",
+    "Common/Hardware/Weapons/_Bullets/PD_.300WinMag.xml": "8963dbaed3fd6b7c1049e26866b274bed212276293cafad00c619b29f9570271",
+    "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum2.xml": "30c3493ac00494b07780578396d68e2e54dee626f3655d06bff5e501e9ece3b3",
+    "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum_Semi.xml": "6b85f41d8eb8f81b09704add9b263e8e7d906996c2352e57c0a277c4a81d126b",
+    "Common/Hardware/Weapons/_Bullets/PD_.338NormaMagnum.xml": "f805393fa105838415b3f7beb2e43fa3936ef2bf6e74b08c44bf4527fd88a226",
+    "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Bolt.xml": "d13603e61a616562e418d6139b0bab6e4912cedbf1768df922ad7d91b829c8f0",
+    "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Semi.xml": "bf00e6efd0af84be7e0afbf1ef7c8d4f5829a0b16cd743b7b4881fa0f18514fe",
+    "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_Semi.xml": "c6eba5e7be61d9a104180c8cb65464bc85c331c2964ce44d84023e00de8bdd77",
+    "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Bolt.xml": "6ad7e15142339f5bbfc3889ec4a44b42c57ea4a6085178129116cd6bddeec0f8",
+    "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Semi.xml": "b720421ddccdb2b58d24930a1399964657848bae772e5a32d5199f9463a3595a",
+    "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Match.xml": "a36033410772af00caab9aadeb0d97abad7d633acbb32dd5bed9eb9e33d767ae",
+    "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Semi.xml": "130e5658e0d76e120245fe0402060abf9fbf2042d4f62a7ced689492beb2af35",
+    "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml": "a75cffe9fe804472849d613d37b321cc15e388b7d58e4cedaf3146cb55a0a512",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/TungstenCore/WPM_AMO_MatchTungstenCore_W10.xml": "c262c79c4b51308e2b461a7de649b781f58a68e6ad748a324f451110b6ccabb8"
+  }
+}

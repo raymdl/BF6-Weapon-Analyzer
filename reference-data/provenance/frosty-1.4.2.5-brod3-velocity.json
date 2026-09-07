@@ -1,0 +1,134 @@
+{
+  "sourceBuild": "1.4.2.5",
+  "buildEvidence": "user-supplied export label",
+  "sourceRoot": "BF6 Datamining workspace; paths below are relative to its root",
+  "weaponId": "brod3",
+  "siteField": "bulletVel",
+  "previousValue": 580,
+  "value": 563,
+  "unit": "m/s",
+  "registry": {
+    "sourceXml": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml",
+    "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z",
+    "guid": "04de1846-08b0-4050-ab6c-06e4a486c2f3",
+    "raw": "563"
+  },
+  "wb": {
+    "weapon": "BREN3",
+    "sourceXml": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB.xml",
+    "path": "/File[@Guid='908f3360-9dcb-4179-9dfd-d8ce47ffbc27']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_58d70acb/Struct_29ea5d2b/Field_0bf4f62b/Struct_739f3ac5",
+    "type": "Struct_739f3ac5",
+    "registryGuid": "34f87b21-921c-475d-89f4-5abda47f4683",
+    "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed",
+    "rawScalars": {
+      "Field_3901db14": "0",
+      "Field_42fc0f5e": "0",
+      "Field_32a99b9c": "563"
+    },
+    "field": "Field_32a99b9c"
+  },
+  "barrelContext": {
+    "siteBarrelDef": "basic",
+    "evidence": {
+      "weapon": "BREN3",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_BRL_BasicBarrel.xml",
+      "attachmentGuid": "824bf8e3-6024-45a5-907e-9d886a1fdf68",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Barrel",
+        "guid": "9c0ba746-e08b-4fe8-8dad-ed7c63fdcc8c"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/Carbine/BREN3/U_PRG_BREN3_BRL_BasicBarrel",
+        "guid": "49444055-43c2-4c11-8444-872fad7f8314"
+      },
+      "rawPointCost": "0x0000000a",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.xml",
+          "guid": "7d5edde5-d4a3-4493-9a90-2b2fcf173b90",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Barrel",
+            "guid": "941cb5ad-f4f8-4e30-af26-2e618582343a"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.xml",
+              "guid": "80ff18c1-46fb-4a87-b618-1bd08a4858a0",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10",
+                    "guid": "f7b59868-d8c2-489e-927b-6f5bb375245f"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml",
+                      "guid": "17841af6-c296-4bcd-9cd1-5857d6bc4b5b",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3.xml",
+                      "path": "/File[@Guid='a4a383b3-ab1b-423e-85f8-b8e16ccf6fdc']/Class_539cff9b[@Guid='9d5b80ce-d550-4e75-9689-e3a44a3b2711']/Field_4d248d91/member[@Index='0']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10",
+                        "guid": "504e3508-f31c-4f06-ad75-5c93bd312fc8"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10 [504e3508-f31c-4f06-ad75-5c93bd312fc8]",
+                      "rawBranch": "0x00000001"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    },
+    "interpretation": "The site defaults to Basic Barrel. Its linked WB effects change ADS animation/FOV; its GS binding targets ADS time. This branch has no velocity modifier."
+  },
+  "limits": [
+    "Only base shot InitialSpeed.z is promoted; other mechanics and live overrides are not established.",
+    "Previous site value 580 m/s is retained here. BREN3 identity is user-confirmed and corroborated by Sym."
+  ],
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_BRL_BasicBarrel.xml": "ab89427098cf1b7c928b645614cc011badfa7bb37141fda8554cd7a79783fc24",
+    "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.xml": "5ba35855c62f89dbf98fbafd4d05d91aa98db4ed9017d18a49abc8f1d6d24520",
+    "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB.xml": "eae644722ac366c9d70121d33c691b94bd5ccb4f694c1339eddbaaa3293f0776",
+    "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3.xml": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml": "57266f610ed9c1e20c3113a2d8ac1b087d9aed2a92b22145e95ee4872659f6f2",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml": "d669dcc57fae81e49a67f9ea17bdd4b56704334eecefb9fa87698fe0475dd27e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10.xml": "f7112bd202d8ce9ed3de56146e23143e88cf8d0ce2b40b25ca48df8f36d95196",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml": "25aa059379e7d107717c3be859a5dfb419b70d2994d9c1a73caaf268d495f8ee",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10.xml": "a86b36f03216344eab3ac0134d4f43f174d90bfe72fcd8f7e4669105b77e26f9"
+  },
+  "symCorroboration": {
+    "url": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
+    "sha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+    "metadata": {
+      "version": "1.4.2.0",
+      "versionDate": "18 AUG 2026"
+    },
+    "record": {
+      "codename": "bren3",
+      "displayname": "BROD 3",
+      "velocity": 563
+    }
+  }
+}

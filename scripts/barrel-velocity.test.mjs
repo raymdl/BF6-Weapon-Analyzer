@@ -50,6 +50,21 @@ const context = {
 
 setAttachmentContext(context);
 
+test('Interdictor preserves source velocity and the confirmed Basic magazine handling', () => {
+  const weapon = weapons.find(w => w.id === 'interdictor');
+  const basic = applyAttachments(weapon, { barrel: 'basic', mag: '5_rnd' });
+  assert.equal(basic._projectileVelocityMps, 732.7392);
+  assert.equal(basic.bulletVel, 732);
+  assert.equal(basic._adsTimeMs, 433);
+  assert.equal(basic._sprintRecoveryMs, 233);
+  assert.equal(basic._adsMoveSpeedMult, 0.42);
+  assert.equal(basic._movingAdsMinSpreadDeg, 0.32);
+  const extended = applyAttachments(weapon, { barrel: 'extended', mag: '5_rnd' });
+  assert.ok(Math.abs(extended._projectileVelocityMps - 915.924) < 1e-9);
+  assert.equal(extended.bulletVel, 915);
+  assert.equal(extended._adsTimeMs, 500);
+});
+
 test('the barrel catalog has all exact velocity tiers and retains velMult', () => {
   assert.equal(balance.VELOCITY_LADDER, 0.8);
   const expected = new Map([
@@ -126,4 +141,15 @@ test('velocity flooring has a guarded floating-point edge', () => {
   assert.deepEqual(nearIntegerProducts, []);
   assert.equal(floorVelocityDisplay(613.9999999999999), 614);
   assert.equal(floorVelocityDisplay(837.5), 837);
+});
+
+test('projectile velocity retains fractions while the weapon panel floors its display', () => {
+  setAttachmentContext(context);
+  const ef88 = weapons.find(weapon => weapon.id === 'ef88');
+  const short = applyAttachments(ef88, { barrel: 'short', mag: '30_rnd', ammo: 'standard' });
+  assert.equal(short._projectileVelocityMps, 579.2);
+  assert.equal(short.bulletVel, 579);
+  const missing = applyAttachments({ ...ef88, bulletVel: null }, { barrel: 'short' });
+  assert.equal(missing._projectileVelocityMps, null);
+  assert.equal(missing.bulletVel, null);
 });

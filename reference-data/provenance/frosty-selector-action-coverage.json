@@ -1,0 +1,1042 @@
+{
+  "scope": "Selector-level gaps do not necessarily mean an attachment lacks its weapon-specific effect. Rebuilt from current source XML; no aliases inferred.",
+  "records": [
+    {
+      "issue": {
+        "weapon": "M27IAR",
+        "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_ZenitcoRK2.xml",
+        "reason": "selector has no WB/GS modifier match",
+        "selector": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical03_W20",
+          "guid": "bce0e7b7-6076-4f31-b84d-cd016a99793b"
+        },
+        "actionGuid": "6946d338-854f-4193-a84b-11df50bca172",
+        "resolvedSiblingSelectorCount": 1
+      },
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/MG/M27IAR/M27IAR_Ability.xml",
+          "guid": "7e5a6822-4c72-4295-b9ae-78cf7c1d0ec5",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_BottomRail",
+            "guid": "cfb420dc-bd25-49c7-ac6e-69894145cc6e"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/MG/M27IAR/M27IAR_Ability.xml",
+              "guid": "6946d338-854f-4193-a84b-11df50bca172",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical01_W20",
+                    "guid": "2ff1f62e-3dd1-41af-aca2-63d167ea5833"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/WPM_BTM_VerticalGrip01_W20.xml",
+                      "guid": "ac4c4c8a-68d7-47c7-8e64-54581c056a74",
+                      "effects": []
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/MG/M27IAR/GS_M27IAR.xml",
+                      "path": "/File[@Guid='14125ecf-86cf-4a6f-a36f-70bec65ac970']/Class_539cff9b[@Guid='433704e9-0860-49cc-8351-6ca6a721dcee']/Field_2296f84f/member[@Index='2']/Struct_3e61171a",
+                      "type": "Struct_3e61171a",
+                      "modifier": {
+                        "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P20",
+                        "guid": "3a5f2b2b-60a8-453d-91c1-ad2b7f5369a7"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P20 [3a5f2b2b-60a8-453d-91c1-ad2b7f5369a7]",
+                      "rawBranch": "0x00000003"
+                    }
+                  ]
+                },
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical03_W20",
+                    "guid": "bce0e7b7-6076-4f31-b84d-cd016a99793b"
+                  },
+                  "wbModifiers": [],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ],
+      "interpretation": "Unmatched additional selector; the same action has resolved weapon modifiers."
+    },
+    {
+      "issue": {
+        "weapon": "RPK74M",
+        "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact1.xml",
+        "reason": "selector has no WB/GS modifier match",
+        "selector": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPKM_W05",
+          "guid": "89c6dcd7-ec28-4e79-8744-b0a04e1711b1"
+        },
+        "actionGuid": "08451be6-ff24-419a-8e56-6eac7bab93e0",
+        "resolvedSiblingSelectorCount": 1
+      },
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_Ability.xml",
+          "guid": "9fc2996b-a946-4c2f-bd06-bab1ebfbb174",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_Ability.xml",
+              "guid": "08451be6-ff24-419a-8e56-6eac7bab93e0",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPK74M_W05",
+                    "guid": "335e1954-3ba8-4cb6-944b-5817d24612fd"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_030Cpt1_RPK74M_W05.xml",
+                      "guid": "82a447d7-d43e-46d6-b3dc-2aaa00f0e090",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_030Cpt1_RPK74M_W05.xml",
+                          "guid": "eba72860-cb60-4c82-b781-4a9e6b54ba99",
+                          "type": "Class_e7d2410a"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P10.xml",
+                          "guid": "2511b123-caee-40d8-80e3-f0be8613fedf",
+                          "type": "Class_303a33cc"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P10.xml",
+                          "guid": "d7edf1dc-2a6d-4a1c-91b4-18f3ba68247a",
+                          "type": "Class_4aac041b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P10.xml",
+                          "guid": "b1077e7b-74cb-455f-b5d1-bd4356a2eded",
+                          "type": "Class_03db7a68"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_P05.xml",
+                          "guid": "a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+                          "type": "Class_2fea847d"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_CSway_P05.xml",
+                          "guid": "5332816a-2233-4750-991e-02667a0da366",
+                          "type": "Class_28d25398"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10.xml",
+                          "guid": "270b8161-bfc2-416b-8809-0c61111980aa",
+                          "type": "Class_c42bd53b"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml",
+                      "path": "/File[@Guid='478088e3-71b7-4334-96e4-1d92ee96f485']/Class_539cff9b[@Guid='98dfcfa8-726e-4538-af32-87e2e530fb21']/Field_2ffeb6ac/member[@Index='0']/Struct_28529b7f",
+                      "type": "Struct_28529b7f",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10",
+                        "guid": "29129748-58a1-47cc-8307-02118ea4cb43"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10 [29129748-58a1-47cc-8307-02118ea4cb43]",
+                      "rawBranch": "0x00000001"
+                    },
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml",
+                      "path": "/File[@Guid='478088e3-71b7-4334-96e4-1d92ee96f485']/Class_539cff9b[@Guid='98dfcfa8-726e-4538-af32-87e2e530fb21']/Field_4d248d91/member[@Index='2']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10",
+                        "guid": "334bcb59-3958-4003-8eb3-fd6d4057c592"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10 [334bcb59-3958-4003-8eb3-fd6d4057c592]",
+                      "rawBranch": "0x00000004"
+                    }
+                  ]
+                },
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPKM_W05",
+                    "guid": "89c6dcd7-ec28-4e79-8744-b0a04e1711b1"
+                  },
+                  "wbModifiers": [],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ],
+      "interpretation": "Unmatched additional selector; the same action has resolved weapon modifiers."
+    },
+    {
+      "issue": {
+        "weapon": "RPK74M",
+        "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact2.xml",
+        "reason": "selector has no WB/GS modifier match",
+        "selector": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10",
+          "guid": "8c9b2a1b-b5c7-4e49-8ab0-0c1e7fe136ed"
+        },
+        "actionGuid": "6d6d8580-c8b5-4625-bdfc-e777c4902ca6",
+        "resolvedSiblingSelectorCount": 1
+      },
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_Ability.xml",
+          "guid": "82de5f94-1f00-48bf-b75d-a9ede2292a8e",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_Ability.xml",
+              "guid": "6d6d8580-c8b5-4625-bdfc-e777c4902ca6",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPK74M_W10",
+                    "guid": "5c2a33fe-4b68-43e8-aecb-1657e4314ef3"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_030Cpt2_RPK74M_W10.xml",
+                      "guid": "180a6503-7763-4ef5-b045-c5ac709223e9",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_030Cpt2_RPK74M_W10.xml",
+                          "guid": "964001ac-4331-44ba-a790-b5bb5e0852e9",
+                          "type": "Class_e7d2410a"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P10.xml",
+                          "guid": "2511b123-caee-40d8-80e3-f0be8613fedf",
+                          "type": "Class_303a33cc"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedRegular_P10.xml",
+                          "guid": "46f973bd-002d-40e3-a35d-7fb4bf4c6c9f",
+                          "type": "Class_9705264b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_P05.xml",
+                          "guid": "a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+                          "type": "Class_2fea847d"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_CSway_P05.xml",
+                          "guid": "5332816a-2233-4750-991e-02667a0da366",
+                          "type": "Class_28d25398"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10.xml",
+                          "guid": "270b8161-bfc2-416b-8809-0c61111980aa",
+                          "type": "Class_c42bd53b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml",
+                          "guid": "1955c72d-e5a2-448a-8444-9181cd095ee4",
+                          "type": "Class_4aac041b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml",
+                          "guid": "b66c5803-07dd-46d4-901b-1a97928885ca",
+                          "type": "Class_03db7a68"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml",
+                      "path": "/File[@Guid='478088e3-71b7-4334-96e4-1d92ee96f485']/Class_539cff9b[@Guid='98dfcfa8-726e-4538-af32-87e2e530fb21']/Field_2ffeb6ac/member[@Index='1']/Struct_28529b7f",
+                      "type": "Struct_28529b7f",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10",
+                        "guid": "29129748-58a1-47cc-8307-02118ea4cb43"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10 [29129748-58a1-47cc-8307-02118ea4cb43]",
+                      "rawBranch": "0x00000002"
+                    },
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml",
+                      "path": "/File[@Guid='478088e3-71b7-4334-96e4-1d92ee96f485']/Class_539cff9b[@Guid='98dfcfa8-726e-4538-af32-87e2e530fb21']/Field_4d248d91/member[@Index='3']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10",
+                        "guid": "334bcb59-3958-4003-8eb3-fd6d4057c592"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10 [334bcb59-3958-4003-8eb3-fd6d4057c592]",
+                      "rawBranch": "0x00000005"
+                    }
+                  ]
+                },
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10",
+                    "guid": "8c9b2a1b-b5c7-4e49-8ab0-0c1e7fe136ed"
+                  },
+                  "wbModifiers": [],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ],
+      "interpretation": "Unmatched additional selector; the same action has resolved weapon modifiers."
+    },
+    {
+      "issue": {
+        "weapon": "RagingHunter",
+        "attachmentXml": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_MatchTrigger.xml",
+        "reason": "selector has no WB/GS modifier match",
+        "selector": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/MatchTrigger/U_WPM_ERG_MatchTrigger_W15",
+          "guid": "3eaeac2e-a854-4cd1-90db-216da7845135"
+        },
+        "actionGuid": "20c7e702-660b-4eeb-97cc-87def6607446",
+        "resolvedSiblingSelectorCount": 0
+      },
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml",
+          "guid": "cdc63f6b-3da1-40bc-b150-a2faf6f9c504",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Ergonomic",
+            "guid": "6ccff60f-5bb9-4353-b5bb-9a881945fd85"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml",
+              "guid": "20c7e702-660b-4eeb-97cc-87def6607446",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/MatchTrigger/U_WPM_ERG_MatchTrigger_W15",
+                    "guid": "3eaeac2e-a854-4cd1-90db-216da7845135"
+                  },
+                  "wbModifiers": [],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ],
+      "interpretation": "No selector in this action resolves to a WB or GS modifier."
+    },
+    {
+      "issue": {
+        "weapon": "PP19",
+        "attachmentXml": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact1.xml",
+        "reason": "selector has no WB/GS modifier match",
+        "selector": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_025Cpt1_UMP40_W05",
+          "guid": "ede0a101-c5db-4444-9dc8-695c8abf82db"
+        },
+        "actionGuid": "69d18188-d12f-445f-803c-2fd7d5d846f1",
+        "resolvedSiblingSelectorCount": 1
+      },
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.xml",
+          "guid": "b1917526-5086-4f7b-9693-3387a54825f4",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.xml",
+              "guid": "69d18188-d12f-445f-803c-2fd7d5d846f1",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_025Cpt1_PP19_W05",
+                    "guid": "07a21f3c-aa11-417a-9c6b-bfede981158b"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_025Cpt1_PP19_W05.xml",
+                      "guid": "8c59d08d-f4c6-4451-8e0f-cbdccc919a0b",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_025Cpt1_PP19_W05.xml",
+                          "guid": "8fc99a71-54a3-49b1-9729-6d275dfcf647",
+                          "type": "Class_e7d2410a"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml",
+                          "guid": "1955c72d-e5a2-448a-8444-9181cd095ee4",
+                          "type": "Class_4aac041b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml",
+                          "guid": "b66c5803-07dd-46d4-901b-1a97928885ca",
+                          "type": "Class_03db7a68"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P10.xml",
+                          "guid": "2511b123-caee-40d8-80e3-f0be8613fedf",
+                          "type": "Class_303a33cc"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10.xml",
+                          "guid": "270b8161-bfc2-416b-8809-0c61111980aa",
+                          "type": "Class_c42bd53b"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/SMG/PP19/GS_PP19.xml",
+                      "path": "/File[@Guid='861eaa50-a5ac-435c-ad8d-04c18b68ac45']/Class_539cff9b[@Guid='7027c968-f7e5-49a5-b98c-f307e0e7e0f0']/Field_2ffeb6ac/member[@Index='1']/Struct_28529b7f",
+                      "type": "Struct_28529b7f",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10",
+                        "guid": "29129748-58a1-47cc-8307-02118ea4cb43"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10 [29129748-58a1-47cc-8307-02118ea4cb43]",
+                      "rawBranch": "0x00000001"
+                    }
+                  ]
+                },
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_025Cpt1_UMP40_W05",
+                    "guid": "ede0a101-c5db-4444-9dc8-695c8abf82db"
+                  },
+                  "wbModifiers": [],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ],
+      "interpretation": "Unmatched additional selector; the same action has resolved weapon modifiers."
+    }
+  ],
+  "sourceSha256": {
+    "Common/Hardware/Weapons/MG/M27IAR/M27IAR_Ability.xml": "77a4a79bde2a9c5b2b0ce5be73a1e35ba86a6d9b1908a16a11eac87eba40557b",
+    "Common/Hardware/Weapons/MG/M27IAR/M27IAR_WB.xml": "17b5bc9c94da770388ca7915f4b7c41d79df3b2740bdda7bdfb4148785fc5565",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/SP_WPM_MZL_ImprvdSuppressor02_W30.xml": "80c89938dc9da762e1b707379f9aabe2953d32652e3ab1e1d5a5f5d7e8392ca7",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/LaserLight/SP_WPM_RGT_LightLaser01_W20.xml": "61c41715066761beff9192fa542bdd4df8dea1a00358e5fb34784cb035bd056b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/SP_WPM_RGT_Flashlight_W10.xml": "2f84aabf1cbfd8fe3d6f7091fee316be2a25c89db82a9763fb1e26203014c4fc",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/SP_WPM_RGT_Flashlight02_W15.xml": "7c226e4ff979da179f072131ef782ac89f3c4eca2c7ac60afa5686678b2bcaaf",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/LaserLight/MPDarkness_WPM_RGT_LightLaser01_W20.xml": "3ae307c447e76062eb22a7982945e8dc0429ea601a9a513a69ab1246ab708cfe",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/MPDarkness_WPM_RGT_Flashlight_W10.xml": "cf878f53b028da4f5a8f8fa9eda69fdd6017fc50a4deb5db59f4e774a49835c3",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/MPDarkness_WPM_RGT_Flashlight02_W15.xml": "cc47616fe5102a5208ff83af14bb4b757b9e907dd9a8b19cb0d40b0178568b11",
+    "Common/Hardware/weapons/_Attachments/Reflex/CompM5B/WPM_SCP_CompM5B.xml": "a3265bda2f1a28bcab069c1798c04cc1578609a5c17ee310e4aa53f40018b7b7",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/TrijiconSDO/WPM_SCP_TrijiconSDO.xml": "fc9f97120a57241b1b9ec82924e39e1840921cbb0b909c07274b7bec358c51d3",
+    "Common/Hardware/Weapons/_Attachments/_Shared/Canted/WPM_SCA_CantedIrons.xml": "2b29682fd2d900a169d919633ba91f6edcc0d2989e3dc5bfc8932d1a08f2a57a",
+    "Common/Hardware/weapons/_Attachments/Reflex/OPK7/WPM_SCP_OPK7.xml": "9b8d95789f28cc881f42a6fc4ebb81ee82bd8f70573aac485a1943f09de4cde3",
+    "Common/Hardware/Weapons/_Attachments/Holo/VZOR3/WPM_SCP_VZOR3.xml": "ab3346dfced377a7767132a4c36462be295db8848cc09ae678040101284f0ef0",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/1p781P/WM_1p781P.xml": "09f1f8668abf7fe4e60e0faca01bbc58bec01d5685a9fe89f30bd5659d2ffaa8",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/NX81/WPM_SCP_NX8-1.xml": "394227ba51a7c6be636201ba543cd72e62e9b7b788778fb66ee10e11a36819d3",
+    "Common/Hardware/Weapons/_Attachments/Holo/PG350/WPM_SCP_PG350.xml": "1ef560dbe6ac1c712efcbade13039660e2bc9c0ef7a334bc058752bf97b0c4a0",
+    "Common/Hardware/Weapons/_Attachments/Reflex/EotechXPS3/WPM_SCP_EotechXPS3.xml": "3af912548b20e51d9e0957b20f91a7661378439dc465e5fbde68747f76a71198",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/TrijiconM150/WPM_SCP_TrijiconRCO.xml": "244e598afee275e1dba56e55e6bc9f380a26845531b43fd0801ead109e1431dc",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/Tango6T/WPM_SCP_Tango6T.xml": "7c4f739be8f1d6d92016f480a3672dcccd10ad2afe55bdb086c33bd386d4c8b8",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/EOTechG43/WPM_G43Magnifier.xml": "88dffb30fb2bb3ecb08bba2203e1936627acca8b4204d950d3d330826e9954aa",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/EOTechG45/WM_G45Magnifier.xml": "fefb4cd50cb111489d5bd0db023efed9f17847c7197991bcfb59def13de7ec7b",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/ZT410/WM_ZT410.xml": "89f726895ba53e99b16b64feb80af8162fa18c795786bf70865e708363adecc4",
+    "Common/Hardware/Weapons/_Attachments/Canted/RedDot/WPM_SCA_CantedRedDot.xml": "8764533cac011554bccf668f1f89b2ad043cd9b342ce08ffd16518d581829d34",
+    "Common/Hardware/Weapons/_Attachments/Reflex/Mepro22/WPM_SCP_Mepro22.xml": "e612f60d902cde7037418f281d44b28987fde3cb5f08684934047f120dcdfab0",
+    "Common/Hardware/Weapons/_Attachments/Reflex/Romeo4T/WPM_SCP_Romeo4t.xml": "9d46109f3f3aadcfdb7aceb6a6db704cce67a98c07f7753488515c20c7de1534",
+    "Common/Hardware/weapons/_Attachments/Reflex/SteinerCQT/WM_SteinerCQT.xml": "d86456bfe10129d5d75fcd92fde9eab3d0e313dfa4a4b79bfaa6ceaa56c663a3",
+    "Common/Hardware/Weapons/_Attachments/Thermal/ANPAS35/WPM_SCP_ANPAS35_Base.xml": "b42a89bf575fb60bb834d188dcbc65215b3bea15170a986f798670aa04f74d73",
+    "Common/Hardware/Weapons/_Attachments/Thermal/TrijiconREAP/WPM_SCP_TrijiconREAPIR.xml": "3e33e7e9d4dd7c3005c8cda402fe3a1c442711ca458d227f1ed859a85884c1fa",
+    "Common/Hardware/Weapons/_Attachments/SniperOptic/1P885/WPM_SCP_1P88.xml": "7c326f92532b2d95e8658fabc8f65e325cae1b9fc87047beb114ea48d19e44da",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/Bravo3x/WPM_SCP_Bravo3.xml": "2cd1adc86fcfc6ea90e9aa258b8216328ae3b2cdf39a3a37266005feca969bfa",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/Elcan4x/WPM_SCP_ELCAN.xml": "fa9f7f3aff9fd09ee0e0b9511c8e75fec156903159b5c3ff30c7ddda4ad2e798",
+    "Common/Hardware/Weapons/_Attachments/SniperOptic/MarchFFPShorty/WPM_SCP_marchffpshorty.xml": "af7504875ff0d578909835d6576f69ec0e56bd1000ad4dffded4cf4d0875993d",
+    "Common/Hardware/Weapons/_Attachments/SniperOptic/Mark4M5A2/WPM_SCP_Mark4M5A2.xml": "65b2372dd8de82331a94257585140dbb458df98e1d706dce678a5821bdb88e34",
+    "Common/Hardware/Weapons/_Attachments/SniperOptic/NFATACR/WPM_SCP_NF_ATACR.xml": "796b4089c9a93f1b673d2d9263c93dbf0e3ee4d98050d17c89e049f3793aa6ab",
+    "Common/Hardware/Weapons/_Attachments/SniperOptic/NX84/WPM_SCP_NX8-4.xml": "8aa9db824e951288b57de633e6902ab783a50e9dc2b572d925328d7988f7ef5b",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/PO4x17/WPM_SCP_CODM2.xml": "f9929b81a08306f09ba630ed21106050b5ed83c43aa856005c9016fffc9774e6",
+    "Common/Hardware/Weapons/_Attachments/SniperOptic/SBPMII/WPM_SCP_SBPMII.xml": "45c2d077e555ba76e1f4d0894433a89b5cd0e17e7b4275840045174b97f9bda9",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/Spitfire5x/WPM_SCP_Spitfire.xml": "8bcbe678e9c95e9cbb5daaebca618f69807520e0e8d12e5164a4404f93de108f",
+    "Common/Hardware/Weapons/_WeaponModifiers/WM_Variable_4x00_1x00.xml": "652b24482fe41d101953936b3cd907e6adc141253d597197c447a848934d3c35",
+    "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconMRO/WPM_SCP_MRO_Tall.xml": "97d38bfb593fb91b6d25184f92ad2de7d1fb78f7f26244615c823e08bbe98b9c",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/SteinerT536/WPM_SCP_steinert536.xml": "f0702a3e57e9d8ae432e137805350b5d26d5d2dc4843e2baf72c89752bb6bd9e",
+    "Common/Hardware/Weapons/_Attachments/SniperOptic/VortexM157/WPM_SCP_M157.xml": "94e476b69c0e08a33982b922cd067b5156e299676fcd6e0153d23b84c5a120c0",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/TrijiconVCOG/WPM_SCP_TrijiconSCO_8_6x00.xml": "1ff84954012d1f84fb64282149e471c233f0074cc7ad59fcb8c244df79d83a83",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/WPM_TOP_50mWGreen_W20.xml": "fe075b4efd0e5a456c1d310381831bf62a15a379964c60e3efa15018f5b1289c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/WPM_BTM_VerticalGrip01_W10.xml": "9ca156f85ddd4bd8ae394821e1e25b010f20ebc3aa5ac4741a2a54df499cf73a",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/WPM_BTM_VerticalGrip01_W20.xml": "a8c3b578fa93fcbbd18d897bab9ff5a7d5624c96ae7ebeb36404ed6e94594ac5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/WPM_BTM_VerticalGrip02_W20.xml": "23c2b1f36c283d80936eece4ccc5edd52330c61ab9341f33147679f1515c7041",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/WPM_BTM_VerticalGrip03_W25.xml": "a526b4873a526b6b56e246a4f121005fe432d0faa1c30dcf3ba94398e8044a17",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/WPM_BTM_VerticalGrip04_W35.xml": "6e2ad62a28d26ec3bfb01ae7b326d035cc8d34f7ce6e092050b0db52aa6c26f0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/WPM_BTM_FastAim01_W30.xml": "6a181450c7fd155d83c99066b5f1dc858ec809ef8c5bae34238bf1ca73f229c9",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/WPM_BTM_FastAim02_W30.xml": "c7844e2da08c23bd006ea1a0c5b12ca953bb1cd02703ed30abbbcb6447fd852c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/WPM_BTM_FastAim03_W35.xml": "01720fcdb7718b7091160e096c5e3216b2ecb8c98095795a258646b852d331e5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/WPM_BTM_FastAim04_W45.xml": "5e32ca6aff01ce10428d9f099dfdf5403d6ba253914e2fe1dbe6d2103b3ade2d",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/WPM_BTM_Fast01_W25.xml": "9e6640c212eebba6956868e42b038bfa3a9e9cc82fdf621943fa94f9ab4ba82c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/WPM_BTM_Fast02_W25.xml": "abc35ee5c575c8ccb785cc8feb9a2b9e3aaf90e96272133a69d9c3d390385ab0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/WPM_BTM_Fast03_W30.xml": "0d5224090e0e89cae234e343804feba618390d02559ad90cff1b676260ab17da",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/WPM_BTM_GripPod01_W20.xml": "3b306e9da7468f8cded0493f635a3d6f4a8726533d1ab766e71b713f5db9121f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/WPM_BTM_GripPod02_W30.xml": "da55ac1bee2aed1bcd9a013c21d32e1f67372c6dbf3c5cc1b704d2c1ac9af082",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/WPM_BTM_GripPod03_W30.xml": "f69c2cd3011f649d7ae0278f9950c4e0ea756b6c88ad4c6354db4adbad2b4fef",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Bipod/WPM_BTM_Bipod01_W10.xml": "bc05403b0eac18f94d80e61b9a892cbcf53a3ab11024103f044fa832dc312e63",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/LaserLight/WPM_RGT_LightLaser01_W20.xml": "bb096ffc3ed494374d31f9cd2dabc28c0ffce7238de092687b5fda52d25da91e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/WPM_RGT_Flashlight_W10.xml": "9f96a1ebee12d5a001b07f21a1cba375fb0139a9aed2b7ba6dedbfb410d8d8a3",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Ball/WPM_AMO_FMJ_W05.xml": "792edfb7ae3fb1939cb0c584bb3669dbaa4b1ef049fa3087309a6944f2a576ee",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/TungstenCore/WPM_AMO_TungstenCore_W05.xml": "9d1ac8eef9410f7cf2ee36b6e845f4a45b30b332ea9d593a3218f3afd29df692",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Frangible/WPM_AMO_Frangible_W20.xml": "d0312ab0d9c9425ce0d24462fb87d4255a971e27363040e57369121aba3661f9",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/PolymerCase/WPM_AMO_PolymerCase_W10.xml": "5655a30e454aa5a6b269a607feecc1ce87dc7c5c063def2c553b3053c8f45019",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/HollowPoint/WPM_AMO_JHP_W10.xml": "febb605e08cd903cfb46f5bb3baef8f7feb6fdb915fb6a8424a3739423279b29",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/BallisticTip/WPM_AMO_BallisticTip_W20.xml": "83def1c10bca3d73d80e1d266028c649134d587a047c5e3a4d0590e51bf6a723",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/WPM_RGT_TaclightHIP_W15.xml": "d2eb9fa47d8e6a115c10b90005356a135e1ce1e1816811d33baa7634fd51c335",
+    "Common/Hardware/Weapons/_Attachments/Thermal/HISSHD/WPM_SCP_HISSHD.xml": "e6234838f486f8310abc09e494329dd2105b491946f1bfd84760122837ef3a40",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/ImprovedMagCatch/WPM_ERG_ImprovedMagCatch_W05.xml": "c531e2e7d78c5cb6a01b715bc611c45f1fa6f6d13213b8bfacff646c22d0edbf",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/WPM_TOP_5mWRed_W10.xml": "6bd6ad44543238f9278acd0ce894b8ced26e351072aff56848833895fd84638c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/WPM_TOP_50mWBlue_W20.xml": "242928e1f86bde28ab1e7b4c3da6fbbeac5664bf4d98b9e3e3963c8582f83481",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/WPM_TOP_120mWBlue_W30.xml": "7e4fbd8135c34771c3b585264979445877e1c449b22702095afb4c347667c8d2",
+    "Common/Gameplay/InRoundProgression/WeaponSwap/WM_WeaponSwap.xml": "b384e389cb62b7ba5197718faf6e3f6a2226a3af6d1025d961b53f9c47d61b65",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/WM_MountedHorizontal.xml": "4c314b6788bc487f9d1813e8a60be88f9ccb0ee6da1183df9f7b7c17dfce84b4",
+    "Common/Gameplay/InRoundProgression/MountedPlus/WM_MountedPlusHorizontal.xml": "d6c3c6add2bb8ce6684df30ab0565953ef0e701e7a6d108a146bbc5285cf5312",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/WM_MountedVertical.xml": "9e575a33e3bb12e0e650f5c356c840510ad84b7eb5e1827e492f285c05c0a303",
+    "Common/Gameplay/InRoundProgression/MountedPlus/WM_MountedPlusVertical.xml": "ba3bb1299386384290966306caf45483bc881c794446f76728a2d731792d815c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Heavy_W10.xml": "953fb3c0f31852ac0cc61ea8d5ed05ebd80f45bd39e783a2578e4fb20da6c7e8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_HeavyExtended_W10.xml": "f4960b17f8150656d60dcadfb7f3a479bca8d72e42771894f282657e6ff09b82",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml": "25aa059379e7d107717c3be859a5dfb419b70d2994d9c1a73caaf268d495f8ee",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Extended_W05.xml": "3b609503ee51b2ea547b1aa74c97bf55e4231ce0d6112c7351fd32f81a0d3a2e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Fluted_W20.xml": "561006916fbc8d5073670bcb4d4c289b1f309ad219383da00ca12dc74c94a713",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Short_W15.xml": "c39324635c5e7d79f84e5f84a6431e594c8ffb4c50004723b613f6450d68fad8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/WPM_MZL_Brake2_W10.xml": "d0410d7c55127d2d9ceaed87b8efb20d331e5fc47eabead3274016e07297e74f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_Suppressor02_W25.xml": "b0bfe449f5a1109a0e9617ab2fa47b09c75e45886d6f2f6a31b6c67ab2a3e8ab",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_ImprvdSuppressor02_W30.xml": "fa685f60cdb96f94c51cdac901b3ff752f14cf6bff4ca19c88185b25ba2ff86a",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml": "f9c34240556a60bba3a6c781c2c3fd9cb3bf5496ce20c21f97cbcb7663fadc7c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_020Cpt1_556_W05.xml": "f8055778e3fbdd410aeb568b918731c225dc50b2ae597f20229a00791b3bcdeb",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_036Ext1_556_W15.xml": "df81ae1fa1ba7f4a824adb83a941cc7c9ebcf1f4b671e3990cfda004a755b37e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_040Ext2_556_W25.xml": "691e64dcca97177001c94bebe92eb7522f45a6e0390c90ecd731f4b0f8bd8e3f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/WPM_MAG_040Ext2Fast_556_W30.xml": "f7c4aaf3e1933eacd48c854285413c6b4b865ef1f68304e5ec503d3c03a96124",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_045Ext3_556_W35.xml": "745b5229dfb58459e677a9f4f9b2a7c576edd1da4b538c2ffe71d82f740cb35e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/WPM_MAG_045Ext3Fast_556_W40.xml": "0f2ba45ae8bd1a8a1e081a6ab7879eba7dd0ca27e0c4741f643c6d9eed581eab",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_050Ext4_556_W45.xml": "5b682996ebe32d12c8e7679e6d879f99343c913d6303f23745349a115b6faff8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_060Ext5_556_W55.xml": "56de524098dc37ddb7a03a3e290840262f4ced3e16eeec295a4f4c3caa078e6e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/FlashHider/WPM_MZL_FlashHider_W10.xml": "44cc970dafc7f85b3243b0e10a432905c3e3e620e332964ca7d53510386477f0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/WPM_MZL_Brake3_W20.xml": "8facfb004a3d400884b9d3f45fcc55aa6c44d92b82ba894d400747617e868eea",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_ImprvdSuppressor01_W30.xml": "0550277c7d13ca0a25a6cd7e4a9d5e66ca6fa6a19c150714e13e3df6f52366cd",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Bipod/WPM_BipodActive.xml": "ffd841c6d2d1f37dcd641a36bb4c7af4f2bddbd60f5c1fc0e21279df6ee24dd0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/WPM_BTM_FastAim01_W20.xml": "c9c2fe0e8def5700558a735a0d3af9221e30e60110ea8cda223189deb6cc17f5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/HandStop/WPM_BTM_HandStopRifle_W15.xml": "8df17b992ca1dca4a84cc3e08d5dba994362e2b2853e8075c1ebf9a1c2785e33",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/WPM_MAG_Std_W05.xml": "7362562482b4467a28ff5a1c310865e7ad6a9a84fc2dcb0b999191f0b14b6edf",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FlaredMagwell/WPM_ERG_FlaredMagwell_W10.xml": "bb7c019d3d38e5f0a408be4feb73fe0b3d08dbdf92ba76506f93fe159f525395",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE.xml": "f849ff06fc6543ded257b2e51bd036347b2ebe4a2cfb99a503b807d7f6fe9c0d",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE_Plus.xml": "8bdc4d16ebd8f64d59a22b0e2cb6d2bd4886c23a93329c9c9cae37e48454de64",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE_Reload.xml": "e3c59157e0e91b6a1698ed84f5c7d84721cebb7dcd77d907e17fdb42d8cd5820",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320SMK.xml": "f1d291aa69e00e5a8ef61b0a30c3b994e410f707d6dc1879347b2e875ed2e816",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320SMK_Plus.xml": "9533cb70a99239b7d747bc1ecab660c1aa44c88823eecd19f49098ef7284983b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320SMK_Reload.xml": "0acb30a24fdce477ca95b01f8ec5c5642bc9cadd5212c06e93fbfd7f73d3f130",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320AT.xml": "640cfe07fe76873fc36f7892cb21a0ca1c2b369cd6b65836c8c6a557faa0099b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320AT_Plus.xml": "5d798b8c6a7ceede4659450c3dfad24d807cc7110434b53fd50fdc6fc58eca4c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320AT_Reload.xml": "e047999304abc18b0bad2fad327f0e0522c31297f8ea5704d3ffd163ca7f3c1a",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB.xml": "2903d1f475d65ecfcefb968f30e00105ad34c28a40d75d71ca145c713512daa0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB_Plus.xml": "30ad687a41ef0a90c6a33950edb6562bd30585b5c8ce20e018095a9193bdddf0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB_Reload.xml": "81360b7aa902a05d5e2a4176bc28a30702fa9b39cdd3b1a1ae0e655b03035384",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB.xml": "817a29aa512cd81e335d4aa0dad702d17db43f0e176ea19ee8bd79fcbd01496e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB_Reload.xml": "9687a582fe749c41cc563c556104c2e4a5565da588f143088434efa37351cd35",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Compensator/WPM_MZL_LinearComp_W10.xml": "cd53225d5562c4ba5ef8b58ba4c79e0fd65df488b1619e8ad38bcef449834b5a",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSReload/WM_MountedHorizontal_ADSReload.xml": "0723660a32c569abdbec613cad89306e520c01d96568fc708740d09959b4e3c4",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSReload/WM_MountedVertical_ADSReload.xml": "a4bd26d3660d4e24a30fa628899a37367dde508aa918260d1c5bd6314265b6fe",
+    "Common/Hardware/Weapons/_Attachments/Offset/RedDot/WPM_SCA_OffsetRedDot.xml": "c37ae559cde7383ea9845f3cc272f9e8c4c9142f5658abc427b7cc201a9a8e4a",
+    "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/WPM_SCA_Variable_3x.xml": "e8811269e28ec337d110c4a8238d316d7e5f66468305559c9746e90ebcab3bb9",
+    "Common/Hardware/Weapons/_WeaponModifiers/Sway/WPM_Sway_Archetype_2.xml": "1e51b5875f9b58d343e6391ff773c5f56be31fdb946f9a4ec6aaa12fb5e5facd",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_020Cpt2_556_W05.xml": "c2885c63728cdbb7b34228020f4a4f5c61e2bd5f89d259fddcead55d434bbd7c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/WPM_MZL_Brake1_W05.xml": "8f524b9fbd1b3455aa02c370c69fd984c39744accd0c4201872e5abc3d288307",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_Suppressor01_W20.xml": "5f01a2d21f08599afcefc842bc7d5edd53e02bbce45bfff250a5272b03d3c5d0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/WPM_TOP_Laser_IR_SP.xml": "fafa766c6ad669d37493bbcb4b03784222d5696d721ace506fe4fb1ca6473d1e",
+    "Common/Hardware/Weapons/_WeaponModifiers/WPM_Procedural_GlobalScaling_Primary.xml": "79dc8a019ba34c018d451d480b8d1ab45851f0f914c0880251657626c66e64cc",
+    "Common/Hardware/Gadgets/Misc/DualPrimary/WPM_DualPrimary.xml": "32b12ba121ba215083c878c774ece3fb1c8064d955751b07c1f889457185d447",
+    "Common/Hardware/Weapons/_Attachments/Reflex/EotechELFX/WPM_SCP_EotechEFLX_Riser.xml": "5ccab687643b196bbda6dc1a6e5ab2a873930809ccea0c5199611fdb9e627f8e",
+    "Common/Hardware/Weapons/_Attachments/Reflex/RMR/WPM_SCP_RMR_Riser.xml": "1d3313b8c56ad5b346ec174acfda56650c6c8a40db42a7c8031356a9545a80f8",
+    "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconSRO/WPM_SCP_TrijiconSRO_Riser.xml": "75fe6fdac857eb8c62ef9c7c8efaeabd371df6447547fc49e43574f56d0feb34",
+    "Common/Hardware/Weapons/_Attachments/Reflex/CQS/WPM_SCP_ShieldCQS_Riser.xml": "c2c11d1120558d085fded90bd110168a1c3a11945d16b5e1cd81d91228a0e2f9",
+    "Common/Hardware/Weapons/_Attachments/Reflex/RomeoX/WPM_SCP_RomeoX_Riser.xml": "47c680552db412f791ad20d0ee89e515d3d8c5c376c109ced645b22fb2556d3d",
+    "Common/Hardware/Weapons/_Attachments/Reflex/AcroP2/WPM_SCP_AcroP2_Riser.xml": "9826bfd1b8ab162bf479bcd727c61637b1f8c9f7e76c9bc99be599f5e8352f82",
+    "Common/Gameplay/InRoundProgression/WeaponTraits/Support/WPM_SupportTrait.xml": "e47dff2a10e844792fc217b8e8760f4c52da50f5ce546a559d69130ebfa270e1",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RailCover/WPM_ERG_RailCover_W05.xml": "419e427fd7bd70c3509f5d44deb97306ece75bc5787e294d9e59a9d91d19bd71",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/ElcanDR/WPM_SCP_ElcanDR.xml": "8ddc6e454223562fd78d432eade2959e1a5221b2b750b1dcfd1ec38ffaae63c5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/WPM_TOP_5mWGreen_W10.xml": "e2268d809dd8c983f41d57a4379a1bd544f346c9e389166929f1a6ee26b4bd25",
+    "Common/Hardware/Weapons/_Attachments/Thermal/HolosunDRS/WPM_SCP_HolosunDRSTH.xml": "269f877b98e48b8fed9cff959ff0c48f61920785ee5fa3a0102d42f34faafb4f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/FlashHider/WPM_MZL_FlashCompensator_W15.xml": "9c1d9bd4b0d43f151109327618549fd0f680f7cb9bea884e9341a25facce9129",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/WPM_TOP_50mWViolet_W10.xml": "bfa9ce9a9d1b8e0270ef3392d2f5071a8e75f9592e8aafe0f2ad6f168ae5f883",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/WPM_RGT_TaclightADS_W05.xml": "88a4199165f675ac13b273a20dac8a2e8f63f9b7a5208035d221435469a996a1",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/WPM_SCA_Magnifier_1x00.xml": "f19bfd6983b244c295d89b4cc75ec5170a2b7258991883d599dbd92e3fe488fc",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/WPM_SCA_Magnifier_1x25.xml": "11cdea3ad4fd3ef3c9331cef0beebe107bb9c2fe903887c989153b9774a45808",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/WPM_SCA_Magnifier_1x50.xml": "70fd511f87645bde6d2fdd0a775b4e31230d1db332a5c2d80e9c7def68bb452b",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/WPM_SCA_Magnifier_1x75.xml": "a875554da5787113f2bcf8f1bf8e4c83f963b99340894bd56a14fb355ec3a1e9",
+    "Common/Hardware/Weapons/_Attachments/Magnifier/WPM_SCA_Magnifier_2x00.xml": "18a0e0a5761b4cce7bbc15e901a7c9477d40af10f7390b7464af9b8cd88fac39",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RecoilBuffer/WPM_ERG_Buffer_W05.xml": "80bf28c2e435a49070379587b42a0c6b018398bc032856e6b049f2b7553d160f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Compensator/WPM_MZL_Compenstator_W10.xml": "75535c4c4cd683b1def17ed53d2d0367af49981e194bbfe729ee312b4853f810",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/M145MGO/WPM_SCP_M145MGO.xml": "639142d8df101a823eae1ea73a94ee644b032907b256a3734d0b04d7c9c48073",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/QMK171A/WPM_SCP_QMK171A.xml": "02258b401a73c258053b723264fc29e60f32962b5a73e704a42e774ece42d188",
+    "Common/Hardware/Weapons/_Attachments/MidZoom/1P86/WPM_SCP_1P86.xml": "b36fb42a3d50291bf26241b0bdf13dd4874b761f10a299a183d2dae8efe28174",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_HybridSuppressor01_W40.xml": "02019d84f2e708a887195fb1ff6e15dbcdf16f79de8927c3134d5caed2e9547d",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_HybridSuppressor02_W40.xml": "0e4ea14cd431bfb4c41fcfd6da8a1bda163de58d8794a0709f6c22b4e80a9de0",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_HybridSuppressor03_W30.xml": "9f13f61f5d7075498d171760e3b6bba5bbe2279347cd3b8fc8c308681644fdcb",
+    "Common/Hardware/Weapons/MG/M27IAR/GS_M27IAR.xml": "8d7c65e0d4fe9589ef15bf0c73bdbe551830efddd8e1d74189f2cb50ae0513f0",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_AMO_BallisticTip.xml": "bb7dae70ef24f9b8714a33d71a86265977fa18e2fb41da8efe61711ac77d4777",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/BallisticTip/U_WPM_AMO_BallisticTip_W20.xml": "48430b5da8f1c0c0f5873c05b67236a5c90960ceb12454cc9b5950872cd4b6ab",
+    "Common/Hardware/Weapons/_WeaponModifiers/HeadShotDamage/WME_Protection_P20.xml": "f9916fd2f7b8c413871d2195cdb86c15cfea3c79781632019c406bcbf71bba38",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_AMO_FMJ.xml": "63323ceaf826c75e6738dcce8ea3c1975a1e1c59fac6d4b8b72d49f42f6b0e1f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Ball/U_WPM_AMO_FMJ_W05.xml": "6eaea55b142a6495c1f3cca5118c3c8957a16f22bdbfb7426937d3c6ea671f7c",
+    "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P05.xml": "134c2847f6b8f33a2f244efc04f925d68df2a298c22688ee86351a324a489ccf",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_AMO_Frangible.xml": "4bb7ecf79151e3187aa7561e570579de79ac32ecfb768166026cea842532047b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Frangible/U_WPM_AMO_Frangible_W20.xml": "ed1783d08b8e8d0a39d0820d7b058e49d509abee373ac35937157689d4de68c1",
+    "Common/Hardware/Weapons/_WeaponModifiers/HealthRegen/WME_HealthRegenDelay_P20.xml": "1911b40845628e805c7bb92d9fccf0b9fd05ab32f6d9dda803c619bfaa267036",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_AMO_HollowPoint.xml": "53e8924c16c0b9a1ce367e96b607a40c1b60717d8f61d3936dbcf13832d16d58",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/HollowPoint/U_WPM_AMO_JHP_W10.xml": "506ff034a7f262e204b86f158545f0ba992ec74b5d0b33bb537baec8e64162b5",
+    "Common/Hardware/Weapons/_WeaponModifiers/HeadShotDamage/WME_Protection_P10.xml": "65fd31d5c8c6638fcee2eb01473172e1e2f72183466a4ebb2ae52ae9b8b1fa37",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_AMO_Polymer_Case.xml": "19bcd57bf4005018918be063e8b26b51166d24edbd973b6f0cd477aa07962bab",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/PolymerCase/U_WPM_AMO_PolymerCase_W10.xml": "f0a46fc614441c2e9ab7c4eb4f571cf2c1da70854393e2f45a596d519a444a15",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P05.xml": "2a328c2e8dc3f76bc80c44dcf82051f58f74b2d58a3f882941865dc4096e2c53",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_AMO_Tungsten.xml": "66edf446379b878d4d3528ce3efce4b473aa0fdaeda9cbbc4bfa8bfed48a4c8a",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/TungstenCore/U_WPM_AMO_TungstenCore_W05.xml": "655cf167815b93d6d16c0671fbda6012531ea8bf1657f3a1645567a6438171c3",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10.xml": "30899f1e1afa35844bc804175a60f898536b2ab6bf10489fca175704783d6e3f",
+    "Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15.xml": "a75cffe9fe804472849d613d37b321cc15e388b7d58e4cedaf3146cb55a0a512",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BRL_BasicBarrel.xml": "9ec99dd6f8d4e74326825f5e79602cc04b62b271d5920be3f081d39a5ae2ab7f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10.xml": "f7112bd202d8ce9ed3de56146e23143e88cf8d0ce2b40b25ca48df8f36d95196",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10.xml": "a86b36f03216344eab3ac0134d4f43f174d90bfe72fcd8f7e4669105b77e26f9",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml": "57266f610ed9c1e20c3113a2d8ac1b087d9aed2a92b22145e95ee4872659f6f2",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml": "d669dcc57fae81e49a67f9ea17bdd4b56704334eecefb9fa87698fe0475dd27e",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BRL_Extended_Barrel.xml": "444124999d36971825dcfe22954220c5c93166efda620f3ed67175bdd9cd4362",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Extended_W05.xml": "db69fd16007496e39170d3c396d5b7ffbc0b75063afd374e2af11f8cf0ff0df9",
+    "Common/Hardware/Weapons/_WeaponModifiers/MuzzleVelocity/WME_MuzzleVelocity_P05.xml": "1f3a4b84e63701c685419a54ab53c6a91250fcd8d89bd3ddc0f2e3036062accf",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BRL_Fluted_Barrel.xml": "86c4c0525a198c3d1efd52cda0089368731938fe904155b47e25cec94c1a902a",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Fluted_W20.xml": "7692fd1920ca23707617d22e4d7ca23f4b5f22eeb6491d299ade6e5ead12d19f",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BRL_P10.xml": "9e4967968825ec5a38ab29850e2d4a190abeb3f4fa32be334fcfafac01dba358",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10.xml": "4d9dc4fb3bb135c307ca39c402e114b7467fd2100802d7aca7996ca67926df40",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BRL_Heavy_Barrel.xml": "325a9073446be912b0d5209d5fd511419f6c25e1addd008327692f2fec8267f4",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Heavy_W10.xml": "9d22f8c6b8fcc3cecd9eea200825548ad95d583e77c17041d4cb2657b7ba5263",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_40_BRL_P10.xml": "fbff1e32695713be96a6b69587e58706bbc5fdf686d6b26e554927f04f241c59",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BRL_HvyExtBarrel.xml": "c835fe761b078fd0f2bb1bd83651a251d7e3a82162c367cd0d1ebb20d236ce13",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_HeavyExtended_W10.xml": "37491c77adf464ea3a79c3f63db2893fa29b0035b7e3dcc5b637a0f032a1a4ea",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_M05.xml": "d34f927620953d394d7a884d14965ed5e6e95a5c382552b553a70fc8e8b3ca52",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_M05.xml": "ab2f421fc5ef9084966b2c0368bccdc6f214275cf2519bbff769933676887366",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BRL_Short_Barrel.xml": "94f4623c6109ff2e8ad5c924cbab885e26e66b195c53af1f2dd022183548829f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Short_W15.xml": "b38fdf43dc9096d1d8c8fcfd9db625ce91f9f29af4fc5ca3ba7d27d1579d3d6d",
+    "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BRL_P10.xml": "dd69e38cadd7533015d09abf77d5dd3b209f39de0a851c31a98b21b2bb1d5efc",
+    "Common/Hardware/Weapons/_WeaponModifiers/MuzzleVelocity/WME_MuzzleVelocity_M05.xml": "815c385cd5cc228ff2d8c97e1e8368900b689d820044f554a581521175ea2592",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_6Ch64_Vertical.xml": "ef0c135e5176d6bed9e5df629f3c76c8622e1d1e0ac0cdb8e218fe672801ed18",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical03_W25.xml": "12ca844ebb5b8596e7c749e73ddda8174c324a1ba7cb998f794e69eb8f6044a4",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BTM_M10.xml": "92da66b6682feb68f3accf594fc67e3686ff683919b08a85a71a73a4c55931dd",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P40.xml": "4d0ed17aaaf093c9fe1b1e14d37a0165faf90149bb16a8391f2cd37b888cc96b",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_M05.xml": "ce6b07a86105f26e45e57da1fc8c26aea6575a765ee7ea1839ce93201a80d33c",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_M10.xml": "af05774754ba8e6e5786140247be4b0ed185a3367a165e2df9ec58a3c4080fa7",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_BCM_Stubby.xml": "824098ac4b27be6a9b3d1c4f88757f75e9e7ef2680faaa856b073e9720d6796f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/U_WPM_BTM_FastAim04_W45.xml": "c2eb9078e74a0358f50ab6084192b8b09d36000e5eece2ae44970ba4d1ebfaf0",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BTM_P10.xml": "8a15741907cc4ce7ee336e9905a8e57903200bc8a7486e7914f67265dc691f34",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P50.xml": "1930e6b9baaea3e975c37cf619c04e171d8b81a3e47aa49c7238e2420f28f44a",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_BottomRail.xml": "79461180a98cd88b14d0f67e271cf7aa9f5db2f192f38f2b215eaaebd133dcbd",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_BT_Grippod_QD.xml": "af5d4a57a27d9a7cdb91e02d440ce6739eea9fb5da129d485dfa0882cd6a413d",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/U_WPM_BTM_GripPod02_W30.xml": "2895772a6cd9b9dd447439b91c98de6150870c6ca888df1da7893a0ab22aa583",
+    "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20.xml": "adaa5e93752c7c4602421e2a3429ca5dd8496da69f0b5b486b2a0ef6d30214c6",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_40_BTM_Bipod.xml": "33bed0574c909372f9527481067fc0f7278868f66d0236630b55fc979e8581b1",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P20.xml": "222fa29661638e689dc3dd00a52c8983e11e554b6202a337a6523c8fdbb775e4",
+    "Common/Hardware/Weapons/_WeaponModifiers/Grippod/GRM_GrippodDeployed_BTM_P30.xml": "365414b3bf2dfa82da85929ba153ccb312087ee3d554a38d6f603c7087e5fcf3",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Bipod/WME_EnableMountUp.xml": "ccb6ceee94d33c98d3986740a4a94ad59b44d0533444f940b20ac6671d19c9e1",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Bipod/WME_BipodTag.xml": "32900af5c0e30970b41dfa7ae47fb5378481fe8b0c0777bd62c6c9a67fe8eab1",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_FAB_TFS.xml": "b145eb2c62d00f97cf0adf75416c69354944fed5d620e6393d9ef2112c6d9566",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical01_W10.xml": "e619f037aa55eddecf9caac58dfe65c863d48f1c5231c7ab749ee8f9329ed9d5",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_GPS2.xml": "33b12b2d82503afd7d03864578bf39e29f07d3718f06439732c63cb48e0dfa5f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/U_WPM_BTM_GripPod03_W30.xml": "eed8aeb825a20ca64642f7abb16927553218416ca43653b969ff07005e07ecc3",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_HFGA.xml": "c2f92bc6d169d6a1b7234c2243c4fd554633d4056088db73bedeaa7d5c364991",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/U_WPM_BTM_Fast01_W25.xml": "80ca4be5265402c2a62aa20a35888d293db6ac581fadbdd316461ac75e019318",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P10.xml": "695b436264af8c994bfa8565893804c2e1d71aced69eee9361913bab13de6071",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml": "eca498340fa0f588ece213a65cab0c5b6d53d2cbd9e48d11fbd5e92212b6ced8",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml": "c9a3d9c3a5c8498d765e7d35fa6a5aac6a68646bcb52fa493750a32623bfbaf3",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_KAC_Vertical_Grip.xml": "58e5e834494b14118c65246ed223c53df726c19bb01d2e7de5a8b4e7071439c8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical04_W35.xml": "60dd3a2fd31e6dff9161919a0541a25c987bc2a8f22bf02cc694eabc554050d3",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_LT706QDHarrisBipod.xml": "c0c7e3bd5d3216ba28cea541e53d7a51a5496bfa93385d91fbe0971c5d16b958",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Bipod/U_WPM_BTM_Bipod01_W10.xml": "53cca3794f0ff89462d975b121c24e80587f67f57a001004a88efda5e7e0bc89",
+    "Common/Hardware/Weapons/_WeaponModifiers/Bipod/GRM_BipodDeployed_BTM_P50.xml": "dad773e9d9bc1ee7fadee0cfbfe1bf23a8d48588d1a335722f4231518b56f27a",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_LWRCI_VFG.xml": "26e0142c1c80d3c865d0fdd605cf81d3cffdee7542fe8a2aa0a33bf9275e7d28",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/U_WPM_BTM_FastAim01_W20.xml": "c5c137b2a5375d7730e26ae53b635cf5959db30dc2135872e96d07d4152ee98c",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_Magpul_AFG.xml": "09886aedbff200fd91cd9027ae9a094df3dfda4ae9d5b0db8c1f2bd5b3d1de1e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/U_WPM_BTM_Fast02_W25.xml": "fc2c2c20a73f73ff10819a45e8cea8368944749b9fc75a0001cc62706fd09845",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_Magpul_AFG2.xml": "21f53d31ecb88daba8b6a46283c61953c0d6b06ab44251aefcacb30a5bb39ff5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/U_WPM_BTM_Fast03_W30.xml": "5b778b8eb3a479d211caf9dc8d5eadae208e187921e6ec110766c74e8c5b9748",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_Magpul_MVG.xml": "e45c6cf9e182539ade5ac7ed54514fde3f8a3b154d2c09c00130a2075ba504ac",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/U_WPM_BTM_FastAim03_W35.xml": "76f4ad89b952efdaba531000aed7af486c27a285256d80ebe65596301d9c8c8a",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_MSBS_A2_Grip.xml": "661e6cd72e62beae787ad8cfd24c1a16164dcc2d1bf8c39054cff376e30f53b4",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/U_WPM_BTM_FastAim02_W30.xml": "c6504e4d2e38e24b9e8851a65ee0a17bc2a2589008dfd6de72198f3c32462c09",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P30.xml": "bb92ea2dd54ef9964124f448b9c52a145275ff61407e121957c4f173fecd47bf",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_QBZ_Grippod.xml": "1486df06654cfc9bc3f50b266aef9a54ec21f3ac083d1e00c2ff45c0811ea1d4",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/U_WPM_BTM_GripPod01_W20.xml": "75c507418877e620e4455f86d3212f88722e491f42ebbad99fa95570de268d9a",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_Tango_Stubby.xml": "f2629b5fc296aad10a7141d5a9bb364e2ea014a3d3224f2e368b943862ae4cdc",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/FastAim/U_WPM_BTM_FastAim01_W30.xml": "3a610aa4fcccb6e1d53b5ba3f5794de4dee0cfe2a78d5af8d2acf45beae1602f",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_TangoDown_Vertical.xml": "0218e49d0b51fb26bab1177b389600d824bce6e0e0f1185c1876d8cd75f2bd97",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical02_W20.xml": "e6a9b017e5b1216f93847a8f94ccaa47746570a4ca3c728ed4648de25ef2f901",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_Troy.xml": "35485a908a5bfb3585865172a610d0e7a600085d93b6a199b006a8eda87a2851",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/HandStop/U_WPM_BTM_HandStopRifle_W15.xml": "7c8f24093d672fb696085bafba9bd421855db5497220bab05cabe588b1b09515",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_Zenitco_RK1.xml": "6a60d0afb243dd5a2e5c542dadf66f810a502f98f56982629942c22dfef3b1b1",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical01_W20.xml": "c0ed93b3c58cac15f5fd962901f6bcc8f0f2f992503ba7dcb16674d9bb941d62",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_ZenitcoRK2.xml": "8165ea64492e3bbbf78329b8e0addd24b02bc733d110657cdaf10cb49249b2a8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical03_W20.xml": "07c3ba0c9bbea0f0ed522998c90f18c383b70c9305b9c0d075609162616dcf4d",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_ERG_Ergonomic.xml": "0e5859e367959b37f2789a28f101f7bbc8e1a168962b041cd08b41fc881eaab8",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_ERG_FlaredMagwell.xml": "6e18713ab43875888bbb003ec477477a8de1ba3b9d348c839e4885865cb8a471",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FlaredMagwell/U_WPM_ERG_FlaredMagwell_W10.xml": "edad13861cfdbb9676e44f2f70a558ccf9e784a738c6365b4429671ff52de7f4",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSReload/WME_ADSReload_P10.xml": "af82318573a1019826768660197fac1345f8b3b920112fdc7913cbd1c68d7892",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_ERG_MatchTrigger.xml": "86ca93e69f459695f1729c75f9e27f6da7c62ec41349bc6d20da511884b0053d",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/MatchTrigger/U_WPM_ERG_MatchTrigger_W15.xml": "ccd0101f178a5ce5aba1bbc86fb1fbb5bf332702b515b49c5246d246623097ad",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_ERG_RailCover.xml": "512490b3e699085f30e6a07ee6a230fa2257c6e9522bcd1cff32d8eeb63f4b41",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RailCover/U_WPM_ERG_RailCover_W05.xml": "539fa770c5862a7cdb7d77923c0cc415d15c472b61835edc7f5c2dd94686ca33",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_ERG_RecoilBuffer.xml": "b604fc111ba4cd54f7593e6a1c8203e9d616470354a75a113fcae2a3de62c730",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RecoilBuffer/U_WPM_ERG_RecoilBuffer_W05.xml": "e1aa11697025ca084bf6276c647d043bcccb0a7dac7887a3e7046cabc876360c",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Extended1.xml": "b0fc1d7ec4d2b0e67333436d46e4d149f8d468fea949734ab24316d1e5602e5c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_556_W15.xml": "d626f0b528f5d21380fd6fe767946bc7cb6491fa434338a31da04399b45c24a1",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Extended2.xml": "3352208d2e61841eb01abf15b03a8ee014fe4966f0c11b72b9171d3d5dbed902",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_040Ext2_556_W25.xml": "b7eb9997fd8da736ad23a3b67bc50b41e4383db71454ca2dff09ce89eb2036ca",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Extended2Fast.xml": "653322c3af63713ed8b577af695a1f3ebcaa457e5efe1587f5ff0f87454adc76",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_040Ext2Fast_556_W30.xml": "c0f2a487277e7d5e794c76268028fc4d60f2101ca7dc8a43dc512461a58540c1",
+    "Common/Hardware/weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedRegular_P10.xml": "0b0ca47f9bb9fd1a682ac2dd9dd28fc6620c456268d3ec71af61a1397fbb7f3a",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Extended3.xml": "c9fbdcce8a6967f7c298c24f779ddb2a9196ded977eab4dd8a7b30332ebf1259",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_045Ext3_556_W35.xml": "cdde9a990c1d26ab63a82bcf131f37a53cec9147f1234247e8d2feadef6e9072",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Extended3Fast.xml": "3bc3cbc4cc350d7e5e6c92854731db421d572cd5d57fafc2a44bc689314d679c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_045Ext3Fast_556_W40.xml": "f378b0e3846ac674a0478090165a184567841b65134271d03080bea9cc186d16",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Extended4.xml": "c2d625a5d5563225a6a298924acc57021f67c334a9898f6ff7a20135b89e0c02",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_050Ext4_556_W45.xml": "0b2b14a74d73612f63fc321d1aed5775572960223ee316e288835eb24dbf7dee",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Extended5.xml": "813d1084e82a4914afe8727c10535fd05ee7687c6f250efae1650f6d3006e310",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_060Ext5_556_W55.xml": "f695ec807cb7454dd8f48bb7f54808c61b27c2c626d91185dad09c4e1476f557",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Fast.xml": "a025e6327c31d39aec77b9f81297bb79a303104b30efd60006f9ba475a0f9c36",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10.xml": "684b9ab860a53d456989f2f864831b14138bb605bced369297e85e8ff1bba6d4",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MAG_Regular.xml": "b5a4bf219477d17f83d951c83bf7b60e1be95e7ada2ac197a5dbbcd05f7533a3",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/U_WPM_MAG_Std_W05.xml": "1ca5e9335ba15da0b3febd9bc3deb6e1e9f4445f1bda0e7981b3f8d0839374d1",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_HX-QD556.xml": "b93c97fbca14b172f8b803516dce7fcb34945183fca28d34d80107cd39d6221e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_Suppressor01_W20.xml": "bf6ebacc8fa8c4b2e12e04d580868507d61496b590352d82f461fa34fa5bc29a",
+    "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_MZL_M10.xml": "3c64293c21d74d377926c8e7d41705946cc46a32bb28eb39990462773017a0b2",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_Flag_IsSilenced_P00.xml": "b83e54c26fd8ea931f3d95aaee4a34dc0f83a4bd8e597b6c7b1fd674724eef5d",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SuppressedSFX_P05.xml": "f5ff72b8eb5ecd1ece9349749e33cd59fb12e99ba476056c0877a9dc9ab9890d",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_2D3D_P25.xml": "21c51a9556c9f96c6f4a0d364d7d0db56d19cbdccc8479131e559af6011fa39d",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_KVPMachLinearComp.xml": "ed30ab18757ba14f74d12082b5e43e1c29ebcc59eb8f2cf2a35840f769eeaaec",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Compensator/U_WPM_MZL_LinearComp_W10.xml": "24fd4ab279bd63335160ec38c732ac7192aa95f2a9fc761e5226a8ebc81350d2",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_RecoilConversion_MZL_P10.xml": "4ee66d7d0098ba117779ee53e8e840628e38d4d0feb5cb7e0998ca3deded856a",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_M4QDFlashHider.xml": "48597b8bf11b8f7b75eeec4761bd3e0abf69ee21d2e7a02d431ec766e98a9b30",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/FlashHider/U_WPM_MZL_FlashHider_W10.xml": "086cc89f2b472c4889943e60c73b104cd3ddcdfe8f4e7cfbce2e5dea89523ea3",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_3D_P10.xml": "15539db3002c07c89ef800ed33afe4b19df62e47b74a5db7c96c9865a134a44b",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_M4QDMAMS.xml": "f6fb41db606097c9455645534d30390d8c32d3f633ce0a73a4a142f7aa8cbd7b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Compensator/U_WPM_MZL_Compensator_W10.xml": "b68a7e1f925cb1d0254a2f819912323b132d127e1eb9a934b80a2b0313fa6447",
+    "Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10.xml": "22efe589c0f110a40c2a4d7afa303cb6ca3161ce41555ff24dccf4945e290280",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRR.xml": "614d240e6ed7ab2800f40afb6351a6abbe5491e49543ccd0404139ffa12c154f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25.xml": "d9dce87a7956559bd581b6b3f654ba86385d3a7df561a77a5a8fc234f0223126",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_P10.xml": "cab59d6fea97ba8773a6390cf5a4810d30dd3b346ec56539f1c84880d8b3d6f8",
+    "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10.xml": "c9f53dbb7fac3e5d7776680e9174045f2b0f957fadd318a703203ab8c19bc446",
+    "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_M05.xml": "0a3b5cf6acbbfd60eb0680b81be3902e5e506836c397a0c18150529c807b620e",
+    "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_CSway_M05.xml": "5a2f5e13fd1c13d7532b569427cbcb81230991e84f9339e2384e05dc569a83a6",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRK.xml": "b1029acd253d88f3e782f6aadb519527aa148507d3267876f058a56f44edad08",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40.xml": "7caf943c0f24819bbc7682135e3124b24ddab12e1880cc564b7a34e8ec282dc8",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRS.xml": "ec846901033938501b74d571e332b88a20de921914a25732b50f62f5a3b569c2",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30.xml": "1e6495a77312c6b7a63cb2df8636fb013c99a8fd219a43da4d83bfcac4dde661",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_NoMuzzle.xml": "57df6c1492530300c06ee1940a48d6fc422f8b31205f25f18df4786788c4d528",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_NT4_QD_Suppressor.xml": "12d1a9725cacbe3dce8a7510b9e62678d444a83944fd2443e85d3e52ac3bc83a",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_Suppressor02_W25.xml": "a8651e6d4ab560195ac6e772633e0cf115822818819dd94d8100b8722a92a24e",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_Rotex_V.xml": "ab6a0751b5b379ab6e54224feaa53e98862e44d85e4bb84a6d0d73b64394a872",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor01_W30.xml": "7f0ac25c3e6036a6874bb13ba0e9e4af8e004888c8f6f57370b40caa01d40892",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_RSMicroTactical.xml": "5553933336613c9329a10f38b0ae92ac00517a1970571bf783f635c7b8ac72f5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake1_W05.xml": "4d86d872c5bb39bbd9427998bb8e1b0b08fd78277db2967ac39bc83f5188dc99",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_SFWarcomp.xml": "23e5eb9b6eb046ae6a37b1b6a977cc5139ba30cafd5318964d17ec0a2cd3aa9b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/FlashHider/U_WPM_MZL_FlashCompensator_W15.xml": "a34fe0b01d1aafe36916399dde8fc75dd83a629575b328d2dfb4a841135ded72",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_SOCOM_MB.xml": "1ff0c82609949751bfc2f2f07ecf753b66a4a2cd2e08e5252c9601489cb35daf",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake2_W10.xml": "a2019645eae53c54aff332666cf48e2bff5f818d6887490f36eac8eafbf8b2ca",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_SOCOM_RC3.xml": "9a984d6d9b2abbc0d06426faca3b147a33b458e6893db1fe989078cdacee6afd",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor02_W30.xml": "f280195a5f3a0d6ffe8cfb975038a10f5a0e0ff999d2e528fa19b273fcb5ed53",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_Flag_IsSilenced_P00_SP.xml": "1e427d68950caca88614a690688b403ddae41bb7aa91f96845d90c2fe7f48cb1",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SuppressedSFX_P05_SP.xml": "1e3c9478a8eaf56f7609114e5d33ac66277672b76f7fa724c6947ad4116cfd1d",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_2D3D_P25_SP.xml": "6ac1426c427b156caf7c30ff7472668fc1215c0edde767f2cf0786e6ef0a9634",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_TionMB58x24.xml": "40376ad1a3616f7eaf40770b433ce1e295de85e407f8f8bfd19facba138125bd",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake3_W20.xml": "5baf87316b3996d4acd7e14d4aa04fc32999becb36715181666ba3475bfc104c",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_RGT_ModuleMk3.xml": "ae6212d922d5273bbe3d48060f1b257e4c58949196f0126a71d33df400e088c8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightADS_W05.xml": "8dbe8c5f483f0f6c4976cddecb4bb056bbc3ef04b8d13584f9e3b05fede8fabe",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_RGT_RightRail.xml": "e5a1f1d28224494166f0512da2d786a6bc4cc69f118bd7573718230897ab1996",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_RGT_SF300.xml": "56bf276c21deae6b88937bc5e647cd497a321be7f2d7671ab7ca3d3416769d01",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightHIP_W15.xml": "5a07e1b557c525f201a61d38fc192f78b344b130f20e33794fdd927476854062",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml": "c0cfc368b41175e455ca6a0995c6c94a0d19856f151644223e2f1adcc64c0506",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_RGT_TL_MissionLight.xml": "0c5b2d295e4d205f5740b4ea0e6bbca4a83c2d774a20b2c2c79ded4075494820",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_Flashlight01_W10.xml": "1230219834cab07340893b31f290e59b9cc68a53701627be91b9cbf208b13396",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_ANPEQ16B.xml": "8966aa20e705293aeddbd5a61ec60484a292cdf060088a8596e7457bbec77fe3",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_50mWViolet_W10.xml": "010f1151cd2bff865b4908c14cf47a0f4fa2619933a030331a808ac897f970fe",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_TOP_P10.xml": "bcf36807ecfbcc475e123d33a2dd2f6f7ec6cd834088ef06136b6294e4e7b277",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_DBAL-A3.xml": "537a23511eee3fe58a699bebe8af2cbb7a76b17d8c5ce6b027160137150e400f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_50mWGreen_W20.xml": "42d433aa4ec2bdd87538fb56a01f773edb227a01289335d8ff6529d2a0207dd5",
+    "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TOP_P30.xml": "eca55c4d1498626547b27e531161cffdadc7cdf64955e55e7b3722feee30eedf",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_LA-23IRSP.xml": "c6be3c5f1e56764e5932cdd5c0381315576b9cf06e8c8f74f5d24dd71bd17c08",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_5mWGreen_W10_IR_SP.xml": "2f79bbd04aa140a9b808e32209f5607d704abd22d0666512d0a9414346561271",
+    "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TOP_P20.xml": "8f56fa9cc1b548bd2aed150ceeed00ccf02d4520e0d1e44abd75c2785fb2ac39",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_LA23PEQ.xml": "bcee859de12596366fef85f07510fe8a011d6d51d84531de7306410f6e4efc6c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_5mWGreen_W10.xml": "ac00d70765f79d1403b55f72415aefb3352b4b5740a3cf8cad174b8152db88c5",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_Mepro_Sting.xml": "868609a5acbd3d3d40011c29e354b0d8d02dd6c6621634b1142e714c2df64d8e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_50mWBlue_W20.xml": "ddb816ae92855f877db592c61930f781b8917504a912fd996b8e29945b24f905",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_Perst4.xml": "ac7a4cd36207ae68d13c8ef3dfdbb9cf8959b3bffd335dab97c65e41f6756b98",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_5mWRed_W10.xml": "b2fc76489af443802ab5eb382ef1727e63faf0b8580026323a820e9f9304549d",
+    "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TOP_P10.xml": "b33f337fe5556025c7db2f04f7caaf2dfa654be6ff2bd2bb79e5aef9d6413288",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_RaidXe.xml": "6ea6ebb3a762ca2f26440d098a407236d129c012ba7ca25f73730f2057a0f104",
+    "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_120mWBlue_W30.xml": "adec583b5e1892e77fe6acb7c13997746d61bfa4f30665d6ea55b487a8e58be5",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_TopRail.xml": "8dc617678d3c185cd5c432e87bd2fe695246ef1b31f8ce9510e8dfa3ef82546f",
+    "Common/Hardware/Weapons/MG/RPK74M/RPK74M_Ability.xml": "b7e7cd2ac7c1dbc7dd80b16894d28cd6efc69955c6b632e137dab4e0e12de2a9",
+    "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.xml": "bcd4b6c0d372d407aa8635efbd6856f441fc491a05bb915a1b130918f508c0e5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/MPDarkness_WPM_RGT_TaclightHIP_W15.xml": "b77503e55d9ba2dd3405d590d49455febd6e953ba6f67fec0537be05f1cc0def",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/MPDarkness_WPM_RGT_TaclightADS_W05.xml": "95dacb15e28c2cc8a10272129d06feff7dbb059040d8d6eb106227e1d626e72b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_030Cpt1_RPK74M_W05.xml": "914bfaab87cf9e56b56959297845221fff284cad0d40e431250d988ee1ba1cc8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_030Cpt2_RPK74M_W10.xml": "530fe092eb2afde353edea389f1373b03a09c94c1553041ea9e2454f552b4c0b",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_036Cpt3_RPK74M_W05.xml": "3b2ba63aff0c0da9529ff699fa4d788ce7304bd9933d390a6009e855954917eb",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_050Ext1_RPK74M_W15.xml": "014fd8022933bd952748e86ce9badd650747d45ed6933b6bb05f0a8c3dc30115",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_060Ext2_RPK74M_W30.xml": "fcb4f5e478b91be71093f83367186f7e76916782708bb50d14e63b8eba2c5db2",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_095Ext3_RPK74M_W50.xml": "a01761a07cd0d7c05fb1714346884f0f9e40e048d5a65d3cb65a48b35e7599da",
+    "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconMRO/WPM_SCP_MRO.xml": "35b2ac379d52cef96936cc5645a2a6b881592a5044e93d02c3fbb9a2c800f3ec",
+    "Common/Hardware/weapons/_Attachments/Reflex/EotechELFX/WPM_SCP_EotechEFLX.xml": "b51d4f93034b99217de78241b2ae3be414a5df2d17b17a0cbece0240cf8cad75",
+    "Common/Hardware/Weapons/_Attachments/Reflex/RMR/WPM_SCP_RMR.xml": "d0ffe9008920ef716c32b8f04bb1116703c139c98fd695928d2e648f98dc2141",
+    "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconSRO/WPM_SCP_TrijiconSRO.xml": "c00e8ad3b6fada482a3183c6b1f4bbce81fc3516c34006bb403df240c65ede39",
+    "Common/Hardware/Weapons/_Attachments/Reflex/CQS/WPM_SCP_ShieldCQS.xml": "a0a23c7d19b191aa079a54e1ada83ad83632d2ed3078a1668eb25b63060376e0",
+    "Common/Hardware/Weapons/_Attachments/Reflex/RomeoX/WPM_SCP_RomeoX.xml": "6ec94a1876d5a43cc48ba8d93d9bfc795202386129c64fae0124ac4064f494e0",
+    "Common/Hardware/weapons/_Attachments/Reflex/AcroP2/WPM_SCP_AcroP2.xml": "6e2f065ccaea72a294b6edc300b8ae8f8aac1f677dbd82ff87c05ecb31ccbad6",
+    "Common/Hardware/Weapons/_Attachments/_Shared/Canted/WPM_SCA_CantedIrons_Short.xml": "df6382a175daed8b98296e8e6468dec94c684189e443b5b948dbb47f81aafb11",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/WPM_BTM_CantedVertical_W30.xml": "4ae3fba010b3ad0f1388cfa45605eba48c3f75cac22c2a49f18ebcb61023cc82",
+    "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml": "d44a11a342a0cc3e53673ed770d8e2d0091f7afffd4157bee988aa98cf592bae",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_AMO_BallisticTip.xml": "cbbc6e0c9bfc9630d534b2d0fe92205e6ecc2ca633bd31f64e3a01eea1c3fd46",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_AMO_FMJ.xml": "6dc2839aaf05492e01d62ade5b41bee0876cdf047cc51b4b86ae97f1bd025312",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_AMO_Frangible.xml": "7b69e25bbee4c94a5566ab21d2f672a3af14e46312ad76a336b6ae50991f26c8",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_AMO_HollowPoint.xml": "03f401f8d7ed8335cd38ec5cd44fa3130beb48efbf8588f46128351c078ec729",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_AMO_PolymerCase.xml": "8ee634003b495e82f2db77d66cfd6d5f4ec20f810abcc24a5a3b22979ccb8fb8",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_AMO_Tungsten.xml": "8d35fe8ed42f796c1a6fdef1c20449bbd1c9a432ab0c1405a4409005c5367a25",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BRL_BasicBarrel.xml": "e4306ec6843520979d8da08d850bcd15fa202b10910f68612b51f009ae829eb8",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BRL_HeavyBarrel.xml": "b5fc46ea2b822bb2d8142767cb39fe344342bf43560514701c2e31c9f960940c",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_50_BRL_P10.xml": "8afef2f10f8ffb2bb6d4b6a2459dd4aae3771e8dc2574d19b5745f9cdad5c343",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BRL_HeavyExtendedBarrel.xml": "51d1de6820e1a254b8db2f8162c5069cdc9e9e846469f1f926bf55e27636a102",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BRL_ShortBarrel.xml": "7ad33060f4eb8905dc2047452ee80fec3abad11af43115281c0cc1c8997b5f73",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_6Ch64Vertical.xml": "cfd68c4238824f5e099e84e6519cb3f01871f3727a86c9ae57f7b7b29ba00bbe",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_AtlasV8.xml": "8ce7ecd32356df143d8bdcc8997c470d1f639cc45f4d98fba89ae23642cb79e5",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_50_BTM_Bipod.xml": "4bdfcf6fd30c3e003445ef84f481f8f1ded6e2b6d4352342c3cfa41d8957552d",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_BCMStubby.xml": "3ec08cdac9ccab8bacdce89b8cf3bce24c236edbe09b8ec7eb6ea884e5d1cb6d",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_BTGrippodQD.xml": "200ab58a8f5cb159dc7bf28459acc87a2e3c85d19e1d6ce01ec5669d7d408082",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_FABTFS.xml": "e5a49de3f8aaf93c79f846ac6779be498be476a5c7f33871ee9127c75901ed98",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_GPS2.xml": "5a10ccf3287983792523e09fafb763a658108ef870fa2c78ec3cd98d43b2bff5",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_HFGA.xml": "c67dc36814b022ed7240ffe7932ec00d14730a9d097a8dde24abdeabb7605346",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_KACVerticalGrip.xml": "2737a4b73f62ff0fd6b729b857b7a3e188560a903bbf6ec1909ff6191fb0a91e",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_LWRCIVFG.xml": "cf241b164633957d43f9548817648c9269eea4f7b5418816971cc2da77cef20f",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_MagpulAFG.xml": "64f930eb7c1de552e3760bbea1d0d43d4439250e69b41e8a5689abbeb0cc1d3b",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_MagpulAFG2.xml": "25f6436213878490efbb598e23fff1e23d63cf133f0cb5fc453d1d46f13db0bd",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_MagpulMVG.xml": "f5600e89008ee4bf7bf6c89c8e714686e3551ad251cb03ee773875a02258b82b",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_MSBSA2Grip.xml": "03f028a80bfff05d3008b85ead9e2132abd7738b7d1d621b6a4b221047d063e4",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_QBZGrippod.xml": "629ae3ecbc0f3edfa0021f8a28e6e0bd97ed99038c292e4cd8c28c4ed3c2d6b2",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_RK2B25U.xml": "a0dba25a64b0ea4b2a8028aa8079832fdfe2387c3c050a9f2642ef20554b9313",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30.xml": "cf53d45f882bf5463403cb097463a173be23a3f4ef6669e96174d04a7b309697",
+    "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod.xml": "e285a413d4159d71a6a89d6249afcf6f1587667ae815761876ec88b92bebaffb",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P10.xml": "6b0bb4f73e172abc480baf311748cd38ab569a6ca7937c090c2bb155cffbb1cf",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P10.xml": "265d0a3181519a1f79002fbe0416dee26d6a5b25a151f48eb54ec207dbf46d0c",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_TangoDownVertical.xml": "847df9ec72e4fbbadfeed3fbe2c1759caafc83efe49a6fb41bd1cad5881bb2ff",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_TangoStubby.xml": "b9ccc9c8e8a86504f37b42e763d3aeb8ca1d77b364b46e71bc259dc97aecab56",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_Troy.xml": "a8dcd4fc4914a852bd00a8c033343d65c3e2d636f619defc3a9cf1c800411d64",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_ZenitcoRK1.xml": "71bdf0a1051fc4d214fd5a7dbdf5fa1a3d7a4510da41266899f721be597091fc",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_ERG_FlaredMagwell.xml": "2d3f3a037c911c8a10387d0ebfea79a8f2e90af56a65a49355ac3f72662159ce",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_ERG_MatchTrigger.xml": "6057c9bf96e10f488a8ab1ef8540ba30a54f2e09fdfb72aeb6bea0493580096e",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_ERG_RecoilBuffer.xml": "19d59278fd1c777e5068edb8477bc81fb492ae4ca406a64882ad057ee714fa7a",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact1.xml": "8d9333874fb507fb6a8849b649de5fa0cf238340256ef83b88d978ddf102e515",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPK74M_W05.xml": "d6a40e49a62652d19dcebd2bfea340724600d39f9a763765aa804ed23a83260a",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10.xml": "81332622cc8f19f2d6ef99bcd68c0815bb187ffb041c76dd3c0d0120b967036c",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10.xml": "29d9076160b5f0391d96304869bdfa831b0aea14908fc2e3382b4ea8809e4c47",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P10.xml": "d6a589cadb8b7f9764dca3135bacd27c8dde964564443ab5b82d37f9240ca9b5",
+    "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_P05.xml": "2736e13c1608498b0b9b972fbfb1fa6da520280d95c6873153de74d419f4f57c",
+    "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_CSway_P05.xml": "da01b6c5d3038122deff7d0d6adc2ed7370ab096c504c1803208b0faf727fb30",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPKM_W05.xml": "8b9211e12afbde37cf7521ffa22e05f81a1b91e31e19306b55766e89e8f94b24",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact2.xml": "9709b147a216ec1201c5569908564663d4cbcc37f1638bf022f33eb41e7646dd",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPK74M_W10.xml": "b1ab7bbcc9a28f07f50ef2bbcb3ff2b3b9adc87f63030b6b8cb76099b4a73d1f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10.xml": "77a230cc064138dddae64bd78d5ac0464c95e5231c68bea9fb1564382a091555",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact3.xml": "e156df5a08ce647ccc67e60a261adf3f4af690b41e87df18cc32eb03a4525090",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_036Cpt3_RPK74M_W05.xml": "f5d3677f1afac0eb6e99aa90076cdf36591730b8f7dfff700ec8766b5dc6ff34",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Extended1.xml": "d0115580158ccd499dab50888190a53e4e111129f6eb3d4b6803304f9ae8b5e9",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_050Ext1_RPK74M_W15.xml": "e38544c17991561b35a44b064e0fc7bf04ac505e7c939559ba64718ce894ea02",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Extended2.xml": "92171f77fc1f79eabeaa04d3bbd1face069cb4e49360646c6294d278de935fda",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_060Ext2_RPK74M_W30.xml": "81159552d8ba096576ae18b1493feb046dbdc96a4090938f36773c5d41a28503",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Extended3.xml": "230c8b3b7ae2f33999ec23ec1730e64688382008627f6811b33325e316266648",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_095Ext3_RPK74M_W50.xml": "ff55adb7d7fb75ed41d05018cc54d9c6557ec904f8a97cf47422e0f595ac710b",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_M10.xml": "dfaca2d8f88795270368123d311e506b8a435a89e8c711eca0e4b8badb66798e",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_M10.xml": "22841d4288f743b4a969e4e690b0d97fe5202daf6336b5822500d2d9a35de343",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_M10.xml": "de0f1a7e99fc65651020b78feb84f82f9fce266c7ca5312ead501b8368303f20",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Fast.xml": "d284ba4fdb8c8c499fbf33b9c7b0a7824d612197fad7ba91311fba4a02eb8c9d",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Regular.xml": "9b9746f2f6164dbd2ed7de286fea1ad00bcab9ea9510c9fedd4b6b669132d5c6",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_AK2000762Suppressor.xml": "6677e182e3a7852d00e611f937d78b88a37df0e6f77a5d611cc505b935156edd",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_AKMSlantbrake.xml": "09d2571bfa1d658160933fcc802f81c176d9cd26c48420cd8e839b85af2aeafd",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_DTK-1LMB.xml": "89f98e5eb04d00a4b825f2099a56cf5d73a41225953804bcb0d06b014f938b5d",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_DTK-2LMB.xml": "cb3f5b0f7f1dbeb4367fe6abdbdeb26411cc52d3a8eab0781c531d1c50c6c99a",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_FlashHiderRPK74M.xml": "6b325a2f821996b34d8bcd07bc1552324a6a9592906814c8aa16b93d5f944828",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_KVPMachLinearComp.xml": "aa468f0bd96a8b46f0d44c9e23df6ff0f0a415ba8b359c94e2f2ae0e6be9d15c",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRR.xml": "9319ab3029bf8885e7335d034569f2a4494e0860247136cd14ef20eabcef7680",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRK.xml": "ceb52531c6bd7a14e5c62cb3ddad0d571c02ef2c2de0c36a565a238de5b79b6b",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRS.xml": "d2068583eff1ce49c7b342437f6e9337b7725e06a184a1729e41ce26213fcfd1",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_SFWarcomp.xml": "5e758d587bd2e590e472ad5f7bb8fc346fbe4f2a7232455371983e2b11e748e9",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_StelaAKMSuppressor.xml": "df054264085613bf7fc8cf2c2091c65a320b742e84962a7b1d67ff0171e50d14",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_TitanFS-T2Fv2Suppressor.xml": "f056a86896c808ff205814429ac9ee4039d3dcc387319f448f2daafa2b9b2693",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_TKA-762.xml": "0558dc8877c4adbd656f837e673d881895ed83dedcaafe16a6934aa8d077d797",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_RGT_ModuleMk3.xml": "1ca7e44089ff15642c4c9cdaad494153f215ca28c966e88d6f916b63de608c53",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_RGT_SF300.xml": "cdb27502f0f4e290a8620a6e0c17f29c8b3ac5ba27c0ca576dedd116f92424ff",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml": "59595d3f0a103063164fd63b00e13f880b9e216f988892f277e43a4c94be630c",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_RGT_TLMissionLight.xml": "d9fc720a2f8f0ea98289e749bac73e668739d19f47cff99f8cd4e7bd209bef56",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_TOP_ANPEQ16B.xml": "f8241e11eed33ec5348620519759f080534bde13790b2eee7b0c4ffd199cfcaa",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_TOP_DBALA3.xml": "d65ab9e91363afd44d63b81f670f4722255407b5800096a8ad31925f7d702557",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_TOP_LA23PEQ.xml": "9e912a6f8931c2a1e3e7dd646c16aa72d4f2678f3f61dd2bdd6f1527152b71d7",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_TOP_MeproSting.xml": "1d4cdfcf7adaa3da1ff2dffa7c7266229c1b27253f1ba2e98682c3856af3712a",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_TOP_Perst4.xml": "2ac2b448ad2a46117d575f3fd30fc42ce695c594c9db43230e89c6fdb9a1804c",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_TOP_RaidXe.xml": "af651797bc8554b9410c46eb2b9ed984933924b389f23f59bf72baf7e41e8a30",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml": "e7796d05fa731e4aaf0575a50954cf763cb84d710229034105c7380be1f3ebd6",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_WB.xml": "c6c55b83f2d1d85a1b140a552194834938a3815ca0f366fd28be4f18c534ee90",
+    "Common/Hardware/Weapons/_Attachments/Reflex/EotechELFX/WPM_SCP_EotechEFLX_LowRiser.xml": "fb69eca4f9b5d4344c9a0b25440bacb99330605c4ae5814d164aef2778949f84",
+    "Common/Hardware/Weapons/_Attachments/Reflex/RMR/WPM_SCP_RMR_LowRiser.xml": "3568adc1921f33f2141804635080cb95c22fc5e3f843be903249e2465e99d7aa",
+    "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconSRO/WPM_SCP_TrijiconSRO_LowRiser.xml": "ac030a70efd5e0f869cc6b2cde60403a1abafdcffd283445cf1de5e34c6b0786",
+    "Common/Hardware/Weapons/_Attachments/Reflex/CQS/WPM_SCP_ShieldCQS_LowRiser.xml": "ee95255675cc1b28b8cf02b0cf8b4316053419a7c3277865c8bddcd5cd626460",
+    "Common/Hardware/Weapons/_Attachments/Reflex/AcroP2/WPM_SCP_AcroP2_LowRiser.xml": "6ec52975232f2bb99431326416f0e9576593e65998397ed53611fb06ee13a369",
+    "Common/Hardware/Weapons/_WeaponModifiers/Sway/WPM_Sway_Archetype_5.xml": "02b8f78ef9389e65670d845d14adffda4006e209eb49717ef0ce94e480a922b8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/LaserLight/SP_WPM_RGT_LightLaser02_W30.xml": "109ddd191f081e1ea0ef84781889729d54a747bf36746f0cbc74a81e01a14858",
+    "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/LaserLight/WPM_RGT_LightLaser02_W30.xml": "58fef92bd6940141c8dbfc3d6ef5632cf71bdceb74fc70fea8be6f593741b102",
+    "Common/Hardware/Weapons/_Attachments/Reflex/RomeoX/WPM_SCP_RomeoX_LowRiser.xml": "d95f9766c7b3072abe4dd385c706f945b058117155c14597a68ab448ac6a767c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/QuickdrawRevolver/WPM_ERG_QuickDraw_W10.xml": "ac5388cc159d8f9e2b8f6041b9a125196d1f08678e766b839a46bd62a2f11925",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/QuickdrawPistol/WPM_ERG_QuickDraw_W05.xml": "e42da0a79f485016807e68e919e2604aacdcd42fab56de5f4ce8d4e68ab9c262",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/GS_RagingHunter.xml": "639e510f2c28b95ed349e54ccd981a79f71e910aa1fe340941243d49ea62e857",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_AMO_BallisticTip.xml": "c4fa463af8f8fc2d2b2a39cdabf8060508fa3c2f270f598b0687800580310d4a",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_AMO_FMJ.xml": "4e0ddc0a20890ee886628cc5b7048f3cd73ae59582998e5252ae7bb12162643b",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_AMO_Frangible.xml": "663d7c84492c2af511621c1f771bfb3cdffa18e86177070add322c87d051b2a5",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_AMO_HollowPoint.xml": "c533da34fa1a74444b872a39cf68289ec8f9a0c7caba73b5c597d6b0e49f9b76",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_AMO_Tungsten.xml": "38301e2e1bfd9981399eb7e30100000fa10f09762ceeb487cab44da872cb5a9f",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_BRL_ExtendedBarrel.xml": "5345c9f8bfaccb5e2453a1f35e00e175ed91839cfa42a945ea23c2a2403d0ea7",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_BRL_ShortBarrel.xml": "162b2a957c174ab30fa145a1f45cfb053a491ef9cf75016b7beb68d0e06bcad3",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_BRL_StandardBarrel.xml": "efd5acc5839f648899514f82ada87bac408cb21ee256b36a63d2013ea74681f9",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_BTM_BottomRail.xml": "0b19045e9137f6c212537dc0b0dcc1a5f95d017b1e22b2f12c2323e942195e14",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_MatchTrigger.xml": "a5849de8801c5a5eac3b6bcadfc930aa77a5f2c41ef4ae277ba0e72b356ddaa2",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_PistolQuickdraw.xml": "9260ee7cebd153b6c39ad515adbb6d571e5a7d1d8c205f7aea9d9c751edb711c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/QuickdrawPistol/U_WPM_ERG_QuickDraw_W05.xml": "8fa985c6cded324ecb35b19e1e82938fecd6d6e97ecc458f09b63230a17ba789",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_RevolverQuickdraw.xml": "41b0154b818ac634060ec0ddbe971fcff4e925305c906145ce3f32409779e597",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/QuickdrawRevolver/U_WPM_ERG_QuickDraw_W10.xml": "fff5d1a0cb59983fffb92e9be8ed7652a7754f6983968c6e6a4a130ac6a2d4c3",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_MAG_Regular.xml": "45f92307acf97d3259587d7f86993a6ee6d92485a0729eaee9e55d85a0c1c124",
+    "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_MZL_NoMuzzle.xml": "1e2094ccfb7e129e593805847d08520e3229e754a31402d94a2f4b7bc9af5aa4",
+    "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.xml": "3d0caab96a335e23513fad0f2706d16fe3c85e115eb60db48c2060daa81aa1ed",
+    "Common/Hardware/Weapons/SMG/PP19/PP19_WB.xml": "f9f21cea7317ce3f55d7a6f23d3b29f87289b4ed723f5dfe93b8a9a23cc2ac2d",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_025Cpt1_PP19_W05.xml": "424977100640f0c33bd795b9b9c683c14184adf282eed23b54c330d268fd6d45",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_020Cpt3_PP19_W05.xml": "60397391a46669b79095d026dc18b304ffbce122dc2f7b1836f880ac82e2df60",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_036Ext1_PP19_W15.xml": "fe20fc61af8eef61e799e29d099f7640f14a7f1b01c4b9be7f01ef1d6aa35616",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_053Ext4_PP19_W55.xml": "ccb94f57f17fbcc30981dd0e6010d4553119cd666c7678b45ee6a93723647304",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/HandStop/WPM_BTM_HandStopPDW_W10.xml": "d33765e04e4153ded49fc8f831de385fc48a222c0cf81427483bc385a7ec80af",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/WPM_BTM_FastPDW_W20.xml": "36ba399bf62b52aea027a09ec7abac1470ff222d8047c0fc8d4f4c7bcee02ed7",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_020Cpt2_PP19_W05.xml": "3b4aa736ef7d7dada5a15efabae0e5bae660fcd23e58110fd305ca3207a3f2e5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Treated_W20.xml": "8581588f4ee5d30480ba458450ab26ce3ad7ca194c5e9c501f0eca24cf8ebc36",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35_Slower.xml": "8c6969f3b8ce90987c614ec3dc148d7b33b68d57437b173e9890d087171e6d59",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25_Slower.xml": "008e90fbfd3efc8af2305ffcba17604cc09ff8dd4a61c34424d06a0dee99b338",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15_Slower.xml": "fb35271332bd9bfe86c23a8a6d4015b29f98ed44cb49e9b517cd6a59f3a75cf4",
+    "Common/Hardware/Weapons/SMG/PP19/GS_PP19.xml": "472f530e532b71997a7647e36070a93c5788742438e0b372694296e6a7b27d51",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_BallisticTip.xml": "8b8181202f32b9b7bce987fe6471f94f2dc191973ebe5313db8a31c27254b2ea",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_FMJ.xml": "98ab57bf340668083d8f2d9880a89fa35f317bb776fc27998a2751f374207e42",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_Frangible.xml": "633aee362a933f8cb479646772eb78043a8eb953193d613cdd9bd5ad9b03372f",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_HollowPoint.xml": "82742d71c6b4c0d09e6c4571c21d12dad35e7202194a7a93b910340242895e22",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_Subsonic.xml": "21bc81f330074559b388444ca3962b851e0577670a5be3040f6b24dc30008637",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/U_WPM_AMO_Subsonic.xml": "8802508304b885bbc21943e71e4950fea33954948cc13b6ec1da84c2b43b4481",
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_P10.xml": "16f2bff0b75c535e25fa52f4bbc5af3df795725c8cad8453323f97e7b3ff0ed5",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_2D_P10.xml": "83d9468d95caa8d3dcfd58a0a9ae5c8a5237deaac8970e053aef4dbffa960417",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_3D_P05.xml": "1362f406b65adecb337e582d1888dc4f00595c97be6c5bc3658d08cfa2b5fa49",
+    "Common/Hardware/Weapons/_WeaponModifiers/MuzzleVelocity/WME_MuzzleVelocity_M15.xml": "0c15c2112e844b40102bb4f5be0f9fb7f2c9083c540fc8a91584fcba715e03e5",
+    "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SubsonicSFX_1.xml": "be9217be978802a41722cc430f136f22c20a17e6e446154b9df557bee0c2ed95",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_SubsonicFrangible.xml": "77926caace141a88c87e8793a133e97d9abdc08b8b39bf61d43b4ef7f463e674",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/U_WPM_AMO_SubsonicFRNG.xml": "66d7e132fe92234743e3adc1d562aafe6221906460994c157a1b64f3ebba8fc8",
+    "Common/Hardware/Weapons/_WeaponModifiers/HealthRegen/WME_HealthRegenDelay_P10.xml": "e944e4836aa4886cd3ebb4a4ec30ef8b9d489d1bc7b76c102b77cfa2e6d7d8d2",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_SubsonicHollowPoint.xml": "71cc425d1a0a00dba5c60868076a8bf080aa3af4827987c59ed0df306c29a9f9",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/U_WPM_AMO_SubsonicJHP.xml": "48f1340c400bab2e2f79d53df397b654670aee72e8197ca814408bea441a3f3e",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_Tungsten.xml": "2d72855924a1da2e20f022dd58ba5205258a60680e96a74199d4bd29a729b565",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BRL_BasicBarrel.xml": "c5518e14026169b42e1381d11ae83725018ae13c7a06bce5467aaddcba55e910",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BRL_ExtendedBarrel.xml": "bb6a98fabe6642ff9197ee2e9e6462907d099eb3edbbe952a8ed8b83119af856",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BRL_LightBarrel.xml": "d2b5b8c2ad0274f680afde9ff15880911f36d817c9c3eb89e9a415a0b79bdf2f",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BRL_TreatedBarrel.xml": "6d98cf87b5dc572a5a4ac40fce5c0bc17f4525fd562cb8f043bc50944d5d0b4d",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Treated_W20.xml": "35ee86c50243577a37d7937e8a181fc3f1342ace8307297e24f46f961b60b1e2",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_6Ch64Vertical.xml": "0baf37f157320a50c23a822ce17179fcdb426e50e929c8b2f32d6f88d7690eee",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_BCMStubby.xml": "fad4444efc266213dbdb2374360ecf8b2c1ec463a43040d044cb1ca87d226da8",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_EVOHandstop.xml": "d329679376c0fa48daa0203f98d35de682a64d2c9b9d09021e79f731ecd52e56",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/HandStop/U_WPM_BTM_HandStopPDW_W10.xml": "7ec7b26c5486b859aa042a9fab9e1dc5ea2b34a0d407285af5c36f4cbca5d55c",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_FABTFS.xml": "e9b211e4a3da66669101e0bab265b0d028ff65252ea6f6be37c31ffff2ae2b7f",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_KACVerticalGrip.xml": "8eb6014fbb9b23cff18723cf9821ea3db9d93aa22a6fa1634377f046acc6754c",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_LWRCIVFG.xml": "8a3871199e762ac6d41f3c52508156e7543a623c8a4d44bb1afe3bf38fe64d72",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_MagpulAFGPDW.xml": "ee597080663ea0675cc71cdcd96e717d51730d89c0ebf8d844686271d6a00366",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/U_WPM_BTM_FastPDW_W20.xml": "57e70e52878f31d374fd64c411258249b28e9dc6ee414c52b7c46f262beda9ac",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_MagpulMVG.xml": "b5d8a591cb07ae6b27fd56acee04cc3b8d21b0cff4450431b05fbc01b4047be9",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_MSBSA2Grip.xml": "36131eae10814d370d14018e36909f1f2f76101b42a78d3980343202cea7b334",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_TangoDownVertical.xml": "8e32c67d1a513b4b54f78ebd06923bb2ef85cd1d3e12c0b26e1715966c459a88",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_TangoStubby.xml": "6b14e244a7d8cb6988f7a7b7bea1ba07245ef3c9ed247553bd60c04a978daee9",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_BTM_ZenitcoRK1.xml": "c383372c5519bff83d0429b57315a8d2d743b13659fd17ff823703d6d71a850c",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_ERG_ImprovedMagCatch.xml": "3db6c80dbe41480703a4bef0a030a8a9b4a680d6d2d5f77c5b1ac540a8ac56db",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/ImprovedMagCatch/U_WPM_ERG_ImprovedMagCatch_W05.xml": "e89e6d9e1855181e634380da000ac852995e3dfffb29b3468915feec57540c74",
+    "Common/Hardware/Weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedSmall_P05.xml": "228dd8c3d12fc8853ebd067d2f178d7a795c9af24222ffa542a4bfd080e13d34",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_ERG_RecoilBuffer.xml": "5fc48294a57a5ad3d0f94afd2d6f94cf8ea592558121c21df4bd0637c294457e",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_LFT_ModuleMk3.xml": "c3b68773c51373dd6c967afe674ed2a35b2ddc7b4d62e4b088c9fcdcaef11903",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_LFT_SF300.xml": "a73cf77d405b612f985a99517d0b6dc05d3529c5729a2c3c3af0a902646c8a61",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml": "80e2d08b157b3a3e18e65870150682eb468fb78cf7f7102deb42638eee2b6ac6",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_LFT_TLMissionLight.xml": "f213384536b8d6568f6e2b5e12cdfa1fef640f276f6c0b96c6bcae42bb540370",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact1.xml": "6f4681a5eaac75f27abc250e33847baedfdc7721a8595e57d203fb28107be4ac",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_025Cpt1_PP19_W05.xml": "49b9276d7ff8883be3479c1aec0c852dc3e6952acc8ac38a241b8576c4083ea8",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_025Cpt1_UMP40_W05.xml": "b4a66fdc3f1061492877efcc0bf21d334fc1f9944d754bf12071829655fbf258",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact2.xml": "2a5687f0e719c576f36ede8b088e2571a123e885761d52391e68eb56a41802a5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_020Cpt3_PP19_W05.xml": "0792044a2734dcc76c8b91c7d5c20bdf2e10d7865989ccd8e4a87d4ffb884572",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P20.xml": "e05e7f2a388bf825f1dd06221f09b15d31824efb16bd828acdd629bbe9134d29",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P15.xml": "ef7a50c262e1eb89ca225233c2a02b544ad969beccf7b7187f7d1631cb2efd60",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Extended1.xml": "11a5525d6304df4a6b48fd6908392e1cad9aa7fb59966cc44da618a670e239a9",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_PP19_W15.xml": "3d371bd78c7c02fd5893eb4dac35b2dbcde0de3e0df5c7a9028d695f773819c3",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Extended4.xml": "663355aa271db9213c0a99b19c2646ee806cda95b19ed75187949a7e56831210",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_053Ext4_PP19_W55.xml": "ef5eff0291e9c30381f4a0728ed8efbe65a0f8c44368966928f5ed560750490a",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Fast.xml": "979edee10262dc95c065c649c156cb9f1306efff795232f24e9702df6204eb05",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Regular.xml": "edc9122b9ab68ce396a69fd72238e90ff69606cdc6c140df2162ebee1a5600b4",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_CompactStreamer.xml": "d966454939b601d5fe68f72c07f296835e98d40a9a0c9d21809de0e0aed44c3d",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_DTK-2MB.xml": "d1f38272e3c42d7f4891cbaa7978933245fbc4a17c0c094951ff4eb621b48dd2",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_FlashHiderSilentSteel.xml": "246784d28748561d879be0dd6a070e2a887cb4f45d7f383176b4189b94e28ffc",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_KVPMachLinearComp.xml": "df953bbb50aef003de28e9ea0eaf7a26576d63f04ebf06f60cc83ef1cffa494f",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_RSMicroTactical.xml": "772b1b353550ba5afc791dd90dbe9b8bd502e3bceba5b3e6580d96203d063b38",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_SilentSteelMB.xml": "113bbbd3aca85ad66899459546ef90618dc63fe43faf8678be20ffdddfced994",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MZL_VityazFlashComp.xml": "12ce2ff71f875f6774f3bf6b448b0306757f8de42db06f3f280261f76d85c723",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_RGT_ANPEQ16B.xml": "19c88f38bd936b9d31789b14e19de23b366c0c7c790b1ecea3412196ad618468",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_RGT_DBALA3.xml": "71262fb2f053a519d4db9163ea2f4f3e802b0959fb806e16baa4ba4bb1d6ea34",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_RGT_LA23PEQ.xml": "a25b296afaee51077de038c241a4c059125ec62d8fc70b7362162658aaba18ab",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_RGT_MeproSting.xml": "616aab7b7886f3a51ccf48859fdca85ed837265057dc75f0658ba1d4af6bbee1",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_RGT_Perst4.xml": "dbabb668583779a7623494f86facd2032a3e53ec768b98c3e7f7138541a301af",
+    "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_RGT_RaidXe.xml": "4100126090001622814a7f8dabbc1f72789820a49a344b3bff880215f8a9ba60"
+  }
+}

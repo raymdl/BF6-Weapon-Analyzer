@@ -1,0 +1,199 @@
+{
+  "scope": "Configured firing rates and manual-cycle fields. These records do not establish the engine operation order or effective pump cadence.",
+  "runtimePolicy": "Display the configured rate for semi-automatic shotguns. Do not report multi-shot pump-action TTK from raw firing RPM. The estimated pattern retains its existing raw-RPM timing and explicitly states that pump cycling is not modeled.",
+  "rows": [
+    {
+      "internalId": "185KSK",
+      "siteId": "ks18k",
+      "fireMode": "semi",
+      "siteRpm": 299.999,
+      "wbXml": "Common/Hardware/Weapons/Shotgun/185KSK/185KSK_WB.xml",
+      "namedTimingDefaults": [
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionDelay",
+          "guid": "a1d57615-399b-46db-a1f0-35d75cf2b919",
+          "raw": "0"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForBurst",
+          "guid": "2a56be36-600a-4482-91ab-d2ff696adbb8",
+          "raw": "299.999"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.SuppressionBoltActionDelay",
+          "guid": "a8a5c260-6c69-44f2-8a07-e1e04d1c2d3a",
+          "raw": "0"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionSpeed",
+          "guid": "6bc64a63-dcf9-458f-9bdb-ece67107e89b",
+          "raw": "1"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForSingleFire",
+          "guid": "f0ae2664-4f22-4420-bfd4-fab115cd40f6",
+          "raw": "299.999"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "guid": "54f13368-736b-478f-a4b2-b2a7b428cc08",
+          "raw": "0.52"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTimeCompletedFraction",
+          "guid": "8764f990-3088-4a3a-8ad8-295fa046fca1",
+          "raw": "1"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTimeCompletedFractionZoom",
+          "guid": "bac0459f-c80f-4263-a5a1-d1d54f9b7d53",
+          "raw": "1"
+        },
+        {
+          "name": "185KSK_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFire",
+          "guid": "8a23b7e5-0b9a-41a2-a382-a03a05c94005",
+          "raw": "299.999"
+        }
+      ]
+    },
+    {
+      "internalId": "M1014",
+      "siteId": "m1014",
+      "fireMode": "semi",
+      "siteRpm": 199.999,
+      "wbXml": "Common/Hardware/Weapons/Shotgun/M1014/M1014_WB.xml",
+      "namedTimingDefaults": [
+        {
+          "name": "M1014_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForBurst",
+          "guid": "ee14ad20-eb63-475b-b48b-9b130fa4d9f9",
+          "raw": "199.999"
+        },
+        {
+          "name": "M1014_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForSingleFire",
+          "guid": "4afed970-a896-4f9a-a369-495023f44bb7",
+          "raw": "199.999"
+        },
+        {
+          "name": "M1014_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFire",
+          "guid": "b9989bbd-a130-4879-aacc-e3ed84c5a4ae",
+          "raw": "199.999"
+        }
+      ]
+    },
+    {
+      "internalId": "590A1",
+      "siteId": "m87a1",
+      "fireMode": "pump",
+      "siteRpm": 1799.999,
+      "wbXml": "Common/Hardware/Weapons/Shotgun/590A1/590A1_WB.xml",
+      "namedTimingDefaults": [
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "guid": "a2d51113-ab13-4393-9aa9-9f0764ae4fc5",
+          "raw": "0.500001"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTimeCompletedFraction",
+          "guid": "2ba17b15-46d3-4fd3-aaa8-6b7b2462472f",
+          "raw": "0.6"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.SuppressionBoltActionDelay",
+          "guid": "5d19a42f-fa68-41b7-bd99-7e3b107a8591",
+          "raw": "0"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTimeCompletedFractionZoom",
+          "guid": "71e8c57c-b267-4399-968f-22dadfc82c3b",
+          "raw": "1"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFire",
+          "guid": "021e3a86-0aa0-4c68-bb8f-cdf98bfa4bae",
+          "raw": "1799.999"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForSingleFire",
+          "guid": "0f5661ac-f27c-469b-b2b0-a4f5faac7371",
+          "raw": "1799.999"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForBurst",
+          "guid": "167de9bd-e791-455a-b64b-624d0804b73b",
+          "raw": "1799.999"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionSpeed",
+          "guid": "c3c178c9-9031-4b9c-a6af-d5654bb35264",
+          "raw": "1"
+        },
+        {
+          "name": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionDelay",
+          "guid": "f1fff7d8-4e3f-48ad-a3ec-4fcf06bc89e4",
+          "raw": "0.100001"
+        }
+      ]
+    },
+    {
+      "internalId": "DP12",
+      "siteId": "db12",
+      "fireMode": "pump",
+      "siteRpm": 359.999,
+      "wbXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB.xml",
+      "namedTimingDefaults": [
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionSpeed",
+          "guid": "0ab80c06-50a2-4115-bfcb-022b79518ab5",
+          "raw": "1"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFire",
+          "guid": "6ea2f10e-e56d-4400-a82a-f049a2a5455c",
+          "raw": "359.999"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "guid": "de0ece64-d3b4-433d-92d9-2da6701133cb",
+          "raw": "0.433334"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.SuppressionBoltActionDelay",
+          "guid": "8e148178-57d9-4367-882a-898ca2451f3f",
+          "raw": "0"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForBurst",
+          "guid": "accf5189-1492-497d-970b-e226a87b25e6",
+          "raw": "359.999"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForSingleFire",
+          "guid": "dc0bb08d-09e5-4a64-a325-6b29789d7e8a",
+          "raw": "359.999"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTimeCompletedFractionZoom",
+          "guid": "4eb08f96-5096-4d5b-b6cc-226f3f7dd9a2",
+          "raw": "1"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionDelay",
+          "guid": "edebe298-584d-4d83-a37a-004c304ad5ca",
+          "raw": "0.033334"
+        },
+        {
+          "name": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTimeCompletedFraction",
+          "guid": "19edd1b9-73fb-4b8c-8ebd-032041c069b6",
+          "raw": "0.57"
+        }
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/Shotgun/185KSK/185KSK_WB.xml": "3cc0eee9c7717f203e988cfb5bbee4f0147863ed0cb0fa4a6dd6e8915782751b",
+    "Common/Hardware/Weapons/Shotgun/M1014/M1014_WB.xml": "361b359ee2e6b9dfb46f016a2ed6810e11d82c1165a09286b0779e586a35d044",
+    "Common/Hardware/Weapons/Shotgun/590A1/590A1_WB.xml": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac",
+    "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB.xml": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f"
+  }
+}

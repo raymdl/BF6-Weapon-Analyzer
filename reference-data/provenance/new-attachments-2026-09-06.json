@@ -1,0 +1,1468 @@
+{
+  "date": "2026-09-06",
+  "status": "Operator-directed attachment models; existing recovery formula retained.",
+  "modelDecisions": {
+    "compensator": "Existing 10-point entry already matches Flash Comp with normal 54 m world spotting and 150 m minimap spotting; Linear Comp remains separate.",
+    "hybrid_supp_l": "Long Suppressor recovery/spotting/sway, one recoil improvement tier, one total hip-fire penalty tier, one draw penalty tier; 30 points.",
+    "hybrid_supp_s": "Lightened Suppressor recovery/spotting, one recoil improvement tier, one total hip-fire penalty tier; 40 points.",
+    "hybrid_supp_k": "Lightened Suppressor recovery/spotting, one recoil improvement tier, no hip-fire penalty; 50 points.",
+    "canted_vertical": "Two hip-fire improvement tiers and two draw improvement tiers; 30 points. Operator reports L110 sprint recovery changes from 350 to 267 ms, matching primary ladder indices 8 to 6."
+  },
+  "availabilityBasis": "Existing Frosty attachment/ability selector records, mapped by retained weapon identities. Operator screenshots confirm attachment identity and prices. This is not a per-weapon live menu audit.",
+  "weaponCounts": {
+    "hybridSuppressors": 39,
+    "cantedVertical": 9
+  },
+  "screenshots": [
+    {
+      "file": "codex-clipboard-fd93ec1c-cb7f-470a-807f-a52b8de9753b.png",
+      "sha256": "70a8b66b31a37c0d1503acbb33b250b2935c92641a13a154bf16df7a3e874834"
+    },
+    {
+      "file": "codex-clipboard-eb5bacbf-8d08-4afd-81d0-856747f76ce5.png",
+      "sha256": "6ecfa91b654517dea688451bb5900ddeb91f8e82c750d949a3b863db5cf70b8d"
+    },
+    {
+      "file": "codex-clipboard-6bb56549-2281-428a-99ad-ca8a1c69bf0b.png",
+      "sha256": "beb57d36f81897ac5d65b6be030ba0040d546d2f67b12c07d53e2d79e4437ded"
+    },
+    {
+      "file": "codex-clipboard-357dc79c-0e83-4560-8e17-165fec133b00.png",
+      "sha256": "ce476c71291e975679418c77fc59ea2f278cd6099d63f72c215564cd43d4f129"
+    },
+    {
+      "file": "codex-clipboard-6abb0470-ff25-4ec7-9f17-87cdd84f4daa.png",
+      "sha256": "6b68f9714539010642e3d00dd22cd6a1be8a41a9ff5de774003d849b01e89cc2"
+    }
+  ],
+  "selections": [
+    {
+      "weaponId": "nvo228e",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "nvo228e",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "nvo228e",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "ef88",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "ef88",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "ef88",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "b36a4",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "b36a4",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "b36a4",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "ak4d",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "ak4d",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "ak4d",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m433",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m433",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m433",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "l85a3",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "l85a3",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "l85a3",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m16a4",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m16a4",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m16a4",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "sor556",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "sor556",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "sor556",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "tr7",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "tr7",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "tr7",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "vcr2",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "vcr2",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "vcr2",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "l115",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "l115",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "l115",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m2010esr",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m2010esr",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m2010esr",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "miniscout",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "miniscout",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "miniscout",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "psr",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "psr",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "psr",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "sv98",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "sv98",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "sv98",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "brod3",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "brod3",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "brod3",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m417a2",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m417a2",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m417a2",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m4a1",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m4a1",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m4a1",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "grtbc",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "grtbc",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "grtbc",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "qbz192",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "qbz192",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "qbz192",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "sor300sc",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "sor300sc",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "sor300sc",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "sg553r",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "sg553r",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "sg553r",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m277",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m277",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m277",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "lmr27",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "lmr27",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "lmr27",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m39emr",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m39emr",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m39emr",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "grtcps",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "grtcps",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "grtcps",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "svk86",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "svk86",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "svk86",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "svdm",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "svdm",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "svdm",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m240l",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "m240l",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m240l",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m240l",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m250",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "m250",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m250",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m250",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "drsiar",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "drsiar",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "drsiar",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m60",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "m60",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m60",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m60",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m123k",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "m123k",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m123k",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m123k",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "m121a2",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "m121a2",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "m121a2",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "m121a2",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "l110",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "l110",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "l110",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "l110",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "rpk74m",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "rpk74m",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "rpk74m",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "rpk74m",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "rpkm",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "rpkm",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "rpkm",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "rpkm",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "kts100",
+      "attachmentId": "canted_vertical",
+      "slot": "grip",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_BTM_RK2B25U.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Canted/U_WPM_BTM_CantedVertical_W30"
+      ]
+    },
+    {
+      "weaponId": "kts100",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "kts100",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "kts100",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    },
+    {
+      "weaponId": "usg90",
+      "attachmentId": "hybrid_supp_l",
+      "slot": "muzzle",
+      "points": 30,
+      "attachmentXml": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRR.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25"
+      ]
+    },
+    {
+      "weaponId": "usg90",
+      "attachmentId": "hybrid_supp_k",
+      "slot": "muzzle",
+      "points": 50,
+      "attachmentXml": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRRK.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40"
+      ]
+    },
+    {
+      "weaponId": "usg90",
+      "attachmentId": "hybrid_supp_s",
+      "slot": "muzzle",
+      "points": 40,
+      "attachmentXml": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRRS.xml",
+      "selectors": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30"
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "Common/Hardware/Weapons/AssaultRifle/ACE32/ACE32_Ability.xml": "aa923d8da9764b343378594bd3f5e973393881619647d9cec5ba765de02dc35f",
+    "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRR.xml": "286667f28af8ca25add1074a8e4f1c5bfb1f8638e793562380a7b68964022e7b",
+    "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRRK.xml": "42b6ca4dd8a1bf79f89d0d538d51ed630ab1d2f8df971f9de90b0d7578303cb7",
+    "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRRS.xml": "b4777b981f799d3da59fb875051051dce50596e488f53b92252ce43f769a69a0",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml": "3370039bc8bc60af853f6266b81645e8f9245f0cbd395092b02aa4abd7e96aaa",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRR.xml": "a89633eea218082b7165e38b8a3fd3d73661592b3da06bdbeaf95d3e5bb260af",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRK.xml": "c658e3c324647f41938b4843f1b0f69d6c5be0b41c3ff98a9a1b18a4d72b631c",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRS.xml": "cc17692375c2e0e7018c05f29b5fb606755525c3ecfa2d436ee57837661e51cb",
+    "Common/Hardware/Weapons/AssaultRifle/G36/G36_Ability.xml": "a0d89490c72058f4a9963aa01d5819aa13f71de75e52da50df8c339a64977752",
+    "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRR.xml": "e3cc6e1bdfd92734036018288eaee3bcb181f4ea1ae29913d6488a408e39aa88",
+    "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRRK.xml": "a2b0244611e532eaa2956ec5c89d370c1a07766c45223d54394234f0af62f6b8",
+    "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRRS.xml": "81668d6b3963397bff3356d09e6d10f633b11261dcb2f5547ff1104e849ac489",
+    "Common/Hardware/Weapons/AssaultRifle/G3A4/G3A4_Ability.xml": "44bfe8ef300cd95c653c82dfff229dcc792ec1da14562036e24e19a2aecd3928",
+    "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRR.xml": "62a164e2ca013a39d67c2084e6ee93ed89476e5d63ee42bc5e920c34455748ea",
+    "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRRK.xml": "136b728b243fe18c4e47458987b44f4c57ddae53759b8157ae2edbcb4fd5a659",
+    "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRRS.xml": "038063c0127d6655f798b10acdecbca2894aad5554ea8265581cb53595daf021",
+    "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_Ability.xml": "91218133f0a8c1ee952d5d5f36ff8af6f4e82809e4c3e5b2668e6846b57616d0",
+    "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRR.xml": "00a28a0a49d59a5daefe6b607ab2254aa4ba20079f65a283dd06d4f93de21dc9",
+    "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRRK.xml": "a50ce610a7ad347d247ff6925d53ae8eefde4eb741a849b7e20b9a897d43a954",
+    "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRRS.xml": "dbd0fe34c32f5356e8bd7812a01e6b54193aabe725e9d19122d44a6daf791506",
+    "Common/Hardware/Weapons/AssaultRifle/L85A3/L85A3_Ability.xml": "51052d909f644c6dc672d28ed3e33cebeba4774e118d1d1c804ea7d4c1eff451",
+    "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRR.xml": "a5fda4d4c5579e7011e97b3cd33c59d9b00847c05007da3d56bf6d58fda5af9d",
+    "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRRK.xml": "90b3e56f5a9e42ddf8eff85f1738ef65024be8cfe4520eb1199decd49816e66c",
+    "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRRS.xml": "f1cd4f03bb1fdac1b3101d6a59b59459e19d324622a6efe40a630941e4e24068",
+    "Common/Hardware/Weapons/AssaultRifle/M16A3/M16A3_Ability.xml": "7412ed2517d67234237c5b92e5b0d4bb02026c46c96cd19ad3ef238a3febee8b",
+    "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRR.xml": "33fd23bd130d6c38d1ed44f46229df5e330cc0ae31e7f0b7c28713ddba2033f1",
+    "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRRK.xml": "0e907da594056f4ca1ca27b959c4d07ba0218218630db5ec8bc1dac4d2a7eed2",
+    "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRRS.xml": "f17227c4cf9951180d3dfd2bc696d94ad7c19d5e0a5ea2fc2444ddae355bcfef",
+    "Common/Hardware/Weapons/AssaultRifle/SCARL/SCARL_Ability.xml": "494cadc89eb33910652482d602205043c872916ea5fd2f88f8fe3ddf543016d9",
+    "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRR.xml": "1fb517a28707dde2dd8480dc50d7716a2084ba61175323ef10c827df5bc570da",
+    "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRRK.xml": "ac74dfc553d69d75e63b4a26bb1a4073330372a218637d7f1904d9155fa485df",
+    "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRRS.xml": "5ac2f3e19f7678c1d4cc06c65d58c2696e58dcd6e674716f0d76cafb19737cfe",
+    "Common/Hardware/Weapons/AssaultRifle/Tavor7/Tavor7_Ability.xml": "f1d5ec1854112c3ac459bf8dd9e4f4178b709a8dc4169f2108b9de1b93e60eb5",
+    "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRR.xml": "7940ce80a4d1ba7d0d363f08023fc45f0820e03226b2956ec08fcb3c03b7eb61",
+    "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRRK.xml": "fa215d9549556d749fb1ca26132b4246ed76684089f444aa4bc8602eb3bf27cf",
+    "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRRS.xml": "68fa64314d4110f889cc30c68174d7e46e4e9713a7c7f73ef44262a2c7d8b0b9",
+    "Common/Hardware/Weapons/AssaultRifle/VHS2/VHS2_Ability.xml": "8c62f9dea67a60b7885deaafb5c7624704e1e9fc5380b8eae3cfbc906eb45768",
+    "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRR.xml": "f7e177a52c657e9e32c608817696c89c9f34cf6656b5ddf7167097ff507a37d9",
+    "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRRK.xml": "f224b63f54e856af0958438edd7e32e55f5ef46d979388d2ddf419ac188aa465",
+    "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRRS.xml": "365e570af489ebb31b943560f763409be0604f4e9adc04b7ea10c607a6de235e",
+    "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml": "1e11ca3a5bbaf30c95cc86e730669bf2e5d16b4ece1bb18e9a506b057d2d2882",
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRR.xml": "61a9bf035b617880bdbd78986e63e051e40c17f1d7fe8cc83eec331ffa62fef2",
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRRK.xml": "e136a7f1711ac621d7ca9f81723bfb0f46933cc0be849538d2610201109fdb51",
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRRS.xml": "40d78bc618eec54bffee5df603ab7d6b75a36351215f88f94397000ec85f9637",
+    "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_Ability.xml": "5b5768070f81c350731ac2325f1d3a11ed917fef29db5facb08f32f4196dfdd0",
+    "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRR.xml": "6a48552aa706a118c468060899ff122adeebe51fdb85d309bf31cf71453c040b",
+    "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRRK.xml": "674398d1b392c9e6e4069213405b424fcb0c2ab6eb3c0cf00d529aff04c23f80",
+    "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRRS.xml": "b6f975fecc82084720fd28e36a3b49d90b1314452718e05f6c1445757351d9e2",
+    "Common/Hardware/Weapons/BoltAction/MiniFix/MiniFix_Ability.xml": "a046fce8e8b7c33c5bb7d1a30cb4a868db6196c51dbad8c02b4636175292b097",
+    "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRR.xml": "3d3b8b7a191f8c3e6c45fb77a992438aa555b342ee559c46f19c1ff7e6c0fc37",
+    "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRRK.xml": "05e8baab2ba312d7a813dcdeed27c61ea56a3e3832fbd93f8fdf806a8fb97484",
+    "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRRS.xml": "c230a243c3683972e0e700618386b224d94aecac95df81a5227e4d78ce7579ac",
+    "Common/Hardware/Weapons/BoltAction/MRAD/MRAD_Ability.xml": "f951bae2ae662ee1b403bf4e24c3095f00349d34e0d662848a14caa7b566fc42",
+    "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRR.xml": "1c607982029f33c0bb9ebce39a9ed6aa5739eba34571cd505fcb871f20332f2e",
+    "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRRK.xml": "77fe70bb8edc7885b0839dc898591092e395c877dfad6c90c35c93b72ad42256",
+    "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRRS.xml": "231f22ec74c7755957a8ef4b0ffcbb7857f77c54e48abbe88d060a0cccb3b5aa",
+    "Common/Hardware/Weapons/BoltAction/SV98M/SV98M_Ability.xml": "a71349e6bc27963b977fca03426af063c07e90935afc904a25bd7d31f73086b7",
+    "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRR.xml": "0f745169ca279de95de2dc2f57659d49d0a377a8e73b2121cc3c08d3c4dd77bd",
+    "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRK.xml": "36076f9d470d1cfea357c47182fdcee50086bd5acc523f6e5ba1177e3d7f73a1",
+    "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRS.xml": "b5aa2ddf295de33e2e6a15a8a1b5aef79570ed1021eab70f08b857f81f4eb59b",
+    "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.xml": "5ba35855c62f89dbf98fbafd4d05d91aa98db4ed9017d18a49abc8f1d6d24520",
+    "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRR.xml": "7c5cb326036a3446f968ea7bbf29e6d42c3b4599fd5a1d660d0f770557792a23",
+    "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRRK.xml": "54c4394e0d4a2a28aa74c4dc31045a2ebc5a63d8f14eedede8c5361966608961",
+    "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRRS.xml": "00477f54335c13c774f3153469f4bd4b7e5cf13da2663dd00f671bfef74a06ae",
+    "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_Ability.xml": "a2d9ebd33dc0371e0c706bc68eeb3b54809fc53875641be0c1f3f602b6e613e0",
+    "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRR.xml": "03657ca6c76b7d5f88aa8d41e4d57178f117776f2607a1dc115eb557ceaf2941",
+    "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRRK.xml": "e4768aa85984758e21223f06637b19c1b77a4a42da22b446a715aecc9aaa7b8f",
+    "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRRS.xml": "51c0744beaa817c9e1d54cd1d28d9db63040b66714b7128a7e2c9fa6fddada20",
+    "Common/Hardware/Weapons/Carbine/M4A1/M4A1_Ability.xml": "2c697556b5410f487bbae2ea5b36639af00e2a9d8a5b628b27f085dd829ee39a",
+    "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRR.xml": "7b230844521d5720fd52e9903ff19272adc972296ab35a9233fedfc4168a062a",
+    "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRRK.xml": "4329239ec7acce20e1d27fc6d680883b4461e32734358331c332f3d806c2a8d1",
+    "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRRS.xml": "ff10caaec278b7d0a21b62c4c71a3a5f03467411a7a1522584a3dd7d027e0323",
+    "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_Ability.xml": "89ca7d78bc515765dd68d4958fe6641f0e7df6dece2e28a4e3153623b7c7df6c",
+    "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRR.xml": "5bb55984632e70a07c1975900472eb3b03a0be76feade14ea12e8b896e437174",
+    "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRRK.xml": "868e70b959feda2cefb47a8c063df15ab514703b689ec389ad05859e75c154ff",
+    "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRRS.xml": "ad77c92ab95f83e8030ddd43b048f8233286495a87df82320bb67c42c364c4ae",
+    "Common/Hardware/Weapons/Carbine/QBZ192/QBZ192_Ability.xml": "c6327d56bddc712f2f8b4c3d7f9a985c30e427889e40c4e9d7d5de7bb7ad9531",
+    "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRR.xml": "242f741978d8610dad04be8a06c889b5800cc3f14aa15d641b9230280f0f3ccf",
+    "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRRK.xml": "67a8b665044795e640b76fea9268398b1b1f78993ef9f37dc1f3b05b56189369",
+    "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRRS.xml": "c3794f20b90963a3f9c3ed5a33dd257b04bc4639a0fc12827693c9cb820f010e",
+    "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_Ability.xml": "58de729b3f0175b81729517f3276356f6bc9c2579bf92efec17b6256a962dec5",
+    "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRR.xml": "aeb62af7464c98e9e9b5cec1838ae6a0fe7785cbb4ab540d745df80a3605bb3b",
+    "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRRK.xml": "d8d3798b690e2b66557fa1f886e82778c15490de85148063685332c201e0f68e",
+    "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRRS.xml": "d2239ead35b24417b1bbd03d20496a56a8062e97c65d3e7cf0d655f1464427b9",
+    "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_Ability.xml": "bf62e290d576c8a2965deb34d1f0c31de1e9735680da9bee1dd14d27acd0a2e3",
+    "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRR.xml": "0685db7fdf424adf2ac7f516b0cdd537cb2596e2000f1226f1b7a85e3e457938",
+    "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRRK.xml": "77f1a585071002f4a886fa0db1352f4175db530371c7b11ea837bf3cbf0d1d90",
+    "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRRS.xml": "dc0b1146aa6355f3d4a07b4ccfa2a058c38689bf87ce3d0d2bd17ac54528f699",
+    "Common/Hardware/Weapons/Carbine/XM7/XM7_Ability.xml": "c7f7842b6cca528d58053bff4502f831c6273ed02b8f5f36142a1ce82408497a",
+    "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRR.xml": "b8ba667959fdc050be2a3469143c4bf723ee9cb873f124896407b53bf7778f4a",
+    "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRRK.xml": "1dead5a626c11df44cae4664b35a7aeefcfeaf115a49a9037e8b5e12c8b98a68",
+    "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRRS.xml": "eb03105df55caeb8f23137459c8415ff1881714d755ac76b1aa9125f4c308945",
+    "Common/Hardware/Weapons/DMR/ARADMR/ARADMR_Ability.xml": "1b1284bd14c1a3895fdd2999f355fe862a599ea284d60f6009f0a13c584a230a",
+    "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRR.xml": "4103781c5453092bef8d7ee28359ff25f4e5431cd117e84502ceba3d9a55f412",
+    "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRRK.xml": "50935df3e8ba919d1f1987e7896a51039845a2b3d31cfbc75e992419a2732e1b",
+    "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRRS.xml": "d5ef938b99919157b786ebbd713c1710bb6905ab43551ec2dc784c321003b4ea",
+    "Common/Hardware/Weapons/DMR/M39EMR/M39EMR_Ability.xml": "db4c95224d3ad096e0e36c6f88dc0e9fee05d387245494fcebb3c5d31ffe6605",
+    "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRR.xml": "41af4d9124fb814d527978e93e722531a9d9e4d03a04636a61d8d3785c6fe695",
+    "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRRK.xml": "d1e3a85c9061c653386ba3a87835edebcd821452deac461ed9a46274731b7e1b",
+    "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRRS.xml": "88d806e45785fac2bd4e13a54ec89ab1a66fe824685563a432ae9e5b0b772970",
+    "Common/Hardware/Weapons/DMR/MSBSGROTCPS/MSBSGROTCPS_Ability.xml": "49e42bd25fe4da48e7a31639275626881b0feeb87525b597ebcbca0fa6c25156",
+    "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRR.xml": "7519bd8efaf2b28127de2fca617886695e7e75a3a1a7a6004a44e1b89b073dcc",
+    "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRRK.xml": "1bb86dab24a8f58034685a290e002ec31aa8ccde779187ff4cfd57034c3b50bd",
+    "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRRS.xml": "8d39b9ce9c825c0ebab5b64a153580403ee974d3787c38e34333ec4b07ee81e8",
+    "Common/Hardware/Weapons/DMR/SVCh/SVCh_Ability.xml": "0a3b452e37a5b02637183f0764861c2f866b3a41b2dc71fd7627e79eca7ba64a",
+    "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRR.xml": "a97aa4d018bb7367198b844cf0435a2a1a7b0457288a6ef110d7c266c61352b2",
+    "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRRK.xml": "19cd4dedd6c764f62074833f99ea6c94d9b99a6efc99ab1716762f799b4c01cf",
+    "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRRS.xml": "739fe6475a4d1c28f964d7f84e828c1a8479d0f9ad8b451a757904af2afbc32c",
+    "Common/Hardware/Weapons/DMR/SVDM/SVDM_Ability.xml": "888915cfbed829e3e9eb0f615494a11855a94c5dca07123d07a279bcfb81cbea",
+    "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRR.xml": "4e1c37ebf4e9fdcebc54b7995f9b269185dc3b61a91f61e26eb3f7c7d9f6cc6b",
+    "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRRK.xml": "8a03f3ba2fb9e8cb0e1f4b1652ed38bfe2b5e6da57321bf1adcf6b298d8654c6",
+    "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRRS.xml": "5418d27a336fb375c308aefe54d0a87f37ff297986557aa0ad58fa475f4c8b45",
+    "Common/Hardware/Weapons/MG/M240L/M240L_Ability.xml": "a0265193d4c50ecdcde9139919b64df34d99549adea03b3a1589230c67b840d5",
+    "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_BTM_RK2B25U.xml": "9abf6be4a980758d8518f0dd795933bf66064b4d41b4fa8c936569923f7ce366",
+    "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRR.xml": "b75323bb179a210e09d78e063953567f6dbe7150187d72884a86bad76e240b89",
+    "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRRK.xml": "e6246d88952cb65f5ce714b8d6bcbb21361dbddfe8ebdb1bf58ab5dc6944bb1f",
+    "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRRS.xml": "24abf62288504485f7d89f63d8b7a1d4657a9f245a1c56fc38247b30b3ec1176",
+    "Common/Hardware/Weapons/MG/M250/M250_Ability.xml": "547cf2a733e54ce1ffb86b42f2b087e41eb3198f2bbd9bfde99cfbb95d03a590",
+    "Common/Hardware/Weapons/MG/M250/Attachment_M250_BTM_RK2B25U.xml": "8524173fbc382e18a1c82d4761dc304f0a555ddbae11c685c7e87bfa33459201",
+    "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRR.xml": "2fc0f128b41cffc3d0b41d4f4492b22369355ab632b43002227bd748b181cb17",
+    "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRRK.xml": "458619d6d50f09a14980e959e1ea8cf8edfa1333ef73dfa312e17af688ed4550",
+    "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRRS.xml": "8f4aaa3c7e1df0c7f34d7400cf1562fd6a0dd9cdeecf074dfd5daba226b550b4",
+    "Common/Hardware/Weapons/MG/M27IAR/M27IAR_Ability.xml": "77a4a79bde2a9c5b2b0ce5be73a1e35ba86a6d9b1908a16a11eac87eba40557b",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRR.xml": "614d240e6ed7ab2800f40afb6351a6abbe5491e49543ccd0404139ffa12c154f",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRK.xml": "b1029acd253d88f3e782f6aadb519527aa148507d3267876f058a56f44edad08",
+    "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRS.xml": "ec846901033938501b74d571e332b88a20de921914a25732b50f62f5a3b569c2",
+    "Common/Hardware/Weapons/MG/M60E6/M60E6_Ability.xml": "63e9dfe455db64b6439a74d28c754faedb449b738a2fe7a080e43ba333f49b2e",
+    "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_BTM_RK2B25U.xml": "0b9b43b259f3c10c04604bd85eb9418a58a0355086aa612e6aa9224ff3c4bc71",
+    "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRR.xml": "006f69ded0b3b162f1e54e0e1ccc1b5556dc4c1e811994d29dafeabb9401dbe0",
+    "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRRK.xml": "003c112523930aae73f6664bf089cd181a3758a739a2c4181c1eda513cb6871b",
+    "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRRS.xml": "aa1ebbb2aa105fbfab3424b039df3b39b326b1e9f0e07c1cb08b16421c86ffce",
+    "Common/Hardware/Weapons/MG/MG4K/MG4K_Ability.xml": "52c54d46619793185de8bd9507dd70a0e98090a60898b217db3497bad597f3ae",
+    "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_BTM_RK2B25U.xml": "1b3e36c3fa627f1bef0137afd7a4a8889cc7977aa37255c746b62243dc49a9d3",
+    "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRR.xml": "f500880ce2ddea99cf1409d4b16f0786488b9738727263d80e71f39d4770d83a",
+    "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRRK.xml": "67856b5d7c262d7fdd53e0ed2d249f9c1f728b1603060c43f0c6413873d16814",
+    "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRRS.xml": "d71313a9cae0a37732c58b64b3f796d72358f65c9d06c5f56491194b13065145",
+    "Common/Hardware/Weapons/MG/MG5/MG5_Ability.xml": "7c81189cbda5b930f20a84628e26754188dacf059b283f8ae64f936dc21ad600",
+    "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_BTM_RK2B25U.xml": "34280f02dd12e09d15271c47d55853736c168f558a9f0718f130f02c1cc4a38a",
+    "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRR.xml": "5022fc7cbe5ead6a2bdbb5b7f7f2db167d360c3ea9fa715fbb289b1209edc06d",
+    "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRRK.xml": "aa521a17db3962815c9ed71bc7ac6ed440674fff5370c67288432e0a271b1628",
+    "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRRS.xml": "8997fda50cde18905a5344e6d8cc9ff5051a12d55be59dc17c04831a49812e1f",
+    "Common/Hardware/Weapons/MG/Minimi/Minimi_Ability.xml": "8d3d50917f4b60ac75035f2db0fd3c88da43ab4641ea690309cacaab77b17fc4",
+    "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_BTM_RK2B25U.xml": "4f5957227499e0ac17e6d5352a45de3453014385a4563a2d2038f0f83c36ed12",
+    "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRR.xml": "9899f019fda91c442b5d84e44ca6e9731ea4704642660c815091f8ef46028f23",
+    "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRRK.xml": "99c2d0e0f690d726854a0e483284c5a607bb43fa5620c18c4bfc71986d439738",
+    "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRRS.xml": "2a82b7626a3fbb9681e948d11899c43ee934c1105479de8949c0756fd2dc2a57",
+    "Common/Hardware/Weapons/MG/RPK74M/RPK74M_Ability.xml": "b7e7cd2ac7c1dbc7dd80b16894d28cd6efc69955c6b632e137dab4e0e12de2a9",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_RK2B25U.xml": "a0dba25a64b0ea4b2a8028aa8079832fdfe2387c3c050a9f2642ef20554b9313",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRR.xml": "9319ab3029bf8885e7335d034569f2a4494e0860247136cd14ef20eabcef7680",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRK.xml": "ceb52531c6bd7a14e5c62cb3ddad0d571c02ef2c2de0c36a565a238de5b79b6b",
+    "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRS.xml": "d2068583eff1ce49c7b342437f6e9337b7725e06a184a1729e41ce26213fcfd1",
+    "Common/Hardware/Weapons/MG/RPKM/RPKM_Ability.xml": "03441e49a576d01f6a80c6f240a209405ed65770e4a490650ca4ff1adb807a75",
+    "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_BTM_RK2B25U.xml": "0b014f26008f73850193f95800646d6639be97752de0944e348b9742c57c2128",
+    "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRR.xml": "f4a9ef13e3f3031531eaba8d1d1552fa15e5db860508c9c8eca0412b0dd5cf2c",
+    "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRRK.xml": "bcfb4cff5cdc7d59538d79cd2894a83bae5233c7ef9e4f1f72059e6226a165b0",
+    "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRRS.xml": "a8a83318584b0160a8bb58153d2711d5e8ed780f64cf06f646781f8deb9c1465",
+    "Common/Hardware/Weapons/MG/Ultimax/Ultimax_Ability.xml": "7a6213f1d02650cd8b9081e9c156ee4b415fb89d31dc84b66450850ba8b06a3c",
+    "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_BTM_RK2B25U.xml": "52cc3d25fda406dd8c22ffa3924899bd9a1923f8f79061154921026105ded789",
+    "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRR.xml": "f922d9a43790c800461ef97ffc63a08923a547b8cdd2025bc94177fd3b25f4e5",
+    "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRRK.xml": "3b6770bba44bec147e4a4dc64da0625b0a8fa94c2a238fc0c2e45d437fbcfb29",
+    "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRRS.xml": "59537d4c694f1d53aee538c66b1d3fffd843d699b036206829485c645a80b36b",
+    "Common/Hardware/Weapons/SMG/P90/P90_Ability.xml": "547f1e6e9fcce763824e4cb7781312e7cb41c71597ae64e09bce2067d4c3aff4",
+    "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRR.xml": "fd7e00ada130969dd0da1b27a4eb9423126b6886e7a30b28b4c639e5fa65412f",
+    "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRRK.xml": "ae8b40d60cd760b2f55afcb7a8675ce28b69fc3dd88790852b4190ea0f8b70f9",
+    "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRRS.xml": "44e9fa3122e0d060d661ad229979a68eb629ba3fcb42a6698727a38cdf8a9ae9"
+  },
+  "limitations": "Tier models are operator-directed, not newly decoded native mechanics. Existing recoil recovery estimate metadata is inherited from the selected suppressor models."
+}

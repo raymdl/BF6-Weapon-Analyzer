@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "status": "configuration-field-comparison",
+  "finding": "The 399.999 VSSM full-auto-package scalar uses the same field hash as RateOfFireForSingleFire in all 63 registry-linked base fire-logic structures. It is not the field used for the base automatic rate.",
+  "limitation": "The modifier-class name and native operations remain unverified. This does not establish an independently selectable single-fire mode with the Folding Stock or prove the meaning of -1 sentinels.",
+  "fieldMappings": [
+    {
+      "name": "RateOfFire",
+      "field": "Field_14c4a054",
+      "weaponCount": 63,
+      "distinctValues": 28
+    },
+    {
+      "name": "RateOfFireForBurst",
+      "field": "Field_5bd8006c",
+      "weaponCount": 63,
+      "distinctValues": 28
+    },
+    {
+      "name": "RateOfFireForSingleFire",
+      "field": "Field_be31b12d",
+      "weaponCount": 63,
+      "distinctValues": 11
+    }
+  ],
+  "baseVssm": [
+    {
+      "weapon": "VSSM",
+      "sourceXml": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB.xml",
+      "field": "Field_14c4a054",
+      "name": "RateOfFire",
+      "value": "799.999",
+      "registryGuid": "23024436-2036-48b7-8fb1-fcd8c0f93dd1"
+    },
+    {
+      "weapon": "VSSM",
+      "sourceXml": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB.xml",
+      "field": "Field_5bd8006c",
+      "name": "RateOfFireForBurst",
+      "value": "799.999",
+      "registryGuid": "bb809338-0608-47fa-bbf9-d84c7dafb24a"
+    },
+    {
+      "weapon": "VSSM",
+      "sourceXml": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB.xml",
+      "field": "Field_be31b12d",
+      "name": "RateOfFireForSingleFire",
+      "value": "449.999",
+      "registryGuid": "1ae1f470-71e8-42d7-b204-1c01b3145c3e"
+    }
+  ],
+  "modifierSource": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50.xml",
+  "effects": [
+    {
+      "type": "Class_582cbe36",
+      "guid": "36812529-52ea-4d56-8d69-bf1c99e4c74e",
+      "fields": {
+        "Field_3f680d24": "0xffffffff",
+        "Field_9ca063e9": "False",
+        "Field_96eb74f6": "False",
+        "Field_14c4a054": "-1",
+        "Field_5bd8006c": "-1",
+        "Field_9e0fcbc7": "1",
+        "Field_681db7bb": "1",
+        "Field_be31b12d": "399.999",
+        "Field_caf2ace0": "-1",
+        "Field_19b2eed9": "-1",
+        "Field_a1abbce8": "1",
+        "Field_2084d4bf": "1",
+        "Field_21f2d4ee": "1",
+        "Field_1c57216a": "1"
+      },
+      "references": []
+    },
+    {
+      "type": "Class_10390971",
+      "guid": "34f6bba9-7f76-4b7c-bec0-05e5f52bd464",
+      "fields": {
+        "Field_3f680d24": "0xffffffff",
+        "Field_9ca063e9": "False",
+        "Field_96eb74f6": "False",
+        "Field_503c0ef4": "True"
+      },
+      "references": []
+    },
+    {
+      "type": "Class_032c7d25",
+      "guid": "a4c193b2-8319-478b-9530-88e36e33784d",
+      "fields": {
+        "Field_3f680d24": "0x0000029a",
+        "Field_9ca063e9": "False",
+        "Field_96eb74f6": "False",
+        "Field_7313f5d3": "Field_7e35823b"
+      },
+      "references": []
+    },
+    {
+      "type": "Class_6c33e3a8",
+      "guid": "cffa3bee-210c-495d-8f1b-e64d4a9486cc",
+      "fields": {
+        "Field_3f680d24": "0xffffffff",
+        "Field_9ca063e9": "False",
+        "Field_96eb74f6": "False",
+        "Field_1180f1ee": "Field_c9371288"
+      },
+      "references": []
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB.xml",
+      "sha256": "462808da27036a0754e415ba055086e843308c0934bc3de66c59f8df4c69ce4e"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/ACE32/ACE32_WB.xml",
+      "sha256": "39b5ea38bbe15f2bfa7c9dfde13ccf4b7b6dead937515f6ce1c116253f391be2"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml",
+      "sha256": "655103f89ae0f7081d80016510154704f48640c0ea3ec9451b85183c03698964"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/G36/G36_WB.xml",
+      "sha256": "f8efcaa45b6de45b5cc3491ffc3f71ff265429448a7a71c0fe6443ae8c253967"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/G3A4/G3A4_WB.xml",
+      "sha256": "46b69caff77443adc166f8539b389d31fc406c91ba6c06fa3e50b93766885248"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB.xml",
+      "sha256": "fa7994527577f7be39a1b336389cb2bdccb3bc25cbf07c95ad4f696ac6d12bdd"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/L85A3/L85A3_WB.xml",
+      "sha256": "6eed4ba45f40b4b9e30a29ae11419e738ee5116cb40dbd90b02d75064b88e582"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/M16A3/M16A3_WB.xml",
+      "sha256": "a38517cf0088bac5669f34fe2ec53e2773503df34e1b1b1dea4dbc7257f03b78"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/SCARL/SCARL_WB.xml",
+      "sha256": "523e92987f61cdece24b2fbf635e96774c8ccfd59e528bf907a28e4b9fb2811d"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Tavor7_WB.xml",
+      "sha256": "b3b4cb812ee57b8b7e9771e03ac418df294a50098cd228ad8c18a1e9055a45a2"
+    },
+    {
+      "path": "Common/Hardware/Weapons/AssaultRifle/VHS2/VHS2_WB.xml",
+      "sha256": "7ab64fbfb8d0eace2f54b56be04195e6a9447f6bf76d4fef9b7f55437e0d9ed0"
+    },
+    {
+      "path": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_WB.xml",
+      "sha256": "2fc6fc6a4fbd3789297a017e847f790824dd9a638affe741d976bbc6ca0cca52"
+    },
+    {
+      "path": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_WB.xml",
+      "sha256": "79beef84ca1b17e5cd49fc0ec68a186cd1e5c6747d19f8824995bf5d2718a821"
+    },
+    {
+      "path": "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_WB.xml",
+      "sha256": "3d5b99e49f42c9c8d10f0273481601fcf6f64290cae043b5ef0eb42874c54448"
+    },
+    {
+      "path": "Common/Hardware/Weapons/BoltAction/MiniFix/MiniFix_WB.xml",
+      "sha256": "86e4e2458803bfee1704e8b325f2f9fd19661562f81984aca72a69e044553f6d"
+    },
+    {
+      "path": "Common/Hardware/Weapons/BoltAction/MRAD/MRAD_WB.xml",
+      "sha256": "f4b7af331267c6d5a2ecdea286aef57de9fcc16f31e96c589dc3b7c44de79f80"
+    },
+    {
+      "path": "Common/Hardware/Weapons/BoltAction/SV98M/SV98M_WB.xml",
+      "sha256": "6a836efe5a3beae0d760382d8702f1fbd7e74b44fee4b7d57edf521404b2d3c8"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/AK205/AK205_WB.xml",
+      "sha256": "1c45cdd15d5a8b1460d2332d0e6ca0865eba0a60984ec3b5d5c2d1fa6627a63c"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB.xml",
+      "sha256": "eae644722ac366c9d70121d33c691b94bd5ccb4f694c1339eddbaaa3293f0776"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_WB.xml",
+      "sha256": "a336404a9023ff67b663e5113abe5ea161e2fb21d5ad3d6cf66b16cf33392980"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB.xml",
+      "sha256": "dd6f32f8ec7071d98368965fa58df51549e8fad7ee54f4d5ce24c6910bbdd97a"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB.xml",
+      "sha256": "b2827be2b5855b9b3a66eb32975ed85249984d4a055274576a3a0330d3e1a8cb"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/QBZ192/QBZ192_WB.xml",
+      "sha256": "f216d883a88711b128374adaa9023ae7cdf296bb1e8931b498624bc082f10bcc"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_WB.xml",
+      "sha256": "704624ed07f048935978f9684c80dfd4fc54be530a007263cfe6ef7e29aaf4ec"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB.xml",
+      "sha256": "081663ac84ceb4846fe1b55419e429cbc2a63a5d620d5066041e78a4da761c21"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/XM7/XM7_WB.xml",
+      "sha256": "2b1729c12846c458e4444a4f028051498781a4e5be450210b820c0c2250cca5e"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/ARADMR/ARADMR_WB.xml",
+      "sha256": "6752c223e7e7d80910c441553a4bb93bda7a46807e32221ed4609311836df032"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/M39EMR/M39EMR_WB.xml",
+      "sha256": "6daaa6f6b5887d04969eea27932c19f614de6c000a662eb9dba9117716ea9503"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/MSBSGROTCPS_WB.xml",
+      "sha256": "07594059a9c48b189f6d39c968cf6dbbb03ebe1b34e47ddf694fe3e00ad51300"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/SVCh/SVCh_WB.xml",
+      "sha256": "1c54d5856b420b5ec9b647fd66a127649a1906d36f3fd95da1b0082c17ee76d6"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/SVDM/SVDM_WB.xml",
+      "sha256": "e6bff24c1b253689f8dd064b0a43a6633318e2970d63fb06e7b2736d1fe15208"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB.xml",
+      "sha256": "4a92b9e97a034cd4379880f8a8719e7fa22cbc0077d907a3d4703ee8871db318"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/M240L/M240L_WB.xml",
+      "sha256": "0f51d45765e3665af88091a98b14cf375b6397f5f01a11a9e80c4244dc9bcc27"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/M250/M250_WB.xml",
+      "sha256": "04cd41066fc59aac6a82c5f24b4929da29b410dec9a1b9237db175d41f7efd94"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/M27IAR/M27IAR_WB.xml",
+      "sha256": "17b5bc9c94da770388ca7915f4b7c41d79df3b2740bdda7bdfb4148785fc5565"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/M60E6/M60E6_WB.xml",
+      "sha256": "a823797d2f4e8f05014809c6f5f1d59afc9de880eefb62002d167bcb08ca1c2e"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/MG4K/MG4K_WB.xml",
+      "sha256": "fcc0b48e89b42531ef193ef2baae0418efa646e0b799e2df7ec7d4bc70d86ce9"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/MG5/MG5_WB.xml",
+      "sha256": "0db072fc0d4a330a28ee69244523b904dd7453976338a4c803264c07fe7e0d88"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/Minimi/Minimi_WB.xml",
+      "sha256": "e73806cd9468dc5c7556b5dd3e377839f933e7896b76cf0380c25b242c753d3f"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.xml",
+      "sha256": "bcd4b6c0d372d407aa8635efbd6856f441fc491a05bb915a1b130918f508c0e5"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/RPKM/RPKM_WB.xml",
+      "sha256": "afc9bcba1b2ac4fee08870631d7a2407026e875328eb2310c032c0112cfda701"
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/Ultimax/Ultimax_WB.xml",
+      "sha256": "6e33604e74dea2daa023a4958673b9c7fa3433d0084a199b2bd54ccf25a72b4d"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_WB.xml",
+      "sha256": "d280b5acfcbc1911a0df56f090d2dae4e947a56b1eeb5669608fa4c7754b8b29"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Secondary/G22/G22_WB.xml",
+      "sha256": "95d387a7def444d5e49573a0e99cee3fe3e656b1914b433f9ed3938a75a51690"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Secondary/M18/M18_WB.xml",
+      "sha256": "53743fb858e68e953d4da0a9b1bbc082bd64da231f3f66a71373edd0eb2e9d0c"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Secondary/M45A1/M45A1_WB.xml",
+      "sha256": "3eb4191991c228a598ccb045d2c972ea85c7b37b2f579f6a4b473974868cb0bc"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_WB.xml",
+      "sha256": "c6c55b83f2d1d85a1b140a552194834938a3815ca0f366fd28be4f18c534ee90"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Secondary/Skorpion/Skorpion_WB.xml",
+      "sha256": "100372119648fffd297c6c8e46c94b361efb1f85205cce99b8e12c3c6c4f92eb"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Secondary/TRR8/TRR8_WB.xml",
+      "sha256": "32e5457c5b6396d586b3462fc48f7a4926682c3633bb2c97a2345aee17a82e89"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Shotgun/185KSK/185KSK_WB.xml",
+      "sha256": "3cc0eee9c7717f203e988cfb5bbee4f0147863ed0cb0fa4a6dd6e8915782751b"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Shotgun/590A1/590A1_WB.xml",
+      "sha256": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB.xml",
+      "sha256": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f"
+    },
+    {
+      "path": "Common/Hardware/Weapons/Shotgun/M1014/M1014_WB.xml",
+      "sha256": "361b359ee2e6b9dfb46f016a2ed6810e11d82c1165a09286b0779e586a35d044"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/APC10/APC10_WB.xml",
+      "sha256": "fd9779021fca1942befece8598f161b5e38c44e2986c61e24b4feea8277bdb29"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/APDW/APDW_WB.xml",
+      "sha256": "47dc2019696bba5afd103a474a7eff8fc52949d1d0da3992290f3d28d8134cb6"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB.xml",
+      "sha256": "d1295ac558a421f0ddea2adaa0596493b003f03f5f68cf8cc59d3812aa922f37"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/MP7A2/MP7A2_WB.xml",
+      "sha256": "a314677e0bab57dd04429214c6a73030cd837bc4babdef8d962dc83d3e5e1fff"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/MPX/MPX_WB.xml",
+      "sha256": "408bb3d0306c42d721395ec31c2e577aaa3d82f4344902485dce855a7de27231"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/P90/P90_WB.xml",
+      "sha256": "3686ef666c18f3c4fa74e59a93ca65723ddb200ec04a32237af4a5dbb6211504"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/PP19/PP19_WB.xml",
+      "sha256": "f9f21cea7317ce3f55d7a6f23d3b29f87289b4ed723f5dfe93b8a9a23cc2ac2d"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB.xml",
+      "sha256": "fce8b49957f4d38384c1f2f93277fbcc8d862b997d1b75ae90911645ce1ecea3"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB.xml",
+      "sha256": "e27a3c2842c634e309d02a53ccf954a29842814999683d395c0c49a857c57cfe"
+    },
+    {
+      "path": "Common/Hardware/Weapons/SMG/Vector/Vector_WB.xml",
+      "sha256": "afe261b5f21acdd371624021a5a6ffc2a5297b5ded5b2d333e47767cf1db8b09"
+    },
+    {
+      "path": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml",
+      "sha256": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51"
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50.xml",
+      "sha256": "7cb7b087a54f30ed2566731c97ee80e69fae2c638ed74ba592b803ada3735e8a"
+    }
+  ],
+  "runtimeCheck": "applyAttachments retains semi 449.999 RPM without Folding Stock and auto 799.999 RPM with it. No runtime value was changed."
+}

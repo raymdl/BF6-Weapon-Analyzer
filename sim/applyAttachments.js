@@ -114,6 +114,7 @@ export function resolveDrawTime({
   gripSprintRecoveryTierShift = 0,
   ergonomicsSprintRecoveryTierShift = 0,
   barrelSprintRecoveryTierShift = 0,
+  muzzleSprintRecoveryTierShift = 0,
   axis = _ctx.DRAW_TIME_AXIS,
   primarySprintTable = _ctx.PRIMARY_SPRINT_REC_TIERS,
   sidearmSprintTable = _ctx.SIDEARM_SPRINT_REC_TIERS,
@@ -153,13 +154,14 @@ export function resolveDrawTime({
     grip: gripSprintRecoveryTierShift,
     ergonomics: ergonomicsSprintRecoveryTierShift,
     barrel: barrelSprintRecoveryTierShift,
+    muzzle: muzzleSprintRecoveryTierShift,
   };
   if (Object.values(shifts).some(value => !Number.isInteger(value))) {
     return invalidDrawTime('non-integer-attachment-shift');
   }
 
   const effectiveDrawTimeTier = weaponMag.drawTimeTier
-    + shifts.magazine + shifts.grip + shifts.ergonomics + shifts.barrel;
+    + shifts.magazine + shifts.grip + shifts.ergonomics + shifts.barrel + shifts.muzzle;
   const sprintCoordinate = effectiveDrawTimeTier;
   const sprintIndex = clampTierCoordinate(
     sprintCoordinate - sprintContract.coordinateOrigin,
@@ -387,7 +389,9 @@ export function applyAttachments(w, atts) {
   const lit = laserIsLight
     ? _ctx.LIGHTS_BY_ID[atts.laser]
     : (_ctx.LIGHTS_BY_ID[atts.light] ?? _ctx.LIGHTS[0]);
-  const ammoType = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
+  const ammoBase = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
+  const ammoType = { ...ammoBase, ..._ctx.WEAPON_AMMO?.[w.id]?.effectOverrides?.[ammoBase.id] };
+  const projectile = _ctx.WEAPON_AMMO?.[w.id]?.projectileOverrides?.[ammoType.id];
 
   // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────
   const ergoData = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
@@ -400,6 +404,13 @@ export function applyAttachments(w, atts) {
     + (muz.adsRecoilTierMod ?? 0)
     + (ammoType.adsRecoilTierMod ?? 0)
     + ergoAdsRecoilTierMod;
+  const totalHipRecoilTierMod = (grp.hipRecoilTierMod ?? 0)
+    + (muz.hipRecoilTierMod ?? 0)
+    + (ammoType.hipRecoilTierMod ?? 0)
+    + (ergoData.hipRecoilTierMod ?? 0);
+  const totalHipVarTierMod = (grp.hipRecoilVariationTierMod ?? 0)
+    + (muz.hipRecoilVariationTierMod ?? 0)
+    + (ergoData.hipRecoilVariationTierMod ?? 0);
   const mult = RECOIL_MULT[w.id] ?? 0.94;
   const adsRecoilPerShot       = +(w.recoilV * Math.pow(mult, totalAdsRecoilTierMod)).toFixed(3);
   const adsRecoilReductionPct  = +(100 * (1 - Math.pow(mult, totalAdsRecoilTierMod))).toFixed(1);
@@ -424,13 +435,15 @@ export function applyAttachments(w, atts) {
 
   // ── Weapon sway ───────────────────────────────────────────────────────────────
   const sightSway  = atts.sight === 'iron' ? -1 : 0;
-  const weaponSway = (muz.sway ?? 0) + sightSway;
+  const selectedMag = WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def];
+  const weaponSway = (muz.sway ?? 0) + sightSway + (selectedMag?.sway ?? 0);
 
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
   // Suppressors push up 1 tier (worse accuracy), short barrel drops 1 (better)
   const hipSpreadTierMod = (muz.hipSpreadTierMod ?? 0)
     + (bar.hipSpreadTierMod ?? 0)
-    + (las.hipSpreadTierMod ?? 0);
+    + (las.hipSpreadTierMod ?? 0)
+    + (grp.hipSpreadTierMod ?? 0);
   let spreadOverride = null;
   if (hipSpreadTierMod !== 0 && w.spread) {
     const tiers = HIP_SPREAD_TIERS[HIP_CLS[w.id]];
@@ -455,9 +468,16 @@ export function applyAttachments(w, atts) {
   // reads its SIPS from `recoilIncAds` (scaled below) and hipfire from
   // `spreadDyn.hip.inc`, so both have to be scaled to keep the two in step.
   const spreadIncMult = bar.spreadIncMult ?? 1;
-  const spreadDynOverride = spreadIncMult === 1 || !w.spreadDyn
-    ? w.spreadDyn
-    : Object.fromEntries(Object.entries(w.spreadDyn).map(([state, dyn]) => [
+  const spreadDynBase = w.spreadDyn
+    ? { ...w.spreadDyn,
+      ads: { ...w.spreadDyn.ads, ...ammoType.adsSpreadDynOverride, ...ergoData.adsSpreadDynOverride },
+      hip: { ...w.spreadDyn.hip, ...ergoData.hipSpreadDynOverride },
+    }
+    : w.spreadDyn;
+  const adsSpreadInc = ergoData.adsSpreadDynOverride?.inc ?? ammoType.adsSpreadDynOverride?.inc ?? w.recoilIncAds;
+  const spreadDynOverride = spreadIncMult === 1 || !spreadDynBase
+    ? spreadDynBase
+    : Object.fromEntries(Object.entries(spreadDynBase).map(([state, dyn]) => [
       state,
       dyn?.inc != null ? { ...dyn, inc: +(dyn.inc * spreadIncMult).toFixed(3) } : dyn,
     ]));
@@ -478,17 +498,21 @@ export function applyAttachments(w, atts) {
     baseVelocityMps: w.bulletVel,
     treatment: _ctx.WEAPON_AMMO?.[w.id]?.velocityTreatments?.[ammoType.id] ?? null,
   });
+  const projectileVelocityMps = ammoVelocity.velocity != null && velocityResolution.multiplier != null
+    ? ammoVelocity.velocity * velocityResolution.multiplier
+    : null;
 
   // ── Spot-on-fire ranges ───────────────────────────────────────────────────────
-  // Muzzle and ammo both suppress the signature; the tighter of the two wins.
+  // Muzzle, barrel and ammo suppress the signature; the tighter range wins.
   // A subsonic load fired through a suppressor drops 2D spotting further than
   // either does alone, carried as the ammo's suppressed minimap range.
-  const suppressedMinimapSpot = muz.suppressor === true
+  const suppressedMinimapSpot = muz.suppressor === true || bar.suppressor === true
     ? ammoType.suppressedMinimapSpot
     : null;
-  const worldSpot = Math.min(muz.worldSpot ?? 54, ammoType.worldSpot ?? Infinity);
+  const worldSpot = Math.min(muz.worldSpot ?? 54, bar.worldSpot ?? Infinity, ammoType.worldSpot ?? Infinity);
   const minimapSpot = Math.min(
     muz.minimapSpot ?? 150,
+    bar.minimapSpot ?? Infinity,
     suppressedMinimapSpot ?? ammoType.minimapSpot ?? Infinity,
   );
 
@@ -554,6 +578,7 @@ export function applyAttachments(w, atts) {
       gripSprintRecoveryTierShift,
       ergonomicsSprintRecoveryTierShift: ergoSprintRecoveryTierShift,
       barrelSprintRecoveryTierShift: bar.sprintRecoveryTierShift ?? 0,
+      muzzleSprintRecoveryTierShift: muz.sprintRecoveryTierShift ?? 0,
       axis: DRAW_TIME_AXIS,
       primarySprintTable: PRIMARY_SPRINT_REC_TIERS,
       sidearmSprintTable: SIDEARM_SPRINT_REC_TIERS,
@@ -585,9 +610,21 @@ export function applyAttachments(w, atts) {
   const autoRpm = ergoData.setsFireModeAuto
     ? ergoData.autoRpm ?? w.autoRpm ?? null
     : null;
+  const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd)
+    ? Object.fromEntries(Object.entries(w.recoil).map(([state, group]) => [state, {
+      ...group,
+      ...(state === 'hip' && totalHipRecoilTierMod
+        ? { amountExp: (group.amountExp ?? 0) + totalHipRecoilTierMod } : {}),
+      ...(state === 'hip' && totalHipVarTierMod
+        ? { dirVarExp: (group.dirVarExp ?? 0) + totalHipVarTierMod } : {}),
+      ...(group.duration != null && ergoData.recoilDurationAdd
+        ? { duration: +(group.duration + ergoData.recoilDurationAdd).toFixed(6) } : {}),
+    }]))
+    : w.recoil;
 
   return {
     ...w,
+    ...(projectile ? { pellets: projectile.pellets, dmg: projectile.dmg } : {}),
     _label:                  allTags.length ? `${w.name} (${allTags.join(' · ')})` : w.name,
     _adsRecoilReductionPct:  adsRecoilReductionPct,
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,
@@ -619,13 +656,15 @@ export function applyAttachments(w, atts) {
     burstRpm,
     spread:      spreadOverride ?? w.spread,
     spreadDyn:   spreadDynOverride,
+    recoil:      recoilOverride,
     recoilV:     adsRecoilPerShot,
     recoilVar:   adsRecoilVariation,
-    recoilIncAds: w.recoilIncAds != null
-      ? +(w.recoilIncAds * spreadIncMult).toFixed(3)
+    recoilIncAds: adsSpreadInc != null
+      ? +(adsSpreadInc * spreadIncMult).toFixed(3)
       : null,
-    bulletVel: ammoVelocity.velocity != null && velocityResolution.multiplier != null
-      ? floorVelocityDisplay(ammoVelocity.velocity * velocityResolution.multiplier)
+    _projectileVelocityMps: projectileVelocityMps,
+    bulletVel: projectileVelocityMps != null
+      ? floorVelocityDisplay(projectileVelocityMps)
       : null,
     deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : null,
     mag:    magMag ?? w.mag,

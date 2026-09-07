@@ -27,7 +27,8 @@
         "Sniper Rifle": 1,
         "SMG": 0.75,
         "Sidearm": 0.75
-      }
+      },
+      "hipRecoilTierMod": -1
     },
     {
       "id": "lightweight",
@@ -127,6 +128,11 @@
       "hsMult": 1.34,
       "collateralMult": {
         "Shotgun": 0.33
+      },
+      "adsRecoilTierMod": -1,
+      "hipRecoilTierMod": -1,
+      "adsSpreadDynOverride": {
+        "inc": 0.05
       }
     },
     {
@@ -179,7 +185,8 @@
       },
       "worldSpot": 27,
       "minimapSpot": 64,
-      "suppressedMinimapSpot": 9
+      "suppressedMinimapSpot": 9,
+      "hipRecoilTierMod": -1
     },
     {
       "id": "range_pen",
@@ -194,7 +201,8 @@
         "Sniper Rifle": 1,
         "SMG": 0.75,
         "Sidearm": 0.75
-      }
+      },
+      "hipRecoilTierMod": -1
     }
   ],
   "WEAPON_AMMO": {
@@ -351,6 +359,16 @@
           "kind": "subsonic-absolute",
           "subsonicVelocityMps": 273
         }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        }
       }
     },
     "grtbc": {
@@ -396,6 +414,16 @@
           "subsonicVelocityTier": 3,
           "displayRounding": "floor"
         }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        }
       }
     },
     "sor300sc": {
@@ -420,6 +448,16 @@
           "subsonicVelocityTier": 3,
           "displayRounding": "floor"
         }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        }
       }
     },
     "sgx": {
@@ -442,6 +480,16 @@
           "kind": "subsonic-tier",
           "subsonicVelocityTier": 2,
           "displayRounding": "floor"
+        }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
         }
       }
     },
@@ -466,6 +514,16 @@
           "kind": "subsonic-tier",
           "subsonicVelocityTier": 2,
           "displayRounding": "floor"
+        }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
         }
       }
     },
@@ -509,6 +567,16 @@
           "subsonicVelocityTier": 3,
           "displayRounding": "floor"
         }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        }
       }
     },
     "usg90": {
@@ -530,6 +598,16 @@
         "subsonic_hp": {
           "kind": "subsonic-absolute",
           "subsonicVelocityMps": 265
+        }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
         }
       }
     },
@@ -554,6 +632,16 @@
           "subsonicVelocityTier": 2,
           "displayRounding": "floor"
         }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        }
       }
     },
     "scw10": {
@@ -561,7 +649,7 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
-        "hollow_pt": 15,
+        "hollow_pt": 20,
         "frangible": 20,
         "subsonic": 15,
         "subsonic_hp": 35
@@ -576,6 +664,16 @@
           "kind": "subsonic-tier",
           "subsonicVelocityTier": 2,
           "displayRounding": "floor"
+        }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
         }
       }
     },
@@ -601,6 +699,16 @@
           "subsonicVelocityTier": 3,
           "displayRounding": "floor"
         }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        }
       }
     },
     "cz3a1": {
@@ -623,6 +731,16 @@
           "kind": "subsonic-tier",
           "subsonicVelocityTier": 2,
           "displayRounding": "floor"
+        }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
         }
       }
     },
@@ -647,6 +765,16 @@
           "kind": "subsonic-tier",
           "subsonicVelocityTier": 3,
           "displayRounding": "floor"
+        }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
         }
       }
     },
@@ -746,9 +874,9 @@
         "standard": 5,
         "penetration": 5,
         "lightweight": 10,
-        "hollow_pt": 20,
+        "hollow_pt": 15,
         "frangible": 20,
-        "synthetic": 25
+        "synthetic": 20
       }
     },
     "m39emr": {
@@ -830,6 +958,15 @@
         "frangible": 20
       }
     },
+    "interdictor": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "frangible": 20,
+        "long_range": 10,
+        "penetration": 5
+      }
+    },
     "l115": {
       "def": "standard",
       "ammo": {
@@ -854,6 +991,82 @@
         "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
+      },
+      "projectileOverrides": {
+        "buckshot_00": {
+          "pellets": 8,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 16.8
+            },
+            {
+              "r": 11.0,
+              "d": 16.8
+            },
+            {
+              "r": 12.0,
+              "d": 14.4
+            },
+            {
+              "r": 18.0,
+              "d": 14.4
+            },
+            {
+              "r": 19.0,
+              "d": 11.2
+            },
+            {
+              "r": 33.0,
+              "d": 11.2
+            },
+            {
+              "r": 34.0,
+              "d": 7.6
+            }
+          ]
+        },
+        "slugs": {
+          "pellets": 1,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 100.0
+            },
+            {
+              "r": 8.0,
+              "d": 100.0
+            },
+            {
+              "r": 9.0,
+              "d": 100.0
+            },
+            {
+              "r": 15.0,
+              "d": 100.0
+            },
+            {
+              "r": 15.0,
+              "d": 75.0
+            },
+            {
+              "r": 36.0,
+              "d": 75.0
+            },
+            {
+              "r": 36.0,
+              "d": 50.0
+            },
+            {
+              "r": 75.0,
+              "d": 50.0
+            },
+            {
+              "r": 75.0,
+              "d": 42.9
+            }
+          ]
+        }
       }
     },
     "m1014": {
@@ -863,6 +1076,82 @@
         "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
+      },
+      "projectileOverrides": {
+        "buckshot_00": {
+          "pellets": 8,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 14.4
+            },
+            {
+              "r": 11.0,
+              "d": 14.4
+            },
+            {
+              "r": 12.0,
+              "d": 10.0
+            },
+            {
+              "r": 18.0,
+              "d": 10.0
+            },
+            {
+              "r": 19.0,
+              "d": 6.2
+            },
+            {
+              "r": 24.0,
+              "d": 6.2
+            },
+            {
+              "r": 25.0,
+              "d": 4.6
+            }
+          ]
+        },
+        "slugs": {
+          "pellets": 1,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 100.0
+            },
+            {
+              "r": 9.0,
+              "d": 100.0
+            },
+            {
+              "r": 9.0,
+              "d": 75.0
+            },
+            {
+              "r": 15.0,
+              "d": 75.0
+            },
+            {
+              "r": 15.0,
+              "d": 50.0
+            },
+            {
+              "r": 36.0,
+              "d": 50.0
+            },
+            {
+              "r": 36.0,
+              "d": 42.9
+            },
+            {
+              "r": 75.0,
+              "d": 42.9
+            },
+            {
+              "r": 75.0,
+              "d": 30.0
+            }
+          ]
+        }
       }
     },
     "ks18k": {
@@ -872,6 +1161,74 @@
         "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
+      },
+      "projectileOverrides": {
+        "buckshot_00": {
+          "pellets": 8,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 10.0
+            },
+            {
+              "r": 18.0,
+              "d": 10.0
+            },
+            {
+              "r": 19.0,
+              "d": 5.6
+            },
+            {
+              "r": 24.0,
+              "d": 5.6
+            },
+            {
+              "r": 25.0,
+              "d": 4.0
+            }
+          ]
+        },
+        "slugs": {
+          "pellets": 1,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 75.0
+            },
+            {
+              "r": 9.0,
+              "d": 75.0
+            },
+            {
+              "r": 9.0,
+              "d": 50.0
+            },
+            {
+              "r": 15.0,
+              "d": 50.0
+            },
+            {
+              "r": 15.0,
+              "d": 42.9
+            },
+            {
+              "r": 36.0,
+              "d": 42.9
+            },
+            {
+              "r": 36.0,
+              "d": 37.5
+            },
+            {
+              "r": 75.0,
+              "d": 37.5
+            },
+            {
+              "r": 75.0,
+              "d": 27.3
+            }
+          ]
+        }
       }
     },
     "db12": {
@@ -881,6 +1238,74 @@
         "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
+      },
+      "projectileOverrides": {
+        "buckshot_00": {
+          "pellets": 8,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 11.2
+            },
+            {
+              "r": 18.0,
+              "d": 11.2
+            },
+            {
+              "r": 19.0,
+              "d": 6.6
+            },
+            {
+              "r": 24.0,
+              "d": 6.6
+            },
+            {
+              "r": 25.0,
+              "d": 5.0
+            }
+          ]
+        },
+        "slugs": {
+          "pellets": 1,
+          "dmg": [
+            {
+              "r": 0.0,
+              "d": 75.0
+            },
+            {
+              "r": 9.0,
+              "d": 75.0
+            },
+            {
+              "r": 9.0,
+              "d": 50.0
+            },
+            {
+              "r": 15.0,
+              "d": 50.0
+            },
+            {
+              "r": 15.0,
+              "d": 42.9
+            },
+            {
+              "r": 36.0,
+              "d": 42.9
+            },
+            {
+              "r": 36.0,
+              "d": 37.5
+            },
+            {
+              "r": 75.0,
+              "d": 37.5
+            },
+            {
+              "r": 75.0,
+              "d": 30.0
+            }
+          ]
+        }
       }
     },
     "p18": {
@@ -941,7 +1366,7 @@
     "m44": {
       "def": "standard",
       "ammo": {
-        "standard": 0,
+        "standard": 5,
         "hollow_pt": 20,
         "penetration": 5,
         "frangible": 20
@@ -973,7 +1398,7 @@
     "m357trait": {
       "def": "standard",
       "ammo": {
-        "standard": 0,
+        "standard": 5,
         "hollow_pt": 20
       }
     },

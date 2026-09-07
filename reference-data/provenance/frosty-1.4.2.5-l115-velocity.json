@@ -1,0 +1,121 @@
+{
+  "sourceBuild": "1.4.2.5",
+  "buildEvidence": "user-supplied export label",
+  "sourceRoot": "BF6 Datamining workspace; paths below are relative to its root",
+  "weaponId": "l115",
+  "siteField": "bulletVel",
+  "previousValue": 664,
+  "value": 742,
+  "unit": "m/s",
+  "registry": {
+    "sourceXml": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml",
+    "name": "L115A3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z",
+    "guid": "fae5e41c-308d-415c-be53-e20c8f9fac46",
+    "raw": "742"
+  },
+  "wb": {
+    "weapon": "L115A3",
+    "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_WB.xml",
+    "path": "/File[@Guid='833f680e-77f8-436a-bb18-e104dcd591c4']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_58d70acb/Struct_29ea5d2b/Field_0bf4f62b/Struct_739f3ac5",
+    "type": "Struct_739f3ac5",
+    "registryGuid": "0bde07ea-8707-4d98-897f-4f39947ee2f1",
+    "name": "L115A3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed",
+    "rawScalars": {
+      "Field_3901db14": "0",
+      "Field_42fc0f5e": "0",
+      "Field_32a99b9c": "742"
+    },
+    "field": "Field_32a99b9c"
+  },
+  "barrelContext": {
+    "siteBarrelDef": "basic",
+    "evidence": {
+      "weapon": "L115A3",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_BasicBarrel.xml",
+      "attachmentGuid": "e64c5fe8-f878-4c92-9926-83c4bdacf949",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Barrel",
+        "guid": "9c0ba746-e08b-4fe8-8dad-ed7c63fdcc8c"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/BoltAction/L115A3/U_PRG_L115A3_BRL_BasicBarrel",
+        "guid": "680701ab-614d-4138-a5a6-aba9b8c1062d"
+      },
+      "rawPointCost": "0x0000000a",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+          "guid": "58e4d1e5-9159-4412-b727-660b373174c0",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Barrel",
+            "guid": "941cb5ad-f4f8-4e30-af26-2e618582343a"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+              "guid": "2c293e5b-23b2-40ba-91dc-547e7e55a114",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10",
+                    "guid": "f7b59868-d8c2-489e-927b-6f5bb375245f"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml",
+                      "guid": "17841af6-c296-4bcd-9cd1-5857d6bc4b5b",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml",
+                      "path": "/File[@Guid='0f271a93-5501-45df-93dc-027bc0d19628']/Class_539cff9b[@Guid='c725aad1-0a7f-4364-8b39-4ff263ee974f']/Field_4d248d91/member[@Index='0']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10",
+                        "guid": "504e3508-f31c-4f06-ad75-5c93bd312fc8"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10 [504e3508-f31c-4f06-ad75-5c93bd312fc8]",
+                      "rawBranch": "0x00000001"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    },
+    "interpretation": "The site defaults to Basic Barrel. Its linked WB effects change ADS animation/FOV; its GS binding targets ADS time. This branch has no velocity modifier."
+  },
+  "limits": [
+    "Only base shot InitialSpeed.z is promoted; other mechanics, live server overrides, and factory package activation are not established.",
+    "The previous site value 664 m/s is retained here. Identity evidence is in frosty-weapon-identities.json."
+  ],
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_BasicBarrel.xml": "404a878d6a0fc74ac673e83de5d3bb5bd944d17c4762bb2f5e87aeaee7fa1907",
+    "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml": "ebe68c3464094b4606385f7505838e83bcd5ffd2264b385cf8a35902a1e96a0f",
+    "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml": "1e11ca3a5bbaf30c95cc86e730669bf2e5d16b4ece1bb18e9a506b057d2d2882",
+    "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_WB.xml": "79beef84ca1b17e5cd49fc0ec68a186cd1e5c6747d19f8824995bf5d2718a821",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml": "57266f610ed9c1e20c3113a2d8ac1b087d9aed2a92b22145e95ee4872659f6f2",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml": "d669dcc57fae81e49a67f9ea17bdd4b56704334eecefb9fa87698fe0475dd27e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10.xml": "f7112bd202d8ce9ed3de56146e23143e88cf8d0ce2b40b25ca48df8f36d95196",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml": "25aa059379e7d107717c3be859a5dfb419b70d2994d9c1a73caaf268d495f8ee",
+    "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10.xml": "a86b36f03216344eab3ac0134d4f43f174d90bfe72fcd8f7e4669105b77e26f9"
+  }
+}

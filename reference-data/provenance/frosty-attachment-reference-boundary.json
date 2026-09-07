@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "status": "configuration-reference-boundary",
+  "summary": {
+    "sourceGraphSha256": "01ddbbbb9e748fa6b84c3886bea8fde72c5497c96cc9865ebb67424742fe9d51",
+    "seedModifierObjects": 69,
+    "sourceAssets": 66,
+    "seedKinds": {
+      "gs": 62,
+      "named-wb-effect": 7
+    },
+    "resolvedObjects": 69,
+    "references": 0,
+    "objectTypes": {
+      "Class_bb838ff6": 23,
+      "Class_5e5631ff": 26,
+      "Class_743a3ce0": 13,
+      "Class_c42bd53b": 3,
+      "Class_bfd4f199": 2,
+      "Class_daaa7328": 2
+    },
+    "issues": [],
+    "scope": "GS-bound recoil/spread modifiers, explicitly recoil/dispersion/spread-named WB effects, and transitive serialized references; excludes ADS-time seeds and does not classify all unnamed WB effects",
+    "interpretation": "Raw reference closure only; does not decode native consumers, arithmetic, activation, or runtime formulas"
+  },
+  "sourceAssets": [
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10",
+      "sha256": "30899f1e1afa35844bc804175a60f898536b2ab6bf10489fca175704783d6e3f"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_50_BRL_P10",
+      "sha256": "8afef2f10f8ffb2bb6d4b6a2459dd4aae3771e8dc2574d19b5745f9cdad5c343"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BRL_P10",
+      "sha256": "9e4967968825ec5a38ab29850e2d4a190abeb3f4fa32be334fcfafac01dba358"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10",
+      "sha256": "4d9dc4fb3bb135c307ca39c402e114b7467fd2100802d7aca7996ca67926df40"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BTM_M10",
+      "sha256": "92da66b6682feb68f3accf594fc67e3686ff683919b08a85a71a73a4c55931dd"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P40",
+      "sha256": "4d0ed17aaaf093c9fe1b1e14d37a0165faf90149bb16a8391f2cd37b888cc96b"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_M10",
+      "sha256": "af05774754ba8e6e5786140247be4b0ed185a3367a165e2df9ec58a3c4080fa7"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20",
+      "sha256": "adaa5e93752c7c4602421e2a3429ca5dd8496da69f0b5b486b2a0ef6d30214c6"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_50_BTM_Bipod",
+      "sha256": "4bdfcf6fd30c3e003445ef84f481f8f1ded6e2b6d4352342c3cfa41d8957552d"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Bipod/GRM_BipodDeployed_BTM_P50",
+      "sha256": "dad773e9d9bc1ee7fadee0cfbfe1bf23a8d48588d1a335722f4231518b56f27a"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P50",
+      "sha256": "1930e6b9baaea3e975c37cf619c04e171d8b81a3e47aa49c7238e2420f28f44a"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P20",
+      "sha256": "222fa29661638e689dc3dd00a52c8983e11e554b6202a337a6523c8fdbb775e4"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Grippod/GRM_GrippodDeployed_BTM_P30",
+      "sha256": "365414b3bf2dfa82da85929ba153ccb312087ee3d554a38d6f603c7087e5fcf3"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P10",
+      "sha256": "695b436264af8c994bfa8565893804c2e1d71aced69eee9361913bab13de6071"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P30",
+      "sha256": "bb92ea2dd54ef9964124f448b9c52a145275ff61407e121957c4f173fecd47bf"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_MZL_M10",
+      "sha256": "3c64293c21d74d377926c8e7d41705946cc46a32bb28eb39990462773017a0b2"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+      "sha256": "c9f53dbb7fac3e5d7776680e9174045f2b0f957fadd318a703203ab8c19bc446"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_P10",
+      "sha256": "cab59d6fea97ba8773a6390cf5a4810d30dd3b346ec56539f1c84880d8b3d6f8"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_RecoilConversion_MZL_P10",
+      "sha256": "4ee66d7d0098ba117779ee53e8e840628e38d4d0feb5cb7e0998ca3deded856a"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_TOP_P10",
+      "sha256": "bcf36807ecfbcc475e123d33a2dd2f6f7ec6cd834088ef06136b6294e4e7b277"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TOP_P30",
+      "sha256": "eca55c4d1498626547b27e531161cffdadc7cdf64955e55e7b3722feee30eedf"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TOP_P20",
+      "sha256": "8f56fa9cc1b548bd2aed150ceeed00ccf02d4520e0d1e44abd75c2785fb2ac39"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TOP_P10",
+      "sha256": "b33f337fe5556025c7db2f04f7caaf2dfa654be6ff2bd2bb79e5aef9d6413288"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10",
+      "sha256": "59595d3f0a103063164fd63b00e13f880b9e216f988892f277e43a4c94be630c"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BRL_P10",
+      "sha256": "dd69e38cadd7533015d09abf77d5dd3b209f39de0a851c31a98b21b2bb1d5efc"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_35_BRL_P10",
+      "sha256": "40e9c5db222270bbcd592849a76937b6c1e053b404cec97b8cf8e0228a0c658a"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_35_BTM_Bipod",
+      "sha256": "9d6b8d7d10627dce25676730de4e331e4740f6a4d10b55a6eef05add72424791"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RecoilBuffer/WPM_ERG_Buffer_W05",
+      "sha256": "80bf28c2e435a49070379587b42a0c6b018398bc032856e6b049f2b7553d160f"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10",
+      "sha256": "e18dd41f8caf5250371f4cd07fa1c6c81a05d19f0f26bb91fa11f51d171356c8"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10",
+      "sha256": "81332622cc8f19f2d6ef99bcd68c0815bb187ffb041c76dd3c0d0120b967036c"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10",
+      "sha256": "22efe589c0f110a40c2a4d7afa303cb6ca3161ce41555ff24dccf4945e290280"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_40_BRL_P10",
+      "sha256": "fbff1e32695713be96a6b69587e58706bbc5fdf686d6b26e554927f04f241c59"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10",
+      "sha256": "c0cfc368b41175e455ca6a0995c6c94a0d19856f151644223e2f1adcc64c0506"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_40_BTM_Bipod",
+      "sha256": "33bed0574c909372f9527481067fc0f7278868f66d0236630b55fc979e8581b1"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_30_BRL_P10",
+      "sha256": "e488b778b7c38b503a3f8fdfa7696bbb2cc419c0ad3178b3cbca0116c243ec24"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_30_BTM_Bipod",
+      "sha256": "ee6bb35adae4c16a1fa88c1dff8315420cc0ac0dd7ce522aeeb14ca367f10c90"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10",
+      "sha256": "1027331325badbaebc5b1f3dc11b2f910ecfff812f50df435d322e46aeab8a99"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_ERG_M10",
+      "sha256": "90f8d46789547b9f1c3f965e96808d3a2146f30a16eafc3ce482986f51fa9f0c"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00",
+      "sha256": "9e4ddf86925c6c2a98570fa502d914d87292b6fff62e8ebf78481341e71bc5a0"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Bipod/GRM_BipodDeployed_Bolt_BTM_P50",
+      "sha256": "ead995f21d006887433d08939bebca8ead534ee7c8163280c1941baec93f441c"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10",
+      "sha256": "004f27dc4363245c021fc37594bd74f8ef4fb3571e1004351879d816d087ace4"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_P10",
+      "sha256": "dd1bb3baa5315a8a353652f19b2e874a75f34e15c59ed9747b8b1b0bc9a8209b"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10",
+      "sha256": "fee7dd49da3e27a73ce9dc8fc3ae45579e2c0766283f4683163444b1542357c4"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10",
+      "sha256": "17c33661661f452e0e40dba7670a63e1fd31c794f97bce58f9ec95a75aae3d7f"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_Compensator_P10",
+      "sha256": "7fcf8b1ae729b965381dad3758ed71d81265926e91749acb6e0c6209fa444ab2"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_55_BRL_P10",
+      "sha256": "4ef6c7ee39b937ee4f0c83dfc168a278a3244cbe31575678e900ee56a6ee7d17"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10",
+      "sha256": "11dea16c46e8a2479941339aadca56ec3cddb5093f2b82a5b74e62648c86b997"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_P10",
+      "sha256": "16f2bff0b75c535e25fa52f4bbc5af3df795725c8cad8453323f97e7b3ff0ed5"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_45_BTM_Bipod",
+      "sha256": "1bf9f83158ccb24c96014a448f38da0bfa8c35cb6f69a7cccc637f30694496d5"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10",
+      "sha256": "80e2d08b157b3a3e18e65870150682eb468fb78cf7f7102deb42638eee2b6ac6"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_45_BRL_P10",
+      "sha256": "7cfb66e68a2db6a57f08b9f87b48848ee818d4a082d412bc3ee23a63c81ef6d3"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10",
+      "sha256": "114f70b3ce76b6d87f985c696b904126f559454cd9c058841bf8f395b68ad72a"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10",
+      "sha256": "81d9fdb926996ed443a145c0af8518b18c55a0e855ec2ff99280760621280bee"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_RecoilConversion_ERG_P10",
+      "sha256": "824d432553c363ea00f22965ccc70a1bdc1d20542e3de36c90c63c74c5435d7b"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_ERG_P20",
+      "sha256": "b6db41c8d88532a90e07d982a75988e9bbb594ac00ced0821bb5898b601aa941"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10",
+      "sha256": "1709c1d0021b2d308f506493e08644af584e47ce9011965eb6b66c4af16f0e13"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+      "sha256": "8186b678fa20544a96662c728572fd2c1835f82f7ea38581b03b7051e1571ca2"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+      "sha256": "4b437c4dcb418b805d963cfdfdeb780d97187b147daffafe6fdf7c5bc708c933"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P20",
+      "sha256": "e05e7f2a388bf825f1dd06221f09b15d31824efb16bd828acdd629bbe9134d29"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P20",
+      "sha256": "b582cd9dacccef7fcdf6f8bc6dd1cd02e490e0ad5eeeeb25a4d2393c4886ff0e"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod",
+      "sha256": "e285a413d4159d71a6a89d6249afcf6f1587667ae815761876ec88b92bebaffb"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10",
+      "sha256": "8ca52654e8a7ee54fd67dcd72898ac47a3398eb9e2f2cb79717646e7b12a8373"
+    },
+    {
+      "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_AMO_Shotgun_P10",
+      "sha256": "27109ae81c2cc1a34ab64b1a6cc22f747461c513effee6d4fac2df59909c87ac"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_SlugIdentifier",
+      "sha256": "adfbbaf17c3f3dd3040ebaf8c86f5da489d1f2ebd45ea200ebdc87b8d896371f"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_60_BRL_P10",
+      "sha256": "d0fc98bdb6cc5766da5383614806dd4a1e076e43f026e18b927b3fd45fb4cadb"
+    },
+    {
+      "asset": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10",
+      "sha256": "5cb7d0affe2165344d0ee1c64b567ded7f6e7e3cc09a27f71ea05fd4f1f10c37"
+    }
+  ],
+  "evidencePath": "outputs\\frosty\\live-review-2026-09-06\\attachment-modifier-reference-closure.json",
+  "script": "scripts/research-attachment-modifiers.py",
+  "remainingCoverage": [
+    "The source attachment graph retains 24 unresolved issues; this trace does not resolve them.",
+    "WB effects without recoil/dispersion/spread in the source path are not comprehensively classified.",
+    "No native arithmetic or current-build update loop has been decoded."
+  ]
+}

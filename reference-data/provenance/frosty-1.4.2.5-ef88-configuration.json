@@ -1,0 +1,449 @@
+{
+  "sourceBuild": "1.4.2.5",
+  "buildEvidence": "user-supplied export label",
+  "weaponId": "ef88",
+  "scope": "Update base configuration from named registry values, corroborated by raw XML. No new runtime formula or attachment operation is inferred.",
+  "fields": [
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "rpm",
+      "siteValue": 675,
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFire",
+      "registryRaw": "674.999",
+      "registryGuid": "7c2c51aa-6996-4681-9033-85eab6870598",
+      "registryValue": 674.999,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml",
+        "path": "/File[@Guid='89ce0ae4-dae0-43bd-88e9-303747467f39']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789",
+        "type": "Struct_30331789",
+        "field": "Field_14c4a054",
+        "raw": "674.999",
+        "registryBlockGuid": "1b856c52-0ae1-47b3-aab5-b425e819d4ea",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoilVar",
+      "siteValue": 20.3,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirectionVariation",
+      "registryRaw": "26.1",
+      "registryGuid": "12034525-d19b-439d-a733-7ec6c3fcf21d",
+      "registryValue": 26.1,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_865174fa",
+        "raw": "26.1",
+        "registryBlockGuid": "f4c793dc-5251-47a0-a28d-154b29107774",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoilIncAds",
+      "siteValue": 0.3,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IncreasePerShot",
+      "registryRaw": "0.36",
+      "registryGuid": "c03e3d4c-eceb-43fe-a096-1e9b28f865cb",
+      "registryValue": 0.36,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_0084b1d1",
+        "raw": "0.36",
+        "registryBlockGuid": "c8ddbdf9-a459-440e-af15-2174188a2cc6",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.ads.amount",
+      "siteValue": 0.59065,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilAmount",
+      "registryRaw": "0.5965",
+      "registryGuid": "21467ac0-c575-4767-a5e1-769c31e7fec0",
+      "registryValue": 0.5965,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_22810b21",
+        "raw": "0.5965",
+        "registryBlockGuid": "f4c793dc-5251-47a0-a28d-154b29107774",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.ads.amountMult",
+      "siteValue": 0.9579,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilAmountMultiplier",
+      "registryRaw": "0.9375",
+      "registryGuid": "438527a4-7ce5-4ea1-a7c8-591b7fcdfede",
+      "registryValue": 0.9375,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_50b8fd5b",
+        "raw": "0.9375",
+        "registryBlockGuid": "f4c793dc-5251-47a0-a28d-154b29107774",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.ads.dirVar",
+      "siteValue": 20.3,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirectionVariation",
+      "registryRaw": "26.1",
+      "registryGuid": "12034525-d19b-439d-a733-7ec6c3fcf21d",
+      "registryValue": 26.1,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_865174fa",
+        "raw": "26.1",
+        "registryBlockGuid": "f4c793dc-5251-47a0-a28d-154b29107774",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.ads.dirVarMult",
+      "siteValue": 0.89864,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirectionVariationMultiplier",
+      "registryRaw": "0.915366",
+      "registryGuid": "a113a173-7811-4f4d-91ce-1ba3e959fff5",
+      "registryValue": 0.915366,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_7404fa33",
+        "raw": "0.915366",
+        "registryBlockGuid": "f4c793dc-5251-47a0-a28d-154b29107774",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.ads.inc",
+      "siteValue": 0.3,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IncreasePerShot",
+      "registryRaw": "0.36",
+      "registryGuid": "c03e3d4c-eceb-43fe-a096-1e9b28f865cb",
+      "registryValue": 0.36,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_0084b1d1",
+        "raw": "0.36",
+        "registryBlockGuid": "c8ddbdf9-a459-440e-af15-2174188a2cc6",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.ads.idleTime",
+      "siteValue": 0.6,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IdleTime",
+      "registryRaw": "0.4",
+      "registryGuid": "01e416ff-4dbd-46cb-b899-bf514d92bca4",
+      "registryValue": 0.4,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_af333987",
+        "raw": "0.4",
+        "registryBlockGuid": "c8ddbdf9-a459-440e-af15-2174188a2cc6",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.ads.firingCoef",
+      "siteValue": 1.04,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.FiringDecreaseCoefficient",
+      "registryRaw": "1.2",
+      "registryGuid": "83105abb-d8fa-4227-b7a9-6f3fa4536c4b",
+      "registryValue": 1.2,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_2ca8533e",
+        "raw": "1.2",
+        "registryBlockGuid": "c8ddbdf9-a459-440e-af15-2174188a2cc6",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.ads.firingOffset",
+      "siteValue": 2.05,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.FiringDecreaseOffset",
+      "registryRaw": "2.7",
+      "registryGuid": "6f1a0b52-5002-4383-8212-f8f327f08d56",
+      "registryValue": 2.7,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_1b9eef5d",
+        "raw": "2.7",
+        "registryBlockGuid": "c8ddbdf9-a459-440e-af15-2174188a2cc6",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.ads.notFiringOffset",
+      "siteValue": 8,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.NotFiringDecreaseOffset",
+      "registryRaw": "7.2",
+      "registryGuid": "dc3922ff-14ae-4eb3-b577-2066a147123b",
+      "registryValue": 7.2,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_4d3f0635",
+        "raw": "7.2",
+        "registryBlockGuid": "c8ddbdf9-a459-440e-af15-2174188a2cc6",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.ads.distExp",
+      "siteValue": 0.67,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "registryRaw": "0.5",
+      "registryGuid": "74706e6c-c311-4ac2-9933-9495d249e0dc",
+      "registryValue": 0.5,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_94efea57",
+        "raw": "0.5",
+        "registryBlockGuid": "c8ddbdf9-a459-440e-af15-2174188a2cc6",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.hip.amount",
+      "siteValue": 0.59065,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilAmount",
+      "registryRaw": "0.5965",
+      "registryGuid": "16a4ec04-e640-4add-922b-4f4579553e8b",
+      "registryValue": 0.5965,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_22810b21",
+        "raw": "0.5965",
+        "registryBlockGuid": "b36a0236-3de7-41ff-aad9-4528377b7497",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.hip.amountMult",
+      "siteValue": 0.9579,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilAmountMultiplier",
+      "registryRaw": "0.9375",
+      "registryGuid": "e9c02402-8609-43c4-b3e9-7fdef2d3df3d",
+      "registryValue": 0.9375,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_50b8fd5b",
+        "raw": "0.9375",
+        "registryBlockGuid": "b36a0236-3de7-41ff-aad9-4528377b7497",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.hip.dirVar",
+      "siteValue": 20.3,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDirectionVariation",
+      "registryRaw": "26.1",
+      "registryGuid": "ad1f38ed-8df9-4ee1-bcde-287be2509048",
+      "registryValue": 26.1,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_865174fa",
+        "raw": "26.1",
+        "registryBlockGuid": "b36a0236-3de7-41ff-aad9-4528377b7497",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "recoil.hip.dirVarMult",
+      "siteValue": 0.9160025,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDirectionVariationMultiplier",
+      "registryRaw": "0.915366",
+      "registryGuid": "d7b3df7b-fdbc-46d3-91f4-4a3286936fe7",
+      "registryValue": 0.915366,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d",
+        "type": "Struct_bcfafb0d",
+        "field": "Field_7404fa33",
+        "raw": "0.915366",
+        "registryBlockGuid": "b36a0236-3de7-41ff-aad9-4528377b7497",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.hip.inc",
+      "siteValue": 0.54,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.IncreasePerShot",
+      "registryRaw": "0.648",
+      "registryGuid": "79eccbef-744a-47a9-b825-007f93597239",
+      "registryValue": 0.648,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_0084b1d1",
+        "raw": "0.648",
+        "registryBlockGuid": "e787f4ab-28ad-4130-acc4-5e2c2c5c57ea",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.hip.firingCoef",
+      "siteValue": 0.43,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseCoefficient",
+      "registryRaw": "0.5",
+      "registryGuid": "9445892a-966d-4d89-b0e9-5a6ad0e5f649",
+      "registryValue": 0.5,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_2ca8533e",
+        "raw": "0.5",
+        "registryBlockGuid": "e787f4ab-28ad-4130-acc4-5e2c2c5c57ea",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.hip.firingOffset",
+      "siteValue": 3.69,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseOffset",
+      "registryRaw": "4.86",
+      "registryGuid": "cce16bd6-e98a-4d94-9279-798c2f955e0c",
+      "registryValue": 4.86,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_1b9eef5d",
+        "raw": "4.86",
+        "registryBlockGuid": "e787f4ab-28ad-4130-acc4-5e2c2c5c57ea",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteField": "spreadDyn.hip.notFiringOffset",
+      "siteValue": 14.4,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.NotFiringDecreaseOffset",
+      "registryRaw": "12.96",
+      "registryGuid": "4bae2e17-3d52-484f-a2cc-24cd1400eb9b",
+      "registryValue": 12.96,
+      "status": "different",
+      "rawEvidence": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169",
+        "type": "Struct_3ee1d169",
+        "field": "Field_4d3f0635",
+        "raw": "12.96",
+        "registryBlockGuid": "e787f4ab-28ad-4130-acc4-5e2c2c5c57ea",
+        "mappingBasis": "Named registry definition linked to this block; unique cross-weapon value match corroborates the raw field. This is not a decoded SDK field name."
+      }
+    }
+  ],
+  "derivedFields": [
+    {
+      "siteField": "recoilV",
+      "previousValue": 0.6720006428699492,
+      "value": 0.7239300740740741,
+      "formula": "recoil.ads.amount * recoil.ads.amountMult ** recoil.ads.amountExp",
+      "formulaSource": "sim/core.js recoilAmount; existing site model, not independent engine evidence"
+    },
+    {
+      "siteFile": "data/balance_tables.json",
+      "siteField": "RECOIL_MULT.ef88",
+      "previousValue": 0.9579,
+      "value": 0.9375,
+      "basis": "Must equal recoil.ads.amountMult; sim/applyAttachments.js consumes this duplicate as the attachment tier multiplier."
+    }
+  ],
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml": "655103f89ae0f7081d80016510154704f48640c0ea3ec9451b85183c03698964",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml": "777a128148c07b599dc7f11b1b8a392ba2f2e36597d825ccda3105aa14a19428"
+  }
+}

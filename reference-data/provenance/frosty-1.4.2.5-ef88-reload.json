@@ -1,0 +1,38 @@
+{
+  "weaponId": "ef88",
+  "sourceBuild": "1.4.2.5 (user-supplied export label)",
+  "fields": [
+    {
+      "siteField": "tacRld",
+      "previousValue": 2.416,
+      "value": 2.4,
+      "unit": "seconds",
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[0].ReloadTimeBulletsLeft",
+      "registryGuid": "401fe548-3cf2-4d23-8340-2e318f3695c2",
+      "rawWbValue": "2.4"
+    },
+    {
+      "siteField": "emptyRld",
+      "previousValue": 2.8415,
+      "value": 3.534,
+      "unit": "seconds",
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+      "registryGuid": "33587602-2706-4712-93de-fa6b64a2493f",
+      "rawWbValue": "3.534"
+    }
+  ],
+  "rawWbArrayPath": "Class_35259f6b/Field_f8822efa/Struct_30331789/Field_d15a0c1c",
+  "screenshotEvidence": "reference-data/provenance/ef88-basic-30-round.png",
+  "screenshotScope": "Basic barrel, regular 30-round magazine, Standard ammo: partial reload 2.400 seconds. Empty reload is not measured by this image.",
+  "symEvidence": {
+    "source": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
+    "snapshot": "outputs/frosty/1.4.2.5/sym-bf6-reference.json",
+    "version": "1.4.2.0",
+    "ReloadLeft": 2.4,
+    "ReloadEmpty": 3.534
+  },
+  "sourceSha256": {
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml": "655103f89ae0f7081d80016510154704f48640c0ea3ec9451b85183c03698964",
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51"
+  }
+}
