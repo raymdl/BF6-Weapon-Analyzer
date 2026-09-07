@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "status": "raw-evidence-not-runtime-formula",
+  "sourceBuild": "1.4.2.5 (user supplied label)",
+  "sources": [
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10.xml",
+      "sha256": "c9f53dbb7fac3e5d7776680e9174045f2b0f957fadd318a703203ab8c19bc446",
+      "nonDefaultScalarModifiers": [
+        {
+          "path": "/File/Class_bb838ff6/Field_6b84de87/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1",
+            "Field_bbffe8bc": "True"
+          }
+        },
+        {
+          "path": "/File/Class_bb838ff6/Field_6b84de87/Struct_26e24b34/Field_28df1cde/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2",
+            "Field_bbffe8bc": "False"
+          }
+        },
+        {
+          "path": "/File/Class_bb838ff6/Field_7b609515/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1",
+            "Field_bbffe8bc": "True"
+          }
+        },
+        {
+          "path": "/File/Class_bb838ff6/Field_7b609515/Struct_26e24b34/Field_28df1cde/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2",
+            "Field_bbffe8bc": "False"
+          }
+        }
+      ]
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10.xml",
+      "sha256": "22efe589c0f110a40c2a4d7afa303cb6ca3161ce41555ff24dccf4945e290280",
+      "nonDefaultScalarModifiers": [
+        {
+          "path": "/File/Class_bb838ff6/Field_6b84de87/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1",
+            "Field_bbffe8bc": "True"
+          }
+        },
+        {
+          "path": "/File/Class_bb838ff6/Field_6b84de87/Struct_26e24b34/Field_28df1cde/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2",
+            "Field_bbffe8bc": "False"
+          }
+        },
+        {
+          "path": "/File/Class_bb838ff6/Field_7b609515/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1",
+            "Field_bbffe8bc": "True"
+          }
+        },
+        {
+          "path": "/File/Class_bb838ff6/Field_7b609515/Struct_26e24b34/Field_28df1cde/Struct_b1f8b400",
+          "raw": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2",
+            "Field_bbffe8bc": "False"
+          }
+        }
+      ]
+    }
+  ],
+  "ef88SelectorTraces": [
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_KACNT4QDSuppressor.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_Suppressor02_W25",
+        "guid": "3eda1130-c3d9-4df5-8d83-65ca7dd381f6"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='29']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+          "guid": "8b4f2255-29be-4f3a-a56c-f4596005457d"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10 [8b4f2255-29be-4f3a-a56c-f4596005457d]",
+        "rawBranch": "0x00000023"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_M4QDMAMS.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Compensator/U_WPM_MZL_Compensator_W10",
+        "guid": "7cd8dcb0-4b18-4e0e-86e4-249590658b5b"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='23']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10",
+          "guid": "a7504e39-61dd-4ed3-839f-b781e51caa10"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10 [a7504e39-61dd-4ed3-839f-b781e51caa10]",
+        "rawBranch": "0x0000001d"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRR.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor03_W25",
+        "guid": "10446e12-a6e5-41ec-a457-5bc7b4f70f82"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='38']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+          "guid": "8b4f2255-29be-4f3a-a56c-f4596005457d"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10 [8b4f2255-29be-4f3a-a56c-f4596005457d]",
+        "rawBranch": "0x0000002c"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRK.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor01_W40",
+        "guid": "ebc16bec-0981-4376-9222-491abf430315"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='34']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+          "guid": "8b4f2255-29be-4f3a-a56c-f4596005457d"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10 [8b4f2255-29be-4f3a-a56c-f4596005457d]",
+        "rawBranch": "0x00000028"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRS.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_HybridSuppressor02_W30",
+        "guid": "e87969a3-ddef-48ce-b186-da20d9044667"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='36']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+          "guid": "8b4f2255-29be-4f3a-a56c-f4596005457d"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10 [8b4f2255-29be-4f3a-a56c-f4596005457d]",
+        "rawBranch": "0x0000002a"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_SFWarcomp.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/FlashHider/U_WPM_MZL_FlashCompensator_W15",
+        "guid": "f7996b55-b276-4cf1-acf5-37a0d08628d9"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='22']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+          "guid": "8b4f2255-29be-4f3a-a56c-f4596005457d"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10 [8b4f2255-29be-4f3a-a56c-f4596005457d]",
+        "rawBranch": "0x0000001c"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_SOCOM556RC3Suppressor.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor02_W30",
+        "guid": "bb26754b-fb9d-467b-96ac-ecd132bc3f95"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='32']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+          "guid": "8b4f2255-29be-4f3a-a56c-f4596005457d"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10 [8b4f2255-29be-4f3a-a56c-f4596005457d]",
+        "rawBranch": "0x00000026"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_TionMB58x24.xml",
+      "unlock": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake3_W20",
+        "guid": "2aee835d-7c6d-4194-a250-fa87dfe205b8"
+      },
+      "binding": {
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml",
+        "path": "/File[@Guid='b3299321-f493-4eaf-b8de-abed6f8fab03']/Class_539cff9b[@Guid='672fbc60-9e84-4beb-ab07-cf713ec2e4b9']/Field_2296f84f/member[@Index='28']/Struct_3e61171a",
+        "type": "Struct_3e61171a",
+        "modifier": {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+          "guid": "8b4f2255-29be-4f3a-a56c-f4596005457d"
+        },
+        "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10 [8b4f2255-29be-4f3a-a56c-f4596005457d]",
+        "rawBranch": "0x00000022"
+      },
+      "activation": "unresolved; branch presence is not proof of runtime availability"
+    }
+  ],
+  "candidateTargetNames": {
+    "Field_5a02dd65": "RecoilDuration",
+    "Field_28df1cde": "RecoilDecreaseFactor"
+  },
+  "limitations": [
+    "Target mappings and modifier operations are separate questions.",
+    "The 1.2 and 0.05 values do not alone establish multiply, override, stacking order, or duration behavior.",
+    "Selector presence does not prove runtime availability or activation.",
+    "The existing 1.1 site multiplier remains an estimate; this evidence is not a replacement runtime formula."
+  ]
+}

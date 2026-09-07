@@ -2,8 +2,15 @@
   "schemaVersion": 1,
   "status": "current-live",
   "adoptedAsBaseline": "2026-08-12",
-  "weaponCount": 62,
+  "weaponCount": 63,
   "sources": [
+    {
+      "id": "frosty-local-export",
+      "sourceVersion": "1.4.2.5",
+      "buildEvidence": "user-supplied export label",
+      "evidence": "docs/FROSTY_INTEGRATION.md",
+      "authority": "Reviewed local Frosty fields with per-weapon provenance; Interdictor tweakable health curve has independent creator corroboration"
+    },
     {
       "id": "ea-update-notes",
       "sourceVersion": "1.3.3.0",
@@ -24,7 +31,8 @@
     "allowedDamagePointSources": [
       "EA",
       "Sym",
-      "in-game"
+      "in-game",
+      "Frosty"
     ],
     "estimatedWeaponIds": [],
     "replacementRule": "Replace a verified value only when a newer authoritative source or reviewed in-game evidence supersedes it."

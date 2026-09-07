@@ -1,0 +1,729 @@
+{
+  "sourceBuild": "1.4.2.5 (user supplied label)",
+  "scope": "Base empty reload durations; magazine/ergonomics effects and partial reloads are unchanged. These are configuration-derived values, not measured animation durations.",
+  "weapons": {
+    "nvo228e": {
+      "previousEmptyReloadSeconds": 2.979,
+      "emptyReloadSeconds": 3.0,
+      "rawReloadTimeSeconds": 2.9,
+      "emptyReloadSpeed": 0.966666,
+      "partialReloadSpeed": 0.973599,
+      "registryTime": {
+        "name": "ACE32_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "9317ac6e-8114-4a74-a640-09f8ce3cc6d6",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.9",
+        "scalarType": "System.Single",
+        "value": 2.9
+      },
+      "registrySpeed": {
+        "name": "ACE32_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "dd030e7f-4090-4e29-983b-e8266f2ac322",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.966666",
+        "scalarType": "System.Single",
+        "value": 0.966666
+      },
+      "rawWbBlock": {
+        "weapon": "ACE32",
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/ACE32_WB.xml",
+        "path": "/File[@Guid='d2b8ab16-3089-446b-92a7-ac5723c34f2a']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "2ce8bfad-6647-4538-a8b7-919dc251a9a7",
+        "name": "ACE32_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.72",
+          "Field_1c533b56": "0.966666",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.9",
+          "Field_fc66e75e": "2.9",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "l85a3": {
+      "previousEmptyReloadSeconds": 2.733,
+      "emptyReloadSeconds": 2.834,
+      "rawReloadTimeSeconds": 2.667,
+      "emptyReloadSpeed": 0.941072,
+      "partialReloadSpeed": 0.975786,
+      "registryTime": {
+        "name": "L85A3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "25e3de43-91ca-465c-b0ec-471006c73148",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.667",
+        "scalarType": "System.Single",
+        "value": 2.667
+      },
+      "registrySpeed": {
+        "name": "L85A3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "76fc5833-e127-4472-a918-bdbfdd152cba",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.941072",
+        "scalarType": "System.Single",
+        "value": 0.941072
+      },
+      "rawWbBlock": {
+        "weapon": "L85A3",
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/L85A3_WB.xml",
+        "path": "/File[@Guid='002b6fb9-2ac9-44af-9ad3-35e72d7cc179']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "a33c7796-ef6f-414d-8515-0f4d89acf4ba",
+        "name": "L85A3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.7",
+          "Field_1c533b56": "0.941072",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.667",
+          "Field_fc66e75e": "2.667",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "tr7": {
+      "previousEmptyReloadSeconds": 3.37,
+      "emptyReloadSeconds": 3.367,
+      "rawReloadTimeSeconds": 3.3,
+      "emptyReloadSpeed": 0.9801,
+      "partialReloadSpeed": 0.979166,
+      "registryTime": {
+        "name": "Tavor7_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "a234e3a1-e0e1-49f7-9863-32a10068cda0",
+        "registryType": "Class_d59e68b9",
+        "raw": "3.3",
+        "scalarType": "System.Single",
+        "value": 3.3
+      },
+      "registrySpeed": {
+        "name": "Tavor7_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "8b409741-b06c-464a-abc8-e0a37d1f3bd8",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.9801",
+        "scalarType": "System.Single",
+        "value": 0.9801
+      },
+      "rawWbBlock": {
+        "weapon": "Tavor7",
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Tavor7_WB.xml",
+        "path": "/File[@Guid='5a62a2b3-07cb-4555-817b-f9fde4cfead0']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "d8e29061-cad8-4b55-8b61-ca41c09a145a",
+        "name": "Tavor7_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.77",
+          "Field_1c533b56": "0.9801",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "3.3",
+          "Field_fc66e75e": "3.3",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "vcr2": {
+      "previousEmptyReloadSeconds": 3.129,
+      "emptyReloadSeconds": 3.117,
+      "rawReloadTimeSeconds": 3.0,
+      "emptyReloadSpeed": 0.962463,
+      "partialReloadSpeed": 0.958915,
+      "registryTime": {
+        "name": "VHS2_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "1516ed7e-a201-43ae-a947-4cecb0d36d28",
+        "registryType": "Class_d59e68b9",
+        "raw": "3",
+        "scalarType": "System.Single",
+        "value": 3.0
+      },
+      "registrySpeed": {
+        "name": "VHS2_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "7eed5d2d-e8e1-4c06-981c-cab2250a4524",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.962463",
+        "scalarType": "System.Single",
+        "value": 0.962463
+      },
+      "rawWbBlock": {
+        "weapon": "VHS2",
+        "sourceXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/VHS2_WB.xml",
+        "path": "/File[@Guid='4d44fe79-7991-4024-9dd7-e22b8c1b0ae9']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "cc355541-1e48-4e63-9f6a-db6f43a27877",
+        "name": "VHS2_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.72",
+          "Field_1c533b56": "0.962463",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "3",
+          "Field_fc66e75e": "3",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "brod3": {
+      "previousEmptyReloadSeconds": 3.35,
+      "emptyReloadSeconds": 3.05,
+      "rawReloadTimeSeconds": 3.05,
+      "emptyReloadSpeed": 1.0,
+      "partialReloadSpeed": 1.0,
+      "registryTime": {
+        "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "c4a1296d-febd-4f2d-b7bf-9d635ee99a1a",
+        "registryType": "Class_d59e68b9",
+        "raw": "3.05",
+        "scalarType": "System.Single",
+        "value": 3.05
+      },
+      "registrySpeed": {
+        "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "d0140fc0-4480-4fb1-81e0-03d5d40f8261",
+        "registryType": "Class_d59e68b9",
+        "raw": "1",
+        "scalarType": "System.Single",
+        "value": 1.0
+      },
+      "rawWbBlock": {
+        "weapon": "BREN3",
+        "sourceXml": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB.xml",
+        "path": "/File[@Guid='908f3360-9dcb-4179-9dfd-d8ce47ffbc27']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "1bff1797-fb1d-4a73-8bcb-714a89f85613",
+        "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.71",
+          "Field_1c533b56": "1",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "3.05",
+          "Field_fc66e75e": "3.05",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "m4a1": {
+      "previousEmptyReloadSeconds": 2.695,
+      "emptyReloadSeconds": 2.634,
+      "rawReloadTimeSeconds": 2.634,
+      "emptyReloadSpeed": 1.0,
+      "partialReloadSpeed": 0.977272,
+      "registryTime": {
+        "name": "M4A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "6822ff7f-ac27-4d73-b0ea-f62ad038468a",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.634",
+        "scalarType": "System.Single",
+        "value": 2.634
+      },
+      "registrySpeed": {
+        "name": "M4A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "5ffaf50c-8bd2-463b-a883-af3c66c8e600",
+        "registryType": "Class_d59e68b9",
+        "raw": "1",
+        "scalarType": "System.Single",
+        "value": 1.0
+      },
+      "rawWbBlock": {
+        "weapon": "M4A1",
+        "sourceXml": "Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB.xml",
+        "path": "/File[@Guid='8ffbc2c5-12a3-43f9-9e3d-8582e49e8c34']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000002']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "77857906-e73e-46cc-acd3-c3162054cfcb",
+        "name": "M4A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.79",
+          "Field_1c533b56": "1",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.634",
+          "Field_fc66e75e": "2.634",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "sg553r": {
+      "previousEmptyReloadSeconds": 2.926,
+      "emptyReloadSeconds": 2.934,
+      "rawReloadTimeSeconds": 2.867,
+      "emptyReloadSpeed": 0.977164,
+      "partialReloadSpeed": 0.979999,
+      "registryTime": {
+        "name": "SIG553R_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "6ebdcc45-6aa1-474e-a93a-792cc63a7b1e",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.867",
+        "scalarType": "System.Single",
+        "value": 2.867
+      },
+      "registrySpeed": {
+        "name": "SIG553R_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "ef0a2139-5640-4d50-8786-320fd8fbe930",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.977164",
+        "scalarType": "System.Single",
+        "value": 0.977164
+      },
+      "rawWbBlock": {
+        "weapon": "SIG553R",
+        "sourceXml": "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB.xml",
+        "path": "/File[@Guid='4504b844-8805-4704-8d44-8b86cc02cf06']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "32398c2b-0384-4bae-acbc-e68db4f7b2fe",
+        "name": "SIG553R_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.77",
+          "Field_1c533b56": "0.977164",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.867",
+          "Field_fc66e75e": "2.867",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "m277": {
+      "previousEmptyReloadSeconds": 2.554,
+      "emptyReloadSeconds": 2.55,
+      "rawReloadTimeSeconds": 2.5,
+      "emptyReloadSpeed": 0.980392,
+      "partialReloadSpeed": 0.979026,
+      "registryTime": {
+        "name": "XM7_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "52e41d43-1df8-43a6-85e0-e9cc0b7f106a",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.5",
+        "scalarType": "System.Single",
+        "value": 2.5
+      },
+      "registrySpeed": {
+        "name": "XM7_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "a3cf4917-4ead-4ce9-ad25-a47f6271cf07",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.980392",
+        "scalarType": "System.Single",
+        "value": 0.980392
+      },
+      "rawWbBlock": {
+        "weapon": "XM7",
+        "sourceXml": "Common/Hardware/Weapons/Carbine/XM7/XM7_WB.xml",
+        "path": "/File[@Guid='0fa085cb-5c98-48ca-bf65-c789ddb76c09']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "c6ec391b-c047-4ec9-b321-2ce28cb99a83",
+        "name": "XM7_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.8",
+          "Field_1c533b56": "0.980392",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.5",
+          "Field_fc66e75e": "2.5",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "m240l": {
+      "previousEmptyReloadSeconds": 5.9,
+      "emptyReloadSeconds": 5.6,
+      "rawReloadTimeSeconds": 5.6,
+      "emptyReloadSpeed": 1.0,
+      "partialReloadSpeed": 0.949176,
+      "registryTime": {
+        "name": "M240L_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "9ac2dfa6-21b7-4cc8-ab3f-014f5707c4ce",
+        "registryType": "Class_d59e68b9",
+        "raw": "5.6",
+        "scalarType": "System.Single",
+        "value": 5.6
+      },
+      "registrySpeed": {
+        "name": "M240L_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "026f4398-8d59-488b-a6db-39282fd892ed",
+        "registryType": "Class_d59e68b9",
+        "raw": "1",
+        "scalarType": "System.Single",
+        "value": 1.0
+      },
+      "rawWbBlock": {
+        "weapon": "M240L",
+        "sourceXml": "Common/Hardware/Weapons/MG/M240L/M240L_WB.xml",
+        "path": "/File[@Guid='eeda2782-940e-48ba-a8c9-a46c28db03b8']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "5381a477-fc9c-4517-8f11-0715b0a6cda9",
+        "name": "M240L_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.84",
+          "Field_1c533b56": "1",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "5.6",
+          "Field_fc66e75e": "5.6",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "m60": {
+      "previousEmptyReloadSeconds": 8.123,
+      "emptyReloadSeconds": 8.15,
+      "rawReloadTimeSeconds": 8.05,
+      "emptyReloadSpeed": 0.98773,
+      "partialReloadSpeed": 0.99102,
+      "registryTime": {
+        "name": "M60E6_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "baa558ee-e155-4370-9584-4b0f9edaf37e",
+        "registryType": "Class_d59e68b9",
+        "raw": "8.05",
+        "scalarType": "System.Single",
+        "value": 8.05
+      },
+      "registrySpeed": {
+        "name": "M60E6_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "d2c9604a-727b-4d3f-aa66-cc1d4c57df0a",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.98773",
+        "scalarType": "System.Single",
+        "value": 0.98773
+      },
+      "rawWbBlock": {
+        "weapon": "M60E6",
+        "sourceXml": "Common/Hardware/Weapons/MG/M60E6/M60E6_WB.xml",
+        "path": "/File[@Guid='cbfd922d-0586-44cf-aea1-8df29734c9eb']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "52d635c1-86ba-44e1-9e03-eb1053144439",
+        "name": "M60E6_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.87",
+          "Field_1c533b56": "0.98773",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "8.05",
+          "Field_fc66e75e": "8.05",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "scw10": {
+      "previousEmptyReloadSeconds": 3.11,
+      "emptyReloadSeconds": 3.117,
+      "rawReloadTimeSeconds": 3.05,
+      "emptyReloadSpeed": 0.978504,
+      "partialReloadSpeed": 0.980769,
+      "registryTime": {
+        "name": "APC10_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "5ff23a71-b166-4a78-a201-8732766ee47a",
+        "registryType": "Class_d59e68b9",
+        "raw": "3.05",
+        "scalarType": "System.Single",
+        "value": 3.05
+      },
+      "registrySpeed": {
+        "name": "APC10_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "1dbd1253-45bb-4373-8459-bde786327c5f",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.978504",
+        "scalarType": "System.Single",
+        "value": 0.978504
+      },
+      "rawWbBlock": {
+        "weapon": "APC10",
+        "sourceXml": "Common/Hardware/Weapons/SMG/APC10/APC10_WB.xml",
+        "path": "/File[@Guid='3b8ac8a8-2a8d-457f-835d-886a60168440']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "f1392c5f-0a7c-48fe-a9f1-50e90adcaaa3",
+        "name": "APC10_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.72",
+          "Field_1c533b56": "0.978504",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "3.05",
+          "Field_fc66e75e": "3.05",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "sl9": {
+      "previousEmptyReloadSeconds": 3.183,
+      "emptyReloadSeconds": 3.184,
+      "rawReloadTimeSeconds": 3.284,
+      "emptyReloadSpeed": 1.031407,
+      "partialReloadSpeed": 1.031698,
+      "registryTime": {
+        "name": "APDW_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "a36a1cb2-385d-4175-a250-817c879a51ae",
+        "registryType": "Class_d59e68b9",
+        "raw": "3.284",
+        "scalarType": "System.Single",
+        "value": 3.284
+      },
+      "registrySpeed": {
+        "name": "APDW_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "f7b2dfd2-f251-4185-bcef-7bb79f695d92",
+        "registryType": "Class_d59e68b9",
+        "raw": "1.031407",
+        "scalarType": "System.Single",
+        "value": 1.031407
+      },
+      "rawWbBlock": {
+        "weapon": "APDW",
+        "sourceXml": "Common/Hardware/Weapons/SMG/APDW/APDW_WB.xml",
+        "path": "/File[@Guid='1b8e3f60-e37f-4e4c-a0ce-759549910b84']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "b839ab88-e723-4c09-b2be-8d75ee397841",
+        "name": "APDW_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.82",
+          "Field_1c533b56": "1.031407",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "3.284",
+          "Field_fc66e75e": "3.284",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "pw5a3": {
+      "previousEmptyReloadSeconds": 2.9,
+      "emptyReloadSeconds": 3.0,
+      "rawReloadTimeSeconds": 2.9,
+      "emptyReloadSpeed": 0.966666,
+      "partialReloadSpeed": 1.0,
+      "registryTime": {
+        "name": "MP5MLI_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "820bd997-7a23-4473-aca3-9bd1cbe918a3",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.9",
+        "scalarType": "System.Single",
+        "value": 2.9
+      },
+      "registrySpeed": {
+        "name": "MP5MLI_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "514c521a-4cf7-411d-ad01-6f81ecea17ba",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.966666",
+        "scalarType": "System.Single",
+        "value": 0.966666
+      },
+      "rawWbBlock": {
+        "weapon": "MP5MLI",
+        "sourceXml": "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB.xml",
+        "path": "/File[@Guid='70e808be-5866-4c7d-aa48-24ba1ad28821']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "658455d7-ff1c-443f-9dcb-bf5577d2f250",
+        "name": "MP5MLI_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.74",
+          "Field_1c533b56": "0.966666",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.9",
+          "Field_fc66e75e": "2.9",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "pw7a2": {
+      "previousEmptyReloadSeconds": 3.086,
+      "emptyReloadSeconds": 3.067,
+      "rawReloadTimeSeconds": 2.967,
+      "emptyReloadSpeed": 0.967394,
+      "partialReloadSpeed": 0.961538,
+      "registryTime": {
+        "name": "MP7A2_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "ecd10c8f-51cf-4cb1-aed6-ad08ed7fd6fa",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.967",
+        "scalarType": "System.Single",
+        "value": 2.967
+      },
+      "registrySpeed": {
+        "name": "MP7A2_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "7b7f38d0-4c57-4f88-8ecc-0821c63302be",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.967394",
+        "scalarType": "System.Single",
+        "value": 0.967394
+      },
+      "rawWbBlock": {
+        "weapon": "MP7A2",
+        "sourceXml": "Common/Hardware/Weapons/SMG/MP7A2/MP7A2_WB.xml",
+        "path": "/File[@Guid='696ed561-bd24-43af-a5d6-13134c77ff1b']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "89061d0f-14b4-457e-b721-7634189c76d6",
+        "name": "MP7A2_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.78",
+          "Field_1c533b56": "0.967394",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.967",
+          "Field_fc66e75e": "2.967",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "usg90": {
+      "previousEmptyReloadSeconds": 3.314,
+      "emptyReloadSeconds": 3.284,
+      "rawReloadTimeSeconds": 3.167,
+      "emptyReloadSpeed": 0.964372,
+      "partialReloadSpeed": 0.955666,
+      "registryTime": {
+        "name": "P90_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "3dc4a66a-1d54-4cd2-90b5-8ec8abe7d4fa",
+        "registryType": "Class_d59e68b9",
+        "raw": "3.167",
+        "scalarType": "System.Single",
+        "value": 3.167
+      },
+      "registrySpeed": {
+        "name": "P90_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "9f849767-9895-4344-afce-3dac73d9167b",
+        "registryType": "Class_d59e68b9",
+        "raw": "0.964372",
+        "scalarType": "System.Single",
+        "value": 0.964372
+      },
+      "rawWbBlock": {
+        "weapon": "P90",
+        "sourceXml": "Common/Hardware/Weapons/SMG/P90/P90_WB.xml",
+        "path": "/File[@Guid='c67381c0-9316-4f37-a64d-0ffc00fcea75']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "77ec46cb-9b45-4fbb-a42d-9027703b54fd",
+        "name": "P90_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.82",
+          "Field_1c533b56": "0.964372",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "3.167",
+          "Field_fc66e75e": "3.167",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    },
+    "pp19": {
+      "previousEmptyReloadSeconds": 3.028,
+      "emptyReloadSeconds": 2.967,
+      "rawReloadTimeSeconds": 2.967,
+      "emptyReloadSpeed": 1.0,
+      "partialReloadSpeed": 0.979732,
+      "registryTime": {
+        "name": "PP19_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+        "registryGuid": "35856cfe-e592-43c8-87a4-6e7faf33a16b",
+        "registryType": "Class_d59e68b9",
+        "raw": "2.967",
+        "scalarType": "System.Single",
+        "value": 2.967
+      },
+      "registrySpeed": {
+        "name": "PP19_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed",
+        "registryGuid": "2d1eb05c-0f15-422f-b3eb-d0950951ade5",
+        "registryType": "Class_d59e68b9",
+        "raw": "1",
+        "scalarType": "System.Single",
+        "value": 1.0
+      },
+      "rawWbBlock": {
+        "weapon": "PP19",
+        "sourceXml": "Common/Hardware/Weapons/SMG/PP19/PP19_WB.xml",
+        "path": "/File[@Guid='9e7385a3-1eec-4bf7-9f36-be6f514c9bdb']/Class_35259f6b[@Guid='00000000-0000-0000-0000-000000000001']/Field_f8822efa/Struct_30331789/Field_d15a0c1c/member[@Index='1']/Struct_b50f190f",
+        "type": "Struct_b50f190f",
+        "registryGuid": "998dfbc5-19df-4724-9be9-4dfa6aa2c80a",
+        "name": "PP19_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1]",
+        "rawScalars": {
+          "Field_c59cc6a8": "0x00000000",
+          "Field_82265a82": "0x00000000",
+          "Field_6e081af4": "Field_bdf28a41",
+          "Field_9c1e1476": "0.73",
+          "Field_1c533b56": "1",
+          "Field_c0c7c72f": "0",
+          "Field_27b15985": "0",
+          "Field_85ff24a0": "2.967",
+          "Field_fc66e75e": "2.967",
+          "Field_b480c17a": "0"
+        }
+      },
+      "interpretation": "Apply the existing reload-time / animation-speed calculation to the zero-ammo entry and round to milliseconds. Do not use the partial-reload speed for this entry."
+    }
+  },
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/AssaultRifle/ACE32/ACE32_WB.xml": "39b5ea38bbe15f2bfa7c9dfde13ccf4b7b6dead937515f6ce1c116253f391be2",
+    "Common/Hardware/Weapons/AssaultRifle/L85A3/L85A3_WB.xml": "6eed4ba45f40b4b9e30a29ae11419e738ee5116cb40dbd90b02d75064b88e582",
+    "Common/Hardware/Weapons/AssaultRifle/Tavor7/Tavor7_WB.xml": "b3b4cb812ee57b8b7e9771e03ac418df294a50098cd228ad8c18a1e9055a45a2",
+    "Common/Hardware/Weapons/AssaultRifle/VHS2/VHS2_WB.xml": "7ab64fbfb8d0eace2f54b56be04195e6a9447f6bf76d4fef9b7f55437e0d9ed0",
+    "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB.xml": "eae644722ac366c9d70121d33c691b94bd5ccb4f694c1339eddbaaa3293f0776",
+    "Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB.xml": "dd6f32f8ec7071d98368965fa58df51549e8fad7ee54f4d5ce24c6910bbdd97a",
+    "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB.xml": "081663ac84ceb4846fe1b55419e429cbc2a63a5d620d5066041e78a4da761c21",
+    "Common/Hardware/Weapons/Carbine/XM7/XM7_WB.xml": "2b1729c12846c458e4444a4f028051498781a4e5be450210b820c0c2250cca5e",
+    "Common/Hardware/Weapons/MG/M240L/M240L_WB.xml": "0f51d45765e3665af88091a98b14cf375b6397f5f01a11a9e80c4244dc9bcc27",
+    "Common/Hardware/Weapons/MG/M60E6/M60E6_WB.xml": "a823797d2f4e8f05014809c6f5f1d59afc9de880eefb62002d167bcb08ca1c2e",
+    "Common/Hardware/Weapons/SMG/APC10/APC10_WB.xml": "fd9779021fca1942befece8598f161b5e38c44e2986c61e24b4feea8277bdb29",
+    "Common/Hardware/Weapons/SMG/APDW/APDW_WB.xml": "47dc2019696bba5afd103a474a7eff8fc52949d1d0da3992290f3d28d8134cb6",
+    "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB.xml": "d1295ac558a421f0ddea2adaa0596493b003f03f5f68cf8cc59d3812aa922f37",
+    "Common/Hardware/Weapons/SMG/MP7A2/MP7A2_WB.xml": "a314677e0bab57dd04429214c6a73030cd837bc4babdef8d962dc83d3e5e1fff",
+    "Common/Hardware/Weapons/SMG/P90/P90_WB.xml": "3686ef666c18f3c4fa74e59a93ca65723ddb200ec04a32237af4a5dbb6211504",
+    "Common/Hardware/Weapons/SMG/PP19/PP19_WB.xml": "f9f21cea7317ce3f55d7a6f23d3b29f87289b4ed723f5dfe93b8a9a23cc2ac2d"
+  }
+}

@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { damageAtRange } from '../sim/damage.js';
-import { deriveSweetSpot, SWEET_SPOT_DAMAGE } from './sweet-spot.mjs';
+import { deriveSweetSpot } from './sweet-spot.mjs';
 import { loadReloadExceptionRegister } from './reload-exceptions.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -74,6 +74,17 @@ for (const weapon of weapons) {
   }
   if (!Number.isFinite(weapon.reloadSpeed) || weapon.reloadSpeed <= 0) {
     fail(`${weapon.id}: reloadSpeed must be a finite positive number`);
+  }
+  const adsRecoil = weapon.recoil?.ads;
+  if (adsRecoil) {
+    const magnitude = adsRecoil.amount * Math.pow(adsRecoil.amountMult, adsRecoil.amountExp);
+    if (!Number.isFinite(magnitude) || !Number.isFinite(weapon.recoilV)
+        || Math.abs(weapon.recoilV - magnitude) > 1e-9) {
+      fail(`${weapon.id}: recoilV must match the ADS recoil group magnitude`);
+    }
+    if (balance.RECOIL_MULT[weapon.id] !== adsRecoil.amountMult) {
+      fail(`${weapon.id}: RECOIL_MULT must match recoil.ads.amountMult`);
+    }
   }
   if (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0) {
     fail(`${weapon.id}: dmg must be a non-empty breakpoint array`);
@@ -153,7 +164,7 @@ if (drawTimeAxis == null || typeof drawTimeAxis !== 'object' || Array.isArray(dr
     semiAutoSidearm: [...DRAW_TIME_GROUPS.semiAutoSidearm].sort(),
     revolverOrAutoSidearm: [...DRAW_TIME_GROUPS.revolverOrAutoSidearm].sort(),
   };
-  if (expectedGroups.primary.length !== 54) fail(`draw-time standard primary set must contain 54 weapons; found ${expectedGroups.primary.length}`);
+  if (expectedGroups.primary.length !== 55) fail(`draw-time standard primary set must contain 55 weapons; found ${expectedGroups.primary.length}`);
   const actualGroups = drawTimeAxis.weaponGroups ?? {};
   if (JSON.stringify(Object.keys(actualGroups).sort()) !== JSON.stringify(Object.keys(expectedGroups).sort())) {
     fail('DRAW_TIME_AXIS.weaponGroups must contain exactly primary, db12, semiAutoSidearm, and revolverOrAutoSidearm');
@@ -190,17 +201,17 @@ if (DAMAGE_POINT_SOURCES.size === 0) {
 // Sweet spots are read from the current curve, never pinned to a distance.
 // Assert the required curve shape so a future data refresh can move the window.
 for (const weapon of weapons.filter(item => item.cls === 'Sniper Rifle')) {
-  const { rangeM } = deriveSweetSpot(weapon);
+  const { rangeM, damage } = deriveSweetSpot(weapon);
   if (rangeM === null) continue;
   const [start, end] = rangeM;
   if (!(end > start)) {
     fail(`${weapon.id}: sweet-spot plateau does not span a range`);
     continue;
   }
-  if (damageAtRange(weapon, start) !== SWEET_SPOT_DAMAGE || damageAtRange(weapon, end) !== SWEET_SPOT_DAMAGE) {
-    fail(`${weapon.id}: damage curve does not hold ${SWEET_SPOT_DAMAGE} across its sweet spot`);
+  if (damageAtRange(weapon, start) !== damage || damageAtRange(weapon, end) !== damage) {
+    fail(`${weapon.id}: damage curve does not hold ${damage} across its sweet spot`);
   }
-  if (!(damageAtRange(weapon, start - 1) < SWEET_SPOT_DAMAGE) || !(damageAtRange(weapon, end + 1) < SWEET_SPOT_DAMAGE)) {
+  if (!(damageAtRange(weapon, start - 1) < damage) || !(damageAtRange(weapon, end + 1) < damage)) {
     fail(`${weapon.id}: damage curve does not ramp in and out of its sweet spot`);
   }
 }
@@ -442,6 +453,13 @@ for (const [weaponId, ammoData] of Object.entries(ammo.WEAPON_AMMO)) {
   }
   for (const ammoId of Object.keys(ammoData.ammo ?? {})) {
     if (!ammo.AMMO.some(a => a.id === ammoId)) fail(`${weaponId}: WEAPON_AMMO references unknown ammo ${ammoId}`);
+  }
+  for (const [ammoId, projectile] of Object.entries(ammoData.projectileOverrides ?? {})) {
+    if (!(ammoId in (ammoData.ammo ?? {}))) fail(`${weaponId}: projectile override references unavailable ammo ${ammoId}`);
+    if (!Number.isInteger(projectile.pellets) || projectile.pellets < 1) fail(`${weaponId}/${ammoId}: invalid pellet count`);
+    if (!Array.isArray(projectile.dmg) || !projectile.dmg.length || projectile.dmg.some((point, index, curve) =>
+      !Number.isFinite(point.r) || point.r < 0 || !Number.isFinite(point.d) || point.d <= 0
+      || (index > 0 && point.r < curve[index - 1].r))) fail(`${weaponId}/${ammoId}: invalid projectile damage curve`);
   }
 }
 

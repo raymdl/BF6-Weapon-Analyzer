@@ -32,6 +32,7 @@ assert.equal(catalog.source, 'data/provenance/live-baseline.json#sym-bf6-json');
 assert.equal(catalog.gravityMps2, -9.81);
 assert.equal(catalog.baseDragPerMeter, 0.0035);
 assert.equal(catalog.ammoDragPerMeter.long_range, 0.002);
-assert.deepEqual(catalog.ammoDragPerMeter.penetration, { DMR: 0.002, 'Sniper Rifle': 0.002 });
+assert.equal(catalog.ammoDragPerMeter.penetration, undefined, 'ordinary Tungsten retains base projectile drag');
+assert.equal(catalog.ammoDragPerMeter.range_pen, 0.002, 'VSSM MatchTungsten uses its replacement projectile drag');
 
 console.log('ballistics tests passed');

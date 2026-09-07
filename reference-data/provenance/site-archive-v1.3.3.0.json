@@ -1,0 +1,175 @@
+{
+  "source": "https://raymdl.github.io/BF6-Weapon-Analyzer/",
+  "capturedAt": "2026-09-07T00:11:12.821067+00:00",
+  "weaponCount": 62,
+  "files": [
+    {
+      "path": "assets/favicon.svg",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/assets/favicon.svg?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "9b4f717658510924b02f35c17855bdda6b6d27fdeb55976720d226b5728a1490",
+      "bytes": 713,
+      "archiveSha256": "9b4f717658510924b02f35c17855bdda6b6d27fdeb55976720d226b5728a1490"
+    },
+    {
+      "path": "assets/og-image.png",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/assets/og-image.png?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "30c51a6978b25a2c9304774047dab2d527ff48f991e92e02633d67190bc1c0ac",
+      "bytes": 118112,
+      "archiveSha256": "30c51a6978b25a2c9304774047dab2d527ff48f991e92e02633d67190bc1c0ac"
+    },
+    {
+      "path": "assets/soldier-target.png",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/assets/soldier-target.png?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "22319de2acdd9829024f5cc7578cae171be44b116df321bebbdfb72061d4b939",
+      "bytes": 113610,
+      "archiveSha256": "22319de2acdd9829024f5cc7578cae171be44b116df321bebbdfb72061d4b939"
+    },
+    {
+      "path": "data/ammo.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/ammo.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "6464810803057237907c7edd56897073736638be4fc439ff55e20bf234ae72e0",
+      "bytes": 21548,
+      "archiveSha256": "6464810803057237907c7edd56897073736638be4fc439ff55e20bf234ae72e0"
+    },
+    {
+      "path": "data/attachments.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/attachments.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "5991a62d42f047cd1ac61f0023ed0a0e3ff21705ef14704578d42fd7eb0f94b6",
+      "bytes": 175731,
+      "archiveSha256": "5991a62d42f047cd1ac61f0023ed0a0e3ff21705ef14704578d42fd7eb0f94b6"
+    },
+    {
+      "path": "data/balance_tables.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/balance_tables.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "1c7b6ddd8eaf5a3b20b9b0f504cf05737dc020a772a08ef84099fe29a2b4ebb5",
+      "bytes": 9108,
+      "archiveSha256": "1c7b6ddd8eaf5a3b20b9b0f504cf05737dc020a772a08ef84099fe29a2b4ebb5"
+    },
+    {
+      "path": "data/ballistics.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/ballistics.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "7970ecb9b9ba7239afa2eab8c0f1141ea5db1acfc0be69086603783fbe997a8d",
+      "bytes": 861,
+      "archiveSha256": "7970ecb9b9ba7239afa2eab8c0f1141ea5db1acfc0be69086603783fbe997a8d"
+    },
+    {
+      "path": "data/provenance/live-baseline.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/provenance/live-baseline.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "22c133ad41b53f96998f99ec7e2fce76fe2ecd89ceb63ccf7831d0048a6a6bac",
+      "bytes": 1002,
+      "archiveSha256": "22c133ad41b53f96998f99ec7e2fce76fe2ecd89ceb63ccf7831d0048a6a6bac"
+    },
+    {
+      "path": "data/recoil_decay.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/recoil_decay.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "66ba62d022fc5387a4c2b7f81ac9082edf70fe706a51f57d272a8e2be52857ee",
+      "bytes": 2652,
+      "archiveSha256": "66ba62d022fc5387a4c2b7f81ac9082edf70fe706a51f57d272a8e2be52857ee"
+    },
+    {
+      "path": "data/reload-exceptions.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/reload-exceptions.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "47e754022499664d041f23aff9268ea390d5a275ac0ec5b80f7813f8bafbe6ab",
+      "bytes": 2145,
+      "archiveSha256": "47e754022499664d041f23aff9268ea390d5a275ac0ec5b80f7813f8bafbe6ab"
+    },
+    {
+      "path": "data/weapons.json",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/data/weapons.json?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "bd1c18533a081585edef2d05daf8446967da208e66d2305f535996dab7e00071",
+      "bytes": 187129,
+      "archiveSha256": "bd1c18533a081585edef2d05daf8446967da208e66d2305f535996dab7e00071"
+    },
+    {
+      "path": "index.html",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/index.html?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "3d68a27799b699f31a675b0d6aa52b7c127deb317e120d315f766e2709d6411b",
+      "bytes": 63225,
+      "archiveSha256": "b5b3b11c4f38ed54020a01650668f9941cfd85f7ada2bd75db93ba3d3c6960b5"
+    },
+    {
+      "path": "sim/applyAttachments.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/applyAttachments.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "794693de8a5edcae9e472d0a463389a4c172a5275b25c790d6fd7de7280383d8",
+      "bytes": 30578,
+      "archiveSha256": "794693de8a5edcae9e472d0a463389a4c172a5275b25c790d6fd7de7280383d8"
+    },
+    {
+      "path": "sim/attachments.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/attachments.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "211965ac6d6f30e5f615bee5ae25ff53a8219c13baedd251120827e103f2f269",
+      "bytes": 1227,
+      "archiveSha256": "211965ac6d6f30e5f615bee5ae25ff53a8219c13baedd251120827e103f2f269"
+    },
+    {
+      "path": "sim/ballistics.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/ballistics.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "52f259cd6a7c17ca4ba022ec3106c76a53ec6eb016a54c3a6ce272de3ef97888",
+      "bytes": 4304,
+      "archiveSha256": "52f259cd6a7c17ca4ba022ec3106c76a53ec6eb016a54c3a6ce272de3ef97888"
+    },
+    {
+      "path": "sim/core.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/core.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "35993f60e3a71c70b35c5fbee26b13f7dd14754b26d9e32f989fc7ac85c07e45",
+      "bytes": 14479,
+      "archiveSha256": "35993f60e3a71c70b35c5fbee26b13f7dd14754b26d9e32f989fc7ac85c07e45"
+    },
+    {
+      "path": "sim/damage.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/damage.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "c17762ec8a8d574fb6f1b4402981bc874dd5ef923cc997e89d098eb7ff9859fa",
+      "bytes": 4012,
+      "archiveSha256": "c17762ec8a8d574fb6f1b4402981bc874dd5ef923cc997e89d098eb7ff9859fa"
+    },
+    {
+      "path": "sim/loadout.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/loadout.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "b098cfdd4640e107a4ee1e3250d6a42cc1df915fac6048f1c46d8df3cee44ccf",
+      "bytes": 11304,
+      "archiveSha256": "b098cfdd4640e107a4ee1e3250d6a42cc1df915fac6048f1c46d8df3cee44ccf"
+    },
+    {
+      "path": "sim/share-state.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/share-state.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "e178b779f798dd9e6f88c035b34286661db536194092091118b11a0af280c3ca",
+      "bytes": 9226,
+      "archiveSha256": "e178b779f798dd9e6f88c035b34286661db536194092091118b11a0af280c3ca"
+    },
+    {
+      "path": "sim/target.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/sim/target.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "8ebad762f6bad9b693817018ab91d0ed2b82d59c74007e547883736e04c09fa0",
+      "bytes": 6532,
+      "archiveSha256": "8ebad762f6bad9b693817018ab91d0ed2b82d59c74007e547883736e04c09fa0"
+    },
+    {
+      "path": "ui/app.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/ui/app.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "9a722c11c7b841861ed11c8e6449cd8ae5cca6093e94e8defc2116f77e8bd9be",
+      "bytes": 149953,
+      "archiveSha256": "9a722c11c7b841861ed11c8e6449cd8ae5cca6093e94e8defc2116f77e8bd9be"
+    },
+    {
+      "path": "ui/capture.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/ui/capture.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "b4c7481c216a90a27208fc7e8dee7cc25f0c308e96aab2a94c58114f3027f245",
+      "bytes": 11786,
+      "archiveSha256": "b4c7481c216a90a27208fc7e8dee7cc25f0c308e96aab2a94c58114f3027f245"
+    },
+    {
+      "path": "vendor/chart.umd.min.js",
+      "url": "https://raymdl.github.io/BF6-Weapon-Analyzer/vendor/chart.umd.min.js?archive_capture=2026-09-07T00:11:12.821067+00:00",
+      "sha256": "0e2326c6868072bec1592760c6729043caeea2960a2b46cee6a2192aac6abff0",
+      "bytes": 205222,
+      "archiveSha256": "0e2326c6868072bec1592760c6729043caeea2960a2b46cee6a2192aac6abff0"
+    }
+  ],
+  "sourceCommit": "fb7a214778e1e4b5a5113f21ec0dd12136123845",
+  "verification": "All 23 captured live files matched the source commit byte for byte. Archived data, simulation, UI modules and assets are unchanged.",
+  "archiveAdjustments": [
+    "index.html archive label",
+    "index.html canonical and social URLs point to archive",
+    "index.html sibling archive links and Current Version navigation"
+  ]
+}

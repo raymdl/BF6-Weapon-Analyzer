@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "attachmentId": "full_auto_vssm",
+  "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM.xml",
+  "sha256": "8186b678fa20544a96662c728572fd2c1835f82f7ea38581b03b7051e1571ca2",
+  "bindingEvidence": "outputs/frosty/1.4.2.5/attachment-selection-graph.json: VSSM FullAuto selector",
+  "fieldMappingEvidence": "outputs/frosty/1.4.2.5/registry-linked-blocks.json and registry-configuration.json: GS_VSSM.DispersionBehavior.Zoomed.Stationary",
+  "group": "Field_6b84de87 (Zoomed); both Field_0a160c57 (Stationary) and Field_447d6d51 (MovingJumpingSprinting)",
+  "operation": "Enabled scalar overrides: Field_bbffe8bc=True, Field_bbbfe9cc=value, additive=0 and multipliers=1",
+  "adsOverrides": {
+    "inc": [
+      "Field_0084b1d1",
+      0.409
+    ],
+    "firingCoef": [
+      "Field_2ca8533e",
+      1.2
+    ],
+    "firingExp": [
+      "Field_f37351e6",
+      2.5
+    ],
+    "firingOffset": [
+      "Field_1b9eef5d",
+      2.7
+    ],
+    "notFiringOffset": [
+      "Field_4d3f0635",
+      7.2
+    ],
+    "idleExp": [
+      "Field_0b26c028",
+      0.25
+    ],
+    "idleOffset": [
+      "Field_aa558d2b",
+      7.5
+    ]
+  },
+  "scope": "ADS spread configuration with Folding Stock only; base VSSM unchanged. Uses the existing spread simulation; this is not new verification of native spread-recovery mechanics."
+}

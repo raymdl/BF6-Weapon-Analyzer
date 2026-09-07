@@ -53,6 +53,7 @@
     "db12": 0.94,
     "m16a4": 0.9425,
     "rpk74m": 0.9317,
+    "interdictor": 0.94,
     "l115": 0.94,
     "pp19": 0.9333,
     "es57": 0.94,
@@ -63,7 +64,7 @@
     "p18": 0.94,
     "vz61": 0.9283,
     "brod3": 0.94,
-    "ef88": 0.9579,
+    "ef88": 0.9375,
     "vssm": 0.9467
   },
   "HIP_SPREAD_TIERS": {
@@ -170,6 +171,7 @@
     "vz61": "Class B",
     "m16a4": "Class C",
     "rpk74m": "Class D",
+    "interdictor": "Class E",
     "l115": "Class D",
     "pp19": "Class B",
     "brod3": "Class B",
@@ -188,6 +190,7 @@
     "m1014": 1,
     "ks18k": 1,
     "db12": 1,
+    "interdictor": 1.75,
     "l115": 1.75,
     "vssm": 1.8
   },
@@ -282,6 +285,7 @@
     "sv98": "sniper",
     "psr": "sniper",
     "miniscout": "sniper",
+    "interdictor": "sniper",
     "l115": "sniper",
     "vz61": "auto",
     "pp19": "auto",
@@ -419,6 +423,7 @@
         "kts100",
         "kv9",
         "l110",
+        "interdictor",
         "l115",
         "l85a3",
         "lmr27",
@@ -481,11 +486,13 @@
       "sprintToFire": [
         "magazine.sprintRecoveryTierShift",
         "grip.sprintRecoveryTierShift",
-        "ergonomics.sprintRecoveryTierShift"
+        "ergonomics.sprintRecoveryTierShift",
+        "muzzle.sprintRecoveryTierShift"
       ],
       "deploy": [
         "magazine.sprintRecoveryTierShift",
-        "grip.sprintRecoveryTierShift"
+        "grip.sprintRecoveryTierShift",
+        "muzzle.sprintRecoveryTierShift"
       ],
       "namedExceptions": [
         {

@@ -77,7 +77,7 @@ export function computeAttPts(atts, weapon, data) {
   const laserLight = !lookups.LASERS[atts.laser] && !laserGrip && !!lookups.LIGHTS?.[atts.laser]
     ? lookups.LIGHTS[atts.laser]
     : null;
-  return getAttPts(lookups.SIGHTS[atts.sight ?? 'iron'])
+  return (data.WEAPON_ATTS[wid]?.sightPoints?.[atts.sight ?? 'iron'] ?? getAttPts(lookups.SIGHTS[atts.sight ?? 'iron']))
     + getAttPts(lookups.MUZZLES[atts.muzzle])
     + getAttPts(lookups.BARRELS[atts.barrel])
     + getAttPts(laserGrip ?? lookups.GRIPS[atts.grip])
@@ -207,6 +207,15 @@ export function renderAttachmentSection({
     // Combined laser/light slot: merge light (and optionally grip) options into the laser dropdown
     let allowedIds = wa?.[key];
     let effectiveSource = source;
+    if (key === 'muzzle') {
+      // Reorder the menu only; catalog indices are used by existing share links.
+      effectiveSource = [...source];
+      const compensatorIndex = effectiveSource.findIndex(a => a.id === 'compensator');
+      const linearIndex = effectiveSource.findIndex(a => a.id === 'linear_comp');
+      if (compensatorIndex > linearIndex && linearIndex >= 0) {
+        effectiveSource.splice(linearIndex, 0, ...effectiveSource.splice(compensatorIndex, 1));
+      }
+    }
     if (key === 'laser' && wa?.laserLightCombined) {
       const lightIds = wa?.light ?? [];
       allowedIds = allowedIds != null ? [...allowedIds, ...lightIds] : lightIds.length ? lightIds : null;
@@ -243,7 +252,7 @@ export function renderAttachmentSection({
       label,
       value: atts[key],
       options: visible.map(a => {
-        const pts = getAttPts(a);
+        const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a);
         const name = attDisplayName(a);
         return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
       }),
@@ -322,6 +331,12 @@ export function renderAttachmentSection({
   }
 
   updateAttTotal(containerId, atts, weapon, data);
+  if (wa?.coverageNote) {
+    const note = document.createElement('div');
+    note.className = 'att-note';
+    note.textContent = wa.coverageNote;
+    container.appendChild(note);
+  }
   const pendingPp19Coverage = weapon?.id === 'pp19'
     && ['muzzle', 'barrel', 'grip', 'laser', 'light'].every(key => Array.isArray(wa?.[key]) && wa[key].length === 0);
   if (pendingPp19Coverage) {

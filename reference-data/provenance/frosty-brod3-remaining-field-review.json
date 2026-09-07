@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate-value-check",
+  "sourceXml": "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3.xml",
+  "sourceSha256": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+  "currentSdkSha256": "475d13935b5dad7d9f8ed29e51b12fc38646a62f9dff6cfea0b42f3e37b3d935",
+  "sdkTypeCheck": "Struct_bcfafb0d.Field_22ce7cf3 and Field_02433593 are System.Int32 in the currently installed SDK.",
+  "previous43FieldsRechecked": true,
+  "additionalFields": [
+    {
+      "siteField": "recoil.ads.amountExp",
+      "siteValue": -3,
+      "candidateStatus": "unique-value-match",
+      "candidateDistinctValues": 3,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_22ce7cf3",
+          "rawValue": "0xfffffffd",
+          "candidateValue": -3
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "recoil.ads.dirVarExp",
+      "siteValue": 0,
+      "candidateStatus": "unique-value-match",
+      "candidateDistinctValues": 3,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_02433593",
+          "rawValue": "0x00000000",
+          "candidateValue": 0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "recoil.ads.decNorm",
+      "siteValue": 1,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_27f30454",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_2859e2fd",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_39740463",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_9b46e71d",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "recoil.ads.shootingDecScale",
+      "siteValue": 1,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_27f30454",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_2859e2fd",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_39740463",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_6b84de87/Struct_bcfafb0d/Field_9b46e71d",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "spreadDyn.ads.idleCoef",
+      "siteValue": 0,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_66d08b86",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_b5ee0f41",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringCoef",
+      "siteValue": 0,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_66d08b86",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_b5ee0f41",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringExp",
+      "siteValue": 0.25,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_0f79aaed",
+          "rawValue": "0.25",
+          "candidateValue": 0.25
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_6b84de87/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_f7a76bcf",
+          "rawValue": "0.25",
+          "candidateValue": 0.25
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "recoil.hip.amountExp",
+      "siteValue": -3,
+      "candidateStatus": "unique-value-match",
+      "candidateDistinctValues": 3,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_22ce7cf3",
+          "rawValue": "0xfffffffd",
+          "candidateValue": -3
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "recoil.hip.dirVarExp",
+      "siteValue": 0,
+      "candidateStatus": "unique-value-match",
+      "candidateDistinctValues": 3,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_02433593",
+          "rawValue": "0x00000000",
+          "candidateValue": 0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "recoil.hip.decNorm",
+      "siteValue": 1,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_27f30454",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_2859e2fd",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_39740463",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_9b46e71d",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "recoil.hip.shootingDecScale",
+      "siteValue": 1,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_27f30454",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_2859e2fd",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_39740463",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_c5d1c8fe/Struct_22f197b3/Field_7b609515/Struct_bcfafb0d/Field_9b46e71d",
+          "rawValue": "1",
+          "candidateValue": 1.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "spreadDyn.hip.idleCoef",
+      "siteValue": 0,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_66d08b86",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_b5ee0f41",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringCoef",
+      "siteValue": 0,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_66d08b86",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_b5ee0f41",
+          "rawValue": "0",
+          "candidateValue": 0.0
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringExp",
+      "siteValue": 0.25,
+      "candidateStatus": "ambiguous",
+      "candidateDistinctValues": 1,
+      "candidateWeapons": 62,
+      "candidates": [
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_0f79aaed",
+          "rawValue": "0.25",
+          "candidateValue": 0.25
+        },
+        {
+          "rawPath": "Class_539cff9b/Field_0a5922e0/Struct_d18fa73b/Field_7b609515/Struct_7b4a66bb/Field_0a160c57/Struct_3ee1d169/Field_f7a76bcf",
+          "rawValue": "0.25",
+          "candidateValue": 0.25
+        }
+      ],
+      "valueCompatible": true,
+      "semanticNameResolved": false
+    }
+  ],
+  "summary": "All 14 additional site values agree with every candidate raw field. Four exponent values have unique cross-weapon candidates; the other ten retain ambiguous field identities.",
+  "limitation": "Value agreement is not a named BROD 3 registry binding, proof of candidate identity, or validation of the simulation formula. Ambiguous fields remain ambiguous."
+}

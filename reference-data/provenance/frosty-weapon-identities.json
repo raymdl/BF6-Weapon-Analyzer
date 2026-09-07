@@ -1,0 +1,912 @@
+{
+  "scope": "Research identity mapping only; no statistics, multiplayer availability, or runtime mechanics are established by this map.",
+  "source": {
+    "path": "reference-data/companion-datamined/app-D4yBSTKV.js",
+    "sha256": "a1c8ba0460b2d0459b11ca0aee2a19c2e5b49f3607da48b64d76eb203960f124",
+    "retrieved": "2026-08-13 (local README record)",
+    "url": "https://www.companionbattlefield.com/assets/app-D4yBSTKV.js",
+    "limitations": "Third-party local reference; known stale balance values. Only explicit ID/display-name pairs are used."
+  },
+  "method": "61 explicit Companion ID/display-name pairs corroborated by Sym. BREN3 to BROD 3 is user-confirmed and directly supported by the Sym codename/displayname record. No statistical matching. Interdictor uses the explicit Sym codename/displayname pair retained with its EA availability evidence.",
+  "weapons": [
+    {
+      "internalId": "185KSK",
+      "siteId": "ks18k",
+      "siteName": "18.5KS-K",
+      "sourceId": "185ksk",
+      "sourceName": "18.5KS-K",
+      "sourceCategory": "Shotgun",
+      "sourceExcerpt": "{id:\"185ksk\",name:\"18.5KS-K\",category:\"Shotgun\"",
+      "sourceCharacterOffset": 723727,
+      "symIdentity": {
+        "codename": "185ksk",
+        "displayname": "18.5KS-K"
+      }
+    },
+    {
+      "internalId": "590A1",
+      "siteId": "m87a1",
+      "siteName": "M87A1",
+      "sourceId": "590a1",
+      "sourceName": "M87A1",
+      "sourceCategory": "Shotgun",
+      "sourceExcerpt": "{id:\"590a1\",name:\"M87A1\",category:\"Shotgun\"",
+      "sourceCharacterOffset": 724600,
+      "symIdentity": {
+        "codename": "590a1",
+        "displayname": "M87A1"
+      }
+    },
+    {
+      "internalId": "6P67",
+      "siteId": "kord6p67",
+      "siteName": "KORD 6P67",
+      "sourceId": "6p67",
+      "sourceName": "KORD 6P67",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"6p67\",name:\"KORD 6P67\",category:\"AR\"",
+      "sourceCharacterOffset": 725486,
+      "symIdentity": {
+        "codename": "6p67",
+        "displayname": "KORD 6P67"
+      }
+    },
+    {
+      "internalId": "ACE32",
+      "siteId": "nvo228e",
+      "siteName": "NVO-228E",
+      "sourceId": "ace32",
+      "sourceName": "NVO-228E",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"ace32\",name:\"NVO-228E\",category:\"AR\"",
+      "sourceCharacterOffset": 726373,
+      "symIdentity": {
+        "codename": "ace32",
+        "displayname": "NVO-228E"
+      }
+    },
+    {
+      "internalId": "AK205",
+      "siteId": "ak205",
+      "siteName": "AK-205",
+      "sourceId": "ak205",
+      "sourceName": "AK-205",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"ak205\",name:\"AK-205\",category:\"AR\"",
+      "sourceCharacterOffset": 727378,
+      "symIdentity": {
+        "codename": "ak205",
+        "displayname": "AK-205"
+      }
+    },
+    {
+      "internalId": "APC10",
+      "siteId": "scw10",
+      "siteName": "SCW-10",
+      "sourceId": "apc10",
+      "sourceName": "SCW-10",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"apc10\",name:\"SCW-10\",category:\"SMG\"",
+      "sourceCharacterOffset": 728402,
+      "symIdentity": {
+        "codename": "apc10",
+        "displayname": "SCW-10"
+      }
+    },
+    {
+      "internalId": "APDW",
+      "siteId": "sl9",
+      "siteName": "SL9",
+      "sourceId": "apdw",
+      "sourceName": "SL9",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"apdw\",name:\"SL9\",category:\"SMG\"",
+      "sourceCharacterOffset": 729350,
+      "symIdentity": {
+        "codename": "apdw",
+        "displayname": "SL9"
+      }
+    },
+    {
+      "internalId": "ARADMR",
+      "siteId": "lmr27",
+      "siteName": "LMR27",
+      "sourceId": "aradmr",
+      "sourceName": "LMR27",
+      "sourceCategory": "DMR",
+      "sourceExcerpt": "{id:\"aradmr\",name:\"LMR27\",category:\"DMR\"",
+      "sourceCharacterOffset": 730312,
+      "symIdentity": {
+        "codename": "aradmr",
+        "displayname": "LMR27"
+      }
+    },
+    {
+      "internalId": "DP12",
+      "siteId": "db12",
+      "siteName": "DB-12",
+      "sourceId": "dp12",
+      "sourceName": "DB-12",
+      "sourceCategory": "Shotgun",
+      "sourceExcerpt": "{id:\"dp12\",name:\"DB-12\",category:\"Shotgun\"",
+      "sourceCharacterOffset": 732282,
+      "symIdentity": {
+        "codename": "dp12",
+        "displayname": "DB-12"
+      }
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "siteName": "EF88",
+      "sourceId": "ef88",
+      "sourceName": "EF88",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"ef88\",name:\"EF88\",category:\"AR\"",
+      "sourceCharacterOffset": 733162,
+      "symIdentity": {
+        "codename": "ef88",
+        "displayname": "EF88"
+      }
+    },
+    {
+      "internalId": "FiveSeven",
+      "siteId": "es57",
+      "siteName": "ES 5.7",
+      "sourceId": "fiveseven",
+      "sourceName": "ES 5.7",
+      "sourceCategory": "Sidearm",
+      "sourceExcerpt": "{id:\"fiveseven\",name:\"ES 5.7\",category:\"Sidearm\"",
+      "sourceCharacterOffset": 734064,
+      "symIdentity": {
+        "codename": "fiveseven",
+        "displayname": "ES 5.7"
+      }
+    },
+    {
+      "internalId": "G22",
+      "siteId": "ggh22",
+      "siteName": "GGH-22",
+      "sourceId": "g22",
+      "sourceName": "GGH-22",
+      "sourceCategory": "Sidearm",
+      "sourceExcerpt": "{id:\"g22\",name:\"GGH-22\",category:\"Sidearm\"",
+      "sourceCharacterOffset": 734972,
+      "symIdentity": {
+        "codename": "g22",
+        "displayname": "GGH-22"
+      }
+    },
+    {
+      "internalId": "G36",
+      "siteId": "b36a4",
+      "siteName": "B36A4",
+      "sourceId": "g36",
+      "sourceName": "B36A4",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"g36\",name:\"B36A4\",category:\"AR\"",
+      "sourceCharacterOffset": 735877,
+      "symIdentity": {
+        "codename": "g36",
+        "displayname": "B36A4"
+      }
+    },
+    {
+      "internalId": "G3A4",
+      "siteId": "ak4d",
+      "siteName": "AK4D",
+      "sourceId": "g3a4",
+      "sourceName": "AK4D",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"g3a4\",name:\"AK4D\",category:\"AR\"",
+      "sourceCharacterOffset": 736758,
+      "symIdentity": {
+        "codename": "g3a4",
+        "displayname": "AK4D"
+      }
+    },
+    {
+      "internalId": "HK417A2",
+      "siteId": "m417a2",
+      "siteName": "M417 A2",
+      "sourceId": "hk417a2",
+      "sourceName": "M417 A2",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"hk417a2\",name:\"M417 A2\",category:\"AR\"",
+      "sourceCharacterOffset": 737634,
+      "symIdentity": {
+        "codename": "hk417a2",
+        "displayname": "M417 A2"
+      }
+    },
+    {
+      "internalId": "HK433",
+      "siteId": "m433",
+      "siteName": "M433",
+      "sourceId": "hk433",
+      "sourceName": "M433",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"hk433\",name:\"M433\",category:\"AR\"",
+      "sourceCharacterOffset": 738667,
+      "symIdentity": {
+        "codename": "hk433",
+        "displayname": "M433"
+      }
+    },
+    {
+      "internalId": "L115A3",
+      "siteId": "l115",
+      "siteName": "L115",
+      "sourceId": "l115a3",
+      "sourceName": "L115",
+      "sourceCategory": "Sniper",
+      "sourceExcerpt": "{id:\"l115a3\",name:\"L115\",category:\"Sniper\"",
+      "sourceCharacterOffset": 739617,
+      "symIdentity": {
+        "codename": "l115a3",
+        "displayname": "L115"
+      }
+    },
+    {
+      "internalId": "L85A3",
+      "siteId": "l85a3",
+      "siteName": "L85A3",
+      "sourceId": "l85a3",
+      "sourceName": "L85A3",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"l85a3\",name:\"L85A3\",category:\"AR\"",
+      "sourceCharacterOffset": 740485,
+      "symIdentity": {
+        "codename": "l85a3",
+        "displayname": "L85A3"
+      }
+    },
+    {
+      "internalId": "M1014",
+      "siteId": "m1014",
+      "siteName": "M1014",
+      "sourceId": "m1014",
+      "sourceName": "M1014",
+      "sourceCategory": "Shotgun",
+      "sourceExcerpt": "{id:\"m1014\",name:\"M1014\",category:\"Shotgun\"",
+      "sourceCharacterOffset": 741395,
+      "symIdentity": {
+        "codename": "m1014",
+        "displayname": "M1014"
+      }
+    },
+    {
+      "internalId": "M16A3",
+      "siteId": "m16a4",
+      "siteName": "M16A4",
+      "sourceId": "m16a3",
+      "sourceName": "M16A4",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"m16a3\",name:\"M16A4\",category:\"AR\"",
+      "sourceCharacterOffset": 742288,
+      "symIdentity": {
+        "codename": "m16a3",
+        "displayname": "M16A4"
+      }
+    },
+    {
+      "internalId": "M18",
+      "siteId": "p18",
+      "siteName": "P18",
+      "sourceId": "m18",
+      "sourceName": "P18",
+      "sourceCategory": "Sidearm",
+      "sourceExcerpt": "{id:\"m18\",name:\"P18\",category:\"Sidearm\"",
+      "sourceCharacterOffset": 743230,
+      "symIdentity": {
+        "codename": "m18",
+        "displayname": "P18"
+      }
+    },
+    {
+      "internalId": "M2010ESR",
+      "siteId": "m2010esr",
+      "siteName": "M2010 ESR",
+      "sourceId": "m2010esr",
+      "sourceName": "M2010 ESR",
+      "sourceCategory": "Sniper",
+      "sourceExcerpt": "{id:\"m2010esr\",name:\"M2010 ESR\",category:\"Sniper\"",
+      "sourceCharacterOffset": 744185,
+      "symIdentity": {
+        "codename": "m2010esr",
+        "displayname": "M2010 ESR"
+      }
+    },
+    {
+      "internalId": "M240L",
+      "siteId": "m240l",
+      "siteName": "M240L",
+      "sourceId": "m240l",
+      "sourceName": "M240L",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"m240l\",name:\"M240L\",category:\"LMG\"",
+      "sourceCharacterOffset": 745153,
+      "symIdentity": {
+        "codename": "m240l",
+        "displayname": "M240L"
+      }
+    },
+    {
+      "internalId": "M250",
+      "siteId": "m250",
+      "siteName": "M250",
+      "sourceId": "m250",
+      "sourceName": "M250",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"m250\",name:\"M250\",category:\"LMG\"",
+      "sourceCharacterOffset": 746076,
+      "symIdentity": {
+        "codename": "m250",
+        "displayname": "M250"
+      }
+    },
+    {
+      "internalId": "M27IAR",
+      "siteId": "drsiar",
+      "siteName": "DRS-IAR",
+      "sourceId": "m27iar",
+      "sourceName": "DRS-IAR",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"m27iar\",name:\"DRS-IAR\",category:\"LMG\"",
+      "sourceCharacterOffset": 746855,
+      "symIdentity": {
+        "codename": "m27iar",
+        "displayname": "DRS-IAR"
+      }
+    },
+    {
+      "internalId": "M39EMR",
+      "siteId": "m39emr",
+      "siteName": "M39 EMR",
+      "sourceId": "m39emr",
+      "sourceName": "M39 EMR",
+      "sourceCategory": "DMR",
+      "sourceExcerpt": "{id:\"m39emr\",name:\"M39 EMR\",category:\"DMR\"",
+      "sourceCharacterOffset": 747815,
+      "symIdentity": {
+        "codename": "m39emr",
+        "displayname": "M39 EMR"
+      }
+    },
+    {
+      "internalId": "M45A1",
+      "siteId": "m45a1",
+      "siteName": "M45A1",
+      "sourceId": "m45a1",
+      "sourceName": "M45A1",
+      "sourceCategory": "Sidearm",
+      "sourceExcerpt": "{id:\"m45a1\",name:\"M45A1\",category:\"Sidearm\"",
+      "sourceCharacterOffset": 748710,
+      "symIdentity": {
+        "codename": "m45a1",
+        "displayname": "M45A1"
+      }
+    },
+    {
+      "internalId": "M4A1",
+      "siteId": "m4a1",
+      "siteName": "M4A1",
+      "sourceId": "m4a1",
+      "sourceName": "M4A1",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"m4a1\",name:\"M4A1\",category:\"AR\"",
+      "sourceCharacterOffset": 749677,
+      "symIdentity": {
+        "codename": "m4a1",
+        "displayname": "M4A1"
+      }
+    },
+    {
+      "internalId": "M60E6",
+      "siteId": "m60",
+      "siteName": "M/60",
+      "sourceId": "m60e6",
+      "sourceName": "M/60",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"m60e6\",name:\"M/60\",category:\"LMG\"",
+      "sourceCharacterOffset": 750698,
+      "symIdentity": {
+        "codename": "m60e6",
+        "displayname": "M/60"
+      }
+    },
+    {
+      "internalId": "MG4K",
+      "siteId": "m123k",
+      "siteName": "M123K",
+      "sourceId": "mg4k",
+      "sourceName": "M123K",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"mg4k\",name:\"M123K\",category:\"LMG\"",
+      "sourceCharacterOffset": 751617,
+      "symIdentity": {
+        "codename": "mg4k",
+        "displayname": "M123K"
+      }
+    },
+    {
+      "internalId": "MG5",
+      "siteId": "m121a2",
+      "siteName": "M121 A2",
+      "sourceId": "mg5",
+      "sourceName": "M121 A2",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"mg5\",name:\"M121 A2\",category:\"LMG\"",
+      "sourceCharacterOffset": 752543,
+      "symIdentity": {
+        "codename": "mg5",
+        "displayname": "M121 A2"
+      }
+    },
+    {
+      "internalId": "MiniFix",
+      "siteId": "miniscout",
+      "siteName": "Mini Scout",
+      "sourceId": "minifix",
+      "sourceName": "Mini Scout",
+      "sourceCategory": "Sniper",
+      "sourceExcerpt": "{id:\"minifix\",name:\"Mini Scout\",category:\"Sniper\"",
+      "sourceCharacterOffset": 753468,
+      "symIdentity": {
+        "codename": "minifix",
+        "displayname": "Mini Scout"
+      }
+    },
+    {
+      "internalId": "Minimi",
+      "siteId": "l110",
+      "siteName": "L110",
+      "sourceId": "minimi",
+      "sourceName": "L110",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"minimi\",name:\"L110\",category:\"LMG\"",
+      "sourceCharacterOffset": 754291,
+      "symIdentity": {
+        "codename": "minimi",
+        "displayname": "L110"
+      }
+    },
+    {
+      "internalId": "MP5MLI",
+      "siteId": "pw5a3",
+      "siteName": "PW5A3",
+      "sourceId": "mp5mli",
+      "sourceName": "PW5A3",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"mp5mli\",name:\"PW5A3\",category:\"SMG\"",
+      "sourceCharacterOffset": 755248,
+      "symIdentity": {
+        "codename": "mp5mli",
+        "displayname": "PW5A3"
+      }
+    },
+    {
+      "internalId": "MP7A2",
+      "siteId": "pw7a2",
+      "siteName": "PW7A2",
+      "sourceId": "mp7a2",
+      "sourceName": "PW7A2",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"mp7a2\",name:\"PW7A2\",category:\"SMG\"",
+      "sourceCharacterOffset": 756211,
+      "symIdentity": {
+        "codename": "mp7a2",
+        "displayname": "PW7A2"
+      }
+    },
+    {
+      "internalId": "MPX",
+      "siteId": "sgx",
+      "siteName": "SGX",
+      "sourceId": "mpx",
+      "sourceName": "SGX",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"mpx\",name:\"SGX\",category:\"SMG\"",
+      "sourceCharacterOffset": 757115,
+      "symIdentity": {
+        "codename": "mpx",
+        "displayname": "SGX"
+      }
+    },
+    {
+      "internalId": "MRAD",
+      "siteId": "psr",
+      "siteName": "PSR",
+      "sourceId": "mrad",
+      "sourceName": "PSR",
+      "sourceCategory": "Sniper",
+      "sourceExcerpt": "{id:\"mrad\",name:\"PSR\",category:\"Sniper\"",
+      "sourceCharacterOffset": 758210,
+      "symIdentity": {
+        "codename": "mrad",
+        "displayname": "PSR"
+      }
+    },
+    {
+      "internalId": "MSBSGROTB",
+      "siteId": "grtbc",
+      "siteName": "GRT-BC",
+      "sourceId": "msbsgrotb",
+      "sourceName": "GRT-BC",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"msbsgrotb\",name:\"GRT-BC\",category:\"AR\"",
+      "sourceCharacterOffset": 759125,
+      "symIdentity": {
+        "codename": "msbsgrotb",
+        "displayname": "GRT-BC"
+      }
+    },
+    {
+      "internalId": "MSBSGROTCPS",
+      "siteId": "grtcps",
+      "siteName": "GRT-CPS",
+      "sourceId": "msbsgrotcps",
+      "sourceName": "GRT-CPS",
+      "sourceCategory": "DMR",
+      "sourceExcerpt": "{id:\"msbsgrotcps\",name:\"GRT-CPS\",category:\"DMR\"",
+      "sourceCharacterOffset": 760137,
+      "symIdentity": {
+        "codename": "msbsgrotcps",
+        "displayname": "GRT-CPS"
+      }
+    },
+    {
+      "internalId": "P90",
+      "siteId": "usg90",
+      "siteName": "USG-90",
+      "sourceId": "p90",
+      "sourceName": "USG-90",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"p90\",name:\"USG-90\",category:\"SMG\"",
+      "sourceCharacterOffset": 761027,
+      "symIdentity": {
+        "codename": "p90",
+        "displayname": "USG-90"
+      }
+    },
+    {
+      "internalId": "PP19",
+      "siteId": "pp19",
+      "siteName": "PP-19",
+      "sourceId": "pp19",
+      "sourceName": "PP-19",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"pp19\",name:\"PP-19\",category:\"SMG\"",
+      "sourceCharacterOffset": 761991,
+      "symIdentity": {
+        "codename": "pp19",
+        "displayname": "PP-19"
+      }
+    },
+    {
+      "internalId": "QBZ192",
+      "siteId": "qbz192",
+      "siteName": "QBZ-192",
+      "sourceId": "qbz192",
+      "sourceName": "QBZ-192",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"qbz192\",name:\"QBZ-192\",category:\"AR\"",
+      "sourceCharacterOffset": 762970,
+      "symIdentity": {
+        "codename": "qbz192",
+        "displayname": "QBZ-192"
+      }
+    },
+    {
+      "internalId": "RagingHunter",
+      "siteId": "m44",
+      "siteName": "M44",
+      "sourceId": "raginghunter",
+      "sourceName": "M44",
+      "sourceCategory": "Sidearm",
+      "sourceExcerpt": "{id:\"raginghunter\",name:\"M44\",category:\"Sidearm\"",
+      "sourceCharacterOffset": 764033,
+      "symIdentity": {
+        "codename": "raginghunter",
+        "displayname": "M44"
+      }
+    },
+    {
+      "internalId": "RPK74M",
+      "siteId": "rpk74m",
+      "siteName": "RPK-74M",
+      "sourceId": "rpk74m",
+      "sourceName": "RPK-74M",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"rpk74m\",name:\"RPK-74M\",category:\"LMG\"",
+      "sourceCharacterOffset": 764871,
+      "symIdentity": {
+        "codename": "rpk74m",
+        "displayname": "RPK-74M"
+      }
+    },
+    {
+      "internalId": "RPKM",
+      "siteId": "rpkm",
+      "siteName": "RPKM",
+      "sourceId": "rpkm",
+      "sourceName": "RPKM",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"rpkm\",name:\"RPKM\",category:\"LMG\"",
+      "sourceCharacterOffset": 765831,
+      "symIdentity": {
+        "codename": "rpkm",
+        "displayname": "RPKM"
+      }
+    },
+    {
+      "internalId": "SCARL",
+      "siteId": "sor556",
+      "siteName": "SOR-556 MK2",
+      "sourceId": "scarl",
+      "sourceName": "SOR-556 Mk2",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"scarl\",name:\"SOR-556 Mk2\",category:\"AR\"",
+      "sourceCharacterOffset": 766861,
+      "symIdentity": {
+        "codename": "scarl",
+        "displayname": "SOR-556 MK2"
+      }
+    },
+    {
+      "internalId": "SCARSC",
+      "siteId": "sor300sc",
+      "siteName": "SOR-300SC",
+      "sourceId": "scarsc",
+      "sourceName": "SOR-300SC",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"scarsc\",name:\"SOR-300SC\",category:\"AR\"",
+      "sourceCharacterOffset": 767775,
+      "symIdentity": {
+        "codename": "scarsc",
+        "displayname": "SOR-300SC"
+      }
+    },
+    {
+      "internalId": "ScorpionEvo3",
+      "siteId": "cz3a1",
+      "siteName": "CZ3A1",
+      "sourceId": "scorpionevo3",
+      "sourceName": "CZ3A1",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"scorpionevo3\",name:\"CZ3A1\",category:\"SMG\"",
+      "sourceCharacterOffset": 768792,
+      "symIdentity": {
+        "codename": "scorpionevo3",
+        "displayname": "CZ3A1"
+      }
+    },
+    {
+      "internalId": "SIG553R",
+      "siteId": "sg553r",
+      "siteName": "SG 553R",
+      "sourceId": "sig553r",
+      "sourceName": "SG 553R",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"sig553r\",name:\"SG 553R\",category:\"AR\"",
+      "sourceCharacterOffset": 769808,
+      "symIdentity": {
+        "codename": "sig553r",
+        "displayname": "SG 553R"
+      }
+    },
+    {
+      "internalId": "Skorpion",
+      "siteId": "vz61",
+      "siteName": "VZ. 61",
+      "sourceId": "skorpion",
+      "sourceName": "vz. 61",
+      "sourceCategory": "Sidearm",
+      "sourceExcerpt": "{id:\"skorpion\",name:\"vz. 61\",category:\"Sidearm\"",
+      "sourceCharacterOffset": 770836,
+      "symIdentity": {
+        "codename": "skorpion",
+        "displayname": "VZ. 61"
+      }
+    },
+    {
+      "internalId": "SV98M",
+      "siteId": "sv98",
+      "siteName": "SV-98",
+      "sourceId": "sv98m",
+      "sourceName": "SV-98",
+      "sourceCategory": "Sniper",
+      "sourceExcerpt": "{id:\"sv98m\",name:\"SV-98\",category:\"Sniper\"",
+      "sourceCharacterOffset": 771788,
+      "symIdentity": {
+        "codename": "sv98m",
+        "displayname": "SV-98"
+      }
+    },
+    {
+      "internalId": "SVCh",
+      "siteId": "svk86",
+      "siteName": "SVK-8.6",
+      "sourceId": "svch",
+      "sourceName": "SVK-8.6",
+      "sourceCategory": "DMR",
+      "sourceExcerpt": "{id:\"svch\",name:\"SVK-8.6\",category:\"DMR\"",
+      "sourceCharacterOffset": 772679,
+      "symIdentity": {
+        "codename": "svch",
+        "displayname": "SVK-8.6"
+      }
+    },
+    {
+      "internalId": "SVDM",
+      "siteId": "svdm",
+      "siteName": "SVDM",
+      "sourceId": "svdm",
+      "sourceName": "SVDM",
+      "sourceCategory": "DMR",
+      "sourceExcerpt": "{id:\"svdm\",name:\"SVDM\",category:\"DMR\"",
+      "sourceCharacterOffset": 773544,
+      "symIdentity": {
+        "codename": "svdm",
+        "displayname": "SVDM"
+      }
+    },
+    {
+      "internalId": "Tavor7",
+      "siteId": "tr7",
+      "siteName": "TR7",
+      "sourceId": "tavor7",
+      "sourceName": "TR-7",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"tavor7\",name:\"TR-7\",category:\"AR\"",
+      "sourceCharacterOffset": 774409,
+      "symIdentity": {
+        "codename": "tavor7",
+        "displayname": "TR7"
+      }
+    },
+    {
+      "internalId": "TRR8",
+      "siteId": "m357trait",
+      "siteName": "M357 Trait",
+      "sourceId": "trr8",
+      "sourceName": "M357 Trait",
+      "sourceCategory": "Sidearm",
+      "sourceExcerpt": "{id:\"trr8\",name:\"M357 Trait\",category:\"Sidearm\"",
+      "sourceCharacterOffset": 775309,
+      "symIdentity": {
+        "codename": "trr8",
+        "displayname": "M357 Trait"
+      }
+    },
+    {
+      "internalId": "Ultimax",
+      "siteId": "kts100",
+      "siteName": "KTS100 MK8",
+      "sourceId": "ultimax",
+      "sourceName": "KTS100 MK8",
+      "sourceCategory": "LMG",
+      "sourceExcerpt": "{id:\"ultimax\",name:\"KTS100 MK8\",category:\"LMG\"",
+      "sourceCharacterOffset": 776199,
+      "symIdentity": {
+        "codename": "ultimax",
+        "displayname": "KTS100 MK8"
+      }
+    },
+    {
+      "internalId": "UMP40",
+      "siteId": "umg40",
+      "siteName": "UMG-40",
+      "sourceId": "ump40",
+      "sourceName": "UMG-40",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"ump40\",name:\"UMG-40\",category:\"SMG\"",
+      "sourceCharacterOffset": 777115,
+      "symIdentity": {
+        "codename": "ump40",
+        "displayname": "UMG-40"
+      }
+    },
+    {
+      "internalId": "Vector",
+      "siteId": "kv9",
+      "siteName": "KV9",
+      "sourceId": "vector",
+      "sourceName": "KV9",
+      "sourceCategory": "SMG",
+      "sourceExcerpt": "{id:\"vector\",name:\"KV9\",category:\"SMG\"",
+      "sourceCharacterOffset": 778067,
+      "symIdentity": {
+        "codename": "vector",
+        "displayname": "KV9"
+      }
+    },
+    {
+      "internalId": "VHS2",
+      "siteId": "vcr2",
+      "siteName": "VCR-2",
+      "sourceId": "vhs2",
+      "sourceName": "VCR-2",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"vhs2\",name:\"VCR-2\",category:\"AR\"",
+      "sourceCharacterOffset": 779008,
+      "symIdentity": {
+        "codename": "vhs2",
+        "displayname": "VCR-2"
+      }
+    },
+    {
+      "internalId": "VSSM",
+      "siteId": "vssm",
+      "siteName": "VSSM",
+      "sourceId": "vssm",
+      "sourceName": "VSSM",
+      "sourceCategory": "DMR",
+      "sourceExcerpt": "{id:\"vssm\",name:\"VSSM\",category:\"DMR\"",
+      "sourceCharacterOffset": 779909,
+      "symIdentity": {
+        "codename": "vssm",
+        "displayname": "VSSM"
+      }
+    },
+    {
+      "internalId": "XM7",
+      "siteId": "m277",
+      "siteName": "M277",
+      "sourceId": "xm7",
+      "sourceName": "M277",
+      "sourceCategory": "AR",
+      "sourceExcerpt": "{id:\"xm7\",name:\"M277\",category:\"AR\"",
+      "sourceCharacterOffset": 780863,
+      "symIdentity": {
+        "codename": "xm7",
+        "displayname": "M277"
+      }
+    },
+    {
+      "internalId": "BREN3",
+      "siteId": "brod3",
+      "siteName": "BROD 3",
+      "sourceId": "bren3",
+      "sourceName": "BROD 3",
+      "sourceKey": "sym",
+      "sourceExcerpt": "\"bren3\": {\"codename\": \"bren3\", \"displayname\": \"BROD 3\"}",
+      "userConfirmed": true,
+      "symIdentity": {
+        "codename": "bren3",
+        "displayname": "BROD 3"
+      }
+    },
+    {
+      "internalId": "DesertTechHTI",
+      "siteId": "interdictor",
+      "siteName": "Interdictor",
+      "sourceId": "deserttechhti",
+      "sourceName": "Interdictor",
+      "sourceKey": "sym",
+      "sourceExcerpt": "\"deserttechhti\": {\"codename\": \"deserttechhti\", \"displayname\": \"Interdictor\"}",
+      "symIdentity": {
+        "codename": "deserttechhti",
+        "displayname": "Interdictor"
+      },
+      "evidence": "reference-data/provenance/sym-1.4.2.0-interdictor.json"
+    }
+  ],
+  "unresolvedInternalIds": [
+    "KSG"
+  ],
+  "unmatchedSiteIds": [],
+  "additionalSources": {
+    "sym": {
+      "url": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
+      "retrievedUtcDate": "2026-09-06",
+      "sha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+      "metadata": {
+        "version": "1.4.2.0",
+        "versionDate": "18 AUG 2026"
+      },
+      "scope": "Weapon identity corroboration only; retrieval date is distinct from the source version."
+    }
+  },
+  "identifiedOutsideSite": []
+}

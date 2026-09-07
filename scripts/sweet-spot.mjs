@@ -10,18 +10,20 @@
 // The window is the span over which the curve holds its maximum damage. A weapon whose curve
 // never reaches that plateau across two distinct breakpoints has no sweet spot (the Mini Scout).
 
-/** The plateau damage a bolt-action sweet spot holds. */
-export const SWEET_SPOT_DAMAGE = 100;
-
 /**
- * Returns { rangeM: [start, end] } for a curve that holds SWEET_SPOT_DAMAGE across two or more
- * breakpoints, or { rangeM: null } when it never does.
+ * Returns { rangeM: [start, end], damage } for a continuous maximum-damage plateau
+ * of at least 100 damage, or { rangeM: null } when it never occurs.
  */
 export function deriveSweetSpot(weapon) {
-  const points = (weapon?.dmg ?? []).filter(point => point?.d === SWEET_SPOT_DAMAGE);
-  if (points.length < 2) return { rangeM: null };
+  const curve = weapon?.dmg ?? [];
+  const damage = Math.max(...curve.map(point => point.d));
+  if (damage < 100) return { rangeM: null };
+  const points = curve.filter(point => point.d === damage);
+  if (points.length < 2 || curve.slice(curve.indexOf(points[0]), curve.indexOf(points.at(-1)) + 1)
+    .some(point => point.d !== damage)) return { rangeM: null };
   const ranges = points.map(point => point.r);
-  return { rangeM: [Math.min(...ranges), Math.max(...ranges)] };
+  const rangeM = [Math.min(...ranges), Math.max(...ranges)];
+  return rangeM[1] > rangeM[0] ? { rangeM, damage } : { rangeM: null };
 }
 
 /** True when the weapon's curve carries a sweet-spot plateau. */

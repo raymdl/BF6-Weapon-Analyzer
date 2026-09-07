@@ -1,0 +1,430 @@
+{
+  "scope": "M433 underbarrel screenshot values only. Source images visually checked; audit review statuses unchanged. No runtime promotion.",
+  "date": "2026-09-06",
+  "records": [
+    {
+      "attachment": "None",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\27_M433_Grip_None.png",
+      "sha256": "5e8670f467e30435dbd8eb92adfbe886e45a73cdb9bce1fe3ee9420f54badbf4",
+      "observed": {
+        "precision": 20,
+        "control": 40,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.8,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "Folding Vertical",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\28_M433_Grip_Folding_Vertical.png",
+      "sha256": "b6107a975d1bb0d089fe8eec0f4e8c37d87078400673647fc5da38a509845ae7",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 48,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "Alloy Vertical",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\29_M433_Grip_Alloy_Vertical.png",
+      "sha256": "3c1e64fc59b9005af49433276eec094af106b47ebef458d2ecbcca280ad60eb6",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "Ribbed Vertical",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\30_M433_Grip_Ribbed_Vertical.png",
+      "sha256": "803313d2c075566855427aef6ab8f291650b2a2fed01621c1b0dd3dbe297ee07",
+      "observed": {
+        "precision": 22,
+        "control": 47,
+        "mobility": 48,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "6H64 Vertical",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\31_M433_Grip_6H64_Vertical.png",
+      "sha256": "a09b83ecf4516c742a17ab72f31c32af6b38e46d3342c94f98ce3c12ca7a786a",
+      "observed": {
+        "precision": 22,
+        "control": 50,
+        "mobility": 46,
+        "recoilAmountDegrees": 0.6,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "mobility": {
+          "before": 48,
+          "after": 46
+        }
+      }
+    },
+    {
+      "attachment": "Classic Vertical",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\32_M433_Grip_Classic_Vertical.png",
+      "sha256": "c1a80919bc5731a3c2fc7f09ba648f4f2f71c1ff2f95bf3bc76292d408198fe3",
+      "observed": {
+        "precision": 22,
+        "control": 53,
+        "mobility": 46,
+        "recoilAmountDegrees": 0.6,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "control": {
+          "before": 47,
+          "after": 53
+        },
+        "mobility": {
+          "before": 48,
+          "after": 46
+        }
+      }
+    },
+    {
+      "attachment": "Underslung Mount",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\33_M433_Grip_Underslung_Mount.png",
+      "sha256": "a166a0d6ee5694d503ad500584c0cc444927124c487a4644c9c309572149b6ce",
+      "observed": {
+        "precision": 20,
+        "control": 40,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.8,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "Folding Stubby",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\34_M433_Grip_Folding_Stubby.png",
+      "sha256": "d80bea2e1d9f8d9e3d71f9047b360243c911189d4ea1ee11d8d4cebaeeb57215",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "precision": {
+          "before": 22,
+          "after": 21
+        },
+        "control": {
+          "before": 50,
+          "after": 45
+        }
+      }
+    },
+    {
+      "attachment": "Ribbed Stubby",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\35_M433_Grip_Ribbed_Stubby.png",
+      "sha256": "60ad4144e45aa8e81ec0252731b6cc400e4f6eee09a948e8dfdcbeb0772bbd5b",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 56,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "precision": {
+          "before": 22,
+          "after": 21
+        },
+        "control": {
+          "before": 53,
+          "after": 45
+        }
+      }
+    },
+    {
+      "attachment": "Canted Stubby",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\36_M433_Grip_Canted_Stubby.png",
+      "sha256": "e0b7efd0310d3a1b0aef36792bc0d1d6b8e7f7f10dae7797777f7ba2e3e61eee",
+      "observed": {
+        "precision": 22,
+        "control": 47,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "precision": {
+          "before": 21,
+          "after": 22
+        },
+        "control": {
+          "before": 45,
+          "after": 47
+        }
+      }
+    },
+    {
+      "attachment": "Stippled Stubby",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\37_M433_Grip_Stippled_Stubby.png",
+      "sha256": "a0e0e070399ca8faf91b3da8f5df5488fa50c8f8e729f132fe7f073328397787",
+      "observed": {
+        "precision": 22,
+        "control": 50,
+        "mobility": 50,
+        "recoilAmountDegrees": 0.6,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "precision": {
+          "before": 21,
+          "after": 22
+        },
+        "control": {
+          "before": 45,
+          "after": 50
+        }
+      }
+    },
+    {
+      "attachment": "Low-Profile Stubby",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\38_M433_Grip_Low-Profile_Stubby.png",
+      "sha256": "7c57a131cb56d857179c0d7219e35e941b9bccd01f2778f20c79948996ca7813",
+      "observed": {
+        "precision": 22,
+        "control": 53,
+        "mobility": 50,
+        "recoilAmountDegrees": 0.6,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "precision": {
+          "before": 21,
+          "after": 22
+        },
+        "control": {
+          "before": 45,
+          "after": 53
+        }
+      }
+    },
+    {
+      "attachment": "Slim Handstop",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\39_M433_Grip_Slim_Handstop.png",
+      "sha256": "fb316ac2ad3310e45679072d53e1c0e87b78d6dcf523bbbf5a8e102a09c37c1f",
+      "observed": {
+        "precision": 20,
+        "control": 40,
+        "mobility": 58,
+        "recoilAmountDegrees": 0.8,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 133,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "Adjustable Angled",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\40_M433_Grip_Adjustable_Angled.png",
+      "sha256": "13352946b19364030fbde72bb41cbbc2bfcb2f9f40a33b0481ff0e21c4c47d24",
+      "observed": {
+        "precision": 21,
+        "control": 42,
+        "mobility": 54,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 133,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "Slim Angled",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\41_M433_Grip_Slim_Angled.png",
+      "sha256": "727a6c32eaf9e08f6527934c95a182e63319d996524052707ea30b2848eb82c5",
+      "observed": {
+        "precision": 21,
+        "control": 42,
+        "mobility": 58,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 133,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "mobility": {
+          "before": 54,
+          "after": 58
+        }
+      }
+    },
+    {
+      "attachment": "Full Angled",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\42_M433_Grip_Full_Angled.png",
+      "sha256": "28f59ce961b568c729be48540229e2d9be97dab9b9ea2026f351bc5dbd356494",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 54,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 133,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "Bipod",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\43_M433_Grip_Bipod.png",
+      "sha256": "212c4027d17bbec31c47ec5b7f4f1deebd15a66ae7848e98873f318866f7d7ac",
+      "observed": {
+        "precision": 20,
+        "control": 40,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.8,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    },
+    {
+      "attachment": "PTT Grip Pod",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\44_M433_Grip_PTT_Grip_Pod.png",
+      "sha256": "c22016033b78d3b458bdd623d1d74eb1f172f3a61618445bb949e972c19fdb24",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 48,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "precision": {
+          "before": 22,
+          "after": 21
+        },
+        "control": {
+          "before": 47,
+          "after": 45
+        }
+      }
+    },
+    {
+      "attachment": "QD Grip Pod",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\45_M433_Grip_QD_Grip_Pod.png",
+      "sha256": "8efa2123b92b65e8e148c0113c2b936a75b27733d9fba312db3a54f31f75e948",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 250,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {
+        "precision": {
+          "before": 22,
+          "after": 21
+        },
+        "control": {
+          "before": 50,
+          "after": 45
+        }
+      }
+    },
+    {
+      "attachment": "Classic Grip Pod",
+      "source": "reference-data\\attachment-audit\\Weapon Attachments\\Assault Rifle\\M433\\46_M433_Grip_Classic_Grip_Pod.png",
+      "sha256": "a3c20dd90dbdabcb9b3d66f209ebcaa517e4dfcf0f12bff9cc184b96bf7a0c2f",
+      "observed": {
+        "precision": 21,
+        "control": 45,
+        "mobility": 52,
+        "recoilAmountDegrees": 0.7,
+        "adsTimeMs": 200,
+        "adsMoveSpeedMultiplier": 0.6,
+        "sprintRecoveryMs": 167,
+        "hipfire": 40,
+        "recoilVariationDegrees": 41.4
+      },
+      "corrections": {}
+    }
+  ],
+  "correctedRecords": 10,
+  "correctedValues": 18
+}

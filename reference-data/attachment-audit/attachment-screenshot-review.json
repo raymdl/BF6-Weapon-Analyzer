@@ -62010,9 +62010,9 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 22,
-        "control": 53,
-        "mobility": 46,
+        "precision": 21,
+        "control": 45,
+        "mobility": 48,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -62354,7 +62354,7 @@
         "hipfire": 40,
         "precision": 22,
         "control": 50,
-        "mobility": 48,
+        "mobility": 46,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -62485,8 +62485,8 @@
         "magazineSize": 30,
         "hipfire": 40,
         "precision": 22,
-        "control": 47,
-        "mobility": 48,
+        "control": 53,
+        "mobility": 46,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -62678,8 +62678,8 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 22,
-        "control": 50,
+        "precision": 21,
+        "control": 45,
         "mobility": 52,
         "fireModes": [
           "AUTO",
@@ -62796,8 +62796,8 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 22,
-        "control": 53,
+        "precision": 21,
+        "control": 45,
         "mobility": 56,
         "fireModes": [
           "AUTO",
@@ -62948,8 +62948,8 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 21,
-        "control": 45,
+        "precision": 22,
+        "control": 47,
         "mobility": 52,
         "fireModes": [
           "AUTO",
@@ -63066,8 +63066,8 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 21,
-        "control": 45,
+        "precision": 22,
+        "control": 50,
         "mobility": 50,
         "fireModes": [
           "AUTO",
@@ -63210,8 +63210,8 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 21,
-        "control": 45,
+        "precision": 22,
+        "control": 53,
         "mobility": 50,
         "fireModes": [
           "AUTO",
@@ -63606,7 +63606,7 @@
         "hipfire": 40,
         "precision": 21,
         "control": 42,
-        "mobility": 54,
+        "mobility": 58,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -63957,8 +63957,8 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 22,
-        "control": 47,
+        "precision": 21,
+        "control": 45,
         "mobility": 48,
         "fireModes": [
           "AUTO",
@@ -64074,8 +64074,8 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 22,
-        "control": 50,
+        "precision": 21,
+        "control": 45,
         "mobility": 52,
         "fireModes": [
           "AUTO",

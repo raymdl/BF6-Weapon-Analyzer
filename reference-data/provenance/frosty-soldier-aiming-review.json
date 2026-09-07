@@ -1,0 +1,187 @@
+{
+  "scope": "Structural and reference review of six user-supplied Soldier/Logic exports; no recoil/spread equations established.",
+  "files": [
+    {
+      "path": "Common/Gameplay/Soldier/Logic/DerivedEx_InVehicle.xml",
+      "sha256": "625fa9d672f5a703ce355efea979d37f4b63c14978caef42f1c6be99642044a6",
+      "objectCount": 2,
+      "duplicateObjectGuids": 0,
+      "arrayCountMismatches": [],
+      "missingLocalClassReferences": [],
+      "externalReferences": [],
+      "boxedValueLabels": {}
+    },
+    {
+      "path": "Common/Gameplay/Soldier/Logic/DQD_CurrentSeat.xml",
+      "sha256": "48d71762c34e20e0ef80b9c009cf656825d4d61a1b055cb474776726995bbbe0",
+      "objectCount": 2,
+      "duplicateObjectGuids": 0,
+      "arrayCountMismatches": [],
+      "missingLocalClassReferences": [],
+      "externalReferences": [
+        "[Ebx] Common/Gameplay/PublicChannels/MiscPublicChannels [8700e57d-dc09-eab8-ca9b-5624ce333458]"
+      ],
+      "boxedValueLabels": {}
+    },
+    {
+      "path": "Common/Gameplay/Soldier/Logic/DQD_CurrentVehicleEntryIndex.xml",
+      "sha256": "8b43295e9bbb9c45f7adfa9e23dc43a56bfcc616222e66652b60512b1e4db801",
+      "objectCount": 2,
+      "duplicateObjectGuids": 0,
+      "arrayCountMismatches": [],
+      "missingLocalClassReferences": [],
+      "externalReferences": [
+        "[Ebx] Common/Gameplay/PublicChannels/MiscPublicChannels [8700e57d-dc09-eab8-ca9b-5624ce33345a]"
+      ],
+      "boxedValueLabels": {}
+    },
+    {
+      "path": "Common/Gameplay/Soldier/Logic/PF_Glacier_Soldier_AimingLogic.xml",
+      "sha256": "2b5e7a8c8bf452cef9f47076ed9c5f9d39cfb5f0b3fe00b5eb71779ebf359180",
+      "objectCount": 146,
+      "duplicateObjectGuids": 0,
+      "arrayCountMismatches": [],
+      "missingLocalClassReferences": [],
+      "externalReferences": [
+        "[Ebx] Animations/Common/1P.RootRelativeAim.Yaw.Float [aa3040e8-cacc-0461-aa30-40e8cacc0461]",
+        "[Ebx] Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_Default_NoZoom [67ed3f83-ac6a-4ecf-a0da-5af8bfb014cc]",
+        "[Ebx] Common/Gameplay/Camera/Insertion/CamVar_BRInsertion_PlayerStartExit [4765f215-696a-45c5-b0c8-0c30f584556e]",
+        "[Ebx] Common/Gameplay/Camera/Insertion/CamVar_BRInsertion_Vehicle3PActive [85865e6e-0815-421b-a18b-e4e8cc51ab60]",
+        "[Ebx] Common/Gameplay/Camera/Insertion/CamVar_BR_FreelookActive [d3a364c3-b63c-43e9-848c-fef7980aea4a]",
+        "[Ebx] Common/Gameplay/Camera/Insertion/PresEx_Granite_Insertion_GetVehicle3PCamDirection [00b78ca5-4f8c-4573-b4b5-109575c8ac0a]",
+        "[Ebx] Common/Gameplay/PublicChannels/CommonPublicChannels [ce8db4b1-1142-4824-baf0-c47c42b1d801]",
+        "[Ebx] Common/Gameplay/Soldier/DeathFlow/DragRevive/DiceEx_DragRevive_FetchWarpClipWorldSpace [95c512cb-76dc-4116-abc6-bd2fd4832e87]",
+        "[Ebx] Common/Gameplay/Soldier/FL_Soldier/Animation/LFP_CamerasConstraints [efd8a2a3-8b2e-f2e7-c14b-c3bd2c2b470e]",
+        "[Ebx] Common/Gameplay/Soldier/FL_Soldier/Animation/LFP_CamerasConstraints_SP [6b29bcec-8705-41de-b109-0b6435481e59]",
+        "[Ebx] Common/Gameplay/Soldier/GRX_Glacier_Soldier [cda16c87-fba0-4ffe-a8cd-7b3f6441a271]",
+        "[Ebx] Game/GlacierGranite/Common/Gameplay/Soldier/PublicChannels/GraniteSoldierOnlyPublicChannels [2fedbb94-c93c-4472-aafa-23b9bbf4f888]",
+        "[Ebx] Game/GlacierGranite/Common/Gameplay/Soldier/PublicChannels/GraniteSoldierOnlyPublicChannels [42690f97-99c4-432b-8c83-741706a798d5]",
+        "[Ebx] Game/GlacierGranite/Common/Gameplay/Soldier/PublicChannels/GraniteSoldierOnlyPublicChannels [5f00fe6e-6751-407a-a7bc-1c98cc5f0727]",
+        "[Ebx] Game/GlacierGranite/Common/Gameplay/Soldier/PublicChannels/GraniteSoldierOnlyPublicChannels [78ad2ba1-c5c3-4cd1-8b43-282a1feba080]",
+        "[Ebx] Game/GlacierGranite/GameSetup/Tweakables/GRX_Granite [8711e55f-347e-47c6-8971-866325f70faf]"
+      ],
+      "boxedValueLabels": {
+        "BoxedValueRef '(null)'": 22,
+        "BoxedValueRef 'Float32'": 10,
+        "BoxedValueRef 'Boolean'": 2,
+        "BoxedValueRef 'Struct_cb53a662'": 1
+      }
+    },
+    {
+      "path": "Common/Gameplay/Soldier/Logic/PresEx_SetHealthHealingStates.xml",
+      "sha256": "11b62bc5276dd98cccaa7fbdbb925fce8e64abf99d0bdc8da48de2fd4479052d",
+      "objectCount": 4,
+      "duplicateObjectGuids": 0,
+      "arrayCountMismatches": [],
+      "missingLocalClassReferences": [],
+      "externalReferences": [
+        "[Ebx] Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels [80d4fd84-8f71-4b3f-86e2-dc7c9c33e3c7]"
+      ],
+      "boxedValueLabels": {
+        "BoxedValueRef '(null)'": 2
+      }
+    },
+    {
+      "path": "Common/Gameplay/Soldier/Logic/SimEx_InVehicle.xml",
+      "sha256": "b81139b2b96af0454c1c5cfefbd1422dc83137c6263d0b08468bcd5e100fc58e",
+      "objectCount": 2,
+      "duplicateObjectGuids": 0,
+      "arrayCountMismatches": [],
+      "missingLocalClassReferences": [],
+      "externalReferences": [],
+      "boxedValueLabels": {}
+    }
+  ],
+  "aimingFindings": {
+    "objectCount": 146,
+    "externalReferenceCount": 16,
+    "priorityReferences": [
+      {
+        "asset": "Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_Default_NoZoom",
+        "sourceObjectGuid": "00000000-0000-0000-0000-00000000001b",
+        "field": "Field_beabc6b8",
+        "status": "Exported and inspected in followUpExports; no recoil/spread formula established."
+      },
+      {
+        "asset": "Common/Gameplay/Soldier/GRX_Glacier_Soldier",
+        "sourceObjectGuid": "00000000-0000-0000-0000-000000000038",
+        "field": "Field_e0b43a29/Struct_9bc51bd0/Field_6b28f68f",
+        "status": "Exported and inspected in followUpExports; no recoil/spread formula established."
+      }
+    ],
+    "interpretation": "References include default aiming, camera constraints, animation yaw, insertion/free-look and soldier settings. This establishes graph connections, not an exact recoil/spread update algorithm.",
+    "boxedValueLimitation": "13 non-null typed BoxedValueRef fields show type labels only (10 Float32, 2 Boolean, 1 Struct_cb53a662). Do not infer their numeric/boolean payloads from these strings. This does not prove truncation or invalid XML."
+  },
+  "followUpExports": {
+    "folders": [
+      {
+        "folder": "Common/Gameplay/Soldier",
+        "xmlFiles": 302,
+        "parseableRawFiles": 299,
+        "duplicateGuidsInParseableFiles": 0,
+        "arrayCountMismatchesInParseableFiles": 0,
+        "missingLocalClassReferencesInParseableFiles": 0
+      },
+      {
+        "folder": "Common/Gameplay/AimingControllers/WeaponsGadgets",
+        "xmlFiles": 49,
+        "parseableRawFiles": 49,
+        "duplicateGuidsInParseableFiles": 0,
+        "arrayCountMismatchesInParseableFiles": 0,
+        "missingLocalClassReferencesInParseableFiles": 0
+      }
+    ],
+    "inputIndexSha256": "661aa43e14a86e917bda003a632b40300bd28c72052be11d34063fe289d280c4",
+    "selectedSourceSha256": {
+      "Common/Gameplay/Soldier/Glacier_Soldier.xml": "b33408e48d2a0ed67968b49f2980a9796472d82655973c87648f336ba359c119",
+      "Common/Gameplay/Soldier/Glacier_Soldier_Gameplay.xml": "333b0a07f79635e876e6f4317beb50fd60137ec020a5433ab17044f2b337c761",
+      "Common/Gameplay/Soldier/GRX_Glacier_Soldier.xml": "3ca534bff97c2f22af4c67332cef82e1c5e57310faca4ff2304bab90c9d2b7fc",
+      "Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_Default_NoZoom.xml": "2977e9b52beec5a418efb7151c79edb1cc973a8b9c18e915546165bc7427a004",
+      "Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_NoZoom.xml": "444605ab438fedcf1c45af18aeedad1097212519de0106d2b27e2266995bb834"
+    },
+    "xmlEscapingErrors": [
+      {
+        "path": "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker.xml",
+        "sha256": "6dcdd33f2f0051fce6ee4d101350ecc139449ebf84db3d6429e2e1496244b3b7",
+        "parseError": "mismatched tag: line 1917, column 59",
+        "literalText": "TypeRef 'List<Struct_ed055695>'",
+        "escapedText": "TypeRef 'List&lt;Struct_ed055695&gt;'",
+        "occurrences": 2,
+        "inMemoryEscapedCopyParses": true,
+        "rawExportModified": false
+      },
+      {
+        "path": "Common/Gameplay/Soldier/Features/DiceFeature_Soldier_Controller_FetchThrottleAndBrake.xml",
+        "sha256": "b1bd19fd0afb157898e9a59da845abe0574a8b1f066c1a88841a1a915c4fe0bf",
+        "parseError": "not well-formed (invalid token): line 9, column 51",
+        "literalText": "Driving pose throttle&brake",
+        "escapedText": "Driving pose throttle&amp;brake",
+        "occurrences": 1,
+        "inMemoryEscapedCopyParses": true,
+        "rawExportModified": false
+      },
+      {
+        "path": "Common/Gameplay/Soldier/Glacier_Soldier_Spotting.xml",
+        "sha256": "453f6c4c082741403dfeab7bd2295c877b31ad73a15d04cdc3abd4c4ddcddfd5",
+        "parseError": "not well-formed (invalid token): line 348, column 40",
+        "literalText": "NeedAmmo&Healing",
+        "escapedText": "NeedAmmo&amp;Healing",
+        "occurrences": 1,
+        "inMemoryEscapedCopyParses": true,
+        "rawExportModified": false
+      }
+    ],
+    "timeout": {
+      "asset": "Common/Gameplay/Soldier/SoldierMotionMachine",
+      "source": "User reported timeout; XML absent.",
+      "action": "No retry requested; current evidence does not establish it is needed for recoil/spread equations."
+    },
+    "otherMissingManifestAssets": "12 KillCam art/mesh/physics assets; outside the current mechanics review.",
+    "findings": [
+      "The referenced GRX object cda16c87-fba0-4ffe-a8cd-7b3f6441a271 is TWM.MountEnterAimConstraint, not a general recoil/spread setting.",
+      "Aim_Default_NoZoom and Aim_NoZoom reference sensitivity, uniform aiming, zoom/FOV and aim-assist settings. No recoil/spread equation has been established from these controllers.",
+      "Glacier_Soldier contains animation-state bindings for recoil velocity, compensated recoil, settling and sway. A named signal is not its update formula."
+    ],
+    "runtimeChanges": "None from this export review."
+  }
+}

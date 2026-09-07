@@ -1,0 +1,1021 @@
+{
+  "AMMO": [
+    {
+      "id": "standard",
+      "name": "Standard",
+      "hsMult": null,
+      "collateralMult": {
+        "Assault Rifle": 0.75,
+        "Carbine": 0.75,
+        "LMG": 0.75,
+        "DMR": 0.75,
+        "Sniper Rifle": 0.75,
+        "SMG": 0.57,
+        "Sidearm": 0.57
+      }
+    },
+    {
+      "id": "penetration",
+      "name": "Penetration",
+      "hsMult": null,
+      "adsRecoilTierMod": -1,
+      "collateralMult": {
+        "Assault Rifle": 1,
+        "Carbine": 1,
+        "LMG": 1,
+        "DMR": 1,
+        "Sniper Rifle": 1,
+        "SMG": 0.75,
+        "Sidearm": 0.75
+      }
+    },
+    {
+      "id": "lightweight",
+      "name": "Lightweight",
+      "hsMult": null,
+      "adsMoveSpeedTierShift": -1,
+      "collateralMult": {
+        "Assault Rifle": 0.75,
+        "Carbine": 0.75,
+        "LMG": 0.75,
+        "DMR": 0.75,
+        "Sniper Rifle": 0.75
+      }
+    },
+    {
+      "id": "long_range",
+      "name": "Long-Range",
+      "hsMult": null,
+      "collateralMult": {
+        "Assault Rifle": 0.75,
+        "Carbine": 0.75,
+        "LMG": 0.75,
+        "DMR": 0.75,
+        "Sniper Rifle": 0.75
+      }
+    },
+    {
+      "id": "hollow_pt",
+      "name": "Hollow Point",
+      "hsMult": "hp",
+      "collateralMult": {
+        "Assault Rifle": 0.67,
+        "Carbine": 0.67,
+        "LMG": 0.67,
+        "DMR": 0.67,
+        "Sniper Rifle": 0.67,
+        "SMG": 0.5,
+        "Sidearm": 0.5
+      }
+    },
+    {
+      "id": "frangible",
+      "name": "Frangible",
+      "hsMult": null,
+      "healthRegenDelayS": 9,
+      "collateralMult": {
+        "Assault Rifle": 0.67,
+        "Carbine": 0.67,
+        "LMG": 0.67,
+        "DMR": 0.67,
+        "Sniper Rifle": 0.67,
+        "SMG": 0.5,
+        "Sidearm": 0.5
+      }
+    },
+    {
+      "id": "synthetic",
+      "name": "Synthetic",
+      "hsMult": 1.75,
+      "collateralMult": {
+        "Assault Rifle": 0.67,
+        "Carbine": 0.67,
+        "LMG": 0.67,
+        "DMR": 0.67,
+        "Sniper Rifle": 0.67,
+        "SMG": 0.5,
+        "Sidearm": 0.5
+      }
+    },
+    {
+      "id": "buckshot",
+      "name": "#01 BUCK",
+      "hsMult": 1,
+      "collateralMult": {
+        "Shotgun": 0.33
+      }
+    },
+    {
+      "id": "buckshot_00",
+      "name": "#00 BUCK",
+      "hsMult": 1,
+      "collateralMult": {
+        "Shotgun": 0.33
+      }
+    },
+    {
+      "id": "flechette",
+      "name": "Flechette",
+      "hsMult": 1,
+      "collateralMult": {
+        "Shotgun": 0.57
+      }
+    },
+    {
+      "id": "slugs",
+      "name": "Slugs",
+      "hsMult": 1.34,
+      "collateralMult": {
+        "Shotgun": 0.33
+      }
+    },
+    {
+      "id": "subsonic",
+      "name": "Subsonic",
+      "hsMult": null,
+      "collateralMult": {
+        "Assault Rifle": 0.67,
+        "Carbine": 0.67,
+        "LMG": 0.67,
+        "DMR": 0.67,
+        "Sniper Rifle": 0.67,
+        "SMG": 0.5,
+        "Sidearm": 0.5
+      },
+      "worldSpot": 27,
+      "minimapSpot": 64,
+      "suppressedMinimapSpot": 9
+    },
+    {
+      "id": "subsonic_hp",
+      "name": "Sub HP",
+      "hsMult": "hp",
+      "collateralMult": {
+        "Assault Rifle": 0.67,
+        "Carbine": 0.67,
+        "LMG": 0.67,
+        "DMR": 0.67,
+        "Sniper Rifle": 0.67,
+        "SMG": 0.5,
+        "Sidearm": 0.5
+      },
+      "worldSpot": 27,
+      "minimapSpot": 64,
+      "suppressedMinimapSpot": 9
+    },
+    {
+      "id": "subsonic_pen",
+      "name": "Sub Pen",
+      "hsMult": null,
+      "adsRecoilTierMod": -1,
+      "collateralMult": {
+        "Assault Rifle": 1,
+        "Carbine": 1,
+        "LMG": 1,
+        "DMR": 1,
+        "Sniper Rifle": 1,
+        "SMG": 0.75,
+        "Sidearm": 0.75
+      },
+      "worldSpot": 27,
+      "minimapSpot": 64,
+      "suppressedMinimapSpot": 9
+    },
+    {
+      "id": "range_pen",
+      "name": "Range Pen",
+      "hsMult": null,
+      "adsRecoilTierMod": -1,
+      "collateralMult": {
+        "Assault Rifle": 1,
+        "Carbine": 1,
+        "LMG": 1,
+        "DMR": 1,
+        "Sniper Rifle": 1,
+        "SMG": 0.75,
+        "Sidearm": 0.75
+      }
+    }
+  ],
+  "WEAPON_AMMO": {
+    "m433": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "b36a4": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "sor556": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "ak4d": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "tr7": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "kord6p67": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "nvo228e": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "l85a3": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "vcr2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "m16a4": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "m4a1": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "m277": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "ak205": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 25
+      }
+    },
+    "m417a2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 273
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 273
+        }
+      }
+    },
+    "grtbc": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "qbz192": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 25
+      }
+    },
+    "sg553r": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "sor300sc": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "subsonic_hp": 30,
+        "subsonic": 10
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "sgx": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "pw5a3": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "pw7a2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20,
+        "subsonic_pen": 10
+      },
+      "velocityTreatments": {
+        "subsonic_pen": {
+          "kind": "subsonic-tungsten-absolute",
+          "subsonicVelocityMps": 341,
+          "combinesWith": "penetration"
+        }
+      }
+    },
+    "umg40": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 25,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "usg90": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 265
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-absolute",
+          "subsonicVelocityMps": 265
+        }
+      }
+    },
+    "kv9": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "scw10": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 35
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "sl9": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "cz3a1": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "subsonic": 15,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 2,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "pp19": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20,
+        "subsonic": 10,
+        "subsonic_hp": 25
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "l110": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "drsiar": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20,
+        "lightweight": 10
+      }
+    },
+    "m60": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "rpkm": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "synthetic": 30
+      }
+    },
+    "m123k": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "m250": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "kts100": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20,
+        "lightweight": 10
+      }
+    },
+    "m240l": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "m121a2": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "rpk74m": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "synthetic": 25
+      }
+    },
+    "m39emr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "long_range": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "lmr27": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "synthetic": 30
+      }
+    },
+    "svk86": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "svdm": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "grtcps": {
+      "def": "hollow_pt",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "synthetic": 30
+      }
+    },
+    "m2010esr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "sv98": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "psr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "l115": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "long_range": 10,
+        "frangible": 20
+      }
+    },
+    "miniscout": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20
+      }
+    },
+    "m87a1": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "buckshot_00": 20,
+        "flechette": 30,
+        "slugs": 40
+      }
+    },
+    "m1014": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "buckshot_00": 20,
+        "flechette": 30,
+        "slugs": 40
+      }
+    },
+    "ks18k": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "buckshot_00": 20,
+        "flechette": 30,
+        "slugs": 40
+      }
+    },
+    "db12": {
+      "def": "buckshot",
+      "ammo": {
+        "buckshot": 10,
+        "buckshot_00": 20,
+        "flechette": 30,
+        "slugs": 40
+      }
+    },
+    "p18": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "es57": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "m45a1": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15
+      }
+    },
+    "m44": {
+      "def": "standard",
+      "ammo": {
+        "standard": 0,
+        "hollow_pt": 20,
+        "penetration": 5,
+        "frangible": 20
+      }
+    },
+    "ggh22": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 1,
+          "displayRounding": "floor"
+        }
+      }
+    },
+    "m357trait": {
+      "def": "standard",
+      "ammo": {
+        "standard": 0,
+        "hollow_pt": 20
+      }
+    },
+    "vz61": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20,
+        "hollow_pt": 15,
+        "synthetic": 25
+      }
+    },
+    "brod3": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20
+      }
+    },
+    "ef88": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 20,
+        "synthetic": 20
+      }
+    },
+    "vssm": {
+      "def": "range_pen",
+      "ammo": {
+        "penetration": 5,
+        "range_pen": 10,
+        "long_range": 10,
+        "frangible": 20
+      }
+    }
+  }
+}

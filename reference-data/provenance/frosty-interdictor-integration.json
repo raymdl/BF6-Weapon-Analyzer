@@ -1,0 +1,2999 @@
+{
+  "status": "Weapon and 32 non-optic options integrated locally. Slim Angled handling matches two previews; its moving ADS spread effect remains unmodeled.",
+  "configuration": {
+    "bulletVel": 732.7392,
+    "recoilDir": -8.0,
+    "recoilVar": 10.0,
+    "recoilIncAds": 0.0,
+    "recoil": {
+      "ads": {
+        "dir": -8.0,
+        "amount": 2.2,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 10.0,
+        "dirVarMult": 0.920371,
+        "dirVarExp": 0,
+        "decNorm": 1.0,
+        "decExp": 0.6,
+        "decTimeExp": 4.0,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 70.0,
+        "shootingDecScale": 1.0
+      },
+      "hip": {
+        "dir": -5.0,
+        "amount": 4.0,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 10.0,
+        "dirVarMult": 0.920506,
+        "dirVarExp": 0,
+        "decNorm": 1.0,
+        "decExp": 0.6,
+        "decTimeExp": 4.0,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 70.0,
+        "shootingDecScale": 1.0
+      }
+    },
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.0,
+        "idleTime": 0.4,
+        "idleCoef": 0.0,
+        "idleExp": 1.0,
+        "idleOffset": 5.45455,
+        "firingCoef": 0.0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0.0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1.0,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.941,
+        "idleTime": 1.8,
+        "idleCoef": 0.0,
+        "idleExp": 0.25,
+        "idleOffset": 25.0,
+        "firingCoef": 0.05,
+        "firingExp": 2.5,
+        "firingOffset": 0.486,
+        "notFiringCoef": 0.0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1.0,
+        "distExp": 0.5
+      }
+    },
+    "id": "interdictor",
+    "name": "Interdictor",
+    "cls": "Sniper Rifle",
+    "cal": ".416 Barrett",
+    "rpm": 31.914882299649403,
+    "mag": 6,
+    "tacRld": 3.5,
+    "emptyRld": 4.83,
+    "reloadSpeed": 1.0,
+    "fireMode": "bolt",
+    "recoilV": 2.2,
+    "dmg": [
+      {
+        "r": 0.0,
+        "d": 80.0,
+        "source": "Sym"
+      },
+      {
+        "r": 100.0,
+        "d": 80.0,
+        "source": "Sym"
+      },
+      {
+        "r": 120.0,
+        "d": 150.0,
+        "source": "Sym"
+      },
+      {
+        "r": 150.0,
+        "d": 150.0,
+        "source": "Sym"
+      },
+      {
+        "r": 170.0,
+        "d": 62.0,
+        "source": "Sym"
+      },
+      {
+        "r": 200.0,
+        "d": 62.0,
+        "source": "Sym"
+      }
+    ],
+    "spread": {
+      "adsStand": [
+        0.0,
+        11.0
+      ],
+      "adsMove": [
+        0.3,
+        13.0
+      ],
+      "hipStand": [
+        4.848,
+        11.0
+      ],
+      "hipMove": [
+        6.06,
+        13.0
+      ]
+    },
+    "spreadMax": 11.0,
+    "adsTime": 433
+  },
+  "registryEvidence": [
+    {
+      "siteField": "bulletVel",
+      "registryName": "DesertTechHTI_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z",
+      "registryGuid": "59a78948-9e8d-4df7-aae9-e43e56b497ef",
+      "registryRaw": "732.7392"
+    },
+    {
+      "siteField": "recoilDir",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDirection",
+      "registryGuid": "345d3a0f-7a6a-465a-9500-9a6b6014456a",
+      "registryRaw": "-8"
+    },
+    {
+      "siteField": "recoilVar",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDirectionVariation",
+      "registryGuid": "4b92a3c8-95f7-4387-88db-b8f18d12e420",
+      "registryRaw": "10"
+    },
+    {
+      "siteField": "recoilIncAds",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.IncreasePerShot",
+      "registryGuid": "54755715-7195-4bf8-8407-db1456285274",
+      "registryRaw": "0"
+    },
+    {
+      "siteField": "recoil.ads.dir",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDirection",
+      "registryGuid": "345d3a0f-7a6a-465a-9500-9a6b6014456a",
+      "registryRaw": "-8"
+    },
+    {
+      "siteField": "recoil.ads.amount",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilAmount",
+      "registryGuid": "47571bac-8714-44db-9fb5-8829d3188495",
+      "registryRaw": "2.2"
+    },
+    {
+      "siteField": "recoil.ads.amountMult",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilAmountMultiplier",
+      "registryGuid": "7a526057-6a7d-4aed-b33b-67c0b44a1034",
+      "registryRaw": "0.94"
+    },
+    {
+      "siteField": "recoil.ads.amountExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilAmountMultiplierExponent",
+      "registryGuid": "25b78612-1104-42a5-b5e1-debe0912d21e",
+      "registryRaw": "0x00000000"
+    },
+    {
+      "siteField": "recoil.ads.dirVar",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDirectionVariation",
+      "registryGuid": "4b92a3c8-95f7-4387-88db-b8f18d12e420",
+      "registryRaw": "10"
+    },
+    {
+      "siteField": "recoil.ads.dirVarMult",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDirectionVariationMultiplier",
+      "registryGuid": "7da2af24-7f86-493d-9ab3-a0e89f57729c",
+      "registryRaw": "0.920371"
+    },
+    {
+      "siteField": "recoil.ads.dirVarExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDirectionVariationMultiplierExponent",
+      "registryGuid": "5ab868b3-2d30-4ac1-b6e5-4e63638c53f6",
+      "registryRaw": "0x00000000"
+    },
+    {
+      "siteField": "recoil.ads.decNorm",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDecreaseNorm",
+      "registryGuid": "22d29d43-85bf-4b73-95ed-a6b3b46c91b4",
+      "registryRaw": "1"
+    },
+    {
+      "siteField": "recoil.ads.decExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDecreaseExponent",
+      "registryGuid": "50b0c2ca-a960-4c11-a1ca-227cb4646be5",
+      "registryRaw": "0.6"
+    },
+    {
+      "siteField": "recoil.ads.decTimeExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDecreaseTimeExponent",
+      "registryGuid": "e21bda97-df18-4580-bcc9-fcd0186aed52",
+      "registryRaw": "4"
+    },
+    {
+      "siteField": "recoil.ads.decOffset",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDecreaseOffset",
+      "registryGuid": "d2113882-c840-443e-9b4b-4a5c37557b9d",
+      "registryRaw": "0.06"
+    },
+    {
+      "siteField": "recoil.ads.duration",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDuration",
+      "registryGuid": "86123e30-29f1-4b71-8ecf-e8a8f7c850c5",
+      "registryRaw": "0.025"
+    },
+    {
+      "siteField": "recoil.ads.decFactor",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.RecoilDecreaseFactor",
+      "registryGuid": "d4849346-83d6-4e41-afde-4ef03c936713",
+      "registryRaw": "70"
+    },
+    {
+      "siteField": "recoil.ads.shootingDecScale",
+      "registryName": "GS_DesertTechHTI.Recoil.Zoomed.ShootingRecoilDecreaseScale",
+      "registryGuid": "0a3fa969-0d58-40a4-82d7-27628b6f52a1",
+      "registryRaw": "1"
+    },
+    {
+      "siteField": "spreadDyn.ads.inc",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.IncreasePerShot",
+      "registryGuid": "54755715-7195-4bf8-8407-db1456285274",
+      "registryRaw": "0"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleTime",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.IdleTime",
+      "registryGuid": "0a769928-dca6-4fcb-9a01-39753a9bddb3",
+      "registryRaw": "0.4"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleCoef",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.IdleDecreaseCoefficient",
+      "registryGuid": "fec72ed2-b083-4d61-982c-1351b209f468",
+      "registryRaw": "0"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.IdleDecreaseExponent",
+      "registryGuid": "f9458f0d-7c3c-49c3-a822-56f7611a59ef",
+      "registryRaw": "1"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleOffset",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.IdleDecreaseOffset",
+      "registryGuid": "c7529aa6-ca7f-4034-8aa0-d837a20390f2",
+      "registryRaw": "5.45455"
+    },
+    {
+      "siteField": "spreadDyn.ads.firingCoef",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.FiringDecreaseCoefficient",
+      "registryGuid": "d594b52f-2767-4692-bde2-6277ebf4154b",
+      "registryRaw": "0"
+    },
+    {
+      "siteField": "spreadDyn.ads.firingExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.FiringDecreaseExponent",
+      "registryGuid": "682c18e7-b4ee-4e3d-83f9-56fd8a141749",
+      "registryRaw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.ads.firingOffset",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.FiringDecreaseOffset",
+      "registryGuid": "7a09d68d-de72-4971-bf34-f1627861ad3f",
+      "registryRaw": "6.6"
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringCoef",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.NotFiringDecreaseCoefficient",
+      "registryGuid": "f9384c41-99d9-4297-bbf5-943671682027",
+      "registryRaw": "0"
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.NotFiringDecreaseExponent",
+      "registryGuid": "3c98730f-1ccd-4128-bbd4-8d48b7ec1a41",
+      "registryRaw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringOffset",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.NotFiringDecreaseOffset",
+      "registryGuid": "5afff3d6-e708-417d-8249-fc02ec3e63c5",
+      "registryRaw": "6.6"
+    },
+    {
+      "siteField": "spreadDyn.ads.firstShotMul",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.FirstShotIncreaseMultiplier",
+      "registryGuid": "221ebb79-6577-46c6-8151-43e9bfdddc04",
+      "registryRaw": "1"
+    },
+    {
+      "siteField": "spreadDyn.ads.distExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "registryGuid": "d5fe583f-046f-4861-90c4-60c96ce607a1",
+      "registryRaw": "0.5"
+    },
+    {
+      "siteField": "recoil.hip.dir",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDirection",
+      "registryGuid": "dcf0bc66-4053-44fc-9103-eac4c188480b",
+      "registryRaw": "-5"
+    },
+    {
+      "siteField": "recoil.hip.amount",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilAmount",
+      "registryGuid": "6db81abe-b98b-4cfd-af3b-5de1e52daaf3",
+      "registryRaw": "4"
+    },
+    {
+      "siteField": "recoil.hip.amountMult",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilAmountMultiplier",
+      "registryGuid": "45379500-c26a-4e8a-bd2a-e90dc5b643d5",
+      "registryRaw": "0.94"
+    },
+    {
+      "siteField": "recoil.hip.amountExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilAmountMultiplierExponent",
+      "registryGuid": "a3bdfb37-41fc-4a7e-a68b-1f7e508cb980",
+      "registryRaw": "0x00000000"
+    },
+    {
+      "siteField": "recoil.hip.dirVar",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDirectionVariation",
+      "registryGuid": "5f38d26e-9f5b-4706-9f3d-2b1478b5d54a",
+      "registryRaw": "10"
+    },
+    {
+      "siteField": "recoil.hip.dirVarMult",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDirectionVariationMultiplier",
+      "registryGuid": "edebfd60-f546-4a6f-ad32-2120aa09e007",
+      "registryRaw": "0.920506"
+    },
+    {
+      "siteField": "recoil.hip.dirVarExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDirectionVariationMultiplierExponent",
+      "registryGuid": "c71956e4-3571-4254-8f8f-bd059742502c",
+      "registryRaw": "0x00000000"
+    },
+    {
+      "siteField": "recoil.hip.decNorm",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDecreaseNorm",
+      "registryGuid": "4499de77-28ab-439f-bf61-fa79b8157eaa",
+      "registryRaw": "1"
+    },
+    {
+      "siteField": "recoil.hip.decExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDecreaseExponent",
+      "registryGuid": "1fb14348-dc5f-43fa-b0a3-c54c10e12889",
+      "registryRaw": "0.6"
+    },
+    {
+      "siteField": "recoil.hip.decTimeExp",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDecreaseTimeExponent",
+      "registryGuid": "b3d634c4-67aa-4945-8638-132f4a6394a2",
+      "registryRaw": "4"
+    },
+    {
+      "siteField": "recoil.hip.decOffset",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDecreaseOffset",
+      "registryGuid": "a5049558-e49b-402f-8bfa-f97fdcc6c1d5",
+      "registryRaw": "0.06"
+    },
+    {
+      "siteField": "recoil.hip.duration",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDuration",
+      "registryGuid": "ea501dbc-2c69-46d2-aa36-f7e9864b74b4",
+      "registryRaw": "0.025"
+    },
+    {
+      "siteField": "recoil.hip.decFactor",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.RecoilDecreaseFactor",
+      "registryGuid": "12050ae4-504f-4313-a9ea-dc2c61a0b73d",
+      "registryRaw": "70"
+    },
+    {
+      "siteField": "recoil.hip.shootingDecScale",
+      "registryName": "GS_DesertTechHTI.Recoil.Unzoomed.ShootingRecoilDecreaseScale",
+      "registryGuid": "3f4cd880-1e32-4eba-a300-83dcd269ac84",
+      "registryRaw": "1"
+    },
+    {
+      "siteField": "spreadDyn.hip.inc",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.IncreasePerShot",
+      "registryGuid": "0941b671-4896-48f1-b44b-4c44b8a1951a",
+      "registryRaw": "0.941"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleTime",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.IdleTime",
+      "registryGuid": "58cf7cdf-80a7-4dc7-a481-51e89470c414",
+      "registryRaw": "1.8"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleCoef",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.IdleDecreaseCoefficient",
+      "registryGuid": "9fbe2568-1763-477f-a436-4f6f1e1343a2",
+      "registryRaw": "0"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.IdleDecreaseExponent",
+      "registryGuid": "0d6cc9f4-00a8-4a4e-a5f8-b4ca58d1ecbe",
+      "registryRaw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleOffset",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.IdleDecreaseOffset",
+      "registryGuid": "3159d0d3-aa44-4df1-a043-95090ca4ab4f",
+      "registryRaw": "25"
+    },
+    {
+      "siteField": "spreadDyn.hip.firingCoef",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseCoefficient",
+      "registryGuid": "8f71700b-7067-485d-bd3c-d8019882d571",
+      "registryRaw": "0.05"
+    },
+    {
+      "siteField": "spreadDyn.hip.firingExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseExponent",
+      "registryGuid": "356bc9cf-b1a7-4fb7-87f1-d9d3065110d3",
+      "registryRaw": "2.5"
+    },
+    {
+      "siteField": "spreadDyn.hip.firingOffset",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseOffset",
+      "registryGuid": "f310307b-7855-4e79-8cca-6154d236cbbc",
+      "registryRaw": "0.486"
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringCoef",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.NotFiringDecreaseCoefficient",
+      "registryGuid": "eee4b22c-1767-4079-b6a9-e25f99e5cdfe",
+      "registryRaw": "0"
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.NotFiringDecreaseExponent",
+      "registryGuid": "6d997eb6-4173-4389-8e34-bb4d345c2f12",
+      "registryRaw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringOffset",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.NotFiringDecreaseOffset",
+      "registryGuid": "cf61a10a-d8be-4b6b-80a9-d4a16582064c",
+      "registryRaw": "12.96"
+    },
+    {
+      "siteField": "spreadDyn.hip.firstShotMul",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.FirstShotIncreaseMultiplier",
+      "registryGuid": "d8afa544-5799-42a3-8691-68d92054203f",
+      "registryRaw": "1"
+    },
+    {
+      "siteField": "spreadDyn.hip.distExp",
+      "registryName": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "registryGuid": "f21eb4f4-5e5f-458e-8e44-23d0e55f2483",
+      "registryRaw": "0.5"
+    },
+    {
+      "siteField": "spread.adsStand.min",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Zoomed.Standing.Stationary.MinAngle",
+      "registryGuid": "8069c9ed-d3ed-4dba-9247-fb7b46b15e5d",
+      "registryRaw": "0",
+      "symValue": 0.0
+    },
+    {
+      "siteField": "spread.adsStand.max",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Zoomed.Standing.Stationary.MaxAngle",
+      "registryGuid": "b2f877e7-2678-4e83-af96-6fd2f4f960b3",
+      "registryRaw": "11",
+      "symValue": 11.0
+    },
+    {
+      "siteField": "spread.adsMove.min",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Zoomed.Standing.Moving.MinAngle",
+      "registryGuid": "bbcfd673-be5a-4eb6-a650-f1e94db27252",
+      "registryRaw": "0.3",
+      "symValue": 0.32
+    },
+    {
+      "siteField": "spread.adsMove.max",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Zoomed.Standing.Moving.MaxAngle",
+      "registryGuid": "d910ef70-d6b6-4cca-918b-c0f90d483e77",
+      "registryRaw": "13",
+      "symValue": 13.0
+    },
+    {
+      "siteField": "spread.hipStand.min",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Unzoomed.Standing.Stationary.MinAngle",
+      "registryGuid": "3fa04d22-b778-4b0c-a2e1-c8793a1ebf6e",
+      "registryRaw": "4.848",
+      "symValue": 4.848
+    },
+    {
+      "siteField": "spread.hipStand.max",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Unzoomed.Standing.Stationary.MaxAngle",
+      "registryGuid": "1b23a9e5-400b-4889-81d2-f129f8d31ead",
+      "registryRaw": "11",
+      "symValue": 11.0
+    },
+    {
+      "siteField": "spread.hipMove.min",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Unzoomed.Standing.Moving.MinAngle",
+      "registryGuid": "04419db8-252d-4a69-b86c-f7b24f3bdca2",
+      "registryRaw": "6.06",
+      "symValue": 6.06
+    },
+    {
+      "siteField": "spread.hipMove.max",
+      "registryName": "GS_DesertTechHTI.MinMaxDispersion.Unzoomed.Standing.Moving.MaxAngle",
+      "registryGuid": "602d6702-2318-426e-a843-32c5e6bd7ebf",
+      "registryRaw": "13",
+      "symValue": 13.0
+    }
+  ],
+  "symEvidence": {
+    "url": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
+    "retrievedUtcDate": "2026-09-06",
+    "sha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+    "metadata": {
+      "version": "1.4.2.0",
+      "versionDate": "18 AUG 2026"
+    }
+  },
+  "movingAdsDistribution": {
+    "stationary": 0.5,
+    "moving": 0.67,
+    "registryGuid": "fa638407-8dd2-4f19-b81c-3c1a1ec36ea7",
+    "requiredBehavior": "Use the moving distribution exponent for the moving aim state; current core reads one group per aim state."
+  },
+  "attachments": [
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_FMJ.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "7b6c6a00-b6ac-4abb-bbc5-e3a9f26914c0"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_AMO_FMJ.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_AMO_FMJ.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_AMO_FMJ.xml"
+        }
+      ],
+      "witnessCount": 58,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Frangible.xml",
+      "rawPointCost": "0x00000014",
+      "selectorGuids": [
+        "a171ea8c-66dd-4e91-846b-06f8659f0f03"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_AMO_Frangible.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_AMO_Frangible.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_AMO_Frangible.xml"
+        }
+      ],
+      "witnessCount": 56,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Match.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "29a69d9e-fc75-4a20-875b-4d97ab355398"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "L115A3",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_AMO_Match.xml"
+        },
+        {
+          "internalId": "M2010ESR",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_AMO_Match.xml"
+        },
+        {
+          "internalId": "MRAD",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_AMO_Match.xml"
+        }
+      ],
+      "witnessCount": 8,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Tungsten.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "68ba8281-7079-48a3-b53a-ff5bf30c63da"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_AMO_Tungsten.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_AMO_Tungsten.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_AMO_Tungsten.xml"
+        }
+      ],
+      "witnessCount": 56,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_BasicBarrel.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "f7b59868-d8c2-489e-927b-6f5bb375245f"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_BRL_BasicBarrel.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_BRL_BasicBarrel.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_BRL_BasicBarrel.xml"
+        }
+      ],
+      "witnessCount": 54,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_ExtendedBarrel.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "49b8a26a-3e70-4837-8c06-30edd0e523cf"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_BRL_Extended_Barrel.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_BRL_ExtendedBarrel.xml"
+        },
+        {
+          "internalId": "G36",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_BRL_ExtendedBarrel.xml"
+        }
+      ],
+      "witnessCount": 44,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_LightBarrel.xml",
+      "rawPointCost": "0x00000014",
+      "selectorGuids": [
+        "eb5b8519-a150-4b88-b85c-5de6f8bec73c"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_BRL_LightBarrel.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_BRL_Fluted_Barrel.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_BRL_LightBarrel.xml"
+        }
+      ],
+      "witnessCount": 40,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_AtlasV8BOLT.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "a5578cf4-546c-44ef-9a79-b84021406c17"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_BTM_AtlasV8.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_BTM_AtlasV8.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_BTM_AtlasV8.xml"
+        }
+      ],
+      "witnessCount": 38,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BCMStubbyBOLT.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "29466d58-6508-4513-a48e-c229b649f3f2"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "L115A3",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_BCMStubbyBOLT.xml"
+        },
+        {
+          "internalId": "M2010ESR",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_BTM_BCM_Stubby_BOLT.xml"
+        },
+        {
+          "internalId": "MiniFix",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_BCMStubbyBOLT.xml"
+        }
+      ],
+      "witnessCount": 5,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BTGrippodQDBOLT.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "56fdfceb-7978-4a63-960c-bb233a9cd729"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "L115A3",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_BTGrippodQDBOLT.xml"
+        },
+        {
+          "internalId": "M2010ESR",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_BTM_BT_Grippod_QD_BOLT.xml"
+        },
+        {
+          "internalId": "MiniFix",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_BTGrippodQDBOLT.xml"
+        }
+      ],
+      "witnessCount": 5,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_GPS2BOLT.xml",
+      "rawPointCost": "0x00000014",
+      "selectorGuids": [
+        "96e4f7bb-a157-4123-873a-cd6f3e95aba5"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "L115A3",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_GPS2BOLT.xml"
+        },
+        {
+          "internalId": "M2010ESR",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_BTM_GPS2_BOLT.xml"
+        },
+        {
+          "internalId": "MiniFix",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_GPS2BOLT.xml"
+        }
+      ],
+      "witnessCount": 5,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFG2BOLT.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "8ad0e9cd-b985-46b1-81a6-e6727e1efb6c"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "L115A3",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_MagpulAFG2BOLT.xml"
+        },
+        {
+          "internalId": "M2010ESR",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_BTM_Magpul_AFG2_BOLT.xml"
+        },
+        {
+          "internalId": "MiniFix",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_MagpulAFG2BOLT.xml"
+        }
+      ],
+      "witnessCount": 7,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFGBOLT.xml",
+      "rawPointCost": "0x0000000f",
+      "selectorGuids": [
+        "8ad0e9cd-b985-46b1-81a6-e6727e1efb6c",
+        "8cf80d8c-79e6-4679-a811-b751771db359"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "L115A3",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_MagpulAFGBOLT.xml"
+        },
+        {
+          "internalId": "MiniFix",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_MagpulAFGBOLT.xml"
+        }
+      ],
+      "witnessCount": 2,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_ERG_ImprovedMagCatch.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "a4ee0d99-daea-4621-89a1-5241ed39f49c"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_ERG_ImprovedMagCatch.xml"
+        },
+        {
+          "internalId": "G3A4",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_ERG_Improved_Mag_Catch.xml"
+        },
+        {
+          "internalId": "Tavor7",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_ERG_Improved_Mag_Catch.xml"
+        }
+      ],
+      "witnessCount": 29,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_LFT_FNElity.xml",
+      "rawPointCost": "0x0000000f",
+      "selectorGuids": [
+        "1285c9c4-ff6a-41df-baa6-d3726a5db590"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "L115A3",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_LFT_FNElity.xml"
+        },
+        {
+          "internalId": "M2010ESR",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_LFT_FN_Elity.xml"
+        },
+        {
+          "internalId": "MiniFix",
+          "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_RGT_FNElity.xml"
+        }
+      ],
+      "witnessCount": 11,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "3fefdd95-ca7b-4d9a-90c6-5be4cfbb2f02"
+      ],
+      "otherWeaponSelectorWitnesses": [],
+      "witnessCount": 0,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Extended1.xml",
+      "rawPointCost": "0x0000000f",
+      "selectorGuids": [
+        "466f49b5-d5aa-479f-b69c-b8f4b9b661ec"
+      ],
+      "otherWeaponSelectorWitnesses": [],
+      "witnessCount": 0,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Fast.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "edca4f8f-16bd-4699-b138-a2ab5a84b133"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MAG_Fast.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Fast.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Fast.xml"
+        }
+      ],
+      "witnessCount": 46,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Regular.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "95c553b6-0900-4f04-b727-0dc2761f92ef"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MAG_Regular.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Regular.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Regular.xml"
+        }
+      ],
+      "witnessCount": 62,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_HTIMB.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "67a15160-099a-409f-ba6f-f35045d5c54a"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MZL_DTK-2MB.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_SIG_Tapered_MB.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_SFSOCOM556MB.xml"
+        }
+      ],
+      "witnessCount": 55,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml",
+      "rawPointCost": "0x0000001e",
+      "selectorGuids": [
+        "bb26754b-fb9d-467b-96ac-ecd132bc3f95"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MZL_TitanFS-T1FLv2Suppressor.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_SIG_SLX_QD_Suppressor.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_SOCOM556RC3Suppressor.xml"
+        }
+      ],
+      "witnessCount": 51,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltra50Suppressor.xml",
+      "rawPointCost": "0x00000019",
+      "selectorGuids": [
+        "3eda1130-c3d9-4df5-8d83-65ca7dd381f6"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MZL_AK2000545Suppressor.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_AAC_SND6_Suppressor.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_KACNT4QDSuppressor.xml"
+        }
+      ],
+      "witnessCount": 47,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltraBSRFlashHider.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "eaa7ac43-a9fb-42c5-a7d4-b04c0b6ea893"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MZL_FlashHiderStrelaAK74Gen2.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_FlashHiderACE32.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_EF88FlashHider.xml"
+        }
+      ],
+      "witnessCount": 54,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_ModuleMk3.xml",
+      "rawPointCost": "0x00000005",
+      "selectorGuids": [
+        "1c8ae489-aff5-4880-af29-fd1f17fe6ffc"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_ModuleMk3.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_LFT_ModuleMk3.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_RGT_ModuleMk3.xml"
+        }
+      ],
+      "witnessCount": 61,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_SF300.xml",
+      "rawPointCost": "0x0000000f",
+      "selectorGuids": [
+        "ca0705e2-c529-4d1e-a8bd-66517a9cca02"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_SF300.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_LFT_SF300.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_RGT_SF300.xml"
+        }
+      ],
+      "witnessCount": 56,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_TLMissionLight.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "7b3b8613-e8a5-40ec-ab8f-231f7e6c6928"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_TL_MissionLight.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_LFT_TL_MissionLight.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_RGT_TLMissionLight.xml"
+        }
+      ],
+      "witnessCount": 62,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_ANPEQ16B.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "c08df896-8e97-4589-8390-5743a10cb3fc"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_ANPEQ16B.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_RGT_ANPEQ16B.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_TOP_ANPEQ16B.xml"
+        }
+      ],
+      "witnessCount": 55,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_DBALA3.xml",
+      "rawPointCost": "0x00000014",
+      "selectorGuids": [
+        "b67934a8-c61a-40df-8111-59926aa54fe5"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_DBAL-A3.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_RGT_DBAL-A3.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_TOP_DBALA3.xml"
+        }
+      ],
+      "witnessCount": 62,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_LA23PEQ.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "4e1b6d6d-f9ec-4b2a-a5eb-9f7750a11dbb"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_LA-23.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_RGT_LA-23.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_TOP_LA23PEQ.xml"
+        }
+      ],
+      "witnessCount": 62,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_MeproSting.xml",
+      "rawPointCost": "0x00000014",
+      "selectorGuids": [
+        "6953686b-0815-4cb9-8286-6a6d70d4ff0c"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_Mepro_Sting.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_RGT_Mepro_Sting.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_TOP_MeproSting.xml"
+        }
+      ],
+      "witnessCount": 56,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_Perst4.xml",
+      "rawPointCost": "0x0000000a",
+      "selectorGuids": [
+        "791389cb-6ae9-45a8-9af9-cd70050f6302"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_Perst4.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_RGT_Perst4.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_TOP_Perst4.xml"
+        }
+      ],
+      "witnessCount": 62,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_RaidXe.xml",
+      "rawPointCost": "0x0000001e",
+      "selectorGuids": [
+        "341ebfc1-3ec9-4a73-b0ce-371c21a70a6f"
+      ],
+      "otherWeaponSelectorWitnesses": [
+        {
+          "internalId": "6P67",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_RaidXe.xml"
+        },
+        {
+          "internalId": "ACE32",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_RGT_RaidXe.xml"
+        },
+        {
+          "internalId": "EF88",
+          "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_TOP_RaidXe.xml"
+        }
+      ],
+      "witnessCount": 56,
+      "interpretation": "Same selector identity only. Confirm per-weapon WB/GS effects before reusing a site attachment definition."
+    }
+  ],
+  "missing": [
+    "Moving ADS floor, damage body-part behavior, magazine and attachment tier data must be reviewed before promotion.",
+    "Validate shared selector effects and default attachment selection; do not copy a donor build."
+  ],
+  "wbXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_WB.xml",
+  "gsXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/GS_DesertTechHTI.xml",
+  "spreadDiscrepancies": [
+    {
+      "field": "spread.adsMove.min",
+      "rawBase": 0.3,
+      "symValue": 0.32,
+      "status": "Reviewed in movingAdsTierReview: named index 3 and current shared tier calculation produce Sym effective 0.32; retain raw base 0.3 separately."
+    }
+  ],
+  "handlingResearch": {
+    "wbXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_WB.xml",
+    "mainAnimationIndex": {
+      "registryName": "DesertTechHTI_WB.AnimationZoomSettingsIndex",
+      "registryGuid": "04f95efc-630c-414c-8042-b96bdfa98f03",
+      "rawField": "Class_542ac52c/Field_ae4adc54/Struct_a152fb6e/Field_2b6f2936",
+      "raw": "0x00000000",
+      "arrayXml": "Common/Hardware/Common/Arrays/ZoomTransitions/AZT_Main_Weapons.xml",
+      "targetXml": "Common/Hardware/Common/Arrays/ZoomTransitions/AZTT_Main_Weapons_T0.xml",
+      "targetRawValues": {
+        "Field_8939d1dd": "0.4",
+        "Field_a89997ad": "0.466667"
+      }
+    },
+    "weaponZoomTransitionIndex": {
+      "registryGuid": "2f916760-fc07-4c9e-86dd-7d55b680acdb",
+      "raw": "0x00000000",
+      "arrayXml": "Common/Hardware/Common/Arrays/ZoomTransitions/FZT_Weapons.xml",
+      "row0Targets": [
+        "FZTT_General_01_T0",
+        "FZTT_General_10_T0"
+      ]
+    },
+    "interpretation": "Animation/FOV selection evidence only; neither duration is yet established as the displayed ADS Time."
+  },
+  "inGameEvidence": {
+    "source": "reference-data/provenance/interdictor-basic-preview.png",
+    "sha256": "e9accd2c1876ac3d9786afb75555e53a017be754fb8dc9822ff7de9782371641",
+    "context": "User supplied values for Basic barrel and regular 5-round magazine. Image shows Basic selected for preview and locked; Light has the equipped check mark. Values are preview panel evidence, not a claim that Basic was equipped.",
+    "values": {
+      "adsTimeMs": 433,
+      "sprintRecoveryMs": 233,
+      "adsMoveSpeedMultiplier": 0.42,
+      "recoilAmountDegrees": 2.2,
+      "recoilVariationDegrees": 10,
+      "headshotMultiplier": 1.75,
+      "reloadTimeSeconds": 3.5,
+      "displayedMuzzleVelocityMps": 732,
+      "displayedMagazine": 5,
+      "longRangeDamage": 62,
+      "collateralMultiplier": 0.75
+    }
+  },
+  "handlingCalibration": {
+    "status": "Checked against the current analyzer tier calculation and user-supplied Basic preview; not a decoded engine table.",
+    "referenceBuild": {
+      "barrel": "basic",
+      "magazine": "5_rnd"
+    },
+    "baseFields": {
+      "defAds": 7,
+      "defSpr": 6,
+      "defAms": 8,
+      "drawTimeTier": 6,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8,
+      "sprintRecoveryTierTable": "primary"
+    },
+    "referenceShifts": {
+      "barrelAdsTimeTierMod": 1,
+      "magazineAdsTimeTierShift": 0,
+      "magazineSprintRecoveryTierShift": -1,
+      "magazineAdsMoveSpeedTierShift": 0
+    },
+    "expected": {
+      "adsTimeMs": 433,
+      "sprintRecoveryMs": 233,
+      "adsMoveSpeedMultiplier": 0.42
+    },
+    "deployCandidateMs": 733,
+    "deployLimitation": "Current shared draw-axis mapping gives 733 ms, close to Sym DeployTime 0.733334 seconds. This is corroboration, not proof of the engine formula.",
+    "calculationSource": "sim/applyAttachments.js: resolveDrawTime and tier index resolution",
+    "magazineEvidence": [
+      {
+        "weapon": "DesertTechHTI",
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml",
+        "attachmentGuid": "b2d32f3a-adb9-4129-b6c7-2a06bd71f0b6",
+        "category": {
+          "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+          "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+        },
+        "progression": {
+          "asset": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/U_PRG_DesertTechHTI_MAG_Compact1",
+          "guid": "a60cdd43-4319-48f9-8447-6993ed035eff"
+        },
+        "rawPointCost": "0x00000005",
+        "branches": [
+          {
+            "abilityXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+            "guid": "1a399d5b-b26d-45cd-b75f-f0b9a5423925",
+            "slot": {
+              "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+              "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+            },
+            "actions": [
+              {
+                "sourceXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+                "guid": "31a403d6-db67-43fe-9258-fc823411e4b3",
+                "type": "Class_4ed159fb",
+                "selectors": [
+                  {
+                    "unlock": {
+                      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_003Cpt1_DesertTechHTI_W05",
+                      "guid": "3fefdd95-ca7b-4d9a-90c6-5be4cfbb2f02"
+                    },
+                    "wbModifiers": [
+                      {
+                        "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_003Cpt1_DesertTechHTI_W05.xml",
+                        "guid": "f420cd74-76c2-4c10-84a5-a4311961a5d2",
+                        "effects": [
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_003Cpt1_DesertTechHTI_W05.xml",
+                            "guid": "39043664-140e-4cc2-a4a4-0deb856fa9f6",
+                            "type": "Class_e7d2410a"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P05.xml",
+                            "guid": "f0f378da-2d43-4d82-bef4-658eefa23c0c",
+                            "type": "Class_303a33cc"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml",
+                            "guid": "1955c72d-e5a2-448a-8444-9181cd095ee4",
+                            "type": "Class_4aac041b"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml",
+                            "guid": "b66c5803-07dd-46d4-901b-1a97928885ca",
+                            "type": "Class_03db7a68"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_P05.xml",
+                            "guid": "a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+                            "type": "Class_2fea847d"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                            "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                            "type": "Class_016623ac"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                            "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                            "type": "Class_104c2294"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_CSway_P05.xml",
+                            "guid": "5332816a-2233-4750-991e-02667a0da366",
+                            "type": "Class_28d25398"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10.xml",
+                            "guid": "270b8161-bfc2-416b-8809-0c61111980aa",
+                            "type": "Class_c42bd53b"
+                          }
+                        ]
+                      }
+                    ],
+                    "gsBindings": [
+                      {
+                        "sourceXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/GS_DesertTechHTI.xml",
+                        "path": "/File[@Guid='100fa9a5-0295-472c-aa23-28a42d71d7dd']/Class_539cff9b[@Guid='a073f4d8-a68b-478d-b311-1daa78afa0d6']/Field_2ffeb6ac/member[@Index='6']/Struct_28529b7f",
+                        "type": "Struct_28529b7f",
+                        "modifier": {
+                          "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10",
+                          "guid": "29129748-58a1-47cc-8307-02118ea4cb43"
+                        },
+                        "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10 [29129748-58a1-47cc-8307-02118ea4cb43]",
+                        "rawBranch": "0x00000007"
+                      },
+                      {
+                        "sourceXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/GS_DesertTechHTI.xml",
+                        "path": "/File[@Guid='100fa9a5-0295-472c-aa23-28a42d71d7dd']/Class_539cff9b[@Guid='a073f4d8-a68b-478d-b311-1daa78afa0d6']/Field_4d248d91/member[@Index='7']/Struct_7693becb",
+                        "type": "Struct_7693becb",
+                        "modifier": {
+                          "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10",
+                          "guid": "334bcb59-3958-4003-8eb3-fd6d4057c592"
+                        },
+                        "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10 [334bcb59-3958-4003-8eb3-fd6d4057c592]",
+                        "rawBranch": "0x00000009"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "activation": "unresolved; branch presence is not proof of runtime availability"
+          }
+        ]
+      },
+      {
+        "weapon": "DesertTechHTI",
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Extended1.xml",
+        "attachmentGuid": "235d2004-926b-4efb-b109-8d63be73ead5",
+        "category": {
+          "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+          "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+        },
+        "progression": {
+          "asset": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/U_PRG_DesertTechHTI_MAG_Extended1",
+          "guid": "18f906a5-ebbe-42ea-8438-5cdfb04fb377"
+        },
+        "rawPointCost": "0x0000000f",
+        "branches": [
+          {
+            "abilityXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+            "guid": "123e2528-e07a-4181-af4f-b508030f9278",
+            "slot": {
+              "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+              "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+            },
+            "actions": [
+              {
+                "sourceXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+                "guid": "92e2c79a-3769-461d-a985-a88c777dcd55",
+                "type": "Class_4ed159fb",
+                "selectors": [
+                  {
+                    "unlock": {
+                      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_007Ext1_DesertTechHTI_W15",
+                      "guid": "466f49b5-d5aa-479f-b69c-b8f4b9b661ec"
+                    },
+                    "wbModifiers": [
+                      {
+                        "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_007Ext1_DesertTechHTI_W15.xml",
+                        "guid": "12776542-862a-4dcd-8e80-cf760a1bc325",
+                        "effects": [
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_007Ext1_DesertTechHTI_W15.xml",
+                            "guid": "2a638af9-eef1-4710-8c40-52a17418d976",
+                            "type": "Class_e7d2410a"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_M05.xml",
+                            "guid": "20eae443-52ef-4b08-9b5b-313446a00033",
+                            "type": "Class_303a33cc"
+                          }
+                        ]
+                      }
+                    ],
+                    "gsBindings": []
+                  }
+                ]
+              }
+            ],
+            "activation": "unresolved; branch presence is not proof of runtime availability"
+          }
+        ]
+      },
+      {
+        "weapon": "DesertTechHTI",
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Fast.xml",
+        "attachmentGuid": "4cf26673-2f26-49d4-a53e-f51bf87c00e1",
+        "category": {
+          "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+          "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+        },
+        "progression": {
+          "asset": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/U_PRG_DesertTechHTI_MAG_Fast",
+          "guid": "6f72f13d-2258-4f44-9f97-663e370b84cd"
+        },
+        "rawPointCost": "0x0000000a",
+        "branches": [
+          {
+            "abilityXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+            "guid": "2d8430ea-cbae-48e5-938d-e6287f2ec18f",
+            "slot": {
+              "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+              "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+            },
+            "actions": [
+              {
+                "sourceXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+                "guid": "5dcd6282-00e4-485d-842a-739e70227a00",
+                "type": "Class_4ed159fb",
+                "selectors": [
+                  {
+                    "unlock": {
+                      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10",
+                      "guid": "edca4f8f-16bd-4699-b138-a2ab5a84b133"
+                    },
+                    "wbModifiers": [
+                      {
+                        "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml",
+                        "guid": "02b044c5-0959-46af-8f7c-9f6c8350607f",
+                        "effects": [
+                          {
+                            "sourceXml": "Common/Hardware/weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedRegular_P10.xml",
+                            "guid": "46f973bd-002d-40e3-a35d-7fb4bf4c6c9f",
+                            "type": "Class_9705264b"
+                          }
+                        ]
+                      }
+                    ],
+                    "gsBindings": []
+                  }
+                ]
+              }
+            ],
+            "activation": "unresolved; branch presence is not proof of runtime availability"
+          }
+        ]
+      },
+      {
+        "weapon": "DesertTechHTI",
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Regular.xml",
+        "attachmentGuid": "22b1e7ef-d5ef-46e4-ae62-bfd918bf78c8",
+        "category": {
+          "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+          "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+        },
+        "progression": {
+          "asset": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/U_PRG_DesertTechHTI_MAG_Regular",
+          "guid": "f1d64c7e-0da8-49c7-bd4c-81246db83bd9"
+        },
+        "rawPointCost": "0x00000005",
+        "branches": [
+          {
+            "abilityXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+            "guid": "d8518739-96e6-4e80-b6da-831813d90435",
+            "slot": {
+              "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+              "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+            },
+            "actions": [
+              {
+                "sourceXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml",
+                "guid": "f3d0d3d3-5197-4c10-a75a-0dfaa7abbe34",
+                "type": "Class_4ed159fb",
+                "selectors": [
+                  {
+                    "unlock": {
+                      "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/U_WPM_MAG_Std_W05",
+                      "guid": "95c553b6-0900-4f04-b727-0dc2761f92ef"
+                    },
+                    "wbModifiers": [
+                      {
+                        "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/WPM_MAG_Std_W05.xml",
+                        "guid": "e717240a-bd04-4a8f-aa88-edf00e31b8f9",
+                        "effects": [
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml",
+                            "guid": "1955c72d-e5a2-448a-8444-9181cd095ee4",
+                            "type": "Class_4aac041b"
+                          },
+                          {
+                            "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml",
+                            "guid": "b66c5803-07dd-46d4-901b-1a97928885ca",
+                            "type": "Class_03db7a68"
+                          }
+                        ]
+                      }
+                    ],
+                    "gsBindings": []
+                  }
+                ]
+              }
+            ],
+            "activation": "unresolved; branch presence is not proof of runtime availability"
+          }
+        ]
+      }
+    ],
+    "sourceSha256": {
+      "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml": "3c897c7197d1961dfc4ee65cd0d639b19a34bd7ccf5056989bffe0aaedbc458f",
+      "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Extended1.xml": "2dbfcfe51f776eb972b892de6599c4c8e5a7e3d9763a87428d5a2e2a6f424ba7",
+      "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Fast.xml": "2f38df904eaa705be627a950b947d1ac5e5fc5ba504ecca866525b46c060df6f",
+      "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Regular.xml": "51aee947c0a44e49ec78db7dbd69f89a019724a09707475dd64ae36e640e78ba",
+      "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml": "3670f0b945fb1b97563e2cc4cc7e5a8f14e3db97985870ac55aaafe26bffcf1b",
+      "Common/Hardware/Weapons/BoltAction/DesertTechHTI/GS_DesertTechHTI.xml": "565130b203225be7bab42c674d1a8502dadd8a004da1b6b32c8c7896e74f70d1",
+      "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10.xml": "4d9dc4fb3bb135c307ca39c402e114b7467fd2100802d7aca7996ca67926df40",
+      "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_M05.xml": "ce6b07a86105f26e45e57da1fc8c26aea6575a765ee7ea1839ce93201a80d33c",
+      "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_P05.xml": "2a328c2e8dc3f76bc80c44dcf82051f58f74b2d58a3f882941865dc4096e2c53",
+      "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml": "57266f610ed9c1e20c3113a2d8ac1b087d9aed2a92b22145e95ee4872659f6f2",
+      "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml": "d669dcc57fae81e49a67f9ea17bdd4b56704334eecefb9fa87698fe0475dd27e",
+      "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml": "eca498340fa0f588ece213a65cab0c5b6d53d2cbd9e48d11fbd5e92212b6ced8",
+      "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml": "c9a3d9c3a5c8498d765e7d35fa6a5aac6a68646bcb52fa493750a32623bfbaf3",
+      "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_CSway_P05.xml": "da01b6c5d3038122deff7d0d6adc2ed7370ab096c504c1803208b0faf727fb30",
+      "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_P05.xml": "2736e13c1608498b0b9b972fbfb1fa6da520280d95c6873153de74d419f4f57c",
+      "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/WPM_MAG_003Cpt1_DesertTechHTI_W05.xml": "932fcf0c41767a4217659bddf1d1ec426828a0c3194d0322713ff601f635db76",
+      "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_007Ext1_DesertTechHTI_W15.xml": "f1ae2050c4d9c90c2e87381ee274cdc3510fc3f093cba7a7b3ebefa96c70d4e1",
+      "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml": "f9c34240556a60bba3a6c781c2c3fd9cb3bf5496ce20c21f97cbcb7663fadc7c",
+      "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/WPM_MAG_Std_W05.xml": "7362562482b4467a28ff5a1c310865e7ad6a9a84fc2dcb0b999191f0b14b6edf",
+      "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_MAG_P10.xml": "81332622cc8f19f2d6ef99bcd68c0815bb187ffb041c76dd3c0d0120b967036c",
+      "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_MAG_P10.xml": "29d9076160b5f0391d96304869bdfa831b0aea14908fc2e3382b4ea8809e4c47",
+      "Common/Hardware/weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedRegular_P10.xml": "0b0ca47f9bb9fd1a682ac2dd9dd28fc6620c456268d3ec71af61a1397fbb7f3a"
+    },
+    "magazineRuntimeReview": "The existing applyAttachments moving ADS calculation already sums magData.movingAdsSpreadTierMod. No runtime change is needed for this axis; the earlier gap claim was incorrect.",
+    "candidateWeaponMag": {
+      "defAds": 7,
+      "defSpr": 6,
+      "defAms": 8,
+      "drawTimeTier": 6,
+      "drawTimeGroup": "primary",
+      "drawTimeOffset": 8,
+      "sprintRecoveryTierTable": "primary",
+      "def": "5_rnd",
+      "mags": {
+        "3_rnd": {
+          "name": "3 Rnd",
+          "pts": 5,
+          "mag": 3,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -1,
+          "movingAdsSpreadTierMod": 1,
+          "reloadSpeedTier": 0
+        },
+        "5_rnd": {
+          "name": "5 Rnd",
+          "pts": 5,
+          "mag": 5,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0
+        },
+        "5_fast": {
+          "name": "5 Fast",
+          "pts": 10,
+          "mag": 5,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1
+        },
+        "7_rnd": {
+          "name": "7 Rnd",
+          "pts": 15,
+          "mag": 7,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0
+        }
+      }
+    },
+    "candidateLimitations": "Regular magazine handling is panel-checked. Other magazine shifts use the traced effect references and the current shared tier interpretation; their predicted values are not in-game measurements."
+  },
+  "attachmentReview": {
+    "unresolvedSlimAngled": {
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFGBOLT.xml",
+      "abilityActionGuid": "8c235c03-c2dd-4bfc-ac08-4b3e7b4c1eb5",
+      "selectors": [
+        "8ad0e9cd-b985-46b1-81a6-e6727e1efb6c",
+        "8cf80d8c-79e6-4679-a811-b751771db359"
+      ],
+      "issue": "Light/Extended barrel previews with regular 5 Rnd confirm one ADS tier improvement and one sprint-recovery tier improvement. Moving ADS spread remains unverified; that effect is not modeled.",
+      "status": "Handling integrated as slim_angled_interdictor; moving ADS spread explicitly marked unverified."
+    },
+    "effectGraphWitnesses": [
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_FMJ.xml",
+        "matchingOtherAttachmentCount": 58,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_AMO_FMJ.xml"
+          },
+          {
+            "weapon": "6P67",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_AMO_FMJ.xml"
+          },
+          {
+            "weapon": "ACE32",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_AMO_FMJ.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Frangible.xml",
+        "matchingOtherAttachmentCount": 56,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_AMO_Frangible.xml"
+          },
+          {
+            "weapon": "6P67",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_AMO_Frangible.xml"
+          },
+          {
+            "weapon": "ACE32",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_AMO_Frangible.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Match.xml",
+        "matchingOtherAttachmentCount": 0,
+        "witnesses": [],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Tungsten.xml",
+        "matchingOtherAttachmentCount": 52,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_AMO_Tungsten.xml"
+          },
+          {
+            "weapon": "6P67",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_AMO_Tungsten.xml"
+          },
+          {
+            "weapon": "ACE32",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_AMO_Tungsten.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_BasicBarrel.xml",
+        "matchingOtherAttachmentCount": 54,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_BasicBarrel.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_BRL_BasicBarrel.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_BRL_BasicBarrel.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_ExtendedBarrel.xml",
+        "matchingOtherAttachmentCount": 37,
+        "witnesses": [
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_BRL_ExtendedBarrel.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_BRL_ExtendedBarrel.xml"
+          },
+          {
+            "weapon": "ACE32",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_BRL_Extended_Barrel.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_LightBarrel.xml",
+        "matchingOtherAttachmentCount": 40,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_LightBarrel.xml"
+          },
+          {
+            "weapon": "6P67",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_BRL_LightBarrel.xml"
+          },
+          {
+            "weapon": "ACE32",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_BRL_Fluted_Barrel.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_AtlasV8BOLT.xml",
+        "matchingOtherAttachmentCount": 4,
+        "witnesses": [
+          {
+            "weapon": "M2010ESR",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_BTM_Atlas_V8.xml"
+          },
+          {
+            "weapon": "MRAD",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_BTM_Atlas_V8.xml"
+          },
+          {
+            "weapon": "MiniFix",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_AtlasV8BOLT.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BCMStubbyBOLT.xml",
+        "matchingOtherAttachmentCount": 4,
+        "witnesses": [
+          {
+            "weapon": "M2010ESR",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_BTM_BCM_Stubby_BOLT.xml"
+          },
+          {
+            "weapon": "MRAD",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_BTM_BCM_Stubby_BOLT.xml"
+          },
+          {
+            "weapon": "MiniFix",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_BCMStubbyBOLT.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BTGrippodQDBOLT.xml",
+        "matchingOtherAttachmentCount": 0,
+        "witnesses": [],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_GPS2BOLT.xml",
+        "matchingOtherAttachmentCount": 1,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_GPS2BOLT.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFG2BOLT.xml",
+        "matchingOtherAttachmentCount": 7,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_MagpulAFG2BOLT.xml"
+          },
+          {
+            "weapon": "M2010ESR",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_BTM_Magpul_AFG2_BOLT.xml"
+          },
+          {
+            "weapon": "MRAD",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_BTM_Magpul_AFG_BOLT.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFGBOLT.xml",
+        "matchingOtherAttachmentCount": 2,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_MagpulAFGBOLT.xml"
+          },
+          {
+            "weapon": "MiniFix",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_BTM_MagpulAFGBOLT.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_ERG_ImprovedMagCatch.xml",
+        "matchingOtherAttachmentCount": 29,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_ERG_ImprovedMagCatch.xml"
+          },
+          {
+            "weapon": "AK205",
+            "attachmentXml": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_ERG_Improved_Mag_Catch.xml"
+          },
+          {
+            "weapon": "APC10",
+            "attachmentXml": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_ERG_Improved_Mag_Catch.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_LFT_FNElity.xml",
+        "matchingOtherAttachmentCount": 11,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_LFT_FNElity.xml"
+          },
+          {
+            "weapon": "ARADMR",
+            "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_RGT_FN_Elity.xml"
+          },
+          {
+            "weapon": "DP12",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_FNElity.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml",
+        "matchingOtherAttachmentCount": 0,
+        "witnesses": [],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Extended1.xml",
+        "matchingOtherAttachmentCount": 0,
+        "witnesses": [],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Fast.xml",
+        "matchingOtherAttachmentCount": 45,
+        "witnesses": [
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_MAG_Fast.xml"
+          },
+          {
+            "weapon": "6P67",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MAG_Fast.xml"
+          },
+          {
+            "weapon": "ACE32",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Fast.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Regular.xml",
+        "matchingOtherAttachmentCount": 62,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MAG_Regular.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_MAG_Regular.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_MAG_Regular.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_HTIMB.xml",
+        "matchingOtherAttachmentCount": 5,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_AWMDoublePortBrake.xml"
+          },
+          {
+            "weapon": "M2010ESR",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_SIGTaperedMB.xml"
+          },
+          {
+            "weapon": "MRAD",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_Barrett2-portMB.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml",
+        "matchingOtherAttachmentCount": 4,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_HXQDMagnumTiSuppressor.xml"
+          },
+          {
+            "weapon": "MRAD",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_HXQDMagnumTiSuppressor.xml"
+          },
+          {
+            "weapon": "MiniFix",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_SOCOM556RC3Suppressor.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltra50Suppressor.xml",
+        "matchingOtherAttachmentCount": 4,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_AWMSuppressor.xml"
+          },
+          {
+            "weapon": "M2010ESR",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_BarrettAM338Suppressor.xml"
+          },
+          {
+            "weapon": "MRAD",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_AM338Suppressor.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltraBSRFlashHider.xml",
+        "matchingOtherAttachmentCount": 54,
+        "witnesses": [
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_MZL_FlashHider185KSK.xml"
+          },
+          {
+            "weapon": "6P67",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MZL_FlashHiderStrelaAK74Gen2.xml"
+          },
+          {
+            "weapon": "ACE32",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_FlashHiderACE32.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_ModuleMk3.xml",
+        "matchingOtherAttachmentCount": 4,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_LFT_ModuleMk3.xml"
+          },
+          {
+            "weapon": "M16A3",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_RGT_ModuleMk3.xml"
+          },
+          {
+            "weapon": "RPK74M",
+            "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_RGT_ModuleMk3.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_SF300.xml",
+        "matchingOtherAttachmentCount": 3,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_LFT_SF300.xml"
+          },
+          {
+            "weapon": "M16A3",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_RGT_SF300.xml"
+          },
+          {
+            "weapon": "VSSM",
+            "attachmentXml": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_LFT_SF300.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_TLMissionLight.xml",
+        "matchingOtherAttachmentCount": 3,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_LFT_TLMissionLight.xml"
+          },
+          {
+            "weapon": "M16A3",
+            "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_RGT_TLMissionLight.xml"
+          },
+          {
+            "weapon": "VSSM",
+            "attachmentXml": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_LFT_TLMissionLight.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_ANPEQ16B.xml",
+        "matchingOtherAttachmentCount": 55,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_RGT_ANPEQ16B.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_RGT_ANPEQ16B.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_RGT_ANPEQ16B.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_DBALA3.xml",
+        "matchingOtherAttachmentCount": 61,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_RGT_DBALA3.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_RGT_DBAL-A3.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_RGT_DBAL-A3.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_LA23PEQ.xml",
+        "matchingOtherAttachmentCount": 61,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_RGT_LA23PEQ.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_RGT_LA-23.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_RGT_LA-23.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_MeproSting.xml",
+        "matchingOtherAttachmentCount": 55,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_RGT_MeproSting.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_RGT_Mepro_Sting.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_RGT_Mepro_Sting.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_Perst4.xml",
+        "matchingOtherAttachmentCount": 60,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_RGT_Perst4.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_RGT_Perst4.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_RGT_Perst4.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_RaidXe.xml",
+        "matchingOtherAttachmentCount": 55,
+        "witnesses": [
+          {
+            "weapon": "L115A3",
+            "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_RGT_RaidXe.xml"
+          },
+          {
+            "weapon": "185KSK",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_RGT_RaidXe.xml"
+          },
+          {
+            "weapon": "590A1",
+            "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_RGT_RaidXe.xml"
+          }
+        ],
+        "comparison": "Same selector GUID multiset, WB effect GUID/type multiset, and GS modifier GUID/binding-type multiset. Runtime activation, ordering and state conditions are not established by this comparison."
+      }
+    ],
+    "matchAmmo": {
+      "status": "Raw projectile configuration comparison; standard and Match damage curve values agree. Curve/table selection at runtime is not decoded.",
+      "projectiles": [
+        {
+          "sourceXml": "Common/Hardware/Weapons/_Bullets/PD_.416Barrett.xml",
+          "projectileGuid": "b5ec48a2-c5b7-4dd4-869c-266cf056b8ef",
+          "drag": 0.0035,
+          "gravity": -9.81,
+          "linkedCurves": [
+            {
+              "referenceField": "Field_6008eb31",
+              "guid": "d90eb3b5-db54-42a8-9c1a-6503ad013a68",
+              "type": "Class_afbfd124",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  150.0
+                ],
+                [
+                  150.0,
+                  150.0
+                ],
+                [
+                  170.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "referenceField": "Field_2ad7e688",
+              "guid": "ba0c9abc-a912-4db1-9edd-15d3e588f8c3",
+              "type": "Class_6a0d9448",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  150.0
+                ],
+                [
+                  150.0,
+                  150.0
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "referenceField": "Field_0bdc38c4",
+              "guid": "1ba2559d-acee-4e4b-a029-8c327262c7dd",
+              "type": "Class_afbfd124",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  102.5
+                ],
+                [
+                  150.0,
+                  102.5
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "referenceField": "Field_7e05a1ae",
+              "guid": "ea2b0ed0-fc62-4e4f-bb2f-8659745559e4",
+              "type": "Class_6a0d9448",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  102.5
+                ],
+                [
+                  150.0,
+                  102.5
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            }
+          ],
+          "namedRegistryTables": [
+            {
+              "name": "PD_.416Barrett.BulletEntityData.TweakableArmorDamageCurve.XYValues",
+              "guid": "9625cc57-c6d7-4cb3-9eff-a7ea1c3ace05",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  102.5
+                ],
+                [
+                  150.0,
+                  102.5
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "name": "PD_.416Barrett.BulletEntityData.TweakableDamageCurve.XYValues",
+              "guid": "368266bf-e9cc-4a44-b068-64eb8847b187",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  150.0
+                ],
+                [
+                  150.0,
+                  150.0
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "sourceXml": "Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match.xml",
+          "projectileGuid": "bc175b96-b4cb-4ec7-a4a4-e644d263ee1d",
+          "drag": 0.002,
+          "gravity": -9.81,
+          "linkedCurves": [
+            {
+              "referenceField": "Field_6008eb31",
+              "guid": "01cca2fe-588d-487e-bd21-5b56c3c03011",
+              "type": "Class_afbfd124",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  150.0
+                ],
+                [
+                  150.0,
+                  150.0
+                ],
+                [
+                  170.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "referenceField": "Field_2ad7e688",
+              "guid": "6dbe84de-4348-44ab-ad43-509b1c0a4f7d",
+              "type": "Class_6a0d9448",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  150.0
+                ],
+                [
+                  150.0,
+                  150.0
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "referenceField": "Field_0bdc38c4",
+              "guid": "22a70704-442d-47cb-9f28-94ceab627a35",
+              "type": "Class_afbfd124",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  102.5
+                ],
+                [
+                  150.0,
+                  102.5
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "referenceField": "Field_7e05a1ae",
+              "guid": "eeb15377-a049-4e6a-b65d-502c79273c2f",
+              "type": "Class_6a0d9448",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  102.5
+                ],
+                [
+                  150.0,
+                  102.5
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            }
+          ],
+          "namedRegistryTables": [
+            {
+              "name": "PD_.416Barrett_Match.BulletEntityData.TweakableDamageCurve.XYValues",
+              "guid": "b97dc532-5551-4c74-be78-8c652316e11a",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  150.0
+                ],
+                [
+                  150.0,
+                  150.0
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            },
+            {
+              "name": "PD_.416Barrett_Match.BulletEntityData.TweakableArmorDamageCurve.XYValues",
+              "guid": "f6b33f33-8ff6-4738-9df1-4a35b86ca886",
+              "points": [
+                [
+                  100.0,
+                  80.0
+                ],
+                [
+                  120.0,
+                  102.5
+                ],
+                [
+                  150.0,
+                  102.5
+                ],
+                [
+                  175.0,
+                  62.0
+                ],
+                [
+                  200.0,
+                  62.0
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "sourceSha256": {
+        "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+        "Common/Hardware/Weapons/_Bullets/PD_.416Barrett.xml": "0b5571d2265133cc39ae452e450ac001f33af5bf9de17d5e540408b0098d5164",
+        "Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match.xml": "143d23fb1287acb1966e6013d457ab8da71d185eaf224e70794c1539ebcf8a62"
+      },
+      "runtimeComparison": {
+        "file": "data/ballistics.json",
+        "ammoId": "long_range",
+        "configuredDrag": 0.002,
+        "result": "Matches exported Match drag."
+      },
+      "damageInterpretation": "Health curve holds 150 at 120-150 m and reaches 62 at 170 m, agreeing with the supplied Sym curve. The health XY table instead reaches 62 at 175 m. Armor holds 102.5 and reaches 62 at 175 m. Preserve this distinction; runtime precedence between the health curve and tweakable XY table is unresolved."
+    },
+    "qdGripPod": {
+      "comparisonWeapon": "L115A3",
+      "sameWbEffects": true,
+      "additionalInterdictorGsBinding": {
+        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BTM_M10",
+        "type": "Struct_28529b7f",
+        "guid": "87f5c4cb-3113-450d-8ad9-7c686fa0175f"
+      },
+      "interpretation": "Interdictor explicitly binds the moving ADS dispersion penalty missing from the L115A3 GS selector. Its current generic qd_grip_pod_sr data includes movingAdsSpreadTierMod -1 and ADS time improvement +1. Deployed bipod recoil and hip-dispersion state effects remain outside the current standing/moving model."
+    },
+    "slimAngledPanelEvidence": [
+      {
+        "path": "reference-data/provenance/interdictor-slim-angled-light-5rnd.png",
+        "sha256": "cbd8d65da548cddf1ef9afe480da7e653cca6298b4cca774cbfbeab9cb77b0d9",
+        "type": "user-supplied locked attachment preview; not an equipped firing test",
+        "barrel": "light",
+        "magazine": "5_rnd",
+        "loadoutBasis": "User identifies barrel and equipped regular 5-round magazine. Barrel label is not visible in these screenshots.",
+        "visible": {
+          "grip": "Slim Angled",
+          "gripPoints": 15,
+          "masteryUnlock": 23,
+          "magazineCapacity": 5,
+          "rpm": 31,
+          "reloadSeconds": 3.5,
+          "velocityMps": 732,
+          "adsTimeMs": 367,
+          "sprintRecoveryMs": 200,
+          "adsMoveMultiplier": 0.42,
+          "recoilAmountDegrees": 2.2,
+          "recoilVariationDegrees": 10,
+          "mobility": 37
+        }
+      },
+      {
+        "path": "reference-data/provenance/interdictor-slim-angled-extended-5rnd.png",
+        "sha256": "9e60c802d94baf0c75dace3a998ceebbd67c8ab2f3ca2596ad1775240b341823",
+        "type": "user-supplied locked attachment preview; not an equipped firing test",
+        "barrel": "extended",
+        "magazine": "5_rnd",
+        "loadoutBasis": "User identifies barrel and equipped regular 5-round magazine. Barrel label is not visible in these screenshots.",
+        "visible": {
+          "grip": "Slim Angled",
+          "gripPoints": 15,
+          "masteryUnlock": 23,
+          "magazineCapacity": 5,
+          "rpm": 31,
+          "reloadSeconds": 3.5,
+          "velocityMps": 915,
+          "adsTimeMs": 433,
+          "sprintRecoveryMs": 200,
+          "adsMoveMultiplier": 0.42,
+          "recoilAmountDegrees": 2.2,
+          "recoilVariationDegrees": 10,
+          "mobility": 29
+        }
+      }
+    ],
+    "slimAngledUserConfirmation": {
+      "date": "2026-09-06",
+      "source": "Operator report in conversation",
+      "observed": "Interdictor Slim Angled and Full Angled display the same Mobility rating.",
+      "reportedBugGroup": [
+        "Interdictor",
+        "SV-98",
+        "PSR",
+        "Mini Scout",
+        "L115"
+      ],
+      "reportedException": "M2010 ESR",
+      "interpretation": "Operator identifies the same Slim Angled bug as the other listed sniper rifles: an unintended moving ADS accuracy penalty.",
+      "limitation": "Equal displayed Mobility supports this interpretation but does not alone measure the moving ADS spread penalty magnitude. No exact Mobility values or spread measurement supplied in this report."
+    }
+  },
+  "movingAdsTierReview": {
+    "registryXml": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml",
+    "registryName": "GS_DesertTechHTI.MovingZoomedMinAnglesArrayIndex",
+    "registryGuid": "e771aee9-95ec-49f8-adf0-76519941a5cb",
+    "registryField": "Field_aa6f3938",
+    "registryIndex": 3,
+    "rawBaseMinAngleDeg": 0.3,
+    "siteTier3MinAngleDeg": 0.32,
+    "symMinAngleDeg": 0.32,
+    "runtimeCheck": "Actual applyAttachments with the candidate weapon, Basic barrel and regular 5 Rnd magazine returns moving ADS floor 0.32, ADS 433 ms and sprint recovery 233 ms.",
+    "rosterCheck": "All 62 candidates with a named MovingZoomedMinAnglesArrayIndex registry record use index 3. Two candidates lack named coverage; no value is inferred for them.",
+    "decision": "Retain 0.3 as the raw base value. The existing shared tier-3 calculation produces the Sym effective value 0.32 without an Interdictor exception.",
+    "limitation": "The named registry index is verified. This comparison does not decode the engine's tier-array formula or establish modifier activation order."
+  },
+  "damageCurveCorroboration": {
+    "url": "https://www.youtube.com/watch?v=8NrJ3myXWyI",
+    "author": "CoolGuy",
+    "title": "Thereâ€™s More to the Interdictor Than You Think (The Stats Are LYING)",
+    "evidenceMethod": "Video page identity and exported English auto-generated captions; no independent frame-by-frame hit test.",
+    "reportedChestKillRangeM": [
+      106,
+      164
+    ],
+    "chestRangeTimestamp": "2:33",
+    "reportedAnyBodyKillRangeM": [
+      120,
+      150
+    ],
+    "anyBodyRangeTimestamp": "3:15-3:37",
+    "correctionTimestamp": "3:40-3:51",
+    "correctionSummary": "The author corrects his earlier narrower upper-chest range to 106-164 m. Later narrower references are not used as a separate measured result.",
+    "namedTable": "PD_.416Barrett.BulletEntityData.TweakableDamageCurve.XYValues",
+    "namedTableGuid": "368266bf-e9cc-4a44-b068-64eb8847b187",
+    "tweakableCurveChestKillRangeM": [
+      105.71428571428571,
+      164.20454545454547
+    ],
+    "plainCurveChestKillRangeM": [
+      105.71428571428571,
+      161.36363636363637
+    ],
+    "damageAt164M": {
+      "tweakable": 100.72,
+      "plain": 88.4
+    },
+    "decision": "Use the named tweakable health curve as the evidence-backed Interdictor integration candidate. Its whole-metre chest kill boundaries agree with the author's report. This does not prove global precedence for other weapons or modes.",
+    "displayDecision": "User confirmed graph remains capped at 100 damage, after applying body-part multipliers. Calculations retain the full 150-damage plateau."
+  },
+  "distributionModelReview": {
+    "runtimeFile": "ui/app.js",
+    "scatterExpression": "const bAng = rngB() * Math.PI * 2, bR = spread * rngB();",
+    "referenceExpression": "const bAng = rngRef() * Math.PI * 2, bR = spread * rngRef();",
+    "runtimeFileSha256": "bbdd888fbac0708641e30f880fe8f45c4dccefbba498442602d2b21d02dbc547",
+    "behavior": "Both paths sample radius uniformly and angle uniformly. They do not read spreadDyn.distExp.",
+    "sourceValues": {
+      "adsStationaryExponent": 0.5,
+      "adsMovingExponent": 0.67
+    },
+    "status": "Unresolved game formula. No exponent-based sampler has been implemented.",
+    "externalResearch": [
+      {
+        "url": "https://sym.gg/games/bfv/weapon-mechanics",
+        "scope": "Describes BFV uniform-radius ADS spread; does not establish the BF6 exponent formula."
+      },
+      {
+        "url": "https://drsmileyhenry.github.io/Dr.-Smiley-Henry-BF6-ADS-Spread-Simulator/",
+        "scope": "Describes BF6 spread growth and movement tiers; page does not establish a radial exponent formula."
+      }
+    ]
+  },
+  "runtimeIntegration": {
+    "mappedAttachments": [
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_FMJ.xml",
+        "slot": "ammo",
+        "siteId": "standard",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Frangible.xml",
+        "slot": "ammo",
+        "siteId": "frangible",
+        "points": 20
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Match.xml",
+        "slot": "ammo",
+        "siteId": "long_range",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Tungsten.xml",
+        "slot": "ammo",
+        "siteId": "penetration",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_BasicBarrel.xml",
+        "slot": "barrel",
+        "siteId": "basic",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_ExtendedBarrel.xml",
+        "slot": "barrel",
+        "siteId": "extended",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_LightBarrel.xml",
+        "slot": "barrel",
+        "siteId": "light",
+        "points": 20
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_AtlasV8BOLT.xml",
+        "slot": "grip",
+        "siteId": "bipod_sr",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BCMStubbyBOLT.xml",
+        "slot": "grip",
+        "siteId": "lp_stubby_sr",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BTGrippodQDBOLT.xml",
+        "slot": "grip",
+        "siteId": "qd_grip_pod_sr",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_GPS2BOLT.xml",
+        "slot": "grip",
+        "siteId": "classic_grip_pod_sr",
+        "points": 20
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFG2BOLT.xml",
+        "slot": "grip",
+        "siteId": "full_angled_sr",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_ERG_ImprovedMagCatch.xml",
+        "slot": "ergo",
+        "siteId": "mag_catch",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_LFT_FNElity.xml",
+        "slot": "light",
+        "siteId": "range_finder",
+        "points": 15
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml",
+        "slot": "mag",
+        "siteId": "3_rnd",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Extended1.xml",
+        "slot": "mag",
+        "siteId": "7_rnd",
+        "points": 15
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Fast.xml",
+        "slot": "mag",
+        "siteId": "5_fast",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Regular.xml",
+        "slot": "mag",
+        "siteId": "5_rnd",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_HTIMB.xml",
+        "slot": "muzzle",
+        "siteId": "dp_brake",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml",
+        "slot": "muzzle",
+        "siteId": "light_supp",
+        "points": 30
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltra50Suppressor.xml",
+        "slot": "muzzle",
+        "siteId": "long_supp",
+        "points": 25
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltraBSRFlashHider.xml",
+        "slot": "muzzle",
+        "siteId": "flash_hider",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_ModuleMk3.xml",
+        "slot": "light",
+        "siteId": "ads_taclight",
+        "points": 5
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_SF300.xml",
+        "slot": "light",
+        "siteId": "hip_taclight",
+        "points": 15
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_TLMissionLight.xml",
+        "slot": "light",
+        "siteId": "flashlight",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_ANPEQ16B.xml",
+        "slot": "laser",
+        "siteId": "50mw_violet",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_DBALA3.xml",
+        "slot": "laser",
+        "siteId": "50mw_green",
+        "points": 20
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_LA23PEQ.xml",
+        "slot": "laser",
+        "siteId": "5mw_green",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_MeproSting.xml",
+        "slot": "laser",
+        "siteId": "50mw_blue",
+        "points": 20
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_Perst4.xml",
+        "slot": "laser",
+        "siteId": "5mw_red",
+        "points": 10
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_RaidXe.xml",
+        "slot": "laser",
+        "siteId": "120mw_blue",
+        "points": 30
+      },
+      {
+        "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFGBOLT.xml",
+        "slot": "grip",
+        "siteId": "slim_angled_interdictor",
+        "points": 15,
+        "confirmedEffects": [
+          "adsTimeTierMod=1",
+          "sprintRecoveryTierShift=-1"
+        ],
+        "unmodeledEffects": [
+          "movingAdsSpreadTierMod"
+        ],
+        "evidence": "attachmentReview.slimAngledPanelEvidence"
+      }
+    ],
+    "omittedAttachments": [],
+    "classification": {
+      "hipClass": "Class E",
+      "hipEvidence": "Base standing/moving minima 4.848/6.06 exactly match Class E indices 3/4.",
+      "hitZoneClass": "sniper",
+      "hitZoneEvidence": "Confirmed sniper class; uses the existing sniper hit-zone model. Raw DamageProtectionMultiplierIndex is 3, as on the other supported bolt-action snipers."
+    },
+    "limitations": "Shared modifier calculations retain their existing estimate warnings and model limits, including bipod deployment and recoil recovery. Integration is not a claim that all attachment state/operation mechanics are resolved.",
+    "panelDisplay": {
+      "rpm": 31,
+      "effectiveRpm": 31.914882299649403,
+      "headshotMultiplier": 1.75,
+      "standardCollateralMultiplier": 0.75,
+      "source": "reference-data/provenance/interdictor-basic-preview.png",
+      "interpretation": "Panel fields rechecked directly from the saved user screenshot. The existing display-only RPM mapping preserves effective firing cadence for simulation."
+    }
+  }
+}

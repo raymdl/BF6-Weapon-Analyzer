@@ -1,0 +1,1533 @@
+{
+  "sourceSnapshot": "reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json",
+  "sourceSnapshotSha256": "7da992af3513c83a53648325bbad2cb555e8c0ed079d46f7b2326f5a2ad37980",
+  "approval": "Operator approved point costs, hip recoil propagation, VSSM hip effects and barrel spotting, and ammunition/magazine effects supported by the existing model. Operator deferred heavy/Cryo, lights, smooth recoil, bolt tier magnitudes and VSSM decay.",
+  "tierPolicy": "Hip amount uses the existing ADS amount tier for each catalog item. Raw larger bolt-action tiers remain deferred; no new native recovery equation is adopted.",
+  "costs": {
+    "ammo": {
+      "rpk74m": {
+        "synthetic": 20,
+        "hollow_pt": 15
+      },
+      "scw10": {
+        "hollow_pt": 20
+      }
+    },
+    "ironSights": {
+      "l115": 15,
+      "m2010esr": 15,
+      "miniscout": 15,
+      "psr": 15,
+      "sv98": 15
+    }
+  },
+  "hipCatalogFields": {
+    "MUZZLES": [
+      {
+        "id": "sp_brake",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "dp_brake",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "slant_brake",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "tp_brake",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "thread_prot",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "comp_brake",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "linear_comp",
+        "hipRecoilTierMod": -1,
+        "hipRecoilVariationTierMod": 3
+      },
+      {
+        "id": "hybrid_supp_l",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "hybrid_supp_s",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "hybrid_supp_k",
+        "hipRecoilTierMod": 1
+      }
+    ],
+    "GRIPS": [
+      {
+        "id": "factory_angled_sl9",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "factory_angled_lmr27",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "factory_angled_db12",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "fold_vert",
+        "hipRecoilTierMod": 2
+      },
+      {
+        "id": "alloy_vert",
+        "hipRecoilTierMod": 2
+      },
+      {
+        "id": "ribbed_vert",
+        "hipRecoilTierMod": 3
+      },
+      {
+        "id": "6h64_vert",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "classic_vert",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "fold_stubby",
+        "hipRecoilTierMod": 2
+      },
+      {
+        "id": "ribbed_stubby",
+        "hipRecoilTierMod": 2
+      },
+      {
+        "id": "canted_stubby",
+        "hipRecoilTierMod": 3
+      },
+      {
+        "id": "stipp_stubby",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "lp_stubby",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "adj_angled",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "slim_angled",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "slim_angled_smg",
+        "hipRecoilTierMod": 1
+      },
+      {
+        "id": "full_angled",
+        "hipRecoilTierMod": 2
+      },
+      {
+        "id": "6h64_vert_svk86",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "classic_vert_svk86",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "stipp_stubby_svk86",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "lp_stubby_svk86",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "6h64_vert_vssm",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "classic_vert_vssm",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "stipp_stubby_vssm",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "lp_stubby_vssm",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "6h64_vert_ks18k",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "classic_vert_ks18k",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "stipp_stubby_ks18k",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "lp_stubby_ks18k",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "6h64_vert_db12",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "classic_vert_db12",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "stipp_stubby_db12",
+        "hipRecoilTierMod": 4
+      },
+      {
+        "id": "lp_stubby_db12",
+        "hipRecoilTierMod": 5
+      },
+      {
+        "id": "ptt_grip_pod",
+        "hipRecoilTierMod": 2
+      },
+      {
+        "id": "qd_grip_pod",
+        "hipRecoilTierMod": 2
+      },
+      {
+        "id": "classic_grip_pod",
+        "hipRecoilTierMod": 2
+      }
+    ],
+    "ERGOS": [
+      {
+        "id": "full_auto",
+        "hipRecoilTierMod": -1
+      },
+      {
+        "id": "full_auto_vssm",
+        "hipRecoilVariationTierMod": -20
+      }
+    ]
+  },
+  "subsonicOverrides": {
+    "m417a2": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "sg553r": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "sor300sc": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "sgx": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "pw5a3": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "umg40": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "usg90": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "kv9": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "scw10": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "sl9": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "cz3a1": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    },
+    "pp19": {
+      "subsonic": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      },
+      "subsonic_hp": {
+        "adsRecoilTierMod": 1,
+        "hipRecoilTierMod": 1
+      }
+    }
+  },
+  "slugEffects": {
+    "id": "slugs",
+    "name": "Slugs",
+    "hsMult": 1.34,
+    "collateralMult": {
+      "Shotgun": 0.33
+    },
+    "adsRecoilTierMod": -1,
+    "hipRecoilTierMod": -1,
+    "adsSpreadDynOverride": {
+      "inc": 0.05
+    }
+  },
+  "vssmStock": {
+    "id": "full_auto_vssm",
+    "name": "Folding Stock",
+    "pts": 40,
+    "adsSpreadDynOverride": {
+      "inc": 0.409,
+      "firingCoef": 1.2,
+      "firingExp": 2.5,
+      "firingOffset": 2.7,
+      "notFiringOffset": 7.2,
+      "idleExp": 0.25,
+      "idleOffset": 7.5
+    },
+    "adsRecoilVariationTierMod": -20,
+    "setsFireModeAuto": true,
+    "assumedFields": {
+      "recoilDecreaseFactorOverride": "Folding Stock recoil-recovery changes are not modeled. Exported modifier values 76 and 1.24 occur in both recoil groups; their field and operation meanings still require verification."
+    },
+    "autoRpm": 799.999,
+    "hipSpreadDynOverride": {
+      "inc": 0.736,
+      "firingCoef": 0.5,
+      "firingOffset": 4.86
+    },
+    "hipRecoilVariationTierMod": -20
+  },
+  "vssmBarrels": [
+    {
+      "id": "vssm_suppressed",
+      "name": "Suppressed",
+      "adsTimeTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "spreadIncMult": 1,
+      "pts": 30,
+      "velMult": 1,
+      "velTierMod": 0,
+      "suppressor": true,
+      "worldSpot": 0,
+      "minimapSpot": 9
+    },
+    {
+      "id": "vssm_suppressed_asm",
+      "name": "Suppressed",
+      "adsTimeTierMod": 0,
+      "movingAdsSpreadTierMod": 0,
+      "spreadIncMult": 1,
+      "pts": 20,
+      "velMult": 1,
+      "velTierMod": 0,
+      "suppressor": true,
+      "worldSpot": 0,
+      "minimapSpot": 21
+    }
+  ],
+  "magazineAssignments": [
+    {
+      "weapon": "nvo228e",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "nvo228e",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "nvo228e",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "b36a4",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "b36a4",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "b36a4",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "ak4d",
+      "mag": "15_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "ak4d",
+      "mag": "15_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "ak4d",
+      "mag": "15_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "ak4d",
+      "mag": "15_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m433",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m433",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m433",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "l85a3",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "l85a3",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "l85a3",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m16a4",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m16a4",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m16a4",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "sor556",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "sor556",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "sor556",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "tr7",
+      "mag": "15_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "tr7",
+      "mag": "10_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "tr7",
+      "mag": "10_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "vcr2",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "vcr2",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "vcr2",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "interdictor",
+      "mag": "3_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "interdictor",
+      "mag": "3_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "psr",
+      "mag": "7_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "psr",
+      "mag": "7_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "brod3",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "brod3",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "brod3",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m417a2",
+      "mag": "10_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m417a2",
+      "mag": "10_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m4a1",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m4a1",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m4a1",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "sor300sc",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "sor300sc",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "sor300sc",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "sg553r",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "sg553r",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "sg553r",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m277",
+      "mag": "15_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m39emr",
+      "mag": "15_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m39emr",
+      "mag": "15_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m39emr",
+      "mag": "15_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "m39emr",
+      "mag": "15_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "grtcps",
+      "mag": "15_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "grtcps",
+      "mag": "15_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "svdm",
+      "mag": "5_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "svdm",
+      "mag": "5_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "vssm",
+      "mag": "10_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p20.xml#98b9de01-3aed-406d-94f2-87aeee18b228",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "vssm",
+      "mag": "10_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "vssm",
+      "mag": "10_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "vssm",
+      "mag": "10_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "m60",
+      "mag": "50_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "rpk74m",
+      "mag": "36_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact3.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "rpkm",
+      "mag": "30_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "rpkm",
+      "mag": "30_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "rpkm",
+      "mag": "30_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "rpkm",
+      "mag": "30_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "rpkm",
+      "mag": "36_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact3.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "kts100",
+      "mag": "45_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "kts100",
+      "mag": "50_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "kts100",
+      "mag": "45_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MAG_Compact3.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "ks18k",
+      "mag": "4_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "ks18k",
+      "mag": "4_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "pw5a3",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p20.xml#98b9de01-3aed-406d-94f2-87aeee18b228",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "pw5a3",
+      "mag": "20_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "pw7a2",
+      "mag": "20_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p20.xml#98b9de01-3aed-406d-94f2-87aeee18b228",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "pw7a2",
+      "mag": "20_rnd",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "pp19",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p20.xml#98b9de01-3aed-406d-94f2-87aeee18b228",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "pp19",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact2.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    },
+    {
+      "weapon": "cz3a1",
+      "mag": "20_fast",
+      "field": "movingAdsSpreadTierMod",
+      "value": 1,
+      "source": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": 1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/adsmovedispersion/gdm_array_adsmovedispersion_mag_p10.xml#29129748-58a1-47cc-8307-02118ea4cb43",
+          "path": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959"
+        }
+      ]
+    },
+    {
+      "weapon": "cz3a1",
+      "mag": "20_fast",
+      "field": "sway",
+      "value": -1,
+      "source": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_MAG_Compact1.xml",
+      "evidence": [
+        {
+          "value": -1,
+          "effect": "common/hardware/weapons/_weaponmodifiers/sway/wme_wsway_p05.xml#a76bf3ea-eeab-40d4-b461-f6be73f445d7",
+          "path": "Field_90fd0310"
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "nodeTests": 43,
+    "weaponCount": 63,
+    "shipSurface": "pass",
+    "browser": "L115 Iron Sights 15 points; default total 35 points"
+  },
+  "limitations": [
+    "Sway uses the existing direction indicator, not a numerical sway simulation.",
+    "No compound or ambiguous magazine selections promoted.",
+    "Before-fix evidence retained without rewriting original comparison values."
+  ]
+}

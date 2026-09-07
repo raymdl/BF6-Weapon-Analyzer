@@ -1,0 +1,257 @@
+{
+  "status": "Preliminary HUD transition timing, visually checked crops; not yet an exact firing-event or native scheduling model",
+  "method": "Sequential OpenCV decoding. Candidate frames selected by ammo-digit image change, then visually reviewed. Frame presentation timestamps verified independently with PyAV. UI digit animation can delay the selected transition frame.",
+  "db12": {
+    "sequence": 2,
+    "ammoAfterShot": [
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4
+    ],
+    "selectedFrames": [
+      3076,
+      3095,
+      3171,
+      3194,
+      3269,
+      3290,
+      3366,
+      3384,
+      3461,
+      3481,
+      3557,
+      3576
+    ],
+    "fps": 120.00065432158559,
+    "finding": "Alternating short and long shot intervals; a uniform 400 ms interval is inconsistent with the recording.",
+    "selectedFrameGapsSeconds": [
+      0.158332,
+      0.63333,
+      0.191666,
+      0.624997,
+      0.174999,
+      0.63333,
+      0.149999,
+      0.641663,
+      0.166666,
+      0.63333,
+      0.158332
+    ],
+    "presentationTimestampsSeconds": [
+      25.633966666666666,
+      25.79262222222222,
+      26.426055555555557,
+      26.61757777777778,
+      27.242833333333333,
+      27.417266666666666,
+      28.050744444444444,
+      28.201055555555556,
+      28.84302222222222,
+      29.009933333333333,
+      29.643066666666666,
+      29.800944444444443
+    ],
+    "timestampGapsSeconds": [
+      0.158656,
+      0.633433,
+      0.191522,
+      0.625256,
+      0.174433,
+      0.633478,
+      0.150311,
+      0.641967,
+      0.166911,
+      0.633133,
+      0.157878
+    ]
+  },
+  "m87a1": {
+    "sequence": 2,
+    "ammoAfterShot": [
+      7,
+      6,
+      5,
+      4,
+      1,
+      0
+    ],
+    "selectedFrames": [
+      2641,
+      2717,
+      2793,
+      2867,
+      3096,
+      3171
+    ],
+    "fps": 119.99085653979168,
+    "finding": "First three consecutive selected intervals approximately 0.633, 0.633, 0.617 seconds. Counts 3 and 2 not isolated by initial detector; do not treat the gap from 4 to 1 as one shot.",
+    "selectedFrameGapsSeconds": [
+      0.633382,
+      0.633382,
+      0.616714,
+      1.908479,
+      0.625048
+    ],
+    "presentationTimestampsSeconds": [
+      22.00917777777778,
+      22.642233333333333,
+      23.275744444444445,
+      23.89238888888889,
+      25.80151111111111,
+      26.42588888888889
+    ],
+    "timestampGapsSeconds": [
+      0.633056,
+      0.633511,
+      0.616644,
+      1.909122,
+      0.624378
+    ]
+  },
+  "runtimeDecision": "No timing model promoted from preliminary HUD timestamps.",
+  "audioCheck": {
+    "method": "PyAV decoded both stereo channels; maximum absolute floating-point sample checked across each complete track",
+    "db12MaxAbsoluteSample": 5.501871419255622e-05,
+    "m87a1MaxAbsoluteSample": 5.501871419255622e-05,
+    "result": "Approximately -85.2 dBFS peak. No usable shot timing signal established; audio peaks rejected as firing evidence."
+  },
+  "sourceTimingCandidate": {
+    "scope": "Captured stock/basic loadouts at BoltActionSpeed=1 only",
+    "formula": "Long interval = 60/RateOfFire + BoltActionTime + BoltActionDelay; DB-12 alternates raw interval and long interval",
+    "source": "reference-data/provenance/frosty-shotgun-fire-timing.json",
+    "rows": [
+      {
+        "weapon": "m87a1",
+        "configuredRateOfFire": 1799.999,
+        "boltActionTime": 0.500001,
+        "boltActionDelay": 0.100001,
+        "boltActionSpeed": 1.0,
+        "candidateIntervalsSeconds": [
+          0.6333353518518622
+        ],
+        "candidateSustainedRpm": 94.73654016716576
+      },
+      {
+        "weapon": "db12",
+        "configuredRateOfFire": 359.999,
+        "boltActionTime": 0.433334,
+        "boltActionDelay": 0.033334,
+        "boltActionSpeed": 1.0,
+        "candidateIntervalsSeconds": [
+          0.16666712963091562,
+          0.6333351296309155
+        ],
+        "candidateSustainedRpm": 149.99957638960296
+      }
+    ],
+    "interpretation": "The independent configured values predict approximately 0.63333 seconds and DB-12 short interval approximately 0.16667 seconds, consistent with reviewed video intervals. This supports a candidate scheduling model; it does not establish attachment speed scaling, interruption behavior, or exact native operation order."
+  },
+  "attachmentTimingTriage": {
+    "sourceGraphSha256": "559625dfb86bd32085811476f922fe39b937a6ec4196213f857e1790f71acde3",
+    "exportedAttachmentRecords": 94,
+    "uniqueEffectSourceFiles": 49,
+    "explicitlyTimingNamedEffectFiles": [],
+    "inlineWeaponEffectFiles": [
+      "Common/Hardware/Weapons/Shotgun/590A1/590A1_WB.xml",
+      "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB.xml"
+    ],
+    "result": "No explicitly bolt/rate-named effect file in these direct selections. Inline weapon effects and nested modifier assets still require typed field review; absence from filenames is not proof that every attachment preserves cadence. Exported selection count includes unavailable options."
+  },
+  "inlineEffectReview": {
+    "rows": [
+      {
+        "weapon": "590A1",
+        "source": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\590A1\\590A1_WB.xml",
+        "sha256": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac",
+        "effectGuid": "00000000-0000-0000-0000-000000000016",
+        "componentGuid": "00000000-0000-0000-0000-00000000000f",
+        "fxReferences": [
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_3P_Darkness [671e338a-f489-41ae-bfd4-ac3fae131297]",
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_1P_Darkness [6f9e9be7-67a4-4229-a64e-396b8ffaf022]"
+        ]
+      },
+      {
+        "weapon": "590A1",
+        "source": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\590A1\\590A1_WB.xml",
+        "sha256": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac",
+        "effectGuid": "00000000-0000-0000-0000-000000000017",
+        "componentGuid": "00000000-0000-0000-0000-000000000010",
+        "fxReferences": [
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_3P_Darkness [671e338a-f489-41ae-bfd4-ac3fae131297]",
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_1P_Darkness [6f9e9be7-67a4-4229-a64e-396b8ffaf022]"
+        ]
+      },
+      {
+        "weapon": "DP12",
+        "source": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\DP12_WB.xml",
+        "sha256": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f",
+        "effectGuid": "00000000-0000-0000-0000-000000000016",
+        "componentGuid": "00000000-0000-0000-0000-00000000000f",
+        "fxReferences": [
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_3P_Darkness [671e338a-f489-41ae-bfd4-ac3fae131297]",
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_1P_Darkness [6f9e9be7-67a4-4229-a64e-396b8ffaf022]"
+        ]
+      },
+      {
+        "weapon": "DP12",
+        "source": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\DP12_WB.xml",
+        "sha256": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f",
+        "effectGuid": "00000000-0000-0000-0000-000000000017",
+        "componentGuid": "00000000-0000-0000-0000-000000000010",
+        "fxReferences": [
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_3P_Darkness [671e338a-f489-41ae-bfd4-ac3fae131297]",
+          "[Ebx] Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_1P_Darkness [6f9e9be7-67a4-4229-a64e-396b8ffaf022]"
+        ]
+      }
+    ],
+    "result": "All four direct inline effect objects select flashlight components with named Darkness flashlight FX. These are component-selection records, not identified bolt-time or rate scalars. Nested external effects remain outside this check."
+  },
+  "directModifierTypeComparison": {
+    "pumpEffectTypes": [
+      "Class_0045e7fa",
+      "Class_016623ac",
+      "Class_03db7a68",
+      "Class_104c2294",
+      "Class_303a33cc",
+      "Class_3e93759b",
+      "Class_4aac041b",
+      "Class_4e0a8f72",
+      "Class_5830cb87",
+      "Class_936532d0",
+      "Class_96bab3b8",
+      "Class_98c02a2b",
+      "Class_a00773e3",
+      "Class_b1afeb65",
+      "Class_c42bd53b",
+      "Class_c6c66955",
+      "Class_d11a23a2",
+      "Class_d79973ba",
+      "Class_e7d2410a",
+      "Class_e85fff64",
+      "Class_ef0525cd",
+      "Class_fea30c84"
+    ],
+    "referenceTypes": {
+      "Class_582cbe36": {
+        "source": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Firerate\\WME_Firerate900_M10.xml",
+        "sha256": "0dab92fce55c74af9024970752379f9adaa35d8040ab9e3f38c3afa8fc8bdb85",
+        "inPumpDirectEffects": false
+      },
+      "Class_20a02ed5": {
+        "source": "..\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSBoltRechamber\\WME_ADSBoltRechamber_P25.xml",
+        "sha256": "34d679685daae0ead2f3bad4d88795517405e676296a63379676491cd07fdd7c",
+        "inPumpDirectEffects": false
+      }
+    },
+    "result": "Neither the known fire-rate modifier class nor the named ADS bolt-rechamber modifier class occurs among the 22 direct pump attachment effect types. This is a typed direct-selection check; other mutation paths are not excluded."
+  }
+}

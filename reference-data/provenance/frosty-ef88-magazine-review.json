@@ -1,0 +1,425 @@
+{
+  "weaponId": "ef88",
+  "status": "Promoted: user panel values confirm the three sprint-recovery corrections.",
+  "referenceBuild": "Basic barrel, Standard ammo, no grip or ergonomics",
+  "candidateSprintRecoveryTierShifts": {
+    "36_rnd": 0,
+    "42_rnd": 0,
+    "42_fast": 1
+  },
+  "candidateDisplayedSprintRecoveryMs": {
+    "36_rnd": 200,
+    "42_rnd": 200,
+    "42_fast": 233
+  },
+  "interpretation": "The two extended magazine selectors have no Draw_Sprint modifier; the extended fast selector has one M05 modifier. The current site adds one extra penalty tier to each. Capacities and costs match the export.",
+  "attachmentGraph": [
+    {
+      "weapon": "EF88",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Extended1.xml",
+      "attachmentGuid": "bf8ee04b-14e3-4f37-afa1-dd5cdea868e3",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+        "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/AssaultRifle/EF88/U_PRG_EF88_MAG_Extended1",
+        "guid": "10af986d-ba4e-4126-9a8c-d27fa55664b0"
+      },
+      "rawPointCost": "0x0000000f",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+          "guid": "8b2415a6-47a5-4fec-af4c-8c55f3edda9f",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+              "guid": "0cba336b-f0b1-4e89-b867-c33c02de6155",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_556_W15",
+                    "guid": "806b0662-49ac-4cc7-87c9-e3fc59be4605"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_036Ext1_556_W15.xml",
+                      "guid": "da50427a-0364-4a4c-885b-bf4d07a00205",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_036Ext1_556_W15.xml",
+                          "guid": "63a5b69a-a89a-4f8d-ad78-3f7df31661d9",
+                          "type": "Class_e7d2410a"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_M05.xml",
+                          "guid": "20eae443-52ef-4b08-9b5b-313446a00033",
+                          "type": "Class_303a33cc"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    },
+    {
+      "weapon": "EF88",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Extended2.xml",
+      "attachmentGuid": "717b11b0-986f-4fe8-8e66-0fe845ab4186",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+        "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/AssaultRifle/EF88/U_PRG_EF88_MAG_Extended2",
+        "guid": "b3e74f88-6704-4a95-9cbb-f23e049c140e"
+      },
+      "rawPointCost": "0x00000019",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+          "guid": "433b8e99-ecde-4e27-9716-5ca68941544e",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+              "guid": "f0189a5f-6df9-4f01-8571-e17d97c7a275",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_042Ext2_556_W25",
+                    "guid": "a50dc855-af89-4c7b-acf1-30502f74645b"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_042Ext2_556_W25.xml",
+                      "guid": "b2ab8d11-146d-442d-b5f8-f5a74fd0e2d1",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_042Ext2_556_W25.xml",
+                          "guid": "48b5429d-cf6c-485d-8e2e-dcef8cc74c64",
+                          "type": "Class_e7d2410a"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_M05.xml",
+                          "guid": "20eae443-52ef-4b08-9b5b-313446a00033",
+                          "type": "Class_303a33cc"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    },
+    {
+      "weapon": "EF88",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Extended2Fast.xml",
+      "attachmentGuid": "8d3cecb4-1e38-4d63-b896-6655565aa4ec",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+        "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/AssaultRifle/EF88/U_PRG_EF88_MAG_Extended2Fast",
+        "guid": "e2f5a4bd-c95f-4286-ba57-9338e98cec72"
+      },
+      "rawPointCost": "0x0000001e",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+          "guid": "b4abc30d-8ddf-4e96-bc84-e4c996ae3ce7",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+              "guid": "9f2d926f-a8e0-4754-b318-152afed6fc47",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_042Ext2Fast_556_W30",
+                    "guid": "a182f632-8387-4ed1-add5-5fe5fee15958"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/WPM_MAG_042Ext2Fast_556_W30.xml",
+                      "guid": "5ddbfcb2-d700-4a59-9a78-0cd066d6b501",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/WPM_MAG_042Ext2Fast_556_W30.xml",
+                          "guid": "f255115d-d919-4860-9ebe-6e4738273d62",
+                          "type": "Class_e7d2410a"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_M05.xml",
+                          "guid": "20eae443-52ef-4b08-9b5b-313446a00033",
+                          "type": "Class_303a33cc"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedRegular_P10.xml",
+                          "guid": "46f973bd-002d-40e3-a35d-7fb4bf4c6c9f",
+                          "type": "Class_9705264b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_M05.xml",
+                          "guid": "b1987108-56a5-4d06-8d59-a6d34f9414ea",
+                          "type": "Class_4aac041b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_M05.xml",
+                          "guid": "2bb2304d-b6b4-45ef-b14e-d034777212d1",
+                          "type": "Class_03db7a68"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    },
+    {
+      "weapon": "EF88",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Fast.xml",
+      "attachmentGuid": "4a2ba789-6c3e-40f2-a69b-e3e8ac10acad",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+        "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/AssaultRifle/EF88/U_PRG_EF88_MAG_Fast",
+        "guid": "ce195624-2784-46bb-835c-7b8d25b86df8"
+      },
+      "rawPointCost": "0x0000000a",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+          "guid": "65cd73e1-c6e2-4133-8e3a-d2ce9acdb450",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+              "guid": "02b62c45-bdb7-4bd7-8e22-bb2f03a4ac4e",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10",
+                    "guid": "edca4f8f-16bd-4699-b138-a2ab5a84b133"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml",
+                      "guid": "02b044c5-0959-46af-8f7c-9f6c8350607f",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedRegular_P10.xml",
+                          "guid": "46f973bd-002d-40e3-a35d-7fb4bf4c6c9f",
+                          "type": "Class_9705264b"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    },
+    {
+      "weapon": "EF88",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Regular.xml",
+      "attachmentGuid": "3257c4d0-6d53-49d4-ba05-ef18d732a320",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Magazine",
+        "guid": "454d198f-27ad-4405-a441-d14bbd31dfc8"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/AssaultRifle/EF88/U_PRG_EF88_MAG_Regular",
+        "guid": "0135c868-6343-49e8-852c-4f8ea0e61eed"
+      },
+      "rawPointCost": "0x00000005",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+          "guid": "eea05631-84f1-461a-8f68-2fed4fed5e79",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Magazine",
+            "guid": "c5a2493e-4fa4-4bb7-abef-21f843a6bc73"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml",
+              "guid": "cdc7b141-1ff1-40bb-8f76-788c38f35b63",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/U_WPM_MAG_Std_W05",
+                    "guid": "95c553b6-0900-4f04-b727-0dc2761f92ef"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/WPM_MAG_Std_W05.xml",
+                      "guid": "e717240a-bd04-4a8f-aa88-edf00e31b8f9",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml",
+                          "guid": "1955c72d-e5a2-448a-8444-9181cd095ee4",
+                          "type": "Class_4aac041b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml",
+                          "guid": "b66c5803-07dd-46d4-901b-1a97928885ca",
+                          "type": "Class_03db7a68"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": []
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability"
+        }
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Extended1.xml": "1dad1940bc93a1e8761ab0998416c074c040a85fbd58b725cee5221e45de45d9",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Extended2.xml": "c8552ce7fe48474adf9ae858ca8526f274c536fef29a60f6480110df93633784",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Extended2Fast.xml": "330d25426f7feee16d22049946145c78286ffc8a856a03547faa45d811b87b4f",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Fast.xml": "8596287091fdc99877f78eb8d4b1eb966be581addee4f779a65b1a2f07b7ac9a",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MAG_Regular.xml": "4509c9fb533931a255daabb7f2a449a3a6f443af0a432c415eaf40f3890b431d",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_Ability.xml": "3370039bc8bc60af853f6266b81645e8f9245f0cbd395092b02aa4abd7e96aaa",
+    "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveSpeed/WME_ADSMoveSpeed_M05.xml": "ce6b07a86105f26e45e57da1fc8c26aea6575a765ee7ea1839ce93201a80d33c",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_M05.xml": "d34f927620953d394d7a884d14965ed5e6e95a5c382552b553a70fc8e8b3ca52",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml": "eca498340fa0f588ece213a65cab0c5b6d53d2cbd9e48d11fbd5e92212b6ced8",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_M05.xml": "ab2f421fc5ef9084966b2c0368bccdc6f214275cf2519bbff769933676887366",
+    "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml": "c9a3d9c3a5c8498d765e7d35fa6a5aac6a68646bcb52fa493750a32623bfbaf3",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/WPM_MAG_042Ext2Fast_556_W30.xml": "336c9b97139979b077248bf580ab276768f9d31e130b12b98d044d6851d3556f",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_036Ext1_556_W15.xml": "df81ae1fa1ba7f4a824adb83a941cc7c9ebcf1f4b671e3990cfda004a755b37e",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_042Ext2_556_W25.xml": "f891b749828b20bdff749b54c23a492a0e652adb36fb1bfacff41d70df26489c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml": "f9c34240556a60bba3a6c781c2c3fd9cb3bf5496ce20c21f97cbcb7663fadc7c",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/Magazine/WPM_MAG_Std_W05.xml": "7362562482b4467a28ff5a1c310865e7ad6a9a84fc2dcb0b999191f0b14b6edf",
+    "Common/Hardware/weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedRegular_P10.xml": "0b0ca47f9bb9fd1a682ac2dd9dd28fc6620c456268d3ec71af61a1397fbb7f3a"
+  },
+  "previousWeaponMag": {
+    "defAds": 4,
+    "defSpr": 4,
+    "defAms": 5,
+    "def": "30_rnd",
+    "mags": {
+      "30_rnd": {
+        "name": "30 Rnd",
+        "pts": 5,
+        "mag": 30,
+        "adsTimeTierShift": 0,
+        "sprintRecoveryTierShift": -1,
+        "adsMoveSpeedTierShift": 0,
+        "reloadSpeedTier": 0
+      },
+      "30_fast": {
+        "name": "30 Fast",
+        "pts": 10,
+        "mag": 30,
+        "adsTimeTierShift": 0,
+        "sprintRecoveryTierShift": 0,
+        "adsMoveSpeedTierShift": 0,
+        "reloadSpeedTier": 1
+      },
+      "36_rnd": {
+        "name": "36 Rnd",
+        "pts": 15,
+        "mag": 36,
+        "adsTimeTierShift": 0,
+        "sprintRecoveryTierShift": 1,
+        "adsMoveSpeedTierShift": 1,
+        "reloadSpeedTier": 0
+      },
+      "42_rnd": {
+        "name": "42 Rnd",
+        "pts": 25,
+        "mag": 42,
+        "adsTimeTierShift": 0,
+        "sprintRecoveryTierShift": 1,
+        "adsMoveSpeedTierShift": 1,
+        "reloadSpeedTier": 0
+      },
+      "42_fast": {
+        "name": "42 Fast",
+        "pts": 30,
+        "mag": 42,
+        "adsTimeTierShift": 0,
+        "sprintRecoveryTierShift": 2,
+        "adsMoveSpeedTierShift": 1,
+        "reloadSpeedTier": 1
+      }
+    },
+    "baseSprintRecoveryTier": 6,
+    "weaponSprintRecoveryTierShift": -1,
+    "sprintRecoveryTierTable": "primary",
+    "drawTimeTier": 4,
+    "drawTimeGroup": "primary",
+    "drawTimeOffset": 8
+  },
+  "userPanelConfirmation": {
+    "source": "User message: 30 Fast 200ms; 36 200ms; 42 200ms; 42 Fast 233ms",
+    "valuesMs": {
+      "30_fast": 200,
+      "36_rnd": 200,
+      "42_rnd": 200,
+      "42_fast": 233
+    },
+    "referenceBuild": "EF88 Basic barrel, as specified in the question"
+  },
+  "promotedChanges": {
+    "36_rnd": {
+      "previousSprintRecoveryTierShift": 1,
+      "sprintRecoveryTierShift": 0
+    },
+    "42_rnd": {
+      "previousSprintRecoveryTierShift": 1,
+      "sprintRecoveryTierShift": 0
+    },
+    "42_fast": {
+      "previousSprintRecoveryTierShift": 2,
+      "sprintRecoveryTierShift": 1
+    }
+  }
+}

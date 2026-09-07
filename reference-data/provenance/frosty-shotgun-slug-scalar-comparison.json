@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "status": "field-distinction-only",
+  "sourceGraphSha256": "559625dfb86bd32085811476f922fe39b937a6ec4196213f857e1790f71acde3",
+  "scope": "All 12 graph-bound Class_3e93759b objects",
+  "finding": "Named muzzle-velocity effects and selected subsonic effects vary Field_6a5c4efd while retaining Field_1da7e9ad=1. All four slug effects retain Field_6a5c4efd=1 and set Field_1da7e9ad=4.",
+  "limitation": "This distinguishes serialized fields; it does not name Field_1da7e9ad or establish its native operation. A fourfold slug muzzle-velocity change is not justified by these records.",
+  "records": [
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/MuzzleVelocity/WME_MuzzleVelocity_P05.xml",
+      "sha256": "1f3a4b84e63701c685419a54ab53c6a91250fcd8d89bd3ddc0f2e3036062accf",
+      "guid": "027356a5-fd44-4331-876f-2c3f9f35fcd2",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "1.25",
+        "Field_1da7e9ad": "1"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/MuzzleVelocity/WME_MuzzleVelocity_M05.xml",
+      "sha256": "815c385cd5cc228ff2d8c97e1e8368900b689d820044f554a581521175ea2592",
+      "guid": "11013f68-f803-42ff-87a3-7f4ddae3d9b9",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "0.8",
+        "Field_1da7e9ad": "1"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15_HK417.xml",
+      "sha256": "029e715d43a3130bf862bd361d3ce3612cca886bbb6ed9caab03a094a9e9f698",
+      "guid": "b03da70d-620e-4ca9-8089-04f54c4e4950",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "0.48857",
+        "Field_1da7e9ad": "1"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25_HK417.xml",
+      "sha256": "a52df878ba6b4cc7a62107d08275c5ff4b8f337c35b974a6f145566b35dc6b24",
+      "guid": "436fa5e3-1cc3-48da-adb4-572def24a632",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "0.48857",
+        "Field_1da7e9ad": "1"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35_HK417.xml",
+      "sha256": "26a0c651dc86f4857ccc7063916cf8cb2ec39b78cb2322c935bb15533947a097",
+      "guid": "aef9ffad-2984-438e-b558-240b7f5e0631",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "0.48857",
+        "Field_1da7e9ad": "1"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/MuzzleVelocity/WME_MuzzleVelocity_M15.xml",
+      "sha256": "0c15c2112e844b40102bb4f5be0f9fb7f2c9083c540fc8a91584fcba715e03e5",
+      "guid": "e1b42947-1ebb-489e-b1af-1c4ec556916a",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "0.512",
+        "Field_1da7e9ad": "1"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/Slugs/WPM_AMO_Slugs_185KSK_W40.xml",
+      "sha256": "3ed0d2212e60ed995bf7774dce9b78d030337517ac22c4ed1e6d3e095709f759",
+      "guid": "416795f5-9b19-4609-b872-39e3ada8a69d",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "1",
+        "Field_1da7e9ad": "4"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/Slugs/WPM_AMO_Slugs_590A1_W40.xml",
+      "sha256": "6dd279f91cd20761973a1807538e4617253a540fe23919729efd11fadfea118b",
+      "guid": "a5237e12-789d-4f52-b4ea-dfaaa5d23973",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "1",
+        "Field_1da7e9ad": "4"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/Slugs/WPM_AMO_Slugs_DP12_W40.xml",
+      "sha256": "92795f6be529f368a5f86350e62c0776f256d816969f9151e0fc9c79245496c8",
+      "guid": "a869989d-4be3-4b08-8537-c6508ad7dafe",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "1",
+        "Field_1da7e9ad": "4"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/Slugs/WPM_AMO_Slugs_M1014_W40.xml",
+      "sha256": "8d38eb2a7982e08046995fa49ebb03b3d3128473e932fd28237336f94fc48712",
+      "guid": "8b77dffc-9bbf-41d4-9a77-3ff741e31457",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "1",
+        "Field_1da7e9ad": "4"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/MuzzleVelocity/WME_MuzzleVelocity_M10.xml",
+      "sha256": "9a28781721f100c1bbc5ffffd875595124503ec55f328a57ffa9b2183148cc55",
+      "guid": "2592d4c4-13c5-45b6-a880-4298b759b4e5",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "0.64",
+        "Field_1da7e9ad": "1"
+      }
+    },
+    {
+      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicPenetration_W10.xml",
+      "sha256": "d847b1fc342bd9d337c37d58a17443cb5c0d3ae93677d6a6c2f4c7320ad53892",
+      "guid": "f74b29f2-cbb5-4ce5-94ca-b0e3a4c36bcb",
+      "fields": {
+        "Field_8dcef541": "-1",
+        "Field_2fd1661f": "-1",
+        "Field_6a5c4efd": "0.593",
+        "Field_1da7e9ad": "1"
+      }
+    }
+  ]
+}

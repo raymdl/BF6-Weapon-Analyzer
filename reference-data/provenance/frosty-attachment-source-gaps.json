@@ -1,0 +1,472 @@
+{
+  "status": "Source graph gap verified; no runtime availability or zero-effect conclusion",
+  "method": "Confirm each progression object GUID exists in its exported XML and is absent from the corresponding weapon Ability XML.",
+  "noAbilityBranch": [
+    {
+      "weapon": "G3A4",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_BRL_LightBarrel.xml",
+      "pointCost": 20,
+      "progressionXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/U_PRG_G3A4_BRL_LightBarrel.xml",
+      "progressionGuid": "7c78694f-eb83-47d4-9a35-4d9e8bf81f4c",
+      "abilityXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/G3A4_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_BRL_LightBarrel.xml": "8522ec75c32c18f8e2ded694b50866862d956e8c9c9c73bd03dd12919dc91773",
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/U_PRG_G3A4_BRL_LightBarrel.xml": "96cdb6c032fbeb28667d7b1e705b1dde27acee4b78dc2d4090b9d76718014129",
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/G3A4_Ability.xml": "44bfe8ef300cd95c653c82dfff229dcc792ec1da14562036e24e19a2aecd3928"
+      }
+    },
+    {
+      "weapon": "SCARL",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_M4QDFlashHider.xml",
+      "pointCost": 10,
+      "progressionXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/U_PRG_SCARL_MZL_M4QDFlashHider.xml",
+      "progressionGuid": "ac038312-a222-4e20-80fb-534f12c9dd9a",
+      "abilityXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/SCARL_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_M4QDFlashHider.xml": "64c427ec5713cde406e58534e0487b0b5dab8abb596d742295c25b84371d35c2",
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/U_PRG_SCARL_MZL_M4QDFlashHider.xml": "fa9c96c716cf54729c43f0f7cd7e0a611cced74074f5876bbeb8070dd41ac99b",
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/SCARL_Ability.xml": "494cadc89eb33910652482d602205043c872916ea5fd2f88f8fe3ddf543016d9"
+      }
+    },
+    {
+      "weapon": "M2010ESR",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_Muzzle.xml",
+      "pointCost": 0,
+      "progressionXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/U_PRG_M2010ESR_MZL_Muzzle.xml",
+      "progressionGuid": "a70713eb-ac39-4e23-b99e-28ed56fe7c9b",
+      "abilityXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_Muzzle.xml": "38316a1ab7e154f1bfe740587563486c6af7499e1feacf960917bc9b04c5e85e",
+        "Common/Hardware/Weapons/BoltAction/M2010ESR/U_PRG_M2010ESR_MZL_Muzzle.xml": "18f760fe573b0223cdabb80bcf76096ff10ab7bb653a6bc8291ec45f9404dccb",
+        "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_Ability.xml": "5b5768070f81c350731ac2325f1d3a11ed917fef29db5facb08f32f4196dfdd0"
+      }
+    },
+    {
+      "weapon": "M60E6",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_ERG_Improved_Mag_Catch.xml",
+      "pointCost": 5,
+      "progressionXml": "Common/Hardware/Weapons/MG/M60E6/U_PRG_M60E6_ERG_ImprovedMagCatch.xml",
+      "progressionGuid": "feb7000b-2562-414a-a951-43a3701c6a5d",
+      "abilityXml": "Common/Hardware/Weapons/MG/M60E6/M60E6_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_ERG_Improved_Mag_Catch.xml": "4024848637ef1b70e991938f508195c231220694b422d863d1089e70c9b5c791",
+        "Common/Hardware/Weapons/MG/M60E6/U_PRG_M60E6_ERG_ImprovedMagCatch.xml": "1776ac712440569c9187cf468521b1e2dacf35538604fc5a5a02960da8457984",
+        "Common/Hardware/Weapons/MG/M60E6/M60E6_Ability.xml": "63e9dfe455db64b6439a74d28c754faedb449b738a2fe7a080e43ba333f49b2e"
+      }
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_CMR201.xml",
+      "pointCost": 10,
+      "progressionXml": "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_CMR201.xml",
+      "progressionGuid": "43ebcc89-7c7c-40ca-bb17-a11017ce4436",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_CMR201.xml": "877abd9bc240aaf883bfb91fc87fc832e14157c0154c8b59ddef5ddb5ea7e979",
+        "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_CMR201.xml": "c68c6d76e6ca149bb42a5683c6cb252304e18f26355d49e5aa285582fb63c815",
+        "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5"
+      }
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_HolosunRMLt.xml",
+      "pointCost": 10,
+      "progressionXml": "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_HolosunRMLt.xml",
+      "progressionGuid": "a13f088f-c6ae-41d8-be42-452240b432c3",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_HolosunRMLt.xml": "55ebd492d7d2d3cc4fb4aa52dfdb3262e407c7d27dd981494d47042227c7eba3",
+        "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_HolosunRMLt.xml": "f211ceb3468a21c3400408a2d3d7b6cb6b1389fde889326fa104b27cd8cfff5a",
+        "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5"
+      }
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_LMDPEIR1.xml",
+      "pointCost": 15,
+      "progressionXml": "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_LMDPEIR1.xml",
+      "progressionGuid": "6290286c-9146-496f-ab05-3485abe89ca0",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_LMDPEIR1.xml": "541998e52936f87068daf909183270a2849fce62e45da3966d1d77dddb14d81e",
+        "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_LMDPEIR1.xml": "acd12cba9b29da2a410bde544985d0e08e9e8a1cd00793cda3499b330aad29ef",
+        "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5"
+      }
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_Perst1.xml",
+      "pointCost": 20,
+      "progressionXml": "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_Perst1.xml",
+      "progressionGuid": "fd04c78b-b315-463f-9d63-005c8faf484b",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_Perst1.xml": "39b88318ae8a07f6ca640d348de95fec84934d2a9bede0debac0299c7b0b0039",
+        "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_Perst1.xml": "c4c1c05d3e5c16adde4059abb48701185ac9f06ee2f7f471d6c0fa4b8456ae55",
+        "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5"
+      }
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_SFX300.xml",
+      "pointCost": 10,
+      "progressionXml": "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_SFX300.xml",
+      "progressionGuid": "8f369218-65b6-4a7b-9993-af82eebf1fce",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_SFX300.xml": "efd87035a0dfe2cf1920254dadbdd77fd2d9c489684e2d050010016ec6050856",
+        "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_SFX300.xml": "f58c471e2a2d5758df34d51670312802769936bd0a6c0852179d688e693ff04f",
+        "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5"
+      }
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_SFX400.xml",
+      "pointCost": 20,
+      "progressionXml": "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_SFX400.xml",
+      "progressionGuid": "00c32ed9-15a7-4821-b8db-891c30e02fee",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_SFX400.xml": "17540a67c8315058e25c77106e56a2f4438eef96e7df9205355cf25028e17e18",
+        "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_SFX400.xml": "03af40cb9a9fda049185af432a522bfe0349d5495c8113c2febf1e3d06f0d363",
+        "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5"
+      }
+    },
+    {
+      "weapon": "DP12",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_X5LG3.xml",
+      "pointCost": 20,
+      "progressionXml": "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_X5LG3.xml",
+      "progressionGuid": "4654ef33-5444-41ea-8334-09ec5b358888",
+      "abilityXml": "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml",
+      "progressionGuidPresentInAbility": false,
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_BTM_X5LG3.xml": "25b8a12b14202aa2a9352b344c9ee6864c0b9a995a4a5f261c49c592aa487b56",
+        "Common/Hardware/Weapons/Shotgun/DP12/U_PRG_DP12_BTM_X5LG3.xml": "2d009dfdad27dce2d4f4f905cae4252d5d01fc361700ca00249c9785cdbf59d1",
+        "Common/Hardware/Weapons/Shotgun/DP12/DP12_Ability.xml": "cef18788459cb330dc10a7b9435efbc71e39102781afaebed53dc6e15f2969c5"
+      }
+    }
+  ],
+  "remainingIssueCounts": {
+    "missingLegacyWbModifierAssetReferences": 8,
+    "selectorWithoutWbGsModifierMatch": 5
+  },
+  "limitation": "This does not prove an export failure, inactive attachment, or effect-free selection. Preserve existing site data pending activation evidence.",
+  "magazinesAbsentFromSite": [
+    {
+      "weaponId": "sor300sc",
+      "candidateLabel": "45 Rnd",
+      "status": "Excluded: user confirmed unavailable in current multiplayer loadout menu.",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Extended3.xml",
+      "rawPointCost": "0x00000023",
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_045Ext3_556_W35",
+          "guid": "a0128e93-1b29-4822-ac71-9baf762f6a86"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Extended3.xml": "807089242ce4ca49d182093a112fc7f463846ff38ff35728035487a48980b4fc",
+        "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_Ability.xml": "58de729b3f0175b81729517f3276356f6bc9c2579bf92efec17b6256a962dec5",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_045Ext3_556_W35.xml": "745b5229dfb58459e677a9f4f9b2a7c576edd1da4b538c2ffe71d82f740cb35e"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "statement": "SOR-300SC: no 45 or 45 fast."
+      }
+    },
+    {
+      "weaponId": "sor300sc",
+      "candidateLabel": "45 Fast",
+      "status": "Excluded: user confirmed unavailable in current multiplayer loadout menu.",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Extended3Fast.xml",
+      "rawPointCost": "0x00000028",
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_045Ext3Fast_556_W40",
+          "guid": "53290d9c-0c8f-4de0-8937-31f1cc412875"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Extended3Fast.xml": "c6151b37bee22e610937ba4ef890dd1e5c952d771cb4be06585ff74b816b361b",
+        "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_Ability.xml": "58de729b3f0175b81729517f3276356f6bc9c2579bf92efec17b6256a962dec5",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/WPM_MAG_045Ext3Fast_556_W40.xml": "0f2ba45ae8bd1a8a1e081a6ab7879eba7dd0ca27e0c4741f643c6d9eed581eab"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "statement": "SOR-300SC: no 45 or 45 fast."
+      }
+    },
+    {
+      "weaponId": "psr",
+      "candidateLabel": "10 Fast",
+      "status": "Excluded: user confirmed unavailable in current multiplayer loadout menu.",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MAG_Fast.xml",
+      "rawPointCost": "0x0000000a",
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10",
+          "guid": "edca4f8f-16bd-4699-b138-a2ab5a84b133"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MAG_Fast.xml": "9f977243db176f0403704a4a3f2937df8d621c034a8d419ab2261585fc03b6f1",
+        "Common/Hardware/Weapons/BoltAction/MRAD/MRAD_Ability.xml": "f951bae2ae662ee1b403bf4e24c3095f00349d34e0d662848a14caa7b566fc42",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml": "f9c34240556a60bba3a6c781c2c3fd9cb3bf5496ce20c21f97cbcb7663fadc7c"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "statement": "no none of those 3 are availalbe in game",
+        "context": "PSR 10 Fast, SV-98 10 Fast, ES 5.7 20 Fast"
+      }
+    },
+    {
+      "weaponId": "sv98",
+      "candidateLabel": "10 Fast",
+      "status": "Excluded: user confirmed unavailable in current multiplayer loadout menu.",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MAG_Fast.xml",
+      "rawPointCost": "0x0000000a",
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10",
+          "guid": "edca4f8f-16bd-4699-b138-a2ab5a84b133"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MAG_Fast.xml": "3c70cfac5e7ccc9eb9e7afafadf36823cc6d3a1d0c5915a4bf84e33989436812",
+        "Common/Hardware/Weapons/BoltAction/SV98M/SV98M_Ability.xml": "a71349e6bc27963b977fca03426af063c07e90935afc904a25bd7d31f73086b7",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml": "f9c34240556a60bba3a6c781c2c3fd9cb3bf5496ce20c21f97cbcb7663fadc7c"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "statement": "no none of those 3 are availalbe in game",
+        "context": "PSR 10 Fast, SV-98 10 Fast, ES 5.7 20 Fast"
+      }
+    },
+    {
+      "weaponId": "es57",
+      "candidateLabel": "20 Fast",
+      "status": "Excluded: user confirmed unavailable in current multiplayer loadout menu.",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_MAG_Fast.xml",
+      "rawPointCost": "0x0000000a",
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10",
+          "guid": "edca4f8f-16bd-4699-b138-a2ab5a84b133"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_MAG_Fast.xml": "fbbf6760403a707bbf417cdebce627e278721ca50248d4e2eef82319cf2ac4a8",
+        "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_Ability.xml": "e5f1e2ed8f95d9560c5b2198b26cafae5ae301047644a9fbb8aa6d9204514bcf",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/WPM_MAG_Fast_W10.xml": "f9c34240556a60bba3a6c781c2c3fd9cb3bf5496ce20c21f97cbcb7663fadc7c"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "statement": "no none of those 3 are availalbe in game",
+        "context": "PSR 10 Fast, SV-98 10 Fast, ES 5.7 20 Fast"
+      }
+    }
+  ],
+  "ergonomicsAbsentFromSite": [
+    {
+      "weaponId": "ak4d",
+      "candidateLabel": "Improved Mag Catch",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_ERG_Improved_Mag_Catch.xml",
+      "rawPointCost": "0x00000005",
+      "selectedAbilityBranchCount": 1,
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/ImprovedMagCatch/U_WPM_ERG_ImprovedMagCatch_W05",
+          "guid": "a4ee0d99-daea-4621-89a1-5241ed39f49c"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_ERG_Improved_Mag_Catch.xml": "74f21bdd352816395ff2258816b34f0d0fbeefa7e097cb7e7ad04008fce1ae09",
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/G3A4_Ability.xml": "44bfe8ef300cd95c653c82dfff229dcc792ec1da14562036e24e19a2aecd3928"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false
+      }
+    },
+    {
+      "weaponId": "sor300sc",
+      "candidateLabel": "Improved Mag Catch",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_ERG_Improved_Mag_Catch.xml",
+      "rawPointCost": "0x00000005",
+      "selectedAbilityBranchCount": 1,
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/ImprovedMagCatch/U_WPM_ERG_ImprovedMagCatch_W05",
+          "guid": "a4ee0d99-daea-4621-89a1-5241ed39f49c"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_ERG_Improved_Mag_Catch.xml": "ab172baeda645febfbbc5abf55abe54bf72ce39628c90f24b095ccca63969a15",
+        "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_Ability.xml": "58de729b3f0175b81729517f3276356f6bc9c2579bf92efec17b6256a962dec5"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false
+      }
+    },
+    {
+      "weaponId": "m60",
+      "candidateLabel": "Improved Mag Catch",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_ERG_Improved_Mag_Catch.xml",
+      "rawPointCost": "0x00000005",
+      "selectedAbilityBranchCount": 0,
+      "selectors": [],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_ERG_Improved_Mag_Catch.xml": "4024848637ef1b70e991938f508195c231220694b422d863d1089e70c9b5c791"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false,
+        "ergonomicsSlotAvailable": false
+      }
+    },
+    {
+      "weaponId": "l110",
+      "candidateLabel": "Aftermarket Buffer",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_ERG_RecoilBuffer.xml",
+      "rawPointCost": "0x00000005",
+      "selectedAbilityBranchCount": 1,
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RecoilBuffer/U_WPM_ERG_RecoilBuffer_W05",
+          "guid": "43773601-abe1-4838-af35-139ab939187c"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_ERG_RecoilBuffer.xml": "88190b5090d93be8222a1c36b93c8614202cfbbbdddd7f39fffdcd7799f8ff89",
+        "Common/Hardware/Weapons/MG/Minimi/Minimi_Ability.xml": "8d3d50917f4b60ac75035f2db0fd3c88da43ab4641ea690309cacaab77b17fc4"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false,
+        "ergonomicsSlotAvailable": false
+      }
+    },
+    {
+      "weaponId": "m1014",
+      "candidateLabel": "Aftermarket Buffer",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_ERG_RecoilBuffer.xml",
+      "rawPointCost": "0x00000005",
+      "selectedAbilityBranchCount": 1,
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RecoilBuffer/U_WPM_ERG_RecoilBuffer_W05",
+          "guid": "43773601-abe1-4838-af35-139ab939187c"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_ERG_RecoilBuffer.xml": "286de02866d6b81ac9a4eab8e3d481756f6136ed457e726f09d7e2a1f40c6492",
+        "Common/Hardware/Weapons/Shotgun/M1014/M1014_Ability.xml": "826dd15eb87ca89334d3d3a315a1e8c1a732fd867144a8137b4d4d8f9aec4e7a"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false,
+        "ergonomicsSlotAvailable": false
+      }
+    },
+    {
+      "weaponId": "es57",
+      "candidateLabel": "Speed Holster",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_ERG_PistolQuickdraw.xml",
+      "rawPointCost": "0x00000005",
+      "selectedAbilityBranchCount": 1,
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/QuickdrawPistol/U_WPM_ERG_QuickDraw_W05",
+          "guid": "1c97b5b0-db19-4b26-b5bd-60f3e71f3708"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_ERG_PistolQuickdraw.xml": "38cae430617ddd860a48871f1494b96a68d8bd8c005204323da439c2d3ad96d6",
+        "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_Ability.xml": "e5f1e2ed8f95d9560c5b2198b26cafae5ae301047644a9fbb8aa6d9204514bcf"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false
+      }
+    },
+    {
+      "weaponId": "m44",
+      "candidateLabel": "Match Trigger",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_MatchTrigger.xml",
+      "rawPointCost": "0x0000000f",
+      "selectedAbilityBranchCount": 1,
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/MatchTrigger/U_WPM_ERG_MatchTrigger_W15",
+          "guid": "3eaeac2e-a854-4cd1-90db-216da7845135"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_ERG_MatchTrigger.xml": "a5849de8801c5a5eac3b6bcadfc930aa77a5f2c41ef4ae277ba0e72b356ddaa2",
+        "Common/Hardware/Weapons/Secondary/RagingHunter/RagingHunter_Ability.xml": "e7796d05fa731e4aaf0575a50954cf763cb84d710229034105c7380be1f3ebd6"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false
+      }
+    },
+    {
+      "weaponId": "grtcps",
+      "candidateLabel": "Burst Training (candidate label)",
+      "status": "Excluded: user confirmed unavailable in current multiplayer.",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_ERG_BurstFireEnable.xml",
+      "rawPointCost": "0x0000000f",
+      "selectedAbilityBranchCount": 1,
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/U_WPM_ERG_BurstFireActive",
+          "guid": "588728fd-2ae7-4424-aa22-45d9b3c82ba0"
+        },
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/U_WPM_ERG_BurstFireReplace_W10",
+          "guid": "236ac8d4-be05-4576-b9ee-11b8a8170fa5"
+        }
+      ],
+      "sourceSha256": {
+        "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_ERG_BurstFireEnable.xml": "a7ffa81001fbf7ce86fd6ff46d0ebbf0c373623ff921542273d38320e130193b",
+        "Common/Hardware/Weapons/DMR/MSBSGROTCPS/MSBSGROTCPS_Ability.xml": "49e42bd25fe4da48e7a31639275626881b0feeb87525b597ebcbca0fa6c25156"
+      },
+      "availabilityEvidence": {
+        "type": "user report",
+        "date": "2026-09-05",
+        "available": false
+      }
+    }
+  ]
+}
