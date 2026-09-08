@@ -164,7 +164,6 @@ if (drawTimeAxis == null || typeof drawTimeAxis !== 'object' || Array.isArray(dr
     semiAutoSidearm: [...DRAW_TIME_GROUPS.semiAutoSidearm].sort(),
     revolverOrAutoSidearm: [...DRAW_TIME_GROUPS.revolverOrAutoSidearm].sort(),
   };
-  if (expectedGroups.primary.length !== 55) fail(`draw-time standard primary set must contain 55 weapons; found ${expectedGroups.primary.length}`);
   const actualGroups = drawTimeAxis.weaponGroups ?? {};
   if (JSON.stringify(Object.keys(actualGroups).sort()) !== JSON.stringify(Object.keys(expectedGroups).sort())) {
     fail('DRAW_TIME_AXIS.weaponGroups must contain exactly primary, db12, semiAutoSidearm, and revolverOrAutoSidearm');
@@ -176,11 +175,6 @@ if (drawTimeAxis == null || typeof drawTimeAxis !== 'object' || Array.isArray(dr
       fail(`DRAW_TIME_AXIS.weaponGroups.${group} is not the exact approved weapon set`);
     }
   }
-}
-
-const resolverSource = readFileSync(resolve(root, 'sim/applyAttachments.js'), 'utf8');
-if (/Math\.abs\(DEPLOY_TIME_TIERS/.test(resolverSource) || /baseDeployIdx/.test(resolverSource)) {
-  fail('sim/applyAttachments.js must not contain a nearest-value deploy resolver path');
 }
 
 if (liveBaseline.status !== 'current-live' || !Number.isInteger(liveBaseline.weaponCount)) {

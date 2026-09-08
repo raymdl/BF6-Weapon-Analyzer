@@ -1,3 +1,7 @@
+import { availableAttachments } from './loadout.js';
+
+export const TARGET_DEFAULT_DISTANCE = 20;
+
 /**
  * Application-owned share-link codec.
  *
@@ -7,8 +11,6 @@
  */
 
 const ATT_ORDER = ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'ammo', 'ergo', 'mag'];
-
-const byId = items => Object.fromEntries((items ?? []).map(item => [item.id, item]));
 
 export function createShareCodec({
   SIGHTS = [],
@@ -20,23 +22,18 @@ export function createShareCodec({
   AMMO = [],
   ERGOS = [],
   WEAPON_MAG = {},
-  WEAPON_ERGO = null,
+  WEAPON_ERGO = {},
+  WEAPON_ATTS = {},
+  WEAPON_AMMO = {},
   defaultAttsForWeapon,
 }) {
   if (typeof defaultAttsForWeapon !== 'function') {
     throw new TypeError('createShareCodec requires defaultAttsForWeapon');
   }
 
-  const lookups = {
-    SIGHTS: byId(SIGHTS),
-    MUZZLES: byId(MUZZLES),
-    BARRELS: byId(BARRELS),
-    GRIPS: byId(GRIPS),
-    LASERS: byId(LASERS),
-    LIGHTS: byId(LIGHTS),
-    AMMO: byId(AMMO),
-    ERGOS: byId(ERGOS),
-  };
+  const data = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
+    WEAPON_MAG, WEAPON_ERGO, WEAPON_ATTS, WEAPON_AMMO };
+  const allowed = (weapon, key, id) => availableAttachments(weapon, key, data).some(a => a.id === id);
   const catIdx = (arr, id) => arr.findIndex(item => item.id === id);
   const magKeysFor = weapon => Object.keys(WEAPON_MAG[weapon.id]?.mags ?? {});
 
@@ -68,28 +65,10 @@ export function createShareCodec({
 
   function decodeAttsLegacy(weapon, value) {
     const atts = defaultAttsForWeapon(weapon);
-    const valid = (key, id) => {
-      switch (key) {
-        case 'sight': return !!lookups.SIGHTS[id];
-        case 'muzzle': return !!lookups.MUZZLES[id];
-        case 'barrel': return !!lookups.BARRELS[id];
-        case 'grip': return !!lookups.GRIPS[id];
-        case 'laser': return !!(lookups.LASERS[id] || lookups.GRIPS[id] || lookups.LIGHTS[id]);
-        case 'light': return !!lookups.LIGHTS[id];
-        case 'ammo': return !!lookups.AMMO[id];
-        case 'ergo': return !!lookups.ERGOS[id] && (!WEAPON_ERGO || id === 'none' || WEAPON_ERGO[weapon.id]?.avail.includes(id));
-        case 'mag': return !!WEAPON_MAG[weapon.id]?.mags?.[id];
-        default: return false;
-      }
-    };
     value.split('-').forEach((id, index) => {
       const key = ATT_ORDER[index];
       if (!key || id == null) return;
-      if (id === '') {
-        if (key === 'mag') atts.mag = null;
-        return;
-      }
-      if (valid(key, id)) atts[key] = id;
+      if (allowed(weapon, key, id)) atts[key] = id;
     });
     return atts;
   }
@@ -100,9 +79,7 @@ export function createShareCodec({
     const atts = defaultAttsForWeapon(weapon);
     const magKeys = magKeysFor(weapon);
     const set = (arr, index, slot) => {
-      if (slot === 'ergo' && WEAPON_ERGO && arr[index]?.id !== 'none'
-          && !WEAPON_ERGO[weapon.id]?.avail.includes(arr[index]?.id)) return;
-      if (arr[index]) atts[slot] = arr[index].id;
+      if (arr[index] && allowed(weapon, slot, arr[index].id)) atts[slot] = arr[index].id;
     };
     let match;
     const re = /([A-Z])(\d+)/g;
@@ -151,7 +128,7 @@ export function createShareCodec({
     if (state.recoil.compensationLevel > 0) params.set('rcc', state.recoil.compensationLevel);
     if (state.recoil.view === 'target') {
       params.set('rv', 'target');
-      if (state.recoil.distance !== 30) params.set('rd', state.recoil.distance);
+      params.set('rd', state.recoil.distance ?? TARGET_DEFAULT_DISTANCE);
       if (state.recoil.zeroDistance !== 100) params.set('rz', state.recoil.zeroDistance);
       if (state.recoil.targetAim !== 'chest') params.set('rta', state.recoil.targetAim);
       if (state.recoil.targetAim === 'custom') {
@@ -201,7 +178,8 @@ export function createShareCodec({
     if (params.get('rs') === 'move') state.recoil.stance = 'move';
     if (params.get('rp') === 'console') state.recoil.platform = 'console';
     if (params.get('rv') === 'target') state.recoil.view = 'target';
-    const distance = parseInt(params.get('rd'), 10);
+    // Old target links omitted 30 m. New links always carry their distance.
+    const distance = parseInt(params.get('rd') ?? (state.recoil.view === 'target' ? '30' : ''), 10);
     if (Number.isFinite(distance)) state.recoil.distance = Math.max(5, Math.min(300, distance));
     const zeroDistance = parseInt(params.get('rz'), 10);
     if ([100, 200, 300, 400, 500].includes(zeroDistance)) state.recoil.zeroDistance = zeroDistance;

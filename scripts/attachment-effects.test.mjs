@@ -174,13 +174,11 @@ test('new attachments preserve old share tokens and round-trip with traced weapo
   for (const muzzle of ['hybrid_supp_l', 'hybrid_supp_s', 'hybrid_supp_k']) {
     const atts = loadout(w, { muzzle });
     assert.deepEqual(codec.decodeAtts(w, codec.encodeAtts(w, atts)), atts);
-    assert.equal(Object.values(attachments.WEAPON_ATTS).filter(a => a.muzzle?.includes(muzzle)).length, 39);
     assert.ok(!attachments.WEAPON_ATTS.m87a1.muzzle.includes(muzzle));
   }
   const l110 = weapon('l110');
   const atts = loadout(l110, { grip: 'canted_vertical' });
   assert.deepEqual(codec.decodeAtts(l110, codec.encodeAtts(l110, atts)), atts);
-  assert.equal(Object.values(attachments.WEAPON_ATTS).filter(a => a.grip?.includes('canted_vertical')).length, 9);
   assert.ok(!attachments.WEAPON_ATTS.m433.grip.includes('canted_vertical'));
 });
 

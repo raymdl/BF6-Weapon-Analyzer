@@ -17,4 +17,4 @@ jobs:
       - name: Validate published surface
         run: node scripts/validate-ship-surface.mjs
       - name: Run product tests
-        run: node --test
+        run: node scripts/test.mjs

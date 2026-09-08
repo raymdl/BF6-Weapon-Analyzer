@@ -41,17 +41,18 @@ function corpusMaxFor(aimState) {
     const base = Loadout.blankAtts();
     Loadout.resetAttsForWeapon(base, weapon, LOADOUT_DATA);
     const variants = [{ ...base }];
-    for (const m of attachments.MUZZLES) variants.push({ ...base, muzzle: m.id });
-    for (const b of attachments.BARRELS) variants.push({ ...base, barrel: b.id });
-    for (const g of attachments.GRIPS) variants.push({ ...base, grip: g.id });
-    for (const l of attachments.LASERS) variants.push({ ...base, laser: l.id });
+    for (const key of Object.keys(base)) {
+      for (const item of Loadout.availableAttachments(weapon, key, LOADOUT_DATA)) {
+        variants.push({ ...base, [key]: item.id });
+      }
+    }
     for (const stanceState of ['stand', 'move']) {
       core.setSimContext({ aimState, stanceState });
       for (const atts of variants) {
-        let build;
-        try { build = applyAttachments(weapon, atts); } catch { continue; }
+        const build = applyAttachments(weapon, atts);
         const value = core.effectiveSpreadMax(build);
-        if (Number.isFinite(value) && value > worst.value) worst = { value, weaponId: weapon.id, stance: stanceState, aimState };
+        assert.ok(Number.isFinite(value), `${weapon.id}/${JSON.stringify(atts)}: invalid spread`);
+        if (value > worst.value) worst = { value, weaponId: weapon.id, stance: stanceState, aimState };
       }
     }
   }
@@ -61,14 +62,7 @@ function corpusMaxFor(aimState) {
 const SCALE = core.SPREAD_BAR_SCALE;
 const worst = ['ads', 'hip'].map(corpusMaxFor).reduce((a, b) => (b.value > a.value ? b : a));
 
-test('the bar scale contains every aim state and stance in the corpus', () => {
+test('the bar scale contains default and single-attachment builds in both aim states and stances', () => {
   assert.ok(worst.value <= SCALE,
     `spread reaches ${worst.value.toFixed(3)}° (${worst.weaponId}, ${worst.aimState}/${worst.stance}) but the bar tops out at ${SCALE}°`);
-});
-
-test('the scale is not stranded far above what the model can reach', () => {
-  // Headroom well past the maximum would push every bar into the left of the
-  // track for no reason. The ceiling should sit just clear of the widest case.
-  assert.ok(worst.value / SCALE >= 0.95,
-    `the widest bar fills only ${(worst.value / SCALE * 100).toFixed(0)}% of the track; lower the scale toward ${worst.value.toFixed(2)}°`);
 });

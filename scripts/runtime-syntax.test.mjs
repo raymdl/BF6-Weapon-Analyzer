@@ -31,12 +31,10 @@ function assertParses(relativePath) {
   }
 }
 
-test('ui/app.js parses', () => {
-  assertParses('ui/app.js');
-});
-
-test('every sim module parses', () => {
-  const modules = readdirSync(join(root, 'sim')).filter(file => file.endsWith('.js'));
-  assert.ok(modules.length > 0, 'expected sim modules to check');
-  for (const file of modules) assertParses(join('sim', file));
+test('every runtime UI and simulation module parses', () => {
+  for (const directory of ['ui', 'sim']) {
+    for (const file of readdirSync(join(root, directory)).filter(file => file.endsWith('.js'))) {
+      assertParses(join(directory, file));
+    }
+  }
 });

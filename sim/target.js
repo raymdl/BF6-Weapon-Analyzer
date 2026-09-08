@@ -172,5 +172,5 @@ export function drawTarget(ctx, toX, toY) {
     };
   }
 
-  return () => null;
+  return null;
 }

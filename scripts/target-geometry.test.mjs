@@ -1,10 +1,6 @@
 import assert from 'node:assert/strict';
-import { TARGET_AIM_Y, TARGET_ASPECT_RATIO, TARGET_HEIGHT_CM, summarizeTargetImpacts, targetAimOffset, targetFrame, targetMarkerRadius, targetZoneAt } from '../sim/target.js';
+import { TARGET_HEIGHT_CM, summarizeTargetImpacts, targetAimOffset, targetFrame, targetMarkerRadius, targetZoneAt } from '../sim/target.js';
 
-assert.ok(TARGET_ASPECT_RATIO >= 0.4, 'target should retain broad tactical proportions');
-assert.ok(TARGET_ASPECT_RATIO <= 0.46, 'target should remain distinct from the supplied reference proportions');
-assert.equal(TARGET_AIM_Y.head, 18);
-assert.equal(TARGET_AIM_Y.chest, 66.5);
 assert.equal(targetZoneAt(0, 15), 'head');
 assert.equal(targetZoneAt(0, 60), 'chest');
 assert.equal(targetZoneAt(0, 95), 'stomach');

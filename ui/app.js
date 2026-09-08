@@ -1,3 +1,5 @@
+import { renderAttachmentSection } from './loadout.js';
+import { targetImpactStatsHtml } from './target-stats.js';
 import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
@@ -9,8 +11,8 @@ import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAtta
 import { captureView, captureFilename } from './capture.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
-import { createShareCodec } from '../sim/share-state.js';
-import { drawTarget, summarizeTargetImpacts, targetAimOffset, targetFrame, targetMarkerRadius, whenTargetImageReady } from '../sim/target.js';
+import { createShareCodec, TARGET_DEFAULT_DISTANCE } from '../sim/share-state.js';
+import { drawTarget, targetAimOffset, targetFrame, targetMarkerRadius, whenTargetImageReady } from '../sim/target.js';
 import { flightTimeAtDistance, isProjectileModel, zeroRelativeVerticalOffset } from '../sim/ballistics.js';
 
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
@@ -99,7 +101,6 @@ const ADS_1X_HFOV_DEG = 103;
 const SCOPE_MAGNIFICATIONS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12, 16, 20, 30, 40];
 const TARGET_DISTANCE_MIN = 5;
 const TARGET_DISTANCE_MAX = 300;
-const TARGET_DEFAULT_DISTANCE = 20;
 const TARGET_DEFAULT_MAGNIFICATION = 2.5;
 const TARGET_DEFAULT_Y_MIN_M = -1.5;
 const TARGET_DEFAULT_Y_MAX_M = 2.5;
@@ -175,7 +176,7 @@ const state = {
   chart: { mode: 'dmg', btkHS: 0, showAds: false, showVel: false },
   recoil: {
     aim: 'ads', stance: 'stand',
-    view: 'angle', distance: 20, targetAim: 'chest', customAim: { x: 0, y: 0 }, zeroDistance: 100,
+    view: 'angle', distance: TARGET_DEFAULT_DISTANCE, targetAim: 'chest', customAim: { x: 0, y: 0 }, zeroDistance: 100,
     // The target view has room for one stats block at a time, so it swaps
     // between the impact breakdown and the recoil/spread readout.
     targetStatsTab: 'impact',
@@ -302,11 +303,17 @@ function projectileModelFor(weapon, atts) {
   };
   return isProjectileModel(model) ? model : null;
 }
+const selectedBuildCache = new WeakMap();
 function selectedWeaponBuild(slot) {
   if (!slot?.weapon) return null;
+  const key = JSON.stringify(slot.atts);
+  const cached = selectedBuildCache.get(slot);
+  if (cached?.weapon === slot.weapon && cached.key === key) return cached.build;
   const build = applyAttachments(slot.weapon, slot.atts);
   const projectileModel = projectileModelFor(build, slot.atts);
-  return projectileModel ? { ...build, _projectileModel: projectileModel } : build;
+  if (projectileModel) build._projectileModel = projectileModel;
+  selectedBuildCache.set(slot, { weapon: slot.weapon, key, build });
+  return build;
 }
 function isZeroableWeapon(weapon) {
   return weapon?.cls === 'DMR' || weapon?.cls === 'Sniper Rifle';
@@ -374,7 +381,7 @@ function defaultAttsForWeapon(weapon) {
 }
 const shareCodec = createShareCodec({
   SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
-  WEAPON_MAG, WEAPON_ERGO,
+  WEAPON_MAG, WEAPON_ERGO, WEAPON_ATTS, WEAPON_AMMO,
   defaultAttsForWeapon,
 });
 const defaultAppliedWeaponCache = new Map();
@@ -454,7 +461,14 @@ function setPanelCollapsed(key, collapsed) {
   applyCollapseToDom();
   scheduleUrlSync();
   // Chart.js sizes to a hidden box as zero, so it needs a nudge on reveal.
-  if (key === 'charts' && !collapsed) dmgChart?.resize();
+  if (!collapsed) {
+    if (key === 'charts') { renderChart(); renderBTK(); }
+    if (key === 'recoil') {
+      renderRecoil();
+      if (state.recoil.view === 'target') requestTargetImage();
+    }
+    if (key === 'overview') renderOverview();
+  }
 }
 
 function applyChartStateToDom() {
@@ -487,14 +501,6 @@ function restoreFromUrl() {
   // A link that lands straight in the target view still gets that view's
   // overlay defaults rather than the angle plot's.
   applyViewLayers(state.recoil.view);
-
-  const cm = p.get('cm'); if (cm === 'btk' || cm === 'ttk') state.chart.mode = cm;
-  const hs = parseInt(p.get('hs'), 10); if (hs >= 1 && hs <= 3) state.chart.btkHS = hs;
-  if (p.get('ads') === '1' && state.chart.mode === 'ttk') state.chart.showAds = true;
-  if (p.get('vel') === '1' && state.chart.mode === 'ttk') state.chart.showVel = true;
-  if (p.get('ra') === 'hip') state.recoil.aim = 'hip';
-  if (p.get('rs') === 'move') state.recoil.stance = 'move';
-  if (p.get('rp') === 'console') state.recoil.platform = 'console';
 
   // Reflect the pieces of state that render functions don't set themselves.
   if (state.comparing) {
@@ -560,7 +566,7 @@ function buildWeaponList(containerId, slotIdx) {
 
 function buildAttachmentSection(containerId, slotIdx) {
   const slot = state.slots[slotIdx];
-  Loadout.renderAttachmentSection({
+  renderAttachmentSection({
     containerId,
     atts: slot.atts,
     weapon: slot.weapon,
@@ -625,15 +631,15 @@ function renderStats() {
   document.getElementById('statsArea').style.display = hasAny ? 'flex' : 'none';
   if (hasAny) document.getElementById('statsArea').style.flexDirection = 'column';
   if (!hasAny) return;
-  renderOverview();
+  if (!document.body.classList.contains('is-popout')) renderOverview();
   renderChart();
   renderBTK();
   renderRecoil();
 }
 
 function renderOverview() {
-  const w1 = state.slots[0].weapon ? applyAttachments(state.slots[0].weapon, state.slots[0].atts) : null;
-  const w2 = state.comparing && state.slots[1].weapon ? applyAttachments(state.slots[1].weapon, state.slots[1].atts) : null;
+  const w1 = selectedWeaponBuild(state.slots[0]);
+  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
 
   const hdr = document.getElementById('wHeader');
   hdr.innerHTML = '';
@@ -697,6 +703,7 @@ function renderOverview() {
     appendFireModeBadge(w2, hdr);
   }
 
+  if (!document.getElementById('sGrid').getClientRects().length) return;
   const grid = document.getElementById('sGrid');
   grid.innerHTML = '';
   const fields = [
@@ -863,6 +870,7 @@ function renderOverview() {
     });
     grid.appendChild(row);
   }
+
 }
 
 // ── CHART ─────────────────────────────────────────────────────────────────────
@@ -876,6 +884,7 @@ function setChartMode(m) {
   }
   applyChartStateToDom();
   renderChart();
+  renderBTK();
 }
 function toggleAdsToggle() {
   state.chart.showAds = !state.chart.showAds;
@@ -939,6 +948,7 @@ function dashOverlap(datasets) {
 }
 
 function renderChart() {
+  if (!document.getElementById('dmgChart').clientWidth) return;
   scheduleUrlSync();
 
   const w1 = selectedWeaponBuild(state.slots[0]);
@@ -1144,6 +1154,7 @@ function renderChart() {
 }
 
 function renderBTK() {
+  if (!document.getElementById('btkArea').getClientRects().length) return;
   const w1 = selectedWeaponBuild(state.slots[0]);
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
   const { btkHS, showAds, showVel } = state.chart;
@@ -1297,6 +1308,7 @@ function applyViewLayers(view) {
  * that lands there directly without ever passing through setRecoilView().
  */
 function requestTargetImage() {
+  if (!document.getElementById('rcMain').clientWidth) return;
   whenTargetImageReady().then(() => {
     if (state.recoil.view === 'target') renderRecoil();
   });
@@ -1338,8 +1350,8 @@ function canvasToWorld(clientX, clientY, canvas) {
   const rect = canvas.getBoundingClientRect();
   if (!rect.width || !rect.height) return null;
   const { PW, PH } = plotBox();
-  const u = ((clientX - rect.left) * canvas.width / rect.width - PLOT_PAD.l) / PW;
-  const v = ((clientY - rect.top) * canvas.height / rect.height - PLOT_PAD.t) / PH;
+  const u = ((clientX - rect.left) * plotCanvasSize(canvas).width / rect.width - PLOT_PAD.l) / PW;
+  const v = ((clientY - rect.top) * plotCanvasSize(canvas).height / rect.height - PLOT_PAD.t) / PH;
   const view = recoilViewport();
   return {
     x: view.xCenter + (u - 0.5) * view.xSpan,
@@ -1376,7 +1388,7 @@ function syncZoomFromSlider() {
     const pct = Math.max(0, Math.min(100, raw)) / 100;
     state.recoil.scaleH = RECOIL_SCALE_MAX - pct * (RECOIL_SCALE_MAX - RECOIL_SCALE_MIN);
   }
-  renderRecoil();
+  scheduleRecoilPlot();
 }
 /** The zoom slider indexes the magnification ladder in target view, percent in angle view. */
 function zoomSliderBounds() {
@@ -1407,8 +1419,7 @@ function cmAtDistance(angleDeg, distanceM = state.recoil.distance) {
 }
 function plotBox() {
   const canvas = document.getElementById('rcMain');
-  const cw = canvas?.width || 430;
-  const ch = canvas?.height || 430;
+  const { width: cw, height: ch } = plotCanvasSize(canvas);
   return { PW: cw - PLOT_PAD.l - PLOT_PAD.r, PH: ch - PLOT_PAD.t - PLOT_PAD.b };
 }
 // Base framing only recalculates for range/zeroing changes. Weapon selection
@@ -1433,8 +1444,7 @@ function computeTargetBaseFrame(weapons, shotCount) {
   let top = frame.topY;
   let bottom = frame.bottomY;
   live.forEach(weapon => {
-    const points = genRecoilPts(weapon, 0, shotCount);
-    const spreads = simulateSpread(weapon, shotCount);
+    const { points, spreads } = patternFor(weapon, 0, shotCount);
     const ballisticOffsetCm = targetVerticalOffsetMeters(weapon) * 100;
     points.forEach((point, i) => {
       const spread = spreads[i] ?? spreadBounds(weapon)[0];
@@ -1533,7 +1543,7 @@ function adjustRecoilScale(dir) {
     state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX,
       state.recoil.scaleH + (dir === 'in' ? -RECOIL_SCALE_STEP : RECOIL_SCALE_STEP)));
   }
-  renderRecoil();
+  scheduleRecoilPlot();
 }
 /** The one reset: return each view to its own framing defaults, aim back to
  *  center chest, and restore the original deterministic spray sample. */
@@ -1559,14 +1569,14 @@ function panRecoilView(dir) {
     if (dir === 'right') state.recoil.distancePanX += step;
     if (dir === 'up')    state.recoil.distancePanY += step;
     if (dir === 'down')  state.recoil.distancePanY -= step;
-    renderRecoil();
+    scheduleRecoilPlot();
     return;
   }
   if (dir === 'left')  state.recoil.panX -= RECOIL_PAN_STEP;
   if (dir === 'right') state.recoil.panX += RECOIL_PAN_STEP;
   if (dir === 'up')    state.recoil.panY += RECOIL_PAN_STEP;
   if (dir === 'down')  state.recoil.panY -= RECOIL_PAN_STEP;
-  renderRecoil();
+  scheduleRecoilPlot();
 }
 
 function panRecoilByPixels(dx, dy, canvas) {
@@ -1574,8 +1584,8 @@ function panRecoilByPixels(dx, dy, canvas) {
   if (!rect.width || !rect.height) return;
   const { xSpan, ySpan } = recoilViewport();
   const { PW, PH } = plotBox();
-  const dxWorld = dx * (canvas.width / rect.width) / PW * xSpan;
-  const dyWorld = dy * (canvas.height / rect.height) / PH * ySpan;
+  const dxWorld = dx * (plotCanvasSize(canvas).width / rect.width) / PW * xSpan;
+  const dyWorld = dy * (plotCanvasSize(canvas).height / rect.height) / PH * ySpan;
   if (state.recoil.view === 'target') {
     state.recoil.distancePanX -= dxWorld;
     state.recoil.distancePanY += dyWorld;
@@ -1583,15 +1593,15 @@ function panRecoilByPixels(dx, dy, canvas) {
     state.recoil.panX -= dxWorld;
     state.recoil.panY += dyWorld;
   }
-  renderRecoil();
+  scheduleRecoilPlot();
 }
 
 function zoomRecoilAtPointer(deltaY, clientX, clientY, canvas) {
   const rect = canvas.getBoundingClientRect();
   if (!rect.width || !rect.height) return;
   const { PW, PH } = plotBox();
-  const canvasX = (clientX - rect.left) * canvas.width / rect.width;
-  const canvasY = (clientY - rect.top) * canvas.height / rect.height;
+  const canvasX = (clientX - rect.left) * plotCanvasSize(canvas).width / rect.width;
+  const canvasY = (clientY - rect.top) * plotCanvasSize(canvas).height / rect.height;
   const u = Math.max(0, Math.min(1, (canvasX - PLOT_PAD.l) / PW));
   const v = Math.max(0, Math.min(1, (canvasY - PLOT_PAD.t) / PH));
   const before = recoilViewport();
@@ -1610,7 +1620,7 @@ function zoomRecoilAtPointer(deltaY, clientX, clientY, canvas) {
     state.recoil.panX = worldX - (u - 0.5) * after.xSpan;
     state.recoil.panY = worldY - (0.5 - v) * after.ySpan - (state.recoil.scaleH - 1);
   }
-  renderRecoil();
+  scheduleRecoilPlot();
 }
 
 function fmtAxisDeg(v) { return v.toFixed(1).replace('.0', ''); }
@@ -1638,21 +1648,42 @@ function selectedRecoilDirectionFor(w) { return recoilGroup(w).dir ?? w.recoilDi
  * Match the backing store to the rendered size so the plot stays crisp as its
  * column grows, rather than upscaling a fixed 430px bitmap.
  */
+function plotCanvasSize(canvas) {
+  const rect = canvas?.getBoundingClientRect();
+  return { width: Math.max(240, Math.round(rect?.width || 430)),
+    height: Math.max(240, Math.round(rect?.height || 430)) };
+}
 function syncPlotCanvasSize(canvas) {
-  const rect = canvas.getBoundingClientRect();
-  if (!rect.width) return;
-  const w = Math.max(240, Math.round(rect.width));
-  const h = Math.max(240, Math.round(rect.height || rect.width));
+  const size = plotCanvasSize(canvas);
+  const ratio = window.devicePixelRatio || 1;
+  const w = Math.round(size.width * ratio), h = Math.round(size.height * ratio);
   if (canvas.width !== w || canvas.height !== h) {
     canvas.width = w;
     canvas.height = h;
   }
+  canvas.getContext('2d').setTransform(ratio, 0, 0, ratio, 0, 0);
+  return size;
+}
+
+// One cache entry per selected build and simulation setup. Viewport changes do
+// not change shot angles. Replacing the setup also discards old random seeds.
+const patternCache = new WeakMap();
+function patternFor(weapon, seed, shots) {
+  const { aim, stance, platform, compensationLevel, refSeed } = state.recoil;
+  const key = [aim, stance, platform, compensationLevel, refSeed, shots].join('|');
+  let cached = patternCache.get(weapon);
+  if (cached?.key !== key) {
+    cached = { key, spreads: simulateSpread(weapon, shots), points: new Map() };
+    patternCache.set(weapon, cached);
+  }
+  const seedKey = seed >>> 0;
+  if (!cached.points.has(seedKey)) cached.points.set(seedKey, genRecoilPts(weapon, seed, shots));
+  return { points: cached.points.get(seedKey), spreads: cached.spreads };
 }
 
 function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
-  syncPlotCanvasSize(canvas);
+  const { width: CW, height: CH } = syncPlotCanvasSize(canvas);
   const ctx = canvas.getContext('2d');
-  const CW = canvas.width, CH = canvas.height;
   const PL = PLOT_PAD.l, PR = PLOT_PAD.r, PT = PLOT_PAD.t, PB = PLOT_PAD.b;
   const PW = CW - PL - PR, PH = CH - PT - PB;
   const N = selectedRecoilShotCount();
@@ -1721,9 +1752,8 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   // Pass 0 — Scatter cloud
   if (layers.scatter) drawOrder.forEach(w => {
     const col = cols[w === weapon1 ? 0 : 1];
-    const spreads = simulateSpread(w, N);
     for (let s = 1; s <= CLOUD_RUNS; s++) {
-      const recoilPts = genRecoilPts(w, s * 0x9e3779b9, N);
+      const { points: recoilPts, spreads } = patternFor(w, s * 0x9e3779b9, N);
       const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
       recoilPts.forEach((p, i) => {
         const spread = spreads[i] ?? spreadBounds(w)[0];
@@ -1739,8 +1769,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   drawOrder.forEach(w => {
     const col = cols[w === weapon1 ? 0 : 1];
     const weaponRefSeed = refSeed >>> 0;
-    const pts = genRecoilPts(w, weaponRefSeed, N);
-    const spreads = simulateSpread(w, N);
+    const { points: pts, spreads } = patternFor(w, weaponRefSeed, N);
 
     const sprayPts = (() => {
       const rngRef = mulberry32((whash(w.id) ^ weaponRefSeed ^ 0xdeadbeef) >>> 0);
@@ -1969,10 +1998,10 @@ function renderAttachmentStats(loadouts) {
     Object.hasOwn(att.assumedFields ?? {}, field)));
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
-  loadouts.filter(x => x.weapon).forEach(({ weapon, atts, colClass }) => {
+  loadouts.filter(x => x.weapon).forEach(({ weapon, atts, build, colClass }) => {
     const baseAtts = defaultAttsForWeapon(weapon);
     const baseWeapon = defaultAppliedWeapon(weapon);
-    const curWeapon = applyAttachments(weapon, atts);
+    const curWeapon = build ?? applyAttachments(weapon, atts);
     const base = { ...baseWeapon, _projectileModel: projectileModelFor(baseWeapon, baseAtts) };
     const cur = { ...curWeapon, _projectileModel: projectileModelFor(curWeapon, atts) };
     const selectedAttachments = selectedAttachmentRecords(weapon, atts);
@@ -2043,53 +2072,19 @@ function statsTabsHtml(active, impactEnabled) {
     + `</div>`;
 }
 
-function targetImpactStatsHtml(entries, showHeading = false) {
-  const colors = ['c1', 'c2'];
-  const fmtDamage = value => value == null ? '—' : Math.min(100, value).toFixed(1);
-  const fmtMult = value => value == null ? '' : `<span class="target-zone-mult">${value.toFixed(2)}×</span>`;
-  // 100 health is a kill. 75 is the critical-assist threshold — it says nothing
-  // about a follow-up body shot, since that depends on the weapon's damage at
-  // this range.
-  const damageClass = value => value == null ? '' : value >= 100 ? ' class="dmg-kill"' : value >= 75 ? ' class="dmg-crit"' : '';
-  // The tab strip names the block, so the heading is only needed where the
-  // strip is absent. Range and aim point already live on the distance slider
-  // and the aim read-out, so no context line is repeated here.
-  let html = showHeading ? '<div class="rc-stats-head"><div class="ptitle">Target Impact Stats</div></div>' : '';
-
-  entries.forEach((entry, index) => {
-    const summary = summarizeTargetImpacts(entry.weapon, state.recoil.distance, entry.zones);
-    const kill = summary.lethalShot == null
-      ? '<strong>None</strong>'
-      : `<strong title="Took ${summary.lethalHit} hits out of the first ${summary.lethalShot} shots fired">${summary.lethalHit} / ${summary.lethalShot}</strong>`;
-    // Only the running total decides a kill, so per-zone damage stays neutral.
-    const rows = summary.zones.map(zone => `
-      <tr${zone.hits ? '' : ' class="no-hits"'}>
-        <th scope="row">${zone.label} ${fmtMult(zone.multiplier)}</th>
-        <td>${zone.hits}</td>
-        <td>${fmtDamage(zone.damagePerHit)}</td>
-        <td>${fmtDamage(zone.damage)}</td>
-      </tr>`).join('');
-    html += `
-      <section class="target-impact-card">
-        <div class="target-impact-weapon ${colors[index] ?? ''}">${weaponDisplayLabel(entry.weapon)}</div>
-        <div class="target-impact-summary">
-          <div><span>Acc</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
-          <div><span>Hits</span><strong>${summary.hits} / ${summary.totalShots}</strong></div>
-          <div><span>Damage</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal; 75+ counts as a critical assist">${fmtDamage(summary.totalDamage)}</strong></div>
-          <div><span>Lethal</span>${kill}</div>
-        </div>
-        <table class="target-zone-table">
-          <thead><tr><th>Body Part</th><th>Hits</th><th>Dmg / Hit</th><th>Damage</th></tr></thead>
-
-          <tbody>${rows}</tbody>
-        </table>
-      </section>`;
+let recoilPlotFrame = null;
+function scheduleRecoilPlot() {
+  if (recoilPlotFrame != null) return;
+  recoilPlotFrame = requestAnimationFrame(() => {
+    recoilPlotFrame = null;
+    renderRecoil({ plotOnly: true });
   });
-  html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Displayed damage is capped at 100.0 because further damage is irrelevant after a kill; lethality still follows the plotted hit order.</div>';
-  return html;
 }
 
-function renderRecoil() {
+function renderRecoil({ plotOnly = false } = {}) {
+  if (!document.getElementById('rcMain').clientWidth) return;
+  if (recoilPlotFrame != null) cancelAnimationFrame(recoilPlotFrame);
+  recoilPlotFrame = null;
   if (state.recoil.view === 'target') state.recoil.distance = snapTargetDistance(state.recoil.distance);
   scheduleUrlSync();
   const w1 = selectedWeaponBuild(state.slots[0]);
@@ -2099,9 +2094,9 @@ function renderRecoil() {
   // any of the control read-outs are written.
   if (state.recoil.view === 'target') computeTargetBaseFrame([w1, w2], shotCount);
 
-  renderAttachmentStats([
-    { weapon: state.slots[0].weapon, atts: state.slots[0].atts, colClass: 'c1' },
-    { weapon: state.comparing ? state.slots[1].weapon : null, atts: state.slots[1].atts, colClass: 'c2' },
+  if (!plotOnly) renderAttachmentStats([
+    { weapon: state.slots[0].weapon, atts: state.slots[0].atts, build: w1, colClass: 'c1' },
+    { weapon: state.comparing ? state.slots[1].weapon : null, atts: state.slots[1].atts, build: w2, colClass: 'c2' },
   ]);
 
   const { aim, stance, layers, refSeed } = state.recoil;
@@ -2261,6 +2256,7 @@ function renderRecoil() {
     }
   }
 
+  if (plotOnly) return;
   const leg = document.getElementById('rcLegend');
   leg.innerHTML = '';
   [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w).forEach(([w, col]) => {
@@ -2275,7 +2271,7 @@ function renderRecoil() {
   // to the recoil block no matter which tab was last picked.
   const activeStatsTab = isTargetView && state.recoil.targetStatsTab === 'impact' ? 'impact' : 'recoil';
   const tabsHtml = stacksStats ? '' : statsTabsHtml(activeStatsTab, isTargetView);
-  const targetHtml = isTargetView ? targetImpactStatsHtml(axis.targetHits, stacksStats) : '';
+  const targetHtml = isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: weaponDisplayLabel }) : '';
   // The strip and the stats it labels share one bordered box, the same way the
   // plot's tabs and canvas do, so the selected tab sits on its own content.
   const statsEl = document.getElementById('rcStats');
@@ -2790,7 +2786,7 @@ function bindEvents() {
   const repaintIfResized = () => {
     if (!plotCanvas) return;
     const rect = plotCanvas.getBoundingClientRect();
-    const size = `${Math.round(rect.width)}x${Math.round(rect.height)}`;
+    const size = `${Math.round(rect.width)}x${Math.round(rect.height)}@${window.devicePixelRatio}`;
     if (!rect.width || size === lastPlotSize) return;
     lastPlotSize = size;
     renderRecoil();

@@ -1,8 +1,8 @@
 /**
  * ui/capture.js — Renders the current view to a PNG for "Copy Image".
  *
- * No library needed. Every style on this page lives in one inline <style>
- * block, every asset is same-origin or a data URI, and nothing is loaded
+ * No library needed. All stylesheets and assets are same-origin or data URIs,
+ * and nothing needed by the capture is loaded
  * cross-origin — so the DOM can be serialised into an SVG <foreignObject> and
  * drawn with the browser's own renderer. That keeps backdrop-filter, CSS masks
  * and grid exact, which a canvas reimplementation would approximate at best.
@@ -199,7 +199,9 @@ export async function captureView({ scale = 2 } = {}) {
       `color:${body.color}`, `background:${body.backgroundColor}`,
       `line-height:${body.lineHeight}`,
     ].join(';').replace(/"/g, "'");
-    const css = [...document.querySelectorAll('style')].map(s => s.textContent).join('\n');
+    const css = [...document.styleSheets]
+      .filter(sheet => !sheet.href || new URL(sheet.href).origin === location.origin)
+      .flatMap(sheet => [...sheet.cssRules].map(rule => rule.cssText)).join('\n');
     // Measured with the bitmaps out of flow, then re-serialised with the boxes
     // that measurement produced. The SVG has to carry the sized form.
     const { height, slots } = measureCapture(
