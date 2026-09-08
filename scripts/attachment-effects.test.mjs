@@ -22,6 +22,34 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('Frosty-reviewed grip movement and Flechette delays match captured panels', () => {
+  for (const [id, expected] of [['svk86', 0.42], ['ks18k', 0.6], ['db12', 0.6]]) {
+    const w = weapon(id);
+    for (const prefix of ['6h64_vert', 'classic_vert', 'stipp_stubby', 'lp_stubby']) {
+      assert.equal(build(w, { grip: `${prefix}_${id}` })._adsMoveSpeedMult, expected);
+    }
+  }
+  for (const id of ['ks18k', 'db12', 'm1014', 'm87a1']) {
+    const w = weapon(id);
+    assert.equal(build(w, { ammo: 'flechette' })._healthRegenDelayS, 7);
+    assert.equal(build(w, { ammo: 'buckshot' })._healthRegenDelayS, 5);
+  }
+});
+
+test('Factory and Full Angled use the source sprint and deploy tier', () => {
+  for (const [id, grip, expected] of [
+    ['lmr27', 'factory_angled_lmr27', 133], ['db12', 'factory_angled_db12', 100],
+    ['l115', 'full_angled_sr', 133], ['m2010esr', 'full_angled_sr', 133],
+    ['miniscout', 'full_angled_sr', 100], ['psr', 'full_angled_sr', 167],
+    ['sv98', 'full_angled_sr', 133],
+  ]) {
+    const w = weapon(id);
+    const result = build(w, { grip });
+    assert.equal(result._sprintRecoveryMs, expected, id);
+    assert.ok(result._deployTimeMs < build(w, { grip: 'none' })._deployTimeMs, id);
+  }
+});
+
 test('M16A4 A3 Receiver removes burst gaps and applies source recoil effects in both aim states', () => {
   const w = weapon('m16a4');
   const original = structuredClone(w);

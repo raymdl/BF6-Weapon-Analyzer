@@ -430,7 +430,7 @@
       "adsRecoilTierMod": 1,
       "movingAdsSpreadTierMod": 0,
       "adsTimeTierMod": 1,
-      "sprintRecoveryTierShift": 1,
+      "sprintRecoveryTierShift": -1,
       "pts": 25,
       "hipRecoilTierMod": 1
     },
@@ -441,7 +441,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 15,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "sprintRecoveryTierShift": -1
     },
     {
       "id": "cmpct_handstop",
@@ -602,7 +603,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
       "pts": 25,
-      "hipRecoilTierMod": 4
+      "hipRecoilTierMod": 4,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "classic_vert_svk86",
@@ -611,7 +613,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
       "pts": 35,
-      "hipRecoilTierMod": 5
+      "hipRecoilTierMod": 5,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "stipp_stubby_svk86",
@@ -620,7 +623,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 35,
-      "hipRecoilTierMod": 4
+      "hipRecoilTierMod": 4,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "lp_stubby_svk86",
@@ -629,7 +633,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 45,
-      "hipRecoilTierMod": 5
+      "hipRecoilTierMod": 5,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "6h64_vert_vssm",
@@ -674,7 +679,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
       "pts": 25,
-      "hipRecoilTierMod": 4
+      "hipRecoilTierMod": 4,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "classic_vert_ks18k",
@@ -683,7 +689,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
       "pts": 35,
-      "hipRecoilTierMod": 5
+      "hipRecoilTierMod": 5,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "stipp_stubby_ks18k",
@@ -692,7 +699,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 35,
-      "hipRecoilTierMod": 4
+      "hipRecoilTierMod": 4,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "lp_stubby_ks18k",
@@ -701,7 +709,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 45,
-      "hipRecoilTierMod": 5
+      "hipRecoilTierMod": 5,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "6h64_vert_db12",
@@ -710,7 +719,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
       "pts": 25,
-      "hipRecoilTierMod": 4
+      "hipRecoilTierMod": 4,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "classic_vert_db12",
@@ -719,7 +729,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 0,
       "pts": 35,
-      "hipRecoilTierMod": 5
+      "hipRecoilTierMod": 5,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "stipp_stubby_db12",
@@ -728,7 +739,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 35,
-      "hipRecoilTierMod": 4
+      "hipRecoilTierMod": 4,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "lp_stubby_db12",
@@ -737,7 +749,8 @@
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
       "pts": 45,
-      "hipRecoilTierMod": 5
+      "hipRecoilTierMod": 5,
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "lp_stubby_sr",
@@ -762,7 +775,8 @@
       "adsRecoilTierMod": 0,
       "movingAdsSpreadTierMod": -1,
       "adsTimeTierMod": 1,
-      "pts": 5
+      "pts": 5,
+      "sprintRecoveryTierShift": -1
     },
     {
       "id": "underslung_mount",
