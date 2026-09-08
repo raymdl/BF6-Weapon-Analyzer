@@ -5,17 +5,17 @@ The normal validation path protects current product behavior and is intentionall
 ```powershell
 node scripts/validate-data.mjs
 node scripts/validate-ship-surface.mjs
-node --test
+node scripts/test.mjs
 ```
 
-CI runs those same three commands. The suite requires no dependency install, browser harness, generated
+CI runs those same three commands. The runner selects `scripts/*.test.mjs` and excludes archived copies. The suite requires no dependency install, browser harness, generated
 fixtures, raw captures, or Git history.
 
 ## Data validation
 
 `scripts/validate-data.mjs` checks the maintained JSON as one current contract. Its checks include:
 
-- JSON/schema basics, IDs, and supported 62-weapon roster;
+- JSON/schema basics, IDs, and current weapon records;
 - attachment/ammunition references and defaults;
 - damage curves, class policies, and projectile-source coverage;
 - estimated-weapon completeness and provenance;
@@ -38,9 +38,11 @@ from becoming an accidental runtime dependency.
 | `barrel-velocity.test.mjs` | Velocity tiers, compatibility read, selectable-barrel equivalence, rounding edge |
 | `damage.test.mjs` | Hit zones, BTK sequences, curve interpolation, roster policy, provenance |
 | `estimated-weapons.test.mjs` | Estimate disclosure, cross-file coverage, reviewed decisions, share-token compatibility |
-| `runtime-syntax.test.mjs` | Browser entry module and every simulation module parse |
-| `spread-bar-scale.test.mjs` | One corpus sweep proves the shared spread chart ceiling contains and uses the range |
+| `runtime-syntax.test.mjs` | Every UI and simulation module parses |
+| `share-state.test.mjs` | Distance round trips, legacy defaults, weapon-specific attachment availability |
+| `spread-bar-scale.test.mjs` | Shared spread ceiling contains default and valid single-attachment builds |
 | `target-geometry.test.mjs` | Target geometry and impact behavior |
+| `target-stats.test.mjs` | Uncapped damage, pellet-load limitations, and missing target image output |
 
 Some files emit a simple completion line in addition to Node's test result; this is harmless legacy
 output, not a second test layer.

@@ -13,7 +13,7 @@ index.html
   -> vendor/chart.umd.min.js
 ```
 
-There is no compilation or server-side runtime. `index.html` owns the visual system and stable markup;
+There is no compilation or server-side runtime. `index.html` owns stable markup and `ui/styles.css` owns the visual system;
 `ui/app.js` owns state, rendering, browser events, charts, and responsive interactions; `sim/` owns
 reusable domain calculations. Live numerical inputs are maintained under `data/`.
 
@@ -23,13 +23,14 @@ The application keeps two loadout slots plus chart, recoil, and collapsed-panel 
 is centralized in `sim/share-state.js`. Attachment tokens use catalog positions, so existing attachment
 catalogs are append-only for compatibility. Legacy positional links are decoded there as well.
 
-View-only details that do not describe a meaningful loadout are kept out of shared URLs where possible.
+New target links always include distance;
+legacy target links without distance restore 30 metres. Decoding rejects attachments unavailable to the weapon.
 URL writes are debounced so frequent UI changes do not repeatedly update history.
 
 ## Loadouts
 
 `sim/loadout.js` owns blank/default attachment state, available option construction, point totals,
-assumed-data detection, and labeled select rendering. `sim/applyAttachments.js` transforms a base weapon
+and assumed-data detection. `ui/loadout.js` owns labeled select rendering. `sim/applyAttachments.js` transforms a base weapon
 into the selected build. UI code should consume that result rather than reapplying individual modifiers.
 
 Attachment lookup maps are created once in `ui/app.js` for display breakdowns. Source JSON is treated as
@@ -58,8 +59,8 @@ the same simulation.
 
 The effective maximum advances the selected build for a bounded 50-shot sequence, applying firing and
 non-firing recovery across ordinary and burst gaps and clamping to the build's valid spread bounds. The
-spread-scale test sweeps current weapons, stances, aim states, and relevant attachments once, then checks
-both containment and useful chart utilization.
+spread-scale test checks default and valid single-attachment builds across current weapons, stances,
+and aim states for finite values within the chart ceiling.
 
 `ui/app.js` renders two recoil lenses:
 
@@ -69,7 +70,8 @@ both containment and useful chart utilization.
 `sim/target.js` owns target geometry, hit-zone classification, impact summaries, and target-image drawing.
 The image and alpha map are loaded lazily only after the Soldier Target view is shown, whether the
 viewer switches to it or a shared link or popout opens directly into it. Importing the module does not
-fetch the image.
+fetch the image. `ui/target-stats.js` presents simulated-spray results with uncapped damage and an explicit
+approximation note. Pellet loads suppress hit and lethal figures because individual pellets are not simulated.
 
 ## Ballistics
 
@@ -84,7 +86,10 @@ Missing coverage must not be silently invented.
 ## Rendering
 
 `renderSidebar()` rebuilds class, weapon, and attachment controls from state. `renderStats()` coordinates
-overview cards, charts, tables, recoil, and attachment effects. Chart.js objects are reused and updated.
+overview cards, charts, tables, recoil, and attachment effects. Hidden panels skip their detailed rendering.
+Selected builds and recoil patterns are cached by their inputs. Pan and zoom redraw only the plot
+on the next animation frame. The canvas uses device-pixel backing dimensions with CSS-pixel coordinates.
+Chart.js objects are reused and updated.
 
 Selected controls expose `aria-pressed` or `aria-selected`. Attachment select labels are associated with
 their controls. On compact layouts the loadout sidebar becomes a modal dialog with focus trapping,

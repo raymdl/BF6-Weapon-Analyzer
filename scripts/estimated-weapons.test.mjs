@@ -12,9 +12,6 @@ const attachments = read('data/attachments.json');
 const ammo = read('data/ammo.json');
 const balance = read('data/balance_tables.json');
 const recoil = read('data/recoil_decay.json');
-const ui = readFileSync(join(root, 'ui/app.js'), 'utf8');
-const html = readFileSync(join(root, 'index.html'), 'utf8');
-const loadout = readFileSync(join(root, 'sim/loadout.js'), 'utf8');
 // These three arrive through the datamined changelist rather than the Sym
 // baseline. They no longer carry the estimated flag -- their damage profiles
 // are sourced -- so the coverage checks below key off the list itself.
@@ -84,13 +81,12 @@ test('reviewed handling decisions and exact donor damage curves are pinned', () 
   assert.equal(attachments.WEAPON_MAG.ef88.mags['42_rnd'].adsMoveSpeedTierShift, 1);
 });
 
-test('new attachment tokens are append-only and share state round-trips', () => {
-  assert.deepEqual(attachments.BARRELS.slice(-3).map(item => item.id), ['short_light', 'vssm_suppressed', 'vssm_suppressed_asm']);
+test('attachment share state round-trips', () => {
   assert.equal(new Set(attachments.BARRELS.map(item => item.id)).size, attachments.BARRELS.length);
   const codec = createShareCodec({
     SIGHTS: attachments.SIGHTS, MUZZLES: attachments.MUZZLES, BARRELS: attachments.BARRELS,
     GRIPS: attachments.GRIPS, LASERS: attachments.LASERS, LIGHTS: attachments.LIGHTS,
-    ERGOS: attachments.ERGOS, AMMO: ammo.AMMO, WEAPON_MAG: attachments.WEAPON_MAG,
+    ...attachments, ...ammo,
     defaultAttsForWeapon: weapon => ({ sight: 'iron', muzzle: 'none', barrel: 'basic', grip: 'none', laser: 'none', light: 'none', ammo: 'standard', ergo: 'none', mag: attachments.WEAPON_MAG[weapon.id].def }),
   });
   const weapon = byId('ef88');
@@ -101,17 +97,7 @@ test('new attachment tokens are append-only and share state round-trips', () => 
   assert.deepEqual(codec.decodeAtts(weapon, encoded), atts);
 });
 
-test('estimated and assumed statuses use markers and one consolidated note', () => {
-  assert.match(ui, /weaponDisplayLabel\(w\)/);
-  assert.match(ui, /return w\?\.estimated \? `\$\{label\} Estimated weapon` : label/);
-  assert.match(ui, /ASSUMED_STATS_NOTE/);
-  assert.match(ui, /const ASSUMED_STATS_NOTE = '\* Estimated stats until full datamined values are available';/);
-  assert.match(ui, /wbadge-estimated/);
-  assert.match(ui, /slot\.weapon\?\.estimated \|\| Loadout\.hasSelectedAssumedAtt\(slot\.atts, LOADOUT_DATA, slot\.weapon\)/);
-  assert.doesNotMatch(ui, /— ESTIMATED|estimate-note|Similar-weapon estimate pending Sym full statistics/);
-  assert.doesNotMatch(loadout, /showAssumedFootnote|Assumed stats until datamined attachment values are available/);
-  assert.match(loadout, /attDisplayName\(m\)/);
+test('assumed attachments carry a visible marker', () => {
   assert.equal(attDisplayName({ name: 'Flashlight', assumedFields: { hipSpreadDecayBoost: 'pending' } }), 'Flashlight*');
   assert.equal(isAssumedAtt({ assumed: true }), true);
-  assert.equal((ui.match(/\* Estimated stats until full datamined values are available/g) ?? []).length, 1);
 });

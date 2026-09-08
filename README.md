@@ -45,7 +45,7 @@ Run the checks that protect the current product:
 ```powershell
 node scripts/validate-data.mjs
 node scripts/validate-ship-surface.mjs
-node --test
+node scripts/test.mjs
 ```
 
 The normal suite is intentionally small. It covers current data integrity, damage and ballistics,

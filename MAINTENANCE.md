@@ -16,7 +16,7 @@ change to the smallest relevant source file followed by the narrowest meaningful
 ```powershell
 node scripts/validate-data.mjs
 node scripts/validate-ship-surface.mjs
-node --test
+node scripts/test.mjs
 ```
 
 For a UI change, serve the root on port 5174 and inspect the actual changed interaction at desktop,
@@ -32,7 +32,7 @@ After a weapon change:
 
 1. Run `node scripts/validate-data.mjs`.
 2. Run the focused test whose calculation changed.
-3. Run `node --test` before handoff.
+3. Run `node scripts/test.mjs` before handoff.
 4. Open at least one representative weapon in the site and confirm the displayed value and dependent
    chart or table.
 

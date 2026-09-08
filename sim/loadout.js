@@ -54,6 +54,38 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.ergo = 'none';
 }
 
+/** Selectable items for one weapon slot. Shared by the editor and URL decoder. */
+export function availableAttachments(weapon, key, data) {
+  if (!weapon) return [];
+  const wa = data.WEAPON_ATTS?.[weapon.id];
+  if (key === 'mag') return Object.entries(data.WEAPON_MAG?.[weapon.id]?.mags ?? {})
+    .map(([id, item]) => ({ ...item, id }));
+  if (key === 'ammo') return (data.AMMO ?? []).filter(a =>
+    Object.hasOwn(data.WEAPON_AMMO?.[weapon.id]?.ammo ?? {}, a.id));
+  if (key === 'ergo') return (data.ERGOS ?? []).filter(a =>
+    a.id === 'none' || data.WEAPON_ERGO?.[weapon.id]?.avail?.includes(a.id));
+  const slot = ATTACHMENT_SLOT_KEYS.find(slot => slot.key === key);
+  if (!slot) return [];
+  let source = data[slot.dataKey] ?? [];
+  if ((key === 'light' && wa?.laserLightCombined)
+      || (key === 'grip' && wa?.laserGripLightCombined)) {
+    return source.filter(a => a.id === 'none');
+  }
+  let allowed = wa?.[key];
+  if (key === 'laser' && wa?.laserLightCombined) {
+    allowed = [...(allowed ?? []), ...(wa.light ?? [])];
+    source = wa.laserGripLightCombined
+      ? [...source.filter(a => a.id === 'none'), ...(data.GRIPS ?? []).filter(a => a.id !== 'none'),
+        ...source.filter(a => a.id !== 'none'), ...(data.LIGHTS ?? []).filter(a => a.id !== 'none')]
+      : [...source, ...(data.LIGHTS ?? []).filter(a => a.id !== 'none')];
+  }
+  // Sights are shared unless the weapon explicitly restricts them.
+  if (key === 'sight' && allowed == null) return source;
+  return source.filter(a => slot.isBarrel
+    ? a.id !== 'none' && allowed?.includes(a.id)
+    : a.id === 'none' || allowed?.includes(a.id));
+}
+
 export function getAttPts(a) {
   if (!a) return 0;
   return a.pts ?? 0;
@@ -91,7 +123,6 @@ export function computeAttPts(atts, weapon, data) {
 // Display-only casing fix: the corpus stores buckshot as "#01 BUCK"/"#00 BUCK",
 // which shouts next to every other title-cased option. The data keeps its name.
 const displayName = a => a.name.replace(/\bBUCK\b/g, 'Buck');
-let selectSequence = 0;
 
 export function attDisplayName(a) {
   return isAssumedAtt(a) ? `${displayName(a)}*` : displayName(a);
@@ -113,233 +144,4 @@ export function hasSelectedAssumedAtt(atts, data, weapon = null) {
     wm?.mags?.[atts.mag ?? wm.def],
   ];
   return selected.some(isAssumedAtt);
-}
-
-export function updateAttTotal(containerId, atts, weapon, data) {
-  const el = document.getElementById(`${containerId}_total`);
-  if (!el) return;
-  const pts = computeAttPts(atts, weapon, data);
-  el.textContent = `Total: ${pts} pts`;
-  el.classList.toggle('over', pts > 100);
-}
-
-function appendSelectRow(container, { label, value, options, onChange, disabled = false }) {
-  if (!options.length) return;
-  const row = document.createElement('div');
-  row.className = 'att-row';
-  const labelEl = document.createElement('label');
-  labelEl.className = 'att-lbl';
-  labelEl.textContent = label;
-  const sel = document.createElement('select');
-  sel.className = 'att-sel';
-  sel.id = `att-select-${++selectSequence}`;
-  labelEl.htmlFor = sel.id;
-  options.forEach(optData => {
-    const opt = document.createElement('option');
-    opt.value = optData.id;
-    opt.textContent = optData.text;
-    if (optData.noEffect) opt.style.color = '#666';
-    if (optData.id === value) opt.selected = true;
-    sel.appendChild(opt);
-  });
-  if (disabled) {
-    sel.disabled = true;
-  } else {
-    sel.onchange = () => {
-      onChange(sel.value);
-    };
-  }
-  row.appendChild(labelEl);
-  row.appendChild(sel);
-  container.appendChild(row);
-}
-
-export function renderAttachmentSection({
-  containerId,
-  container = document.getElementById(containerId),
-  atts,
-  weapon,
-  data,
-  onChange = () => {},
-}) {
-  if (!container) return;
-  container.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
-  const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
-  const attDataSource = {
-    SIGHTS: data.SIGHTS,
-    MUZZLES: data.MUZZLES,
-    BARRELS: data.BARRELS,
-    GRIPS: data.GRIPS,
-    LASERS: data.LASERS,
-    LIGHTS: data.LIGHTS,
-  };
-
-  const handleChange = (key, value) => {
-    atts[key] = value;
-    updateAttTotal(containerId, atts, weapon, data);
-    onChange({ key, value });
-  };
-
-  ATTACHMENT_SLOT_KEYS.forEach(({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
-    // Combined laser/light slot: light dropdown is disabled (options live in Laser)
-    if (key === 'light' && wa?.laserLightCombined) {
-      appendSelectRow(container, { label, value: 'none', options: [{ id: 'none', text: 'None' }], onChange: () => {}, disabled: true });
-      return;
-    }
-    // Combined grip+laser+light slot: grip dropdown is disabled (options live in Laser)
-    if (key === 'grip' && wa?.laserGripLightCombined) {
-      appendSelectRow(container, { label, value: 'none', options: [{ id: 'none', text: 'None' }], onChange: () => {}, disabled: true });
-      return;
-    }
-
-    const source = attDataSource[dataKey];
-    if (!weapon || !source) {
-      appendSelectRow(container, {
-        label,
-        value: '',
-        options: [{ id: '', text: noWeaponText }],
-        onChange: () => {},
-        disabled: true,
-      });
-      return;
-    }
-
-    // Combined laser/light slot: merge light (and optionally grip) options into the laser dropdown
-    let allowedIds = wa?.[key];
-    let effectiveSource = source;
-    if (key === 'muzzle') {
-      // Reorder the menu only; catalog indices are used by existing share links.
-      effectiveSource = [...source];
-      const compensatorIndex = effectiveSource.findIndex(a => a.id === 'compensator');
-      const linearIndex = effectiveSource.findIndex(a => a.id === 'linear_comp');
-      if (compensatorIndex > linearIndex && linearIndex >= 0) {
-        effectiveSource.splice(linearIndex, 0, ...effectiveSource.splice(compensatorIndex, 1));
-      }
-    }
-    if (key === 'laser' && wa?.laserLightCombined) {
-      const lightIds = wa?.light ?? [];
-      allowedIds = allowedIds != null ? [...allowedIds, ...lightIds] : lightIds.length ? lightIds : null;
-      if (wa?.laserGripLightCombined) {
-        // VZ.61-style: none first, then grips, then lasers (skip none), then lights
-        effectiveSource = [
-          source[0], // 'none' laser entry
-          ...(attDataSource.GRIPS ?? []).filter(a => a.id !== 'none'),
-          ...source.slice(1),
-          ...(attDataSource.LIGHTS ?? []).filter(a => a.id !== 'none'),
-        ];
-      } else {
-        effectiveSource = [...source, ...(attDataSource.LIGHTS ?? []).filter(a => a.id !== 'none')];
-      }
-    }
-
-    const allowedSet = allowedIds != null ? new Set([...(isBarrel ? [] : ['none']), ...allowedIds]) : null;
-    let visible = allowedSet ? effectiveSource.filter(a => allowedSet.has(a.id)) : effectiveSource;
-    if (isBarrel) visible = visible.filter(a => a.id !== 'none');
-
-    if (visible.length <= (isBarrel ? 0 : 1)) {
-      const single = visible[0];
-      appendSelectRow(container, {
-        label,
-        value: single?.id ?? '',
-        options: [{ id: single?.id ?? '', text: single ? attDisplayName(single) : noWeaponText, assumed: isAssumedAtt(single) }],
-        onChange: () => {},
-        disabled: true,
-      });
-      return;
-    }
-
-    appendSelectRow(container, {
-      label,
-      value: atts[key],
-      options: visible.map(a => {
-        const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a);
-        const name = attDisplayName(a);
-        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
-      }),
-      onChange: value => handleChange(key, value),
-    });
-  });
-
-  const wAmmo = weapon ? (data.WEAPON_AMMO[weapon.id] ?? null) : null;
-  const ammoList = wAmmo ? data.AMMO.filter(a => a.id in wAmmo.ammo) : [];
-  if (ammoList.length > 1) {
-    appendSelectRow(container, {
-      label: 'Ammo',
-      value: atts.ammo ?? wAmmo.def,
-      options: ammoList.map(a => {
-        const pts = wAmmo.ammo[a.id] ?? 0;
-        const name = attDisplayName(a);
-        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
-      }),
-      onChange: value => handleChange('ammo', value),
-    });
-  } else {
-    appendSelectRow(container, {
-      label: 'Ammo',
-      value: 'standard',
-      options: [{ id: 'standard', text: 'Standard' }],
-      onChange: () => {},
-      disabled: true,
-    });
-  }
-
-  const wm = weapon ? (data.WEAPON_MAG[weapon.id] ?? null) : null;
-  if (wm && Object.keys(wm.mags).length > 0) {
-    appendSelectRow(container, {
-      label: 'Mag',
-      value: atts.mag ?? wm.def,
-      options: Object.entries(wm.mags).map(([id, m]) => ({
-        id,
-        text: m.pts > 0 ? `${attDisplayName(m)} [${m.pts}]` : attDisplayName(m),
-        assumed: isAssumedAtt(m),
-      })),
-      onChange: value => handleChange('mag', value),
-    });
-  } else {
-    appendSelectRow(container, {
-      label: 'Mag',
-      value: 'none',
-      options: [{ id: 'none', text: 'None' }],
-      onChange: () => {},
-      disabled: true,
-    });
-  }
-
-  const we = weapon ? (data.WEAPON_ERGO[weapon.id] ?? null) : null;
-  const availSet = we ? new Set(we.avail) : null;
-  const visibleErgos = data.ERGOS.filter(e => e.id === 'none' || (availSet && availSet.has(e.id)));
-  if (visibleErgos.length > 1 && weapon) {
-    appendSelectRow(container, {
-        label: 'Ergo',
-        value: atts.ergo ?? 'none',
-        options: visibleErgos.map(e => ({
-        id: e.id,
-        text: e.pts > 0 ? `${attDisplayName(e)} [${e.pts}]` : attDisplayName(e),
-        noEffect: e.noEffect,
-        assumed: isAssumedAtt(e),
-      })),
-      onChange: value => handleChange('ergo', value),
-    });
-  } else {
-    appendSelectRow(container, {
-      label: 'Ergo',
-      value: 'none',
-      options: [{ id: 'none', text: 'None' }],
-      onChange: () => {},
-      disabled: true,
-    });
-  }
-
-  updateAttTotal(containerId, atts, weapon, data);
-  if (wa?.coverageNote) {
-    const note = document.createElement('div');
-    note.className = 'att-note';
-    note.textContent = wa.coverageNote;
-    container.appendChild(note);
-  }
-  const pendingPp19Coverage = weapon?.id === 'pp19'
-    && ['muzzle', 'barrel', 'grip', 'laser', 'light'].every(key => Array.isArray(wa?.[key]) && wa[key].length === 0);
-  if (pendingPp19Coverage) {
-    container.insertAdjacentHTML('beforeend', '<div class="att-note pp19-coverage-note">PP-19 attachment availability and effects: needs measurement.</div>');
-  }
 }
