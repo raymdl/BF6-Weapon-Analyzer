@@ -32,9 +32,11 @@ that the current resolver has since addressed.
 
 **Recoil recovery and smooth-recoil attachments.** The source factors, exponent
 fields, and native class layouts do not independently validate the current recovery
-equation. Smooth-recoil decay effects remain approximations. VSSM Folding Stock's
-source decay factor/time-exponent changes remain deferred even though its supported
-hip effects and 800 RPM automatic mode are implemented.
+equation. Smooth recoil retains the estimated `1.1` ADS recovery multiplier.
+VSSM Folding Stock now applies source decay factor `76` and time exponent `1.24`
+in both ADS and hip fire, alongside its hip effects and 800 RPM automatic mode.
+These values use the existing recovery equation; native timing remains unverified.
+The base VSSM retains factor `13.7` and exponent `0.5555` without the stock.
 
 **Heavy-type barrels and lights.** Heavy ADS spread increment uses 0.667, with
 fitted firing recovery coefficient 1.71 and offset factor 0.667. Native candidates

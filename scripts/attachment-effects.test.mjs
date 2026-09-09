@@ -216,7 +216,7 @@ test('hip recoil stacks grip, muzzle and ammunition tiers without mutating the b
   setSimContext({ aimState: 'ads' });
 });
 
-test('Folding Stock applies hip spread and variation while retaining deferred recoil decay', () => {
+test('Folding Stock applies hip effects and source decay overrides without changing the base', () => {
   const base = build(weapon('vssm'));
   const result = build(weapon('vssm'), { ergo: 'full_auto_vssm' });
   assert.equal(result.spreadDyn.hip.inc, 0.736);
@@ -224,8 +224,20 @@ test('Folding Stock applies hip spread and variation while retaining deferred re
   assert.equal(result.spreadDyn.hip.firingOffset, 4.86);
   assert.equal(result.recoil.hip.dirVarExp, base.recoil.hip.dirVarExp - 20);
   for (const state of ['ads', 'hip']) {
-    assert.equal(result.recoil[state].decFactor, base.recoil[state].decFactor);
-    assert.equal(result.recoil[state].decTimeExp, base.recoil[state].decTimeExp);
+    assert.equal(result.recoil[state].decFactor, 76);
+    assert.equal(base.recoil[state].decFactor, 13.7);
+    assert.equal(result.recoil[state].decTimeExp, 1.24);
+    assert.equal(base.recoil[state].decTimeExp, 0.5555);
+    assert.equal(weapon('vssm').recoil[state].decFactor, 13.7);
+    assert.equal(weapon('vssm').recoil[state].decTimeExp, 0.5555);
+  }
+});
+
+test('Smooth recoil retains its 1.1 ADS multiplier', () => {
+  for (const muzzle of ['long_supp', 'light_supp']) {
+    const entry = attachments.MUZZLES.find(item => item.id === muzzle);
+    assert.ok(entry, muzzle);
+    assert.equal(build(weapon('m433'), { muzzle })._adsRecoilDecayMult, 1.1);
   }
 });
 
