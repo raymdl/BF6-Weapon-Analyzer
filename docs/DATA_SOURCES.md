@@ -11,10 +11,17 @@ export of every field from a single game version.
 
 | Source record | Scope and evidence | Boundary |
 |---|---|---|
-| `sym-bf6-json`, version 1.3.3.0, retrieved 25 July 2026 | Original base fields and exact damage curves from [Sym's BF6 JSON](https://sym.gg/legacy/pages/bf6/data/bf6.json); snapshot hash is recorded in the baseline. | The URL may change. Use recorded version/date/hash and retained evidence to identify the reviewed snapshot. |
+| `sym-bf6-json`, data version **1.4.2.0**, data version date **18 AUG 2026** | Base weapon fields and exact damage curves from [Sym's BF6 JSON](https://sym.gg/legacy/pages/bf6/data/bf6.json); version/date confirmed by the maintainer. | The data-version date is not a retrieval date. Historical snapshot metadata below does not identify the 1.4.2.0 payload. |
 | `ea-update-notes`, version 1.3.3.0 | [EA's update notes](https://www.ea.com/games/battlefield/redsec/news/battlefield-6-game-update-1-3-3-0), for declared mechanics and explicit changes. | Notes do not supply every internal coefficient or prove unmentioned fields. |
 | `frosty-local-export`, labeled 1.4.2.5 | Reviewed local XML exports, per-weapon/attachment provenance, source arrays, and configuration joins. | Version is a user-supplied export label; source literals and their activation/native arithmetic are separate claims. |
 | In-game captures and attachment audit | Displayed defaults, point costs, labels, attachment changes, and composed-loadout checks. | Panel rounding, capture version, defaults, identity and composition must be retained. A displayed stat is not automatically an exact internal value. |
+
+The Sym record stores the data-version date as `sourceVersionDate: 2026-08-18`.
+Its earlier recorded 1.3.3.0 snapshot's 25 July 2026 retrieval date and SHA-256 are
+preserved under `historicalSnapshot`; neither is attributed to the 1.4.2.0 payload.
+A retrieval date and full-payload hash for 1.4.2.0 are not recorded in the baseline.
+A source-version label does not mean every live field was reimported from that
+release; older field-level import notes remain historical provenance.
 
 The baseline's `damageStatus: verified` records project acceptance. Individual
 `damageSource` notes can still say provisional or pending in-game confirmation.
