@@ -275,8 +275,10 @@ attachment graph, source hashes and screenshot evidence are in
 `reference-data/provenance/frosty-interdictor-integration.json`. The user supplied
 a Basic-barrel preview with a regular 5-round
 magazine: ADS 433 ms, sprint recovery 233 ms and ADS movement 0.42x.
-The current runtime reproduces these with base ADS tier 7, draw-time tier 6,
-ADS movement tier 8, Basic barrel ADS shift -1 and regular magazine draw shift -1.
+The current runtime reproduces these with base ADS index 0, Frosty sprint index 3,
+ADS movement index 3, Basic barrel ADS shift -1 and regular magazine draw shift -1.
+Deploy uses Frosty index 4. See the [draw-time model](FROSTY_DRAW_TIME_MODEL.md)
+for the full source arrays and separate timing indices.
 
 The local roster now has 63 weapons. Interdictor has 32 mapped non-optic
 attachment options, with every point cost checked against its Attachment XML.

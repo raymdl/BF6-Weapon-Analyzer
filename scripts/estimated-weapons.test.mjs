@@ -49,7 +49,7 @@ test('estimated weapons have complete cross-file coverage and five attachment sl
     assert.equal(recoil.RECOIL_DEC[weapon.id] != null, true);
     assert.equal(recoil.RECOIL_DEC_TEXP[weapon.id] != null, true);
     assert.equal(balance.RECOIL_MULT[weapon.id] != null, true);
-    assert.equal(balance.HIP_CLS[weapon.id] != null, true);
+    assert.equal(balance.HIP_SPREAD_BASE_INDEX[weapon.id] != null, true);
     assert.equal(balance.LIMB_CLASS[weapon.id], weapon.cls === 'DMR' ? 'dmr' : 'auto');
   }
 });

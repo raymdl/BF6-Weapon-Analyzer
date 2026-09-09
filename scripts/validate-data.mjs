@@ -42,8 +42,14 @@ try {
   fail(error.message);
 }
 
-if (!Number.isFinite(balance.RELOAD_SPEED_LADDER) || balance.RELOAD_SPEED_LADDER <= 0) {
-  fail('RELOAD_SPEED_LADDER must be a finite positive number');
+if (JSON.stringify(balance.RELOAD_SPEED_MULTIPLIERS) !== JSON.stringify([1, 1.13, 1.277])) {
+  fail('RELOAD_SPEED_MULTIPLIERS must match the source factors 1, 1.13, 1.277');
+}
+if (!Array.isArray(balance.HIP_SPREAD_TABLE) || balance.HIP_SPREAD_TABLE.length !== 18
+    || balance.HIP_SPREAD_TABLE.some(row => Object.keys(row).length !== 7
+      || !Number.isFinite(row.hipStand) || !Number.isFinite(row.hipMove)
+      || Object.values(row).some(value => !Number.isFinite(value) || value <= 0))) {
+  fail('HIP_SPREAD_TABLE must contain all 18 source rows with seven positive fields');
 }
 if (balance.VELOCITY_LADDER !== 0.8) {
   fail('VELOCITY_LADDER must be exactly 0.8');
@@ -105,75 +111,19 @@ for (const weapon of weapons) {
 
 const supportedWeaponIds = new Set(weapons.filter(w => SUPPORTED_CLASSES.has(w.cls)).map(w => w.id));
 
-const DRAW_TIME_GROUPS = {
-  semiAutoSidearm: new Set(['es57', 'ggh22', 'p18', 'm45a1']),
-  revolverOrAutoSidearm: new Set(['m357trait', 'm44', 'vz61']),
-  db12: new Set(['db12']),
-};
-const EXPECTED_DRAW_TIME_OFFSETS = {
-  primary: 8,
-  db12: 9,
-  semiAutoSidearm: 5,
-  revolverOrAutoSidearm: 7,
-};
-const drawTimeAxis = balance.DRAW_TIME_AXIS;
-if (drawTimeAxis == null || typeof drawTimeAxis !== 'object' || Array.isArray(drawTimeAxis)) {
-  fail('DRAW_TIME_AXIS must be a named object contract');
-} else {
-  const expectedAxis = {
-    version: 1,
-    coordinateName: 'drawTimeTier',
-    baseCoordinateRange: [0, 7],
-    coordinateRange: [-1, 15],
-    sprintPrimary: { table: 'PRIMARY_SPRINT_REC_TIERS', coordinateOrigin: 0 },
-    sprintSidearm: { table: 'SIDEARM_SPRINT_REC_TIERS', coordinateOrigin: -1 },
-    deploy: { table: 'DEPLOY_TIME_TIERS', coordinateOrigin: 4, coordinateRange: [4, 15] },
-  };
-  if (drawTimeAxis.version !== expectedAxis.version) fail('DRAW_TIME_AXIS.version must be 1');
-  if (drawTimeAxis.coordinateName !== expectedAxis.coordinateName) fail('DRAW_TIME_AXIS.coordinateName must be drawTimeTier');
-  if (JSON.stringify(drawTimeAxis.baseCoordinateRange) !== JSON.stringify(expectedAxis.baseCoordinateRange)) {
-    fail('DRAW_TIME_AXIS.baseCoordinateRange must be [0, 7]');
-  }
-  if (JSON.stringify(drawTimeAxis.coordinateRange) !== JSON.stringify(expectedAxis.coordinateRange)) {
-    fail('DRAW_TIME_AXIS.coordinateRange must be [-1, 15]');
-  }
-  for (const [path, expected] of [
-    ['sprintToFire.primary', expectedAxis.sprintPrimary],
-    ['sprintToFire.sidearm', expectedAxis.sprintSidearm],
-    ['deploy', expectedAxis.deploy],
-  ]) {
-    const actual = path === 'deploy'
-      ? drawTimeAxis.deploy
-      : drawTimeAxis.sprintToFire?.[path.endsWith('primary') ? 'primary' : 'sidearm'];
-    if (actual?.table !== expected.table || actual?.coordinateOrigin !== expected.coordinateOrigin) {
-      fail(`DRAW_TIME_AXIS.${path} must use ${expected.table} with coordinateOrigin ${expected.coordinateOrigin}`);
-    }
-    if (path === 'deploy' && JSON.stringify(actual?.coordinateRange) !== JSON.stringify(expected.coordinateRange)) {
-      fail('DRAW_TIME_AXIS.deploy.coordinateRange must be [4, 15]');
-    }
-  }
-  for (const [group, offset] of Object.entries(EXPECTED_DRAW_TIME_OFFSETS)) {
-    if (drawTimeAxis.offsets?.[group] !== offset) fail(`DRAW_TIME_AXIS.offsets.${group} must be ${offset}`);
-  }
-  const expectedPrimary = [...supportedWeaponIds]
-    .filter(weaponId => !Object.values(DRAW_TIME_GROUPS).some(ids => ids.has(weaponId)))
-    .sort();
-  const expectedGroups = {
-    primary: expectedPrimary,
-    db12: [...DRAW_TIME_GROUPS.db12].sort(),
-    semiAutoSidearm: [...DRAW_TIME_GROUPS.semiAutoSidearm].sort(),
-    revolverOrAutoSidearm: [...DRAW_TIME_GROUPS.revolverOrAutoSidearm].sort(),
-  };
-  const actualGroups = drawTimeAxis.weaponGroups ?? {};
-  if (JSON.stringify(Object.keys(actualGroups).sort()) !== JSON.stringify(Object.keys(expectedGroups).sort())) {
-    fail('DRAW_TIME_AXIS.weaponGroups must contain exactly primary, db12, semiAutoSidearm, and revolverOrAutoSidearm');
-  }
-  for (const [group, expectedIds] of Object.entries(expectedGroups)) {
-    const actualIds = actualGroups[group];
-    if (!Array.isArray(actualIds) || new Set(actualIds).size !== actualIds.length
-        || JSON.stringify([...actualIds].sort()) !== JSON.stringify(expectedIds)) {
-      fail(`DRAW_TIME_AXIS.weaponGroups.${group} is not the exact approved weapon set`);
-    }
+const SIDEARM_DEPLOY_WEAPONS = new Set(['es57', 'ggh22', 'p18', 'm45a1', 'm357trait', 'm44']);
+const drawTimeTables = balance.DRAW_TIME_TABLES;
+for (const [name, table, length] of [
+  ['sprint', drawTimeTables?.sprint, 12],
+  ['primary.deploy', drawTimeTables?.primary?.deploy, 12],
+  ['primary.undeploy', drawTimeTables?.primary?.undeploy, 12],
+  ['sidearm.deploy', drawTimeTables?.sidearm?.deploy, 15],
+  ['sidearm.undeploy', drawTimeTables?.sidearm?.undeploy, 15],
+]) {
+  if (!Array.isArray(table) || table.length !== length
+      || table.some((value, index) => !Number.isFinite(value) || value <= 0
+        || (index > 0 && value > table[index - 1]))) {
+    fail(`DRAW_TIME_TABLES.${name} must contain ${length} positive millisecond values in source order`);
   }
 }
 
@@ -287,7 +237,7 @@ for (const weaponId of supportedWeaponIds) {
   if (!attachments.WEAPON_ATTS[weaponId]) fail(`${weaponId}: missing WEAPON_ATTS`);
   if (!recoilDecay.RECOIL_DEC?.[weaponId]) fail(`${weaponId}: missing RECOIL_DEC`);
   if (!recoilDecay.RECOIL_DEC_TEXP?.[weaponId]) fail(`${weaponId}: missing RECOIL_DEC_TEXP`);
-  if (!balance.HIP_CLS?.[weaponId]) fail(`${weaponId}: missing HIP_CLS`);
+  if (!Number.isInteger(balance.HIP_SPREAD_BASE_INDEX?.[weaponId])) fail(`${weaponId}: missing HIP_SPREAD_BASE_INDEX`);
 }
 
 for (const tableName of ['RECOIL_DEC', 'RECOIL_DEC_EXP', 'RECOIL_DEC_TEXP']) {
@@ -302,46 +252,20 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
     fail(`${weaponId}: WEAPON_MAG def "${magData.def}" is not present in mags`);
   }
 
-  const sprintTableName = magData.sprintRecoveryTierTable === 'sidearm'
-    ? 'SIDEARM_SPRINT_REC_TIERS'
-    : 'PRIMARY_SPRINT_REC_TIERS';
-  const sprintTable = magData.sprintRecoveryTierTable === 'sidearm'
-    ? (balance.SIDEARM_SPRINT_REC_TIERS?.length ? balance.SIDEARM_SPRINT_REC_TIERS : balance.SPRINT_REC_TIERS)
-    : (balance.PRIMARY_SPRINT_REC_TIERS?.length ? balance.PRIMARY_SPRINT_REC_TIERS : balance.SPRINT_REC_TIERS);
-  const baseIndexTables = [
-    ['defAds', 'ADS_SPD_TIERS', balance.ADS_SPD_TIERS],
-    ['defAms', 'ADS_MOVE_TIERS', balance.ADS_MOVE_TIERS],
-    ['defSpr', sprintTableName, sprintTable],
-  ];
-  for (const [field, tableName, table] of baseIndexTables) {
+  const expectedDeployTable = SIDEARM_DEPLOY_WEAPONS.has(weaponId) ? 'sidearm' : 'primary';
+  if (magData.deployTimeTable !== expectedDeployTable) {
+    fail(`${weaponId}: deployTimeTable must be ${expectedDeployTable}`);
+  }
+  for (const [field, table] of [
+    ['defAds', balance.ADS_SPD_TIERS],
+    ['defAms', balance.ADS_MOVE_TIERS],
+    ['sprintRecoveryBaseIndex', drawTimeTables?.sprint],
+    ['deployBaseIndex', drawTimeTables?.[expectedDeployTable]?.deploy],
+  ]) {
     const value = magData[field];
-    if (!Number.isInteger(value) || value < 0 || value >= table.length) {
-      fail(`${weaponId}: ${field} must be an integer in [0, ${table.length - 1}] for ${tableName}; found ${value}`);
+    if (!Number.isInteger(value) || value < 0 || !Array.isArray(table) || value >= table.length) {
+      fail(`${weaponId}: ${field} must be a valid base index`);
     }
-  }
-  const expectedGroup = Object.entries(DRAW_TIME_GROUPS).find(([, ids]) => ids.has(weaponId))?.[0] ?? 'primary';
-  const expectedSprintTable = expectedGroup === 'primary' || expectedGroup === 'db12' ? 'primary' : 'sidearm';
-  if (magData.drawTimeGroup !== expectedGroup) {
-    fail(`${weaponId}: drawTimeGroup must be ${expectedGroup}; found ${magData.drawTimeGroup}`);
-  }
-  if (!Number.isInteger(magData.drawTimeOffset)
-      || magData.drawTimeOffset !== EXPECTED_DRAW_TIME_OFFSETS[expectedGroup]) {
-    fail(`${weaponId}: drawTimeOffset must be ${EXPECTED_DRAW_TIME_OFFSETS[expectedGroup]}; found ${magData.drawTimeOffset}`);
-  }
-  const [minDrawTimeTier, maxDrawTimeTier] = drawTimeAxis?.baseCoordinateRange ?? [NaN, NaN];
-  if (!Number.isInteger(magData.drawTimeTier)
-      || magData.drawTimeTier < minDrawTimeTier || magData.drawTimeTier > maxDrawTimeTier) {
-    fail(`${weaponId}: drawTimeTier must be an integer in [${minDrawTimeTier}, ${maxDrawTimeTier}]; found ${magData.drawTimeTier}`);
-  }
-  if (magData.sprintRecoveryTierTable !== expectedSprintTable) {
-    fail(`${weaponId}: sprintRecoveryTierTable must be ${expectedSprintTable} for ${expectedGroup}`);
-  }
-  const sprintOrigin = expectedSprintTable === 'sidearm'
-    ? drawTimeAxis?.sprintToFire?.sidearm?.coordinateOrigin
-    : drawTimeAxis?.sprintToFire?.primary?.coordinateOrigin;
-  if (Number.isInteger(magData.defSpr) && Number.isInteger(sprintOrigin)
-      && magData.drawTimeTier !== magData.defSpr + sprintOrigin) {
-    fail(`${weaponId}: drawTimeTier does not match the explicit Sprint-to-Fire coordinate conversion`);
   }
   for (const [magazineId, magazine] of Object.entries(magData.mags ?? {})) {
     const hasReloadSpeedTier = Object.hasOwn(magazine, 'reloadSpeedTier');
@@ -387,7 +311,7 @@ for (const [weaponId, magData] of Object.entries(attachments.WEAPON_MAG)) {
         const derivedSeconds = Object.hasOwn(magazine, 'tacRldOverrideMs')
           ? magazine.tacRldOverrideMs / 1000
           : Number.isFinite(weapon?.tacRld)
-            ? weapon.tacRld / (balance.RELOAD_SPEED_LADDER ** magazine.reloadSpeedTier)
+            ? weapon.tacRld / balance.RELOAD_SPEED_MULTIPLIERS[magazine.reloadSpeedTier]
             : null;
         if (reloadExceptions) {
           const registeredObservation = reloadExceptions.register.screenshotExceptions?.[weaponId]?.[magazineId];
@@ -457,9 +381,13 @@ for (const [weaponId, ammoData] of Object.entries(ammo.WEAPON_AMMO)) {
   }
 }
 
-for (const [weaponId, hipClass] of Object.entries(balance.HIP_CLS ?? {})) {
-  if (!weaponIds.has(weaponId)) fail(`HIP_CLS references unknown weapon ${weaponId}`);
-  if (!balance.HIP_SPREAD_TIERS?.[hipClass]) fail(`${weaponId}: HIP_CLS references unknown spread tier ${hipClass}`);
+for (const table of ['HIP_SPREAD_BASE_INDEX', 'HIP_SPREAD_BASE_INDEX_OVERRIDES']) {
+  for (const [weaponId, index] of Object.entries(balance[table] ?? {})) {
+    if (!weaponIds.has(weaponId)) fail(`${table} references unknown weapon ${weaponId}`);
+    if (!Number.isInteger(index) || index < 0 || index >= balance.HIP_SPREAD_TABLE.length) {
+      fail(`${weaponId}: ${table} has invalid source index ${index}`);
+    }
+  }
 }
 
 for (const weaponId of Object.keys(balance.BASE_HS_MULT ?? {})) {

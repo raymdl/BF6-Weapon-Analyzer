@@ -993,6 +993,17 @@
         "flechette": 30,
         "slugs": 40
       },
+      "effectOverrides": {
+        "buckshot": {
+          "hipSpreadTierMod": -9
+        },
+        "buckshot_00": {
+          "hipSpreadTierMod": -9
+        },
+        "flechette": {
+          "hipSpreadTierMod": -9
+        }
+      },
       "projectileOverrides": {
         "buckshot_00": {
           "pellets": 8,
@@ -1077,6 +1088,17 @@
         "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
+      },
+      "effectOverrides": {
+        "buckshot": {
+          "hipSpreadTierMod": -9
+        },
+        "buckshot_00": {
+          "hipSpreadTierMod": -9
+        },
+        "flechette": {
+          "hipSpreadTierMod": -9
+        }
       },
       "projectileOverrides": {
         "buckshot_00": {
@@ -1163,6 +1185,17 @@
         "flechette": 30,
         "slugs": 40
       },
+      "effectOverrides": {
+        "buckshot": {
+          "hipSpreadTierMod": -9
+        },
+        "buckshot_00": {
+          "hipSpreadTierMod": -9
+        },
+        "flechette": {
+          "hipSpreadTierMod": -9
+        }
+      },
       "projectileOverrides": {
         "buckshot_00": {
           "pellets": 8,
@@ -1239,6 +1272,17 @@
         "buckshot_00": 20,
         "flechette": 30,
         "slugs": 40
+      },
+      "effectOverrides": {
+        "buckshot": {
+          "hipSpreadTierMod": -9
+        },
+        "buckshot_00": {
+          "hipSpreadTierMod": -9
+        },
+        "flechette": {
+          "hipSpreadTierMod": -9
+        }
       },
       "projectileOverrides": {
         "buckshot_00": {

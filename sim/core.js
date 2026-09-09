@@ -158,7 +158,7 @@ export function selectedRecoilVariationFor(w) {
  * Applies the _movingAdsMinSpreadDeg floor when moving ADS.
  */
 export const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
-export const SPREAD_BAR_SCALE = 9.4;
+export const SPREAD_BAR_SCALE = 12;
 
 export function spreadBounds(w) {
   const { aimState, stanceState } = _ctx;

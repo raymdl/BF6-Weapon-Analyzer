@@ -1,5 +1,9 @@
 {
-  "RELOAD_SPEED_LADDER": 1.13,
+  "RELOAD_SPEED_MULTIPLIERS": [
+    1,
+    1.13,
+    1.277
+  ],
   "VELOCITY_LADDER": 0.8,
   "HEALTH_REGEN_DELAY_S": 5,
   "RECOIL_MULT": {
@@ -67,116 +71,237 @@
     "ef88": 0.9375,
     "vssm": 0.9467
   },
-  "HIP_SPREAD_TIERS": {
-    "Class A": [
-      0.338,
-      0.676,
-      1.014,
-      1.352,
-      1.69,
-      2.028
-    ],
-    "Class B": [
-      0.451,
-      0.902,
-      1.353,
-      1.804,
-      2.255,
-      2.706
-    ],
-    "Class C": [
-      0.608,
-      1.216,
-      1.824,
-      2.432,
-      3.04,
-      3.648
-    ],
-    "Class D": [
-      0.838,
-      1.676,
-      2.514,
-      3.352,
-      4.19,
-      5.028
-    ],
-    "Class E": [
-      1.212,
-      2.424,
-      3.636,
-      4.848,
-      6.06,
-      7.272
-    ]
+  "HIP_SPREAD_TABLE": [
+    {
+      "hipStand": 7.4,
+      "hipMove": 9.25,
+      "Field_160ef028": 18.5,
+      "Field_b3ab862b": 5.55,
+      "Field_1ef3a223": 7.4,
+      "Field_553bcee0": 3.7,
+      "Field_39b31415": 5.55
+    },
+    {
+      "hipStand": 4.848,
+      "hipMove": 6.06,
+      "Field_160ef028": 12.12,
+      "Field_b3ab862b": 3.636,
+      "Field_1ef3a223": 4.848,
+      "Field_553bcee0": 2.424,
+      "Field_39b31415": 3.636
+    },
+    {
+      "hipStand": 3.352,
+      "hipMove": 4.19,
+      "Field_160ef028": 8.38,
+      "Field_b3ab862b": 2.514,
+      "Field_1ef3a223": 3.352,
+      "Field_553bcee0": 1.676,
+      "Field_39b31415": 2.514
+    },
+    {
+      "hipStand": 2.432,
+      "hipMove": 3.04,
+      "Field_160ef028": 6.08,
+      "Field_b3ab862b": 1.824,
+      "Field_1ef3a223": 2.432,
+      "Field_553bcee0": 1.216,
+      "Field_39b31415": 1.824
+    },
+    {
+      "hipStand": 1.804,
+      "hipMove": 2.255,
+      "Field_160ef028": 4.51,
+      "Field_b3ab862b": 1.353,
+      "Field_1ef3a223": 1.804,
+      "Field_553bcee0": 0.902,
+      "Field_39b31415": 1.353
+    },
+    {
+      "hipStand": 1.352,
+      "hipMove": 1.69,
+      "Field_160ef028": 3.38,
+      "Field_b3ab862b": 1.014,
+      "Field_1ef3a223": 1.352,
+      "Field_553bcee0": 0.676,
+      "Field_39b31415": 1.014
+    },
+    {
+      "hipStand": 1.024,
+      "hipMove": 1.28,
+      "Field_160ef028": 2.56,
+      "Field_b3ab862b": 0.768,
+      "Field_1ef3a223": 1.024,
+      "Field_553bcee0": 0.512,
+      "Field_39b31415": 0.768
+    },
+    {
+      "hipStand": 0.784,
+      "hipMove": 0.98,
+      "Field_160ef028": 1.96,
+      "Field_b3ab862b": 0.588,
+      "Field_1ef3a223": 0.784,
+      "Field_553bcee0": 0.392,
+      "Field_39b31415": 0.588
+    },
+    {
+      "hipStand": 0.608,
+      "hipMove": 0.76,
+      "Field_160ef028": 1.52,
+      "Field_b3ab862b": 0.456,
+      "Field_1ef3a223": 0.608,
+      "Field_553bcee0": 0.304,
+      "Field_39b31415": 0.456
+    },
+    {
+      "hipStand": 0.476,
+      "hipMove": 0.595,
+      "Field_160ef028": 1.19,
+      "Field_b3ab862b": 0.357,
+      "Field_1ef3a223": 0.476,
+      "Field_553bcee0": 0.238,
+      "Field_39b31415": 0.357
+    },
+    {
+      "hipStand": 0.38,
+      "hipMove": 0.475,
+      "Field_160ef028": 0.95,
+      "Field_b3ab862b": 0.285,
+      "Field_1ef3a223": 0.38,
+      "Field_553bcee0": 0.19,
+      "Field_39b31415": 0.285
+    },
+    {
+      "hipStand": 2.16,
+      "hipMove": 2.7,
+      "Field_160ef028": 5.4,
+      "Field_b3ab862b": 1.62,
+      "Field_1ef3a223": 2.16,
+      "Field_553bcee0": 1.08,
+      "Field_39b31415": 1.62
+    },
+    {
+      "hipStand": 1.444,
+      "hipMove": 1.805,
+      "Field_160ef028": 3.61,
+      "Field_b3ab862b": 1.083,
+      "Field_1ef3a223": 1.444,
+      "Field_553bcee0": 0.722,
+      "Field_39b31415": 1.083
+    },
+    {
+      "hipStand": 0.972,
+      "hipMove": 1.215,
+      "Field_160ef028": 2.43,
+      "Field_b3ab862b": 0.729,
+      "Field_1ef3a223": 0.972,
+      "Field_553bcee0": 0.486,
+      "Field_39b31415": 0.729
+    },
+    {
+      "hipStand": 0.656,
+      "hipMove": 0.82,
+      "Field_160ef028": 1.64,
+      "Field_b3ab862b": 0.492,
+      "Field_1ef3a223": 0.656,
+      "Field_553bcee0": 0.328,
+      "Field_39b31415": 0.492
+    },
+    {
+      "hipStand": 0.444,
+      "hipMove": 0.555,
+      "Field_160ef028": 1.11,
+      "Field_b3ab862b": 0.333,
+      "Field_1ef3a223": 0.444,
+      "Field_553bcee0": 0.222,
+      "Field_39b31415": 0.333
+    },
+    {
+      "hipStand": 0.304,
+      "hipMove": 0.38,
+      "Field_160ef028": 0.76,
+      "Field_b3ab862b": 0.228,
+      "Field_1ef3a223": 0.304,
+      "Field_553bcee0": 0.152,
+      "Field_39b31415": 0.228
+    },
+    {
+      "hipStand": 0.208,
+      "hipMove": 0.26,
+      "Field_160ef028": 0.52,
+      "Field_b3ab862b": 0.156,
+      "Field_1ef3a223": 0.208,
+      "Field_553bcee0": 0.104,
+      "Field_39b31415": 0.156
+    }
+  ],
+  "HIP_SPREAD_BASE_INDEX": {
+    "kord6p67": 3,
+    "nvo228e": 3,
+    "ef88": 3,
+    "b36a4": 3,
+    "ak4d": 3,
+    "m433": 3,
+    "l85a3": 3,
+    "m16a4": 3,
+    "sor556": 3,
+    "tr7": 3,
+    "vcr2": 3,
+    "interdictor": 1,
+    "l115": 2,
+    "m2010esr": 2,
+    "miniscout": 3,
+    "psr": 1,
+    "sv98": 2,
+    "ak205": 4,
+    "brod3": 4,
+    "m417a2": 4,
+    "m4a1": 4,
+    "grtbc": 4,
+    "qbz192": 4,
+    "sor300sc": 4,
+    "sg553r": 4,
+    "m277": 4,
+    "lmr27": 3,
+    "m39emr": 2,
+    "grtcps": 2,
+    "svk86": 1,
+    "svdm": 2,
+    "vssm": 4,
+    "m240l": 1,
+    "m250": 1,
+    "drsiar": 2,
+    "m60": 1,
+    "m123k": 1,
+    "m121a2": 1,
+    "l110": 1,
+    "rpk74m": 2,
+    "rpkm": 2,
+    "kts100": 2,
+    "es57": 5,
+    "ggh22": 5,
+    "p18": 5,
+    "m45a1": 5,
+    "m44": 5,
+    "vz61": 4,
+    "m357trait": 5,
+    "ks18k": 3,
+    "m87a1": 3,
+    "db12": 3,
+    "m1014": 3,
+    "scw10": 4,
+    "sl9": 4,
+    "pw5a3": 4,
+    "pw7a2": 4,
+    "sgx": 4,
+    "usg90": 4,
+    "pp19": 4,
+    "cz3a1": 4,
+    "umg40": 4,
+    "kv9": 4
   },
-  "HIP_SPREAD_BASE_IDX": {
-    "hipStand": 3,
-    "hipMove": 4
-  },
-  "HIP_CLS": {
-    "m433": "Class C",
-    "b36a4": "Class C",
-    "sor556": "Class C",
-    "ak4d": "Class C",
-    "tr7": "Class C",
-    "kord6p67": "Class C",
-    "nvo228e": "Class C",
-    "l85a3": "Class C",
-    "vcr2": "Class C",
-    "m4a1": "Class B",
-    "m277": "Class B",
-    "ak205": "Class B",
-    "m417a2": "Class B",
-    "grtbc": "Class B",
-    "qbz192": "Class B",
-    "sg553r": "Class B",
-    "sor300sc": "Class B",
-    "sgx": "Class B",
-    "pw5a3": "Class B",
-    "pw7a2": "Class B",
-    "umg40": "Class B",
-    "usg90": "Class B",
-    "kv9": "Class B",
-    "scw10": "Class B",
-    "sl9": "Class B",
-    "cz3a1": "Class B",
-    "l110": "Class E",
-    "drsiar": "Class D",
-    "m60": "Class E",
-    "rpkm": "Class D",
-    "m123k": "Class E",
-    "m250": "Class E",
-    "kts100": "Class D",
-    "m240l": "Class E",
-    "m121a2": "Class E",
-    "m39emr": "Class D",
-    "lmr27": "Class C",
-    "svk86": "Class E",
-    "svdm": "Class D",
-    "grtcps": "Class D",
-    "m2010esr": "Class D",
-    "sv98": "Class D",
-    "psr": "Class E",
-    "miniscout": "Class C",
-    "m87a1": "Class C",
-    "m1014": "Class C",
-    "ks18k": "Class C",
-    "db12": "Class C",
-    "p18": "Class A",
-    "es57": "Class A",
-    "m45a1": "Class A",
-    "m44": "Class A",
-    "ggh22": "Class A",
-    "m357trait": "Class A",
-    "vz61": "Class B",
-    "m16a4": "Class C",
-    "rpk74m": "Class D",
-    "interdictor": "Class E",
-    "l115": "Class D",
-    "pp19": "Class B",
-    "brod3": "Class B",
-    "ef88": "Class C",
-    "vssm": "Class D"
+  "HIP_SPREAD_BASE_INDEX_OVERRIDES": {
+    "vssm": 2
   },
   "BASE_HS_MULT": {
     "m39emr": 1.5,
@@ -294,213 +419,118 @@
     "vssm": "dmr"
   },
   "MOVING_ACC_TIERS": [
-    0.05,
-    0.13,
-    0.22,
-    0.32,
-    0.43,
+    0.68,
     0.55,
-    0.68
+    0.43,
+    0.32,
+    0.22,
+    0.13,
+    0.05
   ],
   "DEFAULT_MOV_TIER": 3,
   "ADS_SPD_TIERS": [
-    133,
-    167,
-    200,
-    250,
-    300,
-    367,
-    433,
-    500
-  ],
-  "SPRINT_REC_TIERS": [
-    83,
-    100,
-    133,
-    167,
-    200,
-    233,
-    267,
-    300,
-    333,
-    350
+    500.0,
+    433.334,
+    366.667,
+    300.0,
+    250.0,
+    200.0,
+    166.667,
+    133.334
   ],
   "ADS_MOVE_TIERS": [
-    1,
-    0.91,
-    0.82,
-    0.75,
-    0.67,
-    0.6,
-    0.54,
-    0.47,
+    0.325,
+    0.325,
+    0.37,
     0.42,
-    0.37
+    0.475,
+    0.535,
+    0.6,
+    0.67,
+    0.745,
+    0.825,
+    0.91,
+    1.0
   ],
-  "PRIMARY_SPRINT_REC_TIERS": [
-    83,
-    100,
-    133,
-    167,
-    200,
-    233,
-    267,
-    300,
-    350
-  ],
-  "SIDEARM_SPRINT_REC_TIERS": [
-    67,
-    83,
-    100,
-    133,
-    167,
-    200,
-    233
-  ],
-  "DEPLOY_TIME_TIERS": [
-    200,
-    233,
-    267,
-    300,
-    350,
-    400,
-    467,
-    533,
-    633,
-    733,
-    867,
-    1000
-  ],
-  "DRAW_TIME_AXIS": {
-    "version": 1,
-    "coordinateName": "drawTimeTier",
-    "baseCoordinateRange": [
-      0,
-      7
+  "DRAW_TIME_TABLES": {
+    "sprint": [
+      400.001,
+      350.001,
+      300.001,
+      266.667,
+      233.334,
+      200.001,
+      166.667,
+      133.334,
+      100.001,
+      83.3334,
+      66.667,
+      50.001
     ],
-    "coordinateRange": [
-      -1,
-      15
-    ],
-    "sprintToFire": {
-      "primary": {
-        "table": "PRIMARY_SPRINT_REC_TIERS",
-        "coordinateOrigin": 0,
-        "indexFormula": "coordinate - coordinateOrigin"
-      },
-      "sidearm": {
-        "table": "SIDEARM_SPRINT_REC_TIERS",
-        "coordinateOrigin": -1,
-        "indexFormula": "coordinate - coordinateOrigin"
-      }
-    },
-    "deploy": {
-      "table": "DEPLOY_TIME_TIERS",
-      "coordinateOrigin": 4,
-      "coordinateRange": [
-        4,
-        15
+    "primary": {
+      "deploy": [
+        1333.334,
+        1116.667,
+        1000.004,
+        866.667,
+        733.334,
+        633.334,
+        533.334,
+        466.667,
+        400.001,
+        350.001,
+        300.001,
+        266.667
       ],
-      "indexFormula": "coordinate - coordinateOrigin"
-    },
-    "offsets": {
-      "primary": 8,
-      "db12": 9,
-      "semiAutoSidearm": 5,
-      "revolverOrAutoSidearm": 7
-    },
-    "weaponGroups": {
-      "primary": [
-        "ak205",
-        "ak4d",
-        "b36a4",
-        "cz3a1",
-        "drsiar",
-        "grtbc",
-        "grtcps",
-        "kord6p67",
-        "ks18k",
-        "kts100",
-        "kv9",
-        "l110",
-        "interdictor",
-        "l115",
-        "l85a3",
-        "lmr27",
-        "m1014",
-        "m121a2",
-        "m123k",
-        "m16a4",
-        "m2010esr",
-        "m240l",
-        "m250",
-        "m277",
-        "m39emr",
-        "m417a2",
-        "m433",
-        "m4a1",
-        "m60",
-        "m87a1",
-        "miniscout",
-        "nvo228e",
-        "pp19",
-        "psr",
-        "pw5a3",
-        "pw7a2",
-        "qbz192",
-        "rpk74m",
-        "rpkm",
-        "scw10",
-        "sg553r",
-        "sgx",
-        "sl9",
-        "sor300sc",
-        "sor556",
-        "sv98",
-        "svdm",
-        "svk86",
-        "tr7",
-        "umg40",
-        "usg90",
-        "vcr2",
-        "brod3",
-        "ef88",
-        "vssm"
-      ],
-      "semiAutoSidearm": [
-        "es57",
-        "ggh22",
-        "m45a1",
-        "p18"
-      ],
-      "revolverOrAutoSidearm": [
-        "m357trait",
-        "m44",
-        "vz61"
-      ],
-      "db12": [
-        "db12"
+      "undeploy": [
+        400.001,
+        366.667,
+        333.334,
+        300.001,
+        266.667,
+        233.334,
+        200.001,
+        166.667,
+        133.334,
+        116.667,
+        100.001,
+        83.334
       ]
     },
-    "shiftPolicy": {
-      "sprintToFire": [
-        "magazine.sprintRecoveryTierShift",
-        "grip.sprintRecoveryTierShift",
-        "ergonomics.sprintRecoveryTierShift",
-        "muzzle.sprintRecoveryTierShift"
-      ],
+    "sidearm": {
       "deploy": [
-        "magazine.sprintRecoveryTierShift",
-        "grip.sprintRecoveryTierShift",
-        "muzzle.sprintRecoveryTierShift"
+        466.667,
+        466.667,
+        466.667,
+        466.667,
+        466.667,
+        466.667,
+        466.667,
+        466.667,
+        400.001,
+        350.001,
+        300.001,
+        266.667,
+        233.334,
+        200.001,
+        166.667
       ],
-      "namedExceptions": [
-        {
-          "id": "ergonomics-sprint-only",
-          "source": "ergonomics.sprintRecoveryTierShift",
-          "excludedRendering": "deploy",
-          "evidence": "legacy 70634-case fixture; no deploy shift field exists in the reviewed ergonomics records"
-        }
+      "undeploy": [
+        233.334,
+        233.334,
+        233.334,
+        233.334,
+        233.334,
+        233.334,
+        233.334,
+        233.334,
+        200.001,
+        166.667,
+        133.334,
+        116.667,
+        100.001,
+        83.334,
+        66.667
       ]
     }
   }
