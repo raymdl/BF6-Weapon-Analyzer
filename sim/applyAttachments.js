@@ -15,11 +15,11 @@ import { resolveHitMultipliers } from './damage.js';
  *   setAttachmentContext({
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
  *     AMMO,
- *     RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+ *     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
  *     BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
  *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
- *     ADS_SPD_TIERS, SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
- *     DRAW_TIME_AXIS,
+ *     ADS_SPD_TIERS, ADS_MOVE_TIERS,
+ *     DRAW_TIME_TABLES,
  *     VELOCITY_LADDER, HEALTH_REGEN_DELAY_S,
  *   });
  *
@@ -34,13 +34,13 @@ let _ctx = {
   AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {}, WEAPON_AMMO: {},
   MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {}, LIGHTS_BY_ID: {},
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},
-  RECOIL_MULT: {}, HIP_SPREAD_TIERS: {}, HIP_SPREAD_BASE_IDX: {}, HIP_CLS: {},
+  RECOIL_MULT: {}, HIP_SPREAD_TABLE: [], HIP_SPREAD_BASE_INDEX: {}, HIP_SPREAD_BASE_INDEX_OVERRIDES: {},
   BASE_HS_MULT: {}, COLLATERAL_MULT_OVERRIDE: {}, HP_HS_HIGH: new Set(),
   LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
   MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
-  ADS_SPD_TIERS: [], SPRINT_REC_TIERS: [], PRIMARY_SPRINT_REC_TIERS: [], SIDEARM_SPRINT_REC_TIERS: [], DEPLOY_TIME_TIERS: [], ADS_MOVE_TIERS: [],
-  DRAW_TIME_AXIS: null,
-  RELOAD_SPEED_LADDER: 1.13,
+  ADS_SPD_TIERS: [], ADS_MOVE_TIERS: [],
+  DRAW_TIME_TABLES: null,
+  RELOAD_SPEED_MULTIPLIERS: [1, 1.13, 1.277],
   VELOCITY_LADDER: 0.8,
   HEALTH_REGEN_DELAY_S: 5,
 };
@@ -65,20 +65,16 @@ function hasOwn(record, field) {
 }
 
 function millisecondsToSeconds(milliseconds) {
-  return milliseconds == null ? null : +(milliseconds / 1000).toFixed(3);
+  return milliseconds == null ? null : milliseconds / 1000;
 }
 
 function invalidDrawTime(reason) {
   return {
     valid: false,
     reason,
-    baseDrawTimeTier: null,
-    effectiveDrawTimeTier: null,
-    offsetGroup: null,
-    offset: null,
     sprint: null,
     deploy: null,
-    deployErgonomicsException: null,
+    undeploy: null,
   };
 }
 
@@ -98,115 +94,51 @@ function clampTierCoordinate(rawIndex, table) {
 }
 
 /**
- * Resolve the canonical draw-time coordinate into the two player-visible
- * renderings. The integer in WEAPON_MAG is a coordinate on the named shared
- * axis; each lookup explicitly subtracts its own coordinate origin. Offsets
- * therefore remain source-axis rungs, never milliseconds or runtime indices.
- *
- * Ergonomics are a registered sprint-only exception during this transition:
- * the legacy deploy renderer applied magazine and grip shifts, but not the
- * ergonomics sprint shift. The exception is represented in the return value
- * and is validator/test-covered rather than silently omitted.
+ * Resolve the Frosty base indices against the full source arrays (slow to fast).
+ * Attachment shifts retain the catalog convention: negative means faster.
+ * Sum each axis independently, then clamp once. Deploy and undeploy share an index.
  */
 export function resolveDrawTime({
   weaponMag = null,
-  magazineSprintRecoveryTierShift = 0,
-  gripSprintRecoveryTierShift = 0,
-  ergonomicsSprintRecoveryTierShift = 0,
-  barrelSprintRecoveryTierShift = 0,
-  muzzleSprintRecoveryTierShift = 0,
-  axis = _ctx.DRAW_TIME_AXIS,
-  primarySprintTable = _ctx.PRIMARY_SPRINT_REC_TIERS,
-  sidearmSprintTable = _ctx.SIDEARM_SPRINT_REC_TIERS,
-  deployTable = _ctx.DEPLOY_TIME_TIERS,
+  sprintRecoveryTierShift = 0,
+  deployTimeTierShift = 0,
+  tables = _ctx.DRAW_TIME_TABLES,
 } = {}) {
-  if (!axis || typeof axis !== 'object') return invalidDrawTime('missing-axis-contract');
-  if (!weaponMag || !integerField(weaponMag, 'drawTimeTier')
-      || !integerField(weaponMag, 'drawTimeOffset')
-      || typeof weaponMag.drawTimeGroup !== 'string') {
-    return invalidDrawTime('missing-or-invalid-derived-fields');
+  const tableKey = weaponMag?.deployTimeTable;
+  if (tableKey !== 'primary' && tableKey !== 'sidearm') {
+    return invalidDrawTime('invalid-deploy-time-table');
   }
-  const [minTier, maxTier] = axis.baseCoordinateRange ?? [];
-  if (!Number.isInteger(minTier) || !Number.isInteger(maxTier)
-      || weaponMag.drawTimeTier < minTier || weaponMag.drawTimeTier > maxTier) {
-    return invalidDrawTime('base-draw-time-out-of-bounds');
+  const sprintTable = tables?.sprint;
+  const deployTable = tables?.[tableKey]?.deploy;
+  const undeployTable = tables?.[tableKey]?.undeploy;
+  if ([sprintTable, deployTable, undeployTable].some(table =>
+    !Array.isArray(table) || table.length === 0
+    || table.some(value => !Number.isFinite(value) || value < 0))
+    || deployTable.length !== undeployTable.length) {
+    return invalidDrawTime('invalid-draw-time-tables');
   }
-  const expectedOffset = axis.offsets?.[weaponMag.drawTimeGroup];
-  if (!Number.isInteger(expectedOffset) || expectedOffset !== weaponMag.drawTimeOffset) {
-    return invalidDrawTime('invalid-group-offset-selection');
+  for (const [field, table] of [
+    ['sprintRecoveryBaseIndex', sprintTable], ['deployBaseIndex', deployTable],
+  ]) {
+    if (!integerField(weaponMag, field) || weaponMag[field] < 0
+        || weaponMag[field] >= table.length) {
+      return invalidDrawTime('invalid-base-time-index');
+    }
   }
-
-  const sprintTableKey = weaponMag.sprintRecoveryTierTable;
-  if (sprintTableKey !== 'primary' && sprintTableKey !== 'sidearm') {
-    return invalidDrawTime('invalid-sprint-recovery-tier-table');
-  }
-  const sprintContract = axis.sprintToFire?.[sprintTableKey];
-  const sprintTable = sprintTableKey === 'sidearm' ? sidearmSprintTable : primarySprintTable;
-  const deployContract = axis.deploy;
-  if (!sprintContract || !Number.isInteger(sprintContract.coordinateOrigin)
-      || !deployContract || !Number.isInteger(deployContract.coordinateOrigin)
-      || !Array.isArray(sprintTable) || sprintTable.length === 0
-      || !Array.isArray(deployTable) || deployTable.length === 0) {
-    return invalidDrawTime('incomplete-axis-contract');
-  }
-  const shifts = {
-    magazine: magazineSprintRecoveryTierShift,
-    grip: gripSprintRecoveryTierShift,
-    ergonomics: ergonomicsSprintRecoveryTierShift,
-    barrel: barrelSprintRecoveryTierShift,
-    muzzle: muzzleSprintRecoveryTierShift,
-  };
-  if (Object.values(shifts).some(value => !Number.isInteger(value))) {
+  if (!Number.isInteger(sprintRecoveryTierShift) || !Number.isInteger(deployTimeTierShift)) {
     return invalidDrawTime('non-integer-attachment-shift');
   }
-
-  const effectiveDrawTimeTier = weaponMag.drawTimeTier
-    + shifts.magazine + shifts.grip + shifts.ergonomics + shifts.barrel + shifts.muzzle;
-  const sprintCoordinate = effectiveDrawTimeTier;
-  const sprintIndex = clampTierCoordinate(
-    sprintCoordinate - sprintContract.coordinateOrigin,
-    sprintTable,
-  );
-  const deployErgonomicsException = axis.shiftPolicy?.namedExceptions?.find(
-    exception => exception.id === 'ergonomics-sprint-only',
-  );
-  if (!deployErgonomicsException
-      || deployErgonomicsException.source !== 'ergonomics.sprintRecoveryTierShift'
-      || deployErgonomicsException.excludedRendering !== 'deploy') {
-    return invalidDrawTime('missing-ergonomics-deploy-exception');
-  }
-  // The shared effective coordinate includes every sprint-to-fire shift exactly
-  // once. The named exception removes only the ergonomics contribution from the
-  // deploy coordinate to preserve the pre-migration, directly characterized path.
-  const deployCoordinate = effectiveDrawTimeTier
-    + weaponMag.drawTimeOffset - shifts.ergonomics;
-  const deployIndex = clampTierCoordinate(
-    deployCoordinate - deployContract.coordinateOrigin,
-    deployTable,
-  );
-
+  const sprintIndex = weaponMag.sprintRecoveryBaseIndex - sprintRecoveryTierShift;
+  const deployIndex = weaponMag.deployBaseIndex - deployTimeTierShift;
   return {
     valid: true,
-    reason: 'derived-draw-time',
-    baseDrawTimeTier: weaponMag.drawTimeTier,
-    effectiveDrawTimeTier,
-    offsetGroup: weaponMag.drawTimeGroup,
-    offset: weaponMag.drawTimeOffset,
-    sprint: {
-      table: sprintTableKey,
-      coordinate: sprintCoordinate,
-      coordinateOrigin: sprintContract.coordinateOrigin,
-      index: sprintIndex,
-    },
-    deploy: {
-      coordinate: deployCoordinate,
-      coordinateOrigin: deployContract.coordinateOrigin,
-      index: deployIndex,
-    },
-    deployErgonomicsException: {
-      id: deployErgonomicsException.id,
-      adjustment: -shifts.ergonomics,
-    },
+    reason: 'frosty-time-arrays',
+    sprint: { baseIndex: weaponMag.sprintRecoveryBaseIndex,
+      index: clampTierCoordinate(sprintIndex, sprintTable) },
+    deploy: { table: tableKey, baseIndex: weaponMag.deployBaseIndex,
+      index: clampTierCoordinate(deployIndex, deployTable) },
+    undeploy: { table: tableKey, baseIndex: weaponMag.deployBaseIndex,
+      index: clampTierCoordinate(deployIndex, undeployTable) },
   };
 }
 
@@ -332,9 +264,9 @@ export function resolveReloadTiming({
   if (typeof weaponTacRld !== 'number' || !Number.isFinite(weaponTacRld) || weaponTacRld <= 0) {
     return { tacRld: null, branch: 'derived', reason: 'invalid-derived-base' };
   }
-  const magMult = _ctx.RELOAD_SPEED_LADDER ** (hasReloadSpeedTier ? magData.reloadSpeedTier : 0);
+  const magMult = _ctx.RELOAD_SPEED_MULTIPLIERS[hasReloadSpeedTier ? magData.reloadSpeedTier : 0];
   const ergoMult = hasReloadSpeedMult ? ergoData.reloadSpeedMult : 1;
-  const derivedTacRld = +(weaponTacRld / (magMult * ergoMult)).toFixed(3);
+  const derivedTacRld = weaponTacRld / (magMult * ergoMult);
   if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {
     return { tacRld: null, branch: 'derived', reason: 'invalid-derived-result' };
   }
@@ -371,11 +303,11 @@ export function applyAttachments(w, atts) {
   const {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
     MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
-    RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+    RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
     BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-    ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
-    DRAW_TIME_AXIS,
+    ADS_SPD_TIERS, ADS_MOVE_TIERS,
+    DRAW_TIME_TABLES,
   } = _ctx;
 
   const muz = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
@@ -395,7 +327,6 @@ export function applyAttachments(w, atts) {
 
   // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────
   const ergoData = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
-  const ergoSprintRecoveryTierShift = ergoData.sprintRecoveryTierShift ?? 0;
   const ergoAdsRecoilTierMod = ergoData.adsRecoilTierMod ?? 0;
 
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
@@ -439,27 +370,22 @@ export function applyAttachments(w, atts) {
   const weaponSway = (muz.sway ?? 0) + sightSway + (selectedMag?.sway ?? 0);
 
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
-  // Suppressors push up 1 tier (worse accuracy), short barrel drops 1 (better)
+  // Catalog shifts have the opposite sign to Frosty's source index modifiers.
+  // Keep source row order: shotgun ammunition crosses into a separate range.
   const hipSpreadTierMod = (muz.hipSpreadTierMod ?? 0)
     + (bar.hipSpreadTierMod ?? 0)
     + (las.hipSpreadTierMod ?? 0)
-    + (grp.hipSpreadTierMod ?? 0);
+    + (grp.hipSpreadTierMod ?? 0)
+    + (ammoType.hipSpreadTierMod ?? 0);
+  const hipBaseIndex = HIP_SPREAD_BASE_INDEX_OVERRIDES[w.id] ?? HIP_SPREAD_BASE_INDEX[w.id];
+  const hipRow = Number.isInteger(hipBaseIndex)
+    ? HIP_SPREAD_TABLE[Math.max(0, Math.min(HIP_SPREAD_TABLE.length - 1, hipBaseIndex - hipSpreadTierMod))]
+    : null;
   let spreadOverride = null;
-  if (hipSpreadTierMod !== 0 && w.spread) {
-    const tiers = HIP_SPREAD_TIERS[HIP_CLS[w.id]];
-    if (tiers) {
-      spreadOverride = { ...w.spread };
-      for (const [key, baseIdx] of Object.entries(HIP_SPREAD_BASE_IDX)) {
-        if (!spreadOverride[key]) continue;
-        const curMin = spreadOverride[key][0];
-        let nearestIdx = 0, nearestDiff = Math.abs(tiers[0] - curMin);
-        for (let i = 1; i < tiers.length; i++) {
-          const d = Math.abs(tiers[i] - curMin);
-          if (d < nearestDiff) { nearestDiff = d; nearestIdx = i; }
-        }
-        const newIdx = Math.max(0, Math.min(tiers.length - 1, nearestIdx + hipSpreadTierMod));
-        spreadOverride[key] = [tiers[newIdx], spreadOverride[key][1]];
-      }
+  if (hipRow && w.spread) {
+    spreadOverride = { ...w.spread };
+    for (const key of ['hipStand', 'hipMove']) {
+      if (w.spread[key]) spreadOverride[key] = [hipRow[key], w.spread[key][1]];
     }
   }
 
@@ -533,9 +459,7 @@ export function applyAttachments(w, atts) {
   const magId    = atts.mag ?? wm?.def ?? null;
   const magData  = wm?.mags?.[magId] ?? null;
   const magAdsTimeTierShift       = magData?.adsTimeTierShift       ?? 0;
-  const magSprintRecoveryTierShift = magData?.sprintRecoveryTierShift ?? 0;
   const magAdsMoveSpeedTierShift  = magData?.adsMoveSpeedTierShift  ?? 0;
-  const gripSprintRecoveryTierShift = grp.sprintRecoveryTierShift ?? 0;
 
   // ── Moving ADS spread ─────────────────────────────────────────────────────────
   // High-capacity belt boxes name this axis in their descriptions, so magazines
@@ -545,7 +469,7 @@ export function applyAttachments(w, atts) {
     + (bar.movingAdsSpreadTierMod ?? 0)
     + (magData?.movingAdsSpreadTierMod ?? 0);
   const movingAdsSpreadTier    = Math.min(
-    Math.max(DEFAULT_MOV_TIER - movingAdsSpreadTierMod, 0),
+    Math.max(DEFAULT_MOV_TIER + movingAdsSpreadTierMod, 0),
     MOVING_ACC_TIERS.length - 1,
   );
   const movingAdsMinSpreadDeg  = MOVING_ACC_TIERS[movingAdsSpreadTier];
@@ -558,33 +482,33 @@ export function applyAttachments(w, atts) {
   });
 
   // ── Tier index resolution ─────────────────────────────────────────────────────
-  // Clamp all tier indices to each stat table's 0-based bounds.
-  let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null, _deployTimeMs = null;
+  // Tables and weapon bases use Frosty's source order: higher means faster.
+  // Catalog magazine/movement shifts have the opposite sign; ADS tier mods do not.
+  // Sum all contributions before clamping to the table's 0-based bounds.
+  let _adsTimeMs = null, _sprintRecoveryMs = null, _adsMoveSpeedMult = null, _deployTimeMs = null, _undeployTimeMs = null;
   let _drawTimeResolution = null;
-  if (wm?.defAds != null && wm?.defSpr != null && wm?.defAms != null) {
+  if (wm?.defAds != null && wm?.defAms != null) {
     const adsIdx = Math.max(0, Math.min(ADS_SPD_TIERS.length - 1,
-      wm.defAds + magAdsTimeTierShift - combinedAdsTimeTierMod));
+      wm.defAds - magAdsTimeTierShift + combinedAdsTimeTierMod));
     const amsIdx = Math.max(0, Math.min(ADS_MOVE_TIERS.length - 1,
-      wm.defAms + magAdsMoveSpeedTierShift
-      + (grp.adsMoveSpeedTierShift ?? 0)
-      + (ammoType.adsMoveSpeedTierShift ?? 0)));
+      wm.defAms - magAdsMoveSpeedTierShift
+      - (grp.adsMoveSpeedTierShift ?? 0)
+      - (ammoType.adsMoveSpeedTierShift ?? 0)));
     _adsTimeMs       = ADS_SPD_TIERS[adsIdx];
     _adsMoveSpeedMult = ADS_MOVE_TIERS[amsIdx];
+    const timingAttachments = [magData, grp, ergoData, bar, muz, las, lit, ammoType];
     _drawTimeResolution = resolveDrawTime({
       weaponMag: wm,
-      magazineSprintRecoveryTierShift: magSprintRecoveryTierShift,
-      gripSprintRecoveryTierShift,
-      ergonomicsSprintRecoveryTierShift: ergoSprintRecoveryTierShift,
-      barrelSprintRecoveryTierShift: bar.sprintRecoveryTierShift ?? 0,
-      muzzleSprintRecoveryTierShift: muz.sprintRecoveryTierShift ?? 0,
-      axis: DRAW_TIME_AXIS,
-      primarySprintTable: PRIMARY_SPRINT_REC_TIERS,
-      sidearmSprintTable: SIDEARM_SPRINT_REC_TIERS,
-      deployTable: DEPLOY_TIME_TIERS,
+      sprintRecoveryTierShift: timingAttachments.reduce(
+        (sum, attachment) => sum + (attachment?.sprintRecoveryTierShift ?? 0), 0),
+      deployTimeTierShift: timingAttachments.reduce(
+        (sum, attachment) => sum + (attachment?.deployTimeTierShift ?? 0), 0),
+      tables: DRAW_TIME_TABLES,
     });
     if (_drawTimeResolution.valid) {
       _sprintRecoveryMs = _drawTimeResolution.sprint.index.value;
       _deployTimeMs = _drawTimeResolution.deploy.index.value;
+      _undeployTimeMs = _drawTimeResolution.undeploy.index.value;
     }
   }
 
@@ -638,7 +562,7 @@ export function applyAttachments(w, atts) {
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
     _movingAdsMinSpreadDeg:  movingAdsMinSpreadDeg,
     _adsTimeTierMod:         combinedAdsTimeTierMod,
-    _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs,
+    _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs, _undeployTimeMs,
     _hsMult:                 hsMult,
     _limbMult:               limbMult,
     _limbClass:              limbClass,
@@ -664,7 +588,8 @@ export function applyAttachments(w, atts) {
     bulletVel: projectileVelocityMps != null
       ? floorVelocityDisplay(projectileVelocityMps)
       : null,
-    deployT: _deployTimeMs != null ? +(_deployTimeMs / 1000).toFixed(3) : null,
+    deployT: millisecondsToSeconds(_deployTimeMs),
+    undeployT: millisecondsToSeconds(_undeployTimeMs),
     mag:    magMag ?? w.mag,
     tacRld: reloadResolution.tacRld,
   };

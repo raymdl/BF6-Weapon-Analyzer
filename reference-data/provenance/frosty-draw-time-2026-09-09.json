@@ -1,0 +1,750 @@
+{
+  "scope": "Offline local exports; not live runtime validation. Deploy/undeploy column interpretation follows known timing correspondence; original hashed field names retained here. WB indices are pre-attachment configuration, not equipped panel values.",
+  "fields": {
+    "sprintRecovery": "Field_0eb3af2f",
+    "deploy": "Field_ada3e7d9",
+    "undeploy": "Field_6225d335"
+  },
+  "sprint": [
+    {
+      "index": 0,
+      "recoverySecondsRaw": "0.400001",
+      "otherRecoverySecondsRaw": "0.400001"
+    },
+    {
+      "index": 1,
+      "recoverySecondsRaw": "0.350001",
+      "otherRecoverySecondsRaw": "0.350001"
+    },
+    {
+      "index": 2,
+      "recoverySecondsRaw": "0.300001",
+      "otherRecoverySecondsRaw": "0.300001"
+    },
+    {
+      "index": 3,
+      "recoverySecondsRaw": "0.266667",
+      "otherRecoverySecondsRaw": "0.266667"
+    },
+    {
+      "index": 4,
+      "recoverySecondsRaw": "0.233334",
+      "otherRecoverySecondsRaw": "0.233334"
+    },
+    {
+      "index": 5,
+      "recoverySecondsRaw": "0.200001",
+      "otherRecoverySecondsRaw": "0.200001"
+    },
+    {
+      "index": 6,
+      "recoverySecondsRaw": "0.166667",
+      "otherRecoverySecondsRaw": "0.166667"
+    },
+    {
+      "index": 7,
+      "recoverySecondsRaw": "0.133334",
+      "otherRecoverySecondsRaw": "0.133334"
+    },
+    {
+      "index": 8,
+      "recoverySecondsRaw": "0.100001",
+      "otherRecoverySecondsRaw": "0.100001"
+    },
+    {
+      "index": 9,
+      "recoverySecondsRaw": "0.0833334",
+      "otherRecoverySecondsRaw": "0.0833334"
+    },
+    {
+      "index": 10,
+      "recoverySecondsRaw": "0.066667",
+      "otherRecoverySecondsRaw": "0.066667"
+    },
+    {
+      "index": 11,
+      "recoverySecondsRaw": "0.050001",
+      "otherRecoverySecondsRaw": "0.050001"
+    }
+  ],
+  "deployArrays": {
+    "DTA_Weapons": [
+      {
+        "index": 0,
+        "deploySecondsRaw": "1.333334",
+        "undeploySecondsRaw": "0.400001"
+      },
+      {
+        "index": 1,
+        "deploySecondsRaw": "1.116667",
+        "undeploySecondsRaw": "0.366667"
+      },
+      {
+        "index": 2,
+        "deploySecondsRaw": "1.000004",
+        "undeploySecondsRaw": "0.333334"
+      },
+      {
+        "index": 3,
+        "deploySecondsRaw": "0.866667",
+        "undeploySecondsRaw": "0.300001"
+      },
+      {
+        "index": 4,
+        "deploySecondsRaw": "0.733334",
+        "undeploySecondsRaw": "0.266667"
+      },
+      {
+        "index": 5,
+        "deploySecondsRaw": "0.633334",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 6,
+        "deploySecondsRaw": "0.533334",
+        "undeploySecondsRaw": "0.200001"
+      },
+      {
+        "index": 7,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.166667"
+      },
+      {
+        "index": 8,
+        "deploySecondsRaw": "0.400001",
+        "undeploySecondsRaw": "0.133334"
+      },
+      {
+        "index": 9,
+        "deploySecondsRaw": "0.350001",
+        "undeploySecondsRaw": "0.116667"
+      },
+      {
+        "index": 10,
+        "deploySecondsRaw": "0.300001",
+        "undeploySecondsRaw": "0.100001"
+      },
+      {
+        "index": 11,
+        "deploySecondsRaw": "0.266667",
+        "undeploySecondsRaw": "0.083334"
+      }
+    ],
+    "DTA_Sidearms": [
+      {
+        "index": 0,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 1,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 2,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 3,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 4,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 5,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 6,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 7,
+        "deploySecondsRaw": "0.466667",
+        "undeploySecondsRaw": "0.233334"
+      },
+      {
+        "index": 8,
+        "deploySecondsRaw": "0.400001",
+        "undeploySecondsRaw": "0.200001"
+      },
+      {
+        "index": 9,
+        "deploySecondsRaw": "0.350001",
+        "undeploySecondsRaw": "0.166667"
+      },
+      {
+        "index": 10,
+        "deploySecondsRaw": "0.300001",
+        "undeploySecondsRaw": "0.133334"
+      },
+      {
+        "index": 11,
+        "deploySecondsRaw": "0.266667",
+        "undeploySecondsRaw": "0.116667"
+      },
+      {
+        "index": 12,
+        "deploySecondsRaw": "0.233334",
+        "undeploySecondsRaw": "0.100001"
+      },
+      {
+        "index": 13,
+        "deploySecondsRaw": "0.200001",
+        "undeploySecondsRaw": "0.083334"
+      },
+      {
+        "index": 14,
+        "deploySecondsRaw": "0.166667",
+        "undeploySecondsRaw": "0.066667"
+      }
+    ]
+  },
+  "weaponIndices": [
+    {
+      "siteId": "kord6p67",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\6P67_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "nvo228e",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\ACE32\\ACE32_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "ef88",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\EF88\\EF88_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "b36a4",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\G36\\G36_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "ak4d",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\G3A4\\G3A4_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m433",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\HK433\\HK433_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "l85a3",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\L85A3\\L85A3_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m16a4",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\M16A3\\M16A3_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "sor556",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\SCARL\\SCARL_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "tr7",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\Tavor7\\Tavor7_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "vcr2",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\VHS2\\VHS2_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "interdictor",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\DesertTechHTI_WB.xml",
+      "sprintIndex": 3,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "l115",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\L115A3\\L115A3_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m2010esr",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\M2010ESR\\M2010ESR_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "miniscout",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\MiniFix\\MiniFix_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "psr",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\MRAD\\MRAD_WB.xml",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "sv98",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\SV98M\\SV98M_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "ak205",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\AK205\\AK205_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "brod3",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\BREN3_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m417a2",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\HK417A2\\HK417A2_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m4a1",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\M4A1_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "grtbc",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\MSBSGROTB\\MSBSGROTB_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "qbz192",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\QBZ192\\QBZ192_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "sor300sc",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\SCARSC\\SCARSC_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "sg553r",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\SIG553R\\SIG553R_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m277",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\XM7\\XM7_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "lmr27",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\ARADMR\\ARADMR_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m39emr",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\M39EMR\\M39EMR_WB.xml",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "grtcps",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\MSBSGROTCPS\\MSBSGROTCPS_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "svk86",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\SVCh\\SVCh_WB.xml",
+      "sprintIndex": 3,
+      "deployIndex": 3,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "svdm",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\SVDM\\SVDM_WB.xml",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "vssm",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\VSSM\\VSSM_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m240l",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M240L\\M240L_WB.xml",
+      "sprintIndex": 2,
+      "deployIndex": 2,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m250",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M250\\M250_WB.xml",
+      "sprintIndex": 2,
+      "deployIndex": 2,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "drsiar",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M27IAR\\M27IAR_WB.xml",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m60",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M60E6\\M60E6_WB.xml",
+      "sprintIndex": 2,
+      "deployIndex": 2,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m123k",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\MG4K\\MG4K_WB.xml",
+      "sprintIndex": 2,
+      "deployIndex": 2,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m121a2",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\MG5\\MG5_WB.xml",
+      "sprintIndex": 2,
+      "deployIndex": 2,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "l110",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\Minimi\\Minimi_WB.xml",
+      "sprintIndex": 2,
+      "deployIndex": 2,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "rpk74m",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\RPK74M\\RPK74M_WB.xml",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "rpkm",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\RPKM\\RPKM_WB.xml",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "kts100",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\Ultimax\\Ultimax_WB.xml",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "es57",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\FiveSeven\\FiveSeven_WB.xml",
+      "sprintIndex": 9,
+      "deployIndex": 12,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Sidearms [e40eb3ba-ac82-417f-a89c-e25ed43be20c]"
+    },
+    {
+      "siteId": "ggh22",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\G22\\G22_WB.xml",
+      "sprintIndex": 8,
+      "deployIndex": 11,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Sidearms [e40eb3ba-ac82-417f-a89c-e25ed43be20c]"
+    },
+    {
+      "siteId": "p18",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\M18\\M18_WB.xml",
+      "sprintIndex": 8,
+      "deployIndex": 11,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Sidearms [e40eb3ba-ac82-417f-a89c-e25ed43be20c]"
+    },
+    {
+      "siteId": "m45a1",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\M45A1\\M45A1_WB.xml",
+      "sprintIndex": 8,
+      "deployIndex": 11,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Sidearms [e40eb3ba-ac82-417f-a89c-e25ed43be20c]"
+    },
+    {
+      "siteId": "m44",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\RagingHunter\\RagingHunter_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 8,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Sidearms [e40eb3ba-ac82-417f-a89c-e25ed43be20c]"
+    },
+    {
+      "siteId": "vz61",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\Skorpion\\Skorpion_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 8,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m357trait",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\TRR8\\TRR8_WB.xml",
+      "sprintIndex": 8,
+      "deployIndex": 9,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Sidearms [e40eb3ba-ac82-417f-a89c-e25ed43be20c]"
+    },
+    {
+      "siteId": "ks18k",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\185KSK\\185KSK_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m87a1",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\590A1\\590A1_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "db12",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\DP12_WB.xml",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "m1014",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\M1014\\M1014_WB.xml",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "scw10",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\APC10\\APC10_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "sl9",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\APDW\\APDW_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "pw5a3",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\MP5MLI\\MP5MLI_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "pw7a2",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\MP7A2\\MP7A2_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "sgx",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\MPX\\MPX_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "usg90",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\P90\\P90_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "pp19",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\PP19\\PP19_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "cz3a1",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\ScorpionEvo3\\ScorpionEvo3_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "umg40",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\UMP40\\UMP40_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "kv9",
+      "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\Vector\\Vector_WB.xml",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    }
+  ],
+  "sourceSha256": {
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T00.xml": "fd4ac031437aad279d32420f293a81e90f1db70ae87db0650e5c01ec32a8258a",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T01.xml": "892da6d0f3f0d8192d362f40a39f89d9938961af9e0797886785733183d050fa",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T02.xml": "d166960cf03fe464c48c83a2de17f4aa4a8b6213533409928b7cabde5c84f4af",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T03.xml": "60adad5dfd1afa5ed9e05ab8c8c16fe4c7db0e7f7fd4f4b4c400438b8538c98d",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T04.xml": "cfc9f5b3d1385c2b8bcd2e98d6feb021c24b2d181a4d602f798c14c3425722f2",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T05.xml": "517db86705a5a1195d139b4b22776ef1549fc4f79e8e611aaf0dbb4e76b60aae",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T06.xml": "4c9c932398c76e307677ca93646416f7c00e63c2b697d544ea51dbb258c26258",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T07.xml": "c5d276f90348ab83ee90520ffba137cb4694219176f0309ab286578ae7f3f2fd",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T08.xml": "9a88086b0dfe090e561acbae1cf97d070eef353242f08ab5208ceea35bc66821",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T09.xml": "3285657afefcaeed264724d386cb936d23e440175de60272d4d5813b9ec05c8f",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T10.xml": "3a4cd3be6d124342dba82f563e938e4da0f99b192b112e91b272ed52c0f89ebe",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_SprintSettings\\SprintSettings_T11.xml": "4eef968cdf650c6f39433fcd79be312b33cea51a8a5facd9affdd28f7655b810",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Common\\Arrays\\Deploy\\DTA_Weapons.xml": "64fe503e17800e9da21a648767ead9a3c03905d66dc6a0fd1bd5dd4d66472b12",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Common\\Arrays\\Deploy\\DTA_Sidearms.xml": "346cdf5b22d3cd92316d329470453b7576fe5b35d320bab81c3914b60ffd9ff9",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\6P67_WB.xml": "462808da27036a0754e415ba055086e843308c0934bc3de66c59f8df4c69ce4e",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\ACE32\\ACE32_WB.xml": "39b5ea38bbe15f2bfa7c9dfde13ccf4b7b6dead937515f6ce1c116253f391be2",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\EF88\\EF88_WB.xml": "655103f89ae0f7081d80016510154704f48640c0ea3ec9451b85183c03698964",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\G36\\G36_WB.xml": "f8efcaa45b6de45b5cc3491ffc3f71ff265429448a7a71c0fe6443ae8c253967",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\G3A4\\G3A4_WB.xml": "46b69caff77443adc166f8539b389d31fc406c91ba6c06fa3e50b93766885248",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\HK433\\HK433_WB.xml": "fa7994527577f7be39a1b336389cb2bdccb3bc25cbf07c95ad4f696ac6d12bdd",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\L85A3\\L85A3_WB.xml": "6eed4ba45f40b4b9e30a29ae11419e738ee5116cb40dbd90b02d75064b88e582",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\M16A3\\M16A3_WB.xml": "a38517cf0088bac5669f34fe2ec53e2773503df34e1b1b1dea4dbc7257f03b78",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\SCARL\\SCARL_WB.xml": "523e92987f61cdece24b2fbf635e96774c8ccfd59e528bf907a28e4b9fb2811d",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\Tavor7\\Tavor7_WB.xml": "b3b4cb812ee57b8b7e9771e03ac418df294a50098cd228ad8c18a1e9055a45a2",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\AssaultRifle\\VHS2\\VHS2_WB.xml": "7ab64fbfb8d0eace2f54b56be04195e6a9447f6bf76d4fef9b7f55437e0d9ed0",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\DesertTechHTI_WB.xml": "2fc6fc6a4fbd3789297a017e847f790824dd9a638affe741d976bbc6ca0cca52",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\L115A3\\L115A3_WB.xml": "79beef84ca1b17e5cd49fc0ec68a186cd1e5c6747d19f8824995bf5d2718a821",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\M2010ESR\\M2010ESR_WB.xml": "3d5b99e49f42c9c8d10f0273481601fcf6f64290cae043b5ef0eb42874c54448",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\MiniFix\\MiniFix_WB.xml": "86e4e2458803bfee1704e8b325f2f9fd19661562f81984aca72a69e044553f6d",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\MRAD\\MRAD_WB.xml": "f4b7af331267c6d5a2ecdea286aef57de9fcc16f31e96c589dc3b7c44de79f80",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\BoltAction\\SV98M\\SV98M_WB.xml": "6a836efe5a3beae0d760382d8702f1fbd7e74b44fee4b7d57edf521404b2d3c8",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\AK205\\AK205_WB.xml": "1c45cdd15d5a8b1460d2332d0e6ca0865eba0a60984ec3b5d5c2d1fa6627a63c",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\BREN3_WB.xml": "eae644722ac366c9d70121d33c691b94bd5ccb4f694c1339eddbaaa3293f0776",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\HK417A2\\HK417A2_WB.xml": "a336404a9023ff67b663e5113abe5ea161e2fb21d5ad3d6cf66b16cf33392980",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\M4A1_WB.xml": "dd6f32f8ec7071d98368965fa58df51549e8fad7ee54f4d5ce24c6910bbdd97a",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\MSBSGROTB\\MSBSGROTB_WB.xml": "b2827be2b5855b9b3a66eb32975ed85249984d4a055274576a3a0330d3e1a8cb",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\QBZ192\\QBZ192_WB.xml": "f216d883a88711b128374adaa9023ae7cdf296bb1e8931b498624bc082f10bcc",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\SCARSC\\SCARSC_WB.xml": "704624ed07f048935978f9684c80dfd4fc54be530a007263cfe6ef7e29aaf4ec",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\SIG553R\\SIG553R_WB.xml": "081663ac84ceb4846fe1b55419e429cbc2a63a5d620d5066041e78a4da761c21",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Carbine\\XM7\\XM7_WB.xml": "2b1729c12846c458e4444a4f028051498781a4e5be450210b820c0c2250cca5e",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\ARADMR\\ARADMR_WB.xml": "6752c223e7e7d80910c441553a4bb93bda7a46807e32221ed4609311836df032",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\M39EMR\\M39EMR_WB.xml": "6daaa6f6b5887d04969eea27932c19f614de6c000a662eb9dba9117716ea9503",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\MSBSGROTCPS\\MSBSGROTCPS_WB.xml": "07594059a9c48b189f6d39c968cf6dbbb03ebe1b34e47ddf694fe3e00ad51300",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\SVCh\\SVCh_WB.xml": "1c54d5856b420b5ec9b647fd66a127649a1906d36f3fd95da1b0082c17ee76d6",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\SVDM\\SVDM_WB.xml": "e6bff24c1b253689f8dd064b0a43a6633318e2970d63fb06e7b2736d1fe15208",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\DMR\\VSSM\\VSSM_WB.xml": "4a92b9e97a034cd4379880f8a8719e7fa22cbc0077d907a3d4703ee8871db318",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M240L\\M240L_WB.xml": "0f51d45765e3665af88091a98b14cf375b6397f5f01a11a9e80c4244dc9bcc27",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M250\\M250_WB.xml": "04cd41066fc59aac6a82c5f24b4929da29b410dec9a1b9237db175d41f7efd94",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M27IAR\\M27IAR_WB.xml": "17b5bc9c94da770388ca7915f4b7c41d79df3b2740bdda7bdfb4148785fc5565",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\M60E6\\M60E6_WB.xml": "a823797d2f4e8f05014809c6f5f1d59afc9de880eefb62002d167bcb08ca1c2e",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\MG4K\\MG4K_WB.xml": "fcc0b48e89b42531ef193ef2baae0418efa646e0b799e2df7ec7d4bc70d86ce9",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\MG5\\MG5_WB.xml": "0db072fc0d4a330a28ee69244523b904dd7453976338a4c803264c07fe7e0d88",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\Minimi\\Minimi_WB.xml": "e73806cd9468dc5c7556b5dd3e377839f933e7896b76cf0380c25b242c753d3f",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\RPK74M\\RPK74M_WB.xml": "bcd4b6c0d372d407aa8635efbd6856f441fc491a05bb915a1b130918f508c0e5",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\RPKM\\RPKM_WB.xml": "afc9bcba1b2ac4fee08870631d7a2407026e875328eb2310c032c0112cfda701",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\Ultimax\\Ultimax_WB.xml": "6e33604e74dea2daa023a4958673b9c7fa3433d0084a199b2bd54ccf25a72b4d",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\FiveSeven\\FiveSeven_WB.xml": "d280b5acfcbc1911a0df56f090d2dae4e947a56b1eeb5669608fa4c7754b8b29",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\G22\\G22_WB.xml": "95d387a7def444d5e49573a0e99cee3fe3e656b1914b433f9ed3938a75a51690",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\M18\\M18_WB.xml": "53743fb858e68e953d4da0a9b1bbc082bd64da231f3f66a71373edd0eb2e9d0c",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\M45A1\\M45A1_WB.xml": "3eb4191991c228a598ccb045d2c972ea85c7b37b2f579f6a4b473974868cb0bc",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\RagingHunter\\RagingHunter_WB.xml": "c6c55b83f2d1d85a1b140a552194834938a3815ca0f366fd28be4f18c534ee90",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\Skorpion\\Skorpion_WB.xml": "100372119648fffd297c6c8e46c94b361efb1f85205cce99b8e12c3c6c4f92eb",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Secondary\\TRR8\\TRR8_WB.xml": "32e5457c5b6396d586b3462fc48f7a4926682c3633bb2c97a2345aee17a82e89",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\185KSK\\185KSK_WB.xml": "3cc0eee9c7717f203e988cfb5bbee4f0147863ed0cb0fa4a6dd6e8915782751b",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\590A1\\590A1_WB.xml": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\DP12_WB.xml": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\Shotgun\\M1014\\M1014_WB.xml": "361b359ee2e6b9dfb46f016a2ed6810e11d82c1165a09286b0779e586a35d044",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\APC10\\APC10_WB.xml": "fd9779021fca1942befece8598f161b5e38c44e2986c61e24b4feea8277bdb29",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\APDW\\APDW_WB.xml": "47dc2019696bba5afd103a474a7eff8fc52949d1d0da3992290f3d28d8134cb6",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\MP5MLI\\MP5MLI_WB.xml": "d1295ac558a421f0ddea2adaa0596493b003f03f5f68cf8cc59d3812aa922f37",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\MP7A2\\MP7A2_WB.xml": "a314677e0bab57dd04429214c6a73030cd837bc4babdef8d962dc83d3e5e1fff",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\MPX\\MPX_WB.xml": "408bb3d0306c42d721395ec31c2e577aaa3d82f4344902485dce855a7de27231",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\P90\\P90_WB.xml": "3686ef666c18f3c4fa74e59a93ca65723ddb200ec04a32237af4a5dbb6211504",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\PP19\\PP19_WB.xml": "f9f21cea7317ce3f55d7a6f23d3b29f87289b4ed723f5dfe93b8a9a23cc2ac2d",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\ScorpionEvo3\\ScorpionEvo3_WB.xml": "fce8b49957f4d38384c1f2f93277fbcc8d862b997d1b75ae90911645ce1ecea3",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\UMP40\\UMP40_WB.xml": "e27a3c2842c634e309d02a53ccf954a29842814999683d395c0c49a857c57cfe",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\SMG\\Vector\\Vector_WB.xml": "afe261b5f21acdd371624021a5a6ffc2a5297b5ded5b2d333e47767cf1db8b09",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Draw\\WME_Draw_Deploy_M05.xml": "d34f927620953d394d7a884d14965ed5e6e95a5c382552b553a70fc8e8b3ca52",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Draw\\WME_Draw_Deploy_P05.xml": "eca498340fa0f588ece213a65cab0c5b6d53d2cbd9e48d11fbd5e92212b6ced8",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Draw\\WME_Draw_Deploy_P10.xml": "6b0bb4f73e172abc480baf311748cd38ab569a6ca7937c090c2bb155cffbb1cf",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Draw\\WME_Draw_Sprint_M05.xml": "ab2f421fc5ef9084966b2c0368bccdc6f214275cf2519bbff769933676887366",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Draw\\WME_Draw_Sprint_P05.xml": "c9a3d9c3a5c8498d765e7d35fa6a5aac6a68646bcb52fa493750a32623bfbaf3",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Draw\\WME_Draw_Sprint_P10.xml": "265d0a3181519a1f79002fbe0416dee26d6a5b25a151f48eb54ec207dbf46d0c",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\QuickdrawPistol\\U_WPM_ERG_QuickDraw_W05.xml": "8fa985c6cded324ecb35b19e1e82938fecd6d6e97ecc458f09b63230a17ba789",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\QuickdrawPistol\\WPM_ERG_QuickDraw_W05.xml": "e42da0a79f485016807e68e919e2604aacdcd42fab56de5f4ce8d4e68ab9c262",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\QuickdrawRevolver\\U_WPM_ERG_QuickDraw_W10.xml": "fff5d1a0cb59983fffb92e9be8ed7652a7754f6983968c6e6a4a130ac6a2d4c3",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\QuickdrawRevolver\\WPM_ERG_QuickDraw_W10.xml": "ac5388cc159d8f9e2b8f6041b9a125196d1f08678e766b839a46bd62a2f11925"
+  },
+  "implementation": {
+    "units": "milliseconds at exported decimal precision; display rounds to whole milliseconds",
+    "sourceIndexDirection": "higher is faster",
+    "attachmentShiftDirection": "negative is faster; effective source index = base index - sum of shifts",
+    "bounds": "User confirmed absolute min/max; clamp after summing shifts",
+    "scope": "Raw base selectors and full arrays. Screenshot audit independently supports sprint recovery; deploy/undeploy are source configuration values."
+  }
+}

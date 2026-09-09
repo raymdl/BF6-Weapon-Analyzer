@@ -1,3 +1,4 @@
+import { formatMilliseconds, formatMovementMultiplier } from './format.js';
 import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
 import {
@@ -40,11 +41,11 @@ try {
 }
 
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
-const { RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+const { RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
         BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH: _HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
         MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-        ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
-        DRAW_TIME_AXIS } = _balance;
+        ADS_SPD_TIERS, ADS_MOVE_TIERS,
+        DRAW_TIME_TABLES } = _balance;
 const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 
 const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
@@ -109,10 +110,8 @@ const PLOT_PAD = { l: 28, r: 8, t: 8, b: 18 };
 const CLOUD_RUNS = 10;
 // Ceiling for the Spread Min → Eff. Max bar, in degrees. One axis for every
 // aim state and stance, so the bar lengths stay comparable across the whole
-// app. The widest the model reaches is 9.37° (SVK-86, hipfire while moving,
-// with attachments), so this cannot go lower without clamping the top weapons
-// to a single full-width bar. scripts/spread-bar-scale.test.mjs holds it to
-// the corpus.
+// app. The full source hip table reaches 11.303° in the single-attachment
+// corpus. scripts/spread-bar-scale.test.mjs checks that the axis contains it.
 const RECOIL_BAR_SCALE = 3;
 const CONSOLE_RECOIL_MULT = 0.89;
 
@@ -236,12 +235,12 @@ setSimContext({
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
   AMMO, WEAPON_AMMO,
-  RECOIL_MULT, HIP_SPREAD_TIERS, HIP_SPREAD_BASE_IDX, HIP_CLS,
+  RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
   BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
   MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
-  ADS_SPD_TIERS, SPRINT_REC_TIERS, PRIMARY_SPRINT_REC_TIERS, SIDEARM_SPRINT_REC_TIERS, DEPLOY_TIME_TIERS, ADS_MOVE_TIERS,
-  DRAW_TIME_AXIS,
-  RELOAD_SPEED_LADDER: _balance.RELOAD_SPEED_LADDER,
+  ADS_SPD_TIERS, ADS_MOVE_TIERS,
+  DRAW_TIME_TABLES,
+  RELOAD_SPEED_MULTIPLIERS: _balance.RELOAD_SPEED_MULTIPLIERS,
   VELOCITY_LADDER: _balance.VELOCITY_LADDER,
   HEALTH_REGEN_DELAY_S: _balance.HEALTH_REGEN_DELAY_S,
 });
@@ -728,14 +727,14 @@ function renderOverview() {
       tooltip: 'Time in seconds to reload with rounds still in the magazine. Lower is faster.' },
     { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Damage multiplier applied to bullets that pass through a target or surface. Varies by ammo type and weapon class.' },
-    { lbl: 'ADS Time',    compute: w => w._adsTimeMs ?? w.adsTime,       unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true, group: 'mobility',
+    { lbl: 'ADS Time',    compute: w => w._adsTimeMs ?? w.adsTime,       unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true, group: 'mobility',
       tooltip: 'Time to aim down sights. Lower is faster.',
       estFn: w => !w._adsTimeMs && w.adsTime != null },
-    { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true, group: 'mobility',
+    { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: formatMovementMultiplier,      higherBetter: true, group: 'mobility',
       tooltip: 'Movement speed multiplier while aiming down sights. Higher is faster.' },
     { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
       tooltip: 'Time to equip/switch to the weapon in milliseconds. Lower is faster.' },
-    { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: v => v != null ? v : '—',                 lowerBetter: true,
+    { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true,
       tooltip: 'Time to be ready to fire after sprinting. Lower is faster.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
       tooltip: 'Vertical recoil added per shot while aiming down sights. Lower is easier to control.' },
@@ -1076,7 +1075,7 @@ function renderChart() {
             }
             const displayName = chartWeaponDisplayLabel(w);
             const additions = [];
-            if (showAds && w._adsTimeMs) additions.push(`${w._adsTimeMs}ms ADS`);
+            if (showAds && w._adsTimeMs) additions.push(`${formatMilliseconds(w._adsTimeMs)}ms ADS`);
             if (showVel) additions.push(`${Math.round((flightTimeAtDistance(w._projectileModel, i.dataIndex) ?? 0) * 1000)}ms flight`);
             if (additions.length) return `${displayName}: ${fmtTtkAt(i.raw)} incl. ${additions.join(' + ')}`;
             return `${displayName}: ${fmtTtkAt(i.raw)}`;
@@ -1938,7 +1937,7 @@ function renderAttachmentStats(loadouts) {
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
   const metrics = [
     { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
-    { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult,             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
+    { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
     { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after attachment effects. Lower is faster.' },
     { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after attachment effects. Lower is faster.' },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel and ammunition effects. Subsonic loads fire markedly slower. Higher reduces travel time and lead.' },
@@ -1962,7 +1961,7 @@ function renderAttachmentStats(loadouts) {
     'ADS Time': ['adsTimeTierMod', 'adsTimeTierShift'],
     'ADS Move': ['adsMoveSpeedTierShift'],
     'Sprint-to-Fire Speed': ['sprintRecoveryTierShift', 'adsTimeTierShift'],
-    'Weapon Draw Speed': ['sprintRecoveryTierShift', 'adsTimeTierShift', 'drawTimeTier', 'drawTimeOffset'],
+    'Weapon Draw Speed': ['deployTimeTierShift', 'deployBaseIndex', 'deployTimeTable'],
     'Bullet Vel': ['velMult', 'velTierMod'],
     'Bullet Drag': ['dragPerMeter'],
     'Mag Size': ['mag'],

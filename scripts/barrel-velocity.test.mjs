@@ -27,9 +27,9 @@ const context = {
   WEAPON_ERGO: attachments.WEAPON_ERGO,
   AMMO: ammo.AMMO,
   RECOIL_MULT: balance.RECOIL_MULT,
-  HIP_SPREAD_TIERS: balance.HIP_SPREAD_TIERS,
-  HIP_SPREAD_BASE_IDX: balance.HIP_SPREAD_BASE_IDX,
-  HIP_CLS: balance.HIP_CLS,
+  HIP_SPREAD_TABLE: balance.HIP_SPREAD_TABLE,
+  HIP_SPREAD_BASE_INDEX: balance.HIP_SPREAD_BASE_INDEX,
+  HIP_SPREAD_BASE_INDEX_OVERRIDES: balance.HIP_SPREAD_BASE_INDEX_OVERRIDES,
   BASE_HS_MULT: balance.BASE_HS_MULT,
   HP_HS_HIGH: new Set(balance.HP_HS_HIGH),
   LIMB_CLASS: balance.LIMB_CLASS,
@@ -38,13 +38,9 @@ const context = {
   MOVING_ACC_TIERS: balance.MOVING_ACC_TIERS,
   DEFAULT_MOV_TIER: balance.DEFAULT_MOV_TIER,
   ADS_SPD_TIERS: balance.ADS_SPD_TIERS,
-  SPRINT_REC_TIERS: balance.SPRINT_REC_TIERS,
-  PRIMARY_SPRINT_REC_TIERS: balance.PRIMARY_SPRINT_REC_TIERS,
-  SIDEARM_SPRINT_REC_TIERS: balance.SIDEARM_SPRINT_REC_TIERS,
-  DEPLOY_TIME_TIERS: balance.DEPLOY_TIME_TIERS,
   ADS_MOVE_TIERS: balance.ADS_MOVE_TIERS,
-  DRAW_TIME_AXIS: balance.DRAW_TIME_AXIS,
-  RELOAD_SPEED_LADDER: balance.RELOAD_SPEED_LADDER,
+  DRAW_TIME_TABLES: balance.DRAW_TIME_TABLES,
+  RELOAD_SPEED_MULTIPLIERS: balance.RELOAD_SPEED_MULTIPLIERS,
   VELOCITY_LADDER: balance.VELOCITY_LADDER,
 };
 
@@ -55,8 +51,8 @@ test('Interdictor preserves source velocity and the confirmed Basic magazine han
   const basic = applyAttachments(weapon, { barrel: 'basic', mag: '5_rnd' });
   assert.equal(basic._projectileVelocityMps, 732.7392);
   assert.equal(basic.bulletVel, 732);
-  assert.equal(basic._adsTimeMs, 433);
-  assert.equal(basic._sprintRecoveryMs, 233);
+  assert.equal(basic._adsTimeMs, 433.334);
+  assert.equal(basic._sprintRecoveryMs, 233.334);
   assert.equal(basic._adsMoveSpeedMult, 0.42);
   assert.equal(basic._movingAdsMinSpreadDeg, 0.32);
   const extended = applyAttachments(weapon, { barrel: 'extended', mag: '5_rnd' });

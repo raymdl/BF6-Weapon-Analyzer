@@ -45,7 +45,7 @@ test('Factory and Full Angled use the source sprint and deploy tier', () => {
   ]) {
     const w = weapon(id);
     const result = build(w, { grip });
-    assert.equal(result._sprintRecoveryMs, expected, id);
+    assert.equal(Math.round(result._sprintRecoveryMs), expected, id);
     assert.ok(result._deployTimeMs < build(w, { grip: 'none' })._deployTimeMs, id);
   }
 });
@@ -136,7 +136,7 @@ test('Hybrid suppressors apply recoil, spotting, hip-fire and draw effects throu
     assert.equal(computeAttPts(loadout(w, { muzzle }), w, data)
       - computeAttPts(loadout(w), w, data), points);
     if (muzzle === 'hybrid_supp_l') {
-      assert.equal(result._sprintRecoveryMs, 200);
+      assert.equal(Math.round(result._sprintRecoveryMs), 200);
       assert.ok(result._deployTimeMs > base._deployTimeMs);
       assert.equal(result._weaponSway, long._weaponSway);
     } else {
@@ -151,8 +151,8 @@ test('Canted Vertical improves L110 hip-fire and changes 200-round sprint recove
   const w = weapon('l110');
   const base = build(w, { mag: '200_rnd' });
   const canted = build(w, { mag: '200_rnd', grip: 'canted_vertical' });
-  assert.equal(base._sprintRecoveryMs, 350);
-  assert.equal(canted._sprintRecoveryMs, 267);
+  assert.equal(Math.round(base._sprintRecoveryMs), 350);
+  assert.equal(Math.round(canted._sprintRecoveryMs), 267);
   assert.ok(canted._deployTimeMs < base._deployTimeMs);
   assert.equal(canted._hipSpreadTierMod, -2);
   assert.ok(canted.spread.hipStand[0] < base.spread.hipStand[0]);
@@ -162,7 +162,7 @@ test('Canted Vertical improves L110 hip-fire and changes 200-round sprint recove
     - computeAttPts(loadout(w), w, data), 30);
   const stacked = build(w, { mag: '200_rnd', grip: 'canted_vertical', muzzle: 'hybrid_supp_l' });
   assert.equal(stacked._hipSpreadTierMod, -1);
-  assert.equal(stacked._sprintRecoveryMs, 300);
+  assert.equal(Math.round(stacked._sprintRecoveryMs), 300);
 });
 
 test('new attachments preserve old share tokens and round-trip with traced weapon availability', () => {
@@ -263,7 +263,7 @@ test('compact magazine secondary effects reach the existing moving spread and sw
     assert.equal(selected._weaponSway, rpkBase._weaponSway - 1);
     assert.deepEqual(selected.spreadDyn, rpkBase.spreadDyn);
     assert.equal(selected.mag, 30);
-    assert.equal(selected.tacRld, mag === '30_fast' ? 2.464 : 2.784);
+    assert.equal(+selected.tacRld.toFixed(3), mag === '30_fast' ? 2.464 : 2.784);
   }
 });
 
@@ -274,14 +274,14 @@ test('reviewed Mini Scout and BROD 3 magazines match captured handling values', 
     const selected = build(scout, { mag });
     assert.equal(selected._adsMoveSpeedMult, 0.6);
     assert.equal(selected._adsTimeMs, 250);
-    assert.equal(selected.tacRld, mag.endsWith('fast') ? 2.065 : 2.334);
+    assert.equal(+selected.tacRld.toFixed(3), mag.endsWith('fast') ? 2.065 : 2.334);
   }
   for (const mag of ['36_rnd', '40_rnd', '40_fast']) {
     const brod = build(weapon('brod3'), { mag });
     const fast = mag === '40_fast';
-    assert.equal(brod._sprintRecoveryMs, fast ? 200 : 167);
-    assert.equal(brod.deployT, fast ? 0.633 : 0.533);
-    assert.equal(brod.tacRld, fast ? 1.962 : 2.217);
+    assert.equal(Math.round(brod._sprintRecoveryMs), fast ? 200 : 167);
+    assert.equal(+brod.deployT.toFixed(3), fast ? 0.633 : 0.533);
+    assert.equal(+brod.tacRld.toFixed(3), fast ? 1.962 : 2.217);
   }
 });
 
