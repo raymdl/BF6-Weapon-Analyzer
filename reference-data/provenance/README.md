@@ -23,6 +23,10 @@ they are not additional live stat ladders. The complete live array inventory is 
 [data reference](../../docs/DATA_REFERENCE.md), with all finite table values in
 [stat ladders](../../docs/STAT_LADDERS.md).
 
+For local XML paths recorded before the export move, see the
+[current Frosty export location](../../docs/DATA_SOURCES.md#local-frosty-export-location).
+Resolve those inputs under the new root; retain the original evidence records.
+
 Source hashes identify original inputs. Site/comparison hashes can predate the
 integration they motivated. Do not replace them with today's hashes to make a
 historical report appear current. The original local XML, SDK and capture directories

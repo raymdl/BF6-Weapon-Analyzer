@@ -80,8 +80,9 @@ The canonical JSON drives the review workbook. Raw screenshot paths under
 ignored and not guaranteed on another machine. Retain source identity when adding
 visually reviewed captures; OCR output alone is not an accepted value.
 
-Frosty tools require the original local exports/SDK. For example, replace the
-placeholder with your export root:
+Frosty tools require the original local exports/SDK. See the
+[current export location and layout](docs/DATA_SOURCES.md#local-frosty-export-location).
+For example, replace the placeholder with your XML export root:
 
 ```sh
 python scripts/frosty-configuration.py --root "PATH_TO_EXPORT" --out outputs/frosty/review

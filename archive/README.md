@@ -12,6 +12,11 @@ are summarized in [model limitations](../docs/MODEL_LIMITATIONS.md); current dat
 and calculation contracts live in the focused guides. The records below retain
 the evidence trail rather than serving as instructions to reimplement old work.
 
+Local Frosty XML exports moved to `BF6 Datamining/Frosty` on 9 September 2026.
+Old export paths and commands in these snapshots describe the earlier layout.
+Use the [current location guide](../docs/DATA_SOURCES.md#local-frosty-export-location)
+to locate XML inputs; manifest and research paths did not move.
+
 ## Completed implementation and change records
 
 | Historical record | Status / present reference |
