@@ -77,6 +77,8 @@ current root unless the historical page itself is broken.
 
 ## Further documentation
 
+- [Recoil and spread model](docs/RECOIL_SPREAD_MODEL.md) — formulas, simulation flow, source evidence and limitations
+
 - [CODE_DOCUMENTATION.md](CODE_DOCUMENTATION.md) — architecture and calculation boundaries
 - [docs/DATA_FLOW.md](docs/DATA_FLOW.md) — current source-to-browser flow
 - [docs/TESTS.md](docs/TESTS.md) — focused validation inventory

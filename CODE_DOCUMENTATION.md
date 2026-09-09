@@ -53,6 +53,9 @@ validated against the entire current roster.
 
 ## Recoil and spread
 
+See the [detailed recoil and spread model](docs/RECOIL_SPREAD_MODEL.md) for formulas,
+shot timing, attachment tiers, recovery, impact sampling and evidence limits.
+
 `sim/core.js` owns recoil/spread primitives and current simulation context. It exports the shared spread
 bar ceiling and `effectiveSpreadMax()`, preventing the UI and tests from maintaining separate copies of
 the same simulation.
