@@ -22,6 +22,15 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('EF88 standing ADS spread starts at the confirmed 0.05 degree floor', () => {
+  const w = weapon('ef88');
+  const result = build(w);
+  assert.deepEqual(w.spread.adsStand, [0.05, 7]);
+  assert.deepEqual(result.spread.adsStand, [0.05, 7]);
+  setSimContext({ aimState: 'ads', stanceState: 'stand' });
+  assert.equal(simulateSpread(result, 1)[0], 0.05);
+});
+
 test('Frosty-reviewed grip movement and Flechette delays match captured panels', () => {
   for (const [id, expected] of [['svk86', 0.42], ['ks18k', 0.6], ['db12', 0.6]]) {
     const w = weapon(id);
