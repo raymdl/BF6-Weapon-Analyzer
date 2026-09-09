@@ -41,6 +41,30 @@ source-composition questions, and historical donor notes remain. Read field-leve
 provenance and [limitations](MODEL_LIMITATIONS.md) rather than interpreting a single
 status as validation of the entire simulator.
 
+## Local Frosty export location
+
+As of 9 September 2026, the local XML export root is:
+
+```text
+C:\Users\royal\Documents\BF6 Datamining\Frosty
+```
+
+The export root contains `_AF`, `Animations`, `Common`, and `Game`. Frosty asset
+routes are unchanged; resolve source-relative XML paths beneath this root.
+The manifests (`ebx_manifest.txt`, `ebx_manifest.csv`, `ebx_directories.txt`),
+extraction scripts, handoff, and `research-1.4.2.5` remain in the parent
+`BF6 Datamining` folder. The `Battlefield 6 Offsets HTML` collection also remains
+in that parent folder.
+
+For analyzer tools that accept the XML export root, use `--root "../BF6 Datamining/Frosty"`
+from the analyzer repository. Historical reports and provenance can retain the
+old absolute export paths; substitute the new root when locating their XML inputs,
+without rewriting recorded hashes or moving manifest/research paths.
+
+The separate `audit_weapon_exports.py` in the datamining workspace expects
+`ebx_manifest.txt` inside `--root`. Its historical command requires adaptation
+for the split layout; changing only `--root` is insufficient.
+
 ## Source-to-runtime flow
 
 ```mermaid
