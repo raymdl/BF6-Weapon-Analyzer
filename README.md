@@ -1,86 +1,68 @@
 # BF6 Weapon Analyzer
 
-A static, client-side Battlefield 6 weapon comparison and recoil-analysis site. The current `main`
-branch is the live product baseline. It loads JSON data directly in the browser and has no build step,
-application server, database, or framework runtime.
+[Open the analyzer](https://raymdl.github.io/BF6-Weapon-Analyzer/) · [User guide](docs/USER_GUIDE.md) · [Documentation index](docs/README.md)
 
-The header identifies the game/source version represented by the data. That version is provenance,
-not a development phase. Older published behavior remains available from the versioned archive links
-in the site header.
+A browser-based Battlefield 6 weapon and attachment comparison tool. Build a loadout,
+compare two configurations, and explore how damage, handling, recoil, spread, and
+projectile behavior change. Everything runs client-side from the repository's JSON
+and JavaScript; there is no application backend or compilation step.
+
+## What it does
+
+- **Build and compare:** weapon-specific attachments, ammunition, magazines, point
+  totals, overview statistics, and attachment-effect breakdowns.
+- **Analyze damage:** damage-versus-range, bullets to kill, and time to kill, with
+  headshot scenarios, chest/limb bands, and optional ADS/flight time.
+- **Explore recoil and spread:** reproducible spray samples, recoil paths, spread
+  overlays, standing/moving and ADS/hipfire contexts, and recoil-control settings.
+- **Inspect target impacts:** project the pattern onto an approximate soldier at a
+  chosen distance, change aim and magnification, and inspect single-projectile hit
+  and damage outcomes.
+- **Share results:** loadout/view links, PNG capture, and a recoil popout window.
+
+The site combines reviewed game-file values, in-game observations, and explicit
+modeling assumptions. A simulation result is conditional on those inputs. Target
+geometry is approximate; shotgun pellets are not individually simulated. Start
+with [model limitations](docs/MODEL_LIMITATIONS.md) when interpreting precision.
 
 ## Run locally
 
-Run `serve.bat`, or from the repository root:
+From the repository root, run `serve.bat` on Windows or:
 
-```powershell
+```sh
 node scripts/serve.mjs
 ```
 
-Then open <http://localhost:5174/>. A local server is required because browsers block the JSON
-`fetch()` calls when the page is opened with `file://`.
+Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
+`file://`, because the application fetches its JSON data.
 
-## Project layout
+## Documentation
 
-```text
-index.html                         Live page, styles, and accessible markup
-ui/                                Rendering, interaction, URL sharing, image capture
-sim/                               Weapon calculations and reusable domain logic
-data/                              Current live weapon and attachment data
-data/provenance/live-baseline.json Current source and policy record
-schemas/                            Schemas for maintained data contracts
-scripts/                            Product validation and focused regression tests
-reference-data/attachment-audit/   Completed attachment audit and ad-hoc tools
-assets/ and vendor/                 Shipped images and vendored browser dependency
-v1.3.1.0/ and v1.2.3.0/            Frozen, published historical site versions
-.local-archive/                     Ignored local-only historical working material
-```
+| Purpose | Read |
+|---|---|
+| Use the site and interpret its displays | [User guide](docs/USER_GUIDE.md) |
+| Understand modules, state, sharing, and rendering | [Architecture](docs/ARCHITECTURE.md) |
+| Trace values to sources and review evidence | [Data sources](docs/DATA_SOURCES.md) |
+| Look up file contracts, fields, and array families | [Data reference](docs/DATA_REFERENCE.md) |
+| Understand every stat ladder and its indexing | [Stat ladders](docs/STAT_LADDERS.md) |
+| Follow loadout calculations | [Attachment model](docs/ATTACHMENT_MODEL.md) |
+| Inspect formulas and simulation assumptions | [Damage and ballistics](docs/DAMAGE_BALLISTICS.md) · [Recoil and spread](docs/RECOIL_SPREAD_MODEL.md) |
+| Update or validate the project | [Maintenance](MAINTENANCE.md) · [Tests](docs/TESTS.md) |
 
-`.local-archive/` is deliberately not published or committed. The current archive includes a
-SHA-256 manifest so locally retained material can be checked before use.
+## Current product and history
 
-## Validation
+The root page and `data/`, `sim/`, and `ui/` contain the current product. The
+header's version identifies the represented source/game version; it is not a
+claim that every field was independently measured on that build.
 
-Run the checks that protect the current product:
+`v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are frozen, published site snapshots.
+[Archived research and implementation records](archive/README.md) explain past
+work and decisions. Use the current guides above for present behavior.
 
-```powershell
+Before submitting changes, run:
+
+```sh
 node scripts/validate-data.mjs
 node scripts/validate-ship-surface.mjs
 node scripts/test.mjs
 ```
-
-The normal suite is intentionally small. It covers current data integrity, damage and ballistics,
-attachment behavior, URL-state compatibility, estimated-weapon disclosure, runtime syntax, target
-geometry, and spread-scale bounds. It does not rerun completed capture/OCR work.
-
-The attachment audit is retained as reference data. Run it only when attachments or weapons change:
-
-```powershell
-node reference-data/attachment-audit/validate-reference.mjs
-```
-
-See [docs/TESTS.md](docs/TESTS.md) for the exact boundaries and
-[MAINTENANCE.md](MAINTENANCE.md) for update workflows.
-
-## Data policy
-
-- `data/` is the current live contract. Do not regenerate it merely to reproduce old intermediate work.
-- Preserve exact source facts and provenance. Estimated weapons remain visibly marked and documented.
-- Rounded UI readings are display evidence, not a replacement for exact source curves.
-- Keep source arrays and attachment catalogs stable where share-link compatibility depends on ordering.
-- Add a test only when it protects distinct product behavior that is not already covered more simply.
-
-## Published historical versions
-
-The folders `v1.3.1.0/` and `v1.2.3.0/` are intentionally published. They let visitors compare how
-weapons behaved in older versions of the game. Treat them as frozen pages: fix the live site in the
-current root unless the historical page itself is broken.
-
-## Further documentation
-
-- [Recoil and spread model](docs/RECOIL_SPREAD_MODEL.md) — formulas, simulation flow, source evidence and limitations
-
-- [CODE_DOCUMENTATION.md](CODE_DOCUMENTATION.md) — architecture and calculation boundaries
-- [docs/DATA_FLOW.md](docs/DATA_FLOW.md) — current source-to-browser flow
-- [docs/TESTS.md](docs/TESTS.md) — focused validation inventory
-- [MAINTENANCE.md](MAINTENANCE.md) — common update procedures
-- [reference-data/attachment-audit/README.md](reference-data/attachment-audit/README.md) — ad-hoc audit package

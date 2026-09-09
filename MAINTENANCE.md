@@ -1,110 +1,122 @@
-# Maintenance Guide
+# Maintenance guide
 
-This guide describes the current live project. The default maintenance path is a direct, reviewed
-change to the smallest relevant source file followed by the narrowest meaningful validation.
+[Documentation index](docs/README.md) · [Data sources](docs/DATA_SOURCES.md) · [Tests](docs/TESTS.md)
 
-## Before editing
+Maintain the current root product with direct, reviewed changes to the smallest
+relevant files. Preserve unrelated local work and confirm the intended branch
+before editing. Distinguish live data/model changes, presentation, published
+historical pages, and reference-only research.
 
-1. Confirm the checkout and branch you intend to change.
-2. Inspect `git status` and preserve unrelated local work.
-3. Identify whether the change affects live runtime data, simulation logic, presentation only,
-   published historical pages, or the ad-hoc attachment reference.
-4. Keep exact source provenance when changing supplied values.
+## Routine validation
 
-## Routine commands
-
-```powershell
+```sh
 node scripts/validate-data.mjs
 node scripts/validate-ship-surface.mjs
 node scripts/test.mjs
+git diff --check
 ```
 
-For a UI change, serve the root on port 5174 and inspect the actual changed interaction at desktop,
-intermediate, tablet, and phone widths. Test keyboard operation when controls or dialogs change.
+CI runs the first three using Node 20. The local server is
+`node scripts/serve.mjs` (port 5174), or `serve.bat` on Windows. No dependency
+installation is needed for the normal product suite. UI changes also require the
+[manual walkthrough](docs/TESTS.md#manual-ui-verification).
 
-## Updating weapon data
+## Update weapons, attachments, or calculations
 
-Edit the maintained JSON under `data/`. `data/weapons.json` owns base weapon behavior;
-`data/attachments.json`, `data/ammo.json`, and `data/balance_tables.json` own selectable modifiers and
-shared tables. Projectile source coverage is declared in `data/ballistics.json`.
+Start with [file ownership and field contracts](docs/DATA_REFERENCE.md).
+`weapons.json` owns base records; `attachments.json`, `ammo.json`, and
+`balance_tables.json` own selectable effects and shared policies. `ballistics.json`
+records projectile constants/source identity; its ID registry is not an exclusive
+runtime applicability gate.
 
-After a weapon change:
+Preserve exact curve points and source decimals. Do not replace exact damage
+curves with rounded panel observations. Record source version/path/GUID, field,
+raw value, units, hash, and derivation where available. Separate confirmed source
+literals from their activation and simulator interpretation. Mark fitted or
+assumed effects and retain evidence that conflicts with the candidate.
 
-1. Run `node scripts/validate-data.mjs`.
-2. Run the focused test whose calculation changed.
-3. Run `node scripts/test.mjs` before handoff.
-4. Open at least one representative weapon in the site and confirm the displayed value and dependent
-   chart or table.
+Preserve existing attachment/ammo catalog order and IDs. **Magazine object-key
+order also encodes share tokens.** Append compatible additions; use explicit codec
+migration and tests for an intentional ordering change. Confirm availability,
+combined slots, point totals, default-build normalization, and composed effects.
+A modifier belongs in its actual aim-state/axis rather than in a generic catch-all.
 
-Do not copy rounded panel damage over exact damage curves. Do not present donor-derived or inferred
-fields as direct measurements. Estimated records must retain their markers, source notes, and complete
-cross-file coverage.
+For array changes, check [stat ladders](docs/STAT_LADDERS.md): retain all rows,
+repeated endpoints, raw precision and unrelated hashed columns. Preserve the
+catalog-to-source sign conversion; sum modifiers before one final clamp. Compare
+at least a default build, an affected composed build, and a boundary/exception case.
+Update the current guide's table/formula/example alongside the data change.
 
-## Updating attachments
+Run the data validator, the affected focused test, and the full product suite.
+Inspect a representative affected build in the browser and its dependent chart/
+table. Add a test only for a distinct regression not covered more simply.
 
-Attachment catalogs are used by saved/share URLs, so preserve existing item order and IDs. Append new
-items unless a compatibility change is explicitly intended. Confirm point totals, availability, and
-the affected calculation rather than adding a broad fixture.
+## Reload exceptions and provenance
 
-When a game update introduces new weapons or attachments, the completed attachment reference can be
-checked explicitly:
+[data/reload-exceptions.json](data/reload-exceptions.json) records animation
+identities/timings, screenshot exceptions, and composed-loadout observations.
+Keep stable IDs and the evidence fields required by each record type. Runtime
+magazine overrides must agree with the register; `validate-data.mjs` checks them
+through `scripts/reload-exceptions.mjs`. Expected fixed-game behavior in a bug note
+is not permission to overwrite an observed exception.
 
-```powershell
+[data/provenance/live-baseline.json](data/provenance/live-baseline.json) owns
+current source identity, roster and policy. Update it when those change. Keep
+reviewed source arrays and input hashes in provenance when needed to explain a
+mapping or reproduce a comparison; the maintained runtime numeric contract remains
+in `data/`. Do not rewrite historical snapshot hashes to match current files.
+
+## Research and reference work
+
+The [attachment audit](reference-data/attachment-audit/README.md) is separate from
+CI and the normal suite. Run its validator explicitly when modifying its records:
+
+```sh
 node reference-data/attachment-audit/validate-reference.mjs
 ```
 
-The reference package contains the canonical JSON, review workbook, validator, workbook builder, and
-ammo-stat rule checker. It is not part of CI or the normal product suite. The sorted screenshot library
-remains local under `reference-data/attachment-audit/Weapon Attachments/`; old correction tools and
-intermediate analysis remain under `.local-archive/`. Both locations are ignored by Git.
+The canonical JSON drives the review workbook. Raw screenshot paths under
+`reference-data/attachment-audit/Weapon Attachments/` and `.local-archive/` are
+ignored and not guaranteed on another machine. Retain source identity when adding
+visually reviewed captures; OCR output alone is not an accepted value.
 
-## Reload exceptions
+Frosty tools require the original local exports/SDK. For example, replace the
+placeholder with your export root:
 
-`data/reload-exceptions.json` is a small explicit register for reload behavior that cannot be derived
-from the common model. Keep stable IDs and an `evidenceReference` for every entry. Validate with the
-normal data validator, which uses `scripts/reload-exceptions.mjs`.
+```sh
+python scripts/frosty-configuration.py --root "PATH_TO_EXPORT" --out outputs/frosty/review
+python scripts/frosty-configuration.test.py
+```
 
-Prefer one clear exception record over a hidden UI override. If common behavior changes, remove an
-exception only after confirming the shared model now produces the same result.
+The configuration comparison never writes live data. `--include-optics`,
+`--sdk-metadata` and `--identities` select optional inputs. Run `--help` on
+`scripts/research-attachment-modifiers.py` or `scripts/verify-shotgun-ammo.py` before
+using them; do not promote generated candidates automatically. The SDK metadata
+PowerShell helper requires `-FrostyDirectory` and `-OutputPath`.
 
-## Provenance
+## Documentation lifecycle and historical versions
 
-`data/provenance/live-baseline.json` is the current source/policy record. Version numbers inside it
-identify where source values came from. Update it when the source snapshot, supported roster, or a
-current derivation policy changes.
+The repository README stays high-level. The [documentation index](docs/README.md)
+defines current guides and their audiences. Put accepted formulas/units/fallbacks
+in the responsible guide, unresolved evidence in [limitations](docs/MODEL_LIMITATIONS.md),
+and completed plans or dated investigations in [archive/](archive/README.md).
+Every archived record must have an explicit status and current replacement in the
+archive index. Do not mark all questions resolved just because a report is archived.
 
-Avoid duplicating large source arrays in provenance. Record ownership, source identity, dates, and
-policy; leave the maintained numerical contract in `data/`.
+After moving documents, update Markdown links and machine-readable provenance
+pointers. Check current document links/anchors, preserve historical evidence bodies,
+and identify local-only capture references instead of pretending they ship. Existing
+Mermaid diagrams render in GitHub; the SVG illustration remains self-contained.
 
-## Simulation and UI changes
-
-Reusable calculations belong in `sim/`; rendering and browser interaction belong in `ui/`. Keep one
-implementation of each formula. A UI-specific display scale may live beside the calculation when it
-is exported and directly tested, but do not mirror calculation code inside a test.
-
-The site intentionally uses plain modules and a static page. A framework, bundler, component library,
-backend, or browser-test harness should be added only if a concrete product need outweighs the extra
-maintenance for this personal project.
-
-For responsive work, preserve these behaviors:
-
-- stats wrap without horizontal page overflow;
-- the phone view keeps two compact stat cards per row where space permits;
-- the mobile loadout acts as a modal dialog, traps focus, closes with Escape, and restores focus;
-- selected toggle, class, and weapon state is available through ARIA, not color alone;
-- attachment selects have programmatic labels;
-- touch controls retain practical target sizes.
-
-## Historical versions
-
-`v1.3.1.0/` and `v1.2.3.0/` are frozen published snapshots. Keep their links in `index.html` and their
-paths in `ship-surface.json`. Do not make them dependencies of the current runtime.
+Keep `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` frozen, with their header links and
+ship-manifest entries. These published products are distinct from the narrative
+research archive. Never make the current runtime import a historical copy.
 
 ## Shipping checklist
 
-1. Run all three routine commands.
-2. Run `git diff --check`.
-3. Inspect `git status` and confirm every changed path belongs to the requested scope.
-4. For UI work, verify the served source and capture representative viewport evidence.
-5. Confirm archive links still resolve.
-6. Commit, push, or deploy only when explicitly requested.
+Review the final diff and scope; run all routine checks. For UI changes verify
+responsive layout, keyboard/ARIA behavior, chart resizing, target-image loading,
+sharing/capture and popout behavior. For documentation changes check destinations,
+formulas/examples, array coverage and diagram syntax. Confirm archive links and
+source pointers, and state which checks could not be performed. Keep numerical
+changes, evidence decisions and presentation-only edits identifiable in the handoff.

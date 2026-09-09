@@ -1,11 +1,12 @@
 # Recoil and spread model
 
-This guide explains the current analyzer implementation, checked against the
-code on 9 September 2026. It restores the detailed modeling explanation removed
-in the August documentation cleanup and updates it for the current source arrays
-and attachment behavior. It distinguishes implementation from game validation.
+[Documentation index](README.md) · [Stat ladders](STAT_LADDERS.md) · [Model limitations](MODEL_LIMITATIONS.md)
 
-### The Model at a Glance
+This guide explains the current analyzer implementation, checked against the
+code on 9 September 2026. Source literals, fitted behavior and rendering choices
+have distinct evidence boundaries.
+
+## The Model at a Glance
 
 Every simulated shot is the sum of two independent mechanisms: a **recoil path** (where
 the aim point has drifted to) and a **spread circle** (how large the random cone has grown).
@@ -14,27 +15,28 @@ centered on that shot's recoil-path point.
 
 ![Spray simulation model: recoil path, spread circles, sampled impacts](img/spray-model.svg)
 
-Per-shot pipeline (each lane advances between shots, then both feed the impact sample):
+Per-shot pipeline: shot 1 uses the origin and minimum spread. After sampling shot i,
+the two lanes advance to the inputs for shot i+1:
 
 ```mermaid
 flowchart TD
-    START(["shot i fired"]) --> KICK["Recoil kick<br/>angle = recoil dir ± uniform(variation)<br/>aim point += (sin, cos) × amount"]
-    KICK --> COMP["Subtract compensation vector<br/>(recoil control %, along expected dir)"]
-    COMP --> DECAY["Recoil decay toward (0,0) over inter-shot time<br/>Δr = (abs(r)^decExp + decOffset) × decFactor × dt × t^decTimeExp"]
-    START --> SPREAD["Spread: spread += inc<br/>clamped to [min, max]"]
-    SPREAD --> RECOV["Spread recovery over inter-shot time<br/>firing params; post-burst gaps add a not-firing segment"]
-    DECAY --> CENTER["shot i+1 center = decayed aim point"]
-    RECOV --> RADIUS["shot i+1 radius = recovered spread"]
-    CENTER --> SAMPLE["impact = center + random point in circle<br/>r = radius × rng() — uniform over radius (center-weighted)"]
+    START["Sample shot i at current recoil point and spread"] --> KICK["Add kick and subtract expected control vector"]
+    KICK --> DECAY["Recover each recoil axis over inter-shot interval"]
+    START --> SPREAD["Add spread increment; clamp to bounds"]
+    SPREAD --> RECOV["Recover spread: firing, then any post-burst non-firing segment"]
+    DECAY --> CENTER["Next pre-shot recoil point"]
+    RECOV --> RADIUS["Next pre-shot spread radius"]
+    CENTER --> SAMPLE["Sample shot i+1: uniform angle and uniform radius"]
     RADIUS --> SAMPLE
 ```
 
 Both lanes are stepped per shot inside `genRecoilPts()` (recoil lane) and
 `simulateSpread()` (spread lane); the impact sampling happens at render time in
 `drawRecoilFixed()`. The RNG is seeded from the weapon ID (`whash`) so patterns are
-deterministic per weapon until the user rerolls the seed.
+deterministic for the same weapon, loadout, model settings and seed. Reroll changes
+the reference spray; the ten scatter-cloud runs retain their fixed seeds.
 
-### Sources and evidence boundaries
+## Sources and evidence boundaries
 
 The current implementation is defined by [sim/core.js](../sim/core.js),
 [sim/applyAttachments.js](../sim/applyAttachments.js), and the impact sampling in
@@ -53,7 +55,7 @@ are distinct evidence. In particular, the recoil recovery arithmetic and some
 attachment recovery effects remain estimates. A configuration export alone does
 not prove modifier activation, operation order or native engine behavior.
 
-### Recoil amount and variation tiers
+## Recoil amount and variation tiers
 
 For a raw aim-state recoil group, the helpers calculate:
 
@@ -79,9 +81,10 @@ The former guide recorded M16A4 and M433 screenshot checks of variation tiers.
 Those historical observations support the tier interpretation; they do not
 validate the entire time-dependent recoil simulation.
 
-### Recoil Path (`genRecoilPts`)
+## Recoil Path (`genRecoilPts`)
 
-For each shot:
+The first returned point is `(0, 0)` before its own kick. To advance to each
+subsequent pre-shot point:
 1. Select ADS or hipfire recoil inputs based on `aimState`.
 2. Compute per-shot recoil amount, including attachment tier and platform scaling.
 3. Sample direction variation uniformly across the full `[-recoilVar, +recoilVar]` range.
@@ -91,7 +94,7 @@ For each shot:
    (`applyRecoilDecay`, using the weapon group's decay parameters and the
    muzzle's `_adsRecoilDecayMult` when aiming).
 
-### Spread (`simulateSpread`)
+## Spread (`simulateSpread`)
 
 - Starts at the stance/aim spread minimum (`spreadBounds`).
 - Adds `spreadInc` per shot.
@@ -103,7 +106,7 @@ For each shot:
   `r = spreadRadius × rng()` — this is the current sampling convention and makes shot
   distributions visually center-weighted (half the shots land in the inner 25% of the area).
 
-### Recoil recovery and shot timing
+## Recoil recovery and shot timing
 
 `genRecoilPts(w, seed, shots)` returns pre-shot angular offsets in degrees. The
 first shot starts at `(0, 0)`. For each following point, the model adds a kick,
@@ -126,14 +129,15 @@ recovery = (abs(axis)^decExp + decOffset) * decFactor * step * t^decTimeExp
 The update cannot cross zero. `t` restarts for each inter-shot interval. The
 selected recoil group supplies recovery parameters, with legacy table/default
 fallbacks. `_adsRecoilDecayMult` scales the factor only in ADS. Recoil duration is
-not used to construct a separate kick animation in this calculation.
+not used to construct a separate kick animation in this calculation. Retained
+`decNorm` and `shootingDecScale` do not add independent recovery branches.
 
 `shotIntervalAfter()` uses `60 / rpm`, or `60 / burstRpm` within a burst when
 available. After the final shot in a burst, it uses the greater of the normal
 interval and `60 / burstBurstsPerMinute - (burstRounds - 1) * normalInterval`.
 This distinction feeds both recoil and spread recovery.
 
-### Spread floors, growth and recovery
+## Spread floors, growth and recovery
 
 `simulateSpread()` records each shot's spread **before** adding that shot's
 increase. The first shot therefore uses the current stance minimum. Between
@@ -147,7 +151,11 @@ spread = clamp(spread, baseline, maximum)
 
 Ordinary shot intervals use firing recovery. A post-burst interval first uses
 firing recovery for `min(60 / rpm, interval)`, then not-firing recovery for the
-remaining time. Missing not-firing fields fall back to firing parameters.
+remaining time. Missing not-firing fields fall back to the final firing parameters.
+No recovery after the last recorded shot is needed for `simulateSpread()`.
+Retained `idleTime`, `idleCoef`, `idleExp`, `idleOffset`, `firstShotMul` and `distExp`
+do not introduce an idle-state machine, first-shot multiplier or a source-driven
+radial distribution in this implementation.
 
 The stance and aim state select `adsStand`, `adsMove`, `hipStand` or `hipMove`.
 Moving ADS overrides the minimum with the source-ordered seven-row
@@ -160,7 +168,7 @@ shifts. Both standing and moving minima come from that row; existing maximum
 bounds are retained. Buckshot, 00 Buckshot and Flechette apply a source `+9`
 index shift on the four shotguns. Slugs do not. Rows must not be sorted because
 the shotgun shift crosses into a separate range. VSSM retains the documented
-baseline override. See [source-array implementation](FROSTY_ARRAY_REVIEW_2026-09-09.md).
+baseline override. See [stat ladders and indexing](STAT_LADDERS.md).
 
 `effectiveSpreadMax()` uses 50 shot increases and recovery intervals, including
 recovery after its last increase, then returns the final clamped value rounded
@@ -168,7 +176,7 @@ to three decimals. It is a representative sustained-fire result, not a search
 for the largest transient value or a proof of the mathematical steady state.
 The shared display axis is 12 degrees.
 
-### Heavy-type barrel calibration
+## Heavy-type barrel calibration
 
 Heavy, Heavy Extended and Cryogenic currently apply these changes in **ADS only**,
 for both standing and moving. Hip growth and recovery retain their own inputs.
@@ -195,19 +203,19 @@ Its all-aim-state extension, old field names and test inventory are historical;
 they do not describe the current implementation. The current catalog still
 marks the two recovery factors as assumed, under its legacy annotation keys.
 
-### Recoil control and platform
+## Recoil control and platform
 
 Recoil control subtracts a fraction of the expected kick vector on each shot.
-It does not cancel the sampled variation or spread. The UI defaults to 85% when
-enabled and allows 0–125%; values above 100% overcompensate the expected vector.
-Disabled control supplies zero compensation.
+It does not cancel the sampled variation or spread. The single slider defaults to
+0% and allows 0–125%; values above 100% overcompensate the expected vector. There
+is no separate on/off toggle. Changing platform scales amount, not variation.
 
 The console setting applies an amount multiplier of `0.89`; PC uses `1`.
 This is the analyzer's platform model, not a separate simulation of controller
 input, aim assist, camera shake or visual recoil. Visual recoil attachment tags
 do not establish corresponding changes to the generated physical shot path.
 
-### Impact sampling and target projection
+## Impact sampling and target projection
 
 The seeded Mulberry32 generators make results repeatable for the same weapon,
 loadout, settings and seed. Impact sampling uses a uniform angle and a uniform
@@ -219,13 +227,17 @@ Angle Plot remains angular. Soldier Target projects the result at the selected
 distance and uses the available projectile model for vertical displacement.
 [sim/ballistics.js](../sim/ballistics.js) provides flight time and trajectory;
 [sim/target.js](../sim/target.js) handles geometry and hit classification.
-Missing projectile coverage must not be filled with an invented default.
+Projectile assembly uses available precise/base velocity and global coefficients,
+with supported ammo drag and source/donor fallback. The source-ID registry is not a
+hard eligibility gate. If trajectory resolution fails, the current renderer uses
+zero vertical displacement; this is a display fallback, not a measured no-drop result.
+See [damage, ballistics and projection](DAMAGE_BALLISTICS.md).
 
 Target hit and lethal-shot figures are approximate outcomes of the sampled
 spray. Pellet loads suppress these figures because individual pellets are not
 simulated. A circle drawn for shotgun spread is not a simulated pellet pattern.
 
-### Verification and remaining limits
+## Verification and remaining limits
 
 The current [attachment tests](../scripts/attachment-effects.test.mjs) cover
 supported aim-state effects and ADS-only heavy barrels. The
