@@ -11,17 +11,28 @@ export of every field from a single game version.
 
 | Source record | Scope and evidence | Boundary |
 |---|---|---|
-| `sym-bf6-json`, data version **1.4.2.0**, data version date **18 AUG 2026** | Base weapon fields and exact damage curves from [Sym's BF6 JSON](https://sym.gg/legacy/pages/bf6/data/bf6.json); version/date confirmed by the maintainer. | The data-version date is not a retrieval date. Historical snapshot metadata below does not identify the 1.4.2.0 payload. |
+| `sym-bf6-json`, data version **1.4.2.0**, data version date **18 AUG 2026** | Base weapon fields and exact damage curves from [Sym's BF6 JSON](https://sym.gg/legacy/pages/bf6/data/bf6.json); embedded metadata and full-payload SHA-256 checked against the [recorded September 6 snapshot](../reference-data/provenance/sym-1.4.2.0-interdictor.json). | Verification used a user-supplied full payload on 9 September 2026, not a fresh HTTP retrieval. The data-version date and recorded retrieval date are distinct. |
 | `ea-update-notes`, version 1.3.3.0 | [EA's update notes](https://www.ea.com/games/battlefield/redsec/news/battlefield-6-game-update-1-3-3-0), for declared mechanics and explicit changes. | Notes do not supply every internal coefficient or prove unmentioned fields. |
 | `frosty-local-export`, labeled 1.4.2.5 | Reviewed local XML exports, per-weapon/attachment provenance, source arrays, and configuration joins. | Version is a user-supplied export label; source literals and their activation/native arithmetic are separate claims. |
 | In-game captures and attachment audit | Displayed defaults, point costs, labels, attachment changes, and composed-loadout checks. | Panel rounding, capture version, defaults, identity and composition must be retained. A displayed stat is not automatically an exact internal value. |
 
-The Sym record stores the data-version date as `sourceVersionDate: 2026-08-18`.
-Its earlier recorded 1.3.3.0 snapshot's 25 July 2026 retrieval date and SHA-256 are
-preserved under `historicalSnapshot`; neither is attributed to the 1.4.2.0 payload.
-A retrieval date and full-payload hash for 1.4.2.0 are not recorded in the baseline.
-A source-version label does not mean every live field was reimported from that
-release; older field-level import notes remain historical provenance.
+The Sym record maps the payload's `info.version` and `info.versionDate` to
+`sourceVersion` and the ISO-formatted `sourceVersionDate`. On 9 September 2026,
+the complete 327,287-byte user-supplied JSON was hashed without reformatting. Its
+SHA-256 exactly matches the full-source hash in the retained September 6 evidence
+record; its embedded metadata and entire Interdictor object also match that record.
+The payload contains 63 weapon records plus a separate `info` object.
+
+The baseline now records that verified hash, the evidence path, and
+`retrievedDate: 2026-09-06`. This retrieval date comes from the existing source
+record; the upload verification does not establish a new HTTP retrieval date or
+the endpoint's present contents. The retained evidence file contains the Interdictor
+extract and full-source hash, rather than a complete copy of the source payload.
+
+The earlier recorded 1.3.3.0 snapshot's 25 July 2026 retrieval date and SHA-256 remain
+under `historicalSnapshot`; neither identifies the 1.4.2.0 payload. Source identity
+and roster count do not establish that every live value matches Sym or was reimported
+from this release; older field-level import notes remain historical provenance.
 
 The baseline's `damageStatus: verified` records project acceptance. Individual
 `damageSource` notes can still say provisional or pending in-game confirmation.

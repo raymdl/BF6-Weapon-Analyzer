@@ -21,7 +21,10 @@
       "id": "sym-bf6-json",
       "sourceVersion": "1.4.2.0",
       "sourceVersionDate": "2026-08-18",
-      "versionEvidence": "Maintainer-confirmed Sym Data Version and Data Version Date",
+      "versionEvidence": "Payload info.version and info.versionDate; full user-supplied JSON SHA-256 independently verified on 2026-09-09 against the recorded 2026-09-06 retrieval.",
+      "retrievedDate": "2026-09-06",
+      "sha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+      "evidence": "reference-data/provenance/sym-1.4.2.0-interdictor.json",
       "url": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
       "authority": "Base weapon fields and damage curves",
       "historicalSnapshot": {
