@@ -137,6 +137,19 @@ available. After the final shot in a burst, it uses the greater of the normal
 interval and `60 / burstBurstsPerMinute - (burstRounds - 1) * normalInterval`.
 This distinction feeds both recoil and spread recovery.
 
+### VSSM Folding Stock
+
+With Folding Stock selected, both ADS and hip recoil groups use decay factor
+`76` and time exponent `1.24`; without it they retain `13.7` and `0.5555`. These
+source values are applied in the equation above, while the 800 RPM conversion
+and existing spread/variation effects remain active. The weapon base is unchanged.
+
+A larger decay factor alone does not establish faster recovery: raising the time
+exponent reduces `t^exponent` during sub-second intervals. Native timing remains
+unverified, so this is a source-parameter application within the current model.
+Smooth recoil remains at the estimated `1.1` ADS multiplier; duration modeling
+is unchanged.
+
 ## Spread floors, growth and recovery
 
 `simulateSpread()` records each shot's spread **before** adding that shot's

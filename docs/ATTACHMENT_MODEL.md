@@ -119,7 +119,11 @@ regenerating opponent in the TTK calculation.
 
 Ergonomics can change fire mode. Auto takes precedence over burst and clears burst
 metadata; a configured `autoRpm` can change cadence, as with VSSM Folding Stock's
-800 RPM. Duration additions modify retained recoil data. Visual recoil, sway and
+800 RPM. Folding Stock also sets `recoilDecreaseFactorOverride: 76` and
+`recoilDecreaseTimeExponentOverride: 1.24`. The resolver copies these to `decFactor`
+and `decTimeExp` in both aim-state groups, without modifying the base weapon.
+The current recovery equation consumes them. Smooth recoil retains its separate
+`1.1` ADS multiplier. Duration additions modify retained recoil data. Visual recoil, sway and
 laser visibility are descriptors; there is no separate camera/sway/visibility model.
 
 `assumed:true` or nonempty `assumedFields` marks a selectable effect as assumed.

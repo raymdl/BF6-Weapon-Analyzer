@@ -37,6 +37,12 @@ These residuals use seed 0 and the current recoil generator. They show model out
 
 ## VSSM Folding Stock
 
+Update, 9 September 2026: the user approved applying factor `76` and time
+exponent `1.24` to both aim states with Folding Stock selected. The runtime now
+uses those overrides in its existing equation. Native timing remains unverified.
+Smooth recoil stays at the existing `1.1` ADS multiplier. The comparison below
+records the pre-change baseline and the now-applied source-constant prediction.
+
 Live default ammunition is Tungsten, so ADS kick is 0.845 rather than the underlying approximately 0.800 base kick. Folding Stock changes the firing interval from approximately 0.133334 s (450 RPM) to 0.075 s (800 RPM). The already released variation correction is retained. Live decay factor is 13.7, time exponent 0.5555, decay exponent 1, offset 0.06, duration 0.025 s. Frosty sets decay factor to 76 and time exponent to 1.24 in both aim states.
 
 | VSSM scenario | ADS kick | Factor | Time exponent | Y before shot 2 | Y before shot 10 |
@@ -45,7 +51,7 @@ Live default ammunition is Tungsten, so ADS kick is 0.845 rather than the underl
 | Live Folding Stock | 0.845 | 13.7 | 0.5555 | 0.691282 | 3.143367 |
 | Stock source constants in current equation | 0.845 | 76 | 1.24 | 0.732614 | 3.892637 |
 
-The source-constant row leaves more residual recoil in this equation despite the larger factor. Increasing the time exponent reduces `t^exponent` while t is below one second. This is why factor 76 alone cannot be called a fixed percentage recovery improvement. Native timing and integration remain unverified. No decay change is implemented.
+The source-constant row leaves more residual recoil in this equation despite the larger factor. Increasing the time exponent reduces `t^exponent` while t is below one second. This is why factor 76 alone cannot be called a fixed percentage recovery improvement. Native timing and integration remain unverified. The source-constant decay change is now implemented as noted above.
 
 ## Flashlight and combined-device examples
 

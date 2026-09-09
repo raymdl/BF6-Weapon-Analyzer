@@ -1098,8 +1098,10 @@
       "adsRecoilVariationTierMod": -20,
       "setsFireModeAuto": true,
       "assumedFields": {
-        "recoilDecreaseFactorOverride": "Folding Stock recoil-recovery changes are not modeled. Exported modifier values 76 and 1.24 occur in both recoil groups; their field and operation meanings still require verification."
+        "recoilDecreaseFactorOverride": "Applies exported factor 76 and time exponent 1.24 in both aim states using the current recovery equation. Native recovery timing remains unverified."
       },
+      "recoilDecreaseFactorOverride": 76,
+      "recoilDecreaseTimeExponentOverride": 1.24,
       "autoRpm": 799.999,
       "hipSpreadDynOverride": {
         "inc": 0.736,

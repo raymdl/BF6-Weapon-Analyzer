@@ -532,9 +532,14 @@ export function applyAttachments(w, atts) {
   const autoRpm = ergoData.setsFireModeAuto
     ? ergoData.autoRpm ?? w.autoRpm ?? null
     : null;
-  const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd)
+  const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd
+    || ergoData.recoilDecreaseFactorOverride != null || ergoData.recoilDecreaseTimeExponentOverride != null)
     ? Object.fromEntries(Object.entries(w.recoil).map(([state, group]) => [state, {
       ...group,
+      ...(ergoData.recoilDecreaseFactorOverride != null
+        ? { decFactor: ergoData.recoilDecreaseFactorOverride } : {}),
+      ...(ergoData.recoilDecreaseTimeExponentOverride != null
+        ? { decTimeExp: ergoData.recoilDecreaseTimeExponentOverride } : {}),
       ...(state === 'hip' && totalHipRecoilTierMod
         ? { amountExp: (group.amountExp ?? 0) + totalHipRecoilTierMod } : {}),
       ...(state === 'hip' && totalHipVarTierMod
