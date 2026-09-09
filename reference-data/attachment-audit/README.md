@@ -2,6 +2,10 @@
 
 This directory contains the completed screenshot-backed attachment reference. It is intentionally separate from the live site and normal validation.
 
+Current runtime contracts and promotion rules: [data sources](../../docs/DATA_SOURCES.md).
+Historical investigations: [archive index](../../archive/README.md). A completed review
+package can retain provisional individual records; consult their statuses before promotion.
+
 ## Contents
 
 - `attachment-screenshot-review.json` — canonical machine-readable reference.

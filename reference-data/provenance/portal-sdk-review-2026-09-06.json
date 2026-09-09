@@ -22,5 +22,5 @@
     "No per-shot callback or direct recoil/spread/rating getter was found in these declarations.",
     "Timer precision, observation delay, facing-vector semantics and logging behavior remain untested."
   ],
-  "report": "docs/PORTAL_SDK_RESEARCH_2026-09-06.md"
+  "report": "archive/PORTAL_SDK_RESEARCH_2026-09-06.md"
 }

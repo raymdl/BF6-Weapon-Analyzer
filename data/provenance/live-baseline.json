@@ -8,7 +8,7 @@
       "id": "frosty-local-export",
       "sourceVersion": "1.4.2.5",
       "buildEvidence": "user-supplied export label",
-      "evidence": "docs/FROSTY_INTEGRATION.md",
+      "evidence": "archive/FROSTY_INTEGRATION.md",
       "authority": "Reviewed local Frosty fields with per-weapon provenance; Interdictor tweakable health curve has independent creator corroboration"
     },
     {
@@ -19,11 +19,19 @@
     },
     {
       "id": "sym-bf6-json",
-      "sourceVersion": "1.3.3.0",
-      "retrievedDate": "2026-07-25",
+      "sourceVersion": "1.4.2.0",
+      "sourceVersionDate": "2026-08-18",
+      "versionEvidence": "Payload info.version and info.versionDate; full user-supplied JSON SHA-256 independently verified on 2026-09-09 against the recorded 2026-09-06 retrieval.",
+      "retrievedDate": "2026-09-06",
+      "sha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+      "evidence": "reference-data/provenance/sym-1.4.2.0-interdictor.json",
       "url": "https://sym.gg/legacy/pages/bf6/data/bf6.json",
-      "sha256": "878475E5D8751E5CC11F37A2F95F8D4075BD07D8A7C7EC53B1676EACF4CE646C",
-      "authority": "Base weapon fields and damage curves"
+      "authority": "Base weapon fields and damage curves",
+      "historicalSnapshot": {
+        "sourceVersion": "1.3.3.0",
+        "retrievedDate": "2026-07-25",
+        "sha256": "878475E5D8751E5CC11F37A2F95F8D4075BD07D8A7C7EC53B1676EACF4CE646C"
+      }
     }
   ],
   "dataPolicy": {
