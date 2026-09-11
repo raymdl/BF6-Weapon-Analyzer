@@ -106,7 +106,7 @@ Implementation changes:
   a synthetic `0.43` base, attachment shift, clamping, source immutability, and
   all 63 default loadouts.
 
-## VSSM hipfire follow-up — 11 September 2026
+## VSSM hipfire follow-up â€” 11 September 2026
 
 The former index-2 override retained the older class-based baseline while the
 raw selector/default configuration was unresolved. Matched standing screenshots
