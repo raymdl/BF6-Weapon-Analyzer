@@ -45,9 +45,11 @@ carry their own costs. The UI warns above 100 points without rejecting the build
 | Sprint / deploy / undeploy | Sum timing effects independently across magazine, grip, ergo, barrel, muzzle, laser, light and ammo; clamp once. Deploy/undeploy share their selected index. |
 
 There is no universal rule that a named attachment affects every aim state or every
-recovery phase. Heavy-type barrels currently use ADS increment ×0.667, firing
-coefficient ×1.71 and firing offset ×0.667. The recovery factors are fitted, labeled
-assumptions. Muzzle ADS recovery boosts and light hip boosts scale firing offsets
+recovery phase. Heavy-type barrels use source ADS increment ×0.666667, firing
+coefficient ×1.837117 and firing/not-firing offsets ×0.666667. Increment precision
+is retained for simulation. AK4D recordings support the ADS reduction; transfer
+to other weapons and barrel variants remains source-based. Muzzle ADS recovery
+boosts and light hip boosts scale firing offsets
 separately. [Recoil and spread](RECOIL_SPREAD_MODEL.md) explains fallback parameters
 and why retained native fields are not all executed.
 
@@ -122,11 +124,16 @@ metadata; a configured `autoRpm` can change cadence, as with VSSM Folding Stock'
 800 RPM. Folding Stock also sets `recoilDecreaseFactorOverride: 76` and
 `recoilDecreaseTimeExponentOverride: 1.24`. The resolver copies these to `decFactor`
 and `decTimeExp` in both aim-state groups, without modifying the base weapon.
-The current recovery equation consumes them. Smooth recoil uses the operator-approved
-`1.2` recovery multiplier in both aim states and a `0.05`-second duration override.
+The current recovery equation consumes them. Smooth recoil uses source operands:
+`1.2` recovery and a `0.05`-second duration override for ordinary modifiers, or
+`1.728` and `0.066667` for 17 mapped Bolt weapon–muzzle combinations. The resolver
+merges `muzzle.weaponOverrides[weaponId]` over the muzzle catalog record first.
+This selects the attachment-specific values in both aim states; it is not a
+weapon-class override. Base duration is read from each weapon's recoil group.
 The override precedes ergonomics duration additions; the simulation delivers
 recoil over the resulting duration with concurrent recovery. See the
-[validation and assumptions](RECOIL_MODEL_VALIDATION_2026-09-11.md). Visual recoil, sway and
+[per-attachment table](RECOIL_SPREAD_MODEL.md#duration-and-smooth-attachment-selection)
+and [validation and assumptions](RECOIL_MODEL_VALIDATION_2026-09-11.md). Visual recoil, sway and
 laser visibility are descriptors; there is no separate camera/sway/visibility model.
 
 `assumed:true` or nonempty `assumedFields` marks a selectable effect as assumed.

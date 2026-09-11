@@ -107,10 +107,37 @@
       "adsRecoilDecayMult": 1.2,
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
+      "weaponOverrides": {
+        "l115": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "m2010esr": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "miniscout": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "psr": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "sv98": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        }
+      },
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -147,9 +174,9 @@
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 150,
@@ -176,10 +203,37 @@
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
       "sway": 1,
+      "weaponOverrides": {
+        "interdictor": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "l115": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "m2010esr": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "miniscout": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "psr": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        }
+      },
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -194,10 +248,42 @@
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
+      "weaponOverrides": {
+        "interdictor": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "l115": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "m2010esr": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "miniscout": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "psr": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        },
+        "sv98": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        }
+      },
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -220,10 +306,17 @@
       "adsRecoilDecayMult": 1.2,
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
+      "weaponOverrides": {
+        "miniscout": {
+          "recoilDurationOverride": 0.066667,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728
+        }
+      },
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -240,9 +333,9 @@
       "hipSpreadTierMod": 1,
       "sway": 1,
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -261,9 +354,9 @@
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -280,9 +373,9 @@
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 0,
       "assumedFields": {
-        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
+        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -337,16 +430,13 @@
       "name": "Heavy",
       "adsTimeTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "assumedFields": {
-        "spreadFiringDecCoefMult": true,
-        "spreadFiringDecOffsetMult": true
-      },
       "pts": 10,
       "velMult": 1,
       "velTierMod": 0,
-      "adsSpreadIncMult": 0.667,
-      "adsSpreadFiringDecCoefMult": 1.71,
-      "adsSpreadFiringDecOffsetMult": 0.667
+      "adsSpreadIncMult": 0.666667,
+      "adsSpreadFiringDecCoefMult": 1.837117,
+      "adsSpreadFiringDecOffsetMult": 0.666667,
+      "adsSpreadNotFiringDecOffsetMult": 0.666667
     },
     {
       "id": "heavy_ext",
@@ -354,16 +444,13 @@
       "adsTimeTierMod": 0,
       "sprintRecoveryTierShift": 1,
       "movingAdsSpreadTierMod": 0,
-      "assumedFields": {
-        "spreadFiringDecCoefMult": true,
-        "spreadFiringDecOffsetMult": true
-      },
       "pts": 10,
       "velMult": 1.25,
       "velTierMod": 1,
-      "adsSpreadIncMult": 0.667,
-      "adsSpreadFiringDecCoefMult": 1.71,
-      "adsSpreadFiringDecOffsetMult": 0.667,
+      "adsSpreadIncMult": 0.666667,
+      "adsSpreadFiringDecCoefMult": 1.837117,
+      "adsSpreadFiringDecOffsetMult": 0.666667,
+      "adsSpreadNotFiringDecOffsetMult": 0.666667,
       "deployTimeTierShift": 1
     },
     {
@@ -381,16 +468,13 @@
       "name": "Cryogenic",
       "adsTimeTierMod": 1,
       "movingAdsSpreadTierMod": 0,
-      "assumedFields": {
-        "spreadFiringDecCoefMult": true,
-        "spreadFiringDecOffsetMult": true
-      },
       "pts": 20,
       "velMult": 1,
       "velTierMod": 0,
-      "adsSpreadIncMult": 0.667,
-      "adsSpreadFiringDecCoefMult": 1.71,
-      "adsSpreadFiringDecOffsetMult": 0.667
+      "adsSpreadIncMult": 0.666667,
+      "adsSpreadFiringDecCoefMult": 1.837117,
+      "adsSpreadFiringDecOffsetMult": 0.666667,
+      "adsSpreadNotFiringDecOffsetMult": 0.666667
     },
     {
       "id": "ext_light",

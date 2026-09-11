@@ -300,9 +300,7 @@
     "umg40": 4,
     "kv9": 4
   },
-  "HIP_SPREAD_BASE_INDEX_OVERRIDES": {
-    "vssm": 2
-  },
+  "HIP_SPREAD_BASE_INDEX_OVERRIDES": {},
   "BASE_HS_MULT": {
     "m39emr": 1.5,
     "svk86": 1.5,

@@ -3,8 +3,9 @@
 [Documentation index](README.md) · [Stat ladders](STAT_LADDERS.md) · [Model limitations](MODEL_LIMITATIONS.md)
 
 This guide explains the current analyzer implementation, checked against the
-code on 11 September 2026. The operator approved timed delivery with simultaneous
-recovery and the Smooth 50 ms/1.2 model on that date. Source literals, fitted behavior and rendering choices
+code on 11 September 2026. It uses timed delivery with simultaneous recovery,
+source Smooth operands selected by weapon and muzzle, and source Heavy-type ADS
+spread factors. Source literals, fitted behavior and rendering choices
 have distinct evidence boundaries.
 
 ## The Model at a Glance
@@ -139,14 +140,54 @@ the engine uses 1 ms ticks. The selected recoil group supplies recovery paramete
 with legacy table/default fallbacks. `_adsRecoilDecayMult` or
 `_hipRecoilDecayMult` scales the factor for the selected aim state.
 
-Smooth recoil uses the approved approximation of a 0.05-second duration
-override and 1.2 recovery-factor multiplier in both aim states. The duration
+Smooth recoil uses the selected source duration as an override and the selected
+source recovery operand as a multiplier in both aim states. The duration
 override precedes the existing ergonomics duration adjustment, then clamps at
 zero. Native modifier order and impulse shape remain unresolved. The former 1.1
 was an early visual estimate, not a constraint on this model. The recordings
 support slower Lightened delivery and lower sustained accumulation; they do not
 establish these exact engine operations. Hip behavior is source-based and has not
 been checked against hip recordings.
+
+### Duration and Smooth attachment selection
+
+Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
+selected weapon record. The current Frosty check covers all 63 supported weapons
+and both aim states: all 126 values are **0.025 seconds**. This is a checked
+dataset result, not a global 25 ms constant in the simulator. BROD 3 was checked
+directly in its GS recoil branches; the other 62 weapons also have matching named
+registry entries. A missing/zero duration still uses the immediate-impulse fallback.
+
+The four Smooth source assets define two operand sets:
+
+| Source modifier family | Duration override | Recovery factor |
+|---|---:|---:|
+| `GRM_SmoothRecoil_P10`, `GRM_SmoothRecoil_Compensator_P10` | 50 ms | 1.2 |
+| `GRM_SmoothRecoilBolt_P10`, `GRM_SmoothRecoilBolt_Compensator_P10` | 66.667 ms | 1.728 |
+
+The Bolt set applies only to these 17 mapped selections:
+
+| Weapon | Muzzles using 66.667 ms and 1.728 |
+|---|---|
+| Interdictor | Lightened Suppressor, Long Suppressor |
+| L115 | Lightened Suppressor, Long Suppressor, Compensated Brake |
+| M2010 ESR | Lightened Suppressor, Long Suppressor, Compensated Brake |
+| Mini Scout | Lightened Suppressor, Long Suppressor, Compensated Brake, Compensator |
+| PSR | Lightened Suppressor, Long Suppressor, Compensated Brake |
+| SV-98 | Lightened Suppressor, Compensated Brake |
+
+Other mapped Smooth muzzles on these rifles, including their hybrid suppressors,
+use the ordinary 50 ms/1.2 set. The resolver merges the selected muzzle's
+`weaponOverrides[weaponId]` into its catalog record before applying recoil effects.
+It does not select values by weapon class. Ergonomic duration additions follow
+the muzzle override; for example, M16A4 Smooth plus Auto receiver gives 49.4 ms.
+
+The [duration audit](../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json)
+checks 349 source-mapped Smooth selections and retains paths, GUIDs, raw operands,
+and hashes. PP-19 Flash Comp keeps the 50 ms/1.2 catalog estimate: its captured
+description supports Smooth recoil, but its retained selector trace does not
+resolve the modifier. The source values do not establish native activation or
+composition; the Bolt set has no separate recording validation.
 
 Retained `decNorm` and `shootingDecScale` do not add independent recovery branches.
 See the [field review and validation](RECOIL_MODEL_VALIDATION_2026-09-11.md) for
@@ -200,8 +241,10 @@ index is the weapon base (or explicit override) minus the sum of catalog hip
 shifts. Both standing and moving minima come from that row; existing maximum
 bounds are retained. Buckshot, 00 Buckshot and Flechette apply a source `+9`
 index shift on the four shotguns. Slugs do not. Rows must not be sorted because
-the shotgun shift crosses into a separate range. VSSM retains the documented
-baseline override. See [stat ladders and indexing](STAT_LADDERS.md).
+the shotgun shift crosses into a separate range. VSSM now uses source index 4
+(1.804 degrees standing / 2.255 degrees moving), supported by the matched standing
+HUD comparison. Its moving value follows the source row. See
+[stat ladders and indexing](STAT_LADDERS.md).
 
 `effectiveSpreadMax()` uses 50 shot increases and recovery intervals, including
 recovery after its last increase, then returns the final clamped value rounded
@@ -209,32 +252,36 @@ to three decimals. It is a representative sustained-fire result, not a search
 for the largest transient value or a proof of the mathematical steady state.
 The shared display axis is 12 degrees.
 
-## Heavy-type barrel calibration
+## Heavy-type barrel source factors
 
 Heavy, Heavy Extended and Cryogenic currently apply these changes in **ADS only**,
 for both standing and moving. Hip growth and recovery retain their own inputs.
 
 | Catalog field | Factor | Meaning |
 |---|---:|---|
-| `adsSpreadIncMult` | 0.667 | Per-shot spread increase |
-| `adsSpreadFiringDecCoefMult` | 1.71 | Firing recovery coefficient |
-| `adsSpreadFiringDecOffsetMult` | 0.667 | Firing recovery offset |
+| `adsSpreadIncMult` | 0.666667 | Per-shot spread increase |
+| `adsSpreadFiringDecCoefMult` | 1.837117 | Firing recovery coefficient |
+| `adsSpreadFiringDecOffsetMult` | 0.666667 | Firing recovery offset |
+| `adsSpreadNotFiringDecOffsetMult` | 0.666667 | Explicit not-firing recovery offset |
 
-The recovery exponent is unchanged. Not-firing parameters are not directly
-scaled; a missing value still follows the fallback described above. Muzzle and
+The recovery exponent and spread minima are unchanged. Missing not-firing
+parameters still follow the fallback described above. Muzzle and
 light recovery boosts scale the applicable firing offset separately.
 
-These recovery factors were fitted against historical ADS-standing reference
-curves, not established as exact native attachment literals. Scaling the flat
+These source operands replace the former visual approximations of 1.71 and 0.667.
+The resolver preserves increment precision for simulation. Scaling the flat
 recovery offset along with per-shot increase matters: reducing increase alone
 can keep a weapon at minimum spread throughout a firing sequence. The coefficient
 then changes the balance between growth and recovery above that minimum.
 
-The [original calibration discussion](https://github.com/raymdl/BF6-Weapon-Analyzer/blob/7907352cea3a3d2e339d9e66fec8b2c34c7a3d7c/CODE_DOCUMENTATION.md#heavy-type-barrel-spread-calibration)
-retains the historical fit metrics, reference-curve details and source caveats.
-Its all-aim-state extension, old field names and test inventory are historical;
-they do not describe the current implementation. The current catalog still
-marks the two recovery factors as assumed, under its legacy annotation keys.
+The [AK4D Basic/Heavy recordings](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md)
+show about 32–33% smaller ADS HUD widths, with no material hipfire or settled
+movement difference. The source set improved held-out Heavy error from 1.98 to
+1.85 px in the research comparison. That comparison used 1 ms integration and a
+Basic-only fitted HUD transform; it is not the error of the site's 60 Hz spread
+simulation or an independent angular measurement. Other weapons and Heavy
+Extended/Cryogenic use source-based transfer, not separate recording validation.
+The idle operand remains unused because no idle transition was established.
 
 ## Recoil control and platform
 

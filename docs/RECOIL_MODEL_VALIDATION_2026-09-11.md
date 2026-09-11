@@ -2,6 +2,13 @@
 
 ## Decision
 
+Duration-audit follow-up: the initial 50 ms/1.2 catalog-wide Smooth treatment below
+now has 17 source-mapped weapon–muzzle exceptions at 66.667 ms/1.728. All 63 base
+weapons were checked directly in Frosty and retain 25 ms in both aim states.
+See the current [attachment table](RECOIL_SPREAD_MODEL.md#duration-and-smooth-attachment-selection)
+and [source audit](../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json).
+The M4A1/TR7/AK4D comparison results below are unchanged by these Bolt exceptions.
+
 Use Frosty recoil duration and continuous recovery to improve the existing
 approximation. The operator authorized this change and confirmed that the old
 Smooth factor of 1.1 came from early, unscientific spray-pattern inspection.
@@ -21,8 +28,9 @@ The implemented model uses:
   The time integral and linear-exponent recovery solution are exact. Delivery
   and nonlinear recovery use steps no larger than 1 ms.
 - Smooth operands interpreted as a 50 ms duration override and a factor of 1.2
-  on recovery. These replace the old 1.1 for the eight existing Smooth catalog
-  entries. Both aim states use the same operands. Only ADS has recording evidence.
+  on recovery for ordinary Smooth assets, with 66.667 ms/1.728 for the mapped Bolt
+  exceptions. These replace the old 1.1. Both aim states use the selected source
+  operands. Only ADS has recording evidence; the Bolt exceptions have none.
 - Duration override before the existing ergonomic duration addition, followed
   by a zero clamp. For example, Smooth plus the M16A4 Auto receiver gives 49.4 ms.
 
@@ -36,8 +44,13 @@ The local recording analysis (`outputs/recoil-analysis-2026-09-11/REPORT.md`) re
 20 M4A1 videos, eight impact images, source hashes, detection outputs, exclusions,
 and fitting results. Standard Suppressor is the recoil/spread control, as confirmed
 by the operator. The build is 1.4.2.5; captures use standing ADS, Mini Flex, 103 FOV,
-and no compensation or mouse input. Target distance and ADS-FOV configuration
-are not established, so no pixel-to-degree calibration is claimed.
+and no compensation or mouse input. The operator subsequently confirmed the
+standing conditions for all these recording sets: **1.4.2.5, 103 FOV, Mini Flex,
+20 m wall distance**, unless an exception is reported. These conditions also apply
+to the planned Heavy-type barrel and VSSM recordings and need not be requested
+again. The existing results remain pixel-based; this confirmation does not
+retroactively establish the ADS/HUD pixel-to-degree calibration. See the
+[recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) for the shared conditions.
 
 Lightened's isolated camera peak is almost unchanged (4.29 versus 4.26 px), but
 its mean peak rise rate is 19.7% lower and its median peak occurs about 29 ms later.

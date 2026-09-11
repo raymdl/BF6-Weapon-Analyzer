@@ -4,6 +4,31 @@ Status recorded 11 September 2026. This document tracks the current in-game
 capture program for unresolved recoil and spread mechanics. Update the status,
 findings, and follow-up requirements here as analysis proceeds.
 
+## Standing recording conditions — operator confirmed 11 September 2026
+
+Use these conditions for all recoil and spread recording sets covered by this
+handoff, including Heavy-type barrels and VSSM, unless the operator explicitly
+reports a change:
+
+- Game version: **1.4.2.5**.
+- In-game FOV: **103**.
+- Optic: **Mini Flex**.
+- Wall distance: **20 m**.
+
+Carry these values into each analysis without requesting them again. The operator
+only needs to report exceptions. This confirmation supersedes earlier notes that
+only TR7 had a confirmed wall distance or that M4A1/AK4D distance was unknown.
+It does not retroactively calibrate the existing pixel-based measurements or
+establish the HUD-to-angle conversion.
+
+Exception confirmed for `reference-data/Recordings/09112026/VSSM/`: these clips
+use the game's built-in firing range because the previous range does not yet
+offer VSSM. The wall distance is **not exactly 20 m and is unspecified**. The
+operator confirms Mini Flex, the 20-point **200MM ASM** barrel, a 20-round
+magazine, and 10-point **Tungsten Match / Range Penetration** ammo. Version
+1.4.2.5 and FOV 103 retain the standing defaults. Do not apply a 20 m impact
+calibration to this VSSM set or treat it as a factory-barrel comparison.
+
 ## Implementation update: 11 September 2026
 
 The operator approved publication of timed delivery with simultaneous recovery,
@@ -240,7 +265,12 @@ stored source-supported minimum instead of a global tier. Attachment shifts
 still operate through the source-ordered table. The change is complete locally
 but is not part of this recording analysis and must not be modified here.
 
-The VSSM retains a separate hipfire conflict. Its analyzer override selects hip
+Update: matched standing screenshots support raw index 4; the accepted correction
+removes the VSSM override and stores 1.804 / 2.255. See
+[VSSM analysis](VSSM_RECORDING_ANALYSIS_2026-09-11.md). Moving remains a source-row
+inference. The following paragraph records the earlier unresolved state.
+
+Previously, VSSM retained a separate hipfire conflict. Its analyzer override selects hip
 spread table index 2, producing `3.352 / 4.19` degrees for stationary/moving
 hipfire. The recorded Frosty base selector is index 4, producing
 `1.804 / 2.255` degrees. The table values themselves are known; the unresolved
@@ -270,8 +300,9 @@ distinguish. Retain uncertain engine semantics as unresolved.
   recording rate. Gameplay renders at approximately 200 FPS, so analysis must
   identify repeated or held capture frames and use actual presentation and shot
   timing where possible.
-- The TR7 wall distance is confirmed as 20 m. Do not assume the M4A1 or AK4D
-  wall distance without separate evidence.
+- The operator confirms 20 m wall distance and Mini Flex as standing defaults.
+  The VSSM built-in-range set has an unspecified wall distance; see the exception
+  at the start of this handoff.
 - The red `(` and `)` marks immediately to the left and right of the aiming
   reticle are the in-game spread indicator. They are not decorative reticle
   elements. Track their left/right position or separation independently from
@@ -288,7 +319,8 @@ distinguish. Retain uncertain engine semantics as unresolved.
 
 ## Standard capture requirements
 
-Use these requirements for each future recording set:
+Use the standing version/FOV/optic/distance conditions above for each future set;
+do not request repeated confirmation. Apply these additional capture requirements:
 
 1. Record at 120 FPS minimum; use 240 FPS when practical.
 2. Keep resolution, aspect ratio, FOV, ADS-FOV setting, platform, and input
@@ -489,7 +521,8 @@ Operator-confirmed conditions: same game build (typed `1.4.25`, referring to the
 prior `1.4.2.5` build), 103 FOV, Mini Flex optic, standing, no other optional
 non-muzzle attachments, no recoil compensation, and no mouse motion during
 firing. The overlay retains FMJ, 15-inch Commando, and 30-round magazine defaults.
-The ADS-FOV setting was not separately supplied. The operator reports sway and
+The operator subsequently confirmed the standing 20 m wall distance for these
+recordings. The ADS-FOV setting was not separately supplied. The operator reports sway and
 suggests it resumes about 400 ms after firing; this is a hypothesis, not an
 established engine delay. Compare post-shot motion with the pre-shot baseline.
 
@@ -538,8 +571,8 @@ the maintained results and model decision.
 
 Optional recoil-specific evidence, only if existing analysis cannot resolve a
 specific question: independent repeated Standard/Lightened takes;
-actual 100-150 ms shot intervals verified from footage; target-distance/aim-point
-calibration for impact measurements; and a longer no-fire ADS baseline for sway.
+actual 100-150 ms shot intervals verified from footage; aim-point/image calibration
+at the confirmed 20 m for impact measurements; and a longer no-fire ADS baseline for sway.
 The full report retains methods, errors, sensitivity checks, exclusions, source
 hashes, and reproduction steps. The prior 60 Hz integration observation is about
 an assumed equation and does not establish native integration semantics.
@@ -576,7 +609,32 @@ and stance in separate controlled takes. Confirm equipped selector routes and
 operation decoding, then compare another Smooth muzzle before assigning
 override/add/multiply or stacking rules to its raw operands.
 
-## Pending scenario 1: VSSM hipfire base index and fire mode
+## Scenario 1: VSSM hipfire base index and fire mode — recordings analyzed
+
+The 11 September VSSM set has been analyzed. See
+[VSSM recording analysis](VSSM_RECORDING_ANALYSIS_2026-09-11.md) and ignored
+local artifacts in `outputs/vssm-analysis-2026-09-11/`. All seven videos and four
+screenshots retain their original hashes. The ammo pass confirms 50 shots.
+
+No-ergonomics and Folding Stock have the same measured hipfire floors: 81 px
+stationary and about 96 px moving. This does not resolve the absolute angular
+table index. Folding Stock produces visible ADS firing-spread growth.
+
+Four no-shot hipfire-to-ADS transitions per loadout give median indicator
+contraction rates of 170.4 px/s without ergonomics and 169.5 px/s with Folding
+Stock. Background projection is stable during the measured red-indicator
+interval. The equal rates do not support directly assigning the stock's roughly
+9 percent faster not-firing or idle offsets to this transition. A shared
+transition-recovery path is a candidate; its equation and HUD mapping remain
+unverified. The current analyzer does not simulate the aim transition.
+
+The source-based stock recoil model fits the late isolated-shot camera tail
+better than retaining base recovery, but does not fit the complete camera trace
+better. No production values changed. No repeat of this set is requested.
+
+The original capture plan below describes remaining coverage, particularly
+hipfire firing and absolute angular calibration; it is not a description of
+the supplied ASM-barrel/Range-Penetration loadout.
 
 Purpose: distinguish the analyzer's VSSM hipfire override at table index 2 from
 the recorded Frosty selector at index 4, and test whether semi-auto and full-auto
@@ -603,11 +661,33 @@ the spread indicator enabled:
 If the game permits removal of factory attachments, make a second take that
 shows each configuration change and repeats the four resting-floor states.
 
-Record the wall distance. A fire-mode difference visible before firing indicates
+For a future calibrated capture, use a measured wall distance. A fire-mode difference visible before firing indicates
 a floor or selector difference. A difference that appears only after firing
 belongs to growth, recovery, or scheduling.
 
-## Pending scenario 2: Heavy-barrel spread mechanics
+## Scenario 2: Heavy-barrel spread mechanics — AK4D analyzed
+
+The 11 September AK4D Basic/Heavy set has been analyzed. See
+[AK4D Heavy-barrel recording analysis](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md)
+and the ignored local artifacts in `outputs/ak4d-heavy-analysis-2026-09-11/`.
+All 12 videos and four screenshots retain their original hashes. The ammo pass
+recovered 371 shots. Heavy hipfire burst 3 contains 16 rounds and is excluded
+from the matched 15-shot comparison.
+
+The ADS peak indicator width falls from 35.6 to 24.0 px for five shots and from
+46.8 to 31.8 px for 15 shots, approximately a one-third reduction. Hipfire peaks
+and strafe-only settled indicator widths show no material barrel difference.
+The extra no-firing clips therefore support unchanged movement spread minima;
+they do not test firing while moving. Missing ADS markers are not zero spread.
+
+The source factor set (including firing coefficient 1.837117 and not-firing
+offset multiplier 0.666667) gives a modestly closer Heavy trace match than the
+current fitted set. This is a preferred implementation candidate, not a proven
+native equation. Idle behavior remains unresolved. Production spread factors
+were not changed by this analysis. No repeat AK4D capture is required; the
+second-weapon comparison and other untested branches remain open.
+
+The original capture plan below is retained for those remaining comparisons.
 
 Purpose: test the analyzer's fitted ADS-only Heavy, Heavy Extended, and Cryogenic
 spread behavior. The current fitted Heavy factors are:
@@ -691,6 +771,12 @@ one stationary hipfire series. Retain the full indicator path through each pause
 
 ## Pending scenario 5: movement and stance spread branches
 
+The AK4D Basic/Heavy strafe-only ADS and hipfire controls are now available in
+the scenario 2 analysis. Both barrels reach the same visible movement plateaus
+(about 12 px ADS and 165 px hipfire). Reuse those recordings. Crouch, prone,
+sprint, jumping, landing, and movement combined with firing remain untested by
+this new set.
+
 Purpose: determine whether the analyzer incorrectly reduces distinct Frosty
 movement, jumping, sprinting, crouching, and prone branches to stationary versus
 moving bounds and shared ADS/hip dynamics.
@@ -718,7 +804,7 @@ Purpose: test the analyzer's current uniform-radius impact sampling against
 uniform-area sampling, Frosty's `DistributionExponent`, or another distribution.
 
 Use a semi-automatic weapon that produces visible individual bullet holes and
-has no spread-altering attachment. At a recorded fixed wall distance:
+has no spread-altering attachment. At the standing 20 m wall distance:
 
 1. Allow recoil and spread to reset completely.
 2. Place the reticle on the same marked center.
@@ -735,8 +821,8 @@ distribution from aim error.
 Purpose: determine whether `RecoilDuration` changes physical aim used by later
 projectiles, camera/reticle animation, or both.
 
-Use one weapon with paired Standard and Lightened Suppressors. At a known wall
-distance, record isolated shots without compensation so that both reticle motion
+Use one weapon with paired Standard and Lightened Suppressors. At the standing
+20 m wall distance, record isolated shots without compensation so that both reticle motion
 and each bullet impact remain visible. Retain full recovery. A stable center
 reference must be visible.
 
@@ -746,7 +832,9 @@ represent the same quantity.
 
 ## Recommended order for the later session
 
-1. VSSM hipfire base index and fire-mode test.
+1. VSSM standing comparison is complete and index 4 accepted. Resolve remaining
+   absolute projectile calibration and missing hipfire-firing coverage
+   using the completed scenario 1 analysis; do not repeat the no-fire controls.
 2. Two-weapon neutral-versus-Heavy spread test.
 3. Combined first-shot and firing/not-firing/idle pause test.
 4. Movement and stance branch test.

@@ -310,7 +310,8 @@ export function applyAttachments(w, atts) {
     DRAW_TIME_TABLES,
   } = _ctx;
 
-  const muz = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
+  const muzzleBase = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
+  const muz = { ...muzzleBase, ...muzzleBase.weaponOverrides?.[w.id] };
   const bar = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
   const velocityResolution = resolveBarrelVelocity({ barData: bar });
   // Combined slot: atts.laser may hold a grip or light ID for weapons like VZ.61/GRT-BC/SL9
@@ -403,7 +404,7 @@ export function applyAttachments(w, atts) {
     ? spreadDynBase
     : Object.fromEntries(Object.entries(spreadDynBase).map(([state, dyn]) => [
       state,
-      state === 'ads' && dyn?.inc != null ? { ...dyn, inc: +(dyn.inc * spreadIncMult).toFixed(3) } : dyn,
+      state === 'ads' && dyn?.inc != null ? { ...dyn, inc: dyn.inc * spreadIncMult } : dyn,
     ]));
 
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
@@ -566,6 +567,7 @@ export function applyAttachments(w, atts) {
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,
     _adsSpreadFiringDecCoefMult:   bar.adsSpreadFiringDecCoefMult ?? 1,
     _adsSpreadFiringDecOffsetMult: bar.adsSpreadFiringDecOffsetMult ?? 1,
+    _adsSpreadNotFiringDecOffsetMult: bar.adsSpreadNotFiringDecOffsetMult ?? 1,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
     _hipRecoilDecayMult:     muz.hipRecoilDecayMult ?? 1,
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
@@ -596,7 +598,7 @@ export function applyAttachments(w, atts) {
     recoilV:     adsRecoilPerShot,
     recoilVar:   adsRecoilVariation,
     recoilIncAds: adsSpreadInc != null
-      ? +(adsSpreadInc * spreadIncMult).toFixed(3)
+      ? adsSpreadInc * spreadIncMult
       : null,
     _projectileVelocityMps: projectileVelocityMps,
     bulletVel: projectileVelocityMps != null

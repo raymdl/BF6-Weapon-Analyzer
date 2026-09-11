@@ -124,9 +124,12 @@ M433 has base index 3: 2.432° standing / 3.04° moving. A catalog hip shift of 
 selects row 4: 1.804° / 2.255°; `−2` selects row 5: 1.352° / 1.69°.
 This is a lookup, not repeated percentage reduction.
 
-`HIP_SPREAD_BASE_INDEX_OVERRIDES.vssm = 2` deliberately overrides raw base 4,
-retaining 3.352° / 4.19° while version/default-composition evidence is unresolved.
-The override is a documented modeling decision, not a different source array.
+VSSM uses raw base index 4: 1.804° standing / 2.255° moving. The former index-2
+override preserved the older class-based baseline pending configuration evidence.
+Matched standing screenshots show VSSM and M4A1 at 81 px, versus M39 EMR at
+136 px, supporting its removal. The moving value follows source row 4; it is
+not independently calibrated by those screenshots. See the
+[VSSM recording analysis](VSSM_RECORDING_ANALYSIS_2026-09-11.md).
 
 ## Sprint recovery, deploy, and undeploy
 

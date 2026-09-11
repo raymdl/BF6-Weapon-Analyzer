@@ -34,7 +34,7 @@ All paths in this table are under `scripts/`.
 
 | Test file | Distinct behavior protected |
 |---|---|
-| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Supported ADS/hip effect composition and ADS-only heavy-barrel scope. |
+| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Supported ADS/hip composition, all 17 source Bolt muzzle exceptions, ordinary Smooth on the same rifle, base/catalog non-mutation, and ADS-only Heavy spread/recovery scaling. |
 | [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Projectile inputs/source policy, constants, flight/trajectory behavior and coverage decisions. |
 | [barrel-velocity.test.mjs](../scripts/barrel-velocity.test.mjs) | Tier precedence, compatibility multiplier, selectable-barrel equivalence and display rounding. |
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
