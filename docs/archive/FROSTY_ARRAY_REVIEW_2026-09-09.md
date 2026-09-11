@@ -9,7 +9,7 @@ array review. The sprint/deploy work is covered in
 
 All 63 mapped weapons reference the same HDA hip array, ZDA moving-ADS array,
 MSA ADS-movement array and FZT weapon-zoom transition collection. The
-[evidence file](../reference-data/provenance/frosty-array-review-2026-09-09.json)
+[evidence file](../../reference-data/provenance/frosty-array-review-2026-09-09.json)
 retains source rows, hashed field identifiers, each weapon's base indices,
 registry comparisons, candidate calculations and 187 input hashes.
 

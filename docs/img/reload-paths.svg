@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500" style="max-width:100%;height:auto" role="img"><title>Tactical reload has two calculation paths</title><rect width="1000" height="500" rx="16" fill="#f3f6fa"/><g font-family="Arial, Helvetica, sans-serif">
+<text x="30" y="43" font-size="28" fill="#142b42" font-weight="700">Tactical reload has two calculation paths</text>
+<text x="30" y="76" font-size="18" fill="#32465b" font-weight="400">Use the explicit animation override when present; otherwise use the normal magazine factor.</text>
+<rect x="30" y="110" width="450" height="253" rx="10" fill="#fff" stroke="#d4dfe9"/>
+<rect x="520" y="110" width="450" height="253" rx="10" fill="#fff" stroke="#d4dfe9"/>
+<text x="50" y="149" font-size="20" fill="#286aa5" font-weight="700">ORDINARY MAGAZINE</text>
+<text x="540" y="149" font-size="20" fill="#97502d" font-weight="700">ANIMATION OVERRIDE</text>
+<text x="50" y="197" font-size="21" fill="#32465b" font-weight="400">Base tactical time</text>
+<text x="50" y="240" font-size="21" fill="#32465b" font-weight="400">÷ magazine reload-speed factor</text>
+<text x="50" y="283" font-size="21" fill="#32465b" font-weight="400">÷ ergonomics multiplier</text>
+<text x="50" y="326" font-size="21" fill="#32465b" font-weight="400">→ tactical seconds</text>
+<text x="540" y="197" font-size="21" fill="#32465b" font-weight="400">Override animation time (ms)</text>
+<text x="540" y="240" font-size="21" fill="#32465b" font-weight="400">÷ ergonomics multiplier</text>
+<text x="540" y="283" font-size="21" fill="#32465b" font-weight="400">÷ 1000</text>
+<text x="540" y="326" font-size="21" fill="#32465b" font-weight="400">→ tactical seconds</text>
+<text x="30" y="408" font-size="21" fill="#142b42" font-weight="700">PP-19 example: 2667 ms ÷ 1.063 = 2508.937 ms → displayed as 2509 ms.</text>
+<text x="30" y="449" font-size="19" fill="#32465b" font-weight="400">The override already includes the magazine animation. Do not apply its factor again.</text>
+<text x="30" y="480" font-size="18" fill="#32465b" font-weight="400">Empty reload and per-shell reload cycles are separate from this tactical calculation.</text>
+</g></svg>

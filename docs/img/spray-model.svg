@@ -1,64 +1,87 @@
-<svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Spray simulation model: recoil path points with growing spread circles and sampled impact points">
-  <rect x="0" y="0" width="680" height="400" rx="8" fill="#0e1315"/>
-
-  <!-- origin crosshair -->
-  <line x1="150" y1="330" x2="190" y2="330" stroke="#3a4646" stroke-width="1"/>
-  <line x1="170" y1="310" x2="170" y2="350" stroke="#3a4646" stroke-width="1"/>
-  <text x="170" y="368" fill="#7a8a8a" font-family="Segoe UI, sans-serif" font-size="11" text-anchor="middle">aim point (shot 1)</text>
-
-  <!-- spread circles (pre-shot spread radius per shot) -->
-  <g stroke="#4d94d0" stroke-width="1.5" fill="rgba(77,148,208,0.10)">
-    <circle cx="170" cy="330" r="6"/>
-    <circle cx="178" cy="286" r="12"/>
-    <circle cx="168" cy="244" r="17"/>
-    <circle cx="186" cy="204" r="22"/>
-    <circle cx="180" cy="168" r="27"/>
-    <circle cx="192" cy="136" r="31"/>
-  </g>
-
-  <!-- recoil path -->
-  <polyline points="170,330 178,286 168,244 186,204 180,168 192,136"
-            fill="none" stroke="#c9a227" stroke-width="2"/>
-  <g fill="#c9a227">
-    <circle cx="170" cy="330" r="3"/>
-    <circle cx="178" cy="286" r="3"/>
-    <circle cx="168" cy="244" r="3"/>
-    <circle cx="186" cy="204" r="3"/>
-    <circle cx="180" cy="168" r="3"/>
-    <circle cx="192" cy="136" r="3"/>
-  </g>
-  <text x="214" y="132" fill="#7a8a8a" font-family="Segoe UI, sans-serif" font-size="11">shot 6</text>
-
-  <!-- sampled impact points -->
-  <g fill="#e8eded">
-    <circle cx="172" cy="327" r="2.5"/>
-    <circle cx="183" cy="290" r="2.5"/>
-    <circle cx="162" cy="240" r="2.5"/>
-    <circle cx="196" cy="208" r="2.5"/>
-    <circle cx="168" cy="160" r="2.5"/>
-    <circle cx="204" cy="148" r="2.5"/>
-  </g>
-
-  <!-- legend / annotations -->
-  <g font-family="Segoe UI, sans-serif">
-    <line x1="380" y1="120" x2="410" y2="120" stroke="#c9a227" stroke-width="2"/>
-    <circle cx="395" cy="120" r="3" fill="#c9a227"/>
-    <text x="420" y="124" fill="#cfd8d8" font-size="13">Recoil path — genRecoilPts()</text>
-    <text x="420" y="141" fill="#7a8a8a" font-size="11">aim point before each shot; per-shot kick = amount</text>
-    <text x="420" y="156" fill="#7a8a8a" font-size="11">at (recoil dir ± uniform variation), minus compensation</text>
-
-    <circle cx="395" cy="190" r="9" stroke="#4d94d0" stroke-width="1.5" fill="rgba(77,148,208,0.10)"/>
-    <text x="420" y="194" fill="#cfd8d8" font-size="13">Spread circle — simulateSpread()</text>
-    <text x="420" y="211" fill="#7a8a8a" font-size="11">pre-shot spread radius; grows +inc per shot,</text>
-    <text x="420" y="226" fill="#7a8a8a" font-size="11">recovers between shots, clamped to [min, max]</text>
-
-    <circle cx="395" cy="260" r="2.5" fill="#e8eded"/>
-    <text x="420" y="264" fill="#cfd8d8" font-size="13">Impact point</text>
-    <text x="420" y="281" fill="#7a8a8a" font-size="11">random sample inside the spread circle,</text>
-    <text x="420" y="296" fill="#7a8a8a" font-size="11">r = radius × rng() — uniform over radius (center-weighted)</text>
-
-    <text x="380" y="340" fill="#7a8a8a" font-size="11">Timed recoil delivery and recovery act simultaneously</text>
-    <text x="380" y="355" fill="#7a8a8a" font-size="11">and spread recovers (applySpreadRecovery). All units are degrees</text>
-    <text x="380" y="370" fill="#7a8a8a" font-size="11">of angle — the distance tool projects them via tan(θ) × distance.</text>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="1670" viewBox="0 0 1040 1670" role="img" aria-labelledby="title desc">
+<title id="title">How the BF6 Analyzer builds a spray pattern</title>
+<desc id="desc">Six numbered shots show recoil centers, spread circles, and sampled impacts. At each shot, sample an impact from the current recoil center and spread radius. Then advance timed recoil delivery with simultaneous recovery and a separate spread growth and recovery calculation. Source attachment inputs and unverified native mechanics are distinguished. Geometry is illustrative, not measured.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#62758a" stroke-width="1.4"/></marker></defs>
+<rect width="1040" height="1670" rx="18" fill="#f3f6fa"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="36" y="44" font-size="16" fill="#52667a" font-weight="700">BF6 WEAPON ANALYZER  /  MODEL OVERVIEW</text>
+<text x="36" y="87" font-size="32" fill="#142b42" font-weight="700">How consecutive shots form a spray pattern</text>
+<text x="36" y="120" font-size="18" fill="#32465b" font-weight="400">Current implementation • 11 September 2026 • schematic geometry, not capture data</text>
+<rect x="32" y="148" width="976" height="88" rx="12" fill="#ffffff" stroke="#d9e2eb"/>
+<text x="54" y="181" font-size="15" fill="#52667a" font-weight="700">RESOLVE THE INPUTS</text>
+<text x="54" y="213" font-size="22" fill="#142b42" font-weight="400">Weapon + attachments + aim / stance + fire schedule + control setting + seed</text>
+<line x1="520" y1="237" x2="520" y2="264" stroke="#62758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="276" width="976" height="525" rx="12" fill="#ffffff" stroke="#d9e2eb"/>
+<text x="54" y="313" font-size="20" fill="#142b42" font-weight="700">01  SIX SHOTS: SAMPLE EACH STATE BEFORE ITS OWN KICK</text>
+<circle cx="170" cy="735" r="14" fill="#367bbb" fill-opacity="0.07" stroke="#367bbb" stroke-width="2"/>
+<circle cx="200" cy="667" r="23" fill="#367bbb" fill-opacity="0.07" stroke="#367bbb" stroke-width="2"/>
+<circle cx="178" cy="600" r="30" fill="#367bbb" fill-opacity="0.07" stroke="#367bbb" stroke-width="2"/>
+<circle cx="238" cy="535" r="36" fill="#367bbb" fill-opacity="0.07" stroke="#367bbb" stroke-width="2"/>
+<circle cx="220" cy="465" r="41" fill="#367bbb" fill-opacity="0.07" stroke="#367bbb" stroke-width="2"/>
+<circle cx="277" cy="396" r="45" fill="#367bbb" fill-opacity="0.07" stroke="#367bbb" stroke-width="2"/>
+<polyline points="170,735 200,667 178,600 238,535 220,465 277,396" fill="none" stroke="#bc6032" stroke-width="3" stroke-dasharray="6 5"/>
+<line x1="170" y1="735" x2="177" y2="730" stroke="#8497aa" stroke-width="1.5"/><circle cx="170" cy="735" r="5" fill="#bc6032"/><circle cx="177" cy="730" r="5" fill="#142b42"/>
+<text x="92" y="741" font-size="17" fill="#32465b" font-weight="400">Shot 1</text>
+<line x1="200" y1="667" x2="189" y2="676" stroke="#8497aa" stroke-width="1.5"/><circle cx="200" cy="667" r="5" fill="#bc6032"/><circle cx="189" cy="676" r="5" fill="#142b42"/>
+<text x="113" y="673" font-size="17" fill="#32465b" font-weight="400">Shot 2</text>
+<line x1="178" y1="600" x2="195" y2="610" stroke="#8497aa" stroke-width="1.5"/><circle cx="178" cy="600" r="5" fill="#bc6032"/><circle cx="195" cy="610" r="5" fill="#142b42"/>
+<text x="84" y="606" font-size="17" fill="#32465b" font-weight="400">Shot 3</text>
+<line x1="238" y1="535" x2="226" y2="513" stroke="#8497aa" stroke-width="1.5"/><circle cx="238" cy="535" r="5" fill="#bc6032"/><circle cx="226" cy="513" r="5" fill="#142b42"/>
+<text x="138" y="541" font-size="17" fill="#32465b" font-weight="400">Shot 4</text>
+<line x1="220" y1="465" x2="243" y2="480" stroke="#8497aa" stroke-width="1.5"/><circle cx="220" cy="465" r="5" fill="#bc6032"/><circle cx="243" cy="480" r="5" fill="#142b42"/>
+<text x="115" y="471" font-size="17" fill="#32465b" font-weight="400">Shot 5</text>
+<line x1="277" y1="396" x2="258" y2="417" stroke="#8497aa" stroke-width="1.5"/><circle cx="277" cy="396" r="5" fill="#bc6032"/><circle cx="258" cy="417" r="5" fill="#142b42"/>
+<text x="168" y="402" font-size="17" fill="#32465b" font-weight="400">Shot 6</text>
+<text x="105" y="778" font-size="17" fill="#32465b" font-weight="400">Illustrative angular positions</text>
+<text x="454" y="371" font-size="22" fill="#97502d" font-weight="700">Recoil center</text>
+<text x="454" y="403" font-size="20" fill="#32465b" font-weight="400">Orange points: aim offset at each shot.</text>
+<text x="454" y="432" font-size="20" fill="#32465b" font-weight="400">Dashed line: shot order, not camera motion.</text>
+<text x="454" y="481" font-size="22" fill="#286aa5" font-weight="700">Spread circle</text>
+<text x="454" y="513" font-size="20" fill="#32465b" font-weight="400">Blue radius: spread before that shot.</text>
+<text x="454" y="542" font-size="20" fill="#32465b" font-weight="400">Growth and recovery set the next radius.</text>
+<text x="454" y="591" font-size="22" fill="#142b42" font-weight="700">Sampled impact</text>
+<text x="454" y="623" font-size="20" fill="#32465b" font-weight="400">Dark point: one random offset from its center.</text>
+<text x="454" y="652" font-size="20" fill="#32465b" font-weight="400">Uniform angle and uniform radius sampling.</text>
+<text x="454" y="681" font-size="20" fill="#32465b" font-weight="400">Impacts need not follow the recoil-center path.</text>
+<text x="454" y="734" font-size="20" fill="#142b42" font-weight="700">Shot 1: origin + minimum spread.</text>
+<text x="454" y="765" font-size="19" fill="#32465b" font-weight="400">Later shots: accumulated recoil + current spread.</text>
+<g transform="translate(0 240)">
+<line x1="270" y1="562" x2="270" y2="597" stroke="#62758a" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="770" y1="562" x2="770" y2="597" stroke="#62758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="609" width="476" height="330" rx="12" fill="#fffaf5" stroke="#eadacb"/>
+<rect x="532" y="609" width="476" height="330" rx="12" fill="#f5faff" stroke="#d0e1f1"/>
+<text x="54" y="646" font-size="22" fill="#97502d" font-weight="700">02A  ADVANCE RECOIL</text>
+<text x="54" y="684" font-size="20" fill="#32465b" font-weight="400">Sample direction variation.</text>
+<text x="54" y="713" font-size="20" fill="#32465b" font-weight="400">Subtract the expected control vector.</text>
+<text x="54" y="742" font-size="20" fill="#32465b" font-weight="400">Queue the kick over its selected duration.</text>
+<rect x="54" y="767" width="432" height="83" rx="12" fill="#f5e9dd" stroke="#f5e9dd"/>
+<text x="70" y="798" font-size="17" fill="#97502d" font-weight="700">DELIVERY + RECOVERY TOGETHER</text>
+<text x="70" y="829" font-size="19" fill="#32465b" font-weight="400">Recovery acts while the kick is delivered.</text>
+<text x="54" y="881" font-size="20" fill="#32465b" font-weight="400">Reset the recovery clock on each shot.</text>
+<text x="54" y="910" font-size="20" fill="#32465b" font-weight="400">Keep unfinished impulses for later shots.</text>
+<text x="554" y="646" font-size="22" fill="#286aa5" font-weight="700">02B  ADVANCE SPREAD</text>
+<text x="554" y="684" font-size="19" fill="#32465b" font-weight="400">Add the per-shot increment.</text>
+<text x="554" y="713" font-size="19" fill="#32465b" font-weight="400">Clamp to the selected minimum / maximum.</text>
+<text x="554" y="742" font-size="19" fill="#32465b" font-weight="400">Recover over the interval to the next shot.</text>
+<rect x="554" y="767" width="432" height="83" rx="12" fill="#e4f0fc" stroke="#e4f0fc"/>
+<text x="570" y="798" font-size="17" fill="#286aa5" font-weight="700">FIRING / NOT-FIRING PARAMETERS</text>
+<text x="570" y="829" font-size="19" fill="#32465b" font-weight="400">A modeled burst gap can use both sets.</text>
+<text x="554" y="881" font-size="20" fill="#32465b" font-weight="400">Spread recovery uses 60 Hz steps.</text>
+<text x="554" y="910" font-size="20" fill="#32465b" font-weight="400">No idle-state machine or ADS transition.</text>
+<line x1="270" y1="940" x2="270" y2="968" stroke="#62758a" stroke-width="2"/>
+<line x1="770" y1="940" x2="770" y2="968" stroke="#62758a" stroke-width="2"/>
+<line x1="270" y1="968" x2="770" y2="968" stroke="#62758a" stroke-width="2"/>
+<line x1="520" y1="968" x2="520" y2="992" stroke="#62758a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="1004" width="976" height="69" rx="12" fill="#142b42" stroke="#142b42"/>
+<text x="54" y="1047" font-size="24" fill="#ffffff" font-weight="700">03  Use the next pre-shot center and radius; sample shot i + 1.</text>
+<rect x="32" y="1093" width="976" height="190" rx="12" fill="#ffffff" stroke="#d9e2eb"/>
+<text x="54" y="1128" font-size="18" fill="#142b42" font-weight="700">SOURCE INPUTS USED BY THE CURRENT MODEL</text>
+<text x="54" y="1166" font-size="20" fill="#32465b" font-weight="400">Base recoil duration: 25 ms in all 63 checked weapon records.</text>
+<text x="54" y="1195" font-size="20" fill="#32465b" font-weight="400">Smooth: 50 ms / 1.2 recovery; 17 mapped Bolt selections: 66.667 ms / 1.728.</text>
+<text x="54" y="1224" font-size="20" fill="#32465b" font-weight="400">Heavy-type ADS: increment ×0.666667; firing coefficient ×1.837117;</text>
+<text x="54" y="1253" font-size="20" fill="#32465b" font-weight="400">firing and not-firing offsets ×0.666667. Hipfire minima stay unchanged.</text>
+<text x="36" y="1320" font-size="17" fill="#52667a" font-weight="700">WHAT THIS DOES — AND DOES NOT — ESTABLISH</text>
+<text x="36" y="1352" font-size="19" fill="#32465b" font-weight="400">The renderer combines two angular calculations; it does not simulate camera shake.</text>
+<text x="36" y="1379" font-size="19" fill="#32465b" font-weight="400">Source values do not prove the native equation, delivery shape, or modifier composition.</text>
+<text x="36" y="1406" font-size="19" fill="#32465b" font-weight="400">The same inputs and seed reproduce the same pattern. See the guide for exceptions.</text>
+</g></g></svg>

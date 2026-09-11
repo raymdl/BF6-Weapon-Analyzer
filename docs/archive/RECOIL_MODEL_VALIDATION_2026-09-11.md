@@ -1,12 +1,14 @@
 # Recoil model update and validation — 11 September 2026
 
+> Archived record. Current work is tracked in the [active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md); implemented behavior is documented in the [live guides](../README.md). Statements in this record describe their original analysis stage.
+
 ## Decision
 
 Duration-audit follow-up: the initial 50 ms/1.2 catalog-wide Smooth treatment below
 now has 17 source-mapped weapon–muzzle exceptions at 66.667 ms/1.728. All 63 base
 weapons were checked directly in Frosty and retain 25 ms in both aim states.
-See the current [attachment table](RECOIL_SPREAD_MODEL.md#duration-and-smooth-attachment-selection)
-and [source audit](../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json).
+See the current [attachment table](../RECOIL_SPREAD_MODEL.md#duration-and-smooth-attachment-selection)
+and [source audit](../../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json).
 The M4A1/TR7/AK4D comparison results below are unchanged by these Bolt exceptions.
 
 Use Frosty recoil duration and continuous recovery to improve the existing
@@ -50,7 +52,7 @@ standing conditions for all these recording sets: **1.4.2.5, 103 FOV, Mini Flex,
 to the planned Heavy-type barrel and VSSM recordings and need not be requested
 again. The existing results remain pixel-based; this confirmation does not
 retroactively establish the ADS/HUD pixel-to-degree calibration. See the
-[recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) for the shared conditions.
+[recording handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) for the shared conditions.
 
 Lightened's isolated camera peak is almost unchanged (4.29 versus 4.26 px), but
 its mean peak rise rate is 19.7% lower and its median peak occurs about 29 ms later.
@@ -138,7 +140,7 @@ be generalized to every weapon or aim state.
 | Camera recoil, spring, idle, and switch inputs | Separate retained camera inventory | Research fitting considered camera response. It is not added to projectile offsets. M4A1 spring values 1500/200 and switch times about 0.0833/0.0333 s do not establish a 400 ms sway onset. |
 | Smooth raw duration/factor targets | 0.05 and 1.2 in both reviewed aim branches | Now used as estimated override/multiplier; equipped activation across all eight catalog entries and stacking order remain source-based assumptions. |
 
-The [Smooth provenance](../reference-data/provenance/frosty-smooth-recoil-review.json)
+The [Smooth provenance](../../reference-data/provenance/frosty-smooth-recoil-review.json)
 retains raw target IDs, operation fields, selector evidence, and source hashes,
 with the approved model decision recorded separately from that raw evidence.
 Existing amount/variation

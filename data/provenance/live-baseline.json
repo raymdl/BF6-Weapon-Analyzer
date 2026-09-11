@@ -8,7 +8,7 @@
       "id": "frosty-local-export",
       "sourceVersion": "1.4.2.5",
       "buildEvidence": "user-supplied export label",
-      "evidence": "archive/FROSTY_INTEGRATION.md",
+      "evidence": "docs/archive/FROSTY_INTEGRATION.md",
       "authority": "Reviewed local Frosty fields with per-weapon provenance; Interdictor tweakable health curve has independent creator corroboration"
     },
     {

@@ -4,7 +4,7 @@
 
 The 13 ambiguous bindings are now separated into four resolved shotgun site identities, three extra unmatched selector bindings, and six source-only candidates absent from the captured menus. The two RPK-74M parent attachments are identified through their resolved sibling selectors. No magazine capacity, point, availability, or simulation value was changed.
 
-[Structured evidence](../reference-data/provenance/frosty-magazine-identity-review-2026-09-07.json) contains all 13 decisions, 12 directly inspected screenshots with hashes, source effect objects, Ability branches, and source hashes. The older audit JSON was used as an index, then each relevant image was inspected. Its provisional whole-row review status was not promoted.
+[Structured evidence](../../reference-data/provenance/frosty-magazine-identity-review-2026-09-07.json) contains all 13 decisions, 12 directly inspected screenshots with hashes, source effect objects, Ability branches, and source hashes. The older audit JSON was used as an index, then each relevant image was inspected. Its provisional whole-row review status was not promoted.
 
 ## All 13 decisions
 
@@ -91,18 +91,18 @@ These generic Fast records supply a reload modifier, not a new capacity. There i
 
 ## Screenshot evidence
 
-- PSR — [10Rnd Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/PSR/31_PSR_Magazine_10Rnd_Magazine.png)
-- SV-98 — [10Rnd Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/SV-98/30_SV-98_Magazine_10Rnd_Magazine.png)
-- M1014 — [4Rnd Speedloader](../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M1014/34_M1014_Magazine_4RND_SPEEDLOADER.png)
-- M1014 — [4 Shell Tube](../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M1014/35_M1014_Magazine_4_SHELL_TUBE.png)
-- M87A1 — [5 Shell Tube](../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M87A1/34_M87A1_Magazine_5_SHELL_TUBE.png)
-- M87A1 — [5Rnd Speedloader](../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M87A1/35_M87A1_Magazine_5RND_SPEEDLOADER.png)
-- ES 5.7 — [20Rnd Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Sidearm/ES%205.7/17_ES%205.7_Magazine_20Rnd_Magazine.png)
-- PP-19 — [20Rnd Fast Mag](../reference-data/attachment-audit/Weapon%20Attachments/SMG/PP-19/39_PP-19_Magazine_20Rnd_Fast_Mag.png)
-- SOR-300SC — [40Rnd Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Carbine/SOR-300SC/50_SOR-300SC_Magazine_40Rnd_Magazine.png)
-- SOR-300SC — [40Rnd Fast Mag](../reference-data/attachment-audit/Weapon%20Attachments/Carbine/SOR-300SC/51_SOR-300SC_Magazine_40Rnd_Fast_Mag.png)
-- RPK-74M — [30Rnd Magazine](../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/48_RPK-74M_Magazine_30Rnd_Magazine.png)
-- RPK-74M — [30Rnd Fast Mag](../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/49_RPK-74M_Magazine_30Rnd_Fast_Mag.png)
+- PSR — [10Rnd Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/PSR/31_PSR_Magazine_10Rnd_Magazine.png)
+- SV-98 — [10Rnd Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/SV-98/30_SV-98_Magazine_10Rnd_Magazine.png)
+- M1014 — [4Rnd Speedloader](../../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M1014/34_M1014_Magazine_4RND_SPEEDLOADER.png)
+- M1014 — [4 Shell Tube](../../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M1014/35_M1014_Magazine_4_SHELL_TUBE.png)
+- M87A1 — [5 Shell Tube](../../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M87A1/34_M87A1_Magazine_5_SHELL_TUBE.png)
+- M87A1 — [5Rnd Speedloader](../../reference-data/attachment-audit/Weapon%20Attachments/Shotgun/M87A1/35_M87A1_Magazine_5RND_SPEEDLOADER.png)
+- ES 5.7 — [20Rnd Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Sidearm/ES%205.7/17_ES%205.7_Magazine_20Rnd_Magazine.png)
+- PP-19 — [20Rnd Fast Mag](../../reference-data/attachment-audit/Weapon%20Attachments/SMG/PP-19/39_PP-19_Magazine_20Rnd_Fast_Mag.png)
+- SOR-300SC — [40Rnd Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Carbine/SOR-300SC/50_SOR-300SC_Magazine_40Rnd_Magazine.png)
+- SOR-300SC — [40Rnd Fast Mag](../../reference-data/attachment-audit/Weapon%20Attachments/Carbine/SOR-300SC/51_SOR-300SC_Magazine_40Rnd_Fast_Mag.png)
+- RPK-74M — [30Rnd Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/48_RPK-74M_Magazine_30Rnd_Magazine.png)
+- RPK-74M — [30Rnd Fast Mag](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/49_RPK-74M_Magazine_30Rnd_Fast_Mag.png)
 
 ## Verification
 

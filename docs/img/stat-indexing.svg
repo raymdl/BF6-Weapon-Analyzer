@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" style="max-width:100%;height:auto" role="img"><title>A tier shift selects a row; it is not a percentage</title><rect width="1000" height="470" rx="16" fill="#f3f6fa"/><g font-family="Arial, Helvetica, sans-serif">
+<text x="30" y="43" font-size="28" fill="#142b42" font-weight="700">A tier shift selects a row; it is not a percentage</text>
+<text x="30" y="76" font-size="18" fill="#32465b" font-weight="400">M433 hipfire example: final index = base index − sum of catalog hip shifts.</text>
+<rect x="30" y="115" width="290" height="175" rx="10" fill="#ffffff" stroke="#d4dfe9"/>
+<text x="50" y="150" font-size="18" fill="#286aa5" font-weight="700">ROW 3</text>
+<text x="50" y="190" font-size="25" fill="#142b42" font-weight="700">2.432° standing</text>
+<text x="50" y="225" font-size="21" fill="#32465b" font-weight="400">3.04° moving</text>
+<text x="50" y="265" font-size="19" fill="#32465b" font-weight="400">Base: 3 − 0 = 3</text>
+<rect x="355" y="115" width="290" height="175" rx="10" fill="#ffffff" stroke="#d4dfe9"/>
+<text x="375" y="150" font-size="18" fill="#286aa5" font-weight="700">ROW 4</text>
+<text x="375" y="190" font-size="25" fill="#142b42" font-weight="700">1.804° standing</text>
+<text x="375" y="225" font-size="21" fill="#32465b" font-weight="400">2.255° moving</text>
+<text x="375" y="265" font-size="19" fill="#32465b" font-weight="400">Shift −1: 3 − (−1) = 4</text>
+<rect x="680" y="115" width="290" height="175" rx="10" fill="#ffffff" stroke="#d4dfe9"/>
+<text x="700" y="150" font-size="18" fill="#286aa5" font-weight="700">ROW 5</text>
+<text x="700" y="190" font-size="25" fill="#142b42" font-weight="700">1.352° standing</text>
+<text x="700" y="225" font-size="21" fill="#32465b" font-weight="400">1.69° moving</text>
+<text x="700" y="265" font-size="19" fill="#32465b" font-weight="400">Shift −2: 3 − (−2) = 5</text>
+<text x="30" y="334" font-size="22" fill="#142b42" font-weight="700">Combine all shifts first, then clamp once to the valid row range.</text>
+<text x="30" y="375" font-size="19" fill="#32465b" font-weight="400">Why one clamp matters: with indices 0–7, base 7 and shifts +2 then −2 give 7.</text>
+<text x="30" y="406" font-size="19" fill="#32465b" font-weight="400">Clamping after each shift would give 5 and would make attachment order matter.</text>
+<text x="30" y="443" font-size="18" fill="#32465b" font-weight="400">This clamp example adds signed index contributions; each stat has its own sign rule.</text>
+</g></svg>

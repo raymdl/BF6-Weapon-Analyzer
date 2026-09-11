@@ -2,35 +2,19 @@
 
 [Documentation index](README.md) · [Stat ladders](STAT_LADDERS.md) · [Model limitations](MODEL_LIMITATIONS.md)
 
-This guide explains the current analyzer implementation, checked against the
-code on 11 September 2026. It uses timed delivery with simultaneous recovery,
-source Smooth operands selected by weapon and muzzle, and source Heavy-type ADS
-spread factors. Source literals, fitted behavior and rendering choices
-have distinct evidence boundaries.
+The analyzer combines timed recoil delivery, simultaneous recovery, and separate
+spread growth and recovery. This guide describes the implementation and how to
+interpret its plots.
 
 ## The Model at a Glance
 
-Every simulated shot is the sum of two independent mechanisms: a **recoil path** (where
-the aim point has drifted to) and a **spread circle** (how large the random cone has grown).
-The rendered spray pattern samples one impact per shot inside that shot's spread circle,
-centered on that shot's recoil-path point.
+The renderer combines two separate calculations at each firing instant: the
+**pre-shot recoil center** and the **pre-shot spread radius**. It samples an
+impact around that center, then advances both states to the next shot. Recoil
+is delivered over time while recovery acts; spread has its own growth, bounds,
+and recovery parameters.
 
-![Spray simulation model: recoil path, spread circles, sampled impacts](img/spray-model.svg)
-
-Per-shot pipeline: shot 1 uses the origin and minimum spread. After sampling shot i,
-the two lanes advance to the inputs for shot i+1:
-
-```mermaid
-flowchart TD
-    START["Sample shot i at current recoil point and spread"] --> KICK["Queue timed kick minus expected control vector; reset recovery clock"]
-    KICK --> DECAY["Deliver active impulses and recover each axis simultaneously"]
-    START --> SPREAD["Add spread increment; clamp to bounds"]
-    SPREAD --> RECOV["Recover spread: firing, then any post-burst non-firing segment"]
-    DECAY --> CENTER["Next pre-shot recoil point"]
-    RECOV --> RADIUS["Next pre-shot spread radius"]
-    CENTER --> SAMPLE["Sample shot i+1: uniform angle and uniform radius"]
-    RADIUS --> SAMPLE
-```
+![Six-shot spray model: recoil centers, spread circles, sampled impacts, simultaneous recoil delivery and recovery, separate spread recovery, and source attachment inputs](img/spray-model.svg)
 
 Both lanes are stepped per shot inside `genRecoilPts()` (recoil lane) and
 `simulateSpread()` (spread lane); the impact sampling happens at render time in
@@ -46,16 +30,12 @@ The current implementation is defined by [sim/core.js](../sim/core.js),
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json),
 [data/weapons.json](../data/weapons.json), and the Frosty provenance files.
 
-The original guide credited Sym for weapon data and field conventions,
-Dr. Smiley Henry for the spread recovery reference, TheXclusiveAce for spray
-sanity checks, SORROW for additional data, and SheetOnMyFace for validation and
-recoil variation findings. These are retained historical credits, not a claim
-that every current formula has been independently confirmed in the game.
+Frosty supplies the source inputs. Recovery equations, modifier composition, and
+impact sampling remain model choices; see [model limitations](MODEL_LIMITATIONS.md).
 
-Source coefficients, screenshot agreement, fitted behavior and rendering choices
-are distinct evidence. In particular, the recoil recovery arithmetic and some
-attachment recovery effects remain estimates. A configuration export alone does
-not prove modifier activation, operation order or native engine behavior.
+Credits: Sym (weapon data and field conventions), Dr. Smiley Henry (spread
+recovery reference), TheXclusiveAce (spray checks), SORROW (additional data),
+and SheetOnMyFace (validation and recoil variation).
 
 ## Recoil amount and variation tiers
 
@@ -79,9 +59,7 @@ base, so these attachment outputs reach the recoil path. Hip recoil uses its own
 resolved group: the attachment resolver adds hip amount/variation tiers to that
 group's exponents. Platform scaling then changes amount, not variation.
 
-The former guide recorded M16A4 and M433 screenshot checks of variation tiers.
-Those historical observations support the tier interpretation; they do not
-validate the entire time-dependent recoil simulation.
+![M4A1 recoil tier comparison: separate amount and variation multipliers across zero to three positive tiers](img/recoil-tiers.svg)
 
 ## Recoil Path (`genRecoilPts`)
 
@@ -107,6 +85,22 @@ subsequent pre-shot point:
 - Shot positions are sampled **uniform over radius** (not uniform over area):
   `r = spreadRadius × rng()` — this is the current sampling convention and makes shot
   distributions visually center-weighted (half the shots land in the inner 25% of the area).
+
+## Effective ceilings during sustained fire
+
+Repeated shots need not produce unlimited growth. Recoil recovery becomes
+stronger as displacement grows. Spread recovery removes part of each shot's
+increase. With a fixed loadout and firing interval, each can approach a balance
+where the next shot adds about as much as recovery removes.
+
+![Current simulator examples: M4A1 recoil and AK4D spread approach sustained pre-shot levels, with lower levels for Lightened and Heavy respectively](img/effective-ceilings.svg)
+
+The recoil curves average 128 seeds; individual paths still vary. Spread is
+deterministic for the selected state and loadout. These 40-shot sequences omit
+reloads to expose the sustained balance. A plateau is not a universal recoil cap,
+a within-shot peak, or the spread hard maximum. Pauses, rate of fire, attachments,
+and control settings change the result. The UI's `effectiveSpreadMax()` uses its
+own 50-increase calculation, described below.
 
 ## Recoil recovery and shot timing
 
@@ -135,28 +129,29 @@ most 1 ms and split delivery around recovery. The time-power integral is exact;
 for `decExp = 1`, each recovery step also uses the exact displacement solution.
 Other displacement exponents use small numerical steps. Recovery continues after
 delivery with the same clock age. Overlapping impulses retain their full input.
-This removes the former 60 Hz right-endpoint integration bias; it does not claim
-the engine uses 1 ms ticks. The selected recoil group supplies recovery parameters,
+The selected recoil group supplies recovery parameters,
 with legacy table/default fallbacks. `_adsRecoilDecayMult` or
 `_hipRecoilDecayMult` scales the factor for the selected aim state.
 
 Smooth recoil uses the selected source duration as an override and the selected
 source recovery operand as a multiplier in both aim states. The duration
 override precedes the existing ergonomics duration adjustment, then clamps at
-zero. Native modifier order and impulse shape remain unresolved. The former 1.1
-was an early visual estimate, not a constraint on this model. The recordings
-support slower Lightened delivery and lower sustained accumulation; they do not
-establish these exact engine operations. Hip behavior is source-based and has not
-been checked against hip recordings.
+zero. Hip Smooth behavior has not been checked against hip recordings.
+
+![Recoil delivery windows of 25, 50 and 66.667 milliseconds, with recovery active throughout a 100 millisecond shot interval](img/recoil-timing.svg)
+
+Recovery is continuous, not constant in strength. Each shot resets the recovery
+clock while preserving the accumulated recoil and any unfinished delivery.
+
+![Continuous recovery during and between four shots: each shot resets the recovery clock while accumulated recoil is preserved](img/continuous-recovery.svg)
 
 ### Duration and Smooth attachment selection
 
 Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
 selected weapon record. The current Frosty check covers all 63 supported weapons
 and both aim states: all 126 values are **0.025 seconds**. This is a checked
-dataset result, not a global 25 ms constant in the simulator. BROD 3 was checked
-directly in its GS recoil branches; the other 62 weapons also have matching named
-registry entries. A missing/zero duration still uses the immediate-impulse fallback.
+dataset result; the simulator reads the selected record. A missing/zero duration
+uses the immediate-impulse fallback.
 
 The four Smooth source assets define two operand sets:
 
@@ -186,11 +181,10 @@ The [duration audit](../reference-data/provenance/frosty-recoil-duration-audit-2
 checks 349 source-mapped Smooth selections and retains paths, GUIDs, raw operands,
 and hashes. PP-19 Flash Comp keeps the 50 ms/1.2 catalog estimate: its captured
 description supports Smooth recoil, but its retained selector trace does not
-resolve the modifier. The source values do not establish native activation or
-composition; the Bolt set has no separate recording validation.
+resolve the modifier. The Bolt set has no separate recording validation.
 
 Retained `decNorm` and `shootingDecScale` do not add independent recovery branches.
-See the [field review and validation](RECOIL_MODEL_VALIDATION_2026-09-11.md) for
+See the [field review and validation](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md) for
 all omitted recoil fields, measured agreement, and the remaining error.
 
 `shotIntervalAfter()` uses `60 / rpm`, or `60 / burstRpm` within a burst when
@@ -206,9 +200,8 @@ source values are applied in the equation above, while the 800 RPM conversion
 and existing spread/variation effects remain active. The weapon base is unchanged.
 
 A larger decay factor alone does not establish faster recovery: raising the time
-exponent reduces `t^exponent` during sub-second intervals. Native timing remains
-unverified, so this is a source-parameter application within the current model.
-Smooth recoil composes with these stock values under the estimated rules above.
+exponent reduces `t^exponent` during sub-second intervals. Smooth recoil composes
+with these stock values under the rules above.
 
 ## Spread floors, growth and recovery
 
@@ -268,20 +261,15 @@ The recovery exponent and spread minima are unchanged. Missing not-firing
 parameters still follow the fallback described above. Muzzle and
 light recovery boosts scale the applicable firing offset separately.
 
-These source operands replace the former visual approximations of 1.71 and 0.667.
 The resolver preserves increment precision for simulation. Scaling the flat
 recovery offset along with per-shot increase matters: reducing increase alone
 can keep a weapon at minimum spread throughout a firing sequence. The coefficient
 then changes the balance between growth and recovery above that minimum.
 
-The [AK4D Basic/Heavy recordings](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md)
-show about 32–33% smaller ADS HUD widths, with no material hipfire or settled
-movement difference. The source set improved held-out Heavy error from 1.98 to
-1.85 px in the research comparison. That comparison used 1 ms integration and a
-Basic-only fitted HUD transform; it is not the error of the site's 60 Hz spread
-simulation or an independent angular measurement. Other weapons and Heavy
-Extended/Cryogenic use source-based transfer, not separate recording validation.
-The idle operand remains unused because no idle transition was established.
+The [AK4D Basic/Heavy comparison](archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md)
+supports the ADS reduction. Other weapons and Heavy Extended/Cryogenic use the
+same source factors without separate recording validation. The idle operand
+remains unused because the model has no idle transition.
 
 ## Recoil control and platform
 
@@ -300,8 +288,9 @@ do not establish corresponding changes to the generated physical shot path.
 The seeded Mulberry32 generators make results repeatable for the same weapon,
 loadout, settings and seed. Impact sampling uses a uniform angle and a uniform
 radius: `r = spread * rng()`. It is center-weighted, not uniform over disk area.
-The chart bubbles show modeled angular spread envelopes; they are not evidence
-that the game implements literal per-shot circles.
+The chart bubbles show modeled angular spread envelopes.
+
+![Uniform-radius versus uniform-area sampling: half the radius contains 50 percent versus 25 percent of impacts](img/spread-sampling.svg)
 
 Angle Plot remains angular. Soldier Target projects the result at the selected
 distance and uses the available projectile model for vertical displacement.

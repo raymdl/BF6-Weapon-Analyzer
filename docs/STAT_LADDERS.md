@@ -41,6 +41,8 @@ have different historical sign conventions; never apply a single universal sign
 rule. Higher source indices generally give faster handling/lower spread, but hip
 rows contain a separate range and must not be globally sorted.
 
+![M433 source-row lookup and a worked example of clamping the combined index once](img/stat-indexing.svg)
+
 ## ADS-in, ADS movement, and moving ADS spread
 
 Values in `ADS_SPD_TIERS` are milliseconds; `ADS_MOVE_TIERS` are dimensionless
@@ -129,7 +131,7 @@ override preserved the older class-based baseline pending configuration evidence
 Matched standing screenshots show VSSM and M4A1 at 81 px, versus M39 EMR at
 136 px, supporting its removal. The moving value follows source row 4; it is
 not independently calibrated by those screenshots. See the
-[VSSM recording analysis](VSSM_RECORDING_ANALYSIS_2026-09-11.md).
+[VSSM recording analysis](archive/VSSM_RECORDING_ANALYSIS_2026-09-11.md).
 
 ## Sprint recovery, deploy, and undeploy
 

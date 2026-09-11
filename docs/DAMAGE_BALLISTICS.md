@@ -88,6 +88,8 @@ flight-inclusive point unavailable; missing resolved ADS time currently contribu
 zero. These additions do not simulate reacting, aiming while sprinting, recoil
 causing misses, reloading, armor, suppression, or healing.
 
+![Four shots at 600 RPM take three intervals or 300 milliseconds, with optional ADS and flight-time additions](img/ttk-timeline.svg)
+
 ## Projectile model assembly
 
 The build retains precise velocity after ammo and barrel composition. UI assembly

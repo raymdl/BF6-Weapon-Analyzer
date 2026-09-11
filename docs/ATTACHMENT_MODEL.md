@@ -75,6 +75,8 @@ For example, PP-19's 53-round override is 2667 ms; Improved Mag Catch at 1.063
 gives about 2508.937 ms, displaying 2509 ms. Its composed-loadout evidence is distinct
 from a single-attachment panel observation.
 
+![Ordinary magazine versus animation-override reload calculation, with PP-19 timing example](img/reload-paths.svg)
+
 The [exception register](../data/reload-exceptions.json) preserves four animation
 record identities covering five magazine entries, plus a screenshot exception and
 composed-loadout evidence. The browser does not load this file; the maintained
@@ -133,7 +135,7 @@ weapon-class override. Base duration is read from each weapon's recoil group.
 The override precedes ergonomics duration additions; the simulation delivers
 recoil over the resulting duration with concurrent recovery. See the
 [per-attachment table](RECOIL_SPREAD_MODEL.md#duration-and-smooth-attachment-selection)
-and [validation and assumptions](RECOIL_MODEL_VALIDATION_2026-09-11.md). Visual recoil, sway and
+and [validation and assumptions](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md). Visual recoil, sway and
 laser visibility are descriptors; there is no separate camera/sway/visibility model.
 
 `assumed:true` or nonempty `assumedFields` marks a selectable effect as assumed.
