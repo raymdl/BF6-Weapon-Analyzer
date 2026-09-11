@@ -74,6 +74,12 @@ The effective-spread statistic is the final value of a bounded 50-shot calculati
 not the highest transient spread or a proven infinite-fire equilibrium.
 The [recoil guide](RECOIL_SPREAD_MODEL.md) explains each layer and the per-shot sequence.
 
+Recoil is delivered over the selected weapon/attachment duration while recovery
+acts at the same time. Smooth attachments use source duration and recovery values;
+some weapon–muzzle pairs differ from the ordinary 50 ms/1.2 set. Heavy-type barrels
+use source ADS spread factors supported by the AK4D recordings. These are model
+inputs, not a guarantee that the displayed pattern matches every in-game shot.
+
 ## Soldier Target
 
 Distance ranges from 5 to 300 metres and starts at 20 metres. The slider snaps to

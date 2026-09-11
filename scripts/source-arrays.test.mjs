@@ -47,7 +47,12 @@ test('hip table retains all source fields and weapon selectors without sorting t
     assert.equal(balance.HIP_SPREAD_BASE_INDEX[row.weapon], row.indices.hipSpread);
   }
   assert.equal(balance.HIP_SPREAD_BASE_INDEX.vssm, 4);
-  assert.equal(build('vssm').spread.hipStand[0], 3.352);
+  assert.equal(balance.HIP_SPREAD_BASE_INDEX_OVERRIDES.vssm, undefined);
+  for (const ergo of ['none', 'full_auto_vssm']) {
+    const vssm = build('vssm', { ergo });
+    assert.deepEqual(vssm.spread.hipStand, [1.804, 9]);
+    assert.deepEqual(vssm.spread.hipMove, [2.255, 10]);
+  }
   assert.equal(balance.HIP_SPREAD_TABLE[10].hipStand, 0.38);
   assert.equal(balance.HIP_SPREAD_TABLE[11].hipStand, 2.16);
 });

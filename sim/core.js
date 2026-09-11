@@ -241,7 +241,8 @@ export function isBurstGapAfter(w, shotIndex) {
  * Firing / not-firing spread recovery parameters for the current aim state,
  * with the muzzle/light decay boost applied to the firing offset.
  *
- * Heavy-type barrels scale the ADS firing coefficient and offset. Hip fire
+ * Heavy-type barrels use source factors for the ADS firing coefficient and
+ * firing/not-firing offsets within our assumed recovery equation. Hip fire
  * retains its own recovery parameters in both stances.
  */
 export function spreadRecoveries(w) {
@@ -258,7 +259,9 @@ export function spreadRecoveries(w) {
   const notFiring = {
     coef: dyn.notFiringCoef ?? firing.coef,
     exp: dyn.notFiringExp ?? firing.exp,
-    offset: dyn.notFiringOffset ?? firing.offset,
+    offset: dyn.notFiringOffset != null
+      ? dyn.notFiringOffset * (ads ? (w._adsSpreadNotFiringDecOffsetMult ?? 1) : 1)
+      : firing.offset,
   };
   return { firing, notFiring };
 }

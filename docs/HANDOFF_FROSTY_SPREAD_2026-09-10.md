@@ -106,15 +106,15 @@ Implementation changes:
   a synthetic `0.43` base, attachment shift, clamping, source immutability, and
   all 63 default loadouts.
 
-## Remaining source question
+## VSSM hipfire follow-up — 11 September 2026
 
-VSSM has an explicit **hipfire** base-index override of 2, while the recorded
-Frosty base selector is 4. Stored/runtime minima are `3.352 / 4.19`; the raw
-source table selection is `1.804 / 2.255`. This was reported, not changed.
-Review the reason for `HIP_SPREAD_BASE_INDEX_OVERRIDES.vssm` and selected/default
-configuration before deciding whether to remove it. The operator's completed
-request removed the global moving ADS override; it did not resolve this separate
-weapon-specific hipfire question.
+The former index-2 override retained the older class-based baseline while the
+raw selector/default configuration was unresolved. Matched standing screenshots
+now show VSSM and M4A1 at 81 px, AK4D at 103 px, and M39 EMR at 136 px. This
+supports raw index 4. The override was removed and stored minima changed to
+`1.804 / 2.255`; moving remains a source-row inference. See the
+[VSSM recording analysis](VSSM_RECORDING_ANALYSIS_2026-09-11.md). This later
+correction is separate from the completed global moving-ADS override removal.
 
 For the collaborator, the useful follow-up is source paths, object GUIDs, raw
 field mappings, game build, and decoded reload enum/timer payloads. Matching

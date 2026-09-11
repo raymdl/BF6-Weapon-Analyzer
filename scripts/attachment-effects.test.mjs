@@ -4,7 +4,7 @@ import test from 'node:test';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
 import { computeAttPts, resetAttsForWeapon } from '../sim/loadout.js';
 import { createShareCodec } from '../sim/share-state.js';
-import { setSimContext, simulateSpread, shotIntervalAfter, selectedRecoilAmountFor, spreadRecoveries } from '../sim/core.js';
+import { setSimContext, simulateSpread, shotIntervalAfter, selectedRecoilAmountFor, spreadRecoveries, applySpreadRecovery } from '../sim/core.js';
 
 const read = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'));
 const weapons = read('../data/weapons.json');
@@ -254,6 +254,29 @@ test('Smooth recoil resolves Frosty duration and recovery in both aim states wit
   assert.equal(combined.recoil.hip.duration, 0.0494);
 });
 
+test('Smooth Bolt values follow the weapon and muzzle, not the weapon class', () => {
+  const audit = read('../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json');
+  const before = JSON.stringify(attachments.MUZZLES);
+  for (const row of audit.boltPairs) {
+    const w = weapon(row.weapon);
+    const result = build(w, { muzzle: row.muzzle });
+    for (const aim of ['ads', 'hip']) {
+      assert.equal(result.recoil[aim].duration, row.duration);
+      assert.equal(w.recoil[aim].duration, 0.025);
+    }
+    assert.equal(result._adsRecoilDecayMult, row.recoveryFactor);
+    assert.equal(result._hipRecoilDecayMult, row.recoveryFactor);
+  }
+  // A different muzzle on the same rifle still selects the ordinary Smooth asset.
+  const hybrid = build(weapon('miniscout'), { muzzle: 'hybrid_supp_l' });
+  assert.equal(hybrid.recoil.ads.duration, 0.05);
+  assert.equal(hybrid._adsRecoilDecayMult, 1.2);
+  const standard = build(weapon('miniscout'), { muzzle: 'std_supp' });
+  assert.equal(standard.recoil.ads.duration, 0.025);
+  assert.equal(standard._adsRecoilDecayMult, 1);
+  assert.equal(JSON.stringify(attachments.MUZZLES), before);
+});
+
 test('VSSM barrel spotting applies to both selectable suppressed barrels', () => {
   const w = weapon('vssm');
   for (const [barrel, minimap] of [['vssm_suppressed', 9], ['vssm_suppressed_asm', 21]]) {
@@ -319,21 +342,41 @@ test('reviewed Mini Scout and BROD 3 magazines match captured handling values', 
   }
 });
 
+test('AK4D Heavy preserves about two thirds of Basic excess spread through firing and recovery', () => {
+  setSimContext({ aimState: 'ads', stanceState: 'stand' });
+  const base = build(weapon('ak4d'));
+  const heavy = build(weapon('ak4d'), { barrel: 'heavy' });
+  const floor = base.spread.adsStand[0];
+  const basicShots = simulateSpread(base, 15);
+  const heavyShots = simulateSpread(heavy, 15);
+  for (let i = 0; i < basicShots.length; i++) {
+    assert.ok(Math.abs((heavyShots[i] - floor) - (basicShots[i] - floor) * 0.666667) < 0.00001);
+  }
+  const tail = (w, shots, seconds) => applySpreadRecovery(
+    shots.at(-1) + w.spreadDyn.ads.inc, seconds, spreadRecoveries(w).notFiring, floor, 7);
+  for (const seconds of [0.02, 0.05, 0.1, 0.2]) {
+    assert.ok(Math.abs((tail(heavy, heavyShots, seconds) - floor)
+      - (tail(base, basicShots, seconds) - floor) * 0.666667) < 0.00001);
+  }
+});
+
 test('Heavy, Heavy Extended and Cryo change ADS spread without changing hip spread or recovery', () => {
   const w = weapon('b36a4');
   const base = build(w);
   for (const barrel of ['heavy', 'heavy_ext', 'cryo']) {
     assert.ok(attachments.WEAPON_ATTS[w.id].barrel.includes(barrel));
     const result = build(w, { barrel });
-    assert.equal(result.recoilIncAds, +(base.recoilIncAds * 0.667).toFixed(3));
+    assert.equal(result.recoilIncAds, base.recoilIncAds * 0.666667);
+    assert.deepEqual(result.spread, base.spread);
     assert.deepEqual(result.spreadDyn.hip, base.spreadDyn.hip);
     for (const stanceState of ['stand', 'move']) {
       setSimContext({ aimState: 'hip', stanceState });
       assert.deepEqual(spreadRecoveries(result), spreadRecoveries(base));
       assert.deepEqual(simulateSpread(result, 15), simulateSpread(base, 15));
       setSimContext({ aimState: 'ads', stanceState });
-      assert.equal(spreadRecoveries(result).firing.coef, spreadRecoveries(base).firing.coef * 1.71);
-      assert.equal(spreadRecoveries(result).firing.offset, spreadRecoveries(base).firing.offset * 0.667);
+      assert.equal(spreadRecoveries(result).firing.coef, spreadRecoveries(base).firing.coef * 1.837117);
+      assert.equal(spreadRecoveries(result).firing.offset, spreadRecoveries(base).firing.offset * 0.666667);
+      assert.equal(spreadRecoveries(result).notFiring.offset, spreadRecoveries(base).notFiring.offset * 0.666667);
     }
   }
   setSimContext({ aimState: 'ads', stanceState: 'stand' });

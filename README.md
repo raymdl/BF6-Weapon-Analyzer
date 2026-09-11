@@ -25,6 +25,15 @@ modeling assumptions. A simulation result is conditional on those inputs. Target
 geometry is approximate; shotgun pellets are not individually simulated. Start
 with [model limitations](docs/MODEL_LIMITATIONS.md) when interpreting precision.
 
+The recoil model delivers each shot over its selected Frosty duration while
+recovery acts at the same time. Base duration is 25 ms for all 63 currently
+supported weapons. Smooth attachments use 50 ms and a 1.2 recovery factor;
+17 weapon–muzzle combinations use the source Bolt values of 66.667 ms and 1.728.
+Heavy-type barrels now use source ADS spread and recovery factors, supported by
+the AK4D recording comparison. These inputs improve the approximation; they do
+not establish the native engine formulas. See [recoil and spread](docs/RECOIL_SPREAD_MODEL.md)
+for the attachment exceptions, formulas, and evidence limits.
+
 ## Run locally
 
 From the repository root, run `serve.bat` on Windows or:
@@ -48,6 +57,10 @@ Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
 | Follow loadout calculations | [Attachment model](docs/ATTACHMENT_MODEL.md) |
 | Inspect formulas and simulation assumptions | [Damage and ballistics](docs/DAMAGE_BALLISTICS.md) · [Recoil and spread](docs/RECOIL_SPREAD_MODEL.md) |
 | Update or validate the project | [Maintenance](MAINTENANCE.md) · [Tests](docs/TESTS.md) |
+
+VSSM hipfire uses source index 4 (1.804 degrees standing / 2.255 degrees moving), supported
+by the [matched standing screenshot comparison](docs/VSSM_RECORDING_ANALYSIS_2026-09-11.md).
+The moving value follows the source table.
 
 ## Current product and history
 

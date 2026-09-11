@@ -32,31 +32,45 @@ that the current resolver has since addressed.
 
 **Recoil recovery and smooth-recoil attachments.** The source factors, exponent
 fields, and native class layouts do not independently validate the current recovery
-equation. On 11 September 2026, the operator approved the approximation of a
-0.05-second duration override and
-1.2 recovery-factor multiplier in ADS and hip. The source provides these operands;
+equation. The model uses a 0.05-second duration override and 1.2 recovery-factor
+multiplier for ordinary Smooth modifiers, or 0.066667 seconds and 1.728 for 17
+source-mapped Bolt weapon–muzzle combinations, in ADS and hip. The current base
+duration check found 0.025 seconds in both aim states for all 63 weapons; the
+simulator reads each weapon record rather than imposing that value globally.
+The source provides these operands;
 recordings support the qualitative effect, not the exact native arithmetic.
 Recovery uses a continuous reset-on-shot clock with at most 1 ms delivery steps.
 The old 1.1 was an early visual estimate and is no longer used.
 The new M4A1 15-round recoil-only height reduction is 10.0%, compared with about
 15% in the impact/camera observations. Camera pixels are not projectile angles.
 See [validation and unused-field review](RECOIL_MODEL_VALIDATION_2026-09-11.md).
+The [per-attachment table](RECOIL_SPREAD_MODEL.md#duration-and-smooth-attachment-selection)
+defines the Bolt exceptions. They have no separate recording validation. PP-19
+Flash Comp retains the ordinary Smooth estimate because its captured description
+supports the effect but the retained selector trace does not resolve its modifier.
 VSSM Folding Stock now applies source decay factor `76` and time exponent `1.24`
 in both ADS and hip fire, alongside its hip effects and 800 RPM automatic mode.
 These values use the existing recovery equation; native timing remains unverified.
 The base VSSM retains factor `13.7` and exponent `0.5555` without the stock.
 
-**Heavy-type barrels and lights.** Heavy ADS spread increment uses 0.667, with
-fitted firing recovery coefficient 1.71 and offset factor 0.667. Native candidates
-include a different coefficient and additional recovery phases; these were not
-promoted wholesale. Standalone light recovery remains an assumed offset boost.
+**Heavy-type barrels and lights.** Heavy, Heavy Extended and Cryogenic use source
+ADS increment 0.666667, firing recovery coefficient 1.837117, and firing/not-firing
+offset factors 0.666667. AK4D Basic/Heavy recordings support the ADS-only reduction
+and slightly favor the source factors over the old fitted set. The research HUD
+error improvement from 1.98 to 1.85 px is not an angular calibration or a direct
+site-simulator accuracy score. Other weapons/variants remain source-based transfer.
+Hipfire and spread minima are unchanged; the idle operand remains unused. See the
+[recording comparison](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md).
+Standalone light recovery remains an assumed offset boost.
 Combined laser/light records retain a hip boost that the current resolver does not
 read from the laser slot. Do not describe every stored effect as active. Evidence:
 [attachment boundary](../reference-data/provenance/frosty-all-attachment-effect-boundary.json)
 and [historical comparison](../archive/FROSTY_ATTACHMENT_COMPARISON_2026-09-06.md).
 
-**VSSM baseline composition.** The hip table uses explicit override index 2 instead
-of raw index 4. The ordinary suppressed barrel's additional ADS tier remains a
+**VSSM baseline composition.** Hipfire now uses raw index 4, supported by matched
+standing HUD screenshots. The moving minimum follows that source row; an
+independent projectile-angle calibration remains unavailable. The ordinary
+suppressed barrel's additional ADS tier remains a
 source/default/version question; the runtime retains the reviewed 250 ms baseline
 rather than applying an unconfirmed 200 ms candidate. These exceptions do not
 invalidate the source arrays themselves. See [stat ladders](STAT_LADDERS.md).
