@@ -36,7 +36,6 @@ const context = {
   LIMB_CLASS_MULT: balance.LIMB_CLASS_MULT,
   AUTO_HS_MULT: balance.AUTO_HS_MULT,
   MOVING_ACC_TIERS: balance.MOVING_ACC_TIERS,
-  DEFAULT_MOV_TIER: balance.DEFAULT_MOV_TIER,
   ADS_SPD_TIERS: balance.ADS_SPD_TIERS,
   ADS_MOVE_TIERS: balance.ADS_MOVE_TIERS,
   DRAW_TIME_TABLES: balance.DRAW_TIME_TABLES,
@@ -54,7 +53,7 @@ test('Interdictor preserves source velocity and the confirmed Basic magazine han
   assert.equal(basic._adsTimeMs, 433.334);
   assert.equal(basic._sprintRecoveryMs, 233.334);
   assert.equal(basic._adsMoveSpeedMult, 0.42);
-  assert.equal(basic._movingAdsMinSpreadDeg, 0.32);
+  assert.equal(basic.spread.adsMove[0], 0.32);
   const extended = applyAttachments(weapon, { barrel: 'extended', mag: '5_rnd' });
   assert.ok(Math.abs(extended._projectileVelocityMps - 915.924) < 1e-9);
   assert.equal(extended.bulletVel, 915);

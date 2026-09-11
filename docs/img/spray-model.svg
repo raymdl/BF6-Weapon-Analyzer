@@ -57,7 +57,7 @@
     <text x="420" y="281" fill="#7a8a8a" font-size="11">random sample inside the spread circle,</text>
     <text x="420" y="296" fill="#7a8a8a" font-size="11">r = radius × rng() — uniform over radius (center-weighted)</text>
 
-    <text x="380" y="340" fill="#7a8a8a" font-size="11">Between shots: recoil decays toward zero (applyRecoilDecay)</text>
+    <text x="380" y="340" fill="#7a8a8a" font-size="11">Timed recoil delivery and recovery act simultaneously</text>
     <text x="380" y="355" fill="#7a8a8a" font-size="11">and spread recovers (applySpreadRecovery). All units are degrees</text>
     <text x="380" y="370" fill="#7a8a8a" font-size="11">of angle — the distance tool projects them via tan(θ) × distance.</text>
   </g>

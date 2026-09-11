@@ -258,6 +258,6 @@
     "Target mappings and modifier operations are separate questions.",
     "The 1.2 and 0.05 values do not alone establish multiply, override, stacking order, or duration behavior.",
     "Selector presence does not prove runtime availability or activation.",
-    "The existing 1.1 site multiplier remains an estimate; this evidence is not a replacement runtime formula."
+    "On 2026-09-11 the operator approved replacing the old 1.1 estimate with a 0.05-second duration override and 1.2 recovery multiplier in both aim states, with timed delivery and simultaneous recovery. Native operations remain unverified; see docs/RECOIL_MODEL_VALIDATION_2026-09-11.md."
   ]
 }

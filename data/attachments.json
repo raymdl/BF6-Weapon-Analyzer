@@ -104,9 +104,13 @@
       "id": "comp_brake",
       "name": "Compensated Brake",
       "adsRecoilTierMod": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -139,9 +143,13 @@
       "id": "flash_comp",
       "name": "Flash Comp",
       "adsRecoilTierMod": 0,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 150,
@@ -163,11 +171,15 @@
       "name": "Long Suppressor",
       "suppressor": true,
       "adsRecoilTierMod": 0,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
       "sway": 1,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -178,10 +190,14 @@
       "name": "Lightened Suppressor",
       "suppressor": true,
       "adsRecoilTierMod": 0,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -201,9 +217,13 @@
       "id": "compensator",
       "name": "Compensator",
       "adsRecoilTierMod": 0,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 54,
       "minimapSpot": 150,
@@ -214,11 +234,15 @@
       "name": "Hybrid Suppressor L",
       "suppressor": true,
       "adsRecoilTierMod": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
       "sway": 1,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -232,10 +256,14 @@
       "name": "Hybrid Suppressor S",
       "suppressor": true,
       "adsRecoilTierMod": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,
@@ -247,10 +275,14 @@
       "name": "Hybrid Suppressor K",
       "suppressor": true,
       "adsRecoilTierMod": 1,
-      "adsRecoilDecayMult": 1.1,
+      "adsRecoilDecayMult": 1.2,
+      "hipRecoilDecayMult": 1.2,
+      "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 0,
       "assumedFields": {
-        "adsRecoilDecayMult": "Estimated recoil recovery effect. Datamined modifier values are available, but their arithmetic and recoil-duration behavior are not yet verified."
+        "adsRecoilDecayMult": "Frosty 1.2 modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
+        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
+        "recoilDurationOverride": "Frosty 0.05 seconds modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
       "worldSpot": 0,
       "minimapSpot": 21,

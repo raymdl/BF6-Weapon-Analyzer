@@ -1,0 +1,505 @@
+{
+  "date": "2026-09-10",
+  "weaponId": "ef88",
+  "sourceBuild": "1.4.2.5 (user-supplied export label)",
+  "method": "Re-read existing offline XML exports; no new export from installed game or runtime measurement.",
+  "sourceSha256": {
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml": "655103f89ae0f7081d80016510154704f48640c0ea3ec9451b85183c03698964",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml": "777a128148c07b599dc7f11b1b8a392ba2f2e36597d825ccda3105aa14a19428",
+    "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml": "f938ebe5bfa6b30b05787c1d4e11ca6b72cc08c17a10253b1174d7c8bb74b4d9",
+    "Common/Hardware/Common/Arrays/DispersionADS/ZDA_Moving_Weapons.xml": "a7b6d175b2270f61b88d648d09e8935df64544cd1e26c82d9e5a04244cb13546",
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51"
+  },
+  "scalarChecks": [
+    {
+      "siteField": "rpm",
+      "value": 674.999,
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFire",
+      "registryGuid": "7c2c51aa-6996-4681-9033-85eab6870598",
+      "raw": "674.999"
+    },
+    {
+      "siteField": "bulletVel",
+      "value": 724.0,
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z",
+      "registryGuid": "2df78004-cf5d-4116-b489-31fe1ff912af",
+      "raw": "724"
+    },
+    {
+      "siteField": "recoilDir",
+      "value": 11.0,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirection",
+      "registryGuid": "a111a434-85fb-4616-9ac3-969d36beccdb",
+      "raw": "11"
+    },
+    {
+      "siteField": "recoilVar",
+      "value": 26.1,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirectionVariation",
+      "registryGuid": "12034525-d19b-439d-a733-7ec6c3fcf21d",
+      "raw": "26.1"
+    },
+    {
+      "siteField": "recoilIncAds",
+      "value": 0.36,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IncreasePerShot",
+      "registryGuid": "c03e3d4c-eceb-43fe-a096-1e9b28f865cb",
+      "raw": "0.36"
+    },
+    {
+      "siteField": "recoil.ads.dir",
+      "value": 11.0,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirection",
+      "registryGuid": "a111a434-85fb-4616-9ac3-969d36beccdb",
+      "raw": "11"
+    },
+    {
+      "siteField": "recoil.ads.amount",
+      "value": 0.5965,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilAmount",
+      "registryGuid": "21467ac0-c575-4767-a5e1-769c31e7fec0",
+      "raw": "0.5965"
+    },
+    {
+      "siteField": "recoil.ads.amountMult",
+      "value": 0.9375,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilAmountMultiplier",
+      "registryGuid": "438527a4-7ce5-4ea1-a7c8-591b7fcdfede",
+      "raw": "0.9375"
+    },
+    {
+      "siteField": "recoil.ads.amountExp",
+      "value": -3,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilAmountMultiplierExponent",
+      "registryGuid": "9e010426-96d6-4e09-992c-58c8348dbb4c",
+      "raw": "0xfffffffd"
+    },
+    {
+      "siteField": "recoil.ads.dirVar",
+      "value": 26.1,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirectionVariation",
+      "registryGuid": "12034525-d19b-439d-a733-7ec6c3fcf21d",
+      "raw": "26.1"
+    },
+    {
+      "siteField": "recoil.ads.dirVarMult",
+      "value": 0.915366,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirectionVariationMultiplier",
+      "registryGuid": "a113a173-7811-4f4d-91ce-1ba3e959fff5",
+      "raw": "0.915366"
+    },
+    {
+      "siteField": "recoil.ads.dirVarExp",
+      "value": 0,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDirectionVariationMultiplierExponent",
+      "registryGuid": "bc94125a-632d-4d62-9d03-8a728fa2195f",
+      "raw": "0x00000000"
+    },
+    {
+      "siteField": "recoil.ads.decNorm",
+      "value": 1.0,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDecreaseNorm",
+      "registryGuid": "554bbc3c-fcee-40dd-b954-0b76f53ca61c",
+      "raw": "1"
+    },
+    {
+      "siteField": "recoil.ads.decExp",
+      "value": 1.0,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDecreaseExponent",
+      "registryGuid": "1914090d-e916-4c60-bad4-b4b396410ed0",
+      "raw": "1"
+    },
+    {
+      "siteField": "recoil.ads.decTimeExp",
+      "value": 1.2,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDecreaseTimeExponent",
+      "registryGuid": "d7a1dae6-fae9-46c5-a031-7a3e0cce0ea9",
+      "raw": "1.2"
+    },
+    {
+      "siteField": "recoil.ads.decOffset",
+      "value": 0.06,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDecreaseOffset",
+      "registryGuid": "bc824b1c-8d19-480c-b6d5-afdc3bebc7c6",
+      "raw": "0.06"
+    },
+    {
+      "siteField": "recoil.ads.duration",
+      "value": 0.025,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDuration",
+      "registryGuid": "172651db-bf1d-47b9-89a6-d994dddbfff1",
+      "raw": "0.025"
+    },
+    {
+      "siteField": "recoil.ads.decFactor",
+      "value": 72.0,
+      "registryName": "GS_EF88.Recoil.Zoomed.RecoilDecreaseFactor",
+      "registryGuid": "60231b60-e50a-4871-83f4-a54b85d6f956",
+      "raw": "72"
+    },
+    {
+      "siteField": "recoil.ads.shootingDecScale",
+      "value": 1.0,
+      "registryName": "GS_EF88.Recoil.Zoomed.ShootingRecoilDecreaseScale",
+      "registryGuid": "67774a87-4ff6-4d49-907f-cf9c665d00fd",
+      "raw": "1"
+    },
+    {
+      "siteField": "spreadDyn.ads.inc",
+      "value": 0.36,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IncreasePerShot",
+      "registryGuid": "c03e3d4c-eceb-43fe-a096-1e9b28f865cb",
+      "raw": "0.36"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleTime",
+      "value": 0.4,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IdleTime",
+      "registryGuid": "01e416ff-4dbd-46cb-b899-bf514d92bca4",
+      "raw": "0.4"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleCoef",
+      "value": 0.0,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IdleDecreaseCoefficient",
+      "registryGuid": "aec06239-35fb-4dce-9c3f-8c7cdb80b789",
+      "raw": "0"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleExp",
+      "value": 0.25,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IdleDecreaseExponent",
+      "registryGuid": "deb591cc-8b1f-4553-bb88-1f9d784bfc14",
+      "raw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.ads.idleOffset",
+      "value": 7.5,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.IdleDecreaseOffset",
+      "registryGuid": "78163c5c-8a05-4d3f-8a70-a9f5236b09a8",
+      "raw": "7.5"
+    },
+    {
+      "siteField": "spreadDyn.ads.firingCoef",
+      "value": 1.2,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.FiringDecreaseCoefficient",
+      "registryGuid": "83105abb-d8fa-4227-b7a9-6f3fa4536c4b",
+      "raw": "1.2"
+    },
+    {
+      "siteField": "spreadDyn.ads.firingExp",
+      "value": 2.5,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.FiringDecreaseExponent",
+      "registryGuid": "d2145ce4-d4da-4062-bcbb-e8b97c7d5ff8",
+      "raw": "2.5"
+    },
+    {
+      "siteField": "spreadDyn.ads.firingOffset",
+      "value": 2.7,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.FiringDecreaseOffset",
+      "registryGuid": "6f1a0b52-5002-4383-8212-f8f327f08d56",
+      "raw": "2.7"
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringCoef",
+      "value": 0.0,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.NotFiringDecreaseCoefficient",
+      "registryGuid": "aa596018-0630-453a-b302-abf1914ffda5",
+      "raw": "0"
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringExp",
+      "value": 0.25,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.NotFiringDecreaseExponent",
+      "registryGuid": "a63f43b4-cbd1-4c28-8ebd-db0c569d26c6",
+      "raw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.ads.notFiringOffset",
+      "value": 7.2,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.NotFiringDecreaseOffset",
+      "registryGuid": "dc3922ff-14ae-4eb3-b577-2066a147123b",
+      "raw": "7.2"
+    },
+    {
+      "siteField": "spreadDyn.ads.firstShotMul",
+      "value": 1.0,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.FirstShotIncreaseMultiplier",
+      "registryGuid": "b1135a24-7b83-4e24-843b-62ae29ad6911",
+      "raw": "1"
+    },
+    {
+      "siteField": "spreadDyn.ads.distExp",
+      "value": 0.5,
+      "registryName": "GS_EF88.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "registryGuid": "74706e6c-c311-4ac2-9933-9495d249e0dc",
+      "raw": "0.5"
+    },
+    {
+      "siteField": "recoil.hip.dir",
+      "value": 11.0,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDirection",
+      "registryGuid": "042fc487-75f8-4ce4-8149-472033f68558",
+      "raw": "11"
+    },
+    {
+      "siteField": "recoil.hip.amount",
+      "value": 0.5965,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilAmount",
+      "registryGuid": "16a4ec04-e640-4add-922b-4f4579553e8b",
+      "raw": "0.5965"
+    },
+    {
+      "siteField": "recoil.hip.amountMult",
+      "value": 0.9375,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilAmountMultiplier",
+      "registryGuid": "e9c02402-8609-43c4-b3e9-7fdef2d3df3d",
+      "raw": "0.9375"
+    },
+    {
+      "siteField": "recoil.hip.amountExp",
+      "value": -3,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilAmountMultiplierExponent",
+      "registryGuid": "69ebb390-fa6b-417d-b0da-5b73848675ff",
+      "raw": "0xfffffffd"
+    },
+    {
+      "siteField": "recoil.hip.dirVar",
+      "value": 26.1,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDirectionVariation",
+      "registryGuid": "ad1f38ed-8df9-4ee1-bcde-287be2509048",
+      "raw": "26.1"
+    },
+    {
+      "siteField": "recoil.hip.dirVarMult",
+      "value": 0.915366,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDirectionVariationMultiplier",
+      "registryGuid": "d7b3df7b-fdbc-46d3-91f4-4a3286936fe7",
+      "raw": "0.915366"
+    },
+    {
+      "siteField": "recoil.hip.dirVarExp",
+      "value": 0,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDirectionVariationMultiplierExponent",
+      "registryGuid": "c0bf8329-a809-4235-b7a4-ca52fe4c3c8a",
+      "raw": "0x00000000"
+    },
+    {
+      "siteField": "recoil.hip.decNorm",
+      "value": 1.0,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDecreaseNorm",
+      "registryGuid": "e0e1a84a-b3dd-463b-8228-837e5f6e249d",
+      "raw": "1"
+    },
+    {
+      "siteField": "recoil.hip.decExp",
+      "value": 1.0,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDecreaseExponent",
+      "registryGuid": "c1d9ee38-fc28-4270-948b-3adb8e86415b",
+      "raw": "1"
+    },
+    {
+      "siteField": "recoil.hip.decTimeExp",
+      "value": 1.2,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDecreaseTimeExponent",
+      "registryGuid": "fa31f2e9-3af6-41c5-9dd3-5e78902d9866",
+      "raw": "1.2"
+    },
+    {
+      "siteField": "recoil.hip.decOffset",
+      "value": 0.06,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDecreaseOffset",
+      "registryGuid": "548b8035-7d0a-49e1-8547-fe0df7b3eec2",
+      "raw": "0.06"
+    },
+    {
+      "siteField": "recoil.hip.duration",
+      "value": 0.025,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDuration",
+      "registryGuid": "503751a4-cc26-4db5-887e-90e022628aa1",
+      "raw": "0.025"
+    },
+    {
+      "siteField": "recoil.hip.decFactor",
+      "value": 72.0,
+      "registryName": "GS_EF88.Recoil.Unzoomed.RecoilDecreaseFactor",
+      "registryGuid": "b8e9f95b-81a5-491b-93a4-c02043816c5b",
+      "raw": "72"
+    },
+    {
+      "siteField": "recoil.hip.shootingDecScale",
+      "value": 1.0,
+      "registryName": "GS_EF88.Recoil.Unzoomed.ShootingRecoilDecreaseScale",
+      "registryGuid": "c4daacc2-a34e-4c4c-a47c-1039fbff3d21",
+      "raw": "1"
+    },
+    {
+      "siteField": "spreadDyn.hip.inc",
+      "value": 0.648,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.IncreasePerShot",
+      "registryGuid": "79eccbef-744a-47a9-b825-007f93597239",
+      "raw": "0.648"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleTime",
+      "value": 0.6,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.IdleTime",
+      "registryGuid": "abda3484-e644-4f7e-9c0e-d83c00c008a7",
+      "raw": "0.6"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleCoef",
+      "value": 0.0,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.IdleDecreaseCoefficient",
+      "registryGuid": "ef65c125-3742-4c74-8461-d32e25aac6b3",
+      "raw": "0"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleExp",
+      "value": 0.25,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.IdleDecreaseExponent",
+      "registryGuid": "9a278024-e6de-4b0b-9235-ea262ce514d9",
+      "raw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.hip.idleOffset",
+      "value": 25.0,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.IdleDecreaseOffset",
+      "registryGuid": "efc728dd-c284-49d5-8471-fb26db791fc8",
+      "raw": "25"
+    },
+    {
+      "siteField": "spreadDyn.hip.firingCoef",
+      "value": 0.5,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseCoefficient",
+      "registryGuid": "9445892a-966d-4d89-b0e9-5a6ad0e5f649",
+      "raw": "0.5"
+    },
+    {
+      "siteField": "spreadDyn.hip.firingExp",
+      "value": 2.5,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseExponent",
+      "registryGuid": "ddd647bc-56de-499f-8d12-03fb3c26d785",
+      "raw": "2.5"
+    },
+    {
+      "siteField": "spreadDyn.hip.firingOffset",
+      "value": 4.86,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.FiringDecreaseOffset",
+      "registryGuid": "cce16bd6-e98a-4d94-9279-798c2f955e0c",
+      "raw": "4.86"
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringCoef",
+      "value": 0.0,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.NotFiringDecreaseCoefficient",
+      "registryGuid": "757fec60-cc02-47dd-8a54-6b9f5a997807",
+      "raw": "0"
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringExp",
+      "value": 0.25,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.NotFiringDecreaseExponent",
+      "registryGuid": "6ee8a5d0-0088-473e-812b-3ac5ad2e27d4",
+      "raw": "0.25"
+    },
+    {
+      "siteField": "spreadDyn.hip.notFiringOffset",
+      "value": 12.96,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.NotFiringDecreaseOffset",
+      "registryGuid": "4bae2e17-3d52-484f-a2cc-24cd1400eb9b",
+      "raw": "12.96"
+    },
+    {
+      "siteField": "spreadDyn.hip.firstShotMul",
+      "value": 1.0,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.FirstShotIncreaseMultiplier",
+      "registryGuid": "b9258987-6ec3-4372-b5f7-82faabccd742",
+      "raw": "1"
+    },
+    {
+      "siteField": "spreadDyn.hip.distExp",
+      "value": 0.5,
+      "registryName": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "registryGuid": "e8668e62-7a8b-46ac-85dd-870a133ace50",
+      "raw": "0.5"
+    },
+    {
+      "siteField": "mag",
+      "value": 31,
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Ammo.MagazineCapacity",
+      "registryGuid": "618b9b92-ec14-4d53-aa8e-555b634534b1",
+      "raw": "0x0000001f"
+    },
+    {
+      "siteField": "tacRld",
+      "value": 2.4,
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[0].ReloadTimeBulletsLeft",
+      "registryGuid": "401fe548-3cf2-4d23-8340-2e318f3695c2",
+      "raw": "2.4"
+    },
+    {
+      "siteField": "emptyRld",
+      "value": 3.534,
+      "registryName": "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime",
+      "registryGuid": "33587602-2706-4712-93de-fa6b64a2493f",
+      "raw": "3.534"
+    }
+  ],
+  "scalarSummary": {
+    "checked": 62,
+    "differences": 0
+  },
+  "damage": {
+    "wbReferenceField": "Field_808dd66c",
+    "wbReference": "[Ebx] Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO [36f35c28-e30b-49f4-b578-a720a21da2b1]",
+    "projectileGuid": "36f35c28-e30b-49f4-b578-a720a21da2b1",
+    "curveReferenceField": "Field_2ad7e688",
+    "curveGuid": "f7913458-e202-4a4b-9f89-26d4995ab25b",
+    "pointArrayField": "Field_5279388d",
+    "registryGuid": "19b3d5bb-48f1-4134-b864-ecac56255409",
+    "registryName": "PD_556x45mmNATO.BulletEntityData.TweakableDamageCurve",
+    "curve": [
+      [
+        0.0,
+        26.05
+      ],
+      [
+        21.0,
+        26.05
+      ],
+      [
+        21.0,
+        20.67
+      ],
+      [
+        75.0,
+        20.67
+      ],
+      [
+        75.0,
+        17.13
+      ]
+    ],
+    "decision": "Keep current values: exact ordered match to the direct EF88 projectile damage curve."
+  },
+  "movingAdsMinimum": {
+    "gsGuid": "672fbc60-9e84-4beb-ab07-cf713ec2e4b9",
+    "arrayReferenceField": "Field_b5e19f3d",
+    "arrayReference": "[Ebx] Common/Hardware/Common/Arrays/DispersionADS/ZDA_Moving_Weapons [a6dfab2f-b73e-4f91-ad65-ee129fcafe59]",
+    "indexField": "Field_d94fe6ad",
+    "rawIndex": "0x00000003",
+    "index": 3,
+    "rowGuid": "ce4cb78c-51a2-48b7-95fa-c34b82d52838",
+    "valueField": "Field_6c73f45b",
+    "previousStoredValue": 0.25,
+    "value": 0.32,
+    "separateRawMinMaxRegistryValue": 0.35,
+    "interpretation": "Array-selected minimum, not the separate raw MinMaxDispersion literal. Existing runtime uses this indexed table.",
+    "defaultSelectionEvidence": "frosty-array-review-2026-09-09.json: EF88 default magazine/barrel/ammo movingAdsSpread additions are zero."
+  },
+  "limits": [
+    "Does not establish native recoil/spread recovery equations or every attachment/mode activation.",
+    "Legacy reloadSpeed and donor/source history are retained; no new semantic mapping is inferred for them."
+  ]
+}
