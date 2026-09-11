@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" style="max-width:100%;height:auto" viewBox="0 0 1000 560" role="img"><title>Continuous recovery across four shots</title><desc>Four shots at 100 millisecond intervals. Kick delivery occupies the first 25 or 50 milliseconds of each interval. Recovery remains active throughout, and its clock resets at each shot without resetting accumulated recoil.</desc><rect width="1000" height="560" rx="16" fill="#f3f6fa"/><g font-family="Arial, Helvetica, sans-serif">
+<text x="30" y="43" font-size="27" fill="#142b42" font-weight="700">Recovery stays active throughout a firing sequence</text>
+<text x="30" y="76" font-size="18" fill="#32465b" font-weight="400">Four-shot timing example at 600 RPM; colored blocks show delivery, not recoil height.</text>
+<text x="230" y="116" font-size="18" fill="#142b42" font-weight="700">Shot 1</text>
+<line x1="230" y1="130" x2="230" y2="359" stroke="#b3c3d1" stroke-dasharray="4 5"/>
+<text x="230" y="385" font-size="16" fill="#32465b" font-weight="400">0</text>
+<text x="405" y="116" font-size="18" fill="#142b42" font-weight="700">Shot 2</text>
+<line x1="405" y1="130" x2="405" y2="359" stroke="#b3c3d1" stroke-dasharray="4 5"/>
+<text x="405" y="385" font-size="16" fill="#32465b" font-weight="400">100</text>
+<text x="580" y="116" font-size="18" fill="#142b42" font-weight="700">Shot 3</text>
+<line x1="580" y1="130" x2="580" y2="359" stroke="#b3c3d1" stroke-dasharray="4 5"/>
+<text x="580" y="385" font-size="16" fill="#32465b" font-weight="400">200</text>
+<text x="755" y="116" font-size="18" fill="#142b42" font-weight="700">Shot 4</text>
+<line x1="755" y1="130" x2="755" y2="359" stroke="#b3c3d1" stroke-dasharray="4 5"/>
+<text x="755" y="385" font-size="16" fill="#32465b" font-weight="400">300</text>
+<text x="921" y="385" font-size="16" fill="#32465b" font-weight="400">400 ms</text>
+<text x="30" y="170" font-size="19" fill="#97502d" font-weight="700">Base delivery</text>
+<text x="30" y="196" font-size="17" fill="#32465b" font-weight="400">25 ms per kick</text>
+<text x="30" y="239" font-size="19" fill="#286aa5" font-weight="700">Smooth delivery</text>
+<text x="30" y="265" font-size="17" fill="#32465b" font-weight="400">50 ms per kick</text>
+<rect x="230" y="151" width="43.75" height="36" rx="4" fill="#bc6032"/>
+<rect x="230" y="220" width="87.5" height="36" rx="4" fill="#367bbb"/>
+<rect x="405" y="151" width="43.75" height="36" rx="4" fill="#bc6032"/>
+<rect x="405" y="220" width="87.5" height="36" rx="4" fill="#367bbb"/>
+<rect x="580" y="151" width="43.75" height="36" rx="4" fill="#bc6032"/>
+<rect x="580" y="220" width="87.5" height="36" rx="4" fill="#367bbb"/>
+<rect x="755" y="151" width="43.75" height="36" rx="4" fill="#bc6032"/>
+<rect x="755" y="220" width="87.5" height="36" rx="4" fill="#367bbb"/>
+<text x="30" y="315" font-size="19" fill="#246c5a" font-weight="700">Recovery active</text>
+<rect x="230" y="290" width="700" height="43" rx="4" fill="#78a99f"/>
+<text x="242" y="318" font-size="15" fill="#123b32" font-weight="700">during + after kick</text>
+<text x="417" y="318" font-size="15" fill="#123b32" font-weight="700">during + after kick</text>
+<text x="592" y="318" font-size="15" fill="#123b32" font-weight="700">during + after kick</text>
+<text x="767" y="318" font-size="15" fill="#123b32" font-weight="700">during + after kick</text>
+<text x="230" y="353" font-size="15" fill="#32465b" font-weight="400">Clock: 0 → 100 ms</text>
+<text x="405" y="353" font-size="15" fill="#32465b" font-weight="400">0 → 100 ms</text>
+<text x="580" y="353" font-size="15" fill="#32465b" font-weight="400">0 → 100 ms</text>
+<text x="755" y="353" font-size="15" fill="#32465b" font-weight="400">0 → 100 ms</text>
+<text x="30" y="430" font-size="22" fill="#142b42" font-weight="700">Each shot resets recovery time — it does not reset the accumulated recoil.</text>
+<text x="30" y="468" font-size="20" fill="#32465b" font-weight="400">Recovery opposes the delivered kick immediately and continues after delivery ends.</text>
+<text x="30" y="501" font-size="20" fill="#32465b" font-weight="400">Its rate depends on current displacement and time since the most recent shot.</text>
+<text x="30" y="535" font-size="18" fill="#32465b" font-weight="400">The green band indicates when recovery is enabled; it does not imply a constant force.</text>
+</g></svg>

@@ -2,7 +2,7 @@
 
 Implemented locally. Not published. Nine magazine entries on three weapons receive 11 field edits. The existing model and site controls are sufficient for these changes.
 
-[Evidence JSON](../reference-data/provenance/frosty-magazine-model-update-2026-09-07.json) contains the full 287-selection sweep, raw comparison operations, source hashes, 24 screenshot records, before/after resolver samples, and shotgun investigation.
+[Evidence JSON](../../reference-data/provenance/frosty-magazine-model-update-2026-09-07.json) contains the full 287-selection sweep, raw comparison operations, source hashes, 24 screenshot records, before/after resolver samples, and shotgun investigation.
 
 ## Implemented changes
 
@@ -82,27 +82,27 @@ All 14 attachment-effect tests and the 63-weapon data validator pass. The new/ex
 ## Original screenshots inspected
 
 
-- [37_Mini Scout_Magazine_15Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/37_Mini%20Scout_Magazine_15Rnd_Magazine.png)
-- [38_Mini Scout_Magazine_15Rnd_Fast_Mag](../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/38_Mini%20Scout_Magazine_15Rnd_Fast_Mag.png)
-- [39_Mini Scout_Magazine_20Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/39_Mini%20Scout_Magazine_20Rnd_Magazine.png)
-- [40_Mini Scout_Magazine_20Rnd_Fast_Mag](../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/40_Mini%20Scout_Magazine_20Rnd_Fast_Mag.png)
-- [49_BROD 3_Magazine_36Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Carbine/BROD%203/49_BROD%203_Magazine_36Rnd_Magazine.png)
-- [50_BROD 3_Magazine_40Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/Carbine/BROD%203/50_BROD%203_Magazine_40Rnd_Magazine.png)
-- [51_BROD 3_Magazine_40Rnd_Fast_Mag](../reference-data/attachment-audit/Weapon%20Attachments/Carbine/BROD%203/51_BROD%203_Magazine_40Rnd_Fast_Mag.png)
-- [32_VSSM_Magazine_20Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/32_VSSM_Magazine_20Rnd_Magazine.png)
-- [33_VSSM_Magazine_10Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/33_VSSM_Magazine_10Rnd_Magazine.png)
-- [34_VSSM_Magazine_10Rnd_Fast_Mag](../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/34_VSSM_Magazine_10Rnd_Fast_Mag.png)
-- [35_VSSM_Magazine_20Rnd_Fast_Mag](../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/35_VSSM_Magazine_20Rnd_Fast_Mag.png)
-- [36_VSSM_Magazine_30Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/36_VSSM_Magazine_30Rnd_Magazine.png)
-- [46_M60_Magazine_100RND_BELT_POUCH](../reference-data/attachment-audit/Weapon%20Attachments/LMG/M60/46_M60_Magazine_100RND_BELT_POUCH.png)
-- [47_M60_Magazine_50RND_LOOSE_BELT](../reference-data/attachment-audit/Weapon%20Attachments/LMG/M60/47_M60_Magazine_50RND_LOOSE_BELT.png)
-- [39_PW7A2_Magazine_30Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/39_PW7A2_Magazine_30Rnd_Magazine.png)
-- [40_PW7A2_Magazine_20Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/40_PW7A2_Magazine_20Rnd_Magazine.png)
-- [41_PW7A2_Magazine_30Rnd_Fast_Mag](../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/41_PW7A2_Magazine_30Rnd_Fast_Mag.png)
-- [42_PW7A2_Magazine_40Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/42_PW7A2_Magazine_40Rnd_Magazine.png)
-- [44_M121 A2_Magazine_50RND_DRUM](../reference-data/attachment-audit/Weapon%20Attachments/LMG/M121%20A2/44_M121%20A2_Magazine_50RND_DRUM.png)
-- [45_M121 A2_Magazine_50RND_BELT_POUCH](../reference-data/attachment-audit/Weapon%20Attachments/LMG/M121%20A2/45_M121%20A2_Magazine_50RND_BELT_POUCH.png)
-- [44_M123K_Magazine_200RND_BELT_BOX](../reference-data/attachment-audit/Weapon%20Attachments/LMG/M123K/44_M123K_Magazine_200RND_BELT_BOX.png)
-- [46_L110_Magazine_200RND_BELT_BOX](../reference-data/attachment-audit/Weapon%20Attachments/LMG/L110/46_L110_Magazine_200RND_BELT_BOX.png)
-- [48_RPK-74M_Magazine_30Rnd_Magazine](../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/48_RPK-74M_Magazine_30Rnd_Magazine.png)
-- [49_RPK-74M_Magazine_30Rnd_Fast_Mag](../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/49_RPK-74M_Magazine_30Rnd_Fast_Mag.png)
+- [37_Mini Scout_Magazine_15Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/37_Mini%20Scout_Magazine_15Rnd_Magazine.png)
+- [38_Mini Scout_Magazine_15Rnd_Fast_Mag](../../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/38_Mini%20Scout_Magazine_15Rnd_Fast_Mag.png)
+- [39_Mini Scout_Magazine_20Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/39_Mini%20Scout_Magazine_20Rnd_Magazine.png)
+- [40_Mini Scout_Magazine_20Rnd_Fast_Mag](../../reference-data/attachment-audit/Weapon%20Attachments/Sniper%20Rifle/Mini%20Scout/40_Mini%20Scout_Magazine_20Rnd_Fast_Mag.png)
+- [49_BROD 3_Magazine_36Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Carbine/BROD%203/49_BROD%203_Magazine_36Rnd_Magazine.png)
+- [50_BROD 3_Magazine_40Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/Carbine/BROD%203/50_BROD%203_Magazine_40Rnd_Magazine.png)
+- [51_BROD 3_Magazine_40Rnd_Fast_Mag](../../reference-data/attachment-audit/Weapon%20Attachments/Carbine/BROD%203/51_BROD%203_Magazine_40Rnd_Fast_Mag.png)
+- [32_VSSM_Magazine_20Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/32_VSSM_Magazine_20Rnd_Magazine.png)
+- [33_VSSM_Magazine_10Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/33_VSSM_Magazine_10Rnd_Magazine.png)
+- [34_VSSM_Magazine_10Rnd_Fast_Mag](../../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/34_VSSM_Magazine_10Rnd_Fast_Mag.png)
+- [35_VSSM_Magazine_20Rnd_Fast_Mag](../../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/35_VSSM_Magazine_20Rnd_Fast_Mag.png)
+- [36_VSSM_Magazine_30Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/DMR/VSSM/36_VSSM_Magazine_30Rnd_Magazine.png)
+- [46_M60_Magazine_100RND_BELT_POUCH](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/M60/46_M60_Magazine_100RND_BELT_POUCH.png)
+- [47_M60_Magazine_50RND_LOOSE_BELT](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/M60/47_M60_Magazine_50RND_LOOSE_BELT.png)
+- [39_PW7A2_Magazine_30Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/39_PW7A2_Magazine_30Rnd_Magazine.png)
+- [40_PW7A2_Magazine_20Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/40_PW7A2_Magazine_20Rnd_Magazine.png)
+- [41_PW7A2_Magazine_30Rnd_Fast_Mag](../../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/41_PW7A2_Magazine_30Rnd_Fast_Mag.png)
+- [42_PW7A2_Magazine_40Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/SMG/PW7A2/42_PW7A2_Magazine_40Rnd_Magazine.png)
+- [44_M121 A2_Magazine_50RND_DRUM](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/M121%20A2/44_M121%20A2_Magazine_50RND_DRUM.png)
+- [45_M121 A2_Magazine_50RND_BELT_POUCH](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/M121%20A2/45_M121%20A2_Magazine_50RND_BELT_POUCH.png)
+- [44_M123K_Magazine_200RND_BELT_BOX](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/M123K/44_M123K_Magazine_200RND_BELT_BOX.png)
+- [46_L110_Magazine_200RND_BELT_BOX](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/L110/46_L110_Magazine_200RND_BELT_BOX.png)
+- [48_RPK-74M_Magazine_30Rnd_Magazine](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/48_RPK-74M_Magazine_30Rnd_Magazine.png)
+- [49_RPK-74M_Magazine_30Rnd_Fast_Mag](../../reference-data/attachment-audit/Weapon%20Attachments/LMG/RPK-74M/49_RPK-74M_Magazine_30Rnd_Fast_Mag.png)

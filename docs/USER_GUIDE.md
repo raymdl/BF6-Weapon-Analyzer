@@ -53,6 +53,63 @@ pump cycle is not modeled. Burst weapons use separate within-burst and between-b
 cadence. The range table complements the chart at class-appropriate distances.
 See [damage and ballistics](DAMAGE_BALLISTICS.md) for the equations and endpoint rules.
 
+### Read the comparison charts
+
+Each color identifies a selected weapon. The horizontal axis is target range
+in metres. Read the vertical axis for the selected mode; the model charts below
+compare SOR-556 MK2 (orange) and SOR-300SC (blue).
+
+Read the lines and shading as follows:
+
+- **Solid colored line:** The result for chest hits. In BTK and TTK, any selected
+  headshots are counted first; the remaining hits are chest hits.
+- **Shaded band of the same color:** The range between chest-hit and limb-hit
+  results. Its other edge shows the result if those body hits strike limbs.
+  Limb hits deal less damage, so this edge is **below** the chest line in Damage
+  and **above** it in BTK and TTK. A mix of chest and limb hits can give a result
+  between these limits. Bullet counts remain whole numbers.
+- **Overlapping shaded bands:** Both weapons can produce results in that range,
+  depending on hit location. The darker or mixed color is only the two fills
+  drawn over each other. It does not mean extra damage or a more likely result.
+- **Overlapping lines:** Both weapons have the same value at that distance.
+  One line can cover the other; this does not mean a weapon has no data.
+
+The bands show different hit locations, not random spread, accuracy, or statistical
+uncertainty. A band can disappear where chest and limb hits give the same result.
+
+**Damage:** Higher means more damage per hit. In this example, blue starts
+higher but drops sooner. The solid line is chest damage; the lower edge of each
+band is limb damage.
+
+![Damage comparison: SOR-556 MK2 and SOR-300SC across range](img/chart-damage-example.svg)
+
+**BTK:** Lower means fewer hits needed to remove 100 health. Steps
+occur when damage falls far enough to require another bullet. The solid line
+shows the chest-hit count; the upper edge shows the limb-hit count. A band from
+4 to 5 means four chest hits or five limb hits are required.
+
+![BTK comparison with zero headshots](img/chart-btk-body-example.svg)
+
+Use the **headshots dropdown** to select 0–3 headshots, with any remaining hits
+on the body. This is a count, not a percentage. If fewer headshots already kill,
+the count stops there. When headshots are selected, dashed lines retain the
+zero-headshot chest baseline.
+
+**TTK:** Lower means less time to kill. The solid line shows chest-hit timing;
+the upper edge shows limb-hit timing. Firing-only TTK starts at
+the first shot and counts the gaps until the lethal shot. Four hits at 600 RPM
+need three 100 ms gaps: **300 ms**, as shown in the
+[TTK timing example](DAMAGE_BALLISTICS.md#firing-cadence-and-ttk).
+
+![Firing-only TTK comparison across range](img/chart-ttk-example.svg)
+
+**+ADS and +VEL:** Add the time to aim down sights and the projectile's flight
+time. In the next chart both additions are enabled. The vertical axis
+changes to **Time to Kill + ADS + Flight**. Travel time grows with distance, so
+these lines can slope even between bullet-count steps.
+
+![TTK comparison including ADS and projectile flight time](img/chart-ttk-total-example.svg)
+
 ## Recoil and spread
 
 Choose **Angle Plot** for angular comparison or **Soldier Target** for a projected
@@ -79,6 +136,48 @@ acts at the same time. Smooth attachments use source duration and recovery value
 some weapon–muzzle pairs differ from the ordinary 50 ms/1.2 set. Heavy-type barrels
 use source ADS spread factors supported by the AK4D recordings. These are model
 inputs, not a guarantee that the displayed pattern matches every in-game shot.
+
+### Angle Plot: how far the aim turns
+
+An angle describes a direction change, not a distance on the target. Turning
+1 degree to the right is the same turn whether the target is 20 or 100 metres
+away. **Angle Plot** uses degrees on both axes: right/left is horizontal offset,
+and up/down is vertical offset from the original aim direction. `(0, 0)` is the
+starting aim point. A dot at `(1, 3)` is 1 degree right and 3 degrees up.
+
+Use this view to compare the shape and angular size of sprays without choosing
+a target distance. Zoom changes how large the plot appears; it does not change
+the simulated recoil or spread.
+
+![Angle Plot schematic showing six shot directions, recoil path, and spread envelopes in degrees](img/angle-plot-example.svg)
+
+This schematic shows six illustrative shot directions. The line connects recoil
+centers; the circles show selected spread envelopes. The numbered dots include
+spread. These are teaching examples, not measured weapon data.
+
+### Soldier Target: where those directions land
+
+**Soldier Target** projects the angular pattern onto a person-sized target at the
+selected distance. The farther away the target is, the greater the physical
+separation between impacts for the same angular spread. This makes it useful
+for inspecting whether a spray stays on a target at a chosen range.
+
+For example, a **1-degree horizontal offset** is about **35 cm at 20 m**, or
+**1.75 m at 100 m**. The angle is unchanged. The horizontal miss distance is
+`distance × tan(angle)`. Vertical placement also uses the projectile trajectory
+and zeroing where available.
+
+| Same angular offset | Target at 20 m | Target at 100 m |
+|---|---:|---:|
+| 1 degree horizontally | About 0.35 m from the aim line | About 1.75 m from the aim line |
+
+![Soldier Target schematic projecting the same six directions at 20 and 100 metres on the same metre scale](img/soldier-target-example.svg)
+
+Both panels project the same six directions from the angle diagram. They use the
+same metre scale so the change in impact spacing is clear. Trajectory and zeroing
+are omitted here to isolate distance. In the app, solid dots hit the target and
+faded dots miss. Hit percentages describe the simulated sample, not the player's
+expected accuracy.
 
 ## Soldier Target
 

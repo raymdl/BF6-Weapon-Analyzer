@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1110" viewBox="0 0 1000 1110" style="max-width:100%;height:auto" role="img"><title>Recoil and spread approach sustained levels</title><desc>Current simulator output across 40 uninterrupted shots. M4A1 mean pre-shot recoil approaches a level, lower with Lightened. AK4D spread approaches a balance below its hard maximum, lower with Heavy.</desc><rect width="1000" height="1110" rx="16" fill="#f3f6fa"/><g font-family="Arial, Helvetica, sans-serif">
+<text x="30" y="43" font-size="28" fill="#142b42" font-weight="700">Why sustained fire approaches an effective ceiling</text>
+<text x="30" y="76" font-size="18" fill="#32465b" font-weight="400">Current simulator output • standing ADS • PC • no control • no reload interruptions</text>
+<text x="30" y="123" font-size="22" fill="#142b42" font-weight="700">RECOIL  /  M4A1</text>
+<text x="90" y="150" font-size="16" fill="#32465b" font-weight="400">Pre-shot vertical offset (degrees)</text>
+<line x1="90" y1="394.0" x2="940" y2="394.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="399.0" font-size="16" fill="#32465b" font-weight="400">0</text>
+<line x1="90" y1="335.0" x2="940" y2="335.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="340.0" font-size="16" fill="#32465b" font-weight="400">2</text>
+<line x1="90" y1="276.0" x2="940" y2="276.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="281.0" font-size="16" fill="#32465b" font-weight="400">4</text>
+<line x1="90" y1="217.0" x2="940" y2="217.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="222.0" font-size="16" fill="#32465b" font-weight="400">6</text>
+<line x1="90" y1="158.0" x2="940" y2="158.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="163.0" font-size="16" fill="#32465b" font-weight="400">8</text>
+<text x="460" y="446" font-size="17" fill="#32465b" font-weight="400">Shot number</text>
+<polyline points="90.00,394.00 111.79,373.69 133.59,355.43 155.38,339.51 177.18,324.43 198.97,311.55 220.77,300.15 242.56,289.71 264.36,280.63 286.15,272.41 307.95,264.65 329.74,257.76 351.54,251.65 373.33,246.31 395.13,241.21 416.92,237.02 438.72,232.77 460.51,229.04 482.31,226.15 504.10,223.37 525.90,220.92 547.69,218.71 569.49,216.45 591.28,214.49 613.08,212.70 634.87,211.20 656.67,209.68 678.46,208.40 700.26,207.08 722.05,206.26 743.85,205.77 765.64,205.18 787.44,204.52 809.23,204.02 831.03,204.02 852.82,203.63 874.62,203.34 896.41,202.88 918.21,202.40 940.00,202.13" fill="none" stroke="#bc6032" stroke-width="3"/>
+<circle cx="90.00" cy="394.00" r="2.8" fill="#bc6032"/>
+<circle cx="177.18" cy="324.43" r="2.8" fill="#bc6032"/>
+<circle cx="264.36" cy="280.63" r="2.8" fill="#bc6032"/>
+<circle cx="351.54" cy="251.65" r="2.8" fill="#bc6032"/>
+<circle cx="438.72" cy="232.77" r="2.8" fill="#bc6032"/>
+<circle cx="525.90" cy="220.92" r="2.8" fill="#bc6032"/>
+<circle cx="613.08" cy="212.70" r="2.8" fill="#bc6032"/>
+<circle cx="700.26" cy="207.08" r="2.8" fill="#bc6032"/>
+<circle cx="787.44" cy="204.52" r="2.8" fill="#bc6032"/>
+<circle cx="874.62" cy="203.34" r="2.8" fill="#bc6032"/>
+
+<text x="105" y="481" font-size="19" fill="#bc6032" font-weight="700">No muzzle: about 6.50 degrees</text>
+<polyline points="90.00,394.00 111.79,373.78 133.59,355.99 155.38,340.84 177.18,326.74 198.97,315.02 220.77,304.87 242.56,295.77 264.36,288.05 286.15,281.20 307.95,274.81 329.74,269.27 351.54,264.48 373.33,260.41 395.13,256.52 416.92,253.50 438.72,250.36 460.51,247.69 482.31,245.79 504.10,243.94 525.90,242.35 547.69,240.95 569.49,239.45 591.28,238.19 613.08,237.05 634.87,236.16 656.67,235.21 678.46,234.45 700.26,233.61 722.05,233.24 743.85,233.16 765.64,232.93 787.44,232.62 809.23,232.42 831.03,232.70 852.82,232.55 874.62,232.48 896.41,232.22 918.21,231.92 940.00,231.82" fill="none" stroke="#367bbb" stroke-width="3"/>
+<circle cx="90.00" cy="394.00" r="2.8" fill="#367bbb"/>
+<circle cx="177.18" cy="326.74" r="2.8" fill="#367bbb"/>
+<circle cx="264.36" cy="288.05" r="2.8" fill="#367bbb"/>
+<circle cx="351.54" cy="264.48" r="2.8" fill="#367bbb"/>
+<circle cx="438.72" cy="250.36" r="2.8" fill="#367bbb"/>
+<circle cx="525.90" cy="242.35" r="2.8" fill="#367bbb"/>
+<circle cx="613.08" cy="237.05" r="2.8" fill="#367bbb"/>
+<circle cx="700.26" cy="233.61" r="2.8" fill="#367bbb"/>
+<circle cx="787.44" cy="232.62" r="2.8" fill="#367bbb"/>
+<circle cx="874.62" cy="232.48" r="2.8" fill="#367bbb"/>
+
+<text x="520" y="481" font-size="19" fill="#367bbb" font-weight="700">Lightened Suppressor: about 5.50 degrees</text>
+<text x="30" y="517" font-size="18" fill="#32465b" font-weight="400">Mean of 128 seeds. Individual recoil paths fluctuate around the sustained level.</text>
+<text x="30" y="545" font-size="20" fill="#32465b" font-weight="400">As displacement grows, recovery removes more of each new kick.</text>
+<text x="30" y="577" font-size="22" fill="#142b42" font-weight="700">SPREAD  /  AK4D</text>
+<text x="90" y="604" font-size="16" fill="#32465b" font-weight="400">Pre-shot spread radius (degrees)</text>
+<line x1="90" y1="848.0" x2="940" y2="848.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="853.0" font-size="16" fill="#32465b" font-weight="400">0</text>
+<line x1="90" y1="789.0" x2="940" y2="789.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="794.0" font-size="16" fill="#32465b" font-weight="400">0.3</text>
+<line x1="90" y1="730.0" x2="940" y2="730.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="735.0" font-size="16" fill="#32465b" font-weight="400">0.6</text>
+<line x1="90" y1="671.0" x2="940" y2="671.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="676.0" font-size="16" fill="#32465b" font-weight="400">0.9</text>
+<line x1="90" y1="612.0" x2="940" y2="612.0" stroke="#d4dfe9" stroke-width="1.5" stroke-dasharray=""/>
+<text x="40" y="617.0" font-size="16" fill="#32465b" font-weight="400">1.2</text>
+<text x="460" y="900" font-size="17" fill="#32465b" font-weight="400">Shot number</text>
+<polyline points="90.00,838.17 111.79,799.99 133.59,766.02 155.38,737.77 177.18,715.77 198.97,699.57 220.77,688.16 242.56,680.39 264.36,675.21 286.15,671.82 307.95,669.63 329.74,668.21 351.54,667.31 373.33,666.73 395.13,666.36 416.92,666.12 438.72,665.97 460.51,665.88 482.31,665.82 504.10,665.78 525.90,665.75 547.69,665.74 569.49,665.73 591.28,665.72 613.08,665.72 634.87,665.72 656.67,665.71 678.46,665.71 700.26,665.71 722.05,665.71 743.85,665.71 765.64,665.71 787.44,665.71 809.23,665.71 831.03,665.71 852.82,665.71 874.62,665.71 896.41,665.71 918.21,665.71 940.00,665.71" fill="none" stroke="#bc6032" stroke-width="3"/>
+<circle cx="90.00" cy="838.17" r="2.8" fill="#bc6032"/>
+<circle cx="177.18" cy="715.77" r="2.8" fill="#bc6032"/>
+<circle cx="264.36" cy="675.21" r="2.8" fill="#bc6032"/>
+<circle cx="351.54" cy="667.31" r="2.8" fill="#bc6032"/>
+<circle cx="438.72" cy="665.97" r="2.8" fill="#bc6032"/>
+<circle cx="525.90" cy="665.75" r="2.8" fill="#bc6032"/>
+<circle cx="613.08" cy="665.72" r="2.8" fill="#bc6032"/>
+<circle cx="700.26" cy="665.71" r="2.8" fill="#bc6032"/>
+<circle cx="787.44" cy="665.71" r="2.8" fill="#bc6032"/>
+<circle cx="874.62" cy="665.71" r="2.8" fill="#bc6032"/>
+
+<text x="105" y="935" font-size="19" fill="#bc6032" font-weight="700">Basic barrel: about 0.93 degrees</text>
+<polyline points="90.00,838.17 111.79,812.72 133.59,790.07 155.38,771.24 177.18,756.57 198.97,745.77 220.77,738.16 242.56,732.98 264.36,729.53 286.15,727.27 307.95,725.81 329.74,724.86 351.54,724.26 373.33,723.87 395.13,723.63 416.92,723.47 438.72,723.37 460.51,723.31 482.31,723.27 504.10,723.24 525.90,723.23 547.69,723.21 569.49,723.21 591.28,723.20 613.08,723.20 634.87,723.20 656.67,723.20 678.46,723.20 700.26,723.20 722.05,723.20 743.85,723.20 765.64,723.20 787.44,723.20 809.23,723.20 831.03,723.20 852.82,723.20 874.62,723.20 896.41,723.20 918.21,723.20 940.00,723.20" fill="none" stroke="#367bbb" stroke-width="3"/>
+<circle cx="90.00" cy="838.17" r="2.8" fill="#367bbb"/>
+<circle cx="177.18" cy="756.57" r="2.8" fill="#367bbb"/>
+<circle cx="264.36" cy="729.53" r="2.8" fill="#367bbb"/>
+<circle cx="351.54" cy="724.26" r="2.8" fill="#367bbb"/>
+<circle cx="438.72" cy="723.37" r="2.8" fill="#367bbb"/>
+<circle cx="525.90" cy="723.23" r="2.8" fill="#367bbb"/>
+<circle cx="613.08" cy="723.20" r="2.8" fill="#367bbb"/>
+<circle cx="700.26" cy="723.20" r="2.8" fill="#367bbb"/>
+<circle cx="787.44" cy="723.20" r="2.8" fill="#367bbb"/>
+<circle cx="874.62" cy="723.20" r="2.8" fill="#367bbb"/>
+
+<text x="520" y="935" font-size="19" fill="#367bbb" font-weight="700">Heavy barrel: about 0.63 degrees</text>
+<text x="30" y="971" font-size="18" fill="#32465b" font-weight="400">Growth per shot balances recovery between shots. The hard maximum is 7 degrees.</text>
+<text x="30" y="999" font-size="18" fill="#32465b" font-weight="400">Both curves settle below that bound; Heavy preserves the same 0.05-degree floor.</text>
+<text x="30" y="1056" font-size="19" fill="#142b42" font-weight="700">These are sustained pre-shot levels, not a universal hard cap or the within-shot peak.</text>
+<text x="30" y="1086" font-size="19" fill="#32465b" font-weight="400">Rate of fire, loadout, control, and firing gaps can change the balance.</text>
+<text x="83.00" y="419" font-size="16" fill="#32465b">1</text>
+<text x="279.15" y="419" font-size="16" fill="#32465b">10</text>
+<text x="497.10" y="419" font-size="16" fill="#32465b">20</text>
+<text x="715.05" y="419" font-size="16" fill="#32465b">30</text>
+<text x="933.00" y="419" font-size="16" fill="#32465b">40</text>
+<text x="83.00" y="873" font-size="16" fill="#32465b">1</text>
+<text x="279.15" y="873" font-size="16" fill="#32465b">10</text>
+<text x="497.10" y="873" font-size="16" fill="#32465b">20</text>
+<text x="715.05" y="873" font-size="16" fill="#32465b">30</text>
+<text x="933.00" y="873" font-size="16" fill="#32465b">40</text>
+</g></svg>

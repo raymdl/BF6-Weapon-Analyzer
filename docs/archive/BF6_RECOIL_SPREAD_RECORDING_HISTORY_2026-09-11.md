@@ -1,8 +1,35 @@
 # BF6 recoil and spread recording handoff
 
+> Archived record. Current work is tracked in the [active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md); implemented behavior is documented in the [live guides](../README.md). Statements in this record describe their original analysis stage.
+
 Status recorded 11 September 2026. This document tracks the current in-game
 capture program for unresolved recoil and spread mechanics. Update the status,
 findings, and follow-up requirements here as analysis proceeds.
+
+## Current status after the 11 September cross-task review
+
+This summary supersedes historical proposals and capture plans below. Checked
+against the recording reports, recoil review tasks, duration audit, and merged
+PR #25 (`50fd5eb`). Publication verification is handled by the release task.
+
+| Topic | Completed | Still open |
+|---|---|---|
+| Recoil delivery/recovery | Timed delivery, simultaneous recovery, and reset-on-shot clock implemented | Native envelope, recovery equation, timer semantics, and camera versus physical aim |
+| Smooth attachments | Ordinary 50 ms / 1.2; 17 mapped Bolt exceptions at 66.667 ms / 1.728; 63 base weapons checked at 25 ms | Exact modifier operations/composition; Bolt recording validation; PP-19 Flash Comp source mapping |
+| Heavy-type spread | Frosty factors applied to Heavy, Heavy Extended, and Cryogenic; AK4D comparison complete | Second-weapon transfer check, firing while moving, and idle-state activation |
+| VSSM hipfire | Matched standing screenshots support index 4; override removed; stored minima 1.804 / 2.255 | Independent angular/projectile calibration and hipfire-firing coverage; moving value follows the source row |
+| VSSM aim transition | Eight no-shot transitions measured; approximately equal 170 px/s contraction with and without Folding Stock | Transition equation, active recovery branch, and HUD mapping |
+| Spread state/distribution | Existing AK4D/VSSM no-fire movement controls available | First-shot/reset rules, firing/not-firing/idle transitions, other stances, and projectile distribution |
+
+The recoil review tasks support the general continuous-recovery interpretation.
+They do not independently confirm 25/50 ms timing, the exact multiplier operation,
+or a peak-hold phase. Camera-fit timing offsets and coupled parameter choices
+remain limits. Later implementation approval did not remove these limits.
+
+Current references: [recoil validation](RECOIL_MODEL_VALIDATION_2026-09-11.md),
+[duration exceptions and assumptions](../RECOIL_SPREAD_MODEL.md),
+[AK4D analysis](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md), and
+[VSSM analysis](VSSM_RECORDING_ANALYSIS_2026-09-11.md).
 
 ## Standing recording conditions — operator confirmed 11 September 2026
 
@@ -37,8 +64,9 @@ The operator authorized a best-supported approximation using Frosty inputs, and
 clarified that the old 1.1 Smooth factor was only an early visual estimate.
 The simulator now delivers recoil over the source duration with concurrent
 continuous recovery and resets the recovery clock on each shot. Smooth uses an
-estimated 0.05-second duration override and 1.2 recovery-factor multiplier in
-both aim states. This supersedes the older current-model descriptions and
+source-based 0.05-second duration override and 1.2 recovery-factor multiplier,
+with 17 mapped Bolt exceptions at 0.066667 seconds and 1.728, in both aim states.
+The override/multiplier operations remain model assumptions. This supersedes the older current-model descriptions and
 recommendations to retain 1.1 below; the recording results remain historical
 evidence. No additional captures are required for this implementation.
 
@@ -617,8 +645,10 @@ local artifacts in `outputs/vssm-analysis-2026-09-11/`. All seven videos and fou
 screenshots retain their original hashes. The ammo pass confirms 50 shots.
 
 No-ergonomics and Folding Stock have the same measured hipfire floors: 81 px
-stationary and about 96 px moving. This does not resolve the absolute angular
-table index. Folding Stock produces visible ADS firing-spread growth.
+stationary and about 96 px moving. The later matched standing screenshots show
+VSSM and M4A1 at 81 px, AK4D at 103 px, and M39 EMR at 136 px. This supports
+raw index 4; the override is removed and minima are 1.804 / 2.255. Moving follows
+the source row. Folding Stock produces visible ADS firing-spread growth.
 
 Four no-shot hipfire-to-ADS transitions per loadout give median indicator
 contraction rates of 170.4 px/s without ergonomics and 169.5 px/s with Folding
@@ -630,40 +660,13 @@ unverified. The current analyzer does not simulate the aim transition.
 
 The source-based stock recoil model fits the late isolated-shot camera tail
 better than retaining base recovery, but does not fit the complete camera trace
-better. No production values changed. No repeat of this set is requested.
+better. Those recoil values were retained; the later hipfire floor correction
+is implemented. No repeat of this set is requested.
 
-The original capture plan below describes remaining coverage, particularly
-hipfire firing and absolute angular calibration; it is not a description of
-the supplied ASM-barrel/Range-Penetration loadout.
-
-Purpose: distinguish the analyzer's VSSM hipfire override at table index 2 from
-the recorded Frosty selector at index 4, and test whether semi-auto and full-auto
-select different floors or dynamics.
-
-Candidate table rows:
-
-```text
-index 2: 3.352 degrees stationary / 4.19 degrees moving
-index 4: 1.804 degrees stationary / 2.255 degrees moving
-```
-
-Use the factory/default VSSM configuration and record one continuous take with
-the spread indicator enabled:
-
-1. Stationary standing hipfire in full auto without firing.
-2. Walking hipfire at constant normal speed in full auto without firing.
-3. Stationary standing hipfire in semi-auto without firing.
-4. Walking hipfire at constant normal speed in semi-auto without firing.
-5. One isolated shot in each state, followed by complete recovery.
-6. A short sequence in each state, followed by complete recovery.
-7. A sustained sequence in each state, followed by complete recovery.
-
-If the game permits removal of factory attachments, make a second take that
-shows each configuration change and repeats the four resting-floor states.
-
-For a future calibrated capture, use a measured wall distance. A fire-mode difference visible before firing indicates
-a floor or selector difference. A difference that appears only after firing
-belongs to growth, recovery, or scheduling.
+Remaining coverage is hipfire firing, independent angular/projectile calibration,
+and aim-transition recovery. Reuse the existing no-fire stationary/moving controls.
+Do not repeat the completed index comparison. Any future impact calibration must
+use a measured distance; the supplied VSSM range distance is unspecified.
 
 ## Scenario 2: Heavy-barrel spread mechanics — AK4D analyzed
 
@@ -680,25 +683,23 @@ and strafe-only settled indicator widths show no material barrel difference.
 The extra no-firing clips therefore support unchanged movement spread minima;
 they do not test firing while moving. Missing ADS markers are not zero spread.
 
-The source factor set (including firing coefficient 1.837117 and not-firing
-offset multiplier 0.666667) gives a modestly closer Heavy trace match than the
-current fitted set. This is a preferred implementation candidate, not a proven
-native equation. Idle behavior remains unresolved. Production spread factors
-were not changed by this analysis. No repeat AK4D capture is required; the
-second-weapon comparison and other untested branches remain open.
-
-The original capture plan below is retained for those remaining comparisons.
-
-Purpose: test the analyzer's fitted ADS-only Heavy, Heavy Extended, and Cryogenic
-spread behavior. The current fitted Heavy factors are:
+The source factor set gave a modestly closer research Heavy trace match than
+the former fitted set (1.98 to 1.85 px error). The implementation now uses:
 
 ```text
-IncreasePerShot                   x 0.667
-FiringDecreaseCoefficient         x 1.71
-FiringDecreaseOffset              x 0.667
+IncreasePerShot                   x 0.666667
+FiringDecreaseCoefficient         x 1.837117
+FiringDecreaseOffset              x 0.666667
+NotFiringDecreaseOffset           x 0.666667
 ```
 
-Choose two automatic weapons with different rates of fire that offer a neutral
+This is implemented for Heavy, Heavy Extended, and Cryogenic. It is not a
+recovered native equation. The research error uses a fitted HUD transform and
+1 ms integration, not the production 60 Hz spread calculation. Idle activation
+remains unresolved and no idle transition was added. No repeat AK4D capture is
+required. The following plan is for a second weapon and untested branches only.
+
+Choose a second automatic weapon with a different rate of fire from AK4D that offer a neutral
 or Basic barrel and the plain Heavy barrel. Keep every other attachment and the
 ammunition identical. For each weapon, record one neutral-barrel take and one
 Heavy-barrel take.
@@ -835,7 +836,7 @@ represent the same quantity.
 1. VSSM standing comparison is complete and index 4 accepted. Resolve remaining
    absolute projectile calibration and missing hipfire-firing coverage
    using the completed scenario 1 analysis; do not repeat the no-fire controls.
-2. Two-weapon neutral-versus-Heavy spread test.
+2. Second-weapon neutral-versus-Heavy transfer check; AK4D is complete.
 3. Combined first-shot and firing/not-firing/idle pause test.
 4. Movement and stance branch test.
 5. Physical-versus-visual recoil test.

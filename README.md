@@ -59,7 +59,7 @@ Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
 | Update or validate the project | [Maintenance](MAINTENANCE.md) · [Tests](docs/TESTS.md) |
 
 VSSM hipfire uses source index 4 (1.804 degrees standing / 2.255 degrees moving), supported
-by the [matched standing screenshot comparison](docs/VSSM_RECORDING_ANALYSIS_2026-09-11.md).
+by the [matched standing screenshot comparison](docs/archive/VSSM_RECORDING_ANALYSIS_2026-09-11.md).
 The moving value follows the source table.
 
 ## Current product and history
@@ -69,7 +69,7 @@ header's version identifies the represented source/game version; it is not a
 claim that every field was independently measured on that build.
 
 `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are frozen, published site snapshots.
-[Archived research and implementation records](archive/README.md) explain past
+[Archived research and implementation records](docs/archive/README.md) explain past
 work and decisions. Use the current guides above for present behavior.
 
 Before submitting changes, run:

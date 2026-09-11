@@ -8,7 +8,7 @@ Follow-up review: the approved Heavy/Cryo aim-state correction is now implemente
 
 Validation: all 43 Node product tests, the 63-weapon data validator, and the published-file validator pass. The browser shows L115 Iron Sights at 15 points and a 35-point default total. Publication is authorized for all reviewed site changes in this task, including the earlier Frosty corrections and the v1.3.3.0 archive.
 
-Implementation evidence: [approved attachment updates](../reference-data/provenance/frosty-approved-attachment-updates-2026-09-06.json). The full-pass evidence below is the **before-fix snapshot**. Its comparison counts and old site values are retained for traceability.
+Implementation evidence: [approved attachment updates](../../reference-data/provenance/frosty-approved-attachment-updates-2026-09-06.json). The full-pass evidence below is the **before-fix snapshot**. Its comparison counts and old site values are retained for traceability.
 
 ## Original comparison scope
 
@@ -18,7 +18,7 @@ The source is the local Frosty 1.4.2.5 export in `C:/Users/royal/Documents/BF6 D
 
 The numerical comparison covers the existing 3,326 non-optic attachment records. The full graph adds optics and seven selector bindings on existing non-optic records. Those additional bindings are inventoried, but they are not claimed as numerically verified. Camera, animation, conditional state, and opaque native fields were inventoried where directly linked; their game behavior was not reverse-engineered in this pass.
 
-Evidence: [attachment comparison JSON](../reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json). It contains the full inventory, source hashes, effect identities and operations, candidate comparisons, graph issues, and samples from the actual site resolver. The local working directory `outputs/attachment-full-pass/` holds the full raw scalar extraction and comparison scripts. These working files are ignored by Git; their hashes are recorded in the evidence JSON.
+Evidence: [attachment comparison JSON](../../reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json). It contains the full inventory, source hashes, effect identities and operations, candidate comparisons, graph issues, and samples from the actual site resolver. The local working directory `outputs/attachment-full-pass/` holds the full raw scalar extraction and comparison scripts. These working files are ignored by Git; their hashes are recorded in the evidence JSON.
 
 ## Clear point-cost differences
 

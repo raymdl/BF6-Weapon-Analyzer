@@ -31,5 +31,5 @@ Source hashes identify original inputs. Site/comparison hashes can predate the
 integration they motivated. Do not replace them with today's hashes to make a
 historical report appear current. The original local XML, SDK and capture directories
 are not all present in a clean checkout. Narrative context is preserved in the
-[research archive](../../archive/README.md); screenshot-audit JSON/workbook and its
+[research archive](../../docs/archive/README.md); screenshot-audit JSON/workbook and its
 separate validator live in the [attachment audit package](../attachment-audit/README.md).

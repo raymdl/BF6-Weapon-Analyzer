@@ -113,7 +113,7 @@ production calculation engine or a reason to infer unresolved native behavior.
 | Evidence | Use |
 |---|---|
 | [Recoil duration audit](../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json) | Current GS base durations for all 63 weapons, named registry corroboration where present, four Smooth modifier operands, and 17 weapon–muzzle exceptions. Retains source hashes and the PP-19 Flash Comp mapping gap. |
-| [AK4D Heavy analysis](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md) | Basic/Heavy HUD measurements, source ADS factor comparison, and limits on cross-weapon transfer. |
+| [AK4D Heavy analysis](archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md) | Basic/Heavy HUD measurements, source ADS factor comparison, and limits on cross-weapon transfer. |
 | [Array review](../reference-data/provenance/frosty-array-review-2026-09-09.json) | Source row order, hashed columns, base indices, tier factors, 187 input hashes. Its site-comparison hashes describe the pre-integration snapshot. |
 | [Draw-time review](../reference-data/provenance/frosty-draw-time-2026-09-09.json) | Sprint/deploy/undeploy source seconds, exact millisecond tables, base indices and source hashes. |
 | [Magazine identity](../reference-data/provenance/frosty-magazine-identity-review-2026-09-07.json) and [model update](../reference-data/provenance/frosty-magazine-model-update-2026-09-07.json) | Mapping decisions, normalization, reviewed handling/reload changes. |
@@ -122,7 +122,7 @@ production calculation engine or a reason to infer unresolved native behavior.
 | [Attachment audit](../reference-data/attachment-audit/README.md) | Canonical screenshot review JSON and derived workbook; raw capture library is local-only. |
 
 The [evidence index](../reference-data/provenance/README.md) covers the remaining
-families. Original narrative investigations are in the [archive](../archive/README.md).
+families. Original narrative investigations are in the [archive](archive/README.md).
 Their checkpoint counts and proposed next steps are historical, not current defects
 or a current implementation backlog.
 

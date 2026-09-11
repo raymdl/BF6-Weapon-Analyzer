@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="485" viewBox="0 0 1000 485" style="max-width:100%;height:auto" role="img"><title>Time to kill counts the gaps before the lethal shot</title><rect width="1000" height="485" rx="16" fill="#f3f6fa"/><g font-family="Arial, Helvetica, sans-serif">
+<text x="30" y="43" font-size="28" fill="#142b42" font-weight="700">Time to kill counts the gaps before the lethal shot</text>
+<text x="30" y="76" font-size="18" fill="#32465b" font-weight="400">Example: four chest hits at 25 damage, 100 health, 600 RPM.</text>
+<line x1="115" y1="182" x2="880" y2="182" stroke="#62758a" stroke-width="2"/>
+<circle cx="115" cy="182" r="8" fill="#367bbb"/>
+<text x="78" y="136" font-size="20" fill="#32465b" font-weight="400">Shot 1</text>
+<text x="88" y="222" font-size="18" fill="#32465b" font-weight="400">0 ms</text>
+<text x="69" y="257" font-size="17" fill="#32465b" font-weight="400">25 damage</text>
+<circle cx="370" cy="182" r="8" fill="#367bbb"/>
+<text x="333" y="136" font-size="20" fill="#32465b" font-weight="400">Shot 2</text>
+<text x="343" y="222" font-size="18" fill="#32465b" font-weight="400">100 ms</text>
+<text x="324" y="257" font-size="17" fill="#32465b" font-weight="400">50 damage</text>
+<circle cx="625" cy="182" r="8" fill="#367bbb"/>
+<text x="588" y="136" font-size="20" fill="#32465b" font-weight="400">Shot 3</text>
+<text x="598" y="222" font-size="18" fill="#32465b" font-weight="400">200 ms</text>
+<text x="579" y="257" font-size="17" fill="#32465b" font-weight="400">75 damage</text>
+<circle cx="880" cy="182" r="8" fill="#bc6032"/>
+<text x="843" y="136" font-size="20" fill="#32465b" font-weight="400">Shot 4</text>
+<text x="853" y="222" font-size="18" fill="#32465b" font-weight="400">300 ms</text>
+<text x="834" y="257" font-size="17" fill="#32465b" font-weight="400">100 damage</text>
+<text x="175" y="175" font-size="18" fill="#32465b" font-weight="400">100 ms</text>
+<text x="430" y="175" font-size="18" fill="#32465b" font-weight="400">100 ms</text>
+<text x="685" y="175" font-size="18" fill="#32465b" font-weight="400">100 ms</text>
+<text x="30" y="309" font-size="23" fill="#142b42" font-weight="700">Four shots have three firing intervals: (4 − 1) × 100 ms = 300 ms.</text>
+<rect x="30" y="340" width="240" height="60" rx="10" fill="#e8edf3" stroke="#d4dfe9"/>
+<text x="48" y="377" font-size="20" fill="#32465b" font-weight="400">Optional ADS time</text>
+<rect x="285" y="340" width="330" height="60" rx="10" fill="#e4f0fc" stroke="#d4dfe9"/>
+<text x="303" y="377" font-size="20" fill="#32465b" font-weight="400">Firing time: 300 ms</text>
+<rect x="630" y="340" width="340" height="60" rx="10" fill="#e5f1ed" stroke="#d4dfe9"/>
+<text x="648" y="377" font-size="20" fill="#32465b" font-weight="400">Optional flight time</text>
+<text x="30" y="442" font-size="20" fill="#32465b" font-weight="400">The first shot is at time zero. A one-shot kill has zero firing time.</text>
+<text x="30" y="473" font-size="18" fill="#32465b" font-weight="400">Burst weapons use their actual shot intervals; reaction time and misses are not included.</text>
+</g></svg>

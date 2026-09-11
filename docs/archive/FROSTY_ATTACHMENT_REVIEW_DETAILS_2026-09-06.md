@@ -2,7 +2,7 @@
 
 This report answers the follow-up review. Live examples use the five downloaded files recorded in the evidence `liveSnapshot`. Source values come from the local Frosty 1.4.2.5 export. Source-parameter examples use the current site equation. They are not game measurements. The only new simulation change is the approved ADS-only barrel scope correction. This change is local and has not been published.
 
-[Full structured evidence](../reference-data/provenance/frosty-attachment-followup-2026-09-06.json) includes exact paths, selector IDs, operations, graph branches, exported killswitch defaults, live hashes, and all numerical samples. The original full-pass JSON remains a historical snapshot.
+[Full structured evidence](../../reference-data/provenance/frosty-attachment-followup-2026-09-06.json) includes exact paths, selector IDs, operations, graph branches, exported killswitch defaults, live hashes, and all numerical samples. The original full-pass JSON remains a historical snapshot.
 
 ## Corrections to the earlier audit
 

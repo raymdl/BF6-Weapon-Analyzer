@@ -11,7 +11,7 @@ limits: further tier changes beyond the limits have no effect.
 Values retain the exported precision in milliseconds. Only the UI rounds to
 whole milliseconds. The raw decimal seconds, field identifiers,
 weapon selectors and XML SHA-256 hashes are retained in
-[`frosty-draw-time-2026-09-09.json`](../reference-data/provenance/frosty-draw-time-2026-09-09.json).
+[`frosty-draw-time-2026-09-09.json`](../../reference-data/provenance/frosty-draw-time-2026-09-09.json).
 
 Each `WEAPON_MAG` record stores `sprintRecoveryBaseIndex`, `deployBaseIndex` and
 `deployTimeTable`. Sprint recovery uses the shared 12-row array. Deploy and

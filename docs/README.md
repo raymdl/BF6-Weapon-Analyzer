@@ -11,6 +11,16 @@ operands (50 ms/1.2 or mapped Bolt 66.667 ms/1.728), and source Heavy-type ADS
 spread factors. These remain approximations of the native engine arithmetic.
 The [recoil guide](RECOIL_SPREAD_MODEL.md) lists the weapon–muzzle exceptions.
 
+## Folder roles
+
+- `docs/`: live GitHub product and contributor guides.
+- `docs/working/`: active investigations and handoffs; keep only current status,
+  decisions, open questions, and next actions.
+- `docs/archive/`: completed analyses, implementation records, and superseded handoffs.
+
+When work closes, put the accepted behavior in the relevant live guide, carry
+any remaining questions into an active handoff, and archive the completed record.
+
 ## Choose a guide
 
 | Guide | Audience and scope |
@@ -23,13 +33,16 @@ The [recoil guide](RECOIL_SPREAD_MODEL.md) lists the weapon–muzzle exceptions.
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
 | [Recoil and spread](RECOIL_SPREAD_MODEL.md) | Model readers: per-shot equations, recovery, sampling, calibration, visual interpretation. |
-| [Recoil validation](RECOIL_MODEL_VALIDATION_2026-09-11.md) | Model maintainers: approved duration/recovery rules, recording comparisons, unused inputs, and remaining error. |
-| [AK4D Heavy recording analysis](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md) | Model maintainers: Basic/Heavy observations, source factor comparison, and transfer limits. |
-| [Recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) | Researchers: capture status, historical findings, and optional future investigations. |
-| [Stored-spread source review](HANDOFF_FROSTY_SPREAD_2026-09-10.md) | Data maintainers: EF88/BROD 3 source checks and the stored moving-ADS minimum correction. |
 | [Model limitations](MODEL_LIMITATIONS.md) | All readers: retained-but-unused fields, estimates, unresolved composition and validation gaps. |
 | [Maintenance](../MAINTENANCE.md) | Contributors: change procedures, evidence requirements, compatibility and shipping checks. |
 | [Tests](TESTS.md) | Contributors: actual checks, their coverage, manual verification and research-tool boundaries. |
+
+## Open research
+
+[Active Frosty recoil and spread handoff](working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md)
+contains current status, remaining source questions, and capture plans. Completed
+recording analyses and implementation handoffs are in the
+[archive index](archive/README.md), with links back to current guides.
 
 ## Authority and historical material
 
@@ -38,7 +51,7 @@ The guides explain that behavior; source records explain why a value was accepte
 A historical report's proposed change does not establish that the change shipped.
 An accepted source value does not prove the simulator reproduces native engine arithmetic.
 
-[Archive index](../archive/README.md) separates completed implementation records
+[Archive index](archive/README.md) separates completed implementation records
 from dated investigations, with links to their current replacements. Historical
 records are preserved, including their original future-tense statements and
 superseded checkpoints. Read the archive index before treating a finding as current.

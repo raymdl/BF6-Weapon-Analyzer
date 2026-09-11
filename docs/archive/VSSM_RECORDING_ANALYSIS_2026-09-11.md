@@ -1,5 +1,7 @@
 # VSSM recording analysis — 11 September 2026
 
+> Archived record. Current work is tracked in the [active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md); implemented behavior is documented in the [live guides](../README.md). Statements in this record describe their original analysis stage.
+
 ## Findings
 
 The no-ergonomics and Folding Stock recordings have the same settled hipfire

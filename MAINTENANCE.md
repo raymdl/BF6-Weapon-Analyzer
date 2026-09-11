@@ -100,7 +100,7 @@ PowerShell helper requires `-FrostyDirectory` and `-OutputPath`.
 The repository README stays high-level. The [documentation index](docs/README.md)
 defines current guides and their audiences. Put accepted formulas/units/fallbacks
 in the responsible guide, unresolved evidence in [limitations](docs/MODEL_LIMITATIONS.md),
-and completed plans or dated investigations in [archive/](archive/README.md).
+and completed plans or dated investigations in [docs/archive/](docs/archive/README.md).
 Every archived record must have an explicit status and current replacement in the
 archive index. Do not mark all questions resolved just because a report is archived.
 

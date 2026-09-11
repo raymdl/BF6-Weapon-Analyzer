@@ -1,10 +1,12 @@
 # Frosty source checks and stored spread bounds — handoff
 
+> Archived record. Current work is tracked in the [active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md); implemented behavior is documented in the [live guides](../README.md). Statements in this record describe their original analysis stage.
+
 Initial status recorded 10 September 2026 at `32800ef`. On 11 September 2026, the
 operator approved including these stored-spread and source-recheck changes in the
 timed-recoil release. The investigation and original validation below are retained
-as evidence. Current behavior is documented in [recoil and spread](RECOIL_SPREAD_MODEL.md)
-and [stat ladders](STAT_LADDERS.md).
+as evidence. Current behavior is documented in [recoil and spread](../RECOIL_SPREAD_MODEL.md)
+and [stat ladders](../STAT_LADDERS.md).
 
 ## Objective and decisions
 
@@ -53,7 +55,7 @@ Damage was therefore retained.
 The moving ADS array selector is index 3, which gives `0.32` degrees. The stored
 minimum was corrected from `0.35` to `0.32`. Runtime already selected `0.32`.
 
-Evidence: [BROD 3 source recheck](../reference-data/provenance/frosty-brod3-source-recheck-2026-09-10.json).
+Evidence: [BROD 3 source recheck](../../reference-data/provenance/frosty-brod3-source-recheck-2026-09-10.json).
 It records source hashes, object GUIDs, curve references, and the spread selector.
 BREN3's ambiguous raw recoil/spread identities remain unresolved; this check did
 not decode them.
@@ -70,7 +72,7 @@ minimum was corrected from `0.25` to `0.32`. The separate raw MinMaxDispersion
 registry literal is `0.35`; it is not the selected table value. Runtime already
 used the indexed table.
 
-Evidence: [EF88 source recheck](../reference-data/provenance/frosty-ef88-source-recheck-2026-09-10.json).
+Evidence: [EF88 source recheck](../../reference-data/provenance/frosty-ef88-source-recheck-2026-09-10.json).
 Historical donor/source records remain in the weapon provenance. Legacy
 `reloadSpeed` was not independently resolved by this check.
 
