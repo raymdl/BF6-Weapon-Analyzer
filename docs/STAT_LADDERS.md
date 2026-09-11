@@ -31,7 +31,7 @@ The following equations describe [applyAttachments](../sim/applyAttachments.js):
 |---|---|---|
 | ADS-in | `C(wm.defAds − mag.adsTimeTierShift + grip.adsTimeTierMod + barrel.adsTimeTierMod, ADS_SPD_TIERS)` | Magazine, grip, barrel. |
 | ADS movement | `C(wm.defAms − mag.adsMoveSpeedTierShift − grip.adsMoveSpeedTierShift − ammo.adsMoveSpeedTierShift, ADS_MOVE_TIERS)` | Magazine, grip, ammo. |
-| Moving ADS spread | `C(DEFAULT_MOV_TIER + Σ movingAdsSpreadTierMod, MOVING_ACC_TIERS)` | Grip, laser, barrel, magazine; default base 3. |
+| Moving ADS spread | `C(MOVING_ACC_TIERS.indexOf(spread.adsMove[0]) + Σ movingAdsSpreadTierMod, MOVING_ACC_TIERS)` | Grip, laser, barrel, magazine; base comes from each weapon. |
 | Hip spread | `C((override ?? base) − Σ hipSpreadTierMod, HIP_SPREAD_TABLE)` | Muzzle, barrel, laser, grip, ammo. |
 | Sprint recovery | `C(wm.sprintRecoveryBaseIndex − Σ sprintRecoveryTierShift, sprint)` | Magazine, grip, ergo, barrel, muzzle, laser, light, ammo. |
 | Deploy / undeploy | `C(wm.deployBaseIndex − Σ deployTimeTierShift, chosen table)` | Same eight sources, summed separately from sprint. |
@@ -65,8 +65,8 @@ this comparison table means that array has no entry at that index.
 `MSA_ADS_Weapons` supplies the twelve movement rows, including two `0.325` entries.
 `ZDA_Moving_Weapons` supplies the seven moving-spread rows. Its first three raw
 columns agree; its distinct fourth column remains in evidence rather than becoming
-extra tiers. The effective `_movingAdsMinSpreadDeg` replaces the raw moving minimum;
-EF88, Interdictor, BROD 3 and VSSM still contain differing raw minima.
+extra tiers. Each weapon stores its base minimum in `spread.adsMove[0]`. Attachment
+shifts select another row and update that bound; there is no global base override.
 
 The FZT source collection contains 80 rows across transition families. These eight
 ADS-in positions are separate from ADS-out and AZT main/alternate animation timings.

@@ -3,7 +3,8 @@
 [Documentation index](README.md) · [Stat ladders](STAT_LADDERS.md) · [Model limitations](MODEL_LIMITATIONS.md)
 
 This guide explains the current analyzer implementation, checked against the
-code on 9 September 2026. Source literals, fitted behavior and rendering choices
+code on 11 September 2026. The operator approved timed delivery with simultaneous
+recovery and the Smooth 50 ms/1.2 model on that date. Source literals, fitted behavior and rendering choices
 have distinct evidence boundaries.
 
 ## The Model at a Glance
@@ -20,8 +21,8 @@ the two lanes advance to the inputs for shot i+1:
 
 ```mermaid
 flowchart TD
-    START["Sample shot i at current recoil point and spread"] --> KICK["Add kick and subtract expected control vector"]
-    KICK --> DECAY["Recover each recoil axis over inter-shot interval"]
+    START["Sample shot i at current recoil point and spread"] --> KICK["Queue timed kick minus expected control vector; reset recovery clock"]
+    KICK --> DECAY["Deliver active impulses and recover each axis simultaneously"]
     START --> SPREAD["Add spread increment; clamp to bounds"]
     SPREAD --> RECOV["Recover spread: firing, then any post-burst non-firing segment"]
     DECAY --> CENTER["Next pre-shot recoil point"]
@@ -88,11 +89,11 @@ subsequent pre-shot point:
 1. Select ADS or hipfire recoil inputs based on `aimState`.
 2. Compute per-shot recoil amount, including attachment tier and platform scaling.
 3. Sample direction variation uniformly across the full `[-recoilVar, +recoilVar]` range.
-4. Add the horizontal and vertical delta to the running aim point.
-5. Subtract the compensation vector (recoil control), scaled by the compensation %.
-6. Apply inter-shot recoil decay toward zero before the next shot
-   (`applyRecoilDecay`, using the weapon group's decay parameters and the
-   muzzle's `_adsRecoilDecayMult` when aiming).
+4. Subtract the compensation vector (recoil control), scaled by the compensation %.
+5. Deliver that delta uniformly over the selected recoil duration.
+6. Apply recovery during and after delivery before the next shot. Each shot resets
+   the recovery clock; unfinished impulses continue. The selected aim state's
+   muzzle recovery multiplier scales the weapon group's decay factor.
 
 ## Spread (`simulateSpread`)
 
@@ -118,19 +119,38 @@ x += sin(direction + deviation) * amount - sin(direction) * amount * control
 y += cos(direction + deviation) * amount - cos(direction) * amount * control
 ```
 
-Angles are converted to radians before the trigonometric functions. Recovery
-steps each axis independently toward zero, with a maximum step of 1/60 second:
+Angles are converted to radians before the trigonometric functions. The delta
+above is delivered uniformly over `group.duration` (normally 0.025 seconds).
+Missing or zero duration uses an immediate impulse. Recovery acts at the same time,
+independently on each axis, under this assumed continuous rate equation:
 
 ```text
-t += step
-recovery = (abs(axis)^decExp + decOffset) * decFactor * step * t^decTimeExp
+d(axis)/dt = deliveryRate - sign(axis) *
+             (abs(axis)^decExp + decOffset) * decFactor * t^decTimeExp
 ```
 
-The update cannot cross zero. `t` restarts for each inter-shot interval. The
-selected recoil group supplies recovery parameters, with legacy table/default
-fallbacks. `_adsRecoilDecayMult` scales the factor only in ADS. Recoil duration is
-not used to construct a separate kick animation in this calculation. Retained
-`decNorm` and `shootingDecScale` do not add independent recovery branches.
+Recovery clamps at zero. `t` restarts at each shot. During delivery, steps are at
+most 1 ms and split delivery around recovery. The time-power integral is exact;
+for `decExp = 1`, each recovery step also uses the exact displacement solution.
+Other displacement exponents use small numerical steps. Recovery continues after
+delivery with the same clock age. Overlapping impulses retain their full input.
+This removes the former 60 Hz right-endpoint integration bias; it does not claim
+the engine uses 1 ms ticks. The selected recoil group supplies recovery parameters,
+with legacy table/default fallbacks. `_adsRecoilDecayMult` or
+`_hipRecoilDecayMult` scales the factor for the selected aim state.
+
+Smooth recoil uses the approved approximation of a 0.05-second duration
+override and 1.2 recovery-factor multiplier in both aim states. The duration
+override precedes the existing ergonomics duration adjustment, then clamps at
+zero. Native modifier order and impulse shape remain unresolved. The former 1.1
+was an early visual estimate, not a constraint on this model. The recordings
+support slower Lightened delivery and lower sustained accumulation; they do not
+establish these exact engine operations. Hip behavior is source-based and has not
+been checked against hip recordings.
+
+Retained `decNorm` and `shootingDecScale` do not add independent recovery branches.
+See the [field review and validation](RECOIL_MODEL_VALIDATION_2026-09-11.md) for
+all omitted recoil fields, measured agreement, and the remaining error.
 
 `shotIntervalAfter()` uses `60 / rpm`, or `60 / burstRpm` within a burst when
 available. After the final shot in a burst, it uses the greater of the normal
@@ -147,8 +167,7 @@ and existing spread/variation effects remain active. The weapon base is unchange
 A larger decay factor alone does not establish faster recovery: raising the time
 exponent reduces `t^exponent` during sub-second intervals. Native timing remains
 unverified, so this is a source-parameter application within the current model.
-Smooth recoil remains at the estimated `1.1` ADS multiplier; duration modeling
-is unchanged.
+Smooth recoil composes with these stock values under the estimated rules above.
 
 ## Spread floors, growth and recovery
 
@@ -171,9 +190,10 @@ do not introduce an idle-state machine, first-shot multiplier or a source-driven
 radial distribution in this implementation.
 
 The stance and aim state select `adsStand`, `adsMove`, `hipStand` or `hipMove`.
-Moving ADS overrides the minimum with the source-ordered seven-row
-`MOVING_ACC_TIERS` table. Its index is `DEFAULT_MOV_TIER + sum(modifiers)`, clamped
-once after summing grip, laser, barrel and magazine effects.
+Moving ADS starts with the weapon's stored `spread.adsMove[0]`. Attachment changes
+shift from its index in the source-ordered seven-row `MOVING_ACC_TIERS` table,
+clamped once after summing grip, laser, barrel and magazine effects. The resulting
+minimum is written into `spread.adsMove[0]`; simulation and UI read that same bound.
 
 Hip minima use all 18 source-ordered rows in `HIP_SPREAD_TABLE`. The effective
 index is the weapon base (or explicit override) minus the sum of catalog hip

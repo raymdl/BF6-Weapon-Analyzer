@@ -40,10 +40,10 @@ are not a complete schema for every current weapon/attachment field. The cross-f
 Recoil groups contain `dir`, `amount`, `amountMult`, `amountExp`, `dirVar`,
 `dirVarMult`, `dirVarExp`, `decExp`, `decTimeExp`, `decOffset`, and `decFactor`.
 The simulator consumes these for amount/variation and per-axis recovery.
-`decNorm`, `duration`, and `shootingDecScale` are retained source fields but do not
-supply separate native norm, timed-kick, or shooting-recovery behavior in this model.
-An ergonomic duration modifier can change the retained `duration` without changing
-that boundary. See [recoil and spread](RECOIL_SPREAD_MODEL.md).
+`duration` supplies the time over which each impulse is delivered, with recovery
+active during delivery. Muzzle overrides and ergonomic additions change that time.
+`decNorm` and `shootingDecScale` remain retained without separate native norm or
+shooting-state behavior. See [recoil and spread](RECOIL_SPREAD_MODEL.md).
 
 `spreadDyn.ads` and `.hip` contain `inc`; `firingCoef`, `firingExp`, `firingOffset`;
 and `notFiringCoef`, `notFiringExp`, `notFiringOffset`. The simulator uses these for
@@ -61,7 +61,8 @@ weapon's availability map. Supported effect families are:
 | Fields | Consumer / semantics |
 |---|---|
 | `adsRecoilTierMod`, `hipRecoilTierMod`, `adsRecoilVariationTierMod`, `hipRecoilVariationTierMod` | Integer exponent changes, separated by aim state. |
-| `adsRecoilDecayMult`, `adsSpreadDecayBoost`, `hipSpreadDecayBoost` | Recoil-factor or spread-offset adjustments. The hip boost is read from the resolved light, not a combined laser record. |
+| `adsRecoilDecayMult`, `hipRecoilDecayMult` | Recovery-factor multipliers for the selected aim state. Smooth uses the approved approximation of 1.2 in both states. |
+| `adsSpreadDecayBoost`, `hipSpreadDecayBoost` | Spread-offset adjustments. The hip boost is read from the resolved light, not a combined laser record. |
 | `hipSpreadTierMod`, `movingAdsSpreadTierMod` | Source-array index shifts; signs and participating slots are specified in the ladder guide. |
 | `adsSpreadIncMult`, `adsSpreadFiringDecCoefMult`, `adsSpreadFiringDecOffsetMult` | ADS-only barrel adjustments; fitted recovery factors remain labeled. |
 | `adsSpreadDynOverride`, `hipSpreadDynOverride` | Field-wise dynamics replacement; ergo overrides win over ammo on the ADS branch. |
@@ -69,7 +70,8 @@ weapon's availability map. Supported effect families are:
 | `velTierMod`, `velMult` | Barrel velocity: tier field takes precedence; multiplier is compatibility fallback only when tier is absent. |
 | `reloadSpeedTier`, `reloadSpeedMult`, `tacRldOverrideMs` | Magazine factor index, ergonomic multiplier, or direct tactical-animation time. |
 | `setsFireModeAuto`, `setsFireModeBurst`, `autoRpm` | Receiver/ergonomic fire-mode selection; burst overrides are also supported by the resolver. |
-| `recoilDurationAdd`, `visualRecoil`, `sway`, `laserVisible` | Retained duration or qualitative/display behavior; no separate camera, sway, visibility or aim-assist simulation. |
+| `recoilDurationOverride`, `recoilDurationAdd` | Seconds of impulse delivery. Smooth overrides duration to 0.05, then ergonomics adds its adjustment; the result clamps at zero. Recovery acts during delivery. Native operation/order remain model assumptions. |
+| `visualRecoil`, `sway`, `laserVisible` | Qualitative/display behavior; no separate camera, sway, visibility or aim-assist simulation. |
 | `suppressor`, `worldSpot`, `minimapSpot`, `suppressedMinimapSpot` | Suppression selection and spot-on-fire distances. Zero is meaningful. |
 | `hsMult`, `collateralMult`, `healthRegenDelayS` | Hit-zone policy, collateral display multiplier and regeneration-delay tag; no penetration/regen event simulation. |
 
@@ -126,7 +128,7 @@ research output or frozen site copy.
 The balance maps `RECOIL_MULT`, `HIP_SPREAD_BASE_INDEX`,
 `HIP_SPREAD_BASE_INDEX_OVERRIDES`, `BASE_HS_MULT`, `COLLATERAL_MULT_OVERRIDE`,
 `LIMB_CLASS`, `LIMB_CLASS_MULT`, and `AUTO_HS_MULT` are keyed lookups, not positional
-ladders. `VELOCITY_LADDER`, `DEFAULT_MOV_TIER`, and `HEALTH_REGEN_DELAY_S` are scalars.
+ladders. `VELOCITY_LADDER` and `HEALTH_REGEN_DELAY_S` are scalars.
 The [ladder guide](STAT_LADDERS.md) and [damage guide](DAMAGE_BALLISTICS.md) explain
 how these participate. `ammoDragPerMeter` is an ammo-ID map, not a flight-time array.
 

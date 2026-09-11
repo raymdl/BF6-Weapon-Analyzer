@@ -70,19 +70,38 @@ export function uniformDev(rng, val) {
 // ── RECOIL DECAY ──────────────────────────────────────────────────────────────
 
 /**
- * Simulate recoil recovery over one inter-shot interval (sym.gg model).
- * Formula per frame: Δr = (|r|^decExp + decOffset) × decFactor × dt × t^timeExp
+ * Simulate recoil recovery over one interval under the assumed rate equation.
+ * Assumed recovery rate: (|r|^decExp + decOffset) × decFactor × t^timeExp.
  * Applied independently to vertical and horizontal components.
+ * The time integral is exact; non-linear displacement uses bounded small steps.
  */
-export function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, decOffset = 0.06) {
-  const dt = 1 / 60;
-  let t = 0;
-  while (t < interShotTime) {
-    const step = Math.min(dt, interShotTime - t);
-    t += step;
-    const dec = (Math.pow(Math.abs(r), decExp) + decOffset) * decFactor * step * Math.pow(t, timeExp);
-    if (r > 0) r = Math.max(0, r - dec);
-    else if (r < 0) r = Math.min(0, r + dec);
+const RECOIL_TIME_STEP = 0.001;
+
+function recoilRecoveryWeight(factor, exponent, time, step) {
+  const power = exponent + 1;
+  return factor * ((time + step) ** power - time ** power) / power;
+}
+
+function recoverRecoilAxis(r, exponent, offset, weight) {
+  const magnitude = Math.abs(r);
+  const remaining = exponent === 1
+    ? (magnitude + offset) * Math.exp(-weight) - offset
+    : magnitude - (magnitude ** exponent + offset) * weight;
+  return Math.sign(r) * Math.max(0, remaining);
+}
+
+export function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, decOffset = 0.06, startTime = 0) {
+  if (interShotTime <= 0 || r === 0 || decFactor === 0) return r;
+  if (decExp === 1) {
+    return recoverRecoilAxis(r, decExp, decOffset,
+      recoilRecoveryWeight(decFactor, timeExp, startTime, interShotTime));
+  }
+  let elapsed = 0;
+  while (elapsed < interShotTime - 1e-12 && r !== 0) {
+    const step = Math.min(RECOIL_TIME_STEP, interShotTime - elapsed);
+    r = recoverRecoilAxis(r, decExp, decOffset,
+      recoilRecoveryWeight(decFactor, timeExp, startTime + elapsed, step));
+    elapsed += step;
   }
   return r;
 }
@@ -155,7 +174,7 @@ export function selectedRecoilVariationFor(w) {
 
 /**
  * [min, max] spread in degrees for the current aim+stance state.
- * Applies the _movingAdsMinSpreadDeg floor when moving ADS.
+ * Reads the bounds after attachment effects have been applied.
  */
 export const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
 export const SPREAD_BAR_SCALE = 12;
@@ -165,8 +184,6 @@ export function spreadBounds(w) {
   const key = `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
   const bounds = w.spread?.[key]
     ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
-  if (aimState === 'ads' && stanceState === 'move' && w._movingAdsMinSpreadDeg != null)
-    return [w._movingAdsMinSpreadDeg, bounds[1]];
   return bounds;
 }
 
@@ -328,23 +345,55 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
   const pts  = [{ x: 0, y: 0 }];
   const group = recoilGroup(w);
   const baseDecF = group.decFactor  ?? RECOIL_DEC[w.id]     ?? 72;
-  const decF    = baseDecF * (_ctx.aimState === 'ads' ? (w._adsRecoilDecayMult ?? 1) : 1);
+  const decF    = baseDecF * (_ctx.aimState === 'ads'
+    ? (w._adsRecoilDecayMult ?? 1) : (w._hipRecoilDecayMult ?? 1));
   const decExp  = group.decExp     ?? RECOIL_DEC_EXP[w.id]  ?? 1;
   const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
   const decOffset = group.decOffset ?? 0.06;
   const amount      = selectedRecoilAmountFor(w);
   const variation   = selectedRecoilVariationFor(w);
   const compensation = compensationFn() / 100;
-  let cx = 0, cy = 0;
+  const duration = Math.max(0, group.duration ?? 0);
+  const pending = [];
+  let cx = 0, cy = 0, now = 0;
   for (let i = 1; i < shots; i++) {
     const dir    = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
     const spread = uniformDev(rng, variation) * Math.PI / 180;
     const angle  = dir + spread;
-    cx += Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
-    cy += Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
+    const dx = Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
+    const dy = Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
+    if (duration > 0) {
+      pending.push({ end: now + duration, xRate: dx / duration, yRate: dy / duration });
+    } else {
+      cx += dx;
+      cy += dy;
+    }
     const interShotTime = shotIntervalAfter(w, i);
-    cx = applyRecoilDecay(cx, decF, decExp, timeExp, interShotTime, decOffset);
-    cy = applyRecoilDecay(cy, decF, decExp, timeExp, interShotTime, decOffset);
+    const end = now + interShotTime;
+    // Reset recovery age on each shot, but retain unfinished earlier impulses.
+    let elapsed = 0;
+    while (now < end - 1e-12) {
+      while (pending.length && pending[0].end <= now + 1e-12) pending.shift();
+      if (!pending.length) {
+        cx = applyRecoilDecay(cx, decF, decExp, timeExp, end - now, decOffset, elapsed);
+        cy = applyRecoilDecay(cy, decF, decExp, timeExp, end - now, decOffset, elapsed);
+        now = end;
+        break;
+      }
+      const step = Math.min(RECOIL_TIME_STEP, end - now, pending[0].end - now);
+      let xRate = 0, yRate = 0;
+      for (const impulse of pending) {
+        xRate += impulse.xRate;
+        yRate += impulse.yRate;
+      }
+      const weight = recoilRecoveryWeight(decF, timeExp, elapsed, step);
+      // Split delivery around recovery; neither waits for the other to finish.
+      cx = recoverRecoilAxis(cx + xRate * step / 2, decExp, decOffset, weight) + xRate * step / 2;
+      cy = recoverRecoilAxis(cy + yRate * step / 2, decExp, decOffset, weight) + yRate * step / 2;
+      elapsed += step;
+      now += step;
+    }
+    now = end;
     pts.push({ x: cx, y: cy });
   }
   return pts;

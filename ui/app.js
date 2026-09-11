@@ -43,7 +43,7 @@ try {
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
         BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH: _HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
-        MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+        MOVING_ACC_TIERS,
         ADS_SPD_TIERS, ADS_MOVE_TIERS,
         DRAW_TIME_TABLES } = _balance;
 const HP_HS_HIGH = new Set(_HP_HS_HIGH);
@@ -237,7 +237,7 @@ setAttachmentContext({
   AMMO, WEAPON_AMMO,
   RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
   BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
-  MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+  MOVING_ACC_TIERS,
   ADS_SPD_TIERS, ADS_MOVE_TIERS,
   DRAW_TIME_TABLES,
   RELOAD_SPEED_MULTIPLIERS: _balance.RELOAD_SPEED_MULTIPLIERS,
@@ -740,7 +740,7 @@ function renderOverview() {
       tooltip: 'Vertical recoil added per shot while aiming down sights. Lower is easier to control.' },
     { lbl: 'Recoil Dir',  k: 'recoilDir',                                unit: '°',   fmt: v => ((-v) >= 0 ? '+' : '') + (-v),       absDiff: true, group: 'recoil',
       tooltip: 'Average recoil direction from vertical. Positive values pull right; negative values pull left.' },
-    { lbl: 'ADS Spread', compute: w => ({ stand: w.spread?.adsStand?.[0] ?? 0.05, move: w._movingAdsMinSpreadDeg ?? w.spread?.adsMove?.[0] ?? 0.32 }), unit: '',
+    { lbl: 'ADS Spread', compute: w => ({ stand: w.spread?.adsStand?.[0] ?? 0.05, move: w.spread?.adsMove?.[0] ?? 0.32 }), unit: '',
       fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true, group: 'spread',
       tooltip: 'Base standing ADS spread and moving ADS spread. Lower is more accurate.' },
@@ -1950,7 +1950,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after attachment effects. Lower builds spread more slowly.' },
     { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle and barrel effects. Higher clears spread faster.' },
     { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing after attachment effects. Higher clears spread faster.' },
-    { lbl: 'Mov Spread',          val: w => w._movingAdsMinSpreadDeg,        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
+    { lbl: 'Mov Spread',          val: w => w.spread?.adsMove?.[0],        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
     { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
     { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes your 3D world position. None or shorter is better.' },
     { lbl: 'Minimap Spot',        val: w => w._minimapSpot,                  unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes you on the minimap. None or shorter is better.' },

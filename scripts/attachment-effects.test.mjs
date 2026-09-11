@@ -233,12 +233,25 @@ test('Folding Stock applies hip effects and source decay overrides without chang
   }
 });
 
-test('Smooth recoil retains its 1.1 ADS multiplier', () => {
-  for (const muzzle of ['long_supp', 'light_supp']) {
-    const entry = attachments.MUZZLES.find(item => item.id === muzzle);
-    assert.ok(entry, muzzle);
-    assert.equal(build(weapon('m433'), { muzzle })._adsRecoilDecayMult, 1.1);
+test('Smooth recoil resolves Frosty duration and recovery in both aim states without changing the base', () => {
+  const w = weapon('m433');
+  for (const muzzle of ['comp_brake', 'flash_comp', 'long_supp', 'light_supp',
+    'compensator', 'hybrid_supp_l', 'hybrid_supp_s', 'hybrid_supp_k']) {
+    const result = build(w, { muzzle });
+    assert.equal(result._adsRecoilDecayMult, 1.2);
+    assert.equal(result._hipRecoilDecayMult, 1.2);
+    for (const aim of ['ads', 'hip']) {
+      assert.equal(result.recoil[aim].duration, 0.05);
+      assert.equal(w.recoil[aim].duration, 0.025);
+    }
   }
+  const standard = build(w, { muzzle: 'std_supp' });
+  assert.equal(standard.recoil.ads.duration, 0.025);
+  assert.equal(standard._adsRecoilDecayMult, 1);
+  assert.equal(standard._hipRecoilDecayMult, 1);
+  const combined = build(weapon('m16a4'), { muzzle: 'light_supp', ergo: 'full_auto' });
+  assert.equal(combined.recoil.ads.duration, 0.0494);
+  assert.equal(combined.recoil.hip.duration, 0.0494);
 });
 
 test('VSSM barrel spotting applies to both selectable suppressed barrels', () => {
@@ -272,15 +285,15 @@ test('compact magazine secondary effects reach the existing moving spread and sw
   const compact = build(w, { mag: '20_rnd' });
   const fast = build(w, { mag: '20_fast' });
   assert.equal(compact._movingAdsSpreadTierMod, base._movingAdsSpreadTierMod + 1);
-  assert.notEqual(compact._movingAdsMinSpreadDeg, base._movingAdsMinSpreadDeg);
+  assert.notEqual(compact.spread.adsMove[0], base.spread.adsMove[0]);
   assert.equal(fast._weaponSway, base._weaponSway - 1);
   assert.equal(compact._weaponSway, base._weaponSway);
   const rpk = weapon('rpk74m');
   const rpkBase = build(rpk);
   for (const mag of ['30_rnd', '30_fast']) {
     const selected = build(rpk, { mag });
-    assert.equal(selected._movingAdsMinSpreadDeg, 0.22);
-    assert.equal(rpkBase._movingAdsMinSpreadDeg, 0.32);
+    assert.equal(selected.spread.adsMove[0], 0.22);
+    assert.equal(rpkBase.spread.adsMove[0], 0.32);
     assert.equal(selected._weaponSway, rpkBase._weaponSway - 1);
     assert.deepEqual(selected.spreadDyn, rpkBase.spreadDyn);
     assert.equal(selected.mag, 30);

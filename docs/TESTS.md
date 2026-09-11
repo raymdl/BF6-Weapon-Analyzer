@@ -41,6 +41,7 @@ All paths in this table are under `scripts/`.
 | [draw-time.test.mjs](../scripts/draw-time.test.mjs) | Source timing tables, selection, independent shifts, final clamping and invalid-input behavior. |
 | [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | Disclosure, cross-file coverage, reviewed weapon/ammo/reload decisions and compatibility cases. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |
+| [recoil.test.mjs](../scripts/recoil.test.mjs) | Analytic recovery, timed delivery, overlapping impulses, clock reset/burst pauses, compensation, aim-state factors, and deterministic seeds. Attachment tests also cover Smooth duration and receiver composition without base mutation. |
 | [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults and weapon-specific attachment validation. |
 | [source-arrays.test.mjs](../scripts/source-arrays.test.mjs) | Exact row order/precision, hip/shotgun indexing, moving/ADS arrays and composition boundaries. |
 | [spread-bar-scale.test.mjs](../scripts/spread-bar-scale.test.mjs) | Default and valid single-attachment spread outputs fit the shared axis across aim/stance contexts. |

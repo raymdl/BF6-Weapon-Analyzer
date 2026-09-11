@@ -122,8 +122,11 @@ metadata; a configured `autoRpm` can change cadence, as with VSSM Folding Stock'
 800 RPM. Folding Stock also sets `recoilDecreaseFactorOverride: 76` and
 `recoilDecreaseTimeExponentOverride: 1.24`. The resolver copies these to `decFactor`
 and `decTimeExp` in both aim-state groups, without modifying the base weapon.
-The current recovery equation consumes them. Smooth recoil retains its separate
-`1.1` ADS multiplier. Duration additions modify retained recoil data. Visual recoil, sway and
+The current recovery equation consumes them. Smooth recoil uses the operator-approved
+`1.2` recovery multiplier in both aim states and a `0.05`-second duration override.
+The override precedes ergonomics duration additions; the simulation delivers
+recoil over the resulting duration with concurrent recovery. See the
+[validation and assumptions](RECOIL_MODEL_VALIDATION_2026-09-11.md). Visual recoil, sway and
 laser visibility are descriptors; there is no separate camera/sway/visibility model.
 
 `assumed:true` or nonempty `assumedFields` marks a selectable effect as assumed.

@@ -1,0 +1,157 @@
+{
+  "date": "2026-09-10",
+  "weaponId": "brod3",
+  "sourceBuild": "1.4.2.5 (user-supplied export label)",
+  "method": "Re-read existing offline XML exports; no fresh game-install export or live runtime measurement.",
+  "sourceSha256": {
+    "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB.xml": "eae644722ac366c9d70121d33c691b94bd5ccb4f694c1339eddbaaa3293f0776",
+    "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3.xml": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+    "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Carbine.xml": "6063730736cf647c04693f56ed323ca066f3ad7928608f9648052eade882fe58",
+    "Common/Hardware/Common/Arrays/DispersionADS/ZDA_Moving_Weapons.xml": "a7b6d175b2270f61b88d648d09e8935df64544cd1e26c82d9e5a04244cb13546",
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51"
+  },
+  "damage": {
+    "wbReferenceField": "Field_808dd66c",
+    "wbReference": "[Ebx] Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Carbine [095e9cc2-bde1-44a8-9214-404a558cb1a6]",
+    "projectileGuid": "095e9cc2-bde1-44a8-9214-404a558cb1a6",
+    "curveReferenceField": "Field_2ad7e688",
+    "curveGuid": "2e41a117-80c1-4b6c-9ef6-b04cf30f53c3",
+    "pointArrayField": "Field_5279388d",
+    "registryGuid": "1c0e5eed-960f-4066-b73f-3de8f63aaee2",
+    "registryName": "PD_556x45mmNATO_Carbine.BulletEntityData.TweakableDamageCurve",
+    "frostyCurve": [
+      [
+        0.0,
+        26.05
+      ],
+      [
+        9.0,
+        26.05
+      ],
+      [
+        9.0,
+        21.56
+      ],
+      [
+        21.0,
+        21.56
+      ],
+      [
+        21.0,
+        17.74
+      ],
+      [
+        36.0,
+        17.74
+      ],
+      [
+        36.0,
+        17.13
+      ],
+      [
+        75.0,
+        17.13
+      ],
+      [
+        75.0,
+        14.62
+      ]
+    ],
+    "previousSiteCurve": [
+      [
+        0,
+        26.05
+      ],
+      [
+        9,
+        26.05
+      ],
+      [
+        9,
+        21.56
+      ],
+      [
+        21,
+        21.56
+      ],
+      [
+        21,
+        17.74
+      ],
+      [
+        36,
+        17.74
+      ],
+      [
+        36,
+        17.13
+      ],
+      [
+        75,
+        17.13
+      ],
+      [
+        75,
+        14.62
+      ]
+    ],
+    "peerSymCurve": [
+      [
+        0,
+        25
+      ],
+      [
+        9,
+        25
+      ],
+      [
+        9,
+        21.5
+      ],
+      [
+        21,
+        21.5
+      ],
+      [
+        21,
+        17.7
+      ],
+      [
+        36,
+        17.7
+      ],
+      [
+        36,
+        16.7
+      ],
+      [
+        75,
+        16.7
+      ],
+      [
+        75,
+        14.3
+      ]
+    ],
+    "decision": "Keep current damage: exact ordered curve match to direct BREN3-referenced projectile and named registry binding. Peer/Sym magnitudes differ."
+  },
+  "movingAdsMinimum": {
+    "gsGuid": "9d5b80ce-d550-4e75-9689-e3a44a3b2711",
+    "arrayReferenceField": "Field_b5e19f3d",
+    "arrayReference": "[Ebx] Common/Hardware/Common/Arrays/DispersionADS/ZDA_Moving_Weapons [a6dfab2f-b73e-4f91-ad65-ee129fcafe59]",
+    "indexField": "Field_d94fe6ad",
+    "rawIndex": "0x00000003",
+    "index": 3,
+    "rowGuid": "ce4cb78c-51a2-48b7-95fa-c34b82d52838",
+    "valueField": "Field_6c73f45b",
+    "previousStoredValue": 0.35,
+    "value": 0.32,
+    "defaultSelectionEvidence": "frosty-array-review-2026-09-09.json: brod3 default magazine/barrel/ammo movingAdsSpread additions are all zero.",
+    "decision": "Correct stored moving ADS minimum to 0.32; runtime indexed table already contains 0.32."
+  },
+  "limits": [
+    "Does not prove native curve activation under every modifier or mode.",
+    "No new decode of ambiguous BREN3 recoil/spread fields.",
+    "Historical donor and source records are retained."
+  ]
+}

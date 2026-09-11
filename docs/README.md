@@ -5,6 +5,11 @@
 should update the affected guide alongside the implementation. Source-version
 labels describe evidence provenance, not an independent certification of all game behavior.
 
+The recoil model was updated and approved on 11 September 2026: timed delivery
+with simultaneous recovery, and Smooth duration/recovery operands of 0.05 seconds
+and 1.2. Approval accepts the documented approximation; native engine arithmetic
+remains unresolved.
+
 ## Choose a guide
 
 | Guide | Audience and scope |
@@ -17,6 +22,9 @@ labels describe evidence provenance, not an independent certification of all gam
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
 | [Recoil and spread](RECOIL_SPREAD_MODEL.md) | Model readers: per-shot equations, recovery, sampling, calibration, visual interpretation. |
+| [Recoil validation](RECOIL_MODEL_VALIDATION_2026-09-11.md) | Model maintainers: approved duration/recovery rules, recording comparisons, unused inputs, and remaining error. |
+| [Recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) | Researchers: capture status, historical findings, and optional future investigations. |
+| [Stored-spread source review](HANDOFF_FROSTY_SPREAD_2026-09-10.md) | Data maintainers: EF88/BROD 3 source checks and the stored moving-ADS minimum correction. |
 | [Model limitations](MODEL_LIMITATIONS.md) | All readers: retained-but-unused fields, estimates, unresolved composition and validation gaps. |
 | [Maintenance](../MAINTENANCE.md) | Contributors: change procedures, evidence requirements, compatibility and shipping checks. |
 | [Tests](TESTS.md) | Contributors: actual checks, their coverage, manual verification and research-tool boundaries. |

@@ -20,7 +20,7 @@ that the current resolver has since addressed.
 
 | Area | Current boundary |
 |---|---|
-| Recoil `duration` | Retained and optionally modified by ergonomics; no timed kick accumulation or recoil-duration integration. |
+| Recoil `duration` | Integrated as uniform delivery with concurrent recovery; native delivery shape and modifier order remain unresolved. |
 | Recoil `decNorm`, `shootingDecScale` | Retained; no independent native norm/scaling branch. Current recovery is component-wise stepped arithmetic. |
 | Spread `idle*`, `firstShotMul`, `distExp` | Retained; no idle-state machine or first-shot multiplier application. Renderer uses its fixed uniform-radius sampler. |
 | Hip table's five hashed columns | Preserved exactly; runtime uses only standing/moving columns. Additional stance meanings are not assigned. |
@@ -32,7 +32,15 @@ that the current resolver has since addressed.
 
 **Recoil recovery and smooth-recoil attachments.** The source factors, exponent
 fields, and native class layouts do not independently validate the current recovery
-equation. Smooth recoil retains the estimated `1.1` ADS recovery multiplier.
+equation. On 11 September 2026, the operator approved the approximation of a
+0.05-second duration override and
+1.2 recovery-factor multiplier in ADS and hip. The source provides these operands;
+recordings support the qualitative effect, not the exact native arithmetic.
+Recovery uses a continuous reset-on-shot clock with at most 1 ms delivery steps.
+The old 1.1 was an early visual estimate and is no longer used.
+The new M4A1 15-round recoil-only height reduction is 10.0%, compared with about
+15% in the impact/camera observations. Camera pixels are not projectile angles.
+See [validation and unused-field review](RECOIL_MODEL_VALIDATION_2026-09-11.md).
 VSSM Folding Stock now applies source decay factor `76` and time exponent `1.24`
 in both ADS and hip fire, alongside its hip effects and 800 RPM automatic mode.
 These values use the existing recovery equation; native timing remains unverified.

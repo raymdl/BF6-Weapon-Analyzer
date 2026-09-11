@@ -24,7 +24,6 @@ test('ADS calculations retain source precision while the panel keeps captured ro
     evidence.arrays.zoom.FZTT_General_01.map(value => +(value * 1000).toFixed(6)));
   assert.deepEqual(balance.ADS_MOVE_TIERS, evidence.arrays.adsMove);
   assert.deepEqual(balance.MOVING_ACC_TIERS, evidence.arrays.movingAdsSpread.map(row => Number(row.Field_6c73f45b)));
-  assert.equal(balance.DEFAULT_MOV_TIER, 3);
   assert.deepEqual(balance.ADS_SPD_TIERS.map(formatMilliseconds), [500, 433, 367, 300, 250, 200, 167, 133]);
   assert.deepEqual(balance.ADS_MOVE_TIERS.map(formatMovementMultiplier),
     ['0.32', '0.32', '0.37', '0.42', '0.47', '0.54', '0.60', '0.67', '0.75', '0.82', '0.91', '1.00']);
@@ -88,4 +87,31 @@ test('double reload tier uses the exported 1.277 factor without rounding the cal
   assert.equal(result.tacRld, 3 / (1.277 * 1.063));
   assert.notEqual(result.tacRld, 3 / (1.13 ** 2 * 1.063));
   assert.equal(result.tacRld.toFixed(3), '2.210');
+});
+
+
+test('moving ADS uses each stored base and applies attachment shifts to that base', () => {
+  const source = weapons.find(w => w.id === 'ef88');
+  const custom = { ...source, spread: { ...source.spread, adsMove: [0.43, 8] } };
+  const original = structuredClone(custom);
+  const atts = {};
+  resetAttsForWeapon(atts, custom, { ...attachments, ...ammo });
+  const context = { ...attachments, ...ammo, ...balance, HP_HS_HIGH: new Set(balance.HP_HS_HIGH) };
+  setAttachmentContext({ ...context, GRIPS: [...attachments.GRIPS,
+    { id: 'test_shift', movingAdsSpreadTierMod: 1 },
+    { id: 'test_clamp', movingAdsSpreadTierMod: 100 },
+  ] });
+  try {
+    assert.deepEqual(applyAttachments(custom, atts).spread.adsMove, [0.43, 8]);
+    assert.deepEqual(applyAttachments(custom, { ...atts, grip: 'test_shift' }).spread.adsMove, [0.32, 8]);
+    assert.deepEqual(applyAttachments(custom, { ...atts, grip: 'test_clamp' }).spread.adsMove, [0.05, 8]);
+    assert.deepEqual(custom, original);
+    for (const weapon of weapons) {
+      const defaults = {};
+      resetAttsForWeapon(defaults, weapon, { ...attachments, ...ammo });
+      assert.equal(applyAttachments(weapon, defaults).spread.adsMove[0], weapon.spread.adsMove[0], weapon.id);
+    }
+  } finally {
+    setAttachmentContext(context);
+  }
 });

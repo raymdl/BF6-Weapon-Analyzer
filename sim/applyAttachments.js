@@ -17,7 +17,7 @@ import { resolveHitMultipliers } from './damage.js';
  *     AMMO,
  *     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
  *     BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
- *     MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+ *     MOVING_ACC_TIERS,
  *     ADS_SPD_TIERS, ADS_MOVE_TIERS,
  *     DRAW_TIME_TABLES,
  *     VELOCITY_LADDER, HEALTH_REGEN_DELAY_S,
@@ -37,7 +37,7 @@ let _ctx = {
   RECOIL_MULT: {}, HIP_SPREAD_TABLE: [], HIP_SPREAD_BASE_INDEX: {}, HIP_SPREAD_BASE_INDEX_OVERRIDES: {},
   BASE_HS_MULT: {}, COLLATERAL_MULT_OVERRIDE: {}, HP_HS_HIGH: new Set(),
   LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
-  MOVING_ACC_TIERS: [], DEFAULT_MOV_TIER: 3,
+  MOVING_ACC_TIERS: [],
   ADS_SPD_TIERS: [], ADS_MOVE_TIERS: [],
   DRAW_TIME_TABLES: null,
   RELOAD_SPEED_MULTIPLIERS: [1, 1.13, 1.277],
@@ -305,7 +305,7 @@ export function applyAttachments(w, atts) {
     MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
     BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
-    MOVING_ACC_TIERS, DEFAULT_MOV_TIER,
+    MOVING_ACC_TIERS,
     ADS_SPD_TIERS, ADS_MOVE_TIERS,
     DRAW_TIME_TABLES,
   } = _ctx;
@@ -468,11 +468,17 @@ export function applyAttachments(w, atts) {
     + (las.movingAdsSpreadTierMod ?? 0)
     + (bar.movingAdsSpreadTierMod ?? 0)
     + (magData?.movingAdsSpreadTierMod ?? 0);
-  const movingAdsSpreadTier    = Math.min(
-    Math.max(DEFAULT_MOV_TIER + movingAdsSpreadTierMod, 0),
-    MOVING_ACC_TIERS.length - 1,
-  );
-  const movingAdsMinSpreadDeg  = MOVING_ACC_TIERS[movingAdsSpreadTier];
+  const movingAdsBaseMin = w.spread?.adsMove?.[0];
+  const movingAdsBaseTier = MOVING_ACC_TIERS.indexOf(movingAdsBaseMin);
+  if (movingAdsSpreadTierMod !== 0 && movingAdsBaseTier >= 0) {
+    const tier = Math.max(0, Math.min(
+      MOVING_ACC_TIERS.length - 1, movingAdsBaseTier + movingAdsSpreadTierMod,
+    ));
+    spreadOverride = {
+      ...(spreadOverride ?? w.spread),
+      adsMove: [MOVING_ACC_TIERS[tier], w.spread.adsMove[1]],
+    };
+  }
 
   const magMag    = magData?.mag   ?? null;
   const reloadResolution = resolveReloadTiming({
@@ -533,6 +539,7 @@ export function applyAttachments(w, atts) {
     ? ergoData.autoRpm ?? w.autoRpm ?? null
     : null;
   const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd
+    || muz.recoilDurationOverride != null
     || ergoData.recoilDecreaseFactorOverride != null || ergoData.recoilDecreaseTimeExponentOverride != null)
     ? Object.fromEntries(Object.entries(w.recoil).map(([state, group]) => [state, {
       ...group,
@@ -544,8 +551,10 @@ export function applyAttachments(w, atts) {
         ? { amountExp: (group.amountExp ?? 0) + totalHipRecoilTierMod } : {}),
       ...(state === 'hip' && totalHipVarTierMod
         ? { dirVarExp: (group.dirVarExp ?? 0) + totalHipVarTierMod } : {}),
-      ...(group.duration != null && ergoData.recoilDurationAdd
-        ? { duration: +(group.duration + ergoData.recoilDurationAdd).toFixed(6) } : {}),
+      // Model choice: apply the Smooth override before the receiver's additive change.
+      ...((group.duration != null && ergoData.recoilDurationAdd) || muz.recoilDurationOverride != null
+        ? { duration: +Math.max(0, (muz.recoilDurationOverride ?? group.duration)
+          + (ergoData.recoilDurationAdd ?? 0)).toFixed(6) } : {}),
     }]))
     : w.recoil;
 
@@ -558,6 +567,7 @@ export function applyAttachments(w, atts) {
     _adsSpreadFiringDecCoefMult:   bar.adsSpreadFiringDecCoefMult ?? 1,
     _adsSpreadFiringDecOffsetMult: bar.adsSpreadFiringDecOffsetMult ?? 1,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
+    _hipRecoilDecayMult:     muz.hipRecoilDecayMult ?? 1,
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
     _worldSpot:              worldSpot,
     _minimapSpot:            minimapSpot,
@@ -565,7 +575,6 @@ export function applyAttachments(w, atts) {
     _visualRecoil:           ergoData.visualRecoil ?? 0,
     _laserVisible:           las.laserVisible ?? null,
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
-    _movingAdsMinSpreadDeg:  movingAdsMinSpreadDeg,
     _adsTimeTierMod:         combinedAdsTimeTierMod,
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs, _undeployTimeMs,
     _hsMult:                 hsMult,
