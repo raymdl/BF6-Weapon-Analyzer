@@ -1,6 +1,6 @@
 # Active Frosty recoil and spread investigations
 
-Updated 11 September 2026. This is the active research handoff. Completed
+Updated 12 September 2026. This is the active research handoff. Completed
 analysis and implementation records are in [the archive](../archive/README.md).
 The [full recording history](../archive/BF6_RECOIL_SPREAD_RECORDING_HISTORY_2026-09-11.md)
 preserves the previous detailed handoff, field inventory, measurements, capture
@@ -57,9 +57,13 @@ AK4D ADS indicator widths divided by model peaks give about 29.5–32.4 px/degre
 That is below the hipfire scale; ADS indicator geometry and sampled peaks are unverified.
 
 **Frosty registry scan** (`outputs/frosty-recoil-field-scan-2026-09-12/`). It
-covers 62 of 63 weapons; BROD 3 (`BREN3`) is absent from `GRX_Weapons.xml`. Site
-base recoil fields match the registry in both aim states, with no mismatches. All
-248 `MultiplierByOrder` arrays are empty. `FirstShotIncreaseMultiplier` is 1.0
+covers 62 weapons named in `GRX_Weapons.xml`. BROD 3 (`BREN3`) has no named
+registry entries there, so `decode_bren3.py` reads `GS_BREN3.xml` by learning leaf
+positions from the named weapons. Leave-one-out checks on seven weapons recover
+150–152 of 152 fields, with no wrong value accepted; all 152 BREN3 fields decode.
+Site base recoil fields match the source in both aim states for all 63 weapons,
+including BROD 3. BROD 3 dispersion values match the site and have no non-neutral
+flags. All 248 named `MultiplierByOrder` arrays are empty. `FirstShotIncreaseMultiplier` is 1.0
 everywhere. Non-neutral values: `VerticalRecoilIncrease` 0.6 on 16 non-automatic
 weapons, all with `UsePolarRecoil` true; `MaxVerticalRecoil` 90 on three pistols.
 `DistributionExponent` is 0.5 on almost every branch (0.67 for `DesertTechHTI`
@@ -113,6 +117,31 @@ magazine, and 10-point **Tungsten Match / Range Penetration** ammo. Version
 calibration to this VSSM set or treat it as a factory-barrel comparison.
 
 ## Remaining follow-up from completed recording sets
+
+The [12 September reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md)
+uses the existing M4A1, AK4D, TR7, and VSSM recordings before requesting more.
+It supports retaining the current simulator parameters. Key capture-plan
+updates:
+
+- Existing isolated/semi-auto/rapid footage has no usable red pairs in the
+  reviewed shot windows. Test indicator visibility before repeating a pause
+  series; missing marks are not zero spread.
+- M4A1 burst peaks are nearly equal between suppressors. Its burst traces
+  support a post-fire recovery change, but not an exact switch timer or a
+  different first-shot multiplier.
+- AK4D hipfire returns to its standing HUD width near 0.21 s, before its 0.6 s
+  hipfire idle time. ADS idle time is 0.4 s. An idle test needs measurable
+  excess beyond the applicable boundary; more identical bursts will not help.
+- The VSSM no-shot transitions favor a common nearly constant visible rate.
+  No-fire movement paths are also measured, including fast VSSM stop exceptions.
+  Keep those results separate from a native spread equation.
+- For physical aim, retain the isolated camera tracks and first test whether
+  individual impacts in a paired-shot pilot can be assigned to their shots.
+  Fully reset isolated shots alone do not sample aim for a following projectile.
+
+Use the report's minimal capture order below the completed-set recommendations.
+The scenarios that follow describe the open questions; they do not require
+repeating existing controls or recording a full series before a visibility check.
 
 - **VSSM:** Do not repeat the accepted standing index comparison or no-fire
   controls. Investigate hipfire firing, the no-shot hipfire-to-ADS recovery path,
