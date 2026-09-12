@@ -1,0 +1,1276 @@
+{
+  "date": "2026-09-07",
+  "changes": [
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/37_Mini Scout_Magazine_15Rnd_Magazine.png",
+      "sha256": "32546044672b34772f37154ddfca7716098f7ace9caca63d2b9d2d268692d7b5",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Direct visual review of saved detailed panel on 2026-09-07; displayed X0.60."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/38_Mini Scout_Magazine_15Rnd_Fast_Mag.png",
+      "sha256": "4c0c01f7de0088a71e76bd42e13d5e4ba71da50e66415ea40e64c63a88fc3ad0",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Direct visual review of saved detailed panel on 2026-09-07; displayed X0.60."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/39_Mini Scout_Magazine_20Rnd_Magazine.png",
+      "sha256": "0e4d45531c201ba078b342a9cdebfcbe456c469ac97a3059b02878f4f43ac4dd",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Direct visual review of saved detailed panel on 2026-09-07; displayed X0.60."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/40_Mini Scout_Magazine_20Rnd_Fast_Mag.png",
+      "sha256": "099cd2de03b9c915fecc1baa66fcf27fe63585d12cc05f75426f4f5642ab62ba",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Direct visual review of saved detailed panel on 2026-09-07; displayed X0.60."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/AK4D/57_AK4D_Ammo_Hollow_Point.png",
+      "sha256": "6c92e7d3ca26b5fd16c97a6ecf88c5cf75528a067585efa1936922bd91dbee09",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/NVO-228E/58_NVO-228E_Ammo_Hollow_Point.png",
+      "sha256": "f04e3b7ca4a71b4563b1ab07f3dd84eafbc118d58f00633aac21d451dae40ca3",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/TR7/54_TR7_Ammo_Hollow_Point.png",
+      "sha256": "22aa204d1725a1e043cb0b935fcd091fb5768ed73bd4bd8becdff1b8101cc06f",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/AK-205/53_AK-205_Ammo_Synthetic_Tip.png",
+      "sha256": "38b71b6d1f40cadbddd2cf75a42c37edab074958dd46ca6ed39b7829593b843b",
+      "field": "attachmentCost",
+      "before": 20,
+      "after": 25,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/GRT-BC/54_GRT-BC_Ergonomics_Burst_Training.png",
+      "sha256": "63e701d4acad78fb067b50259145e33341e4cefa559a36405ef510bd348747ce",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 10,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/QBZ-192/46_QBZ-192_Ammo_Synthetic.png",
+      "sha256": "4df6c54de52688956c7c1c83c0f5cffdd84d1714783bcadad0e7f7963d3e4e20",
+      "field": "attachmentCost",
+      "before": 20,
+      "after": 25,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/43_SGX_Magazine_41Rnd_Magazine.png",
+      "sha256": "12c181e2e872667bba3ac6bf1b9b88ccb2bff72d5209d8228574df57b62f5339",
+      "field": "attachmentCost",
+      "before": 20,
+      "after": 25,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/43_M240L_Magazine_75Rnd_Belt_Box.png",
+      "sha256": "8e8a865ea65e921f0da483abb5cb952fdcbb0ca851b6467fbc9e4896ff3b4ff6",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 10,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/48_M240L_Ammo_Hollow_Point.png",
+      "sha256": "970a86445cf041f048e13680d71ee64fa80d641e4e8e0454652f06b0271218c1",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M60/51_M60_Ammo_Hollow_Point.png",
+      "sha256": "efc2a4e38c41043c410b51c9562c667295b506a033ee703eab2b261354a91c00",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/04_RPKM_Muzzle_SLANT_BRAKE.png",
+      "sha256": "78558e50a592d6308ad04a168aa0600e44d0d0ecb1b0d2b34711c58d4649e7c3",
+      "field": "attachmentCost",
+      "before": 10,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/58_RPKM_Ammo_Hollow_Point.png",
+      "sha256": "9a47e69c350689fd3a40e92964f9a853ee67cf5f4e03ec9a37b3e83d5bfa71ca",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/59_RPKM_Ammo_Synthetic_Tip.png",
+      "sha256": "b61549fb87b28a86bd7758452915e3d1915c9b494c7c88e28489e706e45ebb71",
+      "field": "attachmentCost",
+      "before": 20,
+      "after": 30,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/GRT-CPS/51_GRT-CPS_Ammo_Hollow_Point.png",
+      "sha256": "7cd4aa5ef65bee5537c648b4e1932a9a2de1d67b02439458bf3fdc8bb54175b9",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/GRT-CPS/56_GRT-CPS_Ammo_Synthetic.png",
+      "sha256": "cb0354d6de8dc334a248ab9a8f6a862570c957734a8bbcab7983270c2ecd8a07",
+      "field": "attachmentCost",
+      "before": 20,
+      "after": 30,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/56_LMR27_Ammo_Hollow_Point.png",
+      "sha256": "752d70533576c64cb615c94013de47cc639f9cd1adb82675ce48df531ae56612",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/57_LMR27_Ammo_Synthetic.png",
+      "sha256": "2bfa4e334eb9ea175d3f8959f3470e33eeab0ab7f0f2387b997695367da4c543",
+      "field": "attachmentCost",
+      "before": 20,
+      "after": 30,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/57_M39 EMR_Ammo_Hollow_Point.png",
+      "sha256": "06fa73ec0b0c6c5ff531a3f0e5489120b2baa25ce61140e49de5b6f5a2dca584",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/54_SVDM_Ammo_Hollow_Point.png",
+      "sha256": "fb76137ef6e86560d4005c2f8678289fe86dae9f781f8389c745f207590a037d",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+      "sha256": "c20fee736b3a9572dc9210c87bacf15fd54a88b6734a533182e75fafee5b2b3a",
+      "field": "attachmentCost",
+      "before": 0,
+      "after": 40,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/GGH-22/27_GGH-22_Ergonomics_Speed_Holster.png",
+      "sha256": "ddb587d48d3a5cf5b86e789cd6c46b2312da1aae926539d41514181c98cb717f",
+      "field": "attachmentCost",
+      "before": 60,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M357 Trait/13_M357 Trait_Ergonomics_Speed_Holster.png",
+      "sha256": "34ca94b7b74f0be012cb87065401b4190e16c0e0bd30dbe60acecd52b7779933",
+      "field": "attachmentCost",
+      "before": 60,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M44/08_M44_Ammo_Hollow_Point.png",
+      "sha256": "7f63f0d6e9ffd3ab50e344c15f0ff0e35ee9efbe8ba840fcec089632e460c105",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M44/10_M44_Ergonomics_Speed_Holster.png",
+      "sha256": "a931144670213643250d607cd9e839e735cf25ab5d3338585f5ee454c77b6657",
+      "field": "attachmentCost",
+      "before": 60,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M44/11_M44_Ergonomics_Gunslinger.png",
+      "sha256": "33eba52f4cf3dbff2c0ba42098b66d0168c0edbb908169d629d0b199a0f7fed0",
+      "field": "attachmentCost",
+      "before": 35,
+      "after": 10,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/P18/27_P18_Ergonomics_Speed_Holster.png",
+      "sha256": "a1229648de1cda38293cc2f72bf6bc4e0c7fa09bdb20d156c5908b57184b414b",
+      "field": "attachmentCost",
+      "before": 60,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/VZ. 61/26_VZ. 61_Ammo_Synthetic.png",
+      "sha256": "84d6a3df98c61edde277bab7a36f2e7be4d61750916573a6ba7efc7ed669ea2f",
+      "field": "attachmentCost",
+      "before": 20,
+      "after": 25,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/54_SL9_Ergonomics_Burst_Mode.png",
+      "sha256": "829e6e9b96717477e9db8649248d0759b4a863a266af89b42a596ee0b0f7dc83",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 10,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/50_KTS100 MK8_Magazine_60RND_MAGAZINE.png",
+      "sha256": "f07ad55b5aa33364267ab132efa7984cea54d10b72b4914d89f738d500bf4986",
+      "field": "attachmentCost",
+      "before": 10,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M121 A2/50_M121 A2_Ammo_Hollow_Point.png",
+      "sha256": "a00afd87a9e30d0f23b5d666822e36fb295d489998466770fb7dcfc68c04e190",
+      "field": "attachmentCost",
+      "before": 15,
+      "after": 20,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M45A1/24_M45A1_Ergonomics_Speed_Holster.png",
+      "sha256": "c81a37ca047e49e10b52095c6899d65f25048c9622cb81246696b00956804092",
+      "field": "attachmentCost",
+      "before": 60,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPK-74M/04_RPK-74M_Muzzle_SLANT_BRAKE.png",
+      "sha256": "77e39518bf3e5fd2e0c9ba24ce29aa84a859adadcf3022253e78f2b1cabc5a3b",
+      "field": "attachmentCost",
+      "before": 10,
+      "after": 5,
+      "evidence": "Direct selected-card screenshot review by review_prior; Frosty agrees. Root independently rechecked AK4D Hollow Point, GGH-22 Speed Holster, and RPKM Slant Brake."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/23_DB-12_Grip_6H64_Vertical.png",
+      "sha256": "6693b234e6955cf8097a8a8d9445199285b7c42f76c34de4522950496c048019",
+      "field": "stats.precision",
+      "before": 6,
+      "after": 7,
+      "evidence": "Selected panel visibly reads 007. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/23_DB-12_Grip_6H64_Vertical.png",
+      "sha256": "6693b234e6955cf8097a8a8d9445199285b7c42f76c34de4522950496c048019",
+      "field": "stats.control",
+      "before": 9,
+      "after": 12,
+      "evidence": "Selected panel visibly reads 012. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/23_DB-12_Grip_6H64_Vertical.png",
+      "sha256": "6693b234e6955cf8097a8a8d9445199285b7c42f76c34de4522950496c048019",
+      "field": "stats.mobility",
+      "before": 0,
+      "after": 54,
+      "evidence": "Selected panel visibly reads 054. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/28_DB-12_Grip_Stippled_Stubby.png",
+      "sha256": "c72d1cc5a7675502ce3cdf8a5ad05fb6db989a1fa889256c91356b73fc5e1990",
+      "field": "stats.control",
+      "before": 0,
+      "after": 12,
+      "evidence": "Selected panel visibly reads 012. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/28_DB-12_Grip_Stippled_Stubby.png",
+      "sha256": "c72d1cc5a7675502ce3cdf8a5ad05fb6db989a1fa889256c91356b73fc5e1990",
+      "field": "stats.mobility",
+      "before": 56,
+      "after": 58,
+      "evidence": "Selected panel visibly reads 058. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/29_DB-12_Grip_Low-Profile_Stubby.png",
+      "sha256": "d1166ff63e6359c49b1aa5b2a915fdd7878e199ca2d5e584e3ce4216dc62ad0c",
+      "field": "stats.control",
+      "before": 0,
+      "after": 13,
+      "evidence": "Selected panel visibly reads 013. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/29_DB-12_Grip_Low-Profile_Stubby.png",
+      "sha256": "d1166ff63e6359c49b1aa5b2a915fdd7878e199ca2d5e584e3ce4216dc62ad0c",
+      "field": "stats.mobility",
+      "before": 50,
+      "after": 58,
+      "evidence": "Selected panel visibly reads 058. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/32_DB-12_Ammo_Standard.png",
+      "sha256": "f821b8fd55a5de397b2428858ffc2cb07c1074f1562ef5313333327baa02a08e",
+      "field": "stats.precision",
+      "before": 7,
+      "after": 6,
+      "evidence": "Equipped panel visibly reads 006. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/32_DB-12_Ammo_Standard.png",
+      "sha256": "f821b8fd55a5de397b2428858ffc2cb07c1074f1562ef5313333327baa02a08e",
+      "field": "stats.control",
+      "before": 0,
+      "after": 9,
+      "evidence": "Equipped panel visibly reads 009. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/32_DB-12_Ammo_Standard.png",
+      "sha256": "f821b8fd55a5de397b2428858ffc2cb07c1074f1562ef5313333327baa02a08e",
+      "field": "stats.mobility",
+      "before": 50,
+      "after": 60,
+      "evidence": "Equipped panel visibly reads 060. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/01_L85A3_Muzzle_None.png",
+      "sha256": "2f6e84c255d4a2768966b0c3db01ea12c398443d36dbbfc92bc423abede2cac3",
+      "field": "attachmentSubtype",
+      "before": "Convertor",
+      "after": "None",
+      "evidence": "Screenshot title and equipped card visibly read NONE; filename also ends _Muzzle_None. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/31_L85A3_Grip_None.png",
+      "sha256": "3edcda67295991bbe8f3755afca363c0e4f62ce82824bd37abcc76cf38ce5278",
+      "field": "attachmentSubtype",
+      "before": "Stubby",
+      "after": "None",
+      "evidence": "Screenshot title and equipped card visibly read NONE; filename also ends _Grip_None. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/TR7/01_TR7_Muzzle_None.png",
+      "sha256": "2724da01c5d7f57ddb9087b598c81955e30be2a6c0de65fde5f459453cbe5009",
+      "field": "attachmentSubtype",
+      "before": "Brake",
+      "after": "None",
+      "evidence": "Screenshot title and equipped card visibly read NONE; filename also ends _Muzzle_None. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/09_18.5KS-K_Light_None.png",
+      "sha256": "7162c46d12d979d6d33779fd4572fba874a90dd010e9ff037a7c430c0d0c8c11",
+      "field": "attachmentSubtype",
+      "before": "Light",
+      "after": "None",
+      "evidence": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/06_DB-12_Light_None.png",
+      "sha256": "782baf6e6514ec570ed7832ff737c63c171131896621117c841aa6bf1edc6ad8",
+      "field": "attachmentSubtype",
+      "before": "Light",
+      "after": "None",
+      "evidence": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M1014/07_M1014_Light_None.png",
+      "sha256": "a68fe7d3a61cd1a3733b3b305e88545ee1bb46c29ffc8e66aa6d04de10f34bca",
+      "field": "attachmentSubtype",
+      "before": "Light",
+      "after": "None",
+      "evidence": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M87A1/07_M87A1_Light_None.png",
+      "sha256": "d93ca0fc4bdf6db933cc01bc022f4ddcf0fca7b016dd5ce1525888d20c16ade0",
+      "field": "attachmentSubtype",
+      "before": "Light",
+      "after": "None",
+      "evidence": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None. Reviewed by panel_anomalies; root rechecked all four DB-12 panels."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/30_SVK-8.6_Grip_6H64_Vertical.png",
+      "sha256": "ff12092d6ec561e7750be1b4fbb3ebe0bc21179ab11be06b4f02a649fd491332",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.47,
+      "after": 0.42,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/31_SVK-8.6_Grip_Classic_Vertical.png",
+      "sha256": "a4ea1def5676d5b885b4f011cb77147efda9bd5d372e646170263e282fd872da",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.47,
+      "after": 0.42,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/35_SVK-8.6_Grip_Stippled_Stubby.png",
+      "sha256": "f5c93355fe5ff2b721f580b681ad2e233e8ed724b5f3e7388705ba4fcee9828d",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.47,
+      "after": 0.42,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/39_SVK-8.6_Grip_Low-Profile_Stubby.png",
+      "sha256": "a728403f2985f9b6564851b3dcbc741e993e9a411a18ebf25b928bca29003a79",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.47,
+      "after": 0.42,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/25_VSSM_Grip_6H64_Vertical.png",
+      "sha256": "d979819372eec8d19bf68d08ef6555bc5680b4971f5bc18d94d80603148aa58d",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/26_VSSM_Grip_Classic_Vertical.png",
+      "sha256": "dc6fa292399d7d45dee633cb1fdb6a98bb4a27a2322b5f583421b70c058367f4",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/28_VSSM_Grip_Stippled_Stubby.png",
+      "sha256": "9bb0f20e257149a805618367c9c5309face13ba2dd47d8e3a3ab43ddcc922041",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/29_VSSM_Grip_Low-Profile_Stubby.png",
+      "sha256": "1688e3a2af65087aacc81aa26edd4b58d521099703935f266e526ee0266f3503",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/25_18.5KS-K_Grip_6H64_Vertical.png",
+      "sha256": "aa077dcbcb840a69c03d53262f23e62c449826de8a7927edfacbb205a4c1a32a",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/26_18.5KS-K_Grip_Classic_Vertical.png",
+      "sha256": "51ab2db14d7db798097783943c6b17345924c856d576836dff2a709a021724ab",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/30_18.5KS-K_Grip_Stippled_Stubby.png",
+      "sha256": "7078787aa3dd82b90a0857903228939f798eeb94429c50edfd6c58abc778ab5d",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/31_18.5KS-K_Grip_Low-Profile_Stubby.png",
+      "sha256": "27c7cfb6bc06b57f5cd051807aca536a3f7d0f09d5d4d5e9cb72411733a33269",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/23_DB-12_Grip_6H64_Vertical.png",
+      "sha256": "6693b234e6955cf8097a8a8d9445199285b7c42f76c34de4522950496c048019",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/24_DB-12_Grip_Classic_Vertical.png",
+      "sha256": "288592887675136dc33be849e03810e18f307337cb0c89e70810fb053e272d81",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/28_DB-12_Grip_Stippled_Stubby.png",
+      "sha256": "c72d1cc5a7675502ce3cdf8a5ad05fb6db989a1fa889256c91356b73fc5e1990",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/29_DB-12_Grip_Low-Profile_Stubby.png",
+      "sha256": "d1166ff63e6359c49b1aa5b2a915fdd7878e199ca2d5e584e3ce4216dc62ad0c",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.67,
+      "after": 0.6,
+      "evidence": "Root directly reviewed all 16 affected saved grip panels; displayed ADS move multiplier agrees with source-operand triage candidate."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/01_SGX_Muzzle_None.png",
+      "sha256": "39071d4254c395801f51be8afb48540aa45f1310e6865df9e18002b38970f1d8",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/02_SGX_Muzzle_Flash_Hider.png",
+      "sha256": "eef5df95c43ca3b5488d58dbb35edea8b3c6951f86b7c00c6f13b15b1af0c7e7",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/06_SGX_Muzzle_Compensator.png",
+      "sha256": "db68ec3ed1579f52f6ecb019fd99a355c399c6398ea2841998855fb46c6b8ea2",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/08_SGX_Muzzle_Standard_Suppressor.png",
+      "sha256": "8d555497e54213a947718135b096d358d8181ab6eb098039d5b0589cac418d82",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/09_SGX_Muzzle_CQB_Suppressor.png",
+      "sha256": "bc070f383ac7b500818cc102e5569beb0e98502a2ad6b8761857a5c9e36a12bf",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/10_SGX_Muzzle_Long_Suppressor.png",
+      "sha256": "033e842beb316754bc32d7c4c0d95d6ca45b3283ca039cf3273cd38342bef3cd",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/11_SGX_Muzzle_Lightened_Suppressor.png",
+      "sha256": "847e5bbbee76b5c424ef2be60dc06463954b55bbd4bec578230ad28ea59df4af",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/12_SGX_Barrel_Basic.png",
+      "sha256": "7e02f225c5a4ee76ea75261194ea1a781bbd5f179e2f6454a120ca59fe6579cf",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/13_SGX_Barrel_Extended.png",
+      "sha256": "56592e7fc405b50b906fb4f4e95af2b6a1c791bec6a5f2ffa8c087dd0b0f857c",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/14_SGX_Barrel_Short.png",
+      "sha256": "4c5a42a0f31460505b635fb5375806ddc0aa2a29430d8d0c16af1d41f9ba143a",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/15_SGX_Barrel_Light.png",
+      "sha256": "5efc15c9275ee0a3194335b17194ae6fc9bf7d35c6003f456ac4306c9f785a39",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/27_SGX_Grip_None.png",
+      "sha256": "b17407701978fc0f66f8da6ec5cd17b03c7e36d48d61016ec1d984e400bced0c",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/38_SGX_Grip_Compact_Handstop.png",
+      "sha256": "326ab869a049f3917508c51ed0997152285dbeb684d3f8d2505ce463d426b214",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/40_SGX_Magazine_30Rnd_Magazine.png",
+      "sha256": "700136ed3e3bd2e09cf84079ff5f5a94f1cb39558f21f92af4b0e2ee9e6c4c66",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/41_SGX_Magazine_30Rnd_Fast_Mag.png",
+      "sha256": "d74c24452184b8cf902c3358aa8e046c048a0a14167e2b9253f0fccb253e1d1e",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/42_SGX_Magazine_36Rnd_Magazine.png",
+      "sha256": "5be03382a5ea864e42c8e1bb343639dc89af0a48a79aff4588170698450e0b96",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/44_SGX_Ammo_Standard.png",
+      "sha256": "5dee45205201fd34826ba237d841730e258753e7a6884866c7c448fe9db0194d",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/46_SGX_Ammo_Frangible.png",
+      "sha256": "05720e76db6ff3fb9571a1a68765ce48d01796d5f2b017580180a09177bec5b2",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/47_SGX_Ammo_Hollow_Point.png",
+      "sha256": "60d8de4065fbab5101fcf250588ec344802290feae8ac70d787c423c278d5b89",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/50_SGX_Ergonomics_None.png",
+      "sha256": "f65abf59f7a49b99cf271c66e264f29867819930d42a14943977a34409fb5d4e",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/51_SGX_Ergonomics_Aftermarket_Buffer.png",
+      "sha256": "0b42b2a9d53928dbba6b7c2800361ddeeca648964930e95b86f8018d660a736c",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/20_SGX_Laser_None.png",
+      "sha256": "3dbd316fecc7ac851a3232f51de7b55b01641ed7ec5116265d7cc505fd7d6c3f",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/21_SGX_Laser_5_MW_Red.png",
+      "sha256": "41891ce929ce6169c6dfde4b9940f7a68e0830811093f68c42061bbf03e08a7a",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/22_SGX_Laser_50_MW_Violet.png",
+      "sha256": "bf646989e4dd99588d7950ad89c6db15bb69c14deb608605680c8ac29148119a",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/23_SGX_Laser_5_MW_Green.png",
+      "sha256": "1fc1b1c94aef424d38c2a689a5d901a545df9cb83090ec2d7c53af33731d29c4",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/24_SGX_Laser_50_MW_Green.png",
+      "sha256": "f2795532c4188de74211a9268cdccd012caa6428d7af1e804e4f769e0c950d98",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/25_SGX_Laser_50_MW_Blue.png",
+      "sha256": "4e206122182844dac1e98867de62d804a7f0948d0c93ce820a4b803b5d0f2944",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/26_SGX_Laser_120_MW_Blue.png",
+      "sha256": "12003cde1b8541448b1ab2176b80478d21d0d16cd53e8066f3129a1d4204023f",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/16_SGX_Light_None.png",
+      "sha256": "4bb4c4395edd7821796c086cc72d9c6332a224022c4219b9cac8dc493eb688e6",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/17_SGX_Light_Taclight_-_Aimed.png",
+      "sha256": "e4da0b7e05649cbc1c6aab9ec5ce8e8844818e063a7698b0e1316dca221ab929",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/18_SGX_Light_Flashlight.png",
+      "sha256": "9d4da075bb93d5a09999e36507fe63f91a889a8d08b1736658485a76a47052a8",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/19_SGX_Light_Taclight_-_Hipfire.png",
+      "sha256": "c03c3d42f1fac0267854913d40e25ff20851cf6dd7b68ee49e8c0049196af461",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/43_SGX_Magazine_41Rnd_Magazine.png",
+      "sha256": "12c181e2e872667bba3ac6bf1b9b88ccb2bff72d5209d8228574df57b62f5339",
+      "field": "recoilAmountDegrees",
+      "before": 0.7,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/06_LMR27_Muzzle_Linear_Comp.png",
+      "sha256": "af98a7692f656a472a6d002e2efd6e0560ca2d576cf3d0a9ce97d39abc6fbff9",
+      "field": "recoilVariationDegrees",
+      "before": 11,
+      "after": 8.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/06_M39 EMR_Muzzle_Linear_Comp.png",
+      "sha256": "1c264fc04d1097b8014bd859c8446ca246e0c765ab7e47f7da6d02fded38bbf4",
+      "field": "recoilVariationDegrees",
+      "before": 8,
+      "after": 6.2,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/06_SVDM_Muzzle_Linear_Comp.png",
+      "sha256": "92452e9062f45f5df14692502b6c5e53ba58a06f276844c7b688ee72422ff088",
+      "field": "recoilVariationDegrees",
+      "before": 10,
+      "after": 7.8,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/06_SVK-8.6_Muzzle_Linear_Comp.png",
+      "sha256": "a6d17db38266fa9075157b355edb2a5480d313f6888584745669b451373672a7",
+      "field": "recoilVariationDegrees",
+      "before": 20,
+      "after": 15.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+      "sha256": "c20fee736b3a9572dc9210c87bacf15fd54a88b6734a533182e75fafee5b2b3a",
+      "field": "recoilVariationDegrees",
+      "before": 9.1,
+      "after": 45.0,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/VZ. 61/07_VZ. 61_Grip-Laser-Light_Canted_Stubby.png",
+      "sha256": "bde675b57acffd400b4f75492d777646695b1d2650e2da0fdf97aed00d705908",
+      "field": "recoilAmountDegrees",
+      "before": 0.5,
+      "after": 0.4,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/56_M433_Ammo_Lightweight.png",
+      "sha256": "0a7e7f88fb552ef5a373d313576254d6ad9b09021fb773e5028ed43c60d57d2d",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.6,
+      "after": 0.67,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/54_M39 EMR_Ammo_Lightweight.png",
+      "sha256": "de9b2718301fe8841a43b7205a4ead1ff918264b4e5f6d224305270252c23ad0",
+      "field": "adsMoveSpeedMultiplier",
+      "before": 0.54,
+      "after": 0.6,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/42_18.5KS-K_Ergonomics_None.png",
+      "sha256": "e7d57a3b23ad2ef75a4629a682ae60069f7e95f3f52dbebb22c8a0d2f4210bd0",
+      "field": "reloadTimeSeconds",
+      "before": 2.434,
+      "after": 2.75,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/43_18.5KS-K_Ergonomics_Aftermarket_Buffer.png",
+      "sha256": "8464e6f11448523a5b033a01efff7fe1b623830f03dbc23b8b00140492334549",
+      "field": "reloadTimeSeconds",
+      "before": 2.434,
+      "after": 2.75,
+      "evidence": "Individual screenshot review by frosty_fields or root; root independently verified SGX None and VSSM Folding Stock recoil."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/48_M433_Magazine_20Rnd_Fast_Mag.png",
+      "sha256": "2a320fc24269d44378a59cb5f5a3e7a02ac0862cecc4f6370bbc0f4c4176ae06",
+      "field": "mobility",
+      "before": 52,
+      "after": 64,
+      "evidence": "Prior Terra correction independently rechecked against the saved screenshot by review_prior in this task."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/49_M433_Magazine_20Rnd_Magazine.png",
+      "sha256": "ff4666b23052f05e2687668dcdc3d1b32b03a9bb50d232377fc4c9b18064dea4",
+      "field": "mobility",
+      "before": 58,
+      "after": 66,
+      "evidence": "Prior Terra correction independently rechecked against the saved screenshot by review_prior in this task."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/50_M433_Magazine_30Rnd_Fast_Mag.png",
+      "sha256": "552cdf4cbbe0920fa736ce350ea74b9d189d64b10d7da68e0e759835e452f739",
+      "field": "mobility",
+      "before": 52,
+      "after": 50,
+      "evidence": "Prior Terra correction independently rechecked against the saved screenshot by review_prior in this task."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/51_M433_Magazine_36Rnd_Magazine.png",
+      "sha256": "2ee4087e383123396740685334c41acdca9394dda87a8287cc91b2b6be9fd6ba",
+      "field": "mobility",
+      "before": 52,
+      "after": 48,
+      "evidence": "Prior Terra correction independently rechecked against the saved screenshot by review_prior in this task."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/52_M433_Magazine_40Rnd_Magazine.png",
+      "sha256": "9992d38a98e992ecb9b96105c552a5cf24f516f1d706371a2aaa66a6a41732c5",
+      "field": "mobility",
+      "before": 52,
+      "after": 48,
+      "evidence": "Prior Terra correction independently rechecked against the saved screenshot by review_prior in this task."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/53_M433_Magazine_40Rnd_Fast_Mag.png",
+      "sha256": "9386e29b5b1ae1cf68c9234a5134d34bbb55d1c3321c144534350e2b41534bbc",
+      "field": "mobility",
+      "before": 52,
+      "after": 46,
+      "evidence": "Prior Terra correction independently rechecked against the saved screenshot by review_prior in this task."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/53_M433_Magazine_40Rnd_Fast_Mag.png",
+      "sha256": "9386e29b5b1ae1cf68c9234a5134d34bbb55d1c3321c144534350e2b41534bbc",
+      "field": "reloadInAds",
+      "before": true,
+      "after": false,
+      "evidence": "Prior Terra correction independently rechecked against the saved screenshot by review_prior in this task."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/32_M39 EMR_Grip_Slim_Handstop.png",
+      "sha256": "84d89da64198b5d6d318c7ef77a43a54b228c9d1912b307687037baeaa14a370",
+      "field": "sprintRecoveryMs",
+      "before": 200,
+      "after": 167,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/40_M39 EMR_Grip_Adjustable_Angled.png",
+      "sha256": "e690e5b77d99c56357e013fd1fd8e3a45e695cb84f615f79cfde60922b97a277",
+      "field": "sprintRecoveryMs",
+      "before": 200,
+      "after": 167,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/41_M39 EMR_Grip_Slim_Angled.png",
+      "sha256": "8d53d3ec3dacdd80ba87309771e5dbe55ede6c8fde97d3e93a5becbc9bd95c1a",
+      "field": "sprintRecoveryMs",
+      "before": 200,
+      "after": 167,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/42_M39 EMR_Grip_Full_Angled.png",
+      "sha256": "d807ec3acd48448de1abe38028f3d3d738a4745e0375fd14d96c21e13c7e088f",
+      "field": "sprintRecoveryMs",
+      "before": 200,
+      "after": 167,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/53_M39 EMR_Ammo_Penetration.png",
+      "sha256": "c49b80052382eae12af05f515c8c13a4489144b3ecd9848dc9843e854b45496f",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/55_M39 EMR_Ammo_Long-range.png",
+      "sha256": "406dcc125b79b7c9ff4110eadaa79f891eba089d3e7b83886f31d75609716aba",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/50_SVDM_Ammo_Standard.png",
+      "sha256": "8849e86a921c52495df7a37c78cf1a7d8f80991bd5dd9ab7fd7f53bfb61a2602",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/52_SVDM_Ammo_Long-range.png",
+      "sha256": "2714f2ef7be4eec8a75727ad7d055d03b7e0abb72c82475468c51c738b0a1b06",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/32_SVK-8.6_Grip_Folding_Stubby.png",
+      "sha256": "728c98ca027bd005c3667fdffc9538fc417913a2b764f2e4fdd1e53a3b2ee111",
+      "field": "adsTimeMs",
+      "before": 367,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/33_SVK-8.6_Grip_Ribbed_Stubby.png",
+      "sha256": "cf173a2d10705c7b8f124fcebe1bb743fdb3d2466ce7aaec92149f1b4a01c39a",
+      "field": "adsTimeMs",
+      "before": 367,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/34_SVK-8.6_Grip_Canted_Stubby.png",
+      "sha256": "579ca09ae2442c204991e973f4cba4fdf756c7db948dc47360db8b9e2aa09356",
+      "field": "adsTimeMs",
+      "before": 367,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/35_SVK-8.6_Grip_Stippled_Stubby.png",
+      "sha256": "f5c93355fe5ff2b721f580b681ad2e233e8ed724b5f3e7388705ba4fcee9828d",
+      "field": "adsTimeMs",
+      "before": 367,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/36_SVK-8.6_Grip_Slim_Handstop.png",
+      "sha256": "9fb576031d12027bda7ad67ad6f5c4208038396ad757d4c0df1e730e98f479a6",
+      "field": "adsTimeMs",
+      "before": 367,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/36_SVK-8.6_Grip_Slim_Handstop.png",
+      "sha256": "9fb576031d12027bda7ad67ad6f5c4208038396ad757d4c0df1e730e98f479a6",
+      "field": "sprintRecoveryMs",
+      "before": 233,
+      "after": 200,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/43_SVK-8.6_Grip_Classic_Grip_Pod.png",
+      "sha256": "3af81b1763747bb2117dda5390c8842b1b1e1e81d470c09f47c8c085999900df",
+      "field": "adsTimeMs",
+      "before": 367,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/20_VSSM_Grip_Slim_Handstop.png",
+      "sha256": "0d613164d8f74d8b34f25c7f1df81b37ad9d0d48c3ccb690c280ea1f6d9e0b98",
+      "field": "sprintRecoveryMs",
+      "before": 133,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/26_L115_Grip_Full_Angled.png",
+      "sha256": "416adf9f254df4d878f9070c563e4ac3ab935f428970434acab325c62305b4c8",
+      "field": "adsTimeMs",
+      "before": 433,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/37_M2010 ESR_Ammo_Penetration.png",
+      "sha256": "ee618c5ff3d9fa0d50a1feb1b86081c1b17d0527a7c4ec3ca2bdaf1365d3a239",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/38_M2010 ESR_Ammo_Long-range.png",
+      "sha256": "9fb92e6bb250b00bc52a0c369734ea51c3f753d636bf87082f5addd0254fa0f7",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/31_Mini Scout_Grip_Full_Angled.png",
+      "sha256": "a8521cca5065a549ebc9f5493f11c1d11b869460de0febc3362dfdf74b94ae92",
+      "field": "sprintRecoveryMs",
+      "before": 200,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/26_PSR_Grip_Slim_Angled.png",
+      "sha256": "979263870699a4e8b329ad7fecceba08dfdf0d6b633ed8aed898c34e6e3faccf",
+      "field": "adsTimeMs",
+      "before": 433,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/32_SV-98_Ammo_Penetration.png",
+      "sha256": "d1c9e02e9d14d18d656285da37dabf30f02439dccf31f321f9504b8d325f7c38",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/33_SV-98_Ammo_Long-range.png",
+      "sha256": "0a69524be835fdcfff949d754de9f49281111185f249ff02b4a673c762423898",
+      "field": "adsTimeMs",
+      "before": 250,
+      "after": 300,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/08_18.5KS-K_Barrel_Extended.png",
+      "sha256": "23b5d15d08ca8616eb46913692d169cfed8e983168cc2dcdd1641700fcae840a",
+      "field": "adsTimeMs",
+      "before": 200,
+      "after": 250,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/05_DB-12_Barrel_Extended.png",
+      "sha256": "826d7558fc97aa6aceaa440e528b8053288929ccd6e99cc3e5fb97c6695e2c23",
+      "field": "adsTimeMs",
+      "before": 200,
+      "after": 250,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/30_DB-12_Grip_Slim_Angled.png",
+      "sha256": "c06010ac23c14efc151e951f76bf8b9503defeed3f0416a5150ccf91f89c38e6",
+      "field": "sprintRecoveryMs",
+      "before": 133,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/18_SL9_Laser-Light_None.png",
+      "sha256": "f12440009684af15483ca48a251c3745350a10f7922456d00899e2300693d0da",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/19_SL9_Laser-Light_Taclight_-_Aimed.png",
+      "sha256": "80f9ec3f87463e150a8e33f66adea7f27980c9f3db28f6d5743082c861faa17e",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/20_SL9_Laser-Light_Flashlight.png",
+      "sha256": "7079d390c836aa4665f88b2ffe24963cfe16ebf4bf3f929455ed3846827f2566",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/21_SL9_Laser-Light_Taclight_-_Hipfire.png",
+      "sha256": "b01acc75ddca1768c84533c383fc27c2d3fc6ea3232c3379b464973a6f4a7fcc",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/22_SL9_Laser-Light_5_MW_Red.png",
+      "sha256": "d7751856b08f70ffd2dac128ce146a728a824020b51d35a9b10197b5f01aba77",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/23_SL9_Laser-Light_50_MW_Violet.png",
+      "sha256": "30de21627e8a227dd444a5a979cc616a8e1c268a3129ed62c5b5a3c13face6f9",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/24_SL9_Laser-Light_5_MW_Green.png",
+      "sha256": "5825f99c7388f8380e4f86cea81fd2fb4bc540c19d2da6317f6fda67c5131f4e",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/25_SL9_Laser-Light_50_MW_Green.png",
+      "sha256": "e0688e308ec47f5a5c916fff01195ad5dd12f43f53194f7d3bffdf294520c054",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/26_SL9_Laser-Light_50_MW_Blue.png",
+      "sha256": "4cf50ba631a9827534a3fe03134a9f6a71c065a3bace0de27a378ab4441a301b",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/27_SL9_Laser-Light_120_MW_Blue.png",
+      "sha256": "5cc339198456ef6168b34bf57852ef5c06ef06c601e42da299f6e79831ae9ccb",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/28_SL9_Laser-Light_LASERLIGHT_COMBO_RED.png",
+      "sha256": "4d45b74de457325354b406eab17ddbcab4c8ab06895e633e17fb3f7ddb0175a7",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    },
+    {
+      "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/29_SL9_Laser-Light_LaserLight_Combo_Green.png",
+      "sha256": "58ad5896c77c5a38e013bfd1d48514679ab6d6395500163de8757f8d85eb0f65",
+      "field": "sprintRecoveryMs",
+      "before": 167,
+      "after": 100,
+      "evidence": "Individual full-size recheck by review_prior. Root independently checked M39 Slim Handstop, SL9 Blue Laser, SVK Folding Stubby, L115 Full Angled and M2010 Tungsten Core."
+    }
+  ],
+  "captureIdentityDefects": [
+    {
+      "recordIndex": 3006,
+      "weapon": "kts100",
+      "field": "recoilAmountDegrees",
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/31_KTS100 MK8_Grip_Ribbed_Vertical.png",
+      "screenshotSha256": "06cae4c7d0376ab2f8dbb4e2dbb614f83cc532db64fd62938b95fb7f494436b7",
+      "actualTitle": "CLASSIC GRIP POD",
+      "expectedTitle": "RIBBED VERTICAL",
+      "verifiedPanelValue": 0.5,
+      "auditValue": 0.5,
+      "sourceCandidate": 0.4199,
+      "replacementCaptureNeeded": "Capture the KTS100 MK8 Underbarrel > Ribbed Vertical panel and replace this file before assigning a verified Ribbed Vertical recoil amount."
+    }
+  ]
+}

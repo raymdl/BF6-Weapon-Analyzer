@@ -1,0 +1,2498 @@
+{
+  "date": "2026-09-07",
+  "scope": "Saved screenshot review and source integrity evidence. Only individual confirmed corrections were applied. Group summaries do not assert that every screenshot was visually reviewed.",
+  "reviews": {
+    "source-integrity": {
+      "checked": 6596,
+      "problems": []
+    },
+    "cost-review": [
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/AK4D/57_AK4D_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "6c92e7d3ca26b5fd16c97a6ecf88c5cf75528a067585efa1936922bd91dbee09",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/NVO-228E/58_NVO-228E_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "f04e3b7ca4a71b4563b1ab07f3dd84eafbc118d58f00633aac21d451dae40ca3",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/TR7/54_TR7_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "22aa204d1725a1e043cb0b935fcd091fb5768ed73bd4bd8becdff1b8101cc06f",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/AK-205/53_AK-205_Ammo_Synthetic_Tip.png",
+        "auditCost": 20,
+        "screenshotCost": 25,
+        "sourceCost": 25,
+        "sha256": "38b71b6d1f40cadbddd2cf75a42c37edab074958dd46ca6ed39b7829593b843b",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/GRT-BC/54_GRT-BC_Ergonomics_Burst_Training.png",
+        "auditCost": 15,
+        "screenshotCost": 10,
+        "sourceCost": 10,
+        "sha256": "63e701d4acad78fb067b50259145e33341e4cefa559a36405ef510bd348747ce",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/QBZ-192/46_QBZ-192_Ammo_Synthetic.png",
+        "auditCost": 20,
+        "screenshotCost": 25,
+        "sourceCost": 25,
+        "sha256": "4df6c54de52688956c7c1c83c0f5cffdd84d1714783bcadad0e7f7963d3e4e20",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/43_SGX_Magazine_41Rnd_Magazine.png",
+        "auditCost": 20,
+        "screenshotCost": 25,
+        "sourceCost": 25,
+        "sha256": "12c181e2e872667bba3ac6bf1b9b88ccb2bff72d5209d8228574df57b62f5339",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/43_M240L_Magazine_75Rnd_Belt_Box.png",
+        "auditCost": 15,
+        "screenshotCost": 10,
+        "sourceCost": 10,
+        "sha256": "8e8a865ea65e921f0da483abb5cb952fdcbb0ca851b6467fbc9e4896ff3b4ff6",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/48_M240L_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "970a86445cf041f048e13680d71ee64fa80d641e4e8e0454652f06b0271218c1",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M60/51_M60_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "efc2a4e38c41043c410b51c9562c667295b506a033ee703eab2b261354a91c00",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/04_RPKM_Muzzle_SLANT_BRAKE.png",
+        "auditCost": 10,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "78558e50a592d6308ad04a168aa0600e44d0d0ecb1b0d2b34711c58d4649e7c3",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/58_RPKM_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "9a47e69c350689fd3a40e92964f9a853ee67cf5f4e03ec9a37b3e83d5bfa71ca",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/59_RPKM_Ammo_Synthetic_Tip.png",
+        "auditCost": 20,
+        "screenshotCost": 30,
+        "sourceCost": 30,
+        "sha256": "b61549fb87b28a86bd7758452915e3d1915c9b494c7c88e28489e706e45ebb71",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/GRT-CPS/51_GRT-CPS_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "7cd4aa5ef65bee5537c648b4e1932a9a2de1d67b02439458bf3fdc8bb54175b9",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/GRT-CPS/56_GRT-CPS_Ammo_Synthetic.png",
+        "auditCost": 20,
+        "screenshotCost": 30,
+        "sourceCost": 30,
+        "sha256": "cb0354d6de8dc334a248ab9a8f6a862570c957734a8bbcab7983270c2ecd8a07",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/56_LMR27_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "752d70533576c64cb615c94013de47cc639f9cd1adb82675ce48df531ae56612",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/57_LMR27_Ammo_Synthetic.png",
+        "auditCost": 20,
+        "screenshotCost": 30,
+        "sourceCost": 30,
+        "sha256": "2bfa4e334eb9ea175d3f8959f3470e33eeab0ab7f0f2387b997695367da4c543",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/57_M39 EMR_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "06fa73ec0b0c6c5ff531a3f0e5489120b2baa25ce61140e49de5b6f5a2dca584",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/54_SVDM_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "fb76137ef6e86560d4005c2f8678289fe86dae9f781f8389c745f207590a037d",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+        "auditCost": 0,
+        "screenshotCost": 40,
+        "sourceCost": 40,
+        "sha256": "c20fee736b3a9572dc9210c87bacf15fd54a88b6734a533182e75fafee5b2b3a",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/GGH-22/27_GGH-22_Ergonomics_Speed_Holster.png",
+        "auditCost": 60,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "ddb587d48d3a5cf5b86e789cd6c46b2312da1aae926539d41514181c98cb717f",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M357 Trait/13_M357 Trait_Ergonomics_Speed_Holster.png",
+        "auditCost": 60,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "34ca94b7b74f0be012cb87065401b4190e16c0e0bd30dbe60acecd52b7779933",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M44/08_M44_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "7f63f0d6e9ffd3ab50e344c15f0ff0e35ee9efbe8ba840fcec089632e460c105",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M44/10_M44_Ergonomics_Speed_Holster.png",
+        "auditCost": 60,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "a931144670213643250d607cd9e839e735cf25ab5d3338585f5ee454c77b6657",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M44/11_M44_Ergonomics_Gunslinger.png",
+        "auditCost": 35,
+        "screenshotCost": 10,
+        "sourceCost": 10,
+        "sha256": "33eba52f4cf3dbff2c0ba42098b66d0168c0edbb908169d629d0b199a0f7fed0",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/P18/27_P18_Ergonomics_Speed_Holster.png",
+        "auditCost": 60,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "a1229648de1cda38293cc2f72bf6bc4e0c7fa09bdb20d156c5908b57184b414b",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/VZ. 61/26_VZ. 61_Ammo_Synthetic.png",
+        "auditCost": 20,
+        "screenshotCost": 25,
+        "sourceCost": 25,
+        "sha256": "84d6a3df98c61edde277bab7a36f2e7be4d61750916573a6ba7efc7ed669ea2f",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/54_SL9_Ergonomics_Burst_Mode.png",
+        "auditCost": 15,
+        "screenshotCost": 10,
+        "sourceCost": 10,
+        "sha256": "829e6e9b96717477e9db8649248d0759b4a863a266af89b42a596ee0b0f7dc83",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/50_KTS100 MK8_Magazine_60RND_MAGAZINE.png",
+        "auditCost": 10,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "f07ad55b5aa33364267ab132efa7984cea54d10b72b4914d89f738d500bf4986",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M121 A2/50_M121 A2_Ammo_Hollow_Point.png",
+        "auditCost": 15,
+        "screenshotCost": 20,
+        "sourceCost": 20,
+        "sha256": "a00afd87a9e30d0f23b5d666822e36fb295d489998466770fb7dcfc68c04e190",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M45A1/24_M45A1_Ergonomics_Speed_Holster.png",
+        "auditCost": 60,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "c81a37ca047e49e10b52095c6899d65f25048c9622cb81246696b00956804092",
+        "classification": "screenshot-confirms-source-cost"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPK-74M/04_RPK-74M_Muzzle_SLANT_BRAKE.png",
+        "auditCost": 10,
+        "screenshotCost": 5,
+        "sourceCost": 5,
+        "sha256": "77e39518bf3e5fd2e0c9ba24ce29aa84a859adadcf3022253e78f2b1cabc5a3b",
+        "classification": "screenshot-confirms-source-cost"
+      }
+    ],
+    "reload-review": {
+      "scope": "reloadTimeSeconds",
+      "source": "outputs/attachment-audit-stat-candidates.json",
+      "reviewStatus": "screenshot-anchored-review-complete",
+      "verifiedAnomalies": [
+        {
+          "recordIndex": 1610,
+          "weapon": "m240l",
+          "attachmentName": "75Rnd Belt Box",
+          "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/43_M240L_Magazine_75Rnd_Belt_Box.png",
+          "auditReloadTimeSeconds": 7.1,
+          "sourceCandidateReloadTimeSeconds": 4.034,
+          "screenshotReloadTimeSeconds": 7.1,
+          "sha256": "8e8a865ea65e921f0da483abb5cb952fdcbb0ca851b6467fbc9e4896ff3b4ff6",
+          "classification": "screenshot-confirms-audit-value",
+          "finding": "Matches the 7.100s value shown in the screenshot; the 4.034s source candidate is not promoted."
+        },
+        {
+          "recordIndex": 1611,
+          "weapon": "m240l",
+          "attachmentName": "100Rnd Belt Box",
+          "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/44_M240L_Magazine_100Rnd_Belt_Box.png",
+          "auditReloadTimeSeconds": 7.1,
+          "sourceCandidateReloadTimeSeconds": 4.034,
+          "screenshotReloadTimeSeconds": 7.1,
+          "sha256": "40e15a20bf1ed9629b143e61ab1cf529725130555d35d19fc6e747d1f22f5f8a",
+          "classification": "screenshot-confirms-audit-value",
+          "finding": "Matches the 7.100s value shown in the screenshot; the 4.034s source candidate is not promoted."
+        },
+        {
+          "recordIndex": 1716,
+          "weapon": "m60",
+          "attachmentName": "50Rnd Loose Belt",
+          "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M60/47_M60_Magazine_50RND_LOOSE_BELT.png",
+          "auditReloadTimeSeconds": 4.534,
+          "sourceCandidateReloadTimeSeconds": 7.284,
+          "screenshotReloadTimeSeconds": 4.534,
+          "sha256": "38b6fadedb879de78b876d329b359fff34e14f9eca24b9fca478bca99868857b",
+          "classification": "screenshot-confirms-audit-value",
+          "finding": "Matches the 4.534s value shown in the screenshot; the 7.284s source candidate is not promoted."
+        },
+        {
+          "recordIndex": 2366,
+          "weapon": "ks18k",
+          "attachmentName": "None",
+          "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/42_18.5KS-K_Ergonomics_None.png",
+          "auditReloadTimeSeconds": 2.434,
+          "sourceCandidateReloadTimeSeconds": 2.75,
+          "screenshotReloadTimeSeconds": 2.75,
+          "sha256": "e7d57a3b23ad2ef75a4629a682ae60069f7e95f3f52dbebb22c8a0d2f4210bd0",
+          "classification": "shared-baseline-source-mismatch",
+          "finding": "The None baseline screenshot shows 2.750s, matching the source candidate; this is grouped with the Aftermarket Buffer row below."
+        },
+        {
+          "recordIndex": 2367,
+          "weapon": "ks18k",
+          "attachmentName": "Aftermarket Buffer",
+          "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/43_18.5KS-K_Ergonomics_Aftermarket_Buffer.png",
+          "auditReloadTimeSeconds": 2.434,
+          "sourceCandidateReloadTimeSeconds": 2.75,
+          "screenshotReloadTimeSeconds": 2.75,
+          "sha256": "8464e6f11448523a5b033a01efff7fe1b623830f03dbc23b8b00140492334549",
+          "classification": "shared-baseline-source-mismatch",
+          "finding": "The Aftermarket Buffer screenshot also shows 2.750s; no attachment-specific difference is evidenced."
+        },
+        {
+          "recordIndex": 2719,
+          "weapon": "pp19",
+          "attachmentName": "53Rnd Magazine",
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/PP-19/40_PP-19_Magazine_53Rnd_Magazine.png",
+          "auditReloadTimeSeconds": 2.667,
+          "sourceCandidateReloadTimeSeconds": 2.417,
+          "screenshotReloadTimeSeconds": 2.667,
+          "sha256": "083594e11df470c9e620d44839c2a4704e348ed9e0fdf7269368bcd7ede38091",
+          "classification": "screenshot-confirms-audit-value",
+          "finding": "Matches the 2.667s value shown in the screenshot; the 2.417s source candidate is not promoted."
+        },
+        {
+          "recordIndex": 3024,
+          "weapon": "kts100",
+          "attachmentName": "60Rnd Magazine",
+          "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/50_KTS100 MK8_Magazine_60RND_MAGAZINE.png",
+          "auditReloadTimeSeconds": 2.876,
+          "sourceCandidateReloadTimeSeconds": 3.25,
+          "screenshotReloadTimeSeconds": 2.876,
+          "sha256": "f07ad55b5aa33364267ab132efa7984cea54d10b72b4914d89f738d500bf4986",
+          "classification": "screenshot-confirms-audit-value",
+          "finding": "Matches the 2.876s value shown in the screenshot; the 3.250s source candidate is not promoted."
+        },
+        {
+          "recordIndex": 3086,
+          "weapon": "m121a2",
+          "attachmentName": "50Rnd Belt Pouch",
+          "path": "reference-data/attachment-audit/Weapon Attachments/LMG/M121 A2/45_M121 A2_Magazine_50RND_BELT_POUCH.png",
+          "auditReloadTimeSeconds": 5.55,
+          "sourceCandidateReloadTimeSeconds": 6.267,
+          "screenshotReloadTimeSeconds": 5.55,
+          "sha256": "3b72759daf389c20d63dabd8249c0604260e5d297ef6c377726722fc42cb26a0",
+          "classification": "screenshot-confirms-audit-value",
+          "finding": "Matches the 5.550s value shown in the screenshot; the 6.267s source candidate is not promoted."
+        },
+        {
+          "recordIndex": 3171,
+          "weapon": "rpk74m",
+          "attachmentName": "95Rnd Drum",
+          "path": "reference-data/attachment-audit/Weapon Attachments/LMG/RPK-74M/53_RPK-74M_Magazine_95Rnd_Drum.png",
+          "auditReloadTimeSeconds": 2.95,
+          "sourceCandidateReloadTimeSeconds": 2.784,
+          "screenshotReloadTimeSeconds": 2.95,
+          "sha256": "b899e87d6c9f72b50487b7b34e502b4aa188e7870593eb1fe9f16eabb5164511",
+          "classification": "screenshot-confirms-audit-value",
+          "finding": "Matches the 2.950s value shown in the screenshot; the 2.784s source candidate is not promoted."
+        }
+      ],
+      "groupedUnresolvedBaselineDifferences": [
+        {
+          "weapon": "ks18k",
+          "displayWeapon": "18.5KS-K",
+          "recordIndices": [
+            2366,
+            2367
+          ],
+          "paths": [
+            "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/42_18.5KS-K_Ergonomics_None.png",
+            "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/43_18.5KS-K_Ergonomics_Aftermarket_Buffer.png"
+          ],
+          "auditBaselineReloadTimeSeconds": 2.434,
+          "sourceCandidateReloadTimeSeconds": 2.75,
+          "screenshotReloadTimeSeconds": 2.75,
+          "classification": "shared-baseline-source-mismatch",
+          "finding": "Both the None baseline and Aftermarket Buffer screenshots show 2.750s. Keep this as one weapon-level baseline discrepancy until the canonical audit baseline is resolved; it does not support an attachment-specific override."
+        }
+      ]
+    },
+    "recoil-corrections": {
+      "schemaVersion": 1,
+      "sourceCandidateFile": "outputs/attachment-audit-stat-candidates.json",
+      "scope": "Per-image screenshot verification only. No group-wide corrections are asserted.",
+      "corrections": [
+        {
+          "recordIndex": 1257,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/01_SGX_Muzzle_None.png",
+          "screenshotSha256": "39071d4254c395801f51be8afb48540aa45f1310e6865df9e18002b38970f1d8"
+        },
+        {
+          "recordIndex": 1258,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/02_SGX_Muzzle_Flash_Hider.png",
+          "screenshotSha256": "eef5df95c43ca3b5488d58dbb35edea8b3c6951f86b7c00c6f13b15b1af0c7e7"
+        },
+        {
+          "recordIndex": 1262,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/06_SGX_Muzzle_Compensator.png",
+          "screenshotSha256": "db68ec3ed1579f52f6ecb019fd99a355c399c6398ea2841998855fb46c6b8ea2"
+        },
+        {
+          "recordIndex": 1264,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/08_SGX_Muzzle_Standard_Suppressor.png",
+          "screenshotSha256": "8d555497e54213a947718135b096d358d8181ab6eb098039d5b0589cac418d82"
+        },
+        {
+          "recordIndex": 1265,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/09_SGX_Muzzle_CQB_Suppressor.png",
+          "screenshotSha256": "bc070f383ac7b500818cc102e5569beb0e98502a2ad6b8761857a5c9e36a12bf"
+        },
+        {
+          "recordIndex": 1266,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/10_SGX_Muzzle_Long_Suppressor.png",
+          "screenshotSha256": "033e842beb316754bc32d7c4c0d95d6ca45b3283ca039cf3273cd38342bef3cd"
+        },
+        {
+          "recordIndex": 1267,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/11_SGX_Muzzle_Lightened_Suppressor.png",
+          "screenshotSha256": "847e5bbbee76b5c424ef2be60dc06463954b55bbd4bec578230ad28ea59df4af"
+        },
+        {
+          "recordIndex": 1268,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/12_SGX_Barrel_Basic.png",
+          "screenshotSha256": "7e02f225c5a4ee76ea75261194ea1a781bbd5f179e2f6454a120ca59fe6579cf"
+        },
+        {
+          "recordIndex": 1269,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/13_SGX_Barrel_Extended.png",
+          "screenshotSha256": "56592e7fc405b50b906fb4f4e95af2b6a1c791bec6a5f2ffa8c087dd0b0f857c"
+        },
+        {
+          "recordIndex": 1270,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/14_SGX_Barrel_Short.png",
+          "screenshotSha256": "4c5a42a0f31460505b635fb5375806ddc0aa2a29430d8d0c16af1d41f9ba143a"
+        },
+        {
+          "recordIndex": 1271,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/15_SGX_Barrel_Light.png",
+          "screenshotSha256": "5efc15c9275ee0a3194335b17194ae6fc9bf7d35c6003f456ac4306c9f785a39"
+        },
+        {
+          "recordIndex": 1272,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/27_SGX_Grip_None.png",
+          "screenshotSha256": "b17407701978fc0f66f8da6ec5cd17b03c7e36d48d61016ec1d984e400bced0c"
+        },
+        {
+          "recordIndex": 1283,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/38_SGX_Grip_Compact_Handstop.png",
+          "screenshotSha256": "326ab869a049f3917508c51ed0997152285dbeb684d3f8d2505ce463d426b214"
+        },
+        {
+          "recordIndex": 1285,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/40_SGX_Magazine_30Rnd_Magazine.png",
+          "screenshotSha256": "700136ed3e3bd2e09cf84079ff5f5a94f1cb39558f21f92af4b0e2ee9e6c4c66"
+        },
+        {
+          "recordIndex": 1286,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/41_SGX_Magazine_30Rnd_Fast_Mag.png",
+          "screenshotSha256": "d74c24452184b8cf902c3358aa8e046c048a0a14167e2b9253f0fccb253e1d1e"
+        },
+        {
+          "recordIndex": 1287,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/42_SGX_Magazine_36Rnd_Magazine.png",
+          "screenshotSha256": "5be03382a5ea864e42c8e1bb343639dc89af0a48a79aff4588170698450e0b96"
+        },
+        {
+          "recordIndex": 1288,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/44_SGX_Ammo_Standard.png",
+          "screenshotSha256": "5dee45205201fd34826ba237d841730e258753e7a6884866c7c448fe9db0194d"
+        },
+        {
+          "recordIndex": 1290,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/46_SGX_Ammo_Frangible.png",
+          "screenshotSha256": "05720e76db6ff3fb9571a1a68765ce48d01796d5f2b017580180a09177bec5b2"
+        },
+        {
+          "recordIndex": 1291,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/47_SGX_Ammo_Hollow_Point.png",
+          "screenshotSha256": "60d8de4065fbab5101fcf250588ec344802290feae8ac70d787c423c278d5b89"
+        },
+        {
+          "recordIndex": 1294,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/50_SGX_Ergonomics_None.png",
+          "screenshotSha256": "f65abf59f7a49b99cf271c66e264f29867819930d42a14943977a34409fb5d4e"
+        },
+        {
+          "recordIndex": 1295,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/51_SGX_Ergonomics_Aftermarket_Buffer.png",
+          "screenshotSha256": "0b42b2a9d53928dbba6b7c2800361ddeeca648964930e95b86f8018d660a736c"
+        },
+        {
+          "recordIndex": 1296,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/20_SGX_Laser_None.png",
+          "screenshotSha256": "3dbd316fecc7ac851a3232f51de7b55b01641ed7ec5116265d7cc505fd7d6c3f"
+        },
+        {
+          "recordIndex": 1297,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/21_SGX_Laser_5_MW_Red.png",
+          "screenshotSha256": "41891ce929ce6169c6dfde4b9940f7a68e0830811093f68c42061bbf03e08a7a"
+        },
+        {
+          "recordIndex": 1298,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/22_SGX_Laser_50_MW_Violet.png",
+          "screenshotSha256": "bf646989e4dd99588d7950ad89c6db15bb69c14deb608605680c8ac29148119a"
+        },
+        {
+          "recordIndex": 1299,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/23_SGX_Laser_5_MW_Green.png",
+          "screenshotSha256": "1fc1b1c94aef424d38c2a689a5d901a545df9cb83090ec2d7c53af33731d29c4"
+        },
+        {
+          "recordIndex": 1300,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/24_SGX_Laser_50_MW_Green.png",
+          "screenshotSha256": "f2795532c4188de74211a9268cdccd012caa6428d7af1e804e4f769e0c950d98"
+        },
+        {
+          "recordIndex": 1301,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/25_SGX_Laser_50_MW_Blue.png",
+          "screenshotSha256": "4e206122182844dac1e98867de62d804a7f0948d0c93ce820a4b803b5d0f2944"
+        },
+        {
+          "recordIndex": 1302,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/26_SGX_Laser_120_MW_Blue.png",
+          "screenshotSha256": "12003cde1b8541448b1ab2176b80478d21d0d16cd53e8066f3129a1d4204023f"
+        },
+        {
+          "recordIndex": 1303,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/16_SGX_Light_None.png",
+          "screenshotSha256": "4bb4c4395edd7821796c086cc72d9c6332a224022c4219b9cac8dc493eb688e6"
+        },
+        {
+          "recordIndex": 1304,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/17_SGX_Light_Taclight_-_Aimed.png",
+          "screenshotSha256": "e4da0b7e05649cbc1c6aab9ec5ce8e8844818e063a7698b0e1316dca221ab929"
+        },
+        {
+          "recordIndex": 1305,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/18_SGX_Light_Flashlight.png",
+          "screenshotSha256": "9d4da075bb93d5a09999e36507fe63f91a889a8d08b1736658485a76a47052a8"
+        },
+        {
+          "recordIndex": 1306,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/19_SGX_Light_Taclight_-_Hipfire.png",
+          "screenshotSha256": "c03c3d42f1fac0267854913d40e25ff20851cf6dd7b68ee49e8c0049196af461"
+        },
+        {
+          "recordIndex": 1307,
+          "weapon": "sgx",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.7,
+          "newValue": 0.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/43_SGX_Magazine_41Rnd_Magazine.png",
+          "screenshotSha256": "12c181e2e872667bba3ac6bf1b9b88ccb2bff72d5209d8228574df57b62f5339"
+        },
+        {
+          "recordIndex": 1857,
+          "weapon": "lmr27",
+          "field": "recoilVariationDegrees",
+          "oldValue": 11,
+          "newValue": 8.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/06_LMR27_Muzzle_Linear_Comp.png",
+          "screenshotSha256": "af98a7692f656a472a6d002e2efd6e0560ca2d576cf3d0a9ce97d39abc6fbff9"
+        },
+        {
+          "recordIndex": 1917,
+          "weapon": "m39emr",
+          "field": "recoilVariationDegrees",
+          "oldValue": 8,
+          "newValue": 6.2,
+          "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/06_M39 EMR_Muzzle_Linear_Comp.png",
+          "screenshotSha256": "1c264fc04d1097b8014bd859c8446ca246e0c765ab7e47f7da6d02fded38bbf4"
+        },
+        {
+          "recordIndex": 1978,
+          "weapon": "svdm",
+          "field": "recoilVariationDegrees",
+          "oldValue": 10,
+          "newValue": 7.8,
+          "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/06_SVDM_Muzzle_Linear_Comp.png",
+          "screenshotSha256": "92452e9062f45f5df14692502b6c5e53ba58a06f276844c7b688ee72422ff088"
+        },
+        {
+          "recordIndex": 2036,
+          "weapon": "svk86",
+          "field": "recoilVariationDegrees",
+          "oldValue": 20,
+          "newValue": 15.6,
+          "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/06_SVK-8.6_Muzzle_Linear_Comp.png",
+          "screenshotSha256": "a6d17db38266fa9075157b355edb2a5480d313f6888584745669b451373672a7"
+        },
+        {
+          "recordIndex": 2117,
+          "weapon": "vssm",
+          "field": "recoilVariationDegrees",
+          "oldValue": 9.1,
+          "newValue": 45.0,
+          "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+          "screenshotSha256": "c20fee736b3a9572dc9210c87bacf15fd54a88b6734a533182e75fafee5b2b3a"
+        },
+        {
+          "recordIndex": 2609,
+          "weapon": "vz61",
+          "field": "recoilAmountDegrees",
+          "oldValue": 0.5,
+          "newValue": 0.4,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/VZ. 61/07_VZ. 61_Grip-Laser-Light_Canted_Stubby.png",
+          "screenshotSha256": "bde675b57acffd400b4f75492d777646695b1d2650e2da0fdf97aed00d705908"
+        }
+      ],
+      "captureIdentityDefects": [
+        {
+          "recordIndex": 3006,
+          "weapon": "kts100",
+          "field": "recoilAmountDegrees",
+          "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/31_KTS100 MK8_Grip_Ribbed_Vertical.png",
+          "screenshotSha256": "06cae4c7d0376ab2f8dbb4e2dbb614f83cc532db64fd62938b95fb7f494436b7",
+          "actualTitle": "CLASSIC GRIP POD",
+          "expectedTitle": "RIBBED VERTICAL",
+          "verifiedPanelValue": 0.5,
+          "auditValue": 0.5,
+          "sourceCandidate": 0.4199,
+          "replacementCaptureNeeded": "Capture the KTS100 MK8 Underbarrel > Ribbed Vertical panel and replace this file before assigning a verified Ribbed Vertical recoil amount."
+        }
+      ]
+    },
+    "rate-velocity-review": {
+      "schemaVersion": 1,
+      "generatedAt": "2026-09-07",
+      "scope": "Read-only review of grouped rateOfFireRpm and muzzleVelocityMps candidates. The canonical attachment audit JSON was not modified by this review.",
+      "status": "reviewed",
+      "inputs": {
+        "candidateFile": "outputs/attachment-audit-stat-candidates.json",
+        "canonicalAuditFile": "reference-data/attachment-audit/attachment-screenshot-review.json",
+        "currentWeaponData": "data/weapons.json",
+        "currentWeaponDataSha256": "c5e1b52a9555c5ab981ced1eb6215da7b3da88828589e7e46587fa16d5f0cf06"
+      },
+      "aggregate": {
+        "rateOfFireRpm": {
+          "candidateRows": 312,
+          "weapons": 8,
+          "interpretation": "The source candidate is a raw firing-cycle or fire-mode field for these groups. It is not uniformly the effective rate printed by the attachment panel."
+        },
+        "muzzleVelocityMps": {
+          "candidateRows": 122,
+          "weapons": 2,
+          "interpretation": "The old screenshot values are visually readable, but current Frosty source provenance supersedes them for the base projectile velocity."
+        }
+      },
+      "findings": [
+        {
+          "fieldPath": "stats.muzzleVelocityMps",
+          "weapon": "EF88",
+          "candidateRows": 62,
+          "auditValuesByTier": {
+            "basic": 670,
+            "extended": 837,
+            "short": 536
+          },
+          "sourceValuesByTier": {
+            "basic": 724,
+            "extended": 905,
+            "short": 579.2
+          },
+          "classification": "source-supersedes-historical-screenshot",
+          "action": "Use 724 m/s as the current base value and derive the barrel tiers from it. Leave the old screenshot audit values as historical provenance in this review.",
+          "basis": "The 1.4.2.5 registry and EF88_WB both expose InitialSpeed.z=724. The retained current-build in-game provenance screenshot shows 724 m/s with ROF 675; the extended and short values are 724*1.25=905 and 724*0.8=579.2.",
+          "evidence": [
+            {
+              "path": "reference-data/provenance/frosty-1.4.2.5-ef88-velocity.json",
+              "sha256": "1977d9336c41c1cbfe38d9ef34f87d9afa985cbe0876c244f1d5a1577a7f1588"
+            },
+            {
+              "path": "reference-data/provenance/ef88-basic-30-round.png",
+              "sha256": "b1d2e5eaf41416bf014eb710476057620569bf023791be10fd1bd4cdbf1317b7"
+            },
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/01_EF88_Muzzle_None.png",
+              "sha256": "6e4e403ea253e54381c3dc24a7335df3bd1d0248c538ea062643de074f8f9021"
+            },
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/14_EF88_Barrel_Extended.png",
+              "sha256": "af34d24ac1c1e8ebef0625d8d7e7095f0edaf8421e5396d52f257aab49dbc53b"
+            },
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/16_EF88_Barrel_Short.png",
+              "sha256": "f6f930c998fa82f6b370b2212cd928408d34db4d29c5a4766583517c1449f4a3"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.muzzleVelocityMps",
+          "weapon": "BROD 3",
+          "candidateRows": 60,
+          "auditValuesByTier": {
+            "basic": 580,
+            "extended": 725,
+            "short": 464
+          },
+          "sourceValuesByTier": {
+            "basic": 563,
+            "extended": 703.75,
+            "short": 450.4
+          },
+          "classification": "source-supersedes-historical-screenshot",
+          "action": "Use 563 m/s as the current base value and derive the barrel tiers from it. Preserve 580/725/464 as historical screenshot readings; do not describe them as current source measurements.",
+          "basis": "The 1.4.2.5 registry and BREN3_WB expose InitialSpeed.z=563, and Sym corroborates velocity 563 for the user-confirmed BROD 3 identity. The Basic Barrel branch has no velocity modifier; the tier values are 563*1.25=703.75 and 563*0.8=450.4.",
+          "evidence": [
+            {
+              "path": "reference-data/provenance/frosty-1.4.2.5-brod3-velocity.json",
+              "sha256": "3c962d8eb0d86891d7fc7cec44008f81433d70843828a8e55abb7202e20454d7"
+            },
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/01_BROD 3_Muzzle_None.png",
+              "sha256": "5e950a25c94c0b6cf810f307dc0af5a3886a0cc79b81eb082809a62092b0d69c"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "VSSM",
+          "candidateRows": 42,
+          "auditValue": 450,
+          "sourceCandidate": 799.999,
+          "currentSiteValue": 450,
+          "classification": "screenshot-confirms-single-fire-rate-source-candidate-is-automatic-rate",
+          "action": "Retain the displayed 450 RPM value. Do not replace it with the raw 799.999 RPM automatic rate.",
+          "basis": "The source comparison maps the base automatic RateOfFire to 799.999 and the base single-fire RateOfFireForSingleFire to 449.999. The None screenshot visibly reads ROF 450. Folding Stock auto-rate behavior is separately documented.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/03_VSSM_Light_None.png",
+              "sha256": "46e48fa2615627d024862cee0e48daf138d51cddd03191e128c995c8197df9ae"
+            },
+            {
+              "path": "reference-data/provenance/frosty-vssm-fire-mode-review.json",
+              "sha256": "c91ae8ce168925aeec9c1a12bd710e16f04f6c751431fa5ab8e0e8421a2547ae"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "L115",
+          "candidateRows": 40,
+          "auditValue": 46,
+          "sourceCandidate": 299.999,
+          "currentSiteValue": 46.35,
+          "classification": "screenshot-confirms-effective-bolt-rate-source-candidate-is-cycle-rate",
+          "action": "Retain the effective site rate. Do not replace it with 299.999 RPM.",
+          "basis": "The bolt-action calculation reproduces the site rate from BoltActionSpeed, BoltActionTime and the shared 299.999 raw rate. The None screenshot visibly reads ROF 46.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/01_L115_Muzzle_None.png",
+              "sha256": "fd46f1c8e575f17410b0dfbd32c2fdb95c4b1a9ff0f2d92e1a106bf404b69afd"
+            },
+            {
+              "path": "outputs/frosty/1.4.2.5/bolt-timing-candidates.json",
+              "sha256": "b5d78045e11f99a995bbc5549a1f661d74abc8fba28cabab5c616a5a084fbbcc"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "M2010 ESR",
+          "candidateRows": 41,
+          "auditValue": 43,
+          "sourceCandidate": 299.999,
+          "currentSiteValue": 44.08,
+          "classification": "screenshot-confirms-effective-bolt-rate-source-candidate-is-cycle-rate",
+          "action": "Retain the effective site rate. Do not replace it with 299.999 RPM.",
+          "basis": "The bolt-action calculation reproduces the effective site rate from the timing fields and the shared 299.999 raw rate. The None screenshot visibly reads ROF 43 after panel rounding.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/01_M2010 ESR_Muzzle_None.png",
+              "sha256": "520f8becfe32828b7fcbc9f9905a09bf868424be0b54275dadd3447ea957fc3d"
+            },
+            {
+              "path": "outputs/frosty/1.4.2.5/bolt-timing-candidates.json",
+              "sha256": "b5d78045e11f99a995bbc5549a1f661d74abc8fba28cabab5c616a5a084fbbcc"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "Mini Scout",
+          "candidateRows": 42,
+          "auditValue": 47,
+          "sourceCandidate": 299.999,
+          "currentSiteValue": 51,
+          "classification": "screenshot-and-source-candidate-do-not-establish-a-correction",
+          "action": "Keep the current 51 RPM site value. Do not replace it with 299.999 or the speculative 46.55 timing calculation.",
+          "basis": "The None screenshot reads ROF 47, while the current site/Sym value is 51. The bolt timing candidate is explicitly outside export tolerance; the integration notes retain 51 RPM.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/01_Mini Scout_Muzzle_None.png",
+              "sha256": "55b9bacbfa78c9102f788549a6214daba24bfdd28d77c560d6657e9715392ae1"
+            },
+            {
+              "path": "outputs/frosty/1.4.2.5/bolt-timing-candidates.json",
+              "sha256": "b5d78045e11f99a995bbc5549a1f661d74abc8fba28cabab5c616a5a084fbbcc"
+            },
+            {
+              "path": "docs/FROSTY_INTEGRATION.md",
+              "sha256": "1f644255ce06ecb2e120b33d93c6a562cb7c0c1b527e4f1acd45f4cca05919c9"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "PSR",
+          "candidateRows": 39,
+          "auditValue": 38,
+          "sourceCandidate": 299.999,
+          "currentSiteValue": 38.12,
+          "classification": "screenshot-confirms-effective-bolt-rate-source-candidate-is-cycle-rate",
+          "action": "Retain the effective site rate. Do not replace it with 299.999 RPM.",
+          "basis": "The bolt-action calculation reproduces the site rate from the timing fields and the shared 299.999 raw rate. The None screenshot visibly reads ROF 38.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/01_PSR_Muzzle_None.png",
+              "sha256": "a4b919408c9223a4f11b377f43d5ec6f4f93b418d0e6072a770223a5b2b363fe"
+            },
+            {
+              "path": "outputs/frosty/1.4.2.5/bolt-timing-candidates.json",
+              "sha256": "b5d78045e11f99a995bbc5549a1f661d74abc8fba28cabab5c616a5a084fbbcc"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "SV-98",
+          "candidateRows": 36,
+          "auditValue": 38,
+          "sourceCandidate": 299.999,
+          "currentSiteValue": 37.67,
+          "classification": "screenshot-confirms-effective-bolt-rate-source-candidate-is-cycle-rate",
+          "action": "Retain the effective site rate. Do not replace it with 299.999 RPM.",
+          "basis": "The bolt-action calculation reproduces the site rate from the timing fields and the shared 299.999 raw rate. The None screenshot visibly reads ROF 38.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/01_SV-98_Muzzle_None.png",
+              "sha256": "130e4604a20de7e295701a63ff2810ca06762ec838cbd9ca4917b7265db460b2"
+            },
+            {
+              "path": "outputs/frosty/1.4.2.5/bolt-timing-candidates.json",
+              "sha256": "b5d78045e11f99a995bbc5549a1f661d74abc8fba28cabab5c616a5a084fbbcc"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "DB-12",
+          "candidateRows": 34,
+          "auditValue": 150,
+          "sourceCandidate": 359.999,
+          "currentSiteValue": 360,
+          "classification": "screenshot-confirms-panel-rate-source-candidate-is-raw-rate-with-unresolved-manual-cycle",
+          "action": "Retain the displayed 150 RPM panel value. Do not treat 359.999 RPM as the effective multi-shot cadence.",
+          "basis": "The None screenshot visibly reads ROF 150. The integrated notes identify separate DB-12 manual-cycle fields and retain pump-action timing as unresolved.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/01_DB-12_Muzzle_None.png",
+              "sha256": "5861d8f11b045daa2c655cf3689dc29631c7b88c2a48cecb6b5bb4c35f7e4ca8"
+            },
+            {
+              "path": "docs/FROSTY_INTEGRATION.md",
+              "sha256": "1f644255ce06ecb2e120b33d93c6a562cb7c0c1b527e4f1acd45f4cca05919c9"
+            }
+          ]
+        },
+        {
+          "fieldPath": "stats.rateOfFireRpm",
+          "weapon": "M87A1",
+          "candidateRows": 38,
+          "auditValue": 94,
+          "sourceCandidate": 1799.999,
+          "currentSiteValue": 1800,
+          "classification": "screenshot-confirms-panel-rate-source-candidate-is-raw-rate-with-unresolved-manual-cycle",
+          "action": "Retain the displayed 94 RPM panel value. Do not treat 1799.999 RPM as the effective multi-shot cadence.",
+          "basis": "The None screenshot visibly reads ROF 94. The integrated notes identify M87A1 bolt/manual-cycle timing fields and retain pump-action timing as unresolved.",
+          "evidence": [
+            {
+              "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M87A1/01_M87A1_Muzzle_None.png",
+              "sha256": "8c847402b36e2e67176ed4c7e895028f2a75e8de8c91b99b8d76687eb902dc33"
+            },
+            {
+              "path": "docs/FROSTY_INTEGRATION.md",
+              "sha256": "1f644255ce06ecb2e120b33d93c6a562cb7c0c1b527e4f1acd45f4cca05919c9"
+            }
+          ]
+        }
+      ],
+      "conclusion": "No grouped rateOfFireRpm screenshot correction is promoted. The grouped rate candidates are raw engine fields or timing inputs, except that VSSM's displayed semi rate is separately represented. EF88 and BROD 3 muzzle velocity source values supersede their older screenshot readings for current data, while the screenshot readings remain retained as historical audit evidence."
+    },
+    "spotting-review": {
+      "schemaVersion": 1,
+      "generatedAt": "2026-09-07",
+      "scope": "Read-only visual review of EF88 spotOnFire3dM discrepancies from outputs/attachment-audit-handling-review-targets.json. Canonical attachment audit data was not modified.",
+      "status": "reviewed",
+      "input": {
+        "targetFile": "outputs/attachment-audit-handling-review-targets.json",
+        "targetSha256": "6b4c900e1d2d86a4fdd34042a9a272a2a57373594a4a228f37775bf14989bbeb",
+        "fieldPath": "stats.spotOnFire3dM",
+        "weapon": "ef88"
+      },
+      "reviewMethod": "Each candidate PNG was inspected individually. Every selected panel visibly reads 3D SPOT-ON-FIRE-RANGE 75M.",
+      "finding": {
+        "candidateCount": 34,
+        "auditValues": [
+          75
+        ],
+        "candidateValues": [
+          0
+        ],
+        "screenshotValues": [
+          75
+        ],
+        "classification": "screenshot-confirms-audit-candidate-not-displayed-value",
+        "action": "Retain the screenshot-backed audit value of 75 m. Do not promote the candidate value 0.0 from worldSpotMult without additional source semantics.",
+        "basis": "All 34 EF88 candidate images show the same 3D spot-on-fire range of 75M. The candidate field is zero for every row while its selected operand is 1, so it does not reproduce the displayed panel value."
+      },
+      "records": [
+        {
+          "recordIndex": 130,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/01_EF88_Muzzle_None.png",
+          "attachmentName": "None",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "6e4e403ea253e54381c3dc24a7335df3bd1d0248c538ea062643de074f8f9021"
+        },
+        {
+          "recordIndex": 133,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/04_EF88_Muzzle_Single-Port_Brake.png",
+          "attachmentName": "Single-Port Brake",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "8abfbdd89911990fe05769c2cd90fae63b0f6cd2177f8b06dc928e8bf15cd31f"
+        },
+        {
+          "recordIndex": 134,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/05_EF88_Muzzle_Double-Port_Brake.png",
+          "attachmentName": "Double-Port Brake",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "08e3e94fba344a67639e2cabafc355ea4a226ee93b62093420f2785b34a97add"
+        },
+        {
+          "recordIndex": 135,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/06_EF88_Muzzle_Compensator.png",
+          "attachmentName": "Compensator",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "ae6e51aadb6e648b1a1de1c2a2408a0f5162e58cfa7c314fbb2044e6988dbfe3"
+        },
+        {
+          "recordIndex": 136,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/07_EF88_Muzzle_Linear_Comp.png",
+          "attachmentName": "Linear Comp",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "af7260f2d69df2cd6fb5bfd37d57cee0e3db6d50d2fc7a198ed22621f3bd9dec"
+        },
+        {
+          "recordIndex": 140,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/11_EF88_Muzzle_Compensated_Brake.png",
+          "attachmentName": "Compensated Brake",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "178f21b17968855d65c0d0975cfedcd22104883eae29326fed616ec063cd527a"
+        },
+        {
+          "recordIndex": 142,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/13_EF88_Barrel_Basic.png",
+          "attachmentName": "16\" Standard",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "167d5d939e7e963435ce6af796a761b3a28591e3afc5ecd83915899187768d61"
+        },
+        {
+          "recordIndex": 143,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/14_EF88_Barrel_Extended.png",
+          "attachmentName": "20\" Standard",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "af34d24ac1c1e8ebef0625d8d7e7095f0edaf8421e5396d52f257aab49dbc53b"
+        },
+        {
+          "recordIndex": 144,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/15_EF88_Barrel_Heavy_Ext.png",
+          "attachmentName": "24\" HBAR",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "99f0168ecd79dde80fe99f2949f84f106ce38e6ceaf0a8146367afeb3fe52735"
+        },
+        {
+          "recordIndex": 145,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/16_EF88_Barrel_Short.png",
+          "attachmentName": "14.5\" Standard",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "f6f930c998fa82f6b370b2212cd928408d34db4d29c5a4766583517c1449f4a3"
+        },
+        {
+          "recordIndex": 146,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/17_EF88_Barrel_Light.png",
+          "attachmentName": "16\" Factory",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "b8d3dacb9441f513b1360fa67067281933a300a90a88f9c788080903a992ed56"
+        },
+        {
+          "recordIndex": 147,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/18_EF88_Barrel_Cryo.png",
+          "attachmentName": "16\" Cryogenic",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "c6e96a14da7af114f7dc019100ff5a2db96093471251a1ef1a112e2bf4b4d1c1"
+        },
+        {
+          "recordIndex": 148,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/19_EF88_Barrel_Ext_Light.png",
+          "attachmentName": "20\" Marksman",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "86ecff2db0afe1e9e834276a32d7a4b260990c198df5517f6ab53ac43ee9636e"
+        },
+        {
+          "recordIndex": 149,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/20_EF88_Barrel_Short_Light.png",
+          "attachmentName": "14.5\" CQB",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "bed660780c43a33801f54ae899d26b07952a6444b69aedbcc57bae6129b16442"
+        },
+        {
+          "recordIndex": 150,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/32_EF88_Grip_None.png",
+          "attachmentName": "None",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "4c0b7a8b5816dfeaa4bea9aaba4db4ccab79d05e7ab3fc9afedeaefea01450aa"
+        },
+        {
+          "recordIndex": 151,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/33_EF88_Grip_Folding_Vertical.png",
+          "attachmentName": "Folding Vertical",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "308602882d481c651ff7d37eb1b0bca5619fa8f13fb6f1813d2a3ed31020e09d"
+        },
+        {
+          "recordIndex": 152,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/34_EF88_Grip_Alloy_Vertical.png",
+          "attachmentName": "Alloy Vertical",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "2458a0e0968823dfa692c75df1f91e46a2b5931bf47e4fe28c03ab95f531c1c0"
+        },
+        {
+          "recordIndex": 153,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/35_EF88_Grip_Ribbed_Vertical.png",
+          "attachmentName": "Ribbed Vertical",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "3519998e8a3934d4ae350e44cedeeeba11c597ec726d046ca4316a21b5ea1190"
+        },
+        {
+          "recordIndex": 154,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/36_EF88_Grip_6H64_Vertical.png",
+          "attachmentName": "6H64 Vertical",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "a2bc609b45aad315e2c8600044fc99c2f98a912e31252efcc6dbc0f2886b77d7"
+        },
+        {
+          "recordIndex": 155,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/37_EF88_Grip_Folding_Stubby.png",
+          "attachmentName": "Folding Stubby",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "2d98e36261fff5b1664b640cc50f980d6d1f9d5aca76583e1247b08f89209933"
+        },
+        {
+          "recordIndex": 156,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/38_EF88_Grip_Ribbed_Stubby.png",
+          "attachmentName": "Ribbed Stubby",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "6300f76547fab459a840aea67649312e890276bac687f2f33902aace8da3f53a"
+        },
+        {
+          "recordIndex": 157,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/39_EF88_Grip_Canted_Stubby.png",
+          "attachmentName": "Canted Stubby",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "929a91d179642309f962cc39c7b6fae0af78cebbc30e6ebebd774855bb83ea2c"
+        },
+        {
+          "recordIndex": 158,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/40_EF88_Grip_Stippled_Stubby.png",
+          "attachmentName": "Stippled Stubby",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "2e6f79fc9abd7c91b943c4b59680da18c15eb067da498106529a2fdad337e9b0"
+        },
+        {
+          "recordIndex": 159,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/41_EF88_Grip_Full_Angled.png",
+          "attachmentName": "Full Angled",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "fee8a4feb6c4c65fe43b33c1655be90524e30911b5bea84f7a165ae111e86b6e"
+        },
+        {
+          "recordIndex": 160,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/42_EF88_Grip_Bipod.png",
+          "attachmentName": "Bipod",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "70e76ea0d90f07ba7494d6be2a79aa852a817dca189e1720e13240a458ee4a72"
+        },
+        {
+          "recordIndex": 161,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/43_EF88_Grip_PTT_Grip_Pod.png",
+          "attachmentName": "PTT Grip Pod",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "0d8ddc289223c77e6a5a83c78cf3a715ca0919bc0e083e013d09b201f8205692"
+        },
+        {
+          "recordIndex": 162,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/44_EF88_Grip_QD_Grip_Pod.png",
+          "attachmentName": "QD Grip Pod",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "278f0fd5184a174c6e15048674c4f316dbad73baece7da8fd654258cd98e0d7c"
+        },
+        {
+          "recordIndex": 163,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/45_EF88_Grip_Classic_Vertical.png",
+          "attachmentName": "Classic Vertical",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "82ff55d51cd40382b4af3f6096a9564fd8bc8a62bb3938da5adc898763557cdc"
+        },
+        {
+          "recordIndex": 164,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/46_EF88_Grip_Low-Profile_Stubby.png",
+          "attachmentName": "Low-Profile Stubby",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "693ae1bd91a58a8d6ea81b5d7ea64198cfa046c55216950241d20dca4f522a8f"
+        },
+        {
+          "recordIndex": 165,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/47_EF88_Grip_Classic_Grip_Pod.png",
+          "attachmentName": "Classic Grip Pod",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "d94320c05b4a6f208e7da8ce59be77bfa36051733dbe7a6dc705be98a16a2303"
+        },
+        {
+          "recordIndex": 166,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/48_EF88_Magazine_30Rnd_Magazine.png",
+          "attachmentName": "30Rnd Magazine",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "a7f4ec8ed73f5bbc7cbf04bc9fc53df28a6f46ece1a333a4487c0cb28ac2faf0"
+        },
+        {
+          "recordIndex": 167,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/49_EF88_Magazine_30Rnd_Fast_Mag.png",
+          "attachmentName": "30Rnd Fast Mag",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "d57984c5e0249f8c023e5842dbe9c51092b69422da0bcc5a5d871926a012a402"
+        },
+        {
+          "recordIndex": 168,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/50_EF88_Magazine_36Rnd_Magazine.png",
+          "attachmentName": "36Rnd Magazine",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "213d66e7810c7355941d89cde5d0f09cf7d1ecee49e30a8f19583aa78eee6a53"
+        },
+        {
+          "recordIndex": 169,
+          "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/51_EF88_Magazine_42Rnd_Magazine.png",
+          "attachmentName": "42Rnd Magazine",
+          "auditValue": 75,
+          "candidateValue": 0,
+          "screenshotReadingM": 75,
+          "screenshotReadingText": "3D SPOT-ON-FIRE-RANGE 75M",
+          "sha256": "c764d174fa2f285fe098aff30eeb35d8eb556327dd2c2f80196388b6647c8400"
+        }
+      ],
+      "conclusion": "All 34 EF88 spotOnFire3dM discrepancies are screenshot-confirmed audit values of 75 m versus candidate 0.0. No correction to the canonical JSON is proposed by this review."
+    },
+    "ef88-ads-review": [
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/14_EF88_Barrel_Extended.png",
+        "field": "adsTimeMs",
+        "screenshotValue": 300,
+        "sha256": "af34d24ac1c1e8ebef0625d8d7e7095f0edaf8421e5396d52f257aab49dbc53b",
+        "classification": "screenshot-confirms-audit",
+        "reviewer": "root"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/18_EF88_Barrel_Cryo.png",
+        "field": "adsTimeMs",
+        "screenshotValue": 250,
+        "sha256": "c6e96a14da7af114f7dc019100ff5a2db96093471251a1ef1a112e2bf4b4d1c1",
+        "classification": "screenshot-confirms-audit",
+        "reviewer": "root"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/19_EF88_Barrel_Ext_Light.png",
+        "field": "adsTimeMs",
+        "screenshotValue": 250,
+        "sha256": "86ecff2db0afe1e9e834276a32d7a4b260990c198df5517f6ab53ac43ee9636e",
+        "classification": "screenshot-confirms-audit",
+        "reviewer": "root"
+      }
+    ],
+    "spotting2d-review": [
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/DRS-IAR/11_DRS-IAR_Muzzle_CQB_Suppressor.png",
+        "sha256": "8e0c84757f63fafe927317e5fe06800aa4029ef10bbcd4ccfca32dc0815c6d23",
+        "field": "spotOnFire2dM",
+        "auditValue": 21,
+        "screenshotValue": 21,
+        "candidateValue": 2.1,
+        "classification": "screenshot-confirms-audit",
+        "reviewer": "root"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/08_M39 EMR_Muzzle_Lightened_Suppressor.png",
+        "sha256": "bd82a8573adfc43e43d983575b0160f9674103ab8733449648b580de9764791b",
+        "field": "spotOnFire2dM",
+        "auditValue": 21,
+        "screenshotValue": 21,
+        "candidateValue": 2.1,
+        "classification": "screenshot-confirms-audit",
+        "reviewer": "root"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/09_M2010 ESR_Muzzle_CQB_Suppressor.png",
+        "sha256": "49e808c54152f2d7741b260182b066a00535640b15f667333656bb6f92154dfb",
+        "field": "spotOnFire2dM",
+        "auditValue": 21,
+        "screenshotValue": 21,
+        "candidateValue": 2.1,
+        "classification": "screenshot-confirms-audit",
+        "reviewer": "root"
+      },
+      {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/M417 A2/09_M417 A2_Muzzle_Lightened_Suppressor.png",
+        "sha256": "00588e1dc705ccca7950e0401438ddea41b227da157915b8a00b4746c0d92fdf",
+        "field": "spotOnFire2dM",
+        "auditValue": 21,
+        "screenshotValue": 21,
+        "candidateValue": 2.1,
+        "classification": "screenshot-confirms-audit",
+        "reviewer": "root"
+      }
+    ],
+    "panel-anomalies": {
+      "schemaVersion": 1,
+      "generatedAt": "2026-09-07",
+      "scope": "Read-only sanity review of reference-data/attachment-audit/attachment-screenshot-review.json. Canonical JSON was not modified.",
+      "status": "candidate-corrections-and-capture-defects",
+      "reviewedRecordCount": 3347,
+      "findings": [
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Grip",
+          "attachmentName": "6H64 Vertical",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/23_DB-12_Grip_6H64_Vertical.png",
+          "fieldPath": "stats.precision",
+          "oldValue": 6,
+          "correctedValue": 7,
+          "visualProof": "Selected panel visibly reads 007.",
+          "screenshotSha256": "6693b234e6955cf8097a8a8d9445199285b7c42f76c34de4522950496c048019"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Grip",
+          "attachmentName": "6H64 Vertical",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/23_DB-12_Grip_6H64_Vertical.png",
+          "fieldPath": "stats.control",
+          "oldValue": 9,
+          "correctedValue": 12,
+          "visualProof": "Selected panel visibly reads 012.",
+          "screenshotSha256": "6693b234e6955cf8097a8a8d9445199285b7c42f76c34de4522950496c048019"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Grip",
+          "attachmentName": "6H64 Vertical",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/23_DB-12_Grip_6H64_Vertical.png",
+          "fieldPath": "stats.mobility",
+          "oldValue": 0,
+          "correctedValue": 54,
+          "visualProof": "Selected panel visibly reads 054.",
+          "screenshotSha256": "6693b234e6955cf8097a8a8d9445199285b7c42f76c34de4522950496c048019"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Grip",
+          "attachmentName": "Stippled Stubby",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/28_DB-12_Grip_Stippled_Stubby.png",
+          "fieldPath": "stats.control",
+          "oldValue": 0,
+          "correctedValue": 12,
+          "visualProof": "Selected panel visibly reads 012.",
+          "screenshotSha256": "c72d1cc5a7675502ce3cdf8a5ad05fb6db989a1fa889256c91356b73fc5e1990"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Grip",
+          "attachmentName": "Stippled Stubby",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/28_DB-12_Grip_Stippled_Stubby.png",
+          "fieldPath": "stats.mobility",
+          "oldValue": 56,
+          "correctedValue": 58,
+          "visualProof": "Selected panel visibly reads 058.",
+          "screenshotSha256": "c72d1cc5a7675502ce3cdf8a5ad05fb6db989a1fa889256c91356b73fc5e1990"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Grip",
+          "attachmentName": "Low-Profile Stubby",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/29_DB-12_Grip_Low-Profile_Stubby.png",
+          "fieldPath": "stats.control",
+          "oldValue": 0,
+          "correctedValue": 13,
+          "visualProof": "Selected panel visibly reads 013.",
+          "screenshotSha256": "d1166ff63e6359c49b1aa5b2a915fdd7878e199ca2d5e584e3ce4216dc62ad0c"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Grip",
+          "attachmentName": "Low-Profile Stubby",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/29_DB-12_Grip_Low-Profile_Stubby.png",
+          "fieldPath": "stats.mobility",
+          "oldValue": 50,
+          "correctedValue": 58,
+          "visualProof": "Selected panel visibly reads 058.",
+          "screenshotSha256": "d1166ff63e6359c49b1aa5b2a915fdd7878e199ca2d5e584e3ce4216dc62ad0c"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Ammo",
+          "attachmentName": "#01 Buckshot",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/32_DB-12_Ammo_Standard.png",
+          "fieldPath": "stats.precision",
+          "oldValue": 7,
+          "correctedValue": 6,
+          "visualProof": "Equipped panel visibly reads 006.",
+          "screenshotSha256": "f821b8fd55a5de397b2428858ffc2cb07c1074f1562ef5313333327baa02a08e"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Ammo",
+          "attachmentName": "#01 Buckshot",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/32_DB-12_Ammo_Standard.png",
+          "fieldPath": "stats.control",
+          "oldValue": 0,
+          "correctedValue": 9,
+          "visualProof": "Equipped panel visibly reads 009.",
+          "screenshotSha256": "f821b8fd55a5de397b2428858ffc2cb07c1074f1562ef5313333327baa02a08e"
+        },
+        {
+          "kind": "stat-transcription-anomaly",
+          "weapon": "DB-12",
+          "attachmentType": "Ammo",
+          "attachmentName": "#01 Buckshot",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/32_DB-12_Ammo_Standard.png",
+          "fieldPath": "stats.mobility",
+          "oldValue": 50,
+          "correctedValue": 60,
+          "visualProof": "Equipped panel visibly reads 060.",
+          "screenshotSha256": "f821b8fd55a5de397b2428858ffc2cb07c1074f1562ef5313333327baa02a08e"
+        },
+        {
+          "kind": "capture-metadata-mislabel",
+          "weapon": "L85A3",
+          "attachmentType": "Muzzle",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/01_L85A3_Muzzle_None.png",
+          "fieldPath": "attachmentSubtype",
+          "oldValue": "Convertor",
+          "correctedValue": "None",
+          "visualProof": "Screenshot title and equipped card visibly read NONE; filename also ends _Muzzle_None.",
+          "screenshotSha256": "2f6e84c255d4a2768966b0c3db01ea12c398443d36dbbfc92bc423abede2cac3"
+        },
+        {
+          "kind": "capture-metadata-mislabel",
+          "weapon": "L85A3",
+          "attachmentType": "Grip",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/31_L85A3_Grip_None.png",
+          "fieldPath": "attachmentSubtype",
+          "oldValue": "Stubby",
+          "correctedValue": "None",
+          "visualProof": "Screenshot title and equipped card visibly read NONE; filename also ends _Grip_None.",
+          "screenshotSha256": "3edcda67295991bbe8f3755afca363c0e4f62ce82824bd37abcc76cf38ce5278"
+        },
+        {
+          "kind": "capture-metadata-mislabel",
+          "weapon": "TR7",
+          "attachmentType": "Muzzle",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/TR7/01_TR7_Muzzle_None.png",
+          "fieldPath": "attachmentSubtype",
+          "oldValue": "Brake",
+          "correctedValue": "None",
+          "visualProof": "Screenshot title and equipped card visibly read NONE; filename also ends _Muzzle_None.",
+          "screenshotSha256": "2724da01c5d7f57ddb9087b598c81955e30be2a6c0de65fde5f459453cbe5009"
+        },
+        {
+          "kind": "capture-metadata-mislabel",
+          "weapon": "18.5KS-K",
+          "attachmentType": "Light",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/09_18.5KS-K_Light_None.png",
+          "fieldPath": "attachmentSubtype",
+          "oldValue": "Light",
+          "correctedValue": "None",
+          "visualProof": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None.",
+          "screenshotSha256": "7162c46d12d979d6d33779fd4572fba874a90dd010e9ff037a7c430c0d0c8c11"
+        },
+        {
+          "kind": "capture-metadata-mislabel",
+          "weapon": "DB-12",
+          "attachmentType": "Light",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/06_DB-12_Light_None.png",
+          "fieldPath": "attachmentSubtype",
+          "oldValue": "Light",
+          "correctedValue": "None",
+          "visualProof": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None.",
+          "screenshotSha256": "782baf6e6514ec570ed7832ff737c63c171131896621117c841aa6bf1edc6ad8"
+        },
+        {
+          "kind": "capture-metadata-mislabel",
+          "weapon": "M1014",
+          "attachmentType": "Light",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M1014/07_M1014_Light_None.png",
+          "fieldPath": "attachmentSubtype",
+          "oldValue": "Light",
+          "correctedValue": "None",
+          "visualProof": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None.",
+          "screenshotSha256": "a68fe7d3a61cd1a3733b3b305e88545ee1bb46c29ffc8e66aa6d04de10f34bca"
+        },
+        {
+          "kind": "capture-metadata-mislabel",
+          "weapon": "M87A1",
+          "attachmentType": "Light",
+          "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M87A1/07_M87A1_Light_None.png",
+          "fieldPath": "attachmentSubtype",
+          "oldValue": "Light",
+          "correctedValue": "None",
+          "visualProof": "Screenshot title and equipped card visibly read NONE; filename also ends _Light_None.",
+          "screenshotSha256": "d93ca0fc4bdf6db933cc01bc022f4ddcf0fca7b016dd5ce1525888d20c16ade0"
+        }
+      ],
+      "unresolvedObservations": [
+        {
+          "fieldPath": "records[weaponName=EF88].stats.precision",
+          "observedValue": 0,
+          "extent": "62/62 EF88 stat rows",
+          "visualProof": "EF88 overview and Muzzle None screenshots visibly print PRECISION 000.",
+          "interpretation": "Strong numeric outlier, but visually confirmed. No correction proposed without separate game/UI evidence.",
+          "screenshotSha256": [
+            "a957d3ab5dcb63892b92f04d32f313e453281115e27318ed74ae1b99f83cf186",
+            "6e4e403ea253e54381c3dc24a7335df3bd1d0248c538ea062643de074f8f9021"
+          ]
+        },
+        {
+          "fieldPath": "records[weaponName=VSSM].stats.spotOnFire3dM",
+          "observedValue": 0,
+          "extent": "43/43 VSSM stat rows",
+          "interpretation": "Consistent with the integrated suppressed barrel and visible 0M 3D spot range; no correction proposed."
+        },
+        {
+          "fieldPath": "records[weaponName=M433].stats",
+          "interpretation": "Spot-checked M433 grip 10/25-point and composite-looking fields against screenshots; displayed values match the canonical rows. No M433 correction proposed from this pass."
+        },
+        {
+          "fieldPath": "stats.reloadInAds",
+          "observedValue": true,
+          "extent": "10 exception rows",
+          "interpretation": "All exceptions are Magwell Flare records. The attachment description says it enables reloading while aiming down sights, and a direct M16A4 screenshot visibly reads RELOAD IN ADS YES. No reloadInAds correction proposed."
+        }
+      ],
+      "captureAudit": {
+        "visuallyConfirmedMislabeledRecords": 7,
+        "missingPendingScreenshotRecords": 158,
+        "missingPendingScreenshotStatus": "All 158 are context-only Frosty pending placeholders. They are expected by the canonical known-gap policy and have no screenshot proof.",
+        "existingPngDimensions": {
+          "1365x768": 3121,
+          "2560x1440": 68
+        },
+        "duplicateHashesAmongExistingCanonicalPngs": 0,
+        "invalidPngsAmongExistingCanonicalPngs": 0,
+        "provenanceFilenameWarnings": "17 ES 5.7/GGH-22 records retain raw screenshot capture names in source.originalFilename while source.originalPath points to the renamed canonical file. Current filenames and visual labels were consistent; this is metadata history, not counted as a screenshot mislabel."
+      }
+    },
+    "handling-review": [
+      {
+        "recordIndex": 17,
+        "weapon": "ak4d",
+        "attachmentName": "450MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/AK4D/17_AK4D_Barrel_Cryo.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "740989c0edeb81155ed24439064449da056a602344efe2b3608f366bc2db5380",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 79,
+        "weapon": "b36a4",
+        "attachmentName": "480MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/B36A4/18_B36A4_Barrel_Cryo.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "b2f270e56fc18d01889b25aee8d223a0ff5dfc515e501e8cad35f8c98018e73e",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 207,
+        "weapon": "kord6p67",
+        "attachmentName": "415MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/KORD 6P67/15_KORD 6P67_Barrel_Cryo.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "d96f269081e2c51f9acef5365bc5515e68903577a985b5496c392efb2d7f07d3",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 271,
+        "weapon": "l85a3",
+        "attachmentName": "518MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/19_L85A3_Barrel_Cryo.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "a46b3883d555dc3308a2a04eff7fa808ea3a1aaa5364d02c69d39994885af7e7",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 339,
+        "weapon": "m16a4",
+        "attachmentName": "18\" Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M16A4/19_M16A4_Barrel_Cryo.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "91b80e8f1a69ab776764f57d5e18cf4c4b7a9ab65dc4ea5a1727fb66be7da6b7",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 406,
+        "weapon": "nvo228e",
+        "attachmentName": "409MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/NVO-228E/17_NVO-228E_Barrel_Cryo.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "21cfa470cbba1bc4f51f04386dd945fae828d3fc583b17f8368f9ae61bea39a7",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 469,
+        "weapon": "sor556",
+        "attachmentName": "16\" Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/SOR-556 MK2/18_SOR-556 MK2_Barrel_Cryo.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "2171177b47f0cbd5f5780ce5b42c5e9e49db49b79cf094edfd22d658fad506fc",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 717,
+        "weapon": "ak205",
+        "attachmentName": "314MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/AK-205/14_AK-205_Barrel_314MM_CRYOGENIC.png",
+        "auditValue": 200,
+        "candidateValue": 250,
+        "screenshotValue": 200,
+        "sha256": "7d758d24729d0089a5b84bbe2f832411f7b14de78bd8f5ca6623562121c65420",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 776,
+        "weapon": "brod3",
+        "attachmentName": "14.5\" Carbine",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/14_BROD 3_Barrel_Extended.png",
+        "auditValue": 250,
+        "candidateValue": 200,
+        "screenshotValue": 250,
+        "sha256": "b0233e2fac6b95853997b3df667160aa9a5e4543a8b472eb54db6487c007ea75",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 952,
+        "weapon": "qbz192",
+        "attachmentName": "10.5\" Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/QBZ-192/07_QBZ-192_Barrel_Cryo.png",
+        "auditValue": 200,
+        "candidateValue": 250,
+        "screenshotValue": 200,
+        "sha256": "febaa034d2a2edc8f8920124e837ad2ac941691887b8ead2188a0c5ccd4c384d",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 1114,
+        "weapon": "pw5a3",
+        "attachmentName": "225MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/PW5A3/14_PW5A3_Barrel_Cryo.png",
+        "auditValue": 167,
+        "candidateValue": 200,
+        "screenshotValue": 167,
+        "sha256": "2c6a85227bf65f6af55618d281ad2be0a23fa4ff5da80552b9baf186efe9dfa6",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 1168,
+        "weapon": "pw7a2",
+        "attachmentName": "180MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/PW7A2/14_PW7A2_Barrel_Cryo.png",
+        "auditValue": 167,
+        "candidateValue": 200,
+        "screenshotValue": 167,
+        "sha256": "e9dae861ce8ac8c5f57fb9e381c2046b223d8cc9360dfa6756f925e962a28d73",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 1324,
+        "weapon": "umg40",
+        "attachmentName": "200MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/UMG-40/16_UMG-40_Barrel_Cryo.png",
+        "auditValue": 167,
+        "candidateValue": 200,
+        "screenshotValue": 167,
+        "sha256": "c9c79589e78ed1ddf5c17436116ee354c2eec023a5e8cf5f3070e097d6cab464",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 1382,
+        "weapon": "usg90",
+        "attachmentName": "264MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/USG-90/17_USG-90_Barrel_Cryo.png",
+        "auditValue": 167,
+        "candidateValue": 200,
+        "screenshotValue": 167,
+        "sha256": "982f4970d8ae59afb0b2fe61dd0e9c46d85f5cffce18ab3d78e556e48dc796bb",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 1936,
+        "weapon": "m39emr",
+        "attachmentName": "Slim Handstop",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/32_M39 EMR_Grip_Slim_Handstop.png",
+        "auditValue": 200,
+        "candidateValue": 167,
+        "screenshotValue": 167,
+        "sha256": "84d89da64198b5d6d318c7ef77a43a54b228c9d1912b307687037baeaa14a370",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 1944,
+        "weapon": "m39emr",
+        "attachmentName": "Adjustable Angled",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/40_M39 EMR_Grip_Adjustable_Angled.png",
+        "auditValue": 200,
+        "candidateValue": 167,
+        "screenshotValue": 167,
+        "sha256": "e690e5b77d99c56357e013fd1fd8e3a45e695cb84f615f79cfde60922b97a277",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 1945,
+        "weapon": "m39emr",
+        "attachmentName": "Slim Angled",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/41_M39 EMR_Grip_Slim_Angled.png",
+        "auditValue": 200,
+        "candidateValue": 167,
+        "screenshotValue": 167,
+        "sha256": "8d53d3ec3dacdd80ba87309771e5dbe55ede6c8fde97d3e93a5becbc9bd95c1a",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 1946,
+        "weapon": "m39emr",
+        "attachmentName": "Full Angled",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/42_M39 EMR_Grip_Full_Angled.png",
+        "auditValue": 200,
+        "candidateValue": 167,
+        "screenshotValue": 167,
+        "sha256": "d807ec3acd48448de1abe38028f3d3d738a4745e0375fd14d96c21e13c7e088f",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 1957,
+        "weapon": "m39emr",
+        "attachmentName": "Tungsten Core",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/53_M39 EMR_Ammo_Penetration.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "c49b80052382eae12af05f515c8c13a4489144b3ecd9848dc9843e854b45496f",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 1959,
+        "weapon": "m39emr",
+        "attachmentName": "Match Grade",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/55_M39 EMR_Ammo_Long-range.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "406dcc125b79b7c9ff4110eadaa79f891eba089d3e7b83886f31d75609716aba",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2015,
+        "weapon": "svdm",
+        "attachmentName": "FMJ",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/50_SVDM_Ammo_Standard.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "8849e86a921c52495df7a37c78cf1a7d8f80991bd5dd9ab7fd7f53bfb61a2602",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2017,
+        "weapon": "svdm",
+        "attachmentName": "Match Grade",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/52_SVDM_Ammo_Long-range.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "2714f2ef7be4eec8a75727ad7d055d03b7e0abb72c82475468c51c738b0a1b06",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2055,
+        "weapon": "svk86",
+        "attachmentName": "Folding Stubby",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/32_SVK-8.6_Grip_Folding_Stubby.png",
+        "auditValue": 367,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "728c98ca027bd005c3667fdffc9538fc417913a2b764f2e4fdd1e53a3b2ee111",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2056,
+        "weapon": "svk86",
+        "attachmentName": "Ribbed Stubby",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/33_SVK-8.6_Grip_Ribbed_Stubby.png",
+        "auditValue": 367,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "cf173a2d10705c7b8f124fcebe1bb743fdb3d2466ce7aaec92149f1b4a01c39a",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2057,
+        "weapon": "svk86",
+        "attachmentName": "Canted Stubby",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/34_SVK-8.6_Grip_Canted_Stubby.png",
+        "auditValue": 367,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "579ca09ae2442c204991e973f4cba4fdf756c7db948dc47360db8b9e2aa09356",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2058,
+        "weapon": "svk86",
+        "attachmentName": "Stippled Stubby",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/35_SVK-8.6_Grip_Stippled_Stubby.png",
+        "auditValue": 367,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "f5c93355fe5ff2b721f580b681ad2e233e8ed724b5f3e7388705ba4fcee9828d",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2059,
+        "weapon": "svk86",
+        "attachmentName": "Slim Handstop",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/36_SVK-8.6_Grip_Slim_Handstop.png",
+        "auditValue": 367,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "9fb576031d12027bda7ad67ad6f5c4208038396ad757d4c0df1e730e98f479a6",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2059,
+        "weapon": "svk86",
+        "attachmentName": "Slim Handstop",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/36_SVK-8.6_Grip_Slim_Handstop.png",
+        "auditValue": 233,
+        "candidateValue": 200,
+        "screenshotValue": 200,
+        "sha256": "9fb576031d12027bda7ad67ad6f5c4208038396ad757d4c0df1e730e98f479a6",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2066,
+        "weapon": "svk86",
+        "attachmentName": "Classic Grip Pod",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/43_SVK-8.6_Grip_Classic_Grip_Pod.png",
+        "auditValue": 367,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "3af81b1763747bb2117dda5390c8842b1b1e1e81d470c09f47c8c085999900df",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2083,
+        "weapon": "vssm",
+        "attachmentName": "200MM ASM",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/02_VSSM_Barrel_Suppressed_200MM_ASM.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "d2c0601dedb641c042aea0d2a1a156e2e1129997c5ce8e8e39a567a391561f24",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2094,
+        "weapon": "vssm",
+        "attachmentName": "Slim Handstop",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/20_VSSM_Grip_Slim_Handstop.png",
+        "auditValue": 133,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "0d613164d8f74d8b34f25c7f1df81b37ad9d0d48c3ccb690c280ea1f6d9e0b98",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2144,
+        "weapon": "l115",
+        "attachmentName": "Full Angled",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/26_L115_Grip_Full_Angled.png",
+        "auditValue": 433,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "416adf9f254df4d878f9070c563e4ac3ab935f428970434acab325c62305b4c8",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2146,
+        "weapon": "l115",
+        "attachmentName": "Low-Profile Stubby",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/28_L115_Grip_Low-Profile_Stubby.png",
+        "auditValue": 300,
+        "candidateValue": 367,
+        "screenshotValue": 300,
+        "sha256": "4ddb63163b738feacd77e4724a58977afa465b0ed7eefd97262a4a0fb07645a7",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2196,
+        "weapon": "m2010esr",
+        "attachmentName": "FMJ",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/36_M2010 ESR_Ammo_Standard.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "60a1b2585a615851368f05ecd1d11236979d380282facb3725d132a4d5e431c9",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2197,
+        "weapon": "m2010esr",
+        "attachmentName": "Tungsten Core",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/37_M2010 ESR_Ammo_Penetration.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "ee618c5ff3d9fa0d50a1feb1b86081c1b17d0527a7c4ec3ca2bdaf1365d3a239",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2198,
+        "weapon": "m2010esr",
+        "attachmentName": "Match Grade",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/38_M2010 ESR_Ammo_Long-range.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "9fb92e6bb250b00bc52a0c369734ea51c3f753d636bf87082f5addd0254fa0f7",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2223,
+        "weapon": "miniscout",
+        "attachmentName": "12\" SBR",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/14_Mini Scout_Barrel_Short.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "54f7bfddbebfe8af317c4a250af50f6b04f127fa27b3a4ff9bda0c4074e7c5a8",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2233,
+        "weapon": "miniscout",
+        "attachmentName": "Full Angled",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/31_Mini Scout_Grip_Full_Angled.png",
+        "auditValue": 200,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "a8521cca5065a549ebc9f5493f11c1d11b869460de0febc3362dfdf74b94ae92",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2272,
+        "weapon": "psr",
+        "attachmentName": "Slim Angled",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/26_PSR_Grip_Slim_Angled.png",
+        "auditValue": 433,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "979263870699a4e8b329ad7fecceba08dfdf0d6b633ed8aed898c34e6e3faccf",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2317,
+        "weapon": "sv98",
+        "attachmentName": "FMJ",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/31_SV-98_Ammo_Standard.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 250,
+        "sha256": "e47550542d838db2d277ef991f490392796e82690503b126ebf48fd00ff42470",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2318,
+        "weapon": "sv98",
+        "attachmentName": "Tungsten Core",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/32_SV-98_Ammo_Penetration.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "d1c9e02e9d14d18d656285da37dabf30f02439dccf31f321f9504b8d325f7c38",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2319,
+        "weapon": "sv98",
+        "attachmentName": "Match Grade",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/33_SV-98_Ammo_Long-range.png",
+        "auditValue": 250,
+        "candidateValue": 300,
+        "screenshotValue": 300,
+        "sha256": "0a69524be835fdcfff949d754de9f49281111185f249ff02b4a673c762423898",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2339,
+        "weapon": "ks18k",
+        "attachmentName": "430MM Factory",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/08_18.5KS-K_Barrel_Extended.png",
+        "auditValue": 200,
+        "candidateValue": 250,
+        "screenshotValue": 250,
+        "sha256": "23b5d15d08ca8616eb46913692d169cfed8e983168cc2dcdd1641700fcae840a",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2380,
+        "weapon": "db12",
+        "attachmentName": "22.9\" Extended",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/05_DB-12_Barrel_Extended.png",
+        "auditValue": 200,
+        "candidateValue": 250,
+        "screenshotValue": 250,
+        "sha256": "826d7558fc97aa6aceaa440e528b8053288929ccd6e99cc3e5fb97c6695e2c23",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2394,
+        "weapon": "db12",
+        "attachmentName": "Slim Angled",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/30_DB-12_Grip_Slim_Angled.png",
+        "auditValue": 133,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "c06010ac23c14efc151e951f76bf8b9503defeed3f0416a5150ccf91f89c38e6",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2647,
+        "weapon": "sl9",
+        "attachmentName": "9\" Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/16_SL9_Barrel_Cryo.png",
+        "auditValue": 167,
+        "candidateValue": 200,
+        "screenshotValue": 167,
+        "sha256": "6e99c9d90d4abba0e332ed40f39c4ef8abfab367f4e270795bfb52c5c803fc6a",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2672,
+        "weapon": "sl9",
+        "attachmentName": "None",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/18_SL9_Laser-Light_None.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "f12440009684af15483ca48a251c3745350a10f7922456d00899e2300693d0da",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2673,
+        "weapon": "sl9",
+        "attachmentName": "Taclight - Aimed",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/19_SL9_Laser-Light_Taclight_-_Aimed.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "80f9ec3f87463e150a8e33f66adea7f27980c9f3db28f6d5743082c861faa17e",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2674,
+        "weapon": "sl9",
+        "attachmentName": "Flashlight",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/20_SL9_Laser-Light_Flashlight.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "7079d390c836aa4665f88b2ffe24963cfe16ebf4bf3f929455ed3846827f2566",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2675,
+        "weapon": "sl9",
+        "attachmentName": "Taclight - Hipfire",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/21_SL9_Laser-Light_Taclight_-_Hipfire.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "b01acc75ddca1768c84533c383fc27c2d3fc6ea3232c3379b464973a6f4a7fcc",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2676,
+        "weapon": "sl9",
+        "attachmentName": "5 MW Red",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/22_SL9_Laser-Light_5_MW_Red.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "d7751856b08f70ffd2dac128ce146a728a824020b51d35a9b10197b5f01aba77",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2677,
+        "weapon": "sl9",
+        "attachmentName": "50 MW Violet",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/23_SL9_Laser-Light_50_MW_Violet.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "30de21627e8a227dd444a5a979cc616a8e1c268a3129ed62c5b5a3c13face6f9",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2678,
+        "weapon": "sl9",
+        "attachmentName": "5 MW Green",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/24_SL9_Laser-Light_5_MW_Green.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "5825f99c7388f8380e4f86cea81fd2fb4bc540c19d2da6317f6fda67c5131f4e",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2679,
+        "weapon": "sl9",
+        "attachmentName": "50 MW Green",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/25_SL9_Laser-Light_50_MW_Green.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "e0688e308ec47f5a5c916fff01195ad5dd12f43f53194f7d3bffdf294520c054",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2680,
+        "weapon": "sl9",
+        "attachmentName": "50 MW Blue",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/26_SL9_Laser-Light_50_MW_Blue.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "4cf50ba631a9827534a3fe03134a9f6a71c065a3bace0de27a378ab4441a301b",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2681,
+        "weapon": "sl9",
+        "attachmentName": "120 MW Blue",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/27_SL9_Laser-Light_120_MW_Blue.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "5cc339198456ef6168b34bf57852ef5c06ef06c601e42da299f6e79831ae9ccb",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2682,
+        "weapon": "sl9",
+        "attachmentName": "Laser/Light Combo Red",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/28_SL9_Laser-Light_LASERLIGHT_COMBO_RED.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "4d45b74de457325354b406eab17ddbcab4c8ab06895e633e17fb3f7ddb0175a7",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2683,
+        "weapon": "sl9",
+        "attachmentName": "Laser/Light Combo Green",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/29_SL9_Laser-Light_LaserLight_Combo_Green.png",
+        "auditValue": 167,
+        "candidateValue": 100,
+        "screenshotValue": 100,
+        "sha256": "58ad5896c77c5a38e013bfd1d48514679ab6d6395500163de8757f8d85eb0f65",
+        "classification": "screenshot-confirms-candidate"
+      },
+      {
+        "recordIndex": 2697,
+        "weapon": "pp19",
+        "attachmentName": "238MM Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/SMG/PP-19/11_PP-19_Barrel_Cryo.png",
+        "auditValue": 167,
+        "candidateValue": 200,
+        "screenshotValue": 167,
+        "sha256": "1ce70b12222dbd86e040c49cdb69cf149a40d4ed72d4cfe36e023e50bac6c789",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2759,
+        "weapon": "m417a2",
+        "attachmentName": "13\" Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/M417 A2/15_M417 A2_Barrel_Cryo.png",
+        "auditValue": 200,
+        "candidateValue": 250,
+        "screenshotValue": 200,
+        "sha256": "675679bf4b7407989e2243a2b2a169934996911d04eb6d0fe1602847f285a7df",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2816,
+        "weapon": "sor300sc",
+        "attachmentName": "9\" Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/SOR-300SC/17_SOR-300SC_Barrel_Cryo.png",
+        "auditValue": 200,
+        "candidateValue": 250,
+        "screenshotValue": 200,
+        "sha256": "5f9c64094740e9d7f0b5bb38b2dcad1d513bb61d12796697d6c26edebe062935",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 2928,
+        "weapon": "m277",
+        "attachmentName": "13\" Cryogenic",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/M277/18_M277_Barrel_Cryo.png",
+        "auditValue": 200,
+        "candidateValue": 250,
+        "screenshotValue": 200,
+        "sha256": "257557c86cbb3f38b932334182d6efe3284206ea6d00b3e8fa0871bfa8a7ab19",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 3006,
+        "weapon": "kts100",
+        "attachmentName": "Ribbed Vertical",
+        "field": "adsTimeMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/31_KTS100 MK8_Grip_Ribbed_Vertical.png",
+        "auditValue": 300,
+        "candidateValue": 367,
+        "screenshotValue": 300,
+        "sha256": "06cae4c7d0376ab2f8dbb4e2dbb614f83cc532db64fd62938b95fb7f494436b7",
+        "classification": "screenshot-confirms-audit"
+      },
+      {
+        "recordIndex": 3024,
+        "weapon": "kts100",
+        "attachmentName": "60Rnd Magazine",
+        "field": "sprintRecoveryMs",
+        "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/50_KTS100 MK8_Magazine_60RND_MAGAZINE.png",
+        "auditValue": 233,
+        "candidateValue": 200,
+        "screenshotValue": 233,
+        "sha256": "f07ad55b5aa33364267ab132efa7984cea54d10b72b4914d89f738d500bf4986",
+        "classification": "screenshot-confirms-audit"
+      }
+    ]
+  }
+}

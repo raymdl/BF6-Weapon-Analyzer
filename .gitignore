@@ -28,6 +28,7 @@ data/check_all.sh
 /reference-data/companion-datamined/
 
 # Generated analysis and scratch output.
+/reference-data/attachment-audit/frosty-panel-audit-2026-09-07.json
 outputs/
 schemas/outputs/
 tmp/

@@ -87,7 +87,7 @@ COLUMNS = [
     ("Attachment Name", lambda r: r.get("attachmentName"), None, 15.125),
     ("Attachment Subtype", lambda r: r.get("attachmentSubtype"), None, 11.625),
     ("Attachment Cost", lambda r: r.get("attachmentCost"), None, 10.75),
-    ("Attachment Description", lambda r: r.get("attachmentDescription"), None, 37.375),
+    ("Attachment Description", lambda r: ("Frosty 1.4.2.5 configuration candidates. Screenshot pending. Values can differ from the displayed panel; see source JSON for limits." if r.get("frosty") else ("CAPTURE ERROR: screenshot shows Classic Grip Pod, not Ribbed Vertical. Replacement required. " + (r.get("attachmentDescription") or "") if any("Wrong selected attachment" in c for c in r.get("reviewConflicts", [])) else r.get("attachmentDescription"))), None, 37.375),
     ("Damage", lambda r: _stat(r, "damage"), "damage", 8.0),
     ("Rate of Fire (RPM)", lambda r: _stat(r, "rateOfFireRpm"), "rateOfFireRpm", 10.25),
     ("Magazine Size", lambda r: _stat(r, "magazineSize"), "magazineSize", 9.375),
@@ -111,7 +111,7 @@ COLUMNS = [
     ("Sprint Recovery (ms)", lambda r: _stat(r, "sprintRecoveryMs"), "sprintRecoveryMs", 9.375),
     ("Recoil Amount (degrees)", lambda r: _stat(r, "recoilAmountDegrees"), "recoilAmountDegrees", 9.5),
     ("Recoil Variation (degrees)", lambda r: _stat(r, "recoilVariationDegrees"), "recoilVariationDegrees", 8.88),
-    ("Current Screenshot Filename", lambda r: _basename(r["source"].get("currentPath")), None, 39.375),
+    ("Screenshot / Frosty Evidence", lambda r: ("Frosty configuration; screenshot pending" if r.get("frosty") else _basename(r["source"].get("currentPath"))), None, 39.375),
 ]
 
 # The Current Screenshot Filename column, which links to the capture it names.
@@ -129,6 +129,9 @@ SUBTYPE_KEYED_TYPES = {"Barrel", "Ammo"}
 
 def _stat(record, key):
     stats = record.get("stats") or {}
+    if record.get("frosty"):
+        value = record["frosty"].get("panelFields", {}).get(key, {}).get("value")
+        return round(value, 3) if isinstance(value, float) else value
     return stats.get(key)
 
 
@@ -208,7 +211,7 @@ def _option_value(record):
     """The value that identifies an option within its type: subtype for the subtype-keyed
     types, attachment name for the rest. Same rule the Overview rows are keyed on."""
     attachment_type = record.get("attachmentType")
-    return (record.get("attachmentSubtype") if attachment_type in SUBTYPE_KEYED_TYPES
+    return ((record.get("attachmentSubtype") or (record.get("attachmentName") if record.get("frosty") else None)) if attachment_type in SUBTYPE_KEYED_TYPES
             else record.get("attachmentName"))
 
 
@@ -279,7 +282,7 @@ def write_weapon_sheet(workbook, weapon, weapon_class, records):
                 cell.alignment = Alignment(vertical="top", wrap_text=wrap)
             if index == FILENAME_COLUMN and value:
                 # The cell names the capture; clicking it opens that capture.
-                cell.hyperlink = _file_url(record["source"]["currentPath"])
+                cell.hyperlink = _file_url(str(ROOT / record["frosty"].get("panelEvidenceFile", record["frosty"]["evidenceFile"])) if record.get("frosty") else record["source"]["currentPath"])
                 cell.font = Font(sz=10, color=LINK, underline="single")
             if index == 1:
                 type_fill, type_text = type_style(record.get("attachmentType"))
@@ -639,7 +642,9 @@ def write_source_index(workbook, records):
         # Column 9 opens the capture itself: the filename reads better than the absolute path,
         # and the path is still there as the link target.
         current = source.get("currentPath")
-        if current:
+        if record.get("frosty"):
+            sheet.cell(row, 9, "Screenshot pending")
+        elif current:
             cell = sheet.cell(row, 9, os.path.basename(current))
             cell.hyperlink = _file_url(current)
             cell.font = Font(sz=10, color=LINK, underline="single")
@@ -673,8 +678,11 @@ def write_read_me(workbook, data, weapon_count, out_path, json_path):
                               "an arrow plus the displayed value: bold green for a buff, bold red "
                               "for a penalty. The arrow is what the screen showed; it does not "
                               "always mean the displayed number differs from the baseline."),
-        ("Blank cells", "A blank stat means the value was not readable in that screenshot. The "
-                        "reason is recorded per field in the source JSON, not here."),
+        ("Blank cells", "A blank stat was not readable in the screenshot or has no supported Frosty "
+                        "display formula. The source JSON records the reason."),
+        ("Frosty pending rows", "These rows contain configuration candidates, not screenshot measurements. "
+                               "Magazine counts can include the chamber. Rate and reload values can require "
+                               "further timing calculations. Capture screenshots before treating them as displayed stats."),
         ("Overview sheet", "Attachment option matrix. Each cell links to that weapon's row."),
         ("By Attachment sheet", "One attachment across the whole roster. Pick an attachment type "
                                 "in B1 and an option in B2; each weapon's row fills in from the "
