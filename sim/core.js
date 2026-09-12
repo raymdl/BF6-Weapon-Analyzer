@@ -178,6 +178,8 @@ export function selectedRecoilVariationFor(w) {
  */
 export const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
 export const SPREAD_BAR_SCALE = 12;
+// 1 ms keeps stepped recovery within 0.2% of a 0.1 ms reference; 1/60 s differed by up to 3.3%.
+export const SPREAD_TIME_STEP = 0.001;
 
 export function spreadBounds(w) {
   const { aimState, stanceState } = _ctx;
@@ -267,7 +269,7 @@ export function spreadRecoveries(w) {
 }
 
 /** Step spread recovery over `seconds`, clamped to [baseline, sMax]. */
-export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt = 1 / 60) {
+export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt = SPREAD_TIME_STEP) {
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
   let rem = seconds;
   while (rem > 1e-12) {
@@ -314,7 +316,7 @@ export function simulateSpread(w, shotCount) {
   const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return Array(shotCount).fill(baseline);
   const { firing: firingRecovery, notFiring: notFiringRecovery } = spreadRecoveries(w);
-  const dt = 1 / 60;
+  const dt = SPREAD_TIME_STEP;
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
   let spread = baseline;
   const spreads = [];

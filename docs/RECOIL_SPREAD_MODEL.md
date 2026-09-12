@@ -207,7 +207,7 @@ with these stock values under the rules above.
 
 `simulateSpread()` records each shot's spread **before** adding that shot's
 increase. The first shot therefore uses the current stance minimum. Between
-shots, recovery is integrated in steps no longer than 1/60 second:
+shots, recovery is integrated in steps no longer than 1 ms (`SPREAD_TIME_STEP`):
 
 ```text
 delta = max(spread - baseline, 0)
