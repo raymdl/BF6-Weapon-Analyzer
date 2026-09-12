@@ -18,7 +18,7 @@ are not a complete schema for every current weapon/attachment field. The cross-f
 | [ammo.json](../data/ammo.json) | Ordered `AMMO` catalog and `WEAPON_AMMO` availability, effects, velocity treatments and projectile overrides. |
 | [balance_tables.json](../data/balance_tables.json) | Ordered stat arrays, geometric factors, per-weapon bases and damage-policy maps. |
 | [recoil_decay.json](../data/recoil_decay.json) | `RECOIL_DEC`, `RECOIL_DEC_TEXP`, `RECOIL_DEC_EXP` maps used by legacy recoil-group fallback. Explicit per-aim groups take precedence. |
-| [ballistics.json](../data/ballistics.json) | Projectile constants, source/donor ID registry and ammo drag overrides. |
+| [ballistics.json](../data/ballistics.json) | Projectile constants, Sym source ID registry and ammo drag overrides. |
 | [reload-exceptions.json](../data/reload-exceptions.json) | Maintenance-only animation overrides, screenshot exceptions, composed-loadout evidence and derived counts. Runtime values are already promoted into magazine records. |
 | [live-baseline.json](../data/provenance/live-baseline.json) | Maintenance-only source identity, roster and acceptance policy. |
 
@@ -119,12 +119,12 @@ research output or frozen site copy.
 | `DRAW_TIME_TABLES.primary.deploy[]`, `.undeploy[]` | Twelve entries each, common selected coordinate. | Primary draw/holster timing. |
 | `DRAW_TIME_TABLES.sidearm.deploy[]`, `.undeploy[]` | Fifteen entries each, including repeated early rows. | Sidearm-table draw/holster timing. |
 | `HP_HS_HIGH[]` | Weapon-ID membership set. | High-power headshot policy; order has no formula meaning. |
-| `ballistics.weaponIds[]` | Sixty source/donor IDs at review. | Source selection, not a hard gate excluding every other weapon from ballistics. |
+| `ballistics.weaponIds[]` | Sixty Sym-sourced weapon IDs at review. | Source selection, not a hard gate excluding every other weapon from ballistics. |
 | `live-baseline.sources[]` | Source identity/version/evidence records. | Maintenance provenance, not runtime loading. |
 | `live-baseline.dataPolicy.allowedDamagePointSources[]`, `.estimatedWeaponIds[]` | Allowed source labels and estimated-roster ID list. | Cross-file validation; estimated list is currently empty. |
-| `weapons[].provenance.frosty.fields[]`, `.sourced.fields[]`, `.estimatedFields[]` | Source/estimated field-name lists. | Evidence/disclosure maintenance, not automatic field replacement. |
+| `weapons[].provenance.frosty.fields[]` | Frosty-sourced field-name lists. | Evidence/disclosure maintenance, not automatic field replacement. |
 | `weapons[].provenance.measured.displayedDamageEndpoints[]` | Observed range/damage records. | Retained measurement evidence; not substituted for exact runtime curves. |
-| `weapons[].provenance.donor.weaponIds[]`, `.donor.names[]`, `.notes[]` | Donor identity/name lists and narrative notes. | IDs can participate in projectile-source fallback; names/notes remain evidence. Older notes can describe superseded behavior. |
+| `weapons[].provenance.notes[]` | Narrative notes. | Evidence only. Older notes can describe superseded behavior. |
 
 ## Scalar maps and derived arrays
 

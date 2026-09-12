@@ -22,8 +22,8 @@ const readJson = relative => JSON.parse(readFileSync(new URL(relative, import.me
 const catalog = readJson('../data/ballistics.json');
 const weapons = readJson('../data/weapons.json');
 // The catalog is the Sym baseline, so it covers every weapon Sym publishes.
-// These three reach the site through the datamined changelist instead and carry
-// their own sourced bulletVel, which projectileModelFor uses directly.
+// Sym does not publish these three; they carry their own Frosty bulletVel,
+// which projectileModelFor uses directly.
 const DATAMINED_WEAPON_IDS = ['brod3', 'ef88', 'vssm'];
 const symWeaponIds = weapons.filter(weapon => !DATAMINED_WEAPON_IDS.includes(weapon.id)).map(weapon => weapon.id).sort();
 assert.deepEqual([...catalog.weaponIds].sort(), symWeaponIds, 'runtime projectile availability covers every Sym-sourced weapon');

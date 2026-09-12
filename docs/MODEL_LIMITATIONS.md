@@ -11,9 +11,9 @@ execute it in the analyzer.
 
 The live dataset combines versions and evidence types. `damageStatus: verified`
 means accepted by this project; individual source notes can still say pending
-in-game confirmation. No current weapon is listed in `estimatedWeaponIds`, but
-attachment assumptions and field-level uncertainty remain. Historical nested donor
-and estimate notes can describe earlier states, including fire-mode limitations
+in-game confirmation. No weapon is estimated or uses donor values, but
+attachment assumptions and field-level uncertainty remain. Historical notes
+can describe earlier states, including fire-mode limitations
 that the current resolver has since addressed.
 
 ## Retained source fields that are not fully simulated

@@ -297,7 +297,7 @@ distance and uses the available projectile model for vertical displacement.
 [sim/ballistics.js](../sim/ballistics.js) provides flight time and trajectory;
 [sim/target.js](../sim/target.js) handles geometry and hit classification.
 Projectile assembly uses available precise/base velocity and global coefficients,
-with supported ammo drag and source/donor fallback. The source-ID registry is not a
+with supported ammo drag. The source-ID registry is not a
 hard eligibility gate. If trajectory resolution fails, the current renderer uses
 zero vertical displacement; this is a display fallback, not a measured no-drop result.
 See [damage, ballistics and projection](DAMAGE_BALLISTICS.md).

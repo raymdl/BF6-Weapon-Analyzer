@@ -93,11 +93,11 @@ causing misses, reloading, armor, suppression, or healing.
 ## Projectile model assembly
 
 The build retains precise velocity after ammo and barrel composition. UI assembly
-prefers that value, then the base weapon velocity, then an identified donor source.
+prefers that value, then the base weapon velocity.
 [data/ballistics.json](../data/ballistics.json) supplies gravity −9.81 m/s² and
 base drag 0.0035 m⁻¹. Ammo `long_range` and `range_pen` use 0.002 m⁻¹; assembly also
 supports per-class ammo drag mappings. Its `weaponIds` array identifies recorded
-source/donor coverage; it is not an exclusive whitelist for applying global
+Sym source coverage; it is not an exclusive whitelist for applying global
 coefficients to a weapon with its own valid velocity.
 
 Validation requires positive finite velocity, finite nonnegative drag, and finite

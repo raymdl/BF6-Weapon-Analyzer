@@ -218,7 +218,7 @@ test('uses the refreshed Sym game-file damage tiers', () => {
   assert.deepEqual(curves.svk86, [66.7, 66.7, 57.2, 57.2, 52.4]);
 
   // Preserve the distinct source of each reviewed curve.
-  const NON_SYM_CURVES = { vssm: 'in-game', interdictor: 'Frosty' };
+  const NON_SYM_CURVES = { brod3: 'Frosty', ef88: 'Frosty', vssm: 'Frosty', interdictor: 'Frosty' };
   for (const weapon of weapons) {
     assert.equal(weapon.damageStatus, 'verified', `${weapon.id} status`);
     const expected = NON_SYM_CURVES[weapon.id] ?? 'Sym';
@@ -244,10 +244,7 @@ test('evaluates non-sniper damage curves and the NVO-228E tiers at whole metres'
   // each tier boundary. Every other class repeats each boundary range, so no
   // sampled range may land strictly between two adjacent tier values.
   const stepped = weapon => weapon.cls !== 'Sniper Rifle' && weapon.cls !== 'Shotgun';
-  // Provisional estimates retain donor-derived damage shapes until Sym publishes
-  // the weapon-specific curve; their endpoint/dropoff contract is covered by
-  // estimated-weapons.test.mjs instead of this measured-shape assertion.
-  for (const weapon of weapons.filter(weapon => stepped(weapon) && !weapon.estimated)) {
+  for (const weapon of weapons.filter(stepped)) {
     const tiers = new Set(weapon.dmg.map(point => point.d));
     for (let range = 0; range <= 150; range += 0.5) {
       assert.ok(tiers.has(damageAtRange(weapon, range)), `${weapon.id} stepped at ${range}m`);

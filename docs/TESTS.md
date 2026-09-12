@@ -39,7 +39,7 @@ All paths in this table are under `scripts/`.
 | [barrel-velocity.test.mjs](../scripts/barrel-velocity.test.mjs) | Tier precedence, compatibility multiplier, selectable-barrel equivalence and display rounding. |
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
 | [draw-time.test.mjs](../scripts/draw-time.test.mjs) | Source timing tables, selection, independent shifts, final clamping and invalid-input behavior. |
-| [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | Disclosure, cross-file coverage, reviewed weapon/ammo/reload decisions and compatibility cases. |
+| [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | No estimated or donor weapons, Frosty-sourced BROD 3/EF88/VSSM values, cross-file coverage and compatibility cases. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |
 | [recoil.test.mjs](../scripts/recoil.test.mjs) | Analytic recovery, timed delivery, overlapping impulses, clock reset/burst pauses, compensation, aim-state factors, and deterministic seeds. Attachment tests also cover Smooth duration and receiver composition without base mutation. |
 | [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults and weapon-specific attachment validation. |

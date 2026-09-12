@@ -270,15 +270,7 @@ function getTTK(weapon, btk) {
 const DEFAULT_PROJECTILE_DRAG_PER_METER = 0.0035;
 function projectileSourceFor(weapon) {
   if (!weapon) return null;
-  if (BALLISTIC_WEAPON_IDS.has(weapon.id)) return weapon;
-  const donor = weapon.provenance?.donor ?? {};
-  const donorIds = [
-    donor.weaponId,
-    ...(Array.isArray(donor.weaponIds) ? donor.weaponIds : []),
-  ].filter(Boolean);
-  return donorIds
-    .map(id => W.find(candidate => candidate.id === id))
-    .find(candidate => candidate && BALLISTIC_WEAPON_IDS.has(candidate.id)) ?? null;
+  return BALLISTIC_WEAPON_IDS.has(weapon.id) ? weapon : null;
 }
 function dragForSelectedAmmo(weapon, atts) {
   const configured = _ballistics.ammoDragPerMeter?.[atts?.ammo];
@@ -290,9 +282,7 @@ function dragForSelectedAmmo(weapon, atts) {
 }
 function projectileModelFor(weapon, atts) {
   // A weapon's own bullet velocity is enough to time a shot, since drag and
-  // gravity come from the shared catalog for every weapon alike. The donor
-  // lookup only supplies a velocity to weapons that publish none, so gating on
-  // it stranded the one estimated weapon whose velocity is itself sourced.
+  // gravity come from the shared catalog for every weapon alike.
   const source = projectileSourceFor(weapon);
   const model = {
     velocityMps: Number.isFinite(weapon?._projectileVelocityMps) ? weapon._projectileVelocityMps
