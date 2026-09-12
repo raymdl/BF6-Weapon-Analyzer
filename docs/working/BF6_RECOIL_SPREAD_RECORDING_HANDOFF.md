@@ -33,6 +33,60 @@ Current references: [recoil validation](../archive/RECOIL_MODEL_VALIDATION_2026-
 [AK4D analysis](../archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md), and
 [VSSM analysis](../archive/VSSM_RECORDING_ANALYSIS_2026-09-11.md).
 
+## Research without new recordings — 12 September 2026
+
+These checks use existing recordings, screenshots, and the Frosty registry. Their
+scripts and results are in ignored local `outputs/` directories named below.
+
+**Impact screenshots** (`outputs/impact-comparison-2026-09-12/`). With sampled
+spread, the model expects an 8.8% Lightened 15-round height reduction; recoil alone
+gives 10.0%. The recording metric is a median of five groups. Its simulated 90%
+range is 0.9–15.9%, and the observed 14.8% is at the 92nd percentile. The observed
+10-round value, 1.0%, is at the 16th percentile. These screenshots do not show a
+significant relative error. Group height cannot separate radius sampling rules.
+
+**Absolute scale.** Standing hipfire arm separations for M4A1, AK4D, and M39 EMR
+fit 35.55 px/degree + 16.7 px, with residuals of 0.21 px or less. If the stored
+minimum is a half-angle, the focal length is 1019 px. A 103-degree horizontal FOV
+at 2560 px gives 1018 px. With that scale, observed median impact heights are
+4–10% above model means for 3–10 rounds, and 22% (Standard) and 14% (Lightened)
+above at 15 rounds. The operator reported sway after about 400 ms; 15 rounds last
+about 1 s. The cause is not established. Limits: hole centroids, merged holes,
+screenshot camera position, and model means compared with five-group medians.
+AK4D ADS indicator widths divided by model peaks give about 29.5–32.4 px/degree.
+That is below the hipfire scale; ADS indicator geometry and sampled peaks are unverified.
+
+**Frosty registry scan** (`outputs/frosty-recoil-field-scan-2026-09-12/`). It
+covers 62 of 63 weapons; BROD 3 (`BREN3`) is absent from `GRX_Weapons.xml`. Site
+base recoil fields match the registry in both aim states, with no mismatches. All
+248 `MultiplierByOrder` arrays are empty. `FirstShotIncreaseMultiplier` is 1.0
+everywhere. Non-neutral values: `VerticalRecoilIncrease` 0.6 on 16 non-automatic
+weapons, all with `UsePolarRecoil` true; `MaxVerticalRecoil` 90 on three pistols.
+`DistributionExponent` is 0.5 on almost every branch (0.67 for `DesertTechHTI`
+zoomed moving). The site samples `r = spread * u`, which is exponent 1 if the
+engine uses `u^exponent`; that consumer is not established. Hip `IdleTime` is 1.8 s
+on six bolt rifles and 1.2 s on `590A1` and `DP12`; ADS `IdleTime` is 0.4 s everywhere.
+
+**Spread integration.** Spread recovery now uses 1 ms steps. The 60 Hz step
+differed from a 0.1 ms reference by up to 3.3%; 1 ms stays within 0.2%.
+
+**Smooth operand variants** (`outputs/smooth-variants-2026-09-12/`). Replaying
+the 10 September camera tracks, Lightened-only RMS errors (px) are:
+
+| Variant | M4A1 | TR7 | AK4D |
+|---|---:|---:|---:|
+| Current: 50 ms and recovery × 1.2 | 1.93 | 2.96 | 2.47 |
+| Factor × 1.2 only, 25 ms | 1.77 | 2.89 | 2.47 |
+| 50 ms only | 1.59 | 2.86 | 2.57 |
+| 50 ms and offset × 1.2 | 1.59 | 2.86 | 2.57 |
+| 50 ms and time scale 1.2 | 2.47 | 3.82 | 2.54 |
+| 50 ms and recovery × 1.1 | 1.72 | 2.85 | 2.50 |
+
+No variant is best for all three weapons. Time scaling is clearly worse for M4A1
+and TR7. Offset scaling is not visible in these tracks. Keep the current
+source-based treatment. These recordings informed earlier model work, so they are
+not independent validation.
+
 ## Standing recording conditions — operator confirmed 11 September 2026
 
 Use these conditions for all recoil and spread recording sets covered by this
