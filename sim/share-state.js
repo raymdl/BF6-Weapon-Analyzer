@@ -171,7 +171,7 @@ export function createShareCodec({
     const chartMode = params.get('cm');
     if (chartMode === 'btk' || chartMode === 'ttk') state.chart.mode = chartMode;
     const headshots = parseInt(params.get('hs'), 10);
-    if (headshots >= 1 && headshots <= 3) state.chart.btkHS = headshots;
+    if (headshots >= 1 && headshots <= 4) state.chart.btkHS = headshots;
     if (params.get('ads') === '1' && state.chart.mode === 'ttk') state.chart.showAds = true;
     if (params.get('vel') === '1' && state.chart.mode === 'ttk') state.chart.showVel = true;
     if (params.get('ra') === 'hip') state.recoil.aim = 'hip';
