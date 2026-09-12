@@ -361,7 +361,7 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
   const amount      = selectedRecoilAmountFor(w);
   const variation   = selectedRecoilVariationFor(w);
   const compensation = compensationFn() / 100;
-  const duration = Math.max(0, group.duration ?? 0);
+  const duration = Math.max(0, group.duration ?? 0) || 0.025;
   const pending = [];
   let cx = 0, cy = 0, now = 0;
   for (let i = 1; i < shots; i++) {
@@ -370,12 +370,7 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
     const angle  = dir + spread;
     const dx = Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
     const dy = Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
-    if (duration > 0) {
-      pending.push({ end: now + duration, xRate: dx / duration, yRate: dy / duration });
-    } else {
-      cx += dx;
-      cy += dy;
-    }
+    pending.push({ end: now + duration, xRate: dx / duration, yRate: dy / duration });
     const interShotTime = shotIntervalAfter(w, i);
     const end = now + interShotTime;
     // Reset recovery age on each shot, but retain unfinished earlier impulses.

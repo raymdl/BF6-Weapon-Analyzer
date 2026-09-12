@@ -18,7 +18,7 @@ Read with the [active recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md)
 | `ceeda6d` | Frosty bolt/pump cycles, shell-fed shotgun reloads, revolver empty reloads |
 
 - **Uncommitted work that this session did not create or change.** Do not assume that these edits are approved.
-  - `sim/core.js`, `scripts/recoil.test.mjs`, `docs/RECOIL_SPREAD_MODEL.md`: a missing or zero recoil duration falls back to 25 ms instead of an immediate impulse. It was made at 17:36 on 12 September and has no record or approval. It has no effect on current data: all 126 durations are 25 ms, and the smallest resolved value is 24.4 ms.
+  - `sim/core.js`, `scripts/recoil.test.mjs`, `docs/RECOIL_SPREAD_MODEL.md`: a missing or zero recoil duration falls back to 25 ms instead of an immediate impulse. **Codex review correction:** the operator explicitly requested this earlier in the same Codex task: "For a missing/zero duration, we should fall back to 0.025 instead of immediate impulse." It is authorized and remains uncommitted. It has no effect on current data: all 126 durations are 25 ms, and the smallest resolved value is 24.4 ms.
   - The attachment-audit package under `reference-data/attachment-audit/` (dated 7 September), `schemas/attachment-screenshot-review.schema.json`, and `reference-data/provenance/frosty-site-review-2026-09-07.json`.
   - `docs/working/RECORDING_REUSE_ANALYSIS_2026-09-12.md` (another session; see section 6).
   - `soldier-target-original.png` in the repository root (unrelated).
@@ -38,7 +38,7 @@ Result: the work is sound. Documented numbers reproduce with production code:
 
 Review findings still open:
 
-1. The uncommitted duration fallback above needs a decision.
+1. The uncommitted duration fallback above was explicitly requested by the operator; no further implementation decision is needed. Publication remains separate.
 2. `reference-data/attachment-audit/frosty-panel-audit-2026-09-07.json` is 49 MB and is not git-ignored. Do not stage it with `git add -A`.
 3. `FROSTY_AUDIT_2026-09-07.md` says that the validator checks screenshot existence. The check runs only with `--screenshots`. With that flag it passes.
 4. `build-workbook.py` writes the fixed text "Classic Grip Pod, not Ribbed Vertical" for any "Wrong selected attachment" conflict. It is correct for the single current conflict only.
@@ -57,7 +57,7 @@ Local scripts and outputs are under `outputs/` (git-ignored). Tracked conclusion
 ### 3.2 Absolute pixel-to-degree scale
 
 - Standing hipfire arm separations (M4A1 81 px at 1.804°, AK4D 103 px at 2.432°, M39 EMR 136 px at 3.352°; 2560 × 1440) fit **35.55 px/degree + 16.7 px**, with residuals ≤ 0.21 px.
-- If the stored minimum is a half-angle, the focal length is 1019 px. FOV 103 as a **horizontal** FOV at 2560 px gives 1018 px; as a vertical FOV it gives 573 px. So the FOV setting is horizontal and spread values are radii.
+- If the stored minimum is a half-angle, the focal length is 1019 px. FOV 103 as a **horizontal** FOV at 2560 px gives 1018 px; as a vertical FOV it gives 573 px. **Codex review qualification:** this is consistent with the horizontal-FOV/radius interpretation under the assumed HUD geometry. The fit uses stored minima and HUD widths; it does not independently prove projectile angles or the camera projection in the impact screenshots.
 - With that scale, observed median impact heights exceed model means by 4–10% for 3–10 rounds and by **22% (Standard) / 14% (Lightened) at 15 rounds**. Fifteen rounds last about 1.05 s; the operator reports sway after about 400 ms. Cause not established.
 - AK4D ADS indicator width ÷ model peak gives about 29.5–32.4 px/degree, below the hipfire scale. ADS indicator geometry and sampled peaks are unverified.
 
@@ -124,7 +124,7 @@ Sym does not publish BROD 3, EF88 or VSSM. Their values now come from Frosty 1.4
 - `ui/app.js` no longer uses donor IDs for projectile velocity.
 - Tests were rewritten: no weapon may have estimated status, donor provenance, or donor damage text, and the three Frosty curves are pinned.
 - Docs no longer describe donor fallback.
-- **Conflict for operator confirmation:** all 43 July 2026 VSSM panels show long-range damage 20, which matched the former curve. Frosty 1.4.2.5 is newer and was applied. An in-game check on the current build would settle it.
+- **Operator follow-up, 12 September:** above 75 m with Range Pen ammo, displayed rounded damage is 17 chest, 31 head, and 14 arm. Chest/head support the newer 17.13 Frosty tier and 1.8 head multiplier. The arm result exposes a separate mismatch: the site's 0.91 limb multiplier rounds to 16; 0.84 would round to 14. The exact arm multiplier remains open. See section 9.
 
 ### 4.3 Manual cycles and reloads (`ceeda6d`)
 
@@ -156,13 +156,13 @@ Sym does not publish BROD 3, EF88 or VSSM. Their values now come from Frosty 1.4
 
 - Written by another session at 18:09 and untracked. Its conclusions are cautious and consistent with this session's findings, including source idle times of 0.4 s ADS and 0.6 s hipfire. It recommends keeping the first-shot multiplier and adds no fitted constants.
 - Claims checked: the output folder exists (47 files), and the cited commits `f6eba48` and `e1785f6` exist.
-- Problem: its four embedded PNGs and the outputs link point into git-ignored `outputs/recording-followup-2026-09-12/`. They do not render in a clean clone or on Pages. Copy the needed plots to `docs/img/` or remove the image lines, then link the document from the active handoff if it is kept.
+- The four embedded PNGs and outputs link originally pointed into git-ignored `outputs/recording-followup-2026-09-12/`. **Fixed in the Codex review:** the four plots are copied to `docs/img/recording-reuse-2026-09-12/`, and the report uses those relative image links. The local-only output directory is now plain text. The active handoff already links the report. The report and plots still need to be committed together; no Pages publication was performed.
 
 ## 7. Open items and recommendations
 
 Order by value:
 
-1. **Operator decisions:** the uncommitted 25 ms duration fallback; the VSSM long-range damage conflict (check the current in-game panel); push and PR for this branch.
+1. **Open decisions/evidence:** push and PR for this branch; the new VSSM arm-damage mismatch. The 25 ms duration fallback is already authorized. The operator's current chest/head observations support the newer VSSM long-range tier.
 2. **Long-burst absolute recoil gap (22% / 14% at 15 rounds).** Without new footage, compare the 11 September M4A1 camera tracks with the degree-converted impact heights and test whether sway after about 400 ms explains the excess. Do not add a fitted multiplier.
 3. **`DistributionExponent` 0.5.** It decides where bullets land inside the spread circle. Recording scenario 6 (100–200 fully reset shots) is the only direct test.
 4. **Attachments still marked assumed** in `data/attachments.json` (17 records): `hipSpreadDecayBoost` placeholders on Combo Red, Combo Green, Flashlight and Taclight - Hipfire ("created by us"); Burst Training, Burst Mode, GRT-BC Burst Training and Linear Comp; and nine Smooth muzzles whose model use is an interpretation. Check the placeholders against Frosty modifiers next; use FrostyCmd for any assets not exported.
@@ -176,3 +176,35 @@ Order by value:
 - A value changed only when Frosty and the panels agree, or when Frosty is the only available source and no current in-game evidence contradicts it (VSSM damage conflict flagged).
 - Camera and HUD pixels were not treated as projectile angles without the calibration in section 3.2.
 - No fitted constants were added to force a match.
+
+## 9. Codex review and operator damage check
+
+The review checked the report links, the earlier operator instruction, the
+calibration script's assumptions, and the current VSSM damage/multiplier
+resolver with Range Pen. It does not constitute a fresh audit of every Claude
+commit or a rerun of all recording analyses.
+
+| Above 75 m, Range Pen | Current calculation | Rounded | Operator observed |
+|---|---:|---:|---:|
+| Chest | 17.13 | 17 | 17 |
+| Head | 17.13 × 1.8 = 30.834 | 31 | 31 |
+| Arm | 17.13 × 0.91 = 15.5883 | 16 | 14 |
+| Candidate arm multiplier | 17.13 × 0.84 = 14.3892 | 14 | 14 |
+
+Range Pen has no headshot override in the current ammo record. The limb
+multiplier comes from `LIMB_CLASS.vssm = "dmr"`, not the weapon's selected fire
+mode. Keep the 17.13 source tier; do not replace it with the rounded display
+value 17. The observed arm value conflicts with 0.91, but 0.84 is only a
+candidate: for base damage 17.13, any multiplier from approximately 0.7881 up
+to (but not including) 0.8465 rounds to 14 under nearest-integer rounding.
+
+Source hit-zone evidence or a close-range Range Pen arm check can distinguish
+the candidates. Below 9 m, the stored 35.22 tier predicts rounded arm damage
+30 with 0.84, 28 with 0.80, and 32 with 0.91. This is a proposed discriminator,
+not a report of a new in-game test. Legs and abdomen were not checked by the
+operator. No runtime multiplier was changed in this review.
+
+The HUD-derived absolute scale is a useful consistency check. The reported
+22%/14% long-burst excess remains conditional on that projection assumption
+and on comparing measured medians with model means. It is not an established
+absolute recoil error and does not justify a fitted correction.

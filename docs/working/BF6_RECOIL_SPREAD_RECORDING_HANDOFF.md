@@ -56,6 +56,13 @@ screenshot camera position, and model means compared with five-group medians.
 AK4D ADS indicator widths divided by model peaks give about 29.5–32.4 px/degree.
 That is below the hipfire scale; ADS indicator geometry and sampled peaks are unverified.
 
+The HUD fit is a conditional consistency check, not an independent projectile-
+angle calibration. The derived absolute impact excess inherits that limitation.
+The [Claude handoff review](CLAUDE_SESSION_HANDOFF_2026-09-12.md#9-codex-review-and-operator-damage-check)
+also records the operator's current VSSM Range Pen check above 75 m: rounded
+17 chest, 31 head, and 14 arm. Chest/head support the 17.13 Frosty tier; arm
+damage conflicts with the current 0.91 limb multiplier and remains open.
+
 **Frosty registry scan** (`outputs/frosty-recoil-field-scan-2026-09-12/`). It
 covers 62 weapons named in `GRX_Weapons.xml`. BROD 3 (`BREN3`) has no named
 registry entries there, so `decode_bren3.py` reads `GS_BREN3.xml` by learning leaf

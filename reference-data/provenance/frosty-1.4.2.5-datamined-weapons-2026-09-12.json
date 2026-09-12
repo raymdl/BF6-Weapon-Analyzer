@@ -251,7 +251,21 @@
     {
       "weapon": "vssm",
       "field": "dmg",
-      "detail": "Frosty PD_9x39mm_Semi and PD_9x39mm_Match both add 17.13 past 75 m. All 43 VSSM panel captures (July 2026, earlier build) show long-range damage 20, which matched the former curve. Frosty 1.4.2.5 is applied; an in-game check on the current build would confirm."
+      "detail": "Frosty PD_9x39mm_Semi and PD_9x39mm_Match both add 17.13 past 75 m. All 43 VSSM panel captures (July 2026, earlier build) show long-range damage 20, which matched the former curve. On 12 September 2026 the operator reported rounded damage above 75 m with Range Pen ammo: chest 17, head 31, arm 14. Chest and head support retaining the newer Frosty tier; rounded readings do not independently establish the exact 17.13 value.",
+      "status": "resolved-for-tested-chest-and-head",
+      "operatorObservation": {
+        "date": "2026-09-12",
+        "source": "Operator report in the Codex task; ammo and arm hit confirmed in follow-up",
+        "range": ">75 m",
+        "ammo": "Range Pen",
+        "roundedDamage": { "chest": 17, "head": 31, "arm": 14 }
+      }
+    },
+    {
+      "weapon": "vssm",
+      "field": "LIMB_CLASS / arm damage",
+      "status": "open",
+      "detail": "The same Range Pen observation reports arm damage 14. The current DMR limb multiplier 0.91 gives 17.13 * 0.91 = 15.5883, rounded to 16. The existing automatic-class multiplier 0.84 gives 14.3892, rounded to 14. A single rounded reading does not establish the exact multiplier or justify changing all hit-zone/ammo behavior. Runtime values are unchanged pending source or additional hit-zone evidence."
     }
   ],
   "weapons": {

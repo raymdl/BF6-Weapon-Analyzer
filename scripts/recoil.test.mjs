@@ -30,7 +30,19 @@ test('duration delivers the whole impulse while recovery acts during delivery', 
   assert.deepEqual(p[0], { x: 0, y: 0 });
   close(p[1].y, expected, 2e-6);
   close(genRecoilPts(weapon({ decFactor: 0 }), 0, 2)[1].y, 1);
-  close(genRecoilPts(weapon({ duration: 0 }), 0, 2)[1].y, Math.exp(-.4));
+});
+
+test('missing or zero duration falls back to 0.025 seconds in both aim states', () => {
+  const expected = (1 - Math.exp(-4 * .025)) / (4 * .025) * Math.exp(-4 * .075);
+  for (const aimState of ['ads', 'hip']) {
+    for (const duration of [undefined, null, 0]) {
+      const w = weapon({ duration });
+      if (duration === undefined) delete w.recoil.ads.duration;
+      w.recoil.hip = { ...w.recoil.ads };
+      setSimContext({ aimState });
+      close(genRecoilPts(w, 0, 2)[1].y, expected, 2e-6);
+    }
+  }
 });
 
 test('unfinished impulses survive later shots without losing or duplicating delivery', () => {
@@ -43,9 +55,11 @@ test('unfinished impulses survive later shots without losing or duplicating deli
 test('recovery age resets per shot, including irregular post-burst pauses', () => {
   const w = weapon({ duration: 0, decTimeExp: 1 });
   const decay = Math.exp(-4 * .1 ** 2 / 2);
-  close(genRecoilPts(w, 0, 3)[2].y, (decay + 1) * decay);
+  const first = genRecoilPts(w, 0, 2)[1].y;
+  close(genRecoilPts(w, 0, 3)[2].y, first * decay + first);
   Object.assign(w, { fireMode: 'burst', burstRounds: 3, burstRpm: 600, burstBurstsPerMinute: 120 });
-  close(genRecoilPts(w, 0, 4)[3].y, ((decay + 1) * decay + 1) * Math.exp(-4 * .3 ** 2 / 2));
+  close(genRecoilPts(w, 0, 4)[3].y,
+    ((first * decay + first) * decay + first) * Math.exp(-4 * (.3 ** 2 - .1 ** 2) / 2));
 });
 
 test('nonlinear recovery stays near its analytic zero-offset solution and does not cross zero', () => {
@@ -61,7 +75,8 @@ test('compensation, aim-state recovery multipliers, and deterministic seeds rema
   setSimContext({ compensationFn: () => 0, aimState: 'hip' });
   w.recoil.hip = { ...w.recoil.ads };
   w._hipRecoilDecayMult = 1.2;
-  close(genRecoilPts(w, 0, 2)[1].y, Math.exp(-.48));
+  close(genRecoilPts(w, 0, 2)[1].y,
+    (1 - Math.exp(-4.8 * .025)) / (4.8 * .025) * Math.exp(-4.8 * .075), 2e-6);
   w.recoil.hip.dirVar = 30;
   assert.deepEqual(genRecoilPts(w, 7, 10), genRecoilPts(w, 7, 10));
   assert.notDeepEqual(genRecoilPts(w, 7, 10), genRecoilPts(w, 8, 10));

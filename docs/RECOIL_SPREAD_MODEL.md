@@ -116,7 +116,7 @@ y += cos(direction + deviation) * amount - cos(direction) * amount * control
 
 Angles are converted to radians before the trigonometric functions. The delta
 above is delivered uniformly over `group.duration` (normally 0.025 seconds).
-Missing or zero duration uses an immediate impulse. Recovery acts at the same time,
+Missing or zero duration uses 0.025 seconds. Recovery acts at the same time,
 independently on each axis, under this assumed continuous rate equation:
 
 ```text
@@ -151,7 +151,7 @@ Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
 selected weapon record. The current Frosty check covers all 63 supported weapons
 and both aim states: all 126 values are **0.025 seconds**. This is a checked
 dataset result; the simulator reads the selected record. A missing/zero duration
-uses the immediate-impulse fallback.
+uses a fallback of **0.025 seconds**.
 
 The four Smooth source assets define two operand sets:
 
