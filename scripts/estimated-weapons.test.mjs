@@ -12,31 +12,31 @@ const attachments = read('data/attachments.json');
 const ammo = read('data/ammo.json');
 const balance = read('data/balance_tables.json');
 const recoil = read('data/recoil_decay.json');
-// These three arrive through the datamined changelist rather than the Sym
-// baseline. They no longer carry the estimated flag -- their damage profiles
-// are sourced -- so the coverage checks below key off the list itself.
+// Sym does not publish these three weapons, so their values come from Frosty.
 const DATAMINED_WEAPON_IDS = ['brod3', 'ef88', 'vssm'];
 const byId = id => weapons.find(weapon => weapon.id === id);
-const estimated = DATAMINED_WEAPON_IDS.map(byId);
+const datamined = DATAMINED_WEAPON_IDS.map(byId);
 
-test('BROD 3, EF88 and VSSM are sourced, not estimated, with explicit provenance', () => {
+test('no weapon is estimated or uses donor values; BROD 3, EF88 and VSSM are Frosty-sourced', () => {
   assert.deepEqual(weapons.filter(weapon => weapon.estimated === true), [], 'no weapon carries the estimated flag');
-  assert.equal(byId('vssm').damageStatus, 'verified');
-  assert.equal(byId('vssm').provenance.sourced.changelist, 28877515);
+  for (const weapon of weapons) {
+    assert.notEqual(weapon.provenance?.status, 'estimated', `${weapon.id}: estimated status`);
+    assert.equal(weapon.provenance?.donor, undefined, `${weapon.id}: donor provenance`);
+    assert.equal(weapon.provenance?.estimatedFields, undefined, `${weapon.id}: estimated fields`);
+    assert.doesNotMatch(JSON.stringify(weapon.dmg) + (weapon.damageSource ?? ''), /donor/i, `${weapon.id}: donor damage`);
+  }
+  for (const weapon of datamined) {
+    assert.equal(weapon.provenance.status, 'sourced', weapon.id);
+    assert.equal(weapon.damageStatus, 'verified', weapon.id);
+    assert.ok(weapon.dmg.every(point => point.source === 'Frosty'), weapon.id);
+    assert.match(weapon.provenance.frosty.sourcingEvidence, /frosty-1\.4\.2\.5-datamined-weapons-2026-09-12\.json/);
+  }
   assert.ok(byId('vssm').provenance.notes.length > 0);
-  assert.equal(byId('brod3').damageStatus, 'verified');
-  assert.equal(byId('ef88').damageStatus, 'verified');
-  assert.equal(byId('brod3').provenance.donor.weaponId, 'grtbc');
-  assert.deepEqual(byId('ef88').provenance.donor.weaponIds, ['b36a4', 'l85a3']);
-  assert.deepEqual(byId('brod3').provenance.measured.displayedDamageEndpoints, [26, 14]);
-  assert.deepEqual(byId('ef88').provenance.measured.displayedDamageEndpoints, [26, 17]);
-  assert.ok(byId('brod3').provenance.estimatedFields.length > 0);
-  assert.ok(byId('ef88').provenance.estimatedFields.length > 0);
 });
 
-test('estimated weapons have complete cross-file coverage and five attachment slots', () => {
+test('BROD 3, EF88 and VSSM have complete cross-file coverage and five attachment slots', () => {
   const catalogs = Object.fromEntries(['MUZZLES', 'BARRELS', 'GRIPS', 'LASERS', 'LIGHTS', 'ERGOS'].map(key => [key, new Set(attachments[key].map(item => item.id))]));
-  for (const weapon of estimated) {
+  for (const weapon of datamined) {
     const atts = attachments.WEAPON_ATTS[weapon.id];
     for (const slot of ['muzzle', 'barrel', 'laser', 'light', 'grip']) {
       assert.ok(Array.isArray(atts?.[slot]), `${weapon.id}: ${slot}`);
@@ -54,11 +54,10 @@ test('estimated weapons have complete cross-file coverage and five attachment sl
   }
 });
 
-test('reviewed handling decisions and exact donor damage curves are pinned', () => {
+test('reviewed handling decisions and Frosty damage curves are pinned', () => {
   const brod = byId('brod3');
   const ef = byId('ef88');
-  const grtbc = byId('grtbc');
-  const l85a3 = byId('l85a3');
+  const vssm = byId('vssm');
   assert.equal(brod.rpm, 10800 / 13);
   assert.equal(ef.rpm, 674.999); // Frosty WB and named registry; replaces the older panel-derived rate.
   assert.equal(brod.recoilDir, -16);
@@ -68,14 +67,19 @@ test('reviewed handling decisions and exact donor damage curves are pinned', () 
     assert.equal(weapon.recoilV, ads.amount * (ads.amountMult ** ads.amountExp));
     assert.equal(weapon.recoilVar, ads.dirVar);
     assert.equal(weapon.recoilIncAds, weapon.spreadDyn.ads.inc);
-    assert.equal(weapon.provenance.sourced.changelist, 28877515);
   }
   assert.equal(brod.mag, 31);
   assert.equal(ef.mag, 31);
-  assert.deepEqual(brod.dmg.map(({ r, d }) => [r, d]), grtbc.dmg.map(({ r, d }) => [r, d]));
-  assert.deepEqual(ef.dmg.map(({ r, d }) => [r, d]), l85a3.dmg.map(({ r, d }) => [r, d]));
-  assert.equal(brod.provenance.damage.donorModel, 'grtbc');
-  assert.equal(ef.provenance.damage.donorModel, 'l85a3');
+  const curve = weapon => weapon.dmg.map(({ r, d }) => [r, d]);
+  // Frosty 1.4.2.5 bullet curves: PD_556x45mmNATO_Carbine, PD_556x45mmNATO, PD_9x39mm_Semi.
+  assert.deepEqual(curve(brod), [[0, 26.05], [9, 26.05], [9, 21.56], [21, 21.56], [21, 17.74], [36, 17.74], [36, 17.13], [75, 17.13], [75, 14.62]]);
+  assert.deepEqual(curve(ef), [[0, 26.05], [21, 26.05], [21, 20.67], [75, 20.67], [75, 17.13]]);
+  assert.deepEqual(curve(vssm), [[0, 35.22], [9, 35.22], [9, 27.48], [21, 27.48], [21, 21.56], [36, 21.56], [36, 20.67], [75, 20.67], [75, 17.13]]);
+  assert.equal(ef.reloadSpeed, 1);
+  assert.equal(vssm.emptyRld, 3.584);
+  for (const key of ['burstRounds', 'burstRpm', 'burstBurstsPerMinute']) {
+    assert.equal(Object.hasOwn(brod, key), false, `BROD 3 has no burst mode: ${key}`);
+  }
   assert.equal(attachments.WEAPON_MAG.brod3.mags['20_rnd'].adsTimeTierShift, -1);
   assert.equal(attachments.WEAPON_MAG.brod3.mags['20_rnd'].adsMoveSpeedTierShift, -2);
   assert.equal(attachments.WEAPON_MAG.ef88.mags['42_rnd'].adsMoveSpeedTierShift, 1);

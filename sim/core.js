@@ -178,6 +178,8 @@ export function selectedRecoilVariationFor(w) {
  */
 export const SPREAD_EFFECTIVE_MAX_SHOTS = 50;
 export const SPREAD_BAR_SCALE = 12;
+// 1 ms keeps stepped recovery within 0.2% of a 0.1 ms reference; 1/60 s differed by up to 3.3%.
+export const SPREAD_TIME_STEP = 0.001;
 
 export function spreadBounds(w) {
   const { aimState, stanceState } = _ctx;
@@ -212,11 +214,14 @@ export function selectedSpreadIncFor(w) {
   return dyn.inc ?? 0;
 }
 
+// Burst fire and multi-round pump cycles share the rounds-then-pause cadence.
+const hasCycleCadence = w => w.fireMode === 'burst' || w.fireMode === 'pump';
+
 /** Seconds between this shot and the next shot for the current fire mode. */
 export function shotIntervalAfter(w, shotIndex) {
-  const shotRpm = w.fireMode === 'burst' && w.burstRpm ? w.burstRpm : (w.rpm ?? 600);
+  const shotRpm = hasCycleCadence(w) && w.burstRpm ? w.burstRpm : (w.rpm ?? 600);
   const normalInterval = 60 / shotRpm;
-  const burstRounds = w.fireMode === 'burst' ? (w.burstRounds ?? 0) : 0;
+  const burstRounds = hasCycleCadence(w) ? (w.burstRounds ?? 0) : 0;
   const burstsPerMinute = w.burstBurstsPerMinute ?? 0;
   if (burstRounds <= 1 || burstsPerMinute <= 0) return normalInterval;
 
@@ -228,9 +233,9 @@ export function shotIntervalAfter(w, shotIndex) {
   return Math.max(normalInterval, burstCycle - elapsedWithinBurst);
 }
 
-/** True when the next interval is the pause after the final shot in a burst. */
+/** True when the next interval is the pause after the final shot in a burst or pump cycle. */
 export function isBurstGapAfter(w, shotIndex) {
-  const burstRounds = w.fireMode === 'burst' ? (w.burstRounds ?? 0) : 0;
+  const burstRounds = hasCycleCadence(w) ? (w.burstRounds ?? 0) : 0;
   const burstsPerMinute = w.burstBurstsPerMinute ?? 0;
   return burstRounds > 1
     && burstsPerMinute > 0
@@ -267,7 +272,7 @@ export function spreadRecoveries(w) {
 }
 
 /** Step spread recovery over `seconds`, clamped to [baseline, sMax]. */
-export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt = 1 / 60) {
+export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, dt = SPREAD_TIME_STEP) {
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
   let rem = seconds;
   while (rem > 1e-12) {
@@ -314,7 +319,7 @@ export function simulateSpread(w, shotCount) {
   const sInc = selectedSpreadIncFor(w);
   if (sInc === 0) return Array(shotCount).fill(baseline);
   const { firing: firingRecovery, notFiring: notFiringRecovery } = spreadRecoveries(w);
-  const dt = 1 / 60;
+  const dt = SPREAD_TIME_STEP;
   const clamp = v => Math.min(Math.max(v, baseline), sMax);
   let spread = baseline;
   const spreads = [];
@@ -356,7 +361,7 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
   const amount      = selectedRecoilAmountFor(w);
   const variation   = selectedRecoilVariationFor(w);
   const compensation = compensationFn() / 100;
-  const duration = Math.max(0, group.duration ?? 0);
+  const duration = Math.max(0, group.duration ?? 0) || 0.025;
   const pending = [];
   let cx = 0, cy = 0, now = 0;
   for (let i = 1; i < shots; i++) {
@@ -365,12 +370,7 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
     const angle  = dir + spread;
     const dx = Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
     const dy = Math.cos(angle) * amount - Math.cos(dir) * amount * compensation;
-    if (duration > 0) {
-      pending.push({ end: now + duration, xRate: dx / duration, yRate: dy / duration });
-    } else {
-      cx += dx;
-      cy += dy;
-    }
+    pending.push({ end: now + duration, xRate: dx / duration, yRate: dy / duration });
     const interShotTime = shotIntervalAfter(w, i);
     const end = now + interShotTime;
     // Reset recovery age on each shot, but retain unfinished earlier impulses.

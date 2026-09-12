@@ -6178,7 +6178,7 @@
     "name": "M2010 ESR",
     "cls": "Sniper Rifle",
     "cal": ".300 Win Mag",
-    "rpm": 44.0816018658339,
+    "rpm": 43.90240199281473,
     "mag": 6,
     "tacRld": 3.234,
     "emptyRld": 3.934,
@@ -6298,14 +6298,28 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "cadence": {
+          "fields": [
+            "rpm"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 43.90240199281473,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/m2010esr"
+        }
+      }
+    }
   },
   {
     "id": "sv98",
     "name": "SV-98",
     "cls": "Sniper Rifle",
     "cal": "7.62×54mmR",
-    "rpm": 37.67438355865456,
+    "rpm": 38.20751292717492,
     "mag": 11,
     "tacRld": 2.984,
     "emptyRld": 3.967,
@@ -6430,14 +6444,28 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "cadence": {
+          "fields": [
+            "rpm"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 38.20751292717492,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/sv98"
+        }
+      }
+    }
   },
   {
     "id": "psr",
     "name": "PSR",
     "cls": "Sniper Rifle",
     "cal": ".338 Norma Mag",
-    "rpm": 38.11762015220833,
+    "rpm": 38.663458649662005,
     "mag": 11,
     "tacRld": 3.35,
     "emptyRld": 4.35,
@@ -6557,14 +6585,28 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "cadence": {
+          "fields": [
+            "rpm"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 38.663458649662005,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/psr"
+        }
+      }
+    }
   },
   {
     "id": "miniscout",
     "name": "Mini Scout",
     "cls": "Sniper Rifle",
     "cal": "5.56×45mm NATO",
-    "rpm": 51,
+    "rpm": 47.092969500363495,
     "mag": 11,
     "tacRld": 2.334,
     "emptyRld": 3.9,
@@ -6679,14 +6721,28 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear falloff, no sweet spot",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "cadence": {
+          "fields": [
+            "rpm"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 47.092969500363495,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/miniscout"
+        }
+      }
+    }
   },
   {
     "id": "l115",
     "name": "L115",
     "cls": "Sniper Rifle",
     "cal": ".338 Lapua Magnum",
-    "rpm": 46.349953649969095,
+    "rpm": 46.14231275806206,
     "mag": 6,
     "tacRld": 2.75,
     "emptyRld": 4.233,
@@ -6815,7 +6871,15 @@
           "bulletVel"
         ],
         "evidence": "reference-data/provenance/frosty-1.4.2.5-l115-velocity.json",
-        "note": "Raw WB InitialSpeed.z and the named registry agree on 742 m/s. The previous site value 664 m/s is retained in the evidence record. Other fields retain their existing sources."
+        "note": "Raw WB InitialSpeed.z and the named registry agree on 742 m/s. The previous site value 664 m/s is retained in the evidence record. Other fields retain their existing sources.",
+        "cadence": {
+          "fields": [
+            "rpm"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 46.14231275806206,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/l115"
+        }
       }
     }
   },
@@ -6955,7 +7019,15 @@
         "sourceBuild": "1.4.2.5",
         "buildEvidence": "user-supplied export label",
         "evidence": "reference-data/provenance/frosty-interdictor-integration.json",
-        "note": "Named registry and exported weapon/attachment graph; effective bolt RPM and identity use the retained Sym source. Basic/5 Rnd handling is panel-checked. Raw moving spread remains separate from the effective tier floor. Slim Angled handling is panel-checked; its moving ADS spread effect remains unmodeled and explicitly marked unverified."
+        "note": "Named registry and exported weapon/attachment graph; identity uses the retained Sym source; effective bolt RPM uses the Frosty bolt cycle. Basic/5 Rnd handling is panel-checked. Raw moving spread remains separate from the effective tier floor. Slim Angled handling is panel-checked; its moving ADS spread effect remains unmodeled and explicitly marked unverified.",
+        "cadence": {
+          "fields": [
+            "rpm"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 31.914882299649403,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/interdictor"
+        }
       }
     }
   },
@@ -6964,9 +7036,9 @@
     "name": "M87A1",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
-    "rpm": 1799.999,
+    "rpm": 94.73654016716576,
     "mag": 8,
-    "tacRld": null,
+    "tacRld": 1.334,
     "emptyRld": null,
     "bulletVel": 400,
     "recoilV": 3.6119164347013677,
@@ -7100,7 +7172,29 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "cadence": {
+          "fields": [
+            "rpm"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 94.73654016716576,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/m87a1"
+        },
+        "shellReload": {
+          "fields": [
+            "tacRld"
+          ],
+          "formula": "ReloadInfoArray[0].ReloadDelay + ReloadTimeBulletsLeft + PostReloadDelay (one shell, with start and end)",
+          "note": "emptyRld stays null: no panel checks the empty entry, and one value does not describe a tube reload.",
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/m87a1"
+        }
+      }
+    }
   },
   {
     "id": "m1014",
@@ -7109,7 +7203,7 @@
     "cal": "12ga (00 Buck)",
     "rpm": 199.999,
     "mag": 7,
-    "tacRld": null,
+    "tacRld": 1.784,
     "emptyRld": null,
     "bulletVel": 400,
     "recoilV": 2.407944289800912,
@@ -7243,7 +7337,21 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "shellReload": {
+          "fields": [
+            "tacRld"
+          ],
+          "formula": "ReloadInfoArray[0].ReloadDelay + ReloadTimeBulletsLeft + PostReloadDelay (one shell, with start and end)",
+          "note": "emptyRld stays null: no panel checks the empty entry, and one value does not describe a tube reload.",
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/m1014"
+        }
+      }
+    }
   },
   {
     "id": "ks18k",
@@ -7385,7 +7493,7 @@
     "cal": "12ga (00 Buck)",
     "rpm": 359.999,
     "mag": 16,
-    "tacRld": null,
+    "tacRld": 2.348,
     "emptyRld": null,
     "bulletVel": 400,
     "recoilV": 2.708937326026026,
@@ -7509,7 +7617,35 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "burstRounds": 2,
+    "burstRpm": 359.999,
+    "burstBurstsPerMinute": 74.99978819480148,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "cadence": {
+          "fields": [
+            "rpm",
+            "burstRounds",
+            "burstRpm",
+            "burstBurstsPerMinute"
+          ],
+          "formula": "rounds per cycle * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds per cycle * 60 / RateOfFire)",
+          "effectiveRpm": 149.99957638960296,
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/db12"
+        },
+        "shellReload": {
+          "fields": [
+            "tacRld"
+          ],
+          "formula": "ReloadInfoArray[0].ReloadDelay + ReloadTimeBulletsLeft + PostReloadDelay (one shell, with start and end)",
+          "note": "emptyRld stays null: no panel checks the empty entry, and one value does not describe a tube reload.",
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/db12"
+        }
+      }
+    }
   },
   {
     "id": "p18",
@@ -7985,7 +8121,7 @@
     "rpm": 163.636,
     "mag": 6,
     "tacRld": 3.4,
-    "emptyRld": null,
+    "emptyRld": 3.4,
     "bulletVel": 440,
     "recoilV": 6,
     "recoilDir": -8,
@@ -8117,7 +8253,20 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "emptyReload": {
+          "fields": [
+            "emptyRld"
+          ],
+          "note": "The WB has one reload entry for every ammo count (MinAmmoCountInWeapon -1), so the empty reload equals the tactical reload.",
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/m44"
+        }
+      }
+    }
   },
   {
     "id": "ggh22",
@@ -8279,7 +8428,7 @@
     "rpm": 224.999,
     "mag": 8,
     "tacRld": 3.067,
-    "emptyRld": null,
+    "emptyRld": 3.067,
     "bulletVel": 410,
     "recoilV": 3,
     "recoilDir": -10,
@@ -8421,7 +8570,20 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
+        "emptyReload": {
+          "fields": [
+            "emptyRld"
+          ],
+          "note": "The WB has one reload entry for every ammo count (MinAmmoCountInWeapon -1), so the empty reload equals the tactical reload.",
+          "evidence": "reference-data/provenance/frosty-1.4.2.5-cadence-reloads-spread-selectors-2026-09-12.json#weapons/m357trait"
+        }
+      }
+    }
   },
   {
     "id": "vz61",
@@ -8592,9 +8754,6 @@
     "spreadMax": 6,
     "adsTime": 200,
     "fireMode": "auto",
-    "burstRounds": 3,
-    "burstRpm": 830,
-    "burstBurstsPerMinute": 240.12729639809058,
     "spreadDyn": {
       "ads": {
         "inc": 0.304,
@@ -8683,70 +8842,55 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 21.56,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.74,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.74,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym",
-        "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Exact GRT-BC donor dropoff model; BROD 3 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
+    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by BREN3_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "schemaVersion": 1,
-      "status": "estimated",
-      "donor": {
-        "weaponId": "grtbc",
-        "name": "GRT-BC",
-        "model": "direct donor model; recoil direction sign flipped",
-        "appliesTo": "damage tier magnitudes only; changelist 28877515 confirms this weapon shares the donor damage profile exactly, and replaces the ballistics fields"
-      },
+      "status": "sourced",
       "measured": {
         "source": "Battlefield 6 in-game attachment detail screenshots after update 1.3.3.0; reference-data/attachment-audit/attachment-screenshot-review.json, 30Rnd Magazine record",
         "adsTime": 200,
@@ -8761,25 +8905,19 @@
           14
         ]
       },
-      "estimatedFields": [
-        "emptyRld",
-        "reloadSpeed"
-      ],
-      "damage": {
-        "status": "sourced",
-        "donorModel": "grtbc",
-        "displayedEndpoints": {
-          "close": 26,
-          "long": 14
-        },
-        "endpointPrecision": "whole-number panel display; donor magnitudes remain authoritative between endpoints",
-        "replacement": "Replace magnitudes with Sym weapon-specific statistics when published; the profile shape is settled.",
-        "profileSource": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\") lists this weapon's damageProfile as identical to the GRT-BC at every breakpoint, which sources the tier count and the breakpoint distances. That table carries pre-patch damage magnitudes and is not used for them: the values here are the current-live Sym figures for the shared profile, and match the in-game weapon panel endpoints."
-      },
-      "sourced": {
-        "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
-        "changelist": 28877515,
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
         "fields": [
+          "cls",
+          "cal",
+          "rpm",
+          "mag",
+          "tacRld",
+          "emptyRld",
+          "reloadSpeed",
+          "bulletVel",
+          "adsTime",
           "recoilV",
           "recoilDir",
           "recoilVar",
@@ -8788,31 +8926,15 @@
           "recoil",
           "spread",
           "spreadDyn",
-          "damage breakpoint distances",
-          "damage tier profile"
-        ]
-      },
-      "frosty": {
-        "sourceBuild": "1.4.2.5",
-        "buildEvidence": "user-supplied export label",
-        "fields": [
-          "bulletVel",
-          "emptyRld",
-          "recoilIncAds",
-          "spreadDyn.ads.inc",
-          "spreadDyn.ads.firingCoef",
-          "spreadDyn.ads.firingOffset",
-          "spreadDyn.ads.distExp",
-          "spreadDyn.hip.inc",
-          "spreadDyn.hip.firingCoef",
-          "spreadDyn.hip.firingOffset"
+          "dmg"
         ],
         "evidence": "reference-data/provenance/frosty-1.4.2.5-brod3-velocity.json",
-        "note": "The raw BREN3 WB and named registry specify 563 m/s, independently corroborated by Sym. This supersedes the previous site value 580 m/s retained in the evidence record. Other fields retain their existing sources.",
+        "note": "All listed base fields match Frosty 1.4.2.5. BREN3 has no named GS registry entries, so its recoil and spread fields were decoded from GS_BREN3.xml (see sourcingEvidence). Damage is the PD_556x45mmNATO_Carbine curve referenced by BREN3_WB; rpm is FireLogic.RateOfFire. Moving ADS and hipfire minima use the Frosty array selectors, and adsTime equals the Frosty-indexed default build. The former GRT-BC burst fields were removed: BREN3 BurstsPerMinute is 0 and the weapon has no burst-mode option.",
         "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/brod3",
         "spreadEvidence": "reference-data/provenance/frosty-1.4.2.5-brod3-spread.json",
         "sourceRecheckEvidence": "reference-data/provenance/frosty-brod3-source-recheck-2026-09-10.json",
-        "sourceRecheckNote": "Direct BREN3 projectile damage curve matches the retained damage values. Moving ADS array index 3 gives 0.32 degrees; corrected the inherited stored minimum on 2026-09-10."
+        "sourceRecheckNote": "Direct BREN3 projectile damage curve matches the retained damage values. Moving ADS array index 3 gives 0.32 degrees; corrected the inherited stored minimum on 2026-09-10.",
+        "sourcingEvidence": "reference-data/provenance/frosty-1.4.2.5-datamined-weapons-2026-09-12.json#weapons/brod3"
       }
     }
   },
@@ -8921,52 +9043,35 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym",
-        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym",
-        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym",
-        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym",
-        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym",
-        "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Exact B36A4/L85A3 donor dropoff model; EF88 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
-    "reloadSpeed": 0.987893,
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by EF88_WB, export label 1.4.2.5.",
+    "reloadSpeed": 1,
     "provenance": {
       "schemaVersion": 1,
-      "status": "estimated",
-      "donor": {
-        "weaponIds": [
-          "b36a4",
-          "l85a3"
-        ],
-        "names": [
-          "B36A4",
-          "L85A3"
-        ],
-        "model": "exact midpoint where needed; spreadDyn copied from byte-identical AR donors",
-        "appliesTo": "damage tier magnitudes only; changelist 28877515 confirms this weapon shares the donor damage profile exactly, and replaces the ballistics fields"
-      },
+      "status": "sourced",
       "measured": {
         "source": "Battlefield 6 in-game attachment detail screenshots after update 1.3.3.0; reference-data/attachment-audit/attachment-screenshot-review.json, 30Rnd Magazine record",
         "adsTime": 250,
@@ -8981,25 +9086,19 @@
           17
         ]
       },
-      "estimatedFields": [
-        "emptyRld",
-        "reloadSpeed"
-      ],
-      "damage": {
-        "status": "sourced",
-        "donorModel": "l85a3",
-        "displayedEndpoints": {
-          "close": 26,
-          "long": 17
-        },
-        "endpointPrecision": "whole-number panel display; donor magnitudes remain authoritative between endpoints",
-        "replacement": "Replace magnitudes with Sym weapon-specific statistics when published; the profile shape is settled.",
-        "profileSource": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\") lists this weapon's damageProfile as identical to the L85A3 at every breakpoint, which sources the tier count and the breakpoint distances. That table carries pre-patch damage magnitudes and is not used for them: the values here are the current-live Sym figures for the shared profile, and match the in-game weapon panel endpoints."
-      },
-      "sourced": {
-        "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
-        "changelist": 28877515,
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
         "fields": [
+          "cls",
+          "cal",
+          "rpm",
+          "mag",
+          "tacRld",
+          "emptyRld",
+          "reloadSpeed",
+          "bulletVel",
+          "adsTime",
           "recoilV",
           "recoilDir",
           "recoilVar",
@@ -9008,46 +9107,15 @@
           "recoil",
           "spread",
           "spreadDyn",
-          "damage breakpoint distances",
-          "damage tier profile"
-        ]
-      },
-      "frosty": {
-        "sourceBuild": "1.4.2.5",
-        "buildEvidence": "user-supplied export label",
-        "fields": [
-          "bulletVel",
-          "rpm",
-          "recoilVar",
-          "recoilIncAds",
-          "recoil.ads.amount",
-          "recoil.ads.amountMult",
-          "recoil.ads.dirVar",
-          "recoil.ads.dirVarMult",
-          "spreadDyn.ads.inc",
-          "spreadDyn.ads.idleTime",
-          "spreadDyn.ads.firingCoef",
-          "spreadDyn.ads.firingOffset",
-          "spreadDyn.ads.notFiringOffset",
-          "spreadDyn.ads.distExp",
-          "recoil.hip.amount",
-          "recoil.hip.amountMult",
-          "recoil.hip.dirVar",
-          "recoil.hip.dirVarMult",
-          "spreadDyn.hip.inc",
-          "spreadDyn.hip.firingCoef",
-          "spreadDyn.hip.firingOffset",
-          "spreadDyn.hip.notFiringOffset",
-          "recoilV",
-          "tacRld",
-          "emptyRld"
+          "dmg"
         ],
         "evidence": "reference-data/provenance/frosty-1.4.2.5-ef88-velocity.json",
-        "note": "Frosty replaces bulletVel and the listed recoil/spread configuration fields. Named registry values agree with raw XML. recoilV uses the existing site magnitude formula; RECOIL_MULT is synchronized with recoil.ads.amountMult. Historical screenshot and Companion values remain in provenance and are superseded only for these listed fields. Engine simulation formulas are not independently verified by this data change. Reload fields are superseded by the named reload entries, raw WB and Sym values; the partial reload also matches the user screenshot.",
+        "note": "All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_556x45mmNATO curve referenced by EF88_WB; reloadSpeed is ReloadInfoArray[0].ReloadSpeed. Moving ADS and hipfire minima use the Frosty array selectors, and adsTime equals the Frosty-indexed default build.",
         "configurationEvidence": "reference-data/provenance/frosty-1.4.2.5-ef88-configuration.json",
         "reloadEvidence": "reference-data/provenance/frosty-1.4.2.5-ef88-reload.json",
         "sourceRecheckEvidence": "reference-data/provenance/frosty-ef88-source-recheck-2026-09-10.json",
-        "sourceRecheckNote": "Direct EF88 projectile damage curve and 62 named scalar checks match current values. Moving ADS array index 3 gives 0.32 degrees; corrected the inherited stored minimum on 2026-09-10."
+        "sourceRecheckNote": "Direct EF88 projectile damage curve and 62 named scalar checks match current values. Moving ADS array index 3 gives 0.32 degrees; corrected the inherited stored minimum on 2026-09-10.",
+        "sourcingEvidence": "reference-data/provenance/frosty-1.4.2.5-datamined-weapons-2026-09-12.json#weapons/ef88"
       }
     }
   },
@@ -9059,7 +9127,7 @@
     "rpm": 449.999,
     "mag": 21,
     "tacRld": 2.467,
-    "emptyRld": null,
+    "emptyRld": 3.584,
     "bulletVel": 303,
     "recoilV": 0.799909248014769,
     "recoilDir": -13,
@@ -9156,51 +9224,66 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "in-game"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "in-game"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 27.48,
-        "source": "in-game"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 27.48,
-        "source": "in-game"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "in-game"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 21.56,
-        "source": "in-game"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "in-game"
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "In-game reading: NVO-228E tiers without the 75 m step; 20.67 is retained past 36 m. The datamined changelist 28877515 table lists a further 17.13 tier past 75 m that the weapon does not apply.",
+    "damageSource": "Frosty PD_9x39mm_Semi tweakable damage curve referenced by VSSM_WB, export label 1.4.2.5. July 2026 panel screenshots showed long-range damage 20; that capture predates this export.",
     "reloadSpeed": 1,
     "provenance": {
       "schemaVersion": 1,
-      "status": "estimated",
-      "sourced": {
-        "source": "Battlefield Companion datamined weapon table (companionbattlefield.com bundle; \"Local BF6 files; bf6-s4-changelist-28877515\")",
-        "changelist": 28877515,
+      "status": "sourced",
+      "frosty": {
+        "sourceBuild": "1.4.2.5",
+        "buildEvidence": "user-supplied export label",
         "fields": [
+          "cls",
+          "cal",
+          "rpm",
           "mag",
           "tacRld",
+          "emptyRld",
+          "reloadSpeed",
           "bulletVel",
           "adsTime",
           "recoilV",
@@ -9210,18 +9293,16 @@
           "spreadMax",
           "recoil",
           "spread",
-          "spreadDyn"
-        ]
+          "spreadDyn",
+          "dmg"
+        ],
+        "note": "All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_9x39mm_Semi curve referenced by VSSM_WB; PD_9x39mm_Match (Range Pen) has the same curve. emptyRld is ReloadInfoArray[1].ReloadTime at ReloadSpeed 1. rpm is RateOfFireForSingleFire; Folding Stock applies RateOfFire 799.999 through autoRpm. Hipfire minima use source index 4 and moving ADS uses the Frosty array selector. cal follows the 9x39mm bullet asset, and adsTime equals the Frosty-indexed default build.",
+        "sourcingEvidence": "reference-data/provenance/frosty-1.4.2.5-datamined-weapons-2026-09-12.json#weapons/vssm"
       },
-      "estimatedFields": [
-        "cal",
-        "reloadSpeed"
-      ],
       "notes": [
-        "emptyRld is null: the datamined table publishes a single reloadSec, which matches tacRld.",
         "fireMode semi is confirmed in game; the Full Auto ergonomics card (40 pts, named \"Folding Stock\" on this weapon) converts it, same subtype as the M16 A3 Receiver.",
-        "Damage is the in-game curve, which drops the datamined 17.13 tier past 75 m.",
-        "rpm 450 is the in-game semi-auto rate. The datamined table lists 800, which the captures show is the Folding Stock full-auto rate; the sim has no per-attachment rate override, so the stock rate is stored.",
+        "Damage follows the Frosty PD_9x39mm_Semi curve, including 17.13 past 75 m. The July 2026 panel screenshots show long-range damage 20; they predate the 1.4.2.5 export.",
+        "rpm 449.999 is Frosty RateOfFireForSingleFire. Frosty RateOfFire 799.999 is the Folding Stock full-auto rate, applied through autoRpm.",
         "Magazine, grip, ammo and ergonomics coverage is derived from the 2026-07-26 VSSM screenshot corpus; all 43 captures reproduce in the sim.",
         "QD Grip Pod is bugged on this weapon only. It and Alloy Vertical are both tier 2 cards, and the 1.3.3.0 capture corpus shows them matching on BROD 3 (0.7), EF88 (0.6), M16A4 (0.6) and RPK-74M (0.4); on the VSSM Alloy reads 0.8 and QD reads 0.7, a tier 3 benefit at tier 2 cost. Changelist 28877515 lists tier 3 for all five, but it only manifests here, so the catalog keeps the tier 2 card."
       ]

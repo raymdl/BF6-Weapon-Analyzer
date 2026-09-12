@@ -1,6 +1,6 @@
 # Active Frosty recoil and spread investigations
 
-Updated 11 September 2026. This is the active research handoff. Completed
+Updated 12 September 2026. This is the active research handoff. Completed
 analysis and implementation records are in [the archive](../archive/README.md).
 The [full recording history](../archive/BF6_RECOIL_SPREAD_RECORDING_HISTORY_2026-09-11.md)
 preserves the previous detailed handoff, field inventory, measurements, capture
@@ -33,6 +33,71 @@ Current references: [recoil validation](../archive/RECOIL_MODEL_VALIDATION_2026-
 [AK4D analysis](../archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md), and
 [VSSM analysis](../archive/VSSM_RECORDING_ANALYSIS_2026-09-11.md).
 
+## Research without new recordings — 12 September 2026
+
+These checks use existing recordings, screenshots, and the Frosty registry. Their
+scripts and results are in ignored local `outputs/` directories named below.
+
+**Impact screenshots** (`outputs/impact-comparison-2026-09-12/`). With sampled
+spread, the model expects an 8.8% Lightened 15-round height reduction; recoil alone
+gives 10.0%. The recording metric is a median of five groups. Its simulated 90%
+range is 0.9–15.9%, and the observed 14.8% is at the 92nd percentile. The observed
+10-round value, 1.0%, is at the 16th percentile. These screenshots do not show a
+significant relative error. Group height cannot separate radius sampling rules.
+
+**Absolute scale.** Standing hipfire arm separations for M4A1, AK4D, and M39 EMR
+fit 35.55 px/degree + 16.7 px, with residuals of 0.21 px or less. If the stored
+minimum is a half-angle, the focal length is 1019 px. A 103-degree horizontal FOV
+at 2560 px gives 1018 px. With that scale, observed median impact heights are
+4–10% above model means for 3–10 rounds, and 22% (Standard) and 14% (Lightened)
+above at 15 rounds. The operator reported sway after about 400 ms; 15 rounds last
+about 1 s. The cause is not established. Limits: hole centroids, merged holes,
+screenshot camera position, and model means compared with five-group medians.
+AK4D ADS indicator widths divided by model peaks give about 29.5–32.4 px/degree.
+That is below the hipfire scale; ADS indicator geometry and sampled peaks are unverified.
+
+The HUD fit is a conditional consistency check, not an independent projectile-
+angle calibration. The derived absolute impact excess inherits that limitation.
+The [Claude handoff review](CLAUDE_SESSION_HANDOFF_2026-09-12.md#9-codex-review-and-operator-damage-check)
+also records the operator's current VSSM Range Pen check above 75 m: rounded
+17 chest, 31 head, and 14 arm. Chest/head support the 17.13 Frosty tier; arm
+damage conflicts with the current 0.91 limb multiplier and remains open.
+
+**Frosty registry scan** (`outputs/frosty-recoil-field-scan-2026-09-12/`). It
+covers 62 weapons named in `GRX_Weapons.xml`. BROD 3 (`BREN3`) has no named
+registry entries there, so `decode_bren3.py` reads `GS_BREN3.xml` by learning leaf
+positions from the named weapons. Leave-one-out checks on seven weapons recover
+150–152 of 152 fields, with no wrong value accepted; all 152 BREN3 fields decode.
+Site base recoil fields match the source in both aim states for all 63 weapons,
+including BROD 3. BROD 3 dispersion values match the site and have no non-neutral
+flags. All 248 named `MultiplierByOrder` arrays are empty. `FirstShotIncreaseMultiplier` is 1.0
+everywhere. Non-neutral values: `VerticalRecoilIncrease` 0.6 on 16 non-automatic
+weapons, all with `UsePolarRecoil` true; `MaxVerticalRecoil` 90 on three pistols.
+`DistributionExponent` is 0.5 on almost every branch (0.67 for `DesertTechHTI`
+zoomed moving). The site samples `r = spread * u`, which is exponent 1 if the
+engine uses `u^exponent`; that consumer is not established. Hip `IdleTime` is 1.8 s
+on six bolt rifles and 1.2 s on `590A1` and `DP12`; ADS `IdleTime` is 0.4 s everywhere.
+
+**Spread integration.** Spread recovery now uses 1 ms steps. The 60 Hz step
+differed from a 0.1 ms reference by up to 3.3%; 1 ms stays within 0.2%.
+
+**Smooth operand variants** (`outputs/smooth-variants-2026-09-12/`). Replaying
+the 10 September camera tracks, Lightened-only RMS errors (px) are:
+
+| Variant | M4A1 | TR7 | AK4D |
+|---|---:|---:|---:|
+| Current: 50 ms and recovery × 1.2 | 1.93 | 2.96 | 2.47 |
+| Factor × 1.2 only, 25 ms | 1.77 | 2.89 | 2.47 |
+| 50 ms only | 1.59 | 2.86 | 2.57 |
+| 50 ms and offset × 1.2 | 1.59 | 2.86 | 2.57 |
+| 50 ms and time scale 1.2 | 2.47 | 3.82 | 2.54 |
+| 50 ms and recovery × 1.1 | 1.72 | 2.85 | 2.50 |
+
+No variant is best for all three weapons. Time scaling is clearly worse for M4A1
+and TR7. Offset scaling is not visible in these tracks. Keep the current
+source-based treatment. These recordings informed earlier model work, so they are
+not independent validation.
+
 ## Standing recording conditions — operator confirmed 11 September 2026
 
 Use these conditions for all recoil and spread recording sets covered by this
@@ -59,6 +124,31 @@ magazine, and 10-point **Tungsten Match / Range Penetration** ammo. Version
 calibration to this VSSM set or treat it as a factory-barrel comparison.
 
 ## Remaining follow-up from completed recording sets
+
+The [12 September reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md)
+uses the existing M4A1, AK4D, TR7, and VSSM recordings before requesting more.
+It supports retaining the current simulator parameters. Key capture-plan
+updates:
+
+- Existing isolated/semi-auto/rapid footage has no usable red pairs in the
+  reviewed shot windows. Test indicator visibility before repeating a pause
+  series; missing marks are not zero spread.
+- M4A1 burst peaks are nearly equal between suppressors. Its burst traces
+  support a post-fire recovery change, but not an exact switch timer or a
+  different first-shot multiplier.
+- AK4D hipfire returns to its standing HUD width near 0.21 s, before its 0.6 s
+  hipfire idle time. ADS idle time is 0.4 s. An idle test needs measurable
+  excess beyond the applicable boundary; more identical bursts will not help.
+- The VSSM no-shot transitions favor a common nearly constant visible rate.
+  No-fire movement paths are also measured, including fast VSSM stop exceptions.
+  Keep those results separate from a native spread equation.
+- For physical aim, retain the isolated camera tracks and first test whether
+  individual impacts in a paired-shot pilot can be assigned to their shots.
+  Fully reset isolated shots alone do not sample aim for a following projectile.
+
+Use the report's minimal capture order below the completed-set recommendations.
+The scenarios that follow describe the open questions; they do not require
+repeating existing controls or recording a full series before a visibility check.
 
 - **VSSM:** Do not repeat the accepted standing index comparison or no-fire
   controls. Investigate hipfire firing, the no-shot hipfire-to-ADS recovery path,

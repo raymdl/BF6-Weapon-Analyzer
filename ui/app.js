@@ -115,15 +115,17 @@ const CLOUD_RUNS = 10;
 const RECOIL_BAR_SCALE = 3;
 const CONSOLE_RECOIL_MULT = 0.89;
 
-// Sym.gg exports effective RPM as timing-derived decimals. Keep those raw
-// values for calculations, but display the supplied in-game integer mapping.
+// Sym.gg and Frosty cycle calculations give effective RPM as timing-derived decimals.
+// Keep those raw values for calculations, but display the in-game integer mapping.
 const IN_GAME_RPM_BY_SYM = new Map(Object.entries({
   '31.91488230': 31,
-  '37.67438356': 37,
-  '38.11762015': 38,
-  '44.08160187': 44,
-  '46.34995365': 46,
-  '51.00000000': 51,
+  '38.20751293': 38,
+  '38.66345865': 38,
+  '43.90240199': 43,
+  '46.14231276': 46,
+  '47.09296950': 47,
+  '94.73654017': 94,
+  '149.99957639': 150,
   '149.99900000': 150,
   '163.63600000': 164,
   '199.99900000': 200,
@@ -261,8 +263,6 @@ function getBTKWithHits(weapon, range, headshots = 0, zoneMult = 1) {
 }
 function getTTK(weapon, btk) {
   if (!weapon.rpm || btk == null || !Number.isFinite(btk)) return null;
-  // Raw firing RPM does not establish the pump cycle between shots.
-  if (weapon.fireMode === 'pump' && btk > 1) return null;
   let ms = 0;
   for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
   return Math.round(ms);
@@ -270,15 +270,7 @@ function getTTK(weapon, btk) {
 const DEFAULT_PROJECTILE_DRAG_PER_METER = 0.0035;
 function projectileSourceFor(weapon) {
   if (!weapon) return null;
-  if (BALLISTIC_WEAPON_IDS.has(weapon.id)) return weapon;
-  const donor = weapon.provenance?.donor ?? {};
-  const donorIds = [
-    donor.weaponId,
-    ...(Array.isArray(donor.weaponIds) ? donor.weaponIds : []),
-  ].filter(Boolean);
-  return donorIds
-    .map(id => W.find(candidate => candidate.id === id))
-    .find(candidate => candidate && BALLISTIC_WEAPON_IDS.has(candidate.id)) ?? null;
+  return BALLISTIC_WEAPON_IDS.has(weapon.id) ? weapon : null;
 }
 function dragForSelectedAmmo(weapon, atts) {
   const configured = _ballistics.ammoDragPerMeter?.[atts?.ammo];
@@ -290,9 +282,7 @@ function dragForSelectedAmmo(weapon, atts) {
 }
 function projectileModelFor(weapon, atts) {
   // A weapon's own bullet velocity is enough to time a shot, since drag and
-  // gravity come from the shared catalog for every weapon alike. The donor
-  // lookup only supplies a velocity to weapons that publish none, so gating on
-  // it stranded the one estimated weapon whose velocity is itself sourced.
+  // gravity come from the shared catalog for every weapon alike.
   const source = projectileSourceFor(weapon);
   const model = {
     velocityMps: Number.isFinite(weapon?._projectileVelocityMps) ? weapon._projectileVelocityMps
@@ -717,7 +707,7 @@ function renderOverview() {
       },
       noDiff: true,
       tooltip: 'Headshot damage multiplier and limb (arm/leg/abdomen) multiplier.' },
-    { lbl: 'Fire Rate',   compute: w => w.fireMode === 'pump' ? null : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
+    { lbl: 'Fire Rate',   compute: w => w.fireMode === 'pump' && w.burstRounds > 1 && w.burstBurstsPerMinute ? w.burstRounds * w.burstBurstsPerMinute : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
       tooltip: 'Weapon fire rate in rounds per minute.' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Projectile velocity. Subsonic loads fire markedly slower. Higher values reduce travel time and lead.' },
@@ -1178,7 +1168,7 @@ function renderBTK() {
     const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
     const tTxt = bl !== b
       ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
-      : w.fireMode === 'pump' && b > 1 ? 'Unverified' : fmtTtkAt(ttkAt(w, r, b));
+      : fmtTtkAt(ttkAt(w, r, b));
     return { bTxt, tTxt };
   };
   let prev1 = null, prev2 = null;
@@ -2245,8 +2235,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
-    const timingNote = [w1, w2].some(w => w?.fireMode === 'pump') ? ' Pump-action cycling is not modeled in this pattern.' : '';
-    const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game.${timingNote} Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
+    const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}`;

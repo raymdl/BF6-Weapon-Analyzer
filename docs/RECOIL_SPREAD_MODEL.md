@@ -116,7 +116,7 @@ y += cos(direction + deviation) * amount - cos(direction) * amount * control
 
 Angles are converted to radians before the trigonometric functions. The delta
 above is delivered uniformly over `group.duration` (normally 0.025 seconds).
-Missing or zero duration uses an immediate impulse. Recovery acts at the same time,
+Missing or zero duration uses 0.025 seconds. Recovery acts at the same time,
 independently on each axis, under this assumed continuous rate equation:
 
 ```text
@@ -151,7 +151,7 @@ Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
 selected weapon record. The current Frosty check covers all 63 supported weapons
 and both aim states: all 126 values are **0.025 seconds**. This is a checked
 dataset result; the simulator reads the selected record. A missing/zero duration
-uses the immediate-impulse fallback.
+uses a fallback of **0.025 seconds**.
 
 The four Smooth source assets define two operand sets:
 
@@ -187,8 +187,8 @@ Retained `decNorm` and `shootingDecScale` do not add independent recovery branch
 See the [field review and validation](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md) for
 all omitted recoil fields, measured agreement, and the remaining error.
 
-`shotIntervalAfter()` uses `60 / rpm`, or `60 / burstRpm` within a burst when
-available. After the final shot in a burst, it uses the greater of the normal
+`shotIntervalAfter()` uses `60 / rpm`, or `60 / burstRpm` within a burst or DB-12
+pump cycle when available. After the final shot in a burst or cycle, it uses the greater of the normal
 interval and `60 / burstBurstsPerMinute - (burstRounds - 1) * normalInterval`.
 This distinction feeds both recoil and spread recovery.
 
@@ -207,7 +207,7 @@ with these stock values under the rules above.
 
 `simulateSpread()` records each shot's spread **before** adding that shot's
 increase. The first shot therefore uses the current stance minimum. Between
-shots, recovery is integrated in steps no longer than 1/60 second:
+shots, recovery is integrated in steps no longer than 1 ms (`SPREAD_TIME_STEP`):
 
 ```text
 delta = max(spread - baseline, 0)
@@ -297,7 +297,7 @@ distance and uses the available projectile model for vertical displacement.
 [sim/ballistics.js](../sim/ballistics.js) provides flight time and trajectory;
 [sim/target.js](../sim/target.js) handles geometry and hit classification.
 Projectile assembly uses available precise/base velocity and global coefficients,
-with supported ammo drag and source/donor fallback. The source-ID registry is not a
+with supported ammo drag. The source-ID registry is not a
 hard eligibility gate. If trajectory resolution fails, the current renderer uses
 zero vertical displacement; this is a display fallback, not a measured no-drop result.
 See [damage, ballistics and projection](DAMAGE_BALLISTICS.md).

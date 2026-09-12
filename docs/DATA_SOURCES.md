@@ -36,8 +36,9 @@ from this release; older field-level import notes remain historical provenance.
 
 The baseline's `damageStatus: verified` records project acceptance. Individual
 `damageSource` notes can still say provisional or pending in-game confirmation.
-There are no currently listed estimated weapon IDs, but fitted attachment effects,
-source-composition questions, and historical donor notes remain. Read field-level
+No weapon is estimated or uses donor values. BROD 3, EF88 and VSSM, which Sym does
+not publish, use Frosty 1.4.2.5 values. Fitted attachment effects and
+source-composition questions remain. Read field-level
 provenance and [limitations](MODEL_LIMITATIONS.md) rather than interpreting a single
 status as validation of the entire simulator.
 
@@ -135,7 +136,7 @@ an explicitly reviewed simulator mapping; changing both together conceals that d
 
 Compare a candidate against the current default build and the relevant composed
 loadouts. Preserve captures that contradict the candidate. Record why an override,
-normalized base, donor value, or fitted constant remains, with its limitations.
+normalized base or fitted constant remains, with its limitations.
 Keep the code/data change and its provenance reviewable together.
 
 A clean checkout runs the product and its tests. It cannot reproduce all historical

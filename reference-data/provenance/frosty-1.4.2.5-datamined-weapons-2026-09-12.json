@@ -1,0 +1,1359 @@
+{
+  "date": "2026-09-12",
+  "sourceBuild": "1.4.2.5",
+  "buildEvidence": "user-supplied export label",
+  "scope": "Remove estimated status, donor values and Companion-table sourcing from BROD 3, EF88 and VSSM, which Sym does not publish. All base fields are checked against Frosty.",
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB.xml": "eae644722ac366c9d70121d33c691b94bd5ccb4f694c1339eddbaaa3293f0776",
+    "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3.xml": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB.xml": "655103f89ae0f7081d80016510154704f48640c0ea3ec9451b85183c03698964",
+    "Common/Hardware/Weapons/AssaultRifle/EF88/GS_EF88.xml": "777a128148c07b599dc7f11b1b8a392ba2f2e36597d825ccda3105aa14a19428",
+    "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB.xml": "4a92b9e97a034cd4379880f8a8719e7fa22cbc0077d907a3d4703ee8871db318",
+    "Common/Hardware/Weapons/DMR/VSSM/GS_VSSM.xml": "95592b91bc1657172e6ee505285d4870e4fa38472b6e83ad693f9042303a1fe1",
+    "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml": "f938ebe5bfa6b30b05787c1d4e11ca6b72cc08c17a10253b1174d7c8bb74b4d9",
+    "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Carbine.xml": "6063730736cf647c04693f56ed323ca066f3ad7928608f9648052eade882fe58",
+    "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Semi.xml": "130e5658e0d76e120245fe0402060abf9fbf2042d4f62a7ced689492beb2af35",
+    "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Match.xml": "a36033410772af00caab9aadeb0d97abad7d633acbb32dd5bed9eb9e33d767ae"
+  },
+  "method": [
+    "Named GRX registry fields compared with site fields for all 63 weapons (rates, magazine, velocity, reloads, spread behaviour, spread bounds, base recoil).",
+    "BREN3 has no named GS registry entries. GS_BREN3.xml leaf positions were learned from 62 registry-named weapons; leave-one-out rebuilds of seven weapons recovered 150-152 of 152 fields with no wrong value accepted; all 152 BREN3 fields decoded.",
+    "Damage curves read from the bullet XML referenced by each WB (Field_808dd66c), following Field_2ad7e688 to the curve points; named registry curves agree where present."
+  ],
+  "designDifferences": {
+    "rpm": "Automatic weapons store FireLogic.RateOfFire; semi weapons store RateOfFireForSingleFire.",
+    "spread.adsMove[0]": "Every weapon uses the Frosty moving-ADS array selector instead of the named MinAngle.",
+    "spread.hipStand[0]/hipMove[0]": "Seventeen weapons, including VSSM (index 4), use the Frosty hip spread array selector.",
+    "tacRld/emptyRld": "Some weapons store reload time divided by the reload speed; all three weapons here have speed 1.",
+    "adsTime": "Legacy fallback; runtime uses WEAPON_MAG defAds/defAms, which equal the Frosty registry indices. Stored values equal the default build."
+  },
+  "bren3Decode": {
+    "leaveOneOut": {
+      "M4A1": {
+        "fields": 152,
+        "exact": 152,
+        "mismatchOrUnresolved": {}
+      },
+      "Tavor7": {
+        "fields": 152,
+        "exact": 152,
+        "mismatchOrUnresolved": {}
+      },
+      "G3A4": {
+        "fields": 152,
+        "exact": 152,
+        "mismatchOrUnresolved": {}
+      },
+      "SVDM": {
+        "fields": 152,
+        "exact": 152,
+        "mismatchOrUnresolved": {}
+      },
+      "MP7A2": {
+        "fields": 152,
+        "exact": 152,
+        "mismatchOrUnresolved": {}
+      },
+      "L115A3": {
+        "fields": 152,
+        "exact": 150,
+        "mismatchOrUnresolved": {
+          "Recoil.Zoomed.RecoilAmount": [
+            "AMBIGUOUS",
+            "2.0"
+          ],
+          "Recoil.Unzoomed.RecoilAmount": [
+            "AMBIGUOUS",
+            "5.2"
+          ]
+        }
+      },
+      "M1014": {
+        "fields": 152,
+        "exact": 152,
+        "mismatchOrUnresolved": {}
+      }
+    },
+    "recoilComparisonWithSite": [
+      {
+        "state": "ads",
+        "field": "RecoilAmount",
+        "frosty": "0.6939",
+        "site": 0.6939,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilAmountMultiplier",
+        "frosty": "0.94",
+        "site": 0.94,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilAmountMultiplierExponent",
+        "frosty": "-3",
+        "site": -3,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDirection",
+        "frosty": "-16.0",
+        "site": -16,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDirectionVariation",
+        "frosty": "24.3",
+        "site": 24.3,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDirectionVariationMultiplier",
+        "frosty": "0.918979",
+        "site": 0.918979,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDirectionVariationMultiplierExponent",
+        "frosty": "0",
+        "site": 0,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDecreaseFactor",
+        "frosty": "57.0",
+        "site": 57,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDecreaseExponent",
+        "frosty": "1.0",
+        "site": 1,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDecreaseTimeExponent",
+        "frosty": "1.045",
+        "site": 1.045,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDecreaseOffset",
+        "frosty": "0.06",
+        "site": 0.06,
+        "match": true
+      },
+      {
+        "state": "ads",
+        "field": "RecoilDuration",
+        "frosty": "0.025",
+        "site": 0.025,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilAmount",
+        "frosty": "0.6939",
+        "site": 0.6939,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilAmountMultiplier",
+        "frosty": "0.94",
+        "site": 0.94,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilAmountMultiplierExponent",
+        "frosty": "-3",
+        "site": -3,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDirection",
+        "frosty": "-16.0",
+        "site": -16,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDirectionVariation",
+        "frosty": "24.3",
+        "site": 24.3,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDirectionVariationMultiplier",
+        "frosty": "0.918979",
+        "site": 0.918979,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDirectionVariationMultiplierExponent",
+        "frosty": "0",
+        "site": 0,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDecreaseFactor",
+        "frosty": "57.0",
+        "site": 57,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDecreaseExponent",
+        "frosty": "1.0",
+        "site": 1,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDecreaseTimeExponent",
+        "frosty": "1.045",
+        "site": 1.045,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDecreaseOffset",
+        "frosty": "0.06",
+        "site": 0.06,
+        "match": true
+      },
+      {
+        "state": "hip",
+        "field": "RecoilDuration",
+        "frosty": "0.025",
+        "site": 0.025,
+        "match": true
+      }
+    ],
+    "gsSha256": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc"
+  },
+  "conflicts": [
+    {
+      "weapon": "vssm",
+      "field": "dmg",
+      "detail": "Frosty PD_9x39mm_Semi and PD_9x39mm_Match both add 17.13 past 75 m. All 43 VSSM panel captures (July 2026, earlier build) show long-range damage 20, which matched the former curve. On 12 September 2026 the operator reported rounded damage above 75 m with Range Pen ammo: chest 17, head 31, arm 14. Chest and head support retaining the newer Frosty tier; rounded readings do not independently establish the exact 17.13 value.",
+      "status": "resolved-for-tested-chest-and-head",
+      "operatorObservation": {
+        "date": "2026-09-12",
+        "source": "Operator report in the Codex task; ammo and arm hit confirmed in follow-up",
+        "range": ">75 m",
+        "ammo": "Range Pen",
+        "roundedDamage": { "chest": 17, "head": 31, "arm": 14 }
+      }
+    },
+    {
+      "weapon": "vssm",
+      "field": "LIMB_CLASS / arm damage",
+      "status": "open",
+      "detail": "The same Range Pen observation reports arm damage 14. The current DMR limb multiplier 0.91 gives 17.13 * 0.91 = 15.5883, rounded to 16. The existing automatic-class multiplier 0.84 gives 14.3892, rounded to 14. A single rounded reading does not establish the exact multiplier or justify changing all hit-zone/ammo behavior. Runtime values are unchanged pending source or additional hit-zone evidence."
+    }
+  ],
+  "weapons": {
+    "brod3": {
+      "wb": "BREN3_WB",
+      "bullet": "PD_556x45mmNATO_Carbine",
+      "damageCurve": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          21.56
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          21,
+          17.74
+        ],
+        [
+          36,
+          17.74
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "changes": [
+        {
+          "field": "burstBurstsPerMinute",
+          "before": 240.12729639809058,
+          "after": "<absent>"
+        },
+        {
+          "field": "burstRounds",
+          "before": 3,
+          "after": "<absent>"
+        },
+        {
+          "field": "burstRpm",
+          "before": 830,
+          "after": "<absent>"
+        },
+        {
+          "field": "damageSource",
+          "before": "Exact GRT-BC donor dropoff model; BROD 3 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
+          "after": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by BREN3_WB, export label 1.4.2.5."
+        },
+        {
+          "field": "dmg",
+          "before": [
+            {
+              "r": 0,
+              "d": 26.05,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+            },
+            {
+              "r": 9,
+              "d": 26.05,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 9,
+              "d": 21.56,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 21,
+              "d": 21.56,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 21,
+              "d": 17.74,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 36,
+              "d": 17.74,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 36,
+              "d": 17.13,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 75,
+              "d": 17.13,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 75,
+              "d": 14.62,
+              "source": "Sym",
+              "provenance": "GRT-BC donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+            }
+          ],
+          "after": [
+            {
+              "r": 0,
+              "d": 26.05,
+              "source": "Frosty"
+            },
+            {
+              "r": 9,
+              "d": 26.05,
+              "source": "Frosty"
+            },
+            {
+              "r": 9,
+              "d": 21.56,
+              "source": "Frosty"
+            },
+            {
+              "r": 21,
+              "d": 21.56,
+              "source": "Frosty"
+            },
+            {
+              "r": 21,
+              "d": 17.74,
+              "source": "Frosty"
+            },
+            {
+              "r": 36,
+              "d": 17.74,
+              "source": "Frosty"
+            },
+            {
+              "r": 36,
+              "d": 17.13,
+              "source": "Frosty"
+            },
+            {
+              "r": 75,
+              "d": 17.13,
+              "source": "Frosty"
+            },
+            {
+              "r": 75,
+              "d": 14.62,
+              "source": "Frosty"
+            }
+          ]
+        }
+      ],
+      "removedProvenance": [
+        "damage",
+        "donor",
+        "estimatedFields",
+        "sourced"
+      ],
+      "fieldComparisonBeforeChange": {
+        "mag": {
+          "site": 31,
+          "frosty": 31,
+          "match": true
+        },
+        "rpm(auto)": {
+          "site": 830.7692307692307,
+          "frosty": 830.769,
+          "match": true
+        },
+        "rpm(single)": {
+          "site": 830.7692307692307,
+          "frosty": 399.999,
+          "match": false
+        },
+        "bulletVel": {
+          "site": 563,
+          "frosty": 563.0,
+          "match": true
+        },
+        "tacRld": {
+          "site": 2.217,
+          "frosty": 2.217,
+          "match": true
+        },
+        "reloadSpeed": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "emptyRld": {
+          "site": 3.05,
+          "frosty": 3.05,
+          "match": true
+        },
+        "spreadMax": {
+          "site": 6,
+          "frosty": 6.0,
+          "match": true
+        },
+        "spreadDyn.ads.inc": {
+          "site": 0.304,
+          "frosty": 0.304,
+          "match": true
+        },
+        "spreadDyn.ads.idleTime": {
+          "site": 0.4,
+          "frosty": 0.4,
+          "match": true
+        },
+        "spreadDyn.ads.idleCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.idleExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.ads.idleOffset": {
+          "site": 7.5,
+          "frosty": 7.5,
+          "match": true
+        },
+        "spreadDyn.ads.firingCoef": {
+          "site": 1.2,
+          "frosty": 1.2,
+          "match": true
+        },
+        "spreadDyn.ads.firingExp": {
+          "site": 2.5,
+          "frosty": 2.5,
+          "match": true
+        },
+        "spreadDyn.ads.firingOffset": {
+          "site": 2.7,
+          "frosty": 2.7,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringOffset": {
+          "site": 7.2,
+          "frosty": 7.2,
+          "match": true
+        },
+        "spreadDyn.ads.firstShotMul": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "spreadDyn.ads.distExp": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spreadDyn.hip.inc": {
+          "site": 0.547,
+          "frosty": 0.547,
+          "match": true
+        },
+        "spreadDyn.hip.idleTime": {
+          "site": 0.6,
+          "frosty": 0.6,
+          "match": true
+        },
+        "spreadDyn.hip.idleCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.hip.idleExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.hip.idleOffset": {
+          "site": 25,
+          "frosty": 25.0,
+          "match": true
+        },
+        "spreadDyn.hip.firingCoef": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spreadDyn.hip.firingExp": {
+          "site": 2.5,
+          "frosty": 2.5,
+          "match": true
+        },
+        "spreadDyn.hip.firingOffset": {
+          "site": 4.86,
+          "frosty": 4.86,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringOffset": {
+          "site": 12.96,
+          "frosty": 12.96,
+          "match": true
+        },
+        "spreadDyn.hip.firstShotMul": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "spreadDyn.hip.distExp": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spread.adsStand.min": {
+          "site": 0.05,
+          "frosty": 0.05,
+          "match": true
+        },
+        "spread.adsStand.max": {
+          "site": 6,
+          "frosty": 6.0,
+          "match": true
+        },
+        "spread.adsMove.min": {
+          "site": 0.32,
+          "frosty": 0.35,
+          "match": false
+        },
+        "spread.adsMove.max": {
+          "site": 7,
+          "frosty": 7.0,
+          "match": true
+        },
+        "spread.hipStand.min": {
+          "site": 1.804,
+          "frosty": 1.804,
+          "match": true
+        },
+        "spread.hipStand.max": {
+          "site": 6,
+          "frosty": 6.0,
+          "match": true
+        },
+        "spread.hipMove.min": {
+          "site": 2.255,
+          "frosty": 2.255,
+          "match": true
+        },
+        "spread.hipMove.max": {
+          "site": 7,
+          "frosty": 7.0,
+          "match": true
+        }
+      },
+      "frostyRegistry": {
+        "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BurstsPerMinute": {
+          "guid": "5ce3d40d-0ee6-4fd1-91bd-373f337de7ea",
+          "value": 0
+        }
+      }
+    },
+    "ef88": {
+      "wb": "EF88_WB",
+      "bullet": "PD_556x45mmNATO",
+      "damageCurve": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "changes": [
+        {
+          "field": "damageSource",
+          "before": "Exact B36A4/L85A3 donor dropoff model; EF88 panel endpoints display rounded values only and do not override donor precision; pending Sym full statistics",
+          "after": "Frosty PD_556x45mmNATO tweakable damage curve referenced by EF88_WB, export label 1.4.2.5."
+        },
+        {
+          "field": "dmg",
+          "before": [
+            {
+              "r": 0,
+              "d": 26.05,
+              "source": "Sym",
+              "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+            },
+            {
+              "r": 21,
+              "d": 26.05,
+              "source": "Sym",
+              "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 21,
+              "d": 20.67,
+              "source": "Sym",
+              "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 75,
+              "d": 20.67,
+              "source": "Sym",
+              "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoints are display-only and do not override donor precision"
+            },
+            {
+              "r": 75,
+              "d": 17.13,
+              "source": "Sym",
+              "provenance": "L85A3 donor profile, confirmed identical by changelist 28877515; rounded weapon-panel endpoint is display-only and does not override donor precision"
+            }
+          ],
+          "after": [
+            {
+              "r": 0,
+              "d": 26.05,
+              "source": "Frosty"
+            },
+            {
+              "r": 21,
+              "d": 26.05,
+              "source": "Frosty"
+            },
+            {
+              "r": 21,
+              "d": 20.67,
+              "source": "Frosty"
+            },
+            {
+              "r": 75,
+              "d": 20.67,
+              "source": "Frosty"
+            },
+            {
+              "r": 75,
+              "d": 17.13,
+              "source": "Frosty"
+            }
+          ]
+        },
+        {
+          "field": "reloadSpeed",
+          "before": 0.987893,
+          "after": 1
+        }
+      ],
+      "removedProvenance": [
+        "damage",
+        "donor",
+        "estimatedFields",
+        "sourced"
+      ],
+      "fieldComparisonBeforeChange": {
+        "mag": {
+          "site": 31,
+          "frosty": 31,
+          "match": true
+        },
+        "rpm(auto)": {
+          "site": 674.999,
+          "frosty": 674.999,
+          "match": true
+        },
+        "rpm(single)": {
+          "site": 674.999,
+          "frosty": 399.999,
+          "match": false
+        },
+        "bulletVel": {
+          "site": 724,
+          "frosty": 724.0,
+          "match": true
+        },
+        "tacRld": {
+          "site": 2.4,
+          "frosty": 2.4,
+          "match": true
+        },
+        "reloadSpeed": {
+          "site": 0.987893,
+          "frosty": 1.0,
+          "match": false
+        },
+        "emptyRld": {
+          "site": 3.534,
+          "frosty": 3.534,
+          "match": true
+        },
+        "spreadMax": {
+          "site": 7,
+          "frosty": 7.0,
+          "match": true
+        },
+        "spreadDyn.ads.inc": {
+          "site": 0.36,
+          "frosty": 0.36,
+          "match": true
+        },
+        "spreadDyn.ads.idleTime": {
+          "site": 0.4,
+          "frosty": 0.4,
+          "match": true
+        },
+        "spreadDyn.ads.idleCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.idleExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.ads.idleOffset": {
+          "site": 7.5,
+          "frosty": 7.5,
+          "match": true
+        },
+        "spreadDyn.ads.firingCoef": {
+          "site": 1.2,
+          "frosty": 1.2,
+          "match": true
+        },
+        "spreadDyn.ads.firingExp": {
+          "site": 2.5,
+          "frosty": 2.5,
+          "match": true
+        },
+        "spreadDyn.ads.firingOffset": {
+          "site": 2.7,
+          "frosty": 2.7,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringOffset": {
+          "site": 7.2,
+          "frosty": 7.2,
+          "match": true
+        },
+        "spreadDyn.ads.firstShotMul": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "spreadDyn.ads.distExp": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spreadDyn.hip.inc": {
+          "site": 0.648,
+          "frosty": 0.648,
+          "match": true
+        },
+        "spreadDyn.hip.idleTime": {
+          "site": 0.6,
+          "frosty": 0.6,
+          "match": true
+        },
+        "spreadDyn.hip.idleCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.hip.idleExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.hip.idleOffset": {
+          "site": 25,
+          "frosty": 25.0,
+          "match": true
+        },
+        "spreadDyn.hip.firingCoef": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spreadDyn.hip.firingExp": {
+          "site": 2.5,
+          "frosty": 2.5,
+          "match": true
+        },
+        "spreadDyn.hip.firingOffset": {
+          "site": 4.86,
+          "frosty": 4.86,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringOffset": {
+          "site": 12.96,
+          "frosty": 12.96,
+          "match": true
+        },
+        "spreadDyn.hip.firstShotMul": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "spreadDyn.hip.distExp": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spread.adsStand.min": {
+          "site": 0.05,
+          "frosty": 0.05,
+          "match": true
+        },
+        "spread.adsStand.max": {
+          "site": 7,
+          "frosty": 7.0,
+          "match": true
+        },
+        "spread.adsMove.min": {
+          "site": 0.32,
+          "frosty": 0.35,
+          "match": false
+        },
+        "spread.adsMove.max": {
+          "site": 8,
+          "frosty": 8.0,
+          "match": true
+        },
+        "spread.hipStand.min": {
+          "site": 2.432,
+          "frosty": 2.432,
+          "match": true
+        },
+        "spread.hipStand.max": {
+          "site": 7,
+          "frosty": 7.0,
+          "match": true
+        },
+        "spread.hipMove.min": {
+          "site": 3.04,
+          "frosty": 3.04,
+          "match": true
+        },
+        "spread.hipMove.max": {
+          "site": 8,
+          "frosty": 8.0,
+          "match": true
+        }
+      },
+      "frostyRegistry": {
+        "EF88_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[0].ReloadSpeed": {
+          "guid": "b6ff9995-4382-4c3d-9445-9d8552ea8ae1",
+          "value": 1
+        }
+      }
+    },
+    "vssm": {
+      "wb": "VSSM_WB",
+      "bullet": "PD_9x39mm_Semi",
+      "damageCurve": [
+        [
+          0,
+          35.22
+        ],
+        [
+          9,
+          35.22
+        ],
+        [
+          9,
+          27.48
+        ],
+        [
+          21,
+          27.48
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          36,
+          21.56
+        ],
+        [
+          36,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "changes": [
+        {
+          "field": "damageSource",
+          "before": "In-game reading: NVO-228E tiers without the 75 m step; 20.67 is retained past 36 m. The datamined changelist 28877515 table lists a further 17.13 tier past 75 m that the weapon does not apply.",
+          "after": "Frosty PD_9x39mm_Semi tweakable damage curve referenced by VSSM_WB, export label 1.4.2.5. July 2026 panel screenshots showed long-range damage 20; that capture predates this export."
+        },
+        {
+          "field": "dmg",
+          "before": [
+            {
+              "r": 0,
+              "d": 35.22,
+              "source": "in-game"
+            },
+            {
+              "r": 9,
+              "d": 35.22,
+              "source": "in-game"
+            },
+            {
+              "r": 9,
+              "d": 27.48,
+              "source": "in-game"
+            },
+            {
+              "r": 21,
+              "d": 27.48,
+              "source": "in-game"
+            },
+            {
+              "r": 21,
+              "d": 21.56,
+              "source": "in-game"
+            },
+            {
+              "r": 36,
+              "d": 21.56,
+              "source": "in-game"
+            },
+            {
+              "r": 36,
+              "d": 20.67,
+              "source": "in-game"
+            }
+          ],
+          "after": [
+            {
+              "r": 0,
+              "d": 35.22,
+              "source": "Frosty"
+            },
+            {
+              "r": 9,
+              "d": 35.22,
+              "source": "Frosty"
+            },
+            {
+              "r": 9,
+              "d": 27.48,
+              "source": "Frosty"
+            },
+            {
+              "r": 21,
+              "d": 27.48,
+              "source": "Frosty"
+            },
+            {
+              "r": 21,
+              "d": 21.56,
+              "source": "Frosty"
+            },
+            {
+              "r": 36,
+              "d": 21.56,
+              "source": "Frosty"
+            },
+            {
+              "r": 36,
+              "d": 20.67,
+              "source": "Frosty"
+            },
+            {
+              "r": 75,
+              "d": 20.67,
+              "source": "Frosty"
+            },
+            {
+              "r": 75,
+              "d": 17.13,
+              "source": "Frosty"
+            }
+          ]
+        },
+        {
+          "field": "emptyRld",
+          "before": null,
+          "after": 3.584
+        }
+      ],
+      "removedProvenance": [
+        "estimatedFields",
+        "sourced"
+      ],
+      "fieldComparisonBeforeChange": {
+        "mag": {
+          "site": 21,
+          "frosty": 21,
+          "match": true
+        },
+        "rpm(auto)": {
+          "site": 449.999,
+          "frosty": 799.999,
+          "match": false
+        },
+        "rpm(single)": {
+          "site": 449.999,
+          "frosty": 449.999,
+          "match": true
+        },
+        "bulletVel": {
+          "site": 303,
+          "frosty": 303.0,
+          "match": true
+        },
+        "tacRld": {
+          "site": 2.467,
+          "frosty": 2.467,
+          "match": true
+        },
+        "reloadSpeed": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "emptyRld": {
+          "site": null,
+          "frosty": 3.584,
+          "match": false
+        },
+        "spreadMax": {
+          "site": 9,
+          "frosty": 9.0,
+          "match": true
+        },
+        "spreadDyn.ads.inc": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.idleTime": {
+          "site": 0.4,
+          "frosty": 0.4,
+          "match": true
+        },
+        "spreadDyn.ads.idleCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.idleExp": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "spreadDyn.ads.idleOffset": {
+          "site": 6.85715,
+          "frosty": 6.85715,
+          "match": true
+        },
+        "spreadDyn.ads.firingCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.firingExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.ads.firingOffset": {
+          "site": 6.6,
+          "frosty": 6.6,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.ads.notFiringOffset": {
+          "site": 6.6,
+          "frosty": 6.6,
+          "match": true
+        },
+        "spreadDyn.ads.firstShotMul": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "spreadDyn.ads.distExp": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spreadDyn.hip.inc": {
+          "site": 0.398,
+          "frosty": 0.398,
+          "match": true
+        },
+        "spreadDyn.hip.idleTime": {
+          "site": 0.6,
+          "frosty": 0.6,
+          "match": true
+        },
+        "spreadDyn.hip.idleCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.hip.idleExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.hip.idleOffset": {
+          "site": 25,
+          "frosty": 25.0,
+          "match": true
+        },
+        "spreadDyn.hip.firingCoef": {
+          "site": 0.1875,
+          "frosty": 0.1875,
+          "match": true
+        },
+        "spreadDyn.hip.firingExp": {
+          "site": 2.5,
+          "frosty": 2.5,
+          "match": true
+        },
+        "spreadDyn.hip.firingOffset": {
+          "site": 1.8225,
+          "frosty": 1.8225,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringCoef": {
+          "site": 0,
+          "frosty": 0.0,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringExp": {
+          "site": 0.25,
+          "frosty": 0.25,
+          "match": true
+        },
+        "spreadDyn.hip.notFiringOffset": {
+          "site": 12.96,
+          "frosty": 12.96,
+          "match": true
+        },
+        "spreadDyn.hip.firstShotMul": {
+          "site": 1,
+          "frosty": 1.0,
+          "match": true
+        },
+        "spreadDyn.hip.distExp": {
+          "site": 0.5,
+          "frosty": 0.5,
+          "match": true
+        },
+        "spread.adsStand.min": {
+          "site": 0.05,
+          "frosty": 0.05,
+          "match": true
+        },
+        "spread.adsStand.max": {
+          "site": 9,
+          "frosty": 9.0,
+          "match": true
+        },
+        "spread.adsMove.min": {
+          "site": 0.32,
+          "frosty": 0.35,
+          "match": false
+        },
+        "spread.adsMove.max": {
+          "site": 10,
+          "frosty": 10.0,
+          "match": true
+        },
+        "spread.hipStand.min": {
+          "site": 1.804,
+          "frosty": 3.352,
+          "match": false
+        },
+        "spread.hipStand.max": {
+          "site": 9,
+          "frosty": 9.0,
+          "match": true
+        },
+        "spread.hipMove.min": {
+          "site": 2.255,
+          "frosty": 4.19,
+          "match": false
+        },
+        "spread.hipMove.max": {
+          "site": 10,
+          "frosty": 10.0,
+          "match": true
+        }
+      },
+      "frostyRegistry": {
+        "VSSM_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadTime": {
+          "guid": "4c8a9918-26ce-4654-a452-2c0f9bcfa549",
+          "value": 3.584
+        },
+        "VSSM_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.ReloadInfoArray[1].ReloadSpeed": {
+          "guid": "5a6496a8-07f5-4912-adb4-745252b34744",
+          "value": 1
+        }
+      }
+    }
+  },
+  "limits": "Export XML and registry definitions; native activation of every field is not proven. adsTime and moving/hip minima follow existing Frosty array selectors."
+}
