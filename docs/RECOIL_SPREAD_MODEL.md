@@ -187,8 +187,8 @@ Retained `decNorm` and `shootingDecScale` do not add independent recovery branch
 See the [field review and validation](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md) for
 all omitted recoil fields, measured agreement, and the remaining error.
 
-`shotIntervalAfter()` uses `60 / rpm`, or `60 / burstRpm` within a burst when
-available. After the final shot in a burst, it uses the greater of the normal
+`shotIntervalAfter()` uses `60 / rpm`, or `60 / burstRpm` within a burst or DB-12
+pump cycle when available. After the final shot in a burst or cycle, it uses the greater of the normal
 interval and `60 / burstBurstsPerMinute - (burstRounds - 1) * normalInterval`.
 This distinction feeds both recoil and spread recovery.
 

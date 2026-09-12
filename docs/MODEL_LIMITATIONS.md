@@ -26,7 +26,7 @@ that the current resolver has since addressed.
 | Hip table's five hashed columns | Preserved exactly; runtime uses only standing/moving columns. Additional stance meanings are not assigned. |
 | FZT ADS-out and AZT animation arrays | Retained in research; not appended to the ADS-in ladder or equated with reload/draw timing. |
 | Visual recoil, sway, laser visibility, spotting, collateral, regeneration delay | Scalars/tags where supported; no separate camera, visibility, penetration or healing simulation. |
-| Empty reload / pump cycle | Empty reload remains raw; no general attachment-composed empty/per-shell model. Multi-shot pump TTK is unavailable. |
+| Empty reload / manual cycle | Empty reload remains raw. Shell-fed shotguns store a one-shell tactical reload and no empty reload. Bolt and pump cadence use the Frosty cycle; attachment effects on that cycle are not modeled. |
 
 ## Explicitly deferred or normalized behavior
 

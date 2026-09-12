@@ -214,11 +214,14 @@ export function selectedSpreadIncFor(w) {
   return dyn.inc ?? 0;
 }
 
+// Burst fire and multi-round pump cycles share the rounds-then-pause cadence.
+const hasCycleCadence = w => w.fireMode === 'burst' || w.fireMode === 'pump';
+
 /** Seconds between this shot and the next shot for the current fire mode. */
 export function shotIntervalAfter(w, shotIndex) {
-  const shotRpm = w.fireMode === 'burst' && w.burstRpm ? w.burstRpm : (w.rpm ?? 600);
+  const shotRpm = hasCycleCadence(w) && w.burstRpm ? w.burstRpm : (w.rpm ?? 600);
   const normalInterval = 60 / shotRpm;
-  const burstRounds = w.fireMode === 'burst' ? (w.burstRounds ?? 0) : 0;
+  const burstRounds = hasCycleCadence(w) ? (w.burstRounds ?? 0) : 0;
   const burstsPerMinute = w.burstBurstsPerMinute ?? 0;
   if (burstRounds <= 1 || burstsPerMinute <= 0) return normalInterval;
 
@@ -230,9 +233,9 @@ export function shotIntervalAfter(w, shotIndex) {
   return Math.max(normalInterval, burstCycle - elapsedWithinBurst);
 }
 
-/** True when the next interval is the pause after the final shot in a burst. */
+/** True when the next interval is the pause after the final shot in a burst or pump cycle. */
 export function isBurstGapAfter(w, shotIndex) {
-  const burstRounds = w.fireMode === 'burst' ? (w.burstRounds ?? 0) : 0;
+  const burstRounds = hasCycleCadence(w) ? (w.burstRounds ?? 0) : 0;
   const burstsPerMinute = w.burstBurstsPerMinute ?? 0;
   return burstRounds > 1
     && burstsPerMinute > 0

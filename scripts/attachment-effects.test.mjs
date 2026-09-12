@@ -381,3 +381,34 @@ test('Heavy, Heavy Extended and Cryo change ADS spread without changing hip spre
   }
   setSimContext({ aimState: 'ads', stanceState: 'stand' });
 });
+
+test('manual-cycle cadence and shell reloads follow Frosty 1.4.2.5 and the in-game panels', () => {
+  // rounds * 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + rounds * 60 / RateOfFire)
+  const cycleRpm = (time, speed, delay, rate, rounds = 1) => rounds * 60 / (time / speed + delay + rounds * 60 / rate);
+  for (const [id, time, speed, panel] of [
+    ['m2010esr', 1.2, 1.028571, 43], ['sv98', 1.233334, 0.9, 38], ['psr', 1.216667, 0.9, 38],
+    ['miniscout', 1, 0.9310338, 47], ['l115', 1.133334, 1.03, 46], ['interdictor', 1.68, 1, null],
+  ]) {
+    const rpm = cycleRpm(time, speed, 0, 299.999);
+    assert.ok(Math.abs(weapon(id).rpm - rpm) < 1e-9, id);
+    if (panel != null) assert.equal(Math.floor(rpm), panel, `${id} panel RPM`);
+  }
+  const m87a1 = weapon('m87a1');
+  assert.ok(Math.abs(m87a1.rpm - cycleRpm(0.500001, 1, 0.100001, 1799.999)) < 1e-9);
+  assert.equal(Math.floor(m87a1.rpm), 94);
+
+  const db12 = weapon('db12');
+  assert.equal(db12.fireMode, 'pump');
+  assert.equal(db12.burstRounds, 2);
+  assert.ok(Math.abs(db12.burstRounds * db12.burstBurstsPerMinute - 150) < 0.01, 'DB-12 panel shows 150 RPM');
+  assert.ok(Math.abs(shotIntervalAfter(db12, 1) - 60 / 359.999) < 1e-9);
+  assert.ok(Math.abs(shotIntervalAfter(db12, 2) - (0.433334 + 0.033334 + 60 / 359.999)) < 1e-6);
+
+  // ReloadDelay + ReloadTimeBulletsLeft + PostReloadDelay equals the panel reload for shell-fed shotguns.
+  for (const [id, tacRld] of [['m87a1', 1.334], ['m1014', 1.784], ['db12', 2.348]]) {
+    assert.equal(weapon(id).tacRld, tacRld, id);
+    assert.equal(weapon(id).emptyRld, null, id);
+  }
+  // Revolvers have one reload entry for every ammo count.
+  for (const id of ['m44', 'm357trait']) assert.equal(weapon(id).emptyRld, weapon(id).tacRld, id);
+});

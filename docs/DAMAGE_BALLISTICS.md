@@ -81,8 +81,9 @@ TTK_ms = round(1000 × sum(interval after shots 1 through BTK−1))
 ```
 
 The first shot occurs at time zero. Four shots at 600 RPM take 300 ms. A one-shot
-kill takes zero firing time. Pump-action multi-shot TTK returns unavailable because
-its valid cycle timing is unresolved. The UI can add ADS time and one projectile
+kill takes zero firing time. Bolt-action and pump-action intervals use the Frosty
+manual cycle: bolt time ÷ bolt speed + bolt delay + the fire interval. The DB-12
+fires two rounds per pump cycle. The UI can add ADS time and one projectile
 flight time at the selected distance. Missing flight-model output makes that
 flight-inclusive point unavailable; missing resolved ADS time currently contributes
 zero. These additions do not simulate reacting, aiming while sprinting, recoil

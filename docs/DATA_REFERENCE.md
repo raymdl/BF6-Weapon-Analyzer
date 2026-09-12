@@ -27,8 +27,8 @@ are not a complete schema for every current weapon/attachment field. The cross-f
 | Fields | Meaning / use |
 |---|---|
 | `id`, `name`, `cls`, `cal` | Stable join key, displayed name, class and caliber. Class drives menus, some policy and presentation. |
-| `rpm`, `fireMode`, `burstRounds`, `burstRpm`, `burstBurstsPerMinute` | Precise fire timing inputs. Display RPM may be rounded separately. Burst fields describe within/between-burst cadence; they do not establish pump animation timing. |
-| `mag`, `tacRld`, `emptyRld`, `reloadSpeed` | Base ammunition capacity and reload data. `mag` can include a chambered round; selected magazine capacity overrides it. `tacRld` is composed by the reload resolver; `emptyRld` and `reloadSpeed` are retained and not independently multiplied into tactical reload. |
+| `rpm`, `fireMode`, `burstRounds`, `burstRpm`, `burstBurstsPerMinute` | Precise fire timing inputs. Display RPM may be rounded separately. Burst fields describe within/between-burst cadence; DB-12 uses them for its two-round pump cycle. Bolt and single-round pump `rpm` is the effective Frosty manual-cycle rate. |
+| `mag`, `tacRld`, `emptyRld`, `reloadSpeed` | Base ammunition capacity and reload data. `mag` can include a chambered round; selected magazine capacity overrides it. `tacRld` is composed by the reload resolver; for shell-fed shotguns it is one shell with start and end delays. `emptyRld` and `reloadSpeed` are retained and not independently multiplied into tactical reload. |
 | `bulletVel`, `adsTime` | Base projectile velocity and legacy ADS-time display fallback. Current handling uses indexed tables. |
 | `recoilV`, `recoilDir`, `recoilVar` | Effective flat ADS amount and legacy direction/variation fields. `recoilV` already includes the base amount exponent. |
 | `recoilIncAds`, `spreadMax` | Flat ADS per-shot increment and legacy maximum/fallback information. Per-context bounds and dynamics are used where present. |

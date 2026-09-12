@@ -1,0 +1,692 @@
+{
+  "date": "2026-09-12",
+  "sourceBuild": "1.4.2.5",
+  "buildEvidence": "user-supplied export label",
+  "scope": "Replace pre-Frosty bolt and pump cadence with the Frosty manual-cycle calculation, add Frosty shell-fed tactical reloads and revolver empty reloads, and record why spread minima use the Frosty array selectors.",
+  "sourceSha256": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+    "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB.xml": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f",
+    "Common/Hardware/Weapons/Shotgun/590A1/590A1_WB.xml": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac"
+  },
+  "roundsPerCycle": {
+    "field": "WB FireLogic struct leaf Field_99a33446 (unnamed in the registry)",
+    "values": "DP12_WB 2; every other site weapon 1 (checked across all 63 WB files)",
+    "panelCheck": "DB-12 panel 150 RPM equals 2 * 60 / (0.433334 + 0.033334 + 2 * 60 / 359.999)."
+  },
+  "runtimeModel": "One-round cycles store the effective constant rpm. DB-12 stores RateOfFire with burstRounds 2 and burstBurstsPerMinute from the cycle, so shotIntervalAfter alternates 60/RateOfFire and the pump gap.",
+  "supersedes": "reference-data/provenance/frosty-shotgun-fire-timing.json runtimePolicy: multi-shot pump TTK is now reported from the Frosty cycle for M87A1 and DB-12.",
+  "shotgunEmptyReloadCandidates": {
+    "formula": "ReloadInfoArray[1].ReloadDelay + ReloadTime + PostReloadDelay",
+    "values": {
+      "m87a1": 4.318,
+      "m1014": 3.184,
+      "db12": 2.482
+    },
+    "status": "not applied",
+    "reason": "No panel shows the empty entry. RPK-74M has PostReloadDelay 0.084 on its empty entry while the site stores ReloadTime 3.1 without panel evidence, so the delay composition is not established."
+  },
+  "spreadSelectorEvidence": {
+    "hipMinimum": {
+      "finding": "For 17 weapons the named MinMaxDispersion MinAngle differs from the GS hip array selector. The panel hipfire score follows the array value for all 17.",
+      "scoreByHipMinimumOnAgreeingWeapons": {
+        "1.804": 47,
+        "2.432": 40,
+        "3.352": 34,
+        "4.848": 29
+      },
+      "conflictingWeapons": [
+        {
+          "id": "sgx",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "pw5a3",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "pw7a2",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "umg40",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "usg90",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "kv9",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "scw10",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "sl9",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "cz3a1",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "pp19",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "svk86",
+          "site": 4.848,
+          "named": 3.352,
+          "panelHipfireMode": 29
+        },
+        {
+          "id": "m87a1",
+          "site": 2.432,
+          "named": 0.784,
+          "panelHipfireMode": 40
+        },
+        {
+          "id": "m1014",
+          "site": 2.432,
+          "named": 0.784,
+          "panelHipfireMode": 40
+        },
+        {
+          "id": "ks18k",
+          "site": 2.432,
+          "named": 0.784,
+          "panelHipfireMode": 42
+        },
+        {
+          "id": "db12",
+          "site": 2.432,
+          "named": 0.784,
+          "panelHipfireMode": 39
+        },
+        {
+          "id": "vz61",
+          "site": 1.804,
+          "named": 1.352,
+          "panelHipfireMode": 47
+        },
+        {
+          "id": "vssm",
+          "site": 1.804,
+          "named": 3.352,
+          "panelHipfireMode": 47
+        }
+      ]
+    },
+    "movingAdsMinimum": {
+      "finding": "All weapons select moving-ADS array index 3 (0.32 degrees); named MinAngle is 0.35 (0.30 on six bolt rifles). Attachments move through the same array. No panel stat or recording measures this value directly; the hip result supports the same selector-over-literal behavior."
+    }
+  },
+  "weapons": {
+    "m2010esr": {
+      "cadence": {
+        "wb": "M2010ESR_WB",
+        "roundsPerCycle": 1,
+        "registry": {
+          "RateOfFire": [
+            299.999,
+            "0aa8c87b-b328-4832-98d3-d5b8808116ed"
+          ],
+          "BoltActionTime": [
+            1.2,
+            "de452ab9-20e4-4c62-a1f3-b63518986e17"
+          ],
+          "BoltActionSpeed": [
+            1.028571,
+            "9929a863-fd92-42cb-bbed-5ea859d328a3"
+          ],
+          "BoltActionDelay": [
+            0.0,
+            "73f34a63-24ab-44cc-8520-6b7ffd5b7cde"
+          ]
+        },
+        "cycleSeconds": 1.3666678194468693,
+        "effectiveRpm": 43.90240199281473,
+        "panelRpm": {
+          "43": 41
+        },
+        "panelCheck": "floor(effectiveRpm) equals the panel value"
+      },
+      "changes": [
+        {
+          "field": "rpm",
+          "before": 44.0816018658339,
+          "after": 43.90240199281473
+        }
+      ]
+    },
+    "sv98": {
+      "cadence": {
+        "wb": "SV98M_WB",
+        "roundsPerCycle": 1,
+        "registry": {
+          "RateOfFire": [
+            299.999,
+            "59a9f9ea-0be6-45b6-800a-8d1586a8b1cc"
+          ],
+          "BoltActionTime": [
+            1.233334,
+            "691a528f-a83d-4ded-90e6-0f825830cfd8"
+          ],
+          "BoltActionSpeed": [
+            0.9,
+            "3a24a769-9914-4a21-8c87-087a3f94869d"
+          ],
+          "BoltActionDelay": [
+            0.0,
+            "26d227cf-642d-4336-beed-ea5493da6c2b"
+          ]
+        },
+        "cycleSeconds": 1.57037177778,
+        "effectiveRpm": 38.20751292717492,
+        "panelRpm": {
+          "38": 37
+        },
+        "panelCheck": "floor(effectiveRpm) equals the panel value"
+      },
+      "changes": [
+        {
+          "field": "rpm",
+          "before": 37.67438355865456,
+          "after": 38.20751292717492
+        }
+      ]
+    },
+    "psr": {
+      "cadence": {
+        "wb": "MRAD_WB",
+        "roundsPerCycle": 1,
+        "registry": {
+          "RateOfFire": [
+            299.999,
+            "69a1f5c6-a443-4a89-99fc-1e3efac21baf"
+          ],
+          "BoltActionTime": [
+            1.216667,
+            "a30dafc9-dcfa-448d-8004-3b792cbb8410"
+          ],
+          "BoltActionSpeed": [
+            0.9,
+            "65a698b3-e78e-4426-a924-c23a89af4992"
+          ],
+          "BoltActionDelay": [
+            0.0,
+            "4b7b06e9-757b-4f05-b19c-e0bc77272890"
+          ]
+        },
+        "cycleSeconds": 1.5518528888911112,
+        "effectiveRpm": 38.663458649662005,
+        "panelRpm": {
+          "38": 39
+        },
+        "panelCheck": "floor(effectiveRpm) equals the panel value"
+      },
+      "changes": [
+        {
+          "field": "rpm",
+          "before": 38.11762015220833,
+          "after": 38.663458649662005
+        }
+      ]
+    },
+    "miniscout": {
+      "cadence": {
+        "wb": "MiniFix_WB",
+        "roundsPerCycle": 1,
+        "registry": {
+          "RateOfFire": [
+            299.999,
+            "fde25589-521e-45ed-9ebc-19c7e0c158d6"
+          ],
+          "BoltActionTime": [
+            1.0,
+            "08cc5cc8-0ce9-4914-bc81-3305f5acdde7"
+          ],
+          "BoltActionSpeed": [
+            0.9310338,
+            "f438cb81-851b-456d-bb5a-95cad410016c"
+          ],
+          "BoltActionDelay": [
+            0.0,
+            "0a887624-0b23-423b-bd0b-e0cb6276079b"
+          ]
+        },
+        "cycleSeconds": 1.2740755283978615,
+        "effectiveRpm": 47.092969500363495,
+        "panelRpm": {
+          "47": 43
+        },
+        "panelCheck": "floor(effectiveRpm) equals the panel value"
+      },
+      "changes": [
+        {
+          "field": "rpm",
+          "before": 51,
+          "after": 47.092969500363495
+        }
+      ]
+    },
+    "l115": {
+      "cadence": {
+        "wb": "L115A3_WB",
+        "roundsPerCycle": 1,
+        "registry": {
+          "RateOfFire": [
+            299.999,
+            "19c66f31-dc59-40ca-970b-12584b31a23a"
+          ],
+          "BoltActionTime": [
+            1.133334,
+            "198a6895-2ce7-43be-b505-e78a5004ab52"
+          ],
+          "BoltActionSpeed": [
+            1.03,
+            "e423b541-6085-43db-a752-3fb927e17c55"
+          ],
+          "BoltActionDelay": [
+            0.0,
+            "95b9b6aa-f2e2-4ee1-9131-46b5247e4421"
+          ]
+        },
+        "cycleSeconds": 1.3003249385135491,
+        "effectiveRpm": 46.14231275806206,
+        "panelRpm": {
+          "46": 41
+        },
+        "panelCheck": "floor(effectiveRpm) equals the panel value"
+      },
+      "changes": [
+        {
+          "field": "rpm",
+          "before": 46.349953649969095,
+          "after": 46.14231275806206
+        }
+      ]
+    },
+    "interdictor": {
+      "cadence": {
+        "wb": "DesertTechHTI_WB",
+        "roundsPerCycle": 1,
+        "registry": {
+          "RateOfFire": [
+            299.999,
+            "82367868-61ad-4b29-b7eb-0bf78e23f561"
+          ],
+          "BoltActionTime": [
+            1.68,
+            "6fe0e212-380b-4e41-b6e8-66b80d850f31"
+          ],
+          "BoltActionSpeed": [
+            1.0,
+            "12aa1559-993d-42cb-9e37-00d6c7d30b2c"
+          ],
+          "BoltActionDelay": [
+            0.0,
+            "1a04cf6d-0f82-4b02-a833-57840d71f7ff"
+          ]
+        },
+        "cycleSeconds": 1.8800006666688889,
+        "effectiveRpm": 31.914882299649403,
+        "panelRpm": {},
+        "panelCheck": "no panel"
+      },
+      "changes": []
+    },
+    "m87a1": {
+      "cadence": {
+        "wb": "590A1_WB",
+        "roundsPerCycle": 1,
+        "registry": {
+          "RateOfFire": [
+            1799.999,
+            "021e3a86-0aa0-4c68-bb8f-cdf98bfa4bae"
+          ],
+          "BoltActionTime": [
+            0.500001,
+            "a2d51113-ab13-4393-9aa9-9f0764ae4fc5"
+          ],
+          "BoltActionSpeed": [
+            1.0,
+            "c3c178c9-9031-4b9c-a6af-d5654bb35264"
+          ],
+          "BoltActionDelay": [
+            0.100001,
+            "f1fff7d8-4e3f-48ad-a3ec-4fcf06bc89e4"
+          ]
+        },
+        "cycleSeconds": 0.6333353518518622,
+        "effectiveRpm": 94.73654016716576,
+        "panelRpm": {
+          "94": 40
+        },
+        "panelCheck": "floor(effectiveRpm) equals the panel value"
+      },
+      "shellReload": {
+        "wb": "590A1_WB",
+        "registry": {
+          "ReloadDelay": [
+            0.267,
+            "7f692338-7f2a-4fba-ab56-971d672c1266"
+          ],
+          "ReloadTimeBulletsLeft": [
+            0.7,
+            "8375a308-b574-40ef-b2de-3c7004349b48"
+          ],
+          "PostReloadDelay": [
+            0.367,
+            "e7f08fed-7123-47cf-91dd-73b738bc4d00"
+          ]
+        },
+        "tacRld": 1.334,
+        "panelRecords": [
+          [
+            "Magazine",
+            "7 Shell",
+            1.334,
+            1
+          ],
+          [
+            "Magazine",
+            "5 Shell",
+            1.334,
+            1
+          ],
+          [
+            "Magazine",
+            "5 Fast",
+            1.334,
+            1
+          ],
+          [
+            "Magazine",
+            "6 Shell",
+            1.334,
+            1
+          ],
+          [
+            "Ammo",
+            "#01 BUCK",
+            1.334,
+            1
+          ],
+          [
+            "Ammo",
+            "#00 BUCK",
+            1.334,
+            1
+          ],
+          [
+            "Ammo",
+            "Flechette",
+            1.334,
+            1
+          ],
+          [
+            "Ammo",
+            "Slugs",
+            1.334,
+            1
+          ]
+        ]
+      },
+      "changes": [
+        {
+          "field": "rpm",
+          "before": 1799.999,
+          "after": 94.73654016716576
+        },
+        {
+          "field": "tacRld",
+          "before": null,
+          "after": 1.334
+        }
+      ]
+    },
+    "db12": {
+      "cadence": {
+        "wb": "DP12_WB",
+        "roundsPerCycle": 2,
+        "registry": {
+          "RateOfFire": [
+            359.999,
+            "6ea2f10e-e56d-4400-a82a-f049a2a5455c"
+          ],
+          "BoltActionTime": [
+            0.433334,
+            "de0ece64-d3b4-433d-92d9-2da6701133cb"
+          ],
+          "BoltActionSpeed": [
+            1.0,
+            "0ab80c06-50a2-4115-bfcb-022b79518ab5"
+          ],
+          "BoltActionDelay": [
+            0.033334,
+            "edebe298-584d-4d83-a37a-004c304ad5ca"
+          ]
+        },
+        "cycleSeconds": 0.8000022592618312,
+        "effectiveRpm": 149.99957638960296,
+        "panelRpm": {
+          "150": 35
+        },
+        "panelCheck": "effectiveRpm 149.9996 displays as the panel value 150; the remainder comes from RateOfFire 359.999."
+      },
+      "shellReload": {
+        "wb": "DP12_WB",
+        "registry": {
+          "ReloadDelay": [
+            0.716,
+            "d9a6c7c5-2bb3-4675-b76d-a5bfdeef1b9f"
+          ],
+          "ReloadTimeBulletsLeft": [
+            0.866,
+            "892e1713-838c-437a-8e71-c50f000dab48"
+          ],
+          "PostReloadDelay": [
+            0.766,
+            "3769ece2-73e8-4879-b5fd-61676a5eefd1"
+          ]
+        },
+        "tacRld": 2.348,
+        "panelRecords": [
+          [
+            "Magazine",
+            "14 Rnd",
+            2.348,
+            1
+          ],
+          [
+            "Ammo",
+            "#01 BUCK",
+            2.348,
+            1
+          ],
+          [
+            "Ammo",
+            "#00 BUCK",
+            2.348,
+            1
+          ],
+          [
+            "Ammo",
+            "Flechette",
+            2.348,
+            1
+          ],
+          [
+            "Ammo",
+            "Slugs",
+            2.348,
+            1
+          ]
+        ]
+      },
+      "changes": [
+        {
+          "field": "burstBurstsPerMinute",
+          "before": "<absent>",
+          "after": 74.99978819480148
+        },
+        {
+          "field": "burstRounds",
+          "before": "<absent>",
+          "after": 2
+        },
+        {
+          "field": "burstRpm",
+          "before": "<absent>",
+          "after": 359.999
+        },
+        {
+          "field": "tacRld",
+          "before": null,
+          "after": 2.348
+        }
+      ]
+    },
+    "m1014": {
+      "shellReload": {
+        "wb": "M1014_WB",
+        "registry": {
+          "ReloadDelay": [
+            0.534,
+            "22047a93-1ec5-4cb5-9ae8-2a875760dcc3"
+          ],
+          "ReloadTimeBulletsLeft": [
+            0.4,
+            "935a487d-7f3f-454a-96f3-160486660aa4"
+          ],
+          "PostReloadDelay": [
+            0.85,
+            "56ef4358-d3b6-4d15-994e-25bd494ba6be"
+          ]
+        },
+        "tacRld": 1.784,
+        "panelRecords": [
+          [
+            "Magazine",
+            "6 Shell",
+            1.784,
+            1
+          ],
+          [
+            "Magazine",
+            "4 Fast",
+            1.784,
+            1
+          ],
+          [
+            "Magazine",
+            "4 Shell",
+            1.784,
+            1
+          ],
+          [
+            "Ammo",
+            "#01 BUCK",
+            1.784,
+            1
+          ],
+          [
+            "Ammo",
+            "#00 BUCK",
+            1.784,
+            1
+          ],
+          [
+            "Ammo",
+            "Flechette",
+            1.784,
+            1
+          ],
+          [
+            "Ammo",
+            "Slugs",
+            1.784,
+            1
+          ]
+        ]
+      },
+      "changes": [
+        {
+          "field": "tacRld",
+          "before": null,
+          "after": 1.784
+        }
+      ]
+    },
+    "m44": {
+      "emptyReload": {
+        "wb": "RagingHunter_WB",
+        "registry": {
+          "MinAmmoCountInWeapon": [
+            -1,
+            "5431a9cf-a44d-4685-8f9a-b95c192f85ca"
+          ],
+          "ReloadTime": [
+            3.4,
+            "300ce118-eb13-45fd-a53c-d154f34a90fd"
+          ]
+        },
+        "emptyRld": 3.4
+      },
+      "changes": [
+        {
+          "field": "emptyRld",
+          "before": null,
+          "after": 3.4
+        }
+      ]
+    },
+    "m357trait": {
+      "emptyReload": {
+        "wb": "TRR8_WB",
+        "registry": {
+          "MinAmmoCountInWeapon": [
+            -1,
+            "63b6f823-ef02-44e6-87a2-119774bfe4e9"
+          ],
+          "ReloadTime": [
+            3.067,
+            "c2aadbe3-efb9-41ff-a562-9af83a8a2c07"
+          ]
+        },
+        "emptyRld": 3.067
+      },
+      "changes": [
+        {
+          "field": "emptyRld",
+          "before": null,
+          "after": 3.067
+        }
+      ]
+    }
+  },
+  "limits": "Formulas match in-game panel values; engine operation order is not proven beyond those checks."
+}
