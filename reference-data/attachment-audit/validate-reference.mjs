@@ -1,8 +1,10 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
+const workspaceRoot = resolve(here, '../..');
+const checkScreenshots = process.argv.includes('--screenshots');
 const review = JSON.parse(readFileSync(resolve(here, 'attachment-screenshot-review.json'), 'utf8'));
 const errors = [];
 const fail = message => errors.push(message);
@@ -45,6 +47,35 @@ for (const [index, record] of records.entries()) {
   if (!identity) fail(`records[${index}] source is not rooted under Weapon Attachments`);
   else if (identities.has(identity)) fail(`Duplicate source identity: ${identity}`);
   else identities.add(identity);
+  if (record.frosty) {
+    const requiredFrostyFields = ['sourceVersion', 'evidenceFile', 'attachmentXml', 'slot', 'siteId', 'status'];
+    for (const field of requiredFrostyFields) {
+      if (!record.frosty[field]) fail(`records[${index}] Frosty record is missing ${field}`);
+    }
+    if (record.frosty.status !== 'pending-screenshot-capture') {
+      fail(`records[${index}] has invalid Frosty status: ${record.frosty.status}`);
+    }
+    if (!existsSync(resolve(workspaceRoot, record.frosty.evidenceFile ?? ''))) {
+      fail(`records[${index}] Frosty evidence file does not exist`);
+    }
+    if (record.stats !== null || record.statComparisons !== null) {
+      fail(`records[${index}] pending Frosty row must not claim captured stats or arrows`);
+    }
+    if (record.frosty.panelFields) {
+      const fields = Object.keys(records.find(row => row.stats)?.stats ?? {});
+      if (Object.keys(record.frosty.panelFields).length !== fields.length
+          || fields.some(field => !Object.hasOwn(record.frosty.panelFields, field))) {
+        fail(`records[${index}] Frosty panel must account for every displayed field`);
+      }
+      for (const [field, entry] of Object.entries(record.frosty.panelFields)) {
+        if (!entry.reason || (entry.status === 'unsupported' && entry.value !== null)) {
+          fail(`records[${index}] invalid Frosty field reason/value: ${field}`);
+        }
+      }
+    }
+  } else if (checkScreenshots && !existsSync(resolve(workspaceRoot, record.source?.currentPath ?? ''))) {
+    fail(`records[${index}] screenshot does not exist: ${record.source?.currentPath}`);
+  }
   if (record.weaponName) weapons.add(record.weaponName);
 }
 

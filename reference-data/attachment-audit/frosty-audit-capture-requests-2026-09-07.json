@@ -1,0 +1,1443 @@
+{
+  "date": "2026-09-07",
+  "newCaptures": [
+    {
+      "weapon": "NVO-228E",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/NVO-228E/pending/62_NVO-228E_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "NVO-228E",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/NVO-228E/pending/63_NVO-228E_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "NVO-228E",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/NVO-228E/pending/64_NVO-228E_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "EF88",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/pending/63_EF88_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "EF88",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/pending/64_EF88_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "EF88",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/pending/65_EF88_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "B36A4",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/B36A4/pending/68_B36A4_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "B36A4",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/B36A4/pending/69_B36A4_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "B36A4",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/B36A4/pending/70_B36A4_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "AK4D",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/AK4D/pending/61_AK4D_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "AK4D",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/AK4D/pending/62_AK4D_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "AK4D",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/AK4D/pending/63_AK4D_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M433",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/pending/62_M433_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M433",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/pending/63_M433_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M433",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M433/pending/64_M433_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "L85A3",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/pending/68_L85A3_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "L85A3",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/pending/69_L85A3_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "L85A3",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/L85A3/pending/70_L85A3_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M16A4",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M16A4/pending/69_M16A4_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M16A4",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M16A4/pending/70_M16A4_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M16A4",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/M16A4/pending/71_M16A4_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "SOR-556 MK2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/SOR-556 MK2/pending/70_SOR-556 MK2_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "SOR-556 MK2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/SOR-556 MK2/pending/71_SOR-556 MK2_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "SOR-556 MK2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/SOR-556 MK2/pending/72_SOR-556 MK2_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "TR7",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/TR7/pending/58_TR7_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "TR7",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/TR7/pending/59_TR7_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "TR7",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/TR7/pending/60_TR7_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "VCR-2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/VCR-2/pending/63_VCR-2_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "VCR-2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/VCR-2/pending/64_VCR-2_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "VCR-2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/VCR-2/pending/65_VCR-2_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "L115",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/pending/42_L115_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "L115",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/pending/43_L115_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "L115",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/pending/44_L115_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M2010 ESR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/pending/42_M2010 ESR_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M2010 ESR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/pending/43_M2010 ESR_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M2010 ESR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/pending/44_M2010 ESR_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "Mini Scout",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/pending/44_Mini Scout_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "Mini Scout",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/pending/45_Mini Scout_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "Mini Scout",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/pending/46_Mini Scout_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/pending/40_PSR_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/pending/41_PSR_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "PSR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/pending/42_PSR_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "SV-98",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/pending/38_SV-98_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "SV-98",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/pending/39_SV-98_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "SV-98",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/pending/40_SV-98_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "BROD 3",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/pending/62_BROD 3_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "BROD 3",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/pending/63_BROD 3_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "BROD 3",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/pending/64_BROD 3_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M417 A2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M417 A2/pending/62_M417 A2_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M417 A2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M417 A2/pending/63_M417 A2_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M417 A2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M417 A2/pending/64_M417 A2_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M4A1",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M4A1/pending/66_M4A1_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M4A1",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M4A1/pending/67_M4A1_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M4A1",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M4A1/pending/68_M4A1_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "GRT-BC",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/GRT-BC/pending/55_GRT-BC_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "GRT-BC",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/GRT-BC/pending/56_GRT-BC_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "GRT-BC",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/GRT-BC/pending/57_GRT-BC_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "QBZ-192",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/QBZ-192/pending/50_QBZ-192_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "QBZ-192",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/QBZ-192/pending/51_QBZ-192_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "QBZ-192",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/QBZ-192/pending/52_QBZ-192_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "SOR-300SC",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/SOR-300SC/pending/64_SOR-300SC_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "SOR-300SC",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/SOR-300SC/pending/65_SOR-300SC_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "SOR-300SC",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/SOR-300SC/pending/66_SOR-300SC_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "SG 553R",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/SG 553R/pending/60_SG 553R_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "SG 553R",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/SG 553R/pending/61_SG 553R_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "SG 553R",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/SG 553R/pending/62_SG 553R_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M277",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M277/pending/64_M277_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M277",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M277/pending/65_M277_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M277",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Carbine/M277/pending/66_M277_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/pending/60_LMR27_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/pending/61_LMR27_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "LMR27",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/LMR27/pending/62_LMR27_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/pending/61_M39 EMR_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/pending/62_M39 EMR_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M39 EMR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/M39 EMR/pending/63_M39 EMR_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/GRT-CPS/pending/59_GRT-CPS_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/GRT-CPS/pending/60_GRT-CPS_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "GRT-CPS",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/GRT-CPS/pending/61_GRT-CPS_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "SVK-8.6",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/pending/51_SVK-8.6_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "SVK-8.6",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/pending/52_SVK-8.6_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "SVK-8.6",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/SVK-8.6/pending/53_SVK-8.6_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/pending/58_SVDM_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/pending/59_SVDM_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "SVDM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/SVDM/pending/60_SVDM_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M240L",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/pending/51_M240L_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "M240L",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/pending/52_M240L_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M240L",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/pending/53_M240L_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M240L",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M240L/pending/54_M240L_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M250",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M250/pending/51_M250_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "M250",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M250/pending/52_M250_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M250",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M250/pending/53_M250_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M250",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M250/pending/54_M250_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "DRS-IAR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/DRS-IAR/pending/69_DRS-IAR_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "DRS-IAR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/DRS-IAR/pending/70_DRS-IAR_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "DRS-IAR",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/DRS-IAR/pending/71_DRS-IAR_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M60",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M60/pending/52_M60_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "M60",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M60/pending/53_M60_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M60",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M60/pending/54_M60_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M60",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M60/pending/55_M60_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M123K",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M123K/pending/49_M123K_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "M123K",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M123K/pending/50_M123K_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M123K",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M123K/pending/51_M123K_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M123K",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M123K/pending/52_M123K_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "M121 A2",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M121 A2/pending/90_M121 A2_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "M121 A2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M121 A2/pending/91_M121 A2_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "M121 A2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M121 A2/pending/92_M121 A2_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "M121 A2",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/M121 A2/pending/93_M121 A2_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "L110",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/L110/pending/51_L110_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "L110",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/L110/pending/52_L110_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "L110",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/L110/pending/53_L110_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "L110",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/L110/pending/54_L110_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "RPK-74M",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPK-74M/pending/123_RPK-74M_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "RPK-74M",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPK-74M/pending/124_RPK-74M_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "RPK-74M",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPK-74M/pending/125_RPK-74M_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "RPK-74M",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPK-74M/pending/126_RPK-74M_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "RPKM",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/pending/64_RPKM_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "RPKM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/pending/65_RPKM_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "RPKM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/pending/66_RPKM_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "RPKM",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/RPKM/pending/67_RPKM_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "KTS100 MK8",
+      "attachmentType": "Grip",
+      "attachmentName": "Canted Vertical",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/pending/62_KTS100 MK8_Grip_canted_vertical_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_BTM_RK2B25U.xml"
+    },
+    {
+      "weapon": "KTS100 MK8",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/pending/63_KTS100 MK8_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "KTS100 MK8",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/pending/64_KTS100 MK8_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "KTS100 MK8",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/pending/65_KTS100 MK8_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "USG-90",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor L",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/SMG/USG-90/pending/40_USG-90_Muzzle_hybrid_supp_l_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRR.xml"
+    },
+    {
+      "weapon": "USG-90",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor K",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/SMG/USG-90/pending/41_USG-90_Muzzle_hybrid_supp_k_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRRK.xml"
+    },
+    {
+      "weapon": "USG-90",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Hybrid Suppressor S",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/SMG/USG-90/pending/42_USG-90_Muzzle_hybrid_supp_s_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRRS.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Ammo",
+      "attachmentName": "Standard",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/00_Interdictor_Ammo_standard_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_FMJ.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Ammo",
+      "attachmentName": "Frangible",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/01_Interdictor_Ammo_frangible_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Frangible.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Ammo",
+      "attachmentName": "Long-Range",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/02_Interdictor_Ammo_long_range_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Match.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Ammo",
+      "attachmentName": "Penetration",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/03_Interdictor_Ammo_penetration_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_AMO_Tungsten.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Barrel",
+      "attachmentName": "Basic",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/04_Interdictor_Barrel_basic_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_BasicBarrel.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Barrel",
+      "attachmentName": "Extended",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/05_Interdictor_Barrel_extended_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_ExtendedBarrel.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Barrel",
+      "attachmentName": "Light",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/06_Interdictor_Barrel_light_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_LightBarrel.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Grip",
+      "attachmentName": "Bipod",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/07_Interdictor_Grip_bipod_sr_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_AtlasV8BOLT.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Grip",
+      "attachmentName": "Low-Profile Stubby",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/08_Interdictor_Grip_lp_stubby_sr_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BCMStubbyBOLT.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Grip",
+      "attachmentName": "QD Grip Pod",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/09_Interdictor_Grip_qd_grip_pod_sr_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_BTGrippodQDBOLT.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Grip",
+      "attachmentName": "Classic Grip Pod",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/10_Interdictor_Grip_classic_grip_pod_sr_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_GPS2BOLT.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Grip",
+      "attachmentName": "Full Angled",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/11_Interdictor_Grip_full_angled_sr_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFG2BOLT.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Ergonomics",
+      "attachmentName": "Improved Mag Catch",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/12_Interdictor_Ergonomics_mag_catch_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_ERG_ImprovedMagCatch.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Light",
+      "attachmentName": "Range Finder",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/13_Interdictor_Light_range_finder_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_LFT_FNElity.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Magazine",
+      "attachmentName": "3 Rnd",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/14_Interdictor_Magazine_3_rnd_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Magazine",
+      "attachmentName": "7 Rnd",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/15_Interdictor_Magazine_7_rnd_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Extended1.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Magazine",
+      "attachmentName": "5 Fast",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/16_Interdictor_Magazine_5_fast_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Fast.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Magazine",
+      "attachmentName": "5 Rnd",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/17_Interdictor_Magazine_5_rnd_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Regular.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Double-Port Brake",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/18_Interdictor_Muzzle_dp_brake_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_HTIMB.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Muzzle",
+      "attachmentName": "M50 Big Bore Suppressor (Frosty asset)",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/19_Interdictor_Muzzle_light_supp_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-unverified",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Long Suppressor",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/20_Interdictor_Muzzle_long_supp_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltra50Suppressor.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Muzzle",
+      "attachmentName": "Flash Hider",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/21_Interdictor_Muzzle_flash_hider_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltraBSRFlashHider.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Aimed",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/22_Interdictor_Light_ads_taclight_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_ModuleMk3.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Light",
+      "attachmentName": "Taclight - Hipfire",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/23_Interdictor_Light_hip_taclight_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_SF300.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Light",
+      "attachmentName": "Flashlight",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/24_Interdictor_Light_flashlight_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_TLMissionLight.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Violet",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/25_Interdictor_Laser_50mw_violet_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_ANPEQ16B.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Green",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/26_Interdictor_Laser_50mw_green_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_DBALA3.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Green",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/27_Interdictor_Laser_5mw_green_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_LA23PEQ.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Laser",
+      "attachmentName": "50 MW Blue",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/28_Interdictor_Laser_50mw_blue_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_MeproSting.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Laser",
+      "attachmentName": "5 MW Red",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/29_Interdictor_Laser_5mw_red_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_Perst4.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Laser",
+      "attachmentName": "120 MW Blue",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/30_Interdictor_Laser_120mw_blue_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_RaidXe.xml"
+    },
+    {
+      "weapon": "Interdictor",
+      "attachmentType": "Grip",
+      "attachmentName": "Slim Angled",
+      "expectedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Interdictor/pending/31_Interdictor_Grip_slim_angled_interdictor_Frosty_pending.png",
+      "reason": "New Frosty reference row. Capture the selected attachment title, cost and full detailed stats.",
+      "identityStatus": "display-label-pending",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BTM_MagpulAFGBOLT.xml"
+    }
+  ],
+  "replacementCaptures": [
+    {
+      "recordIndex": 3006,
+      "weapon": "kts100",
+      "field": "recoilAmountDegrees",
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/31_KTS100 MK8_Grip_Ribbed_Vertical.png",
+      "screenshotSha256": "06cae4c7d0376ab2f8dbb4e2dbb614f83cc532db64fd62938b95fb7f494436b7",
+      "actualTitle": "CLASSIC GRIP POD",
+      "expectedTitle": "RIBBED VERTICAL",
+      "verifiedPanelValue": 0.5,
+      "auditValue": 0.5,
+      "sourceCandidate": 0.4199,
+      "replacementCaptureNeeded": "Capture the KTS100 MK8 Underbarrel > Ribbed Vertical panel and replace this file before assigning a verified Ribbed Vertical recoil amount."
+    }
+  ],
+  "note": "Pending display labels are not all screenshot-verified. In particular, Interdictor M50 Big Bore Suppressor has conflicting Lightened/CQB integration labels. Preserve the observed title when captured."
+}
