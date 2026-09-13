@@ -57,8 +57,27 @@ Example magnitudes from existing ladders: M433 sprint/deploy base 5 → 6 gives
 | Bipod / mounted recoil | `GRM_BipodDeployed_*` (recoil index operands), `GBM_Increase_ADS_*_BTM_Bipod` (M4A1, QBZ192), `GRM_Mounted*` (flags). | Deployed state not modeled. |
 | P90 Heavy Recoil Spring | `WPM_ERG_HeavyRecoilSpring900_W10` → `WME_Firerate900_M10` (RateOfFire `Field_14c4a054` 800; `Field_be31b12d` 400 vs WB 449.999). Listed only in `P90_WB` modifier assets; no ability branch. | Probably unavailable. |
 
+### GRX-named GS/WB fields the repo never mentions
+
+109 of 170 GRX leaf names under GS/WB paths are not mentioned in scripts, sim or
+docs (weapon modifier asset paths excluded). Value spread across weapons:
+
+| Field family | Spread | Assessment |
+|---|---|---|
+| `Recoil.Zoomed.VerticalRecoilMin` / `Max` / `Increase` | 6 / 5 / 2 distinct (for example 0.6, 0.578, 0.42; Increase 0 or 0.6) | Per-weapon; not in the site's recoil import (`frosty-configuration.py` reads direction, amount and decrease fields). Possible first-shots vertical kick model. |
+| `Recoil.Zoomed.HorizontalRecoilLeft` / `Right` | 6 distinct each (0.2–0.6 / −0.2 to −0.6) | Per-weapon horizontal bounds; relation to `RecoilDirectionVariation` unverified. |
+| `Recoil.Zoomed.MaxVerticalRecoil`, `UsePolarRecoil` | 20 (61) / 90 (3); True except 1 | Near-uniform; the one non-polar weapon is worth identifying. |
+| `IdleDecreaseTargetDuration.StationaryIndex` / `MovingIndex` | 7 distinct indices | Per-weapon spread recovery timing index; target array not traced. |
+| `ReloadInfoArray[].ReloadThreshold` | 36 distinct (0.72–0.8 common) | Per reload type; stored unnamed in empty-reload evidence. Likely the fraction at which ammo is committed; unverified. |
+| `ReloadInfoArray[].ReloadDelay` / `PostReloadDelay` | Mostly 0; 6–7 non-zero | Few weapons; check those reload timings. |
+| `Ammo.NumberOfMagazines` | 12 distinct | Reserve ammo; not a TTK input. |
+| `StanceChangePenalties.*` | Only 9 weapons, identical: Duration 0.3/0.9 s, MinAngleOffset 1 (hip stand/crouch), 0.2 (ADS stand/crouch), 6 (prone) | Uniform stance-change spread penalty; low modeling value. |
+| `CameraRecoil.Spring*`, `UseTimeSinceLastShot` | Near-uniform (1500/0.94/30; zoomed 1500/0.5/50) | Camera recoil is unmodeled. |
+| `RecoilFadeOut*`, `FirstShotMultiplierVerticalRecoil`, `AutoReplenish*`, `BridgeDelay` | One value | Placeholder or unused. |
+
 ## Remaining
 
-- Operator decision: which of the resolved leads to model (class trait toggle,
-  semi fire mode, deployed/bipod state).
-- Scan GS/WB scalar fields the site does not read (sway, zoom, reload details).
+- Operator decision (13 September 2026): document only; no model changes yet.
+- If modeling resumes: verify vertical/horizontal recoil bounds against recordings,
+  trace the `IdleDecreaseTargetDuration` target array, and check `ReloadThreshold`
+  against reload captures.
