@@ -128,6 +128,42 @@ switching between firing and not-firing is not in the data; the site uses firing
 recovery for full-auto intervals and splits burst gaps. Recording scenario 4 in
 `BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md` is the test.
 
+### Recording check: AK4D hipfire tail
+
+Codex's [recording reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md) measured
+that all nine matched AK4D 15-round hipfire groups return to the standing HUD
+plateau about 0.21 s after the last HUD shot event (about 60 Hz sampling).
+
+Prediction with exported AK4D hip values only (increase 0.941, 514.285 RPM, firing
+`0.5·Δ^2.5 + 4.86` between shots, 0.1 ms steps): excess at the last shot is 2.573
+degrees. Time from the last shot to the minimum by recovery branch:
+
+| Branch after the last shot | Predicted time |
+|---|---:|
+| Not-firing, flat 12.96 °/s | **0.199 s** |
+| Firing, continued | 0.425 s |
+| Idle, flat 25 °/s | 0.103 s |
+| Generic `Decrease*` (1.8, 0.25, 0.4) | 1.201 s |
+
+Only not-firing matches, with no fitted parameter. This supports: a switch to
+not-firing recovery soon after the burst, the flat not-firing offset, and no idle
+activation before about 0.2 s (idle would reach the floor earlier). The HUD response
+delay (about 33–50 ms in the M4A1 fits) and the display-to-angle mapping are not
+included; the 56 px/degree scale is derived from 136 px for the 2.432 degree
+standing minimum and is not a calibration.
+
+Other report results against the source structure:
+
+- M4A1 bursts fit better with a switch to not-firing recovery (1.71 vs 2.00 px);
+  source not-firing offset is 8/3 × firing offset.
+- Standard and Lightened suppressor peaks agree within 0.6%; suppressors have no
+  spread increase or recovery modifier.
+- AK4D no-fire moving-to-standing fall (about 117 ms, 90–10%) is not explained by
+  the generic `Decrease*` branch (289 ms predicted) and is slower than not-firing
+  (38 ms); character deceleration and HUD response are mixed into that path.
+- The VSSM no-shot contraction's nearly constant rate matches the shape of a flat
+  offset, but without a VSSM pixel/degree calibration the rate is not testable.
+
 ### Recoil recovery values
 
 For all 62 supported GS records, both aims: `RecoilDecreaseOffset` 0.06,
