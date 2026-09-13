@@ -55,6 +55,29 @@ Inspect an affected UI build when presentation changes. Documentation-only edits
 need link, formula and example checks rather than a repeated product suite.
 Add a test only for a distinct regression not covered more simply.
 
+## Regenerate attachment modifiers
+
+Use the reviewed Frosty export root with these checks before changing generated
+attachment fields:
+
+```sh
+python scripts/frosty-barrel-ads.py --root <Frosty-export-root> --check
+python scripts/frosty-attachment-handling.py --root <Frosty-export-root> --check
+python scripts/frosty-sniper-brakes.py --root <Frosty-export-root> --check
+python scripts/frosty-assumption-review.py --root <Frosty-export-root> --check
+```
+
+For generation, omit `--check` on the first three; replace it with `--apply` on
+the assumption review. Inspect catalog and evidence diffs together. Keep
+per-weapon overrides, source base coordinates and magazine shifts consistent.
+Do not promote unresolved fields or source-only attachment availability.
+The [generation report](docs/working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
+records accepted mappings and remaining exceptions.
+
+When editing shared rails, update `WEAPON_ATTS.slots` and category availability.
+Keep positional URL tokens stable. Check replacement, empty selection, point
+costs, legacy links, reload and weapon switching.
+
 ## Reload exceptions and provenance
 
 [data/reload-exceptions.json](data/reload-exceptions.json) records animation

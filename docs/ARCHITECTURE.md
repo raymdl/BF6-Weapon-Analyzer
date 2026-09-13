@@ -65,6 +65,12 @@ and collapsed panels. Loadout changes flow through the shared resolver; renderin
 must not independently reapply modifiers. Overview, range charts, contextual recoil
 stats, and target results consume the selected build, with different display contexts.
 
+`WEAPON_ATTS.slots` defines physical grip/laser/light mounts independently of
+category availability. `resolveMountAttachments()` validates the typed selection
+and merges per-weapon fields for calculations, points, labels and assumption
+markers. A shared rail accepts one device. Its consumed category keys are removed
+from state; an explicit rail value, including empty, overrides stale legacy keys.
+
 Selected builds are cached by slot, weapon reference and attachment selection.
 Default builds, recoil patterns, spread sequences and trajectory calculations have
 input-keyed caches. Hidden panels skip detailed rendering. Pan/zoom redraws are
@@ -94,8 +100,9 @@ against per-weapon availability; unknown/out-of-range tokens are ignored.
 
 Compact attachment tokens use **zero-based decimal catalog positions**, not IDs:
 `S` sights, `M` muzzles, `B` barrels, `G` grips, `L` lasers, `T` lights, `A` ammo,
-`E` ergonomics, and `K` magazine keys. `R` means a grip in a combined laser slot;
-`H` means a light in that slot. Only differences from the weapon's defaults are emitted.
+`E` ergonomics, and `K` magazine keys. On a shared rail, `L` means a laser,
+`R` a grip, and `H` a light. These existing tokens decode to typed `atts.rail`
+state; legacy shared selections in `atts.laser` are normalized to that state. Only differences from the weapon's defaults are emitted.
 Magazine positions use `Object.keys(WEAPON_MAG[id].mags)` insertion order.
 
 Legacy dash-separated IDs use this fixed order:

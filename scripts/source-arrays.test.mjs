@@ -75,14 +75,16 @@ test('shotgun pellet ammunition adds nine source rows and stacks before clamping
   }
   // Synthetic modifiers exercise the endpoint and opposing-shift order.
   setAttachmentContext({ LASERS: [{ id: 'none' }, { id: 'test_laser', hipSpreadTierMod: -100 }],
-    GRIPS: [{ id: 'none' }, { id: 'test_grip', hipSpreadTierMod: 100 }] });
+    GRIPS: [{ id: 'none' }, { id: 'test_grip', hipSpreadTierMod: 100 }],
+    WEAPON_ATTS: { ...attachments.WEAPON_ATTS, ks18k: { ...attachments.WEAPON_ATTS.ks18k,
+      laser: ['test_laser'], grip: ['test_grip'] } } });
   try {
     const id = 'ks18k';
     assert.equal(build(id, { laser: 'test_laser' }).spread.hipStand[0], 0.208);
     assert.equal(build(id, { grip: 'test_grip' }).spread.hipStand[0], 7.4);
     assert.deepEqual(build(id, { laser: 'test_laser', grip: 'test_grip' }).spread, build(id).spread);
   } finally {
-    setAttachmentContext({ LASERS: attachments.LASERS, GRIPS: attachments.GRIPS });
+    setAttachmentContext({ LASERS: attachments.LASERS, GRIPS: attachments.GRIPS, WEAPON_ATTS: attachments.WEAPON_ATTS });
   }
 });
 
@@ -105,7 +107,8 @@ test('moving ADS uses each stored base and applies attachment shifts to that bas
   setAttachmentContext({ ...context, GRIPS: [...attachments.GRIPS,
     { id: 'test_shift', movingAdsSpreadTierMod: 1 },
     { id: 'test_clamp', movingAdsSpreadTierMod: 100 },
-  ] });
+  ], WEAPON_ATTS: { ...attachments.WEAPON_ATTS, ef88: { ...attachments.WEAPON_ATTS.ef88,
+    grip: [...attachments.WEAPON_ATTS.ef88.grip, 'test_shift', 'test_clamp'] } } });
   try {
     assert.deepEqual(applyAttachments(custom, atts).spread.adsMove, [0.43, 8]);
     assert.deepEqual(applyAttachments(custom, { ...atts, grip: 'test_shift' }).spread.adsMove, [0.32, 8]);

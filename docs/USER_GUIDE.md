@@ -9,8 +9,9 @@ older data and behavior and may not have the same controls.
 
 Select a class and weapon in the loadout panel, then select attachments, ammunition,
 magazine, and ergonomics. Menus are filtered to the weapon's supported selections.
-A combined rail slot can hold a laser, light, or grip; the corresponding separate
-control is disabled where that space is shared. A new weapon resets its build to
+A shared rail has one menu labeled **Laser / Light** or **Grip / Laser / Light**.
+Select one device for that rail; selecting another replaces it. Separate controls
+for the same rail are hidden. Combo laser/light devices count as one attachment. A new weapon resets its build to
 that weapon's recorded defaults.
 
 Attachment labels include point costs. **More than 100 points produces a warning;

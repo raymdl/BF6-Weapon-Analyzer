@@ -1,0 +1,137 @@
+{
+  "scope": "Additional source identities only; numeric modifiers are generated from current XML.",
+  "rows": [
+    {
+      "weapon": "b36a4",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_BTM_UGL_Mount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "l85a3",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_BTM_UGL_Mount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "m16a4",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_BTM_UGLMount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "m277",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_BTM_UGL_Mount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "m417a2",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_BTM_UGL_Mount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "m433",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_BTM_UGL_Mount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "m4a1",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_BTM_UGLMount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "sor556",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "attachmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_BTM_UGL_Mount.xml",
+      "basis": "Explicit UGL mount attachment and root ability progression; handling effects are read from the graph."
+    },
+    {
+      "weapon": "m1014",
+      "slot": "mag",
+      "attachment": "4_rnd",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_MAG_Compact1.xml",
+      "basis": "Identity resolved in frosty-magazine-identity-review-2026-09-07.json using capture names, point costs and speedloader variant operands."
+    },
+    {
+      "weapon": "m1014",
+      "slot": "mag",
+      "attachment": "4_fast",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_MAG_Compact2.xml",
+      "basis": "Identity resolved in frosty-magazine-identity-review-2026-09-07.json using capture names, point costs and speedloader variant operands."
+    },
+    {
+      "weapon": "m87a1",
+      "slot": "mag",
+      "attachment": "5_rnd",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_MAG_Compact1.xml",
+      "basis": "Identity resolved in frosty-magazine-identity-review-2026-09-07.json using capture names, point costs and speedloader variant operands."
+    },
+    {
+      "weapon": "m87a1",
+      "slot": "mag",
+      "attachment": "5_fast",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_MAG_Compact3.xml",
+      "basis": "Identity resolved in frosty-magazine-identity-review-2026-09-07.json using capture names, point costs and speedloader variant operands."
+    },
+    {
+      "weapon": "ak205",
+      "internalId": "AK205",
+      "slot": "grip",
+      "attachment": "underslung_mount",
+      "abilityProgression": "Common/Hardware/Weapons/Carbine/AK205/U_PRG_AK205_BTM_UGLMount",
+      "basis": "Root-listed ability progression; standalone attachment XML is absent. No point cost or attachment record is fabricated."
+    }
+  ],
+  "excludedSourceAttachments": [
+    {
+      "attachmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_RGT_LA-23IRSP.xml",
+      "reason": "IR_SP infrared single-player variant is not the normal 5 mW Green selection."
+    },
+    {
+      "attachmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_TOP_LA-23IRSP.xml",
+      "reason": "IR_SP infrared single-player variant is not the normal 5 mW Green selection."
+    }
+  ],
+  "reviewedUnboundSelectors": [
+    {
+      "weapon": "drsiar",
+      "internalId": "M27IAR",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_ZenitcoRK2.xml",
+      "selector": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical03_W20",
+        "guid": "bce0e7b7-6076-4f31-b84d-cd016a99793b"
+      }
+    },
+    {
+      "weapon": "rpk74m",
+      "internalId": "RPK74M",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact2.xml",
+      "selector": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10",
+        "guid": "8c9b2a1b-b5c7-4e49-8ab0-0c1e7fe136ed"
+      }
+    },
+    {
+      "weapon": "rpk74m",
+      "internalId": "RPK74M",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact1.xml",
+      "selector": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPKM_W05",
+        "guid": "89c6dcd7-ec28-4e79-8744-b0a04e1711b1"
+      }
+    }
+  ],
+  "unboundSelectorReview": "frosty-handling-unbound-selector-review.json"
+}

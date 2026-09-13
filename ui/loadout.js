@@ -1,5 +1,5 @@
 import { ATTACHMENT_SLOT_KEYS } from '../sim/attachments.js';
-import { availableAttachments, computeAttPts, getAttPts, attDisplayName, isAssumedAtt } from '../sim/loadout.js';
+import { availableAttachments, attachmentSlots, computeAttPts, getAttPts, attDisplayName, isAssumedAtt } from '../sim/loadout.js';
 
 let selectSequence = 0;
 
@@ -63,23 +63,24 @@ export function renderAttachmentSection({
   };
 
   const handleChange = (key, value) => {
-    atts[key] = value;
+    if (key === 'rail') {
+      const [type, id] = value.split(':');
+      atts.rail = value === 'none' ? null : { type, id };
+    } else {
+      atts[key] = value;
+    }
     updateAttTotal(containerId, atts, weapon, data);
     onChange({ key, value });
   };
 
-  ATTACHMENT_SLOT_KEYS.forEach(({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
-    // Combined laser/light slot: light dropdown is disabled (options live in Laser)
-    if (key === 'light' && wa?.laserLightCombined) {
-      appendSelectRow(container, { label, value: 'none', options: [{ id: 'none', text: 'None' }], onChange: () => {}, disabled: true });
-      return;
-    }
-    // Combined grip+laser+light slot: grip dropdown is disabled (options live in Laser)
-    if (key === 'grip' && wa?.laserGripLightCombined) {
-      appendSelectRow(container, { label, value: 'none', options: [{ id: 'none', text: 'None' }], onChange: () => {}, disabled: true });
-      return;
-    }
-
+  const mounts = attachmentSlots(weapon, data);
+  const slots = ATTACHMENT_SLOT_KEYS.flatMap(slot => {
+    if (!weapon || !['grip', 'laser', 'light'].includes(slot.key)) return [slot];
+    if (slot.key === 'laser' && mounts.rail) return [{ ...slot, key: 'rail',
+      label: mounts.rail.accepts.map(type => type[0].toUpperCase() + type.slice(1)).join(' / ') }];
+    return mounts[slot.key] ? [slot] : [];
+  });
+  slots.forEach(({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
     const source = attDataSource[dataKey];
     if (!weapon || !source) {
       appendSelectRow(container, {
@@ -116,11 +117,11 @@ export function renderAttachmentSection({
 
     appendSelectRow(container, {
       label,
-      value: atts[key],
+      value: key === 'rail' ? (atts.rail ? `${atts.rail.type}:${atts.rail.id}` : 'none') : atts[key],
       options: visible.map(a => {
         const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a);
         const name = attDisplayName(a);
-        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
+        return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
       }),
       onChange: value => handleChange(key, value),
     });

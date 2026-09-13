@@ -1,0 +1,107 @@
+{
+  "scope": "Before migration: changing source bases and magazine modifiers together preserves every current M60/PW7A2 magazine result. Values use default other attachments.",
+  "rows": [
+    {
+      "weapon": "m60",
+      "mag": "50_rnd",
+      "barrel": "heavy",
+      "before": {
+        "adsMs": 366.667,
+        "adsMove": 0.6
+      },
+      "modifiersOnly": {
+        "adsMs": 300,
+        "adsMove": 0.745
+      },
+      "baseAndModifiers": {
+        "adsMs": 366.667,
+        "adsMove": 0.6
+      }
+    },
+    {
+      "weapon": "m60",
+      "mag": "100_rnd",
+      "barrel": "heavy",
+      "before": {
+        "adsMs": 433.334,
+        "adsMove": 0.475
+      },
+      "modifiersOnly": {
+        "adsMs": 366.667,
+        "adsMove": 0.6
+      },
+      "baseAndModifiers": {
+        "adsMs": 433.334,
+        "adsMove": 0.475
+      }
+    },
+    {
+      "weapon": "pw7a2",
+      "mag": "20_rnd",
+      "barrel": "basic",
+      "before": {
+        "adsMs": 166.667,
+        "adsMove": 0.91
+      },
+      "modifiersOnly": {
+        "adsMs": 166.667,
+        "adsMove": 1
+      },
+      "baseAndModifiers": {
+        "adsMs": 166.667,
+        "adsMove": 0.91
+      }
+    },
+    {
+      "weapon": "pw7a2",
+      "mag": "30_rnd",
+      "barrel": "basic",
+      "before": {
+        "adsMs": 166.667,
+        "adsMove": 0.745
+      },
+      "modifiersOnly": {
+        "adsMs": 166.667,
+        "adsMove": 0.91
+      },
+      "baseAndModifiers": {
+        "adsMs": 166.667,
+        "adsMove": 0.745
+      }
+    },
+    {
+      "weapon": "pw7a2",
+      "mag": "30_fast",
+      "barrel": "basic",
+      "before": {
+        "adsMs": 166.667,
+        "adsMove": 0.745
+      },
+      "modifiersOnly": {
+        "adsMs": 166.667,
+        "adsMove": 0.91
+      },
+      "baseAndModifiers": {
+        "adsMs": 166.667,
+        "adsMove": 0.745
+      }
+    },
+    {
+      "weapon": "pw7a2",
+      "mag": "40_rnd",
+      "barrel": "basic",
+      "before": {
+        "adsMs": 166.667,
+        "adsMove": 0.67
+      },
+      "modifiersOnly": {
+        "adsMs": 166.667,
+        "adsMove": 0.825
+      },
+      "baseAndModifiers": {
+        "adsMs": 166.667,
+        "adsMove": 0.67
+      }
+    }
+  ]
+}

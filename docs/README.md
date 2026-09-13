@@ -2,7 +2,8 @@
 
 **Current implementation reference.** Reviewed on 13 September 2026 against the
 current data and runtime modules, including the Frosty hit-zone, ballistics,
-collateral, spread-distribution and light updates. Later changes should update
+collateral, spread-distribution, light, per-weapon attachment generation and
+shared-rail updates. Later changes should update
 the affected guide alongside the implementation. Source-version
 labels describe evidence provenance, not an independent certification of all game behavior.
 
@@ -11,7 +12,8 @@ exceptions, Heavy ADS factors, light hipfire factors, controller scaling and
 source-exponent sampling. [Damage and ballistics](DAMAGE_BALLISTICS.md) covers
 per-weapon/ammo hit zones, manual-cycle timing, and explicit projectile selection.
 The [attachment model](ATTACHMENT_MODEL.md) explains sway percentages, spotting,
-regeneration and collateral. Source values and native arithmetic remain distinct.
+regeneration, collateral, typed shared rails, generated handling, sniper brakes,
+Linear Comp/burst recoil and belt-box spread uncertainty. Source values and native arithmetic remain distinct.
 
 ## Folder roles
 

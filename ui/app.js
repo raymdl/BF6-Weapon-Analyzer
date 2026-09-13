@@ -55,7 +55,7 @@ const { AMMO, WEAPON_AMMO } = _ammo;
 const LOADOUT_DATA = {
   SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
   WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
-  AMMO, WEAPON_AMMO,
+  AMMO, WEAPON_AMMO, WEAPON_ATTS,
 };
 
 const byId = items => Object.fromEntries(items.map(a => [a.id, a]));
@@ -235,7 +235,7 @@ setSimContext({
 });
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
-  AMMO, WEAPON_AMMO,
+  AMMO, WEAPON_AMMO, WEAPON_ATTS,
   RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
   COLLATERAL_MULT_OVERRIDE, HIT_ZONES: _hitZones,
   MOVING_ACC_TIERS,
@@ -1962,9 +1962,7 @@ function renderAttachmentStats(loadouts) {
       ATT_BY_ID.SIGHTS[atts.sight],
       ATT_BY_ID.MUZZLES[atts.muzzle],
       ATT_BY_ID.BARRELS[atts.barrel],
-      ATT_BY_ID.GRIPS[atts.grip],
-      ATT_BY_ID.LASERS[atts.laser] ?? ATT_BY_ID.GRIPS[atts.laser] ?? ATT_BY_ID.LIGHTS[atts.laser],
-      ATT_BY_ID.LIGHTS[atts.light],
+      ...Object.values(Loadout.resolveMountAttachments(atts, weapon, _atts)),
       ATT_BY_ID.AMMO[atts.ammo],
       ATT_BY_ID.ERGOS[atts.ergo],
       wm?.mags?.[atts.mag ?? wm.def],
@@ -2273,7 +2271,7 @@ function renderRecoil({ plotOnly = false } = {}) {
         const varLines = [];
         {
           const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
-          const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
+          const grp = Loadout.resolveMountAttachments(atts, selW, _atts).grip;
           const ergo = ATT_BY_ID.ERGOS[atts.ergo ?? 'none'] ?? ERGOS[0];
           // Tier ladder: dirVar × dirVarMult ^ (dirVarExp + attachment tier mods)
           const adsG = selW.recoil?.[aim];
@@ -2327,7 +2325,9 @@ function renderRecoil({ plotOnly = false } = {}) {
         const mk = o => ({ ...defaultAttsForWeapon(selW), ...o });
         const ra = w => selectedRecoilAmountBeforePlatformFor(w);
         const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
-        const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
+        const grp = Loadout.resolveMountAttachments(atts, selW, _atts).grip;
+        const gripSelection = Loadout.attachmentSlots(selW, _atts).rail?.accepts.includes('grip')
+          ? { rail: grp.id === 'none' ? null : { type: 'grip', id: grp.id } } : { grip: grp.id };
         const ammoObj = ATT_BY_ID.AMMO[atts.ammo ?? 'standard'] ?? AMMO[0];
         const ergoObj = ATT_BY_ID.ERGOS[atts.ergo ?? 'none'] ?? ERGOS[0];
         const baseRecoil = ra(applyAttachments(selW, mk({})));
@@ -2338,12 +2338,12 @@ function renderRecoil({ plotOnly = false } = {}) {
           if (Math.abs(d) >= 0.005) { lines.push(`<div class="rc-tt-row"><span>${lbl}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`); prev = r; }
         };
         if (muz.id !== 'none') try_(muz.name, { muzzle: muz.id });
-        if (grp.id !== 'none') try_(grp.name, { muzzle: muz.id, grip: grp.id });
+        if (grp.id !== 'none') try_(grp.name, { muzzle: muz.id, ...gripSelection });
         const defaultAmmo = WEAPON_AMMO[selW.id]?.def ?? 'standard';
         if ((atts.ammo ?? 'standard') !== defaultAmmo || (ammoObj.adsRecoilTierMod ?? 0) !== 0)
-          try_(ammoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id });
+          try_(ammoObj.name, { muzzle: muz.id, ...gripSelection, ammo: ammoObj.id });
         if (ergoObj.id !== 'none' || (ergoObj.adsRecoilTierMod ?? 0) !== 0)
-          try_(ergoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id, ergo: ergoObj.id });
+          try_(ergoObj.name, { muzzle: muz.id, ...gripSelection, ammo: ammoObj.id, ergo: ergoObj.id });
         if (state.recoil.platform === 'console') {
           const after = +(prev * CONSOLE_RECOIL_MULT).toFixed(2), d = +(after - prev).toFixed(2);
           lines.push(`<div class="rc-tt-row"><span>Console Recoil Reduction</span><span class="rc-tt-neg">−${Math.abs(d).toFixed(2)}°</span></div>`);

@@ -7,6 +7,28 @@ The authoritative composition function is
 owns defaults, availability and cost. Keeping selection and calculation separate
 lets the UI and URL decoder use the same supported choices.
 
+## Grip, laser and light slots
+
+Each `WEAPON_ATTS` record defines `slots` separately from its category availability
+lists. A shared mount uses `rail: { accepts: ['grip', 'laser', 'light'] }` or
+`rail: { accepts: ['laser', 'light'] }`. Separate mounts use their own slot keys,
+for example `grip: { accepts: ['grip'] }`. Grips always remain in the `grip`
+availability list and `GRIPS` catalog, even when they occupy a shared rail.
+
+A shared selection is `atts.rail = { type: 'grip', id: 'canted_stubby' }`;
+`null` means empty. The category keys consumed by that rail are absent from the
+loadout. Separate mounts retain their existing string selections.
+`resolveMountAttachments()` checks slot compatibility and weapon availability,
+then merges the weapon-specific modifiers. Effects, point totals, labels and
+assumption markers use these resolved records. A combo device is one selection
+with one point cost.
+
+`normalizeMountAtts()` converts legacy shared selections from `atts.laser`.
+An explicit `rail` value takes priority, including `null`; stale category values
+cannot add another attachment. The share codec retains the existing `L`, `R`
+and `H` tokens and catalog indices, and converts old links into the new state.
+Weapon changes reset the slot selections.
+
 ## From selection to effective build
 
 ```mermaid
@@ -23,10 +45,10 @@ This is a dependency overview; axes can be evaluated independently. Modifier
 composition is not an arbitrary sequence of mutating the weapon once per dropdown.
 The resolver starts from the base record and combines the applicable fields once.
 
-Blank selections have nine keys: sight, muzzle, barrel, grip, laser, light, ammo,
-mag and ergo. Weapon defaults supply barrel/ammo/magazine IDs. Combined rail slots
-resolve a selected grip or light stored in `atts.laser`; neutral laser/light/grip
-records fill unused branches. Costs count the actual shared-slot choice once.
+Blank selections have sight, muzzle, barrel, grip, laser, light, ammo, mag and
+ergo keys. Weapon defaults supply barrel/ammo/magazine IDs and replace shared
+category keys with a typed `rail` selection; neutral laser/light/grip records
+fill unused branches. Costs count the actual shared-slot choice once.
 Sight costs may be overridden per weapon; ammo costs are per-weapon; magazines
 carry their own costs. The UI warns above 100 points without rejecting the build.
 
@@ -43,6 +65,32 @@ carry their own costs. The UI warns above 100 points without rejecting the build
 | Moving ADS minimum | Shared base plus grip/laser/barrel/magazine modifiers selects the moving-spread row. |
 | ADS time / movement | Resolve reviewed bases with the axis-specific signed modifier equations in the ladder guide. |
 | Sprint / deploy / undeploy | Sum timing effects independently across magazine, grip, ergo, barrel, muzzle, laser, light and ammo; clamp once. Deploy/undeploy share their selected index. |
+
+Barrel ADS steps are generated per weapon in `BARRELS[].adsTimeTierModByWeapon`.
+Run `python scripts/frosty-barrel-ads.py --root <Frosty-export-root>` to update them,
+or add `--check` to compare the catalog with current XML. The generator follows
+ability selectors into WB animation/FOV effects and reads the signed index field.
+Equal animation/FOV effects count once; no linked effect contributes zero. It
+does not use the old comparison's numeric values or combine the separate GS route.
+The identity map must cover every supported barrel selection. Conflicting source
+values stop generation. [Generated evidence](../reference-data/provenance/frosty-barrel-ads-generated.json)
+retains source references and hashes. The current export has 234 source records
+for 233 unique selections, because KTS100 Short has two agreeing source records.
+M4A1 Basic remains 200 ms; both VSSM barrels remain 250 ms with other defaults.
+See the [other-attachment review](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
+for further source-generation candidates and limits.
+
+Grip handling and laser spread use per-weapon `frostyModifiers` in their catalog
+records. The resolver merges these after selecting the normal or combined rail
+slot. Magazine handling is generated into the existing per-weapon magazine fields.
+Run `python scripts/frosty-attachment-handling.py --root <Frosty-export-root>`;
+`--check` compares without writing and `--review` writes evidence only. The current
+conversion generates 5,491 fields and three source base indices. All 1,488 handling
+selections have source identities; two unresolved moving-spread fields retain their prior values and carry field-level assumption notes.
+M60/PW7A2 bases and magazine modifiers are converted together so their calculated
+ADS times and movement speeds stay unchanged. The generator stops if a previously generated field loses its
+source mapping. The linked review identifies these exceptions and the corrected
+CQB/Lightened labels in the older audit.
 
 There is no universal rule that a named attachment affects every aim state or every
 recovery phase. Heavy-type barrels use source ADS increment ×0.666667, firing
@@ -61,6 +109,41 @@ both supported and selected, their factors multiply. The model treats selected
 lights as active; native switching and operation order remain unverified. The
 idle offset operand is retained but unused. This replaces the old assumed +15%
 recovery boost and activates the combo lights' hipfire effect.
+
+## Source review of Linear Comp and burst attachments
+
+`scripts/frosty-assumption-review.py --root <Frosty-export-root> --apply` generates
+four recoil tier fields for Linear Comp and the three burst attachment records.
+Use `--check` to compare without writing. All 53 supported weapon/attachment
+pairs are traced from the attachment ability; burst effects additionally follow
+the nested fire-mode selector into that weapon's GS bindings.
+
+Linear Comp has amount -1 and variation +3 in ADS and hip. Ordinary Burst Training
+and SL9 Burst Mode have net amount 0 and variation +3 in both aims. GRT-BC Burst
+Training has net amount +1 and variation +3. These source-backed fields replace
+the old whole-record assumption flags; the newly applied hip effects do not
+change the established ADS effects or burst cadence.
+
+[Field evidence](../reference-data/provenance/frosty-assumption-review.json)
+records operation, source status, simulation support, XML path, GUID, field path,
+raw operand, and hashes separately. The existing burst cadence and the native
+recoil/recovery equation are not proved by this modifier trace. An additional
+`GRM_AutoIdentifier_P00` scalar on five burst weapons remains retained and
+unmodeled; its numeric value is not silently converted into an index step.
+
+## Belt-box moving-ADS spread
+
+M240L 75 Rnd has a linked magazine modifier of +1 moving-spread index. With
+other spread modifiers absent, minimum moving-ADS spread changes from 0.32 to
+0.22 degrees; its 50- and 100-round boxes have no magazine spread shift.
+M60 has 50- and 100-round options in the reviewed export, not a 75-round box.
+
+L110 and M123K 200 Rnd retain an estimated -1 index (0.32 to 0.43 degrees).
+Their descriptions state reduced accuracy while moving in ADS, but neither
+weapon has a linked magazine spread operand. The shared table contains 0.43;
+its presence does not prove selection. The candidate `GDM_Array_ADSMoveDispersion_MAG_M10`
+has a zero operand and is not linked by either weapon. Their handling penalties
+are source-backed; this spread magnitude remains a field-level assumption.
 
 ## Tactical reload and magazine capacity
 
@@ -158,8 +241,7 @@ and [validation and assumptions](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md).
 laser visibility are descriptors; there is no separate camera/sway/visibility model.
 
 `assumed:true` or nonempty `assumedFields` marks a selectable effect as assumed.
-Old annotation keys can survive renames, so check the current consumer as well as
-the label. Combined laser records retain a hip recovery boost that is currently
-not read from that slot; standalone resolved lights do apply their boost. That
-limitation and deferred source-native alternatives are documented in
-[model limitations](MODEL_LIMITATIONS.md), not silently promoted by this guide.
+Field-level notes identify the uncertain effect without marking every field as
+unknown. Shared-slot selections use the same assumption detection and effect
+resolver as separate slots. Combo lights apply their source hipfire factors.
+See [model limitations](MODEL_LIMITATIONS.md) for unresolved native behavior.

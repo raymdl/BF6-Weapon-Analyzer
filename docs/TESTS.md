@@ -33,7 +33,7 @@ All paths in this table are under `scripts/`.
 
 | Test file | Distinct behavior protected |
 |---|---|
-| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | ADS/hip composition, 17 source Bolt muzzle exceptions, Smooth/Heavy behavior, light hip growth/recovery and combined slots, collateral clamping, sway, spotting, regeneration, and base/catalog non-mutation. |
+| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Generated handling and burst hip effects, shared-rail replacement/points/assumptions, ADS/hip composition, 17 source Bolt muzzle exceptions, Smooth/Heavy behavior, light hip growth/recovery and combined slots, collateral clamping, sway, spotting, regeneration, and base/catalog non-mutation. |
 | [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Explicit projectile selection for 63 weapons and 328 ammo choices, source coefficients, and flight/trajectory behavior. |
 | [barrel-velocity.test.mjs](../scripts/barrel-velocity.test.mjs) | Tier precedence, compatibility multiplier, selectable-barrel equivalence and display rounding. |
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
@@ -41,7 +41,7 @@ All paths in this table are under `scripts/`.
 | [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | No estimated or donor weapons, Frosty-sourced BROD 3/EF88/VSSM values, cross-file coverage and compatibility cases. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |
 | [recoil.test.mjs](../scripts/recoil.test.mjs) | Analytic recovery, timed delivery, overlapping impulses, clock reset/burst pauses, compensation, aim-state factors, and deterministic seeds. Attachment tests also cover Smooth duration and receiver composition without base mutation. |
-| [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults and weapon-specific attachment validation. |
+| [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults, every shared-rail option with indexed/legacy tokens, and weapon-specific attachment validation. |
 | [source-arrays.test.mjs](../scripts/source-arrays.test.mjs) | Exact row order/precision, hip/shotgun indexing, moving/ADS arrays and composition boundaries. |
 | [spread-bar-scale.test.mjs](../scripts/spread-bar-scale.test.mjs) | Default and valid single-attachment spread outputs fit the shared axis across aim/stance contexts. |
 | [spread-distribution.test.mjs](../scripts/spread-distribution.test.mjs) | Source exponents by aim/stance, uniform-area sampling, the Interdictor exception, and deterministic output. |
@@ -52,6 +52,11 @@ Tests protect the declared implementation and reviewed data decisions. They do n
 independently validate native game arithmetic, every possible attachment combination,
 real hitboxes, or visual correctness. Some files print an additional completion line;
 that is not an additional test layer.
+
+The four attachment-generator `--check` commands are listed in
+[maintenance](../MAINTENANCE.md#regenerate-attachment-modifiers). They need the
+local Frosty export and are separate from normal CI. They compare source-derived
+fields with the catalog; they do not establish native runtime behavior.
 
 ## Reference and research checks
 

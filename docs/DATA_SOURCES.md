@@ -27,6 +27,20 @@ field identities and comparison evidence are indexed in
 
 [Documentation index](README.md) · [Data reference](DATA_REFERENCE.md) · [Stat ladders](STAT_LADDERS.md)
 
+## Attachment source generation
+
+Four generators now read current XML operands for barrel ADS, grip/laser/magazine
+handling, sniper brake amount steps, and Linear Comp/burst recoil. Retained audits
+supply identities and source joins, not replacement numeric values. Generated
+reports retain field paths, GUIDs and hashes. The burst review follows nested
+fire-mode selectors; field source status and simulation support are separate.
+
+The [attachment generation report](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
+records 233 unique barrel selections, 1,488 handling selections, 16 sniper brake
+pairs and 53 Linear Comp/burst pairs. Two belt-box spread fields remain estimated.
+The [maintenance workflow](../MAINTENANCE.md#regenerate-attachment-modifiers)
+provides the commands. Source-only ability branches do not establish availability.
+
 ## What the current baseline means
 
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json) identifies

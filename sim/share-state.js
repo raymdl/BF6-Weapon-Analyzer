@@ -1,4 +1,4 @@
-import { availableAttachments } from './loadout.js';
+import { availableAttachments, attachmentSlots, normalizeMountAtts } from './loadout.js';
 
 export const TARGET_DEFAULT_DISTANCE = 20;
 
@@ -33,12 +33,14 @@ export function createShareCodec({
 
   const data = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
     WEAPON_MAG, WEAPON_ERGO, WEAPON_ATTS, WEAPON_AMMO };
-  const allowed = (weapon, key, id) => availableAttachments(weapon, key, data).some(a => a.id === id);
+  const allowed = (weapon, key, id) => availableAttachments(weapon,
+    key === 'laser' && attachmentSlots(weapon, data).rail ? 'rail' : key, data).some(a => a.id === id);
   const catIdx = (arr, id) => arr.findIndex(item => item.id === id);
   const magKeysFor = weapon => Object.keys(WEAPON_MAG[weapon.id]?.mags ?? {});
 
   function encodeAtts(weapon, atts) {
     const defaults = defaultAttsForWeapon(weapon);
+    atts = normalizeMountAtts(atts, weapon, data);
     const out = [];
     const emit = (key, arr, id) => {
       const index = catIdx(arr, id);
@@ -48,11 +50,11 @@ export function createShareCodec({
     if (atts.muzzle !== defaults.muzzle) emit('M', MUZZLES, atts.muzzle);
     if (atts.barrel !== defaults.barrel) emit('B', BARRELS, atts.barrel);
     if (atts.grip !== defaults.grip) emit('G', GRIPS, atts.grip);
-    if (atts.laser !== defaults.laser) {
-      if (catIdx(LASERS, atts.laser) >= 0) emit('L', LASERS, atts.laser);
-      else if (catIdx(GRIPS, atts.laser) >= 0) emit('R', GRIPS, atts.laser);
-      else if (catIdx(LIGHTS, atts.laser) >= 0) emit('H', LIGHTS, atts.laser);
-    }
+    if (atts.rail) {
+      const { type, id } = atts.rail;
+      const [token, catalog] = { grip: ['R', GRIPS], laser: ['L', LASERS], light: ['H', LIGHTS] }[type];
+      emit(token, catalog, id);
+    } else if (atts.laser !== defaults.laser) emit('L', LASERS, atts.laser);
     if (atts.light !== defaults.light) emit('T', LIGHTS, atts.light);
     if (atts.ammo !== defaults.ammo) emit('A', AMMO, atts.ammo);
     if (atts.ergo !== defaults.ergo) emit('E', ERGOS, atts.ergo);
@@ -64,19 +66,21 @@ export function createShareCodec({
   }
 
   function decodeAttsLegacy(weapon, value) {
-    const atts = defaultAttsForWeapon(weapon);
+    const atts = { ...defaultAttsForWeapon(weapon) };
+    delete atts.rail;
     value.split('-').forEach((id, index) => {
       const key = ATT_ORDER[index];
       if (!key || id == null) return;
       if (allowed(weapon, key, id)) atts[key] = id;
     });
-    return atts;
+    return normalizeMountAtts(atts, weapon, data);
   }
 
   function decodeAtts(weapon, value) {
     if (!value) return defaultAttsForWeapon(weapon);
     if (value.includes('-')) return decodeAttsLegacy(weapon, value);
-    const atts = defaultAttsForWeapon(weapon);
+    const atts = { ...defaultAttsForWeapon(weapon) };
+    delete atts.rail;
     const magKeys = magKeysFor(weapon);
     const set = (arr, index, slot) => {
       if (arr[index] && allowed(weapon, slot, arr[index].id)) atts[slot] = arr[index].id;
@@ -98,7 +102,7 @@ export function createShareCodec({
       else if (key === 'E') set(ERGOS, index, 'ergo');
       else if (key === 'K' && magKeys[index]) atts.mag = magKeys[index];
     }
-    return atts;
+    return normalizeMountAtts(atts, weapon, data);
   }
 
   function encodeState(state, selectedRecoilShotCount = () => 20) {

@@ -96,6 +96,16 @@ columns agree; its distinct fourth column remains in evidence rather than becomi
 extra tiers. Each weapon stores its base minimum in `spread.adsMove[0]`. Attachment
 shifts select another row and update that bound; there is no global base override.
 
+M240L 75 Rnd adds one moving-spread index: 0.32 to 0.22 degrees with no other
+spread modifiers. L110/M123K 200 Rnd retain an estimated negative step to 0.43;
+no linked source operand establishes that penalty. See the
+[belt-box evidence boundary](ATTACHMENT_MODEL.md#belt-box-moving-ads-spread).
+
+Barrel ADS terms use the selected weapon's `adsTimeTierModByWeapon` value.
+Grip/laser terms use their resolved `frostyModifiers`; magazine terms retain
+their axis-specific signs. M60 and PW7A2 base coordinates and magazine shifts
+were converted together, preserving their calculated ADS time and movement speed.
+
 The FZT source collection contains 80 rows across transition families. These eight
 ADS-in positions are separate from ADS-out and AZT main/alternate animation timings.
 ADS-out's rounded values are 400/333/267/233/200/167/133/100 ms; they are retained
@@ -103,7 +113,8 @@ research evidence and are not a second runtime ADS-in ladder.
 
 `defAds` and `defAms` are reviewed/normalized base coordinates, not a guarantee that
 all raw source defaults were imported without composition adjustments. VSSM's
-factory suppressed-barrel ADS question remains open. Displayed ADS movement uses
+WB barrel modifiers are zero; both supported barrels retain 250 ms with defaults.
+The conflicting GS route and native timing remain unresolved. Displayed ADS movement uses
 two decimals after float32 conversion; calculations retain these source decimals.
 
 ## Hip spread: all eighteen rows and seven columns

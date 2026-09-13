@@ -1,3 +1,4 @@
+import { resolveMountAttachments } from './loadout.js';
 import { resolveHitMultipliers } from './damage.js';
 
 /**
@@ -14,7 +15,7 @@ import { resolveHitMultipliers } from './damage.js';
  *   // After fetching data/attachments.json, data/ammo.json, data/balance_tables.json:
  *   setAttachmentContext({
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
- *     AMMO,
+ *     AMMO, WEAPON_ATTS,
  *     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
  *     COLLATERAL_MULT_OVERRIDE, HIT_ZONES,
  *     MOVING_ACC_TIERS,
@@ -311,16 +312,10 @@ export function applyAttachments(w, atts) {
 
   const muzzleBase = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
   const muz = { ...muzzleBase, ...muzzleBase.weaponOverrides?.[w.id] };
-  const bar = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
+  const barrelBase = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
+  const bar = { ...barrelBase, adsTimeTierMod: barrelBase.adsTimeTierModByWeapon?.[w.id] ?? 0 };
   const velocityResolution = resolveBarrelVelocity({ barData: bar });
-  // Combined slot: atts.laser may hold a grip or light ID for weapons like VZ.61/GRT-BC/SL9
-  const laserIsGrip  = !LASERS_BY_ID[atts.laser] && !!GRIPS_BY_ID[atts.laser];
-  const laserIsLight = !LASERS_BY_ID[atts.laser] && !laserIsGrip && !!_ctx.LIGHTS_BY_ID[atts.laser];
-  const grp = laserIsGrip ? GRIPS_BY_ID[atts.laser]  : (GRIPS_BY_ID[atts.grip]  ?? GRIPS[0]);
-  const las = laserIsGrip ? LASERS[0]                  : (LASERS_BY_ID[atts.laser] ?? LASERS[0]);
-  const lit = laserIsLight
-    ? _ctx.LIGHTS_BY_ID[atts.laser]
-    : (_ctx.LIGHTS_BY_ID[atts.light] ?? _ctx.LIGHTS[0]);
+  const { grip: grp, laser: las, light: lit } = resolveMountAttachments(atts, w, _ctx);
   const ammoBase = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
   const ammoType = { ...ammoBase, ..._ctx.WEAPON_AMMO?.[w.id]?.effectOverrides?.[ammoBase.id] };
   const projectile = _ctx.WEAPON_AMMO?.[w.id]?.projectileOverrides?.[ammoType.id];

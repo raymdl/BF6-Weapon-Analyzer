@@ -42,6 +42,12 @@ The console option uses the source 0.8836 amount factor. These inputs improve th
 not establish the native engine formulas. See [recoil and spread](docs/RECOIL_SPREAD_MODEL.md)
 for the attachment exceptions, formulas, and evidence limits.
 
+Attachment handling now uses generated per-weapon Frosty modifiers. Shared
+grip/laser/light rails use one menu and retain compatibility with existing links.
+The [attachment guide](docs/ATTACHMENT_MODEL.md) covers barrel ADS timing,
+sniper brake steps, Linear Comp/burst recoil and the remaining belt-box spread
+estimates. Source-backed modifiers do not establish native simulation formulas.
+
 ## Run locally
 
 From the repository root, run `serve.bat` on Windows or:

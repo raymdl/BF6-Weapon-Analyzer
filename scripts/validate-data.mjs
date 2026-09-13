@@ -193,17 +193,28 @@ const lightsSet = new Set((attachments.LIGHTS ?? []).map(a => a.id));
 
 for (const [weaponId, weaponAtts] of Object.entries(attachments.WEAPON_ATTS)) {
   if (!weaponIds.has(weaponId)) fail(`WEAPON_ATTS references unknown weapon ${weaponId}`);
+  const mountedTypes = new Set();
+  if (!weaponAtts.slots) fail(`${weaponId}: missing grip/laser/light slot definitions`);
+  for (const [slot, definition] of Object.entries(weaponAtts.slots ?? {})) {
+    if (!['grip', 'laser', 'light', 'rail'].includes(slot)
+        || !Array.isArray(definition.accepts) || !definition.accepts.length) {
+      fail(`${weaponId}: invalid slot definition ${slot}`);
+      continue;
+    }
+    for (const type of definition.accepts) {
+      if (!['grip', 'laser', 'light'].includes(type) || mountedTypes.has(type)
+          || (slot !== 'rail' && (type !== slot || definition.accepts.length !== 1))) {
+        fail(`${weaponId}: invalid or overlapping ${type} slot`);
+      }
+      mountedTypes.add(type);
+    }
+  }
+  for (const type of ['grip', 'laser', 'light']) {
+    if (weaponAtts[type]?.length && !mountedTypes.has(type)) fail(`${weaponId}: ${type} options have no slot`);
+  }
   for (const [slot, validIds] of Object.entries(attachmentSets)) {
-    // laserGripLightCombined: laser slot may contain grip or light IDs
-    // laserLightCombined: laser slot may contain light IDs
-    const extraIds = slot === 'laser'
-      ? new Set([
-          ...(weaponAtts.laserGripLightCombined ? attachmentSets.grip : []),
-          ...((weaponAtts.laserLightCombined || weaponAtts.laserGripLightCombined) ? lightsSet : []),
-        ])
-      : new Set();
     for (const id of weaponAtts[slot] ?? []) {
-      if (!validIds.has(id) && !extraIds.has(id)) fail(`${weaponId}: ${slot} references unknown attachment ${id}`);
+      if (!validIds.has(id)) fail(`${weaponId}: ${slot} references unknown attachment ${id}`);
     }
   }
   if (weaponAtts.barrelDef && !attachmentSets.barrel.has(weaponAtts.barrelDef)) {
@@ -217,8 +228,8 @@ for (const [weaponId, weaponAtts] of Object.entries(attachments.WEAPON_ATTS)) {
 // Every supported non-sidearm weapon must declare each attachment slot.
 // An explicit empty array means the weapon deliberately takes nothing in that
 // slot (e.g. USG-90 has no grip rail); an absent key means forgotten data.
-// Light (and for VZ.61-style weapons, grip) options live in the laser slot
-// when the combined-slot flags are set. The DB-12 legitimately has no light slot.
+// Shared-slot options remain in their category lists.
+// The DB-12 legitimately has no light slot.
 const LIGHT_SLOT_EXEMPT = new Set(['db12']);
 const REQUIRED_ATT_SLOTS = ['muzzle', 'barrel', 'laser', 'light', 'grip'];
 for (const weapon of weapons) {
@@ -226,8 +237,7 @@ for (const weapon of weapons) {
   const weaponAtts = attachments.WEAPON_ATTS[weapon.id];
   if (!weaponAtts) continue; // reported as missing WEAPON_ATTS below
   for (const slot of REQUIRED_ATT_SLOTS) {
-    if (slot === 'light' && (weaponAtts.laserLightCombined || weaponAtts.laserGripLightCombined || LIGHT_SLOT_EXEMPT.has(weapon.id))) continue;
-    if (slot === 'grip' && weaponAtts.laserGripLightCombined) continue;
+    if (slot === 'light' && LIGHT_SLOT_EXEMPT.has(weapon.id)) continue;
     if (!Array.isArray(weaponAtts[slot])) {
       fail(`${weapon.id}: ${slot} slot is missing from WEAPON_ATTS (use [] if the weapon takes none)`);
     }

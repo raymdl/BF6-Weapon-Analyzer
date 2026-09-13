@@ -57,11 +57,14 @@ Optional `distExpMove` overrides the exponent while moving (Interdictor ADS: 0.6
 
 ## Attachment and ammunition record fields
 
-Barrel `adsTimeTierMod` values match the linked Frosty WB animation/FOV ADS
-modifiers for all 234 supported barrel selections. Both VSSM barrels have zero
+Barrel `adsTimeTierModByWeapon[weaponId]` values are generated from linked Frosty
+WB animation/FOV ADS modifiers for 233 unique selections (234 source records). Both VSSM barrels have zero
 WB ADS contribution. The regular VSSM barrel's separate GS +1 index binding
 does not match its WB modifier route; these routes are not added together.
-See `reference-data/provenance/frosty-barrel-ads-2026-09-13.json` for both routes.
+See [generated barrel evidence](../reference-data/provenance/frosty-barrel-ads-generated.json)
+for current values and the earlier `frosty-barrel-ads-2026-09-13.json` for both routes.
+Grip and laser `frostyModifiers[weaponId]` override shared fields after selection.
+Magazine modifiers remain in each weapon's magazine records.
 
 Catalog entries use `id`, `name`, `pts` where applicable, and optional `noEffect`,
 `assumed`, or `assumedFields` annotations. An assumption annotation controls disclosure;
@@ -72,7 +75,7 @@ weapon's availability map. Supported effect families are:
 |---|---|
 | `adsRecoilTierMod`, `hipRecoilTierMod`, `adsRecoilVariationTierMod`, `hipRecoilVariationTierMod` | Integer exponent changes, separated by aim state. |
 | `adsRecoilDecayMult`, `hipRecoilDecayMult` | Recovery-factor multipliers for the selected aim state. Smooth uses 1.2, with 1.728 for mapped Bolt selections, within the assumed recovery equation. |
-| Muzzle `weaponOverrides[weaponId]` | Per-weapon fields merged over the selected muzzle record before effect composition. Contains source duration/recovery exceptions; does not change the shared catalog or base weapon. |
+| Muzzle `weaponOverrides[weaponId]` | Per-weapon fields merged over the selected muzzle record before effect composition. Contains source recoil amount and duration/recovery exceptions; does not change the shared catalog or base weapon. |
 | `adsSpreadDecayBoost` | Muzzle adjustment to the ADS firing recovery offset. |
 | `hipSpreadIncMult`, `hipSpreadFiringDecCoefMult`, `hipSpreadFiringDecOffsetMult`, `hipSpreadNotFiringDecOffsetMult` | Light/combo-light factors: 0.666667, 1.837117, 0.666667, 0.666667. Affect hipfire only; selected light and laser factors multiply. |
 | `hipSpreadIdleDecOffsetMult` | Retained light source operand 0.666667; no idle-state simulation consumes it. |
@@ -89,8 +92,10 @@ weapon's availability map. Supported effect families are:
 | `weaponSwayMult` | Muzzle/magazine sway amount factor, displayed relative to the default build; no optic/camera sway simulation. |
 | `collateralMult`, `healthRegenDelayAddS` | Legacy collateral fallback and source regeneration-delay addition. All supported collateral values instead resolve through the generated per-weapon map. No penetration/regen event simulation. |
 
-`WEAPON_ATTS[id]` supplies slot ID arrays, `barrelDef`, optional `sightPoints`,
-`laserLightCombined`, and `laserGripLightCombined`. `WEAPON_ERGO[id].avail` supplies
+`WEAPON_ATTS[id]` supplies category ID arrays, `barrelDef`, optional `sightPoints`,
+and explicit `slots` with accepted attachment types. Shared rails store a typed
+`atts.rail = { type, id }` selection or `null`; category lists retain their own
+attachment types. The former combined-slot flags are no longer used. `WEAPON_ERGO[id].avail` supplies
 selectable ergonomics. `WEAPON_MAG[id]` supplies `def`, ordered `mags`, `defAds`,
 `defAms`, `sprintRecoveryBaseIndex`, `deployBaseIndex`, and `deployTimeTable`.
 Magazine records add capacity `mag`, handling effects, reload fields, and optional

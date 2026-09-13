@@ -54,6 +54,14 @@ decimals. Thus a baked exponent must not be applied twice to an effective base.
 Amount tiers include supported grip, muzzle, ammunition and ergonomics effects;
 variation tiers include grip, muzzle and ergonomics effects.
 
+Six sniper rifles use source +6 ADS/hip amount steps on 16 supported brake
+selections. `scripts/frosty-sniper-brakes.py` generates these per-weapon muzzle
+overrides from the traced XML operands, preserving existing duration/recovery
+overrides. M2010 ESR with Single-Port Brake now computes 1.035 degrees ADS kick
+instead of 1.410. Tungsten amount steps are unchanged. See the
+[source rows](../reference-data/provenance/frosty-sniper-brakes-generated.json)
+for the exact weapon/brake selections.
+
 The ADS selection helpers scale the selected group against the effective ADS
 base, so these attachment outputs reach the recoil path. Hip recoil uses its own
 resolved group: the attachment resolver adds hip amount/variation tiers to that

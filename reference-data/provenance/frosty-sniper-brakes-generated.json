@@ -1,0 +1,442 @@
+{
+  "generatedBy": "scripts/frosty-sniper-brakes.py",
+  "trace": "frosty-attachment-full-pass-2026-09-06.json",
+  "traceSha256": "7da992af3513c83a53648325bbad2cb555e8c0ed079d46f7b2326f5a2ad37980",
+  "operandHashes": {
+    "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml": "004f27dc4363245c021fc37594bd74f8ef4fb3571e1004351879d816d087ace4"
+  },
+  "rows": [
+    {
+      "weapon": "interdictor",
+      "muzzle": "dp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_HTIMB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "l115",
+      "muzzle": "dp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_AWMDoublePortBrake.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "l115",
+      "muzzle": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_AWMSinglePortBrake.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "l115",
+      "muzzle": "comp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_TionMB58x24.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "m2010esr",
+      "muzzle": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_AACTitanMB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "m2010esr",
+      "muzzle": "comp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_LANTACDragonMB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "m2010esr",
+      "muzzle": "dp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_SIGTaperedMB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "miniscout",
+      "muzzle": "comp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_LANTACDragonMB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "miniscout",
+      "muzzle": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_RSMicroTactical.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "miniscout",
+      "muzzle": "dp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_SFSOCOM556MB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "psr",
+      "muzzle": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_AACTitanMB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "psr",
+      "muzzle": "dp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_Barrett2-portMB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "psr",
+      "muzzle": "comp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_TionMB58x24.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "sv98",
+      "muzzle": "tp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_DTKSV98MB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "sv98",
+      "muzzle": "comp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_SRVVJetMk2MB.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "weapon": "sv98",
+      "muzzle": "thread_prot",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_SV98ThreadProtector.xml",
+      "fields": {
+        "adsRecoilTierMod": 6,
+        "hipRecoilTierMod": 6
+      },
+      "operands": [
+        {
+          "aim": "ads",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        },
+        {
+          "aim": "hip",
+          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10.xml",
+          "guid": "899e78e5-9a27-466d-b77a-29227b8ce5ed",
+          "field": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+          "raw": "0x00000006",
+          "value": 6
+        }
+      ]
+    }
+  ]
+}

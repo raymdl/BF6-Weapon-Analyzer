@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "source": "BF6SDK reflection; hashed field names and CLR types, not native execution semantics",
+  "sourceFiles": [
+    {
+      "path": "Profiles/BF6SDK.dll",
+      "sha256": "475d13935b5dad7d9f8ed29e51b12fc38646a62f9dff6cfea0b42f3e37b3d935"
+    },
+    {
+      "path": "FrostySdk.dll",
+      "sha256": "d3ae3498dfa12af9bd885f2404ad9a12b091f67e2a5391b0c572ac2a73d43687"
+    }
+  ],
+  "types": {
+    "Class_032c7d25": {
+      "__Id": "FrostySdk.Ebx.CString",
+      "Field_7313f5d3": "FrostySdk.Ebx.Enum_16e6fa59",
+      "Field_2a5a28ee": "System.Collections.Generic.List`1[FrostySdk.Ebx.Enum_16e6fa59]",
+      "Field_8d007a2c": "FrostySdk.Ebx.Struct_9bc51bd0",
+      "Field_e8134251": "FrostySdk.Ebx.Struct_9bc51bd0",
+      "Field_3f680d24": "System.Int32",
+      "Field_9ca063e9": "System.Boolean",
+      "Field_96eb74f6": "System.Boolean",
+      "Field_d396a5f7": "FrostySdk.Ebx.Struct_9bc51bd0",
+      "__InstanceGuid": "FrostySdk.Ebx.AssetClassGuid"
+    },
+    "Class_10713bed": {
+      "__Id": "FrostySdk.Ebx.CString",
+      "Field_238b47d7": "FrostySdk.Ebx.PointerRef",
+      "Field_0baa9c2a": "FrostySdk.Ebx.Struct_9bc51bd0",
+      "Field_3f680d24": "System.Int32",
+      "Field_9ca063e9": "System.Boolean",
+      "Field_96eb74f6": "System.Boolean",
+      "Field_d396a5f7": "FrostySdk.Ebx.Struct_9bc51bd0",
+      "__InstanceGuid": "FrostySdk.Ebx.AssetClassGuid"
+    },
+    "Class_9dfbb158": {
+      "__Id": "FrostySdk.Ebx.CString",
+      "Field_1c85cbb1": "System.UInt32",
+      "Field_6d011165": "System.Guid",
+      "__InstanceGuid": "FrostySdk.Ebx.AssetClassGuid"
+    },
+    "Class_e30e403c": {
+      "__Id": "FrostySdk.Ebx.CString",
+      "Field_b574fa40": "System.Boolean",
+      "Field_b0057325": "System.Boolean",
+      "Field_93dd77b9": "System.Boolean",
+      "Field_6d011165": "System.Guid",
+      "__InstanceGuid": "FrostySdk.Ebx.AssetClassGuid"
+    },
+    "Class_bc0062dc": {
+      "__Id": "FrostySdk.Ebx.CString",
+      "Field_5aec774f": "FrostySdk.Ebx.PointerRef",
+      "Field_9d34093f": "FrostySdk.Ebx.CString",
+      "Field_de6f63b3": "System.UInt32",
+      "Field_32cf19f5": "System.Boolean",
+      "Field_0c59fa06": "FrostySdk.Ebx.CString",
+      "__InstanceGuid": "FrostySdk.Ebx.AssetClassGuid"
+    },
+    "Class_743a3ce0": {
+      "__Id": "FrostySdk.Ebx.CString",
+      "Field_9540bd8e": "FrostySdk.Ebx.Struct_d204f959",
+      "Field_94752c29": "FrostySdk.Ebx.Enum_da2995d6",
+      "Field_9ca063e9": "System.Boolean",
+      "Field_b0057325": "System.Boolean",
+      "Field_897a3f2c": "System.Boolean",
+      "Field_b574fa40": "System.Boolean",
+      "Field_92cdfefc": "System.Boolean",
+      "Field_93dd77b9": "System.Boolean",
+      "Field_15cae63e": "System.Boolean",
+      "Field_0c59fa06": "FrostySdk.Ebx.CString",
+      "__InstanceGuid": "FrostySdk.Ebx.AssetClassGuid"
+    },
+    "Class_bb838ff6": {
+      "__Id": "FrostySdk.Ebx.CString",
+      "Field_6b84de87": "FrostySdk.Ebx.Struct_26e24b34",
+      "Field_7b609515": "FrostySdk.Ebx.Struct_26e24b34",
+      "Field_94752c29": "FrostySdk.Ebx.Enum_da2995d6",
+      "Field_9ca063e9": "System.Boolean",
+      "Field_b0057325": "System.Boolean",
+      "Field_897a3f2c": "System.Boolean",
+      "Field_b574fa40": "System.Boolean",
+      "Field_92cdfefc": "System.Boolean",
+      "Field_93dd77b9": "System.Boolean",
+      "Field_15cae63e": "System.Boolean",
+      "Field_0c59fa06": "FrostySdk.Ebx.CString",
+      "__InstanceGuid": "FrostySdk.Ebx.AssetClassGuid"
+    },
+    "Struct_26e24b34": {
+      "Field_b7e27231": "System.Collections.Generic.List`1[FrostySdk.Ebx.Struct_b1f8b400]",
+      "Field_eec30064": "System.Collections.Generic.List`1[FrostySdk.Ebx.Struct_b1f8b400]",
+      "Field_f888cb38": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_b468bc2c": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_5a02dd65": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_39740463": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_9546447c": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_ddac0349": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_9045ba17": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_2859e2fd": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_27f30454": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_28df1cde": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_865174fa": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_205e8a1c": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_1e41c505": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_1afd1bf1": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_89e9f16e": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_22810b21": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_a63f14a6": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_1d04f0f6": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_04490b34": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_65700a5d": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_9b46e71d": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_ce4b3347": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_edbd0711": "FrostySdk.Ebx.Struct_b1f8b400",
+      "Field_02433593": "FrostySdk.Ebx.Struct_d204f959",
+      "Field_22ce7cf3": "FrostySdk.Ebx.Struct_d204f959",
+      "Field_8bd6dcdd": "FrostySdk.Ebx.Struct_fbc2c31d"
+    },
+    "Struct_d204f959": {
+      "Field_4692836a": "System.Int32"
+    }
+  },
+  "enums": {
+    "Enum_16e6fa59": {
+      "Field_97a738a9": 0,
+      "Field_8db5afce": 1,
+      "Field_7e35823b": 2,
+      "Field_c57b586e": 3,
+      "Field_27d088c5": 4,
+      "Field_462fd1f9": 5,
+      "Field_9f46d5ac": 6,
+      "Field_958507f1": 7
+    }
+  }
+}

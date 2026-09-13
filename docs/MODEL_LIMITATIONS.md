@@ -16,6 +16,20 @@ attachment assumptions and field-level uncertainty remain. Historical notes
 can describe earlier states, including fire-mode limitations
 that the current resolver has since addressed.
 
+## Current attachment source boundaries
+
+Linear Comp and all eight supported burst selections now have source-backed
+ADS/hip amount and variation steps. Their old whole-record assumption flags
+are removed. This does not validate burst cadence or the native recovery equation.
+An additional scalar on five burst weapons remains unmodeled; see the
+[field review](../reference-data/provenance/frosty-assumption-review.json).
+
+L110/M123K 200-round moving-ADS spread magnitudes remain estimated. M240L
+75-round spread improvement is linked to a source +1 index. The
+[attachment guide](ATTACHMENT_MODEL.md#belt-box-moving-ads-spread) gives values
+and limits. SVK-8.6 Adjustable Angled is not selectable: its source ability
+branch does not establish in-game availability.
+
 ## Retained source fields that are not fully simulated
 
 | Area | Current boundary |
