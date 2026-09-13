@@ -128,6 +128,13 @@ material grid with FrostyCmd `export-ebx` or the Frosty editor: the decoder can
 exhaust memory. If an export fails or stalls, stop leftover `FrostyCmd`/`FrostyEditor`
 processes.
 
+The local FrostyCmd also has `export-strings` (decode a localization language
+asset to `id<TAB>text`) and `scan-string-usage` (find string ids in EBX assets under
+path prefixes, with level assets skipped and a 12 GB stop). FrostyCmd is not part of
+this repository; [this patch](reference-data/provenance/frostycmd-string-tools-2026-09-13.patch)
+adds both commands. See [weapon display names](docs/FROSTY_DISPLAY_NAMES.md) for
+the procedure.
+
 ```sh
 powershell -NoProfile -File scripts/frosty-raw-assets.ps1 -FrostyDirectory "PATH_TO_FROSTY" -GamePath "PATH_TO_GAME" -OutputDirectory outputs/frosty-raw -Routes "game/glaciermp/levels/mp_abbasid/mp_abbasid/materialgrid_win32,game/glaciermp/levels/mp_badlands/mp_badlands/materialgrid_win32"
 python scripts/frosty-hit-zones.py --root "PATH_TO_EXPORT" --descriptors "PATH_TO_FROSTY/SharedTypeDescriptors.ebx" --grid outputs/frosty-raw/game__glaciermp__levels__mp_abbasid__mp_abbasid__materialgrid_win32.ebx --grid outputs/frosty-raw/game__glaciermp__levels__mp_badlands__mp_badlands__materialgrid_win32.ebx

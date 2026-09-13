@@ -69,7 +69,7 @@ See [damage and ballistics](DAMAGE_BALLISTICS.md) for the equations and endpoint
 
 Each color identifies a selected weapon. The horizontal axis is target range
 in metres. Read the vertical axis for the selected mode; the model charts below
-compare SOR-556 MK2 (orange) and SOR-300SC (blue).
+compare SOR-556 Mk2 (orange) and SOR-300SC (blue).
 
 Read the lines and shading as follows:
 
@@ -93,7 +93,7 @@ uncertainty. A band can disappear where chest and limb hits give the same result
 higher but drops sooner. The solid line is chest damage; the lower edge of each
 band is limb damage.
 
-![Damage comparison: SOR-556 MK2 and SOR-300SC across range](img/chart-damage-example.svg)
+![Damage comparison: SOR-556 Mk2 and SOR-300SC across range](img/chart-damage-example.svg)
 
 **BTK:** Lower means fewer hits needed to remove 100 health. Steps
 occur when damage falls far enough to require another bullet. The solid line

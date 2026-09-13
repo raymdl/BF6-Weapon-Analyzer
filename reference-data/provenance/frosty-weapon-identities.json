@@ -642,7 +642,7 @@
     {
       "internalId": "SCARL",
       "siteId": "sor556",
-      "siteName": "SOR-556 MK2",
+      "siteName": "SOR-556 Mk2",
       "sourceId": "scarl",
       "sourceName": "SOR-556 Mk2",
       "sourceCategory": "AR",
@@ -698,7 +698,7 @@
     {
       "internalId": "Skorpion",
       "siteId": "vz61",
-      "siteName": "VZ. 61",
+      "siteName": "vz. 61",
       "sourceId": "skorpion",
       "sourceName": "vz. 61",
       "sourceCategory": "Sidearm",
@@ -754,7 +754,7 @@
     {
       "internalId": "Tavor7",
       "siteId": "tr7",
-      "siteName": "TR7",
+      "siteName": "TR-7",
       "sourceId": "tavor7",
       "sourceName": "TR-7",
       "sourceCategory": "AR",

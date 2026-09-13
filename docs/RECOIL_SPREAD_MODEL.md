@@ -90,7 +90,8 @@ subsequent pre-shot point:
 - Between shots, applies recovery using `spreadRecoveries(w)` — separate firing and
   not-firing parameter sets; post-burst gaps split the interval into a firing segment
   and a not-firing segment.
-- Clamps to `[baseline, spreadMax]` for the current state.
+- Clamps to the current state's `spread` `[min, max]` pair. Every weapon must
+  define all four pairs; there is no fallback maximum.
 - Shot positions use `r = spreadRadius × rng() ** distExp` with an independent
   uniform angle. The usual source exponent 0.5 gives uniform area sampling;
   moving ADS on Interdictor uses 0.67. See the evidence and limits below.

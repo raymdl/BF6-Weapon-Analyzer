@@ -1,0 +1,279 @@
+# FrostyCmd string tools (export-strings, scan-string-usage), 2026-09-13.
+# Apply in the FrostyToolsuite-battlefield6 root: git apply frostycmd-string-tools-2026-09-13.patch
+# Build: MSBuild FrostyCmd/FrostyCmd.csproj /p:Configuration="Release - Final" /p:Platform=x64 /p:BuildProjectReferences=false /p:SolutionDir=<root>/FrostyEditor/
+diff --git a/FrostyCmd/Program.cs b/FrostyCmd/Program.cs
+index 0517852..3c4e8e3 100644
+--- a/FrostyCmd/Program.cs
++++ b/FrostyCmd/Program.cs
+@@ -4,6 +4,7 @@ using System.IO;
+ using System.Linq;
+ using System.Runtime.InteropServices;
+ using FrostySdk;
++using FrostySdk.Ebx;
+ using FrostySdk.Interfaces;
+ using FrostySdk.IO;
+ using FrostySdk.Managers;
+@@ -169,10 +170,16 @@ namespace FrostyCmd
+         {
+             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+ 
+-            if (args.Length != 5 || !args[0].Equals("export-ebx", StringComparison.OrdinalIgnoreCase))
++            bool exportStrings = args.Length == 5 && args[0].Equals("export-strings", StringComparison.OrdinalIgnoreCase);
++            bool scanStrings = args.Length >= 5 && args[0].Equals("scan-string-usage", StringComparison.OrdinalIgnoreCase);
++            if (!scanStrings && (args.Length != 5 || (!args[0].Equals("export-ebx", StringComparison.OrdinalIgnoreCase) && !exportStrings)))
+             {
+                 Console.Error.WriteLine(
+                     "Usage: FrostyCmd export-ebx <profile> <game-path> <asset-name> <output-file>");
++                Console.Error.WriteLine(
++                    "       FrostyCmd export-strings <profile> <game-path> <language-asset-name> <output-tsv>");
++                Console.Error.WriteLine(
++                    "       FrostyCmd scan-string-usage <profile> <game-path> <ids-file> <output-tsv> [path-prefix ...]");
+                 return 2;
+             }
+ 
+@@ -218,6 +225,15 @@ namespace FrostyCmd
+                 assetManager.SetLogger(logger);
+                 assetManager.Initialize(true);
+ 
++                if (scanStrings)
++                {
++                    string[] prefixes = args.Skip(5).Select(p => p.Replace('\\', '/').Trim('/')).ToArray();
++                    int hits = ScanStringUsage(assetManager, Path.GetFullPath(args[3]), outputFile, prefixes);
++                    logger.Log("Found {0} string id references", hits);
++                    Console.WriteLine(outputFile);
++                    return 0;
++                }
++
+                 EbxAssetEntry entry = assetManager.GetEbxEntry(assetName);
+                 if (entry == null)
+                 {
+@@ -229,6 +245,14 @@ namespace FrostyCmd
+                 if (entry == null)
+                     throw new FileNotFoundException("EBX asset was not found: " + assetName);
+ 
++                if (exportStrings)
++                {
++                    int count = ExportStrings(assetManager, entry, outputFile);
++                    logger.Log("Exported {0} strings from {1}", count, entry.Name);
++                    Console.WriteLine(outputFile);
++                    return 0;
++                }
++
+                 logger.Log("DIAGNOSTIC: Starting EBX read for {0}", entry.Name);
+                 EbxAsset asset = assetManager.GetEbx(entry);
+                 logger.Log("DIAGNOSTIC: Completed EBX read for {0}; starting serialization", entry.Name);
+@@ -300,6 +324,214 @@ namespace FrostyCmd
+             //}
+         }
+ 
++        // Headless form of LocalizedStringPlugin's usage export for BF6. Field names are hashed in this SDK,
++        // so every CString is hashed like a string id and every 32-bit integer is compared with the target ids.
++        // Level assets are skipped because reading them can exhaust memory.
++        private static int ScanStringUsage(AssetManager assetManager, string idsFile, string outputFile, string[] prefixes)
++        {
++            HashSet<uint> targets = new HashSet<uint>(File.ReadAllLines(idsFile)
++                .Select(line => line.Trim())
++                .Where(line => line.Length == 8)
++                .Select(line => Convert.ToUInt32(line, 16)));
++            List<EbxAssetEntry> entries = assetManager.EnumerateEbx()
++                .Where(e => prefixes.Length == 0 || prefixes.Any(p => e.Name.StartsWith(p, StringComparison.OrdinalIgnoreCase)))
++                .Where(e => e.Name.IndexOf("levels/", StringComparison.OrdinalIgnoreCase) < 0
++                         && e.Name.IndexOf("materialgrid", StringComparison.OrdinalIgnoreCase) < 0)
++                .ToList();
++            logger.Log("Scanning {0} EBX assets for {1} string ids", entries.Count, targets.Count);
++
++            const long memoryLimit = 12L * 1024 * 1024 * 1024;
++            int hits = 0, scanned = 0, failed = 0;
++            using (StreamWriter writer = new StreamWriter(outputFile, false, new System.Text.UTF8Encoding(false)))
++            {
++                writer.WriteLine("stringId\tmatch\tasset\tobjectType\tfieldPath\tvalue");
++                foreach (EbxAssetEntry entry in entries)
++                {
++                    scanned++;
++                    if (scanned % 500 == 0)
++                    {
++                        writer.Flush();
++                        GC.Collect();
++                        long memory = System.Diagnostics.Process.GetCurrentProcess().PrivateMemorySize64;
++                        logger.Log("Scanned {0}/{1}, hits {2}, private memory {3} MB", scanned, entries.Count, hits, memory / (1024 * 1024));
++                        if (memory > memoryLimit)
++                        {
++                            logger.LogWarning("Memory limit reached; stopping with partial results");
++                            break;
++                        }
++                    }
++                    try
++                    {
++                        EbxAsset asset = assetManager.GetEbx(entry);
++                        foreach (object obj in asset.Objects)
++                        {
++                            string objectType = obj.GetType().Name;
++                            ScanValue(obj, objectType, 0, targets, (id, kind, path, value) =>
++                            {
++                                writer.WriteLine(id.ToString("X8") + "\t" + kind + "\t" + entry.Name + "\t" + objectType + "\t" + path + "\t" + value);
++                                hits++;
++                            });
++                        }
++                    }
++                    catch (Exception ex)
++                    {
++                        failed++;
++                        logger.LogWarning("Skipped {0}: {1}", entry.Name, ex.GetType().Name);
++                    }
++                }
++            }
++            logger.Log("Scanned {0} assets, {1} failed", scanned, failed);
++            return hits;
++        }
++
++        private static void ScanValue(object value, string path, int depth, HashSet<uint> targets, Action<uint, string, string, string> report)
++        {
++            if (value == null || depth > 8)
++                return;
++
++            switch (value)
++            {
++                case CString cString:
++                    string text = cString.ToString();
++                    if (!string.IsNullOrEmpty(text))
++                    {
++                        uint hash = 0xFFFFFFFF;
++                        foreach (char c in text)
++                            hash = unchecked((uint)(c + 33 * hash));
++                        if (targets.Contains(hash))
++                            report(hash, "cstring-hash", path, text);
++                    }
++                    return;
++                case uint unsignedValue:
++                    if (targets.Contains(unsignedValue))
++                        report(unsignedValue, "uint", path, unsignedValue.ToString());
++                    return;
++                case int signedValue:
++                    uint asUnsigned = unchecked((uint)signedValue);
++                    if (targets.Contains(asUnsigned))
++                        report(asUnsigned, "int", path, signedValue.ToString());
++                    return;
++                case string _:
++                case Guid _:
++                case Enum _:
++                case PointerRef _:
++                case ResourceRef _:
++                case FileRef _:
++                case TypeRef _:
++                case BoxedValueRef _:
++                    return;
++            }
++
++            Type type = value.GetType();
++            if (type.IsPrimitive)
++                return;
++            if (value is System.Collections.IList list)
++            {
++                for (int n = 0; n < list.Count; n++)
++                    ScanValue(list[n], path + "[" + n + "]", depth + 1, targets, report);
++                return;
++            }
++            if (type.Namespace != "FrostySdk.Ebx")
++                return;
++
++            foreach (PropertyInfo property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
++            {
++                if (property.GetIndexParameters().Length > 0)
++                    continue;
++                object child;
++                try { child = property.GetValue(value); }
++                catch { continue; }
++                ScanValue(child, path + "." + property.Name, depth + 1, targets, report);
++            }
++        }
++
++        // Decodes a localized text asset the same way as FsLocalizationPlugin.AddResource.
++        // BF6 field names are hashed, so the two chunk GUIDs are found by type and the
++        // string chunk is identified by its 0x00039000 magic.
++        private static int ExportStrings(AssetManager assetManager, EbxAssetEntry entry, string outputFile)
++        {
++            object root = assetManager.GetEbx(entry).RootObject;
++            List<byte[]> chunks = new List<byte[]>();
++            foreach (PropertyInfo property in root.GetType().GetProperties())
++            {
++                if (property.PropertyType != typeof(Guid))
++                    continue;
++                ChunkAssetEntry chunkEntry = assetManager.GetChunkEntry((Guid)property.GetValue(root));
++                if (chunkEntry == null)
++                    continue;
++                using (Stream stream = assetManager.GetChunk(chunkEntry))
++                using (MemoryStream memory = new MemoryStream())
++                {
++                    stream.CopyTo(memory);
++                    chunks.Add(memory.ToArray());
++                }
++            }
++
++            byte[] binary = chunks.FirstOrDefault(c => c.Length >= 4 && BitConverter.ToUInt32(c, 0) == 0x00039000);
++            byte[] histogram = chunks.FirstOrDefault(c => c != binary);
++            if (binary == null || histogram == null)
++                throw new InvalidDataException("Localized text chunks were not found for " + entry.Name + " (" + chunks.Count + " chunks)");
++
++            List<ushort> values = new List<ushort>();
++            using (NativeReader reader = new NativeReader(new MemoryStream(histogram)))
++            {
++                reader.ReadUInt();
++                long size = reader.ReadUInt();
++                reader.ReadUInt();
++                for (int i = 0; i < (size / 2); i++)
++                    values.Add(reader.ReadUShort());
++            }
++
++            int count = 0;
++            using (NativeReader reader = new NativeReader(new MemoryStream(binary)))
++            using (StreamWriter writer = new StreamWriter(outputFile, false, new System.Text.UTF8Encoding(false)))
++            {
++                reader.ReadUInt();
++                reader.ReadUInt();
++                reader.ReadUInt();
++                uint dataOffset = reader.ReadUInt();
++                uint stringsOffset = reader.ReadUInt();
++
++                reader.Position = dataOffset + 8;
++                List<uint> ids = new List<uint>();
++                List<uint> offsets = new List<uint>();
++                while (reader.Position != stringsOffset + 8)
++                {
++                    ids.Add(reader.ReadUInt());
++                    offsets.Add(reader.ReadUInt());
++                }
++
++                for (int i = 0; i < ids.Count; i++)
++                {
++                    reader.Position = stringsOffset + offsets[i] + 8;
++                    string str = reader.ReadNullTerminatedString();
++                    System.Text.StringBuilder text = new System.Text.StringBuilder();
++                    for (int j = 0; j < str.Length; j++)
++                    {
++                        byte b = (byte)str[j];
++                        if (b < 0x80)
++                            text.Append((char)b);
++                        else
++                        {
++                            ushort tmp = values[b];
++                            if (tmp >= 0x80)
++                                text.Append((char)tmp);
++                            else if (j + 1 < str.Length)
++                            {
++                                b = (byte)str[++j];
++                                if (b >= 0x80)
++                                    text.Append((char)values[(b - 0x80) + (tmp << 7)]);
++                            }
++                        }
++                    }
++                    string escaped = text.ToString().Replace("\\", "\\\\").Replace("\t", "\\t").Replace("\r", "\\r").Replace("\n", "\\n");
++                    writer.WriteLine(ids[i].ToString("X8") + "\t" + escaped);
++                    count++;
++                }
++            }
++            return count;
++        }
++
+         private static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+         {
+             string dllname = args.Name.Contains(",") ? args.Name.Substring(0, args.Name.IndexOf(',')) : args.Name;

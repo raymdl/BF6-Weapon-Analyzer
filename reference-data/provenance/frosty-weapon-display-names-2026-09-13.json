@@ -1,0 +1,614 @@
+{
+  "date": "2026-09-13",
+  "scope": "In-game display names for the 63 site weapons, linked from Frosty internal names through game UI metadata and the English localization string table. Replaces hand-transcribed site spellings.",
+  "method": [
+    "FrostyCmd export-strings bf6 <game> Common/Localization/Languages/fs_us_loc: 108,548 English strings decoded as in FsLocalizationPlugin (histogram chunk plus string chunk with magic 0x00039000).",
+    "FrostyCmd scan-string-usage over Common/UI, Common/GameSetup and Common/Hardware/Weapons (70,678 EBX assets, level assets skipped, 536 unreadable): 63 of 64 weapon name ids found, all in UIWeaponAbilityMetaData assets.",
+    "Common/UI/MetaData/UIWeaponAbilityMetaData and Common/UI/Static/Metadata/S1-S4 UIWeaponAbilityMetaData_*: each Class_593f6146 weapon record links package images (T_UI_<internal>_PKG), has a label Field_55aded8d, and points (Field_fd698f51) to a Class_fbe1d3bc object whose Field_3d34898a is the name string id.",
+    "String ids are djb2-style hashes of text keys with seed 0xFFFFFFFF: result = char + 33 * result for each character. Keys confirmed: ID_ABILITY_<internal> for 53 weapons, ID_ABILITY_MP5, ID_ABILITY_MSBSGROT, ID_WEAPON_EF88, ID_WEAPON_VSSM, ID_WEAPON_BREN3, ID_WEAPON_HTI."
+  ],
+  "sourceBuild": "Installed game on 2026-09-13; bf6.exe dated 2026-09-05, same build as the 1.4.2.5 XML export",
+  "exportSha256": {
+    "UIWeaponAbilityMetaData.xml": "06a4d8ef2ffd72e61687c438c4bece072f3eac828195511c6ee7079810cbc90f",
+    "UIWeaponAbilityMetaData_S1B1.xml": "9d951652ebab84515ce57fb7e0905eac3a879a2d21b91a31df8ae66c5d9d05aa",
+    "UIWeaponAbilityMetaData_S1B2.xml": "204116de5caa97e6c16c8dce1e026d83d7a13ae5530781f815219e9f333210d8",
+    "UIWeaponAbilityMetaData_S2B1.xml": "1ccf60044819f341521cbd601369b10034886d310ff2e89f616882466d0144b3",
+    "UIWeaponAbilityMetaData_S2B2.xml": "a1796dbd1e2e9868d6027550b1b34b73dbefb8ec96d5e8d0047bf2c17d052ef3",
+    "UIWeaponAbilityMetaData_S3B1.xml": "80f26295c3a5e1295e963a090383647ff7fe59e82833225ade400028a4d94037",
+    "UIWeaponAbilityMetaData_S4B1.xml": "272551e832ea216ffd7a43f5d363d86190c7a4d9581f0c325451b2c348c5982e",
+    "fs_us_strings.tsv": "a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9"
+  },
+  "siteRenames": [
+    {
+      "siteId": "tr7",
+      "before": "TR7",
+      "after": "TR-7"
+    },
+    {
+      "siteId": "sor556",
+      "before": "SOR-556 MK2",
+      "after": "SOR-556 Mk2"
+    },
+    {
+      "siteId": "vz61",
+      "before": "VZ. 61",
+      "after": "vz. 61"
+    }
+  ],
+  "notes": [
+    "All other 60 site names already equal the game names.",
+    "AK4D has two English strings with text AK4D (8F929007, B77F06A7); the metadata uses B77F06A7.",
+    "Internal name KSG (not on the site) is the KSG-12.",
+    "Extra metadata records SCAR-SC .300 BLK and MP7A2 SP SUPPRESSED are variants of SOR-300SC and PW7A2.",
+    "Screenshot folder names and historical records keep the old spellings."
+  ],
+  "weapons": [
+    {
+      "internalId": "185KSK",
+      "siteId": "ks18k",
+      "stringId": "605E215F",
+      "gameName": "18.5KS-K",
+      "siteNameBefore": "18.5KS-K",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "590A1",
+      "siteId": "m87a1",
+      "stringId": "A61D2648",
+      "gameName": "M87A1",
+      "siteNameBefore": "M87A1",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "6P67",
+      "siteId": "kord6p67",
+      "stringId": "B7762E2B",
+      "gameName": "KORD 6P67",
+      "siteNameBefore": "KORD 6P67",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "ACE32",
+      "siteId": "nvo228e",
+      "stringId": "A6FC1FA6",
+      "gameName": "NVO-228E",
+      "siteNameBefore": "NVO-228E",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "AK205",
+      "siteId": "ak205",
+      "stringId": "A700317B",
+      "gameName": "AK-205",
+      "siteNameBefore": "AK-205",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "APC10",
+      "siteId": "scw10",
+      "stringId": "A70337CD",
+      "gameName": "SCW-10",
+      "siteNameBefore": "SCW-10",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "APDW",
+      "siteId": "sl9",
+      "stringId": "B77C3844",
+      "gameName": "SL9",
+      "siteNameBefore": "SL9",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "ARADMR",
+      "siteId": "lmr27",
+      "stringId": "878D9E8F",
+      "gameName": "LMR27",
+      "siteNameBefore": "LMR27",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "DP12",
+      "siteId": "db12",
+      "stringId": "B77DDACF",
+      "gameName": "DB-12",
+      "siteNameBefore": "DB-12",
+      "metadataAssets": "base,S1B2",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "EF88",
+      "siteId": "ef88",
+      "stringId": "D1265CCF",
+      "gameName": "EF88",
+      "siteNameBefore": "EF88",
+      "metadataAssets": "S4B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "FiveSeven",
+      "siteId": "es57",
+      "stringId": "1AC00EE3",
+      "gameName": "ES 5.7",
+      "siteNameBefore": "ES 5.7",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "G22",
+      "siteId": "ggh22",
+      "stringId": "81AE83E3",
+      "gameName": "GGH-22",
+      "siteNameBefore": "GGH-22",
+      "metadataAssets": "base,S1B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "G36",
+      "siteId": "b36a4",
+      "stringId": "81AE8408",
+      "gameName": "B36A4",
+      "siteNameBefore": "B36A4",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "G3A4",
+      "siteId": "ak4d",
+      "stringId": "B77F06A7",
+      "gameName": "AK4D",
+      "siteNameBefore": "AK4D",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "HK417A2",
+      "siteId": "m417a2",
+      "stringId": "82CEF3FA",
+      "gameName": "M417 A2",
+      "siteNameBefore": "M417 A2",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "HK433",
+      "siteId": "m433",
+      "stringId": "A77EE5E5",
+      "gameName": "M433",
+      "siteNameBefore": "M433",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "L115A3",
+      "siteId": "l115",
+      "stringId": "9EDA5ED3",
+      "gameName": "L115",
+      "siteNameBefore": "L115",
+      "metadataAssets": "S3B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "L85A3",
+      "siteId": "l85a3",
+      "stringId": "A7BCE2C5",
+      "gameName": "L85A3",
+      "siteNameBefore": "L85A3",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M1014",
+      "siteId": "m1014",
+      "stringId": "A7CB0D4B",
+      "gameName": "M1014",
+      "siteNameBefore": "M1014",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M16A3",
+      "siteId": "m16a4",
+      "stringId": "A7CB28E0",
+      "gameName": "M16A4",
+      "siteNameBefore": "M16A4",
+      "metadataAssets": "S3B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M18",
+      "siteId": "p18",
+      "stringId": "81AE9D4E",
+      "gameName": "P18",
+      "siteNameBefore": "P18",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M2010ESR",
+      "siteId": "m2010esr",
+      "stringId": "EC2E4932",
+      "gameName": "M2010 ESR",
+      "siteNameBefore": "M2010 ESR",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M240L",
+      "siteId": "m240l",
+      "stringId": "A7CBAAA7",
+      "gameName": "M240L",
+      "siteNameBefore": "M240L",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M250",
+      "siteId": "m250",
+      "stringId": "B7824B1C",
+      "gameName": "M250",
+      "siteNameBefore": "M250",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M27IAR",
+      "siteId": "drsiar",
+      "stringId": "A1430DEA",
+      "gameName": "DRS-IAR",
+      "siteNameBefore": "DRS-IAR",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M39EMR",
+      "siteId": "m39emr",
+      "stringId": "A1562FB5",
+      "gameName": "M39 EMR",
+      "siteNameBefore": "M39 EMR",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M45A1",
+      "siteId": "m45a1",
+      "stringId": "A7CCC9C0",
+      "gameName": "M45A1",
+      "siteNameBefore": "M45A1",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M4A1",
+      "siteId": "m4a1",
+      "stringId": "B782552B",
+      "gameName": "M4A1",
+      "siteNameBefore": "M4A1",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "M60E6",
+      "siteId": "m60",
+      "stringId": "A7CDCDC6",
+      "gameName": "M/60",
+      "siteNameBefore": "M/60",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MG4K",
+      "siteId": "m123k",
+      "stringId": "B782A46B",
+      "gameName": "M123K",
+      "siteNameBefore": "M123K",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MG5",
+      "siteId": "m121a2",
+      "stringId": "81AEA021",
+      "gameName": "M121 A2",
+      "siteNameBefore": "M121 A2",
+      "metadataAssets": "S2B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MiniFix",
+      "siteId": "miniscout",
+      "stringId": "00EBB9AC",
+      "gameName": "Mini Scout",
+      "siteNameBefore": "Mini Scout",
+      "metadataAssets": "base,S1B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "Minimi",
+      "siteId": "l110",
+      "stringId": "A2EFDFBB",
+      "gameName": "L110",
+      "siteNameBefore": "L110",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MP5MLI",
+      "siteId": "pw5a3",
+      "stringId": "81AEA14A",
+      "gameName": "PW5A3",
+      "siteNameBefore": "PW5A3",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MP7A2",
+      "siteId": "pw7a2",
+      "stringId": "A7DC2CDF",
+      "gameName": "PW7A2",
+      "siteNameBefore": "PW7A2",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MPX",
+      "siteId": "sgx",
+      "stringId": "81AEA16D",
+      "gameName": "SGX",
+      "siteNameBefore": "SGX",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MRAD",
+      "siteId": "psr",
+      "stringId": "B782D4DC",
+      "gameName": "PSR",
+      "siteNameBefore": "PSR",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MSBSGROTB",
+      "siteId": "grtbc",
+      "stringId": "04E10E09",
+      "gameName": "GRT-BC",
+      "siteNameBefore": "GRT-BC",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "MSBSGROTCPS",
+      "siteId": "grtcps",
+      "stringId": "A7711B37",
+      "gameName": "GRT-CPS",
+      "siteNameBefore": "GRT-CPS",
+      "metadataAssets": "S1B2 or later season asset (label GrotC)",
+      "link": "record label GrotC with no package image; string id resolves to GRT-CPS"
+    },
+    {
+      "internalId": "P90",
+      "siteId": "usg90",
+      "stringId": "81AEAB11",
+      "gameName": "USG-90",
+      "siteNameBefore": "USG-90",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "PP19",
+      "siteId": "pp19",
+      "stringId": "B7846F62",
+      "gameName": "PP-19",
+      "siteNameBefore": "PP-19",
+      "metadataAssets": "S3B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "QBZ192",
+      "siteId": "qbz192",
+      "stringId": "ABCC0281",
+      "gameName": "QBZ-192",
+      "siteNameBefore": "QBZ-192",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "RagingHunter",
+      "siteId": "m44",
+      "stringId": "B785667A",
+      "gameName": "M44",
+      "siteNameBefore": "M44",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "RPK74M",
+      "siteId": "rpk74m",
+      "stringId": "AF16551D",
+      "gameName": "RPK-74M",
+      "siteNameBefore": "RPK-74M",
+      "metadataAssets": "S3B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "RPKM",
+      "siteId": "rpkm",
+      "stringId": "B7858B92",
+      "gameName": "RPKM",
+      "siteNameBefore": "RPKM",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "SCARL",
+      "siteId": "sor556",
+      "stringId": "A841CBCD",
+      "gameName": "SOR-556 Mk2",
+      "siteNameBefore": "SOR-556 MK2",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "SCARSC",
+      "siteId": "sor300sc",
+      "stringId": "B07B4697",
+      "gameName": "SOR-300SC",
+      "siteNameBefore": "SOR-300SC",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "ScorpionEvo3",
+      "siteId": "cz3a1",
+      "stringId": "B48FC8E2",
+      "gameName": "CZ3A1",
+      "siteNameBefore": "CZ3A1",
+      "metadataAssets": "S2B2",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "SIG553R",
+      "siteId": "sg553r",
+      "stringId": "CE3F37EA",
+      "gameName": "SG 553R",
+      "siteNameBefore": "SG 553R",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "Skorpion",
+      "siteId": "vz61",
+      "stringId": "44DFE60D",
+      "gameName": "vz. 61",
+      "siteNameBefore": "VZ. 61",
+      "metadataAssets": "S2B2",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "SV98M",
+      "siteId": "sv98",
+      "stringId": "A84C119F",
+      "gameName": "SV-98",
+      "siteNameBefore": "SV-98",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "SVCh",
+      "siteId": "svk86",
+      "stringId": "B786306C",
+      "gameName": "SVK-8.6",
+      "siteNameBefore": "SVK-8.6",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "SVDM",
+      "siteId": "svdm",
+      "stringId": "B7863092",
+      "gameName": "SVDM",
+      "siteNameBefore": "SVDM",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "Tavor7",
+      "siteId": "tr7",
+      "stringId": "B2B7B53B",
+      "gameName": "TR-7",
+      "siteNameBefore": "TR7",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "TRR8",
+      "siteId": "m357trait",
+      "stringId": "B786ADA8",
+      "gameName": "M357 Trait",
+      "siteNameBefore": "M357 Trait",
+      "metadataAssets": "base,S1B2",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "Ultimax",
+      "siteId": "kts100",
+      "stringId": "7029C95C",
+      "gameName": "KTS100 MK8",
+      "siteNameBefore": "KTS100 MK8",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "UMP40",
+      "siteId": "umg40",
+      "stringId": "A86BB46E",
+      "gameName": "UMG-40",
+      "siteNameBefore": "UMG-40",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "Vector",
+      "siteId": "kv9",
+      "stringId": "B7A0124B",
+      "gameName": "KV9",
+      "siteNameBefore": "KV9",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "VHS2",
+      "siteId": "vcr2",
+      "stringId": "B7879BFB",
+      "gameName": "VCR-2",
+      "siteNameBefore": "VCR-2",
+      "metadataAssets": "S2B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "VSSM",
+      "siteId": "vssm",
+      "stringId": "D12FEA1D",
+      "gameName": "VSSM",
+      "siteNameBefore": "VSSM",
+      "metadataAssets": "S4B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "XM7",
+      "siteId": "m277",
+      "stringId": "81AECFB4",
+      "gameName": "M277",
+      "siteNameBefore": "M277",
+      "metadataAssets": "base",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "BREN3",
+      "siteId": "brod3",
+      "stringId": "F5C27C0E",
+      "gameName": "BROD 3",
+      "siteNameBefore": "BROD 3",
+      "metadataAssets": "S4B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    },
+    {
+      "internalId": "DesertTechHTI",
+      "siteId": "interdictor",
+      "stringId": "72F1B459",
+      "gameName": "Interdictor",
+      "siteNameBefore": "Interdictor",
+      "metadataAssets": "S4B1",
+      "link": "package image T_UI_<internal>_PKG or record label matches the internal name"
+    }
+  ]
+}

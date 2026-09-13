@@ -18,7 +18,8 @@ Discover the current test count through the runner; it is not a permanent contra
 
 `validate-data.mjs` checks IDs/classes, required values, curves and acceptance policy,
 attachment/ammo/default references, coverage and estimate disclosure, selected exact
-array contracts, velocity/reload fields, and reload-exception agreement. The schema
+array contracts, all four spread `[min, max]` pairs, velocity/reload fields, and
+reload-exception agreement. The schema
 files describe selected fragments; this is not a generic full-schema validator
 for every JSON field. Projectile behavior/coverage also has focused tests below.
 

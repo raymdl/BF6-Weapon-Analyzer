@@ -51,7 +51,7 @@ export of every field from a single game version.
 
 | Source record | Scope and evidence | Boundary |
 |---|---|---|
-| `sym-bf6-json`, data version **1.4.2.0**, data version date **18 AUG 2026** | Base weapon fields and exact damage curves from [Sym's BF6 JSON](https://sym.gg/legacy/pages/bf6/data/bf6.json); embedded metadata and full-payload SHA-256 checked against the [recorded September 6 snapshot](../reference-data/provenance/sym-1.4.2.0-interdictor.json). | Verification used a user-supplied full payload on 9 September 2026, not a fresh HTTP retrieval. The data-version date and recorded retrieval date are distinct. |
+| `sym-bf6-json`, data version **1.4.2.0**, data version date **18 AUG 2026** | Recorded baseline for base weapon fields and the former damage curves (now Frosty; see below) from [Sym's BF6 JSON](https://sym.gg/legacy/pages/bf6/data/bf6.json); embedded metadata and full-payload SHA-256 checked against the [recorded September 6 snapshot](../reference-data/provenance/sym-1.4.2.0-interdictor.json). | Verification used a user-supplied full payload on 9 September 2026, not a fresh HTTP retrieval. The data-version date and recorded retrieval date are distinct. |
 | `ea-update-notes`, version 1.3.3.0 | [EA's update notes](https://www.ea.com/games/battlefield/redsec/news/battlefield-6-game-update-1-3-3-0), for declared mechanics and explicit changes. | Notes do not supply every internal coefficient or prove unmentioned fields. |
 | `frosty-local-export`, labeled 1.4.2.5 | Reviewed local XML exports, per-weapon/attachment provenance, source arrays, and configuration joins. | Version is a user-supplied export label; source literals and their activation/native arithmetic are separate claims. |
 | In-game captures and attachment audit | Displayed defaults, point costs, labels, attachment changes, and composed-loadout checks. | Panel rounding, capture version, defaults, identity and composition must be retained. A displayed stat is not automatically an exact internal value. |
@@ -74,8 +74,13 @@ under `historicalSnapshot`; neither identifies the 1.4.2.0 payload. Source ident
 and roster count do not establish that every live value matches Sym or was reimported
 from this release; older field-level import notes remain historical provenance.
 
-The baseline's `damageStatus: verified` records project acceptance. Individual
-`damageSource` notes can still say provisional or pending in-game confirmation.
+The baseline's `damageStatus: verified` records project acceptance. Frosty is the
+golden damage source: every `damageSource` names the Frosty 1.4.2.5 projectile curve
+that supplies `dmg`. The 59 curves formerly labelled Sym were compared with Frosty and
+kept their values; the M45A1 keeps an in-game-confirmed step at 75 m
+([damage curve review](../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
+Weapon display names use the in-game spelling from Frosty localization
+([method](FROSTY_DISPLAY_NAMES.md)).
 No weapon is estimated or uses donor values. BROD 3, EF88 and VSSM, which Sym does
 not publish, use Frosty 1.4.2.5 values. Fitted attachment effects and
 source-composition questions remain. Read field-level
