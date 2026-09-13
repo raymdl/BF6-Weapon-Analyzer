@@ -261,7 +261,7 @@
   },
   {
     "id": "sor556",
-    "name": "SOR-556 MK2",
+    "name": "SOR-556 Mk2",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 568.421,
@@ -521,7 +521,7 @@
   },
   {
     "id": "tr7",
-    "name": "TR7",
+    "name": "TR-7",
     "cls": "Assault Rifle",
     "cal": "7.62×51mm NATO",
     "rpm": 719.999,
@@ -8471,7 +8471,7 @@
   },
   {
     "id": "vz61",
-    "name": "VZ. 61",
+    "name": "vz. 61",
     "cls": "Sidearm",
     "cal": "7.65×17mm",
     "rpm": 818.181,
