@@ -2,17 +2,17 @@
   "date": "2026-09-13",
   "scope": "Base projectile damage curves for the 59 weapons previously labelled Sym.gg. Compared site dmg points with the Frosty 1.4.2.5 curve linked from each weapon WB primary shot projectile (Field_2ad7e688). Ammo-specific projectile overrides are not covered.",
   "method": "python scripts/frosty-configuration.py --root \"C:/Users/royal/Documents/BF6 Datamining/Frosty\" --out <scratch>; base-projectile-configuration.json linkedCurves rawPoints. Site curves evaluated with sim/damage.js rules (clamp before first point, repeated range is a step, distinct ranges interpolate).",
-  "decision": "Frosty is the golden damage source. All 59 damageSource labels and point sources now name Frosty. Damage values change only for M45A1.",
+  "decision": "Frosty is the golden damage source. All 59 damageSource labels and point sources now name Frosty. No damage values change: the M45A1 ramp read from the raw curve was reverted to the in-game step at 75 m.",
   "counts": {
     "exact-match": 55,
     "equivalent-evaluation": 3,
     "different": 1
   },
   "frostyInputSha256": "f10e8488f57acfc105a94ec07cd6caba120c3729094f428927172fa8c611e41c",
-  "weaponsJsonSha256After": "6afac1c938c185c3dd59d3d847fc4e8501a45bbbea27ea3a023801711e6873c0",
+  "weaponsJsonSha256After": "e4e4aa487a33e78abc049c8de023b145d24190e0af04b4537792a33a4a642d7d",
   "notes": [
     "equivalent-evaluation: the site keeps an extra 0 m point that the Frosty curve omits; damage is identical at every range because the curve clamps before its first point.",
-    "M45A1: Frosty ramps linearly from 14.3 at 54 m to 12.5 at 75 m; the previous site curve held 14.3 until a step at 75 m. Replaced with the Frosty points."
+    "M45A1: the raw Frosty curve (GRX TweakableDamageCurve.XYValues, flat Field_2ad7e688 and point list Field_6008eb31) goes from 54 m 14.3 directly to 75 m 12.5. The per-point mode Field_f275cba7 is the same value used on sniper ramps, so it does not show step behavior. An in-game test on 2026-09-13 showed a step: damage marker 14 and 7 body shots to kill below 75 m, marker 12 and 8 shots beyond 75 m. The site curve keeps the explicit 75 m 14.3 point. Non-sniper, non-shotgun curves are treated as stepped (scripts/damage.test.mjs)."
   ],
   "weapons": [
     {
@@ -2022,6 +2022,14 @@
         ]
       ],
       "result": "different",
+      "inGameCheck": {
+        "date": "2026-09-13",
+        "source": "Operator firing-range test",
+        "below75m": { "roundedDamageMarker": 14, "bodyShotsToKill": 7 },
+        "beyond75m": { "roundedDamageMarker": 12, "bodyShotsToKill": 8 },
+        "conclusion": "Step at 75 m, as in the previous site curve; the linear ramp would show 13 and 8 shots between 55 and 74 m.",
+        "siteDmgAfter": [[0, 33.4], [9, 33.4], [9, 25], [21, 25], [21, 20], [36, 20], [36, 16.7], [54, 16.7], [54, 14.3], [75, 14.3], [75, 12.5]]
+      },
       "sitePointsBefore": [
         [
           0,
