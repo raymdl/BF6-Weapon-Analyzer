@@ -25,6 +25,16 @@ For example, M433's curve retains 26.05 at exactly 21 m and uses 20.67 just beyo
 gradual falloff with steps. Sniper sweet spots can increase damage with distance;
 shotgun curves can contain short linear transitions.
 
+Every base curve is the Frosty 1.4.2.5 projectile curve named in `damageSource`
+([review](../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
+Only sniper rifles and shotguns ramp. All other curves are stepped, and
+`scripts/damage.test.mjs` requires every sampled range to land on a tier value.
+A raw Frosty curve can list a segment between two different ranges that the game
+still applies as a step. The M45A1 `PD_.45ACP` curve lists 54 m 14.3 and 75 m 12.5.
+An in-game test on 13 September 2026 showed damage marker 14 and 7 body shots to
+kill below 75 m, and 12 and 8 shots beyond. The data therefore keeps an explicit
+75 m 14.3 point. Check new Frosty curves for such segments before import.
+
 Damage per shot is `D(r) × (pellets or 1)`. Ammo-specific projectile overrides can
 replace both curve and pellet count. This assumes all pellets hit the same selected
 zone for ordinary damage/BTK calculations. It does not simulate pellet distribution.

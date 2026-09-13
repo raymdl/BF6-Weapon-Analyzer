@@ -27,16 +27,16 @@ are not a complete schema for every current weapon/attachment field. The cross-f
 
 | Fields | Meaning / use |
 |---|---|
-| `id`, `name`, `cls`, `cal` | Stable join key, displayed name, class and caliber. Class drives menus, some policy and presentation. |
+| `id`, `name`, `cls`, `cal` | Stable join key, displayed name (in-game spelling from Frosty localization; see [weapon display names](FROSTY_DISPLAY_NAMES.md)), class and caliber. Class drives menus, some policy and presentation. |
 | `rpm`, `fireMode`, `burstRounds`, `burstRpm`, `burstBurstsPerMinute` | Precise fire timing inputs. Display RPM may be rounded separately. Burst fields describe within/between-burst cadence; DB-12 uses them for its two-round pump cycle. Bolt and single-round pump `rpm` is the effective Frosty manual-cycle rate. |
 | `mag`, `tacRld`, `emptyRld`, `reloadSpeed` | Base ammunition capacity and reload data. `mag` can include a chambered round; selected magazine capacity overrides it. `tacRld` is composed by the reload resolver; for shell-fed shotguns it is one shell with start and end delays. `emptyRld` and `reloadSpeed` are retained and not independently multiplied into tactical reload. |
-| `bulletVel`, `adsTime` | Base projectile velocity and legacy ADS-time display fallback. Current handling uses indexed tables. |
+| `bulletVel` | Base projectile velocity. There is no stored ADS-time field; ADS time comes only from the indexed ADS table. |
 | `recoilV`, `recoilDir`, `recoilVar` | Effective flat ADS amount and legacy direction/variation fields. `recoilV` already includes the base amount exponent. |
-| `recoilIncAds`, `spreadMax` | Flat ADS per-shot increment and legacy maximum/fallback information. Per-context bounds and dynamics are used where present. |
+| `recoilIncAds` | Flat ADS per-shot increment. |
 | `recoil.ads`, `recoil.hip` | Raw per-aim recoil groups described below. |
-| `spread`, `spreadDyn` | Per-context bounds and per-aim growth/recovery parameters described below. |
+| `spread`, `spreadDyn` | Per-context bounds and per-aim growth/recovery parameters described below. All four `spread` `[min, max]` pairs are required; there is no fallback maximum. |
 | `dmg`, `pellets` | Ordered range/damage curve and optional pellet count; damage is per pellet when pellets are present. |
-| `damageStatus`, `damageSource`, `provenance` | Acceptance label, source narrative and field-level/historical evidence. These do not certify all model behavior. |
+| `damageStatus`, `damageSource`, `provenance` | Acceptance label, the Frosty projectile curve that supplies `dmg`, and field-level/historical evidence. These do not certify all model behavior. |
 
 Recoil groups contain `dir`, `amount`, `amountMult`, `amountExp`, `dirVar`,
 `dirVarMult`, `dirVarExp`, `decExp`, `decTimeExp`, `decOffset`, and `decFactor`.

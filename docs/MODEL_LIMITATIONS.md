@@ -10,8 +10,8 @@ execute it in the analyzer.
 ## Configuration versus behavior
 
 The live dataset combines versions and evidence types. `damageStatus: verified`
-means accepted by this project; individual source notes can still say pending
-in-game confirmation. No weapon is estimated or uses donor values, but
+means accepted by this project; every base damage curve names its Frosty 1.4.2.5
+projectile curve. No weapon is estimated or uses donor values, but
 attachment assumptions and field-level uncertainty remain. Historical notes
 can describe earlier states, including fire-mode limitations
 that the current resolver has since addressed.

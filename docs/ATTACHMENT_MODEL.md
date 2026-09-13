@@ -83,6 +83,12 @@ for further source-generation candidates and limits.
 Grip handling and laser spread use per-weapon `frostyModifiers` in their catalog
 records. The resolver merges these after selecting the normal or combined rail
 slot. Magazine handling is generated into the existing per-weapon magazine fields.
+QD Grip Pod also carries per-weapon `adsRecoilTierMod: 3` and `hipRecoilTierMod: 3`
+on BROD 3, EF88, M16A4, RPK-74M and VSSM, matching the Frosty
+`amountTier.add = 3` operands; other weapons keep the catalog tier 2.
+Current-build Control captures confirm tier 3 on all five
+([review](../reference-data/provenance/qd-grip-pod-screenshot-review-2026-09-13.json)).
+The handling generator keeps these recoil fields when it regenerates.
 Run `python scripts/frosty-attachment-handling.py --root <Frosty-export-root>`;
 `--check` compares without writing and `--review` writes evidence only. The current
 conversion generates 5,493 fields and three source base indices. All 1,488 handling
