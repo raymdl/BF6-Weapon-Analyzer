@@ -151,6 +151,34 @@ retains the mismatch. Recheck captures and source bindings after game updates
 before adding a penalty. The screenshots establish HUD behavior, not exact
 projectile angles. [Capture evidence](../reference-data/provenance/belt-box-moving-ads-2026-09-13.json).
 
+Source trace (13 September 2026). L110 is `Minimi` and M123K is `MG4K`. Their
+200-round attachments use selector `U_WPM_MAG_200Ext1_556_W50` (`f601eb64-…`).
+Its package `WPM_MAG_200Ext1_556_W50` holds only magazine data (200 rounds),
+`WME_ADSMoveSpeed_M05`, `WME_ADSTime_FOV_M10`, `WME_ADSTime_Anim_M10`,
+`WME_Draw_Deploy_M05` and `WME_Draw_Sprint_M05`. The only GS binding in
+`GS_Minimi` and `GS_MG4K` is `GID_ADSTime_MAG_M10`. The other GUID occurrences are
+the two ability progressions and four shared M320/M26 `SRU_*` lists.
+
+M240L 75 Rnd has two links. `GS_M240L` binds selector `U_WPM_MAG_075Ext1_M240L_W10`
+to `GDM_Array_ADSMoveDispersion_MAG_P10` (index +1 on
+`MovingZoomedMinAnglesArrayIndex`, base 3). Its package also contains
+`WME_DynamicPivot_P10`. The 200-round package has neither link. Existing
+`GDM_Array_ADSMoveDispersion_MAG_M10` and `WME_DynamicPivot_M10` are not used by
+either weapon; only foregrip and grip-pod packages use `WME_DynamicPivot_M10`.
+
+The index shift changes all four `ZDA_Moving_Weapons` columns: moving minimum
+0.32 → 0.22 and the probable jumping/sprinting ADS minimum 1.13 → 0.97 (see
+[STAT_LADDERS.md](STAT_LADDERS.md#ads-in-ads-movement-and-moving-ads-spread)). It
+does not change `IncreasePerShot`, which is a GS `DispersionBehavior` scalar with
+no selector binding.
+
+`WME_DynamicPivot_*` is `WeaponAnimationSettingsCombinableModifierBase` (GRX type
+for `SVDM_WB.WeaponModifierDataAssets[132].Modifiers[2]`). Its non-identity fields
+are X/Y/Z multipliers `Field_f235e44f` and `Field_a4f104cc`: M10 1.333333, P10 0.75,
+P20 0.5625. Canted iron sights set only `Field_f235e44f` (2.5 or 3 on X/Y). The
+field names are unresolved; it is probably pivot/sway animation scaling, not a
+spread operand. The analyzer does not model it.
+
 ## Tactical reload and magazine capacity
 
 For ordinary magazines:

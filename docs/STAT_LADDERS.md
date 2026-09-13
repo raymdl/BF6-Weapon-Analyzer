@@ -96,6 +96,25 @@ columns agree; its distinct fourth column remains in evidence rather than becomi
 extra tiers. Each weapon stores its base minimum in `spread.adsMove[0]`. Attachment
 shifts select another row and update that bound; there is no global base override.
 
+The GS field that selects the row is `MovingZoomedMinAnglesArrayIndex`
+(`Field_d94fe6ad`). `UnzoomedMinAnglesArrayIndex` (`Field_fe708077`) selects the
+hip row and `StationaryZoomedMinAnglesArrayIndex` is `Field_cee5ebfe`. A row shift
+changes all four ZDA columns. The column names are inferred, not declared:
+
+| ZDA field | Row 3 | Probable state |
+|---|---|---|
+| `Field_6c73f45b` | 0.32 | moving ADS minimum (standing or crouching) |
+| `Field_624b1a88` | 0.32 | moving ADS minimum (standing or crouching) |
+| `Field_97ff0ca4` | 0.32 | prone moving ADS minimum |
+| `Field_bd300f62` | 1.13 | jumping/sprinting ADS minimum |
+
+Evidence: `Field_97ff0ca4` is `Prone` in GS `MinMaxDispersion`. That GS block has
+exactly four zoomed non-stationary states: standing, crouching and prone moving
+share one minimum (63 of 64 weapons), and standing jumping/sprinting is larger in
+all 64. The GS values are uniform placeholders (0.35/0.6, or 0.30/0.6), so values
+do not confirm the order. The analyzer uses only the moving minimum; the fourth
+column is not modeled. [GRX name evidence](../reference-data/provenance/frosty-grx-field-names-2026-09-13.json).
+
 M240L 75 Rnd adds one moving-spread index: 0.32 to 0.22 degrees with no other
 spread modifiers. L110/M123K 200 Rnd now use zero magazine spread shift, matching
 their 100-round boxes. Matched HUD screenshots support removing the old estimate;
@@ -124,13 +143,18 @@ two decimals after float32 conversion; calculations retain these source decimals
 Only those two columns currently set runtime minima. H1–H5 below retain the other
 source fields without assigning unverified stance meanings:
 
-| Column | Retained field |
-|---|---|
-| H1 | `Field_160ef028` |
-| H2 | `Field_b3ab862b` |
-| H3 | `Field_1ef3a223` |
-| H4 | `Field_553bcee0` |
-| H5 | `Field_39b31415` |
+| Column | Retained field | Probable state (inferred) |
+|---|---|---|
+| H1 | `Field_160ef028` | jumping/sprinting |
+| H2 | `Field_b3ab862b` | crouching stationary |
+| H3 | `Field_1ef3a223` | crouching moving |
+| H4 | `Field_553bcee0` | prone stationary |
+| H5 | `Field_39b31415` | prone moving |
+
+Row 1 equals the M240L GS `MinMaxDispersion` unzoomed minima for standing
+stationary/moving (4.848/6.06), crouching (3.636/4.848) and prone (2.424/3.636).
+H1 is 12.12, where the GS jumping/sprinting placeholder is 8.484, so H1 is the least
+certain. The state names are inferred from values; no runtime use is added.
 
 | Index | hipStand ° | hipMove ° | H1 | H2 | H3 | H4 | H5 |
 |---|---|---|---|---|---|---|---|

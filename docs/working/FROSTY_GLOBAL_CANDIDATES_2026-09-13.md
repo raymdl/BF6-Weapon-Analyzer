@@ -385,3 +385,46 @@ The site matches the WB route; the GS route must not be substituted or added
 without explaining the difference. The earlier VSSM 200 ms proposal used only
 the GS route. Both VSSM barrels remain at 250 ms with default other attachments.
 Source evidence: reference-data/provenance/frosty-barrel-ads-2026-09-13.json.
+
+## GRX field-name map
+
+`scripts/frosty-grx-field-names.py` extends the light-name method to every block
+that references a `GRX_Weapons` node (216 files, 5669 blocks). A hash is named
+only when one scalar field matches the GRX leaf value in every observation and the
+leaf has more than one distinct value. Container fields take the last GRX anchor
+segment. No hash received two names. This is name evidence only; operand meaning
+and runtime use still need their own checks. Evidence:
+`reference-data/provenance/frosty-grx-field-names-2026-09-13.json`.
+
+Result: 72 value-matched names, 24 container names, 11 single-value names (weak)
+and 31 ambiguous leaves (constant values shared by several fields).
+
+Names not previously recorded with their hash, grouped by likely use:
+
+| Area | Fields |
+|---|---|
+| Dispersion containers | `Field_3ed1c995` MinMaxDispersion; `Field_8c7ee85a` Standing; `Field_956304be` Crouching; `Field_97ff0ca4` Prone; `Field_e2ae7c09` Moving; `Field_a059dd20` JumpingSprinting; `Field_7baf4297` MinAngle; `Field_60e4e484` MaxAngle |
+| Table indices (GS) | `Field_d94fe6ad` MovingZoomedMinAnglesArrayIndex; `Field_fe708077` UnzoomedMinAnglesArrayIndex; `Field_cee5ebfe` StationaryZoomedMinAnglesArrayIndex (weak); `Field_8c46f71b` WeaponHipMoveSpeedMultiplierIndex; `Field_dcb8bf9e` WeaponZoomedMoveSpeedMultiplierIndex; `Field_db03e8a9` WeaponZoomTransitionIndex; `Field_e7f4ce7c` AltAnimationZoomSettingsIndex; `Field_5198399a` SprintSettingsIndex |
+| Recoil (GS `Recoil` struct) | `Field_f888cb38` RecoilDirection; `Field_ce4b3347` VerticalRecoilMin; `Field_a63f14a6` VerticalRecoilMax; `Field_9546447c` VerticalRecoilIncrease; `Field_205e8a1c` MaxVerticalRecoil; `Field_edbd0711` HorizontalRecoilLeft; `Field_65700a5d` HorizontalRecoilRight; `Field_8bd6dcdd` UsePolarRecoil; `Field_39740463` RecoilDecreaseNorm; `Field_9045ba17` RecoilDecreaseExponent; `Field_04490b34` RecoilDecreaseOffset; `Field_5a02dd65` RecoilDuration (weak) |
+| Camera recoil | `Field_36c2f877` CameraRecoilAmount; `Field_9532eb28` CameraRecoilWhenZoomedAmount; `Field_7f1bb9d4` IdleCameraRecoilWhenZoomedAmount; `Field_38a38f94` IdleCameraRecoilWhenZoomedAmountSwitchTime; `Field_f53f8877` CameraRecoilUseTimeSinceLastShot |
+| Spread decay | `Field_66d08b86` IdleDecreaseCoefficient; `Field_0b26c028` IdleDecreaseExponent; `Field_b5ee0f41` NotFiringDecreaseCoefficient; `Field_0f79aaed` NotFiringDecreaseExponent |
+| Reload (`Struct_b50f190f`) | `Field_9c1e1476` ReloadThreshold; `Field_fc66e75e` ReloadTimeBulletsLeft; `Field_c0c7c72f` ReloadDelay; `Field_b480c17a` PostReloadDelay; `Field_c59cc6a8` MaxAmmoCountInWeapon; `Field_82265a82` MinAmmoCountInWeapon |
+| Projectile | `Field_94869d67` StartDamage; `Field_bc7acc94` EndDamage; `Field_e5b11905` DamageFalloffStartDistance; `Field_68be3481` DamageFalloffEndDistance; `Field_5ef7b9a1` TimeToLive; `Field_7e2be65f` DamagePenetrationMultiplierIndex; `Field_9ba8b76b` DamageProtectionMultiplierIndex; blast/shockwave radius and damage fields |
+| Other | `Field_2320e742` BurstsPerMinute; `Field_43a8d9ab` OverHeat; `Field_72a2b562` HeatPerBullet and `Field_e6120d22` HeatDropPerSecond (weak) |
+
+Potentially useful leads:
+
+- Optic camera recoil is unmodeled. All 34 `GCR_*` optic modifiers enable operands
+  on `CameraRecoilWhenZoomedAmount` and `IdleCameraRecoilWhenZoomedAmount` (for
+  example `GCR_03x00_P00`, `Field_bbbfe9cc = 0.377135`). The analyzer has no camera
+  recoil model; the visible effect and operand equation are unverified.
+- `RecoilDuration` (`Field_5a02dd65`) is only weakly named by GRX, but it agrees
+  with the modeled `GRM_AutoIdentifier_P00` recoil-duration addition.
+- The empty-reload evidence already stores `Struct_b50f190f` values unnamed; the
+  reload names above now label those fields.
+- Unresolved hashes with known context: ZDA columns `Field_6c73f45b`,
+  `Field_624b1a88`, `Field_bd300f62` (probable states in STAT_LADDERS.md), and
+  `WME_DynamicPivot` multipliers `Field_f235e44f`/`Field_a4f104cc` (see
+  ATTACHMENT_MODEL.md belt-box section). Common 32-bit hashes (FNV-1/1a, CRC32,
+  Murmur3, djb2) did not reproduce known names, so hashing candidate names is not
+  available.
