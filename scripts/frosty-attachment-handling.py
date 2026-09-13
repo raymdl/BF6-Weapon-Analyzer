@@ -257,7 +257,10 @@ def main():
             if slot == 'mag':
                 item.update(row['fields'])
             else:
-                item.setdefault('frostyModifiers', {})[wid] = row['fields']
+                # Preserve per-weapon effects outside this handling generator's axes.
+                extra = {f: v for f, v in prior_items[key].get('frostyModifiers', {}).get(wid, {}).items()
+                         if f not in FIELDS[slot]}
+                item.setdefault('frostyModifiers', {})[wid] = {**extra, **row['fields']}
         rows.append(row)
     # Remove shared/manual fields only when every supported use is generated.
     # Unresolved selections keep their existing values as explicit fallbacks.
