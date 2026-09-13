@@ -109,6 +109,15 @@ examines linked effect boundaries. [frosty-sdk-metadata.ps1](../scripts/frosty-s
 extracts local SDK field-type evidence. Both are research aids, not an alternative
 production calculation engine or a reason to infer unresolved native behavior.
 
+[frosty-hit-zones.py](../scripts/frosty-hit-zones.py) is the production extractor for
+headshot and limb multipliers ([data/hit_zones.json](../data/hit_zones.json)). It reuses
+the attachment graph above, reads raw material grids dumped by
+[frosty-raw-assets.ps1](../scripts/frosty-raw-assets.ps1), and records input hashes and
+per-ammo derivations in a dated `reference-data/provenance/frosty-hit-zones-*.json`
+file. Grid class and field names are stripped; the identification rests on the head
+row reproducing every panel headshot value and the limb records reproducing the
+checked limb values.
+
 ## Important evidence families
 
 | Evidence | Use |

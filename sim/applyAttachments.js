@@ -16,7 +16,7 @@ import { resolveHitMultipliers } from './damage.js';
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
  *     AMMO,
  *     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
- *     BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+ *     COLLATERAL_MULT_OVERRIDE, HIT_ZONES,
  *     MOVING_ACC_TIERS,
  *     ADS_SPD_TIERS, ADS_MOVE_TIERS,
  *     DRAW_TIME_TABLES,
@@ -35,8 +35,7 @@ let _ctx = {
   MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {}, LIGHTS_BY_ID: {},
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},
   RECOIL_MULT: {}, HIP_SPREAD_TABLE: [], HIP_SPREAD_BASE_INDEX: {}, HIP_SPREAD_BASE_INDEX_OVERRIDES: {},
-  BASE_HS_MULT: {}, COLLATERAL_MULT_OVERRIDE: {}, HP_HS_HIGH: new Set(),
-  LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
+  COLLATERAL_MULT_OVERRIDE: {}, HIT_ZONES: null,
   MOVING_ACC_TIERS: [],
   ADS_SPD_TIERS: [], ADS_MOVE_TIERS: [],
   DRAW_TIME_TABLES: null,
@@ -304,7 +303,7 @@ export function applyAttachments(w, atts) {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
     MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
-    BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+    COLLATERAL_MULT_OVERRIDE, HIT_ZONES,
     MOVING_ACC_TIERS,
     ADS_SPD_TIERS, ADS_MOVE_TIERS,
     DRAW_TIME_TABLES,
@@ -408,15 +407,11 @@ export function applyAttachments(w, atts) {
     ]));
 
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
-  // Update 1.3.3.0: limb (arm/leg/abdomen) damage multiplier by limb class, and
-  // raised headshot multipliers for automatic weapons (per ammo type).
+  // Frosty per weapon and ammo (data/hit_zones.json): head and limb (arm/leg/abdomen).
   const {
     headshotMultiplier: hsMult,
     limbMultiplier: limbMult,
-    limbClass,
-  } = resolveHitMultipliers(w.id, ammoType, {
-    BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
-  });
+  } = resolveHitMultipliers(w.id, ammoType, { HIT_ZONES });
 
   // ── Ammo velocity ─────────────────────────────────────────────────────────────
   const ammoVelocity = resolveAmmoVelocity({
@@ -581,7 +576,6 @@ export function applyAttachments(w, atts) {
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs, _undeployTimeMs,
     _hsMult:                 hsMult,
     _limbMult:               limbMult,
-    _limbClass:              limbClass,
     _collateralMult:         collateralMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
     _healthRegenDelayS:      healthRegenDelayS,

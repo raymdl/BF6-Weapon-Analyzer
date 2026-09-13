@@ -26,7 +26,6 @@ const recoilDecay = readJson('data/recoil_decay.json');
 setAttachmentContext({
   ...attachments, ...balance,
   AMMO: ammo.AMMO, WEAPON_AMMO: ammo.WEAPON_AMMO,
-  HP_HS_HIGH: new Set(balance.HP_HS_HIGH),
 });
 const LOADOUT_DATA = { ...attachments, AMMO: ammo.AMMO, WEAPON_AMMO: ammo.WEAPON_AMMO };
 core.setSimContext({

@@ -8,34 +8,17 @@
 const REDUCED_BODY_ZONES = new Set(['stomach', 'abdomen', 'arm', 'arms', 'leg', 'legs', 'limb', 'limbs']);
 const DAMAGE_EPSILON = 1e-9;
 
-export function resolveHitMultipliers(weaponId, ammoType, tables = {}) {
-  const {
-    BASE_HS_MULT = {},
-    HP_HS_HIGH = new Set(),
-    LIMB_CLASS = {},
-    LIMB_CLASS_MULT = {},
-    AUTO_HS_MULT = {},
-  } = tables;
-  const hpHsHigh = HP_HS_HIGH instanceof Set ? HP_HS_HIGH : new Set(HP_HS_HIGH ?? []);
-  const limbClass = LIMB_CLASS[weaponId] ?? null;
-  const autoHs = limbClass === 'auto' ? AUTO_HS_MULT : null;
-  const baseHeadshotMultiplier = BASE_HS_MULT[weaponId] ?? autoHs?.standard ?? 1.34;
-
-  let headshotMultiplier;
-  if (ammoType?.hsMult === null || ammoType?.hsMult === undefined) {
-    headshotMultiplier = baseHeadshotMultiplier;
-  } else if (ammoType.hsMult === 'hp') {
-    // Snipers would fall through to 1.5 here, but none equips Hollow Point:
-    // their base headshot multiplier already guarantees a one-shot kill.
-    headshotMultiplier = hpHsHigh.has(weaponId) ? 1.75 : (autoHs?.hp ?? 1.5);
-  } else {
-    headshotMultiplier = autoHs?.[ammoType.id] ?? ammoType.hsMult;
-  }
-
+/**
+ * Headshot and limb (arm/leg/abdomen) multipliers per weapon and ammo come from
+ * Frosty through data/hit_zones.json. Regenerate that file with
+ * scripts/frosty-hit-zones.py after a game update; do not add class-level tables.
+ */
+export function resolveHitMultipliers(weaponId, ammoType, { HIT_ZONES } = {}) {
+  const weapon = HIT_ZONES?.weapons?.[weaponId];
+  const resolved = weapon?.ammo?.[ammoType?.id] ?? weapon;
   return {
-    headshotMultiplier,
-    limbMultiplier: LIMB_CLASS_MULT[limbClass] ?? 1,
-    limbClass,
+    headshotMultiplier: resolved?.headshot ?? 1.34,
+    limbMultiplier: resolved?.limb ?? 1,
   };
 }
 

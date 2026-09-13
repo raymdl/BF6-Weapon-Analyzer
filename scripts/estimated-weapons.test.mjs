@@ -12,6 +12,7 @@ const attachments = read('data/attachments.json');
 const ammo = read('data/ammo.json');
 const balance = read('data/balance_tables.json');
 const recoil = read('data/recoil_decay.json');
+const hitZones = read('data/hit_zones.json');
 // Sym does not publish these three weapons, so their values come from Frosty.
 const DATAMINED_WEAPON_IDS = ['brod3', 'ef88', 'vssm'];
 const byId = id => weapons.find(weapon => weapon.id === id);
@@ -50,7 +51,7 @@ test('BROD 3, EF88 and VSSM have complete cross-file coverage and five attachmen
     assert.equal(recoil.RECOIL_DEC_TEXP[weapon.id] != null, true);
     assert.equal(balance.RECOIL_MULT[weapon.id] != null, true);
     assert.equal(balance.HIP_SPREAD_BASE_INDEX[weapon.id] != null, true);
-    assert.equal(balance.LIMB_CLASS[weapon.id], weapon.cls === 'DMR' ? 'dmr' : 'auto');
+    assert.ok(hitZones.weapons[weapon.id], `${weapon.id}: Frosty hit zones`);
   }
 });
 

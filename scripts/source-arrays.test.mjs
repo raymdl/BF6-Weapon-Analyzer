@@ -11,7 +11,7 @@ const ammo = read('../data/ammo.json');
 const balance = read('../data/balance_tables.json');
 const weapons = read('../data/weapons.json');
 const evidence = read('../reference-data/provenance/frosty-array-review-2026-09-09.json');
-setAttachmentContext({ ...attachments, ...ammo, ...balance, HP_HS_HIGH: new Set(balance.HP_HS_HIGH) });
+setAttachmentContext({ ...attachments, ...ammo, ...balance });
 const build = (id, changes = {}) => {
   const weapon = weapons.find(w => w.id === id);
   const atts = {};
@@ -101,7 +101,7 @@ test('moving ADS uses each stored base and applies attachment shifts to that bas
   const original = structuredClone(custom);
   const atts = {};
   resetAttsForWeapon(atts, custom, { ...attachments, ...ammo });
-  const context = { ...attachments, ...ammo, ...balance, HP_HS_HIGH: new Set(balance.HP_HS_HIGH) };
+  const context = { ...attachments, ...ammo, ...balance };
   setAttachmentContext({ ...context, GRIPS: [...attachments.GRIPS,
     { id: 'test_shift', movingAdsSpreadTierMod: 1 },
     { id: 'test_clamp', movingAdsSpreadTierMod: 100 },
