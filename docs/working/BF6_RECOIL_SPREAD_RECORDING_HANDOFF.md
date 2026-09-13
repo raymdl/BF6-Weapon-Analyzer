@@ -1,5 +1,20 @@
 # Active Frosty recoil and spread investigations
 
+## Current implementation update — 13 September
+
+The model now uses source distribution exponents (usually 0.5; moving ADS on
+Interdictor 0.67) and decoded light hipfire growth/recovery factors. The M39 EMR
+analysis found 22 of 88 first-25-shot impacts inside half radius (25%), with mean
+normalized radius 66.1%. This supports area sampling for those captures; it does
+not establish every weapon/state or the native consumer. The selected light is
+modeled as active, and idle recovery remains unused.
+
+The dated capture measurements and fitted hypotheses below remain research
+evidence. Earlier model-dependent comparisons describe the implementation at
+capture time. Use the [model guide](../RECOIL_SPREAD_MODEL.md) and
+[current audit](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) for current behavior.
+
+
 Updated 12 September 2026. This is the active research handoff. Completed
 analysis and implementation records are in [the archive](../archive/README.md).
 The [full recording history](../archive/BF6_RECOIL_SPREAD_RECORDING_HISTORY_2026-09-11.md)
@@ -77,8 +92,8 @@ flags. All 248 named `MultiplierByOrder` arrays are empty. `FirstShotIncreaseMul
 everywhere. Non-neutral values: `VerticalRecoilIncrease` 0.6 on 16 non-automatic
 weapons, all with `UsePolarRecoil` true; `MaxVerticalRecoil` 90 on three pistols.
 `DistributionExponent` is 0.5 on almost every branch (0.67 for `DesertTechHTI`
-zoomed moving). The site samples `r = spread * u`, which is exponent 1 if the
-engine uses `u^exponent`; that consumer is not established. Hip `IdleTime` is 1.8 s
+zoomed moving). The site now samples `r = spread * u ** distExp`. The native
+consumer is not established; the earlier uniform-radius model used exponent 1. Hip `IdleTime` is 1.8 s
 on six bolt rifles and 1.2 s on `590A1` and `DP12`; ADS `IdleTime` is 0.4 s everywhere.
 
 **Spread integration.** Spread recovery now uses 1 ms steps. The 60 Hz step
@@ -263,8 +278,8 @@ in standing ADS, moving ADS, standing hipfire, and moving hipfire.
 
 ## Pending scenario 6: projectile distribution inside the spread circle
 
-Purpose: test the analyzer's current uniform-radius impact sampling against
-uniform-area sampling, Frosty's `DistributionExponent`, or another distribution.
+Purpose: test the source-exponent sampler across further weapons and ADS states.
+Compare measured radial distributions with the current `DistributionExponent` model.
 
 Use a semi-automatic weapon that produces visible individual bullet holes and
 has no spread-altering attachment. At the standing 20 m wall distance:

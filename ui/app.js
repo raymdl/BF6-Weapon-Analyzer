@@ -55,7 +55,7 @@ const { AMMO, WEAPON_AMMO } = _ammo;
 const LOADOUT_DATA = {
   SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
   WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
-  AMMO, WEAPON_AMMO,
+  AMMO, WEAPON_AMMO, WEAPON_ATTS,
 };
 
 const byId = items => Object.fromEntries(items.map(a => [a.id, a]));
@@ -235,7 +235,7 @@ setSimContext({
 });
 setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
-  AMMO, WEAPON_AMMO,
+  AMMO, WEAPON_AMMO, WEAPON_ATTS,
   RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
   COLLATERAL_MULT_OVERRIDE, HIT_ZONES: _hitZones,
   MOVING_ACC_TIERS,
@@ -1907,7 +1907,7 @@ function renderAttachmentStats(loadouts) {
   const hipSpreadRecovery = w => {
     const dyn = w.spreadDyn?.hip;
     return (dyn?.firingOffset ?? 3.31)
-      * (1 + (w._hipSpreadDecayBoost ?? 0));
+      * (w._hipSpreadFiringDecOffsetMult ?? 1);
   };
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
   const metrics = [
@@ -1923,8 +1923,9 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after attachment effects. Lower is more consistent.' },
     { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: 'x',   dec: 2, higherBetter: true, tooltip: 'ADS recoil recovery/decay multiplier applied to the weapon recoil decay factor. Higher returns to center faster.' },
     { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after attachment effects. Lower builds spread more slowly.' },
+    { lbl: 'Hip Spread/Shot',     val: w => w.spreadDyn?.hip?.inc,            unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Hipfire spread increase per shot after light effects. Lower builds spread more slowly.' },
     { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle and barrel effects. Higher clears spread faster.' },
-    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing after attachment effects. Higher clears spread faster.' },
+    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing. Lights also reduce spread added per shot and increase the non-linear recovery component; this value alone does not describe their overall effect.' },
     { lbl: 'Mov Spread',          val: w => w.spread?.adsMove?.[0],        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
     { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
     { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes your 3D world position. None or shorter is better.' },
@@ -1946,7 +1947,8 @@ function renderAttachmentStats(loadouts) {
     'Recoil Recovery': ['adsRecoilDecayMult'],
     'Spread/Shot': ['adsSpreadIncMult'],
     'ADS Spread Recovery': ['adsSpreadDecayBoost', 'adsSpreadFiringDecOffsetMult', 'adsSpreadFiringDecCoefMult'],
-    'Hip Spread Recovery': ['hipSpreadDecayBoost'],
+    'Hip Spread/Shot': ['hipSpreadIncMult'],
+    'Hip Spread Recovery': ['hipSpreadFiringDecOffsetMult', 'hipSpreadFiringDecCoefMult'],
     'Mov Spread': ['movingAdsSpreadTierMod'],
     'Hipfire Spread': ['hipSpreadTierMod'],
     '3D Spot': ['worldSpotMult'],
@@ -1960,9 +1962,7 @@ function renderAttachmentStats(loadouts) {
       ATT_BY_ID.SIGHTS[atts.sight],
       ATT_BY_ID.MUZZLES[atts.muzzle],
       ATT_BY_ID.BARRELS[atts.barrel],
-      ATT_BY_ID.GRIPS[atts.grip],
-      ATT_BY_ID.LASERS[atts.laser] ?? ATT_BY_ID.GRIPS[atts.laser] ?? ATT_BY_ID.LIGHTS[atts.laser],
-      ATT_BY_ID.LIGHTS[atts.light],
+      ...Object.values(Loadout.resolveMountAttachments(atts, weapon, _atts)),
       ATT_BY_ID.AMMO[atts.ammo],
       ATT_BY_ID.ERGOS[atts.ergo],
       wm?.mags?.[atts.mag ?? wm.def],
@@ -2271,7 +2271,7 @@ function renderRecoil({ plotOnly = false } = {}) {
         const varLines = [];
         {
           const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
-          const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
+          const grp = Loadout.resolveMountAttachments(atts, selW, _atts).grip;
           const ergo = ATT_BY_ID.ERGOS[atts.ergo ?? 'none'] ?? ERGOS[0];
           // Tier ladder: dirVar × dirVarMult ^ (dirVarExp + attachment tier mods)
           const adsG = selW.recoil?.[aim];
@@ -2325,7 +2325,9 @@ function renderRecoil({ plotOnly = false } = {}) {
         const mk = o => ({ ...defaultAttsForWeapon(selW), ...o });
         const ra = w => selectedRecoilAmountBeforePlatformFor(w);
         const muz = ATT_BY_ID.MUZZLES[atts.muzzle] ?? MUZZLES[0];
-        const grp = ATT_BY_ID.GRIPS[atts.grip] ?? GRIPS[0];
+        const grp = Loadout.resolveMountAttachments(atts, selW, _atts).grip;
+        const gripSelection = Loadout.attachmentSlots(selW, _atts).rail?.accepts.includes('grip')
+          ? { rail: grp.id === 'none' ? null : { type: 'grip', id: grp.id } } : { grip: grp.id };
         const ammoObj = ATT_BY_ID.AMMO[atts.ammo ?? 'standard'] ?? AMMO[0];
         const ergoObj = ATT_BY_ID.ERGOS[atts.ergo ?? 'none'] ?? ERGOS[0];
         const baseRecoil = ra(applyAttachments(selW, mk({})));
@@ -2336,12 +2338,12 @@ function renderRecoil({ plotOnly = false } = {}) {
           if (Math.abs(d) >= 0.005) { lines.push(`<div class="rc-tt-row"><span>${lbl}</span><span class="${d > 0 ? 'rc-tt-pos' : 'rc-tt-neg'}">${d > 0 ? '+' : '−'}${Math.abs(d).toFixed(2)}°</span></div>`); prev = r; }
         };
         if (muz.id !== 'none') try_(muz.name, { muzzle: muz.id });
-        if (grp.id !== 'none') try_(grp.name, { muzzle: muz.id, grip: grp.id });
+        if (grp.id !== 'none') try_(grp.name, { muzzle: muz.id, ...gripSelection });
         const defaultAmmo = WEAPON_AMMO[selW.id]?.def ?? 'standard';
         if ((atts.ammo ?? 'standard') !== defaultAmmo || (ammoObj.adsRecoilTierMod ?? 0) !== 0)
-          try_(ammoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id });
+          try_(ammoObj.name, { muzzle: muz.id, ...gripSelection, ammo: ammoObj.id });
         if (ergoObj.id !== 'none' || (ergoObj.adsRecoilTierMod ?? 0) !== 0)
-          try_(ergoObj.name, { muzzle: muz.id, grip: grp.id, ammo: ammoObj.id, ergo: ergoObj.id });
+          try_(ergoObj.name, { muzzle: muz.id, ...gripSelection, ammo: ammoObj.id, ergo: ergoObj.id });
         if (state.recoil.platform === 'console') {
           const after = +(prev * CONSOLE_RECOIL_MULT).toFixed(2), d = +(after - prev).toFixed(2);
           lines.push(`<div class="rc-tt-row"><span>Console Recoil Reduction</span><span class="rc-tt-neg">−${Math.abs(d).toFixed(2)}°</span></div>`);

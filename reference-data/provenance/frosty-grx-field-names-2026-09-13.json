@@ -1,0 +1,3643 @@
+{
+  "method": "GRX_Weapons node leaves matched by value to scalar fields of the block that references the node; names require one field matching every observation and more than one distinct value. Container names use the last GRX anchor segment. Name evidence only, not runtime semantics.",
+  "registry": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml",
+  "registrySha256": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+  "scannedFileCount": 216,
+  "blockCount": 5669,
+  "names": {
+    "Field_0084b1d1": {
+      "name": "IncreasePerShot",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 19
+        }
+      ]
+    },
+    "Field_02433593": {
+      "name": "RecoilDirectionVariationMultiplierExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_04490b34": {
+      "name": "RecoilDecreaseOffset",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_0b26c028": {
+      "name": "IdleDecreaseExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_0bf4f62b": {
+      "name": "InitialSpeed",
+      "evidence": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_0f79aaed": {
+      "name": "NotFiringDecreaseExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_14c4a054": {
+      "name": "RateOfFire",
+      "evidence": [
+        {
+          "blockType": "Struct_30331789",
+          "observations": 65,
+          "distinctValues": 29
+        }
+      ]
+    },
+    "Field_19861d8c": {
+      "name": "BlastDamage",
+      "evidence": [
+        {
+          "blockType": "Class_9966532d",
+          "observations": 2,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_1b9eef5d": {
+      "name": "FiringDecreaseOffset",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 11
+        }
+      ]
+    },
+    "Field_1c533b56": {
+      "name": "ReloadSpeed",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 28
+        }
+      ]
+    },
+    "Field_1d04f0f6": {
+      "name": "RecoilDecreaseTimeExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 14
+        }
+      ]
+    },
+    "Field_205e8a1c": {
+      "name": "MaxVerticalRecoil",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_22810b21": {
+      "name": "RecoilAmount",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 62
+        }
+      ]
+    },
+    "Field_22ce7cf3": {
+      "name": "RecoilAmountMultiplierExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_2320e742": {
+      "name": "BurstsPerMinute",
+      "evidence": [
+        {
+          "blockType": "Struct_30331789",
+          "observations": 65,
+          "distinctValues": 4
+        }
+      ]
+    },
+    "Field_28df1cde": {
+      "name": "RecoilDecreaseFactor",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 14
+        }
+      ]
+    },
+    "Field_2b6f2936": {
+      "name": "Index",
+      "evidence": [
+        {
+          "blockType": "Struct_a152fb6e",
+          "observations": 390,
+          "distinctValues": 10
+        }
+      ]
+    },
+    "Field_2ca8533e": {
+      "name": "FiringDecreaseCoefficient",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 12
+        }
+      ]
+    },
+    "Field_30c37c24": {
+      "name": "Drag",
+      "evidence": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 5
+        }
+      ]
+    },
+    "Field_32a99b9c": {
+      "name": "z",
+      "evidence": [
+        {
+          "blockType": "Struct_739f3ac5",
+          "observations": 65,
+          "distinctValues": 41
+        }
+      ]
+    },
+    "Field_33f3a8ab": {
+      "name": "BlastRadius",
+      "evidence": [
+        {
+          "blockType": "Class_9966532d",
+          "observations": 2,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_36c2f877": {
+      "name": "CameraRecoilAmount",
+      "evidence": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 4
+        }
+      ]
+    },
+    "Field_38a38f94": {
+      "name": "IdleCameraRecoilWhenZoomedAmountSwitchTime",
+      "evidence": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_39740463": {
+      "name": "RecoilDecreaseNorm",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_3ef01f58": {
+      "name": "ShockwaveDamage",
+      "evidence": [
+        {
+          "blockType": "Class_9966532d",
+          "observations": 2,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_3f680d24": {
+      "name": "Priority",
+      "evidence": [
+        {
+          "blockType": "Class_2fea847d",
+          "observations": 60,
+          "distinctValues": 2
+        },
+        {
+          "blockType": "Class_45930daa",
+          "observations": 18,
+          "distinctValues": 2
+        },
+        {
+          "blockType": "Class_8cdc5b63",
+          "observations": 9,
+          "distinctValues": 5
+        },
+        {
+          "blockType": "Class_bfd4f199",
+          "observations": 30,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_4614adfe": {
+      "name": "NumberOfMagazines",
+      "evidence": [
+        {
+          "blockType": "Struct_598cc52c",
+          "observations": 65,
+          "distinctValues": 12
+        }
+      ]
+    },
+    "Field_46afa73c": {
+      "name": "AutoReplenishDelay",
+      "evidence": [
+        {
+          "blockType": "Struct_598cc52c",
+          "observations": 65,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_4d3f0635": {
+      "name": "NotFiringDecreaseOffset",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 4
+        }
+      ]
+    },
+    "Field_50b8fd5b": {
+      "name": "RecoilAmountMultiplier",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 22
+        }
+      ]
+    },
+    "Field_524836d3": {
+      "name": "ShockwaveRadius",
+      "evidence": [
+        {
+          "blockType": "Class_9966532d",
+          "observations": 2,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_5bd8006c": {
+      "name": "RateOfFireForBurst",
+      "evidence": [
+        {
+          "blockType": "Struct_30331789",
+          "observations": 65,
+          "distinctValues": 30
+        }
+      ]
+    },
+    "Field_5ef7b9a1": {
+      "name": "TimeToLive",
+      "evidence": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 6
+        }
+      ]
+    },
+    "Field_60e4e484": {
+      "name": "MaxAngle",
+      "evidence": [
+        {
+          "blockType": "Struct_0efdda3f",
+          "observations": 2048,
+          "distinctValues": 24
+        }
+      ]
+    },
+    "Field_65700a5d": {
+      "name": "HorizontalRecoilRight",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 6
+        }
+      ]
+    },
+    "Field_66d08b86": {
+      "name": "IdleDecreaseCoefficient",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_68be3481": {
+      "name": "DamageFalloffEndDistance",
+      "evidence": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 7
+        }
+      ]
+    },
+    "Field_7404fa33": {
+      "name": "RecoilDirectionVariationMultiplier",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 50
+        }
+      ]
+    },
+    "Field_7baf4297": {
+      "name": "MinAngle",
+      "evidence": [
+        {
+          "blockType": "Struct_0efdda3f",
+          "observations": 2048,
+          "distinctValues": 46
+        }
+      ]
+    },
+    "Field_7e2be65f": {
+      "name": "DamagePenetrationMultiplierIndex",
+      "evidence": [
+        {
+          "blockType": "Struct_29ea5d2b",
+          "observations": 65,
+          "distinctValues": 4
+        }
+      ]
+    },
+    "Field_7f1bb9d4": {
+      "name": "IdleCameraRecoilWhenZoomedAmount",
+      "evidence": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 4
+        }
+      ]
+    },
+    "Field_7f22bfb4": {
+      "name": "MagazineCapacity",
+      "evidence": [
+        {
+          "blockType": "Struct_598cc52c",
+          "observations": 65,
+          "distinctValues": 17
+        }
+      ]
+    },
+    "Field_82265a82": {
+      "name": "MinAmmoCountInWeapon",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_85ff24a0": {
+      "name": "ReloadTime",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 53
+        }
+      ]
+    },
+    "Field_865174fa": {
+      "name": "RecoilDirectionVariation",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 47
+        }
+      ]
+    },
+    "Field_8bd6dcdd": {
+      "name": "UsePolarRecoil",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_9045ba17": {
+      "name": "RecoilDecreaseExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_94869d67": {
+      "name": "StartDamage",
+      "evidence": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 9
+        }
+      ]
+    },
+    "Field_94efea57": {
+      "name": "DistributionExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_9532eb28": {
+      "name": "CameraRecoilWhenZoomedAmount",
+      "evidence": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 4
+        }
+      ]
+    },
+    "Field_9546447c": {
+      "name": "VerticalRecoilIncrease",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_95e340fe": {
+      "name": "InnerBlastRadius",
+      "evidence": [
+        {
+          "blockType": "Class_9966532d",
+          "observations": 2,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_9ba8b76b": {
+      "name": "DamageProtectionMultiplierIndex",
+      "evidence": [
+        {
+          "blockType": "Struct_29ea5d2b",
+          "observations": 65,
+          "distinctValues": 6
+        }
+      ]
+    },
+    "Field_9c1e1476": {
+      "name": "ReloadThreshold",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 36
+        }
+      ]
+    },
+    "Field_a63f14a6": {
+      "name": "VerticalRecoilMax",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 5
+        }
+      ]
+    },
+    "Field_aa558d2b": {
+      "name": "IdleDecreaseOffset",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 11
+        }
+      ]
+    },
+    "Field_af333987": {
+      "name": "IdleTime",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 5
+        }
+      ]
+    },
+    "Field_b480c17a": {
+      "name": "PostReloadDelay",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 8
+        }
+      ]
+    },
+    "Field_b5ee0f41": {
+      "name": "NotFiringDecreaseCoefficient",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_bc7acc94": {
+      "name": "EndDamage",
+      "evidence": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 13
+        }
+      ]
+    },
+    "Field_be31b12d": {
+      "name": "RateOfFireForSingleFire",
+      "evidence": [
+        {
+          "blockType": "Struct_30331789",
+          "observations": 65,
+          "distinctValues": 13
+        }
+      ]
+    },
+    "Field_c0c7c72f": {
+      "name": "ReloadDelay",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 7
+        }
+      ]
+    },
+    "Field_c59cc6a8": {
+      "name": "MaxAmmoCountInWeapon",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 15
+        }
+      ]
+    },
+    "Field_ce4b3347": {
+      "name": "VerticalRecoilMin",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 6
+        }
+      ]
+    },
+    "Field_d94fe6ad": {
+      "name": "MovingZoomedMinAnglesArrayIndex",
+      "evidence": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_e5b11905": {
+      "name": "DamageFalloffStartDistance",
+      "evidence": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 6
+        }
+      ]
+    },
+    "Field_edbd0711": {
+      "name": "HorizontalRecoilLeft",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 6
+        }
+      ]
+    },
+    "Field_f37351e6": {
+      "name": "FiringDecreaseExponent",
+      "evidence": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 3
+        }
+      ]
+    },
+    "Field_f53f8877": {
+      "name": "CameraRecoilUseTimeSinceLastShot",
+      "evidence": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 2
+        }
+      ]
+    },
+    "Field_f888cb38": {
+      "name": "RecoilDirection",
+      "evidence": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 28
+        }
+      ]
+    },
+    "Field_fc66e75e": {
+      "name": "ReloadTimeBulletsLeft",
+      "evidence": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 83
+        }
+      ]
+    },
+    "Field_fe708077": {
+      "name": "UnzoomedMinAnglesArrayIndex",
+      "evidence": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 5
+        }
+      ]
+    }
+  },
+  "containerNames": {
+    "Field_0a160c57": {
+      "name": "Stationary",
+      "observations": 512
+    },
+    "Field_0a5922e0": {
+      "name": "DispersionBehavior",
+      "observations": 64
+    },
+    "Field_0bf4f62b": {
+      "name": "InitialSpeed",
+      "observations": 65
+    },
+    "Field_3ed1c995": {
+      "name": "MinMaxDispersion",
+      "observations": 64
+    },
+    "Field_43a8d9ab": {
+      "name": "OverHeat",
+      "observations": 1
+    },
+    "Field_447d6d51": {
+      "name": "MovingJumpingSprinting",
+      "observations": 128
+    },
+    "Field_4cc9e2ed": {
+      "name": "Ammo",
+      "observations": 65
+    },
+    "Field_5198399a": {
+      "name": "SprintSettingsIndex",
+      "observations": 65
+    },
+    "Field_58d70acb": {
+      "name": "Shot",
+      "observations": 65
+    },
+    "Field_5b6caeda": {
+      "name": "IdleDecreaseTargetDuration",
+      "observations": 64
+    },
+    "Field_6b84de87": {
+      "name": "Zoomed",
+      "observations": 192
+    },
+    "Field_7b609515": {
+      "name": "Unzoomed",
+      "observations": 192
+    },
+    "Field_8c46f71b": {
+      "name": "WeaponHipMoveSpeedMultiplierIndex",
+      "observations": 65
+    },
+    "Field_8c7ee85a": {
+      "name": "Standing",
+      "observations": 128
+    },
+    "Field_956304be": {
+      "name": "Crouching",
+      "observations": 128
+    },
+    "Field_97ff0ca4": {
+      "name": "Prone",
+      "observations": 128
+    },
+    "Field_a059dd20": {
+      "name": "JumpingSprinting",
+      "observations": 128
+    },
+    "Field_ae4adc54": {
+      "name": "AnimationZoomSettingsIndex",
+      "observations": 65
+    },
+    "Field_c5d1c8fe": {
+      "name": "Recoil",
+      "observations": 64
+    },
+    "Field_db03e8a9": {
+      "name": "WeaponZoomTransitionIndex",
+      "observations": 65
+    },
+    "Field_dcb8bf9e": {
+      "name": "WeaponZoomedMoveSpeedMultiplierIndex",
+      "observations": 65
+    },
+    "Field_e2ae7c09": {
+      "name": "Moving",
+      "observations": 384
+    },
+    "Field_e7f4ce7c": {
+      "name": "AltAnimationZoomSettingsIndex",
+      "observations": 65
+    },
+    "Field_f8822efa": {
+      "name": "FireLogic",
+      "observations": 65
+    }
+  },
+  "singleValueNames": {
+    "Field_27b15985": {
+      "BridgeDelay": [
+        {
+          "blockType": "Struct_b50f190f",
+          "observations": 126,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_3f680d24": {
+      "Priority": [
+        {
+          "blockType": "Class_2f74f085",
+          "observations": 1,
+          "distinctValues": 1
+        },
+        {
+          "blockType": "Class_700f0abc",
+          "observations": 1,
+          "distinctValues": 1
+        },
+        {
+          "blockType": "Class_82956603",
+          "observations": 1,
+          "distinctValues": 1
+        },
+        {
+          "blockType": "Class_96bab3b8",
+          "observations": 1,
+          "distinctValues": 1
+        },
+        {
+          "blockType": "Class_c6c66955",
+          "observations": 1,
+          "distinctValues": 1
+        },
+        {
+          "blockType": "Class_d79973ba",
+          "observations": 6,
+          "distinctValues": 1
+        },
+        {
+          "blockType": "Class_fe7cd16a",
+          "observations": 1,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_5a02dd65": {
+      "RecoilDuration": [
+        {
+          "blockType": "Struct_bcfafb0d",
+          "observations": 128,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_72a2b562": {
+      "HeatPerBullet": [
+        {
+          "blockType": "Struct_92d07f08",
+          "observations": 1,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_aea8977a": {
+      "DecreaseOffset": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_bf650805": {
+      "FirstShotIncreaseMultiplier": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_cee5ebfe": {
+      "StationaryZoomedMinAnglesArrayIndex": [
+        {
+          "blockType": "Class_539cff9b",
+          "observations": 64,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_d14921ea": {
+      "DecreaseCoefficient": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_d9d33d20": {
+      "Gravity": [
+        {
+          "blockType": "Class_23637dce",
+          "observations": 86,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_e6120d22": {
+      "HeatDropPerSecond": [
+        {
+          "blockType": "Struct_92d07f08",
+          "observations": 1,
+          "distinctValues": 1
+        }
+      ]
+    },
+    "Field_f7a76bcf": {
+      "DecreaseExponent": [
+        {
+          "blockType": "Struct_3ee1d169",
+          "observations": 256,
+          "distinctValues": 1
+        }
+      ]
+    }
+  },
+  "ambiguousLeaves": [
+    {
+      "name": "DamageMultiplier",
+      "candidateFields": [
+        "Field_60f114df",
+        "Field_658381bd",
+        "Field_666021f3",
+        "Field_6828a4bd",
+        "Field_77b7f06b",
+        "Field_da288ebe",
+        "Field_eef69087"
+      ],
+      "blockType": "Class_23637dce",
+      "observations": 86,
+      "distinctValues": 1
+    },
+    {
+      "name": "ForceDisableCulling",
+      "candidateFields": [
+        "Field_01f06092",
+        "Field_0c2a5842",
+        "Field_12b2ef1f",
+        "Field_15132c2a",
+        "Field_1587416b",
+        "Field_17bf0623",
+        "Field_24805486",
+        "Field_316ccaf8",
+        "Field_317f7fb2",
+        "Field_33ebe359",
+        "Field_379b4017",
+        "Field_429193c4",
+        "Field_4b93543c",
+        "Field_4ef3b9b2",
+        "Field_5645e663",
+        "Field_6879d86a",
+        "Field_71468293",
+        "Field_714e3d08",
+        "Field_825a1c00",
+        "Field_852b0d37",
+        "Field_8660de85",
+        "Field_8b609046",
+        "Field_8f4ff642",
+        "Field_9bb515b8",
+        "Field_ac6ba767",
+        "Field_b33ad0e2",
+        "Field_b6f1a861",
+        "Field_b7432ca0",
+        "Field_bea4ff5e",
+        "Field_c1506711",
+        "Field_c2d45614",
+        "Field_cc1ef783",
+        "Field_cf9689b1",
+        "Field_ea102357",
+        "Field_f7a0dac7"
+      ],
+      "blockType": "Class_23637dce",
+      "observations": 8,
+      "distinctValues": 1
+    },
+    {
+      "name": "TimeToLiveUnderWater",
+      "candidateFields": [
+        "Field_01f06092",
+        "Field_0c2a5842",
+        "Field_12b2ef1f",
+        "Field_15132c2a",
+        "Field_1587416b",
+        "Field_17bf0623",
+        "Field_24805486",
+        "Field_316ccaf8",
+        "Field_317f7fb2",
+        "Field_33ebe359",
+        "Field_379b4017",
+        "Field_429193c4",
+        "Field_4b93543c",
+        "Field_4ef3b9b2",
+        "Field_5645e663",
+        "Field_6879d86a",
+        "Field_71468293",
+        "Field_714e3d08",
+        "Field_825a1c00",
+        "Field_852b0d37",
+        "Field_8660de85",
+        "Field_8b609046",
+        "Field_8f4ff642",
+        "Field_9bb515b8",
+        "Field_ac6ba767",
+        "Field_b33ad0e2",
+        "Field_b6f1a861",
+        "Field_b7432ca0",
+        "Field_bea4ff5e",
+        "Field_c1506711",
+        "Field_c2d45614",
+        "Field_cc1ef783",
+        "Field_cf9689b1",
+        "Field_ea102357",
+        "Field_f7a0dac7"
+      ],
+      "blockType": "Class_23637dce",
+      "observations": 4,
+      "distinctValues": 1
+    },
+    {
+      "name": "UnderWaterDrag",
+      "candidateFields": [
+        "Field_338b3395",
+        "Field_a36f22e9",
+        "Field_b3041025",
+        "Field_f486e852"
+      ],
+      "blockType": "Class_23637dce",
+      "observations": 2,
+      "distinctValues": 1
+    },
+    {
+      "name": "UnderWaterGravityScale",
+      "candidateFields": [
+        "Field_60f114df",
+        "Field_658381bd",
+        "Field_666021f3",
+        "Field_6828a4bd",
+        "Field_77b7f06b",
+        "Field_da288ebe",
+        "Field_eef69087"
+      ],
+      "blockType": "Class_23637dce",
+      "observations": 4,
+      "distinctValues": 1
+    },
+    {
+      "name": "Priority",
+      "candidateFields": [
+        "Field_0113aa5e",
+        "Field_092169cb",
+        "Field_0cf36ac9",
+        "Field_0ee9bba0",
+        "Field_0ef83ce9",
+        "Field_0fbfa76b",
+        "Field_149939ab",
+        "Field_17aa9991",
+        "Field_1e260fb6",
+        "Field_23ef8951",
+        "Field_2e0a74b3",
+        "Field_387dea20",
+        "Field_3f5269d0",
+        "Field_3f680d24",
+        "Field_435f849e",
+        "Field_499567ba",
+        "Field_4d651881",
+        "Field_5d15f292",
+        "Field_7439e284",
+        "Field_76afdb53",
+        "Field_7ca4cff3",
+        "Field_8b1da211",
+        "Field_8d8f2456",
+        "Field_96b1708b",
+        "Field_99e35b16",
+        "Field_9ab97348",
+        "Field_a4ada5e4",
+        "Field_a8541547",
+        "Field_abf36b0b",
+        "Field_ad793939",
+        "Field_afe997f9",
+        "Field_d4d97a8f",
+        "Field_e9129d03",
+        "Field_ef2194e0"
+      ],
+      "blockType": "Class_83584c75",
+      "observations": 14,
+      "distinctValues": 1
+    },
+    {
+      "name": "Priority",
+      "candidateFields": [
+        "Field_0113aa5e",
+        "Field_092169cb",
+        "Field_0cf36ac9",
+        "Field_0ee9bba0",
+        "Field_0ef83ce9",
+        "Field_0fbfa76b",
+        "Field_149939ab",
+        "Field_17aa9991",
+        "Field_1e260fb6",
+        "Field_23ef8951",
+        "Field_2e0a74b3",
+        "Field_387dea20",
+        "Field_3f5269d0",
+        "Field_3f680d24",
+        "Field_435f849e",
+        "Field_499567ba",
+        "Field_4d651881",
+        "Field_5d15f292",
+        "Field_7439e284",
+        "Field_76afdb53",
+        "Field_7ca4cff3",
+        "Field_8b1da211",
+        "Field_8d8f2456",
+        "Field_96b1708b",
+        "Field_99e35b16",
+        "Field_9ab97348",
+        "Field_a4ada5e4",
+        "Field_a8541547",
+        "Field_abf36b0b",
+        "Field_ad793939",
+        "Field_afe997f9",
+        "Field_d4d97a8f",
+        "Field_e9129d03",
+        "Field_ef2194e0"
+      ],
+      "blockType": "Class_87421347",
+      "observations": 14,
+      "distinctValues": 1
+    },
+    {
+      "name": "DamageMultiplier",
+      "candidateFields": [
+        "Field_30a3b428",
+        "Field_42741adb",
+        "Field_658381bd",
+        "Field_b90c4e73"
+      ],
+      "blockType": "Class_9966532d",
+      "observations": 2,
+      "distinctValues": 2
+    },
+    {
+      "name": "Priority",
+      "candidateFields": [
+        "Field_0113aa5e",
+        "Field_092169cb",
+        "Field_0cf36ac9",
+        "Field_0ee9bba0",
+        "Field_0ef83ce9",
+        "Field_0fbfa76b",
+        "Field_149939ab",
+        "Field_17aa9991",
+        "Field_1e260fb6",
+        "Field_23ef8951",
+        "Field_2e0a74b3",
+        "Field_387dea20",
+        "Field_3f5269d0",
+        "Field_3f680d24",
+        "Field_435f849e",
+        "Field_499567ba",
+        "Field_4d651881",
+        "Field_5d15f292",
+        "Field_7439e284",
+        "Field_76afdb53",
+        "Field_7ca4cff3",
+        "Field_8b1da211",
+        "Field_8d8f2456",
+        "Field_96b1708b",
+        "Field_99e35b16",
+        "Field_9ab97348",
+        "Field_a4ada5e4",
+        "Field_a8541547",
+        "Field_abf36b0b",
+        "Field_ad793939",
+        "Field_afe997f9",
+        "Field_d4d97a8f",
+        "Field_e9129d03",
+        "Field_ef2194e0"
+      ],
+      "blockType": "Class_c42bd53b",
+      "observations": 14,
+      "distinctValues": 1
+    },
+    {
+      "name": "MovingIndex",
+      "candidateFields": [
+        "Field_54a69c98",
+        "Field_6138f58f"
+      ],
+      "blockType": "Struct_038e6367",
+      "observations": 64,
+      "distinctValues": 7
+    },
+    {
+      "name": "StationaryIndex",
+      "candidateFields": [
+        "Field_54a69c98",
+        "Field_6138f58f"
+      ],
+      "blockType": "Struct_038e6367",
+      "observations": 64,
+      "distinctValues": 7
+    },
+    {
+      "name": "InitialSpeedVariation",
+      "candidateFields": [
+        "Field_8359723e",
+        "Field_8d6d2bc1",
+        "Field_8dc12800",
+        "Field_8dcef541",
+        "Field_940b7d87",
+        "Field_be3b1be2",
+        "Field_fb2be9fb"
+      ],
+      "blockType": "Struct_29ea5d2b",
+      "observations": 8,
+      "distinctValues": 1
+    },
+    {
+      "name": "SpawnDelay",
+      "candidateFields": [
+        "Field_8359723e",
+        "Field_8d6d2bc1",
+        "Field_8dc12800",
+        "Field_8dcef541",
+        "Field_940b7d87",
+        "Field_be3b1be2",
+        "Field_fb2be9fb"
+      ],
+      "blockType": "Struct_29ea5d2b",
+      "observations": 65,
+      "distinctValues": 1
+    },
+    {
+      "name": "AutoReplenishMagazine",
+      "candidateFields": [
+        "Field_0f0da05f",
+        "Field_5702ee70",
+        "Field_7035fb55",
+        "Field_7909bca5",
+        "Field_82c20082",
+        "Field_f91b80cb"
+      ],
+      "blockType": "Struct_598cc52c",
+      "observations": 65,
+      "distinctValues": 1
+    },
+    {
+      "name": "AutoReplenishRounds",
+      "candidateFields": [
+        "Field_4fcf051d",
+        "Field_80a58418",
+        "Field_db4fa3c2"
+      ],
+      "blockType": "Struct_598cc52c",
+      "observations": 65,
+      "distinctValues": 1
+    },
+    {
+      "name": "InitialAmmo",
+      "candidateFields": [
+        "Field_4fcf051d",
+        "Field_80a58418",
+        "Field_db4fa3c2"
+      ],
+      "blockType": "Struct_598cc52c",
+      "observations": 65,
+      "distinctValues": 1
+    },
+    {
+      "name": "x",
+      "candidateFields": [
+        "Field_3901db14",
+        "Field_42fc0f5e"
+      ],
+      "blockType": "Struct_739f3ac5",
+      "observations": 65,
+      "distinctValues": 1
+    },
+    {
+      "name": "y",
+      "candidateFields": [
+        "Field_3901db14",
+        "Field_42fc0f5e"
+      ],
+      "blockType": "Struct_739f3ac5",
+      "observations": 65,
+      "distinctValues": 1
+    },
+    {
+      "name": "OverHeatDropDelay",
+      "candidateFields": [
+        "Field_3ad34fcc",
+        "Field_3b078489",
+        "Field_43f3e64b"
+      ],
+      "blockType": "Struct_92d07f08",
+      "observations": 1,
+      "distinctValues": 1
+    },
+    {
+      "name": "OverHeatPenaltyTime",
+      "candidateFields": [
+        "Field_3ad34fcc",
+        "Field_3b078489",
+        "Field_43f3e64b"
+      ],
+      "blockType": "Struct_92d07f08",
+      "observations": 1,
+      "distinctValues": 1
+    },
+    {
+      "name": "OverHeatThreshold",
+      "candidateFields": [
+        "Field_37a30bd2",
+        "Field_aa06832d"
+      ],
+      "blockType": "Struct_92d07f08",
+      "observations": 1,
+      "distinctValues": 1
+    },
+    {
+      "name": "FirstShotMultiplierVerticalRecoil",
+      "candidateFields": [
+        "Field_27f30454",
+        "Field_2859e2fd",
+        "Field_9b46e71d"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "HorizontalRecoilDecreaseMultiplier",
+      "candidateFields": [
+        "Field_27f30454",
+        "Field_2859e2fd",
+        "Field_9b46e71d"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "RecoilFadeOutEnd",
+      "candidateFields": [
+        "Field_1e41c505",
+        "Field_89e9f16e"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "RecoilFadeOutFactor",
+      "candidateFields": [
+        "Field_27f30454",
+        "Field_2859e2fd",
+        "Field_9b46e71d"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "RecoilFadeOutStart",
+      "candidateFields": [
+        "Field_1e41c505",
+        "Field_89e9f16e"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "RecoilPatternMultiplierPitch",
+      "candidateFields": [
+        "Field_0fc53def",
+        "Field_b468bc2c",
+        "Field_ddac0349"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "RecoilPatternMultiplierYaw",
+      "candidateFields": [
+        "Field_0fc53def",
+        "Field_b468bc2c",
+        "Field_ddac0349"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "RecoilPatternSeed",
+      "candidateFields": [
+        "Field_0fc53def",
+        "Field_b468bc2c",
+        "Field_ddac0349"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "ShootingRecoilDecreaseScale",
+      "candidateFields": [
+        "Field_27f30454",
+        "Field_2859e2fd",
+        "Field_9b46e71d"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    },
+    {
+      "name": "VerticalRecoilDecreaseMultiplier",
+      "candidateFields": [
+        "Field_27f30454",
+        "Field_2859e2fd",
+        "Field_9b46e71d"
+      ],
+      "blockType": "Struct_bcfafb0d",
+      "observations": 128,
+      "distinctValues": 1
+    }
+  ],
+  "modifierTargets": {
+    "operandFields": "Struct_b1f8b400 records; Field_bbffe8bc is the observed enable flag. Operand meaning is not decoded here.",
+    "files": {
+      "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MatchTrigger_ERG_P15.xml": [
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1.728",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1.728",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_Controller_03.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "member",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.8836",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "member",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.8836",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_Compensator_P10.xml": [
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.066667",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.728"
+          }
+        },
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_1d04f0f6",
+          "target": "RecoilDecreaseTimeExponent",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "-0.5",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.066667",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.728"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_1d04f0f6",
+          "target": "RecoilDecreaseTimeExponent",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "-0.5",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_P10.xml": [
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.066667",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.728"
+          }
+        },
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_1d04f0f6",
+          "target": "RecoilDecreaseTimeExponent",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "-0.5",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.066667",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.728"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_1d04f0f6",
+          "target": "RecoilDecreaseTimeExponent",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "-0.5",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10.xml": [
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10.xml": [
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.05",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1.2"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_01x00_ALLADS_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_01x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_01x25_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.254767",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.254767",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_01x50_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_01x75_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.041348",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.041348",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_02x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_02x50_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_03x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_03x50_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.449399",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.449399",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_04x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_04x50_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.54968",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.54968",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_05x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_06x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_08x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_10x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.762266",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.762266",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_4x00-4W_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_4x00_1x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "10",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_36c2f877",
+          "target": "CameraRecoilAmount",
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_4x50_1x50_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.54968",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.54968",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_5x00-5W_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_6x00-4W_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.041348",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.041348",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_6x00-8W_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.254767",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.254767",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.449399",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.449399",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.54968",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.54968",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Magnifier_01x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Magnifier_01x25_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.279325",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Magnifier_01x50_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Magnifier_01x75_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.449399",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.449399",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Magnifier_02x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_SVO_02x00-08x00-4W_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_SVO_03x00-10x00-6W_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.642258",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.762266",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.762266",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_SVO_2x00-8x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.586081",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.715803",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_1x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.5",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_1x50_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "-0.084472",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_2x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.138476",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_3x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.377135",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_4x00_P00.xml": [
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_7f1bb9d4",
+          "target": "IdleCameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": null,
+          "aim": null,
+          "targetField": "Field_9532eb28",
+          "target": "CameraRecoilWhenZoomedAmount",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0.505185",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM.xml": [
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "76",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_1d04f0f6",
+          "target": "RecoilDecreaseTimeExponent",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "1.24",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_28df1cde",
+          "target": "RecoilDecreaseFactor",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "76",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_1d04f0f6",
+          "target": "RecoilDecreaseTimeExponent",
+          "enabled": true,
+          "rawOperands": {
+            "Field_4692836a": "0",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "1.24",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ],
+      "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00.xml": [
+        {
+          "aimField": "Field_6b84de87",
+          "aim": "Zoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "-0.0006",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        },
+        {
+          "aimField": "Field_7b609515",
+          "aim": "Unzoomed",
+          "targetField": "Field_5a02dd65",
+          "target": null,
+          "enabled": false,
+          "rawOperands": {
+            "Field_4692836a": "-0.0006",
+            "Field_98a799ba": "1",
+            "Field_bbbfe9cc": "0",
+            "Field_5695ee1c": "1"
+          }
+        }
+      ]
+    }
+  }
+}

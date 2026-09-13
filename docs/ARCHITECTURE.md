@@ -12,7 +12,7 @@ package-install requirement, bundler, application server, or database.
 ```mermaid
 flowchart TD
     Page["index.html + styles + Chart.js"] --> App["ui/app.js"]
-    App --> Fetch["Promise.all: fetch six live JSON files"]
+    App --> Fetch["Promise.all: fetch seven live JSON files"]
     Fetch --> Context["Indexes and calculation contexts"]
     Context --> Restore["Restore URL and loadout defaults"]
     Restore --> Build["Selected build: applyAttachments"]
@@ -21,8 +21,8 @@ flowchart TD
     Fetch -->|failure| Error["Visible load error; reload action"]
 ```
 
-The six startup requests are `weapons.json`, `recoil_decay.json`,
-`balance_tables.json`, `attachments.json`, `ammo.json`, and `ballistics.json` under
+The seven startup requests are `weapons.json`, `recoil_decay.json`,
+`balance_tables.json`, `attachments.json`, `ammo.json`, `ballistics.json`, and `hit_zones.json` under
 `data/`. These are ordinary `fetch()` requests, not JSON module imports. A failed
 request rejects initialization. Provenance, reload-exception registers, reference
 workbooks, and raw Frosty exports are not browser dependencies.
@@ -39,9 +39,9 @@ loaded by the application.
 | [ui/app.js](../ui/app.js) | Startup, application state, orchestration, charts, plot sampling/projection, events, responsive behavior. |
 | [sim/loadout.js](../sim/loadout.js), [sim/attachments.js](../sim/attachments.js) | Defaults, availability, slot definitions, point totals, assumption detection. |
 | [sim/applyAttachments.js](../sim/applyAttachments.js) | Base weapon → effective build; tier composition, reload, velocity, handling, ammo effects. |
-| [sim/damage.js](../sim/damage.js) | Damage curves, hit-zone policy, pellet totals, BTK. |
+| [sim/damage.js](../sim/damage.js) | Damage curves, generated per-weapon/ammo hit-zone lookup, pellet totals, BTK. |
 | [sim/ballistics.js](../sim/ballistics.js) | Flight-time approximation, vector trajectory integration, zeroing. |
-| [sim/core.js](../sim/core.js) | Shot intervals, recoil generation, spread growth/recovery, shared display ceiling. |
+| [sim/core.js](../sim/core.js) | Shot intervals, recoil generation, spread growth/recovery, source-exponent radius sampling, shared display ceiling. |
 | [sim/target.js](../sim/target.js) | Lazy target image, geometry/alpha hit test, zone classification, impact summaries. |
 | [sim/share-state.js](../sim/share-state.js) | Compact and legacy URL encoding/decoding and selection validation. |
 | [ui/loadout.js](../ui/loadout.js), [ui/target-stats.js](../ui/target-stats.js) | Attachment controls and target-result presentation. |
@@ -53,12 +53,23 @@ platform behavior. Tests or tools calling these functions must initialize/reset
 their contexts deliberately. Source records are treated as read-only; the attachment
 resolver constructs a selected build rather than mutating the base weapon.
 
+Projectile assembly in `ui/app.js` resolves the selected weapon/ammo to a record
+in `ballistics.projectiles`, then adds the build's precise velocity. It does not
+substitute global gravity/drag for missing selections. Both spray and scatter
+layers call `sampleSpreadRadius()` so they use the same aim/movement exponent.
+
 ## State and rendering
 
 `state` holds two loadout slots, comparison mode, chart options, recoil options,
 and collapsed panels. Loadout changes flow through the shared resolver; rendering
 must not independently reapply modifiers. Overview, range charts, contextual recoil
 stats, and target results consume the selected build, with different display contexts.
+
+`WEAPON_ATTS.slots` defines physical grip/laser/light mounts independently of
+category availability. `resolveMountAttachments()` validates the typed selection
+and merges per-weapon fields for calculations, points, labels and assumption
+markers. A shared rail accepts one device. Its consumed category keys are removed
+from state; an explicit rail value, including empty, overrides stale legacy keys.
 
 Selected builds are cached by slot, weapon reference and attachment selection.
 Default builds, recoil patterns, spread sequences and trajectory calculations have
@@ -82,15 +93,16 @@ against per-weapon availability; unknown/out-of-range tokens are ignored.
 | Fragment field | Meaning |
 |---|---|
 | `w`, `a`; `cmp=1`, `w2`, `a2` | Primary/secondary weapon and attachment tokens, comparison. |
-| `cm`, `hs`, `ads`, `vel` | Chart mode, headshot count, optional ADS/flight-time additions. |
+| `cm`, `hs`, `ads`, `vel` | Chart mode, 0–4 headshots, optional ADS/flight-time additions. |
 | `ra`, `rs`, `rp`, `rcc`, `sh` | Aim, stance, platform, recoil-control percentage, shot count. |
 | `rv`, `rd`, `rz`, `rta`, `rax`, `ray` | Target view, distance, zero, aim preset/custom coordinates. |
 | `cl` | Dot-separated collapsed panel keys. |
 
 Compact attachment tokens use **zero-based decimal catalog positions**, not IDs:
 `S` sights, `M` muzzles, `B` barrels, `G` grips, `L` lasers, `T` lights, `A` ammo,
-`E` ergonomics, and `K` magazine keys. `R` means a grip in a combined laser slot;
-`H` means a light in that slot. Only differences from the weapon's defaults are emitted.
+`E` ergonomics, and `K` magazine keys. On a shared rail, `L` means a laser,
+`R` a grip, and `H` a light. These existing tokens decode to typed `atts.rail`
+state; legacy shared selections in `atts.laser` are normalized to that state. Only differences from the weapon's defaults are emitted.
 Magazine positions use `Object.keys(WEAPON_MAG[id].mags)` insertion order.
 
 Legacy dash-separated IDs use this fixed order:

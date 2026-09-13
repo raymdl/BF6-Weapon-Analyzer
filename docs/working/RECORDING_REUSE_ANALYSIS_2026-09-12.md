@@ -1,5 +1,12 @@
 # Existing-recording follow-up analysis — 12 September 2026
 
+**Historical analysis:** This report records the model and evidence available on
+12 September. The later source-exponent sampler and light changes supersede its
+implementation descriptions, not its measured recording results. See the
+[current recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) and
+[current model](../RECOIL_SPREAD_MODEL.md).
+
+
 ## Result and recommendation
 
 The existing recordings support more HUD analysis, but they do not justify a

@@ -109,7 +109,7 @@ def compare_fields():
     return fields
 
 
-def attachment_graph(base, weapons, read_xml, include_optics=False):
+def attachment_graph(base, weapons, read_xml, include_optics=False, ability_progressions=None):
     """Trace explicit references and selector GUID joins, without numeric inference."""
     rows, issues = [], []
 
@@ -177,6 +177,7 @@ def attachment_graph(base, weapons, read_xml, include_optics=False):
                 "modifierRaw": binding.findtext("Field_2f0e5b83"),
                 "rawBranch": binding.findtext("Field_3f680d24")})
 
+        attachment_records = []
         for attachment in sorted((base / folder).glob("Attachment_*.xml")):
             if not include_optics and EXCLUDED_ATTACHMENT.search(attachment.name):
                 continue
@@ -189,6 +190,21 @@ def attachment_graph(base, weapons, read_xml, include_optics=False):
             record = {"weapon": wid, "attachmentXml": relative, "attachmentGuid": asset.get("Guid"),
                 "category": category, "progression": progression,
                 "rawPointCost": asset.findtext("Field_6ee865a5"), "branches": []}
+            attachment_records.append(record)
+        # Some exported abilities retain selections whose standalone attachment
+        # record is absent. Trace only explicitly requested, root-listed branches.
+        for requested in (ability_progressions or {}).get(wid, []):
+            (asset, guid), = [key for key in by_progression if key[0] == requested.lower()]
+            branch, = by_progression[(asset, guid)]
+            progression = {"asset": requested, "guid": guid}
+            resolve(f"[Ebx] {requested} [{guid}]", ability_source)
+            attachment_records.append({"weapon": wid, "attachmentXml": None,
+                "attachmentGuid": None, "category": None, "progression": progression,
+                "sourceKey": ability_source + "#" + branch.get("Guid"), "abilityXml": ability_source,
+                "rawPointCost": None, "branches": []})
+        for record in attachment_records:
+            relative = record.get("sourceKey") or record["attachmentXml"]
+            progression = record["progression"]
             branches = by_progression.get((progression["asset"].lower(), progression["guid"]), []) if progression else []
             for branch in branches:
                 branch_record = {"abilityXml": ability_source, "guid": branch.get("Guid"),

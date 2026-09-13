@@ -963,6 +963,12 @@
         "standard": 5,
         "penetration": 5,
         "frangible": 20
+      },
+      "effectOverrides": {
+        "penetration": {
+          "adsRecoilTierMod": -7,
+          "hipRecoilTierMod": -7
+        }
       }
     },
     "m87a1": {

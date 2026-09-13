@@ -1,3 +1,4 @@
+import { resolveMountAttachments } from './loadout.js';
 import { resolveHitMultipliers } from './damage.js';
 
 /**
@@ -14,7 +15,7 @@ import { resolveHitMultipliers } from './damage.js';
  *   // After fetching data/attachments.json, data/ammo.json, data/balance_tables.json:
  *   setAttachmentContext({
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
- *     AMMO,
+ *     AMMO, WEAPON_ATTS,
  *     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
  *     COLLATERAL_MULT_OVERRIDE, HIT_ZONES,
  *     MOVING_ACC_TIERS,
@@ -311,22 +312,17 @@ export function applyAttachments(w, atts) {
 
   const muzzleBase = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
   const muz = { ...muzzleBase, ...muzzleBase.weaponOverrides?.[w.id] };
-  const bar = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
+  const barrelBase = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
+  const bar = { ...barrelBase, adsTimeTierMod: barrelBase.adsTimeTierModByWeapon?.[w.id] ?? 0 };
   const velocityResolution = resolveBarrelVelocity({ barData: bar });
-  // Combined slot: atts.laser may hold a grip or light ID for weapons like VZ.61/GRT-BC/SL9
-  const laserIsGrip  = !LASERS_BY_ID[atts.laser] && !!GRIPS_BY_ID[atts.laser];
-  const laserIsLight = !LASERS_BY_ID[atts.laser] && !laserIsGrip && !!_ctx.LIGHTS_BY_ID[atts.laser];
-  const grp = laserIsGrip ? GRIPS_BY_ID[atts.laser]  : (GRIPS_BY_ID[atts.grip]  ?? GRIPS[0]);
-  const las = laserIsGrip ? LASERS[0]                  : (LASERS_BY_ID[atts.laser] ?? LASERS[0]);
-  const lit = laserIsLight
-    ? _ctx.LIGHTS_BY_ID[atts.laser]
-    : (_ctx.LIGHTS_BY_ID[atts.light] ?? _ctx.LIGHTS[0]);
+  const { grip: grp, laser: las, light: lit } = resolveMountAttachments(atts, w, _ctx);
   const ammoBase = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
   const ammoType = { ...ammoBase, ..._ctx.WEAPON_AMMO?.[w.id]?.effectOverrides?.[ammoBase.id] };
   const projectile = _ctx.WEAPON_AMMO?.[w.id]?.projectileOverrides?.[ammoType.id];
 
   // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────
-  const ergoData = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
+  const ergoBase = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
+  const ergoData = { ...ergoBase, ...ergoBase.weaponOverrides?.[w.id] };
   const ergoAdsRecoilTierMod = ergoData.adsRecoilTierMod ?? 0;
 
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
@@ -393,6 +389,7 @@ export function applyAttachments(w, atts) {
   // ── Spread per shot ───────────────────────────────────────────────────────────
   // Heavy-type barrel modifiers target ADS. Hip spread keeps its own parameters.
   const spreadIncMult = bar.adsSpreadIncMult ?? 1;
+  const hipSpreadIncMult = (lit?.hipSpreadIncMult ?? 1) * (las.hipSpreadIncMult ?? 1);
   const spreadDynBase = w.spreadDyn
     ? { ...w.spreadDyn,
       ads: { ...w.spreadDyn.ads, ...ammoType.adsSpreadDynOverride, ...ergoData.adsSpreadDynOverride },
@@ -400,11 +397,13 @@ export function applyAttachments(w, atts) {
     }
     : w.spreadDyn;
   const adsSpreadInc = ergoData.adsSpreadDynOverride?.inc ?? ammoType.adsSpreadDynOverride?.inc ?? w.recoilIncAds;
-  const spreadDynOverride = spreadIncMult === 1 || !spreadDynBase
+  const spreadDynOverride = (spreadIncMult === 1 && hipSpreadIncMult === 1) || !spreadDynBase
     ? spreadDynBase
     : Object.fromEntries(Object.entries(spreadDynBase).map(([state, dyn]) => [
       state,
-      state === 'ads' && dyn?.inc != null ? { ...dyn, inc: dyn.inc * spreadIncMult } : dyn,
+      dyn?.inc != null
+        ? { ...dyn, inc: dyn.inc * (state === 'ads' ? spreadIncMult : hipSpreadIncMult) }
+        : dyn,
     ]));
 
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
@@ -528,14 +527,15 @@ export function applyAttachments(w, atts) {
     ? ergoData.autoRpm ?? w.autoRpm ?? null
     : null;
   const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd
-    || muz.recoilDurationOverride != null
+    || muz.recoilDurationOverride != null || muz.recoilDecreaseTimeExponentAdd
     || ergoData.recoilDecreaseFactorOverride != null || ergoData.recoilDecreaseTimeExponentOverride != null)
     ? Object.fromEntries(Object.entries(w.recoil).map(([state, group]) => [state, {
       ...group,
       ...(ergoData.recoilDecreaseFactorOverride != null
         ? { decFactor: ergoData.recoilDecreaseFactorOverride } : {}),
-      ...(ergoData.recoilDecreaseTimeExponentOverride != null
-        ? { decTimeExp: ergoData.recoilDecreaseTimeExponentOverride } : {}),
+      ...((ergoData.recoilDecreaseTimeExponentOverride != null || muz.recoilDecreaseTimeExponentAdd)
+        ? { decTimeExp: (ergoData.recoilDecreaseTimeExponentOverride ?? group.decTimeExp)
+          + (muz.recoilDecreaseTimeExponentAdd ?? 0) } : {}),
       ...(state === 'hip' && totalHipRecoilTierMod
         ? { amountExp: (group.amountExp ?? 0) + totalHipRecoilTierMod } : {}),
       ...(state === 'hip' && totalHipVarTierMod
@@ -558,7 +558,9 @@ export function applyAttachments(w, atts) {
     _adsSpreadNotFiringDecOffsetMult: bar.adsSpreadNotFiringDecOffsetMult ?? 1,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
     _hipRecoilDecayMult:     muz.hipRecoilDecayMult ?? 1,
-    _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
+    _hipSpreadFiringDecCoefMult: (lit?.hipSpreadFiringDecCoefMult ?? 1) * (las.hipSpreadFiringDecCoefMult ?? 1),
+    _hipSpreadFiringDecOffsetMult: (lit?.hipSpreadFiringDecOffsetMult ?? 1) * (las.hipSpreadFiringDecOffsetMult ?? 1),
+    _hipSpreadNotFiringDecOffsetMult: (lit?.hipSpreadNotFiringDecOffsetMult ?? 1) * (las.hipSpreadNotFiringDecOffsetMult ?? 1),
     _worldSpot:              worldSpot,
     _minimapSpot:            minimapSpot,
     _weaponSwayMult:         weaponSwayMult,

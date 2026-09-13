@@ -1,0 +1,88 @@
+{
+  "sourceVersion": "1.4.2.5",
+  "rows": [
+    {
+      "weapon": "drsiar",
+      "internalId": "M27IAR",
+      "attachment": "alloy_vert",
+      "attachmentXml": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_ZenitcoRK2.xml",
+      "selector": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical03_W20",
+        "guid": "bce0e7b7-6076-4f31-b84d-cd016a99793b"
+      },
+      "directGuidOccurrences": {
+        "Common/Hardware/Weapons/MG/M27IAR/GS_M27IAR.xml": 0,
+        "Common/Hardware/Weapons/MG/M27IAR/M27IAR_WB.xml": 0
+      },
+      "resolvedSiblingSelectorCount": 1,
+      "conclusion": "No binding in this weapon WB/GS export. Generate only the matched sibling effects; retain this selector as an unbound source reference. This is not a native runtime assertion."
+    },
+    {
+      "weapon": "rpk74m",
+      "internalId": "RPK74M",
+      "attachment": "30_fast",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact2.xml",
+      "selector": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10",
+        "guid": "8c9b2a1b-b5c7-4e49-8ab0-0c1e7fe136ed"
+      },
+      "directGuidOccurrences": {
+        "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml": 0,
+        "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.xml": 0
+      },
+      "resolvedSiblingSelectorCount": 1,
+      "conclusion": "No binding in this weapon WB/GS export. Generate only the matched sibling effects; retain this selector as an unbound source reference. This is not a native runtime assertion."
+    },
+    {
+      "weapon": "rpk74m",
+      "internalId": "RPK74M",
+      "attachment": "30_rnd",
+      "attachmentXml": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact1.xml",
+      "selector": {
+        "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPKM_W05",
+        "guid": "89c6dcd7-ec28-4e79-8744-b0a04e1711b1"
+      },
+      "directGuidOccurrences": {
+        "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml": 0,
+        "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.xml": 0
+      },
+      "resolvedSiblingSelectorCount": 1,
+      "conclusion": "No binding in this weapon WB/GS export. Generate only the matched sibling effects; retain this selector as an unbound source reference. This is not a native runtime assertion."
+    }
+  ],
+  "sourceHashes": {
+    "Common/Hardware/Weapons/MG/M27IAR/GS_M27IAR.xml": "8d7c65e0d4fe9589ef15bf0c73bdbe551830efddd8e1d74189f2cb50ae0513f0",
+    "Common/Hardware/Weapons/MG/M27IAR/M27IAR_WB.xml": "17b5bc9c94da770388ca7915f4b7c41d79df3b2740bdda7bdfb4148785fc5565",
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Vertical/U_WPM_BTM_Vertical03_W20.xml": "07c3ba0c9bbea0f0ed522998c90f18c383b70c9305b9c0d075609162616dcf4d",
+    "Common/Hardware/Weapons/MG/RPK74M/GS_RPK74M.xml": "d44a11a342a0cc3e53673ed770d8e2d0091f7afffd4157bee988aa98cf592bae",
+    "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.xml": "bcd4b6c0d372d407aa8635efbd6856f441fc491a05bb915a1b130918f508c0e5",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10.xml": "77a230cc064138dddae64bd78d5ac0464c95e5231c68bea9fb1564382a091555",
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPKM_W05.xml": "8b9211e12afbde37cf7521ffa22e05f81a1b91e31e19306b55766e89e8f94b24"
+  },
+  "unresolved": [
+    {
+      "weapon": "l110",
+      "attachment": "200_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "retainedValue": -1,
+      "sourceStatus": "unresolved",
+      "simulationSupport": "estimated",
+      "capture": "reference-data/attachment-audit/Weapon Attachments/LMG/L110/46_L110_Magazine_200RND_BELT_BOX.png",
+      "captureSha256": "33231fef63ae3fa66a4ab7e0c83ff12eb4d9ce4e54d0953f859897c6cc927ed7",
+      "observation": "The description states reduced ADS accuracy while moving. No numerical moving-spread value is visible. ADS movement speed is a different stat.",
+      "neededEvidence": "A linked source operand or a controlled in-game moving-ADS spread comparison for the 100- and 200-round magazines."
+    },
+    {
+      "weapon": "m123k",
+      "attachment": "200_rnd",
+      "field": "movingAdsSpreadTierMod",
+      "retainedValue": -1,
+      "sourceStatus": "unresolved",
+      "simulationSupport": "estimated",
+      "capture": "reference-data/attachment-audit/Weapon Attachments/LMG/M123K/44_M123K_Magazine_200RND_BELT_BOX.png",
+      "captureSha256": "35b22022a8d7ec4c46e414db62d645ff81ff4ab17c4a54c29e69070a6af4dec6",
+      "observation": "The description states reduced ADS accuracy while moving. No numerical moving-spread value is visible. ADS movement speed is a different stat.",
+      "neededEvidence": "A linked source operand or a controlled in-game moving-ADS spread comparison for the 100- and 200-round magazines."
+    }
+  ]
+}

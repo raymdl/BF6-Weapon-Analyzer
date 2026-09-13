@@ -22,6 +22,154 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('barrel ADS uses generated weapon-specific steps for every supported selection', () => {
+  const source = read('../reference-data/provenance/frosty-barrel-ads-generated.json');
+  for (const row of source.rows) {
+    const barrel = attachments.BARRELS.find(b => b.id === row.barrel);
+    assert.equal(barrel.adsTimeTierModByWeapon[row.weapon], row.step);
+    assert.equal(build(weapon(row.weapon), { barrel: row.barrel, grip: 'none', laser: 'none' })._adsTimeTierMod, row.step);
+  }
+  for (const [wid, atts] of Object.entries(attachments.WEAPON_ATTS)) {
+    for (const id of atts.barrel ?? []) {
+      if (id === 'none') continue;
+      const barrel = attachments.BARRELS.find(b => b.id === id);
+      assert.ok(Number.isInteger(barrel.adsTimeTierModByWeapon?.[wid]), `${wid}/${id}`);
+      assert.equal(Object.hasOwn(barrel, 'adsTimeTierMod'), false);
+    }
+  }
+  assert.equal(build(weapon('m4a1'), { barrel: 'basic' })._adsTimeMs, 200);
+  for (const barrel of ['vssm_suppressed', 'vssm_suppressed_asm']) {
+    assert.equal(build(weapon('vssm'), { barrel })._adsTimeMs, 250);
+  }
+  // A source update must change the calculation, without editing a barrel rule.
+  const barrels = structuredClone(attachments.BARRELS);
+  barrels.find(b => b.id === 'basic').adsTimeTierModByWeapon.m4a1 = 0;
+  try {
+    setAttachmentContext({ BARRELS: barrels });
+    assert.equal(build(weapon('m4a1'), { barrel: 'basic' })._adsTimeMs, 250);
+  } finally {
+    setAttachmentContext({ BARRELS: attachments.BARRELS });
+  }
+});
+
+test('generated grip, laser and magazine fields reach the runtime, including shared rail slots', () => {
+  const source = read('../reference-data/provenance/frosty-attachment-handling-generated.json');
+  for (const row of source.rows) {
+    const record = row.slot === 'mag'
+      ? attachments.WEAPON_MAG[row.weapon].mags[row.attachment]
+      : attachments[row.slot === 'grip' ? 'GRIPS' : 'LASERS']
+        .find(a => a.id === row.attachment).frostyModifiers?.[row.weapon];
+    for (const [field, value] of Object.entries(row.fields)) {
+      assert.equal(record[field], value, `${row.weapon}/${row.attachment}/${field}`);
+    }
+  }
+  const grips = structuredClone(attachments.GRIPS);
+  const lasers = structuredClone(attachments.LASERS);
+  grips.find(g => g.id === 'canted_stubby').frostyModifiers.vz61.adsTimeTierMod = 0;
+  lasers.find(l => l.id === '50mw_blue').frostyModifiers.m4a1.hipSpreadTierMod = 0;
+  const vz = weapon('vz61');
+  const m4 = weapon('m4a1');
+  const originalVzAdsTier = build(vz, { rail: { type: 'grip', id: 'canted_stubby' } })._adsTimeTierMod;
+  assert.equal(build(m4, { laser: '50mw_blue' })._hipSpreadTierMod, -2);
+  try {
+    setAttachmentContext({ GRIPS: grips, LASERS: lasers });
+    assert.equal(build(vz, { rail: { type: 'grip', id: 'canted_stubby' } })._adsTimeTierMod, originalVzAdsTier - 1);
+    assert.equal(build(m4, { laser: '50mw_blue' })._hipSpreadTierMod, 0);
+  } finally {
+    setAttachmentContext({ GRIPS: attachments.GRIPS, LASERS: attachments.LASERS });
+  }
+  assert.equal(attachments.WEAPON_MAG.m4a1.mags['20_rnd'].adsTimeTierShift, -1);
+  assert.equal(build(m4, { mag: '20_rnd' })._adsTimeMs, balance.ADS_SPD_TIERS[6]);
+  assert.equal(attachments.WEAPON_MAG.m60.mags['100_rnd'].adsTimeTierShift, 0);
+  assert.equal(attachments.WEAPON_MAG.m60.defAds, 1);
+});
+
+test('recovered handling identities and source base coordinates preserve current results', () => {
+  const source = read('../reference-data/provenance/frosty-attachment-handling-generated.json');
+  const identities = read('../reference-data/provenance/frosty-handling-mapping-followup.json');
+  for (const identity of identities.rows) {
+    const row = source.rows.find(r => r.weapon === identity.weapon && r.slot === identity.slot && r.attachment === identity.attachment);
+    assert.ok(row && Object.keys(row.fields).length > 0, `${identity.weapon}/${identity.attachment}`);
+    assert.deepEqual(row.deferred, {});
+  }
+  for (const row of read('../reference-data/provenance/frosty-handling-coordinate-proof.json').rows) {
+    const result = build(weapon(row.weapon), { mag: row.mag });
+    assert.equal(result._adsTimeMs, row.before.adsMs);
+    assert.equal(result._adsMoveSpeedMult, row.before.adsMove);
+  }
+  assert.equal(attachments.WEAPON_MAG.m60.defAms, 4);
+  assert.equal(attachments.WEAPON_MAG.pw7a2.defAms, 8);
+  for (const wid of ['m39emr', 'm417a2']) {
+    const row = source.rows.find(r => r.weapon === wid && r.slot === 'laser' && r.attachment === '5mw_green');
+    assert.equal(row.fields.hipSpreadTierMod, -2);
+    assert.ok(row.sourceAttachments.every(path => !path.includes('IRSP')));
+  }
+});
+
+test('sniper brakes use per-weapon Frosty amount steps in ADS and hip', () => {
+  const source = read('../reference-data/provenance/frosty-sniper-brakes-generated.json');
+  for (const row of source.rows) {
+    const w = weapon(row.weapon);
+    const result = build(w, { muzzle: row.muzzle, grip: 'none', ergo: 'none', ammo: 'standard', laser: 'none' });
+    assert.equal(result.recoilV, +(w.recoilV * (balance.RECOIL_MULT[w.id] ?? 0.94) ** row.fields.adsRecoilTierMod).toFixed(3));
+    assert.equal(result.recoil.hip.amountExp, w.recoil.hip.amountExp + row.fields.hipRecoilTierMod);
+  }
+  assert.equal(build(weapon('m2010esr'), { muzzle: 'sp_brake', ammo: 'standard' }).recoilV, 1.035);
+  const m4 = weapon('m4a1');
+  assert.equal(build(m4, { muzzle: 'sp_brake', ammo: 'standard' }).recoilV,
+    +(m4.recoilV * (balance.RECOIL_MULT.m4a1 ?? 0.94)).toFixed(3));
+  const smooth = build(weapon('m2010esr'), { muzzle: 'comp_brake', ammo: 'standard' });
+  assert.equal(smooth.recoil.ads.duration, 0.066667);
+  assert.equal(smooth.recoil.hip.duration, 0.066667);
+  assert.equal(smooth._adsRecoilDecayMult, 1.728);
+});
+
+test('Frosty lights scale hip growth and recovery without changing ADS or base records', () => {
+  const w = weapon('m4a1');
+  const before = structuredClone(w);
+  const base = build(w);
+  for (const light of ['flashlight', 'hip_taclight']) {
+    const lit = build(w, { light });
+    assert.equal(lit.spreadDyn.hip.inc, base.spreadDyn.hip.inc * 0.666667);
+    assert.deepEqual(lit.spread, base.spread, 'a light does not change the spread bounds');
+    assert.deepEqual(lit.spreadDyn.ads, base.spreadDyn.ads);
+    for (const stanceState of ['stand', 'move']) {
+      setSimContext({ aimState: 'hip', stanceState });
+      const normal = spreadRecoveries(base);
+      const active = spreadRecoveries(lit);
+      assert.equal(active.firing.coef, normal.firing.coef * 1.837117);
+      assert.equal(active.firing.offset, normal.firing.offset * 0.666667);
+      assert.equal(active.notFiring.offset, normal.notFiring.offset * 0.666667);
+      assert.equal(active.firing.exp, normal.firing.exp);
+      assert.equal(active.notFiring.coef, normal.notFiring.coef);
+      assert.ok(simulateSpread(lit, 20).at(-1) < simulateSpread(base, 20).at(-1));
+      setSimContext({ aimState: 'ads', stanceState });
+      assert.deepEqual(spreadRecoveries(lit), spreadRecoveries(base));
+      assert.deepEqual(simulateSpread(lit, 20), simulateSpread(base, 20));
+    }
+    assert.equal(lit.spreadDyn.hip.idleOffset, base.spreadDyn.hip.idleOffset, 'idle state remains unimplemented');
+  }
+  assert.deepEqual(w, before);
+  assert.deepEqual(build(w, { light: 'ads_taclight' }).spreadDyn, base.spreadDyn);
+});
+
+test('combined-slot lights and combo lasers use hip factors and preserve laser tiers', () => {
+  const w = weapon('p18');
+  const base = build(w);
+  for (const laser of ['flashlight', 'combo_red', 'combo_green']) {
+    const lit = build(w, { rail: { type: laser === 'flashlight' ? 'light' : 'laser', id: laser } });
+    assert.equal(lit.spreadDyn.hip.inc, base.spreadDyn.hip.inc * 0.666667);
+    assert.equal(lit._hipSpreadFiringDecCoefMult, 1.837117);
+    assert.equal(lit._hipSpreadNotFiringDecOffsetMult, 0.666667);
+    const plainLaser = laser === 'combo_red' ? '5mw_red' : laser === 'combo_green' ? '5mw_green' : 'none';
+    assert.deepEqual(lit.spread.hipStand, build(w, { rail: plainLaser === 'none' ? null : { type: 'laser', id: plainLaser } }).spread.hipStand);
+  }
+  const both = build(weapon('kord6p67'), { light: 'flashlight', laser: 'combo_green' });
+  const plain = build(weapon('kord6p67'));
+  assert.equal(both.spreadDyn.hip.inc, plain.spreadDyn.hip.inc * (0.666667 ** 2));
+  assert.equal(both._hipSpreadFiringDecCoefMult, 1.837117 ** 2);
+});
+
 test('Frosty collateral table matches ES 5.7 panels and clamps M121 A2 Tungsten', () => {
   const es = weapon('es57');
   for (const [ammo, exact, displayed] of [
@@ -251,10 +399,33 @@ test('hip recoil stacks grip, muzzle and ammunition tiers without mutating the b
   const result = build(w, { grip: 'ribbed_vert', muzzle: 'dp_brake', ammo: 'penetration' });
   setSimContext({ aimState: 'hip' });
   assert.ok(Math.abs(selectedRecoilAmountFor(result) / selectedRecoilAmountFor(base) - w.recoil.hip.amountMult ** 3) < 1e-10);
-  const combined = build(weapon('vz61'), { laser: 'canted_stubby' });
+  const combined = build(weapon('vz61'), { rail: { type: 'grip', id: 'canted_stubby' } });
   assert.equal(combined.recoil.hip.amountExp, weapon('vz61').recoil.hip.amountExp + 3);
   assert.deepEqual(w, original);
   setSimContext({ aimState: 'ads' });
+});
+
+test('Frosty burst-mode selectors apply the sourced ADS and hip recoil tiers', () => {
+  for (const [id, ergo] of [
+    ...['kord6p67', 'sg553r', 'pw5a3', 'kv9', 'cz3a1', 'umg40'].map(id => [id, 'burst_training']),
+    ['sl9', 'burst_mode'], ['grtbc', 'grtbc_burst_mode'],
+  ]) {
+    const w = weapon(id);
+    const rawHip = structuredClone(w.recoil.hip);
+    const result = build(w, { ergo });
+    assert.equal(result.fireMode, 'burst', id);
+    assert.equal(result.recoil.hip.dirVarExp, w.recoil.hip.dirVarExp + 3, id);
+    assert.equal(result.recoil.hip.amountExp, w.recoil.hip.amountExp + (id === 'grtbc' ? 1 : 0), id);
+    assert.deepEqual(w.recoil.hip, rawHip);
+    assert.equal(build(w).fireMode, 'auto', id);
+    assert.equal(attachments.ERGOS.find(a => a.id === ergo).assumed, undefined);
+  }
+  const linear = attachments.MUZZLES.find(a => a.id === 'linear_comp');
+  assert.equal(linear.assumed, undefined);
+  assert.equal(linear.adsRecoilTierMod, -1);
+  assert.equal(linear.hipRecoilTierMod, -1);
+  assert.equal(linear.adsRecoilVariationTierMod, 3);
+  assert.equal(linear.hipRecoilVariationTierMod, 3);
 });
 
 test('Folding Stock applies hip effects and source decay overrides without changing the base', () => {
@@ -452,4 +623,60 @@ test('manual-cycle cadence and shell reloads follow Frosty 1.4.2.5 and the in-ga
   }
   // Revolvers have one reload entry for every ammo count.
   for (const id of ['m44', 'm357trait']) assert.equal(weapon(id).emptyRld, weapon(id).tacRld, id);
+});
+
+test('belt-box HUD review removes magazine spread penalty but retains grip penalty and mismatch', () => {
+  for (const id of ['l110', 'm123k']) {
+    const w = weapon(id);
+    for (const grip of ['none', 'ribbed_vert']) {
+      const small = build(w, { mag: '100_rnd', grip });
+      const large = build(w, { mag: '200_rnd', grip });
+      assert.deepEqual(large.spread.adsMove, small.spread.adsMove);
+    }
+    assert.ok(build(w, { mag: '100_rnd', grip: 'ribbed_vert' }).spread.adsMove[0]
+      > build(w, { mag: '100_rnd', grip: 'none' }).spread.adsMove[0]);
+    assert.equal(attachments.WEAPON_MAG[id].mags['200_rnd'].descriptionMismatch.observedValue, 0);
+  }
+});
+
+
+test('approved Smooth Bolt and burst additions compose without changing source weapons', () => {
+  let count = 0;
+  for (const muzzle of attachments.MUZZLES) {
+    for (const [id, override] of Object.entries(muzzle.weaponOverrides ?? {})) {
+      if (override.recoilDurationOverride !== 0.066667) continue;
+      count++;
+      const w = weapon(id), original = structuredClone(w);
+      const result = build(w, { muzzle: muzzle.id });
+      for (const aim of ['ads', 'hip']) {
+        assert.equal(result.recoil[aim].decTimeExp, w.recoil[aim].decTimeExp - 0.5);
+      }
+      assert.deepEqual(w, original);
+    }
+  }
+  assert.equal(count, 17);
+  for (const [id, ergo] of [['grtbc', 'grtbc_burst_mode'], ['sl9', 'burst_mode'],
+    ...['sg553r', 'pw5a3', 'cz3a1'].map(id => [id, 'burst_training'])]) {
+    const w = weapon(id);
+    for (const aim of ['ads', 'hip']) {
+      assert.equal(build(w, { ergo, muzzle: 'none' }).recoil[aim].duration, 0.0244);
+      assert.equal(build(w, { ergo, muzzle: 'light_supp' }).recoil[aim].duration, 0.0494);
+    }
+  }
+  assert.equal(build(weapon('kv9'), { ergo: 'burst_training', muzzle: 'none' }).recoil.ads.duration, 0.025);
+});
+
+test('Mini Scout Tungsten and selected Slim Angled grips apply the approved source steps', () => {
+  const w = weapon('miniscout');
+  const result = build(w, { ammo: 'penetration', muzzle: 'none', grip: 'none' });
+  assert.equal(result.recoil.hip.amountExp, w.recoil.hip.amountExp - 7);
+  assert.equal(result.recoilV, Math.round(w.recoilV * balance.RECOIL_MULT[w.id] ** -7 * 1000) / 1000);
+  for (const [id, grip] of [['psr', 'slim_angled_sr'], ['sv98', 'slim_angled_sr'], ['ks18k', 'slim_angled']]) {
+    const w = weapon(id);
+    const base = build(w, { grip: 'none', laser: 'none' });
+    const result = build(w, { grip, laser: 'none' });
+    const index = balance.MOVING_ACC_TIERS.indexOf(base.spread.adsMove[0]);
+    assert.equal(result.spread.adsMove[0], balance.MOVING_ACC_TIERS[Math.max(0, index - 1)]);
+    assert.deepEqual(result.spread.adsStand, base.spread.adsStand);
+  }
 });

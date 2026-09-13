@@ -25,14 +25,28 @@ modeling assumptions. A simulation result is conditional on those inputs. Target
 geometry is approximate; shotgun pellets are not individually simulated. Start
 with [model limitations](docs/MODEL_LIMITATIONS.md) when interpreting precision.
 
+Frosty-derived hit zones, projectile gravity/drag, and collateral values cover all
+63 weapons and 328 supported ammo selections. Weapon sway is shown as a percentage
+change. Spread sampling uses the source exponent: normally 0.5 for uniform area,
+with 0.67 for Interdictor moving ADS. The M39 settled-hipfire captures support the
+0.5 interpretation; other states and native formulas remain unverified.
+
 The recoil model delivers each shot over its selected Frosty duration while
 recovery acts at the same time. Base duration is 25 ms for all 63 currently
 supported weapons. Smooth attachments use 50 ms and a 1.2 recovery factor;
 17 weapon–muzzle combinations use the source Bolt values of 66.667 ms and 1.728.
 Heavy-type barrels now use source ADS spread and recovery factors, supported by
-the AK4D recording comparison. These inputs improve the approximation; they do
+the AK4D recording comparison. Flashlight, Hipfire Taclight and combo lights use
+source hipfire growth/recovery factors; selecting one treats its light as active.
+The console option uses the source 0.8836 amount factor. These inputs improve the approximation; they do
 not establish the native engine formulas. See [recoil and spread](docs/RECOIL_SPREAD_MODEL.md)
 for the attachment exceptions, formulas, and evidence limits.
+
+Attachment handling now uses generated per-weapon Frosty modifiers. Shared
+grip/laser/light rails use one menu and retain compatibility with existing links.
+The [attachment guide](docs/ATTACHMENT_MODEL.md) covers barrel ADS timing,
+sniper brake steps, Linear Comp/burst recoil and the belt-box description
+mismatches. Source-backed modifiers do not establish native simulation formulas.
 
 ## Run locally
 

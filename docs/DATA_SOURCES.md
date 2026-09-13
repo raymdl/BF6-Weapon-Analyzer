@@ -1,6 +1,46 @@
 # Data sources and provenance
 
+## September 13 source integration
+
+The current model uses explicit projectile and hit-zone selections for 63 weapons
+and 328 ammo choices. Collateral values come from the named ten-row source table
+with the operator-confirmed final index clamp. Regeneration uses 5 s plus the
+source ammo delay; sway compares supported amount factors against the default
+loadout; spotting multiplies source factors against the existing 54/150 m bases.
+The latter bases and native composition remain model assumptions.
+
+Source spread exponents now drive `radius = spread * U ** exponent`: usually 0.5,
+with 0.67 for moving ADS on Interdictor. Controller recoil uses 0.8836 in the
+existing platform amount model. The decoded light fields replace the former
+15% hip-recovery estimate for all 137 supported light/combination selections.
+Selected lights are modeled as active; idle recovery is not simulated.
+
+Reproduction uses [projectile extraction](../scripts/frosty-ballistics.py),
+[hit-zone extraction](../scripts/frosty-hit-zones.py), and
+[collateral generation](../scripts/frosty-collateral.py). The collateral generator
+reads the retained compiled trace, not a new XML export. Source paths, hashes,
+field identities and comparison evidence are indexed in
+[provenance](../reference-data/provenance/README.md). The
+[global audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) records the decisions;
+[model limitations](MODEL_LIMITATIONS.md) separates configuration from native proof.
+
+
 [Documentation index](README.md) · [Data reference](DATA_REFERENCE.md) · [Stat ladders](STAT_LADDERS.md)
+
+## Attachment source generation
+
+Four generators now read current XML operands for barrel ADS, grip/laser/magazine
+handling, sniper brake amount steps, and Linear Comp/burst recoil. Retained audits
+supply identities and source joins, not replacement numeric values. Generated
+reports retain field paths, GUIDs and hashes. The burst review follows nested
+fire-mode selectors; field source status and simulation support are separate.
+
+The [attachment generation report](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
+records 233 unique barrel selections, 1,488 handling selections, 16 sniper brake
+pairs and 53 Linear Comp/burst pairs. Two belt-box description mismatches remain recorded as possible bugs; their
+unsupported spread penalties were removed after matched screenshot review.
+The [maintenance workflow](../MAINTENANCE.md#regenerate-attachment-modifiers)
+provides the commands. Source-only ability branches do not establish availability.
 
 ## What the current baseline means
 

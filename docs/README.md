@@ -1,15 +1,19 @@
 # Documentation index
 
-**Current implementation reference.** This documentation was reviewed against
-`8dcd25ae5de268fb660c5bdd1c0ff92bb0e373dd` on 9 September 2026. Later changes
-should update the affected guide alongside the implementation. Source-version
+**Current implementation reference.** Reviewed on 13 September 2026 against the
+current data and runtime modules, including the Frosty hit-zone, ballistics,
+collateral, spread-distribution, light, per-weapon attachment generation and
+shared-rail updates. Later changes should update
+the affected guide alongside the implementation. Source-version
 labels describe evidence provenance, not an independent certification of all game behavior.
 
-The recoil and spread guides were updated on 11 September 2026: timed recoil
-delivery with simultaneous recovery, per-weapon base durations, source Smooth
-operands (50 ms/1.2 or mapped Bolt 66.667 ms/1.728), and source Heavy-type ADS
-spread factors. These remain approximations of the native engine arithmetic.
-The [recoil guide](RECOIL_SPREAD_MODEL.md) lists the weapon–muzzle exceptions.
+The [recoil guide](RECOIL_SPREAD_MODEL.md) covers timed delivery/recovery, Smooth
+exceptions, Heavy ADS factors, light hipfire factors, controller scaling and
+source-exponent sampling. [Damage and ballistics](DAMAGE_BALLISTICS.md) covers
+per-weapon/ammo hit zones, manual-cycle timing, and explicit projectile selection.
+The [attachment model](ATTACHMENT_MODEL.md) explains sway percentages, spotting,
+regeneration, collateral, typed shared rails, generated handling, sniper brakes,
+Linear Comp/burst recoil and belt-box description mismatches. Source values and native arithmetic remain distinct.
 
 ## Folder roles
 
@@ -43,6 +47,10 @@ any remaining questions into an active handoff, and archive the completed record
 contains current status, remaining source questions, and capture plans. Completed
 recording analyses and implementation handoffs are in the
 [archive index](archive/README.md), with links back to current guides.
+
+The [global-candidates audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+records accepted source-model changes and the remaining activation/composition
+questions. Its early checkpoints are explicitly historical.
 
 ## Authority and historical material
 

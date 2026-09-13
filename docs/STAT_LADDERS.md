@@ -43,6 +43,32 @@ rows contain a separate range and must not be globally sorted.
 
 ![M433 source-row lookup and a worked example of clamping the combined index once](img/stat-indexing.svg)
 
+## Collateral damage multiplier
+
+The named source material table contains the following ten rows. The generator
+adds the weapon base index and ammo steps, then clamps once to 0–9. The operator
+confirmed this bounds rule. The matching compiled delegate table supports the
+row values; its native lookup code has not been decoded.
+
+| Index | Multiplier |
+|---|---:|
+| 0 | 0.0 |
+| 1 | 0.166667 |
+| 2 | 0.25 |
+| 3 | 0.333334 |
+| 4 | 0.500001 |
+| 5 | 0.571429 |
+| 6 | 0.666667 |
+| 7 | 0.750001 |
+| 8 | 0.833334 |
+| 9 | 1.0 |
+
+For example, base index 5 gives 0.571429; adding three steps gives row 8,
+0.833334. A sum above 9 gives 1.0. The generated
+`COLLATERAL_MULT_OVERRIDE` map covers all 63 weapons and 328 ammo selections.
+See the [source table trace](../reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json)
+and [generator](../scripts/frosty-collateral.py).
+
 ## ADS-in, ADS movement, and moving ADS spread
 
 Values in `ADS_SPD_TIERS` are milliseconds; `ADS_MOVE_TIERS` are dimensionless
@@ -70,6 +96,36 @@ columns agree; its distinct fourth column remains in evidence rather than becomi
 extra tiers. Each weapon stores its base minimum in `spread.adsMove[0]`. Attachment
 shifts select another row and update that bound; there is no global base override.
 
+The GS field that selects the row is `MovingZoomedMinAnglesArrayIndex`
+(`Field_d94fe6ad`). `UnzoomedMinAnglesArrayIndex` (`Field_fe708077`) selects the
+hip row and `StationaryZoomedMinAnglesArrayIndex` is `Field_cee5ebfe`. A row shift
+changes all four ZDA columns. The column names are inferred, not declared:
+
+| ZDA field | Row 3 | Probable state |
+|---|---|---|
+| `Field_6c73f45b` | 0.32 | moving ADS minimum (standing or crouching) |
+| `Field_624b1a88` | 0.32 | moving ADS minimum (standing or crouching) |
+| `Field_97ff0ca4` | 0.32 | prone moving ADS minimum |
+| `Field_bd300f62` | 1.13 | jumping/sprinting ADS minimum |
+
+Evidence: `Field_97ff0ca4` is `Prone` in GS `MinMaxDispersion`. That GS block has
+exactly four zoomed non-stationary states: standing, crouching and prone moving
+share one minimum (63 of 64 weapons), and standing jumping/sprinting is larger in
+all 64. The GS values are uniform placeholders (0.35/0.6, or 0.30/0.6), so values
+do not confirm the order. The analyzer uses only the moving minimum; the fourth
+column is not modeled. [GRX name evidence](../reference-data/provenance/frosty-grx-field-names-2026-09-13.json).
+
+M240L 75 Rnd adds one moving-spread index: 0.32 to 0.22 degrees with no other
+spread modifiers. L110/M123K 200 Rnd now use zero magazine spread shift, matching
+their 100-round boxes. Matched HUD screenshots support removing the old estimate;
+the descriptions still claim a penalty and may reflect a game/description bug. See the
+[belt-box evidence boundary](ATTACHMENT_MODEL.md#belt-box-moving-ads-spread).
+
+Barrel ADS terms use the selected weapon's `adsTimeTierModByWeapon` value.
+Grip/laser terms use their resolved `frostyModifiers`; magazine terms retain
+their axis-specific signs. M60 and PW7A2 base coordinates and magazine shifts
+were converted together, preserving their calculated ADS time and movement speed.
+
 The FZT source collection contains 80 rows across transition families. These eight
 ADS-in positions are separate from ADS-out and AZT main/alternate animation timings.
 ADS-out's rounded values are 400/333/267/233/200/167/133/100 ms; they are retained
@@ -77,7 +133,8 @@ research evidence and are not a second runtime ADS-in ladder.
 
 `defAds` and `defAms` are reviewed/normalized base coordinates, not a guarantee that
 all raw source defaults were imported without composition adjustments. VSSM's
-factory suppressed-barrel ADS question remains open. Displayed ADS movement uses
+WB barrel modifiers are zero; both supported barrels retain 250 ms with defaults.
+The conflicting GS route and native timing remain unresolved. Displayed ADS movement uses
 two decimals after float32 conversion; calculations retain these source decimals.
 
 ## Hip spread: all eighteen rows and seven columns
@@ -86,13 +143,18 @@ two decimals after float32 conversion; calculations retain these source decimals
 Only those two columns currently set runtime minima. H1–H5 below retain the other
 source fields without assigning unverified stance meanings:
 
-| Column | Retained field |
-|---|---|
-| H1 | `Field_160ef028` |
-| H2 | `Field_b3ab862b` |
-| H3 | `Field_1ef3a223` |
-| H4 | `Field_553bcee0` |
-| H5 | `Field_39b31415` |
+| Column | Retained field | Probable state (inferred) |
+|---|---|---|
+| H1 | `Field_160ef028` | jumping/sprinting |
+| H2 | `Field_b3ab862b` | crouching stationary |
+| H3 | `Field_1ef3a223` | crouching moving |
+| H4 | `Field_553bcee0` | prone stationary |
+| H5 | `Field_39b31415` | prone moving |
+
+Row 1 equals the M240L GS `MinMaxDispersion` unzoomed minima for standing
+stationary/moving (4.848/6.06), crouching (3.636/4.848) and prone (2.424/3.636).
+H1 is 12.12, where the GS jumping/sprinting placeholder is 8.484, so H1 is the least
+certain. The state names are inferred from values; no runtime use is added.
 
 | Index | hipStand ° | hipMove ° | H1 | H2 | H3 | H4 | H5 |
 |---|---|---|---|---|---|---|---|

@@ -263,17 +263,17 @@ export function spreadRecoveries(w) {
   const dyn = spreadDynamics(w);
   const ads = aimState === 'ads';
   const firing = {
-    coef: (dyn.firingCoef ?? 0) * (ads ? (w._adsSpreadFiringDecCoefMult ?? 1) : 1),
+    coef: (dyn.firingCoef ?? 0) * (ads ? (w._adsSpreadFiringDecCoefMult ?? 1) : (w._hipSpreadFiringDecCoefMult ?? 1)),
     exp: dyn.firingExp ?? 1,
     offset: (dyn.firingOffset ?? 0) *
-      (ads ? (w._adsSpreadFiringDecOffsetMult ?? 1) : 1) *
-      (1 + (ads ? (w._adsSpreadDecayBoost ?? 0) : (w._hipSpreadDecayBoost ?? 0))),
+      (ads ? (w._adsSpreadFiringDecOffsetMult ?? 1) : (w._hipSpreadFiringDecOffsetMult ?? 1)) *
+      (1 + (ads ? (w._adsSpreadDecayBoost ?? 0) : 0)),
   };
   const notFiring = {
     coef: dyn.notFiringCoef ?? firing.coef,
     exp: dyn.notFiringExp ?? firing.exp,
     offset: dyn.notFiringOffset != null
-      ? dyn.notFiringOffset * (ads ? (w._adsSpreadNotFiringDecOffsetMult ?? 1) : 1)
+      ? dyn.notFiringOffset * (ads ? (w._adsSpreadNotFiringDecOffsetMult ?? 1) : (w._hipSpreadNotFiringDecOffsetMult ?? 1))
       : firing.offset,
   };
   return { firing, notFiring };

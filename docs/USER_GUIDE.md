@@ -9,8 +9,9 @@ older data and behavior and may not have the same controls.
 
 Select a class and weapon in the loadout panel, then select attachments, ammunition,
 magazine, and ergonomics. Menus are filtered to the weapon's supported selections.
-A combined rail slot can hold a laser, light, or grip; the corresponding separate
-control is disabled where that space is shared. A new weapon resets its build to
+A shared rail has one menu labeled **Laser / Light** or **Grip / Laser / Light**.
+Select one device for that rail; selecting another replaces it. Separate controls
+for the same rail are hidden. Combo laser/light devices count as one attachment. A new weapon resets its build to
 that weapon's recorded defaults.
 
 Attachment labels include point costs. **More than 100 points produces a warning;
@@ -31,6 +32,17 @@ build. Values can move in opposite desirable directions: more damage and velocit
 are usually helpful, while less reload time or dispersion is usually helpful.
 A favorable indicator for one statistic is not an overall weapon ranking.
 
+**Weapon Sway** shows the percentage change from muzzle and magazine effects
+relative to the default build. It excludes optic and camera sway. **Hip Spread/Shot**
+shows spread added by each hipfire shot. A light can reduce that increase while
+also reducing the flat **Hip Spread Recovery** value; the recovery value alone
+does not describe the light's overall effect.
+
+Headshot, limb and collateral values follow the selected weapon and ammo.
+Collateral is a displayed multiplier, not a simulation of shooting through a
+particular wall. Enemy regeneration delay is 5 s normally, 9 s with Frangible,
+and 7 s with Flechette. Healing is not included in TTK.
+
 The overview's recoil values and ADS-related fields describe the selected build's
 ADS baseline. Changing the recoil plot to hipfire changes that plot's simulation
 and contextual recoil statistics; it does not redefine every overview card.
@@ -43,14 +55,14 @@ where supported rather than being evidence of a measured zero.
 | View | What it shows | Interpretation |
 |---|---|---|
 | Damage | Chest damage by distance, with a chest-to-limb band where multipliers differ. | The plotted damage is capped at 100; the underlying calculation and some tooltips retain higher damage. |
-| Bullets to kill (BTK) | Shots required against 100 health, with 0–3 headshots and remaining chest/limb hits. | Headshots are a count within the lethal sequence, not a hit-rate percentage. A dashed 0-headshot baseline helps compare scenarios. |
+| Bullets to kill (BTK) | Shots required against 100 health, with 0–4 headshots and remaining chest/limb hits. | Headshots are a count within the lethal sequence, not a hit-rate percentage. A dashed 0-headshot baseline helps compare scenarios. |
 | Time to kill (TTK) | Time from the first shot to the lethal shot. Optional ADS and projectile flight time are added. | No reaction time, misses, reload interruptions, armor, or target regeneration is included. |
 
 The headshot setting affects BTK and TTK. Chest/limb bands describe alternative
 hit placement, not statistical confidence. Shotgun damage/BTK assumes all pellets
-hit the selected zone. Pump-action multi-shot TTK is unavailable because a validated
-pump cycle is not modeled. Burst weapons use separate within-burst and between-burst
-cadence. The range table complements the chart at class-appropriate distances.
+hit the selected zone. Bolt- and pump-action TTK use source manual-cycle timing;
+DB-12 includes two shots per pump cycle. Burst weapons use separate within-burst
+and between-burst cadence. The range table complements the chart at class-appropriate distances.
 See [damage and ballistics](DAMAGE_BALLISTICS.md) for the equations and endpoint rules.
 
 ### Read the comparison charts
@@ -90,7 +102,7 @@ shows the chest-hit count; the upper edge shows the limb-hit count. A band from
 
 ![BTK comparison with zero headshots](img/chart-btk-body-example.svg)
 
-Use the **headshots dropdown** to select 0–3 headshots, with any remaining hits
+Use the **headshots dropdown** to select 0–4 headshots, with any remaining hits
 on the body. This is a count, not a percentage. If fewer headshots already kill,
 the count stops there. When headshots are selected, dashed lines retain the
 zero-headshot chest baseline.
@@ -136,6 +148,17 @@ acts at the same time. Smooth attachments use source duration and recovery value
 some weapon–muzzle pairs differ from the ordinary 50 ms/1.2 set. Heavy-type barrels
 use source ADS spread factors supported by the AK4D recordings. These are model
 inputs, not a guarantee that the displayed pattern matches every in-game shot.
+
+Flashlight, Hipfire Taclight, Combo Red and Combo Green now use source hipfire
+growth/recovery factors. The model treats a selected light as active; it has no
+light switch or automatic on/off simulation. Aimed Taclight has no hipfire bonus.
+The console setting scales recoil amount by 0.8836; it does not simulate aim assist.
+
+Shots are sampled uniformly over the spread circle's area when the source exponent
+is 0.5. This gives 25% probability inside half the radius, consistent with the M39
+settled-hipfire test. Interdictor moving ADS uses its separate 0.67 exponent.
+The circle still shows the maximum modeled radius, not a region containing a
+fixed percentage of a whole burst.
 
 ### Angle Plot: how far the aim turns
 

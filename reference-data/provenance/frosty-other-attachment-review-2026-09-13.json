@@ -1,0 +1,255 @@
+{
+  "handlingMappingUpdate": "frosty-attachment-handling-generated.json supplies the newly resolved handling identities. Its own report verifies their fields; the comparison counts below remain limited to the older audit field rows.",
+  "correction": "The initial report reused reversed CQB/Lightened labels from the old audit. Corrected: ImprvdSuppressor01 is CQB; ImprvdSuppressor02 is Lightened. VZ.61 combined-slot grips are also mapped as grips. Earlier CQB recoil/hip differences are withdrawn.",
+  "sourceComparison": "frosty-attachment-full-pass-2026-09-06.json",
+  "selectionsWithoutReviewedMapping": [
+    {
+      "weapon": "es57",
+      "slot": "muzzle",
+      "attachment": "sp_brake"
+    },
+    {
+      "weapon": "ggh22",
+      "slot": "muzzle",
+      "attachment": "sp_brake"
+    },
+    {
+      "weapon": "m45a1",
+      "slot": "muzzle",
+      "attachment": "sp_brake"
+    },
+    {
+      "weapon": "p18",
+      "slot": "muzzle",
+      "attachment": "sp_brake"
+    },
+    {
+      "weapon": "qbz192",
+      "slot": "ergo",
+      "attachment": "buffer"
+    },
+    {
+      "weapon": "vz61",
+      "slot": "muzzle",
+      "attachment": "sp_brake"
+    }
+  ],
+  "scope": "Current catalog review against the retained explicit source joins; all retained source hashes checked. Candidate arithmetic remains subject to the existing model boundaries. Conditional selections excluded from numeric comparison. Barrel ADS is handled by the new generator.",
+  "sourceFilesChecked": 6596,
+  "changedOrMissingSources": [],
+  "mappedCurrentSelections": 2775,
+  "conditionalSelectionsExcluded": 166,
+  "fieldChecks": 6810,
+  "counts": {
+    "ammo/adsMoveSpeedTier": {
+      "match": 27
+    },
+    "ammo/healthRegenDelayAdd": {
+      "match": 60
+    },
+    "ammo/hipSpreadTier.add": {
+      "match": 12
+    },
+    "ammo/minimapSpotMult": {
+      "match": 31
+    },
+    "ammo/recoil.ads.amountTier.add": {
+      "match": 81,
+      "difference": 4
+    },
+    "ammo/recoil.hip.amountTier.add": {
+      "match": 81,
+      "difference": 4
+    },
+    "ammo/worldSpotMult": {
+      "match": 31
+    },
+    "ergo/deployTier": {
+      "match": 15
+    },
+    "ergo/recoil.ads.amountTier.add": {
+      "match": 1
+    },
+    "ergo/recoil.ads.variationTier.add": {
+      "match": 1
+    },
+    "ergo/recoil.hip.amountTier.add": {
+      "match": 1
+    },
+    "ergo/recoil.hip.variationTier.add": {
+      "match": 1
+    },
+    "ergo/sprintRecoveryTier": {
+      "match": 15
+    },
+    "grip/adsMoveSpeedTier": {
+      "match": 197
+    },
+    "grip/adsTimeTier.add": {
+      "match": 405
+    },
+    "grip/deployTier": {
+      "match": 142
+    },
+    "grip/movingAdsSpreadTier.add": {
+      "match": 461,
+      "difference": 3
+    },
+    "grip/recoil.ads.amountTier.add": {
+      "match": 599
+    },
+    "grip/recoil.hip.amountTier.add": {
+      "match": 599
+    },
+    "grip/sprintRecoveryTier": {
+      "match": 142
+    },
+    "laser/hipSpreadTier.add": {
+      "match": 317
+    },
+    "laser/movingAdsSpreadTier.add": {
+      "match": 168
+    },
+    "mag/adsMoveSpeedTier": {
+      "match": 155
+    },
+    "mag/adsTimeTier.add": {
+      "match": 46
+    },
+    "mag/deployTier": {
+      "match": 153
+    },
+    "mag/movingAdsSpreadTier.add": {
+      "match": 44
+    },
+    "mag/sprintRecoveryTier": {
+      "match": 153
+    },
+    "muzzle/deployTier": {
+      "match": 39
+    },
+    "muzzle/hipSpreadTier.add": {
+      "match": 228
+    },
+    "muzzle/minimapSpotMult": {
+      "match": 409,
+      "difference": 4
+    },
+    "muzzle/recoil.ads.amountTier.add": {
+      "match": 299
+    },
+    "muzzle/recoil.ads.decFactor.mult": {
+      "match": 347
+    },
+    "muzzle/recoil.ads.duration.set": {
+      "match": 347
+    },
+    "muzzle/recoil.ads.variationTier.add": {
+      "match": 45
+    },
+    "muzzle/recoil.hip.amountTier.add": {
+      "match": 299
+    },
+    "muzzle/recoil.hip.duration.set": {
+      "match": 347
+    },
+    "muzzle/recoil.hip.variationTier.add": {
+      "match": 45
+    },
+    "muzzle/sprintRecoveryTier": {
+      "match": 39
+    },
+    "muzzle/worldSpotMult": {
+      "match": 413
+    }
+  },
+  "differences": [
+    {
+      "slot": "ammo",
+      "attachment": "penetration",
+      "field": "recoil.ads.amountTier.add",
+      "sourceCandidate": -6,
+      "current": -1,
+      "weapons": [
+        "m2010esr",
+        "psr",
+        "sv98"
+      ]
+    },
+    {
+      "slot": "ammo",
+      "attachment": "penetration",
+      "field": "recoil.hip.amountTier.add",
+      "sourceCandidate": -6,
+      "current": -1,
+      "weapons": [
+        "m2010esr",
+        "psr",
+        "sv98"
+      ]
+    },
+    {
+      "slot": "muzzle",
+      "attachment": "light_supp",
+      "field": "minimapSpotMult",
+      "sourceCandidate": 0.014000000000000002,
+      "current": 0.14,
+      "weapons": [
+        "drsiar",
+        "m2010esr"
+      ]
+    },
+    {
+      "slot": "ammo",
+      "attachment": "penetration",
+      "field": "recoil.ads.amountTier.add",
+      "sourceCandidate": -7,
+      "current": -1,
+      "weapons": [
+        "miniscout"
+      ]
+    },
+    {
+      "slot": "ammo",
+      "attachment": "penetration",
+      "field": "recoil.hip.amountTier.add",
+      "sourceCandidate": -7,
+      "current": -1,
+      "weapons": [
+        "miniscout"
+      ]
+    },
+    {
+      "slot": "grip",
+      "attachment": "slim_angled_sr",
+      "field": "movingAdsSpreadTier.add",
+      "sourceCandidate": -1,
+      "current": 0,
+      "weapons": [
+        "psr",
+        "sv98"
+      ]
+    },
+    {
+      "slot": "muzzle",
+      "attachment": "cqb_supp",
+      "field": "minimapSpotMult",
+      "sourceCandidate": 0.014000000000000002,
+      "current": 0.14,
+      "weapons": [
+        "m39emr",
+        "m417a2"
+      ]
+    },
+    {
+      "slot": "grip",
+      "attachment": "slim_angled",
+      "field": "movingAdsSpreadTier.add",
+      "sourceCandidate": -1,
+      "current": 0,
+      "weapons": [
+        "ks18k"
+      ]
+    }
+  ]
+}

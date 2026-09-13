@@ -7,6 +7,28 @@ The authoritative composition function is
 owns defaults, availability and cost. Keeping selection and calculation separate
 lets the UI and URL decoder use the same supported choices.
 
+## Grip, laser and light slots
+
+Each `WEAPON_ATTS` record defines `slots` separately from its category availability
+lists. A shared mount uses `rail: { accepts: ['grip', 'laser', 'light'] }` or
+`rail: { accepts: ['laser', 'light'] }`. Separate mounts use their own slot keys,
+for example `grip: { accepts: ['grip'] }`. Grips always remain in the `grip`
+availability list and `GRIPS` catalog, even when they occupy a shared rail.
+
+A shared selection is `atts.rail = { type: 'grip', id: 'canted_stubby' }`;
+`null` means empty. The category keys consumed by that rail are absent from the
+loadout. Separate mounts retain their existing string selections.
+`resolveMountAttachments()` checks slot compatibility and weapon availability,
+then merges the weapon-specific modifiers. Effects, point totals, labels and
+assumption markers use these resolved records. A combo device is one selection
+with one point cost.
+
+`normalizeMountAtts()` converts legacy shared selections from `atts.laser`.
+An explicit `rail` value takes priority, including `null`; stale category values
+cannot add another attachment. The share codec retains the existing `L`, `R`
+and `H` tokens and catalog indices, and converts old links into the new state.
+Weapon changes reset the slot selections.
+
 ## From selection to effective build
 
 ```mermaid
@@ -23,10 +45,10 @@ This is a dependency overview; axes can be evaluated independently. Modifier
 composition is not an arbitrary sequence of mutating the weapon once per dropdown.
 The resolver starts from the base record and combines the applicable fields once.
 
-Blank selections have nine keys: sight, muzzle, barrel, grip, laser, light, ammo,
-mag and ergo. Weapon defaults supply barrel/ammo/magazine IDs. Combined rail slots
-resolve a selected grip or light stored in `atts.laser`; neutral laser/light/grip
-records fill unused branches. Costs count the actual shared-slot choice once.
+Blank selections have sight, muzzle, barrel, grip, laser, light, ammo, mag and
+ergo keys. Weapon defaults supply barrel/ammo/magazine IDs and replace shared
+category keys with a typed `rail` selection; neutral laser/light/grip records
+fill unused branches. Costs count the actual shared-slot choice once.
 Sight costs may be overridden per weapon; ammo costs are per-weapon; magazines
 carry their own costs. The UI warns above 100 points without rejecting the build.
 
@@ -39,19 +61,123 @@ carry their own costs. The UI warns above 100 points without rejecting the build
 | Hip recoil amount / variation | Add supported hip tiers to the raw hip group's exponents. Amount includes ammo; variation comes from muzzle/grip/ergo. The per-aim simulator evaluates the group. |
 | Hip minimum spread | Muzzle/barrel/laser/grip/ammo shifts select one source row. Replace standing/moving minima and preserve each maximum. |
 | ADS dynamics | Merge raw ADS dynamics, then ammo override, then ergo override. Ergo wins for overlapping fields; ADS barrel increment scaling follows. |
-| Hip dynamics | Merge raw hip dynamics with ergonomic hip override. Heavy-barrel ADS modifiers do not alter this branch. |
+| Hip dynamics | Merge raw hip dynamics with ergonomic hip override, then apply light/combo-light growth and recovery factors. Heavy-barrel ADS modifiers do not alter this branch. |
 | Moving ADS minimum | Shared base plus grip/laser/barrel/magazine modifiers selects the moving-spread row. |
 | ADS time / movement | Resolve reviewed bases with the axis-specific signed modifier equations in the ladder guide. |
 | Sprint / deploy / undeploy | Sum timing effects independently across magazine, grip, ergo, barrel, muzzle, laser, light and ammo; clamp once. Deploy/undeploy share their selected index. |
+
+Barrel ADS steps are generated per weapon in `BARRELS[].adsTimeTierModByWeapon`.
+Run `python scripts/frosty-barrel-ads.py --root <Frosty-export-root>` to update them,
+or add `--check` to compare the catalog with current XML. The generator follows
+ability selectors into WB animation/FOV effects and reads the signed index field.
+Equal animation/FOV effects count once; no linked effect contributes zero. It
+does not use the old comparison's numeric values or combine the separate GS route.
+The identity map must cover every supported barrel selection. Conflicting source
+values stop generation. [Generated evidence](../reference-data/provenance/frosty-barrel-ads-generated.json)
+retains source references and hashes. The current export has 234 source records
+for 233 unique selections, because KTS100 Short has two agreeing source records.
+M4A1 Basic remains 200 ms; both VSSM barrels remain 250 ms with other defaults.
+See the [other-attachment review](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
+for further source-generation candidates and limits.
+
+Grip handling and laser spread use per-weapon `frostyModifiers` in their catalog
+records. The resolver merges these after selecting the normal or combined rail
+slot. Magazine handling is generated into the existing per-weapon magazine fields.
+Run `python scripts/frosty-attachment-handling.py --root <Frosty-export-root>`;
+`--check` compares without writing and `--review` writes evidence only. The current
+conversion generates 5,493 fields and three source base indices. All 1,488 handling
+selections have source identities, with no deferred fields. Two belt-box description
+mismatches are retained as possible game bugs.
+M60/PW7A2 bases and magazine modifiers are converted together so their calculated
+ADS times and movement speeds stay unchanged. The generator stops if a previously generated field loses its
+source mapping. The linked review identifies these exceptions and the corrected
+CQB/Lightened labels in the older audit.
 
 There is no universal rule that a named attachment affects every aim state or every
 recovery phase. Heavy-type barrels use source ADS increment ×0.666667, firing
 coefficient ×1.837117 and firing/not-firing offsets ×0.666667. Increment precision
 is retained for simulation. AK4D recordings support the ADS reduction; transfer
 to other weapons and barrel variants remains source-based. Muzzle ADS recovery
-boosts and light hip boosts scale firing offsets
-separately. [Recoil and spread](RECOIL_SPREAD_MODEL.md) explains fallback parameters
+boosts scale the ADS firing offset. Light factors separately scale hipfire
+increase, firing coefficient, and firing/not-firing offsets. [Recoil and spread](RECOIL_SPREAD_MODEL.md) explains fallback parameters
 and why retained native fields are not all executed.
+
+Flashlight, Hipfire Taclight, Combo Red and Combo Green use the same source factors
+across all 137 supported selections: increase ×0.666667, firing coefficient
+×1.837117, and firing/not-firing offsets ×0.666667. A light selected through a
+combined slot participates once. Where separate light and combo-laser slots are
+both supported and selected, their factors multiply. The model treats selected
+lights as active; native switching and operation order remain unverified. The
+idle offset operand is retained but unused. This replaces the old assumed +15%
+recovery boost and activates the combo lights' hipfire effect.
+
+## Source review of Linear Comp and burst attachments
+
+`scripts/frosty-assumption-review.py --root <Frosty-export-root> --apply` generates
+four recoil tier fields for Linear Comp and the three burst attachment records.
+Use `--check` to compare without writing. All 53 supported weapon/attachment
+pairs are traced from the attachment ability; burst effects additionally follow
+the nested fire-mode selector into that weapon's GS bindings.
+
+Linear Comp has amount -1 and variation +3 in ADS and hip. Ordinary Burst Training
+and SL9 Burst Mode have net amount 0 and variation +3 in both aims. GRT-BC Burst
+Training has net amount +1 and variation +3. These source-backed fields replace
+the old whole-record assumption flags; the newly applied hip effects do not
+change the established ADS effects or burst cadence.
+
+[Field evidence](../reference-data/provenance/frosty-assumption-review.json)
+records operation, source status, simulation support, XML path, GUID, field path,
+raw operand, and hashes separately. The existing burst cadence and the native
+recoil/recovery equation are not proved by this modifier trace. `GRM_AutoIdentifier_P00` adds -0.0006 seconds to recoil duration in both aim
+states for GRT-BC, SG553R, SL9, PW5A3 and CZ3A1. Per-weapon ergonomic overrides
+apply this addition after the selected muzzle duration override.
+
+## Belt-box moving-ADS spread
+
+M240L 75 Rnd has a linked magazine modifier of +1 moving-spread index. With
+other spread modifiers absent, minimum moving-ADS spread changes from 0.32 to
+0.22 degrees; its 50- and 100-round boxes have no magazine spread shift.
+M60 has 50- and 100-round options in the reviewed export, not a 75-round box.
+
+L110 and M123K 200 Rnd apply no moving-ADS spread shift. Matched mid-strafe
+screenshots show the same HUD bracket width for 100/200 rounds (13-14 px without
+a grip; 17 px with Ribbed Vertical). Neither weapon has a linked magazine spread
+operand. The previous estimated -1 step is removed; with no other spread modifiers,
+both boxes retain 0.32 degrees.
+
+Their descriptions still state reduced accuracy while moving in ADS. This may be
+a game or description bug; a future fix is not confirmed. `descriptionMismatch`
+retains the mismatch. Recheck captures and source bindings after game updates
+before adding a penalty. The screenshots establish HUD behavior, not exact
+projectile angles. [Capture evidence](../reference-data/provenance/belt-box-moving-ads-2026-09-13.json).
+
+Source trace (13 September 2026). L110 is `Minimi` and M123K is `MG4K`. Their
+200-round attachments use selector `U_WPM_MAG_200Ext1_556_W50` (`f601eb64-…`).
+Its package `WPM_MAG_200Ext1_556_W50` holds only magazine data (200 rounds),
+`WME_ADSMoveSpeed_M05`, `WME_ADSTime_FOV_M10`, `WME_ADSTime_Anim_M10`,
+`WME_Draw_Deploy_M05` and `WME_Draw_Sprint_M05`. The only GS binding in
+`GS_Minimi` and `GS_MG4K` is `GID_ADSTime_MAG_M10`. The other GUID occurrences are
+the two ability progressions and four shared M320/M26 `SRU_*` lists.
+
+M240L 75 Rnd has two links. `GS_M240L` binds selector `U_WPM_MAG_075Ext1_M240L_W10`
+to `GDM_Array_ADSMoveDispersion_MAG_P10` (index +1 on
+`MovingZoomedMinAnglesArrayIndex`, base 3). Its package also contains
+`WME_DynamicPivot_P10`. The 200-round package has neither link. Existing
+`GDM_Array_ADSMoveDispersion_MAG_M10` and `WME_DynamicPivot_M10` are not used by
+either weapon; only foregrip and grip-pod packages use `WME_DynamicPivot_M10`.
+
+The index shift changes all four `ZDA_Moving_Weapons` columns: moving minimum
+0.32 → 0.22 and the probable jumping/sprinting ADS minimum 1.13 → 0.97 (see
+[STAT_LADDERS.md](STAT_LADDERS.md#ads-in-ads-movement-and-moving-ads-spread)). It
+does not change `IncreasePerShot`, which is a GS `DispersionBehavior` scalar with
+no selector binding.
+
+`WME_DynamicPivot_*` is `WeaponAnimationSettingsCombinableModifierBase` (GRX type
+for `SVDM_WB.WeaponModifierDataAssets[132].Modifiers[2]`). Its non-identity fields
+are X/Y/Z multipliers `Field_f235e44f` and `Field_a4f104cc`: M10 1.333333, P10 0.75,
+P20 0.5625. Canted iron sights set only `Field_f235e44f` (2.5 or 3 on X/Y). The
+field names are unresolved; it is probably pivot/sway animation scaling, not a
+spread operand. The analyzer does not model it.
 
 ## Tactical reload and magazine capacity
 
@@ -117,8 +243,10 @@ These bases and multiplicative composition reproduce the earlier rounded ranges:
 suppressor 21 m, subsonic about 64 m, both about 9 m. They are inferred from the
 site/source agreement, not independently decoded native range fields. Zero is valid.
 
-Collateral uses the per-weapon/ammo override first, then the ammo's class mapping,
-else null. Regeneration uses the source 5 s baseline plus the source ammo addition:
+Collateral now resolves all supported selections through a generated per-weapon/ammo
+map. The generator sums source base and ammo index shifts, clamps to 0..9, and
+retains exact table values. The old ammo/class fallback remains only for missing
+entries outside that complete supported map. Regeneration uses the source 5 s baseline plus the source ammo addition:
 Frangible +4 s and Flechette +2 s. These are descriptors, not a simulated
 penetration path or regenerating opponent in the TTK calculation.
 
@@ -147,8 +275,21 @@ and [validation and assumptions](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md).
 laser visibility are descriptors; there is no separate camera/sway/visibility model.
 
 `assumed:true` or nonempty `assumedFields` marks a selectable effect as assumed.
-Old annotation keys can survive renames, so check the current consumer as well as
-the label. Combined laser records retain a hip recovery boost that is currently
-not read from that slot; standalone resolved lights do apply their boost. That
-limitation and deferred source-native alternatives are documented in
-[model limitations](MODEL_LIMITATIONS.md), not silently promoted by this guide.
+Field-level notes identify the uncertain effect without marking every field as
+unknown. Shared-slot selections use the same assumption detection and effect
+resolver as separate slots. Combo lights apply their source hipfire factors.
+See [model limitations](MODEL_LIMITATIONS.md) for unresolved native behavior.
+
+
+## Approved source operand additions
+
+Smooth Bolt muzzle overrides also add -0.5 to `decTimeExp` in both aim states,
+after any ergonomic exponent override. The 17 existing source-mapped selections
+use this addition; ordinary Smooth modifiers do not. The recovery equation is
+unchanged and remains a model assumption.
+
+Mini Scout Tungsten applies the combined -1 and -6 source recoil amount steps
+(-7 total) in ADS and hip. Other sniper Tungsten values are unchanged.
+PSR/SV-98 Slim Angled and KS18K Slim Angled add -1 to the moving-ADS spread
+row index. These are per-weapon effects. The operator approved these source
+composition choices; they are not new measurements of native behavior.

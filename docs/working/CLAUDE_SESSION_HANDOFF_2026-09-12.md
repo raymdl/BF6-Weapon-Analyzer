@@ -1,5 +1,12 @@
 # Claude session handoff — 12 September 2026
 
+**Current status, 13 September:** The combined work was merged through PR #31
+(`b0c4a97`). Decoded light hipfire factors and guide updates are subsequent local
+changes. The release/test counts and local-merge statements below describe earlier
+checkpoints. Use the [current audit](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+and [current model guide](../RECOIL_SPREAD_MODEL.md) for the implementation now.
+
+
 This handoff records one Claude Code session: its review of the September recoil/spread work, its research on existing evidence, and its data and code changes. It is for the next agent (Codex) and for the operator.
 
 Updated later on 12 September 2026 with the per-weapon limb multiplier search (section 10) and a response to the Codex review (section 11).

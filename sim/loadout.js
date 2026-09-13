@@ -1,5 +1,50 @@
 import { ATTACHMENT_SLOT_KEYS } from './attachments.js';
 
+const MOUNT_CATALOGS = { grip: 'GRIPS', laser: 'LASERS', light: 'LIGHTS' };
+
+export function attachmentSlots(weapon, data) {
+  return data.WEAPON_ATTS?.[weapon?.id]?.slots ?? {};
+}
+
+/** Options retain their attachment type independently of their physical slot. */
+export function availableMountAttachments(weapon, slot, data) {
+  const wa = data.WEAPON_ATTS?.[weapon?.id];
+  return (attachmentSlots(weapon, data)[slot]?.accepts ?? []).flatMap(type =>
+    (data[MOUNT_CATALOGS[type]] ?? []).filter(a => a.id !== 'none' && wa[type]?.includes(a.id))
+      .map(a => ({ ...a, type })));
+}
+
+/** Convert old shared-slot state once; an explicit rail selection takes priority. */
+export function normalizeMountAtts(atts, weapon, data) {
+  const result = { ...atts };
+  const slots = attachmentSlots(weapon, data);
+  if (slots.rail) {
+    const options = availableMountAttachments(weapon, 'rail', data);
+    const selected = Object.hasOwn(atts, 'rail')
+      ? options.find(a => a.id === atts.rail?.id && a.type === atts.rail?.type)
+      : options.find(a => a.id === atts.laser);
+    result.rail = selected ? { type: selected.type, id: selected.id } : null;
+    for (const type of slots.rail.accepts) delete result[type];
+  } else {
+    delete result.rail;
+  }
+  return result;
+}
+
+/** The single source of selected grip/laser/light records for all consumers. */
+export function resolveMountAttachments(atts, weapon, data) {
+  const normalized = normalizeMountAtts(atts, weapon, data);
+  const resolved = Object.fromEntries(Object.entries(MOUNT_CATALOGS).map(([type, catalog]) =>
+    [type, (data[catalog] ?? []).find(a => a.id === 'none') ?? { id: 'none', pts: 0 }]));
+  for (const [slot, definition] of Object.entries(attachmentSlots(weapon, data))) {
+    const selection = slot === 'rail' ? normalized.rail : { type: definition.accepts[0], id: normalized[slot] };
+    const item = availableMountAttachments(weapon, slot, data)
+      .find(a => a.id === selection?.id && a.type === selection?.type);
+    if (item) resolved[item.type] = { ...item, ...item.frostyModifiers?.[weapon.id] };
+  }
+  return resolved;
+}
+
 const lookupCache = new WeakMap();
 
 function byId(items) {
@@ -44,6 +89,7 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.grip = 'none';
   atts.laser = 'none';
   atts.light = 'none';
+  delete atts.rail;
   const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
   // A new weapon may have a reviewed base record before its in-game barrel
   // coverage exists. Keep that state fail-closed instead of silently applying
@@ -52,12 +98,18 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.ammo = data.WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
   atts.mag = data.WEAPON_MAG[weapon?.id]?.def ?? null;
   atts.ergo = 'none';
+  const normalized = normalizeMountAtts(atts, weapon, data);
+  for (const key of ['grip', 'laser', 'light']) if (!Object.hasOwn(normalized, key)) delete atts[key];
+  Object.assign(atts, normalized);
 }
 
 /** Selectable items for one weapon slot. Shared by the editor and URL decoder. */
 export function availableAttachments(weapon, key, data) {
   if (!weapon) return [];
   const wa = data.WEAPON_ATTS?.[weapon.id];
+  if (key === 'rail' || Object.hasOwn(MOUNT_CATALOGS, key)) {
+    return [{ id: 'none', name: 'None', pts: 0 }, ...availableMountAttachments(weapon, key, data)];
+  }
   if (key === 'mag') return Object.entries(data.WEAPON_MAG?.[weapon.id]?.mags ?? {})
     .map(([id, item]) => ({ ...item, id }));
   if (key === 'ammo') return (data.AMMO ?? []).filter(a =>
@@ -67,18 +119,7 @@ export function availableAttachments(weapon, key, data) {
   const slot = ATTACHMENT_SLOT_KEYS.find(slot => slot.key === key);
   if (!slot) return [];
   let source = data[slot.dataKey] ?? [];
-  if ((key === 'light' && wa?.laserLightCombined)
-      || (key === 'grip' && wa?.laserGripLightCombined)) {
-    return source.filter(a => a.id === 'none');
-  }
   let allowed = wa?.[key];
-  if (key === 'laser' && wa?.laserLightCombined) {
-    allowed = [...(allowed ?? []), ...(wa.light ?? [])];
-    source = wa.laserGripLightCombined
-      ? [...source.filter(a => a.id === 'none'), ...(data.GRIPS ?? []).filter(a => a.id !== 'none'),
-        ...source.filter(a => a.id !== 'none'), ...(data.LIGHTS ?? []).filter(a => a.id !== 'none')]
-      : [...source, ...(data.LIGHTS ?? []).filter(a => a.id !== 'none')];
-  }
   // Sights are shared unless the weapon explicitly restricts them.
   if (key === 'sight' && allowed == null) return source;
   return source.filter(a => slot.isBarrel
@@ -102,19 +143,11 @@ export function computeAttPts(atts, weapon, data) {
   const wm = data.WEAPON_MAG[wid] ?? null;
   const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
   const ergoPts = lookups.ERGOS[atts.ergo ?? 'none']?.pts ?? 0;
-  // Combined slot: atts.laser may hold a grip or light ID
-  const laserGrip  = !lookups.LASERS[atts.laser] && !!lookups.GRIPS?.[atts.laser]
-    ? lookups.GRIPS[atts.laser]
-    : null;
-  const laserLight = !lookups.LASERS[atts.laser] && !laserGrip && !!lookups.LIGHTS?.[atts.laser]
-    ? lookups.LIGHTS[atts.laser]
-    : null;
+  const mounts = resolveMountAttachments(atts, weapon, data);
   return (data.WEAPON_ATTS[wid]?.sightPoints?.[atts.sight ?? 'iron'] ?? getAttPts(lookups.SIGHTS[atts.sight ?? 'iron']))
     + getAttPts(lookups.MUZZLES[atts.muzzle])
     + getAttPts(lookups.BARRELS[atts.barrel])
-    + getAttPts(laserGrip ?? lookups.GRIPS[atts.grip])
-    + getAttPts(laserGrip ? null : lookups.LASERS[atts.laser])
-    + getAttPts(laserLight ?? lookups.LIGHTS[atts.light])
+    + Object.values(mounts).reduce((sum, item) => sum + getAttPts(item), 0)
     + (data.WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
     + magPts
     + ergoPts;
@@ -136,9 +169,7 @@ export function hasSelectedAssumedAtt(atts, data, weapon = null) {
     lookups.SIGHTS[atts.sight ?? 'iron'],
     lookups.MUZZLES[atts.muzzle],
     lookups.BARRELS[atts.barrel],
-    lookups.GRIPS[atts.grip],
-    lookups.LASERS[atts.laser] ?? lookups.GRIPS[atts.laser] ?? lookups.LIGHTS[atts.laser],
-    lookups.LIGHTS[atts.light],
+    ...Object.values(resolveMountAttachments(atts, weapon, data)),
     lookups.AMMO[atts.ammo],
     lookups.ERGOS[atts.ergo],
     wm?.mags?.[atts.mag ?? wm.def],
