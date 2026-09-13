@@ -1,0 +1,2216 @@
+{
+  "scope": "Apply decoded source light targets as factors in the existing hip spread model. Selecting an attachment treats its light contribution as active; no on/off switch or native trigger simulation. Selected light and combo-laser factors multiply. Idle operand retained only. Native operation/order and activation remain model assumptions.",
+  "targetNamesEvidence": "frosty-light-field-names-2026-09-13.json",
+  "modifierCount": 12,
+  "supportedSelections": 137,
+  "records": [
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_447d6d51",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_0084b1d1",
+      "targetName": "IncreasePerShot",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_2ca8533e",
+      "targetName": "FiringDecreaseCoefficient",
+      "operandField": "Field_98a799ba",
+      "value": 1.837117,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_1b9eef5d",
+      "targetName": "FiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_4d3f0635",
+      "targetName": "NotFiringDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": true
+    },
+    {
+      "source": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml",
+      "branch": "Field_0a160c57",
+      "targetField": "Field_aa558d2b",
+      "targetName": "IdleDecreaseOffset",
+      "operandField": "Field_5695ee1c",
+      "value": 0.666667,
+      "implemented": false
+    }
+  ],
+  "selections": [
+    {
+      "weapon": "ks18k",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_LFT_SF300.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "ks18k",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_LFT_TL_MissionLight.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "db12",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_SF300.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "db12",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_RGT_TLMissionLight.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "svk86",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_LFT_SF300.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "svk86",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_LFT_TL_MissionLight.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "m357trait",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_BTM_SFX300.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "m357trait",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_BTM_SFX400.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "m357trait",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_BTM_X5L_G3.xml",
+      "guid": "64fe6e0b-faff-4a58-8a44-839eb23f074e",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml"
+    },
+    {
+      "weapon": "m87a1",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_LFT_SF300.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "m87a1",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_LFT_TL_MissionLight.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "m1014",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_LFT_SF300.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "m1014",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_LFT_TL_MissionLight.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "m2010esr",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_LFT_SF300.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "m2010esr",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_LFT_TL_MissionLight.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "miniscout",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_RGT_SF300.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "miniscout",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_RGT_TLMissionLight.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "psr",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_RGT_SF300.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "psr",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_RGT_TL_MissionLight.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "sv98",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_RGT_SF300.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "sv98",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_RGT_TL_MissionLight.xml",
+      "guid": "cdd677d4-2929-4c19-ab38-201c25957cbd",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml"
+    },
+    {
+      "weapon": "kord6p67",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_SF300.xml",
+      "guid": "59c2b454-12e0-4692-9446-1c4ebe01519c",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml"
+    },
+    {
+      "weapon": "kord6p67",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_TL_MissionLight.xml",
+      "guid": "59c2b454-12e0-4692-9446-1c4ebe01519c",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml"
+    },
+    {
+      "weapon": "kord6p67",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_RGT_X5LG3.xml",
+      "guid": "59c2b454-12e0-4692-9446-1c4ebe01519c",
+      "branch": "0x00000006",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml"
+    },
+    {
+      "weapon": "rpk74m",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_RGT_SF300.xml",
+      "guid": "59c2b454-12e0-4692-9446-1c4ebe01519c",
+      "branch": "0x00000007",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml"
+    },
+    {
+      "weapon": "rpk74m",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_RGT_TLMissionLight.xml",
+      "guid": "59c2b454-12e0-4692-9446-1c4ebe01519c",
+      "branch": "0x00000005",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml"
+    },
+    {
+      "weapon": "nvo228e",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_LFT_SF300.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "nvo228e",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_LFT_TL_MissionLight.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "scw10",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_RGT_SF300.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "scw10",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_RGT_TL_MissionLight.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "m417a2",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_RGT_SF300.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "m417a2",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_RGT_TL_MissionLight.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "rpkm",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_LFT_SF300.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "rpkm",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_LFT_TL_MissionLight.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "sor300sc",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_RGT_SF300.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "sor300sc",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_RGT_TL_MissionLight.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "sg553r",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_LFT_SF300.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "sg553r",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_LFT_TL_MissionLight.xml",
+      "guid": "99f4ba3e-1797-4987-8ba2-32e4f8e639bc",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml"
+    },
+    {
+      "weapon": "ak205",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_LFT_SF300.xml",
+      "guid": "e75f54e6-e8f5-46ee-a015-11d15204134d",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml"
+    },
+    {
+      "weapon": "ak205",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_LFT_TL_MissionLight.xml",
+      "guid": "e75f54e6-e8f5-46ee-a015-11d15204134d",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml"
+    },
+    {
+      "weapon": "usg90",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_RGT_SF300.xml",
+      "guid": "e75f54e6-e8f5-46ee-a015-11d15204134d",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml"
+    },
+    {
+      "weapon": "usg90",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_RGT_TL_MissionLight.xml",
+      "guid": "e75f54e6-e8f5-46ee-a015-11d15204134d",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml"
+    },
+    {
+      "weapon": "sl9",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_RGT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "sl9",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_RGT_SFX400.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x0000000a",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "sl9",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_RGT_TL_MissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "sl9",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_RGT_X5LG3.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x0000000b",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "m4a1",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_RGT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "m4a1",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_RGT_TLMissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "pw5a3",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_LFT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "pw5a3",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_LFT_TL_MissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "sgx",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_RGT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "sgx",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_RGT_TL_MissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "grtbc",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_RGT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "grtbc",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_RGT_SFX400.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "grtbc",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_RGT_TLMissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "grtbc",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_RGT_X5LG3.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "pp19",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_LFT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "pp19",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_LFT_TLMissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "qbz192",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_RGT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "qbz192",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_RGT_TL_MissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "cz3a1",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_LFT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "cz3a1",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_LFT_TLMissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "umg40",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_LFT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "umg40",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_LFT_TL_MissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "kv9",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_RGT_SF300.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "kv9",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_RGT_TL_MissionLight.xml",
+      "guid": "7decd18c-3feb-4da9-a957-f7c131cf460e",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml"
+    },
+    {
+      "weapon": "lmr27",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_RGT_SF300.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "lmr27",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_RGT_TL_MissionLight.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "ggh22",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BTM_SFX300.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "ggh22",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BTM_SFX400.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "ggh22",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BTM_X5L_G3.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "p18",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_BTM_SFX300.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "p18",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_BTM_SFX400.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "p18",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_BTM_X5L_G3.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "grtcps",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_LFT_TLMissionLight.xml",
+      "guid": "82d1c775-e591-488c-86ec-01b8186c573d",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml"
+    },
+    {
+      "weapon": "ef88",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "ef88",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_RGT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "b36a4",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "b36a4",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m433",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m433",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "l115",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_LFT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "l115",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_LFT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "l85a3",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "l85a3",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m16a4",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000006",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m16a4",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_RGT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000005",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m250",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/M250/Attachment_M250_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m250",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/M250/Attachment_M250_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "drsiar",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "drsiar",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m123k",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_LFT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m123k",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_LFT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m121a2",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_LFT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000009",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "miniscout",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "miniscout",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_RGT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "l110",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_LFT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "l110",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_LFT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "grtcps",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_LFT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "sor556",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "sor556",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "vz61",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Secondary/Skorpion/Attachment_Skorpion_BTM_SFX300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "vz61",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/Secondary/Skorpion/Attachment_Skorpion_BTM_SFX400.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "vz61",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/Secondary/Skorpion/Attachment_Skorpion_BTM_X5LG3.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "kts100",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "kts100",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_RGT_SFX400.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000006",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "kts100",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "kts100",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_RGT_X5LG3.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000007",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "vcr2",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "vcr2",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_RGT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "vssm",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_LFT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "vssm",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_LFT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m277",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "m277",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_RGT_TL_MissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "brod3",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "brod3",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_RGT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "interdictor",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_SF300.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "interdictor",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_RGT_TLMissionLight.xml",
+      "guid": "127e5a63-1f00-440d-9e3d-2a43f17ac9b9",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml"
+    },
+    {
+      "weapon": "es57",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_BTM_SFX300.xml",
+      "guid": "8ab96553-2530-4218-aa2c-01561c4b146f",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml"
+    },
+    {
+      "weapon": "es57",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_BTM_SFX400.xml",
+      "guid": "8ab96553-2530-4218-aa2c-01561c4b146f",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml"
+    },
+    {
+      "weapon": "es57",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_BTM_X5L_G3.xml",
+      "guid": "8ab96553-2530-4218-aa2c-01561c4b146f",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml"
+    },
+    {
+      "weapon": "ak4d",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_LFT_SF300.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "ak4d",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_LFT_TLMissionLight.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "m240l",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_LFT_SF300.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "m240l",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_LFT_TL_MissionLight.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "m60",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_LFT_SF300.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "m60",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_LFT_TL_MissionLight.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "m121a2",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_LFT_TLMissionLight.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "tr7",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_RGT_SF300.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "tr7",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_RGT_TL_MissionLight.xml",
+      "guid": "7823b27e-30e8-42a8-bcd2-8958ac8015a3",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml"
+    },
+    {
+      "weapon": "m39emr",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_LFT_SF300.xml",
+      "guid": "833cab35-67e2-452f-8ccc-772ed4c92073",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml"
+    },
+    {
+      "weapon": "m39emr",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_LFT_TL_MissionLight.xml",
+      "guid": "833cab35-67e2-452f-8ccc-772ed4c92073",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml"
+    },
+    {
+      "weapon": "m45a1",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_SFX300.xml",
+      "guid": "833cab35-67e2-452f-8ccc-772ed4c92073",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml"
+    },
+    {
+      "weapon": "m45a1",
+      "attachmentId": "combo_red",
+      "attachment": "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_SFX400.xml",
+      "guid": "833cab35-67e2-452f-8ccc-772ed4c92073",
+      "branch": "0x00000003",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml"
+    },
+    {
+      "weapon": "m45a1",
+      "attachmentId": "combo_green",
+      "attachment": "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_X5L_G3.xml",
+      "guid": "833cab35-67e2-452f-8ccc-772ed4c92073",
+      "branch": "0x00000004",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml"
+    },
+    {
+      "weapon": "svdm",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_LFT_SF300.xml",
+      "guid": "833cab35-67e2-452f-8ccc-772ed4c92073",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml"
+    },
+    {
+      "weapon": "svdm",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_LFT_TL_MissionLight.xml",
+      "guid": "833cab35-67e2-452f-8ccc-772ed4c92073",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml"
+    },
+    {
+      "weapon": "pw7a2",
+      "attachmentId": "flashlight",
+      "attachment": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_LFT_SF300.xml",
+      "guid": "262a7ddc-865e-483a-8a8f-cbbfac86b974",
+      "branch": "0x00000002",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml"
+    },
+    {
+      "weapon": "pw7a2",
+      "attachmentId": "hip_taclight",
+      "attachment": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_LFT_TL_MissionLight.xml",
+      "guid": "262a7ddc-865e-483a-8a8f-cbbfac86b974",
+      "branch": "0x00000001",
+      "modifier": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml"
+    }
+  ],
+  "sourceHashes": {
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S2_RGT_P10.xml": "1709c1d0021b2d308f506493e08644af584e47ce9011965eb6b66c4af16f0e13",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S1_RGT_P10.xml": "17c33661661f452e0e40dba7670a63e1fd31c794f97bce58f9ec95a75aae3d7f",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A50_RGT_P10.xml": "59595d3f0a103063164fd63b00e13f880b9e216f988892f277e43a4c94be630c",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A35_RGT_P10.xml": "e18dd41f8caf5250371f4cd07fa1c6c81a05d19f0f26bb91fa11f51d171356c8",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A55_RGT_P10.xml": "11dea16c46e8a2479941339aadca56ec3cddb5093f2b82a5b74e62648c86b997",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A45_RGT_P10.xml": "80e2d08b157b3a3e18e65870150682eb468fb78cf7f7102deb42638eee2b6ac6",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S4_RGT_P10.xml": "114f70b3ce76b6d87f985c696b904126f559454cd9c058841bf8f395b68ad72a",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A40_RGT_P10.xml": "c0cfc368b41175e455ca6a0995c6c94a0d19856f151644223e2f1adcc64c0506",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S5_RGT_P10.xml": "8ca52654e8a7ee54fd67dcd72898ac47a3398eb9e2f2cb79717646e7b12a8373",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A30_RGT_P10.xml": "1027331325badbaebc5b1f3dc11b2f910ecfff812f50df435d322e46aeab8a99",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_S3_RGT_P10.xml": "81d9fdb926996ed443a145c0af8518b18c55a0e855ec2ff99280760621280bee",
+    "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_Hip_A60_RGT_P10.xml": "5cb7d0affe2165344d0ee1c64b567ded7f6e7e3cc09a27f71ea05fd4f1f10c37"
+  }
+}

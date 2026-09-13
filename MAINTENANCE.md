@@ -25,9 +25,11 @@ installation is needed for the normal product suite. UI changes also require the
 
 Start with [file ownership and field contracts](docs/DATA_REFERENCE.md).
 `weapons.json` owns base records; `attachments.json`, `ammo.json`, and
-`balance_tables.json` own selectable effects and shared policies. `ballistics.json`
-records projectile constants/source identity; its ID registry is not an exclusive
-runtime applicability gate.
+`balance_tables.json` own selectable effects and shared policies. Generated
+`hit_zones.json` and `ballistics.json` resolve weapon/ammo selections to source
+multipliers and projectile records. Ballistics requires an explicit selection;
+there is no global coefficient fallback. `COLLATERAL_MULT_OVERRIDE` contains all
+supported weapon/ammo collateral values generated from the retained source table.
 
 Preserve exact curve points and source decimals. Do not replace exact damage
 curves with rounded panel observations. Record source version/path/GUID, field,
@@ -47,9 +49,11 @@ catalog-to-source sign conversion; sum modifiers before one final clamp. Compare
 at least a default build, an affected composed build, and a boundary/exception case.
 Update the current guide's table/formula/example alongside the data change.
 
-Run the data validator, the affected focused test, and the full product suite.
-Inspect a representative affected build in the browser and its dependent chart/
-table. Add a test only for a distinct regression not covered more simply.
+Run checks proportionate to the change: affected focused tests and data validation
+for behavior/data edits, with the full product suite before a combined release.
+Inspect an affected UI build when presentation changes. Documentation-only edits
+need link, formula and example checks rather than a repeated product suite.
+Add a test only for a distinct regression not covered more simply.
 
 ## Reload exceptions and provenance
 
@@ -108,8 +112,29 @@ node scripts/validate-data.mjs
 ```
 
 The XML export and the raw grids must come from the same game build. The extractor
-stops on unresolved links or disagreement between grids. Review its dated evidence
-file and every changed value before committing `data/hit_zones.json`.
+stops on conflicting links or disagreement between grids, but can record a base
+fallback for missing ammo attachments. Review those issues; the current 328 ammo
+selections have no missing-attachment fallback. Review its dated evidence file
+and every changed value before committing `data/hit_zones.json`.
+
+After regenerating hit zones, pass that exact dated trace to the ballistics
+generator. Replace `YYYY-MM-DD` below with the date in the trace filename:
+
+```sh
+python scripts/frosty-ballistics.py --root "PATH_TO_EXPORT" --trace reference-data/provenance/frosty-hit-zones-YYYY-MM-DD.json
+python scripts/frosty-collateral.py
+```
+
+Ballistics checks the trace's XML hashes and ammo roster before writing projectile
+inputs; missing attachments and unresolved SP projectile selections stop generation.
+The collateral tool rebuilds values from the retained compiled-table trace, not
+fresh XML. After a game update, refresh and review that trace first. It sums base
+and ammo index shifts, clamps to the ten-row table, and checks roster coverage.
+
+Distribution exponents and light factors have separate source evidence in the
+[evidence index](reference-data/provenance/README.md). Preserve the Interdictor
+moving-ADS exponent and the light target fields. Do not apply the retained idle
+light operand until an idle-state model has been reviewed.
 
 ## Documentation lifecycle and historical versions
 

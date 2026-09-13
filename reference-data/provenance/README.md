@@ -1,5 +1,20 @@
 # Source and review evidence index
 
+## Current September 13 evidence
+
+| Accepted family | Evidence and limits |
+|---|---|
+| Projectile and hit-zone selections | [Hit-zone extraction](frosty-hit-zones-2026-09-13.json), [limb materials](frosty-limb-material-trace-2026-09-13.json), and [global operands](frosty-global-operands-2026-09-13.json). Current generated maps cover 63 weapons and 328 ammo choices; earlier traces can contain superseded counts. |
+| Collateral table | [Compiled-resource trace](frosty-global-compiled-trace-2026-09-13.json) and [follow-up](frosty-light-spotting-collateral-followup-2026-09-13.json). The current generator uses the operator-confirmed final clamp; the trace's unresolved status is historical. |
+| Sway, spotting and regeneration | [Follow-up decisions](frosty-global-followup-2026-09-13.json). Source operands are retained separately from model composition and activation. |
+| Spread distribution | [Per-state exponents](frosty-distribution-exponents-2026-09-13.json). Source configuration and limited M39 capture support do not prove the native random-number consumer. |
+| Light hipfire effects | [Decoded field names](frosty-light-field-names-2026-09-13.json) and [implementation coverage](frosty-light-implementation-2026-09-13.json). Twelve assets supply five operands on two hip branches; all 137 supported selections match. Idle operands remain unused. |
+
+See the [current audit status](../../docs/working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+for accepted changes and remaining boundaries. Evidence files below retain their
+original snapshot status; they are not rewritten when an implementation changes.
+
+
 **Evidence archive with active provenance references.** Files here record specific
 source snapshots and reviews. They are not fetched by the browser, and the newest
 filename is not automatically the accepted runtime rule. Use

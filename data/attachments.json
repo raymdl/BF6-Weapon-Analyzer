@@ -1055,24 +1055,26 @@
       "name": "Combo Red",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -1,
-      "hipSpreadDecayBoost": 0.15,
       "laserVisible": false,
-      "assumedFields": {
-        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
-      },
-      "pts": 20
+      "pts": 20,
+      "hipSpreadIncMult": 0.666667,
+      "hipSpreadFiringDecCoefMult": 1.837117,
+      "hipSpreadFiringDecOffsetMult": 0.666667,
+      "hipSpreadNotFiringDecOffsetMult": 0.666667,
+      "hipSpreadIdleDecOffsetMult": 0.666667
     },
     {
       "id": "combo_green",
       "name": "Combo Green",
       "movingAdsSpreadTierMod": 0,
       "hipSpreadTierMod": -2,
-      "hipSpreadDecayBoost": 0.15,
       "laserVisible": true,
-      "assumedFields": {
-        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
-      },
-      "pts": 20
+      "pts": 20,
+      "hipSpreadIncMult": 0.666667,
+      "hipSpreadFiringDecCoefMult": 1.837117,
+      "hipSpreadFiringDecOffsetMult": 0.666667,
+      "hipSpreadNotFiringDecOffsetMult": 0.666667,
+      "hipSpreadIdleDecOffsetMult": 0.666667
     }
   ],
   "LIGHTS": [
@@ -1091,19 +1093,21 @@
       "id": "flashlight",
       "name": "Flashlight",
       "pts": 10,
-      "hipSpreadDecayBoost": 0.15,
-      "assumedFields": {
-        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
-      }
+      "hipSpreadIncMult": 0.666667,
+      "hipSpreadFiringDecCoefMult": 1.837117,
+      "hipSpreadFiringDecOffsetMult": 0.666667,
+      "hipSpreadNotFiringDecOffsetMult": 0.666667,
+      "hipSpreadIdleDecOffsetMult": 0.666667
     },
     {
       "id": "hip_taclight",
       "name": "Taclight - Hipfire",
       "pts": 15,
-      "hipSpreadDecayBoost": 0.15,
-      "assumedFields": {
-        "hipSpreadDecayBoost": "Placeholder assumption created by us; verify against official sym.gg/game data when available."
-      }
+      "hipSpreadIncMult": 0.666667,
+      "hipSpreadFiringDecCoefMult": 1.837117,
+      "hipSpreadFiringDecOffsetMult": 0.666667,
+      "hipSpreadNotFiringDecOffsetMult": 0.666667,
+      "hipSpreadIdleDecOffsetMult": 0.666667
     },
     {
       "id": "range_finder",

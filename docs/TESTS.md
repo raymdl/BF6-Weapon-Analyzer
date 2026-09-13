@@ -14,8 +14,7 @@ node scripts/test.mjs
 using Node 20. The runner selects the top-level `scripts/*.test.mjs` files and
 passes them to Node's test runner. It excludes frozen site copies and Python research
 tests. No dependency install, browser harness, raw captures or Git history is required.
-The review baseline produced 60 passing Node tests; discover tests through the runner
-rather than treating that count as a permanent contract.
+Discover the current test count through the runner; it is not a permanent contract.
 
 `validate-data.mjs` checks IDs/classes, required values, curves and acceptance policy,
 attachment/ammo/default references, coverage and estimate disclosure, selected exact
@@ -34,8 +33,8 @@ All paths in this table are under `scripts/`.
 
 | Test file | Distinct behavior protected |
 |---|---|
-| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Supported ADS/hip composition, all 17 source Bolt muzzle exceptions, ordinary Smooth on the same rifle, base/catalog non-mutation, and ADS-only Heavy spread/recovery scaling. |
-| [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Projectile inputs/source policy, constants, flight/trajectory behavior and coverage decisions. |
+| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | ADS/hip composition, 17 source Bolt muzzle exceptions, Smooth/Heavy behavior, light hip growth/recovery and combined slots, collateral clamping, sway, spotting, regeneration, and base/catalog non-mutation. |
+| [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Explicit projectile selection for 63 weapons and 328 ammo choices, source coefficients, and flight/trajectory behavior. |
 | [barrel-velocity.test.mjs](../scripts/barrel-velocity.test.mjs) | Tier precedence, compatibility multiplier, selectable-barrel equivalence and display rounding. |
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
 | [draw-time.test.mjs](../scripts/draw-time.test.mjs) | Source timing tables, selection, independent shifts, final clamping and invalid-input behavior. |
@@ -45,6 +44,7 @@ All paths in this table are under `scripts/`.
 | [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults and weapon-specific attachment validation. |
 | [source-arrays.test.mjs](../scripts/source-arrays.test.mjs) | Exact row order/precision, hip/shotgun indexing, moving/ADS arrays and composition boundaries. |
 | [spread-bar-scale.test.mjs](../scripts/spread-bar-scale.test.mjs) | Default and valid single-attachment spread outputs fit the shared axis across aim/stance contexts. |
+| [spread-distribution.test.mjs](../scripts/spread-distribution.test.mjs) | Source exponents by aim/stance, uniform-area sampling, the Interdictor exception, and deterministic output. |
 | [target-geometry.test.mjs](../scripts/target-geometry.test.mjs) | Target coordinate/geometry and impact-summary behavior. |
 | [target-stats.test.mjs](../scripts/target-stats.test.mjs) | Uncapped impact totals, pellet limitations and missing-image presentation. |
 

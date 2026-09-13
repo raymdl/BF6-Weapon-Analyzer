@@ -73,7 +73,9 @@ weapon's availability map. Supported effect families are:
 | `adsRecoilTierMod`, `hipRecoilTierMod`, `adsRecoilVariationTierMod`, `hipRecoilVariationTierMod` | Integer exponent changes, separated by aim state. |
 | `adsRecoilDecayMult`, `hipRecoilDecayMult` | Recovery-factor multipliers for the selected aim state. Smooth uses 1.2, with 1.728 for mapped Bolt selections, within the assumed recovery equation. |
 | Muzzle `weaponOverrides[weaponId]` | Per-weapon fields merged over the selected muzzle record before effect composition. Contains source duration/recovery exceptions; does not change the shared catalog or base weapon. |
-| `adsSpreadDecayBoost`, `hipSpreadDecayBoost` | Spread-offset adjustments. The hip boost is read from the resolved light, not a combined laser record. |
+| `adsSpreadDecayBoost` | Muzzle adjustment to the ADS firing recovery offset. |
+| `hipSpreadIncMult`, `hipSpreadFiringDecCoefMult`, `hipSpreadFiringDecOffsetMult`, `hipSpreadNotFiringDecOffsetMult` | Light/combo-light factors: 0.666667, 1.837117, 0.666667, 0.666667. Affect hipfire only; selected light and laser factors multiply. |
+| `hipSpreadIdleDecOffsetMult` | Retained light source operand 0.666667; no idle-state simulation consumes it. |
 | `hipSpreadTierMod`, `movingAdsSpreadTierMod` | Source-array index shifts; signs and participating slots are specified in the ladder guide. |
 | `adsSpreadIncMult`, `adsSpreadFiringDecCoefMult`, `adsSpreadFiringDecOffsetMult`, `adsSpreadNotFiringDecOffsetMult` | Source ADS-only Heavy-type barrel factors: 0.666667, 1.837117, 0.666667, 0.666667. Increment precision is retained. Missing not-firing fields keep their firing fallback. |
 | `adsSpreadDynOverride`, `hipSpreadDynOverride` | Field-wise dynamics replacement; ergo overrides win over ammo on the ADS branch. |
@@ -84,7 +86,8 @@ weapon's availability map. Supported effect families are:
 | `recoilDurationOverride`, `recoilDurationAdd` | Seconds of impulse delivery. Selected Smooth source overrides duration to 0.05 or 0.066667, then ergonomics adds its adjustment; the result clamps at zero. Recovery acts during delivery. Native operation/order remain model assumptions. |
 | `visualRecoil`, `laserVisible` | Qualitative/display behavior; no separate camera, sway, visibility or aim-assist simulation. |
 | `suppressor`, `worldSpotMult`, `minimapSpotMult` | Suppression selection and multiplicative spot-on-fire range factors. Zero is meaningful. |
-| `hsMult`, `collateralMult`, `healthRegenDelayAddS` | Hit-zone policy, collateral display multiplier and regeneration-delay addition; no penetration/regen event simulation. |
+| `weaponSwayMult` | Muzzle/magazine sway amount factor, displayed relative to the default build; no optic/camera sway simulation. |
+| `collateralMult`, `healthRegenDelayAddS` | Legacy collateral fallback and source regeneration-delay addition. All supported collateral values instead resolve through the generated per-weapon map. No penetration/regen event simulation. |
 
 `WEAPON_ATTS[id]` supplies slot ID arrays, `barrelDef`, optional `sightPoints`,
 `laserLightCombined`, and `laserGripLightCombined`. `WEAPON_ERGO[id].avail` supplies
@@ -100,6 +103,25 @@ Projectile overrides can replace `pellets` and `dmg`. Velocity treatment
 `subsonic-tier` uses `subsonicVelocityTier`; absolute treatment records use
 `subsonicVelocityMps`. Retained display/evidence annotations do not add another
 velocity multiplication. See [attachment composition](ATTACHMENT_MODEL.md).
+
+## Generated selection maps
+
+`hit_zones.weapons[id]` stores the base protection index, projectile material,
+headshot and limb multipliers. Its `ammo[ammoId]` supplies the selected pair of
+multipliers. Coverage is 63 weapons / 328 ammo choices. The resolver can fall back
+to a weapon base, then 1.34 head / 1 limb, but validation requires all supported
+ammo entries. Removed M60/M121 A2 Lightweight options do not have generated entries.
+
+`ballistics.weapons[id]` maps `base` and `ammo[ammoId]` to keys in
+`ballistics.projectiles`. Each of the 64 projectile records has `guid`,
+`gravityMps2` and `dragPerMeter`. The source object records the attachment-trace
+name/hash and projectile XML hashes. These are maps, not positional arrays.
+All supported ammo selections have a projectile; missing selection data returns
+an unavailable model instead of global coefficients.
+
+`COLLATERAL_MULT_OVERRIDE[id][ammoId]` stores the exact generated multiplier,
+with the same 63/328 coverage. Its name is retained for compatibility; this is
+now the complete supported lookup rather than a short exception list.
 
 ## Complete live array inventory
 
@@ -126,7 +148,6 @@ research output or frozen site copy.
 | `DRAW_TIME_TABLES.sprint[]` | Twelve source-ordered durations. | Sprint recovery, milliseconds. |
 | `DRAW_TIME_TABLES.primary.deploy[]`, `.undeploy[]` | Twelve entries each, common selected coordinate. | Primary draw/holster timing. |
 | `DRAW_TIME_TABLES.sidearm.deploy[]`, `.undeploy[]` | Fifteen entries each, including repeated early rows. | Sidearm-table draw/holster timing. |
-| `ballistics.weapons[id]` | Base projectile key and ammo-to-projectile map. | Selects one record in `ballistics.projectiles`; missing selections remain unavailable. |
 | `live-baseline.sources[]` | Source identity/version/evidence records. | Maintenance provenance, not runtime loading. |
 | `live-baseline.dataPolicy.allowedDamagePointSources[]`, `.estimatedWeaponIds[]` | Allowed source labels and estimated-roster ID list. | Cross-file validation; estimated list is currently empty. |
 | `weapons[].provenance.frosty.fields[]` | Frosty-sourced field-name lists. | Evidence/disclosure maintenance, not automatic field replacement. |

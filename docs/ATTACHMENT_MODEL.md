@@ -39,7 +39,7 @@ carry their own costs. The UI warns above 100 points without rejecting the build
 | Hip recoil amount / variation | Add supported hip tiers to the raw hip group's exponents. Amount includes ammo; variation comes from muzzle/grip/ergo. The per-aim simulator evaluates the group. |
 | Hip minimum spread | Muzzle/barrel/laser/grip/ammo shifts select one source row. Replace standing/moving minima and preserve each maximum. |
 | ADS dynamics | Merge raw ADS dynamics, then ammo override, then ergo override. Ergo wins for overlapping fields; ADS barrel increment scaling follows. |
-| Hip dynamics | Merge raw hip dynamics with ergonomic hip override. Heavy-barrel ADS modifiers do not alter this branch. |
+| Hip dynamics | Merge raw hip dynamics with ergonomic hip override, then apply light/combo-light growth and recovery factors. Heavy-barrel ADS modifiers do not alter this branch. |
 | Moving ADS minimum | Shared base plus grip/laser/barrel/magazine modifiers selects the moving-spread row. |
 | ADS time / movement | Resolve reviewed bases with the axis-specific signed modifier equations in the ladder guide. |
 | Sprint / deploy / undeploy | Sum timing effects independently across magazine, grip, ergo, barrel, muzzle, laser, light and ammo; clamp once. Deploy/undeploy share their selected index. |
@@ -49,9 +49,18 @@ recovery phase. Heavy-type barrels use source ADS increment ×0.666667, firing
 coefficient ×1.837117 and firing/not-firing offsets ×0.666667. Increment precision
 is retained for simulation. AK4D recordings support the ADS reduction; transfer
 to other weapons and barrel variants remains source-based. Muzzle ADS recovery
-boosts and light hip boosts scale firing offsets
-separately. [Recoil and spread](RECOIL_SPREAD_MODEL.md) explains fallback parameters
+boosts scale the ADS firing offset. Light factors separately scale hipfire
+increase, firing coefficient, and firing/not-firing offsets. [Recoil and spread](RECOIL_SPREAD_MODEL.md) explains fallback parameters
 and why retained native fields are not all executed.
+
+Flashlight, Hipfire Taclight, Combo Red and Combo Green use the same source factors
+across all 137 supported selections: increase ×0.666667, firing coefficient
+×1.837117, and firing/not-firing offsets ×0.666667. A light selected through a
+combined slot participates once. Where separate light and combo-laser slots are
+both supported and selected, their factors multiply. The model treats selected
+lights as active; native switching and operation order remain unverified. The
+idle offset operand is retained but unused. This replaces the old assumed +15%
+recovery boost and activates the combo lights' hipfire effect.
 
 ## Tactical reload and magazine capacity
 
@@ -117,8 +126,10 @@ These bases and multiplicative composition reproduce the earlier rounded ranges:
 suppressor 21 m, subsonic about 64 m, both about 9 m. They are inferred from the
 site/source agreement, not independently decoded native range fields. Zero is valid.
 
-Collateral uses the per-weapon/ammo override first, then the ammo's class mapping,
-else null. Regeneration uses the source 5 s baseline plus the source ammo addition:
+Collateral now resolves all supported selections through a generated per-weapon/ammo
+map. The generator sums source base and ammo index shifts, clamps to 0..9, and
+retains exact table values. The old ammo/class fallback remains only for missing
+entries outside that complete supported map. Regeneration uses the source 5 s baseline plus the source ammo addition:
 Frangible +4 s and Flechette +2 s. These are descriptors, not a simulated
 penetration path or regenerating opponent in the TTK calculation.
 

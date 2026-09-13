@@ -43,6 +43,32 @@ rows contain a separate range and must not be globally sorted.
 
 ![M433 source-row lookup and a worked example of clamping the combined index once](img/stat-indexing.svg)
 
+## Collateral damage multiplier
+
+The named source material table contains the following ten rows. The generator
+adds the weapon base index and ammo steps, then clamps once to 0–9. The operator
+confirmed this bounds rule. The matching compiled delegate table supports the
+row values; its native lookup code has not been decoded.
+
+| Index | Multiplier |
+|---|---:|
+| 0 | 0.0 |
+| 1 | 0.166667 |
+| 2 | 0.25 |
+| 3 | 0.333334 |
+| 4 | 0.500001 |
+| 5 | 0.571429 |
+| 6 | 0.666667 |
+| 7 | 0.750001 |
+| 8 | 0.833334 |
+| 9 | 1.0 |
+
+For example, base index 5 gives 0.571429; adding three steps gives row 8,
+0.833334. A sum above 9 gives 1.0. The generated
+`COLLATERAL_MULT_OVERRIDE` map covers all 63 weapons and 328 ammo selections.
+See the [source table trace](../reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json)
+and [generator](../scripts/frosty-collateral.py).
+
 ## ADS-in, ADS movement, and moving ADS spread
 
 Values in `ADS_SPD_TIERS` are milliseconds; `ADS_MOVE_TIERS` are dimensionless

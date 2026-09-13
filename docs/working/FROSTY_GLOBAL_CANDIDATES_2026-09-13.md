@@ -1,5 +1,29 @@
 # Frosty audit of global assumptions
 
+## Current status — 13 September 2026
+
+The earlier combined changes were merged to `main` through PR #31 (`b0c4a97`).
+The light implementation and guide updates described here are subsequent local
+changes. The dated checkpoints below retain the investigation history; their
+deferred, unimplemented and pre-publication statements are superseded by this status.
+
+| Area | Current implementation | Remaining boundary |
+|---|---|---|
+| Availability, hit zones and projectiles | Removed the two unsupported Lightweight choices; explicit maps cover 63 weapons and 328 ammo choices. | Exported configuration does not establish live server overrides or native projectile integration. |
+| Collateral | Generate all ammo values from base plus signed steps, with a final clamp to rows 0–9 confirmed by the operator. | The table matches the compiled delegate; native lookup code is not decoded. |
+| Regeneration | Base 5 s; Frangible 9 s; Flechette 7 s. | These are model totals from source operands, not measured native timing. |
+| Sway and spotting | Display source weapon-sway amount changes; multiply spotting factors against the existing bases. | Generic optics do not identify source optics; spotting bases and native composition remain inferred. |
+| Distribution and controller | Use per-state source exponents and controller amount factor 0.8836. | Limited M39 capture evidence supports area sampling; native consumers/activation remain unverified. |
+| Lights | Replace the +15% estimate with decoded hip growth/recovery factors for 137 supported selections. | Selected means active; separate light and combo factors multiply. Idle recovery and native activation/order are not simulated. |
+| ADS and recoil timing | See the current attachment and recoil guides for source mappings and model rules. | This light/documentation update does not change barrel data or resolve native recoil delivery/reset behavior. |
+
+Light evidence: [field names](../../reference-data/provenance/frosty-light-field-names-2026-09-13.json),
+[source coverage](../../reference-data/provenance/frosty-light-implementation-2026-09-13.json),
+and [implemented equations](../RECOIL_SPREAD_MODEL.md#light-hipfire-source-factors).
+
+## Historical investigation checkpoints
+
+
 Updated: 12 September 2026 local / 13 September UTC.
 
 The audit now includes implementation and further source tracing. Site values are
@@ -58,7 +82,7 @@ Verification: 24 focused attachment/runtime tests passed; data validation passed
 for all 63 weapons. Direct loadout evaluation confirmed M4A1 Basic 200 ms and both
 VSSM barrels 250 ms.
 
-## Current result
+## Initial implementation checkpoint
 
 Three runtime changes are complete:
 

@@ -393,6 +393,7 @@ export function applyAttachments(w, atts) {
   // ── Spread per shot ───────────────────────────────────────────────────────────
   // Heavy-type barrel modifiers target ADS. Hip spread keeps its own parameters.
   const spreadIncMult = bar.adsSpreadIncMult ?? 1;
+  const hipSpreadIncMult = (lit?.hipSpreadIncMult ?? 1) * (las.hipSpreadIncMult ?? 1);
   const spreadDynBase = w.spreadDyn
     ? { ...w.spreadDyn,
       ads: { ...w.spreadDyn.ads, ...ammoType.adsSpreadDynOverride, ...ergoData.adsSpreadDynOverride },
@@ -400,11 +401,13 @@ export function applyAttachments(w, atts) {
     }
     : w.spreadDyn;
   const adsSpreadInc = ergoData.adsSpreadDynOverride?.inc ?? ammoType.adsSpreadDynOverride?.inc ?? w.recoilIncAds;
-  const spreadDynOverride = spreadIncMult === 1 || !spreadDynBase
+  const spreadDynOverride = (spreadIncMult === 1 && hipSpreadIncMult === 1) || !spreadDynBase
     ? spreadDynBase
     : Object.fromEntries(Object.entries(spreadDynBase).map(([state, dyn]) => [
       state,
-      state === 'ads' && dyn?.inc != null ? { ...dyn, inc: dyn.inc * spreadIncMult } : dyn,
+      dyn?.inc != null
+        ? { ...dyn, inc: dyn.inc * (state === 'ads' ? spreadIncMult : hipSpreadIncMult) }
+        : dyn,
     ]));
 
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
@@ -558,7 +561,9 @@ export function applyAttachments(w, atts) {
     _adsSpreadNotFiringDecOffsetMult: bar.adsSpreadNotFiringDecOffsetMult ?? 1,
     _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
     _hipRecoilDecayMult:     muz.hipRecoilDecayMult ?? 1,
-    _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
+    _hipSpreadFiringDecCoefMult: (lit?.hipSpreadFiringDecCoefMult ?? 1) * (las.hipSpreadFiringDecCoefMult ?? 1),
+    _hipSpreadFiringDecOffsetMult: (lit?.hipSpreadFiringDecOffsetMult ?? 1) * (las.hipSpreadFiringDecOffsetMult ?? 1),
+    _hipSpreadNotFiringDecOffsetMult: (lit?.hipSpreadNotFiringDecOffsetMult ?? 1) * (las.hipSpreadNotFiringDecOffsetMult ?? 1),
     _worldSpot:              worldSpot,
     _minimapSpot:            minimapSpot,
     _weaponSwayMult:         weaponSwayMult,

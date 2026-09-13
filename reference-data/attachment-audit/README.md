@@ -6,6 +6,10 @@ Current runtime contracts and promotion rules: [data sources](../../docs/DATA_SO
 Historical investigations: [archive index](../../docs/archive/README.md). A completed review
 package can retain provisional individual records; consult their statuses before promotion.
 
+The current generated hit-zone values match the 321 reviewed ammo-panel readings.
+Later light effects use decoded Frosty fields, not rounded panel percentages; see
+the [current provenance index](../provenance/README.md) for that separate evidence.
+
 ## Contents
 
 - `attachment-screenshot-review.json` — canonical machine-readable reference.

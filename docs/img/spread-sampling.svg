@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 495" width="1000" height="495" role="img"><title>Uniform radius sampling concentrates impacts near the center</title><rect width="1000" height="495" rx="16" fill="#f3f6fa"/><g font-family="Arial, Helvetica, sans-serif">
-<text x="30" y="43" font-size="27" fill="#142b42" font-weight="700">Uniform radius sampling concentrates impacts near the center</text>
-<text x="30" y="75" font-size="17" fill="#32465b" font-weight="400">Current renderer: angle = 2π × U; radius = spread × U, with independent random draws.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 495" width="1000" height="495" role="img"><title>Source exponent controls the impact distribution</title><rect width="1000" height="495" rx="16" fill="#f3f6fa"/><g font-family="Arial, Helvetica, sans-serif">
+<text x="30" y="43" font-size="27" fill="#142b42" font-weight="700">Source exponent controls the impact distribution</text>
+<text x="30" y="75" font-size="17" fill="#32465b" font-weight="400">Current: angle = 2π × U; radius = spread × U^e. Usually e = 0.5; moving Interdictor ADS = 0.67.</text>
 <circle cx="175" cy="253" r="116" stroke="#367bbb" fill="#e8f2fd"/>
 <circle cx="175" cy="253" r="58" stroke="#367bbb" fill="none"/>
 <circle cx="470" cy="253" r="116" stroke="#367bbb" fill="#e8f2fd"/>
@@ -325,8 +325,8 @@
 <circle cx="529.09" cy="164.37" r="2" stroke="#142b42" fill="#142b42"/>
 <circle cx="516.26" cy="193.72" r="2" stroke="#142b42" fill="#142b42"/>
 <circle cx="523.32" cy="303.19" r="2" stroke="#142b42" fill="#142b42"/>
-<text x="75" y="115" font-size="17" fill="#142b42" font-weight="700">CURRENT: UNIFORM RADIUS</text>
-<text x="365" y="115" font-size="17" fill="#142b42" font-weight="700">COMPARISON: UNIFORM AREA</text>
+<text x="75" y="115" font-size="17" fill="#142b42" font-weight="700">PREVIOUS: UNIFORM RADIUS</text>
+<text x="365" y="115" font-size="17" fill="#142b42" font-weight="700">CURRENT: UNIFORM AREA</text>
 <text x="635" y="185" font-size="22" fill="#142b42" font-weight="700">Inside half the radius:</text>
 <text x="635" y="231" font-size="24" fill="#286aa5" font-weight="700">50% probability</text>
 <text x="635" y="259" font-size="19" fill="#32465b" font-weight="400">with uniform radius</text>

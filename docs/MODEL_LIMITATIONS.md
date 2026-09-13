@@ -61,18 +61,21 @@ error improvement from 1.98 to 1.85 px is not an angular calibration or a direct
 site-simulator accuracy score. Other weapons/variants remain source-based transfer.
 Hipfire and spread minima are unchanged; the idle operand remains unused. See the
 [recording comparison](archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md).
-Standalone light recovery remains an assumed offset boost.
-Combined laser/light records retain a hip boost that the current resolver does not
-read from the laser slot. Do not describe every stored effect as active. Evidence:
-[attachment boundary](../reference-data/provenance/frosty-all-attachment-effect-boundary.json)
-and [historical comparison](archive/FROSTY_ATTACHMENT_COMPARISON_2026-09-06.md).
+Light/combo-light modifiers now apply source hipfire increase, firing coefficient,
+and firing/not-firing offset factors in the existing recovery equation. Their
+[target-name trace](../reference-data/provenance/frosty-light-field-names-2026-09-13.json)
+matches 248 named source states. The [implementation trace](../reference-data/provenance/frosty-light-implementation-2026-09-13.json)
+covers all 137 supported selections. Selecting a light treats it as active;
+there is no on/off, aim-trigger or native modifier-order simulation. Separate
+selected light and combo-laser factors multiply. The idle operand remains unused.
 
 **VSSM baseline composition.** Hipfire now uses raw index 4, supported by matched
 standing HUD screenshots. The moving minimum follows that source row; an
 independent projectile-angle calibration remains unavailable. The ordinary
-suppressed barrel's additional ADS tier remains a
-source/default/version question; the runtime retains the reviewed 250 ms baseline
-rather than applying an unconfirmed 200 ms candidate. These exceptions do not
+suppressed barrel's GS +1 binding differs from its WB animation/FOV route. Both
+VSSM barrels have zero WB ADS adjustment, matching the site's 250 ms default.
+The earlier 200 ms proposal read the GS route alone; the two routes are not added.
+The reason for their disagreement and native timing remain open. These exceptions do not
 invalidate the source arrays themselves. See [stat ladders](STAT_LADDERS.md).
 
 **Attachment identity and activation.** A name match, selector candidate or nearby
@@ -95,7 +98,8 @@ stat, not a simulation of material traversal.
 Spotting now multiplies source factors using the existing 54/150 m bases; the
 bases and composition are inferred from site/source agreement. Sway percentages
 cover source muzzle/magazine amount factors, excluding optic/camera effects.
-Light recovery boosts remain estimates.
+Light operands are source-backed; their activation and operation are modeled as
+described above.
 
 **Timing validation.** Source draw-time arrays and base indices are retained exactly,
 with one final clamp. Historical sprint comparisons used inherited screenshot

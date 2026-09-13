@@ -22,6 +22,52 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('Frosty lights scale hip growth and recovery without changing ADS or base records', () => {
+  const w = weapon('m4a1');
+  const before = structuredClone(w);
+  const base = build(w);
+  for (const light of ['flashlight', 'hip_taclight']) {
+    const lit = build(w, { light });
+    assert.equal(lit.spreadDyn.hip.inc, base.spreadDyn.hip.inc * 0.666667);
+    assert.deepEqual(lit.spread, base.spread, 'a light does not change the spread bounds');
+    assert.deepEqual(lit.spreadDyn.ads, base.spreadDyn.ads);
+    for (const stanceState of ['stand', 'move']) {
+      setSimContext({ aimState: 'hip', stanceState });
+      const normal = spreadRecoveries(base);
+      const active = spreadRecoveries(lit);
+      assert.equal(active.firing.coef, normal.firing.coef * 1.837117);
+      assert.equal(active.firing.offset, normal.firing.offset * 0.666667);
+      assert.equal(active.notFiring.offset, normal.notFiring.offset * 0.666667);
+      assert.equal(active.firing.exp, normal.firing.exp);
+      assert.equal(active.notFiring.coef, normal.notFiring.coef);
+      assert.ok(simulateSpread(lit, 20).at(-1) < simulateSpread(base, 20).at(-1));
+      setSimContext({ aimState: 'ads', stanceState });
+      assert.deepEqual(spreadRecoveries(lit), spreadRecoveries(base));
+      assert.deepEqual(simulateSpread(lit, 20), simulateSpread(base, 20));
+    }
+    assert.equal(lit.spreadDyn.hip.idleOffset, base.spreadDyn.hip.idleOffset, 'idle state remains unimplemented');
+  }
+  assert.deepEqual(w, before);
+  assert.deepEqual(build(w, { light: 'ads_taclight' }).spreadDyn, base.spreadDyn);
+});
+
+test('combined-slot lights and combo lasers use hip factors and preserve laser tiers', () => {
+  const w = weapon('p18');
+  const base = build(w);
+  for (const laser of ['flashlight', 'combo_red', 'combo_green']) {
+    const lit = build(w, { laser });
+    assert.equal(lit.spreadDyn.hip.inc, base.spreadDyn.hip.inc * 0.666667);
+    assert.equal(lit._hipSpreadFiringDecCoefMult, 1.837117);
+    assert.equal(lit._hipSpreadNotFiringDecOffsetMult, 0.666667);
+    const plainLaser = laser === 'combo_red' ? '5mw_red' : laser === 'combo_green' ? '5mw_green' : 'none';
+    assert.deepEqual(lit.spread.hipStand, build(w, { laser: plainLaser }).spread.hipStand);
+  }
+  const both = build(weapon('kord6p67'), { light: 'flashlight', laser: 'combo_green' });
+  const plain = build(weapon('kord6p67'));
+  assert.equal(both.spreadDyn.hip.inc, plain.spreadDyn.hip.inc * (0.666667 ** 2));
+  assert.equal(both._hipSpreadFiringDecCoefMult, 1.837117 ** 2);
+});
+
 test('Frosty collateral table matches ES 5.7 panels and clamps M121 A2 Tungsten', () => {
   const es = weapon('es57');
   for (const [ammo, exact, displayed] of [

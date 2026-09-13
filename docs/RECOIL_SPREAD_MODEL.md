@@ -82,9 +82,9 @@ subsequent pre-shot point:
   not-firing parameter sets; post-burst gaps split the interval into a firing segment
   and a not-firing segment.
 - Clamps to `[baseline, spreadMax]` for the current state.
-- Shot positions are sampled **uniform over radius** (not uniform over area):
-  `r = spreadRadius × rng()` — this is the current sampling convention and makes shot
-  distributions visually center-weighted (half the shots land in the inner 25% of the area).
+- Shot positions use `r = spreadRadius × rng() ** distExp` with an independent
+  uniform angle. The usual source exponent 0.5 gives uniform area sampling;
+  moving ADS on Interdictor uses 0.67. See the evidence and limits below.
 
 ## Effective ceilings during sustained fire
 
@@ -258,8 +258,8 @@ for both standing and moving. Hip growth and recovery retain their own inputs.
 | `adsSpreadNotFiringDecOffsetMult` | 0.666667 | Explicit not-firing recovery offset |
 
 The recovery exponent and spread minima are unchanged. Missing not-firing
-parameters still follow the fallback described above. Muzzle and
-light recovery boosts scale the applicable firing offset separately.
+parameters still follow the fallback described above. Muzzle recovery boosts
+scale the ADS firing offset separately.
 
 The resolver preserves increment precision for simulation. Scaling the flat
 recovery offset along with per-shot increase matters: reducing increase alone
@@ -270,6 +270,35 @@ The [AK4D Basic/Heavy comparison](archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2
 supports the ADS reduction. Other weapons and Heavy Extended/Cryogenic use the
 same source factors without separate recording validation. The idle operand
 remains unused because the model has no idle transition.
+
+## Light hipfire source factors
+
+Flashlight, Hipfire Taclight, Combo Red and Combo Green use the following source
+factors in hipfire, standing or moving. The twelve source variants agree across
+all 137 supported selections.
+
+| Field | Factor | Applied behavior |
+|---|---:|---|
+| `hipSpreadIncMult` | 0.666667 | Per-shot hip spread increase, after ergonomic overrides |
+| `hipSpreadFiringDecCoefMult` | 1.837117 | Non-linear firing recovery coefficient |
+| `hipSpreadFiringDecOffsetMult` | 0.666667 | Flat firing recovery offset |
+| `hipSpreadNotFiringDecOffsetMult` | 0.666667 | Explicit non-firing recovery offset |
+| `hipSpreadIdleDecOffsetMult` | 0.666667 | Retained only; no idle-state transition is simulated |
+
+The recovery exponents and light-only spread bounds stay unchanged. A combo's
+laser still changes minimum spread through its existing tier. Missing non-firing
+parameters use the adjusted firing fallback. ADS is unaffected by these factors.
+
+The resolver reads lights in ordinary or combined slots and combo effects from
+the laser slot. Separate selected light and combo-laser factors multiply; a light
+in a combined slot is counted once. Selection treats the light as active. Native
+switching and the modifier operation order have not been decoded. See the
+[source/selection trace](../reference-data/provenance/frosty-light-implementation-2026-09-13.json).
+
+This replaces the old +15% firing-offset estimate. A lower flat recovery offset
+does not by itself mean a worse light: spread added per shot also falls and the
+non-linear recovery coefficient rises. The attachment panel shows both hip
+spread per shot and the flat firing recovery value.
 
 ## Recoil control and platform
 
@@ -307,9 +336,9 @@ Angle Plot remains angular. Soldier Target projects the result at the selected
 distance and uses the available projectile model for vertical displacement.
 [sim/ballistics.js](../sim/ballistics.js) provides flight time and trajectory;
 [sim/target.js](../sim/target.js) handles geometry and hit classification.
-Projectile assembly uses available precise/base velocity and global coefficients,
-with supported ammo drag. The source-ID registry is not a
-hard eligibility gate. If trajectory resolution fails, the current renderer uses
+Projectile assembly uses available precise/base velocity and the selected
+weapon/ammo projectile's generated gravity and drag. Missing selection data has
+no global coefficient fallback. If trajectory resolution fails, the renderer uses
 zero vertical displacement; this is a display fallback, not a measured no-drop result.
 See [damage, ballistics and projection](DAMAGE_BALLISTICS.md).
 

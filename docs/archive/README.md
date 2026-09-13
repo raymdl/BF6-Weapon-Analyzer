@@ -9,6 +9,11 @@
 Some evidence links refer to local recordings, screenshots, or working audit files
 that are not included in the published repository.
 
+The [September 13 audit status](../working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+records the subsequent hit-zone, projectile, collateral, distribution and light
+integrations. Old uniform-radius and estimated light-recovery descriptions below
+do not describe the current model.
+
 This archive was organized on 9 September 2026. Moving a report here does not
 assert that every research question it raised was resolved. Current limitations
 are summarized in [model limitations](../MODEL_LIMITATIONS.md); current data
