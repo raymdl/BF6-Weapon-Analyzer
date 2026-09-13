@@ -235,6 +235,17 @@ Retained `idleTime`, `idleCoef`, `idleExp`, `idleOffset` and `firstShotMul`
 do not introduce an idle-state machine or first-shot multiplier.
 `distExp` controls impact sampling as described below.
 
+Source structure supports this recovery form. In every supported weapon, firing
+offset equals the firing coefficient times 9.72 (hip) or 2.25 (ADS, 40 weapons;
+the other 22 use a linear 6.6 offset). All 24 light, barrel and bipod spread
+modifiers multiply increase and all offsets by one factor k and the coefficient by
+exactly k^−1.5. With exponent 2.5, that keeps `coefficient × delta^exponent + offset`
+unchanged in form when spread above the minimum is scaled by k, so the equation
+above, with `delta` measured from the minimum, is the one these values were built
+for. The engine also defines an idle state after `IdleTime` (0.4 s ADS, 0.6 s hip)
+that is not simulated. See the
+[formula evidence](working/FROSTY_STAT_DISCOVERY_2026-09-13.md#engine-formula-evidence-source-data-only).
+
 The stance and aim state select `adsStand`, `adsMove`, `hipStand` or `hipMove`.
 Moving ADS starts with the weapon's stored `spread.adsMove[0]`. Attachment changes
 shift from its index in the source-ordered seven-row `MOVING_ACC_TIERS` table,

@@ -75,6 +75,71 @@ docs (weapon modifier asset paths excluded). Value spread across weapons:
 | `CameraRecoil.Spring*`, `UseTimeSinceLastShot` | Near-uniform (1500/0.94/30; zoomed 1500/0.5/50) | Camera recoil is unmodeled. |
 | `RecoilFadeOut*`, `FirstShotMultiplierVerticalRecoil`, `AutoReplenish*`, `BridgeDelay` | One value | Placeholder or unused. |
 
+## Engine formula evidence (source data only)
+
+The native equations are in game code, not in the export. The game executable was
+not examined. The findings below use only exported values and their internal structure.
+
+### Modifier operand record (`Struct_b1f8b400`)
+
+| Field | Observed operation | Evidence |
+|---|---|---|
+| `Field_bbffe8bc` = True with `Field_bbbfe9cc` | Override with value | Smooth: `RecoilDuration` 0.05 / 0.066667; GCR camera values |
+| `Field_4692836a` | Add | `GRM_AutoIdentifier_P00` duration −0.0006; Bolt Smooth time exponent −0.5 |
+| `Field_5695ee1c` | Multiply | Smooth recovery ×1.2 / ×1.728; spread increase and offsets ×k |
+| `Field_98a799ba` | Multiply (seen only on `FiringDecreaseCoefficient`) | ×k^−1.5 |
+
+Across all records in `Common`: multiply-5695ee1c 209, override 164 (+9 flag only),
+multiply-98a799ba 56, add 6. No record combines two operations, so the order inside
+one record is not observable. Order between modifiers on the same field is unresolved.
+
+### Spread recovery law: self-similar design
+
+Per branch (aim × stationary/moving), the GS `DispersionBehavior` values satisfy:
+
+- Firing: `FiringDecreaseOffset = FiringDecreaseCoefficient × c`, with c = 9.72 in hip
+  (62 of 64 weapons) and 2.25 in ADS (40 of 64); `FiringDecreaseExponent` 2.5.
+- ADS for 22 weapons (bolt-actions, DMRs, pistols, shotguns): coefficient 0, offset 6.6.
+- Not-firing: coefficient 0 (linear); offset = firing offset × 8/3 (ADS 7.2 for the
+  40), hip 12.96 constant; idle: coefficient 0, offset 25 (hip) or mostly 7.5 (ADS),
+  `IdleTime` 0.6 s hip (55) and 0.4 s ADS (62).
+- `FirstShotIncreaseMultiplier` 1 and generic `Decrease*` (1.8/0.25/0.4) are uniform.
+- Exceptions: Minigun and Railgun only.
+
+All 24 scaling modifiers (12 lights, 7 ADS barrels, 5 bipod) apply one factor k
+(0.666667, or 0.333333 for bipod) to `IncreasePerShot` and the firing, not-firing and
+idle offsets, and exactly k^−1.5 to `FiringDecreaseCoefficient`.
+
+Consequence: with Δ = spread − minimum, the law
+`dΔ/dt = −(C·Δ^2.5 + O)` is unchanged when Δ, the increase and O are scaled by k and
+C by k^(1−2.5) = k^−1.5, while the minimum is not scaled. Therefore the modifiers
+were built for this equation, with the power applied to spread above the minimum.
+The site's `applySpreadRecovery` already uses this form. The equivalent firing form is
+`dΔ/dt = −C·(Δ^2.5 + c)`.
+
+Closed-form sustained fire (continuous balance, firing recovery only): the increase
+rate I/τ equals recovery when `Δ* = max(0, (I/τ)/C − c)^0.4`. M240L hip (I 0.941,
+C 0.5, c 9.72, 600 RPM): Δ* ≈ 2.42 degrees above the minimum. If (I/τ)/C ≤ c, sustained
+fire stays at the minimum.
+
+Differences from the site: the engine has three recovery states (firing, not-firing,
+idle after `IdleTime`); the site uses two and has no idle state. The engine's rule for
+switching between firing and not-firing is not in the data; the site uses firing
+recovery for full-auto intervals and splits burst gaps. Recording scenario 4 in
+`BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md` is the test.
+
+### Recoil recovery values
+
+For all 62 supported GS records, both aims: `RecoilDecreaseOffset` 0.06,
+`RecoilDecreaseNorm` 1, `ShootingRecoilDecreaseScale` 1, `RecoilDuration` 0.025, and
+hip equals ADS for factor and offset. Factor and time exponent form 13 fixed profiles
+(for example 72/1.2, 55/1.023, 57/1.045, 104/1.459; 70/4.0 with exponent 0.6 for
+bolt-actions and two shotguns). Under the site's recovery law, profile half-lives are
+150–330 ms and the remaining fraction at the weapon's own shot interval ranges
+0.34–0.92, so no fire-rate design target exists. Unlike spread, recoil modifiers
+change amount through tier exponents without scaling recovery, so the data do not
+constrain the recoil law further.
+
 ## Remaining
 
 - Operator decision (13 September 2026): document only; no model changes yet.
