@@ -132,7 +132,7 @@ The local FrostyCmd also has `export-strings` (decode a localization language
 asset to `id<TAB>text`) and `scan-string-usage` (find string ids in EBX assets under
 path prefixes, with level assets skipped and a 12 GB stop). FrostyCmd is not part of
 this repository; [this patch](reference-data/provenance/frostycmd-string-tools-2026-09-13.patch)
-adds both commands. See [weapon display names](docs/FROSTY_DISPLAY_NAMES.md) for
+adds both commands. See [weapon display names](docs/working/FROSTY_DISPLAY_NAMES.md) for
 the procedure.
 
 ```sh

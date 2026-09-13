@@ -1,10 +1,10 @@
 # Weapon display names from Frosty
 
-[Documentation index](README.md) · [Data sources](DATA_SOURCES.md) · [Maintenance](../MAINTENANCE.md)
+[Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
 
 This guide explains how the site gets each weapon's in-game display name from game
 data, and how to repeat the work after a game update. The result for 13 September 2026
-is in [frosty-weapon-display-names-2026-09-13.json](../reference-data/provenance/frosty-weapon-display-names-2026-09-13.json).
+is in [frosty-weapon-display-names-2026-09-13.json](../../reference-data/provenance/frosty-weapon-display-names-2026-09-13.json).
 
 ## Result
 
@@ -33,7 +33,7 @@ is in [frosty-weapon-display-names-2026-09-13.json](../reference-data/provenance
 FrostyCmd lives in the local FrostyToolsuite fork, not in this repository:
 `C:\Downloads\FrostyToolsuite-battlefield6\FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final\FrostyCmd.exe`.
 
-[frostycmd-string-tools-2026-09-13.patch](../reference-data/provenance/frostycmd-string-tools-2026-09-13.patch)
+[frostycmd-string-tools-2026-09-13.patch](../../reference-data/provenance/frostycmd-string-tools-2026-09-13.patch)
 adds two commands to `FrostyCmd/Program.cs`. `export-ebx` does not change.
 The unpatched file is kept beside it as `Program.cs.bak-2026-09-13`.
 
@@ -141,7 +141,7 @@ In each exported XML file:
    string id as hex (for example `0xa77ee5e5`).
 3. Look up the id (uppercase, 8 digits) in `fs_us_strings.tsv`. That text is the display name.
 4. Link the record to a site weapon. Match the image internal name to `internalId` in
-   [frosty-weapon-identities.json](../reference-data/provenance/frosty-weapon-identities.json),
+   [frosty-weapon-identities.json](../../reference-data/provenance/frosty-weapon-identities.json),
    ignoring case. If a record has no image link, match its label with punctuation and
    spaces removed (`DP-12` → `DP12`, `Mini Fix` → `MiniFix`).
 5. Check that each site weapon has exactly one game name.

@@ -33,7 +33,6 @@ any remaining questions into an active handoff, and archive the completed record
 | [Architecture](ARCHITECTURE.md) | Developers: module ownership, startup, state, URL compatibility, rendering, capture. |
 | [Data sources](DATA_SOURCES.md) | Data maintainers: source authority, Frosty review pipeline, provenance, promotion rules. |
 | [Data reference](DATA_REFERENCE.md) | Developers/data maintainers: JSON contracts, field meanings, units, all live array families. |
-| [Weapon display names](FROSTY_DISPLAY_NAMES.md) | Data maintainers: in-game weapon names from Frosty localization, FrostyCmd string tools, repeatable procedure. |
 | [Stat ladders](STAT_LADDERS.md) | Model maintainers: complete finite tables, geometric factors, index signs, bounds, examples. |
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
