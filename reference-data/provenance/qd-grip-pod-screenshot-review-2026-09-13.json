@@ -1,0 +1,140 @@
+{
+  "scope": "Current-build underbarrel menu previews for QD Grip Pod against Alloy Vertical on five weapons, plus VSSM tier 4 and tier 5 vertical grips. Source images visually checked. Absolute panel values are recorded; the green and red delta arrows compare with the equipped grip and are not used. No runtime change in this record.",
+  "date": "2026-09-13",
+  "sourceBuild": "Current live build on 2026-09-13; same session as EF88_1.4.2.5_09-13-2026.webp and BROD 3_1.4.2.5_09-13-2026.webp",
+  "captureFolder": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026",
+  "controlFormula": "96 / (1.1 * R * sin(V) / V + 0.75)^2.25 + 4, R = effective ADS recoil amount, V = recoil variation in radians, rounded to the nearest integer (reference-data/provenance/composite-control-candidate-2026-09-06.json)",
+  "records": [
+    {
+      "weapon": "vssm",
+      "previewed": "Alloy Vertical",
+      "equipped": "None",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/VSSM_Alloy_Vertical_vs_None_09-13-2026.png",
+      "sha256": "fd1640f884433c945fe315fae3819bc8aa45c30a816e956b898837df868f865d",
+      "observed": { "hipfire": 47, "precision": 82, "control": 38, "mobility": 56, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.67, "sprintRecoveryMs": 133, "recoilAmountDegrees": 0.8, "recoilVariationDegrees": 9.1 },
+      "predictedControl": { "tier2": 38.34 },
+      "result": "tier 2"
+    },
+    {
+      "weapon": "vssm",
+      "previewed": "QD Grip Pod",
+      "equipped": "Alloy Vertical",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/VSSM_QD_Grip_Pod_vs_Alloy_Vertical_09-13-2026.png",
+      "sha256": "8285db3056692ace8d6b92035918cc7923085eda68609df609ab19cfa8d99fe5",
+      "observed": { "hipfire": 47, "precision": 84, "control": 41, "mobility": 56, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.67, "sprintRecoveryMs": 133, "recoilAmountDegrees": 0.7, "recoilVariationDegrees": 9.1 },
+      "predictedControl": { "tier2": 38.34, "tier3": 40.58 },
+      "result": "tier 3"
+    },
+    {
+      "weapon": "vssm",
+      "previewed": "6H64 Vertical",
+      "equipped": "None",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/VSSM_6464_Vertical_vs_None_09-13-2026.png",
+      "sha256": "55c0c457e9849fec1588a7f0f1bf55024b4d62aad11a772c3c5dd9eb95f145f9",
+      "observed": { "hipfire": 47, "precision": 86, "control": 43, "mobility": 50, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.6, "sprintRecoveryMs": 133, "recoilAmountDegrees": 0.7, "recoilVariationDegrees": 9.1 },
+      "predictedControl": { "tier4": 42.92 },
+      "result": "tier 4"
+    },
+    {
+      "weapon": "vssm",
+      "previewed": "Classic Vertical",
+      "equipped": "6H64 Vertical",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/VSSM_6464_Classic_Vertical_vs_Vertical_09-13-2026.png",
+      "sha256": "c8ae4d6ffae237507e4e9d80bcf303f06d9ae514ec913569eeb12ce742497fc4",
+      "observed": { "hipfire": 47, "precision": 87, "control": 45, "mobility": 50, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.6, "sprintRecoveryMs": 133, "recoilAmountDegrees": 0.6, "recoilVariationDegrees": 9.1 },
+      "predictedControl": { "tier5": 45.33 },
+      "result": "tier 5; the 1.3.3.0 reading of Control 38 for Classic Vertical and Low-Profile Stubby is not present in the current build"
+    },
+    {
+      "weapon": "brod3",
+      "previewed": "Alloy Vertical",
+      "equipped": "None",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/BROD_3_Alloy_Vertical_vs_None_09-13-2026.png",
+      "sha256": "8796820f75a9d7c10575cb1113c7daa5a98ba5da6cb6560a5d1f42f7443b80cd",
+      "observed": { "hipfire": 47, "precision": 28, "control": 40, "mobility": 60, "adsTimeMs": 200, "adsMoveSpeedMultiplier": 0.67, "sprintRecoveryMs": 133, "recoilAmountDegrees": 0.7, "recoilVariationDegrees": 24.3 },
+      "predictedControl": { "tier2": 40.45 },
+      "result": "tier 2"
+    },
+    {
+      "weapon": "brod3",
+      "previewed": "QD Grip Pod",
+      "equipped": "Alloy Vertical",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/BROD_3_QD_Grip_Pod_vs_Alloy_Vertical_09-13-2026.png",
+      "sha256": "4ea60c4254924b065013fa19bfbcf7aecbc32a80321f9a10720f54f8e47b2551",
+      "observed": { "hipfire": 47, "precision": 29, "control": 43, "mobility": 60, "adsTimeMs": 200, "adsMoveSpeedMultiplier": 0.67, "sprintRecoveryMs": 133, "recoilAmountDegrees": 0.7, "recoilVariationDegrees": 24.3 },
+      "predictedControl": { "tier2": 40.45, "tier3": 43.1 },
+      "result": "tier 3"
+    },
+    {
+      "weapon": "ef88",
+      "previewed": "Alloy Vertical",
+      "equipped": "None",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/EF88_Alloy_Vertical_vs_None_09-13-2026.png",
+      "sha256": "d6bae98ddc2a837b6357a7f325f3f0ae6b4628452b86bac4f2e414781a60098a",
+      "observed": { "hipfire": 40, "precision": 29, "control": 47, "mobility": 52, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.6, "sprintRecoveryMs": 167, "recoilAmountDegrees": 0.6, "recoilVariationDegrees": 26.1 },
+      "predictedControl": { "tier2": 47.21 },
+      "result": "tier 2"
+    },
+    {
+      "weapon": "ef88",
+      "previewed": "QD Grip Pod",
+      "equipped": "Alloy Vertical",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/EF88_QD_Grip_Pod_vs_Alloy_Vertical_09-13-2026.png",
+      "sha256": "b33cdd63f328d31ea9599e09d53d7ffea765f80d5758da97e2f533b264e71422",
+      "observed": { "hipfire": 40, "precision": 30, "control": 50, "mobility": 52, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.6, "sprintRecoveryMs": 167, "recoilAmountDegrees": 0.6, "recoilVariationDegrees": 26.1 },
+      "predictedControl": { "tier2": 47.21, "tier3": 50.23 },
+      "result": "tier 3"
+    },
+    {
+      "weapon": "m16a4",
+      "previewed": "Alloy Vertical",
+      "equipped": "None",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/M16A4_Alloy_Vertical_vs_None_09-13-2026.png",
+      "sha256": "687ae869d35b634601ed9d97fb09af2f37f79b55ea74068965c93c6e22878252",
+      "observed": { "hipfire": 40, "precision": 28, "control": 47, "mobility": 52, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.6, "sprintRecoveryMs": 167, "recoilAmountDegrees": 0.6, "recoilVariationDegrees": 29.2 },
+      "predictedControl": { "tier2": 46.72 },
+      "result": "tier 2"
+    },
+    {
+      "weapon": "m16a4",
+      "previewed": "QD Grip Pod",
+      "equipped": "Alloy Vertical",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/M16A4_QD_Grip_Pod_vs_Alloy_Vertical_09-13-2026.png",
+      "sha256": "9d3c8fbd998898a363f25e83a254f353877164d11599f0ef38da46ba39d27325",
+      "observed": { "hipfire": 40, "precision": 29, "control": 49, "mobility": 52, "adsTimeMs": 250, "adsMoveSpeedMultiplier": 0.6, "sprintRecoveryMs": 167, "recoilAmountDegrees": 0.6, "recoilVariationDegrees": 29.2 },
+      "predictedControl": { "tier2": 46.72, "tier3": 49.476 },
+      "result": "tier 3; unrounded recoil gives 49.476, which rounds to the displayed 49"
+    },
+    {
+      "weapon": "rpk74m",
+      "previewed": "Alloy Vertical",
+      "equipped": "None",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/RPK-74M_Alloy_Vertical_vs_None_09-13-2026.png",
+      "sha256": "a2e9d1ce0df9cf7b911f7f7ac3c7cb1de64e4395a378551e46e21ae12645b65a",
+      "observed": { "hipfire": 34, "precision": 57, "control": 68, "mobility": 44, "adsTimeMs": 300, "adsMoveSpeedMultiplier": 0.54, "sprintRecoveryMs": 200, "recoilAmountDegrees": 0.4, "recoilVariationDegrees": 16.1 },
+      "predictedControl": { "tier2": 67.95 },
+      "result": "tier 2"
+    },
+    {
+      "weapon": "rpk74m",
+      "previewed": "QD Grip Pod",
+      "equipped": "Alloy Vertical",
+      "source": "reference-data/attachment-audit/Weapon Attachments/Grip Comparison 09-13-2026/RPK-74M_QD_Grip_Pod_vs_Alloy_Vertical_09-13-2026.png",
+      "sha256": "33730ea39f9b07208eab903c36d112c44cd8e97438a9b89a6cf521283188c3b3",
+      "observed": { "hipfire": 34, "precision": 58, "control": 72, "mobility": 44, "adsTimeMs": 300, "adsMoveSpeedMultiplier": 0.54, "sprintRecoveryMs": 200, "recoilAmountDegrees": 0.4, "recoilVariationDegrees": 16.1 },
+      "predictedControl": { "tier2": 67.95, "tier3": 71.78 },
+      "result": "tier 3"
+    }
+  ],
+  "findings": [
+    "QD Grip Pod shows a tier 3 ADS recoil reduction on BROD 3, EF88, M16A4, RPK-74M and VSSM. Alloy Vertical shows tier 2 on the same weapons. The displayed recoil amount cannot separate tier 2 from tier 3 on four of the five weapons; Control does.",
+    "This agrees with the Frosty source operand recoil.ads.amountTier.add = 3 and recoil.hip.amountTier.add = 3 for QD Grip Pod on these weapons (reference-data/provenance/frosty-site-review-2026-09-07.json, docs/archive/FROSTY_SITE_REVIEW_2026-09-07.md) and with changelist 28877515.",
+    "The site catalog uses tier 2 for QD Grip Pod on all weapons. The VSSM note that the extra tier manifests only on the VSSM was based on the 1.3.3.0 capture corpus and is superseded by these captures.",
+    "Precision rises by 1 to 2 points per grip tier on these previews (VSSM 82, 84, 86, 87 for tiers 2 to 5)."
+  ],
+  "limits": [
+    "Unmounted menu previews only; deployed grip pod behavior is not tested.",
+    "The other weapons where Frosty lists QD Grip Pod as +2 were not captured in this session.",
+    "Control rounding and native function semantics remain as described in the Control candidate record."
+  ]
+}

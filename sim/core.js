@@ -192,9 +192,7 @@ export function sampleSpreadRadius(w, spread, u) {
 export function spreadBounds(w) {
   const { aimState, stanceState } = _ctx;
   const key = `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
-  const bounds = w.spread?.[key]
-    ?? (aimState === 'ads' ? [0.05, w.spreadMax ?? 99] : [0, w.spreadMax ?? 99]);
-  return bounds;
+  return w.spread[key];
 }
 
 /**

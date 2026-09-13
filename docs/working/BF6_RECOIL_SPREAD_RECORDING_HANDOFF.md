@@ -247,6 +247,62 @@ burst. Release the trigger for approximately:
 Fire again after each pause. Repeat the pause series while moving ADS, then make
 one stationary hipfire series. Retain the full indicator path through each pause.
 
+### Scenario 4 capture plan with source predictions (13 September 2026)
+
+Source values and the equation form are in
+[FROSTY_STAT_DISCOVERY_2026-09-13.md](FROSTY_STAT_DISCOVERY_2026-09-13.md#engine-formula-evidence-source-data-only).
+The AK4D hipfire tail already matched flat not-firing recovery (0.199 s predicted,
+about 0.21 s measured). These captures test the parts that remain open.
+
+Weapon and conditions: AK4D, default loadout (no light, no Heavy-type barrel, no
+bipod), hipfire, standing conditions above. Hipfire keeps the indicator visible.
+AK4D hip source values: minimum 2.432° standing / 3.04° moving, increase 0.941°,
+514.285 RPM, firing `0.5·Δ^2.5 + 4.86` °/s, not-firing 12.96 °/s, idle 25 °/s after
+`IdleTime` 0.6 s. Δ is spread above the current minimum.
+
+1. **Visibility pilot (do first).** One 15-round burst, then no input until the
+   indicator is stable for 2 s. Pass: the indicator width is measurable for the
+   whole tail. Prediction: 144 px above the 136 px plateau at the last shot (at the
+   derived 56 px/degree), minimum reached about 0.20 s later.
+2. **Idle activation.** The 15-round tail ends before 0.6 s, so idle cannot show.
+   Use a moving hipfire burst (moving minimum 3.04°), release and stop moving at the
+   same time, or use a longer burst if the plateau allows it. Repeat 5 times.
+   Test: excess still visible at 0.6 s after release. Predictions:
+   - no idle state: flat 12.96 °/s until the minimum;
+   - idle at `IdleTime`: slope changes to 25 °/s (about ×1.93) at 0.6 s;
+   - idle timer from the last shot versus from trigger release: the change time
+     differs by the final shot interval (about 117 ms).
+3. **Firing-to-not-firing switch.** Fire 5-round bursts, then pause about 50, 100,
+   150, 250, 400 and 800 ms before one more shot; 5 repeats per pause. Record audio.
+   Prediction for the pause after shot 5 (excess 2.083°, 0.1 ms integration).
+   Values are the drop in excess at the end of the pause:
+
+   | Pause | Immediate not-firing | Firing until next expected shot (116.7 ms), then not-firing | Firing for the whole pause |
+   |---|---:|---:|---:|
+   | 50 ms | 0.648° | 0.367° | 0.367° |
+   | 100 ms | 1.296° | 0.686° | 0.686° |
+   | 150 ms | 1.944° | 1.218° | 0.973° |
+   | 250 ms | 2.083° (at minimum) | 2.083° (at minimum) | 1.494° |
+   | 400 ms and longer | at minimum | at minimum | at minimum |
+
+   Firing recovery is 8.0 °/s at 2.083° and is slower than not-firing 12.96 °/s below
+   3.05°. The 100 and 150 ms pauses separate immediate not-firing from the other two;
+   150 and 250 ms separate the two firing variants.
+4. **First shot after a pause.** In capture 3, measure the width just after the
+   resumed shot. Prediction with `FirstShotIncreaseMultiplier` 1: the increase is
+   0.941° over the width at that moment; with a first-shot rule after reset it would
+   differ only after full recovery.
+5. **Semi-auto (if AK4D has semi; otherwise any of the 40 source weapons with a semi
+   selector).** Switch to semi and tap at about 150 ms intervals for 10 shots.
+   Prediction: `GBM_NoIncrease_Semi_P00` sets the increase to 0, so the indicator
+   stays at the minimum. Compare with the same taps in automatic mode, where each
+   shot adds 0.941° and 150 ms of not-firing recovery removes only about 1.94°
+   (so taps at that rate also return to the minimum; use about 60–80 ms taps in
+   auto to show growth).
+
+Use recorded shot and release times, not filename labels. Keep missing
+observations as missing.
+
 ## Pending scenario 5: movement and stance spread branches
 
 The AK4D Basic/Heavy strafe-only ADS and hipfire controls are now available in

@@ -13,8 +13,6 @@
     "recoilDir": -22,
     "recoilVar": 41.4,
     "recoilIncAds": 0.36,
-    "spreadMax": 7,
-    "adsTime": 250,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -104,31 +102,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by HK433_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -145,8 +143,6 @@
     "recoilDir": -15,
     "recoilVar": 28,
     "recoilIncAds": 0.36,
-    "spreadMax": 7,
-    "adsTime": 250,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -236,31 +232,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by G36_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -277,8 +273,6 @@
     "recoilDir": -9,
     "recoilVar": 12.7,
     "recoilIncAds": 0.36,
-    "spreadMax": 7,
-    "adsTime": 260,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -368,31 +362,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by SCARL_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -409,8 +403,6 @@
     "recoilDir": -18,
     "recoilVar": 20,
     "recoilIncAds": 0.523,
-    "spreadMax": 7,
-    "adsTime": 270,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -500,31 +492,31 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x51mmNATO tweakable damage curve referenced by G3A4_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -541,8 +533,6 @@
     "recoilDir": 20,
     "recoilVar": 40.8,
     "recoilIncAds": 0.523,
-    "spreadMax": 7,
-    "adsTime": 255,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -632,31 +622,31 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x51mmNATO tweakable damage curve referenced by Tavor7_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.979166,
     "provenance": {
       "frosty": {
@@ -683,8 +673,6 @@
     "recoilDir": 18,
     "recoilVar": 28.9,
     "recoilIncAds": 0.28,
-    "spreadMax": 7,
-    "adsTime": 240,
     "fireMode": "auto",
     "burstRounds": 2,
     "spreadDyn": {
@@ -775,31 +763,31 @@
       {
         "r": 0,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_545x39mm tweakable damage curve referenced by 6P67_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -816,8 +804,6 @@
     "recoilDir": -12,
     "recoilVar": 28.9,
     "recoilIncAds": 0.409,
-    "spreadMax": 7,
-    "adsTime": 260,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -907,51 +893,51 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 27.48,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 27.48,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x39mm tweakable damage curve referenced by ACE32_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.973599,
     "provenance": {
       "frosty": {
@@ -978,8 +964,6 @@
     "recoilDir": 12,
     "recoilVar": 22.8,
     "recoilIncAds": 0.36,
-    "spreadMax": 7,
-    "adsTime": 230,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -1069,31 +1053,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by L85A3_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.975786,
     "provenance": {
       "frosty": {
@@ -1120,8 +1104,6 @@
     "recoilDir": 18,
     "recoilVar": 50.3,
     "recoilIncAds": 0.36,
-    "spreadMax": 7,
-    "adsTime": 255,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -1211,31 +1193,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by VHS2_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.958915,
     "provenance": {
       "frosty": {
@@ -1262,8 +1244,6 @@
     "recoilDir": -21,
     "recoilVar": 37.5,
     "recoilIncAds": 0.36,
-    "spreadMax": 7,
-    "adsTime": null,
     "fireMode": "burst",
     "burstRounds": 3,
     "burstBurstsPerMinute": 224.999,
@@ -1355,31 +1335,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by M16A3_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -1396,8 +1376,6 @@
     "recoilDir": -18,
     "recoilVar": 30.7,
     "recoilIncAds": 0.304,
-    "spreadMax": 6,
-    "adsTime": 200,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -1487,51 +1465,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by M4A1_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.977272,
     "provenance": {
       "frosty": {
@@ -1558,8 +1536,6 @@
     "recoilDir": -22,
     "recoilVar": 34.4,
     "recoilIncAds": 0.409,
-    "spreadMax": 6,
-    "adsTime": 210,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -1649,21 +1625,21 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_68x51mm_Carbine tweakable damage curve referenced by XM7_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.979026,
     "provenance": {
       "frosty": {
@@ -1690,8 +1666,6 @@
     "recoilDir": 6,
     "recoilVar": 7.4,
     "recoilIncAds": 0.239,
-    "spreadMax": 6,
-    "adsTime": 200,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -1781,51 +1755,51 @@
       {
         "r": 0,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 15.07,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 15.07,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_545x39mm_Carbine tweakable damage curve referenced by AK205_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.959742
   },
   {
@@ -1842,8 +1816,6 @@
     "recoilDir": -16,
     "recoilVar": 15.4,
     "recoilIncAds": 0.409,
-    "spreadMax": 6,
-    "adsTime": 230,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -1933,51 +1905,51 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 27.48,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 27.48,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x51mmNATO_Carbine tweakable damage curve referenced by HK417A2_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -1994,8 +1966,6 @@
     "recoilDir": 16,
     "recoilVar": 26.1,
     "recoilIncAds": 0.304,
-    "spreadMax": 6,
-    "adsTime": 195,
     "fireMode": "auto",
     "burstRounds": 3,
     "burstRpm": 830,
@@ -2088,51 +2058,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by MSBSGROTB_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -2149,8 +2119,6 @@
     "recoilDir": -10,
     "recoilVar": 19.9,
     "recoilIncAds": 0.304,
-    "spreadMax": 6,
-    "adsTime": 200,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -2240,51 +2208,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_58x42mm_Carbine tweakable damage curve referenced by QBZ192_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -2301,8 +2269,6 @@
     "recoilDir": -20,
     "recoilVar": 35.8,
     "recoilIncAds": 0.36,
-    "spreadMax": 6,
-    "adsTime": 205,
     "fireMode": "auto",
     "burstRounds": 3,
     "spreadDyn": {
@@ -2393,51 +2359,51 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x39mm_Carbine tweakable damage curve referenced by SIG553R_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.979999,
     "provenance": {
       "frosty": {
@@ -2464,8 +2430,6 @@
     "recoilDir": -12,
     "recoilVar": 15.8,
     "recoilIncAds": 0.36,
-    "spreadMax": 6,
-    "adsTime": 195,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -2555,51 +2519,51 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_.300BLK_Carbine tweakable damage curve referenced by SCARSC_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -2616,8 +2580,6 @@
     "recoilDir": -18,
     "recoilVar": 31.7,
     "recoilIncAds": 0.28,
-    "spreadMax": 6,
-    "adsTime": 175,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -2707,51 +2669,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by MPX_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -2768,8 +2730,6 @@
     "recoilDir": -10,
     "recoilVar": 28.3,
     "recoilIncAds": 0.28,
-    "spreadMax": 6,
-    "adsTime": 175,
     "fireMode": "auto",
     "burstRounds": 3,
     "spreadDyn": {
@@ -2860,51 +2820,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by MP5MLI_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -2931,8 +2891,6 @@
     "recoilDir": -10,
     "recoilVar": 27.8,
     "recoilIncAds": 0.221,
-    "spreadMax": 6,
-    "adsTime": 165,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -3022,31 +2980,31 @@
       {
         "r": 0,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_46x30_PDW tweakable damage curve referenced by MP7A2_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.961538,
     "provenance": {
       "frosty": {
@@ -3073,8 +3031,6 @@
     "recoilDir": -16,
     "recoilVar": 13,
     "recoilIncAds": 0.304,
-    "spreadMax": 6,
-    "adsTime": 175,
     "fireMode": "auto",
     "burstRounds": 2,
     "spreadDyn": {
@@ -3165,51 +3121,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_.40SW_PDW tweakable damage curve referenced by UMP40_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -3226,8 +3182,6 @@
     "recoilDir": 10,
     "recoilVar": 35.5,
     "recoilIncAds": 0.239,
-    "spreadMax": 6,
-    "adsTime": 185,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -3317,51 +3271,51 @@
       {
         "r": 0,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.74,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 15.07,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 15.07,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_57x28mm_PDW tweakable damage curve referenced by P90_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.955666,
     "provenance": {
       "frosty": {
@@ -3388,8 +3342,6 @@
     "recoilDir": 22,
     "recoilVar": 50,
     "recoilIncAds": 0.28,
-    "spreadMax": 6,
-    "adsTime": 165,
     "fireMode": "auto",
     "burstRounds": 2,
     "spreadDyn": {
@@ -3480,51 +3432,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by Vector_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -3541,8 +3493,6 @@
     "recoilDir": -18,
     "recoilVar": 33.5,
     "recoilIncAds": 0.36,
-    "spreadMax": 6,
-    "adsTime": 185,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -3632,51 +3582,51 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_10x25mm_PDW tweakable damage curve referenced by APC10_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.980769,
     "provenance": {
       "frosty": {
@@ -3703,8 +3653,6 @@
     "recoilDir": 0,
     "recoilVar": 13,
     "recoilIncAds": 0.28,
-    "spreadMax": 6,
-    "adsTime": 180,
     "fireMode": "auto",
     "burstRounds": 2,
     "burstRpm": 771,
@@ -3797,51 +3745,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by APDW_WB, export label 1.4.2.5.",
     "reloadSpeed": 1.031698,
     "provenance": {
       "frosty": {
@@ -3868,8 +3816,6 @@
     "recoilDir": -15,
     "recoilVar": 50.8,
     "recoilIncAds": 0.28,
-    "spreadMax": 6,
-    "adsTime": 170,
     "fireMode": "auto",
     "burstRounds": 3,
     "spreadDyn": {
@@ -3960,51 +3906,51 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by ScorpionEvo3_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4021,7 +3967,6 @@
     "recoilDir": 6,
     "recoilVar": 18,
     "recoilIncAds": 0.28,
-    "spreadMax": 6,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -4108,52 +4053,52 @@
       ]
     },
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by PP19_WB, export label 1.4.2.5.",
     "dmg": [
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "reloadSpeed": 0.979732,
@@ -4182,8 +4127,6 @@
     "recoilDir": 0,
     "recoilVar": 31,
     "recoilIncAds": 0.36,
-    "spreadMax": 11,
-    "adsTime": 380,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -4273,31 +4216,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by Minimi_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4314,8 +4257,6 @@
     "recoilDir": -14,
     "recoilVar": 29.3,
     "recoilIncAds": 0.36,
-    "spreadMax": 9,
-    "adsTime": 280,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -4405,31 +4346,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by M27IAR_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4446,8 +4387,6 @@
     "recoilDir": 0,
     "recoilVar": 29.9,
     "recoilIncAds": 0.523,
-    "spreadMax": 11,
-    "adsTime": 420,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -4537,31 +4476,31 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by M60E6_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.99102,
     "provenance": {
       "frosty": {
@@ -4588,8 +4527,6 @@
     "recoilDir": 5,
     "recoilVar": 17.5,
     "recoilIncAds": 0.409,
-    "spreadMax": 9,
-    "adsTime": 310,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -4679,51 +4616,51 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 27.48,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 27.48,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 21.56,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x39mm_MG tweakable damage curve referenced by RPKM_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4740,8 +4677,6 @@
     "recoilDir": -10,
     "recoilVar": 47.7,
     "recoilIncAds": 0.36,
-    "spreadMax": 11,
-    "adsTime": 400,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -4831,31 +4766,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by MG4K_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4872,8 +4807,6 @@
     "recoilDir": -14,
     "recoilVar": 35.9,
     "recoilIncAds": 0.409,
-    "spreadMax": 11,
-    "adsTime": 360,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -4963,16 +4896,16 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 15,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); special damage profile: no falloff at any range (user-confirmed)",
+    "damageSource": "Frosty PD_68x51mm_MG tweakable damage curve referenced by M250_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4989,8 +4922,6 @@
     "recoilDir": 8,
     "recoilVar": 9.5,
     "recoilIncAds": 0.36,
-    "spreadMax": 9,
-    "adsTime": 320,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -5080,31 +5011,31 @@
       {
         "r": 0,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by Ultimax_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5121,8 +5052,6 @@
     "recoilDir": 5,
     "recoilVar": 34.5,
     "recoilIncAds": 0.523,
-    "spreadMax": 11,
-    "adsTime": 410,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -5212,31 +5141,31 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by M240L_WB, export label 1.4.2.5.",
     "reloadSpeed": 0.949176,
     "provenance": {
       "frosty": {
@@ -5263,8 +5192,6 @@
     "recoilDir": -7,
     "recoilVar": 31.8,
     "recoilIncAds": 0.523,
-    "spreadMax": 11,
-    "adsTime": 390,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -5354,31 +5281,31 @@
       {
         "r": 0,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 35.22,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.05,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by MG5_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5395,8 +5322,6 @@
     "recoilDir": 6,
     "recoilVar": 16.1,
     "recoilIncAds": 0.28,
-    "spreadMax": 9,
-    "adsTime": null,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -5486,31 +5411,31 @@
       {
         "r": 0,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20.67,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_545x39mm_MG tweakable damage curve referenced by RPK74M_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5527,8 +5452,6 @@
     "recoilDir": -12,
     "recoilVar": 8,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": 320,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -5618,31 +5541,31 @@
       {
         "r": 0,
         "d": 41.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 41.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 37.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 37.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 34.4,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x51mmNATO_Semi tweakable damage curve referenced by M39EMR_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5659,8 +5582,6 @@
     "recoilDir": 10,
     "recoilVar": 11,
     "recoilIncAds": 0,
-    "spreadMax": 7,
-    "adsTime": 340,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -5750,31 +5671,31 @@
       {
         "r": 0,
         "d": 29.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 29.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 27.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 27.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.2,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_Semi tweakable damage curve referenced by ARADMR_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5791,8 +5712,6 @@
     "recoilDir": -7,
     "recoilVar": 20,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": 380,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -5882,31 +5801,31 @@
       {
         "r": 0,
         "d": 66.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 66.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 57.2,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 57.2,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 52.4,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_.338LapuaMagnum_Semi tweakable damage curve referenced by SVCh_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5923,8 +5842,6 @@
     "recoilDir": 4,
     "recoilVar": 10,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": 360,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -6014,31 +5931,31 @@
       {
         "r": 0,
         "d": 41.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 41.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 37.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 37.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 34.4,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_762x54mmR_Semi tweakable damage curve referenced by SVDM_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6055,8 +5972,6 @@
     "recoilDir": -5,
     "recoilVar": 8,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": 330,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -6146,31 +6061,31 @@
       {
         "r": 0,
         "d": 29.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 29.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 27.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 27.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 26.2,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_556x45mmNATO_Semi tweakable damage curve referenced by MSBSGROTCPS_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6187,8 +6102,6 @@
     "recoilDir": -5,
     "recoilVar": 10,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": 500,
     "fireMode": "bolt",
     "spreadDyn": {
       "ads": {
@@ -6278,26 +6191,26 @@
       {
         "r": 54,
         "d": 80,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 100,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 133,
         "d": 62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
+    "damageSource": "Frosty PD_.300WinMag tweakable damage curve referenced by M2010ESR_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -6328,8 +6241,6 @@
     "recoilDir": -5,
     "recoilVar": 10,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": 520,
     "fireMode": "bolt",
     "spreadDyn": {
       "ads": {
@@ -6419,31 +6330,31 @@
       {
         "r": 0,
         "d": 80,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 80,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 54,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 100,
         "d": 62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
+    "damageSource": "Frosty PD_762x54mmR_Bolt tweakable damage curve referenced by SV98M_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -6474,8 +6385,6 @@
     "recoilDir": -4,
     "recoilVar": 12,
     "recoilIncAds": 0,
-    "spreadMax": 11,
-    "adsTime": 550,
     "fireMode": "bolt",
     "spreadDyn": {
       "ads": {
@@ -6565,26 +6474,26 @@
       {
         "r": 75,
         "d": 80,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 90,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 120,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 160,
         "d": 62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
+    "damageSource": "Frosty PD_.338NormaMagnum tweakable damage curve referenced by MRAD_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -6615,8 +6524,6 @@
     "recoilDir": -5,
     "recoilVar": 5,
     "recoilIncAds": 0,
-    "spreadMax": 7,
-    "adsTime": 430,
     "fireMode": "bolt",
     "spreadDyn": {
       "ads": {
@@ -6706,21 +6613,21 @@
       {
         "r": 0,
         "d": 62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 62,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 58,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear falloff, no sweet spot",
+    "damageSource": "Frosty PD_556x45mmNATO_Bolt tweakable damage curve referenced by MiniFix_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -6751,8 +6658,6 @@
     "recoilDir": -8,
     "recoilVar": 4,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": null,
     "fireMode": "bolt",
     "spreadDyn": {
       "ads": {
@@ -6842,26 +6747,26 @@
       {
         "r": 75,
         "d": 80,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 100,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 133,
         "d": 100,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 175,
         "d": 62,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff",
+    "damageSource": "Frosty PD_.338LapuaMagnum2 tweakable damage curve referenced by L115A3_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -6897,8 +6802,6 @@
     "recoilDir": -8.0,
     "recoilVar": 10.0,
     "recoilIncAds": 0.0,
-    "spreadMax": 11.0,
-    "adsTime": 433,
     "fireMode": "bolt",
     "spreadDyn": {
       "ads": {
@@ -7046,8 +6949,6 @@
     "recoilDir": -10,
     "recoilVar": 12,
     "recoilIncAds": 0.001,
-    "spreadMax": 5,
-    "adsTime": 250,
     "fireMode": "pump",
     "spreadDyn": {
       "ads": {
@@ -7138,41 +7039,41 @@
       {
         "r": 0,
         "d": 8.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 8,
         "d": 8.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 7.2,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 15,
         "d": 7.2,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 16,
         "d": 5.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 30,
         "d": 5.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 31,
         "d": 3.8,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "damageSource": "Frosty PD_12gaNo01Buck300_Pump tweakable damage curve referenced by 590A1_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7211,8 +7112,6 @@
     "recoilDir": -5,
     "recoilVar": 15,
     "recoilIncAds": 0.001,
-    "spreadMax": 5,
-    "adsTime": 260,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -7303,41 +7202,41 @@
       {
         "r": 0,
         "d": 7.2,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 8,
         "d": 7.2,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 15,
         "d": 5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 16,
         "d": 3.1,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 3.1,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 22,
         "d": 2.3,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "damageSource": "Frosty PD_12gaNo01Buck300_Semi tweakable damage curve referenced by M1014_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7368,8 +7267,6 @@
     "recoilDir": 8,
     "recoilVar": 12,
     "recoilIncAds": 0.001,
-    "spreadMax": 5,
-    "adsTime": 270,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -7460,31 +7357,31 @@
       {
         "r": 0,
         "d": 5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 15,
         "d": 5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 16,
         "d": 2.8,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 2.8,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 22,
         "d": 2,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "damageSource": "Frosty PD_12gaNo01Buck275_Semi tweakable damage curve referenced by 185KSK_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -7501,8 +7398,6 @@
     "recoilDir": 0,
     "recoilVar": 15,
     "recoilIncAds": 0.001,
-    "spreadMax": 5,
-    "adsTime": 240,
     "fireMode": "pump",
     "spreadDyn": {
       "ads": {
@@ -7593,31 +7488,31 @@
       {
         "r": 0,
         "d": 5.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 15,
         "d": 5.6,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 16,
         "d": 3.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 3.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 22,
         "d": 2.5,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary",
+    "damageSource": "Frosty PD_12gaNo01Buck275_Pump tweakable damage curve referenced by DP12_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "burstRounds": 2,
     "burstRpm": 359.999,
@@ -7662,8 +7557,6 @@
     "recoilDir": -5,
     "recoilVar": 15,
     "recoilIncAds": 0,
-    "spreadMax": 6,
-    "adsTime": 175,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -7753,51 +7646,51 @@
       {
         "r": 0,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 16.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 16.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.5,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_9x19mm tweakable damage curve referenced by M18_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -7814,8 +7707,6 @@
     "recoilDir": 5,
     "recoilVar": 15,
     "recoilIncAds": 0,
-    "spreadMax": 6,
-    "adsTime": 175,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -7905,51 +7796,51 @@
       {
         "r": 0,
         "d": 20,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 20,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 17.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 15,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 15,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 14.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.5,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_57x28mm tweakable damage curve referenced by FiveSeven_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -7966,8 +7857,6 @@
     "recoilDir": 0,
     "recoilVar": 12,
     "recoilIncAds": 0,
-    "spreadMax": 6,
-    "adsTime": 200,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -8057,61 +7946,56 @@
       {
         "r": 0,
         "d": 33.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 33.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 20,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 20,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 16.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 54,
         "d": 16.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 54,
         "d": 14.3,
-        "source": "Sym"
-      },
-      {
-        "r": 75,
-        "d": 14.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.5,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_.45ACP tweakable damage curve referenced by M45A1_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -8128,8 +8012,6 @@
     "recoilDir": -8,
     "recoilVar": 12,
     "recoilIncAds": 0,
-    "spreadMax": 6,
-    "adsTime": 225,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -8219,41 +8101,41 @@
       {
         "r": 0,
         "d": 66.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 66.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 59.9,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 59.9,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 33.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 33.4,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_.44Magnum tweakable damage curve referenced by RagingHunter_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -8283,8 +8165,6 @@
     "recoilDir": -7,
     "recoilVar": 12,
     "recoilIncAds": 0,
-    "spreadMax": 6,
-    "adsTime": 175,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -8374,51 +8254,51 @@
       {
         "r": 0,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 21.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 21.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 17.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 17.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 16.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 16.7,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.3,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_.40SW tweakable damage curve referenced by G22_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -8435,8 +8315,6 @@
     "recoilDir": -10,
     "recoilVar": 15,
     "recoilIncAds": 0,
-    "spreadMax": 6,
-    "adsTime": 225,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -8526,51 +8404,51 @@
       {
         "r": 0,
         "d": 50,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 50,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 37.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 37.5,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 27.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 27.3,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 25,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 20,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_.357Magnum tweakable damage curve referenced by TRR8_WB, export label 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -8600,8 +8478,6 @@
     "recoilDir": -10,
     "recoilVar": 18.4,
     "recoilIncAds": 0.209,
-    "spreadMax": 6,
-    "adsTime": 175,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -8691,51 +8567,51 @@
       {
         "r": 0,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 17.13,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 9,
         "d": 15.07,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 15.07,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 21,
         "d": 13.09,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 13.09,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 36,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 12.76,
-        "source": "Sym"
+        "source": "Frosty"
       },
       {
         "r": 75,
         "d": 11.32,
-        "source": "Sym"
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation",
+    "damageSource": "Frosty PD_32ACP_PDW tweakable damage curve referenced by Skorpion_WB, export label 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -8752,8 +8628,6 @@
     "recoilDir": -16,
     "recoilVar": 24.3,
     "recoilIncAds": 0.304,
-    "spreadMax": 6,
-    "adsTime": 200,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -8918,19 +8792,17 @@
           "emptyRld",
           "reloadSpeed",
           "bulletVel",
-          "adsTime",
           "recoilV",
           "recoilDir",
           "recoilVar",
           "recoilIncAds",
-          "spreadMax",
           "recoil",
           "spread",
           "spreadDyn",
           "dmg"
         ],
         "evidence": "reference-data/provenance/frosty-1.4.2.5-brod3-velocity.json",
-        "note": "All listed base fields match Frosty 1.4.2.5. BREN3 has no named GS registry entries, so its recoil and spread fields were decoded from GS_BREN3.xml (see sourcingEvidence). Damage is the PD_556x45mmNATO_Carbine curve referenced by BREN3_WB; rpm is FireLogic.RateOfFire. Moving ADS and hipfire minima use the Frosty array selectors, and adsTime equals the Frosty-indexed default build. The former GRT-BC burst fields were removed: BREN3 BurstsPerMinute is 0 and the weapon has no burst-mode option.",
+        "note": "All listed base fields match Frosty 1.4.2.5. BREN3 has no named GS registry entries, so its recoil and spread fields were decoded from GS_BREN3.xml (see sourcingEvidence). Damage is the PD_556x45mmNATO_Carbine curve referenced by BREN3_WB; rpm is FireLogic.RateOfFire. Moving ADS and hipfire minima use the Frosty array selectors. The former GRT-BC burst fields were removed: BREN3 BurstsPerMinute is 0 and the weapon has no burst-mode option.",
         "emptyReloadEvidence": "reference-data/provenance/frosty-1.4.2.5-empty-reloads.json#weapons/brod3",
         "spreadEvidence": "reference-data/provenance/frosty-1.4.2.5-brod3-spread.json",
         "sourceRecheckEvidence": "reference-data/provenance/frosty-brod3-source-recheck-2026-09-10.json",
@@ -8953,8 +8825,6 @@
     "recoilDir": 11,
     "recoilVar": 26.1,
     "recoilIncAds": 0.36,
-    "spreadMax": 7,
-    "adsTime": 250,
     "fireMode": "auto",
     "spreadDyn": {
       "ads": {
@@ -9099,19 +8969,17 @@
           "emptyRld",
           "reloadSpeed",
           "bulletVel",
-          "adsTime",
           "recoilV",
           "recoilDir",
           "recoilVar",
           "recoilIncAds",
-          "spreadMax",
           "recoil",
           "spread",
           "spreadDyn",
           "dmg"
         ],
         "evidence": "reference-data/provenance/frosty-1.4.2.5-ef88-velocity.json",
-        "note": "All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_556x45mmNATO curve referenced by EF88_WB; reloadSpeed is ReloadInfoArray[0].ReloadSpeed. Moving ADS and hipfire minima use the Frosty array selectors, and adsTime equals the Frosty-indexed default build.",
+        "note": "All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_556x45mmNATO curve referenced by EF88_WB; reloadSpeed is ReloadInfoArray[0].ReloadSpeed. Moving ADS and hipfire minima use the Frosty array selectors.",
         "configurationEvidence": "reference-data/provenance/frosty-1.4.2.5-ef88-configuration.json",
         "reloadEvidence": "reference-data/provenance/frosty-1.4.2.5-ef88-reload.json",
         "sourceRecheckEvidence": "reference-data/provenance/frosty-ef88-source-recheck-2026-09-10.json",
@@ -9134,8 +9002,6 @@
     "recoilDir": -13,
     "recoilVar": 45,
     "recoilIncAds": 0,
-    "spreadMax": 9,
-    "adsTime": 250,
     "fireMode": "semi",
     "spreadDyn": {
       "ads": {
@@ -9286,18 +9152,16 @@
           "emptyRld",
           "reloadSpeed",
           "bulletVel",
-          "adsTime",
           "recoilV",
           "recoilDir",
           "recoilVar",
           "recoilIncAds",
-          "spreadMax",
           "recoil",
           "spread",
           "spreadDyn",
           "dmg"
         ],
-        "note": "All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_9x39mm_Semi curve referenced by VSSM_WB; PD_9x39mm_Match (Range Pen) has the same curve. emptyRld is ReloadInfoArray[1].ReloadTime at ReloadSpeed 1. rpm is RateOfFireForSingleFire; Folding Stock applies RateOfFire 799.999 through autoRpm. Hipfire minima use source index 4 and moving ADS uses the Frosty array selector. cal follows the 9x39mm bullet asset, and adsTime equals the Frosty-indexed default build.",
+        "note": "All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_9x39mm_Semi curve referenced by VSSM_WB; PD_9x39mm_Match (Range Pen) has the same curve. emptyRld is ReloadInfoArray[1].ReloadTime at ReloadSpeed 1. rpm is RateOfFireForSingleFire; Folding Stock applies RateOfFire 799.999 through autoRpm. Hipfire minima use source index 4 and moving ADS uses the Frosty array selector. cal follows the 9x39mm bullet asset.",
         "sourcingEvidence": "reference-data/provenance/frosty-1.4.2.5-datamined-weapons-2026-09-12.json#weapons/vssm"
       },
       "notes": [
@@ -9305,7 +9169,7 @@
         "Damage follows the Frosty PD_9x39mm_Semi curve, including 17.13 past 75 m. The July 2026 panel screenshots show long-range damage 20; they predate the 1.4.2.5 export.",
         "rpm 449.999 is Frosty RateOfFireForSingleFire. Frosty RateOfFire 799.999 is the Folding Stock full-auto rate, applied through autoRpm.",
         "Magazine, grip, ammo and ergonomics coverage is derived from the 2026-07-26 VSSM screenshot corpus; all 43 captures reproduce in the sim.",
-        "QD Grip Pod is bugged on this weapon only. It and Alloy Vertical are both tier 2 cards, and the 1.3.3.0 capture corpus shows them matching on BROD 3 (0.7), EF88 (0.6), M16A4 (0.6) and RPK-74M (0.4); on the VSSM Alloy reads 0.8 and QD reads 0.7, a tier 3 benefit at tier 2 cost. Changelist 28877515 lists tier 3 for all five, but it only manifests here, so the catalog keeps the tier 2 card."
+        "QD Grip Pod applies a tier 3 ADS and hip recoil reduction on this weapon, as on BROD 3, EF88, M16A4 and RPK-74M. Frosty lists +3 for these five weapons, and current-build captures on 2026-09-13 confirm it through Control (reference-data/provenance/qd-grip-pod-screenshot-review-2026-09-13.json). The 1.3.3.0 capture corpus showed the extra tier only on the VSSM."
       ]
     }
   }
