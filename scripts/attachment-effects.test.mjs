@@ -12,7 +12,7 @@ const attachments = read('../data/attachments.json');
 const ammo = read('../data/ammo.json');
 const balance = read('../data/balance_tables.json');
 const data = { ...attachments, ...ammo };
-setAttachmentContext({ ...data, ...balance, HP_HS_HIGH: new Set(balance.HP_HS_HIGH) });
+setAttachmentContext({ ...data, ...balance });
 const weapon = id => weapons.find(w => w.id === id);
 const defaults = w => {
   const atts = {};

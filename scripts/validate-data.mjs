@@ -14,6 +14,7 @@ const attachments = readJson('data/attachments.json');
 const ammo = readJson('data/ammo.json');
 const recoilDecay = readJson('data/recoil_decay.json');
 const balance = readJson('data/balance_tables.json');
+const hitZones = readJson('data/hit_zones.json');
 const liveBaseline = readJson('data/provenance/live-baseline.json');
 
 const SUPPORTED_CLASSES = new Set([
@@ -390,12 +391,6 @@ for (const table of ['HIP_SPREAD_BASE_INDEX', 'HIP_SPREAD_BASE_INDEX_OVERRIDES']
   }
 }
 
-for (const weaponId of Object.keys(balance.BASE_HS_MULT ?? {})) {
-  if (!weaponIds.has(weaponId)) fail(`BASE_HS_MULT references unknown weapon ${weaponId}`);
-}
-for (const weaponId of balance.HP_HS_HIGH ?? []) {
-  if (!weaponIds.has(weaponId)) fail(`HP_HS_HIGH references unknown weapon ${weaponId}`);
-}
 for (const [weaponId, ammoOverrides] of Object.entries(balance.COLLATERAL_MULT_OVERRIDE ?? {})) {
   if (!weaponIds.has(weaponId)) {
     fail(`COLLATERAL_MULT_OVERRIDE references unknown weapon ${weaponId}`);
@@ -411,38 +406,28 @@ for (const [weaponId, ammoOverrides] of Object.entries(balance.COLLATERAL_MULT_O
   }
 }
 
-for (const [weaponId, limbClass] of Object.entries(balance.LIMB_CLASS ?? {})) {
-  if (!weaponIds.has(weaponId)) fail(`LIMB_CLASS references unknown weapon ${weaponId}`);
-  if (!(limbClass in (balance.LIMB_CLASS_MULT ?? {}))) {
-    fail(`${weaponId}: LIMB_CLASS references unknown limb class ${limbClass}`);
-  }
+// Headshot and limb multipliers come from Frosty (scripts/frosty-hit-zones.py).
+for (const weaponId of Object.keys(hitZones.weapons ?? {})) {
+  if (!weaponIds.has(weaponId)) fail(`hit_zones references unknown weapon ${weaponId}`);
 }
-
-const expectedLimbClassByWeaponClass = {
-  'Assault Rifle': 'auto',
-  Carbine: 'auto',
-  SMG: 'auto',
-  LMG: 'auto',
-  DMR: 'dmr',
-  'Sniper Rifle': 'sniper',
-};
+const validHeadshot = value => Number.isFinite(value) && value >= 1 && value <= 5;
+const validLimb = value => Number.isFinite(value) && value > 0 && value <= 1;
 for (const weapon of weapons) {
   if (!SUPPORTED_CLASSES.has(weapon.cls)) continue;
-  const expected = weapon.id === 'vz61' ? 'auto' : (expectedLimbClassByWeaponClass[weapon.cls] ?? null);
-  const actual = balance.LIMB_CLASS?.[weapon.id] ?? null;
-  if (actual !== expected) {
-    fail(`${weapon.id}: expected LIMB_CLASS ${expected ?? 'omitted'} for ${weapon.cls}, found ${actual ?? 'omitted'}`);
+  const zones = hitZones.weapons?.[weapon.id];
+  if (!zones) {
+    fail(`${weapon.id}: missing hit_zones entry`);
+    continue;
   }
-}
-for (const [limbClass, multiplier] of Object.entries(balance.LIMB_CLASS_MULT ?? {})) {
-  if (!Number.isFinite(multiplier) || multiplier <= 0 || multiplier > 1) {
-    fail(`LIMB_CLASS_MULT.${limbClass} must be a finite number in (0, 1]`);
+  if (!validHeadshot(zones.headshot) || !validLimb(zones.limb)) {
+    fail(`${weapon.id}: hit_zones base multipliers must be headshot in [1, 5] and limb in (0, 1]`);
   }
-}
-for (const ammoTier of ['standard', 'hp', 'synthetic']) {
-  const multiplier = balance.AUTO_HS_MULT?.[ammoTier];
-  if (!Number.isFinite(multiplier) || multiplier <= 1) {
-    fail(`AUTO_HS_MULT.${ammoTier} must be a finite number greater than 1`);
+  for (const ammoId of Object.keys(ammo.WEAPON_AMMO?.[weapon.id]?.ammo ?? {})) {
+    const entry = zones.ammo?.[ammoId];
+    if (!entry) fail(`${weapon.id}: hit_zones has no entry for available ammo ${ammoId}`);
+    else if (!validHeadshot(entry.headshot) || !validLimb(entry.limb)) {
+      fail(`${weapon.id}/${ammoId}: hit_zones multipliers must be headshot in [1, 5] and limb in (0, 1]`);
+    }
   }
 }
 

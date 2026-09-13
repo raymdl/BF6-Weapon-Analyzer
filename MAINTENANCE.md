@@ -95,6 +95,22 @@ The configuration comparison never writes live data. `--include-optics`,
 using them; do not promote generated candidates automatically. The SDK metadata
 PowerShell helper requires `-FrostyDirectory` and `-OutputPath`.
 
+Headshot and limb multipliers are generated from Frosty. After a game update, dump
+the raw level material grids, then regenerate `data/hit_zones.json`. Never open a
+material grid with FrostyCmd `export-ebx` or the Frosty editor: the decoder can
+exhaust memory. If an export fails or stalls, stop leftover `FrostyCmd`/`FrostyEditor`
+processes.
+
+```sh
+powershell -NoProfile -File scripts/frosty-raw-assets.ps1 -FrostyDirectory "PATH_TO_FROSTY" -GamePath "PATH_TO_GAME" -OutputDirectory outputs/frosty-raw -Routes "game/glaciermp/levels/mp_abbasid/mp_abbasid/materialgrid_win32,game/glaciermp/levels/mp_badlands/mp_badlands/materialgrid_win32"
+python scripts/frosty-hit-zones.py --root "PATH_TO_EXPORT" --descriptors "PATH_TO_FROSTY/SharedTypeDescriptors.ebx" --grid outputs/frosty-raw/game__glaciermp__levels__mp_abbasid__mp_abbasid__materialgrid_win32.ebx --grid outputs/frosty-raw/game__glaciermp__levels__mp_badlands__mp_badlands__materialgrid_win32.ebx
+node scripts/validate-data.mjs
+```
+
+The XML export and the raw grids must come from the same game build. The extractor
+stops on unresolved links or disagreement between grids. Review its dated evidence
+file and every changed value before committing `data/hit_zones.json`.
+
 ## Documentation lifecycle and historical versions
 
 The repository README stays high-level. The [documentation index](docs/README.md)

@@ -194,7 +194,7 @@ The separate 1.063 Mag Catch factor is an ergonomic scalar, not an extra selecta
 magazine-ladder row. Animation overrides use their direct milliseconds before
 applying that ergonomic scalar.
 
-`HP_HS_HIGH` is a membership list, and recoil-decay, headshot, limb, collateral and
-base-index maps are keyed lookups. Their entries are not source coordinates.
+Recoil-decay, collateral and base-index maps and the per-weapon hit zones are keyed
+lookups. Their entries are not source coordinates.
 See [damage policy](DAMAGE_BALLISTICS.md) and [recoil recovery](RECOIL_SPREAD_MODEL.md)
 for those equations; see [data reference](DATA_REFERENCE.md) for the complete array inventory.

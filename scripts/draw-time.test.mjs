@@ -11,7 +11,7 @@ const balance = read('../data/balance_tables.json');
 const weapons = read('../data/weapons.json');
 const evidence = read('../reference-data/provenance/frosty-draw-time-2026-09-09.json');
 const tables = balance.DRAW_TIME_TABLES;
-setAttachmentContext({ ...attachments, ...ammo, ...balance, HP_HS_HIGH: new Set(balance.HP_HS_HIGH) });
+setAttachmentContext({ ...attachments, ...ammo, ...balance });
 const build = (id, changes = {}) => {
   const weapon = weapons.find(w => w.id === id);
   const atts = {};

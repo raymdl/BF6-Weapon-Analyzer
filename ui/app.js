@@ -24,15 +24,16 @@ async function fetchJson(url) {
   return r;
 }
 
-let W, _recoilDecay, _balance, _atts, _ammo, _ballistics;
+let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones;
 try {
-  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics] = await Promise.all([
+  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones] = await Promise.all([
     fetchJson('./data/weapons.json').then(r => r.json()),
     fetchJson('./data/recoil_decay.json').then(r => r.json()),
     fetchJson('./data/balance_tables.json').then(r => r.json()),
     fetchJson('./data/attachments.json').then(r => r.json()),
     fetchJson('./data/ammo.json').then(r => r.json()),
     fetchJson('./data/ballistics.json').then(r => r.json()),
+    fetchJson('./data/hit_zones.json').then(r => r.json()),
   ]);
 } catch (err) {
   document.body.insertAdjacentHTML('beforeend',
@@ -42,11 +43,10 @@ try {
 
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
-        BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH: _HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+        COLLATERAL_MULT_OVERRIDE,
         MOVING_ACC_TIERS,
         ADS_SPD_TIERS, ADS_MOVE_TIERS,
         DRAW_TIME_TABLES } = _balance;
-const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 
 const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
         WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
@@ -238,7 +238,7 @@ setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
   AMMO, WEAPON_AMMO,
   RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
-  BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+  COLLATERAL_MULT_OVERRIDE, HIT_ZONES: _hitZones,
   MOVING_ACC_TIERS,
   ADS_SPD_TIERS, ADS_MOVE_TIERS,
   DRAW_TIME_TABLES,

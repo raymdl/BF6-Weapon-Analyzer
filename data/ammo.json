@@ -3,7 +3,6 @@
     {
       "id": "standard",
       "name": "Standard",
-      "hsMult": null,
       "collateralMult": {
         "Assault Rifle": 0.75,
         "Carbine": 0.75,
@@ -17,7 +16,6 @@
     {
       "id": "penetration",
       "name": "Penetration",
-      "hsMult": null,
       "adsRecoilTierMod": -1,
       "collateralMult": {
         "Assault Rifle": 1,
@@ -33,7 +31,6 @@
     {
       "id": "lightweight",
       "name": "Lightweight",
-      "hsMult": null,
       "adsMoveSpeedTierShift": -1,
       "collateralMult": {
         "Assault Rifle": 0.75,
@@ -46,7 +43,6 @@
     {
       "id": "long_range",
       "name": "Long-Range",
-      "hsMult": null,
       "collateralMult": {
         "Assault Rifle": 0.75,
         "Carbine": 0.75,
@@ -58,7 +54,6 @@
     {
       "id": "hollow_pt",
       "name": "Hollow Point",
-      "hsMult": "hp",
       "collateralMult": {
         "Assault Rifle": 0.67,
         "Carbine": 0.67,
@@ -72,7 +67,6 @@
     {
       "id": "frangible",
       "name": "Frangible",
-      "hsMult": null,
       "healthRegenDelayS": 9,
       "collateralMult": {
         "Assault Rifle": 0.67,
@@ -87,7 +81,6 @@
     {
       "id": "synthetic",
       "name": "Synthetic",
-      "hsMult": 1.75,
       "collateralMult": {
         "Assault Rifle": 0.67,
         "Carbine": 0.67,
@@ -101,7 +94,6 @@
     {
       "id": "buckshot",
       "name": "#01 BUCK",
-      "hsMult": 1,
       "collateralMult": {
         "Shotgun": 0.33
       }
@@ -109,7 +101,6 @@
     {
       "id": "buckshot_00",
       "name": "#00 BUCK",
-      "hsMult": 1,
       "collateralMult": {
         "Shotgun": 0.33
       }
@@ -117,7 +108,6 @@
     {
       "id": "flechette",
       "name": "Flechette",
-      "hsMult": 1,
       "collateralMult": {
         "Shotgun": 0.57
       },
@@ -126,7 +116,6 @@
     {
       "id": "slugs",
       "name": "Slugs",
-      "hsMult": 1.34,
       "collateralMult": {
         "Shotgun": 0.33
       },
@@ -139,7 +128,6 @@
     {
       "id": "subsonic",
       "name": "Subsonic",
-      "hsMult": null,
       "collateralMult": {
         "Assault Rifle": 0.67,
         "Carbine": 0.67,
@@ -156,7 +144,6 @@
     {
       "id": "subsonic_hp",
       "name": "Sub HP",
-      "hsMult": "hp",
       "collateralMult": {
         "Assault Rifle": 0.67,
         "Carbine": 0.67,
@@ -173,7 +160,6 @@
     {
       "id": "subsonic_pen",
       "name": "Sub Pen",
-      "hsMult": null,
       "adsRecoilTierMod": -1,
       "collateralMult": {
         "Assault Rifle": 1,
@@ -192,7 +178,6 @@
     {
       "id": "range_pen",
       "name": "Range Pen",
-      "hsMult": null,
       "adsRecoilTierMod": -1,
       "collateralMult": {
         "Assault Rifle": 1,
