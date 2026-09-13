@@ -1,0 +1,72 @@
+{
+  "spotting": {
+    "result": "No confirmed 54m/150m source baselines found. Values of 150 in unrelated or unnamed settings do not establish a spotting baseline. PF_SpotSelfOnFire and compiled weapon-fire graph contain no literal float32 54 or 150.",
+    "checked": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\outputs\\frosty-global-candidates-2026-09-13\\PF_SpotSelfOnFire.xml",
+        "sha256": "afbee7c8e809693eae7e75950ebd8fc60ef85e72725754d85992efa83f3eb1fd"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\outputs\\frosty-global-candidates-2026-09-13\\SimEx_WeaponFireSpotting.xml",
+        "sha256": "ab6943b84ca1412d49b448c27016402b62c6e8d6889376b8da846a284f4f1879"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\outputs\\frosty-global-candidates-2026-09-13\\weapon-fire-spotting.res",
+        "sha256": "2559d6f88666744bffd85858f8aaf586826ef4437b43e43c697ebb7af0579007"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty\\Common\\GameSetup\\GameConfigurations\\GlacierGameConfiguration\\settings.xml",
+        "sha256": "5aff20a2e53fb8dc40d39abdc726a2e8986b07f48b2a4f6492e77243f5013420"
+      }
+    ]
+  },
+  "collateral": {
+    "bounds": "Operator confirmed table limits on 2026-09-13. Sum source base+steps then clamp to 0..9.",
+    "m121a2Tungsten": {
+      "base": 6,
+      "steps": [
+        3,
+        1
+      ],
+      "unclampedIndex": 10,
+      "index": 9,
+      "multiplier": 1
+    },
+    "es57Audit": [
+      {
+        "ammo": "FMJ",
+        "collateral": 0.67,
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/19_ES 5.7_Ammo_Standard.png"
+      },
+      {
+        "ammo": "Subsonic",
+        "collateral": 0.57,
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/20_ES 5.7_Ammo_Subsonic.png"
+      },
+      {
+        "ammo": "Subsonic HP",
+        "collateral": 0.57,
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/21_ES 5.7_Ammo_Sub_HP.png"
+      },
+      {
+        "ammo": "Tungsten Core",
+        "collateral": 0.83,
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/22_ES 5.7_Ammo_Penetration.png"
+      },
+      {
+        "ammo": "Frangible",
+        "collateral": 0.57,
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/23_ES 5.7_Ammo_Frangible.png"
+      },
+      {
+        "ammo": "Hollow Point",
+        "collateral": 0.57,
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/24_ES 5.7_Ammo_Hollow_Point.png"
+      }
+    ],
+    "visuallyChecked": [
+      "Subsonic",
+      "Tungsten Core"
+    ]
+  }
+}

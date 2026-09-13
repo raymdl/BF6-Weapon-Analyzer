@@ -4,6 +4,41 @@ This handoff records one Claude Code session: its review of the September recoil
 
 Updated later on 12 September 2026 with the per-weapon limb multiplier search (section 10) and a response to the Codex review (section 11).
 
+**Release snapshot (13 September UTC):** The combined implementation includes
+per-weapon/ammo hit zones, projectile ballistics and collateral; source spotting,
+regeneration and sway factors; controller recoil 0.8836; and spread distribution
+exponents. All 77 product tests and both data/ship-surface checks pass. Barrel ADS
+values already match the 234 WB animation/FOV selections and were not changed.
+The dated investigation and pre-merge statements below are historical. Current
+findings and remaining limits are in the global-candidates audit.
+
+**Merge update (13 September UTC):** Claude's `ce071e9` is now merged locally as
+`314b8f7` on `docs/limb-multiplier-handoff`. It replaces the overlapping Codex
+headshot implementation and supplies both headshot and limb runtime data.
+The independent limb trace and research notes are retained. Superseded Codex
+code and headshot JSON are backed up under ignored research output. All 72 tests,
+63-weapon data validation, and ship-surface validation pass. The comparison and
+pre-merge statements below describe the earlier state. This merge is not pushed.
+
+**Audit continuation (13 September UTC):** M60 and M121 A2 Lightweight options
+were removed after the operator's in-game correction and source-roster check.
+The generated hit-zone trace now has 328 ammo entries without those fallbacks.
+Ballistics now use generated per-weapon/ammo projectile links. The
+[continued audit](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) records controller,
+availability, collateral-table and regeneration findings, plus remaining native
+composition questions. These later changes are local and uncommitted.
+
+**Codex follow-up:** section 12 now resolves the base-projectile limb values by
+reading bounded raw material-grid records. It supersedes section 10's missing-
+table status and proposed protection-index-only limb mapping. Runtime values
+have not been changed by this follow-up.
+
+**Claude implementation (section 13):** branch `frosty-hit-zones` (`ce071e9`, not
+pushed) generates headshot **and** limb multipliers per weapon and ammo from
+Frosty into `data/hit_zones.json`, and removes every class-level hit-zone table.
+It overlaps the uncommitted Codex `WEAPON_HS_MULT` work in the main tree; merge
+only one of them (section 13.5).
+
 Read with the [active recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md). Current equations stay in the [recoil/spread guide](../RECOIL_SPREAD_MODEL.md).
 
 ## 1. Repository state
@@ -162,7 +197,7 @@ Sym does not publish BROD 3, EF88 or VSSM. Their values now come from Frosty 1.4
 
 Order by value:
 
-1. **Per-weapon limb multipliers (section 10).** Measure VSSM, LMR27 and M39 EMR limb damage in game, then key limb multipliers by `DamageProtectionMultiplierIndex` instead of weapon class. This also resolves the VSSM arm-damage mismatch.
+1. **Per-weapon hit zones: implemented, not merged (section 13).** Choose between branch `frosty-hit-zones` and the uncommitted Codex `WEAPON_HS_MULT` work. An in-game close-range VSSM arm check (30 predicted) remains a useful confirmation, not a blocker.
 2. **Long-burst absolute recoil gap (22% / 14% at 15 rounds).** Without new footage, compare the 11 September M4A1 camera tracks with the degree-converted impact heights and test whether sway after about 400 ms explains the excess. The result depends on the projection assumption (section 3.2). Do not add a fitted multiplier.
 3. **`DistributionExponent` 0.5.** It decides where bullets land inside the spread circle. Recording scenario 6 (100–200 fully reset shots) is the only direct test.
 4. **Attachments still marked assumed** in `data/attachments.json` (17 records): `hipSpreadDecayBoost` placeholders on Combo Red, Combo Green, Flashlight and Taclight - Hipfire ("created by us"); Burst Training, Burst Mode, GRT-BC Burst Training and Linear Comp; and nine Smooth muzzles whose model use is an interpretation. Check the placeholders against Frosty modifiers; use FrostyCmd for assets that are not exported, but never level material grids.
@@ -215,6 +250,15 @@ Question: EA's 1.4.2.0 notes say "VSSM limb damage multipliers have been adjuste
 
 ### 10.1 Confirmed: a per-weapon hit-zone selector
 
+**Headshot implementation update, 13 September UTC:** runtime now uses
+`WEAPON_HS_MULT[weaponId]` with a source base and explicit ammo map. The global
+headshot/ammo assumptions have been removed. See `docs/DAMAGE_BALLISTICS.md` and
+`reference-data/provenance/frosty-headshot-multipliers-2026-09-13.json`: 327 of 330
+combinations resolve from source; M121 A2 Lightweight/Hollow Point and M45A1
+Hollow Point retain previous values with explicit unresolved-source records.
+M44 and M357 Trait now use 1.5 Standard / 1.75 Hollow Point. VSSM remains 1.8 for
+all five options. This headshot change does not change the limb resolver below.
+
 Each weapon's `WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.DamageProtectionMultiplierIndex` selects a hit-zone row. The panel headshot multiplier follows the index for every weapon:
 
 | Index | Panel headshot | Site weapons | Site limb class |
@@ -255,7 +299,9 @@ Use standard ammo, because hollow point, ballistic tip, subsonic JHP and slugs c
 | LMR27 (1) | from its curve | arm ÷ chest |
 | M39 EMR (2) | from its curve | arm ÷ chest |
 
-Rounded values give a range, not an exact multiplier. Two ranges (for example VSSM at close range and above 75 m) narrow it. After measurement, replace `LIMB_CLASS` with limb values keyed by protection index, keep headshot values tied to the same index, and record the evidence. Do not change runtime values before measurement.
+Rounded values give a range, not an exact multiplier. Two ranges (for example VSSM at close range and above 75 m) narrow it.
+
+**Superseded by sections 12 and 13.** Limb values come from the projectile material, not the protection index, and are now read from Frosty. The measurement is optional confirmation only.
 
 ## 11. Response to the Codex review (Claude)
 
@@ -264,3 +310,164 @@ Rounded values give a range, not an exact multiplier. Two ranges (for example VS
 - Recording-reuse images: the fix is correct; the plots are tracked under `docs/img/recording-reuse-2026-09-12/`.
 - VSSM damage check (section 9): arithmetic verified. Chest 17 and head 31 support the Frosty 17.13 tier and the index-4 headshot 1.8. Section 10 explains why a class-level limb value cannot follow the VSSM change.
 - PR #30: the 47.7 MB file is resolved by the rewrite; `soldier-target-original.png` is still tracked.
+
+## 12. Codex raw material-grid trace: limb values found
+
+Completed 12 September local time / 13 September UTC. The result comes from
+source records, not from fitting the operator's rounded damage observation.
+
+| Base primary projectile group | Limb multiplier | Weapons |
+|---|---:|---:|
+| Automatic weapons plus VSSM | 0.84 | 42 |
+| LMR27, M39 EMR, GRT-CPS, SVK-8.6, SVDM | 0.91 | 5 |
+| Bolt-action snipers | 0.67 | 6 |
+| Shotguns and non-automatic sidearms | 1.0 | 10 |
+
+All 63 mappings agree in the MP_Abbasid and MP_Badlands material grids. VSSM
+is the only mismatch against the current base-weapon limb resolver: it still
+uses 0.91. The traced 0.84 predicts `17.13 * 0.84 = 14.3892`, displayed as 14,
+for the operator's Range Pen arm shot above 75 m. The close-range prediction
+is `35.22 * 0.84 = 29.5848`, displayed as 30. The latter is a prediction, not a
+new in-game measurement.
+
+### Evidence chain
+
+1. Resolve each WB's primary firing object with the existing extractor path:
+   `/File/Class_35259f6b/Field_58d70acb/Struct_29ea5d2b/Field_808dd66c`.
+2. Resolve that projectile's referenced GUID, then
+   `Field_c7584f55/Struct_1e8e7eef/Field_48288193` (packed material).
+3. VSSM Standard (`PD_9x39mm_Semi`) and Range Pen (`PD_9x39mm_Match`) both
+   store `0x11402680`. Fresh raw reads of both projectiles confirm the same
+   value as the XML corpus. The upper 12 bits identify material 276.
+4. `GlacierSoldierBoneCollision.xml` assigns `0x01a01a81` to both arms,
+   forearms, upper legs and legs: material 26. Head uses material 24.
+5. Map material IDs through the grid's index map, then follow its interaction
+   row, column, relation lists and local object pointers.
+6. VSSM 276 -> limb 26 reaches `Class_c180226c/Field_7889231b`, a one-element
+   Float32 array containing approximately 0.839999973 (source decimal 0.84).
+   In MP_Abbasid the mapped row/column are 166/23; relation object offset is
+   617072, relative to the EBXD data start. Exact array offsets and both-map
+   paths are in the evidence JSON.
+7. The same property type for head material 24 contains the full sequence
+   `[1, 1.34, 1.5, 1.75, 1.8, 1, 1, 1, 1, 1, 1, 1.4, 1.57, 1.8, 1.8]`.
+   This reproduces the headshot selector mapping, including VSSM index 4.
+
+**Implementation implication:** headshot index and projectile material are
+different inputs. The limb records found here are singleton arrays selected
+through material interactions. Replacing all limb classes with a table keyed
+only by `DamageProtectionMultiplierIndex` is not supported by this trace.
+LMR27 and M39 EMR retain 0.91 despite their different headshot indices. Keep
+VSSM's headshot behavior separate from its 0.84 limb value; simply changing
+its class to `auto` also activates automatic-ammo headshot logic in the current
+resolver and is not an isolated limb correction.
+
+### Verification, scope and reproducibility
+
+- [Machine-readable trace](../../reference-data/provenance/frosty-limb-material-trace-2026-09-13.json)
+  records all 63 weapon/projectile links, XML hashes, both grid hashes, packed
+  materials, object/array offsets, exact Float32 values and the raw VSSM checks.
+- Local scripts and raw files: `outputs/frosty-limb-2026-09-13/`.
+  `read-raw-assets.ps1` calls `GetEbxStream` for unmodified assets with a 32 MiB
+  asset cap. It does **not** call `GetEbx`, `ReadAsset` or the XML writer on a
+  material grid. `raw-riff.mjs` reads bounded RIFF directories and type
+  descriptors; `trace-limb-materials.mjs` checks both maps and all 63 links.
+- The raw grids are 16,241,212 and 15,925,878 bytes. The earlier full-object
+  export remains unsafe. Do not retry it on the basis of this raw-reader result.
+- Class/field names remain stripped. Identification of the protection array
+  is supported by the complete headshot sequence, control weapon limb values,
+  and the operator's VSSM observation. The native lookup function and its
+  handling of one-element arrays were not disassembled.
+- This covers base primary projectiles and additionally verifies VSSM Range
+  Pen's material. It is not a full audit of every ammunition replacement,
+  armor state, game mode or target-dummy override.
+- Raw assets were read from the installed game on this date. The existing
+  source XML set is labelled 1.4.2.5; an exact full-build identity is not
+  independently established. Matching one asset is not a full-build check.
+- No runtime data or gameplay code was changed. The source finding is ready
+  for a separate, scoped VSSM limb correction.
+
+## 13. Frosty-generated hit zones (Claude implementation)
+
+Operator request: use Frosty data globally instead of class-level overrides, so a
+future game update needs regeneration only, not new research.
+
+- Branch `frosty-hit-zones`, commit `ce071e9`, worktree
+  `BF6 Weapon Analyzer - hit zones`. **Not pushed, not merged.**
+
+### 13.1 What changed
+
+| Area | Change |
+|---|---|
+| `scripts/frosty-raw-assets.ps1` | Tracked version of the raw `GetEbxStream` dump (32 MiB cap, no EBX decoder). Comma-separated `-Routes`; writes `raw-assets.json` with hashes. |
+| `scripts/frosty-hit-zones.py` | Extractor. Reads both raw grids, the XML export and the attachment graph from `frosty-configuration.py`; writes `data/hit_zones.json` and a dated evidence file. |
+| `data/hit_zones.json` | 63 weapons, 330 ammo entries: `protectionIndex`, `projectileMaterial`, base `headshot`/`limb`, and per-ammo `headshot`/`limb`. |
+| `reference-data/provenance/frosty-hit-zones-2026-09-12.json` | Input hashes, soldier materials, per-weapon WB/GS paths, base projectile and material, head table, and per-ammo attachment XML, protection steps, projectile swap and effect sources. |
+| `sim/damage.js` | `resolveHitMultipliers(weaponId, ammoType, { HIT_ZONES })`: ammo entry, else weapon base, else 1.34 / 1. No class logic. |
+| `sim/applyAttachments.js`, `ui/app.js` | Load and pass `HIT_ZONES`; remove the old tables and `_limbClass`. |
+| `data/balance_tables.json`, `data/ammo.json` | Removed `BASE_HS_MULT`, `HP_HS_HIGH`, `LIMB_CLASS`, `LIMB_CLASS_MULT`, `AUTO_HS_MULT`, and every ammo `hsMult`. |
+| `scripts/validate-data.mjs`, `ship-surface.json` | Validation requires an entry for every supported weapon and available ammo (headshot 1–5, limb above 0 and at most 1); the file ships. |
+| Tests and docs | Tests use the generated file and pin panel-checked values. `DAMAGE_BALLISTICS.md`, `DATA_REFERENCE.md`, `DATA_SOURCES.md`, `STAT_LADDERS.md` and `MAINTENANCE.md` (regeneration steps) are updated. |
+
+### 13.2 Derivation
+
+- **Headshot** = grid head row (material 24) at `DamageProtectionMultiplierIndex` +
+  ammo protection steps. `WME_Protection_P10`/`P20` are `Class_e85fff64`; the step
+  is `Field_fbfacac9` (1 or 2), counted once per effect object (deduplicated by
+  source and GUID).
+- **Limb** = the single-value record for projectile material × limb material 26.
+  The extractor asserts that abdomen (25) equals limb.
+- **Ammo** attachments can swap the projectile (`Field_808dd66c` in `WPM_AMO_*`),
+  which can change the material and the limb value.
+- The extractor stops when the two grids disagree, a record is not single-valued,
+  or attachments for the same ammo disagree.
+
+### 13.3 Results
+
+The generated values differ from the old site tables in exactly 10 weapon/ammo pairs:
+
+| Weapon | Ammo | Old | New |
+|---|---|---|---|
+| VSSM | Penetration, Range Pen, Long Range, Frangible | limb 0.91 | limb 0.84 |
+| M44 | Standard, Penetration, Frangible | head 1.34 | head 1.5 |
+| M44 | Hollow Point | head 1.5 | head 1.75 |
+| M357 Trait | Standard | head 1.34 | head 1.5 |
+| M357 Trait | Hollow Point | head 1.5 | head 1.75 |
+
+- **Panels:** headshot values match all 321 ammo-panel readings. Four review
+  records were OCR misreads and were corrected by visual screenshot check: P18
+  Hollow Point, P18 Subsonic Hollow Point, M45A1 Hollow Point, and M44 Tungsten
+  all display 1.50. `attachment-screenshot-review.json` was not edited.
+- **Fallbacks (base values):** M60 and M121A2 Lightweight have no Frosty ammo
+  attachment (1.4 / 0.84).
+- **Skipped:** 15 `SubsonicFrangible` attachments; that ammo is not on the site.
+- **Reproducibility:** a fresh dump with the tracked PowerShell script gives the
+  same grid hashes (`14983a46…`, `9b920062…`) and identical weapon data.
+
+### 13.4 Verification
+
+- 72/72 Node tests, `validate-data.mjs` (63 weapons), `validate-ship-surface.mjs`
+  and `git diff --check` pass.
+- Browser (worktree on port 5176): VSSM shows 1.80× / 0.84×; M44 Standard shows
+  1.50× / 1.00×. Only the localhost Cloudflare Insights CORS errors appear. M44
+  Hollow Point (1.75) is covered by a unit test; it was not selected in the browser.
+
+### 13.5 Overlap with the uncommitted Codex headshot work
+
+The main tree has uncommitted Codex changes (`WEAPON_HS_MULT` in
+`balance_tables.json`, `frosty-headshot-multipliers-2026-09-13.json`). They edit
+the same code, data, test and doc files as `ce071e9`. Merge only one of them.
+
+| Topic | Codex (uncommitted) | Claude (`ce071e9`) |
+|---|---|---|
+| Headshot | Per weapon/ammo, stored in `balance_tables.json` | Per weapon/ammo, generated file |
+| Limb | Still `LIMB_CLASS` (VSSM 0.91) | Frosty per projectile material (VSSM 0.84) |
+| Regeneration | No generator script in the uncommitted diff | `frosty-raw-assets.ps1` + `frosty-hit-zones.py` |
+| M45A1 Hollow Point | Legacy 1.5; activation marked unresolved | 1.5 from `Attachment_M45A1_AMO_HollowPoint.xml` → `WME_Protection_P10`; panel reads 1.50 |
+| M121A2 Hollow Point | Legacy 1.57; activation marked unresolved | 1.57 from `Attachment_MG5_AMO_HollowPoint.xml` → `WME_Protection_P10` |
+| M121A2 Lightweight | Legacy 1.4, unresolved | 1.4 base fallback, recorded as an extractor issue (M60 too) |
+
+Codex's "attachment closure selects FMJ" note for M45A1 and M121A2 Hollow Point
+disagrees with the extractor, which finds a dedicated Hollow Point attachment
+for both. The M45A1 panel (1.50) supports the extractor. Recommendation: keep
+`ce071e9`, discard the overlapping uncommitted code/data edits, and keep Codex's
+handoff text and its limb trace JSON.

@@ -79,9 +79,10 @@ def main():
         runtime_points = [{'r': p['r'], 'd': p['d']} for p in runtime['dmg']]
         require(runtime['pellets'] == count and runtime_points == points,
                 f'{label}: runtime count or damage differs from source')
-        require(float(projectile.findtext('Field_30c37c24')) == ballistics['baseDragPerMeter'],
+        selected_ballistics = ballistics['projectiles'][ballistics['weapons'][wid]['ammo'][ammo_id]]
+        require(float(projectile.findtext('Field_30c37c24')) == selected_ballistics['dragPerMeter'],
                 f'{label}: drag differs from runtime')
-        require(float(projectile.findtext('Field_d9d33d20')) == ballistics['gravityMps2'],
+        require(float(projectile.findtext('Field_d9d33d20')) == selected_ballistics['gravityMps2'],
                 f'{label}: gravity differs from runtime')
     expected = {(wid, a) for wid in ('ks18k', 'db12', 'm1014', 'm87a1') for a in names.values()}
     require(seen == expected, 'Incomplete recorded shotgun ammunition coverage')

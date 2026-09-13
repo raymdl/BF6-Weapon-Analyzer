@@ -22,6 +22,47 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('Frosty collateral table matches ES 5.7 panels and clamps M121 A2 Tungsten', () => {
+  const es = weapon('es57');
+  for (const [ammo, exact, displayed] of [
+    ['standard', 0.666667, '0.67'], ['penetration', 0.833334, '0.83'],
+    ...['frangible', 'hollow_pt', 'subsonic', 'subsonic_hp'].map(id => [id, 0.571429, '0.57']),
+  ]) {
+    const result = build(es, { ammo })._collateralMult;
+    assert.equal(result, exact);
+    assert.equal(result.toFixed(2), displayed);
+  }
+  assert.equal(build(weapon('m121a2'), { ammo: 'penetration' })._collateralMult, 1);
+  for (const w of weapons) {
+    for (const ammo of Object.keys(data.WEAPON_AMMO[w.id].ammo)) {
+      const result = build(w, { ammo })._collateralMult;
+      assert.ok(result >= 0 && result <= 1, `${w.id}/${ammo}`);
+    }
+  }
+});
+
+test('source sway factors retain compact-magazine strength and combine with muzzle effects', () => {
+  const w = weapon('m4a1');
+  assert.equal(build(w)._weaponSwayMult, 1);
+  assert.equal(build(w, { muzzle: 'long_supp' })._weaponSwayMult, 1.5);
+  assert.equal(build(w, { mag: '20_fast' })._weaponSwayMult, 0.6666667);
+  assert.equal(build(w, { mag: '20_rnd' })._weaponSwayMult, 0.4444444);
+  assert.ok(Math.abs(build(w, { mag: '20_fast', muzzle: 'long_supp' })._weaponSwayMult - 1) < 0.000001);
+});
+
+test('source spotting factors combine suppressor and subsonic without a special-case range', () => {
+  const w = weapon('pw5a3');
+  assert.equal(build(w)._minimapSpot, 150);
+  assert.equal(build(w, { ammo: 'subsonic' })._minimapSpot, 64.28571);
+  assert.equal(build(w, { ammo: 'subsonic' })._worldSpot, 27);
+  const combined = build(w, { ammo: 'subsonic', muzzle: 'std_supp' });
+  assert.ok(Math.abs(combined._minimapSpot - 9) < 0.00001);
+  assert.equal(combined._worldSpot, 0);
+  for (const w of weapons.filter(w => ammo.WEAPON_AMMO[w.id]?.ammo.frangible != null)) {
+    assert.equal(build(w, { ammo: 'frangible' })._healthRegenDelayS, 9, w.id);
+  }
+});
+
 test('EF88 standing ADS spread starts at the confirmed 0.05 degree floor', () => {
   const w = weapon('ef88');
   const result = build(w);
@@ -147,11 +188,11 @@ test('Hybrid suppressors apply recoil, spotting, hip-fire and draw effects throu
     if (muzzle === 'hybrid_supp_l') {
       assert.equal(Math.round(result._sprintRecoveryMs), 200);
       assert.ok(result._deployTimeMs > base._deployTimeMs);
-      assert.equal(result._weaponSway, long._weaponSway);
+      assert.equal(result._weaponSwayMult, long._weaponSwayMult);
     } else {
       assert.equal(result._sprintRecoveryMs, base._sprintRecoveryMs);
       assert.equal(result._deployTimeMs, base._deployTimeMs);
-      assert.equal(result._weaponSway, light._weaponSway);
+      assert.equal(result._weaponSwayMult, light._weaponSwayMult);
     }
   }
 });
@@ -309,15 +350,15 @@ test('compact magazine secondary effects reach the existing moving spread and sw
   const fast = build(w, { mag: '20_fast' });
   assert.equal(compact._movingAdsSpreadTierMod, base._movingAdsSpreadTierMod + 1);
   assert.notEqual(compact.spread.adsMove[0], base.spread.adsMove[0]);
-  assert.equal(fast._weaponSway, base._weaponSway - 1);
-  assert.equal(compact._weaponSway, base._weaponSway);
+  assert.equal(fast._weaponSwayMult, base._weaponSwayMult * 0.6666667);
+  assert.equal(compact._weaponSwayMult, base._weaponSwayMult * 0.4444444);
   const rpk = weapon('rpk74m');
   const rpkBase = build(rpk);
   for (const mag of ['30_rnd', '30_fast']) {
     const selected = build(rpk, { mag });
     assert.equal(selected.spread.adsMove[0], 0.22);
     assert.equal(rpkBase.spread.adsMove[0], 0.32);
-    assert.equal(selected._weaponSway, rpkBase._weaponSway - 1);
+    assert.equal(selected._weaponSwayMult, rpkBase._weaponSwayMult * 0.6666667);
     assert.deepEqual(selected.spreadDyn, rpkBase.spreadDyn);
     assert.equal(selected.mag, 30);
     assert.equal(+selected.tacRld.toFixed(3), mag === '30_fast' ? 2.464 : 2.784);

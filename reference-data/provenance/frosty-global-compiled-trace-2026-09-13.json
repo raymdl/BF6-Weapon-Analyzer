@@ -1,0 +1,2175 @@
+{
+  "scope": "Read-only installed-game source trace. The collateral delegate takes a named DamagePenetrationMultiplierIndex argument and its resource contains the same ten floats as the material table. Native lookup, modifier composition and out-of-range handling are not decoded. Spotting resource is retained without inferring range fields from arbitrary bytes.",
+  "xml": [
+    {
+      "file": "WeaponAttributesConfig_CollateralMultiplierAttributeDelegate.xml",
+      "sha256": "b417a57a024ceb56a9259f80330908a55ec1378f03af4b2cb30c885319bcd558",
+      "asset": "Common/Hardware/AttributeDelegates/WeaponAttributesConfig_CollateralMultiplierAttributeDelegate",
+      "guid": "b11ca2fe-af85-454e-b7df-cbd83e58e271",
+      "resources": [
+        "FB59FAF31E5E634B"
+      ],
+      "namedArguments": [
+        {
+          "name": "ReturnValue",
+          "type": "TypeRef 'Float32'"
+        },
+        {
+          "name": "DamagePenetrationMultiplierIndex",
+          "type": "TypeRef 'Int32'"
+        }
+      ]
+    },
+    {
+      "file": "SimEx_WeaponFireSpotting.xml",
+      "sha256": "ab6943b84ca1412d49b448c27016402b62c6e8d6889376b8da846a284f4f1879",
+      "asset": "Common/Gameplay/Spotting/SimEx_WeaponFireSpotting",
+      "guid": "104223b7-8262-4fe2-b664-5618a56822fd",
+      "resources": [
+        "2715DACDF212B88F"
+      ],
+      "namedArguments": []
+    }
+  ],
+  "resources": [
+    {
+      "id": "FB59FAF31E5E634B",
+      "name": "common/hardware/attributedelegates/weaponattributesconfig_collateralmultiplierattributedelegate",
+      "type": 2111097993,
+      "bytes": 656,
+      "sha256": "181A3CA260E328F72392A89FB2ED5417BFAA41C0620F19536E2F2D06F7D99DA4",
+      "file": "collateral.res"
+    },
+    {
+      "id": "2715DACDF212B88F",
+      "name": "common/gameplay/spotting/simex_weaponfirespotting",
+      "type": 2111097993,
+      "bytes": 4256,
+      "sha256": "2559D6F88666744BFFD85858F8AAF586826EF4437B43E43C697EBB7AF0579007",
+      "file": "weapon-fire-spotting.res"
+    }
+  ],
+  "collateralTable": {
+    "values": [
+      0.0,
+      0.166667,
+      0.25,
+      0.333334,
+      0.500001,
+      0.571429,
+      0.666667,
+      0.750001,
+      0.833334,
+      1.0
+    ],
+    "resourceByteOffsets": [
+      140
+    ],
+    "materialRecordType": "Class_6aa794ef",
+    "materialField": "Field_c52d90b8"
+  },
+  "derivedAmmo": {
+    "ak205": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "ak4d": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "b36a4": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "brod3": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "cz3a1": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "db12": {
+      "buckshot": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "buckshot_00": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "flechette": {
+        "baseIndex": 3,
+        "shift": 2,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "slugs": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      }
+    },
+    "drsiar": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      }
+    },
+    "ef88": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "es57": {
+      "standard": {
+        "baseIndex": 5,
+        "shift": 1,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "penetration": {
+        "baseIndex": 5,
+        "shift": 3,
+        "index": 8,
+        "multiplier": 0.833334
+      },
+      "frangible": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "hollow_pt": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "subsonic": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "subsonic_hp": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      }
+    },
+    "ggh22": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "grtbc": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "grtcps": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "interdictor": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      }
+    },
+    "kord6p67": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "ks18k": {
+      "buckshot": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "buckshot_00": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "flechette": {
+        "baseIndex": 3,
+        "shift": 2,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "slugs": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      }
+    },
+    "kts100": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      }
+    },
+    "kv9": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "l110": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "l115": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "l85a3": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "lmr27": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m1014": {
+      "buckshot": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "buckshot_00": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "flechette": {
+        "baseIndex": 3,
+        "shift": 2,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "slugs": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      }
+    },
+    "m121a2": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      }
+    },
+    "m123k": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m16a4": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m2010esr": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m240l": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m250": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m277": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m357trait": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "m39emr": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m417a2": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "subsonic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "subsonic_hp": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m433": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m44": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "m45a1": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 4,
+        "index": 8,
+        "multiplier": 0.833334
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      }
+    },
+    "m4a1": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m60": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "m87a1": {
+      "buckshot": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "buckshot_00": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      },
+      "flechette": {
+        "baseIndex": 3,
+        "shift": 2,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "slugs": {
+        "baseIndex": 3,
+        "shift": 0,
+        "index": 3,
+        "multiplier": 0.333334
+      }
+    },
+    "miniscout": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "nvo228e": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "p18": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "pp19": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "synthetic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "psr": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "pw5a3": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "synthetic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "pw7a2": {
+      "standard": {
+        "baseIndex": 5,
+        "shift": 1,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "penetration": {
+        "baseIndex": 5,
+        "shift": 3,
+        "index": 8,
+        "multiplier": 0.833334
+      },
+      "hollow_pt": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "frangible": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "synthetic": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "subsonic_pen": {
+        "baseIndex": 5,
+        "shift": 1,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "qbz192": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "rpk74m": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "rpkm": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "scw10": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "sg553r": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "subsonic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "subsonic_hp": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "sgx": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "sl9": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "synthetic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "sor300sc": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "subsonic_hp": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "subsonic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "sor556": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "synthetic": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "sv98": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "svdm": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "svk86": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "tr7": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "umg40": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "synthetic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "subsonic_hp": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    },
+    "usg90": {
+      "standard": {
+        "baseIndex": 5,
+        "shift": 1,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "penetration": {
+        "baseIndex": 5,
+        "shift": 3,
+        "index": 8,
+        "multiplier": 0.833334
+      },
+      "lightweight": {
+        "baseIndex": 5,
+        "shift": 1,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "hollow_pt": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "frangible": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "subsonic": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "subsonic_hp": {
+        "baseIndex": 5,
+        "shift": 0,
+        "index": 5,
+        "multiplier": 0.571429
+      }
+    },
+    "vcr2": {
+      "standard": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "lightweight": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "hollow_pt": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "vssm": {
+      "penetration": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "range_pen": {
+        "baseIndex": 6,
+        "shift": 3,
+        "index": 9,
+        "multiplier": 1.0
+      },
+      "long_range": {
+        "baseIndex": 6,
+        "shift": 1,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 6,
+        "shift": 0,
+        "index": 6,
+        "multiplier": 0.666667
+      }
+    },
+    "vz61": {
+      "standard": {
+        "baseIndex": 4,
+        "shift": 1,
+        "index": 5,
+        "multiplier": 0.571429
+      },
+      "penetration": {
+        "baseIndex": 4,
+        "shift": 3,
+        "index": 7,
+        "multiplier": 0.750001
+      },
+      "frangible": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "hollow_pt": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      },
+      "synthetic": {
+        "baseIndex": 4,
+        "shift": 0,
+        "index": 4,
+        "multiplier": 0.500001
+      }
+    }
+  },
+  "unresolvedSelections": [
+    {
+      "weapon": "m121a2",
+      "ammo": "penetration",
+      "baseIndex": 6,
+      "modifierSteps": [
+        3,
+        1
+      ],
+      "sumIndex": 10,
+      "tableLength": 10,
+      "reason": "Simple addition exceeds the table. Native composition/clamping must be resolved before promotion."
+    }
+  ]
+}

@@ -365,9 +365,10 @@ export function applyAttachments(w, atts) {
   const combinedAdsTimeTierMod = (grp.adsTimeTierMod ?? 0) + (bar.adsTimeTierMod ?? 0);
 
   // ── Weapon sway ───────────────────────────────────────────────────────────────
-  const sightSway  = atts.sight === 'iron' ? -1 : 0;
   const selectedMag = WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def];
-  const weaponSway = (muz.sway ?? 0) + sightSway + (selectedMag?.sway ?? 0);
+  // Source amount factors for muzzle/magazine effects. Generic optic categories
+  // cannot select the game's individual optic and camera-sway configurations.
+  const weaponSwayMult = (muz.weaponSwayMult ?? 1) * (selectedMag?.weaponSwayMult ?? 1);
 
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
   // Catalog shifts have the opposite sign to Frosty's source index modifiers.
@@ -423,23 +424,15 @@ export function applyAttachments(w, atts) {
     : null;
 
   // ── Spot-on-fire ranges ───────────────────────────────────────────────────────
-  // Muzzle, barrel and ammo suppress the signature; the tighter range wins.
-  // A subsonic load fired through a suppressor drops 2D spotting further than
-  // either does alone, carried as the ammo's suppressed minimap range.
-  const suppressedMinimapSpot = muz.suppressor === true || bar.suppressor === true
-    ? ammoType.suppressedMinimapSpot
-    : null;
-  const worldSpot = Math.min(muz.worldSpot ?? 54, bar.worldSpot ?? Infinity, ammoType.worldSpot ?? Infinity);
-  const minimapSpot = Math.min(
-    muz.minimapSpot ?? 150,
-    bar.minimapSpot ?? Infinity,
-    suppressedMinimapSpot ?? ammoType.minimapSpot ?? Infinity,
-  );
+  // Source factors reproduce the existing 54/150 m base-range model, including
+  // suppressor + subsonic (150 * 0.14 * 0.4285714, approximately 9 m).
+  const worldSpot = +(54 * (muz.worldSpotMult ?? 1) * (bar.worldSpotMult ?? 1) * (ammoType.worldSpotMult ?? 1)).toFixed(6);
+  const minimapSpot = +(150 * (muz.minimapSpotMult ?? 1) * (bar.minimapSpotMult ?? 1) * (ammoType.minimapSpotMult ?? 1)).toFixed(6);
 
   // ── Enemy health regeneration delay ───────────────────────────────────────────
   // Time before a hit enemy starts regenerating. The global baseline is the
-  // 5s carried in balance_tables; frangible rounds hold the victim at 9s.
-  const healthRegenDelayS = ammoType.healthRegenDelayS ?? _ctx.HEALTH_REGEN_DELAY_S;
+  // source 5s in balance_tables plus the selected ammo's source delay addition.
+  const healthRegenDelayS = _ctx.HEALTH_REGEN_DELAY_S + (ammoType.healthRegenDelayAddS ?? 0);
 
   // ── Ammo display ──────────────────────────────────────────────────────────────
   // Ammo always shows, default included — a shared image should never leave the
@@ -568,7 +561,7 @@ export function applyAttachments(w, atts) {
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
     _worldSpot:              worldSpot,
     _minimapSpot:            minimapSpot,
-    _weaponSway:             weaponSway,
+    _weaponSwayMult:         weaponSwayMult,
     _visualRecoil:           ergoData.visualRecoil ?? 0,
     _laserVisible:           las.laserVisible ?? null,
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,

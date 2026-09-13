@@ -3,7 +3,7 @@
   "source": {
     "build": "1.4.2.5",
     "generatedBy": "scripts/frosty-hit-zones.py",
-    "evidence": "reference-data/provenance/frosty-hit-zones-2026-09-12.json"
+    "evidence": "reference-data/provenance/frosty-hit-zones-2026-09-13.json"
   },
   "weapons": {
     "ak205": {
@@ -656,10 +656,6 @@
           "headshot": 1.4,
           "limb": 0.84
         },
-        "lightweight": {
-          "headshot": 1.4,
-          "limb": 0.84
-        },
         "hollow_pt": {
           "headshot": 1.57,
           "limb": 0.84
@@ -1021,10 +1017,6 @@
           "limb": 0.84
         },
         "penetration": {
-          "headshot": 1.4,
-          "limb": 0.84
-        },
-        "lightweight": {
           "headshot": 1.4,
           "limb": 0.84
         },

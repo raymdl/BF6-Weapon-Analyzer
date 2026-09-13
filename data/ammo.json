@@ -67,7 +67,6 @@
     {
       "id": "frangible",
       "name": "Frangible",
-      "healthRegenDelayS": 9,
       "collateralMult": {
         "Assault Rifle": 0.67,
         "Carbine": 0.67,
@@ -76,7 +75,8 @@
         "Sniper Rifle": 0.67,
         "SMG": 0.5,
         "Sidearm": 0.5
-      }
+      },
+      "healthRegenDelayAddS": 4
     },
     {
       "id": "synthetic",
@@ -111,7 +111,7 @@
       "collateralMult": {
         "Shotgun": 0.57
       },
-      "healthRegenDelayS": 7
+      "healthRegenDelayAddS": 2
     },
     {
       "id": "slugs",
@@ -137,9 +137,8 @@
         "SMG": 0.5,
         "Sidearm": 0.5
       },
-      "worldSpot": 27,
-      "minimapSpot": 64,
-      "suppressedMinimapSpot": 9
+      "worldSpotMult": 0.5,
+      "minimapSpotMult": 0.4285714
     },
     {
       "id": "subsonic_hp",
@@ -153,9 +152,8 @@
         "SMG": 0.5,
         "Sidearm": 0.5
       },
-      "worldSpot": 27,
-      "minimapSpot": 64,
-      "suppressedMinimapSpot": 9
+      "worldSpotMult": 0.5,
+      "minimapSpotMult": 0.4285714
     },
     {
       "id": "subsonic_pen",
@@ -170,10 +168,9 @@
         "SMG": 0.75,
         "Sidearm": 0.75
       },
-      "worldSpot": 27,
-      "minimapSpot": 64,
-      "suppressedMinimapSpot": 9,
-      "hipRecoilTierMod": -1
+      "hipRecoilTierMod": -1,
+      "worldSpotMult": 0.5,
+      "minimapSpotMult": 0.4285714
     },
     {
       "id": "range_pen",
@@ -789,7 +786,6 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
-        "lightweight": 10,
         "hollow_pt": 20,
         "frangible": 20
       }
@@ -849,7 +845,6 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
-        "lightweight": 10,
         "hollow_pt": 20,
         "frangible": 20
       }

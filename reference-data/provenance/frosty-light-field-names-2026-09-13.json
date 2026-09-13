@@ -1,0 +1,4230 @@
+{
+  "method": "Shared GS field hashes matched against named GRX dispersion fields; all five target values agree within 0.000002 in each record. Stance names only distinguished where values differ.",
+  "registry": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.xml",
+  "registrySha256": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+  "targets": {
+    "Field_0084b1d1": "IncreasePerShot",
+    "Field_2ca8533e": "FiringDecreaseCoefficient",
+    "Field_1b9eef5d": "FiringDecreaseOffset",
+    "Field_4d3f0635": "NotFiringDecreaseOffset",
+    "Field_aa558d2b": "IdleDecreaseOffset"
+  },
+  "records": [
+    {
+      "weapon": "GS_6P67",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_6P67",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_6P67",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_6P67",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_ACE32",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_ACE32",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_ACE32",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_ACE32",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_EF88",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_EF88",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_EF88",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_EF88",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_G36",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_G36",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_G36",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_G36",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_G3A4",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_G3A4",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_G3A4",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_G3A4",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_HK433",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_HK433",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_HK433",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_HK433",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_L85A3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_L85A3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_L85A3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_L85A3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M16A3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M16A3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M16A3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M16A3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_SCARL",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SCARL",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SCARL",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_SCARL",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Tavor7",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Tavor7",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Tavor7",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Tavor7",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_VHS2",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_VHS2",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_VHS2",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_VHS2",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_DesertTechHTI",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_DesertTechHTI",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_DesertTechHTI",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 5.45455
+      }
+    },
+    {
+      "weapon": "GS_DesertTechHTI",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 5.45455
+      }
+    },
+    {
+      "weapon": "GS_L115A3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_L115A3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_L115A3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_L115A3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_M2010ESR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M2010ESR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M2010ESR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_M2010ESR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_MiniFix",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MiniFix",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MiniFix",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 5.5
+      }
+    },
+    {
+      "weapon": "GS_MiniFix",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 5.5
+      }
+    },
+    {
+      "weapon": "GS_MRAD",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MRAD",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MRAD",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 5.45455
+      }
+    },
+    {
+      "weapon": "GS_MRAD",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 5.45455
+      }
+    },
+    {
+      "weapon": "GS_SV98M",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SV98M",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SV98M",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_SV98M",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_AK205",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.43,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_AK205",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.43,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_AK205",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.239,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_AK205",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.239,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_HK417A2",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_HK417A2",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_HK417A2",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_HK417A2",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M4A1",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M4A1",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M4A1",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M4A1",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTB",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTB",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTB",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTB",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_QBZ192",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_QBZ192",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_QBZ192",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_QBZ192",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_SCARSC",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SCARSC",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SCARSC",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_SCARSC",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_SIG553R",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SIG553R",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SIG553R",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_SIG553R",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_XM7",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_XM7",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_XM7",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_XM7",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_ARADMR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_ARADMR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_ARADMR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.85715
+      }
+    },
+    {
+      "weapon": "GS_ARADMR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.85715
+      }
+    },
+    {
+      "weapon": "GS_M39EMR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.142857,
+        "Field_1b9eef5d": 1.388571,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M39EMR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.142857,
+        "Field_1b9eef5d": 1.388571,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M39EMR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_M39EMR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTCPS",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTCPS",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTCPS",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.85715
+      }
+    },
+    {
+      "weapon": "GS_MSBSGROTCPS",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.85715
+      }
+    },
+    {
+      "weapon": "GS_SVCh",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SVCh",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SVCh",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_SVCh",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_SVDM",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.142857,
+        "Field_1b9eef5d": 1.388571,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SVDM",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.142857,
+        "Field_1b9eef5d": 1.388571,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_SVDM",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_SVDM",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.5
+      }
+    },
+    {
+      "weapon": "GS_VSSM",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_VSSM",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_VSSM",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.85715
+      }
+    },
+    {
+      "weapon": "GS_VSSM",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 6.85715
+      }
+    },
+    {
+      "weapon": "GS_M240L",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M240L",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M240L",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M240L",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M250",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M250",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M250",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M250",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M27IAR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M27IAR",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M27IAR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M27IAR",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M60E6",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M60E6",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M60E6",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_M60E6",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MG4K",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MG4K",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MG4K",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MG4K",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MG5",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MG5",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MG5",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MG5",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.523,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Minimi",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Minimi",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Minimi",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Minimi",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_RPK74M",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_RPK74M",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_RPK74M",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_RPK74M",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_RPKM",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_RPKM",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_RPKM",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_RPKM",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.409,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Ultimax",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Ultimax",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Ultimax",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Ultimax",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_FiveSeven",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.25,
+        "Field_1b9eef5d": 2.43,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_FiveSeven",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.25,
+        "Field_1b9eef5d": 2.43,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_FiveSeven",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 13.02
+      }
+    },
+    {
+      "weapon": "GS_FiveSeven",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 13.02
+      }
+    },
+    {
+      "weapon": "GS_G22",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_G22",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_G22",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_G22",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_M18",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M18",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.1875,
+        "Field_1b9eef5d": 1.8225,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M18",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_M18",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_M45A1",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.142857,
+        "Field_1b9eef5d": 1.388571,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M45A1",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.504,
+        "Field_2ca8533e": 0.142857,
+        "Field_1b9eef5d": 1.388571,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M45A1",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_M45A1",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_RagingHunter",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_RagingHunter",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_RagingHunter",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 7.812
+      }
+    },
+    {
+      "weapon": "GS_RagingHunter",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 7.812
+      }
+    },
+    {
+      "weapon": "GS_Skorpion",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.376,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Skorpion",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.376,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Skorpion",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.209,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Skorpion",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.209,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_TRR8",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_TRR8",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_TRR8",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_TRR8",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.0,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 9.765
+      }
+    },
+    {
+      "weapon": "GS_185KSK",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_185KSK",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_185KSK",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_185KSK",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_590A1",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_590A1",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_590A1",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_590A1",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_DP12",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_DP12",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.648,
+        "Field_2ca8533e": 0.0833333,
+        "Field_1b9eef5d": 0.81,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_DP12",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_DP12",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_M1014",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M1014",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.941,
+        "Field_2ca8533e": 0.05,
+        "Field_1b9eef5d": 0.486,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_M1014",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_M1014",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.001,
+        "Field_2ca8533e": 0.0,
+        "Field_1b9eef5d": 6.6,
+        "Field_4d3f0635": 6.6,
+        "Field_aa558d2b": 4.00364
+      }
+    },
+    {
+      "weapon": "GS_APC10",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_APC10",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.736,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_APC10",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_APC10",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.36,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_APDW",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_APDW",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_APDW",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_APDW",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MP5MLI",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MP5MLI",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MP5MLI",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MP5MLI",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MP7A2",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MP7A2",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.398,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MP7A2",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.221,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MP7A2",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.221,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MPX",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MPX",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_MPX",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_MPX",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_P90",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.43,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_P90",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.43,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_P90",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.239,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_P90",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.239,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_PP19",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_PP19",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_PP19",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_PP19",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_ScorpionEvo3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_ScorpionEvo3",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_ScorpionEvo3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_ScorpionEvo3",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_UMP40",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_UMP40",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_UMP40",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_UMP40",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.304,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Vector",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Vector",
+      "aimField": "Field_7b609515",
+      "aim": "Unzoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.547,
+        "Field_2ca8533e": 0.5,
+        "Field_1b9eef5d": 4.86,
+        "Field_4d3f0635": 12.96,
+        "Field_aa558d2b": 25.0
+      }
+    },
+    {
+      "weapon": "GS_Vector",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_0a160c57",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    },
+    {
+      "weapon": "GS_Vector",
+      "aimField": "Field_6b84de87",
+      "aim": "Zoomed",
+      "stanceField": "Field_447d6d51",
+      "matchingStances": [
+        "Stationary",
+        "MovingJumpingSprinting"
+      ],
+      "values": {
+        "Field_0084b1d1": 0.28,
+        "Field_2ca8533e": 1.2,
+        "Field_1b9eef5d": 2.7,
+        "Field_4d3f0635": 7.2,
+        "Field_aa558d2b": 7.5
+      }
+    }
+  ]
+}

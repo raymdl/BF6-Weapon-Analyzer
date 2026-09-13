@@ -1,0 +1,2039 @@
+{
+  "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.xml",
+  "sha256": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51",
+  "interpretation": "radius = spread * U ** exponent; M39 settled hipfire supports 0.5; other states and native consumer unverified",
+  "fields": [
+    {
+      "weapon": "ks18k",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_185KSK.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ks18k",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_185KSK.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ks18k",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_185KSK.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ks18k",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_185KSK.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m87a1",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_590A1.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m87a1",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_590A1.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m87a1",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_590A1.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m87a1",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_590A1.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kord6p67",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_6P67.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kord6p67",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_6P67.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kord6p67",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_6P67.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kord6p67",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_6P67.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "nvo228e",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_ACE32.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "nvo228e",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_ACE32.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "nvo228e",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_ACE32.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "nvo228e",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_ACE32.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak205",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_AK205.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak205",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_AK205.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak205",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_AK205.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak205",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_AK205.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "scw10",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_APC10.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "scw10",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_APC10.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "scw10",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_APC10.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "scw10",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_APC10.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sl9",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_APDW.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sl9",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_APDW.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sl9",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_APDW.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sl9",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_APDW.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "lmr27",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_ARADMR.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "lmr27",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_ARADMR.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "lmr27",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_ARADMR.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "lmr27",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_ARADMR.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "db12",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_DP12.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "db12",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_DP12.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "db12",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_DP12.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "db12",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_DP12.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ef88",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_EF88.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ef88",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_EF88.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ef88",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_EF88.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ef88",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_EF88.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "es57",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_FiveSeven.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "es57",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_FiveSeven.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "es57",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_FiveSeven.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "es57",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_FiveSeven.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ggh22",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_G22.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ggh22",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_G22.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ggh22",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_G22.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ggh22",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_G22.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "b36a4",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_G36.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "b36a4",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_G36.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "b36a4",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_G36.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "b36a4",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_G36.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak4d",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_G3A4.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak4d",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_G3A4.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak4d",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_G3A4.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "ak4d",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_G3A4.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m417a2",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_HK417A2.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m417a2",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_HK417A2.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m417a2",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_HK417A2.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m417a2",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_HK417A2.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m433",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_HK433.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m433",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_HK433.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m433",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_HK433.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m433",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_HK433.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l115",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_L115A3.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l115",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_L115A3.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l115",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_L115A3.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l115",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_L115A3.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l85a3",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_L85A3.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l85a3",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_L85A3.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l85a3",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_L85A3.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l85a3",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_L85A3.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m1014",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M1014.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m1014",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M1014.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m1014",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M1014.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m1014",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M1014.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m16a4",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M16A3.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m16a4",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M16A3.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m16a4",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M16A3.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m16a4",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M16A3.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "p18",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M18.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "p18",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M18.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "p18",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M18.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "p18",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M18.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m2010esr",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M2010ESR.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m2010esr",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M2010ESR.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m2010esr",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M2010ESR.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m2010esr",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M2010ESR.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m240l",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M240L.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m240l",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M240L.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m240l",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M240L.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m240l",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M240L.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m250",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M250.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m250",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M250.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m250",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M250.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m250",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M250.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "drsiar",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M27IAR.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "drsiar",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M27IAR.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "drsiar",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M27IAR.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "drsiar",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M27IAR.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m39emr",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M39EMR.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m39emr",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M39EMR.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m39emr",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M39EMR.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m39emr",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M39EMR.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m45a1",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M45A1.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m45a1",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M45A1.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m45a1",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M45A1.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m45a1",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M45A1.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m4a1",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M4A1.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m4a1",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M4A1.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m4a1",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M4A1.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m4a1",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M4A1.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m60",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_M60E6.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m60",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_M60E6.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m60",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_M60E6.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m60",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_M60E6.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m123k",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MG4K.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m123k",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MG4K.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m123k",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MG4K.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m123k",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MG4K.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m121a2",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MG5.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m121a2",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MG5.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m121a2",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MG5.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m121a2",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MG5.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "miniscout",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MiniFix.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "miniscout",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MiniFix.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "miniscout",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MiniFix.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "miniscout",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MiniFix.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l110",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_Minimi.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l110",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_Minimi.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l110",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_Minimi.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "l110",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_Minimi.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw5a3",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MP5MLI.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw5a3",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MP5MLI.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw5a3",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MP5MLI.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw5a3",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MP5MLI.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw7a2",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MP7A2.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw7a2",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MP7A2.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw7a2",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MP7A2.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pw7a2",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MP7A2.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sgx",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MPX.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sgx",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MPX.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sgx",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MPX.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sgx",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MPX.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "psr",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MRAD.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "psr",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MRAD.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "psr",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MRAD.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "psr",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MRAD.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtbc",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MSBSGROTB.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtbc",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MSBSGROTB.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtbc",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MSBSGROTB.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtbc",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MSBSGROTB.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtcps",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_MSBSGROTCPS.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtcps",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_MSBSGROTCPS.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtcps",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_MSBSGROTCPS.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "grtcps",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_MSBSGROTCPS.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "usg90",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_P90.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "usg90",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_P90.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "usg90",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_P90.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "usg90",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_P90.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pp19",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_PP19.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pp19",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_PP19.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pp19",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_PP19.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "pp19",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_PP19.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "qbz192",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_QBZ192.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "qbz192",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_QBZ192.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "qbz192",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_QBZ192.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "qbz192",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_QBZ192.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m44",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_RagingHunter.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m44",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_RagingHunter.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m44",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_RagingHunter.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m44",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_RagingHunter.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpk74m",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_RPK74M.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpk74m",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_RPK74M.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpk74m",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_RPK74M.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpk74m",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_RPK74M.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpkm",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_RPKM.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpkm",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_RPKM.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpkm",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_RPKM.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "rpkm",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_RPKM.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor556",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_SCARL.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor556",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_SCARL.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor556",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_SCARL.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor556",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_SCARL.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor300sc",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_SCARSC.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor300sc",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_SCARSC.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor300sc",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_SCARSC.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sor300sc",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_SCARSC.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "cz3a1",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_ScorpionEvo3.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "cz3a1",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_ScorpionEvo3.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "cz3a1",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_ScorpionEvo3.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "cz3a1",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_ScorpionEvo3.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sg553r",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_SIG553R.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sg553r",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_SIG553R.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sg553r",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_SIG553R.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sg553r",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_SIG553R.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vz61",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_Skorpion.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vz61",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_Skorpion.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vz61",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_Skorpion.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vz61",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_Skorpion.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sv98",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_SV98M.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sv98",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_SV98M.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sv98",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_SV98M.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "sv98",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_SV98M.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svk86",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_SVCh.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svk86",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_SVCh.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svk86",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_SVCh.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svk86",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_SVCh.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svdm",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_SVDM.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svdm",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_SVDM.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svdm",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_SVDM.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "svdm",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_SVDM.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "tr7",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_Tavor7.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "tr7",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_Tavor7.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "tr7",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_Tavor7.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "tr7",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_Tavor7.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m357trait",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_TRR8.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m357trait",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_TRR8.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m357trait",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_TRR8.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m357trait",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_TRR8.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kts100",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_Ultimax.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kts100",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_Ultimax.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kts100",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_Ultimax.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kts100",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_Ultimax.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "umg40",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_UMP40.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "umg40",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_UMP40.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "umg40",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_UMP40.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "umg40",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_UMP40.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kv9",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_Vector.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kv9",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_Vector.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kv9",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_Vector.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "kv9",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_Vector.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vcr2",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_VHS2.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vcr2",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_VHS2.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vcr2",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_VHS2.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vcr2",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_VHS2.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vssm",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_VSSM.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vssm",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_VSSM.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vssm",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_VSSM.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "vssm",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_VSSM.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m277",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_XM7.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m277",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_XM7.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m277",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_XM7.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "m277",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_XM7.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "brod3",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_BREN3.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\GS_BREN3.xml",
+        "sha256": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+        "method": "Leaf positions whose values match registry-named fields in at least 90% of weapons with GS files; value accepted only when all candidate positions agree."
+      }
+    },
+    {
+      "weapon": "brod3",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_BREN3.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\GS_BREN3.xml",
+        "sha256": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+        "method": "Leaf positions whose values match registry-named fields in at least 90% of weapons with GS files; value accepted only when all candidate positions agree."
+      }
+    },
+    {
+      "weapon": "brod3",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_BREN3.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\GS_BREN3.xml",
+        "sha256": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+        "method": "Leaf positions whose values match registry-named fields in at least 90% of weapons with GS files; value accepted only when all candidate positions agree."
+      }
+    },
+    {
+      "weapon": "brod3",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_BREN3.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\GS_BREN3.xml",
+        "sha256": "318b16d986ec36c7b8adee41d6ff21c1997a4ce91dbeff9f45d8692a456c60dc",
+        "method": "Leaf positions whose values match registry-named fields in at least 90% of weapons with GS files; value accepted only when all candidate positions agree."
+      }
+    },
+    {
+      "weapon": "interdictor",
+      "aim": "ads",
+      "stance": "stand",
+      "field": "GS_DesertTechHTI.DispersionBehavior.Zoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "interdictor",
+      "aim": "ads",
+      "stance": "move",
+      "field": "GS_DesertTechHTI.DispersionBehavior.Zoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.67,
+      "source": "named registry"
+    },
+    {
+      "weapon": "interdictor",
+      "aim": "hip",
+      "stance": "stand",
+      "field": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.Stationary.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    },
+    {
+      "weapon": "interdictor",
+      "aim": "hip",
+      "stance": "move",
+      "field": "GS_DesertTechHTI.DispersionBehavior.Unzoomed.MovingJumpingSprinting.DistributionExponent",
+      "value": 0.5,
+      "source": "named registry"
+    }
+  ]
+}
