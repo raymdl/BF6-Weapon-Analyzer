@@ -236,8 +236,7 @@ test('evaluates non-sniper damage curves and the NVO-228E tiers at whole metres'
   // Bolt-actions ramp across their sweet spot and shotguns carry a 1 m blend at
   // each tier boundary. Every other class repeats each boundary range, so no
   // sampled range may land strictly between two adjacent tier values.
-  // The Frosty PD_.45ACP curve ramps from 14.3 at 54 m to 12.5 at 75 m.
-  const stepped = weapon => weapon.cls !== 'Sniper Rifle' && weapon.cls !== 'Shotgun' && weapon.id !== 'm45a1';
+  const stepped = weapon => weapon.cls !== 'Sniper Rifle' && weapon.cls !== 'Shotgun';
   for (const weapon of weapons.filter(stepped)) {
     const tiers = new Set(weapon.dmg.map(point => point.d));
     for (let range = 0; range <= 150; range += 0.5) {

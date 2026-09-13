@@ -7990,12 +7990,17 @@
       },
       {
         "r": 75,
+        "d": 14.3,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
         "d": 12.5,
         "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.45ACP tweakable damage curve referenced by M45A1_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.45ACP tweakable damage curve referenced by M45A1_WB, export label 1.4.2.5. The raw curve lists 54 m 14.3 to 75 m 12.5; in-game BTK and damage markers on 2026-09-13 confirm a step at 75 m, so the 75 m 14.3 point is explicit.",
     "reloadSpeed": 1
   },
   {
