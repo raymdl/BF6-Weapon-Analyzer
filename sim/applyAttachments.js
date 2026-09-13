@@ -321,7 +321,8 @@ export function applyAttachments(w, atts) {
   const projectile = _ctx.WEAPON_AMMO?.[w.id]?.projectileOverrides?.[ammoType.id];
 
   // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────
-  const ergoData = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
+  const ergoBase = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
+  const ergoData = { ...ergoBase, ...ergoBase.weaponOverrides?.[w.id] };
   const ergoAdsRecoilTierMod = ergoData.adsRecoilTierMod ?? 0;
 
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
@@ -526,14 +527,15 @@ export function applyAttachments(w, atts) {
     ? ergoData.autoRpm ?? w.autoRpm ?? null
     : null;
   const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd
-    || muz.recoilDurationOverride != null
+    || muz.recoilDurationOverride != null || muz.recoilDecreaseTimeExponentAdd
     || ergoData.recoilDecreaseFactorOverride != null || ergoData.recoilDecreaseTimeExponentOverride != null)
     ? Object.fromEntries(Object.entries(w.recoil).map(([state, group]) => [state, {
       ...group,
       ...(ergoData.recoilDecreaseFactorOverride != null
         ? { decFactor: ergoData.recoilDecreaseFactorOverride } : {}),
-      ...(ergoData.recoilDecreaseTimeExponentOverride != null
-        ? { decTimeExp: ergoData.recoilDecreaseTimeExponentOverride } : {}),
+      ...((ergoData.recoilDecreaseTimeExponentOverride != null || muz.recoilDecreaseTimeExponentAdd)
+        ? { decTimeExp: (ergoData.recoilDecreaseTimeExponentOverride ?? group.decTimeExp)
+          + (muz.recoilDecreaseTimeExponentAdd ?? 0) } : {}),
       ...(state === 'hip' && totalHipRecoilTierMod
         ? { amountExp: (group.amountExp ?? 0) + totalHipRecoilTierMod } : {}),
       ...(state === 'hip' && totalHipVarTierMod

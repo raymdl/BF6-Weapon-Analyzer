@@ -58,7 +58,8 @@ Six sniper rifles use source +6 ADS/hip amount steps on 16 supported brake
 selections. `scripts/frosty-sniper-brakes.py` generates these per-weapon muzzle
 overrides from the traced XML operands, preserving existing duration/recovery
 overrides. M2010 ESR with Single-Port Brake now computes 1.035 degrees ADS kick
-instead of 1.410. Tungsten amount steps are unchanged. See the
+instead of 1.410. Mini Scout Tungsten now applies -7 amount steps in both aims
+from its combined -1/-6 source links; other Tungsten amount steps are unchanged. See the
 [source rows](../reference-data/provenance/frosty-sniper-brakes-generated.json)
 for the exact weapon/brake selections.
 
@@ -167,6 +168,9 @@ The four Smooth source assets define two operand sets:
 |---|---:|---:|
 | `GRM_SmoothRecoil_P10`, `GRM_SmoothRecoil_Compensator_P10` | 50 ms | 1.2 |
 | `GRM_SmoothRecoilBolt_P10`, `GRM_SmoothRecoilBolt_Compensator_P10` | 66.667 ms | 1.728 |
+
+The Bolt modifiers also add -0.5 to the recovery time exponent (`decTimeExp`)
+in both aim states. This uses the existing recovery equation.
 
 The Bolt set applies only to these 17 mapped selections:
 

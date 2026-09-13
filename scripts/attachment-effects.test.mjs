@@ -638,3 +638,45 @@ test('belt-box HUD review removes magazine spread penalty but retains grip penal
     assert.equal(attachments.WEAPON_MAG[id].mags['200_rnd'].descriptionMismatch.observedValue, 0);
   }
 });
+
+
+test('approved Smooth Bolt and burst additions compose without changing source weapons', () => {
+  let count = 0;
+  for (const muzzle of attachments.MUZZLES) {
+    for (const [id, override] of Object.entries(muzzle.weaponOverrides ?? {})) {
+      if (override.recoilDurationOverride !== 0.066667) continue;
+      count++;
+      const w = weapon(id), original = structuredClone(w);
+      const result = build(w, { muzzle: muzzle.id });
+      for (const aim of ['ads', 'hip']) {
+        assert.equal(result.recoil[aim].decTimeExp, w.recoil[aim].decTimeExp - 0.5);
+      }
+      assert.deepEqual(w, original);
+    }
+  }
+  assert.equal(count, 17);
+  for (const [id, ergo] of [['grtbc', 'grtbc_burst_mode'], ['sl9', 'burst_mode'],
+    ...['sg553r', 'pw5a3', 'cz3a1'].map(id => [id, 'burst_training'])]) {
+    const w = weapon(id);
+    for (const aim of ['ads', 'hip']) {
+      assert.equal(build(w, { ergo, muzzle: 'none' }).recoil[aim].duration, 0.0244);
+      assert.equal(build(w, { ergo, muzzle: 'light_supp' }).recoil[aim].duration, 0.0494);
+    }
+  }
+  assert.equal(build(weapon('kv9'), { ergo: 'burst_training', muzzle: 'none' }).recoil.ads.duration, 0.025);
+});
+
+test('Mini Scout Tungsten and selected Slim Angled grips apply the approved source steps', () => {
+  const w = weapon('miniscout');
+  const result = build(w, { ammo: 'penetration', muzzle: 'none', grip: 'none' });
+  assert.equal(result.recoil.hip.amountExp, w.recoil.hip.amountExp - 7);
+  assert.equal(result.recoilV, Math.round(w.recoilV * balance.RECOIL_MULT[w.id] ** -7 * 1000) / 1000);
+  for (const [id, grip] of [['psr', 'slim_angled_sr'], ['sv98', 'slim_angled_sr'], ['ks18k', 'slim_angled']]) {
+    const w = weapon(id);
+    const base = build(w, { grip: 'none', laser: 'none' });
+    const result = build(w, { grip, laser: 'none' });
+    const index = balance.MOVING_ACC_TIERS.indexOf(base.spread.adsMove[0]);
+    assert.equal(result.spread.adsMove[0], balance.MOVING_ACC_TIERS[Math.max(0, index - 1)]);
+    assert.deepEqual(result.spread.adsStand, base.spread.adsStand);
+  }
+});

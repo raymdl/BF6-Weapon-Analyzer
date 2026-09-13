@@ -107,10 +107,8 @@ For M2010 ESR, with the current 1.5-degree base and 0.94 tier multiplier:
 | Tungsten | `1.5 * 0.94^-1 = 1.595745` degrees | `1.5 * 0.94^-6 = 2.174323` degrees |
 
 These are model calculations, not measured game kick. M2010 ESR, PSR and SV-98
-have a -6 Tungsten candidate; Mini Scout has compound links that the old audit
-sums to -7. A class-wide substitution would discard those source differences.
-The separate Tungsten changes remain pending; the follow-up authorization named
-the sniper brake difference. Smooth Bolt duration and recovery overrides remain
+retain a pending -6 Tungsten candidate. Mini Scout now applies its combined
+-1/-6 links as -7 steps in both aims, following the approved follow-up. Smooth Bolt duration and recovery overrides remain
 in place, and other weapons retain their existing brake steps.
 
 ### M60/PW7A2 coordinates: resolved
@@ -260,8 +258,8 @@ for the ordinary burst attachments; GRT-BC instead has +2/-1, leaving +1.
 
 The report stores field operations, source status and simulation support
 separately, with source paths/GUIDs/field paths, raw values and hashes. It retains
-the ten additional `GRM_AutoIdentifier_P00` scalar operations across five weapons
-without assigning them a runtime meaning. Burst cadence and recoil recovery
+the ten additional `GRM_AutoIdentifier_P00` operations across five weapons
+and applies them as -0.0006-second duration additions in ADS and hip. Burst cadence and recoil recovery
 remain separate model questions. Tests cover the applied hip tiers and preserve
 raw weapon groups; source regeneration verifies all 53 selections.
 
@@ -282,3 +280,16 @@ M240L 75 Rnd has selector `dd7850e3-43f7-40b4-9e0e-0fc0b3d779f6` linked in
 `GS_M240L.xml` to `GDM_Array_ADSMoveDispersion_MAG_P10` (operand +1). This
 selects index 4, 0.22 degrees, from base index 3, 0.32 degrees. The existing
 Analyzer modifier already matches. The reviewed M60 options are 50/100 Rnd.
+
+
+## Approved follow-up: recovery, duration, Tungsten and Slim Angled
+
+The local implementation now applies Smooth Bolt's -0.5 time-exponent addition
+for the existing 17 mapped muzzles. The burst generator applies AutoIdentifier's
+-0.0006-second duration addition for its five traced weapons through per-weapon
+ergonomic overrides. It runs after any muzzle duration override.
+Mini Scout Tungsten now uses -7 amount steps in both aims, accepting the combined
+-1/-6 links. The other sniper Tungsten candidates remain pending.
+PSR/SV-98 Slim Angled and KS18K Slim Angled now use moving-ADS index addition -1.
+The comparison counts above and historical comparison JSON describe the
+pre-change snapshot. They must not be used as current unresolved-field counts.

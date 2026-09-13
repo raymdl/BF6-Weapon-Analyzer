@@ -21,7 +21,9 @@ that the current resolver has since addressed.
 Linear Comp and all eight supported burst selections now have source-backed
 ADS/hip amount and variation steps. Their old whole-record assumption flags
 are removed. This does not validate burst cadence or the native recovery equation.
-An additional scalar on five burst weapons remains unmodeled; see the
+The additional -0.0006-second duration operand is applied on five burst weapons
+after the muzzle duration override. Activation and composition remain model
+choices; see the
 [field review](../reference-data/provenance/frosty-assumption-review.json).
 
 L110/M123K 200-round boxes have no modeled moving-ADS spread penalty. Matched

@@ -76,6 +76,8 @@ weapon's availability map. Supported effect families are:
 | `adsRecoilTierMod`, `hipRecoilTierMod`, `adsRecoilVariationTierMod`, `hipRecoilVariationTierMod` | Integer exponent changes, separated by aim state. |
 | `adsRecoilDecayMult`, `hipRecoilDecayMult` | Recovery-factor multipliers for the selected aim state. Smooth uses 1.2, with 1.728 for mapped Bolt selections, within the assumed recovery equation. |
 | Muzzle `weaponOverrides[weaponId]` | Per-weapon fields merged over the selected muzzle record before effect composition. Contains source recoil amount and duration/recovery exceptions; does not change the shared catalog or base weapon. |
+| `recoilDecreaseTimeExponentAdd` | Muzzle addition to `decTimeExp` in both aim states, after any ergonomic exponent override. The 17 mapped Smooth Bolt selections use -0.5. |
+| Ergonomic `weaponOverrides[weaponId]` | Per-weapon fields merged before composition. Five traced burst weapons add `recoilDurationAdd: -0.0006` seconds after the muzzle duration override. |
 | `adsSpreadDecayBoost` | Muzzle adjustment to the ADS firing recovery offset. |
 | `hipSpreadIncMult`, `hipSpreadFiringDecCoefMult`, `hipSpreadFiringDecOffsetMult`, `hipSpreadNotFiringDecOffsetMult` | Light/combo-light factors: 0.666667, 1.837117, 0.666667, 0.666667. Affect hipfire only; selected light and laser factors multiply. |
 | `hipSpreadIdleDecOffsetMult` | Retained light source operand 0.666667; no idle-state simulation consumes it. |

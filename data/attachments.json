@@ -164,35 +164,40 @@
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "adsRecoilTierMod": 6,
-          "hipRecoilTierMod": 6
+          "hipRecoilTierMod": 6,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "m2010esr": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "adsRecoilTierMod": 6,
-          "hipRecoilTierMod": 6
+          "hipRecoilTierMod": 6,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "miniscout": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "adsRecoilTierMod": 6,
-          "hipRecoilTierMod": 6
+          "hipRecoilTierMod": 6,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "psr": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "adsRecoilTierMod": 6,
-          "hipRecoilTierMod": 6
+          "hipRecoilTierMod": 6,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "sv98": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "adsRecoilTierMod": 6,
-          "hipRecoilTierMod": 6
+          "hipRecoilTierMod": 6,
+          "recoilDecreaseTimeExponentAdd": -0.5
         }
       },
       "assumedFields": {
@@ -266,27 +271,32 @@
         "interdictor": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "l115": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "m2010esr": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "miniscout": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "psr": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "sgx": {
           "weaponSwayMult": 1.462923
@@ -315,32 +325,38 @@
         "interdictor": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "l115": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "m2010esr": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "miniscout": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "psr": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "sv98": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         },
         "sgx": {
           "weaponSwayMult": 0.975282
@@ -376,7 +392,8 @@
         "miniscout": {
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728
+          "hipRecoilDecayMult": 1.728,
+          "recoilDecreaseTimeExponentAdd": -0.5
         }
       },
       "assumedFields": {
@@ -4397,7 +4414,8 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": -1
         },
         "kts100": {
           "adsTimeTierMod": 1,
@@ -5149,13 +5167,15 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": -1
         },
         "sv98": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": -1
         }
       }
     },
@@ -7963,7 +7983,18 @@
       "setsFireModeBurst": true,
       "adsRecoilTierMod": 0,
       "hipRecoilTierMod": 0,
-      "hipRecoilVariationTierMod": 3
+      "hipRecoilVariationTierMod": 3,
+      "weaponOverrides": {
+        "sg553r": {
+          "recoilDurationAdd": -0.0006
+        },
+        "pw5a3": {
+          "recoilDurationAdd": -0.0006
+        },
+        "cz3a1": {
+          "recoilDurationAdd": -0.0006
+        }
+      }
     },
     {
       "id": "burst_mode",
@@ -7973,7 +8004,12 @@
       "setsFireModeBurst": true,
       "adsRecoilTierMod": 0,
       "hipRecoilTierMod": 0,
-      "hipRecoilVariationTierMod": 3
+      "hipRecoilVariationTierMod": 3,
+      "weaponOverrides": {
+        "sl9": {
+          "recoilDurationAdd": -0.0006
+        }
+      }
     },
     {
       "id": "grtbc_burst_mode",
@@ -7983,7 +8019,12 @@
       "adsRecoilVariationTierMod": 3,
       "setsFireModeBurst": true,
       "hipRecoilTierMod": 1,
-      "hipRecoilVariationTierMod": 3
+      "hipRecoilVariationTierMod": 3,
+      "weaponOverrides": {
+        "grtbc": {
+          "recoilDurationAdd": -0.0006
+        }
+      }
     },
     {
       "id": "full_auto_vssm",

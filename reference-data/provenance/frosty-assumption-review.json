@@ -2224,8 +2224,8 @@
           "aimBranch": "Field_6b84de87",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_6b84de87/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         },
         {
           "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00.xml",
@@ -2233,8 +2233,8 @@
           "aimBranch": "Field_7b609515",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_7b609515/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         }
       ],
       "branch": {
@@ -2832,8 +2832,8 @@
           "aimBranch": "Field_6b84de87",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_6b84de87/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         },
         {
           "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00.xml",
@@ -2841,8 +2841,8 @@
           "aimBranch": "Field_7b609515",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_7b609515/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         }
       ],
       "branch": {
@@ -5314,8 +5314,8 @@
           "aimBranch": "Field_6b84de87",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_6b84de87/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         },
         {
           "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00.xml",
@@ -5323,8 +5323,8 @@
           "aimBranch": "Field_7b609515",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_7b609515/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         }
       ],
       "branch": {
@@ -5672,8 +5672,8 @@
           "aimBranch": "Field_6b84de87",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_6b84de87/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         },
         {
           "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00.xml",
@@ -5681,8 +5681,8 @@
           "aimBranch": "Field_7b609515",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_7b609515/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         }
       ],
       "branch": {
@@ -6530,8 +6530,8 @@
           "aimBranch": "Field_6b84de87",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_6b84de87/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         },
         {
           "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00.xml",
@@ -6539,8 +6539,8 @@
           "aimBranch": "Field_7b609515",
           "fieldPath": "/Class_bb838ff6[@Guid='1643260a-5bba-4e72-a9c0-763892fd44bb']/Field_7b609515/Struct_26e24b34/Field_5a02dd65/Struct_b1f8b400",
           "rawOperation": "<Struct_b1f8b400>\n            <Field_4692836a>-0.0006</Field_4692836a>\n            <Field_98a799ba>1</Field_98a799ba>\n            <Field_bbbfe9cc>0</Field_bbbfe9cc>\n            <Field_5695ee1c>1</Field_5695ee1c>\n            <Field_bbffe8bc>False</Field_bbffe8bc>\n          </Struct_b1f8b400>\n            ",
-          "sourceStatus": "retained",
-          "simulationSupport": "not-implemented"
+          "sourceStatus": "traced",
+          "simulationSupport": "implemented-duration-addition"
         }
       ],
       "branch": {

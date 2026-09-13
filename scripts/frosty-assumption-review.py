@@ -159,6 +159,22 @@ def main():
                                          'fieldPath': object_paths[child],
                                          'rawOperation': ET.tostring(child, encoding='unicode'),
                                          'sourceStatus': 'retained', 'simulationSupport': 'not-implemented'})
+        duration_operands = [o for o in retained if '/Field_5a02dd65/' in o['fieldPath']]
+        if duration_operands:
+            additions = {}
+            for operand in duration_operands:
+                operation = ET.fromstring(operand['rawOperation'])
+                if any(operation.findtext(field) != expected for field, expected in
+                       [('Field_98a799ba', '1'), ('Field_bbbfe9cc', '0'),
+                        ('Field_5695ee1c', '1'), ('Field_bbffe8bc', 'False')]):
+                    raise ValueError('Unreviewed duration composition')
+                additions[operand['aimBranch']] = additions.get(operand['aimBranch'], 0) + float(operation.findtext('Field_4692836a'))
+                operand['sourceStatus'] = 'traced'
+                operand['simulationSupport'] = 'implemented-duration-addition'
+            if set(additions) != {'Field_6b84de87', 'Field_7b609515'} or len(set(additions.values())) != 1:
+                raise ValueError('ADS and hip duration additions differ')
+            item, = [a for a in catalog['ERGOS'] if a['id'] == aid]
+            item.setdefault('weaponOverrides', {}).setdefault(wid, {})['recoilDurationAdd'] = next(iter(additions.values()))
         if mode:
             values['setsFireModeBurst'] = True
             evidence['setsFireModeBurst'] = {'operation': 'select-fire-mode', 'sourceStatus': 'traced',

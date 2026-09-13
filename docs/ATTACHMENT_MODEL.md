@@ -128,9 +128,9 @@ change the established ADS effects or burst cadence.
 [Field evidence](../reference-data/provenance/frosty-assumption-review.json)
 records operation, source status, simulation support, XML path, GUID, field path,
 raw operand, and hashes separately. The existing burst cadence and the native
-recoil/recovery equation are not proved by this modifier trace. An additional
-`GRM_AutoIdentifier_P00` scalar on five burst weapons remains retained and
-unmodeled; its numeric value is not silently converted into an index step.
+recoil/recovery equation are not proved by this modifier trace. `GRM_AutoIdentifier_P00` adds -0.0006 seconds to recoil duration in both aim
+states for GRT-BC, SG553R, SL9, PW5A3 and CZ3A1. Per-weapon ergonomic overrides
+apply this addition after the selected muzzle duration override.
 
 ## Belt-box moving-ADS spread
 
@@ -251,3 +251,17 @@ Field-level notes identify the uncertain effect without marking every field as
 unknown. Shared-slot selections use the same assumption detection and effect
 resolver as separate slots. Combo lights apply their source hipfire factors.
 See [model limitations](MODEL_LIMITATIONS.md) for unresolved native behavior.
+
+
+## Approved source operand additions
+
+Smooth Bolt muzzle overrides also add -0.5 to `decTimeExp` in both aim states,
+after any ergonomic exponent override. The 17 existing source-mapped selections
+use this addition; ordinary Smooth modifiers do not. The recovery equation is
+unchanged and remains a model assumption.
+
+Mini Scout Tungsten applies the combined -1 and -6 source recoil amount steps
+(-7 total) in ADS and hip. Other sniper Tungsten values are unchanged.
+PSR/SV-98 Slim Angled and KS18K Slim Angled add -1 to the moving-ADS spread
+row index. These are per-weapon effects. The operator approved these source
+composition choices; they are not new measurements of native behavior.
