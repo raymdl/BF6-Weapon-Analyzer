@@ -1,0 +1,2254 @@
+{
+  "date": "2026-09-13",
+  "scope": "Base projectile damage curves for the 59 weapons previously labelled Sym.gg. Compared site dmg points with the Frosty 1.4.2.5 curve linked from each weapon WB primary shot projectile (Field_2ad7e688). Ammo-specific projectile overrides are not covered.",
+  "method": "python scripts/frosty-configuration.py --root \"C:/Users/royal/Documents/BF6 Datamining/Frosty\" --out <scratch>; base-projectile-configuration.json linkedCurves rawPoints. Site curves evaluated with sim/damage.js rules (clamp before first point, repeated range is a step, distinct ranges interpolate).",
+  "decision": "Frosty is the golden damage source. All 59 damageSource labels and point sources now name Frosty. Damage values change only for M45A1.",
+  "counts": {
+    "exact-match": 55,
+    "equivalent-evaluation": 3,
+    "different": 1
+  },
+  "frostyInputSha256": "f10e8488f57acfc105a94ec07cd6caba120c3729094f428927172fa8c611e41c",
+  "weaponsJsonSha256After": "6afac1c938c185c3dd59d3d847fc4e8501a45bbbea27ea3a023801711e6873c0",
+  "notes": [
+    "equivalent-evaluation: the site keeps an extra 0 m point that the Frosty curve omits; damage is identical at every range because the curve clamps before its first point.",
+    "M45A1: Frosty ramps linearly from 14.3 at 54 m to 12.5 at 75 m; the previous site curve held 14.3 until a step at 75 m. Replaced with the Frosty points."
+  ],
+  "weapons": [
+    {
+      "weapon": "m433",
+      "wb": "HK433_WB",
+      "bullet": "PD_556x45mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "b36a4",
+      "wb": "G36_WB",
+      "bullet": "PD_556x45mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "sor556",
+      "wb": "SCARL_WB",
+      "bullet": "PD_556x45mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "ak4d",
+      "wb": "G3A4_WB",
+      "bullet": "PD_762x51mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          21,
+          35.22
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "tr7",
+      "wb": "Tavor7_WB",
+      "bullet": "PD_762x51mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          21,
+          35.22
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "kord6p67",
+      "wb": "6P67_WB",
+      "bullet": "PD_545x39mm",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_545x39mm.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "nvo228e",
+      "wb": "ACE32_WB",
+      "bullet": "PD_762x39mm",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x39mm.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          9,
+          35.22
+        ],
+        [
+          9,
+          27.48
+        ],
+        [
+          21,
+          27.48
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          36,
+          21.56
+        ],
+        [
+          36,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "l85a3",
+      "wb": "L85A3_WB",
+      "bullet": "PD_556x45mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "vcr2",
+      "wb": "VHS2_WB",
+      "bullet": "PD_556x45mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m16a4",
+      "wb": "M16A3_WB",
+      "bullet": "PD_556x45mmNATO",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m4a1",
+      "wb": "M4A1_WB",
+      "bullet": "PD_556x45mmNATO_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          21.56
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          21,
+          17.74
+        ],
+        [
+          36,
+          17.74
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m277",
+      "wb": "XM7_WB",
+      "bullet": "PD_68x51mm_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_68x51mm_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "result": "equivalent-evaluation",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "ak205",
+      "wb": "AK205_WB",
+      "bullet": "PD_545x39mm_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_545x39mm_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          20.67
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          9,
+          17.74
+        ],
+        [
+          21,
+          17.74
+        ],
+        [
+          21,
+          15.07
+        ],
+        [
+          36,
+          15.07
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m417a2",
+      "wb": "HK417A2_WB",
+      "bullet": "PD_762x51mmNATO_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          9,
+          35.22
+        ],
+        [
+          9,
+          27.48
+        ],
+        [
+          21,
+          27.48
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          36,
+          21.56
+        ],
+        [
+          36,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "grtbc",
+      "wb": "MSBSGROTB_WB",
+      "bullet": "PD_556x45mmNATO_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          21.56
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          21,
+          17.74
+        ],
+        [
+          36,
+          17.74
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "qbz192",
+      "wb": "QBZ192_WB",
+      "bullet": "PD_58x42mm_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_58x42mm_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          21.56
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          21,
+          17.74
+        ],
+        [
+          36,
+          17.74
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "sg553r",
+      "wb": "SIG553R_WB",
+      "bullet": "PD_762x39mm_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x39mm_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          9,
+          35.22
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          36,
+          20.67
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "sor300sc",
+      "wb": "SCARSC_WB",
+      "bullet": "PD_.300BLK_Carbine",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          9,
+          35.22
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          36,
+          20.67
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "sgx",
+      "wb": "MPX_WB",
+      "bullet": "PD_9x19mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "pw5a3",
+      "wb": "MP5MLI_WB",
+      "bullet": "PD_9x19mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "pw7a2",
+      "wb": "MP7A2_WB",
+      "bullet": "PD_46x30_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_46x30_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          17.13
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          21,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "umg40",
+      "wb": "UMP40_WB",
+      "bullet": "PD_.40SW_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.40SW_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          21.56
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          21,
+          17.74
+        ],
+        [
+          36,
+          17.74
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "usg90",
+      "wb": "P90_WB",
+      "bullet": "PD_57x28mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_57x28mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          20.67
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          9,
+          17.74
+        ],
+        [
+          21,
+          17.74
+        ],
+        [
+          21,
+          15.07
+        ],
+        [
+          36,
+          15.07
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "kv9",
+      "wb": "Vector_WB",
+      "bullet": "PD_9x19mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "scw10",
+      "wb": "APC10_WB",
+      "bullet": "PD_10x25mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_10x25mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          9,
+          35.22
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          36,
+          20.67
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "sl9",
+      "wb": "APDW_WB",
+      "bullet": "PD_9x19mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "cz3a1",
+      "wb": "ScorpionEvo3_WB",
+      "bullet": "PD_9x19mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "pp19",
+      "wb": "PP19_WB",
+      "bullet": "PD_9x19mm_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          9,
+          26.05
+        ],
+        [
+          9,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          36,
+          17.13
+        ],
+        [
+          36,
+          14.62
+        ],
+        [
+          75,
+          14.62
+        ],
+        [
+          75,
+          12.76
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "l110",
+      "wb": "Minimi_WB",
+      "bullet": "PD_556x45mmNATO_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "drsiar",
+      "wb": "M27IAR_WB",
+      "bullet": "PD_556x45mmNATO_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m60",
+      "wb": "M60E6_WB",
+      "bullet": "PD_762x51mmNATO_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          21,
+          35.22
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "rpkm",
+      "wb": "RPKM_WB",
+      "bullet": "PD_762x39mm_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x39mm_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          9,
+          35.22
+        ],
+        [
+          9,
+          27.48
+        ],
+        [
+          21,
+          27.48
+        ],
+        [
+          21,
+          21.56
+        ],
+        [
+          36,
+          21.56
+        ],
+        [
+          36,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m123k",
+      "wb": "MG4K_WB",
+      "bullet": "PD_556x45mmNATO_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m250",
+      "wb": "M250_WB",
+      "bullet": "PD_68x51mm_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_68x51mm_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          15,
+          26.05
+        ]
+      ],
+      "result": "equivalent-evaluation",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); special damage profile: no falloff at any range (user-confirmed)"
+    },
+    {
+      "weapon": "kts100",
+      "wb": "Ultimax_WB",
+      "bullet": "PD_556x45mmNATO_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          26.05
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          75,
+          20.67
+        ],
+        [
+          75,
+          17.13
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m240l",
+      "wb": "M240L_WB",
+      "bullet": "PD_762x51mmNATO_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          21,
+          35.22
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m121a2",
+      "wb": "MG5_WB",
+      "bullet": "PD_762x51mmNATO_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          35.22
+        ],
+        [
+          21,
+          35.22
+        ],
+        [
+          21,
+          26.05
+        ],
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "rpk74m",
+      "wb": "RPK74M_WB",
+      "bullet": "PD_545x39mm_MG",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_545x39mm_MG.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          20.67
+        ],
+        [
+          21,
+          20.67
+        ],
+        [
+          21,
+          17.13
+        ],
+        [
+          75,
+          17.13
+        ],
+        [
+          75,
+          14.62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m39emr",
+      "wb": "M39EMR_WB",
+      "bullet": "PD_762x51mmNATO_Semi",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_Semi.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          41.5
+        ],
+        [
+          21,
+          41.5
+        ],
+        [
+          21,
+          37.6
+        ],
+        [
+          75,
+          37.6
+        ],
+        [
+          75,
+          34.4
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "lmr27",
+      "wb": "ARADMR_WB",
+      "bullet": "PD_556x45mmNATO_Semi",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Semi.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          29.4
+        ],
+        [
+          21,
+          29.4
+        ],
+        [
+          21,
+          27.5
+        ],
+        [
+          75,
+          27.5
+        ],
+        [
+          75,
+          26.2
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "svk86",
+      "wb": "SVCh_WB",
+      "bullet": "PD_.338LapuaMagnum_Semi",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum_Semi.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          66.7
+        ],
+        [
+          9,
+          66.7
+        ],
+        [
+          9,
+          57.2
+        ],
+        [
+          21,
+          57.2
+        ],
+        [
+          21,
+          52.4
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "svdm",
+      "wb": "SVDM_WB",
+      "bullet": "PD_762x54mmR_Semi",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Semi.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          41.5
+        ],
+        [
+          21,
+          41.5
+        ],
+        [
+          21,
+          37.6
+        ],
+        [
+          75,
+          37.6
+        ],
+        [
+          75,
+          34.4
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "grtcps",
+      "wb": "MSBSGROTCPS_WB",
+      "bullet": "PD_556x45mmNATO_Semi",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Semi.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          29.4
+        ],
+        [
+          21,
+          29.4
+        ],
+        [
+          21,
+          27.5
+        ],
+        [
+          75,
+          27.5
+        ],
+        [
+          75,
+          26.2
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m2010esr",
+      "wb": "M2010ESR_WB",
+      "bullet": "PD_.300WinMag",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.300WinMag.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          54,
+          80
+        ],
+        [
+          75,
+          100
+        ],
+        [
+          100,
+          100
+        ],
+        [
+          133,
+          62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff"
+    },
+    {
+      "weapon": "sv98",
+      "wb": "SV98M_WB",
+      "bullet": "PD_762x54mmR_Bolt",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Bolt.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          80
+        ],
+        [
+          36,
+          80
+        ],
+        [
+          54,
+          100
+        ],
+        [
+          75,
+          100
+        ],
+        [
+          100,
+          62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff"
+    },
+    {
+      "weapon": "psr",
+      "wb": "MRAD_WB",
+      "bullet": "PD_.338NormaMagnum",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.338NormaMagnum.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          75,
+          80
+        ],
+        [
+          90,
+          100
+        ],
+        [
+          120,
+          100
+        ],
+        [
+          160,
+          62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff"
+    },
+    {
+      "weapon": "miniscout",
+      "wb": "MiniFix_WB",
+      "bullet": "PD_556x45mmNATO_Bolt",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Bolt.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          21,
+          62
+        ],
+        [
+          75,
+          58
+        ]
+      ],
+      "result": "equivalent-evaluation",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear falloff, no sweet spot"
+    },
+    {
+      "weapon": "l115",
+      "wb": "L115A3_WB",
+      "bullet": "PD_.338LapuaMagnum2",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum2.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          75,
+          80
+        ],
+        [
+          100,
+          100
+        ],
+        [
+          133,
+          100
+        ],
+        [
+          175,
+          62
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); linear sweet-spot falloff"
+    },
+    {
+      "weapon": "m87a1",
+      "wb": "590A1_WB",
+      "bullet": "PD_12gaNo01Buck300_Pump",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_12gaNo01Buck300_Pump.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          8.4
+        ],
+        [
+          8,
+          8.4
+        ],
+        [
+          9,
+          7.2
+        ],
+        [
+          15,
+          7.2
+        ],
+        [
+          16,
+          5.6
+        ],
+        [
+          30,
+          5.6
+        ],
+        [
+          31,
+          3.8
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    },
+    {
+      "weapon": "m1014",
+      "wb": "M1014_WB",
+      "bullet": "PD_12gaNo01Buck300_Semi",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_12gaNo01Buck300_Semi.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          7.2
+        ],
+        [
+          8,
+          7.2
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          15,
+          5
+        ],
+        [
+          16,
+          3.1
+        ],
+        [
+          21,
+          3.1
+        ],
+        [
+          22,
+          2.3
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    },
+    {
+      "weapon": "ks18k",
+      "wb": "185KSK_WB",
+      "bullet": "PD_12gaNo01Buck275_Semi",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_12gaNo01Buck275_Semi.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          5
+        ],
+        [
+          15,
+          5
+        ],
+        [
+          16,
+          2.8
+        ],
+        [
+          21,
+          2.8
+        ],
+        [
+          22,
+          2
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    },
+    {
+      "weapon": "db12",
+      "wb": "DP12_WB",
+      "bullet": "PD_12gaNo01Buck275_Pump",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_12gaNo01Buck275_Pump.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          5.6
+        ],
+        [
+          15,
+          5.6
+        ],
+        [
+          16,
+          3.3
+        ],
+        [
+          21,
+          3.3
+        ],
+        [
+          22,
+          2.5
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); per-pellet damage with a 1 m blend at each tier boundary"
+    },
+    {
+      "weapon": "p18",
+      "wb": "M18_WB",
+      "bullet": "PD_9x19mm",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_9x19mm.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          25
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          9,
+          20
+        ],
+        [
+          21,
+          20
+        ],
+        [
+          21,
+          16.7
+        ],
+        [
+          36,
+          16.7
+        ],
+        [
+          36,
+          14.3
+        ],
+        [
+          75,
+          14.3
+        ],
+        [
+          75,
+          12.5
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "es57",
+      "wb": "FiveSeven_WB",
+      "bullet": "PD_57x28mm",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_57x28mm.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          20
+        ],
+        [
+          9,
+          20
+        ],
+        [
+          9,
+          17.7
+        ],
+        [
+          21,
+          17.7
+        ],
+        [
+          21,
+          15
+        ],
+        [
+          36,
+          15
+        ],
+        [
+          36,
+          14.3
+        ],
+        [
+          75,
+          14.3
+        ],
+        [
+          75,
+          12.5
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m45a1",
+      "wb": "M45A1_WB",
+      "bullet": "PD_.45ACP",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.45ACP.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          33.4
+        ],
+        [
+          9,
+          33.4
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          21,
+          25
+        ],
+        [
+          21,
+          20
+        ],
+        [
+          36,
+          20
+        ],
+        [
+          36,
+          16.7
+        ],
+        [
+          54,
+          16.7
+        ],
+        [
+          54,
+          14.3
+        ],
+        [
+          75,
+          12.5
+        ]
+      ],
+      "result": "different",
+      "sitePointsBefore": [
+        [
+          0,
+          33.4
+        ],
+        [
+          9,
+          33.4
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          21,
+          25
+        ],
+        [
+          21,
+          20
+        ],
+        [
+          36,
+          20
+        ],
+        [
+          36,
+          16.7
+        ],
+        [
+          54,
+          16.7
+        ],
+        [
+          54,
+          14.3
+        ],
+        [
+          75,
+          14.3
+        ],
+        [
+          75,
+          12.5
+        ]
+      ],
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m44",
+      "wb": "RagingHunter_WB",
+      "bullet": "PD_.44Magnum",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.44Magnum.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          66.7
+        ],
+        [
+          9,
+          66.7
+        ],
+        [
+          9,
+          59.9
+        ],
+        [
+          21,
+          59.9
+        ],
+        [
+          21,
+          33.4
+        ],
+        [
+          75,
+          33.4
+        ],
+        [
+          75,
+          25
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "ggh22",
+      "wb": "G22_WB",
+      "bullet": "PD_.40SW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.40SW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          25
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          9,
+          21.5
+        ],
+        [
+          21,
+          21.5
+        ],
+        [
+          21,
+          17.7
+        ],
+        [
+          36,
+          17.7
+        ],
+        [
+          36,
+          16.7
+        ],
+        [
+          75,
+          16.7
+        ],
+        [
+          75,
+          14.3
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "m357trait",
+      "wb": "TRR8_WB",
+      "bullet": "PD_.357Magnum",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_.357Magnum.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          50
+        ],
+        [
+          9,
+          50
+        ],
+        [
+          9,
+          37.5
+        ],
+        [
+          21,
+          37.5
+        ],
+        [
+          21,
+          27.3
+        ],
+        [
+          36,
+          27.3
+        ],
+        [
+          36,
+          25
+        ],
+        [
+          75,
+          25
+        ],
+        [
+          75,
+          20
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    },
+    {
+      "weapon": "vz61",
+      "wb": "Skorpion_WB",
+      "bullet": "PD_32ACP_PDW",
+      "projectileXml": "Common/Hardware/Weapons/_Bullets/PD_32ACP_PDW.xml",
+      "curveField": "Field_2ad7e688",
+      "frostyPoints": [
+        [
+          0,
+          17.13
+        ],
+        [
+          9,
+          17.13
+        ],
+        [
+          9,
+          15.07
+        ],
+        [
+          21,
+          15.07
+        ],
+        [
+          21,
+          13.09
+        ],
+        [
+          36,
+          13.09
+        ],
+        [
+          36,
+          12.76
+        ],
+        [
+          75,
+          12.76
+        ],
+        [
+          75,
+          11.32
+        ]
+      ],
+      "result": "exact-match",
+      "previousDamageSource": "Sym.gg 1.3.3.0 game-file curve (retrieved 2026-07-25); stepped tiers, provisional pending in-game confirmation"
+    }
+  ]
+}

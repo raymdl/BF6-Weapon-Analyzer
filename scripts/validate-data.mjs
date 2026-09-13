@@ -74,6 +74,12 @@ for (const weapon of weapons) {
   if (Object.hasOwn(weapon, 'deployT')) {
     fail(`${weapon.id}: legacy deployT must be absent after the draw-time cutover`);
   }
+  for (const key of ['adsStand', 'adsMove', 'hipStand', 'hipMove']) {
+    const bounds = weapon.spread?.[key];
+    if (!Array.isArray(bounds) || bounds.length !== 2 || !bounds.every(Number.isFinite)) {
+      fail(`${weapon.id}: spread.${key} must be a [min, max] number pair`);
+    }
+  }
   for (const key of ['tacRld', 'emptyRld']) {
     if (weapon[key] !== null && !Number.isFinite(weapon[key])) {
       fail(`${weapon.id}: ${key} must be numeric or null`);

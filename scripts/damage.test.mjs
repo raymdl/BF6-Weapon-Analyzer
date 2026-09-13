@@ -200,7 +200,7 @@ test('Interdictor keeps its chest and limb kill windows distinct', () => {
   assert.equal(damageAtRange(weapon, 135), 150);
 });
 
-test('uses the refreshed Sym game-file damage tiers', () => {
+test('uses the Frosty game-file damage tiers', () => {
   const weapons = readJson('../data/weapons.json');
   const curves = Object.fromEntries(weapons.map(weapon => [weapon.id, weapon.dmg?.map(point => point.d)]));
 
@@ -212,12 +212,10 @@ test('uses the refreshed Sym game-file damage tiers', () => {
   assert.deepEqual(curves.lmr27, [29.4, 29.4, 27.5, 27.5, 26.2]);
   assert.deepEqual(curves.svk86, [66.7, 66.7, 57.2, 57.2, 52.4]);
 
-  // Preserve the distinct source of each reviewed curve.
-  const NON_SYM_CURVES = { brod3: 'Frosty', ef88: 'Frosty', vssm: 'Frosty', interdictor: 'Frosty' };
+  // Frosty is the golden source for every base damage curve.
   for (const weapon of weapons) {
     assert.equal(weapon.damageStatus, 'verified', `${weapon.id} status`);
-    const expected = NON_SYM_CURVES[weapon.id] ?? 'Sym';
-    assert.equal(weapon.dmg.every(point => point.source === expected), true, `${weapon.id} source`);
+    assert.equal(weapon.dmg.every(point => point.source === 'Frosty'), true, `${weapon.id} source`);
   }
 });
 
@@ -238,7 +236,8 @@ test('evaluates non-sniper damage curves and the NVO-228E tiers at whole metres'
   // Bolt-actions ramp across their sweet spot and shotguns carry a 1 m blend at
   // each tier boundary. Every other class repeats each boundary range, so no
   // sampled range may land strictly between two adjacent tier values.
-  const stepped = weapon => weapon.cls !== 'Sniper Rifle' && weapon.cls !== 'Shotgun';
+  // The Frosty PD_.45ACP curve ramps from 14.3 at 54 m to 12.5 at 75 m.
+  const stepped = weapon => weapon.cls !== 'Sniper Rifle' && weapon.cls !== 'Shotgun' && weapon.id !== 'm45a1';
   for (const weapon of weapons.filter(stepped)) {
     const tiers = new Set(weapon.dmg.map(point => point.d));
     for (let range = 0; range <= 150; range += 0.5) {

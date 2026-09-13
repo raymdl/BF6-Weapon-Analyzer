@@ -702,9 +702,8 @@ function renderOverview() {
       tooltip: 'Time in seconds to reload with rounds still in the magazine. Lower is faster.' },
     { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Damage multiplier applied to bullets that pass through a target or surface. Varies by ammo type and weapon class.' },
-    { lbl: 'ADS Time',    compute: w => w._adsTimeMs ?? w.adsTime,       unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true, group: 'mobility',
-      tooltip: 'Time to aim down sights. Lower is faster.',
-      estFn: w => !w._adsTimeMs && w.adsTime != null },
+    { lbl: 'ADS Time',    compute: w => w._adsTimeMs,                    unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true, group: 'mobility',
+      tooltip: 'Time to aim down sights. Lower is faster.' },
     { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: formatMovementMultiplier,      higherBetter: true, group: 'mobility',
       tooltip: 'Movement speed multiplier while aiming down sights. Higher is faster.' },
     { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
@@ -1911,7 +1910,7 @@ function renderAttachmentStats(loadouts) {
   };
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
   const metrics = [
-    { lbl: 'ADS Time',            val: w => w._adsTimeMs ?? w.adsTime,      unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
+    { lbl: 'ADS Time',            val: w => w._adsTimeMs,                   unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
     { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
     { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after attachment effects. Lower is faster.' },
     { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after attachment effects. Lower is faster.' },
