@@ -80,7 +80,7 @@ that supplies `dmg`. The 59 curves formerly labelled Sym were compared with Fros
 kept their values; the M45A1 keeps an in-game-confirmed step at 75 m
 ([damage curve review](../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
 Weapon display names use the in-game spelling from Frosty localization
-([method](FROSTY_DISPLAY_NAMES.md)).
+([method](working/FROSTY_DISPLAY_NAMES.md)).
 No weapon is estimated or uses donor values. BROD 3, EF88 and VSSM, which Sym does
 not publish, use Frosty 1.4.2.5 values. Fitted attachment effects and
 source-composition questions remain. Read field-level
