@@ -97,8 +97,9 @@ extra tiers. Each weapon stores its base minimum in `spread.adsMove[0]`. Attachm
 shifts select another row and update that bound; there is no global base override.
 
 M240L 75 Rnd adds one moving-spread index: 0.32 to 0.22 degrees with no other
-spread modifiers. L110/M123K 200 Rnd retain an estimated negative step to 0.43;
-no linked source operand establishes that penalty. See the
+spread modifiers. L110/M123K 200 Rnd now use zero magazine spread shift, matching
+their 100-round boxes. Matched HUD screenshots support removing the old estimate;
+the descriptions still claim a penalty and may reflect a game/description bug. See the
 [belt-box evidence boundary](ATTACHMENT_MODEL.md#belt-box-moving-ads-spread).
 
 Barrel ADS terms use the selected weapon's `adsTimeTierModByWeapon` value.

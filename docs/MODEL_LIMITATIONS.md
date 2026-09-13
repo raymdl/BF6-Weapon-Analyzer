@@ -24,7 +24,10 @@ are removed. This does not validate burst cadence or the native recovery equatio
 An additional scalar on five burst weapons remains unmodeled; see the
 [field review](../reference-data/provenance/frosty-assumption-review.json).
 
-L110/M123K 200-round moving-ADS spread magnitudes remain estimated. M240L
+L110/M123K 200-round boxes have no modeled moving-ADS spread penalty. Matched
+HUD screenshots and the missing source modifier support removing the old estimate.
+The conflicting descriptions remain possible game/description bugs to recheck
+after updates; no future fix or penalty magnitude is assumed. M240L
 75-round spread improvement is linked to a source +1 index. The
 [attachment guide](ATTACHMENT_MODEL.md#belt-box-moving-ads-spread) gives values
 and limits. SVK-8.6 Adjustable Angled is not selectable: its source ability

@@ -16216,14 +16216,10 @@
         "adsTimeTierShift": 1,
         "adsMoveSpeedTierShift": 1,
         "sprintRecoveryTierShift": 1,
-        "deployTimeTierShift": 1
+        "deployTimeTierShift": 1,
+        "movingAdsSpreadTierMod": 0
       },
-      "deferred": {
-        "movingAdsSpreadTierMod": {
-          "reason": "No linked source effect for the existing moving-ADS adjustment",
-          "sourceCandidate": 0
-        }
-      },
+      "deferred": {},
       "branches": [
         {
           "attachmentXml": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MAG_Extended1.xml",
@@ -21983,14 +21979,10 @@
         "adsTimeTierShift": 1,
         "adsMoveSpeedTierShift": 1,
         "sprintRecoveryTierShift": 1,
-        "deployTimeTierShift": 1
+        "deployTimeTierShift": 1,
+        "movingAdsSpreadTierMod": 0
       },
-      "deferred": {
-        "movingAdsSpreadTierMod": {
-          "reason": "No linked source effect for the existing moving-ADS adjustment",
-          "sourceCandidate": 0
-        }
-      },
+      "deferred": {},
       "branches": [
         {
           "attachmentXml": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MAG_Extended1.xml",
@@ -59452,10 +59444,10 @@
   "summary": {
     "selections": 1488,
     "mapped": 1488,
-    "generatedFields": 5491,
+    "generatedFields": 5493,
     "generatedBaseIndices": 3,
     "changedFields": 0,
-    "deferredFields": 2,
+    "deferredFields": 0,
     "unmapped": 0
   }
 }

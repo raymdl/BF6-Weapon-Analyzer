@@ -45,8 +45,8 @@ for the attachment exceptions, formulas, and evidence limits.
 Attachment handling now uses generated per-weapon Frosty modifiers. Shared
 grip/laser/light rails use one menu and retain compatibility with existing links.
 The [attachment guide](docs/ATTACHMENT_MODEL.md) covers barrel ADS timing,
-sniper brake steps, Linear Comp/burst recoil and the remaining belt-box spread
-estimates. Source-backed modifiers do not establish native simulation formulas.
+sniper brake steps, Linear Comp/burst recoil and the belt-box description
+mismatches. Source-backed modifiers do not establish native simulation formulas.
 
 ## Run locally
 

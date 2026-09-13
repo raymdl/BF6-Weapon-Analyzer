@@ -37,7 +37,8 @@ fire-mode selectors; field source status and simulation support are separate.
 
 The [attachment generation report](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
 records 233 unique barrel selections, 1,488 handling selections, 16 sniper brake
-pairs and 53 Linear Comp/burst pairs. Two belt-box spread fields remain estimated.
+pairs and 53 Linear Comp/burst pairs. Two belt-box description mismatches remain recorded as possible bugs; their
+unsupported spread penalties were removed after matched screenshot review.
 The [maintenance workflow](../MAINTENANCE.md#regenerate-attachment-modifiers)
 provides the commands. Source-only ability branches do not establish availability.
 

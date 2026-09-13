@@ -26,12 +26,6 @@ WB_FIELDS = {
     'Class_03db7a68': ('sprintRecoveryTierShift', 'Field_9540bd8e'),
     'Class_4aac041b': ('deployTimeTierShift', 'Field_9540bd8e'),
 }
-# These reviewed moving-spread adjustments lack a matching source effect.
-# Retain them until the original evidence/source-selection difference is resolved.
-EXCEPTIONS = {
-    ('l110', '200_rnd'): ('movingAdsSpreadTierMod',),
-    ('m123k', '200_rnd'): ('movingAdsSpreadTierMod',),
-}
 BASE_FIELDS = {
     'm60': {'defAds': ('M60E6_WB.AnimationZoomSettingsIndex.Index', 'M60E6_WB.WeaponZoomTransitionIndex.Index'),
             'defAms': ('M60E6_WB.WeaponZoomedMoveSpeedMultiplierIndex.Index',)},
@@ -251,11 +245,6 @@ def main():
                 row['deferred'][field] = 'Source attachment/ability branches disagree'
                 continue
             row['fields'][field] = next(iter(values))
-        if slot == 'mag':
-            for field in EXCEPTIONS.get((wid, aid), ()):
-                candidate = row['fields'].pop(field, None)
-                row['deferred'][field] = {'reason': 'No linked source effect for the existing moving-ADS adjustment',
-                                          'sourceCandidate': candidate}
         lost = previous_fields.get(key, set()) - row['fields'].keys()
         if lost:
             raise ValueError(f'Previously generated fields became unresolved: {key}: {sorted(lost)}')

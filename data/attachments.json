@@ -13493,11 +13493,15 @@
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "movingAdsSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0,
           "reloadSpeedTier": 0,
           "deployTimeTierShift": 1,
-          "assumedFields": {
-            "movingAdsSpreadTierMod": "The in-game description says moving ADS accuracy is reduced, but the linked Frosty graph has no moving-spread operand and the screenshot shows no numeric spread value. The retained -1 step is not source-verified."
+          "descriptionMismatch": {
+            "field": "movingAdsSpreadTierMod",
+            "observedOn": "2026-09-13",
+            "observedValue": 0,
+            "note": "Description says reduced ADS accuracy while moving, but matched 100/200-round mid-strafe screenshots show no additional HUD spread, with Ribbed Vertical as a positive control. No linked Frosty magazine spread modifier was found. Possible game or description bug; recheck after updates before adding a penalty.",
+            "evidence": "reference-data/provenance/belt-box-moving-ads-2026-09-13.json"
           }
         }
       },
@@ -13834,11 +13838,15 @@
           "adsTimeTierShift": 1,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "movingAdsSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0,
           "reloadSpeedTier": 0,
           "deployTimeTierShift": 1,
-          "assumedFields": {
-            "movingAdsSpreadTierMod": "The in-game description says moving ADS accuracy is reduced, but the linked Frosty graph has no moving-spread operand and the screenshot shows no numeric spread value. The retained -1 step is not source-verified."
+          "descriptionMismatch": {
+            "field": "movingAdsSpreadTierMod",
+            "observedOn": "2026-09-13",
+            "observedValue": 0,
+            "note": "Description says reduced ADS accuracy while moving, but matched 100/200-round mid-strafe screenshots show no additional HUD spread, with Ribbed Vertical as a positive control. No linked Frosty magazine spread modifier was found. Possible game or description bug; recheck after updates before adding a penalty.",
+            "evidence": "reference-data/provenance/belt-box-moving-ads-2026-09-13.json"
           }
         }
       },

@@ -13,7 +13,7 @@ source-exponent sampling. [Damage and ballistics](DAMAGE_BALLISTICS.md) covers
 per-weapon/ammo hit zones, manual-cycle timing, and explicit projectile selection.
 The [attachment model](ATTACHMENT_MODEL.md) explains sway percentages, spotting,
 regeneration, collateral, typed shared rails, generated handling, sniper brakes,
-Linear Comp/burst recoil and belt-box spread uncertainty. Source values and native arithmetic remain distinct.
+Linear Comp/burst recoil and belt-box description mismatches. Source values and native arithmetic remain distinct.
 
 ## Folder roles
 

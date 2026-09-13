@@ -624,3 +624,17 @@ test('manual-cycle cadence and shell reloads follow Frosty 1.4.2.5 and the in-ga
   // Revolvers have one reload entry for every ammo count.
   for (const id of ['m44', 'm357trait']) assert.equal(weapon(id).emptyRld, weapon(id).tacRld, id);
 });
+
+test('belt-box HUD review removes magazine spread penalty but retains grip penalty and mismatch', () => {
+  for (const id of ['l110', 'm123k']) {
+    const w = weapon(id);
+    for (const grip of ['none', 'ribbed_vert']) {
+      const small = build(w, { mag: '100_rnd', grip });
+      const large = build(w, { mag: '200_rnd', grip });
+      assert.deepEqual(large.spread.adsMove, small.spread.adsMove);
+    }
+    assert.ok(build(w, { mag: '100_rnd', grip: 'ribbed_vert' }).spread.adsMove[0]
+      > build(w, { mag: '100_rnd', grip: 'none' }).spread.adsMove[0]);
+    assert.equal(attachments.WEAPON_MAG[id].mags['200_rnd'].descriptionMismatch.observedValue, 0);
+  }
+});

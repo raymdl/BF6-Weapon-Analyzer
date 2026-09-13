@@ -1,0 +1,165 @@
+{
+  "observedOn": "2026-09-13",
+  "decision": "Remove estimated -1 magazine spread shift from L110/M123K 200 Rnd; retain description mismatch as possible bug, not a confirmed future fix.",
+  "method": "Red HUD bracket mask in x=1260..1299 y=705..734; R>150, R>1.8G, R>1.4B. Width=maxX-minX+1. Full frames and enlarged crops visually reviewed.",
+  "limitation": "Single mid-strafe screenshots supplied by operator. HUD evidence, not calibrated projectile angles or independently measured movement speed.",
+  "recheck": "After game updates, repeat matched 100/200-round ADS strafing captures, with and without Ribbed Vertical, and recheck Frosty bindings. Do not assume a future penalty magnitude.",
+  "screenshots": [
+    {
+      "file": "reference-data\\Recordings\\09132026\\L110\\L110_Heavy_Barrel_No_Grip_100rnd_Box_ADS_Strafing.png",
+      "sha256": "29f50b589ab8778e48a93018b30114345082f812b67fd9d8bd3f0830bce9e416",
+      "redXs": [
+        1272,
+        1273,
+        1284,
+        1285
+      ],
+      "redYs": [
+        717,
+        718,
+        719,
+        720,
+        721,
+        722
+      ],
+      "redBracketOuterWidthPx": 14
+    },
+    {
+      "file": "reference-data\\Recordings\\09132026\\L110\\L110_Heavy_Barrel_No_Grip_200rnd_Box_ADS_Strafing.png",
+      "sha256": "317e37e0a7c0f6ea648ed2cc3869d3781799c84d3ae6bf3aaeb85b4a58602800",
+      "redXs": [
+        1273,
+        1274,
+        1285
+      ],
+      "redYs": [
+        716,
+        717,
+        718,
+        719,
+        720,
+        721
+      ],
+      "redBracketOuterWidthPx": 13
+    },
+    {
+      "file": "reference-data\\Recordings\\09132026\\L110\\L110_Heavy_Barrel_Ribbed_Vertical_100rnd_Box_ADS_Strafing.png",
+      "sha256": "7aca49cb19f8f925aa25407fd3297dd253e1eedf980a436501a2998a3057fe6b",
+      "redXs": [
+        1272,
+        1273,
+        1287,
+        1288
+      ],
+      "redYs": [
+        717,
+        718,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724
+      ],
+      "redBracketOuterWidthPx": 17
+    },
+    {
+      "file": "reference-data\\Recordings\\09132026\\L110\\L110_Heavy_Barrel_Ribbed_Vertical_200rnd_Box_ADS_Strafing.png",
+      "sha256": "d94ee8af672a63f97fb2c4dc0ff147eeb8a42de8a16b6b2c32e294d1d9ce3c9c",
+      "redXs": [
+        1271,
+        1286,
+        1287
+      ],
+      "redYs": [
+        717,
+        718,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724
+      ],
+      "redBracketOuterWidthPx": 17
+    },
+    {
+      "file": "reference-data\\Recordings\\09132026\\M123K\\M123K_Heavy_Barrel_No_Grip_100rnd_Box_ADS_Strafing.png",
+      "sha256": "310340cc2a3ce632a753c42dddef2bdd0f06ea6d6c9376afd217ea46c56aa1fa",
+      "redXs": [
+        1274,
+        1275,
+        1286
+      ],
+      "redYs": [
+        718,
+        719,
+        720,
+        721,
+        722,
+        723
+      ],
+      "redBracketOuterWidthPx": 13
+    },
+    {
+      "file": "reference-data\\Recordings\\09132026\\M123K\\M123K_Heavy_Barrel_No_Grip_200rnd_Box_ADS_Strafing.png",
+      "sha256": "13e8c6e59fe3ee1fb0c6b9c547bd899617501464c49d1802092738e7b10b6e9d",
+      "redXs": [
+        1273,
+        1274,
+        1285
+      ],
+      "redYs": [
+        718,
+        719,
+        720,
+        721,
+        722,
+        723
+      ],
+      "redBracketOuterWidthPx": 13
+    },
+    {
+      "file": "reference-data\\Recordings\\09132026\\M123K\\M123K_Heavy_Barrel_Ribbed_Vertical_100rnd_Box_ADS_Strafing.png",
+      "sha256": "b01e8b18673d8b06c25093b23b7bd57ffaef26453a01ed40fed9fa6a9eab85d6",
+      "redXs": [
+        1271,
+        1272,
+        1286,
+        1287
+      ],
+      "redYs": [
+        715,
+        716,
+        717,
+        718,
+        719,
+        720,
+        721,
+        722
+      ],
+      "redBracketOuterWidthPx": 17
+    },
+    {
+      "file": "reference-data\\Recordings\\09132026\\M123K\\M123K_Heavy_Barrel_Ribbed_Vertical_200rnd_Box_ADS_Strafing.png",
+      "sha256": "881d15262d26c0a0456818f0f5a460e3a475c85fd81677c8ffc7c0e79dd78757",
+      "redXs": [
+        1272,
+        1273,
+        1287,
+        1288
+      ],
+      "redYs": [
+        717,
+        718,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724
+      ],
+      "redBracketOuterWidthPx": 17
+    }
+  ]
+}

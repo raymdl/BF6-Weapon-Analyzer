@@ -1,5 +1,14 @@
 # Attachment source generation review
 
+## Latest belt-box decision
+
+The September 13 ADS screenshots supersede the retained-penalty conclusions below.
+L110/M123K 200 Rnd now have zero magazine spread shift. The descriptions remain
+possible game/description bugs to recheck after updates. Current generation has
+5,493 fields and zero deferred fields. See the
+[capture evidence](../../reference-data/provenance/belt-box-moving-ads-2026-09-13.json).
+Earlier counts and unresolved notes below record the investigation before these captures.
+
 ## Barrel ADS: implemented
 
 The runtime now reads per-weapon barrel ADS steps generated from Frosty XML.

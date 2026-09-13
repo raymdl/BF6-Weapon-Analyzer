@@ -85,8 +85,9 @@ records. The resolver merges these after selecting the normal or combined rail
 slot. Magazine handling is generated into the existing per-weapon magazine fields.
 Run `python scripts/frosty-attachment-handling.py --root <Frosty-export-root>`;
 `--check` compares without writing and `--review` writes evidence only. The current
-conversion generates 5,491 fields and three source base indices. All 1,488 handling
-selections have source identities; two unresolved moving-spread fields retain their prior values and carry field-level assumption notes.
+conversion generates 5,493 fields and three source base indices. All 1,488 handling
+selections have source identities, with no deferred fields. Two belt-box description
+mismatches are retained as possible game bugs.
 M60/PW7A2 bases and magazine modifiers are converted together so their calculated
 ADS times and movement speeds stay unchanged. The generator stops if a previously generated field loses its
 source mapping. The linked review identifies these exceptions and the corrected
@@ -138,12 +139,17 @@ other spread modifiers absent, minimum moving-ADS spread changes from 0.32 to
 0.22 degrees; its 50- and 100-round boxes have no magazine spread shift.
 M60 has 50- and 100-round options in the reviewed export, not a 75-round box.
 
-L110 and M123K 200 Rnd retain an estimated -1 index (0.32 to 0.43 degrees).
-Their descriptions state reduced accuracy while moving in ADS, but neither
-weapon has a linked magazine spread operand. The shared table contains 0.43;
-its presence does not prove selection. The candidate `GDM_Array_ADSMoveDispersion_MAG_M10`
-has a zero operand and is not linked by either weapon. Their handling penalties
-are source-backed; this spread magnitude remains a field-level assumption.
+L110 and M123K 200 Rnd apply no moving-ADS spread shift. Matched mid-strafe
+screenshots show the same HUD bracket width for 100/200 rounds (13-14 px without
+a grip; 17 px with Ribbed Vertical). Neither weapon has a linked magazine spread
+operand. The previous estimated -1 step is removed; with no other spread modifiers,
+both boxes retain 0.32 degrees.
+
+Their descriptions still state reduced accuracy while moving in ADS. This may be
+a game or description bug; a future fix is not confirmed. `descriptionMismatch`
+retains the mismatch. Recheck captures and source bindings after game updates
+before adding a penalty. The screenshots establish HUD behavior, not exact
+projectile angles. [Capture evidence](../reference-data/provenance/belt-box-moving-ads-2026-09-13.json).
 
 ## Tactical reload and magazine capacity
 

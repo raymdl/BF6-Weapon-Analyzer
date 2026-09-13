@@ -98,6 +98,8 @@ and explicit `slots` with accepted attachment types. Shared rails store a typed
 attachment types. The former combined-slot flags are no longer used. `WEAPON_ERGO[id].avail` supplies
 selectable ergonomics. `WEAPON_MAG[id]` supplies `def`, ordered `mags`, `defAds`,
 `defAms`, `sprintRecoveryBaseIndex`, `deployBaseIndex`, and `deployTimeTable`.
+Magazine `descriptionMismatch` records observed behavior, evidence and recheck
+conditions when text conflicts with the current model; it does not apply a modifier.
 Magazine records add capacity `mag`, handling effects, reload fields, and optional
 `suspectedGameBug` evidence; the latter records expectations/observations without
 silently substituting the expected fixed-game value.
