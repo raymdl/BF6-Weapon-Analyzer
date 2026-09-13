@@ -21,18 +21,22 @@ assert.ok(trajectoryAtDistance(model, 100).yMeters < 0, 'an unzeroed bore-axis t
 const readJson = relative => JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));
 const catalog = readJson('../data/ballistics.json');
 const weapons = readJson('../data/weapons.json');
-// The catalog is the Sym baseline, so it covers every weapon Sym publishes.
-// Sym does not publish these three; they carry their own Frosty bulletVel,
-// which projectileModelFor uses directly.
-const DATAMINED_WEAPON_IDS = ['brod3', 'ef88', 'vssm'];
-const symWeaponIds = weapons.filter(weapon => !DATAMINED_WEAPON_IDS.includes(weapon.id)).map(weapon => weapon.id).sort();
-assert.deepEqual([...catalog.weaponIds].sort(), symWeaponIds, 'runtime projectile availability covers every Sym-sourced weapon');
-assert.equal(catalog.baseline, 'current-live');
-assert.equal(catalog.source, 'data/provenance/live-baseline.json#sym-bf6-json');
-assert.equal(catalog.gravityMps2, -9.81);
-assert.equal(catalog.baseDragPerMeter, 0.0035);
-assert.equal(catalog.ammoDragPerMeter.long_range, 0.002);
-assert.equal(catalog.ammoDragPerMeter.penetration, undefined, 'ordinary Tungsten retains base projectile drag');
-assert.equal(catalog.ammoDragPerMeter.range_pen, 0.002, 'VSSM MatchTungsten uses its replacement projectile drag');
+const ammo = readJson('../data/ammo.json').WEAPON_AMMO;
+assert.deepEqual(Object.keys(catalog.weapons).sort(), weapons.map(w => w.id).sort());
+assert.equal(catalog.schemaVersion, 2);
+for (const [id, selection] of Object.entries(catalog.weapons)) {
+  assert.deepEqual(Object.keys(selection.ammo).sort(), Object.keys(ammo[id].ammo).sort(), id);
+  for (const key of [selection.base, ...Object.values(selection.ammo)]) {
+    assert.ok(catalog.projectiles[key], `${id}: selected projectile exists`);
+    assert.ok(!key.includes('_SP_'), `${id}: no unresolved SP selection`);
+    assert.equal(catalog.projectiles[key].gravityMps2, -9.81);
+  }
+}
+const selected = (id, ammoId) => catalog.projectiles[catalog.weapons[id].ammo[ammoId]];
+assert.equal(selected('vssm', 'range_pen').dragPerMeter, 0.002);
+assert.equal(selected('sv98', 'long_range').dragPerMeter, 0.002);
+assert.equal(selected('sv98', 'penetration').dragPerMeter, 0.0035);
+assert.equal(catalog.weapons.m60.ammo.lightweight, undefined);
+assert.equal(catalog.weapons.m121a2.ammo.lightweight, undefined);
 
 console.log('ballistics tests passed');

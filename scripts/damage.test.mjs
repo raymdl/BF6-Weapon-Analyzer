@@ -14,11 +14,12 @@ import {
 } from '../sim/damage.js';
 
 const tables = {
-  BASE_HS_MULT: { dmr: 1.5, sniper: 1.75, shotgun: 1 },
-  HP_HS_HIGH: new Set(['dmr']),
-  LIMB_CLASS: { auto: 'auto', dmr: 'dmr', sniper: 'sniper' },
-  LIMB_CLASS_MULT: { auto: 0.84, dmr: 0.91, sniper: 0.67 },
-  AUTO_HS_MULT: { standard: 1.4, hp: 1.57, synthetic: 1.8 },
+  HIT_ZONES: {
+    weapons: {
+      auto: { headshot: 1.4, limb: 0.84, ammo: { standard: { headshot: 1.4, limb: 0.84 }, hollow_pt: { headshot: 1.57, limb: 0.84 } } },
+      sniper: { headshot: 1.75, limb: 0.67, ammo: {} },
+    },
+  },
 };
 
 const readJson = relativeUrl => JSON.parse(readFileSync(new URL(relativeUrl, import.meta.url), 'utf8'));
@@ -60,20 +61,12 @@ test('shotgun ammunition replaces pellet count and damage without changing the b
   assert.deepEqual(applyAttachments(rifle, { ammo: 'standard' }).dmg, rifle.dmg);
 });
 
-test('resolves automatic headshot ammo tiers and limb multiplier', () => {
-  assert.deepEqual(resolveHitMultipliers('auto', { id: 'standard', hsMult: null }, tables), {
-    headshotMultiplier: 1.4,
-    limbMultiplier: 0.84,
-    limbClass: 'auto',
-  });
-  assert.equal(resolveHitMultipliers('auto', { id: 'hollow_pt', hsMult: 'hp' }, tables).headshotMultiplier, 1.57);
-  assert.equal(resolveHitMultipliers('auto', { id: 'synthetic', hsMult: 1.75 }, tables).headshotMultiplier, 1.8);
-});
-
-test('preserves DMR headshot behavior and shotgun/sidearm limb exceptions', () => {
-  assert.equal(resolveHitMultipliers('dmr', { id: 'hollow_pt', hsMult: 'hp' }, tables).headshotMultiplier, 1.75);
-  assert.equal(resolveHitMultipliers('shotgun', { id: 'buckshot', hsMult: 1 }, tables).limbMultiplier, 1);
-  assert.equal(resolveHitMultipliers('sidearm', { id: 'standard', hsMult: null }, tables).limbMultiplier, 1);
+test('resolves headshot and limb multipliers from hit-zone data per weapon and ammo', () => {
+  assert.deepEqual(resolveHitMultipliers('auto', { id: 'standard' }, tables), { headshotMultiplier: 1.4, limbMultiplier: 0.84 });
+  assert.equal(resolveHitMultipliers('auto', { id: 'hollow_pt' }, tables).headshotMultiplier, 1.57);
+  assert.deepEqual(resolveHitMultipliers('sniper', { id: 'long_range' }, tables),
+    { headshotMultiplier: 1.75, limbMultiplier: 0.67 }, 'an unlisted ammo uses the weapon base');
+  assert.deepEqual(resolveHitMultipliers('unknown', { id: 'standard' }, tables), { headshotMultiplier: 1.34, limbMultiplier: 1 });
 });
 
 test('calculates pure chest and limb BTK for the adjusted damage families', () => {
@@ -119,32 +112,34 @@ test('interpolates linearly between distinct ranges and clamps outside the curve
   assert.equal(damageAtRange(sniper, -5), 80);
 });
 
-test('classifies every current site weapon according to the live hit-zone rules', () => {
+test('live hit zones use the Frosty values checked against in-game panels', () => {
   const weapons = readJson('../data/weapons.json');
-  const balance = readJson('../data/balance_tables.json');
-  const actualTables = { ...balance, HP_HS_HIGH: new Set(balance.HP_HS_HIGH) };
-  const expectedByClass = {
-    'Assault Rifle': ['auto', 0.84, 1.4],
-    Carbine: ['auto', 0.84, 1.4],
-    SMG: ['auto', 0.84, 1.4],
-    LMG: ['auto', 0.84, 1.4],
-    DMR: ['dmr', 0.91, null],
-    'Sniper Rifle': ['sniper', 0.67, 1.75],
-    Shotgun: [null, 1, null],
-    Sidearm: [null, 1, null],
-  };
-
+  const ammo = readJson('../data/ammo.json');
+  const HIT_ZONES = readJson('../data/hit_zones.json');
+  const resolve = (id, ammoId) => resolveHitMultipliers(id, ammoId ? { id: ammoId } : null, { HIT_ZONES });
   for (const weapon of weapons) {
-    const [expectedClass, expectedLimb, expectedAutomaticHead] = weapon.id === 'vz61'
-      ? ['auto', 0.84, 1.4]
-      : expectedByClass[weapon.cls];
-    const resolved = resolveHitMultipliers(weapon.id, { id: 'standard', hsMult: null }, actualTables);
-    assert.equal(resolved.limbClass, expectedClass, `${weapon.id} limb class`);
-    assert.equal(resolved.limbMultiplier, expectedLimb, `${weapon.id} limb multiplier`);
-    if (expectedAutomaticHead != null) {
-      assert.equal(resolved.headshotMultiplier, expectedAutomaticHead, `${weapon.id} standard head multiplier`);
+    for (const ammoId of Object.keys(ammo.WEAPON_AMMO[weapon.id].ammo)) {
+      assert.ok(HIT_ZONES.weapons[weapon.id].ammo[ammoId], `${weapon.id}/${ammoId} has Frosty hit zones`);
     }
   }
+  // Limb follows the projectile material. VSSM fires a 5.56 carbine-material
+  // projectile after 1.4.2.0; the automatic Vz. 61 uses the automatic value.
+  const limbByClass = { 'Assault Rifle': 0.84, Carbine: 0.84, SMG: 0.84, LMG: 0.84, DMR: 0.91, 'Sniper Rifle': 0.67, Shotgun: 1, Sidearm: 1 };
+  const limbExceptions = { vssm: 0.84, vz61: 0.84 };
+  for (const weapon of weapons) {
+    assert.equal(resolve(weapon.id).limbMultiplier, limbExceptions[weapon.id] ?? limbByClass[weapon.cls], `${weapon.id} limb`);
+  }
+  // Headshot = head table at DamageProtectionMultiplierIndex plus ammo protection steps.
+  assert.deepEqual(resolve('vssm', 'range_pen'), { headshotMultiplier: 1.8, limbMultiplier: 0.84 });
+  assert.deepEqual(resolve('m44', 'standard'), { headshotMultiplier: 1.5, limbMultiplier: 1 });
+  assert.equal(resolve('m44', 'hollow_pt').headshotMultiplier, 1.75);
+  assert.equal(resolve('m4a1', 'standard').headshotMultiplier, 1.4);
+  assert.equal(resolve('m4a1', 'hollow_pt').headshotMultiplier, 1.57);
+  assert.equal(resolve('m39emr', 'hollow_pt').headshotMultiplier, 1.75);
+  assert.equal(resolve('grtcps', 'hollow_pt').headshotMultiplier, 1.5);
+  assert.equal(resolve('p18', 'hollow_pt').headshotMultiplier, 1.5);
+  assert.equal(resolve('m87a1', 'slugs').headshotMultiplier, 1.34);
+  assert.equal(resolve('l115').headshotMultiplier, 1.75);
 });
 
 test('derives sniper sweet spots from the curve and preserves the Mini Scout exception', () => {
@@ -181,7 +176,7 @@ test('recognizes the Interdictor plateau without capping damage before limb mult
       .map(([r, d]) => ({ r, d })) };
     assert.deepEqual(deriveSweetSpot(weapon), { rangeM: [120, 150], damage: 150 });
     assert.equal(damageAtRange(weapon, 135), 150);
-    assert.equal(bulletsToKillWithHits(damageAtRange(weapon, 135), { bodyMultiplier: tables.LIMB_CLASS_MULT.sniper }), 1);
+    assert.equal(bulletsToKillWithHits(damageAtRange(weapon, 135), { bodyMultiplier: 0.67 }), 1);
   }
   const separatedPeaks = { dmg: [{ r: 120, d: 150 }, { r: 135, d: 80 }, { r: 150, d: 150 }] };
   assert.equal(hasSweetSpot(separatedPeaks), false);
@@ -197,8 +192,8 @@ test('every live damage breakpoint carries explicit source provenance', () => {
 
 test('Interdictor keeps its chest and limb kill windows distinct', () => {
   const weapon = readJson('../data/weapons.json').find(w => w.id === 'interdictor');
-  const balance = readJson('../data/balance_tables.json');
-  const { limbMultiplier } = resolveHitMultipliers(weapon.id, { id: 'standard' }, balance);
+  const HIT_ZONES = readJson('../data/hit_zones.json');
+  const { limbMultiplier } = resolveHitMultipliers(weapon.id, { id: 'standard' }, { HIT_ZONES });
   const btk = (range, bodyMultiplier) => bulletsToKillWithHits(damageAtRange(weapon, range), { bodyMultiplier });
   assert.deepEqual([105, 106, 164, 165].map(r => btk(r, 1)), [2, 1, 1, 2]);
   assert.deepEqual([119, 120, 150, 151].map(r => btk(r, limbMultiplier)), [2, 1, 1, 2]);

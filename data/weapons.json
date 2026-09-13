@@ -6914,7 +6914,8 @@
         "notFiringExp": 0.25,
         "notFiringOffset": 6.6,
         "firstShotMul": 1.0,
-        "distExp": 0.5
+        "distExp": 0.5,
+        "distExpMove": 0.67
       },
       "hip": {
         "inc": 0.941,

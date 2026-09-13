@@ -5,7 +5,7 @@ import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilAmountBeforePlatformFor, selectedRecoilVariationFor,
-  spreadBounds, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
+  spreadBounds, sampleSpreadRadius, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
   simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
@@ -24,15 +24,16 @@ async function fetchJson(url) {
   return r;
 }
 
-let W, _recoilDecay, _balance, _atts, _ammo, _ballistics;
+let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones;
 try {
-  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics] = await Promise.all([
+  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones] = await Promise.all([
     fetchJson('./data/weapons.json').then(r => r.json()),
     fetchJson('./data/recoil_decay.json').then(r => r.json()),
     fetchJson('./data/balance_tables.json').then(r => r.json()),
     fetchJson('./data/attachments.json').then(r => r.json()),
     fetchJson('./data/ammo.json').then(r => r.json()),
     fetchJson('./data/ballistics.json').then(r => r.json()),
+    fetchJson('./data/hit_zones.json').then(r => r.json()),
   ]);
 } catch (err) {
   document.body.insertAdjacentHTML('beforeend',
@@ -42,16 +43,14 @@ try {
 
 const { RECOIL_DEC, RECOIL_DEC_TEXP, RECOIL_DEC_EXP } = _recoilDecay;
 const { RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
-        BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH: _HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+        COLLATERAL_MULT_OVERRIDE,
         MOVING_ACC_TIERS,
         ADS_SPD_TIERS, ADS_MOVE_TIERS,
         DRAW_TIME_TABLES } = _balance;
-const HP_HS_HIGH = new Set(_HP_HS_HIGH);
 
 const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
         WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
 const { AMMO, WEAPON_AMMO } = _ammo;
-const BALLISTIC_WEAPON_IDS = new Set(_ballistics.weaponIds ?? []);
 
 const LOADOUT_DATA = {
   SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
@@ -113,7 +112,7 @@ const CLOUD_RUNS = 10;
 // app. The full source hip table reaches 11.303° in the single-attachment
 // corpus. scripts/spread-bar-scale.test.mjs checks that the axis contains it.
 const RECOIL_BAR_SCALE = 3;
-const CONSOLE_RECOIL_MULT = 0.89;
+const CONSOLE_RECOIL_MULT = 0.8836;
 
 // Sym.gg and Frosty cycle calculations give effective RPM as timing-derived decimals.
 // Keep those raw values for calculations, but display the in-game integer mapping.
@@ -238,7 +237,7 @@ setAttachmentContext({
   MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
   AMMO, WEAPON_AMMO,
   RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
-  BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+  COLLATERAL_MULT_OVERRIDE, HIT_ZONES: _hitZones,
   MOVING_ACC_TIERS,
   ADS_SPD_TIERS, ADS_MOVE_TIERS,
   DRAW_TIME_TABLES,
@@ -267,28 +266,14 @@ function getTTK(weapon, btk) {
   for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
   return Math.round(ms);
 }
-const DEFAULT_PROJECTILE_DRAG_PER_METER = 0.0035;
-function projectileSourceFor(weapon) {
-  if (!weapon) return null;
-  return BALLISTIC_WEAPON_IDS.has(weapon.id) ? weapon : null;
-}
-function dragForSelectedAmmo(weapon, atts) {
-  const configured = _ballistics.ammoDragPerMeter?.[atts?.ammo];
-  if (typeof configured === 'number') return configured;
-  if (configured && typeof configured === 'object' && typeof configured[weapon.cls] === 'number') return configured[weapon.cls];
-  return Number.isFinite(_ballistics.baseDragPerMeter)
-    ? _ballistics.baseDragPerMeter
-    : DEFAULT_PROJECTILE_DRAG_PER_METER;
-}
 function projectileModelFor(weapon, atts) {
-  // A weapon's own bullet velocity is enough to time a shot, since drag and
-  // gravity come from the shared catalog for every weapon alike.
-  const source = projectileSourceFor(weapon);
+  const selection = _ballistics.weapons?.[weapon?.id];
+  const projectile = _ballistics.projectiles?.[atts?.ammo ? selection?.ammo?.[atts.ammo] : selection?.base];
   const model = {
     velocityMps: Number.isFinite(weapon?._projectileVelocityMps) ? weapon._projectileVelocityMps
-      : Number.isFinite(weapon?.bulletVel) ? weapon.bulletVel : source?.bulletVel,
-    dragPerMeter: dragForSelectedAmmo(weapon, atts),
-    gravityMps2: _ballistics.gravityMps2,
+      : weapon?.bulletVel,
+    dragPerMeter: projectile?.dragPerMeter,
+    gravityMps2: projectile?.gravityMps2,
   };
   return isProjectileModel(model) ? model : null;
 }
@@ -739,7 +724,7 @@ function renderOverview() {
       noDiff: true, group: 'spread',
       tooltip: 'Base standing hipfire spread and moving hipfire spread. Lower is more accurate.' },
     { lbl: '3D/Map Spot', compute: w => ({ spot: w._worldSpot, minimap: w._minimapSpot }), unit: '',
-      fmt: obj => { const s = obj && obj.spot > 0 ? `${obj.spot}<span class="sunit">m</span>` : '–'; const m = obj && obj.minimap > 0 ? `${obj.minimap}<span class="sunit">m</span>` : '–'; return `${s}<span class="sunit"> / </span>${m}`; },
+      fmt: obj => { const s = obj && obj.spot > 0 ? `${Math.round(obj.spot)}<span class="sunit">m</span>` : '–'; const m = obj && obj.minimap > 0 ? `${Math.round(obj.minimap)}<span class="sunit">m</span>` : '–'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true,
       tooltip: 'Distance at which you are spotted in the 3D world and on the minimap while firing. "–" means you are never 3D spotted.' },
   ];
@@ -1746,7 +1731,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
       recoilPts.forEach((p, i) => {
         const spread = spreads[i] ?? spreadBounds(w)[0];
-        const bAng = rngB() * Math.PI * 2, bR = spread * rngB();
+        const bAng = rngB() * Math.PI * 2, bR = sampleSpreadRadius(w, spread, rngB());
         ctx.beginPath();
         ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(w, p.y + bR * Math.sin(bAng)), scatterDotRadius, 0, Math.PI * 2);
         ctx.fillStyle = col + '38'; ctx.fill();
@@ -1764,7 +1749,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       const rngRef = mulberry32((whash(w.id) ^ weaponRefSeed ^ 0xdeadbeef) >>> 0);
       return pts.map((p, i) => {
         const spread = spreads[i] ?? spreadBounds(w)[0];
-        const bAng = rngRef() * Math.PI * 2, bR = spread * rngRef();
+        const bAng = rngRef() * Math.PI * 2, bR = sampleSpreadRadius(w, spread, rngRef());
         return { x: p.x + bR * Math.cos(bAng), y: p.y + bR * Math.sin(bAng) };
       });
     })();
@@ -1964,8 +1949,8 @@ function renderAttachmentStats(loadouts) {
     'Hip Spread Recovery': ['hipSpreadDecayBoost'],
     'Mov Spread': ['movingAdsSpreadTierMod'],
     'Hipfire Spread': ['hipSpreadTierMod'],
-    '3D Spot': ['worldSpot'],
-    'Minimap Spot': ['minimapSpot'],
+    '3D Spot': ['worldSpotMult'],
+    'Minimap Spot': ['minimapSpotMult'],
     'HS Mult': ['hsMult', 'headshotMult'],
     'Collateral Mult': ['collateralMult'],
   };
@@ -2006,12 +1991,12 @@ function renderAttachmentStats(loadouts) {
       const tip = escAttr(m.tooltip ?? m.lbl);
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${signed(delta, m.unit, m.dec)}</div></div>`);
     });
-    const swayVal = cur._weaponSway ?? 0;
-    if (swayVal !== 0) {
+    const swayVal = ((cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1) - 1) * 100;
+    if (Math.abs(swayVal) >= 0.05) {
       const decreased = swayVal < 0;
-      const tip = escAttr('Weapon sway from selected attachments. Decreased is better; increased is worse.');
-      const label = `Weapon Sway${hasEstimatedEffect(['sway'], selectedAttachments) ? '*' : ''}`;
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${decreased ? 'Decreased' : 'Increased'}</div></div>`);
+      const tip = escAttr('Weapon sway amount from muzzle and magazine modifiers, compared with the default loadout. Optic and camera sway are not included. Lower is better.');
+      const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments) ? '*' : ''}`;
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${signed(swayVal, '%', 1)}</div></div>`);
     }
     const vrVal = cur._visualRecoil ?? 0;
     if (vrVal !== 0) {
@@ -2024,8 +2009,8 @@ function renderAttachmentStats(loadouts) {
     if (regenDelayDelta !== 0) {
       // Shown from the victim's side: frangible pushes the delay 5s → 9s, which
       // reads as the enemy losing 4s of regeneration.
-      const tip = escAttr('Delay before a hit enemy begins regenerating health. Frangible rounds hold them at 9s instead of the standard 5s.');
-      const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayS'], selectedAttachments) ? '*' : ''}`;
+      const tip = escAttr(`Delay before a hit enemy begins regenerating health: ${cur._healthRegenDelayS}s, compared with ${base._healthRegenDelayS}s for the default ammo.`);
+      const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayAddS'], selectedAttachments) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:var(--red)">${signed(-regenDelayDelta, 's', 0)}</div></div>`);
     }
     if (cur._laserVisible != null) {

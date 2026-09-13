@@ -111,15 +111,23 @@ in UI projectile-model assembly; it is not a velocity-tier effect.
 ## Other effects and disclosure
 
 Head/limb multipliers follow [damage policy](DAMAGE_BALLISTICS.md), including ammo
-and weapon-specific exceptions. Spot-on-fire ranges take the minimum of applicable
-muzzle, barrel and ammo distances: baseline world range 54 m and minimap range
-150 m. A suppressor on either muzzle or barrel can activate ammo's suppressed
-minimap value. Zero metres is a real configured result, not missing data.
+and weapon-specific exceptions. Spot-on-fire ranges multiply the selected muzzle,
+barrel and ammo source factors by the retained 54 m world / 150 m minimap bases.
+These bases and multiplicative composition reproduce the earlier rounded ranges:
+suppressor 21 m, subsonic about 64 m, both about 9 m. They are inferred from the
+site/source agreement, not independently decoded native range fields. Zero is valid.
 
 Collateral uses the per-weapon/ammo override first, then the ammo's class mapping,
-else null. Regeneration delay is the ammo value or the 5 s baseline (Frangible
-carries 9 s). Both are displayed descriptors, not a simulated penetration path or
-regenerating opponent in the TTK calculation.
+else null. Regeneration uses the source 5 s baseline plus the source ammo addition:
+Frangible +4 s and Flechette +2 s. These are descriptors, not a simulated
+penetration path or regenerating opponent in the TTK calculation.
+
+Weapon sway displays the percentage change from muzzle and magazine source
+factors against the default loadout. Factors multiply: 1.5 means +50%, 0.6666667
+means about -33.3%, and 0.4444444 means about -55.6%. Weapon-specific muzzle
+exceptions are retained. Generic optic categories cannot select an exact source
+optic, so optic and camera sway are excluded from this percentage. The old iron
+sight and signed sway tags are no longer used.
 
 Ergonomics can change fire mode. Auto takes precedence over burst and clears burst
 metadata; a configured `autoRpm` can change cadence, as with VSSM Folding Stock's

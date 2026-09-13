@@ -22,7 +22,7 @@ that the current resolver has since addressed.
 |---|---|
 | Recoil `duration` | Integrated as uniform delivery with concurrent recovery; native delivery shape and modifier order remain unresolved. |
 | Recoil `decNorm`, `shootingDecScale` | Retained; no independent native norm/scaling branch. Current recovery is component-wise stepped arithmetic. |
-| Spread `idle*`, `firstShotMul`, `distExp` | Retained; no idle-state machine or first-shot multiplier application. Renderer uses its fixed uniform-radius sampler. |
+| Spread `idle*`, `firstShotMul` | Retained; no idle-state machine or first-shot multiplier application. |
 | Hip table's five hashed columns | Preserved exactly; runtime uses only standing/moving columns. Additional stance meanings are not assigned. |
 | FZT ADS-out and AZT animation arrays | Retained in research; not appended to the ADS-in ladder or equated with reload/draw timing. |
 | Visual recoil, sway, laser visibility, spotting, collateral, regeneration delay | Scalars/tags where supported; no separate camera, visibility, penetration or healing simulation. |
@@ -81,6 +81,22 @@ mapping/activation questions, including angled-grip mappings and native composit
 stat consumers. Treat those as dated evidence, not a count of current defects.
 Magazine capacity alone cannot resolve attachment identity.
 
+**Global estimates.** The [continued source audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+found a controller modifier with 0.8836 operands on 57 weapons; the six sniper
+rifles have no matching GS binding. Its native activation and operation remain
+unresolved. The analyzer now uses the source value 0.8836 in its existing platform
+model; its universal application remains a model choice. The soldier's
+5-second regeneration baseline and +4/+2-second ammo additions are now used
+directly in the display model. The collateral table is corroborated by its named
+attribute delegate. Generated per-weapon ammo values now use summed source indices
+clamped to 0..9, following the operator's confirmation of table bounds. M121 A2
+Tungsten therefore uses index 9 and multiplier 1. This is a displayed collateral
+stat, not a simulation of material traversal.
+Spotting now multiplies source factors using the existing 54/150 m bases; the
+bases and composition are inferred from site/source agreement. Sway percentages
+cover source muzzle/magazine amount factors, excluding optic/camera effects.
+Light recovery boosts remain estimates.
+
 **Timing validation.** Source draw-time arrays and base indices are retained exactly,
 with one final clamp. Historical sprint comparisons used inherited screenshot
 identity mappings. Deploy/undeploy lack equivalent panel measurements; matching
@@ -90,8 +106,9 @@ reviewed normalization rather than indiscriminately replacing every base with ra
 ## Output interpretation
 
 Sprays are deterministic samples given seed/settings, not expected player accuracy.
-Uniform angle plus uniform radius is center-weighted within each spread disk; it
-is not uniform over area and is not automatically the native distribution. The
+Uniform angle plus `r = spread * U ** distExp` uses the source state exponent.
+The usual 0.5 gives uniform area. M39 settled hipfire supports this interpretation;
+other states and native field consumption remain unverified. The
 scatter layer contains ten fixed samples, not a statistical confidence band.
 Recoil control subtracts only the expected vector; console scaling does not simulate
 aim assist or controller input. Effective spread is a bounded 50-shot endpoint.
@@ -102,8 +119,9 @@ shotgun damage/BTK assumes all pellets hit one zone. Target damage totals includ
 hits after the first lethal shot. No armor, missed-shot TTK, reload interruption,
 healing, target motion or obstruction is modeled.
 
-Ballistics use global coefficients plus supported ammo adjustments and available
-velocity. The source-ID registry is not a strict applicability gate. Zeroing omits
+Ballistics use generated projectile coefficients and explicit weapon/ammo links
+for all 63 weapons, plus available velocity. Missing selections have no global
+coefficient fallback. Non-ammo SP projectile branches remain excluded. Zeroing omits
 sight height; level flight time and vector trajectory are distinct calculations.
 The UI's zero-displacement fallback for unavailable trajectories must not be
 interpreted as confirmed flat flight.

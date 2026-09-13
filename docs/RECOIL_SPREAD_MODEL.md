@@ -219,9 +219,9 @@ Ordinary shot intervals use firing recovery. A post-burst interval first uses
 firing recovery for `min(60 / rpm, interval)`, then not-firing recovery for the
 remaining time. Missing not-firing fields fall back to the final firing parameters.
 No recovery after the last recorded shot is needed for `simulateSpread()`.
-Retained `idleTime`, `idleCoef`, `idleExp`, `idleOffset`, `firstShotMul` and `distExp`
-do not introduce an idle-state machine, first-shot multiplier or a source-driven
-radial distribution in this implementation.
+Retained `idleTime`, `idleCoef`, `idleExp`, `idleOffset` and `firstShotMul`
+do not introduce an idle-state machine or first-shot multiplier.
+`distExp` controls impact sampling as described below.
 
 The stance and aim state select `adsStand`, `adsMove`, `hipStand` or `hipMove`.
 Moving ADS starts with the weapon's stored `spread.adsMove[0]`. Attachment changes
@@ -278,16 +278,27 @@ It does not cancel the sampled variation or spread. The single slider defaults t
 0% and allows 0–125%; values above 100% overcompensate the expected vector. There
 is no separate on/off toggle. Changing platform scales amount, not variation.
 
-The console setting applies an amount multiplier of `0.89`; PC uses `1`.
-This is the analyzer's platform model, not a separate simulation of controller
+The console setting applies an amount multiplier of `0.8836`, taken from Frosty's
+`GRM_Recoil_Controller_03`; PC uses `1`. Applying it as a final amount multiplier
+remains the analyzer's platform model, not a separate simulation of controller
 input, aim assist, camera shake or visual recoil. Visual recoil attachment tags
 do not establish corresponding changes to the generated physical shot path.
 
 ## Impact sampling and target projection
 
 The seeded Mulberry32 generators make results repeatable for the same weapon,
-loadout, settings and seed. Impact sampling uses a uniform angle and a uniform
-radius: `r = spread * rng()`. It is center-weighted, not uniform over disk area.
+loadout, settings and seed. Both shot layers use a uniform angle and source-state
+radius sampling: `r = spread * rng() ** distExp`. The usual exponent 0.5 gives
+uniform area. Interdictor moving ADS uses its source override of 0.67.
+
+The [M39 EMR capture analysis](https://chatgpt.com/c/6aa60039-1c78-83e9-b381-58241012b282)
+reports 22 of 88 detected marks within half the radius across four first-25-shot
+takes, consistent with the 25% uniform-area prediction. This was settled hipfire
+with Standard Suppressor and two seconds between shots. These are reported mark
+counts, not a new measurement or a complete reconstruction of bullets. Other
+weapons, ADS and native field consumption remain unverified. Source values for
+all 252 weapon/aim/movement combinations are recorded in
+`reference-data/provenance/frosty-distribution-exponents-2026-09-13.json`.
 The chart bubbles show modeled angular spread envelopes.
 
 ![Uniform-radius versus uniform-area sampling: half the radius contains 50 percent versus 25 percent of impacts](img/spread-sampling.svg)

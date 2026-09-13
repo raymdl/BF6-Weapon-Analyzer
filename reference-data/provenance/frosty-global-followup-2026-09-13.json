@@ -1,0 +1,1446 @@
+{
+  "scope": "Operator-requested source regeneration, sway percentages and inferred spotting composition. Sway identity mappings from the earlier audit were joined to current source operand links; only uniform seven-field weapon-sway factors are used. Optic/camera effects are excluded. ADS and light runtime behavior were not changed.",
+  "sourceHashes": {
+    "reference-data/provenance/frosty-global-operands-2026-09-13.json": "b3a0560bc7785e61b7c14b43348a4c89a9f7f6b3bd7adfff257a68cbfe2b83f5",
+    "reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json": "7da992af3513c83a53648325bbad2cb555e8c0ed079d46f7b2326f5a2ad37980"
+  },
+  "swayMappings": [
+    {
+      "slot": "muzzle",
+      "weapon": "kord6p67",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MZL_AK2000545Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "kord6p67",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_MZL_MuzzleBrake.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "nvo228e",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "nvo228e",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "nvo228e",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_AAC_SND6_Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "nvo228e",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "nvo228e",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "ef88",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_KACNT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "ef88",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "ef88",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "b36a4",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "b36a4",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "b36a4",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "b36a4",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_MZL_Sandman-S_MIL_Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "ak4d",
+      "id": "15_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "ak4d",
+      "id": "15_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "ak4d",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "ak4d",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MZL_RotexIIaSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m433",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m433",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m433",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m433",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_MZL_Sandman-SMILSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "l85a3",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "l85a3",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l85a3",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l85a3",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/L85A3/attachment_l85a3_mzl_nt4qdsuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l85a3",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m16a4",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m16a4",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m16a4",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_KACNT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m16a4",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m16a4",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "sor556",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "sor556",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sor556",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sor556",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/attachment_scarl_mzl_nt4qdsuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sor556",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "tr7",
+      "id": "15_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "tr7",
+      "id": "10_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "tr7",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_AACSDN6Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "tr7",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "tr7",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "vcr2",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "vcr2",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "vcr2",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_KACNT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "vcr2",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "vcr2",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "interdictor",
+      "id": "3_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "interdictor",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_MagnusUltra50Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l115",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_AWMSinglePortBrake.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l115",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_AWMSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l115",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m2010esr",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m2010esr",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_BarrettAM338Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m2010esr",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "miniscout",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_KACNT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "miniscout",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "miniscout",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "psr",
+      "id": "7_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "psr",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "psr",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_AM338Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "psr",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sv98",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sv98",
+      "id": "thread_prot",
+      "sources": {
+        "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_SV98ThreadProtector.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "ak205",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_MZL_AK2000545Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "brod3",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "brod3",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "brod3",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_KACNT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "brod3",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "brod3",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m417a2",
+      "id": "10_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m417a2",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m417a2",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_MZL_Rotex_IIA_Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m4a1",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m4a1",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m4a1",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m4a1",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_NT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m4a1",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "grtbc",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "grtbc",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/attachment_msbsgrotb_mzl_nt4qdsuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "grtbc",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "qbz192",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "sor300sc",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "sor300sc",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sor300sc",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_AACSDN6Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sor300sc",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sor300sc",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "sg553r",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "sg553r",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MAG_Compact2.xml": 0.4444444
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sg553r",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_AACSDN6Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sg553r",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sg553r",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m277",
+      "id": "15_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m277",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_AACSDN6Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m277",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m277",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "lmr27",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "lmr27",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/ARADMR/attachment_aradmr_mzl_nt4qdsuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "lmr27",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m39emr",
+      "id": "15_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m39emr",
+      "id": "15_fast",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m39emr",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m39emr",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_EnticerLTi.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m39emr",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "grtcps",
+      "id": "15_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "grtcps",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_KACNT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "grtcps",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "grtcps",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "svk86",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "svk86",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_HXQDMagnumTiSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "svk86",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "svdm",
+      "id": "5_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "svdm",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "svdm",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_EnticerLTiSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "svdm",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "vssm",
+      "id": "10_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "vssm",
+      "id": "10_fast",
+      "sources": {
+        "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m240l",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m240l",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_MZL_MGSMod1Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m250",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_AAC_SDN6_Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m250",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m250",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M250/Attachment_M250_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "drsiar",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "drsiar",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_NT4_QD_Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "drsiar",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "m60",
+      "id": "50_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m60",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_AAC_SDN6_Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m60",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_AACTitanMB.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m60",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m123k",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m123k",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_MZL_Sandman-SMILSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m121a2",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "m121a2",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_MZL_RotexIIaSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l110",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l110",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_NT4_QD_Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "l110",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "rpk74m",
+      "id": "30_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "rpk74m",
+      "id": "30_fast",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "rpk74m",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_AK2000762Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "rpk74m",
+      "id": "slant_brake",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_AKMSlantbrake.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "rpk74m",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "rpkm",
+      "id": "30_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "rpkm",
+      "id": "30_fast",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "rpkm",
+      "id": "36_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact3.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "rpkm",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_AK2000762Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "rpkm",
+      "id": "slant_brake",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_AKMSlantbrake.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "rpkm",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "kts100",
+      "id": "45_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "kts100",
+      "id": "50_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "kts100",
+      "id": "45_fast",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MAG_Compact3.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "kts100",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "kts100",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Ultimax/attachment_ultimax_mzl_nt4qdsuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "kts100",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "scw10",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_MZL_Lunar45Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sl9",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sl9",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_MZL_SRD9Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "pw5a3",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "pw5a3",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_MZL_Lunar45Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "pw7a2",
+      "id": "20_rnd",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "pw7a2",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_MZL_RotexIIMP7Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "pw7a2",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sgx",
+      "id": "light_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_MZL_Compact_Streamer.xml": 0.975282
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sgx",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "sgx",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_MZL_SRD9_Suppressor.xml": 1.462923
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "usg90",
+      "id": "hybrid_supp_l",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_MagnusRR.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "usg90",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_NT4QDSuppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "usg90",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/P90/Attachment_P90_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "pp19",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_MAG_Compact2.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "mag",
+      "weapon": "cz3a1",
+      "id": "20_fast",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_MAG_Compact1.xml": 0.6666667
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "cz3a1",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "cz3a1",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_MZL_SRD9Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "umg40",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_MZL_Lunar45Suppressor.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "kv9",
+      "id": "sp_brake",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_MZL_RSMicroTactical.xml": 1.5
+      }
+    },
+    {
+      "slot": "muzzle",
+      "weapon": "kv9",
+      "id": "long_supp",
+      "sources": {
+        "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_MZL_SRD9Suppressor.xml": 1.5
+      }
+    }
+  ],
+  "regeneration": {
+    "baseSeconds": 5,
+    "frangibleAdditionSeconds": 4,
+    "flechetteAdditionSeconds": 2,
+    "verifiedChoices": {
+      "frangible": 58,
+      "flechette": 4
+    }
+  },
+  "spotting": {
+    "inferredBaseMeters": {
+      "world": 54,
+      "minimap": 150
+    },
+    "sourceFactors": {
+      "subsonic": {
+        "world": 0.5,
+        "minimap": 0.4285714
+      },
+      "suppressor": {
+        "world": 0,
+        "minimap": 0.14
+      },
+      "vssmBasicBarrel": {
+        "world": 0,
+        "minimap": 0.06
+      }
+    },
+    "composition": "Product, inferred from the prior site ranges. SP-specific modifier combinations are not promoted."
+  },
+  "adsCheck": {
+    "m4a1": {
+      "rawIndex": 4,
+      "siteBaseIndex": 4,
+      "basicBarrelStep": 1,
+      "defaultMs": 200
+    },
+    "vssm": {
+      "rawIndex": 4,
+      "siteBaseIndex": 4,
+      "bothSiteBarrelSteps": 0,
+      "bothDefaultMs": 250,
+      "sourceDiscrepancy": "Ordinary VSSM barrel links a +1 GID in the export; ASM does not. Operator reports neither has the in-game buff; keep both unchanged."
+    }
+  }
+}

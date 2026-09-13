@@ -181,6 +181,14 @@ export const SPREAD_BAR_SCALE = 12;
 // 1 ms keeps stepped recovery within 0.2% of a 0.1 ms reference; 1/60 s differed by up to 3.3%.
 export const SPREAD_TIME_STEP = 0.001;
 
+/** Direct Frosty exponent interpretation; M39 settled hipfire supports uniform area. */
+export function sampleSpreadRadius(w, spread, u) {
+  const dyn = w.spreadDyn?.[_ctx.aimState];
+  const exponent = (_ctx.stanceState === 'move' ? dyn?.distExpMove : undefined)
+    ?? dyn?.distExp ?? 0.5;
+  return spread * Math.pow(u, exponent);
+}
+
 export function spreadBounds(w) {
   const { aimState, stanceState } = _ctx;
   const key = `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;

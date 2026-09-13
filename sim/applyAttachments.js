@@ -16,7 +16,7 @@ import { resolveHitMultipliers } from './damage.js';
  *     MUZZLES, BARRELS, GRIPS, LASERS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
  *     AMMO,
  *     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
- *     BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+ *     COLLATERAL_MULT_OVERRIDE, HIT_ZONES,
  *     MOVING_ACC_TIERS,
  *     ADS_SPD_TIERS, ADS_MOVE_TIERS,
  *     DRAW_TIME_TABLES,
@@ -35,8 +35,7 @@ let _ctx = {
   MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {}, LIGHTS_BY_ID: {},
   AMMO_BY_ID: {}, ERGOS_BY_ID: {},
   RECOIL_MULT: {}, HIP_SPREAD_TABLE: [], HIP_SPREAD_BASE_INDEX: {}, HIP_SPREAD_BASE_INDEX_OVERRIDES: {},
-  BASE_HS_MULT: {}, COLLATERAL_MULT_OVERRIDE: {}, HP_HS_HIGH: new Set(),
-  LIMB_CLASS: {}, LIMB_CLASS_MULT: {}, AUTO_HS_MULT: {},
+  COLLATERAL_MULT_OVERRIDE: {}, HIT_ZONES: null,
   MOVING_ACC_TIERS: [],
   ADS_SPD_TIERS: [], ADS_MOVE_TIERS: [],
   DRAW_TIME_TABLES: null,
@@ -304,7 +303,7 @@ export function applyAttachments(w, atts) {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
     MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
-    BASE_HS_MULT, COLLATERAL_MULT_OVERRIDE, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
+    COLLATERAL_MULT_OVERRIDE, HIT_ZONES,
     MOVING_ACC_TIERS,
     ADS_SPD_TIERS, ADS_MOVE_TIERS,
     DRAW_TIME_TABLES,
@@ -366,9 +365,10 @@ export function applyAttachments(w, atts) {
   const combinedAdsTimeTierMod = (grp.adsTimeTierMod ?? 0) + (bar.adsTimeTierMod ?? 0);
 
   // ── Weapon sway ───────────────────────────────────────────────────────────────
-  const sightSway  = atts.sight === 'iron' ? -1 : 0;
   const selectedMag = WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def];
-  const weaponSway = (muz.sway ?? 0) + sightSway + (selectedMag?.sway ?? 0);
+  // Source amount factors for muzzle/magazine effects. Generic optic categories
+  // cannot select the game's individual optic and camera-sway configurations.
+  const weaponSwayMult = (muz.weaponSwayMult ?? 1) * (selectedMag?.weaponSwayMult ?? 1);
 
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
   // Catalog shifts have the opposite sign to Frosty's source index modifiers.
@@ -408,15 +408,11 @@ export function applyAttachments(w, atts) {
     ]));
 
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
-  // Update 1.3.3.0: limb (arm/leg/abdomen) damage multiplier by limb class, and
-  // raised headshot multipliers for automatic weapons (per ammo type).
+  // Frosty per weapon and ammo (data/hit_zones.json): head and limb (arm/leg/abdomen).
   const {
     headshotMultiplier: hsMult,
     limbMultiplier: limbMult,
-    limbClass,
-  } = resolveHitMultipliers(w.id, ammoType, {
-    BASE_HS_MULT, HP_HS_HIGH, LIMB_CLASS, LIMB_CLASS_MULT, AUTO_HS_MULT,
-  });
+  } = resolveHitMultipliers(w.id, ammoType, { HIT_ZONES });
 
   // ── Ammo velocity ─────────────────────────────────────────────────────────────
   const ammoVelocity = resolveAmmoVelocity({
@@ -428,23 +424,15 @@ export function applyAttachments(w, atts) {
     : null;
 
   // ── Spot-on-fire ranges ───────────────────────────────────────────────────────
-  // Muzzle, barrel and ammo suppress the signature; the tighter range wins.
-  // A subsonic load fired through a suppressor drops 2D spotting further than
-  // either does alone, carried as the ammo's suppressed minimap range.
-  const suppressedMinimapSpot = muz.suppressor === true || bar.suppressor === true
-    ? ammoType.suppressedMinimapSpot
-    : null;
-  const worldSpot = Math.min(muz.worldSpot ?? 54, bar.worldSpot ?? Infinity, ammoType.worldSpot ?? Infinity);
-  const minimapSpot = Math.min(
-    muz.minimapSpot ?? 150,
-    bar.minimapSpot ?? Infinity,
-    suppressedMinimapSpot ?? ammoType.minimapSpot ?? Infinity,
-  );
+  // Source factors reproduce the existing 54/150 m base-range model, including
+  // suppressor + subsonic (150 * 0.14 * 0.4285714, approximately 9 m).
+  const worldSpot = +(54 * (muz.worldSpotMult ?? 1) * (bar.worldSpotMult ?? 1) * (ammoType.worldSpotMult ?? 1)).toFixed(6);
+  const minimapSpot = +(150 * (muz.minimapSpotMult ?? 1) * (bar.minimapSpotMult ?? 1) * (ammoType.minimapSpotMult ?? 1)).toFixed(6);
 
   // ── Enemy health regeneration delay ───────────────────────────────────────────
   // Time before a hit enemy starts regenerating. The global baseline is the
-  // 5s carried in balance_tables; frangible rounds hold the victim at 9s.
-  const healthRegenDelayS = ammoType.healthRegenDelayS ?? _ctx.HEALTH_REGEN_DELAY_S;
+  // source 5s in balance_tables plus the selected ammo's source delay addition.
+  const healthRegenDelayS = _ctx.HEALTH_REGEN_DELAY_S + (ammoType.healthRegenDelayAddS ?? 0);
 
   // ── Ammo display ──────────────────────────────────────────────────────────────
   // Ammo always shows, default included — a shared image should never leave the
@@ -573,7 +561,7 @@ export function applyAttachments(w, atts) {
     _hipSpreadDecayBoost:    lit?.hipSpreadDecayBoost ?? 0,
     _worldSpot:              worldSpot,
     _minimapSpot:            minimapSpot,
-    _weaponSway:             weaponSway,
+    _weaponSwayMult:         weaponSwayMult,
     _visualRecoil:           ergoData.visualRecoil ?? 0,
     _laserVisible:           las.laserVisible ?? null,
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
@@ -581,7 +569,6 @@ export function applyAttachments(w, atts) {
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs, _undeployTimeMs,
     _hsMult:                 hsMult,
     _limbMult:               limbMult,
-    _limbClass:              limbClass,
     _collateralMult:         collateralMult,
     _hipSpreadTierMod:       hipSpreadTierMod,
     _healthRegenDelayS:      healthRegenDelayS,

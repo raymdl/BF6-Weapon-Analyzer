@@ -61,7 +61,10 @@ angle calibration. The derived absolute impact excess inherits that limitation.
 The [Claude handoff review](CLAUDE_SESSION_HANDOFF_2026-09-12.md#9-codex-review-and-operator-damage-check)
 also records the operator's current VSSM Range Pen check above 75 m: rounded
 17 chest, 31 head, and 14 arm. Chest/head support the 17.13 Frosty tier; arm
-damage conflicts with the current 0.91 limb multiplier and remains open.
+damage conflicts with the current 0.91 limb multiplier. The
+[raw material-grid follow-up](CLAUDE_SESSION_HANDOFF_2026-09-12.md#12-codex-raw-material-grid-trace-limb-values-found)
+now resolves VSSM's source limb value to 0.84, with matching traces in two maps.
+The subsequent merged hit-zone implementation now uses that 0.84 limb value.
 
 **Frosty registry scan** (`outputs/frosty-recoil-field-scan-2026-09-12/`). It
 covers 62 weapons named in `GRX_Weapons.xml`. BROD 3 (`BREN3`) has no named

@@ -3,7 +3,6 @@
     {
       "id": "iron",
       "name": "Iron Sights",
-      "sway": -1,
       "pts": 5
     },
     {
@@ -43,62 +42,62 @@
       "name": "None",
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
-      "worldSpot": 54,
-      "minimapSpot": 150,
-      "pts": 0
+      "pts": 0,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "sp_brake",
       "name": "Single-Port Brake",
       "adsRecoilTierMod": 1,
       "adsSpreadDecayBoost": 0,
-      "sway": 1,
-      "worldSpot": 54,
-      "minimapSpot": 150,
       "pts": 5,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "weaponSwayMult": 1.5,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "dp_brake",
       "name": "Double-Port Brake",
       "adsRecoilTierMod": 1,
       "adsSpreadDecayBoost": 0,
-      "worldSpot": 54,
-      "minimapSpot": 150,
       "pts": 10,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "slant_brake",
       "name": "Slant Brake",
       "adsRecoilTierMod": 1,
       "adsSpreadDecayBoost": 0,
-      "sway": 1,
-      "worldSpot": 54,
-      "minimapSpot": 150,
       "pts": 5,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "weaponSwayMult": 1.5,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "tp_brake",
       "name": "Triple-Port Brake",
       "adsRecoilTierMod": 1,
       "adsSpreadDecayBoost": 0,
-      "worldSpot": 54,
-      "minimapSpot": 150,
       "pts": 10,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "thread_prot",
       "name": "Thread Protector",
       "adsRecoilTierMod": 1,
       "adsSpreadDecayBoost": 0,
-      "sway": 1,
-      "worldSpot": 54,
-      "minimapSpot": 150,
       "pts": 5,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "weaponSwayMult": 1.5,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "comp_brake",
@@ -139,10 +138,10 @@
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 54,
-      "minimapSpot": 150,
       "pts": 20,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "linear_comp",
@@ -151,20 +150,20 @@
       "adsRecoilVariationTierMod": 3,
       "adsSpreadDecayBoost": 0,
       "assumed": true,
-      "worldSpot": 54,
-      "minimapSpot": 150,
       "pts": 10,
       "hipRecoilTierMod": -1,
-      "hipRecoilVariationTierMod": 3
+      "hipRecoilVariationTierMod": 3,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "flash_hider",
       "name": "Flash Hider",
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
-      "worldSpot": 0,
-      "minimapSpot": 150,
-      "pts": 10
+      "pts": 10,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 1
     },
     {
       "id": "flash_comp",
@@ -178,9 +177,9 @@
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 0,
-      "minimapSpot": 150,
-      "pts": 20
+      "pts": 20,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 1
     },
     {
       "id": "std_supp",
@@ -189,9 +188,9 @@
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
       "hipSpreadTierMod": 1,
-      "worldSpot": 0,
-      "minimapSpot": 21,
-      "pts": 20
+      "pts": 20,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     },
     {
       "id": "long_supp",
@@ -202,7 +201,6 @@
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
-      "sway": 1,
       "weaponOverrides": {
         "interdictor": {
           "recoilDurationOverride": 0.066667,
@@ -228,6 +226,9 @@
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728
+        },
+        "sgx": {
+          "weaponSwayMult": 1.462923
         }
       },
       "assumedFields": {
@@ -235,9 +236,10 @@
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 0,
-      "minimapSpot": 21,
-      "pts": 25
+      "pts": 25,
+      "weaponSwayMult": 1.5,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     },
     {
       "id": "light_supp",
@@ -278,6 +280,9 @@
           "recoilDurationOverride": 0.066667,
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728
+        },
+        "sgx": {
+          "weaponSwayMult": 0.975282
         }
       },
       "assumedFields": {
@@ -285,9 +290,9 @@
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 0,
-      "minimapSpot": 21,
-      "pts": 30
+      "pts": 30,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     },
     {
       "id": "cqb_supp",
@@ -295,9 +300,9 @@
       "suppressor": true,
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
-      "worldSpot": 0,
-      "minimapSpot": 21,
-      "pts": 30
+      "pts": 30,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     },
     {
       "id": "compensator",
@@ -318,9 +323,9 @@
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 54,
-      "minimapSpot": 150,
-      "pts": 10
+      "pts": 10,
+      "worldSpotMult": 1,
+      "minimapSpotMult": 1
     },
     {
       "id": "hybrid_supp_l",
@@ -331,18 +336,18 @@
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
-      "sway": 1,
       "assumedFields": {
         "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 0,
-      "minimapSpot": 21,
       "pts": 30,
       "sprintRecoveryTierShift": 1,
       "hipRecoilTierMod": 1,
-      "deployTimeTierShift": 1
+      "deployTimeTierShift": 1,
+      "weaponSwayMult": 1.5,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     },
     {
       "id": "hybrid_supp_s",
@@ -358,10 +363,10 @@
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 0,
-      "minimapSpot": 21,
       "pts": 40,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     },
     {
       "id": "hybrid_supp_k",
@@ -377,10 +382,10 @@
         "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
         "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
       },
-      "worldSpot": 0,
-      "minimapSpot": 21,
       "pts": 50,
-      "hipRecoilTierMod": 1
+      "hipRecoilTierMod": 1,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     }
   ],
   "BARRELS": [
@@ -506,9 +511,9 @@
       "velMult": 1,
       "velTierMod": 0,
       "suppressor": true,
-      "worldSpot": 0,
-      "minimapSpot": 9,
-      "adsSpreadIncMult": 1
+      "adsSpreadIncMult": 1,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.06
     },
     {
       "id": "vssm_suppressed_asm",
@@ -519,9 +524,9 @@
       "velMult": 1,
       "velTierMod": 0,
       "suppressor": true,
-      "worldSpot": 0,
-      "minimapSpot": 21,
-      "adsSpreadIncMult": 1
+      "adsSpreadIncMult": 1,
+      "worldSpotMult": 0,
+      "minimapSpotMult": 0.14
     }
   ],
   "GRIPS": [
@@ -4867,8 +4872,8 @@
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "15_fast": {
           "name": "15 Fast",
@@ -4879,7 +4884,7 @@
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -4928,7 +4933,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -4939,8 +4945,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5027,8 +5033,8 @@
           "adsMoveSpeedTierShift": -3,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5123,7 +5129,7 @@
             "note": "Named/described as a fast magazine but does not receive the 1.13 reload multiplier in game."
           },
           "movingAdsSpreadTierMod": 1,
-          "sway": -1
+          "weaponSwayMult": 0.6666667
         },
         "53_rnd": {
           "name": "53 Rnd",
@@ -5325,8 +5331,8 @@
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -5450,8 +5456,8 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "reloadSpeedTier": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "45_fast": {
           "name": "45 Fast",
@@ -5461,7 +5467,7 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 2,
-          "sway": -1
+          "weaponSwayMult": 0.6666667
         },
         "50_rnd": {
           "name": "50 Rnd",
@@ -5471,8 +5477,8 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "reloadSpeedTier": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "60_rnd": {
           "name": "60 Rnd",
@@ -5599,7 +5605,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -5610,8 +5617,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -5764,8 +5771,8 @@
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "tacRldOverrideMs": 4534,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "100_rnd": {
           "name": "100 Rnd",
@@ -6013,8 +6020,8 @@
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6082,8 +6089,8 @@
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "15_fast": {
           "name": "15 Fast",
@@ -6094,7 +6101,7 @@
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6143,8 +6150,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -6193,7 +6200,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -6204,8 +6212,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6273,7 +6281,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -6284,8 +6293,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6470,7 +6479,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -6481,8 +6491,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6550,8 +6560,8 @@
           "adsMoveSpeedTierShift": -1,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "10_rnd": {
           "name": "10 Rnd",
@@ -6582,8 +6592,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6632,8 +6642,8 @@
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -6729,8 +6739,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_fast": {
           "name": "30 Fast",
@@ -6741,7 +6751,7 @@
           "sprintRecoveryTierShift": 0,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1
+          "weaponSwayMult": 0.6666667
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -6751,8 +6761,8 @@
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "40_rnd": {
           "name": "40 Rnd",
@@ -6857,7 +6867,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -6868,8 +6879,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -7014,7 +7025,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -7025,8 +7037,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -7114,8 +7126,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "10_rnd": {
           "name": "10 Rnd",
@@ -7270,7 +7282,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -7281,8 +7294,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -7369,8 +7382,8 @@
           "adsMoveSpeedTierShift": -3,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "15_rnd": {
           "name": "15 Rnd",
@@ -7380,8 +7393,8 @@
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -7449,8 +7462,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -7461,7 +7474,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -7529,7 +7543,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "20_fast": {
           "name": "20 Fast",
@@ -7540,8 +7555,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "30_rnd": {
           "name": "30 Rnd",
@@ -7609,8 +7624,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.6666667
         },
         "30_fast": {
           "name": "30 Fast",
@@ -7621,8 +7636,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "36_rnd": {
           "name": "36 Rnd",
@@ -7700,8 +7715,8 @@
           "adsMoveSpeedTierShift": -1,
           "movingAdsSpreadTierMod": 1,
           "reloadSpeedTier": 0,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "5_rnd": {
           "name": "5 Rnd",
@@ -8008,8 +8023,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "20_rnd": {
           "name": "20 Rnd",
@@ -8020,7 +8035,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.4444444
         },
         "30_fast": {
           "name": "30 Fast",
@@ -8145,8 +8161,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 0,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -2
+          "deployTimeTierShift": -2,
+          "weaponSwayMult": 0.6666667
         },
         "10_fast": {
           "name": "10 Fast",
@@ -8157,8 +8173,8 @@
           "adsMoveSpeedTierShift": -2,
           "reloadSpeedTier": 1,
           "movingAdsSpreadTierMod": 1,
-          "sway": -1,
-          "deployTimeTierShift": -1
+          "deployTimeTierShift": -1,
+          "weaponSwayMult": 0.6666667
         },
         "20_fast": {
           "name": "20 Fast",

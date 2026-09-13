@@ -301,120 +301,461 @@
     "kv9": 4
   },
   "HIP_SPREAD_BASE_INDEX_OVERRIDES": {},
-  "BASE_HS_MULT": {
-    "m39emr": 1.5,
-    "svk86": 1.5,
-    "svdm": 1.5,
-    "m2010esr": 1.75,
-    "sv98": 1.75,
-    "psr": 1.75,
-    "miniscout": 1.75,
-    "m87a1": 1,
-    "m1014": 1,
-    "ks18k": 1,
-    "db12": 1,
-    "interdictor": 1.75,
-    "l115": 1.75,
-    "vssm": 1.8
-  },
   "COLLATERAL_MULT_OVERRIDE": {
-    "pw7a2": {
-      "standard": 0.67,
-      "penetration": 0.83,
-      "frangible": 0.57,
-      "hollow_pt": 0.57,
-      "synthetic": 0.57,
-      "subsonic_pen": 0.67
+    "ak205": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
     },
-    "usg90": {
-      "standard": 0.67,
-      "penetration": 0.83,
-      "frangible": 0.57,
-      "hollow_pt": 0.57,
-      "subsonic": 0.57,
-      "subsonic_hp": 0.57
+    "ak4d": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "b36a4": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "brod3": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "cz3a1": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "db12": {
+      "buckshot": 0.333334,
+      "buckshot_00": 0.333334,
+      "flechette": 0.571429,
+      "slugs": 0.333334
+    },
+    "drsiar": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667,
+      "lightweight": 0.750001
+    },
+    "ef88": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
     },
     "es57": {
-      "standard": 0.67
+      "standard": 0.666667,
+      "penetration": 0.833334,
+      "frangible": 0.571429,
+      "hollow_pt": 0.571429,
+      "subsonic": 0.571429,
+      "subsonic_hp": 0.571429
     },
-    "m45a1": {
-      "frangible": 0.57,
-      "hollow_pt": 0.57
+    "ggh22": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "frangible": 0.500001,
+      "hollow_pt": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "grtbc": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "grtcps": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "interdictor": {
+      "standard": 0.750001,
+      "frangible": 0.666667,
+      "long_range": 0.750001,
+      "penetration": 1.0
+    },
+    "kord6p67": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "ks18k": {
+      "buckshot": 0.333334,
+      "buckshot_00": 0.333334,
+      "flechette": 0.571429,
+      "slugs": 0.333334
+    },
+    "kts100": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667,
+      "lightweight": 0.750001
+    },
+    "kv9": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "l110": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "l115": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "long_range": 0.750001,
+      "frangible": 0.666667
+    },
+    "l85a3": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "lmr27": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "m1014": {
+      "buckshot": 0.333334,
+      "buckshot_00": 0.333334,
+      "flechette": 0.571429,
+      "slugs": 0.333334
     },
     "m121a2": {
-      "frangible": 0.75,
-      "hollow_pt": 0.75
+      "standard": 0.750001,
+      "hollow_pt": 0.750001,
+      "frangible": 0.750001,
+      "penetration": 1.0
+    },
+    "m123k": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m16a4": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m2010esr": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "long_range": 0.750001,
+      "frangible": 0.666667
+    },
+    "m240l": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m250": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m277": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m357trait": {
+      "standard": 0.571429,
+      "hollow_pt": 0.500001
+    },
+    "m39emr": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "long_range": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m417a2": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "subsonic": 0.666667,
+      "subsonic_hp": 0.666667
+    },
+    "m433": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m44": {
+      "standard": 0.571429,
+      "hollow_pt": 0.500001,
+      "penetration": 0.750001,
+      "frangible": 0.500001
+    },
+    "m45a1": {
+      "standard": 0.571429,
+      "penetration": 0.833334,
+      "frangible": 0.571429,
+      "hollow_pt": 0.571429
+    },
+    "m4a1": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m60": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "m87a1": {
+      "buckshot": 0.333334,
+      "buckshot_00": 0.333334,
+      "flechette": 0.571429,
+      "slugs": 0.333334
+    },
+    "miniscout": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "frangible": 0.666667
+    },
+    "nvo228e": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "p18": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "frangible": 0.500001,
+      "hollow_pt": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "pp19": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "synthetic": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "psr": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "long_range": 0.750001,
+      "frangible": 0.666667
+    },
+    "pw5a3": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "synthetic": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "pw7a2": {
+      "standard": 0.666667,
+      "penetration": 0.833334,
+      "hollow_pt": 0.571429,
+      "frangible": 0.571429,
+      "synthetic": 0.571429,
+      "subsonic_pen": 0.666667
+    },
+    "qbz192": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "rpk74m": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "rpkm": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "scw10": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "sg553r": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "subsonic": 0.666667,
+      "subsonic_hp": 0.666667
+    },
+    "sgx": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "sl9": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "synthetic": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "sor300sc": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "subsonic_hp": 0.666667,
+      "subsonic": 0.666667
+    },
+    "sor556": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "synthetic": 0.666667
+    },
+    "sv98": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "long_range": 0.750001,
+      "frangible": 0.666667
+    },
+    "svdm": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "long_range": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "svk86": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "long_range": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "tr7": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "umg40": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "hollow_pt": 0.500001,
+      "frangible": 0.500001,
+      "synthetic": 0.500001,
+      "subsonic": 0.500001,
+      "subsonic_hp": 0.500001
+    },
+    "usg90": {
+      "standard": 0.666667,
+      "penetration": 0.833334,
+      "lightweight": 0.666667,
+      "hollow_pt": 0.571429,
+      "frangible": 0.571429,
+      "subsonic": 0.571429,
+      "subsonic_hp": 0.571429
+    },
+    "vcr2": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "vssm": {
+      "penetration": 1.0,
+      "range_pen": 1.0,
+      "long_range": 0.750001,
+      "frangible": 0.666667
+    },
+    "vz61": {
+      "standard": 0.571429,
+      "penetration": 0.750001,
+      "frangible": 0.500001,
+      "hollow_pt": 0.500001,
+      "synthetic": 0.500001
     }
-  },
-  "HP_HS_HIGH": [
-    "m39emr",
-    "svk86",
-    "svdm"
-  ],
-  "LIMB_CLASS_MULT": {
-    "auto": 0.84,
-    "dmr": 0.91,
-    "sniper": 0.67
-  },
-  "AUTO_HS_MULT": {
-    "standard": 1.4,
-    "hp": 1.57,
-    "synthetic": 1.8
-  },
-  "LIMB_CLASS": {
-    "m433": "auto",
-    "b36a4": "auto",
-    "sor556": "auto",
-    "ak4d": "auto",
-    "tr7": "auto",
-    "kord6p67": "auto",
-    "nvo228e": "auto",
-    "l85a3": "auto",
-    "vcr2": "auto",
-    "m16a4": "auto",
-    "m4a1": "auto",
-    "m277": "auto",
-    "ak205": "auto",
-    "m417a2": "auto",
-    "grtbc": "auto",
-    "qbz192": "auto",
-    "sg553r": "auto",
-    "sor300sc": "auto",
-    "sgx": "auto",
-    "pw5a3": "auto",
-    "pw7a2": "auto",
-    "umg40": "auto",
-    "usg90": "auto",
-    "kv9": "auto",
-    "scw10": "auto",
-    "sl9": "auto",
-    "cz3a1": "auto",
-    "l110": "auto",
-    "drsiar": "auto",
-    "m60": "auto",
-    "rpkm": "auto",
-    "m123k": "auto",
-    "m250": "auto",
-    "kts100": "auto",
-    "m240l": "auto",
-    "m121a2": "auto",
-    "rpk74m": "auto",
-    "m39emr": "dmr",
-    "lmr27": "dmr",
-    "svk86": "dmr",
-    "svdm": "dmr",
-    "grtcps": "dmr",
-    "m2010esr": "sniper",
-    "sv98": "sniper",
-    "psr": "sniper",
-    "miniscout": "sniper",
-    "interdictor": "sniper",
-    "l115": "sniper",
-    "vz61": "auto",
-    "pp19": "auto",
-    "brod3": "auto",
-    "ef88": "auto",
-    "vssm": "dmr"
   },
   "MOVING_ACC_TIERS": [
     0.68,
