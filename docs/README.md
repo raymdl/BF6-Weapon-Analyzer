@@ -57,6 +57,9 @@ The [global-candidates audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
 records accepted source-model changes and the remaining activation/composition
 questions. Its early checkpoints are explicitly historical.
 
+The [composite stats findings](working/COMPOSITE_STATS_FINDINGS.md) collect the
+Hipfire, Precision, Control and Mobility evidence, including the Frosty Precision tables.
+
 The [UI strings review](working/FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) records
 weapon descriptions, role tags, composite-stat UI assets and setting-label hashes.
 

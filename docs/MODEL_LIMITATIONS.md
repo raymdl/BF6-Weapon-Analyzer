@@ -100,7 +100,7 @@ invalidate the source arrays themselves. See [stat ladders](STAT_LADDERS.md).
 **Attachment identity and activation.** A name match, selector candidate or nearby
 modifier is insufficient for promotion. Historical investigations retain unresolved
 mapping/activation questions, including angled-grip mappings and native composite
-stat consumers. Treat those as dated evidence, not a count of current defects.
+stat consumers ([composite stats findings](working/COMPOSITE_STATS_FINDINGS.md)). Treat those as dated evidence, not a count of current defects.
 Magazine capacity alone cannot resolve attachment identity.
 
 **Global estimates.** The [continued source audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
