@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "status": "reference-only",
+  "scope": "English UI labels that name weapon, aim, recoil, spread, handling or composite-stat settings. Most are Portal or custom-rule setting labels. Labels only; no values.",
+  "strings": {
+    "asset": "Common/Localization/Languages/fs_us_loc",
+    "exportSha256": "a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9"
+  },
+  "hashReview": {
+    "delegateArgumentHash": "Attribute-delegate argument hashes (Field_360b6c38) are djb2-xor, seed 5381, over the case-sensitive argument name. Verified for 14 of 14 named arguments in the Control, Control1, Hipfire and Mobility delegates.",
+    "xmlFieldNames": "Field_/Class_ names in the XML export do not use that hash. Field_0c59fa06 (Name) is not reproduced by djb2-xor, djb2-add, FNV-1 or FNV-1a.",
+    "labelTest": "Each label was tested as PascalCase, lowercase and camelCase with djb2-xor, FNV-1 and FNV-1a. No result matched any of 58,247 distinct hashes in GRX_Weapons.xml or 518 Field_ hashes cited in docs, scripts, data and provenance.",
+    "textMatches": "Three labels match a known readable argument name. The djb2-xor hash of that name is given. These are name correspondences, not a binding found in the game data."
+  },
+  "labels": [
+    {
+      "id": "0510FA8F",
+      "text": "ACCURACY"
+    },
+    {
+      "id": "7190732F",
+      "text": "ADS DISPERSION INCREASE"
+    },
+    {
+      "id": "FCFD799C",
+      "text": "ADS MOVE DISPERSION"
+    },
+    {
+      "id": "6D4774FC",
+      "text": "ADS MOVE SPEED MULTIPLIER"
+    },
+    {
+      "id": "6B502B69",
+      "text": "ADS RECHAMBER"
+    },
+    {
+      "id": "E0630C97",
+      "text": "ADS RELOAD"
+    },
+    {
+      "id": "9197517C",
+      "text": "ADS STATIONARY DISPERSION"
+    },
+    {
+      "id": "F1A4CDFB",
+      "text": "ADS TIME IN"
+    },
+    {
+      "id": "F1A48B7D",
+      "text": "ADS TIMEOUT"
+    },
+    {
+      "id": "3988BD29",
+      "text": "AIM DOWN SIGHTS"
+    },
+    {
+      "id": "8D4EFB31",
+      "text": "AREA CONTROL"
+    },
+    {
+      "id": "F1E56789",
+      "text": "AUTO-RELOAD ON EMPTY MAG"
+    },
+    {
+      "id": "6C131867",
+      "text": "AUTOSPRINT"
+    },
+    {
+      "id": "E7E7C426",
+      "text": "BODY SHOT DAMAGE MULTIPLIER"
+    },
+    {
+      "id": "3FF4569C",
+      "text": "BULLET STORM"
+    },
+    {
+      "id": "D46C6CED",
+      "text": "BULLET STORM 1"
+    },
+    {
+      "id": "D6C1958E",
+      "text": "BULLET STORM 2"
+    },
+    {
+      "id": "4AF29CB2",
+      "text": "BULLETIN"
+    },
+    {
+      "id": "35C5B8BD",
+      "text": "CAN FIRE DURING SPRINT"
+    },
+    {
+      "id": "65516566",
+      "text": "CHANGE ZOOM"
+    },
+    {
+      "id": "ACD623E9",
+      "text": "CNTR FIRE RDR"
+    },
+    {
+      "id": "D81D0800",
+      "text": "CONTROL"
+    },
+    {
+      "id": "8C421285",
+      "text": "CRITICAL CONTROL"
+    },
+    {
+      "id": "16A13517",
+      "text": "CROWD CONTROL"
+    },
+    {
+      "id": "452A4F1A",
+      "text": "DEPLOY TIME",
+      "knownName": "WeaponDeployTimeIndex",
+      "knownNameHash": "f407a9c7"
+    },
+    {
+      "id": "EED09CE5",
+      "text": "DUMBFIRE"
+    },
+    {
+      "id": "220F1DE4",
+      "text": "EARLY RELOAD"
+    },
+    {
+      "id": "020C34AE",
+      "text": "FALL DAMAGE MULTIPLIER"
+    },
+    {
+      "id": "EBA95527",
+      "text": "FATAL SNIPER HEADSHOT"
+    },
+    {
+      "id": "C2849CEA",
+      "text": "FIRE"
+    },
+    {
+      "id": "CA906031",
+      "text": "FIRE"
+    },
+    {
+      "id": "DEB03CB0",
+      "text": "FIRE"
+    },
+    {
+      "id": "37FA5BFD",
+      "text": "FIRE MODES"
+    },
+    {
+      "id": "0925642D",
+      "text": "FIRE SUPPORT"
+    },
+    {
+      "id": "25917CDE",
+      "text": "FIRE SUPPORT"
+    },
+    {
+      "id": "40040611",
+      "text": "FIRE SUPPORT"
+    },
+    {
+      "id": "D8944BCF",
+      "text": "FIRE SUPPORT"
+    },
+    {
+      "id": "7825A3AB",
+      "text": "FIRE SUPPORT ACCOLADE"
+    },
+    {
+      "id": "B3E55AC4",
+      "text": "FIRE TO DESIGNATE POSITION"
+    },
+    {
+      "id": "BE572269",
+      "text": "FIRE TO TARGET POSITION"
+    },
+    {
+      "id": "5433FEFA",
+      "text": "FIRED"
+    },
+    {
+      "id": "7A56C515",
+      "text": "FIREFLY"
+    },
+    {
+      "id": "D4645317",
+      "text": "FIREPOWER"
+    },
+    {
+      "id": "67F5C883",
+      "text": "GLOBAL DAMAGE MULTIPLIER"
+    },
+    {
+      "id": "3B0D87E6",
+      "text": "GROUND CONTROL"
+    },
+    {
+      "id": "3DBF49CC",
+      "text": "GROUND CONTROL"
+    },
+    {
+      "id": "F95B4AA9",
+      "text": "HANDLING"
+    },
+    {
+      "id": "085D27C3",
+      "text": "HEADSHOT"
+    },
+    {
+      "id": "7DEEC07A",
+      "text": "HEADSHOT"
+    },
+    {
+      "id": "18D491EA",
+      "text": "HEADSHOT DAMAGE MULTIPLIER"
+    },
+    {
+      "id": "72655361",
+      "text": "HEADSHOT KILLS"
+    },
+    {
+      "id": "EA24E6D4",
+      "text": "HEADSHOT KILLS"
+    },
+    {
+      "id": "4D1330D5",
+      "text": "HEADSHOT MULTIPLIER"
+    },
+    {
+      "id": "06349962",
+      "text": "HIGH MOBILITY"
+    },
+    {
+      "id": "C10F09EE",
+      "text": "HIGH VELOCITY"
+    },
+    {
+      "id": "4B1DA1C6",
+      "text": "HIPFIRE"
+    },
+    {
+      "id": "329D8DC5",
+      "text": "HIPFIRE DISPERSION INCREASE"
+    },
+    {
+      "id": "EBB53839",
+      "text": "HIPFIRE RANGE"
+    },
+    {
+      "id": "869A382B",
+      "text": "INDIRECT FIRE"
+    },
+    {
+      "id": "5DF2EBCF",
+      "text": "INFINITE MAGAZINES"
+    },
+    {
+      "id": "053C61AD",
+      "text": "KEEP HOLDING FIRE DURING MORTAL STRIKE"
+    },
+    {
+      "id": "F9880148",
+      "text": "MOBILITY"
+    },
+    {
+      "id": "291C7E1D",
+      "text": "MOBILITY-KILL WARHEAD"
+    },
+    {
+      "id": "5C534834",
+      "text": "MUZZLE VELOCITY"
+    },
+    {
+      "id": "406E60C4",
+      "text": "OVERHEAT CONTROL"
+    },
+    {
+      "id": "2581C0EB",
+      "text": "PRECISION"
+    },
+    {
+      "id": "A2E94997",
+      "text": "RAPID FIRE"
+    },
+    {
+      "id": "55F7A879",
+      "text": "RAPID FIRE 1"
+    },
+    {
+      "id": "9854E7E9",
+      "text": "RAPID FIRE 2"
+    },
+    {
+      "id": "9AAA108A",
+      "text": "RAPID FIRE 3"
+    },
+    {
+      "id": "F04CD190",
+      "text": "RECOIL AMOUNT",
+      "knownName": "RecoilAmount",
+      "knownNameHash": "030aea17"
+    },
+    {
+      "id": "78719DA9",
+      "text": "RECOIL DECREASE MULTIPLIER"
+    },
+    {
+      "id": "7CFA86BD",
+      "text": "RECOIL DIRECTION"
+    },
+    {
+      "id": "C151865B",
+      "text": "RECOIL REDUCTION"
+    },
+    {
+      "id": "8EADA52F",
+      "text": "RECOIL SMOOTHNESS"
+    },
+    {
+      "id": "54DC4349",
+      "text": "RECOIL VARIATION",
+      "knownName": "RecoilVariation",
+      "knownNameHash": "890dbeaa"
+    },
+    {
+      "id": "714C9CD3",
+      "text": "RELOAD"
+    },
+    {
+      "id": "AD60CF03",
+      "text": "RELOAD IN ADS"
+    },
+    {
+      "id": "1C644B84",
+      "text": "RELOAD TIME"
+    },
+    {
+      "id": "17F76EAF",
+      "text": "RELOAD WHOLE MAGAZINES"
+    },
+    {
+      "id": "D1BDC219",
+      "text": "RELOADING"
+    },
+    {
+      "id": "5F24C34F",
+      "text": "RESET ZOOM"
+    },
+    {
+      "id": "98A43527",
+      "text": "RPM"
+    },
+    {
+      "id": "29E2694E",
+      "text": "SPRINT"
+    },
+    {
+      "id": "58D19599",
+      "text": "SPRINT"
+    },
+    {
+      "id": "1FD48E8E",
+      "text": "SPRINT FIRE"
+    },
+    {
+      "id": "CDF9BF4D",
+      "text": "SPRINT RECOVERY"
+    },
+    {
+      "id": "3DD1E7F3",
+      "text": "STEADY AIM"
+    },
+    {
+      "id": "D060B0CE",
+      "text": "STEADY AIM"
+    },
+    {
+      "id": "AFFF761E",
+      "text": "STRAFE WHILE SPRINTING"
+    },
+    {
+      "id": "20C40BD6",
+      "text": "SWAY AMOUNT"
+    },
+    {
+      "id": "79D5A614",
+      "text": "SWAY FREQUENCY"
+    },
+    {
+      "id": "BD598C3D",
+      "text": "TADS"
+    },
+    {
+      "id": "9CA12F91",
+      "text": "TAKE CONTROL"
+    },
+    {
+      "id": "FCF8EE80",
+      "text": "TERMINAL CONTROL"
+    },
+    {
+      "id": "7ED2DFA5",
+      "text": "TRAVERSAL SPRINT"
+    },
+    {
+      "id": "8CF29E3D",
+      "text": "UNDEPLOY TIME"
+    },
+    {
+      "id": "0D1661DD",
+      "text": "UNRELENTING RELOAD"
+    },
+    {
+      "id": "CE68F833",
+      "text": "VARIABLE ZOOM"
+    },
+    {
+      "id": "C1721ADF",
+      "text": "VELOCITY"
+    },
+    {
+      "id": "3EFAAA3B",
+      "text": "WEAPON HANDLING"
+    },
+    {
+      "id": "FC26D4E2",
+      "text": "ZONE CONTROL"
+    },
+    {
+      "id": "2C98761B",
+      "text": "ZOOM"
+    },
+    {
+      "id": "8055C1CD",
+      "text": "ZOOM"
+    }
+  ]
+}

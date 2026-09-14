@@ -56,6 +56,21 @@ if (balance.VELOCITY_LADDER !== 0.8) {
   fail('VELOCITY_LADDER must be exactly 0.8');
 }
 
+const roleTags = readJson('data/weapon-role-tags.json');
+for (const weapon of weapons) {
+  const entry = roleTags.weapons?.[weapon.id];
+  if (!entry) {
+    fail(`${weapon.id}: missing Frosty role tags`);
+    continue;
+  }
+  for (const group of roleTags.tagGroups) {
+    const tag = entry[group];
+    if (tag === null ? !entry.conflicts?.[group]?.length : !/^[0-9A-F]{8}$/.test(tag?.id ?? '') || !tag.text) {
+      fail(`${weapon.id}: role tag ${group} needs a string id and text, or a recorded conflict`);
+    }
+  }
+}
+
 const weaponIds = new Set();
 for (const weapon of weapons) {
   if (!weapon.id) fail('Weapon is missing id');

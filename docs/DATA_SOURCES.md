@@ -52,6 +52,11 @@ original unresolved Frosty pointers and do not populate other weapons. The
 [reverse inventory](working/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) separates
 known attachment types, possible matches, and records with no known menu counterpart.
 
+[data/weapon-role-tags.json](../data/weapon-role-tags.json) keeps the three Frosty
+loadout role tags for each weapon as reference data. The UI does not load it. The
+[UI strings review](working/FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) records the
+source records, the Mini Scout range conflict and the related description findings.
+
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json) identifies
 the accepted live dataset and its source policy. At this review it contains 63
 weapons and three source records. This is a mixed-source baseline, not a wholesale
