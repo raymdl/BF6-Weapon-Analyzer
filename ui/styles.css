@@ -356,7 +356,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .target-impact-weapon{font-size:.78rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .target-impact-weapon.c1{color:var(--accent)}
 .target-impact-weapon.c2{color:var(--accent2)}
-.target-impact-summary{display:grid;grid-template-columns:repeat(4,max-content);margin-bottom:7px;padding:6px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
+.target-impact-summary{display:grid;grid-template-columns:repeat(4,max-content);justify-content:space-between;margin-bottom:7px;padding:6px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
 .target-impact-summary>div{display:flex;align-items:baseline;gap:4px;min-width:0;padding:1px 6px;border-right:1px solid #263131;white-space:nowrap}
 .target-impact-summary>div:first-child{padding-left:1px}
 .target-impact-summary>div:last-child{padding-right:1px;border-right:0}
