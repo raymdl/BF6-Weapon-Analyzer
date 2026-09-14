@@ -19,6 +19,10 @@ it does not block calculation or sharing.** An asterisk marks an attachment with
 assumed effects. Some listed attachments have no modeled stat effect; their
 availability or point cost can still matter.
 
+Hover a weapon button or a weapon name above the comparison stats to read its
+in-game description. All 63 weapons have descriptions, also exposed as accessible
+descriptions. Of these, 61 come from Frosty and two come from verified game captures.
+
 Hover an attachment control or option to read its in-game description where
 available. The selected control also exposes the text as an accessible description.
 Most text comes from Frosty UI records; 15 choices use approved game captures.

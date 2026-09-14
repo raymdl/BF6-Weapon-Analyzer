@@ -2,6 +2,7 @@
   {
     "id": "m433",
     "name": "M433",
+    "description": "Chambered in 5.56x45mm, this cutting-edge rifle is best suited at closer ranges due to its above average rate of fire.",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 830.769,
@@ -132,6 +133,7 @@
   {
     "id": "b36a4",
     "name": "B36A4",
+    "description": "A versatile rifle that can be modified to compete in both close-quarters or ranged encounters.",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 719.999,
@@ -262,6 +264,7 @@
   {
     "id": "sor556",
     "name": "SOR-556 Mk2",
+    "description": "Modular European rifle in a traditional intermediate configuration. It is highly accurate and best utilized at mid to long range engagements.",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 568.421,
@@ -392,6 +395,7 @@
   {
     "id": "ak4d",
     "name": "AK4D",
+    "description": "A classic battle rifle with a slow rate of fire, best utilized during mid to long range engagements.",
     "cls": "Assault Rifle",
     "cal": "7.62×51mm NATO",
     "rpm": 514.285,
@@ -522,6 +526,7 @@
   {
     "id": "tr7",
     "name": "TR-7",
+    "description": "Chambered in 7.62x51mm, the compact TR-7 delivers tremendous stopping power but its punishing recoil limits effectiveness beyond close range.",
     "cls": "Assault Rifle",
     "cal": "7.62×51mm NATO",
     "rpm": 719.999,
@@ -662,6 +667,7 @@
   {
     "id": "kord6p67",
     "name": "KORD 6P67",
+    "description": "This low-recoil, high rate-of-fire rifle performs well at both close and long ranges.",
     "cls": "Assault Rifle",
     "cal": "5.45×39mm",
     "rpm": 899.999,
@@ -793,6 +799,7 @@
   {
     "id": "nvo228e",
     "name": "NVO-228E",
+    "description": "This powerful assault rifle chambered in 7.62 Soviet is a reliable weapon designed for mid-range encounters.",
     "cls": "Assault Rifle",
     "cal": "7.62×39mm",
     "rpm": 654.545,
@@ -953,6 +960,7 @@
   {
     "id": "l85a3",
     "name": "L85A3",
+    "description": "With a steady rate of fire, this revised bullpup rifle favors mid to long range engagements.",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 635.294,
@@ -1093,6 +1101,7 @@
   {
     "id": "vcr2",
     "name": "VCR-2",
+    "description": "Originating from the Balkans, this high firerate bullpup is the perfect rifle for close-quarter engagements.",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 899.999,
@@ -1233,6 +1242,7 @@
   {
     "id": "m16a4",
     "name": "M16A4",
+    "description": "With an enduring legacy on the Battlefield, this well-rounded rifle can be configured for burst fire or full auto by modifying the lower receiver.",
     "cls": "Assault Rifle",
     "cal": "5.56x45mm NATO",
     "rpm": 771.428,
@@ -1365,6 +1375,7 @@
   {
     "id": "m4a1",
     "name": "M4A1",
+    "description": "With its high cyclic rate, extending this carbine’s effective range requires competent recoil management.",
     "cls": "Carbine",
     "cal": "5.56×45mm NATO",
     "rpm": 899.999,
@@ -1525,6 +1536,7 @@
   {
     "id": "m277",
     "name": "M277",
+    "description": "Chambered in 6.8x51mm, this newly fielded rifle is intended for overmatch at range at the cost of magazine capacity.",
     "cls": "Carbine",
     "cal": "6.8×51mm",
     "rpm": 719.999,
@@ -1655,6 +1667,7 @@
   {
     "id": "ak205",
     "name": "AK-205",
+    "description": "With a moderate cyclic rate and 5.45x39mm chambering, this carbine offers best-in-class accuracy.",
     "cls": "Carbine",
     "cal": "5.45×39mm",
     "rpm": 719.999,
@@ -1805,6 +1818,7 @@
   {
     "id": "m417a2",
     "name": "M417 A2",
+    "description": "Chambered in 7.62x51mm, this compact battle rifle offsets its high damage with a steady rate of fire.",
     "cls": "Carbine",
     "cal": "7.62×51mm NATO",
     "rpm": 654.545,
@@ -1955,6 +1969,7 @@
   {
     "id": "grtbc",
     "name": "GRT-BC",
+    "description": "A compact bullpup rifle with an above average rate of fire and an intermediate chambering.",
     "cls": "Carbine",
     "cal": "5.56×45mm NATO",
     "rpm": 830.769,
@@ -2108,6 +2123,7 @@
   {
     "id": "qbz192",
     "name": "QBZ-192",
+    "description": "A modern rifle of East Asian origin chambered in the unique 5.8x42mm. Comes factory with a bipod grip for rapid stabilized shooting.",
     "cls": "Carbine",
     "cal": "5.8×42mm",
     "rpm": 771.428,
@@ -2258,6 +2274,7 @@
   {
     "id": "sg553r",
     "name": "SG 553R",
+    "description": "A classic cold-war era rifle modernized for export. Its effectiveness quickly diminishes beyond mid range.",
     "cls": "Carbine",
     "cal": "7.62×39mm",
     "rpm": 719.999,
@@ -2419,6 +2436,7 @@
   {
     "id": "sor300sc",
     "name": "SOR-300SC",
+    "description": "Modular European rifle in a subcompact .300 BLK configuration, favoring close to mid range engagements.",
     "cls": "Carbine",
     "cal": ".300 BLK",
     "rpm": 599.999,
@@ -2569,6 +2587,7 @@
   {
     "id": "sgx",
     "name": "SGX",
+    "description": "A modern 9x19mm PDW suited for close-range engagements. Can be configured to improve its ranged capabilities.",
     "cls": "SMG",
     "cal": "9×19mm",
     "rpm": 830.769,
@@ -2719,6 +2738,7 @@
   {
     "id": "pw5a3",
     "name": "PW5A3",
+    "description": "This popular SMG performs admirably in all engagements up to and including mid range.",
     "cls": "SMG",
     "cal": "9×19mm",
     "rpm": 771.428,
@@ -2880,6 +2900,7 @@
   {
     "id": "pw7a2",
     "name": "PW7A2",
+    "description": "A 4.6x30mm chambering ensures this PDW outperforms at range. Still effective in close quarters due to its high rate of fire.",
     "cls": "SMG",
     "cal": "4.6×30mm",
     "rpm": 947.368,
@@ -3020,6 +3041,7 @@
   {
     "id": "umg40",
     "name": "UMG-40",
+    "description": "A renowned polymer SMG with a low rate of fire, chambered in .40 caliber. Outperforms its peers at mid range encounters.",
     "cls": "SMG",
     "cal": ".40 S&W",
     "rpm": 635.294,
@@ -3171,6 +3193,7 @@
   {
     "id": "usg90",
     "name": "USG-90",
+    "description": "A high-capacity PDW with a unique design. Lower effective damage is offset by a high rate of fire.",
     "cls": "SMG",
     "cal": "5.7×28mm",
     "rpm": 899.999,
@@ -3331,6 +3354,7 @@
   {
     "id": "kv9",
     "name": "KV9",
+    "description": "With a blistering cyclic rate, this sleek SMG will near-instantly consume the ammunition within a standard magazine.",
     "cls": "SMG",
     "cal": "9×19mm",
     "rpm": 1079.999,
@@ -3482,6 +3506,7 @@
   {
     "id": "scw10",
     "name": "SCW-10",
+    "description": "Chambered in 10mm, this modular modern SMG offers increased stopping power where other PDWs fall short.",
     "cls": "SMG",
     "cal": "10×25mm",
     "rpm": 799.999,
@@ -3642,6 +3667,7 @@
   {
     "id": "sl9",
     "name": "SL9",
+    "description": "Boasting a unique design, this bleeding-edge SMG is adaptable to a variety of combat scenarios.",
     "cls": "SMG",
     "cal": "9×19mm",
     "rpm": 674.999,
@@ -3805,6 +3831,7 @@
   {
     "id": "cz3a1",
     "name": "CZ3A1",
+    "description": "A popular 9x19mm PDW with a high rate of fire; most effective when used in confined spaces.",
     "cls": "SMG",
     "cal": "9×19mm",
     "rpm": 981.818,
@@ -3956,6 +3983,7 @@
   {
     "id": "pp19",
     "name": "PP-19",
+    "description": "Derived from a unique predecessor, this modest SMG can still tap into its helical, high-capacity roots with some slight modification.",
     "cls": "SMG",
     "cal": "9×19mm",
     "rpm": 719.999,
@@ -4116,6 +4144,7 @@
   {
     "id": "l110",
     "name": "L110",
+    "description": "An all-purpose Squad Automatic Weapon chambered in 5.56x45mm. Well-matched for most engagements.",
     "cls": "LMG",
     "cal": "5.56×45mm NATO",
     "rpm": 719.999,
@@ -4246,6 +4275,7 @@
   {
     "id": "drsiar",
     "name": "DRS-IAR",
+    "description": "A reliable LSW that blurs the boundary into service rifle. Attachments equipped decide how to best use this versatile firearm.",
     "cls": "LMG",
     "cal": "5.56×45mm NATO",
     "rpm": 771.428,
@@ -4376,6 +4406,7 @@
   {
     "id": "m60",
     "name": "M/60",
+    "description": "This widely used general purpose machine gun is capable of keeping enemies suppressed with a slow and steady rate of fire.",
     "cls": "LMG",
     "cal": "7.62×51mm NATO",
     "rpm": 514.285,
@@ -4516,6 +4547,7 @@
   {
     "id": "rpkm",
     "name": "RPKM",
+    "description": "The original Light Support Weapon. Relatively configurable and best suited for mid range suppressive fire.",
     "cls": "LMG",
     "cal": "7.62×39mm",
     "rpm": 553.846,
@@ -4666,6 +4698,7 @@
   {
     "id": "m123k",
     "name": "M123K",
+    "description": "An ideal LMG for mobile fire support. Will dominate in close-quarters and keep enemies suppressed with a high firerate.",
     "cls": "LMG",
     "cal": "5.56×45mm NATO",
     "rpm": 830.769,
@@ -4796,6 +4829,7 @@
   {
     "id": "m250",
     "name": "M250",
+    "description": "A companion to the M277 with similar ranged overmatch effectiveness, combining suppressing fire with lethal ranged capability.",
     "cls": "LMG",
     "cal": "6.8×51mm",
     "rpm": 674.999,
@@ -4911,6 +4945,7 @@
   {
     "id": "kts100",
     "name": "KTS100 MK8",
+    "description": "With low recoil and a steady RPM, this light machine gun’s moderate damage is offset by accurate suppressive fire.",
     "cls": "LMG",
     "cal": "5.56×45mm NATO",
     "rpm": 514.285,
@@ -5041,6 +5076,7 @@
   {
     "id": "m240l",
     "name": "M240L",
+    "description": "A general purpose machine gun modernized to improve weight and increase capacity. Effective in both aggressive and defensive roles.",
     "cls": "LMG",
     "cal": "7.62×51mm NATO",
     "rpm": 599.999,
@@ -5181,6 +5217,7 @@
   {
     "id": "m121a2",
     "name": "M121 A2",
+    "description": "This powerful general-purpose machine gun excels at closer ranges but can extend its reach with competent recoil and trigger management.",
     "cls": "LMG",
     "cal": "7.62×51mm NATO",
     "rpm": 654.545,
@@ -5311,6 +5348,7 @@
   {
     "id": "rpk74m",
     "name": "RPK-74M",
+    "description": "A cold war LSW furnished for modern combat demands, offering controllable recoil, variable capacity, and serviceable damage.",
     "cls": "LMG",
     "cal": "5.45x39mm",
     "rpm": 685.714,
@@ -5441,6 +5479,7 @@
   {
     "id": "m39emr",
     "name": "M39 EMR",
+    "description": "Chambered in 7.62x51mm, this versatile marksman rifle is a solid addition to any squad arsenal.",
     "cls": "DMR",
     "cal": "7.62×51mm NATO",
     "rpm": 257.142,
@@ -5571,6 +5610,7 @@
   {
     "id": "lmr27",
     "name": "LMR27",
+    "description": "With an intermediate chambering, this bleeding-edge precision rifle allows for rapid follow-up shots at the cost of relatively low damage.",
     "cls": "DMR",
     "cal": "5.56×45mm NATO",
     "rpm": 449.999,
@@ -5701,6 +5741,7 @@
   {
     "id": "svk86",
     "name": "SVK-8.6",
+    "description": "A precision rifle chambered in the powerful 8.6x70mm cartridge. Its lethality is offset by a lower effective rate of fire.",
     "cls": "DMR",
     "cal": ".338 Lapua Mag",
     "rpm": 149.999,
@@ -5831,6 +5872,7 @@
   {
     "id": "svdm",
     "name": "SVDM",
+    "description": "A classic marksman's rifle modernized for the 21st century. The right configuration can offer extreme mobility or ranged eliminations.",
     "cls": "DMR",
     "cal": "7.62×54mmR",
     "rpm": 299.999,
@@ -5961,6 +6003,7 @@
   {
     "id": "grtcps",
     "name": "GRT-CPS",
+    "description": "A traditional counterpart to the GRT-BC, this intermediate rifle in a marksman configuration trades damage for controllability and increased ammo capacity.",
     "cls": "DMR",
     "cal": "5.56×45mm NATO",
     "rpm": 359.999,
@@ -6091,6 +6134,7 @@
   {
     "id": "m2010esr",
     "name": "M2010 ESR",
+    "description": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m.",
     "cls": "Sniper Rifle",
     "cal": ".300 Win Mag",
     "rpm": 43.90240199281473,
@@ -6230,6 +6274,7 @@
   {
     "id": "sv98",
     "name": "SV-98",
+    "description": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m.",
     "cls": "Sniper Rifle",
     "cal": "7.62×54mmR",
     "rpm": 38.20751292717492,
@@ -6374,6 +6419,7 @@
   {
     "id": "psr",
     "name": "PSR",
+    "description": "This adaptive sniper rifle has a pedigree which ensures accuracy and lethality. It is most effective between 90m-120m.",
     "cls": "Sniper Rifle",
     "cal": ".338 Norma Mag",
     "rpm": 38.663458649662005,
@@ -6513,6 +6559,7 @@
   {
     "id": "miniscout",
     "name": "Mini Scout",
+    "description": "This lightweight scout rifle offsets reduced damage by allowing rapid follow-up shots without having to break focus.",
     "cls": "Sniper Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 47.092969500363495,
@@ -6647,6 +6694,7 @@
   {
     "id": "l115",
     "name": "L115",
+    "description": "Designed to withstand operation in arctic warfare, this magnum caliber sniper rifle has earned itself a legendary reputation worldwide. Most effective between 100m-133m.",
     "cls": "Sniper Rifle",
     "cal": ".338 Lapua Magnum",
     "rpm": 46.14231275806206,
@@ -6791,6 +6839,7 @@
   {
     "id": "interdictor",
     "name": "Interdictor",
+    "description": "Lightweight and compact for its 10.4x83mm chambering, the Interdictor has drawn increasing military interest. Its lethality peaks between 120m and 150m.",
     "cls": "Sniper Rifle",
     "cal": ".416 Barrett",
     "rpm": 31.914882299649403,
@@ -6938,6 +6987,7 @@
   {
     "id": "m87a1",
     "name": "M87A1",
+    "description": "A reliable pump-action shotgun chambered with 3\" shells for improved stopping power.",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
     "rpm": 94.73654016716576,
@@ -7101,6 +7151,7 @@
   {
     "id": "m1014",
     "name": "M1014",
+    "description": "This popular semi-automatic shotgun hits hard with 3\" shells, but is limited by its magazine tube capacity.",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
     "rpm": 199.999,
@@ -7256,6 +7307,7 @@
   {
     "id": "ks18k",
     "name": "18.5KS-K",
+    "description": "A magazine-fed, semi-automatic shotgun firing 2.75\" shells for sizable damage.",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
     "rpm": 299.999,
@@ -7387,6 +7439,7 @@
   {
     "id": "db12",
     "name": "DB-12",
+    "description": "A double-barrel, pump action shotgun allowing for a rapid follow-up shot before having to rechamber the next set of shells.",
     "cls": "Shotgun",
     "cal": "12ga (00 Buck)",
     "rpm": 359.999,
@@ -7546,6 +7599,7 @@
   {
     "id": "p18",
     "name": "P18",
+    "description": "A reliable sidearm able to meet the demands of almost any combat scenario.",
     "cls": "Sidearm",
     "cal": "9×19mm",
     "rpm": 399.999,
@@ -7696,6 +7750,7 @@
   {
     "id": "es57",
     "name": "ES 5.7",
+    "description": "Companion to the USG-90, this sidearm has generous magazine capacity and exceptional bullet velocity compared to its peers.",
     "cls": "Sidearm",
     "cal": "5.7×28mm",
     "rpm": 449.999,
@@ -7846,6 +7901,7 @@
   {
     "id": "m45a1",
     "name": "M45A1",
+    "description": "A classic sidearm brought into the 21st century. The damage it inflicts with subsonic .45 ACP is offset by a low base magazine capacity.",
     "cls": "Sidearm",
     "cal": ".45 ACP",
     "rpm": 327.272,
@@ -8006,6 +8062,7 @@
   {
     "id": "m44",
     "name": "M44",
+    "description": "A modern revolver and hand cannon. Best ranged potential of any sidearm, but its capacity and effective rate of fire are limited.",
     "cls": "Sidearm",
     "cal": ".44 Magnum",
     "rpm": 163.636,
@@ -8159,6 +8216,7 @@
   {
     "id": "ggh22",
     "name": "GGH-22",
+    "description": "A renowned semi-auto pistol with a .40 caliber chambering for improved ranged performance.",
     "cls": "Sidearm",
     "cal": "9×19mm",
     "rpm": 359.999,
@@ -8309,6 +8367,7 @@
   {
     "id": "m357trait",
     "name": "M357 Trait",
+    "description": "This lightweight revolver has an 8-shot cylinder and comes with a variety of available attachments.",
     "cls": "Sidearm",
     "cal": ".357 Magnum",
     "rpm": 224.999,
@@ -8472,6 +8531,7 @@
   {
     "id": "vz61",
     "name": "vz. 61",
+    "description": "An iconic machine pistol chambered in subsonic .32 ACP for low damage but controllable automatic fire.",
     "cls": "Sidearm",
     "cal": "7.65×17mm",
     "rpm": 818.181,
@@ -8622,6 +8682,7 @@
   {
     "id": "brod3",
     "name": "BROD 3",
+    "description": "A frontrunner in 21st century firearm design, this third BROD iteration has been refined through frontline feedback. Collapsible stock maximizes mobility.",
     "cls": "Carbine",
     "cal": "5.56×45mm NATO",
     "rpm": 830.7692307692307,
@@ -8819,6 +8880,7 @@
   {
     "id": "ef88",
     "name": "EF88",
+    "description": "An Oceanic take on an iconic European design, this enhanced bullpup rifle supports a full range of accessories now standard in modern combat since the Cold War.",
     "cls": "Assault Rifle",
     "cal": "5.56×45mm NATO",
     "rpm": 674.999,
@@ -8996,6 +9058,7 @@
   {
     "id": "vssm",
     "name": "VSSM",
+    "description": "A unique DMR with an integral suppressor and subsonic ammunition for covert operations. Aggressive configuration is available, with trade-offs.",
     "cls": "DMR",
     "cal": "9×39mm",
     "rpm": 449.999,

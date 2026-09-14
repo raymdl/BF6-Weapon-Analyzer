@@ -1,0 +1,1160 @@
+{
+  "scope": "Weapon descriptions for all 63 site weapons, verified against exported game UI metadata and English localization.",
+  "descriptionPointerField": "Field_490f0dd0",
+  "stringIdField": "Field_3d34898a",
+  "stringsPath": "outputs\\weapon-description-check\\fs_us_strings.tsv",
+  "stringsSha256": "a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9",
+  "metadataSha256": {
+    "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml": "06a4d8ef2ffd72e61687c438c4bece072f3eac828195511c6ee7079810cbc90f",
+    "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B1.xml": "9d951652ebab84515ce57fb7e0905eac3a879a2d21b91a31df8ae66c5d9d05aa",
+    "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B2.xml": "204116de5caa97e6c16c8dce1e026d83d7a13ae5530781f815219e9f333210d8",
+    "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B1.xml": "1ccf60044819f341521cbd601369b10034886d310ff2e89f616882466d0144b3",
+    "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B2.xml": "a1796dbd1e2e9868d6027550b1b34b73dbefb8ec96d5e8d0047bf2c17d052ef3",
+    "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S3\\UIWeaponAbilityMetaData_S3B1.xml": "80f26295c3a5e1295e963a090383647ff7fe59e82833225ade400028a4d94037",
+    "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S4\\UIWeaponAbilityMetaData_S4B1.xml": "272551e832ea216ffd7a43f5d363d86190c7a4d9581f0c325451b2c348c5982e"
+  },
+  "total": 63,
+  "verified": 63,
+  "weapons": [
+    {
+      "siteId": "ks18k",
+      "name": "18.5KS-K",
+      "status": "verified",
+      "description": "A magazine-fed, semi-automatic shotgun firing 2.75\" shells for sizable damage.",
+      "sources": [
+        {
+          "nameId": "605E215F",
+          "name": "18.5KS-K",
+          "descriptionId": "2EAF8A99",
+          "description": "A magazine-fed, semi-automatic shotgun firing 2.75\" shells for sizable damage.",
+          "label": "18.5KS-K",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "9f209806-acf7-462f-969e-8810ab202f5c"
+        }
+      ]
+    },
+    {
+      "siteId": "m87a1",
+      "name": "M87A1",
+      "status": "verified",
+      "description": "A reliable pump-action shotgun chambered with 3\" shells for improved stopping power.",
+      "sources": [
+        {
+          "nameId": "A61D2648",
+          "name": "M87A1",
+          "descriptionId": "62BF81A2",
+          "description": "A reliable pump-action shotgun chambered with 3\" shells for improved stopping power.",
+          "label": "590A1",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "387347c8-71f1-4d1e-a802-e08d41335656"
+        }
+      ]
+    },
+    {
+      "siteId": "kord6p67",
+      "name": "KORD 6P67",
+      "status": "verified",
+      "description": "This low-recoil, high rate-of-fire rifle performs well at both close and long ranges.",
+      "sources": [
+        {
+          "nameId": "B7762E2B",
+          "name": "KORD 6P67",
+          "descriptionId": "C83757E5",
+          "description": "This low-recoil, high rate-of-fire rifle performs well at both close and long ranges.",
+          "label": "6P67",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "ad446a92-d14f-4f0b-9a91-3b0d38f8b47c"
+        }
+      ]
+    },
+    {
+      "siteId": "nvo228e",
+      "name": "NVO-228E",
+      "status": "verified",
+      "description": "This powerful assault rifle chambered in 7.62 Soviet is a reliable weapon designed for mid-range encounters.",
+      "sources": [
+        {
+          "nameId": "A6FC1FA6",
+          "name": "NVO-228E",
+          "descriptionId": "4E2705C0",
+          "description": "This powerful assault rifle chambered in 7.62 Soviet is a reliable weapon designed for mid-range encounters.",
+          "label": "ACE 32",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "85279391-90ae-4b12-8138-fc8a679a3be2"
+        }
+      ]
+    },
+    {
+      "siteId": "ak205",
+      "name": "AK-205",
+      "status": "verified",
+      "description": "With a moderate cyclic rate and 5.45x39mm chambering, this carbine offers best-in-class accuracy.",
+      "sources": [
+        {
+          "nameId": "A700317B",
+          "name": "AK-205",
+          "descriptionId": "893884B5",
+          "description": "With a moderate cyclic rate and 5.45x39mm chambering, this carbine offers best-in-class accuracy.",
+          "label": "AK205",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "0c5c5d71-de08-4659-96b5-7e9eca9c5b02"
+        }
+      ]
+    },
+    {
+      "siteId": "scw10",
+      "name": "SCW-10",
+      "status": "verified",
+      "description": "Chambered in 10mm, this modular modern SMG offers increased stopping power where other PDWs fall short.",
+      "sources": [
+        {
+          "nameId": "A70337CD",
+          "name": "SCW-10",
+          "descriptionId": "C1564E47",
+          "description": "Chambered in 10mm, this modular modern SMG offers increased stopping power where other PDWs fall short.",
+          "label": "APC10 G Pro",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "a08b6d7d-21c9-4b14-90a1-1959b7e1fc4d"
+        }
+      ]
+    },
+    {
+      "siteId": "sl9",
+      "name": "SL9",
+      "status": "verified",
+      "description": "Boasting a unique design, this bleeding-edge SMG is adaptable to a variety of combat scenarios.",
+      "sources": [
+        {
+          "nameId": "B77C3844",
+          "name": "SL9",
+          "descriptionId": "49E4999E",
+          "description": "Boasting a unique design, this bleeding-edge SMG is adaptable to a variety of combat scenarios.",
+          "label": "APDW",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "299f342a-e4dc-4d90-933d-f2c6746d2f79"
+        }
+      ]
+    },
+    {
+      "siteId": "lmr27",
+      "name": "LMR27",
+      "status": "verified",
+      "description": "With an intermediate chambering, this bleeding-edge precision rifle allows for rapid follow-up shots at the cost of relatively low damage.",
+      "sources": [
+        {
+          "nameId": "878D9E8F",
+          "name": "LMR27",
+          "descriptionId": "300CC5C9",
+          "description": "With an intermediate chambering, this bleeding-edge precision rifle allows for rapid follow-up shots at the cost of relatively low damage.",
+          "label": "ARA DMR",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "eb841a8c-bc91-4591-a464-da2bead5878d"
+        }
+      ]
+    },
+    {
+      "siteId": "db12",
+      "name": "DB-12",
+      "status": "verified",
+      "description": "A double-barrel, pump action shotgun allowing for a rapid follow-up shot before having to rechamber the next set of shells.",
+      "sources": [
+        {
+          "nameId": "B77DDACF",
+          "name": "DB-12",
+          "descriptionId": "9A788B09",
+          "description": "A double-barrel, pump action shotgun allowing for a rapid follow-up shot before having to rechamber the next set of shells.",
+          "label": "DP-12",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "f274703f-6fcb-4818-ba57-7811b32802bd"
+        },
+        {
+          "nameId": "B77DDACF",
+          "name": "DB-12",
+          "descriptionId": "9A788B09",
+          "description": "A double-barrel, pump action shotgun allowing for a rapid follow-up shot before having to rechamber the next set of shells.",
+          "label": "DP-12",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B2.xml",
+          "recordGuid": "7661b2be-f7f8-4b9a-821d-d670bc866a24"
+        }
+      ]
+    },
+    {
+      "siteId": "ef88",
+      "name": "EF88",
+      "status": "verified",
+      "description": "An Oceanic take on an iconic European design, this enhanced bullpup rifle supports a full range of accessories now standard in modern combat since the Cold War.",
+      "sources": [
+        {
+          "nameId": "D1265CCF",
+          "name": "EF88",
+          "descriptionId": "FD39484D",
+          "description": "An Oceanic take on an iconic European design, this enhanced bullpup rifle supports a full range of accessories now standard in modern combat since the Cold War.",
+          "label": "EF88",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S4\\UIWeaponAbilityMetaData_S4B1.xml",
+          "recordGuid": "1fa05a64-cf33-4b9f-a19c-9930649dbc82"
+        }
+      ]
+    },
+    {
+      "siteId": "es57",
+      "name": "ES 5.7",
+      "status": "verified",
+      "description": "Companion to the USG-90, this sidearm has generous magazine capacity and exceptional bullet velocity compared to its peers.",
+      "sources": [
+        {
+          "nameId": "1AC00EE3",
+          "name": "ES 5.7",
+          "descriptionId": "5AAEC11D",
+          "description": "Companion to the USG-90, this sidearm has generous magazine capacity and exceptional bullet velocity compared to its peers.",
+          "label": "FiveSeven",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "e8fac9c1-798c-44b8-b8fb-ac27e8547578"
+        }
+      ]
+    },
+    {
+      "siteId": "ggh22",
+      "name": "GGH-22",
+      "status": "verified",
+      "description": "A renowned semi-auto pistol with a .40 caliber chambering for improved ranged performance.",
+      "sources": [
+        {
+          "nameId": "81AE83E3",
+          "name": "GGH-22",
+          "descriptionId": "4D76591D",
+          "description": "A renowned semi-auto pistol with a .40 caliber chambering for improved ranged performance.",
+          "label": "G22",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "7ca8894f-05ce-448e-9b83-0919b6cab09e"
+        },
+        {
+          "nameId": "81AE83E3",
+          "name": "GGH-22",
+          "descriptionId": "4D76591D",
+          "description": "A renowned semi-auto pistol with a .40 caliber chambering for improved ranged performance.",
+          "label": "G22",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B1.xml",
+          "recordGuid": "a307b274-1a41-4b17-a2f9-33a12e735a99"
+        }
+      ]
+    },
+    {
+      "siteId": "b36a4",
+      "name": "B36A4",
+      "status": "verified",
+      "description": "A versatile rifle that can be modified to compete in both close-quarters or ranged encounters.",
+      "sources": [
+        {
+          "nameId": "81AE8408",
+          "name": "B36A4",
+          "descriptionId": "A3C53862",
+          "description": "A versatile rifle that can be modified to compete in both close-quarters or ranged encounters.",
+          "label": "G36",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "67a4c4b5-38cd-431c-8e67-e6bc49a8e17c"
+        }
+      ]
+    },
+    {
+      "siteId": "ak4d",
+      "name": "AK4D",
+      "status": "verified",
+      "description": "A classic battle rifle with a slow rate of fire, best utilized during mid to long range engagements.",
+      "sources": [
+        {
+          "nameId": "B77F06A7",
+          "name": "AK4D",
+          "descriptionId": "08C6DDE1",
+          "description": "A classic battle rifle with a slow rate of fire, best utilized during mid to long range engagements.",
+          "label": "G3A4",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "9b3ad6d2-5862-4fd7-ab55-e62cab5941b4"
+        }
+      ]
+    },
+    {
+      "siteId": "m417a2",
+      "name": "M417 A2",
+      "status": "verified",
+      "description": "Chambered in 7.62x51mm, this compact battle rifle offsets its high damage with a steady rate of fire.",
+      "sources": [
+        {
+          "nameId": "82CEF3FA",
+          "name": "M417 A2",
+          "descriptionId": "37A7AD94",
+          "description": "Chambered in 7.62x51mm, this compact battle rifle offsets its high damage with a steady rate of fire.",
+          "label": "HK417A2",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "91a7c8e5-73e5-4f69-a18a-5ddc088078e2"
+        }
+      ]
+    },
+    {
+      "siteId": "m433",
+      "name": "M433",
+      "status": "verified",
+      "description": "Chambered in 5.56x45mm, this cutting-edge rifle is best suited at closer ranges due to its above average rate of fire.",
+      "sources": [
+        {
+          "nameId": "A77EE5E5",
+          "name": "M433",
+          "descriptionId": "604A8B5F",
+          "description": "Chambered in 5.56x45mm, this cutting-edge rifle is best suited at closer ranges due to its above average rate of fire.",
+          "label": "HK433",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "d20def34-1e0d-4610-9742-833b9705e856"
+        }
+      ]
+    },
+    {
+      "siteId": "l115",
+      "name": "L115",
+      "status": "verified",
+      "description": "Designed to withstand operation in arctic warfare, this magnum caliber sniper rifle has earned itself a legendary reputation worldwide. Most effective between 100m-133m.",
+      "sources": [
+        {
+          "nameId": "9EDA5ED3",
+          "name": "L115",
+          "descriptionId": "7A9C24A9",
+          "description": "Designed to withstand operation in arctic warfare, this magnum caliber sniper rifle has earned itself a legendary reputation worldwide. Most effective between 100m-133m.",
+          "label": "L115A3",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S3\\UIWeaponAbilityMetaData_S3B1.xml",
+          "recordGuid": "57bc075f-01cb-4e44-b9c8-e8fdb923dde3"
+        }
+      ]
+    },
+    {
+      "siteId": "l85a3",
+      "name": "L85A3",
+      "status": "verified",
+      "description": "With a steady rate of fire, this revised bullpup rifle favors mid to long range engagements.",
+      "sources": [
+        {
+          "nameId": "A7BCE2C5",
+          "name": "L85A3",
+          "descriptionId": "ED29943F",
+          "description": "With a steady rate of fire, this revised bullpup rifle favors mid to long range engagements.",
+          "label": "L85A3",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "3fc1b832-6c59-4085-ae42-10ae56ef0f0d"
+        }
+      ]
+    },
+    {
+      "siteId": "m1014",
+      "name": "M1014",
+      "status": "verified",
+      "description": "This popular semi-automatic shotgun hits hard with 3\" shells, but is limited by its magazine tube capacity.",
+      "sources": [
+        {
+          "nameId": "A7CB0D4B",
+          "name": "M1014",
+          "descriptionId": "57354285",
+          "description": "This popular semi-automatic shotgun hits hard with 3\" shells, but is limited by its magazine tube capacity.",
+          "label": "M1014",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "ecaa291f-b11f-4569-921e-9db6d4f3ae54"
+        }
+      ]
+    },
+    {
+      "siteId": "m16a4",
+      "name": "M16A4",
+      "status": "verified",
+      "description": "With an enduring legacy on the Battlefield, this well-rounded rifle can be configured for burst fire or full auto by modifying the lower receiver.",
+      "sources": [
+        {
+          "nameId": "A7CB28E0",
+          "name": "M16A4",
+          "descriptionId": "AE0EE33A",
+          "description": "With an enduring legacy on the Battlefield, this well-rounded rifle can be configured for burst fire or full auto by modifying the lower receiver.",
+          "label": "M16A3",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S3\\UIWeaponAbilityMetaData_S3B1.xml",
+          "recordGuid": "141fe8e0-058c-482b-9042-c46de52cc5a5"
+        }
+      ]
+    },
+    {
+      "siteId": "p18",
+      "name": "P18",
+      "status": "verified",
+      "description": "A reliable sidearm able to meet the demands of almost any combat scenario.",
+      "sources": [
+        {
+          "nameId": "81AE9D4E",
+          "name": "P18",
+          "descriptionId": "98060D68",
+          "description": "A reliable sidearm able to meet the demands of almost any combat scenario.",
+          "label": "M18",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "396feb0c-bce8-4ba7-a038-b688f4920e45"
+        }
+      ]
+    },
+    {
+      "siteId": "m2010esr",
+      "name": "M2010 ESR",
+      "status": "screenshot-verified",
+      "description": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m.",
+      "sources": [
+        {
+          "nameId": "EC2E4932",
+          "name": "M2010 ESR",
+          "descriptionId": "2DB86D4C",
+          "description": null,
+          "label": "M2010ESR",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "000a5c66-5bf6-4852-9604-b4d7206add87"
+        }
+      ],
+      "screenshotEvidence": {
+        "path": "outputs/weapon-description-check/m2010esr-description.png",
+        "sha256": "7e3dabe80cb550cb55b1d81beb6e8e4d322abaf7311fa99489ab56d075c5b077",
+        "observedDescription": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m.",
+        "note": "User-provided weapon selection panel. Original Frosty description string remains absent from the English export."
+      }
+    },
+    {
+      "siteId": "m240l",
+      "name": "M240L",
+      "status": "verified",
+      "description": "A general purpose machine gun modernized to improve weight and increase capacity. Effective in both aggressive and defensive roles.",
+      "sources": [
+        {
+          "nameId": "A7CBAAA7",
+          "name": "M240L",
+          "descriptionId": "67BA9961",
+          "description": "A general purpose machine gun modernized to improve weight and increase capacity. Effective in both aggressive and defensive roles.",
+          "label": "M240L",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "a587a2ae-ab81-43e2-8ef3-96fb6673fe77"
+        }
+      ]
+    },
+    {
+      "siteId": "m250",
+      "name": "M250",
+      "status": "verified",
+      "description": "A companion to the M277 with similar ranged overmatch effectiveness, combining suppressing fire with lethal ranged capability.",
+      "sources": [
+        {
+          "nameId": "B7824B1C",
+          "name": "M250",
+          "descriptionId": "32603376",
+          "description": "A companion to the M277 with similar ranged overmatch effectiveness, combining suppressing fire with lethal ranged capability.",
+          "label": "M250",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "42642fc5-c4a7-47b2-9ec9-2b0670312b30"
+        }
+      ]
+    },
+    {
+      "siteId": "drsiar",
+      "name": "DRS-IAR",
+      "status": "verified",
+      "description": "A reliable LSW that blurs the boundary into service rifle. Attachments equipped decide how to best use this versatile firearm.",
+      "sources": [
+        {
+          "nameId": "A1430DEA",
+          "name": "DRS-IAR",
+          "descriptionId": "63C50604",
+          "description": "A reliable LSW that blurs the boundary into service rifle. Attachments equipped decide how to best use this versatile firearm.",
+          "label": "M27IAR",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "9d21f31b-e96e-448d-a7bb-90ef7463b71e"
+        }
+      ]
+    },
+    {
+      "siteId": "m39emr",
+      "name": "M39 EMR",
+      "status": "verified",
+      "description": "Chambered in 7.62x51mm, this versatile marksman rifle is a solid addition to any squad arsenal.",
+      "sources": [
+        {
+          "nameId": "A1562FB5",
+          "name": "M39 EMR",
+          "descriptionId": "3B7BFEAF",
+          "description": "Chambered in 7.62x51mm, this versatile marksman rifle is a solid addition to any squad arsenal.",
+          "label": "M39 EMR",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "b494006f-b1b3-471d-9941-cef426428598"
+        }
+      ]
+    },
+    {
+      "siteId": "m45a1",
+      "name": "M45A1",
+      "status": "verified",
+      "description": "A classic sidearm brought into the 21st century. The damage it inflicts with subsonic .45 ACP is offset by a low base magazine capacity.",
+      "sources": [
+        {
+          "nameId": "A7CCC9C0",
+          "name": "M45A1",
+          "descriptionId": "1A98101A",
+          "description": "A classic sidearm brought into the 21st century. The damage it inflicts with subsonic .45 ACP is offset by a low base magazine capacity.",
+          "label": "M45A1",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "5d75cae5-aca9-4f35-afb1-48261714476e"
+        }
+      ]
+    },
+    {
+      "siteId": "m4a1",
+      "name": "M4A1",
+      "status": "verified",
+      "description": "With its high cyclic rate, extending this carbine’s effective range requires competent recoil management.",
+      "sources": [
+        {
+          "nameId": "B782552B",
+          "name": "M4A1",
+          "descriptionId": "A8F3DEE5",
+          "description": "With its high cyclic rate, extending this carbine’s effective range requires competent recoil management.",
+          "label": "M4A1",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "6c5bb3ea-b4c7-4232-bd4d-495b53f08751"
+        }
+      ]
+    },
+    {
+      "siteId": "m60",
+      "name": "M/60",
+      "status": "verified",
+      "description": "This widely used general purpose machine gun is capable of keeping enemies suppressed with a slow and steady rate of fire.",
+      "sources": [
+        {
+          "nameId": "A7CDCDC6",
+          "name": "M/60",
+          "descriptionId": "A5DA87E0",
+          "description": "This widely used general purpose machine gun is capable of keeping enemies suppressed with a slow and steady rate of fire.",
+          "label": "M60E6",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "11d340de-4bcd-4c88-a7fa-891e932c8215"
+        }
+      ]
+    },
+    {
+      "siteId": "m123k",
+      "name": "M123K",
+      "status": "verified",
+      "description": "An ideal LMG for mobile fire support. Will dominate in close-quarters and keep enemies suppressed with a high firerate.",
+      "sources": [
+        {
+          "nameId": "B782A46B",
+          "name": "M123K",
+          "descriptionId": "85C7B625",
+          "description": "An ideal LMG for mobile fire support. Will dominate in close-quarters and keep enemies suppressed with a high firerate.",
+          "label": "MG4K",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "22641284-aae0-4a34-b134-a57959ec0568"
+        }
+      ]
+    },
+    {
+      "siteId": "m121a2",
+      "name": "M121 A2",
+      "status": "verified",
+      "description": "This powerful general-purpose machine gun excels at closer ranges but can extend its reach with competent recoil and trigger management.",
+      "sources": [
+        {
+          "nameId": "81AEA021",
+          "name": "M121 A2",
+          "descriptionId": "2E87CC1B",
+          "description": "This powerful general-purpose machine gun excels at closer ranges but can extend its reach with competent recoil and trigger management.",
+          "label": "MG5",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B1.xml",
+          "recordGuid": "19b3ac4c-813c-4535-94fc-db9ab432727c"
+        }
+      ]
+    },
+    {
+      "siteId": "miniscout",
+      "name": "Mini Scout",
+      "status": "verified",
+      "description": "This lightweight scout rifle offsets reduced damage by allowing rapid follow-up shots without having to break focus.",
+      "sources": [
+        {
+          "nameId": "00EBB9AC",
+          "name": "Mini Scout",
+          "descriptionId": "0EBDD286",
+          "description": "This lightweight scout rifle offsets reduced damage by allowing rapid follow-up shots without having to break focus.",
+          "label": "Mini Fix",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "54336939-e7f8-4c5c-a999-dc2b89aa8fc0"
+        },
+        {
+          "nameId": "00EBB9AC",
+          "name": "Mini Scout",
+          "descriptionId": "0EBDD286",
+          "description": "This lightweight scout rifle offsets reduced damage by allowing rapid follow-up shots without having to break focus.",
+          "label": "Mini Fix",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B1.xml",
+          "recordGuid": "cbc7f124-bac9-4a38-836f-3e028c7d2d12"
+        }
+      ]
+    },
+    {
+      "siteId": "l110",
+      "name": "L110",
+      "status": "verified",
+      "description": "An all-purpose Squad Automatic Weapon chambered in 5.56x45mm. Well-matched for most engagements.",
+      "sources": [
+        {
+          "nameId": "A2EFDFBB",
+          "name": "L110",
+          "descriptionId": "BEA2A275",
+          "description": "An all-purpose Squad Automatic Weapon chambered in 5.56x45mm. Well-matched for most engagements.",
+          "label": "Minimi",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "f0c3bbd4-3df8-4f10-bd94-f86434ff8362"
+        }
+      ]
+    },
+    {
+      "siteId": "pw5a3",
+      "name": "PW5A3",
+      "status": "verified",
+      "description": "This popular SMG performs admirably in all engagements up to and including mid range.",
+      "sources": [
+        {
+          "nameId": "81AEA14A",
+          "name": "PW5A3",
+          "descriptionId": "E353EEE4",
+          "description": "This popular SMG performs admirably in all engagements up to and including mid range.",
+          "label": "MP5 MLI",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "6dde3435-d1ce-41d1-bfd5-34ba3703c6d2"
+        }
+      ]
+    },
+    {
+      "siteId": "pw7a2",
+      "name": "PW7A2",
+      "status": "verified",
+      "description": "A 4.6x30mm chambering ensures this PDW outperforms at range. Still effective in close quarters due to its high rate of fire.",
+      "sources": [
+        {
+          "nameId": "A7DC2CDF",
+          "name": "PW7A2",
+          "descriptionId": "B30D3E99",
+          "description": "A 4.6x30mm chambering ensures this PDW outperforms at range. Still effective in close quarters due to its high rate of fire.",
+          "label": "MP7A2",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "f143982f-6e07-4ffc-bcb2-4d77db0a7450"
+        },
+        {
+          "nameId": "A7DC2CDF",
+          "name": "PW7A2",
+          "descriptionId": "B30D3E99",
+          "description": "A 4.6x30mm chambering ensures this PDW outperforms at range. Still effective in close quarters due to its high rate of fire.",
+          "label": "MP7A2 SP SUPPRESSED",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "8c5b8d5f-46ea-4f39-98e3-35be64d449fc"
+        }
+      ]
+    },
+    {
+      "siteId": "sgx",
+      "name": "SGX",
+      "status": "verified",
+      "description": "A modern 9x19mm PDW suited for close-range engagements. Can be configured to improve its ranged capabilities.",
+      "sources": [
+        {
+          "nameId": "81AEA16D",
+          "name": "SGX",
+          "descriptionId": "34F87CE7",
+          "description": "A modern 9x19mm PDW suited for close-range engagements. Can be configured to improve its ranged capabilities.",
+          "label": "MPX",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "c78e8283-30ba-42bd-b909-1e4358e80ccc"
+        }
+      ]
+    },
+    {
+      "siteId": "psr",
+      "name": "PSR",
+      "status": "verified",
+      "description": "This adaptive sniper rifle has a pedigree which ensures accuracy and lethality. It is most effective between 90m-120m.",
+      "sources": [
+        {
+          "nameId": "B782D4DC",
+          "name": "PSR",
+          "descriptionId": "84FCD536",
+          "description": "This adaptive sniper rifle has a pedigree which ensures accuracy and lethality. It is most effective between 90m-120m.",
+          "label": "MRAD",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "c034c61c-e120-4b44-b7d1-f339acb39b35"
+        }
+      ]
+    },
+    {
+      "siteId": "grtbc",
+      "name": "GRT-BC",
+      "status": "verified",
+      "description": "A compact bullpup rifle with an above average rate of fire and an intermediate chambering.",
+      "sources": [
+        {
+          "nameId": "04E10E09",
+          "name": "GRT-BC",
+          "descriptionId": "AE4AD083",
+          "description": "A compact bullpup rifle with an above average rate of fire and an intermediate chambering.",
+          "label": "MSBS Grot B",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "75b9c0c4-4d34-4b5c-acef-49b9116a2328"
+        }
+      ]
+    },
+    {
+      "siteId": "grtcps",
+      "name": "GRT-CPS",
+      "status": "verified",
+      "description": "A traditional counterpart to the GRT-BC, this intermediate rifle in a marksman configuration trades damage for controllability and increased ammo capacity.",
+      "sources": [
+        {
+          "nameId": "A7711B37",
+          "name": "GRT-CPS",
+          "descriptionId": "882CE3F1",
+          "description": "A traditional counterpart to the GRT-BC, this intermediate rifle in a marksman configuration trades damage for controllability and increased ammo capacity.",
+          "label": "GrotC",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B1.xml",
+          "recordGuid": "d12d5d00-f986-4e61-86f4-be884b7aa17e"
+        }
+      ]
+    },
+    {
+      "siteId": "usg90",
+      "name": "USG-90",
+      "status": "verified",
+      "description": "A high-capacity PDW with a unique design. Lower effective damage is offset by a high rate of fire.",
+      "sources": [
+        {
+          "nameId": "81AEAB11",
+          "name": "USG-90",
+          "descriptionId": "B1F42D0B",
+          "description": "A high-capacity PDW with a unique design. Lower effective damage is offset by a high rate of fire.",
+          "label": "P90",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "f1fe251f-5772-46db-86bc-b6b578b43b98"
+        }
+      ]
+    },
+    {
+      "siteId": "pp19",
+      "name": "PP-19",
+      "status": "verified",
+      "description": "Derived from a unique predecessor, this modest SMG can still tap into its helical, high-capacity roots with some slight modification.",
+      "sources": [
+        {
+          "nameId": "B7846F62",
+          "name": "PP-19",
+          "descriptionId": "20A1F37C",
+          "description": "Derived from a unique predecessor, this modest SMG can still tap into its helical, high-capacity roots with some slight modification.",
+          "label": "PP19",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S3\\UIWeaponAbilityMetaData_S3B1.xml",
+          "recordGuid": "804fa7b5-ae94-4ecf-b85a-785001aefdb8"
+        }
+      ]
+    },
+    {
+      "siteId": "qbz192",
+      "name": "QBZ-192",
+      "status": "verified",
+      "description": "A modern rifle of East Asian origin chambered in the unique 5.8x42mm. Comes factory with a bipod grip for rapid stabilized shooting.",
+      "sources": [
+        {
+          "nameId": "ABCC0281",
+          "name": "QBZ-192",
+          "descriptionId": "CE4170FB",
+          "description": "A modern rifle of East Asian origin chambered in the unique 5.8x42mm. Comes factory with a bipod grip for rapid stabilized shooting.",
+          "label": "QBZ-192",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "9646c570-6add-4cdb-a9f5-c2c951646928"
+        }
+      ]
+    },
+    {
+      "siteId": "m44",
+      "name": "M44",
+      "status": "verified",
+      "description": "A modern revolver and hand cannon. Best ranged potential of any sidearm, but its capacity and effective rate of fire are limited.",
+      "sources": [
+        {
+          "nameId": "B785667A",
+          "name": "M44",
+          "descriptionId": "82D11994",
+          "description": "A modern revolver and hand cannon. Best ranged potential of any sidearm, but its capacity and effective rate of fire are limited.",
+          "label": "Raging Hunter",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "64bfa075-20d0-4e20-85d0-9ce976170651"
+        }
+      ]
+    },
+    {
+      "siteId": "rpk74m",
+      "name": "RPK-74M",
+      "status": "verified",
+      "description": "A cold war LSW furnished for modern combat demands, offering controllable recoil, variable capacity, and serviceable damage.",
+      "sources": [
+        {
+          "nameId": "AF16551D",
+          "name": "RPK-74M",
+          "descriptionId": "008A8D77",
+          "description": "A cold war LSW furnished for modern combat demands, offering controllable recoil, variable capacity, and serviceable damage.",
+          "label": "RPK74M",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S3\\UIWeaponAbilityMetaData_S3B1.xml",
+          "recordGuid": "5d47fd8f-ee5b-4219-9da8-0c05371f7dbd"
+        }
+      ]
+    },
+    {
+      "siteId": "rpkm",
+      "name": "RPKM",
+      "status": "verified",
+      "description": "The original Light Support Weapon. Relatively configurable and best suited for mid range suppressive fire.",
+      "sources": [
+        {
+          "nameId": "B7858B92",
+          "name": "RPKM",
+          "descriptionId": "09AC2DAC",
+          "description": "The original Light Support Weapon. Relatively configurable and best suited for mid range suppressive fire.",
+          "label": "RPKM",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "c1aad862-83ce-40fa-9f8e-f2413b396e30"
+        }
+      ]
+    },
+    {
+      "siteId": "sor556",
+      "name": "SOR-556 Mk2",
+      "status": "verified",
+      "description": "Modular European rifle in a traditional intermediate configuration. It is highly accurate and best utilized at mid to long range engagements.",
+      "sources": [
+        {
+          "nameId": "A841CBCD",
+          "name": "SOR-556 Mk2",
+          "descriptionId": "74D16247",
+          "description": "Modular European rifle in a traditional intermediate configuration. It is highly accurate and best utilized at mid to long range engagements.",
+          "label": "SCAR-L",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "30116b48-1001-4bca-9b06-41d4546eb9a3"
+        }
+      ]
+    },
+    {
+      "siteId": "sor300sc",
+      "name": "SOR-300SC",
+      "status": "verified",
+      "description": "Modular European rifle in a subcompact .300 BLK configuration, favoring close to mid range engagements.",
+      "sources": [
+        {
+          "nameId": "B07B4697",
+          "name": "SOR-300SC",
+          "descriptionId": "EA6CB2D1",
+          "description": "Modular European rifle in a subcompact .300 BLK configuration, favoring close to mid range engagements.",
+          "label": "SCAR-SC .300 BLK",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "b5ab910b-c621-4f7d-b361-4ab70084623b"
+        },
+        {
+          "nameId": "B07B4697",
+          "name": "SOR-300SC",
+          "descriptionId": "EA6CB2D1",
+          "description": "Modular European rifle in a subcompact .300 BLK configuration, favoring close to mid range engagements.",
+          "label": "SCAR-SC .300 BLK",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B1.xml",
+          "recordGuid": "7da37e7f-b69a-48eb-9f46-7c8830b63266"
+        }
+      ]
+    },
+    {
+      "siteId": "cz3a1",
+      "name": "CZ3A1",
+      "status": "verified",
+      "description": "A popular 9x19mm PDW with a high rate of fire; most effective when used in confined spaces.",
+      "sources": [
+        {
+          "nameId": "B48FC8E2",
+          "name": "CZ3A1",
+          "descriptionId": "B86838FC",
+          "description": "A popular 9x19mm PDW with a high rate of fire; most effective when used in confined spaces.",
+          "label": "Scorpion Evo 3",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B2.xml",
+          "recordGuid": "5635add5-f3ef-4507-aafe-a4c88bb36a8a"
+        }
+      ]
+    },
+    {
+      "siteId": "sg553r",
+      "name": "SG 553R",
+      "status": "verified",
+      "description": "A classic cold-war era rifle modernized for export. Its effectiveness quickly diminishes beyond mid range.",
+      "sources": [
+        {
+          "nameId": "CE3F37EA",
+          "name": "SG 553R",
+          "descriptionId": "A28FE784",
+          "description": "A classic cold-war era rifle modernized for export. Its effectiveness quickly diminishes beyond mid range.",
+          "label": "SG553R",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "047003de-619e-4ff1-b4f1-f6c089717137"
+        }
+      ]
+    },
+    {
+      "siteId": "vz61",
+      "name": "vz. 61",
+      "status": "verified",
+      "description": "An iconic machine pistol chambered in subsonic .32 ACP for low damage but controllable automatic fire.",
+      "sources": [
+        {
+          "nameId": "44DFE60D",
+          "name": "vz. 61",
+          "descriptionId": "80A54B07",
+          "description": "An iconic machine pistol chambered in subsonic .32 ACP for low damage but controllable automatic fire.",
+          "label": "Skorpion",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B2.xml",
+          "recordGuid": "be678dd8-6a27-4f3f-b882-68b8f1e8dca9"
+        }
+      ]
+    },
+    {
+      "siteId": "sv98",
+      "name": "SV-98",
+      "status": "screenshot-verified",
+      "description": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m.",
+      "sources": [
+        {
+          "nameId": "A84C119F",
+          "name": "SV-98",
+          "descriptionId": "E8EA1B59",
+          "description": null,
+          "label": "SV98M",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "738cb003-38be-4d55-9b20-685e18cc4bc6"
+        }
+      ],
+      "screenshotEvidence": {
+        "path": "outputs/weapon-description-check/sv98-description.png",
+        "sha256": "d8c3193b9a8c7b6fd625bd34369323b7cd5c0fe340fbf9624bb47231b2e4cd66",
+        "observedDescription": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m.",
+        "note": "User-provided weapon selection panel. Original Frosty description string remains absent from the English export."
+      }
+    },
+    {
+      "siteId": "svk86",
+      "name": "SVK-8.6",
+      "status": "verified",
+      "description": "A precision rifle chambered in the powerful 8.6x70mm cartridge. Its lethality is offset by a lower effective rate of fire.",
+      "sources": [
+        {
+          "nameId": "B786306C",
+          "name": "SVK-8.6",
+          "descriptionId": "9437EAC6",
+          "description": "A precision rifle chambered in the powerful 8.6x70mm cartridge. Its lethality is offset by a lower effective rate of fire.",
+          "label": "SVCh",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "f2cfff01-e49b-4122-87ea-79c674886386"
+        }
+      ]
+    },
+    {
+      "siteId": "svdm",
+      "name": "SVDM",
+      "status": "verified",
+      "description": "A classic marksman's rifle modernized for the 21st century. The right configuration can offer extreme mobility or ranged eliminations.",
+      "sources": [
+        {
+          "nameId": "B7863092",
+          "name": "SVDM",
+          "descriptionId": "ECDBF2AC",
+          "description": "A classic marksman's rifle modernized for the 21st century. The right configuration can offer extreme mobility or ranged eliminations.",
+          "label": "SVDM",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "331b82e7-d3c6-45d2-80ad-8baafbafc355"
+        }
+      ]
+    },
+    {
+      "siteId": "tr7",
+      "name": "TR-7",
+      "status": "verified",
+      "description": "Chambered in 7.62x51mm, the compact TR-7 delivers tremendous stopping power but its punishing recoil limits effectiveness beyond close range.",
+      "sources": [
+        {
+          "nameId": "B2B7B53B",
+          "name": "TR-7",
+          "descriptionId": "C82BE7F5",
+          "description": "Chambered in 7.62x51mm, the compact TR-7 delivers tremendous stopping power but its punishing recoil limits effectiveness beyond close range.",
+          "label": "Tavor 7",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "5a62921f-54e2-4d52-ab33-0b0056b57e74"
+        }
+      ]
+    },
+    {
+      "siteId": "m357trait",
+      "name": "M357 Trait",
+      "status": "verified",
+      "description": "This lightweight revolver has an 8-shot cylinder and comes with a variety of available attachments.",
+      "sources": [
+        {
+          "nameId": "B786ADA8",
+          "name": "M357 Trait",
+          "descriptionId": "B5040D82",
+          "description": "This lightweight revolver has an 8-shot cylinder and comes with a variety of available attachments.",
+          "label": "TRR8",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "84122d5b-7f3c-4dc1-96f3-6faa1d44916e"
+        },
+        {
+          "nameId": "B786ADA8",
+          "name": "M357 Trait",
+          "descriptionId": "B5040D82",
+          "description": "This lightweight revolver has an 8-shot cylinder and comes with a variety of available attachments.",
+          "label": "TRR8",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B2.xml",
+          "recordGuid": "ec27ffae-d132-4054-a76f-5796d879efea"
+        }
+      ]
+    },
+    {
+      "siteId": "kts100",
+      "name": "KTS100 MK8",
+      "status": "verified",
+      "description": "With low recoil and a steady RPM, this light machine gun’s moderate damage is offset by accurate suppressive fire.",
+      "sources": [
+        {
+          "nameId": "7029C95C",
+          "name": "KTS100 MK8",
+          "descriptionId": "4CA93036",
+          "description": "With low recoil and a steady RPM, this light machine gun’s moderate damage is offset by accurate suppressive fire.",
+          "label": "Ultimax",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "1eb0257d-ef9d-4835-b910-7046bc9f1c61"
+        }
+      ]
+    },
+    {
+      "siteId": "umg40",
+      "name": "UMG-40",
+      "status": "verified",
+      "description": "A renowned polymer SMG with a low rate of fire, chambered in .40 caliber. Outperforms its peers at mid range encounters.",
+      "sources": [
+        {
+          "nameId": "A86BB46E",
+          "name": "UMG-40",
+          "descriptionId": "9AFAD788",
+          "description": "A renowned polymer SMG with a low rate of fire, chambered in .40 caliber. Outperforms its peers at mid range encounters.",
+          "label": "UMP-40",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "42cd6e1a-b5a8-4f53-8039-7c1e8b912c7a"
+        }
+      ]
+    },
+    {
+      "siteId": "kv9",
+      "name": "KV9",
+      "status": "verified",
+      "description": "With a blistering cyclic rate, this sleek SMG will near-instantly consume the ammunition within a standard magazine.",
+      "sources": [
+        {
+          "nameId": "B7A0124B",
+          "name": "KV9",
+          "descriptionId": "3328EF05",
+          "description": "With a blistering cyclic rate, this sleek SMG will near-instantly consume the ammunition within a standard magazine.",
+          "label": "Vector",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "36f9dec1-ff11-4891-a2a6-9681597b9f3f"
+        }
+      ]
+    },
+    {
+      "siteId": "vcr2",
+      "name": "VCR-2",
+      "status": "verified",
+      "description": "Originating from the Balkans, this high firerate bullpup is the perfect rifle for close-quarter engagements.",
+      "sources": [
+        {
+          "nameId": "B7879BFB",
+          "name": "VCR-2",
+          "descriptionId": "A265E7B5",
+          "description": "Originating from the Balkans, this high firerate bullpup is the perfect rifle for close-quarter engagements.",
+          "label": "VHS2",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B1.xml",
+          "recordGuid": "78a57fc3-1b46-4b74-9065-08cf91eef1ef"
+        }
+      ]
+    },
+    {
+      "siteId": "vssm",
+      "name": "VSSM",
+      "status": "verified",
+      "description": "A unique DMR with an integral suppressor and subsonic ammunition for covert operations. Aggressive configuration is available, with trade-offs.",
+      "sources": [
+        {
+          "nameId": "D12FEA1D",
+          "name": "VSSM",
+          "descriptionId": "0835565B",
+          "description": "A unique DMR with an integral suppressor and subsonic ammunition for covert operations. Aggressive configuration is available, with trade-offs.",
+          "label": "VSSM",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S4\\UIWeaponAbilityMetaData_S4B1.xml",
+          "recordGuid": "0bf9ffc3-c9ec-4678-bcf3-096583522f3e"
+        }
+      ]
+    },
+    {
+      "siteId": "m277",
+      "name": "M277",
+      "status": "verified",
+      "description": "Chambered in 6.8x51mm, this newly fielded rifle is intended for overmatch at range at the cost of magazine capacity.",
+      "sources": [
+        {
+          "nameId": "81AECFB4",
+          "name": "M277",
+          "descriptionId": "27E3AF8E",
+          "description": "Chambered in 6.8x51mm, this newly fielded rifle is intended for overmatch at range at the cost of magazine capacity.",
+          "label": "XM7",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+          "recordGuid": "7d579192-e28a-4bb5-9e91-0dc9c0775895"
+        }
+      ]
+    },
+    {
+      "siteId": "brod3",
+      "name": "BROD 3",
+      "status": "verified",
+      "description": "A frontrunner in 21st century firearm design, this third BROD iteration has been refined through frontline feedback. Collapsible stock maximizes mobility.",
+      "sources": [
+        {
+          "nameId": "F5C27C0E",
+          "name": "BROD 3",
+          "descriptionId": "4635C6EC",
+          "description": "A frontrunner in 21st century firearm design, this third BROD iteration has been refined through frontline feedback. Collapsible stock maximizes mobility.",
+          "label": "BREN3",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S4\\UIWeaponAbilityMetaData_S4B1.xml",
+          "recordGuid": "38d06585-2911-4a95-8e02-af2e2b50ed0a"
+        }
+      ]
+    },
+    {
+      "siteId": "interdictor",
+      "name": "Interdictor",
+      "status": "verified",
+      "description": "Lightweight and compact for its 10.4x83mm chambering, the Interdictor has drawn increasing military interest. Its lethality peaks between 120m and 150m.",
+      "sources": [
+        {
+          "nameId": "72F1B459",
+          "name": "Interdictor",
+          "descriptionId": "A89AE617",
+          "description": "Lightweight and compact for its 10.4x83mm chambering, the Interdictor has drawn increasing military interest. Its lethality peaks between 120m and 150m.",
+          "label": "DesertTechHTI",
+          "metadata": "outputs\\weapon-description-check\\xml\\Common\\UI\\Static\\Metadata\\S4\\UIWeaponAbilityMetaData_S4B1.xml",
+          "recordGuid": "f80d8b46-d558-4750-9395-67424cf22216"
+        }
+      ]
+    }
+  ],
+  "verification": "All 63 site weapons have descriptions: 61 resolved from Frosty English localization and two verified from user-provided screenshots. The original M2010 ESR and SV-98 string IDs remain unresolved in the export.",
+  "frostyVerified": 61,
+  "screenshotVerified": 2
+}

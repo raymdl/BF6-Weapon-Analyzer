@@ -529,6 +529,8 @@ function buildWeaponList(containerId, slotIdx) {
     b.type = 'button';
     b.textContent = weaponDisplayLabel(w);
     b.setAttribute('aria-label', weaponAriaLabel(w));
+    b.title = w.description ?? '';
+    if (w.description) b.setAttribute('aria-description', w.description);
     b.setAttribute('aria-pressed', String(isActive));
     b.onclick = () => {
       slot.weapon = w;
@@ -654,6 +656,8 @@ function renderOverview() {
     s.className = className;
     s.textContent = weaponDisplayLabel(w);
     s.setAttribute('aria-label', weaponAriaLabel(w));
+    s.title = w.description ?? '';
+    if (w.description) s.setAttribute('aria-description', w.description);
     hdr.appendChild(s);
   };
   const appendEstimatedBadge = (w, hdr) => {
