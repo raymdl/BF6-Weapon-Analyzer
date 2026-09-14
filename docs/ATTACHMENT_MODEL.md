@@ -286,6 +286,15 @@ unknown. Shared-slot selections use the same assumption detection and effect
 resolver as separate slots. Combo lights apply their source hipfire factors.
 See [model limitations](MODEL_LIMITATIONS.md) for unresolved native behavior.
 
+The current `*` markers remain on eight recovery/duration muzzle entries and the
+VSSM Folding Stock because their simulated operation is still qualified, even
+though the numeric inputs are from Frosty. Heavy, Heavy Extended, Cryogenic,
+Flashlight, Hipfire Taclight, Combo Red/Green, Linear Comp and the three burst
+entries no longer carry that marker. In-game tooltip descriptions are a separate
+display layer and do not add or change attachment effects. See the
+[description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping) for the
+15 approved panel-text exceptions and remaining missing descriptions.
+
 
 ## Approved source operand additions
 

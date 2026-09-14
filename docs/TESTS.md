@@ -61,6 +61,12 @@ fields with the catalog; they do not establish native runtime behavior.
 
 ## Reference and research checks
 
+`python scripts/frosty-attachment-tooltips.test.py` checks descriptor ambiguity,
+optic grouping, and the approved panel-text path. It verifies source/image guards,
+preserves original UI pointers, and prevents panel text from filling peer choices.
+Full tooltip regeneration needs the local Frosty export, AAM XML and saved captures;
+see the [regeneration commands](working/FROSTY_DISPLAY_NAMES.md#regeneration-and-verification).
+
 The screenshot-backed attachment audit is explicitly maintained separately:
 
 ```sh

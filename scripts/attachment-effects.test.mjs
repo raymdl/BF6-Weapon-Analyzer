@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
-import { computeAttPts, resetAttsForWeapon } from '../sim/loadout.js';
+import { availableAttachments, computeAttPts, getAttPts, resetAttsForWeapon } from '../sim/loadout.js';
 import { createShareCodec } from '../sim/share-state.js';
 import { setSimContext, simulateSpread, shotIntervalAfter, selectedRecoilAmountFor, spreadRecoveries, applySpreadRecovery } from '../sim/core.js';
 
@@ -21,6 +21,27 @@ const defaults = w => {
 };
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
+
+test('screenshot-backed sidearm brakes retain their name with source-specific cost and sway', () => {
+  for (const id of ['p18', 'es57', 'm45a1', 'ggh22', 'vz61']) {
+    const w = weapon(id);
+    const brake = availableAttachments(w, 'muzzle', data).find(a => a.id === 'sp_brake');
+    assert.equal(brake.name, 'Single-Port Brake');
+    assert.equal(getAttPts(brake, w), 10);
+    assert.equal(computeAttPts(loadout(w, { muzzle: 'sp_brake' }), w, data)
+      - computeAttPts(loadout(w, { muzzle: 'none' }), w, data), 10);
+    assert.equal(build(w, { muzzle: 'sp_brake' })._weaponSwayMult, 1);
+  }
+  const w = weapon('m4a1');
+  assert.equal(getAttPts(attachments.MUZZLES.find(a => a.id === 'sp_brake'), w), 5);
+  assert.equal(build(w, { muzzle: 'sp_brake' })._weaponSwayMult, 1.5);
+  assert.equal(availableAttachments(weapon('qbz192'), 'ergo', data).some(a => a.id === 'buffer'), false);
+  const codec = createShareCodec({ ...data, defaultAttsForWeapon: defaults });
+  const qbz = weapon('qbz192');
+  assert.equal(codec.decodeAtts(qbz, codec.encodeAtts(qbz, loadout(qbz, { ergo: 'buffer' }))).ergo, 'none');
+  const p18 = weapon('p18');
+  assert.equal(codec.decodeAtts(p18, codec.encodeAtts(p18, loadout(p18, { muzzle: 'sp_brake' }))).muzzle, 'sp_brake');
+});
 
 test('barrel ADS uses generated weapon-specific steps for every supported selection', () => {
   const source = read('../reference-data/provenance/frosty-barrel-ads-generated.json');

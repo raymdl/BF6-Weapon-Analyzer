@@ -15,6 +15,11 @@ The [attachment model](ATTACHMENT_MODEL.md) explains sway percentages, spotting,
 regeneration, collateral, typed shared rails, generated handling, sniper brakes,
 Linear Comp/burst recoil and belt-box description mismatches. Source values and native arithmetic remain distinct.
 
+The [description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
+documents attachment tooltips and the 15 approved panel-text exceptions. The
+[unmatched-record inventory](working/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)
+groups extra Frosty records by what is known about their menu identity.
+
 ## Folder roles
 
 - `docs/`: live GitHub product and contributor guides.

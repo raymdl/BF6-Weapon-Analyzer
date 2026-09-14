@@ -10,6 +10,7 @@
   ],
   "runtimeData": [
     "data/ammo.json",
+    "data/attachment-tooltips.json",
     "data/attachments.json",
     "data/balance_tables.json",
     "data/ballistics.json",

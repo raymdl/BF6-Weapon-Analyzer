@@ -127,9 +127,9 @@ export function availableAttachments(weapon, key, data) {
     : a.id === 'none' || allowed?.includes(a.id));
 }
 
-export function getAttPts(a) {
+export function getAttPts(a, weapon) {
   if (!a) return 0;
-  return a.pts ?? 0;
+  return a.weaponOverrides?.[weapon?.id]?.pts ?? a.pts ?? 0;
 }
 
 export function isAssumedAtt(a) {
@@ -145,7 +145,7 @@ export function computeAttPts(atts, weapon, data) {
   const ergoPts = lookups.ERGOS[atts.ergo ?? 'none']?.pts ?? 0;
   const mounts = resolveMountAttachments(atts, weapon, data);
   return (data.WEAPON_ATTS[wid]?.sightPoints?.[atts.sight ?? 'iron'] ?? getAttPts(lookups.SIGHTS[atts.sight ?? 'iron']))
-    + getAttPts(lookups.MUZZLES[atts.muzzle])
+    + getAttPts(lookups.MUZZLES[atts.muzzle], weapon)
     + getAttPts(lookups.BARRELS[atts.barrel])
     + Object.values(mounts).reduce((sum, item) => sum + getAttPts(item), 0)
     + (data.WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
