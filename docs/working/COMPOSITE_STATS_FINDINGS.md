@@ -47,6 +47,16 @@ There is no Precision delegate. The values are pre-calculated tables in
   key's flag false. DMR and sidearm tables do not use minimum angle; shotgun
   tables do not use RPM; the VSSM uses neither. A row with all flags false is a fallback.
 - Bolt-action sniper tables have one row of 100. The Interdictor table value is 1.
+  The in-game panel shows 1 with the Light and Basic barrels (14 SEP 2026).
+
+### New-weapon Precision bug
+
+New weapons often show Precision 0 or 1 on the loadout panel. The operator reports
+that this is a loadout UI problem only and does not change in-game weapon behavior.
+The Interdictor table in this export stores 1, so the wrong value is in the shipped
+table. The BROD 3 (1) and EF88 (0) audit readings were captured when those weapons
+were new; their tables in this export have normal values (26.795 and 27.932).
+Do not use a 0 or 1 panel reading as evidence for a Precision model.
 
 ### Row selection
 
@@ -79,7 +89,7 @@ site resolver and compares the rounded table value with the panel reading:
 | differ | 237 |
 | no row | 48 |
 | ambiguous | 6 |
-| invalid reading (BROD 3 and EF88 values of 0 or 1) | 117 |
+| new-weapon UI bug reading (BROD 3 and EF88 values of 0 or 1) | 117 |
 
 Difference groups:
 
@@ -152,6 +162,5 @@ node scripts/frosty-precision-check.mjs
 
 - Which native provider reads the Precision tables, and is the table used for all
   loadout states?
-- Is the Interdictor's Precision really 1 in game?
 - What do the ambiguous Linear Comp and Burst Training rows depend on?
 - Should the site show the four stats, and from which source for each?

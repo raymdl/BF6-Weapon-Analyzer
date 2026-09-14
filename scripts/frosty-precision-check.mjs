@@ -61,11 +61,11 @@ for (const record of audit.records) {
   if (slot) atts[slot] = id;
   const k = keys(weapon, applyAttachments(weapon, atts), table);
   const { panel, method } = lookup(table, k);
-  // Audit readings of 0 or 1 on rifles are known capture errors (BROD 3, EF88).
-  const outcome = reading <= 1 && weapon.cls !== 'Sniper Rifle' ? 'invalid-reading'
+  // New weapons show a bugged 0 or 1 Precision panel (BROD 3 and EF88 at capture time).
+  const outcome = reading <= 1 && weapon.cls !== 'Sniper Rifle' ? 'new-weapon-ui-bug'
     : panel === null ? method : Math.round(panel) === reading ? 'match' : 'differ';
   counts[outcome] = (counts[outcome] ?? 0) + 1;
-  if (!['match', 'invalid-reading'].includes(outcome)) differences.push({ weapon: record.weapon, cls: weapon.cls, slot, id, reading, panel, method: outcome, keys: k });
+  if (!['match', 'new-weapon-ui-bug'].includes(outcome)) differences.push({ weapon: record.weapon, cls: weapon.cls, slot, id, reading, panel, method: outcome, keys: k });
 }
 
 console.log(JSON.stringify(counts));
