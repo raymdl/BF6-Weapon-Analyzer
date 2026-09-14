@@ -5,6 +5,15 @@
 This guide describes the current root site. Published older versions preserve
 older data and behavior and may not have the same controls.
 
+## Data errors
+
+A small notification at the panel's top right reports missing or invalid required data.
+Select **View errors** to see the affected weapon and field. Close the list or
+dismiss the notification to continue. A new distinct error shows the notification again.
+Affected values show **—**, and calculations that need them are unavailable.
+Other stats and loadouts remain usable. For example, missing RPM prevents TTK
+and the time-based simulation, but does not remove damage or BTK.
+
 ## Build and compare loadouts
 
 Select a class and weapon in the loadout panel, then select attachments, ammunition,
@@ -13,6 +22,13 @@ A shared rail has one menu labeled **Laser / Light** or **Grip / Laser / Light**
 Select one device for that rail; selecting another replaces it. Separate controls
 for the same rail are hidden. Combo laser/light devices count as one attachment. A new weapon resets its build to
 that weapon's recorded defaults.
+
+Shared slots follow the Frosty records. KORD and KTS100 each have one
+**Laser / Light** menu. Attachment combinations also follow dependency rules:
+selecting the PP-19's 53-round magazine clears the grip and disables its menu;
+selecting another magazine restores the choices. Some magazine-related ergonomics
+on AK-205, RPK-74M and RPKM are restricted in the same way. Removed attachments
+no longer add points or effects. Shared links also remove invalid combinations.
 
 Attachment labels include point costs. **More than 100 points produces a warning;
 it does not block calculation or sharing.** An asterisk marks an attachment with

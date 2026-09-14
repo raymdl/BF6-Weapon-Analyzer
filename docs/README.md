@@ -15,6 +15,11 @@ The [attachment model](ATTACHMENT_MODEL.md) explains sway percentages, spotting,
 regeneration, collateral, typed shared rails, generated handling, sniper brakes,
 Linear Comp/burst recoil and belt-box description mismatches. Source values and native arithmetic remain distinct.
 
+The 14 September compatibility update generates physical mount slots and equipment
+dependencies from Frosty. See the [user controls](USER_GUIDE.md#build-and-compare-loadouts),
+[data contract](DATA_REFERENCE.md), [regeneration commands](../MAINTENANCE.md#regenerate-attachment-modifiers),
+and [curated source findings](../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies).
+
 The [description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
 documents attachment tooltips and the 15 approved panel-text exceptions. The
 [unmatched-record inventory](working/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)

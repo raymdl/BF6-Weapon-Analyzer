@@ -17,6 +17,7 @@ const weapons = readJson('data/weapons.json');
 const ammo = readJson('data/ammo.json');
 
 const context = {
+  HIT_ZONES: readJson('data/hit_zones.json'),
   MUZZLES: attachments.MUZZLES,
   BARRELS: attachments.BARRELS,
   GRIPS: attachments.GRIPS,
@@ -26,6 +27,7 @@ const context = {
   WEAPON_MAG: attachments.WEAPON_MAG,
   WEAPON_ERGO: attachments.WEAPON_ERGO,
   AMMO: ammo.AMMO,
+  WEAPON_AMMO: ammo.WEAPON_AMMO,
   RECOIL_MULT: balance.RECOIL_MULT,
   HIP_SPREAD_TABLE: balance.HIP_SPREAD_TABLE,
   HIP_SPREAD_BASE_INDEX: balance.HIP_SPREAD_BASE_INDEX,
@@ -105,7 +107,7 @@ test('derived and legacy barrel velocity are bit-identical for every selectable 
   for (const weapon of weapons) {
     const weaponAtts = attachments.WEAPON_ATTS[weapon.id] ?? {};
     for (const barrelId of weaponAtts.barrel ?? []) {
-      const atts = { barrel: barrelId, mag: attachments.WEAPON_MAG[weapon.id]?.def ?? null };
+      const atts = { ammo: ammo.WEAPON_AMMO[weapon.id].def, barrel: barrelId, mag: attachments.WEAPON_MAG[weapon.id]?.def ?? null };
       setAttachmentContext({ ...context, BARRELS: attachments.BARRELS });
       const derived = applyAttachments(weapon, atts).bulletVel;
       setAttachmentContext({ ...context, BARRELS: legacyBarrels });

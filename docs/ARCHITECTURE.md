@@ -25,7 +25,11 @@ The eight startup requests are `weapons.json`, `recoil_decay.json`,
 `balance_tables.json`, `attachments.json`, `ammo.json`, `ballistics.json`, `hit_zones.json`, and `attachment-tooltips.json` under
 `data/`. These are ordinary `fetch()` requests, not JSON module imports. A failed
 request rejects initialization. Provenance, reload-exception registers, reference
-workbooks, and raw Frosty exports are not browser dependencies.
+workbooks, and raw Frosty exports are not browser dependencies. Required numeric
+field checks report through `ui/data-errors.js`; they do not reject startup.
+`sim/required-data.js` is strict by default for scripts and tests. The browser
+installs a reporter and keeps missing numeric results unavailable, with a
+deduplicated notification and details dialog.
 
 [ship-surface.json](../ship-surface.json) declares the live surface and three
 published historical versions. It is a validation contract, not an access-control
@@ -71,6 +75,13 @@ and merges per-weapon fields for calculations, points, labels and assumption
 markers. A shared rail accepts one device. Its consumed category keys are removed
 from state; an explicit rail value, including empty, overrides stale legacy keys.
 
+`scripts/frosty-attachment-compatibility.py` generates slots from root-listed
+ability branches and `WEAPON_ATTS.dependencies` from equipment dependency IDs.
+Reviewed identities connect source assets to existing site choices.
+`normalizeAttachments()` removes dependent choices whose `requiresAny` list has
+no selected prerequisite. Menus, points, effects and share links use these rules;
+the UI refreshes the attachment section after a dependency-bearing loadout changes.
+
 Selected builds are cached by slot, weapon reference and attachment selection.
 Default builds, recoil patterns, spread sequences and trajectory calculations have
 input-keyed caches. Hidden panels skip detailed rendering. Pan/zoom redraws are
@@ -102,7 +113,11 @@ Compact attachment tokens use **zero-based decimal catalog positions**, not IDs:
 `S` sights, `M` muzzles, `B` barrels, `G` grips, `L` lasers, `T` lights, `A` ammo,
 `E` ergonomics, and `K` magazine keys. On a shared rail, `L` means a laser,
 `R` a grip, and `H` a light. These existing tokens decode to typed `atts.rail`
-state; legacy shared selections in `atts.laser` are normalized to that state. Only differences from the weapon's defaults are emitted.
+state; legacy shared selections in `atts.laser`, `atts.light` and `atts.grip` are
+normalized to that state. With no explicit rail selection, a legacy laser takes
+priority, then a light, then a grip. This also migrates old KORD/KTS100 separate
+slot links. Dependencies are checked after all tokens are read, independently of
+token order. Only differences from the weapon's defaults are emitted.
 Magazine positions use `Object.keys(WEAPON_MAG[id].mags)` insertion order.
 
 Legacy dash-separated IDs use this fixed order:

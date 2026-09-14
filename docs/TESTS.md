@@ -34,12 +34,15 @@ All paths in this table are under `scripts/`.
 
 | Test file | Distinct behavior protected |
 |---|---|
+| [attachment-compatibility.test.mjs](../scripts/attachment-compatibility.test.mjs) | Frosty physical-slot grouping, PP-19 grip and magazine-ergonomic dependencies, chained removals, valid alternatives, points/effects, and old shared links. |
 | [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Generated handling and burst hip effects, shared-rail replacement/points/assumptions, ADS/hip composition, 17 source Bolt muzzle exceptions, Smooth/Heavy behavior, light hip growth/recovery and combined slots, collateral clamping, sway, spotting, regeneration, and base/catalog non-mutation. |
 | [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Explicit projectile selection for 63 weapons and 328 ammo choices, source coefficients, and flight/trajectory behavior. |
 | [barrel-velocity.test.mjs](../scripts/barrel-velocity.test.mjs) | Tier precedence, compatibility multiplier, selectable-barrel equivalence and display rounding. |
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
 | [draw-time.test.mjs](../scripts/draw-time.test.mjs) | Source timing tables, selection, independent shifts, final clamping and invalid-input behavior. |
 | [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | No estimated or donor weapons, Frosty-sourced BROD 3/EF88/VSSM values, cross-file coverage and compatibility cases. |
+| [optic-costs.test.mjs](../scripts/optic-costs.test.mjs) | Each weapon's optic categories and point costs equal the latest Frosty optic mapping. |
+| [required-data.test.mjs](../scripts/required-data.test.mjs) | Missing/non-finite source fields, strict callers, and non-blocking browser reporting with independent stats preserved. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |
 | [recoil.test.mjs](../scripts/recoil.test.mjs) | Analytic recovery, timed delivery, overlapping impulses, clock reset/burst pauses, compensation, aim-state factors, and deterministic seeds. Attachment tests also cover Smooth duration and receiver composition without base mutation. |
 | [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults, every shared-rail option with indexed/legacy tokens, and weapon-specific attachment validation. |
@@ -91,6 +94,12 @@ to normal validation or rerun them merely to recreate old working sets.
 
 ## Manual UI verification
 
+Inject a missing RPM, recoil group, spread bounds or hit-zone record into a local
+browser response. Confirm the data-error notification, details, Escape and dismissal.
+Affected output must show unavailable without NaN/undefined text or blocking another
+weapon. With valid data, no notification should appear.
+
+
 Serve the live root on port 5174. Check representative widths around 1440, 1000,
 720 and 390 pixels: no horizontal page overflow, readable stat groups, resizing
 charts and practical touch targets. Check loadout open/close, focus loop, Escape,
@@ -101,6 +110,12 @@ a pellet shotgun and slug override, plus a timing/assumption exception. Check da
 BTK/TTK options, recoil aim/stance/platform/control, both views, reroll, layers, target
 aiming/pan/zero and impact disclosure. Confirm the target image is lazy on tab and
 shared-link/popout entry, and unavailable-image behavior remains explicit.
+
+For compatibility changes, select a PP-19 grip, switch to the 53-round magazine,
+and verify the grip clears, its menu disables, and its points/effects disappear.
+Switch back and check that choices return. Check a restricted magazine ergonomic
+on AK-205, RPK-74M or RPKM. KORD and KTS100 must each have one Laser / Light menu;
+switching devices must replace the selection, including restored older links.
 
 Test link restore (including a legacy target link), Copy/Save Image and failure
 feedback, panel collapse/resize, popout independence and all three historical links.

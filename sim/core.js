@@ -1,3 +1,5 @@
+import { requireNumber, requireFields, invalidData, dataErrorCount } from './required-data.js';
+
 /**
  * sim/core.js — Shared simulation math for BF6 Weapon Analyzer
  *
@@ -109,38 +111,39 @@ export function applyRecoilDecay(r, decFactor, decExp, timeExp, interShotTime, d
 
 // ── RECOIL HELPERS ────────────────────────────────────────────────────────────
 
-/**
- * Get the recoil parameter group for a weapon in the current aim state.
- * Falls back to legacy flat fields when the weapon has no per-aim recoil object.
- */
+/** Required recoil parameters for one aim state. */
+function requiredRecoilGroup(w, aimState) {
+  return requireFields(w.recoil?.[aimState],
+    ['dir', 'amount', 'amountMult', 'amountExp', 'dirVar', 'dirVarMult', 'dirVarExp',
+      'decExp', 'decTimeExp', 'decOffset', 'decFactor'], `${w.id} recoil.${aimState}`);
+}
+
 export function recoilGroup(w) {
-  const { aimState, RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP } = _ctx;
-  return w.recoil?.[aimState] ?? {
-    dir:         w.recoilDir,
-    amount:      w.recoilV,
-    amountMult:  1, amountExp: 0,
-    dirVar:      w.recoilVar,
-    dirVarMult:  1, dirVarExp: 0,
-    decExp:      RECOIL_DEC_EXP[w.id]  ?? 1,
-    decTimeExp:  RECOIL_DEC_TEXP[w.id] ?? 1.2,
-    decOffset:   0.06,
-    decFactor:   RECOIL_DEC[w.id]      ?? 72,
-  };
+  return requiredRecoilGroup(w, _ctx.aimState);
 }
 
 /** ADS recoil group — used as the attachment-scaling baseline. */
 export function baseRecoilGroup(w) {
-  return w.recoil?.ads ?? recoilGroup(w);
+  return requiredRecoilGroup(w, 'ads');
+}
+
+/** Required firing rate in rounds per minute. */
+export function weaponRpm(w, field = 'rpm') {
+  const rpm = requireNumber(w[field], `${w.id} ${field}`);
+  if (rpm <= 0) return invalidData(`Invalid ${w.id} ${field}: must be positive`);
+  return rpm;
 }
 
 /** Effective recoil magnitude from a group object. */
 export function recoilAmount(group) {
-  return (group.amount ?? 0) * Math.pow(group.amountMult ?? 1, group.amountExp ?? 0);
+  requireFields(group, ['amount', 'amountMult', 'amountExp'], 'recoil');
+  return group.amount * Math.pow(group.amountMult, group.amountExp);
 }
 
 /** Effective directional variation from a group object. */
 export function recoilVariation(group) {
-  return (group.dirVar ?? 0) * Math.pow(group.dirVarMult ?? 1, group.dirVarExp ?? 0);
+  requireFields(group, ['dirVar', 'dirVarMult', 'dirVarExp'], 'recoil');
+  return group.dirVar * Math.pow(group.dirVarMult, group.dirVarExp);
 }
 
 /**
@@ -183,16 +186,18 @@ export const SPREAD_TIME_STEP = 0.001;
 
 /** Direct Frosty exponent interpretation; M39 settled hipfire supports uniform area. */
 export function sampleSpreadRadius(w, spread, u) {
-  const dyn = w.spreadDyn?.[_ctx.aimState];
+  const dyn = spreadDynamics(w);
   const exponent = (_ctx.stanceState === 'move' ? dyn?.distExpMove : undefined)
-    ?? dyn?.distExp ?? 0.5;
+    ?? dyn.distExp;
   return spread * Math.pow(u, exponent);
 }
 
-export function spreadBounds(w) {
-  const { aimState, stanceState } = _ctx;
+export function spreadBounds(w, aimState = _ctx.aimState, stanceState = _ctx.stanceState) {
   const key = `${aimState}${stanceState === 'move' ? 'Move' : 'Stand'}`;
-  return w.spread[key];
+  const bounds = w.spread?.[key];
+  if (!Array.isArray(bounds) || bounds.length !== 2 || !bounds.every(Number.isFinite)
+    || bounds[0] < 0 || bounds[1] < bounds[0]) return [invalidData(`Missing or invalid ${w.id} spread.${key}`), NaN];
+  return bounds;
 }
 
 /**
@@ -200,15 +205,12 @@ export function spreadBounds(w) {
  * For ADS, overrides `inc` with the weapon's recoilIncAds field so attachment
  * scaling of spread-per-shot is preserved.
  */
-export function spreadDynamics(w) {
-  const { aimState } = _ctx;
-  const dyn = w.spreadDyn?.[aimState] ?? {
-    inc:          aimState === 'ads' ? (w.recoilIncAds ?? 0) : 0,
-    firingCoef:   aimState === 'ads' ? 1.22 : 0.51,
-    firingExp:    2.5,
-    firingOffset: aimState === 'ads' ? 1.84 : 3.31,
-  };
-  if (aimState === 'ads') return { ...dyn, inc: w.recoilIncAds ?? dyn.inc };
+export function spreadDynamics(w, aimState = _ctx.aimState) {
+  const dyn = requireFields(w.spreadDyn?.[aimState],
+    ['inc', 'firingCoef', 'firingExp', 'firingOffset', 'notFiringCoef', 'notFiringExp',
+      'notFiringOffset', 'distExp'], `${w.id} spreadDyn.${aimState}`);
+  if (dyn.distExpMove != null) requireNumber(dyn.distExpMove, `${w.id} spreadDyn.${aimState}.distExpMove`);
+  if (aimState === 'ads') return { ...dyn, inc: w.recoilIncAds == null ? dyn.inc : requireNumber(w.recoilIncAds, `${w.id} recoilIncAds`) };
   return dyn;
 }
 
@@ -216,8 +218,8 @@ export function spreadDynamics(w) {
 export function selectedSpreadIncFor(w) {
   const { aimState } = _ctx;
   const dyn = spreadDynamics(w);
-  if (aimState === 'ads') return w.recoilIncAds ?? dyn.inc ?? 0;
-  return dyn.inc ?? 0;
+  if (aimState === 'ads') return w.recoilIncAds ?? dyn.inc;
+  return dyn.inc;
 }
 
 // Burst fire and multi-round pump cycles share the rounds-then-pause cadence.
@@ -225,7 +227,7 @@ const hasCycleCadence = w => w.fireMode === 'burst' || w.fireMode === 'pump';
 
 /** Seconds between this shot and the next shot for the current fire mode. */
 export function shotIntervalAfter(w, shotIndex) {
-  const shotRpm = hasCycleCadence(w) && w.burstRpm ? w.burstRpm : (w.rpm ?? 600);
+  const shotRpm = hasCycleCadence(w) && w.burstRpm != null ? weaponRpm(w, 'burstRpm') : weaponRpm(w);
   const normalInterval = 60 / shotRpm;
   const burstRounds = hasCycleCadence(w) ? (w.burstRounds ?? 0) : 0;
   const burstsPerMinute = w.burstBurstsPerMinute ?? 0;
@@ -261,18 +263,16 @@ export function spreadRecoveries(w) {
   const dyn = spreadDynamics(w);
   const ads = aimState === 'ads';
   const firing = {
-    coef: (dyn.firingCoef ?? 0) * (ads ? (w._adsSpreadFiringDecCoefMult ?? 1) : (w._hipSpreadFiringDecCoefMult ?? 1)),
-    exp: dyn.firingExp ?? 1,
-    offset: (dyn.firingOffset ?? 0) *
+    coef: dyn.firingCoef * (ads ? (w._adsSpreadFiringDecCoefMult ?? 1) : (w._hipSpreadFiringDecCoefMult ?? 1)),
+    exp: dyn.firingExp,
+    offset: dyn.firingOffset *
       (ads ? (w._adsSpreadFiringDecOffsetMult ?? 1) : (w._hipSpreadFiringDecOffsetMult ?? 1)) *
       (1 + (ads ? (w._adsSpreadDecayBoost ?? 0) : 0)),
   };
   const notFiring = {
-    coef: dyn.notFiringCoef ?? firing.coef,
-    exp: dyn.notFiringExp ?? firing.exp,
-    offset: dyn.notFiringOffset != null
-      ? dyn.notFiringOffset * (ads ? (w._adsSpreadNotFiringDecOffsetMult ?? 1) : (w._hipSpreadNotFiringDecOffsetMult ?? 1))
-      : firing.offset,
+    coef: dyn.notFiringCoef,
+    exp: dyn.notFiringExp,
+    offset: dyn.notFiringOffset * (ads ? (w._adsSpreadNotFiringDecOffsetMult ?? 1) : (w._hipSpreadNotFiringDecOffsetMult ?? 1)),
   };
   return { firing, notFiring };
 }
@@ -303,7 +303,7 @@ export function effectiveSpreadMax(w, shots = SPREAD_EFFECTIVE_MAX_SHOTS) {
     const shotIndex = index + 1;
     const interval = shotIntervalAfter(w, shotIndex);
     if (isBurstGapAfter(w, shotIndex)) {
-      const firingTime = Math.min(60 / (w.rpm ?? 600), interval);
+      const firingTime = Math.min(60 / weaponRpm(w), interval);
       spread = applySpreadRecovery(spread, firingTime, firing, baseline, sMax);
       spread = applySpreadRecovery(spread, Math.max(0, interval - firingTime), notFiring, baseline, sMax);
     } else {
@@ -336,7 +336,7 @@ export function simulateSpread(w, shotCount) {
     if (shot < shotCount - 1) {
       const secBetweenShots = shotIntervalAfter(w, shot + 1);
       if (isBurstGapAfter(w, shot + 1)) {
-        const firingTime = Math.min(60 / (w.rpm ?? 600), secBetweenShots);
+        const firingTime = Math.min(60 / weaponRpm(w), secBetweenShots);
         const notFiringTime = Math.max(0, secBetweenShots - firingTime);
         spread = applySpreadRecovery(spread, firingTime, firingRecovery, baseline, sMax, dt);
         spread = applySpreadRecovery(spread, notFiringTime, notFiringRecovery, baseline, sMax, dt);
@@ -354,24 +354,24 @@ export function simulateSpread(w, shotCount) {
  * Compensation is read from ctx.compensationFn() — pages provide their own.
  */
 export function genRecoilPts(w, seed = 0, shots = 20) {
-  const { RECOIL_DEC, RECOIL_DEC_EXP, RECOIL_DEC_TEXP, compensationFn } = _ctx;
+  const { compensationFn } = _ctx;
   const rng = mulberry32((whash(w.id) ^ seed) >>> 0);
   const pts  = [{ x: 0, y: 0 }];
   const group = recoilGroup(w);
-  const baseDecF = group.decFactor  ?? RECOIL_DEC[w.id]     ?? 72;
+  const baseDecF = group.decFactor;
   const decF    = baseDecF * (_ctx.aimState === 'ads'
     ? (w._adsRecoilDecayMult ?? 1) : (w._hipRecoilDecayMult ?? 1));
-  const decExp  = group.decExp     ?? RECOIL_DEC_EXP[w.id]  ?? 1;
-  const timeExp = group.decTimeExp ?? RECOIL_DEC_TEXP[w.id] ?? 1.2;
-  const decOffset = group.decOffset ?? 0.06;
+  const decExp  = group.decExp;
+  const timeExp = group.decTimeExp;
+  const decOffset = group.decOffset;
   const amount      = selectedRecoilAmountFor(w);
   const variation   = selectedRecoilVariationFor(w);
   const compensation = compensationFn() / 100;
-  const duration = Math.max(0, group.duration ?? 0) || 0.025;
+  const duration = Math.max(0, group.duration == null ? 0 : requireNumber(group.duration, `${w.id} recoil duration`)) || 0.025;
   const pending = [];
   let cx = 0, cy = 0, now = 0;
   for (let i = 1; i < shots; i++) {
-    const dir    = -(group.dir ?? w.recoilDir ?? 0) * Math.PI / 180;
+    const dir    = -group.dir * Math.PI / 180;
     const spread = uniformDev(rng, variation) * Math.PI / 180;
     const angle  = dir + spread;
     const dx = Math.sin(angle) * amount - Math.sin(dir) * amount * compensation;
@@ -406,4 +406,24 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
     pts.push({ x: cx, y: cy });
   }
   return pts;
+}
+
+/** Validate all source simulation fields before the UI publishes any results. */
+export function validateWeaponSimulation(w) {
+  const before = dataErrorCount();
+  weaponRpm(w);
+  if (w.burstRpm != null) weaponRpm(w, 'burstRpm');
+  if (hasCycleCadence(w) && (w.fireMode === 'burst' || w.burstRounds != null || w.burstBurstsPerMinute != null)) {
+    const rounds = requireNumber(w.burstRounds, `${w.id} burstRounds`);
+    if (!Number.isInteger(rounds) || rounds < 1) invalidData(`Invalid ${w.id} burstRounds`);
+    weaponRpm(w, 'burstBurstsPerMinute');
+  }
+  requireFields(w, ['recoilV', 'recoilVar', 'recoilIncAds'], w.id);
+  for (const aim of ['ads', 'hip']) {
+    const group = requiredRecoilGroup(w, aim);
+    if (group.duration != null) requireNumber(group.duration, `${w.id} recoil.${aim}.duration`);
+    spreadDynamics(w, aim);
+    for (const stance of ['stand', 'move']) spreadBounds(w, aim, stance);
+  }
+  return dataErrorCount() === before;
 }

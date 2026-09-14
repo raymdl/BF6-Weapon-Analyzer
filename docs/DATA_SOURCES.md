@@ -42,6 +42,17 @@ unsupported spread penalties were removed after matched screenshot review.
 The [maintenance workflow](../MAINTENANCE.md#regenerate-attachment-modifiers)
 provides the commands. Source-only ability branches do not establish availability.
 
+The [compatibility generator](../scripts/frosty-attachment-compatibility.py)
+separately reads physical slot assignments from root-listed ability branches and
+prerequisite attachment IDs from `Equipment_*` records. Its
+[evidence](../reference-data/provenance/frosty-attachment-compatibility.json)
+covers 1,392 offered mount choices and 285 dependency entries: 22 rules map to
+offered attachments on four weapons; 263 secondary-sight entries are not offered
+or lack a reviewed site identity. The PP-19 30/53-round screenshots corroborate
+the dependency interpretation. Native hashed enum semantics and live overrides
+are not inferred. The [Frosty collection records](../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies)
+retain asset findings and collection/recheck requirements.
+
 ## What the current baseline means
 
 Attachment tooltip text is maintained separately from mechanics. The
@@ -102,10 +113,15 @@ status as validation of the entire simulator.
 
 ## Local Frosty export location
 
-As of 9 September 2026, the local XML export root is:
+The Frosty source and runtime are under
+`C:\Users\royal\Documents\BF6 Datamining\FrostyToolsuite-battlefield6`.
+There is no second nested `FrostyToolsuite-battlefield6` folder. The runtime
+directory is `FrostyEditor\bin\Release\Final` beneath this tools root.
+
+As of 14 September 2026, the local 1.4.2.5 XML export root is:
 
 ```text
-C:\Users\royal\Documents\BF6 Datamining\Frosty
+C:\Users\royal\Documents\BF6 Datamining\Frosty Exports\1.4.2.5
 ```
 
 The export root contains `_AF`, `Animations`, `Common`, and `Game`. Frosty asset
@@ -115,7 +131,7 @@ extraction scripts, handoff, and `research-1.4.2.5` remain in the parent
 `BF6 Datamining` folder. The `Battlefield 6 Offsets HTML` collection also remains
 in that parent folder.
 
-For analyzer tools that accept the XML export root, use `--root "../BF6 Datamining/Frosty"`
+For analyzer tools that accept the XML export root, use `--root "../BF6 Datamining/Frosty Exports/1.4.2.5"`
 from the analyzer repository. Historical reports and provenance can retain the
 old absolute export paths; substitute the new root when locating their XML inputs,
 without rewriting recorded hashes or moving manifest/research paths.

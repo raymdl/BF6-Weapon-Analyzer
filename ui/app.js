@@ -1,3 +1,5 @@
+import { createDataErrorNotice } from './data-errors.js';
+import { requireNumber, setDataErrorReporter, invalidData } from '../sim/required-data.js';
 import { formatMilliseconds, formatMovementMultiplier } from './format.js';
 import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
@@ -5,12 +7,12 @@ import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilAmountBeforePlatformFor, selectedRecoilVariationFor,
-  spreadBounds, sampleSpreadRadius, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
+  spreadBounds, spreadDynamics, weaponRpm, validateWeaponSimulation, sampleSpreadRadius, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
   simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
 import { captureView, captureFilename } from './capture.js';
-import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange } from '../sim/damage.js';
+import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange, zoneMultiplierForWeapon, resolveHitMultipliers } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
 import { createShareCodec, TARGET_DEFAULT_DISTANCE } from '../sim/share-state.js';
 import { drawTarget, targetAimOffset, targetFrame, targetMarkerRadius, whenTargetImageReady } from '../sim/target.js';
@@ -24,6 +26,9 @@ async function fetchJson(url) {
   return r;
 }
 
+const reportDataError = createDataErrorNotice();
+setDataErrorReporter(reportDataError);
+
 let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips;
 try {
   [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips] = await Promise.all([
@@ -36,9 +41,16 @@ try {
     fetchJson('./data/hit_zones.json').then(r => r.json()),
     fetchJson('./data/attachment-tooltips.json').then(r => r.json()),
   ]);
+  for (const weapon of W) {
+    validateWeaponSimulation(weapon);
+    requireNumber(_balance.RECOIL_MULT?.[weapon.id], `${weapon.id} RECOIL_MULT`);
+    const ammo = _ammo.WEAPON_AMMO?.[weapon.id];
+    if (!ammo?.ammo || !Object.hasOwn(ammo.ammo, ammo.def)) invalidData(`Missing or invalid ${weapon.id} ammo data`);
+    resolveHitMultipliers(weapon.id, null, { HIT_ZONES: _hitZones });
+    for (const id of Object.keys(ammo?.ammo ?? {})) resolveHitMultipliers(weapon.id, { id }, { HIT_ZONES: _hitZones });
+  }
 } catch (err) {
-  document.body.insertAdjacentHTML('beforeend',
-    '<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0e0e;color:#e05555;font-family:sans-serif;font-size:1rem">Failed to load weapon data. Please reload the page.</div>');
+  reportDataError(new Error(`Failed to load weapon data: ${err.message}`));
   throw err;
 }
 
@@ -254,7 +266,7 @@ function getDmg(weapon, range) {
   return damageAtRange(weapon, range);
 }
 function limbMult(weapon) {
-  return weapon._limbMult ?? 1;
+  return zoneMultiplierForWeapon(weapon, 'limb');
 }
 // Bullets to kill with `headshots` headshots and every remaining hit on a non-head
 // zone with damage multiplier `zoneMult` (1 = chest, weapon's limb mult = arms/legs).
@@ -263,7 +275,7 @@ function getBTKWithHits(weapon, range, headshots = 0, zoneMult = 1) {
   return bulletsToKillAtRange(weapon, range, { headshots, bodyMultiplier: zoneMult });
 }
 function getTTK(weapon, btk) {
-  if (!weapon.rpm || btk == null || !Number.isFinite(btk)) return null;
+  if (!Number.isFinite(weapon.rpm) || weapon.rpm <= 0 || btk == null || !Number.isFinite(btk)) return null;
   let ms = 0;
   for (let i = 1; i < btk; i++) ms += shotIntervalAfter(weapon, i) * 1000;
   return Math.round(ms);
@@ -310,7 +322,7 @@ function targetVerticalOffsetMeters(weapon) {
   return resolved;
 }
 function fmtTTK(ms) {
-  return ms === null ? '—' : ms === 0 ? '0ms' : ms + 'ms';
+  return !Number.isFinite(ms) ? '—' : ms === 0 ? '0ms' : ms + 'ms';
 }
 function maxRange(weapons) {
   const cls = weapons.filter(Boolean).map(w => w.cls);
@@ -623,7 +635,7 @@ function renderOverview() {
   hdr.innerHTML = '';
   const burstBadgeTooltip = w => {
     if (w.fireMode !== 'burst' || !w.burstRounds) return '';
-    const intraMs = 1000 * (60 / (w.burstRpm ?? w.rpm ?? 600));
+    const intraMs = 1000 * (60 / (weaponRpm(w, w.burstRpm == null ? 'rpm' : 'burstRpm')));
     const postMs = 1000 * shotIntervalAfter(w, w.burstRounds);
     const extraMs = Math.max(0, postMs - intraMs);
     const effectiveRpm = w.burstBurstsPerMinute
@@ -720,7 +732,7 @@ function renderOverview() {
       tooltip: 'Vertical recoil added per shot while aiming down sights. Lower is easier to control.' },
     { lbl: 'Recoil Dir',  k: 'recoilDir',                                unit: '°',   fmt: v => ((-v) >= 0 ? '+' : '') + (-v),       absDiff: true, group: 'recoil',
       tooltip: 'Average recoil direction from vertical. Positive values pull right; negative values pull left.' },
-    { lbl: 'ADS Spread', compute: w => ({ stand: w.spread?.adsStand?.[0] ?? 0.05, move: w.spread?.adsMove?.[0] ?? 0.32 }), unit: '',
+    { lbl: 'ADS Spread', compute: w => ({ stand: w.spread.adsStand[0], move: w.spread.adsMove[0] }), unit: '',
       fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true, group: 'spread',
       tooltip: 'Base standing ADS spread and moving ADS spread. Lower is more accurate.' },
@@ -766,12 +778,19 @@ function renderOverview() {
   });
 
   const cardValueHtml = f => {
-    const getVal = w => f.compute ? f.compute(w) : w?.[f.k];
+    const getVal = w => {
+      let value;
+      try { value = f.compute ? f.compute(w) : w?.[f.k]; }
+      catch (error) { reportDataError(new Error(`${w?.id} ${f.lbl}: ${error.message}`)); return null; }
+      const valid = v => typeof v === 'number' ? Number.isFinite(v)
+        : v && typeof v === 'object' ? Object.values(v).every(valid) : v != null;
+      return valid(value) ? value : null;
+    };
     const isEst = w => f.estFn ? f.estFn(w) : f.est;
     if (!w2 || !state.comparing) {
       const wx = w1 || w2;
       const v = getVal(wx);
-      return `<div class="sval c1">${f.fmt(v)}<span class="sunit">${f.unit}</span>${isEst(wx) ? '<span class="sest">est</span>' : ''}</div>`;
+      return `<div class="sval c1">${v == null ? '—' : f.fmt(v)}<span class="sunit">${f.unit}</span>${isEst(wx) ? '<span class="sest">est</span>' : ''}</div>`;
     }
     const v1 = w1 ? getVal(w1) : null, v2 = w2 ? getVal(w2) : null;
     let diff = '';
@@ -944,7 +963,9 @@ function renderChart() {
     legEl.innerHTML = legHtml;
   }
 
-  const missingDamage = [w1, w2].some(weapon => weapon && (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0));
+  const missingDamage = [w1, w2].some(weapon => weapon && (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0
+    || (mode !== 'dmg' && (!Number.isFinite(weapon._hsMult) || !Number.isFinite(weapon._limbMult)))
+    || (mode === 'ttk' && !Number.isFinite(weaponRpm(weapon)))));
   if (missingDamage) {
     if (dmgChart) {
       dmgChart.destroy();
@@ -1115,7 +1136,7 @@ function renderChart() {
             const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
             const line = `${chartWeaponDisplayLabel(w)}: ${d.toFixed(1)} dmg`;
             if (limbMult(w) === 1) return line;
-            const dl = d * limbMult(w), dh = d * (w._hsMult ?? 1.34);
+            const dl = d * limbMult(w), dh = d * zoneMultiplierForWeapon(w, 'head');
             return [line, `  limbs ${dl.toFixed(1)} · head ${Math.min(100, dh).toFixed(1)}`];
           },
         },
@@ -1154,7 +1175,7 @@ function renderBTK() {
   // Each cell shows chest–limb ranges when the limb multiplier changes the outcome.
   const cells = (w, r) => {
     const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
-    if (b == null || bl == null) return { bTxt: '—', tTxt: '—' };
+    if (!Number.isFinite(b) || !Number.isFinite(bl)) return { bTxt: '—', tTxt: '—' };
     const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
     const tTxt = bl !== b
       ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
@@ -1621,7 +1642,7 @@ function signedOppositeDegrees(deg) {
   return n > 180 ? n - 360 : n;
 }
 
-function selectedRecoilDirectionFor(w) { return recoilGroup(w).dir ?? w.recoilDir ?? 0; }
+function selectedRecoilDirectionFor(w) { return recoilGroup(w).dir; }
 
 /**
  * Match the backing store to the rendered size so the plot stays crisp as its
@@ -1904,14 +1925,14 @@ function renderAttachmentStats(loadouts) {
   };
   const escAttr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const adsSpreadRecovery = w => {
-    const dyn = w.spreadDyn?.ads;
-    return (dyn?.firingOffset ?? 1.84)
+    const dyn = spreadDynamics(w, 'ads');
+    return dyn.firingOffset
       * (w._adsSpreadFiringDecOffsetMult ?? 1)
       * (1 + (w._adsSpreadDecayBoost ?? 0));
   };
   const hipSpreadRecovery = w => {
-    const dyn = w.spreadDyn?.hip;
-    return (dyn?.firingOffset ?? 3.31)
+    const dyn = spreadDynamics(w, 'hip');
+    return dyn.firingOffset
       * (w._hipSpreadFiringDecOffsetMult ?? 1);
   };
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
@@ -1987,7 +2008,10 @@ function renderAttachmentStats(loadouts) {
     const chips = [];
     metrics.forEach(m => {
       const baseVal = m.val(base), curVal = m.val(cur);
-      if (baseVal == null || curVal == null) return;
+      if (!Number.isFinite(baseVal) || !Number.isFinite(curVal)) {
+        chips.push(`<div class="att-chip"><div class="att-chip-lbl">${m.lbl}</div><div class="att-chip-val" title="Data unavailable">—</div></div>`);
+        return;
+      }
       const delta = +(curVal - baseVal).toFixed(Math.max(m.dec, 3));
       if (Math.abs(delta) < 0.0005) return;
       const better = (m.higherBetter && delta > 0) || (m.lowerBetter && delta < 0);
@@ -2068,6 +2092,15 @@ function renderRecoil({ plotOnly = false } = {}) {
   scheduleUrlSync();
   const w1 = selectedWeaponBuild(state.slots[0]);
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  if ([w1, w2].some(w => w && !validateWeaponSimulation(w))) {
+    const canvas = document.getElementById('rcMain');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#aab7bb'; ctx.font = '14px sans-serif';
+    ctx.fillText('Simulation unavailable: missing weapon data.', 20, 40);
+    document.getElementById('rcStats').textContent = 'Simulation unavailable. Use View errors for details.';
+    return;
+  }
   const shotCount = selectedRecoilShotCount();
   // The base frame feeds the auto magnification, so it has to settle before
   // any of the control read-outs are written.

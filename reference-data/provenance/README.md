@@ -16,6 +16,8 @@ for future review.
 
 Current attachment generation:
 
+- [Physical slots and equipment dependencies](frosty-attachment-compatibility.json) (14 September): 1,392 offered mount choices, 22 generated rules on four weapons, and all 285 inspected dependency entries, including 263 unsupported/unmapped secondary-sight entries. [PP-19 trace](../../docs/working/PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) and [curated asset findings](../frosty/README.md#shared-slots-and-attachment-dependencies) retain the source and observed-behavior boundaries.
+
 - [Barrel ADS](frosty-barrel-ads-generated.json): 233 unique selections.
 - [Grip/laser/magazine handling](frosty-attachment-handling-generated.json): 1,488 selections and 5,493 generated fields.
 - [Mapping follow-up](frosty-handling-mapping-followup.json), [unbound-selector review](frosty-handling-unbound-selector-review.json), and [coordinate proof](frosty-handling-coordinate-proof.json): accepted identities, historical spread exceptions, and base/modifier conversion evidence.

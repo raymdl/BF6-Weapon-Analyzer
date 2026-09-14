@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Frosty per-build collection manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "build", "startedUtc", "completedUtc", "watchlistSha256", "catalogSha256", "tools", "assets", "supportFiles", "issues"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "status": { "enum": ["in-progress", "partial", "complete"] },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "verified", "evidence"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "verified": { "type": "boolean" },
+        "evidence": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "startedUtc": { "type": "string", "format": "date-time" },
+    "completedUtc": { "type": ["string", "null"], "format": "date-time" },
+    "watchlistSha256": { "$ref": "#/$defs/sha256" },
+    "catalogSha256": { "$ref": "#/$defs/sha256" },
+    "tools": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["name", "identity"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "identity": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["path", "guid", "dependencyScan", "dependencies", "exports"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "guid": { "type": ["string", "null"] },
+          "dependencyScan": { "enum": ["complete", "partial", "not-run"] },
+          "dependencies": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "exports": {
+            "type": "array", "minItems": 1,
+            "items": { "$ref": "#/$defs/export" }
+          }
+        }
+      }
+    },
+    "supportFiles": { "type": "array", "items": { "$ref": "#/$defs/export" } },
+    "issues": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "export": {
+      "type": "object", "additionalProperties": false,
+      "required": ["format", "status"],
+      "properties": {
+        "format": { "enum": ["raw-ebx", "xml", "descriptor", "strings", "res", "chunk", "other"] },
+        "status": { "enum": ["success", "failed", "missing", "skipped"] },
+        "source": { "type": "string", "minLength": 1 },
+        "file": { "type": "string", "minLength": 1, "description": "Path relative to the collection directory." },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "reason": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [{
+        "if": { "properties": { "status": { "const": "success" } } },
+        "then": { "required": ["file", "bytes", "sha256"] },
+        "else": { "required": ["reason"] }
+      }]
+    }
+  }
+}

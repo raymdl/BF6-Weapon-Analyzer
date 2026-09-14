@@ -18,6 +18,14 @@ that the current resolver has since addressed.
 
 ## Current attachment source boundaries
 
+Shared grip/laser/light slots are generated from Frosty for all offered mount
+choices. Equipment dependencies are enforced where source identities map to site
+choices. This is not a complete model of every game attachment: 263 inspected
+secondary-sight dependency entries remain outside the current site's supported
+choices or reviewed mapping. The PP-19 restriction is corroborated by supplied
+game screenshots; the other generated dependencies are source-backed without
+equivalent new in-game tests. Collection/build and live-override limits remain.
+
 Linear Comp and all eight supported burst selections now have source-backed
 ADS/hip amount and variation steps. Their old whole-record assumption flags
 are removed. This does not validate burst cadence or the native recovery equation.

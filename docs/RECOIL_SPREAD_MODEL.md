@@ -139,8 +139,8 @@ most 1 ms and split delivery around recovery. The time-power integral is exact;
 for `decExp = 1`, each recovery step also uses the exact displacement solution.
 Other displacement exponents use small numerical steps. Recovery continues after
 delivery with the same clock age. Overlapping impulses retain their full input.
-The selected recoil group supplies recovery parameters,
-with legacy table/default fallbacks. `_adsRecoilDecayMult` or
+The selected recoil group must supply explicit recovery parameters; missing
+values are reported and the dependent simulation is unavailable. `_adsRecoilDecayMult` or
 `_hipRecoilDecayMult` scales the factor for the selected aim state.
 
 Smooth recoil uses the selected source duration as an override and the selected
@@ -230,7 +230,7 @@ spread = clamp(spread, baseline, maximum)
 
 Ordinary shot intervals use firing recovery. A post-burst interval first uses
 firing recovery for `min(60 / rpm, interval)`, then not-firing recovery for the
-remaining time. Missing not-firing fields fall back to the final firing parameters.
+remaining time. Explicit not-firing fields are required; missing values are reported.
 No recovery after the last recorded shot is needed for `simulateSpread()`.
 Retained `idleTime`, `idleCoef`, `idleExp`, `idleOffset` and `firstShotMul`
 do not introduce an idle-state machine or first-shot multiplier.
@@ -282,7 +282,7 @@ for both standing and moving. Hip growth and recovery retain their own inputs.
 | `adsSpreadNotFiringDecOffsetMult` | 0.666667 | Explicit not-firing recovery offset |
 
 The recovery exponent and spread minima are unchanged. Missing not-firing
-parameters still follow the fallback described above. Muzzle recovery boosts
+parameters are required, as described above. Muzzle recovery boosts
 scale the ADS firing offset separately.
 
 The resolver preserves increment precision for simulation. Scaling the flat
@@ -311,11 +311,12 @@ all 137 supported selections.
 
 The recovery exponents and light-only spread bounds stay unchanged. A combo's
 laser still changes minimum spread through its existing tier. Missing non-firing
-parameters use the adjusted firing fallback. ADS is unaffected by these factors.
+parameters are reported as unavailable. ADS is unaffected by these factors.
 
 The resolver reads lights in ordinary or combined slots and combo effects from
-the laser slot. Separate selected light and combo-laser factors multiply; a light
-in a combined slot is counted once. Selection treats the light as active. Native
+the laser slot. Current Frosty slot assignments prevent selecting a separate light
+alongside a combo laser; a shared-slot device contributes its light factors once.
+Selection treats the light as active. Native
 switching and the modifier operation order have not been decoded. See the
 [source/selection trace](../reference-data/provenance/frosty-light-implementation-2026-09-13.json).
 

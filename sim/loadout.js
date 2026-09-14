@@ -22,7 +22,9 @@ export function normalizeMountAtts(atts, weapon, data) {
     const options = availableMountAttachments(weapon, 'rail', data);
     const selected = Object.hasOwn(atts, 'rail')
       ? options.find(a => a.id === atts.rail?.id && a.type === atts.rail?.type)
-      : options.find(a => a.id === atts.laser);
+      : options.find(a => a.id === atts.laser)
+        ?? options.find(a => a.type === 'light' && a.id === atts.light)
+        ?? options.find(a => a.type === 'grip' && a.id === atts.grip);
     result.rail = selected ? { type: selected.type, id: selected.id } : null;
     for (const type of slots.rail.accepts) delete result[type];
   } else {
@@ -31,9 +33,54 @@ export function normalizeMountAtts(atts, weapon, data) {
   return result;
 }
 
+function defaultSelection(weapon, slot, data) {
+  if (slot === 'mag') return data.WEAPON_MAG?.[weapon?.id]?.def ?? null;
+  if (slot === 'barrel') return data.WEAPON_ATTS?.[weapon?.id]?.barrelDef ?? 'basic';
+  if (slot === 'ammo') return data.WEAPON_AMMO?.[weapon?.id]?.def ?? 'standard';
+  return slot === 'sight' ? 'iron' : 'none';
+}
+
+function selectedAttachment(weapon, slot, atts, data) {
+  if (attachmentSlots(weapon, data).rail?.accepts.includes(slot)) {
+    return atts.rail?.type === slot ? atts.rail.id : 'none';
+  }
+  return atts[slot] ?? defaultSelection(weapon, slot, data);
+}
+
+/** Frosty equipment dependencies list alternative permitted prerequisites. */
+export function attachmentCompatible(weapon, slot, id, atts, data) {
+  return (data.WEAPON_ATTS?.[weapon?.id]?.dependencies ?? [])
+    .filter(rule => rule.slot === slot && rule.attachment === id)
+    .every(rule => rule.requiresAny.some(required =>
+      selectedAttachment(weapon, required.slot, atts, data) === required.attachment));
+}
+
+/** Remove dependent selections when their prerequisites no longer apply. */
+export function normalizeAttachments(atts, weapon, data) {
+  const result = normalizeMountAtts(atts, weapon, data);
+  const rules = data.WEAPON_ATTS?.[weapon?.id]?.dependencies ?? [];
+  // A removal can invalidate another dependent choice. Bound the fixed-point pass.
+  for (let pass = 0; pass <= rules.length; pass++) {
+    let changed = false;
+    for (const rule of rules) {
+      if (selectedAttachment(weapon, rule.slot, result, data) !== rule.attachment
+          || attachmentCompatible(weapon, rule.slot, rule.attachment, result, data)) continue;
+      if (attachmentSlots(weapon, data).rail?.accepts.includes(rule.slot)) {
+        result.rail = null;
+      } else {
+        const fallback = defaultSelection(weapon, rule.slot, data);
+        result[rule.slot] = fallback === rule.attachment ? 'none' : fallback;
+      }
+      changed = true;
+    }
+    if (!changed) break;
+  }
+  return result;
+}
+
 /** The single source of selected grip/laser/light records for all consumers. */
 export function resolveMountAttachments(atts, weapon, data) {
-  const normalized = normalizeMountAtts(atts, weapon, data);
+  const normalized = normalizeAttachments(atts, weapon, data);
   const resolved = Object.fromEntries(Object.entries(MOUNT_CATALOGS).map(([type, catalog]) =>
     [type, (data[catalog] ?? []).find(a => a.id === 'none') ?? { id: 'none', pts: 0 }]));
   for (const [slot, definition] of Object.entries(attachmentSlots(weapon, data))) {
@@ -98,13 +145,19 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.ammo = data.WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
   atts.mag = data.WEAPON_MAG[weapon?.id]?.def ?? null;
   atts.ergo = 'none';
-  const normalized = normalizeMountAtts(atts, weapon, data);
+  const normalized = normalizeAttachments(atts, weapon, data);
   for (const key of ['grip', 'laser', 'light']) if (!Object.hasOwn(normalized, key)) delete atts[key];
   Object.assign(atts, normalized);
 }
 
 /** Selectable items for one weapon slot. Shared by the editor and URL decoder. */
-export function availableAttachments(weapon, key, data) {
+export function availableAttachments(weapon, key, data, atts = null) {
+  const options = attachmentOptions(weapon, key, data);
+  return atts ? options.filter(a => a.id === 'none'
+    || attachmentCompatible(weapon, a.type ?? key, a.id, atts, data)) : options;
+}
+
+function attachmentOptions(weapon, key, data) {
   if (!weapon) return [];
   const wa = data.WEAPON_ATTS?.[weapon.id];
   if (key === 'rail' || Object.hasOwn(MOUNT_CATALOGS, key)) {
@@ -139,6 +192,7 @@ export function isAssumedAtt(a) {
 export function computeAttPts(atts, weapon, data) {
   const wid = weapon?.id;
   if (!wid) return 0;
+  atts = normalizeAttachments(atts, weapon, data);
   const lookups = getLookups(data);
   const wm = data.WEAPON_MAG[wid] ?? null;
   const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
@@ -163,6 +217,7 @@ export function attDisplayName(a) {
 
 export function hasSelectedAssumedAtt(atts, data, weapon = null) {
   if (!atts) return false;
+  atts = normalizeAttachments(atts, weapon, data);
   const lookups = getLookups(data);
   const wm = data.WEAPON_MAG?.[weapon?.id];
   const selected = [

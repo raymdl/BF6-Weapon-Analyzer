@@ -43,7 +43,10 @@ not establish the native engine formulas. See [recoil and spread](docs/RECOIL_SP
 for the attachment exceptions, formulas, and evidence limits.
 
 Attachment handling now uses generated per-weapon Frosty modifiers. Shared
-grip/laser/light rails use one menu and retain compatibility with existing links.
+grip/laser/light rails now use Frosty slot assignments, including KORD and KTS100.
+Equipment dependency rules filter valid combinations and clear incompatible
+attachments when a prerequisite changes, including PP-19 grips with the 53-round
+magazine. Existing links are normalized to these rules.
 The [attachment guide](docs/ATTACHMENT_MODEL.md) covers barrel ADS timing,
 sniper brake steps, Linear Comp/burst recoil and the belt-box description
 mismatches. Source-backed modifiers do not establish native simulation formulas.

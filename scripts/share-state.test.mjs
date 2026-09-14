@@ -50,7 +50,7 @@ test('combined slots accept their supported items without enabling a second occu
     const atts = { ...defaults(w), rail: { type: id === 'vz61' ? 'grip' : 'light', id: laser } };
     assert.deepEqual(codec.decodeAtts(w, codec.encodeAtts(w, atts)), atts);
     const lightIndex = data.LIGHTS.findIndex(a => a.id === 'flashlight');
-    assert.equal(codec.decodeAtts(w, `T${lightIndex}`).rail, null);
+    assert.deepEqual(codec.decodeAtts(w, `T${lightIndex}`).rail, { type: 'light', id: 'flashlight' });
   }
 });
 

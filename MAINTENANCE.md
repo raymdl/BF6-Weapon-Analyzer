@@ -74,9 +74,25 @@ Do not promote unresolved fields or source-only attachment availability.
 The [generation report](docs/working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
 records accepted mappings and remaining exceptions.
 
-When editing shared rails, update `WEAPON_ATTS.slots` and category availability.
+Regenerate shared rails and attachment dependencies from Frosty rather than
+editing `WEAPON_ATTS.slots` or `dependencies` by hand:
+
+```sh
+python scripts/frosty-attachment-compatibility.py --root <Frosty-export-root> --check
+```
+
+Omit `--check` to regenerate. Review the catalog and
+`reference-data/provenance/frosty-attachment-compatibility.json` together.
+Missing or ambiguous offered slot identities stop generation. Dependencies use
+reviewed attachment identities; unsupported source options remain in evidence.
 Keep positional URL tokens stable. Check replacement, empty selection, point
-costs, legacy links, reload and weapon switching.
+costs, legacy links, prerequisite changes and weapon switching.
+
+After reviewing compatibility changes, update the
+[Frosty asset findings](reference-data/frosty/README.md#shared-slots-and-attachment-dependencies)
+with source hashes, evidence pointers and limits. Run
+`python scripts/frosty-watchlist-merge.py --datamining <datamining-root>` to review
+collection changes, then add `--write` to save them. Preserve earlier findings.
 
 ## Regenerate attachment tooltips
 

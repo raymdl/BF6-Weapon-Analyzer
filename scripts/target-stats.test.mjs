@@ -7,14 +7,14 @@ const render = weapon => targetImpactStatsHtml([{ weapon, zones: ['head', 'chest
 });
 
 test('target output retains damage above 100 and explains the simulated result', () => {
-  const html = render({ name: 'Test rifle', dmg: [{ r: 0, d: 80 }], _hsMult: 1.75 });
+  const html = render({ name: 'Test rifle', dmg: [{ r: 0, d: 80 }], _hsMult: 1.75, _limbMult: 0.67 });
   assert.match(html, /140\.0/);
   assert.match(html, /220\.0/);
   assert.match(html, /simulated spray/);
 });
 
 test('pellet loads do not publish unsupported target hit and lethal figures', () => {
-  const weapon = { name: 'Test shotgun', dmg: [{ r: 0, d: 10 }], pellets: 16 };
+  const weapon = { name: 'Test shotgun', dmg: [{ r: 0, d: 10 }], pellets: 16, _hsMult: 1.34, _limbMult: 1 };
   const html = render(weapon);
   assert.match(html, /Pellet impacts are not simulated/);
   assert.doesNotMatch(html, /<table|Spray hit rate|<span>Lethal/);

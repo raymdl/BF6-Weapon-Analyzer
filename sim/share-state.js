@@ -1,4 +1,4 @@
-import { availableAttachments, attachmentSlots, normalizeMountAtts } from './loadout.js';
+import { availableAttachments, attachmentSlots, normalizeAttachments } from './loadout.js';
 
 export const TARGET_DEFAULT_DISTANCE = 20;
 
@@ -34,13 +34,13 @@ export function createShareCodec({
   const data = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
     WEAPON_MAG, WEAPON_ERGO, WEAPON_ATTS, WEAPON_AMMO };
   const allowed = (weapon, key, id) => availableAttachments(weapon,
-    key === 'laser' && attachmentSlots(weapon, data).rail ? 'rail' : key, data).some(a => a.id === id);
+    attachmentSlots(weapon, data).rail?.accepts.includes(key) ? 'rail' : key, data).some(a => a.id === id);
   const catIdx = (arr, id) => arr.findIndex(item => item.id === id);
   const magKeysFor = weapon => Object.keys(WEAPON_MAG[weapon.id]?.mags ?? {});
 
   function encodeAtts(weapon, atts) {
     const defaults = defaultAttsForWeapon(weapon);
-    atts = normalizeMountAtts(atts, weapon, data);
+    atts = normalizeAttachments(atts, weapon, data);
     const out = [];
     const emit = (key, arr, id) => {
       const index = catIdx(arr, id);
@@ -73,7 +73,7 @@ export function createShareCodec({
       if (!key || id == null) return;
       if (allowed(weapon, key, id)) atts[key] = id;
     });
-    return normalizeMountAtts(atts, weapon, data);
+    return normalizeAttachments(atts, weapon, data);
   }
 
   function decodeAtts(weapon, value) {
@@ -102,7 +102,7 @@ export function createShareCodec({
       else if (key === 'E') set(ERGOS, index, 'ergo');
       else if (key === 'K' && magKeys[index]) atts.mag = magKeys[index];
     }
-    return normalizeMountAtts(atts, weapon, data);
+    return normalizeAttachments(atts, weapon, data);
   }
 
   function encodeState(state, selectedRecoilShotCount = () => 20) {

@@ -1,5 +1,5 @@
 import { ATTACHMENT_SLOT_KEYS } from '../sim/attachments.js';
-import { availableAttachments, attachmentSlots, computeAttPts, getAttPts, attDisplayName, isAssumedAtt } from '../sim/loadout.js';
+import { availableAttachments, attachmentSlots, normalizeAttachments, computeAttPts, getAttPts, attDisplayName, isAssumedAtt } from '../sim/loadout.js';
 
 let selectSequence = 0;
 
@@ -63,6 +63,14 @@ export function renderAttachmentSection({
   onChange = () => {},
 }) {
   if (!container) return;
+  const normalizeSelection = () => {
+    const normalized = normalizeAttachments(atts, weapon, data);
+    for (const key of ['grip', 'laser', 'light', 'rail']) {
+      if (!Object.hasOwn(normalized, key)) delete atts[key];
+    }
+    Object.assign(atts, normalized);
+  };
+  normalizeSelection();
   container.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
   const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
   const tooltipFor = (slot, id) => {
@@ -85,7 +93,12 @@ export function renderAttachmentSection({
     } else {
       atts[key] = value;
     }
-    updateAttTotal(containerId, atts, weapon, data);
+    normalizeSelection();
+    if (wa?.dependencies?.length) {
+      renderAttachmentSection({ containerId, container, atts, weapon, data, onChange });
+    } else {
+      updateAttTotal(containerId, atts, weapon, data);
+    }
     onChange({ key, value });
   };
 
@@ -109,7 +122,7 @@ export function renderAttachmentSection({
       return;
     }
 
-    const visible = availableAttachments(weapon, key, data);
+    const visible = availableAttachments(weapon, key, data, atts);
     if (key === 'muzzle') {
       // Sort the menu without changing historical share-token indices.
       const compensatorIndex = visible.findIndex(a => a.id === 'compensator');
@@ -146,7 +159,7 @@ export function renderAttachmentSection({
   });
 
   const wAmmo = weapon ? (data.WEAPON_AMMO[weapon.id] ?? null) : null;
-  const ammoList = availableAttachments(weapon, 'ammo', data);
+  const ammoList = availableAttachments(weapon, 'ammo', data, atts);
   if (ammoList.length > 1) {
     appendSelectRow(container, {
       label: 'Ammo',
@@ -174,10 +187,10 @@ export function renderAttachmentSection({
     appendSelectRow(container, {
       label: 'Mag',
       value: atts.mag ?? wm.def,
-      options: Object.entries(wm.mags).map(([id, m]) => ({
-        id,
+      options: availableAttachments(weapon, 'mag', data, atts).map(m => ({
+        id: m.id,
         text: m.pts > 0 ? `${attDisplayName(m)} [${m.pts}]` : attDisplayName(m),
-        description: tooltipFor('mag', id),
+        description: tooltipFor('mag', m.id),
         assumed: isAssumedAtt(m),
       })),
       onChange: value => handleChange('mag', value),
@@ -192,7 +205,7 @@ export function renderAttachmentSection({
     });
   }
 
-  const visibleErgos = availableAttachments(weapon, 'ergo', data);
+  const visibleErgos = availableAttachments(weapon, 'ergo', data, atts);
   if (visibleErgos.length > 1 && weapon) {
     appendSelectRow(container, {
         label: 'Ergo',
