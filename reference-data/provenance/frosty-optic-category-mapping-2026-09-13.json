@@ -5,7 +5,8 @@
     "linkedCategories": 350,
     "sourceSights": 1927,
     "classifiedSights": 1927,
-    "unresolvedSights": 0
+    "unresolvedSights": 0,
+    "ironSightTooltips": 63
   },
   "categories": [
     {
@@ -67,7 +68,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m433",
@@ -1708,334 +1714,29 @@
             }
           ],
           "sourcePointCost": 5,
-          "label": null,
-          "classification": "Exact IronSights attachment name and bound U_WPM_IronSights selector; UI label unresolved",
+          "label": "Basic Sight",
+          "classification": "English UI label and site point category",
           "uiLink": {
-            "method": "same-optic-model-and-selector",
+            "method": "same-weapon-iron-sight-descriptor",
             "assets": [
-              "common/hardware/weapons/mg/mg5/ad_mg5_ironsights",
-              "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "common/ui/static/metadata/attachments/xm7/ad_xm7_sight"
+              "common/ui/static/metadata/attachments/g36/ad_g36_sight"
             ]
           },
           "descriptions": [
             {
-              "asset": "common/hardware/weapons/mg/mg5/ad_mg5_ironsights"
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "id": "A2BEF776",
-              "text": "Classic, basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "id": "9725C2E0",
-              "text": "Basic aperture sight with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/xm7/ad_xm7_sight",
+              "asset": "common/ui/static/metadata/attachments/g36/ad_g36_sight",
               "id": "0BB6AC0B",
               "text": "Basic sights with reduced weapon sway."
             }
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "b36a4",
@@ -3701,7 +3402,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "sor556",
@@ -5372,7 +5078,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "ak4d",
@@ -7043,7 +6754,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "tr7",
@@ -8714,7 +8430,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "kord6p67",
@@ -10380,7 +10101,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "nvo228e",
@@ -12051,7 +11777,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "l85a3",
@@ -13722,7 +13453,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "vcr2",
@@ -15478,7 +15214,14 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "A2BEF776",
+      "tooltipSourceIds": [
+        "A2BEF776"
+      ],
+      "tooltipStatus": "source-linked",
+      "tooltipDefaultDescriptor": "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
+      "tooltipDefaultReason": "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. Other category members are retained as evidence only."
     },
     {
       "weapon": "m16a4",
@@ -17184,7 +16927,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m4a1",
@@ -18750,7 +18498,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m277",
@@ -20371,7 +20124,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "ak205",
@@ -21942,7 +21700,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m417a2",
@@ -23532,7 +23295,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "grtbc",
@@ -25103,7 +24871,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "qbz192",
@@ -26674,7 +26447,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "sg553r",
@@ -28245,7 +28023,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "sor300sc",
@@ -29966,7 +29749,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "sgx",
@@ -31537,7 +31325,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "pw5a3",
@@ -33103,7 +32896,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "pw7a2",
@@ -34724,7 +34522,14 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "9725C2E0",
+      "tooltipSourceIds": [
+        "9725C2E0"
+      ],
+      "tooltipStatus": "source-linked",
+      "tooltipDefaultDescriptor": "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
+      "tooltipDefaultReason": "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. Other category members are retained as evidence only."
     },
     {
       "weapon": "umg40",
@@ -36295,7 +36100,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "usg90",
@@ -37866,7 +37676,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "kv9",
@@ -39437,7 +39252,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "scw10",
@@ -41008,7 +40828,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "sl9",
@@ -42579,7 +42404,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "cz3a1",
@@ -44185,7 +44015,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "pp19",
@@ -45751,7 +45586,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "l110",
@@ -47435,7 +47275,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "drsiar",
@@ -49106,7 +48951,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m60",
@@ -50782,7 +50632,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "rpkm",
@@ -52453,7 +52308,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m123k",
@@ -54124,7 +53984,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m250",
@@ -55790,7 +55655,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "kts100",
@@ -57461,7 +57331,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m240l",
@@ -59125,12 +59000,19 @@
           },
           "descriptions": [
             {
-              "asset": "common/hardware/weapons/mg/mg5/ad_mg5_ironsights"
+              "asset": "common/hardware/weapons/mg/mg5/ad_mg5_ironsights",
+              "id": "0BB6AC0B",
+              "text": "Basic sights with reduced weapon sway."
             }
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m121a2",
@@ -60841,7 +60723,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "rpk74m",
@@ -62608,7 +62495,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m39emr",
@@ -64685,7 +64577,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "lmr27",
@@ -66756,7 +66653,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "svk86",
@@ -68827,7 +68729,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "svdm",
@@ -70898,7 +70805,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "grtcps",
@@ -72979,334 +72891,29 @@
             }
           ],
           "sourcePointCost": 15,
-          "label": null,
-          "classification": "Exact IronSights attachment name and bound U_WPM_IronSights selector; UI label unresolved",
+          "label": "Basic Sight",
+          "classification": "English UI label and site point category",
           "uiLink": {
-            "method": "same-optic-model-and-selector",
+            "method": "same-weapon-iron-sight-descriptor",
             "assets": [
-              "common/hardware/weapons/mg/mg5/ad_mg5_ironsights",
-              "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "common/ui/static/metadata/attachments/xm7/ad_xm7_sight"
+              "common/ui/static/metadata/attachments/m2010esr/ad_m2010esr_sight"
             ]
           },
           "descriptions": [
             {
-              "asset": "common/hardware/weapons/mg/mg5/ad_mg5_ironsights"
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "id": "A2BEF776",
-              "text": "Classic, basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "id": "9725C2E0",
-              "text": "Basic aperture sight with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/xm7/ad_xm7_sight",
+              "asset": "common/ui/static/metadata/attachments/m2010esr/ad_m2010esr_sight",
               "id": "0BB6AC0B",
               "text": "Basic sights with reduced weapon sway."
             }
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m2010esr",
@@ -75387,7 +74994,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "sv98",
@@ -77464,7 +77076,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "psr",
@@ -79535,7 +79152,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "miniscout",
@@ -81606,7 +81228,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "80E096AF",
+      "tooltipSourceIds": [
+        "80E096AF"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "l115",
@@ -83672,7 +83299,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "80E096AF",
+      "tooltipSourceIds": [
+        "80E096AF"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "interdictor",
@@ -85753,334 +85385,29 @@
             }
           ],
           "sourcePointCost": 5,
-          "label": null,
-          "classification": "Exact IronSights attachment name and bound U_WPM_IronSights selector; UI label unresolved",
+          "label": "Basic Sight",
+          "classification": "English UI label and site point category",
           "uiLink": {
-            "method": "same-optic-model-and-selector",
+            "method": "same-weapon-iron-sight-descriptor",
             "assets": [
-              "common/hardware/weapons/mg/mg5/ad_mg5_ironsights",
-              "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "common/ui/static/metadata/attachments/xm7/ad_xm7_sight"
+              "common/ui/static/metadata/attachments/590a1/ad_590a1_sight"
             ]
           },
           "descriptions": [
             {
-              "asset": "common/hardware/weapons/mg/mg5/ad_mg5_ironsights"
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "id": "A2BEF776",
-              "text": "Classic, basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "id": "9725C2E0",
-              "text": "Basic aperture sight with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/xm7/ad_xm7_sight",
+              "asset": "common/ui/static/metadata/attachments/590a1/ad_590a1_sight",
               "id": "0BB6AC0B",
               "text": "Basic sights with reduced weapon sway."
             }
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m87a1",
@@ -87584,334 +86911,29 @@
             }
           ],
           "sourcePointCost": 5,
-          "label": null,
-          "classification": "Exact IronSights attachment name and bound U_WPM_IronSights selector; UI label unresolved",
+          "label": "Basic Sight",
+          "classification": "English UI label and site point category",
           "uiLink": {
-            "method": "same-optic-model-and-selector",
+            "method": "same-weapon-iron-sight-descriptor",
             "assets": [
-              "common/hardware/weapons/mg/mg5/ad_mg5_ironsights",
-              "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "common/ui/static/metadata/attachments/xm7/ad_xm7_sight"
+              "common/ui/static/metadata/attachments/m1014/ad_m1014_sight"
             ]
           },
           "descriptions": [
             {
-              "asset": "common/hardware/weapons/mg/mg5/ad_mg5_ironsights"
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/185ksk/ad_185ksk_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/6p67/ad_6p67_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ace32/ad_ace32_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apc10/ad_apc10_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/apdw/ad_apdw_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/aradmr/ad_aradmr_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/bren3/ad_bren3_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/deserttechhti/ad_deserttechhti_ironsights",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/dp12/ad_dp12_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ef88/ad_ef88_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/fiveseven/ad_fiveseven_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g22/ad_g22_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/g3a4/ad_g3a4_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/grotc/ad_grotc_scp_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/hk433/ad_hk433_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l115a3/ad_l115a3_sight",
-              "id": "80E096AF",
-              "text": "Basic sights without any scope glint."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/l85a3/ad_l85a3_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
-              "id": "A2BEF776",
-              "text": "Classic, basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m240l/ad_m240l_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m250/ad_m250_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m27iar/ad_m27iar_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m39emr/ad_m39emr_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m45a1/ad_m45a1_iron_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/m60e6/ad_m60e6_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mg4k/ad_mg4k_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minifix/ad_minifix_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/minimi/ad_minimi_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp5mli/ad_mp5mli_ironsight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mpx/ad_mpx_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/mrad/ad_mrad_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/msbsgrotb/ad_msbsgrotb_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/p90/ad_p90_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/pp19/ad_pp19_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/qbz192/ad_qbz192_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarl/ad_scarl_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scarsc/ad_scarsc_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/scorpionevo3/ad_scorpionevo3_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sig553r/ad_sig553r_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/skorpion/ad_skorpion_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/sv98m/ad_sv98m_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svch/ad_svch_sights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/svdm/ad_svdm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/tavor7/ad_tavor7_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/trr8/ad_trr8_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ultimax/ad_ultimax_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
-              "id": "9725C2E0",
-              "text": "Basic aperture sight with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vector/ad_vector_sight",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vhs2/ad_vhs2_scp_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/vssm/ad_vssm_ironsights",
-              "id": "0BB6AC0B",
-              "text": "Basic sights with reduced weapon sway."
-            },
-            {
-              "asset": "common/ui/static/metadata/attachments/xm7/ad_xm7_sight",
+              "asset": "common/ui/static/metadata/attachments/m1014/ad_m1014_sight",
               "id": "0BB6AC0B",
               "text": "Basic sights with reduced weapon sway."
             }
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m1014",
@@ -89482,7 +88504,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "ks18k",
@@ -91053,7 +90080,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "db12",
@@ -92571,7 +91603,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "p18",
@@ -92943,7 +91980,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "es57",
@@ -93315,7 +92357,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m45a1",
@@ -93692,7 +92739,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m44",
@@ -94814,7 +93866,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "ggh22",
@@ -95186,7 +94243,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "m357trait",
@@ -96200,7 +95262,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "vz61",
@@ -96572,7 +95639,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "brod3",
@@ -98228,7 +97300,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "ef88",
@@ -99934,7 +99011,12 @@
           ],
           "status": "category-member"
         }
-      ]
+      ],
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ],
+      "tooltipStatus": "source-linked"
     },
     {
       "weapon": "vssm",
@@ -108488,7 +107570,8 @@
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_Perst4.xml": "884d717cf65ed97a688e2704639b34c00105a809d1752424a99a2326b3f195b6",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_RaidXe.xml": "074abb7c7d261c9f246ca7f90837b4189ab2ae00b8755eea2146d4144bc2dc6b",
     "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_003Cpt1_DesertTechHTI_W05.xml": "2cb1dded633d872a2b496c8fceb13a0050c3873c1355aa1d8f9dab0486b7c123",
-    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_007Ext1_DesertTechHTI_W15.xml": "0102eaf178a2d1f357d94711939413e86c5423908cc1ad654e091846f0744a9b"
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_007Ext1_DesertTechHTI_W15.xml": "0102eaf178a2d1f357d94711939413e86c5423908cc1ad654e091846f0744a9b",
+    "Common/Hardware/Weapons/MG/MG5/AD_MG5_IronSights.xml": "528f5777a8dec8b92e4085882486893a7334129b22a62d0a03df355b03395621"
   },
   "aamHashes": {
     "Common/Hardware/Weapons/AssaultRifle/6p67/AAM_6P67": "f6d92a2802b00ad82fc54ae98e79565ad178d7ebf409df4df46cca1219f8695d",

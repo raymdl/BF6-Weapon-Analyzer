@@ -23,7 +23,8 @@
       "shared-hardware-descriptor-name": 161,
       "shared-model-and-selector-consensus": 169,
       "weapon-descriptor-asset-name": 35
-    }
+    },
+    "ironSightTooltips": 63
   },
   "choices": [
     {
@@ -1942,11 +1943,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m433",
@@ -6095,11 +6100,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "b36a4",
@@ -10541,11 +10550,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "sor556",
@@ -15045,11 +15058,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "ak4d",
@@ -19043,11 +19060,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "tr7",
@@ -22249,11 +22270,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "kord6p67",
@@ -26237,11 +26262,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "nvo228e",
@@ -30449,11 +30478,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "l85a3",
@@ -34288,11 +34321,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "vcr2",
@@ -38124,12 +38161,16 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_IronSights.xml",
         "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_IronSightsUSGI.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "A2BEF776",
+      "tooltipSourceIds": [
+        "A2BEF776"
+      ]
     },
     {
       "weapon": "m16a4",
@@ -42468,11 +42509,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m4a1",
@@ -47191,11 +47236,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m277",
@@ -50510,11 +50559,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/AK205/attachment_ak205_scp_iron_sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "ak205",
@@ -54550,11 +54603,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/HK417A2/attachment_hk417a2_scp_iron_sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m417a2",
@@ -58806,11 +58863,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "grtbc",
@@ -61840,11 +61901,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "qbz192",
@@ -65580,11 +65645,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "sg553r",
@@ -69734,11 +69803,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "sor300sc",
@@ -73421,11 +73494,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "sgx",
@@ -77150,11 +77227,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "pw5a3",
@@ -80414,11 +80495,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "pw7a2",
@@ -83382,12 +83467,16 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_CQC_Iron_Sights.xml",
         "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "9725C2E0",
+      "tooltipSourceIds": [
+        "9725C2E0"
+      ]
     },
     {
       "weapon": "umg40",
@@ -87253,11 +87342,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "usg90",
@@ -89459,11 +89552,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "kv9",
@@ -92315,11 +92412,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "scw10",
@@ -95431,11 +95532,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "sl9",
@@ -98301,11 +98406,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "cz3a1",
@@ -101115,11 +101224,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "pp19",
@@ -104676,11 +104789,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "l110",
@@ -108320,11 +108437,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "drsiar",
@@ -112758,11 +112879,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m60",
@@ -116314,11 +116439,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "rpkm",
@@ -120493,11 +120622,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m123k",
@@ -123811,11 +123944,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m250",
@@ -127456,11 +127593,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "kts100",
@@ -131122,11 +131263,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m240l",
@@ -134386,11 +134531,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m121a2",
@@ -137577,11 +137726,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "rpk74m",
@@ -141806,11 +141959,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m39emr",
@@ -145854,11 +146011,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "lmr27",
@@ -149484,11 +149645,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "svk86",
@@ -152822,11 +152987,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "svdm",
@@ -156490,11 +156659,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "grtcps",
@@ -160114,11 +160287,15 @@
       "sitePoints": 15,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m2010esr",
@@ -162614,11 +162791,15 @@
       "sitePoints": 15,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "sv98",
@@ -165123,11 +165304,15 @@
       "sitePoints": 15,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "psr",
@@ -168030,11 +168215,15 @@
       "sitePoints": 15,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "miniscout",
@@ -170509,11 +170698,15 @@
       "sitePoints": 15,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "80E096AF",
+      "tooltipSourceIds": [
+        "80E096AF"
+      ]
     },
     {
       "weapon": "l115",
@@ -172558,11 +172751,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "80E096AF",
+      "tooltipSourceIds": [
+        "80E096AF"
+      ]
     },
     {
       "weapon": "interdictor",
@@ -174397,11 +174594,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m87a1",
@@ -176656,11 +176857,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m1014",
@@ -178972,11 +179177,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "ks18k",
@@ -181307,11 +181516,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "db12",
@@ -183327,11 +183540,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "p18",
@@ -184852,11 +185069,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "es57",
@@ -186320,11 +186541,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m45a1",
@@ -187022,11 +187247,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m44",
@@ -188308,11 +188537,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "ggh22",
@@ -189519,11 +189752,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_Iron_Sights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "m357trait",
@@ -190883,11 +191120,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Secondary/Skorpion/Attachment_Skorpion_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "vz61",
@@ -193032,11 +193273,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "brod3",
@@ -196986,11 +197231,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "ef88",
@@ -199506,11 +199755,15 @@
       "sitePoints": 5,
       "sources": [],
       "identityStatus": "category-linked",
-      "descriptionStatus": "category-member-descriptions",
+      "descriptionStatus": "source-linked",
       "categorySources": [
         "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_IronSights.xml"
       ],
-      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json"
+      "categoryReport": "frosty-optic-category-mapping-2026-09-13.json",
+      "tooltipDescriptionKey": "0BB6AC0B",
+      "tooltipSourceIds": [
+        "0BB6AC0B"
+      ]
     },
     {
       "weapon": "vssm",
@@ -207936,7 +208189,8 @@
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_Perst4.xml": "884d717cf65ed97a688e2704639b34c00105a809d1752424a99a2326b3f195b6",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_RaidXe.xml": "074abb7c7d261c9f246ca7f90837b4189ab2ae00b8755eea2146d4144bc2dc6b",
     "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_003Cpt1_DesertTechHTI_W05.xml": "2cb1dded633d872a2b496c8fceb13a0050c3873c1355aa1d8f9dab0486b7c123",
-    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_007Ext1_DesertTechHTI_W15.xml": "0102eaf178a2d1f357d94711939413e86c5423908cc1ad654e091846f0744a9b"
+    "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_007Ext1_DesertTechHTI_W15.xml": "0102eaf178a2d1f357d94711939413e86c5423908cc1ad654e091846f0744a9b",
+    "Common/Hardware/Weapons/MG/MG5/AD_MG5_IronSights.xml": "528f5777a8dec8b92e4085882486893a7334129b22a62d0a03df355b03395621"
   },
   "graphIssues": [
     {

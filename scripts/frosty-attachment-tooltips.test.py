@@ -12,6 +12,35 @@ m = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(m)
 
 class DescriptionMappingTests(unittest.TestCase):
+    def test_iron_tooltips_skip_ambiguous_incomplete_or_noniron_categories(self):
+        def category(weapon, descriptions, attachment='iron'):
+            return {'weapon': weapon, 'attachment': attachment, 'members': [{'descriptions': descriptions}]}
+        categories = [category('plain', [{'id': 'a', 'text': 'Basic sights.'}]),
+                      category('variants', [{'id': 'b', 'text': 'Classic sights.'}, {'id': 'c', 'text': 'Modern sights.'}]),
+                      category('missing', [{'id': 'd'}]),
+                      category('partial', [{'id': 'a', 'text': 'Basic sights.'}, {'id': 'd'}]),
+                      category('scope', [{'id': 'a', 'text': 'Basic sights.'}], 'std_optic')]
+        runtime = {}
+        descriptions = m.iron_sight_tooltips({'categories': categories}, runtime)
+        self.assertEqual(descriptions, {'a': 'Basic sights.'})
+        self.assertEqual(set(runtime), {'plain'})
+
+    def test_iron_tooltips_use_the_selected_default_variants(self):
+        base = 'common/ui/static/metadata/attachments/'
+        categories = []
+        for weapon, default, other, text in [
+                ('m16a4', 'm16a3/ad_m16a3_ironsights', 'm16a3/ad_m16a3_ironsights_usgi', 'Classic, basic sights with reduced weapon sway.'),
+                ('umg40', 'ump40/ad_ump40_sight', 'ump40/ad_ump40_sight_cqc', 'Basic aperture sight with reduced weapon sway.')]:
+            categories.append({'weapon': weapon, 'attachment': 'iron', 'members': [
+                {'descriptions': [{'asset': base + default, 'id': weapon, 'text': text}]},
+                {'descriptions': [{'asset': base + other, 'id': 'other', 'text': 'Other variant.'}]}]})
+        runtime = {}
+        descriptions = m.iron_sight_tooltips({'categories': categories}, runtime)
+        self.assertEqual(descriptions, {'m16a4': 'Classic, basic sights with reduced weapon sway.',
+                                       'umg40': 'Basic aperture sight with reduced weapon sway.'})
+        self.assertEqual(categories[0]['tooltipSourceIds'], ['m16a4'])
+        self.assertEqual(len(categories[0]['members']), 2)
+
     def test_panel_tooltip_keeps_original_pointer_and_does_not_fill_peer_choice(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)

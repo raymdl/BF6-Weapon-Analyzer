@@ -15,7 +15,7 @@ are not a complete schema for every current weapon/attachment field. The cross-f
 |---|---|
 | [weapons.json](../data/weapons.json) | Ordered array of 63 base weapon records; UI, attachment resolver, simulation. IDs join all per-weapon maps. |
 | [attachments.json](../data/attachments.json) | Seven ordered catalogs plus availability, ergonomics and magazine maps; loadout/attachment/share modules. |
-| [attachment-tooltips.json](../data/attachment-tooltips.json) | Runtime description dictionary and `byWeapon[weaponId][slot][attachmentId]` lookup keys; loadout UI only. Covers 2,967 non-optic choices, including 15 approved game-panel transcriptions. |
+| [attachment-tooltips.json](../data/attachment-tooltips.json) | Runtime description dictionary and `byWeapon[weaponId][slot][attachmentId]` lookup keys; loadout UI only. Covers 2,967 non-optic choices, including 15 approved game-panel transcriptions, plus 63 Iron Sights choices. |
 | [ammo.json](../data/ammo.json) | Ordered `AMMO` catalog and `WEAPON_AMMO` availability, effects, velocity treatments and projectile overrides. |
 | [balance_tables.json](../data/balance_tables.json) | Ordered stat arrays, geometric factors, per-weapon bases and damage-policy maps. |
 | [recoil_decay.json](../data/recoil_decay.json) | `RECOIL_DEC`, `RECOIL_DEC_TEXP`, `RECOIL_DEC_EXP` maps used by legacy recoil-group fallback. Explicit per-aim groups take precedence. |
