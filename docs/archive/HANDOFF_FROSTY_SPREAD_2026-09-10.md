@@ -37,7 +37,7 @@ validation of every field or native equation.
 Frosty inputs were re-read from existing XML exports at:
 
 ```text
-C:/Users/royal/Documents/BF6 Datamining/Frosty
+C:/Users/royal/Documents/BF6 Datamining/Frosty Exports/1.4.2.5
 ```
 
 No fresh export from the installed game was performed. The source build remains

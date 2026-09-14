@@ -12,7 +12,7 @@ const attachments = read('../data/attachments.json');
 const ammo = read('../data/ammo.json');
 const balance = read('../data/balance_tables.json');
 const data = { ...attachments, ...ammo };
-setAttachmentContext({ ...data, ...balance });
+setAttachmentContext({ HIT_ZONES: read('../data/hit_zones.json'), ...data, ...balance });
 const weapon = id => weapons.find(w => w.id === id);
 const defaults = w => {
   const atts = {};
@@ -185,10 +185,10 @@ test('combined-slot lights and combo lasers use hip factors and preserve laser t
     const plainLaser = laser === 'combo_red' ? '5mw_red' : laser === 'combo_green' ? '5mw_green' : 'none';
     assert.deepEqual(lit.spread.hipStand, build(w, { rail: plainLaser === 'none' ? null : { type: 'laser', id: plainLaser } }).spread.hipStand);
   }
-  const both = build(weapon('kord6p67'), { light: 'flashlight', laser: 'combo_green' });
+  const both = build(weapon('kord6p67'), { rail: { type: 'laser', id: 'combo_green' }, light: 'flashlight' });
   const plain = build(weapon('kord6p67'));
-  assert.equal(both.spreadDyn.hip.inc, plain.spreadDyn.hip.inc * (0.666667 ** 2));
-  assert.equal(both._hipSpreadFiringDecCoefMult, 1.837117 ** 2);
+  assert.equal(both.spreadDyn.hip.inc, plain.spreadDyn.hip.inc * 0.666667);
+  assert.equal(both._hipSpreadFiringDecCoefMult, 1.837117);
 });
 
 test('Frosty collateral table matches ES 5.7 panels and clamps M121 A2 Tungsten', () => {

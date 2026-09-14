@@ -141,7 +141,7 @@ No variant wins for all three weapons. Time scaling is clearly worse. Offset sca
 
 ### 3.7 FrostyCmd
 
-- `C:\Downloads\FrostyToolsuite-battlefield6\FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final\FrostyCmd.exe` works. This fork uses `FrostyCmd export-ebx <profile> <game-path> <asset-name> <output-file>`. The online docs describe a different command set.
+- `C:\Users\royal\Documents\BF6 Datamining\FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final\FrostyCmd.exe` works. This fork uses `FrostyCmd export-ebx <profile> <game-path> <asset-name> <output-file>`. The online docs describe a different command set.
 - Verified: `./FrostyCmd.exe export-ebx bf6 "C:\Program Files\EA Games\Battlefield 6" "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB" <output>` took 14 s. The output is byte-identical to the existing XML export, so the installed game matched the 1.4.2.5 export on 12 September.
 - **Memory hazard.** Level material grids (`game/glaciermp/levels/<level>/<level>/materialgrid_win32`) cannot be exported. FrostyCmd threw in `EbxReader.ReadAsset` and kept running to 52 GB; this crashed the operator's machine once. The Frosty Editor GUI export "times out" but continues reading in the background (49 GB with 0.7 GB free before it was force-stopped). Do not export these assets. Git Bash `timeout` does not stop the Windows process: after any failed or slow export, run `Get-Process Frosty*` and stop leftovers with `Stop-Process -Force`. Run one export at a time.
 - Use `ebx_manifest.txt` in `BF6 Datamining` for asset routes. If `bf6.exe` has a newer date, new exports reflect a newer build and are not comparable with the existing tree.

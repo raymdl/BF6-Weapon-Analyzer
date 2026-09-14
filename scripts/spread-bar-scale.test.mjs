@@ -24,6 +24,7 @@ const ammo = readJson('data/ammo.json');
 const recoilDecay = readJson('data/recoil_decay.json');
 
 setAttachmentContext({
+  HIT_ZONES: readJson('data/hit_zones.json'),
   ...attachments, ...balance,
   AMMO: ammo.AMMO, WEAPON_AMMO: ammo.WEAPON_AMMO,
 });

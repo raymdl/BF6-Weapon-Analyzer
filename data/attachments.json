@@ -8523,13 +8523,9 @@
             "grip"
           ]
         },
-        "laser": {
+        "rail": {
           "accepts": [
-            "laser"
-          ]
-        },
-        "light": {
-          "accepts": [
+            "laser",
             "light"
           ]
         }
@@ -9061,7 +9057,157 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "ergo",
+          "attachment": "buffer",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "50_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "mag_catch",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "50_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "mag_flare",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "match_trigger",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "50_rnd"
+            }
+          ]
+        }
+      ]
     },
     "m417a2": {
       "muzzle": [
@@ -10043,7 +10189,273 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "grip",
+          "attachment": "6h64_vert",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "alloy_vert",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "canted_stubby",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "classic_vert",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "cmpct_handstop",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "fold_stubby",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "fold_vert",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "lp_stubby",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "ribbed_stubby",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "ribbed_vert",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "slim_angled_smg",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
+          "attachment": "stipp_stubby",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        }
+      ]
     },
     "l110": {
       "muzzle": [
@@ -10345,7 +10757,103 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "ergo",
+          "attachment": "buffer",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "75_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "mag_flare",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "match_trigger",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "40_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "75_rnd"
+            }
+          ]
+        }
+      ]
     },
     "m123k": {
       "muzzle": [
@@ -10557,13 +11065,9 @@
             "grip"
           ]
         },
-        "laser": {
+        "rail": {
           "accepts": [
-            "laser"
-          ]
-        },
-        "light": {
-          "accepts": [
+            "laser",
             "light"
           ]
         }
@@ -10786,7 +11290,119 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "ergo",
+          "attachment": "buffer",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "50_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "95_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "mag_flare",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "50_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "match_trigger",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "50_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "95_rnd"
+            }
+          ]
+        }
+      ]
     },
     "m39emr": {
       "muzzle": [

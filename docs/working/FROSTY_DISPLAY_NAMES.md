@@ -32,7 +32,7 @@ and [frosty-attachment-descriptions-2026-09-13.json](../../reference-data/proven
 ## Tools
 
 FrostyCmd lives in the local FrostyToolsuite fork, not in this repository:
-`C:\Downloads\FrostyToolsuite-battlefield6\FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final\FrostyCmd.exe`.
+`C:\Users\royal\Documents\BF6 Datamining\FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final\FrostyCmd.exe`.
 
 [frostycmd-string-tools-2026-09-13.patch](../../reference-data/provenance/frostycmd-string-tools-2026-09-13.patch)
 adds two commands to `FrostyCmd/Program.cs`. `export-ebx` does not change.
@@ -122,6 +122,8 @@ Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B2
 Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B1
 Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B2
 Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B1
+Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B2
+Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B3
 Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1
 ```
 
@@ -301,7 +303,7 @@ The separately approved panel-text pass requires an unresolved description, one 
 ### Regeneration and verification
 
 ```powershell
-python scripts/frosty-attachment-tooltips.py outputs/frosty-description-probe/aam data/attachment-tooltips.json --frosty-root 'C:/Users/royal/Documents/BF6 Datamining/Frosty' --mapping-json reference-data/provenance/frosty-site-attachment-mapping-2026-09-13.json --optic-mapping-json reference-data/provenance/frosty-optic-category-mapping-2026-09-13.json
+python scripts/frosty-attachment-tooltips.py outputs/frosty-description-probe/aam data/attachment-tooltips.json --frosty-root 'C:/Users/royal/Documents/BF6 Datamining/Frosty Exports/1.4.2.5' --mapping-json reference-data/provenance/frosty-site-attachment-mapping-2026-09-13.json --optic-mapping-json reference-data/provenance/frosty-optic-category-mapping-2026-09-13.json
 python scripts/frosty-attachment-tooltips.test.py
 node --test scripts/attachment-effects.test.mjs
 node scripts/validate-data.mjs

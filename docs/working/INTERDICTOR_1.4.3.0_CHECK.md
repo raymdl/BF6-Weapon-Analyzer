@@ -1,6 +1,6 @@
 # Interdictor 1.4.3.0 check
 
-Baseline: Frosty XML export 1.4.2.5 at `C:\Users\royal\Documents\BF6 Datamining\Frosty`.
+Baseline: Frosty XML export 1.4.2.5 at `C:\Users\royal\Documents\BF6 Datamining\Frosty Exports\1.4.2.5`.
 Keep that tree unchanged. Export 1.4.3.0 assets to
 `C:\Users\royal\Documents\BF6 Datamining\Frosty-1.4.3.0` with the same routes.
 
@@ -31,7 +31,12 @@ Curve GUIDs also appear in `Common/GameSetup/Tweakables/TweakablesConfig`.
 
 ## Assets to export after the update
 
-Use `FrostyCmd export-ebx` for these, one at a time:
+Put these routes in a text file, one per line, and run one batch from the Frosty runtime folder:
+`FrostyCmd.exe export-ebx-list bf6 "C:\Program Files\EA Games\Battlefield 6" <list file> "C:\Users\royal\Documents\BF6 Datamining\Frosty Exports\1.4.3.0"`.
+Tested 14 SEP 2026 on 1.4.2.5 with items 1-7 plus `GS_DesertTechHTI` and
+`GlacierGameConfiguration/settings`: 26 s in total, every file `ok` in `export-status.tsv`,
+and all 9 XML files byte-identical to the 1.4.2.5 tree. Rename `Caches\bf6.cache` first
+after the update, so the first run builds a new cache.
 
 1. `Common/Hardware/Weapons/_Bullets/PD_.416Barrett`
 2. `Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match`
@@ -46,7 +51,7 @@ Dump them raw:
 
 ```powershell
 powershell -NoProfile -File scripts/frosty-raw-assets.ps1 `
-  -FrostyDirectory 'C:\Downloads\FrostyToolsuite-battlefield6\FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final' `
+  -FrostyDirectory 'C:\Users\royal\Documents\BF6 Datamining\FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final' `
   -GamePath 'C:\Program Files\EA Games\Battlefield 6' `
   -OutputDirectory 'C:\Users\royal\Documents\BF6 Datamining\frosty-raw-1.4.3.0' `
   -Routes 'game/glaciermp/levels/mp_abbasid/mp_abbasid/materialgrid_win32',

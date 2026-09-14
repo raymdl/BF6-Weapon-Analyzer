@@ -14,7 +14,7 @@ deferred, unimplemented and pre-publication statements are superseded by this st
 | Regeneration | Base 5 s; Frangible 9 s; Flechette 7 s. | These are model totals from source operands, not measured native timing. |
 | Sway and spotting | Display source weapon-sway amount changes; multiply spotting factors against the existing bases. | Generic optics do not identify source optics; spotting bases and native composition remain inferred. |
 | Distribution and controller | Use per-state source exponents and controller amount factor 0.8836. | Limited M39 capture evidence supports area sampling; native consumers/activation remain unverified. |
-| Lights | Replace the +15% estimate with decoded hip growth/recovery factors for 137 supported selections. | Selected means active; separate light and combo factors multiply. Idle recovery and native activation/order are not simulated. |
+| Lights | Replace the +15% estimate with decoded hip growth/recovery factors for 137 supported selections. | Selected means active; current generated slots prevent selecting a separate light with a combo laser. Idle recovery and native activation/order are not simulated. |
 | ADS and recoil timing | See the current attachment and recoil guides for source mappings and model rules. | This light/documentation update does not change barrel data or resolve native recoil delivery/reset behavior. |
 
 Light evidence: [field names](../../reference-data/provenance/frosty-light-field-names-2026-09-13.json),
@@ -131,7 +131,7 @@ what was completed and the specific remaining boundary.
 - [Runtime ballistics](../../data/ballistics.json) records the exact trace hash,
   projectile XML hashes, and generated weapon/ammo selection maps.
 
-XML source root: `C:/Users/royal/Documents/BF6 Datamining/Frosty`, labelled 1.4.2.5.
+XML source root: `C:/Users/royal/Documents/BF6 Datamining/Frosty Exports/1.4.2.5`, labelled 1.4.2.5.
 That label is not independent full-build verification. The two small expression
 assets and resources were read from the installed game into the ignored audit
 output folder. Their hashes are retained separately from the existing XML export.
@@ -141,8 +141,8 @@ Generate the hit-zone trace with `scripts/frosty-hit-zones.py` first, using the
 XML root, raw material grids, and `SharedTypeDescriptors.ebx`. Then run:
 
 ```powershell
-python scripts/frosty-ballistics.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty' --trace reference-data/provenance/frosty-hit-zones-2026-09-13.json
-python scripts/frosty-global-operands.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty' --out reference-data/provenance/frosty-global-operands-2026-09-13.json --grid outputs/frosty-limb-2026-09-13/materialgrid_win32.ebx --grid outputs/frosty-limb-2026-09-13/materialgrid_mp_badlands.ebx --descriptors 'C:/Downloads/FrostyToolsuite-battlefield6/FrostyToolsuite-battlefield6/FrostyEditor/bin/Release/Final/SharedTypeDescriptors.ebx'
+python scripts/frosty-ballistics.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty Exports/1.4.2.5' --trace reference-data/provenance/frosty-hit-zones-2026-09-13.json
+python scripts/frosty-global-operands.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty Exports/1.4.2.5' --out reference-data/provenance/frosty-global-operands-2026-09-13.json --grid outputs/frosty-limb-2026-09-13/materialgrid_win32.ebx --grid outputs/frosty-limb-2026-09-13/materialgrid_mp_badlands.ebx --descriptors 'C:/Users/royal/Documents/BF6 Datamining/FrostyToolsuite-battlefield6/FrostyEditor/bin/Release/Final/SharedTypeDescriptors.ebx'
 ```
 
 The ballistics generator rejects stale XML hashes, missing ammo attachments,

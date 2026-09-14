@@ -52,6 +52,15 @@ fill unused branches. Costs count the actual shared-slot choice once.
 Sight costs may be overridden per weapon; ammo costs are per-weapon; magazines
 carry their own costs. The UI warns above 100 points without rejecting the build.
 
+Physical grip/laser/light slots come from Frosty ability slot categories. Equipment
+dependency lists constrain attachment combinations through reviewed source IDs.
+`normalizeAttachments` clears invalid dependent choices before effects, points,
+and share-link encoding/decoding. The menus filter against the selected loadout
+and refresh after a prerequisite changes. For example, PP-19's 53-round magazine
+removes grips; magazine-dependent ergonomics use the same rule evaluator.
+Source-only secondary sights are recorded in the generator's evidence but are
+not added to the site's broader sight categories.
+
 ## Modifier composition by axis
 
 | Axis | Current composition |
@@ -111,8 +120,8 @@ and why retained native fields are not all executed.
 Flashlight, Hipfire Taclight, Combo Red and Combo Green use the same source factors
 across all 137 supported selections: increase ×0.666667, firing coefficient
 ×1.837117, and firing/not-firing offsets ×0.666667. A light selected through a
-combined slot participates once. Where separate light and combo-laser slots are
-both supported and selected, their factors multiply. The model treats selected
+combined slot participates once. Current Frosty slot assignments do not permit
+a separate light alongside a combo laser on any offered weapon. The model treats selected
 lights as active; native switching and operation order remain unverified. The
 idle offset operand is retained but unused. This replaces the old assumed +15%
 recovery boost and activates the combo lights' hipfire effect.

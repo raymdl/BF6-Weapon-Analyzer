@@ -11,7 +11,7 @@ const ammo = read('../data/ammo.json');
 const balance = read('../data/balance_tables.json');
 const weapons = read('../data/weapons.json');
 const evidence = read('../reference-data/provenance/frosty-array-review-2026-09-09.json');
-setAttachmentContext({ ...attachments, ...ammo, ...balance });
+setAttachmentContext({ HIT_ZONES: read('../data/hit_zones.json'), ...attachments, ...ammo, ...balance });
 const build = (id, changes = {}) => {
   const weapon = weapons.find(w => w.id === id);
   const atts = {};

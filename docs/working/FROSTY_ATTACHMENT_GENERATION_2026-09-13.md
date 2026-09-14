@@ -28,7 +28,7 @@ Source operands support these inputs; this does not establish native timing.
 Regenerate with:
 
 ```powershell
-python scripts/frosty-barrel-ads.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty'
+python scripts/frosty-barrel-ads.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty Exports/1.4.2.5'
 ```
 
 Use `--check` for a read-only comparison. The browser loads the generated fields
@@ -63,7 +63,7 @@ are grips selected through a shared rail. Their handling is now generated, and
 their availability is stored in the grip category.
 
 ```powershell
-python scripts/frosty-attachment-handling.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty'
+python scripts/frosty-attachment-handling.py --root 'C:/Users/royal/Documents/BF6 Datamining/Frosty Exports/1.4.2.5'
 ```
 
 Use `--check` to compare without writing, or `--review` to write evidence only.
@@ -221,6 +221,24 @@ difference count is superseded. These counts still use the earlier audit's
 arithmetic; they are not confirmed runtime defect counts.
 
 ## Evidence and verification
+
+### 14 September: general slot and dependency generation
+
+`scripts/frosty-attachment-compatibility.py` now generates shared mount slots
+from ability branches and attachment dependencies from equipment records. The
+1,392 offered mount choices have complete source slot mapping; KORD and KTS100
+now share laser/light slots. Twenty-two dependency rules cover PP-19 grips and
+magazine-related ergonomics on AK-205, RPK-74M and RPKM. Of 285 source dependency
+entries, 263 secondary-sight entries remain unoffered or unmapped. This replaces
+manual shared-slot assignments and adds general prerequisite enforcement.
+
+See the [compatibility evidence](../../reference-data/provenance/frosty-attachment-compatibility.json),
+[Frosty findings](../../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies),
+and [maintenance command](../../MAINTENANCE.md#regenerate-attachment-modifiers).
+The focused 45-test attachment/share suite, regeneration and data checks passed;
+browser checks covered PP-19 grip removal/restoration and KORD device replacement.
+
+### Earlier modifier verification
 
 - [Generated barrel operands and source hashes](../../reference-data/provenance/frosty-barrel-ads-generated.json)
 - [Generated handling operands, branches and exceptions](../../reference-data/provenance/frosty-attachment-handling-generated.json)

@@ -13,7 +13,7 @@ const { tables } = read(tablesFile);
 const weapons = read('data/weapons.json');
 const balance = read('data/balance_tables.json');
 const catalogs = { ...read('data/attachments.json'), ...read('data/ammo.json') };
-setAttachmentContext({ ...catalogs, ...balance });
+setAttachmentContext({ ...catalogs, ...balance, HIT_ZONES: read('data/hit_zones.json') });
 const audit = read('reference-data/attachment-audit/frosty-panel-audit-2026-09-07.json');
 
 const same = (row, value) => row === -1 || Math.abs(row - value) <= 1e-4 * Math.max(1, Math.abs(value));

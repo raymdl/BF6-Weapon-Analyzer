@@ -31,6 +31,7 @@ test('shotgun ammunition replaces pellet count and damage without changing the b
     ...readJson('../data/attachments.json'),
     ...readJson('../data/balance_tables.json'),
     ...ammo,
+    HIT_ZONES: readJson('../data/hit_zones.json'),
   });
   const expected = {
     ks18k: { buck: 80, slug: 75, farSlug: 27.3 },
@@ -64,9 +65,21 @@ test('shotgun ammunition replaces pellet count and damage without changing the b
 test('resolves headshot and limb multipliers from hit-zone data per weapon and ammo', () => {
   assert.deepEqual(resolveHitMultipliers('auto', { id: 'standard' }, tables), { headshotMultiplier: 1.4, limbMultiplier: 0.84 });
   assert.equal(resolveHitMultipliers('auto', { id: 'hollow_pt' }, tables).headshotMultiplier, 1.57);
-  assert.deepEqual(resolveHitMultipliers('sniper', { id: 'long_range' }, tables),
-    { headshotMultiplier: 1.75, limbMultiplier: 0.67 }, 'an unlisted ammo uses the weapon base');
-  assert.deepEqual(resolveHitMultipliers('unknown', { id: 'standard' }, tables), { headshotMultiplier: 1.34, limbMultiplier: 1 });
+  assert.deepEqual(resolveHitMultipliers('sniper', null, tables), { headshotMultiplier: 1.75, limbMultiplier: 0.67 },
+    'a null ammo type selects the weapon base');
+  assert.throws(() => resolveHitMultipliers('sniper', { id: 'long_range' }, tables), /ammo "long_range"/,
+    'an unlisted ammo is a data error, not a base-weapon fallback');
+  assert.throws(() => resolveHitMultipliers('unknown', { id: 'standard' }, tables), /weapon "unknown"/,
+    'a weapon without hit-zone data does not receive default multipliers');
+  assert.throws(() => zoneMultiplierForWeapon({ dmg: [] }, 'head'), /headshot multiplier/);
+  assert.throws(() => zoneMultiplierForWeapon({}, 'limb'), /limb multiplier/);
+  for (const field of ['headshot', 'limb']) {
+    for (const invalid of [undefined, null, NaN, Infinity]) {
+      const broken = structuredClone(tables);
+      broken.HIT_ZONES.weapons.auto.ammo.standard[field] = invalid;
+      assert.throws(() => resolveHitMultipliers('auto', { id: 'standard' }, broken), /multiplier/);
+    }
+  }
 });
 
 test('calculates pure chest and limb BTK for the adjusted damage families', () => {
@@ -119,7 +132,9 @@ test('live hit zones use the Frosty values checked against in-game panels', () =
   const resolve = (id, ammoId) => resolveHitMultipliers(id, ammoId ? { id: ammoId } : null, { HIT_ZONES });
   for (const weapon of weapons) {
     for (const ammoId of Object.keys(ammo.WEAPON_AMMO[weapon.id].ammo)) {
-      assert.ok(HIT_ZONES.weapons[weapon.id].ammo[ammoId], `${weapon.id}/${ammoId} has Frosty hit zones`);
+      const multipliers = resolve(weapon.id, ammoId);
+      assert.ok(Number.isFinite(multipliers.headshotMultiplier) && Number.isFinite(multipliers.limbMultiplier),
+        `${weapon.id}/${ammoId} has finite Frosty hit zones`);
     }
   }
   // Limb follows the projectile material. VSSM fires a 5.56 carbine-material

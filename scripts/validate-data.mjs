@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { damageAtRange } from '../sim/damage.js';
 import { deriveSweetSpot } from './sweet-spot.mjs';
 import { loadReloadExceptionRegister } from './reload-exceptions.mjs';
+import { availableAttachments } from '../sim/loadout.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataRoot = process.env.DATA_ROOT ? resolve(process.env.DATA_ROOT) : root;
@@ -232,6 +233,18 @@ for (const [weaponId, weaponAtts] of Object.entries(attachments.WEAPON_ATTS)) {
   }
   for (const type of ['grip', 'laser', 'light']) {
     if (weaponAtts[type]?.length && !mountedTypes.has(type)) fail(`${weaponId}: ${type} options have no slot`);
+  }
+  const dependencyChoices = (slot, id) => {
+    const mount = weaponAtts.slots?.rail?.accepts.includes(slot) ? 'rail' : slot;
+    return availableAttachments(weaponById.get(weaponId), mount, { ...attachments, ...ammo })
+      .some(a => a.id === id && (!a.type || a.type === slot));
+  };
+  for (const rule of weaponAtts.dependencies ?? []) {
+    if (!dependencyChoices(rule.slot, rule.attachment)
+        || !Array.isArray(rule.requiresAny) || !rule.requiresAny.length
+        || rule.requiresAny.some(r => !dependencyChoices(r.slot, r.attachment))) {
+      fail(`${weaponId}: invalid attachment dependency ${rule.slot}/${rule.attachment}`);
+    }
   }
   for (const [slot, validIds] of Object.entries(attachmentSets)) {
     for (const id of weaponAtts[slot] ?? []) {

@@ -1,4 +1,6 @@
-import { resolveMountAttachments } from './loadout.js';
+import { requireNumber } from './required-data.js';
+import { baseRecoilGroup } from './core.js';
+import { normalizeAttachments, resolveMountAttachments } from './loadout.js';
 import { resolveHitMultipliers } from './damage.js';
 
 /**
@@ -299,6 +301,7 @@ export function setAttachmentContext(updates) {
  */
 export function applyAttachments(w, atts) {
   if (!w || !atts) return w;
+  atts = normalizeAttachments(atts, w, _ctx);
 
   const {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
@@ -338,7 +341,7 @@ export function applyAttachments(w, atts) {
   const totalHipVarTierMod = (grp.hipRecoilVariationTierMod ?? 0)
     + (muz.hipRecoilVariationTierMod ?? 0)
     + (ergoData.hipRecoilVariationTierMod ?? 0);
-  const mult = RECOIL_MULT[w.id] ?? 0.94;
+  const mult = requireNumber(RECOIL_MULT[w.id], `${w.id} RECOIL_MULT`);
   const adsRecoilPerShot       = +(w.recoilV * Math.pow(mult, totalAdsRecoilTierMod)).toFixed(3);
   const adsRecoilReductionPct  = +(100 * (1 - Math.pow(mult, totalAdsRecoilTierMod))).toFixed(1);
 
@@ -349,9 +352,9 @@ export function applyAttachments(w, atts) {
   const totalAdsVarTierMod = (muz.adsRecoilVariationTierMod ?? 0)
     + (grp.adsRecoilVariationTierMod ?? 0)
     + (ergoData.adsRecoilVariationTierMod ?? 0);
-  const adsVarGroup = w.recoil?.ads;
-  const adsRecoilVariation = +((adsVarGroup?.dirVar ?? w.recoilVar ?? 0)
-    * Math.pow(adsVarGroup?.dirVarMult ?? 1, (adsVarGroup?.dirVarExp ?? 0) + totalAdsVarTierMod)).toFixed(3);
+  const adsVarGroup = baseRecoilGroup(w);
+  const adsRecoilVariation = +(adsVarGroup.dirVar
+    * Math.pow(adsVarGroup.dirVarMult, adsVarGroup.dirVarExp + totalAdsVarTierMod)).toFixed(3);
 
   // ── Display tags ─────────────────────────────────────────────────────────────
   // Sight is deliberately absent: it never changes the numbers the label sits above.

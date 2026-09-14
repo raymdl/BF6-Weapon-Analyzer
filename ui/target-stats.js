@@ -20,6 +20,10 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
         <p class="target-impact-note">Pellet impacts are not simulated. Shotgun hit rate, damage and lethality are unavailable. The plot shows one direction per shell.</p></section>`;
       return;
     }
+    if (!Number.isFinite(entry.weapon._hsMult) || !Number.isFinite(entry.weapon._limbMult)) {
+      html += '<p class="target-impact-note">Target damage and lethality are unavailable: missing hit-zone data.</p>';
+      return;
+    }
     const summary = summarizeTargetImpacts(entry.weapon, distance, entry.zones);
     const kill = summary.lethalShot == null
       ? '<strong>None</strong>'

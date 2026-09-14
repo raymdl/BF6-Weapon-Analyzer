@@ -1,3 +1,5 @@
+import { invalidData } from './required-data.js';
+
 /**
  * Shared damage and hit-zone helpers.
  *
@@ -11,15 +13,23 @@ const DAMAGE_EPSILON = 1e-9;
 /**
  * Headshot and limb (arm/leg/abdomen) multipliers per weapon and ammo come from
  * Frosty through data/hit_zones.json. Regenerate that file with
- * scripts/frosty-hit-zones.py after a game update; do not add class-level tables.
+ * scripts/frosty-hit-zones.py after a game update; do not add class-level tables
+ * or default multipliers. A null ammo type selects the weapon's base entry.
  */
 export function resolveHitMultipliers(weaponId, ammoType, { HIT_ZONES } = {}) {
   const weapon = HIT_ZONES?.weapons?.[weaponId];
-  const resolved = weapon?.ammo?.[ammoType?.id] ?? weapon;
+  if (!weapon) invalidData(`No hit-zone data for weapon "${weaponId}"; regenerate data/hit_zones.json`);
+  const resolved = ammoType == null ? weapon : weapon?.ammo?.[ammoType.id];
+  if (weapon && !resolved) invalidData(`No hit-zone data for weapon "${weaponId}" ammo "${ammoType?.id}"; regenerate data/hit_zones.json`);
   return {
-    headshotMultiplier: resolved?.headshot ?? 1.34,
-    limbMultiplier: resolved?.limb ?? 1,
+    headshotMultiplier: requireMultiplier(resolved?.headshot, `${weaponId} headshot`),
+    limbMultiplier: requireMultiplier(resolved?.limb, `${weaponId} limb`),
   };
+}
+
+function requireMultiplier(value, label) {
+  if (!Number.isFinite(value)) return invalidData(`Missing ${label} multiplier`);
+  return value;
 }
 
 /**
@@ -52,9 +62,10 @@ export function damagePerShotAtRange(weapon, range) {
   return damage == null ? null : damage * pelletCount;
 }
 
+/** Zone multiplier for a weapon returned by applyAttachments (it sets _hsMult and _limbMult). */
 export function zoneMultiplierForWeapon(weapon, zone) {
-  if (zone === 'head') return weapon?._hsMult ?? 1.34;
-  if (REDUCED_BODY_ZONES.has(zone)) return weapon?._limbMult ?? 1;
+  if (zone === 'head') return requireMultiplier(weapon?._hsMult, 'headshot');
+  if (REDUCED_BODY_ZONES.has(zone)) return requireMultiplier(weapon?._limbMult, 'limb');
   return 1;
 }
 
@@ -64,7 +75,8 @@ export function bulletsToKillWithHits(damagePerShot, {
   headshotMultiplier = 1,
   bodyMultiplier = 1,
 } = {}) {
-  if (damagePerShot == null) return null;
+  if (damagePerShot == null || !Number.isFinite(damagePerShot)
+    || !Number.isFinite(headshotMultiplier) || !Number.isFinite(bodyMultiplier)) return null;
   if (!(damagePerShot > 0) || !(health > 0)) return Infinity;
   const headDamage = damagePerShot * headshotMultiplier;
   const bodyDamage = damagePerShot * bodyMultiplier;
@@ -87,7 +99,7 @@ export function bulletsToKillAtRange(weapon, range, {
   return bulletsToKillWithHits(damagePerShotAtRange(weapon, range), {
     health,
     headshots,
-    headshotMultiplier: weapon?._hsMult ?? 1.34,
+    headshotMultiplier: zoneMultiplierForWeapon(weapon, 'head'),
     bodyMultiplier,
   });
 }
