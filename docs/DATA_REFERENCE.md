@@ -13,7 +13,7 @@ are not a complete schema for every current weapon/attachment field. The cross-f
 
 | File | Shape and consumer |
 |---|---|
-| [weapons.json](../data/weapons.json) | Ordered array of 63 base weapon records; UI, attachment resolver, simulation. IDs join all per-weapon maps. |
+| [weapons.json](../data/weapons.json) | Ordered array of 63 base weapon records; UI, attachment resolver, simulation. IDs join all per-weapon maps. `description` supplies plain-text tooltips on weapon buttons and comparison names; it does not affect calculations. |
 | [attachments.json](../data/attachments.json) | Seven ordered catalogs plus availability, ergonomics and magazine maps; loadout/attachment/share modules. |
 | [attachment-tooltips.json](../data/attachment-tooltips.json) | Runtime description dictionary and `byWeapon[weaponId][slot][attachmentId]` lookup keys; loadout UI only. Covers 2,967 non-optic choices, including 15 approved game-panel transcriptions, plus 63 Iron Sights choices. |
 | [weapon-role-tags.json](../data/weapon-role-tags.json) | Reference only; not loaded by the UI. Frosty role tags for all 63 weapons in three groups (`style`, `range`, `firing`), each `{id, text}` with the English string id. When primary UI records disagree, an in-game panel selects the tag and `panelEvidence` records it (Mini Scout range); otherwise a group is `null` with a `conflicts` entry. `records` lists every source record. |
