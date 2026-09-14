@@ -309,3 +309,9 @@ node scripts/validate-ship-surface.mjs
 ```
 
 The coverage check compares the report to the actual menu availability functions, verifies every runtime description reference and deferred choice, checks current site/review/descriptor hashes, and confirms all optic category members. Current totals are 2,967 described non-optic choices, 63 iron-sight tooltips, 45 deferred non-optic choices, and 350 linked optic categories. Mapper tests cover panel-source and image changes, empty text, original-pointer preservation, prevention of cross-weapon propagation, and default iron-sight selection.
+
+### Weapon description tooltips
+
+All 63 weapon records in `data/weapons.json` include `description`. Weapon selection buttons and comparison heading names expose this text through `title` and `aria-description`. The text does not affect simulation values.
+
+The [weapon description evidence](../../reference-data/provenance/weapon-descriptions-2026-09-13.json) retains metadata pointers, source hashes, and screenshot evidence. There are 61 resolved Frosty descriptions and two screenshot transcriptions (M2010 ESR and SV-98). Their original English IDs, `2DB86D4C` and `E8EA1B59`, remain absent from the export. Preserve the source distinction when refreshing weapon data.

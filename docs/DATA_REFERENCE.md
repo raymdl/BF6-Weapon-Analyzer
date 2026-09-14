@@ -13,7 +13,7 @@ are not a complete schema for every current weapon/attachment field. The cross-f
 
 | File | Shape and consumer |
 |---|---|
-| [weapons.json](../data/weapons.json) | Ordered array of 63 base weapon records; UI, attachment resolver, simulation. IDs join all per-weapon maps. |
+| [weapons.json](../data/weapons.json) | Ordered array of 63 base weapon records; UI, attachment resolver, simulation. IDs join all per-weapon maps. `description` supplies plain-text tooltips on weapon buttons and comparison names; it does not affect calculations. |
 | [attachments.json](../data/attachments.json) | Seven ordered catalogs plus availability, ergonomics and magazine maps; loadout/attachment/share modules. |
 | [attachment-tooltips.json](../data/attachment-tooltips.json) | Runtime description dictionary and `byWeapon[weaponId][slot][attachmentId]` lookup keys; loadout UI only. Covers 2,967 non-optic choices, including 15 approved game-panel transcriptions, plus 63 Iron Sights choices. |
 | [ammo.json](../data/ammo.json) | Ordered `AMMO` catalog and `WEAPON_AMMO` availability, effects, velocity treatments and projectile overrides. |
