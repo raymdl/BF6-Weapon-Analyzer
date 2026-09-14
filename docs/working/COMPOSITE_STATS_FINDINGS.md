@@ -56,6 +56,9 @@ that this is a loadout UI problem only and does not change in-game weapon behavi
 The Interdictor table in this export stores 1, so the wrong value is in the shipped
 table. The BROD 3 (1) and EF88 (0) audit readings were captured when those weapons
 were new; their tables in this export have normal values (26.795 and 27.932).
+Current panels (14 SEP 2026) confirm the fix: EF88 shows 28 with the Light and Basic
+barrels, and BROD 3 shows 27 with the Basic and Extended barrels. The 07 SEP audit
+values for these two weapons are out of date.
 Do not use a 0 or 1 panel reading as evidence for a Precision model.
 
 ### Row selection
