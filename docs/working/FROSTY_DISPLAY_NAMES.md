@@ -1,12 +1,13 @@
-# Weapon display names from Frosty
+# Weapon and attachment UI text from Frosty
 
 [Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
 
-This guide explains how the site gets each weapon's in-game display name from game
-data, and how to repeat the work after a game update. The result for 13 September 2026
-is in [frosty-weapon-display-names-2026-09-13.json](../../reference-data/provenance/frosty-weapon-display-names-2026-09-13.json).
+This guide explains how to resolve English weapon display names and attachment
+labels and descriptions from game data. The 13 September 2026 results are in
+[frosty-weapon-display-names-2026-09-13.json](../../reference-data/provenance/frosty-weapon-display-names-2026-09-13.json)
+and [frosty-attachment-descriptions-2026-09-13.json](../../reference-data/provenance/frosty-attachment-descriptions-2026-09-13.json).
 
-## Result
+## Weapon display-name result
 
 - All 63 site weapons link from their Frosty internal name (for example `HK433`) to
   the English display name the game shows (M433).
@@ -197,8 +198,112 @@ metadata link (step 4) for all weapons; key patterns are supporting evidence onl
 | `SCAR-SC .300 BLK`, `MP7A2 SP SUPPRESSED` | Variant records of SOR-300SC and PW7A2. Not separate site weapons. |
 | Sym and Companion names | They use the old spellings. The recorded Sym `displayname` values stay unchanged as records of what Sym published. |
 
-## Limits
+## Weapon display-name limits
 
 - This covers English only. Other languages use other `fs_*_loc` assets.
 - The scan skipped 536 unreadable assets. None of the missing links needed them.
 - Hashed class and field names can change with a new SDK; see step 4.
+
+## Attachment labels and descriptions
+
+The same English localization table resolves UI text in the 1,003 `AD_*` assets
+listed under `Common/UI/Static/Metadata/Attachments/` in the local EBX manifest.
+All 1,003 exported without error. The result contains 990 resolved labels and 997
+resolved descriptions; 984 assets have both. There are 131 distinct resolved labels
+and 211 distinct resolved descriptions. The JSON retains each source asset path,
+XML SHA-256, localization ID, text, and any error. These are UI descriptions, not
+proof that the stated effects match current weapon mechanics. The manifest can
+include unused assets, so an asset's presence does not show that it is selectable.
+
+An attachment `AD_*` EBX record has two pointers to `Class_fbe1d3bc` objects.
+`Field_33a358a7` points to its label and `Field_490f0dd0` points to its
+description. Each target object's `Field_3d34898a` is the localization ID to look
+up in `fs_us_strings.tsv`.
+
+| Asset under `Common/UI/Static/Metadata/Attachments/` | Label | Description |
+|---|---|---|
+| `Shared/AD_AK126H64` | `619FA0CA` — Vertical | `12DEAFDF` — Significantly reduces recoil at the cost of movement speed and accuracy while aiming down sights (ADS). |
+| `Shared/AD_Tango_Vertical` | `619FA0CA` — Vertical | `015B7D0A` — Moderately reduces recoil at the cost of aim down sights (ADS) accuracy while moving. |
+| `HK433/AD_HK433_BRL_ExtendedBarrel` | `F041C4F7` — Extended | `1A84E26B` — Long barrel that increases projectile velocity. |
+
+Two assets can have the same short label and different descriptions. Keep the
+asset path and string IDs when matching one to a site attachment. The first
+example was in the prior XML export. The latter two were freshly exported from
+the installed game; their SHA-256 hashes are
+`740C194711F725488223884B145D984D0A270D7F985B94CA32620CEFF0D7C3B9` and
+`7F7E3DD5B13C05AB5B4E8104D788C1ED8E89F94BB3AABE205BBFF626F32E2C7C`.
+The English string table SHA-256 is
+`a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9`.
+The batch XML and status log are local scratch files under
+`outputs/frosty-description-probe/batch/`.
+
+The local FrostyCmd `Program.cs` has an `export-ebx-list` command. It reads one
+asset path per line and writes XML plus `export-status.tsv` under an output
+directory, loading the game only once. [frosty-descriptions.py](../../scripts/frosty-descriptions.py)
+resolves both pointers against `fs_us_strings.tsv`. To repeat after an update,
+refresh the manifest and English strings, select
+`Common/UI/Static/Metadata/Attachments/**/AD_*`, batch export them, run the
+resolver, and inspect its error count. Run FrostyCmd offline, one process at a
+time. Compare each asset against the site's attachment identity before using its
+text in the site.
+
+Thirteen assets have a null label pointer. Six have a description ID absent
+from the English table, across five distinct IDs: `1C029CC8`, `BC1F219E`,
+`A70D89F6`, `2897A9DF`, and `FC443C65`. All 1,003 description pointers are
+present. No text was invented for the unresolved fields.
+
+## Current site mapping
+
+All 3,012 non-optic site choices have reviewed Frosty source identities. The runtime tooltip file contains descriptions for 2,967 choices: 2,952 use resolved Frosty English text and 15 use user-approved game-panel text. The other 45 choices remain deferred and carry `description-review-required` in the full mapping report. The six original Frosty records still have missing English strings; applying a panel tooltip does not recover those strings or replace their pointers.
+
+All 350 generic optic choices map to 1,927 individual Frosty sight records for the 63 site weapons. Fixed scopes remain Standard Optic. Variable Low and Variable High group the 20- and 25-point variable optics; these names do not define a magnification threshold. All member costs match their site category. Individual member descriptions remain in the report; no one member description is used as a generic category tooltip. Five iron-sight categories use exact IronSights hardware names and bound `U_WPM_IronSights` selectors because their UI labels are unresolved.
+
+These links establish source identity and UI text. They do not prove live availability or engine behavior.
+
+Fifteen user-named panels supply approved per-choice tooltips. The evidence is in `panelLinkageInvestigation` in the identity follow-up report, with saved captures, hashes, AAM record GUIDs, original descriptor pointers, and missing string IDs. Matching English text in other descriptors is comparison evidence only. The original five description IDs remain absent from the English export. RPKM's separate AAM title resolves to “30rnd Fast Mag,” matching its panel. DRS-IAR and DB-12 have TOP hardware and panels but RGT names in their ANPEQ16B AAM records. DB-12 also has a separate RGT hardware record, so the AAM name must not simply be treated as a typo for TOP.
+
+| Captured selection | Weapons receiving panel text |
+|---|---|
+| Taclight - Hipfire | M433, B36A4, M277, M417 A2 |
+| Taclight - Aimed | VCR-2, GRT-BC, BROD 3, EF88, ES 5.7, M45A1 |
+| 50 MW Violet | GRT-BC, L110, DRS-IAR, DB-12 |
+| 30 Fast magazine | RPKM |
+
+### Files
+
+- `data/attachment-tooltips.json`: compact runtime descriptions and per-weapon selection links.
+- `reference-data/provenance/frosty-site-attachment-mapping-2026-09-13.json`: every current site choice, reviewed hardware paths, progression and attachment GUIDs, root-listed ability branches, selectors, UI links, review flags, and input hashes.
+- `reference-data/provenance/frosty-optic-category-mapping-2026-09-13.json`: category members, source labels, available descriptions, classification evidence, and hashes.
+- `reference-data/provenance/frosty-attachment-identity-followup-2026-09-13.json`: additional identities and direct screenshot reviews, including exact image hashes and text differences.
+
+### Resolution rules
+
+The mapper starts with the reviewed site-to-hardware identities and checks them against the current source graph. It then tries the full AAM name, an unambiguous name without the slot code, rail-side variants, and exact weapon descriptor names. Matching is case-insensitive. Scoped descriptor prefixes such as `MZL_FlashComp` can be removed while retaining the exact hardware model. Reviewed grips that omit `BTM` retain their complete model suffix, including variants such as `BOLT`.
+
+Shared UI records require the exact hardware model and unanimous English text across their rail variants. A peer description requires both the same model and the same complete bound selector set. This also applies to ammunition, so recoil and non-recoil subsonic variants remain separate. An ambiguous or incomplete direct link cannot be hidden by a convenient peer.
+
+Explicit screenshot reviews can resolve missing links or conflicting UI candidates. Regeneration checks the screenshot hash, original candidate set, and expected source text. If source text differs from the saved panel, both texts and the reason remain in the review. All mapped source alternatives must resolve; a partial source set cannot supply a tooltip.
+
+The separately approved panel-text pass requires an unresolved description, one matching hardware source, the unchanged original UI link, and the saved image hash. It writes `screenshot:<weapon>:<slot>:<attachment>` runtime keys and marks the choice `screenshot-verified`. These keys are not Frosty localization IDs. Original source records retain their missing-description status. No panel text is propagated to peer weapons. Captures remain in the ignored local screenshot library; the published evidence retains their paths, hashes, and transcription.
+
+### Corrections established by this audit
+
+- The old audit reversed CQB and Lightened suppressor identities. `ImprvdSuppressor01` is CQB; `ImprvdSuppressor02` is Lightened. The SV-98 and Interdictor Lightened identities are included.
+- P18, ES 5.7, M45A1, GGH-22, and VZ.61 panels show Single-Port Brake at 10 points. Their sole Frosty brake selects `Brake2_W10`. The site retains the displayed name, uses 10 points, and removes the generic sway penalty. The old screenshot audit contains an incorrect 5-point cost and generic Simple-brake description.
+- QBZ-192's saved ergonomics panel and source ability contain None, Match Trigger, and Rail Cover. The unsupported site Aftermarket Buffer was removed; shared links discard that unavailable selection.
+- GRT-BC's panel shows Burst Mode with 3-round replacement bursts. Its old audit filename and description incorrectly indicate Burst Training and 2-round bursts. The site label is corrected without changing its ID or source effects. SL9 uses the separately verified 2-round replacement description.
+- SGX Classic Vertical uses the screenshot's “Greatly reduces recoil” description, which selects `AD_KABroomstick` from the conflicting AAM candidates.
+- The M4A1 hipfire taclight uses the automatic hip-fire description from `AD_SF300_LeftRail`.
+- Current VSSM ASM text says “Alternate barrel”; its saved panel says “Standard barrel.” Current M1014 compensator text adds a spotting sentence absent from its saved panel. Both differences are retained in the source review; runtime descriptions use the current Frosty text.
+
+### Regeneration and verification
+
+```powershell
+python scripts/frosty-attachment-tooltips.py outputs/frosty-description-probe/aam data/attachment-tooltips.json --frosty-root 'C:/Users/royal/Documents/BF6 Datamining/Frosty' --mapping-json reference-data/provenance/frosty-site-attachment-mapping-2026-09-13.json --optic-mapping-json reference-data/provenance/frosty-optic-category-mapping-2026-09-13.json
+python scripts/frosty-attachment-tooltips.test.py
+node --test scripts/attachment-effects.test.mjs
+node scripts/validate-data.mjs
+node scripts/validate-ship-surface.mjs
+```
+
+The coverage check compares the report to the actual menu availability functions, verifies every runtime description reference and deferred choice, checks current site/review/descriptor hashes, and confirms all optic category members. Current totals are 2,967 described non-optic choices, 45 deferred choices, and 350 linked optic categories. Mapper tests cover panel-source and image changes, empty text, original-pointer preservation, and prevention of cross-weapon propagation.

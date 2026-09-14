@@ -1,0 +1,1290 @@
+{
+  "scope": "Additional source identities for current site choices; no live availability claim.",
+  "rows": [
+    {
+      "weapon": "sv98",
+      "slot": "muzzle",
+      "attachment": "light_supp",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_SV98MSuppressor.xml",
+      "attachmentGuid": "b37491b8-b194-4f80-ae7a-41be9e693444",
+      "progression": {
+        "asset": "Common/Hardware/Weapons/BoltAction/SV98M/U_PRG_SV98M_MZL_SV98MSuppressor",
+        "guid": "adca99b5-4594-4af1-9621-7b58b43b532e"
+      },
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor02_W30",
+          "guid": "bb26754b-fb9d-467b-96ac-ecd132bc3f95"
+        }
+      ],
+      "reason": "The root-listed ability branch selects ImprvdSuppressor02 at 30 points, the reviewed Lightened Suppressor identity."
+    },
+    {
+      "weapon": "interdictor",
+      "slot": "muzzle",
+      "attachment": "light_supp",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml",
+      "attachmentGuid": "5d64b7cd-9d15-4fd0-929b-b14c68ae5cc5",
+      "progression": {
+        "asset": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/U_PRG_DesertTechHTI_MZL_M50BigBoreSuppressor",
+        "guid": "88ce59ef-fba7-4f4d-9544-06ab92b5ddb5"
+      },
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor02_W30",
+          "guid": "bb26754b-fb9d-467b-96ac-ecd132bc3f95"
+        }
+      ],
+      "reason": "The root-listed ability branch selects ImprvdSuppressor02 at 30 points, the reviewed Lightened Suppressor identity."
+    },
+    {
+      "weapon": "p18",
+      "slot": "muzzle",
+      "attachment": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_MZL_RSMicroTactical.xml",
+      "attachmentGuid": "f070ea4d-b889-4ecc-8056-3a2a24568d4d",
+      "progression": {
+        "asset": "Common/Hardware/Weapons/Secondary/M18/U_PRG_M18_MZL_RSMicroTactical",
+        "guid": "a19537ff-6446-4495-98f4-b1b565e3365c"
+      },
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake2_W10",
+          "guid": "67a15160-099a-409f-ba6f-f35045d5c54a"
+        }
+      ],
+      "reason": "Saved screenshot shows Single-Port Brake at 10 points with Improved brake description; the sole Frosty brake selects Brake2_W10. Keep the in-game name rather than infer it from the selector suffix.",
+      "screenshot": {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/P18/03_P18_Muzzle_Single-Port_Brake.png",
+        "sha256": "83c3da7321835fbe86de301d9532f71d2ed3e18b1388aac3ea6f2d9a894dfa5b",
+        "observedName": "Single-Port Brake",
+        "observedPointCost": 10,
+        "observedDescription": "Improved brake that reduces recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap."
+      },
+      "auditDiscrepancy": {
+        "attachmentCost": 5,
+        "attachmentDescription": "Incorrect generic Simple brake description; screenshot is authoritative."
+      }
+    },
+    {
+      "weapon": "es57",
+      "slot": "muzzle",
+      "attachment": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_MZL_RSMicroTactical.xml",
+      "attachmentGuid": "33ca9e6d-2b49-40c8-b113-4db3f8713494",
+      "progression": {
+        "asset": "Common/Hardware/Weapons/Secondary/FiveSeven/U_PRG_FiveSeven_MZL_RSMicroTactical",
+        "guid": "321d3a12-d186-4bc9-b4ff-66bacbd4d60e"
+      },
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake2_W10",
+          "guid": "67a15160-099a-409f-ba6f-f35045d5c54a"
+        }
+      ],
+      "reason": "Saved screenshot shows Single-Port Brake at 10 points with Improved brake description; the sole Frosty brake selects Brake2_W10. Keep the in-game name rather than infer it from the selector suffix.",
+      "screenshot": {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/04_ES 5.7_Muzzle_Single-Port_Brake.png",
+        "sha256": "226ba070e847ac41c5ae6226f4e4caf95b147a1349ce88b51657e9927370ad47",
+        "observedName": "Single-Port Brake",
+        "observedPointCost": 10,
+        "observedDescription": "Improved brake that reduces recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap."
+      },
+      "auditDiscrepancy": {
+        "attachmentCost": 5,
+        "attachmentDescription": "Incorrect generic Simple brake description; screenshot is authoritative."
+      }
+    },
+    {
+      "weapon": "m45a1",
+      "slot": "muzzle",
+      "attachment": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_MZL_RSMicroTactical.xml",
+      "attachmentGuid": "8f69ce36-e096-41b3-9457-72a1a9a88831",
+      "progression": {
+        "asset": "Common/Hardware/Weapons/Secondary/M45A1/U_PRG_M45A1_MZL_RSMicroTactical",
+        "guid": "14e5d402-2530-4cb1-bf4c-a8288e937a17"
+      },
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake2_W10",
+          "guid": "67a15160-099a-409f-ba6f-f35045d5c54a"
+        }
+      ],
+      "reason": "Saved screenshot shows Single-Port Brake at 10 points with Improved brake description; the sole Frosty brake selects Brake2_W10. Keep the in-game name rather than infer it from the selector suffix.",
+      "screenshot": {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M45A1/02_M45A1_Muzzle_Single-Port_Brake.png",
+        "sha256": "d648e3f30f44cab075f99890ea4e427434aa38dcc0372f7a55dee54b714a22d5",
+        "observedName": "Single-Port Brake",
+        "observedPointCost": 10,
+        "observedDescription": "Improved brake that reduces recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap."
+      },
+      "auditDiscrepancy": {
+        "attachmentCost": 5,
+        "attachmentDescription": "Incorrect generic Simple brake description; screenshot is authoritative."
+      }
+    },
+    {
+      "weapon": "ggh22",
+      "slot": "muzzle",
+      "attachment": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_MZL_RSMicroTactical.xml",
+      "attachmentGuid": "94058dd9-4541-4018-9035-ced97466cf4b",
+      "progression": {
+        "asset": "Common/Hardware/Weapons/Secondary/G22/U_PRG_G22_MZL_RSMicroTactical",
+        "guid": "c81e8a75-1f7c-43e0-b279-c7a91238770d"
+      },
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake2_W10",
+          "guid": "67a15160-099a-409f-ba6f-f35045d5c54a"
+        }
+      ],
+      "reason": "Saved screenshot shows Single-Port Brake at 10 points with Improved brake description; the sole Frosty brake selects Brake2_W10. Keep the in-game name rather than infer it from the selector suffix.",
+      "screenshot": {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/GGH-22/04_GGH-22_Muzzle_Single-Port_Brake.png",
+        "sha256": "de8cf5270728650328b582d450e30f1d621db57a96c1fdd70877dd5ad4ff1519",
+        "observedName": "Single-Port Brake",
+        "observedPointCost": 10,
+        "observedDescription": "Improved brake that reduces recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap."
+      },
+      "auditDiscrepancy": {
+        "attachmentCost": 5,
+        "attachmentDescription": "Incorrect generic Simple brake description; screenshot is authoritative."
+      }
+    },
+    {
+      "weapon": "vz61",
+      "slot": "muzzle",
+      "attachment": "sp_brake",
+      "attachmentXml": "Common/Hardware/Weapons/Secondary/Skorpion/Attachment_Skorpion_MZL_RSMicroTactical.xml",
+      "attachmentGuid": "67ec3a65-6226-44ea-8622-7533e483b24e",
+      "progression": {
+        "asset": "Common/Hardware/Weapons/Secondary/Skorpion/U_PRG_Skorpion_MZL_RSMicroTactical",
+        "guid": "b36bcfc4-f0ec-4618-9671-3666e5f407d2"
+      },
+      "selectors": [
+        {
+          "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake2_W10",
+          "guid": "67a15160-099a-409f-ba6f-f35045d5c54a"
+        }
+      ],
+      "reason": "Saved screenshot shows Single-Port Brake at 10 points with Improved brake description; the sole Frosty brake selects Brake2_W10. Keep the in-game name rather than infer it from the selector suffix.",
+      "screenshot": {
+        "path": "reference-data/attachment-audit/Weapon Attachments/Sidearm/VZ. 61/02_VZ. 61_Muzzle_Single-Port_Brake.png",
+        "sha256": "4f244f27f364117ca96b6e3d03fb6cbad7c6b3dfa5919cb2ef1114777c49004c",
+        "observedName": "Single-Port Brake",
+        "observedPointCost": 10,
+        "observedDescription": "Improved brake that reduces recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap."
+      },
+      "auditDiscrepancy": {
+        "attachmentCost": 5,
+        "attachmentDescription": "Incorrect generic Simple brake description; screenshot is authoritative."
+      }
+    }
+  ],
+  "sourceHashes": {
+    "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_SV98MSuppressor.xml": "b86a435f9c86f8b76173e4194499ed30e81c571e4c5b670093ca0f65b76a4b42",
+    "Common/Hardware/Weapons/BoltAction/SV98M/SV98M_Ability.xml": "a71349e6bc27963b977fca03426af063c07e90935afc904a25bd7d31f73086b7",
+    "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_MZL_M50BigBoreSuppressor.xml": "317e9454c102a8a8d73460fc2de9e15aec51c2e6b6f91b88e4e7af3043078355",
+    "Common/Hardware/Weapons/BoltAction/DesertTechHTI/DesertTechHTI_Ability.xml": "3670f0b945fb1b97563e2cc4cc7e5a8f14e3db97985870ac55aaafe26bffcf1b",
+    "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_MZL_RSMicroTactical.xml": "f4f5859520e576facfbde9ccfb370a1392eb3a3fa1d9a45206f22f0fa02be66c",
+    "Common/Hardware/Weapons/Secondary/M18/M18_Ability.xml": "6d2c1c438e2aef89243243fbc01fb71eaf43880cdbc3650a8920b4846247a00c",
+    "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_MZL_RSMicroTactical.xml": "d0b2489dceb6784d9d0266c914d76c7670ae13294bb6c30067577552a3061c7c",
+    "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_Ability.xml": "e5f1e2ed8f95d9560c5b2198b26cafae5ae301047644a9fbb8aa6d9204514bcf",
+    "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_MZL_RSMicroTactical.xml": "e8b5db14cd4677190697c74d8211692cb45fa1cfd40b5b807ce9876fce49323f",
+    "Common/Hardware/Weapons/Secondary/M45A1/M45A1_Ability.xml": "98444d811d41d4d543c3bf954a5bf3f4db9dfe27c607eccdf0f82d0cf7b6d68f",
+    "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_MZL_RSMicroTactical.xml": "70b4d285137483d247fec7e30d4ecdd901f5a5b3e56ef86433c343b2db011532",
+    "Common/Hardware/Weapons/Secondary/G22/G22_Ability.xml": "487612294655e50f0f006fbdf5b99ba92e8d9630daab1897f66f6343d616e237",
+    "Common/Hardware/Weapons/Secondary/Skorpion/Attachment_Skorpion_MZL_RSMicroTactical.xml": "e126e6167aac91f64fa55d9ebfdb6311a7485a7d38b605ea1abafbe7f624d286",
+    "Common/Hardware/Weapons/Secondary/Skorpion/Skorpion_Ability.xml": "03465c3649e2aa5dd052c95a17c13c6f6045e0d1c54b104ba0a8acf69f2a9c5d"
+  },
+  "uiLinkReviews": [
+    {
+      "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_BTM_KAC_Vertical_Grip.xml",
+      "slot": "grip",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_kabroomstick",
+      "candidateAssets": [
+        "common/ui/static/metadata/attachments/shared/ad_ak126h64",
+        "common/ui/static/metadata/attachments/shared/ad_kabroomstick"
+      ],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/SGX/32_SGX_Grip_Classic_Vertical.png",
+      "screenshotSha256": "aad2428d949c0f5f4e90e573f0c010fad7b1e457c5872956571acaf15c771250",
+      "observedDescription": "Greatly reduces recoil at the cost of movement speed and accuracy while aiming down sights (ADS).",
+      "reason": "Direct visual review of SGX Classic Vertical panel selects this exact text from the two conflicting AAM candidates."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_ERG_BurstFireEnable.xml",
+      "slot": "ergo",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_shared_erg_3burstfirereplace",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Carbine/GRT-BC/54_GRT-BC_Ergonomics_Burst_Training.png",
+      "screenshotSha256": "63e701d4acad78fb067b50259145e33341e4cefa559a36405ef510bd348747ce",
+      "observedDescription": "Replaces the default firemode with 3-round burst fire. Burst fire mode reduces horizontal recoil in favor of more stable vertical recoil and slightly reduces overall recoil.",
+      "reason": "Direct visual review confirms the burst count and replacement description for this source-linked site option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_ERG_BurstFireEnable.xml",
+      "slot": "ergo",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_shared_erg_2burstfirereplace",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/54_SL9_Ergonomics_Burst_Mode.png",
+      "screenshotSha256": "829e6e9b96717477e9db8649248d0759b4a863a266af89b42a596ee0b0f7dc83",
+      "observedDescription": "Replaces the default firemode with 2-round burst fire. Burst fire mode reduces horizontal recoil in favor of more stable vertical recoil and minimally reduces overall recoil.",
+      "reason": "Direct visual review confirms the burst count and replacement description for this source-linked site option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_MZL_Wyssen.xml",
+      "slot": "muzzle",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_shared_mzl_flashcomp_wyssenmb",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/PW5A3/03_PW5A3_Muzzle_Flash_Comp.png",
+      "screenshotSha256": "ab3c95d67593551f84658db54b3c0de0b0f343b5842a6a6cb28324172db0def3",
+      "observedDescription": "Limits the intensity of muzzle flashes and fully hides in-world spotting while firing. Reduces recoil buildup and improves recoil recovery.",
+      "reason": "Direct visual review confirms the exact description for the source-linked hardware model (Wyssen/WyssenMB or ZenitcoRK2/RK2)."
+    },
+    {
+      "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_MZL_Wyssen.xml",
+      "slot": "muzzle",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_shared_mzl_flashcomp_wyssenmb",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/UMG-40/03_UMG-40_Muzzle_Flash_Comp.png",
+      "screenshotSha256": "28ce6496d55adfbfd386468f1238ee46401693f1957d0612e779d1b2d17b1c07",
+      "observedDescription": "Limits the intensity of muzzle flashes and fully hides in-world spotting while firing. Reduces recoil buildup and improves recoil recovery.",
+      "reason": "Direct visual review confirms the exact description for the source-linked hardware model (Wyssen/WyssenMB or ZenitcoRK2/RK2)."
+    },
+    {
+      "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_MZL_Wyssen.xml",
+      "slot": "muzzle",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_shared_mzl_flashcomp_wyssenmb",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/SCW-10/03_SCW-10_Muzzle_Flash_Comp.png",
+      "screenshotSha256": "734f4fd3d320b6b674713df842cc330860eb53d0b6de8275ce03c770a74d8bdd",
+      "observedDescription": "Limits the intensity of muzzle flashes and fully hides in-world spotting while firing. Reduces recoil buildup and improves recoil recovery.",
+      "reason": "Direct visual review confirms the exact description for the source-linked hardware model (Wyssen/WyssenMB or ZenitcoRK2/RK2)."
+    },
+    {
+      "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_BTM_ZenitcoRK2.xml",
+      "slot": "grip",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_rk2",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/LMG/DRS-IAR/32_DRS-IAR_Grip_Alloy_Vertical.png",
+      "screenshotSha256": "277c77b32eb3a2a896338321b12de568a340b81e6641b55654d64e9683fda5db",
+      "observedDescription": "Slightly reduces recoil.",
+      "reason": "Direct visual review confirms the exact description for the source-linked hardware model (Wyssen/WyssenMB or ZenitcoRK2/RK2)."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_RGT_SF300.xml",
+      "slot": "light",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_sf300_leftrail",
+      "candidateAssets": [
+        "common/ui/static/metadata/attachments/shared/ad_sf300",
+        "common/ui/static/metadata/attachments/shared/ad_sf300_leftrail"
+      ],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Carbine/M4A1/20_M4A1_Light_Taclight_-_Hipfire.png",
+      "screenshotSha256": "4a50289c3c6e580d67a7c434b363a505a8c1f7f90dfecb531c6bcf7080d7e237",
+      "observedDescription": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+      "reason": "Direct visual review selects the automatic hip-fire description from the conflicting SF300 UI records."
+    },
+    {
+      "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_BTM_FABFS.xml",
+      "slot": "grip",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_tfs",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/SCW-10/27_SCW-10_Grip_Folding_Vertical.png",
+      "screenshotSha256": "40ae77e4671ba349733af3094494238f64b128be52ccbb28bb63cdd455d11952",
+      "observedDescription": "Slightly reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+      "reason": "Direct visual review confirms the exact description for the reviewed source-linked site option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_ARAAFG_PDW.xml",
+      "slot": "grip",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_apdw_grip",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/SL9/42_SL9_Grip_FACTORY_ANGLED.png",
+      "screenshotSha256": "082c7102b7c2b38c5b7b068f1d31c34a28c43ce0570bbb01ab9caba6990599f1",
+      "observedDescription": "Marginally reduces recoil and enables a slightly faster transition to aim down sights (ADS).",
+      "reason": "Direct visual review confirms the exact description for the reviewed source-linked site option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_MZL_FlashHiderDP12.xml",
+      "slot": "muzzle",
+      "descriptionAsset": "common/ui/static/metadata/attachments/dp12/ad_dp12_mzl_fh",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/03_DB-12_Muzzle_Flash_Hider.png",
+      "screenshotSha256": "c9176b9211a70a29cfa8bb887dcccac7cdfff872a10a04201bc22840d6077fdf",
+      "observedDescription": "Reduces the intensity of muzzle flashes and fully hides in-world spotting while firing. Soldiers firing are still marked on the minimap.",
+      "reason": "Direct visual review confirms the exact description for the reviewed source-linked site option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_AMO_No00Buckshot.xml",
+      "slot": "ammo",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_ammo_no00buckshot",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M87A1/38_M87A1_Ammo_00_Buckshot.png",
+      "screenshotSha256": "88615820d83a1703cb35f83d99f651c1181334d9255493982f7e07736d9a438e",
+      "observedDescription": "Standard-penetration shotgun ammunition with increased range and damage per pellet, but fewer pellets per shot.",
+      "reason": "Direct visual review confirms the exact shared ammunition description for this reviewed source-linked option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_AMO_No00Buckshot.xml",
+      "slot": "ammo",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_ammo_no00buckshot",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M1014/37_M1014_Ammo_00_Buckshot.png",
+      "screenshotSha256": "693b1dcf6bce0d441f594824ad38abdc85cd196cd83452b9c49b4aee2362c4a8",
+      "observedDescription": "Standard-penetration shotgun ammunition with increased range and damage per pellet, but fewer pellets per shot.",
+      "reason": "Direct visual review confirms the exact shared ammunition description for this reviewed source-linked option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_AMO_No00Buckshot.xml",
+      "slot": "ammo",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_ammo_no00buckshot",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/39_18.5KS-K_Ammo_00_Buckshot.png",
+      "screenshotSha256": "127b09af0c9b6405ac021c190652b9e9ca13ecb700fb1aeebb07def56e4d5254",
+      "observedDescription": "Standard-penetration shotgun ammunition with increased range and damage per pellet, but fewer pellets per shot.",
+      "reason": "Direct visual review confirms the exact shared ammunition description for this reviewed source-linked option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_AMO_No00Buckshot.xml",
+      "slot": "ammo",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_ammo_no00buckshot",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/DB-12/33_DB-12_Ammo_00_Buckshot.png",
+      "screenshotSha256": "a058640218713c6c162809d4597814457b308156089796590c483a23aae59b01",
+      "observedDescription": "Standard-penetration shotgun ammunition with increased range and damage per pellet, but fewer pellets per shot.",
+      "reason": "Direct visual review confirms the exact shared ammunition description for this reviewed source-linked option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_AMO_SubsonicTungsten.xml",
+      "slot": "ammo",
+      "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_ammo_subsonictungsten",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/PW7A2/48_PW7A2_Ammo_Sub_Pen.png",
+      "screenshotSha256": "09eedbf5de67e3419b65a9b6588a717323e67b45b8ee745caf38c71df579a045",
+      "observedDescription": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Provides standard-penetration.",
+      "reason": "Direct visual review confirms the exact shared ammunition description for this reviewed source-linked option."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_MAG_Compact3.xml",
+      "slot": "mag",
+      "descriptionAsset": "common/ui/static/metadata/attachments/590a1/ad_590a1_mag_006cpt3",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M87A1/35_M87A1_Magazine_5RND_SPEEDLOADER.png",
+      "screenshotSha256": "bd3cde755f41105b41b74a1e7ae6cc8b06413fee7347a0b0d5c9b8d0f2315cc5",
+      "observedDescription": "Short magazine tube with speedloader. Greatly improves weapon handling and allows for rapid reloading on low ammo.",
+      "reason": "Reviewed same-weapon hardware/descriptor alias and saved attachment panel."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_MAG_Compact2.xml",
+      "slot": "mag",
+      "descriptionAsset": "common/ui/static/metadata/attachments/m1014/ad_m1014_mag_005cpt2",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M1014/34_M1014_Magazine_4RND_SPEEDLOADER.png",
+      "screenshotSha256": "3f8f43e026cb4620510607b1fc9949642531f9897dde7dd2db6b7afe60ed1c34",
+      "observedDescription": "Short magazine tube with speedloader. Greatly improves weapon handling and allows for rapid reloading on low ammo.",
+      "reason": "Reviewed same-weapon hardware/descriptor alias and saved attachment panel."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_MAG_Fast.xml",
+      "slot": "mag",
+      "descriptionAsset": "common/ui/static/metadata/attachments/trr8/ad_trr8_mag_008fast",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sidearm/M357 Trait/11_M357 Trait_Magazine_8RND_MOON_CLIP.png",
+      "screenshotSha256": "0048c73173f3aa21a313583499684c873c83e22184f0b85effa8098c2804ea9a",
+      "observedDescription": "Cartridge holder that improves reload speed.",
+      "reason": "Reviewed same-weapon hardware/descriptor alias and saved attachment panel."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_BRL_Fluted.xml",
+      "slot": "barrel",
+      "descriptionAsset": "common/ui/static/metadata/attachments/m4a1/ad_m4a1_brl_light",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Carbine/M4A1/16_M4A1_Barrel_Light.png",
+      "screenshotSha256": "bb4598c362545f7f3c0026e1cd88989adbb5abccc87ac16434ffcfc227aae04e",
+      "observedDescription": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+      "reason": "Reviewed same-weapon hardware/descriptor alias and saved attachment panel."
+    },
+    {
+      "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_SV98ThreadProtector.xml",
+      "slot": "muzzle",
+      "descriptionAsset": "common/ui/static/metadata/attachments/sv98m/ad_sv98m_muzzle",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/04_SV-98_Muzzle_Thread_Protector.png",
+      "screenshotSha256": "3fc1e77475f59c503e9556d843be2cfd66fdcbf12a7b418f9453463032ea027e",
+      "observedDescription": "Muzzle thread protector that reduces recoil but increases weapon sway. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+      "reason": "Reviewed same-weapon hardware/descriptor alias and saved attachment panel."
+    },
+    {
+      "source": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_BRL_VSSMASM.xml",
+      "slot": "barrel",
+      "descriptionAsset": "common/ui/static/metadata/attachments/vssm/ad_vssm_brl_asm",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/02_VSSM_Barrel_Suppressed_200MM_ASM.png",
+      "screenshotSha256": "d2c0601dedb641c042aea0d2a1a156e2e1129997c5ce8e8e39a567a391561f24",
+      "observedDescription": "Standard barrel which fully hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
+      "reason": "Reviewed same-weapon hardware/descriptor alias and saved attachment panel.",
+      "sourceDescription": "Alternate barrel which fully hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
+      "descriptionMismatch": "Current Frosty UI text differs from the saved panel. Preserve both; use current source text. The hardware identity is the same named ASM barrel or Benelli M4 compensator."
+    },
+    {
+      "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_MZL_BenelliComp.xml",
+      "slot": "muzzle",
+      "descriptionAsset": "common/ui/static/metadata/attachments/m1014/ad_benellim4comp",
+      "candidateAssets": [],
+      "screenshot": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M1014/02_M1014_Muzzle_Compensator.png",
+      "screenshotSha256": "4072dde64c915e70ac18d867f96e8977a080b46820de2a5e4497637861c22ef9",
+      "observedDescription": "Reduces recoil buildup and improves recoil recovery.",
+      "reason": "Reviewed same-weapon hardware/descriptor alias and saved attachment panel.",
+      "sourceDescription": "Reduces recoil buildup and improves recoil recovery. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+      "descriptionMismatch": "Current Frosty UI text differs from the saved panel. Preserve both; use current source text. The hardware identity is the same named ASM barrel or Benelli M4 compensator."
+    }
+  ],
+  "panelLinkageInvestigation": {
+    "scope": "Fifteen user-named game panels traced through existing AAM records to original descriptor pointers. The user approved applying the observed panel text as per-choice tooltips. Equal text in other records remains comparison evidence only. Original Frosty pointers and missing English string IDs are not replaced or recovered.",
+    "rows": [
+      {
+        "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_RGT_SF300.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/m433_hip_taclight.png",
+        "screenshotSha256": "db542a5dc19af6b62664c846518ec72b940061f03cafc6630d902b28b802f6f7",
+        "observedDescription": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "m433",
+        "attachment": "hip_taclight",
+        "sourceAttachmentGuid": "996e20af-57c4-42e6-b34f-d22678151cf8",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightHIP_W15",
+            "guid": "ca0705e2-c529-4d1e-a8bd-66517a9cca02",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/AssaultRifle/HK433/AAM_HK433",
+              "recordGuid": "dd8c1541-45e1-48ca-91a5-22aedec12d31",
+              "name": "HK433 - RGT - SF300",
+              "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/AssaultRifle/HK433/AAM_HK433",
+            "aamSha256": "e2ac36f71810db3e221e235bbfd89bc9d502baa21d193193c5ba95324ea81cf1",
+            "recordGuid": "dd8c1541-45e1-48ca-91a5-22aedec12d31",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/Shared/AD_SFScout_RightRail [fbea430b-c2d0-f1cc-1888-ba674e33dc29]",
+            "descriptorXmlSha256": "dac0c1077de5082b59d85b0ef798310872c4fcd0a0c10467b53f463b045e624f",
+            "descriptionReferenceGuid": "42f2d290-2643-738e-a0c1-f56a2d086412",
+            "descriptionStringId": "FC443C65",
+            "englishStringPresent": false,
+            "aamTitleStringId": "93EA61E7",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_SF300_LeftRail",
+            "stringId": "97C1E0D4"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_RGT_SF300.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/b36a4_hip_taclight.png",
+        "screenshotSha256": "fac0e7428feccd9abad01df693cce7711183064665264f7ec80ab8a972b5e755",
+        "observedDescription": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "b36a4",
+        "attachment": "hip_taclight",
+        "sourceAttachmentGuid": "0669385b-cdc3-451e-9fbc-296167a006b4",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightHIP_W15",
+            "guid": "ca0705e2-c529-4d1e-a8bd-66517a9cca02",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/AssaultRifle/G36/AAM_G36",
+              "recordGuid": "50c0bea9-9cad-4605-b145-a37118fcb503",
+              "name": "G36 - RGT - SF300",
+              "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/AssaultRifle/G36/AAM_G36",
+            "aamSha256": "d79e56360163797e9711fe84daaf197b15a7e59e9b28e0fc27c2684e837c8b2f",
+            "recordGuid": "50c0bea9-9cad-4605-b145-a37118fcb503",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/Shared/AD_SFScout_RightRail [fbea430b-c2d0-f1cc-1888-ba674e33dc29]",
+            "descriptorXmlSha256": "dac0c1077de5082b59d85b0ef798310872c4fcd0a0c10467b53f463b045e624f",
+            "descriptionReferenceGuid": "42f2d290-2643-738e-a0c1-f56a2d086412",
+            "descriptionStringId": "FC443C65",
+            "englishStringPresent": false,
+            "aamTitleStringId": "93EA61E7",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_SF300_LeftRail",
+            "stringId": "97C1E0D4"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_RGT_SF300.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/m277_hip_taclight.png",
+        "screenshotSha256": "820a730f89517dd6cb9111e0911d4481efed8624040af5abb4b9918d5d10261e",
+        "observedDescription": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "m277",
+        "attachment": "hip_taclight",
+        "sourceAttachmentGuid": "06e67364-4136-4137-943e-c7e9c610c396",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightHIP_W15",
+            "guid": "ca0705e2-c529-4d1e-a8bd-66517a9cca02",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/Carbine/XM7/AAM_XM7",
+              "recordGuid": "cb6616c0-7ef4-4826-b250-bf59efd0f971",
+              "name": "XM7 - RGT - SF300",
+              "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Carbine/XM7/AAM_XM7",
+            "aamSha256": "c054bd7567ad9412da1cb0ba2f84259a97974ad2ccc0477aea176d2a3bf41662",
+            "recordGuid": "cb6616c0-7ef4-4826-b250-bf59efd0f971",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/Shared/AD_SFScout_RightRail [fbea430b-c2d0-f1cc-1888-ba674e33dc29]",
+            "descriptorXmlSha256": "dac0c1077de5082b59d85b0ef798310872c4fcd0a0c10467b53f463b045e624f",
+            "descriptionReferenceGuid": "42f2d290-2643-738e-a0c1-f56a2d086412",
+            "descriptionStringId": "FC443C65",
+            "englishStringPresent": false,
+            "aamTitleStringId": "93EA61E7",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_SF300_LeftRail",
+            "stringId": "97C1E0D4"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_RGT_SF300.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/m417a2_hip_taclight.png",
+        "screenshotSha256": "881627d9fd745b88156c7b9d4a94ed8b21e5f0eed5eddb1127928df843ad51a8",
+        "observedDescription": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "m417a2",
+        "attachment": "hip_taclight",
+        "sourceAttachmentGuid": "4a0d7496-273c-4b0b-adc2-624ef2afcfaf",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightHIP_W15",
+            "guid": "ca0705e2-c529-4d1e-a8bd-66517a9cca02",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/Carbine/HK417A2/AAM_HK417A2",
+              "recordGuid": "0c46eac0-73be-4423-89e3-83c19bec4544",
+              "name": "HK417A2 - RGT - SF300",
+              "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_sfscout_rightrail"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Carbine/HK417A2/AAM_HK417A2",
+            "aamSha256": "4c14ed6373706fd38a54ce8ed1bb77c28b4fb490a384a8da937c4bde8543b3a7",
+            "recordGuid": "0c46eac0-73be-4423-89e3-83c19bec4544",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/Shared/AD_SFScout_RightRail [fbea430b-c2d0-f1cc-1888-ba674e33dc29]",
+            "descriptorXmlSha256": "dac0c1077de5082b59d85b0ef798310872c4fcd0a0c10467b53f463b045e624f",
+            "descriptionReferenceGuid": "42f2d290-2643-738e-a0c1-f56a2d086412",
+            "descriptionStringId": "FC443C65",
+            "englishStringPresent": false,
+            "aamTitleStringId": "93EA61E7",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_SF300_LeftRail",
+            "stringId": "97C1E0D4"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_RGT_ModuleMk3.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/vcr2_ads_taclight.png",
+        "screenshotSha256": "ea9e4f0e1718abe867a8c95b4aee19a246344221792c2c9701704ce3a6c376fe",
+        "observedDescription": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "vcr2",
+        "attachment": "ads_taclight",
+        "sourceAttachmentGuid": "8a878115-1dbc-48bf-b912-1a2474881510",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightADS_W05",
+            "guid": "1c8ae489-aff5-4880-af29-fd1f17fe6ffc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-without-slot",
+          "assets": [
+            "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/AssaultRifle/VHS2/AAM_VHS2",
+              "recordGuid": "0a0cac3b-1f59-4832-b55e-f644b9031e70",
+              "name": "VHS2 - Module Mk3",
+              "descriptionAsset": "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/AssaultRifle/VHS2/AAM_VHS2",
+            "aamSha256": "76b9dcfa3accac310ae1ad478e17328f555f647bff658ddea00e76d69e07e28e",
+            "recordGuid": "0a0cac3b-1f59-4832-b55e-f644b9031e70",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/MSBSGROTB/AD_ModuleMk3 [69c0aff0-f079-ec80-18e9-b6da98e73637]",
+            "descriptorXmlSha256": "db88c9129fe933bf68e7fd778a61810af2e8c38b6edf2d3b6c2371417e7f936b",
+            "descriptionReferenceGuid": "eebbd16f-96b3-b2ce-25ee-30f1bafc7e75",
+            "descriptionStringId": "BC1F219E",
+            "englishStringPresent": false,
+            "aamTitleStringId": "4233D8E0",
+            "aamTitleText": "Taclight - Aimed"
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ModuleMk3_LeftRail",
+            "stringId": "7944DEA3"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_RGT_ModuleMk3.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/grtbc_ads_taclight.png",
+        "screenshotSha256": "c1f67530eca8c8560aac8f22320a3d5a904651b0c9833d325a73edcd6205cd91",
+        "observedDescription": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "grtbc",
+        "attachment": "ads_taclight",
+        "sourceAttachmentGuid": "e2931bb2-d02e-4382-8438-4885d64014aa",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightADS_W05",
+            "guid": "1c8ae489-aff5-4880-af29-fd1f17fe6ffc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/Carbine/MSBSGROTB/AAM_MSBSGROTB",
+              "recordGuid": "6637417f-ae53-467a-a885-55a0d2ad29c3",
+              "name": "MSBSGROTB - RGT - Module Mk3",
+              "descriptionAsset": "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Carbine/MSBSGROTB/AAM_MSBSGROTB",
+            "aamSha256": "03b57a7ad42226c89fafee9509c0ade7b2d04785cb3fb816326cb2d51866484b",
+            "recordGuid": "6637417f-ae53-467a-a885-55a0d2ad29c3",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/MSBSGROTB/AD_ModuleMk3 [69c0aff0-f079-ec80-18e9-b6da98e73637]",
+            "descriptorXmlSha256": "db88c9129fe933bf68e7fd778a61810af2e8c38b6edf2d3b6c2371417e7f936b",
+            "descriptionReferenceGuid": "eebbd16f-96b3-b2ce-25ee-30f1bafc7e75",
+            "descriptionStringId": "BC1F219E",
+            "englishStringPresent": false,
+            "aamTitleStringId": "4AA9DF80",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ModuleMk3_LeftRail",
+            "stringId": "7944DEA3"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_RGT_ModuleMk3.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/brod3_ads_taclight.png",
+        "screenshotSha256": "5d8f941eca3590ffee582d9d0c5c77e01c0b60631255d03b8c4c7897c8861ca8",
+        "observedDescription": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "brod3",
+        "attachment": "ads_taclight",
+        "sourceAttachmentGuid": "448c95ae-e65e-4cde-81ad-5a1632abb8b7",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightADS_W05",
+            "guid": "1c8ae489-aff5-4880-af29-fd1f17fe6ffc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-without-slot",
+          "assets": [
+            "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/Carbine/BREN3/AAM_BREN3",
+              "recordGuid": "5fe12af0-5985-4765-a26a-805b5e56d53d",
+              "name": "BREN3 - Module Mk3",
+              "descriptionAsset": "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Carbine/BREN3/AAM_BREN3",
+            "aamSha256": "c73a5c524abbf735bf4d9a340b85dda7dfb2433a876a3f971379bc046db2547a",
+            "recordGuid": "5fe12af0-5985-4765-a26a-805b5e56d53d",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/MSBSGROTB/AD_ModuleMk3 [69c0aff0-f079-ec80-18e9-b6da98e73637]",
+            "descriptorXmlSha256": "db88c9129fe933bf68e7fd778a61810af2e8c38b6edf2d3b6c2371417e7f936b",
+            "descriptionReferenceGuid": "eebbd16f-96b3-b2ce-25ee-30f1bafc7e75",
+            "descriptionStringId": "BC1F219E",
+            "englishStringPresent": false,
+            "aamTitleStringId": "4233D8E0",
+            "aamTitleText": "Taclight - Aimed"
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ModuleMk3_LeftRail",
+            "stringId": "7944DEA3"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_RGT_ModuleMk3.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/ef88_ads_taclight.png",
+        "screenshotSha256": "bda6e89859642f7932369549d255429f74909c79fd6f2e10cb205af12a805ef8",
+        "observedDescription": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "ef88",
+        "attachment": "ads_taclight",
+        "sourceAttachmentGuid": "af43706d-b44a-4c3c-a873-f95a558cf162",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightADS_W05",
+            "guid": "1c8ae489-aff5-4880-af29-fd1f17fe6ffc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-without-slot",
+          "assets": [
+            "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/AssaultRifle/EF88/AAM_EF88",
+              "recordGuid": "bc27bacb-86cd-4b4f-9d7b-88726bc1302d",
+              "name": "EF88 - Module Mk3",
+              "descriptionAsset": "common/ui/static/metadata/attachments/msbsgrotb/ad_modulemk3"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/AssaultRifle/EF88/AAM_EF88",
+            "aamSha256": "e58319b822dfee1060ea368d498872d878bf258e4706b582f622b2c57264c32e",
+            "recordGuid": "bc27bacb-86cd-4b4f-9d7b-88726bc1302d",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/MSBSGROTB/AD_ModuleMk3 [69c0aff0-f079-ec80-18e9-b6da98e73637]",
+            "descriptorXmlSha256": "db88c9129fe933bf68e7fd778a61810af2e8c38b6edf2d3b6c2371417e7f936b",
+            "descriptionReferenceGuid": "eebbd16f-96b3-b2ce-25ee-30f1bafc7e75",
+            "descriptionStringId": "BC1F219E",
+            "englishStringPresent": false,
+            "aamTitleStringId": "4233D8E0",
+            "aamTitleText": "Taclight - Aimed"
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ModuleMk3_LeftRail",
+            "stringId": "7944DEA3"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_BTM_LMDPEIR1.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/es57_ads_taclight.png",
+        "screenshotSha256": "e9dc59416181e3b11ee5cdd5dd18b8cab048623f2985857cca6495fa6c00ec4c",
+        "observedDescription": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "es57",
+        "attachment": "ads_taclight",
+        "sourceAttachmentGuid": "9f8bb372-7abd-4408-94a0-b716fa61f5e8",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightADS_W05",
+            "guid": "1c8ae489-aff5-4880-af29-fd1f17fe6ffc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/shared/ad_lmdpeir1"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/Secondary/FiveSeven/AAM_FiveSeven",
+              "recordGuid": "43d41cf3-bdae-4cde-b5b1-b177955f48c3",
+              "name": "FiveSeven - BTM - LMDPEIR1",
+              "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_lmdpeir1"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Secondary/FiveSeven/AAM_FiveSeven",
+            "aamSha256": "745ec7c801f1bf54824c07c915bcc74faee038e022cf0770e14a02276cb69409",
+            "recordGuid": "43d41cf3-bdae-4cde-b5b1-b177955f48c3",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/Shared/AD_LMDPEIR1 [2bcafec5-9cd9-b23c-609a-767304a39c7e]",
+            "descriptorXmlSha256": "23ddfca1ebabe2d71d9fea89e35162571e57a87366d6cd183cb9940678471344",
+            "descriptionReferenceGuid": "56fc1c5a-c67b-ba4b-58fe-87adfb316b54",
+            "descriptionStringId": "2897A9DF",
+            "englishStringPresent": false,
+            "aamTitleStringId": "7BAAFB21",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ModuleMk3_LeftRail",
+            "stringId": "7944DEA3"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_LMDPEIR1.xml",
+        "slot": "light",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/m45a1_ads_taclight.png",
+        "screenshotSha256": "ca23df73dbdb541d50d87edcdc4c3863bec587b091de4c86dd45d6f5cc184484",
+        "observedDescription": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+        "weapon": "m45a1",
+        "attachment": "ads_taclight",
+        "sourceAttachmentGuid": "f6052b9d-9a12-4efe-b913-b6aa5af8eee6",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/U_WPM_RGT_TaclightADS_W05",
+            "guid": "1c8ae489-aff5-4880-af29-fd1f17fe6ffc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/shared/ad_lmdpeir1"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/Secondary/M45A1/AAM_M45A1",
+              "recordGuid": "050ed0b9-d6d7-4e39-8e80-d3c23bcf733f",
+              "name": "M45A1 - BTM - LMDPEIR1",
+              "descriptionAsset": "common/ui/static/metadata/attachments/shared/ad_lmdpeir1"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Secondary/M45A1/AAM_M45A1",
+            "aamSha256": "36bf514062a3442263e66fb21f817f4aa407a46cde1f6cab32b7c258fde32212",
+            "recordGuid": "050ed0b9-d6d7-4e39-8e80-d3c23bcf733f",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/Shared/AD_LMDPEIR1 [2bcafec5-9cd9-b23c-609a-767304a39c7e]",
+            "descriptorXmlSha256": "23ddfca1ebabe2d71d9fea89e35162571e57a87366d6cd183cb9940678471344",
+            "descriptionReferenceGuid": "56fc1c5a-c67b-ba4b-58fe-87adfb316b54",
+            "descriptionStringId": "2897A9DF",
+            "englishStringPresent": false,
+            "aamTitleStringId": "7BAAFB21",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ModuleMk3_LeftRail",
+            "stringId": "7944DEA3"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_RGT_ANPEQ16B.xml",
+        "slot": "laser",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/grtbc_50mw_violet.png",
+        "screenshotSha256": "4b5c2a8dc3da0067e2b603af8ddc9cb03ba84c56492c7a06a4be9ceb5d923b0e",
+        "observedDescription": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+        "weapon": "grtbc",
+        "attachment": "50mw_violet",
+        "sourceAttachmentGuid": "c20223c2-a4b8-40c5-99fa-749e34c16d94",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_50mWViolet_W10",
+            "guid": "c08df896-8e97-4589-8390-5743a10cb3fc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/m27iar/ad_anpeq16b"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/Carbine/MSBSGROTB/AAM_MSBSGROTB",
+              "recordGuid": "286cffad-b23a-4aad-b38f-9c856744e448",
+              "name": "MSBSGROTB - RGT - ANPEQ16B",
+              "descriptionAsset": "common/ui/static/metadata/attachments/m27iar/ad_anpeq16b"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Carbine/MSBSGROTB/AAM_MSBSGROTB",
+            "aamSha256": "03b57a7ad42226c89fafee9509c0ade7b2d04785cb3fb816326cb2d51866484b",
+            "recordGuid": "286cffad-b23a-4aad-b38f-9c856744e448",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/M27IAR/AD_ANPEQ16B [a7da75bb-35da-cd34-146e-8fe64b38d660]",
+            "descriptorXmlSha256": "dbfc90ce6ba5ee3b77320592279262d96747896f5bc171f56177672c6daa2438",
+            "descriptionReferenceGuid": "20f4160a-73a9-6ef8-1f7c-7726c816da76",
+            "descriptionStringId": "1C029CC8",
+            "englishStringPresent": false,
+            "aamTitleStringId": "A19F386A",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_LeftRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_RightRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_TopRail",
+            "stringId": "36888514"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_RGT_ANPEQ16B.xml",
+        "slot": "laser",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/l110_50mw_violet.png",
+        "screenshotSha256": "1ab05a5051f52ad9b1e4f04dd14a9cd4b6202c7b3450b96887900249c9d6a348",
+        "observedDescription": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+        "weapon": "l110",
+        "attachment": "50mw_violet",
+        "sourceAttachmentGuid": "b31afbc9-e687-4749-8588-737c0b9cabff",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_50mWViolet_W10",
+            "guid": "c08df896-8e97-4589-8390-5743a10cb3fc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/m27iar/ad_anpeq16b"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/MG/Minimi/AAM_Minimi",
+              "recordGuid": "f9b219ff-7771-4d88-914e-5f1c0b1446bc",
+              "name": "Minimi - RGT - ANPEQ16B",
+              "descriptionAsset": "common/ui/static/metadata/attachments/m27iar/ad_anpeq16b"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/MG/Minimi/AAM_Minimi",
+            "aamSha256": "43111d672948d28c4ce85be01584ed2e6a3ddf9639b26dbb7258fb169af5ea41",
+            "recordGuid": "f9b219ff-7771-4d88-914e-5f1c0b1446bc",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/M27IAR/AD_ANPEQ16B [a7da75bb-35da-cd34-146e-8fe64b38d660]",
+            "descriptorXmlSha256": "dbfc90ce6ba5ee3b77320592279262d96747896f5bc171f56177672c6daa2438",
+            "descriptionReferenceGuid": "20f4160a-73a9-6ef8-1f7c-7726c816da76",
+            "descriptionStringId": "1C029CC8",
+            "englishStringPresent": false,
+            "aamTitleStringId": "A19F386A",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_LeftRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_RightRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_TopRail",
+            "stringId": "36888514"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_TOP_ANPEQ16B.xml",
+        "slot": "laser",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/drsiar_50mw_violet.png",
+        "screenshotSha256": "ed1de093cc83ff6aefb5197409d72afd229224aabe12de8edee31b8cb51fd691",
+        "observedDescription": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+        "weapon": "drsiar",
+        "attachment": "50mw_violet",
+        "sourceAttachmentGuid": "164c0006-8a7f-4e8a-bc56-6b41f2adc9fe",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_50mWViolet_W10",
+            "guid": "c08df896-8e97-4589-8390-5743a10cb3fc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-without-rail-side",
+          "assets": [
+            "common/ui/static/metadata/attachments/m27iar/ad_anpeq16b"
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/MG/M27IAR/AAM_M27IAR",
+            "aamSha256": "639d193c83e0c09bfeeceb59c2d52048a90fdd5a12aa95ed313f2fbd566301c0",
+            "recordGuid": "9971b97b-debd-4b68-9e59-d20480c418f9",
+            "aamName": "M27IAR - RGT - ANPEQ16B",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/M27IAR/AD_ANPEQ16B [a7da75bb-35da-cd34-146e-8fe64b38d660]",
+            "descriptorXmlSha256": "dbfc90ce6ba5ee3b77320592279262d96747896f5bc171f56177672c6daa2438",
+            "descriptionReferenceGuid": "20f4160a-73a9-6ef8-1f7c-7726c816da76",
+            "descriptionStringId": "1C029CC8",
+            "englishStringPresent": false,
+            "aamTitleStringId": "A19F386A",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_LeftRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_RightRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_TopRail",
+            "stringId": "36888514"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved",
+        "railNameMismatch": "Hardware source and captured panel use TOP; the same-weapon AAM ANPEQ16B name uses RGT. Existing match removes the rail side; this is not an exact hardware-name match."
+      },
+      {
+        "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_TOP_ANPEQ16B.xml",
+        "slot": "laser",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/db12_50mw_violet.png",
+        "screenshotSha256": "0fe4851440c77148d82f67d902150ff0ad4e6a8e7b57d3d13dc6c8306fac999e",
+        "observedDescription": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+        "weapon": "db12",
+        "attachment": "50mw_violet",
+        "sourceAttachmentGuid": "4b1cbc1a-265e-4fd4-83bb-d1812c740f46",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_TopRail/Laser/U_WPM_TOP_50mWViolet_W10",
+            "guid": "c08df896-8e97-4589-8390-5743a10cb3fc",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-without-rail-side",
+          "assets": [
+            "common/ui/static/metadata/attachments/m27iar/ad_anpeq16b"
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/Shotgun/DP12/AAM_DP12",
+            "aamSha256": "8eaa93fe3e87c591136eaad5b0b4df836bd33c0bfcbcc4a56c304a39a4298bdc",
+            "recordGuid": "4a48be3b-4f49-4c2f-bf7c-86497eac5ec3",
+            "aamName": "DP12 - RGT - ANPEQ16B",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/M27IAR/AD_ANPEQ16B [a7da75bb-35da-cd34-146e-8fe64b38d660]",
+            "descriptorXmlSha256": "dbfc90ce6ba5ee3b77320592279262d96747896f5bc171f56177672c6daa2438",
+            "descriptionReferenceGuid": "20f4160a-73a9-6ef8-1f7c-7726c816da76",
+            "descriptionStringId": "1C029CC8",
+            "englishStringPresent": false,
+            "aamTitleStringId": "A19F386A",
+            "aamTitleText": null
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_LeftRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_RightRail",
+            "stringId": "36888514"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_ANPEQ16B_TopRail",
+            "stringId": "36888514"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved",
+        "railNameMismatch": "Hardware source and captured panel use TOP; the same-weapon AAM ANPEQ16B name uses RGT. Existing match removes the rail side; this is not an exact hardware-name match."
+      },
+      {
+        "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_MAG_Compact2.xml",
+        "slot": "mag",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Description Review 2026-09-13/rpkm_30_fast.png",
+        "screenshotSha256": "53667707d2aaae1c7db21ef13ff2522d6128666c38971edbac34cbffcbc0164a",
+        "observedDescription": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+        "weapon": "rpkm",
+        "attachment": "30_fast",
+        "sourceAttachmentGuid": "ceb8d957-17bb-4421-b585-6ac84f541c1a",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10",
+            "guid": "8c9b2a1b-b5c7-4e49-8ab0-0c1e7fe136ed",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/rpkm/ad_rpkm_mag_030cpt2"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/MG/RPKM/AAM_RPKM",
+              "recordGuid": "864b6cd9-fa51-442e-be4d-c45a28af8dee",
+              "name": "RPKM - MAG - Compact 2",
+              "descriptionAsset": "common/ui/static/metadata/attachments/rpkm/ad_rpkm_mag_030cpt2"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/MG/RPKM/AAM_RPKM",
+            "aamSha256": "636ab43cc22e4935fd9aab84d436d932bbbd85b3272f71a94e57bb6e526bf710",
+            "recordGuid": "864b6cd9-fa51-442e-be4d-c45a28af8dee",
+            "descriptorPointer": "[Ebx] Common/UI/Static/Metadata/Attachments/RPKM/AD_RPKM_MAG_030Cpt2 [a2f4b642-bdd0-4c94-b4b1-0e316c3e49ee]",
+            "descriptorXmlSha256": "df638c1f982e18a501cd4f82ed3fc2491b2f3cc386e7d1fdd3328fc4c2d0788c",
+            "descriptionReferenceGuid": "5ab5e8a2-5a21-2382-db06-3140ac802444",
+            "descriptionStringId": "A70D89F6",
+            "englishStringPresent": false,
+            "aamTitleStringId": "45D1B005",
+            "aamTitleText": "30rnd Fast Mag"
+          }
+        ],
+        "sameTextRecords": [
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/FiveSeven/AD_FiveSeven_MAG_020Fast",
+            "stringId": "FDF3AFE2"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/G3A4/AD_G3A4_MAG_015Cpt2",
+            "stringId": "61CB75B8"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/M39EMR/AD_M39EMR_MAG_015Cpt2",
+            "stringId": "61CB75B8"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/PP19/AD_PP19_MAG_21Cpt2",
+            "stringId": "FDF3AFE2"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/RPK74M/AD_RPK74M_MAG_030Cpt2",
+            "stringId": "6D0AA2D3"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/ScorpionEvo3/AD_ScorpionEvo3_MAG_020Fast",
+            "stringId": "FDF3AFE2"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_Shared_MAG_010Cpt2_762N",
+            "stringId": "6D0AA2D3"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_Shared_MAG_020Cpt1_556",
+            "stringId": "FDF3AFE2"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/Shared/AD_Shared_MAG_020Cpt1_762AK",
+            "stringId": "FDF3AFE2"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/UMP40/AD_UMP40_MAG_025Cpt2",
+            "stringId": "98C33A27"
+          },
+          {
+            "asset": "Common/UI/Static/Metadata/Attachments/VSSM/AD_VSSM_MAG_010Cpt2",
+            "stringId": "6D0AA2D3"
+          }
+        ],
+        "status": "original-pointer-confirmed-english-unresolved"
+      }
+    ],
+    "applyAsTooltips": true
+  }
+}

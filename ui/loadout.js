@@ -26,14 +26,26 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
     const opt = document.createElement('option');
     opt.value = optData.id;
     opt.textContent = optData.text;
+    if (optData.description) opt.title = `In-game description: ${optData.description}`;
     if (optData.noEffect) opt.style.color = '#666';
     if (optData.id === value) opt.selected = true;
     sel.appendChild(opt);
   });
+  const updateTooltip = () => {
+    const description = options.find(option => option.id === sel.value)?.description;
+    const tooltip = description ? `In-game description: ${description}` : '';
+    row.title = tooltip;
+    sel.title = tooltip;
+    if (description) sel.setAttribute('aria-description', tooltip);
+    else sel.removeAttribute('aria-description');
+  };
+  updateTooltip();
+  sel.addEventListener('input', updateTooltip);
   if (disabled) {
     sel.disabled = true;
   } else {
     sel.onchange = () => {
+      updateTooltip();
       onChange(sel.value);
     };
   }
@@ -53,6 +65,10 @@ export function renderAttachmentSection({
   if (!container) return;
   container.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
   const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
+  const tooltipFor = (slot, id) => {
+    const stringId = data.ATTACHMENT_TOOLTIPS?.byWeapon?.[weapon?.id]?.[slot]?.[id];
+    return stringId ? data.ATTACHMENT_TOOLTIPS.descriptions[stringId] : undefined;
+  };
   const attDataSource = {
     SIGHTS: data.SIGHTS,
     MUZZLES: data.MUZZLES,
@@ -108,7 +124,8 @@ export function renderAttachmentSection({
       appendSelectRow(container, {
         label,
         value: single?.id ?? '',
-        options: [{ id: single?.id ?? '', text: single ? attDisplayName(single) : noWeaponText, assumed: isAssumedAtt(single) }],
+        options: [{ id: single?.id ?? '', text: single ? attDisplayName(single) : noWeaponText,
+          description: single && tooltipFor(key === 'rail' ? single.type : key, single.id), assumed: isAssumedAtt(single) }],
         onChange: () => {},
         disabled: true,
       });
@@ -119,9 +136,10 @@ export function renderAttachmentSection({
       label,
       value: key === 'rail' ? (atts.rail ? `${atts.rail.type}:${atts.rail.id}` : 'none') : atts[key],
       options: visible.map(a => {
-        const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a);
+        const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a, weapon);
         const name = attDisplayName(a);
-        return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
+        return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name,
+          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a) };
       }),
       onChange: value => handleChange(key, value),
     });
@@ -136,7 +154,8 @@ export function renderAttachmentSection({
       options: ammoList.map(a => {
         const pts = wAmmo.ammo[a.id] ?? 0;
         const name = attDisplayName(a);
-        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name, noEffect: a.noEffect, assumed: isAssumedAtt(a) };
+        return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name,
+          description: tooltipFor('ammo', a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a) };
       }),
       onChange: value => handleChange('ammo', value),
     });
@@ -158,6 +177,7 @@ export function renderAttachmentSection({
       options: Object.entries(wm.mags).map(([id, m]) => ({
         id,
         text: m.pts > 0 ? `${attDisplayName(m)} [${m.pts}]` : attDisplayName(m),
+        description: tooltipFor('mag', id),
         assumed: isAssumedAtt(m),
       })),
       onChange: value => handleChange('mag', value),
@@ -180,6 +200,7 @@ export function renderAttachmentSection({
         options: visibleErgos.map(e => ({
         id: e.id,
         text: e.pts > 0 ? `${attDisplayName(e)} [${e.pts}]` : attDisplayName(e),
+        description: tooltipFor('ergo', e.id),
         noEffect: e.noEffect,
         assumed: isAssumedAtt(e),
       })),

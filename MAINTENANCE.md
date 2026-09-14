@@ -78,6 +78,18 @@ When editing shared rails, update `WEAPON_ATTS.slots` and category availability.
 Keep positional URL tokens stable. Check replacement, empty selection, point
 costs, legacy links, reload and weapon switching.
 
+## Regenerate attachment tooltips
+
+Follow the [description audit commands](docs/working/FROSTY_DISPLAY_NAMES.md#regeneration-and-verification)
+to regenerate `data/attachment-tooltips.json` and both mapping reports together.
+Keep `--optic-mapping-json` in the command. The generator requires the original
+local AAM XML, Frosty export, and ignored capture library; the small mapper tests
+do not. Approved panel text is enabled explicitly in `panelLinkageInvestigation`
+and checked against the original hardware/UI link and screenshot hash. Never
+replace a missing Frosty string ID with an unrelated ID that has matching text.
+Review the 2,952 source-text, 15 panel-text and 45 deferred choice counts, and
+retain the per-choice source distinction. The runtime JSON is part of the ship surface.
+
 ## Reload exceptions and provenance
 
 [data/reload-exceptions.json](data/reload-exceptions.json) records animation

@@ -72,6 +72,26 @@
         "psr": {
           "adsRecoilTierMod": 6,
           "hipRecoilTierMod": 6
+        },
+        "p18": {
+          "pts": 10,
+          "weaponSwayMult": 1
+        },
+        "es57": {
+          "pts": 10,
+          "weaponSwayMult": 1
+        },
+        "m45a1": {
+          "pts": 10,
+          "weaponSwayMult": 1
+        },
+        "ggh22": {
+          "pts": 10,
+          "weaponSwayMult": 1
+        },
+        "vz61": {
+          "pts": 10,
+          "weaponSwayMult": 1
         }
       }
     },
@@ -8023,7 +8043,7 @@
     },
     {
       "id": "grtbc_burst_mode",
-      "name": "Burst Training",
+      "name": "Burst Mode",
       "pts": 10,
       "adsRecoilTierMod": 1,
       "adsRecoilVariationTierMod": 3,
@@ -12336,8 +12356,7 @@
     "qbz192": {
       "avail": [
         "match_trigger",
-        "rail_cover",
-        "buffer"
+        "rail_cover"
       ]
     },
     "sg553r": {

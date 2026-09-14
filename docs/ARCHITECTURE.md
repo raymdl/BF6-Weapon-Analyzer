@@ -12,7 +12,7 @@ package-install requirement, bundler, application server, or database.
 ```mermaid
 flowchart TD
     Page["index.html + styles + Chart.js"] --> App["ui/app.js"]
-    App --> Fetch["Promise.all: fetch seven live JSON files"]
+    App --> Fetch["Promise.all: fetch eight live JSON files"]
     Fetch --> Context["Indexes and calculation contexts"]
     Context --> Restore["Restore URL and loadout defaults"]
     Restore --> Build["Selected build: applyAttachments"]
@@ -21,8 +21,8 @@ flowchart TD
     Fetch -->|failure| Error["Visible load error; reload action"]
 ```
 
-The seven startup requests are `weapons.json`, `recoil_decay.json`,
-`balance_tables.json`, `attachments.json`, `ammo.json`, `ballistics.json`, and `hit_zones.json` under
+The eight startup requests are `weapons.json`, `recoil_decay.json`,
+`balance_tables.json`, `attachments.json`, `ammo.json`, `ballistics.json`, `hit_zones.json`, and `attachment-tooltips.json` under
 `data/`. These are ordinary `fetch()` requests, not JSON module imports. A failed
 request rejects initialization. Provenance, reload-exception registers, reference
 workbooks, and raw Frosty exports are not browser dependencies.

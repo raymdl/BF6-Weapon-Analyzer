@@ -19,6 +19,12 @@ it does not block calculation or sharing.** An asterisk marks an attachment with
 assumed effects. Some listed attachments have no modeled stat effect; their
 availability or point cost can still matter.
 
+Hover an attachment control or option to read its in-game description where
+available. The selected control also exposes the text as an accessible description.
+Most text comes from Frosty UI records; 15 choices use approved game captures.
+Some choices have no description, and generic optic categories do not use one
+individual optic's tooltip. Tooltip text does not define the simulated effects.
+
 Enable comparison for a second independent loadout. Clone the first loadout to
 compare attachment changes on the same weapon. Disabling comparison clears the
 second slot. On smaller screens, the Loadout button opens a dialog; Escape closes

@@ -24,9 +24,9 @@ async function fetchJson(url) {
   return r;
 }
 
-let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones;
+let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips;
 try {
-  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones] = await Promise.all([
+  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips] = await Promise.all([
     fetchJson('./data/weapons.json').then(r => r.json()),
     fetchJson('./data/recoil_decay.json').then(r => r.json()),
     fetchJson('./data/balance_tables.json').then(r => r.json()),
@@ -34,6 +34,7 @@ try {
     fetchJson('./data/ammo.json').then(r => r.json()),
     fetchJson('./data/ballistics.json').then(r => r.json()),
     fetchJson('./data/hit_zones.json').then(r => r.json()),
+    fetchJson('./data/attachment-tooltips.json').then(r => r.json()),
   ]);
 } catch (err) {
   document.body.insertAdjacentHTML('beforeend',
@@ -56,6 +57,7 @@ const LOADOUT_DATA = {
   SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
   WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
   AMMO, WEAPON_AMMO, WEAPON_ATTS,
+  ATTACHMENT_TOOLTIPS: _attachmentTooltips,
 };
 
 const byId = items => Object.fromEntries(items.map(a => [a.id, a]));

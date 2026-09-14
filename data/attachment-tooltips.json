@@ -1,0 +1,4513 @@
+{
+  "source": "Reviewed Frosty hardware identities and localized UI metadata, with explicitly approved per-choice game-panel text where English strings are missing",
+  "coverage": {
+    "aamAssets": 64,
+    "nonSightChoices": 3012,
+    "mappedSelections": 2967,
+    "identityStatuses": {
+      "source-linked": 3012
+    },
+    "descriptionStatuses": {
+      "english-description-missing-or-conflicting": 45,
+      "linked": 2952,
+      "screenshot-verified": 15
+    },
+    "matchMethods": {
+      "aam-full-name": 1981,
+      "aam-without-rail-side": 22,
+      "aam-without-slot": 565,
+      "reviewed-source-alias-with-text-difference": 2,
+      "screenshot-reviewed-source-description": 19,
+      "screenshot-reviewed-ui-candidate": 2,
+      "shared-hardware-descriptor-name": 161,
+      "shared-model-and-selector-consensus": 169,
+      "weapon-descriptor-asset-name": 35
+    }
+  },
+  "descriptions": {
+    "0099DD29": "Standard magazine tubes that improve weapon draw speed.",
+    "00AE744E": "High-capacity belt box that reduces weapon draw speed and movement speed while aiming down sights (ADS).",
+    "015B7D0A": "Moderately reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+    "0339F331": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "03AF7B03": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "0428B15B": "Long barrel that increases projectile velocity.",
+    "0480369A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "04E6F19C": "Provides minor improvement to hip-fire accuracy and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "0581BB83": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil.",
+    "06989669": "Lightened barrel that enables a fast transition to ADS.",
+    "0743B369": "Slightly reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+    "075DEBD2": "Long barrel that increases projectile velocity.",
+    "07D6E424": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil at the cost of hip-fire accuracy.",
+    "0894534B": "Cut-down barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "092A87DC": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "097A9198": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "0A2C0CC5": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil at the cost of hip-fire accuracy, weapon sway, and weapon draw speed.",
+    "0A584B95": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "0C11D11E": "Greatly reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS movement speed and accuracy.",
+    "0E01A41F": "Standard-issue long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "0F4DCE2B": "High-capacity drum with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "107EF13A": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "10C47BB8": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "1104B410": "Standard-penetration shotgun ammunition with increased range and damage per pellet, but fewer pellets per shot.",
+    "113E0864": "Standard-weight barrel that enables a fast transition to aim down sights (ADS).",
+    "11AFB61C": "High-capacity belt box that reduces weapon reload speed.",
+    "126C6C37": "Factory compact magazine for greatly improved handling at the cost of capacity.",
+    "12DEAFDF": "Significantly reduces recoil at the cost of movement speed and accuracy while aiming down sights (ADS).",
+    "12FD3D70": "Reduces horizontal recoil in favor of more stable vertical recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+    "135D5383": "Heavy barrel that improves accuracy during sustained fire.",
+    "13A3DA47": "Factory compact magazine for greatly improved handling at the cost of capacity.",
+    "13A3DA48": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "13A3DA4A": "High-capacity magazine that slows movement speed while aiming down sights (ADS).",
+    "13A3DA4B": "Extended magazine with increased capacity at the cost of weapon draw speed.",
+    "13A3DA4C": "Extended magazine with increased capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "1494A74E": "Standard-issue heavy barrel that improves accuracy during sustained fire.",
+    "14F044F9": "Improves weapon performance in semi-auto, reducing recoil and increasing accuracy.",
+    "151D1F10": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "15F25BB2": "Repurposed DMR barrel that improves accuracy during sustained fire.",
+    "16A5F86C": "Reduces recoil buildup and improves recoil recovery. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+    "17A63831": "Extra-short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "17FBBD98": "Long barrel that increases projectile velocity.",
+    "1933F275": "Long barrel that increases projectile velocity.",
+    "19E452ED": "Heavy barrel that improves accuracy during sustained fire.",
+    "1A84E26B": "Long barrel that increases projectile velocity.",
+    "1B14272E": "Light long barrel that increases projectile velocity.",
+    "1B303F49": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "1CA5A583": "Enables weapon to be fired while sprinting.",
+    "1DF4D331": "Fluted long barrel that improves aim down sights (ADS) accuracy while moving, enables a fast transition to ADS, and  increases projectile velocity.",
+    "1ECDEF44": "Repurposed DMR barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "1EFACE24": "Slightly increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
+    "1FCFFC3D": "Significantly reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS movement speed and accuracy.",
+    "22AF19F8": "Long-range, standard-penetration ammunition that reduces projectile drag.",
+    "2322F0FF": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "25B7E481": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "263642D3": "Slightly increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
+    "263642D4": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
+    "2642813E": "Provides minor improvement to hip-fire recovery and can blind enemy soldiers, except those using thermal optics. Effects only active when light is turned on.",
+    "2688090C": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "26EB0C06": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "27C1D59F": "Converts the weapon to fire fully automatically, increasing overall rate of fire but reducing controllability.",
+    "27CCDF76": "Heavy barrel that improves accuracy during sustained fire.",
+    "2862AA06": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "286E1804": "Standard barrel that enables a faster transition to aim down sights (ADS).",
+    "28A44906": "Standard 50 round drum that improves weapon draw speed.",
+    "2A294A98": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "2B65A880": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "2B79C762": "Slightly reduces recoil, improves weapon draw speed, and enables a slightly faster transition to aim down sights (ADS) at the cost of ADS accuracy while moving.",
+    "2BA8E458": "Ammunition that delays health regeneration on impact with the target.",
+    "2CC9A132": "Long barrel that increases projectile velocity.",
+    "2D23D544": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "2DF91DDD": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "2EE70D43": "Standard magazine with mag pull for quicker reloads.",
+    "2F912FE0": "Greatly reduces recoil at the cost of movement speed and accuracy while aiming down sights (ADS).",
+    "31ADD6F7": "Cut-down support weapon barrel that improves accuracy during sustained fire.",
+    "3357FA5E": "Cryogenically-treated barrel that enables a quick transition to aim down sights (ADS) and improves accuracy during sustained fire.",
+    "343643F7": "Provides slight improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
+    "36888514": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "368B6C98": "Provides moderate improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
+    "36DC7F65": "Standard magazine with mag pull for faster reloads.",
+    "3733FFE8": "Long barrel that increases projectile velocity.",
+    "377A95E9": "Greatly improves weapon draw speed.",
+    "380D6F83": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "38192FC4": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "3825F183": "50 round belt pouch with faster reloads.",
+    "38C662BC": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "3A37ACFD": "Long barrel that increases projectile velocity.",
+    "3A69DE68": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "3CACBAE1": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "3DAB3B9E": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "3E1D848C": "Long barrel that increases projectile velocity.",
+    "3E42F43B": "Light barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "3F349785": "Repurposed DMR barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "3F37F281": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
+    "404043CD": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "40885B0E": "Long barrel that increases projectile velocity.",
+    "40A1EFFF": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
+    "419633DF": "Marginally reduces recoil and enables a slightly faster transition to aim down sights (ADS).",
+    "41AE0530": "Enables rechambering while aiming down sights.",
+    "42DFE476": "Standard belt pouch that improves weapon draw speed.",
+    "4309F69A": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "43BBBD3C": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "441FB273": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "44323B08": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "454DB2B9": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "45D0A836": "Standard magazine that improves weapon draw speed.",
+    "460C6BE0": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "474C527B": "Slightly reduces recoil and enables a slightly faster transition to aim down sights (ADS).",
+    "4775CFE5": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Marginally lowers recoil and slightly improves headshot damage.",
+    "48029B69": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "4812B9BF": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "48560A42": "Laser provides minor improvement to hip-fire accuracy while light provides minor improvement hip-fire recovery and can blind enemies. Benefits only active when laser/light is turned on. Can be used together or separately.",
+    "48F06EA3": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "498D6DB6": "75 round drum with greatly increased capacity at the cost of weapon handling.",
+    "49D9F464": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "4B03D598": "Laser provides slight improvement to hip-fire accuracy while light provides minor improvement to hip-fire recovery, but is visible to enemy soldiers. Effects only active when laser/light is turned on. Can be used together or separately.",
+    "4BC8B001": "Standard-weight barrel that enables a fast transition to aim down sights (ADS).",
+    "4BE2D145": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "4BEF55A7": "Belt box that improves weapon draw speed and aim down sights (ADS) accuracy while moving, but reduces weapon reload speed.",
+    "4C4F08AD": "Light barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "4FE8923B": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "4FE8923C": "Fast magazine with mag pull for faster reloads and improved handling.",
+    "50C99C0F": "Reduces the intensity of muzzle flashes and fully hides in-world spotting while firing. Soldiers firing are still marked on the minimap.",
+    "512CB545": "Slightly reduces recoil.",
+    "517A735B": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "521AC791": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "528815C6": "Heavy barrel that improves accuracy during sustained fire.",
+    "52F61DA0": "Marginally reduces recoil, improves weapon draw speed, and enables a slightly faster transition to aim down sights (ADS) at the cost of ADS accuracy while moving.",
+    "532690BD": "Heavy barrel that improves accuracy during sustained fire.",
+    "53CF9BFC": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "55941E32": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "55F7D9CC": "Standard magazine that improves weapon draw speed.",
+    "5749FBA2": "Long barrel that increases projectile velocity.",
+    "57611D21": "Long barrel that increases projectile velocity.",
+    "596C9FC3": "Long barrel that increases projectile velocity.",
+    "5A62C1B2": "Long barrel that increases projectile velocity.",
+    "5A808EEF": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "5B27BF56": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of movement and weapon draw speed.",
+    "5B27BF57": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "5B27BF58": "Standard magazine with mag pull for faster reloads.",
+    "5B592E99": "Standard-issue heavy barrel that improves accuracy during sustained fire.",
+    "5BFBBF12": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "5CB7818C": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+    "5E804CC7": "Muzzle thread protector that reduces recoil but increases weapon sway. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+    "5F0CAA2D": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil.",
+    "5F74777A": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "5FDA6AA4": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "6136ABAA": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "6161D2CE": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
+    "6172F4B5": "Short magazine tube with speedloader. Greatly improves weapon handling and allows for rapid reloading on low ammo.",
+    "61CB75B8": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "61CB75B9": "Standard magazine with mag pull for faster reloads.",
+    "61CB75BA": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "62216BAE": "Factory barrel with 4\" extension that increases projectile velocity.",
+    "6245B9D1": "Heavy barrel that improves accuracy during sustained fire.",
+    "6290A110": "Provides minor improvement to hip-fire accuracy and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "6293557F": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "639E8980": "Heavy barrel that improves accuracy during sustained fire.",
+    "64DC144D": "Heavy barrel that improves accuracy during sustained fire.",
+    "65AFB64B": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces hip-fire accuracy. ",
+    "65B887D8": "Standard-issue heavy barrel that improves accuracy during sustained fire.",
+    "65E16BD6": "Compact magazine for improved handling at the cost of capacity.",
+    "679E4C8A": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "67CFDCC6": "Compact magazine for improved handling at the cost of capacity.",
+    "6804DEEC": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing.",
+    "68369477": "Compact factory magazine for improved handling at the cost of capacity.",
+    "68C49F49": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Provides standard-penetration.",
+    "68EBE1B5": "3-round burst fire mode reduces horizontal recoil in favor of more stable vertical recoil and minimally reduces overall recoil.",
+    "690D171D": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "69807960": "Standard speedloader that improves weapon draw speed.",
+    "6A8BBD18": "Standard magazine that improves weapon draw speed.",
+    "6A93D526": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "6B33C59E": "Long heavy barrel for mounted use. Improves firing accuracy during sustained fire and increases projectile velocity at the cost of weapon draw speed.",
+    "6C00DD00": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "6D0AA2D3": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "6D0AB3CE": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "6D0AB3CF": "Compact magazine for improved handling at the cost of capacity.",
+    "6D253CF8": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "6E2ACAA2": "Standard speedloader that improves weapon draw speed.",
+    "6F360E5A": "Compact magazine for improved handling at the cost of capacity.",
+    "6F4C07D7": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "702F5D04": "Heavy barrel that improves accuracy during sustained fire.",
+    "70823C83": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "718B36FB": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "72894748": "Standard magazine with mag pull for faster reloads.",
+    "745CAFF1": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
+    "748DEA5B": "Magazine tube that improves weapon draw speed.",
+    "7595E2E2": "Mid-length barrel that enables a fast transition to aim down sights (ADS).",
+    "760FBC04": "High-capacity belt pouch that reduces weapon draw speed and movement speed while aiming down sights (ADS).",
+    "76739CDF": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "77125159": "Long barrel that increases projectile velocity.",
+    "77A36A78": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "781EFC03": "Cut-down standard barrel that enables a fast transition to aim down sights (ADS).",
+    "78D58F2D": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+    "7944DEA3": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "79DA3DB0": "Long, standard-weight barrel that increases projectile velocity.",
+    "7AD4CEFF": "Heavy barrel that improves accuracy during sustained fire.",
+    "7B25B3AA": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "7C9236C7": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "7CD5FDE1": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "7D9917DA": "Provides slight improvement to hip-fire accuracy and minor improvement to aim down sights (ADS) accuracy while moving, but is visible to enemy soldiers. Effects only active when laser is turned on.",
+    "7FEE407B": "Provides moderate improvement to hip-fire accuracy and minor improvement to aim down sights (ADS) accuracy while moving, but is visible to enemy soldiers. Effects only active when laser is turned on.",
+    "807009FF": "Allows weapon to be mounted while prone and more effectively on the edges of cover, greatly reducing recoil.",
+    "823E786F": "[REDACTED]",
+    "824F3268": "Long barrel that increases projectile velocity.",
+    "82ACA282": "Repurposed support weapon barrel that improves firing accuracy during sustained fire and increases projectile velocity at the cost of weapon draw speed.",
+    "832821E8": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "834B4451": "Standard barrel for the M4A1 that increases projectile velocity.",
+    "83C8318F": "Lightweight, standard-penetration ammunition that provides improved aim down sights (ADS) movement speed.",
+    "845BFB21": "Long barrel that increases projectile velocity.",
+    "85768745": "Full-length barrel that increases projectile velocity.",
+    "85A716B4": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "8700CCDE": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "89170650": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "8B31AFA7": "Long barrel that increases projectile velocity.",
+    "8C2E789F": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "8CB9B79A": "Repurposed support weapon barrel that improves accuracy during sustained fire.",
+    "8D4A0E7A": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "8D9C2CC0": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Enables a slightly faster transition to aim down sights (ADS).",
+    "8DEC719B": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "8E0F0693": "Heavy barrel that improves accuracy during sustained fire.",
+    "8E4BF510": "Enables a slightly faster transition to aim down sights (ADS).",
+    "8ECAAF60": "Modified barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "8F29FC68": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "90066FF3": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "907B08B0": "Standard ammunition belt that improves weapon draw speed.",
+    "915EEA2F": "Standard-issue long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "91943C68": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "92CAE4F7": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "932D6A18": "Repurposed DMR barrel that increases projectile velocity.",
+    "93DD74D9": "Enables the mounting of the High Explosive, Thermobaric, and Smoke Grenade Launchers to the underside of the weapon for a faster gadget draw speed.",
+    "94870A0C": "Compact magazine for improved handling at the cost of capacity.",
+    "94870A0D": "Extended magazine that slows movement speed while aiming down sights (ADS).",
+    "94EBC12C": "Moderately reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
+    "95200D98": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "9552A9C6": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "95622DCC": "Long barrel that increases projectile velocity.",
+    "96449BE2": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "97753639": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "97C1E0D4": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+    "97D10617": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "98C33A27": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "98EC9BF2": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "993F268E": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "997C1ED0": "Long barrel that increases projectile velocity.",
+    "9A4BB08E": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "9AAF5F91": "Factory barrel with 4\" extension that increases projectile velocity.",
+    "9AB2B3D4": "Slightly increases weapon draw speed and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
+    "9B14677D": "Long barrel that increases projectile velocity.",
+    "9D36C9E0": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "9E74B01C": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "9EAF4794": "Long barrel that increases projectile velocity.",
+    "9F54684F": "Replaces the default firemode with 2-round burst fire. Burst fire mode reduces horizontal recoil in favor of more stable vertical recoil and minimally reduces overall recoil.",
+    "A2809736": "Limits the intensity of muzzle flashes and fully hides in-world spotting while firing. Reduces recoil buildup and improves recoil recovery.",
+    "A2C12F5F": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "A2F2168D": "Standard magazine that improves weapon draw speed.",
+    "A382BA6C": "Mid-length barrel that enables a fast transition to aim down sights (ADS).",
+    "A434810E": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "A4639FF0": "Light barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "A4B86155": "Standard magazine with mag pull for faster reloads.",
+    "A61FD297": "Rifle-length barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "A6852FB2": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "A7474D66": "Shotgun ammunition containing a single large projectile for greatly improved effective range.",
+    "A845352B": "Compact magazine for improved handling at the cost of capacity.",
+    "A845352C": "Standard magazine that improves weapon draw speed.",
+    "A88706A1": "Simple brake that reduces recoil but increases weapon sway. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+    "A9C68CE8": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "AA5E4585": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "AADC2F42": "Improved brake that reduces recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+    "ABDC2EB4": "Standard magazine that improves weapon draw speed.",
+    "AC43A80A": "Long barrel that increases projectile velocity.",
+    "AC5B9517": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "AD3157E3": "Enhanced brake that reduces recoil, minimizes recoil buildup, and improves recoil recovery. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+    "AE315755": "Extended magazine with increased capacity at the cost of weapon draw speed.",
+    "AE3E8992": "Standard belt pouch that improves weapon draw speed.",
+    "AF14EDFF": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "AF9DB2D6": "Cut-down barrel that enables a fast transition to aim down sights (ADS).",
+    "B04D8C52": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "B0C54492": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "B127B844": "Reduces visual impacts of recoil while firing.",
+    "B12A7F39": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "B14A77C7": "Magazine tube that greatly improves weapon handling.",
+    "B17FCA24": "Factory compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "B2A9F30C": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy and weapon sway.",
+    "B34A96E3": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Marginally lowers recoil.",
+    "B39397B1": "Long barrel that increases projectile velocity.",
+    "B39FA068": "Short factory magazine tube. Greatly improves weapon handling.",
+    "B4FF1BAD": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy.",
+    "B52A965A": "Long-range, improved-penetration ammunition that reduces projectile drag but increases recoil.",
+    "B55F769C": "Standard-issue heavy barrel that improves accuracy during sustained fire.",
+    "B5F4C909": "Short magazine tube with extension. Improves weapon handling.",
+    "B63BD475": "Factory barrel with 4\" extension that increases projectile velocity.",
+    "B6CDE708": "Standard-penetration ammunition.",
+    "B7079FB5": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "B785F9D9": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "B7BB7F4D": "Lightened DMR barrel that increases projectile velocity.",
+    "B849F1AA": "Tube-loaded magazine that improves weapon draw speed.",
+    "B86A59F7": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "BAB77B77": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "BB1D0A5A": "Long barrel that increases projectile velocity.",
+    "BC22EACF": "High-capacity belt pouch that reduces weapon draw speed, slows transition to aim down sights (ADS), slows movement speed while ADS, and reduces ADS accuracy while moving.",
+    "BC304B1B": "Standard magazine that improves weapon draw speed.",
+    "BC4758BC": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "BC69AC54": "Standard magazine with mag pull for faster reloads.",
+    "BC69AC56": "Compact magazine for greatly improved handling at the cost of capacity.",
+    "BC69AC57": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "BC69AC58": "Compact magazine for improved handling at the cost of capacity.",
+    "BE3618DB": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "BECEBB31": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "BF4A5736": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "C1AF6F7C": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "C1C12566": "Wide magazine that improves reload speed.",
+    "C1F220B3": "Long barrel that increases projectile velocity and enables a fast transition to aim down sights (ADS).",
+    "C22E7750": "Fluted short barrel that improves aim down sights (ADS) accuracy while moving, enables a fast transition to ADS, and improves hip-fire accuracy, but reduces projectile velocity.",
+    "C26D7DB9": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "C283D542": "Helical drum magazine with increased capacity. Prevents the use of underbarrel attachments.",
+    "C2AA2D2D": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "C35AEDB8": "Slightly reduces recoil and enables a slightly faster transition to aim down sights (ADS) at the cost of ADS accuracy while moving.",
+    "C37CF95A": "Provides moderate improvement to hip-fire accuracy and weapon draw speed.",
+    "C3FF7C26": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "C4AB2DCB": "Wide magazine that slows movement speed while aiming down sights (ADS), and weapon draw speed.",
+    "C4AB2DCC": "Wide magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "C4AB2DCD": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "C50DD564": "Standard barrel which fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing.",
+    "C65607FA": "Ammunition with greatly improved headshot damage.",
+    "C69BE039": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "C6F29F28": "Standard magazine with mag pull for faster reloads.",
+    "C817105C": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "C9B69788": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of movement and weapon draw speed.",
+    "CD005281": "Standard magazine with mag pull for faster reloads.",
+    "CD805A0B": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "CDC31BAE": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "CDC31BB0": "Compact magazine for improved handling at the cost of capacity.",
+    "CF6B8ABA": "Compact magazine for improved handling at the cost of capacity.",
+    "D0910A6F": "Long barrel that increases projectile velocity.",
+    "D33C9508": "Long heavy barrel for mounted use. Improves firing accuracy during sustained fire and increases projectile velocity at the cost of weapon draw speed.",
+    "D4A9BAC0": "Allows the weapon to be used aggressively, increasing overall rate of fire but reducing controllability.",
+    "D520814B": "Improves weapon draw speed.",
+    "D86958EA": "Standard magazine that improves weapon draw speed.",
+    "D86958EB": "Wide magazine for improved handling at the cost of capacity.",
+    "D86958EC": "Wide magazine with increased capacity.",
+    "D910A530": "Standard-penetration shotgun ammunition.",
+    "D9408E42": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "DA94A1F0": "Replaces the default firemode with 3-round burst fire. Burst fire mode reduces horizontal recoil in favor of more stable vertical recoil and slightly reduces overall recoil.",
+    "DAF835F8": "Long barrel that increases projectile velocity.",
+    "DB313217": "Alternate barrel which fully hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
+    "DB675921": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "DBA1F7BC": "Traditional barrel that enables a fast transition to aim down sights (ADS).",
+    "DBE74A1F": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "DC163F74": "Short magazine tube with speedloader. Greatly improves weapon handling and allows for rapid reloading on low ammo.",
+    "DCC0F4E0": "Long barrel that increases projectile velocity.",
+    "DCD51D59": "Light barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "DD24E546": "Long barrel that increases projectile velocity.",
+    "DDBEA31A": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "DFAD5EB7": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "DFC521B8": "Wide magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "E1C2EE64": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "E20CD908": "Press to set the weapon scope's zeroing to the distance of where the crosshair is aimed.",
+    "E381E738": "95 round drum magazine with greatly increased capacity at the cost of weapon draw speed and reload speed.",
+    "E6CECB4B": "Long lightened barrel that increases projectile velocity.",
+    "E74104F4": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "E789D797": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "E877AAD1": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "E8F14F2B": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "EAD3932F": "Cartridge holder that improves reload speed.",
+    "EAF75903": "Provides slight improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
+    "EB4FEC2F": "Short barrel that improves hip-fire accuracy and enables a faster transition to aim down sights (ADS), but reduces projectile velocity.",
+    "EB716B56": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "EC278409": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "EC27840A": "Factory extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "EC27840B": "Standard magazine that improves weapon draw speed.",
+    "EC27840C": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS), and weapon draw speed.",
+    "EC482153": "Long barrel that increases projectile velocity.",
+    "ECB880A1": "Long barrel that increases projectile velocity.",
+    "ECC670D6": "Enables reloading while aiming down sights.",
+    "ED4C81A4": "Provides moderate improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
+    "EF363BF5": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "EF437332": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "EFC76EEE": "Heavy barrel that improves accuracy during sustained fire.",
+    "F04378FF": "[REDACTED]",
+    "F0979379": "Cut-down DMR barrel that improves accuracy during sustained fire.",
+    "F0B29B8A": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "F0E965D0": "Standard 60 round drum magazine that improves weapon draw speed.",
+    "F2B3A62B": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "F3592630": "Light barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "F3B1FD64": "Provides slight improvement to reload speed.",
+    "F43FF17C": "Shotgun ammunition with improved penetration, resulting in greater damage to soldiers behind the initial target. Delays health regeneration on impact.",
+    "F4DCF0BE": "Ammunition belt that improves weapon draw speed and weapon sway as well as transition to aim down sights (ADS) and movement speed while ADS.",
+    "F4F0FE8D": "Ammunition with slightly improved headshot damage.",
+    "F66DCE22": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "F849C9E9": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "F8522F18": "Long barrel that increases projectile velocity.",
+    "F8AEF336": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "F8D66B75": "Standard magazine that improves weapon draw speed.",
+    "F9655FC4": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "F9EF13C4": "Provides minor improvement to hip-fire recovery and can blind enemy soldiers, except those using thermal optics. Effects only active when light is turned on.",
+    "FA07C2E5": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "FAA9F4E9": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "FB2B9416": "Factory extended magazine that slows weapon draw speed.",
+    "FCF1C5D3": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "FD80BCB7": "Factory extended magazine with increased capacity at the cost of weapon draw speed.",
+    "FDAF8DB2": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "FDF18AFD": "High-capacity belt box that reduces weapon draw speed, slows transition to aim down sights (ADS), slows movement speed while ADS, and reduces ADS accuracy while moving.",
+    "FDF3AFE2": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "FFD5E558": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "FFDB627D": "Heavy barrel that improves accuracy during sustained fire.",
+    "FFE5AF28": "Compact magazine for greatly improved handling at the cost of capacity.",
+    "FFE5AF29": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "FFE5AF2A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
+    "FFE5AF2B": "Extended magazine with increased capacity at the cost of weapon draw speed.",
+    "screenshot:b36a4:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:brod3:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:db12:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "screenshot:drsiar:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "screenshot:ef88:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:es57:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:grtbc:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "screenshot:grtbc:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:l110:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "screenshot:m277:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:m417a2:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:m433:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:m45a1:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:rpkm:mag:30_fast": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "screenshot:vcr2:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on."
+  },
+  "byWeapon": {
+    "m433": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "C1AF6F7C",
+        "short": "6136ABAA",
+        "extended": "1A84E26B",
+        "light": "55941E32"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "screenshot:m433:light:hip_taclight"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57"
+      },
+      "ergo": {
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9"
+      }
+    },
+    "b36a4": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "2322F0FF",
+        "short": "C2AA2D2D",
+        "extended": "1B14272E",
+        "heavy": "8CB9B79A",
+        "heavy_ext": "3F349785",
+        "light": "B7079FB5",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "screenshot:b36a4:light:hip_taclight"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57",
+        "45_rnd": "9E74B01C",
+        "45_fast": "FAA9F4E9"
+      },
+      "ergo": {
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "sor556": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "113E0864",
+        "short": "B0C54492",
+        "extended": "EC482153",
+        "heavy": "7AD4CEFF",
+        "heavy_ext": "F0B29B8A",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57",
+        "45_rnd": "9E74B01C",
+        "45_fast": "FAA9F4E9"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "ak4d": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "8700CCDE",
+        "short": "2688090C",
+        "extended": "B7BB7F4D",
+        "heavy": "F0979379",
+        "heavy_ext": "1ECDEF44",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "15_rnd": "67CFDCC6",
+        "15_fast": "61CB75B8",
+        "20_rnd": "F8D66B75",
+        "20_fast": "F8D66B75",
+        "30_rnd": "FFE5AF29"
+      },
+      "ergo": {
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "tr7": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "EF437332",
+        "short": "8ECAAF60",
+        "extended": "ECB880A1",
+        "light": "832821E8"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "10_fast": "6D0AA2D3",
+        "15_rnd": "A845352B",
+        "20_rnd": "F8D66B75",
+        "20_fast": "BC69AC54",
+        "25_rnd": "94870A0D",
+        "25_fast": "B12A7F39",
+        "30_rnd": "FFE5AF2A"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9"
+      }
+    },
+    "kord6p67": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC"
+      },
+      "barrel": {
+        "basic": "96449BE2",
+        "heavy": "FFDB627D",
+        "light": "2A294A98",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "2EE70D43",
+        "36_rnd": "53CF9BFC",
+        "40_rnd": "92CAE4F7",
+        "40_fast": "5B27BF56",
+        "45_rnd": "6D0AB3CE",
+        "45_fast": "4FE8923B"
+      },
+      "ergo": {
+        "match_trigger": "14F044F9",
+        "burst_training": "68EBE1B5"
+      }
+    },
+    "nvo228e": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "690D171D",
+        "short": "0894534B",
+        "extended": "95622DCC",
+        "light": "FCF1C5D3",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "20_rnd": "BC69AC58",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "2EE70D43",
+        "36_rnd": "53CF9BFC",
+        "40_rnd": "92CAE4F7",
+        "40_fast": "5FDA6AA4"
+      },
+      "ergo": {
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "l85a3": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "C817105C",
+        "short": "679E4C8A",
+        "extended": "E6CECB4B",
+        "heavy": "31ADD6F7",
+        "heavy_ext": "82ACA282",
+        "light": "5BFBBF12",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57",
+        "45_rnd": "9E74B01C",
+        "45_fast": "FAA9F4E9"
+      },
+      "ergo": {
+        "match_trigger": "14F044F9"
+      }
+    },
+    "vcr2": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "A6852FB2",
+        "short": "460C6BE0",
+        "extended": "57611D21",
+        "light": "3A69DE68"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "2642813E",
+        "ads_taclight": "screenshot:vcr2:light:ads_taclight"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "20_fast": "FDF3AFE2",
+        "20_rnd": "BC69AC56",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57"
+      },
+      "ergo": {
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "m16a4": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "AC5B9517",
+        "short": "4BE2D145",
+        "extended": "DD24E546",
+        "heavy": "15F25BB2",
+        "heavy_ext": "03AF7B03",
+        "light": "404043CD",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "2642813E"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844",
+        "full_auto": "27C1D59F"
+      }
+    },
+    "m4a1": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "7595E2E2",
+        "short": "151D1F10",
+        "extended": "834B4451",
+        "light": "097A9198"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "97C1E0D4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "mag_flare": "ECC670D6",
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "m277": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "E8F14F2B",
+        "extended": "BB1D0A5A",
+        "heavy": "528815C6",
+        "heavy_ext": "BECEBB31",
+        "light": "7CD5FDE1",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "screenshot:m277:light:hip_taclight"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "15_rnd": "A845352B",
+        "20_rnd": "F8D66B75",
+        "20_fast": "BC69AC54",
+        "25_rnd": "94870A0D",
+        "25_fast": "B12A7F39",
+        "30_rnd": "FFE5AF2A"
+      },
+      "ergo": {
+        "mag_flare": "ECC670D6",
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9"
+      }
+    },
+    "ak205": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC"
+      },
+      "barrel": {
+        "basic": "B04D8C52",
+        "heavy": "19E452ED",
+        "light": "44323B08",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "823E786F"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "2EE70D43",
+        "36_rnd": "53CF9BFC",
+        "40_rnd": "92CAE4F7",
+        "40_fast": "5B27BF56",
+        "45_rnd": "6D0AB3CE",
+        "45_fast": "4FE8923B",
+        "50_rnd": "DFC521B8"
+      },
+      "ergo": {
+        "mag_flare": "ECC670D6",
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "m417a2": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "0339F331",
+        "short": "A2C12F5F",
+        "extended": "DCC0F4E0",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "screenshot:m417a2:light:hip_taclight"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "underslung_mount": "93DD74D9",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "10_rnd": "CF6B8ABA",
+        "20_rnd": "F8D66B75",
+        "20_fast": "BC69AC54",
+        "25_rnd": "0480369A"
+      },
+      "ergo": {
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "grtbc": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "2B65A880",
+        "extended": "D0910A6F",
+        "light": "BF4A5736"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598",
+        "50mw_violet": "screenshot:grtbc:laser:50mw_violet"
+      },
+      "light": {
+        "flashlight": "F9EF13C4",
+        "ads_taclight": "screenshot:grtbc:light:ads_taclight"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "45_rnd": "9E74B01C",
+        "45_fast": "FAA9F4E9"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844",
+        "grtbc_burst_mode": "DA94A1F0"
+      }
+    },
+    "qbz192": {
+      "muzzle": {
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "10C47BB8",
+        "extended": "8B31AFA7",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "53CF9BFC",
+        "40_rnd": "EC27840C"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "match_trigger": "14F044F9"
+      }
+    },
+    "sg553r": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "DB675921",
+        "extended": "997C1ED0",
+        "light": "6F4C07D7"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "20_rnd": "BC69AC58",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "2EE70D43",
+        "36_rnd": "53CF9BFC",
+        "40_rnd": "92CAE4F7",
+        "40_fast": "5FDA6AA4"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844",
+        "burst_training": "68EBE1B5"
+      }
+    },
+    "sor300sc": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "A434810E",
+        "short": "43BBBD3C",
+        "extended": "9B14677D",
+        "light": "38192FC4",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "sgx": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "F9655FC4",
+        "short": "98EC9BF2",
+        "extended": "C1F220B3",
+        "light": "8D4A0E7A"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "263642D4"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "53CF9BFC",
+        "41_rnd": "95200D98"
+      },
+      "ergo": {
+        "buffer": "B127B844"
+      }
+    },
+    "pw5a3": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "70823C83",
+        "extended": "5A62C1B2",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "3F37F281"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "20_rnd": "13A3DA47",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "40_rnd": "92CAE4F7"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "buffer": "B127B844",
+        "burst_training": "68EBE1B5"
+      }
+    },
+    "pw7a2": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC"
+      },
+      "barrel": {
+        "basic": "F8AEF336",
+        "heavy": "6245B9D1",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "263642D4"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA",
+        "subsonic_pen": "68C49F49"
+      },
+      "mag": {
+        "20_rnd": "BC69AC56",
+        "30_rnd": "45D0A836",
+        "30_fast": "45D0A836",
+        "40_rnd": "EC27840A"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64"
+      }
+    },
+    "umg40": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "FA07C2E5",
+        "extended": "9EAF4794",
+        "heavy": "639E8980",
+        "heavy_ext": "F2B3A62B",
+        "light": "8DEC719B",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "3F37F281"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "25_rnd": "94870A0C",
+        "25_fast": "98C33A27",
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "53CF9BFC"
+      },
+      "ergo": {
+        "buffer": "B127B844",
+        "burst_training": "68EBE1B5"
+      }
+    },
+    "usg90": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "A9C68CE8",
+        "heavy": "135D5383",
+        "heavy_ext": "9A4BB08E",
+        "light": "3DAB3B9E",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "50_rnd": "D86958EA"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "buffer": "B127B844"
+      }
+    },
+    "kv9": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "D9408E42",
+        "extended": "B39397B1",
+        "light": "6D253CF8"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "3F37F281"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "17_rnd": "BC304B1B",
+        "17_fast": "72894748",
+        "23_rnd": "FFD5E558",
+        "27_rnd": "092A87DC"
+      },
+      "ergo": {
+        "burst_training": "68EBE1B5"
+      }
+    },
+    "scw10": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "49D9F464",
+        "extended": "F04378FF",
+        "light": "DDBEA31A"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "3F37F281"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "15_rnd": "A845352C",
+        "15_fast": "61CB75B9",
+        "20_rnd": "13A3DA48",
+        "25_rnd": "0480369A"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64"
+      }
+    },
+    "sl9": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "BE3618DB",
+        "extended": "AC43A80A",
+        "heavy": "27CCDF76",
+        "heavy_ext": "3CACBAE1",
+        "light": "521AC791",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "factory_angled_sl9": "419633DF",
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "60_rnd": "C4AB2DCD"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "burst_mode": "9F54684F"
+      }
+    },
+    "cz3a1": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "454DB2B9",
+        "extended": "824F3268",
+        "light": "9552A9C6"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "97C1E0D4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "263642D4"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "20_fast": "FDF3AFE2",
+        "30_rnd": "45D0A836",
+        "30_fast": "2EE70D43",
+        "35_rnd": "517A735B",
+        "35_fast": "C9B69788"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "buffer": "B127B844",
+        "burst_training": "68EBE1B5"
+      }
+    },
+    "pp19": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "cqb_supp": "6804DEEC"
+      },
+      "barrel": {
+        "basic": "C69BE039",
+        "extended": "3733FFE8",
+        "light": "5A808EEF",
+        "cryo": "3357FA5E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "97C1E0D4"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled_smg": "263642D4"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "35_rnd": "517A735B",
+        "20_fast": "FDF3AFE2",
+        "53_rnd": "C283D542"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "buffer": "B127B844"
+      }
+    },
+    "l110": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "heavy": "64DC144D",
+        "heavy_ext": "EF363BF5",
+        "light": "8F29FC68"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B",
+        "50mw_violet": "screenshot:l110:laser:50mw_violet"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "100_rnd": "AE3E8992",
+        "200_rnd": "FDF18AFD"
+      }
+    },
+    "drsiar": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "4BC8B001",
+        "short": "EB4FEC2F",
+        "extended": "79DA3DB0",
+        "heavy": "B55F769C",
+        "heavy_ext": "7C9236C7",
+        "light": "DFAD5EB7"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B",
+        "50mw_violet": "screenshot:drsiar:laser:50mw_violet"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57",
+        "45_rnd": "9E74B01C",
+        "45_fast": "FAA9F4E9",
+        "50_rnd": "DFC521B8",
+        "60_rnd": "C4AB2DCB"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "m60": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "heavy": "65B887D8",
+        "heavy_ext": "380D6F83",
+        "light": "90066FF3"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "50_rnd": "F4DCF0BE",
+        "100_rnd": "AE3E8992"
+      }
+    },
+    "rpkm": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "slant_brake": "A88706A1",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "06989669",
+        "short": "A61FD297",
+        "extended": "932D6A18",
+        "heavy": "702F5D04",
+        "heavy_ext": "915EEA2F"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "30_rnd": "FFE5AF28",
+        "36_rnd": "CDC31BB0",
+        "40_rnd": "EC27840B",
+        "40_fast": "5B27BF58",
+        "60_rnd": "C4AB2DCC",
+        "75_rnd": "498D6DB6",
+        "30_fast": "screenshot:rpkm:mag:30_fast"
+      },
+      "ergo": {
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "m123k": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "short": "89170650",
+        "heavy": "532690BD",
+        "heavy_ext": "D33C9508"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "100_rnd": "AE3E8992",
+        "200_rnd": "BC22EACF"
+      }
+    },
+    "m250": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "heavy": "1494A74E",
+        "heavy_ext": "C26D7DB9"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "50_rnd": "42DFE476",
+        "100_rnd": "760FBC04"
+      }
+    },
+    "kts100": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "short": "25B7E481",
+        "heavy": "EFC76EEE",
+        "heavy_ext": "0E01A41F"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "45_rnd": "6D0AB3CF",
+        "45_fast": "4FE8923C",
+        "50_rnd": "D86958EB",
+        "60_rnd": "F0E965D0",
+        "60_fast": "C1C12566",
+        "100_rnd": "0F4DCE2B"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "match_trigger": "14F044F9"
+      }
+    },
+    "m240l": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "heavy": "5B592E99",
+        "heavy_ext": "E1C2EE64",
+        "light": "85A716B4"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "50_rnd": "907B08B0",
+        "75_rnd": "4BEF55A7",
+        "100_rnd": "11AFB61C"
+      },
+      "ergo": {
+        "rail_cover": "D520814B"
+      }
+    },
+    "m121a2": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "short": "C3FF7C26",
+        "heavy": "8E0F0693",
+        "heavy_ext": "6B33C59E"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "97C1E0D4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "50_rnd": "28A44906",
+        "50_fast": "3825F183",
+        "100_rnd": "00AE744E"
+      }
+    },
+    "rpk74m": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "slant_brake": "A88706A1",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "06989669",
+        "short": "A61FD297",
+        "heavy": "702F5D04",
+        "heavy_ext": "915EEA2F"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "canted_vertical": "C37CF95A"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "30_rnd": "FFE5AF28",
+        "30_fast": "6D0AA2D3",
+        "36_rnd": "CDC31BB0",
+        "45_rnd": "6A8BBD18",
+        "45_fast": "36DC7F65",
+        "50_rnd": "D86958EC",
+        "60_rnd": "C4AB2DCC",
+        "95_rnd": "E381E738"
+      },
+      "ergo": {
+        "mag_flare": "ECC670D6",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "m39emr": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "A382BA6C",
+        "short": "4309F69A",
+        "extended": "0428B15B"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "long_range": "22AF19F8",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "15_rnd": "67CFDCC6",
+        "15_fast": "61CB75B8",
+        "20_rnd": "F8D66B75",
+        "20_fast": "BC69AC54",
+        "25_rnd": "0480369A"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "buffer": "B127B844"
+      }
+    },
+    "lmr27": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "2862AA06",
+        "extended": "1933F275",
+        "light": "BC4758BC"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "factory_angled_lmr27": "745CAFF1",
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "10_rnd": "ABDC2EB4",
+        "10_fast": "CD005281",
+        "15_rnd": "B785F9D9",
+        "15_fast": "61CB75BA",
+        "20_rnd": "13A3DA48",
+        "20_fast": "BC69AC57"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64"
+      }
+    },
+    "svk86": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "tp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "781EFC03",
+        "short": "17A63831",
+        "extended": "2CC9A132"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "6h64_vert_svk86": "12DEAFDF",
+        "classic_vert_svk86": "2F912FE0",
+        "stipp_stubby_svk86": "1FCFFC3D",
+        "lp_stubby_svk86": "0C11D11E",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "bipod_sr": "807009FF"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "10_rnd": "ABDC2EB4",
+        "10_fast": "CD005281"
+      }
+    },
+    "svdm": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "48029B69",
+        "short": "E789D797",
+        "extended": "F8522F18",
+        "light": "DBE74A1F"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE",
+        "bipod_sr": "807009FF"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "5_rnd": "126C6C37",
+        "10_rnd": "ABDC2EB4",
+        "10_fast": "CD005281",
+        "20_rnd": "13A3DA4A"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "buffer": "B127B844"
+      }
+    },
+    "grtcps": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "993F268E",
+        "short": "38C662BC",
+        "extended": "3A37ACFD",
+        "light": "2D23D544"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "97C1E0D4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "15_rnd": "A845352B",
+        "20_rnd": "F8D66B75",
+        "20_fast": "BC69AC54",
+        "30_rnd": "FFE5AF2A"
+      },
+      "ergo": {
+        "buffer": "B127B844"
+      }
+    },
+    "m2010esr": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "76739CDF",
+        "extended": "40885B0E",
+        "light": "0A584B95"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "lp_stubby_sr": "8E4BF510",
+        "slim_angled_sr": "263642D3",
+        "full_angled_sr": "9AB2B3D4",
+        "bipod_sr": "807009FF",
+        "qd_grip_pod_sr": "40A1EFFF",
+        "classic_grip_pod_sr": "8D9C2CC0"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "5_rnd": "6A8BBD18",
+        "5_fast": "36DC7F65",
+        "8_rnd": "718B36FB"
+      },
+      "ergo": {
+        "ads_bolt": "41AE0530"
+      }
+    },
+    "sv98": {
+      "muzzle": {
+        "tp_brake": "AADC2F42",
+        "thread_prot": "5E804CC7",
+        "comp_brake": "AD3157E3",
+        "flash_comp": "A2809736",
+        "light_supp": "B2A9F30C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "F849C9E9",
+        "short": "97D10617",
+        "extended": "17FBBD98",
+        "light": "8C2E789F"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "lp_stubby_sr": "8E4BF510",
+        "slim_angled_sr": "263642D3",
+        "full_angled_sr": "9AB2B3D4",
+        "bipod_sr": "807009FF",
+        "qd_grip_pod_sr": "40A1EFFF",
+        "classic_grip_pod_sr": "8D9C2CC0"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "10_rnd": "ABDC2EB4"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "ads_bolt": "41AE0530"
+      }
+    },
+    "psr": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "441FB273",
+        "extended": "5749FBA2"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "lp_stubby_sr": "8E4BF510",
+        "slim_angled_sr": "263642D3",
+        "full_angled_sr": "9AB2B3D4",
+        "bipod_sr": "807009FF",
+        "qd_grip_pod_sr": "40A1EFFF",
+        "classic_grip_pod_sr": "8D9C2CC0"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "7_rnd": "6F360E5A",
+        "10_rnd": "ABDC2EB4"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "ads_bolt": "41AE0530"
+      }
+    },
+    "miniscout": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "48F06EA3",
+        "short": "E877AAD1",
+        "extended": "075DEBD2",
+        "light": "DCD51D59"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "2642813E",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "lp_stubby_sr": "8E4BF510",
+        "slim_angled_sr": "263642D3",
+        "full_angled_sr": "9AB2B3D4",
+        "bipod_sr": "807009FF",
+        "qd_grip_pod_sr": "40A1EFFF",
+        "classic_grip_pod_sr": "8D9C2CC0"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "10_rnd": "ABDC2EB4",
+        "10_fast": "CD005281",
+        "15_rnd": "B785F9D9",
+        "15_fast": "61CB75BA",
+        "20_rnd": "13A3DA48",
+        "20_fast": "BC69AC57"
+      }
+    },
+    "l115": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "FDAF8DB2",
+        "short": "9D36C9E0",
+        "extended": "845BFB21",
+        "light": "91943C68"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "lp_stubby_sr": "8E4BF510",
+        "slim_angled_sr": "263642D3",
+        "full_angled_sr": "9AB2B3D4",
+        "bipod_sr": "807009FF",
+        "qd_grip_pod_sr": "40A1EFFF",
+        "classic_grip_pod_sr": "8D9C2CC0"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "5_rnd": "6A8BBD18",
+        "7_rnd": "718B36FB",
+        "7_fast": "5FDA6AA4"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "ads_bolt": "41AE0530"
+      }
+    },
+    "interdictor": {
+      "muzzle": {
+        "dp_brake": "AADC2F42",
+        "flash_hider": "50C99C0F",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD"
+      },
+      "barrel": {
+        "basic": "E74104F4",
+        "extended": "596C9FC3",
+        "light": "7B25B3AA"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "97C1E0D4",
+        "range_finder": "E20CD908"
+      },
+      "grip": {
+        "lp_stubby_sr": "8E4BF510",
+        "full_angled_sr": "9AB2B3D4",
+        "bipod_sr": "807009FF",
+        "qd_grip_pod_sr": "40A1EFFF",
+        "classic_grip_pod_sr": "8D9C2CC0",
+        "slim_angled_interdictor": "263642D3"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "3_rnd": "65E16BD6",
+        "5_rnd": "6A8BBD18",
+        "5_fast": "36DC7F65",
+        "7_rnd": "718B36FB"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64"
+      }
+    },
+    "m87a1": {
+      "muzzle": {
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "6293557F",
+        "extended": "62216BAE"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762"
+      },
+      "ammo": {
+        "buckshot": "D910A530",
+        "buckshot_00": "1104B410",
+        "flechette": "F43FF17C",
+        "slugs": "A7474D66"
+      },
+      "mag": {
+        "5_rnd": "B39FA068",
+        "5_fast": "6172F4B5",
+        "6_rnd": "B5F4C909",
+        "7_rnd": "B849F1AA"
+      }
+    },
+    "m1014": {
+      "muzzle": {
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "F66DCE22",
+        "extended": "9AAF5F91"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "adj_angled": "52F61DA0",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762"
+      },
+      "ammo": {
+        "buckshot": "D910A530",
+        "buckshot_00": "1104B410",
+        "flechette": "F43FF17C",
+        "slugs": "A7474D66"
+      },
+      "mag": {
+        "4_rnd": "B14A77C7",
+        "4_fast": "DC163F74",
+        "6_rnd": "748DEA5B"
+      }
+    },
+    "ks18k": {
+      "muzzle": {
+        "tp_brake": "AADC2F42",
+        "flash_hider": "50C99C0F",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "AF9DB2D6",
+        "extended": "85768745"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "6h64_vert_ks18k": "12DEAFDF",
+        "classic_vert_ks18k": "2F912FE0",
+        "stipp_stubby_ks18k": "1FCFFC3D",
+        "lp_stubby_ks18k": "0C11D11E"
+      },
+      "ammo": {
+        "buckshot": "D910A530",
+        "buckshot_00": "1104B410",
+        "flechette": "F43FF17C",
+        "slugs": "A7474D66"
+      },
+      "mag": {
+        "4_rnd": "68369477",
+        "4_fast": "B17FCA24",
+        "8_rnd": "A2F2168D",
+        "8_fast": "C6F29F28"
+      },
+      "ergo": {
+        "buffer": "B127B844"
+      }
+    },
+    "db12": {
+      "muzzle": {
+        "flash_hider": "50C99C0F",
+        "cqb_supp": "6804DEEC"
+      },
+      "barrel": {
+        "basic": "26EB0C06",
+        "extended": "B63BD475"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B",
+        "50mw_violet": "screenshot:db12:laser:50mw_violet"
+      },
+      "light": {
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "2642813E"
+      },
+      "grip": {
+        "factory_angled_db12": "52F61DA0",
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "slim_angled": "3F37F281",
+        "6h64_vert_db12": "12DEAFDF",
+        "classic_vert_db12": "2F912FE0",
+        "stipp_stubby_db12": "1FCFFC3D",
+        "lp_stubby_db12": "0C11D11E"
+      },
+      "ammo": {
+        "buckshot": "D910A530",
+        "buckshot_00": "1104B410",
+        "flechette": "F43FF17C",
+        "slugs": "A7474D66"
+      },
+      "mag": {
+        "7_rnd": "0099DD29"
+      }
+    },
+    "p18": {
+      "muzzle": {
+        "sp_brake": "AADC2F42",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "AA5E4585",
+        "light": "3E42F43B"
+      },
+      "laser": {
+        "5mw_red": "6290A110",
+        "5mw_green": "343643F7",
+        "50mw_green": "368B6C98",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "flashlight": "2642813E"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "17_rnd": "BC304B1B",
+        "21_rnd": "FB2B9416"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "fast_deploy": "D520814B"
+      }
+    },
+    "es57": {
+      "muzzle": {
+        "sp_brake": "AADC2F42",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "107EF13A",
+        "light": "A4639FF0"
+      },
+      "laser": {
+        "5mw_red": "6290A110",
+        "5mw_green": "343643F7",
+        "50mw_green": "368B6C98",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "flashlight": "2642813E",
+        "ads_taclight": "screenshot:es57:light:ads_taclight"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "20_rnd": "F8D66B75",
+        "30_rnd": "FFE5AF2B"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64"
+      }
+    },
+    "m45a1": {
+      "muzzle": {
+        "sp_brake": "AADC2F42",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "B86A59F7",
+        "light": "4C4F08AD"
+      },
+      "laser": {
+        "5mw_red": "6290A110",
+        "5mw_green": "343643F7",
+        "50mw_green": "368B6C98",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "flashlight": "2642813E",
+        "ads_taclight": "screenshot:m45a1:light:ads_taclight"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "7_rnd": "55F7D9CC",
+        "11_rnd": "AE315755"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "fast_deploy": "D520814B"
+      }
+    },
+    "m44": {
+      "barrel": {
+        "basic": "2DF91DDD",
+        "short": "CD805A0B",
+        "extended": "3E1D848C"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "6_rnd": "69807960"
+      },
+      "ergo": {
+        "fast_deploy": "D520814B",
+        "fast_deploy_10": "377A95E9"
+      }
+    },
+    "ggh22": {
+      "muzzle": {
+        "sp_brake": "AADC2F42",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "5F74777A",
+        "light": "F3592630"
+      },
+      "laser": {
+        "5mw_red": "6290A110",
+        "5mw_green": "343643F7",
+        "50mw_green": "368B6C98",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "flashlight": "2642813E"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5"
+      },
+      "mag": {
+        "15_rnd": "A845352C",
+        "20_rnd": "13A3DA4B",
+        "22_rnd": "FD80BCB7"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "fast_deploy": "D520814B"
+      }
+    },
+    "m357trait": {
+      "barrel": {
+        "basic": "4812B9BF"
+      },
+      "laser": {
+        "5mw_red": "6290A110",
+        "5mw_green": "343643F7",
+        "50mw_green": "368B6C98",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "flashlight": "2642813E"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "hollow_pt": "F4F0FE8D"
+      },
+      "mag": {
+        "8_rnd": "6E2ACAA2",
+        "8_fast": "EAD3932F"
+      },
+      "ergo": {
+        "fast_deploy": "D520814B"
+      }
+    },
+    "vz61": {
+      "muzzle": {
+        "sp_brake": "AADC2F42",
+        "std_supp": "65AFB64B",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C"
+      },
+      "barrel": {
+        "basic": "286E1804"
+      },
+      "grip": {
+        "cmpct_handstop": "1CA5A583",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D"
+      },
+      "laser": {
+        "5mw_red": "6290A110",
+        "5mw_green": "343643F7",
+        "50mw_green": "368B6C98",
+        "combo_red": "48560A42",
+        "combo_green": "4B03D598"
+      },
+      "light": {
+        "flashlight": "2642813E"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "10_rnd": "ABDC2EB4",
+        "20_rnd": "13A3DA4C"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64"
+      }
+    },
+    "brod3": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "1B303F49",
+        "short": "BAB77B77",
+        "extended": "DAF835F8",
+        "light": "AF14EDFF"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "2642813E",
+        "ads_taclight": "screenshot:brod3:light:ads_taclight"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "20_fast": "FDF3AFE2",
+        "20_rnd": "BC69AC56",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "40_rnd": "EC278409",
+        "40_fast": "5B27BF57"
+      },
+      "ergo": {
+        "rail_cover": "D520814B",
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "ef88": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "dp_brake": "AADC2F42",
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "flash_hider": "50C99C0F",
+        "flash_comp": "A2809736",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "compensator": "16A5F86C",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_s": "07D6E424",
+        "hybrid_supp_k": "0581BB83"
+      },
+      "barrel": {
+        "basic": "DBA1F7BC",
+        "short": "77A36A78",
+        "extended": "77125159",
+        "heavy_ext": "EB716B56",
+        "light": "6C00DD00",
+        "cryo": "3357FA5E",
+        "ext_light": "1DF4D331",
+        "short_light": "C22E7750"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "2642813E",
+        "ads_taclight": "screenshot:ef88:light:ads_taclight"
+      },
+      "grip": {
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "lightweight": "83C8318F",
+        "hollow_pt": "F4F0FE8D",
+        "frangible": "2BA8E458",
+        "synthetic": "C65607FA"
+      },
+      "mag": {
+        "30_rnd": "45D0A836",
+        "30_fast": "A4B86155",
+        "36_rnd": "CDC31BAE",
+        "42_rnd": "97753639",
+        "42_fast": "6A93D526"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844"
+      }
+    },
+    "vssm": {
+      "barrel": {
+        "vssm_suppressed": "C50DD564",
+        "vssm_suppressed_asm": "DB313217"
+      },
+      "laser": {
+        "5mw_red": "04E6F19C",
+        "5mw_green": "EAF75903",
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "50mw_blue": "7D9917DA",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "flashlight": "F9EF13C4",
+        "hip_taclight": "97C1E0D4"
+      },
+      "grip": {
+        "slim_handstop": "1EFACE24",
+        "fold_vert": "0743B369",
+        "alloy_vert": "512CB545",
+        "ribbed_vert": "015B7D0A",
+        "6h64_vert": "12DEAFDF",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "ribbed_stubby": "474C527B",
+        "canted_stubby": "94EBC12C",
+        "stipp_stubby": "1FCFFC3D",
+        "lp_stubby": "0C11D11E",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "bipod": "807009FF",
+        "ptt_grip_pod": "5CB7818C",
+        "qd_grip_pod": "5F0CAA2D",
+        "classic_grip_pod": "6161D2CE"
+      },
+      "ammo": {
+        "penetration": "78D58F2D",
+        "long_range": "22AF19F8",
+        "frangible": "2BA8E458",
+        "range_pen": "B52A965A"
+      },
+      "mag": {
+        "20_rnd": "F8D66B75",
+        "10_rnd": "ABDC2EB4",
+        "10_fast": "6D0AA2D3",
+        "20_fast": "BC69AC54",
+        "30_rnd": "FFE5AF29"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "full_auto_vssm": "D4A9BAC0"
+      }
+    }
+  }
+}

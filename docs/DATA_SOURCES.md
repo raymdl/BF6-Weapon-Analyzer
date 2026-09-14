@@ -44,6 +44,14 @@ provides the commands. Source-only ability branches do not establish availabilit
 
 ## What the current baseline means
 
+Attachment tooltip text is maintained separately from mechanics. The
+[display-name and description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
+records 2,952 choices with resolved Frosty text, 15 with explicitly approved
+game-panel text, and 45 still missing text. Panel transcriptions preserve the
+original unresolved Frosty pointers and do not populate other weapons. The
+[reverse inventory](working/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) separates
+known attachment types, possible matches, and records with no known menu counterpart.
+
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json) identifies
 the accepted live dataset and its source policy. At this review it contains 63
 weapons and three source records. This is a mixed-source baseline, not a wholesale
