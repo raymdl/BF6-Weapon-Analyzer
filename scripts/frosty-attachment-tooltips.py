@@ -390,7 +390,7 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
     return descriptions
 
 
-def optic_category(label, points):
+def optic_category(label):
     label = label.strip()
     if label == "Basic Sight":
         return "iron"
@@ -400,11 +400,11 @@ def optic_category(label, points):
         return "thermal"
     if label.startswith(("Sight ", "Scope ")):
         return "std_optic"
-    if label.startswith("Variable "):
-        # The site's two variable categories distinguish 20- and 25-point choices.
-        # Do not infer a magnification threshold from their generic names.
-        return {20: "var_low", 25: "var_high"}.get(points)
-    return None
+    # Classify from the label only, so the source cost stays an independent check.
+    # A new Variable range needs review; do not infer a magnification threshold.
+    return {"Variable 1-4x": "var_low", "Variable 1.5-4.5x": "var_low",
+            "Variable 1-5x": "var_high", "Variable 1-6x": "var_high",
+            "Variable 2-8x": "var_high", "Variable 3-10x": "var_high"}.get(label)
 
 
 def optic_categories(choices, graph, indexes, descriptors):
@@ -436,7 +436,7 @@ def optic_categories(choices, graph, indexes, descriptors):
         labels = {descriptors.get(a, {}).get("label", {}).get("text") for a in assets}
         point_cost = int(row["rawPointCost"], 16)
         label = next(iter(labels)) if len(labels) == 1 and None not in labels else None
-        category = optic_category(label, point_cost) if label else None
+        category = optic_category(label) if label else None
         classification = "English UI label and site point category"
         if not category and normalized(source_name(row).split("_SCP_", 1)[-1]) == "ironsights" and any(
                 s["asset"].rsplit("/", 1)[-1] == "U_WPM_IronSights" and s["bound"] for s in details["selectors"]):
@@ -459,7 +459,7 @@ def optic_categories(choices, graph, indexes, descriptors):
         matches = [r for r in members if r["weapon"] == choice["weapon"] and r["category"] == choice["attachment"]]
         categories.append({**choice, "status": "category-linked" if matches else "category-review-required",
                            "members": matches})
-    return {"scope": "Individual source sights grouped under existing site categories; not one-to-one identities or live availability proof. Variable Low/High use the site's 20/25-point grouping, not a magnification threshold.",
+    return {"scope": "Individual source sights grouped under existing site categories; not one-to-one identities or live availability proof. Categories come from English UI labels only; Variable Low/High are explicit label lists, not a magnification threshold.",
             "coverage": {"siteCategories": len(categories), "linkedCategories": sum(bool(r["members"]) for r in categories),
                          "sourceSights": len(rows), "classifiedSights": len(members), "unresolvedSights": len(unresolved)},
             "categories": categories, "unresolvedSources": unresolved,
