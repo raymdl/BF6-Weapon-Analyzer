@@ -57,6 +57,9 @@ The [global-candidates audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
 records accepted source-model changes and the remaining activation/composition
 questions. Its early checkpoints are explicitly historical.
 
+The [UI strings review](working/FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) records
+weapon descriptions, role tags, composite-stat UI assets and setting-label hashes.
+
 ## Authority and historical material
 
 Current behavior is established by the implementation and maintained `data/`.
