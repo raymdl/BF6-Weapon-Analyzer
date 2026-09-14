@@ -88,7 +88,10 @@ do not. Approved panel text is enabled explicitly in `panelLinkageInvestigation`
 and checked against the original hardware/UI link and screenshot hash. Never
 replace a missing Frosty string ID with an unrelated ID that has matching text.
 Review the 2,952 source-text, 15 panel-text and 45 deferred choice counts, and
-retain the per-choice source distinction. The runtime JSON is part of the ship surface.
+retain the per-choice source distinction. Also check all 63 iron-sight tooltips,
+including the Classic M16A4 and aperture UMG-40 defaults. The generator reads the
+MG5 iron-sight descriptor directly from the weapon export outside the UI batch.
+The runtime JSON is part of the ship surface.
 
 ## Reload exceptions and provenance
 

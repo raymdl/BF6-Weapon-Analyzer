@@ -22,8 +22,10 @@ availability or point cost can still matter.
 Hover an attachment control or option to read its in-game description where
 available. The selected control also exposes the text as an accessible description.
 Most text comes from Frosty UI records; 15 choices use approved game captures.
-Some choices have no description, and generic optic categories do not use one
-individual optic's tooltip. Tooltip text does not define the simulated effects.
+Iron Sights also has a description on each weapon. M16A4 uses its Classic sights;
+UMG-40 uses its basic aperture sights. Other generic optic categories do not use
+one individual optic's tooltip. Text appears without an introductory prefix and
+does not define the simulated effects. Some choices still have no description.
 
 Enable comparison for a second independent loadout. Clone the first loadout to
 compare attachment changes on the same weapon. Disabling comparison clears the

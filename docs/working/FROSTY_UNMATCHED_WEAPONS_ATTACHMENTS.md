@@ -744,6 +744,6 @@ These names describe default or empty slot states. They are not additional unkno
 ## Input evidence
 
 - [ebx_manifest.csv](<C:/Users/royal/Documents/BF6 Datamining/ebx_manifest.csv>) â€” SHA-256 `d391353210a3306c9c7ab8193621eb459a7752e281f0d0b282abc8cbd7d75497`.
-- [frosty-site-attachment-mapping-2026-09-13.json](<C:/Users/royal/Documents/BF6 Weapon Analyzer/reference-data/provenance/frosty-site-attachment-mapping-2026-09-13.json>) â€” SHA-256 `878459ea6bf08de44156f89c1ed378674a7f79f1edd868df522f2ca1986379dc`.
-- [frosty-optic-category-mapping-2026-09-13.json](<C:/Users/royal/Documents/BF6 Weapon Analyzer/reference-data/provenance/frosty-optic-category-mapping-2026-09-13.json>) â€” SHA-256 `24f3d0f2517221b0e4706173122a5e66bcedbabec1e79aeacdbf738750d29301`.
+- [frosty-site-attachment-mapping-2026-09-13.json](<C:/Users/royal/Documents/BF6 Weapon Analyzer/reference-data/provenance/frosty-site-attachment-mapping-2026-09-13.json>) â€” SHA-256 `de494140ef6ff1b97dbcfb40560f8df4655c53ccd28a9c7faf8bfaf25a474fbf`.
+- [frosty-optic-category-mapping-2026-09-13.json](<C:/Users/royal/Documents/BF6 Weapon Analyzer/reference-data/provenance/frosty-optic-category-mapping-2026-09-13.json>) â€” SHA-256 `f82a971f48935840db07c5571f7381216fc31b54c2a597933d1c94b73cf995be`.
 - [frosty-weapon-identities.json](<C:/Users/royal/Documents/BF6 Weapon Analyzer/reference-data/provenance/frosty-weapon-identities.json>) â€” SHA-256 `eb08a671dff2756dc8d65ae9b15927e30a46c983e6c55d51cf02f0d9be7a7711`.

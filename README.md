@@ -49,7 +49,8 @@ sniper brake steps, Linear Comp/burst recoil and the belt-box description
 mismatches. Source-backed modifiers do not establish native simulation formulas.
 
 Attachment tooltips cover 2,967 non-optic selections using Frosty UI descriptions
-and 15 approved game-panel transcriptions. The remaining 45 descriptions are
+and 15 approved game-panel transcriptions, plus Iron Sights on all 63 weapons.
+The remaining 45 non-optic descriptions are
 deferred. See the [description audit](docs/working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
 for the exact scope and source boundaries.
 

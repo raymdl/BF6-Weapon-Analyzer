@@ -26,14 +26,14 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
     const opt = document.createElement('option');
     opt.value = optData.id;
     opt.textContent = optData.text;
-    if (optData.description) opt.title = `In-game description: ${optData.description}`;
+    if (optData.description) opt.title = optData.description;
     if (optData.noEffect) opt.style.color = '#666';
     if (optData.id === value) opt.selected = true;
     sel.appendChild(opt);
   });
   const updateTooltip = () => {
     const description = options.find(option => option.id === sel.value)?.description;
-    const tooltip = description ? `In-game description: ${description}` : '';
+    const tooltip = description || '';
     row.title = tooltip;
     sel.title = tooltip;
     if (description) sel.setAttribute('aria-description', tooltip);

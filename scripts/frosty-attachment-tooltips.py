@@ -415,6 +415,11 @@ def optic_categories(choices, graph, indexes, descriptors):
     for row in rows:
         name = source_name(row)
         link = weapon_ui(name, "sight", indexes, {normalized(without_slot(name)): {"sight"}})
+        if not link and normalized(name.split("_SCP_", 1)[-1]) == "ironsights":
+            weapon = row["weapon"].lower()
+            asset = f"common/ui/static/metadata/attachments/{weapon}/ad_{weapon}_sight"
+            if asset in descriptors:
+                link = {"method": "same-weapon-iron-sight-descriptor", "assets": [asset]}
         details = source_details(row)
         key = (normalized(name.split("_SCP_", 1)[-1]),
                tuple((s["asset"], s["guid"]) for s in details["selectors"]))
@@ -461,6 +466,39 @@ def optic_categories(choices, graph, indexes, descriptors):
             "membersOutsideSiteCategories": [r for r in members if not any(c["weapon"] == r["weapon"] and c["attachment"] == r["category"] for c in categories)]}
 
 
+def iron_sight_tooltips(optics, by_weapon):
+    """Use source text, with the user-selected defaults for multi-variant irons."""
+    defaults = {
+        "m16a4": "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
+        "umg40": "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
+    }
+    descriptions = {}
+    for category in optics["categories"]:
+        if category["attachment"] != "iron":
+            continue
+        rows = [d for member in category["members"] for d in member["descriptions"]]
+        if category["weapon"] in defaults:
+            rows = [d for d in rows if d["asset"] == defaults[category["weapon"]]]
+            if not rows:
+                raise ValueError(f"Default iron-sight descriptor missing: {category['weapon']}")
+        if not rows or any(not d.get("text") for d in rows):
+            continue
+        texts = sorted({d["text"] for d in rows})
+        if len(texts) != 1:
+            continue
+        ids = sorted({d["id"] for d in rows})
+        key = ids[0]
+        descriptions[key] = texts[0]
+        by_weapon.setdefault(category["weapon"], {}).setdefault("sight", {})["iron"] = key
+        category["tooltipDescriptionKey"] = key
+        category["tooltipSourceIds"] = ids
+        category["tooltipStatus"] = "source-linked"
+        if category["weapon"] in defaults:
+            category["tooltipDefaultDescriptor"] = defaults[category["weapon"]]
+            category["tooltipDefaultReason"] = "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. Other category members are retained as evidence only."
+    return descriptions
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("aam_xml_root", type=Path)
@@ -474,16 +512,25 @@ def main():
     descriptor_path = REPO / "reference-data/provenance/frosty-attachment-descriptions-2026-09-13.json"
     descriptor_document = read_json(descriptor_path)
     descriptors = {r["asset"].lower(): r for r in descriptor_document["attachments"]}
+    # MG5 stores its iron-sight descriptor with the weapon, outside the UI batch.
+    extra_asset = "Common/Hardware/Weapons/MG/MG5/AD_MG5_IronSights"
+    extra_path = args.frosty_root / (extra_asset + ".xml")
+    extra_root = ET.fromstring(extra_path.read_bytes())
+    pointer = extra_root.findtext("Class_535682be/Field_490f0dd0").split()[-1]
+    string_id = extra_root.find(f"Class_fbe1d3bc[@Guid='{pointer}']/Field_3d34898a").text[2:].upper()
+    text_by_id = {r["description"]["id"]: r["description"]["text"] for r in descriptors.values() if r["description"].get("text")}
+    descriptors[extra_asset.lower()] = {"asset": extra_asset, "label": {},
+        "xmlSha256": hashlib.sha256(extra_path.read_bytes()).hexdigest(),
+        "description": {"id": string_id, "text": text_by_id[string_id]}}
     choices = current_choices()
     sources, review_hashes = reviewed_identities()
     graph, graph_hashes, graph_issues = source_graph(args.frosty_root, include_optics=bool(args.optic_mapping_json))
+    graph_hashes[extra_asset + ".xml"] = descriptors[extra_asset.lower()]["xmlSha256"]
     indexes = ui_indexes(args.aam_xml_root, descriptors)
     if args.optic_mapping_json:
         optics = optic_categories(choices, graph, indexes, descriptors)
         optics.update({"graphSourceHashes": graph_hashes, "aamHashes": indexes[-1],
                        "descriptorSha256": hashlib.sha256(descriptor_path.read_bytes()).hexdigest()})
-        args.optic_mapping_json.parent.mkdir(parents=True, exist_ok=True)
-        args.optic_mapping_json.write_text(json.dumps(optics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(optics["coverage"]))
     followup = read_json(REPO / "reference-data/provenance/frosty-attachment-identity-followup-2026-09-13.json")
     ui_reviews = followup.get("uiLinkReviews", [])
@@ -495,6 +542,10 @@ def main():
     screenshot_descriptions = apply_screenshot_tooltips(
         records, by_weapon, panel_review.get("rows", []) if panel_review.get("applyAsTooltips") is True else [])
     if args.optic_mapping_json:
+        iron_descriptions = iron_sight_tooltips(optics, by_weapon)
+        optics["coverage"]["ironSightTooltips"] = sum(c.get("tooltipDescriptionKey") is not None for c in optics["categories"])
+        args.optic_mapping_json.parent.mkdir(parents=True, exist_ok=True)
+        args.optic_mapping_json.write_text(json.dumps(optics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         optic_choices = {(r["weapon"], r["attachment"]): r for r in optics["categories"]}
         for record in records:
             if record["slot"] == "sight":
@@ -503,6 +554,10 @@ def main():
                 record["descriptionStatus"] = "category-member-descriptions"
                 record["categorySources"] = [r["source"] for r in category["members"]]
                 record["categoryReport"] = args.optic_mapping_json.name
+                if category.get("tooltipDescriptionKey"):
+                    record["tooltipDescriptionKey"] = category["tooltipDescriptionKey"]
+                    record["tooltipSourceIds"] = category["tooltipSourceIds"]
+                    record["descriptionStatus"] = category["tooltipStatus"]
     primary = [r for r in records if r["slot"] != "sight"]
     coverage = {
         "aamAssets": len(indexes[-1]), "nonSightChoices": len(primary),
@@ -512,11 +567,13 @@ def main():
         "matchMethods": dict(sorted(Counter(s["uiLink"]["method"] for r in primary
             for s in r["sources"] if s.get("status") == "linked").items())),
     }
+    coverage["ironSightTooltips"] = sum("iron" in slots.get("sight", {}) for slots in by_weapon.values())
     result = {
         "source": "Reviewed Frosty hardware identities and localized UI metadata, with explicitly approved per-choice game-panel text where English strings are missing",
         "coverage": coverage,
         "descriptions": dict(sorted(({r["description"]["id"]: r["description"]["text"]
-            for r in descriptors.values() if r["description"].get("id") in used_ids} | screenshot_descriptions).items())),
+            for r in descriptors.values() if r["description"].get("id") in used_ids} | screenshot_descriptions
+            | (iron_descriptions if args.optic_mapping_json else {})).items())),
         "byWeapon": by_weapon,
     }
     args.output_json.parent.mkdir(parents=True, exist_ok=True)

@@ -22,7 +22,8 @@
       "shared-hardware-descriptor-name": 161,
       "shared-model-and-selector-consensus": 169,
       "weapon-descriptor-asset-name": 35
-    }
+    },
+    "ironSightTooltips": 63
   },
   "descriptions": {
     "0099DD29": "Standard magazine tubes that improve weapon draw speed.",
@@ -43,6 +44,7 @@
     "097A9198": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "0A2C0CC5": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil at the cost of hip-fire accuracy, weapon sway, and weapon draw speed.",
     "0A584B95": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "0BB6AC0B": "Basic sights with reduced weapon sway.",
     "0C11D11E": "Greatly reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS movement speed and accuracy.",
     "0E01A41F": "Standard-issue long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "0F4DCE2B": "High-capacity drum with increased capacity at the cost of movement speed while aiming down sights (ADS).",
@@ -228,6 +230,7 @@
     "7D9917DA": "Provides slight improvement to hip-fire accuracy and minor improvement to aim down sights (ADS) accuracy while moving, but is visible to enemy soldiers. Effects only active when laser is turned on.",
     "7FEE407B": "Provides moderate improvement to hip-fire accuracy and minor improvement to aim down sights (ADS) accuracy while moving, but is visible to enemy soldiers. Effects only active when laser is turned on.",
     "807009FF": "Allows weapon to be mounted while prone and more effectively on the edges of cover, greatly reducing recoil.",
+    "80E096AF": "Basic sights without any scope glint.",
     "823E786F": "[REDACTED]",
     "824F3268": "Long barrel that increases projectile velocity.",
     "82ACA282": "Repurposed support weapon barrel that improves firing accuracy during sustained fire and increases projectile velocity at the cost of weapon draw speed.",
@@ -263,6 +266,7 @@
     "9552A9C6": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "95622DCC": "Long barrel that increases projectile velocity.",
     "96449BE2": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "9725C2E0": "Basic aperture sight with reduced weapon sway.",
     "97753639": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "97C1E0D4": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "97D10617": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
@@ -279,6 +283,7 @@
     "9EAF4794": "Long barrel that increases projectile velocity.",
     "9F54684F": "Replaces the default firemode with 2-round burst fire. Burst fire mode reduces horizontal recoil in favor of more stable vertical recoil and minimally reduces overall recoil.",
     "A2809736": "Limits the intensity of muzzle flashes and fully hides in-world spotting while firing. Reduces recoil buildup and improves recoil recovery.",
+    "A2BEF776": "Classic, basic sights with reduced weapon sway.",
     "A2C12F5F": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "A2F2168D": "Standard magazine that improves weapon draw speed.",
     "A382BA6C": "Mid-length barrel that enables a fast transition to aim down sights (ADS).",
@@ -527,6 +532,9 @@
       "ergo": {
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "b36a4": {
@@ -610,6 +618,9 @@
       "ergo": {
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "sor556": {
@@ -694,6 +705,9 @@
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "ak4d": {
@@ -769,6 +783,9 @@
       "ergo": {
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "tr7": {
@@ -841,6 +858,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "match_trigger": "14F044F9"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "kord6p67": {
@@ -913,6 +933,9 @@
       "ergo": {
         "match_trigger": "14F044F9",
         "burst_training": "68EBE1B5"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "nvo228e": {
@@ -989,6 +1012,9 @@
       "ergo": {
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "l85a3": {
@@ -1071,6 +1097,9 @@
       },
       "ergo": {
         "match_trigger": "14F044F9"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "vcr2": {
@@ -1148,6 +1177,9 @@
       "ergo": {
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m16a4": {
@@ -1231,6 +1263,9 @@
         "match_trigger": "14F044F9",
         "buffer": "B127B844",
         "full_auto": "27C1D59F"
+      },
+      "sight": {
+        "iron": "A2BEF776"
       }
     },
     "m4a1": {
@@ -1312,6 +1347,9 @@
         "mag_catch": "F3B1FD64",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m277": {
@@ -1391,6 +1429,9 @@
         "mag_flare": "ECC670D6",
         "mag_catch": "F3B1FD64",
         "match_trigger": "14F044F9"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "ak205": {
@@ -1462,6 +1503,9 @@
         "mag_catch": "F3B1FD64",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m417a2": {
@@ -1539,6 +1583,9 @@
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "grtbc": {
@@ -1609,6 +1656,9 @@
         "match_trigger": "14F044F9",
         "buffer": "B127B844",
         "grtbc_burst_mode": "DA94A1F0"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "qbz192": {
@@ -1673,6 +1723,9 @@
       "ergo": {
         "rail_cover": "D520814B",
         "match_trigger": "14F044F9"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "sg553r": {
@@ -1747,6 +1800,9 @@
         "match_trigger": "14F044F9",
         "buffer": "B127B844",
         "burst_training": "68EBE1B5"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "sor300sc": {
@@ -1825,6 +1881,9 @@
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "sgx": {
@@ -1888,6 +1947,9 @@
       },
       "ergo": {
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "pw5a3": {
@@ -1953,6 +2015,9 @@
         "mag_catch": "F3B1FD64",
         "buffer": "B127B844",
         "burst_training": "68EBE1B5"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "pw7a2": {
@@ -2015,6 +2080,9 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "umg40": {
@@ -2083,6 +2151,9 @@
       "ergo": {
         "buffer": "B127B844",
         "burst_training": "68EBE1B5"
+      },
+      "sight": {
+        "iron": "9725C2E0"
       }
     },
     "usg90": {
@@ -2136,6 +2207,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "kv9": {
@@ -2198,6 +2272,9 @@
       },
       "ergo": {
         "burst_training": "68EBE1B5"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "scw10": {
@@ -2260,6 +2337,9 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "sl9": {
@@ -2327,6 +2407,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "burst_mode": "9F54684F"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "cz3a1": {
@@ -2393,6 +2476,9 @@
         "mag_catch": "F3B1FD64",
         "buffer": "B127B844",
         "burst_training": "68EBE1B5"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "pp19": {
@@ -2456,6 +2542,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "l110": {
@@ -2521,6 +2610,9 @@
       "mag": {
         "100_rnd": "AE3E8992",
         "200_rnd": "FDF18AFD"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "drsiar": {
@@ -2604,6 +2696,9 @@
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m60": {
@@ -2670,6 +2765,9 @@
       "mag": {
         "50_rnd": "F4DCF0BE",
         "100_rnd": "AE3E8992"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "rpkm": {
@@ -2749,6 +2847,9 @@
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m123k": {
@@ -2812,6 +2913,9 @@
       "mag": {
         "100_rnd": "AE3E8992",
         "200_rnd": "BC22EACF"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m250": {
@@ -2877,6 +2981,9 @@
       "mag": {
         "50_rnd": "42DFE476",
         "100_rnd": "760FBC04"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "kts100": {
@@ -2954,6 +3061,9 @@
       "ergo": {
         "rail_cover": "D520814B",
         "match_trigger": "14F044F9"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m240l": {
@@ -3021,6 +3131,9 @@
       },
       "ergo": {
         "rail_cover": "D520814B"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m121a2": {
@@ -3087,6 +3200,9 @@
         "50_rnd": "28A44906",
         "50_fast": "3825F183",
         "100_rnd": "00AE744E"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "rpk74m": {
@@ -3166,6 +3282,9 @@
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m39emr": {
@@ -3241,6 +3360,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "lmr27": {
@@ -3315,6 +3437,9 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "svk86": {
@@ -3379,6 +3504,9 @@
       "mag": {
         "10_rnd": "ABDC2EB4",
         "10_fast": "CD005281"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "svdm": {
@@ -3451,6 +3579,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "grtcps": {
@@ -3525,6 +3656,9 @@
       },
       "ergo": {
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m2010esr": {
@@ -3581,6 +3715,9 @@
       },
       "ergo": {
         "ads_bolt": "41AE0530"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "sv98": {
@@ -3633,6 +3770,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "ads_bolt": "41AE0530"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "psr": {
@@ -3687,6 +3827,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "ads_bolt": "41AE0530"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "miniscout": {
@@ -3745,6 +3888,9 @@
         "15_fast": "61CB75BA",
         "20_rnd": "13A3DA48",
         "20_fast": "BC69AC57"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "l115": {
@@ -3801,6 +3947,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "ads_bolt": "41AE0530"
+      },
+      "sight": {
+        "iron": "80E096AF"
       }
     },
     "interdictor": {
@@ -3851,6 +4000,9 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
+      },
+      "sight": {
+        "iron": "80E096AF"
       }
     },
     "m87a1": {
@@ -3902,6 +4054,9 @@
         "5_fast": "6172F4B5",
         "6_rnd": "B5F4C909",
         "7_rnd": "B849F1AA"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m1014": {
@@ -3952,6 +4107,9 @@
         "4_rnd": "B14A77C7",
         "4_fast": "DC163F74",
         "6_rnd": "748DEA5B"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "ks18k": {
@@ -4007,6 +4165,9 @@
       },
       "ergo": {
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "db12": {
@@ -4053,6 +4214,9 @@
       },
       "mag": {
         "7_rnd": "0099DD29"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "p18": {
@@ -4092,6 +4256,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "fast_deploy": "D520814B"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "es57": {
@@ -4131,6 +4298,9 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m45a1": {
@@ -4169,6 +4339,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "fast_deploy": "D520814B"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m44": {
@@ -4189,6 +4362,9 @@
       "ergo": {
         "fast_deploy": "D520814B",
         "fast_deploy_10": "377A95E9"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "ggh22": {
@@ -4229,6 +4405,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "fast_deploy": "D520814B"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "m357trait": {
@@ -4255,6 +4434,9 @@
       },
       "ergo": {
         "fast_deploy": "D520814B"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "vz61": {
@@ -4297,6 +4479,9 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "brod3": {
@@ -4374,6 +4559,9 @@
         "mag_catch": "F3B1FD64",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "ef88": {
@@ -4452,6 +4640,9 @@
         "mag_catch": "F3B1FD64",
         "match_trigger": "14F044F9",
         "buffer": "B127B844"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     },
     "vssm": {
@@ -4507,6 +4698,9 @@
       "ergo": {
         "mag_catch": "F3B1FD64",
         "full_auto_vssm": "D4A9BAC0"
+      },
+      "sight": {
+        "iron": "0BB6AC0B"
       }
     }
   }
