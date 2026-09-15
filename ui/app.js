@@ -1168,7 +1168,7 @@ function renderBTK() {
     return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
   };
   const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
-  let html = '<table class="btk-tbl"><thead><tr><th>Range</th>';
+  let html = '<table class="btk-tbl"><thead><tr><th>RANGE</th>';
   if (w1) html += `<th style="color:var(--accent)">DMG</th><th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
   if (w2) html += `<th style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
   html += '</tr></thead><tbody>';
