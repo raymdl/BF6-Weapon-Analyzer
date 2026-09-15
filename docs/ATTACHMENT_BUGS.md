@@ -34,7 +34,7 @@ Site status uses one of these values, followed by the value that the site applie
 | 7 | 200 Rnd belt box | L110, M123K | Game error | The description states reduced ADS accuracy while moving. The game does not apply it. | Matches game: no ADS accuracy while moving change |
 | 8 | 30 Rnd fast | PW7A2 | Description error | The description states improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Matches game: reload speed ×1.13 |
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
-| 10 | 50 Rnd / 50 Rnd belt / 75 Rnd belt box | KTS100 MK8 / M/60 / M240L | Description error | KTS100 MK8: "improved handling", but only reload speed and sway improve. M/60 and M240L: "improves weapon draw speed", but the game applies no weapon draw speed change. | Matches source data: source values |
+| 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches source data: source values |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -251,7 +251,7 @@ not state. The causes in the game data are different, so each case needs its own
 - **In-game.** Operator review: stale text from before the Extended barrel ADS buff
   was removed. Behavior matches the data.
 
-### 10. Magazines that overstate handling or draw speed
+### 10. KTS100 MK8 50 Rnd magazine
 
 Found by the 14 September magazine recheck with every value relative to the
 weapon's default magazine. All values are source-generated. Not checked in game.
@@ -259,11 +259,6 @@ weapon's default magazine. All values are source-generated. Not checked in game.
 | Weapon | Magazine | In-game text | Relative to default | Incorrect part |
 |---|---|---|---|---|
 | KTS100 MK8 | 50 Rnd (default 60 Rnd) | "Wide magazine for improved handling at the cost of capacity." | Reload +1, sway ×0.667; ADS, draw and ADS movement unchanged | "improved handling" (only reload and sway improve) |
-| M/60 | 50 Rnd (default 100 Rnd) | "Ammunition belt that improves weapon draw speed and weapon sway as well as transition to aim down sights (ADS) and movement speed while ADS." | ADS −1, ADS move −2, sway ×0.667; draw unchanged | "improves weapon draw speed" |
-| M240L | 75 Rnd (default 50 Rnd) | "Belt box that improves weapon draw speed and aim down sights (ADS) accuracy while moving, but reduces weapon reload speed." | Moving-ADS accuracy +1; draw unchanged | "improves weapon draw speed" |
-
-Both default and alternative magazines on these weapons have draw −1, so the
-"improves" claims hold only against a magazine without the Regular draw bonus.
 
 ## Accepted text
 
@@ -334,6 +329,11 @@ Withdrawn or rejected:
 - QBZ-192 40 Rnd and RPK-74M 95 Rnd draw penalties: present relative to the default
   (QBZ-192 133 → 167 ms; RPK-74M 200 → 233 ms, confirmed in game).
 - 40 Rnd on 15 other weapons: their text names only ADS movement, which is present.
+- M/60 50 Rnd and M240L 75 Rnd "improves weapon draw speed": the default magazines
+  (M/60 100 Rnd, M240L 50 Rnd) state the same improvement and have the same draw
+  bonus, so draw speed does not change between them. Screenshots show the same
+  sprint recovery. Only the M240L 100 Rnd loses the bonus, and its text does not
+  claim improved draw speed.
 - 35/40 Rnd fast magazines (AK-205, CZ3A1, KORD 6P67): "at the cost of movement and
   weapon draw speed" covers the ADS movement penalty.
 - Magazine sway, moving-ADS accuracy and reload benefits under "handling" (see below).
