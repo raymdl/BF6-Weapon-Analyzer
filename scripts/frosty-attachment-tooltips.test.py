@@ -128,12 +128,13 @@ class DescriptionMappingTests(unittest.TestCase):
         self.assertIsNone(m.weapon_ui('SV98M_Magpul_AFG2_BOLT', 'muzzle', indexes, {}))
 
     def test_optic_categories_keep_fixed_scopes_and_variable_price_groups_distinct(self):
-        self.assertEqual(m.optic_category('Scope 10.00x', 10), 'std_optic')
-        self.assertEqual(m.optic_category('Variable 1-4x', 20), 'var_low')
-        self.assertEqual(m.optic_category('Variable 1-5x', 25), 'var_high')
-        self.assertIsNone(m.optic_category('Variable 1-5x', 30))
-        self.assertEqual(m.optic_category('Thermal Hybrid', 35), 'therm_hyb')
-        self.assertEqual(m.optic_category('Thermal 1.50x ', 25), 'thermal')
+        # Labels alone set the category; source costs are checked separately in optic_categories().
+        self.assertEqual(m.optic_category('Scope 10.00x'), 'std_optic')
+        self.assertEqual(m.optic_category('Variable 1-4x'), 'var_low')
+        self.assertEqual(m.optic_category('Variable 1-5x'), 'var_high')
+        self.assertIsNone(m.optic_category('Variable 1-7x'))
+        self.assertEqual(m.optic_category('Thermal Hybrid'), 'therm_hyb')
+        self.assertEqual(m.optic_category('Thermal 1.50x '), 'thermal')
 
 if __name__ == '__main__':
     unittest.main()
