@@ -220,11 +220,6 @@
           "recoilDecreaseTimeExponentAdd": -0.5
         }
       },
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 20,
       "hipRecoilTierMod": 1,
       "worldSpotMult": 1,
@@ -258,11 +253,6 @@
       "adsRecoilDecayMult": 1.2,
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 20,
       "worldSpotMult": 0,
       "minimapSpotMult": 1
@@ -322,11 +312,6 @@
           "weaponSwayMult": 1.462923
         }
       },
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 25,
       "weaponSwayMult": 1.5,
       "worldSpotMult": 0,
@@ -382,11 +367,6 @@
           "weaponSwayMult": 0.975282
         }
       },
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 30,
       "worldSpotMult": 0,
       "minimapSpotMult": 0.14
@@ -416,11 +396,6 @@
           "recoilDecreaseTimeExponentAdd": -0.5
         }
       },
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 10,
       "worldSpotMult": 1,
       "minimapSpotMult": 1
@@ -434,11 +409,6 @@
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 30,
       "sprintRecoveryTierShift": 1,
       "hipRecoilTierMod": 1,
@@ -456,11 +426,6 @@
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 1,
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 40,
       "hipRecoilTierMod": 1,
       "worldSpotMult": 0,
@@ -475,11 +440,6 @@
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
       "hipSpreadTierMod": 0,
-      "assumedFields": {
-        "adsRecoilDecayMult": "The selected Frosty factor is modeled as a recovery multiplier. M4A1 Lightened observations support lower sustained accumulation, not this exact operation or activation on every muzzle.",
-        "hipRecoilDecayMult": "Same Frosty modifier value in the hip branch; applied as a source-based estimate, not a recording-validated hipfire result.",
-        "recoilDurationOverride": "The selected Frosty duration is modeled as a linear delivery-duration override. Envelope and modifier stacking remain approximations."
-      },
       "pts": 50,
       "hipRecoilTierMod": 1,
       "worldSpotMult": 0,
@@ -4431,11 +4391,11 @@
           "deployTimeTierShift": -1
         },
         "ks18k": {
+          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1,
-          "movingAdsSpreadTierMod": -1
+          "deployTimeTierShift": -1
         },
         "kts100": {
           "adsTimeTierMod": 1,
@@ -5166,6 +5126,7 @@
       "pts": 15,
       "frostyModifiers": {
         "l115": {
+          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5178,24 +5139,25 @@
           "deployTimeTierShift": -1
         },
         "miniscout": {
+          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
         "psr": {
+          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1,
-          "movingAdsSpreadTierMod": -1
+          "deployTimeTierShift": -1
         },
         "sv98": {
+          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1,
-          "movingAdsSpreadTierMod": -1
+          "deployTimeTierShift": -1
         }
       }
     },
@@ -5252,12 +5214,6 @@
       "pts": 10,
       "noEffect": true,
       "frostyModifiers": {
-        "ak205": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "b36a4": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -6256,6 +6212,7 @@
       "pts": 15,
       "frostyModifiers": {
         "interdictor": {
+          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -9018,7 +8975,6 @@
         "ribbed_vert",
         "6h64_vert",
         "classic_vert",
-        "underslung_mount",
         "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",

@@ -36,9 +36,10 @@ reports retain field paths, GUIDs and hashes. The burst review follows nested
 fire-mode selectors; field source status and simulation support are separate.
 
 The [attachment generation report](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
-records 233 unique barrel selections, 1,488 handling selections, 16 sniper brake
+records 233 unique barrel selections, 1,487 handling selections, 16 sniper brake
 pairs and 53 Linear Comp/burst pairs. Two belt-box description mismatches remain recorded as possible bugs; their
-unsupported spread penalties were removed after matched screenshot review.
+unsupported spread penalties were removed after matched screenshot review. The
+[description mismatch list](ATTACHMENT_BUGS.md) tracks all reviewed text and data conflicts.
 The [maintenance workflow](../MAINTENANCE.md#regenerate-attachment-modifiers)
 provides the commands. Source-only ability branches do not establish availability.
 
@@ -46,7 +47,7 @@ The [compatibility generator](../scripts/frosty-attachment-compatibility.py)
 separately reads physical slot assignments from root-listed ability branches and
 prerequisite attachment IDs from `Equipment_*` records. Its
 [evidence](../reference-data/provenance/frosty-attachment-compatibility.json)
-covers 1,392 offered mount choices and 285 dependency entries: 22 rules map to
+covers 1,391 offered mount choices and 285 dependency entries: 22 rules map to
 offered attachments on four weapons; 263 secondary-sight entries are not offered
 or lack a reviewed site identity. The PP-19 30/53-round screenshots corroborate
 the dependency interpretation. Native hashed enum semantics and live overrides

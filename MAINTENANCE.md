@@ -94,6 +94,17 @@ with source hashes, evidence pointers and limits. Run
 `python scripts/frosty-watchlist-merge.py --datamining <datamining-root>` to review
 collection changes, then add `--write` to save them. Preserve earlier findings.
 
+After a game update, list attachment actions that select more than one modifier
+package:
+
+```sh
+python scripts/frosty-multi-package-scan.py --root <Frosty-export-root>
+```
+
+Add `--out <file>` for JSON. Each hit is a candidate for a full trace and an
+in-game check; record confirmed cases in
+[attachment bugs and mismatches](docs/ATTACHMENT_BUGS.md).
+
 ## Regenerate attachment tooltips
 
 Follow the [description audit commands](docs/working/FROSTY_DISPLAY_NAMES.md#regeneration-and-verification)
@@ -101,9 +112,11 @@ to regenerate `data/attachment-tooltips.json` and both mapping reports together.
 Keep `--optic-mapping-json` in the command. The generator requires the original
 local AAM XML, Frosty export, and ignored capture library; the small mapper tests
 do not. Approved panel text is enabled explicitly in `panelLinkageInvestigation`
-and checked against the original hardware/UI link and screenshot hash. Never
+and checked against the original hardware/UI link and screenshot hash. A row with
+`status: linked-text-differs-from-panel` may also replace a linked English string
+that differs from the live panel; record the reason and keep the original pointer. Never
 replace a missing Frosty string ID with an unrelated ID that has matching text.
-Review the 2,952 source-text, 15 panel-text and 45 deferred choice counts, and
+Review the 2,948 source-text, 18 panel-text and 45 deferred choice counts, and
 retain the per-choice source distinction. Also check all 63 iron-sight tooltips,
 including the Classic M16A4 and aperture UMG-40 defaults. The generator reads the
 MG5 iron-sight descriptor directly from the weapon export outside the UI batch.

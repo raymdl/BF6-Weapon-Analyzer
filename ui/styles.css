@@ -195,9 +195,8 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
 /* BTK table */
 .btk-tbl{width:100%;border-collapse:collapse;font-size:0.78rem}
-.btk-tbl th{padding:4px 7px;color:var(--muted);text-align:center;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
-.btk-tbl td{padding:4px 7px;text-align:center;border-bottom:1px solid rgba(40,48,48,.45)}
-.btk-tbl tr:last-child td{border-bottom:none}
+.btk-tbl th{padding:4px 7px;color:var(--muted);text-align:left;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
+.btk-tbl td{padding:4px 7px;text-align:left;border-bottom:1px solid rgba(40,48,48,.45)}.btk-tbl tr:last-child td{border-bottom:none}
 .rng{color:var(--muted);font-size:0.7rem}
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}

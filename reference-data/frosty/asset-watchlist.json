@@ -204,7 +204,7 @@
     },
     "interdictor-1.4.3.0": {
       "path": "docs/working/INTERDICTOR_1.4.3.0_CHECK.md",
-      "sha256AtSeed": "6be01d28cc976139ce23cb37ff4e0fe9007c09bd8b0b79238480ee5ea02e4ca0",
+      "sha256AtSeed": "57142e9561ec253fd056045d32221f9581d06bea17c4bb0a6efdd144965a2d6d",
       "selection": "catalog-matched path mentions; inclusion is not proof of runtime use",
       "purpose": "Assets to compare for the 1.4.3.0 Interdictor changes"
     },

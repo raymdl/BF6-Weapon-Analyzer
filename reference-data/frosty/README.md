@@ -25,7 +25,7 @@ Discovery rules are instructions for a future collector, not executable automati
 
 ## Research findings
 
-`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 140 findings across 133 assets, including 62 ability and 56 equipment findings from the compatibility investigation. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
+`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 166 findings across 133 assets, including 62 ability and 56 equipment findings from the compatibility investigation and 26 selector-package findings from the 14 September description review. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
 
 Check this file before repeating an investigation. Results apply to the stated question and method. `inconclusive` does not mean the asset is unrelated; `blocked-by-decoding` does not mean it lacks useful data. A `useful` result does not establish native runtime behavior beyond the cited evidence. There is no permanent exclusion flag.
 
@@ -36,7 +36,7 @@ Compare hashes only within the recorded format: raw EBX and XML hashes are diffe
 ## Shared slots and attachment dependencies
 
 The [compatibility report](../provenance/frosty-attachment-compatibility.json)
-records 1,392 offered grip/laser/light choices and all 285 inspected equipment
+records 1,391 offered grip/laser/light choices and all 285 inspected equipment
 dependency entries. Twenty-two rules map to offered attachments on PP-19,
 AK-205, RPK-74M and RPKM. The other 263 entries concern secondary sights outside
 the offered choices or reviewed mapping; they remain explicit source evidence.
@@ -67,9 +67,21 @@ recursive dependency closure or approval of every operand in those files.
 
 ## Per-build collection
 
+### Completed pre-update preparation (14 September 2026)
+
+The 1.4.2.5 capture is in `C:\Users\royal\Documents\BF6 Datamining\research-1.4.2.5\pre-update`. See `summary.json` and `collection/collection-manifest.json`. It retains 23,557 raw assets covering the 8,062 watched paths and all explicit EBX dependencies reached through existing XML. All raw exports succeeded; the XML tree was inventoried in place. No recordings or duplicate XML tree were copied.
+
+The full JSON catalog contains 464,499 paths, GUIDs, declared sizes and available Frosty SHA1 records. Type names were unavailable in raw-index mode and are null. The old descriptors, SDK, runtime, cache and exact source distribution are retained separately. The working key was not copied.
+
+The manifest remains `partial`: 1,500 raw-retained assets lack XML inspection, further non-EBX/GUID-only dependencies are not closed, and exact marketing-build identity is not independently verified. Archive Head `4420709` differs from SDK `4414275`; matching prior grid/descriptor/executable hashes are recorded as evidence, not a reason to hide that difference. The discovery report lists additional Game/gadget path-name candidates without claiming they are required or active.
+
+`scripts/frosty-collect-raw.ps1` now captures a full catalog and an optional routes-file raw set without object decoding. It requires Windows PowerShell and the local Frosty runtime. Use a new output directory per capture; existing raw files are not overwritten. The documented `discoveryRules` and schema do not themselves run collection or dependency decoding.
+
+Track the remaining work in [the update plan](../../docs/working/FROSTY_1.4.3.0_UPDATE_PLAN.md). Start section 3 after the game update. Keep old outputs unchanged.
+
 Create a separate directory for each verified game build. Store raw EBX, XML, matching `SharedTypeDescriptors.ebx`, tool/SDK identity and export results there. Preserve original files once the collection is complete. Keep recordings outside this process.
 
-Use `collection-manifest.schema.json` for each build's generated `collection-manifest.json`. No collection manifest is created here because no new collection has run. The schema distinguishes successful, failed, skipped and missing exports and records each output's size and SHA-256. Failed or partial results must not be presented as a complete snapshot.
+Use `collection-manifest.schema.json` for each build's generated `collection-manifest.json`. The 1.4.2.5 collection manifest is stored in the external versioned evidence directory listed above. The schema distinguishes successful, failed, skipped and missing exports and records each output's size and SHA-256. Failed or partial results must not be presented as a complete snapshot.
 
 Record the actual game build evidence and Frosty revision or binary hashes. An expected patch label alone is not build verification. Record extractor versions, source asset hashes and field paths in derived stat reports. Preserve observed values separately from calculations and interpretation.
 
@@ -116,6 +128,50 @@ After exporting a new build, re-run the consumer for each evidence source and co
 
 Field meanings found so far that help comparisons: optic point cost `Field_6ee865a5`; Precision table fields in the precision report `fieldMap`; semantic names from `GRX_Weapons` (`frosty-grx-field-names-2026-09-13.json`).
 
+## Attachment modifier fields (14 September 2026)
+
+Observed in the 1.4.2.5 XML export while tracing Slim Angled grips, magazines, ammo
+and vertical grips ([description mismatch list](../../docs/ATTACHMENT_BUGS.md)).
+Meanings come from operand patterns that match site values. Native consumers are not
+decoded.
+
+| Asset / class | Field | Meaning |
+|---|---|---|
+| `Attachment_*` (`Class_a9b2eb87`) | `Field_157a7d74` | Progression (`U_PRG_*`) reference |
+| | `Field_fe77e9a9` | Attachment category |
+| | `Field_6ee865a5` | Point cost. The only cost field; package names do not set cost |
+| | `Field_de6f63b3` | Attachment ID hash used by equipment prerequisites |
+| Ability branch (`Class_74f6b9e4`) | `Field_ffba60f0` | Action list (`Class_4ed159fb`) |
+| | `Field_def7f8dd/Struct_181e89a5` | Killswitch: registry reference `Field_e0b43a29/Struct_9bc51bd0/Field_6b28f68f`, local fallback `Field_043d7a08` |
+| Action (`Class_4ed159fb`) | `Field_7e54e22c` | Unlocks: `U_WPM_*` modifier-package selectors and art unlocks. One action can list several packages |
+| WB modifier (`Class_897c99a7`) | `Field_819acc98` / `Field_9690d604` | Selector GUIDs / `WME_*` effect assets |
+| GS binding (`Struct_3e61171a`) | `Field_6d011165` / `Field_2f0e5b83` / `Field_3f680d24` | Selector GUID / bound modifier (`GRM_*`, `GID_*`, `GDM_*`) / entry index |
+| `GDM_Array_*Dispersion_*` (`Class_743a3ce0`) | `Field_94752c29`; `Field_9540bd8e/Struct_d204f959/Field_4692836a` | Target array (`Field_84e57075`); signed index step (`0xffffffff` = -1) |
+| `WME_ADSTime_FOV_*` (`Class_104c2294`), `WME_ADSTime_Anim_*` (`Class_016623ac`) | `Field_9540bd8e` | ADS step; the two must agree |
+| `WME_Draw_Deploy_*` (`Class_4aac041b`), `WME_Draw_Sprint_*` (`Class_03db7a68`) | `Field_9540bd8e` | Draw step (`P05` = 1, `P10` = 2) |
+| `WME_ADSMoveSpeed_*` (`Class_303a33cc`) | `Field_c427eabf` | ADS movement step (`M05` = -1, `P10` = 2) |
+| `WME_ReloadSpeedRegular_P10` (`Class_9705264b`) | `Field_348b8cd1` | Reload multiplier 1.13 (site `reloadSpeedTier` 1) |
+| `WME_WSway_*` (`Class_2fea847d`), `WME_CSway_*` (`Class_28d25398`) | `Field_90fd0310` and following floats | Weapon / camera sway multipliers (1.5, 0.6666667) |
+| `WME_Penetration_*` (`Class_d11a23a2`), `WME_Protection_*` (`Class_e85fff64`) | `Field_fbfacac9` | Penetration or protection steps (`P05` = 1, `P15` = 3) |
+| `WME_HealthRegenDelay_*` (`Class_5830cb87`) | `Field_8359723e` | Seconds added (Frangible 4) |
+| `WME_SpotRange_*` (`Class_0045e7fa`) | `Field_d98b0371` / `Field_6f8d5f40` | Minimap / in-world spot range factors (suppressors 0.14 / 0) |
+| `WME_Flag_IsSilenced_P00` (`Class_c6c66955`) | `Field_ffba8126` | Silenced flag |
+| Magazine package (`Class_e7d2410a`) | `Field_7f22bfb4` | Capacity including the chambered round (40 Rnd = `0x29`) |
+
+Composition observations:
+
+- A package's `WME_*` effects apply to a weapon only when that weapon's `*_WB.xml`
+  lists the package's WB modifier. M2010 ESR lists `WPM_BTM_FastBOLT02_W15`; L115,
+  Mini Scout and Interdictor select that package but do not list its WB modifier.
+- GS bindings are per weapon. `Vertical03_W20` has a recoil binding in `GS_BREN3`
+  but none in `GS_M27IAR`.
+- `_W##` suffixes on `U_WPM_*` names are not costs: 334 of 3,016 suffixed actions
+  have a different `Field_6ee865a5`.
+- Magazine shifts on the site are relative to the default magazine. Regular packages
+  (`U_WPM_MAG_Std_W05`) add draw +1 (site -1), so other magazines are slower to draw
+  than the default even without a draw operand.
+- `scripts/frosty-multi-package-scan.py` lists actions with several packages.
+
 ## Scope
 
-These files define and seed the process. They do not export assets, rebuild Frosty, resume the backup, change Analyzer data or claim a complete dependency inventory.
+These shared JSON files define the collection plan and findings. The separate collector has captured the pre-update raw set; no complete dependency inventory is claimed. Preparation did not resume the broad backup or change Analyzer data.

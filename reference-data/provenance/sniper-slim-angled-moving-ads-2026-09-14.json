@@ -1,0 +1,100 @@
+{
+  "observedOn": "2026-09-14",
+  "decision": "Pending operator decision. Captures support the same moving-ADS spread penalty for Slim Angled and Full Angled on Interdictor and Mini Scout.",
+  "method": "Red HUD bracket mask in x=883..1036 y=497..582 of 1920x1080 frames; R>120, G<70, B<70. Width=maxX-minX+1. Full frames visually reviewed.",
+  "results": {
+    "interdictor": {
+      "None": 35,
+      "Slim Angled": 47,
+      "Full Angled": 48
+    },
+    "miniscout": {
+      "None": 48,
+      "Slim Angled": 63,
+      "Full Angled": 63
+    },
+    "note": "Grip/None width ratios are 1.34-1.37 (Interdictor) and 1.31 (Mini Scout). Moving-ADS ladder tier 3 to tier 2 is 0.32 to 0.43 degrees, ratio 1.34. Slim Angled equals Full Angled within 1 px on both weapons."
+  },
+  "limitation": "Single mid-strafe screenshots supplied by operator. HUD evidence, not calibrated projectile angles. L115 Slim Angled is not captured (not unlocked); M2010 ESR evidence is panel Mobility only (Slim 52, Full 48).",
+  "recheck": "After game updates, repeat matched None/Slim Angled/Full Angled ADS strafing captures and recheck Frosty bindings.",
+  "screenshots": [
+    {
+      "file": "reference-data\\Recordings\\09142026\\Sniper Slim Angled\\Interdictor_Full_Angled (Large).png",
+      "sha256": "346c0a69fd935319e704a4f9b48289c039aa916a57e97e4e274c52ac90554d3c",
+      "redXRange": [
+        935,
+        982
+      ],
+      "redYRange": [
+        526,
+        545
+      ],
+      "redBracketOuterWidthPx": 48
+    },
+    {
+      "file": "reference-data\\Recordings\\09142026\\Sniper Slim Angled\\Interdictor_None (Large).png",
+      "sha256": "6a4e1b39a4d0501cc1bb35ec781e71985324d9693440237e90eb3bc27df09911",
+      "redXRange": [
+        943,
+        977
+      ],
+      "redYRange": [
+        534,
+        546
+      ],
+      "redBracketOuterWidthPx": 35
+    },
+    {
+      "file": "reference-data\\Recordings\\09142026\\Sniper Slim Angled\\Interdictor_Slim_Angled (Large).png",
+      "sha256": "22c26b9b460ee06a83a515f691f5657a2e8ca931d326565991ff85ae1f03ea07",
+      "redXRange": [
+        935,
+        981
+      ],
+      "redYRange": [
+        527,
+        546
+      ],
+      "redBracketOuterWidthPx": 47
+    },
+    {
+      "file": "reference-data\\Recordings\\09142026\\Sniper Slim Angled\\Mini_Scout_Full_Angled (Large).png",
+      "sha256": "186efd48e0ba0cbca73308035835e49dc60c3fe3a3d209b58f3956fa90de57ac",
+      "redXRange": [
+        929,
+        991
+      ],
+      "redYRange": [
+        530,
+        554
+      ],
+      "redBracketOuterWidthPx": 63
+    },
+    {
+      "file": "reference-data\\Recordings\\09142026\\Sniper Slim Angled\\Mini_Scout_None (Large).png",
+      "sha256": "ae24fafb32114d0ed894b39db494b63ec47a12b27d6d56fedd6bddb8c6aec2a4",
+      "redXRange": [
+        938,
+        985
+      ],
+      "redYRange": [
+        530,
+        548
+      ],
+      "redBracketOuterWidthPx": 48
+    },
+    {
+      "file": "reference-data\\Recordings\\09142026\\Sniper Slim Angled\\Mini_Scout_Slim_Angled (Large).png",
+      "sha256": "3b7e111afac6927199a87ff9a2c356cd8d4c4fe8d51d010fe2488c1376ddf2d9",
+      "redXRange": [
+        928,
+        990
+      ],
+      "redYRange": [
+        525,
+        549
+      ],
+      "redBracketOuterWidthPx": 63
+    }
+  ]
+}

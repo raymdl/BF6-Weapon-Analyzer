@@ -100,9 +100,12 @@ Current-build Control captures confirm tier 3 on all five
 The handling generator keeps these recoil fields when it regenerates.
 Run `python scripts/frosty-attachment-handling.py --root <Frosty-export-root>`;
 `--check` compares without writing and `--review` writes evidence only. The current
-conversion generates 5,493 fields and three source base indices. All 1,488 handling
+conversion generates 5,489 fields and three source base indices. All 1,487 handling
 selections have source identities, with no deferred fields. Two belt-box description
-mismatches are retained as possible game bugs.
+mismatches are retained as possible game bugs; the
+[description mismatch list](ATTACHMENT_BUGS.md) tracks all reviewed
+text and data conflicts. AK-205 Underslung Mount is not offered: its only source is
+an ability branch without an attachment record, and the game menu omits it.
 M60/PW7A2 bases and magazine modifiers are converted together so their calculated
 ADS times and movement speeds stay unchanged. The generator stops if a previously generated field loses its
 source mapping. The linked review identifies these exceptions and the corrected
@@ -295,14 +298,14 @@ unknown. Shared-slot selections use the same assumption detection and effect
 resolver as separate slots. Combo lights apply their source hipfire factors.
 See [model limitations](MODEL_LIMITATIONS.md) for unresolved native behavior.
 
-The current `*` markers remain on eight recovery/duration muzzle entries and the
-VSSM Folding Stock because their simulated operation is still qualified, even
-though the numeric inputs are from Frosty. Heavy, Heavy Extended, Cryogenic,
+The eight recovery/duration muzzle entries no longer carry `*` markers; their
+numeric inputs are from Frosty, while simulation limits remain documented in the
+recoil model. VSSM Folding Stock retains its marker. Heavy, Heavy Extended, Cryogenic,
 Flashlight, Hipfire Taclight, Combo Red/Green, Linear Comp and the three burst
 entries no longer carry that marker. In-game tooltip descriptions are a separate
 display layer and do not add or change attachment effects. See the
 [description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping) for the
-15 approved panel-text exceptions and remaining missing descriptions.
+18 approved panel-text exceptions and remaining missing descriptions.
 
 
 ## Approved source operand additions
@@ -314,6 +317,10 @@ unchanged and remains a model assumption.
 
 Mini Scout Tungsten applies the combined -1 and -6 source recoil amount steps
 (-7 total) in ADS and hip. Other sniper Tungsten values are unchanged.
-PSR/SV-98 Slim Angled and KS18K Slim Angled add -1 to the moving-ADS spread
-row index. These are per-weapon effects. The operator approved these source
-composition choices; they are not new measurements of native behavior.
+PSR, SV-98, L115, Mini Scout and Interdictor Slim Angled, and KS18K Slim Angled,
+add -1 to the moving-ADS spread row index. These are per-weapon effects. The
+operator approved these source composition choices. On the five sniper rifles the
+Slim Angled action selects the Full Angled `FastBOLT01_W05` package, which carries
+the dispersion binding. Interdictor and Mini Scout HUD captures and matching Mobility
+panels support the penalty ([captures](../reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json)).
+M2010 ESR Slim Angled selects `FastBOLT02_W15` and has no penalty.

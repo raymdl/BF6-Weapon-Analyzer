@@ -84,14 +84,6 @@
       "attachment": "5_fast",
       "attachmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_MAG_Compact3.xml",
       "basis": "Identity resolved in frosty-magazine-identity-review-2026-09-07.json using capture names, point costs and speedloader variant operands."
-    },
-    {
-      "weapon": "ak205",
-      "internalId": "AK205",
-      "slot": "grip",
-      "attachment": "underslung_mount",
-      "abilityProgression": "Common/Hardware/Weapons/Carbine/AK205/U_PRG_AK205_BTM_UGLMount",
-      "basis": "Root-listed ability progression; standalone attachment XML is absent. No point cost or attachment record is fabricated."
     }
   ],
   "excludedSourceAttachments": [

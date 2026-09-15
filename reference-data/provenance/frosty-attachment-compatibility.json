@@ -5,11 +5,11 @@
   "scope": "Only reviewed site identities; unavailable secondary sights remain in evidence. No native enum semantics inferred.",
   "identitySources": {
     "frosty-attachment-full-pass-2026-09-06.json": "7da992af3513c83a53648325bbad2cb555e8c0ed079d46f7b2326f5a2ad37980",
-    "frosty-handling-mapping-followup.json": "9835f7a20e0aff85915531887504e3e2861ca62e5b6424e4674c891931e4175a",
+    "frosty-handling-mapping-followup.json": "823879d7eafafd20a789d652a568d2db34133e23911a9eb262d74ce09cb79d3d",
     "frosty-attachment-followup-2026-09-06.json": "69b154d78298b369a0c7e21448cf132015a2b232b1e6a5710a1bb0e89b63e789",
     "frosty-barrel-ads-2026-09-13.json": "3d70508699dc150633b17ac095510c07689a8bee5199327835c1ceb794accd2c",
-    "frosty-attachment-handling-generated.json": "d86039b88f5cc376989315e8aea88e85f5fbaf62a1a3b8f31ec12d5e7a34f4e0",
-    "frosty-attachment-identity-followup-2026-09-13.json": "066176864d300d8bf120a1284c79229a747ccc68eebf965afec7a9b5f9376801",
+    "frosty-attachment-handling-generated.json": "325da504f4dcdd9c24cec6ec5bd8ee8e0857f5ecde51438d0c86535f1c51e213",
+    "frosty-attachment-identity-followup-2026-09-13.json": "889995ae3b64ca1e0d9cf4b6cdd98ea9eb4030f4f9b80a70654ca63ed70af963",
     "frosty-weapon-identities.json": "eb08a671dff2756dc8d65ae9b15927e30a46c983e6c55d51cf02f0d9be7a7711"
   },
   "sourceFiles": {
@@ -8472,15 +8472,6 @@
       "sourceAttachment": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_BTM_KAC_Vertical_Grip.xml",
       "abilityXml": "Common/Hardware/Weapons/Carbine/AK205/AK205_Ability.xml",
       "branchGuid": "7b481a04-96da-4da0-9811-1ec0ec90cdfa",
-      "physicalSlot": "Common/Hardware/Weapons/_SlotCategories/SC_BottomRail.xml"
-    },
-    {
-      "weapon": "ak205",
-      "slot": "grip",
-      "attachment": "underslung_mount",
-      "sourceAttachment": "Common/Hardware/Weapons/Carbine/AK205/AK205_Ability.xml#66e02904-e09c-4635-9a42-8b8a54526c41",
-      "abilityXml": "Common/Hardware/Weapons/Carbine/AK205/AK205_Ability.xml",
-      "branchGuid": "66e02904-e09c-4635-9a42-8b8a54526c41",
       "physicalSlot": "Common/Hardware/Weapons/_SlotCategories/SC_BottomRail.xml"
     },
     {
@@ -35598,7 +35589,7 @@
   ],
   "unresolvedSlots": [],
   "counts": {
-    "slotChoices": 1392,
+    "slotChoices": 1391,
     "dependencyEntries": 285,
     "generatedRules": 22,
     "weaponsWithDependencies": 4

@@ -692,7 +692,8 @@ test('Mini Scout Tungsten and selected Slim Angled grips apply the approved sour
   const result = build(w, { ammo: 'penetration', muzzle: 'none', grip: 'none' });
   assert.equal(result.recoil.hip.amountExp, w.recoil.hip.amountExp - 7);
   assert.equal(result.recoilV, Math.round(w.recoilV * balance.RECOIL_MULT[w.id] ** -7 * 1000) / 1000);
-  for (const [id, grip] of [['psr', 'slim_angled_sr'], ['sv98', 'slim_angled_sr'], ['ks18k', 'slim_angled']]) {
+  for (const [id, grip] of [['psr', 'slim_angled_sr'], ['sv98', 'slim_angled_sr'], ['ks18k', 'slim_angled'],
+    ['l115', 'slim_angled_sr'], ['miniscout', 'slim_angled_sr'], ['interdictor', 'slim_angled_interdictor']]) {
     const w = weapon(id);
     const base = build(w, { grip: 'none', laser: 'none' });
     const result = build(w, { grip, laser: 'none' });

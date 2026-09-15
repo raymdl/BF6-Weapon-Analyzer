@@ -2,18 +2,18 @@
   "source": "Reviewed Frosty hardware identities and localized UI metadata, with explicitly approved per-choice game-panel text where English strings are missing",
   "coverage": {
     "aamAssets": 64,
-    "nonSightChoices": 3012,
-    "mappedSelections": 2967,
+    "nonSightChoices": 3011,
+    "mappedSelections": 2966,
     "identityStatuses": {
-      "source-linked": 3012
+      "source-linked": 3011
     },
     "descriptionStatuses": {
       "english-description-missing-or-conflicting": 45,
-      "linked": 2952,
-      "screenshot-verified": 15
+      "linked": 2948,
+      "screenshot-verified": 18
     },
     "matchMethods": {
-      "aam-full-name": 1981,
+      "aam-full-name": 1980,
       "aam-without-rail-side": 22,
       "aam-without-slot": 565,
       "reviewed-source-alias-with-text-difference": 2,
@@ -231,7 +231,6 @@
     "7FEE407B": "Provides moderate improvement to hip-fire accuracy and minor improvement to aim down sights (ADS) accuracy while moving, but is visible to enemy soldiers. Effects only active when laser is turned on.",
     "807009FF": "Allows weapon to be mounted while prone and more effectively on the edges of cover, greatly reducing recoil.",
     "80E096AF": "Basic sights without any scope glint.",
-    "823E786F": "[REDACTED]",
     "824F3268": "Long barrel that increases projectile velocity.",
     "82ACA282": "Repurposed support weapon barrel that improves firing accuracy during sustained fire and increases projectile velocity at the cost of weapon draw speed.",
     "832821E8": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
@@ -440,6 +439,7 @@
     "FFE5AF29": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFE5AF2A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFE5AF2B": "Extended magazine with increased capacity at the cost of weapon draw speed.",
+    "screenshot:ak4d:mag:20_fast": "Standard magazine with mag pull for faster reloads.",
     "screenshot:b36a4:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:brod3:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:db12:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
@@ -454,6 +454,8 @@
     "screenshot:m433:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:m45a1:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:rpkm:mag:30_fast": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "screenshot:scw10:barrel:extended": "Long barrel that increases projectile velocity.",
+    "screenshot:sv98:muzzle:light_supp": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy.",
     "screenshot:vcr2:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on."
   },
   "byWeapon": {
@@ -777,7 +779,7 @@
         "15_rnd": "67CFDCC6",
         "15_fast": "61CB75B8",
         "20_rnd": "F8D66B75",
-        "20_fast": "F8D66B75",
+        "20_fast": "screenshot:ak4d:mag:20_fast",
         "30_rnd": "FFE5AF29"
       },
       "ergo": {
@@ -1477,8 +1479,7 @@
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
         "slim_angled": "3F37F281",
-        "full_angled": "2B79C762",
-        "underslung_mount": "823E786F"
+        "full_angled": "2B79C762"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2292,7 +2293,7 @@
       },
       "barrel": {
         "basic": "49D9F464",
-        "extended": "F04378FF",
+        "extended": "screenshot:scw10:barrel:extended",
         "light": "DDBEA31A"
       },
       "laser": {
@@ -3726,7 +3727,7 @@
         "thread_prot": "5E804CC7",
         "comp_brake": "AD3157E3",
         "flash_comp": "A2809736",
-        "light_supp": "B2A9F30C",
+        "light_supp": "screenshot:sv98:muzzle:light_supp",
         "hybrid_supp_l": "0A2C0CC5",
         "hybrid_supp_s": "07D6E424",
         "hybrid_supp_k": "0581BB83"
