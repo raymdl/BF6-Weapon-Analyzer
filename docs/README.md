@@ -21,7 +21,7 @@ dependencies from Frosty. See the [user controls](USER_GUIDE.md#build-and-compar
 and [curated source findings](../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies).
 
 The [description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
-documents attachment tooltips and the 15 approved panel-text exceptions. The
+documents attachment tooltips and the 18 approved panel-text exceptions. The
 [unmatched-record inventory](working/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)
 groups extra Frosty records by what is known about their menu identity.
 
@@ -45,6 +45,7 @@ any remaining questions into an active handoff, and archive the completed record
 | [Data reference](DATA_REFERENCE.md) | Developers/data maintainers: JSON contracts, field meanings, units, all live array families. |
 | [Stat ladders](STAT_LADDERS.md) | Model maintainers: complete finite tables, geometric factors, index signs, bounds, examples. |
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
+| [Attachment bugs and mismatches](ATTACHMENT_BUGS.md) | All readers: attachment game data bugs, description errors and fixed site data errors, with evidence and status. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
 | [Recoil and spread](RECOIL_SPREAD_MODEL.md) | Model readers: per-shot equations, recovery, sampling, calibration, visual interpretation. |
 | [Model limitations](MODEL_LIMITATIONS.md) | All readers: retained-but-unused fields, estimates, unresolved composition and validation gaps. |

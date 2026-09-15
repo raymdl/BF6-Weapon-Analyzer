@@ -1169,9 +1169,14 @@ function renderBTK() {
   };
   const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
   let html = '<table class="btk-tbl"><thead><tr><th>Range</th>';
-  if (w1) html += `<th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
-  if (w2) html += `<th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
+  if (w1) html += `<th style="color:var(--accent)">DMG</th><th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
+  if (w2) html += `<th style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
   html += '</tr></thead><tbody>';
+  // Per-shot body damage, matching the damage chart tooltip (pellet loads show the full shot).
+  const dmgTxt = (w, r) => {
+    const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
+    return Number.isFinite(d) ? d.toFixed(1) : '—';
+  };
   // Each cell shows chest–limb ranges when the limb multiplier changes the outcome.
   const cells = (w, r) => {
     const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
@@ -1185,12 +1190,47 @@ function renderBTK() {
   let prev1 = null, prev2 = null;
   ranges.forEach(r => {
     html += `<tr><td class="rng">${r}m</td>`;
-    if (w1) { const { bTxt, tTxt } = cells(w1, r); const chg = prev1 !== null && bTxt !== prev1; html += `<td class="bv${chg ? ' bchg' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev1 = bTxt; }
-    if (w2) { const { bTxt, tTxt } = cells(w2, r); const chg = prev2 !== null && bTxt !== prev2; html += `<td class="bv${chg ? ' bchg2' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev2 = bTxt; }
+    if (w1) { const { bTxt, tTxt } = cells(w1, r); const chg = prev1 !== null && bTxt !== prev1; html += `<td class="tv">${dmgTxt(w1, r)}</td><td class="bv${chg ? ' bchg' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev1 = bTxt; }
+    if (w2) { const { bTxt, tTxt } = cells(w2, r); const chg = prev2 !== null && bTxt !== prev2; html += `<td class="tv">${dmgTxt(w2, r)}</td><td class="bv${chg ? ' bchg2' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev2 = bTxt; }
     html += '</tr>';
   });
   html += '</tbody></table>';
   document.getElementById('btkArea').innerHTML = html;
+  spaceBtkColumns();
+}
+
+// Give every BTK column its longest value plus an equal share of the spare width,
+// so the gap after each column's widest text is the same. CSS table layout shares
+// spare width by content size instead, and calc() column widths collapse to equal widths.
+let btkResizeObserver = null;
+let btkSpacedWidth = null;
+function spaceBtkColumns() {
+  const area = document.getElementById('btkArea');
+  const table = area.querySelector('table');
+  if (!table) return;
+  if (!btkResizeObserver && typeof ResizeObserver !== 'undefined') {
+    btkResizeObserver = new ResizeObserver(() => {
+      if (area.clientWidth !== btkSpacedWidth) spaceBtkColumns();
+    });
+    btkResizeObserver.observe(area);
+  }
+  table.querySelector('colgroup')?.remove();
+  table.style.tableLayout = '';
+  table.style.width = 'max-content';
+  const headers = [...table.querySelectorAll('thead th')];
+  const natural = headers.map(th => th.getBoundingClientRect().width);
+  table.style.width = '';
+  btkSpacedWidth = area.clientWidth;
+  const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
+  if (!headers.length || spare <= 0) return; // Narrow panel: keep the automatic layout.
+  const colgroup = document.createElement('colgroup');
+  natural.forEach(w => {
+    const col = document.createElement('col');
+    col.style.width = `${w + spare / headers.length}px`;
+    colgroup.appendChild(col);
+  });
+  table.prepend(colgroup);
+  table.style.tableLayout = 'fixed';
 }
 
 // ── RECOIL / SPREAD ────────────────────────────────────────────────────────────
@@ -2036,11 +2076,9 @@ function renderAttachmentStats(loadouts) {
     }
     const regenDelayDelta = (cur._healthRegenDelayS ?? 0) - (base._healthRegenDelayS ?? 0);
     if (regenDelayDelta !== 0) {
-      // Shown from the victim's side: frangible pushes the delay 5s → 9s, which
-      // reads as the enemy losing 4s of regeneration.
       const tip = escAttr(`Delay before a hit enemy begins regenerating health: ${cur._healthRegenDelayS}s, compared with ${base._healthRegenDelayS}s for the default ammo.`);
       const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayAddS'], selectedAttachments) ? '*' : ''}`;
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:var(--red)">${signed(-regenDelayDelta, 's', 0)}</div></div>`);
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${regenDelayDelta > 0 ? 'var(--green)' : 'var(--red)'}">${signed(regenDelayDelta, 's', 0)}</div></div>`);
     }
     if (cur._laserVisible != null) {
       const visible = cur._laserVisible;

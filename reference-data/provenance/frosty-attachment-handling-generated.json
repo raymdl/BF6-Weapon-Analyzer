@@ -47,7 +47,7 @@
     }
   ],
   "additionalIdentities": "frosty-handling-mapping-followup.json",
-  "additionalIdentitiesSha256": "9835f7a20e0aff85915531887504e3e2861ca62e5b6424e4674c891931e4175a",
+  "additionalIdentitiesSha256": "823879d7eafafd20a789d652a568d2db34133e23911a9eb262d74ce09cb79d3d",
   "excludedLegacyAndTestReferences": [
     {
       "weapon": "6P67",
@@ -623,35 +623,6 @@
                 "path": "Field_9540bd8e"
               }
             },
-            "sprintRecoveryTierShift": {},
-            "deployTimeTierShift": {}
-          }
-        }
-      ],
-      "changes": {}
-    },
-    {
-      "weapon": "ak205",
-      "slot": "grip",
-      "attachment": "underslung_mount",
-      "sourceAttachments": [
-        "Common/Hardware/Weapons/Carbine/AK205/AK205_Ability.xml#66e02904-e09c-4635-9a42-8b8a54526c41"
-      ],
-      "fields": {
-        "adsTimeTierMod": 0,
-        "adsMoveSpeedTierShift": 0,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0
-      },
-      "deferred": {},
-      "branches": [
-        {
-          "attachmentXml": "Common/Hardware/Weapons/Carbine/AK205/AK205_Ability.xml#66e02904-e09c-4635-9a42-8b8a54526c41",
-          "guid": "66e02904-e09c-4635-9a42-8b8a54526c41",
-          "operands": {
-            "adsAnimation": {},
-            "adsFov": {},
-            "adsMoveSpeedTierShift": {},
             "sprintRecoveryTierShift": {},
             "deployTimeTierShift": {}
           }
@@ -55819,7 +55790,6 @@
     "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_RGT_RaidXe.xml": "b64b6de4328a605512aecedf81e56c9b584c935450e118a759a38b8087ab9993",
     "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_RGT_RightRail.xml": "580b3318ac85134f488a5488b8ac59556e69fff4c1753da643675aca87e194b6",
     "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_TOP_TopRail.xml": "ecb4862bc3b669b4fc85561efb55e7bef5d2b969627d4d4f680565c8019545b8",
-    "Common/Hardware/Weapons/Carbine/AK205/U_PRG_AK205_BTM_UGLMount.xml": "1b1a4bd0d41a4ed031649bf364617347f81b40f417e67cf7fa050f0378fff5ca",
     "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/BallisticTip/U_WPM_AMO_BallisticTip_W20.xml": "48430b5da8f1c0c0f5873c05b67236a5c90960ceb12454cc9b5950872cd4b6ab",
     "Common/Hardware/Weapons/_WeaponModifiers/HeadShotDamage/WME_Protection_P20.xml": "f9916fd2f7b8c413871d2195cdb86c15cfea3c79781632019c406bcbf71bba38",
     "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_55_BRL_P10.xml": "4ef6c7ee39b937ee4f0c83dfc168a278a3244cbe31575678e900ee56a6ee7d17",
@@ -59442,9 +59412,9 @@
     "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "2619b9b75cc93bb55882da680a275ab816b641cdc986a31abfa60bd623e44b51"
   },
   "summary": {
-    "selections": 1488,
-    "mapped": 1488,
-    "generatedFields": 5493,
+    "selections": 1487,
+    "mapped": 1487,
+    "generatedFields": 5489,
     "generatedBaseIndices": 3,
     "changedFields": 0,
     "deferredFields": 0,

@@ -49,10 +49,11 @@ attachments when a prerequisite changes, including PP-19 grips with the 53-round
 magazine. Existing links are normalized to these rules.
 The [attachment guide](docs/ATTACHMENT_MODEL.md) covers barrel ADS timing,
 sniper brake steps, Linear Comp/burst recoil and the belt-box description
-mismatches. Source-backed modifiers do not establish native simulation formulas.
+mismatches. The [description mismatch list](docs/ATTACHMENT_BUGS.md)
+records reviewed text and data conflicts. Source-backed modifiers do not establish native simulation formulas.
 
-Attachment tooltips cover 2,967 non-optic selections using Frosty UI descriptions
-and 15 approved game-panel transcriptions, plus Iron Sights on all 63 weapons.
+Attachment tooltips cover 2,966 non-optic selections using Frosty UI descriptions
+and 18 approved game-panel transcriptions, plus Iron Sights on all 63 weapons.
 The remaining 45 non-optic descriptions are
 deferred. See the [description audit](docs/working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
 for the exact scope and source boundaries.

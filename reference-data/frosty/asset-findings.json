@@ -73,7 +73,15 @@
     },
     "attachment-compatibility": {
       "path": "reference-data/provenance/frosty-attachment-compatibility.json",
-      "reportSha256": "47d1a36e1ca6882137f4f0c20b33cde1a162904249d80fdc0c05adbc255f79f1"
+      "reportSha256": "6b603b164bea75b0bfbd22f9c1d6a74c10bba796ddd2f7de6c3cf48d4f788389"
+    },
+    "description-mismatches": {
+      "path": "docs/ATTACHMENT_BUGS.md",
+      "reportSha256": "a8eb5a0574ce1b2e21a6c8ae80a1d745db68ce35d095ab86575b9881f31820dc"
+    },
+    "sniper-slim-captures": {
+      "path": "reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json",
+      "reportSha256": "6747f100c8d33c7f3a10ce132960a1ba1f6e1b5143f5cce8ac367263107b005c"
     }
   },
   "assets": {
@@ -272,6 +280,33 @@
             {
               "source": "killswitch",
               "pointer": "/rows"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "dbbf760418facbe6a3161766ad3122a6c5baca1090e738c9d89231b9a8e60b19"
+            }
+          ],
+          "revisitWhen": [
+            "Registry or consuming ability branch changes.",
+            "Live override or activation evidence becomes available."
+          ]
+        },
+        {
+          "question": "Do exported kill-switch defaults explain the sniper Slim Angled moving-ADS penalty differences?",
+          "result": "useful",
+          "conclusion": "No. The U_PRG_*_MagpulAFG*BOLT Slim and Full Angled branches on DesertTechHTI, L115A3, M2010ESR, MRAD, MiniFix and SV98M all reference registry defaults of False. The difference is the selector packages in each ability action. Live overrides were not evaluated.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
             }
           ],
           "assetHashesAtInspection": [
@@ -637,7 +672,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1345"
+              "pointer": "/physicalSlots/1344"
             },
             {
               "source": "attachment-compatibility",
@@ -839,6 +874,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "What does the Fast magazine package change?",
+          "result": "useful",
+          "conclusion": "The MAG_Fast action selects U_WPM_MAG_Fast_W10, which has only WME_ReloadSpeedRegular_P10 (Field_348b8cd1 = 1.13). The MAG_Regular action selects U_WPM_MAG_Std_W05 (WME_Draw_Deploy_P05 and WME_Draw_Sprint_P05, +1). AK4D 20 Fast uses this source. Its site tooltip was linked to the Regular text through ad_g3a4_mag_020fast; the live panel shows \"Standard magazine with mag pull for faster reloads.\" and the site now uses the reviewed panel text.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "44bfe8ef300cd95c653c82dfff229dcc792ec1da14562036e24e19a2aecd3928"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -1342,7 +1404,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1150"
+              "pointer": "/physicalSlots/1149"
             },
             {
               "source": "attachment-compatibility",
@@ -1359,6 +1421,37 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Which modifier packages do the Slim Angled and Full Angled actions select, and which carries the moving-ADS spread penalty?",
+          "result": "useful",
+          "conclusion": "Full Angled (MagpulAFG2 branch) selects U_WPM_BTM_FastBOLT01_W05: WB ADS time +1, draw deploy/sprint and WME_DynamicPivot_M10; the weapon GS binds GID_ADSTime_BTM_P10 and GDM_Array_ADSMoveDispersion_BTM_M10 (index 0xffffffff = -1), which is the moving-ADS penalty. U_WPM_BTM_FastBOLT02_W15 has the same ADS and draw effects and only a GID_ADSTime_BTM_P10 binding. Slim Angled (MagpulAFG branch) selects W05 + W15. DesertTechHTI_WB has no W15 WB modifier, so W05 supplies the effects. Penalty present. Slim Angled cost 15 and Full Angled cost 5 come only from Attachment Field_6ee865a5; the package does not set cost. Slim and Full Angled branch killswitch defaults are False. Operator HUD captures show Slim Angled bracket width equal to Full Angled. Site applies -1 moving-ADS spread where the penalty is present (14 SEP 2026). Native stacking of the second GID_ADSTime_BTM_P10 binding is not decoded; panels show one ADS tier.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            },
+            {
+              "source": "sniper-slim-captures",
+              "pointer": "/results"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "3670f0b945fb1b97563e2cc4cc7e5a8f14e3db97985870ac55aaafe26bffcf1b"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -1453,7 +1546,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1166"
+              "pointer": "/physicalSlots/1165"
             },
             {
               "source": "attachment-compatibility",
@@ -1470,6 +1563,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Which modifier packages do the Slim Angled and Full Angled actions select, and which carries the moving-ADS spread penalty?",
+          "result": "useful",
+          "conclusion": "Full Angled (MagpulAFG2 branch) selects U_WPM_BTM_FastBOLT01_W05: WB ADS time +1, draw deploy/sprint and WME_DynamicPivot_M10; the weapon GS binds GID_ADSTime_BTM_P10 and GDM_Array_ADSMoveDispersion_BTM_M10 (index 0xffffffff = -1), which is the moving-ADS penalty. U_WPM_BTM_FastBOLT02_W15 has the same ADS and draw effects and only a GID_ADSTime_BTM_P10 binding. Slim Angled (MagpulAFG branch) selects W05 + W15. L115A3_WB has no W15 WB modifier, so W05 supplies the effects. Penalty present; operator stat panels match Full Angled, no HUD capture. Slim Angled cost 15 and Full Angled cost 5 come only from Attachment Field_6ee865a5; the package does not set cost. Slim and Full Angled branch killswitch defaults are False. Site applies -1 moving-ADS spread where the penalty is present (14 SEP 2026). Native stacking of the second GID_ADSTime_BTM_P10 binding is not decoded; panels show one ADS tier.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "1e11ca3a5bbaf30c95cc86e730669bf2e5d16b4ece1bb18e9a506b057d2d2882"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -1527,7 +1647,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1086"
+              "pointer": "/physicalSlots/1085"
             },
             {
               "source": "attachment-compatibility",
@@ -1544,6 +1664,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Which modifier packages do the Slim Angled and Full Angled actions select, and which carries the moving-ADS spread penalty?",
+          "result": "useful",
+          "conclusion": "Full Angled (MagpulAFG2 branch) selects U_WPM_BTM_FastBOLT01_W05: WB ADS time +1, draw deploy/sprint and WME_DynamicPivot_M10; the weapon GS binds GID_ADSTime_BTM_P10 and GDM_Array_ADSMoveDispersion_BTM_M10 (index 0xffffffff = -1), which is the moving-ADS penalty. U_WPM_BTM_FastBOLT02_W15 has the same ADS and draw effects and only a GID_ADSTime_BTM_P10 binding. Slim Angled (MagpulAFG branch) selects W15 only. M2010ESR_WB lists the W15 WB modifier. No penalty; operator Mobility panels show 52 (Slim) vs 48 (Full), one moving-ADS index step. Slim Angled cost 15 and Full Angled cost 5 come only from Attachment Field_6ee865a5; the package does not set cost. Slim and Full Angled branch killswitch defaults are False. Site applies -1 moving-ADS spread where the penalty is present (14 SEP 2026). Native stacking of the second GID_ADSTime_BTM_P10 binding is not decoded; panels show one ADS tier.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "5b5768070f81c350731ac2325f1d3a11ed917fef29db5facb08f32f4196dfdd0"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -1601,7 +1748,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1134"
+              "pointer": "/physicalSlots/1133"
             },
             {
               "source": "attachment-compatibility",
@@ -1618,6 +1765,37 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Which modifier packages do the Slim Angled and Full Angled actions select, and which carries the moving-ADS spread penalty?",
+          "result": "useful",
+          "conclusion": "Full Angled (MagpulAFG2 branch) selects U_WPM_BTM_FastBOLT01_W05: WB ADS time +1, draw deploy/sprint and WME_DynamicPivot_M10; the weapon GS binds GID_ADSTime_BTM_P10 and GDM_Array_ADSMoveDispersion_BTM_M10 (index 0xffffffff = -1), which is the moving-ADS penalty. U_WPM_BTM_FastBOLT02_W15 has the same ADS and draw effects and only a GID_ADSTime_BTM_P10 binding. Slim Angled (MagpulAFG branch) selects W05 + W15. MiniFix_WB has no W15 WB modifier, so W05 supplies the effects. Penalty present. Slim Angled cost 15 and Full Angled cost 5 come only from Attachment Field_6ee865a5; the package does not set cost. Slim and Full Angled branch killswitch defaults are False. Operator HUD captures show Slim Angled bracket width equal to Full Angled. Site applies -1 moving-ADS spread where the penalty is present (14 SEP 2026). Native stacking of the second GID_ADSTime_BTM_P10 binding is not decoded; panels show one ADS tier.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            },
+            {
+              "source": "sniper-slim-captures",
+              "pointer": "/results"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "a046fce8e8b7c33c5bb7d1a30cb4a868db6196c51dbad8c02b4636175292b097"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -1675,7 +1853,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1118"
+              "pointer": "/physicalSlots/1117"
             },
             {
               "source": "attachment-compatibility",
@@ -1692,6 +1870,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Which modifier packages do the Slim Angled and Full Angled actions select, and which carries the moving-ADS spread penalty?",
+          "result": "useful",
+          "conclusion": "Full Angled (MagpulAFG2 branch) selects U_WPM_BTM_FastBOLT01_W05: WB ADS time +1, draw deploy/sprint and WME_DynamicPivot_M10; the weapon GS binds GID_ADSTime_BTM_P10 and GDM_Array_ADSMoveDispersion_BTM_M10 (index 0xffffffff = -1), which is the moving-ADS penalty. U_WPM_BTM_FastBOLT02_W15 has the same ADS and draw effects and only a GID_ADSTime_BTM_P10 binding. Slim Angled (MagpulAFG branch) selects W05 only. Penalty present. Slim Angled cost 15 and Full Angled cost 5 come only from Attachment Field_6ee865a5; the package does not set cost. Slim and Full Angled branch killswitch defaults are False. Site applies -1 moving-ADS spread where the penalty is present (14 SEP 2026). Native stacking of the second GID_ADSTime_BTM_P10 binding is not decoded; panels show one ADS tier.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "f951bae2ae662ee1b403bf4e24c3095f00349d34e0d662848a14caa7b566fc42"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -1749,7 +1954,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1102"
+              "pointer": "/physicalSlots/1101"
             },
             {
               "source": "attachment-compatibility",
@@ -1767,6 +1972,33 @@
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
           ]
+        },
+        {
+          "question": "Which modifier packages do the Slim Angled and Full Angled actions select, and which carries the moving-ADS spread penalty?",
+          "result": "useful",
+          "conclusion": "Full Angled (MagpulAFG2 branch) selects U_WPM_BTM_FastBOLT01_W05: WB ADS time +1, draw deploy/sprint and WME_DynamicPivot_M10; the weapon GS binds GID_ADSTime_BTM_P10 and GDM_Array_ADSMoveDispersion_BTM_M10 (index 0xffffffff = -1), which is the moving-ADS penalty. U_WPM_BTM_FastBOLT02_W15 has the same ADS and draw effects and only a GID_ADSTime_BTM_P10 binding. Slim Angled (MagpulAFG branch) selects W05 only. Penalty present. Slim Angled cost 15 and Full Angled cost 5 come only from Attachment Field_6ee865a5; the package does not set cost. Slim and Full Angled branch killswitch defaults are False. Site applies -1 moving-ADS spread where the penalty is present (14 SEP 2026). Native stacking of the second GID_ADSTime_BTM_P10 binding is not decoded; panels show one ADS tier.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "a71349e6bc27963b977fca03426af063c07e90935afc904a25bd7d31f73086b7"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
+          ]
         }
       ]
     },
@@ -1776,7 +2008,7 @@
         {
           "question": "Which physical slots do the currently offered grip, laser and light choices use?",
           "result": "useful",
-          "conclusion": "ak205: 23 offered mount choices mapped. grip: SC_BottomRail; laser: SC_RightRail; light: SC_LeftRail. Follow root Field_d7605aab to branches; Field_f86e0433 identifies the progression and Field_64ef48eb identifies the physical slot. Categories pointing to the same slot share one selection. Only existing reviewed site choices are mapped; branch presence alone does not prove live availability.",
+          "conclusion": "ak205: 22 offered mount choices mapped. grip: SC_BottomRail; laser: SC_RightRail; light: SC_LeftRail. Follow root Field_d7605aab to branches; Field_f86e0433 identifies the progression and Field_64ef48eb identifies the physical slot. Categories pointing to the same slot share one selection. Only existing reviewed site choices are mapped; branch presence alone does not prove live availability.",
           "inspectionDate": "2026-09-14",
           "buildInspected": {
             "label": "1.4.2.5 export directory",
@@ -1803,6 +2035,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Is the root-listed U_PRG_AK205_BTM_UGLMount branch an offered grip choice?",
+          "result": "useful",
+          "conclusion": "No. The branch has no Attachment_* record and no bound modifier selectors. Its AAM record (AK205 - BTM - UGL Mount) points to ad_bottomrail_empty, whose English text is [REDACTED] (823E786F). Operator in-game review and the AK-205 grip captures (26-39) show no Underslung Mount. The site removed it from AK-205 availability on 14 SEP 2026; the other eight weapons keep explicit UGL_Mount attachment records. Branch presence alone does not establish availability.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "196b3f79bdddfa3cf7a0524440823c922992e3e35a14bf24a1bc3fbaf5bcdcc2"
+            }
+          ],
+          "revisitWhen": [
+            "An AK205 UGL Mount attachment record or bound selector appears.",
+            "The game menu offers the choice."
           ]
         }
       ]
@@ -1860,7 +2119,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1319"
+              "pointer": "/physicalSlots/1318"
             },
             {
               "source": "attachment-compatibility",
@@ -1877,6 +2136,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Which packages does the Zenitco RK-2 action select, and does its recoil binding stack?",
+          "result": "useful",
+          "conclusion": "The ZenitcoRK2 action selects U_WPM_BTM_Vertical01_W20 and U_WPM_BTM_Vertical03_W20; ZenitcoRK1 selects Vertical01_W20 only. Both source attachments map to site Alloy Vertical. Vertical01_W20 has an empty WB effect list; recoil comes from GS GRM_Recoil_BTM_P20. GS_BREN3 binds both selectors to GRM_Recoil_BTM_P20 (entries 7 and 11). The 13 SEP 2026 menu preview shows Alloy Vertical Control 40 (tier 2 predicts 40.45) and QD Grip Pod 43 (tier 3 predicts 43.1), so no stacking is observed. Which RK source the menu offers is not established.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "5ba35855c62f89dbf98fbafd4d05d91aa98db4ed9017d18a49abc8f1d6d24520"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -1971,7 +2257,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/349"
+              "pointer": "/physicalSlots/348"
             },
             {
               "source": "attachment-compatibility",
@@ -2119,7 +2405,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/377"
+              "pointer": "/physicalSlots/376"
             },
             {
               "source": "attachment-compatibility",
@@ -2193,7 +2479,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/399"
+              "pointer": "/physicalSlots/398"
             },
             {
               "source": "attachment-compatibility",
@@ -2267,7 +2553,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/447"
+              "pointer": "/physicalSlots/446"
             },
             {
               "source": "attachment-compatibility",
@@ -2341,7 +2627,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/425"
+              "pointer": "/physicalSlots/424"
             },
             {
               "source": "attachment-compatibility",
@@ -2452,7 +2738,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/976"
+              "pointer": "/physicalSlots/975"
             },
             {
               "source": "attachment-compatibility",
@@ -2563,7 +2849,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/948"
+              "pointer": "/physicalSlots/947"
             },
             {
               "source": "attachment-compatibility",
@@ -2637,7 +2923,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1059"
+              "pointer": "/physicalSlots/1058"
             },
             {
               "source": "attachment-compatibility",
@@ -2654,6 +2940,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Is GRT-CPS Burst Fire Enable offered, and what do its two selectors bind?",
+          "result": "useful",
+          "conclusion": "Not offered: attachment audit GRT-CPS ergonomics captures 57-58 show only None and Aftermarket Buffer, and the site offers only the Buffer. U_WPM_ERG_BurstFireActive has no WB modifier; GS_MSBSGROTCPS binds it to GRM_RecoilConversion_ERG_P10 and GRM_Recoil_ERG_P20, the recoil modifiers used by GRT-BC Burst Mode. BurstFireReplace_W10 supplies the fire-mode replacement. Source-only branch.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. Attachment audit menu captures are cited where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "49e42bd25fe4da48e7a31639275626881b0feeb87525b597ebcbca0fa6c25156"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "A later build offers the choice or binds the extra package."
           ]
         }
       ]
@@ -2711,7 +3024,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1004"
+              "pointer": "/physicalSlots/1003"
             },
             {
               "source": "attachment-compatibility",
@@ -2785,7 +3098,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1031"
+              "pointer": "/physicalSlots/1030"
             },
             {
               "source": "attachment-compatibility",
@@ -2859,7 +3172,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1369"
+              "pointer": "/physicalSlots/1368"
             },
             {
               "source": "attachment-compatibility",
@@ -2933,7 +3246,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/866"
+              "pointer": "/physicalSlots/865"
             },
             {
               "source": "attachment-compatibility",
@@ -3007,7 +3320,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/809"
+              "pointer": "/physicalSlots/808"
             },
             {
               "source": "attachment-compatibility",
@@ -3081,7 +3394,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/698"
+              "pointer": "/physicalSlots/697"
             },
             {
               "source": "attachment-compatibility",
@@ -3098,6 +3411,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Which packages does the Zenitco RK-2 action select, and does its recoil binding stack?",
+          "result": "useful",
+          "conclusion": "The ZenitcoRK2 action selects U_WPM_BTM_Vertical01_W20 and U_WPM_BTM_Vertical03_W20; ZenitcoRK1 selects Vertical01_W20 only. Both source attachments map to site Alloy Vertical. Vertical01_W20 has an empty WB effect list; recoil comes from GS GRM_Recoil_BTM_P20. GS_M27IAR has no binding for Vertical03_W20, so the second package has no source effect on this weapon.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "77a4a79bde2a9c5b2b0ce5be73a1e35ba86a6d9b1908a16a11eac87eba40557b"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -3155,7 +3495,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/727"
+              "pointer": "/physicalSlots/726"
             },
             {
               "source": "attachment-compatibility",
@@ -3229,7 +3569,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/783"
+              "pointer": "/physicalSlots/782"
             },
             {
               "source": "attachment-compatibility",
@@ -3303,7 +3643,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/893"
+              "pointer": "/physicalSlots/892"
             },
             {
               "source": "attachment-compatibility",
@@ -3320,6 +3660,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Do the special ammo actions select only their own ammo package?",
+          "result": "useful",
+          "conclusion": "Frangible, Hollow Point and Tungsten actions each select their own ammo package plus U_WPM_AMO_FMJ_W05 (WME_Penetration_P05, +1 penetration step). Control weapons Minimi and G22, and every other LMG and sidearm, select only the ammo package. The site collateral generator includes the extra step. Likely a leftover selector; not checked in game. MG5 Hollow Point and Frangible collateral 0.750001 (Minimi 0.666667); Tungsten index 6+3+1 = 10 clamps to 9 (1.00).",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "7c81189cbda5b930f20a84628e26754188dacf059b283f8ae64f936dc21ad600"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -3377,7 +3744,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/671"
+              "pointer": "/physicalSlots/670"
             },
             {
               "source": "attachment-compatibility",
@@ -3451,7 +3818,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/920"
+              "pointer": "/physicalSlots/919"
             },
             {
               "source": "attachment-compatibility",
@@ -3468,6 +3835,60 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Do the RPK-74M magazine actions select extra or unstated effect packages?",
+          "result": "useful",
+          "conclusion": "Compact1 and Compact2 also select RPKM magazine packages (U_WPM_MAG_030Cpt1_RPKM_W05, U_WPM_MAG_030Cpt2_RPKM_W10) that have no WB modifier on RPK74M; their effect is not established and was not traced further. Extended3 (95 Rnd) selects a package with WME_ADSTime_Anim_M10 and WME_ADSTime_FOV_M10 (slower ADS), which the in-game text omits; its draw penalty is relative to the Regular magazine draw bonus.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "b7e7cd2ac7c1dbc7dd80b16894d28cd6efc69955c6b632e137dab4e0e12de2a9"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
+          ]
+        },
+        {
+          "question": "Do the RPKM packages selected by the RPK-74M Compact1 and Compact2 actions have any source effect?",
+          "result": "useful",
+          "conclusion": "No. U_WPM_MAG_030Cpt1_RPKM_W05 and U_WPM_MAG_030Cpt2_RPKM_W10 have no WB modifier in RPK74M_WB and no GS binding in GS_RPK74M. The RPK74M packages supply all effects, and the site 30 Rnd and 30 Fast values match them. This supersedes the open part of the earlier RPK-74M magazine finding; that finding is retained.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. Attachment audit menu captures are cited where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "b7e7cd2ac7c1dbc7dd80b16894d28cd6efc69955c6b632e137dab4e0e12de2a9"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "A later build offers the choice or binds the extra package."
           ]
         }
       ]
@@ -3525,7 +3946,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/755"
+              "pointer": "/physicalSlots/754"
             },
             {
               "source": "attachment-compatibility",
@@ -3599,7 +4020,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/837"
+              "pointer": "/physicalSlots/836"
             },
             {
               "source": "attachment-compatibility",
@@ -3636,7 +4057,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1279"
+              "pointer": "/physicalSlots/1278"
             },
             {
               "source": "attachment-compatibility",
@@ -3673,7 +4094,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1293"
+              "pointer": "/physicalSlots/1292"
             },
             {
               "source": "attachment-compatibility",
@@ -3710,7 +4131,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1272"
+              "pointer": "/physicalSlots/1271"
             },
             {
               "source": "attachment-compatibility",
@@ -3747,7 +4168,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1286"
+              "pointer": "/physicalSlots/1285"
             },
             {
               "source": "attachment-compatibility",
@@ -3764,6 +4185,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Do the special ammo actions select only their own ammo package?",
+          "result": "useful",
+          "conclusion": "Frangible, Hollow Point and Tungsten actions each select their own ammo package plus U_WPM_AMO_FMJ_W05 (WME_Penetration_P05, +1 penetration step). Control weapons Minimi and G22, and every other LMG and sidearm, select only the ammo package. The site collateral generator includes the extra step. Likely a leftover selector; not checked in game. M45A1 Hollow Point and Frangible collateral 0.571429 (G22 0.500001); Tungsten 0.833334 instead of 0.75.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "98444d811d41d4d543c3bf954a5bf3f4db9dfe27c607eccdf0f82d0cf7b6d68f"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -3784,7 +4232,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1307"
+              "pointer": "/physicalSlots/1306"
             },
             {
               "source": "attachment-compatibility",
@@ -3821,7 +4269,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1300"
+              "pointer": "/physicalSlots/1299"
             },
             {
               "source": "attachment-compatibility",
@@ -3858,7 +4306,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1228"
+              "pointer": "/physicalSlots/1227"
             },
             {
               "source": "attachment-compatibility",
@@ -3932,7 +4380,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1182"
+              "pointer": "/physicalSlots/1181"
             },
             {
               "source": "attachment-compatibility",
@@ -4006,7 +4454,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1250"
+              "pointer": "/physicalSlots/1249"
             },
             {
               "source": "attachment-compatibility",
@@ -4117,7 +4565,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/1205"
+              "pointer": "/physicalSlots/1204"
             },
             {
               "source": "attachment-compatibility",
@@ -4154,7 +4602,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/585"
+              "pointer": "/physicalSlots/584"
             },
             {
               "source": "attachment-compatibility",
@@ -4171,6 +4619,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "b3c1f9f8af3bfa9c81fa20f261d2884c5e67dce51f32aca8278a229a822225a9"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -4228,7 +4703,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/606"
+              "pointer": "/physicalSlots/605"
             },
             {
               "source": "attachment-compatibility",
@@ -4339,7 +4814,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/492"
+              "pointer": "/physicalSlots/491"
             },
             {
               "source": "attachment-compatibility",
@@ -4356,6 +4831,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "be3a8c098eee3877f527c1839d64c4bdbe7c02dff9604d2ee8f6322fe0d58885"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -4413,7 +4915,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/513"
+              "pointer": "/physicalSlots/512"
             },
             {
               "source": "attachment-compatibility",
@@ -4430,6 +4932,60 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "fe2a421797597cca2e02e5f5a776b4661578d08cd390f8de752de5d350b98678"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
+          ]
+        },
+        {
+          "question": "What does the Fast magazine package change?",
+          "result": "useful",
+          "conclusion": "The MAG_Fast action selects U_WPM_MAG_Fast_W10, which has only WME_ReloadSpeedRegular_P10 (Field_348b8cd1 = 1.13). The MAG_Regular action selects U_WPM_MAG_Std_W05 (WME_Draw_Deploy_P05 and WME_Draw_Sprint_P05, +1). The PW7A2 30 Fast panel text \"Standard magazine that improves weapon draw speed.\" describes the Regular package; operator confirmed this in-game text error on 14 SEP 2026.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "fe2a421797597cca2e02e5f5a776b4661578d08cd390f8de752de5d350b98678"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -4487,7 +5043,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/471"
+              "pointer": "/physicalSlots/470"
             },
             {
               "source": "attachment-compatibility",
@@ -4504,6 +5060,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "15c2114dea54ba089a3b499010a9002b6250ced60d0ca818b12913d670eecfc4"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -4561,7 +5144,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/555"
+              "pointer": "/physicalSlots/554"
             },
             {
               "source": "attachment-compatibility",
@@ -4635,7 +5218,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/650"
+              "pointer": "/physicalSlots/649"
             },
             {
               "source": "attachment-compatibility",
@@ -4652,6 +5235,60 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "3d0caab96a335e23513fad0f2706d16fe3c85e115eb60db48c2060daa81aa1ed"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
+          ]
+        },
+        {
+          "question": "Does the PP-19 Compact1 action extra UMP40 package have an effect, and is the magazine offered?",
+          "result": "useful",
+          "conclusion": "No effect: U_WPM_MAG_025Cpt1_UMP40_W05 has no WB modifier and no GS binding on PP19. The 25 Rnd Compact1 magazine (ad_pp19_mag_26cpt1) is not offered: attachment audit PP-19 magazine captures 36-40 show only 30, 30 Fast, 35, 20 Fast and 53 Rnd, and the site does not offer it. Source-only branch.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. Attachment audit menu captures are cited where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "3d0caab96a335e23513fad0f2706d16fe3c85e115eb60db48c2060daa81aa1ed"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "A later build offers the choice or binds the extra package."
           ]
         }
       ]
@@ -4709,7 +5346,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/629"
+              "pointer": "/physicalSlots/628"
             },
             {
               "source": "attachment-compatibility",
@@ -4726,6 +5363,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "d346b12e8aa077b8d8ae84d52b3c8636525cdfb32e2020947cb05f48b2447400"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -4783,7 +5447,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/534"
+              "pointer": "/physicalSlots/533"
             },
             {
               "source": "attachment-compatibility",
@@ -4800,6 +5464,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "a879891fb872a087ac395e7a1255d8b9d2ec7bb1801e191ef532e58686ab085e"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]
@@ -4857,7 +5548,7 @@
           "evidence": [
             {
               "source": "attachment-compatibility",
-              "pointer": "/physicalSlots/564"
+              "pointer": "/physicalSlots/563"
             },
             {
               "source": "attachment-compatibility",
@@ -4874,6 +5565,33 @@
             "Asset, slot-category or referenced attachment identity changes.",
             "Newly offered choices require mapping or dependency coverage.",
             "New game evidence contradicts the source interpretation."
+          ]
+        },
+        {
+          "question": "Does the SMG Slim Angled package include weapon draw effects?",
+          "result": "useful",
+          "conclusion": "No. The Slim Angled (Magpul AFG PDW) action selects U_WPM_BTM_FastPDW_W20, whose WB modifier lists only WME_ADSTime_FOV_P10 and WME_ADSTime_Anim_P10. The in-game text says it increases weapon draw speed. Not a table floor: SMG base sprint index 7 (133 ms) has faster rows. Open whether the text or the package is wrong.",
+          "inspectionDate": "2026-09-14",
+          "buildInspected": {
+            "label": "1.4.2.5 export directory",
+            "exactBuildVerified": false,
+            "basis": "Inspected existing local XML and recorded its hash. In-game panels and captures from the current live build are cited only where stated."
+          },
+          "evidence": [
+            {
+              "source": "description-mismatches",
+              "pointer": null
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "a2278f9acd03ed76269742f42aa1845f0794e6b79cdbd4e6ef98a650282bcd32"
+            }
+          ],
+          "revisitWhen": [
+            "Asset, action selector list, or weapon WB/GS binding changes.",
+            "New in-game evidence contradicts the package interpretation."
           ]
         }
       ]

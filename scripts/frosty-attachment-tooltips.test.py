@@ -69,6 +69,27 @@ class DescriptionMappingTests(unittest.TestCase):
                 with self.subTest(field=field), patch.object(m, 'REPO', root), self.assertRaises(ValueError):
                     m.apply_screenshot_tooltips([{**deepcopy(peer), 'weapon': 'weapon'}], {}, [{**review, field: value}])
 
+    def test_panel_tooltip_replaces_linked_text_only_with_explicit_review_flag(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'panel.png').write_bytes(b'reviewed panel')
+            link = {'method': 'aam-full-name', 'assets': ['linked-ad']}
+            record = {'weapon': 'weapon', 'slot': 'mag', 'attachment': 'fast',
+                      'identityStatus': 'source-linked', 'descriptionStatus': 'linked',
+                      'sources': [{'source': 'hardware.xml', 'uiLink': link}]}
+            review = {'weapon': 'weapon', 'slot': 'mag', 'attachment': 'fast', 'source': 'hardware.xml',
+                      'originalUiLink': deepcopy(link), 'screenshot': 'panel.png',
+                      'screenshotSha256': hashlib.sha256(b'reviewed panel').hexdigest(),
+                      'observedDescription': 'Panel text.', 'pointerEvidence': [{'descriptionStringId': 'LINKED'}]}
+            with patch.object(m, 'REPO', root), self.assertRaises(ValueError):
+                m.apply_screenshot_tooltips([deepcopy(record)], {}, [review])
+            flagged = {**review, 'status': 'linked-text-differs-from-panel'}
+            with patch.object(m, 'REPO', root):
+                descriptions = m.apply_screenshot_tooltips([record], {}, [flagged])
+            self.assertEqual(descriptions, {'screenshot:weapon:mag:fast': 'Panel text.'})
+            self.assertEqual(record['descriptionStatus'], 'screenshot-verified')
+            self.assertEqual(record['tooltipSource']['originalFrostyStringIds'], ['LINKED'])
+
     def test_lowercase_source_names(self):
         self.assertEqual(m.source_name({'attachmentXml': 'attachment_m1014_brl_extendedbarrel.xml'}), 'm1014_brl_extendedbarrel')
         self.assertEqual(m.descriptor_name('attachment_m1014_brl_extendedbarrel'), m.descriptor_name('AD_M1014_BRL_Extended'))

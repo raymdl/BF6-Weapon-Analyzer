@@ -256,7 +256,7 @@ present. No text was invented for the unresolved fields.
 
 ## Current site mapping
 
-All 3,012 non-optic site choices have reviewed Frosty source identities. The runtime tooltip file contains descriptions for 2,967 choices: 2,952 use resolved Frosty English text and 15 use user-approved game-panel text. The other 45 choices remain deferred and carry `description-review-required` in the full mapping report. The six original Frosty records still have missing English strings; applying a panel tooltip does not recover those strings or replace their pointers.
+All 3,011 non-optic site choices have reviewed Frosty source identities. The runtime tooltip file contains descriptions for 2,966 choices: 2,948 use resolved Frosty English text and 18 use user-approved game-panel text. The other 45 choices remain deferred and carry `description-review-required` in the full mapping report. The six original Frosty records still have missing English strings; applying a panel tooltip does not recover those strings or replace their pointers.
 
 All 350 generic optic choices map to 1,927 individual Frosty sight records for the 63 site weapons. Fixed scopes remain Standard Optic. Variable Low and Variable High group the 20- and 25-point variable optics; these names do not define a magnification threshold. All member costs match their site category. Iron Sights now has a source-backed tooltip on all 63 weapons, bringing the total to 3,030 tooltips. Other generic optic categories keep their individual member descriptions in the report only.
 
@@ -264,7 +264,7 @@ Iron-sight defaults are user-selected for M16A4 (Classic) and UMG-40 (basic aper
 
 These links establish source identity and UI text. They do not prove live availability or engine behavior.
 
-Fifteen user-named panels supply approved per-choice tooltips. The evidence is in `panelLinkageInvestigation` in the identity follow-up report, with saved captures, hashes, AAM record GUIDs, original descriptor pointers, and missing string IDs. Matching English text in other descriptors is comparison evidence only. The original five description IDs remain absent from the English export. RPKM's separate AAM title resolves to “30rnd Fast Mag,” matching its panel. DRS-IAR and DB-12 have TOP hardware and panels but RGT names in their ANPEQ16B AAM records. DB-12 also has a separate RGT hardware record, so the AAM name must not simply be treated as a typo for TOP.
+Eighteen user-named panels supply approved per-choice tooltips. Fifteen replace missing English strings. Three (AK4D 20 Rnd fast, SV-98 Lightened Suppressor, SCW-10 Extended, reviewed 14 September) replace linked English text that differs from the live panel and use `status: linked-text-differs-from-panel`. The evidence is in `panelLinkageInvestigation` in the identity follow-up report, with saved captures, hashes, AAM record GUIDs, original descriptor pointers, and missing string IDs. Matching English text in other descriptors is comparison evidence only. The original five description IDs remain absent from the English export. RPKM's separate AAM title resolves to “30rnd Fast Mag,” matching its panel. DRS-IAR and DB-12 have TOP hardware and panels but RGT names in their ANPEQ16B AAM records. DB-12 also has a separate RGT hardware record, so the AAM name must not simply be treated as a typo for TOP.
 
 | Captured selection | Weapons receiving panel text |
 |---|---|
@@ -272,6 +272,9 @@ Fifteen user-named panels supply approved per-choice tooltips. The evidence is i
 | Taclight - Aimed | VCR-2, GRT-BC, BROD 3, EF88, ES 5.7, M45A1 |
 | 50 MW Violet | GRT-BC, L110, DRS-IAR, DB-12 |
 | 30 Fast magazine | RPKM |
+| 20 Fast magazine (linked text differs) | AK4D |
+| Lightened Suppressor (linked text differs) | SV-98 |
+| Extended barrel, 200MM Custom (linked text is `[REDACTED]`) | SCW-10 |
 
 ### Files
 
@@ -288,7 +291,7 @@ Shared UI records require the exact hardware model and unanimous English text ac
 
 Explicit screenshot reviews can resolve missing links or conflicting UI candidates. Regeneration checks the screenshot hash, original candidate set, and expected source text. If source text differs from the saved panel, both texts and the reason remain in the review. All mapped source alternatives must resolve; a partial source set cannot supply a tooltip.
 
-The separately approved panel-text pass requires an unresolved description, one matching hardware source, the unchanged original UI link, and the saved image hash. It writes `screenshot:<weapon>:<slot>:<attachment>` runtime keys and marks the choice `screenshot-verified`. These keys are not Frosty localization IDs. Original source records retain their missing-description status. No panel text is propagated to peer weapons. Captures remain in the ignored local screenshot library; the published evidence retains their paths, hashes, and transcription.
+The separately approved panel-text pass requires an unresolved description (or a linked description with review status `linked-text-differs-from-panel`), one matching hardware source, the unchanged original UI link, and the saved image hash. It writes `screenshot:<weapon>:<slot>:<attachment>` runtime keys and marks the choice `screenshot-verified`. These keys are not Frosty localization IDs. Original source records retain their missing-description status. No panel text is propagated to peer weapons. Captures remain in the ignored local screenshot library; the published evidence retains their paths, hashes, and transcription.
 
 ### Corrections established by this audit
 

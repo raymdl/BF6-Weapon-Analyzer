@@ -363,7 +363,12 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
     for review in reviews:
         key = review["weapon"], review["slot"], review["attachment"]
         record = choices[key]
-        if record["identityStatus"] != "source-linked" or record["descriptionStatus"] != "english-description-missing-or-conflicting":
+        # A linked English string can still differ from the live panel (stale or
+        # wrong pointer text). Only an explicit review flag may replace it.
+        allowed = {"english-description-missing-or-conflicting"}
+        if review.get("status") == "linked-text-differs-from-panel":
+            allowed.add("linked")
+        if record["identityStatus"] != "source-linked" or record["descriptionStatus"] not in allowed:
             raise ValueError(f"Screenshot tooltip no longer targets an unresolved description: {key}")
         if len(record["sources"]) != 1 or record["sources"][0]["source"] != review["source"]:
             raise ValueError(f"Screenshot tooltip source changed: {key}")

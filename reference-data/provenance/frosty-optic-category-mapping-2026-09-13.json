@@ -1,5 +1,5 @@
 {
-  "scope": "Individual source sights grouped under existing site categories; not one-to-one identities or live availability proof. Variable Low/High use the site's 20/25-point grouping, not a magnification threshold.",
+  "scope": "Individual source sights grouped under existing site categories; not one-to-one identities or live availability proof. Categories come from English UI labels only; Variable Low/High are explicit label lists, not a magnification threshold.",
   "coverage": {
     "siteCategories": 350,
     "linkedCategories": 350,
@@ -101861,7 +101861,6 @@
     "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_VZOR3.xml": "b903d66f62d3d21653d3e225d0b42d9a0f8f8f78458d0839669d277423c3ebb5",
     "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_XPS3.xml": "bc5ee3a05ff45896cda0b8d99af46aa6d567f967cb20eea91ffa4a8551cf4d86",
     "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_TOP_TopRail.xml": "ecb4862bc3b669b4fc85561efb55e7bef5d2b969627d4d4f680565c8019545b8",
-    "Common/Hardware/Weapons/Carbine/AK205/U_PRG_AK205_BTM_UGLMount.xml": "1b1a4bd0d41a4ed031649bf364617347f81b40f417e67cf7fa050f0378fff5ca",
     "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/BallisticTip/U_WPM_AMO_BallisticTip_W20.xml": "48430b5da8f1c0c0f5873c05b67236a5c90960ceb12454cc9b5950872cd4b6ab",
     "Common/Hardware/Weapons/_WeaponModifiers/HeadShotDamage/WME_Protection_P20.xml": "f9916fd2f7b8c413871d2195cdb86c15cfea3c79781632019c406bcbf71bba38",
     "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_Increase_ADS_55_BRL_P10.xml": "4ef6c7ee39b937ee4f0c83dfc168a278a3244cbe31575678e900ee56a6ee7d17",

@@ -309,5 +309,9 @@ ergonomic overrides. It runs after any muzzle duration override.
 Mini Scout Tungsten now uses -7 amount steps in both aims, accepting the combined
 -1/-6 links. The other sniper Tungsten candidates remain pending.
 PSR/SV-98 Slim Angled and KS18K Slim Angled now use moving-ADS index addition -1.
+On 14 September, L115, Mini Scout and Interdictor Slim Angled were added after the
+selector-package trace and HUD captures, and the AK-205 Underslung Mount was removed
+(current totals: 1,487 handling selections, 5,489 fields, 1,391 mount choices). See
+the [description mismatch list](../ATTACHMENT_BUGS.md).
 The comparison counts above and historical comparison JSON describe the
 pre-change snapshot. They must not be used as current unresolved-field counts.

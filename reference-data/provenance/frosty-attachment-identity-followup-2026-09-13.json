@@ -1283,6 +1283,135 @@
           }
         ],
         "status": "original-pointer-confirmed-english-unresolved"
+      },
+      {
+        "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_MAG_Fast.xml",
+        "slot": "mag",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/AK4D/51_AK4D_Magazine_20Rnd_Fast_Mag.png",
+        "screenshotSha256": "2b72fe4b6b74ce81319fb967254976bc9d2ea5679063dcdabb2634a53376bde0",
+        "observedDescription": "Standard magazine with mag pull for faster reloads.",
+        "weapon": "ak4d",
+        "attachment": "20_fast",
+        "sourceAttachmentGuid": "7b21285b-c2df-473b-a54e-f7b58ad9e209",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/FastMagazine/U_WPM_MAG_Fast_W10",
+            "guid": "edca4f8f-16bd-4699-b138-a2ab5a84b133",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/g3a4/ad_g3a4_mag_020fast"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/AssaultRifle/G3A4/AAM_G3A4",
+              "recordGuid": "b41c0bf4-a438-41df-8f78-f5a592385fdc",
+              "name": "G3A4 - MAG - Fast",
+              "descriptionAsset": "common/ui/static/metadata/attachments/g3a4/ad_g3a4_mag_020fast"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/AssaultRifle/G3A4/AAM_G3A4",
+            "recordGuid": "b41c0bf4-a438-41df-8f78-f5a592385fdc",
+            "descriptionAsset": "common/ui/static/metadata/attachments/g3a4/ad_g3a4_mag_020fast",
+            "descriptionStringId": "F8D66B75",
+            "englishStringPresent": true
+          }
+        ],
+        "reviewDate": "2026-09-14",
+        "reason": "Linked G3A4 fast-magazine text is the regular-magazine text; the live panel shows the fast-magazine text.",
+        "status": "linked-text-differs-from-panel"
+      },
+      {
+        "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_MZL_SV98MSuppressor.xml",
+        "slot": "muzzle",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/06_SV-98_Muzzle_Lightened_Suppressor.png",
+        "screenshotSha256": "e4b4f5677362815b0a709bdcce6c1ed4bddcda9f132b0bafb3609e7bfa0cfc2a",
+        "observedDescription": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy.",
+        "weapon": "sv98",
+        "attachment": "light_supp",
+        "sourceAttachmentGuid": "b37491b8-b194-4f80-ae7a-41be9e693444",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor02_W30",
+            "guid": "bb26754b-fb9d-467b-96ac-ecd132bc3f95",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/sv98m/ad_sv98m_suppressor"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/Weapons/BoltAction/SV98M/AAM_SV98M",
+              "recordGuid": "7dca78f6-1109-4c38-aad1-48e3bd7bce28",
+              "name": "SV98M - MZL - SV98M Suppressor",
+              "descriptionAsset": "common/ui/static/metadata/attachments/sv98m/ad_sv98m_suppressor"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/Weapons/BoltAction/SV98M/AAM_SV98M",
+            "recordGuid": "7dca78f6-1109-4c38-aad1-48e3bd7bce28",
+            "descriptionAsset": "common/ui/static/metadata/attachments/sv98m/ad_sv98m_suppressor",
+            "descriptionStringId": "B2A9F30C",
+            "englishStringPresent": true
+          }
+        ],
+        "reviewDate": "2026-09-14",
+        "reason": "Linked SV98M suppressor text adds a weapon-sway cost; the live panel has no sway claim.",
+        "status": "linked-text-differs-from-panel"
+      },
+      {
+        "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_BRL_ExtendedBarrel.xml",
+        "slot": "barrel",
+        "screenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/SCW-10/13_SCW-10_Barrel_Extended.png",
+        "screenshotSha256": "3c3832a689d65b703eb63bebdcf4aafd09cb89ae5c65e403d683d1d5b1bcde68",
+        "observedDescription": "Long barrel that increases projectile velocity.",
+        "weapon": "scw10",
+        "attachment": "extended",
+        "sourceAttachmentGuid": "e5f38b39-575a-4cc8-9fc3-c3f3a9ac49e2",
+        "boundSelectors": [
+          {
+            "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Extended_W05",
+            "guid": "49b8a26a-3e70-4837-8c06-30edd0e523cf",
+            "bound": true
+          }
+        ],
+        "originalUiLink": {
+          "method": "aam-full-name",
+          "assets": [
+            "common/ui/static/metadata/attachments/apc10/ad_apc10_brl_extendedbarrel"
+          ],
+          "aamRecords": [
+            {
+              "aamAsset": "Common/Hardware/weapons/SMG/APC10/AAM_APC10",
+              "recordGuid": "1afa48b6-a329-4544-a7ed-02eeaa878c91",
+              "name": "APC10 - BRL - Extended Barrel",
+              "descriptionAsset": "common/ui/static/metadata/attachments/apc10/ad_apc10_brl_extendedbarrel"
+            }
+          ]
+        },
+        "pointerEvidence": [
+          {
+            "aamAsset": "Common/Hardware/weapons/SMG/APC10/AAM_APC10",
+            "recordGuid": "1afa48b6-a329-4544-a7ed-02eeaa878c91",
+            "descriptionAsset": "common/ui/static/metadata/attachments/apc10/ad_apc10_brl_extendedbarrel",
+            "descriptionStringId": "F04378FF",
+            "englishStringPresent": true
+          }
+        ],
+        "reviewDate": "2026-09-14",
+        "reason": "Linked APC10 extended-barrel text is [REDACTED]; the live 200MM Custom panel shows this text.",
+        "status": "linked-text-differs-from-panel"
       }
     ],
     "applyAsTooltips": true

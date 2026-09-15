@@ -38,36 +38,36 @@ Proposed per-build layout: keep the existing asset-shaped XML tree unchanged; pu
 - [x] Create `reference-data/frosty/collection-manifest.schema.json` for per-build collection results.
 - [x] Add a watchlist merge helper, `scripts/frosty-watchlist-merge.py` (present; do not assume this is a full collector).
 
-Current file inspection: 7,993 watched assets; 22 findings across 15 asset paths. These counts are a checkpoint, not permanent acceptance targets. The current README records the merge of research sources from 6–14 September and additional XML/string exports. Check for work completed after that merge before freezing the baseline.
+Current file inspection: 8,062 watched assets; 140 findings across 133 asset paths at the pre-update capture. The 14 September attachment review later added 26 findings (166 across the same 133 paths); the versioned pre-update copy keeps the 140-finding state. These counts are a checkpoint, not permanent acceptance targets. The current README records the merge of research sources from 6–14 September and additional XML/string exports. The final research merge and evidence hashes were checked during the pre-update capture below.
 
 Three watchlist entries still say `pending-export`: `Common/Localization/Languages/fs_us_loc` and the MP_Abbasid and MP_Badlands material grids. The README records a strings export, and raw grid evidence already exists. Reconcile these statuses by format; do not attempt XML export of the grids just to clear the label.
 
 ## 1. Finish the old baseline before the game updates
 
-- [ ] Coordinate the end of current data collection. Confirm that no exporter or generator is still writing baseline files while they are inventoried.
-- [ ] Review changes since the last watchlist merge, including attachment compatibility and material-grid findings. Add missing source evidence without importing every historical search result.
-- [ ] Record the baseline game-build label and available supporting evidence. If the exact installed build cannot be established, retain that limitation; do not mark the label as independently verified.
-- [ ] Inventory baseline XML, strings, raw EBX, descriptors, derived JSON, reports and scripts. Record existing locations rather than making duplicate copies.
-- [ ] Preserve the current full catalog (`ebx_manifest.csv`, `.txt`, and `ebx_directories.txt`) under a versioned location or an explicit versioned record before writing a new catalog.
-- [ ] Check watched assets against collected files by requested format. Record missing data separately from a failed or unsupported decoding method.
-- [ ] Check dependency coverage, including targets not yet present as top-level watchlist entries. `AttachmentCategory_Sight` is one documented example.
-- [ ] Review discovery coverage outside the previously checked weapon/array/tweakable/configuration folders. The existing folder-based XML audit does not establish complete `Game/` or gadget coverage.
-- [ ] Collect missing old assets that are necessary for the planned comparisons while the old game archives are still installed. Prioritize required stat inputs and dependencies; a complete export of all 464,499 catalog entries is not required.
-- [ ] If time or decoding prevents collection, record the exact missing route, format, affected question and comparison limit. Do not replace missing old values with zero or estimates.
-- [ ] Record where the existing raw grids, projectile EBX and matching `SharedTypeDescriptors.ebx` are retained. Keep raw hashes and XML hashes identified by format.
-- [ ] Verify the English strings export and relevant localized-string/RES/chunk dependencies. XML alone does not preserve the text payload.
-- [ ] Preserve the baseline extraction-script and Analyzer-data revision. Review the current dirty checkout before selecting files for a scoped commit; do not include unrelated work or assume HEAD contains all recent changes.
-- [ ] Write a baseline collection record with hashes, sizes, actual successes, failures and build limits. Validate it against the collection schema before calling the baseline complete.
+- [x] Coordinate the end of current data collection. Confirm that no exporter or generator is still writing baseline files while they are inventoried.
+- [x] Review changes since the last watchlist merge, including attachment compatibility and material-grid findings. Add missing source evidence without importing every historical search result.
+- [x] Record the baseline game-build label and available supporting evidence. If the exact installed build cannot be established, retain that limitation; do not mark the label as independently verified.
+- [x] Inventory baseline XML, strings, raw EBX, descriptors, derived JSON, reports and scripts. Record existing locations rather than making duplicate copies.
+- [x] Preserve the current full catalog (`ebx_manifest.csv`, `.txt`, and `ebx_directories.txt`) under a versioned location or an explicit versioned record before writing a new catalog.
+- [x] Check watched assets against collected files by requested format. Record missing data separately from a failed or unsupported decoding method.
+- [x] Check dependency coverage, including targets not yet present as top-level watchlist entries. `AttachmentCategory_Sight` is one documented example.
+- [x] Review discovery coverage outside the previously checked weapon/array/tweakable/configuration folders. The existing folder-based XML audit does not establish complete `Game/` or gadget coverage.
+- [x] Collect missing old assets that are necessary for the planned comparisons while the old game archives are still installed. Prioritize required stat inputs and dependencies; a complete export of all 464,499 catalog entries is not required.
+- [x] If time or decoding prevents collection, record the exact missing route, format, affected question and comparison limit. Do not replace missing old values with zero or estimates.
+- [x] Record where the existing raw grids, projectile EBX and matching `SharedTypeDescriptors.ebx` are retained. Keep raw hashes and XML hashes identified by format.
+- [x] Verify the English strings export and relevant localized-string/RES/chunk dependencies. XML alone does not preserve the text payload.
+- [x] Preserve the baseline extraction-script and Analyzer-data revision. Review the current dirty checkout before selecting files for a scoped commit; do not include unrelated work or assume HEAD contains all recent changes.
+- [x] Write a baseline collection record with hashes, sizes, actual successes, failures and build limits. Validate it against the collection schema before calling the baseline complete.
 
 Completion condition: required old values can be traced to retained evidence, or each missing comparison is explicitly listed. Once the game archives update, the old cache cannot recover unexported old asset contents.
 
 ## 2. Retain the decoder information that can change
 
-- [ ] Record the Frosty source revision and any local patches, runtime identity, SDK identity and descriptor hash.
-- [ ] Retain the matching old descriptors and `Profiles\BF6SDK.dll` before regeneration replaces them.
-- [ ] Retain the patched runtime components needed to decode the old files if they will be replaced. A small versioned tool set is sufficient; another copy of the complete source/build tree is not required.
-- [ ] Decide whether to retain `Caches\bf6.cache` for the old asset-record comparison. It is optional if a sufficient old catalog has already been saved. Record the choice.
-- [ ] Confirm the working tool installation still has its required local configuration/key. Keep any retained key local; do not include it in Git or public reports.
+- [x] Record the Frosty source revision and any local patches, runtime identity, SDK identity and descriptor hash.
+- [x] Retain the matching old descriptors and `Profiles\BF6SDK.dll` before regeneration replaces them.
+- [x] Retain the patched runtime components needed to decode the old files if they will be replaced. A small versioned tool set is sufficient; another copy of the complete source/build tree is not required.
+- [x] Decide whether to retain `Caches\bf6.cache` for the old asset-record comparison. It is optional if a sufficient old catalog has already been saved. Record the choice.
+- [x] Confirm the working tool installation still has its required local configuration/key. Keep any retained key local; do not include it in Git or public reports.
 
 Purpose: keep the old decoding context available while the working installation changes. This is not a general backup requirement. Existing Git history can retain committed source changes; generated SDKs and uncommitted patches need explicit handling.
 
@@ -85,7 +85,7 @@ Completion condition: the updated archive is readable and representative decodin
 
 ## 4. Generate the new catalog and collection plan
 
-- [ ] Add or use a read-only catalog exporter that emits `asset-catalog.json` directly from Frosty asset records. This capability is not supplied by the JSON watchlist alone.
+- [x] Add or use a read-only catalog exporter that emits `asset-catalog.json` directly from Frosty asset records. Implemented in `scripts/frosty-collect-raw.ps1` and exercised against the old build; the new catalog still needs to be generated after the update.
 - [ ] Include the build identity, extraction time, tool identity and asset paths. Include GUID, type, original size and content hash where available; identify hash algorithms and leave unavailable values explicit.
 - [ ] Keep one catalog per build. Do not overwrite the path-only old catalog or pretend its absent metadata is known.
 - [ ] Compare complete catalogs for additions, removals and changed hashes. Treat a stable GUID with a changed path as a rename candidate, not conclusive proof of identical contents.
@@ -120,6 +120,7 @@ Completion condition: the collection has explicit inputs and destinations, and u
 - [ ] Produce a change report with asset/field, old value, new value, source evidence and practical effect. Separate byte changes, decoder changes, numeric changes, additions/removals and unresolved interpretations.
 - [ ] If a decoder change could explain an XML difference, compare with consistent decoding where possible. A different raw hash alone does not establish a changed weapon stat.
 - [ ] Add new findings or superseding evidence without erasing old scoped conclusions. Mark affected findings for review when assets or dependencies change.
+- [ ] Recheck the [attachment bug list](../ATTACHMENT_BUGS.md). Rerun `scripts/frosty-multi-package-scan.py`; retrace the sniper and SMG Slim Angled, fast/regular magazine and M121 A2/M45A1 FMJ selector packages; confirm the three `linked-text-differs-from-panel` tooltips still match the live panels; check that the AK-205 UGL Mount branch is still unoffered; and compare magazine shifts relative to each default magazine. All assets these checks use were captured before the update.
 
 Relevant existing consumers include `frosty-configuration.py`, `frosty-grx-field-names.py`, `frosty-attachment-handling.py`, `frosty-barrel-ads.py`, `frosty-sniper-brakes.py`, `frosty-hit-zones.py`, `frosty-ballistics.py`, `frosty-global-operands.py`, `frosty-precision-tables.py`, `frosty-attachment-tooltips.py`, `frosty-attachment-compatibility.py` and `frosty-material-grid-inventory.py`, under `scripts/`. This list identifies work areas, not a verified command sequence. Read current arguments and dependencies before execution.
 
@@ -149,4 +150,34 @@ Add one row when a stage is completed or blocked. Include paths or commits that 
 
 | Date | Stage/task | Result and evidence | Remaining issue / next action |
 |---|---|---|---|
-| 2026-09-14 | Plan checkpoint | Current watchlist: 7,993 assets. Findings: 22 across 15 paths. Versioned XML root already exists. | Baseline freeze, collection manifests and update collection remain unchecked. |
+| 2026-09-14 | Initial plan checkpoint | Current watchlist: 7,993 assets. Findings: 22 across 15 paths. Versioned XML root already exists. | Historical initial state; pre-update completion is recorded below. |
+
+## Pre-update completion — 14 September 2026
+
+Sections 1 and 2 are complete for the agreed reference-data scope, with the limits below. The collection is deliberately labelled `partial`; this is not a claim of exhaustive dependency decoding or exact marketing-build verification.
+
+Evidence directory: `C:\Users\royal\Documents\BF6 Datamining\research-1.4.2.5\pre-update`.
+
+- `summary.json`: counts, baseline revision, verification and limits.
+- `collection/collection-manifest.json`: schema-validated capture results with existing XML locations.
+- `collection/asset-catalog.json`: 464,499 asset records; GUIDs, sizes and Frosty SHA1 values. Type names are unavailable in raw-index mode and recorded as null.
+- `collection/raw/`: 23,557 successful raw captures, 164,043,770 bytes (156.44 MiB), covering all 8,062 watched assets and all explicit EBX dependencies reached through available XML.
+- `existing-files.json`: hashes and locations for 37,670 XML files plus research/source records; XML files were not copied.
+- `dependency-audit.json`: 23,557 reached paths and 1,500 without XML. All 1,500 now have raw captures; they include two raw-only grids and localization with verified strings. Further references inside undecoded assets remain uninspected.
+- `discovery-review.json`: 1,401 path-name candidates among uncaptured Game/gadget routes. These remain exploratory; the catalog does not supply decoded type names. Known source dependencies were prioritized over blanket collection.
+- `catalog/`: retained original CSV/TXT catalogs.
+- `toolchain/` and `retained-files.json`: old SDK, descriptors, runtime components, caches and source ZIP with verified hashes. The source distribution has no Git metadata. The key remains in the working installation only.
+- Versioned watchlist, findings and schema files identify the collection rules used.
+
+The Analyzer and existing extraction baseline is committed at `d9daf96bcf25ee87b250ca3d4856ad826f6ed961`; the checkout was clean before this preparation. Analyzer data changed after this capture (14 September attachment review: Slim Angled moving-ADS penalties on L115, Mini Scout and Interdictor, AK-205 Underslung Mount removal, three reviewed tooltip panel texts, recoil-smoothing marker and health-regen display changes). Compare 1.4.3.0 results against the merged revision that contains these changes, not against `d9daf96`. The newly added collector is also retained under `toolchain/` by hash, so it does not depend on a future commit to preserve this capture method.
+
+The game executable SHA256 matches the earlier baseline inspection. File version is `1, 0, 439, 36273`; archive Head is `4420709`, while the SDK reports `4414275`. Keep the user-supplied 1.4.2.5 label and this revision mismatch explicit. The two captured grids and descriptor hashes match earlier evidence. No SDK regeneration was performed.
+
+The only other Python process inspected was a local HTTP server. No other Frosty exporter was running. XML/source hash verification checked for changes during preparation. No recordings were copied, no duplicate XML backup was created, and the old interrupted backup was left alone.
+
+Next action: after the update is installed, start section 3. Use a new output directory and the updated game's descriptors; do not overwrite this baseline.
+
+| Date | Stage/task | Result and evidence | Remaining issue / next action |
+|---|---|---|---|
+| 2026-09-14 | Sections 1–2 | Versioned pre-update capture; all 23,557 selected raw assets succeeded; manifest validated. | Wait for 1.4.3.0, then start section 3. Keep documented decoding/discovery limits. |
+| 2026-09-14 | Post-capture Analyzer attachment review | `docs/ATTACHMENT_BUGS.md`; 26 new entries in `reference-data/frosty/asset-findings.json`; data, tooltip and compatibility regeneration from the 1.4.2.5 export. | Use the merged revision as the Analyzer comparison baseline; run the section 6 attachment bug recheck after 1.4.3.0 collection. |
