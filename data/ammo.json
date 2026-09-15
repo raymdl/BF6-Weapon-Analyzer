@@ -158,7 +158,6 @@
     {
       "id": "subsonic_pen",
       "name": "Sub Pen",
-      "adsRecoilTierMod": -1,
       "collateralMult": {
         "Assault Rifle": 1,
         "Carbine": 1,
@@ -168,7 +167,6 @@
         "SMG": 0.75,
         "Sidearm": 0.75
       },
-      "hipRecoilTierMod": -1,
       "worldSpotMult": 0.5,
       "minimapSpotMult": 0.4285714
     },

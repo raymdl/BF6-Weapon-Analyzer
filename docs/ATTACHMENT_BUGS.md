@@ -1,46 +1,55 @@
 # Attachment bugs and mismatches
 
-This list records attachments whose game data, in-game description, site data or
-reference data conflict. Each entry is one of these types:
+This list records attachments whose in-game stats and in-game description conflict.
+Each entry is one of these types:
 
-- **Game data bug**: a modifier is missing, extra or linked to the wrong package in the
-  game data, whatever the description says.
-- **Game text error**: the modifiers are consistent, but the description is wrong,
-  stale or incomplete.
-- **Site data error**: the site linked the wrong text or used the wrong value. These
-  are fixed when found.
-- **Reference data error**: a retained audit record conflicts with its own screenshot.
+- **Game error**: the description is correct, but the game does not apply a stat that
+  the description states, or applies a stat that the description does not state.
+- **Description error**: the game stats are correct, but the description states a
+  wrong stat.
+
+Descriptions that leave out an effect that the game applies consistently are not
+errors. They are in [Accepted text](#accepted-text).
 
 A future game fix is not assumed. Recheck every entry after a game update. Source
 references are to the 1.4.2.5 Frosty XML export unless stated.
 
 ## Status overview
 
-| # | Attachment | Weapons | Type | Site status |
-|---|---|---|---|---|
-| 1 | Slim Angled (sniper) | PSR, SV-98, L115, Mini Scout, Interdictor | Game data bug (Full Angled package selected) and text error | −1 moving-ADS spread applied on all five |
-| 2 | Special ammo keeps the FMJ package | M121 A2, M45A1 | Game data bug (extra penetration step) | Extra collateral step applied (matches game panels) |
-| 3 | Slim Angled (SMG) | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19 | Game data bug or text error (no draw effect) | No draw change applied (matches source) |
-| 4 | 20 Rnd fast | PP-19 | Game data bug (no reload bonus, reported to EA) | No reload bonus applied (matches game) |
-| 5 | Subsonic, Sub HP | P18, GGH-22, ES 5.7 | Game data bug or text error (no recoil modifier) | No recoil change applied (matches source) |
-| 6 | Flash Comp | PP-19 | Needs source check | Generic smoothing applied |
-| 7 | 200 Rnd belt box | L110, M123K | Game data bug or text error | No penalty applied (matches captures) |
-| 8 | Slim Angled | 18.5KS-K | Text omits a penalty | −1 moving-ADS spread applied |
-| 9 | 30 Rnd fast | PW7A2 | Game text error (confirmed in game) | Reload ×1.13 applied |
-| 10 | Extended barrel | SGX | Stale game text | No ADS change applied (matches game) |
-| 11 | 95 Rnd drum | RPK-74M | Text omits a penalty | ADS time +1 applied |
-| 12 | 50 Rnd / 50 Rnd belt / 75 Rnd belt box | KTS100 MK8 / M/60 / M240L | Text overstates handling or draw speed | Source values applied |
-| 13 | Tooltips and AK-205 Underslung Mount | AK4D, SV-98, SCW-10, AK-205 | Site data error | Fixed 14 September |
-| 14 | Tungsten Core audit record | M45A1 | Reference data error | Site value correct |
+Site status uses one of these values, followed by the value that the site applies:
+
+- **Matches game**: in-game panels or captures confirm the site value.
+- **Matches source data**: the site value is from Frosty data. Not checked in game.
+- **Does not match game**: in-game evidence conflicts with the site value.
+
+| # | Attachment | Weapons | Type | Error | Site status |
+|---|---|---|---|---|---|
+| 1a | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Matches game: −1 ADS accuracy while moving |
+| 1b | Slim Angled | 18.5KS-K | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The weapon's GS binds the penalty to the Slim Angled package. | Matches source data: −1 ADS accuracy while moving |
+| 2 | Hollow Point, Frangible, Tungsten Core | M121 A2, M45A1 | Game error | The game adds the FMJ +1 penetration step to these three ammo types. Collateral damage multiplier is too high: Hollow Point and Frangible keep the Standard value; M45A1 Tungsten Core is one step higher (M121 A2 Tungsten Core is at the maximum, so no change). The descriptions do not state a penetration change. | Matches game: extra collateral step |
+| 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19 | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches source data: no weapon draw speed change |
+| 4 | 20 Rnd fast | PP-19 | Game error | The description states faster reloads. The game does not apply the reload speed bonus (×1.13). | Matches game: no reload speed change |
+| 5 | Subsonic, Sub HP | P18, GGH-22, ES 5.7 | Game error | The description states lower recoil. The game does not apply it. | Matches source data: no recoil change |
+| 6 | Flash Comp | PP-19 | Game error | The description states less recoil buildup and better recoil recovery (recoil smoothing). The game does not apply it (operator report; no source trace yet). | Does not match game: recoil smoothing applied |
+| 7 | 200 Rnd belt box | L110, M123K | Game error | The description states reduced ADS accuracy while moving. The game does not apply it. | Matches game: no ADS accuracy while moving change |
+| 8 | 30 Rnd fast | PW7A2 | Description error | The description states improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Matches game: reload speed ×1.13 |
+| 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
+| 10 | 50 Rnd / 50 Rnd belt / 75 Rnd belt box | KTS100 MK8 / M/60 / M240L | Description error | KTS100 MK8: "improved handling", but only reload speed and sway improve. M/60 and M240L: "improves weapon draw speed", but the game applies no weapon draw speed change. | Matches source data: source values |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
-movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
+movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
+recoil. See
 [Accepted text](#accepted-text). Source candidates that are not confirmed bugs are in
 [Multi-package scan candidates](#multi-package-scan-candidates).
 
-## Game data bugs
+## Game errors
 
-### 1. Slim Angled on sniper rifles
+### 1. Slim Angled applies an unstated moving-ADS penalty
+
+Both cases give Slim Angled −1 ADS accuracy while moving, which its description does
+not state. The causes in the game data are different, so each case needs its own fix.
+
+#### 1a. Sniper rifles: Full Angled package selected
 
 - **In-game text (Slim Angled, 15 pts).** "Slightly increases weapon draw speed, and
   enables a slightly faster transition to aim down sights (ADS)."
@@ -49,7 +58,8 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
   accuracy while moving."
 - **Bug.** On PSR, SV-98, L115, Mini Scout and Interdictor, the Slim Angled action
   selects the Full Angled package, so Slim Angled gets the moving-ADS penalty and
-  the same stats as Full Angled for 10 more points. The text omits the penalty.
+  the same stats as Full Angled for 10 more points. The Slim Angled description
+  (no penalty) is correct; the game applies the penalty in error.
   M2010 ESR Slim Angled has no penalty and its text is correct.
 - **Source trace.** Both grips select shared bottom-rail packages in
   `_WeaponModifiers/_BottomRail/Foregrip/Fast/`:
@@ -94,6 +104,25 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
   were added on 14 September; the handling generator preserves these per-weapon
   fields.
 
+#### 1b. 18.5KS-K: penalty bound to the Slim Angled package
+
+- **In-game text.** "Marginally reduces recoil, increases weapon draw speed, and
+  enables a slightly faster transition to aim down sights (ADS)."
+- **Error.** The game applies −1 ADS accuracy while moving. The description does not
+  state this penalty.
+- **Source trace.** The Slim Angled action (`Attachment_185KSK_BTM_Magpul_AFG`,
+  branch `17aaf490-…`) selects `U_WPM_BTM_Fast02_W25` (`16a53347-…`). Full Angled
+  (`Magpul_AFG2`) selects a different package, `U_WPM_BTM_Fast03_W30`. `GS_185KSK`
+  binds `Fast02_W25` to `GDM_Array_ADSMoveDispersion_BTM_M10`. Unlike entry 1a, the
+  correct package is selected; the penalty comes from the GS binding.
+- **Other weapons.** Rifle and LMG GS files (for example `GS_SCARL`, `GS_RPK74M`) bind
+  `Fast02_W25` to `GID_ADSTime_BTM_P10` and `GRM_Recoil_BTM_P10` only. `GS_Vector`
+  and `GS_UMP40` also bind it to the moving-ADS penalty, but their Slim Angled selects
+  `U_WPM_BTM_FastPDW_W20` (entry 3), so no other weapon gets the penalty in game.
+- **Frosty.** `movingAdsSpreadTierMod: -1` on `ks18k` only. Cost 25, the same as on
+  other weapons.
+- **Site.** Applies the −1 penalty. Not checked in game.
+
 ### 2. M121 A2 and M45A1 special ammo keep the FMJ package
 
 - **In-game text.** Hollow Point: "Ammunition with slightly improved headshot
@@ -117,7 +146,7 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
 
   M121 A2 Tungsten reaches index 10, which clamps to 9 (1.00). M45A1 Tungsten shows
   0.83 (site 0.833334), against 0.75 on GGH-22. The M45A1 Tungsten value is read
-  from the screenshot; see entry 14.
+  from the screenshot.
 - **Evidence.** Audit screenshots `LMG/M121 A2/47-50_*_Ammo_*.png`,
   `Sidearm/M45A1/19-22_*_Ammo_*.png`, `LMG/L110/47-50_*`, `Sidearm/GGH-22/20-25_*`.
 - **Status.** Confirmed by panels. Likely a leftover selector on two weapons; the
@@ -132,8 +161,8 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
   rifle Slim Angled package does include draw effects.
 - **Not a floor clamp.** SMG base sprint index 7 (133 ms) has faster rows (100 ms,
   83 ms).
-- **Status.** Open: either the SMG package is missing its draw effects or the text is
-  wrong. Not checked in game.
+- **Status.** Game error: the SMG package does not have the draw effects that the
+  description states. Not checked in game.
 
 ### 4. PP-19 20 Rnd fast magazine has no reload bonus
 
@@ -141,7 +170,7 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
   handling at the cost of capacity."
 - **Bug.** The panel shows the base reload with no reload arrow (observed 2.467 s;
   2.183 s expected with the 1.13 multiplier).
-- **Status.** Known in-game bug, reported to EA
+- **Status.** Known in-game bug
   ([bug report](https://forums.ea.com/idea/battlefield-6-bug-reports-en/incorrect-stats-for-pp-19s-20-round-fast-magazine/13472218)).
   Recorded as `suspectedGameBug` in `data/attachments.json` and as a screenshot
   exception in `data/reload-exceptions.json`.
@@ -157,7 +186,8 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
 - **Cost.** Sidearm Subsonic 10 and Sub HP 30 equal the carbine costs (SMGs: Subsonic
   10-15, Sub HP 25-35). A missing sidearm recoil modifier is more likely than a
   separate ammo class with different text.
-- **Status.** Open possible game bug.
+- **Status.** Game error: the sidearm packages do not have the recoil modifier that
+  the description states. Not checked in game.
 
 ### 6. PP-19 Flash Comp
 
@@ -170,7 +200,9 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
 - **Site.** The `flash_comp` record has no PP-19 override. The site applies the
   ordinary smoothing: `recoilDurationOverride: 0.05`, `adsRecoilDecayMult: 1.2` and
   `hipRecoilDecayMult: 1.2`.
-- **Action.** If a Frosty trace confirms the report, add a PP-19 override.
+- **Status.** Game error: the game does not apply the recoil smoothing that the
+  description states. The site does not match the operator report.
+- **Action.** Confirm with a Frosty trace, then add a PP-19 override.
 
 ### 7. L110 and M123K 200 Rnd belt box
 
@@ -187,18 +219,9 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
 - **Evidence.** [Attachment model](ATTACHMENT_MODEL.md#belt-box-moving-ads-spread),
   [capture review](../reference-data/provenance/belt-box-moving-ads-2026-09-13.json).
 
-## Game text errors
+## Description errors
 
-### 8. Slim Angled on 18.5KS-K
-
-- **In-game text.** "Marginally reduces recoil, increases weapon draw speed, and
-  enables a slightly faster transition to aim down sights (ADS)."
-- **Incorrect part.** The text omits the moving-ADS accuracy penalty.
-- **Frosty.** `movingAdsSpreadTierMod: -1` on `ks18k` only. No other weapon that
-  uses `slim_angled` gets this penalty. Cost 25, the same as on other weapons.
-- **Site.** Applies the −1 penalty. Not checked in game.
-
-### 9. PW7A2 30 Rnd fast magazine
+### 8. PW7A2 30 Rnd fast magazine
 
 - **In-game text.** "Standard magazine that improves weapon draw speed."
 - **Incorrect part.** The whole text belongs to the Regular magazine.
@@ -207,7 +230,7 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
   package `U_WPM_MAG_Std_W05`.
 - **In-game.** Operator confirmed the text error on 14 September.
 
-### 10. SGX Extended barrel
+### 9. SGX Extended barrel
 
 - **In-game text.** "Long barrel that increases projectile velocity and enables a fast
   transition to aim down sights (ADS)."
@@ -217,17 +240,7 @@ movement, SL9 60 Rnd weapon draw, and Linear Comp overall recoil. See
 - **In-game.** Operator review: stale text from before the Extended barrel ADS buff
   was removed. Behavior matches the data.
 
-### 11. RPK-74M 95 Rnd drum
-
-- **In-game text.** "95 round drum magazine with greatly increased capacity at the cost
-  of weapon draw speed and reload speed."
-- **Incorrect part.** The text omits slower ADS time.
-- **Frosty.** `WPM_MAG_095Ext3_RPK74M_W50` has `WME_ADSTime_Anim_M10` and
-  `WME_ADSTime_FOV_M10`. The draw penalty is relative: the default 45 Rnd Regular
-  magazine has draw −1 and the drum has none (200 → 233 ms sprint recovery,
-  confirmed in game).
-
-### 12. Magazines that overstate handling or draw speed
+### 10. Magazines that overstate handling or draw speed
 
 Found by the 14 September magazine recheck with every value relative to the
 weapon's default magazine. All values are source-generated. Not checked in game.
@@ -241,64 +254,24 @@ weapon's default magazine. All values are source-generated. Not checked in game.
 Both default and alternative magazines on these weapons have draw −1, so the
 "improves" claims hold only against a magazine without the Regular draw bonus.
 
-## Site and reference data errors
-
-### 13. Site data errors fixed on 14 September
-
-These were site data errors, not game errors. Fixed after the operator's in-game
-review.
-
-| Item | Site text before | In-game text | Fix |
-|---|---|---|---|
-| AK4D 20 Rnd fast | "Standard magazine that improves weapon draw speed." (`F8D66B75`, linked through `ad_g3a4_mag_020fast`) | "Standard magazine with mag pull for faster reloads." | Reviewed panel text |
-| SV-98 Lightened Suppressor | "…Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy and weapon sway." (`B2A9F30C`, `ad_sv98m_suppressor`) | Same text without "and weapon sway" | Reviewed panel text |
-| SCW-10 Extended (200MM Custom) | "[REDACTED]" (`F04378FF`, `ad_apc10_brl_extendedbarrel`) | "Long barrel that increases projectile velocity." | Reviewed panel text |
-| AK-205 Underslung Mount | Offered, with tooltip "[REDACTED]" (`823E786F`) | Not offered (AK-205 grip panels 26-39 have no Underslung Mount) | Removed from availability |
-
-The three tooltip fixes are rows in `panelLinkageInvestigation` of
-`frosty-attachment-identity-followup-2026-09-13.json` with
-`status: linked-text-differs-from-panel`. The tooltip generator accepts that status
-on a linked record and keeps the original Frosty pointer and string ID. The AAM
-record for each choice points to a single descriptor, so a `uiLinkReviews` choice
-between candidates was not possible. Screenshots:
-`Assault Rifle/AK4D/51_AK4D_Magazine_20Rnd_Fast_Mag.png`,
-`Sniper Rifle/SV-98/06_SV-98_Muzzle_Lightened_Suppressor.png`,
-`SMG/SCW-10/13_SCW-10_Barrel_Extended.png`.
-
-The AK-205 Underslung Mount came only from the `U_PRG_AK205_BTM_UGLMount` ability
-branch, with no `Attachment_*` record (its AAM descriptor is `ad_bottomrail_empty`).
-The row was removed from `frosty-handling-mapping-followup.json` and
-`WEAPON_ATTS.ak205.grip`, and handling, compatibility and tooltip data were
-regenerated. Share links encode grips by the global grip index, so other links are
-unchanged.
-
-### 14. M45A1 Tungsten Core audit record
-
-- **Record.** `reference-data/attachment-audit/attachment-screenshot-review.json`
-  stores `collateralMultiplier: 0.75` for the M45A1 Penetration capture.
-- **Screenshot.** `Sidearm/M45A1/20_M45A1_Ammo_Penetration.png` shows Tungsten Core
-  collateral **×0.83** with an up arrow.
-- **Site.** 0.833334, which matches the screenshot.
-- **Status.** Audit transcription error. The attachment audit is maintained separately
-  and was not edited; correct it with its own validator
-  (`node reference-data/attachment-audit/validate-reference.mjs`).
-
 ## Accepted text
 
-These texts are less detailed but consistent with the game design.
+These are not errors. The description leaves out an effect, but the game applies the
+effect consistently with the game design.
 
 | Attachment | Weapons | In-game text | Unstated effect | Reason accepted |
 |---|---|---|---|---|
 | Slugs | M87A1, M1014, 18.5KS-K, DB-12 | "Shotgun ammunition containing a single large projectile for greatly improved effective range." | −1 ADS/hip recoil (applied by the site) | Applied consistently |
 | 53 Rnd | PP-19 | "Helical drum magazine with increased capacity. Prevents the use of underbarrel attachments." | Slower ADS movement | Expected for a larger magazine |
 | 60 Rnd | SL9 | "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS)." | Slower weapon draw | Expected for a larger magazine |
+| 95 Rnd drum | RPK-74M | "95 round drum magazine with greatly increased capacity at the cost of weapon draw speed and reload speed." | Slower ADS time (`WPM_MAG_095Ext3_RPK74M_W50`: `WME_ADSTime_Anim_M10`, `WME_ADSTime_FOV_M10`; applied by the site) | Expected for a larger magazine |
 | Linear Comp | 45 weapons | "Reduces horizontal recoil in favor of more stable vertical recoil. …" | −1 recoil amount | Implied: vertical recoil is amount, horizontal is variation |
 
 ## Multi-package scan candidates
 
 `python scripts/frosty-multi-package-scan.py --root <Frosty-export-root>` lists
 attachment actions that select more than one modifier package. The 1.4.2.5 export
-has 15 hits: three sniper Slim Angled actions (entry 1), six M121 A2/M45A1 ammo
+has 15 hits: three sniper Slim Angled actions (entry 1a), six M121 A2/M45A1 ammo
 actions (entry 2), and the items below. PSR and SV-98 select only W05, so the scan
 does not list them. Each hit is a candidate for a trace and an in-game check.
 
@@ -328,7 +301,7 @@ the PP-19 25 Rnd magazine or GRT-CPS burst fire, or binds the extra packages.
 ## Review method and rejected findings
 
 **First scan (14 September).** Compared moving-ADS spread penalties and recoil
-smoothing with fixed wording. It found entries 1 and 8.
+smoothing with fixed wording. It found entries 1a and 1b.
 
 **Wide review (14 September).** 333 groups of identical description plus resolved
 site modifiers, covering every muzzle, barrel, grip, laser, light, magazine, ammo
@@ -338,13 +311,12 @@ Frosty and operator in-game review.
 
 Rubric limit: the review assumed default magazines have all shifts at 0. Default
 Regular magazines usually have draw −1, so magazine findings were rechecked relative
-to the default magazine. That recheck found entry 12 and showed that 128
+to the default magazine. That recheck found entry 10 and showed that 128
 non-default magazines lose the Regular draw bonus; this is a consistent design
 pattern, not a text error.
 
 **Collateral check (14 September).** Entry 2 values were compared with the
-attachment audit ammo screenshots for M121 A2, M45A1, L110 and GGH-22. That check
-found entry 14.
+attachment audit ammo screenshots for M121 A2, M45A1, L110 and GGH-22.
 
 Withdrawn or rejected:
 
@@ -361,8 +333,6 @@ Withdrawn or rejected:
 - Codex readings that treated `movingAdsSpreadTierMod: +1` as worse.
 - AK4D 20 Rnd fast and SV-98 Lightened Suppressor text claims: the site links were
   wrong, not the game text.
-
-Not source-checked: Sub Pen on PW7A2 shows an unstated −1 recoil in site data.
 
 ### "Handling" wording
 
