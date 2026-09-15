@@ -30,7 +30,7 @@ Site status uses one of these values, followed by the value that the site applie
 | 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19 | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches source data: no weapon draw speed change |
 | 4 | 20 Rnd fast | PP-19 | Game error | The description states faster reloads. The game does not apply the reload speed bonus (×1.13). | Matches game: no reload speed change |
 | 5 | Subsonic, Sub HP | P18, GGH-22, ES 5.7 | Game error | The description states lower recoil. The game does not apply it. | Matches source data: no recoil change |
-| 6 | Flash Comp | PP-19 | Game error | The description states less recoil buildup and better recoil recovery (recoil smoothing). The game does not apply it (operator report; no source trace yet). | Does not match game: recoil smoothing applied |
+| 6 | Flash Comp | PP-19 | Game error | The description states less recoil buildup and better recoil recovery (recoil smoothing). The game does not apply it: `GS_PP19` has no smoothing binding for the Flash Comp package (source trace and operator report). | Does not match game: recoil smoothing applied |
 | 7 | 200 Rnd belt box | L110, M123K | Game error | The description states reduced ADS accuracy while moving. The game does not apply it. | Matches game: no ADS accuracy while moving change |
 | 8 | 30 Rnd fast | PW7A2 | Description error | The description states improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Matches game: reload speed ×1.13 |
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
@@ -193,16 +193,27 @@ not state. The causes in the game data are different, so each case needs its own
 
 - **In-game text.** "Limits the intensity of muzzle flashes and fully hides in-world
   spotting while firing. Reduces recoil buildup and improves recoil recovery."
-- **Possible conflict.** Operator report: the PP-19 Flash Comp does not have the Recoil
-  Smoothing attribute. This repository does not yet hold a source trace for it; the
-  [recoil handoff](working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md#open-source-and-attachment-review-work)
-  lists "PP-19 Flash Comp modifier mapping" as open work.
+- **Error.** The game does not apply the recoil smoothing (recoil buildup and recoil
+  recovery) that the description states. Operator report: the PP-19 Flash Comp does
+  not have the Recoil Smoothing attribute.
+- **Source trace.** `Attachment_PP19_MZL_VityazFlashComp` (cost 20) selects the shared
+  package `U_WPM_MZL_FlashCompensator_W15` (`f7996b55-…`). Its WB modifier
+  `WPM_MZL_FlashCompensator_W15` has only `WME_SpotRange_3D_P10` and
+  `WME_MuzzleVFX_03_P00`; the smoothing comes from a GS binding to
+  `GRM_SmoothRecoil_P10`. 41 ability files select this package and 41 GS files bind
+  it, but `GS_PP19` has no binding for `f7996b55`. PP-19 is the only weapon that
+  selects the package without the binding. `GS_PP19` does bind smoothing to
+  `U_WPM_MZL_Brake3_W20` (Compensated Brake). (`GS_ScorpionEvo3` binds the package,
+  but `ScorpionEvo3_Ability` does not select it.)
+- **In-game panels.** They cannot show smoothing: on PW5A3, PW7A2 and SCW-10, Flash
+  Comp and Flash Hider show the same Control and recoil. PP-19 shows Control 54 with
+  None, Flash Hider and Flash Comp.
 - **Site.** The `flash_comp` record has no PP-19 override. The site applies the
   ordinary smoothing: `recoilDurationOverride: 0.05`, `adsRecoilDecayMult: 1.2` and
   `hipRecoilDecayMult: 1.2`.
-- **Status.** Game error: the game does not apply the recoil smoothing that the
-  description states. The site does not match the operator report.
-- **Action.** Confirm with a Frosty trace, then add a PP-19 override.
+- **Status.** Game error, confirmed by source trace. The site does not match the game.
+- **Action.** Add a PP-19 `weaponOverrides` entry to `flash_comp` that removes the
+  smoothing. First confirm how an override can remove `recoilDurationOverride`.
 
 ### 7. L110 and M123K 200 Rnd belt box
 
