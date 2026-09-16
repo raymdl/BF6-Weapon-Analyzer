@@ -1,0 +1,54 @@
+name: Build HTML viewer snapshot
+on:
+  push:
+    branches: [docs/build-html-viewer-2026-09-16]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated rendering tools
+        run: |
+          python -m pip install Markdown==3.9 beautifulsoup4==4.13.5
+          npm install --prefix .atlas-build --no-audit --no-fund @mermaid-js/mermaid-cli@11.12.0
+      - name: Build standalone HTML
+        run: python .atlas-build/build.py
+      - name: Check navigation and diagram controls
+        run: node .atlas-build/check.mjs
+      - name: Store reviewed output as an unattached Git blob
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import base64, hashlib, json, os, urllib.request
+          from pathlib import Path
+          content = Path('.atlas-build/output/index.html').read_bytes()
+          expected = hashlib.sha1(b'blob ' + str(len(content)).encode() + b'\0' + content).hexdigest()
+          req = urllib.request.Request(
+              'https://api.github.com/repos/' + os.environ['GITHUB_REPOSITORY'] + '/git/blobs',
+              data=json.dumps({'content': base64.b64encode(content).decode(), 'encoding':'base64'}).encode(),
+              headers={'Authorization':'Bearer ' + os.environ['GH_TOKEN'], 'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28'},
+              method='POST')
+          with urllib.request.urlopen(req, timeout=60) as response:
+              result = json.load(response)
+          assert result['sha'] == expected, result
+          report = {'blob_sha': expected, 'sha256':hashlib.sha256(content).hexdigest(), 'bytes':len(content), 'source_commit':'297eaad838d3d60c132ee0ecca8bdc4edfd74c48', 'diagrams':23, 'sections':8}
+          Path('.atlas-build/output/blob.json').write_text(json.dumps(report, indent=2) + '\n')
+          print(json.dumps(report, indent=2))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary:
+              summary.write('HTML blob: `' + expected + '`\n\nNo branch or published files were changed by this job.\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: html-viewer-snapshot
+          path: .atlas-build/output/
+          retention-days: 3
