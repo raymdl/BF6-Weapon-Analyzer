@@ -10,7 +10,7 @@ a user-supplied label, not an independently verified property of the XML.
 Multiplayer is the target. Cosmetics and optics are excluded.
 
 The source files are in the adjacent `BF6 Datamining` workspace. Its
-`research-1.4.2.5/FINDINGS.md` records the dependency audit and attachment traces.
+`research-1.4.2.5/FINDINGS.md` (moved on 16 September 2026 to `BF6 Datamining/_archive/handoffs-2026-09/research-1.4.2.5-FINDINGS.md`) records the dependency audit and attachment traces.
 The current analyzer baseline is `fb7a214` on `codex/frosty-data-analysis`.
 EF88 base velocity is now 724 m/s, replacing the older 670 m/s screenshot value.
 The raw WB vector and named registry agree. The source record is

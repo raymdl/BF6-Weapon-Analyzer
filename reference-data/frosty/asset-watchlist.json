@@ -4,13 +4,13 @@
   "sourceBuildLabel": "1.4.2.5",
   "buildIdentityVerified": false,
   "catalog": {
-    "location": "datamining/ebx_manifest.csv",
+    "location": "datamining/builds/1.4.2.5/capture/catalog/ebx_manifest.csv",
     "sha256AtSeed": "d391353210a3306c9c7ab8193621eb459a7752e281f0d0b282abc8cbd7d75497",
     "assetCount": 464499
   },
   "locations": {
     "datamining": "external BF6 Datamining directory; configure per machine",
-    "xmlRoot": "datamining/Frosty Exports/1.4.2.5"
+    "xmlRoot": "datamining/builds/1.4.2.5/xml"
   },
   "evidence": {
     "weapon-identity": {

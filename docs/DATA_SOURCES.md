@@ -117,26 +117,38 @@ The Frosty source and runtime are under
 There is no second nested `FrostyToolsuite-battlefield6` folder. The runtime
 directory is `FrostyEditor\bin\Release\Final` beneath this tools root.
 
-As of 14 September 2026, the local 1.4.2.5 XML export root is:
+Since 16 September 2026, each data build is a snapshot folder under
+`C:\Users\royal\Documents\BF6 Datamining\builds\<build>\` (`xml\`, `capture\`,
+`reports\`), managed by `scripts/frosty-build.py` ([Frosty tools](frosty/TOOLS.md#build-snapshots)).
+The 1.4.2.5 XML export root is:
 
 ```text
-C:\Users\royal\Documents\BF6 Datamining\Frosty Exports\1.4.2.5
+C:\Users\royal\Documents\BF6 Datamining\builds\1.4.2.5\xml
 ```
 
-The export root contains `_AF`, `Animations`, `Common`, and `Game`. Frosty asset
-routes are unchanged; resolve source-relative XML paths beneath this root.
-The manifests (`ebx_manifest.txt`, `ebx_manifest.csv`, `ebx_directories.txt`),
-extraction scripts, handoff, and `research-1.4.2.5` remain in the parent
-`BF6 Datamining` folder. The `Battlefield 6 Offsets HTML` collection also remains
-in that parent folder.
+It contains `_AF`, `Animations`, `Common`, and `Game`. Frosty asset routes are
+unchanged; resolve source-relative XML paths beneath this root. Each build's catalog
+files (`ebx_manifest.txt`, `ebx_manifest.csv`, `ebx_directories.txt`) are in
+`builds\<build>\capture\catalog\`. The folder's `README.md` describes the layout and
+maps the old paths.
 
-For analyzer tools that accept the XML export root, use `--root "../BF6 Datamining/Frosty Exports/1.4.2.5"`
-from the analyzer repository. Historical reports and provenance can retain the
-old absolute export paths; substitute the new root when locating their XML inputs,
-without rewriting recorded hashes or moving manifest/research paths.
+| Old path | Current path |
+|---|---|
+| `Frosty Exports\1.4.2.5` (earlier `Frosty`) | `builds\1.4.2.5\xml` |
+| `Frosty Exports\1.4.3.0` | `builds\1.4.3.0\xml` |
+| `research-1.4.2.5\pre-update` | `builds\1.4.2.5\capture` |
+| other `research-1.4.2.5` files | `builds\1.4.2.5\reports` |
+| `research-1.4.3.0\post-update` | `builds\1.4.3.0\capture` |
+| root `ebx_manifest.*`, `ebx_directories.txt` | `builds\1.4.2.5\capture\catalog` |
+| early handoffs, proof-of-concept scripts, `Battlefield 6 Offsets HTML` | `_archive\` |
 
-The separate `audit_weapon_exports.py` in the datamining workspace expects
-`ebx_manifest.txt` inside `--root`. Its historical command requires adaptation
+For analyzer tools that accept the XML export root, use
+`--root "../BF6 Datamining/builds/<build>/xml"` from the analyzer repository (for 1.4.3.0,
+`builds/1.4.3.0/xml/xml-overlay`). Historical reports and provenance keep their recorded
+absolute paths; use the table to locate their inputs without rewriting recorded hashes.
+
+The separate `audit_weapon_exports.py` (now in `BF6 Datamining/_archive/poc-2026-09-05/`)
+expects `ebx_manifest.txt` inside `--root`. Its historical command requires adaptation
 for the split layout; changing only `--root` is insufficient.
 
 ## Source-to-runtime flow

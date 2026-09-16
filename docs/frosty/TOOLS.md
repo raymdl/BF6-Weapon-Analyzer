@@ -12,16 +12,40 @@ the [game update guide](../GAME_UPDATE_GUIDE.md); this page is the tool referenc
 | Datamining root | `C:\Users\royal\Documents\BF6 Datamining` |
 | Frosty tools root | `FrostyToolsuite-battlefield6` (no second nested folder) |
 | Runtime (FrostyCmd, cache, profiles) | `FrostyToolsuite-battlefield6\FrostyEditor\bin\Release\Final` |
-| XML export per build | `Frosty Exports\<build>` (`1.4.2.5` is the retained baseline; never overwrite it) |
-| 1.4.3.0 overlay root | `Frosty Exports\1.4.3.0\xml-overlay`; routes Frosty could not decode are listed in `xml-overlay-stale.txt` |
-| English strings | `Frosty Exports\<build>\Common\Localization\Languages\fs_us_loc.strings.tsv` |
-| Raw captures per build | `research-<build>\...\collection\collection-manifest.json` |
-| Catalogs | `ebx_manifest.txt`, `ebx_manifest.csv`, `ebx_directories.txt` in the datamining root |
+| Build snapshots | `builds\<build>\` with `xml\`, `capture\`, `reports\`, `BUILD.json`, `MANIFEST.tsv`; index `builds.json` ([below](#build-snapshots)) |
+| XML export root | `builds\<build>\xml` (1.4.3.0: `builds\1.4.3.0\xml\xml-overlay`; routes Frosty could not decode are in `xml-overlay-stale.txt`) |
+| English strings | `builds\<build>\xml\Common\Localization\Languages\fs_us_loc.strings.tsv` |
+| Raw captures, toolchain | `builds\<build>\capture\collection\`, `builds\<build>\capture\toolchain\` |
+| Catalogs | `builds\<build>\capture\catalog\` (`ebx_manifest.txt`, `ebx_manifest.csv`, `ebx_directories.txt`); the watchlist pins the 1.4.2.5 `ebx_manifest.csv` |
+| Layout and archive | `BF6 Datamining\README.md` (with the old-to-new path map); historical files in `BF6 Datamining\_archive\` |
 
-From the Analyzer repository, pass `--root "../BF6 Datamining/Frosty Exports/<build>"` to
-tools that read the XML tree. Older reports keep old absolute paths; substitute the new
-root without changing recorded hashes. More detail:
-[Data sources](../DATA_SOURCES.md#local-frosty-export-location).
+From the Analyzer repository, pass `--root "../BF6 Datamining/builds/<build>/xml"` to
+tools that read the XML tree. Older reports keep old absolute paths; the
+[path map](../DATA_SOURCES.md#local-frosty-export-location) gives the current location.
+
+## Build snapshots
+
+`scripts/frosty-build.py --datamining "<datamining root>" <command>`:
+
+| Command | Use |
+|---|---|
+| `status` | List builds, states, file counts and sizes. |
+| `guard <build> --game "<game>"` | **Run before every export.** Stops unless `<build>` is open and the installed `bf6.exe` is one of its recorded clients. |
+| `record <build>` | **Run after every export.** Adds new files to `MANIFEST.tsv`; stops if an existing data file changed or disappeared (`reports\` may change). |
+| `verify <build>` | Compares the build with its manifest. |
+| `client-check <build> --game "<game>" --runtime "<runtime>"` | After a client update: compares the runtime `SharedTypeDescriptors.ebx` with the build's recorded descriptors (layouts with resolved type references). Identical: prints the client entry to add (hotfix). Different: a new build is needed. |
+| `seal <build>` | Verifies, sets every file read-only, and marks the build sealed. Run when the game moves to a new data build, before its first export. |
+
+- **Open build:** the installed data build. Later investigations can add new Frosty paths
+  to it (export into its `xml\` or `capture\` folder, then `record`).
+- **Sealed build:** read-only reference for comparisons. Derived comparison results go into
+  the newer build's `reports\` folder.
+- **Current state (16 September 2026):** 1.4.2.5 sealed (61,366 files, 2.7 GiB); 1.4.3.0
+  open (63,326 files, 3.7 GiB) with two clients: the 1.4.3.0 release and the 16 September
+  hotfix. The hotfix has identical type layouts, and only 2 non-gameplay assets changed
+  (`builds\1.4.3.0\reports\hotfix-2026-09-16-catalog\`).
+- There is no second copy of the data by design; it is research data, not site production
+  data. Sealing and the manifest protect it against accidental changes.
 
 ## FrostyCmd
 
@@ -48,14 +72,16 @@ Build only FrostyCmd, so the existing FrostySdk and FrostyHash builds stay uncha
 
 ## Procedure
 
-1. **Build check.** The 1.4.2.5 install has `bf6.exe` dated 5 September 2026. A later
-   date means the game updated, and exports then show the new build.
+1. **Build check.** Run `frosty-build.py guard <open build> --game "<game>"`. If it
+   stops after a game update, follow the [game update guide](../GAME_UPDATE_GUIDE.md#stage-1--identify-the-new-build)
+   (`client-check`, then either add the hotfix client or seal and create a new build).
 2. **Cache.** After an update, rename `Caches\bf6.cache` (for example
    `bf6-1.4.2.5.cache`) before the first export. Frosty only patches a cache whose head
    number differs, and that path is not tested for BF6. The first export then builds a
    full cache (880 MB for 1.4.2.5).
-3. **Export** with `export-ebx-list` into a new `Frosty Exports\<build>` folder. A
-   previous build cannot be exported again after the game files update.
+3. **Export** with `export-ebx-list` into the open build (`builds\<build>\xml\...` or
+   `capture\...`), then run `record`. A previous build cannot be exported again after the
+   game files update.
 4. **Check for decoding gaps.** Count `<!-- Object could not be loaded (unknown type) -->`
    in the new XML before you trust a diff. Decode those routes with
    `scripts/frosty-ebx-decode.py` (see [SDK and decoding](#sdk-and-decoding)).
@@ -71,7 +97,7 @@ Build only FrostyCmd, so the existing FrostySdk and FrostyHash builds stay uncha
 - **After a failed or slow export,** check `Get-Process FrostyCmd` and stop it with
   `Stop-Process -Name FrostyCmd -Force`. Git Bash `timeout` does not stop the Windows
   process.
-- **Never overwrite a previous build's export tree.**
+- **Never write to a sealed build.** Its files are read-only; `guard` stops exports into it.
 - **Generators write by default.** Several `scripts/frosty-*.py` write into Analyzer data
   or provenance. Pass explicit output paths and check `git status` after each run.
   `frosty-attachment-tooltips.py` writes back into its `--mapping-json` input: copy the
@@ -86,6 +112,7 @@ Build only FrostyCmd, so the existing FrostySdk and FrostyHash builds stay uncha
 | `scripts/frosty-material-grid-inventory.py --descriptors <SharedTypeDescriptors.ebx> --class-guids FrostyPlugin/Sdk/ClassGuids.txt --grid <raw .ebx> --out <json>` | Bounded, safe reader for material grids. Ran on both 1.4.3.0 grids. |
 | `scripts/frosty-hit-zones.py` | Reads raw grids with `SharedTypeDescriptors.ebx`. |
 | `scripts/frosty-ebx-decode.py` | SDK-independent RIFF EBX decoder (below). |
+| `scripts/frosty-catalog-files.py <asset-catalog.json> <folder>` | Writes `ebx_manifest.txt`, `ebx_manifest.csv` and `ebx_directories.txt` for a build (`--check` compares). |
 
 ## SDK and decoding
 
@@ -162,8 +189,8 @@ descriptors and writes a JSON tree with the same `Class_`/`Field_` names as the 
 
 | Build | Collection | Status |
 |---|---|---|
-| 1.4.2.5 | `research-1.4.2.5/pre-update/collection/collection-manifest.json` | Partial; 23,557 raw captures, 464,499-path catalog. Archive head `4420709` differs from SDK `4414275`. |
-| 1.4.3.0 | `research-1.4.3.0/post-update/collection/collection-manifest.json` | Partial; 23,709 asset rows, schema-valid, 24,565 files re-verified by hash. Archive head `4892017`. |
+| 1.4.2.5 | `builds/1.4.2.5/capture/collection/collection-manifest.json` | Partial; 23,557 raw captures, 464,499-path catalog. Archive head `4420709` differs from SDK `4414275`. |
+| 1.4.3.0 | `builds/1.4.3.0/capture/collection/collection-manifest.json` | Partial; 23,709 asset rows, schema-valid, 24,565 files re-verified by hash. Archive head `4892017`. |
 
 The 1.4.3.0 capture reuses the 1.4.2.5 route list, adds the 12 assets the update
 introduced and 152 dependency routes. Animation routes, `_af/` tag collections, decal
