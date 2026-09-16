@@ -805,7 +805,10 @@ function renderOverview() {
       } else if (v1 !== 0 && v2 !== 0 && Number.parseFloat(f.fmt(v1)) !== 0 && Number.parseFloat(f.fmt(v2)) !== 0) {
         const pct = Math.round(Math.abs(v2 - v1) / Math.abs(v1) * 100);
         const w2better = (f.higherBetter && v2 > v1) || (f.lowerBetter && v2 < v1);
-        diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${w2better ? '+' : '-'}${pct}%</span>`;
+        // Sign shows the direction the raw number moved; color shows whether
+        // that move is an improvement. A faster ADS time is "-12%" in green.
+        const sign = v2 > v1 ? '+' : '-';
+        diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${sign}${pct}%</span>`;
       }
     }
     const est1 = w1 ? isEst(w1) : false, est2 = w2 ? isEst(w2) : false;
