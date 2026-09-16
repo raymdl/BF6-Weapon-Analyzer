@@ -1,0 +1,5140 @@
+{
+  "scope": "Research inventory of material-grid record types and projectile-to-soldier/surface records. Not used by the site; semantics of legacy records are unverified.",
+  "method": [
+    "Read raw EBX with the bounded MaterialGrid reader from scripts/frosty-hit-zones.py.",
+    "Name types by matching descriptor GUIDs with FrostyPlugin/Sdk/ClassGuids.txt (GUID bytes 4-15).",
+    "Name MaterialRelationDamageData fields by offset: six Float32 and two Boolean descriptor fields match ClassGuids' names in count, type and order. Offsets 56 and 64 are BF6 fields without names.",
+    "Projectile materials come from the hit-zones report (base projectiles and ammo swaps).",
+    "Soldier materials are the upper 12 bits of GlacierSoldierBoneCollision packed materials."
+  ],
+  "inputs": {
+    "descriptorsSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "classGuidsSha256": "06a5ea8ff3d0773f7206db81a12bdb993e3235ec7069c3f5a9d7e0b56a6b354f",
+    "hitZonesReportSha256": "42e0e4cb95ac5e200dbb825bcafef7345327b372076ecacf7a0501ef5f2ea8d1",
+    "grids": [
+      {
+        "file": "materialgrid_win32.ebx",
+        "sha256": "aa93a111c7ee6443ef00e0df63834433672ff72dbbb3e3d6c10efc72f38c3de7"
+      },
+      {
+        "file": "materialgrid_win32.ebx",
+        "sha256": "b2ca0a2bde7aa7ebae1d0eea5880d59a72ab3a9f6a3f602e6d4fbec07498edec"
+      }
+    ],
+    "gridRoutes": [
+      "game/glaciermp/levels/mp_abbasid/mp_abbasid/materialgrid_win32",
+      "game/glaciermp/levels/mp_badlands/mp_badlands/materialgrid_win32"
+    ]
+  },
+  "observations": [
+    "65 record types; 31 have ClassGuids names. Earlier site work used only the protection array (c180226c) and collateral array (6aa794ef), both without ClassGuids names.",
+    "MaterialRelationDamageData.DamageProtectionMultiplier for soldier materials differs from the protection arrays the site uses (for example Interdictor limb 0.8 vs 0.67; automatic limb 1.0 vs 0.84). The VSSM in-game limb observation supports the protection array. Treat the damage record as not proven live.",
+    "Secondary bone material 580 has protection 0 for every weapon projectile material.",
+    "Most bullet materials can penetrate 7 target materials; materials 290, 351 and 781 can penetrate 27. Target material names are not resolved."
+  ],
+  "openQuestions": [
+    "Which asset names grid material IDs?",
+    "Which runtime path reads MaterialRelationDamageData versus the protection arrays?",
+    "What do DamagePenetrationMultiplier and CanPenetrate mean for damage after passing through a surface?"
+  ],
+  "gridAgreement": {
+    "soldierPairsCompared": 90,
+    "disagreements": []
+  },
+  "types": [
+    {
+      "hash": "6c0d0e75",
+      "class": "MaterialRelationEffectData",
+      "objects": 2476,
+      "cells": 22919,
+      "fieldHashes": [
+        "4eaf60c3",
+        "a008678a",
+        "163aac8e",
+        "07b3879d",
+        "5b7f2072",
+        "03e9b479",
+        "d5e18a85",
+        "92cf16a3"
+      ]
+    },
+    {
+      "hash": "d4177d69",
+      "class": "MaterialRelationDamageData",
+      "objects": 1653,
+      "cells": 36275,
+      "fieldHashes": [
+        "4eaf60c3",
+        "4e8a68fc",
+        "8196a5df",
+        "bc78c3b3",
+        "674633de",
+        "4782a5a1",
+        "7fa53094",
+        "fc938654",
+        "56185fbe",
+        "679cea13",
+        "e03ac4e7",
+        "3f90ad4c"
+      ]
+    },
+    {
+      "hash": "7d748541",
+      "class": null,
+      "objects": 851,
+      "cells": 14643,
+      "fieldHashes": [
+        "4eaf60c3",
+        "d8ec879b",
+        "0839b22b"
+      ]
+    },
+    {
+      "hash": "5d5c4bed",
+      "class": "MaterialRelationTriggarableEffectData",
+      "objects": 794,
+      "cells": 5021,
+      "fieldHashes": [
+        "4eaf60c3",
+        "0679f638"
+      ]
+    },
+    {
+      "hash": "5269da4b",
+      "class": "MaterialRelationDecalData",
+      "objects": 786,
+      "cells": 7167,
+      "fieldHashes": [
+        "4eaf60c3",
+        "7b14077b",
+        "cbbf8e5c"
+      ]
+    },
+    {
+      "hash": "310a5286",
+      "class": null,
+      "objects": 691,
+      "cells": 24870,
+      "fieldHashes": [
+        "4eaf60c3",
+        "8ec0c6b9",
+        "5cf92f95",
+        "b2404d2a",
+        "e31c97b1",
+        "fa6a4e77"
+      ]
+    },
+    {
+      "hash": "72c85972",
+      "class": null,
+      "objects": 397,
+      "cells": 12464,
+      "fieldHashes": [
+        "4eaf60c3",
+        "582b7dc3",
+        "6fd8d303",
+        "d39df483",
+        "ac0153f7",
+        "a56fdc0e"
+      ]
+    },
+    {
+      "hash": "c180226c",
+      "class": null,
+      "objects": 185,
+      "cells": 1629,
+      "fieldHashes": [
+        "4eaf60c3",
+        "7889231b"
+      ]
+    },
+    {
+      "hash": "7d765f18",
+      "class": "MaterialRelationPenetrationData",
+      "objects": 150,
+      "cells": 11436,
+      "fieldHashes": [
+        "4eaf60c3",
+        "b162a322"
+      ]
+    },
+    {
+      "hash": "dca85dee",
+      "class": null,
+      "objects": 117,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "8ec0c6b9",
+        "b2404d2a",
+        "e31c97b1",
+        "6acf66d5",
+        "6da117e0",
+        "735e0122"
+      ]
+    },
+    {
+      "hash": "15605115",
+      "class": null,
+      "objects": 63,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "8ec0c6b9",
+        "15991070",
+        "b2404d2a",
+        "db5b9b30",
+        "8f5cd20a",
+        "e31c97b1",
+        "6acf66d5",
+        "6da117e0",
+        "735e0122"
+      ]
+    },
+    {
+      "hash": "7660b408",
+      "class": null,
+      "objects": 59,
+      "cells": 1443,
+      "fieldHashes": [
+        "4eaf60c3",
+        "4c339c8b"
+      ]
+    },
+    {
+      "hash": "15b9c968",
+      "class": "MaterialPropertyPhysicsData",
+      "objects": 58,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "91c68ec9",
+        "cbab8553",
+        "053abced",
+        "409bde71",
+        "831cf7c2",
+        "c552c874",
+        "6e58e5b7",
+        "2da45da8"
+      ]
+    },
+    {
+      "hash": "ab20bc56",
+      "class": "MaterialRelationTerrainDestructionData",
+      "objects": 45,
+      "cells": 181,
+      "fieldHashes": [
+        "4eaf60c3",
+        "ae231c9d",
+        "680b1bab"
+      ]
+    },
+    {
+      "hash": "e8d9ac12",
+      "class": null,
+      "objects": 33,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "afa33750"
+      ]
+    },
+    {
+      "hash": "dd2a009c",
+      "class": null,
+      "objects": 33,
+      "cells": 375,
+      "fieldHashes": [
+        "4eaf60c3",
+        "a56a0902"
+      ]
+    },
+    {
+      "hash": "a33df030",
+      "class": null,
+      "objects": 27,
+      "cells": 62,
+      "fieldHashes": [
+        "4eaf60c3",
+        "3d1fbb13",
+        "a47dd78c"
+      ]
+    },
+    {
+      "hash": "6aa794ef",
+      "class": null,
+      "objects": 25,
+      "cells": 1629,
+      "fieldHashes": [
+        "4eaf60c3",
+        "c52d90b8"
+      ]
+    },
+    {
+      "hash": "9937bfcb",
+      "class": "BFMaterialDamageTypePropertyData",
+      "objects": 22,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "d829667b",
+        "3bd59773",
+        "137dad1d",
+        "9b56061f"
+      ]
+    },
+    {
+      "hash": "4c7c0daf",
+      "class": null,
+      "objects": 21,
+      "cells": 105,
+      "fieldHashes": [
+        "4eaf60c3",
+        "8ec0c6b9",
+        "15991070",
+        "b2404d2a",
+        "e31c97b1",
+        "db5b9b30",
+        "8f5cd20a"
+      ]
+    },
+    {
+      "hash": "c86df46c",
+      "class": null,
+      "objects": 18,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "75addb46"
+      ]
+    },
+    {
+      "hash": "ef07b164",
+      "class": null,
+      "objects": 17,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "75addb46"
+      ]
+    },
+    {
+      "hash": "1faf7396",
+      "class": null,
+      "objects": 15,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "7ecd327b"
+      ]
+    },
+    {
+      "hash": "afbfd124",
+      "class": "FloatCurve",
+      "objects": 15,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "edfc6df6",
+        "69028f32",
+        "5579bb82"
+      ]
+    },
+    {
+      "hash": "2cd4919f",
+      "class": null,
+      "objects": 13,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "56daf3cc"
+      ]
+    },
+    {
+      "hash": "a6b621b7",
+      "class": null,
+      "objects": 13,
+      "cells": 183,
+      "fieldHashes": [
+        "4eaf60c3",
+        "47a50834",
+        "63d92d5a",
+        "356e2433"
+      ]
+    },
+    {
+      "hash": "eebe1753",
+      "class": "BFDamageModifierPropertyData",
+      "objects": 12,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "899ccca2",
+        "50fb17bb",
+        "3be3316d"
+      ]
+    },
+    {
+      "hash": "239d8f54",
+      "class": "MaterialRelationDebrisData",
+      "objects": 11,
+      "cells": 1909,
+      "fieldHashes": [
+        "4eaf60c3",
+        "a2ed1fe6",
+        "f12f2b0e"
+      ]
+    },
+    {
+      "hash": "81a0a486",
+      "class": null,
+      "objects": 10,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "56daf3cc"
+      ]
+    },
+    {
+      "hash": "6a8a95ce",
+      "class": null,
+      "objects": 10,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "eb43834e"
+      ]
+    },
+    {
+      "hash": "f29786a7",
+      "class": null,
+      "objects": 9,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "13b6f1ec"
+      ]
+    },
+    {
+      "hash": "d686a7c7",
+      "class": "BelowSpeedModifier",
+      "objects": 9,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "d160f72c"
+      ]
+    },
+    {
+      "hash": "9ecb238e",
+      "class": null,
+      "objects": 7,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "2406dad9"
+      ]
+    },
+    {
+      "hash": "f1f7e550",
+      "class": "MaterialPropertyWeatheringData",
+      "objects": 7,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "ec30e918"
+      ]
+    },
+    {
+      "hash": "580e391a",
+      "class": null,
+      "objects": 7,
+      "cells": 5939,
+      "fieldHashes": [
+        "4eaf60c3",
+        "5cb73a3d"
+      ]
+    },
+    {
+      "hash": "97dd66da",
+      "class": "WeatheringParam",
+      "objects": 6,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "c1ad37da",
+        "d66ed809"
+      ]
+    },
+    {
+      "hash": "c32cd139",
+      "class": "PoseModifier",
+      "objects": 5,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "e7062026"
+      ]
+    },
+    {
+      "hash": "b70a8802",
+      "class": "AccumulateOverDistanceOp",
+      "objects": 5,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "8350c0b8",
+        "4523aadf",
+        "a58284fb",
+        "30257624"
+      ]
+    },
+    {
+      "hash": "4513510d",
+      "class": "MaterialPropertyAnimationData",
+      "objects": 4,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "c6992444",
+        "a1d18d17",
+        "4d9b79df"
+      ]
+    },
+    {
+      "hash": "5015c4ba",
+      "class": null,
+      "objects": 4,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "f28b1129"
+      ]
+    },
+    {
+      "hash": "52511a1b",
+      "class": null,
+      "objects": 3,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "24709fad"
+      ]
+    },
+    {
+      "hash": "24709fad",
+      "class": null,
+      "objects": 2,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "1e7d24d7"
+      ]
+    },
+    {
+      "hash": "47ee3bc6",
+      "class": "SprintModifier",
+      "objects": 2,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "7f6066e9"
+      ]
+    },
+    {
+      "hash": "dcb812fa",
+      "class": "MaterialGridData",
+      "objects": 1,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "e6c1e5ad",
+        "8ad034f5",
+        "8e6ca5fc",
+        "61ea148f",
+        "9a2a2ce6",
+        "db25cf83",
+        "24535855"
+      ]
+    },
+    {
+      "hash": "0cec089e",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "f98cb3e2",
+        "0a00a2fb"
+      ]
+    },
+    {
+      "hash": "4c23cd52",
+      "class": "MaterialPropertyHealthData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "5008ce9d"
+      ]
+    },
+    {
+      "hash": "c4b53c56",
+      "class": "MaterialPropertyEffectData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "a008678a"
+      ]
+    },
+    {
+      "hash": "c001571d",
+      "class": "PathfindingMaterialPropertyData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "31ebb6c2"
+      ]
+    },
+    {
+      "hash": "43f8d1ae",
+      "class": "MaterialPropertyFireData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "7af295c2"
+      ]
+    },
+    {
+      "hash": "8f3b17b3",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "767646c5"
+      ]
+    },
+    {
+      "hash": "591adb0b",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "60aa4c75"
+      ]
+    },
+    {
+      "hash": "6cc5bd31",
+      "class": "StateModifier",
+      "objects": 1,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "cb039c32"
+      ]
+    },
+    {
+      "hash": "505442d5",
+      "class": "MaterialRelationDynamicFireData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "be2e87d9",
+        "dcac5114",
+        "60bbc069"
+      ]
+    },
+    {
+      "hash": "4d264dcc",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "ac26ea8a"
+      ]
+    },
+    {
+      "hash": "8d17e02d",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "820ec965"
+      ]
+    },
+    {
+      "hash": "625db45c",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "7b14077b"
+      ]
+    },
+    {
+      "hash": "63c616ef",
+      "class": "MaterialPropertyPhysicsDestructionData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "4f59edbe",
+        "4e3a177a",
+        "809082da",
+        "e343dafb",
+        "755ee874"
+      ]
+    },
+    {
+      "hash": "8096225d",
+      "class": "MaterialRelationFootPrintData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "61c51962",
+        "cd0c0325"
+      ]
+    },
+    {
+      "hash": "9c2b4faf",
+      "class": "DiceShooterMaterialPropertySoundData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "c6c07201"
+      ]
+    },
+    {
+      "hash": "2583b36c",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "820ec965"
+      ]
+    },
+    {
+      "hash": "2dd5635a",
+      "class": "MaterialRelationVehicleData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "ae7447f4",
+        "66ec8c09",
+        "bc622d97",
+        "384d1f35"
+      ]
+    },
+    {
+      "hash": "bfd6e4fa",
+      "class": null,
+      "objects": 1,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "cb039c32"
+      ]
+    },
+    {
+      "hash": "6d97c471",
+      "class": "MaterialPropertyImpulseData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "d5d13518"
+      ]
+    },
+    {
+      "hash": "c42b3fba",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "cc4149dd",
+        "bd865115",
+        "bb1c0e02",
+        "dccee2fe"
+      ]
+    },
+    {
+      "hash": "f50a1b0a",
+      "class": "AccumulateOverTimeOp",
+      "objects": 1,
+      "cells": 0,
+      "fieldHashes": [
+        "4eaf60c3",
+        "8350c0b8",
+        "4523aadf",
+        "da3da2a3",
+        "30257624"
+      ]
+    },
+    {
+      "hash": "760d2282",
+      "class": null,
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "e982e725"
+      ]
+    },
+    {
+      "hash": "a66b1f4b",
+      "class": "MaterialPropertyTerrainData",
+      "objects": 1,
+      "cells": 1,
+      "fieldHashes": [
+        "4eaf60c3",
+        "772271f9",
+        "b5ac9dc2",
+        "208be6c1"
+      ]
+    }
+  ],
+  "soldierPairs": {
+    "275": {
+      "weapons": [
+        "es57",
+        "ggh22",
+        "m45a1",
+        "p18"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "276": {
+      "weapons": [
+        "ak205",
+        "brod3",
+        "grtbc",
+        "m4a1",
+        "qbz192",
+        "sg553r",
+        "sor300sc",
+        "vssm",
+        "vssm:long_range",
+        "vssm:range_pen"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "277": {
+      "weapons": [
+        "b36a4",
+        "ef88",
+        "kord6p67",
+        "l85a3",
+        "m16a4",
+        "m433",
+        "nvo228e",
+        "sor556",
+        "vcr2"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "278": {
+      "weapons": [
+        "drsiar",
+        "kts100",
+        "l110",
+        "m123k",
+        "rpk74m",
+        "rpkm"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "279": {
+      "weapons": [
+        "db12",
+        "db12:buckshot_00",
+        "ks18k",
+        "ks18k:buckshot_00",
+        "m1014",
+        "m1014:buckshot_00",
+        "m87a1",
+        "m87a1:buckshot_00"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "286": {
+      "weapons": [
+        "db12:slugs",
+        "ks18k:slugs",
+        "m1014:slugs",
+        "m87a1:slugs"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 2.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "290": {
+      "weapons": [
+        "l115",
+        "l115:long_range",
+        "m2010esr",
+        "m2010esr:long_range",
+        "psr",
+        "psr:long_range",
+        "sv98",
+        "sv98:long_range"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.75,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.8,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.67
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.8,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.67
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "291": {
+      "weapons": [
+        "grtcps",
+        "lmr27"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.5,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.91
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.91
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "351": {
+      "weapons": [
+        "miniscout"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.75,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.67
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.67
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "MaterialRelationPenetrationData",
+          "NeverPenetrate": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "491": {
+      "weapons": [
+        "m357trait",
+        "m44"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "492": {
+      "weapons": [
+        "pw7a2",
+        "usg90"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "493": {
+      "weapons": [
+        "cz3a1",
+        "kv9",
+        "pp19",
+        "pw5a3",
+        "scw10",
+        "sgx",
+        "sl9",
+        "umg40",
+        "vz61"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "494": {
+      "weapons": [
+        "m277",
+        "m417a2"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "496": {
+      "weapons": [
+        "ak4d",
+        "m121a2",
+        "m240l",
+        "m60",
+        "tr7"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "497": {
+      "weapons": [
+        "m250"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.34,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.84
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "498": {
+      "weapons": [
+        "m39emr",
+        "m39emr:long_range",
+        "svdm",
+        "svdm:long_range",
+        "svk86",
+        "svk86:long_range"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.5,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.91
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.9,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.91
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "499": {
+      "weapons": [
+        "db12:flechette",
+        "ks18k:flechette",
+        "m1014:flechette",
+        "m87a1:flechette"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0,
+            1.34,
+            1.5,
+            1.75,
+            1.8,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.4,
+            1.57,
+            1.8,
+            1.8
+          ]
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 0.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            1.0
+          ]
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 1.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 0,
+          "type": "collateral array (6aa794ef)",
+          "values": [
+            0.0,
+            0.166667,
+            0.25,
+            0.333334,
+            0.500001,
+            0.571429,
+            0.666667,
+            0.750001,
+            0.833334,
+            1.0
+          ]
+        },
+        {
+          "list": 0,
+          "type": "protection array (c180226c)",
+          "values": [
+            0.0
+          ]
+        }
+      ]
+    },
+    "781": {
+      "weapons": [
+        "interdictor",
+        "interdictor:long_range"
+      ],
+      "head": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 10.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 2.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        }
+      ],
+      "abdomen": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 10.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 30.0,
+          "DamageProtectionThreshold": 2.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        }
+      ],
+      "limb": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 10.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 2.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        },
+        {
+          "list": 1,
+          "type": "MaterialRelationEffectData"
+        },
+        {
+          "list": 1,
+          "type": "MaterialRelationTriggarableEffectData"
+        }
+      ],
+      "bone material 115": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 10.0,
+          "DamageProtectionMultiplier": 1.0,
+          "DamagePenetrationMultiplier": 30.0,
+          "DamageProtectionThreshold": 2.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        }
+      ],
+      "secondary bone material 580": [
+        {
+          "list": 0,
+          "type": "MaterialRelationDamageData",
+          "CollisionDamageMultiplier": 1.0,
+          "CollisionDamageThreshold": 30.0,
+          "DamageProtectionMultiplier": 0.0,
+          "DamagePenetrationMultiplier": 1.0,
+          "DamageProtectionThreshold": 2.0,
+          "ExplosionCoverDamageModifier": 1.0,
+          "InflictsDemolitionDamage": true,
+          "AllowClientDestruction": false
+        }
+      ]
+    }
+  },
+  "surfacePenetration": {
+    "275": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 323,
+        "1.0": 105,
+        "0.4": 7
+      }
+    },
+    "276": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 327,
+        "1.0": 97,
+        "0.4": 12
+      }
+    },
+    "277": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 323,
+        "1.0": 106,
+        "0.6": 7
+      }
+    },
+    "278": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 327,
+        "1.0": 103,
+        "0.8": 6
+      }
+    },
+    "279": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 319,
+        "1.0": 87,
+        "0.0": 16,
+        "0.8": 12
+      }
+    },
+    "286": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 319,
+        "1.0": 89,
+        "0.8": 14,
+        "0.0": 12
+      }
+    },
+    "290": {
+      "canPenetrateTargets": [
+        20,
+        24,
+        25,
+        26,
+        74,
+        107,
+        108,
+        115,
+        189,
+        239,
+        292,
+        350,
+        394,
+        395,
+        418,
+        419,
+        420,
+        421,
+        477,
+        478,
+        535,
+        536,
+        580,
+        581,
+        586,
+        587,
+        668
+      ],
+      "neverPenetrateCount": 35,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 319,
+        "1.0": 117
+      }
+    },
+    "291": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 323,
+        "1.0": 113
+      }
+    },
+    "351": {
+      "canPenetrateTargets": [
+        20,
+        24,
+        25,
+        26,
+        74,
+        107,
+        108,
+        115,
+        189,
+        239,
+        292,
+        350,
+        394,
+        395,
+        418,
+        419,
+        420,
+        421,
+        477,
+        478,
+        535,
+        536,
+        580,
+        581,
+        586,
+        587,
+        668
+      ],
+      "neverPenetrateCount": 35,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 323,
+        "1.0": 113
+      }
+    },
+    "491": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 323,
+        "1.0": 106,
+        "0.4": 7
+      }
+    },
+    "492": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 327,
+        "1.0": 107,
+        "0.0": 2
+      }
+    },
+    "493": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 327,
+        "1.0": 107,
+        "0.0": 2
+      }
+    },
+    "494": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 327,
+        "1.0": 97,
+        "0.4": 12
+      }
+    },
+    "496": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 323,
+        "1.0": 106,
+        "0.6": 7
+      }
+    },
+    "497": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 327,
+        "1.0": 103,
+        "0.8": 6
+      }
+    },
+    "498": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 323,
+        "1.0": 113
+      }
+    },
+    "499": {
+      "canPenetrateTargets": [
+        20,
+        107,
+        108,
+        189,
+        350,
+        477,
+        478
+      ],
+      "neverPenetrateCount": 34,
+      "damagePenetrationMultiplierCounts": {
+        "0.9": 319,
+        "1.0": 87,
+        "0.0": 16,
+        "0.8": 12
+      }
+    },
+    "781": {
+      "canPenetrateTargets": [
+        0,
+        6,
+        11,
+        18,
+        35,
+        39,
+        45,
+        46,
+        49,
+        50,
+        51,
+        54,
+        57,
+        58,
+        59,
+        60,
+        62,
+        66,
+        68,
+        69,
+        70,
+        83,
+        87,
+        88,
+        89,
+        92,
+        93,
+        97,
+        98,
+        99,
+        101,
+        102,
+        105,
+        106,
+        111,
+        113,
+        114,
+        117,
+        127,
+        131,
+        132,
+        133,
+        134,
+        137,
+        139,
+        145,
+        146,
+        149,
+        151,
+        152,
+        155,
+        156,
+        157,
+        159,
+        165,
+        166,
+        170,
+        172,
+        177,
+        180,
+        186,
+        190,
+        191,
+        193,
+        196,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        210,
+        212,
+        214,
+        216,
+        217,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        227,
+        228,
+        230,
+        232,
+        234,
+        235,
+        237,
+        240,
+        244,
+        245,
+        249,
+        250,
+        253,
+        254,
+        255,
+        257,
+        258,
+        259,
+        262,
+        263,
+        264,
+        265,
+        272,
+        273,
+        280,
+        281,
+        282,
+        283,
+        284,
+        287,
+        301,
+        304,
+        310,
+        311,
+        331,
+        332,
+        337,
+        338,
+        339,
+        342,
+        343,
+        345,
+        347,
+        348,
+        355,
+        366,
+        367,
+        372,
+        374,
+        381,
+        389,
+        391,
+        396,
+        398,
+        401,
+        403,
+        404,
+        407,
+        409,
+        411,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        439,
+        440,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        455,
+        464,
+        466,
+        467,
+        470,
+        473,
+        475,
+        487,
+        488,
+        489,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        510,
+        521,
+        525,
+        527,
+        530,
+        537,
+        538,
+        539,
+        540,
+        551,
+        552,
+        563,
+        564,
+        573,
+        576,
+        578,
+        584,
+        592,
+        596,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        611,
+        612,
+        613,
+        615,
+        616,
+        619,
+        620,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        643,
+        647,
+        652,
+        654,
+        657,
+        658,
+        659,
+        662,
+        674,
+        677,
+        680,
+        684,
+        687,
+        688,
+        691,
+        692,
+        693,
+        694,
+        695,
+        696,
+        697,
+        698,
+        699,
+        700,
+        701,
+        702,
+        703,
+        704,
+        705,
+        706,
+        707,
+        708,
+        710,
+        711,
+        712,
+        713,
+        714,
+        715,
+        716,
+        717,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724,
+        725,
+        726,
+        727,
+        728,
+        729,
+        730,
+        731,
+        732,
+        735,
+        736,
+        737,
+        738,
+        739,
+        741,
+        742,
+        744,
+        745,
+        746,
+        747,
+        748,
+        749,
+        750,
+        751,
+        752,
+        753,
+        754,
+        755,
+        756,
+        760,
+        761,
+        762,
+        763,
+        764,
+        765,
+        766,
+        767,
+        768,
+        769,
+        770,
+        771,
+        772,
+        773,
+        774,
+        775,
+        776,
+        777,
+        778,
+        779,
+        780,
+        781,
+        782,
+        783
+      ],
+      "neverPenetrateCount": 2,
+      "damagePenetrationMultiplierCounts": {
+        "1.0": 439,
+        "0.0": 45,
+        "0.9": 42,
+        "30.0": 8
+      }
+    }
+  }
+}

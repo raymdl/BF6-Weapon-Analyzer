@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "status": "initial-curated-findings",
-  "recordedDate": "2026-09-14",
-  "scope": "Selected existing findings, not a complete audit. Claude findings from 12-14 SEP 2026 are merged. Physical mount slots and equipment dependencies from the 14 SEP 2026 compatibility investigation are merged.",
+  "status": "curated-findings-through-1.4.3.0",
+  "recordedDate": "2026-09-16",
+  "scope": "Selected existing findings, not a complete audit. Claude findings from 12-14 SEP 2026 are merged. Physical mount slots and equipment dependencies from the 14 SEP 2026 compatibility investigation are merged. 1.4.3.0 source-comparison findings from 15 SEP 2026 are merged, including the SDK decoding limit that blocks attachment metadata. The 15 SEP 2026 SDK-independent decode supersedes the earlier blocked-by-decoding results for attachment metadata and the PiP aiming controllers. The 16 September continuation records scoped known-route closure and local site verification, while retaining unresolved file GUIDs and PiP layout uncertainty.",
   "policy": {
     "identity": "Internal Frosty path; case-insensitive matching; retain catalog spelling.",
     "results": [
@@ -77,11 +77,44 @@
     },
     "description-mismatches": {
       "path": "docs/ATTACHMENT_BUGS.md",
-      "reportSha256": "a8eb5a0574ce1b2e21a6c8ae80a1d745db68ce35d095ab86575b9881f31820dc"
+      "reportSha256": "fff6161741c70c1121f4f8368d00c7bf0721ff9d4b556835b18c0cd2201491dc"
     },
     "sniper-slim-captures": {
       "path": "reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json",
       "reportSha256": "6747f100c8d33c7f3a10ce132960a1ba1f6e1b5143f5cce8ac367263107b005c"
+    },
+    "compare-1.4.3.0": {
+      "path": "reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json",
+      "reportSha256": "0b49aad444ad94317dcbbb2627dd2337db049f05195c9812a3d0018534bdb43e"
+    },
+    "grid-inventory-1.4.3.0": {
+      "path": "reference-data/provenance/frosty-material-grid-inventory-1.4.3.0-2026-09-15.json",
+      "reportSha256": "7c36efa4d4772a539e06ae674ebe96b42546c2df31335a4c751c6b58c59e6fa8"
+    },
+    "decode-1.4.3.0": {
+      "path": "reference-data/provenance/frosty-1.4.3.0-sdk-independent-decode-2026-09-15.json",
+      "reportSha256": "de2408a12182baeebb62625d7e5cacc92352e1240e52345dfe68754bccf933c6"
+    },
+    "collection-1.4.3.0": {
+      "path": "C:/Users/royal/Documents/BF6 Datamining/research-1.4.3.0/post-update/collection/collection-manifest.json",
+      "reportSha256": null,
+      "note": "Partial per-build manifest outside the repo. The scoped continuation scanned 16,426 assets and captured 269 more raw assets, with no pending known routes. Four unresolved file GUIDs and explicit exclusions remain; see the review-continuation evidence."
+    },
+    "hit-zones-1.4.3.0": {
+      "path": "reference-data/provenance/frosty-hit-zones-2026-09-15.json",
+      "reportSha256": "eb67585bae08c714145912ad44ba4bbc543d6c947f5ddf007b39501a86a6d3c9"
+    },
+    "review-1.4.3.0": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\review-2026-09-16.json",
+      "reportSha256": "b268dc7b17a2454a0211d5a9dce8be2e8b429dec19af162537d097328b429f02"
+    },
+    "review-continuation-1.4.3.0": {
+      "path": "reference-data/provenance/frosty-1.4.3.0-review-2026-09-16.json",
+      "reportSha256": "84668fefd3ce0c673446947474bae8b12a89e2bc00d6e423e03ac5c6017ca4bd"
+    },
+    "unresolved-guid-trace-1.4.3.0": {
+      "path": "reference-data/provenance/frosty-1.4.3.0-unresolved-guid-trace-2026-09-16.json",
+      "reportSha256": "f892ea8f4cd047a7807391c3acf093a229c5239c3bb07b5a9d38fea76db2ae49"
     }
   },
   "assets": {
@@ -388,6 +421,48 @@
           "revisitWhen": [
             "Asset content changes (1.4.3.0 notes change minimum, sweet-spot damage and range).",
             "Runtime curve selection evidence becomes available."
+          ]
+        },
+        {
+          "question": "Where did the 1.4.3.0 Interdictor damage and falloff changes land?",
+          "result": "useful",
+          "conclusion": "Both curves changed here, not in the weapon blueprint. Curve ba0c9abc moved from 100m/80, 120m/150, 150m/150, 175m/62, 200m/62 to 100m/80, 120m/100, 160m/100, 180m/80, 200m/80, matching the patch notes for minimum damage 62 to 80, sweet spot 150 to 100 and sweet spot range 120m to 160m. Curve ea2b0ed0 went flat to 100 at every listed distance, matching the note about armour damage in REDSEC becoming 100 regardless of hit location or distance. The armour role of the second curve is inferred from the patch-note wording, not decoded. DesertTechHTI_WB itself changed only muzzle-flash FX references.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/confirmedValueChanges/0"
+            },
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/confirmedValueChanges/1"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again."
+          ]
+        },
+        {
+          "question": "What are the full 1.4.3.0 Interdictor damage values for the site?",
+          "result": "useful",
+          "conclusion": "The curve stores distance and damage together, so both are available: Field_3901db14 is the distance and Field_42fc0f5e is the damage at it. 1.4.3.0 is 100m/80, 120m/100, 160m/100, 180m/80, 200m/80, replacing 100m/80, 120m/150, 150m/150, 175m/62, 200m/62. The asset keeps the curve twice, as a point list and a flat array; in 1.4.2.5 the two disagreed on the fourth distance (170 in the point list, 175 in the flat array, and the site used 175), and in 1.4.3.0 both agree on 180. PD_.416Barrett_Match carries the same change.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017. Decoded with scripts/frosty-ebx-decode.py from the build's own SharedTypeDescriptors.ebx; the BF6 SDK is not involved."
+          },
+          "evidence": [
+            {
+              "source": "decode-1.4.3.0",
+              "pointer": "/interdictorDamageForSite"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again."
           ]
         }
       ]
@@ -5828,6 +5903,45 @@
             "1.4.3.0 grids: the Interdictor limb change should appear in the protection array, not in the damage record, if this holds.",
             "Runtime evidence shows the damage record is read."
           ]
+        },
+        {
+          "question": "Where did the 1.4.3.0 Interdictor limb damage change land?",
+          "result": "useful",
+          "conclusion": "Superseded by the 2026-09-16 review correction below. Original interpretation: In the material grid. For Interdictor material 781, DamageProtectionMultiplier became 1.0 for head, abdomen and limb, where 1.4.2.5 had head 1.75, abdomen 0.8 and limb 0.8. This matches the patch note that limb damage now matches chest damage. CollisionDamageThreshold moved 30 to 10 and DamageProtectionThreshold 1.0 to 2.0 across those zones, and DamagePenetrationMultiplier moved 1.0 to 30.0 for abdomen and bone material 115. Both grids agree. Caution: the new build adds two record types, 6cc5bd31 and bfd6e4fa, and the limb entry is now read under a different record type than before, so the per-entry type labels for that zone may be a reader artefact rather than a game change. The scalar values above were read consistently in both grids. Grid semantics remain unverified research, not site inputs.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/comparisonCounts"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again.",
+            "The reader gains names for record types 6cc5bd31 and bfd6e4fa."
+          ]
+        },
+        {
+          "question": "Where did the 1.4.3.0 Interdictor limb damage change land?",
+          "result": "useful",
+          "conclusion": "Review correction, 2026-09-16: the current Interdictor projectile uses material 784, previously 781. The fresh hit-zone trace reproduces protection array index 3 = 1.75 for head and limb/abdomen = [1.0] in both raw grids, for all supported ammo. The earlier scalar interpretation at material 781 does not explain the current projectile; use reference-data/provenance/frosty-hit-zones-2026-09-15.json. Native lookup semantics remain outside this source check.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "hit-zones-1.4.3.0",
+              "pointer": "/weapons/interdictor"
+            }
+          ],
+          "revisitWhen": [
+            "Affected source hashes change, or independent layout/runtime evidence resolves the stated limits."
+          ]
         }
       ]
     },
@@ -5983,6 +6097,626 @@
             "1.4.3.0 grids: the Interdictor limb change should appear in the protection array, not in the damage record, if this holds.",
             "Runtime evidence shows the damage record is read."
           ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match": {
+      "contents": "Interdictor Match Grade .416 Barrett projectile damage.",
+      "findings": [
+        {
+          "question": "Did Match Grade ammo get the same 1.4.3.0 damage change?",
+          "result": "useful",
+          "conclusion": "Yes. The same two curves changed in the same way as PD_.416Barrett.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/confirmedValueChanges/2"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_4x00_1x00_P00": {
+      "contents": "Camera-recoil modifier bound to the ElcanDR optic, shown in game as SU-230 LPVO. Members are keyed by Field_1258dac5. Values follow a magnification ladder shared by all GCR_ assets.",
+      "findings": [
+        {
+          "question": "Which optic uses this modifier and what changed in 1.4.3.0?",
+          "result": "useful",
+          "conclusion": "Selector GUID f66c9ab7-bb18-4d2d-8133-6d90b19f0e84 binds it to WPM_SCP_ElcanDR, the only 1-4x LPVO. The in-game display name is SU-230 LPVO, string 1582DFEB. In the 4x member, Field_7f1bb9d4 Field_bbbfe9cc moved from 10 to -0.5, matching its already -0.5 pair Field_9532eb28; the 1x member holds 0.505185 in both. Field_bbbfe9cc is non-zero only where Field_bbffe8bc is True, so it reads as an override gated by that flag. The change removes an outlier and makes the pair agree, which is shaped like a data fix. The unit and sign convention are not decoded, so the in-game direction of the effect is not established. WPM_SCP_ElcanDR also changed in the same build.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/confirmedValueChanges/7"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again.",
+            "A decoded name or unit for Field_bbbfe9cc becomes available."
+          ]
+        },
+        {
+          "question": "Is any other optic's camera recoil lower than its magnification calls for?",
+          "result": "useful",
+          "conclusion": "No. The 34 GCR_ assets form one strictly monotonic ladder from -0.5 at 1.00x to 0.762266 at 10.00x, read from the single-zoom GCR_<zoom>_P00 assets. Checking every asset for paired-field disagreement, flag mismatch or an active override outside that range flags exactly one asset in 1.4.2.5, GCR_LPVO_4x00_1x00_P00, and none in 1.4.3.0. The defect was in the SU-230's 1x state, not its 4x state: Field_7f1bb9d4 held 10 where its paired Field_9532eb28 already held the correct 1.00x value of -0.5. Every other optic sits on the ladder value for its magnification across the multi-zoom LPVO, magnifier, variable and SVO families.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017. Decoded with scripts/frosty-ebx-decode.py from the build's own SharedTypeDescriptors.ebx; the BF6 SDK is not involved."
+          },
+          "evidence": [
+            {
+              "source": "decode-1.4.3.0",
+              "pointer": "/cameraRecoilSurvey"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again.",
+            "A decoded unit or sign convention for Field_bbbfe9cc becomes available."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB": {
+      "contents": "Underbarrel M320 weapon modifier. Class_76a3b0eb view block referencing VE_IronSights.",
+      "findings": [
+        {
+          "question": "Is the 1.4.3.0 change of Field_6eb133f8 from 0 to -99.8 a velocity change?",
+          "result": "useful",
+          "conclusion": "No. Struct_cb53a662 is a generic three-member struct reused throughout the Class_76a3b0eb per-zoom-level view block, so Field_32a99b9c is only its third member and carries muzzle velocity only inside Struct_739f3ac5 InitialSpeed. A survey of all Common/Hardware/Weapons XML found 222 occurrences of Field_6eb133f8: 90 are 0,0,0 and 64 were already 0,0,-99.8 in 1.4.2.5. The M320 view block adopted the value most other blocks already use, so this reads as a data-consistency change, not a balance change. The field's semantic name is still unknown.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/confirmedValueChanges/8"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again.",
+            "A registry or SDK name for Field_6eb133f8 becomes available."
+          ]
+        }
+      ]
+    },
+    "Common/UI/Static/Metadata/Attachments": {
+      "contents": "Attachment UI metadata roots, Class_535682be.",
+      "findings": [
+        {
+          "question": "Can attachment display names and tooltips be compared for 1.4.3.0?",
+          "result": "blocked-by-decoding",
+          "conclusion": "No. SharedTypeDescriptors.ebx changed with 1.4.3.0 while BF6SDK.dll did not, and Class_535682be no longer loads. All 248 changed attachment metadata assets export with the object replaced by an 'Object could not be loaded' comment, so their diffs are decode failures and are not evidence of a text or data change. In total 341 of 835 exported assets are affected, including all 27 Aim_*_PiP aiming controllers and most MD_ and Equipment_ assets. The operator cannot regenerate the SDK because of EA anticheat.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/decodingLimit"
+            }
+          ],
+          "revisitWhen": [
+            "An updated BF6SDK becomes available and the asset decodes fully.",
+            "Asset content or dependency hashes change again."
+          ]
+        },
+        {
+          "question": "Can attachment display names and tooltips be compared for 1.4.3.0?",
+          "result": "useful",
+          "conclusion": "Superseded by the 2026-09-16 review correction below. Original interpretation: Yes. This supersedes the earlier blocked-by-decoding result. Decoding the raw EBX against the build's own descriptors shows 234 of the 248 changed AD_ assets have a byte-identical set of string references. Class_535682be was restructured and Field_c39698a3 moved from 0xffffffff to a small integer in 241 of 248, but the text the panels point at is unchanged. The 14 that changed only removed references, never added any: fixed magnification chips (4.50, 3.00, 2.00, 1.00, 1.00-6.00, 1.25) and fire-mode or sight labels (Single Fire, Burst, Full Auto, Bolt Action, Pump Action, Iron Sights). All of those strings are among the 73 deleted from fs_us_loc in this build. No attachment description or tooltip wording changed, so ATTACHMENT_BUGS entries 8, 9 and 10 stand.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017. Decoded with scripts/frosty-ebx-decode.py from the build's own SharedTypeDescriptors.ebx; the BF6 SDK is not involved."
+          },
+          "evidence": [
+            {
+              "source": "decode-1.4.3.0",
+              "pointer": "/recoveredResults/attachmentMetadata"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again."
+          ]
+        },
+        {
+          "question": "Can attachment display names and tooltips be compared for 1.4.3.0?",
+          "result": "useful",
+          "conclusion": "Review correction, 2026-09-16: unchanged string-reference sets alone do not prove unchanged wording or field roles. The recorded attachment label and description IDs were separately resolved in both builds' English TSV files; none changed text or disappeared. This supports retaining the wording findings. No new live-panel capture was performed.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017. Decoded with scripts/frosty-ebx-decode.py from the build's own SharedTypeDescriptors.ebx; the BF6 SDK is not involved."
+          },
+          "evidence": [
+            {
+              "source": "decode-1.4.3.0",
+              "pointer": "/recoveredResults/attachmentMetadata"
+            },
+            {
+              "source": "review-1.4.3.0",
+              "pointer": "/verification"
+            }
+          ],
+          "revisitWhen": [
+            "Affected source hashes change, or independent layout/runtime evidence resolves the stated limits."
+          ]
+        }
+      ]
+    },
+    "Common/Gameplay/AimingControllers/WeaponsGadgets": {
+      "contents": "Per-zoom aiming controllers, including the Aim_*_PiP set.",
+      "findings": [
+        {
+          "question": "Did the 1.4.3.0 picture-in-picture scope work change these controllers?",
+          "result": "blocked-by-decoding",
+          "conclusion": "Unresolved. All 27 changed Aim_*_PiP assets contain objects that no longer load with the current SDK, so their diffs cannot be read as value changes. A new option string, 'Enable or disable Picture in Picture when using certain scopes', appeared in fs_us_loc in the same build, and several optic VE_ assets gained BaseBlur and DepthBlur channels, so a real picture-in-picture change is likely; it is not measurable here.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; bf6.exe SHA256 9b92519e...caa6a. The 1.4.3.0 label is user supplied and the executable file-version string is lower than the baseline string."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/decodingLimit"
+            }
+          ],
+          "revisitWhen": [
+            "An updated BF6SDK becomes available and the asset decodes fully.",
+            "Asset content or dependency hashes change again."
+          ]
+        },
+        {
+          "question": "Did the 1.4.3.0 picture-in-picture scope work change these controllers?",
+          "result": "useful",
+          "conclusion": "Superseded by the 2026-09-16 review correction below. Original interpretation: Yes, and it supersedes the earlier blocked-by-decoding result. All 27 Aim_*_PiP controllers changed in exactly one way: Class_e312e661 gained a 20th field, Field_0d48404d, absent in 1.4.2.5 and now holding an import of Common/GameSetup/Options/Graphics/OptionEnablePiPZoom, the asset behind the new option string. No numeric aiming value changed in any of the 27. The picture-in-picture work is a new user setting wired into the aiming controllers, not a change to zoom or ADS behaviour.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017. Decoded with scripts/frosty-ebx-decode.py from the build's own SharedTypeDescriptors.ebx; the BF6 SDK is not involved."
+          },
+          "evidence": [
+            {
+              "source": "decode-1.4.3.0",
+              "pointer": "/recoveredResults/pictureInPicture"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or dependency hashes change again."
+          ]
+        },
+        {
+          "question": "Did the 1.4.3.0 picture-in-picture scope work change these controllers?",
+          "result": "useful",
+          "conclusion": "Review correction, 2026-09-16: the saved SDK-independent decode reports a new OptionEnablePiPZoom reference and no changed numeric fields. All 27 comparisons are layout-ambiguous. This supersedes the categorical behavior conclusion: numeric equality and the setting binding remain provisional until independently verified. The decoder now propagates nested/inherited ambiguity as well.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017. Decoded with scripts/frosty-ebx-decode.py from the build's own SharedTypeDescriptors.ebx; the BF6 SDK is not involved."
+          },
+          "evidence": [
+            {
+              "source": "decode-1.4.3.0",
+              "pointer": "/recoveredResults/pictureInPicture"
+            },
+            {
+              "source": "review-1.4.3.0",
+              "pointer": "/decoder"
+            }
+          ],
+          "revisitWhen": [
+            "Affected source hashes change, or independent layout/runtime evidence resolves the stated limits."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB": {
+      "contents": "Weapon blueprint.",
+      "findings": [
+        {
+          "question": "What is Field_440ed7fa, which moved from 0 to 0.067 on the ScorpionEvo3 and the Skorpion in 1.4.3.0?",
+          "result": "useful",
+          "conclusion": "Traced 15 September 2026. The field is a duration in seconds quantised to whole 1/60 s frames: all 15 distinct values across 64 weapon blueprints are exact frame counts (4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 22, 24, plus 0), and the apparent error is only 3-decimal rounding of n/60. It is not the rate of fire. GRX_Weapons names RateOfFire and RateOfFireForSingleFire separately, and they disagree with this field on at least nine weapons: the 590A1 holds 0.4 against a 60/RateOfFire of 0.033, the DP12 0.4 against 0.167, the Desert Tech HTI 0.4 against 0.2, and the ACE32, APC10, BREN3, HK433, EF88 and HK417A2 all sit one or two frames above their cadence. Where the two do agree the field equals 60/RateOfFire rounded to a frame. It is not a named registry leaf either: matching its per-weapon values against every GRX_Weapons leaf found only CustomZeroingDelay at 7 of 12 weapons, and that leaf is a constant 0.4 on the DMRs where it disagrees. Reading: a frame-quantised timing window that tracks cadence but is clamped, most likely an animation or input window rather than the cadence itself. The 1.4.3.0 change put the ScorpionEvo3 and the Skorpion on 0.067, four frames and the smallest value in use, from 0. Still not semantically named, so it is not applied to the site, and the site does not model such a window. Not identified; do not apply to the site. A survey of every _WB in the 1.4.2.5 export shows Field_440ed7fa is a per-weapon time-like value that tracks weapon class: 0.4 on the DP12, 590A1, Desert Tech HTI and L115A3, 0.3 on the M1014, 0.15-0.167 on the M18 and G22, 0.117-0.134 on the G3A4, ARA DMR and Five-Seven, 0.084-0.1 on assault rifles and carbines, and 0 on the KSG, ScorpionEvo3 and Skorpion. It is close to a shot interval but does not match site RPM consistently: the M1014 at 0.3 gives exactly 200 rpm and the AK-205 at 0.084 gives 714 against a site 720, but the L85A3 at 0.1 gives 600 against a site 635. The neighbouring Field_52a8ad43 is a constant 0.067 on every weapon, so 0.067 is the family floor. The 1.4.3.0 change therefore reads as two fast-firing weapons moving from unset to the floor value, not as a cadence edit. A trace against a named registry entry is needed before any site use.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; 1.4.2.5 XML export used for the cross-weapon survey."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/confirmedValueChanges"
+            }
+          ],
+          "revisitWhen": [
+            "A semantic name for Field_440ed7fa becomes available.",
+            "An in-game check establishes what the window controls.",
+            "Asset content or dependency hashes change again."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/Secondary/Skorpion/Skorpion_WB": {
+      "contents": "Weapon blueprint.",
+      "findings": [
+        {
+          "question": "What is Field_440ed7fa, which moved from 0 to 0.067 on the ScorpionEvo3 and the Skorpion in 1.4.3.0?",
+          "result": "useful",
+          "conclusion": "Traced 15 September 2026. The field is a duration in seconds quantised to whole 1/60 s frames: all 15 distinct values across 64 weapon blueprints are exact frame counts (4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 22, 24, plus 0), and the apparent error is only 3-decimal rounding of n/60. It is not the rate of fire. GRX_Weapons names RateOfFire and RateOfFireForSingleFire separately, and they disagree with this field on at least nine weapons: the 590A1 holds 0.4 against a 60/RateOfFire of 0.033, the DP12 0.4 against 0.167, the Desert Tech HTI 0.4 against 0.2, and the ACE32, APC10, BREN3, HK433, EF88 and HK417A2 all sit one or two frames above their cadence. Where the two do agree the field equals 60/RateOfFire rounded to a frame. It is not a named registry leaf either: matching its per-weapon values against every GRX_Weapons leaf found only CustomZeroingDelay at 7 of 12 weapons, and that leaf is a constant 0.4 on the DMRs where it disagrees. Reading: a frame-quantised timing window that tracks cadence but is clamped, most likely an animation or input window rather than the cadence itself. The 1.4.3.0 change put the ScorpionEvo3 and the Skorpion on 0.067, four frames and the smallest value in use, from 0. Still not semantically named, so it is not applied to the site, and the site does not model such a window. Not identified; do not apply to the site. A survey of every _WB in the 1.4.2.5 export shows Field_440ed7fa is a per-weapon time-like value that tracks weapon class: 0.4 on the DP12, 590A1, Desert Tech HTI and L115A3, 0.3 on the M1014, 0.15-0.167 on the M18 and G22, 0.117-0.134 on the G3A4, ARA DMR and Five-Seven, 0.084-0.1 on assault rifles and carbines, and 0 on the KSG, ScorpionEvo3 and Skorpion. It is close to a shot interval but does not match site RPM consistently: the M1014 at 0.3 gives exactly 200 rpm and the AK-205 at 0.084 gives 714 against a site 720, but the L85A3 at 0.1 gives 600 against a site 635. The neighbouring Field_52a8ad43 is a constant 0.067 on every weapon, so 0.067 is the family floor. The 1.4.3.0 change therefore reads as two fast-firing weapons moving from unset to the floor value, not as a cadence edit. A trace against a named registry entry is needed before any site use.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "Frosty archive Head 4892017; 1.4.2.5 XML export used for the cross-weapon survey."
+          },
+          "evidence": [
+            {
+              "source": "compare-1.4.3.0",
+              "pointer": "/confirmedValueChanges"
+            }
+          ],
+          "revisitWhen": [
+            "A semantic name for Field_440ed7fa becomes available.",
+            "An in-game check establishes what the window controls.",
+            "Asset content or dependency hashes change again."
+          ]
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_InMandown_Master": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_ManDownLookAtReviverSP": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_GetRevive": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_Mandown_GamemodeChecks": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, b4765624-c221-4138-b446-3b3aa155cf3b, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/2"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Expressions/PresEx_OnLadder": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Features/FirePutOut/SimEx_Soldier_FirePutOut": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, b4765624-c221-4138-b446-3b3aa155cf3b, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/2"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, 8f992c03-80cb-4ed5-8a6e-0274a57f659c, b4765624-c221-4138-b446-3b3aa155cf3b. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/1"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/2"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Traversal/InAir/SimEx_InAirExpressions": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, 8f992c03-80cb-4ed5-8a6e-0274a57f659c. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/1"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Traversal/Parachute/SimEx_SimpleParachutePhysics": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 8f992c03-80cb-4ed5-8a6e-0274a57f659c. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/1"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Traversal/SimEx_RootLayerLogic": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Traversal/Vault/SimEx_CheckStartLadder": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Rope/SimEx_MoveWithRope_Master": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Zipline/SimEx_MoveWithZipLine_Master": {
+      "contents": "Soldier expression asset with external pointers in Class_25c12137 / Field_a2734e52 / Field_8cf424e7.",
+      "findings": [
+        {
+          "question": "What are the unresolved external file GUIDs in this expression asset?",
+          "result": "inconclusive",
+          "conclusion": "Decoded pointer references confirm these file GUIDs: 2631e8f8-a115-413d-a696-5ec194081d73, d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180. Every referenced file/object pair already appears as BadRef in the corresponding 1.4.2.5 XML. Neither build catalogue contains the four target files; no matching target objects were found in the 16,426 captured raw asset bodies. Exact target names and contents remain unknown. Caller context is not target identity. This trace does not establish runtime use or harmlessness.",
+          "buildInspected": "1.4.3.0 raw EBX; 1.4.2.5 retained XML and catalogue comparison",
+          "evidence": [
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/0"
+            },
+            {
+              "source": "unresolved-guid-trace-1.4.3.0",
+              "pointer": "/findings/3"
+            }
+          ],
+          "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
         }
       ]
     }

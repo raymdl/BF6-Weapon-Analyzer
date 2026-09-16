@@ -1,0 +1,288 @@
+{
+  "scope": "Local 1.4.3.0 review continuation. Source-backed site values and local browser behavior verified; no deployment and no new in-game panel evidence.",
+  "recordedDate": "2026-09-16",
+  "dependencies": {
+    "reviewedDate": "2026-09-16",
+    "status": "known-route traversal complete within the recorded scope; unresolved GUIDs remain explicit",
+    "seeds": 1061,
+    "visitedAssets": 16426,
+    "newRawAssets": 269,
+    "newRawBytes": 700224,
+    "pendingKnownRoutes": 0,
+    "readFailures": 0,
+    "excludedRoutes": 11306,
+    "scope": "Read-only import traversal for the scoped 1.4.3.0 Analyzer review.\n\nOnly the RIFF EFIX import table is read; no EBX objects or material grids are\ndecoded. Writes review reports and a list for the existing guarded collector.\nExclusions bound this review; they do not claim that excluded systems lack\ngameplay effects. Run again after collecting the pending routes.",
+    "unresolvedFileGuids": [
+      "2631e8f8-a115-413d-a696-5ec194081d73",
+      "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+      "b4765624-c221-4138-b446-3b3aa155cf3b",
+      "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180"
+    ],
+    "unresolvedImportAssets": 16,
+    "oldAndNewCatalogsCheckedForUnresolvedGuids": true,
+    "cyclicComponents": [
+      [
+        "Common/Gameplay/Camera/Soldier/SoldierCameraDirector",
+        "Common/Gameplay/Camera/Soldier/SoldierCameraDirector_Schematic",
+        "Common/Gameplay/Camera/Soldier/SoldierCameraDirector_SoldierCameraFovOverride"
+      ]
+    ],
+    "importReaderCrossCheckAssets": 19,
+    "evidence": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\dependency-review-state-2026-09-16.json",
+    "evidenceSha256": "a4cf38e0b35c82ac376842053c69509c1bd5578f7eac7c53e9b984709af2632d"
+  },
+  "site": {
+    "reviewedDate": "2026-09-16",
+    "scope": "Current working tree, local browser at http://localhost:5174; no publication or deployment.",
+    "sourceChecks": {
+      "interdictorCurves": [
+        {
+          "asset": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\Hardware\\Weapons\\_Bullets\\PD_.416Barrett.xml",
+          "sha256": "03f98863ff1509996cfc76ec086b1a287a165b0c7f511d6d4d120d4d01b473be",
+          "referenceField": "Field_2ad7e688",
+          "curveGuid": "ba0c9abc-a912-4db1-9edd-15d3e588f8c3",
+          "points": [
+            [
+              100.0,
+              80.0
+            ],
+            [
+              120.0,
+              100.0
+            ],
+            [
+              160.0,
+              100.0
+            ],
+            [
+              180.0,
+              80.0
+            ],
+            [
+              200.0,
+              80.0
+            ]
+          ]
+        },
+        {
+          "asset": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\Hardware\\Weapons\\_Bullets\\PD_.416Barrett.xml",
+          "sha256": "03f98863ff1509996cfc76ec086b1a287a165b0c7f511d6d4d120d4d01b473be",
+          "referenceField": "Field_6008eb31",
+          "curveGuid": "d90eb3b5-db54-42a8-9c1a-6503ad013a68",
+          "points": [
+            [
+              100.0,
+              80.0
+            ],
+            [
+              120.0,
+              100.0
+            ],
+            [
+              160.0,
+              100.0
+            ],
+            [
+              180.0,
+              80.0
+            ],
+            [
+              200.0,
+              80.0
+            ]
+          ]
+        },
+        {
+          "asset": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\Hardware\\Weapons\\_Bullets\\PD_.416Barrett_Match.xml",
+          "sha256": "b5f77807cee09c61c23f57aa2b76850b9b91de5aa6cd6dc1cfbda07a34b917de",
+          "referenceField": "Field_2ad7e688",
+          "curveGuid": "6dbe84de-4348-44ab-ad43-509b1c0a4f7d",
+          "points": [
+            [
+              100.0,
+              80.0
+            ],
+            [
+              120.0,
+              100.0
+            ],
+            [
+              160.0,
+              100.0
+            ],
+            [
+              180.0,
+              80.0
+            ],
+            [
+              200.0,
+              80.0
+            ]
+          ]
+        },
+        {
+          "asset": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\Hardware\\Weapons\\_Bullets\\PD_.416Barrett_Match.xml",
+          "sha256": "b5f77807cee09c61c23f57aa2b76850b9b91de5aa6cd6dc1cfbda07a34b917de",
+          "referenceField": "Field_6008eb31",
+          "curveGuid": "01cca2fe-588d-487e-bd21-5b56c3c03011",
+          "points": [
+            [
+              100.0,
+              80.0
+            ],
+            [
+              120.0,
+              100.0
+            ],
+            [
+              160.0,
+              100.0
+            ],
+            [
+              180.0,
+              80.0
+            ],
+            [
+              200.0,
+              80.0
+            ]
+          ]
+        }
+      ],
+      "ironSight": {
+        "file": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\Attachment_DesertTechHTI_SCP_IronSights.xml",
+        "sha256": "2714da1647dc20655b3e55a5d2caf9941b7bbfe7d5ccc67be17f2c3d19a43df2",
+        "points": 15
+      },
+      "vssm": [
+        {
+          "internalId": "VSSM",
+          "siteId": "vssm",
+          "siteField": "bulletVel",
+          "siteValue": 321,
+          "registryName": "VSSM_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z",
+          "registryRaw": "321",
+          "registryGuid": "9b8730b6-afaa-4163-a254-0787ae5f4bec",
+          "registryValue": 321.0,
+          "status": "match"
+        },
+        {
+          "internalId": "VSSM",
+          "siteId": "vssm",
+          "siteField": "recoil.ads.amount",
+          "siteValue": 0.6834,
+          "registryName": "GS_VSSM.Recoil.Zoomed.RecoilAmount",
+          "registryRaw": "0.6834",
+          "registryGuid": "936d12d5-2e28-49a0-8071-86948a332740",
+          "registryValue": 0.6834,
+          "status": "match"
+        },
+        {
+          "internalId": "VSSM",
+          "siteId": "vssm",
+          "siteField": "recoil.ads.dirVar",
+          "siteValue": 45.4,
+          "registryName": "GS_VSSM.Recoil.Zoomed.RecoilDirectionVariation",
+          "registryRaw": "45.4",
+          "registryGuid": "1318914d-a7ae-4c1d-9f25-de4bfc446fec",
+          "registryValue": 45.4,
+          "status": "match"
+        },
+        {
+          "internalId": "VSSM",
+          "siteId": "vssm",
+          "siteField": "recoil.hip.amount",
+          "siteValue": 0.6834,
+          "registryName": "GS_VSSM.Recoil.Unzoomed.RecoilAmount",
+          "registryRaw": "0.6834",
+          "registryGuid": "30cb752d-ebc4-41a9-93de-cba0865c77a9",
+          "registryValue": 0.6834,
+          "status": "match"
+        },
+        {
+          "internalId": "VSSM",
+          "siteId": "vssm",
+          "siteField": "recoil.hip.dirVar",
+          "siteValue": 45.4,
+          "registryName": "GS_VSSM.Recoil.Unzoomed.RecoilDirectionVariation",
+          "registryRaw": "45.4",
+          "registryGuid": "140bdce4-2377-40cb-8653-59a2ee3f3006",
+          "registryValue": 45.4,
+          "status": "match"
+        }
+      ],
+      "vssmDerivedRecoil": {
+        "formula": "amount * amountMult ** amountExp",
+        "calculated": 0.8054486225037472,
+        "siteValue": 0.8054486225037472
+      },
+      "hitZones": {
+        "weapons": 63,
+        "ammoEntries": 328,
+        "sameAsIndependentRawGridGeneration": true
+      },
+      "vssmXmlSources": {
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\Hardware\\Weapons\\DMR\\VSSM\\VSSM_WB.xml": "d2ed4b3cfeb4ca77d4e1c369dbd199e775913a1c67516760e0eb0294698eb94d",
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\Hardware\\Weapons\\DMR\\VSSM\\GS_VSSM.xml": "a3c0d3c650506776ef9647198847c51fb05805f5a2725a6417ca17847ca3c248",
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.xml": "6773809e2927c7266523ab354044cbd3945d6bd01ed9482c2f36d40db86cb03b"
+      }
+    },
+    "browserChecks": {
+      "interdictor": {
+        "ironSightPoints": 15,
+        "totalWithIron": 35,
+        "totalWithStandardOptic": 30,
+        "headshotMultiplier": 1.75,
+        "limbMultiplier": 1,
+        "damageAt150m": 100,
+        "btkAt150m": 1,
+        "damageAt200m": 80,
+        "btkAt200m": 2
+      },
+      "vssm": {
+        "velocityMps": 321,
+        "defaultRecoilDegreesDisplayed": 0.85,
+        "foldingVerticalRecoilDegreesDisplayed": 0.76,
+        "velocityRetainedWithGrip": 321
+      },
+      "comparisonView": "Both weapons selected; damage and BTK rows agree with the source-backed changes.",
+      "labels": "Header, footer and metadata updated to 1.4.3.0 with retained baseline scope.",
+      "consoleErrorsOrWarnings": []
+    },
+    "checks": {
+      "previousDamageAndBallisticsTestsPassed": 14,
+      "attachmentOpticCompatibilityTestsPassed": 41,
+      "shipSurface": "passed"
+    },
+    "files": {
+      "index.html": {
+        "sha256": "a6a9f09e559616a1eb003649451c393007d6d4dc90d1a2c9965b9513b2f9133b"
+      },
+      "data/weapons.json": {
+        "sha256": "7a96b89b356d402a557990433f800ca8bb99191e32183380d1f409710d2c9adc"
+      },
+      "data/attachments.json": {
+        "sha256": "d7a840413429ce8af60326865deec16aa3815f2e631d701f62e851845bb9144f"
+      },
+      "data/hit_zones.json": {
+        "sha256": "674faccf63d883cfac5be7c33ac194cc4bbd2ca4af1e3db1620c4885ed3a7132"
+      },
+      "data/ballistics.json": {
+        "sha256": "d149293cddf25daa0ac65db41acfe170e3d6aaa3b240c3e10979304d90658054"
+      },
+      "data/provenance/live-baseline.json": {
+        "sha256": "9dafcfac7ec337e6fc1e1b75d3519e45826d869fed1ae72913bf915af5004db2"
+      }
+    },
+    "browserEvidence": {
+      "comparison-dom.txt": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\site-review-2026-09-16\\comparison-dom.txt",
+        "sha256": "f891eb81c72bf1d61990d96e7f0ff1afaf6231112c2a98f9b4feb011a0d6b230"
+      },
+      "comparison.png": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\site-review-2026-09-16\\comparison.png",
+        "sha256": "adfe72c1e13d04dec1c3eb642789d8fad07ae01a66cc95caffb6c8d6dd99f485"
+      }
+    }
+  }
+}
