@@ -24,9 +24,9 @@ Current attachment generation:
 - [Mapping follow-up](frosty-handling-mapping-followup.json), [unbound-selector review](frosty-handling-unbound-selector-review.json), and [coordinate proof](frosty-handling-coordinate-proof.json): accepted identities, historical spread exceptions, and base/modifier conversion evidence.
 - [Sniper brakes](frosty-sniper-brakes-generated.json): 16 per-weapon amount overrides.
 - [Linear Comp/burst review](frosty-assumption-review.json) and [SDK types](frosty-assumption-sdk-types.json): 53 selections, source operands and unmodeled fields.
-- [Other-attachment review](frosty-other-attachment-review-2026-09-13.json): dated comparison; the [current generation report](../../docs/working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md) records later decisions.
+- [Other-attachment review](frosty-other-attachment-review-2026-09-13.json): dated comparison; the [current generation report](../../docs/frosty/ATTACHMENTS.md#generated-site-values) records later decisions.
 
-See the [current audit status](../../docs/working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+See the [Frosty weapon notes](../../docs/frosty/WEAPONS.md)
 for accepted changes and remaining boundaries. Evidence files below retain their
 original snapshot status; they are not rewritten when an implementation changes.
 

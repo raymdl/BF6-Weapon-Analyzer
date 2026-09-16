@@ -108,7 +108,7 @@ mapping/activation questions, including angled-grip mappings and native composit
 stat consumers ([composite stats findings](working/COMPOSITE_STATS_FINDINGS.md)). Check those dated findings against the current implementation.
 Magazine capacity alone cannot resolve attachment identity.
 
-**Global estimates.** The [continued source audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+**Global estimates.** The [Frosty weapon notes](frosty/WEAPONS.md)
 found a controller modifier with 0.8836 operands on 57 weapons; the six sniper
 rifles have no matching GS binding. Its native activation and operation remain
 unresolved. The analyzer now uses the source value 0.8836 in its existing platform

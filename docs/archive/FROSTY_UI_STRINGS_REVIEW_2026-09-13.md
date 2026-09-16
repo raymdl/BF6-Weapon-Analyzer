@@ -4,7 +4,7 @@ Snapshot: 13 September 2026, 1.4.2.5 local export. Internal reference.
 
 Strings come from `Common/Localization/Languages/fs_us_loc`, decoded with FrostyCmd
 `export-strings`. This is the only English localization asset in the EBX manifest.
-[Weapon display names](FROSTY_DISPLAY_NAMES.md) gives the decode and hash method.
+[Weapon display names](../frosty/UI_TEXT.md#weapon-names) gives the decode and hash method.
 
 ## Weapon UI records
 

@@ -3,7 +3,7 @@
 **Current status, 13 September:** The combined work was merged through PR #31
 (`b0c4a97`). Decoded light hipfire factors and guide updates are subsequent local
 changes. The release/test counts and local-merge statements below describe earlier
-checkpoints. Use the [current audit](../working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+checkpoints. Use the [current audit](../frosty/WEAPONS.md)
 and [current model guide](../RECOIL_SPREAD_MODEL.md) for the implementation now.
 
 
@@ -31,7 +31,7 @@ pre-merge statements below describe the earlier state. This merge is not pushed.
 were removed after the operator's in-game correction and source-roster check.
 The generated hit-zone trace now has 328 ammo entries without those fallbacks.
 Ballistics now use generated per-weapon/ammo projectile links. The
-[continued audit](../working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) records controller,
+[continued audit](../frosty/WEAPONS.md) records controller,
 availability, collateral-table and regeneration findings, plus remaining native
 composition questions. These later changes are local and uncommitted.
 

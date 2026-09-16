@@ -17,16 +17,19 @@ Linear Comp/burst recoil and belt-box description mismatches. Native arithmetic 
 The 14 September compatibility update generates physical mount slots and equipment
 dependencies from Frosty. See the [user controls](USER_GUIDE.md#build-and-compare-loadouts),
 [data contract](DATA_REFERENCE.md), [regeneration commands](../MAINTENANCE.md#regenerate-attachment-modifiers),
-and [curated source findings](frosty/DATA_GRAPH.md#slots-and-prerequisites).
+and [Frosty data graph](frosty/DATA_GRAPH.md#slots-and-prerequisites).
 
-The [description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
+The [UI text notes](frosty/UI_TEXT.md#current-site-mapping)
 documents attachment tooltips and the 18 approved panel-text exceptions. The
-[unmatched-record inventory](working/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)
+[unmatched-record inventory](archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)
 groups extra Frosty records by what is known about their menu identity.
 
 ## Folder roles
 
 - `docs/`: live GitHub product and contributor guides.
+- `docs/frosty/`: game-data knowledge by topic (field map, data graph, weapons,
+  attachments, UI text, tools, open questions). Edit these pages in place; do not
+  create a new file per investigation.
 - `docs/working/`: active investigations and handoffs; keep only current status,
   decisions, open questions, and next actions.
 - `docs/archive/`: completed analyses, implementation records, and superseded handoffs.
@@ -45,6 +48,7 @@ any remaining questions into an active handoff, and archive the completed record
 | [Data reference](DATA_REFERENCE.md) | Developers/data maintainers: JSON contracts, field meanings, units, all live array families. |
 | [Stat ladders](STAT_LADDERS.md) | Model maintainers: complete finite tables, geometric factors, index signs, bounds, examples. |
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
+| [Frosty game data](frosty/README.md) | Data maintainers: Frosty exports, field meanings, asset links, source findings and open questions. |
 | [Attachment bugs and mismatches](ATTACHMENT_BUGS.md) | All readers: attachment game data bugs, description errors and fixed site data errors, with evidence and status. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
 | [Recoil and spread](RECOIL_SPREAD_MODEL.md) | Model readers: per-shot equations, recovery, sampling, calibration, visual interpretation. |
@@ -59,15 +63,14 @@ contains current status, remaining source questions, and capture plans. Complete
 recording analyses and implementation handoffs are in the
 [archive index](archive/README.md), with links back to current guides.
 
-The [global-candidates audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
-records accepted source-model changes and the remaining activation/composition
-questions. Its early checkpoints are explicitly historical.
+Open Frosty questions are collected in one list:
+[Frosty open questions](frosty/OPEN_QUESTIONS.md).
 
 The [composite stats findings](working/COMPOSITE_STATS_FINDINGS.md) collect the
 Hipfire, Precision, Control and Mobility evidence, including the Frosty Precision tables.
 
-The [UI strings review](working/FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) records
-weapon descriptions, role tags, composite-stat UI assets and setting-label hashes.
+Weapon descriptions, role tags, composite-stat UI assets and setting labels are in
+the [UI text notes](frosty/UI_TEXT.md).
 
 ## Authority and historical material
 

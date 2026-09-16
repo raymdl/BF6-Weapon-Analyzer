@@ -42,5 +42,5 @@ No UI, share-link or `SIGHTS` order change.
 ## Remaining work
 
 Stage 3: after the 1.4.3.0 export, run the generator with a new dated
-`--optic-mapping-json` (command in `docs/working/FROSTY_DISPLAY_NAMES.md`), run the
+`--optic-mapping-json` (command in `docs/archive/FROSTY_DISPLAY_NAMES.md`), run the
 test, and apply each reported difference to `data/attachments.json`.

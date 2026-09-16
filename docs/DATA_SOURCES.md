@@ -21,7 +21,7 @@ Reproduction uses [projectile extraction](../scripts/frosty-ballistics.py),
 reads the retained compiled trace, not a new XML export. Source paths, hashes,
 field identities and comparison evidence are indexed in
 [provenance](../reference-data/provenance/README.md). The
-[global audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) records the decisions;
+[Frosty weapon notes](frosty/WEAPONS.md) record the decisions;
 [model limitations](MODEL_LIMITATIONS.md) separates configuration from native proof.
 
 
@@ -35,7 +35,7 @@ supply identities and source joins, not replacement numeric values. Generated
 reports retain field paths, GUIDs and hashes. The burst review follows nested
 fire-mode selectors; field source status and simulation support are separate.
 
-The [attachment generation report](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
+The [Frosty attachment notes](frosty/ATTACHMENTS.md#generated-site-values)
 records 233 unique barrel selections, 1,487 handling selections, 16 sniper brake
 pairs and 53 Linear Comp/burst pairs. Two belt-box description mismatches remain recorded as possible bugs; their
 unsupported spread penalties were removed after matched screenshot review. The
@@ -57,16 +57,16 @@ retain asset findings and collection/recheck requirements.
 ## What the current baseline means
 
 Attachment tooltip text is maintained separately from mechanics. The
-[display-name and description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
+[display-name and description audit](frosty/UI_TEXT.md#current-site-mapping)
 records 2,952 choices with resolved Frosty text, 15 with explicitly approved
 game-panel text, and 45 still missing text. Panel transcriptions preserve the
 original unresolved Frosty pointers and do not populate other weapons. The
-[reverse inventory](working/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) separates
+[reverse inventory](archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) separates
 known attachment types, possible matches, and records with no known menu counterpart.
 
 [data/weapon-role-tags.json](../data/weapon-role-tags.json) keeps the three Frosty
 loadout role tags for each weapon as reference data. The UI does not load it. The
-[UI strings review](working/FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) records the
+[UI text notes](frosty/UI_TEXT.md) records the
 source records, the Mini Scout range conflict and the related description findings.
 
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json) identifies
@@ -104,7 +104,7 @@ that supplies `dmg`. The 59 curves formerly labelled Sym were compared with Fros
 kept their values; the M45A1 keeps an in-game-confirmed step at 75 m
 ([damage curve review](../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
 Weapon display names use the in-game spelling from Frosty localization
-([method](working/FROSTY_DISPLAY_NAMES.md)).
+([method](frosty/UI_TEXT.md#weapon-names)).
 No weapon is estimated or uses donor values. BROD 3, EF88 and VSSM, which Sym does
 not publish, use Frosty 1.4.2.5 values. Fitted attachment effects and source-composition questions remain documented in
 field-level provenance and [limitations](MODEL_LIMITATIONS.md). The acceptance
@@ -157,6 +157,9 @@ Research output requires review before promotion. Tests check data consistency
 and implemented behavior; they do not measure the game.
 
 ## Frosty review pipeline
+
+Frosty game-data knowledge (tools, field meanings, asset links and findings) is in
+[`docs/frosty/`](frosty/README.md). This section covers how that data reaches the site.
 
 [scripts/frosty-configuration.py](../scripts/frosty-configuration.py) reads a supplied
 local export and compares configuration without writing live data. Its semantic

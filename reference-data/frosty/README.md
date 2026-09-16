@@ -59,25 +59,8 @@ These shared JSON files define the collection plan and findings. The separate co
 
 ## Known unresolved soldier GUIDs (16 September 2026)
 
+Four unresolved soldier file GUIDs are listed in
+[Open questions](../../docs/frosty/OPEN_QUESTIONS.md#unresolved-soldier-file-guids).
 The [GUID trace](../provenance/frosty-1.4.3.0-unresolved-guid-trace-2026-09-16.json)
-records all object GUIDs, callers, pointer counts and local evidence hashes. The
-16 caller assets are also indexed in `asset-findings.json`.
-
-| File GUID | Caller context | Caller assets | Decoded pointer uses |
-|---|---|---:|---:|
-| `2631e8f8-a115-413d-a696-5ec194081d73` | Ladder, traversal, revive, melee, fire | 15 | 33 |
-| `8f992c03-80cb-4ed5-8a6e-0274a57f659c` | In-air and parachute | 3 | 11 |
-| `b4765624-c221-4138-b446-3b3aa155cf3b` | Overlay, melee, in-air | 3 | 3 |
-| `d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180` | Mandown, revive, rope, zipline | 8 | 16 |
-
-These are confirmed references in `Class_25c12137 / Field_a2734e52 / member /
-Field_8cf424e7`. All file/object pairs were already `BadRef` in the corresponding
-1.4.2.5 XML. Neither build catalogue contains the target files; the 16,426 captured
-raw object bodies contain no matching target objects. Exact target identities and
-contents remain unknown. Caller names do not identify the targets or prove runtime
-use. Keep the dependency review partial.
-
-Reuse this result if the same pairs recur. Reopen the trace only if a target body
-becomes available, a catalogue resolves the GUID, the caller pointers change, or
-new consumer evidence can answer a specific question. The linked report retains
-the local decoded evidence path and hash; the raw captures remain outside Git.
+records all object GUIDs, callers, pointer counts and local evidence hashes. The 16
+caller assets are indexed in `asset-findings.json`.

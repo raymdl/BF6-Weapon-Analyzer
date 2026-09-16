@@ -12,7 +12,7 @@ modeled as active, and idle recovery remains unused.
 The dated capture measurements and fitted hypotheses below remain research
 evidence. Earlier model-dependent comparisons describe the implementation at
 capture time. Use the [model guide](../RECOIL_SPREAD_MODEL.md) and
-[current audit](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) for current behavior.
+[Frosty weapon notes](../frosty/WEAPONS.md) for current behavior.
 
 
 Updated 12 September 2026. This is the active research handoff. Completed
@@ -250,7 +250,7 @@ one stationary hipfire series. Retain the full indicator path through each pause
 ### Scenario 4 capture plan with source predictions (13 September 2026)
 
 Source values and the equation form are in
-[FROSTY_STAT_DISCOVERY_2026-09-13.md](FROSTY_STAT_DISCOVERY_2026-09-13.md#engine-formula-evidence-source-data-only).
+[Frosty weapon notes](../frosty/WEAPONS.md#spread).
 The AK4D hipfire tail already matched flat not-firing recovery (0.199 s predicted,
 about 0.21 s measured). These captures test the parts that remain open.
 

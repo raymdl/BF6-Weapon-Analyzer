@@ -227,7 +227,7 @@ do not silently resolve other weapons' missing localization pointers. At this
 baseline the retained coverage report records **2,966 mapped non-optic selections**:
 2,948 linked descriptions and 18 approved panel transcriptions; 45 descriptions
 remain missing/conflicting. Iron Sights adds 63 selections. See the [current
-mapping audit](../working/FROSTY_DISPLAY_NAMES.md#current-site-mapping).
+mapping audit](../frosty/UI_TEXT.md#current-site-mapping).
 
 Weapon name/description promotion is separately reviewed; the extraction helper
 [`frosty-descriptions.py`](../../scripts/frosty-descriptions.py) produces candidate

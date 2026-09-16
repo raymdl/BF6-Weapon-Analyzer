@@ -209,7 +209,7 @@
       "purpose": "Assets to compare for the 1.4.3.0 Interdictor changes"
     },
     "weapon-ui-metadata": {
-      "path": "docs/working/FROSTY_DISPLAY_NAMES.md",
+      "path": "docs/archive/FROSTY_DISPLAY_NAMES.md",
       "sha256AtSeed": "ba9cb717ca8abcf969aa5848a8529fe95c644c14bd57bf7d59c764fc7f70daec",
       "selection": "catalog-matched path mentions; inclusion is not proof of runtime use",
       "purpose": "Weapon UI metadata and localization assets that link weapons to display names"
