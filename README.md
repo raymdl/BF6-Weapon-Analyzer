@@ -1,6 +1,6 @@
 # BF6 Weapon Analyzer
 
-[Open the analyzer](https://raymdl.github.io/BF6-Weapon-Analyzer/) · [User guide](docs/USER_GUIDE.md) · [Data-flow atlas](docs/data-flow/README.md) · [Documentation index](docs/README.md)
+[Open the analyzer](https://raymdl.github.io/BF6-Weapon-Analyzer/) · [User guide](docs/USER_GUIDE.md) · [Data-flow atlas](https://raymdl.github.io/BF6-Weapon-Analyzer/docs/data-flow/) · [Documentation index](docs/README.md)
 
 A browser-based Battlefield 6 weapon and attachment comparison tool. It calculates
 damage, handling, recoil, spread, and projectile behavior for selected loadouts.
@@ -72,7 +72,7 @@ Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
 
 | Purpose | Read |
 |---|---|
-| Data sources, calculations, assumptions, and publishing diagrams | [Data-flow atlas](docs/data-flow/README.md) |
+| Data sources, calculations, assumptions, and publishing diagrams | [HTML viewer](https://raymdl.github.io/BF6-Weapon-Analyzer/docs/data-flow/) · [Markdown](docs/data-flow/README.md) |
 | Controls and display interpretation | [User guide](docs/USER_GUIDE.md) |
 | Modules, state, sharing, and rendering | [Architecture](docs/ARCHITECTURE.md) |
 | Source records and review evidence | [Data sources](docs/DATA_SOURCES.md) |

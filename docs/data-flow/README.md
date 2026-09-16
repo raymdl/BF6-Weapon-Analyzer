@@ -1,6 +1,6 @@
 # Data-flow atlas
 
-[Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
+[HTML viewer](https://raymdl.github.io/BF6-Weapon-Analyzer/docs/data-flow/) · [Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
 
 Data sources, import scripts, calculations, assumptions, and publishing for the
 current site.
@@ -109,3 +109,7 @@ documentation. Keep historical input hashes with their original records.
 GitHub renders the Mermaid diagrams directly. Code and evidence links are
 relative to this repository. Use the review commit above to inspect the versions
 used for this documentation.
+
+[index.html](index.html) is a self-contained HTML export with embedded diagrams,
+section navigation, and zoom/pan controls. GitHub Pages serves it at the HTML viewer
+link above. It is a static snapshot; regenerate it when the Markdown changes.
