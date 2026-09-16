@@ -67,106 +67,12 @@ changed slot categories, prerequisite IDs and site identity mappings after updat
 The watchlist includes the files read by the generator; it does not claim a full
 recursive dependency closure or approval of every operand in those files.
 
-## Per-build collection
+## Tools, decoding and per-build collection
 
-### Completed pre-update preparation (14 September 2026)
-
-The 1.4.2.5 capture is in `C:\Users\royal\Documents\BF6 Datamining\research-1.4.2.5\pre-update`. See `summary.json` and `collection/collection-manifest.json`. It retains 23,557 raw assets covering the 8,062 watched paths and all explicit EBX dependencies reached through existing XML. All raw exports succeeded; the XML tree was inventoried in place. No recordings or duplicate XML tree were copied.
-
-The full JSON catalog contains 464,499 paths, GUIDs, declared sizes and available Frosty SHA1 records. Type names were unavailable in raw-index mode and are null. The old descriptors, SDK, runtime, cache and exact source distribution are retained separately. The working key was not copied.
-
-The manifest remains `partial`: 1,500 raw-retained assets lack XML inspection, further non-EBX/GUID-only dependencies are not closed, and exact marketing-build identity is not independently verified. Archive Head `4420709` differs from SDK `4414275`; matching prior grid/descriptor/executable hashes are recorded as evidence, not a reason to hide that difference. The discovery report lists additional Game/gadget path-name candidates without claiming they are required or active.
-
-`scripts/frosty-collect-raw.ps1` now captures a full catalog and an optional routes-file raw set without object decoding. It requires Windows PowerShell and the local Frosty runtime. Use a new output directory per capture; existing raw files are not overwritten. The documented `discoveryRules` and schema do not themselves run collection or dependency decoding.
-
-The completed 1.4.3.0 work is recorded in [the update plan](../../docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md). For the next update, follow the [game update guide](../../docs/GAME_UPDATE_GUIDE.md). Keep old outputs unchanged.
-
-Create a separate directory for each verified game build. Store raw EBX, XML, matching `SharedTypeDescriptors.ebx`, tool/SDK identity and export results there. Preserve original files once the collection is complete. Keep recordings outside this process.
-
-Use `collection-manifest.schema.json` for each build's generated `collection-manifest.json`. The 1.4.2.5 collection manifest is stored in the external versioned evidence directory listed above. The schema distinguishes successful, failed, skipped and missing exports and records each output's size and SHA-256. Failed or partial results must not be presented as a complete snapshot.
-
-Record the actual game build evidence and Frosty revision or binary hashes. An expected patch label alone is not build verification. Record extractor versions, source asset hashes and field paths in derived stat reports. Preserve observed values separately from calculations and interpretation.
-
-For dependencies, follow external references recursively with a visited set. Record missing targets, unresolved GUID-only references and assets that could not be decoded. Referenced RES/chunk payloads and localized strings may need separate extraction; a raw EBX file does not contain all referenced data. Save these as support files and document their source routes.
-
-Do not use a changed raw hash alone as proof of a numeric stat change. Compare decoded fields and generated stats, using matching decoder versions where practical. Preserve both versions when decoder changes affect output.
-
-### 1.4.2.5 tree additions (14 September 2026)
-
-Exports made during research in the ignored `outputs/` folder were copied into `Frosty Exports\1.4.2.5` with their asset routes: 1,002 attachment UI descriptors, 7 weapon UI metadata assets, `UIPlayerAbilityDescriptionMetadata`, and the English strings as `Common/Localization/Languages/fs_us_loc.strings.tsv` (SHA-256 `a90186f7…`, matching `frosty-attachment-descriptions-2026-09-13.json`). No existing file was replaced; the one overlapping descriptor was byte-identical. `UIWeaponAbilityMetaData_S3B2` was exported with FrostyCmd on the 1.4.2.5 install (`bf6.exe` dated 5 September 2026); it is an empty container. Export status files are in `_support/export-status`.
-
-## Frosty tool procedure (verified 12-14 September 2026)
-
-1. **Build check.** The 1.4.2.5 install has `bf6.exe` dated 5 September 2026. A later date means the game updated; exports then reflect the new build.
-2. **Cache.** After an update, rename `Caches\bf6.cache` (for example `bf6-1.4.2.5.cache`) before the first export. Frosty only patches a cache whose head number differs, and that path is untested for BF6. The first export then builds a full cache (the 1.4.2.5 cache is 880 MB).
-3. **XML export (batch).** Put routes in a text file, one per line, and run from the runtime folder: `FrostyCmd.exe export-ebx-list bf6 "C:\Program Files\EA Games\Battlefield 6" "<list file>" "<output folder>"`. It loads the cache once, writes each asset under its route, and records `ok` or the error per asset in `export-status.tsv`. Test on 14 September: 10 assets, including the 21 MB `GRX_Weapons` and 12 MB `settings`, in 26 s; all 9 comparable files byte-identical to the Frosty Editor export. The 1,003 attachment descriptors were also exported this way with no errors. `export-ebx-list` has no size limit: never put a material grid or other very large asset in the list.
-4. **XML export (single).** `FrostyCmd.exe export-ebx bf6 "<game>" "<asset path>" "<output .xml>"` takes about 14 s per asset, mostly cache load. Trust the local usage lines, not the online Frosty command docs.
-5. **Strings.** `FrostyCmd.exe export-strings bf6 "<game>" Common/Localization/Languages/fs_us_loc "<output .tsv>"`.
-6. **Memory.** Run one FrostyCmd process at a time. Never decode a level `materialgrid_win32` with `export-ebx`, `export-ebx-list` or the Editor: it reached 49-52 GB and crashed the machine once, and a failed or timed-out export keeps reading in the background. After any failed or slow export, check `Get-Process FrostyCmd` and stop it with `Stop-Process -Name FrostyCmd -Force`.
-7. **Raw EBX.** Dump material grids with `scripts/frosty-raw-assets.ps1` (routes in its header; it has a size limit). `scripts/frosty-hit-zones.py` reads them with `SharedTypeDescriptors.ebx`.
-8. **Old snapshots.** Write each build to its own `Frosty Exports\<build>` folder. A 1.4.2.5 file cannot be exported again after the game files update.
-
-## Coverage of the 1.4.2.5 XML export (14 September 2026)
-
-The catalog lists 48,940 routes under `Common/Hardware/Weapons`, `Common/Hardware/Common/Arrays`, `Common/GameSetup/Tweakables` and `Common/GameSetup/GameConfigurations`. 26,086 are exported. Of the 22,854 missing, 22,761 are in art, texture, skin, VFX, audio or UI folders; the rest are ammo textures, cartridge art and two sledgehammer skins. No `_WB`, `GS_`, `Attachment_`, `U_PRG_`, `U_ATT_`, `WPM_`, `PD_`, array or tweakable route is missing. The classification is by name and folder only; `Game/` and gadgets were not checked.
-
-The original blanket export has 36,658 XML files; 6,978 of them are watchlist assets. Mechanics folders without art folders hold 15,523 routes, 8,565 of them outside the watchlist.
-
-Data outside the XML tree: level material grids (raw EBX), localized strings (binary chunks), `SoldierMotionMachine` (export timed out) and native runtime equations.
-
-## EBX decoding and the SDK (15 September 2026)
-
-How BF6 EBX actually resolves types, why Frosty breaks after a game update, and what to
-use instead. Full procedure in [the game update guide](../../docs/GAME_UPDATE_GUIDE.md).
-
-**Type identity.** A RIFF EBX file names each top-level instance by a class GUID formed
-from the type GUID's last 12 bytes plus a 4-byte **layout signature**. `EbxReaderRiff`
-looks that GUID up in the locally generated `BF6SDK.dll`. Any layout change moves the
-signature, so it moves the GUID, so the stale SDK cannot resolve it and the exporter writes
-`<!-- Object could not be loaded (unknown type) -->` in place of the object. The class
-*name* hash (`Class_535682be`) does **not** move when the layout changes.
-
-**`SharedTypeDescriptors.ebx` is the authority.** It ships with the game, is rewritten in
-the Frosty runtime folder when the cache rebuilds, and carries every class size, alignment,
-field offset, field type and field-name hash. Retain a copy per build; the old one is not
-recoverable after an update.
-
-**1.4.2.5 → 1.4.3.0.** 9,470 → 9,513 type keys, 108 of them new: 13 where only the
-signature moved, 69 real layout changes, 26 brand-new type names. No class name hash was
-removed; 26 were added. 341 of 835 exported assets lost at least one object in Frosty.
-
-**Do not patch Frosty to fall back to the type name.** The name resolves, but for the 69
-genuinely changed layouts the SDK's stale offsets then yield plausible wrong values with no
-error. Silent corruption is worse than a visible gap.
-
-**Do not expect to regenerate the SDK.** Generation reads the running game process and EA
-anticheat blocks it. Treat `BF6SDK.dll` as frozen.
-
-**Use `scripts/frosty-ebx-decode.py`.** It decodes RIFF EBX using only the build's own
-descriptors, so it cannot read a changed type with stale offsets. Output is a JSON tree
-using the same `Class_`/`Field_` hash names as the Frosty XML.
-
-Field encoding, for anyone extending the reader: the descriptor stores `flags` as the raw
-u16 shifted right by one, matching `FrostySdk.EbxField.Type`. From it,
-`DebugType = (flags >> 4) & 0x1F` and `DebugCategory = flags & 0xF`. Category 4 marks an
-array; the element type is the field's own `DebugType`. Fields are read at
-`objectStart + field.offset`, **not** sequentially. An array field holds a relative offset,
-not an index: `resolved = fieldPos - dataStart + value`, matched against the EBXX table,
-with the array empty when the value is 0 or resolves to `arraysOffset + 0x10`.
-
-**Validation status.** Against Frosty's own XML on 400 random 1.4.2.5 assets: 234 identical
-value-for-value, 151 supersets (fields the SDK class lacks, which Frosty reads and
-discards), 14 disagreements, 0 failures. All 14 are type names with more than one layout
-entry in the descriptors; the reader follows the layout the asset declares, Frosty follows
-the SDK's. Such objects are tagged `$layoutAmbiguous` and are provisional. Since the
-16 September review, ambiguous nested and inherited layouts also mark their containing
-object. The same decoder on both builds does not resolve ambiguity; all 27 saved PiP
-comparisons are provisional. The earlier sample counts above describe the original run,
-not independent validation of the warning change.
-
-**Hash evidence.** The catalog's Frosty record `sha1` is not sufficient proof of content:
-142 assets in 1.4.3.0 kept their record SHA1 but had a different extracted raw stream, and
-all 142 decoded to changed XML. Compare a recomputed raw SHA256.
+Moved to [Frosty tools](../../docs/frosty/TOOLS.md): FrostyCmd commands, safety rules,
+SDK and decoder notes, export coverage, per-build collection rules and status, and the
+generators to rerun after an update. Field meanings are in the
+[field map](../../docs/frosty/FIELD_MAP.md).
 
 ## Structural findings that help comparisons (15 September 2026)
 
@@ -227,41 +133,6 @@ Described with worked examples in
 ladder checks, paired-field disagreement, flag/value mismatch, multi-package selection
 (`scripts/frosty-multi-package-scan.py`), relative-to-default comparison,
 description-versus-effect grouping, and string-set comparison.
-
-## Per-build collection status
-
-| Build | Collection | Status |
-|---|---|---|
-| 1.4.2.5 | `research-1.4.2.5/pre-update/collection/collection-manifest.json` | partial; 23,557 raw captures |
-| 1.4.3.0 | `research-1.4.3.0/post-update/collection/collection-manifest.json` | partial; 23,709 asset rows, schema-validated with 0 errors, 24,565 files re-verified by hash |
-
-The 1.4.3.0 capture reuses the 1.4.2.5 route list so raw hashes compare directly, then adds
-the 12 gameplay-shaped assets the update introduced and 152 dependency routes found by a
-visited-set traversal of the changed and added assets. Animation routes, generated `_af/`
-tag collections, decal textures and `.physics` assets are excluded on purpose.
-
-Build an overlay export root for the generators: copy the previous build's XML tree, layer
-the new build's fully decoded assets and its added assets over it, and keep the list of
-routes left behind because Frosty could not decode them
-(`Frosty Exports/1.4.3.0/xml-overlay-stale.txt`). Generators that read a stale route need
-`scripts/frosty-ebx-decode.py` instead.
-
-## Update comparison: generators and checks
-
-After exporting a new build, re-run the consumer for each evidence source and compare with the dated report.
-
-| Area | Command or check | Baseline |
-|---|---|---|
-| Precision tables | `python scripts/frosty-precision-tables.py --root "<xml root>" --out reference-data/provenance/frosty-precision-tables-<date>.json`, then `node scripts/frosty-precision-check.mjs` | `frosty-precision-tables-2026-09-14.json` |
-| Hit zones | `scripts/frosty-raw-assets.ps1`, then `scripts/frosty-hit-zones.py` | `frosty-hit-zones-2026-09-13.json` |
-| Tooltips and optics | `scripts/frosty-attachment-tooltips.py` with a new dated `--optic-mapping-json` (full command in `docs/working/FROSTY_DISPLAY_NAMES.md`), then `node --test scripts/optic-costs.test.mjs` | `frosty-optic-category-mapping-2026-09-13.json` |
-| Weapon display names | Steps in `docs/working/FROSTY_DISPLAY_NAMES.md` (strings, string scan, `UIWeaponAbilityMetaData*`) | `frosty-weapon-display-names-2026-09-13.json` |
-| Handling, barrel ADS, sniper brakes | `scripts/frosty-attachment-handling.py`, `scripts/frosty-barrel-ads.py`, `scripts/frosty-sniper-brakes.py` | the matching `*-generated.json` reports |
-| Arrays, damage, draw time, spread | `node --test scripts/source-arrays.test.mjs scripts/damage.test.mjs scripts/draw-time.test.mjs scripts/spread-distribution.test.mjs` | `frosty-array-review-2026-09-09.json`, `frosty-damage-curve-review-2026-09-13.json`, `frosty-draw-time-2026-09-09.json` |
-| Patch-note items | `docs/archive/INTERDICTOR_1.4.3.0_CHECK.md` | 1.4.2.5 values in that file |
-| Optic render FOV and iron-sight zoom | Method in [Optic render FOV](#optic-render-fov-aim-zoom-and-names-16-september-2026); compare `opticRenderFovByPart`, `riserFamilyLinksByWeapon` and `ironSights` | `frosty-optic-render-fov-2026-09-16.json` |
-
-Field meanings found so far that help comparisons: optic point cost `Field_6ee865a5`; Precision table fields in the precision report `fieldMap`; semantic names from `GRX_Weapons` (`frosty-grx-field-names-2026-09-13.json`).
 
 ## Attachment modifier fields (14 September 2026)
 
