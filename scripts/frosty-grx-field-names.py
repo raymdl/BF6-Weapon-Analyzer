@@ -34,7 +34,7 @@ def number(text):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--root", default=r"C:\Users\royal\Documents\BF6 Datamining\Frosty")
+    parser.add_argument("--root", default=r"C:\Users\royal\Documents\BF6 Datamining\builds\1.4.2.5\xml")
     parser.add_argument("--out", default="reference-data/provenance/frosty-grx-field-names-2026-09-13.json")
     args = parser.parse_args()
     registry_path = os.path.join(args.root, REGISTRY)

@@ -96,7 +96,7 @@
       "reportSha256": "de2408a12182baeebb62625d7e5cacc92352e1240e52345dfe68754bccf933c6"
     },
     "collection-1.4.3.0": {
-      "path": "C:/Users/royal/Documents/BF6 Datamining/research-1.4.3.0/post-update/collection/collection-manifest.json",
+      "path": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/capture/collection/collection-manifest.json",
       "reportSha256": null,
       "note": "Partial per-build manifest outside the repo. The scoped continuation scanned 16,426 assets and captured 269 more raw assets, with no pending known routes. Four unresolved file GUIDs and explicit exclusions remain; see the review-continuation evidence."
     },
@@ -105,7 +105,7 @@
       "reportSha256": "eb67585bae08c714145912ad44ba4bbc543d6c947f5ddf007b39501a86a6d3c9"
     },
     "review-1.4.3.0": {
-      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\review-2026-09-16.json",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\review-2026-09-16.json",
       "reportSha256": "b268dc7b17a2454a0211d5a9dce8be2e8b429dec19af162537d097328b429f02"
     },
     "review-continuation-1.4.3.0": {

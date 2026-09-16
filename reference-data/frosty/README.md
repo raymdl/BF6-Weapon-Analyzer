@@ -19,7 +19,7 @@ After a game update, follow [docs/GAME_UPDATE_GUIDE.md](../../docs/GAME_UPDATE_G
 
 The full catalog stays in the external BF6 Datamining directory. The watchlist records its hash so a replacement catalog cannot silently change the baseline. Do not copy the full catalog into the watchlist.
 
-As of 14 September 2026, `datamining` resolves to `C:\Users\royal\Documents\BF6 Datamining`. The 1.4.2.5 XML root is `Frosty Exports\1.4.2.5` beneath that directory. The tools root is `FrostyToolsuite-battlefield6`, with no repeated nested folder; its runtime is `FrostyEditor\bin\Release\Final`, which also holds `SharedTypeDescriptors.ebx`.
+As of 14 September 2026, `datamining` resolves to `C:\Users\royal\Documents\BF6 Datamining`. Build data is in `builds\<build>\` beneath that directory (the 1.4.2.5 XML root is `builds\1.4.2.5\xml`; the watchlist catalog is `builds\1.4.2.5\capture\catalog\ebx_manifest.csv`). The tools root is `FrostyToolsuite-battlefield6`, with no repeated nested folder; its runtime is `FrostyEditor\bin\Release\Final`, which also holds `SharedTypeDescriptors.ebx`.
 
 ## Maintaining the list
 

@@ -14,10 +14,29 @@ things, in the same session ([Recording what you learn](#recording-what-you-lear
 
 ---
 
+## Build snapshots
+
+Each data build lives in `BF6 Datamining\builds\<build>\` (`xml\`, `capture\`,
+`reports\`) with `BUILD.json` (identity, client versions, state) and `MANIFEST.tsv` (size
+and SHA-256 of every file). `scripts/frosty-build.py` manages them
+([Frosty tools](frosty/TOOLS.md#build-snapshots)).
+
+| State | Meaning | Rule |
+|---|---|---|
+| `open` | The installed data build | New exports may add files. Existing files must not change (`reports\` may). Run `guard` before each export and `record` after it. |
+| `sealed` | No longer installed | Read-only. Compare new builds against it; never write to it. |
+
+A build stays open while it is installed, so later investigations can add new Frosty
+paths. It is sealed when the game updates, before the first export from the new client.
+
+A client hotfix is not always a new data build. If `client-check` finds identical type
+layouts (as for the 16 September 2026 hotfix of 1.4.3.0), add the client version to the
+open build. If the layouts differ, seal the open build and create a new one.
+
 ## Stage 0 — Before the update lands
 
-This is the only irreversible step. Once the game files update, an unexported 1.4.2.5
-asset is gone.
+This is the only irreversible step. Once the game files update, an unexported asset of
+the old build is gone. Keep the open build complete while it is installed:
 
 - Capture the full catalog and the raw EBX for every watched route with
   `scripts/frosty-collect-raw.ps1`. Keep the route list: reusing it on the next build is
@@ -28,7 +47,8 @@ asset is gone.
 - Export strings (`fs_us_loc`) for the build.
 - Record the executable hash and version, the Frosty archive Head and the SDK version.
 
-Write everything to `research-<build>/`. Never overwrite a previous build's folder.
+Write everything to the open build (`builds\<build>\capture\` or `xml\`), then run
+`record` and `verify`. Never write to a sealed build.
 
 ## Stage 1 — Identify the new build
 
@@ -45,14 +65,29 @@ Record whether `BF6SDK.dll` and `SharedTypeDescriptors.ebx` changed. They are in
 the SDK is a local artefact, the descriptors ship with the game. **A descriptor change
 with an unchanged SDK is the normal case and it breaks Frosty's decoding** — see Stage 4.
 
-Rename `Caches\bf6.cache` before the first export so Frosty builds a full cache.
+Then decide the build:
+
+```bash
+python scripts/frosty-build.py --datamining "<datamining>" client-check <open build> --game "<game>" --runtime "<runtime>"
+```
+
+- **Same layouts (hotfix):** copy the runtime `SharedTypeDescriptors.ebx` into the open
+  build's `capture\toolchain\` under a dated name, add the printed entry to its
+  `BUILD.json` `clients`, and continue with that build.
+- **Different layouts (new build):** run `seal <old build>`, then create
+  `builds\<new build>\` with a `BUILD.json` (`state: open`, the new client entry and its
+  descriptors file) and run `record <new build>`.
+
+Rename `Caches\bf6.cache` before the first export so Frosty builds a full cache. Run
+`guard <build> --game "<game>"` before every export; it stops when the installed client is
+not a recorded client of an open build.
 
 ## Stage 2 — Capture the new build
 
 Reuse the previous build's route list so the two captures are comparable.
 
 ```bash
-powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -GamePath <game> -OutputDirectory research-<build>/collection -RoutesFile research-<build>/raw-routes.txt
+powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -GamePath <game> -OutputDirectory builds/<build>/capture/collection -RoutesFile builds/<build>/capture/raw-routes.txt
 ```
 
 Then XML-export the changed subset with the batch command, and export strings. Full
@@ -122,8 +157,8 @@ never touches the SDK, so it cannot read a changed type with stale offsets.
 
 ```bash
 python scripts/frosty-ebx-decode.py \
-  --descriptors research-<build>/toolchain/SharedTypeDescriptors.ebx \
-  --root research-<build>/collection/raw \
+  --descriptors builds/<build>/capture/toolchain/SharedTypeDescriptors.ebx \
+  --root builds/<build>/capture/collection/raw \
   --ebx-list <file of .ebx paths> \
   --out <out.json>
 ```
