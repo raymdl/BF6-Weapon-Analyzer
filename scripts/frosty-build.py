@@ -235,7 +235,8 @@ def cmd_client_check(root, build, game, runtime):
              "layoutEquivalentTo": info["clients"][0]["descriptorsSha256"] if same else None,
              "checkedUtc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
     if same:
-        print("Type layouts are identical: this is a client update of the same data build.")
+        print("Type layouts are identical. If the asset catalog is also unchanged, this is a client")
+        print("update of the same data build (see docs/GAME_UPDATE_GUIDE.md, Stage 1).")
         print("Copy the runtime SharedTypeDescriptors.ebx into capture/toolchain/ under a new name and")
         print(f"add this entry to {bdir / 'BUILD.json'} clients:")
     else:

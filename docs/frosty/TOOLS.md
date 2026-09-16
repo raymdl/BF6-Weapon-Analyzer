@@ -111,6 +111,7 @@ Build only FrostyCmd, so the existing FrostySdk and FrostyHash builds stay uncha
 | `scripts/frosty-material-grid-inventory.py --descriptors <SharedTypeDescriptors.ebx> --class-guids FrostyPlugin/Sdk/ClassGuids.txt --grid <raw .ebx> --out <json>` | Bounded, safe reader for material grids. Ran on both 1.4.3.0 grids. |
 | `scripts/frosty-hit-zones.py` | Reads raw grids with `SharedTypeDescriptors.ebx`. |
 | `scripts/frosty-ebx-decode.py` | SDK-independent RIFF EBX decoder (below). |
+| `scripts/frosty-catalog-files.py <asset-catalog.json> <folder>` | Writes `ebx_manifest.txt`, `ebx_manifest.csv` and `ebx_directories.txt` for a build (`--check` compares). |
 
 ## SDK and decoding
 

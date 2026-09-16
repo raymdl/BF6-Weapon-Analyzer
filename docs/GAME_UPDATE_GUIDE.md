@@ -30,57 +30,99 @@ A build stays open while it is installed, so later investigations can add new Fr
 paths. It is sealed when the game updates, before the first export from the new client.
 
 A client hotfix is not always a new data build. If `client-check` finds identical type
-layouts (as for the 16 September 2026 hotfix of 1.4.3.0), add the client version to the
-open build. If the layouts differ, seal the open build and create a new one.
+layouts and the asset catalog is unchanged, add the client version to the open build (as for
+the 16 September 2026 hotfix of 1.4.3.0). Otherwise seal the open build and create a new one.
 
-## Stage 0 — Before the update lands
+**Updates arrive without notice.** The EA app installs updates and hotfixes automatically;
+the 16 September hotfix was found only because the executable hash had changed. Start every
+Frosty session with `guard` (below), not only exports.
 
-This is the only irreversible step. Once the game files update, an unexported asset of
-the old build is gone. Keep the open build complete while it is installed:
+## Stage 0 — While a build is installed
+
+This is the only irreversible part. Once the game files update, an unexported asset of the
+old build is gone. Keep the open build complete while it is installed:
 
 - Capture the full catalog and the raw EBX for every watched route with
   `scripts/frosty-collect-raw.ps1`. Keep the route list: reusing it on the next build is
   what makes raw hashes directly comparable.
-- Retain `Profiles/BF6SDK.dll`, `FrostySdk.dll` and **`SharedTypeDescriptors.ebx`** from
-  the runtime folder. The descriptor file is rewritten when the cache rebuilds, so a copy
-  taken after the update is the new one — the old one cannot be recovered afterwards.
+- Keep `Profiles/BF6SDK.dll`, `FrostySdk.dll` and **`SharedTypeDescriptors.ebx`** in the
+  open build's `capture\toolchain\`. Frosty rewrites the runtime descriptor file when it
+  first loads a new game version, so after an update the old file can no longer be copied.
+  `BUILD.json` lists the descriptor file for each client.
 - Export strings (`fs_us_loc`) for the build.
-- Record the executable hash and version, the Frosty archive Head and the SDK version.
+- Record the executable hash and version, the Frosty archive Head and the SDK version in
+  `BUILD.json`.
 
 Write everything to the open build (`builds\<build>\capture\` or `xml\`), then run
 `record` and `verify`. Never write to a sealed build.
 
+```bash
+python scripts/frosty-build.py --datamining "<datamining>" guard <open build> --game "<game>"   # before
+python scripts/frosty-build.py --datamining "<datamining>" record <open build>                  # after
+```
+
 ## Stage 1 — Identify the new build
 
-```bash
-# executable identity
-powershell -c "$e='C:\Program Files\EA Games\Battlefield 6\bf6.exe'; (Get-Item $e).VersionInfo.FileVersion; (Get-FileHash $e -Algorithm SHA256).Hash"
-```
+Start here when `guard` stops because the installed `bf6.exe` is not a recorded client.
 
-**Do not order builds by the file-version string.** In 1.4.3.0 it went *down*
-(`1, 0, 439, 36273` → `1, 0, 437, 12728`) while the hash changed. Use the hash for
-identity and the Frosty archive Head for ordering.
+1. **Executable identity.**
 
-Record whether `BF6SDK.dll` and `SharedTypeDescriptors.ebx` changed. They are independent:
-the SDK is a local artefact, the descriptors ship with the game. **A descriptor change
-with an unchanged SDK is the normal case and it breaks Frosty's decoding** — see Stage 4.
+   ```bash
+   powershell -c "$e='C:\Program Files\EA Games\Battlefield 6\bf6.exe'; (Get-Item $e).VersionInfo.FileVersion; (Get-FileHash $e -Algorithm SHA256).Hash"
+   ```
 
-Then decide the build:
+   **Do not order builds by the file-version string.** In 1.4.3.0 it went *down*
+   (`1, 0, 439, 36273` → `1, 0, 437, 12728`) while the hash changed. Use the hash for
+   identity and the Frosty archive Head for ordering.
 
-```bash
-python scripts/frosty-build.py --datamining "<datamining>" client-check <open build> --game "<game>" --runtime "<runtime>"
-```
+2. **Let Frosty load the new client.** Rename `Caches\bf6.cache` (for example
+   `bf6-<old build>.cache`) so Frosty builds a full cache. Then start Frosty once without
+   writing into `builds\`: open the Frosty Editor, or export one small asset to a scratch
+   folder. This rewrites the runtime `SharedTypeDescriptors.ebx` for the new client.
 
-- **Same layouts (hotfix):** copy the runtime `SharedTypeDescriptors.ebx` into the open
-  build's `capture\toolchain\` under a dated name, add the printed entry to its
-  `BUILD.json` `clients`, and continue with that build.
-- **Different layouts (new build):** run `seal <old build>`, then create
-  `builds\<new build>\` with a `BUILD.json` (`state: open`, the new client entry and its
-  descriptors file) and run `record <new build>`.
+3. **Compare the type layouts.**
 
-Rename `Caches\bf6.cache` before the first export so Frosty builds a full cache. Run
-`guard <build> --game "<game>"` before every export; it stops when the installed client is
-not a recorded client of an open build.
+   ```bash
+   python scripts/frosty-build.py --datamining "<datamining>" client-check <open build> --game "<game>" --runtime "<runtime>"
+   ```
+
+   `BF6SDK.dll` and `SharedTypeDescriptors.ebx` are independent: the SDK is a local
+   artefact, the descriptors ship with the game. **A descriptor change with an unchanged
+   SDK is the normal case and it breaks Frosty's decoding** (Stage 4). A changed file with
+   identical layouts, as in the 16 September hotfix, only reorders type entries.
+
+4. **Compare the asset catalog** (for a suspected hotfix). Capture a catalog-only run (no `-RoutesFile`) of
+   `frosty-collect-raw.ps1` into the open build's `reports\` folder and compare paths and
+   Frosty record hashes with `capture\collection\asset-catalog.json`.
+
+5. **Decide.**
+   - **Hotfix (identical layouts, unchanged catalog):** copy the runtime
+     `SharedTypeDescriptors.ebx` into the open build's `capture\toolchain\` under a dated
+     name, add the entry that `client-check` printed to `BUILD.json` `clients`, and continue
+     with that build.
+   - **New build (layouts or catalog differ):** run `seal <old build>`. Create
+     `builds\<new build>\` with a `BUILD.json` like this, copy the runtime descriptors into
+     `capture\toolchain\`, and run `record <new build>`:
+
+     ```json
+     {
+       "build": "<label>",
+       "label": "Update <label>",
+       "state": "open",
+       "labelSource": "User supplied; not embedded in the game files.",
+       "clients": [{
+         "label": "<label>",
+         "exeSha256": "<bf6.exe SHA-256>",
+         "exeFileVersion": "<file version>",
+         "descriptorsFile": "capture/toolchain/SharedTypeDescriptors.ebx",
+         "descriptorsSha256": "<SHA-256>",
+         "frostyArchiveHead": 0,
+         "sdkVersion": 0
+       }]
+     }
+     ```
+
+Run `guard <build> --game "<game>"` before every export from now on.
 
 ## Stage 2 — Capture the new build
 
@@ -90,11 +132,20 @@ Reuse the previous build's route list so the two captures are comparable.
 powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -GamePath <game> -OutputDirectory builds/<build>/capture/collection -RoutesFile builds/<build>/capture/raw-routes.txt
 ```
 
-Then XML-export the changed subset with the batch command, and export strings. Full
-command lines are in [Frosty tools](frosty/TOOLS.md#frostycmd).
+Then XML-export the changed subset into `builds/<build>/xml/` with the batch command, and
+export strings. Full command lines are in [Frosty tools](frosty/TOOLS.md#frostycmd).
+
+Write the text catalog files from the captured catalog:
+
+```bash
+python scripts/frosty-catalog-files.py builds/<build>/capture/collection/asset-catalog.json builds/<build>/capture/catalog
+```
 
 Expect raw capture failures only for assets the catalog says were removed. Any other
-failure is a real problem.
+failure is a real problem. Finish with `record <build>` and `verify <build>`.
+
+Write comparison results (diffs, overlays, reviews) into the new build's `reports\` or
+`capture\` folder, never into the sealed build.
 
 ## Stage 3 — Decide what actually changed
 
@@ -346,7 +397,8 @@ For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
 - **One FrostyCmd at a time.** Do not parallelise exports.
 - **Batch, don't loop.** `export-ebx-list` loads the cache once; per-asset `export-ebx`
   costs ~14 s each, almost all cache load.
-- **Never overwrite a previous build's export tree.**
+- **Never write to a sealed build.** Its files are read-only, and `guard` stops exports
+  into it. Write only to the open build and run `record` after each export.
 - **Generator defaults.** Several `scripts/frosty-*.py` write into Analyzer data or
   provenance by default. Pass explicit output paths.
 - **Generators mutate their dated inputs.** `frosty-attachment-tooltips.py` writes updated
