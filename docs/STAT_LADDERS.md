@@ -3,9 +3,7 @@
 [Documentation index](README.md) · [Data reference](DATA_REFERENCE.md) · [Attachment model](ATTACHMENT_MODEL.md)
 
 All values below come from [balance_tables.json](../data/balance_tables.json).
-Finite arrays are **zero-based and source-ordered**. Preserve repeated values and
-row order: an attachment changes a coordinate, not a percentage of the selected
-row's value. Sum all contributions on an axis, then clamp once to `[0, length−1]`.
+Finite arrays are **zero-based and source-ordered**. Preserve repeated values and row order. Attachments shift the selected index. Sum all contributions on an axis, then clamp once to `[0, length−1]`.
 Clamping each attachment separately can produce a different composed result.
 
 ```mermaid
@@ -131,8 +129,8 @@ ADS-in positions are separate from ADS-out and AZT main/alternate animation timi
 ADS-out's rounded values are 400/333/267/233/200/167/133/100 ms; they are retained
 research evidence and are not a second runtime ADS-in ladder.
 
-`defAds` and `defAms` are reviewed/normalized base coordinates, not a guarantee that
-all raw source defaults were imported without composition adjustments. VSSM's
+`defAds` and `defAms` are base coordinates with reviewed default-loadout
+normalization. VSSM's
 WB barrel modifiers are zero; both supported barrels retain 250 ms with defaults.
 The conflicting GS route and native timing remain unresolved. Displayed ADS movement uses
 two decimals after float32 conversion; calculations retain these source decimals.
@@ -186,7 +184,7 @@ interpret the seven columns as seven attachment tiers.
 
 M433 has base index 3: 2.432° standing / 3.04° moving. A catalog hip shift of `−1`
 selects row 4: 1.804° / 2.255°; `−2` selects row 5: 1.352° / 1.69°.
-This is a lookup, not repeated percentage reduction.
+Each shift selects the listed row directly.
 
 VSSM uses raw base index 4: 1.804° standing / 2.255° moving. The former index-2
 override preserved the older class-based baseline pending configuration evidence.
@@ -200,7 +198,7 @@ not independently calibrated by those screenshots. See the
 Values below retain the exported fractional milliseconds. `resolveDrawTime()`
 requires a valid base index, integer shifts, finite nonnegative nonempty arrays,
 and matching deploy/undeploy lengths. Invalid inputs return `valid:false`, a reason,
-and null timing results rather than inventing a class default.
+and null timings. It does not substitute a class default.
 
 | Index | Sprint ms | Primary deploy ms | Primary undeploy ms | Sidearm deploy ms | Sidearm undeploy ms |
 |---|---|---|---|---|---|
@@ -224,7 +222,7 @@ and null timing results rather than inventing a class default.
 the displayed class. VZ61 uses `primary` despite its Sidearm class. Sprint and
 deploy have independent base coordinates (important for Interdictor); deploy and
 undeploy share their resolved coordinate. DB12 has no extra hard-coded class offset.
-Repeated sidearm rows 0–7 must survive even though their values coincide.
+Preserve the repeated sidearm rows 0–7.
 
 Example: M433 sprint/deploy bases are both 5. A summed shift of `−1` on each axis
 selects index 6: sprint 166.667 ms, primary deploy 533.334 ms, undeploy 200.001 ms.
@@ -239,7 +237,7 @@ therefore does not validate every transition animation.
 
 ## Recoil, velocity, and reload factors
 
-These are separate algebraic families, not additional finite handling arrays.
+Recoil, velocity, and reload use the scalar factors and equations below.
 
 | Family | Rule | Evidence / boundary |
 |---|---|---|

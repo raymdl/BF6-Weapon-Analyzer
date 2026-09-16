@@ -2,9 +2,8 @@
 
 [Documentation index](README.md) · [Stat ladders](STAT_LADDERS.md) · [Model limitations](MODEL_LIMITATIONS.md)
 
-The analyzer combines timed recoil delivery, simultaneous recovery, and separate
-spread growth and recovery. This guide describes the implementation and how to
-interpret its plots.
+The model simulates timed recoil delivery with simultaneous recovery, plus
+separate spread growth and recovery.
 
 ## The Model at a Glance
 
@@ -16,9 +15,8 @@ and recovery parameters.
 
 ![Six-shot spray model: recoil centers, spread circles, sampled impacts, simultaneous recoil delivery and recovery, separate spread recovery, and source attachment inputs](img/spray-model.svg)
 
-Both lanes are stepped per shot inside `genRecoilPts()` (recoil lane) and
-`simulateSpread()` (spread lane); the impact sampling happens at render time in
-`drawRecoilFixed()`. The RNG is seeded from the weapon ID (`whash`) so patterns are
+`genRecoilPts()` advances recoil and `simulateSpread()` advances spread per shot.
+`drawRecoilFixed()` samples impacts at render time. The RNG is seeded from the weapon ID (`whash`) so patterns are
 deterministic for the same weapon, loadout, model settings and seed. Reroll changes
 the reference spray; the ten scatter-cloud runs retain their fixed seeds.
 
@@ -98,18 +96,17 @@ subsequent pre-shot point:
 
 ## Effective ceilings during sustained fire
 
-Repeated shots need not produce unlimited growth. Recoil recovery becomes
-stronger as displacement grows. Spread recovery removes part of each shot's
-increase. With a fixed loadout and firing interval, each can approach a balance
-where the next shot adds about as much as recovery removes.
+Recoil recovery increases with displacement; spread recovery removes part of
+each shot's increase. With a fixed loadout and firing interval, each sequence
+can approach a level where per-shot input and recovery balance.
 
 ![Current simulator examples: M4A1 recoil and AK4D spread approach sustained pre-shot levels, with lower levels for Lightened and Heavy respectively](img/effective-ceilings.svg)
 
 The recoil curves average 128 seeds; individual paths still vary. Spread is
 deterministic for the selected state and loadout. These 40-shot sequences omit
-reloads to expose the sustained balance. A plateau is not a universal recoil cap,
-a within-shot peak, or the spread hard maximum. Pauses, rate of fire, attachments,
-and control settings change the result. The UI's `effectiveSpreadMax()` uses its
+reloads to expose the sustained balance. The plotted plateaus describe pre-shot values for these settings. They exclude
+within-shot peaks and differ from the spread hard maximum. Pauses, rate of fire,
+attachments, and control settings change them. The UI's `effectiveSpreadMax()` uses its
 own 50-increase calculation, described below.
 
 ## Recoil recovery and shot timing
@@ -159,8 +156,7 @@ clock while preserving the accumulated recoil and any unfinished delivery.
 
 Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
 selected weapon record. The current Frosty check covers all 63 supported weapons
-and both aim states: all 126 values are **0.025 seconds**. This is a checked
-dataset result; the simulator reads the selected record. A missing/zero duration
+and both aim states: all 126 values are **0.025 seconds**. The simulator reads the selected weapon record. A missing/zero duration
 uses a fallback of **0.025 seconds**.
 
 The four Smooth source assets define two operand sets:
@@ -265,8 +261,8 @@ HUD comparison. Its moving value follows the source row. See
 
 `effectiveSpreadMax()` uses 50 shot increases and recovery intervals, including
 recovery after its last increase, then returns the final clamped value rounded
-to three decimals. It is a representative sustained-fire result, not a search
-for the largest transient value or a proof of the mathematical steady state.
+to three decimals. This finite-run endpoint does not establish the largest transient value or the
+mathematical steady state.
 The shared display axis is 12 degrees.
 
 ## Heavy-type barrel source factors
@@ -320,9 +316,8 @@ Selection treats the light as active. Native
 switching and the modifier operation order have not been decoded. See the
 [source/selection trace](../reference-data/provenance/frosty-light-implementation-2026-09-13.json).
 
-This replaces the old +15% firing-offset estimate. A lower flat recovery offset
-does not by itself mean a worse light: spread added per shot also falls and the
-non-linear recovery coefficient rises. The attachment panel shows both hip
+This replaces the old +15% firing-offset estimate. Evaluate the lower flat recovery offset together with the reduced per-shot
+spread and increased nonlinear recovery coefficient. The attachment panel shows both hip
 spread per shot and the flat firing recovery value.
 
 ## Recoil control and platform
@@ -333,9 +328,8 @@ It does not cancel the sampled variation or spread. The single slider defaults t
 is no separate on/off toggle. Changing platform scales amount, not variation.
 
 The console setting applies an amount multiplier of `0.8836`, taken from Frosty's
-`GRM_Recoil_Controller_03`; PC uses `1`. Applying it as a final amount multiplier
-remains the analyzer's platform model, not a separate simulation of controller
-input, aim assist, camera shake or visual recoil. Visual recoil attachment tags
+`GRM_Recoil_Controller_03`; PC uses `1`. The analyzer applies it as a final amount multiplier. Controller input, aim
+assist, camera shake, and visual recoil are not simulated. Visual recoil attachment tags
 do not establish corresponding changes to the generated physical shot path.
 
 ## Impact sampling and target projection
@@ -348,8 +342,8 @@ uniform area. Interdictor moving ADS uses its source override of 0.67.
 The [M39 EMR capture analysis](https://chatgpt.com/c/6aa60039-1c78-83e9-b381-58241012b282)
 reports 22 of 88 detected marks within half the radius across four first-25-shot
 takes, consistent with the 25% uniform-area prediction. This was settled hipfire
-with Standard Suppressor and two seconds between shots. These are reported mark
-counts, not a new measurement or a complete reconstruction of bullets. Other
+with Standard Suppressor and two seconds between shots. The reported counts cover detected marks only; they do not reconstruct every
+bullet impact. Other
 weapons, ADS and native field consumption remain unverified. Source values for
 all 252 weapon/aim/movement combinations are recorded in
 `reference-data/provenance/frosty-distribution-exponents-2026-09-13.json`.
@@ -381,7 +375,6 @@ precision, shotgun shifts and clamping. The
 single-attachment builds fit the display axis. These checks protect the
 implementation; they do not independently validate its physical accuracy.
 
-The main remaining boundaries are recoil recovery arithmetic, fitted attachment
-recovery parameters, modifier activation/composition where evidence conflicts,
-and target sampling approximations. Keep those distinctions when interpreting
-the plots or promoting new datamined fields.
+Unresolved areas include recoil recovery arithmetic, fitted attachment recovery
+parameters, conflicting modifier activation/composition evidence, and target
+sampling approximations.

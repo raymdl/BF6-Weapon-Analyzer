@@ -2,10 +2,9 @@
 
 [Documentation index](docs/README.md) · [Data sources](docs/DATA_SOURCES.md) · [Tests](docs/TESTS.md)
 
-Maintain the current root product with direct, reviewed changes to the smallest
-relevant files. Preserve unrelated local work and confirm the intended branch
-before editing. Distinguish live data/model changes, presentation, published
-historical pages, and reference-only research.
+Confirm the branch and affected files before editing. Preserve unrelated local
+work. Review data/model changes, presentation changes, historical pages, and
+reference research separately.
 
 ## Routine validation
 
@@ -41,7 +40,7 @@ Preserve existing attachment/ammo catalog order and IDs. **Magazine object-key
 order also encodes share tokens.** Append compatible additions; use explicit codec
 migration and tests for an intentional ordering change. Confirm availability,
 combined slots, point totals, default-build normalization, and composed effects.
-A modifier belongs in its actual aim-state/axis rather than in a generic catch-all.
+Apply each modifier only to its supported aim state and stat axis.
 
 For array changes, check [stat ladders](docs/STAT_LADDERS.md): retain all rows,
 repeated endpoints, raw precision and unrelated hashed columns. Preserve the
@@ -128,11 +127,10 @@ The runtime JSON is part of the ship surface.
 identities/timings, screenshot exceptions, and composed-loadout observations.
 Keep stable IDs and the evidence fields required by each record type. Runtime
 magazine overrides must agree with the register; `validate-data.mjs` checks them
-through `scripts/reload-exceptions.mjs`. Expected fixed-game behavior in a bug note
-is not permission to overwrite an observed exception.
+through `scripts/reload-exceptions.mjs`. Keep observed exceptions until a fix is verified.
 
-[data/provenance/live-baseline.json](data/provenance/live-baseline.json) owns
-current source identity, roster and policy. Update it when those change. Keep
+[data/provenance/live-baseline.json](data/provenance/live-baseline.json) records
+current source identity, roster, and policy. Update it when those change. Keep
 reviewed source arrays and input hashes in provenance when needed to explain a
 mapping or reproduce a comparison; the maintained runtime numeric contract remains
 in `data/`. Do not rewrite historical snapshot hashes to match current files.
@@ -217,11 +215,11 @@ defines current guides and their audiences. Put accepted formulas/units/fallback
 in the responsible guide, unresolved evidence in [limitations](docs/MODEL_LIMITATIONS.md),
 and completed plans or dated investigations in [docs/archive/](docs/archive/README.md).
 Every archived record must have an explicit status and current replacement in the
-archive index. Do not mark all questions resolved just because a report is archived.
+archive index. Keep unresolved questions identified when archiving a report.
 
 After moving documents, update Markdown links and machine-readable provenance
 pointers. Check current document links/anchors, preserve historical evidence bodies,
-and identify local-only capture references instead of pretending they ship. Existing
+and label capture references that are available only locally. Existing
 Mermaid diagrams render in GitHub; the SVG illustration remains self-contained.
 
 Keep `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` frozen, with their header links and
@@ -234,5 +232,5 @@ Review the final diff and scope; run all routine checks. For UI changes verify
 responsive layout, keyboard/ARIA behavior, chart resizing, target-image loading,
 sharing/capture and popout behavior. For documentation changes check destinations,
 formulas/examples, array coverage and diagram syntax. Confirm archive links and
-source pointers, and state which checks could not be performed. Keep numerical
-changes, evidence decisions and presentation-only edits identifiable in the handoff.
+source pointers, and state which checks could not be performed. List numerical changes, evidence decisions, and presentation-only edits separately
+in the handoff.

@@ -4,10 +4,10 @@
 
 ## Runtime boundary and startup
 
-The root site is a static ES-module application. [index.html](../index.html) supplies
-markup, [ui/styles.css](../ui/styles.css) supplies styling, and the vendored
-[Chart.js bundle](../vendor/chart.umd.min.js) supplies the damage chart. There is no
-package-install requirement, bundler, application server, or database.
+The root site is a static ES-module application with [HTML markup](../index.html),
+[CSS](../ui/styles.css), and a vendored [Chart.js bundle](../vendor/chart.umd.min.js)
+for damage charts. It requires no package installation, bundler, application server,
+or database.
 
 ```mermaid
 flowchart TD
@@ -31,10 +31,10 @@ field checks report through `ui/data-errors.js`; they do not reject startup.
 installs a reporter and keeps missing numeric results unavailable, with a
 deduplicated notification and details dialog.
 
-[ship-surface.json](../ship-surface.json) declares the live surface and three
-published historical versions. It is a validation contract, not an access-control
-or deployment-exclusion mechanism: reference material may be published without being
-loaded by the application.
+[ship-surface.json](../ship-surface.json) lists the current application files and
+three published historical versions for validation. It does not control access
+or exclude files from deployment. Reference material may be published without
+being loaded by the application.
 
 ## Module ownership
 
@@ -51,11 +51,10 @@ loaded by the application.
 | [ui/loadout.js](../ui/loadout.js), [ui/target-stats.js](../ui/target-stats.js) | Attachment controls and target-result presentation. |
 | [ui/capture.js](../ui/capture.js) | Current-view PNG capture; no independent weapon calculations. |
 
-The simulation layer is reusable but not entirely context-free: `setSimContext()`
-and the attachment context inject shared tables, aim/stance, compensation and
-platform behavior. Tests or tools calling these functions must initialize/reset
-their contexts deliberately. Source records are treated as read-only; the attachment
-resolver constructs a selected build rather than mutating the base weapon.
+Simulation functions depend on shared tables, aim/stance, compensation, and
+platform settings supplied by `setSimContext()` and the attachment context.
+Callers must initialize and reset these contexts. Source records are read-only;
+the attachment resolver returns a new selected build.
 
 Projectile assembly in `ui/app.js` resolves the selected weapon/ammo to a record
 in `ballistics.projectiles`, then adds the build's precise velocity. It does not
@@ -93,7 +92,7 @@ The target PNG and alpha mask load only when the target view is visible, includi
 entry through a shared link or popout. A missing image disables hit classification.
 Keyboard/ARIA behavior includes labeled selects, pressed/selected controls, and a
 compact-layout loadout dialog with focus trapping, Escape dismissal, inert background,
-and focus restoration. These contracts require manual browser verification for UI changes.
+and focus restoration. Verify these behaviors in a browser after UI changes.
 
 ## URL compatibility contract
 
@@ -141,9 +140,8 @@ operates independently after opening.
 Capture clones the rendered main column and header, snapshots canvases, removes
 interactive controls, and measures an independent iframe at 1280 CSS pixels.
 It serializes an SVG `foreignObject` and produces a 2× PNG. Overview is temporarily
-expanded and restored in `finally`; other collapsed panels stay collapsed. The
-layout is standardized, but existing chart bitmaps are captured rather than
-recomputed into a new simulation. Clipboard failures fall back to PNG download;
+expanded and restored in `finally`; other collapsed panels stay collapsed. Capture uses the existing chart bitmaps in the standardized layout without
+rerunning the simulation. Clipboard failures fall back to PNG download;
 render/encoding failures produce an error state.
 
 `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are self-contained historical products.

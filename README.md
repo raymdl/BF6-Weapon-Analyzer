@@ -1,24 +1,23 @@
 # BF6 Weapon Analyzer
 
-[Open the analyzer](https://raymdl.github.io/BF6-Weapon-Analyzer/) · [User guide](docs/USER_GUIDE.md) · [Documentation index](docs/README.md)
+[Open the analyzer](https://raymdl.github.io/BF6-Weapon-Analyzer/) · [User guide](docs/USER_GUIDE.md) · [Data-flow atlas](docs/data-flow/README.md) · [Documentation index](docs/README.md)
 
-A browser-based Battlefield 6 weapon and attachment comparison tool. Build a loadout,
-compare two configurations, and explore how damage, handling, recoil, spread, and
-projectile behavior change. Everything runs client-side from the repository's JSON
-and JavaScript; there is no application backend or compilation step.
+A browser-based Battlefield 6 weapon and attachment comparison tool. It calculates
+damage, handling, recoil, spread, and projectile behavior for selected loadouts.
+The application runs client-side from the repository's JSON and JavaScript,
+without an application backend or compilation step.
 
 ## What it does
 
-- **Build and compare:** weapon-specific attachments, ammunition, magazines, point
+- **Loadout comparison:** weapon-specific attachments, ammunition, magazines, point
   totals, overview statistics, and attachment-effect breakdowns.
-- **Analyze damage:** damage-versus-range, bullets to kill, and time to kill, with
+- **Damage:** damage-versus-range, bullets to kill, and time to kill, with
   headshot scenarios, chest/limb bands, and optional ADS/flight time.
-- **Explore recoil and spread:** reproducible spray samples, recoil paths, spread
+- **Recoil and spread:** reproducible spray samples, recoil paths, spread
   overlays, standing/moving and ADS/hipfire contexts, and recoil-control settings.
-- **Inspect target impacts:** project the pattern onto an approximate soldier at a
-  chosen distance, change aim and magnification, and inspect single-projectile hit
-  and damage outcomes.
-- **Share results:** loadout/view links, PNG capture, and a recoil popout window.
+- **Target impacts:** pattern projection onto an approximate soldier, with distance,
+  aim, magnification, and single-projectile hit and damage results.
+- **Sharing and export:** loadout/view links, PNG capture, and a recoil popout window.
 
 The site combines reviewed game-file values, in-game observations, and explicit
 modeling assumptions. A simulation result is conditional on those inputs. Target
@@ -38,12 +37,12 @@ supported weapons. Smooth attachments use 50 ms and a 1.2 recovery factor;
 Heavy-type barrels now use source ADS spread and recovery factors, supported by
 the AK4D recording comparison. Flashlight, Hipfire Taclight and combo lights use
 source hipfire growth/recovery factors; selecting one treats its light as active.
-The console option uses the source 0.8836 amount factor. These inputs improve the approximation; they do
-not establish the native engine formulas. See [recoil and spread](docs/RECOIL_SPREAD_MODEL.md)
+The console option uses the source 0.8836 amount factor. Native engine formulas
+remain unverified. See [recoil and spread](docs/RECOIL_SPREAD_MODEL.md)
 for the attachment exceptions, formulas, and evidence limits.
 
-Attachment handling now uses generated per-weapon Frosty modifiers. Shared
-grip/laser/light rails now use Frosty slot assignments, including KORD and KTS100.
+Attachment handling uses generated per-weapon Frosty modifiers. Shared
+grip/laser/light rails use Frosty slot assignments, including KORD and KTS100.
 Equipment dependency rules filter valid combinations and clear incompatible
 attachments when a prerequisite changes, including PP-19 grips with the 53-round
 magazine. Existing links are normalized to these rules.
@@ -73,14 +72,15 @@ Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
 
 | Purpose | Read |
 |---|---|
-| Use the site and interpret its displays | [User guide](docs/USER_GUIDE.md) |
-| Understand modules, state, sharing, and rendering | [Architecture](docs/ARCHITECTURE.md) |
-| Trace values to sources and review evidence | [Data sources](docs/DATA_SOURCES.md) |
-| Look up file contracts, fields, and array families | [Data reference](docs/DATA_REFERENCE.md) |
-| Understand every stat ladder and its indexing | [Stat ladders](docs/STAT_LADDERS.md) |
-| Follow loadout calculations | [Attachment model](docs/ATTACHMENT_MODEL.md) |
-| Inspect formulas and simulation assumptions | [Damage and ballistics](docs/DAMAGE_BALLISTICS.md) · [Recoil and spread](docs/RECOIL_SPREAD_MODEL.md) |
-| Update or validate the project | [Maintenance](MAINTENANCE.md) · [Tests](docs/TESTS.md) |
+| Data sources, calculations, assumptions, and publishing diagrams | [Data-flow atlas](docs/data-flow/README.md) |
+| Controls and display interpretation | [User guide](docs/USER_GUIDE.md) |
+| Modules, state, sharing, and rendering | [Architecture](docs/ARCHITECTURE.md) |
+| Source records and review evidence | [Data sources](docs/DATA_SOURCES.md) |
+| File contracts, fields, and arrays | [Data reference](docs/DATA_REFERENCE.md) |
+| Stat ladders and indexing | [Stat ladders](docs/STAT_LADDERS.md) |
+| Loadout calculations | [Attachment model](docs/ATTACHMENT_MODEL.md) |
+| Formulas and simulation assumptions | [Damage and ballistics](docs/DAMAGE_BALLISTICS.md) · [Recoil and spread](docs/RECOIL_SPREAD_MODEL.md) |
+| Maintenance and validation | [Maintenance](MAINTENANCE.md) · [Tests](docs/TESTS.md) |
 
 VSSM hipfire uses source index 4 (1.804 degrees standing / 2.255 degrees moving), supported
 by the [matched standing screenshot comparison](docs/archive/VSSM_RECORDING_ANALYSIS_2026-09-11.md).

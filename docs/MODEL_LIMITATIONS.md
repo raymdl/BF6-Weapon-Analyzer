@@ -2,10 +2,9 @@
 
 [Documentation index](README.md) · [Data sources](DATA_SOURCES.md)
 
-This is the current interpretation boundary at the documentation review baseline.
-It is not a new implementation plan. Changes require supporting evidence and an
-explicit model/data review; a source coefficient alone does not establish how to
-execute it in the analyzer.
+This guide records the model's assumptions and unresolved evidence at the review
+baseline. Changes require evidence for both the source value and its application
+in the simulator.
 
 ## Configuration versus behavior
 
@@ -20,9 +19,8 @@ that the current resolver has since addressed.
 
 Shared grip/laser/light slots are generated from Frosty for all offered mount
 choices. Equipment dependencies are enforced where source identities map to site
-choices. This is not a complete model of every game attachment: 263 inspected
-secondary-sight dependency entries remain outside the current site's supported
-choices or reviewed mapping. The PP-19 restriction is corroborated by supplied
+choices. Coverage excludes 263 inspected secondary-sight dependency entries whose choices
+or identities are unsupported. The PP-19 restriction is corroborated by supplied
 game screenshots; the other generated dependencies are source-backed without
 equivalent new in-game tests. Collection/build and live-override limits remain.
 
@@ -68,7 +66,7 @@ The source provides these operands;
 recordings support the qualitative effect, not the exact native arithmetic.
 Recovery uses a continuous reset-on-shot clock with at most 1 ms delivery steps.
 The old 1.1 was an early visual estimate and is no longer used.
-The new M4A1 15-round recoil-only height reduction is 10.0%, compared with about
+The modeled M4A1 15-round recoil-only height reduction is 10.0%, compared with about
 15% in the impact/camera observations. Camera pixels are not projectile angles.
 See [validation and unused-field review](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md).
 The [per-attachment table](RECOIL_SPREAD_MODEL.md#duration-and-smooth-attachment-selection)
@@ -102,13 +100,12 @@ independent projectile-angle calibration remains unavailable. The ordinary
 suppressed barrel's GS +1 binding differs from its WB animation/FOV route. Both
 VSSM barrels have zero WB ADS adjustment, matching the site's 250 ms default.
 The earlier 200 ms proposal read the GS route alone; the two routes are not added.
-The reason for their disagreement and native timing remain open. These exceptions do not
-invalidate the source arrays themselves. See [stat ladders](STAT_LADDERS.md).
+The reason for their disagreement and native timing remain open. The source arrays are retained in [stat ladders](STAT_LADDERS.md).
 
 **Attachment identity and activation.** A name match, selector candidate or nearby
 modifier is insufficient for promotion. Historical investigations retain unresolved
 mapping/activation questions, including angled-grip mappings and native composite
-stat consumers ([composite stats findings](working/COMPOSITE_STATS_FINDINGS.md)). Treat those as dated evidence, not a count of current defects.
+stat consumers ([composite stats findings](working/COMPOSITE_STATS_FINDINGS.md)). Check those dated findings against the current implementation.
 Magazine capacity alone cannot resolve attachment identity.
 
 **Global estimates.** The [continued source audit](working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
@@ -120,8 +117,7 @@ model; its universal application remains a model choice. The soldier's
 directly in the display model. The collateral table is corroborated by its named
 attribute delegate. Generated per-weapon ammo values now use summed source indices
 clamped to 0..9, following the operator's confirmation of table bounds. M121 A2
-Tungsten therefore uses index 9 and multiplier 1. This is a displayed collateral
-stat, not a simulation of material traversal.
+Tungsten therefore uses index 9 and multiplier 1. The collateral stat is displayed without simulating material traversal.
 Spotting now multiplies source factors using the existing 54/150 m bases; the
 bases and composition are inferred from site/source agreement. Sway percentages
 cover source muzzle/magazine amount factors, excluding optic/camera effects.
@@ -131,8 +127,7 @@ described above.
 **Timing validation.** Source draw-time arrays and base indices are retained exactly,
 with one final clamp. Historical sprint comparisons used inherited screenshot
 identity mappings. Deploy/undeploy lack equivalent panel measurements; matching
-sprint recovery does not prove native animation composition. ADS bases retain
-reviewed normalization rather than indiscriminately replacing every base with raw indices.
+sprint recovery does not prove native animation composition. ADS base indices include reviewed default-loadout normalization.
 
 ## Output interpretation
 
@@ -158,7 +153,7 @@ The UI's zero-displacement fallback for unavailable trajectories must not be
 interpreted as confirmed flat flight.
 
 Shared links omit seeds, layers, viewing transforms and some local preferences.
-Use an image when preserving a specific rerolled visual result matters. PNG capture
+Save a PNG to preserve a specific rerolled result. PNG capture
 standardizes layout while copying existing canvas bitmaps.
 
 ## What would justify an update
@@ -166,6 +161,5 @@ standardizes layout while copying existing canvas bitmaps.
 Record the exact source/capture version, weapon and complete default/composed
 loadout, relevant fields and units, source hashes, and predicted versus observed
 behavior. Separate identity, literal value, activation, and calculation claims.
-Promote the supported part and retain contradictions. Update the responsible guide
-and a focused behavioral test; do not erase historical evidence to make the current
-model appear more certain.
+Promote supported changes and retain conflicting evidence. Update the relevant
+guide and a focused behavioral test. Preserve historical evidence.

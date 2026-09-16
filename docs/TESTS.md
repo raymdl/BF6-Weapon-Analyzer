@@ -14,19 +14,16 @@ node scripts/test.mjs
 using Node 20. The runner selects the top-level `scripts/*.test.mjs` files and
 passes them to Node's test runner. It excludes frozen site copies and Python research
 tests. No dependency install, browser harness, raw captures or Git history is required.
-Discover the current test count through the runner; it is not a permanent contract.
+The runner reports the current test count.
 
 `validate-data.mjs` checks IDs/classes, required values, curves and acceptance policy,
 attachment/ammo/default references, coverage and estimate disclosure, selected exact
 array contracts, all four spread `[min, max]` pairs, velocity/reload fields, and
-reload-exception agreement. The schema
-files describe selected fragments; this is not a generic full-schema validator
-for every JSON field. Projectile behavior/coverage also has focused tests below.
+reload-exception agreement. Schema files cover selected fragments; validation does not cover every JSON field. Projectile behavior/coverage also has focused tests below.
 
 `validate-ship-surface.mjs` checks declared runtime paths/data, supported local
-HTML/module references, and published historical folders. Informational references
-to non-runtime evidence do not mean the browser imports it. The checker does not
-validate all documentation links or assert that reference files are unpublished.
+HTML/module references, and published historical folders. The checker excludes documentation-wide link validation and does not determine
+whether reference files are published. Evidence links are not browser imports.
 
 ## Product test inventory
 
@@ -54,8 +51,7 @@ All paths in this table are under `scripts/`.
 
 Tests protect the declared implementation and reviewed data decisions. They do not
 independently validate native game arithmetic, every possible attachment combination,
-real hitboxes, or visual correctness. Some files print an additional completion line;
-that is not an additional test layer.
+real hitboxes, or visual correctness. Additional completion messages printed by individual files do not count as tests.
 
 The four attachment-generator `--check` commands are listed in
 [maintenance](../MAINTENANCE.md#regenerate-attachment-modifiers). They need the
@@ -70,7 +66,7 @@ preserves original UI pointers, and prevents panel text from filling peer choice
 Full tooltip regeneration needs the local Frosty export, AAM XML and saved captures;
 see the [regeneration commands](working/FROSTY_DISPLAY_NAMES.md#regeneration-and-verification).
 
-The screenshot-backed attachment audit is explicitly maintained separately:
+Validate the screenshot-backed attachment audit separately:
 
 ```sh
 node reference-data/attachment-audit/validate-reference.mjs
@@ -88,9 +84,8 @@ python scripts/frosty-configuration.test.py
 ```
 
 Full configuration, modifier, recoil-model and shotgun investigations can require
-original local exports, metadata, captures or generated inputs. Follow the tools'
-arguments and [source workflow](DATA_SOURCES.md); do not silently add those dependencies
-to normal validation or rerun them merely to recreate old working sets.
+original local exports, metadata, captures or generated inputs. Use each tool's documented arguments and the [source workflow](DATA_SOURCES.md).
+Keep local research dependencies out of normal validation.
 
 ## Manual UI verification
 
@@ -108,8 +103,8 @@ focus restoration, associated labels and pressed/selected ARIA state.
 Exercise both loadouts, cloning, combined slots, a normal rifle, burst configuration,
 a pellet shotgun and slug override, plus a timing/assumption exception. Check damage/
 BTK/TTK options, recoil aim/stance/platform/control, both views, reroll, layers, target
-aiming/pan/zero and impact disclosure. Confirm the target image is lazy on tab and
-shared-link/popout entry, and unavailable-image behavior remains explicit.
+aiming/pan/zero and impact disclosure. Confirm lazy target-image loading on tab, shared-link, and popout entry, and
+check the missing-image behavior.
 
 For compatibility changes, select a PP-19 grip, switch to the 53-round magazine,
 and verify the grip clears, its menu disables, and its points/effects disappear.
@@ -126,10 +121,10 @@ PNG capture should keep loadout identity and restore the original overview state
 For documentation-only changes, check relative paths/anchors, source pointers,
 array inventory against live JSON, exact table values and representative formula
 examples. Validate Mermaid syntax where tooling is available and inspect changed
-visual assets. Preserve archived body text; separately report intentional missing
-local-only evidence links. Do not claim browser/physical validation from link checks.
+visual assets. Preserve archived text and identify links to unavailable local evidence.
+Report link checks separately from browser checks and in-game validation.
 
-Prefer a focused behavioral assertion over a duplicate formula implementation,
-source-text regex pin, large generated witness matrix or repeated schema fixture.
-Add coverage for a distinct regression risk; do not add a permanent documentation
-or browser-test framework without a concrete maintenance benefit.
+Add tests for distinct behavioral regressions. Avoid duplicating formulas,
+asserting source-text spelling, or repeating equivalent parameter and schema
+cases. Add permanent documentation or browser-test infrastructure only for an
+identified maintenance need.

@@ -2,8 +2,8 @@
 
 [Documentation index](README.md) · [Model limitations](MODEL_LIMITATIONS.md)
 
-This guide describes the current root site. Published older versions preserve
-older data and behavior and may not have the same controls.
+This guide covers the current site. Published older versions retain their
+original data, behavior, and controls.
 
 ## Data errors
 
@@ -32,8 +32,8 @@ no longer add points or effects. Shared links also remove invalid combinations.
 
 Attachment labels include point costs. **More than 100 points produces a warning;
 it does not block calculation or sharing.** An asterisk marks an attachment with
-assumed effects. Some listed attachments have no modeled stat effect; their
-availability or point cost can still matter.
+assumed effects. Attachments with no modeled stat effect still retain their availability and
+point cost.
 
 Hover a weapon button or a weapon name above the comparison stats to read its
 in-game description. All 63 weapons have descriptions, also exposed as accessible
@@ -55,10 +55,9 @@ it and returns focus to the opener.
 ## Overview and attachment effects
 
 Overview groups combat, ammunition, mobility, recoil, spread, and concealment
-statistics. Use the attachment-effects breakdown to trace changes from the default
-build. Values can move in opposite desirable directions: more damage and velocity
-are usually helpful, while less reload time or dispersion is usually helpful.
-A favorable indicator for one statistic is not an overall weapon ranking.
+statistics. The attachment-effects breakdown compares values with the default
+build. Favorable indicators follow each stat's direction: higher damage/velocity,
+or lower reload time/dispersion. They apply to individual stats only.
 
 **Weapon Sway** shows the percentage change from muzzle and magazine effects
 relative to the default build. It excludes optic and camera sway. **Hip Spread/Shot**
@@ -67,16 +66,15 @@ also reducing the flat **Hip Spread Recovery** value; the recovery value alone
 does not describe the light's overall effect.
 
 Headshot, limb and collateral values follow the selected weapon and ammo.
-Collateral is a displayed multiplier, not a simulation of shooting through a
-particular wall. Enemy regeneration delay is 5 s normally, 9 s with Frangible,
+Collateral is displayed as a multiplier; wall penetration is not simulated. Enemy regeneration delay is 5 s normally, 9 s with Frangible,
 and 7 s with Flechette. Healing is not included in TTK.
 
 The overview's recoil values and ADS-related fields describe the selected build's
 ADS baseline. Changing the recoil plot to hipfire changes that plot's simulation
 and contextual recoil statistics; it does not redefine every overview card.
 Source precision is retained for calculations even where cards round milliseconds,
-velocity, or movement multipliers. Missing values are displayed as unavailable
-where supported rather than being evidence of a measured zero.
+velocity, or movement multipliers. Missing values show as unavailable where supported; they do not represent a
+measured zero.
 
 ## Damage, bullets to kill, and time to kill
 
@@ -90,16 +88,14 @@ The headshot setting affects BTK and TTK. Chest/limb bands describe alternative
 hit placement, not statistical confidence. Shotgun damage/BTK assumes all pellets
 hit the selected zone. Bolt- and pump-action TTK use source manual-cycle timing;
 DB-12 includes two shots per pump cycle. Burst weapons use separate within-burst
-and between-burst cadence. The range table complements the chart at class-appropriate distances.
+and between-burst cadence. The range table lists results at class-specific distances.
 See [damage and ballistics](DAMAGE_BALLISTICS.md) for the equations and endpoint rules.
 
 ### Read the comparison charts
 
-Each color identifies a selected weapon. The horizontal axis is target range
-in metres. Read the vertical axis for the selected mode; the model charts below
-compare SOR-556 Mk2 (orange) and SOR-300SC (blue).
-
-Read the lines and shading as follows:
+Each color identifies a selected weapon. The horizontal axis is range in metres;
+the vertical axis uses the selected chart mode. These examples compare SOR-556
+Mk2 (orange) with SOR-300SC (blue).
 
 - **Solid colored line:** The result for chest hits. In BTK and TTK, any selected
   headshots are counted first; the remaining hits are chest hits.
@@ -163,7 +159,7 @@ These are model contexts; they do not add crouch, prone, player skill, or aim-as
 | Recoil path | Aim displacement without the random spread sample. |
 | Spread circles / cone | Angular spread envelopes, with selectable shot samples. They describe the model's bounds. |
 | Recoil control | Subtracts 0–125% of the expected recoil vector; defaults to 0%. It leaves random variation and spread. Values above 100% overcompensate. |
-| Zoom, pan, crosshair | Change inspection of the plot, not weapon accuracy. |
+| Zoom, pan, crosshair | Change the plot view without altering simulated accuracy. |
 
 Spread-circle samples offer growth, early-shot, all-shot, and custom selections.
 Custom examples: `1,2,5-8`, `every 3`, or `all`; `every 3` begins at shot 1.
@@ -174,8 +170,7 @@ The [recoil guide](RECOIL_SPREAD_MODEL.md) explains each layer and the per-shot 
 Recoil is delivered over the selected weapon/attachment duration while recovery
 acts at the same time. Smooth attachments use source duration and recovery values;
 some weapon–muzzle pairs differ from the ordinary 50 ms/1.2 set. Heavy-type barrels
-use source ADS spread factors supported by the AK4D recordings. These are model
-inputs, not a guarantee that the displayed pattern matches every in-game shot.
+use source ADS spread factors supported by the AK4D recordings. Native recoil and spread recovery equations remain unverified.
 
 Flashlight, Hipfire Taclight, Combo Red and Combo Green now use source hipfire
 growth/recovery factors. The model treats a selected light as active; it has no
@@ -204,14 +199,12 @@ the simulated recoil or spread.
 
 This schematic shows six illustrative shot directions. The line connects recoil
 centers; the circles show selected spread envelopes. The numbered dots include
-spread. These are teaching examples, not measured weapon data.
+spread. The points are illustrative and contain no measured weapon data.
 
 ### Soldier Target: where those directions land
 
 **Soldier Target** projects the angular pattern onto a person-sized target at the
-selected distance. The farther away the target is, the greater the physical
-separation between impacts for the same angular spread. This makes it useful
-for inspecting whether a spray stays on a target at a chosen range.
+selected distance. Physical impact spacing increases with target distance for a fixed angular spread.
 
 For example, a **1-degree horizontal offset** is about **35 cm at 20 m**, or
 **1.75 m at 100 m**. The angle is unchanged. The horizontal miss distance is
@@ -224,8 +217,7 @@ and zeroing where available.
 
 ![Soldier Target schematic projecting the same six directions at 20 and 100 metres on the same metre scale](img/soldier-target-example.svg)
 
-Both panels project the same six directions from the angle diagram. They use the
-same metre scale so the change in impact spacing is clear. Trajectory and zeroing
+Both panels project the same six directions at the same metre scale. Trajectory and zeroing
 are omitted here to isolate distance. In the app, solid dots hit the target and
 faded dots miss. Hit percentages describe the simulated sample, not the player's
 expected accuracy.
@@ -263,7 +255,6 @@ expanded temporarily so loadout identity is included. Other collapsed panels rem
 collapsed. Unsupported image-copy controls are disabled; a failed clipboard write
 falls back to downloading the PNG. Capture failure is reported separately.
 
-**Pop Out** opens the recoil view using the same share-state contract, not a live
-synchronized mirror. Its Modify Loadout control lets that window change its own build.
-The site logo returns to the bare root view. Panel-collapse buttons reduce clutter;
-their state is included in share links.
+**Pop Out** opens an independent recoil window with the encoded share state.
+Modify Loadout changes that window's build; subsequent changes are not synchronized.
+The site logo returns to the bare root view. Panel-collapse buttons hide individual panels; share links retain their state.
