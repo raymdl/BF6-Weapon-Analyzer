@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "recordedDate": "2026-09-16",
+  "scope": "Trace the four unresolved file GUIDs from the scoped 1.4.3.0 dependency review.",
+  "findings": [
+    {
+      "fileGuid": "2631e8f8-a115-413d-a696-5ec194081d73",
+      "identity": null,
+      "status": "unresolved-in-both-builds",
+      "referringAssetCount": 15,
+      "decodedPointerUses": 33,
+      "classGuids": [
+        "16579309-a72c-4364-b3a6-3fd42647b6b0",
+        "1985d366-c86d-48c0-8879-6203029a9b4f",
+        "75dcf6a2-4c81-4785-a638-2559b5535e45",
+        "b076d863-e744-40da-8ff1-b4047af4a2c7",
+        "b3d5d77a-b836-4b38-acb6-9f0cdea8b42e",
+        "d374e245-a2aa-4092-8f0e-46b1f74cffb2",
+        "d69a122c-ef68-48a2-8bc7-da5815f50bd7",
+        "f16c2015-292e-489c-a1d1-9509aca9b41d",
+        "fbbfa0fd-987a-4477-9b42-9571423f8046"
+      ],
+      "referringAssets": [
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_InMandown_Master",
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_ManDownLookAtReviverSP",
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown",
+        "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker",
+        "Common/Gameplay/Soldier/Expressions/PresEx_OnLadder",
+        "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+        "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions",
+        "Common/Gameplay/Soldier/Traversal/InAir/SimEx_InAirExpressions",
+        "Common/Gameplay/Soldier/Traversal/SimEx_RootLayerLogic",
+        "Common/Gameplay/Soldier/Traversal/Vault/SimEx_CheckStartLadder",
+        "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Rope/SimEx_MoveWithRope_Master",
+        "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Zipline/SimEx_MoveWithZipLine_Master",
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_GetRevive",
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_Mandown_GamemodeChecks",
+        "Common/Gameplay/Soldier/Features/FirePutOut/SimEx_Soldier_FirePutOut"
+      ]
+    },
+    {
+      "fileGuid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+      "identity": null,
+      "status": "unresolved-in-both-builds",
+      "referringAssetCount": 3,
+      "decodedPointerUses": 11,
+      "classGuids": [
+        "1d358ec6-1793-48d5-8a91-52b601d58886",
+        "23f98d96-1e0a-4d10-89ad-13d856521d47",
+        "cd259f69-4165-4e01-a124-b5c5cec53359"
+      ],
+      "referringAssets": [
+        "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions",
+        "Common/Gameplay/Soldier/Traversal/InAir/SimEx_InAirExpressions",
+        "Common/Gameplay/Soldier/Traversal/Parachute/SimEx_SimpleParachutePhysics"
+      ]
+    },
+    {
+      "fileGuid": "b4765624-c221-4138-b446-3b3aa155cf3b",
+      "identity": null,
+      "status": "unresolved-in-both-builds",
+      "referringAssetCount": 3,
+      "decodedPointerUses": 3,
+      "classGuids": [
+        "5770d38e-a6ec-41d5-8d99-a4129fe4d547",
+        "e76e76fd-ff97-4dd4-89b4-e53109f79140",
+        "fb052257-a5eb-4479-ae06-649ff4f7973d"
+      ],
+      "referringAssets": [
+        "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker",
+        "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+        "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions"
+      ]
+    },
+    {
+      "fileGuid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+      "identity": null,
+      "status": "unresolved-in-both-builds",
+      "referringAssetCount": 8,
+      "decodedPointerUses": 16,
+      "classGuids": [
+        "15c5416b-4169-4402-9d87-37ea7c613fa4",
+        "50d3640a-59a5-4494-9e53-7733be3c2af1",
+        "bb877fb6-5b82-4983-85d5-d5c971b133cf",
+        "e693cdea-5042-4dc0-bf82-a660a3c2b41b",
+        "eb968356-6f48-4a55-b6ec-d05e57d67c0c"
+      ],
+      "referringAssets": [
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_InMandown_Master",
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown",
+        "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker",
+        "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+        "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Rope/SimEx_MoveWithRope_Master",
+        "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Zipline/SimEx_MoveWithZipLine_Master",
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_GetRevive",
+        "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_Mandown_GamemodeChecks"
+      ]
+    }
+  ],
+  "verified": {
+    "all16ReferrersDecoded": true,
+    "allUnknownPairsPresentAsBadRefIn1425Xml": true,
+    "bothCatalogsHaveNoFileGuidOrPathMatches": true,
+    "targetClassGuidMatchesInCaptured16426RawObjectBodies": 0,
+    "allUsesAt": "Class_25c12137 / Field_a2734e52 / member / Field_8cf424e7"
+  },
+  "limitations": [
+    "No target asset body was found. Exact target names and values remain unknown.",
+    "Field and class names are hashed. Referer route names establish context only.",
+    "Persistence across builds does not establish runtime use, harmlessness, or absence from every game package.",
+    "The decoder leaves boxed values as explicit unsupported markers; no boxed values were needed to identify these pointer fields."
+  ],
+  "evidence": {
+    "decodedTrace": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\guid-trace-2026-09-16.json",
+    "decodedTraceSha256": "6abd4dfbbcfcd71e9072b42d7edeaadc800d5e87c3664c2a45ef672541dfc3b1",
+    "targetObjectSearch": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\guid-object-matches-2026-09-16.json",
+    "descriptorsSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  }
+}

@@ -1,0 +1,243 @@
+{
+ "scope": "1.4.3.0 source comparison against the retained 1.4.2.5 reference capture. Values below are decoded XML differences, not site values.",
+ "recordedDate": "2026-09-15",
+ "build": {
+  "label": "1.4.3.0 (user supplied)",
+  "exactBuildVerified": false,
+  "gameExecutableSha256": "9b92519e2dad1b31d7537127075489de82c55a521f9f64acfa32ceacbdccaa6a",
+  "gameExecutableFileVersion": "1, 0, 437, 12728",
+  "note": "The file-version string is lower than the 1.4.2.5 baseline string (1, 0, 439, 36273) while the hash differs. Do not order builds by this string.",
+  "frostyArchiveHead": 4892017,
+  "baselineFrostyArchiveHead": 4420709,
+  "sdkVersion": 4414275,
+  "sdkRegenerated": false,
+  "sdkNote": "BF6SDK.dll is unchanged from the baseline. The operator cannot regenerate it because of EA anticheat and is waiting for a third-party updated SDK."
+ },
+ "decodingLimit": {
+  "summary": "SharedTypeDescriptors.ebx changed with this build, so some 1.4.3.0 object layouts no longer match the 1.4.2.5 SDK.",
+  "descriptorsSha256Baseline": "640de7ae5b7d2fa229c6f05ea4f29f727770eb65dc4fc45516cb43d50892ca13",
+  "descriptorsSha256New": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+  "effect": "341 of 835 exported assets now contain an 'Object could not be loaded (unknown type)' comment where the 1.4.2.5 export decoded the object.",
+  "knownUndecodableClass": "Class_535682be, the attachment UI metadata root under Common/UI/Static/Metadata/Attachments",
+  "affectedAreas": {
+   "Common/UI/Static/Metadata": 248,
+   "Common/Gameplay/AimingControllers/WeaponsGadgets": 27,
+   "Common/Hardware/Weapons, mostly MD_ and Equipment_": 64,
+   "other": 2
+  },
+  "consequence": "Frosty XML diffs containing missing objects do not establish data changes. The SDK-independent decoder recovered provisional comparisons; see frosty-1.4.3.0-sdk-independent-decode-2026-09-15.json for layout limits and the 2026-09-16 direct localization check."
+ },
+ "comparisonCounts": {
+  "catalogAssets": 467208,
+  "catalogAdded": 29689,
+  "catalogRemoved": 26980,
+  "catalogHashChanged": 6964,
+  "guidStableRenameCandidates": 15169,
+  "watchedOrDependencyRawChanged": 789,
+  "xmlExported": 835,
+  "xmlContentDiffers": 629,
+  "xmlContentDiffersFullyDecoded": 288,
+  "xmlContentDiffersWithUndecodableObjects": 341,
+  "xmlIdentical": 57,
+  "xmlNoBaseline": 148
+ },
+ "confirmedValueChanges": [
+  {
+   "asset": "Common/Hardware/Weapons/_Bullets/PD_.416Barrett",
+   "weapon": "Interdictor (DesertTechHTI)",
+   "field": "Class_6a0d9448 ba0c9abc Field_5279388d",
+   "meaning": "distance and damage pair list",
+   "old": [
+    [
+     100,
+     80
+    ],
+    [
+     120,
+     150
+    ],
+    [
+     150,
+     150
+    ],
+    [
+     175,
+     62
+    ],
+    [
+     200,
+     62
+    ]
+   ],
+   "new": [
+    [
+     100,
+     80
+    ],
+    [
+     120,
+     100
+    ],
+    [
+     160,
+     100
+    ],
+    [
+     180,
+     80
+    ],
+    [
+     200,
+     80
+    ]
+   ],
+   "patchNoteMatch": [
+    "Minimum damage increased from 62 to 80",
+    "Sweet spot damage decreased from 150 to 100",
+    "Sweet spot range adjusted to 120m to 160m"
+   ]
+  },
+  {
+   "asset": "Common/Hardware/Weapons/_Bullets/PD_.416Barrett",
+   "weapon": "Interdictor (DesertTechHTI)",
+   "field": "Class_6a0d9448 ea2b0ed0 Field_5279388d",
+   "meaning": "second distance and damage pair list, now flat",
+   "old": [
+    [
+     100,
+     80
+    ],
+    [
+     120,
+     102.5
+    ],
+    [
+     150,
+     102.5
+    ],
+    [
+     175,
+     62
+    ],
+    [
+     200,
+     62
+    ]
+   ],
+   "new": [
+    [
+     100,
+     100
+    ],
+    [
+     120,
+     100
+    ],
+    [
+     150,
+     100
+    ],
+    [
+     175,
+     100
+    ],
+    [
+     200,
+     100
+    ]
+   ],
+   "patchNoteMatch": [
+    "Damage against armor in REDSEC increased to 100 regardless of hit location or distance"
+   ],
+   "caution": "The armour reading comes from the patch-note wording matching a flat 100 curve. The list role is not independently decoded."
+  },
+  {
+   "asset": "Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match",
+   "weapon": "Interdictor Match Grade ammo",
+   "note": "The same two curves changed the same way."
+  },
+  {
+   "asset": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+   "field": "Shot.InitialSpeed.z, Field_32a99b9c in Struct_739f3ac5",
+   "old": 303,
+   "new": 321,
+   "meaning": "muzzle velocity"
+  },
+  {
+   "asset": "Common/Hardware/Weapons/DMR/VSSM/GS_VSSM",
+   "field": "Recoil Zoomed and Unzoomed RecoilAmount, Field_22810b21",
+   "old": 0.6787,
+   "new": 0.6834
+  },
+  {
+   "asset": "Common/Hardware/Weapons/DMR/VSSM/GS_VSSM",
+   "field": "RecoilDirectionVariation, Field_865174fa",
+   "old": 45,
+   "new": 45.4
+  },
+  {
+   "asset": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_IronSights",
+   "field": "Field_6ee865a5",
+   "meaning": "attachment point cost",
+   "old": 5,
+   "new": 15,
+   "patchNoteMatch": [
+    "Iron Sight attachment now costs 15 points"
+   ]
+  },
+  {
+   "asset": "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_4x00_1x00_P00",
+   "boundAttachment": "Common/Hardware/Weapons/_Attachments/MidZoom/ElcanDR",
+   "displayName": "SU-230 LPVO",
+   "displayNameBasis": "Selector GUID f66c9ab7-bb18-4d2d-8133-6d90b19f0e84 in the GS_ assets binds this modifier to WPM_SCP_ElcanDR. The only 1-4x LPVO string in fs_us_loc is 1582DFEB, SU-230 LPVO. The AD_ metadata does not carry the string id directly, so the link is by selector and designation, not by a decoded name reference.",
+   "field": "member with Field_1258dac5 = 2, Field_7f1bb9d4, Field_bbbfe9cc",
+   "old": 10,
+   "new": -0.5,
+   "reading": "Superseded first-pass zoom assignment: the camera-recoil ladder identifies the changed member as the 1x state, not 4x. Its paired field was already -0.5; the 4x state holds 0.505185. This is structural consistency evidence, not an independently decoded unit or runtime formula. See the SDK-independent decode provenance for the ladder.",
+   "alsoChanged": "Field_36c2f877 Field_bbbfe9cc moved -0.5 to 0 while its flag was already False, so it is inert."
+  },
+  {
+   "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB",
+   "field": "Field_6eb133f8 Struct_cb53a662 Field_32a99b9c",
+   "old": 0,
+   "new": -99.8,
+   "reading": "Not muzzle velocity. Struct_cb53a662 is a generic three-member struct reused throughout Class_76a3b0eb, a per-zoom-level view block that references a VE_ view entity, here VE_IronSights, the M320 own sight. Field_32a99b9c is only the third member. A survey of all Common/Hardware/Weapons XML found 222 occurrences of this field: 90 are 0,0,0 and 64 are already 0,0,-99.8. The new value is the common existing setting, so this reads as the M320 view block adopting the standard value, not a balance change.",
+   "supersedes": "An earlier note in the first-pass 1.4.3.0 report called this an initial-speed modifier. That was wrong."
+  }
+ ],
+ "newContent": {
+  "opticsAddedToRevolvers": {
+   "weapons": [
+    "RagingHunter",
+    "TRR8"
+   ],
+   "optics": [
+    "WPM_SCP_M145MGO",
+    "WPM_SCP_QMK171A"
+   ]
+  },
+  "m45a1Blacklight": [
+   "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/Light/WPM_RGT_Blacklight_W10",
+   "Common/Hardware/Weapons/Secondary/M45A1/SimEx_M45A1_Blacklight",
+   "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_SFX300Blacklight"
+  ],
+  "removedWatchedAssets": [
+   "Common/UI/Assets/Images/ShapesAndParts/T_UI_LootcardBG_BattlePickups_Minigun",
+   "Common/UI/Assets/Images/ShapesAndParts/T_UI_LootcardBG_BattlePickups_Railgun",
+   "Common/Sound/System/LRM/BF03_System_LRM_CurveCollection"
+  ]
+ },
+ "attachmentBugRecheck": {
+  "date": "2026-09-15",
+  "method": "Compared the 1.4.3.0 changed-asset set against the assets behind each entry in docs/ATTACHMENT_BUGS.md.",
+  "result": "No source asset behind bugs 1 to 10 changed. Only three GS_ assets changed in the whole build (GS_VSSM, GS_RagingHunter, GS_TRR8) and none belongs to a listed bug. The only changed Attachment_ asset is the Interdictor iron sights point cost.",
+  "limit": "Superseded on 2026-09-16: SDK-independent reference comparison and direct old/new localization lookup support unchanged recorded wording. No new live-panel captures or complete rerun of every attachment recheck were established."
+ },
+ "hashSourceNote": "The Frosty asset-record SHA1 in the catalog is not sufficient content evidence. 142 assets had an unchanged record SHA1 but a different extracted raw stream, and all 142 decoded to changed XML. Compare a recomputed raw SHA256 instead.",
+ "reviewCorrection": "2026-09-16: the final Interdictor trace uses projectile material 784 (previously 781), head protection array index 3 = 1.75 and limb/abdomen array = [1.0]. Earlier scalar readings at material 781 do not explain the current projectile. See frosty-hit-zones-2026-09-15.json.",
+ "reviewContinuation": {
+  "date": "2026-09-16",
+  "evidence": "reference-data/provenance/frosty-1.4.3.0-review-2026-09-16.json",
+  "summary": "Scoped known-route traversal completed with four unresolved file GUIDs retained. Interdictor and VSSM source values and local browser behavior verified. Stale site labels and baseline provenance corrected. No publication or new in-game verification."
+ }
+}

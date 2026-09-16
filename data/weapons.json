@@ -6945,34 +6945,34 @@
       },
       {
         "r": 120,
-        "d": 150,
+        "d": 100,
         "source": "Frosty"
       },
       {
-        "r": 150,
-        "d": 150,
+        "r": 160,
+        "d": 100,
         "source": "Frosty"
       },
       {
-        "r": 175,
-        "d": 62,
+        "r": 180,
+        "d": 80,
         "source": "Frosty"
       },
       {
         "r": 200,
-        "d": 62,
+        "d": 80,
         "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty named .416 Barrett tweakable health curve, export label 1.4.2.5; 106-164 m whole-metre chest kill range corroborated by CoolGuy at 2:33.",
+    "damageSource": "Frosty 1.4.3.0 PD_.416Barrett distance/damage curve (Field_3901db14 distance, Field_42fc0f5e damage); PD_.416Barrett_Match carries the same curve. Matches the 1.4.3.0 patch notes: minimum damage 62 to 80, sweet spot 150 to 100, sweet spot range 120 m to 160 m. The 1.4.2.5 kill-range corroboration no longer applies.",
     "reloadSpeed": 1.0,
     "provenance": {
       "frosty": {
-        "sourceBuild": "1.4.2.5",
+        "sourceBuild": "1.4.3.0",
         "buildEvidence": "user-supplied export label",
         "evidence": "reference-data/provenance/frosty-interdictor-integration.json",
-        "note": "Named registry and exported weapon/attachment graph; identity uses the retained Sym source; effective bolt RPM uses the Frosty bolt cycle. Basic/5 Rnd handling is panel-checked. Raw moving spread remains separate from the effective tier floor. Slim Angled handling is panel-checked; its moving ADS spread effect remains unmodeled and explicitly marked unverified.",
+        "note": "1.4.3.0: damage curve replaced from PD_.416Barrett; the asset stores the curve twice and both representations now agree (they differed at 170 vs 175 in 1.4.2.5). The projectile's packed material moved from 781 to 784, which is what carries the limb-damage change in data/hit_zones.json. Iron-sight point cost moved 5 to 15 in data/attachments.json. The weapon blueprint itself changed only muzzle-flash FX. Named registry and exported weapon/attachment graph; identity uses the retained Sym source; effective bolt RPM uses the Frosty bolt cycle. Basic/5 Rnd handling is panel-checked. Raw moving spread remains separate from the effective tier floor. Slim Angled handling is panel-checked; its moving ADS spread effect remains unmodeled and explicitly marked unverified.",
         "cadence": {
           "fields": [
             "rpm"
@@ -9065,10 +9065,10 @@
     "mag": 21,
     "tacRld": 2.467,
     "emptyRld": 3.584,
-    "bulletVel": 303,
-    "recoilV": 0.799909248014769,
+    "bulletVel": 321,
+    "recoilV": 0.8054486225037472,
     "recoilDir": -13,
-    "recoilVar": 45,
+    "recoilVar": 45.4,
     "recoilIncAds": 0,
     "fireMode": "semi",
     "spreadDyn": {
@@ -9106,10 +9106,10 @@
     "recoil": {
       "ads": {
         "dir": -13,
-        "amount": 0.6787,
+        "amount": 0.6834,
         "amountMult": 0.9467,
         "amountExp": -3,
-        "dirVar": 45,
+        "dirVar": 45.4,
         "dirVarMult": 0.923377,
         "dirVarExp": 20,
         "decNorm": 1,
@@ -9122,7 +9122,7 @@
       },
       "hip": {
         "dir": -13,
-        "amount": 0.6787,
+        "amount": 0.6834,
         "amountMult": 0.9467,
         "amountExp": -3,
         "dirVar": 45.4,
@@ -9209,7 +9209,7 @@
       "schemaVersion": 1,
       "status": "sourced",
       "frosty": {
-        "sourceBuild": "1.4.2.5",
+        "sourceBuild": "1.4.3.0",
         "buildEvidence": "user-supplied export label",
         "fields": [
           "cls",
@@ -9229,7 +9229,7 @@
           "spreadDyn",
           "dmg"
         ],
-        "note": "All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_9x39mm_Semi curve referenced by VSSM_WB; PD_9x39mm_Match (Range Pen) has the same curve. emptyRld is ReloadInfoArray[1].ReloadTime at ReloadSpeed 1. rpm is RateOfFireForSingleFire; Folding Stock applies RateOfFire 799.999 through autoRpm. Hipfire minima use source index 4 and moving ADS uses the Frosty array selector. cal follows the 9x39mm bullet asset.",
+        "note": "1.4.3.0: bulletVel 303 to 321 (VSSM_WB Shot.InitialSpeed.z), recoil amount 0.6787 to 0.6834 on both aim states and recoil direction variation 45 to 45.4 (GS_VSSM), all confirmed by scripts/frosty-configuration.py against the 1.4.3.0 overlay export. recoilV is not compared by that tool; it is the tier-0 ADS recoil per shot (amount x amountMult^amountExp) and was scaled by the amount ratio, since amountMult and amountExp did not change. recoil.hip.dirVar already held 45.4. All listed base fields match the Frosty 1.4.2.5 named registry and WB/bullet XML. Damage is the PD_9x39mm_Semi curve referenced by VSSM_WB; PD_9x39mm_Match (Range Pen) has the same curve. emptyRld is ReloadInfoArray[1].ReloadTime at ReloadSpeed 1. rpm is RateOfFireForSingleFire; Folding Stock applies RateOfFire 799.999 through autoRpm. Hipfire minima use source index 4 and moving ADS uses the Frosty array selector. cal follows the 9x39mm bullet asset.",
         "sourcingEvidence": "reference-data/provenance/frosty-1.4.2.5-datamined-weapons-2026-09-12.json#weapons/vssm"
       },
       "notes": [

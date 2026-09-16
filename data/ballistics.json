@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
   "source": {
-    "build": "1.4.2.5",
+    "build": "1.4.3.0",
     "generatedBy": "scripts/frosty-ballistics.py",
-    "attachmentTrace": "frosty-hit-zones-2026-09-13.json",
-    "attachmentTraceSha256": "42e0e4cb95ac5e200dbb825bcafef7345327b372076ecacf7a0501ef5f2ea8d1",
+    "attachmentTrace": "frosty-hit-zones-2026-09-15.json",
+    "attachmentTraceSha256": "eb67585bae08c714145912ad44ba4bbc543d6c947f5ddf007b39501a86a6d3c9",
     "projectileSha256": {
       "Common/Hardware/Weapons/_Bullets/PD_545x39mm_Carbine.xml": "21645365446517c58924fc8b2c0570e23e8161052c383580189197450033b718",
       "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO.xml": "6d02f9254966cdd6773aae9f7442bda5717f000c0fe1abbfe03443bfe0d3b196",
@@ -19,8 +19,8 @@
       "Common/Hardware/Weapons/_Bullets/PD_57x28mm.xml": "d20d02274516b0b90976525f72884de9d354c941294c59d4073622f1904576c6",
       "Common/Hardware/Weapons/_Bullets/PD_.40SW.xml": "84461c53c25098036acd01cb58b35fe41fb5c3c35c5e847ce5531117cd571d69",
       "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_Semi.xml": "bf00e6efd0af84be7e0afbf1ef7c8d4f5829a0b16cd743b7b4881fa0f18514fe",
-      "Common/Hardware/Weapons/_Bullets/PD_.416Barrett.xml": "0b5571d2265133cc39ae452e450ac001f33af5bf9de17d5e540408b0098d5164",
-      "Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match.xml": "143d23fb1287acb1966e6013d457ab8da71d185eaf224e70794c1539ebcf8a62",
+      "Common/Hardware/Weapons/_Bullets/PD_.416Barrett.xml": "03f98863ff1509996cfc76ec086b1a287a165b0c7f511d6d4d120d4d01b473be",
+      "Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match.xml": "b5f77807cee09c61c23f57aa2b76850b9b91de5aa6cd6dc1cfbda07a34b917de",
       "Common/Hardware/Weapons/_Bullets/PD_545x39mm.xml": "62edb32f82cc15039b77ecca0681634b776a7bd5cf6c24c6977159bfad00f39f",
       "Common/Hardware/Weapons/_Bullets/PD_12gaNo01Buck275_Semi.xml": "abd615818d310b7d2e3438f22cdc1fe3399d7408bcff1649f53a3072f44ce921",
       "Common/Hardware/Weapons/_Bullets/PD_12gaNo00Buck275_Semi.xml": "3ecffb5e3518a49ebf78384226c810a41408e93c47d45556e286f2c540a2fb6c",

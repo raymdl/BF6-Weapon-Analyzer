@@ -2,6 +2,8 @@
 
 `asset-watchlist.json` is the shared collection plan. It is an initial seed, not a completed export or proof that all listed references affect gameplay.
 
+After a game update, follow [docs/GAME_UPDATE_GUIDE.md](../../docs/GAME_UPDATE_GUIDE.md) and record what you learn back here.
+
 ## Current seed
 
 - 8,062 asset paths matched against the saved 464,499-entry EBX catalog. Codex seeded 7,639; the earlier merge added 354 from 21 more research sources. The 14 September compatibility merge adds 69 paths and cites 5,480 source assets for physical slots and equipment dependencies.
@@ -112,6 +114,138 @@ The original blanket export has 36,658 XML files; 6,978 of them are watchlist as
 
 Data outside the XML tree: level material grids (raw EBX), localized strings (binary chunks), `SoldierMotionMachine` (export timed out) and native runtime equations.
 
+## EBX decoding and the SDK (15 September 2026)
+
+How BF6 EBX actually resolves types, why Frosty breaks after a game update, and what to
+use instead. Full procedure in [the game update guide](../../docs/GAME_UPDATE_GUIDE.md).
+
+**Type identity.** A RIFF EBX file names each top-level instance by a class GUID formed
+from the type GUID's last 12 bytes plus a 4-byte **layout signature**. `EbxReaderRiff`
+looks that GUID up in the locally generated `BF6SDK.dll`. Any layout change moves the
+signature, so it moves the GUID, so the stale SDK cannot resolve it and the exporter writes
+`<!-- Object could not be loaded (unknown type) -->` in place of the object. The class
+*name* hash (`Class_535682be`) does **not** move when the layout changes.
+
+**`SharedTypeDescriptors.ebx` is the authority.** It ships with the game, is rewritten in
+the Frosty runtime folder when the cache rebuilds, and carries every class size, alignment,
+field offset, field type and field-name hash. Retain a copy per build; the old one is not
+recoverable after an update.
+
+**1.4.2.5 → 1.4.3.0.** 9,470 → 9,513 type keys, 108 of them new: 13 where only the
+signature moved, 69 real layout changes, 26 brand-new type names. No class name hash was
+removed; 26 were added. 341 of 835 exported assets lost at least one object in Frosty.
+
+**Do not patch Frosty to fall back to the type name.** The name resolves, but for the 69
+genuinely changed layouts the SDK's stale offsets then yield plausible wrong values with no
+error. Silent corruption is worse than a visible gap.
+
+**Do not expect to regenerate the SDK.** Generation reads the running game process and EA
+anticheat blocks it. Treat `BF6SDK.dll` as frozen.
+
+**Use `scripts/frosty-ebx-decode.py`.** It decodes RIFF EBX using only the build's own
+descriptors, so it cannot read a changed type with stale offsets. Output is a JSON tree
+using the same `Class_`/`Field_` hash names as the Frosty XML.
+
+Field encoding, for anyone extending the reader: the descriptor stores `flags` as the raw
+u16 shifted right by one, matching `FrostySdk.EbxField.Type`. From it,
+`DebugType = (flags >> 4) & 0x1F` and `DebugCategory = flags & 0xF`. Category 4 marks an
+array; the element type is the field's own `DebugType`. Fields are read at
+`objectStart + field.offset`, **not** sequentially. An array field holds a relative offset,
+not an index: `resolved = fieldPos - dataStart + value`, matched against the EBXX table,
+with the array empty when the value is 0 or resolves to `arraysOffset + 0x10`.
+
+**Validation status.** Against Frosty's own XML on 400 random 1.4.2.5 assets: 234 identical
+value-for-value, 151 supersets (fields the SDK class lacks, which Frosty reads and
+discards), 14 disagreements, 0 failures. All 14 are type names with more than one layout
+entry in the descriptors; the reader follows the layout the asset declares, Frosty follows
+the SDK's. Such objects are tagged `$layoutAmbiguous` and are provisional. Since the
+16 September review, ambiguous nested and inherited layouts also mark their containing
+object. The same decoder on both builds does not resolve ambiguity; all 27 saved PiP
+comparisons are provisional. The earlier sample counts above describe the original run,
+not independent validation of the warning change.
+
+**Hash evidence.** The catalog's Frosty record `sha1` is not sufficient proof of content:
+142 assets in 1.4.3.0 kept their record SHA1 but had a different extracted raw stream, and
+all 142 decoded to changed XML. Compare a recomputed raw SHA256.
+
+## Structural findings that help comparisons (15 September 2026)
+
+**Generic structs.** `Struct_cb53a662` is a three-member struct (`Field_3901db14`,
+`Field_42fc0f5e`, `Field_32a99b9c`) reused throughout the data. A field hash inside it
+means nothing on its own; the *containing* field gives the meaning. `Field_32a99b9c`
+carries muzzle velocity only inside `Struct_739f3ac5` (`Shot.InitialSpeed.z`); elsewhere it
+is just the third member. Check the enclosing struct before reading any of these three.
+
+**Damage curves** live in `Common/Hardware/Weapons/_Bullets/PD_*`, not the weapon
+blueprint. Each curve stores distance and damage together: `Field_3901db14` is the
+distance, `Field_42fc0f5e` the damage at it. The same curve is stored twice per object, as
+a point list (`Field_edfc6df6` of `Struct_c45202f2`) and as a flat interleaved array
+(`Field_5279388d`). **The two can disagree** — in 1.4.2.5 the Interdictor's differed on the
+fourth distance, 170 in the point list against 175 in the flat array. Read both and
+reconcile.
+
+**Hit-zone multipliers** are in the level material grids, not in any weapon asset.
+
+**Camera recoil (`GCR_*`) is a magnification ladder.** `Field_bbbfe9cc`, active only where
+`Field_bbffe8bc` is `True`, takes one value per magnification, strictly monotonic:
+
+| Zoom | Value | Zoom | Value |
+|---|---|---|---|
+| 1.00x | -0.5 | 3.50x | 0.449399 |
+| 1.25x | -0.254767 | 4.00x | 0.505185 |
+| 1.50x | -0.084472 | 4.50x | 0.54968 |
+| 1.75x | 0.041348 | 5.00x | 0.586081 |
+| 2.00x | 0.138476 | 6.00x | 0.642258 |
+| 2.50x | 0.279325 | 8.00x | 0.715803 |
+| 3.00x | 0.377135 | 10.00x | 0.762266 |
+
+`Field_7f1bb9d4` and `Field_9532eb28` are a pair and should hold the same value in a given
+member. All 34 assets were checked against the ladder: the only defect was the SU-230 LPVO
+(`GCR_LPVO_4x00_1x00_P00`) whose **1x** state held `10`, fixed in 1.4.3.0. A higher value
+appears to mean less camera shake, from the operator's in-game report plus the ladder's
+shape; the unit is not decoded.
+
+**Field identities confirmed so far:** attachment point cost `Field_6ee865a5`; recoil
+amount `Field_22810b21`; recoil direction variation `Field_865174fa`; muzzle velocity
+`Shot.InitialSpeed.z` = `Field_32a99b9c` in `Struct_739f3ac5`.
+
+**`Field_440ed7fa` is a frame-quantised duration.** All 15 distinct values across 64 weapon blueprints are exact whole 1/60 s frames (4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 22, 24 and 0); the apparent error is 3-decimal rounding of n/60. It is **not** the rate of fire: `GRX_Weapons` names RateOfFire separately and the two disagree on at least nine weapons (590A1 0.4 against 60/RateOfFire 0.033, DP12 0.4 against 0.167, Desert Tech HTI 0.4 against 0.2, and the ACE32, APC10, BREN3, HK433, EF88 and HK417A2 one or two frames above cadence). Where they agree it equals 60/RateOfFire rounded to a frame. It is not a named registry leaf: value-matching against every GRX_Weapons leaf returned only CustomZeroingDelay at 7 of 12 weapons, and that leaf is a constant 0.4 on the DMRs where it disagrees. Reading: a timing window that tracks cadence but is clamped, most likely animation or input rather than cadence. 1.4.3.0 put the ScorpionEvo3 and Skorpion on 4 frames from unset. Not semantically named, not applied to the site.
+
+The neighbouring `Field_52a8ad43` is a constant 0.067 (four frames) on every weapon.
+
+**Known unexplained:** `Field_c39698a3` moved from `0xffffffff` to a small integer in 241
+of 248 attachment metadata assets in 1.4.3.0. `Field_6eb133f8` (a per-zoom view block in
+`Class_76a3b0eb`) has no semantic name; 222 occurrences across weapon XML, 90 of them
+`(0,0,0)` and 64 `(0,0,-99.8)`, so `-99.8` is a common standard value rather than an
+outlier.
+
+## Anomaly scans
+
+Diffing finds change; these find defects, including ones that predate the current build.
+Described with worked examples in
+[the game update guide](../../docs/GAME_UPDATE_GUIDE.md#stage-6--consistency-scans):
+ladder checks, paired-field disagreement, flag/value mismatch, multi-package selection
+(`scripts/frosty-multi-package-scan.py`), relative-to-default comparison,
+description-versus-effect grouping, and string-set comparison.
+
+## Per-build collection status
+
+| Build | Collection | Status |
+|---|---|---|
+| 1.4.2.5 | `research-1.4.2.5/pre-update/collection/collection-manifest.json` | partial; 23,557 raw captures |
+| 1.4.3.0 | `research-1.4.3.0/post-update/collection/collection-manifest.json` | partial; 23,709 asset rows, schema-validated with 0 errors, 24,565 files re-verified by hash |
+
+The 1.4.3.0 capture reuses the 1.4.2.5 route list so raw hashes compare directly, then adds
+the 12 gameplay-shaped assets the update introduced and 152 dependency routes found by a
+visited-set traversal of the changed and added assets. Animation routes, generated `_af/`
+tag collections, decal textures and `.physics` assets are excluded on purpose.
+
+Build an overlay export root for the generators: copy the previous build's XML tree, layer
+the new build's fully decoded assets and its added assets over it, and keep the list of
+routes left behind because Frosty could not decode them
+(`Frosty Exports/1.4.3.0/xml-overlay-stale.txt`). Generators that read a stale route need
+`scripts/frosty-ebx-decode.py` instead.
+
 ## Update comparison: generators and checks
 
 After exporting a new build, re-run the consumer for each evidence source and compare with the dated report.
@@ -175,3 +309,28 @@ Composition observations:
 ## Scope
 
 These shared JSON files define the collection plan and findings. The separate collector has captured the pre-update raw set; no complete dependency inventory is claimed. Preparation did not resume the broad backup or change Analyzer data.
+
+## Known unresolved soldier GUIDs (16 September 2026)
+
+The [GUID trace](../provenance/frosty-1.4.3.0-unresolved-guid-trace-2026-09-16.json)
+records all object GUIDs, callers, pointer counts and local evidence hashes. The
+16 caller assets are also indexed in `asset-findings.json`.
+
+| File GUID | Caller context | Caller assets | Decoded pointer uses |
+|---|---|---:|---:|
+| `2631e8f8-a115-413d-a696-5ec194081d73` | Ladder, traversal, revive, melee, fire | 15 | 33 |
+| `8f992c03-80cb-4ed5-8a6e-0274a57f659c` | In-air and parachute | 3 | 11 |
+| `b4765624-c221-4138-b446-3b3aa155cf3b` | Overlay, melee, in-air | 3 | 3 |
+| `d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180` | Mandown, revive, rope, zipline | 8 | 16 |
+
+These are confirmed references in `Class_25c12137 / Field_a2734e52 / member /
+Field_8cf424e7`. All file/object pairs were already `BadRef` in the corresponding
+1.4.2.5 XML. Neither build catalogue contains the target files; the 16,426 captured
+raw object bodies contain no matching target objects. Exact target identities and
+contents remain unknown. Caller names do not identify the targets or prove runtime
+use. Keep the dependency review partial.
+
+Reuse this result if the same pairs recur. Reopen the trace only if a target body
+becomes available, a catalogue resolves the GUID, the caller pointers change, or
+new consumer evidence can answer a specific question. The linked report retains
+the local decoded evidence path and hash; the raw captures remain outside Git.

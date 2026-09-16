@@ -140,7 +140,10 @@ test('live hit zones use the Frosty values checked against in-game panels', () =
   // Limb follows the projectile material. VSSM fires a 5.56 carbine-material
   // projectile after 1.4.2.0; the automatic Vz. 61 uses the automatic value.
   const limbByClass = { 'Assault Rifle': 0.84, Carbine: 0.84, SMG: 0.84, LMG: 0.84, DMR: 0.91, 'Sniper Rifle': 0.67, Shotgun: 1, Sidearm: 1 };
-  const limbExceptions = { vssm: 0.84, vz61: 0.84 };
+  // 1.4.3.0 moved the Interdictor's projectile to material 784, giving limb 1.0 so limb
+  // damage matches chest. The class ladder below is a test expectation only; the runtime
+  // resolves every weapon and ammo from data/hit_zones.json with no class fallback.
+  const limbExceptions = { vssm: 0.84, vz61: 0.84, interdictor: 1 };
   for (const weapon of weapons) {
     assert.equal(resolve(weapon.id).limbMultiplier, limbExceptions[weapon.id] ?? limbByClass[weapon.cls], `${weapon.id} limb`);
   }
@@ -176,7 +179,9 @@ test('derives sniper sweet spots from the curve and preserves the Mini Scout exc
     assert.equal(damageAtRange(weapon, start), damage);
     assert.equal(damageAtRange(weapon, end), damage);
     assert.ok(damageAtRange(weapon, end + 1) < damage, `${weapon.id} ramps out of the sweet spot`);
-    assert.equal(weapon.dmg.at(-1).d, 62, `${weapon.id} minimum damage`);
+    // 1.4.3.0 raised the Interdictor minimum from 62 to 80; the others still end at 62.
+    const minimumDamage = { interdictor: 80 };
+    assert.equal(weapon.dmg.at(-1).d, minimumDamage[weapon.id] ?? 62, `${weapon.id} minimum damage`);
   }
 
   const miniScout = weapons.find(item => item.id === 'miniscout');
@@ -205,14 +210,18 @@ test('every live damage breakpoint carries explicit source provenance', () => {
   }
 });
 
-test('Interdictor keeps its chest and limb kill windows distinct', () => {
+test('Interdictor chest and limb kill windows coincide after the 1.4.3.0 normalization', () => {
+  // 1.4.2.5 had limb 0.67 and a 150-damage sweet spot, so the limb window (120-150 m)
+  // sat inside the wider chest window (106-164 m). 1.4.3.0 set the limb multiplier to
+  // 1.0 and flattened the sweet spot to 100, so the two windows are now the same.
   const weapon = readJson('../data/weapons.json').find(w => w.id === 'interdictor');
   const HIT_ZONES = readJson('../data/hit_zones.json');
   const { limbMultiplier } = resolveHitMultipliers(weapon.id, { id: 'standard' }, { HIT_ZONES });
+  assert.equal(limbMultiplier, 1);
   const btk = (range, bodyMultiplier) => bulletsToKillWithHits(damageAtRange(weapon, range), { bodyMultiplier });
-  assert.deepEqual([105, 106, 164, 165].map(r => btk(r, 1)), [2, 1, 1, 2]);
-  assert.deepEqual([119, 120, 150, 151].map(r => btk(r, limbMultiplier)), [2, 1, 1, 2]);
-  assert.equal(damageAtRange(weapon, 135), 150);
+  assert.deepEqual([119, 120, 160, 161].map(r => btk(r, 1)), [2, 1, 1, 2]);
+  assert.deepEqual([119, 120, 160, 161].map(r => btk(r, limbMultiplier)), [2, 1, 1, 2]);
+  assert.equal(damageAtRange(weapon, 135), 100);
 });
 
 test('uses the Frosty game-file damage tiers', () => {

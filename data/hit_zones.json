@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "source": {
-    "build": "1.4.2.5",
+    "build": "1.4.3.0",
     "generatedBy": "scripts/frosty-hit-zones.py",
-    "evidence": "reference-data/provenance/frosty-hit-zones-2026-09-13.json"
+    "evidence": "reference-data/provenance/frosty-hit-zones-2026-09-15.json"
   },
   "weapons": {
     "ak205": {
@@ -372,25 +372,25 @@
     },
     "interdictor": {
       "protectionIndex": 3,
-      "projectileMaterial": 781,
+      "projectileMaterial": 784,
       "headshot": 1.75,
-      "limb": 0.67,
+      "limb": 1.0,
       "ammo": {
         "standard": {
           "headshot": 1.75,
-          "limb": 0.67
+          "limb": 1.0
         },
         "frangible": {
           "headshot": 1.75,
-          "limb": 0.67
+          "limb": 1.0
         },
         "long_range": {
           "headshot": 1.75,
-          "limb": 0.67
+          "limb": 1.0
         },
         "penetration": {
           "headshot": 1.75,
-          "limb": 0.67
+          "limb": 1.0
         }
       }
     },

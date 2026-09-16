@@ -362,3 +362,33 @@ to the weapon's default magazine. When captures confirm a mismatch on a magazine
 add a `descriptionMismatch` object with a link to the evidence file. When the site
 links wrong text, add a reviewed panel row instead of editing
 `data/attachment-tooltips.json`.
+
+## 1.4.3.0 recheck, 15 September 2026
+
+**Source side: no entry changed.** Every asset behind entries 1 to 10 is byte-identical
+to the 1.4.2.5 capture. Only three `GS_` assets changed in the whole build (`GS_VSSM`,
+`GS_RagingHunter`, `GS_TRR8`) and none of them belongs to a listed bug. No Slim Angled,
+magazine, ammo, barrel, Flash Comp or belt-box modifier changed. The one changed
+`Attachment_` asset is the Interdictor iron sights, whose point cost moved from 5 to 15
+as the patch notes state; that is a stated change, not a bug.
+
+**Description side: also unchanged.** Frosty could not read the attachment metadata for
+this build, because `SharedTypeDescriptors.ebx` changed while `BF6SDK.dll` did not and
+`Class_535682be` no longer resolves. The raw EBX was decoded instead with
+`scripts/frosty-ebx-decode.py`, which takes its layout from the build's own descriptors
+and does not use the SDK. Result: **234 of the 248 changed `AD_*` assets have a
+byte-identical set of string references**. The 14 that changed only removed references and
+added none, and every removed string is a fixed magnification chip ("4.50", "3.00", "2.00",
+"1.00", "1.00-6.00", "1.25") or a fire-mode or sight label ("Single Fire", "Burst",
+"Full Auto", "Bolt Action", "Pump Action", "Iron Sights") — all among the 73 strings
+deleted from `fs_us_loc` in this build.
+
+On 16 September, the recorded attachment label and description IDs were also resolved
+against both builds' English strings tables: none changed text or disappeared. This
+supports retaining entries 8, 9 and 10. The string-reference comparison alone was not
+sufficient, and no new live-panel captures were made for the three reviewed tooltips.
+
+Neither conclusion depends on the stale SDK: the source side rests on unchanged asset
+hashes, and the description side on an SDK-independent decode. Evidence:
+`reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json` and
+`reference-data/provenance/frosty-1.4.3.0-sdk-independent-decode-2026-09-15.json`.

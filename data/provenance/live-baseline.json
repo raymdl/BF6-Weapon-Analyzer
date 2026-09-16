@@ -9,7 +9,15 @@
       "sourceVersion": "1.4.2.5",
       "buildEvidence": "user-supplied export label",
       "evidence": "docs/archive/FROSTY_INTEGRATION.md",
-      "authority": "Reviewed local Frosty fields with per-weapon provenance; Interdictor tweakable health curve has independent creator corroboration"
+      "authority": "Reviewed local Frosty baseline fields with per-weapon provenance. Creator corroboration applies to the historical 1.4.2.5 Interdictor curve, which the 1.4.3.0 source update supersedes."
+    },
+    {
+      "id": "frosty-update-1.4.3.0",
+      "sourceVersion": "1.4.3.0",
+      "buildEvidence": "user-supplied build label; executable hash and Frosty archive Head 4892017 recorded in the comparison",
+      "reviewedDate": "2026-09-16",
+      "evidence": "reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json",
+      "authority": "Reviewed Interdictor damage curve, hit-zone material and iron-sight cost, plus VSSM velocity and recoil changes. Retained values keep their 1.4.2.5 provenance; the source update does not establish native runtime formulas."
     },
     {
       "id": "ea-update-notes",

@@ -1,0 +1,204 @@
+{
+ "scope": "SDK-independent decode of the 1.4.3.0 assets Frosty could not read, plus the camera-recoil survey. Layout only; field names are hashes and semantics are not decoded.",
+ "recordedDate": "2026-09-15",
+ "method": {
+  "tool": "scripts/frosty-ebx-decode.py",
+  "principle": "Every class size, alignment, field offset and field type comes from the build's own SharedTypeDescriptors.ebx. The BF6 SDK is not used, so a changed type cannot be read with stale offsets.",
+  "whyFrostyFailed": "EbxReaderRiff resolves a top-level instance by class GUID, and in BF6 that GUID is the type GUID's last 12 bytes plus a 4-byte layout signature. A layout change moves the GUID, the stale SDK has no entry, TypeLibrary.GetType(guid) returns null and the exporter writes a placeholder comment.",
+  "rejectedAlternative": "Patching Frosty to fall back to the type name was rejected: for the 69 types whose layout really changed, the SDK's stale offsets would yield plausible but wrong values with no error.",
+  "sdkConstraint": "BF6SDK.dll cannot be regenerated locally because SDK generation reads the running game process and EA anticheat blocks it."
+ },
+ "descriptorComparison": {
+  "typeKeysOld": 9470,
+  "typeKeysNew": 9513,
+  "keysOnlyInNew": 108,
+  "ofWhichSignatureOnlyMoved": 13,
+  "ofWhichRealLayoutChange": 69,
+  "ofWhichBrandNewTypeName": 26,
+  "classNameHashesRemoved": 0,
+  "classNameHashesAdded": 26
+ },
+ "validation": {
+  "sample": 400,
+  "source": "random 1.4.2.5 raw EBX with existing Frosty XML",
+  "everyValueIdentical": 234,
+  "supersetOfFrosty": 151,
+  "disagreesWithFrosty": 14,
+  "decodeFailures": 0,
+  "supersetExplanation": "Fields present in the descriptor but absent from the SDK class. Frosty reads and discards them because there is no CLR property to store them on.",
+  "disagreementExplanation": "All 14 are type names with more than one layout entry. This reader follows the layout the asset declares through its own type key; Frosty follows the SDK's. Such objects are tagged $layoutAmbiguous. Which is correct per asset is not settled.",
+  "limit": "Using the same decoder on both builds does not resolve competing layouts. Differences and apparent equality in ambiguous objects remain provisional until independently verified.",
+  "warningScope": "The original decoder marked only top-level ambiguous types. The 2026-09-16 correction also marks ambiguous nested/inherited layouts and their containing objects. Original validation counts have not been reclassified under that warning rule."
+ },
+ "recoveredResults": {
+  "assetsDecoded": 341,
+  "failures": 0,
+  "bothBuilds": true,
+  "fullDiff": "research-1.4.3.0/post-update/sdk-independent-decode-diff.json",
+  "pictureInPicture": {
+   "assets": "all 27 Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_*_PiP",
+   "change": "Class_e312e661 gained a 20th field Field_0d48404d, absent in 1.4.2.5, now holding an import of Common/GameSetup/Options/Graphics/OptionEnablePiPZoom.",
+   "conclusion": "The saved decode reports a new OptionEnablePiPZoom reference and no changed numeric fields in the 27 controllers. All 27 comparisons are marked layoutAmbiguous; this is provisional layout evidence, not proof of unchanged zoom, ADS, or runtime behavior.",
+   "relatedString": "Enable or disable Picture in Picture when using certain scopes"
+  },
+  "attachmentMetadata": {
+   "assets": 248,
+   "stringReferencesIdentical": 234,
+   "stringReferencesChanged": 14,
+   "onlyRemovals": true,
+   "structuralChange": "Class_535682be restructured; the Field_45422b18 sub-struct moved, and Field_c39698a3 moved from 0xffffffff to a small integer in 241 of 248.",
+   "removedLabels": {
+    "4.50": [
+     "AD_M145MGO",
+     "AD_Shared_SCP_1P86",
+     "AD_Shared_SCP_ElcanDR"
+    ],
+    "2.00": [
+     "AD_CompM5B_NoCaps",
+     "AD_Shared_SCP_Romeo4T_NoCaps"
+    ],
+    "3.00": [
+     "AD_QMK171A"
+    ],
+    "1.00": [
+     "AD_Reflex_OPK7"
+    ],
+    "1.00-6.00": [
+     "AD_VCOG_NoCap"
+    ],
+    "1.25": [
+     "AD_Skorpion_IronSights"
+    ],
+    "fireModeAndSightLabels": {
+     "strings": [
+      "Single Fire",
+      "Burst",
+      "Full Auto",
+      "Bolt Action",
+      "Pump Action",
+      "Iron Sights"
+     ],
+     "assets": [
+      "UIWeaponAbilityMetaData_S1B1",
+      "UIWeaponAbilityMetaData_S1B2",
+      "UIWeaponAbilityMetaData_S2B1",
+      "UIWeaponAbilityMetaData_S2B2",
+      "UIWeaponAbilityMetaData_S3B1"
+     ]
+    }
+   },
+   "conclusion": "The saved decode reports removal of fixed magnification and fire-mode labels. Independent 2026-09-16 comparison of recorded attachment label and description IDs against both English strings tables found no text changes or removed IDs. Matching string-reference sets alone does not prove unchanged wording or field roles.",
+   "attachmentBugConsequence": "docs/ATTACHMENT_BUGS.md entries 8, 9 and 10 describe wording that is unchanged in 1.4.3.0, so those description bugs stand."
+  }
+ },
+ "cameraRecoilSurvey": {
+  "field": "Struct_b1f8b400.Field_bbbfe9cc, active only where Field_bbffe8bc is True",
+  "ladder": {
+   "1.00": -0.5,
+   "1.25": -0.254767,
+   "1.50": -0.084472,
+   "1.75": 0.041348,
+   "2.00": 0.138476,
+   "2.50": 0.279325,
+   "3.00": 0.377135,
+   "3.50": 0.449399,
+   "4.00": 0.505185,
+   "4.50": 0.54968,
+   "5.00": 0.586081,
+   "6.00": 0.642258,
+   "8.00": 0.715803,
+   "10.00": 0.762266
+  },
+  "ladderNote": "Read from the single-zoom GCR_<zoom>_P00 assets. Strictly monotonic in magnification.",
+  "su230": {
+   "asset": "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_LPVO_4x00_1x00_P00",
+   "displayName": "SU-230 LPVO",
+   "internal": "ElcanDR",
+   "defectWasInState": "1x, not 4x",
+   "old": {
+    "4x": 0.505185,
+    "1x Field_7f1bb9d4": 10,
+    "1x Field_9532eb28": -0.5
+   },
+   "new": {
+    "4x": 0.505185,
+    "1x Field_7f1bb9d4": -0.5,
+    "1x Field_9532eb28": -0.5
+   },
+   "reading": "Field_7f1bb9d4 held 10 where its paired field already held the correct 1.00x ladder value of -0.5. 10 is far outside the whole ladder, whose maximum is 0.762266 at 10x. 1.4.3.0 brings it onto the ladder.",
+   "direction": "The operator reports the SU-230 had far too little camera shake before the fix. With the ladder running -0.5 at 1x up to 0.762266 at 10x, that implies a higher value means less camera shake. The unit is not decoded; the direction rests on the in-game observation plus the ladder's shape."
+  },
+  "scan": {
+   "assetsChecked": 34,
+   "criteria": [
+    "paired override fields disagree",
+    "enable flags mismatch",
+    "active override outside the ladder range"
+   ],
+   "flaggedIn1425": [
+    "GCR_LPVO_4x00_1x00_P00"
+   ],
+   "flaggedIn1430": [],
+   "conclusion": "The SU-230 was the only camera-recoil asset with this defect. Every other optic's members sit on the ladder value for their magnification, across the multi-zoom LPVO, magnifier, variable and SVO families. No other optic currently has lower camera shake than its magnification calls for."
+  }
+ },
+ "interdictorDamageForSite": {
+  "asset": "Common/Hardware/Weapons/_Bullets/PD_.416Barrett",
+  "pairEncoding": "Field_3901db14 is distance, Field_42fc0f5e is damage at that distance.",
+  "old": [
+   [
+    100,
+    80
+   ],
+   [
+    120,
+    150
+   ],
+   [
+    150,
+    150
+   ],
+   [
+    175,
+    62
+   ],
+   [
+    200,
+    62
+   ]
+  ],
+  "new": [
+   [
+    100,
+    80
+   ],
+   [
+    120,
+    100
+   ],
+   [
+    160,
+    100
+   ],
+   [
+    180,
+    80
+   ],
+   [
+    200,
+    80
+   ]
+  ],
+  "note": "The asset stores the curve twice, as a point list and a flat array. In 1.4.2.5 the two disagreed on the fourth distance (170 vs 175; the site used 175). In 1.4.3.0 both agree on 180.",
+  "matchAlsoAppliesTo": "PD_.416Barrett_Match"
+ },
+ "reviewValidation": {
+  "date": "2026-09-16",
+  "decoderSha256": "c833756899dada5dec45b1e250c159e5f6beb47662defaf6b09555b7e7757788",
+  "regressionTestsPassed": 4,
+  "retainedRawAssetsCompared": 12,
+  "decodedValuesUnchanged": true,
+  "evidence": "C:\\Users\\royal\\Documents\\BF6 Datamining\\research-1.4.3.0\\post-update\\review-2026-09-16.json",
+  "evidenceSha256": "b268dc7b17a2454a0211d5a9dce8be2e8b429dec19af162537d097328b429f02"
+ }
+}
