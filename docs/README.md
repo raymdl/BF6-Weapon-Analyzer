@@ -17,7 +17,7 @@ Linear Comp/burst recoil and belt-box description mismatches. Native arithmetic 
 The 14 September compatibility update generates physical mount slots and equipment
 dependencies from Frosty. See the [user controls](USER_GUIDE.md#build-and-compare-loadouts),
 [data contract](DATA_REFERENCE.md), [regeneration commands](../MAINTENANCE.md#regenerate-attachment-modifiers),
-and [curated source findings](../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies).
+and [curated source findings](frosty/DATA_GRAPH.md#slots-and-prerequisites).
 
 The [description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
 documents attachment tooltips and the 18 approved panel-text exceptions. The

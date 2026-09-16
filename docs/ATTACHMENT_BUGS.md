@@ -269,7 +269,7 @@ weapon's default magazine. All values are source-generated. Not checked in game.
 Found on 16 September 2026 in the 1.4.3.0 data. Full values, method and asset
 hashes are in the
 [optic render FOV report](../reference-data/provenance/frosty-optic-render-fov-2026-09-16.json)
-and the [Frosty reference notes](../reference-data/frosty/README.md#optic-render-fov-aim-zoom-and-names-16-september-2026).
+and the [Frosty attachment notes](frosty/ATTACHMENTS.md#optic-render-fov-and-zoom).
 Render FOV is visual only. It does not change projectile mechanics or the stats on
 this site.
 

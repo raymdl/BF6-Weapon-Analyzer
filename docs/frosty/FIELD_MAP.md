@@ -139,7 +139,7 @@ The full ladder is in [Weapons](WEAPONS.md#camera-recoil-ladder).
 |---|---|---|---|
 | `Field_7768ebf2` | Optic part `Class_3a930efc`; WB `Class_76a3b0eb` | Weapon render FOV in degrees; 55 is the default | Value, Tested |
 | `Class_76a3b0eb` | WB | Render object; the one that links `DefaultHipFireRenderFovScale` holds hip fire (59) | Structure |
-| `Field_6eb133f8` | `Class_76a3b0eb` | Per-zoom view block (often `(0,0,0)` or `(0,0,-99.8)`) | Unknown |
+| `Field_6eb133f8` | `Class_76a3b0eb` | Per-zoom view block: 222 occurrences in weapon XML, 90 `(0,0,0)` and 64 `(0,0,-99.8)`, so −99.8 is a common standard value | Unknown |
 | `Class_542ac52c.Field_4f917af5` | WB | Weapon default aim; all weapons `Aim_1x50` | Structure |
 | `Class_fe7cd16a.Field_4f917af5` | Part | Aim override (optics); iron sights have none | Structure |
 | `Class_8cdc5b63` | WB | Inline part sub-object that holds a render object (iron sights; built-in optics on the G36) | Structure |

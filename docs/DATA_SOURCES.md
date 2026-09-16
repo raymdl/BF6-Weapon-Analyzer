@@ -51,7 +51,7 @@ covers 1,391 offered mount choices and 285 dependency entries: 22 rules map to
 offered attachments on four weapons; 263 secondary-sight entries are not offered
 or lack a reviewed site identity. The PP-19 30/53-round screenshots corroborate
 the dependency interpretation. Native hashed enum semantics and live overrides
-are not inferred. The [Frosty collection records](../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies)
+are not inferred. The [Frosty collection records](frosty/DATA_GRAPH.md#slots-and-prerequisites)
 retain asset findings and collection/recheck requirements.
 
 ## What the current baseline means

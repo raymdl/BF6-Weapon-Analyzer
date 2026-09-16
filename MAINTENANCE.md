@@ -88,7 +88,7 @@ Keep positional URL tokens stable. Check replacement, empty selection, point
 costs, legacy links, prerequisite changes and weapon switching.
 
 After reviewing compatibility changes, update the
-[Frosty asset findings](reference-data/frosty/README.md#shared-slots-and-attachment-dependencies)
+[Frosty asset findings](docs/frosty/DATA_GRAPH.md#slots-and-prerequisites)
 with source hashes, evidence pointers and limits. Run
 `python scripts/frosty-watchlist-merge.py --datamining <datamining-root>` to review
 collection changes, then add `--write` to save them. Preserve earlier findings.

@@ -233,7 +233,7 @@ entries, 263 secondary-sight entries remain unoffered or unmapped. This replaces
 manual shared-slot assignments and adds general prerequisite enforcement.
 
 See the [compatibility evidence](../../reference-data/provenance/frosty-attachment-compatibility.json),
-[Frosty findings](../../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies),
+[Frosty findings](../frosty/DATA_GRAPH.md#slots-and-prerequisites),
 and [maintenance command](../../MAINTENANCE.md#regenerate-attachment-modifiers).
 The focused 45-test attachment/share suite, regeneration and data checks passed;
 browser checks covered PP-19 grip removal/restoration and KORD device replacement.

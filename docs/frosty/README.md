@@ -6,6 +6,10 @@ what the hashed fields mean, and how the assets link to site values.
 | Page | Contents |
 |---|---|
 | [Field map](FIELD_MAP.md) | Every hashed `Field_`/`Class_`/`Struct_` with a known or probable meaning. |
+| [Data graph](DATA_GRAPH.md) | How attachments, abilities, selectors, parts, bindings, projectiles, aim and UI assets link. |
+| [Weapons](WEAPONS.md) | Damage curves, hit zones, ballistics, collateral, spread and recoil laws, camera recoil, traits. |
+| [Attachments](ATTACHMENTS.md) | Composition rules, generated site values, lights, sway, optic categories, render FOV and zoom. |
+| [UI text](UI_TEXT.md) | Strings table, weapon and attachment names, labels, descriptions, site tooltip mapping. |
 | [Tools](TOOLS.md) | FrostyCmd, safety rules, SDK and decoder, export coverage, per-build collection, generators. |
 
 Related:

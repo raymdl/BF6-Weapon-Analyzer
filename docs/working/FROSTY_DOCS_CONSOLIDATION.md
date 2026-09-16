@@ -15,8 +15,8 @@ the operator reviews at the end. Archive this file when all stages are done.
 | Stage | Work | Status |
 |---|---|---|
 | 1 | `FIELD_MAP.md` and `TOOLS.md`; split from `reference-data/frosty/README.md` | done |
-| 2 | `DATA_GRAPH.md`, `WEAPONS.md`, `ATTACHMENTS.md`, `UI_TEXT.md` | in progress |
-| 3 | `OPEN_QUESTIONS.md`; archive the merged working files | not started |
+| 2 | `DATA_GRAPH.md`, `WEAPONS.md`, `ATTACHMENTS.md`, `UI_TEXT.md` | done |
+| 3 | `OPEN_QUESTIONS.md`; archive the merged working files | in progress |
 | 4 | Links, tool references, indexes, final checks | not started |
 
 ## Decisions
