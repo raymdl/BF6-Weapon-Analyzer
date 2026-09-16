@@ -9,7 +9,8 @@
   "inGameConfirmation": [
     "Operator screenshots, 16 SEP 2026: R-MR 1.00x, ROX 1.50x and Mini Flex 1.00x look smaller and further away on the RPK-74M than on the RPKM and M433, and the left arm looks thin and stretched (wider render FOV).",
     "Operator screenshot, 16 SEP 2026: Osa-7 1.00x looks the same on all three weapons (same part, render FOV 38).",
-    "Operator confirmation, 16 SEP 2026: iron sights zoom more than 1.00x optics."
+    "Operator confirmation, 16 SEP 2026: iron sights zoom more than 1.00x optics.",
+    "Operator screenshots, 16 SEP 2026: SL9, KTS100 MK8 and PW7A2 iron sights from the same position. The range and targets are identical (same 1.50x world zoom); only the weapon size changes, and the KTS100 MK8 (render FOV 18) is drawn much larger. The SL9 (55) looks normal."
   ],
   "fieldMeanings": {
     "Field_7768ebf2": "Weapon (1P) render FOV in degrees. Optic parts hold it on Class_3a930efc; weapon blueprints on Class_76a3b0eb. 55 is the default. The 59 object also links DefaultHipFireRenderFovScale (hip fire).",
@@ -94,8 +95,8 @@
     },
     "ironSights": {
       "result": "No iron-sight part overrides the aim, so every weapon uses Aim_1x50 -> 1_5xZoom (1.50x). 1.00x optics (Aim_01x00_PiP) zoom less than iron sights. The iron render FOV is weapon specific (18 to 50), except SL9 (APDW) and the pistols P18, ES 5.7, GGH-22 and M357 Trait, which keep 55.",
-      "candidate": "SL9 (APDW) iron sights at 55 are the only non-pistol case at the default. Not checked in game.",
-      "siteChange": "data/attachments.json SIGHTS iron name is now 'Iron Sights (1.50x)'."
+      "siteChange": "data/attachments.json SIGHTS iron name is now 'Iron Sights (1.50x)'.",
+      "sl9": "SL9 (APDW) iron sights keep the default 55, the only non-pistol case. Checked in game on 16 SEP 2026: no visible effect (see inGameConfirmation)."
     },
     "labelsVsZoom": "All 1,810 optic part links with their own aim zoom to the magnification in their UI label."
   },
@@ -2105,7 +2106,7 @@
   },
   "limits": [
     "Field meanings are inferred from values and screenshots, not from decoded names.",
-    "The L115, SL9, M2010 ESR and pistol cases are source findings only.",
+    "The L115, M2010 ESR and pistol cases are source findings only.",
     "Render FOV is visual. It does not change projectile mechanics, and the site does not model it."
   ]
 }

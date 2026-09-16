@@ -27,7 +27,7 @@ Discovery rules are instructions for a future collector, not executable automati
 
 ## Research findings
 
-`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 214 findings across 171 assets, including 62 ability and 56 equipment findings from the compatibility investigation, 26 selector-package findings from the 14 September description review and 16 optic render FOV findings from 16 September. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
+`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 215 findings across 171 assets, including 62 ability and 56 equipment findings from the compatibility investigation, 26 selector-package findings from the 14 September description review and 17 optic render FOV findings from 16 September. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
 
 Check this file before repeating an investigation. Results apply to the stated question and method. `inconclusive` does not mean the asset is unrelated; `blocked-by-decoding` does not mean it lacks useful data. A `useful` result does not establish native runtime behavior beyond the cited evidence. There is no permanent exclusion flag.
 
@@ -342,7 +342,8 @@ list the same selector without an aim.
   Trijicon MRO base and `_Tall` parts are both 34.
 - **Iron sights.** No iron-sight part overrides the aim, so all iron sights zoom 1.50×.
   1.00× optics zoom less; the operator confirmed this in game. The iron render FOV is 18
-  to 50 per weapon, except SL9 and four pistols at 55.
+  to 50 per weapon, except SL9 and four pistols at 55. The SL9 was checked in game: no
+  visible effect.
 - **Rejected causes.** Riser model height, the `Field_149939ab`/`Field_e9129d03` pair
   (1.25–1.3 on some riser parts) and the zoom levels do not cause the difference.
 

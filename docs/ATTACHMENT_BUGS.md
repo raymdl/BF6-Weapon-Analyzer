@@ -39,7 +39,6 @@ Site status uses one of these values, followed by the value that the site applie
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
 | 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches source data: source values |
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
-| 12 | Iron Sights | SL9 | Visual error (candidate) | The iron sights keep the default render FOV 55. All other non-pistol weapons have their own value (18 to 50). Not checked in game. | Not modelled |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -307,15 +306,18 @@ this site.
   `L115A3_WB`, as `RPKM_WB` does.
 - **Site.** Not modelled.
 
-### 12. SL9 iron sights use the default render FOV (candidate)
+### SL9 iron sights use the default render FOV (checked, not a bug)
 
 - **Frosty.** The SL9 (`APDW_WB`) inline iron-sight part keeps render FOV 55. The iron
   sights on all other non-pistol weapons have their own value, from 18 (KTS100 MK8) to
   50 (PW7A2, USG-90). The P18, ES 5.7, GGH-22 and M357 Trait iron sights also keep 55.
   The M45A1 (45), M44 (48) and vz. 61 (50) have their own values.
-- **In-game.** Not checked. Compare the SL9 iron sights with another SMG, as for
-  entry 11.
-- **Site.** Not modelled.
+- **In-game.** Checked on 16 September with SL9, KTS100 MK8 and PW7A2 iron-sight
+  screenshots from the same position. The range and targets are identical in all
+  three, so the 1.50× zoom is the same. Only the weapon size changes: the KTS100 MK8
+  (18) is drawn much larger and closer. The SL9 looks normal, with no small or
+  stretched look as on the RPK-74M optics. No visible effect.
+- **Recheck** if a game update changes the SL9 iron sights or its render FOV.
 
 **Related, not an error.** M2010 ESR SDO 3.50x: an inline `U_ATT_TrijiconSDO` model part
 holds 55 next to `WPM_SCP_TrijiconSDO` (34). It is not known which value the game uses.
