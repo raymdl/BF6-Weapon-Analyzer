@@ -1,6 +1,6 @@
 # BF6 Weapon Analyzer
 
-[Open the analyzer](https://raymdl.github.io/BF6-Weapon-Analyzer/) · [User guide](docs/USER_GUIDE.md) · [Documentation index](docs/README.md)
+[Open the analyzer](https://raymdl.github.io/BF6-Weapon-Analyzer/) · [User guide](docs/USER_GUIDE.md) · [Data-flow atlas](docs/data-flow/README.md) · [Documentation index](docs/README.md)
 
 A browser-based Battlefield 6 weapon and attachment comparison tool. Build a loadout,
 compare two configurations, and explore how damage, handling, recoil, spread, and
