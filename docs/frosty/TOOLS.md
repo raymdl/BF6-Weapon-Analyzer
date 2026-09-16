@@ -16,7 +16,8 @@ the [game update guide](../GAME_UPDATE_GUIDE.md); this page is the tool referenc
 | 1.4.3.0 overlay root | `Frosty Exports\1.4.3.0\xml-overlay`; routes Frosty could not decode are listed in `xml-overlay-stale.txt` |
 | English strings | `Frosty Exports\<build>\Common\Localization\Languages\fs_us_loc.strings.tsv` |
 | Raw captures per build | `research-<build>\...\collection\collection-manifest.json` |
-| Catalogs | `ebx_manifest.txt`, `ebx_manifest.csv`, `ebx_directories.txt` in the datamining root |
+| Catalogs | `ebx_manifest.txt`, `ebx_manifest.csv`, `ebx_directories.txt`: 1.4.2.5 in the datamining root (pinned by the watchlist; do not replace); each build in `research-<build>\...\catalog\` |
+| Layout and archive | `BF6 Datamining\README.md`; historical files in `BF6 Datamining\_archive\` |
 
 From the Analyzer repository, pass `--root "../BF6 Datamining/Frosty Exports/<build>"` to
 tools that read the XML tree. Older reports keep old absolute paths; substitute the new
