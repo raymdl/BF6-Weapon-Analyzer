@@ -10,6 +10,7 @@ try {
   page.on('pageerror',e=>errors.push(e.message));
   await page.setViewport({width:1440,height:1000});
   await page.goto(pathToFileURL(resolve('.atlas-build/output/index.html')).href);
+  await page.addStyleTag({content:'html { scroll-behavior: auto !important; }'});
   assert.equal(await page.$$eval('figure svg',els=>els.length),23);
   assert.equal(await page.$$eval('.chapter',els=>els.length),8);
   await page.screenshot({path:'.atlas-build/output/overview.png'});
@@ -18,6 +19,8 @@ try {
     await page.waitForFunction(id=>document.querySelector('.chapter.active')?.dataset.chapter===id,{},id);
   }
   await page.click('nav a[data-nav="readme"]');
+  await page.waitForFunction(()=>document.querySelector('.chapter.active')?.dataset.chapter==='readme');
+  await page.waitForSelector('.chapter.active .expand',{visible:true});
   await page.click('.chapter.active .expand');
   assert.equal(await page.$eval('dialog',d=>d.open),true);
   const before=await page.$eval('.zoom-label',e=>e.textContent);
