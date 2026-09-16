@@ -118,7 +118,7 @@
     },
     "optic-render-fov-2026-09-16": {
       "path": "reference-data/provenance/frosty-optic-render-fov-2026-09-16.json",
-      "reportSha256": "bf85795a510ae09348155fe4f90bacd704170477fd9f08a74eb71da5f5597a83"
+      "reportSha256": "3db909cb5b96b9dd19319709a46fc113b92be1bbb0242db166c83994e53c84e1"
     }
   },
   "assets": {
@@ -6868,7 +6868,7 @@
         {
           "question": "Does the SL9 iron-sight render FOV of 55 cause a visible problem?",
           "result": "useful",
-          "conclusion": "No. In-game screenshots of the SL9, KTS100 MK8 and PW7A2 iron sights show the same world zoom and a normal-looking SL9; only the weapon size differs between weapons. This answers the earlier inconclusive finding; keep the source value for rechecks.",
+          "conclusion": "No visible effect found. In-game screenshots of the SL9, KTS100 MK8 and PW7A2 iron sights show the same world zoom and a normal-looking SL9; only the weapon size differs between weapons. The value may still be unset by mistake, so this does not prove it is intended. Keep the source value for rechecks.",
           "buildInspected": {
             "label": "1.4.3.0",
             "exactBuildVerified": false,

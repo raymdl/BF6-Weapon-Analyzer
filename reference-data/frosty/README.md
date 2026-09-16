@@ -343,7 +343,7 @@ list the same selector without an aim.
 - **Iron sights.** No iron-sight part overrides the aim, so all iron sights zoom 1.50×.
   1.00× optics zoom less; the operator confirmed this in game. The iron render FOV is 18
   to 50 per weapon, except SL9 and four pistols at 55. The SL9 was checked in game: no
-  visible effect.
+  visible effect was found, but the value may still be unset by mistake.
 - **Rejected causes.** Riser model height, the `Field_149939ab`/`Field_e9129d03` pair
   (1.25–1.3 on some riser parts) and the zoom levels do not cause the difference.
 

@@ -306,7 +306,7 @@ this site.
   `L115A3_WB`, as `RPKM_WB` does.
 - **Site.** Not modelled.
 
-### SL9 iron sights use the default render FOV (checked, not a bug)
+### SL9 iron sights use the default render FOV (no visible effect found)
 
 - **Frosty.** The SL9 (`APDW_WB`) inline iron-sight part keeps render FOV 55. The iron
   sights on all other non-pistol weapons have their own value, from 18 (KTS100 MK8) to
@@ -316,7 +316,10 @@ this site.
   screenshots from the same position. The range and targets are identical in all
   three, so the 1.50× zoom is the same. Only the weapon size changes: the KTS100 MK8
   (18) is drawn much larger and closer. The SL9 looks normal, with no small or
-  stretched look as on the RPK-74M optics. No visible effect.
+  stretched look as on the RPK-74M optics.
+- **Status.** Not listed as an active bug, because no visible effect was found. The
+  value may still be unset by mistake, as on the RPK-74M optics; a small difference
+  from the intended value would be hard to see.
 - **Recheck** if a game update changes the SL9 iron sights or its render FOV.
 
 **Related, not an error.** M2010 ESR SDO 3.50x: an inline `U_ATT_TrijiconSDO` model part
