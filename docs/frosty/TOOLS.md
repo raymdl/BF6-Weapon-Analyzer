@@ -41,8 +41,9 @@ tools that read the XML tree. Older reports keep old absolute paths; the
 - **Sealed build:** read-only reference for comparisons. Derived comparison results go into
   the newer build's `reports\` folder.
 - **Current state (16 September 2026):** 1.4.2.5 sealed (61,366 files, 2.7 GiB); 1.4.3.0
-  open (63,324 files, 3.6 GiB) with two clients: the 1.4.3.0 release and the 16 September
-  hotfix, whose type layouts are identical.
+  open (63,326 files, 3.7 GiB) with two clients: the 1.4.3.0 release and the 16 September
+  hotfix. The hotfix has identical type layouts, and only 2 non-gameplay assets changed
+  (`builds\1.4.3.0\reports\hotfix-2026-09-16-catalog\`).
 - There is no second copy of the data by design; it is research data, not site production
   data. Sealing and the manifest protect it against accidental changes.
 

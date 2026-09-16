@@ -30,8 +30,10 @@ A build stays open while it is installed, so later investigations can add new Fr
 paths. It is sealed when the game updates, before the first export from the new client.
 
 A client hotfix is not always a new data build. If `client-check` finds identical type
-layouts and the asset catalog is unchanged, add the client version to the open build (as for
-the 16 September 2026 hotfix of 1.4.3.0). Otherwise seal the open build and create a new one.
+layouts and the catalog comparison shows no added, removed or gameplay-relevant changed
+assets, add the client version to the open build. Otherwise seal the open build and create a
+new one. The 16 September 2026 hotfix of 1.4.3.0 qualified: identical layouts, and only 2 of
+467,208 assets changed (a store UI button group and `Systems/Gameplay/DataVersion`).
 
 **Updates arrive without notice.** The EA app installs updates and hotfixes automatically;
 the 16 September hotfix was found only because the executable hash had changed. Start every
@@ -92,15 +94,16 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    identical layouts, as in the 16 September hotfix, only reorders type entries.
 
 4. **Compare the asset catalog** (for a suspected hotfix). Capture a catalog-only run (no `-RoutesFile`) of
-   `frosty-collect-raw.ps1` into the open build's `reports\` folder and compare paths and
-   Frosty record hashes with `capture\collection\asset-catalog.json`.
+   `frosty-collect-raw.ps1` into the open build's `reports\` folder and compare paths,
+   GUIDs, sizes and Frosty record hashes with `capture\collection\asset-catalog.json`.
+   Record the result in the client entry (`catalogCheck`).
 
 5. **Decide.**
-   - **Hotfix (identical layouts, unchanged catalog):** copy the runtime
+   - **Hotfix (identical layouts; no added, removed or gameplay-relevant changed assets):** copy the runtime
      `SharedTypeDescriptors.ebx` into the open build's `capture\toolchain\` under a dated
      name, add the entry that `client-check` printed to `BUILD.json` `clients`, and continue
      with that build.
-   - **New build (layouts or catalog differ):** run `seal <old build>`. Create
+   - **New build (layouts differ, or assets were added, removed or changed in gameplay data):** run `seal <old build>`. Create
      `builds\<new build>\` with a `BUILD.json` like this, copy the runtime descriptors into
      `capture\toolchain\`, and run `record <new build>`:
 
