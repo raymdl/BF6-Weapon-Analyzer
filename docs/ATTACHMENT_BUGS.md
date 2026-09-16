@@ -296,9 +296,10 @@ this site.
   relevant difference. The RPK-74M UI records already link the riser or mounted
   descriptors (for example `AD_RMR_Mounted`).
 - **Other weapons.** L115A3_WB links the same six base parts. This is a source finding
-  only; it is not checked in game. The four pistols with optics (P18, ES 5.7, GGH-22,
-  M45A1) also use the base parts; this is probably intended. No other optic has a
-  different render FOV between weapons.
+  only; it is not checked in game. The four semi-automatic pistols (P18, ES 5.7,
+  GGH-22, M45A1) also use the base parts. The M44, vz. 61 and M357 Trait use the
+  low-riser parts (40), so 55 on the four pistols may also be unintended; not checked in
+  game. The other 57 optics have the same render FOV on every weapon.
 - **Not affected.** RO-M 1.75x (Trijicon MRO): the RPK-74M uses `WPM_SCP_MRO` and
   other weapons use `WPM_SCP_MRO_Tall`, but both have 34. The other RPK-74M optics use
   the same part as the RPKM.
@@ -322,9 +323,11 @@ this site.
   from the intended value would be hard to see.
 - **Recheck** if a game update changes the SL9 iron sights or its render FOV.
 
-**Related, not an error.** M2010 ESR SDO 3.50x: an inline `U_ATT_TrijiconSDO` model part
-holds 55 next to `WPM_SCP_TrijiconSDO` (34). It is not known which value the game uses.
-Check it in game before you add an entry.
+**Related, not confirmed.** M2010 ESR has two inline model parts with their own render
+FOV next to the shared optic parts: SDO 3.50x (`U_ATT_TrijiconSDO` 55, shared
+`WPM_SCP_TrijiconSDO` 34) and LERT 8.00x (inline 59, shared `WPM_SCP_Mark4M5A2` 20). The
+shared parts have the correct aim. It is not known which value the game uses. Compare the
+scope size with another sniper rifle in game before you add an entry.
 
 **Iron-sight zoom.** All iron sights zoom 1.50× (`Aim_1x50`), more than 1.00× optics.
 The operator confirmed this in game. It is consistent on all weapons, so it is not

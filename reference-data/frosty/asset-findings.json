@@ -118,7 +118,7 @@
     },
     "optic-render-fov-2026-09-16": {
       "path": "reference-data/provenance/frosty-optic-render-fov-2026-09-16.json",
-      "reportSha256": "3db909cb5b96b9dd19319709a46fc113b92be1bbb0242db166c83994e53c84e1"
+      "reportSha256": "ffc540c81510fdc4378b45017388221d3694d1cd578e1c343f4ad36b5eab648b"
     }
   },
   "assets": {
@@ -6927,6 +6927,33 @@
             "A game update changes optic presentation or the reported behavior.",
             "The field-name hashes are decoded and contradict the inferred meanings."
           ]
+        },
+        {
+          "question": "Do other inline optic model parts on this weapon hold their own render FOV?",
+          "result": "inconclusive",
+          "conclusion": "Yes. The LERT 8.00x inline U_ATT_* part holds 59 (the hip-fire value) beside WPM_SCP_Mark4M5A2 (20, correct aim), in addition to the SDO case. Which render FOV the game uses is not known; compare the LERT scope size with another sniper rifle in game.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov/unclear"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "e5c4f99a52b757d99964d3c89242834b3f31049744ce72a4abc955791da4552c"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
         }
       ]
     },
@@ -6950,6 +6977,41 @@
             {
               "source": "optic-render-fov-2026-09-16",
               "pointer": "/opticRenderFovByPart"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "d0ffe9008920ef716c32b8f04bb1116703c139c98fd695928d2e648f98dc2141"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        },
+        {
+          "question": "Is the render FOV of each optic consistent across weapons, and does it follow magnification?",
+          "result": "useful",
+          "conclusion": "57 of 63 optics have one value on every weapon; only the six base parts (55) split from the riser/low-riser/mounted value (40, CQ RDS 44). The semi-auto pistols FiveSeven, G22, M18 and M45A1 also link the base parts, while RagingHunter, Skorpion and TRR8 use _LowRiser (40). Render FOV does not follow a formula of magnification (correlation about -0.6 with log magnification).",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov/consistencyAcrossWeapons"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov/pistols"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/renderFovVsMagnification"
             }
           ],
           "assetHashesAtInspection": [

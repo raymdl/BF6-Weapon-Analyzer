@@ -50,6 +50,18 @@ completed analysis does not mean every native mechanic is known.
 | [Magazine model update](FROSTY_MAGAZINE_MODEL_UPDATE_2026-09-07.md) | Completed reviewed update and bounded investigation. Current composition is in [attachment model](../ATTACHMENT_MODEL.md); timing uncertainties remain in [limitations](../MODEL_LIMITATIONS.md). |
 | [Site data fixes](FROSTY_SITE_DATA_FIXES_2026-09-07.md) | Completed correction record. Consult maintained `data/` and [sources](../DATA_SOURCES.md) for the live contract. |
 
+### Moved from `working/` on 16 September 2026
+
+| Historical record | Status / present reference |
+|---|---|
+| [Claude session handoff, 12 September](CLAUDE_SESSION_HANDOFF_2026-09-12.md) | Merged through PR #29 and PR #31. Open recording questions are in the [active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md). |
+| [Recording reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md) | Completed analysis. Its measured results stand; its model descriptions are superseded by the [recoil/spread guide](../RECOIL_SPREAD_MODEL.md). |
+| [Runtime data validation audit](FALLBACK_AUDIT_2026-09-14.md) | Implemented: strict data validation and the error notification (`ui/data-errors.js`). See [tests](../TESTS.md). |
+| [PP-19 53-round compatibility trace](PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) | Implemented for all weapons by `scripts/frosty-attachment-compatibility.py`. See the [Frosty reference notes](../../reference-data/frosty/README.md#shared-slots-and-attachment-dependencies). |
+| [Interdictor 1.4.3.0 check](INTERDICTOR_1.4.3.0_CHECK.md) | Completed. Its unchecked boxes were done in the [1.4.3.0 update plan](FROSTY_1.4.3.0_UPDATE_PLAN.md) (damage curve, limb 1.0, iron sights 15 points). |
+| [Frosty 1.4.3.0 update plan](FROSTY_1.4.3.0_UPDATE_PLAN.md) | Completed; the operator closed it on 16 September. Its last open box (attachment bug recheck) is covered by the [1.4.3.0 recheck](../ATTACHMENT_BUGS.md#1430-recheck-15-september-2026). Use the [game update guide](../GAME_UPDATE_GUIDE.md) for the next update. |
+| [Optics from Frosty data plan](OPTIC_FROSTY_SOURCE_PLAN.md) | Completed. Stage 3 used `frosty-optic-category-mapping-2026-09-15.json`; `scripts/optic-costs.test.mjs` checks the result. |
+
 ## Dated investigations and mixed progress logs
 
 These documents mix findings, candidates, accepted changes and deferred work.

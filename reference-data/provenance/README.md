@@ -17,7 +17,7 @@ support the moving-ADS penalty on Interdictor and Mini Scout Slim Angled.
 
 Current attachment generation:
 
-- [Physical slots and equipment dependencies](frosty-attachment-compatibility.json) (14 September): 1,391 offered mount choices, 22 generated rules on four weapons, and all 285 inspected dependency entries, including 263 unsupported/unmapped secondary-sight entries. [PP-19 trace](../../docs/working/PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) and [curated asset findings](../frosty/README.md#shared-slots-and-attachment-dependencies) retain the source and observed-behavior boundaries.
+- [Physical slots and equipment dependencies](frosty-attachment-compatibility.json) (14 September): 1,391 offered mount choices, 22 generated rules on four weapons, and all 285 inspected dependency entries, including 263 unsupported/unmapped secondary-sight entries. [PP-19 trace](../../docs/archive/PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) and [curated asset findings](../frosty/README.md#shared-slots-and-attachment-dependencies) retain the source and observed-behavior boundaries.
 
 - [Barrel ADS](frosty-barrel-ads-generated.json): 233 unique selections.
 - [Grip/laser/magazine handling](frosty-attachment-handling-generated.json): 1,487 selections and 5,489 generated fields.

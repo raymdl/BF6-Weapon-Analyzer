@@ -10,7 +10,8 @@
     "Operator screenshots, 16 SEP 2026: R-MR 1.00x, ROX 1.50x and Mini Flex 1.00x look smaller and further away on the RPK-74M than on the RPKM and M433, and the left arm looks thin and stretched (wider render FOV).",
     "Operator screenshot, 16 SEP 2026: Osa-7 1.00x looks the same on all three weapons (same part, render FOV 38).",
     "Operator confirmation, 16 SEP 2026: iron sights zoom more than 1.00x optics.",
-    "Operator screenshots, 16 SEP 2026: SL9, KTS100 MK8 and PW7A2 iron sights from the same position. The range and targets are identical (same 1.50x world zoom); only the weapon size changes, and the KTS100 MK8 (render FOV 18) is drawn much larger. The SL9 (55) looks normal."
+    "Operator screenshots, 16 SEP 2026: SL9, KTS100 MK8 and PW7A2 iron sights from the same position. The range and targets are identical (same 1.50x world zoom); only the weapon size changes, and the KTS100 MK8 (render FOV 18) is drawn much larger. The SL9 (55) looks normal.",
+    "Operator agreed with the render FOV consistency and magnification findings, 16 SEP 2026. No new in-game test for the pistols or the M2010 ESR inline parts."
   ],
   "fieldMeanings": {
     "Field_7768ebf2": "Weapon (1P) render FOV in degrees. Optic parts hold it on Class_3a930efc; weapon blueprints on Class_76a3b0eb. 55 is the default. The 59 object also links DefaultHipFireRenderFovScale (hip fire).",
@@ -90,15 +91,23 @@
       ],
       "notAffected": "Trijicon MRO (RO-M 1.75x): RPK74M links WPM_SCP_MRO and other weapons WPM_SCP_MRO_Tall; both are 34.",
       "uiHint": "The RPK74M and L115A3 AAM records already link riser or mounted AD descriptors (for example AD_RMR_Mounted), so the blueprint links look unintended.",
-      "unclear": "M2010ESR: an inline U_ATT_TrijiconSDO part holds 55 beside WPM_SCP_TrijiconSDO (34, Aim_03x50_PiP). Which value applies is not known.",
-      "fix": "Link the _Riser versions of the six optics in RPK74M_WB, and probably in L115A3_WB, as RPKM_WB does."
+      "unclear": "M2010ESR has two inline U_ATT_* model parts that list optic selectors: U_ATT_TrijiconSDO holds 55 beside WPM_SCP_TrijiconSDO (34, Aim_03x50_PiP), and the LERT 8.00x inline part holds 59 (the hip-fire value) beside WPM_SCP_Mark4M5A2 (20). The shared parts carry the correct aim; which render FOV the game uses is not known. Not checked in game.",
+      "fix": "Link the _Riser versions of the six optics in RPK74M_WB, and probably in L115A3_WB, as RPKM_WB does.",
+      "consistencyAcrossWeapons": "57 of 63 in-game optics have one render FOV on every weapon that links them. The other 6 are the optics above: 40 (CQ RDS 44) on 57 weapons and 55 on RPK74M, L115A3, FiveSeven, G22, M18 and M45A1. Riser, low-riser and mounted versions give the same value on every weapon, so the weapon or mount does not change it; only the base part differs.",
+      "pistols": "The semi-automatic pistols FiveSeven, G22, M18 and M45A1 link the base parts (55). RagingHunter, Skorpion and TRR8 link the _LowRiser parts (40). So 55 on the four pistols may also be unintended. Not checked in game.",
+      "mountedParts": "WPM_SCP_RMR_Mounted (38), WPM_SCP_AcroP2_Mounted (42), WPM_SCP_TrijiconSRO_Mounted (42) and WPM_SCP_EotechELFX_Mounted (55) are not linked by any weapon blueprint in this data. ShieldCQS_Short_Mounted (44) is linked by one weapon and equals the riser value."
     },
     "ironSights": {
       "result": "No iron-sight part overrides the aim, so every weapon uses Aim_1x50 -> 1_5xZoom (1.50x). 1.00x optics (Aim_01x00_PiP) zoom less than iron sights. The iron render FOV is weapon specific (18 to 50), except SL9 (APDW) and the pistols P18, ES 5.7, GGH-22 and M357 Trait, which keep 55.",
       "siteChange": "data/attachments.json SIGHTS iron name is now 'Iron Sights (1.50x)'.",
       "sl9": "SL9 (APDW) iron sights keep the default 55, the only non-pistol case. In-game check on 16 SEP 2026 found no visible effect (see inGameConfirmation). The value may still be unset by mistake; a small difference from the intended value would be hard to see."
     },
-    "labelsVsZoom": "All 1,810 optic part links with their own aim zoom to the magnification in their UI label."
+    "labelsVsZoom": "All 1,810 optic part links with their own aim zoom to the magnification in their UI label.",
+    "renderFovVsMagnification": {
+      "result": "No formula. Loose trend only: 6x-10x scopes use 16-28, red dots and low-power optics mostly 28-44. Correlation of render FOV with log(maximum magnification) over 55 linked parts is about -0.6 (fixed optics only: -0.63).",
+      "examples": "3.50x: SDO 34, MGO 48. 1.00x: TH-RDS 32, Osa-7 38, R-MR riser 40. Iron sights: all 1.50x zoom, render FOV 18-55.",
+      "interpretation": "Probably set by hand per optic model so the housing and sight picture fill the view; long scopes need a low value. Read the value per part; do not derive it from magnification."
+    }
   },
   "opticRenderFovByPart": {
     "WPM_SCP_1P86": 38.0,

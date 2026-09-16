@@ -73,11 +73,11 @@ That is below the hipfire scale; ADS indicator geometry and sampled peaks are un
 
 The HUD fit is a conditional consistency check, not an independent projectile-
 angle calibration. The derived absolute impact excess inherits that limitation.
-The [Claude handoff review](CLAUDE_SESSION_HANDOFF_2026-09-12.md#9-codex-review-and-operator-damage-check)
+The [Claude handoff review](../archive/CLAUDE_SESSION_HANDOFF_2026-09-12.md#9-codex-review-and-operator-damage-check)
 also records the operator's current VSSM Range Pen check above 75 m: rounded
 17 chest, 31 head, and 14 arm. Chest/head support the 17.13 Frosty tier; arm
 damage conflicts with the current 0.91 limb multiplier. The
-[raw material-grid follow-up](CLAUDE_SESSION_HANDOFF_2026-09-12.md#12-codex-raw-material-grid-trace-limb-values-found)
+[raw material-grid follow-up](../archive/CLAUDE_SESSION_HANDOFF_2026-09-12.md#12-codex-raw-material-grid-trace-limb-values-found)
 now resolves VSSM's source limb value to 0.84, with matching traces in two maps.
 The subsequent merged hit-zone implementation now uses that 0.84 limb value.
 
@@ -143,7 +143,7 @@ calibration to this VSSM set or treat it as a factory-barrel comparison.
 
 ## Remaining follow-up from completed recording sets
 
-The [12 September reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md)
+The [12 September reuse analysis](../archive/RECORDING_REUSE_ANALYSIS_2026-09-12.md)
 uses the existing M4A1, AK4D, TR7, and VSSM recordings before requesting more.
 It supports retaining the current simulator parameters. Key capture-plan
 updates:

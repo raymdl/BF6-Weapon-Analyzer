@@ -130,7 +130,7 @@ recovery for full-auto intervals and splits burst gaps. Recording scenario 4 in
 
 ### Recording check: AK4D hipfire tail
 
-Codex's [recording reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md) measured
+Codex's [recording reuse analysis](../archive/RECORDING_REUSE_ANALYSIS_2026-09-12.md) measured
 that all nine matched AK4D 15-round hipfire groups return to the standing HUD
 plateau about 0.21 s after the last HUD shot event (about 60 Hz sampling).
 

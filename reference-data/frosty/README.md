@@ -27,7 +27,7 @@ Discovery rules are instructions for a future collector, not executable automati
 
 ## Research findings
 
-`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 215 findings across 171 assets, including 62 ability and 56 equipment findings from the compatibility investigation, 26 selector-package findings from the 14 September description review and 17 optic render FOV findings from 16 September. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
+`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 217 findings across 171 assets, including 62 ability and 56 equipment findings from the compatibility investigation, 26 selector-package findings from the 14 September description review and 19 optic render FOV findings from 16 September. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
 
 Check this file before repeating an investigation. Results apply to the stated question and method. `inconclusive` does not mean the asset is unrelated; `blocked-by-decoding` does not mean it lacks useful data. A `useful` result does not establish native runtime behavior beyond the cited evidence. There is no permanent exclusion flag.
 
@@ -54,7 +54,7 @@ the offered choices or reviewed mapping; they remain explicit source evidence.
   These integer links are not discovered by searching external EBX GUIDs alone.
 - **PP-19 proof:** every one of its 12 underbarrels lists the other five magazine
   source IDs and excludes 53-round Extended4 (`0x81260446`). The supplied 30/53-round
-  screenshots corroborate the restriction. See the [operand trace](../../docs/working/PP19_53_ROUND_COMPATIBILITY_2026-09-14.md).
+  screenshots corroborate the restriction. See the [operand trace](../../docs/archive/PP19_53_ROUND_COMPATIBILITY_2026-09-14.md).
 - **Limits:** the other compatibility rules are source-backed, without equivalent
   new in-game tests. Findings identify existing XML hashes in the 1.4.2.5 export
   directory, not a newly verified game build or decoded native condition engine.
@@ -79,7 +79,7 @@ The manifest remains `partial`: 1,500 raw-retained assets lack XML inspection, f
 
 `scripts/frosty-collect-raw.ps1` now captures a full catalog and an optional routes-file raw set without object decoding. It requires Windows PowerShell and the local Frosty runtime. Use a new output directory per capture; existing raw files are not overwritten. The documented `discoveryRules` and schema do not themselves run collection or dependency decoding.
 
-Track the remaining work in [the update plan](../../docs/working/FROSTY_1.4.3.0_UPDATE_PLAN.md). Start section 3 after the game update. Keep old outputs unchanged.
+The completed 1.4.3.0 work is recorded in [the update plan](../../docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md). For the next update, follow the [game update guide](../../docs/GAME_UPDATE_GUIDE.md). Keep old outputs unchanged.
 
 Create a separate directory for each verified game build. Store raw EBX, XML, matching `SharedTypeDescriptors.ebx`, tool/SDK identity and export results there. Preserve original files once the collection is complete. Keep recordings outside this process.
 
@@ -258,7 +258,7 @@ After exporting a new build, re-run the consumer for each evidence source and co
 | Weapon display names | Steps in `docs/working/FROSTY_DISPLAY_NAMES.md` (strings, string scan, `UIWeaponAbilityMetaData*`) | `frosty-weapon-display-names-2026-09-13.json` |
 | Handling, barrel ADS, sniper brakes | `scripts/frosty-attachment-handling.py`, `scripts/frosty-barrel-ads.py`, `scripts/frosty-sniper-brakes.py` | the matching `*-generated.json` reports |
 | Arrays, damage, draw time, spread | `node --test scripts/source-arrays.test.mjs scripts/damage.test.mjs scripts/draw-time.test.mjs scripts/spread-distribution.test.mjs` | `frosty-array-review-2026-09-09.json`, `frosty-damage-curve-review-2026-09-13.json`, `frosty-draw-time-2026-09-09.json` |
-| Patch-note items | `docs/working/INTERDICTOR_1.4.3.0_CHECK.md` | 1.4.2.5 values in that file |
+| Patch-note items | `docs/archive/INTERDICTOR_1.4.3.0_CHECK.md` | 1.4.2.5 values in that file |
 | Optic render FOV and iron-sight zoom | Method in [Optic render FOV](#optic-render-fov-aim-zoom-and-names-16-september-2026); compare `opticRenderFovByPart`, `riserFamilyLinksByWeapon` and `ironSights` | `frosty-optic-render-fov-2026-09-16.json` |
 
 Field meanings found so far that help comparisons: optic point cost `Field_6ee865a5`; Precision table fields in the precision report `fieldMap`; semantic names from `GRX_Weapons` (`frosty-grx-field-names-2026-09-13.json`).
@@ -344,6 +344,15 @@ list the same selector without an aim.
   1.00× optics zoom less; the operator confirmed this in game. The iron render FOV is 18
   to 50 per weapon, except SL9 and four pistols at 55. The SL9 was checked in game: no
   visible effect was found, but the value may still be unset by mistake.
+- **Consistency.** 57 of 63 optics have one render FOV on every weapon. Riser,
+  low-riser and mounted versions give the same value everywhere; only the six base parts
+  differ. The M44, vz. 61 and M357 Trait use the low-riser parts (40), so 55 on the other
+  four pistols may also be unintended.
+- **No formula.** Render FOV does not follow magnification. There is only a loose trend
+  (6× to 10× scopes 16 to 28; correlation about −0.6 with log magnification). Read the
+  value per part.
+- **M2010 ESR.** Two inline model parts hold their own value next to the shared parts:
+  SDO 55 (shared 34) and LERT 59 (shared 20). Which value applies is not known.
 - **Rejected causes.** Riser model height, the `Field_149939ab`/`Field_e9129d03` pair
   (1.25–1.3 on some riser parts) and the zoom levels do not cause the difference.
 

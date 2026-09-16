@@ -4,7 +4,7 @@ What to do when Battlefield 6 updates: how to capture the new build, decide what
 changed, decode it correctly, and carry the result into the Analyzer.
 
 This is the durable procedure. The 1.4.3.0 run is the worked example and is kept as a
-one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](working/FROSTY_1.4.3.0_UPDATE_PLAN.md);
+one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](archive/FROSTY_1.4.3.0_UPDATE_PLAN.md);
 read it for the specific paths, counts and decisions of that update, not as the procedure.
 
 Tool commands, the asset watchlist and per-asset findings live in

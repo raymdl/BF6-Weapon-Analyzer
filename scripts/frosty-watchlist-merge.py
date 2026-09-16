@@ -59,7 +59,7 @@ EVIDENCE = {
         "Exploratory soldier aiming graph; no equation established", None),
     "material-grid-inventory": (P + "frosty-material-grid-inventory-2026-09-14.json",
         "Material-grid record types, soldier damage records and surface penetration", None),
-    "interdictor-1.4.3.0": ("docs/working/INTERDICTOR_1.4.3.0_CHECK.md",
+    "interdictor-1.4.3.0": ("docs/archive/INTERDICTOR_1.4.3.0_CHECK.md",
         "Assets to compare for the 1.4.3.0 Interdictor changes", None),
 }
 
