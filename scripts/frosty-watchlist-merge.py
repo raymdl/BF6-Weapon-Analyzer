@@ -50,7 +50,7 @@ EVIDENCE = {
     "grx-field-names": (P + "frosty-grx-field-names-2026-09-13.json",
         "Semantic names for hashed fields from the GameRemixer registry", None),
     "weapon-display-names": (P + "frosty-weapon-display-names-2026-09-13.json", "Weapon display names", None),
-    "weapon-ui-metadata": ("docs/working/FROSTY_DISPLAY_NAMES.md",
+    "weapon-ui-metadata": ("docs/archive/FROSTY_DISPLAY_NAMES.md",
         "Weapon UI metadata and localization assets that link weapons to display names", None),
     "attachment-identity": (P + "frosty-attachment-identity-followup-2026-09-13.json",
         "Reviewed attachment identities and UI links", "scripts/frosty-attachment-tooltips.py"),
@@ -59,7 +59,7 @@ EVIDENCE = {
         "Exploratory soldier aiming graph; no equation established", None),
     "material-grid-inventory": (P + "frosty-material-grid-inventory-2026-09-14.json",
         "Material-grid record types, soldier damage records and surface penetration", None),
-    "interdictor-1.4.3.0": ("docs/working/INTERDICTOR_1.4.3.0_CHECK.md",
+    "interdictor-1.4.3.0": ("docs/archive/INTERDICTOR_1.4.3.0_CHECK.md",
         "Assets to compare for the 1.4.3.0 Interdictor changes", None),
 }
 

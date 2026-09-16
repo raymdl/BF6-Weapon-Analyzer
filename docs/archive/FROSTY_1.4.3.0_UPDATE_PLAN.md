@@ -126,7 +126,7 @@ Completion condition: the collection has explicit inputs and destinations, and u
 - [x] Compare attachment inputs: handling, barrel ADS, sniper brakes, ammo, lights, optics, point costs, selector branches and compatibility rules.
 - [x] Compare shared arrays, global operands, Precision panel tables, hit-zone/material records and relevant soldier inputs.
 - [x] Compare display names and tooltips separately from mechanics. UI text and kill-switch defaults do not establish runtime formulas or availability.
-- [x] Review the patch notes and map each relevant item to its asset evidence. Use `docs/working/INTERDICTOR_1.4.3.0_CHECK.md` for the existing focused checklist, but use this plan's current paths and cache sequence if its examples differ.
+- [x] Review the patch notes and map each relevant item to its asset evidence. Use `docs/archive/INTERDICTOR_1.4.3.0_CHECK.md` for the existing focused checklist, but use this plan's current paths and cache sequence if its examples differ.
 - [x] Review unlisted changes as well. Use the saved findings before repeating searches that previously failed to answer the same question.
 - [x] Produce a change report with asset/field, old value, new value, source evidence and practical effect. Separate byte changes, decoder changes, numeric changes, additions/removals and unresolved interpretations.
 - [x] If a decoder change could explain an XML difference, compare with consistent decoding where possible. A different raw hash alone does not establish a changed weapon stat.

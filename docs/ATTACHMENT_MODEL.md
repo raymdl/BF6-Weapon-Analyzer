@@ -84,7 +84,7 @@ values stop generation. [Generated evidence](../reference-data/provenance/frosty
 retains source references and hashes. The current export has 234 source records
 for 233 unique selections, because KTS100 Short has two agreeing source records.
 M4A1 Basic remains 200 ms; both VSSM barrels remain 250 ms with other defaults.
-See the [other-attachment review](working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md)
+See the [generated attachment values](frosty/ATTACHMENTS.md#generated-site-values)
 for further source-generation candidates and limits.
 
 Grip handling and laser spread use per-weapon `frostyModifiers` in their catalog
@@ -300,7 +300,7 @@ recoil model. VSSM Folding Stock retains its marker. Heavy, Heavy Extended, Cryo
 Flashlight, Hipfire Taclight, Combo Red/Green, Linear Comp and the three burst
 entries no longer carry that marker. In-game tooltip descriptions are a separate
 display layer and do not add or change attachment effects. See the
-[description audit](working/FROSTY_DISPLAY_NAMES.md#current-site-mapping) for the
+[description audit](frosty/UI_TEXT.md#current-site-mapping) for the
 18 approved panel-text exceptions and remaining missing descriptions.
 
 

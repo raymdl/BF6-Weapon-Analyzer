@@ -54,7 +54,7 @@ records reviewed text and data conflicts. Source-backed modifiers do not establi
 Attachment tooltips cover 2,966 non-optic selections using Frosty UI descriptions
 and 18 approved game-panel transcriptions, plus Iron Sights on all 63 weapons.
 The remaining 45 non-optic descriptions are
-deferred. See the [description audit](docs/working/FROSTY_DISPLAY_NAMES.md#current-site-mapping)
+deferred. See the [description audit](docs/frosty/UI_TEXT.md#current-site-mapping)
 for the exact scope and source boundaries.
 
 ## Run locally

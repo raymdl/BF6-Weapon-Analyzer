@@ -19,7 +19,7 @@ Frosty calls them **Weapon Attributes**:
 
 "Gunsmith Panel" is a Companion Battlefield label, not a game name. The older
 Firepower/Accuracy/Range/Handling `NumericalStatKey` values are archetype templates
-and are not these stats ([UI strings review](FROSTY_UI_STRINGS_REVIEW_2026-09-13.md#numerical-stat-block--do-not-use)).
+and are not these stats ([UI strings review](../frosty/UI_TEXT.md#numerical-stat-block--do-not-use)).
 
 ## Status
 
@@ -144,9 +144,9 @@ M = `WeaponZoomedMoveSpeedMultiplierIndex`, Z = `MovingZoomedMinAnglesIndex`.
 - The weapon-customization UI bindings (`NumericalStatsDBD`, `IconizedAttributesDBD`)
   receive finished name, value and delta. They contain no weights.
 - Label ids for the four stats are not referenced in the exported UI, Portal or
-  GameSetup assets ([string scan](FROSTY_UI_STRINGS_REVIEW_2026-09-13.md#string-usage-scan)).
+  GameSetup assets ([string scan](../frosty/UI_TEXT.md#string-usage-scan)).
 - Companion Battlefield bundles the same Precision tables, a Control table and a
-  Hipfire table ([summary](FROSTY_UI_STRINGS_REVIEW_2026-09-13.md#companion-battlefield-composite-models)).
+  Hipfire table ([summary](../frosty/UI_TEXT.md#companion-battlefield-composite-models)).
   Treat it as third-party evidence.
 - Earlier record: [composite category stat investigation](../archive/FROSTY_LIVE_REVIEW_2026-09-06.md#composite-category-stat-investigation).
 

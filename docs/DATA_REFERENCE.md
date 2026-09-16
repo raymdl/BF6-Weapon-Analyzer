@@ -34,7 +34,7 @@ The runtime file contains text and lookups, not raw images or mechanics override
 
 | Fields | Meaning / use |
 |---|---|
-| `id`, `name`, `cls`, `cal` | Stable join key, displayed name (in-game spelling from Frosty localization; see [weapon display names](working/FROSTY_DISPLAY_NAMES.md)), class and caliber. Class drives menus, some policy and presentation. |
+| `id`, `name`, `cls`, `cal` | Stable join key, displayed name (in-game spelling from Frosty localization; see [weapon display names](frosty/UI_TEXT.md#weapon-names)), class and caliber. Class drives menus, some policy and presentation. |
 | `rpm`, `fireMode`, `burstRounds`, `burstRpm`, `burstBurstsPerMinute` | Precise fire timing inputs. Display RPM may be rounded separately. Burst fields describe within/between-burst cadence; DB-12 uses them for its two-round pump cycle. Bolt and single-round pump `rpm` is the effective Frosty manual-cycle rate. |
 | `mag`, `tacRld`, `emptyRld`, `reloadSpeed` | Base ammunition capacity and reload data. `mag` can include a chambered round; selected magazine capacity overrides it. `tacRld` is composed by the reload resolver; for shell-fed shotguns it is one shell with start and end delays. `emptyRld` and `reloadSpeed` are retained and not independently multiplied into tactical reload. |
 | `bulletVel` | Base projectile velocity. There is no stored ADS-time field; ADS time comes only from the indexed ADS table. |

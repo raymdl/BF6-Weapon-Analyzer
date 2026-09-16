@@ -241,7 +241,7 @@ unchanged in form when spread above the minimum is scaled by k, so the equation
 above, with `delta` measured from the minimum, is the one these values were built
 for. The engine also defines an idle state after `IdleTime` (0.4 s ADS, 0.6 s hip)
 that is not simulated. See the
-[formula evidence](working/FROSTY_STAT_DISCOVERY_2026-09-13.md#engine-formula-evidence-source-data-only).
+[formula evidence](frosty/WEAPONS.md#spread).
 
 The stance and aim state select `adsStand`, `adsMove`, `hipStand` or `hipMove`.
 Moving ADS starts with the weapon's stored `spread.adsMove[0]`. Attachment changes

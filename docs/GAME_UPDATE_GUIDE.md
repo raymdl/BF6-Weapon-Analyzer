@@ -4,12 +4,13 @@ What to do when Battlefield 6 updates: how to capture the new build, decide what
 changed, decode it correctly, and carry the result into the Analyzer.
 
 This is the durable procedure. The 1.4.3.0 run is the worked example and is kept as a
-one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](working/FROSTY_1.4.3.0_UPDATE_PLAN.md);
+one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](archive/FROSTY_1.4.3.0_UPDATE_PLAN.md);
 read it for the specific paths, counts and decisions of that update, not as the procedure.
 
-Tool commands, the asset watchlist and per-asset findings live in
-[`reference-data/frosty/`](../reference-data/frosty/README.md). Update that README and
-`asset-findings.json` as you learn things, in the same session you learn them.
+Tool commands are in [Frosty tools](frosty/TOOLS.md), field meanings in the
+[field map](frosty/FIELD_MAP.md), and the asset watchlist and per-asset findings in
+[`reference-data/frosty/`](../reference-data/frosty/README.md). Update them as you learn
+things, in the same session ([Recording what you learn](#recording-what-you-learn)).
 
 ---
 
@@ -55,7 +56,7 @@ powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -Game
 ```
 
 Then XML-export the changed subset with the batch command, and export strings. Full
-command lines are in the [frosty README](../reference-data/frosty/README.md).
+command lines are in [Frosty tools](frosty/TOOLS.md#frostycmd).
 
 Expect raw capture failures only for assets the catalog says were removed. Any other
 failure is a real problem.
@@ -328,13 +329,17 @@ For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
 
 ## Recording what you learn
 
-Every reusable fact goes into `reference-data/frosty/` in the session you find it:
+Every reusable fact goes into the shared pages in the session you find it. Do not
+create a new document per investigation:
 
-- **`README.md`** — how the data is shaped: file formats, field identities, family
-  structures, tool procedure.
-- **`asset-findings.json`** — per-asset conclusions, with the question asked, the build
+- **[`docs/frosty/`](frosty/README.md)** — the topic pages: new field meanings in the
+  [field map](frosty/FIELD_MAP.md), asset links in the [data graph](frosty/DATA_GRAPH.md),
+  results in [weapons](frosty/WEAPONS.md), [attachments](frosty/ATTACHMENTS.md) or
+  [UI text](frosty/UI_TEXT.md), tool changes in [tools](frosty/TOOLS.md), and open items in
+  [open questions](frosty/OPEN_QUESTIONS.md).
+- **`reference-data/frosty/asset-findings.json`** — per-asset conclusions, with the question asked, the build
   inspected, the evidence pointer and the conditions that would require a revisit. Add a
   superseding finding rather than deleting an old one; mark blocked results
   `blocked-by-decoding` and supersede them when they are unblocked.
-- **`asset-watchlist.json`** — routes to capture next time, with dependencies.
+- **`reference-data/frosty/asset-watchlist.json`** — routes to capture next time, with dependencies.
 - **`reference-data/provenance/`** — the dated report a finding points at.

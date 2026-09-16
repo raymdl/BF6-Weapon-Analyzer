@@ -3,7 +3,7 @@
 **Historical analysis:** This report records the model and evidence available on
 12 September. The later source-exponent sampler and light changes supersede its
 implementation descriptions, not its measured recording results. See the
-[current recording handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) and
+[current recording handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md) and
 [current model](../RECOIL_SPREAD_MODEL.md).
 
 
@@ -32,7 +32,7 @@ M4A1 or AK4D burst sets, VSSM standing comparison, or no-fire controls.
 ## Scope, conditions, and evidence
 
 This work uses the standing conditions in the
-[active handoff](BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md): build 1.4.2.5, FOV 103,
+[active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md): build 1.4.2.5, FOV 103,
 Mini Flex, and a 20 m wall. The VSSM built-in-range exception remains: distance
 is unspecified, and the recorded loadout has the 200MM ASM barrel, 20-round
 magazine, and Tungsten Match / Range Penetration ammo. No VSSM angular

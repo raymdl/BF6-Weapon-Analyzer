@@ -12,7 +12,7 @@ modeled as active, and idle recovery remains unused.
 The dated capture measurements and fitted hypotheses below remain research
 evidence. Earlier model-dependent comparisons describe the implementation at
 capture time. Use the [model guide](../RECOIL_SPREAD_MODEL.md) and
-[current audit](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) for current behavior.
+[Frosty weapon notes](../frosty/WEAPONS.md) for current behavior.
 
 
 Updated 12 September 2026. This is the active research handoff. Completed
@@ -73,11 +73,11 @@ That is below the hipfire scale; ADS indicator geometry and sampled peaks are un
 
 The HUD fit is a conditional consistency check, not an independent projectile-
 angle calibration. The derived absolute impact excess inherits that limitation.
-The [Claude handoff review](CLAUDE_SESSION_HANDOFF_2026-09-12.md#9-codex-review-and-operator-damage-check)
+The [Claude handoff review](../archive/CLAUDE_SESSION_HANDOFF_2026-09-12.md#9-codex-review-and-operator-damage-check)
 also records the operator's current VSSM Range Pen check above 75 m: rounded
 17 chest, 31 head, and 14 arm. Chest/head support the 17.13 Frosty tier; arm
 damage conflicts with the current 0.91 limb multiplier. The
-[raw material-grid follow-up](CLAUDE_SESSION_HANDOFF_2026-09-12.md#12-codex-raw-material-grid-trace-limb-values-found)
+[raw material-grid follow-up](../archive/CLAUDE_SESSION_HANDOFF_2026-09-12.md#12-codex-raw-material-grid-trace-limb-values-found)
 now resolves VSSM's source limb value to 0.84, with matching traces in two maps.
 The subsequent merged hit-zone implementation now uses that 0.84 limb value.
 
@@ -143,7 +143,7 @@ calibration to this VSSM set or treat it as a factory-barrel comparison.
 
 ## Remaining follow-up from completed recording sets
 
-The [12 September reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md)
+The [12 September reuse analysis](../archive/RECORDING_REUSE_ANALYSIS_2026-09-12.md)
 uses the existing M4A1, AK4D, TR7, and VSSM recordings before requesting more.
 It supports retaining the current simulator parameters. Key capture-plan
 updates:
@@ -250,7 +250,7 @@ one stationary hipfire series. Retain the full indicator path through each pause
 ### Scenario 4 capture plan with source predictions (13 September 2026)
 
 Source values and the equation form are in
-[FROSTY_STAT_DISCOVERY_2026-09-13.md](FROSTY_STAT_DISCOVERY_2026-09-13.md#engine-formula-evidence-source-data-only).
+[Frosty weapon notes](../frosty/WEAPONS.md#spread).
 The AK4D hipfire tail already matched flat not-firing recovery (0.199 s predicted,
 about 0.21 s measured). These captures test the parts that remain open.
 

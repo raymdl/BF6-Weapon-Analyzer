@@ -1,0 +1,2121 @@
+{
+  "scope": "Optic and iron-sight render FOV, aim zoom and in-game optic names for all 64 weapon blueprints, from the RPK-74M report that optics look held further out. Field meanings are inferred from values; the BF6 field-name hash algorithm was not identified.",
+  "recordedDate": "2026-09-16",
+  "build": {
+    "label": "1.4.3.0",
+    "exactBuildVerified": false,
+    "basis": "1.4.3.0 xml-overlay files where present, otherwise the retained 1.4.2.5 XML export. Strings from the 1.4.3.0 fs_us_loc export."
+  },
+  "inGameConfirmation": [
+    "Operator screenshots, 16 SEP 2026: R-MR 1.00x, ROX 1.50x and Mini Flex 1.00x look smaller and further away on the RPK-74M than on the RPKM and M433, and the left arm looks thin and stretched (wider render FOV).",
+    "Operator screenshot, 16 SEP 2026: Osa-7 1.00x looks the same on all three weapons (same part, render FOV 38).",
+    "Operator confirmation, 16 SEP 2026: iron sights zoom more than 1.00x optics.",
+    "Operator screenshots, 16 SEP 2026: SL9, KTS100 MK8 and PW7A2 iron sights from the same position. The range and targets are identical (same 1.50x world zoom); only the weapon size changes, and the KTS100 MK8 (render FOV 18) is drawn much larger. The SL9 (55) looks normal.",
+    "Operator agreed with the render FOV consistency and magnification findings, 16 SEP 2026. No new in-game test for the pistols or the M2010 ESR inline parts."
+  ],
+  "fieldMeanings": {
+    "Field_7768ebf2": "Weapon (1P) render FOV in degrees. Optic parts hold it on Class_3a930efc; weapon blueprints on Class_76a3b0eb. 55 is the default. The 59 object also links DefaultHipFireRenderFovScale (hip fire).",
+    "Class_86ce0d70.Field_65ad1346": "Zoom level camera FOV in degrees: 2*atan(tan(27.5 deg)*pipCameraFactor/zoom); 55 at 1.00x.",
+    "Class_86ce0d70.Field_3edbd391": "1/zoom.",
+    "Class_86ce0d70.Field_28ae4fd6": "PiP main-camera factor: 1.0 at 1x, rising to 1.5 at 10x. The main camera zooms less than the scope picture.",
+    "Class_542ac52c.Field_4f917af5": "Weapon default aiming controller. Every weapon links Aim_1x50 (DefaultBase + 1_5xZoom).",
+    "Class_fe7cd16a.Field_4f917af5": "Aim override inside a part. Optic parts use it (for example Aim_01x00_PiP); iron-sight parts do not.",
+    "Class_897c99a7.Field_819acc98": "Selector (unlock asset) GUIDs of a weapon part, stored as bare GUID strings.",
+    "Class_ccf7da47": "AAM UI record. Field_55aded8d is the internal label. Field_fd698f51 points to Class_fbe1d3bc, whose Field_3d34898a is the in-game name string id. Field_85b318a1 links the AD asset, whose Field_3d34898a ids are the label and description.",
+    "Field_149939ab / Field_e9129d03": "Unknown multiplier pair (1.25 or 1.3 in one sub-block of some _Riser/_LowRiser parts). Not the cause: Trijicon MRO parts do not have it, and the MRO looks correct."
+  },
+  "joinMethod": [
+    "Attachment_* Field_157a7d74 gives the U_PRG progression. The ability branch with that progression (Field_f86e0433) lists actions (Class_4ed159fb); their Field_7e54e22c members are the selector GUIDs. These are already resolved as 'selectors' in frosty-optic-category-mapping-2026-09-15.json.",
+    "Weapon blueprint Field_0cd9f20f lists parts: external WPM files ('[Ebx] route [guid]', the guid is the Class_897c99a7 object) or inline Class_897c99a7 objects. The part whose Field_819acc98 lists the selector GUID is the part that the attachment enables.",
+    "From the part, follow local '[Class_x] guid' pointers (depth 5 is enough) to the object with Field_7768ebf2 and to any Class_fe7cd16a aim override. Without an override, the weapon default aim applies.",
+    "Aim controller -> _ZoomLevels references; zoom = 1/Field_3edbd391.",
+    "Some attachments also enable an inline U_ATT_* model part with the same selector and no aim. Ignore it when reading aim; it caused about 35 false aim mismatches."
+  ],
+  "rejectedHypotheses": [
+    "Riser model height: the base and _Riser parts of RMR and EFLX use the same visual entity and aim controller.",
+    "Field_149939ab/Field_e9129d03 multiplier pair: see fieldMeanings.",
+    "Camera or zoom level: both part versions use the same aim controller and zoom level."
+  ],
+  "findings": {
+    "opticRenderFov": {
+      "result": "Only RPK74M and L115A3, and the pistols FiveSeven, G22, M18 and M45A1, link the base WPM_SCP_{RMR,RomeoX,EotechEFLX,AcroP2,TrijiconSRO,ShieldCQS} parts, which keep render FOV 55. All other weapons with these optics use _Riser or _LowRiser parts at 40 (ShieldCQS 44). No other optic has a different render FOV between weapons.",
+      "affectedWeapons": [
+        {
+          "weapon": "RPK-74M",
+          "internalId": "RPK74M",
+          "status": "Confirmed in game for R-MR, ROX and Mini Flex."
+        },
+        {
+          "weapon": "L115",
+          "internalId": "L115A3",
+          "status": "Source only. Not checked in game."
+        }
+      ],
+      "affectedOptics": [
+        {
+          "part": "WPM_SCP_RMR",
+          "inGameName": "R-MR 1.00x",
+          "renderFov": 55,
+          "riserRenderFov": 40
+        },
+        {
+          "part": "WPM_SCP_RomeoX",
+          "inGameName": "ROX 1.50x",
+          "renderFov": 55,
+          "riserRenderFov": 40
+        },
+        {
+          "part": "WPM_SCP_EotechEFLX",
+          "inGameName": "Mini Flex 1.00x",
+          "renderFov": 55,
+          "riserRenderFov": 40
+        },
+        {
+          "part": "WPM_SCP_AcroP2",
+          "inGameName": "A-P2 1.75x",
+          "renderFov": 55,
+          "riserRenderFov": 40
+        },
+        {
+          "part": "WPM_SCP_TrijiconSRO",
+          "inGameName": "RO-S 1.25x",
+          "renderFov": 55,
+          "riserRenderFov": 40
+        },
+        {
+          "part": "WPM_SCP_ShieldCQS",
+          "inGameName": "CQ RDS 1.25x",
+          "renderFov": 55,
+          "riserRenderFov": 44
+        }
+      ],
+      "notAffected": "Trijicon MRO (RO-M 1.75x): RPK74M links WPM_SCP_MRO and other weapons WPM_SCP_MRO_Tall; both are 34.",
+      "uiHint": "The RPK74M and L115A3 AAM records already link riser or mounted AD descriptors (for example AD_RMR_Mounted), so the blueprint links look unintended.",
+      "unclear": "M2010ESR has two inline U_ATT_* model parts that list optic selectors: U_ATT_TrijiconSDO holds 55 beside WPM_SCP_TrijiconSDO (34, Aim_03x50_PiP), and the LERT 8.00x inline part holds 59 (the hip-fire value) beside WPM_SCP_Mark4M5A2 (20). The shared parts carry the correct aim; which render FOV the game uses is not known. Not checked in game.",
+      "fix": "Link the _Riser versions of the six optics in RPK74M_WB, and probably in L115A3_WB, as RPKM_WB does.",
+      "consistencyAcrossWeapons": "57 of 63 in-game optics have one render FOV on every weapon that links them. The other 6 are the optics above: 40 (CQ RDS 44) on 57 weapons and 55 on RPK74M, L115A3, FiveSeven, G22, M18 and M45A1. Riser, low-riser and mounted versions give the same value on every weapon, so the weapon or mount does not change it; only the base part differs.",
+      "pistols": "The semi-automatic pistols FiveSeven, G22, M18 and M45A1 link the base parts (55). RagingHunter, Skorpion and TRR8 link the _LowRiser parts (40). So 55 on the four pistols may also be unintended. Not checked in game.",
+      "mountedParts": "WPM_SCP_RMR_Mounted (38), WPM_SCP_AcroP2_Mounted (42), WPM_SCP_TrijiconSRO_Mounted (42) and WPM_SCP_EotechELFX_Mounted (55) are not linked by any weapon blueprint in this data. ShieldCQS_Short_Mounted (44) is linked by one weapon and equals the riser value."
+    },
+    "ironSights": {
+      "result": "No iron-sight part overrides the aim, so every weapon uses Aim_1x50 -> 1_5xZoom (1.50x). 1.00x optics (Aim_01x00_PiP) zoom less than iron sights. The iron render FOV is weapon specific (18 to 50), except SL9 (APDW) and the pistols P18, ES 5.7, GGH-22 and M357 Trait, which keep 55.",
+      "siteChange": "data/attachments.json SIGHTS iron name is now 'Iron Sights (1.50x)'.",
+      "sl9": "SL9 (APDW) iron sights keep the default 55, the only non-pistol case. In-game check on 16 SEP 2026 found no visible effect (see inGameConfirmation). The value may still be unset by mistake; a small difference from the intended value would be hard to see."
+    },
+    "labelsVsZoom": "All 1,810 optic part links with their own aim zoom to the magnification in their UI label.",
+    "renderFovVsMagnification": {
+      "result": "No formula. Loose trend only: 6x-10x scopes use 16-28, red dots and low-power optics mostly 28-44. Correlation of render FOV with log(maximum magnification) over 55 linked parts is about -0.6 (fixed optics only: -0.63).",
+      "examples": "3.50x: SDO 34, MGO 48. 1.00x: TH-RDS 32, Osa-7 38, R-MR riser 40. Iron sights: all 1.50x zoom, render FOV 18-55.",
+      "interpretation": "Probably set by hand per optic model so the housing and sight picture fill the view; long scopes need a low value. Read the value per part; do not derive it from magnification."
+    }
+  },
+  "opticRenderFovByPart": {
+    "WPM_SCP_1P86": 38.0,
+    "WPM_SCP_1P88": 24.0,
+    "WPM_SCP_AcroP2": 55.0,
+    "WPM_SCP_AcroP2_LowRiser": 40.0,
+    "WPM_SCP_AcroP2_Mounted": 42.0,
+    "WPM_SCP_AcroP2_Riser": 40.0,
+    "WPM_SCP_ANPAS35_Base": 30.0,
+    "WPM_SCP_ANPAS35_v2": 36.0,
+    "WPM_SCP_Bravo3": 34.0,
+    "WPM_SCP_Bravo3_AT4": 13.0,
+    "WPM_SCP_CODM2": 40.0,
+    "WPM_SCP_CompM5B": 30.0,
+    "WPM_SCP_ELCAN": 32.0,
+    "WPM_SCP_ElcanDR": 38.0,
+    "WPM_SCP_EotechEFLX": 55.0,
+    "WPM_SCP_EotechEFLX_LowRiser": 40.0,
+    "WPM_SCP_EotechEFLX_Riser": 40.0,
+    "WPM_SCP_EotechELFX_Mounted": 55.0,
+    "WPM_SCP_EotechXPS3": 32.0,
+    "WPM_SCP_HISSHD": 22.0,
+    "WPM_SCP_HolosunDRSTH": 32.0,
+    "WPM_SCP_M145MGO": 48.0,
+    "WPM_SCP_M157": 33.0,
+    "WPM_SCP_M7Xi": 45.0,
+    "WPM_SCP_M7Xi20x50": 16.0,
+    "WPM_SCP_M7Xi20x50_Charge": 16.0,
+    "WPM_SCP_marchffpshorty": 34.0,
+    "WPM_SCP_Mark4M5A2": 20.0,
+    "WPM_SCP_Mepro22": 36.0,
+    "WPM_SCP_MRO": 34.0,
+    "WPM_SCP_MRO_Tall": 34.0,
+    "WPM_SCP_NF_ATACR": 22.0,
+    "WPM_SCP_NX8-1": 28.0,
+    "WPM_SCP_NX8-4": 22.0,
+    "WPM_SCP_OPK7": 38.0,
+    "WPM_SCP_PG350": 32.0,
+    "WPM_SCP_QMK171A": 34.0,
+    "WPM_SCP_RMR": 55.0,
+    "WPM_SCP_RMR_LowRiser": 40.0,
+    "WPM_SCP_RMR_Mounted": 38.0,
+    "WPM_SCP_RMR_Riser": 40.0,
+    "WPM_SCP_Romeo4t": 29.0,
+    "WPM_SCP_RomeoX": 55.0,
+    "WPM_SCP_RomeoX_LowRiser": 40.0,
+    "WPM_SCP_RomeoX_Riser": 40.0,
+    "WPM_SCP_SBPMII": 28.0,
+    "WPM_SCP_ShieldCQS": 55.0,
+    "WPM_SCP_ShieldCQS_LowRiser": 44.0,
+    "WPM_SCP_ShieldCQS_Riser": 44.0,
+    "WPM_SCP_ShieldCQS_Short_Mounted": 44.0,
+    "WPM_SCP_Spitfire": 36.0,
+    "WPM_SCP_steinert536": 38.0,
+    "WPM_SCP_Tango6T": 45.0,
+    "WPM_SCP_TrijiconRCO": 34.0,
+    "WPM_SCP_TrijiconREAPIR": 32.0,
+    "WPM_SCP_TrijiconSCO_8_6x00": 37.0,
+    "WPM_SCP_TrijiconSCO_UNUSED": 37.0,
+    "WPM_SCP_TrijiconSDO": 34.0,
+    "WPM_SCP_TrijiconSRO": 55.0,
+    "WPM_SCP_TrijiconSRO_LowRiser": 40.0,
+    "WPM_SCP_TrijiconSRO_Mounted": 42.0,
+    "WPM_SCP_TrijiconSRO_Riser": 40.0,
+    "WPM_SCP_VZOR3": 28.0,
+    "WPM_SCP_VZOR3_Short": 28.0
+  },
+  "riserFamilyLinksByWeapon": [
+    {
+      "parts": {
+        "AcroP2": "WPM_SCP_AcroP2_Riser",
+        "EotechEFLX": "WPM_SCP_EotechEFLX_Riser",
+        "MRO": "WPM_SCP_MRO_Tall",
+        "RMR": "WPM_SCP_RMR_Riser",
+        "RomeoX": "WPM_SCP_RomeoX_Riser",
+        "ShieldCQS": "WPM_SCP_ShieldCQS_Riser",
+        "TrijiconSRO": "WPM_SCP_TrijiconSRO_Riser"
+      },
+      "weapons": [
+        "AK4D",
+        "DB-12",
+        "DRS-IAR",
+        "GRT-BC",
+        "KTS100 MK8",
+        "KV9",
+        "L85A3",
+        "LMR27",
+        "M/60",
+        "M123K",
+        "M2010 ESR",
+        "M240L",
+        "M277",
+        "M417 A2",
+        "M433",
+        "M4A1",
+        "Mini Scout",
+        "NVO-228E",
+        "PSR",
+        "PW7A2",
+        "QBZ-192",
+        "RPKM",
+        "SCW-10",
+        "SG 553R",
+        "SGX",
+        "SL9",
+        "SOR-300SC",
+        "SOR-556 Mk2",
+        "SV-98",
+        "SVDM",
+        "SVK-8.6",
+        "TR-7",
+        "UMG-40"
+      ]
+    },
+    {
+      "parts": {
+        "AcroP2": "WPM_SCP_AcroP2_Riser",
+        "EotechEFLX": "WPM_SCP_EotechEFLX_Riser",
+        "MRO": "WPM_SCP_MRO",
+        "RMR": "WPM_SCP_RMR_Riser",
+        "RomeoX": "WPM_SCP_RomeoX_Riser",
+        "ShieldCQS": "WPM_SCP_ShieldCQS_Riser",
+        "TrijiconSRO": "WPM_SCP_TrijiconSRO_Riser"
+      },
+      "weapons": [
+        "18.5KS-K",
+        "AK-205",
+        "B36A4",
+        "BROD 3",
+        "GRT-CPS",
+        "KORD 6P67",
+        "L110",
+        "M1014",
+        "M121 A2",
+        "M16A4",
+        "M250",
+        "M39 EMR",
+        "M87A1",
+        "PW5A3",
+        "USG-90",
+        "VCR-2",
+        "VSSM"
+      ]
+    },
+    {
+      "parts": {
+        "AcroP2": "WPM_SCP_AcroP2_LowRiser",
+        "EotechEFLX": "WPM_SCP_EotechEFLX_LowRiser",
+        "MRO": "WPM_SCP_MRO",
+        "RMR": "WPM_SCP_RMR_LowRiser",
+        "RomeoX": "WPM_SCP_RomeoX_LowRiser",
+        "ShieldCQS": "WPM_SCP_ShieldCQS_LowRiser",
+        "TrijiconSRO": "WPM_SCP_TrijiconSRO_LowRiser"
+      },
+      "weapons": [
+        "EF88",
+        "Interdictor",
+        "M357 Trait",
+        "M44",
+        "PP-19"
+      ]
+    },
+    {
+      "parts": {
+        "AcroP2": "WPM_SCP_AcroP2",
+        "EotechEFLX": "WPM_SCP_EotechEFLX",
+        "RMR": "WPM_SCP_RMR",
+        "RomeoX": "WPM_SCP_RomeoX",
+        "ShieldCQS": "WPM_SCP_ShieldCQS",
+        "TrijiconSRO": "WPM_SCP_TrijiconSRO"
+      },
+      "weapons": [
+        "ES 5.7",
+        "GGH-22",
+        "M45A1",
+        "P18"
+      ]
+    },
+    {
+      "parts": {
+        "AcroP2": "WPM_SCP_AcroP2",
+        "EotechEFLX": "WPM_SCP_EotechEFLX",
+        "MRO": "WPM_SCP_MRO",
+        "RMR": "WPM_SCP_RMR",
+        "RomeoX": "WPM_SCP_RomeoX",
+        "ShieldCQS": "WPM_SCP_ShieldCQS",
+        "TrijiconSRO": "WPM_SCP_TrijiconSRO"
+      },
+      "weapons": [
+        "L115",
+        "RPK-74M"
+      ]
+    },
+    {
+      "parts": {
+        "AcroP2": "WPM_SCP_AcroP2_Riser",
+        "EotechEFLX": "WPM_SCP_EotechEFLX_Riser",
+        "MRO": "WPM_SCP_MRO",
+        "RMR": "WPM_SCP_RMR_Riser",
+        "RomeoX": "WPM_SCP_RomeoX_Riser",
+        "ShieldCQS": "WPM_SCP_ShieldCQS_Short_Mounted",
+        "TrijiconSRO": "WPM_SCP_TrijiconSRO_Riser"
+      },
+      "weapons": [
+        "CZ3A1"
+      ]
+    },
+    {
+      "parts": {
+        "AcroP2": "WPM_SCP_AcroP2_LowRiser",
+        "EotechEFLX": "WPM_SCP_EotechEFLX_LowRiser",
+        "RMR": "WPM_SCP_RMR_LowRiser",
+        "RomeoX": "WPM_SCP_RomeoX_LowRiser",
+        "ShieldCQS": "WPM_SCP_ShieldCQS_LowRiser",
+        "TrijiconSRO": "WPM_SCP_TrijiconSRO_LowRiser"
+      },
+      "weapons": [
+        "vz. 61"
+      ]
+    }
+  ],
+  "ironSights": [
+    {
+      "weapon": "18.5KS-K",
+      "internalId": "185KSK",
+      "renderFov": [
+        30.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M87A1",
+      "internalId": "590A1",
+      "renderFov": [
+        40.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "KORD 6P67",
+      "internalId": "6P67",
+      "renderFov": [
+        29.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "NVO-228E",
+      "internalId": "ACE32",
+      "renderFov": [
+        40.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "AK-205",
+      "internalId": "AK205",
+      "renderFov": [
+        35.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SCW-10",
+      "internalId": "APC10",
+      "renderFov": [
+        45.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SL9",
+      "internalId": "APDW",
+      "renderFov": [
+        55.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "LMR27",
+      "internalId": "ARADMR",
+      "renderFov": [
+        45.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "BROD 3",
+      "internalId": "BREN3",
+      "renderFov": [
+        29.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "DB-12",
+      "internalId": "DP12",
+      "renderFov": [
+        32.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "Interdictor",
+      "internalId": "DesertTechHTI",
+      "renderFov": [
+        32.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "EF88",
+      "internalId": "EF88",
+      "renderFov": [
+        40.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "ES 5.7",
+      "internalId": "FiveSeven",
+      "renderFov": [
+        55.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "GGH-22",
+      "internalId": "G22",
+      "renderFov": [
+        55.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "B36A4",
+      "internalId": "G36",
+      "renderFov": [
+        20.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "AK4D",
+      "internalId": "G3A4",
+      "renderFov": [
+        30.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M417 A2",
+      "internalId": "HK417A2",
+      "renderFov": [
+        35.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M433",
+      "internalId": "HK433",
+      "renderFov": [
+        35.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "L115",
+      "internalId": "L115A3",
+      "renderFov": [
+        34.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "L85A3",
+      "internalId": "L85A3",
+      "renderFov": [
+        24.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M1014",
+      "internalId": "M1014",
+      "renderFov": [
+        25.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M16A4",
+      "internalId": "M16A3",
+      "renderFov": [
+        38.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "P18",
+      "internalId": "M18",
+      "renderFov": [
+        55.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M2010 ESR",
+      "internalId": "M2010ESR",
+      "renderFov": [
+        28.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M240L",
+      "internalId": "M240L",
+      "renderFov": [
+        38.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M250",
+      "internalId": "M250",
+      "renderFov": [
+        45.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "DRS-IAR",
+      "internalId": "M27IAR",
+      "renderFov": [
+        29.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M39 EMR",
+      "internalId": "M39EMR",
+      "renderFov": [
+        39.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M45A1",
+      "internalId": "M45A1",
+      "renderFov": [
+        45.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M4A1",
+      "internalId": "M4A1",
+      "renderFov": [
+        35.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M/60",
+      "internalId": "M60E6",
+      "renderFov": [
+        28.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M123K",
+      "internalId": "MG4K",
+      "renderFov": null,
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ],
+      "note": "Iron-sight part not resolved by selector; the blueprint part object Class_8cdc5b63 holds 29."
+    },
+    {
+      "weapon": "M121 A2",
+      "internalId": "MG5",
+      "renderFov": [
+        32.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "PW5A3",
+      "internalId": "MP5MLI",
+      "renderFov": [
+        32.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "PW7A2",
+      "internalId": "MP7A2",
+      "renderFov": [
+        50.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SGX",
+      "internalId": "MPX",
+      "renderFov": [
+        42.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "PSR",
+      "internalId": "MRAD",
+      "renderFov": [
+        28.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "GRT-BC",
+      "internalId": "MSBSGROTB",
+      "renderFov": [
+        45.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "GRT-CPS",
+      "internalId": "MSBSGROTCPS",
+      "renderFov": [
+        40.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "Mini Scout",
+      "internalId": "MiniFix",
+      "renderFov": [
+        28.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "L110",
+      "internalId": "Minimi",
+      "renderFov": [
+        26.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "USG-90",
+      "internalId": "P90",
+      "renderFov": [
+        50.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "PP-19",
+      "internalId": "PP19",
+      "renderFov": [
+        44.21893
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ],
+      "note": "44.21893 is the inline iron part; WM_PlaceHolder_IronSights (29) also lists the iron selector."
+    },
+    {
+      "weapon": "QBZ-192",
+      "internalId": "QBZ192",
+      "renderFov": [
+        30.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "RPK-74M",
+      "internalId": "RPK74M",
+      "renderFov": [
+        23.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "RPKM",
+      "internalId": "RPKM",
+      "renderFov": [
+        22.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M44",
+      "internalId": "RagingHunter",
+      "renderFov": [
+        48.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SOR-556 Mk2",
+      "internalId": "SCARL",
+      "renderFov": [
+        32.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SOR-300SC",
+      "internalId": "SCARSC",
+      "renderFov": [
+        38.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SG 553R",
+      "internalId": "SIG553R",
+      "renderFov": [
+        35.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SV-98",
+      "internalId": "SV98M",
+      "renderFov": [
+        36.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SVK-8.6",
+      "internalId": "SVCh",
+      "renderFov": [
+        30.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "SVDM",
+      "internalId": "SVDM",
+      "renderFov": [
+        20.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "CZ3A1",
+      "internalId": "ScorpionEvo3",
+      "renderFov": [
+        48.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "vz. 61",
+      "internalId": "Skorpion",
+      "renderFov": [
+        50.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M357 Trait",
+      "internalId": "TRR8",
+      "renderFov": [
+        55.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "TR-7",
+      "internalId": "Tavor7",
+      "renderFov": [
+        32.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "UMG-40",
+      "internalId": "UMP40",
+      "renderFov": [
+        28.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "KTS100 MK8",
+      "internalId": "Ultimax",
+      "renderFov": [
+        18.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "VCR-2",
+      "internalId": "VHS2",
+      "renderFov": [
+        40.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "VSSM",
+      "internalId": "VSSM",
+      "renderFov": [
+        34.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "KV9",
+      "internalId": "Vector",
+      "renderFov": [
+        42.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    },
+    {
+      "weapon": "M277",
+      "internalId": "XM7",
+      "renderFov": [
+        30.0
+      ],
+      "aim": [
+        "Aim_1x50"
+      ],
+      "zoom": [
+        1.5
+      ]
+    }
+  ],
+  "zoomLevels": [
+    {
+      "asset": "10_0xZoom",
+      "cameraFovDeg": 5.959879,
+      "inverseZoom": 0.1,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "12_0xZoom",
+      "cameraFovDeg": 4.967934,
+      "inverseZoom": 0.09032608,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "1_0xZoom",
+      "cameraFovDeg": 55.0,
+      "inverseZoom": 1.0,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "1_25xZoom",
+      "cameraFovDeg": 45.21893,
+      "inverseZoom": 0.8,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "1_25xZoom_AT",
+      "cameraFovDeg": 45.21893,
+      "inverseZoom": 0.8,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "1_25xZoom_IronSights",
+      "cameraFovDeg": 45.21893,
+      "inverseZoom": 0.8,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "1_5xZoom",
+      "cameraFovDeg": 38.27812,
+      "inverseZoom": 0.6666667,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "2_0xZoom",
+      "cameraFovDeg": 29.17886,
+      "inverseZoom": 0.5,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "3_0xZoom",
+      "cameraFovDeg": 19.68815,
+      "inverseZoom": 0.3333333,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "4_0xZoom",
+      "cameraFovDeg": 14.8298,
+      "inverseZoom": 0.25,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "6_0xZoom",
+      "cameraFovDeg": 9.917264,
+      "inverseZoom": 0.1666667,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "6_5xZoom",
+      "cameraFovDeg": 9.157776,
+      "inverseZoom": 0.166505,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "8_0xZoom",
+      "cameraFovDeg": 7.446076,
+      "inverseZoom": 0.125,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "DefaultBase",
+      "cameraFovDeg": 55.0,
+      "inverseZoom": 1.0,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "Zoom_01x00_PiP",
+      "cameraFovDeg": 55.0,
+      "inverseZoom": 1.0,
+      "pipCameraFactor": 1.0
+    },
+    {
+      "asset": "Zoom_01x25_PiP",
+      "cameraFovDeg": 45.78261,
+      "inverseZoom": 0.8,
+      "pipCameraFactor": 1.013889
+    },
+    {
+      "asset": "Zoom_01x50_PiP",
+      "cameraFovDeg": 39.2611,
+      "inverseZoom": 0.6666667,
+      "pipCameraFactor": 1.027778
+    },
+    {
+      "asset": "Zoom_01x75_PiP",
+      "cameraFovDeg": 34.38053,
+      "inverseZoom": 0.5714286,
+      "pipCameraFactor": 1.04
+    },
+    {
+      "asset": "Zoom_02x00_PiP",
+      "cameraFovDeg": 30.72521,
+      "inverseZoom": 0.5,
+      "pipCameraFactor": 1.055556
+    },
+    {
+      "asset": "Zoom_02x00_PiP_Charge",
+      "cameraFovDeg": 30.72521,
+      "inverseZoom": 0.5,
+      "pipCameraFactor": 1.055556
+    },
+    {
+      "asset": "Zoom_02x50_PiP",
+      "cameraFovDeg": 25.80206,
+      "inverseZoom": 0.4,
+      "pipCameraFactor": 1.1
+    },
+    {
+      "asset": "Zoom_03x00_PiP",
+      "cameraFovDeg": 22.57036,
+      "inverseZoom": 0.3333333,
+      "pipCameraFactor": 1.15
+    },
+    {
+      "asset": "Zoom_03x00_PiP_Charge",
+      "cameraFovDeg": 22.57036,
+      "inverseZoom": 0.3333333,
+      "pipCameraFactor": 1.15
+    },
+    {
+      "asset": "Zoom_03x50_PiP",
+      "cameraFovDeg": 20.2392,
+      "inverseZoom": 0.2857143,
+      "pipCameraFactor": 1.2
+    },
+    {
+      "asset": "Zoom_04x00_PiP",
+      "cameraFovDeg": 18.47956,
+      "inverseZoom": 0.25,
+      "pipCameraFactor": 1.25
+    },
+    {
+      "asset": "Zoom_04x00_PiP_ELCAN",
+      "cameraFovDeg": 18.47956,
+      "inverseZoom": 0.25,
+      "pipCameraFactor": 1.25
+    },
+    {
+      "asset": "Zoom_04x00_PiP_LTLMII",
+      "cameraFovDeg": 18.47956,
+      "inverseZoom": 0.25,
+      "pipCameraFactor": 1.25
+    },
+    {
+      "asset": "Zoom_04x50_PiP",
+      "cameraFovDeg": 17.06428,
+      "inverseZoom": 0.2222222,
+      "pipCameraFactor": 1.296875
+    },
+    {
+      "asset": "Zoom_05x00_PiP",
+      "cameraFovDeg": 15.80634,
+      "inverseZoom": 0.2,
+      "pipCameraFactor": 1.333333
+    },
+    {
+      "asset": "Zoom_05x00_PiP_Charge",
+      "cameraFovDeg": 15.80634,
+      "inverseZoom": 0.2,
+      "pipCameraFactor": 1.333333
+    },
+    {
+      "asset": "Zoom_06x00_PiP",
+      "cameraFovDeg": 13.7286,
+      "inverseZoom": 0.1666667,
+      "pipCameraFactor": 1.3875
+    },
+    {
+      "asset": "Zoom_06x00_PiP_LTLMII",
+      "cameraFovDeg": 13.7286,
+      "inverseZoom": 0.1666667,
+      "pipCameraFactor": 1.3875
+    },
+    {
+      "asset": "Zoom_08x00_PiP",
+      "cameraFovDeg": 10.86095,
+      "inverseZoom": 0.125,
+      "pipCameraFactor": 1.460938
+    },
+    {
+      "asset": "Zoom_08x00_PiP_Charge",
+      "cameraFovDeg": 10.86095,
+      "inverseZoom": 0.125,
+      "pipCameraFactor": 1.460938
+    },
+    {
+      "asset": "Zoom_10x00_PiP",
+      "cameraFovDeg": 8.929769,
+      "inverseZoom": 0.1,
+      "pipCameraFactor": 1.5
+    },
+    {
+      "asset": "Zoom_10x00_PiP_LTLMII",
+      "cameraFovDeg": 8.929769,
+      "inverseZoom": 0.1,
+      "pipCameraFactor": 1.5
+    }
+  ],
+  "opticNames": [
+    {
+      "inGameName": "1P86 LPVO",
+      "nameIds": [
+        "0x1582dfec"
+      ],
+      "frostyRecordNames": [
+        "1P86"
+      ],
+      "labels": [
+        "Variable 1.5-4.5x"
+      ],
+      "descriptions": [
+        "Provides a clear sight picture with 1.5x and 4.5x magnification levels, which can be manually cycled through."
+      ]
+    },
+    {
+      "inGameName": "1p87 1.50x",
+      "nameIds": [
+        "0x12457984"
+      ],
+      "frostyRecordNames": [
+        "PG350"
+      ],
+      "labels": [
+        "Sight 1.50x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "1p88 Variable",
+      "nameIds": [
+        "0x10ac9ade"
+      ],
+      "frostyRecordNames": [
+        "1P885"
+      ],
+      "labels": [
+        "Variable 3-10x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "2Pro 1.25x",
+      "nameIds": [
+        "0x1243e9a6"
+      ],
+      "frostyRecordNames": [
+        "Mepro M22"
+      ],
+      "labels": [
+        "Sight 1.25x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "3VZR 1.75x",
+      "nameIds": [
+        "0x1246a78b"
+      ],
+      "frostyRecordNames": [
+        "MP7 - VZOR3 VTAR",
+        "VZOR3"
+      ],
+      "labels": [
+        "Sight 1.75x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "A-P2 1.75x",
+      "nameIds": [
+        "0xb97db7d3"
+      ],
+      "frostyRecordNames": [
+        "ACRO P2"
+      ],
+      "labels": [
+        "Sight 1.75x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "Baker 3.00x",
+      "nameIds": [
+        "0x16ed0ce1"
+      ],
+      "frostyRecordNames": [
+        "Bravo3"
+      ],
+      "labels": [
+        "Scope 3.00x"
+      ],
+      "descriptions": [
+        "Moderately magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "BF-2M 2.50x",
+      "nameIds": [
+        "0x149aa225"
+      ],
+      "frostyRecordNames": [
+        "COD2M"
+      ],
+      "labels": [
+        "Scope 2.50x"
+      ],
+      "descriptions": [
+        "Moderately magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "Canted Reflex",
+      "nameIds": [
+        "0x0ff10803"
+      ],
+      "frostyRecordNames": [
+        "CantedReflex",
+        "CantedReflexSlanted"
+      ],
+      "labels": [
+        "Sight 1.00x"
+      ],
+      "descriptions": [
+        "Secondary optic mounted at a 45-degree angle."
+      ]
+    },
+    {
+      "inGameName": "CCO 2.00x",
+      "nameIds": [
+        "0x1497e440"
+      ],
+      "frostyRecordNames": [
+        "CompM5b"
+      ],
+      "labels": [
+        "Sight 2.00x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "CQ RDS 1.25x",
+      "nameIds": [
+        "0xb2d8b875"
+      ],
+      "frostyRecordNames": [
+        "Shield CQS"
+      ],
+      "labels": [
+        "Sight 1.25x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "DVO LPVO",
+      "nameIds": [
+        "0x1582dfe9"
+      ],
+      "frostyRecordNames": [
+        "Tango6T"
+      ],
+      "labels": [
+        "Variable 1-6x"
+      ],
+      "descriptions": [
+        "Provides a clear sight picture with magnification levels between 1x and 6x, which can be manually cycled through."
+      ]
+    },
+    {
+      "inGameName": "GRIM 1.50x",
+      "nameIds": [
+        "0x1abd4572"
+      ],
+      "frostyRecordNames": [
+        "Trijicon REAPIR"
+      ],
+      "labels": [
+        "Thermal 1.50x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "LDS 4.50x",
+      "nameIds": [
+        "0x1944f367"
+      ],
+      "frostyRecordNames": [
+        "ELCAN LDS"
+      ],
+      "labels": [
+        "Scope 4.50x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "LERT 8.00x",
+      "nameIds": [
+        "0x2296d807"
+      ],
+      "frostyRecordNames": [
+        "Mark4M2",
+        "Mark4M5A2"
+      ],
+      "labels": [
+        "Scope 8.00x"
+      ],
+      "descriptions": [
+        "Magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "Mars-F LPVO",
+      "nameIds": [
+        "0x1582dfea"
+      ],
+      "frostyRecordNames": [
+        "March FFP Shorty"
+      ],
+      "labels": [
+        "Variable 1-5x"
+      ],
+      "descriptions": [
+        "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through."
+      ]
+    },
+    {
+      "inGameName": "MC-CO LPVO",
+      "nameIds": [
+        "0x1582dfe8"
+      ],
+      "frostyRecordNames": [
+        "Trijicon SCO",
+        "Trijicon VCOG",
+        "VCOG"
+      ],
+      "labels": [
+        "Variable 1-6x"
+      ],
+      "descriptions": [
+        "Provides a clear sight picture with magnification levels between 1x and 6x, which can be manually cycled through."
+      ]
+    },
+    {
+      "inGameName": "MGO 3.50x",
+      "nameIds": [
+        "0x16efcac7"
+      ],
+      "frostyRecordNames": [
+        "M145MGO"
+      ],
+      "labels": [
+        "Scope 3.50x"
+      ],
+      "descriptions": [
+        "Moderately magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "Mini Flex 1.00x",
+      "nameIds": [
+        "0xadd3ecae"
+      ],
+      "frostyRecordNames": [
+        "EFLX Mini"
+      ],
+      "labels": [
+        "Sight 1.00x"
+      ],
+      "descriptions": [
+        "Basic optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "NFX 8.00x",
+      "nameIds": [
+        "0x2296d806"
+      ],
+      "frostyRecordNames": [
+        "NX8-4"
+      ],
+      "labels": [
+        "Scope 8.00x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "NGFC LPVO",
+      "nameIds": [
+        "0x1582dfe7"
+      ],
+      "frostyRecordNames": [
+        "M157",
+        "Vortex M157",
+        "VortexM157"
+      ],
+      "labels": [
+        "Variable 1-5x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "Osa-7 1.00x",
+      "nameIds": [
+        "0x1242bb9f"
+      ],
+      "frostyRecordNames": [
+        "OPK7"
+      ],
+      "labels": [
+        "Sight 1.00x"
+      ],
+      "descriptions": [
+        "Basic optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "PAS-35 3.00x",
+      "nameIds": [
+        "0x1abd49b3"
+      ],
+      "frostyRecordNames": [
+        "ANPAS35"
+      ],
+      "labels": [
+        "Thermal 3.00x"
+      ],
+      "descriptions": [
+        "Moderately magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection."
+      ]
+    },
+    {
+      "inGameName": "Piggyback Reflex",
+      "nameIds": [
+        "0xe1514334"
+      ],
+      "frostyRecordNames": [
+        "Offset Red Dot"
+      ],
+      "labels": [
+        "Sight 1.00x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "PVQ-31 4.00x",
+      "nameIds": [
+        "0x19423583"
+      ],
+      "frostyRecordNames": [
+        "Trijicon RCO"
+      ],
+      "labels": [
+        "Scope 4.00x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "QMK 3.00x",
+      "nameIds": [
+        "0x16ed0ce2"
+      ],
+      "frostyRecordNames": [
+        "QMK171A"
+      ],
+      "labels": [
+        "Scope 3.00x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "R-MR 1.00x",
+      "nameIds": [
+        "0xadd3ecaf"
+      ],
+      "frostyRecordNames": [
+        "Deltapoint",
+        "RMR"
+      ],
+      "labels": [
+        "Sight 1.00x"
+      ],
+      "descriptions": [
+        "Basic optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "R-VPS 10.00x",
+      "nameIds": [
+        "0x5ce7cfbf"
+      ],
+      "frostyRecordNames": [
+        "NF ATACR"
+      ],
+      "labels": [
+        "Scope 10.00x"
+      ],
+      "descriptions": [
+        "Magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "R4T 2.00x",
+      "nameIds": [
+        "0x1497e441"
+      ],
+      "frostyRecordNames": [
+        "Romeo4T"
+      ],
+      "labels": [
+        "Sight 2.00x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "RO-M 1.75x",
+      "nameIds": [
+        "0x1246a78c"
+      ],
+      "frostyRecordNames": [
+        "MRO",
+        "Trijicon MRO"
+      ],
+      "labels": [
+        "Sight 1.75x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "RO-S 1.25x",
+      "nameIds": [
+        "0xb2d8b876"
+      ],
+      "frostyRecordNames": [
+        "Trijicon SRO"
+      ],
+      "labels": [
+        "Sight 1.25x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "ROX 1.50x",
+      "nameIds": [
+        "0xb97db7d4"
+      ],
+      "frostyRecordNames": [
+        "RomeoX"
+      ],
+      "labels": [
+        "Sight 1.50x"
+      ],
+      "descriptions": [
+        "Slightly magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "S-VPS 6.00x",
+      "nameIds": [
+        "0x1dec86c4"
+      ],
+      "frostyRecordNames": [
+        "M27IAR - NX8-4",
+        "NX8-1"
+      ],
+      "labels": [
+        "Scope 6.00x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "SDO 3.50x",
+      "nameIds": [
+        "0x16efcac6"
+      ],
+      "frostyRecordNames": [
+        "SDO",
+        "Trijicon SDO"
+      ],
+      "labels": [
+        "Scope 3.50x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "SF-G2 5.00x",
+      "nameIds": [
+        "0x1b975e24"
+      ],
+      "frostyRecordNames": [
+        "Spitfire"
+      ],
+      "labels": [
+        "Scope 5.00x"
+      ],
+      "descriptions": [
+        "Moderately magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "SM Rifle Variable",
+      "nameIds": [
+        "0x10ac9adf"
+      ],
+      "frostyRecordNames": [
+        "M7Xi"
+      ],
+      "labels": [
+        "Variable 2-8x"
+      ],
+      "descriptions": [
+        "Precision optic with magnification levels between 2x and 8x, which can be manually cycled through."
+      ]
+    },
+    {
+      "inGameName": "SSDS 6.00x",
+      "nameIds": [
+        "0x1dec86c5"
+      ],
+      "frostyRecordNames": [
+        "SB PMII"
+      ],
+      "labels": [
+        "Scope 6.00x"
+      ],
+      "descriptions": [
+        "Magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "ST Prism 5.00x",
+      "nameIds": [
+        "0x149aa226"
+      ],
+      "frostyRecordNames": [
+        "Steiner T536"
+      ],
+      "labels": [
+        "Scope 5.00x"
+      ],
+      "descriptions": [
+        "Moderately magnified optic with a clear sight picture."
+      ]
+    },
+    {
+      "inGameName": "SU-123 1.50x",
+      "nameIds": [
+        "0x12457985"
+      ],
+      "frostyRecordNames": [
+        "XPS3"
+      ],
+      "labels": [
+        "Sight 1.50x"
+      ],
+      "descriptions": []
+    },
+    {
+      "inGameName": "SU-230 LPVO",
+      "nameIds": [
+        "0x1582dfeb"
+      ],
+      "frostyRecordNames": [
+        "ELCAN DR"
+      ],
+      "labels": [
+        "Variable 1-4x"
+      ],
+      "descriptions": [
+        "Provides a clear sight picture with 1x and 4x magnification levels, which can be manually cycled through."
+      ]
+    },
+    {
+      "inGameName": "TH-RDS 1.00x",
+      "nameIds": [
+        "0x73b83851"
+      ],
+      "frostyRecordNames": [
+        "Holosun DRS TH"
+      ],
+      "labels": [
+        "Thermal Hybrid"
+      ],
+      "descriptions": [
+        "Basic optic overlaid with a thermal mode that detects heat signatures, which can be manually cycled through. Smoke volumes can disrupt thermal detection."
+      ]
+    },
+    {
+      "inGameName": "TS-HD 6.00x",
+      "nameIds": [
+        "0x1abd4df4"
+      ],
+      "frostyRecordNames": [
+        "HISSHD"
+      ],
+      "labels": [
+        "Thermal 6.00x"
+      ],
+      "descriptions": [
+        "Magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection."
+      ]
+    }
+  ],
+  "sources": {
+    "exportRoots": [
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\xml-overlay",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.2.5"
+    ],
+    "strings": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Frosty Exports\\1.4.3.0\\Common\\Localization\\Languages\\fs_us_loc.strings.tsv",
+      "sha256": "1ec449fa2a12bc3d307bfa5878ee7d8c56af14fae65ea1f6c6286e85d98e7392"
+    },
+    "mapping": "reference-data/provenance/frosty-optic-category-mapping-2026-09-15.json",
+    "assets": [
+      {
+        "route": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "bcd4b6c0d372d407aa8635efbd6856f441fc491a05bb915a1b130918f508c0e5"
+      },
+      {
+        "route": "Common/Hardware/Weapons/MG/RPKM/RPKM_WB",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "0c637295a63ac1425e1d7958e3e17011611809576536aab68aefb0e38c788a4b"
+      },
+      {
+        "route": "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "847088893f02c217869c96a74764cd1556d0583d50e4a8d5f8866f40ab1973c9"
+      },
+      {
+        "route": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_WB",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "cd88855d7ed13b6b1c5fdd77f721ab77618643402768b2ea37d5674dc7a53823"
+      },
+      {
+        "route": "Common/Hardware/Weapons/SMG/APDW/APDW_WB",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "0ac7a32eb417856d767d33f731624d71cf5485e809791aeded02f64859cd95ef"
+      },
+      {
+        "route": "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_WB",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "e5c4f99a52b757d99964d3c89242834b3f31049744ce72a4abc955791da4552c"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/RMR/WPM_SCP_RMR",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "d0ffe9008920ef716c32b8f04bb1116703c139c98fd695928d2e648f98dc2141"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/RMR/WPM_SCP_RMR_Riser",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "1d3313b8c56ad5b346ec174acfda56650c6c8a40db42a7c8031356a9545a80f8"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/RomeoX/WPM_SCP_RomeoX",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "6ec94a1876d5a43cc48ba8d93d9bfc795202386129c64fae0124ac4064f494e0"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/RomeoX/WPM_SCP_RomeoX_Riser",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "47c680552db412f791ad20d0ee89e515d3d8c5c376c109ced645b22fb2556d3d"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/EotechELFX/WPM_SCP_EotechEFLX",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "b51d4f93034b99217de78241b2ae3be414a5df2d17b17a0cbece0240cf8cad75"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/EotechELFX/WPM_SCP_EotechEFLX_Riser",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "5ccab687643b196bbda6dc1a6e5ab2a873930809ccea0c5199611fdb9e627f8e"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/AcroP2/WPM_SCP_AcroP2",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "6e2f065ccaea72a294b6edc300b8ae8f8aac1f677dbd82ff87c05ecb31ccbad6"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconSRO/WPM_SCP_TrijiconSRO",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "c00e8ad3b6fada482a3183c6b1f4bbce81fc3516c34006bb403df240c65ede39"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/CQS/WPM_SCP_ShieldCQS",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "a0a23c7d19b191aa079a54e1ada83ad83632d2ed3078a1668eb25b63060376e0"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconMRO/WPM_SCP_MRO",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "35b2ac379d52cef96936cc5645a2a6b881592a5044e93d02c3fbb9a2c800f3ec"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_Attachments/Reflex/OPK7/WPM_SCP_OPK7",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "9b8d95789f28cc881f42a6fc4ebb81ee82bd8f70573aac485a1943f09de4cde3"
+      },
+      {
+        "route": "Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_1x50",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "f9fae021646fa942ae0ed15f05a97b45a673eb7323b6a0c0f7086b2fb3dad217"
+      },
+      {
+        "route": "Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_01x00_PiP",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "26f0b30e9a969852f255c17660fc60c13e8fc23475ffe57d7e9bc3ba968c079b"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_ZoomLevels/1_5xZoom",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "6b6ce936819f807e8fa1679e7d8f060b8f58e0820e19180d61e4a9b8c3e8c35a"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_ZoomLevels/Zoom_01x00_PiP",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "307de565c579ef1f1cc161ae78bdb3bda1ecb4f3f49badda6d5aba1c50c6ec86"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_ZoomLevels/DefaultBase",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "bd26a5859475a5ff8445d5e59c509b7965f66e72456b8dcf4090be2a6e65d65d"
+      },
+      {
+        "route": "Common/Hardware/Weapons/MG/RPK74M/AAM_RPK74M",
+        "export": "1.4.3.0 xml-overlay",
+        "xmlSha256": "bb39863424c4481e20b4f491e58ef6ae468cd0da4774cdb042df664d8c35e00b"
+      }
+    ]
+  },
+  "limits": [
+    "Field meanings are inferred from values and screenshots, not from decoded names.",
+    "The L115, M2010 ESR and pistol cases are source findings only.",
+    "Render FOV is visual. It does not change projectile mechanics, and the site does not model it."
+  ]
+}

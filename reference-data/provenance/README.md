@@ -17,16 +17,16 @@ support the moving-ADS penalty on Interdictor and Mini Scout Slim Angled.
 
 Current attachment generation:
 
-- [Physical slots and equipment dependencies](frosty-attachment-compatibility.json) (14 September): 1,391 offered mount choices, 22 generated rules on four weapons, and all 285 inspected dependency entries, including 263 unsupported/unmapped secondary-sight entries. [PP-19 trace](../../docs/working/PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) and [curated asset findings](../frosty/README.md#shared-slots-and-attachment-dependencies) retain the source and observed-behavior boundaries.
+- [Physical slots and equipment dependencies](frosty-attachment-compatibility.json) (14 September): 1,391 offered mount choices, 22 generated rules on four weapons, and all 285 inspected dependency entries, including 263 unsupported/unmapped secondary-sight entries. [PP-19 trace](../../docs/archive/PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) and [curated asset findings](../../docs/frosty/DATA_GRAPH.md#slots-and-prerequisites) retain the source and observed-behavior boundaries.
 
 - [Barrel ADS](frosty-barrel-ads-generated.json): 233 unique selections.
 - [Grip/laser/magazine handling](frosty-attachment-handling-generated.json): 1,487 selections and 5,489 generated fields.
 - [Mapping follow-up](frosty-handling-mapping-followup.json), [unbound-selector review](frosty-handling-unbound-selector-review.json), and [coordinate proof](frosty-handling-coordinate-proof.json): accepted identities, historical spread exceptions, and base/modifier conversion evidence.
 - [Sniper brakes](frosty-sniper-brakes-generated.json): 16 per-weapon amount overrides.
 - [Linear Comp/burst review](frosty-assumption-review.json) and [SDK types](frosty-assumption-sdk-types.json): 53 selections, source operands and unmodeled fields.
-- [Other-attachment review](frosty-other-attachment-review-2026-09-13.json): dated comparison; the [current generation report](../../docs/working/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md) records later decisions.
+- [Other-attachment review](frosty-other-attachment-review-2026-09-13.json): dated comparison; the [current generation report](../../docs/frosty/ATTACHMENTS.md#generated-site-values) records later decisions.
 
-See the [current audit status](../../docs/working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+See the [Frosty weapon notes](../../docs/frosty/WEAPONS.md)
 for accepted changes and remaining boundaries. Evidence files below retain their
 original snapshot status; they are not rewritten when an implementation changes.
 

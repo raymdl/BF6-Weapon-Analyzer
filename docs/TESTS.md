@@ -64,7 +64,7 @@ fields with the catalog; they do not establish native runtime behavior.
 optic grouping, and the approved panel-text path. It verifies source/image guards,
 preserves original UI pointers, and prevents panel text from filling peer choices.
 Full tooltip regeneration needs the local Frosty export, AAM XML and saved captures;
-see the [regeneration commands](working/FROSTY_DISPLAY_NAMES.md#regeneration-and-verification).
+see the [regeneration commands](frosty/UI_TEXT.md#regeneration-and-verification).
 
 Validate the screenshot-backed attachment audit separately:
 

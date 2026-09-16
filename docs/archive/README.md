@@ -9,7 +9,7 @@
 Some evidence links refer to local recordings, screenshots, or working audit files
 that are not included in the published repository.
 
-The [September 13 audit status](../working/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+The [September 13 audit status](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
 records the subsequent hit-zone, projectile, collateral, distribution and light
 integrations. Old uniform-radius and estimated light-recovery descriptions below
 do not describe the current model.
@@ -49,6 +49,25 @@ completed analysis does not mean every native mechanic is known.
 | [Array review and implementation](FROSTY_ARRAY_REVIEW_2026-09-09.md) | Contains a pre-integration comparison followed by implemented changes. Early references to old arrays are superseded by [stat ladders](../STAT_LADDERS.md) and [data reference](../DATA_REFERENCE.md). |
 | [Magazine model update](FROSTY_MAGAZINE_MODEL_UPDATE_2026-09-07.md) | Completed reviewed update and bounded investigation. Current composition is in [attachment model](../ATTACHMENT_MODEL.md); timing uncertainties remain in [limitations](../MODEL_LIMITATIONS.md). |
 | [Site data fixes](FROSTY_SITE_DATA_FIXES_2026-09-07.md) | Completed correction record. Consult maintained `data/` and [sources](../DATA_SOURCES.md) for the live contract. |
+
+### Moved from `working/` on 16 September 2026
+
+| Historical record | Status / present reference |
+|---|---|
+| [Claude session handoff, 12 September](CLAUDE_SESSION_HANDOFF_2026-09-12.md) | Merged through PR #29 and PR #31. Open recording questions are in the [active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md). |
+| [Recording reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md) | Completed analysis. Its measured results stand; its model descriptions are superseded by the [recoil/spread guide](../RECOIL_SPREAD_MODEL.md). |
+| [Runtime data validation audit](FALLBACK_AUDIT_2026-09-14.md) | Implemented: strict data validation and the error notification (`ui/data-errors.js`). See [tests](../TESTS.md). |
+| [PP-19 53-round compatibility trace](PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) | Implemented for all weapons by `scripts/frosty-attachment-compatibility.py`. See the [Frosty data graph](../frosty/DATA_GRAPH.md#slots-and-prerequisites). |
+| [Interdictor 1.4.3.0 check](INTERDICTOR_1.4.3.0_CHECK.md) | Completed. Its unchecked boxes were done in the [1.4.3.0 update plan](FROSTY_1.4.3.0_UPDATE_PLAN.md) (damage curve, limb 1.0, iron sights 15 points). |
+| [Frosty 1.4.3.0 update plan](FROSTY_1.4.3.0_UPDATE_PLAN.md) | Completed; the operator closed it on 16 September. Its last open box (attachment bug recheck) is covered by the [1.4.3.0 recheck](../ATTACHMENT_BUGS.md#1430-recheck-15-september-2026). Use the [game update guide](../GAME_UPDATE_GUIDE.md) for the next update. |
+| [Weapon display names and description audit](FROSTY_DISPLAY_NAMES.md) | Merged into [UI text](../frosty/UI_TEXT.md). |
+| [UI strings review](FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) | Merged into [UI text](../frosty/UI_TEXT.md); the Precision provider question is in [open questions](../frosty/OPEN_QUESTIONS.md). |
+| [Global-candidates audit](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) | Accepted results are in [Frosty weapons](../frosty/WEAPONS.md) and [attachments](../frosty/ATTACHMENTS.md); remaining validation is in [open questions](../frosty/OPEN_QUESTIONS.md). Early checkpoints are historical. |
+| [Stat discovery](FROSTY_STAT_DISCOVERY_2026-09-13.md) | Merged into [Frosty weapons](../frosty/WEAPONS.md) (recovery law, traits, unused fields). The operator decided to document these without model changes. |
+| [Attachment generation review](FROSTY_ATTACHMENT_GENERATION_2026-09-13.md) | Merged into [Frosty attachments](../frosty/ATTACHMENTS.md#generated-site-values). Its comparison counts describe the pre-change snapshot. |
+| [Unmatched Frosty records, 13 September](FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) | Dated reverse inventory. Its open items are in [open questions](../frosty/OPEN_QUESTIONS.md#attachments). |
+| [Frosty docs consolidation](FROSTY_DOCS_CONSOLIDATION.md) | Completed plan for the move to [`docs/frosty/`](../frosty/README.md). |
+| [Optics from Frosty data plan](OPTIC_FROSTY_SOURCE_PLAN.md) | Completed. Stage 3 used `frosty-optic-category-mapping-2026-09-15.json`; `scripts/optic-costs.test.mjs` checks the result. |
 
 ## Dated investigations and mixed progress logs
 
