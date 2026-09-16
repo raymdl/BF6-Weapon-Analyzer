@@ -39,6 +39,7 @@ any remaining questions into an active handoff, and archive the completed record
 
 | Guide | Audience and scope |
 |---|---|
+| [Data-flow atlas](data-flow/README.md) | Visual readers and maintainers: end-to-end provenance, generation, runtime outputs, assumptions and publication, with a field-ownership register. |
 | [User guide](USER_GUIDE.md) | Players: controls, comparisons, outputs, and interpretation. |
 | [Architecture](ARCHITECTURE.md) | Developers: module ownership, startup, state, URL compatibility, rendering, capture. |
 | [Data sources](DATA_SOURCES.md) | Data maintainers: source authority, Frosty review pipeline, provenance, promotion rules. |

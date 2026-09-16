@@ -73,6 +73,7 @@ Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
 
 | Purpose | Read |
 |---|---|
+| Visualize end-to-end sourcing, transformations, assumptions and publishing | [Data-flow atlas](docs/data-flow/README.md) |
 | Use the site and interpret its displays | [User guide](docs/USER_GUIDE.md) |
 | Understand modules, state, sharing, and rendering | [Architecture](docs/ARCHITECTURE.md) |
 | Trace values to sources and review evidence | [Data sources](docs/DATA_SOURCES.md) |
