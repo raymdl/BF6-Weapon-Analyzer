@@ -2,14 +2,14 @@
 
 [Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
 
-**Scope:** the current root application, its maintained inputs, generation tools,
-research boundary, calculations, displays, and publication. Reviewed against
-[`d037503`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/d037503e1159ab8eb6533e292de5ed33206f0f30)
-(main, 15 September 2026 in America/New_York). Counts below are that snapshot,
-not automatically refreshed counters. Existing formula guides remain the detailed
-specifications; this atlas shows how their inputs and outputs connect.
+Data sources, import scripts, calculations, assumptions, and publishing for the
+current site.
 
-## Start here
+**Reviewed commit:** [`d037503`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/d037503e1159ab8eb6533e292de5ed33206f0f30)
+(15 September 2026, America/New_York). Counts and behavior refer to this commit.
+Formula details are in the linked guides.
+
+## System overview
 
 ```mermaid
 flowchart TB
@@ -48,7 +48,7 @@ publication; the browser does not contact Frosty, Sym, a screenshot collection,
 or an application database. Source operands and the simulator's interpretation
 of those operands have separate evidence requirements.
 
-## Reading the diagrams
+## Diagram legend
 
 | Label | Meaning | Important distinction |
 |---|---|---|
@@ -60,27 +60,26 @@ of those operands have separate evidence requirements.
 | **EVID** | Provenance, review records, diagnostics, or retained research. | Evidence is not automatically an application input. |
 | **OUT** | A published file, visible result, or export. | A published repository file may never be fetched by the application. |
 
-Solid arrows show the named data/control dependency. Dashed arrows show evidence
-or an assumption informing a decision/calculation. Colors reinforce the labels;
-the labels carry the same meaning in monochrome. Some diagrams show evaluation
-order; others show dependencies, as their captions explain. **CUR + GEN** means
-mixed ownership, not a claim that every field can be regenerated.
+Solid arrows show data or control dependencies. Dashed arrows show supporting
+evidence or assumptions. Labels remain readable without color. Captions specify
+whether a diagram shows evaluation order or dependencies. **CUR + GEN** identifies
+files containing both hand-maintained and generated fields.
 
-## Map of the atlas
+## Sections
 
-| Question | Diagram guide |
+| Topic | Guide |
 |---|---|
-| Where do values come from, and which tools actually write them? | [Sources, ingestion and promotion](SOURCES.md) |
-| How do menus, defaults, mounts, attachments, ladders and statistics connect? | [Loadouts and overview](LOADOUTS.md) |
-| How do damage curves, ammo, hit zones, timing, drag and trajectories connect? | [Damage and ballistics](DAMAGE_BALLISTICS.md) |
-| What produces recoil paths, spread growth, sampled shots and scatter? | [Recoil and spread](RECOIL_SPREAD.md) |
-| How are shots projected onto the soldier and turned into hit/damage results? | [Target view](TARGET.md) |
-| What is fetched, cached, shared, captured, validated and published? | [UI, state and publication](UI_PUBLISHING.md) |
-| Which fields are manual/generated, where are assumptions, and what changes together? | [Ownership and assumption register](REGISTER.md) |
+| Source files, review steps, and generators | [Sources, ingestion and promotion](SOURCES.md) |
+| Menus, defaults, mounts, attachments, ladders, and statistics | [Loadouts and overview](LOADOUTS.md) |
+| Damage curves, ammo, hit zones, timing, drag, and trajectories | [Damage and ballistics](DAMAGE_BALLISTICS.md) |
+| Recoil paths, spread growth, shot sampling, and scatter | [Recoil and spread](RECOIL_SPREAD.md) |
+| Target projection and hit/damage calculations | [Target view](TARGET.md) |
+| Startup, caches, sharing, capture, validation, and publishing | [UI, state and publication](UI_PUBLISHING.md) |
+| Field maintenance, assumptions, and change dependencies | [Ownership and assumption register](REGISTER.md) |
 
-## Coverage by site surface
+## Site features
 
-| Site surface | Trace |
+| Feature | Documentation |
 |---|---|
 | Weapon list, classes, labels and descriptions | [Selection and metadata](LOADOUTS.md#selection-and-metadata) |
 | Attachment/ammo/magazine choices, rails, dependencies and points | [Valid loadout](LOADOUTS.md#valid-loadout) |
@@ -96,21 +95,17 @@ mixed ownership, not a claim that every field can be regenerated.
 | Header/version links, root site, frozen versions and research visibility | [Publication](UI_PUBLISHING.md#publication-and-validation) |
 | Reference-only weapon roles, game composite-stat research and legacy fields | [Non-executed material](REGISTER.md#retained-and-non-executed-material) |
 
-At this baseline there are **63 weapons, 328 supported weapon/ammo selections,
-64 projectile records, and eight startup JSON requests**. These are different
-counts: many selections share a projectile, and a fetched file can contain legacy
-fields that do not participate in the current equations.
+The reviewed dataset contains **63 weapons, 328 supported weapon/ammo selections,
+64 projectile records, and eight startup JSON files**. Multiple selections can
+share a projectile. Some fetched files contain legacy fields unused by the
+current equations.
 
-## How to keep this atlas current
+## Maintenance
 
-When a field changes, update its row in the [ownership register](REGISTER.md),
-the affected feature diagram, and its existing formula/source guide. Preserve
-this review commit as the historical audit point until the atlas is rechecked;
-record a new commit when performing a new complete review. Do not reinterpret
-old provenance hashes as hashes of a newly generated dataset.
+When a field changes, update its [ownership register](REGISTER.md) row, diagram,
+and formula/source guide. Update the review commit after rechecking the
+documentation. Keep historical input hashes with their original records.
 
-Mermaid diagrams render in GitHub's Markdown view. This atlas adds no browser
-runtime dependency, documentation build system, automatic source importer, or
-new claim that CI remeasures the game. Relative links point to maintained code,
-source evidence, and the existing guides; use the pinned review commit above to
-inspect the exact audited versions.
+GitHub renders the Mermaid diagrams directly. Code and evidence links are
+relative to this repository. Use the review commit above to inspect the versions
+used for this documentation.

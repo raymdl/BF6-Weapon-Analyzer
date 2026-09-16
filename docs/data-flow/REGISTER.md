@@ -2,10 +2,10 @@
 
 [Atlas](README.md) · [Source pipeline](SOURCES.md) · [Model limitations](../MODEL_LIMITATIONS.md)
 
-This register is field-family level. It covers the current site's inputs/outputs
-without implying that every scalar has an independently complete provenance
-record. **Source origin**, **maintenance method**, and **model validity** are
-separate dimensions. The review commit and counts are recorded in the [atlas](README.md).
+This register lists maintenance responsibilities and assumptions by field family.
+Some individual values have incomplete provenance. Source origin, file maintenance,
+and model validation are recorded separately. See the [overview](README.md) for the
+review commit and dataset counts.
 
 ## Ownership by file and field family
 
@@ -13,7 +13,7 @@ separate dimensions. The review commit and counts are recorded in the [atlas](RE
 |---|---|---|
 | `weapons.json`: roster, IDs, class, base scalars | **CUR**, mixed-source field-level promotion. | Reviewed edits from accepted Sym/Frosty/panel evidence. No single complete production importer owns the file. Consumed by UI and resolver. |
 | `weapons.json`: `name`, `description` | **CUR**, reviewed Frosty localization promotion. | Candidate description extractor supports review; weapon buttons/names/tooltips use promoted text. |
-| `weapons[].dmg`, `damageSource` | **CUR**, accepted Frosty curves and reviewed discontinuities. | [Curve review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json); range and target damage. Source acceptance is not a native-arithmetic certificate. |
+| `weapons[].dmg`, `damageSource` | **CUR**, accepted Frosty curves and reviewed discontinuities. | [Curve review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json); range and target damage. The native arithmetic still requires validation. |
 | `weapons[].recoil.ads/hip`, `spread`, `spreadDyn` | **CUR**, reviewed source literals and retained operands. | Resolver and `core.js`; some fields are retained without separate execution. Timed delivery/recovery and sampling are model choices. |
 | `attachments.json`: catalogs, IDs, order, points, offered availability/defaults | **CUR**, source/panel/menu review. | Loadout menus, points and share codec. Catalog order and magazine key order are compatibility-sensitive. Source branches alone do not establish an offered choice. |
 | `BARRELS[].adsTimeTierModByWeapon` | **GEN**, current XML + curated identities/routes. | `frosty-barrel-ads.py`; effective ADS coordinate. Other barrel fields retain their own maintenance history. |
@@ -42,14 +42,14 @@ separate dimensions. The review commit and counts are recorded in the [atlas](RE
 
 [Data reference](../DATA_REFERENCE.md) defines the field contracts and complete
 array inventory. [Source generation](SOURCES.md) identifies the scripts and their
-write/check behavior. The table above deliberately distinguishes generated
-subfields inside shared files from files that are fully generator-produced.
+write/check behavior. Some generators write only selected fields in a shared JSON file; others
+produce an entire file.
 
 ## Assumptions and interpretation
 
-The IDs below are stable anchors used by the diagrams. Some describe unproven
-native behavior; others describe intentional scope or presentation policy. A
-source coefficient can be exact while its use in a formula remains approximate.
+The diagrams refer to the IDs below. They cover unverified game behavior, model
+limits, and presentation choices. A source coefficient may be exact while the
+formula using it remains approximate.
 
 | ID | Where the decision lives | Assumption / boundary | Affected output and evidence boundary |
 |---|---|---|---|
@@ -57,7 +57,7 @@ source coefficient can be exact while its use in a formula remains approximate.
 | **A02** | `sim/applyAttachments.js`, `balance_tables.json`, generated mapping inputs | Interpret source coordinates per axis; compose selected steps with explicit signs; clamp final finite-table index. WB/GS alternative routes are not indiscriminately added. | ADS, movement, hip minima, draw/sprint and attachment effects. Literal source tables do not independently prove every native composition route. |
 | **A03** | `sim/applyAttachments.js`, per-mag reload exceptions | Animation override versus base/factor route, factory-default normalization, ammo/barrel velocity treatment. Retained fits/unsupported selector mappings require explicit disclosure. | Reload, velocity, default-relative effects, and downstream travel. Panel rounding alone does not supply exact internal values. |
 | **A04** | `sim/damage.js`, TTK orchestration in `ui/app.js` | 100 health; ideal head/body scenarios; all selected pellets contribute to one zone; first shot at time zero; no misses, armor, reload, healing or reaction/network delay; additive ADS/travel. | Damage/BTK/TTK. Ideal range output is conditional on this combat scenario. |
-| **A05** | `frosty-hit-zones.py`, grid evidence | Stripped material-grid semantics are inferred/corroborated using reproduced head/limb values. Source material/protection lookup is independent of drawn target regions. | Multipliers, damage bands and target damage. Does not certify native hitbox shape. |
+| **A05** | `frosty-hit-zones.py`, grid evidence | Stripped material-grid semantics are inferred/corroborated using reproduced head/limb values. Source material/protection lookup is independent of drawn target regions. | Multipliers, damage bands and target damage. Native hitbox shape remains unverified. |
 | **A06** | `sim/ballistics.js` | Analytic level drag time, 2D point-projectile RK4 law, finite horizon and zero-angle solve with no sight-height model. | Optional travel TTK and target vertical offset. Source gravity/drag does not prove the selected integrator/law. |
 | **A07** | `sim/core.js`, selected recoil override records | Uniform timed impulse delivery overlapping per-axis recovery, recovery age reset per shot, nonlinear decrement and overlap handling. PP-19 Flash Comp retains a selection-mapping gap. | Recoil path/spray and target patterns. Source amount/duration/recovery operands have stronger evidence than native operation/order. |
 | **A08** | `sim/core.js`, platform/control UI | Shared console amount factor `0.8836`; controller scope and expected-vector subtraction for 0–125% recoil control. | Contextual recoil, spray and target impacts. Random variation remains; source binding coverage and universal UI application are distinct. |
@@ -68,13 +68,13 @@ source coefficient can be exact while its use in a formula remains approximate.
 | **A13** | `sim/share-state.js`, `ui/capture.js` | Partial URL state, positional tokens, local display preferences and standardized bitmap capture. | A restored link may not reproduce a rerolled seed/layer setup; PNG records visible pixels, not full state. |
 | **A14** | `sim/required-data.js`, specific resolver/UI helpers | Required-data failures and legacy/presentation fallbacks are field-specific. Some helpers retain a fallback rather than failing closed. | See the explicit behavior table below; missing data must not be described globally as zero, default, or startup-fatal. |
 | **A15** | `.github/workflows/validate-data.yml`, `ship-surface.json`, hosting settings | Consistency tests are not game measurements; declared ship surface is not an exclusion/privacy filter; observed Pages and validation runs are separate. | Publication and assurance. Passing CI does not establish source remeasurement or a guaranteed deployment gate. |
-| **A16** | `weapons.json`, modifier records and legacy maps | Retain source fields whose independent behavior is not yet modeled, without silently inventing their native meaning. | Prevents equating presence in JSON or loading a file with execution of every contained operand. |
+| **A16** | `weapons.json`, modifier records and legacy maps | Retain source fields whose independent behavior is not yet modeled, without silently inventing their native meaning. | Some JSON operands are not used by the simulator. |
 
-The source can retire an **annotated field estimate** while A07/A09 or another
-formula assumption still applies. The UI's `assumed`/`assumedFields` markers are
-therefore a subset of this register, not a comprehensive global confidence score.
-Examples and unresolved details are in [Model limitations](../MODEL_LIMITATIONS.md)
-and [Attachment bugs and mismatches](../ATTACHMENT_BUGS.md).
+Replacing an estimated field with a source value removes that field's estimate.
+Formula assumptions such as A07/A09 still apply. The UI's
+`assumed`/`assumedFields` markers identify only annotated data assumptions.
+See [Model limitations](../MODEL_LIMITATIONS.md) and
+[Attachment bugs and mismatches](../ATTACHMENT_BUGS.md) for examples and open issues.
 
 ## Missing data and fallbacks
 
@@ -117,9 +117,7 @@ flowchart TB
 | Target image unavailable (`sim/target.js`) | Hit classification is unavailable. | Do not substitute an invisible native hitbox. |
 | Invalid/old share tokens (`sim/share-state.js`) | Ignore invalid choices, restore supported defaults and normalize dependencies/legacy rails. | Compatibility policy rather than source-data correction. |
 
-These cases document observed behavior at the audit commit; they are not a request
-to change the model or a claim that all fallbacks are desirable. The atlas leaves
-runtime behavior unchanged.
+These behaviors were checked at the review commit.
 
 ## Retained and non-executed material
 
