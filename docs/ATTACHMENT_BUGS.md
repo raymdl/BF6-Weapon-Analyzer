@@ -7,6 +7,8 @@ Each entry is one of these types:
   the description states, or applies a stat that the description does not state.
 - **Description error**: the game stats are correct, but the description states a
   wrong stat.
+- **Visual error**: the attachment looks wrong on one weapon compared with other
+  weapons. Stats and description are not affected.
 
 Descriptions that leave out an effect that the game applies consistently are not
 errors. They are in [Accepted text](#accepted-text).
@@ -21,6 +23,7 @@ Site status uses one of these values, followed by the value that the site applie
 - **Matches game**: in-game panels or captures confirm the site value.
 - **Matches source data**: the site value is from Frosty data. Not checked in game.
 - **Does not match game**: in-game evidence conflicts with the site value.
+- **Not modelled**: the site does not show this property.
 
 | # | Attachment | Weapons | Type | Error | Site status |
 |---|---|---|---|---|---|
@@ -35,6 +38,8 @@ Site status uses one of these values, followed by the value that the site applie
 | 8 | 30 Rnd fast | PW7A2 | Description error | The description states improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Matches game: reload speed ×1.13 |
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
 | 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches source data: source values |
+| 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
+| 12 | Iron Sights | SL9 | Visual error (candidate) | The iron sights keep the default render FOV 55. All other non-pistol weapons have their own value (18 to 50). Not checked in game. | Not modelled |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -259,6 +264,66 @@ weapon's default magazine. All values are source-generated. Not checked in game.
 | Weapon | Magazine | In-game text | Relative to default | Incorrect part |
 |---|---|---|---|---|
 | KTS100 MK8 | 50 Rnd (default 60 Rnd) | "Wide magazine for improved handling at the cost of capacity." | Reload +1, sway ×0.667; ADS, draw and ADS movement unchanged | "improved handling" (only reload and sway improve) |
+
+## Visual errors
+
+Found on 16 September 2026 in the 1.4.3.0 data. Full values, method and asset
+hashes are in the
+[optic render FOV report](../reference-data/provenance/frosty-optic-render-fov-2026-09-16.json)
+and the [Frosty reference notes](../reference-data/frosty/README.md#optic-render-fov-aim-zoom-and-names-16-september-2026).
+Render FOV is visual only. It does not change projectile mechanics or the stats on
+this site.
+
+### 11. RPK-74M and L115 optics use the default render FOV
+
+- **In-game.** On the RPK-74M, the R-MR 1.00x, ROX 1.50x and Mini Flex 1.00x look
+  smaller and further away than on the RPKM and M433. The left arm looks thin and
+  stretched, which is the result of a wider render FOV. The Osa-7 1.00x looks the same
+  on all three weapons (operator screenshots, 16 September).
+- **Frosty.** `RPK74M_WB` links the base parts of six optics. Other long guns link the
+  weapon versions:
+
+  | Optic | RPK-74M and L115 part | Render FOV | Other long guns | Render FOV |
+  |---|---|---|---|---|
+  | R-MR 1.00x | `WPM_SCP_RMR` | 55 | `WPM_SCP_RMR_Riser` or `_LowRiser` | 40 |
+  | ROX 1.50x | `WPM_SCP_RomeoX` | 55 | `_Riser` or `_LowRiser` | 40 |
+  | Mini Flex 1.00x | `WPM_SCP_EotechEFLX` | 55 | `_Riser` or `_LowRiser` | 40 |
+  | A-P2 1.75x | `WPM_SCP_AcroP2` | 55 | `_Riser` or `_LowRiser` | 40 |
+  | RO-S 1.25x | `WPM_SCP_TrijiconSRO` | 55 | `_Riser` or `_LowRiser` | 40 |
+  | CQ RDS 1.25x | `WPM_SCP_ShieldCQS` | 55 | `_Riser` or `_LowRiser` | 44 |
+
+  The render FOV is `Field_7768ebf2`; 55 is the default value. The base and riser parts
+  use the same model, aim controller and zoom level, so the render FOV is the only
+  relevant difference. The RPK-74M UI records already link the riser or mounted
+  descriptors (for example `AD_RMR_Mounted`).
+- **Other weapons.** L115A3_WB links the same six base parts. This is a source finding
+  only; it is not checked in game. The four pistols with optics (P18, ES 5.7, GGH-22,
+  M45A1) also use the base parts; this is probably intended. No other optic has a
+  different render FOV between weapons.
+- **Not affected.** RO-M 1.75x (Trijicon MRO): the RPK-74M uses `WPM_SCP_MRO` and
+  other weapons use `WPM_SCP_MRO_Tall`, but both have 34. The other RPK-74M optics use
+  the same part as the RPKM.
+- **Probable fix.** Link the `_Riser` versions of the six optics in `RPK74M_WB` and
+  `L115A3_WB`, as `RPKM_WB` does.
+- **Site.** Not modelled.
+
+### 12. SL9 iron sights use the default render FOV (candidate)
+
+- **Frosty.** The SL9 (`APDW_WB`) inline iron-sight part keeps render FOV 55. The iron
+  sights on all other non-pistol weapons have their own value, from 18 (KTS100 MK8) to
+  50 (PW7A2, USG-90). The P18, ES 5.7, GGH-22 and M357 Trait iron sights also keep 55.
+  The M45A1 (45), M44 (48) and vz. 61 (50) have their own values.
+- **In-game.** Not checked. Compare the SL9 iron sights with another SMG, as for
+  entry 11.
+- **Site.** Not modelled.
+
+**Related, not an error.** M2010 ESR SDO 3.50x: an inline `U_ATT_TrijiconSDO` model part
+holds 55 next to `WPM_SCP_TrijiconSDO` (34). It is not known which value the game uses.
+Check it in game before you add an entry.
+
+**Iron-sight zoom.** All iron sights zoom 1.50× (`Aim_1x50`), more than 1.00× optics.
+The operator confirmed this in game. It is consistent on all weapons, so it is not
+listed as an error. The site shows it as "Iron Sights (1.50x)".
 
 ## Accepted text
 

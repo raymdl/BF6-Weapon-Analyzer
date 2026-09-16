@@ -27,7 +27,7 @@ Discovery rules are instructions for a future collector, not executable automati
 
 ## Research findings
 
-`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 166 findings across 133 assets, including 62 ability and 56 equipment findings from the compatibility investigation and 26 selector-package findings from the 14 September description review. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
+`asset-findings.json` stores curated findings keyed by internal Frosty path. It contains 214 findings across 171 assets, including 62 ability and 56 equipment findings from the compatibility investigation, 26 selector-package findings from the 14 September description review and 16 optic render FOV findings from 16 September. The material-grid record inventory (`scripts/frosty-material-grid-inventory.py`) names grid types by GUID from Frosty's `FrostyPlugin/Sdk/ClassGuids.txt`; BF6 field-name hashes do not match standard hash algorithms, so hashing names from other sources does not work. It records contents, the question investigated, the result, evidence pointers, inspected asset hashes where available, build limits and revisit conditions.
 
 Check this file before repeating an investigation. Results apply to the stated question and method. `inconclusive` does not mean the asset is unrelated; `blocked-by-decoding` does not mean it lacks useful data. A `useful` result does not establish native runtime behavior beyond the cited evidence. There is no permanent exclusion flag.
 
@@ -259,6 +259,7 @@ After exporting a new build, re-run the consumer for each evidence source and co
 | Handling, barrel ADS, sniper brakes | `scripts/frosty-attachment-handling.py`, `scripts/frosty-barrel-ads.py`, `scripts/frosty-sniper-brakes.py` | the matching `*-generated.json` reports |
 | Arrays, damage, draw time, spread | `node --test scripts/source-arrays.test.mjs scripts/damage.test.mjs scripts/draw-time.test.mjs scripts/spread-distribution.test.mjs` | `frosty-array-review-2026-09-09.json`, `frosty-damage-curve-review-2026-09-13.json`, `frosty-draw-time-2026-09-09.json` |
 | Patch-note items | `docs/working/INTERDICTOR_1.4.3.0_CHECK.md` | 1.4.2.5 values in that file |
+| Optic render FOV and iron-sight zoom | Method in [Optic render FOV](#optic-render-fov-aim-zoom-and-names-16-september-2026); compare `opticRenderFovByPart`, `riserFamilyLinksByWeapon` and `ironSights` | `frosty-optic-render-fov-2026-09-16.json` |
 
 Field meanings found so far that help comparisons: optic point cost `Field_6ee865a5`; Precision table fields in the precision report `fieldMap`; semantic names from `GRX_Weapons` (`frosty-grx-field-names-2026-09-13.json`).
 
@@ -305,6 +306,45 @@ Composition observations:
   (`U_WPM_MAG_Std_W05`) add draw +1 (site -1), so other magazines are slower to draw
   than the default even without a draw operand.
 - `scripts/frosty-multi-package-scan.py` lists actions with several packages.
+
+## Optic render FOV, aim zoom and names (16 September 2026)
+
+From the RPK-74M report that optics look held further out. Full values, method and
+asset hashes: [optic render FOV report](../provenance/frosty-optic-render-fov-2026-09-16.json).
+Bug entry: [Attachment bugs](../../docs/ATTACHMENT_BUGS.md#visual-errors). Field
+meanings come from values and in-game screenshots; the field names are not decoded.
+
+| Asset / class | Field | Meaning |
+|---|---|---|
+| Optic part (`Class_3a930efc`), WB (`Class_76a3b0eb`) | `Field_7768ebf2` | Weapon render FOV in degrees. 55 is the default; the WB object at 59 is hip fire (links `DefaultHipFireRenderFovScale`) |
+| WB aim object (`Class_542ac52c`) | `Field_4f917af5` | Weapon default aim. All 63 weapons: `Aim_1x50` (`1_5xZoom`) |
+| Part aim override (`Class_fe7cd16a`) | `Field_4f917af5` | Optic aim, for example `Aim_01x00_PiP`. Iron-sight parts have none |
+| Zoom level (`Class_86ce0d70`) | `Field_65ad1346` / `Field_3edbd391` / `Field_28ae4fd6` | Camera FOV = 2·atan(tan 27.5° × factor / zoom) / 1/zoom / PiP main-camera factor |
+| AAM record (`Class_ccf7da47`) | `Field_fd698f51` → `Class_fbe1d3bc.Field_3d34898a` | In-game name string id (`0xadd3ecaf` = "R-MR 1.00x") |
+| | `Field_85b318a1` | AD asset: label and description string ids |
+
+**Find the part an attachment uses.** Take the attachment's selector GUIDs (already in
+`frosty-optic-category-mapping-*.json` `selectors`). In the WB, the part in
+`Field_0cd9f20f` whose `Field_819acc98` lists that GUID as a bare string is the part. It
+is an external `WPM_*` file or an inline `Class_897c99a7`. Follow its local pointers to
+`Field_7768ebf2` and to any `Class_fe7cd16a`. Ignore inline `U_ATT_*` model parts that
+list the same selector without an aim.
+
+**Results.**
+
+- **Base optic parts.** RPK-74M and L115 link the base `WPM_SCP_` RMR, RomeoX, EotechEFLX,
+  AcroP2, TrijiconSRO and ShieldCQS parts (render FOV 55). The other long guns use the
+  `_Riser` or `_LowRiser` parts (40; ShieldCQS 44). The four pistols with optics also use
+  the base parts.
+- **In-game check.** Confirmed on the RPK-74M: the optic looks smaller and the arm
+  stretched.
+- **Other optics.** No other optic has a different render FOV between weapons. The
+  Trijicon MRO base and `_Tall` parts are both 34.
+- **Iron sights.** No iron-sight part overrides the aim, so all iron sights zoom 1.50×.
+  1.00× optics zoom less; the operator confirmed this in game. The iron render FOV is 18
+  to 50 per weapon, except SL9 and four pistols at 55.
+- **Rejected causes.** Riser model height, the `Field_149939ab`/`Field_e9129d03` pair
+  (1.25–1.3 on some riser parts) and the zoom levels do not cause the difference.
 
 ## Scope
 

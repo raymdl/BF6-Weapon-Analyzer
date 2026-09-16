@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "status": "curated-findings-through-1.4.3.0",
   "recordedDate": "2026-09-16",
-  "scope": "Selected existing findings, not a complete audit. Claude findings from 12-14 SEP 2026 are merged. Physical mount slots and equipment dependencies from the 14 SEP 2026 compatibility investigation are merged. 1.4.3.0 source-comparison findings from 15 SEP 2026 are merged, including the SDK decoding limit that blocks attachment metadata. The 15 SEP 2026 SDK-independent decode supersedes the earlier blocked-by-decoding results for attachment metadata and the PiP aiming controllers. The 16 September continuation records scoped known-route closure and local site verification, while retaining unresolved file GUIDs and PiP layout uncertainty.",
+  "scope": "Selected existing findings, not a complete audit. Claude findings from 12-14 SEP 2026 are merged. Physical mount slots and equipment dependencies from the 14 SEP 2026 compatibility investigation are merged. 1.4.3.0 source-comparison findings from 15 SEP 2026 are merged, including the SDK decoding limit that blocks attachment metadata. The 15 SEP 2026 SDK-independent decode supersedes the earlier blocked-by-decoding results for attachment metadata and the PiP aiming controllers. The 16 September continuation records scoped known-route closure and local site verification, while retaining unresolved file GUIDs and PiP layout uncertainty. The 16 SEP 2026 optic render FOV investigation adds optic and iron-sight render FOV, aim zoom and optic name findings.",
   "policy": {
     "identity": "Internal Frosty path; case-insensitive matching; retain catalog spelling.",
     "results": [
@@ -115,6 +115,10 @@
     "unresolved-guid-trace-1.4.3.0": {
       "path": "reference-data/provenance/frosty-1.4.3.0-unresolved-guid-trace-2026-09-16.json",
       "reportSha256": "f892ea8f4cd047a7807391c3acf093a229c5239c3bb07b5a9d38fea76db2ae49"
+    },
+    "optic-render-fov-2026-09-16": {
+      "path": "reference-data/provenance/frosty-optic-render-fov-2026-09-16.json",
+      "reportSha256": "aa8fd5a037403ebb03cf7662ba0d966146c7070f9009305436e4de20a85b155b"
     }
   },
   "assets": {
@@ -6717,6 +6721,573 @@
             }
           ],
           "revisitWhen": "A target file or object becomes available, a new catalogue resolves the GUID, the referring pointer pairs change, or new consumer evidence answers a specific question. Reuse this trace when the same unresolved pairs recur; do not repeat the unchanged search."
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB": {
+      "contents": "Weapon blueprint: part list Field_0cd9f20f, render FOV objects Class_76a3b0eb, default aim Class_542ac52c.",
+      "findings": [
+        {
+          "question": "Why do several optics look held further out on the RPK-74M?",
+          "result": "useful",
+          "conclusion": "The blueprint links the base WPM_SCP_{RMR,RomeoX,EotechEFLX,AcroP2,TrijiconSRO,ShieldCQS} parts (render FOV Field_7768ebf2 = 55, the default) instead of the _Riser parts (40, ShieldCQS 44) that RPKM and M433 use. A wider render FOV makes the optic look smaller and the arm stretched. Confirmed in game for R-MR, ROX and Mini Flex; Osa-7 (same part on all weapons) looks the same. The AAM UI records already link riser or mounted AD descriptors.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/inGameConfirmation"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/riserFamilyLinksByWeapon"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "bcd4b6c0d372d407aa8635efbd6856f441fc491a05bb915a1b130918f508c0e5"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        },
+        {
+          "question": "What magnification do the iron sights use?",
+          "result": "useful",
+          "conclusion": "The inline iron-sight part (selector U_WPM_IronSights) has render FOV 23 and no aim override, so the weapon default Aim_1x50 (1_5xZoom, 1.50x) applies. Every weapon uses the same default aim.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/ironSights"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/ironSights"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "bcd4b6c0d372d407aa8635efbd6856f441fc491a05bb915a1b130918f508c0e5"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_WB": {
+      "contents": "Weapon blueprint.",
+      "findings": [
+        {
+          "question": "Does the L115 have the same optic render FOV links as the RPK-74M?",
+          "result": "useful",
+          "conclusion": "Yes. It links the same six base optic parts with render FOV 55. It is the only other non-pistol weapon that does. Not checked in game.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/riserFamilyLinksByWeapon"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "cd88855d7ed13b6b1c5fdd77f721ab77618643402768b2ea37d5674dc7a53823"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/SMG/APDW/APDW_WB": {
+      "contents": "Weapon blueprint.",
+      "findings": [
+        {
+          "question": "Is any iron-sight render FOV left at the default?",
+          "result": "inconclusive",
+          "conclusion": "The SL9 inline iron-sight part keeps render FOV 55, like the pistols P18, ES 5.7, GGH-22 and M357 Trait. All other non-pistol weapons have their own value (18 to 50). Probably the same kind of omission; not checked in game.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/ironSights"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/ironSights"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "0ac7a32eb417856d767d33f731624d71cf5485e809791aeded02f64859cd95ef"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_WB": {
+      "contents": "Weapon blueprint.",
+      "findings": [
+        {
+          "question": "Which render FOV applies to the SDO 3.50x?",
+          "result": "inconclusive",
+          "conclusion": "An inline U_ATT_TrijiconSDO part lists the same selector and holds 55, beside WPM_SCP_TrijiconSDO (34, Aim_03x50_PiP). Which value applies is not known.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov/unclear"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "e5c4f99a52b757d99964d3c89242834b3f31049744ce72a4abc955791da4552c"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/RMR/WPM_SCP_RMR": {
+      "contents": "Shared optic weapon part; render FOV Field_7768ebf2 on Class_3a930efc.",
+      "findings": [
+        {
+          "question": "Why does this optic look different on some weapons?",
+          "result": "useful",
+          "conclusion": "This base part (R-MR 1.00x) keeps render FOV 55. The _Riser and _LowRiser parts use 40. Only RPK74M, L115A3 and the pistols FiveSeven, G22, M18 and M45A1 link the base part. The parts share the visual entity and aim controller, so the difference is render FOV only.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/opticRenderFovByPart"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "d0ffe9008920ef716c32b8f04bb1116703c139c98fd695928d2e648f98dc2141"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/RomeoX/WPM_SCP_RomeoX": {
+      "contents": "Shared optic weapon part; render FOV Field_7768ebf2 on Class_3a930efc.",
+      "findings": [
+        {
+          "question": "Why does this optic look different on some weapons?",
+          "result": "useful",
+          "conclusion": "This base part (ROX 1.50x) keeps render FOV 55. The _Riser and _LowRiser parts use 40. Only RPK74M, L115A3 and the pistols FiveSeven, G22, M18 and M45A1 link the base part. The parts share the visual entity and aim controller, so the difference is render FOV only.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/opticRenderFovByPart"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "6ec94a1876d5a43cc48ba8d93d9bfc795202386129c64fae0124ac4064f494e0"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/EotechELFX/WPM_SCP_EotechEFLX": {
+      "contents": "Shared optic weapon part; render FOV Field_7768ebf2 on Class_3a930efc.",
+      "findings": [
+        {
+          "question": "Why does this optic look different on some weapons?",
+          "result": "useful",
+          "conclusion": "This base part (Mini Flex 1.00x) keeps render FOV 55. The _Riser and _LowRiser parts use 40. Only RPK74M, L115A3 and the pistols FiveSeven, G22, M18 and M45A1 link the base part. The parts share the visual entity and aim controller, so the difference is render FOV only.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/opticRenderFovByPart"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "b51d4f93034b99217de78241b2ae3be414a5df2d17b17a0cbece0240cf8cad75"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/AcroP2/WPM_SCP_AcroP2": {
+      "contents": "Shared optic weapon part; render FOV Field_7768ebf2 on Class_3a930efc.",
+      "findings": [
+        {
+          "question": "Why does this optic look different on some weapons?",
+          "result": "useful",
+          "conclusion": "This base part (A-P2 1.75x) keeps render FOV 55. The _Riser and _LowRiser parts use 40. Only RPK74M, L115A3 and the pistols FiveSeven, G22, M18 and M45A1 link the base part. The parts share the visual entity and aim controller, so the difference is render FOV only.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/opticRenderFovByPart"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "6e2f065ccaea72a294b6edc300b8ae8f8aac1f677dbd82ff87c05ecb31ccbad6"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconSRO/WPM_SCP_TrijiconSRO": {
+      "contents": "Shared optic weapon part; render FOV Field_7768ebf2 on Class_3a930efc.",
+      "findings": [
+        {
+          "question": "Why does this optic look different on some weapons?",
+          "result": "useful",
+          "conclusion": "This base part (RO-S 1.25x) keeps render FOV 55. The _Riser and _LowRiser parts use 40. Only RPK74M, L115A3 and the pistols FiveSeven, G22, M18 and M45A1 link the base part. The parts share the visual entity and aim controller, so the difference is render FOV only.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/opticRenderFovByPart"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "c00e8ad3b6fada482a3183c6b1f4bbce81fc3516c34006bb403df240c65ede39"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/CQS/WPM_SCP_ShieldCQS": {
+      "contents": "Shared optic weapon part; render FOV Field_7768ebf2 on Class_3a930efc.",
+      "findings": [
+        {
+          "question": "Why does this optic look different on some weapons?",
+          "result": "useful",
+          "conclusion": "This base part (CQ RDS 1.25x) keeps render FOV 55. The _Riser and _LowRiser parts use 44. Only RPK74M, L115A3 and the pistols FiveSeven, G22, M18 and M45A1 link the base part. The parts share the visual entity and aim controller, so the difference is render FOV only.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/opticRenderFovByPart"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "a0a23c7d19b191aa079a54e1ada83ad83632d2ed3078a1668eb25b63060376e0"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/RMR/WPM_SCP_RMR_Riser": {
+      "contents": "Shared optic weapon part.",
+      "findings": [
+        {
+          "question": "What differs between the base and _Riser RMR parts?",
+          "result": "useful",
+          "conclusion": "Same visual entity (VE_RMR) and aim (Aim_01x00_PiP). Render FOV 40 against 55, and an unknown pair Field_149939ab/Field_e9129d03 = 1.3 in one sub-block. The pair is not the cause: Trijicon MRO parts do not have it.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/fieldMeanings"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/rejectedHypotheses"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "1d3313b8c56ad5b346ec174acfda56650c6c8a40db42a7c8031356a9545a80f8"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconMRO/WPM_SCP_MRO": {
+      "contents": "Shared optic weapon part.",
+      "findings": [
+        {
+          "question": "Is the RPK-74M Trijicon MRO affected?",
+          "result": "useful",
+          "conclusion": "No. RPK74M links WPM_SCP_MRO and other weapons WPM_SCP_MRO_Tall; both have render FOV 34.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/opticRenderFov/notAffected"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "35b2ac379d52cef96936cc5645a2a6b881592a5044e93d02c3fbb9a2c800f3ec"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_1x50": {
+      "contents": "Aiming controller: DefaultBase and 1_5xZoom.",
+      "findings": [
+        {
+          "question": "Which aim do iron sights use?",
+          "result": "useful",
+          "conclusion": "Every weapon blueprint links Aim_1x50 as the default aim (Class_542ac52c.Field_4f917af5), and no iron-sight part overrides it, so iron sights zoom 1.50x. Operator confirmed that iron sights zoom more than 1.00x optics.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/findings/ironSights"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/fieldMeanings"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "f9fae021646fa942ae0ed15f05a97b45a673eb7323b6a0c0f7086b2fb3dad217"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/_ZoomLevels/1_5xZoom": {
+      "contents": "Zoom level (Class_86ce0d70).",
+      "findings": [
+        {
+          "question": "Which fields give the zoom level magnification and camera FOV?",
+          "result": "useful",
+          "conclusion": "Field_65ad1346 is the camera FOV (38.27812 = 2*atan(tan(27.5)/1.5)); Field_3edbd391 is 1/zoom; on PiP levels Field_28ae4fd6 widens the main camera. Values for all levels are in the report.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/fieldMeanings"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/zoomLevels"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "6b6ce936819f807e8fa1679e7d8f060b8f58e0820e19180d61e4a9b8c3e8c35a"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
+        }
+      ]
+    },
+    "Common/Hardware/Weapons/MG/RPK74M/AAM_RPK74M": {
+      "contents": "Weapon attachment UI metadata records (Class_ccf7da47).",
+      "findings": [
+        {
+          "question": "How are optic in-game names resolved?",
+          "result": "useful",
+          "conclusion": "Field_fd698f51 points to Class_fbe1d3bc; its Field_3d34898a is the name string id (for example 0xadd3ecaf = 'R-MR 1.00x'). Field_85b318a1 links the AD asset with the label and description ids. All 42 optic names are in the report.",
+          "buildInspected": {
+            "label": "1.4.3.0",
+            "exactBuildVerified": false,
+            "basis": "1.4.3.0 xml-overlay XML where present, otherwise the retained 1.4.2.5 XML export; see sources.assets in the cited report."
+          },
+          "evidence": [
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/fieldMeanings"
+            },
+            {
+              "source": "optic-render-fov-2026-09-16",
+              "pointer": "/opticNames"
+            }
+          ],
+          "assetHashesAtInspection": [
+            {
+              "format": "xml",
+              "sha256": "bb39863424c4481e20b4f491e58ef6ae468cd0da4774cdb042df664d8c35e00b"
+            }
+          ],
+          "revisitWhen": [
+            "Asset content or relevant dependency changes.",
+            "A game update changes optic presentation or the reported behavior.",
+            "The field-name hashes are decoded and contradict the inferred meanings."
+          ]
         }
       ]
     }
