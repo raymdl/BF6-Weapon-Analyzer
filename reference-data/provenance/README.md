@@ -31,9 +31,8 @@ for accepted changes and remaining boundaries. Evidence files below retain their
 original snapshot status; they are not rewritten when an implementation changes.
 
 
-**Evidence archive with active provenance references.** Files here record specific
-source snapshots and reviews. They are not fetched by the browser, and the newest
-filename is not automatically the accepted runtime rule. Use
+These files record source snapshots and reviews. The browser does not fetch them.
+File dates alone do not determine which values are accepted for runtime use. See
 [data sources](../../docs/DATA_SOURCES.md) for promotion policy and
 [model limitations](../../docs/MODEL_LIMITATIONS.md) for unresolved behavior.
 
@@ -48,9 +47,9 @@ filename is not automatically the accepted runtime rule. Use
 | Captures and composite UI/native behavior | `live-captures-*`, `loadout-screen-stat-*`, `composite-*`, `animation-state-*`, `frosty-native-*`, attachment UI metadata and tracked PNGs: observations and exploratory interpretations. |
 | External research and publication | [Offsets review](offsets-thread-review-2026-09-06.json), [Portal SDK review](portal-sdk-review-2026-09-06.json), [published 1.3.3.0 snapshot](site-archive-v1.3.3.0.json): historical review/publication identity. |
 
-Many files contain arrays of raw rows, source hashes, identity candidates, comparisons,
-observations or decisions. Their schemas and counts describe their own snapshot;
-they are not additional live stat ladders. The complete live array inventory is in
+Evidence arrays contain raw rows, source hashes, identity candidates, comparisons,
+observations, and decisions for their recorded snapshot. They are excluded from
+runtime stat ladders. The complete live array inventory is in
 [data reference](../../docs/DATA_REFERENCE.md), with all finite table values in
 [stat ladders](../../docs/STAT_LADDERS.md).
 
@@ -59,8 +58,7 @@ For local XML paths recorded before the export move, see the
 Resolve those inputs under the new root; retain the original evidence records.
 
 Source hashes identify original inputs. Site/comparison hashes can predate the
-integration they motivated. Do not replace them with today's hashes to make a
-historical report appear current. The original local XML, SDK and capture directories
+integration they motivated. Preserve those hashes when the current files change. The original local XML, SDK and capture directories
 are not all present in a clean checkout. Narrative context is preserved in the
 [research archive](../../docs/archive/README.md); screenshot-audit JSON/workbook and its
 separate validator live in the [attachment audit package](../attachment-audit/README.md).

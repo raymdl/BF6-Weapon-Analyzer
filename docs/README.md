@@ -1,11 +1,10 @@
 # Documentation index
 
-**Current implementation reference.** Reviewed on 13 September 2026 against the
-current data and runtime modules, including the Frosty hit-zone, ballistics,
-collateral, spread-distribution, light, per-weapon attachment generation and
-shared-rail updates. Later changes should update
-the affected guide alongside the implementation. Source-version
-labels describe evidence provenance, not an independent certification of all game behavior.
+The guides were reviewed on 13 September 2026 against the data and runtime
+modules, including Frosty hit zones, ballistics, collateral, spread distribution,
+lights, generated per-weapon modifiers, and shared rails. Update affected guides
+when implementation changes. Source-version labels record source identity;
+validation limits are documented separately.
 
 The [recoil guide](RECOIL_SPREAD_MODEL.md) covers timed delivery/recovery, Smooth
 exceptions, Heavy ADS factors, light hipfire factors, controller scaling and
@@ -13,7 +12,7 @@ source-exponent sampling. [Damage and ballistics](DAMAGE_BALLISTICS.md) covers
 per-weapon/ammo hit zones, manual-cycle timing, and explicit projectile selection.
 The [attachment model](ATTACHMENT_MODEL.md) explains sway percentages, spotting,
 regeneration, collateral, typed shared rails, generated handling, sniper brakes,
-Linear Comp/burst recoil and belt-box description mismatches. Source values and native arithmetic remain distinct.
+Linear Comp/burst recoil and belt-box description mismatches. Native arithmetic remains unverified where noted.
 
 The 14 September compatibility update generates physical mount slots and equipment
 dependencies from Frosty. See the [user controls](USER_GUIDE.md#build-and-compare-loadouts),
@@ -72,15 +71,13 @@ weapon descriptions, role tags, composite-stat UI assets and setting-label hashe
 
 ## Authority and historical material
 
-Current behavior is established by the implementation and maintained `data/`.
-The guides explain that behavior; source records explain why a value was accepted.
-A historical report's proposed change does not establish that the change shipped.
-An accepted source value does not prove the simulator reproduces native engine arithmetic.
+Implementation code and maintained `data/` define current behavior. Source records
+document accepted values; historical proposals require confirmation against the
+current implementation. Native engine arithmetic remains unverified where stated.
 
 [Archive index](archive/README.md) separates completed implementation records
-from dated investigations, with links to their current replacements. Historical
-records are preserved, including their original future-tense statements and
-superseded checkpoints. Read the archive index before treating a finding as current.
+from dated investigations, with links to their current replacements. Historical records retain their original proposals and superseded checkpoints.
+The archive index identifies their status and current replacements.
 
 [Evidence index](../reference-data/provenance/README.md) locates source snapshots
 and review outputs. The [attachment audit](../reference-data/attachment-audit/README.md)
@@ -90,12 +87,15 @@ local-only capture/migration material is ignored under `.local-archive/`.
 
 ## Keeping the documentation focused
 
-Keep the repository README at overview depth. Give each current guide one primary
-purpose; cross-link shared formulas instead of maintaining duplicate explanations.
-Tables belong in the ladder/reference guides, user interaction in the user guide,
-and completed work logs in the archive. Long source investigations can remain long
-when their evidence is useful; they must not become the current specification.
+Keep the repository README at overview depth. Document each formula in one guide
+and link to it elsewhere. Put tables in the ladder/reference guides, controls in
+the user guide, and completed work logs in the archive. Retain detailed research
+as evidence and document accepted behavior in the current guides.
+
+Use specific function names, inputs, outputs, units, and failure behavior.
+Remove promotional language, rhetorical questions, and repeated explanations.
+Keep source quotations, measured results, and uncertainty qualifications intact.
 
 When a model changes, update its formula, units, fallback behavior, evidence boundary,
 and at least one useful example. Check relative links and headings after moves.
-Do not introduce a documentation build system merely to render these Markdown guides.
+Use GitHub's Markdown and Mermaid rendering without a separate documentation build.

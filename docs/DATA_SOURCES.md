@@ -7,7 +7,7 @@ and 328 ammo choices. Collateral values come from the named ten-row source table
 with the operator-confirmed final index clamp. Regeneration uses 5 s plus the
 source ammo delay; sway compares supported amount factors against the default
 loadout; spotting multiplies source factors against the existing 54/150 m bases.
-The latter bases and native composition remain model assumptions.
+The spotting bases and native composition remain model assumptions.
 
 Source spread exponents now drive `radius = spread * U ** exponent`: usually 0.5,
 with 0.67 for moving ADS on Interdictor. Controller recoil uses 0.8836 in the
@@ -41,7 +41,7 @@ pairs and 53 Linear Comp/burst pairs. Two belt-box description mismatches remain
 unsupported spread penalties were removed after matched screenshot review. The
 [description mismatch list](ATTACHMENT_BUGS.md) tracks all reviewed text and data conflicts.
 The [maintenance workflow](../MAINTENANCE.md#regenerate-attachment-modifiers)
-provides the commands. Source-only ability branches do not establish availability.
+provides the commands. Availability also requires a reviewed site/menu identity.
 
 The [compatibility generator](../scripts/frosty-attachment-compatibility.py)
 separately reads physical slot assignments from root-listed ability branches and
@@ -71,8 +71,7 @@ source records, the Mini Scout range conflict and the related description findin
 
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json) identifies
 the accepted live dataset and its source policy. At this review it contains 63
-weapons and three source records. This is a mixed-source baseline, not a wholesale
-export of every field from a single game version.
+weapons and three source records. The baseline combines fields from multiple sources and versions.
 
 | Source record | Scope and evidence | Boundary |
 |---|---|---|
@@ -100,17 +99,16 @@ and roster count do not establish that every live value matches Sym or was reimp
 from this release; older field-level import notes remain historical provenance.
 
 The baseline's `damageStatus: verified` records project acceptance. Frosty is the
-golden damage source: every `damageSource` names the Frosty 1.4.2.5 projectile curve
+authoritative damage source: every `damageSource` names the Frosty 1.4.2.5 projectile curve
 that supplies `dmg`. The 59 curves formerly labelled Sym were compared with Frosty and
 kept their values; the M45A1 keeps an in-game-confirmed step at 75 m
 ([damage curve review](../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
 Weapon display names use the in-game spelling from Frosty localization
 ([method](working/FROSTY_DISPLAY_NAMES.md)).
 No weapon is estimated or uses donor values. BROD 3, EF88 and VSSM, which Sym does
-not publish, use Frosty 1.4.2.5 values. Fitted attachment effects and
-source-composition questions remain. Read field-level
-provenance and [limitations](MODEL_LIMITATIONS.md) rather than interpreting a single
-status as validation of the entire simulator.
+not publish, use Frosty 1.4.2.5 values. Fitted attachment effects and source-composition questions remain documented in
+field-level provenance and [limitations](MODEL_LIMITATIONS.md). The acceptance
+status applies to the data, not validation of every simulation formula.
 
 ## Local Frosty export location
 
@@ -154,10 +152,9 @@ flowchart LR
     Checks --> Browser["Browser fetch → selected build → outputs"]
 ```
 
-No scraper or research script automatically refreshes production JSON at startup.
-The maintained files in `data/` are the runtime contract. Research output is
-review input, and the test suite checks consistency/behavior rather than independently
-remeasuring the game.
+The browser loads committed `data/` files without running source-import scripts.
+Research output requires review before promotion. Tests check data consistency
+and implemented behavior; they do not measure the game.
 
 ## Frosty review pipeline
 
@@ -181,8 +178,8 @@ literal type. Numeric resemblance alone must not assign signedness or enum meani
 
 [research-attachment-modifiers.py](../scripts/research-attachment-modifiers.py)
 examines linked effect boundaries. [frosty-sdk-metadata.ps1](../scripts/frosty-sdk-metadata.ps1)
-extracts local SDK field-type evidence. Both are research aids, not an alternative
-production calculation engine or a reason to infer unresolved native behavior.
+extracts local SDK field-type evidence. Both produce research evidence. Neither runs production calculations or resolves
+unverified native behavior.
 
 [frosty-hit-zones.py](../scripts/frosty-hit-zones.py) is the production extractor for
 headshot and limb multipliers ([data/hit_zones.json](../data/hit_zones.json)). It reuses
@@ -210,15 +207,15 @@ checked limb values.
 
 The [evidence index](../reference-data/provenance/README.md) covers the remaining
 families. Original narrative investigations are in the [archive](archive/README.md).
-Their checkpoint counts and proposed next steps are historical, not current defects
-or a current implementation backlog.
+Their checkpoint counts and proposed next steps describe the recorded date.
+Check current guides before treating those items as unresolved work.
 
 ## Promotion and reproducibility rules
 
 Promote only the fields whose identity, units and intended activation are supported.
 Preserve distinct range points, source array order, repeated endpoint rows, and literal
-precision. Round for presentation only. An exact native coefficient can still need
-an explicitly reviewed simulator mapping; changing both together conceals that distinction.
+precision. Round for presentation only. Review source coefficients and their simulator mappings separately, and identify
+both in the diff when they change together.
 
 Compare a candidate against the current default build and the relevant composed
 loadouts. Preserve captures that contradict the candidate. Record why an override,
@@ -227,5 +224,5 @@ Keep the code/data change and its provenance reviewable together.
 
 A clean checkout runs the product and its tests. It cannot reproduce all historical
 research without the original XML exports, SDK, screenshots, or ignored local archive.
-Retained hashes identify inputs; they do not make missing inputs available. Do not
-regenerate evidence simply to force old snapshot hashes to match current live files.
+Retained hashes identify inputs but cannot reproduce missing files. Preserve
+historical snapshot hashes when live files change.

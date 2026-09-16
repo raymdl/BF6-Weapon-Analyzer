@@ -2,12 +2,11 @@
 
 [Documentation index](README.md) · [Sources](DATA_SOURCES.md) · [Stat ladders](STAT_LADDERS.md)
 
-This reference inventories the maintained live JSON at the review baseline. Angle
-values are degrees, range/spotting are metres, velocity is metres/second, reload
-and recoil-duration inputs are seconds, and handling ladders are milliseconds.
-Indices and tier shifts are unitless. Schema files cover selected contracts; they
-are not a complete schema for every current weapon/attachment field. The cross-file
-[validator](../scripts/validate-data.mjs) and consumers define the remaining contract.
+The runtime JSON uses degrees for angles, metres for range/spotting,
+metres/second for velocity, seconds for reload/recoil duration, and milliseconds
+for handling ladders. Indices and tier shifts are unitless. Schema files cover
+selected fields; the cross-file [validator](../scripts/validate-data.mjs) and
+consuming modules define the remaining contracts.
 
 ## File ownership
 
@@ -75,8 +74,7 @@ Grip and laser `frostyModifiers[weaponId]` override shared fields after selectio
 Magazine modifiers remain in each weapon's magazine records.
 
 Catalog entries use `id`, `name`, `pts` where applicable, and optional `noEffect`,
-`assumed`, or `assumedFields` annotations. An assumption annotation controls disclosure;
-it is not an instruction to disable the effect. Ammo point costs come from each
+`assumed`, or `assumedFields` annotations. Assumption annotations control disclosure without disabling effects. Ammo point costs come from each
 weapon's availability map. Supported effect families are:
 
 | Fields | Consumer / semantics |
@@ -116,8 +114,8 @@ selectable ergonomics. `WEAPON_MAG[id]` supplies `def`, ordered `mags`, `defAds`
 Magazine `descriptionMismatch` records observed behavior, evidence and recheck
 conditions when text conflicts with the current model; it does not apply a modifier.
 Magazine records add capacity `mag`, handling effects, reload fields, and optional
-`suspectedGameBug` evidence; the latter records expectations/observations without
-silently substituting the expected fixed-game value.
+`suspectedGameBug` evidence; the latter records expected and observed behavior while preserving the observed
+value.
 
 `WEAPON_AMMO[id]` supplies default `def`, ammo-ID → point-cost object `ammo`,
 per-ammo `effectOverrides`, `projectileOverrides`, and `velocityTreatments`.
@@ -142,15 +140,13 @@ All supported ammo selections have a projectile; missing selection data returns
 an unavailable model instead of global coefficients.
 
 `COLLATERAL_MULT_OVERRIDE[id][ammoId]` stores the exact generated multiplier,
-with the same 63/328 coverage. Its name is retained for compatibility; this is
-now the complete supported lookup rather than a short exception list.
+with the same 63/328 coverage. The name is retained for compatibility. The map contains every supported selection.
 
 ## Complete live array inventory
 
-`[id]` below means a map key, and `[]` means an array element. Repeated instances
-share one contract; scalar maps are listed separately afterward. This covers the
-arrays in live `data/`, including metadata arrays, rather than every historical
-research output or frozen site copy.
+`[id]` denotes a map key and `[]` an array element. Repeated instances share a
+contract. This inventory covers runtime `data/` and its metadata arrays; historical
+research outputs and frozen site copies are excluded. Scalar maps follow the table.
 
 | Array path | Element / order contract | Active use |
 |---|---|---|
@@ -188,15 +184,15 @@ and retains source precision. Screenshot comparisons use two decimal places.
 The [ladder guide](STAT_LADDERS.md) and [damage guide](DAMAGE_BALLISTICS.md) explain
 how these participate. `ballistics.projectiles` stores source coefficients, not flight-time arrays.
 
-`WEAPON_MAG[id].mags` is an object whose **key order nevertheless forms a share-token
-array**. `WEAPON_AMMO[id].ammo` is an ID/cost object. Do not convert either casually.
+`WEAPON_MAG[id].mags` is an object whose **key order determines share tokens**.
+`WEAPON_AMMO[id].ammo` maps IDs to costs. Preserve these structures and magazine
+key order for compatibility.
 
 Code also creates arrays for recoil `{x,y}` points, pre-shot spread, sampled impact
-zones, chart distance samples, and BTK table distances. These are derived display/
-simulation products, not source data. UI arrays for class order, magnifications,
-zero distances, spread-shot presets and target zone geometry are presentation/model
-settings in [ui/app.js](../ui/app.js) and [sim/target.js](../sim/target.js).
-They must not be presented as datamined weapon ladders. The fixed share-field order
+zones, chart distance samples, and BTK table distances. These arrays are computed at runtime. UI arrays for class order, magnifications,
+zero distances, spread-shot presets and target zone geometry are maintained
+presentation/model settings in [ui/app.js](../ui/app.js) and
+[sim/target.js](../sim/target.js); they have no datamined-ladder provenance. The fixed share-field order
 and token catalogs are documented in [architecture](ARCHITECTURE.md).
 
 `weaponSwayMult` stores source muzzle/magazine amount factors. The UI displays

@@ -2,10 +2,9 @@
 
 [Documentation index](README.md) · [Stat ladders](STAT_LADDERS.md) · [Data reference](DATA_REFERENCE.md)
 
-The authoritative composition function is
-[applyAttachments()](../sim/applyAttachments.js). [sim/loadout.js](../sim/loadout.js)
-owns defaults, availability and cost. Keeping selection and calculation separate
-lets the UI and URL decoder use the same supported choices.
+[applyAttachments()](../sim/applyAttachments.js) calculates the effective loadout.
+[sim/loadout.js](../sim/loadout.js) supplies defaults, availability, and cost to
+both the UI and URL decoder.
 
 ## Grip, laser and light slots
 
@@ -41,9 +40,8 @@ flowchart TD
     Policy --> Build["Return effective build; preserve raw weapon"]
 ```
 
-This is a dependency overview; axes can be evaluated independently. Modifier
-composition is not an arbitrary sequence of mutating the weapon once per dropdown.
-The resolver starts from the base record and combines the applicable fields once.
+The diagram shows dependencies. Each stat axis can be evaluated independently;
+the resolver combines its applicable fields once from the base weapon record.
 
 Blank selections have sight, muzzle, barrel, grip, laser, light, ammo, mag and
 ergo keys. Weapon defaults supply barrel/ammo/magazine IDs and replace shared
@@ -111,14 +109,14 @@ ADS times and movement speeds stay unchanged. The generator stops if a previousl
 source mapping. The linked review identifies these exceptions and the corrected
 CQB/Lightened labels in the older audit.
 
-There is no universal rule that a named attachment affects every aim state or every
-recovery phase. Heavy-type barrels use source ADS increment ×0.666667, firing
+Attachment effects are specific to an aim state and recovery phase.
+Heavy-type barrels use source ADS increment ×0.666667, firing
 coefficient ×1.837117 and firing/not-firing offsets ×0.666667. Increment precision
 is retained for simulation. AK4D recordings support the ADS reduction; transfer
 to other weapons and barrel variants remains source-based. Muzzle ADS recovery
 boosts scale the ADS firing offset. Light factors separately scale hipfire
 increase, firing coefficient, and firing/not-firing offsets. [Recoil and spread](RECOIL_SPREAD_MODEL.md) explains fallback parameters
-and why retained native fields are not all executed.
+and which retained native fields are unused.
 
 Flashlight, Hipfire Taclight, Combo Red and Combo Green use the same source factors
 across all 137 supported selections: increase ×0.666667, firing coefficient
@@ -225,8 +223,8 @@ The [exception register](../data/reload-exceptions.json) preserves four animatio
 record identities covering five magazine entries, plus a screenshot exception and
 composed-loadout evidence. The browser does not load this file; the maintained
 magazine fields contain the accepted values and validation checks their agreement.
-The PP-19 20 Fast suspected-game-bug note must not be treated as proof that expected
-fixed behavior has occurred.
+The PP-19 20 Fast suspected-game-bug note records observed behavior; a fix remains
+unconfirmed.
 
 Selected `magData.mag` overrides the base weapon's capacity. Do not infer chamber
 rules by subtracting one from every record. Empty reload is retained from the weapon;
@@ -242,10 +240,8 @@ that weapon/ammo pair; no override retains the base projectile data.
 Velocity composition has two stages. A `subsonic-tier` treatment applies the stored
 nonnegative tier to the 0.8 factor; an absolute treatment supplies the recorded
 pre-barrel velocity. Then the barrel applies `0.8^(−velTierMod)`. If the barrel has
-no tier field, a valid legacy `velMult` can be used. A present invalid tier does
-not silently fall back to the legacy multiplier. An invalid/unrecognized ammo
-treatment currently returns the base velocity with a diagnostic reason; it does
-not fail closed in the same way as an invalid barrel or reload input.
+no tier field, a valid legacy `velMult` can be used. A present invalid barrel tier returns an invalid result. An invalid or unrecognized
+ammo treatment returns the base velocity with a diagnostic reason.
 
 `_projectileVelocityMps` retains precision; `bulletVel` is the floored display value
 with a narrow floating-point epsilon correction. Physics must not reuse the floored
@@ -265,8 +261,8 @@ Collateral now resolves all supported selections through a generated per-weapon/
 map. The generator sums source base and ammo index shifts, clamps to 0..9, and
 retains exact table values. The old ammo/class fallback remains only for missing
 entries outside that complete supported map. Regeneration uses the source 5 s baseline plus the source ammo addition:
-Frangible +4 s and Flechette +2 s. These are descriptors, not a simulated
-penetration path or regenerating opponent in the TTK calculation.
+Frangible +4 s and Flechette +2 s. Collateral and regeneration are displayed values. TTK excludes penetration and
+healing simulation.
 
 Weapon sway displays the percentage change from muzzle and magazine source
 factors against the default loadout. Factors multiply: 1.5 means +50%, 0.6666667

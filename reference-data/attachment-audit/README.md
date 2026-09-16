@@ -1,10 +1,11 @@
 # Attachment audit reference
 
-This directory contains the completed screenshot-backed attachment reference. It is intentionally separate from the live site and normal validation.
+This directory contains the completed screenshot-backed attachment reference.
+The live site and normal validation do not load it.
 
 Current runtime contracts and promotion rules: [data sources](../../docs/DATA_SOURCES.md).
-Historical investigations: [archive index](../../docs/archive/README.md). A completed review
-package can retain provisional individual records; consult their statuses before promotion.
+Historical investigations: [archive index](../../docs/archive/README.md). Individual records may remain provisional after the package review is complete.
+Check their statuses before promotion.
 
 The current generated hit-zone values match the 321 reviewed ammo-panel readings.
 Later light effects use decoded Frosty fields, not rounded panel percentages; see
@@ -18,7 +19,7 @@ the [current provenance index](../provenance/README.md) for that separate eviden
 - `build-workbook.py` — regenerates the workbook from the canonical JSON.
 
 `Weapon Attachments/` is the local sorted screenshot library used by the JSON paths and workbook
-links. It is deliberately ignored by Git because of its size. The completed OCR/correction workflow
+links. Git ignores it because of its size. The completed OCR/correction workflow
 and other intermediate material remain under `/.local-archive/2026-08-12-live-baseline/`. Neither is
 required by a clean clone, CI, deployment, or the live application.
 
@@ -28,7 +29,8 @@ required by a clean clone, CI, deployment, or the live application.
 node reference-data/attachment-audit/validate-reference.mjs
 ```
 
-This command derives counts from the current reference. It does not pin the old roster or record totals, so future weapons and attachments can be added without updating unrelated assertions.
+The validator derives roster and record counts from the current reference.
+Adding records does not require updating fixed-count assertions.
 
 ## Use for a future game update
 
@@ -39,4 +41,5 @@ This command derives counts from the current reference. It does not pin the old 
 5. Promote only approved values into `data/`.
 6. Run the normal product validator and tests.
 
-OCR output is evidence for review, not an authoritative value. Do not restore the archived dated correction scripts as a normal pipeline.
+Visually verify OCR output before accepting values. Keep dated correction scripts
+in the archive rather than the routine update process.
