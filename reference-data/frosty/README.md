@@ -1,8 +1,12 @@
-# Frosty asset collection
+# Frosty reference data
+
+This folder holds the Frosty JSON data: the asset watchlist, the per-asset findings and
+the collection manifest schema. The written knowledge (tools, field meanings, asset links,
+results and open questions) is in [`docs/frosty/`](../../docs/frosty/README.md).
 
 `asset-watchlist.json` is the shared collection plan. It is an initial seed, not a completed export or proof that all listed references affect gameplay.
 
-After a game update, follow [docs/GAME_UPDATE_GUIDE.md](../../docs/GAME_UPDATE_GUIDE.md) and record what you learn back here.
+After a game update, follow [docs/GAME_UPDATE_GUIDE.md](../../docs/GAME_UPDATE_GUIDE.md). Record per-asset results in `asset-findings.json` and everything else in the `docs/frosty/` pages.
 
 ## Current seed
 
@@ -49,6 +53,7 @@ Research results are in the topic pages under [`docs/frosty/`](../../docs/frosty
   optic categories, render FOV and zoom.
 - [UI text](../../docs/frosty/UI_TEXT.md): names, labels and descriptions.
 - [Tools](../../docs/frosty/TOOLS.md): export, decoding and generators.
+- [Open questions](../../docs/frosty/OPEN_QUESTIONS.md): everything still unresolved.
 
 Anomaly scans are described in the
 [game update guide](../../docs/GAME_UPDATE_GUIDE.md#stage-6--consistency-scans).

@@ -1,7 +1,7 @@
 # Frosty documentation consolidation
 
 Started 16 September 2026. Operator approved `docs/frosty/` and a staged cleanup;
-the operator reviews at the end. Archive this file when all stages are done.
+the operator reviews at the end. Completed 16 September 2026; archived.
 
 ## Target
 
@@ -17,7 +17,7 @@ the operator reviews at the end. Archive this file when all stages are done.
 | 1 | `FIELD_MAP.md` and `TOOLS.md`; split from `reference-data/frosty/README.md` | done |
 | 2 | `DATA_GRAPH.md`, `WEAPONS.md`, `ATTACHMENTS.md`, `UI_TEXT.md` | done |
 | 3 | `OPEN_QUESTIONS.md`; archive the merged working files | done |
-| 4 | Links, tool references, indexes, final checks | in progress |
+| 4 | Links, tool references, indexes, final checks | done |
 
 ## Decisions
 

@@ -66,6 +66,7 @@ completed analysis does not mean every native mechanic is known.
 | [Stat discovery](FROSTY_STAT_DISCOVERY_2026-09-13.md) | Merged into [Frosty weapons](../frosty/WEAPONS.md) (recovery law, traits, unused fields). The operator decided to document these without model changes. |
 | [Attachment generation review](FROSTY_ATTACHMENT_GENERATION_2026-09-13.md) | Merged into [Frosty attachments](../frosty/ATTACHMENTS.md#generated-site-values). Its comparison counts describe the pre-change snapshot. |
 | [Unmatched Frosty records, 13 September](FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) | Dated reverse inventory. Its open items are in [open questions](../frosty/OPEN_QUESTIONS.md#attachments). |
+| [Frosty docs consolidation](FROSTY_DOCS_CONSOLIDATION.md) | Completed plan for the move to [`docs/frosty/`](../frosty/README.md). |
 | [Optics from Frosty data plan](OPTIC_FROSTY_SOURCE_PLAN.md) | Completed. Stage 3 used `frosty-optic-category-mapping-2026-09-15.json`; `scripts/optic-costs.test.mjs` checks the result. |
 
 ## Dated investigations and mixed progress logs
