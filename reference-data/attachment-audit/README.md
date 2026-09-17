@@ -18,7 +18,7 @@ the [current provenance index](../provenance/README.md) for that separate eviden
 - `validate-reference.mjs` — explicit structural and consistency check.
 - `build-workbook.py` — regenerates the workbook from the canonical JSON.
 - `screenshot-stat-corrections-2026-09-17.json` — 439 screenshot-verified stat corrections applied to the canonical JSON, with screenshot paths and hashes.
-- `precision-screenshot-corrections-2026-09-17.json` — 23 further Precision readings re-read from screenshots during the Precision lookup investigation; applied by `scripts/frosty-precision-check.mjs` at load time, not to the historical audit file.
+- `precision-screenshot-corrections-2026-09-17.json` — 23 Precision and 7 Hipfire/Control/Mobility readings re-read from screenshots during the composite-stat investigation; applied by `scripts/frosty-precision-check.mjs` and `scripts/frosty-composite-check.mjs` at load time, not to the historical audit file.
 
 `Weapon Attachments/` is the local sorted screenshot library used by the JSON paths and workbook
 links. Git ignores it because of its size. The completed OCR/correction workflow

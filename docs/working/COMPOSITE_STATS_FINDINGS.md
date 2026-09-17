@@ -26,9 +26,9 @@ and are not these stats ([UI strings review](../frosty/UI_TEXT.md#numerical-stat
 | Stat | Source form | Status |
 |---|---|---|
 | Precision | Per-weapon lookup tables in game configuration data | Tables extracted; 2,900 of 3,010 comparable audit readings match after the 17 SEP transcription corrections (14 SEP record: 2,719) |
-| Control | Delegate `ControlAttributeDelegate1` | Formula candidate matches baselines and Companion's table |
-| Hipfire | Delegate `HipfireAttributeDelegate` | Formula candidate for rows 1-15; branches unresolved |
-| Mobility | Delegate `MobilityAttributeDelegate` | Weighted index candidate; two inputs unresolved |
+| Control | Delegate `ControlAttributeDelegate1` | Formula matches 2,946 of 3,127 audit readings (17 SEP); RateOfFire input shows no effect in the one controlled comparison |
+| Hipfire | Delegate `HipfireAttributeDelegate` | Formula with the delegate ladder and √1.2 light gate matches 2,955 of 3,127; shotgun and sidearm lasers unresolved |
+| Mobility | Delegate `MobilityAttributeDelegate` | Weighted index reproduces 2,507 of 2,636 attachment deltas; base inputs and `CanFireWhileSprinting` (Compact Handstop) unresolved |
 
 ## Precision
 
@@ -154,7 +154,8 @@ M = `WeaponZoomedMoveSpeedMultiplierIndex`, Z = `MovingZoomedMinAnglesIndex`.
 
 ```sh
 python scripts/frosty-precision-tables.py --root "PATH_TO_EXPORT" --out reference-data/provenance/frosty-precision-tables-2026-09-14.json
-node scripts/frosty-precision-check.mjs
+node scripts/frosty-precision-check.mjs --out reference-data/provenance/frosty-precision-check-2026-09-17.json
+node scripts/frosty-composite-check.mjs --out reference-data/provenance/frosty-composite-check-2026-09-17.json
 ```
 
 - [frosty-precision-tables-2026-09-14.json](../../reference-data/provenance/frosty-precision-tables-2026-09-14.json):
@@ -277,7 +278,68 @@ the 6 SEP evidence.
 - Remaining differences: re-read the SVDM and SVK-8.6 screenshots (24 records) before any rule
   work; a change to the lookup is not justified by the current evidence.
 
+### Control, Hipfire and Mobility against the full audit (17 SEP, same branch)
+
+`scripts/frosty-composite-check.mjs` resolves every mapped record, applies the ledgers, and tests
+Control and Hipfire absolutely and all three as deltas against the same-slot None/default capture
+(the delta test needs no Mobility base inputs). Result file:
+[frosty-composite-check-2026-09-17.json](../../reference-data/provenance/frosty-composite-check-2026-09-17.json).
+
+| Stat | Absolute match | Delta match | Main remaining families |
+|---|---|---|---|
+| Control | 2,946 of 3,127 | 2,535 of 2,636 | EF88, BROD 3 and VSSM capture build (finding 2); KV9 and RPK-74M barrel/ergonomics sessions transcribed 50 for 60; M87A1 grips read 7 for a candidate 8 (flat curve at R above 3) |
+| Hipfire | 2,955 of 3,127 | 2,561 of 2,636 | shotgun lasers; lasers on snipers, SVK-8.6, VSSM and sidearms show no change; readings of 11 (transcription) |
+| Mobility | not tested | 2,507 of 2,636 | Compact Handstop +4 on 12 weapons; laser readings inconsistent per weapon; sniper and shotgun magazines |
+
+Rules established or corrected by this check:
+
+1. **Control uses unrounded recoil.** The resolver rounds `recoilV` to three decimals; recomputing
+   R and V from the tier ladders moves 30 readings across a .5 boundary in the observed direction
+   (2,914 → 2,944) with no regressions. The delegate is therefore evaluated on the exact ladder
+   product. Two more moved with ledger corrections.
+2. **Hipfire ladder.** The delegate's 18-value ladder has 8.032 at row 0 where the site's spread
+   table holds 7.4: suppressed LMGs, SVK-8.6 and PSR read 22 (8.032 → 22.1), not 23 (7.4 → 23.1).
+   Suppressors on rifles read 34 from 40 and 40 from 47, one row up the ladder, as the site models.
+3. **Hipfire light gate.** Flashlight and hip tac light multiply by √1.2 (ADS tac light does not):
+   96 readings of +4 on 48 weapons. Laser/light combos apply the laser tiers and the gate
+   (KORD 6P67 Combo Green 40 → 59, ES 5.7 Combo Green 54 → 78). The ES 5.7 flashlight screenshot
+   shows 59 where the audit had 50.
+4. **Shotgun Hipfire base.** All four shotguns read about 40 (M1014 and M87A1 40, KS-18K 42,
+   DB-12 39), which is ladder row 3 (2.432 → 40.37), the registry `UnzoomedMinAnglesArrayIndex`;
+   the site's -9 ammunition shift into the shotgun rows (1.444 → 52.4) is not what the panel uses.
+   Shotgun laser previews rise 40 → 45 → 49 → 52 for one to three tiers (M87A1 screenshot 45
+   confirmed); the main ladder predicts 47, 54, 62. Unresolved.
+5. **Laser Hipfire by class.** Lasers change Hipfire on rifles, carbines, SMGs and most LMGs as
+   the site's tiers predict, but not on the bolt-action snipers, SVK-8.6, VSSM or the sidearms
+   (readings unchanged), and KTS100 50 mW Green moves one row, not three. The site's laser hip
+   tiers are rifle-class values; per-class source modifiers were not traced.
+6. **Mobility weights hold.** With site index deltas (deploy, ADS-time, sprint, ADS-move, moving
+   ADS spread) the candidate `D + 4A + S + 2M + 4Z` reproduces the delta families: ribbed stubby
+   +4 (63 of 69), heavy barrels -4 (52 of 58), light barrels +4 (33 of 38), lasers +4 (144 of
+   165), 6H64 and Classic Vertical -6 (93 of 98), 20-round magazines +14 (12 of 14). The M433
+   Extended screenshot reads 48 from 52 where the audit had 52.
+7. **Compact Handstop and `CanFireWhileSprinting`.** The Compact Handstop reads +4 on all twelve
+   PDW weapons with no ADS-time, sprint or ADS-move change. Its only source payload is
+   `WPM_BTM_HandStopPDW_W10` → `Class_a00773e3` `7e6751a8…` with one boolean `Field_18774676 = True`;
+   no other modifier uses that class, and every Precision table object carries
+   `Field_18774676 = False`. This fits the delegate's `CanFireWhileSprinting` input at weight 4.
+   Supported hypothesis; the hash is not decoded. The site catalog marks the handstop `noEffect`.
+8. **Controlled RateOfFire comparison** (Control section above) stands.
+
+Rejected or unresolved: sidearm Fast Deploy ergonomics predict +2 and read 0 (five sidearms,
+flat sidearm deploy table); shotgun grips change the recoil readout but not Control on the
+M87A1 (candidate 8 against 7); laser Mobility readings vary +14, +12, +6 and 0 for the same
+laser on different weapons (M433 screenshot: +4, as predicted, audit 66). Transcription is the
+likely cause of most single-weapon outliers; none was adjudicated beyond the screenshots listed
+in the ledger.
+
 ### Implementation scope supported by this evidence
+
+Control, Hipfire and Mobility: the candidates reproduce 94 to 97 per cent of the audit, and
+every screenshot opened against a disagreement showed the candidate value. A display could
+support rifles, carbines, SMGs and LMGs for all three stats with the rules above; shotgun and
+sidearm Hipfire with lasers, sniper and sidearm laser effects, and the Mobility base inputs
+(deploy index, `CanFireWhileSprinting`) need source work first.
 
 Precision lookup by the six keys reproduces 2,900 of 3,010 comparable readings and all
 independently confirmed 13-14 SEP panels; the remaining differences are attributed to
