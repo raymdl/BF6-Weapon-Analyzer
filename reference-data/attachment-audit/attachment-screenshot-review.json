@@ -4225,7 +4225,7 @@
         "hipfire": 40,
         "precision": 25,
         "control": 34,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -8019,7 +8019,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 40,
+        "precision": 30,
         "control": 56,
         "mobility": 46,
         "fireModes": [
@@ -8708,7 +8708,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 40,
+        "precision": 30,
         "control": 56,
         "mobility": 50,
         "fireModes": [
@@ -12389,7 +12389,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -12450,7 +12450,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "spotOnFire3dM": {
@@ -12527,7 +12527,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "spotOnFire3dM": {
@@ -12603,7 +12603,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -12692,7 +12692,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -12780,7 +12780,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -12943,7 +12943,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -13044,7 +13044,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -13145,7 +13145,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "spotOnFire3dM": {
@@ -13233,7 +13233,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -13324,7 +13324,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -13427,7 +13427,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -13492,7 +13492,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "mobility": {
@@ -13596,7 +13596,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 200,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "mobility": {
@@ -13714,7 +13714,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -13806,7 +13806,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "mobility": {
@@ -13885,7 +13885,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -13950,7 +13950,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "mobility": {
@@ -14042,7 +14042,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -14146,7 +14146,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -14207,7 +14207,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -14310,7 +14310,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -14398,7 +14398,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -14501,7 +14501,7 @@
         "adsMoveSpeedMultiplier": 0.54,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -14617,7 +14617,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -14719,7 +14719,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -14834,7 +14834,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -14936,7 +14936,7 @@
         "adsMoveSpeedMultiplier": 0.54,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -15064,7 +15064,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 133,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -15192,7 +15192,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -15253,7 +15253,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -15354,7 +15354,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -15442,7 +15442,7 @@
         "adsMoveSpeedMultiplier": 0.54,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.5,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -15557,7 +15557,7 @@
         "adsMoveSpeedMultiplier": 0.54,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.5,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -15685,7 +15685,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -15787,7 +15787,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -15849,7 +15849,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 200,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "mobility": {
@@ -15951,7 +15951,7 @@
         "adsMoveSpeedMultiplier": 0.54,
         "sprintRecoveryMs": 200,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "magazineSize": {
@@ -16068,7 +16068,7 @@
         "adsMoveSpeedMultiplier": 0.54,
         "sprintRecoveryMs": 200,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "magazineSize": {
@@ -16185,7 +16185,7 @@
         "adsMoveSpeedMultiplier": 0.54,
         "sprintRecoveryMs": 233,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "magazineSize": {
@@ -16314,7 +16314,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -16375,7 +16375,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -16480,7 +16480,7 @@
         "adsMoveSpeedMultiplier": 0.67,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "mobility": {
@@ -16569,7 +16569,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "headshotMultiplier": {
@@ -16657,7 +16657,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "opponentHealthRegenDelaySeconds": {
@@ -16746,7 +16746,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "headshotMultiplier": {
@@ -16835,7 +16835,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -16896,7 +16896,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "reloadTimeSeconds": {
@@ -16971,7 +16971,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -17032,7 +17032,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.6,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "control": {
@@ -17121,7 +17121,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -17184,7 +17184,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -17261,7 +17261,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "mobility": {
@@ -17360,7 +17360,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -17437,7 +17437,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -17514,7 +17514,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -17626,7 +17626,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -17738,7 +17738,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -17803,7 +17803,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {},
       "source": {
@@ -17865,7 +17865,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -17941,7 +17941,7 @@
         "adsMoveSpeedMultiplier": 0.6,
         "sprintRecoveryMs": 167,
         "recoilAmountDegrees": 0.7,
-        "recoilVariationDegrees": 20.4
+        "recoilVariationDegrees": 20.3
       },
       "statComparisons": {
         "hipfire": {
@@ -19681,7 +19681,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 45,
+        "precision": 35,
         "control": 65,
         "mobility": 48,
         "fireModes": [
@@ -20311,7 +20311,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 45,
+        "precision": 35,
         "control": 65,
         "mobility": 52,
         "fireModes": [
@@ -51284,7 +51284,7 @@
         "magazineSize": 20,
         "hipfire": 40,
         "precision": 18,
-        "control": 45,
+        "control": 35,
         "mobility": 46,
         "fireModes": [
           "AUTO",
@@ -51876,7 +51876,7 @@
         "magazineSize": 20,
         "hipfire": 40,
         "precision": 18,
-        "control": 45,
+        "control": 35,
         "mobility": 50,
         "fireModes": [
           "AUTO",
@@ -55175,7 +55175,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 36,
         "mobility": 52,
         "fireModes": [
@@ -56087,7 +56087,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 48,
         "fireModes": [
@@ -56204,7 +56204,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 52,
         "fireModes": [
@@ -56306,7 +56306,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 47,
         "mobility": 48,
         "fireModes": [
@@ -56423,7 +56423,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 50,
         "mobility": 46,
         "fireModes": [
@@ -56681,7 +56681,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 52,
         "fireModes": [
@@ -56797,7 +56797,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 56,
         "fireModes": [
@@ -56926,7 +56926,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 47,
         "mobility": 52,
         "fireModes": [
@@ -57042,7 +57042,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 50,
         "mobility": 50,
         "fireModes": [
@@ -57688,7 +57688,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 54,
         "fireModes": [
@@ -57892,7 +57892,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 48,
         "fireModes": [
@@ -58007,7 +58007,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 52,
         "fireModes": [
@@ -58109,7 +58109,7 @@
         "rateOfFireRpm": 900,
         "magazineSize": 30,
         "hipfire": 40,
-        "precision": 60,
+        "precision": 20,
         "control": 45,
         "mobility": 52,
         "fireModes": [
@@ -66771,7 +66771,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -66833,7 +66833,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -66910,7 +66910,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -66987,7 +66987,7 @@
         "hipfire": 47,
         "precision": 89,
         "control": 60,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67091,7 +67091,7 @@
         "hipfire": 47,
         "precision": 89,
         "control": 60,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67196,7 +67196,7 @@
         "hipfire": 47,
         "precision": 91,
         "control": 53,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67314,7 +67314,7 @@
         "hipfire": 40,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67417,7 +67417,7 @@
         "hipfire": 40,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67520,7 +67520,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67610,7 +67610,7 @@
         "hipfire": 40,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67714,7 +67714,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -67960,7 +67960,7 @@
         "hipfire": 47,
         "precision": 90,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -68038,7 +68038,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -68100,7 +68100,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -68165,7 +68165,7 @@
         "hipfire": 51,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -68243,7 +68243,7 @@
         "hipfire": 51,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -70226,7 +70226,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71144,7 +71144,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71207,7 +71207,7 @@
         "hipfire": 47,
         "precision": 86,
         "control": 53,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71416,7 +71416,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71506,7 +71506,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71596,7 +71596,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71687,7 +71687,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71749,7 +71749,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71826,7 +71826,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71890,7 +71890,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -71954,7 +71954,7 @@
         "hipfire": 47,
         "precision": 88,
         "control": 57,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78296,7 +78296,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78357,7 +78357,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78434,7 +78434,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78524,7 +78524,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78627,7 +78627,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78730,7 +78730,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78834,7 +78834,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -78911,7 +78911,7 @@
         "hipfire": 47,
         "precision": 28,
         "control": 34,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -79028,7 +79028,7 @@
         "hipfire": 40,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -79131,7 +79131,7 @@
         "hipfire": 40,
         "precision": 27,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -79247,7 +79247,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -79337,7 +79337,7 @@
         "hipfire": 40,
         "precision": 27,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -79454,7 +79454,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -80096,7 +80096,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 40,
+        "precision": 30,
         "control": 48,
         "mobility": 54,
         "fireModes": [
@@ -80715,7 +80715,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 40,
+        "precision": 30,
         "control": 48,
         "mobility": 58,
         "fireModes": [
@@ -81078,7 +81078,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -81610,7 +81610,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -81673,7 +81673,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 35,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -81869,7 +81869,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -81959,7 +81959,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82049,7 +82049,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82110,7 +82110,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82187,7 +82187,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82251,7 +82251,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82379,7 +82379,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82442,7 +82442,7 @@
         "hipfire": 47,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82505,7 +82505,7 @@
         "hipfire": 51,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82582,7 +82582,7 @@
         "hipfire": 51,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82659,7 +82659,7 @@
         "hipfire": 54,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82813,7 +82813,7 @@
         "hipfire": 62,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -82890,7 +82890,7 @@
         "hipfire": 71,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -83147,7 +83147,7 @@
         "hipfire": 59,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -83224,7 +83224,7 @@
         "hipfire": 68,
         "precision": 26,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -87029,7 +87029,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -87815,7 +87815,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -87879,7 +87879,7 @@
         "hipfire": 47,
         "precision": 24,
         "control": 33,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88090,7 +88090,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88181,7 +88181,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88272,7 +88272,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88334,7 +88334,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88399,7 +88399,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88477,7 +88477,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88633,7 +88633,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88697,7 +88697,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88760,7 +88760,7 @@
         "hipfire": 54,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -88920,7 +88920,7 @@
         "hipfire": 62,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -89000,7 +89000,7 @@
         "hipfire": 71,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -89266,7 +89266,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -89328,7 +89328,7 @@
         "hipfire": 47,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -89393,7 +89393,7 @@
         "hipfire": 51,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -89472,7 +89472,7 @@
         "hipfire": 51,
         "precision": 25,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -90587,7 +90587,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 45,
+        "precision": 35,
         "control": 50,
         "mobility": 54,
         "fireModes": [
@@ -91201,7 +91201,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 45,
+        "precision": 35,
         "control": 50,
         "mobility": 58,
         "fireModes": [
@@ -92342,7 +92342,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -92748,7 +92748,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -92809,7 +92809,7 @@
         "hipfire": 47,
         "precision": 31,
         "control": 36,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93017,7 +93017,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93105,7 +93105,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93193,7 +93193,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93282,7 +93282,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93345,7 +93345,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93501,7 +93501,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93563,7 +93563,7 @@
         "hipfire": 54,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93719,7 +93719,7 @@
         "hipfire": 62,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -93796,7 +93796,7 @@
         "hipfire": 71,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -94053,7 +94053,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -94114,7 +94114,7 @@
         "hipfire": 47,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -94176,7 +94176,7 @@
         "hipfire": 51,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -94252,7 +94252,7 @@
         "hipfire": 51,
         "precision": 32,
         "control": 38,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -133071,7 +133071,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 45,
         "mobility": 44,
         "fireModes": [
@@ -133174,7 +133174,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 45,
         "mobility": 44,
         "fireModes": [
@@ -133276,7 +133276,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 45,
         "mobility": 44,
         "fireModes": [
@@ -133441,7 +133441,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 40,
         "mobility": 44,
         "fireModes": [
@@ -134593,7 +134593,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 40,
         "fireModes": [
@@ -134712,7 +134712,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 44,
         "fireModes": [
@@ -135190,7 +135190,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 44,
         "fireModes": [
@@ -135308,7 +135308,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 48,
         "fireModes": [
@@ -135948,7 +135948,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 45,
         "mobility": 46,
         "fireModes": [
@@ -136091,7 +136091,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 45,
         "mobility": 50,
         "fireModes": [
@@ -136236,7 +136236,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 46,
         "fireModes": [
@@ -136443,7 +136443,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 40,
         "fireModes": [
@@ -136560,7 +136560,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 44,
         "fireModes": [
@@ -136664,7 +136664,7 @@
         "rateOfFireRpm": 771,
         "magazineSize": 30,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 25,
         "control": 48,
         "mobility": 44,
         "fireModes": [
@@ -142715,7 +142715,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 45,
+        "precision": 35,
         "control": 57,
         "mobility": 36,
         "fireModes": [
@@ -143883,7 +143883,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 4,
+        "precision": 34,
         "control": 53,
         "mobility": 30,
         "fireModes": [
@@ -143945,7 +143945,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 34,
-        "precision": 4,
+        "precision": 34,
         "control": 53,
         "mobility": 30,
         "fireModes": [
@@ -144022,7 +144022,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 4,
+        "precision": 34,
         "control": 53,
         "mobility": 34,
         "fireModes": [
@@ -144099,7 +144099,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 40,
-        "precision": 4,
+        "precision": 34,
         "control": 53,
         "mobility": 30,
         "fireModes": [
@@ -144176,7 +144176,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 47,
-        "precision": 4,
+        "precision": 34,
         "control": 53,
         "mobility": 30,
         "fireModes": [
@@ -144253,7 +144253,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 40,
-        "precision": 4,
+        "precision": 34,
         "control": 53,
         "mobility": 34,
         "fireModes": [
@@ -144343,7 +144343,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 100,
         "hipfire": 47,
-        "precision": 4,
+        "precision": 34,
         "control": 53,
         "mobility": 34,
         "fireModes": [
@@ -144772,7 +144772,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 56,
         "mobility": 30,
         "fireModes": [
@@ -146079,7 +146079,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 26,
         "fireModes": [
@@ -146194,7 +146194,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 30,
         "fireModes": [
@@ -146667,7 +146667,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 30,
         "fireModes": [
@@ -146783,7 +146783,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 34,
         "fireModes": [
@@ -147412,7 +147412,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 32,
         "fireModes": [
@@ -147616,7 +147616,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 26,
         "fireModes": [
@@ -147730,7 +147730,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 30,
         "fireModes": [
@@ -147832,7 +147832,7 @@
         "rateOfFireRpm": 830,
         "magazineSize": 100,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 59,
         "mobility": 30,
         "fireModes": [
@@ -149231,7 +149231,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 35,
         "mobility": 30,
         "fireModes": [
@@ -149434,7 +149434,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 40,
         "mobility": 30,
         "fireModes": [
@@ -150567,7 +150567,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 26,
         "fireModes": [
@@ -150682,7 +150682,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 30,
         "fireModes": [
@@ -150950,7 +150950,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 46,
         "mobility": 26,
         "fireModes": [
@@ -151321,7 +151321,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 30,
         "fireModes": [
@@ -151440,7 +151440,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 34,
         "fireModes": [
@@ -151568,7 +151568,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 46,
         "mobility": 30,
         "fireModes": [
@@ -152107,7 +152107,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 32,
         "fireModes": [
@@ -152251,7 +152251,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 26,
         "fireModes": [
@@ -152369,7 +152369,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 30,
         "fireModes": [
@@ -152472,7 +152472,7 @@
         "rateOfFireRpm": 600,
         "magazineSize": 50,
         "hipfire": 29,
-        "precision": 65,
+        "precision": 25,
         "control": 43,
         "mobility": 30,
         "fireModes": [
@@ -170540,7 +170540,7 @@
         "rateOfFireRpm": 360,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 76,
+        "precision": 80,
         "control": 28,
         "mobility": 52,
         "fireModes": [
@@ -171822,7 +171822,7 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 80,
-        "control": 26,
+        "control": 30,
         "mobility": 48,
         "fireModes": [
           "SINGLE"
@@ -171931,7 +171931,7 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 80,
-        "control": 26,
+        "control": 30,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -172040,7 +172040,7 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 80,
-        "control": 26,
+        "control": 30,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -172245,8 +172245,8 @@
         "rateOfFireRpm": 360,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 76,
-        "control": 26,
+        "precision": 84,
+        "control": 35,
         "mobility": 46,
         "fireModes": [
           "SINGLE"
@@ -172506,8 +172506,8 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 80,
-        "control": 26,
-        "mobility": 52,
+        "control": 30,
+        "mobility": 56,
         "fireModes": [
           "SINGLE"
         ],
@@ -172738,9 +172738,9 @@
         "rateOfFireRpm": 360,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 80,
-        "control": 40,
-        "mobility": 52,
+        "precision": 84,
+        "control": 35,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -172884,7 +172884,7 @@
         "hipfire": 34,
         "precision": 86,
         "control": 37,
-        "mobility": 48,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -173028,7 +173028,7 @@
         "hipfire": 34,
         "precision": 76,
         "control": 26,
-        "mobility": 46,
+        "mobility": 58,
         "fireModes": [
           "SINGLE"
         ],
@@ -173131,8 +173131,8 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 78,
-        "control": 37,
-        "mobility": 46,
+        "control": 28,
+        "mobility": 58,
         "fireModes": [
           "SINGLE"
         ],
@@ -173275,8 +173275,8 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 80,
-        "control": 40,
-        "mobility": 56,
+        "control": 30,
+        "mobility": 54,
         "fireModes": [
           "SINGLE"
         ],
@@ -173474,8 +173474,8 @@
         "rateOfFireRpm": 360,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 84,
-        "control": 45,
+        "precision": 80,
+        "control": 30,
         "mobility": 48,
         "fireModes": [
           "SINGLE"
@@ -173585,8 +173585,8 @@
         "rateOfFireRpm": 360,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 86,
-        "control": 37,
+        "precision": 80,
+        "control": 30,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -173683,7 +173683,7 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 80,
-        "control": 26,
+        "control": 30,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -173858,7 +173858,7 @@
         "hipfire": 34,
         "precision": 76,
         "control": 26,
-        "mobility": 52,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -173965,7 +173965,7 @@
         "hipfire": 34,
         "precision": 76,
         "control": 26,
-        "mobility": 48,
+        "mobility": 60,
         "fireModes": [
           "SINGLE"
         ],
@@ -174344,7 +174344,7 @@
         "hipfire": 34,
         "precision": 74,
         "control": 25,
-        "mobility": 50,
+        "mobility": 52,
         "fireModes": [
           "SINGLE"
         ],
@@ -174463,7 +174463,7 @@
         "hipfire": 34,
         "precision": 76,
         "control": 26,
-        "mobility": 50,
+        "mobility": 54,
         "fireModes": [
           "SINGLE"
         ],
@@ -174938,7 +174938,7 @@
         "damage": 29,
         "rateOfFireRpm": 360,
         "magazineSize": 20,
-        "hipfire": 34,
+        "hipfire": 40,
         "precision": 76,
         "control": 26,
         "mobility": 52,
@@ -175179,7 +175179,7 @@
         "damage": 29,
         "rateOfFireRpm": 360,
         "magazineSize": 20,
-        "hipfire": 34,
+        "hipfire": 54,
         "precision": 76,
         "control": 26,
         "mobility": 52,
@@ -175263,7 +175263,7 @@
         "hipfire": 47,
         "precision": 76,
         "control": 26,
-        "mobility": 52,
+        "mobility": 56,
         "fireModes": [
           "SINGLE"
         ],
@@ -175353,7 +175353,7 @@
         "damage": 29,
         "rateOfFireRpm": 360,
         "magazineSize": 20,
-        "hipfire": 34,
+        "hipfire": 54,
         "precision": 76,
         "control": 26,
         "mobility": 56,
@@ -175621,7 +175621,7 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 66,
+        "precision": 67,
         "control": 31,
         "mobility": 52,
         "fireModes": [
@@ -175713,7 +175713,7 @@
         "magazineSize": 10,
         "hipfire": 40,
         "precision": 68,
-        "control": 43,
+        "control": 33,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -175816,7 +175816,7 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 66,
+        "precision": 67,
         "control": 31,
         "mobility": 52,
         "fireModes": [
@@ -176007,7 +176007,7 @@
         "magazineSize": 10,
         "hipfire": 40,
         "precision": 68,
-        "control": 31,
+        "control": 33,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -176111,8 +176111,8 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 66,
-        "control": 31,
+        "precision": 70,
+        "control": 33,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -176322,7 +176322,7 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 34,
-        "precision": 66,
+        "precision": 67,
         "control": 31,
         "mobility": 52,
         "fireModes": [
@@ -176531,7 +176531,7 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 34,
-        "precision": 68,
+        "precision": 67,
         "control": 31,
         "mobility": 52,
         "fireModes": [
@@ -176714,7 +176714,7 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 74,
+        "precision": 66,
         "control": 31,
         "mobility": 48,
         "fireModes": [
@@ -177033,7 +177033,7 @@
         "damage": 29,
         "rateOfFireRpm": 450,
         "magazineSize": 10,
-        "hipfire": 34,
+        "hipfire": 44,
         "precision": 66,
         "control": 31,
         "mobility": 52,
@@ -177438,7 +177438,7 @@
         "hipfire": 40,
         "precision": 66,
         "control": 31,
-        "mobility": 52,
+        "mobility": 58,
         "fireModes": [
           "SINGLE"
         ],
@@ -177542,7 +177542,7 @@
         "hipfire": 40,
         "precision": 68,
         "control": 33,
-        "mobility": 52,
+        "mobility": 58,
         "fireModes": [
           "SINGLE"
         ],
@@ -177851,8 +177851,8 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 66,
-        "control": 31,
+        "precision": 73,
+        "control": 38,
         "mobility": 48,
         "fireModes": [
           "SINGLE"
@@ -178090,7 +178090,7 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 71,
+        "precision": 78,
         "control": 43,
         "mobility": 46,
         "fireModes": [
@@ -178333,7 +178333,7 @@
         "hipfire": 40,
         "precision": 71,
         "control": 36,
-        "mobility": 52,
+        "mobility": 56,
         "fireModes": [
           "SINGLE"
         ],
@@ -178461,8 +178461,8 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 71,
-        "control": 36,
+        "precision": 73,
+        "control": 38,
         "mobility": 52,
         "fireModes": [
           "SINGLE"
@@ -178579,9 +178579,9 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 73,
+        "precision": 75,
         "control": 41,
-        "mobility": 48,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -178716,9 +178716,9 @@
         "rateOfFireRpm": 450,
         "magazineSize": 10,
         "hipfire": 40,
-        "precision": 75,
+        "precision": 78,
         "control": 43,
-        "mobility": 46,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -178855,7 +178855,7 @@
         "hipfire": 40,
         "precision": 68,
         "control": 33,
-        "mobility": 46,
+        "mobility": 54,
         "fireModes": [
           "SINGLE"
         ],
@@ -178999,7 +178999,7 @@
         "hipfire": 40,
         "precision": 71,
         "control": 36,
-        "mobility": 52,
+        "mobility": 54,
         "fireModes": [
           "SINGLE"
         ],
@@ -179483,7 +179483,7 @@
         "hipfire": 40,
         "precision": 66,
         "control": 31,
-        "mobility": 54,
+        "mobility": 52,
         "fireModes": [
           "SINGLE"
         ],
@@ -179547,7 +179547,7 @@
         "hipfire": 40,
         "precision": 66,
         "control": 31,
-        "mobility": 54,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -180153,7 +180153,7 @@
         "hipfire": 40,
         "precision": 66,
         "control": 31,
-        "mobility": 50,
+        "mobility": 52,
         "fireModes": [
           "SINGLE"
         ],
@@ -180217,7 +180217,7 @@
         "hipfire": 40,
         "precision": 63,
         "control": 29,
-        "mobility": 48,
+        "mobility": 52,
         "fireModes": [
           "SINGLE"
         ],
@@ -180322,7 +180322,7 @@
         "hipfire": 40,
         "precision": 66,
         "control": 31,
-        "mobility": 46,
+        "mobility": 52,
         "fireModes": [
           "SINGLE"
         ],
@@ -180414,7 +180414,7 @@
         "hipfire": 40,
         "precision": 66,
         "control": 31,
-        "mobility": 48,
+        "mobility": 52,
         "fireModes": [
           "SINGLE"
         ],
@@ -180961,7 +180961,7 @@
         "damage": 29,
         "rateOfFireRpm": 450,
         "magazineSize": 10,
-        "hipfire": 40,
+        "hipfire": 54,
         "precision": 66,
         "control": 31,
         "mobility": 52,
@@ -181123,7 +181123,7 @@
         "damage": 29,
         "rateOfFireRpm": 450,
         "magazineSize": 10,
-        "hipfire": 47,
+        "hipfire": 54,
         "precision": 66,
         "control": 31,
         "mobility": 56,
@@ -182090,7 +182090,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 67,
         "control": 16,
         "mobility": 44,
         "fireModes": [
@@ -182510,7 +182510,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 69,
+        "precision": 65,
         "control": 15,
         "mobility": 44,
         "fireModes": [
@@ -182573,9 +182573,9 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 73,
+        "precision": 65,
         "control": 15,
-        "mobility": 44,
+        "mobility": 40,
         "fireModes": [
           "SINGLE"
         ],
@@ -183184,9 +183184,9 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 70,
         "control": 17,
-        "mobility": 44,
+        "mobility": 40,
         "fireModes": [
           "SINGLE"
         ],
@@ -183301,7 +183301,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 70,
         "control": 17,
         "mobility": 44,
         "fireModes": [
@@ -183406,8 +183406,8 @@
         "magazineSize": 20,
         "hipfire": 34,
         "precision": 72,
-        "control": 15,
-        "mobility": 44,
+        "control": 18,
+        "mobility": 40,
         "fireModes": [
           "SINGLE"
         ],
@@ -183524,7 +183524,7 @@
         "hipfire": 34,
         "precision": 65,
         "control": 15,
-        "mobility": 44,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -183871,7 +183871,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 65,
+        "precision": 70,
         "control": 17,
         "mobility": 44,
         "fireModes": [
@@ -184656,7 +184656,7 @@
         "hipfire": 34,
         "precision": 67,
         "control": 16,
-        "mobility": 44,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -184801,7 +184801,7 @@
         "hipfire": 34,
         "precision": 70,
         "control": 17,
-        "mobility": 48,
+        "mobility": 46,
         "fireModes": [
           "SINGLE"
         ],
@@ -185008,9 +185008,9 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 74,
+        "precision": 70,
         "control": 17,
-        "mobility": 42,
+        "mobility": 40,
         "fireModes": [
           "SINGLE"
         ],
@@ -185126,7 +185126,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 77,
+        "precision": 70,
         "control": 17,
         "mobility": 44,
         "fireModes": [
@@ -185230,7 +185230,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 67,
+        "precision": 70,
         "control": 17,
         "mobility": 44,
         "fireModes": [
@@ -185348,7 +185348,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 70,
+        "precision": 65,
         "control": 15,
         "mobility": 44,
         "fireModes": [
@@ -185415,7 +185415,7 @@
         "hipfire": 34,
         "precision": 65,
         "control": 15,
-        "mobility": 44,
+        "mobility": 50,
         "fireModes": [
           "SINGLE"
         ],
@@ -185545,7 +185545,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 70,
+        "precision": 65,
         "control": 15,
         "mobility": 42,
         "fireModes": [
@@ -185651,7 +185651,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 15,
         "hipfire": 34,
-        "precision": 70,
+        "precision": 65,
         "control": 15,
         "mobility": 52,
         "fireModes": [
@@ -185756,9 +185756,9 @@
         "rateOfFireRpm": 257,
         "magazineSize": 25,
         "hipfire": 34,
-        "precision": 70,
+        "precision": 65,
         "control": 15,
-        "mobility": 44,
+        "mobility": 40,
         "fireModes": [
           "SINGLE"
         ],
@@ -186047,7 +186047,7 @@
         "hipfire": 34,
         "precision": 65,
         "control": 15,
-        "mobility": 42,
+        "mobility": 46,
         "fireModes": [
           "SINGLE"
         ],
@@ -186295,7 +186295,7 @@
         "rateOfFireRpm": 257,
         "magazineSize": 20,
         "hipfire": 34,
-        "precision": 62,
+        "precision": 65,
         "control": 15,
         "mobility": 44,
         "fireModes": [
@@ -186655,7 +186655,7 @@
         "damage": 41,
         "rateOfFireRpm": 257,
         "magazineSize": 20,
-        "hipfire": 34,
+        "hipfire": 40,
         "precision": 65,
         "control": 15,
         "mobility": 44,
@@ -186739,7 +186739,7 @@
         "hipfire": 34,
         "precision": 65,
         "control": 15,
-        "mobility": 44,
+        "mobility": 48,
         "fireModes": [
           "SINGLE"
         ],
@@ -186899,7 +186899,7 @@
         "damage": 41,
         "rateOfFireRpm": 257,
         "magazineSize": 20,
-        "hipfire": 34,
+        "hipfire": 54,
         "precision": 65,
         "control": 15,
         "mobility": 44,
@@ -186983,7 +186983,7 @@
         "hipfire": 47,
         "precision": 65,
         "control": 15,
-        "mobility": 44,
+        "mobility": 48,
         "fireModes": [
           "SINGLE"
         ],
@@ -187074,10 +187074,10 @@
         "damage": 41,
         "rateOfFireRpm": 257,
         "magazineSize": 20,
-        "hipfire": 47,
+        "hipfire": 54,
         "precision": 65,
         "control": 15,
-        "mobility": 44,
+        "mobility": 48,
         "fireModes": [
           "SINGLE"
         ],
@@ -201290,7 +201290,7 @@
       "attachmentDescription": "Allows the weapon to be used aggressively, increasing overall rate of fire but reducing controllability.",
       "stats": {
         "damage": 35,
-        "rateOfFireRpm": 450,
+        "rateOfFireRpm": 800,
         "magazineSize": 20,
         "hipfire": 51,
         "precision": 19,
@@ -203786,7 +203786,7 @@
         ],
         "reloadTimeSeconds": 2.75,
         "muzzleVelocityMps": 742,
-        "adsTimeMs": 367,
+        "adsTimeMs": 300,
         "headshotMultiplier": 1.75,
         "longRangeDamage": 62,
         "spotOnFire3dM": 54,
@@ -207887,7 +207887,7 @@
         ],
         "reloadTimeSeconds": 3.234,
         "muzzleVelocityMps": 760,
-        "adsTimeMs": 250,
+        "adsTimeMs": 300,
         "headshotMultiplier": 1.75,
         "longRangeDamage": 62,
         "spotOnFire3dM": 54,
@@ -217842,7 +217842,7 @@
         ],
         "reloadTimeSeconds": 2.984,
         "muzzleVelocityMps": 680,
-        "adsTimeMs": 250,
+        "adsTimeMs": 300,
         "headshotMultiplier": 1.75,
         "longRangeDamage": 62,
         "spotOnFire3dM": 54,
@@ -222288,7 +222288,7 @@
         "muzzleVelocityMps": 400,
         "adsTimeMs": 200,
         "headshotMultiplier": 1.34,
-        "longRangeDamage": 32,
+        "longRangeDamage": 27,
         "spotOnFire3dM": 54,
         "spotOnFire2dM": 150,
         "opponentHealthRegenDelaySeconds": 5,
@@ -237016,7 +237016,7 @@
         "reloadInAds": true,
         "adsMoveSpeedMultiplier": 0.82,
         "sprintRecoveryMs": 83,
-        "recoilAmountDegrees": 1.5,
+        "recoilAmountDegrees": 1.4,
         "recoilVariationDegrees": 12
       },
       "statComparisons": {
@@ -240476,7 +240476,7 @@
         "reloadTimeSeconds": 3.4,
         "muzzleVelocityMps": 440,
         "adsTimeMs": 200,
-        "headshotMultiplier": 1.75,
+        "headshotMultiplier": 1.5,
         "longRangeDamage": 25,
         "spotOnFire3dM": 54,
         "spotOnFire2dM": 150,
@@ -242857,7 +242857,7 @@
         "reloadTimeSeconds": 1.934,
         "muzzleVelocityMps": 280,
         "adsTimeMs": 167,
-        "headshotMultiplier": 1.34,
+        "headshotMultiplier": 1.5,
         "longRangeDamage": 12,
         "spotOnFire3dM": 27,
         "spotOnFire2dM": 64,
@@ -242987,7 +242987,7 @@
         "reloadTimeSeconds": 1.934,
         "muzzleVelocityMps": 350,
         "adsTimeMs": 167,
-        "headshotMultiplier": 1.34,
+        "headshotMultiplier": 1.5,
         "longRangeDamage": 12,
         "spotOnFire3dM": 54,
         "spotOnFire2dM": 150,
@@ -245292,7 +245292,7 @@
         "spotOnFire3dM": 27,
         "spotOnFire2dM": 64,
         "opponentHealthRegenDelaySeconds": 5,
-        "collateralMultiplier": 0.57,
+        "collateralMultiplier": 0.5,
         "reloadInAds": true,
         "adsMoveSpeedMultiplier": 0.75,
         "sprintRecoveryMs": 100,
@@ -256279,7 +256279,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256340,7 +256340,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256417,7 +256417,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256494,7 +256494,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 33,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256576,7 +256576,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 33,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256659,7 +256659,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256722,7 +256722,7 @@
         "hipfire": 47,
         "precision": 28,
         "control": 28,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256825,7 +256825,7 @@
         "hipfire": 40,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -256928,7 +256928,7 @@
         "hipfire": 40,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -257032,7 +257032,7 @@
         "hipfire": 40,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -257135,7 +257135,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -257225,7 +257225,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -257390,10 +257390,10 @@
         "damage": 35,
         "rateOfFireRpm": 654,
         "magazineSize": 20,
-        "hipfire": 11,
+        "hipfire": 54,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -257484,7 +257484,7 @@
         "hipfire": 47,
         "precision": 33,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -257623,7 +257623,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 56,
         "fireModes": [
           "AUTO",
@@ -257732,7 +257732,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 60,
         "fireModes": [
           "AUTO",
@@ -258245,7 +258245,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 60,
         "fireModes": [
           "AUTO",
@@ -258354,7 +258354,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 64,
         "fireModes": [
           "AUTO",
@@ -259200,7 +259200,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 62,
         "fireModes": [
           "AUTO",
@@ -259398,7 +259398,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 56,
         "fireModes": [
           "AUTO",
@@ -259507,7 +259507,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 60,
         "fireModes": [
           "AUTO",
@@ -259603,7 +259603,7 @@
         "magazineSize": 20,
         "hipfire": 47,
         "precision": 28,
-        "control": 45,
+        "control": 35,
         "mobility": 60,
         "fireModes": [
           "AUTO",
@@ -259713,7 +259713,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260149,7 +260149,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260210,7 +260210,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260274,7 +260274,7 @@
         "hipfire": 71,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260353,7 +260353,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260509,7 +260509,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260664,7 +260664,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260726,7 +260726,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260787,7 +260787,7 @@
         "hipfire": 54,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -260866,7 +260866,7 @@
         "hipfire": 47,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -261009,7 +261009,7 @@
         "hipfire": 51,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -261087,7 +261087,7 @@
         "hipfire": 62,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -261166,7 +261166,7 @@
         "hipfire": 51,
         "precision": 27,
         "control": 31,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -264605,7 +264605,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -265405,7 +265405,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -265468,7 +265468,7 @@
         "hipfire": 47,
         "precision": 39,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -265691,7 +265691,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -265781,7 +265781,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -265871,7 +265871,7 @@
         "hipfire": 47,
         "precision": 41,
         "control": 42,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266014,7 +266014,7 @@
         "hipfire": 47,
         "precision": 41,
         "control": 42,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266171,7 +266171,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266232,7 +266232,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266296,7 +266296,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266451,7 +266451,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266514,7 +266514,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266576,7 +266576,7 @@
         "hipfire": 54,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266734,7 +266734,7 @@
         "hipfire": 62,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -266813,7 +266813,7 @@
         "hipfire": 71,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -267076,7 +267076,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -267137,7 +267137,7 @@
         "hipfire": 47,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -267201,7 +267201,7 @@
         "hipfire": 51,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -267280,7 +267280,7 @@
         "hipfire": 51,
         "precision": 40,
         "control": 40,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -268266,7 +268266,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 34,
         "mobility": 60,
         "fireModes": [
@@ -268370,7 +268370,7 @@
         "damage": 35,
         "rateOfFireRpm": 720,
         "magazineSize": 30,
-        "hipfire": 11,
+        "hipfire": 40,
         "precision": 23,
         "control": 37,
         "mobility": 60,
@@ -268475,7 +268475,7 @@
         "damage": 35,
         "rateOfFireRpm": 720,
         "magazineSize": 30,
-        "hipfire": 11,
+        "hipfire": 40,
         "precision": 24,
         "control": 37,
         "mobility": 60,
@@ -268685,7 +268685,7 @@
         "damage": 35,
         "rateOfFireRpm": 720,
         "magazineSize": 30,
-        "hipfire": 11,
+        "hipfire": 40,
         "precision": 24,
         "control": 37,
         "mobility": 60,
@@ -268807,7 +268807,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -269119,7 +269119,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 42,
         "mobility": 56,
         "fireModes": [
@@ -269230,7 +269230,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 42,
         "mobility": 60,
         "fireModes": [
@@ -269328,7 +269328,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 45,
         "mobility": 56,
         "fireModes": [
@@ -269687,7 +269687,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 42,
         "mobility": 60,
         "fireModes": [
@@ -269798,7 +269798,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 42,
         "mobility": 64,
         "fireModes": [
@@ -269922,7 +269922,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 45,
         "mobility": 60,
         "fireModes": [
@@ -270548,7 +270548,7 @@
         "rateOfFireRpm": 720,
         "magazineSize": 30,
         "hipfire": 47,
-        "precision": 65,
+        "precision": 25,
         "control": 42,
         "mobility": 62,
         "fireModes": [
@@ -270687,7 +270687,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -271480,7 +271480,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -271545,7 +271545,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 35,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -271759,7 +271759,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -271851,7 +271851,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -271942,8 +271942,8 @@
         "magazineSize": 30,
         "hipfire": 47,
         "precision": 24,
-        "control": 4,
-        "mobility": 50,
+        "control": 40,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272087,8 +272087,8 @@
         "magazineSize": 30,
         "hipfire": 47,
         "precision": 24,
-        "control": 4,
-        "mobility": 50,
+        "control": 40,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272247,7 +272247,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272311,7 +272311,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272390,7 +272390,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272456,7 +272456,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272521,7 +272521,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272587,7 +272587,7 @@
         "hipfire": 47,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272652,7 +272652,7 @@
         "hipfire": 54,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272815,7 +272815,7 @@
         "hipfire": 62,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -272897,7 +272897,7 @@
         "hipfire": 71,
         "precision": 23,
         "control": 37,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "BURST",
@@ -273647,7 +273647,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -273709,7 +273709,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -273787,7 +273787,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -273865,7 +273865,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 34,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -273949,7 +273949,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 34,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -274033,7 +274033,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 34,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -274118,7 +274118,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -274182,7 +274182,7 @@
         "hipfire": 47,
         "precision": 22,
         "control": 29,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -274285,7 +274285,7 @@
         "hipfire": 40,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -274389,7 +274389,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -274480,7 +274480,7 @@
         "hipfire": 40,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -274584,7 +274584,7 @@
         "hipfire": 40,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -276862,7 +276862,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -277517,7 +277517,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -277581,7 +277581,7 @@
         "hipfire": 47,
         "precision": 20,
         "control": 30,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -277709,7 +277709,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -277800,7 +277800,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -277891,7 +277891,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -277953,7 +277953,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278031,7 +278031,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278096,7 +278096,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278255,7 +278255,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278411,7 +278411,7 @@
         "hipfire": 54,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278491,7 +278491,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278633,7 +278633,7 @@
         "hipfire": 47,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278698,7 +278698,7 @@
         "hipfire": 62,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278778,7 +278778,7 @@
         "hipfire": 51,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278858,7 +278858,7 @@
         "hipfire": 71,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -278938,7 +278938,7 @@
         "hipfire": 51,
         "precision": 21,
         "control": 32,
-        "mobility": 50,
+        "mobility": 60,
         "fireModes": [
           "AUTO",
           "SINGLE"
@@ -290899,7 +290899,7 @@
         "spotOnFire3dM": 27,
         "spotOnFire2dM": 64,
         "opponentHealthRegenDelaySeconds": 5,
-        "collateralMultiplier": 0.75,
+        "collateralMultiplier": 0.83,
         "reloadInAds": true,
         "adsMoveSpeedMultiplier": 0.82,
         "sprintRecoveryMs": 83,
@@ -291093,7 +291093,7 @@
         "reloadTimeSeconds": 1.867,
         "muzzleVelocityMps": 336,
         "adsTimeMs": 167,
-        "headshotMultiplier": 1.34,
+        "headshotMultiplier": 1.5,
         "longRangeDamage": 12,
         "spotOnFire3dM": 27,
         "spotOnFire2dM": 64,
