@@ -1,0 +1,22 @@
+name: Attachment audit review export (temporary)
+on:
+  push:
+    branches: [audit/screenshot-stat-review-2026-09-17]
+    paths: [.github/workflows/attachment-audit-review-export.yml]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Package tracked source for local review
+        run: git archive --format=tar.gz -o /tmp/bf6-audit-source.tar.gz HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bf6-audit-source
+          path: /tmp/bf6-audit-source.tar.gz
+          retention-days: 2
