@@ -25,7 +25,7 @@ and are not these stats ([UI strings review](../frosty/UI_TEXT.md#numerical-stat
 
 | Stat | Source form | Status |
 |---|---|---|
-| Precision | Per-weapon lookup tables in game configuration data | Tables extracted; 2,719 of 3,010 comparable audit readings match |
+| Precision | Per-weapon lookup tables in game configuration data | Tables extracted; 2,900 of 3,010 comparable audit readings match after the 17 SEP transcription corrections (14 SEP record: 2,719) |
 | Control | Delegate `ControlAttributeDelegate1` | Formula candidate matches baselines and Companion's table |
 | Hipfire | Delegate `HipfireAttributeDelegate` | Formula candidate for rows 1-15; branches unresolved |
 | Mobility | Delegate `MobilityAttributeDelegate` | Weighted index candidate; two inputs unresolved |
@@ -94,7 +94,7 @@ site resolver and compares the rounded table value with the panel reading:
 | ambiguous | 6 |
 | new-weapon UI bug reading (BROD 3 and EF88 values of 0 or 1) | 117 |
 
-Difference groups:
+Difference groups (14 SEP observations; each is resolved or reclassified in the 17 SEP continuation below):
 
 - Grips on several weapons read far above the table (for example 60 against 19.5).
   These readings are unlikely to be Precision; check the captures before changing
@@ -165,5 +165,123 @@ node scripts/frosty-precision-check.mjs
 
 - Which native provider reads the Precision tables, and is the table used for all
   loadout states?
-- What do the ambiguous Linear Comp and Burst Training rows depend on?
 - Should the site show the four stats, and from which source for each?
+
+## 17 September 2026 continuation: Precision lookup selection
+
+Branch `research/precision-lookup-2026-09-17` from `a5d8227` (clean tree). Tables:
+1.4.2.5 export (`settings.xml` sha256 `5aff20a2…`, identical bytes in the 1.4.3.0 overlay,
+which lists the asset as stale). Live data: `data/` at `a5d8227` (VSSM and L115 fields moved to
+1.4.3.0 on 16 SEP; the VSSM change only rescales `recoilV`, so the tier keys are unchanged).
+Audit: `frosty-panel-audit-2026-09-07.json` (3,347 records). The 14 SEP counts above are
+historical observations, not targets. Machine-readable result:
+[frosty-precision-check-2026-09-17.json](../../reference-data/provenance/frosty-precision-check-2026-09-17.json).
+
+### Baseline and result
+
+| Population | match | differ | no row | ambiguous | excluded (0/1 readings) |
+|---|---|---|---|---|---|
+| 14 SEP record | 2,719 | 237 | 48 | 6 | 117 |
+| Checker at `a5d8227`, before any change (one reading moved by the 16 SEP data update) | 2,720 | 236 | 48 | 6 | 117 |
+| Revised lookup, original transcriptions | 2,775 | 235 | 0 | 0 | 117 |
+| Revised lookup, screenshot-corrected transcriptions | 2,900 | 110 | 0 | 0 | 117 |
+
+Both revised populations are reported by the checker; the audit file itself is unchanged.
+
+### Findings, in order of evidence strength
+
+1. **Stale transcriptions (audit/capture problem, resolved).** The 439-item ledger
+   [screenshot-stat-corrections-2026-09-17.json](../../reference-data/attachment-audit/screenshot-stat-corrections-2026-09-17.json)
+   was applied to the canonical review file, not to the audit file the checker reads. All 439
+   entries align with the checker's records by screenshot path and none had been applied. Its 102
+   Precision corrections move 102 records from differ to match with no regressions. A further 23
+   readings re-read from the screenshots this session
+   ([precision-screenshot-corrections-2026-09-17.json](../../reference-data/attachment-audit/precision-screenshot-corrections-2026-09-17.json))
+   move 23 more. Every one of the 25 screenshots opened this session showed the rounded table row on
+   the panel; where the transcription differed, the transcribed value was not on the panel (for example KORD 6P67 Linear Comp shows
+   35, not 45; KV9, SCW-10 and M121 A2 grips show 25, not 65). The grip group of the 14 SEP record
+   is this family, not a Precision-model problem, and no equipped Alloy Vertical was involved in the
+   screenshots opened.
+2. **Capture build.** The audit screenshots were taken 23 JUL to 6 AUG 2026 (dates in the
+   canonical review's source filenames); `sourceVersion: 1.4.2.5` names the comparison export
+   (5 SEP), not the capture build. Readings of weapons retuned since then cannot judge the
+   September tables: BROD 3 lasers read 31 (24 JUL), the 1.4.2.5 row is 26.795, and the 14 SEP
+   in-game panel shows 27. The VSSM table differs again in 1.4.3.0 (default row 78.111 → 77.507).
+3. **Burst-selector operands are not previewed (supported panel behaviour).** All eight burst
+   readings (Burst Training on KORD 6P67, KV9, UMG-40, PW5A3, SG 553R, CZ3A1; SL9 Burst Mode;
+   GRT-BC Burst Training) equal the weapon's non-burst row, and the KORD 6P67 screenshot shows no
+   delta arrow and unchanged Recoil Variation 28.9. SL9 Burst Mode does change the displayed RPM
+   (675 → 771) and Precision (61 → 78), and 78 is the row with the burst RPM and variation sum 0
+   (77.924); the +3 variation row would give 82. The A3 Receiver, whose amount operand is not
+   behind the burst selector, is previewed (M16A4 27 → 24). The checker therefore keys burst
+   ergonomics with the non-burst recoil values and the ergonomic's RPM. Not established: whether
+   the operands apply in play (the site model keeps them) and which native selector the preview
+   leaves inactive.
+4. **Duplicate rows (checker classification, resolved).** Tables with two members in
+   `Field_9b956c3d` (`c57b586e`, `97a738a9`: KORD 6P67, KV9, UMG-40, PW5A3, SG 553R, CZ3A1) carry
+   a second 80-row block. Where the burst duration change does not apply (KORD 6P67, KV9, UMG-40)
+   the block repeats 18 keys; the largest output difference among duplicates in all 63 tables is
+   0.012, so every duplicate pair rounds to the same panel value. The six "ambiguous" results were
+   three Linear Comp readings (two match, one transcription error) and three burst readings
+   (finding 3). Row flags: in all 63 tables the six flags are true exactly where the row value is
+   not -1; only the fallback rows differ. File order carries no other precedence information.
+5. **Fallback rows (checker defect, resolved).** The L115 table has one row with all flags false,
+   keys 0 and panel 100; the extractor marks it `valid: false` and the old checker discarded it,
+   giving 42 no-row results for readings of 100. The Interdictor and the three bolt-action tables
+   also carry a fallback row (0.5 or 100); every other table's fallback panel is 0. The checker
+   now uses a lone fallback row only when the table has no keyed rows.
+6. **AK-205 and USG-90 heavy rows (source literal, resolved with a documented tolerance).** The
+   heavy-barrel rows store minimum angle 0.159133 for both weapons; the object's base angle is
+   0.239 and every other table's heavy value equals base × 0.666667 exactly (0.28 → 0.186667,
+   0.304 → 0.202667, 0.36 → 0.24). The weapon asset `GS_AK205.xml` holds 0.239 and the settings
+   asset contains no 0.2387. The panels read the 0.159133 rows (AK-205 heavy and Cryogenic 90 =
+   89.77; USG-90 heavy, Heavy Extended and Cryogenic 37 = 36.926). The checker reports these as
+   `near` (relative tolerance 2e-3) rather than exact; whether the game compares with a tolerance
+   or selects rows by index is not established.
+7. **Rounded catalog burst RPMs (checker key precision).** `burstRpm` is 771 for SL9 and 830 for
+   GRT-BC; the tables store 771.428 and 830.769. These also resolve as `near`. Shipped data is
+   unchanged.
+8. **Rail-slot reconstruction (checker defect, resolved).** For weapons whose rail accepts the
+   slot (VZ. 61 grips; lasers and lights on ten weapons) `resetAttsForWeapon` leaves `rail: null`,
+   so a plain `atts.grip` selection was ignored and VZ. 61 grips were keyed without their recoil
+   tiers. Selecting through `atts.rail` matches the Canted and Stippled Stubby readings (69, 72)
+   and, after re-reading the shifted screenshot rows, the Folding and Ribbed Stubby (67).
+
+### Remaining 110 differences
+
+VSSM 42, SVDM 16, DB-12 10, SVK-8.6 8, 18.5KS-K 8, BROD 3 6, M87A1 5, VZ. 61 3, M433 2,
+ES 5.7 2, P18 2, KTS100 2, M45A1 2, RPKM 1, PP-19 1. VSSM and BROD 3 are capture-build
+mismatches (finding 2). The DMR, shotgun and sidearm groups are one to five points off with
+inconsistent readings across identical default loadouts (SVDM default-equivalent captures read
+50, 55, 57 and 60; the two opened show 55 = table). These are unadjudicated transcriptions, not
+evidence for a different lookup rule; the next step is to re-read those screenshots, starting
+with SVDM and SVK-8.6. No remaining case has a matching-rule hypothesis worth testing first.
+
+### Control: RateOfFire input
+
+The audit holds one controlled comparison: SL9 Burst Mode changes the displayed RPM from 675 to
+771 with Recoil Amount 0.5 and Variation 13 unchanged, and Control stays 55 (the candidate gives
+55.27 for the SL9 base). One weapon, one reading: the `RateOfFire` argument has no observable
+effect at panel precision here. It cannot exclude an effect hidden by the burst-selector preview
+behaviour (finding 3) or a branch outside this input range. No roster weapon has zero variation
+(minimum 4°), so the zero-variation question has no in-game observable and stays as recorded in
+the 6 SEP evidence.
+
+### Smallest next observations
+
+- Burst preview: on the current build, equip Burst Training on the KORD 6P67, switch the fire
+  mode to burst in the range, and read the loadout panel again. Prediction if the preview follows
+  the selected fire mode: Precision 36 (row 35.535/35.54) and Recoil Variation 22.4; otherwise 33.
+- Heavy rows: read the AK-205 Basic and Heavy panels on the current build; both tables still hold
+  0.159133, so Heavy should read 90 and Basic 88.
+- Remaining differences: re-read the SVDM and SVK-8.6 screenshots (24 records) before any rule
+  work; a change to the lookup is not justified by the current evidence.
+
+### Implementation scope supported by this evidence
+
+Precision lookup by the six keys reproduces 2,900 of 3,010 comparable readings and all
+independently confirmed 13-14 SEP panels; the remaining differences are attributed to
+transcription and capture build, not to the rule. A display would need: the burst-preview rule
+(finding 3) or a note that burst ergonomics are shown as previewed; the `near` tolerance for the
+two 0.239 weapons; the fallback row for the L115; and per-build tables (VSSM changed in 1.4.3.0).
+Control's `RateOfFire` input and the native Precision provider remain unconfirmed.

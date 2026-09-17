@@ -1,0 +1,2006 @@
+{
+ "date": "2026-09-17",
+ "tables": "reference-data/provenance/frosty-precision-tables-2026-09-14.json",
+ "corrections": 125,
+ "originalReadings": {
+  "match": 2775,
+  "differ": 235,
+  "new-weapon-ui-bug": 117
+ },
+ "correctedReadings": {
+  "match": 2900,
+  "new-weapon-ui-bug": 117,
+  "differ": 110
+ },
+ "methods": {
+  "exact": 2793,
+  "duplicate-same": 3,
+  "exact+burst-panel": 6,
+  "near": 5,
+  "near+burst-panel": 2,
+  "fallback": 41,
+  "single-row": 160
+ },
+ "remaining": [
+  {
+   "weapon": "m433",
+   "slot": "barrel",
+   "id": "extended",
+   "reading": 21,
+   "original": 21,
+   "panel": 20.154,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 830.769,
+    "minAngle": 0.36,
+    "duration": 0.025,
+    "decrease": 72
+   }
+  },
+  {
+   "weapon": "m433",
+   "slot": "ammo",
+   "id": "penetration",
+   "reading": 21,
+   "original": 21,
+   "panel": 19.724,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 0,
+    "rpm": 830.769,
+    "minAngle": 0.36,
+    "duration": 0.025,
+    "decrease": 72
+   }
+  },
+  {
+   "weapon": "brod3",
+   "slot": "laser",
+   "id": "none",
+   "reading": 31,
+   "original": 31,
+   "panel": 26.795,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 830.7692307692307,
+    "minAngle": 0.304,
+    "duration": 0.025,
+    "decrease": 57
+   }
+  },
+  {
+   "weapon": "brod3",
+   "slot": "laser",
+   "id": "5mw_red",
+   "reading": 31,
+   "original": 31,
+   "panel": 26.795,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 830.7692307692307,
+    "minAngle": 0.304,
+    "duration": 0.025,
+    "decrease": 57
+   }
+  },
+  {
+   "weapon": "brod3",
+   "slot": "laser",
+   "id": "5mw_green",
+   "reading": 31,
+   "original": 31,
+   "panel": 26.795,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 830.7692307692307,
+    "minAngle": 0.304,
+    "duration": 0.025,
+    "decrease": 57
+   }
+  },
+  {
+   "weapon": "brod3",
+   "slot": "laser",
+   "id": "50mw_green",
+   "reading": 31,
+   "original": 31,
+   "panel": 26.795,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 830.7692307692307,
+    "minAngle": 0.304,
+    "duration": 0.025,
+    "decrease": 57
+   }
+  },
+  {
+   "weapon": "brod3",
+   "slot": "laser",
+   "id": "50mw_blue",
+   "reading": 31,
+   "original": 31,
+   "panel": 26.795,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 830.7692307692307,
+    "minAngle": 0.304,
+    "duration": 0.025,
+    "decrease": 57
+   }
+  },
+  {
+   "weapon": "brod3",
+   "slot": "laser",
+   "id": "120mw_blue",
+   "reading": 31,
+   "original": 31,
+   "panel": 26.795,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 830.7692307692307,
+    "minAngle": 0.304,
+    "duration": 0.025,
+    "decrease": 57
+   }
+  },
+  {
+   "weapon": "rpkm",
+   "slot": "grip",
+   "id": "adj_angled",
+   "reading": 36,
+   "original": 36,
+   "panel": 35.095,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 553.846,
+    "minAngle": 0.409,
+    "duration": 0.025,
+    "decrease": 76
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "muzzle",
+   "id": "sp_brake",
+   "reading": 60,
+   "original": 60,
+   "panel": 57.278,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "muzzle",
+   "id": "dp_brake",
+   "reading": 60,
+   "original": 60,
+   "panel": 57.278,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "muzzle",
+   "id": "comp_brake",
+   "reading": 55,
+   "original": 55,
+   "panel": 60.034,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.05,
+    "decrease": 19.2
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "muzzle",
+   "id": "linear_comp",
+   "reading": 55,
+   "original": 55,
+   "panel": 60.25,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 3,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "muzzle",
+   "id": "light_supp",
+   "reading": 55,
+   "original": 55,
+   "panel": 57.556,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.05,
+    "decrease": 19.2
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "muzzle",
+   "id": "long_supp",
+   "reading": 55,
+   "original": 55,
+   "panel": 57.556,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.05,
+    "decrease": 19.2
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "barrel",
+   "id": "short",
+   "reading": 57,
+   "original": 57,
+   "panel": 54.866,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "barrel",
+   "id": "extended",
+   "reading": 60,
+   "original": 60,
+   "panel": 54.866,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "barrel",
+   "id": "light",
+   "reading": 60,
+   "original": 60,
+   "panel": 54.866,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "grip",
+   "id": "classic_vert",
+   "reading": 55,
+   "original": 55,
+   "panel": 67.38,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 2,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "grip",
+   "id": "adj_angled",
+   "reading": 67,
+   "original": 67,
+   "panel": 57.278,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "grip",
+   "id": "slim_angled",
+   "reading": 60,
+   "original": 60,
+   "panel": 57.278,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "mag",
+   "id": "10_rnd",
+   "reading": 57,
+   "original": 57,
+   "panel": 54.866,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "mag",
+   "id": "10_fast",
+   "reading": 60,
+   "original": 60,
+   "panel": 54.866,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "mag",
+   "id": "20_rnd",
+   "reading": 60,
+   "original": 60,
+   "panel": 54.866,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svdm",
+   "slot": "ammo",
+   "id": "penetration",
+   "reading": 55,
+   "original": 55,
+   "panel": 52.544,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "muzzle",
+   "id": "sp_brake",
+   "reading": 33,
+   "original": 33,
+   "panel": 30.269,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "muzzle",
+   "id": "tp_brake",
+   "reading": 31,
+   "original": 31,
+   "panel": 30.269,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "grip",
+   "id": "classic_vert_svk86",
+   "reading": 29,
+   "original": 29,
+   "panel": 34.633,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 2,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "grip",
+   "id": "lp_stubby_svk86",
+   "reading": 31,
+   "original": 31,
+   "panel": 34.633,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 2,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "grip",
+   "id": "slim_angled",
+   "reading": 32,
+   "original": 32,
+   "panel": 30.269,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "mag",
+   "id": "10_rnd",
+   "reading": 31,
+   "original": 31,
+   "panel": 29.329,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "ammo",
+   "id": "standard",
+   "reading": 30,
+   "original": 30,
+   "panel": 29.329,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "svk86",
+   "slot": "ammo",
+   "id": "frangible",
+   "reading": 31,
+   "original": 31,
+   "panel": 29.329,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 149.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "barrel",
+   "id": "vssm_suppressed",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "light",
+   "id": "none",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "light",
+   "id": "ads_taclight",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "light",
+   "id": "flashlight",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "light",
+   "id": "hip_taclight",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "none",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "fold_vert",
+   "reading": 84,
+   "original": 84,
+   "panel": 82.015,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "alloy_vert",
+   "reading": 84,
+   "original": 84,
+   "panel": 82.015,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "ribbed_vert",
+   "reading": 78,
+   "original": 78,
+   "panel": 83.826,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "fold_stubby",
+   "reading": 84,
+   "original": 84,
+   "panel": 82.015,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "ribbed_stubby",
+   "reading": 84,
+   "original": 84,
+   "panel": 82.015,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "slim_handstop",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "slim_angled",
+   "reading": 82,
+   "original": 82,
+   "panel": 80.1,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "full_angled",
+   "reading": 84,
+   "original": 84,
+   "panel": 82.015,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "bipod",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "ptt_grip_pod",
+   "reading": 84,
+   "original": 84,
+   "panel": 82.015,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "6h64_vert",
+   "reading": 85,
+   "original": 85,
+   "panel": 85.543,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "classic_vert",
+   "reading": 88,
+   "original": 88,
+   "panel": 87.152,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 1,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "canted_stubby",
+   "reading": 50,
+   "original": 50,
+   "panel": 83.826,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "stipp_stubby",
+   "reading": 82,
+   "original": 82,
+   "panel": 85.543,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "lp_stubby",
+   "reading": 88,
+   "original": 88,
+   "panel": 87.152,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 1,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "qd_grip_pod",
+   "reading": 80,
+   "original": 80,
+   "panel": 83.826,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "grip",
+   "id": "classic_grip_pod",
+   "reading": 84,
+   "original": 84,
+   "panel": 82.015,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -2,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "mag",
+   "id": "20_rnd",
+   "reading": 87,
+   "original": 87,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "mag",
+   "id": "10_rnd",
+   "reading": 88,
+   "original": 88,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "mag",
+   "id": "10_fast",
+   "reading": 85,
+   "original": 85,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "mag",
+   "id": "20_fast",
+   "reading": 87,
+   "original": 87,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "mag",
+   "id": "30_rnd",
+   "reading": 88,
+   "original": 88,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "ammo",
+   "id": "range_pen",
+   "reading": 84,
+   "original": 84,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "ammo",
+   "id": "penetration",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "ammo",
+   "id": "long_range",
+   "reading": 82,
+   "original": 82,
+   "panel": 80.1,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "ammo",
+   "id": "frangible",
+   "reading": 82,
+   "original": 82,
+   "panel": 80.1,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "ergo",
+   "id": "none",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "ergo",
+   "id": "mag_catch",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "ergo",
+   "id": "full_auto_vssm",
+   "reading": 19,
+   "original": 19,
+   "panel": 18.498,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 0,
+    "rpm": 799.999,
+    "minAngle": 0.409,
+    "duration": 0.025,
+    "decrease": 76
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "laser",
+   "id": "none",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "laser",
+   "id": "5mw_red",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "laser",
+   "id": "50mw_violet",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "laser",
+   "id": "5mw_green",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "laser",
+   "id": "50mw_green",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "laser",
+   "id": "50mw_blue",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "vssm",
+   "slot": "laser",
+   "id": "120mw_blue",
+   "reading": 80,
+   "original": 80,
+   "panel": 78.111,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 20,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "grip",
+   "id": "fold_vert",
+   "reading": 14,
+   "original": 14,
+   "panel": 14.72,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "grip",
+   "id": "alloy_vert",
+   "reading": 14,
+   "original": 14,
+   "panel": 14.72,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "grip",
+   "id": "ribbed_vert",
+   "reading": 14,
+   "original": 14,
+   "panel": 15.094,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "grip",
+   "id": "6h64_vert_ks18k",
+   "reading": 14,
+   "original": 14,
+   "panel": 15.47,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 1,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "grip",
+   "id": "fold_stubby",
+   "reading": 14,
+   "original": 14,
+   "panel": 14.72,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "grip",
+   "id": "ribbed_stubby",
+   "reading": 14,
+   "original": 14,
+   "panel": 14.72,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "grip",
+   "id": "full_angled",
+   "reading": 16,
+   "original": 16,
+   "panel": 14.72,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "ks18k",
+   "slot": "ammo",
+   "id": "slugs",
+   "reading": 14,
+   "original": 14,
+   "panel": 36.593,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 0,
+    "rpm": 299.999,
+    "minAngle": 0.05,
+    "duration": 0.025,
+    "decrease": 21.5
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "grip",
+   "id": "fold_vert",
+   "reading": 6,
+   "original": 6,
+   "panel": 6.511,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "grip",
+   "id": "alloy_vert",
+   "reading": 6,
+   "original": 6,
+   "panel": 6.511,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "grip",
+   "id": "ribbed_vert",
+   "reading": 6,
+   "original": 6,
+   "panel": 6.712,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "grip",
+   "id": "classic_vert_db12",
+   "reading": 6,
+   "original": 6,
+   "panel": 7.137,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 2,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "grip",
+   "id": "fold_stubby",
+   "reading": 6,
+   "original": 6,
+   "panel": 6.511,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "grip",
+   "id": "ribbed_stubby",
+   "reading": 6,
+   "original": 6,
+   "panel": 6.511,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -1,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "grip",
+   "id": "canted_stubby",
+   "reading": 6,
+   "original": 6,
+   "panel": 6.712,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "mag",
+   "id": "7_rnd",
+   "reading": 37,
+   "original": 37,
+   "panel": 6.11,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "ammo",
+   "id": "buckshot_00",
+   "reading": 7,
+   "original": 7,
+   "panel": 6.11,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "db12",
+   "slot": "ammo",
+   "id": "flechette",
+   "reading": 37,
+   "original": 37,
+   "panel": 6.11,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 359.999,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "m87a1",
+   "slot": "mag",
+   "id": "7_rnd",
+   "reading": 12,
+   "original": 12,
+   "panel": 10.382,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 94.73654016716576,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "m87a1",
+   "slot": "mag",
+   "id": "5_fast",
+   "reading": 11,
+   "original": 11,
+   "panel": 10.382,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 94.73654016716576,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "m87a1",
+   "slot": "mag",
+   "id": "6_rnd",
+   "reading": 11,
+   "original": 11,
+   "panel": 10.382,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 94.73654016716576,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "m87a1",
+   "slot": "ammo",
+   "id": "buckshot",
+   "reading": 12,
+   "original": 12,
+   "panel": 10.382,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 94.73654016716576,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "m87a1",
+   "slot": "ammo",
+   "id": "buckshot_00",
+   "reading": 11,
+   "original": 11,
+   "panel": 10.382,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 94.73654016716576,
+    "minAngle": 0.001,
+    "duration": 0.025,
+    "decrease": 70
+   }
+  },
+  {
+   "weapon": "es57",
+   "slot": "muzzle",
+   "id": "compensator",
+   "reading": 50,
+   "original": 50,
+   "panel": 60.493,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 0,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.05,
+    "decrease": 14.399999999999999
+   }
+  },
+  {
+   "weapon": "es57",
+   "slot": "muzzle",
+   "id": "sp_brake",
+   "reading": 50,
+   "original": 50,
+   "panel": 59.827,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 1,
+    "variationSum": 0,
+    "rpm": 449.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 12
+   }
+  },
+  {
+   "weapon": "p18",
+   "slot": "muzzle",
+   "id": "sp_brake",
+   "reading": 49,
+   "original": 49,
+   "panel": 51.314,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 1,
+    "variationSum": 0,
+    "rpm": 399.999,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 13.7
+   }
+  },
+  {
+   "weapon": "p18",
+   "slot": "muzzle",
+   "id": "compensator",
+   "reading": 49,
+   "original": 49,
+   "panel": 51.318,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 0,
+    "rpm": 399.999,
+    "minAngle": 0,
+    "duration": 0.05,
+    "decrease": 16.439999999999998
+   }
+  },
+  {
+   "weapon": "vz61",
+   "slot": "laser",
+   "id": "50mw_green",
+   "reading": 67,
+   "original": 67,
+   "panel": 61.407,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 818.181,
+    "minAngle": 0.209,
+    "duration": 0.025,
+    "decrease": 40
+   }
+  },
+  {
+   "weapon": "vz61",
+   "slot": "laser",
+   "id": "combo_red",
+   "reading": 69,
+   "original": 69,
+   "panel": 61.407,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 818.181,
+    "minAngle": 0.209,
+    "duration": 0.025,
+    "decrease": 40
+   }
+  },
+  {
+   "weapon": "vz61",
+   "slot": "ammo",
+   "id": "penetration",
+   "reading": 61,
+   "original": 61,
+   "panel": 58.606,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -4,
+    "variationSum": 0,
+    "rpm": 818.181,
+    "minAngle": 0.209,
+    "duration": 0.025,
+    "decrease": 40
+   }
+  },
+  {
+   "weapon": "pp19",
+   "slot": "muzzle",
+   "id": "flash_comp",
+   "reading": 50,
+   "original": 50,
+   "panel": 50.672,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 719.999,
+    "minAngle": 0.28,
+    "duration": 0.05,
+    "decrease": 66
+   }
+  },
+  {
+   "weapon": "kts100",
+   "slot": "grip",
+   "id": "ribbed_vert",
+   "reading": 77,
+   "original": 77,
+   "panel": 78.358,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 0,
+    "rpm": 514.285,
+    "minAngle": 0.24000011999999998,
+    "duration": 0.025,
+    "decrease": 72
+   }
+  },
+  {
+   "weapon": "kts100",
+   "slot": "ammo",
+   "id": "standard",
+   "reading": 74,
+   "original": 74,
+   "panel": 75.25,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": -3,
+    "variationSum": 0,
+    "rpm": 514.285,
+    "minAngle": 0.24000011999999998,
+    "duration": 0.025,
+    "decrease": 72
+   }
+  },
+  {
+   "weapon": "m45a1",
+   "slot": "muzzle",
+   "id": "sp_brake",
+   "reading": 54,
+   "original": 54,
+   "panel": 56.838,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 1,
+    "variationSum": 0,
+    "rpm": 327.272,
+    "minAngle": 0,
+    "duration": 0.025,
+    "decrease": 16
+   }
+  },
+  {
+   "weapon": "m45a1",
+   "slot": "muzzle",
+   "id": "compensator",
+   "reading": 54,
+   "original": 54,
+   "panel": 58.492,
+   "method": "exact",
+   "outcome": "differ",
+   "keys": {
+    "amountSum": 0,
+    "variationSum": 0,
+    "rpm": 327.272,
+    "minAngle": 0,
+    "duration": 0.05,
+    "decrease": 19.2
+   }
+  }
+ ]
+}
