@@ -28,7 +28,7 @@ and are not these stats ([UI strings review](../frosty/UI_TEXT.md#numerical-stat
 | Precision | Per-weapon lookup tables in game configuration data | Tables extracted; 2,900 of 3,010 comparable audit readings match after the 17 SEP transcription corrections (14 SEP record: 2,719) |
 | Control | Delegate `ControlAttributeDelegate1` | Formula matches 2,946 of 3,127 audit readings (17 SEP); RateOfFire input shows no effect in the one controlled comparison |
 | Hipfire | Delegate `HipfireAttributeDelegate` | Formula with the delegate ladder and √1.2 light gate matches 2,955 of 3,127; shotgun and sidearm lasers unresolved |
-| Mobility | Delegate `MobilityAttributeDelegate` | Weighted index reproduces 2,507 of 2,636 attachment deltas; base inputs and `CanFireWhileSprinting` (Compact Handstop) unresolved |
+| Mobility | Delegate `MobilityAttributeDelegate` | Weighted index with resolved default-build indices matches 2,937 of 3,127 readings and 60 of 62 None panels exactly; `CanFireWhileSprinting` (Compact Handstop +4) unresolved |
 
 ## Precision
 
@@ -333,13 +333,45 @@ laser on different weapons (M433 screenshot: +4, as predicted, audit 66). Transc
 likely cause of most single-weapon outliers; none was adjudicated beyond the screenshots listed
 in the ledger.
 
+### Follow-ups on the same day: laser classes, Mobility base inputs, shotgun lasers
+
+9. **Mobility base inputs resolved.** With every index read from the resolved default build
+   (deploy from the draw tables, ADS time, sprint, ADS move, moving ADS spread), the None panel
+   equals `D + 4A + S + 2M + 4Z` exactly for 60 of 62 weapons; L115 and M44 read 4 high. The
+   registry `MovingZoomedMinAnglesArrayIndex` is 3 for every weapon (0 for the Minigun), so Z
+   does not explain the two. `Field_18774676` is false on all 63 table objects, so no weapon
+   carries a fire-while-sprinting term at rest; the Compact Handstop +4 (finding 7) is the only
+   evidence for that input. Absolute Mobility now checks 2,937 of 3,127 readings (L115 40,
+   EF88 22 and BROD 3 17 of the 190 differences).
+10. **Laser modifiers are generic.** `WPM_TOP_5mWRed_W10` and its siblings are single assets
+   used by every weapon's laser attachment, and the site's per-weapon laser hip tiers are
+   identical across classes. Nothing in the modifier gates snipers, SVK-8.6, VSSM or sidearms,
+   whose panels show no laser Hipfire change (finding 5); the gate must sit in the weapon's
+   dispersion binding or the delegate, and was not found.
+11. **Shotgun lasers on the current build** (operator screenshots, 17 SEP, 1.4.3.0):
+
+    | Shotgun | None | 5 mW Red | 5 mW Green | 50 mW Green (audit) |
+    |---|---|---|---|---|
+    | M87A1 | 40 | 45 | 49 | 52 |
+    | M1014 | 40 | 45 | 49 | 52 |
+    | 18.5KS-K | 42 | 47 | 52 | 56 |
+    | DB-12 | 39 | 43 | 46 | 49 |
+
+    All equal the July audit, so the steps are not capture-era. The site's shotgun rows (1.444,
+    0.972, 0.656, 0.444) plus a constant angle reproduce three guns through the rifle formula:
+    +1.0 gives 40.2, 44.9, 48.9, 52.4 for the M87A1 and M1014; +0.83 gives 42.0, 47.0, 51.7,
+    55.9 for the 18.5KS-K; no constant fits the DB-12. The registry gives all four the same
+    standing min angle (0.784), moving min angle (0.98) and increase-per-shot (0.941 for the
+    M1014 and M87A1, 0.648 for the DB-12 and 18.5KS-K), none of which produces those offsets.
+    Fitted description only; the `StandDispersionMinAngle` source is not identified.
+
 ### Implementation scope supported by this evidence
 
 Control, Hipfire and Mobility: the candidates reproduce 94 to 97 per cent of the audit, and
 every screenshot opened against a disagreement showed the candidate value. A display could
-support rifles, carbines, SMGs and LMGs for all three stats with the rules above; shotgun and
-sidearm Hipfire with lasers, sniper and sidearm laser effects, and the Mobility base inputs
-(deploy index, `CanFireWhileSprinting`) need source work first.
+support rifles, carbines, SMGs and LMGs for all three stats with the rules above, and Mobility
+for every weapon except the L115 and M44 offsets and the Compact Handstop; shotgun and sidearm
+Hipfire with lasers and sniper and sidearm laser effects need source work first.
 
 Precision lookup by the six keys reproduces 2,900 of 3,010 comparable readings and all
 independently confirmed 13-14 SEP panels; the remaining differences are attributed to

@@ -41,6 +41,23 @@
     {"weapon": "es57", "weaponName": "ES 5.7", "attachmentType": "Underbarrel", "attachmentName": "Flashlight", "field": "hipfire", "before": 50, "after": 59, "candidate": 59.328, "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sidearm/ES 5.7/11_ES 5.7_Laser-Light_Flashlight.png", "screenshotSha256": "41db4213691574d3d6d8cb3bcd182126ab7606d8f088187a9a1009857e6bb0e9"},
     {"weapon": "pw5a3", "weaponName": "PW5A3", "attachmentType": "Muzzle", "attachmentName": "Standard Suppressor", "field": "hipfire", "before": 11, "after": 40, "candidate": 40.368, "note": "Panel shows a red arrow and 40 from the 47 baseline. Other readings of 11 in the audit (SL9, VZ. 61, M87A1 suppressors; ES 5.7, M357 Trait and M44 barrels) are the same transcription family but were not re-read.", "sourcePath": "reference-data/attachment-audit/Weapon Attachments/SMG/PW5A3/11_PW5A3_Muzzle_Standard_Suppressor.png", "screenshotSha256": "01a779e54c5266ce2f927f334374c4e102585b9c80c84a5ed5a6e1f29563f224"}
   ],
+  "currentBuildReadings": {
+    "date": "2026-09-17",
+    "build": "1.4.3.0 (client hotfix of 16 September)",
+    "source": "Eight loadout-panel screenshots supplied by the operator in chat during the session; not stored in the screenshot library, so no file hashes.",
+    "loadout": "Default loadout with the laser previewed (not equipped); panel shows the green Hipfire arrow.",
+    "readings": [
+      {"weapon": "m87a1", "attachment": "5 MW Red", "hipfire": 45, "precision": 10, "control": 7, "mobility": 52, "recoilAmountDegrees": 3.6, "recoilVariationDegrees": 12},
+      {"weapon": "m1014", "attachment": "5 MW Red", "hipfire": 45, "precision": 10, "control": 10, "mobility": 52, "recoilAmountDegrees": 2.4, "recoilVariationDegrees": 15},
+      {"weapon": "ks18k", "attachment": "5 MW Red", "hipfire": 47, "precision": 14, "control": 15, "mobility": 60, "recoilAmountDegrees": 1.7, "recoilVariationDegrees": 12},
+      {"weapon": "db12", "attachment": "5 MW Red", "hipfire": 43, "precision": 6, "control": 9, "mobility": 60, "recoilAmountDegrees": 2.7, "recoilVariationDegrees": 15},
+      {"weapon": "m87a1", "attachment": "5 MW Green", "hipfire": 49, "precision": 10, "control": 7, "mobility": 52},
+      {"weapon": "m1014", "attachment": "5 MW Green", "hipfire": 49, "precision": 10, "control": 10, "mobility": 52},
+      {"weapon": "ks18k", "attachment": "5 MW Green", "hipfire": 52, "precision": 14, "control": 15, "mobility": 60},
+      {"weapon": "db12", "attachment": "5 MW Green", "hipfire": 46, "precision": 6, "control": 9, "mobility": 60}
+    ],
+    "note": "All eight equal the July audit values for the same records, so the shotgun laser Hipfire steps are current-build behaviour. Control 7/10/15/9 and Precision 10/10/14/6 also equal the audit baselines."
+  },
   "confirmations": [
     {"weapon": "m87a1", "attachmentName": "5 MW Red", "field": "hipfire", "value": 45, "note": "Shotgun laser preview: 40 to 45 with a green arrow. The main-ladder candidate predicts 47; shotgun laser scaling is unresolved.", "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/M87A1/12_M87A1_Laser_5_MW_Red.png", "screenshotSha256": "d1c3918ca1b605451a94322e9670fdd18453ac78ccf24c04591f8e006b2d7053"},
     {"weapon": "kord6p67", "attachmentName": "Burst Training", "field": "precision", "value": 33, "note": "Panel shows no delta arrows and Precision 33, Recoil Amount 0.5, Recoil Variation 28.9, identical to the None baseline. The Burst Training preview applies no recoil change.", "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/KORD 6P67/59_KORD 6P67_Ergonomics_Burst_Training.png", "screenshotSha256": "6132ea2496f09bb6264cd8c441ac0a3e6b731aeb7b318c72495865ea3e2addf1"},

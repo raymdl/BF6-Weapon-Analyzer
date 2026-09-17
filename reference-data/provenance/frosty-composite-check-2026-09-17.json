@@ -8,6 +8,10 @@
   "hipfire": {
    "match": 2955,
    "differ": 172
+  },
+  "mobility": {
+   "match": 2937,
+   "differ": 190
   }
  },
  "delta": {
@@ -2488,6 +2492,1528 @@
     "predicted": 0,
     "reading": 50,
     "baseReading": 60
+   }
+  ],
+  "mobility absolute": [
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "mag",
+    "id": "42_fast",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ammo",
+    "id": "standard",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ammo",
+    "id": "penetration",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ammo",
+    "id": "lightweight",
+    "reading": 58,
+    "candidate": 54
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ammo",
+    "id": "hollow_pt",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ammo",
+    "id": "frangible",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ammo",
+    "id": "synthetic",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ergo",
+    "id": "none",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ergo",
+    "id": "mag_catch",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ergo",
+    "id": "buffer",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "ergo",
+    "id": "match_trigger",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "none",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "5mw_red",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 60,
+    "candidate": 56
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "5mw_green",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "50mw_green",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 60,
+    "candidate": 56
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "120mw_blue",
+    "reading": 60,
+    "candidate": 56
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "light",
+    "id": "none",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "light",
+    "id": "ads_taclight",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "light",
+    "id": "flashlight",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "ef88",
+    "cls": "Assault Rifle",
+    "slot": "light",
+    "id": "hip_taclight",
+    "reading": 56,
+    "candidate": 52
+   },
+   {
+    "weapon": "m433",
+    "cls": "Assault Rifle",
+    "slot": "barrel",
+    "id": "light",
+    "reading": 52,
+    "candidate": 56
+   },
+   {
+    "weapon": "m433",
+    "cls": "Assault Rifle",
+    "slot": "ammo",
+    "id": "lightweight",
+    "reading": 52,
+    "candidate": 54
+   },
+   {
+    "weapon": "m433",
+    "cls": "Assault Rifle",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 58,
+    "candidate": 56
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "mag",
+    "id": "30_rnd",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ammo",
+    "id": "standard",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ammo",
+    "id": "penetration",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ammo",
+    "id": "frangible",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ammo",
+    "id": "hollow_pt",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ergo",
+    "id": "none",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ergo",
+    "id": "mag_catch",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ergo",
+    "id": "match_trigger",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "ergo",
+    "id": "buffer",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "laser",
+    "id": "none",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "laser",
+    "id": "5mw_red",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "laser",
+    "id": "5mw_green",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "laser",
+    "id": "50mw_green",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "light",
+    "id": "none",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "light",
+    "id": "flashlight",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "light",
+    "id": "hip_taclight",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "brod3",
+    "cls": "Carbine",
+    "slot": "light",
+    "id": "ads_taclight",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "grtbc",
+    "cls": "Carbine",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 64,
+    "candidate": 60
+   },
+   {
+    "weapon": "grtbc",
+    "cls": "Carbine",
+    "slot": "ergo",
+    "id": "grtbc_burst_mode",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "cz3a1",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "kv9",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "pw5a3",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "pw7a2",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "scw10",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "sgx",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "umg40",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "rpkm",
+    "cls": "LMG",
+    "slot": "grip",
+    "id": "slim_angled",
+    "reading": 44,
+    "candidate": 50
+   },
+   {
+    "weapon": "rpkm",
+    "cls": "LMG",
+    "slot": "mag",
+    "id": "30_fast",
+    "reading": 46,
+    "candidate": 54
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "barrel",
+    "id": "extended",
+    "reading": 44,
+    "candidate": 40
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "fold_vert",
+    "reading": 48,
+    "candidate": 40
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "slim_handstop",
+    "reading": 44,
+    "candidate": 50
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "ribbed_vert",
+    "reading": 44,
+    "candidate": 40
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "slim_angled",
+    "reading": 44,
+    "candidate": 50
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "ptt_grip_pod",
+    "reading": 42,
+    "candidate": 40
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "mag",
+    "id": "5_rnd",
+    "reading": 44,
+    "candidate": 56
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "mag",
+    "id": "20_rnd",
+    "reading": 44,
+    "candidate": 40
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 44,
+    "candidate": 48
+   },
+   {
+    "weapon": "svdm",
+    "cls": "DMR",
+    "slot": "laser",
+    "id": "120mw_blue",
+    "reading": 44,
+    "candidate": 48
+   },
+   {
+    "weapon": "svk86",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "ribbed_stubby",
+    "reading": 36,
+    "candidate": 40
+   },
+   {
+    "weapon": "svk86",
+    "cls": "DMR",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 36,
+    "candidate": 40
+   },
+   {
+    "weapon": "svk86",
+    "cls": "DMR",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 36,
+    "candidate": 40
+   },
+   {
+    "weapon": "vssm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "full_angled",
+    "reading": 56,
+    "candidate": 58
+   },
+   {
+    "weapon": "vssm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "6h64_vert",
+    "reading": 52,
+    "candidate": 50
+   },
+   {
+    "weapon": "vssm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "classic_vert",
+    "reading": 56,
+    "candidate": 50
+   },
+   {
+    "weapon": "vssm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "stipp_stubby",
+    "reading": 62,
+    "candidate": 54
+   },
+   {
+    "weapon": "vssm",
+    "cls": "DMR",
+    "slot": "grip",
+    "id": "lp_stubby",
+    "reading": 58,
+    "candidate": 54
+   },
+   {
+    "weapon": "vssm",
+    "cls": "DMR",
+    "slot": "mag",
+    "id": "10_rnd",
+    "reading": 50,
+    "candidate": 70
+   },
+   {
+    "weapon": "vssm",
+    "cls": "DMR",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 56,
+    "candidate": 60
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "none",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "dp_brake",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "std_supp",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "sp_brake",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "comp_brake",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "light_supp",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "cqb_supp",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "muzzle",
+    "id": "long_supp",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "barrel",
+    "id": "basic",
+    "reading": 50,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "barrel",
+    "id": "extended",
+    "reading": 42,
+    "candidate": 38
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "barrel",
+    "id": "short",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "light",
+    "id": "none",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "light",
+    "id": "flashlight",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "light",
+    "id": "ads_taclight",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "light",
+    "id": "hip_taclight",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "light",
+    "id": "range_finder",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "none",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "full_angled_sr",
+    "reading": 48,
+    "candidate": 44
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "bipod_sr",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "lp_stubby_sr",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "slim_angled_sr",
+    "reading": 48,
+    "candidate": 44
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "qd_grip_pod_sr",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "classic_grip_pod_sr",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "mag",
+    "id": "5_rnd",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "mag",
+    "id": "7_rnd",
+    "reading": 42,
+    "candidate": 38
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "mag",
+    "id": "7_fast",
+    "reading": 46,
+    "candidate": 36
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "ammo",
+    "id": "standard",
+    "reading": 5,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "ammo",
+    "id": "penetration",
+    "reading": 48,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "ammo",
+    "id": "long_range",
+    "reading": 50,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "ammo",
+    "id": "frangible",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "ergo",
+    "id": "none",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "ergo",
+    "id": "mag_catch",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "ergo",
+    "id": "ads_bolt",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "none",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "5mw_red",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "5mw_green",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "50mw_green",
+    "reading": 46,
+    "candidate": 42
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "l115",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "120mw_blue",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "m2010esr",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "full_angled_sr",
+    "reading": 46,
+    "candidate": 48
+   },
+   {
+    "weapon": "m2010esr",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "classic_grip_pod_sr",
+    "reading": 46,
+    "candidate": 50
+   },
+   {
+    "weapon": "miniscout",
+    "cls": "Sniper Rifle",
+    "slot": "barrel",
+    "id": "light",
+    "reading": 56,
+    "candidate": 60
+   },
+   {
+    "weapon": "miniscout",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "slim_angled_sr",
+    "reading": 56,
+    "candidate": 58
+   },
+   {
+    "weapon": "miniscout",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "full_angled_sr",
+    "reading": 56,
+    "candidate": 58
+   },
+   {
+    "weapon": "miniscout",
+    "cls": "Sniper Rifle",
+    "slot": "mag",
+    "id": "10_fast",
+    "reading": 50,
+    "candidate": 54
+   },
+   {
+    "weapon": "miniscout",
+    "cls": "Sniper Rifle",
+    "slot": "mag",
+    "id": "15_fast",
+    "reading": 56,
+    "candidate": 50
+   },
+   {
+    "weapon": "psr",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "slim_angled_sr",
+    "reading": 34,
+    "candidate": 40
+   },
+   {
+    "weapon": "psr",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "full_angled_sr",
+    "reading": 38,
+    "candidate": 40
+   },
+   {
+    "weapon": "psr",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "classic_grip_pod_sr",
+    "reading": 38,
+    "candidate": 42
+   },
+   {
+    "weapon": "psr",
+    "cls": "Sniper Rifle",
+    "slot": "mag",
+    "id": "7_rnd",
+    "reading": 42,
+    "candidate": 48
+   },
+   {
+    "weapon": "psr",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 50,
+    "candidate": 42
+   },
+   {
+    "weapon": "psr",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 50,
+    "candidate": 42
+   },
+   {
+    "weapon": "psr",
+    "cls": "Sniper Rifle",
+    "slot": "laser",
+    "id": "120mw_blue",
+    "reading": 50,
+    "candidate": 42
+   },
+   {
+    "weapon": "sv98",
+    "cls": "Sniper Rifle",
+    "slot": "barrel",
+    "id": "basic",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "sv98",
+    "cls": "Sniper Rifle",
+    "slot": "barrel",
+    "id": "short",
+    "reading": 50,
+    "candidate": 46
+   },
+   {
+    "weapon": "sv98",
+    "cls": "Sniper Rifle",
+    "slot": "barrel",
+    "id": "light",
+    "reading": 46,
+    "candidate": 50
+   },
+   {
+    "weapon": "sv98",
+    "cls": "Sniper Rifle",
+    "slot": "grip",
+    "id": "full_angled_sr",
+    "reading": 46,
+    "candidate": 48
+   },
+   {
+    "weapon": "sv98",
+    "cls": "Sniper Rifle",
+    "slot": "ammo",
+    "id": "standard",
+    "reading": 5,
+    "candidate": 46
+   },
+   {
+    "weapon": "sv98",
+    "cls": "Sniper Rifle",
+    "slot": "ammo",
+    "id": "penetration",
+    "reading": 48,
+    "candidate": 46
+   },
+   {
+    "weapon": "sv98",
+    "cls": "Sniper Rifle",
+    "slot": "ammo",
+    "id": "long_range",
+    "reading": 48,
+    "candidate": 46
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "barrel",
+    "id": "basic",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "6h64_vert_ks18k",
+    "reading": 50,
+    "candidate": 54
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "classic_vert_ks18k",
+    "reading": 50,
+    "candidate": 54
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "ribbed_stubby",
+    "reading": 66,
+    "candidate": 64
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "stipp_stubby_ks18k",
+    "reading": 50,
+    "candidate": 58
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "slim_angled",
+    "reading": 54,
+    "candidate": 62
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "8_rnd",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "4_fast",
+    "reading": 50,
+    "candidate": 70
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "ammo",
+    "id": "buckshot",
+    "reading": 66,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "ammo",
+    "id": "buckshot_00",
+    "reading": 62,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "ammo",
+    "id": "flechette",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "ammo",
+    "id": "slugs",
+    "reading": 72,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "none",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 50,
+    "candidate": 64
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "5mw_red",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "5mw_green",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "50mw_green",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "ks18k",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 50,
+    "candidate": 64
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "barrel",
+    "id": "basic",
+    "reading": 64,
+    "candidate": 60
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "classic_vert_db12",
+    "reading": 56,
+    "candidate": 54
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "ribbed_stubby",
+    "reading": 62,
+    "candidate": 64
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "7_rnd",
+    "reading": 54,
+    "candidate": 60
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "ammo",
+    "id": "buckshot_00",
+    "reading": 64,
+    "candidate": 60
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "ammo",
+    "id": "flechette",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "ammo",
+    "id": "slugs",
+    "reading": 58,
+    "candidate": 60
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 66,
+    "candidate": 64
+   },
+   {
+    "weapon": "db12",
+    "cls": "Shotgun",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 50,
+    "candidate": 64
+   },
+   {
+    "weapon": "m1014",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "4_fast",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "m1014",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "4_rnd",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "ribbed_stubby",
+    "reading": 52,
+    "candidate": 56
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "slim_handstop",
+    "reading": 52,
+    "candidate": 58
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "adj_angled",
+    "reading": 48,
+    "candidate": 54
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "slim_angled",
+    "reading": 46,
+    "candidate": 58
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "grip",
+    "id": "full_angled",
+    "reading": 52,
+    "candidate": 54
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "5_rnd",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "5_fast",
+    "reading": 50,
+    "candidate": 60
+   },
+   {
+    "weapon": "m87a1",
+    "cls": "Shotgun",
+    "slot": "mag",
+    "id": "6_rnd",
+    "reading": 58,
+    "candidate": 56
+   },
+   {
+    "weapon": "es57",
+    "cls": "Sidearm",
+    "slot": "barrel",
+    "id": "light",
+    "reading": 81,
+    "candidate": 85
+   },
+   {
+    "weapon": "ggh22",
+    "cls": "Sidearm",
+    "slot": "ergo",
+    "id": "fast_deploy",
+    "reading": 75,
+    "candidate": 77
+   },
+   {
+    "weapon": "m357trait",
+    "cls": "Sidearm",
+    "slot": "ergo",
+    "id": "fast_deploy",
+    "reading": 73,
+    "candidate": 75
+   },
+   {
+    "weapon": "m44",
+    "cls": "Sidearm",
+    "slot": "ammo",
+    "id": "hollow_pt",
+    "reading": 67,
+    "candidate": 65
+   },
+   {
+    "weapon": "m44",
+    "cls": "Sidearm",
+    "slot": "ergo",
+    "id": "none",
+    "reading": 69,
+    "candidate": 65
+   },
+   {
+    "weapon": "m44",
+    "cls": "Sidearm",
+    "slot": "ergo",
+    "id": "fast_deploy",
+    "reading": 61,
+    "candidate": 67
+   },
+   {
+    "weapon": "p18",
+    "cls": "Sidearm",
+    "slot": "ergo",
+    "id": "fast_deploy",
+    "reading": 75,
+    "candidate": 77
+   },
+   {
+    "weapon": "vz61",
+    "cls": "Sidearm",
+    "slot": "grip",
+    "id": "stipp_stubby",
+    "reading": 69,
+    "candidate": 67
+   },
+   {
+    "weapon": "vz61",
+    "cls": "Sidearm",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 73,
+    "candidate": 69
+   },
+   {
+    "weapon": "sl9",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "sl9",
+    "cls": "SMG",
+    "slot": "laser",
+    "id": "50mw_violet",
+    "reading": 68,
+    "candidate": 72
+   },
+   {
+    "weapon": "sl9",
+    "cls": "SMG",
+    "slot": "laser",
+    "id": "50mw_blue",
+    "reading": 68,
+    "candidate": 72
+   },
+   {
+    "weapon": "sl9",
+    "cls": "SMG",
+    "slot": "laser",
+    "id": "120mw_blue",
+    "reading": 68,
+    "candidate": 72
+   },
+   {
+    "weapon": "pp19",
+    "cls": "SMG",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 72,
+    "candidate": 68
+   },
+   {
+    "weapon": "sor300sc",
+    "cls": "Carbine",
+    "slot": "grip",
+    "id": "cmpct_handstop",
+    "reading": 64,
+    "candidate": 60
+   },
+   {
+    "weapon": "kts100",
+    "cls": "LMG",
+    "slot": "grip",
+    "id": "ribbed_vert",
+    "reading": 40,
+    "candidate": 36
+   },
+   {
+    "weapon": "kts100",
+    "cls": "LMG",
+    "slot": "mag",
+    "id": "60_rnd",
+    "reading": 38,
+    "candidate": 40
+   },
+   {
+    "weapon": "kts100",
+    "cls": "LMG",
+    "slot": "ammo",
+    "id": "penetration",
+    "reading": 42,
+    "candidate": 40
+   },
+   {
+    "weapon": "m45a1",
+    "cls": "Sidearm",
+    "slot": "ergo",
+    "id": "fast_deploy",
+    "reading": 75,
+    "candidate": 77
    }
   ],
   "mobility delta": [

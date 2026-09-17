@@ -121,7 +121,7 @@ for (const row of rows) {
     const reading = row.readings[stat];
     if (reading == null) continue;
     const candidate = row.candidates[stat];
-    if (stat !== 'mobility') {
+    {
       if (candidate == null) count(summary.absolute, stat, 'no-candidate');
       else {
         const outcome = Math.round(candidate) === reading ? 'match' : 'differ';
