@@ -17,6 +17,7 @@ the [current provenance index](../provenance/README.md) for that separate eviden
 - `BF6_Attachment_Stats_Review.xlsx` — human-readable review workbook.
 - `validate-reference.mjs` — explicit structural and consistency check.
 - `build-workbook.py` — regenerates the workbook from the canonical JSON.
+- `screenshot-stat-corrections-2026-09-17.json` — 439 screenshot-verified stat corrections applied to the canonical JSON, with screenshot paths and hashes.
 
 `Weapon Attachments/` is the local sorted screenshot library used by the JSON paths and workbook
 links. Git ignores it because of its size. The completed OCR/correction workflow
