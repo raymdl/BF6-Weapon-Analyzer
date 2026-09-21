@@ -47,6 +47,7 @@ any remaining questions into an active handoff, and archive the completed record
 | [Data sources](DATA_SOURCES.md) | Data maintainers: source authority, Frosty review pipeline, provenance, promotion rules. |
 | [Data reference](DATA_REFERENCE.md) | Developers/data maintainers: JSON contracts, field meanings, units, all live array families. |
 | [Stat ladders](STAT_LADDERS.md) | Model maintainers: complete finite tables, geometric factors, index signs, bounds, examples. |
+| [Weapon Attributes model](WEAPON_ATTRIBUTES_MODEL.md) | Research/model maintainers: Hipfire, Precision, Control and Mobility formulas, game naming, source inputs, preview rules and validation limits. Production integration is on hold. |
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
 | [Frosty game data](frosty/README.md) | Data maintainers: Frosty exports, field meanings, asset links, source findings and open questions. |
 | [Attachment bugs and mismatches](ATTACHMENT_BUGS.md) | All readers: attachment game data bugs, description errors and fixed site data errors, with evidence and status. |

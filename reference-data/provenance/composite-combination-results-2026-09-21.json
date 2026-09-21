@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-21",
+  "scope": "Twelve paired loadout panels (six A/B pairs), including five attachment previews. VSSM uses confirmed 200 mm ASM Suppressed barrel. Menu composition checks do not prove runtime activation.",
+  "composite": {
+    "date": "2026-09-21",
+    "absolute": {
+      "control": {
+        "match": 12
+      },
+      "hipfire": {
+        "match": 12
+      },
+      "mobility": {
+        "match": 12
+      }
+    },
+    "delta": {
+      "control": {
+        "no-baseline": 12
+      },
+      "hipfire": {
+        "no-baseline": 12
+      },
+      "mobility": {
+        "no-baseline": 12
+      }
+    },
+    "groups": {}
+  },
+  "precision": {
+    "date": "2026-09-21",
+    "tables": "reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json",
+    "corrections": 0,
+    "originalReadings": {
+      "match": 12
+    },
+    "correctedReadings": {
+      "match": 12
+    },
+    "methods": {
+      "exact": 8,
+      "fallback": 2,
+      "single-row": 2
+    },
+    "remaining": []
+  },
+  "inputHashes": {
+    "reference-data/attachment-audit/composite-combination-panels-2026-09-21.json": "5833f824312780c43136ed6e380a8cac0dcef694a17c5d47054a2a101205c81a",
+    "scripts/frosty-composite-check.mjs": "443039aa4a915a9183f1bc8cf01346fd8def4cf0a847bfa758f62b72fc634935",
+    "scripts/frosty-precision-check.mjs": "ff45bb0f51c19e19bca02d003f4b554863443953c59fbb49303aefe88abb7ca8",
+    "data/attachments.json": "74189670b49679da940a4de945d4251a0aaf70fe83c94a6436860b43fe9dcee8",
+    "data/ammo.json": "a43307df41f519dc8c6da5e9f3c50553b0782929c2dd333687eea3b7b6703027",
+    "data/weapons.json": "7a96b89b356d402a557990433f800ca8bb99191e32183380d1f409710d2c9adc",
+    "data/balance_tables.json": "e4b2946ab0aaea54a25a6703029994a824da6f1d49c37072a7e7205faa36a08b",
+    "reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json": "9f5d92d90caaafb9dadf43251feb32be5898474ce1e2f4e6830b16779c68a9db",
+    "reference-data/provenance/composite-mobility-source-trace-2026-09-21.json": "8dfacaa7da36bba7c36fe090833a72333d4ad15d49c846fb66c519c8fab4e912"
+  },
+  "observedPairDeltas": {
+    "EF": {
+      "hipfire": 0,
+      "precision": -1,
+      "control": -3,
+      "mobility": 0
+    },
+    "HF": {
+      "hipfire": 7,
+      "precision": 0,
+      "control": 0,
+      "mobility": 4
+    },
+    "L": {
+      "hipfire": 0,
+      "precision": 0,
+      "control": 0,
+      "mobility": 4
+    },
+    "KS": {
+      "hipfire": 0,
+      "precision": 0,
+      "control": 1,
+      "mobility": 6
+    },
+    "V": {
+      "hipfire": 0,
+      "precision": 1,
+      "control": 4,
+      "mobility": -4
+    },
+    "S": {
+      "hipfire": 0,
+      "precision": 0,
+      "control": -10,
+      "mobility": 0
+    }
+  }
+}

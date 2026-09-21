@@ -34,6 +34,8 @@ when it matters.
 
 ## Related
 
+- [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md): four-bar calculations, current evidence and site-card mapping.
+
 - [Game update guide](../GAME_UPDATE_GUIDE.md): the step order after a game update.
 - [Data sources](../DATA_SOURCES.md): how Frosty data becomes site data.
 - [Attachment bugs](../ATTACHMENT_BUGS.md): game data errors found with Frosty.

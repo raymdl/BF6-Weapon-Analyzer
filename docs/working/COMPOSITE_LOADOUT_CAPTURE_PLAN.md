@@ -4,6 +4,15 @@ Purpose: test attachment composition after the 148 current single-attachment
 panels matched. These are requested tests, not verified combined-loadout results.
 Composite-stat integration into the site is on hold.
 
+**Completed:** all 12 panels match all four composite stats. Actual captures use
+4 Rnd Fast for KS and 200 mm ASM Suppressed for VSSM. KS-B, L-A, L-B, S-B and
+V-B are attachment previews. See [recorded results](../../reference-data/provenance/composite-combination-results-2026-09-21.json).
+
+VSSM has two integrated suppressed barrels: **200 mm Factory — 30 points**
+(`vssm_suppressed`) and **200 mm ASM — 20 points** (`vssm_suppressed_asm`).
+Both include suppression in the barrel; neither requires a separate muzzle
+suppressor. The completed V-A and V-B captures use ASM.
+
 ## Capture method
 
 Take 12 screenshots: A and B for each pair below. Equip each complete build,

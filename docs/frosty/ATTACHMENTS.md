@@ -90,8 +90,8 @@ Applied follow-ups:
 - `GRM_AutoIdentifier_P00`: −0.0006 s duration addition on five weapons, after any muzzle
   duration override.
 - Mini Scout Tungsten: −7 amount steps (combined −1/−6 links).
-- Slim Angled: moving-ADS index −1 on PSR, SV-98, KS18K, L115, Mini Scout and
-  Interdictor (bug entry 1).
+- Slim Angled: moving-ADS index −1 on PSR, SV-98, L115, Mini Scout and
+  Interdictor (bug entry 1a). KS18K is excluded; see the trace below.
 
 ## Lights
 
@@ -226,3 +226,37 @@ magnification in their UI label.
 - [frosty-light-field-names-2026-09-13.json](../../reference-data/provenance/frosty-light-field-names-2026-09-13.json)
 - History: [attachment generation review](../archive/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md),
   [optic source plan](../archive/OPTIC_FROSTY_SOURCE_PLAN.md)
+
+## Weapon Attributes attachment tracing (21 September 2026)
+
+The source review covers saved builds 1.4.2.5 and 1.4.3.0. See the
+[Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md) for calculations and limits.
+
+- **Tungsten Core:** M2010 ESR, PSR and SV-98 select
+  `GRM_Recoil_AMO_Bolt_M10` (−6 ADS/hip recoil amount steps). L115 and Interdictor
+  select normal `GRM_Recoil_AMO_M10` (−1). Mini Scout binds both (−7).
+  Variation does not change. Production follows these bindings; six steps as the
+  intended rule for all snipers remains a hypothesis.
+- **L115 Standard Suppressor:** the normal suppressor selector is active, but its
+  GS has no corresponding hip-dispersion penalty binding. EF88 and M2010 ESR have
+  that binding. The research Hipfire checker excludes the penalty; the generic
+  production muzzle penalty remains a separate open correction (bug 12).
+- **L115 QD Grip Pod:** no moving-ADS penalty binding. Production uses zero.
+  Light + Violet reads Mobility 54; adding the pod reads 58.
+- **18.5KS-K Slim Angled:** selects normal `U_WPM_BTM_Fast02_W25`, unlike the
+  affected sniper grips that select Full Angled. Its extra
+  `GDM_Array_ADSMoveDispersion_BTM_M10` binding is under `Field_b30a73ed`, not
+  moving-ADS collection `Field_2ffeb6ac`. A modifier filename alone does not identify
+  the runtime target. Twelve ADS indicator captures show Slim Angled matching no
+  grip within one pixel, with and without Violet; Folding Stubby widens the moving
+  indicator. Production now uses zero moving-ADS penalty. The other field's exact
+  effect remains unknown; indicator widths do not establish pellet distribution.
+- **VSSM:** both 200 mm Factory (30 points) and 200 mm ASM (20 points) have integrated
+  suppression. The paired Folding Stock captures use ASM, with no separate suppressor.
+
+Evidence: [Tungsten trace](../../reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json),
+[Mobility trace](../../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json),
+[ADS indicator measurements](../../reference-data/provenance/ks18k-ads-indicator-2026-09-21.json),
+[paired panels](../../reference-data/provenance/composite-combination-results-2026-09-21.json).
+Dated trace files preserve the status at collection time; the indicator follow-up
+supersedes the earlier pending KS18K production status.

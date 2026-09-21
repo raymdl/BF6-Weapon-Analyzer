@@ -1,5 +1,9 @@
 # Composite stats findings
 
+Use **Weapon Attributes** (the game's terminology) for new documentation. The
+current [Weapon Attributes model guide](../WEAPON_ATTRIBUTES_MODEL.md) explains
+the four bar attributes. This file retains its historical name and dated findings.
+
 Current review objective (21 SEP): calculate all four panel stats independently from source
 inputs and match verified in-game readings. Historical review is complete for 472 selected
 screenshots. Current EF88, BROD 3 and two KTS100 replacements are in the canonical audit.
@@ -622,3 +626,34 @@ not the first collection's effect. Production KS spread is therefore unchanged.
 
 Composite integration is on hold at the operator's request. The next validation
 is [six paired loadouts / 12 captures](COMPOSITE_LOADOUT_CAPTURE_PLAN.md).
+
+### Paired loadout results (21 SEP 2026)
+
+All six requested pairs were captured and reviewed: **12/12 panels match each
+of Hipfire, Precision, Control and Mobility (48/48 displayed values)**.
+The checkers now accept an explicit full loadout in each audit record; the
+single-attachment path is unchanged and the previous 17-panel regression passes.
+
+The user substituted 4 Rnd Fast for KS's locked 4 Rnd. KS-B previews locked
+Slim Angled. Both L115 panels preview locked Violet, with QD Grip Pod equipped
+only for B. S-B previews Tungsten Core; V-B previews Folding Vertical. The user
+confirmed VSSM uses the 20-point 200 mm ASM Suppressed barrel, which explains
+its 80/90-point totals rather than the planned 90/100.
+
+Observed A-to-B deltas (Hipfire, Precision, Control, Mobility): EF (0, −1, −3, 0),
+HF (+7, 0, 0, +4), L (0, 0, 0, +4), KS (0, 0, +1, +6),
+V (0, +1, +4, −4), S (0, 0, −10, 0). These test specific combined menu builds,
+not all combinations or gameplay activation. KS's other binding field remains
+unresolved. Production composite integration remains on hold.
+
+[Readings and loadouts](../../reference-data/attachment-audit/composite-combination-panels-2026-09-21.json)
+and [results with source hashes](../../reference-data/provenance/composite-combination-results-2026-09-21.json).
+
+### 18.5KS-K ADS indicator follow-up (21 September)
+
+Twelve controlled captures support no Slim Angled moving-ADS penalty. No grip and
+Slim Angled match within one pixel, while Folding Stubby widens the moving indicator.
+Production now uses `movingAdsSpreadTierMod: 0` for `ks18k` Slim Angled, superseding
+earlier statements that this production correction was pending. The alternate Frosty
+field remains unidentified; this is indicator evidence, not a pellet-distribution test.
+Evidence: `reference-data/provenance/ks18k-ads-indicator-2026-09-21.json`.

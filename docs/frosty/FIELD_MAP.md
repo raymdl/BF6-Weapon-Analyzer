@@ -336,3 +336,24 @@ is name evidence only. Operand meaning and runtime use need their own checks.
 | `Field_f7a76bcf` | DecreaseExponent |
 
 31 further leaves hold constant values shared by several fields and are not named; see `ambiguousLeaves` in the evidence file.
+
+## GS dispersion collections: distinct targets
+
+SDK reflection reviewed on 21 September 2026 identifies two separate arrays on
+`Class_539cff9b`:
+
+| Field | Element type | SDK index / offset | Meaning and confidence |
+|---|---|---|---|
+| `Field_b30a73ed` | `Struct_a92e7ee4` | 18 / 1528 | Runtime target unknown; do not label moving ADS from modifier filenames |
+| `Field_2ffeb6ac` | `Struct_28529b7f` | 19 / 1536 | Moving-ADS dispersion binding collection, source/value tracing |
+
+18.5KS-K Slim Angled places the named ADS-move modifier in the first array.
+Its indicator and Mobility panel do not show the presumed moving penalty.
+SDK layout establishes distinct types, not the unknown array's semantic name.
+See the [Mobility trace](../../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
+and [attachment follow-up](ATTACHMENTS.md#weapon-attributes-attachment-tracing-21-september-2026).
+
+Precision table extraction for current panels must use the
+[1.4.3.0 report](../../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json).
+The changed settings export takes precedence over a stale overlay; the older
+report above remains historical evidence.

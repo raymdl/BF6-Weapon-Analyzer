@@ -30,7 +30,7 @@ Site status uses one of these values, followed by the value that the site applie
 | # | Attachment | Weapons | Type | Error | Site status |
 |---|---|---|---|---|---|
 | 1a | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Matches game: −1 ADS accuracy while moving |
-| 1b | Slim Angled | 18.5KS-K | Under review | The penalty modifier is bound outside the moving-ADS collection. The earlier moving-ADS interpretation is not established; the current Mobility panel does not include that penalty. | Moving-ADS penalty remains in production pending target review |
+| 1b | Slim Angled | 18.5KS-K | Site interpretation corrected | The modifier is outside the moving-ADS collection. Controlled ADS indicator captures show no moving penalty. The alternate field remains unidentified. | Corrected: no moving-ADS penalty |
 | 2 | Hollow Point, Frangible, Tungsten Core | M121 A2, M45A1 | Game error | The game adds the FMJ +1 penetration step to these three ammo types. Collateral damage multiplier is too high: Hollow Point and Frangible keep the Standard value; M45A1 Tungsten Core is one step higher (M121 A2 Tungsten Core is at the maximum, so no change). The descriptions do not state a penetration change. | Matches game: extra collateral step |
 | 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19 | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches source data: no weapon draw speed change |
 | 4 | 20 Rnd fast | PP-19 | Game error | The description states faster reloads. The game does not apply the reload speed bonus (×1.13). | Matches game: no reload speed change |
@@ -54,8 +54,8 @@ recoil. See
 
 ### 1. Slim Angled applies an unstated moving-ADS penalty
 
-Both cases give Slim Angled −1 ADS accuracy while moving, which its description does
-not state. The causes in the game data are different, so each case needs its own fix.
+The sniper cases apply an unstated moving-ADS penalty. The earlier 18.5KS-K
+classification was a site interpretation error; see 1b.
 
 #### 1a. Sniper rifles: Full Angled package selected
 
@@ -112,7 +112,7 @@ not state. The causes in the game data are different, so each case needs its own
   were added on 14 September; the handling generator preserves these per-weapon
   fields.
 
-#### 1b. 18.5KS-K: Slim Angled dispersion binding under review
+#### 1b. 18.5KS-K: Slim Angled moving-ADS interpretation corrected
 
 - **In-game text.** "Marginally reduces recoil, increases weapon draw speed, and
   enables a slightly faster transition to aim down sights (ADS)."
@@ -129,9 +129,17 @@ not state. The causes in the game data are different, so each case needs its own
   matches 66 when it excludes the presumed moving-ADS penalty; including that
   penalty gives 62. This confirms the panel comparison, not the gameplay effect
   of the other collection.
-- **Site.** Production still applies `movingAdsSpreadTierMod: -1` on `ks18k`.
-  That spread behavior remains under review. Only the research Mobility input
-  was corrected. Attachment cost remains 25.
+- **ADS indicator check (21 September).** Twelve firing-range captures compare no
+  grip, Slim Angled and Folding Stubby, stationary and moving, with and without
+  Violet. Moving indicator spans are 32/32/35 pixels without Violet and 30/29/32
+  pixels with Violet, respectively. Stationary spans are 23–24 pixels throughout.
+  Slim Angled matches no grip within one pixel. Folding Stubby is a positive
+  control: its moving indicator is wider. Three red thresholds give the same bounds.
+  States come from operator filenames; these frames do not measure pellet distribution.
+- **Site.** Corrected `ks18k` Slim Angled to `movingAdsSpreadTierMod: 0`.
+  Source collection, panel and indicator evidence agree. Attachment cost remains 25.
+  The runtime meaning of `Field_b30a73ed` remains unresolved.
+- **Capture evidence.** [ADS indicator measurements and source hashes](../reference-data/provenance/ks18k-ads-indicator-2026-09-21.json).
 - **Evidence.** [Mobility source trace](../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
   and [current panel results](../reference-data/provenance/composite-remaining-results-2026-09-21.json).
 
