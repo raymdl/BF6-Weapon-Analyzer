@@ -1,0 +1,4037 @@
+{
+  "date": "2026-09-21",
+  "scope": "Second capture batch; old records and screenshots preserved.",
+  "rows": [
+    {
+      "recordIndex": 2125,
+      "before": {
+        "weaponName": "L115",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\L115\\00_L115_attachment_overview.png",
+          "originalFilename": "00_L115_attachment_overview.png",
+          "proposedFilename": "00_L115_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/00_L115_attachment_overview.png",
+          "renameApplied": false,
+          "captureOrder": 0,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": "CUSTOMIZE L 115 FACTORY 35/10ø%ZZ\" uzzzzzz EQUIP MUZZLE Signature Weapon: Recon BASIC STICkERS / STICKER a RESET (HOLD) RIGHT ACCESSORY LEFT ACCESSORY a INSPECT UNDERBARREL IS goo DMG 100 ROF 46 MAG 5 @ 4øø ERGONOMICS ii CAMOS / CAMO a FIRING RANGE CHARMS / CHARM • FAVORITE HIPFIRE PRECISION CONTROL MOBILITY Ill @ 2.750 742 367 Ø34 løø 046 xl.75",
+          "canonicalOrder": 0
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "ocr-pending",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": null,
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion."
+        ]
+      },
+      "after": {
+        "weaponName": "L115",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\L115\\Battlefield 6 Screenshot 2026.09.21 - 14.36.02.83 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.36.02.83 (Medium).png",
+          "proposedFilename": "00_L115_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/00_L115_attachment_overview.png",
+          "renameApplied": true,
+          "captureOrder": 0,
+          "captureTimestamp": "14.36.02.83",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json.",
+          "27\" Full (Basic) is equipped in this capture set. 27\" Factory (Light) has the UI Default label. Do not treat the Default label as the equipped selection."
+        ]
+      },
+      "identity": {
+        "weapon": "l115",
+        "slot": null,
+        "id": null
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Battlefield 6 Screenshot 2026.09.21 - 14.36.02.83 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/00_L115_attachment_overview.png",
+      "sourceSha256": "9e50522c4e2ec9be8fe117fbfe4c31e86944bc114ab61ce1e9eed2b593b2b182",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Old/00_L115_attachment_overview.png",
+      "archivedSha256": "5a9a9d7b2d97a122864814f92bfd4fe931d25f75c9e91b99475f7391e0dff83e",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 46,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 12,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 742,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 2,
+        "recoilVariationDegrees": 4
+      }
+    },
+    {
+      "recordIndex": 2134,
+      "before": {
+        "weaponName": "L115",
+        "attachmentType": "Barrel",
+        "attachmentSubtype": "Basic",
+        "attachmentCost": 10,
+        "attachmentName": "27\" Full",
+        "attachmentDescription": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 50,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\L115\\09_L115_Barrel_Basic.png",
+          "originalFilename": "09_L115_Barrel_Basic.png",
+          "proposedFilename": "09_L115_Barrel_Basic.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/09_L115_Barrel_Basic.png",
+          "renameApplied": false,
+          "captureOrder": 9,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+          "rawFullScreenOcr": "SELECT BARREL 27\" FULL Standard barrel that enables a fast transition to aim down sights (ADS). FIRING RANGE DMG 100 MAG PRECISION CONTROL MOBILITY 034 løø 012 346 SINGLE 2. 7søs 742M/S 367MS 62 54M ISØM s.øs xø. 75 NO xø .54 167MS ii 5 Ili FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER BASIC 2øz LIGHT EXTENDED SHORT LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 9
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Attachment name was normalized against the approved naming instructions on 2026-07-28."
+        ]
+      },
+      "after": {
+        "weaponName": "L115",
+        "attachmentType": "Barrel",
+        "attachmentSubtype": "Basic",
+        "attachmentCost": 10,
+        "attachmentName": "27\" Full",
+        "attachmentDescription": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\L115\\Battlefield 6 Screenshot 2026.09.21 - 14.36.08.31 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.36.08.31 (Medium).png",
+          "proposedFilename": "09_L115_Barrel_Basic.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/09_L115_Barrel_Basic.png",
+          "renameApplied": true,
+          "captureOrder": 9,
+          "captureTimestamp": "14.36.08.31",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json.",
+          "27\" Full (Basic) is equipped in this capture set. 27\" Factory (Light) has the UI Default label. Do not treat the Default label as the equipped selection."
+        ]
+      },
+      "identity": {
+        "weapon": "l115",
+        "slot": "barrel",
+        "id": "basic"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Battlefield 6 Screenshot 2026.09.21 - 14.36.08.31 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/09_L115_Barrel_Basic.png",
+      "sourceSha256": "f59077d0908f3727adde2778cb5e6bd90ddfc3b1a0f043c40daf75c7243cc24d",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Old/09_L115_Barrel_Basic.png",
+      "archivedSha256": "2a0d9469c268c9e820d9dabb50f1e8e9375e443ea73a0baed9a876ad6c467225",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 46,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 12,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 742,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 2,
+        "recoilVariationDegrees": 4
+      }
+    },
+    {
+      "recordIndex": 2135,
+      "before": {
+        "weaponName": "L115",
+        "attachmentType": "Barrel",
+        "attachmentSubtype": "Light",
+        "attachmentCost": 20,
+        "attachmentName": "27\" Factory",
+        "attachmentDescription": "Light barrel that improves aim down sights (ADS) accuracy while moving enables a fast transition to ADS.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "mobility": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.81,
+            "coloredPixelCount": 113,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 283,
+              "y2": 287
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\L115\\10_L115_Barrel_Basic_ambiguous-2.png",
+          "originalFilename": "10_L115_Barrel_Basic_ambiguous-2.png",
+          "proposedFilename": "10_L115_Barrel_Light.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/10_L115_Barrel_Light.png",
+          "renameApplied": true,
+          "captureOrder": 10,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "IA oerault Light barrel that improves aim down sights (ADS) accuracy while moving enables a fast transition to ADS.",
+          "rawFullScreenOcr": "SELECT BARREL ZZZZ\"ZUZUZ 27\" FACTORY IA oerault Light barrel that improves aim down sights (ADS) accuracy while moving enables a fast transition to ADS. DMG 100 46 MAG 5 PRECISION CONTROL MOBILITY 034 løø 012 SINGLE 2. 7søs 742M/S 367MS 62 54M ISØM s.øs xø. 75 NO xø .54 167MS ii Ili EQUIP BASIC n FIRING RANGE 2øz LIGHT FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER EXTENDED SHORT LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS AOS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 10
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Attachment name was normalized against the approved naming instructions on 2026-07-28.",
+          "Filename and attachment identity were reconciled by direct visual review on 2026-07-30; raw original-path provenance is preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "L115",
+        "attachmentType": "Barrel",
+        "attachmentSubtype": "Light",
+        "attachmentCost": 20,
+        "attachmentName": "27\" Factory",
+        "attachmentDescription": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 50,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "mobility": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\L115\\Battlefield 6 Screenshot 2026.09.21 - 14.36.13.07 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.36.13.07 (Medium).png",
+          "proposedFilename": "10_L115_Barrel_Light.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/10_L115_Barrel_Light.png",
+          "renameApplied": true,
+          "captureOrder": 10,
+          "captureTimestamp": "14.36.13.07",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json.",
+          "27\" Full (Basic) is equipped in this capture set. 27\" Factory (Light) has the UI Default label. Do not treat the Default label as the equipped selection."
+        ]
+      },
+      "identity": {
+        "weapon": "l115",
+        "slot": "barrel",
+        "id": "light"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Battlefield 6 Screenshot 2026.09.21 - 14.36.13.07 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/10_L115_Barrel_Light.png",
+      "sourceSha256": "9270be1c981ee3df0c8acc1ed0676285e03d5d084b16c27a75eb538fc2be494b",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Old/10_L115_Barrel_Light.png",
+      "archivedSha256": "f7e1e030d02f04c5723caebbee798960e4eff3936d71d21c8e8b7b8679087541",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 46,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 12,
+        "mobility": 50,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 742,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 2,
+        "recoilVariationDegrees": 4
+      }
+    },
+    {
+      "recordIndex": 2148,
+      "before": {
+        "weaponName": "L115",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Grip Pod",
+        "attachmentCost": 10,
+        "attachmentName": "QD Grip Pod",
+        "attachmentDescription": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "mobility": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.81,
+            "coloredPixelCount": 113,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 283,
+              "y2": 287
+            }
+          },
+          "adsTimeMs": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.85,
+            "coloredPixelCount": 222,
+            "arrowBounds": {
+              "x1": 1215,
+              "x2": 1222,
+              "y1": 449,
+              "y2": 452
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\L115\\23_L115_Grip_QD_Grip_Pod.png",
+          "originalFilename": "23_L115_Grip_QD_Grip_Pod.png",
+          "proposedFilename": "30_L115_Grip_QD_Grip_Pod.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/30_L115_Grip_QD_Grip_Pod.png",
+          "renameApplied": true,
+          "captureOrder": 23,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "edges Of cover and While prone. Enables a slightly faster transition to aim down sights (ADS), at the cost Of AOS accuracy While moving. Unlock at LI IS Mastery 16",
+          "rawFullScreenOcr": "REL zzzzmuuzzz OD GRIP POD Allows weapon to be mounted more effectively on the edges Of cover and While prone. Enables a slightly faster transition to aim down sights (ADS), at the cost Of AOS accuracy While moving. Unlock at LI IS Mastery 16 DMG 100 ROF MAG 5 GRIP poo 034 løø 012 SINGLE 2. 7søs 742M/S • 3øøMS 62 54M ISØM s.øs xø. 75 NO xø .54 167MS ii PRECISION CONTROL MOBILITY Ili EQUIP GRIP POD FIRING RANGE ANGLED FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER BIPOD STUBBY ANGLED LONG RANGE DAMAGE 3D SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS AOS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 30
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "OCR description began mid-clause; body text was visually corrected from the screenshot.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "L115",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Grip Pod",
+        "attachmentCost": 10,
+        "attachmentName": "QD Grip Pod",
+        "attachmentDescription": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 50,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "mobility": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "adsTimeMs": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\L115\\Battlefield 6 Screenshot 2026.09.21 - 14.36.25.93 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.36.25.93 (Medium).png",
+          "proposedFilename": "30_L115_Grip_QD_Grip_Pod.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/30_L115_Grip_QD_Grip_Pod.png",
+          "renameApplied": true,
+          "captureOrder": 30,
+          "captureTimestamp": "14.36.25.93",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json.",
+          "27\" Full (Basic) is equipped in this capture set. 27\" Factory (Light) has the UI Default label. Do not treat the Default label as the equipped selection."
+        ]
+      },
+      "identity": {
+        "weapon": "l115",
+        "slot": "grip",
+        "id": "qd_grip_pod_sr"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Battlefield 6 Screenshot 2026.09.21 - 14.36.25.93 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/30_L115_Grip_QD_Grip_Pod.png",
+      "sourceSha256": "ec38169653bcd5ffc9112ac23f3bb5965e1796471ed440359f7171b7b6e8bb4f",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Old/30_L115_Grip_QD_Grip_Pod.png",
+      "archivedSha256": "6bb3ffcf93e649bbb2f86d5d2af94c93cf9c65a0f77f4e6ec73e11c9053c9d45",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 46,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 12,
+        "mobility": 50,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 742,
+        "adsTimeMs": 300,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 2,
+        "recoilVariationDegrees": 4
+      }
+    },
+    {
+      "recordIndex": 2163,
+      "before": {
+        "weaponName": "L115",
+        "attachmentType": "Laser",
+        "attachmentSubtype": "Violet Laser",
+        "attachmentCost": 10,
+        "attachmentName": "50 MW Violet",
+        "attachmentDescription": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 50,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "mobility": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.81,
+            "coloredPixelCount": 113,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 283,
+              "y2": 287
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\L115\\38_L115_Laser_50_MW_Violet.png",
+          "originalFilename": "38_L115_Laser_50_MW_Violet.png",
+          "proposedFilename": "21_L115_Laser_50_MW_Violet.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/21_L115_Laser_50_MW_Violet.png",
+          "renameApplied": true,
+          "captureOrder": 38,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on. Unlock at LI IS Mastery 36",
+          "rawFullScreenOcr": "Cb4S SELECT RIGHT ACCESSORY ZZZ+ zzz DMG 100 ROF 46 MAG 5 PRECISION CONTROL MOBILITY VIOLET LASER eøu c. GREEN LASER BLUE LASER 034 løø e12 SINGLE 2. 7søs 742M/S 367MS 62 54M ISØM s.øs xø. 75 NO xø .54 167MS ii 50 MW VIOLET Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on. Unlock at LI IS Mastery 36 Ili EQUIP BLUE LASER FIRING RANGE løz REO LASER FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER GREEN LASER LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 21
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Laser name and complete description were normalized from the screenshot-backed repeated attachment corpus; the record remains provisional until final review sign-off.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "OCR description began mid-clause; body text was visually corrected from the screenshot.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Dedicated laser screenshot fields were reconciled; displayed name, cost, visible stats, and comparison indicators are retained, while compact-panel lower fields remain null where not displayed.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "L115",
+        "attachmentType": "Laser",
+        "attachmentSubtype": "Violet Laser",
+        "attachmentCost": 10,
+        "attachmentName": "50 MW Violet",
+        "attachmentDescription": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 50,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "mobility": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\L115\\Battlefield 6 Screenshot 2026.09.21 - 14.36.34.46 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.36.34.46 (Medium).png",
+          "proposedFilename": "21_L115_Laser_50_MW_Violet.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/21_L115_Laser_50_MW_Violet.png",
+          "renameApplied": true,
+          "captureOrder": 21,
+          "captureTimestamp": "14.36.34.46",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json.",
+          "27\" Full (Basic) is equipped in this capture set. 27\" Factory (Light) has the UI Default label. Do not treat the Default label as the equipped selection."
+        ]
+      },
+      "identity": {
+        "weapon": "l115",
+        "slot": "laser",
+        "id": "50mw_violet"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Battlefield 6 Screenshot 2026.09.21 - 14.36.34.46 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/21_L115_Laser_50_MW_Violet.png",
+      "sourceSha256": "2ce7379531973914a35504db3d68d8297e254f0f0847395cc6ece9240ed44bb1",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Old/21_L115_Laser_50_MW_Violet.png",
+      "archivedSha256": "9fc61ef522d377844061e7d327ebc660c93bb2ddaf0045a01c1a8536a1033984",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 46,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 12,
+        "mobility": 50,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 742,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 2,
+        "recoilVariationDegrees": 4
+      }
+    },
+    {
+      "recordIndex": 2128,
+      "before": {
+        "weaponName": "L115",
+        "attachmentType": "Muzzle",
+        "attachmentSubtype": "Suppressor",
+        "attachmentCost": 20,
+        "attachmentName": "Standard Suppressor",
+        "attachmentDescription": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces hip-fire accuracy.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 21,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "spotOnFire3dM": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.85,
+            "coloredPixelCount": 111,
+            "arrowBounds": {
+              "x1": 1241,
+              "x2": 1248,
+              "y1": 540,
+              "y2": 543
+            }
+          },
+          "spotOnFire2dM": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.917,
+            "coloredPixelCount": 135,
+            "arrowBounds": {
+              "x1": 1232,
+              "x2": 1239,
+              "y1": 560,
+              "y2": 564
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\L115\\03_L115_Muzzle_Standard_Suppressor.png",
+          "originalFilename": "03_L115_Muzzle_Standard_Suppressor.png",
+          "proposedFilename": "03_L115_Muzzle_Standard_Suppressor.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/03_L115_Muzzle_Standard_Suppressor.png",
+          "renameApplied": false,
+          "captureOrder": 3,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces hip-fire accuracy.",
+          "rawFullScreenOcr": "SELECT MUZZLE zzzzzzuuzz STANDARD SUPPRESSOR Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces hip-fire accuracy. DMG 100 ROF 46 MAG PRECISION CONTROL MOBILITY SUPPRESSOR 034 løø 012 346 SINGLE 2. 7søs 742M/S 367MS 62 • 21M s.øs xø. 75 NO xø .54 167MS ii 1 5 Ili EQUIP SUPPRESSOR n FIRING RANGE FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER løz BRAKE SUPPRESSOR E] SUPPRESSOR BRAKE BRAKE LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 3
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "L115",
+        "attachmentType": "Muzzle",
+        "attachmentSubtype": "Suppressor",
+        "attachmentCost": 20,
+        "attachmentName": "Standard Suppressor",
+        "attachmentDescription": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces hip-fire accuracy.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 46,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 12,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 742,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 21,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2,
+          "recoilVariationDegrees": 4
+        },
+        "statComparisons": {
+          "spotOnFire3dM": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "spotOnFire2dM": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\L115\\Battlefield 6 Screenshot 2026.09.21 - 14.36.40.86 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.36.40.86 (Medium).png",
+          "proposedFilename": "03_L115_Muzzle_Standard_Suppressor.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/03_L115_Muzzle_Standard_Suppressor.png",
+          "renameApplied": true,
+          "captureOrder": 3,
+          "captureTimestamp": "14.36.40.86",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json.",
+          "27\" Full (Basic) is equipped in this capture set. 27\" Factory (Light) has the UI Default label. Do not treat the Default label as the equipped selection."
+        ]
+      },
+      "identity": {
+        "weapon": "l115",
+        "slot": "muzzle",
+        "id": "std_supp"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Battlefield 6 Screenshot 2026.09.21 - 14.36.40.86 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/03_L115_Muzzle_Standard_Suppressor.png",
+      "sourceSha256": "2fbf5a3188324d2fab83337b24109193a73938cfdad08b38d51d8b2b6c103f00",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/Old/03_L115_Muzzle_Standard_Suppressor.png",
+      "archivedSha256": "c5e7f2f750471145da980e59d3cf4dae82a4db4e30dacca7483ff586ebe9ffe3",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 46,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 12,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 742,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 0,
+        "spotOnFire2dM": 21,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 2,
+        "recoilVariationDegrees": 4
+      }
+    },
+    {
+      "recordIndex": 2331,
+      "before": {
+        "weaponName": "18.5KS-K",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\18.5KS-K\\00_18.5KS-K_attachment_overview.png",
+          "originalFilename": "00_18.5KS-K_attachment_overview.png",
+          "proposedFilename": "00_18.5KS-K_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/00_18.5KS-K_attachment_overview.png",
+          "renameApplied": false,
+          "captureOrder": 0,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": "CUSTOMIZE 18.5KS-K FACTORY zzzzzzz STICkERS / MO STICKER a RESET (HOLD) RIGHT ACCESSORY LEFT ACCESSORY UNDERBARREL a INSPECT IRE PRECISION CONTROL MOBILITY Ill @ 2.750 @ 4øø ERGONOMICS a 42 014 215 eeø ii EQUIP CAMOS / CAMO a FIRING RANGE MUZZLE CHARMS / CHARM • FAVORITE ooo BUCK DMG ROF 300 MAG 8 aøø 2ØØ - xl.øø",
+          "canonicalOrder": 0
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "ocr-pending",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": null,
+        "notes": [
+          "New Shotgun capture remains provisional-review-required; no live data promotion."
+        ]
+      },
+      "after": {
+        "weaponName": "18.5KS-K",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Shotgun\\18.5KS-K\\Battlefield 6 Screenshot 2026.09.21 - 14.39.10.74 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.39.10.74 (Medium).png",
+          "proposedFilename": "00_18.5KS-K_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/00_18.5KS-K_attachment_overview.png",
+          "renameApplied": true,
+          "captureOrder": 0,
+          "captureTimestamp": "14.39.10.74",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "ks18k",
+        "slot": null,
+        "id": null
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/Battlefield 6 Screenshot 2026.09.21 - 14.39.10.74 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/00_18.5KS-K_attachment_overview.png",
+      "sourceSha256": "999c24b6facd3c54a6eaf9cb4c54ff8cf3215b725faf0323a146c872c7f47f17",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/Old/00_18.5KS-K_attachment_overview.png",
+      "archivedSha256": "3b43ce342c3c62d563e42e91a49193ebaead38438197631df41fecdd923eeb65",
+      "observedStats": {
+        "damage": 80,
+        "rateOfFireRpm": 300,
+        "magazineSize": 8,
+        "hipfire": 42,
+        "precision": 14,
+        "control": 15,
+        "mobility": 60,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 400,
+        "adsTimeMs": 200,
+        "headshotMultiplier": 1,
+        "longRangeDamage": 32,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.33,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 133,
+        "recoilAmountDegrees": 1.7,
+        "recoilVariationDegrees": 12
+      }
+    },
+    {
+      "recordIndex": 2344,
+      "before": {
+        "weaponName": "18.5KS-K",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "None",
+        "attachmentCost": 0,
+        "attachmentName": "None",
+        "attachmentDescription": null,
+        "stats": {
+          "damage": 80,
+          "rateOfFireRpm": 300,
+          "magazineSize": 8,
+          "hipfire": 42,
+          "precision": 14,
+          "control": 15,
+          "mobility": 60,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 400,
+          "adsTimeMs": 200,
+          "headshotMultiplier": 1,
+          "longRangeDamage": 32,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.33,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 1.7,
+          "recoilVariationDegrees": 12
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\18.5KS-K\\13_18.5KS-K_Grip_None.png",
+          "originalFilename": "13_18.5KS-K_Grip_None.png",
+          "proposedFilename": "20_18.5KS-K_Grip_None.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/20_18.5KS-K_Grip_None.png",
+          "renameApplied": true,
+          "captureOrder": 13,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": "SELECT UNDERBARREL / nøø zzzuuuuuuz DMG ROF 300 MAG 8 HIPFIRE PRECISION CONTROL MOBILITY NONE VERTICAL Ili a FIRING RANGE FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER HANDSTOP STUBBY VERTICAL STUBBY VERTICAL STUBBY VERTICAL STUBBY VERTICAL STUBBY LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION 042 014 CIS SINGLE 2. 7søs aøøM/S 2øøMS X1 . øø 32 54M ISØM s.øs xø . 33 NO xø.67 133MS 12 .ø•",
+          "canonicalOrder": 20
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Shotgun capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved."
+        ]
+      },
+      "after": {
+        "weaponName": "18.5KS-K",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "None",
+        "attachmentCost": 0,
+        "attachmentName": "None",
+        "attachmentDescription": null,
+        "stats": {
+          "damage": 80,
+          "rateOfFireRpm": 300,
+          "magazineSize": 8,
+          "hipfire": 42,
+          "precision": 14,
+          "control": 15,
+          "mobility": 60,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 400,
+          "adsTimeMs": 200,
+          "headshotMultiplier": 1,
+          "longRangeDamage": 32,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.33,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 1.7,
+          "recoilVariationDegrees": 12
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Shotgun\\18.5KS-K\\Battlefield 6 Screenshot 2026.09.21 - 14.40.49.75 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.40.49.75 (Medium).png",
+          "proposedFilename": "20_18.5KS-K_Grip_None.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/20_18.5KS-K_Grip_None.png",
+          "renameApplied": true,
+          "captureOrder": 20,
+          "captureTimestamp": "14.40.49.75",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "ks18k",
+        "slot": "grip",
+        "id": "none"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/Battlefield 6 Screenshot 2026.09.21 - 14.40.49.75 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/20_18.5KS-K_Grip_None.png",
+      "sourceSha256": "1eabf9c6e6ce363db2065f76a3951a381cd90db2e62364fea1720afc7f478940",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/Old/20_18.5KS-K_Grip_None.png",
+      "archivedSha256": "6ce4820a8cf8c1da47f9b0f3108353f646c5c14a681198ca409e050a7a845ab3",
+      "observedStats": {
+        "damage": 80,
+        "rateOfFireRpm": 300,
+        "magazineSize": 8,
+        "hipfire": 42,
+        "precision": 14,
+        "control": 15,
+        "mobility": 60,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 400,
+        "adsTimeMs": 200,
+        "headshotMultiplier": 1,
+        "longRangeDamage": 32,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.33,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 133,
+        "recoilAmountDegrees": 1.7,
+        "recoilVariationDegrees": 12
+      }
+    },
+    {
+      "recordIndex": 2356,
+      "before": {
+        "weaponName": "18.5KS-K",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Angled",
+        "attachmentCost": 25,
+        "attachmentName": "Slim Angled",
+        "attachmentDescription": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
+        "stats": {
+          "damage": 80,
+          "rateOfFireRpm": 300,
+          "magazineSize": 8,
+          "hipfire": 42,
+          "precision": 14,
+          "control": 21,
+          "mobility": 54,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 400,
+          "adsTimeMs": 167,
+          "headshotMultiplier": 1,
+          "longRangeDamage": 32,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.33,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 100,
+          "recoilAmountDegrees": 1.6,
+          "recoilVariationDegrees": 12
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.875,
+            "coloredPixelCount": 76,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 244,
+              "y2": 247
+            }
+          },
+          "mobility": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.81,
+            "coloredPixelCount": 97,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 283,
+              "y2": 287
+            }
+          },
+          "adsTimeMs": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.85,
+            "coloredPixelCount": 179,
+            "arrowBounds": {
+              "x1": 1215,
+              "x2": 1222,
+              "y1": 449,
+              "y2": 452
+            }
+          },
+          "sprintRecoveryMs": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.882,
+            "coloredPixelCount": 189,
+            "arrowBounds": {
+              "x1": 1216,
+              "x2": 1222,
+              "y1": 663,
+              "y2": 666
+            }
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.818,
+            "coloredPixelCount": 101,
+            "arrowBounds": {
+              "x1": 1225,
+              "x2": 1232,
+              "y1": 683,
+              "y2": 686
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Shotgun\\18.5KS-K\\25_18.5KS-K_Grip_Slim_Angled.png",
+          "originalFilename": "25_18.5KS-K_Grip_Slim_Angled.png",
+          "proposedFilename": "32_18.5KS-K_Grip_Slim_Angled.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/32_18.5KS-K_Grip_Slim_Angled.png",
+          "renameApplied": true,
+          "captureOrder": 25,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "and enables a slightly faster transition to aim down sights (ADS. Unlock at IB.SKS-K Mastery It",
+          "rawFullScreenOcr": "SELECT UNDERBARREL zzzzzzuzuz SLIM ANGLED Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS. Unlock at IB.SKS—K Mastery It DMG ROF 300 MAG HIPFIRE PRECISION CONTROL MOBILITY 8 Ili EQUIP VERTICAL ANGLED FIRING RANGE STUBBY ANGLED FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER STUBBY STUBBY STUBBY STUBBY LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS AOS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION 042 014 616 C166 SINGLE 2. 7søs aøøM/S 167MS X1 . øø 32 54M ISØM s.øs xø . 33 NO xø.67 • 1øøMS 12 .ø•",
+          "canonicalOrder": 32
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Shotgun capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "OCR description began mid-clause; body text was visually corrected from the screenshot.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "18.5KS-K",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Angled",
+        "attachmentCost": 25,
+        "attachmentName": "Slim Angled",
+        "attachmentDescription": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
+        "stats": {
+          "damage": 80,
+          "rateOfFireRpm": 300,
+          "magazineSize": 8,
+          "hipfire": 42,
+          "precision": 14,
+          "control": 16,
+          "mobility": 66,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.75,
+          "muzzleVelocityMps": 400,
+          "adsTimeMs": 167,
+          "headshotMultiplier": 1,
+          "longRangeDamage": 32,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.33,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 100,
+          "recoilAmountDegrees": 1.6,
+          "recoilVariationDegrees": 12
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "mobility": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "adsTimeMs": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "sprintRecoveryMs": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Shotgun\\18.5KS-K\\Battlefield 6 Screenshot 2026.09.21 - 14.40.55.68 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.40.55.68 (Medium).png",
+          "proposedFilename": "32_18.5KS-K_Grip_Slim_Angled.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/32_18.5KS-K_Grip_Slim_Angled.png",
+          "renameApplied": true,
+          "captureOrder": 32,
+          "captureTimestamp": "14.40.55.68",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "ks18k",
+        "slot": "grip",
+        "id": "slim_angled"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/Battlefield 6 Screenshot 2026.09.21 - 14.40.55.68 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/32_18.5KS-K_Grip_Slim_Angled.png",
+      "sourceSha256": "9719751a68b014efdee07e37b825e412aa0065634936f2d546304be9363b81e3",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/Old/32_18.5KS-K_Grip_Slim_Angled.png",
+      "archivedSha256": "6cc56160e87afb41f85b042dd51f4caf332c3f608085cd06dbd502cd8a1b8d74",
+      "observedStats": {
+        "damage": 80,
+        "rateOfFireRpm": 300,
+        "magazineSize": 8,
+        "hipfire": 42,
+        "precision": 14,
+        "control": 16,
+        "mobility": 66,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.75,
+        "muzzleVelocityMps": 400,
+        "adsTimeMs": 167,
+        "headshotMultiplier": 1,
+        "longRangeDamage": 32,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 0.33,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 100,
+        "recoilAmountDegrees": 1.6,
+        "recoilVariationDegrees": 12
+      }
+    },
+    {
+      "recordIndex": 2081,
+      "before": {
+        "weaponName": "VSSM",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\VSSM\\00_VSSM_attachment_overview.png",
+          "originalFilename": "00_VSSM_attachment_overview.png",
+          "proposedFilename": "00_VSSM_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/00_VSSM_attachment_overview.png",
+          "renameApplied": false,
+          "captureOrder": 0,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": "CUSTOMIZE VSSM WARFIGHTER zzzzz 30 SUPPRESSED STICkERS / STICKER a RESET (HOLD) RIGHT ACCESSORY LEFT ACCESSORY a INSPECT @ 4øø ERGONOMICS ii EQUIP CAMOS / CAMO a FIRING RANGE UNDERBARREL DMG ROF 450 MAG CHARMS / CHARM • FAVORITE HIPFIRE PRECISION CONTROL MOBILITY ill @ 2ß67 25ø 47 egø 034 CSS x1.BW",
+          "canonicalOrder": 0
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "ocr-pending",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": null,
+        "notes": [
+          "New DMR capture remains provisional-review-required; no live data promotion."
+        ]
+      },
+      "after": {
+        "weaponName": "VSSM",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\DMR\\VSSM\\Battlefield 6 Screenshot 2026.09.21 - 14.34.33.18 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.34.33.18 (Medium).png",
+          "proposedFilename": "00_VSSM_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/00_VSSM_attachment_overview.png",
+          "renameApplied": true,
+          "captureOrder": 0,
+          "captureTimestamp": "14.34.33.18",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "vssm",
+        "slot": null,
+        "id": null
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Battlefield 6 Screenshot 2026.09.21 - 14.34.33.18 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/00_VSSM_attachment_overview.png",
+      "sourceSha256": "b7ebf416aced46becc306be4bb3c1ec5dfabb1962b13a28d083fa50ea80556e2",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Old/00_VSSM_attachment_overview.png",
+      "archivedSha256": "70413dd6dd84a8ed87b8597fe71648affe21e1980c285bbc28529bcfe89c1d80",
+      "observedStats": {
+        "damage": 35,
+        "rateOfFireRpm": 450,
+        "magazineSize": 20,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.467,
+        "muzzleVelocityMps": 321,
+        "adsTimeMs": 250,
+        "headshotMultiplier": 1.8,
+        "longRangeDamage": 17,
+        "spotOnFire3dM": 0,
+        "spotOnFire2dM": 21,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 1,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 133,
+        "recoilAmountDegrees": 0.9,
+        "recoilVariationDegrees": 9.2,
+        "hipfire": 47,
+        "precision": 78,
+        "control": 34,
+        "mobility": 56
+      }
+    },
+    {
+      "recordIndex": 2091,
+      "before": {
+        "weaponName": "VSSM",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Vertical",
+        "attachmentCost": 20,
+        "attachmentName": "Ribbed Vertical",
+        "attachmentDescription": "Moderately reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 450,
+          "magazineSize": 20,
+          "hipfire": 47,
+          "precision": 78,
+          "control": 41,
+          "mobility": 52,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 303,
+          "adsTimeMs": 250,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 20,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 9,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.7,
+          "recoilVariationDegrees": 9.1
+        },
+        "statComparisons": {
+          "precision": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.854,
+            "coloredPixelCount": 161,
+            "arrowBounds": {
+              "x1": 1223,
+              "x2": 1237,
+              "y1": 204,
+              "y2": 223
+            }
+          },
+          "control": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.875,
+            "coloredPixelCount": 65,
+            "arrowBounds": {
+              "x1": 1232,
+              "x2": 1238,
+              "y1": 244,
+              "y2": 247
+            }
+          },
+          "mobility": {
+            "direction": "down",
+            "effect": "penalty",
+            "color": "red",
+            "confidence": 0.921,
+            "coloredPixelCount": 90,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 285,
+              "y2": 289
+            }
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.818,
+            "coloredPixelCount": 104,
+            "arrowBounds": {
+              "x1": 1225,
+              "x2": 1232,
+              "y1": 683,
+              "y2": 686
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\VSSM\\10_VSSM_Grip_Ribbed_Vertical.png",
+          "originalFilename": "10_VSSM_Grip_Ribbed_Vertical.png",
+          "proposedFilename": "17_VSSM_Grip_Ribbed_Vertical.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/17_VSSM_Grip_Ribbed_Vertical.png",
+          "renameApplied": true,
+          "captureOrder": 10,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Moderately reduces recoil at the cost of aim down sights IAOS) accuracy while moving,",
+          "rawFullScreenOcr": "DMG 35 450 MAG 20 RIBBED VERTICAL Moderately reduces recoil at the cost of aim down sights IAOS) accuracy while moving, EQUIP n FIRING RANGE 047 • 041 52 SINGLE 2.467S 303M/S 250MS 20 øM 9M s.øs . øø NO xø.67 133MS 9.1 • ii PRECISION CONTROL MOBILITY Ili FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER HANDSTOP 118 ANGLED VERTICAL ANGLED VERTICAL BIPOD 2øo STUBBY 2øz GRIP POD 30 z STUBBY VERTICAL LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS AOS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 17
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New DMR capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "VSSM",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Vertical",
+        "attachmentCost": 20,
+        "attachmentName": "Ribbed Vertical",
+        "attachmentDescription": "Moderately reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 450,
+          "magazineSize": 20,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 321,
+          "adsTimeMs": 250,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 17,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 21,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.7,
+          "recoilVariationDegrees": 9.2,
+          "hipfire": 47,
+          "precision": 83,
+          "control": 40,
+          "mobility": 52
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "mobility": {
+            "direction": "down",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "precision": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\DMR\\VSSM\\Battlefield 6 Screenshot 2026.09.21 - 14.34.38.52 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.34.38.52 (Medium).png",
+          "proposedFilename": "17_VSSM_Grip_Ribbed_Vertical.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/17_VSSM_Grip_Ribbed_Vertical.png",
+          "renameApplied": true,
+          "captureOrder": 17,
+          "captureTimestamp": "14.34.38.52",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "vssm",
+        "slot": "grip",
+        "id": "ribbed_vert"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Battlefield 6 Screenshot 2026.09.21 - 14.34.38.52 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/17_VSSM_Grip_Ribbed_Vertical.png",
+      "sourceSha256": "322c3eeb53e81a05c6ec8f221ab8273c1ebccb2ce8f677f917080d7e4de9fe60",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Old/17_VSSM_Grip_Ribbed_Vertical.png",
+      "archivedSha256": "ddfdd5fcf83772cb91ad27e499b456481a65e08cb86b9d7752bddf0bb30378b8",
+      "observedStats": {
+        "damage": 35,
+        "rateOfFireRpm": 450,
+        "magazineSize": 20,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.467,
+        "muzzleVelocityMps": 321,
+        "adsTimeMs": 250,
+        "headshotMultiplier": 1.8,
+        "longRangeDamage": 17,
+        "spotOnFire3dM": 0,
+        "spotOnFire2dM": 21,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 1,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 133,
+        "recoilAmountDegrees": 0.7,
+        "recoilVariationDegrees": 9.2,
+        "hipfire": 47,
+        "precision": 83,
+        "control": 40,
+        "mobility": 52
+      }
+    },
+    {
+      "recordIndex": 2101,
+      "before": {
+        "weaponName": "VSSM",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Stubby",
+        "attachmentCost": 30,
+        "attachmentName": "Canted Stubby",
+        "attachmentDescription": "Moderately reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of (ADS) accuracy while moving.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 450,
+          "magazineSize": 20,
+          "hipfire": 47,
+          "precision": 50,
+          "control": 41,
+          "mobility": 56,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 303,
+          "adsTimeMs": 200,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 20,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 9,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.7,
+          "recoilVariationDegrees": 9.1
+        },
+        "statComparisons": {
+          "precision": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.854,
+            "coloredPixelCount": 161,
+            "arrowBounds": {
+              "x1": 1223,
+              "x2": 1237,
+              "y1": 204,
+              "y2": 223
+            }
+          },
+          "control": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.875,
+            "coloredPixelCount": 65,
+            "arrowBounds": {
+              "x1": 1232,
+              "x2": 1238,
+              "y1": 244,
+              "y2": 247
+            }
+          },
+          "adsTimeMs": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.85,
+            "coloredPixelCount": 224,
+            "arrowBounds": {
+              "x1": 1215,
+              "x2": 1222,
+              "y1": 449,
+              "y2": 452
+            }
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.818,
+            "coloredPixelCount": 104,
+            "arrowBounds": {
+              "x1": 1225,
+              "x2": 1232,
+              "y1": 683,
+              "y2": 686
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\VSSM\\20_VSSM_Grip_Canted_Stubby.png",
+          "originalFilename": "20_VSSM_Grip_Canted_Stubby.png",
+          "proposedFilename": "27_VSSM_Grip_Canted_Stubby.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/27_VSSM_Grip_Canted_Stubby.png",
+          "renameApplied": true,
+          "captureOrder": 20,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "transition to aim down sights (ADS), at the cost of ADS accuracy while moving. Unlock at VSSM Mastery 2S",
+          "rawFullScreenOcr": "REL zzzzzzzw CANTED STUBBY Moderately reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving. Unlock at VSSM Mastery 2S 8+ ii DMG 35 450 PRECISION CONTROL MOBILITY EQUIP HANOSTOP 35 % VERTICAL FIRING RANGE ANGLED STUBBY løz BIPOD STUBBY 2ø% GRIP POD 047 • 041 056 SINGLE 2.467S 303M/S • 2øøMS 20 øM 9M s.øs NO ANGLED STUBBY . øø xø.67 GRIP poo VERTICAL GRIP poo RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER LONG RANGE DAMAGE 3D SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION 133MS 9.1 •",
+          "canonicalOrder": 27
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New DMR capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "OCR description began mid-clause; body text was visually corrected from the screenshot.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "VSSM",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Stubby",
+        "attachmentCost": 30,
+        "attachmentName": "Canted Stubby",
+        "attachmentDescription": "Moderately reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 450,
+          "magazineSize": 20,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 321,
+          "adsTimeMs": 200,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 17,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 21,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.7,
+          "recoilVariationDegrees": 9.2,
+          "hipfire": 47,
+          "precision": 83,
+          "control": 40,
+          "mobility": 56
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "precision": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "adsTimeMs": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\DMR\\VSSM\\Battlefield 6 Screenshot 2026.09.21 - 14.34.44.77 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.34.44.77 (Medium).png",
+          "proposedFilename": "27_VSSM_Grip_Canted_Stubby.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/27_VSSM_Grip_Canted_Stubby.png",
+          "renameApplied": true,
+          "captureOrder": 27,
+          "captureTimestamp": "14.34.44.77",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "vssm",
+        "slot": "grip",
+        "id": "canted_stubby"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Battlefield 6 Screenshot 2026.09.21 - 14.34.44.77 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/27_VSSM_Grip_Canted_Stubby.png",
+      "sourceSha256": "7932bfec3304e5767bf3a3d3d0c7680cba2dcec2924f54d0395fef47bd884a9b",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Old/27_VSSM_Grip_Canted_Stubby.png",
+      "archivedSha256": "96aadda713c47fd5b1caadcbb88707d5f0a1af7d088205546f5f2c4a289e3786",
+      "observedStats": {
+        "damage": 35,
+        "rateOfFireRpm": 450,
+        "magazineSize": 20,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.467,
+        "muzzleVelocityMps": 321,
+        "adsTimeMs": 200,
+        "headshotMultiplier": 1.8,
+        "longRangeDamage": 17,
+        "spotOnFire3dM": 0,
+        "spotOnFire2dM": 21,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 1,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 133,
+        "recoilAmountDegrees": 0.7,
+        "recoilVariationDegrees": 9.2,
+        "hipfire": 47,
+        "precision": 83,
+        "control": 40,
+        "mobility": 56
+      }
+    },
+    {
+      "recordIndex": 2104,
+      "before": {
+        "weaponName": "VSSM",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Grip Pod",
+        "attachmentCost": 30,
+        "attachmentName": "QD Grip Pod",
+        "attachmentDescription": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 450,
+          "magazineSize": 20,
+          "hipfire": 47,
+          "precision": 80,
+          "control": 41,
+          "mobility": 56,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 303,
+          "adsTimeMs": 250,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 20,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 9,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.7,
+          "recoilVariationDegrees": 9.1
+        },
+        "statComparisons": {
+          "precision": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.854,
+            "coloredPixelCount": 160,
+            "arrowBounds": {
+              "x1": 1223,
+              "x2": 1237,
+              "y1": 204,
+              "y2": 223
+            }
+          },
+          "control": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.875,
+            "coloredPixelCount": 65,
+            "arrowBounds": {
+              "x1": 1232,
+              "x2": 1238,
+              "y1": 244,
+              "y2": 247
+            }
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.818,
+            "coloredPixelCount": 104,
+            "arrowBounds": {
+              "x1": 1225,
+              "x2": 1232,
+              "y1": 683,
+              "y2": 686
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\VSSM\\23_VSSM_Grip_QD_Grip_Pod.png",
+          "originalFilename": "23_VSSM_Grip_QD_Grip_Pod.png",
+          "proposedFilename": "30_VSSM_Grip_QD_Grip_Pod.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/30_VSSM_Grip_QD_Grip_Pod.png",
+          "renameApplied": true,
+          "captureOrder": 23,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil. Unlock at VSSM Mastery 2B",
+          "rawFullScreenOcr": "SELECT UNDERBARREL / ZZZZZZZW OD GRIP POD Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil. Unlock at VSSM Mastery 2B DMG 35 ROF 450 MAG PRECISION CONTROL MOBILITY løz BIPOD *TUBBY 2ø% GRIP POD 047 • 041 056 SINGLE 2.467S 303M/S 250MS 20 øM 9M s.øs NO ii Ili EQUIP HANOSTOP 35 % VERTICAL FIRING RANGE ANGLED *TUBBY FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER ANGLED STUBBY . øø xø.67 GRIP poo a VERTICAL GRIP poo LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION 133MS 9.1 •",
+          "canonicalOrder": 30
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New DMR capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "VSSM",
+        "attachmentType": "Grip",
+        "attachmentSubtype": "Grip Pod",
+        "attachmentCost": 30,
+        "attachmentName": "QD Grip Pod",
+        "attachmentDescription": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 450,
+          "magazineSize": 20,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 321,
+          "adsTimeMs": 250,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 17,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 21,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.7,
+          "recoilVariationDegrees": 9.2,
+          "hipfire": 47,
+          "precision": 83,
+          "control": 40,
+          "mobility": 56
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilAmountDegrees": {
+            "direction": "down",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "precision": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\DMR\\VSSM\\Battlefield 6 Screenshot 2026.09.21 - 14.34.50.20 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.34.50.20 (Medium).png",
+          "proposedFilename": "30_VSSM_Grip_QD_Grip_Pod.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/30_VSSM_Grip_QD_Grip_Pod.png",
+          "renameApplied": true,
+          "captureOrder": 30,
+          "captureTimestamp": "14.34.50.20",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "vssm",
+        "slot": "grip",
+        "id": "qd_grip_pod"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Battlefield 6 Screenshot 2026.09.21 - 14.34.50.20 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/30_VSSM_Grip_QD_Grip_Pod.png",
+      "sourceSha256": "35f558e0ccc55b6f89882f4a82d46b716685284f4099ba7c7c5135f965171398",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Old/30_VSSM_Grip_QD_Grip_Pod.png",
+      "archivedSha256": "bc8e7f2c48af6d2f94ad0bd4e8938ef95323ec4790bca9cf073da4d1ecd6ebd9",
+      "observedStats": {
+        "damage": 35,
+        "rateOfFireRpm": 450,
+        "magazineSize": 20,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.467,
+        "muzzleVelocityMps": 321,
+        "adsTimeMs": 250,
+        "headshotMultiplier": 1.8,
+        "longRangeDamage": 17,
+        "spotOnFire3dM": 0,
+        "spotOnFire2dM": 21,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 1,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 133,
+        "recoilAmountDegrees": 0.7,
+        "recoilVariationDegrees": 9.2,
+        "hipfire": 47,
+        "precision": 83,
+        "control": 40,
+        "mobility": 56
+      }
+    },
+    {
+      "recordIndex": 2117,
+      "before": {
+        "weaponName": "VSSM",
+        "attachmentType": "Ergonomics",
+        "attachmentSubtype": "None",
+        "attachmentCost": 40,
+        "attachmentName": "Folding Stock",
+        "attachmentDescription": "Allows the weapon to be used aggressively, increasing overall rate of fire but reducing controllability.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 800,
+          "magazineSize": 20,
+          "hipfire": 51,
+          "precision": 19,
+          "control": 38,
+          "mobility": 56,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 303,
+          "adsTimeMs": 250,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 20,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 9,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.8,
+          "recoilVariationDegrees": 45.0
+        },
+        "statComparisons": {
+          "rateOfFireRpm": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.854,
+            "coloredPixelCount": 725,
+            "arrowBounds": {
+              "x1": 941,
+              "x2": 951,
+              "y1": 249,
+              "y2": 254
+            }
+          },
+          "hipfire": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.853,
+            "coloredPixelCount": 71,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 165,
+              "y2": 168
+            }
+          },
+          "precision": {
+            "direction": "down",
+            "effect": "penalty",
+            "color": "red",
+            "confidence": 0.833,
+            "coloredPixelCount": 124,
+            "arrowBounds": {
+              "x1": 1210,
+              "x2": 1223,
+              "y1": 221,
+              "y2": 223
+            }
+          },
+          "control": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "confidence": 0.875,
+            "coloredPixelCount": 88,
+            "arrowBounds": {
+              "x1": 1231,
+              "x2": 1237,
+              "y1": 244,
+              "y2": 247
+            }
+          },
+          "recoilVariationDegrees": {
+            "direction": "up",
+            "effect": "penalty",
+            "color": "red",
+            "confidence": 0.842,
+            "coloredPixelCount": 139,
+            "arrowBounds": {
+              "x1": 1217,
+              "x2": 1223,
+              "y1": 704,
+              "y2": 707
+            }
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\DMR\\VSSM\\36_VSSM_Ergonomics_Folding_Stock.png",
+          "originalFilename": "36_VSSM_Ergonomics_Folding_Stock.png",
+          "proposedFilename": "43_VSSM_Ergonomics_Folding_Stock.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+          "renameApplied": true,
+          "captureOrder": 36,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Allows the weapon to be used aggressively, increasing overall rate of fire but reducing controllability.",
+          "rawFullScreenOcr": "SELECT ERGONOMICS / nn ZZZZZZZZZ FOLDING STOCK Allows the weapon to be used aggressively, increasing overall rate of fire but reducing controllability. DMG 35 ROF PRECISION CONTROL MOBILITY 051 19 e38 056 SINGLE 2.467S 303M/S 250MS 20 øM 9M s.øs . øø NO xø.67 133MS •as.ø• ii Ili EQUIP n FIRING RANGE 9 MAG CATCH FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER FULL AUTO LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 43
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New DMR capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged.",
+          "Attachment cost corrected from 0 to 40 by direct selected-card screenshot review on 2026-09-07; also agrees with Frosty.",
+          "2026-09-07 direct screenshot review: recoilVariationDegrees corrected from 9.1 to 45.0; see screenshot correction ledger."
+        ]
+      },
+      "after": {
+        "weaponName": "VSSM",
+        "attachmentType": "Ergonomics",
+        "attachmentSubtype": "None",
+        "attachmentCost": 40,
+        "attachmentName": "Folding Stock",
+        "attachmentDescription": "Allows the weapon to be used aggressively, increasing overall rate of fire but reducing controllability.",
+        "stats": {
+          "damage": 35,
+          "rateOfFireRpm": 800,
+          "magazineSize": 20,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.467,
+          "muzzleVelocityMps": 321,
+          "adsTimeMs": 250,
+          "headshotMultiplier": 1.8,
+          "longRangeDamage": 17,
+          "spotOnFire3dM": 0,
+          "spotOnFire2dM": 21,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.67,
+          "sprintRecoveryMs": 133,
+          "recoilAmountDegrees": 0.9,
+          "recoilVariationDegrees": 45.4,
+          "hipfire": 51,
+          "precision": 18,
+          "control": 38,
+          "mobility": 56
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "hipfire": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilVariationDegrees": {
+            "direction": "up",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "precision": {
+            "direction": "down",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "rateOfFireRpm": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\DMR\\VSSM\\Battlefield 6 Screenshot 2026.09.21 - 14.34.58.62 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.34.58.62 (Medium).png",
+          "proposedFilename": "43_VSSM_Ergonomics_Folding_Stock.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+          "renameApplied": true,
+          "captureOrder": 43,
+          "captureTimestamp": "14.34.58.62",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "vssm",
+        "slot": "ergo",
+        "id": "full_auto_vssm"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Battlefield 6 Screenshot 2026.09.21 - 14.34.58.62 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+      "sourceSha256": "fab5eccf586dd70ff5da8db2d41d3682af2e7dd88de0287f297d45e7956f968e",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Old/43_VSSM_Ergonomics_Folding_Stock.png",
+      "archivedSha256": "c20fee736b3a9572dc9210c87bacf15fd54a88b6734a533182e75fafee5b2b3a",
+      "observedStats": {
+        "damage": 35,
+        "rateOfFireRpm": 800,
+        "magazineSize": 20,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.467,
+        "muzzleVelocityMps": 321,
+        "adsTimeMs": 250,
+        "headshotMultiplier": 1.8,
+        "longRangeDamage": 17,
+        "spotOnFire3dM": 0,
+        "spotOnFire2dM": 21,
+        "opponentHealthRegenDelaySeconds": 5,
+        "collateralMultiplier": 1,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.67,
+        "sprintRecoveryMs": 133,
+        "recoilAmountDegrees": 0.9,
+        "recoilVariationDegrees": 45.4,
+        "hipfire": 51,
+        "precision": 18,
+        "control": 38,
+        "mobility": 56
+      }
+    },
+    {
+      "recordIndex": 2167,
+      "before": {
+        "weaponName": "M2010 ESR",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\M2010 ESR\\00_M2010 ESR_attachment_overview.png",
+          "originalFilename": "00_M2010 ESR_attachment_overview.png",
+          "proposedFilename": "00_M2010 ESR_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/00_M2010 ESR_attachment_overview.png",
+          "renameApplied": false,
+          "captureOrder": 0,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": "CUSTOMIZE M2ØIO ESR IS TOP ACCESSORY UNDERBARREL @ 4øø ERGONOMICS 104 5 WARFIGHTER 35/1øø%ZZ\" mzzzzz MUZZLE Signature Weapon: Recon ii BASIC STICkERS / MO STICKER a RESET (HOLD) LEFT ACCESSORY a INSPECT goo DMG 100 ROF 43 MAG 5 CAMOS / CAMO a FIRING RANGE CHARMS / CHARM • FAVORITE HIPFIRE PRECISION CONTROL MOBILITY Ill @ 3234 76ø gøø 034 løø 046 x1.75",
+          "canonicalOrder": 0
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "ocr-pending",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": null,
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion."
+        ]
+      },
+      "after": {
+        "weaponName": "M2010 ESR",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\M2010 ESR\\Battlefield 6 Screenshot 2026.09.21 - 14.37.23.36 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.37.23.36 (Medium).png",
+          "proposedFilename": "00_M2010 ESR_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/00_M2010 ESR_attachment_overview.png",
+          "renameApplied": true,
+          "captureOrder": 0,
+          "captureTimestamp": "14.37.23.36",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "m2010esr",
+        "slot": null,
+        "id": null
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/Battlefield 6 Screenshot 2026.09.21 - 14.37.23.36 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/00_M2010 ESR_attachment_overview.png",
+      "sourceSha256": "417ba96633e1bef29b0327a6d6295d064fe4c576b3e4c1c549341cf7e06c2ddb",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/Old/00_M2010 ESR_attachment_overview.png",
+      "archivedSha256": "b64d65ff30533aec7bd0227a0d9c3d25e3b1c590f5fd5af8931d478cb5f3a460",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 43,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 17,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 3.234,
+        "muzzleVelocityMps": 760,
+        "adsTimeMs": 300,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 1.5,
+        "recoilVariationDegrees": 10.0
+      }
+    },
+    {
+      "recordIndex": 2196,
+      "before": {
+        "weaponName": "M2010 ESR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Standard",
+        "attachmentCost": 5,
+        "attachmentName": "FMJ",
+        "attachmentDescription": "Standard-penetration ammunition.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 43,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 17,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.234,
+          "muzzleVelocityMps": 760,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 1.5,
+          "recoilVariationDegrees": 10
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\M2010 ESR\\29_M2010 ESR_Ammo_Standard.png",
+          "originalFilename": "29_M2010 ESR_Ammo_Standard.png",
+          "proposedFilename": "36_M2010 ESR_Ammo_Standard.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/36_M2010 ESR_Ammo_Standard.png",
+          "renameApplied": true,
+          "captureOrder": 29,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Standard-penetration ammunition.",
+          "rawFullScreenOcr": "SELECT AM FMJ Default Standard-penetration ammunition. FIRING RANGE DMG 100 ROF 43 HIPFIRE PRECISION CONTROL MOBILITY 2øz ooo FRANGIBLE 104 034 løø e17 D46 SINGLE 3 . 234S 76øM/S 3øøxs 62 54M ISØM s.øs xø. 75 NO xø .54 167MS lø.ø• ii Ili FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER STANDARD PENETRATION aaa LONG-RANGE LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 36
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved."
+        ]
+      },
+      "after": {
+        "weaponName": "M2010 ESR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Standard",
+        "attachmentCost": 5,
+        "attachmentName": "FMJ",
+        "attachmentDescription": "Standard-penetration ammunition.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 43,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 17,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.234,
+          "muzzleVelocityMps": 760,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5.0,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 1.5,
+          "recoilVariationDegrees": 10.0
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\M2010 ESR\\Battlefield 6 Screenshot 2026.09.21 - 14.37.39.21 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.37.39.21 (Medium).png",
+          "proposedFilename": "36_M2010 ESR_Ammo_Standard.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/36_M2010 ESR_Ammo_Standard.png",
+          "renameApplied": true,
+          "captureOrder": 36,
+          "captureTimestamp": "14.37.39.21",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "m2010esr",
+        "slot": "ammo",
+        "id": "standard"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/Battlefield 6 Screenshot 2026.09.21 - 14.37.39.21 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/36_M2010 ESR_Ammo_Standard.png",
+      "sourceSha256": "f7354db0c451dd50fb1e3a1554a7caf8f2b15380259939e3e791f598f14a638a",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/Old/36_M2010 ESR_Ammo_Standard.png",
+      "archivedSha256": "60a1b2585a615851368f05ecd1d11236979d380282facb3725d132a4d5e431c9",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 43,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 17,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 3.234,
+        "muzzleVelocityMps": 760,
+        "adsTimeMs": 300,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 1.5,
+        "recoilVariationDegrees": 10.0
+      }
+    },
+    {
+      "recordIndex": 2197,
+      "before": {
+        "weaponName": "M2010 ESR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Penetration",
+        "attachmentCost": 5,
+        "attachmentName": "Tungsten Core",
+        "attachmentDescription": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 43,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 11,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.234,
+          "muzzleVelocityMps": 760,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2.2,
+          "recoilVariationDegrees": 10
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "down",
+            "effect": "penalty",
+            "color": "red",
+            "confidence": 0.867,
+            "coloredPixelCount": 56,
+            "arrowBounds": {
+              "x1": 1232,
+              "x2": 1237,
+              "y1": 246,
+              "y2": 249
+            }
+          },
+          "collateralMultiplier": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "source": "user-reviewed-workbook-and-screenshot-color"
+          },
+          "recoilAmountDegrees": {
+            "direction": "up",
+            "effect": "penalty",
+            "color": "red",
+            "source": "user-reviewed-workbook-and-screenshot-color"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\M2010 ESR\\30_M2010 ESR_Ammo_Standard_ambiguous-2.png",
+          "originalFilename": "30_M2010 ESR_Ammo_Standard_ambiguous-2.png",
+          "proposedFilename": "37_M2010 ESR_Ammo_Penetration.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/37_M2010 ESR_Ammo_Penetration.png",
+          "renameApplied": true,
+          "captureOrder": 30,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+          "rawFullScreenOcr": "SELECT AM TUNGSTEN CORE Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial DMG 100 ROF 43 HIPFIRE PRECISION CONTROL MOBILITY 104 034 løø 11 D46 SINGLE 3 . 234S 76øM/S 3øøxs 62 54M ISØM s.øs •X1 . øø NO xø .54 167MS lø.ø• ii target. EQUIP STANDARD Ili n FIRING RANGE PENETRATION FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER aaa LONG-RANGE 2øz ooo FRANGIBLE LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 37
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Penetration ammunition collateral multiplier was corrected to 1.00 and its nonzero weapon-specific recoil value was retained per user review on 2026-07-28.",
+          "Filename and attachment identity were reconciled by direct visual review on 2026-07-30; raw original-path provenance is preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged.",
+          "2026-09-07 full-size screenshot recheck: adsTimeMs corrected from 250 to 300; see screenshot correction ledger."
+        ]
+      },
+      "after": {
+        "weaponName": "M2010 ESR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Penetration",
+        "attachmentCost": 5,
+        "attachmentName": "Tungsten Core",
+        "attachmentDescription": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 43,
+          "magazineSize": 5,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 11,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.234,
+          "muzzleVelocityMps": 760,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5.0,
+          "collateralMultiplier": 1.0,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 2.2,
+          "recoilVariationDegrees": 10.0
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "down",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "collateralMultiplier": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilAmountDegrees": {
+            "direction": "up",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\M2010 ESR\\Battlefield 6 Screenshot 2026.09.21 - 14.37.42.53 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.37.42.53 (Medium).png",
+          "proposedFilename": "37_M2010 ESR_Ammo_Penetration.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/37_M2010 ESR_Ammo_Penetration.png",
+          "renameApplied": true,
+          "captureOrder": 37,
+          "captureTimestamp": "14.37.42.53",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "m2010esr",
+        "slot": "ammo",
+        "id": "penetration"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/Battlefield 6 Screenshot 2026.09.21 - 14.37.42.53 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/37_M2010 ESR_Ammo_Penetration.png",
+      "sourceSha256": "44e742cf2ca0eb0e8b606a83b367e9924cf542a76df97a6d4a57ba5e4b946cc8",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/Old/37_M2010 ESR_Ammo_Penetration.png",
+      "archivedSha256": "ee618c5ff3d9fa0d50a1feb1b86081c1b17d0527a7c4ec3ca2bdaf1365d3a239",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 43,
+        "magazineSize": 5,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 11,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 3.234,
+        "muzzleVelocityMps": 760,
+        "adsTimeMs": 300,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 1.0,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 2.2,
+        "recoilVariationDegrees": 10.0
+      }
+    },
+    {
+      "recordIndex": 2253,
+      "before": {
+        "weaponName": "PSR",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\00_PSR_attachment_overview.png",
+          "originalFilename": "00_PSR_attachment_overview.png",
+          "proposedFilename": "00_PSR_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/00_PSR_attachment_overview.png",
+          "renameApplied": false,
+          "captureOrder": 0,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": "CUSTOMIZE PSR DEAD SILENCE 35/1øø%ZZ\" uzzzzzz EQUIP MUZZLE Signature Weapon: Recon @ 4øø IS TOP ACCESSORY RGONOMICS ii STICKERS / NO STICKER a RESET (HOLD) LEFT ACCESSORY a INSPECT UNDERBARREL goo DMG 100 ROF 38 MAG HIPFIRE PRECISION CONTROL MOBILITY Ill @ CAMOS / CAMO a FIRING RANGE CHARMS / CHARM • FAVORITE 367 Z29 løø 014 xl.75",
+          "canonicalOrder": 0
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "ocr-pending",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": null,
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion."
+        ]
+      },
+      "after": {
+        "weaponName": "PSR",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\PSR\\Battlefield 6 Screenshot 2026.09.21 - 14.38.16.94 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.38.16.94 (Medium).png",
+          "proposedFilename": "00_PSR_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/00_PSR_attachment_overview.png",
+          "renameApplied": true,
+          "captureOrder": 0,
+          "captureTimestamp": "14.38.16.94",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "psr",
+        "slot": null,
+        "id": null
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/Battlefield 6 Screenshot 2026.09.21 - 14.38.16.94 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/00_PSR_attachment_overview.png",
+      "sourceSha256": "1208a897da4eccb186d54b149802e94df697c512b1a9666e4c3359a6ceaa208d",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/Old/00_PSR_attachment_overview.png",
+      "archivedSha256": "73978a21be8a0f0315a8f51eec914d9d19b9de83eb61e0929db9391576ecfb0a",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 38,
+        "magazineSize": 10,
+        "hipfire": 29,
+        "precision": 100,
+        "control": 14,
+        "mobility": 38,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 3.35,
+        "muzzleVelocityMps": 680,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.47,
+        "sprintRecoveryMs": 200,
+        "recoilAmountDegrees": 1.8,
+        "recoilVariationDegrees": 12.0
+      }
+    },
+    {
+      "recordIndex": 2279,
+      "before": {
+        "weaponName": "PSR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Standard",
+        "attachmentCost": 5,
+        "attachmentName": "FMJ",
+        "attachmentDescription": "Standard-penetration ammunition.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 29,
+          "precision": 100,
+          "control": 14,
+          "mobility": 38,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.35,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.47,
+          "sprintRecoveryMs": 200,
+          "recoilAmountDegrees": 1.8,
+          "recoilVariationDegrees": 12
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\26_PSR_Ammo_Standard.png",
+          "originalFilename": "26_PSR_Ammo_Standard.png",
+          "proposedFilename": "33_PSR_Ammo_Standard.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/33_PSR_Ammo_Standard.png",
+          "renameApplied": true,
+          "captureOrder": 26,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Standard-penetration ammunition.",
+          "rawFullScreenOcr": "SELECT-AMMUNITION muzzzz FMJ Default Standard-penetration ammunition. FIRING RANGE DMG 100 ROF 38 e29 løø 014 038 SINGLE 3. 3søs 68øM/S 367MS 62 54M ISØM s.øs xø. 75 NO Xø .47 aøøMS 12 .ø• ii PRECISION CONTROL MOBILITY ili FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER STANDARD PENETRATION aaa LONG-RANGE ooo FRANGIBLE LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 33
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved."
+        ]
+      },
+      "after": {
+        "weaponName": "PSR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Standard",
+        "attachmentCost": 5,
+        "attachmentName": "FMJ",
+        "attachmentDescription": "Standard-penetration ammunition.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 29,
+          "precision": 100,
+          "control": 14,
+          "mobility": 38,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.35,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5.0,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.47,
+          "sprintRecoveryMs": 200,
+          "recoilAmountDegrees": 1.8,
+          "recoilVariationDegrees": 12.0
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\PSR\\Battlefield 6 Screenshot 2026.09.21 - 14.38.23.77 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.38.23.77 (Medium).png",
+          "proposedFilename": "33_PSR_Ammo_Standard.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/33_PSR_Ammo_Standard.png",
+          "renameApplied": true,
+          "captureOrder": 33,
+          "captureTimestamp": "14.38.23.77",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "psr",
+        "slot": "ammo",
+        "id": "standard"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/Battlefield 6 Screenshot 2026.09.21 - 14.38.23.77 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/33_PSR_Ammo_Standard.png",
+      "sourceSha256": "abddabd9e159627983faf36a6ba73eb85de4d919fb5bad7948afc78bcdb515e6",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/Old/33_PSR_Ammo_Standard.png",
+      "archivedSha256": "5a62eb1e5494175e88fb67e120ffb3e61413e7ff3f773488b5ff9e774feb043c",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 38,
+        "magazineSize": 10,
+        "hipfire": 29,
+        "precision": 100,
+        "control": 14,
+        "mobility": 38,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 3.35,
+        "muzzleVelocityMps": 680,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.47,
+        "sprintRecoveryMs": 200,
+        "recoilAmountDegrees": 1.8,
+        "recoilVariationDegrees": 12.0
+      }
+    },
+    {
+      "recordIndex": 2280,
+      "before": {
+        "weaponName": "PSR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Penetration",
+        "attachmentCost": 5,
+        "attachmentName": "Tungsten Core",
+        "attachmentDescription": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 29,
+          "precision": 100,
+          "control": 14,
+          "mobility": 38,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.35,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.47,
+          "sprintRecoveryMs": 200,
+          "recoilAmountDegrees": 2.6,
+          "recoilVariationDegrees": 12
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "down",
+            "effect": "penalty",
+            "color": "red",
+            "confidence": 0.867,
+            "coloredPixelCount": 48,
+            "arrowBounds": {
+              "x1": 1232,
+              "x2": 1237,
+              "y1": 246,
+              "y2": 249
+            }
+          },
+          "collateralMultiplier": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "source": "user-reviewed-workbook-and-screenshot-color"
+          },
+          "recoilAmountDegrees": {
+            "direction": "up",
+            "effect": "penalty",
+            "color": "red",
+            "source": "user-reviewed-workbook-and-screenshot-color"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\PSR\\27_PSR_Ammo_Standard_ambiguous-2.png",
+          "originalFilename": "27_PSR_Ammo_Standard_ambiguous-2.png",
+          "proposedFilename": "34_PSR_Ammo_Penetration.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/34_PSR_Ammo_Penetration.png",
+          "renameApplied": true,
+          "captureOrder": 27,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+          "rawFullScreenOcr": "SELECT-AMMUNITION muzzzz TUNGSTEN CORE Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial DMG 100 ROF 38 PRECISION CONTROL MOBILITY e29 løø 9 038 SINGLE 3. 3søs 68øM/S 367MS 62 54M ISØM s.øs •X1 . øø NO Xø .47 aøøMS 12 .ø• ii target. EQUIP STANDARD ili n FIRING RANGE PENETRATION FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER aaa LONG-RANGE ooo FRANGIBLE LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 34
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Penetration ammunition collateral multiplier was corrected to 1.00 and its nonzero weapon-specific recoil value was retained per user review on 2026-07-28.",
+          "Filename and attachment identity were reconciled by direct visual review on 2026-07-30; raw original-path provenance is preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged."
+        ]
+      },
+      "after": {
+        "weaponName": "PSR",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Penetration",
+        "attachmentCost": 5,
+        "attachmentName": "Tungsten Core",
+        "attachmentDescription": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 29,
+          "precision": 100,
+          "control": 9,
+          "mobility": 38,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 3.35,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 367,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5.0,
+          "collateralMultiplier": 1.0,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.47,
+          "sprintRecoveryMs": 200,
+          "recoilAmountDegrees": 2.6,
+          "recoilVariationDegrees": 12.0
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "down",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "collateralMultiplier": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilAmountDegrees": {
+            "direction": "up",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\PSR\\Battlefield 6 Screenshot 2026.09.21 - 14.38.25.83 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.38.25.83 (Medium).png",
+          "proposedFilename": "34_PSR_Ammo_Penetration.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/34_PSR_Ammo_Penetration.png",
+          "renameApplied": true,
+          "captureOrder": 34,
+          "captureTimestamp": "14.38.25.83",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "psr",
+        "slot": "ammo",
+        "id": "penetration"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/Battlefield 6 Screenshot 2026.09.21 - 14.38.25.83 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/34_PSR_Ammo_Penetration.png",
+      "sourceSha256": "126b9ce3417ffa93e1639bb72295d28a9a13d2d293f96b79efd8d0a05802600d",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/Old/34_PSR_Ammo_Penetration.png",
+      "archivedSha256": "d91b58a6fd533c700182d04e8f8ab91e05287cfe02a0f861d0c1cd971da66b1d",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 38,
+        "magazineSize": 10,
+        "hipfire": 29,
+        "precision": 100,
+        "control": 9,
+        "mobility": 38,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 3.35,
+        "muzzleVelocityMps": 680,
+        "adsTimeMs": 367,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 1.0,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.47,
+        "sprintRecoveryMs": 200,
+        "recoilAmountDegrees": 2.6,
+        "recoilVariationDegrees": 12.0
+      }
+    },
+    {
+      "recordIndex": 2293,
+      "before": {
+        "weaponName": "SV-98",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\SV-98\\00_SV-98_attachment_overview.png",
+          "originalFilename": "00_SV-98_attachment_overview.png",
+          "proposedFilename": "00_SV-98_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/00_SV-98_attachment_overview.png",
+          "renameApplied": false,
+          "captureOrder": 0,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": "CUSTOMIZE SV-98 LONG MEMORY 35/1øø%ZZ\" uzzzzzz EQUIP MUZZLE Signature Weapon: Recon RIGHT ACCESSORY LEFT ACCESSORY a INSPECT UNDERBARREL IS goo DMG 100 ROF 38 MAG @ 4øø ERGONOMICS 5 ii CAMOS / CAMO a FIRING RANGE CHARMS / CHARM • FAVORITE BASIC STICkERS / MO STICKER a RESET (HOLD) HIPFIRE PRECISION CONTROL MOBILITY Ill @ 2.994 gøø 034 løø 046 x1.75",
+          "canonicalOrder": 0
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "provisional-review-required",
+        "mappingReviewStatus": "ocr-pending",
+        "reviewer": null,
+        "reviewDate": null,
+        "reviewConflicts": [],
+        "statFieldReasons": null,
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion."
+        ]
+      },
+      "after": {
+        "weaponName": "SV-98",
+        "attachmentType": "Overview",
+        "attachmentSubtype": null,
+        "attachmentCost": null,
+        "attachmentName": "Attachment Overview",
+        "attachmentDescription": null,
+        "stats": null,
+        "statComparisons": null,
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\SV-98\\Battlefield 6 Screenshot 2026.09.21 - 14.39.50.27 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.39.50.27 (Medium).png",
+          "proposedFilename": "00_SV-98_attachment_overview.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/00_SV-98_attachment_overview.png",
+          "renameApplied": true,
+          "captureOrder": 0,
+          "captureTimestamp": "14.39.50.27",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "context-only",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "sv98",
+        "slot": null,
+        "id": null
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/Battlefield 6 Screenshot 2026.09.21 - 14.39.50.27 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/00_SV-98_attachment_overview.png",
+      "sourceSha256": "caffab2296fb7619597af947a9388cdd339f470a78c3940122498753f9a15a24",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/Old/00_SV-98_attachment_overview.png",
+      "archivedSha256": "716330fedca029f35767f4dbaf9a15d6a9f4b319f570d5ac5abf1a4e05e6e319",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 38,
+        "magazineSize": 10,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 22,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.984,
+        "muzzleVelocityMps": 680,
+        "adsTimeMs": 300,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 1.3,
+        "recoilVariationDegrees": 10.0
+      }
+    },
+    {
+      "recordIndex": 2317,
+      "before": {
+        "weaponName": "SV-98",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Standard",
+        "attachmentCost": 5,
+        "attachmentName": "FMJ",
+        "attachmentDescription": "Standard-penetration ammunition.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 22,
+          "mobility": 5,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.984,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 1.3,
+          "recoilVariationDegrees": 10
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\SV-98\\24_SV-98_Ammo_Standard.png",
+          "originalFilename": "24_SV-98_Ammo_Standard.png",
+          "proposedFilename": "31_SV-98_Ammo_Standard.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/31_SV-98_Ammo_Standard.png",
+          "renameApplied": true,
+          "captureOrder": 24,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "Standard-penetration ammunition.",
+          "rawFullScreenOcr": "SELECT AMMUNITI FMJ Default Standard-penetration ammunition. FIRING RANGE DMG 100 ROF 38 MAG 034 løø 022 346 SINGLE 2 . 984S 68øM/S 3øøxs 62 54M ISØM s.øs xø. 75 NO xø .54 167MS lø.ø• ii PRECISION CONTROL MOBILITY Ili FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER STANDARD PENETRATION LONG-RANGE FRANGIBLE LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 31
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved."
+        ]
+      },
+      "after": {
+        "weaponName": "SV-98",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Standard",
+        "attachmentCost": 5,
+        "attachmentName": "FMJ",
+        "attachmentDescription": "Standard-penetration ammunition.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 22,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.984,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5.0,
+          "collateralMultiplier": 0.75,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 1.3,
+          "recoilVariationDegrees": 10.0
+        },
+        "statComparisons": {},
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\SV-98\\Battlefield 6 Screenshot 2026.09.21 - 14.39.55.37 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.39.55.37 (Medium).png",
+          "proposedFilename": "31_SV-98_Ammo_Standard.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/31_SV-98_Ammo_Standard.png",
+          "renameApplied": true,
+          "captureOrder": 31,
+          "captureTimestamp": "14.39.55.37",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "sv98",
+        "slot": "ammo",
+        "id": "standard"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/Battlefield 6 Screenshot 2026.09.21 - 14.39.55.37 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/31_SV-98_Ammo_Standard.png",
+      "sourceSha256": "0bd953d93f5f2b869ad6b10c651c3452bce815fd43eba100079950203af214d9",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/Old/31_SV-98_Ammo_Standard.png",
+      "archivedSha256": "e47550542d838db2d277ef991f490392796e82690503b126ebf48fd00ff42470",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 38,
+        "magazineSize": 10,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 22,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.984,
+        "muzzleVelocityMps": 680,
+        "adsTimeMs": 300,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 0.75,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 1.3,
+        "recoilVariationDegrees": 10.0
+      }
+    },
+    {
+      "recordIndex": 2318,
+      "before": {
+        "weaponName": "SV-98",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Penetration",
+        "attachmentCost": 5,
+        "attachmentName": "Tungsten Core",
+        "attachmentDescription": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 14,
+          "mobility": 48,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.984,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5,
+          "collateralMultiplier": 1,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 1.8,
+          "recoilVariationDegrees": 10
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "down",
+            "effect": "penalty",
+            "color": "red",
+            "confidence": 0.875,
+            "coloredPixelCount": 68,
+            "arrowBounds": {
+              "x1": 1232,
+              "x2": 1238,
+              "y1": 246,
+              "y2": 249
+            }
+          },
+          "collateralMultiplier": {
+            "direction": "up",
+            "effect": "buff",
+            "color": "green",
+            "source": "user-reviewed-workbook-and-screenshot-color"
+          },
+          "recoilAmountDegrees": {
+            "direction": "up",
+            "effect": "penalty",
+            "color": "red",
+            "source": "user-reviewed-workbook-and-screenshot-color"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Project\\Weapon Attachments\\Sniper Rifle\\SV-98\\25_SV-98_Ammo_Standard_ambiguous-2.png",
+          "originalFilename": "25_SV-98_Ammo_Standard_ambiguous-2.png",
+          "proposedFilename": "32_SV-98_Ammo_Penetration.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/32_SV-98_Ammo_Penetration.png",
+          "renameApplied": true,
+          "captureOrder": 25,
+          "captureTimestamp": null,
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": "resulting in greater damage to soldiers behind the initial target. Unlock at SV-9B Mastery 21",
+          "rawFullScreenOcr": "SELECT TUNGSTEN CORE Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target. Unlock at SV—9B Mastery 21 DMG 100 ROF 38 MAG 034 løø 14 346 SINGLE 2 . 984S 68øM/S 3øøxs 62 54M ISØM s.øs •X1 . øø NO xø .54 167MS lø.ø• ii PRECISION CONTROL MOBILITY Ili EQUIP STANDARD FIRING RANGE PENETRATION FIRE MODES RELOAD TIME MUZZLE VELOCITY ADS TIME IN HEADSHOT MULTIPLIER LONG-RANGE FRANGIBLE LONG RANGE DAMAGE 30 SPOT-ON-FIRE-RANGE 20 SPOT-ON-FIRE RANGE OPPONENT HEALTH REGEN DELAY COLLATERAL MULTIPLIER RELOAD IN ADS ADS MOVE SPEED MULTIPLIER SPRINT RECOVERY RECOIL AMOUNT RECOIL VARIATION",
+          "canonicalOrder": 32
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "User",
+        "reviewDate": "2026-07-24",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "New Sniper Rifle capture remains provisional-review-required; no live data promotion.",
+          "Attachment description was imported from the user-reviewed workbook and remains linked to this screenshot.",
+          "Attachment cost and typed stat fields require manual visual transcription from the screenshot; raw OCR is retained and no value is authoritative.",
+          "OCR description began mid-clause; body text was visually corrected from the screenshot.",
+          "Yellow/orange cell updates were imported from the user-reviewed workbook; arrow direction and buff/penalty remain separate from typed values.",
+          "Displayed stat panel was parsed with field-specific screen regions and remains provisional pending final screenshot review; unreadable fields remain null with field-specific reasons.",
+          "Recovered non-null screenshot-linked values from the pre-regression consolidated JSON on 2026-07-28; newer populated values and explicit manual overrides were preserved.",
+          "Penetration ammunition collateral multiplier was corrected to 1.00 and its nonzero weapon-specific recoil value was retained per user review on 2026-07-28.",
+          "Filename and attachment identity were reconciled by direct visual review on 2026-07-30; raw original-path provenance is preserved.",
+          "Screenshot comparison indicators (arrow direction and buff/penalty colour) were extracted for this capture on 2026-08-03; the class had been missed by the earlier comparison scan. Typed stat values are unchanged.",
+          "2026-09-07 full-size screenshot recheck: adsTimeMs corrected from 250 to 300; see screenshot correction ledger."
+        ]
+      },
+      "after": {
+        "weaponName": "SV-98",
+        "attachmentType": "Ammo",
+        "attachmentSubtype": "Penetration",
+        "attachmentCost": 5,
+        "attachmentName": "Tungsten Core",
+        "attachmentDescription": "Ammunition that trades recoil for improved penetration, resulting in greater damage to soldiers behind the initial target.",
+        "stats": {
+          "damage": 100,
+          "rateOfFireRpm": 38,
+          "magazineSize": 10,
+          "hipfire": 34,
+          "precision": 100,
+          "control": 14,
+          "mobility": 46,
+          "fireModes": [
+            "SINGLE"
+          ],
+          "reloadTimeSeconds": 2.984,
+          "muzzleVelocityMps": 680,
+          "adsTimeMs": 300,
+          "headshotMultiplier": 1.75,
+          "longRangeDamage": 62,
+          "spotOnFire3dM": 54,
+          "spotOnFire2dM": 150,
+          "opponentHealthRegenDelaySeconds": 5.0,
+          "collateralMultiplier": 1.0,
+          "reloadInAds": false,
+          "adsMoveSpeedMultiplier": 0.54,
+          "sprintRecoveryMs": 167,
+          "recoilAmountDegrees": 1.8,
+          "recoilVariationDegrees": 10.0
+        },
+        "statComparisons": {
+          "control": {
+            "direction": "down",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "collateralMultiplier": {
+            "direction": "up",
+            "color": "green",
+            "effect": "buff",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          },
+          "recoilAmountDegrees": {
+            "direction": "up",
+            "color": "red",
+            "effect": "penalty",
+            "source": "Visual screenshot review, 2026-09-21; primary checked"
+          }
+        },
+        "source": {
+          "originalPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\attachment-audit\\Weapon Attachments\\Sniper Rifle\\SV-98\\Battlefield 6 Screenshot 2026.09.21 - 14.39.58.45 (Medium).png",
+          "originalFilename": "Battlefield 6 Screenshot 2026.09.21 - 14.39.58.45 (Medium).png",
+          "proposedFilename": "32_SV-98_Ammo_Penetration.png",
+          "currentPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/32_SV-98_Ammo_Penetration.png",
+          "renameApplied": true,
+          "captureOrder": 32,
+          "captureTimestamp": "14.39.58.45",
+          "resolution": "1365x768",
+          "rawAttachmentDescriptionOcr": null,
+          "rawFullScreenOcr": ""
+        },
+        "extractionStatus": "provisional-review-required",
+        "reviewStatus": "reviewed",
+        "mappingReviewStatus": "visually-checked",
+        "reviewer": "GPT-5.6 Luna and primary visual review",
+        "reviewDate": "2026-09-21",
+        "reviewConflicts": [],
+        "statFieldReasons": {},
+        "notes": [
+          "Current targeted capture, 2026-09-21. Previous record and image hash preserved in remaining-capture-updates-2026-09-21.json."
+        ]
+      },
+      "identity": {
+        "weapon": "sv98",
+        "slot": "ammo",
+        "id": "penetration"
+      },
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/Battlefield 6 Screenshot 2026.09.21 - 14.39.58.45 (Medium).png",
+      "targetPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/32_SV-98_Ammo_Penetration.png",
+      "sourceSha256": "98b91e9a1f3f7de706ce61613a270847bf6f72db4fc16a694aa445e3ef83d605",
+      "archivedPath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/Old/32_SV-98_Ammo_Penetration.png",
+      "archivedSha256": "d1c9e02e9d14d18d656285da37dabf30f02439dccf31f321f9504b8d325f7c38",
+      "observedStats": {
+        "damage": 100,
+        "rateOfFireRpm": 38,
+        "magazineSize": 10,
+        "hipfire": 34,
+        "precision": 100,
+        "control": 14,
+        "mobility": 46,
+        "fireModes": [
+          "SINGLE"
+        ],
+        "reloadTimeSeconds": 2.984,
+        "muzzleVelocityMps": 680,
+        "adsTimeMs": 300,
+        "headshotMultiplier": 1.75,
+        "longRangeDamage": 62,
+        "spotOnFire3dM": 54,
+        "spotOnFire2dM": 150,
+        "opponentHealthRegenDelaySeconds": 5.0,
+        "collateralMultiplier": 1.0,
+        "reloadInAds": false,
+        "adsMoveSpeedMultiplier": 0.54,
+        "sprintRecoveryMs": 167,
+        "recoilAmountDegrees": 1.8,
+        "recoilVariationDegrees": 10.0
+      }
+    }
+  ]
+}

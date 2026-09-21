@@ -22,6 +22,19 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('L115 QD Grip Pod preserves moving ADS spread while improving ADS time', () => {
+  const w = weapon('l115');
+  for (const changes of [{}, { barrel: 'light', laser: '50mw_violet' }]) {
+    const base = build(w, changes);
+    const pod = build(w, { ...changes, grip: 'qd_grip_pod_sr' });
+    assert.deepEqual(pod.spread.adsMove, base.spread.adsMove);
+    assert.ok(pod._adsTimeMs < base._adsTimeMs);
+  }
+  // M2010 has a separate moving-ADS binding; the correction is not class-wide.
+  const other = weapon('m2010esr');
+  assert.ok(build(other, { grip: 'qd_grip_pod_sr' }).spread.adsMove[0] > build(other).spread.adsMove[0]);
+});
+
 test('screenshot-backed sidearm brakes retain their name with source-specific cost and sway', () => {
   for (const id of ['p18', 'es57', 'm45a1', 'ggh22', 'vz61']) {
     const w = weapon(id);

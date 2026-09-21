@@ -1,0 +1,351 @@
+{
+  "date": "2026-09-21",
+  "status": "Source-backed candidate; native input binding not verified",
+  "observationScope": "Eight operator screenshots supplied in this review. Laser preview with None equipped. Capture date and build are not independently visible; prior ledger attributes these captures to 1.4.3.0 on 17 September.",
+  "formula": "round(min(100, 10 * sqrt(0.425 / tan(radians(1.25 * (shotgunRow + firingDispersionAngle))) * 83.33333587646484 / 40.92409896850586)))",
+  "ladder": [
+    1.444,
+    0.972,
+    0.656,
+    0.444
+  ],
+  "seriesOrder": [
+    "none",
+    "5mw_red",
+    "5mw_green",
+    "50mw_green"
+  ],
+  "observations": [
+    {
+      "weapon": "m87a1",
+      "laser": "5mw_red",
+      "hipfire": 45,
+      "precision": 10,
+      "control": 7,
+      "mobility": 52,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/m87a1-5mw_red.png",
+      "sha256": "faa2548c15d701066a260b0ecece3a5d2f0853c3ab7dccb8f0c12f0c17242eb6"
+    },
+    {
+      "weapon": "m1014",
+      "laser": "5mw_red",
+      "hipfire": 45,
+      "precision": 10,
+      "control": 10,
+      "mobility": 52,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/m1014-5mw_red.png",
+      "sha256": "36c375c31a695b5f43d1418509172ba546a5339fe8c25e7f7fc41e325ee69e89"
+    },
+    {
+      "weapon": "ks18k",
+      "laser": "5mw_red",
+      "hipfire": 47,
+      "precision": 14,
+      "control": 15,
+      "mobility": 60,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/ks18k-5mw_red.png",
+      "sha256": "285e213fad489db23db96bd960365a2b012fd15b69ec3d98b52b2305bc155a4d"
+    },
+    {
+      "weapon": "db12",
+      "laser": "5mw_red",
+      "hipfire": 43,
+      "precision": 6,
+      "control": 9,
+      "mobility": 60,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/db12-5mw_red.png",
+      "sha256": "93a2a9f8bbec22c63c0e19882db14dc2499eca2b84c50c5e5a0ecfbe40d82fbf"
+    },
+    {
+      "weapon": "m87a1",
+      "laser": "5mw_green",
+      "hipfire": 49,
+      "precision": 10,
+      "control": 7,
+      "mobility": 52,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/m87a1-5mw_green.png",
+      "sha256": "df3c3814e252cc711ef917bc0f7ba8295a2069ca4c29db1d3620062deedb7ddd"
+    },
+    {
+      "weapon": "m1014",
+      "laser": "5mw_green",
+      "hipfire": 49,
+      "precision": 10,
+      "control": 10,
+      "mobility": 52,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/m1014-5mw_green.png",
+      "sha256": "16b9e02061fd0196c87fa3ec825ccb114ec5e8feed7990ef3d7c4ca8d605a85c"
+    },
+    {
+      "weapon": "ks18k",
+      "laser": "5mw_green",
+      "hipfire": 52,
+      "precision": 14,
+      "control": 15,
+      "mobility": 60,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/ks18k-5mw_green.png",
+      "sha256": "de845629f684e028cb38065402f783b01651689b331ad0c0cf9e9fa497a04366"
+    },
+    {
+      "weapon": "db12",
+      "laser": "5mw_green",
+      "hipfire": 46,
+      "precision": 6,
+      "control": 9,
+      "mobility": 60,
+      "sourcePath": "reference-data/attachment-audit/shotgun-lasers-supplied-2026-09-21/db12-5mw_green.png",
+      "sha256": "dd48a29eb6000f3ae5c0ef0178885d2eace44a16b2a22ef99fe56ec71117e0e9"
+    }
+  ],
+  "sources": [
+    {
+      "weapon": "m87a1",
+      "version": "1.4.2.5",
+      "sourcePath": "../BF6 Datamining/builds/1.4.2.5/xml/Common/Hardware/Weapons/Shotgun/590A1/590A1_WB.xml",
+      "sha256": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac",
+      "blocks": [
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        }
+      ]
+    },
+    {
+      "weapon": "m1014",
+      "version": "1.4.2.5",
+      "sourcePath": "../BF6 Datamining/builds/1.4.2.5/xml/Common/Hardware/Weapons/Shotgun/M1014/M1014_WB.xml",
+      "sha256": "361b359ee2e6b9dfb46f016a2ed6810e11d82c1165a09286b0779e586a35d044",
+      "blocks": [
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        }
+      ]
+    },
+    {
+      "weapon": "ks18k",
+      "version": "1.4.2.5",
+      "sourcePath": "../BF6 Datamining/builds/1.4.2.5/xml/Common/Hardware/Weapons/Shotgun/185KSK/185KSK_WB.xml",
+      "sha256": "3cc0eee9c7717f203e988cfb5bbee4f0147863ed0cb0fa4a6dd6e8915782751b",
+      "blocks": [
+        {
+          "Field_7baf4297": 0.8,
+          "Field_60e4e484": 0.8
+        },
+        {
+          "Field_7baf4297": 0.8,
+          "Field_60e4e484": 0.8
+        },
+        {
+          "Field_7baf4297": 0.8,
+          "Field_60e4e484": 0.8
+        }
+      ]
+    },
+    {
+      "weapon": "db12",
+      "version": "1.4.2.5",
+      "sourcePath": "../BF6 Datamining/builds/1.4.2.5/xml/Common/Hardware/Weapons/Shotgun/DP12/DP12_WB.xml",
+      "sha256": "17e912b73e8e8ecaad48a1c83a575f090d92ad2f294173f8b857af23f19e986f",
+      "blocks": [
+        {
+          "Field_7baf4297": 1.2,
+          "Field_60e4e484": 1.2
+        },
+        {
+          "Field_7baf4297": 1.2,
+          "Field_60e4e484": 1.2
+        },
+        {
+          "Field_7baf4297": 1.2,
+          "Field_60e4e484": 1.2
+        }
+      ]
+    },
+    {
+      "weapon": "m87a1",
+      "version": "1.4.3.0",
+      "sourcePath": "../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay/Common/Hardware/Weapons/Shotgun/590A1/590A1_WB.xml",
+      "sha256": "bcc54fcf586aa755a3e9f5dc6abf6dc9c015be1c3309941bfb24bdff38ec77ac",
+      "blocks": [
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        }
+      ]
+    },
+    {
+      "weapon": "m1014",
+      "version": "1.4.3.0",
+      "sourcePath": "../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay/Common/Hardware/Weapons/Shotgun/M1014/M1014_WB.xml",
+      "sha256": "361b359ee2e6b9dfb46f016a2ed6810e11d82c1165a09286b0779e586a35d044",
+      "blocks": [
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        },
+        {
+          "Field_7baf4297": 1,
+          "Field_60e4e484": 1
+        }
+      ]
+    },
+    {
+      "weapon": "ks18k",
+      "version": "1.4.3.0",
+      "sourcePath": "../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay/Common/Hardware/Weapons/Shotgun/185KSK/185KSK_WB.xml",
+      "sha256": "1512625565b64d85e8038672b319174b957dc52666944b8d20e5f0b38027523b",
+      "blocks": [
+        {
+          "Field_7baf4297": 0.8,
+          "Field_60e4e484": 0.8
+        },
+        {
+          "Field_7baf4297": 0.8,
+          "Field_60e4e484": 0.8
+        },
+        {
+          "Field_7baf4297": 0.8,
+          "Field_60e4e484": 0.8
+        }
+      ]
+    },
+    {
+      "weapon": "db12",
+      "version": "1.4.3.0",
+      "sourcePath": "../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay/Common/Hardware/Weapons/Shotgun/DP12/DP12_WB.xml",
+      "sha256": "17a80e04749d841714c937e7bc0007ce5ddde8c7be7130cd2adaa837a51e611f",
+      "blocks": [
+        {
+          "Field_7baf4297": 1.2,
+          "Field_60e4e484": 1.2
+        },
+        {
+          "Field_7baf4297": 1.2,
+          "Field_60e4e484": 1.2
+        },
+        {
+          "Field_7baf4297": 1.2,
+          "Field_60e4e484": 1.2
+        }
+      ]
+    }
+  ],
+  "series": [
+    {
+      "weapon": "m87a1",
+      "sourceAngle": 1,
+      "predictions": [
+        40.26837222857529,
+        44.836644953647166,
+        48.93233300920671,
+        52.404085425584135
+      ],
+      "rounded": [
+        40,
+        45,
+        49,
+        52
+      ]
+    },
+    {
+      "weapon": "m1014",
+      "sourceAngle": 1,
+      "predictions": [
+        40.26837222857529,
+        44.836644953647166,
+        48.93233300920671,
+        52.404085425584135
+      ],
+      "rounded": [
+        40,
+        45,
+        49,
+        52
+      ]
+    },
+    {
+      "weapon": "ks18k",
+      "sourceAngle": 0.8,
+      "predictions": [
+        42.02769677153353,
+        47.30211086076822,
+        52.18754359102411,
+        56.46210703204068
+      ],
+      "rounded": [
+        42,
+        47,
+        52,
+        56
+      ]
+    },
+    {
+      "weapon": "db12",
+      "sourceAngle": 1.2,
+      "predictions": [
+        38.712288126159386,
+        42.719687961298376,
+        46.21818510343796,
+        49.11074783280707
+      ],
+      "rounded": [
+        39,
+        43,
+        46,
+        49
+      ]
+    }
+  ],
+  "interpretation": "Field_7baf4297 occurs in all three Struct_8e53cf47 blocks beneath Class_35259f6b/Field_f40a1d28/Struct_f40a1d28; values agree across stances and both exports. Field_60e4e484 has the same values, so these observations cannot distinguish the two fields. Existing delegate decoding adds StandDispersionMinAngle after row selection. Exact provider binding and index construction remain unverified.",
+  "verification": {
+    "confirmedLaserMatches": 8,
+    "confirmedLaserCount": 8,
+    "exploratoryAudit": {
+      "before": {
+        "match": 2955,
+        "differ": 172
+      },
+      "after": {
+        "match": 3035,
+        "differ": 92
+      },
+      "method": "In-memory copy of the composite checker at f222870: for the four shotguns only, retain the resolved ammunition shift in the hip ladder index and add the source angle. All other rules and correction ledgers unchanged.",
+      "limits": "Exploratory full-audit result includes unverified ammunition, suppressor and light behavior; it is not a release validation. No historical readings were overwritten."
+    }
+  },
+  "openQuestions": [
+    "Native binding from firing data to StandDispersionMinAngle",
+    "Native construction of shotgun lookup index and ammunition branches",
+    "Shotgun lights and suppressors",
+    "Stored audit disagreements: KS red/green, DB green, and M87A1 50mW green are not the values claimed by the prior narrative"
+  ]
+}

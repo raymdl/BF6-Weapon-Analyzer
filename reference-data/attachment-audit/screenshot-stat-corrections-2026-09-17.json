@@ -5005,7 +5005,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "01_EF88_Muzzle_None.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/01_EF88_Muzzle_None.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/01_EF88_Muzzle_None.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5018,7 +5018,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "02_EF88_Muzzle_Flash_Hider.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/02_EF88_Muzzle_Flash_Hider.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/02_EF88_Muzzle_Flash_Hider.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5031,7 +5031,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "03_EF88_Muzzle_Flash_Comp.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/03_EF88_Muzzle_Flash_Comp.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/03_EF88_Muzzle_Flash_Comp.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5044,7 +5044,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "04_EF88_Muzzle_Single-Port_Brake.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/04_EF88_Muzzle_Single-Port_Brake.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/04_EF88_Muzzle_Single-Port_Brake.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5057,7 +5057,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "05_EF88_Muzzle_Double-Port_Brake.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/05_EF88_Muzzle_Double-Port_Brake.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/05_EF88_Muzzle_Double-Port_Brake.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5070,7 +5070,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "06_EF88_Muzzle_Compensator.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/06_EF88_Muzzle_Compensator.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/06_EF88_Muzzle_Compensator.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5083,7 +5083,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "08_EF88_Muzzle_Standard_Suppressor.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/08_EF88_Muzzle_Standard_Suppressor.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/08_EF88_Muzzle_Standard_Suppressor.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5096,7 +5096,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "09_EF88_Muzzle_Long_Suppressor.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/09_EF88_Muzzle_Long_Suppressor.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/09_EF88_Muzzle_Long_Suppressor.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5109,7 +5109,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "10_EF88_Muzzle_CQB_Suppressor.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/10_EF88_Muzzle_CQB_Suppressor.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/10_EF88_Muzzle_CQB_Suppressor.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5122,7 +5122,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "11_EF88_Muzzle_Compensated_Brake.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/11_EF88_Muzzle_Compensated_Brake.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/11_EF88_Muzzle_Compensated_Brake.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5135,7 +5135,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "12_EF88_Muzzle_Lightened_Suppressor.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/12_EF88_Muzzle_Lightened_Suppressor.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/12_EF88_Muzzle_Lightened_Suppressor.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5148,7 +5148,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "13_EF88_Barrel_Basic.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/13_EF88_Barrel_Basic.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/13_EF88_Barrel_Basic.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5161,7 +5161,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "14_EF88_Barrel_Extended.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/14_EF88_Barrel_Extended.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/14_EF88_Barrel_Extended.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5174,7 +5174,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "15_EF88_Barrel_Heavy_Ext.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/15_EF88_Barrel_Heavy_Ext.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/15_EF88_Barrel_Heavy_Ext.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5187,7 +5187,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "16_EF88_Barrel_Short.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/16_EF88_Barrel_Short.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/16_EF88_Barrel_Short.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5200,7 +5200,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "17_EF88_Barrel_Light.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/17_EF88_Barrel_Light.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/17_EF88_Barrel_Light.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5213,7 +5213,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "18_EF88_Barrel_Cryo.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/18_EF88_Barrel_Cryo.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/18_EF88_Barrel_Cryo.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5226,7 +5226,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "19_EF88_Barrel_Ext_Light.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/19_EF88_Barrel_Ext_Light.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/19_EF88_Barrel_Ext_Light.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5239,7 +5239,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "20_EF88_Barrel_Short_Light.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/20_EF88_Barrel_Short_Light.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/20_EF88_Barrel_Short_Light.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5252,7 +5252,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "32_EF88_Grip_None.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/32_EF88_Grip_None.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/32_EF88_Grip_None.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5265,7 +5265,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "33_EF88_Grip_Folding_Vertical.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/33_EF88_Grip_Folding_Vertical.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/33_EF88_Grip_Folding_Vertical.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5278,7 +5278,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "34_EF88_Grip_Alloy_Vertical.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/34_EF88_Grip_Alloy_Vertical.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/34_EF88_Grip_Alloy_Vertical.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5291,7 +5291,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "35_EF88_Grip_Ribbed_Vertical.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/35_EF88_Grip_Ribbed_Vertical.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/35_EF88_Grip_Ribbed_Vertical.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5304,7 +5304,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "36_EF88_Grip_6H64_Vertical.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/36_EF88_Grip_6H64_Vertical.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/36_EF88_Grip_6H64_Vertical.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5317,7 +5317,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "37_EF88_Grip_Folding_Stubby.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/37_EF88_Grip_Folding_Stubby.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/37_EF88_Grip_Folding_Stubby.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5330,7 +5330,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "38_EF88_Grip_Ribbed_Stubby.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/38_EF88_Grip_Ribbed_Stubby.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/38_EF88_Grip_Ribbed_Stubby.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5343,7 +5343,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "39_EF88_Grip_Canted_Stubby.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/39_EF88_Grip_Canted_Stubby.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/39_EF88_Grip_Canted_Stubby.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5356,7 +5356,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "40_EF88_Grip_Stippled_Stubby.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/40_EF88_Grip_Stippled_Stubby.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/40_EF88_Grip_Stippled_Stubby.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5369,7 +5369,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "41_EF88_Grip_Full_Angled.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/41_EF88_Grip_Full_Angled.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/41_EF88_Grip_Full_Angled.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5382,7 +5382,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "42_EF88_Grip_Bipod.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/42_EF88_Grip_Bipod.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/42_EF88_Grip_Bipod.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5395,7 +5395,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "43_EF88_Grip_PTT_Grip_Pod.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/43_EF88_Grip_PTT_Grip_Pod.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/43_EF88_Grip_PTT_Grip_Pod.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5408,7 +5408,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "44_EF88_Grip_QD_Grip_Pod.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/44_EF88_Grip_QD_Grip_Pod.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/44_EF88_Grip_QD_Grip_Pod.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5421,7 +5421,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "45_EF88_Grip_Classic_Vertical.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/45_EF88_Grip_Classic_Vertical.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/45_EF88_Grip_Classic_Vertical.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5434,7 +5434,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "46_EF88_Grip_Low-Profile_Stubby.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/46_EF88_Grip_Low-Profile_Stubby.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/46_EF88_Grip_Low-Profile_Stubby.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5447,7 +5447,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "47_EF88_Grip_Classic_Grip_Pod.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/47_EF88_Grip_Classic_Grip_Pod.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/47_EF88_Grip_Classic_Grip_Pod.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5460,7 +5460,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "48_EF88_Magazine_30Rnd_Magazine.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/48_EF88_Magazine_30Rnd_Magazine.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/48_EF88_Magazine_30Rnd_Magazine.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5473,7 +5473,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "49_EF88_Magazine_30Rnd_Fast_Mag.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/49_EF88_Magazine_30Rnd_Fast_Mag.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/49_EF88_Magazine_30Rnd_Fast_Mag.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5486,7 +5486,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "50_EF88_Magazine_36Rnd_Magazine.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/50_EF88_Magazine_36Rnd_Magazine.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/50_EF88_Magazine_36Rnd_Magazine.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5499,7 +5499,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "51_EF88_Magazine_42Rnd_Magazine.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/51_EF88_Magazine_42Rnd_Magazine.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/51_EF88_Magazine_42Rnd_Magazine.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5512,7 +5512,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "52_EF88_Magazine_42Rnd_Fast_Mag.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/52_EF88_Magazine_42Rnd_Fast_Mag.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/52_EF88_Magazine_42Rnd_Fast_Mag.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5525,7 +5525,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "53_EF88_Ammo_Standard.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/53_EF88_Ammo_Standard.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/53_EF88_Ammo_Standard.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5538,7 +5538,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "54_EF88_Ammo_Penetration.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/54_EF88_Ammo_Penetration.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/54_EF88_Ammo_Penetration.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5551,7 +5551,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "55_EF88_Ammo_Lightweight.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/55_EF88_Ammo_Lightweight.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/55_EF88_Ammo_Lightweight.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5564,7 +5564,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "56_EF88_Ammo_Hollow_Point.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/56_EF88_Ammo_Hollow_Point.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/56_EF88_Ammo_Hollow_Point.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5577,7 +5577,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "57_EF88_Ammo_Frangible.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/57_EF88_Ammo_Frangible.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/57_EF88_Ammo_Frangible.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5590,7 +5590,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "58_EF88_Ammo_Synthetic.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/58_EF88_Ammo_Synthetic.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/58_EF88_Ammo_Synthetic.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5603,7 +5603,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "59_EF88_Ergonomics_None.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/59_EF88_Ergonomics_None.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/59_EF88_Ergonomics_None.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5616,7 +5616,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "60_EF88_Ergonomics_Improved_Mag_Catch.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/60_EF88_Ergonomics_Improved_Mag_Catch.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/60_EF88_Ergonomics_Improved_Mag_Catch.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5629,7 +5629,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "61_EF88_Ergonomics_Aftermarket_Buffer.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/61_EF88_Ergonomics_Aftermarket_Buffer.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/61_EF88_Ergonomics_Aftermarket_Buffer.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5642,7 +5642,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "62_EF88_Ergonomics_Match_Trigger.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/62_EF88_Ergonomics_Match_Trigger.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/62_EF88_Ergonomics_Match_Trigger.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5655,7 +5655,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "25_EF88_Laser_None.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/25_EF88_Laser_None.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/25_EF88_Laser_None.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5668,7 +5668,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "26_EF88_Laser_5_MW_Red.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/26_EF88_Laser_5_MW_Red.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/26_EF88_Laser_5_MW_Red.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5681,7 +5681,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "27_EF88_Laser_50_MW_Violet.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/27_EF88_Laser_50_MW_Violet.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/27_EF88_Laser_50_MW_Violet.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5694,7 +5694,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "28_EF88_Laser_5_MW_Green.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/28_EF88_Laser_5_MW_Green.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/28_EF88_Laser_5_MW_Green.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5707,7 +5707,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "29_EF88_Laser_50_MW_Green.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/29_EF88_Laser_50_MW_Green.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/29_EF88_Laser_50_MW_Green.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5720,7 +5720,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "30_EF88_Laser_50_MW_Blue.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/30_EF88_Laser_50_MW_Blue.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/30_EF88_Laser_50_MW_Blue.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5733,7 +5733,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "31_EF88_Laser_120_MW_Blue.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/31_EF88_Laser_120_MW_Blue.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/31_EF88_Laser_120_MW_Blue.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5746,7 +5746,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "21_EF88_Light_None.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/21_EF88_Light_None.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/21_EF88_Light_None.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5759,7 +5759,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "22_EF88_Light_Taclight_-_Aimed.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/22_EF88_Light_Taclight_-_Aimed.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/22_EF88_Light_Taclight_-_Aimed.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5772,7 +5772,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "23_EF88_Light_Flashlight.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/23_EF88_Light_Flashlight.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/23_EF88_Light_Flashlight.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5785,7 +5785,7 @@
       "before": 20.4,
       "after": 20.3,
       "screenshot": "24_EF88_Light_Taclight_-_Hipfire.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/24_EF88_Light_Taclight_-_Hipfire.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/Old/24_EF88_Light_Taclight_-_Hipfire.png",
       "verification": "Repeated OCR/transcription error; multiple screenshots across muzzle/barrel/magazine/ergonomics visibly show 20.3°.",
       "claudeModelValue": "26.1"
     },
@@ -5798,7 +5798,7 @@
       "before": 450,
       "after": 800,
       "screenshot": "43_VSSM_Ergonomics_Folding_Stock.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/Old/43_VSSM_Ergonomics_Folding_Stock.png",
       "verification": "Folding Stock screenshot visibly shows ROF 800.",
       "claudeModelValue": "800"
     },
@@ -5824,7 +5824,7 @@
       "before": 250,
       "after": 300,
       "screenshot": "36_M2010 ESR_Ammo_Standard.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/36_M2010 ESR_Ammo_Standard.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/Old/36_M2010 ESR_Ammo_Standard.png",
       "verification": "Screenshot visibly shows ADS TIME IN 300MS.",
       "claudeModelValue": "300"
     },
@@ -5837,7 +5837,7 @@
       "before": 250,
       "after": 300,
       "screenshot": "31_SV-98_Ammo_Standard.png",
-      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/31_SV-98_Ammo_Standard.png",
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/Old/31_SV-98_Ammo_Standard.png",
       "verification": "Screenshot visibly shows ADS TIME IN 300MS.",
       "claudeModelValue": "300"
     },

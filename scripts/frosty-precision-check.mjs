@@ -1,6 +1,6 @@
 // Compare Frosty Precision table rows with reviewed attachment-audit panel readings.
 // Research check only: it is not part of CI and does not change live data.
-//   node scripts/frosty-precision-check.mjs [tables.json] [--out summary.json]
+//   node scripts/frosty-precision-check.mjs [tables.json] [--audit audit.json] [--out summary.json]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,17 +12,22 @@ const read = file => JSON.parse(readFileSync(resolve(root, file), 'utf8'));
 const args = process.argv.slice(2);
 const outIndex = args.indexOf('--out');
 const outFile = outIndex >= 0 ? args.splice(outIndex, 2)[1] : null;
+const auditIndex = args.indexOf('--audit');
+const auditFile = auditIndex >= 0 ? args.splice(auditIndex, 2)[1] : 'reference-data/attachment-audit/frosty-panel-audit-2026-09-07.json';
 const tablesFile = args[0] ?? 'reference-data/provenance/frosty-precision-tables-2026-09-14.json';
 const { tables } = read(tablesFile);
 const weapons = read('data/weapons.json');
 const balance = read('data/balance_tables.json');
 const catalogs = { ...read('data/attachments.json'), ...read('data/ammo.json') };
 setAttachmentContext({ ...catalogs, ...balance, HIT_ZONES: read('data/hit_zones.json') });
-const audit = read('reference-data/attachment-audit/frosty-panel-audit-2026-09-07.json');
+const audit = read(auditFile);
+const identityCorrections = new Map(read('reference-data/attachment-audit/composite-identity-corrections-2026-09-21.json')
+  .corrections.map(item => [item.sourcePath, item.after]));
 // Screenshot-verified Precision corrections. The historical audit file keeps the transcribed values.
 const ledgers = [
   'reference-data/attachment-audit/screenshot-stat-corrections-2026-09-17.json',
   'reference-data/attachment-audit/precision-screenshot-corrections-2026-09-17.json',
+  'reference-data/attachment-audit/composite-screenshot-corrections-2026-09-21.json',
 ];
 const corrections = new Map();
 for (const file of ledgers) for (const c of read(file).corrections) if (c.field === 'precision') corrections.set(c.sourcePath, c.after);
@@ -79,7 +84,7 @@ for (const record of audit.records) {
   if (!weapon || !table) { rows.push({ weapon: record.weapon, outcome: 'no-table' }); continue; }
   const atts = {};
   resetAttsForWeapon(atts, weapon, catalogs);
-  const [slot, id] = record.identityCandidates?.[0] ?? [];
+  const [slot, id] = identityCorrections.get(record.path) ?? record.identityCandidates?.[0] ?? [];
   if (slot) atts[slot] = id;
   // Rail-slot weapons (VZ. 61 grips; lasers and lights on ten weapons) select through atts.rail.
   if (slot && catalogs.WEAPON_ATTS[weapon.id]?.slots?.rail?.accepts.includes(slot)) {
@@ -89,6 +94,13 @@ for (const record of audit.records) {
   const build = applyAttachments(weapon, atts);
   const burstPanel = slot === 'ergo' && BURST_ERGOS.has(id);
   const k = keys(weapon, build, table, burstPanel ? applyAttachments(weapon, { ...atts, ergo: 'none' }) : build);
+  // GS_PP19 has no Flash Comp smoothing binding (ATTACHMENT_BUGS.md, entry 6).
+  // Its generic catalog smoothing must not change the two Precision lookup keys.
+  if (weapon.id === 'pp19' && atts.muzzle === 'flash_comp') {
+    const unsmoothed = applyAttachments(weapon, { ...atts, muzzle: 'none' });
+    k.duration = unsmoothed.recoil.ads.duration;
+    k.decrease = unsmoothed.recoil.ads.decFactor * (unsmoothed._adsRecoilDecayMult ?? 1);
+  }
   const { panel, method } = lookup(table, k);
   const reading = corrections.get(record.path) ?? original;
   const outcomeFor = value => (value <= 1 && weapon.cls !== 'Sniper Rifle' ? 'new-weapon-ui-bug'

@@ -1,6 +1,6 @@
 // Compare the Control, Hipfire and Mobility candidates with reviewed attachment-audit panel readings.
 // Research check only: it is not part of CI and does not change live data.
-//   node scripts/frosty-composite-check.mjs [--out summary.json]
+//   node scripts/frosty-composite-check.mjs [--audit audit.json] [--out summary.json]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,14 +12,18 @@ const read = file => JSON.parse(readFileSync(resolve(root, file), 'utf8'));
 const args = process.argv.slice(2);
 const outIndex = args.indexOf('--out');
 const outFile = outIndex >= 0 ? args.splice(outIndex, 2)[1] : null;
+const auditIndex = args.indexOf('--audit');
+const auditFile = auditIndex >= 0 ? args.splice(auditIndex, 2)[1] : 'reference-data/attachment-audit/frosty-panel-audit-2026-09-07.json';
 const weapons = read('data/weapons.json');
 const balance = read('data/balance_tables.json');
 const catalogs = { ...read('data/attachments.json'), ...read('data/ammo.json') };
 setAttachmentContext({ ...catalogs, ...balance, HIT_ZONES: read('data/hit_zones.json') });
-const audit = read('reference-data/attachment-audit/frosty-panel-audit-2026-09-07.json');
+const audit = read(auditFile);
+const identityCorrections = new Map(read('reference-data/attachment-audit/composite-identity-corrections-2026-09-21.json')
+  .corrections.map(item => [item.sourcePath, item.after]));
 const STATS = ['control', 'hipfire', 'mobility'];
 const corrections = new Map();
-for (const file of ['screenshot-stat-corrections-2026-09-17.json', 'precision-screenshot-corrections-2026-09-17.json']) {
+for (const file of ['screenshot-stat-corrections-2026-09-17.json', 'precision-screenshot-corrections-2026-09-17.json', 'hipfire-screenshot-corrections-2026-09-21.json', 'composite-screenshot-corrections-2026-09-21.json']) {
   const ledger = read(`reference-data/attachment-audit/${file}`);
   for (const c of [...ledger.corrections, ...(ledger.otherFieldCorrections ?? [])]) {
     if (STATS.includes(c.field)) corrections.set(`${c.sourcePath}|${c.field}`, c.after);
@@ -33,9 +37,15 @@ const hipfire = H => Math.min(100, 10 * Math.sqrt(0.425 / Math.tan(rad(1.25 * H)
 // The delegate's own 18-value ladder (composite-hipfire-decode-2026-09-06.json). Row 0 is 8.032 where the
 // site's spread table holds 7.4: suppressed LMGs read 22 (8.032), not 23 (7.4).
 const HIPFIRE_LADDER = [8.032, 4.848, 3.352, 2.432, 1.804, 1.352, 1.024, 0.784, 0.608, 0.476, 0.38, 2.16, 1.444, 0.972, 0.656, 0.444, 0.304, 0.208];
-// Flashlight, hip tac light and laser/light combos multiply by sqrt(1.2); the ADS tac light does not.
-const HIPFIRE_LIGHT_GATE = Math.sqrt(1.2);
-const hasHipLight = (laser, light) => ['flashlight', 'hip_taclight'].includes(light) || laser.startsWith('combo');
+// Firing-dispersion angles from versioned WB assets; native provider binding remains unverified.
+const SHOTGUN_DISPERSION = Object.fromEntries(read('reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json')
+  .series.map(row => [row.weapon, row.sourceAngle]));
+// Candidate for the delegate's IncreasePerShotFraction branch: a non-unit fraction selects sqrt(1.2).
+// Matches the light cases and VSSM Folding Stock. Native comparison/input sourcing remains inferred.
+const HIPFIRE_FRACTION_GATE = Math.sqrt(1.2);
+// Same observed menu-preview rule as the Precision checker: burst-selector recoil is not previewed.
+const BURST_ERGOS = new Set(['burst_training', 'burst_mode', 'grtbc_burst_mode']);
+const MOBILITY_SOURCE_INPUTS = read('reference-data/provenance/composite-mobility-source-trace-2026-09-21.json').researchInputs;
 // Unrounded recoil inputs: the resolver rounds recoilV to three decimals, which moves 30 readings across .5.
 function exactRecoil(weapon, build) {
   const mult = balance.RECOIL_MULT[weapon.id];
@@ -72,7 +82,7 @@ for (const record of audit.records) {
   if (!weapon) continue;
   const atts = {};
   resetAttsForWeapon(atts, weapon, catalogs);
-  const [slot, id] = record.identityCandidates?.[0] ?? [];
+  const [slot, id] = identityCorrections.get(record.path) ?? record.identityCandidates?.[0] ?? [];
   if (slot) atts[slot] = id;
   if (slot && catalogs.WEAPON_ATTS[weapon.id]?.slots?.rail?.accepts.includes(slot)) {
     delete atts[slot];
@@ -86,26 +96,48 @@ for (const record of audit.records) {
     if (Number.isFinite(value)) readings[stat] = value;
   }
   // Hip index in source order: the weapon's base row minus the resolved tier shift, clamped like the resolver.
-  // The shotgun ammunition shift (-9) is the site's device for reaching the shotgun spread rows; the panel
-  // reads the registry index (row 3 gives 40 on all four shotguns), so the ammunition shift is excluded here.
+  // Shotguns use the resolved ammunition row plus their separate firing-dispersion angle.
+  // Keep the previous non-shotgun ammunition treatment until those branches are independently checked.
   const hipBase = balance.HIP_SPREAD_BASE_INDEX[weapon.id];
   const ammoId = atts.ammo ?? catalogs.WEAPON_AMMO?.[weapon.id]?.def ?? 'standard';
   const ammoShift = catalogs.WEAPON_AMMO?.[weapon.id]?.effectOverrides?.[ammoId]?.hipSpreadTierMod
     ?? catalogs.AMMO.find(item => item.id === ammoId)?.hipSpreadTierMod ?? 0;
-  const hipIndex = Number.isInteger(hipBase) ? Math.max(0, Math.min(HIPFIRE_LADDER.length - 1, hipBase - (build._hipSpreadTierMod - ammoShift))) : null;
-  const H = hipIndex != null ? HIPFIRE_LADDER[hipIndex] : null;
-  const gate = hasHipLight(mounts.laser.id, mounts.light.id) ? HIPFIRE_LIGHT_GATE : 1;
-  const { R, V } = exactRecoil(weapon, build);
+  const firingDispersion = SHOTGUN_DISPERSION[weapon.id];
+  // GS_L115A3 omits the Standard Suppressor selector from its hip-dispersion bindings.
+  // See l115-standard-suppressor-hipfire-2026-09-21.json; retain other attachment effects.
+  const unboundMuzzleShift = weapon.id === 'l115' && atts.muzzle === 'std_supp'
+    ? catalogs.MUZZLES.find(item => item.id === 'std_supp').hipSpreadTierMod : 0;
+  const hipIndex = Number.isInteger(hipBase) ? Math.max(0, Math.min(HIPFIRE_LADDER.length - 1,
+    hipBase - (build._hipSpreadTierMod - unboundMuzzleShift - (firingDispersion == null ? ammoShift : 0)))) : null;
+  const H = hipIndex != null ? HIPFIRE_LADDER[hipIndex] + (firingDispersion ?? 0) : null;
+  const baseHipInc = weapon.spreadDyn?.hip?.inc;
+  const resolvedHipInc = build.spreadDyn?.hip?.inc;
+  const hipIncreasePerShotFraction = baseHipInc > 0 && Number.isFinite(resolvedHipInc)
+    ? resolvedHipInc / baseHipInc : 1;
+  const gate = hipIncreasePerShotFraction !== 1 ? HIPFIRE_FRACTION_GATE : 1;
+  const recoilBuild = slot === 'ergo' && BURST_ERGOS.has(id)
+    ? applyAttachments(weapon, { ...atts, ergo: 'none' }) : build;
+  const { R, V } = exactRecoil(weapon, recoilBuild);
   const indices = mobilityIndices(build, weapon);
+  const mobilitySource = MOBILITY_SOURCE_INPUTS[weapon.id];
+  if (mobilitySource?.animationZoomBaseIndex !== undefined) {
+    indices.adsTime += mobilitySource.animationZoomBaseIndex - mobilitySource.zoomTransitionBaseIndex;
+  }
+  const movingAdsShift = mobilitySource?.movingAdsGripShifts?.[mounts.grip.id];
+  if (movingAdsShift !== undefined) {
+    indices.movingAds += movingAdsShift - (mounts.grip.movingAdsSpreadTierMod ?? 0);
+  }
+  // WPM_BTM_HandStopPDW_W10 sets Field_18774676=True; its panel description names sprint firing.
+  const canFireWhileSprinting = mounts.grip.id === 'cmpct_handstop';
   rows.push({
     index: record.recordIndex, weapon: weapon.id, cls: weapon.cls, slot, id, readings,
     baseline: slot ? id === defaults(weapon, slot) : false,
     candidates: {
       control: control(R, V),
       hipfire: H != null ? Math.min(100, hipfire(H) * gate) : null,
-      mobility: Object.values(indices).some(i => i < 0) ? null : mobilityScore(indices),
+      mobility: Object.values(indices).some(i => i < 0) ? null : mobilityScore(indices) + (canFireWhileSprinting ? 4 : 0),
     },
-    inputs: { recoilV: R, recoilVar: V, hipIndex, hipAngle: H, lightGate: gate !== 1, indices, laser: mounts.laser.id, light: mounts.light.id },
+    inputs: { recoilV: R, recoilVar: V, hipIndex, hipAngle: H, hipIncreasePerShotFraction, fractionGate: gate !== 1, indices, canFireWhileSprinting, laser: mounts.laser.id, light: mounts.light.id },
   });
 }
 

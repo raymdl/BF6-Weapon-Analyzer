@@ -1,0 +1,198 @@
+{
+  "date": "2026-09-21",
+  "status": "Requested captures; not observations",
+  "rows": [
+    {
+      "label": "EF-A",
+      "weapon": "ef88",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "ribbed_vert",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "points": 55
+    },
+    {
+      "label": "EF-B",
+      "weapon": "ef88",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "ribbed_vert",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "penetration",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "points": 55
+    },
+    {
+      "label": "HF-A",
+      "weapon": "ef88",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "std_supp",
+        "grip": "none",
+        "laser": "5mw_red",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "points": 55
+    },
+    {
+      "label": "HF-B",
+      "weapon": "ef88",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "std_supp",
+        "grip": "none",
+        "laser": "50mw_blue",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "points": 65
+    },
+    {
+      "label": "L-A",
+      "weapon": "l115",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "none",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "light",
+        "ammo": "standard",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "points": 55
+    },
+    {
+      "label": "L-B",
+      "weapon": "l115",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "qd_grip_pod_sr",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "light",
+        "ammo": "standard",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "points": 65
+    },
+    {
+      "label": "KS-A",
+      "weapon": "ks18k",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "none",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "buckshot",
+        "mag": "4_rnd",
+        "ergo": "none"
+      },
+      "points": 40
+    },
+    {
+      "label": "KS-B",
+      "weapon": "ks18k",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "slim_angled",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "buckshot",
+        "mag": "4_rnd",
+        "ergo": "none"
+      },
+      "points": 65
+    },
+    {
+      "label": "V-A",
+      "weapon": "vssm",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "none",
+        "laser": "none",
+        "light": "none",
+        "barrel": "vssm_suppressed",
+        "ammo": "range_pen",
+        "mag": "20_rnd",
+        "ergo": "full_auto_vssm"
+      },
+      "points": 90
+    },
+    {
+      "label": "V-B",
+      "weapon": "vssm",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "fold_vert",
+        "laser": "none",
+        "light": "none",
+        "barrel": "vssm_suppressed",
+        "ammo": "range_pen",
+        "mag": "20_rnd",
+        "ergo": "full_auto_vssm"
+      },
+      "points": 100
+    },
+    {
+      "label": "S-A",
+      "weapon": "m2010esr",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "none",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "points": 45
+    },
+    {
+      "label": "S-B",
+      "weapon": "m2010esr",
+      "attachments": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "none",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "penetration",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "points": 45
+    }
+  ]
+}

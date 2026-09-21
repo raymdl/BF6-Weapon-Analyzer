@@ -1,5 +1,13 @@
 # Composite stats findings
 
+Current review objective (21 SEP): calculate all four panel stats independently from source
+inputs and match verified in-game readings. Historical review is complete for 472 selected
+screenshots. Current EF88, BROD 3 and two KTS100 replacements are in the canonical audit.
+All four research calculations match all 131 current attachment detail panels.
+Research checkers now use reviewed values and source-backed rules. Production UI integration
+and general multi-attachment validation remain open. Later dated results supersede earlier
+match counts and hypotheses below.
+
 Snapshot: 14 September 2026, 1.4.2.5 local export. Active investigation.
 
 The loadout panel shows four 0-100 bars: Hipfire, Precision, Control and Mobility.
@@ -25,10 +33,10 @@ and are not these stats ([UI strings review](../frosty/UI_TEXT.md#numerical-stat
 
 | Stat | Source form | Status |
 |---|---|---|
-| Precision | Per-weapon lookup tables in game configuration data | Tables extracted; 2,900 of 3,010 comparable audit readings match after the 17 SEP transcription corrections (14 SEP record: 2,719) |
-| Control | Delegate `ControlAttributeDelegate1` | Formula matches 2,946 of 3,127 audit readings (17 SEP); RateOfFire input shows no effect in the one controlled comparison |
-| Hipfire | Delegate `HipfireAttributeDelegate` | Formula with the delegate ladder and √1.2 light gate matches 2,955 of 3,127; shotgun and sidearm lasers unresolved |
-| Mobility | Delegate `MobilityAttributeDelegate` | Weighted index with resolved default-build indices matches 2,937 of 3,127 readings and 60 of 62 None panels exactly; `CanFireWhileSprinting` (Compact Handstop +4) unresolved |
+| Precision | Per-weapon lookup tables in game configuration data | 2,962 / 3,004 comparable historical readings match; 123 historical 0/1 UI readings excluded. Remaining: VSSM 42. |
+| Control | Delegate `ControlAttributeDelegate1` | 3,061 / 3,127 historical readings match. Most differences are old EF88 captures; current capture checks are separate. |
+| Hipfire | Delegate `HipfireAttributeDelegate` | 3,127 / 3,127 historical readings match after screenshot/identity corrections, shotgun firing dispersion, inferred fraction gate, and the source-confirmed L115 missing suppressor binding. |
+| Mobility | Delegate `MobilityAttributeDelegate` | 3,064 / 3,127 historical readings match, including Compact Handstop sprint-fire +4. Remaining differences concentrate in old EF88, L115 and one 18.5KS-K grip. |
 
 ## Precision
 
@@ -357,21 +365,20 @@ in the ledger.
     | 18.5KS-K | 42 | 47 | 52 | 56 |
     | DB-12 | 39 | 43 | 46 | 49 |
 
-    All equal the July audit, so the steps are not capture-era. The site's shotgun rows (1.444,
-    0.972, 0.656, 0.444) plus a constant angle reproduce three guns through the rifle formula:
-    +1.0 gives 40.2, 44.9, 48.9, 52.4 for the M87A1 and M1014; +0.83 gives 42.0, 47.0, 51.7,
-    55.9 for the 18.5KS-K; no constant fits the DB-12. The registry gives all four the same
-    standing min angle (0.784), moving min angle (0.98) and increase-per-shot (0.941 for the
-    M1014 and M87A1, 0.648 for the DB-12 and 18.5KS-K), none of which produces those offsets.
-    Fitted description only; the `StandDispersionMinAngle` source is not identified.
+    The eight Red/Green readings were independently confirmed from operator screenshots in the
+    21 SEP review below. The earlier claim that all equal the July audit was incorrect: the
+    checker's corrected audit still reads 42/42 for 18.5KS-K Red/Green and 39 for DB-12 Green.
+    The earlier claim that no constant fits DB-12 was also incorrect: +1.2 fits its entire
+    listed series. See the source-backed candidate below; no historical audit values were changed.
 
 ### Implementation scope supported by this evidence
 
-Control, Hipfire and Mobility: the candidates reproduce 94 to 97 per cent of the audit, and
-every screenshot opened against a disagreement showed the candidate value. A display could
-support rifles, carbines, SMGs and LMGs for all three stats with the rules above, and Mobility
-for every weapon except the L115 and M44 offsets and the Compact Handstop; shotgun and sidearm
-Hipfire with lasers and sniper and sidearm laser effects need source work first.
+Control, Hipfire and Mobility: the 17 SEP candidates reproduce 94 to 97 per cent of the audit.
+The verified transcription corrections support specific matches, but confirmed shotgun laser
+screenshots also disagree with that checker. These totals do not establish complete class-wide
+coverage. Mobility still needs the L115/M44 offsets, Compact Handstop, sidearm Fast Deploy,
+and unresolved attachment families checked. Hipfire still needs the KTS100 laser exception,
+sniper and sidearm laser behavior, and shotgun branches checked before implementation.
 
 Precision lookup by the six keys reproduces 2,900 of 3,010 comparable readings and all
 independently confirmed 13-14 SEP panels; the remaining differences are attributed to
@@ -379,3 +386,239 @@ transcription and capture build, not to the rule. A display would need: the burs
 (finding 3) or a note that burst ergonomics are shown as previewed; the `near` tolerance for the
 two 0.239 weapons; the fallback row for the L115; and per-build tables (VSSM changed in 1.4.3.0).
 Control's `RateOfFire` input and the native Precision provider remain unconfirmed.
+
+## 21 September 2026 review: shotgun firing-dispersion candidate
+
+Evidence: [source fields, hashes, calculations and eight saved screenshots](../../reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json).
+The screenshots confirm all eight Red/Green readings in finding 11. They show laser previews
+with None equipped. Their capture date and build are not independently visible; the earlier
+ledger attributes them to 17 SEP, 1.4.3.0. None and 50 mW Green are not newly verified captures.
+
+The weapon firing-data assets contain a second dispersion component, separate from the
+registry's gun-sway minimum. In each `_WB.xml`, `Class_35259f6b/Field_f40a1d28/Struct_f40a1d28`
+contains three `Struct_8e53cf47` blocks. Their `Field_7baf4297` values are 1.0 for 590A1
+(M87A1) and M1014, 0.8 for 185KSK, and 1.2 for DP12. These values agree in the 1.4.2.5
+export and the 1.4.3.0 overlay. `Field_60e4e484` has the same values, so these observations
+cannot distinguish which field supplies the input.
+
+Using `H = shotgun row + firing-dispersion angle` in the existing Hipfire candidate gives:
+
+| Weapon | Source angle | None prediction | Red prediction | Green prediction | 50 mW Green prediction |
+|---|---|---|---|---|---|
+| M87A1 | 1.0 | 40.268 -> 40 | 44.837 -> 45 | 48.932 -> 49 | 52.404 -> 52 |
+| M1014 | 1.0 | 40.268 -> 40 | 44.837 -> 45 | 48.932 -> 49 | 52.404 -> 52 |
+| 18.5KS-K | 0.8 | 42.028 -> 42 | 47.302 -> 47 | 52.188 -> 52 | 56.462 -> 56 |
+| DB-12 | 1.2 | 38.712 -> 39 | 42.720 -> 43 | 46.218 -> 46 | 49.111 -> 49 |
+
+Rows are 1.444, 0.972, 0.656 and 0.444. All eight screenshot-confirmed laser values match.
+The source value 0.8 removes the need for the fitted 0.83 on 18.5KS-K; 1.2 explains DB-12.
+This is consistent with the existing delegate decode, which adds `StandDispersionMinAngle`
+after row selection. It is a source-backed candidate, not a verified native binding.
+
+An in-memory experiment on the checker at `f222870` retained the resolved ammunition shift
+for the four shotguns and added these angles. Hipfire matches rose from 2,955 to 3,035 of
+3,127, leaving 92 differences. The unchanged audit and ledgers still contain discrepancies
+against the supplied screenshots. This broad experiment also applies the candidate to
+unverified ammunition, light and suppressor states; its total is not release validation.
+The checked-in checker and production data remain unchanged.
+
+Next source questions: trace the native `StandDispersionMinAngle` provider and shotgun row
+construction, then check ammunition, lights and suppressors. The claim of 60/62 Mobility
+None matches also still needs an explicit per-weapon baseline record list; several slots
+have different readings for default-equivalent builds.
+
+### Original screenshot review: 12 confirmed transcription errors
+
+[Correction ledger with original screenshot paths and hashes](../../reference-data/attachment-audit/hipfire-screenshot-corrections-2026-09-21.json).
+A targeted review of 12 of the 92 remaining Hipfire differences found 12 transcription
+errors. All 12 screenshot readings match the exploratory candidate. The exact OCR or manual
+process that produced each error is not established. The remaining 80 cases were not reviewed
+in this pass; this selected sample must not be extrapolated to them.
+
+| Weapon / attachment | Stored reading | Original screenshot |
+|---|---|---|
+| 18.5KS-K / 5 mW Red | 42 | 47 |
+| 18.5KS-K / 5 mW Green | 42 | 52 |
+| DB-12 / 5 mW Green | 39 | 46 |
+| P18 / Standard ammunition | 11 | 54 |
+| SL9 / Standard Suppressor | 11 | 40 |
+| KTS100 / 50 mW Green | 47 | 54 |
+| M2010 ESR / 50 mW Green | 34 | 54 |
+| SVK-8.6 / 5 mW Green | 29 | 40 |
+| ES 5.7 / 50 mW Green | 54 | 81 |
+| M1014 / Flashlight | 40 | 44 |
+| 18.5KS-K / Slugs | 11 | 35 |
+| M87A1 / 50 mW Green | 34 | 52 |
+
+This supersedes the KTS100 laser exception and the categorical laser-gate claims in findings
+5 and 10 above: the reviewed sniper, DMR and sidearm laser panels show green increase arrows
+and the candidate values. The audit transcriptions do not justify a class-specific gate.
+The proposed gate investigation should start with the remaining original screenshots.
+
+Applying only these 12 corrections to the exploratory result would give 3,047 matches and
+80 differences out of 3,127. This ledger is not yet loaded by the existing checker. The
+historical audit and production data are unchanged.
+
+## 21 September 2026: complete targeted screenshot review
+
+Luna read 472 selected historical screenshots without model predictions. The combined
+[reading and correction ledger](../../reference-data/attachment-audit/composite-screenshot-corrections-2026-09-21.json)
+records screenshot hashes, all four stat readings, attachment titles and Hipfire arrows.
+It corrects 385 fields beyond the preceding ledgers: Hipfire 78, Control 110, Mobility 120,
+and Precision 77. The earlier 12 Hipfire corrections remain a separate ledger. This was a
+disagreement-selected sample, not a random accuracy estimate. Two shotgun magazine images
+needed primary adjudication: Luna missed faint leading digits in four fields. Raw agent
+values are retained beside those corrections.
+
+Two [identity corrections](../../reference-data/attachment-audit/composite-identity-corrections-2026-09-21.json)
+fix KTS100 Classic Grip Pod mislabeled as Ribbed Vertical, and the 60 Fast magazine mapped
+to the default drum. Correct values must be compared with the attachment actually shown.
+
+The research checkers now load these ledgers. Rules and limits are recorded in
+[panel rule evidence](../../reference-data/provenance/composite-panel-rules-2026-09-21.json):
+
+- Shotguns retain resolved ammunition shifts and add the WB firing-dispersion angle.
+- Burst ergonomics preview non-burst recoil for Control, as already observed for Precision.
+- Compact Handstop adds the delegate's +4 sprint-fire contribution to Mobility.
+- The Hipfire fraction gate is inferred from resolved versus base hip increase per shot.
+  It explains the lights and VSSM Folding Stock without attachment-name gates. The native
+  comparator and provider remain unverified.
+
+### L115 Standard Suppressor: missing hipfire binding
+
+The [versioned trace](../../reference-data/provenance/l115-standard-suppressor-hipfire-2026-09-21.json)
+links the L115 Bushwacker attachment through its ability branch to selector
+`276be3b0-2455-46b7-a85e-52c37aa5b3b8` (`U_WPM_MZL_Suppressor01_W20`). The WB includes the
+shared modifier, which provides suppression effects. The separate `GS_L115A3` hip-dispersion
+bindings omit this selector. EF88 and M2010 ESR bind that same selector to
+`GDM_Array_HipDispersion_MZL_M10`. Both inspected versions, 1.4.2.5 and 1.4.3.0, agree.
+Thus the source-bound candidate leaves L115 Hipfire at 34, matching the screenshot, instead
+of applying the generic penalty and predicting 29. This is a source-data omission or
+exception; its design intent and actual firing behavior have not been established.
+The research checker removes only this unbound muzzle shift. Production data is unchanged.
+
+### Remaining limits
+
+The historical comparison uses current model inputs against captures from several dates.
+It must not be described as a current-build pass rate. EF88 current captures have recoil
+variation 26.1 versus 20.3 in the old captures. VSSM's old recoil inputs explain its three
+one-point Control differences; its 42 Precision differences still need current screenshots.
+PP-19 Flash Comp reads 50 and now matches: its spread configuration has no recoil-smoothing binding for that selector, consistent with attachment bug 6. Three sniper Tungsten Core
+Control cases and L115 / 18.5KS-K Mobility cases remain input/version investigations.
+
+Only VSSM Precision table rows changed between the extracted 1.4.2.5 and 1.4.3.0 settings;
+the updated table alone does not resolve its old screenshot differences. Use the changed
+settings export, not the stale settings file in the overlay. General composed loadouts,
+activation state and native provider bindings still need verification before UI promotion.
+
+### Current capture update (21 SEP 2026)
+
+Updated 133 canonical records and renamed 133 screenshots: EF88 66, BROD 3 65,
+and KTS100 MK8 2. This includes six previously pending hybrid suppressors. Two
+weapon overviews remain context-only; the other 131 records contain the full displayed
+stat panel, attachment cost, description and colored comparisons. Old captures remain
+in `Old` folders. The [capture manifest](../../reference-data/attachment-audit/current-capture-updates-2026-09-21.json)
+preserves previous records, original filenames, current filenames and image hashes.
+
+Direct execution of both research checkers against the [current panel input](../../reference-data/attachment-audit/composite-current-panels-2026-09-21.json)
+matched **131/131 Hipfire, 131/131 Precision, 131/131 Control and 131/131 Mobility**.
+This covers 65 EF88, 64 BROD 3 and 2 KTS100 detail panels; it excludes the two overviews.
+[Results and input hashes](../../reference-data/provenance/composite-current-results-2026-09-21.json).
+
+Luna helped with visual transcription. Primary review corrected transcription and identity
+mapping errors before integration. In particular, BROD 3 Flashlight reads Hipfire 51,
+and attachment identities must be joined by slot and catalog ID rather than capture order.
+The current EF88 recoil variation is 26.1 degrees. These new captures replace the old
+Precision 0/1 evidence for EF88 and BROD 3 in the canonical audit; the historical benchmark
+retains its old observations and exclusions.
+
+The KTS100 Ribbed Vertical replacement reads Hipfire 34, Precision 78, Control 67 and
+Mobility 36. The 60-round fast magazine replacement reads 34, 75, 55 and 38, respectively,
+with cost 10 and reload time 2.876 seconds. The old mislabeled captures remain historical
+identity corrections, not verified measurements of the attachments named by their filenames.
+
+Production composite-stat integration, general multi-attachment validation and the remaining
+historical input/version differences are still open. The workbook was not regenerated;
+these capture updates are in the canonical JSON.
+
+### Remaining captures and sniper Tungsten Core (21 SEP 2026)
+
+Captured and renamed 23 further images: 17 attachment panels and six overviews.
+The [replacement manifest](../../reference-data/attachment-audit/remaining-capture-updates-2026-09-21.json)
+preserves old records and image hashes. All old images remain in `Old` folders.
+The L115 screenshot labels **27" Factory (Light)** as Default, while the equipped
+checkmark is on **27" Full (Basic)**. These are different states; the Basic panel
+still reads Mobility 46 versus the model's 42.
+
+The 1.4.3.0 Precision table matches all 17 new panels, including the three VSSM
+grips at 83. This resolves those current observations, not every historical VSSM
+capture. Hipfire also matches 17/17.
+
+The [two-version Tungsten Core trace](../../reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json)
+shows selector `68ba8281-7079-48a3-b53a-ff5bf30c63da` bound to
+`GRM_Recoil_AMO_Bolt_M10` on M2010 ESR, PSR (`MRAD`) and SV-98 (`SV98M`).
+Its ADS and hip recoil amount operands are signed **-6** (`0xfffffffa`), with
+zero variation shifts. Normal `GRM_Recoil_AMO_M10` uses **-1** (`0xffffffff`).
+The existing field mapping identifies `Field_6b84de87` as ADS and
+`Field_7b609515` as hip, with amount index `Field_22ce7cf3` in each.
+Both saved builds, 1.4.2.5 and 1.4.3.0, contain these bindings and operands.
+
+With the three rifles' 0.94 recoil multiplier, six penalty steps give
+`0.94^-6 = 1.449549`, approximately **44.95% more recoil**, versus **6.38%**
+for one step. The research checker now uses these per-weapon source operands.
+Calculated Control matches the new Tungsten panels: **M2010 ESR 11, PSR 9,
+SV-98 14**. Control therefore matches 17/17 new panels. This is an input-mapping
+error in our model, not an OCR error or a required change to the Control formula.
+
+Do not apply this to all sniper rifles: L115 binds the normal one-step modifier;
+EF88 does too. MiniFix contains both modifiers under different masks and needs
+separate activation review. Production ammo data remains unchanged.
+
+The [current results](../../reference-data/provenance/composite-remaining-results-2026-09-21.json)
+leave six Mobility differences: five L115 panels and 18.5KS-K Slim Angled.
+The earlier 131-panel batch still matches Hipfire, Control and Mobility after
+the research input correction. General composed loadouts and native provider
+execution remain unverified. The workbook was not regenerated.
+
+### Source-input follow-up and site ammo correction (21 SEP 2026)
+
+The three six-step Tungsten Core overrides are now in `data/ammo.json`. The
+research-only injection was removed, so the checker uses the same ammo values
+as the site. L115 and Interdictor retain one step. Mini Scout retains seven:
+its saved Tungsten panel reads Control 17 and recoil 1.5°, supporting the sum
+of its one-step and six-step bindings. Attachment bug 13 records the suspected
+sniper inconsistency while separating confirmed values from intended balance.
+
+The [Mobility source trace](../../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
+accounts for the six current differences:
+
+- L115's animation-zoom base index is 2; its zoom-transition base index is 1.
+  Mobility names the animation input. Reusing the resolver's ADS transition
+  index loses four points on all five L115 panels.
+- L115 QD Grip Pod has no moving-ADS penalty binding. Applying the generic
+  penalty loses another four points on its panel.
+- 18.5KS-K Slim Angled binds the dispersion modifier in `Field_b30a73ed`,
+  not moving-ADS collection `Field_2ffeb6ac`. Treating it as a moving-ADS penalty
+  loses four points. The other collection's runtime effect remains unverified.
+
+The research checker uses the distinct animation index and excludes those two
+unbound moving-ADS shifts. **All 17 current panels now match all four composite
+stats.** The previous 131-panel batch still matches Control, Hipfire and Mobility.
+These observations support the panel-input interpretation; they do not prove
+the alternate KS dispersion field's gameplay behavior. Production spread and
+ADS behavior were not changed. The old bug 1b interpretation is marked under review.
+
+### Production spread follow-up and next validation
+
+L115 QD Grip Pod now has a weapon-specific moving-ADS shift of zero in the
+production catalog. Its ADS-time improvement remains. A regression check covers
+the bare build, Light + Violet stacking, and the different M2010 binding.
+
+18.5KS-K remains unresolved at the gameplay-effect level. SDK reflection confirms
+`Field_b30a73ed` is field index 18, offset 1528, with `Struct_a92e7ee4` elements;
+`Field_2ffeb6ac` is index 19, offset 1536, with `Struct_28529b7f` elements.
+Neither exposes a semantic display name. This establishes separate collections,
+not the first collection's effect. Production KS spread is therefore unchanged.
+
+Composite integration is on hold at the operator's request. The next validation
+is [six paired loadouts / 12 captures](COMPOSITE_LOADOUT_CAPTURE_PLAN.md).

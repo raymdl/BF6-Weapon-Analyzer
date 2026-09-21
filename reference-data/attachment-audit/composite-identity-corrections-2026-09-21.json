@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-21",
+  "corrections": [
+    {
+      "recordIndex": 3006,
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/Old/31_KTS100 MK8_Grip_Ribbed_Vertical.png",
+      "sha256": "06cae4c7d0376ab2f8dbb4e2dbb614f83cc532db64fd62938b95fb7f494436b7",
+      "before": [
+        "grip",
+        "ribbed_vert"
+      ],
+      "after": [
+        "grip",
+        "classic_grip_pod"
+      ],
+      "visibleTitle": "CLASSIC GRIP POD",
+      "reason": "Screenshot title differs from filename and historical mapping.",
+      "reviewer": "Primary visual review"
+    },
+    {
+      "recordIndex": 3024,
+      "sourcePath": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/Old/50_KTS100 MK8_Magazine_60RND_MAGAZINE.png",
+      "sha256": "f07ad55b5aa33364267ab132efa7984cea54d10b72b4914d89f738d500bf4986",
+      "before": [
+        "mag",
+        "60_rnd"
+      ],
+      "after": [
+        "mag",
+        "60_fast"
+      ],
+      "visibleTitle": "60RND MAGAZINE",
+      "reason": "Selected tile is 60 FAST; faster reload, worse sprint recovery, and distinct from default 60RND DRUM MAG.",
+      "reviewer": "Primary visual review"
+    }
+  ]
+}

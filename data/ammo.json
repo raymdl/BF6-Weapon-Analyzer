@@ -917,6 +917,12 @@
         "penetration": 5,
         "long_range": 10,
         "frangible": 20
+      },
+      "effectOverrides": {
+        "penetration": {
+          "adsRecoilTierMod": -6,
+          "hipRecoilTierMod": -6
+        }
       }
     },
     "sv98": {
@@ -926,6 +932,12 @@
         "penetration": 5,
         "long_range": 10,
         "frangible": 20
+      },
+      "effectOverrides": {
+        "penetration": {
+          "adsRecoilTierMod": -6,
+          "hipRecoilTierMod": -6
+        }
       }
     },
     "psr": {
@@ -935,6 +947,12 @@
         "penetration": 5,
         "long_range": 10,
         "frangible": 20
+      },
+      "effectOverrides": {
+        "penetration": {
+          "adsRecoilTierMod": -6,
+          "hipRecoilTierMod": -6
+        }
       }
     },
     "interdictor": {

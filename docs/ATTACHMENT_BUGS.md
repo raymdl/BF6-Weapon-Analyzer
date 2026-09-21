@@ -9,6 +9,8 @@ Each entry is one of these types:
   wrong stat.
 - **Visual error**: the attachment looks wrong on one weapon compared with other
   weapons. Stats and description are not affected.
+- **Suspected game error**: source or panel behavior is inconsistent across weapons,
+  but the intended behavior is not confirmed.
 
 Descriptions that leave out an effect that the game applies consistently are not
 errors. They are in [Accepted text](#accepted-text).
@@ -28,7 +30,7 @@ Site status uses one of these values, followed by the value that the site applie
 | # | Attachment | Weapons | Type | Error | Site status |
 |---|---|---|---|---|---|
 | 1a | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Matches game: −1 ADS accuracy while moving |
-| 1b | Slim Angled | 18.5KS-K | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The weapon's GS binds the penalty to the Slim Angled package. | Matches source data: −1 ADS accuracy while moving |
+| 1b | Slim Angled | 18.5KS-K | Under review | The penalty modifier is bound outside the moving-ADS collection. The earlier moving-ADS interpretation is not established; the current Mobility panel does not include that penalty. | Moving-ADS penalty remains in production pending target review |
 | 2 | Hollow Point, Frangible, Tungsten Core | M121 A2, M45A1 | Game error | The game adds the FMJ +1 penetration step to these three ammo types. Collateral damage multiplier is too high: Hollow Point and Frangible keep the Standard value; M45A1 Tungsten Core is one step higher (M121 A2 Tungsten Core is at the maximum, so no change). The descriptions do not state a penetration change. | Matches game: extra collateral step |
 | 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19 | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches source data: no weapon draw speed change |
 | 4 | 20 Rnd fast | PP-19 | Game error | The description states faster reloads. The game does not apply the reload speed bonus (×1.13). | Matches game: no reload speed change |
@@ -39,6 +41,8 @@ Site status uses one of these values, followed by the value that the site applie
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
 | 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches source data: source values |
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
+| 12 | Standard Suppressor | L115 | Game error (source binding omission) | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Does not match game panel: generic hipfire penalty applied |
+| 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -108,24 +112,28 @@ not state. The causes in the game data are different, so each case needs its own
   were added on 14 September; the handling generator preserves these per-weapon
   fields.
 
-#### 1b. 18.5KS-K: penalty bound to the Slim Angled package
+#### 1b. 18.5KS-K: Slim Angled dispersion binding under review
 
 - **In-game text.** "Marginally reduces recoil, increases weapon draw speed, and
   enables a slightly faster transition to aim down sights (ADS)."
-- **Error.** The game applies −1 ADS accuracy while moving. The description does not
-  state this penalty.
+- **Status (21 September).** The earlier claim of an unstated moving-ADS penalty
+  is not established. It relied on the modifier filename rather than its binding
+  collection. Do not treat this as a confirmed gameplay bug.
 - **Source trace.** The Slim Angled action (`Attachment_185KSK_BTM_Magpul_AFG`,
-  branch `17aaf490-…`) selects `U_WPM_BTM_Fast02_W25` (`16a53347-…`). Full Angled
-  (`Magpul_AFG2`) selects a different package, `U_WPM_BTM_Fast03_W30`. `GS_185KSK`
-  binds `Fast02_W25` to `GDM_Array_ADSMoveDispersion_BTM_M10`. Unlike entry 1a, the
-  correct package is selected; the penalty comes from the GS binding.
-- **Other weapons.** Rifle and LMG GS files (for example `GS_SCARL`, `GS_RPK74M`) bind
-  `Fast02_W25` to `GID_ADSTime_BTM_P10` and `GRM_Recoil_BTM_P10` only. `GS_Vector`
-  and `GS_UMP40` also bind it to the moving-ADS penalty, but their Slim Angled selects
-  `U_WPM_BTM_FastPDW_W20` (entry 3), so no other weapon gets the penalty in game.
-- **Frosty.** `movingAdsSpreadTierMod: -1` on `ks18k` only. Cost 25, the same as on
-  other weapons.
-- **Site.** Applies the −1 penalty. Not checked in game.
+  branch `17aaf490-…`) selects `U_WPM_BTM_Fast02_W25` (`16a53347-…`). `GS_185KSK`
+  binds this selector to `GDM_Array_ADSMoveDispersion_BTM_M10` in
+  `Field_b30a73ed` (`Struct_a92e7ee4`), not the moving-ADS collection
+  `Field_2ffeb6ac` (`Struct_28529b7f`). The other collection's runtime effect
+  still needs verification.
+- **In-game panel.** Slim Angled reads Mobility 66. The research calculation
+  matches 66 when it excludes the presumed moving-ADS penalty; including that
+  penalty gives 62. This confirms the panel comparison, not the gameplay effect
+  of the other collection.
+- **Site.** Production still applies `movingAdsSpreadTierMod: -1` on `ks18k`.
+  That spread behavior remains under review. Only the research Mobility input
+  was corrected. Attachment cost remains 25.
+- **Evidence.** [Mobility source trace](../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
+  and [current panel results](../reference-data/provenance/composite-remaining-results-2026-09-21.json).
 
 ### 2. M121 A2 and M45A1 special ammo keep the FMJ package
 
@@ -233,6 +241,50 @@ not state. The causes in the game data are different, so each case needs its own
   magazine entries in `data/attachments.json` records the conflict.
 - **Evidence.** [Attachment model](ATTACHMENT_MODEL.md#belt-box-moving-ads-spread),
   [capture review](../reference-data/provenance/belt-box-moving-ads-2026-09-13.json).
+
+### 12. L115 Standard Suppressor omits the hipfire penalty
+
+- **In-game text.** The Standard Suppressor description states reduced hipfire accuracy.
+- **Observed panel.** None and Standard Suppressor both show Hipfire 34. The suppressor
+  preview has no Hipfire decrease arrow. This is not a screenshot transcription error.
+- **Source trace (1.4.2.5 and 1.4.3.0).**
+  `Attachment_L115A3_MZL_BushwackerSuppressor` links through its progression and ability
+  branch to `U_WPM_MZL_Suppressor01_W20`, selector
+  `276be3b0-2455-46b7-a85e-52c37aa5b3b8`. The WB includes the shared suppressor modifier.
+  The hipfire penalty is a separate GS binding to `GDM_Array_HipDispersion_MZL_M10`.
+  `GS_L115A3` omits that selector; `GS_EF88` and `GS_M2010ESR` include it. Other L115
+  suppressor selectors retain their hipfire bindings.
+- **Site.** The shared Standard Suppressor record applies `hipSpreadTierMod: 1` with
+  no L115 exception. The research composite checker now excludes this unbound shift;
+  the production attachment model is unchanged.
+- **Status.** Missing source binding and unchanged game panel confirmed. Whether the
+  omission is intentional is unknown. Actual firing spread has not been tested here.
+- **Evidence.** [Versioned source paths, hashes and selector bindings](../reference-data/provenance/l115-standard-suppressor-hipfire-2026-09-21.json).
+
+### 13. Sniper Tungsten Core recoil penalties are inconsistent
+
+- **In-game text.** "Ammunition that trades recoil for improved penetration,
+  resulting in greater damage to soldiers behind the initial target."
+- **Confirmed configuration.** M2010 ESR, PSR and SV-98 bind the Tungsten Core
+  selector to `GRM_Recoil_AMO_Bolt_M10`: −6 ADS and hip recoil amount steps,
+  with no variation shift. L115 and Interdictor bind `GRM_Recoil_AMO_M10`:
+  −1 step. Mini Scout binds both and sums to −7. These are penalties, since
+  the recoil multiplier is less than one.
+- **Suspected error.** The operator considers the six-step setting on the three
+  launch snipers the intended sniper penalty, and the later L115 setting a
+  missed configuration. This is a plausible consistency hypothesis, not confirmed
+  developer intent. Caliber alone does not establish the intended game value.
+  Interdictor's one-step setting and Mini Scout's duplicate binding also warrant
+  review; do not replace their observed/source values with a uniform rule.
+- **Evidence.** Both saved Frosty builds (1.4.2.5 and 1.4.3.0) contain the traced
+  bindings. The three new Tungsten panels read Control 11, 9 and 14, respectively,
+  matching the six-step calculation. Mini Scout's saved panel reads recoil 1.5°
+  and Control 17, matching seven steps; six steps would give Control 18.
+- **Site.** Applies the actual per-weapon values. The three six-step overrides
+  were added on 21 September. L115 and Interdictor remain at one step; Mini Scout
+  retains its existing seven-step override. For multiplier 0.94, the increases
+  are approximately 6.38%, 44.95% and 54.21% for one, six and seven steps.
+- **Source.** [Tungsten Core trace](../reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json).
 
 ## Description errors
 
