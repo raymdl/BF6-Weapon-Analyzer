@@ -13,7 +13,7 @@ known.
 Active investigations with their own files:
 
 - [Recoil and spread recordings](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md)
-- [Composite stats](../working/COMPOSITE_STATS_FINDINGS.md) (includes which native
+- [Composite stats](../archive/COMPOSITE_STATS_FINDINGS.md) (includes which native
   provider supplies Precision)
 
 ## Field meanings
@@ -105,6 +105,34 @@ the 16 caller assets are indexed in `asset-findings.json`.
   zero-variation behavior. Precision native provider and all fallback rules remain
   incompletely decoded.
 - Mobility uses ADS animation index, not necessarily the zoom-transition index.
-  L115 bases are 2 and 1 respectively. Preserve both when integrating the score.
+  L115 bases are 2 and 1 respectively. The runtime score now preserves this distinction.
 
 Current scope and evidence: [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md).
+
+### Burst recoil activation (21 September 2026)
+
+GRT-BC and SL9 captures show the same recoil values in the hover and equipped
+states. KORD also has an equipped capture with unchanged recoil. SG 553R and
+PW5A3 currently have hover evidence only. These observations do not establish
+recoil behavior during firing.
+
+The GRT-BC source chain resolves through `MSBSGROTB_WB.xml` objects
+`...0028` (unlock binding), `...001e` (behavior operation), `...0033`
+(behavior list), and `...0022` (fire-mode selector). The selector mask is
+`0x8`, equal to `1 << 3`; SDK enum `Enum_16e6fa59.Field_c57b586e` is 3,
+and the separate `WPM_ERG_BurstFireReplace_W10` operation selects that enum.
+The selector GUID `588728fd-2ae7-4424-aa22-45d9b3c82ba0` matches all three
+GS bindings: recoil conversion, recoil P20, and AutoIdentifier. No broken
+reference or mask mismatch was found in this chain.
+
+The shared `CMU_SemiAuto` uses the same selector class (`Class_9dfbb158`)
+with mask `0x1`. This supports interpreting the burst selector as a fire-mode
+condition. Linear Comp has direct attachment bindings instead. A menu provider
+that does not evaluate this condition could therefore show the changed mode
+list without applying burst recoil. This remains an explanation, not a confirmed
+native execution trace. XML and SDK field types do not show which mode state the
+menu provider evaluates or whether it evaluates these behavior lists at all.
+
+Next evidence needed: native menu-provider/selector execution, or a controlled
+firing comparison that separates actual recoil behavior from menu display.
+Do not classify this as a gameplay attachment failure from panel captures alone.

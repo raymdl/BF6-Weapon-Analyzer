@@ -1,5 +1,11 @@
 # Composite loadout validation captures — 21 September 2026
 
+> Archived 21 September 2026. This is a completed research record, not the current implementation specification.
+> Use the [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md) for current behavior and
+> [Frosty open questions](../frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up) for remaining research.
+> Earlier hold/pending statements and capture instructions below are historical. The runtime now matches 640 values from 160 current panels.
+
+
 Purpose: test attachment composition after the 148 current single-attachment
 panels matched. These are requested tests, not verified combined-loadout results.
 Composite-stat integration into the site is on hold.

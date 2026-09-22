@@ -341,7 +341,7 @@ Precision, Control and Mobility. Calculation assets use `WeaponAttributesConfig_
 UI assets include `WeaponAttributes`, `WeaponAttributesCell` and
 `WeaponAttributeProgressBar`. The current [model guide](../WEAPON_ATTRIBUTES_MODEL.md)
 separates source facts from inferred rules. Historical research is covered in
-[composite stats findings](../working/COMPOSITE_STATS_FINDINGS.md). The UI side:
+[composite stats findings](../archive/COMPOSITE_STATS_FINDINGS.md). The UI side:
 
 | Asset | Content |
 |---|---|

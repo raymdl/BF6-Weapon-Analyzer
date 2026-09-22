@@ -26,11 +26,23 @@ Do not use the older Firepower/Accuracy/Range/Handling archetype keys as substit
 
 ## Current implementation status
 
-The calculations run in research checkers. **Production display/integration of
-the four bar attributes is on hold at the operator's request.** Some underlying
-attachment corrections have been promoted to production, including sniper
-Tungsten Core recoil and L115 QD Grip Pod's missing moving-ADS penalty binding.
-That does not mean all research exceptions are in the production resolver.
+The site now calculates and displays the four attributes for both selected
+loadouts. `sim/weapon-attributes.js` contains the model; `ui/weapon-attributes.js`
+renders the compact strip and related-card highlights. The runtime data in
+`data/weapon_attributes.json` contains the base keys and rows from the 1.4.3.0
+Precision extraction, plus the traced shotgun and Mobility inputs. Its
+`provenance` field names the source files under `reference-data/provenance/`.
+
+The runtime does not read screenshot scores. The regression tests compare its
+results with 160 current panels (640 attribute values). Missing or ambiguous
+Precision lookups return unavailable; they are not interpolated. The selected
+loadout uses its resolved recoil inputs. The research checkers' burst-hover
+exception is not generalized to equipped builds without evidence.
+
+L115 Standard Suppressor Hipfire and PP19 Flash Comp Precision corrections stay
+inside this score model. They do not change the simulator's physical stat cards.
+The native Hipfire gate remains inferred, and the sampled matches do not prove
+every possible attachment combination.
 
 | Attribute | Current method | Main input |
 |---|---|---|
@@ -305,7 +317,7 @@ alternate KS dispersion field. No matching bar establishes shot-pattern behavior
 - [Paired-loadout evidence](../reference-data/provenance/composite-combination-results-2026-09-21.json)
 - [Research rules and their confidence](../reference-data/provenance/composite-panel-rules-2026-09-21.json)
 - [Mobility source trace](../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
-- [Dated investigation history](working/COMPOSITE_STATS_FINDINGS.md)
+- [Dated investigation history](archive/COMPOSITE_STATS_FINDINGS.md)
 
 Run from the repository root:
 
@@ -329,10 +341,10 @@ earlier statements that this production correction was pending. The alternate Fr
 field remains unidentified; this is indicator evidence, not a pellet-distribution test.
 Evidence: `reference-data/provenance/ks18k-ads-indicator-2026-09-21.json`.
 
-## Site stat cards and proposed grouping
+## Site stat cards and attribute grouping
 
 Checked against `renderStats()` and `renderAttachmentStats()` in `ui/app.js` on
-21 September 2026. This is a design comparison; no UI integration is enabled.
+21 September 2026. The Overview implements this grouping through card highlights.
 A card can be related to an attribute without being an input to its score.
 
 | Attribute | Existing overview cards that represent score inputs | Related cards that are not established score inputs |
@@ -371,18 +383,51 @@ Spread Recovery in Attachment Effects also have no established independent term
 in these scores. Recoil Direction and standing ADS Spread remain useful even
 though they are not current score inputs.
 
-### Display recommendation
+### Current display
 
-Keep the existing physical-stat groups and add a compact Weapon Attributes row
-above them. Selecting an attribute can highlight its contributing cards and open
-an explanation with any missing inputs. This avoids duplicating recoil cards
-between Precision and Control or hiding damage/ammo/concealment information.
-Label related context separately from score inputs. If cards must be placed under
-the four bars, put recoil amount/variation primarily under Control and link them
-from Precision; put moving ADS Spread under Mobility and stationary ADS Spread
-under Precision as context. Split the existing paired ADS Spread card first.
+The Overview shows a compact Weapon Attributes strip above the physical-stat
+cards. It updates both loadouts from their selected attachments. Scores use the
+same gold/blue loadout colors as the other cards. Selecting an attribute toggles
+highlights on related cards; hovering exposes the input explanation. There is no
+permanent explanation row. Missing model results display `Unavailable`.
 
-Use a short note: these are game menu scores, not percentages. Add Recoil Duration,
-full Recoil Recovery and Can Fire While Sprinting to attribute details before
-considering more overview cards. Keep the source tier indices in an advanced
-explanation. No UI layout or implementation is authorized by this comparison.
+The existing card groups remain intact. Precision and Control share recoil
+inputs; Mobility highlights the paired ADS Spread card for its moving value and
+ADS Time as related context. The score uses a separate ADS animation input.
+Recoil duration, full
+recoil recovery and sprint-fire permission are not separate Overview cards.
+
+### Equipped burst panel correction
+
+Equipped/hover captures corrected an earlier GRT-BC prediction of 36 and resolved
+five SL9 lookup gaps. For GRT-BC and SL9, Precision and Control use
+recoil inputs resolved without the burst selector, while retaining selected RPM
+and other attachments. Results match GRT-BC 26/37 and SL9 78/55; Compensated Brake
+hover gives 27/40 and 80/59. The simulator keeps its source burst recoil modifiers.
+This is an observed panel-input rule, not a decoded native provider. The repeated
+71,166-build pair scan returns no missing Precision values.
+See [capture evidence](../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
+
+## Burst Training follow-up
+
+KORD equipped Burst Training retains 40/33/55/52. SG 553R and PW5A3 hover
+captures retain 47/23/37/60 and 47/35/53/68. The panel rule now covers these
+weapons; equipped parity on the latter two remains unverified. M16 A3 remains
+separate: its preview changes Precision 27 to 24 and Control 41 to 39 while
+variation stays 29.2 degrees. Regression tests cover all eight new panels.
+
+The three-slot coverage scan returns scores for 866,440 normalized builds within
+100 points, with zero missing Precision results. This is lookup availability,
+not screenshot validation or exhaustive full-loadout coverage.
+
+The saved Frosty assumption trace distinguishes direct Linear Comp selection
+from burst recoil behind a nested fire-mode selector (mask 8). Both conversion
+assets carry -1 amount and +3 variation tiers; burst adds +1 amount (GRT-BC +2).
+A panel consumer may omit the nested selector. Misactivation during firing is
+still a hypothesis, not an established attachment bug.
+
+The GRT-BC firing tests did not consistently show the predicted variation benefit.
+This remains a [suspected attachment bug](ATTACHMENT_BUGS.md#14-grt-bc-burst-mode-recoil-variation-may-not-apply-during-firing),
+not a confirmed reason to remove source modifiers from the firing simulation.
+The [archived release check](archive/WEAPON_ATTRIBUTES_RELEASE_CHECK.md) records
+validation and the superseded investigation checkpoints.

@@ -214,7 +214,7 @@ on 13 September to document these without model changes.
 The Precision tables are in `GlacierGameConfiguration/settings`
 ([field map](FIELD_MAP.md#composite-stat-tables-glaciergameconfigurationsettings),
 [report](../../reference-data/provenance/frosty-precision-tables-2026-09-14.json)).
-The investigation is in [composite stats findings](../working/COMPOSITE_STATS_FINDINGS.md).
+The investigation is in [composite stats findings](../archive/COMPOSITE_STATS_FINDINGS.md).
 
 ## Evidence
 
@@ -244,5 +244,4 @@ Control uses unrounded ADS recoil amount and variation; Precision uses per-weapo
 ADS movement and moving-ADS dispersion indices, plus sprint-fire permission.
 The 160 current panels match all four displayed values (640 values), including
 12 combined-loadout panels. This is sampled menu validation, not proof of every
-loadout or gameplay behavior. Historical captures remain separate. Production
-bar integration is on hold.
+loadout or gameplay behavior. Historical captures remain separate. The site now calculates and displays these bars for both loadouts.

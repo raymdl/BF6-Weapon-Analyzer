@@ -43,6 +43,7 @@ Site status uses one of these values, followed by the value that the site applie
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
 | 12 | Standard Suppressor | L115 | Game error (source binding omission) | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Does not match game panel: generic hipfire penalty applied |
 | 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
+| 14 | Burst Mode | GRT-BC | Suspected game error | Menu recoil values remain unchanged; firing tests do not consistently show the expected variation reduction. Gameplay failure is not proven. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -99,7 +100,7 @@ classification was a site interpretation error; see 1b.
   six rifles: ADS time +1, sprint recovery −1, deploy −1, ADS move speed 0.
 - **In-game.** Mini Scout, Interdictor and L115 stat panels are identical for Slim
   and Full Angled. The Mobility candidate weights the moving-ADS index ×4
-  ([composite findings](working/COMPOSITE_STATS_FINDINGS.md#mobility)). No clamp
+  ([composite findings](archive/COMPOSITE_STATS_FINDINGS.md#mobility)). No clamp
   applies: all six rifles start at tier 3 (0.32°). Control: M2010 ESR Mobility is
   52 with Slim Angled and 48 with Full Angled (one index step).
 - **Captures (14 September).** ADS strafing HUD bracket outer width in pixels:
@@ -293,6 +294,52 @@ classification was a site interpretation error; see 1b.
   retains its existing seven-step override. For multiplier 0.94, the increases
   are approximately 6.38%, 44.95% and 54.21% for one, six and seven steps.
 - **Source.** [Tungsten Core trace](../reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json).
+
+### 14. GRT-BC Burst Mode recoil variation may not apply during firing
+
+- **Status.** Suspected game error, recorded 21 September 2026. The firing tests are inconclusive about whether the variation modifier applies.
+  The earlier best guess that it was inactive was too strong: the measurements
+  did not isolate variation from the weapon's mean recoil direction.
+- **Source expectation.** Frosty binds Burst Mode to recoil conversion and a
+  recoil amount package. Together these give +3 variation steps and +1 amount
+  step. Linear Comp gives +3 variation steps and −1 amount step. If both packages
+  apply and stack, the model predicts these ADS values:
+
+  | GRT-BC setup | Recoil amount | Recoil variation |
+  | --- | ---: | ---: |
+  | No muzzle, no Burst Mode | 0.807° | 26.100° |
+  | Linear Comp, no Burst Mode | 0.859° | 20.237° |
+  | No muzzle, Burst Mode | 0.759° | 20.237° |
+  | Linear Comp, Burst Mode | 0.807° | 15.691° |
+
+- **Confirmed menu behavior.** Equipping Burst Mode leaves Precision at 26,
+  Control at 37, recoil amount at 0.8°, and recoil variation at 26.1° in the
+  supplied GRT-BC captures. Linear Comp changes the displayed variation to 20.2°.
+- **Trace limit.** The burst recoil packages use a nested fire-mode selector;
+  Linear Comp uses a direct muzzle selector. The traced burst references and
+  selector mask agree. No broken reference was found. This does not establish
+  whether the menu or firing runtime evaluates the nested selector correctly.
+- **Firing evidence.** Tests at 20 m compare all four setups, including isolated
+  three-round groups and five 30-round strings per setup. The operator confirmed
+  the same stance, no compensation, and full recovery between strings. The later
+  full-auto control used 180 ms mouse-down and 70 ms mouse-up. The results do not
+  show a consistent additional variation reduction from Burst Mode. Some short
+  group widths are compatible with the predicted benefit, but the sustained
+  comparisons do not consistently support it. Overlapping impacts, spread,
+  recoil recovery, and unverified actual shot timing limit the inference.
+  The predictions included the GRT-BC's 16° mean recoil direction, but measured
+  horizontal widths were not corrected for that lean. Pattern width is not a
+  direct measurement of recoil variation in degrees. The corrected fixed-direction
+  analysis remains inconclusive; see the [full pattern review](working/GRTBC_RECOIL_PATTERN_REVIEW.md).
+- **Site.** The Weapon Attributes calculation reproduces the observed menu
+  behavior by excluding Burst Mode recoil changes from the GRT-BC score inputs.
+  The firing simulation retains the source modifiers pending stronger evidence.
+  Do not treat this suspected gameplay bug as a confirmed correction to those
+  modifiers or extend it to other weapons from these tests alone.
+- **Evidence files.** Source and panel inputs:
+  [burst panel trace](../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
+  Local measurement artifacts are under `outputs/burst-factorial-analysis/`
+  and `outputs/burst-cadence-comparison/`; these ignored outputs are not shipped.
 
 ## Description errors
 

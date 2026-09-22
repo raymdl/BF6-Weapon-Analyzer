@@ -18,6 +18,9 @@ import { createShareCodec, TARGET_DEFAULT_DISTANCE } from '../sim/share-state.js
 import { drawTarget, targetAimOffset, targetFrame, targetMarkerRadius, whenTargetImageReady } from '../sim/target.js';
 import { flightTimeAtDistance, isProjectileModel, zeroRelativeVerticalOffset } from '../sim/ballistics.js';
 
+import { createWeaponAttributeModel } from '../sim/weapon-attributes.js';
+import { renderWeaponAttributes } from './weapon-attributes.js';
+
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
 
 async function fetchJson(url) {
@@ -29,9 +32,10 @@ async function fetchJson(url) {
 const reportDataError = createDataErrorNotice();
 setDataErrorReporter(reportDataError);
 
+let _weaponAttributes;
 let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips;
 try {
-  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips] = await Promise.all([
+  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips, _weaponAttributes] = await Promise.all([
     fetchJson('./data/weapons.json').then(r => r.json()),
     fetchJson('./data/recoil_decay.json').then(r => r.json()),
     fetchJson('./data/balance_tables.json').then(r => r.json()),
@@ -40,6 +44,7 @@ try {
     fetchJson('./data/ballistics.json').then(r => r.json()),
     fetchJson('./data/hit_zones.json').then(r => r.json()),
     fetchJson('./data/attachment-tooltips.json').then(r => r.json()),
+    fetchJson('./data/weapon_attributes.json').then(r => r.json()),
   ]);
   for (const weapon of W) {
     validateWeaponSimulation(weapon);
@@ -71,6 +76,8 @@ const LOADOUT_DATA = {
   AMMO, WEAPON_AMMO, WEAPON_ATTS,
   ATTACHMENT_TOOLTIPS: _attachmentTooltips,
 };
+
+const calculateWeaponAttributes = createWeaponAttributeModel({ balance: _balance, catalogs: LOADOUT_DATA, attributes: _weaponAttributes });
 
 const byId = items => Object.fromEntries(items.map(a => [a.id, a]));
 
@@ -871,6 +878,8 @@ function renderOverview() {
     });
     grid.appendChild(row);
   }
+
+  renderWeaponAttributes(grid, state, calculateWeaponAttributes);
 
 }
 

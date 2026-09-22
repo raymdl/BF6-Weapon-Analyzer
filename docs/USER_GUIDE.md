@@ -54,6 +54,13 @@ it and returns focus to the opener.
 
 ## Overview and attachment effects
 
+The Weapon Attributes strip shows **Hipfire, Precision, Control and Mobility**
+for each selected loadout. Scores update when you change attachments. Gold is
+loadout 1; blue is loadout 2. Select an attribute to highlight its related stat
+cards, and hover for its input explanation. These are game ratings, not percentages.
+`Unavailable` means the model has no verified result for that combination.
+See the [model guide](WEAPON_ATTRIBUTES_MODEL.md) for calculation and validation limits.
+
 Overview groups combat, ammunition, mobility, recoil, spread, and concealment
 statistics. The attachment-effects breakdown compares values with the default
 build. Favorable indicators follow each stat's direction: higher damage/velocity,

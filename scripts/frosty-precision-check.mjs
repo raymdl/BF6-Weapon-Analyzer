@@ -84,6 +84,8 @@ for (const record of audit.records) {
   if (!weapon || !table) { rows.push({ weapon: record.weapon, outcome: 'no-table' }); continue; }
   const atts = {};
   resetAttsForWeapon(atts, weapon, catalogs);
+  // Explicit full loadouts are used by paired capture audits.
+  Object.assign(atts, record.loadout ?? {});
   const [slot, id] = identityCorrections.get(record.path) ?? record.identityCandidates?.[0] ?? [];
   if (slot) atts[slot] = id;
   // Rail-slot weapons (VZ. 61 grips; lasers and lights on ten weapons) select through atts.rail.

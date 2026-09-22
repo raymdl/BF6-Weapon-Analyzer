@@ -1,5 +1,11 @@
 # Composite stats findings
 
+> Archived 21 September 2026. This is a completed research record, not the current implementation specification.
+> Use the [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md) for current behavior and
+> [Frosty open questions](../frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up) for remaining research.
+> Earlier hold/pending statements and capture instructions below are historical. The runtime now matches 640 values from 160 current panels.
+
+
 Use **Weapon Attributes** (the game's terminology) for new documentation. The
 current [Weapon Attributes model guide](../WEAPON_ATTRIBUTES_MODEL.md) explains
 the four bar attributes. This file retains its historical name and dated findings.

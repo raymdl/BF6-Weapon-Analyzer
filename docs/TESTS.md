@@ -27,6 +27,12 @@ whether reference files are published. Evidence links are not browser imports.
 
 ## Product test inventory
 
+`weapon-attributes.test.mjs` checks all four runtime scores against the three
+current panel ledgers (131 + 17 + 12 panels, 640 values), and checks that a missing
+Precision table returns no score. It reads committed JSON evidence, not images.
+The 21 September integration passed 108 tests; this is a dated checkpoint, not a
+fixed suite-size requirement. All 63 default weapons returned four scores.
+
 All paths in this table are under `scripts/`.
 
 | Test file | Distinct behavior protected |
