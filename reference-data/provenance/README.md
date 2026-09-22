@@ -62,3 +62,19 @@ integration they motivated. Preserve those hashes when the current files change.
 are not all present in a clean checkout. Narrative context is preserved in the
 [research archive](../../docs/archive/README.md); screenshot-audit JSON/workbook and its
 separate validator live in the [attachment audit package](../attachment-audit/README.md).
+
+## Weapon Attributes — 21 September 2026
+
+Current behavior and evidence links are maintained in the
+[Weapon Attributes model](../../docs/WEAPON_ATTRIBUTES_MODEL.md). Completed
+research and the A/B capture plan are indexed in the
+[documentation archive](../../docs/archive/README.md#weapon-attributes--21-september-2026).
+Versioned extraction files, capture results and hashes stay here as evidence;
+they are not active task lists. `data/weapon_attributes.json` is the runtime
+subset of the Precision tables, shotgun angles and Mobility inputs. The browser
+does not fetch this provenance directory.
+
+[Corrected GRT-BC direction review](grtbc-direction-review-2026-09-21.json) retains
+measured comparisons, model hypotheses, and source-image hashes. The
+[analysis report](../../docs/working/GRTBC_RECOIL_PATTERN_REVIEW.md) explains why
+burst gameplay activation remains unresolved.

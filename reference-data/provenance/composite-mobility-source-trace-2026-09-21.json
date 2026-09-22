@@ -1,0 +1,467 @@
+{
+  "date": "2026-09-21",
+  "sourceVersion": "1.4.3.0",
+  "registry": {
+    "L115A3_WB.WeaponZoomTransitionIndex.Index": 1,
+    "L115A3_WB.AnimationZoomSettingsIndex.Index": 2,
+    "GS_L115A3.MovingZoomedMinAnglesArrayIndex": 3,
+    "GS_185KSK.MovingZoomedMinAnglesArrayIndex": 3
+  },
+  "attachmentGraph": [
+    {
+      "weapon": "L115A3",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_BasicBarrel.xml",
+      "attachmentGuid": "e64c5fe8-f878-4c92-9926-83c4bdacf949",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Barrel",
+        "guid": "9c0ba746-e08b-4fe8-8dad-ed7c63fdcc8c"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/BoltAction/L115A3/U_PRG_L115A3_BRL_BasicBarrel",
+        "guid": "680701ab-614d-4138-a5a6-aba9b8c1062d"
+      },
+      "rawPointCost": "0x0000000a",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+          "guid": "58e4d1e5-9159-4412-b727-660b373174c0",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Barrel",
+            "guid": "941cb5ad-f4f8-4e30-af26-2e618582343a"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+              "guid": "2c293e5b-23b2-40ba-91dc-547e7e55a114",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10",
+                    "guid": "f7b59868-d8c2-489e-927b-6f5bb375245f"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10.xml",
+                      "guid": "17841af6-c296-4bcd-9cd1-5857d6bc4b5b",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml",
+                      "path": "/File[@Guid='0f271a93-5501-45df-93dc-027bc0d19628']/Class_539cff9b[@Guid='c725aad1-0a7f-4364-8b39-4ff263ee974f']/Field_4d248d91/member[@Index='0']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10",
+                        "guid": "504e3508-f31c-4f06-ad75-5c93bd312fc8"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10 [504e3508-f31c-4f06-ad75-5c93bd312fc8]",
+                      "rawBranch": "0x00000001"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+              "guid": "993ab545-0f7d-47b5-864b-a8fe2074a9b4",
+              "name": "U_PRG_L115A3_BRL_BasicBarrel",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "L115A3",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_LightBarrel.xml",
+      "attachmentGuid": "2337e067-d93d-4ca9-96d6-0e845c618912",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_Barrel",
+        "guid": "9c0ba746-e08b-4fe8-8dad-ed7c63fdcc8c"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/BoltAction/L115A3/U_PRG_L115A3_BRL_LightBarrel",
+        "guid": "935d3b3f-491c-4af7-a3c5-f720fbe72805"
+      },
+      "rawPointCost": "0x00000014",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+          "guid": "ffcd5968-bff7-4f4b-91ac-d020c34289a4",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_Barrel",
+            "guid": "941cb5ad-f4f8-4e30-af26-2e618582343a"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+              "guid": "b495a599-5787-47ac-9799-35baa02bb43c",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Fluted_W20",
+                    "guid": "eb5b8519-a150-4b88-b85c-5de6f8bec73c"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Fluted_W20.xml",
+                      "guid": "5e660fad-25f2-4a05-b855-35892187bcd6",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_P10.xml",
+                          "guid": "270b8161-bfc2-416b-8809-0c61111980aa",
+                          "type": "Class_c42bd53b"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml",
+                      "path": "/File[@Guid='0f271a93-5501-45df-93dc-027bc0d19628']/Class_539cff9b[@Guid='c725aad1-0a7f-4364-8b39-4ff263ee974f']/Field_2ffeb6ac/member[@Index='0']/Struct_28529b7f",
+                      "type": "Struct_28529b7f",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BRL_P10",
+                        "guid": "d4f7dd92-c069-4dea-bcf0-22c6b836b21a"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BRL_P10 [d4f7dd92-c069-4dea-bcf0-22c6b836b21a]",
+                      "rawBranch": "0x00000001"
+                    },
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml",
+                      "path": "/File[@Guid='0f271a93-5501-45df-93dc-027bc0d19628']/Class_539cff9b[@Guid='c725aad1-0a7f-4364-8b39-4ff263ee974f']/Field_4d248d91/member[@Index='1']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10",
+                        "guid": "504e3508-f31c-4f06-ad75-5c93bd312fc8"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10 [504e3508-f31c-4f06-ad75-5c93bd312fc8]",
+                      "rawBranch": "0x00000002"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+              "guid": "98c7936b-968f-4b51-a707-875531665c49",
+              "name": "U_PRG_L115A3_BRL_LightBarrel",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "L115A3",
+      "attachmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_BTGrippodQDBOLT.xml",
+      "attachmentGuid": "039c8c6b-dac0-43d9-84a7-4607e3a49ed5",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_BottomRail",
+        "guid": "0cfdddf3-fe4a-4f42-8929-da71a86af1d8"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/BoltAction/L115A3/U_PRG_L115A3_BTM_BTGrippodQDBOLT",
+        "guid": "a146683a-f5b5-4403-b670-6f64528b68bc"
+      },
+      "rawPointCost": "0x0000000a",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+          "guid": "696dabff-c4ae-4fa7-a898-78e6bd612b5b",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_BottomRail",
+            "guid": "cfb420dc-bd25-49c7-ac6e-69894145cc6e"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/L115A3_Ability.xml",
+              "guid": "014588b0-d7f4-4116-b83c-aedebb8df13c",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/U_WPM_BTM_GripPodBOLT01_W10",
+                    "guid": "56fdfceb-7978-4a63-960c-bb233a9cd729"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/GripPod/WPM_BTM_GripPodBOLT01_W10.xml",
+                      "guid": "b21d57f0-1ad7-4185-bf73-e72713af5d0e",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Bipod/WME_EnableMountUp.xml",
+                          "guid": "c6f42158-5bc1-45e9-9a9c-03a4f63cd2cf",
+                          "type": "Class_d79973ba"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Bipod/WME_BipodTag.xml",
+                          "guid": "4bc07861-0b58-49cc-b7c6-918a3c2f37cb",
+                          "type": "Class_936532d0"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_M10.xml",
+                          "guid": "961d6549-1638-4249-bf1a-b3ede5a825e9",
+                          "type": "Class_c42bd53b"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml",
+                      "path": "/File[@Guid='0f271a93-5501-45df-93dc-027bc0d19628']/Class_539cff9b[@Guid='c725aad1-0a7f-4364-8b39-4ff263ee974f']/Field_b53510be/member[@Index='1']/Struct_039fa9f3",
+                      "type": "Struct_039fa9f3",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20",
+                        "guid": "06e4b5c7-588a-45c7-8c24-3a91aef8468c"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20 [06e4b5c7-588a-45c7-8c24-3a91aef8468c]",
+                      "rawBranch": "0x00000002"
+                    },
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml",
+                      "path": "/File[@Guid='0f271a93-5501-45df-93dc-027bc0d19628']/Class_539cff9b[@Guid='c725aad1-0a7f-4364-8b39-4ff263ee974f']/Field_4d248d91/member[@Index='5']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BTM_P10",
+                        "guid": "34604843-7783-4fed-8653-7a0145182105"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BTM_P10 [34604843-7783-4fed-8653-7a0145182105]",
+                      "rawBranch": "0x00000007"
+                    },
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml",
+                      "path": "/File[@Guid='0f271a93-5501-45df-93dc-027bc0d19628']/Class_539cff9b[@Guid='c725aad1-0a7f-4364-8b39-4ff263ee974f']/Field_2296f84f/member[@Index='5']/Struct_3e61171a",
+                      "type": "Struct_3e61171a",
+                      "modifier": {
+                        "asset": "Common/Hardware/Weapons/_WeaponModifiers/Grippod/GRM_GrippodDeployed_BTM_P30",
+                        "guid": "e0b7dbb3-07fd-4188-8ff4-c433a470d663"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Grippod/GRM_GrippodDeployed_BTM_P30 [e0b7dbb3-07fd-4188-8ff4-c433a470d663]",
+                      "rawBranch": "0x0000000a"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.xml",
+              "guid": "7624a6dd-9f39-4f1d-86ab-b2740146d425",
+              "name": "U_PRG_L115A3_BTM_BTGrippodQDBOLT",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "weapon": "185KSK",
+      "attachmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_BTM_Magpul_AFG.xml",
+      "attachmentGuid": "443afe72-ed9d-41f9-b7b5-ec94b8293b26",
+      "category": {
+        "asset": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_BottomRail",
+        "guid": "0cfdddf3-fe4a-4f42-8929-da71a86af1d8"
+      },
+      "progression": {
+        "asset": "Common/Hardware/Weapons/Shotgun/185KSK/U_PRG_185KSK_BTM_MagpulAFG",
+        "guid": "0f8ef1f8-6aa9-47b2-86d5-4f913f0039d2"
+      },
+      "rawPointCost": "0x00000019",
+      "branches": [
+        {
+          "abilityXml": "Common/Hardware/Weapons/Shotgun/185KSK/185KSK_Ability.xml",
+          "guid": "17aaf490-f034-413f-857b-5048ff6c3b7c",
+          "slot": {
+            "asset": "Common/Hardware/Weapons/_SlotCategories/SC_BottomRail",
+            "guid": "cfb420dc-bd25-49c7-ac6e-69894145cc6e"
+          },
+          "actions": [
+            {
+              "sourceXml": "Common/Hardware/Weapons/Shotgun/185KSK/185KSK_Ability.xml",
+              "guid": "a69c752f-5407-4ec2-b299-974773e4272f",
+              "type": "Class_4ed159fb",
+              "selectors": [
+                {
+                  "unlock": {
+                    "asset": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/U_WPM_BTM_Fast02_W25",
+                    "guid": "16a53347-b933-4477-b59f-cab04b32f001"
+                  },
+                  "wbModifiers": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/Fast/WPM_BTM_Fast02_W25.xml",
+                      "guid": "b9349396-58ea-4a71-bde3-29a9fe1c8d0b",
+                      "effects": [
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml",
+                          "guid": "fa6ff00e-afd6-414e-b767-22cdd98fb096",
+                          "type": "Class_104c2294"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml",
+                          "guid": "c157bb27-c8f5-4771-a55e-32eac1033174",
+                          "type": "Class_016623ac"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05.xml",
+                          "guid": "1955c72d-e5a2-448a-8444-9181cd095ee4",
+                          "type": "Class_4aac041b"
+                        },
+                        {
+                          "sourceXml": "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05.xml",
+                          "guid": "b66c5803-07dd-46d4-901b-1a97928885ca",
+                          "type": "Class_03db7a68"
+                        }
+                      ]
+                    }
+                  ],
+                  "gsBindings": [
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/Shotgun/185KSK/GS_185KSK.xml",
+                      "path": "/File[@Guid='33106f44-2fbe-485e-ab2e-a197bd811b07']/Class_539cff9b[@Guid='ba12aded-8d09-44c9-be12-703015dd1554']/Field_b30a73ed/member[@Index='7']/Struct_a92e7ee4",
+                      "type": "Struct_a92e7ee4",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BTM_M10",
+                        "guid": "87f5c4cb-3113-450d-8ad9-7c686fa0175f"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSMoveDispersion/GDM_Array_ADSMoveDispersion_BTM_M10 [87f5c4cb-3113-450d-8ad9-7c686fa0175f]",
+                      "rawBranch": "0x00000008"
+                    },
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/Shotgun/185KSK/GS_185KSK.xml",
+                      "path": "/File[@Guid='33106f44-2fbe-485e-ab2e-a197bd811b07']/Class_539cff9b[@Guid='ba12aded-8d09-44c9-be12-703015dd1554']/Field_4d248d91/member[@Index='6']/Struct_7693becb",
+                      "type": "Struct_7693becb",
+                      "modifier": {
+                        "asset": "Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BTM_P10",
+                        "guid": "34604843-7783-4fed-8653-7a0145182105"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BTM_P10 [34604843-7783-4fed-8653-7a0145182105]",
+                      "rawBranch": "0x00000007"
+                    },
+                    {
+                      "sourceXml": "Common/Hardware/Weapons/Shotgun/185KSK/GS_185KSK.xml",
+                      "path": "/File[@Guid='33106f44-2fbe-485e-ab2e-a197bd811b07']/Class_539cff9b[@Guid='ba12aded-8d09-44c9-be12-703015dd1554']/Field_2296f84f/member[@Index='12']/Struct_3e61171a",
+                      "type": "Struct_3e61171a",
+                      "modifier": {
+                        "asset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P10",
+                        "guid": "cbd20a2b-4242-49e5-a4b7-3db9e2b09d14"
+                      },
+                      "modifierRaw": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_BTM_P10 [cbd20a2b-4242-49e5-a4b7-3db9e2b09d14]",
+                      "rawBranch": "0x0000000d"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "activation": "unresolved; branch presence is not proof of runtime availability",
+          "killswitch": {
+            "localFallbackRaw": "False",
+            "registry": {
+              "sourceXml": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.xml",
+              "guid": "1130ea55-a04e-4906-b7d7-a7564e72780b",
+              "name": "U_PRG_185KSK_BTM_MagpulAFG",
+              "defaultRaw": "False",
+              "scope": "exported default only; live overrides and activation logic are not evaluated"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml": "6773809e2927c7266523ab354044cbd3945d6bd01ed9482c2f36d40db86cb03b",
+    "Common/Hardware/Weapons/BoltAction/L115A3/GS_L115A3.xml": "ebe68c3464094b4606385f7505838e83bcd5ffd2264b385cf8a35902a1e96a0f",
+    "Common/Hardware/Weapons/Shotgun/185KSK/GS_185KSK.xml": "6d30b94ad4d97ed7164e6cb5103344d4b739b589d7dfb0d0a3367401dc35de7f",
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_BasicBarrel.xml": "404a878d6a0fc74ac673e83de5d3bb5bd944d17c4762bb2f5e87aeaee7fa1907",
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BRL_LightBarrel.xml": "04f68ebabc1f382ec8c7f2833e5461d82a79338849460d831e4312af76de8e0d",
+    "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_BTM_BTGrippodQDBOLT.xml": "f00786552e3b7ad4b74d676c8bd0f3092f35523da6dcea490c13f54913530e7f",
+    "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_BTM_Magpul_AFG.xml": "114ee43965a24362de51a472eee8027a8e11ab7994e52ad37c34c0914afe165a"
+  },
+  "interpretation": {
+    "l115Baseline": "Mobility names AnimationZoomSettingsIndex, whose base is 2. The resolver ADS time uses transition base 1. Difference contributes four panel points.",
+    "l115QdGripPod": "No moving-ADS dispersion binding for its selector. Generic site penalty is not supported for this weapon.",
+    "ks18kSlimAngled": "Penalty binding is in Field_b30a73ed (Struct_a92e7ee4), not the moving-ADS binding collection Field_2ffeb6ac (Struct_28529b7f). Do not classify its target solely from the modifier filename. Runtime effect of the other collection remains unverified."
+  },
+  "researchInputs": {
+    "l115": {
+      "animationZoomBaseIndex": 2,
+      "zoomTransitionBaseIndex": 1,
+      "movingAdsGripShifts": {
+        "qd_grip_pod_sr": 0
+      }
+    },
+    "ks18k": {
+      "movingAdsGripShifts": {
+        "slim_angled": 0
+      }
+    }
+  },
+  "limits": "Research panel-input validation. L115 QD Grip Pod unbound moving-ADS penalty removed in production. Alternate KS collection target semantics and runtime effect remain unverified.",
+  "siteIntegration": {
+    "l115QdGripPod": "Production movingAdsSpreadTierMod override set to 0 on 2026-09-21; ADS-time benefit preserved.",
+    "ks18kSlimAngled": "Production unchanged; alternate field gameplay effect unresolved."
+  },
+  "sdkFieldMetadata": {
+    "Field_b30a73ed": {
+      "fieldIndex": 18,
+      "offset": 1528,
+      "elementType": "Struct_a92e7ee4"
+    },
+    "Field_2ffeb6ac": {
+      "fieldIndex": 19,
+      "offset": 1536,
+      "elementType": "Struct_28529b7f"
+    },
+    "limitation": "Reflected SDK fields expose hashes, types and offsets, but no semantic display names."
+  }
+}

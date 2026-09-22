@@ -22,6 +22,19 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('L115 QD Grip Pod preserves moving ADS spread while improving ADS time', () => {
+  const w = weapon('l115');
+  for (const changes of [{}, { barrel: 'light', laser: '50mw_violet' }]) {
+    const base = build(w, changes);
+    const pod = build(w, { ...changes, grip: 'qd_grip_pod_sr' });
+    assert.deepEqual(pod.spread.adsMove, base.spread.adsMove);
+    assert.ok(pod._adsTimeMs < base._adsTimeMs);
+  }
+  // M2010 has a separate moving-ADS binding; the correction is not class-wide.
+  const other = weapon('m2010esr');
+  assert.ok(build(other, { grip: 'qd_grip_pod_sr' }).spread.adsMove[0] > build(other).spread.adsMove[0]);
+});
+
 test('screenshot-backed sidearm brakes retain their name with source-specific cost and sway', () => {
   for (const id of ['p18', 'es57', 'm45a1', 'ggh22', 'vz61']) {
     const w = weapon(id);
@@ -692,7 +705,7 @@ test('Mini Scout Tungsten and selected Slim Angled grips apply the approved sour
   const result = build(w, { ammo: 'penetration', muzzle: 'none', grip: 'none' });
   assert.equal(result.recoil.hip.amountExp, w.recoil.hip.amountExp - 7);
   assert.equal(result.recoilV, Math.round(w.recoilV * balance.RECOIL_MULT[w.id] ** -7 * 1000) / 1000);
-  for (const [id, grip] of [['psr', 'slim_angled_sr'], ['sv98', 'slim_angled_sr'], ['ks18k', 'slim_angled'],
+  for (const [id, grip] of [['psr', 'slim_angled_sr'], ['sv98', 'slim_angled_sr'],
     ['l115', 'slim_angled_sr'], ['miniscout', 'slim_angled_sr'], ['interdictor', 'slim_angled_interdictor']]) {
     const w = weapon(id);
     const base = build(w, { grip: 'none', laser: 'none' });
@@ -700,5 +713,17 @@ test('Mini Scout Tungsten and selected Slim Angled grips apply the approved sour
     const index = balance.MOVING_ACC_TIERS.indexOf(base.spread.adsMove[0]);
     assert.equal(result.spread.adsMove[0], balance.MOVING_ACC_TIERS[Math.max(0, index - 1)]);
     assert.deepEqual(result.spread.adsStand, base.spread.adsStand);
+  }
+});
+
+test('18.5KS-K Slim Angled preserves ADS spread with and without Violet', () => {
+  const w = weapon('ks18k');
+  for (const laser of ['none', '50mw_violet']) {
+    const base = build(w, { grip: 'none', laser });
+    const slim = build(w, { grip: 'slim_angled', laser });
+    const stubby = build(w, { grip: 'fold_stubby', laser });
+    assert.deepEqual(slim.spread.adsMove, base.spread.adsMove);
+    assert.deepEqual(slim.spread.adsStand, base.spread.adsStand);
+    assert.ok(stubby.spread.adsMove[0] > base.spread.adsMove[0]);
   }
 });

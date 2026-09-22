@@ -214,7 +214,7 @@ on 13 September to document these without model changes.
 The Precision tables are in `GlacierGameConfiguration/settings`
 ([field map](FIELD_MAP.md#composite-stat-tables-glaciergameconfigurationsettings),
 [report](../../reference-data/provenance/frosty-precision-tables-2026-09-14.json)).
-The investigation is in [composite stats findings](../working/COMPOSITE_STATS_FINDINGS.md).
+The investigation is in [composite stats findings](../archive/COMPOSITE_STATS_FINDINGS.md).
 
 ## Evidence
 
@@ -234,3 +234,14 @@ The investigation is in [composite stats findings](../working/COMPOSITE_STATS_FI
 python scripts/frosty-ballistics.py --root '<Frosty export root>' --trace reference-data/provenance/frosty-hit-zones-<date>.json
 python scripts/frosty-global-operands.py --root '<Frosty export root>' --out reference-data/provenance/frosty-global-operands-<date>.json --grid <raw grid 1> --grid <raw grid 2> --descriptors '<runtime>/SharedTypeDescriptors.ebx'
 ```
+
+### Current Weapon Attributes model
+
+Use [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md) for the four menu bars:
+Hipfire uses its own dispersion ladder and an inferred increase-per-shot gate;
+Control uses unrounded ADS recoil amount and variation; Precision uses per-weapon
+1.4.3.0 lookup tables; Mobility weights deploy, ADS animation, sprint recovery,
+ADS movement and moving-ADS dispersion indices, plus sprint-fire permission.
+The 160 current panels match all four displayed values (640 values), including
+12 combined-loadout panels. This is sampled menu validation, not proof of every
+loadout or gameplay behavior. Historical captures remain separate. The site now calculates and displays these bars for both loadouts.

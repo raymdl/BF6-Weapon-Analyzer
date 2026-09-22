@@ -105,7 +105,7 @@ The reason for their disagreement and native timing remain open. The source arra
 **Attachment identity and activation.** A name match, selector candidate or nearby
 modifier is insufficient for promotion. Historical investigations retain unresolved
 mapping/activation questions, including angled-grip mappings and native composite
-stat consumers ([composite stats findings](working/COMPOSITE_STATS_FINDINGS.md)). Check those dated findings against the current implementation.
+stat consumers ([composite stats findings](archive/COMPOSITE_STATS_FINDINGS.md)). Check those dated findings against the current implementation.
 Magazine capacity alone cannot resolve attachment identity.
 
 **Global estimates.** The [Frosty weapon notes](frosty/WEAPONS.md)
@@ -163,3 +163,13 @@ loadout, relevant fields and units, source hashes, and predicted versus observed
 behavior. Separate identity, literal value, activation, and calculation claims.
 Promote supported changes and retain conflicting evidence. Update the relevant
 guide and a focused behavioral test. Preserve historical evidence.
+
+## Weapon Attributes
+
+The four-score runtime matches 640 values from 160 current panels. This is a
+sampled menu check, not proof of every combination or gameplay behavior.
+Precision returns unavailable for missing or ambiguous table rows. The Hipfire
+conditional factor and some native arithmetic remain inferred. The score-only
+L115 suppressor and PP19 Flash Comp exceptions do not correct their physical
+simulator cards. See the [current model](WEAPON_ATTRIBUTES_MODEL.md) and
+[open native questions](frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up).

@@ -12,7 +12,7 @@ or database.
 ```mermaid
 flowchart TD
     Page["index.html + styles + Chart.js"] --> App["ui/app.js"]
-    App --> Fetch["Promise.all: fetch eight live JSON files"]
+    App --> Fetch["Promise.all: fetch nine live JSON files"]
     Fetch --> Context["Indexes and calculation contexts"]
     Context --> Restore["Restore URL and loadout defaults"]
     Restore --> Build["Selected build: applyAttachments"]
@@ -21,8 +21,8 @@ flowchart TD
     Fetch -->|failure| Error["Visible load error; reload action"]
 ```
 
-The eight startup requests are `weapons.json`, `recoil_decay.json`,
-`balance_tables.json`, `attachments.json`, `ammo.json`, `ballistics.json`, `hit_zones.json`, and `attachment-tooltips.json` under
+The nine startup requests are `weapons.json`, `recoil_decay.json`,
+`balance_tables.json`, `attachments.json`, `ammo.json`, `ballistics.json`, `hit_zones.json`, `attachment-tooltips.json`, and `weapon_attributes.json` under
 `data/`. These are ordinary `fetch()` requests, not JSON module imports. A failed
 request rejects initialization. Provenance, reload-exception registers, reference
 workbooks, and raw Frosty exports are not browser dependencies. Required numeric
@@ -147,3 +147,12 @@ render/encoding failures produce an error state.
 `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are self-contained historical products.
 They are not imports for the current application. Keep maintenance in the live
 root unless correcting a defect specific to a historical page.
+
+## Weapon Attributes
+
+`sim/weapon-attributes.js` creates the four-score calculator from attachment
+catalogs, balance tables and `data/weapon_attributes.json`. `ui/app.js` calls
+`ui/weapon-attributes.js` during Overview rendering. Each selected loadout is
+resolved independently. The renderer owns compact score bars, tooltips and
+related-card highlights. No screenshot audit is fetched by the browser.
+See [the model guide](WEAPON_ATTRIBUTES_MODEL.md) for exceptions and unavailable results.

@@ -18,6 +18,17 @@ the [current provenance index](../provenance/README.md) for that separate eviden
 - `validate-reference.mjs` — explicit structural and consistency check.
 - `build-workbook.py` — regenerates the workbook from the canonical JSON.
 - `screenshot-stat-corrections-2026-09-17.json` — 439 screenshot-verified stat corrections applied to the canonical JSON, with screenshot paths and hashes.
+- `precision-screenshot-corrections-2026-09-17.json` — 23 Precision and 7 Hipfire/Control/Mobility readings re-read from screenshots during the composite-stat investigation; applied by `scripts/frosty-precision-check.mjs` and `scripts/frosty-composite-check.mjs` at load time, not to the historical audit file.
+- `composite-screenshot-corrections-2026-09-21.json` — blind Luna readings of 472 selected historical screenshots, with hashes and 385 further field corrections. Four Luna field errors were corrected by primary visual review.
+- `hipfire-screenshot-corrections-2026-09-21.json` — the preceding 12 primary-reviewed Hipfire corrections.
+- `composite-identity-corrections-2026-09-21.json` — two historical KTS100 image/attachment mapping corrections used by the research checkers.
+- `composite-current-panels-2026-09-21.json` — current 131-panel input for both research checkers (65 EF88, 64 BROD 3, 2 KTS100); overview screens excluded.
+- `current-capture-updates-2026-09-21.json` — replacement capture records, previous records, image hashes and rename paths. These changes are applied to the canonical JSON. Superseded local images remain in `Old` folders.
+
+Historical correction ledgers refer to the old image bytes, not newly captured replacements.
+The research checker defaults to the historical panel audit; `--audit PATH` selects a separate
+capture set. Do not apply historical corrections to new images merely because their basenames
+match. The workbook is a separately generated reference, not the canonical data source.
 
 `Weapon Attachments/` is the local sorted screenshot library used by the JSON paths and workbook
 links. Git ignores it because of its size. The completed OCR/correction workflow
@@ -25,6 +36,16 @@ and other intermediate material remain under `/.local-archive/2026-08-12-live-ba
 required by a clean clone, CI, deployment, or the live application.
 
 ## Run the ad-hoc check
+
+The second 21 September capture batch is recorded in
+[`remaining-capture-updates-2026-09-21.json`](remaining-capture-updates-2026-09-21.json):
+23 replacements, with 17 detail panels and six context-only overviews. Old images
+remain in `Old` folders. The research input is
+[`composite-remaining-panels-2026-09-21.json`](composite-remaining-panels-2026-09-21.json).
+Its Precision check uses the versioned 1.4.3.0 table; its Control check uses the
+source-traced sniper Tungsten Core operands. Results and hashes are in
+[`composite-remaining-results-2026-09-21.json`](../provenance/composite-remaining-results-2026-09-21.json).
+The canonical JSON is updated; the workbook is not regenerated.
 
 ```powershell
 node reference-data/attachment-audit/validate-reference.mjs

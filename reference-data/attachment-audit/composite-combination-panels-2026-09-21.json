@@ -1,0 +1,445 @@
+{
+  "date": "2026-09-21",
+  "scope": "Twelve paired full-loadout panels; previews explicitly retained. KS uses 4 Rnd Fast; VSSM uses user-confirmed 200 mm ASM Suppressed barrel.",
+  "records": [
+    {
+      "recordIndex": 0,
+      "label": "EF-A",
+      "weapon": "ef88",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/EF-A (Medium).png",
+      "sha256": "ed8d54fe8636f09d6b784616080cc566429c3cfe2497382626bbd7df0b107617",
+      "captureMode": "configured-loadout-panel",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "ribbed_vert",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 31
+        },
+        "control": {
+          "audit": 53
+        },
+        "mobility": {
+          "audit": 48
+        }
+      },
+      "displayedPoints": 55
+    },
+    {
+      "recordIndex": 1,
+      "label": "EF-B",
+      "weapon": "ef88",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/EF-B (Medium).png",
+      "sha256": "e6d9e2fcca3ba3a8ed7577c85e787adc5f687a9fb9ec475c1b14c5295ac453e0",
+      "captureMode": "configured-loadout-panel",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "ribbed_vert",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "penetration",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 30
+        },
+        "control": {
+          "audit": 50
+        },
+        "mobility": {
+          "audit": 48
+        }
+      },
+      "displayedPoints": 55
+    },
+    {
+      "recordIndex": 2,
+      "label": "HF-A",
+      "weapon": "ef88",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/HF-A (Medium).png",
+      "sha256": "b271e8212abf17615f8505f00d8dada0a3fb5e0ea1bd43487d144165b9a6a59a",
+      "captureMode": "configured-loadout-panel",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "std_supp",
+        "grip": "none",
+        "laser": "5mw_red",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      },
+      "displayedPoints": 55
+    },
+    {
+      "recordIndex": 3,
+      "label": "HF-B",
+      "weapon": "ef88",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/HF-B (Medium).png",
+      "sha256": "fc86d69dd3f33298d3aa65869c0b1db3723b089224394ff974aa987a978f66f7",
+      "captureMode": "configured-loadout-panel",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "std_supp",
+        "grip": "none",
+        "laser": "50mw_blue",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "30_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 56
+        }
+      },
+      "displayedPoints": 65
+    },
+    {
+      "recordIndex": 4,
+      "label": "L-A",
+      "weapon": "l115",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/L-A (Medium).png",
+      "sha256": "9c5564e05d137cb9a6bcc26e8ccefdd65883a4d49005b25a08cbdf12fcf5aa47",
+      "captureMode": "attachment-preview",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "none",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "light",
+        "ammo": "standard",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 12
+        },
+        "mobility": {
+          "audit": 54
+        }
+      },
+      "displayedPoints": 55,
+      "notes": "Both panels preview locked Violet; B has QD Grip Pod equipped."
+    },
+    {
+      "recordIndex": 5,
+      "label": "L-B",
+      "weapon": "l115",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/L-B (Medium).png",
+      "sha256": "9d42f13a683ee58c4bfcfd8d1dea73cd7cc41bc42cc04585bb73dad20994987b",
+      "captureMode": "attachment-preview",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "qd_grip_pod_sr",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "light",
+        "ammo": "standard",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 12
+        },
+        "mobility": {
+          "audit": 58
+        }
+      },
+      "displayedPoints": 65,
+      "notes": "Both panels preview locked Violet; B has QD Grip Pod equipped."
+    },
+    {
+      "recordIndex": 6,
+      "label": "KS-A",
+      "weapon": "ks18k",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/KS-A (Medium).png",
+      "sha256": "b882266168cc71fd4062c9e9411ae4ff003ab279f7b5994d8c4daf7faa730b99",
+      "captureMode": "configured-loadout-panel",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "none",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "buckshot",
+        "mag": "4_fast",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 42
+        },
+        "precision": {
+          "audit": 14
+        },
+        "control": {
+          "audit": 15
+        },
+        "mobility": {
+          "audit": 74
+        }
+      },
+      "displayedPoints": 45,
+      "notes": "User substituted 4 Rnd Fast; B previews locked Slim Angled on the equipped A build."
+    },
+    {
+      "recordIndex": 7,
+      "label": "KS-B",
+      "weapon": "ks18k",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/KS-B (Medium).png",
+      "sha256": "69c725dae254ed87f3d6d5da72e2f9da22d2a0e5fd64e55fc857aae8fede58fa",
+      "captureMode": "attachment-preview",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "slim_angled",
+        "laser": "50mw_violet",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "buckshot",
+        "mag": "4_fast",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 42
+        },
+        "precision": {
+          "audit": 14
+        },
+        "control": {
+          "audit": 16
+        },
+        "mobility": {
+          "audit": 80
+        }
+      },
+      "displayedPoints": 70,
+      "notes": "User substituted 4 Rnd Fast; B previews locked Slim Angled on the equipped A build."
+    },
+    {
+      "recordIndex": 8,
+      "label": "V-A",
+      "weapon": "vssm",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/V-A (Medium).png",
+      "sha256": "2dfe7963747226a2b22e44b6dc5e89223781f6adb50e2fbc76a724821d1a3a08",
+      "captureMode": "configured-loadout-panel",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "none",
+        "laser": "none",
+        "light": "none",
+        "barrel": "vssm_suppressed_asm",
+        "ammo": "range_pen",
+        "mag": "20_rnd",
+        "ergo": "full_auto_vssm"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 18
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 56
+        }
+      },
+      "displayedPoints": 80,
+      "notes": "User confirmed 20-point 200 mm ASM Suppressed barrel. B previews Folding Vertical while None remains equipped. Default Range Pen ammo retained from capture plan; displayed totals 80/90 agree."
+    },
+    {
+      "recordIndex": 9,
+      "label": "V-B",
+      "weapon": "vssm",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/V-B (Medium).png",
+      "sha256": "0e2652f78d5befea21acc59f9037a97639c6f66473c18d01b9c14d79da0eeee5",
+      "captureMode": "attachment-preview",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "none",
+        "grip": "fold_vert",
+        "laser": "none",
+        "light": "none",
+        "barrel": "vssm_suppressed_asm",
+        "ammo": "range_pen",
+        "mag": "20_rnd",
+        "ergo": "full_auto_vssm"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 19
+        },
+        "control": {
+          "audit": 42
+        },
+        "mobility": {
+          "audit": 52
+        }
+      },
+      "displayedPoints": 90,
+      "notes": "User confirmed 20-point 200 mm ASM Suppressed barrel. B previews Folding Vertical while None remains equipped. Default Range Pen ammo retained from capture plan; displayed totals 80/90 agree."
+    },
+    {
+      "recordIndex": 10,
+      "label": "S-A",
+      "weapon": "m2010esr",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/S-A (Medium).png",
+      "sha256": "561d18260e499aeddc23e4602b4b245a7439bad93ef675e81e03d25d392b5ffa",
+      "captureMode": "configured-loadout-panel",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "none",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "standard",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 27
+        },
+        "mobility": {
+          "audit": 46
+        }
+      },
+      "displayedPoints": 45
+    },
+    {
+      "recordIndex": 11,
+      "label": "S-B",
+      "weapon": "m2010esr",
+      "path": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/S-B (Medium).png",
+      "sha256": "1aee22ba09ab9228b70e9cc537199f98c61614ad1c5585e108fa3ed57bfefc5b",
+      "captureMode": "attachment-preview",
+      "identityStatus": "mapped",
+      "identityCandidates": [],
+      "loadout": {
+        "sight": "iron",
+        "muzzle": "dp_brake",
+        "grip": "none",
+        "laser": "none",
+        "light": "none",
+        "barrel": "basic",
+        "ammo": "penetration",
+        "mag": "5_rnd",
+        "ergo": "none"
+      },
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 17
+        },
+        "mobility": {
+          "audit": 46
+        }
+      },
+      "displayedPoints": 45
+    }
+  ],
+  "reviewMethod": "Primary visual review of all twelve images. Luna independently transcribed four EF88 panels with agreement. Unshown attachment identities use the user-agreed capture plan; VSSM barrel confirmed by user."
+}

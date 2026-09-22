@@ -13,7 +13,7 @@ known.
 Active investigations with their own files:
 
 - [Recoil and spread recordings](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md)
-- [Composite stats](../working/COMPOSITE_STATS_FINDINGS.md) (includes which native
+- [Composite stats](../archive/COMPOSITE_STATS_FINDINGS.md) (includes which native
   provider supplies Precision)
 
 ## Field meanings
@@ -47,7 +47,7 @@ Active investigations with their own files:
 |---|---|
 | Lights: native on/off activation and idle recovery | Same 6P67 build without a light, light off and light on; stationary and moving hip growth and recovery; ADS as a control. |
 | Sway and ADS: camera versus aim motion; VSSM regular barrel has a GS +1 ADS binding but no WB effect (site 250 ms on both barrels) | Keep the factory optic, magazine and barrel; measure VSSM ADS timing. |
-| Sniper Tungsten: pending −6 amount candidate on M2010 ESR, PSR and SV-98 (Mini Scout uses −7) | Recoil captures with and without Tungsten. |
+| Sniper Tungsten: intended balance across weapons remains unknown; source-specific −6/−1/−7 steps are now implemented and panel-checked | Further gameplay captures can test shot behavior; they cannot establish design intent. |
 | Slim Angled on L115, Mini Scout, Interdictor: does the second `GID_ADSTime_BTM_P10` binding stack? | Panels show one ADS tier ([bug 1a](../ATTACHMENT_BUGS.md#1a-sniper-rifles-full-angled-package-selected)). |
 | Order of several modifiers on one field | No record combines two operations, so it cannot be seen in the data. |
 | BROD 3 `TreatedBarrel` (label **Cryo**): offered in game? The site has no Cryogenic option | Check the BROD 3 barrel menu. |
@@ -93,3 +93,46 @@ Reopen only if a target body becomes available, a catalog resolves a GUID, the c
 pointers change, or a consumer can answer a specific question. Evidence:
 [GUID trace](../../reference-data/provenance/frosty-1.4.3.0-unresolved-guid-trace-2026-09-16.json);
 the 16 caller assets are indexed in `asset-findings.json`.
+
+## Weapon Attributes follow-up
+
+- `Field_b30a73ed` / `Struct_a92e7ee4`: exact runtime target remains unknown.
+  KS18K Slim Angled moving-ADS penalty is no longer pending: source collection,
+  menu score and twelve indicator captures support zero. Trace the native consumer
+  to name the alternate field; do not infer it from the modifier asset name.
+- Hipfire `IncreasePerShotFraction`: confirm the native comparison behind the
+  inferred conditional factor. Confirm the native Control sine operation and
+  zero-variation behavior. Precision native provider and all fallback rules remain
+  incompletely decoded.
+- Mobility uses ADS animation index, not necessarily the zoom-transition index.
+  L115 bases are 2 and 1 respectively. The runtime score now preserves this distinction.
+
+Current scope and evidence: [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md).
+
+### Burst recoil activation (21 September 2026)
+
+GRT-BC and SL9 captures show the same recoil values in the hover and equipped
+states. KORD also has an equipped capture with unchanged recoil. SG 553R and
+PW5A3 currently have hover evidence only. These observations do not establish
+recoil behavior during firing.
+
+The GRT-BC source chain resolves through `MSBSGROTB_WB.xml` objects
+`...0028` (unlock binding), `...001e` (behavior operation), `...0033`
+(behavior list), and `...0022` (fire-mode selector). The selector mask is
+`0x8`, equal to `1 << 3`; SDK enum `Enum_16e6fa59.Field_c57b586e` is 3,
+and the separate `WPM_ERG_BurstFireReplace_W10` operation selects that enum.
+The selector GUID `588728fd-2ae7-4424-aa22-45d9b3c82ba0` matches all three
+GS bindings: recoil conversion, recoil P20, and AutoIdentifier. No broken
+reference or mask mismatch was found in this chain.
+
+The shared `CMU_SemiAuto` uses the same selector class (`Class_9dfbb158`)
+with mask `0x1`. This supports interpreting the burst selector as a fire-mode
+condition. Linear Comp has direct attachment bindings instead. A menu provider
+that does not evaluate this condition could therefore show the changed mode
+list without applying burst recoil. This remains an explanation, not a confirmed
+native execution trace. XML and SDK field types do not show which mode state the
+menu provider evaluates or whether it evaluates these behavior lists at all.
+
+Next evidence needed: native menu-provider/selector execution, or a controlled
+firing comparison that separates actual recoil behavior from menu display.
+Do not classify this as a gameplay attachment failure from panel captures alone.

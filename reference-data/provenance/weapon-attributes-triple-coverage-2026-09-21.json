@@ -1,0 +1,8 @@
+{
+  "scope": "Unique normalized builds from every triple of slots on defaults, at most 100 points",
+  "checked": 866440,
+  "missing": [],
+  "groups": {},
+  "date": "2026-09-21",
+  "limits": "Normalized unique builds generated from up to three selected slots within 100 points. Coverage tests row availability, not agreement with game panels. Not exhaustive full-loadout coverage."
+}

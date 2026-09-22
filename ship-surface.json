@@ -16,7 +16,8 @@
     "data/ballistics.json",
     "data/hit_zones.json",
     "data/recoil_decay.json",
-    "data/weapons.json"
+    "data/weapons.json",
+    "data/weapon_attributes.json"
   ],
   "publishedArchives": [
     "v1.2.3.0/",

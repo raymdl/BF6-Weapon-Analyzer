@@ -1,0 +1,300 @@
+{
+  "date": "2026-09-21",
+  "method": "Red indicator bounds in ROI x=[640,724), y=[365,401); R > threshold, R > 1.5G, R > 1.5B. Span is right minus left, not an angular spread measurement.",
+  "limitations": [
+    "Attachment and movement states supplied by operator filenames.",
+    "Single frames do not establish equal movement speed or actual pellet distribution.",
+    "One-pixel differences can result from antialiasing and frame position."
+  ],
+  "conclusion": "Slim Angled matches no grip within one pixel in all four states. Folding Stubby widens the moving indicator. Together with source collection and panel evidence, this supports removing the presumed Slim Angled moving-ADS penalty. The alternate Frosty field remains unidentified.",
+  "captures": [
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Folding_Stubby_No_Laser_ADS (Medium).png",
+      "sha256": "5f4688cddfb1af1bf321e4420023f5f56f8152c2263aa5a53864d20ed42244e4",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 670,
+          "right": 693,
+          "spanPx": 23
+        },
+        {
+          "redThreshold": 130,
+          "left": 670,
+          "right": 693,
+          "spanPx": 23
+        },
+        {
+          "redThreshold": 150,
+          "left": 670,
+          "right": 693,
+          "spanPx": 23
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Folding_Stubby_No_Laser_ADS_Moving (Medium).png",
+      "sha256": "913d6babde3889f3105deca7aba872c0ae6c8191b27940ae533dd10fd292d9e8",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 665,
+          "right": 700,
+          "spanPx": 35
+        },
+        {
+          "redThreshold": 130,
+          "left": 665,
+          "right": 700,
+          "spanPx": 35
+        },
+        {
+          "redThreshold": 150,
+          "left": 665,
+          "right": 700,
+          "spanPx": 35
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Folding_Stubby_Violet_Laser_ADS (Medium).png",
+      "sha256": "472d71da94ac179e031a7fafbdb88d826e8d1d82fe8f0de3a90092f7e7ad7640",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 130,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 150,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Folding_Stubby_Violet_Laser_ADS_Moving (Medium).png",
+      "sha256": "5547b2a2d6f0d240f70890170b5617186ba1ffaddade99ac0803e1c254539164",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        },
+        {
+          "redThreshold": 130,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        },
+        {
+          "redThreshold": 150,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_None_No_Laser_ADS (Medium).png",
+      "sha256": "2f60729cd38b8f2035a57d0e543d462d51736da0d8003d0950b27debba11d592",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 130,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 150,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_None_No_Laser_ADS_Moving (Medium).png",
+      "sha256": "0fa034d124045f1cfb33567a257e089bc39d46c4277578854e3e5bfd41e1df5f",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        },
+        {
+          "redThreshold": 130,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        },
+        {
+          "redThreshold": 150,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_None_Violet_Laser_ADS (Medium).png",
+      "sha256": "55c6d68152fac47cbec13020343da84277ea20cdf632acc0e7c2fa238c0a9f26",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 130,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 150,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_None_Violet_Laser_ADS_Moving (Medium).png",
+      "sha256": "ac89e2ee125e8d2ef8f2d8015a416ba4aa63055bb301aa88993c0882f4c59345",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 667,
+          "right": 697,
+          "spanPx": 30
+        },
+        {
+          "redThreshold": 130,
+          "left": 667,
+          "right": 697,
+          "spanPx": 30
+        },
+        {
+          "redThreshold": 150,
+          "left": 667,
+          "right": 697,
+          "spanPx": 30
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Slim_Angled_No_Laser_ADS (Medium).png",
+      "sha256": "104cbae3254d82b548746a74d705a876de368ee3e9651489f58bdfdddd0996c0",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 130,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        },
+        {
+          "redThreshold": 150,
+          "left": 670,
+          "right": 694,
+          "spanPx": 24
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Slim_Angled_No_Laser_ADS_Moving (Medium).png",
+      "sha256": "4ef13b34d9dcedf7ab582973eb16d159bbf06c695e6f258e928d8ff56bdef1b8",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        },
+        {
+          "redThreshold": 130,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        },
+        {
+          "redThreshold": 150,
+          "left": 666,
+          "right": 698,
+          "spanPx": 32
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Slim_Angled_Violet_Laser_ADS (Medium).png",
+      "sha256": "1815380e6def38c66bb0db3e601f5485f6952ea745753360741e3876ce1aa128",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 670,
+          "right": 693,
+          "spanPx": 23
+        },
+        {
+          "redThreshold": 130,
+          "left": 670,
+          "right": 693,
+          "spanPx": 23
+        },
+        {
+          "redThreshold": 150,
+          "left": 670,
+          "right": 693,
+          "spanPx": 23
+        }
+      ]
+    },
+    {
+      "source": "reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/18.5KS-K ADS Spread/18.5KS-K_Slim_Angled_Violet_Laser_ADS_Moving (Medium).png",
+      "sha256": "f8ee7fa8f1b49102d6b66e04bdc5e6595826d60bcf1bc15089a9ddf4b5deeaa2",
+      "measurements": [
+        {
+          "redThreshold": 110,
+          "left": 667,
+          "right": 696,
+          "spanPx": 29
+        },
+        {
+          "redThreshold": 130,
+          "left": 667,
+          "right": 696,
+          "spanPx": 29
+        },
+        {
+          "redThreshold": 150,
+          "left": 667,
+          "right": 696,
+          "spanPx": 29
+        }
+      ]
+    }
+  ]
+}

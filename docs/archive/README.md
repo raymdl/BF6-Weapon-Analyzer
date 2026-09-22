@@ -98,3 +98,18 @@ Keep archived narrative/evidence bodies stable. Add new conclusions to current
 guides and new dated evidence rather than rewriting old results into apparent
 predictions of the current model. Frozen published site versions are separate:
 `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` remain in their existing locations.
+
+## Weapon Attributes — 21 September 2026
+
+| Record | Status / current reference |
+|---|---|
+| [Composite stat findings](COMPOSITE_STATS_FINDINGS.md) | Completed source tracing and capture review. Current formulas, runtime behavior and limits: [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md). |
+| [Loadout capture plan](COMPOSITE_LOADOUT_CAPTURE_PLAN.md) | All six A/B pairs completed: 12 panels, 48 matching values. The original requested builds differ from some actual captures; use the linked results for the final selections. |
+
+The twelve KS18K ADS-indicator captures support the zero moving-ADS penalty now
+used by the site. Its alternate native field remains unidentified. Remaining
+questions are tracked in [Frosty open questions](../frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up).
+The active recording handoff remains in `docs/working/`; it is not complete.
+
+- [Weapon Attributes release check](WEAPON_ATTRIBUTES_RELEASE_CHECK.md): archived
+  lookup and burst-panel investigation. Current behavior: [model guide](../WEAPON_ATTRIBUTES_MODEL.md).

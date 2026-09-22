@@ -1,0 +1,3675 @@
+{
+  "date": "2026-09-21",
+  "scope": "131 attachment detail panels: EF88 65, BROD 3 64, KTS100 MK8 2. Two overview images retained in the canonical audit as context only.",
+  "source": "reference-data/attachment-audit/attachment-screenshot-review.json",
+  "records": [
+    {
+      "recordIndex": 3006,
+      "weapon": "kts100",
+      "attachmentName": "Ribbed Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/31_KTS100 MK8_Grip_Ribbed_Vertical.png",
+      "screenshotSha256": "3f77369837fd1ce83c6af1b79b4c39e70927a3aeeafa7a66717af8ea6617bb67",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 67
+        },
+        "mobility": {
+          "audit": 36
+        }
+      }
+    },
+    {
+      "recordIndex": 3024,
+      "weapon": "kts100",
+      "attachmentName": "60Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "60_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/LMG/KTS100 MK8/50_KTS100 MK8_Magazine_60RND_MAGAZINE.png",
+      "screenshotSha256": "2c2652ca4559b72cdd88ef5861ece206125de8478edf918f03311315566ac789",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 75
+        },
+        "control": {
+          "audit": 55
+        },
+        "mobility": {
+          "audit": 38
+        }
+      }
+    },
+    {
+      "recordIndex": 763,
+      "weapon": "brod3",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/01_BROD 3_Muzzle_None.png",
+      "screenshotSha256": "8083aad18d81721785989b831f127ed99601814f3f97205e0a60fbb93ed5a4ef",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 764,
+      "weapon": "brod3",
+      "attachmentName": "Flash Hider",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "flash_hider"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/02_BROD 3_Muzzle_Flash_Hider.png",
+      "screenshotSha256": "fbd1c06bedc41bcd2b1b574f97ed498deecd19bf2a0de2e1ff2dcc86d354dfe2",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 770,
+      "weapon": "brod3",
+      "attachmentName": "Flash Comp",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "flash_comp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/08_BROD 3_Muzzle_Flash_Comp.png",
+      "screenshotSha256": "03108495e8aac7b4a55cc8eb443a207484a1b195e488719cdda7913d93bff73a",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 765,
+      "weapon": "brod3",
+      "attachmentName": "Single-Port Brake",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "sp_brake"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/03_BROD 3_Muzzle_Single-Port_Brake.png",
+      "screenshotSha256": "3267de4bf90eb4d5eea1952faa4665b8529302f6493fe49336d1ac1162832dba",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 766,
+      "weapon": "brod3",
+      "attachmentName": "Double-Port Brake",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "dp_brake"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/04_BROD 3_Muzzle_Double-Port_Brake.png",
+      "screenshotSha256": "13f078db1e77af03a2aa7e4c5f445e2e313f0a210682a3f2a9bdf48ead0b4a2a",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 771,
+      "weapon": "brod3",
+      "attachmentName": "Compensated Brake",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "comp_brake"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/09_BROD 3_Muzzle_Compensated_Brake.png",
+      "screenshotSha256": "10b10a76eaa2cad276f6b56156ed9c392dacfaf62874322a3eb8743ed415c9ba",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 767,
+      "weapon": "brod3",
+      "attachmentName": "Compensator",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "compensator"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/05_BROD 3_Muzzle_Compensator.png",
+      "screenshotSha256": "b40af45ffd8293228fb60228be37d1606b04546875195881b2cba207c2d97182",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 768,
+      "weapon": "brod3",
+      "attachmentName": "Linear Comp",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "linear_comp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/06_BROD 3_Muzzle_Linear_Comp.png",
+      "screenshotSha256": "09efac9dfe7f16e1670a5560b656709f9c6b6bbad2613a80af74f6584675067e",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 33
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 769,
+      "weapon": "brod3",
+      "attachmentName": "Standard Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "std_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/07_BROD 3_Muzzle_Standard_Suppressor.png",
+      "screenshotSha256": "aeb41161e24dadd2d7e8e5ee235d260eb8b0b55f21202e4df535018ae509c9f5",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 772,
+      "weapon": "brod3",
+      "attachmentName": "Long Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "long_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/10_BROD 3_Muzzle_Long_Suppressor.png",
+      "screenshotSha256": "96189fd2080fff1817b2a12d2699956ddfff14c9cd9389d79477468bacb1f176",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 773,
+      "weapon": "brod3",
+      "attachmentName": "CQB Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "cqb_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/11_BROD 3_Muzzle_CQB_Suppressor.png",
+      "screenshotSha256": "73f3d8d09d10bee9d497f46de0652e19ca5fe951ffcfcc30fb881f3f74c2ef9f",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 774,
+      "weapon": "brod3",
+      "attachmentName": "Lightened Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "light_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/12_BROD 3_Muzzle_Lightened_Suppressor.png",
+      "screenshotSha256": "7f31e5ba7a976881b8301342b07cd80b746075a62fe7295276adad896a86319f",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 3234,
+      "weapon": "brod3",
+      "attachmentName": "Hybrid Suppressor L",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "hybrid_supp_l"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/62_BROD 3_Muzzle_Hybrid_Suppressor_L.png",
+      "screenshotSha256": "0de095cd124a885cd10b551261d27ca427d84f04235ab60d61154dcc2df0e632",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 58
+        }
+      }
+    },
+    {
+      "recordIndex": 3236,
+      "weapon": "brod3",
+      "attachmentName": "Hybrid Suppressor S",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "hybrid_supp_s"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/64_BROD 3_Muzzle_Hybrid_Suppressor_S.png",
+      "screenshotSha256": "253543fc88ddac471b998a079aefe52c960edc2dbdb47b6a6e55c413daebec12",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 3235,
+      "weapon": "brod3",
+      "attachmentName": "Hybrid Suppressor K",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "hybrid_supp_k"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/63_BROD 3_Muzzle_Hybrid_Suppressor_K.png",
+      "screenshotSha256": "4f43a9fab4e39f31750aa95c2248869d3ff306c281d66570a29465e491190a54",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 775,
+      "weapon": "brod3",
+      "attachmentName": "11\" Mid",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "basic"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/13_BROD 3_Barrel_Basic.png",
+      "screenshotSha256": "af96c7de720a537ef24708e3d08851050e8d46730ff40855450b08a1820621fc",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 776,
+      "weapon": "brod3",
+      "attachmentName": "14.5\" Carbine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "extended"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/14_BROD 3_Barrel_Extended.png",
+      "screenshotSha256": "c8362ff83254476917d00eee82ae830b8b0ce296b479bd30069ab8ff6bd5a42d",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 777,
+      "weapon": "brod3",
+      "attachmentName": "7\" Compact",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "short"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/15_BROD 3_Barrel_Short.png",
+      "screenshotSha256": "e4dc759dfd065af61943cafced2d517112ed96edcaad3dfea4a7b2c73db6a4a2",
+      "fields": {
+        "hipfire": {
+          "audit": 54
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 778,
+      "weapon": "brod3",
+      "attachmentName": "11\" Pencil",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "light"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/16_BROD 3_Barrel_Light.png",
+      "screenshotSha256": "b19bf50520601d6dc8f900d578c2740da8296d6a302f8a6ef2c8a82cc256ca09",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 64
+        }
+      }
+    },
+    {
+      "recordIndex": 779,
+      "weapon": "brod3",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/28_BROD 3_Grip_None.png",
+      "screenshotSha256": "2c520794d325e167eb2d58970977d3eb17f97b010d95486e2e39850c07ac9861",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 780,
+      "weapon": "brod3",
+      "attachmentName": "Folding Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "fold_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/29_BROD 3_Grip_Folding_Vertical.png",
+      "screenshotSha256": "45fd915514b7fca31b4ee7657c917198df5f10d3f722b612b033b2eb2a8df2e0",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 781,
+      "weapon": "brod3",
+      "attachmentName": "Alloy Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "alloy_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/30_BROD 3_Grip_Alloy_Vertical.png",
+      "screenshotSha256": "96b1d98c1954e495bb427ad522f8cd544bf1f88a20c89a9c7807a8e110d7d352",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 782,
+      "weapon": "brod3",
+      "attachmentName": "Ribbed Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/31_BROD 3_Grip_Ribbed_Vertical.png",
+      "screenshotSha256": "8a1faeffa8e37fb52193ec5f941e4f9b846e4003b93e03802d09712576114b47",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 43
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 789,
+      "weapon": "brod3",
+      "attachmentName": "6H64 Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "6h64_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/38_BROD 3_Grip_6H64_Vertical.png",
+      "screenshotSha256": "1773670e1ac8280bf2ac8093465e9631b67decfa4b328671eeab180fdddd45f5",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 30
+        },
+        "control": {
+          "audit": 46
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 790,
+      "weapon": "brod3",
+      "attachmentName": "Classic Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "classic_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/39_BROD 3_Grip_Classic_Vertical.png",
+      "screenshotSha256": "32893c7bfe17b6ea0b7b1e7b7d095920187b079bbf1f92bc98b6b068ffa2c29b",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 31
+        },
+        "control": {
+          "audit": 49
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 783,
+      "weapon": "brod3",
+      "attachmentName": "Folding Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "fold_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/32_BROD 3_Grip_Folding_Stubby.png",
+      "screenshotSha256": "417b344e7866ea3a090280cd86637317860c33d22fcc7b6b7fcbe21971f7a171",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 784,
+      "weapon": "brod3",
+      "attachmentName": "Ribbed Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/33_BROD 3_Grip_Ribbed_Stubby.png",
+      "screenshotSha256": "ece4d54925a48c33636d83d2d1a5ebe995f22ea9c527405e324ec596204fdc2d",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 64
+        }
+      }
+    },
+    {
+      "recordIndex": 791,
+      "weapon": "brod3",
+      "attachmentName": "Canted Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "canted_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/40_BROD 3_Grip_Canted_Stubby.png",
+      "screenshotSha256": "f96dbc7c1e7b18598f97374f8d0cfac6f58e7a51b9128326e2e1966e3c2b09b1",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 43
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 792,
+      "weapon": "brod3",
+      "attachmentName": "Stippled Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "stipp_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/41_BROD 3_Grip_Stippled_Stubby.png",
+      "screenshotSha256": "e170fad07ca5af273347f784718f3c181ef7375fe1d62fbb1fa07c07d4809ae0",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 30
+        },
+        "control": {
+          "audit": 46
+        },
+        "mobility": {
+          "audit": 58
+        }
+      }
+    },
+    {
+      "recordIndex": 793,
+      "weapon": "brod3",
+      "attachmentName": "Low-Profile Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "lp_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/42_BROD 3_Grip_Low-Profile_Stubby.png",
+      "screenshotSha256": "a99f769c64dde8a4266d7d8c3a4aa733b05a205392f7f44caf170d8f942d3842",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 31
+        },
+        "control": {
+          "audit": 49
+        },
+        "mobility": {
+          "audit": 58
+        }
+      }
+    },
+    {
+      "recordIndex": 794,
+      "weapon": "brod3",
+      "attachmentName": "Slim Handstop",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "slim_handstop"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/43_BROD 3_Grip_Slim_Handstop.png",
+      "screenshotSha256": "61b8a234761be2246094b565e644f21331ee9ccb9d841ae8eee83d3911a177ab",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 66
+        }
+      }
+    },
+    {
+      "recordIndex": 785,
+      "weapon": "brod3",
+      "attachmentName": "Slim Angled",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "slim_angled"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/34_BROD 3_Grip_Slim_Angled.png",
+      "screenshotSha256": "4db4669262a7689dc2ee7bc1dd677bbd96bfe7b37b0118f63456fb5b45b1f753",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 66
+        }
+      }
+    },
+    {
+      "recordIndex": 786,
+      "weapon": "brod3",
+      "attachmentName": "Full Angled",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "full_angled"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/35_BROD 3_Grip_Full_Angled.png",
+      "screenshotSha256": "aa0d88a2b5b29fb47bfcf63388832d5f584e2e9a42071b5cf92525b2da29d04a",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 62
+        }
+      }
+    },
+    {
+      "recordIndex": 787,
+      "weapon": "brod3",
+      "attachmentName": "PTT Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ptt_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/36_BROD 3_Grip_PTT_Grip_Pod.png",
+      "screenshotSha256": "9843a753288758f1dcea4c59e04a2a54b73679555ed53fa727dc7f541484d426",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 788,
+      "weapon": "brod3",
+      "attachmentName": "QD Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "qd_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/37_BROD 3_Grip_QD_Grip_Pod.png",
+      "screenshotSha256": "97526637efb86e893f330736f8f0438681b4f824546719785ac9fcd417f2cca6",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 43
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 795,
+      "weapon": "brod3",
+      "attachmentName": "Classic Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "classic_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/44_BROD 3_Grip_Classic_Grip_Pod.png",
+      "screenshotSha256": "5bdf23fa675b44640f03de2283c133aa9ddbbfb747eeadd18bb4f4a4a35eaa27",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 796,
+      "weapon": "brod3",
+      "attachmentName": "30Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "30_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/45_BROD 3_Magazine_30Rnd_Magazine.png",
+      "screenshotSha256": "0f09f7ab6e44eb912eb8b3571b9c50b79c489b184d07d40f9897c0b02f2ee903",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 797,
+      "weapon": "brod3",
+      "attachmentName": "20Rnd Fast Mag",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "20_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/46_BROD 3_Magazine_20Rnd_Fast_Mag.png",
+      "screenshotSha256": "87b64873cedc02029ee002754927fc2f7b5ac00cb2e322bdf103793fab7f813e",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 72
+        }
+      }
+    },
+    {
+      "recordIndex": 798,
+      "weapon": "brod3",
+      "attachmentName": "20Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "20_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/47_BROD 3_Magazine_20Rnd_Magazine.png",
+      "screenshotSha256": "8d950f16cfad5e6e0a105081bbbc8fc1d7b2206da65618b6c3a93c16475e1640",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 74
+        }
+      }
+    },
+    {
+      "recordIndex": 799,
+      "weapon": "brod3",
+      "attachmentName": "30Rnd Fast Mag",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "30_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/48_BROD 3_Magazine_30Rnd_Fast_Mag.png",
+      "screenshotSha256": "6980abd6a23c393ffe47507624b727621d18fde4f04178675689c2ffe9a442ca",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 58
+        }
+      }
+    },
+    {
+      "recordIndex": 800,
+      "weapon": "brod3",
+      "attachmentName": "36Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "36_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/49_BROD 3_Magazine_36Rnd_Magazine.png",
+      "screenshotSha256": "9f816cc65041cd7eec83587acb4745196db5dffb5f80ea40436bff6c9f0e973a",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 801,
+      "weapon": "brod3",
+      "attachmentName": "40Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "40_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/50_BROD 3_Magazine_40Rnd_Magazine.png",
+      "screenshotSha256": "5f067367e077af9a07fc5b3a4e001ec34e286e44af70def5f2f491ecdc905656",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 802,
+      "weapon": "brod3",
+      "attachmentName": "40Rnd Fast Mag",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "40_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/51_BROD 3_Magazine_40Rnd_Fast_Mag.png",
+      "screenshotSha256": "c0c5fd2f7c397c59be3eaef91c37c08dfc8a0f9aea2833c0144fadb5fbd567b7",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 803,
+      "weapon": "brod3",
+      "attachmentName": "FMJ",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "standard"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/52_BROD 3_Ammo_Standard.png",
+      "screenshotSha256": "0850d5023388eb948e1f4d553a48ddd0a4b676828f8a2400ad82c4e67532ba27",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 804,
+      "weapon": "brod3",
+      "attachmentName": "Tungsten Core",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "penetration"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/53_BROD 3_Ammo_Penetration.png",
+      "screenshotSha256": "88c1321e729bfe32c31c5a29f4e92c9db48aa7442b67961f0c51db37dc25d38a",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 26
+        },
+        "control": {
+          "audit": 33
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 805,
+      "weapon": "brod3",
+      "attachmentName": "Polymer Case",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "lightweight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/54_BROD 3_Ammo_Lightweight.png",
+      "screenshotSha256": "25ef4996001b004d1d790b93ee2de2f4ac0757bc6cb2503bebca45599a837ec7",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 62
+        }
+      }
+    },
+    {
+      "recordIndex": 806,
+      "weapon": "brod3",
+      "attachmentName": "Frangible",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "frangible"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/55_BROD 3_Ammo_Frangible.png",
+      "screenshotSha256": "cf55634b74ea827fc3850064cf3b67fce1948c2e66c6eeb07e52218bd39050a3",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 807,
+      "weapon": "brod3",
+      "attachmentName": "Hollow Point",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "hollow_pt"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/56_BROD 3_Ammo_Hollow_Point.png",
+      "screenshotSha256": "74efa0f42990f6df42508af630b172e94ada80ea1e9ad0bb21af225e368b126a",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 808,
+      "weapon": "brod3",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/57_BROD 3_Ergonomics_None.png",
+      "screenshotSha256": "74d2e12b75d7908fdd03a7fac3d8ca975f2d5ebabea8eb4f1063c42be37e378e",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 809,
+      "weapon": "brod3",
+      "attachmentName": "Improved Mag Catch",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "mag_catch"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/58_BROD 3_Ergonomics_Improved_Mag_Catch.png",
+      "screenshotSha256": "ee52d87693c7c54e2aa50e27183b563bb625000cb3e64d341720704cf8982248",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 810,
+      "weapon": "brod3",
+      "attachmentName": "Match Trigger",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "match_trigger"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/59_BROD 3_Ergonomics_Match_Trigger.png",
+      "screenshotSha256": "32df69daa9643e49127a2799577b0a2aff55a2443ed6a8c987572446d49d68cb",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 811,
+      "weapon": "brod3",
+      "attachmentName": "Rail Cover",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "rail_cover"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/60_BROD 3_Ergonomics_RAIL_COVER.png",
+      "screenshotSha256": "1159fbf2fdfc35fe3b3ec32b61d15cdd8ede89beada5fe4437760aba83460935",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 62
+        }
+      }
+    },
+    {
+      "recordIndex": 812,
+      "weapon": "brod3",
+      "attachmentName": "Aftermarket Buffer",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "buffer"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/61_BROD 3_Ergonomics_Aftermarket_Buffer.png",
+      "screenshotSha256": "2a44ecb724b7218d5cdc32b8981ca61970efdf4c0787002a254b2c5cc5df51b7",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 813,
+      "weapon": "brod3",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/21_BROD 3_Laser_None.png",
+      "screenshotSha256": "45c0dce2dcd51f869791e2d646ecf1d4d815bb49d528fde15b5e3a796f241d9b",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 814,
+      "weapon": "brod3",
+      "attachmentName": "5 MW Red",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "5mw_red"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/22_BROD 3_Laser_5_MW_Red.png",
+      "screenshotSha256": "5dee5723088010ce0c3f37ace800e2a4e9e2e608b4cf00e26394b92b7717aca7",
+      "fields": {
+        "hipfire": {
+          "audit": 54
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 815,
+      "weapon": "brod3",
+      "attachmentName": "50 MW Violet",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_violet"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/23_BROD 3_Laser_50_MW_Violet.png",
+      "screenshotSha256": "ebcf637b02908faa8331cd74a48fe5164af03f40d348070cae827c23cf296457",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 64
+        }
+      }
+    },
+    {
+      "recordIndex": 816,
+      "weapon": "brod3",
+      "attachmentName": "5 MW Green",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "5mw_green"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/24_BROD 3_Laser_5_MW_Green.png",
+      "screenshotSha256": "2ad966a2a214c9b5f8d812513c441a53b6cbab0c66bf3691ce454c22a8f1a3c8",
+      "fields": {
+        "hipfire": {
+          "audit": 62
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 817,
+      "weapon": "brod3",
+      "attachmentName": "50 MW Green",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_green"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/25_BROD 3_Laser_50_MW_Green.png",
+      "screenshotSha256": "46ebf9b4cd3c02142bd440b991ed832841c79ebdb8b9d453df9ce88e4901d8d0",
+      "fields": {
+        "hipfire": {
+          "audit": 71
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 818,
+      "weapon": "brod3",
+      "attachmentName": "50 MW Blue",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_blue"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/26_BROD 3_Laser_50_MW_Blue.png",
+      "screenshotSha256": "82fea5c43b3ed0bfee2f14388d6f9a0ab16ab0b998b6d9f02461b44109b4f3bd",
+      "fields": {
+        "hipfire": {
+          "audit": 62
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 64
+        }
+      }
+    },
+    {
+      "recordIndex": 819,
+      "weapon": "brod3",
+      "attachmentName": "120 MW Blue",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "120mw_blue"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/27_BROD 3_Laser_120_MW_Blue.png",
+      "screenshotSha256": "86f4b26726537d798bef7b082c2bcd40e78a9b7651ca5c98c578c624628a885a",
+      "fields": {
+        "hipfire": {
+          "audit": 71
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 64
+        }
+      }
+    },
+    {
+      "recordIndex": 820,
+      "weapon": "brod3",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/17_BROD 3_Light_None.png",
+      "screenshotSha256": "48c40a784761e298edbafd7840ed579ab5f4b92c51f8876970a7e599781f0040",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 823,
+      "weapon": "brod3",
+      "attachmentName": "Taclight - Aimed",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "ads_taclight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/20_BROD 3_Light_Taclight_-_Aimed.png",
+      "screenshotSha256": "ddee09da4785b7d9d0ae5ff10ef0030132d324fe577ee5a460b3da3a62870088",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 821,
+      "weapon": "brod3",
+      "attachmentName": "Flashlight",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "flashlight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/18_BROD 3_Light_Flashlight.png",
+      "screenshotSha256": "0ed6a7f7e8b987d7cccda65170baa022c360f7e1f7aa5634c3d0e72b791f8eac",
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 822,
+      "weapon": "brod3",
+      "attachmentName": "Taclight - Hipfire",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "hip_taclight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Carbine/BROD 3/19_BROD 3_Light_Taclight_-_Hipfire.png",
+      "screenshotSha256": "7d5c7c47ff3a7c9f6817ad31d6122003c8a0137b24e4e1c14969a85ffd013c4a",
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 35
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 130,
+      "weapon": "ef88",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/01_EF88_Muzzle_None.png",
+      "screenshotSha256": "721be4678c8ea51f57fd4e70867a25a191c304141676cdfc79930996c969c0af",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 131,
+      "weapon": "ef88",
+      "attachmentName": "Flash Hider",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "flash_hider"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/02_EF88_Muzzle_Flash_Hider.png",
+      "screenshotSha256": "8ba2063aae375b891105a6e5029c34b7fed4c01c5ccde206fefd288d11573f4e",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 132,
+      "weapon": "ef88",
+      "attachmentName": "Flash Comp",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "flash_comp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/03_EF88_Muzzle_Flash_Comp.png",
+      "screenshotSha256": "9ba11a36531a4578b55c5d9e46fb2ed05723f7531bcd068968d958aedc0eba18",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 133,
+      "weapon": "ef88",
+      "attachmentName": "Single-Port Brake",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "sp_brake"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/04_EF88_Muzzle_Single-Port_Brake.png",
+      "screenshotSha256": "b8887a818d85e32898b43627a65fd9c0e59f677046cd2e4656e1ba1318baddb5",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 44
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 134,
+      "weapon": "ef88",
+      "attachmentName": "Double-Port Brake",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "dp_brake"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/05_EF88_Muzzle_Double-Port_Brake.png",
+      "screenshotSha256": "d035d175ed55212bb3d827d7ee1a9babebc930cf715c4e9c3af9722c3e470ff8",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 44
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 140,
+      "weapon": "ef88",
+      "attachmentName": "Compensated Brake",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "comp_brake"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/11_EF88_Muzzle_Compensated_Brake.png",
+      "screenshotSha256": "47f05358f883267450b5d3f8451603cf5d576107cdb3c602552e62902a7b0029",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 44
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 135,
+      "weapon": "ef88",
+      "attachmentName": "Compensator",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "compensator"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/06_EF88_Muzzle_Compensator.png",
+      "screenshotSha256": "735cab53ab2ca069917487ebe597b4851ebedffa7570c2b990957dfe63d57e1c",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 136,
+      "weapon": "ef88",
+      "attachmentName": "Linear Comp",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "linear_comp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/07_EF88_Muzzle_Linear_Comp.png",
+      "screenshotSha256": "4a256c616c0e4f5eb00cc2f92295469d3937658392d0020b4b3b5d86d0fc5bea",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 30
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 137,
+      "weapon": "ef88",
+      "attachmentName": "Standard Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "std_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/08_EF88_Muzzle_Standard_Suppressor.png",
+      "screenshotSha256": "bc946571dfdcdd071ecbaefcdde1589da29bf4d41d3b98271c6207a6a1d87fe2",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 138,
+      "weapon": "ef88",
+      "attachmentName": "Long Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "long_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/09_EF88_Muzzle_Long_Suppressor.png",
+      "screenshotSha256": "1aee0ea59f8fae3f2c2c34c3541c97ae4852e9d12962bf497799f405c77a3d99",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 139,
+      "weapon": "ef88",
+      "attachmentName": "CQB Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "cqb_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/10_EF88_Muzzle_CQB_Suppressor.png",
+      "screenshotSha256": "4eb3ff66cbfa1b67f7c4cb9ebd52b4701fdb7a795f25d4a264f27648371b17e7",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 141,
+      "weapon": "ef88",
+      "attachmentName": "Lightened Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "light_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/12_EF88_Muzzle_Lightened_Suppressor.png",
+      "screenshotSha256": "abfa4f90dfbbd03b81df348ef2275ba3504d131675e373007a9d4ef699a6da3c",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 3192,
+      "weapon": "ef88",
+      "attachmentName": "Hybrid Suppressor L",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "hybrid_supp_l"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/63_EF88_Muzzle_Hybrid_Suppressor_L.png",
+      "screenshotSha256": "97b5ff0248f061ebd691a9f5c55f8093cafd4a0dc1d0a8b0cf49e9a4fa41a2e2",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 44
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 3194,
+      "weapon": "ef88",
+      "attachmentName": "Hybrid Suppressor S",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "hybrid_supp_s"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/65_EF88_Muzzle_Hybrid_Suppressor_S.png",
+      "screenshotSha256": "fa70497cc491fc4d0410656d085f1faa716018551064bbf8c7328d8bc6e8cd6e",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 44
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 3193,
+      "weapon": "ef88",
+      "attachmentName": "Hybrid Suppressor K",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "hybrid_supp_k"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/64_EF88_Muzzle_Hybrid_Suppressor_K.png",
+      "screenshotSha256": "a323b99dbc23228d5f93ac20d74f61acf9d575b16b86aa996e5b4d589c0df21c",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 44
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 142,
+      "weapon": "ef88",
+      "attachmentName": "16\" Standard",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "basic"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/13_EF88_Barrel_Basic.png",
+      "screenshotSha256": "9998f0ec5d3e938ce4537c9812ad252b2d83be9417d3967621f75636bd5dc726",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 143,
+      "weapon": "ef88",
+      "attachmentName": "20\" Standard",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "extended"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/14_EF88_Barrel_Extended.png",
+      "screenshotSha256": "3cc925c6cbed7fcc61494734acf2473457e8c13982980e01a786f0c518be6df3",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 48
+        }
+      }
+    },
+    {
+      "recordIndex": 144,
+      "weapon": "ef88",
+      "attachmentName": "24\" HBAR",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "heavy_ext"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/15_EF88_Barrel_Heavy_Ext.png",
+      "screenshotSha256": "8660c04b487ed5657e53dddbf0941b3746100a8bb746fff8ba6e54e057a43d75",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 32
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 148,
+      "weapon": "ef88",
+      "attachmentName": "20\" Marksman",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "ext_light"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/19_EF88_Barrel_Ext_Light.png",
+      "screenshotSha256": "ac1a65273593c9b6cac2b79de5caa935d8f34e98bbc248e8653ad815e7e0069d",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 145,
+      "weapon": "ef88",
+      "attachmentName": "14.5\" Standard",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "short"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/16_EF88_Barrel_Short.png",
+      "screenshotSha256": "898f1dc0cc538904bc3aa5fa08f93f7e99c769e1809b78074d7481101ec9f1c9",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 149,
+      "weapon": "ef88",
+      "attachmentName": "14.5\" CQB",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "short_light"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/20_EF88_Barrel_Short_Light.png",
+      "screenshotSha256": "5300ab7ab21fb014af8afe7571f6fb1ef4e8728ef5d4fec95ae3103697679144",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 146,
+      "weapon": "ef88",
+      "attachmentName": "16\" Factory",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "light"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/17_EF88_Barrel_Light.png",
+      "screenshotSha256": "2ed49d1e7758a87cad3931cf70d922b288d6c197ef829f662384fbf119ec06c0",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 147,
+      "weapon": "ef88",
+      "attachmentName": "16\" Cryogenic",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "cryo"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/18_EF88_Barrel_Cryo.png",
+      "screenshotSha256": "db3a1857519d55a1a602ff383509964173a590b365e562afe3178ed5ba0358f8",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 32
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 150,
+      "weapon": "ef88",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/32_EF88_Grip_None.png",
+      "screenshotSha256": "3cd4a7c5c81119a6277e1c618a530fc1f65d522a3f7872d873338ece4d826a39",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 151,
+      "weapon": "ef88",
+      "attachmentName": "Folding Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "fold_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/33_EF88_Grip_Folding_Vertical.png",
+      "screenshotSha256": "6f7965f10c71abf6dc7a9f1314226971c0255e5744fbcb9feb67fe93e55b1d5e",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 47
+        },
+        "mobility": {
+          "audit": 48
+        }
+      }
+    },
+    {
+      "recordIndex": 152,
+      "weapon": "ef88",
+      "attachmentName": "Alloy Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "alloy_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/34_EF88_Grip_Alloy_Vertical.png",
+      "screenshotSha256": "b44278a01d6d6171a0781d23c80cade9f24045b718ea3f79c0222dd58e5d611b",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 47
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 153,
+      "weapon": "ef88",
+      "attachmentName": "Ribbed Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/35_EF88_Grip_Ribbed_Vertical.png",
+      "screenshotSha256": "79f5fdf2314b1d85f6db1b2017bd6fb1fdbefd5e8aea80f44f1364b6b6396e79",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 30
+        },
+        "control": {
+          "audit": 50
+        },
+        "mobility": {
+          "audit": 48
+        }
+      }
+    },
+    {
+      "recordIndex": 154,
+      "weapon": "ef88",
+      "attachmentName": "6H64 Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "6h64_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/36_EF88_Grip_6H64_Vertical.png",
+      "screenshotSha256": "5026fe1654fd0f7ff175411816483df28829a9aa7d4e09a90d3c67a4fee08edf",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 31
+        },
+        "control": {
+          "audit": 53
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 163,
+      "weapon": "ef88",
+      "attachmentName": "Classic Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "classic_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/45_EF88_Grip_Classic_Vertical.png",
+      "screenshotSha256": "6cc07493075b5527e1df252d18b94d3a7c93bab6d91de622ba604961af4f91b3",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 31
+        },
+        "control": {
+          "audit": 57
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 155,
+      "weapon": "ef88",
+      "attachmentName": "Folding Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "fold_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/37_EF88_Grip_Folding_Stubby.png",
+      "screenshotSha256": "7fee0de7817b5bace9079f0226590309dc91e78e9ec8f7c91ed815092b936806",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 47
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 156,
+      "weapon": "ef88",
+      "attachmentName": "Ribbed Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/38_EF88_Grip_Ribbed_Stubby.png",
+      "screenshotSha256": "2fe037f90aefc17266fb912aa47481eb685faa933db08ba0970780f1418c187e",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 47
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 157,
+      "weapon": "ef88",
+      "attachmentName": "Canted Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "canted_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/39_EF88_Grip_Canted_Stubby.png",
+      "screenshotSha256": "765f8c79fe3256dd52295440c216fc32cb64b994b6be9239d63b523e8e0015d2",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 30
+        },
+        "control": {
+          "audit": 50
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 158,
+      "weapon": "ef88",
+      "attachmentName": "Stippled Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "stipp_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/40_EF88_Grip_Stippled_Stubby.png",
+      "screenshotSha256": "dc3111eea55fd54018256e32f3a42e125a841ef0090ad0354b97d7356d3856f0",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 31
+        },
+        "control": {
+          "audit": 53
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 164,
+      "weapon": "ef88",
+      "attachmentName": "Low-Profile Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "lp_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/46_EF88_Grip_Low-Profile_Stubby.png",
+      "screenshotSha256": "b1aeb59ede7ccc4dd3bb91d25e3cadb108fbba633eeedd45fdbc1a7664a79dbb",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 31
+        },
+        "control": {
+          "audit": 57
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 159,
+      "weapon": "ef88",
+      "attachmentName": "Full Angled",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "full_angled"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/41_EF88_Grip_Full_Angled.png",
+      "screenshotSha256": "4a8dad925313b34e82aa598e84db52c6e3f073145c4c614a2204d5051f5d004a",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 47
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 160,
+      "weapon": "ef88",
+      "attachmentName": "Bipod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "bipod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/42_EF88_Grip_Bipod.png",
+      "screenshotSha256": "bf73e163c181f23c2bedaeff05c0037c55edd8cf899f6f82dc1996f29681b29e",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 161,
+      "weapon": "ef88",
+      "attachmentName": "PTT Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ptt_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/43_EF88_Grip_PTT_Grip_Pod.png",
+      "screenshotSha256": "cc2fc5459c621df952c8e1bcf30254739de25be23d99564d78c845763353f206",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 47
+        },
+        "mobility": {
+          "audit": 48
+        }
+      }
+    },
+    {
+      "recordIndex": 162,
+      "weapon": "ef88",
+      "attachmentName": "QD Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "qd_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/44_EF88_Grip_QD_Grip_Pod.png",
+      "screenshotSha256": "ac2ffe2f4ef4eb8e1b4ae063e61e6af17f9215d2110b21cf67dba9ebf66f44d2",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 30
+        },
+        "control": {
+          "audit": 50
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 165,
+      "weapon": "ef88",
+      "attachmentName": "Classic Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "classic_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/47_EF88_Grip_Classic_Grip_Pod.png",
+      "screenshotSha256": "0d249b9ae1bcf93c7992745570af0aff2d731c1cf83d77f9e5cbfe5d72add527",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 29
+        },
+        "control": {
+          "audit": 47
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 166,
+      "weapon": "ef88",
+      "attachmentName": "30Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "30_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/48_EF88_Magazine_30Rnd_Magazine.png",
+      "screenshotSha256": "da7f100469ff2fb63cce7cfc7a920344db9eba057f2620d2bcd6d4c3754f01da",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 167,
+      "weapon": "ef88",
+      "attachmentName": "30Rnd Fast Mag",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "30_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/49_EF88_Magazine_30Rnd_Fast_Mag.png",
+      "screenshotSha256": "828759fcbfa59f77ea09c798d234d896788759237506deb0610cccf29eaa5c6a",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 168,
+      "weapon": "ef88",
+      "attachmentName": "36Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "36_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/50_EF88_Magazine_36Rnd_Magazine.png",
+      "screenshotSha256": "06ab003e6b226d9afaae18617ddbebcd9ccdedfba93c5b15f29b3d38024594e4",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 48
+        }
+      }
+    },
+    {
+      "recordIndex": 169,
+      "weapon": "ef88",
+      "attachmentName": "42Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "42_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/51_EF88_Magazine_42Rnd_Magazine.png",
+      "screenshotSha256": "9049c0afb8aa67acdf6c6ee79e1c88b69be4db03bfcbb5b0fbbb1633202c5a57",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 48
+        }
+      }
+    },
+    {
+      "recordIndex": 170,
+      "weapon": "ef88",
+      "attachmentName": "42Rnd Fast Mag",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "42_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/52_EF88_Magazine_42Rnd_Fast_Mag.png",
+      "screenshotSha256": "01c5530daaf2c939af1ae313c92858d3f8270812e41fee454dca07e515e3c7e6",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 171,
+      "weapon": "ef88",
+      "attachmentName": "FMJ",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "standard"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/53_EF88_Ammo_Standard.png",
+      "screenshotSha256": "272d88465a36e8205a6da3eaff6d7610d9cba5beb1c28677bead2c18e110b003",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 172,
+      "weapon": "ef88",
+      "attachmentName": "Tungsten Core",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "penetration"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/54_EF88_Ammo_Penetration.png",
+      "screenshotSha256": "5bf8001b4e024c9fb47c0fdccd1a99369d8338a44a02da93133d635b0d0147bc",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 27
+        },
+        "control": {
+          "audit": 39
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 173,
+      "weapon": "ef88",
+      "attachmentName": "Polymer Case",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "lightweight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/55_EF88_Ammo_Lightweight.png",
+      "screenshotSha256": "81e917dc48fd50fd5d91dda536af47d62a0cc1a37a254263b01940ca73cb5e4f",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 175,
+      "weapon": "ef88",
+      "attachmentName": "Frangible",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "frangible"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/57_EF88_Ammo_Frangible.png",
+      "screenshotSha256": "5f0eb3ea7a5126841418846f8285335ad1760cf578069aac595d8e1d287fa348",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 174,
+      "weapon": "ef88",
+      "attachmentName": "Hollow Point",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "hollow_pt"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/56_EF88_Ammo_Hollow_Point.png",
+      "screenshotSha256": "45ea48ca1a1e7505a578bd48a0b955863ac32cd18a75d9308df6430d5af9df5d",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 176,
+      "weapon": "ef88",
+      "attachmentName": "Synthetic Tip",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "synthetic"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/58_EF88_Ammo_Synthetic.png",
+      "screenshotSha256": "29b55be03fb9cb9f60e89f9aa2dd39739f5abe7676ff1c068f23ebd1887755d7",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 177,
+      "weapon": "ef88",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/59_EF88_Ergonomics_None.png",
+      "screenshotSha256": "f25dba0f7efd47a37e8801025552309d7508707205891f2dad3482b8ade0600c",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 178,
+      "weapon": "ef88",
+      "attachmentName": "Improved Mag Catch",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "mag_catch"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/60_EF88_Ergonomics_Improved_Mag_Catch.png",
+      "screenshotSha256": "1e0daf9c8a960abe47eb80e362717f4c72452f215845ed3acbfafc62cfe76aa9",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 180,
+      "weapon": "ef88",
+      "attachmentName": "Match Trigger",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "match_trigger"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/62_EF88_Ergonomics_Match_Trigger.png",
+      "screenshotSha256": "5093e6bcf434cfadcaa147757aa2ce83f7dfee7d624cd80a3653b22e7957376b",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 179,
+      "weapon": "ef88",
+      "attachmentName": "Aftermarket Buffer",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "buffer"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/61_EF88_Ergonomics_Aftermarket_Buffer.png",
+      "screenshotSha256": "8054147c67e213b01cef9a6e9650806c4948939642be057c542153c92977d6b2",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 181,
+      "weapon": "ef88",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/25_EF88_Laser_None.png",
+      "screenshotSha256": "fc5b5c545d2664b2894b67b119eb1e65bcb6d8f9cd6001a4dc8344b64db0e1a7",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 182,
+      "weapon": "ef88",
+      "attachmentName": "5 MW Red",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "5mw_red"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/26_EF88_Laser_5_MW_Red.png",
+      "screenshotSha256": "f1ebb07e259a88e2c69621c59d872d04c31ae0b48ee5542f2257cdde0f1cab57",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 183,
+      "weapon": "ef88",
+      "attachmentName": "50 MW Violet",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_violet"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/27_EF88_Laser_50_MW_Violet.png",
+      "screenshotSha256": "3381db7f10f2e0f2b8f0e90dd5f7496a241ab5d1a4e25aa27ef5aaa9d6f5b8c8",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 184,
+      "weapon": "ef88",
+      "attachmentName": "5 MW Green",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "5mw_green"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/28_EF88_Laser_5_MW_Green.png",
+      "screenshotSha256": "9425b241d5cd0d590f38b500a664be3237ae4bc715c34e164e4ab40ec7654e9b",
+      "fields": {
+        "hipfire": {
+          "audit": 54
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 185,
+      "weapon": "ef88",
+      "attachmentName": "50 MW Green",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_green"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/29_EF88_Laser_50_MW_Green.png",
+      "screenshotSha256": "e7f1567a40e7d6c4c05214b9537da208543ed56e859da6918e7150650816b1a0",
+      "fields": {
+        "hipfire": {
+          "audit": 62
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 186,
+      "weapon": "ef88",
+      "attachmentName": "50 MW Blue",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_blue"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/30_EF88_Laser_50_MW_Blue.png",
+      "screenshotSha256": "97cceb27058e58fb04453ed658ba9859d205130c3a4c16177d59d2060225f5ff",
+      "fields": {
+        "hipfire": {
+          "audit": 54
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 187,
+      "weapon": "ef88",
+      "attachmentName": "120 MW Blue",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "120mw_blue"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/31_EF88_Laser_120_MW_Blue.png",
+      "screenshotSha256": "a971c50602ab11a98c57c798285097b97252fe3bc6518696665edc6a60c998e1",
+      "fields": {
+        "hipfire": {
+          "audit": 62
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 188,
+      "weapon": "ef88",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/21_EF88_Light_None.png",
+      "screenshotSha256": "ec44e13d9a7a5b4fae7324bc19bf867480a4fb2ceb49d04342d5f0b88d983a81",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 189,
+      "weapon": "ef88",
+      "attachmentName": "Taclight - Aimed",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "ads_taclight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/22_EF88_Light_Taclight_-_Aimed.png",
+      "screenshotSha256": "6a4559b57301a4d17645a480aba7628aa0f438e61f9be23385c598e38c016acc",
+      "fields": {
+        "hipfire": {
+          "audit": 40
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 190,
+      "weapon": "ef88",
+      "attachmentName": "Flashlight",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "flashlight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/23_EF88_Light_Flashlight.png",
+      "screenshotSha256": "d41f03cabdd4d4758c0b956d7eb65e362d73d5a4c0acf3dc7751734594c20796",
+      "fields": {
+        "hipfire": {
+          "audit": 44
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 191,
+      "weapon": "ef88",
+      "attachmentName": "Taclight - Hipfire",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "hip_taclight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Assault Rifle/EF88/24_EF88_Light_Taclight_-_Hipfire.png",
+      "screenshotSha256": "076b684c715735a6d2f199c0071fb04561f0b569a06a6be65cc8996887fc0fa6",
+      "fields": {
+        "hipfire": {
+          "audit": 44
+        },
+        "precision": {
+          "audit": 28
+        },
+        "control": {
+          "audit": 41
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    }
+  ]
+}

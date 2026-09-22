@@ -1,0 +1,482 @@
+{
+  "records": [
+    {
+      "recordIndex": 2134,
+      "weapon": "l115",
+      "attachmentName": "27\" Full",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "basic"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/09_L115_Barrel_Basic.png",
+      "screenshotSha256": "f59077d0908f3727adde2778cb5e6bd90ddfc3b1a0f043c40daf75c7243cc24d",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 12
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 2135,
+      "weapon": "l115",
+      "attachmentName": "27\" Factory",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "light"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/10_L115_Barrel_Light.png",
+      "screenshotSha256": "9270be1c981ee3df0c8acc1ed0676285e03d5d084b16c27a75eb538fc2be494b",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 12
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 2148,
+      "weapon": "l115",
+      "attachmentName": "QD Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "qd_grip_pod_sr"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/30_L115_Grip_QD_Grip_Pod.png",
+      "screenshotSha256": "ec38169653bcd5ffc9112ac23f3bb5965e1796471ed440359f7171b7b6e8bb4f",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 12
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 2163,
+      "weapon": "l115",
+      "attachmentName": "50 MW Violet",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_violet"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/21_L115_Laser_50_MW_Violet.png",
+      "screenshotSha256": "2ce7379531973914a35504db3d68d8297e254f0f0847395cc6ece9240ed44bb1",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 12
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 2128,
+      "weapon": "l115",
+      "attachmentName": "Standard Suppressor",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "muzzle",
+          "std_supp"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/L115/03_L115_Muzzle_Standard_Suppressor.png",
+      "screenshotSha256": "2fbf5a3188324d2fab83337b24109193a73938cfdad08b38d51d8b2b6c103f00",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 12
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 2344,
+      "weapon": "ks18k",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/20_18.5KS-K_Grip_None.png",
+      "screenshotSha256": "1eabf9c6e6ce363db2065f76a3951a381cd90db2e62364fea1720afc7f478940",
+      "fields": {
+        "hipfire": {
+          "audit": 42
+        },
+        "precision": {
+          "audit": 14
+        },
+        "control": {
+          "audit": 15
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 2356,
+      "weapon": "ks18k",
+      "attachmentName": "Slim Angled",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "slim_angled"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Shotgun/18.5KS-K/32_18.5KS-K_Grip_Slim_Angled.png",
+      "screenshotSha256": "9719751a68b014efdee07e37b825e412aa0065634936f2d546304be9363b81e3",
+      "fields": {
+        "hipfire": {
+          "audit": 42
+        },
+        "precision": {
+          "audit": 14
+        },
+        "control": {
+          "audit": 16
+        },
+        "mobility": {
+          "audit": 66
+        }
+      }
+    },
+    {
+      "recordIndex": 2091,
+      "weapon": "vssm",
+      "attachmentName": "Ribbed Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/17_VSSM_Grip_Ribbed_Vertical.png",
+      "screenshotSha256": "322c3eeb53e81a05c6ec8f221ab8273c1ebccb2ce8f677f917080d7e4de9fe60",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 83
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 2101,
+      "weapon": "vssm",
+      "attachmentName": "Canted Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "canted_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/27_VSSM_Grip_Canted_Stubby.png",
+      "screenshotSha256": "7932bfec3304e5767bf3a3d3d0c7680cba2dcec2924f54d0395fef47bd884a9b",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 83
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2104,
+      "weapon": "vssm",
+      "attachmentName": "QD Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "qd_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/30_VSSM_Grip_QD_Grip_Pod.png",
+      "screenshotSha256": "35f558e0ccc55b6f89882f4a82d46b716685284f4099ba7c7c5135f965171398",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 83
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2117,
+      "weapon": "vssm",
+      "attachmentName": "Folding Stock",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "full_auto_vssm"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+      "screenshotSha256": "fab5eccf586dd70ff5da8db2d41d3682af2e7dd88de0287f297d45e7956f968e",
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 18
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2196,
+      "weapon": "m2010esr",
+      "attachmentName": "FMJ",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "standard"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/36_M2010 ESR_Ammo_Standard.png",
+      "screenshotSha256": "f7354db0c451dd50fb1e3a1554a7caf8f2b15380259939e3e791f598f14a638a",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 17
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 2197,
+      "weapon": "m2010esr",
+      "attachmentName": "Tungsten Core",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "penetration"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/M2010 ESR/37_M2010 ESR_Ammo_Penetration.png",
+      "screenshotSha256": "44e742cf2ca0eb0e8b606a83b367e9924cf542a76df97a6d4a57ba5e4b946cc8",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 11
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 2279,
+      "weapon": "psr",
+      "attachmentName": "FMJ",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "standard"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/33_PSR_Ammo_Standard.png",
+      "screenshotSha256": "abddabd9e159627983faf36a6ba73eb85de4d919fb5bad7948afc78bcdb515e6",
+      "fields": {
+        "hipfire": {
+          "audit": 29
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 14
+        },
+        "mobility": {
+          "audit": 38
+        }
+      }
+    },
+    {
+      "recordIndex": 2280,
+      "weapon": "psr",
+      "attachmentName": "Tungsten Core",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "penetration"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/PSR/34_PSR_Ammo_Penetration.png",
+      "screenshotSha256": "126b9ce3417ffa93e1639bb72295d28a9a13d2d293f96b79efd8d0a05802600d",
+      "fields": {
+        "hipfire": {
+          "audit": 29
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 9
+        },
+        "mobility": {
+          "audit": 38
+        }
+      }
+    },
+    {
+      "recordIndex": 2317,
+      "weapon": "sv98",
+      "attachmentName": "FMJ",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "standard"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/31_SV-98_Ammo_Standard.png",
+      "screenshotSha256": "0bd953d93f5f2b869ad6b10c651c3452bce815fd43eba100079950203af214d9",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 22
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    },
+    {
+      "recordIndex": 2318,
+      "weapon": "sv98",
+      "attachmentName": "Tungsten Core",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "penetration"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/SV-98/32_SV-98_Ammo_Penetration.png",
+      "screenshotSha256": "98b91e9a1f3f7de706ce61613a270847bf6f72db4fc16a694aa445e3ef83d605",
+      "fields": {
+        "hipfire": {
+          "audit": 34
+        },
+        "precision": {
+          "audit": 100
+        },
+        "control": {
+          "audit": 14
+        },
+        "mobility": {
+          "audit": 46
+        }
+      }
+    }
+  ],
+  "date": "2026-09-21",
+  "scope": "Second targeted capture set: 17 detail panels. Six overview panels preserved in capture manifest; not included in these comparison counts."
+}

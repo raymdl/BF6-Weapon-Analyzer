@@ -1,0 +1,375 @@
+{
+  "date": "2026-09-21",
+  "selector": "68ba8281-7079-48a3-b53a-ff5bf30c63da",
+  "status": "Exported selector bindings and signed operands verified; current screenshot comparison is separate from native runtime proof.",
+  "versions": {
+    "1.4.2.5": {
+      "bindings": {
+        "m2010esr": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\BoltAction\\M2010ESR\\GS_M2010ESR.xml",
+          "sha256": "e96b48ec9b97e63afc6cfbc6e91e33d691f2b4d15648f6947358bf011c57e793",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "psr": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\BoltAction\\MRAD\\GS_MRAD.xml",
+          "sha256": "fffb6f21308be8073b332ace5da84438fb94bea166df112bc80db4586451a519",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "sv98": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\BoltAction\\SV98M\\GS_SV98M.xml",
+          "sha256": "4742e195fc2899b7e1a1ec33830ee533d5a6e0393ea84facc83709dcc60aa9c4",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "l115": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\BoltAction\\L115A3\\GS_L115A3.xml",
+          "sha256": "ebe68c3464094b4606385f7505838e83bcd5ffd2264b385cf8a35902a1e96a0f",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x0000000e"
+            }
+          ]
+        },
+        "ef88": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\AssaultRifle\\EF88\\GS_EF88.xml",
+          "sha256": "777a128148c07b599dc7f11b1b8a392ba2f2e36597d825ccda3105aa14a19428",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x00000025"
+            }
+          ]
+        },
+        "minifix": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\BoltAction\\MiniFix\\GS_MiniFix.xml",
+          "sha256": "a76c98bb1ed7b31fa547bbced49caafed957d13a73726ddfb2a9c54f1caacc32",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x0000000f"
+            },
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "interdictor": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\GS_DesertTechHTI.xml",
+          "sha256": "565130b203225be7bab42c674d1a8502dadd8a004da1b6b32c8c7896e74f70d1",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x00000009"
+            }
+          ]
+        }
+      },
+      "modifiers": {
+        "GRM_Recoil_AMO_Bolt_M10": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_Recoil_AMO_Bolt_M10.xml",
+          "sha256": "fee7dd49da3e27a73ce9dc8fc3ae45579e2c0766283f4683163444b1542357c4",
+          "guid": "ba3a947f-190c-41ae-8534-614cafbde9f7",
+          "target": "Field_84e57075",
+          "operands": {
+            "adsAmount": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xfffffffa",
+              "signedValue": -6
+            },
+            "adsVariation": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            },
+            "hipAmount": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xfffffffa",
+              "signedValue": -6
+            },
+            "hipVariation": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            }
+          }
+        },
+        "GRM_Recoil_AMO_M10": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_Recoil_AMO_M10.xml",
+          "sha256": "30899f1e1afa35844bc804175a60f898536b2ab6bf10489fca175704783d6e3f",
+          "guid": "9990462b-2c01-4bf1-95b3-a072a3295393",
+          "target": "Field_84e57075",
+          "operands": {
+            "adsAmount": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xffffffff",
+              "signedValue": -1
+            },
+            "adsVariation": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            },
+            "hipAmount": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xffffffff",
+              "signedValue": -1
+            },
+            "hipVariation": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            }
+          }
+        }
+      },
+      "selectorAssets": [
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\TungstenCore\\U_WPM_AMO_TungstenCore_W05.xml",
+          "sha256": "655cf167815b93d6d16c0671fbda6012531ea8bf1657f3a1645567a6438171c3",
+          "objects": [
+            {
+              "class": "Class_bc0062dc",
+              "guid": "68ba8281-7079-48a3-b53a-ff5bf30c63da"
+            }
+          ],
+          "references": []
+        },
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.2.5\\xml\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\TungstenCore\\WPM_AMO_TungstenCore_W05.xml",
+          "sha256": "9d1ac8eef9410f7cf2ee36b6e845f4a45b30b332ea9d593a3218f3afd29df692",
+          "objects": [
+            {
+              "class": "Class_b2468102",
+              "guid": "49207d04-9076-41e3-a1de-b88d553b8703"
+            },
+            {
+              "class": "Class_897c99a7",
+              "guid": "b0803151-193b-4ec5-8afb-451263597ac6"
+            }
+          ],
+          "references": [
+            "68ba8281-7079-48a3-b53a-ff5bf30c63da",
+            "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15 [510270a9-c1d6-4699-9442-b1523463053c]"
+          ]
+        }
+      ]
+    },
+    "1.4.3.0": {
+      "bindings": {
+        "m2010esr": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\BoltAction\\M2010ESR\\GS_M2010ESR.xml",
+          "sha256": "e96b48ec9b97e63afc6cfbc6e91e33d691f2b4d15648f6947358bf011c57e793",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "psr": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\BoltAction\\MRAD\\GS_MRAD.xml",
+          "sha256": "fffb6f21308be8073b332ace5da84438fb94bea166df112bc80db4586451a519",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "sv98": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\BoltAction\\SV98M\\GS_SV98M.xml",
+          "sha256": "4742e195fc2899b7e1a1ec33830ee533d5a6e0393ea84facc83709dcc60aa9c4",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "l115": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\BoltAction\\L115A3\\GS_L115A3.xml",
+          "sha256": "ebe68c3464094b4606385f7505838e83bcd5ffd2264b385cf8a35902a1e96a0f",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x0000000e"
+            }
+          ]
+        },
+        "ef88": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\AssaultRifle\\EF88\\GS_EF88.xml",
+          "sha256": "777a128148c07b599dc7f11b1b8a392ba2f2e36597d825ccda3105aa14a19428",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x00000025"
+            }
+          ]
+        },
+        "minifix": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\BoltAction\\MiniFix\\GS_MiniFix.xml",
+          "sha256": "a76c98bb1ed7b31fa547bbced49caafed957d13a73726ddfb2a9c54f1caacc32",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x0000000f"
+            },
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_Bolt_M10 [ba3a947f-190c-41ae-8534-614cafbde9f7]",
+              "mask": "0x0000001c"
+            }
+          ]
+        },
+        "interdictor": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\GS_DesertTechHTI.xml",
+          "sha256": "565130b203225be7bab42c674d1a8502dadd8a004da1b6b32c8c7896e74f70d1",
+          "rows": [
+            {
+              "modifier": "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_AMO_M10 [9990462b-2c01-4bf1-95b3-a072a3295393]",
+              "mask": "0x00000009"
+            }
+          ]
+        }
+      },
+      "modifiers": {
+        "GRM_Recoil_AMO_Bolt_M10": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_Recoil_AMO_Bolt_M10.xml",
+          "sha256": "fee7dd49da3e27a73ce9dc8fc3ae45579e2c0766283f4683163444b1542357c4",
+          "guid": "ba3a947f-190c-41ae-8534-614cafbde9f7",
+          "target": "Field_84e57075",
+          "operands": {
+            "adsAmount": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xfffffffa",
+              "signedValue": -6
+            },
+            "adsVariation": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            },
+            "hipAmount": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xfffffffa",
+              "signedValue": -6
+            },
+            "hipVariation": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            }
+          }
+        },
+        "GRM_Recoil_AMO_M10": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_Recoil_AMO_M10.xml",
+          "sha256": "30899f1e1afa35844bc804175a60f898536b2ab6bf10489fca175704783d6e3f",
+          "guid": "9990462b-2c01-4bf1-95b3-a072a3295393",
+          "target": "Field_84e57075",
+          "operands": {
+            "adsAmount": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xffffffff",
+              "signedValue": -1
+            },
+            "adsVariation": {
+              "path": "Field_6b84de87/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            },
+            "hipAmount": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_22ce7cf3/Struct_d204f959/Field_4692836a",
+              "raw": "0xffffffff",
+              "signedValue": -1
+            },
+            "hipVariation": {
+              "path": "Field_7b609515/Struct_26e24b34/Field_02433593/Struct_d204f959/Field_4692836a",
+              "raw": "0x00000000",
+              "signedValue": 0
+            }
+          }
+        }
+      },
+      "selectorAssets": [
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\TungstenCore\\U_WPM_AMO_TungstenCore_W05.xml",
+          "sha256": "655cf167815b93d6d16c0671fbda6012531ea8bf1657f3a1645567a6438171c3",
+          "objects": [
+            {
+              "class": "Class_bc0062dc",
+              "guid": "68ba8281-7079-48a3-b53a-ff5bf30c63da"
+            }
+          ],
+          "references": []
+        },
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\TungstenCore\\WPM_AMO_TungstenCore_W05.xml",
+          "sha256": "9d1ac8eef9410f7cf2ee36b6e845f4a45b30b332ea9d593a3218f3afd29df692",
+          "objects": [
+            {
+              "class": "Class_b2468102",
+              "guid": "49207d04-9076-41e3-a1de-b88d553b8703"
+            },
+            {
+              "class": "Class_897c99a7",
+              "guid": "b0803151-193b-4ec5-8afb-451263597ac6"
+            }
+          ],
+          "references": [
+            "68ba8281-7079-48a3-b53a-ff5bf30c63da",
+            "[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Penetration/WME_Penetration_P15 [510270a9-c1d6-4699-9442-b1523463053c]"
+          ]
+        }
+      ]
+    }
+  },
+  "researchOverrides": {
+    "m2010esr": {
+      "adsRecoilTierMod": -6,
+      "hipRecoilTierMod": -6
+    },
+    "psr": {
+      "adsRecoilTierMod": -6,
+      "hipRecoilTierMod": -6
+    },
+    "sv98": {
+      "adsRecoilTierMod": -6,
+      "hipRecoilTierMod": -6
+    }
+  },
+  "caution": "Do not apply a class-wide sniper override. L115 and Interdictor use -1. Mini Scout binds both modifiers; its saved Control 17 panel supports their -7 sum.",
+  "observedControl": {
+    "m2010esr": 11,
+    "psr": 9,
+    "sv98": 14
+  },
+  "recoilMultiplier": {
+    "perStep": 0.94,
+    "normal": 1.0638297872340425,
+    "bolt": 1.4495489256962042
+  },
+  "miniScoutPanel": {
+    "path": "reference-data/attachment-audit/Weapon Attachments/Sniper Rifle/Mini Scout/42_Mini Scout_Ammo_Penetration.png",
+    "sha256": "f2257af747c812634e9cefc8479d903f18336a8fb8203f0a3b9131f48294c30f",
+    "control": 17,
+    "recoilAmountDegrees": 1.5,
+    "sixStepPredictedControl": 18,
+    "sevenStepPredictedControl": 17
+  },
+  "siteIntegration": "Three -6 overrides promoted to data/ammo.json on 2026-09-21. Research checker now uses production ammo inputs; researchOverrides retained as traced operand evidence."
+}

@@ -47,6 +47,7 @@ any remaining questions into an active handoff, and archive the completed record
 | [Data sources](DATA_SOURCES.md) | Data maintainers: source authority, Frosty review pipeline, provenance, promotion rules. |
 | [Data reference](DATA_REFERENCE.md) | Developers/data maintainers: JSON contracts, field meanings, units, all live array families. |
 | [Stat ladders](STAT_LADDERS.md) | Model maintainers: complete finite tables, geometric factors, index signs, bounds, examples. |
+| [Weapon Attributes model](WEAPON_ATTRIBUTES_MODEL.md) | Research/model maintainers: Hipfire, Precision, Control and Mobility formulas, game naming, source inputs, preview rules and validation limits. Includes the current site integration. |
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
 | [Frosty game data](frosty/README.md) | Data maintainers: Frosty exports, field meanings, asset links, source findings and open questions. |
 | [Attachment bugs and mismatches](ATTACHMENT_BUGS.md) | All readers: attachment game data bugs, description errors and fixed site data errors, with evidence and status. |
@@ -58,6 +59,12 @@ any remaining questions into an active handoff, and archive the completed record
 
 ## Open research
 
+[GRT-BC corrected pattern review](working/GRTBC_RECOIL_PATTERN_REVIEW.md) compares
+all supplied firing sets against the source model. Burst activation remains unresolved.
+
+[Archived Weapon Attributes release check](archive/WEAPON_ATTRIBUTES_RELEASE_CHECK.md) records
+resolved lookup checks and the limits that remain in the published model.
+
 [Active Frosty recoil and spread handoff](working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md)
 contains current status, remaining source questions, and capture plans. Completed
 recording analyses and implementation handoffs are in the
@@ -66,8 +73,10 @@ recording analyses and implementation handoffs are in the
 Open Frosty questions are collected in one list:
 [Frosty open questions](frosty/OPEN_QUESTIONS.md).
 
-The [composite stats findings](working/COMPOSITE_STATS_FINDINGS.md) collect the
-Hipfire, Precision, Control and Mobility evidence, including the Frosty Precision tables.
+The [Weapon Attributes model](WEAPON_ATTRIBUTES_MODEL.md) is the current guide for
+Hipfire, Precision, Control and Mobility. Completed findings and the A/B capture
+plan are in the [archive](archive/README.md#weapon-attributes--21-september-2026).
+Remaining native-data questions are in the Frosty open questions page above.
 
 Weapon descriptions, role tags, composite-stat UI assets and setting labels are in
 the [UI text notes](frosty/UI_TEXT.md).

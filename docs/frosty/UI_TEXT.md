@@ -334,10 +334,14 @@ runtime description reference and deferred choice, current hashes and all optic
 members. Totals: 2,967 described non-optic choices, 63 iron-sight tooltips, 45 deferred
 choices, 350 optic categories.
 
-## Composite stats UI
+## Weapon Attributes UI
 
-The composite stats (Hipfire, Precision, Control, Mobility) are covered in
-[composite stats findings](../working/COMPOSITE_STATS_FINDINGS.md). The UI side:
+The game names this system **Weapon Attributes**. The four bars are Hipfire,
+Precision, Control and Mobility. Calculation assets use `WeaponAttributesConfig_*`;
+UI assets include `WeaponAttributes`, `WeaponAttributesCell` and
+`WeaponAttributeProgressBar`. The current [model guide](../WEAPON_ATTRIBUTES_MODEL.md)
+separates source facts from inferred rules. Historical research is covered in
+[composite stats findings](../archive/COMPOSITE_STATS_FINDINGS.md). The UI side:
 
 | Asset | Content |
 |---|---|

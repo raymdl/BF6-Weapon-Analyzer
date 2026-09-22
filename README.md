@@ -11,6 +11,8 @@ without an application backend or compilation step.
 
 - **Loadout comparison:** weapon-specific attachments, ammunition, magazines, point
   totals, overview statistics, and attachment-effect breakdowns.
+- **Weapon Attributes:** calculated Hipfire, Precision, Control, and Mobility scores
+  for both loadouts, with tooltips and related-stat highlights.
 - **Damage:** damage-versus-range, bullets to kill, and time to kill, with
   headshot scenarios, chest/limb bands, and optional ADS/flight time.
 - **Recoil and spread:** reproducible spray samples, recoil paths, spread
@@ -78,6 +80,7 @@ Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
 | Source records and review evidence | [Data sources](docs/DATA_SOURCES.md) |
 | File contracts, fields, and arrays | [Data reference](docs/DATA_REFERENCE.md) |
 | Stat ladders and indexing | [Stat ladders](docs/STAT_LADDERS.md) |
+| Game-menu rating formulas and evidence | [Weapon Attributes guide](docs/WEAPON_ATTRIBUTES_MODEL.md) |
 | Loadout calculations | [Attachment model](docs/ATTACHMENT_MODEL.md) |
 | Formulas and simulation assumptions | [Damage and ballistics](docs/DAMAGE_BALLISTICS.md) · [Recoil and spread](docs/RECOIL_SPREAD_MODEL.md) |
 | Maintenance and validation | [Maintenance](MAINTENANCE.md) · [Tests](docs/TESTS.md) |

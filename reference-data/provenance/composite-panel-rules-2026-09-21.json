@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-21",
+  "scope": "Research checker rules; no production UI or simulator behavior changed.",
+  "rules": {
+    "shotgunHipfire": {
+      "evidence": "reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json",
+      "status": "Source-backed candidate with verified screenshot matches; native input binding unverified"
+    },
+    "burstControlPreview": {
+      "rule": "For burst_training, burst_mode and grtbc_burst_mode, calculate Control with the non-burst recoil build, as already done for Precision.",
+      "evidence": "Original KV9 Burst Training screenshot shows Control 60, recoil amount 0.5, variation 50, and no Control delta. The report records the same non-burst preview behavior for all eight burst entries.",
+      "primaryReviewedScreenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/KV9/50_KV9_Ergonomics_BURST_TRAINING.png",
+      "resolvedDifferences": 6,
+      "newDifferences": 0,
+      "status": "Observed menu-preview behavior; does not change firing simulation"
+    },
+    "compactHandstopMobility": {
+      "rule": "Add 4 when the resolved grip is cmpct_handstop.",
+      "source": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/xml/xml-overlay/Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Foregrip/HandStop/WPM_BTM_HandStopPDW_W10.xml",
+      "sourceSha256": "d33765e04e4153ded49fc8f831de385fc48a222c0cf81427483bc385a7ec80af",
+      "sourceField": "Class_a00773e3.Field_18774676=True",
+      "nativeDelegateInput": "CanFireWhileSprinting",
+      "delegateEvidence": "reference-data/provenance/composite-mobility-inputs-2026-09-06.json",
+      "primaryReviewedScreenshot": "reference-data/attachment-audit/Weapon Attachments/SMG/KV9/37_KV9_Grip_Compact_Handstop.png",
+      "description": "Enables weapon to be fired while sprinting.",
+      "resolvedDifferences": 12,
+      "newDifferences": 0,
+      "status": "Source boolean, delegate coefficient, description and observed +4 agree; native hash name is not independently decoded"
+    },
+    "hipfireFractionGate": {
+      "rule": "Multiply by sqrt(1.2) when resolved hip spread increase per shot differs from the base value.",
+      "inputCandidate": "IncreasePerShotFraction = resolved hip inc / base hip inc",
+      "vssm": {
+        "baseInc": 0.398,
+        "foldingStockInc": 0.736,
+        "before": 47,
+        "after": 51,
+        "observed": 51
+      },
+      "delegateEvidence": "reference-data/provenance/composite-hipfire-decode-2026-09-06.json",
+      "resourceEvidence": "outputs/frosty/composite-stats/WeaponAttributesConfig_HipfireAttributeDelegate.bin",
+      "resourceSha256": "7d4470d20e1b6ac1e90a6b76c36cf049ca69511b32ce8eb667ecd0a086079a64",
+      "branchEvidence": "Named input offset 16; code offset 32 compares it with constant 1 through unresolved hash c07cd1f5; offset 68 selects constants 1.2 and 1. Comparator direction/semantics remain inferred.",
+      "primaryReviewedScreenshot": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+      "resolvedDifferences": 1,
+      "newDifferences": 0,
+      "status": "Inferred rule supported by all audited light changes and one increased-inc selector. Only VSSM Folding Stock differs from the old attachment-name gate across the audit; independent generalization is limited."
+    }
+  },
+  "versionChecks": {
+    "vssmControl": {
+      "source": "data/weapons.json provenance documents 1.4.3.0 recoil amount 0.6787 -> 0.6834 and variation 45 -> 45.4.",
+      "attachments": [
+        "ribbed_vert",
+        "canted_stubby",
+        "qd_grip_pod"
+      ],
+      "currentCandidate": 40.30296080501435,
+      "usingPriorBuildInputs": 40.58971751246106,
+      "observed": 41,
+      "conclusion": "The prior exported inputs round to the historical reading. Keep current source data; do not alter Control to fit these three old captures."
+    }
+  },
+  "limits": [
+    "Single-attachment menu captures do not validate every multi-attachment combination or live fire mode.",
+    "Screenshot transcriptions can be corrected; original captures are not rewritten.",
+    "L115 Standard Suppressor Hipfire 34 vs 29 remains a verified discrepancy.",
+    "Some audited captures predate the exported source versions."
+  ]
+}

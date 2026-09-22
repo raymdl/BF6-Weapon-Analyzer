@@ -2,7 +2,7 @@
   "SIGHTS": [
     {
       "id": "iron",
-      "name": "Iron Sights (1.50x)",
+      "name": "Iron Sights (1.5x)",
       "pts": 5
     },
     {
@@ -4391,7 +4391,7 @@
           "deployTimeTierShift": -1
         },
         "ks18k": {
-          "movingAdsSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -6130,6 +6130,7 @@
           "deployTimeTierShift": 0
         },
         "l115": {
+          "movingAdsSpreadTierMod": 0,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
