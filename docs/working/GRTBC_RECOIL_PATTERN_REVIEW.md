@@ -148,6 +148,9 @@ Control 55, amount 0.5 and variation 13.0 stay unchanged. This shows that a menu
 respond to the fire-mode selection without showing the configured recoil changes.
 KORD equipped Burst Training and SG 553R/PW5A3 hovered Burst Training also show
 unchanged recoil variation. SG/PW equipped parity is not established by those views.
+The historical CZ3A1, KV9 and UMG-40 Burst Training panels equal their None panels.
+All eight burst-capable weapons therefore show the same menu behavior. The menu
+observation is not specific to GRT-BC and is not evidence about GRT-BC firing.
 M16 A3 preview changes amount and Precision/Control but retains variation 29.2.
 It is a distinct conversion, not evidence for a universal burst rule.
 
@@ -159,6 +162,31 @@ Comp behind direct muzzle selection and burst recoil behind a nested fire-mode
 selector. The traced references and selector mask agree; no broken link was found.
 A different menu evaluation path remains plausible. These images do not establish
 whether the nested selector fails during firing.
+
+## Frosty attachment trace
+
+The [saved Frosty assumption trace](../../reference-data/provenance/frosty-assumption-review.json)
+records exported 1.4.2.5 modifier inputs and source hashes. Its GRT-BC Burst Mode
+row starts at `Attachment_MSBSGROTB_ERG_BurstFireEnable.xml`. The weapon blueprint
+`MSBSGROTB_WB.xml` has a nested fire-mode selector with ID
+`588728fd-2ae7-4424-aa22-45d9b3c82ba0` and mode mask `8`. That selector binds
+`GRM_RecoilConversion_ERG_P10.xml`, `GRM_Recoil_ERG_P20.xml`, and
+`GRM_AutoIdentifier_P00.xml`. The recorded references and mask agree; the trace
+found no broken asset link.
+
+For both ADS and hipfire, the burst conversion contributes -1 recoil-amount tier
+and +3 variation tiers. The GRT-BC-specific recoil package contributes +2 amount
+tiers and no variation tier. The net source input is therefore +1 amount tier and
++3 variation tiers. The separate Linear Comp row starts at
+`Attachment_MSBSGROTB_MZL_KVPMachLinearComp.xml`; its directly selected
+`GRM_RecoilConversion_MZL_P10.xml` contributes -1 amount tier and +3 variation
+tiers, with no nested fire-mode selector in that row. These tier operands are the
+source basis for the modeled values above, not measurements from the screenshots.
+
+The trace covers exported bindings and operands. It does not show which bindings
+the game menu evaluates, whether the firing runtime activates the nested selector,
+or the actual timing and recovery between bursts. The unchanged Burst Mode menu
+values and the firing patterns therefore remain separate observations.
 
 ## Current decision
 
@@ -177,3 +205,78 @@ folders. These local images and scripts are ignored, not clean-clone dependencie
 The numerical results and modeled cases are retained in
 [the provenance record](../../reference-data/provenance/grtbc-direction-review-2026-09-21.json).
 Current model: [Weapon Attributes](../WEAPON_ATTRIBUTES_MODEL.md).
+
+## Screenshot archive
+
+The firing-test reports display the original screenshots used for each measurement set:
+
+- [Three-shot group comparison](../../outputs/burst-group-analysis/REPORT.md#original-screenshots) (four images).
+- [Four-condition three-shot test](../../outputs/burst-factorial-analysis/REPORT.md#original-screenshots) (four images).
+- [Long-string test](../../outputs/burst-long-string-analysis/REPORT.md#original-screenshots) (four images).
+- [Cadence-matched macro comparison](../../outputs/burst-cadence-comparison/REPORT.md#original-screenshots) (four images; two reuse images from the long-string test).
+
+The menu-panel screenshots are preserved below. The [panel provenance record](../../reference-data/provenance/burst-panel-inputs-2026-09-21.json) records their hashes.
+
+### grtbc burst equipped compensated brake hover
+
+![grtbc burst equipped compensated brake hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_burst-equipped-compensated-brake-hover.png)
+
+### grtbc burst equipped
+
+![grtbc burst equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_burst-equipped.png)
+
+### grtbc burst hover
+
+![grtbc burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_burst-hover.png)
+
+### grtbc none equipped
+
+![grtbc none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_none-equipped.png)
+
+### kord6p67 burst equipped
+
+![kord6p67 burst equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/kord6p67_burst-equipped.png)
+
+### kord6p67 none equipped
+
+![kord6p67 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/kord6p67_none-equipped.png)
+
+### m16a4 a3 hover
+
+![m16a4 a3 hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/m16a4_a3-hover.png)
+
+### m16a4 none equipped
+
+![m16a4 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/m16a4_none-equipped.png)
+
+### pw5a3 burst hover
+
+![pw5a3 burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/pw5a3_burst-hover.png)
+
+### pw5a3 none equipped
+
+![pw5a3 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/pw5a3_none-equipped.png)
+
+### sg553r burst hover
+
+![sg553r burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sg553r_burst-hover.png)
+
+### sg553r none equipped
+
+![sg553r none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sg553r_none-equipped.png)
+
+### sl9 burst equipped compensated brake hover
+
+![sl9 burst equipped compensated brake hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_burst-equipped-compensated-brake-hover.png)
+
+### sl9 burst equipped
+
+![sl9 burst equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_burst-equipped.png)
+
+### sl9 burst hover
+
+![sl9 burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_burst-hover.png)
+
+### sl9 none equipped
+
+![sl9 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_none-equipped.png)

@@ -296,7 +296,16 @@ suppressor is not part of those builds.
 | EF88, BROD 3 and KTS100 replacements | 131 | 131 matches |
 | Remaining targeted attachment panels | 17 | 17 matches |
 | Six paired loadouts | 12 | 12 matches |
-| Total | **160** | **160 matches each; 640 displayed values** |
+| VSSM full re-capture (22 September) | 43 | 43 matches |
+| Total | **203** | **203 matches each; 812 displayed values** |
+
+A broader check on 22 September ran the site model on the historical audit
+(July/August captures, all 63 weapons, the same correction ledgers and identity
+corrections as the research checkers). EF88, BROD 3, VSSM and the other
+re-captured panels were excluded, because newer captures replace them. All four
+attributes match on all 2,948 remaining panels. The earlier VSSM differences were
+a build change: the July VSSM baseline reads Precision 80, recoil 0.8°/9.1° and
+muzzle velocity 303 m/s; the current baseline reads 78, 0.9°/9.2° and 321 m/s.
 
 These counts describe the checked current panels, not an exhaustive enumeration
 of every legal build. Some are previews. Historical measurements, obsolete 0/1
@@ -315,6 +324,7 @@ alternate KS dispersion field. No matching bar establishes shot-pattern behavior
 - [131-panel evidence](../reference-data/provenance/composite-current-results-2026-09-21.json)
 - [17-panel evidence](../reference-data/provenance/composite-remaining-results-2026-09-21.json)
 - [Paired-loadout evidence](../reference-data/provenance/composite-combination-results-2026-09-21.json)
+- [VSSM 43-panel input](../reference-data/attachment-audit/composite-vssm-panels-2026-09-22.json)
 - [Research rules and their confidence](../reference-data/provenance/composite-panel-rules-2026-09-21.json)
 - [Mobility source trace](../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
 - [Dated investigation history](archive/COMPOSITE_STATS_FINDINGS.md)
@@ -411,10 +421,13 @@ See [capture evidence](../reference-data/provenance/burst-panel-inputs-2026-09-2
 ## Burst Training follow-up
 
 KORD equipped Burst Training retains 40/33/55/52. SG 553R and PW5A3 hover
-captures retain 47/23/37/60 and 47/35/53/68. The panel rule now covers these
-weapons; equipped parity on the latter two remains unverified. M16 A3 remains
+captures retain 47/23/37/60 and 47/35/53/68. The historical audit panels for
+CZ3A1, KV9 and UMG-40 Burst Training (July/August captures) also equal their
+None panels: 47/21/48/68, 47/23/60/68 and 47/53/49/68. The panel rule therefore
+applies to the burst attachment on all eight burst-capable weapons (22 September);
+equipped parity on SG 553R and PW5A3 remains unverified. M16 A3 remains
 separate: its preview changes Precision 27 to 24 and Control 41 to 39 while
-variation stays 29.2 degrees. Regression tests cover all eight new panels.
+variation stays 29.2 degrees. Regression tests cover these eleven panels.
 
 The three-slot coverage scan returns scores for 866,440 normalized builds within
 100 points, with zero missing Precision results. This is lookup availability,
@@ -422,12 +435,14 @@ not screenshot validation or exhaustive full-loadout coverage.
 
 The saved Frosty assumption trace distinguishes direct Linear Comp selection
 from burst recoil behind a nested fire-mode selector (mask 8). Both conversion
-assets carry -1 amount and +3 variation tiers; burst adds +1 amount (GRT-BC +2).
-A panel consumer may omit the nested selector. Misactivation during firing is
-still a hypothesis, not an established attachment bug.
+assets carry -1 amount and +3 variation tiers. The GRT-BC burst recoil package
+adds +2 amount tiers, so the net burst input is +1 amount and +3 variation.
+On the other seven burst weapons, the net burst input is +3 variation and no
+amount change. A panel consumer may omit the nested selector. Misactivation
+during firing is still a hypothesis, not an established attachment bug.
 
 The GRT-BC firing tests did not consistently show the predicted variation benefit.
-This remains a [suspected attachment bug](ATTACHMENT_BUGS.md#14-grt-bc-burst-mode-recoil-variation-may-not-apply-during-firing),
+This remains an [open question](ATTACHMENT_BUGS.md#14b-do-burst-recoil-modifiers-apply-during-firing-open-grt-bc-tests),
 not a confirmed reason to remove source modifiers from the firing simulation.
 The [archived release check](archive/WEAPON_ATTRIBUTES_RELEASE_CHECK.md) records
 validation and the superseded investigation checkpoints.

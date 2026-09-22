@@ -1,11 +1,14 @@
 // Weapon Attribute model. See docs/WEAPON_ATTRIBUTES_MODEL.md for evidence and limits.
 import { applyAttachments } from './applyAttachments.js';
 import { resolveMountAttachments } from './loadout.js';
+import { requireNumber } from './required-data.js';
 
 export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
   const SHOTGUN_DISPERSION = attributes.shotgunDispersion;
   const MOBILITY_SOURCE_INPUTS = attributes.mobilityInputs;
   const HIPFIRE_FRACTION_GATE = Math.sqrt(1.2);
+  // Same observed menu-preview rule as the research checkers: burst-selector recoil is not previewed.
+  const BURST_ERGOS = new Set(['burst_training', 'burst_mode', 'grtbc_burst_mode']);
   const rad = degrees => degrees * Math.PI / 180;
   // Candidates recorded in docs/archive/COMPOSITE_STATS_FINDINGS.md (6 SEP 2026 evidence files).
   const control = (R, V) => 96 / Math.pow(1.1 * R * (V === 0 ? 1 : Math.sin(rad(V)) / rad(V)) + 0.75, 2.25) + 4;
@@ -13,13 +16,14 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
   // The delegate's own 18-value ladder (composite-hipfire-decode-2026-09-06.json). Row 0 is 8.032 where the
   // site's spread table holds 7.4: suppressed LMGs read 22 (8.032), not 23 (7.4).
   const HIPFIRE_LADDER = [8.032, 4.848, 3.352, 2.432, 1.804, 1.352, 1.024, 0.784, 0.608, 0.476, 0.38, 2.16, 1.444, 0.972, 0.656, 0.444, 0.304, 0.208];
-  function exactRecoil(weapon, build) {
-    const mult = balance.RECOIL_MULT[weapon.id];
+  function exactRecoil(weapon, build, mult) {
+    // A missing multiplier must not fall back to a default: Math.pow(NaN, 0) would still return a score.
+    if (!Number.isFinite(mult)) return { R: NaN, V: NaN };
     const ads = weapon.recoil?.ads ?? {};
-    const amountTier = mult && mult !== 1 ? Math.round(Math.log(build.recoilV / weapon.recoilV) / Math.log(mult)) : 0;
+    const amountTier = mult !== 1 ? Math.round(Math.log(build.recoilV / weapon.recoilV) / Math.log(mult)) : 0;
     const baseVar = ads.dirVar * Math.pow(ads.dirVarMult ?? 1, ads.dirVarExp ?? 0);
     const varTier = ads.dirVarMult && ads.dirVarMult !== 1 ? Math.round(Math.log(build.recoilVar / baseVar) / Math.log(ads.dirVarMult)) : 0;
-    return { R: weapon.recoilV * Math.pow(mult ?? 1, amountTier), V: baseVar * Math.pow(ads.dirVarMult ?? 1, varTier) };
+    return { R: weapon.recoilV * Math.pow(mult, amountTier), V: baseVar * Math.pow(ads.dirVarMult ?? 1, varTier) };
   }
   // Mobility indices in source order (higher is faster or steadier), read back from the resolved values.
   function mobilityIndices(build, weapon) {
@@ -39,10 +43,9 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
   const tier = (value, base, mult) => (mult && mult !== 1 && base ? Math.round(Math.log(value / base) / Math.log(mult)) : 0);
 
   // Table keys for a resolved build: base sums plus the build's ADS recoil tier changes.
-  function keys(weapon, build, table, recoilBuild) {
+  function keys(weapon, build, table, recoilBuild, amountMult) {
     const ads = weapon.recoil?.ads ?? {};
     const resolvedAds = recoilBuild.recoil?.ads ?? ads;
-    const amountMult = balance.RECOIL_MULT[weapon.id] ?? 0.94;
     return {
       amountSum: table.base.amountSum + tier(recoilBuild.recoilV, weapon.recoilV, amountMult),
       variationSum: table.base.variationSum + tier(recoilBuild.recoilVar, weapon.recoil?.ads?.dirVar
@@ -102,15 +105,15 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
     const hipIncreasePerShotFraction = baseHipInc > 0 && Number.isFinite(resolvedHipInc)
       ? resolvedHipInc / baseHipInc : 1;
     const gate = hipIncreasePerShotFraction !== 1 ? HIPFIRE_FRACTION_GATE : 1;
-    // Reviewed burst panels retain non-burst recoil inputs.
+    // Reviewed burst panels retain non-burst recoil inputs on all eight burst-capable weapons.
     // SG 553R/PW5A3 evidence is hover-only; equipped parity remains unverified.
     // Keep the selected fire rate (SL9 changes RPM) and all other attachments.
     // This affects menu attributes only, not the firing simulation.
-    const panelBurst = (weapon.id === 'grtbc' && atts.ergo === 'grtbc_burst_mode')
-      || (weapon.id === 'sl9' && atts.ergo === 'burst_mode')
-      || (['kord6p67', 'sg553r', 'pw5a3'].includes(weapon.id) && atts.ergo === 'burst_training');
+    const panelBurst = BURST_ERGOS.has(atts.ergo);
     const recoilBuild = panelBurst ? applyAttachments(weapon, { ...atts, ergo: 'none' }) : build;
-    const { R, V } = exactRecoil(weapon, recoilBuild);
+    // Reports the missing value (throws in scripts and tests); Precision and Control then show Unavailable.
+    const recoilMult = requireNumber(balance.RECOIL_MULT?.[weapon.id], `${weapon.id} RECOIL_MULT`);
+    const { R, V } = exactRecoil(weapon, recoilBuild, recoilMult);
     const indices = mobilityIndices(build, weapon);
     const mobilitySource = MOBILITY_SOURCE_INPUTS[weapon.id];
     if (mobilitySource?.animationZoomBaseIndex !== undefined) {
@@ -125,8 +128,10 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
 
     const table = attributes.tables[weapon.id];
     let precision = { panel: null, method: 'no-table' };
-    if (table) {
-      const k = keys(weapon, build, table, recoilBuild);
+    if (table && !Number.isFinite(recoilMult)) {
+      precision = { panel: null, method: 'missing-input' };
+    } else if (table) {
+      const k = keys(weapon, build, table, recoilBuild, recoilMult);
       // PP19 Flash Comp has no smoothing binding in GS_PP19.
       if (weapon.id === 'pp19' && atts.muzzle === 'flash_comp') {
         const unsmoothed = applyAttachments(weapon, { ...atts, muzzle: 'none' });

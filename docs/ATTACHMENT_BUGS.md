@@ -43,7 +43,7 @@ Site status uses one of these values, followed by the value that the site applie
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
 | 12 | Standard Suppressor | L115 | Game error (source binding omission) | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Does not match game panel: generic hipfire penalty applied |
 | 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
-| 14 | Burst Mode | GRT-BC | Suspected game error | Menu recoil values remain unchanged; firing tests do not consistently show the expected variation reduction. Gameplay failure is not proven. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
+| 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -295,15 +295,47 @@ classification was a site interpretation error; see 1b.
   are approximately 6.38%, 44.95% and 54.21% for one, six and seven steps.
 - **Source.** [Tungsten Core trace](../reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json).
 
-### 14. GRT-BC Burst Mode recoil variation may not apply during firing
+### 14. Burst attachments: menu omits burst recoil modifiers; firing effect unresolved
 
-- **Status.** Suspected game error, recorded 21 September 2026. The firing tests are inconclusive about whether the variation modifier applies.
-  The earlier best guess that it was inactive was too strong: the measurements
-  did not isolate variation from the weapon's mean recoil direction.
-- **Source expectation.** Frosty binds Burst Mode to recoil conversion and a
-  recoil amount package. Together these give +3 variation steps and +1 amount
-  step. Linear Comp gives +3 variation steps and −1 amount step. If both packages
-  apply and stack, the model predicts these ADS values:
+The entry has two parts. 14a is a confirmed menu observation on all eight
+burst-capable weapons. 14b is an open question about firing. The menu observation
+is not evidence about GRT-BC firing, because every burst weapon shows it.
+
+#### 14a. Menu does not show burst recoil modifiers (all burst weapons)
+
+- **Source.** The sourced burst selectors give +3 variation steps on all eight
+  weapons. The amount is unchanged, except +1 step on GRT-BC
+  (`scripts/attachment-effects.test.mjs` checks these tiers). On GRT-BC, the
+  trace shows the burst conversion (−1 amount, +3 variation) and a recoil
+  package (+2 amount) behind a nested fire-mode selector (mask 8). The other
+  seven weapons' selector structure was not traced individually.
+- **Observed panels.** Every burst panel keeps the recoil-based Precision and
+  Control of the same weapon with no burst attachment:
+  - GRT-BC Burst Mode, equipped: 26/37, recoil 0.8°, variation 26.1°.
+  - SL9 Burst Mode, equipped: Control 55, recoil 0.5°, variation 13.0° are
+    unchanged. Precision changes 61 to 78 only through the burst RPM (675 to 771).
+  - KORD 6P67 Burst Training, equipped: 33/55.
+  - SG 553R and PW5A3 Burst Training, hover only: 23/37 and 35/53.
+  - CZ3A1, KV9 and UMG-40 Burst Training, historical audit panels (July/August
+    2026 captures): 21/48, 23/60 and 53/49, identical to their None panels.
+- **Contrast.** M16 A3 is a full-auto conversion, not a burst attachment. Its
+  preview changes the amount (Precision 27 to 24, Control 41 to 39) but keeps
+  variation 29.2°. It is a separate rule.
+- **Interpretation.** The most direct explanation is that the menu preview does
+  not evaluate the burst fire-mode selector. The GRT-BC trace found no broken
+  reference, and the behavior is the same on all eight weapons. Thus it is a menu
+  behavior, not a GRT-BC data defect. Whether the menu or the source values show
+  the firing behavior is 14b.
+
+#### 14b. Do burst recoil modifiers apply during firing? (open, GRT-BC tests)
+
+- **Status.** Open question, recorded 21 September 2026. The GRT-BC firing tests
+  are inconclusive. The earlier best guess that the variation modifier was inactive
+  was too strong: the measurements did not isolate variation from the weapon's
+  mean recoil direction. No other burst weapon has firing tests.
+- **Source expectation.** Burst Mode gives +3 variation steps and +1 amount
+  step on GRT-BC. Linear Comp gives +3 variation steps and −1 amount step. If both
+  packages apply and stack, the model predicts these ADS values:
 
   | GRT-BC setup | Recoil amount | Recoil variation |
   | --- | ---: | ---: |
@@ -312,9 +344,8 @@ classification was a site interpretation error; see 1b.
   | No muzzle, Burst Mode | 0.759° | 20.237° |
   | Linear Comp, Burst Mode | 0.807° | 15.691° |
 
-- **Confirmed menu behavior.** Equipping Burst Mode leaves Precision at 26,
-  Control at 37, recoil amount at 0.8°, and recoil variation at 26.1° in the
-  supplied GRT-BC captures. Linear Comp changes the displayed variation to 20.2°.
+- **Menu behavior.** See 14a. Linear Comp changes the displayed GRT-BC
+  variation to 20.2°; Burst Mode leaves it at 26.1°.
 - **Trace limit.** The burst recoil packages use a nested fire-mode selector;
   Linear Comp uses a direct muzzle selector. The traced burst references and
   selector mask agree. No broken reference was found. This does not establish
@@ -331,10 +362,18 @@ classification was a site interpretation error; see 1b.
   horizontal widths were not corrected for that lean. Pattern width is not a
   direct measurement of recoil variation in degrees. The corrected fixed-direction
   analysis remains inconclusive; see the [full pattern review](working/GRTBC_RECOIL_PATTERN_REVIEW.md).
+- **Matched-cadence result.** Native burst (10 ms rapid clicks) is 19–31% wider
+  across the recoil direction than the 180/70 ms full-auto macro. Active modifiers
+  predict about 13–15% narrower; inactive modifiers predict no change. An
+  uncontrolled factor is larger than the effect under test. Probable causes: the
+  rapid-click input can hold the weapon in its firing state between bursts (spread
+  and recovery have separate firing and not-firing values), and the burst images
+  come from an earlier session than the macro images.
 - **Site.** The Weapon Attributes calculation reproduces the observed menu
-  behavior by excluding Burst Mode recoil changes from the GRT-BC score inputs.
+  behavior (14a) by excluding burst recoil changes from the score inputs on all
+  eight weapons.
   The firing simulation retains the source modifiers pending stronger evidence.
-  Do not treat this suspected gameplay bug as a confirmed correction to those
+  Do not treat this open question as a confirmed correction to those
   modifiers or extend it to other weapons from these tests alone.
 - **Evidence files.** Source and panel inputs:
   [burst panel trace](../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
