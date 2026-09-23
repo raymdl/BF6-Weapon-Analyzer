@@ -2,6 +2,8 @@
 
 [Atlas](README.md) · [Source generation](SOURCES.md#projectile-hit-zone-and-collateral-chain) · [Formula guide](../DAMAGE_BALLISTICS.md)
 
+Checked against `785984e` on 22 September 2026.
+
 ## Source curves and selected projectile
 
 ```mermaid
@@ -27,15 +29,12 @@ flowchart LR
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
-    classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
-Current base curves are accepted Frosty curves. Their promotion/review is distinct
-from the existing hit-zone and ballistics generators: do not infer an automatic
-whole-weapon importer from a `damageSource` label. Selected ammo can replace the
-curve and pellet count; eight retained override curves cover the four shotguns'
+Base curves are reviewed Frosty curves, promoted by hand; no generator writes
+them. The Interdictor curve is from the 1.4.3.0 build; the others are from
+1.4.2.5. Selected ammo can replace the curve and pellet count; eight retained
+override curves cover the four shotguns'
 00-buck/slug alternatives. See [weapons.json](../../data/weapons.json),
 [ammo.json](../../data/ammo.json), and the [curve review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
 
@@ -78,7 +77,6 @@ flowchart TB
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 [`resolveHitMultipliers`](../../sim/damage.js) requires the explicit selected
@@ -98,9 +96,7 @@ a separate approximate origin (A05/A10).
 
 `ui/app.js` samples these functions for the chart and table, formats outputs and
 uses the vendored Chart.js renderer. It does not fetch a precomputed TTK table.
-No miss sequence, magazine exhaustion/reload, armor, healing, reaction time,
-network delay or target motion enters ideal TTK. These are model-scope decisions,
-not missing source columns to fill with zeros.
+The ideal-combat scope of TTK is A04.
 
 ## Flight time, drop and zeroing
 
@@ -128,12 +124,10 @@ flowchart TB
     A -.-> T
     A -.-> Q
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
-    classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 The scalar time approximation is `distance / velocity` at zero drag and
@@ -143,11 +137,9 @@ and a finite integration horizon. The zero solver searches a launch angle to
 intersect the selected zero plane; the UI offers supported zero distances for
 DMR/sniper categories. See [`sim/ballistics.js`](../../sim/ballistics.js).
 
-Source-backed gravity and drag establish operands. They do not prove this
-particular flight law, numerical scheme, zeroing method or neglected sight height
-matches the native engine. The [register](REGISTER.md#missing-data-and-fallbacks)
-also distinguishes unavailable flight-time results from the target display's
-zero-offset fallback when a trajectory cannot be resolved.
+The flight law, integrator and zeroing method are A06. An unresolved trajectory
+is handled differently for TTK and for the target display; see the
+[fallback register](REGISTER.md#missing-data-and-fallbacks).
 
 ## Change impact
 

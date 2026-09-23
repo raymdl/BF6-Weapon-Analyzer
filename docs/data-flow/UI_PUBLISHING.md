@@ -2,17 +2,19 @@
 
 [Atlas](README.md) · [Architecture](../ARCHITECTURE.md) · [Tests](../TESTS.md)
 
+Checked against `785984e` on 22 September 2026.
+
 ## Runtime startup
 
 ```mermaid
 flowchart TB
     P["OUT · index.html, styles, Chart.js<br/>and ES modules from static hosting"]:::out
     A["RUN · ui/app.js startup"]:::run
-    F["RUN · Promise.all<br/>eight JSON fetches"]:::run
+    F["RUN · Promise.all<br/>nine JSON fetches"]:::run
     C["RUN · indexes and shared contexts<br/>source records kept as inputs"]:::run
     S["RUN · defaults + URL restoration<br/>normalized selection state"]:::run
     B["RUN · cached selected builds"]:::run
-    V["OUT · overview/effects, range,<br/>recoil/spread, lazy target view"]:::out
+    V["OUT · overview, Weapon Attributes, effects,<br/>range, recoil/spread, lazy target view"]:::out
     E["OUT · startup load error<br/>and reload action"]:::out
     N["RUN · required numeric checks<br/>browser reporter; dependent values unavailable"]:::run
     P --> A
@@ -24,16 +26,13 @@ flowchart TB
     B --> V
     C --> N
     N -.-> V
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
-    classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
-[`ui/app.js`](../../ui/app.js) fetches these eight files, all beneath `data/`:
+[`ui/app.js`](../../ui/app.js) fetches these files, all beneath `data/`. The list
+is current on 22 September 2026; [`ship-surface.json`](../../ship-surface.json)
+`runtimeData` is authoritative.
 
 | Fetch | Runtime purpose |
 |---|---|
@@ -45,22 +44,20 @@ flowchart TB
 | `hit_zones.json` | Explicit base/ammo head and limb multipliers. |
 | `attachment-tooltips.json` | Text dictionary and selection-to-description lookup. |
 | `recoil_decay.json` | Legacy maps retained in startup/context; current per-aim recoil groups supply active recovery inputs. |
+| `weapon_attributes.json` | Precision lookup tables, shotgun dispersion and Mobility inputs for the [Weapon Attributes](LOADOUTS.md#weapon-attributes) model. |
 
-All eight requests must load/parse for startup to complete, including the legacy
+Every request must load and parse for startup to complete, including the legacy
 map file. Required numeric validation is a separate mechanism:
 [`sim/required-data.js`](../../sim/required-data.js) throws by default in scripts,
 while the browser installs [`ui/data-errors.js`](../../ui/data-errors.js) to report
-deduplicated errors and keep affected numeric results unavailable. Do not collapse
-these two error routes into a claim that every malformed number aborts startup,
-or that every missing field has a zero/default fallback.
+deduplicated errors and keep affected numeric results unavailable.
 
 Contexts inject shared tables and current aim/stance/platform/control behavior.
 A reusable simulation call must initialize/reset those contexts deliberately.
 Selected builds, default builds, patterns, spread sequences and trajectories use
 input-sensitive caches. Hidden panels skip detailed rendering; pan/zoom redraws
 are scheduled with animation frames, and canvas backing dimensions account for
-device-pixel ratio. Caching is an execution detail, not an additional source of
-weapon measurements.
+device-pixel ratio.
 
 ## State and exports
 
@@ -87,12 +84,9 @@ flowchart TB
     A -.-> URL
     A -.-> CAP
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
-    classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 The codec is [`sim/share-state.js`](../../sim/share-state.js). It uses
@@ -139,7 +133,7 @@ flowchart TB
     VS["RUN · validate-ship-surface.mjs<br/>manifest consistency"]:::run
     TE["RUN · test.mjs<br/>product behavior tests"]:::run
     M["OUT · accepted main commit"]:::out
-    PG["OUT · separate Pages build/deployment<br/>observed for this audit commit"]:::out
+    PG["OUT · separate Pages build/deployment<br/>not gated on validation"]:::out
     ROOT["OUT · current root site"]:::out
     OLD["OUT · frozen published versions<br/>1.2.3.0 / 1.3.1.0 / 1.3.3.0"]:::out
     REF["OUT · other published repository files<br/>not automatically browser inputs"]:::out
@@ -153,26 +147,17 @@ flowchart TB
     PG --> ROOT
     PG --> OLD
     PG --> REF
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 The checked-in [Validate Data workflow](../../.github/workflows/validate-data.yml)
-runs the three commands shown. The observed main-commit runs were separate:
-[validation](https://github.com/raymdl/BF6-Weapon-Analyzer/actions/runs/35041480015)
-and [Pages build/deployment](https://github.com/raymdl/BF6-Weapon-Analyzer/actions/runs/35041479395).
-Both succeeded for the audit commit. This observation does **not** establish an
-enforced deployment dependency on validation. The graph therefore does not draw
-“tests passed” as a guaranteed Pages gate. Future repository settings/workflows
-may change that relationship.
+runs the three commands shown. Pages build/deployment is a separate GitHub
+workflow; the repository does not make it wait for validation (A15).
 
 [`ship-surface.json`](../../ship-surface.json) declares runtime paths, the exact
-eight JSON dependencies and the three published historical roots. Its validator
+runtime JSON dependencies and the three published historical roots. Its validator
 checks the declared surface. The manifest does not itself exclude reference files
 from deployment or make them private. The audited Pages artifact includes research
 and documentation files that the browser never fetches. Do not store secrets or
