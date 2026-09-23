@@ -206,77 +206,31 @@ The numerical results and modeled cases are retained in
 [the provenance record](../../reference-data/provenance/grtbc-direction-review-2026-09-21.json).
 Current model: [Weapon Attributes](../WEAPON_ATTRIBUTES_MODEL.md).
 
-## Screenshot archive
+## Screenshot archive (local only)
 
-The firing-test reports display the original screenshots used for each measurement set:
+The screenshots are not in the repository. Git ignores both folders because of
+their size. The paths below are relative to the repository root and work only on
+the machine that holds the local captures. The provenance records keep the
+SHA-256 hash of each image, so a local copy can be checked.
 
-- [Three-shot group comparison](../../outputs/burst-group-analysis/REPORT.md#original-screenshots) (four images).
-- [Four-condition three-shot test](../../outputs/burst-factorial-analysis/REPORT.md#original-screenshots) (four images).
-- [Long-string test](../../outputs/burst-long-string-analysis/REPORT.md#original-screenshots) (four images).
-- [Cadence-matched macro comparison](../../outputs/burst-cadence-comparison/REPORT.md#original-screenshots) (four images; two reuse images from the long-string test).
+Firing tests. Each report shows its original screenshots (`original-0.png` to
+`original-3.png`) under "Original screenshots":
 
-The menu-panel screenshots are preserved below. The [panel provenance record](../../reference-data/provenance/burst-panel-inputs-2026-09-21.json) records their hashes.
+- Three-shot group comparison: `outputs/burst-group-analysis/REPORT.md`
+- Four-condition three-shot test: `outputs/burst-factorial-analysis/REPORT.md`
+- Long-string test: `outputs/burst-long-string-analysis/REPORT.md`
+- Cadence-matched macro comparison: `outputs/burst-cadence-comparison/REPORT.md`
+  (two of its four images are reused from the long-string test)
 
-### grtbc burst equipped compensated brake hover
+Menu panels, in
+`reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/Burst Panel Inputs/`.
+Hashes: [panel provenance record](../../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
 
-![grtbc burst equipped compensated brake hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_burst-equipped-compensated-brake-hover.png)
-
-### grtbc burst equipped
-
-![grtbc burst equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_burst-equipped.png)
-
-### grtbc burst hover
-
-![grtbc burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_burst-hover.png)
-
-### grtbc none equipped
-
-![grtbc none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/grtbc_none-equipped.png)
-
-### kord6p67 burst equipped
-
-![kord6p67 burst equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/kord6p67_burst-equipped.png)
-
-### kord6p67 none equipped
-
-![kord6p67 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/kord6p67_none-equipped.png)
-
-### m16a4 a3 hover
-
-![m16a4 a3 hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/m16a4_a3-hover.png)
-
-### m16a4 none equipped
-
-![m16a4 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/m16a4_none-equipped.png)
-
-### pw5a3 burst hover
-
-![pw5a3 burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/pw5a3_burst-hover.png)
-
-### pw5a3 none equipped
-
-![pw5a3 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/pw5a3_none-equipped.png)
-
-### sg553r burst hover
-
-![sg553r burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sg553r_burst-hover.png)
-
-### sg553r none equipped
-
-![sg553r none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sg553r_none-equipped.png)
-
-### sl9 burst equipped compensated brake hover
-
-![sl9 burst equipped compensated brake hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_burst-equipped-compensated-brake-hover.png)
-
-### sl9 burst equipped
-
-![sl9 burst equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_burst-equipped.png)
-
-### sl9 burst hover
-
-![sl9 burst hover](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_burst-hover.png)
-
-### sl9 none equipped
-
-![sl9 none equipped](../../reference-data/attachment-audit/Weapon%20Attachments/Loadout%20A-B%20Testing/Burst%20Panel%20Inputs/sl9_none-equipped.png)
+| Weapon | Files |
+|---|---|
+| GRT-BC | `grtbc_none-equipped.png`, `grtbc_burst-hover.png`, `grtbc_burst-equipped.png`, `grtbc_burst-equipped-compensated-brake-hover.png` |
+| SL9 | `sl9_none-equipped.png`, `sl9_burst-hover.png`, `sl9_burst-equipped.png`, `sl9_burst-equipped-compensated-brake-hover.png` |
+| KORD 6P67 | `kord6p67_none-equipped.png`, `kord6p67_burst-equipped.png` |
+| SG 553R | `sg553r_none-equipped.png`, `sg553r_burst-hover.png` |
+| PW5A3 | `pw5a3_none-equipped.png`, `pw5a3_burst-hover.png` |
+| M16A4 | `m16a4_none-equipped.png`, `m16a4_a3-hover.png` |
