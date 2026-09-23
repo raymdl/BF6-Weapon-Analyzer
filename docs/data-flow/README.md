@@ -2,14 +2,64 @@
 
 [HTML viewer](https://raymdl.github.io/BF6-Weapon-Analyzer/docs/data-flow/) · [Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
 
-A maintainer's map of the site: where each value comes from, which script or
+A map of the BF6 Weapon Analyzer: where each value comes from, which script or
 person maintains it, how the browser calculates results, and which parts are
-model assumptions. Use the section and assumption IDs (for example "A07",
-"LOADOUTS › Ladders and timing") to point at an exact part of the system when
-you ask for a change.
+model assumptions. It is written first as a maintainer's reference. Section and
+assumption IDs (for example "A07", "LOADOUTS › Ladders and timing") point at an
+exact part of the system.
 
-**Checked against:** [`785984e`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/785984e)
+New to the project? Read [How much to trust each result](#how-much-to-trust-each-result),
+[Known differences from the game](#known-differences-from-the-game) and the
+[Glossary](#glossary) first.
+
+**Checked against:** [`b3e67bf`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/b3e67bf)
 on 22 September 2026. Each page states the commit it was last checked against.
+
+## How much to trust each result
+
+The game's own code is not public. The site reads the game's data files and
+then calculates results with its own model. Each result on the site therefore
+has one of these evidence levels:
+
+| Level | Meaning |
+|---|---|
+| **Source value** | A number read directly from game data (Frosty, Sym). |
+| **Model** | Our calculation that uses source values. The game may calculate differently. |
+| **Panel-checked** | Our result matches in-game menu panels for the builds that were captured. |
+| **Recording-checked** | Our result matches in-game video recordings for the tested weapon and state. |
+| **Estimate** | A reasonable approximation with little direct game evidence. |
+
+| Result on the site | Level | Main limit |
+|---|---|---|
+| Damage and damage drop-off | Source value | — |
+| Headshot / limb multipliers | Source value, panel-checked | File structure is inferred (A05). |
+| Fire rate, magazine size | Source value | — |
+| ADS time, strafe speed, deploy, sprint recovery, spread minima | Model on source tables, panel-checked | Composition of several attachments at the table limits is less tested (A02). |
+| Reload time, bullet velocity | Model on source values | Some magazine and ammo routes are not recorded in game (A03). |
+| Bullets to kill, time to kill | Model on source values | Ideal case: every shot hits, no armor, no reload (A04). |
+| Bullet drop and flight time | Model on source values | Not recording-checked (A06). |
+| Weapon Attributes (Hipfire, Precision, Control, Mobility) | Model, panel-checked | Matches all captured panels; some formulas are inferred (A17). |
+| Recoil pattern | Model, partly recording-checked | The timing and recovery shape of recoil are inferred (A07); console and control settings (A08). |
+| Spread growth, spray and scatter | Model, partly recording-checked | Checked for M39 hipfire and AK4D Heavy barrel only (A09). |
+| Target hits and hit zones | Estimate | Uses a drawn soldier, not the game's hitbox (A10). |
+| Spotting, collateral, regeneration, sway | Source value on assumed bases | Shown as values only; not simulated (A11). |
+
+The [assumption register](REGISTER.md#assumptions-and-interpretation) gives each
+limit in full.
+
+## Known differences from the game
+
+Two kinds of difference exist:
+
+- **Game errors.** Sometimes the game does not do what its own attachment text
+  says (for example, PP-19 20 Rnd fast gives no reload bonus). The site follows
+  what the game does, not the text. The [attachment bug list](../ATTACHMENT_BUGS.md#status-overview)
+  gives each case and the value the site uses.
+- **Site differences.** Two cases are known where the site does not match the
+  game: PP-19 Flash Comp recoil smoothing and L115 Standard Suppressor hipfire
+  (bugs 6 and 12). Burst recoil during firing is an open question (bug 14). The
+  [model limitations](../MODEL_LIMITATIONS.md) list other behavior that the
+  site does not simulate.
 
 ## System overview
 
@@ -64,18 +114,6 @@ before a commit; the site never contacts Frosty, Sym or a capture collection.
 Solid arrows are data or control dependencies. Dashed arrows are supporting
 evidence or assumptions.
 
-## Evidence levels
-
-The pages use these words with one meaning each. The register gives the details
-for each assumption; the other pages do not repeat them.
-
-| Term | Meaning |
-|---|---|
-| **Source value** | A number read from game data (Frosty, Sym). It does not show how the game uses the number. |
-| **Model** | Our equation or procedure that uses source values. The game's own code is not available. |
-| **Panel-checked** | Our result matches in-game menu panels for the captured builds. |
-| **Recording-checked** | Our result matches in-game recordings for the tested weapon and state. |
-
 ## Sections
 
 | Topic | Guide |
@@ -115,6 +153,30 @@ The site loads **nine** JSON files at startup. [`ship-surface.json`](../../ship-
 (`runtimeData`) is the authoritative list; `validate-ship-surface.mjs` checks it.
 Other counts in these pages are also dated illustrations; the linked data or
 report is authoritative.
+
+## Glossary
+
+| Term | Meaning |
+|---|---|
+| **ADS** | Aim down sights. |
+| **Hipfire** | Firing without aiming down sights. |
+| **BTK / TTK** | Bullets to kill / time to kill a 100-health target. |
+| **Frosty** | Frosty Editor, a community tool that exports Battlefield game data. Our main data source. |
+| **Build (game data)** | One version of the game's data files, for example 1.4.3.0. We keep one snapshot per build. |
+| **EBX / XML export** | The game's data assets (EBX) and Frosty's text export of them (XML). |
+| **Sym** | sym.gg, a community site whose weapon data was the site's first baseline. |
+| **Panel** | The in-game attachment menu that shows stats and Weapon Attributes bars. |
+| **Recording** | An in-game video used to measure recoil or spread. |
+| **WB / GS** | Game data branches: WB holds weapon and projectile configuration; GS holds recoil and spread configuration. |
+| **Per-aim group** | The separate recoil and spread values the game keeps for ADS and for hipfire. |
+| **Ladder / finite table** | A fixed list of values (for example ADS times). Attachments move a weapon up or down the list. |
+| **Tier / step** | One position on a ladder, or one multiplication by a recoil factor. |
+| **Recoil amount / variation** | How far each shot kicks, and how much its direction changes at random. |
+| **Spread** | The random cone around the aim point in which bullets land. |
+| **Collateral multiplier** | The game's multiplier for damage through objects; shown, not simulated. |
+| **Weapon Attributes** | The game's four menu scores: Hipfire, Precision, Control and Mobility. |
+| **Generator** | A repository script that writes selected data fields from a Frosty export. |
+| **Provenance** | The record of where a value came from and how it was checked. |
 
 ## Maintenance
 

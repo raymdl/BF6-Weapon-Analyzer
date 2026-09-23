@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Ownership register](REGISTER.md) · [Source policy](../DATA_SOURCES.md) · [Game update guide](../GAME_UPDATE_GUIDE.md)
 
-Checked against `785984e` on 22 September 2026.
+Checked against `b3e67bf` on 22 September 2026.
 
 ## Source authority is field-specific
 

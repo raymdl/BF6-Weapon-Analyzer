@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Source pipeline](SOURCES.md) · [Model limitations](../MODEL_LIMITATIONS.md)
 
-Checked against `785984e` on 22 September 2026.
+Checked against `b3e67bf` on 22 September 2026.
 
 This register lists who maintains each field family, every model assumption,
 and what to review when an input changes. The other atlas pages refer to the
@@ -135,7 +135,7 @@ flowchart TB
 | Present but invalid barrel `velTierMod` (`resolveBarrelVelocity`) | Invalid result; no fall-through to `velMult`. A missing tier can use `velMult`. | Field presence controls precedence. |
 | Missing ADS time in optional TTK (`ui/app.js`) | `_adsTimeMs ?? 0`. | Not evidence of zero ADS time. |
 | Missing collateral override (`applyAttachments.js`) | Legacy class/default route remains in code. | All current selections have generated values. |
-| No Precision row, ambiguous row, or unmatched Mobility index (`sim/weapon-attributes.js`) | That score shows Unavailable. | No interpolation or zero. |
+| No Precision row, ambiguous row, unmatched Mobility index or missing recoil multiplier (`sim/weapon-attributes.js`) | That score shows Unavailable. | No interpolation or default. |
 | Target image unavailable (`sim/target.js`) | Hit classification is unavailable. | |
 | Invalid/old share tokens (`sim/share-state.js`) | Ignore invalid choices, restore defaults, normalize dependencies/legacy rails. | Compatibility policy. |
 

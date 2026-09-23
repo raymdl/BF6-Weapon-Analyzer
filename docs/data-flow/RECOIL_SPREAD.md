@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Recoil/spread formulas](../RECOIL_SPREAD_MODEL.md) · [Assumptions](REGISTER.md#assumptions-and-interpretation)
 
-Checked against `785984e` on 22 September 2026.
+Checked against `b3e67bf` on 22 September 2026.
 
 ## Per-aim recoil path
 
