@@ -24,6 +24,8 @@ the [current provenance index](../provenance/README.md) for that separate eviden
 - `composite-identity-corrections-2026-09-21.json` — two historical KTS100 image/attachment mapping corrections used by the research checkers.
 - `composite-current-panels-2026-09-21.json` — current 131-panel input for both research checkers (65 EF88, 64 BROD 3, 2 KTS100); overview screens excluded.
 - `current-capture-updates-2026-09-21.json` — replacement capture records, previous records, image hashes and rename paths. These changes are applied to the canonical JSON. Superseded local images remain in `Old` folders.
+- `vssm-capture-updates-2026-09-22.json` — full VSSM re-capture (43 detail panels and the overview), in the same row format: previous records, source and archived image hashes, and rename paths. Applied to the canonical JSON. Values are from primary visual review; no OCR was run. Two grip-pod panels have a notification over the recoil lines; the operator confirmed those values, and `statFieldReasons` records this.
+- `composite-vssm-panels-2026-09-22.json` — the 43 current VSSM panels as input for the research checkers and `scripts/weapon-attributes.test.mjs`.
 
 Historical correction ledgers refer to the old image bytes, not newly captured replacements.
 The research checker defaults to the historical panel audit; `--audit PATH` selects a separate

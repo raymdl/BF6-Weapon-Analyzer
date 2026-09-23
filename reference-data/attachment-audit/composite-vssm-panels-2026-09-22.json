@@ -1,0 +1,1211 @@
+{
+  "date": "2026-09-22",
+  "scope": "43 current VSSM attachment detail panels. Overview retained in the canonical audit as context only.",
+  "source": "reference-data/attachment-audit/attachment-screenshot-review.json",
+  "records": [
+    {
+      "recordIndex": 2082,
+      "weapon": "vssm",
+      "attachmentName": "200MM Factory",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "vssm_suppressed"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/01_VSSM_Barrel_Suppressed.png",
+      "screenshotSha256": "8a731ac3146d35371ebdc90cd411233e4ea5f163a68e7c760c7ebb626a16d74b",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2083,
+      "weapon": "vssm",
+      "attachmentName": "200MM ASM",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "barrel",
+          "vssm_suppressed_asm"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/02_VSSM_Barrel_Suppressed_200MM_ASM.png",
+      "screenshotSha256": "764f72869653ae6d8a476e55903987cdbf35af96f656057974ba8f6cb0969025",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2084,
+      "weapon": "vssm",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/03_VSSM_Light_None.png",
+      "screenshotSha256": "2c2992cb44419cfc63c912e10c52439444ef9a55fb45d80d6f165173ff163e30",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2085,
+      "weapon": "vssm",
+      "attachmentName": "Taclight - Aimed",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "ads_taclight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/04_VSSM_Light_Taclight_-_Aimed.png",
+      "screenshotSha256": "b0f52bd9575f54327626c2f09c5900322f4f622c49e9f6e09d229ace0b7e5e4b",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2086,
+      "weapon": "vssm",
+      "attachmentName": "Flashlight",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "flashlight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/05_VSSM_Light_Flashlight.png",
+      "screenshotSha256": "8efe4af6c3be79cc26f5a80cc4a9e447acc6730aafb9d54fd919ecb8054368c3",
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2087,
+      "weapon": "vssm",
+      "attachmentName": "Taclight - Hipfire",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "light",
+          "hip_taclight"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/06_VSSM_Light_Taclight_-_Hipfire.png",
+      "screenshotSha256": "36b6dfce7338e774caa9d299bf0895208f40232993cefa60076ade9e77752104",
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2088,
+      "weapon": "vssm",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/14_VSSM_Grip_None.png",
+      "screenshotSha256": "953bddd31d28595cc6dc877431bcfc02d724c74d5a100fcfc0d8f86bcb23e7c8",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2089,
+      "weapon": "vssm",
+      "attachmentName": "Folding Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "fold_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/15_VSSM_Grip_Folding_Vertical.png",
+      "screenshotSha256": "a62ce309c44ce170c8d17e0acfb84190fcbf7323eac91dffef5a96cc4b1b2be2",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 81
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 2090,
+      "weapon": "vssm",
+      "attachmentName": "Alloy Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "alloy_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/16_VSSM_Grip_Alloy_Vertical.png",
+      "screenshotSha256": "96b224ef034eeecc7cf9533ce844b307a73b2f33606e4de3f88aaddbb67f7382",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 81
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2091,
+      "weapon": "vssm",
+      "attachmentName": "Ribbed Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/17_VSSM_Grip_Ribbed_Vertical.png",
+      "screenshotSha256": "1d6aa6ac5bb9e2e2aa524db87571adf2980a2e8a15cce07de8e3dfb43afcc7a0",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 83
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 2099,
+      "weapon": "vssm",
+      "attachmentName": "6H64 Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "6h64_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/25_VSSM_Grip_6H64_Vertical.png",
+      "screenshotSha256": "47b2ab1c2023417349ccc174531947de84c8d30307344b570a922a0c49e7615b",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 85
+        },
+        "control": {
+          "audit": 43
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 2100,
+      "weapon": "vssm",
+      "attachmentName": "Classic Vertical",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "classic_vert"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/26_VSSM_Grip_Classic_Vertical.png",
+      "screenshotSha256": "aca0e71ab43027e809a037ba7b96bfbb3c98ff8624130decf0d7d57e01d79fdb",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 87
+        },
+        "control": {
+          "audit": 45
+        },
+        "mobility": {
+          "audit": 50
+        }
+      }
+    },
+    {
+      "recordIndex": 2092,
+      "weapon": "vssm",
+      "attachmentName": "Folding Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "fold_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/18_VSSM_Grip_Folding_Stubby.png",
+      "screenshotSha256": "5cb0d4c8f386ef968bb11f4fed777ae808f7c72a438ca89e328d771087fb41d6",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 81
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2093,
+      "weapon": "vssm",
+      "attachmentName": "Ribbed Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ribbed_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/19_VSSM_Grip_Ribbed_Stubby.png",
+      "screenshotSha256": "0be9b70c277f42d1bf680139490e413702e901ce04c9d6e63acfa691d822ad4d",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 81
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 2101,
+      "weapon": "vssm",
+      "attachmentName": "Canted Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "canted_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/27_VSSM_Grip_Canted_Stubby.png",
+      "screenshotSha256": "b40e4d73fe038947731bba820b13eeaeee6dcce23253625b48b43a53a2af9d0d",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 83
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2102,
+      "weapon": "vssm",
+      "attachmentName": "Stippled Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "stipp_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/28_VSSM_Grip_Stippled_Stubby.png",
+      "screenshotSha256": "67cfdcbf06bd819e16f303d71720c01bd559b840ead7405c2ee7dc27a9764a93",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 85
+        },
+        "control": {
+          "audit": 43
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 2103,
+      "weapon": "vssm",
+      "attachmentName": "Low-Profile Stubby",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "lp_stubby"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/29_VSSM_Grip_Low-Profile_Stubby.png",
+      "screenshotSha256": "79336a85dddcf777a536cc6a5581ccd83ca9c08e29206c81898beb424cb317a5",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 87
+        },
+        "control": {
+          "audit": 45
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 2094,
+      "weapon": "vssm",
+      "attachmentName": "Slim Handstop",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "slim_handstop"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/20_VSSM_Grip_Slim_Handstop.png",
+      "screenshotSha256": "c4fb20aa87d11bcbddf017164441e6c64e87a68cb05770a7b91eb95ed258cd8f",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 62
+        }
+      }
+    },
+    {
+      "recordIndex": 2095,
+      "weapon": "vssm",
+      "attachmentName": "Slim Angled",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "slim_angled"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/21_VSSM_Grip_Slim_Angled.png",
+      "screenshotSha256": "e604b4917ff86e5e0d0562b192ee90226c0aff68f099532bd032a3313df937ad",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 80
+        },
+        "control": {
+          "audit": 36
+        },
+        "mobility": {
+          "audit": 62
+        }
+      }
+    },
+    {
+      "recordIndex": 2096,
+      "weapon": "vssm",
+      "attachmentName": "Full Angled",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "full_angled"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/22_VSSM_Grip_Full_Angled.png",
+      "screenshotSha256": "30caf14fc43bc580d82c842804f408a1cc13c88ce7f78f481661e359cfd21994",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 81
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 58
+        }
+      }
+    },
+    {
+      "recordIndex": 2097,
+      "weapon": "vssm",
+      "attachmentName": "Bipod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "bipod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/23_VSSM_Grip_Bipod.png",
+      "screenshotSha256": "088aa60fd4da2637794d9f0558130c89c3ab1c2972dc2701c3e311c3fa074a30",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2098,
+      "weapon": "vssm",
+      "attachmentName": "PTT Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "ptt_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/24_VSSM_Grip_PTT_Grip_Pod.png",
+      "screenshotSha256": "f40beff3b60756cd59389350624c501a1d59e2c927bc78c9a094c8a8b95b574f",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 81
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 2104,
+      "weapon": "vssm",
+      "attachmentName": "QD Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "qd_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/30_VSSM_Grip_QD_Grip_Pod.png",
+      "screenshotSha256": "c965abbdce6d3d5d464da14e1044fa278bb279e7c37bca237385565fad434507",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 83
+        },
+        "control": {
+          "audit": 40
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2105,
+      "weapon": "vssm",
+      "attachmentName": "Classic Grip Pod",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "grip",
+          "classic_grip_pod"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/31_VSSM_Grip_Classic_Grip_Pod.png",
+      "screenshotSha256": "10e44e421af38e68b262687e86e556843b4804b0b544c32cea04755778ef2624",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 81
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2106,
+      "weapon": "vssm",
+      "attachmentName": "20Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "20_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/32_VSSM_Magazine_20Rnd_Magazine.png",
+      "screenshotSha256": "97b3e4870def6fac9f06223eecfa3325c009a32aa2311f407f2162c11f18464d",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2107,
+      "weapon": "vssm",
+      "attachmentName": "10Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "10_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/33_VSSM_Magazine_10Rnd_Magazine.png",
+      "screenshotSha256": "f590af72a58b1cb51d78fbe812d51ac50b6b9a9d11c19d397add8e6ed184c5cf",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 70
+        }
+      }
+    },
+    {
+      "recordIndex": 2108,
+      "weapon": "vssm",
+      "attachmentName": "10Rnd Fast Mag",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "10_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/34_VSSM_Magazine_10Rnd_Fast_Mag.png",
+      "screenshotSha256": "b04b3bec4ba4284b77fa13b757f2cd942446a0ca6ebd28565ecab64498edb6d2",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 68
+        }
+      }
+    },
+    {
+      "recordIndex": 2109,
+      "weapon": "vssm",
+      "attachmentName": "20Rnd Fast Mag",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "20_fast"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/35_VSSM_Magazine_20Rnd_Fast_Mag.png",
+      "screenshotSha256": "9e89714460faf21e121f02855a53e5b3d1865965d4b28e0426a2d71078102885",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 54
+        }
+      }
+    },
+    {
+      "recordIndex": 2110,
+      "weapon": "vssm",
+      "attachmentName": "30Rnd Magazine",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "mag",
+          "30_rnd"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/36_VSSM_Magazine_30Rnd_Magazine.png",
+      "screenshotSha256": "9b393f08af61de5265f42ab4a7ab85c0addde44a96acbb07e0de803bc189ec86",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 52
+        }
+      }
+    },
+    {
+      "recordIndex": 2111,
+      "weapon": "vssm",
+      "attachmentName": "Tungsten Match",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "range_pen"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/37_VSSM_Ammo_Range_Pen.png",
+      "screenshotSha256": "fedd0a582e4ac8ab03b698c975cdddd6c1491875dd408ec10dc491fc45c4c0e3",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2112,
+      "weapon": "vssm",
+      "attachmentName": "Tungsten Core",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "penetration"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/38_VSSM_Ammo_Penetration.png",
+      "screenshotSha256": "cbaf8c87bf54f67d7208063d79f0d317f0a3e9cc2be634febca686d8fc7d8891",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2113,
+      "weapon": "vssm",
+      "attachmentName": "Match Grade",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "long_range"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/39_VSSM_Ammo_Long-range.png",
+      "screenshotSha256": "5429d0d33458fd88e21b10db77983ea40706ccbb4f45a24ae16977bf37370b0d",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 80
+        },
+        "control": {
+          "audit": 36
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2114,
+      "weapon": "vssm",
+      "attachmentName": "Frangible",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ammo",
+          "frangible"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/40_VSSM_Ammo_Frangible.png",
+      "screenshotSha256": "e443901e37bda65c9ffcdbd5b668feda6fb0aaf90233268213d753d0b546c0c3",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 80
+        },
+        "control": {
+          "audit": 36
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2115,
+      "weapon": "vssm",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/41_VSSM_Ergonomics_None.png",
+      "screenshotSha256": "577f3f0de0e1571bc55abe88bc1eb01967760062a9a728b2dd8ca302cbee2b4d",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2116,
+      "weapon": "vssm",
+      "attachmentName": "Improved Mag Catch",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "mag_catch"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/42_VSSM_Ergonomics_Improved_Mag_Catch.png",
+      "screenshotSha256": "e665c095bf53c98be111637e1d95c5014d2073c080d24a6086a1521478980eba",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2117,
+      "weapon": "vssm",
+      "attachmentName": "Folding Stock",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "ergo",
+          "full_auto_vssm"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/43_VSSM_Ergonomics_Folding_Stock.png",
+      "screenshotSha256": "dbc3508289c6b47521fe85a5868b8d39d8aabc8ff59c5a65e726eedb527bb99f",
+      "fields": {
+        "hipfire": {
+          "audit": 51
+        },
+        "precision": {
+          "audit": 18
+        },
+        "control": {
+          "audit": 38
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2118,
+      "weapon": "vssm",
+      "attachmentName": "None",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "none"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/07_VSSM_Laser_None.png",
+      "screenshotSha256": "f21012b14bf640f18ae4e3cd816e7422dbdd97bf03942d28affa4cb6919d5bbd",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2119,
+      "weapon": "vssm",
+      "attachmentName": "5 MW Red",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "5mw_red"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/08_VSSM_Laser_5_MW_Red.png",
+      "screenshotSha256": "31ca0197c014dbbfaa0940cf5f39029650ac0f734dcda94ee62a67d3bef7a205",
+      "fields": {
+        "hipfire": {
+          "audit": 54
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2120,
+      "weapon": "vssm",
+      "attachmentName": "50 MW Violet",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_violet"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/09_VSSM_Laser_50_MW_Violet.png",
+      "screenshotSha256": "a07944d4b38781c8ad16c4da80ba66ae60710bcb93b6c6e37e6e1c04d330f199",
+      "fields": {
+        "hipfire": {
+          "audit": 47
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 2121,
+      "weapon": "vssm",
+      "attachmentName": "5 MW Green",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "5mw_green"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/10_VSSM_Laser_5_MW_Green.png",
+      "screenshotSha256": "1d14f86f9ff1f4cad4ce802f3bfa11675b779ef7bdea078be1b76f9883e02677",
+      "fields": {
+        "hipfire": {
+          "audit": 62
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2122,
+      "weapon": "vssm",
+      "attachmentName": "50 MW Green",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_green"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/11_VSSM_Laser_50_MW_Green.png",
+      "screenshotSha256": "9beb00c196aeeb1d4c81bf1ceae27b1de5efedb8dd3aa693356ac208006c5578",
+      "fields": {
+        "hipfire": {
+          "audit": 71
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 56
+        }
+      }
+    },
+    {
+      "recordIndex": 2123,
+      "weapon": "vssm",
+      "attachmentName": "50 MW Blue",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "50mw_blue"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/12_VSSM_Laser_50_MW_Blue.png",
+      "screenshotSha256": "bb1d4917402e25d8ee964487487f5b566dbd27fa71c4d98d7d072f9ffa33a46b",
+      "fields": {
+        "hipfire": {
+          "audit": 62
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    },
+    {
+      "recordIndex": 2124,
+      "weapon": "vssm",
+      "attachmentName": "120 MW Blue",
+      "identityStatus": "mapped",
+      "identityCandidates": [
+        [
+          "laser",
+          "120mw_blue"
+        ]
+      ],
+      "path": "reference-data/attachment-audit/Weapon Attachments/DMR/VSSM/13_VSSM_Laser_120_MW_Blue.png",
+      "screenshotSha256": "82f2ccaed6d0fd204546cd11c72fc055d93a00477caaf3f42d180b18cd7407f1",
+      "fields": {
+        "hipfire": {
+          "audit": 71
+        },
+        "precision": {
+          "audit": 78
+        },
+        "control": {
+          "audit": 34
+        },
+        "mobility": {
+          "audit": 60
+        }
+      }
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 # Sources, ingestion and promotion
 
-[Atlas](README.md) · [Ownership register](REGISTER.md) · [Source policy](../DATA_SOURCES.md)
+[Atlas](README.md) · [Ownership register](REGISTER.md) · [Source policy](../DATA_SOURCES.md) · [Game update guide](../GAME_UPDATE_GUIDE.md)
+
+Checked against `b3e67bf` on 22 September 2026.
 
 ## Source authority is field-specific
 
@@ -8,7 +10,8 @@
 flowchart LR
     SY["SRC · Sym JSON snapshot<br/>1.4.2.0 · 18 AUG 2026"]:::src
     EA["SRC · EA 1.3.3.0 notes<br/>declared mechanics and changes"]:::src
-    FX["SRC · local Frosty export<br/>operator label 1.4.2.5"]:::src
+    FX["SRC · Frosty build 1.4.2.5<br/>sealed baseline export"]:::src
+    F3["SRC · Frosty build 1.4.3.0<br/>open build, reviewed changes"]:::src
     GP["SRC · game panels and recordings<br/>version, setup and rounding matter"]:::src
     WB["CUR · accepted weapon bases,<br/>catalogs, availability and defaults"]:::cur
     FL["CUR + GEN · reviewed Frosty fields<br/>curves, tables, modifiers and joins"]:::gen
@@ -16,6 +19,7 @@ flowchart LR
     EV["EVID · baseline and field provenance<br/>hashes identify retained/local inputs"]:::ev
     SY --> WB
     FX --> FL
+    F3 -->|changed fields only| FL
     GP --> WB
     GP --> MP
     EA -.-> MP
@@ -26,30 +30,80 @@ flowchart LR
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
+    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
+```
+
+| Input | Role | Limit |
+|---|---|---|
+| [Sym baseline record](../../data/provenance/live-baseline.json) and [retained snapshot evidence](../../reference-data/provenance/sym-1.4.2.0-interdictor.json) | Historical foundation for base weapon fields. Data version **1.4.2.0**, dated **18 August 2026**. | The retained file holds an extract and a full-payload hash, not the complete payload. |
+| [EA notes](../../data/provenance/live-baseline.json) | Declared behavior and explicit changes for 1.3.3.0. | Notes do not give internal operands or unmentioned behavior. |
+| Frosty build **1.4.2.5** ([local export](../DATA_SOURCES.md#local-frosty-export-location)) | Source for accepted projectile damage, per-aim groups, arrays, generated handling, projectile/hit-zone data and many modifiers. | Build label is operator-supplied. Build is now sealed (read-only). |
+| Frosty build **1.4.3.0** ([source comparison](../../reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json)) | Reviewed changes only: Interdictor damage curve, hit-zone material and iron-sight cost; VSSM velocity and recoil; Weapon Attributes Precision tables. Includes the 16 September hotfix client. | Fields that did not change keep their 1.4.2.5 provenance. The site header shows v1.4.3.0. |
+| [Attachment capture audit](../../reference-data/attachment-audit/README.md), [recording history](../archive/BF6_RECOIL_SPREAD_RECORDING_HISTORY_2026-09-11.md) | Menu identity, displayed defaults, point costs, descriptions, Weapon Attributes panels and empirical model checks. | July/August captures need the correction ledgers before comparison. Raw captures can be local-only. |
+
+**Damage source:** `weapons[].damageSource` names Frosty projectile curves for
+every weapon. The M45A1 keeps the reviewed 75 m discontinuity. See the
+[damage review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
+
+## Build snapshots
+
+Each Frosty data build is kept as `BF6 Datamining\builds\<build>\` (`xml\`,
+`capture\`, `reports\`) with `BUILD.json` and a SHA-256 `MANIFEST.tsv`.
+[`frosty-build.py`](../../scripts/frosty-build.py) records new exports, refuses
+changes to existing files, seals old builds and guards against exporting from the
+wrong installed client.
+
+| Build | State (22 September 2026) | Clients |
+|---|---|---|
+| 1.4.2.5 | `sealed` | Baseline export. |
+| 1.4.3.0 | `open` | Release and 16 September hotfix (identical type layouts). |
+
+A hotfix joins the open build only when the type layouts are identical and no
+gameplay asset changed. Otherwise the open build is sealed and a new build starts.
+Details: [Game update guide › Build snapshots](../GAME_UPDATE_GUIDE.md#build-snapshots).
+
+## When the game updates
+
+```mermaid
+flowchart TB
+    G0["SRC · update detected<br/>executable hash changed"]:::src
+    GU["RUN · frosty-build.py guard / client-check<br/>hotfix or new data build?"]:::run
+    HF["CUR · add client to open build"]:::cur
+    NB["CUR · seal old build,<br/>open new build"]:::cur
+    CAP["SRC · capture catalog, raw EBX,<br/>descriptors and strings"]:::src
+    DIF["EVID · decode with the build's own<br/>descriptors, then diff against sealed build"]:::ev
+    SCN["EVID · consistency scans, patch-note<br/>mapping, attachment-bug recheck"]:::ev
+    DEC["CUR · decide which changes<br/>need site changes"]:::cur
+    APP["CUR + GEN · edit fields or rerun<br/>affected generators"]:::gen
+    LAB["CUR · update labels: header, footer,<br/>live-baseline.json, provenance"]:::cur
+    OUT["OUT · commit, checks, publish"]:::out
+    G0 --> GU
+    GU -->|identical layouts, no gameplay change| HF
+    GU -->|layout or gameplay change| NB
+    NB --> CAP
+    CAP --> DIF
+    DIF --> SCN
+    SCN --> DEC
+    DEC --> APP
+    APP --> LAB
+    LAB --> OUT
+    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
+    classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
+    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
     classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
-| Input | Accepted role at this baseline | Boundary to preserve |
-|---|---|---|
-| [Sym baseline record](../../data/provenance/live-baseline.json) and [retained snapshot evidence](../../reference-data/provenance/sym-1.4.2.0-interdictor.json) | Historical foundation for base weapon fields. Recorded data version **1.4.2.0**, version date **18 August 2026**. | September 9 verification hashed a user-supplied full payload against the recorded September 6 snapshot. It did not establish a new HTTP retrieval. The retained file holds an extract and full-payload hash, not the complete payload. |
-| [EA notes source record](../../data/provenance/live-baseline.json) | Declared behavior and explicit changes for 1.3.3.0. | Notes do not establish all internal operands or unmentioned behavior. |
-| [Local Frosty exports](../DATA_SOURCES.md#local-frosty-export-location) | Current source authority for accepted projectile damage, per-aim groups, arrays, generated handling, selected projectile/hit-zone data, and many modifiers. | `1.4.2.5` is the export's operator-supplied build label. Linked configuration and native activation/arithmetic remain separate claims. |
-| [Attachment capture audit](../../reference-data/attachment-audit/README.md), [recording history](../archive/BF6_RECOIL_SPREAD_RECORDING_HISTORY_2026-09-11.md) | Menu identity, displayed defaults, point costs, composition checks, descriptions and empirical model checks. | Rounded panels, exact selections and tested state constrain the inference. Raw capture collections can be local-only. |
-
-**Current damage authority:** `weapons[].damageSource` names Frosty projectile
-curves for every weapon. Most former Sym damage curves matched and kept their
-values; the M45A1 keeps the reviewed 75 m discontinuity. The [damage review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)
-records that transition. A high-level source label does not mean every live field
-was imported afresh or validated by the same method. See A01 in the [register](REGISTER.md#assumptions-and-interpretation).
+The steps follow stages 0–9 of the [Game update guide](../GAME_UPDATE_GUIDE.md).
+The 1.4.3.0 run is the worked example
+([update plan](../archive/FROSTY_1.4.3.0_UPDATE_PLAN.md)).
 
 ## From local exports to an accepted change
 
 ```mermaid
 flowchart TB
-    XML["SRC · XML, raw grids, SDK types<br/>and localization from a known export"]:::src
+    XML["SRC · XML, raw grids, SDK types<br/>and localization from a known build"]:::src
     JOIN["CUR · reviewed weapon/attachment identities<br/>active ability roots and explicit GUID joins"]:::cur
     TRACE["GEN · frosty-configuration.py<br/>candidate scalars, graph and comparison"]:::gen
     AUDIT["EVID · source path, field/index, GUID,<br/>literal, units, hash and unresolved status"]:::ev
@@ -70,8 +124,6 @@ flowchart TB
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
-    classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
     classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
@@ -80,21 +132,18 @@ The semantic configuration entry is
 `Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml`. WB branches supply
 weapon/projectile configuration; GS branches supply recoil/spread configuration.
 Follow selected ability roots, selectors, progression and explicit references.
-An adjacent asset name or a matching number is insufficient to establish identity.
+An adjacent asset name or a matching number does not establish identity.
 
 [`frosty-configuration.py`](../../scripts/frosty-configuration.py) writes candidate
-reports under `--out`, including `configuration-comparison.json`,
-`attachment-selection-graph.json`, `base-projectile-configuration.json` and source
-hashes. Its summary marks the output `runtimeReady: false`; it does not write live
-JSON. Unknown hashed fields and unproven primitive decoding remain unresolved.
+reports (`configuration-comparison.json`, `attachment-selection-graph.json`,
+`base-projectile-configuration.json`, source hashes). It marks its output
+`runtimeReady: false` and never writes live JSON.
 [`frosty-sdk-metadata.ps1`](../../scripts/frosty-sdk-metadata.ps1) and
 [`research-attachment-modifiers.py`](../../scripts/research-attachment-modifiers.py)
 are supporting research tools.
 
-Production generators below can write live files in a maintainer's working tree.
-Review must therefore cover the resulting diff before committing; generation is
-not a second independent approval. A generated number can still depend on a
-curated join, an operator decision, or an assumed downstream equation.
+Production generators write live files in the working tree. Review the resulting
+diff before committing; running a generator is not a second approval.
 
 ## Field-scoped production generators
 
@@ -119,23 +168,23 @@ flowchart LR
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
-    classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
     classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
-| Generator | Required inputs and joins | Owned output and invocation behavior |
-|---|---|---|
-| [frosty-barrel-ads.py](../../scripts/frosty-barrel-ads.py) | Current XML; reviewed barrel route/weapon identities. | `BARRELS[].adsTimeTierModByWeapon` and `frosty-barrel-ads-generated.json`. `--check` compares; ordinary invocation writes. 233 unique selections. The selected WB route is not added to a separate GS route. |
-| [frosty-attachment-handling.py](../../scripts/frosty-attachment-handling.py) | Current XML plus reviewed full-pass, identity and handling follow-up mappings. | Grip/laser per-weapon `frostyModifiers`, magazine fields, and scoped base-coordinate updates in `attachments.json`; generated handling report. `--check` compares, `--review` produces review output, ordinary invocation applies owned fields. 1,487 selections at the audit baseline. |
-| [frosty-sniper-brakes.py](../../scripts/frosty-sniper-brakes.py) | Current XML and reviewed weapon/muzzle identity joins. | Muzzle `weaponOverrides` for source amount steps; `frosty-sniper-brakes-generated.json`. `--check` compares; ordinary invocation writes. 16 pairs. |
-| [frosty-assumption-review.py](../../scripts/frosty-assumption-review.py) | Current XML, retained identity audits, SDK type evidence and nested fire-mode selectors. | Linear Comp/burst source fields and report. Ordinary invocation writes the report; **`--apply`** changes live attachments; `--check` compares. Source-field assumptions can be retired without proving the native simulation formula. |
-| [frosty-attachment-compatibility.py](../../scripts/frosty-attachment-compatibility.py) | Root-listed active ability branches, equipment dependency IDs, reviewed site choices. | `WEAPON_ATTS.slots`, `dependencies`, compatibility evidence. `--check` compares; ordinary invocation writes. 1,391 offered mount choices; 22 offered rules on four weapons. Another 263 secondary-sight entries remain outside offered/mapped rules. |
+Commands and flags for every generator are in
+[Maintenance](../../MAINTENANCE.md#regenerate-attachment-modifiers). Counts below
+come from each generator's committed report (reports dated 13–14 September 2026).
 
-Retained audits supply identities and joins to these generators; current XML
-supplies their numerical operands. Whole catalogs, offered availability, display
-ordering and all other fields are not regenerated by that fact. Exact commands
-and the current local-root convention are in [Maintenance](../../MAINTENANCE.md#regenerate-attachment-modifiers).
+| Generator | Inputs and joins | Owned output |
+|---|---|---|
+| [frosty-barrel-ads.py](../../scripts/frosty-barrel-ads.py) | Current XML; reviewed barrel route/weapon identities. | `BARRELS[].adsTimeTierModByWeapon`; `frosty-barrel-ads-generated.json`. 233 selections. The WB route is not added to a separate GS route. |
+| [frosty-attachment-handling.py](../../scripts/frosty-attachment-handling.py) | Current XML plus reviewed identity and handling follow-up mappings. | Grip/laser per-weapon `frostyModifiers`, magazine fields and scoped base coordinates; handling report. 1,487 selections. |
+| [frosty-sniper-brakes.py](../../scripts/frosty-sniper-brakes.py) | Current XML and weapon/muzzle identity joins. | Muzzle `weaponOverrides` for source amount steps; `frosty-sniper-brakes-generated.json`. 16 pairs. |
+| [frosty-assumption-review.py](../../scripts/frosty-assumption-review.py) | Current XML, identity audits, SDK type evidence and nested fire-mode selectors. | Linear Comp/burst source fields and report. Changes live attachments only in apply mode. |
+| [frosty-attachment-compatibility.py](../../scripts/frosty-attachment-compatibility.py) | Root-listed ability branches, equipment dependency IDs, reviewed site choices. | `WEAPON_ATTS.slots`, `dependencies`, compatibility evidence. 1,391 mount choices; 22 rules on four weapons; 263 secondary-sight entries outside the mapped rules. |
+
+Identity audits supply the joins; current XML supplies the numbers. Whole
+catalogs, offered availability and display order are not regenerated.
 
 ## Projectile, hit-zone and collateral chain
 
@@ -165,29 +214,39 @@ flowchart TB
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
-    classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
-    classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
     classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 [`frosty-hit-zones.py`](../../scripts/frosty-hit-zones.py) selects protection index
 and projectile material through the attachment graph, then reads the raw material
-grids. Raw export tooling is [frosty-raw-assets.ps1](../../scripts/frosty-raw-assets.ps1).
-Stripped grid names mean the head/limb interpretation rests on cross-checks against
-panel values; this is distinct from recovering native collision geometry.
+grids ([frosty-raw-assets.ps1](../../scripts/frosty-raw-assets.ps1) exports them).
+Grid names are stripped, so the head/limb interpretation rests on cross-checks
+against panel values (A05).
 
-[`frosty-ballistics.py`](../../scripts/frosty-ballistics.py) uses the **current
-hit-zone attachment trace** to resolve projectile GUIDs, validates its source
-hashes, and reads gravity/drag from current XML. It does not use a generic global
-projectile as a substitute for an unsupported selection. Both generated datasets
-cover 63 weapons and 328 ammo choices; 64 unique projectile records are shared.
+[`frosty-ballistics.py`](../../scripts/frosty-ballistics.py) uses the current
+hit-zone trace to resolve projectile GUIDs, checks its source hashes and reads
+gravity/drag from current XML. It never substitutes a generic projectile. Both
+generated files cover all weapon/ammo selections.
 
 [`frosty-collateral.py`](../../scripts/frosty-collateral.py) reads the retained
-[`frosty-global-compiled-trace-2026-09-13.json`](../../reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json),
-not fresh XML. It applies base plus shifts, clamps once to source rows 0–9 under
-the reviewed policy, and writes the complete per-weapon/ammo collateral map. A new
-export requires reviewing/refreshed trace inputs as well as rerunning the tool.
+[global compiled trace](../../reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json),
+not fresh XML. It applies base plus shifts, clamps once to source rows 0–9 and
+writes the complete per-weapon/ammo map. A new build needs a refreshed trace as
+well as a rerun.
+
+## Weapon Attributes inputs
+
+`data/weapon_attributes.json` holds the 1.4.3.0 Precision lookup tables (one per
+weapon), the shotgun dispersion angles and the traced Mobility inputs. It is
+assembled from three reference files named in its `provenance` field:
+[Precision tables](../../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json),
+[shotgun hipfire trace](../../reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json)
+and [Mobility source trace](../../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json).
+No production generator writes it. The research checkers
+[`frosty-composite-check.mjs`](../../scripts/frosty-composite-check.mjs) and
+[`frosty-precision-check.mjs`](../../scripts/frosty-precision-check.mjs) compare
+the model with captured panels. The calculation is in
+[Loadouts › Weapon Attributes](LOADOUTS.md#weapon-attributes).
 
 ## Text and capture review
 
@@ -214,36 +273,33 @@ flowchart LR
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
-    classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
     classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 [`frosty-attachment-tooltips.py`](../../scripts/frosty-attachment-tooltips.py)
 creates descriptions and `byWeapon[weapon][slot][attachment]` lookups. Approved
-`screenshot:` keys preserve an explicit selection-specific transcription; they
-do not silently resolve other weapons' missing localization pointers. At this
-baseline the retained coverage report records **2,966 mapped non-optic selections**:
-2,948 linked descriptions and 18 approved panel transcriptions; 45 descriptions
-remain missing/conflicting. Iron Sights adds 63 selections. See the [current
-mapping audit](../frosty/UI_TEXT.md#current-site-mapping).
+`screenshot:` keys hold one selection-specific transcription; they do not fill
+other weapons' missing text. As of 22 September 2026 the tooltip file covers
+2,966 of 3,011 non-optic selections (2,948 Frosty text, 18 approved panel
+transcriptions; 45 deferred), plus Iron Sights on all 63 weapons. See the
+[current mapping audit](../frosty/UI_TEXT.md#current-site-mapping).
 
-Weapon name/description promotion is separately reviewed; the extraction helper
-[`frosty-descriptions.py`](../../scripts/frosty-descriptions.py) produces candidate
-metadata. `data/weapon-role-tags.json` remains reference-only. Text provenance is
-independent of mechanical-effect provenance: a tooltip does not apply an effect.
+Weapon names and descriptions are promoted separately;
+[`frosty-descriptions.py`](../../scripts/frosty-descriptions.py) produces
+candidates. `data/weapon-role-tags.json` is reference-only. A tooltip never
+applies an effect.
 
-The canonical [attachment-screenshot-review.json](../../reference-data/attachment-audit/attachment-screenshot-review.json)
-is human-maintained. [`build-workbook.py`](../../reference-data/attachment-audit/build-workbook.py)
-derives a workbook from it. Neither the workbook nor raw screenshots are fetched
-by the site; their conclusions enter only through reviewed promoted fields.
+The [attachment-screenshot-review.json](../../reference-data/attachment-audit/attachment-screenshot-review.json)
+is the canonical human review, and [`build-workbook.py`](../../reference-data/attachment-audit/build-workbook.py)
+derives a workbook from it. Screenshot correction ledgers (for example the 439
+corrections of 17 September 2026) change the recorded observed values in this
+review, not runtime data. The site fetches neither the workbook nor the screenshots.
 
 ## Reproducibility boundary
 
-A checkout can run the application and product checks. Full source regeneration
-also requires the matching local XML, raw grids, SDK/type descriptors, localization
-and sometimes local screenshots. Input hashes identify these materials but do
-not make missing bytes available. Generated field coverage and source-file
-coverage should be rechecked on every new export; preserving a successful old
-report is insufficient to certify a newly supplied source tree.
+A checkout can run the site and product checks. Full regeneration also needs
+the matching local build snapshot (XML, raw grids, SDK/type descriptors,
+localization) and sometimes local screenshots. Hashes identify those files but
+do not supply them. Recheck generated coverage on every new build; an old
+passing report does not certify a new source tree.

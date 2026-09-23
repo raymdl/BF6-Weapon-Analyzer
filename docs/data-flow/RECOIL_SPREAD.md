@@ -2,6 +2,8 @@
 
 [Atlas](README.md) · [Recoil/spread formulas](../RECOIL_SPREAD_MODEL.md) · [Assumptions](REGISTER.md#assumptions-and-interpretation)
 
+Checked against `b3e67bf` on 22 September 2026.
+
 ## Per-aim recoil path
 
 ```mermaid
@@ -27,11 +29,8 @@ flowchart TB
     A -.-> T
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
-    classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 [`sim/core.js`](../../sim/core.js) selects the explicit ADS/hip group and consumes
@@ -40,7 +39,7 @@ resolver supplies field-scoped modifications. The `recoil_decay.json` maps are
 still fetched at startup but are retained legacy data, not current recovery
 fallbacks.
 
-At the audited baseline all 126 base aim-state durations are 25 ms. Ordinary
+As of 22 September 2026 all 126 base aim-state durations (63 weapons × ADS/hip) are 25 ms. Ordinary
 Smooth selections use 50 ms and a 1.2 recovery factor; 17 mapped Bolt-type pairs
 use 66.667 ms and 1.728, plus their recovery-time exponent adjustment. Ergonomic
 duration addition is applied after the muzzle override. The PP-19 Flash Comp
@@ -51,14 +50,11 @@ are documented in the [duration audit](../../reference-data/provenance/frosty-re
 variation, and subtracts a fraction of the expected recoil vector for the chosen
 control percentage. The random component remains. Delivery and recovery overlap;
 unfinished impulses can continue across a subsequent shot, and recovery age
-resets per shot. Integration uses at most 1 ms steps around impulse delivery.
-This interpretation of native operands remains a model assumption (A07).
+resets per shot. Integration uses at most 1 ms steps around impulse delivery (A07).
 
 The console option applies the source `0.8836` amount factor through a shared
-platform model. Its application across every selectable weapon and the control
-percentage abstraction are explicit modeling choices (A08). These controls belong
-to contextual recoil displays; they should not be mistaken for globally rewritten
-base source values.
+platform model (A08). Platform and control affect only the contextual recoil
+displays, not the base values shown in the overview.
 
 ## Spread growth and inter-shot recovery
 
@@ -84,13 +80,10 @@ flowchart TB
     R -->|next shot| S
     R --> E
     A -.-> R
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 All four `[min, max]` pairs are required: standing/moving for ADS/hipfire. Selected
@@ -107,15 +100,12 @@ spread decrement on every weapon.
 Heavy-type barrels use source ADS factors: increment `0.666667`, firing coefficient
 `1.837117`, firing and not-firing offsets `0.666667`. Light/combination selections
 apply the corresponding source hipfire factors. Lights are modeled as active;
-separately selected light and combo factors multiply. The AK4D Heavy recording
-supports the checked behavior but does not independently test every weapon and
-state. See [AK4D evidence](../archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md).
+separately selected light and combo factors multiply. Recording-checked on the
+AK4D Heavy barrel ([evidence](../archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md)).
 
 The effective maximum shown by contextual statistics is a **50-shot simulated,
-recovered endpoint**, rounded for display. It is not a proof of the infinite-run
-limit or an assertion that every sampled shot uses that radius. Idle fields and
-`firstShotMul` remain retained without a separately executed idle/first-shot state
-machine.
+recovered endpoint**, rounded for display (A12). Idle fields and `firstShotMul`
+are not executed (A16).
 
 ## Outputs and sampling
 
@@ -144,20 +134,15 @@ flowchart TB
     Q --> T
     S --> B
     A -.-> U
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 Both the main spray and scatter use `sampleSpreadRadius`; a uniform angle plus
-`U ** 0.5` gives a uniform-area disk. The retained M39 settled-hipfire capture
-analysis supports that interpretation for its tested context. It does not
-establish all moving/ADS states or the native implementation. Interdictor's
-moving-ADS source exponent is `0.67`.
+`U ** 0.5` gives a uniform-area disk. Recording-checked for M39 settled hipfire
+only (A09). Interdictor's moving-ADS source exponent is `0.67`.
 
 | View/layer | Dependency and meaning |
 |---|---|
@@ -178,8 +163,6 @@ links; see [state and exports](UI_PUBLISHING.md#state-and-exports).
 ## Source fields without independent execution
 
 `decNorm`, `shootingDecScale`, spread `idleTime/idleCoef/idleExp/idleOffset`,
-`firstShotMul`, and the light's idle-recovery operand are retained source material.
-Their presence in JSON does not imply native norm, shooting/idle state or first-shot
-behavior has been implemented. The [register](REGISTER.md#retained-and-non-executed-material)
-separates those from active fields and from explicit fallbacks such as the 25 ms
-recoil-duration fallback still present in code.
+`firstShotMul` and the light's idle-recovery operand are stored but not executed.
+See the [register](REGISTER.md#retained-and-non-executed-material) and, for the
+25 ms recoil-duration code fallback, [missing data](REGISTER.md#missing-data-and-fallbacks).

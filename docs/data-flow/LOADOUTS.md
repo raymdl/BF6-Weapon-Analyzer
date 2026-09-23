@@ -1,16 +1,19 @@
 # Loadouts, ladders and overview
 
-[Atlas](README.md) · [Attachment model](../ATTACHMENT_MODEL.md) · [Stat ladders](../STAT_LADDERS.md)
+[Atlas](README.md) · [Attachment model](../ATTACHMENT_MODEL.md) · [Stat ladders](../STAT_LADDERS.md) · [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md)
+
+Checked against `b3e67bf` on 22 September 2026.
 
 ## Selection and metadata
 
 `weapons.json` supplies IDs, display name, description, class and base fields.
 `ui/app.js` uses these for the weapon list, filters, selected names and compare
-labels. Frosty role tags in `weapon-role-tags.json` are not an input to those
-filters. Ordered catalogs and per-weapon maps in `attachments.json` and `ammo.json`
-supply available choices, defaults and points; tooltip text is a separate
-selection-keyed dictionary. Generic sight categories influence choices, labels,
-points and links, without an independent optical/camera model in the resolver.
+labels. `weapon-role-tags.json` is not an input to those filters. Ordered catalogs
+and per-weapon maps in `attachments.json` and `ammo.json` supply available
+choices, defaults and points; tooltip text is a separate selection-keyed
+dictionary. Generic sight categories drive choices, labels, points and links; the
+resolver has no optical/camera model. The no-sight option is labelled
+"Iron Sights (1.5x)" in [`sim/attachments.js`](../../sim/attachments.js).
 
 ## Valid loadout
 
@@ -37,9 +40,7 @@ flowchart TB
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 Physical slots and dependency rules are generator-owned fields within an otherwise
@@ -83,13 +84,11 @@ flowchart TB
     C --> B
     P --> B
     B --> O
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 This is a dependency map; exact field precedence is implemented in
@@ -122,13 +121,10 @@ flowchart LR
     I --> L
     L --> V
     V --> O
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 The complete literal arrays and source records live in [Stat ladders](../STAT_LADDERS.md).
@@ -174,53 +170,103 @@ flowchart TB
     R --> O
     P --> O
     P --> F
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 For reload, an explicit `tacRldOverrideMs` is divided by ergonomic speed; the
 magazine's ordinary tier is skipped on that route. Otherwise base tactical reload
 is divided by the exact magazine factor and ergonomic factor. Retained
-`weapon.reloadSpeed` is not multiplied in again. Empty-reload fields are not a
-separate live combat-reload simulation; shell-fed tactical reload describes one
-shell with the relevant start/end delays. See [reload exceptions](../../data/reload-exceptions.json).
+`weapon.reloadSpeed` is not multiplied in again. Shell-fed tactical reload
+describes one shell with its start/end delays. See [reload exceptions](../../data/reload-exceptions.json).
 
 For velocity, a present `velTierMod` takes precedence over `velMult`. Precise
-velocity reaches physics; the overview displays a floored value. Explicitly
-malformed and absent treatments do not all behave identically; see the
-[fallback register](REGISTER.md#missing-data-and-fallbacks). Do not use a displayed
-integer as the physics input when checking the chart.
+velocity reaches physics; the overview displays a floored value, so do not use
+the displayed integer when checking a chart. Malformed and absent treatments
+behave differently; see the [fallback register](REGISTER.md#missing-data-and-fallbacks).
 
 ## Overview output inventory
 
 Both slots follow the same resolver. Comparison percentages are signed by the
 raw direction of change; better/worse coloring uses the metric's preference rule.
 The selected comparison slot and a weapon's own default build are separate baselines.
-Presentation and metric construction live in [`ui/app.js`](../../ui/app.js).
+Presentation and metric construction live in [`ui/app.js`](../../ui/app.js). The
+[Weapon Attributes](#weapon-attributes) strip sits above these cards.
 
-| Visible statistic | Effective inputs and transform | Boundary |
+| Visible statistic | Effective inputs and transform | Note |
 |---|---|---|
-| Base Damage | Selected first damage point and pellet interpretation. | Source curve and ammo override; panel is not a simulation of actual pellet hits. |
-| HS / Limb Mult | Explicit `hit_zones` weapon/ammo selection. | [Generated material lookup](DAMAGE_BALLISTICS.md#range-outputs), not approximate target geometry. |
-| Fire Rate | Selected `rpm`, fire mode and burst/manual-cycle fields. | Cadence semantics also drive BTK-to-TTK and recovery intervals. |
-| Bullet Velocity | Ammo treatment → barrel treatment → floored display. | Physics uses `_projectileVelocityMps`. |
-| Magazine Size | Selected magazine capacity or maintained base. | Displayed capacity does not force reloads in ideal TTK. |
-| Tac Reload | Override or exact-factor route above. | Timing estimate; no reload event simulation. |
-| Collateral Mult | Complete generated per-weapon/ammo map. | Display only; no penetration simulation. |
+| Base Damage | Selected first damage point and pellet interpretation. | Source curve or ammo override. |
+| HS / Limb Mult | Explicit `hit_zones` weapon/ammo selection. | [Generated material lookup](DAMAGE_BALLISTICS.md#range-outputs), independent of target geometry. |
+| Fire Rate | Selected `rpm`, fire mode and burst/manual-cycle fields. | Cadence also drives BTK-to-TTK and recovery intervals. |
+| Bullet Velocity | Ammo treatment → barrel treatment → floored display. | Physics uses the unfloored `_projectileVelocityMps`. |
+| Magazine Size | Selected magazine capacity or maintained base. | Ideal TTK ignores it (A04). |
+| Tac Reload | Override or exact-factor route above. | |
+| Collateral Mult | Complete generated per-weapon/ammo map. | Display only (A11). |
 | ADS Time | ADS finite-table coordinate. | Optional additive TTK component. |
-| Strafe Speed | ADS movement finite-table coordinate. | Movement factor, not a moving-target simulation. |
-| Deploy Speed | Selected draw-table family and deploy coordinate. | Holster is resolved from the paired undeploy family; no weapon-switch event model. |
-| Sprint Recovery | Sprint finite-table coordinate. | Display/effect; not a sprint trajectory. |
-| Recoil Amount / Variation / Direction | Resolved ADS amount, variation and direction. | Contextual recoil controls/platform are traced separately in the recoil view. |
-| Spread Inc/Shot | Resolved spread dynamics. | A per-shot input, distinct from a recovered pre-shot radius. |
-| ADS Spread: standing/moving | Source bounds with applicable minimum-table effects. | Maximum fields and recovered display endpoints have separate roles. |
-| Hipfire Spread: standing/moving | Selected hip-minimum table rows and source maxima. | Retained hashed columns do not imply additional simulated behavior. |
-| 3D / 2D Spotting | Source factors multiplied against maintained 54 m / 150 m bases. | A11: bases/native composition remain assumptions; no detection simulation. |
+| Strafe Speed | ADS movement finite-table coordinate. | |
+| Deploy Speed | Selected draw-table family and deploy coordinate. | Holster uses the paired undeploy family. |
+| Sprint Recovery | Sprint finite-table coordinate. | |
+| Recoil Amount / Variation / Direction | Resolved ADS amount, variation and direction. | Platform/control are applied only in the recoil view. |
+| Spread Inc/Shot | Resolved spread dynamics. | Per-shot input, not a recovered radius. |
+| ADS Spread: standing/moving | Source bounds with applicable minimum-table effects. | |
+| Hipfire Spread: standing/moving | Selected hip-minimum table rows and source maxima. | |
+| 3D / 2D Spotting | Source factors multiplied against maintained 54 m / 150 m bases. | Bases are assumptions (A11). |
+
+## Weapon Attributes
+
+```mermaid
+flowchart TB
+    B["RUN · selectedWeaponBuild<br/>same resolver as the overview"]:::run
+    WA["CUR · weapon_attributes.json<br/>1.4.3.0 Precision tables, shotgun<br/>dispersion, Mobility inputs"]:::cur
+    T["CUR · balance_tables.json<br/>ladders for index lookup"]:::cur
+    H["RUN · Hipfire<br/>delegate ladder + nonlinear formula"]:::run
+    P["RUN · Precision<br/>per-weapon table row lookup"]:::run
+    C["RUN · Control<br/>nonlinear formula of R and V"]:::run
+    M["RUN · Mobility<br/>weighted sum of ladder indices"]:::run
+    O["OUT · Weapon Attributes strip<br/>score / 100 or Unavailable,<br/>related-card highlights"]:::out
+    A["ASM · candidate formulas and<br/>panel-input rules · A17"]:::asm
+    B --> H
+    B --> P
+    B --> C
+    B --> M
+    WA --> H
+    WA --> P
+    WA --> M
+    T --> M
+    H --> O
+    P --> O
+    C --> O
+    M --> O
+    A -.-> H
+    A -.-> P
+    A -.-> C
+    A -.-> M
+    classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
+    classDef run fill:#eef0f5,stroke:#616a80,color:#242938
+    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
+    classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
+```
+
+The four game menu scores (Hipfire, Precision, Control, Mobility) are calculated
+for both loadouts by [`sim/weapon-attributes.js`](../../sim/weapon-attributes.js)
+and drawn by [`ui/weapon-attributes.js`](../../ui/weapon-attributes.js). The model
+reads the resolved build, so attachment composition is shared with the overview.
+Scores are menu values, not percentages of accuracy or speed.
+
+| Attribute | Method | Main input |
+|---|---|---|
+| Hipfire | Delegate's own 18-row dispersion ladder (not the simulator's spread table) and a nonlinear formula, clamped at 100. | Resolved hip-spread index; shotgun dispersion angle; inferred `sqrt(1.2)` gate when hip spread per shot differs from base. |
+| Precision | Per-weapon game lookup table; no fitted equation. | Recoil amount/variation tier sums, RPM, ADS spread increment, recoil duration and decrease. |
+| Control | `96 / (1.1 × R × sin(v)/v + 0.75)^2.25 + 4`. | Unrounded ADS recoil amount `R` and variation `V`. |
+| Mobility | `D + 4A + S + 2M + 4Z + 4C` over source-order indices. | Deploy, ADS animation, sprint, ADS move, moving-ADS indices, sprint-fire flag. |
+
+Selection-specific input rules (burst-selector recoil not previewed, L115
+suppressor hipfire, PP-19 Flash Comp smoothing, L115 animation index, KS Slim
+Angled moving ADS) apply only inside this score model; the physical stat cards
+keep the source modifiers. A missing or ambiguous Precision row, or an unmatched
+Mobility index, returns Unavailable; nothing is interpolated. Evidence, open
+questions and the full rules are in the [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md).
 
 ## Default-relative effects
 
@@ -238,13 +284,9 @@ flowchart LR
     S --> C
     F --> C
     C --> O
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
-    classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 Effect chips cover changed handling, velocity/drag, magazine/reload, ADS amount and
@@ -253,9 +295,8 @@ offsets, spread minima, spotting, headshot multiplier and collateral. Qualitativ
 tags additionally expose sway change, visual recoil, laser visibility and enemy
 regeneration delay.
 
-A recovery chip can summarize a selected factor/offset rather than the complete
-nonlinear recovery equation. Sway is a relative muzzle/magazine amount factor;
-regeneration is `5 s + selected ammo addition`; neither is a time-domain sway or
-healing simulation. `assumed`/`assumedFields` disclose annotated data assumptions,
-but their absence does not establish native formula validation. Read A02–A12 in
-[the register](REGISTER.md#assumptions-and-interpretation) alongside those markers.
+A recovery chip summarizes a selected factor/offset, not the full nonlinear
+recovery equation. Sway is a relative muzzle/magazine amount factor; regeneration
+is `5 s + selected ammo addition` (A11). `assumed`/`assumedFields` markers flag
+annotated data assumptions only; formula assumptions are in
+[the register](REGISTER.md#assumptions-and-interpretation).

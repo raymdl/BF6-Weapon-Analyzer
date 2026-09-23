@@ -2,6 +2,8 @@
 
 [Atlas](README.md) · [Recoil and spread](RECOIL_SPREAD.md) · [Damage and ballistics](DAMAGE_BALLISTICS.md)
 
+Checked against `b3e67bf` on 22 September 2026.
+
 ## Angular pattern to physical impact
 
 ```mermaid
@@ -25,25 +27,19 @@ flowchart TB
     A -.-> I
     A -.-> H
     classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
-    classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
-    classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 The physical position is derived before viewport scaling. Distance changes the
 physical spread on the target; aim changes its offset; the selected projectile
 model contributes drop/zeroing. Magnification, FOV, display resolution and plot
-pan/zoom control the view of those coordinates. They do not make the underlying
-projectile more accurate.
+pan/zoom control only the view of those coordinates.
 
 `ui/app.js` assembles the projectile from the generated weapon/ammo map and the
 build's precise velocity, then calls [`sim/ballistics.js`](../../sim/ballistics.js).
-A missing/non-finite target flight result currently yields zero vertical offset
-in the display helper. That is a fallback drawing behavior, not evidence of a
-flat real-world trajectory; unavailable TTK travel has a different path. See
+A missing/non-finite flight result draws with zero vertical offset; see
 [missing data](REGISTER.md#missing-data-and-fallbacks).
 
 ## Image, zone classification and summaries
@@ -71,26 +67,22 @@ flowchart TB
     X -.-> H
     X -.-> S
     X -.-> O
-    classDef src fill:#e8efff,stroke:#4463a6,color:#16284c
     classDef cur fill:#fff1d9,stroke:#9c6b17,color:#492f08
     classDef gen fill:#dcf4ef,stroke:#27806c,color:#123f35
     classDef run fill:#eef0f5,stroke:#616a80,color:#242938
     classDef asm fill:#fff0ef,stroke:#b34c46,color:#621f1b,stroke-dasharray:5 3
     classDef out fill:#eee8ff,stroke:#7958aa,color:#36244f
-    classDef ev fill:#f7f7f7,stroke:#858585,color:#333333,stroke-dasharray:3 3
 ```
 
 [`sim/target.js`](../../sim/target.js) treats the image as a project-maintained
 visual asset and uses its alpha mask for silhouette hits. The code assumes a
 180 cm soldier and supplies hand-maintained head/chest/torso/limb partitions and
-aim offsets. No reproducible extraction of a native collision mesh is established
-by this asset or those constants. The root `soldier-target-original.png` is a
-reference asset, not the lazily fetched runtime target.
+aim offsets (A10). The root `soldier-target-original.png` is a reference asset,
+not the runtime target.
 
 The image loads only when target view is needed, including entry through a shared
 link or popout. Without the image, hit classification is disabled. The generated
-head/limb damage multipliers are applied **after** the geometric zone decision;
-source-backed multipliers do not validate the drawn zone boundaries.
+head/limb damage multipliers are applied **after** the geometric zone decision.
 
 | Result | Computed from | Interpretation limit |
 |---|---|---|
