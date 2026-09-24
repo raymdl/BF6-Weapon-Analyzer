@@ -928,3 +928,14 @@ within this scope. No numeric change is proposed. This result does not validate
 the assumed recovery equation or exclude a different runtime setting/class.
 Reopen only with a relevant non-unit value, non-neutral effect or consumer.
 [Evidence and reproduction](../../reference-data/provenance/frosty-2026-09-24-L15-neutral-shooting-recoil-scale.json).
+
+## Shotgun pellet-direction limit (L20, 24 September 2026)
+
+The [bounded 185KSK trace](../../reference-data/provenance/frosty-2026-09-24-L20-pellet-direction-scope.json)
+verifies the standard and Slug projectile selections. The examined Shot registry
+anchors name speed, speed variation, damage indices and spawn delay; they do not
+identify a pellet-direction distribution. Empty arrays in the two PDs are unnamed
+and cannot prove absence of patterns. SDK direction names remain mapping clues.
+Keep the existing unavailable pellet-impact statistics until a typed consumer or
+controlled impact result supports a model. The single direction plotted per shell
+is not a pellet simulation. No random-only runtime mechanism is established.

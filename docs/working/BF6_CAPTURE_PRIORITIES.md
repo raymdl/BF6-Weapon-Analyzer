@@ -600,3 +600,21 @@ A different direction or magnitude can reject this simple composition. There is
 no sourced cadence prediction; record timing to control the experiment. Native
 operator order and broader weapon coverage remain separate questions. See
 [L17 evidence](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json).
+
+## L20 follow-up: Pellet direction pilot
+
+Use 18.5KS-K with standard ammunition and a fixed bare baseline. Record one shell
+per clean wall area at a measured fixed range, returning to the same stance, aim
+state and aim point with full recovery between shots. Keep all impacts visible;
+overlapping or hidden marks are missing observations, not fewer pellets. Record
+a Slug control to check aim/impact alignment. Repeat at a second range only after
+the first set resolves individual impacts.
+
+Compare each shell after removing its center displacement. A repeated pattern
+should preserve relative pellet positions, possibly after rotation or scaling;
+independent sampling should vary those relative positions between shots. Repeat
+after respawn or weapon reselection to test a repeating seed. Neither a few
+similar groups nor a few irregular groups proves the native algorithm. If marks
+merge or disappear, stop the pilot and retain unavailable pellet statistics.
+The source currently gives no justified numerical direction distribution; this
+test must establish a usable signal before fitting one. See [L20 scope](../../reference-data/provenance/frosty-2026-09-24-L20-pellet-direction-scope.json).
